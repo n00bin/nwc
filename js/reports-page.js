@@ -258,7 +258,7 @@
   });
 
   // ---- Admin toggle ----
-  adminToggle.addEventListener("click", function () {
+  adminToggle.addEventListener("click", async function () {
     if (adminMode) {
       // Turn off admin mode
       adminMode = false;
@@ -269,13 +269,34 @@
     } else {
       // Prompt for password
       var pass = prompt("Enter admin password:");
-      if (pass) {
-        adminPass = pass;
-        adminMode = true;
-        adminToggle.classList.add("active");
-        adminToggle.textContent = "Admin (on)";
-        renderReports();
+      if (!pass) return;
+
+      // Verify password immediately by calling update with a non-existent report
+      // If password is wrong: returns {success: false, reason: "unauthorized"}
+      // If password is right: returns {success: false, reason: "not_found"} (report 0 doesn't exist)
+      adminToggle.textContent = "Checking...";
+      adminToggle.disabled = true;
+
+      var { data, error } = await sb.rpc("update_report_status", {
+        report_id: 0,
+        new_status: "New",
+        admin_pass: pass
+      });
+
+      adminToggle.disabled = false;
+
+      if (error || (data && data.reason === "unauthorized")) {
+        adminToggle.textContent = "Admin";
+        alert("Wrong password.");
+        return;
       }
+
+      // Password verified (got "not_found" which means it passed the password check)
+      adminPass = pass;
+      adminMode = true;
+      adminToggle.classList.add("active");
+      adminToggle.textContent = "Admin (on)";
+      renderReports();
     }
   });
 
