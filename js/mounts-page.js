@@ -8,6 +8,53 @@
   var equipMap  = buildLookup(MOUNT_EQUIP_POWERS_DATA);
   var bonusMap  = buildLookup(MOUNT_INSIGNIA_BONUSES_DATA);
 
+  // ---- Compute compatible insignia bonuses per mount ----
+  // Check if a single slot can accept a required insignia type
+  function slotAccepts(slotAllowed, requiredType) {
+    for (var i = 0; i < slotAllowed.length; i++) {
+      if (slotAllowed[i] === "*" || slotAllowed[i] === requiredType) return true;
+    }
+    return false;
+  }
+
+  // Recursive check: can we assign required[rIdx..] to some subset of unused slots?
+  function canAssign(slots, required, rIdx, used) {
+    if (rIdx >= required.length) return true;
+    for (var s = 0; s < slots.length; s++) {
+      if (used[s]) continue;
+      if (slotAccepts(slots[s].allowed, required[rIdx])) {
+        used[s] = true;
+        if (canAssign(slots, required, rIdx + 1, used)) return true;
+        used[s] = false;
+      }
+    }
+    return false;
+  }
+
+  function getCompatibleBonuses(mount) {
+    var slots = mount.insigniaSlots;
+    if (!slots || slots.length === 0) return [];
+    var result = [];
+    for (var i = 0; i < MOUNT_INSIGNIA_BONUSES_DATA.length; i++) {
+      var bonus = MOUNT_INSIGNIA_BONUSES_DATA[i];
+      var req = bonus.requiredInsignias;
+      if (!req || req.length > slots.length) continue;
+      var used = [];
+      for (var u = 0; u < slots.length; u++) used.push(false);
+      if (canAssign(slots, req, 0, used)) {
+        result.push(bonus);
+      }
+    }
+    return result;
+  }
+
+  // Pre-compute for all mounts (used by filter)
+  var mountBonusCache = {};
+  for (var mi = 0; mi < MOUNTS_DATA.length; mi++) {
+    var m = MOUNTS_DATA[mi];
+    mountBonusCache[m.id] = getCompatibleBonuses(m);
+  }
+
   // ---- DOM refs ----
   var searchInput   = document.getElementById("search");
   var filterCombat  = document.getElementById("filter-combat");
@@ -40,12 +87,9 @@
     "All Equip Powers"
   );
 
-  var bonusNames = uniqueSorted(MOUNTS_DATA, function (m) {
-    if (!m.bonusRef) return null;
-    var b = bonusMap[m.bonusRef];
-    return b ? b.name : null;
+  var bonusNames = uniqueSorted(MOUNT_INSIGNIA_BONUSES_DATA, function (b) {
+    return b.name;
   });
-  bonusNames.unshift("None");
   populateFilter(filterBonus, bonusNames, "All Insignia Bonuses");
 
   // ---- Filter logic ----
@@ -74,14 +118,14 @@
         var ep2 = equipMap[m.equipRef];
         if (!ep2 || ep2.name !== equipVal) return false;
       }
-      // Insignia bonus filter
+      // Insignia bonus filter — check computed compatible bonuses
       if (bonusVal) {
-        if (bonusVal === "None") {
-          if (m.bonusRef) return false;
-        } else {
-          var b = bonusMap[m.bonusRef];
-          if (!b || b.name !== bonusVal) return false;
+        var compatible = mountBonusCache[m.id] || [];
+        var found = false;
+        for (var bi = 0; bi < compatible.length; bi++) {
+          if (compatible[bi].name === bonusVal) { found = true; break; }
         }
+        if (!found) return false;
       }
       return true;
     });
@@ -117,7 +161,7 @@
 
     var cp = combatMap[mount.combatRef];
     var ep = equipMap[mount.equipRef];
-    var ib = mount.bonusRef ? bonusMap[mount.bonusRef] : null;
+    var compatibleBonuses = mountBonusCache[mount.id] || [];
 
     var html = "";
 
@@ -171,31 +215,35 @@
       html += '<div class="detail-meta">No equip power data</div>';
     }
 
-    // ---- Insignia Bonus ----
-    html += '<div class="section-header">Insignia Bonus</div>';
-    if (ib) {
-      html += '<div class="detail-name">' + escapeHtml(ib.name) + "</div>";
+    // ---- Insignia Bonuses (all compatible) ----
+    html += '<div class="section-header">Compatible Insignia Bonuses (' + compatibleBonuses.length + ')</div>';
+    if (compatibleBonuses.length > 0) {
+      for (var bi = 0; bi < compatibleBonuses.length; bi++) {
+        var ib = compatibleBonuses[bi];
+        html += '<div class="card" style="margin-bottom:0.6rem;padding:0.8rem;">';
+        html += '<div class="detail-name">' + escapeHtml(ib.name) + "</div>";
 
-      // Required insignias
-      if (ib.requiredInsignias && ib.requiredInsignias.length > 0) {
-        html += '<div style="margin:0.4rem 0;">';
-        html += '<span class="stat-name" style="margin-right:0.5rem;">Requires:</span>';
-        for (var ri = 0; ri < ib.requiredInsignias.length; ri++) {
-          html += renderInsigniaBadge(ib.requiredInsignias[ri]) + " ";
+        // Required insignias
+        if (ib.requiredInsignias && ib.requiredInsignias.length > 0) {
+          html += '<div style="margin:0.3rem 0;">';
+          for (var ri = 0; ri < ib.requiredInsignias.length; ri++) {
+            html += renderInsigniaBadge(ib.requiredInsignias[ri]) + " ";
+          }
+          html += "</div>";
+        }
+
+        // Stats from bonus
+        if (ib.stats && ib.stats.length > 0) {
+          html += renderStatsTable(ib.stats);
+        }
+
+        if (ib.effectText) {
+          html += '<div class="effect-text">' + escapeHtml(ib.effectText) + "</div>";
         }
         html += "</div>";
       }
-
-      // Stats from bonus
-      if (ib.stats && ib.stats.length > 0) {
-        html += renderStatsTable(ib.stats);
-      }
-
-      if (ib.effectText) {
-        html += '<div class="effect-text">' + escapeHtml(ib.effectText) + "</div>";
-      }
     } else {
-      html += '<div class="detail-meta">No Insignia Bonus</div>';
+      html += '<div class="detail-meta">No compatible insignia bonuses</div>';
     }
 
     // ---- Insignia Slots ----
