@@ -196,7 +196,7 @@
       }
 
       if (pw.notes) {
-        html += '<div class="effect-text">' + escapeHtml(pw.notes) + "</div>";
+        html += '<div class="effect-text">' + escapeHtml(cleanNotes(pw.notes)) + "</div>";
       }
     } else {
       html += '<div class="detail-meta">No power data</div>';
@@ -220,7 +220,7 @@
       html += "</div>";
 
       if (en.notes) {
-        html += '<div class="effect-text">' + escapeHtml(en.notes) + "</div>";
+        html += '<div class="effect-text">' + escapeHtml(cleanNotes(en.notes)) + "</div>";
       }
     } else {
       html += '<div class="detail-meta">No enhancement data</div>';
@@ -229,7 +229,7 @@
     // ---- Notes ----
     if (companion.notes) {
       html += '<div class="section-header">Notes</div>';
-      html += '<div class="effect-text">' + escapeHtml(companion.notes) + "</div>";
+      html += '<div class="effect-text">' + escapeHtml(cleanNotes(companion.notes)) + "</div>";
     }
 
     detailPanel.innerHTML = html;

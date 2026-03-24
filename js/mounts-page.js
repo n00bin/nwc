@@ -184,7 +184,7 @@
       }
 
       if (cp.notes) {
-        html += '<div class="effect-text">' + escapeHtml(cp.notes) + "</div>";
+        html += '<div class="effect-text">' + escapeHtml(cleanNotes(cp.notes)) + "</div>";
       }
     } else {
       html += '<div class="detail-meta">No combat power data</div>';
@@ -209,7 +209,7 @@
       }
 
       if (ep.notes) {
-        html += '<div class="effect-text">' + escapeHtml(ep.notes) + "</div>";
+        html += '<div class="effect-text">' + escapeHtml(cleanNotes(ep.notes)) + "</div>";
       }
     } else {
       html += '<div class="detail-meta">No equip power data</div>';
@@ -270,7 +270,7 @@
     // ---- Notes ----
     if (mount.notes) {
       html += '<div class="section-header">Notes</div>';
-      html += '<div class="effect-text">' + escapeHtml(mount.notes) + "</div>";
+      html += '<div class="effect-text">' + escapeHtml(cleanNotes(mount.notes)) + "</div>";
     }
 
     detailPanel.innerHTML = html;

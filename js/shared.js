@@ -41,6 +41,17 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+// ---- Clean notes for display ----
+// Strips internal prefixes like "Screenshot intake (Mount Preview): ..." → "Tooltip: ..."
+function cleanNotes(str) {
+  if (!str) return "";
+  return str
+    .replace(/^Screenshot (?:intake|confirmed|reconciliation) \(Mount Preview(?:, scrolled)?\)[.:]\s*/i, "Tooltip: ")
+    .replace(/^Screenshot (?:intake|confirmed|reconciliation) \(Inspect Companion\)[.:]\s*/i, "Tooltip: ")
+    .replace(/^Screenshot (?:intake|confirmed|reconciliation)[.:]\s*/i, "")
+    .replace(/^Tooltip:\s*$/i, "");
+}
+
 // ---- Number formatting ----
 function formatNumber(n) {
   if (n == null) return "—";
