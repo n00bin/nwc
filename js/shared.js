@@ -14,7 +14,7 @@ function renderNav(activePage) {
   const nav = document.querySelector(".navbar");
   if (!nav) return;
 
-  let html = '<span class="navbar-brand">NWCB</span><div class="navbar-links">';
+  let html = '<span class="navbar-brand">Neverwinter Compendium</span><div class="navbar-links">';
   for (const p of NAV_PAGES) {
     const cls = p.label === activePage ? " active" : "";
     html += `<a href="${p.href}" class="${cls}">${p.label}</a>`;
