@@ -243,6 +243,27 @@
       }
     }
 
+    // ---- Insignia Slots (at top) ----
+    html += '<div class="section-header">Insignia Slots</div>';
+    if (mount.insigniaSlots && mount.insigniaSlots.length > 0) {
+      html += '<div class="insignia-slots-grid">';
+      for (var s = 0; s < mount.insigniaSlots.length; s++) {
+        var slot = mount.insigniaSlots[s];
+        html += '<div class="insignia-slot-box">';
+        html += '<div class="slot-label">Slot ' + (s + 1) + "</div>";
+        for (var a = 0; a < slot.allowed.length; a++) {
+          html += renderInsigniaBadge(slot.allowed[a]) + " ";
+        }
+        if (slot.preferred) {
+          html += '<div style="font-size:0.7rem;color:var(--text-muted);margin-top:0.2rem;">Preferred: ' + escapeHtml(String(slot.preferred)) + "</div>";
+        }
+        html += "</div>";
+      }
+      html += "</div>";
+    } else {
+      html += '<div class="detail-meta">No insignia slots</div>';
+    }
+
     // ---- Combat Power ----
     html += '<div class="section-header">Combat Power</div>';
     if (cp) {
@@ -319,27 +340,6 @@
       }
     } else {
       html += '<div class="detail-meta">No compatible insignia bonuses</div>';
-    }
-
-    // ---- Insignia Slots ----
-    html += '<div class="section-header">Insignia Slots</div>';
-    if (mount.insigniaSlots && mount.insigniaSlots.length > 0) {
-      html += '<div class="insignia-slots-grid">';
-      for (var s = 0; s < mount.insigniaSlots.length; s++) {
-        var slot = mount.insigniaSlots[s];
-        html += '<div class="insignia-slot-box">';
-        html += '<div class="slot-label">Slot ' + (s + 1) + "</div>";
-        for (var a = 0; a < slot.allowed.length; a++) {
-          html += renderInsigniaBadge(slot.allowed[a]) + " ";
-        }
-        if (slot.preferred) {
-          html += '<div style="font-size:0.7rem;color:var(--text-muted);margin-top:0.2rem;">Preferred: ' + escapeHtml(slot.preferred) + "</div>";
-        }
-        html += "</div>";
-      }
-      html += "</div>";
-    } else {
-      html += '<div class="detail-meta">No insignia slots</div>';
     }
 
     // ---- Notes ----
