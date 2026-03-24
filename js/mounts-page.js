@@ -130,12 +130,33 @@
       }
       // Preferred slot toggle
       if (togglePreferred.checked) {
-        var hasPreferred = false;
         var slots = m.insigniaSlots || [];
-        for (var pi = 0; pi < slots.length; pi++) {
-          if (slots[pi].preferred) { hasPreferred = true; break; }
+        // If a bonus is also selected, the preferred type must match
+        // one of the bonus's required insignia types
+        if (bonusVal) {
+          var selectedBonus = null;
+          for (var sbi = 0; sbi < MOUNT_INSIGNIA_BONUSES_DATA.length; sbi++) {
+            if (MOUNT_INSIGNIA_BONUSES_DATA[sbi].name === bonusVal) {
+              selectedBonus = MOUNT_INSIGNIA_BONUSES_DATA[sbi]; break;
+            }
+          }
+          var requiredTypes = selectedBonus ? selectedBonus.requiredInsignias : [];
+          var prefMatch = false;
+          for (var pi = 0; pi < slots.length; pi++) {
+            var pref = slots[pi].preferred;
+            if (pref && pref !== "unknown" && requiredTypes.indexOf(pref) !== -1) {
+              prefMatch = true; break;
+            }
+          }
+          if (!prefMatch) return false;
+        } else {
+          // No bonus selected — just check if mount has any preferred slot
+          var hasPreferred = false;
+          for (var pi2 = 0; pi2 < slots.length; pi2++) {
+            if (slots[pi2].preferred) { hasPreferred = true; break; }
+          }
+          if (!hasPreferred) return false;
         }
-        if (!hasPreferred) return false;
       }
       return true;
     });
