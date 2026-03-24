@@ -59,8 +59,9 @@
   var searchInput   = document.getElementById("search");
   var filterCombat  = document.getElementById("filter-combat");
   var filterEquip   = document.getElementById("filter-equip");
-  var filterBonus   = document.getElementById("filter-bonus");
-  var listContainer = document.getElementById("mount-list");
+  var filterBonus     = document.getElementById("filter-bonus");
+  var togglePreferred = document.getElementById("toggle-preferred");
+  var listContainer   = document.getElementById("mount-list");
   var listCount     = document.getElementById("list-count");
   var detailPanel   = document.getElementById("detail-panel");
 
@@ -126,6 +127,15 @@
           if (compatible[bi].name === bonusVal) { found = true; break; }
         }
         if (!found) return false;
+      }
+      // Preferred slot toggle
+      if (togglePreferred.checked) {
+        var hasPreferred = false;
+        var slots = m.insigniaSlots || [];
+        for (var pi = 0; pi < slots.length; pi++) {
+          if (slots[pi].preferred) { hasPreferred = true; break; }
+        }
+        if (!hasPreferred) return false;
       }
       return true;
     });
@@ -373,6 +383,7 @@
   filterCombat.addEventListener("change", onFilterChange);
   filterEquip.addEventListener("change", onFilterChange);
   filterBonus.addEventListener("change", onFilterChange);
+  togglePreferred.addEventListener("change", onFilterChange);
 
   // ---- Initial render ----
   renderList(MOUNTS_DATA);
