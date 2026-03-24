@@ -131,20 +131,36 @@
       // Preferred slot toggle
       if (togglePreferred.checked) {
         var slots = m.insigniaSlots || [];
-        // If a bonus is also selected, the preferred type must match
-        // one of the bonus's required insignia types
         if (bonusVal) {
+          // Find the selected bonus
           var selectedBonus = null;
           for (var sbi = 0; sbi < MOUNT_INSIGNIA_BONUSES_DATA.length; sbi++) {
             if (MOUNT_INSIGNIA_BONUSES_DATA[sbi].name === bonusVal) {
               selectedBonus = MOUNT_INSIGNIA_BONUSES_DATA[sbi]; break;
             }
           }
-          var requiredTypes = selectedBonus ? selectedBonus.requiredInsignias : [];
+          var required = selectedBonus ? selectedBonus.requiredInsignias : [];
+          // Check: can this mount activate the bonus WITH the preferred
+          // slot actually using its preferred type (not overridden)?
+          // Find preferred slots and try to assign the bonus requirements
+          // such that at least one preferred slot holds its preferred type.
           var prefMatch = false;
           for (var pi = 0; pi < slots.length; pi++) {
             var pref = slots[pi].preferred;
-            if (pref && pref !== "unknown" && requiredTypes.indexOf(pref) !== -1) {
+            if (!pref || pref === "unknown" || pref === true) continue;
+            // Does this preferred type appear in the required list?
+            var prefInRequired = required.indexOf(pref) !== -1;
+            if (!prefInRequired) continue;
+            // Try assigning: lock this slot to its preferred type,
+            // then see if remaining required types fit remaining slots
+            var remainingReq = required.slice();
+            // Remove one instance of the preferred type from requirements
+            var prefIdx = remainingReq.indexOf(pref);
+            remainingReq.splice(prefIdx, 1);
+            // Try to assign remaining requirements to other slots
+            var used = [];
+            for (var u = 0; u < slots.length; u++) used.push(u === pi);
+            if (canAssign(slots, remainingReq, 0, used)) {
               prefMatch = true; break;
             }
           }
@@ -193,11 +209,39 @@
     var cp = combatMap[mount.combatRef];
     var ep = equipMap[mount.equipRef];
     var compatibleBonuses = mountBonusCache[mount.id] || [];
+    var bonusVal = filterBonus.value;
 
     var html = "";
 
     // Mount name
     html += '<h2 style="margin-bottom:0.75rem;">' + escapeHtml(mount.name) + "</h2>";
+
+    // ---- Pinned selected insignia bonus ----
+    if (bonusVal) {
+      var pinnedBonus = null;
+      for (var pbi = 0; pbi < compatibleBonuses.length; pbi++) {
+        if (compatibleBonuses[pbi].name === bonusVal) { pinnedBonus = compatibleBonuses[pbi]; break; }
+      }
+      if (pinnedBonus) {
+        html += '<div class="pinned-bonus">';
+        html += '<div class="section-header" style="margin-top:0;">Selected Insignia Bonus</div>';
+        html += '<div class="detail-name">' + escapeHtml(pinnedBonus.name) + "</div>";
+        if (pinnedBonus.requiredInsignias && pinnedBonus.requiredInsignias.length > 0) {
+          html += '<div style="margin:0.3rem 0;">';
+          for (var pri = 0; pri < pinnedBonus.requiredInsignias.length; pri++) {
+            html += renderInsigniaBadge(pinnedBonus.requiredInsignias[pri]) + " ";
+          }
+          html += "</div>";
+        }
+        if (pinnedBonus.stats && pinnedBonus.stats.length > 0) {
+          html += renderStatsTable(pinnedBonus.stats);
+        }
+        if (pinnedBonus.effectText) {
+          html += '<div class="effect-text">' + escapeHtml(pinnedBonus.effectText) + "</div>";
+        }
+        html += "</div>";
+      }
+    }
 
     // ---- Combat Power ----
     html += '<div class="section-header">Combat Power</div>';

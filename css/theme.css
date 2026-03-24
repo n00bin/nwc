@@ -222,6 +222,19 @@ a:hover {
   margin-top: 0.4rem;
 }
 
+/* ---- Pinned bonus (sticky at top of detail panel) ---- */
+.pinned-bonus {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-surface);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
 /* ---- Proc block ---- */
 .proc-block {
   background: var(--bg-elevated);
