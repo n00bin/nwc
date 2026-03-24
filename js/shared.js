@@ -7,6 +7,7 @@ const NAV_PAGES = [
   { label: "Home",       href: "index.html" },
   { label: "Mounts",     href: "mounts.html" },
   { label: "Companions", href: "companions.html" },
+  { label: "Reports",    href: "reports.html" },
 ];
 
 // ---- Navigation ----

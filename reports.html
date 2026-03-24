@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports — Neverwinter Compendium</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .reports-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 3rem;
+    }
+
+    /* Report cards */
+    .report-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .report-card:hover {
+      border-color: var(--border-accent);
+    }
+
+    /* Vote column */
+    .vote-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 50px;
+      flex-shrink: 0;
+    }
+    .vote-btn {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .vote-btn:hover:not(.voted) {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--bg-hover);
+    }
+    .vote-btn.voted {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(88, 166, 255, 0.1);
+      cursor: default;
+    }
+    .vote-count {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    /* Report content */
+    .report-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .report-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .report-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 0.4rem;
+      word-wrap: break-word;
+    }
+    .report-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Status badges */
+    .badge-status-new         { background: var(--text-muted);     color: #fff; }
+    .badge-status-confirmed   { background: var(--accent);         color: #fff; }
+    .badge-status-in-progress { background: var(--highlight);      color: #000; }
+    .badge-status-fixed       { background: var(--stat-positive);  color: #fff; }
+    .badge-status-wont-fix    { background: var(--stat-negative);  color: #fff; }
+
+    /* Category badges */
+    .badge-cat-bug          { background: var(--stat-negative); color: #fff; }
+    .badge-cat-missing-item { background: var(--highlight);     color: #000; }
+    .badge-cat-suggestion   { background: var(--accent);        color: #fff; }
+
+    /* Submit form */
+    .submit-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-default);
+    }
+    .submit-section h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--highlight);
+    }
+    .form-group {
+      margin-bottom: 0.85rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+    }
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      font-family: var(--font-main);
+      outline: none;
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--accent);
+    }
+    .form-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .submit-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .submit-btn:hover {
+      background: var(--accent-hover);
+    }
+    .submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .form-msg {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      min-height: 1.2em;
+    }
+    .form-msg.success { color: var(--stat-positive); }
+    .form-msg.error   { color: var(--stat-negative); }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .report-card { flex-direction: column; gap: 0.5rem; }
+      .vote-col { flex-direction: row; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <!-- Filters -->
+  <div class="controls-bar">
+    <select class="filter-select" id="filter-category">
+      <option value="">All Categories</option>
+      <option value="Bug">Bug</option>
+      <option value="Missing Item">Missing Item</option>
+      <option value="Suggestion">Suggestion</option>
+    </select>
+    <select class="filter-select" id="filter-status">
+      <option value="">All Statuses</option>
+      <option value="New">New</option>
+      <option value="Confirmed">Confirmed</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Fixed">Fixed</option>
+      <option value="Won't Fix">Won't Fix</option>
+    </select>
+    <select class="filter-select" id="filter-sort">
+      <option value="newest">Newest First</option>
+      <option value="most_voted">Most Voted</option>
+    </select>
+    <span id="reports-count" style="color:var(--text-muted);font-size:0.85rem;margin-left:auto;white-space:nowrap;"></span>
+  </div>
+
+  <div class="reports-container">
+    <!-- Reports list -->
+    <div id="reports-list">
+      <div class="empty-state">Loading reports...</div>
+    </div>
+
+    <!-- Submit form -->
+    <div class="submit-section">
+      <h3>Submit a Report</h3>
+      <form id="submit-form">
+        <div class="form-group">
+          <label for="report-title">Title</label>
+          <input type="text" class="form-input" id="report-title" placeholder="Brief summary of the issue" maxlength="200" required>
+        </div>
+        <div class="form-group">
+          <label for="report-category">Category</label>
+          <select class="filter-select" id="report-category" style="width:100%;" required>
+            <option value="">Select a category...</option>
+            <option value="Bug">Bug</option>
+            <option value="Missing Item">Missing Item</option>
+            <option value="Suggestion">Suggestion</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="report-desc">Description</label>
+          <textarea class="form-textarea" id="report-desc" placeholder="Describe the issue in detail (at least 10 characters)" maxlength="2000" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn" id="submit-btn">Submit Report</button>
+        <div class="form-msg" id="form-msg"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Supabase client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/reports-page.js"></script>
+</body>
+</html>
