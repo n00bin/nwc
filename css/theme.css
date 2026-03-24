@@ -1,0 +1,364 @@
+/* ============================================================
+   NWCB Dark Gaming Theme
+   ============================================================ */
+
+:root {
+  /* Backgrounds */
+  --bg-primary:    #0d1117;
+  --bg-surface:    #161b22;
+  --bg-elevated:   #1c2129;
+  --bg-hover:      #21262d;
+
+  /* Borders */
+  --border-default: #30363d;
+  --border-accent:  #58a6ff;
+
+  /* Accent */
+  --accent:         #58a6ff;
+  --accent-hover:   #79b8ff;
+  --highlight:      #f0883e;
+  --highlight-hover:#f4a261;
+
+  /* Text */
+  --text-primary:   #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted:     #6e7681;
+
+  /* Stats */
+  --stat-positive:  #3fb950;
+  --stat-negative:  #f85149;
+  --stat-neutral:   #58a6ff;
+
+  /* Slot badges */
+  --slot-offense:   #f85149;
+  --slot-defense:   #58a6ff;
+  --slot-utility:   #3fb950;
+
+  /* Insignia category badges */
+  --insignia-regal:       #a371f7;
+  --insignia-barbed:      #f85149;
+  --insignia-crescent:    #58a6ff;
+  --insignia-illuminated: #d29922;
+  --insignia-enlightened: #3fb950;
+  --insignia-universal:   #8b949e;
+
+  /* Typography */
+  --font-main: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+
+  /* Sizing */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 15px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ---- Navigation Bar ---- */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-default);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar-brand {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--highlight);
+  letter-spacing: 0.02em;
+}
+.navbar-links {
+  display: flex;
+  gap: 0.25rem;
+}
+.navbar-links a {
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: background 0.15s, color 0.15s;
+}
+.navbar-links a:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+.navbar-links a.active {
+  background: var(--accent);
+  color: #fff;
+}
+.navbar-links a.coming-soon {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ---- Badges ---- */
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.badge-offense   { background: var(--slot-offense);   color: #fff; }
+.badge-defense   { background: var(--slot-defense);   color: #fff; }
+.badge-utility   { background: var(--slot-utility);   color: #fff; }
+
+.badge-regal       { background: var(--insignia-regal);       color: #fff; }
+.badge-barbed      { background: var(--insignia-barbed);      color: #fff; }
+.badge-crescent    { background: var(--insignia-crescent);    color: #fff; }
+.badge-illuminated { background: var(--insignia-illuminated); color: #000; }
+.badge-enlightened { background: var(--insignia-enlightened); color: #fff; }
+.badge-universal   { background: var(--insignia-universal);   color: #fff; }
+
+/* ---- Stat Values ---- */
+.stat-positive { color: var(--stat-positive); }
+.stat-negative { color: var(--stat-negative); }
+.stat-neutral  { color: var(--stat-neutral);  }
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--border-default);
+  font-size: 0.9rem;
+}
+.stat-row:last-child { border-bottom: none; }
+.stat-name  { color: var(--text-secondary); }
+.stat-value { font-weight: 600; font-family: var(--font-mono); }
+
+/* ---- Cards ---- */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 0 12px rgba(88, 166, 255, 0.08);
+}
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* ---- Section headers inside detail panel ---- */
+.section-header {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--highlight);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--border-default);
+}
+.section-header:first-child { margin-top: 0; }
+
+/* ---- Detail name ---- */
+.detail-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+/* ---- Detail meta (item level, magnitude, etc.) ---- */
+.detail-meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+.detail-meta span {
+  margin-right: 1rem;
+}
+
+/* ---- Effect text ---- */
+.effect-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent);
+  margin-top: 0.4rem;
+}
+
+/* ---- Proc block ---- */
+.proc-block {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.8rem;
+  margin-top: 0.4rem;
+  font-size: 0.88rem;
+}
+.proc-block .proc-label {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.proc-block .proc-value {
+  color: var(--text-primary);
+}
+
+/* ---- Insignia Slots visual ---- */
+.insignia-slots-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+.insignia-slot-box {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.7rem;
+  font-size: 0.82rem;
+  text-align: center;
+  min-width: 90px;
+}
+.insignia-slot-box .slot-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.15rem;
+}
+
+/* ---- Search & Filter Controls ---- */
+.controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.search-input {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.45rem 0.75rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: var(--font-main);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.search-input:focus {
+  border-color: var(--accent);
+}
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.filter-select {
+  padding: 0.45rem 0.75rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-family: var(--font-main);
+  outline: none;
+  cursor: pointer;
+  min-width: 140px;
+}
+.filter-select:focus {
+  border-color: var(--accent);
+}
+
+/* ---- Placeholder / Empty state ---- */
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+  font-size: 1rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* ---- Landing page cards ---- */
+.landing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+.landing-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+.landing-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(88, 166, 255, 0.12);
+  transform: translateY(-2px);
+}
+.landing-card .card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+.landing-card .card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+.landing-card .card-count {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}

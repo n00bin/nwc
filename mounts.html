@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mounts — NWCB</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <!-- Filters / Search -->
+  <div class="controls-bar">
+    <input type="text" class="search-input" id="search" placeholder="Search mounts...">
+    <select class="filter-select" id="filter-combat">
+      <option value="">All Combat Powers</option>
+    </select>
+    <select class="filter-select" id="filter-equip">
+      <option value="">All Equip Powers</option>
+    </select>
+    <select class="filter-select" id="filter-bonus">
+      <option value="">All Insignia Bonuses</option>
+    </select>
+  </div>
+
+  <!-- Two-panel layout -->
+  <div class="page-body">
+    <div class="list-panel" id="list-panel">
+      <div class="list-count" id="list-count"></div>
+      <div id="mount-list"></div>
+    </div>
+    <div class="detail-panel" id="detail-panel">
+      <div class="empty-state">Select a mount to view details</div>
+    </div>
+  </div>
+
+  <!-- Data -->
+  <script src="data/mounts.js"></script>
+  <script src="data/mount-combat-powers.js"></script>
+  <script src="data/mount-equip-powers.js"></script>
+  <script src="data/mount-insignia-bonuses.js"></script>
+  <script src="data/mount-insignias.js"></script>
+
+  <!-- Scripts -->
+  <script src="js/shared.js"></script>
+  <script src="js/mounts-page.js"></script>
+</body>
+</html>

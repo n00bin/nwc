@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NWCB — Neverwinter Character Builder</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <header style="text-align:center; padding: 2.5rem 1rem 0.5rem;">
+    <h1 style="font-size:2rem; color:var(--highlight); margin-bottom:0.3rem;">Neverwinter Character Builder</h1>
+    <p style="color:var(--text-secondary); font-size:1rem;">PS5 — Item &amp; Build Lookup</p>
+  </header>
+
+  <div class="landing-grid">
+    <a href="mounts.html" class="landing-card" style="text-decoration:none; color:inherit;">
+      <div class="card-title">Mounts</div>
+      <div class="card-count" id="mount-count">Loading...</div>
+    </a>
+    <a href="companions.html" class="landing-card" style="text-decoration:none; color:inherit;">
+      <div class="card-title">Companions</div>
+      <div class="card-count" id="companion-count">Loading...</div>
+    </a>
+  </div>
+
+  <!-- Data files for counts -->
+  <script src="data/mounts.js"></script>
+  <script src="data/companions.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    renderNav("Home");
+    document.getElementById("mount-count").textContent = MOUNTS_DATA.length + " mounts";
+    document.getElementById("companion-count").textContent = COMPANIONS_DATA.length + " companions";
+  </script>
+</body>
+</html>
