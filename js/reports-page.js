@@ -13,6 +13,8 @@
   var votedIds = JSON.parse(localStorage.getItem("nwc_voted_reports") || "[]");
   var voterHash = generateVoterHash();
   var submitCooldown = false;
+  var adminMode = false;
+  var adminPass = "";
 
   // ---- DOM refs ----
   var filterCategory = document.getElementById("filter-category");
@@ -23,6 +25,7 @@
   var submitForm     = document.getElementById("submit-form");
   var submitBtn      = document.getElementById("submit-btn");
   var formMsg        = document.getElementById("form-msg");
+  var adminToggle    = document.getElementById("admin-toggle");
 
   // ---- Init nav ----
   renderNav("Reports");
@@ -119,7 +122,19 @@
     html += '<div class="report-title">' + escapeHtml(r.title) + "</div>";
     html += '<div class="report-desc">' + escapeHtml(r.description) + "</div>";
     html += '<div class="report-meta">';
-    html += catBadge + " " + statusBadge;
+    html += catBadge + " ";
+    // Admin mode: show status dropdown instead of badge
+    if (adminMode) {
+      var statuses = ["New", "Confirmed", "In Progress", "Fixed", "Won't Fix"];
+      html += '<select class="status-select" data-id="' + r.id + '">';
+      for (var si = 0; si < statuses.length; si++) {
+        var sel = statuses[si] === r.status ? " selected" : "";
+        html += '<option value="' + escapeHtml(statuses[si]) + '"' + sel + '>' + escapeHtml(statuses[si]) + "</option>";
+      }
+      html += "</select>";
+    } else {
+      html += statusBadge;
+    }
     html += '<span>' + dateStr + "</span>";
     html += "</div>";
     html += "</div>";
@@ -239,6 +254,73 @@
       renderReports();
     } else {
       btn.classList.remove("voted");
+    }
+  });
+
+  // ---- Admin toggle ----
+  adminToggle.addEventListener("click", function () {
+    if (adminMode) {
+      // Turn off admin mode
+      adminMode = false;
+      adminPass = "";
+      adminToggle.classList.remove("active");
+      adminToggle.textContent = "Admin";
+      renderReports();
+    } else {
+      // Prompt for password
+      var pass = prompt("Enter admin password:");
+      if (pass) {
+        adminPass = pass;
+        adminMode = true;
+        adminToggle.classList.add("active");
+        adminToggle.textContent = "Admin (on)";
+        renderReports();
+      }
+    }
+  });
+
+  // ---- Admin status change ----
+  reportsList.addEventListener("change", async function (e) {
+    var select = e.target.closest(".status-select");
+    if (!select || !adminMode) return;
+
+    var id = parseInt(select.getAttribute("data-id"), 10);
+    var newStatus = select.value;
+
+    select.disabled = true;
+
+    var { data, error } = await sb.rpc("update_report_status", {
+      report_id: id,
+      new_status: newStatus,
+      admin_pass: adminPass
+    });
+
+    if (error) {
+      alert("Failed to update status. Check console for details.");
+      console.error("Status update error:", error);
+      select.disabled = false;
+      return;
+    }
+
+    if (data && data.success) {
+      // Update local data
+      for (var i = 0; i < allReports.length; i++) {
+        if (allReports[i].id === id) {
+          allReports[i].status = newStatus;
+          break;
+        }
+      }
+      select.disabled = false;
+    } else if (data && data.reason === "unauthorized") {
+      alert("Wrong password. Admin mode disabled.");
+      adminMode = false;
+      adminPass = "";
+      adminToggle.classList.remove("active");
+      adminToggle.textContent = "Admin";
+      renderReports();
+    } else {
+      alert("Failed: " + (data ? data.reason : "unknown error"));
+      select.disabled = false;
     }
   });
 

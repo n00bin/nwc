@@ -101,6 +101,31 @@
     .badge-status-fixed       { background: var(--stat-positive);  color: #fff; }
     .badge-status-wont-fix    { background: var(--stat-negative);  color: #fff; }
 
+    /* Admin mode */
+    .admin-toggle {
+      background: none;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      padding: 0.3rem 0.6rem;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .admin-toggle:hover { border-color: var(--accent); color: var(--text-secondary); }
+    .admin-toggle.active { border-color: var(--highlight); color: var(--highlight); }
+    .status-select {
+      padding: 0.2rem 0.4rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 0.78rem;
+      font-family: var(--font-main);
+      cursor: pointer;
+    }
+    .status-select:focus { border-color: var(--accent); }
+
     /* Category badges */
     .badge-cat-bug          { background: var(--stat-negative); color: #fff; }
     .badge-cat-missing-item { background: var(--highlight);     color: #000; }
@@ -201,6 +226,7 @@
       <option value="most_voted">Most Voted</option>
     </select>
     <span id="reports-count" style="color:var(--text-muted);font-size:0.85rem;margin-left:auto;white-space:nowrap;"></span>
+    <button class="admin-toggle" id="admin-toggle">Admin</button>
   </div>
 
   <div class="reports-container">
