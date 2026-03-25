@@ -416,12 +416,12 @@
   var enhancementList = document.getElementById("enhancement-list");
 
   var enhancementRanking = [
-    { rank: 1, name: "Armor Break", companion: "Cave Bear", benefit: "-9% to enemies Defense" },
-    { rank: 2, name: "Dulled Senses", companion: "Renegade Illusionist", benefit: "-9% to enemies Awareness" },
-    { rank: 3, name: "Vulnerability", companion: "Halfling Wayward Wizard", benefit: "-9% to enemies Critical Avoidance" },
-    { rank: 4, name: "Slowed Reactions", companion: "Apprentice Healer", benefit: "-9% to enemies Deflect" },
-    { rank: 5, name: "Advantage Nullification", companion: "Portobello DaVinci", benefit: "-9% to enemies Combat Advantage" },
-    { rank: 6, name: "Weapon Break", companion: "Man-At-Arms", benefit: "-9% to enemies Critical Severity" },
+    { rank: 1, name: "Armor Break", companions: ["Wailer", "Baby Polar Bear", "Cave Bear", "War Dog", "Dragon Hunter", "Lich", "Kenku Archer", "Icosahedron Ioun Stone", "Coldlight Walker", "Wulfgar", "Mini Apparatus of Gond", "Riotous Rothe"], benefit: "-9% to enemies Defense" },
+    { rank: 2, name: "Dulled Senses", companions: ["Mystic Phoera", "Pewter Golem", "Ambush Drake", "Cat", "Baby Bear", "Sergeant Knox", "Dwarven Battlerager", "Redcap Powrie", "Renegade Illusionist", "Air Archon"], benefit: "-9% to enemies Awareness" },
+    { rank: 3, name: "Vulnerability", companions: ["Shadow Demon", "Baby Owlbear", "Owl", "Earl the Chickenmancer", "Storm Rider", "Acolyte of Kelemvor", "Lizardfolk Shaman", "Quickling", "Windsoul Genasi", "Flaming Skull", "Lillend", "Sprite", "Laughing Skull"], benefit: "-9% to enemies Critical Avoidance" },
+    { rank: 4, name: "Slowed Reactions", companions: ["Baby Bulette", "Fawn", "Dragonborn Brawler", "Neverember Guard Archer", "Wiggins the Undead Intern", "Cantankerous Mage", "Apprentice Healer", "Cleric Disciple", "Angel of Protection", "Deva Champion", "Splinters"], benefit: "-9% to enemies Deflect" },
+    { rank: 5, name: "Advantage Nullification", companions: ["Portobello DaVinci"], benefit: "-9% to enemies Combat Advantage" },
+    { rank: 6, name: "Weapon Break", companions: ["Book Imp", "Vicious Dire Wolf", "Man at Arms", "Priestess of Sehanine Moonbow", "Cambion Magus", "Ioun Stone of Allure", "Dancing Shield", "Ioun Stone of Radiance", "Jarlaxle Baenre"], benefit: "-9% to enemies Critical Severity" },
   ];
 
   function renderEnhancementView() {
@@ -435,7 +435,7 @@
       html += '<span style="font-weight:600;">' + escapeHtml(e.name) + '</span>';
       html += '</div>';
       html += '</div>';
-      html += '<div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Best companion: ' + escapeHtml(e.companion) + '</div>';
+      html += '<div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Companions: ' + e.companions.map(function(c) { return escapeHtml(c); }).join(', ') + '</div>';
       html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(e.benefit) + '</div>';
       html += '</div>';
     }
