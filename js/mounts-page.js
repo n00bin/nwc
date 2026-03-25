@@ -484,13 +484,13 @@
   ];
 
   var stdpsData = [
-    { name: "Demonic Gravehound", effect: "Physical 3,938 + 394 magnitude damage against control immune enemies" },
-    { name: "Grubshank the Burdened", effect: "Magical 2,362 + 2,264 DoT for 5s" },
-    { name: "Legendary Hellfire Engine", effect: "Magical 1,969 + 2,264 DoT for 5s" },
-    { name: "Tunnel Vision mounts", effect: "Magical 3,938 magnitude damage" },
-    { name: "Legendary Giant Toad", effect: "Magical 3,938 magnitude damage", source: "Reaper's Challenge Store" },
-    { name: "Golden Warhorse", effect: "Magical 3,938 magnitude damage", source: "Appointment Event Store" },
-    { name: "Bigby's Hand", effect: "Physical 3,347 + 591 magnitude damage against control immune enemies", source: "Dragonslayer Lockbox" },
+    { rank: 1, power: "Infernal Pounce", effect: "Physical 3,938 + 394 magnitude damage against control immune enemies", mounts: ["Demonic Gravehound"] },
+    { rank: 2, power: "Grubshank SMAAASH", effect: "Magical 2,362 + 2,264 DoT for 5s", mounts: ["Grubshank the Burdened"] },
+    { rank: 3, power: "Hell on Faer\u00fbn", effect: "Magical 1,969 + 2,264 DoT for 5s", mounts: ["Legendary Hellfire Engine"] },
+    { rank: 4, power: "Tunnel Vision", effect: "Magical 3,938 magnitude damage", mounts: ["Maltese Tiger", "Giant Crab", "Heavy Worg", "Leopard of Chult", "Armored Bear", "Polar Bear", "Hell Hound", "Wolf of the Wild Hunt", "Hellfire Engine", "Epic Giant Toad", "Cavalry Tyrannosaur", "Aberrant Fey Wolf", "Aberrant Drake", "Savage Polar Bear", "Owlbear", "Bulette", "Panther", "Moonbear", "Crag Cat", "Turmish Lion", "and many more"] },
+    { rank: 5, power: "Giant Toad Tongue Lash", effect: "Magical 3,938 magnitude damage", mounts: ["Legendary Giant Toad"] },
+    { rank: 6, power: "Golden Touch", effect: "Magical 3,938 magnitude damage", mounts: ["Golden Warhorse"] },
+    { rank: 7, power: "Bigby's Crushing Hand", effect: "Physical 3,347 + 591 magnitude damage against control immune enemies", mounts: ["Bigby's Hand"] },
   ];
 
   var equipData = [
@@ -563,7 +563,7 @@
     switchMountTab("stdps");
     tabStdps.classList.add("active");
     stdpsView.style.display = "";
-    renderSimpleList(stdpsData, "stdps-list");
+    renderCombatRanking(stdpsData, "stdps-list");
   });
   tabEquip.addEventListener("click", function () {
     switchMountTab("equip");
