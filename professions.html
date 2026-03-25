@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professions — Neverwinter Compendium</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .view-tab { background:var(--bg-elevated); border:1px solid var(--border-default); border-bottom:none; border-radius:var(--radius-sm) var(--radius-sm) 0 0; color:var(--text-secondary); padding:0.45rem 1rem; font-size:0.9rem; font-family:var(--font-main); cursor:pointer; transition:background 0.15s,color 0.15s; }
+    .view-tab:hover { color:var(--text-primary); background:var(--bg-hover); }
+    .view-tab.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+    .prof-container { max-width:900px; margin:0 auto; padding:1rem 1.5rem 3rem; }
+    .prof-view { display:none; }
+    .prof-view.active { display:block; }
+    .prof-card { background:var(--bg-surface); border:1px solid var(--border-default); border-radius:var(--radius-md); padding:0.8rem 1rem; margin-bottom:0.5rem; cursor:pointer; }
+    .prof-card:hover { border-color:var(--border-accent); }
+    .prof-card.open { border-color:var(--accent); }
+    .prof-card-header { display:flex; justify-content:space-between; align-items:center; }
+    .prof-card-name { font-weight:700; }
+    .prof-card-body { display:none; margin-top:0.6rem; }
+    .prof-card.open .prof-card-body { display:block; }
+    .prof-info { display:flex; justify-content:space-between; padding:0.25rem 0; border-bottom:1px solid var(--border-default); font-size:0.88rem; }
+    .prof-info:last-child { border-bottom:none; }
+    .prof-label { color:var(--text-secondary); }
+    .prof-val { font-weight:600; font-family:var(--font-mono); }
+    .section-div { font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--highlight); padding:1rem 0 0.4rem; border-bottom:1px solid var(--border-default); margin-bottom:0.75rem; }
+    .section-div:first-child { padding-top:0; }
+    .tip-block { background:var(--bg-elevated); border-left:3px solid var(--accent); padding:0.6rem 0.8rem; border-radius:var(--radius-sm); font-size:0.9rem; color:var(--text-secondary); line-height:1.6; margin-bottom:0.75rem; }
+    .tip-block strong { color:var(--text-primary); }
+    .toggle-arrow { transition:transform 0.2s; font-size:0.8rem; color:var(--text-muted); }
+    .prof-card.open .toggle-arrow { transform:rotate(90deg); }
+    .mw-table { width:100%; border-collapse:collapse; margin:0.5rem 0; font-size:0.85rem; }
+    .mw-table th,.mw-table td { padding:0.35rem 0.5rem; border:1px solid var(--border-default); text-align:left; }
+    .mw-table th { background:var(--bg-elevated); color:var(--highlight); font-weight:700; font-size:0.78rem; text-transform:uppercase; }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <div class="controls-bar" style="gap:0.25rem;padding-bottom:0;">
+    <button class="view-tab active" data-tab="artisans">Artisans</button>
+    <button class="view-tab" data-tab="masterwork">Masterwork Guide</button>
+    <button class="view-tab" data-tab="profit">Profitable Crafting</button>
+    <button class="view-tab" data-tab="workshop">Workshop Upgrades</button>
+  </div>
+
+  <!-- Artisans controls -->
+  <div class="controls-bar" id="artisans-controls">
+    <input type="text" class="search-input" id="search" placeholder="Search artisans...">
+    <select class="filter-select" id="filter-prof">
+      <option value="">All Professions</option>
+      <option value="Adventurer">Adventurer</option>
+      <option value="Alchemist">Alchemist</option>
+      <option value="Armorer">Armorer</option>
+      <option value="Artificer">Artificer</option>
+      <option value="Blacksmith">Blacksmith</option>
+      <option value="Jeweler">Jeweler</option>
+      <option value="Leatherworker">Leatherworker</option>
+      <option value="Tailor">Tailor</option>
+    </select>
+  </div>
+
+  <!-- Artisans view -->
+  <div class="prof-container prof-view active" id="view-artisans">
+    <div id="artisan-count" style="color:var(--text-muted);font-size:0.85rem;margin-bottom:0.75rem;"></div>
+    <div id="artisan-list"></div>
+  </div>
+
+  <!-- Masterwork view -->
+  <div class="prof-container prof-view" id="view-masterwork"><div id="mw-content"></div></div>
+
+  <!-- Profit view -->
+  <div class="prof-container prof-view" id="view-profit"><div id="profit-content"></div></div>
+
+  <!-- Workshop view -->
+  <div class="prof-container prof-view" id="view-workshop"><div id="workshop-content"></div></div>
+
+  <script src="js/shared.js"></script>
+  <script>
+    renderNav("Professions");
+
+    // ============================================================
+    // ARTISAN DATA (top performers per profession)
+    // ============================================================
+    var artisans = [
+      // Adventurers
+      {name:"Krunng Sweetwater",prof:"Adventurer",proficiency:450,focus:0,commission:0,speed:0,special:""},
+      {name:"Pan Whitewood",prof:"Adventurer",proficiency:0,focus:450,commission:0,speed:0,special:""},
+      {name:"Evelyn Nara",prof:"Adventurer",proficiency:0,focus:0,commission:0,speed:200,special:""},
+      {name:"Dorrak",prof:"Adventurer",proficiency:0,focus:0,commission:-25,speed:0,special:""},
+      {name:"Xerazze D'Zzen",prof:"Adventurer",proficiency:0,focus:0,commission:0,speed:0,special:"25% Virtuoso"},
+      // Alchemists
+      {name:"Minda Breskhild",prof:"Alchemist",proficiency:450,focus:0,commission:0,speed:0,special:""},
+      {name:"Beatrice",prof:"Alchemist",proficiency:0,focus:450,commission:0,speed:0,special:""},
+      {name:"Yungric",prof:"Alchemist",proficiency:0,focus:0,commission:0,speed:125,special:""},
+      {name:"Adloquium",prof:"Alchemist",proficiency:0,focus:0,commission:-75,speed:0,special:""},
+      {name:"Paelinn Shardhilt",prof:"Alchemist",proficiency:0,focus:0,commission:0,speed:0,special:"20% Recycle"},
+      {name:"Efla Parkatha",prof:"Alchemist",proficiency:225,focus:450,commission:0,speed:0,special:"Best for MW I (96% success)"},
+      {name:"Nayet Al-Abta",prof:"Alchemist",proficiency:450,focus:0,commission:0,speed:0,special:"Best for MW II-V"},
+      // Armorers
+      {name:"Dain Hephdal",prof:"Armorer",proficiency:450,focus:0,commission:0,speed:0,special:"Best for MW II-III"},
+      {name:"Elsbeth Missaglias",prof:"Armorer",proficiency:0,focus:450,commission:0,speed:0,special:"Best for MW I (95% success)"},
+      {name:"Silael Steelwhisper",prof:"Armorer",proficiency:0,focus:0,commission:0,speed:125,special:""},
+      {name:"Bitrid Brasshammer",prof:"Armorer",proficiency:0,focus:0,commission:-75,speed:0,special:""},
+      {name:"Stogun Silverbeard",prof:"Armorer",proficiency:0,focus:0,commission:0,speed:0,special:"25% Miracle Worker"},
+      {name:"Mitra Lashgari",prof:"Armorer",proficiency:450,focus:0,commission:0,speed:0,special:"Best for MW V"},
+      // Artificers
+      {name:"Belmen Ironarms",prof:"Artificer",proficiency:450,focus:0,commission:0,speed:0,special:"Best for MW II-V"},
+      {name:"Dolben Lodestone",prof:"Artificer",proficiency:0,focus:450,commission:0,speed:0,special:""},
+      {name:"Evelyn Chiaroscuro",prof:"Artificer",proficiency:0,focus:0,commission:0,speed:150,special:""},
+      {name:"Brodun Comawn",prof:"Artificer",proficiency:0,focus:0,commission:-50,speed:0,special:""},
+      {name:"Violet Laidyn",prof:"Artificer",proficiency:450,focus:450,commission:0,speed:0,special:"Best for MW I (97% success)"},
+      // Blacksmiths
+      {name:"Gohrr Kuldin",prof:"Blacksmith",proficiency:450,focus:0,commission:0,speed:0,special:"Best for MW II-V"},
+      {name:"Zinaida",prof:"Blacksmith",proficiency:0,focus:450,commission:0,speed:0,special:"Best for MW I (97% success)"},
+      {name:"Tia Ingelri",prof:"Blacksmith",proficiency:0,focus:0,commission:0,speed:100,special:""},
+      {name:"Donnen Millkeep",prof:"Blacksmith",proficiency:0,focus:0,commission:-75,speed:0,special:""},
+      // Jewelers
+      {name:"Olin Diamondeye",prof:"Jeweler",proficiency:444,focus:0,commission:0,speed:0,special:"Best for MW II-III"},
+      {name:"Volen Naimne",prof:"Jeweler",proficiency:0,focus:450,commission:0,speed:0,special:""},
+      {name:"Pharlen Ghiberti",prof:"Jeweler",proficiency:0,focus:0,commission:0,speed:175,special:""},
+      {name:"Haie Xilomne",prof:"Jeweler",proficiency:0,focus:0,commission:-75,speed:0,special:""},
+      {name:"Charlette Favri",prof:"Jeweler",proficiency:225,focus:450,commission:0,speed:0,special:"Best for MW I (93% success)"},
+      {name:"Arrin Whistleleaf",prof:"Jeweler",proficiency:444,focus:0,commission:0,speed:0,special:"Best for MW V"},
+      // Leatherworkers
+      {name:"Brokkah",prof:"Leatherworker",proficiency:450,focus:0,commission:-75,speed:0,special:"Best for MW II-V"},
+      {name:"Yul Summerstar",prof:"Leatherworker",proficiency:0,focus:450,commission:0,speed:0,special:""},
+      {name:"Alma Greydawn",prof:"Leatherworker",proficiency:0,focus:0,commission:0,speed:200,special:""},
+      {name:"Fenka Sturmdottir",prof:"Leatherworker",proficiency:225,focus:450,commission:0,speed:0,special:"Best for MW I (96% success)"},
+      // Tailors
+      {name:"Sey Mapleway",prof:"Tailor",proficiency:450,focus:0,commission:0,speed:0,special:"Best for MW II-V"},
+      {name:"Isayel Kostrad",prof:"Tailor",proficiency:0,focus:450,commission:0,speed:0,special:""},
+      {name:"Inaya Lanuit",prof:"Tailor",proficiency:0,focus:0,commission:0,speed:200,special:""},
+      {name:"Treylo Grassmantle",prof:"Tailor",proficiency:0,focus:0,commission:-75,speed:0,special:""},
+      {name:"Teclel Jondrathal",prof:"Tailor",proficiency:450,focus:450,commission:0,speed:0,special:"Best for MW I (97% success)"},
+    ];
+
+    // ============================================================
+    // RENDER ARTISANS
+    // ============================================================
+    var searchInput = document.getElementById("search");
+    var filterProf = document.getElementById("filter-prof");
+
+    function renderArtisans() {
+      var query = searchInput.value.trim().toLowerCase();
+      var profVal = filterProf.value;
+      var filtered = artisans.filter(function(a) {
+        if (query && (a.name + " " + a.prof + " " + a.special).toLowerCase().indexOf(query) === -1) return false;
+        if (profVal && a.prof !== profVal) return false;
+        return true;
+      });
+      document.getElementById("artisan-count").textContent = filtered.length + " of " + artisans.length + " artisans";
+      var html = ""; var lastProf = "";
+      for (var i = 0; i < filtered.length; i++) {
+        var a = filtered[i];
+        if (a.prof !== lastProf && !profVal) { html += '<div class="section-div">' + a.prof + 's</div>'; lastProf = a.prof; }
+        html += '<div class="prof-card"><div class="prof-card-header"><span class="prof-card-name">' + escapeHtml(a.name) + '</span><span class="toggle-arrow">&#9654;</span></div>';
+        html += '<div class="prof-card-body">';
+        if (a.proficiency) html += '<div class="prof-info"><span class="prof-label">Proficiency</span><span class="prof-val stat-positive">' + a.proficiency + '</span></div>';
+        if (a.focus) html += '<div class="prof-info"><span class="prof-label">Focus</span><span class="prof-val stat-positive">' + a.focus + '</span></div>';
+        if (a.commission) html += '<div class="prof-info"><span class="prof-label">Commission</span><span class="prof-val stat-positive">' + a.commission + '%</span></div>';
+        if (a.speed) html += '<div class="prof-info"><span class="prof-label">Speed</span><span class="prof-val stat-positive">+' + a.speed + '%</span></div>';
+        if (a.special) html += '<div class="prof-info"><span class="prof-label">Special</span><span class="prof-val" style="color:var(--highlight)">' + escapeHtml(a.special) + '</span></div>';
+        html += '</div></div>';
+      }
+      document.getElementById("artisan-list").innerHTML = html || '<div class="empty-state">No artisans match</div>';
+    }
+
+    // ============================================================
+    // MASTERWORK GUIDE
+    // ============================================================
+    function renderMasterwork() {
+      var html = '<div class="section-div">Masterwork I — High Quality Required</div>';
+      html += '<div class="tip-block"><strong>Goal:</strong> Craft +1 results using artisans with highest Focus and Proficiency.<br><strong>Tools:</strong> Adamantine +1, Gold +1, Oak +1 or better.<br><strong>Tip:</strong> Legendary tools boost success to 85%+. Mithral Forgehammer guarantees success.</div>';
+      html += '<table class="mw-table"><tr><th>Profession</th><th>Best Artisan</th><th>Success</th><th>High Quality</th></tr>';
+      html += '<tr><td>Alchemy</td><td>Efla Parkatha</td><td>96%</td><td>37%</td></tr>';
+      html += '<tr><td>Armorsmithing</td><td>Elsbeth Missaglias</td><td>95%</td><td>39%</td></tr>';
+      html += '<tr><td>Artificing</td><td>Violet Laidyn</td><td>97%</td><td>39%</td></tr>';
+      html += '<tr><td>Blacksmithing</td><td>Zinaida</td><td>97%</td><td>39%</td></tr>';
+      html += '<tr><td>Jewelcrafting</td><td>Charlette Favri</td><td>93%</td><td>39%</td></tr>';
+      html += '<tr><td>Leatherworking</td><td>Fenka Sturmdottir</td><td>96%</td><td>37%</td></tr>';
+      html += '<tr><td>Tailoring</td><td>Teclel Jondrathal</td><td>97%</td><td>39%</td></tr></table>';
+
+      html += '<div class="section-div">Masterwork II-III — Normal Results Required</div>';
+      html += '<div class="tip-block"><strong>Goal:</strong> Craft normal results. Use artisans with lowest Focus, highest Proficiency.<br><strong>Tools:</strong> Well-worn Masterwork I tools.</div>';
+      html += '<table class="mw-table"><tr><th>Profession</th><th>Best Artisan</th><th>Base</th><th>Legendary</th><th>Mithral</th></tr>';
+      html += '<tr><td>Alchemy</td><td>Nayet Al-Abta</td><td>59%</td><td>73%</td><td>77%</td></tr>';
+      html += '<tr><td>Armorsmithing</td><td>Dain Hephdal</td><td>59%</td><td>73%</td><td>77%</td></tr>';
+      html += '<tr><td>Artificing</td><td>Belmen Ironarms</td><td>59%</td><td>73%</td><td>77%</td></tr>';
+      html += '<tr><td>Blacksmithing</td><td>Gohrr Kuldin</td><td>59%</td><td>73%</td><td>77%</td></tr>';
+      html += '<tr><td>Jewelcrafting</td><td>Olin Diamondeye</td><td>59%</td><td>73%</td><td>77%</td></tr>';
+      html += '<tr><td>Leatherworking</td><td>Brokkah</td><td>59%</td><td>73%</td><td>77%</td></tr>';
+      html += '<tr><td>Tailoring</td><td>Sey Mapleway</td><td>59%</td><td>73%</td><td>77%</td></tr></table>';
+
+      html += '<div class="section-div">Masterwork IV-V — Normal Results + Best Tools</div>';
+      html += '<div class="tip-block"><strong>Goal:</strong> Normal results with Legendary/Mythic Forgehammer.<br><strong>Strategy:</strong> "It\'s not going to be easy, quick, or cheap."</div>';
+      html += '<table class="mw-table"><tr><th>Profession</th><th>MW IV Artisan</th><th>MW IV %</th><th>MW V Artisan</th><th>MW V %</th></tr>';
+      html += '<tr><td>Alchemy</td><td>Nayet Al-Abta</td><td>70%</td><td>Nayet Al-Abta</td><td>71%</td></tr>';
+      html += '<tr><td>Armorsmithing</td><td>Dorfok Guggenston</td><td>69%</td><td>Mitra Lashgari</td><td>71%</td></tr>';
+      html += '<tr><td>Artificing</td><td>Junne Nightbloom</td><td>70%</td><td>Belmen Ironarms</td><td>71%</td></tr>';
+      html += '<tr><td>Blacksmithing</td><td>Gohrr Kuldin</td><td>70%</td><td>Gohrr Kuldin</td><td>71%</td></tr>';
+      html += '<tr><td>Jewelcrafting</td><td>Bree Underleaf</td><td>69%</td><td>Arrin Whistleleaf</td><td>71%</td></tr>';
+      html += '<tr><td>Leatherworking</td><td>Brokkah</td><td>70%</td><td>Brokkah</td><td>71%</td></tr>';
+      html += '<tr><td>Tailoring</td><td>Sey Mapleway</td><td>70%</td><td>Sey Mapleway</td><td>71%</td></tr></table>';
+      document.getElementById("mw-content").innerHTML = html;
+    }
+
+    // ============================================================
+    // PROFITABLE CRAFTING
+    // ============================================================
+    function renderProfit() {
+      var html = '<div class="section-div">Most Profitable Crafts (Per Morale)</div>';
+      html += '<div class="tip-block"><strong>Tip:</strong> Use artisans with negative commission to increase profit. Jewelcrafting and Leatherworking tend to be the most profitable.</div>';
+      html += '<table class="mw-table"><tr><th>Profession</th><th>Item</th><th>Level</th><th>Profit/Morale</th></tr>';
+      html += '<tr><td>Jewelcrafting</td><td>Brass Ring</td><td>17</td><td>644.6c</td></tr>';
+      html += '<tr><td>Leatherworking</td><td>Deerskin Shirt</td><td>17</td><td>644.6c</td></tr>';
+      html += '<tr><td>Blacksmithing</td><td>Iron Dagger</td><td>18</td><td>642.2c</td></tr>';
+      html += '<tr><td>Tailoring</td><td>Linen Pants</td><td>18</td><td>642.2c</td></tr>';
+      html += '<tr><td>Artificing</td><td>Ash Icon</td><td>18</td><td>642.2c</td></tr>';
+      html += '<tr><td>Tailoring</td><td>Linen Shirt</td><td>19</td><td>640.0c</td></tr>';
+      html += '<tr><td>Armorsmithing</td><td>Iron Bracers</td><td>19</td><td>640.0c</td></tr>';
+      html += '<tr><td>Leatherworking</td><td>Leather Halfboots</td><td>11</td><td>476.2c</td></tr>';
+      html += '<tr><td>Artificing</td><td>Decorated Maple Rod</td><td>11</td><td>476.2c</td></tr>';
+      html += '<tr><td>Armorsmithing</td><td>Bronze Greaves</td><td>12</td><td>473.8c</td></tr></table>';
+
+      html += '<div class="section-div">Crafting From Scratch (Best Returns)</div>';
+      html += '<table class="mw-table"><tr><th>Profession</th><th>Item</th><th>Level</th><th>Cost</th><th>Profit/Morale</th></tr>';
+      html += '<tr><td>Jewelcrafting</td><td>Brass Ring</td><td>17</td><td>4s 20c</td><td>599.8c</td></tr>';
+      html += '<tr><td>Blacksmithing</td><td>Iron Dagger</td><td>18</td><td>7s 10c</td><td>541.6c</td></tr>';
+      html += '<tr><td>Leatherworking</td><td>Deerskin Shirt</td><td>17</td><td>7s 9c</td><td>541.9c</td></tr>';
+      html += '<tr><td>Artificing</td><td>Ash Icon</td><td>18</td><td>9s 86c</td><td>486.6c</td></tr>';
+      html += '<tr><td>Tailoring</td><td>Linen Shirt</td><td>19</td><td>10s 77c</td><td>468.3c</td></tr></table>';
+      document.getElementById("profit-content").innerHTML = html;
+    }
+
+    // ============================================================
+    // WORKSHOP UPGRADES
+    // ============================================================
+    function renderWorkshop() {
+      var html = '<div class="section-div">Upgrading to Level 3</div>';
+      html += '<div class="prof-card open"><div class="prof-card-body" style="display:block;">';
+      html += '<div class="prof-info"><span class="prof-label">Option 1: Astral Diamonds</span><span class="prof-val">500,000 AD</span></div>';
+      html += '<div class="prof-info"><span class="prof-label">Option 2: Material Exchange</span><span class="prof-val">1,000,000 MEC</span></div>';
+      html += '<div class="prof-info"><span class="prof-label">Option 3: Crafted Items</span><span class="prof-val">Turn in commission list items daily</span></div>';
+      html += '</div></div>';
+      html += '<div class="tip-block"><strong>Tip:</strong> Horn Glue appears on all 7 commission lists (can turn in daily). Mithral Pendants are overall cheapest and appear on 2 lists.</div>';
+
+      html += '<div class="section-div">Upgrading to Level 4</div>';
+      html += '<div class="prof-card open"><div class="prof-card-body" style="display:block;">';
+      html += '<div class="prof-info"><span class="prof-label">Option 1: Astral Diamonds</span><span class="prof-val">5,000,000 AD</span></div>';
+      html += '<div class="prof-info"><span class="prof-label">Option 2: Material Exchange</span><span class="prof-val">10,000,000 MEC</span></div>';
+      html += '<div class="prof-info"><span class="prof-label">Option 3: Crafted Items</span><span class="prof-val">Turn in commission list items</span></div>';
+      html += '</div></div>';
+      html += '<div class="tip-block"><strong>Tip:</strong> Blackiron Pendants are overall cheapest and appear on 2 lists.</div>';
+      document.getElementById("workshop-content").innerHTML = html;
+    }
+
+    // ============================================================
+    // TAB SWITCHING
+    // ============================================================
+    var tabs = document.querySelectorAll(".view-tab");
+    var artisansControls = document.getElementById("artisans-controls");
+    tabs.forEach(function(tab) {
+      tab.addEventListener("click", function() {
+        tabs.forEach(function(t) { t.classList.remove("active"); });
+        tab.classList.add("active");
+        document.querySelectorAll(".prof-view").forEach(function(v) { v.classList.remove("active"); });
+        document.getElementById("view-" + tab.getAttribute("data-tab")).classList.add("active");
+        artisansControls.style.display = tab.getAttribute("data-tab") === "artisans" ? "flex" : "none";
+        if (tab.getAttribute("data-tab") === "masterwork") renderMasterwork();
+        if (tab.getAttribute("data-tab") === "profit") renderProfit();
+        if (tab.getAttribute("data-tab") === "workshop") renderWorkshop();
+      });
+    });
+
+    // Click to expand artisan cards
+    document.getElementById("artisan-list").addEventListener("click", function(e) {
+      var card = e.target.closest(".prof-card");
+      if (card) card.classList.toggle("open");
+    });
+
+    searchInput.addEventListener("input", renderArtisans);
+    filterProf.addEventListener("change", renderArtisans);
+    renderArtisans();
+  </script>
+</body>
+</html>
