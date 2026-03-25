@@ -82,11 +82,11 @@
     var stats = [
       { section: "Offensive Stats" },
       {
-        name: "Power", cap: "90%", type: "Offensive",
+        name: "Power", cap: "120%", type: "Offensive",
         desc: "Multiplies all damage output. For healers, multiplies healing output instead.",
         formula: "Damage x (1 + Power %)",
         details: [
-          ["Cap", "90%"],
+          ["Cap", "120%"],
           ["Rating to Cap", "= Total Item Level"],
           ["Priority", "Top priority for DPS and Healers"],
         ]
@@ -103,21 +103,21 @@
         ]
       },
       {
-        name: "Critical Severity", cap: "90%", type: "Offensive",
+        name: "Critical Severity", cap: "120%", type: "Offensive",
         desc: "Multiplies damage of critical hits. Countered by opponent's Critical Avoidance.",
         formula: "Crit Damage x (1 + your Crit Severity % - enemy Crit Avoidance %)",
         details: [
-          ["Cap", "90%"],
+          ["Cap", "120%"],
           ["Rating to Cap", "= Total Item Level"],
           ["Note", "For healers, effectiveness is halved"],
         ]
       },
       {
-        name: "Combat Advantage", cap: "90%", type: "Offensive",
+        name: "Combat Advantage", cap: "120%", type: "Offensive",
         desc: "Multiplies damage against surrounded enemies (blue stripes at their feet). Countered by Awareness.",
         formula: "Damage x (1 + your CA % - enemy Awareness %)",
         details: [
-          ["Cap", "90%"],
+          ["Cap", "120%"],
           ["Rating to Cap", "= Total Item Level"],
           ["Priority", "Equal to Power when positioning is maintained"],
           ["Note", "All bosses have 90% Combat Advantage by default"],
@@ -137,11 +137,11 @@
 
       { section: "Defensive Stats" },
       {
-        name: "Defense", cap: "90%", type: "Defensive",
+        name: "Defense", cap: "120%", type: "Defensive",
         desc: "Divides all incoming damage, providing flat damage reduction.",
         formula: "Damage Taken = Incoming Damage / (1 + Defense %)",
         details: [
-          ["Cap", "90%"],
+          ["Cap", "120%"],
           ["Rating to Cap", "= Total Item Level"],
           ["Example", "50% Defense reduces damage by ~33%"],
         ]
@@ -178,11 +178,11 @@
         ]
       },
       {
-        name: "Deflect Severity", cap: "90%", type: "Defensive",
+        name: "Deflect Severity", cap: "120%", type: "Defensive",
         desc: "Reduces damage from deflected hits. Countered by opponent's Accuracy.",
         formula: "Deflected Damage = Base / (1 + your Deflect Severity % - enemy Accuracy %)",
         details: [
-          ["Cap", "90%"],
+          ["Cap", "120%"],
           ["Rating to Cap", "= Total Item Level"],
           ["Note", "Monsters have 90% Deflect Severity and 0% Accuracy"],
         ]
@@ -190,11 +190,11 @@
 
       { section: "Special Stats" },
       {
-        name: "Forte", cap: "90%", type: "Special",
+        name: "Forte", cap: "120%", type: "Special",
         desc: "Distributes bonus percentage to three role-specific stats based on your class and paragon path.",
         formula: "50% to primary role stat, 25% to offensive, 25% to defensive",
         details: [
-          ["Cap", "90%"],
+          ["Cap", "120%"],
           ["Rating to Cap", "= Total Item Level"],
           ["DPS Primary", "50% goes to Power"],
           ["Tank Primary", "50% goes to Defense"],
