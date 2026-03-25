@@ -8,6 +8,20 @@
   <link rel="stylesheet" href="css/layout.css">
   <style>
     .mek-container { max-width: 900px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
+    .view-tab {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-bottom: none;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      color: var(--text-secondary);
+      padding: 0.45rem 1rem;
+      font-size: 0.9rem;
+      font-family: var(--font-main);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .view-tab:hover { color: var(--text-primary); background: var(--bg-hover); }
+    .view-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
     .stat-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-default);
@@ -36,7 +50,7 @@
     }
     .stat-info-row:last-child { border-bottom: none; }
     .stat-info-label { color: var(--text-secondary); }
-    .stat-info-value { font-weight: 600; color: var(--text-primary); font-family: var(--font-mono); }
+    .stat-info-value { font-weight: 600; color: var(--text-primary); font-family: var(--font-mono); text-align: right; max-width: 60%; }
     .stat-formula {
       background: var(--bg-elevated);
       border-left: 3px solid var(--accent);
@@ -66,17 +80,45 @@
     .section-divider:first-child { padding-top: 0; }
     .toggle-arrow { transition: transform 0.2s; font-size: 0.8rem; color: var(--text-muted); }
     .stat-card.open .toggle-arrow { transform: rotate(90deg); }
+    .mek-view { display: none; }
+    .mek-view.active { display: block; }
+    .priority-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+    .priority-table th, .priority-table td {
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--border-default);
+      font-size: 0.88rem;
+      text-align: left;
+    }
+    .priority-table th {
+      background: var(--bg-elevated);
+      color: var(--highlight);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+    .priority-table td { color: var(--text-secondary); }
+    .priority-num { color: var(--highlight); font-weight: 700; margin-right: 0.3rem; }
   </style>
 </head>
 <body>
   <nav class="navbar"></nav>
-  <div class="mek-container">
-    <h2 style="margin-bottom:0.5rem;">Core Mechanics</h2>
 
+  <div class="controls-bar" style="gap:0.25rem;padding-bottom:0;">
+    <button class="view-tab active" data-tab="stats">Stats</button>
+    <button class="view-tab" data-tab="bolster">Bolster</button>
+    <button class="view-tab" data-tab="damage">Damage</button>
+    <button class="view-tab" data-tab="scaling">Scaling</button>
+    <button class="view-tab" data-tab="stacking">Stacking</button>
+    <button class="view-tab" data-tab="abilities">Ability Scores</button>
+    <button class="view-tab" data-tab="priorities">Stat Priorities</button>
+  </div>
+
+  <!-- STATS TAB -->
+  <div class="mek-container mek-view active" id="view-stats">
+    <h2 style="margin-bottom:0.5rem;">Core Mechanics</h2>
     <div class="stat-card open" style="margin-bottom:0.75rem;">
-      <div class="stat-card-header">
-        <span class="stat-card-name">Rating to Percentage</span>
-      </div>
+      <div class="stat-card-header"><span class="stat-card-name">Rating to Percentage</span></div>
       <div class="stat-card-body" style="display:block;">
         <div class="stat-desc">Every stat has a rating value that converts to a percentage. The conversion depends on your Total Item Level (TIL).</div>
         <div class="stat-formula">Percentage = 50 - (TIL - Rating) / 1000 + Percent Bonuses</div>
@@ -86,248 +128,308 @@
         <div class="stat-info-row"><span class="stat-info-label">To reach cap</span><span class="stat-info-value">Need rating + percent bonuses from gear, boons, companions, etc.</span></div>
       </div>
     </div>
-
     <div class="stat-card open" style="margin-bottom:1.5rem;">
-      <div class="stat-card-header">
-        <span class="stat-card-name">Combined Rating</span>
-      </div>
+      <div class="stat-card-header"><span class="stat-card-name">Combined Rating</span></div>
       <div class="stat-card-body" style="display:block;">
-        <div class="stat-desc">Combined Rating is a single number that adds equally to ALL your core stats at once. It comes from companions, mounts, and certain gear. It's the most efficient way to raise multiple stats simultaneously.</div>
+        <div class="stat-desc">Combined Rating is a single number that adds equally to ALL your core stats at once. It comes from companions, mounts, and certain gear.</div>
         <div class="stat-formula">Combined Rating adds its value to every core stat (Power, Defense, Crit Strike, etc.)</div>
         <div class="stat-info-row"><span class="stat-info-label">Sources</span><span class="stat-info-value">Companions, mounts, insignias, companion gear</span></div>
         <div class="stat-info-row"><span class="stat-info-label">Example</span><span class="stat-info-value">+2,700 CR = +2,700 to Power, Defense, Crit Strike, etc.</span></div>
         <div class="stat-info-row"><span class="stat-info-label">Why it matters</span><span class="stat-info-value">Higher CR items raise all stats, not just one</span></div>
       </div>
     </div>
-
     <h2 style="margin-bottom:0.5rem;">Stats Reference</h2>
     <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1.25rem;">Click any stat to expand details.</p>
     <div id="stats-list"></div>
   </div>
+
+  <!-- BOLSTER TAB -->
+  <div class="mek-container mek-view" id="view-bolster">
+    <h2 style="margin-bottom:1rem;">Bolster System</h2>
+
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">Companion Bolster</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-desc">Your top 10 companions by quality contribute a bolster percentage that boosts your summoned companion's item level and enhancement power effectiveness. Max bolster is 100%.</div>
+        <div class="section-divider" style="padding-top:0.5rem;">Bolster Per Quality Tier</div>
+        <div class="stat-info-row"><span class="stat-info-label">Common</span><span class="stat-info-value">1%</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Uncommon</span><span class="stat-info-value">2%</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Rare</span><span class="stat-info-value">3.5%</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Epic</span><span class="stat-info-value">5%</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Legendary</span><span class="stat-info-value">7.5%</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Mythic</span><span class="stat-info-value">10%</span></div>
+        <div class="stat-formula">10 Mythic companions = 100% bolster (max)</div>
+        <div class="section-divider">What Bolster Affects</div>
+        <div class="stat-info-row"><span class="stat-info-label">Enhancement power</span><span class="stat-info-value">Scales with bolster percentage</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Companion IL contribution</span><span class="stat-info-value">Up to 85% of companion IL as combined rating</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Player bonus powers</span><span class="stat-info-value">NOT affected by bolster</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card open">
+      <div class="stat-card-header"><span class="stat-card-name">Mount Bolster</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-desc">Your 10 best mounts by quality contribute a bolster percentage that boosts your mount equip power and combat power effectiveness. Max bolster is 100%.</div>
+        <div class="section-divider" style="padding-top:0.5rem;">Bolster Per Quality Tier</div>
+        <div class="stat-info-row"><span class="stat-info-label">Common</span><span class="stat-info-value">1%</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Uncommon</span><span class="stat-info-value">2%</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Rare</span><span class="stat-info-value">3.5%</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Epic</span><span class="stat-info-value">5%</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Legendary</span><span class="stat-info-value">7.5%</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Mythic</span><span class="stat-info-value">10%</span></div>
+        <div class="stat-formula">10 Mythic mounts = 100% bolster (max)</div>
+        <div class="section-divider">What Bolster Affects</div>
+        <div class="stat-info-row"><span class="stat-info-label">Equip power stats</span><span class="stat-info-value">Rating values scale with bolster</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Combat power</span><span class="stat-info-value">Magnitude and effects scale with bolster</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Insignia bonuses</span><span class="stat-info-value">NOT affected by bolster</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Insignia stats</span><span class="stat-info-value">NOT affected by bolster</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAMAGE TAB -->
+  <div class="mek-container mek-view" id="view-damage">
+    <h2 style="margin-bottom:1rem;">Damage Calculation</h2>
+
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">Magnitude</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-desc">Every power has a magnitude number that determines how much damage or healing it does relative to your base damage. Higher magnitude = more damage.</div>
+        <div class="stat-formula">Actual Damage = (Magnitude / 100) x Base Damage x Multipliers</div>
+        <div class="stat-info-row"><span class="stat-info-label">Base Damage</span><span class="stat-info-value">TIL / 10 (+ role bonus)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">DPS Bonus</span><span class="stat-info-value">+20% base damage</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Healer Bonus</span><span class="stat-info-value">+10% base damage</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Example</span><span class="stat-info-value">1,000 mag = 10x your base damage before multipliers</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">Damage Pipeline</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-desc">Damage goes through multiple multipliers in order. Each stat multiplies the result independently.</div>
+        <div class="stat-formula">Final Damage = Base x Power x CA x Crit x Buffs / Enemy Defense</div>
+        <div class="section-divider" style="padding-top:0.5rem;">Order of Operations</div>
+        <div class="stat-info-row"><span class="stat-info-label">1. Base Damage</span><span class="stat-info-value">(Magnitude / 100) x (TIL / 10)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">2. Power Multiplier</span><span class="stat-info-value">x (1 + Power %)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">3. Combat Advantage</span><span class="stat-info-value">x (1 + CA % - enemy Awareness %)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">4. Critical Strike</span><span class="stat-info-value">If crit: x (1 + Crit Sev % - enemy Crit Avoid %)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">5. Buff/Debuff</span><span class="stat-info-value">All damage buffs/debuffs applied multiplicatively</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">6. Enemy Defense</span><span class="stat-info-value">/ (1 + enemy Defense %)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">7. Deflect Check</span><span class="stat-info-value">If deflected: / (1 + Deflect Sev % - your Accuracy %)</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card open">
+      <div class="stat-card-header"><span class="stat-card-name">Diminishing Returns</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-desc">Because defensive stats use division formulas, each additional point of a stat is worth slightly less than the previous one. The stat still helps, but the benefit per point decreases.</div>
+        <div class="section-divider" style="padding-top:0.5rem;">Defense Example</div>
+        <div class="stat-info-row"><span class="stat-info-label">0% Defense</span><span class="stat-info-value">0% damage reduction</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">50% Defense</span><span class="stat-info-value">~33% damage reduction</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">90% Defense</span><span class="stat-info-value">~47% damage reduction</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">120% Defense</span><span class="stat-info-value">~55% damage reduction</span></div>
+        <div class="stat-formula">Damage Reduction = 1 - (1 / (1 + Defense %)). Going from 0 to 50% saves more than going from 50% to 120%.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCALING TAB -->
+  <div class="mek-container mek-view" id="view-scaling">
+    <h2 style="margin-bottom:1rem;">Scaling</h2>
+
+    <div class="stat-card open">
+      <div class="stat-card-header"><span class="stat-card-name">How Scaling Works</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-desc">When you enter scaled content (older dungeons, trials), your stats are adjusted down to match the content's level. Understanding scaling is key to not losing effectiveness.</div>
+        <div class="section-divider" style="padding-top:0.5rem;">Key Rules</div>
+        <div class="stat-info-row"><span class="stat-info-label">TIL in scaled content</span><span class="stat-info-value">Doesn't matter — stats are rescaled</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">What matters</span><span class="stat-info-value">Stat percentages, not raw ratings</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Percent bonuses</span><span class="stat-info-value">More valuable (boons, companion powers, etc.)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Utility stats</span><span class="stat-info-value">AP Gain and Recharge Speed bypass scaling</span></div>
+        <div class="section-divider">The Scaling Trap</div>
+        <div class="stat-desc">Items that give high IL but low stats (like collars or combat enchantments) can actually <strong>hurt</strong> you in scaled content. They raise your TIL without adding enough rating to match, which lowers your stat percentages after scaling.</div>
+        <div class="stat-formula">In scaled content: prioritize stat efficiency over raw item level.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STACKING TAB -->
+  <div class="mek-container mek-view" id="view-stacking">
+    <h2 style="margin-bottom:1rem;">Stacking Rules</h2>
+
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">Multiplicative Stacking</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-desc">Most damage buffs and debuffs in Neverwinter stack multiplicatively, not additively. This means each buff multiplies the result of the previous one.</div>
+        <div class="stat-formula">+10% and +15% = 1.10 x 1.15 = 26.5% total (not 25%)</div>
+        <div class="stat-info-row"><span class="stat-info-label">Damage buffs</span><span class="stat-info-value">Multiplicative</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Damage debuffs on enemies</span><span class="stat-info-value">Multiplicative</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Defense stats</span><span class="stat-info-value">Multiplicative (division formula)</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">Same-Source Stacking</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-desc">When multiple party members use the same buff, the second instance usually provides reduced benefit.</div>
+        <div class="stat-info-row"><span class="stat-info-label">Aura equip powers (e.g. Runic Aura)</span><span class="stat-info-value">Second stack = 50% effectiveness</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Spined Devil + Succubus</span><span class="stat-info-value">Do NOT stack (same debuff type)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Different buff sources</span><span class="stat-info-value">Stack fully</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card open">
+      <div class="stat-card-header"><span class="stat-card-name">Consumable Stacking</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-desc">One buff per category, but different categories stack with each other.</div>
+        <div class="stat-info-row"><span class="stat-info-label">Elixir</span><span class="stat-info-value">1 at a time (replaces previous)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Potion / Flask</span><span class="stat-info-value">1 at a time (replaces previous)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Event Food</span><span class="stat-info-value">1 at a time (replaces previous)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Stronghold Food</span><span class="stat-info-value">1 at a time (replaces previous)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Invocation Blessing</span><span class="stat-info-value">1 at a time (replaces previous)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Overload Enchantments</span><span class="stat-info-value">1 per overload slot on gear</span></div>
+        <div class="stat-formula">You can run an Elixir + Potion + Event Food + SH Food + Blessing + Overloads all at once.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABILITY SCORES TAB -->
+  <div class="mek-container mek-view" id="view-abilities">
+    <h2 style="margin-bottom:1rem;">Ability Scores</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1.25rem;">Each ability score provides a passive bonus. Every point above 10 grants the listed benefit.</p>
+
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">STR — Strength</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-info-row"><span class="stat-info-label">Bonus per point above 10</span><span class="stat-info-value">+1% Stamina Regeneration</span></div>
+      </div>
+    </div>
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">CON — Constitution</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-info-row"><span class="stat-info-label">Bonus per point above 10</span><span class="stat-info-value">+1% Maximum Hit Points</span></div>
+      </div>
+    </div>
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">DEX — Dexterity</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-info-row"><span class="stat-info-label">Bonus per point above 10</span><span class="stat-info-value">+1% Movement Speed</span></div>
+      </div>
+    </div>
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">INT — Intelligence</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-info-row"><span class="stat-info-label">Bonus per point above 10</span><span class="stat-info-value">+1% Recharge Speed</span></div>
+      </div>
+    </div>
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">WIS — Wisdom</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-info-row"><span class="stat-info-label">Bonus per point above 10</span><span class="stat-info-value">+1% Control Bonus and Control Resist</span></div>
+      </div>
+    </div>
+    <div class="stat-card open">
+      <div class="stat-card-header"><span class="stat-card-name">CHA — Charisma</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-info-row"><span class="stat-info-label">Bonus per point above 10</span><span class="stat-info-value">+1% Forte</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAT PRIORITIES TAB -->
+  <div class="mek-container mek-view" id="view-priorities">
+    <h2 style="margin-bottom:1rem;">Stat Priorities by Role</h2>
+
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">DPS Priority</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">1.</span> Power</span><span class="stat-info-value">120% cap — direct damage multiplier</span></div>
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">2.</span> Combat Advantage</span><span class="stat-info-value">120% cap — equal to Power when positioned</span></div>
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">3.</span> Critical Severity</span><span class="stat-info-value">120% cap — crit damage multiplier</span></div>
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">4.</span> Critical Strike</span><span class="stat-info-value">90% cap — crit chance</span></div>
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">5.</span> Accuracy</span><span class="stat-info-value">90% cap — counters enemy Deflect Severity</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">Tank Priority</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">1.</span> Awareness</span><span class="stat-info-value">90% cap — most important above 45%</span></div>
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">2.</span> Defense</span><span class="stat-info-value">120% cap — flat damage reduction</span></div>
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">3.</span> Critical Avoidance</span><span class="stat-info-value">90% cap — reduces crit damage taken</span></div>
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">4.</span> Maximum Hit Points</span><span class="stat-info-value">No cap — larger health pool</span></div>
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">5.</span> Deflect + Deflect Severity</span><span class="stat-info-value">90% / 120% — chance-based mitigation</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card open">
+      <div class="stat-card-header"><span class="stat-card-name">Healer Priority</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">1.</span> Power</span><span class="stat-info-value">120% cap — healing output multiplier</span></div>
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">2.</span> Outgoing Healing</span><span class="stat-info-value">120% cap — match equally with Power</span></div>
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">3.</span> Forte</span><span class="stat-info-value">120% cap — feeds into role resource regen</span></div>
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">4.</span> Awareness</span><span class="stat-info-value">90% cap — survivability</span></div>
+        <div class="stat-info-row"><span class="stat-info-label"><span class="priority-num">5.</span> Defense</span><span class="stat-info-value">120% cap — survivability</span></div>
+      </div>
+    </div>
+  </div>
+
   <script src="js/shared.js"></script>
   <script>
     renderNav("Mekaniks");
 
+    // Tab switching
+    var tabs = document.querySelectorAll(".view-tab");
+    tabs.forEach(function(tab) {
+      tab.addEventListener("click", function() {
+        tabs.forEach(function(t) { t.classList.remove("active"); });
+        tab.classList.add("active");
+        document.querySelectorAll(".mek-view").forEach(function(v) { v.classList.remove("active"); });
+        document.getElementById("view-" + tab.getAttribute("data-tab")).classList.add("active");
+      });
+    });
+
+    // Stats data and rendering
     var stats = [
       { section: "Offensive Stats" },
-      {
-        name: "Power", cap: "120%", type: "Offensive",
-        desc: "Multiplies all damage output. For healers, multiplies healing output instead.",
-        formula: "Damage x (1 + Power %)",
-        details: [
-          ["Cap", "120%"],
-          ["Rating to Cap", "= Total Item Level"],
-          ["Priority", "Top priority for DPS and Healers"],
-        ]
-      },
-      {
-        name: "Critical Strike", cap: "90%", type: "Offensive",
-        desc: "Percentage chance to land a critical hit.",
-        formula: "Crit Chance = Critical Strike %",
-        details: [
-          ["Cap", "90%"],
-          ["Rating to Cap", "= Total Item Level"],
-          ["Note", "Should be balanced with Critical Severity"],
-        ]
-      },
-      {
-        name: "Critical Severity", cap: "120%", type: "Offensive",
-        desc: "Multiplies damage of critical hits. Countered by opponent's Critical Avoidance.",
-        formula: "Crit Damage x (1 + your Crit Severity % - enemy Crit Avoidance %)",
-        details: [
-          ["Cap", "120%"],
-          ["Rating to Cap", "= Total Item Level"],
-          ["Note", "For healers, effectiveness is halved"],
-        ]
-      },
-      {
-        name: "Combat Advantage", cap: "120%", type: "Offensive",
-        desc: "Multiplies damage against surrounded enemies (blue stripes at their feet). Countered by Awareness.",
-        formula: "Damage x (1 + your CA % - enemy Awareness %)",
-        details: [
-          ["Cap", "120%"],
-          ["Rating to Cap", "= Total Item Level"],
-          ["Priority", "Equal to Power when positioning is maintained"],
-          ["Note", "All bosses have 90% Combat Advantage by default"],
-        ]
-      },
-      {
-        name: "Accuracy", cap: "90%", type: "Offensive",
-        desc: "Reduces the effectiveness of opponent's Deflect Severity.",
-        formula: "Deflected Damage = Base / (1 + enemy Deflect Severity % - your Accuracy %)",
-        details: [
-          ["Cap", "90%"],
-          ["Rating to Cap", "= Total Item Level"],
-          ["Priority", "Lowest priority offensive stat"],
-          ["Note", "Non-player enemies have 0% Accuracy"],
-        ]
-      },
-
+      { name: "Power", cap: "120%", desc: "Multiplies all damage output. For healers, multiplies healing output instead.", formula: "Damage x (1 + Power %)", details: [["Cap", "120%"], ["Rating to Cap", "= Total Item Level"], ["Priority", "Top priority for DPS and Healers"]] },
+      { name: "Critical Strike", cap: "90%", desc: "Percentage chance to land a critical hit.", formula: "Crit Chance = Critical Strike %", details: [["Cap", "90%"], ["Rating to Cap", "= Total Item Level"], ["Note", "Should be balanced with Critical Severity"]] },
+      { name: "Critical Severity", cap: "120%", desc: "Multiplies damage of critical hits. Countered by opponent's Critical Avoidance.", formula: "Crit Damage x (1 + your Crit Severity % - enemy Crit Avoidance %)", details: [["Cap", "120%"], ["Rating to Cap", "= Total Item Level"], ["Note", "For healers, effectiveness is halved"]] },
+      { name: "Combat Advantage", cap: "120%", desc: "Multiplies damage against surrounded enemies (blue stripes at their feet). Countered by Awareness.", formula: "Damage x (1 + your CA % - enemy Awareness %)", details: [["Cap", "120%"], ["Rating to Cap", "= Total Item Level"], ["Priority", "Equal to Power when positioned"], ["Note", "All bosses have 90% Combat Advantage by default"]] },
+      { name: "Accuracy", cap: "90%", desc: "Reduces the effectiveness of opponent's Deflect Severity.", formula: "Deflected Damage = Base / (1 + enemy Deflect Severity % - your Accuracy %)", details: [["Cap", "90%"], ["Rating to Cap", "= Total Item Level"], ["Priority", "Lowest priority offensive stat"]] },
       { section: "Defensive Stats" },
-      {
-        name: "Defense", cap: "120%", type: "Defensive",
-        desc: "Divides all incoming damage, providing flat damage reduction.",
-        formula: "Damage Taken = Incoming Damage / (1 + Defense %)",
-        details: [
-          ["Cap", "120%"],
-          ["Rating to Cap", "= Total Item Level"],
-          ["Example", "50% Defense reduces damage by ~33%"],
-        ]
-      },
-      {
-        name: "Awareness", cap: "90%", type: "Defensive",
-        desc: "Reduces opponent's Combat Advantage bonus damage. Most important defensive stat above 45%.",
-        formula: "Damage Taken = Base x (1 + enemy CA % - your Awareness %)",
-        details: [
-          ["Cap", "90%"],
-          ["Rating to Cap", "= Total Item Level"],
-          ["Key Threshold", "Above 45%, becomes the most important defensive stat"],
-          ["Example", "50% Awareness vs 90% boss CA = you take 140% damage"],
-        ]
-      },
-      {
-        name: "Critical Avoidance", cap: "90%", type: "Defensive",
-        desc: "Reduces opponent's bonus damage from Critical Severity.",
-        formula: "Crit Damage Taken = Base x (1 + enemy Crit Sev % - your Crit Avoidance %)",
-        details: [
-          ["Cap", "90%"],
-          ["Rating to Cap", "~65,000 (higher than other stats)"],
-          ["Note", "Higher cap due to base +5,000 Critical Strike all characters start with"],
-        ]
-      },
-      {
-        name: "Deflect", cap: "90%", type: "Defensive",
-        desc: "Percentage chance to deflect a hit, reducing its damage based on Deflect Severity.",
-        formula: "Deflect Chance = Deflect %",
-        details: [
-          ["Cap", "90%"],
-          ["Rating to Cap", "= Total Item Level"],
-          ["Priority", "Low priority defensive stat"],
-        ]
-      },
-      {
-        name: "Deflect Severity", cap: "120%", type: "Defensive",
-        desc: "Reduces damage from deflected hits. Countered by opponent's Accuracy.",
-        formula: "Deflected Damage = Base / (1 + your Deflect Severity % - enemy Accuracy %)",
-        details: [
-          ["Cap", "120%"],
-          ["Rating to Cap", "= Total Item Level"],
-          ["Note", "Monsters have 90% Deflect Severity and 0% Accuracy"],
-        ]
-      },
-
+      { name: "Defense", cap: "120%", desc: "Divides all incoming damage, providing flat damage reduction.", formula: "Damage Taken = Incoming Damage / (1 + Defense %)", details: [["Cap", "120%"], ["Rating to Cap", "= Total Item Level"], ["Example", "50% Defense reduces damage by ~33%"]] },
+      { name: "Awareness", cap: "90%", desc: "Reduces opponent's Combat Advantage bonus damage. Most important defensive stat above 45%.", formula: "Damage Taken = Base x (1 + enemy CA % - your Awareness %)", details: [["Cap", "90%"], ["Rating to Cap", "= Total Item Level"], ["Key Threshold", "Above 45%, becomes most important defensive stat"]] },
+      { name: "Critical Avoidance", cap: "90%", desc: "Reduces opponent's bonus damage from Critical Severity.", formula: "Crit Damage Taken = Base x (1 + enemy Crit Sev % - your Crit Avoidance %)", details: [["Cap", "90%"], ["Rating to Cap", "~65,000 (higher than other stats)"]] },
+      { name: "Deflect", cap: "90%", desc: "Percentage chance to deflect a hit, reducing its damage based on Deflect Severity.", formula: "Deflect Chance = Deflect %", details: [["Cap", "90%"], ["Rating to Cap", "= Total Item Level"], ["Priority", "Low priority defensive stat"]] },
+      { name: "Deflect Severity", cap: "120%", desc: "Reduces damage from deflected hits. Countered by opponent's Accuracy.", formula: "Deflected Damage = Base / (1 + your Deflect Severity % - enemy Accuracy %)", details: [["Cap", "120%"], ["Rating to Cap", "= Total Item Level"]] },
       { section: "Special Stats" },
-      {
-        name: "Forte", cap: "120%", type: "Special",
-        desc: "Distributes bonus percentage to three role-specific stats based on your class and paragon path.",
-        formula: "50% to primary role stat, 25% to offensive, 25% to defensive",
-        details: [
-          ["Cap", "120%"],
-          ["Rating to Cap", "= Total Item Level"],
-          ["DPS Primary", "50% goes to Power"],
-          ["Tank Primary", "50% goes to Defense"],
-          ["Healer Primary", "50% goes to Divinity/Soulweave/Performance Regen"],
-        ]
-      },
-      {
-        name: "Maximum Hit Points", cap: "No cap", type: "Special",
-        desc: "Total health pool. Scales with item level and Constitution ability score.",
-        formula: "(TIL x 10 + role bonus + item HP) x (1 + CON / 200)",
-        details: [
-          ["Cap", "No percentage cap"],
-          ["Scaling", "1:10 ratio with Total Item Level"],
-          ["Tank Bonus", "+20% from role"],
-          ["Healer Bonus", "+10% from role"],
-          ["CON Bonus", "+1% per point above 10"],
-        ]
-      },
-
+      { name: "Forte", cap: "120%", desc: "Distributes bonus percentage to three role-specific stats based on your class.", formula: "50% to primary role stat, 25% to offensive, 25% to defensive", details: [["Cap", "120%"], ["Rating to Cap", "= Total Item Level"], ["DPS Primary", "50% goes to Power"], ["Tank Primary", "50% goes to Defense"], ["Healer Primary", "50% goes to resource regen"]] },
+      { name: "Maximum Hit Points", cap: "No cap", desc: "Total health pool. Scales with item level and Constitution.", formula: "(TIL x 10 + role bonus + item HP) x (1 + CON / 200)", details: [["Cap", "No percentage cap"], ["Scaling", "1:10 ratio with Total Item Level"], ["Tank Bonus", "+20% from role"], ["Healer Bonus", "+10% from role"]] },
       { section: "Utility Stats" },
-      {
-        name: "Action Point Gain", cap: "No cap", type: "Utility",
-        desc: "Multiplies the rate you fill your Daily Power meter. Does NOT affect Encounter Power cooldowns (that's Recharge Speed).",
-        formula: "AP Generation x (1 + AP Gain %)",
-        details: [
-          ["Cap", "No cap"],
-          ["Rating", "400 points = 1%"],
-          ["Note", "Recovery rating gives both AP Gain and Recharge Speed, but they are separate stats"],
-        ]
-      },
-      {
-        name: "Recharge Speed", cap: "No cap", type: "Utility",
-        desc: "Divides recharge times of At-Will and Encounter powers.",
-        formula: "Recharge Time / (1 + Recharge Speed %)",
-        details: [
-          ["Cap", "No hard cap"],
-          ["Rating", "200 points = 1%"],
-          ["INT Bonus", "+1% per Intelligence point above 10"],
-          ["Scaling", "Bypasses scaling in scaled content"],
-        ]
-      },
-      {
-        name: "Movement Speed", cap: "No cap", type: "Utility",
-        desc: "Multiplies unmounted character movement speed.",
-        formula: "Movement Speed x (1 + MS %)",
-        details: [
-          ["Cap", "No hard cap"],
-        ]
-      },
-      {
-        name: "Stamina Regeneration", cap: "No cap", type: "Utility",
-        desc: "Rate at which stamina replenishes for dodge/block.",
-        formula: "Regen Rate x (1 + Stamina Regen %)",
-        details: [
-          ["Cap", "No hard cap"],
-          ["STR Bonus", "Strength ability score increases regen"],
-          ["Priority", "Important for Tanks"],
-        ]
-      },
-
+      { name: "Action Point Gain", cap: "No cap", desc: "Multiplies the rate you fill your Daily Power meter. Does NOT affect Encounter Power cooldowns.", formula: "AP Generation x (1 + AP Gain %)", details: [["Cap", "No cap"], ["Rating", "400 points = 1%"], ["Note", "Recovery gives both AP Gain and Recharge Speed, but they are separate stats"]] },
+      { name: "Recharge Speed", cap: "No cap", desc: "Divides recharge times of Encounter powers.", formula: "Recharge Time / (1 + Recharge Speed %)", details: [["Cap", "No cap"], ["Rating", "200 points = 1%"], ["INT Bonus", "+1% per Intelligence point above 10"]] },
+      { name: "Movement Speed", cap: "No cap", desc: "Multiplies unmounted character movement speed.", formula: "Movement Speed x (1 + MS %)", details: [["Cap", "No cap"]] },
+      { name: "Stamina Regeneration", cap: "No cap", desc: "Rate at which stamina replenishes for dodge/block.", formula: "Regen Rate x (1 + Stamina Regen %)", details: [["Cap", "No cap"], ["STR Bonus", "Strength increases regen"], ["Priority", "Important for Tanks"]] },
       { section: "Healing Stats" },
-      {
-        name: "Outgoing Healing", cap: "120%", type: "Healing",
-        desc: "Multiplies all healing you provide to others.",
-        formula: "Healing x (1 + Outgoing Healing %)",
-        details: [
-          ["Cap", "120% (higher than standard stats)"],
-          ["Priority", "Should be matched equally with Power for healers"],
-        ]
-      },
-      {
-        name: "Incoming Healing", cap: "120%", type: "Healing",
-        desc: "Multiplies all healing you receive from any source.",
-        formula: "Healing Received x (1 + Incoming Healing %)",
-        details: [
-          ["Cap", "120% (higher than standard stats)"],
-          ["Note", "Multiplies independently of Power or Outgoing Healing"],
-        ]
-      },
+      { name: "Outgoing Healing", cap: "120%", desc: "Multiplies all healing you provide to others.", formula: "Healing x (1 + Outgoing Healing %)", details: [["Cap", "120%"], ["Priority", "Match equally with Power for healers"]] },
+      { name: "Incoming Healing", cap: "120%", desc: "Multiplies all healing you receive from any source.", formula: "Healing Received x (1 + Incoming Healing %)", details: [["Cap", "120%"], ["Note", "Multiplies independently of Power or Outgoing Healing"]] },
     ];
 
     function renderStats() {
       var html = "";
       for (var i = 0; i < stats.length; i++) {
         var s = stats[i];
-        if (s.section) {
-          html += '<div class="section-divider">' + s.section + '</div>';
-          continue;
-        }
-
-        var capClass = s.cap === "No cap" ? "stat-neutral" : s.cap === "50%" ? "stat-negative" : "stat-positive";
-
-        html += '<div class="stat-card" data-idx="' + i + '">';
-        html += '<div class="stat-card-header">';
+        if (s.section) { html += '<div class="section-divider">' + s.section + '</div>'; continue; }
+        var capClass = s.cap === "No cap" ? "stat-neutral" : "stat-positive";
+        html += '<div class="stat-card" data-idx="' + i + '"><div class="stat-card-header">';
         html += '<span class="stat-card-name">' + s.name + '</span>';
         html += '<span><span class="stat-card-cap ' + capClass + '">' + s.cap + '</span> <span class="toggle-arrow">&#9654;</span></span>';
-        html += '</div>';
-        html += '<div class="stat-card-body">';
+        html += '</div><div class="stat-card-body">';
         html += '<div class="stat-desc">' + s.desc + '</div>';
         html += '<div class="stat-formula">' + s.formula + '</div>';
         for (var d = 0; d < s.details.length; d++) {
-          html += '<div class="stat-info-row">';
-          html += '<span class="stat-info-label">' + s.details[d][0] + '</span>';
-          html += '<span class="stat-info-value">' + s.details[d][1] + '</span>';
-          html += '</div>';
+          html += '<div class="stat-info-row"><span class="stat-info-label">' + s.details[d][0] + '</span><span class="stat-info-value">' + s.details[d][1] + '</span></div>';
         }
         html += '</div></div>';
       }
