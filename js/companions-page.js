@@ -416,12 +416,12 @@
   var enhancementList = document.getElementById("enhancement-list");
 
   var enhancementRanking = [
-    { rank: 1, name: "Armor Break", companion: "Cave Bear", benefit: "-9% to enemies Defense (at 50% defense)", damage: "6.38%" },
-    { rank: 2, name: "Dulled Senses", companion: "Renegade Illusionist", benefit: "-9% to enemies Awareness", damage: "4.09%" },
-    { rank: 3, name: "Vulnerability", companion: "Halfling Wayward Wizard", benefit: "-9% to enemies Critical Avoidance", damage: "3.89%" },
-    { rank: 4, name: "Slowed Reactions", companion: "Apprentice Healer", benefit: "-9% to enemies Deflect (only useful when not capped)", damage: "0.00%" },
-    { rank: 5, name: "Advantage Nullification", companion: "Portobello DaVinci", benefit: "-9% to enemies Combat Advantage (reliable survivability)", damage: "" },
-    { rank: 6, name: "Weapon Break", companion: "Man-At-Arms", benefit: "-9% to enemies Critical Severity (survivability against crits)", damage: "" },
+    { rank: 1, name: "Armor Break", companion: "Cave Bear", benefit: "-9% to enemies Defense (at 50% defense)" },
+    { rank: 2, name: "Dulled Senses", companion: "Renegade Illusionist", benefit: "-9% to enemies Awareness" },
+    { rank: 3, name: "Vulnerability", companion: "Halfling Wayward Wizard", benefit: "-9% to enemies Critical Avoidance" },
+    { rank: 4, name: "Slowed Reactions", companion: "Apprentice Healer", benefit: "-9% to enemies Deflect (only useful when not capped)" },
+    { rank: 5, name: "Advantage Nullification", companion: "Portobello DaVinci", benefit: "-9% to enemies Combat Advantage (reliable survivability)" },
+    { rank: 6, name: "Weapon Break", companion: "Man-At-Arms", benefit: "-9% to enemies Critical Severity (survivability against crits)" },
   ];
 
   function renderEnhancementView() {
@@ -434,9 +434,6 @@
       html += '<span style="color:var(--highlight);font-weight:700;margin-right:0.5rem;">#' + e.rank + '</span>';
       html += '<span style="font-weight:600;">' + escapeHtml(e.name) + '</span>';
       html += '</div>';
-      if (e.damage) {
-        html += '<span class="summoned-stat stat-positive">+' + e.damage + ' DPS</span>';
-      }
       html += '</div>';
       html += '<div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Best companion: ' + escapeHtml(e.companion) + '</div>';
       html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(e.benefit) + '</div>';
