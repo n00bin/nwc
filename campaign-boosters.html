@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campaign Boosters — Neverwinter Compendium</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .cb-container { max-width:900px; margin:0 auto; padding:1rem 1.5rem 3rem; }
+    .cb-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .cb-card:hover { border-color: var(--border-accent); }
+    .cb-header { display:flex; justify-content:space-between; align-items:center; }
+    .cb-name { font-weight:700; font-size:1.05rem; }
+    .cb-info { display:flex; justify-content:space-between; padding:0.3rem 0; border-bottom:1px solid var(--border-default); font-size:0.88rem; }
+    .cb-info:last-child { border-bottom:none; }
+    .cb-label { color:var(--text-secondary); }
+    .cb-val { font-weight:600; color:var(--text-primary); }
+    .cb-boost { font-family:var(--font-mono); font-weight:700; color:var(--stat-positive); font-size:1rem; }
+    .wip-banner {
+      background: var(--bg-elevated);
+      border: 2px dashed var(--highlight);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: var(--highlight);
+      font-size: 0.9rem;
+    }
+    .section-div { font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--highlight); padding:1rem 0 0.4rem; border-bottom:1px solid var(--border-default); margin-bottom:0.75rem; }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+  <div class="cb-container">
+    <h2 style="margin-bottom:0.5rem;">Campaign Currency Boosters</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">Companions and gadgets that increase campaign currency drops.</p>
+
+    <div class="wip-banner">
+      This section is a work in progress. If you know of campaign currency boosters not listed here, please submit them via the <a href="reports.html" style="color:var(--accent);">Reports</a> page. Include the item name, type, which campaign it boosts, and the boost percentage.
+    </div>
+
+    <div class="section-div">Gadgets (Belt/Quickslot Items)</div>
+
+    <div class="cb-card">
+      <div class="cb-header">
+        <span class="cb-name">Prototype Realm Engine</span>
+        <span class="cb-boost">+15%</span>
+      </div>
+      <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Gadget (Quickslot)</span></div>
+      <div class="cb-info"><span class="cb-label">Campaign</span><span class="cb-val">Demonweb Pits</span></div>
+      <div class="cb-info"><span class="cb-label">Source</span><span class="cb-val" style="color:var(--highlight);">Demonweb Pits Campaign</span></div>
+      <div class="cb-info"><span class="cb-label">Note</span><span class="cb-val">Equip in item tray. +15% campaign currency drop rate.</span></div>
+    </div>
+
+    <div class="cb-card">
+      <div class="cb-header">
+        <span class="cb-name">Echo Locator</span>
+        <span class="cb-boost">+15%</span>
+      </div>
+      <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Gadget (Quickslot)</span></div>
+      <div class="cb-info"><span class="cb-label">Campaign</span><span class="cb-val">Adventures in Wildspace</span></div>
+      <div class="cb-info"><span class="cb-label">Source</span><span class="cb-val" style="color:var(--highlight);">Zen Market</span></div>
+      <div class="cb-info"><span class="cb-label">Note</span><span class="cb-val">Equip in item tray. +15% campaign currency. Also deals 100 mag AoE + grants CA for 6s (30s CD).</span></div>
+    </div>
+
+    <div class="cb-card">
+      <div class="cb-header">
+        <span class="cb-name">Synthetic Astral Seed</span>
+        <span class="cb-boost">+?%</span>
+      </div>
+      <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Gadget (Quickslot)</span></div>
+      <div class="cb-info"><span class="cb-label">Campaign</span><span class="cb-val">Needs verification</span></div>
+      <div class="cb-info"><span class="cb-label">Source</span><span class="cb-val" style="color:var(--highlight);">Needs verification</span></div>
+      <div class="cb-info"><span class="cb-label">Note</span><span class="cb-val">Stats and details need in-game verification. Submit via Reports if you have this info.</span></div>
+    </div>
+
+    <div class="section-div">Companions</div>
+
+    <div class="cb-card">
+      <div class="cb-header">
+        <span class="cb-name">Shadar-kai Witch</span>
+        <span class="cb-boost">+10%</span>
+      </div>
+      <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
+      <div class="cb-info"><span class="cb-label">Campaign</span><span class="cb-val">Dragonbone Vale</span></div>
+      <div class="cb-info"><span class="cb-label">Source</span><span class="cb-val" style="color:var(--highlight);">Dragonbone Vale Campaign</span></div>
+      <div class="cb-info"><span class="cb-label">Note</span><span class="cb-val">+10% campaign currency. Awards secondary currency on all activities, progression currency on weekly quests.</span></div>
+    </div>
+
+    <div class="cb-card">
+      <div class="cb-header">
+        <span class="cb-name">Chultan Hunter</span>
+        <span class="cb-boost">+10%</span>
+      </div>
+      <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
+      <div class="cb-info"><span class="cb-label">Campaign</span><span class="cb-val">Jungles of Chult</span></div>
+      <div class="cb-info"><span class="cb-label">Source</span><span class="cb-val" style="color:var(--highlight);">Chult Campaign</span></div>
+      <div class="cb-info"><span class="cb-label">Note</span><span class="cb-val">+10% Forgotten Totems and Chultan Riches drop rate. Also +3 Totems per weekly, +1 per patrol.</span></div>
+    </div>
+
+  </div>
+  <script src="js/shared.js"></script>
+  <script>renderNav("Campaign Boosters");</script>
+</body>
+</html>
