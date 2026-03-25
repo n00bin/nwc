@@ -170,8 +170,12 @@ function highlightMatch(text, query) {
   return escaped.replace(regex, '<mark>$1</mark>');
 }
 
-// ---- Community notice popup (shows every visit) ----
+// ---- Community notice popup (home page only) ----
 (function () {
+  // Only show on home/index page
+  var path = window.location.pathname;
+  if (path.indexOf("index.html") === -1 && !path.endsWith("/nwc/") && !path.endsWith("/")) return;
+
   var overlay = document.createElement("div");
   overlay.id = "nwc-notice-overlay";
   overlay.innerHTML =
