@@ -505,14 +505,14 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
       var d = data[i];
-      html += '<div class="ranking-card">';
+      html += '<div class="ranking-card" style="flex-direction:column;align-items:stretch;">';
       html += '<div style="font-weight:600;">';
       if (d.rank) html += '<span style="color:var(--highlight);margin-right:0.5rem;">#' + d.rank + '</span>';
       html += escapeHtml(d.power) + '</div>';
-      html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(d.effect) + '</div>';
       if (d.mounts) {
-        html += '<div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Mounts: ' + d.mounts.map(function(m) { return escapeHtml(m); }).join(', ') + '</div>';
+        html += '<div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">' + d.mounts.map(function(m) { return escapeHtml(m); }).join(', ') + '</div>';
       }
+      html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(d.effect) + '</div>';
       html += '</div>';
     }
     document.getElementById(container).innerHTML = html;
