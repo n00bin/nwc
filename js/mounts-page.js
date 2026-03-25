@@ -498,7 +498,8 @@
     { rank: 2, power: "Mystic Aura", effect: "+2,953 Power and Accuracy to you and party members within 80'", mounts: ["Myconid Bulette"] },
     { rank: 3, power: "Runic Aura", effect: "+2,953 Power and Defense to you and party members within 80'", mounts: ["Runeclad Manticore", "Manticore", "Royal Winter Sled", "Snowclad Manticore"] },
     { rank: 4, power: "Avian Aura", effect: "Forte and Power to you and party members", mounts: ["Dragon Chicken"] },
-    { rank: 5, power: "Ferocity", effect: "Extra damage per hit, stacking buff", mounts: ["Turmish Lion"] },
+    { rank: 5, power: "Providence", effect: "When you or a party member are struck, chance to heal for 6% of Max HP. You gain Radiant Weapon (+2% additional radiant damage per stack, up to 8 stacks)", mounts: ["Brain Stealer Dragon", "Swift Golden Lion"] },
+    { rank: 6, power: "Ferocity", effect: "When you or a party member are struck, chance to gain Ferocity (+1.6% additional damage per stack, up to 3 stacks for 10s)", mounts: ["Turmish Lion"] },
   ];
 
   function renderCombatRanking(data, container) {
