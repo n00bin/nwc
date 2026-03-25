@@ -452,11 +452,11 @@
     tabSummoned.classList.toggle("active", activeTab === "summoned");
     tabEnhancements.classList.toggle("active", activeTab === "enhancements");
     lookupView.style.display = activeTab === "lookup" ? "" : "none";
-    lookupControls.style.display = activeTab === "lookup" ? "" : "none";
+    lookupControls.style.display = activeTab === "lookup" ? "flex" : "none";
     summonedView.style.display = activeTab === "summoned" ? "" : "none";
-    summonedControls.style.display = activeTab === "summoned" ? "" : "none";
+    summonedControls.style.display = activeTab === "summoned" ? "flex" : "none";
     enhancementView.style.display = activeTab === "enhancements" ? "" : "none";
-    enhancementControls.style.display = activeTab === "enhancements" ? "" : "none";
+    enhancementControls.style.display = activeTab === "enhancements" ? "flex" : "none";
   }
 
   tabLookup.addEventListener("click", function () {
