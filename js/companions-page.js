@@ -339,6 +339,113 @@
   filterEnhancement.addEventListener("change", onFilterChange);
   filterStat.addEventListener("change", onFilterChange);
 
+  // ---- Summoned Buffs View ----
+  var tabLookup  = document.getElementById("tab-lookup");
+  var tabSummoned = document.getElementById("tab-summoned");
+  var lookupView = document.getElementById("lookup-view");
+  var summonedView = document.getElementById("summoned-view");
+  var lookupControls = document.getElementById("lookup-controls");
+  var summonedControls = document.getElementById("summoned-controls");
+  var summonedList = document.getElementById("summoned-list");
+  var summonedCount = document.getElementById("summoned-count");
+  var summonedFilterStat = document.getElementById("summoned-filter-stat");
+  var summonedFilterScope = document.getElementById("summoned-filter-scope");
+
+  // Build summoned data: companion + enhancement joined
+  var summonedData = [];
+  for (var si = 0; si < COMPANIONS_DATA.length; si++) {
+    var comp = COMPANIONS_DATA[si];
+    var enh = enhancementMap[comp.enhancementRef];
+    if (!enh) continue;
+    summonedData.push({
+      companionName: comp.name,
+      companionId: comp.id,
+      enhancementName: enh.name,
+      stat: enh.stat,
+      value: enh.value,
+      scope: enh.scope || "self",
+      notes: enh.notes || ""
+    });
+  }
+
+  // Populate summoned stat filter
+  var summonedStats = {};
+  for (var ss = 0; ss < summonedData.length; ss++) {
+    summonedStats[summonedData[ss].stat] = true;
+  }
+  populateFilter(summonedFilterStat, Object.keys(summonedStats).sort(), "All Buff Stats");
+
+  function renderSummonedView() {
+    var statVal = summonedFilterStat.value;
+    var scopeVal = summonedFilterScope.value;
+
+    var filtered = summonedData.filter(function (s) {
+      if (statVal && s.stat !== statVal) return false;
+      if (scopeVal && s.scope !== scopeVal) return false;
+      return true;
+    });
+
+    // Sort by value descending, then by stat name
+    filtered.sort(function (a, b) {
+      if (a.stat !== b.stat) return a.stat < b.stat ? -1 : 1;
+      return b.value - a.value;
+    });
+
+    summonedCount.textContent = filtered.length + " companions";
+
+    if (filtered.length === 0) {
+      summonedList.innerHTML = '<div class="empty-state">No companions match your filters</div>';
+      return;
+    }
+
+    var html = "";
+    var lastStat = "";
+    for (var i = 0; i < filtered.length; i++) {
+      var s = filtered[i];
+      // Group header
+      if (s.stat !== lastStat) {
+        var scopeLabel = s.scope === "enemy" ? " (Enemy Debuff)" : " (Self Buff)";
+        html += '<div class="summoned-group-header">' + escapeHtml(s.stat) + scopeLabel + '</div>';
+        lastStat = s.stat;
+      }
+
+      var valueClass = s.scope === "enemy" ? "stat-negative" : "stat-positive";
+      var prefix = s.scope === "enemy" ? "-" : "+";
+
+      html += '<div class="summoned-card">';
+      html += '<div>';
+      html += '<div style="font-weight:600;">' + escapeHtml(s.companionName) + '</div>';
+      html += '<div style="font-size:0.82rem;color:var(--text-muted);">' + escapeHtml(s.enhancementName) + '</div>';
+      html += '</div>';
+      html += '<div class="summoned-stat ' + valueClass + '">' + prefix + s.value + '%</div>';
+      html += '</div>';
+    }
+    summonedList.innerHTML = html;
+  }
+
+  // Tab switching
+  tabLookup.addEventListener("click", function () {
+    tabLookup.classList.add("active");
+    tabSummoned.classList.remove("active");
+    lookupView.style.display = "";
+    lookupControls.style.display = "";
+    summonedView.style.display = "none";
+    summonedControls.style.display = "none";
+  });
+
+  tabSummoned.addEventListener("click", function () {
+    tabSummoned.classList.add("active");
+    tabLookup.classList.remove("active");
+    lookupView.style.display = "none";
+    lookupControls.style.display = "none";
+    summonedView.style.display = "";
+    summonedControls.style.display = "";
+    renderSummonedView();
+  });
+
+  summonedFilterStat.addEventListener("change", renderSummonedView);
+  summonedFilterScope.addEventListener("change", renderSummonedView);
+
   // ---- Initial render ----
   renderList(COMPANIONS_DATA);
 })();

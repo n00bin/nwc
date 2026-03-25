@@ -10,8 +10,14 @@
 <body>
   <nav class="navbar"></nav>
 
-  <!-- Filters / Search -->
-  <div class="controls-bar">
+  <!-- View tabs -->
+  <div class="controls-bar" style="gap:0.25rem;padding-bottom:0;">
+    <button class="view-tab active" id="tab-lookup">Lookup</button>
+    <button class="view-tab" id="tab-summoned">Summoned Buffs</button>
+  </div>
+
+  <!-- Filters / Search (lookup view) -->
+  <div class="controls-bar" id="lookup-controls">
     <input type="text" class="search-input" id="search" placeholder="Search companions...">
     <select class="filter-select" id="filter-stat">
       <option value="">All Stats</option>
@@ -24,8 +30,61 @@
     </select>
   </div>
 
-  <!-- Two-panel layout -->
-  <div class="page-body">
+  <!-- Filters (summoned view) -->
+  <div class="controls-bar" id="summoned-controls" style="display:none;">
+    <select class="filter-select" id="summoned-filter-stat">
+      <option value="">All Buff Stats</option>
+    </select>
+    <select class="filter-select" id="summoned-filter-scope">
+      <option value="">All Types</option>
+      <option value="self">Self Buffs</option>
+      <option value="enemy">Enemy Debuffs</option>
+    </select>
+  </div>
+
+  <style>
+    .view-tab {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-bottom: none;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      color: var(--text-secondary);
+      padding: 0.45rem 1rem;
+      font-size: 0.9rem;
+      font-family: var(--font-main);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .view-tab:hover { color: var(--text-primary); background: var(--bg-hover); }
+    .view-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .summoned-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .summoned-card:hover { border-color: var(--border-accent); }
+    .summoned-stat { font-weight: 700; font-family: var(--font-mono); }
+    .summoned-group-header {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--highlight);
+      padding: 0.8rem 0 0.3rem;
+      border-bottom: 1px solid var(--border-default);
+      margin-bottom: 0.5rem;
+    }
+    .summoned-group-header:first-child { padding-top: 0; }
+  </style>
+
+  <!-- Two-panel layout (lookup view) -->
+  <div class="page-body" id="lookup-view">
     <div class="list-panel" id="list-panel">
       <div class="list-count" id="list-count"></div>
       <div id="companion-list"></div>
@@ -33,6 +92,12 @@
     <div class="detail-panel" id="detail-panel">
       <div class="empty-state">Select a companion to view details</div>
     </div>
+  </div>
+
+  <!-- Summoned buffs view -->
+  <div id="summoned-view" style="display:none; max-width:900px; margin:0 auto; padding:1rem 1.5rem 3rem;">
+    <div id="summoned-count" style="color:var(--text-muted);font-size:0.85rem;margin-bottom:0.75rem;"></div>
+    <div id="summoned-list"></div>
   </div>
 
   <!-- Data -->
