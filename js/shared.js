@@ -169,3 +169,46 @@ function highlightMatch(text, query) {
   var regex = new RegExp("(" + query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
   return escaped.replace(regex, '<mark>$1</mark>');
 }
+
+// ---- Community notice popup (shows every visit) ----
+(function () {
+  var overlay = document.createElement("div");
+  overlay.id = "nwc-notice-overlay";
+  overlay.innerHTML =
+    '<div id="nwc-notice-box">' +
+    '<div style="font-size:1.2rem;font-weight:700;color:#f0883e;margin-bottom:0.75rem;">Help Us Improve!</div>' +
+    '<p style="color:#e6edf3;font-size:0.92rem;line-height:1.6;margin:0 0 0.75rem;">' +
+    'This compendium may contain <strong>missing or outdated information</strong>. ' +
+    'We depend on the community to help keep it accurate.' +
+    '</p>' +
+    '<p style="color:#8b949e;font-size:0.88rem;line-height:1.5;margin:0 0 1rem;">' +
+    'If you spot anything wrong or missing, please submit a <strong>Report</strong> with a screenshot. ' +
+    'Your contributions help every Neverwinter player.' +
+    '</p>' +
+    '<div style="display:flex;gap:0.5rem;justify-content:center;">' +
+    '<a href="reports.html" id="nwc-notice-report" style="background:#58a6ff;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.9rem;">Submit a Report</a>' +
+    '<button id="nwc-notice-close" style="background:#30363d;color:#e6edf3;border:1px solid #30363d;padding:0.5rem 1.2rem;border-radius:6px;cursor:pointer;font-size:0.9rem;">Got it</button>' +
+    '</div>' +
+    '</div>';
+
+  var style = document.createElement("style");
+  style.textContent =
+    '#nwc-notice-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem;}' +
+    '#nwc-notice-box{background:#161b22;border:2px solid #f0883e;border-radius:12px;padding:1.5rem 2rem;max-width:480px;width:100%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.5);}' +
+    '#nwc-notice-close:hover{background:#21262d;border-color:#58a6ff;}' +
+    '#nwc-notice-report:hover{background:#79b8ff;}';
+  document.head.appendChild(style);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.body.appendChild(overlay);
+    document.getElementById("nwc-notice-close").addEventListener("click", function () {
+      overlay.remove();
+    });
+    document.getElementById("nwc-notice-report").addEventListener("click", function () {
+      overlay.remove();
+    });
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) overlay.remove();
+    });
+  });
+})();
