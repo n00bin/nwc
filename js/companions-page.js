@@ -348,8 +348,9 @@
   var summonedControls = document.getElementById("summoned-controls");
   var summonedList = document.getElementById("summoned-list");
   var summonedCount = document.getElementById("summoned-count");
-  var summonedFilterStat = document.getElementById("summoned-filter-stat");
-  var summonedFilterScope = document.getElementById("summoned-filter-scope");
+  var summonedSearch = document.getElementById("summoned-search");
+  var enhancementControls = document.getElementById("enhancement-controls");
+  var enhancementSearch = document.getElementById("enhancement-search");
 
   // Build summoned data from summonedBuff field
   var summonedData = [];
@@ -370,11 +371,12 @@
     });
   }
 
-  // No type filter needed - party buffs only
-  summonedFilterStat.style.display = "none";
-
   function renderSummonedView() {
-    var filtered = summonedData;
+    var query = summonedSearch.value.trim().toLowerCase();
+    var filtered = summonedData.filter(function (s) {
+      if (query && (s.companionName + " " + s.buff).toLowerCase().indexOf(query) === -1) return false;
+      return true;
+    });
 
     // Sort: party scope first, then by scope
     filtered.sort(function (a, b) {
@@ -425,9 +427,11 @@
   ];
 
   function renderEnhancementView() {
+    var query = enhancementSearch.value.trim().toLowerCase();
     var html = "";
     for (var i = 0; i < enhancementRanking.length; i++) {
       var e = enhancementRanking[i];
+      if (query && (e.name + " " + e.benefit + " " + e.companions.join(" ")).toLowerCase().indexOf(query) === -1) continue;
       html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
       html += '<div style="display:flex;justify-content:space-between;align-items:center;">';
       html += '<div>';
@@ -452,6 +456,7 @@
     summonedView.style.display = activeTab === "summoned" ? "" : "none";
     summonedControls.style.display = activeTab === "summoned" ? "" : "none";
     enhancementView.style.display = activeTab === "enhancements" ? "" : "none";
+    enhancementControls.style.display = activeTab === "enhancements" ? "" : "none";
   }
 
   tabLookup.addEventListener("click", function () {
@@ -468,8 +473,8 @@
     renderEnhancementView();
   });
 
-  summonedFilterStat.addEventListener("change", renderSummonedView);
-  summonedFilterScope.addEventListener("change", renderSummonedView);
+  summonedSearch.addEventListener("input", renderSummonedView);
+  enhancementSearch.addEventListener("input", renderEnhancementView);
 
   // ---- Initial render ----
   renderList(COMPANIONS_DATA);

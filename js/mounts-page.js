@@ -502,10 +502,12 @@
     { rank: 6, power: "Ferocity", effect: "When you or a party member are struck, chance to gain Ferocity (+1.6% additional damage per stack, up to 3 stacks for 10s)", mounts: ["Turmish Lion"] },
   ];
 
-  function renderCombatRanking(data, container) {
+  function renderCombatRanking(data, container, query) {
+    query = (query || "").toLowerCase();
     var html = "";
     for (var i = 0; i < data.length; i++) {
       var d = data[i];
+      if (query && (d.power + " " + d.effect + " " + (d.mounts || []).join(" ")).toLowerCase().indexOf(query) === -1) continue;
       html += '<div class="ranking-card" style="flex-direction:column;align-items:stretch;">';
       html += '<div style="font-weight:600;">';
       if (d.rank) html += '<span style="color:var(--highlight);margin-right:0.5rem;">#' + d.rank + '</span>';
@@ -516,7 +518,7 @@
       html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(d.effect) + '</div>';
       html += '</div>';
     }
-    document.getElementById(container).innerHTML = html;
+    document.getElementById(container).innerHTML = html || '<div class="empty-state">No results match your search</div>';
   }
 
   function renderSimpleList(data, container) {
@@ -537,15 +539,27 @@
   // Tab switching
   var tabCombat = document.getElementById("tab-combat");
   var combatView = document.getElementById("combat-view");
+  var combatControls = document.getElementById("combat-controls");
+  var combatSearchInput = document.getElementById("combat-search");
+  var stdpsControls = document.getElementById("stdps-controls");
+  var stdpsSearchInput = document.getElementById("stdps-search");
+  var equipControls = document.getElementById("equip-controls");
+  var equipSearchInput = document.getElementById("equip-search");
+
+  var activeRankingTab = "lookup";
 
   function switchMountTab(activeTab) {
+    activeRankingTab = activeTab;
     var tabs = [tabLookup, tabCombat, tabStdps, tabEquip];
     for (var t = 0; t < tabs.length; t++) tabs[t].classList.remove("active");
     lookupView.style.display = "none";
     lookupControls.style.display = "none";
     combatView.style.display = "none";
+    combatControls.style.display = "none";
     stdpsView.style.display = "none";
+    stdpsControls.style.display = "none";
     equipView.style.display = "none";
+    equipControls.style.display = "none";
   }
 
   tabLookup.addEventListener("click", function () {
@@ -558,19 +572,32 @@
     switchMountTab("combat");
     tabCombat.classList.add("active");
     combatView.style.display = "";
+    combatControls.style.display = "";
     renderCombatRanking(combatData, "combat-list");
   });
   tabStdps.addEventListener("click", function () {
     switchMountTab("stdps");
     tabStdps.classList.add("active");
     stdpsView.style.display = "";
+    stdpsControls.style.display = "";
     renderCombatRanking(stdpsData, "stdps-list");
   });
   tabEquip.addEventListener("click", function () {
     switchMountTab("equip");
     tabEquip.classList.add("active");
     equipView.style.display = "";
+    equipControls.style.display = "";
     renderCombatRanking(equipData, "equip-list");
+  });
+
+  combatSearchInput.addEventListener("input", function () {
+    renderCombatRanking(combatData, "combat-list", combatSearchInput.value);
+  });
+  stdpsSearchInput.addEventListener("input", function () {
+    renderCombatRanking(stdpsData, "stdps-list", stdpsSearchInput.value);
+  });
+  equipSearchInput.addEventListener("input", function () {
+    renderCombatRanking(equipData, "equip-list", equipSearchInput.value);
   });
 
   // ---- Initial render ----
