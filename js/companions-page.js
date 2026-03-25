@@ -351,47 +351,55 @@
   var summonedFilterStat = document.getElementById("summoned-filter-stat");
   var summonedFilterScope = document.getElementById("summoned-filter-scope");
 
-  // Build summoned data: companion + enhancement joined
+  // Build summoned data from summonedBuff field
   var summonedData = [];
   for (var si = 0; si < COMPANIONS_DATA.length; si++) {
     var comp = COMPANIONS_DATA[si];
-    var enh = enhancementMap[comp.enhancementRef];
-    if (!enh) continue;
+    if (!comp.summonedBuff) continue;
+    var sb = comp.summonedBuff;
     summonedData.push({
       companionName: comp.name,
       companionId: comp.id,
-      enhancementName: enh.name,
-      stat: enh.stat,
-      value: enh.value,
-      scope: enh.scope || "self",
-      notes: enh.notes || ""
+      buff: sb.buff,
+      scope: sb.scope || "party",
+      range: sb.range || null,
+      damageBoost: sb.damageBoost || null,
+      condition: sb.condition || null,
+      uptime: sb.uptime || null
     });
   }
 
-  // Populate summoned stat filter
-  var summonedStats = {};
-  for (var ss = 0; ss < summonedData.length; ss++) {
-    summonedStats[summonedData[ss].stat] = true;
-  }
-  populateFilter(summonedFilterStat, Object.keys(summonedStats).sort(), "All Buff Stats");
+  // Populate scope filter with actual values
+  populateFilter(summonedFilterStat, ["Damage Buff", "Damage Debuff", "Stat Buff", "Stat Debuff", "CA Grant", "Shield/Heal"], "All Types");
 
   function renderSummonedView() {
-    var statVal = summonedFilterStat.value;
+    var typeVal = summonedFilterStat.value;
     var scopeVal = summonedFilterScope.value;
 
     var filtered = summonedData.filter(function (s) {
-      if (statVal && s.stat !== statVal) return false;
       if (scopeVal && s.scope !== scopeVal) return false;
+      if (typeVal) {
+        var buff = s.buff.toLowerCase();
+        if (typeVal === "Damage Buff" && !(s.damageBoost && s.scope !== "enemy") && !buff.match(/damage buff/)) return false;
+        if (typeVal === "Damage Debuff" && !(s.damageBoost && s.scope === "enemy") && !buff.match(/damage debuff|damage reduction debuff/)) return false;
+        if (typeVal === "Stat Buff" && (s.damageBoost || buff.indexOf("combat advantage,") === -1 && !buff.match(/\+\d+%?\s+(power|crit|defense|movement|action|recharge|forte|combat adv|incoming|awareness|accuracy|deflect)/i))) return false;
+        if (typeVal === "Stat Debuff" && s.scope !== "enemy") return false;
+        if (typeVal === "CA Grant" && buff.indexOf("grant combat advantage") === -1) return false;
+        if (typeVal === "Shield/Heal" && buff.indexOf("shield") === -1 && buff.indexOf("heal") === -1) return false;
+      }
       return true;
     });
 
-    // Sort by value descending, then by stat name
+    // Sort: party scope first, then by scope
     filtered.sort(function (a, b) {
-      if (a.stat !== b.stat) return a.stat < b.stat ? -1 : 1;
-      return b.value - a.value;
+      if (a.scope !== b.scope) {
+        var order = { party: 0, self: 1, enemy: 2, mixed: 3 };
+        return (order[a.scope] || 9) - (order[b.scope] || 9);
+      }
+      return a.companionName < b.companionName ? -1 : 1;
     });
 
-    summonedCount.textContent = filtered.length + " companions";
+    summonedCount.textContent = filtered.length + " of " + summonedData.length + " companions with summoned buffs";
 
     if (filtered.length === 0) {
       summonedList.innerHTML = '<div class="empty-state">No companions match your filters</div>';
@@ -399,25 +407,34 @@
     }
 
     var html = "";
-    var lastStat = "";
+    var lastScope = "";
     for (var i = 0; i < filtered.length; i++) {
       var s = filtered[i];
-      // Group header
-      if (s.stat !== lastStat) {
-        var scopeLabel = s.scope === "enemy" ? " (Enemy Debuff)" : " (Self Buff)";
-        html += '<div class="summoned-group-header">' + escapeHtml(s.stat) + scopeLabel + '</div>';
-        lastStat = s.stat;
+
+      // Group header by scope
+      if (s.scope !== lastScope) {
+        var scopeLabels = { party: "Party Buffs", self: "Self Buffs", enemy: "Enemy Debuffs / CA Grant", mixed: "Mixed" };
+        html += '<div class="summoned-group-header">' + (scopeLabels[s.scope] || s.scope) + '</div>';
+        lastScope = s.scope;
       }
 
-      var valueClass = s.scope === "enemy" ? "stat-negative" : "stat-positive";
-      var prefix = s.scope === "enemy" ? "-" : "+";
+      var scopeClass = s.scope === "enemy" ? "stat-negative" : "stat-positive";
+      var scopeBadge = s.scope === "party" ? '<span class="badge badge-utility" style="font-size:0.65rem;">Party</span>'
+                     : s.scope === "enemy" ? '<span class="badge badge-offense" style="font-size:0.65rem;">Enemy</span>'
+                     : '<span class="badge badge-defense" style="font-size:0.65rem;">Self</span>';
 
-      html += '<div class="summoned-card">';
-      html += '<div>';
+      html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
+      html += '<div style="display:flex;justify-content:space-between;align-items:center;">';
       html += '<div style="font-weight:600;">' + escapeHtml(s.companionName) + '</div>';
-      html += '<div style="font-size:0.82rem;color:var(--text-muted);">' + escapeHtml(s.enhancementName) + '</div>';
+      html += scopeBadge;
       html += '</div>';
-      html += '<div class="summoned-stat ' + valueClass + '">' + prefix + s.value + '%</div>';
+      html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(s.buff) + '</div>';
+      if (s.range) {
+        html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Range: ' + s.range + "'</div>";
+      }
+      if (s.condition) {
+        html += '<div style="font-size:0.78rem;color:var(--highlight);margin-top:0.2rem;">Condition: ' + escapeHtml(s.condition) + '</div>';
+      }
       html += '</div>';
     }
     summonedList.innerHTML = html;
