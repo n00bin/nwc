@@ -434,7 +434,7 @@
       { name: "Deflect", cap: "90%", desc: "Percentage chance to deflect a hit, reducing its damage based on Deflect Severity.", formula: "Deflect Chance = Deflect %", details: [["Cap", "90%"], ["Rating to Cap", "= Total Item Level"], ["Priority", "Low priority defensive stat"]] },
       { name: "Deflect Severity", cap: "120%", desc: "Reduces damage from deflected hits. Countered by opponent's Accuracy.", formula: "Deflected Damage = Base / (1 + your Deflect Severity % - enemy Accuracy %)", details: [["Cap", "120%"], ["Rating to Cap", "= Total Item Level"]] },
       { section: "Special Stats" },
-      { name: "Forte", cap: "120%", desc: "Distributes bonus percentage to three role-specific stats based on your class.", formula: "50% to primary role stat, 25% to offensive, 25% to defensive", details: [["Cap", "120%"], ["Rating to Cap", "= Total Item Level"], ["DPS Primary", "50% goes to Power"], ["Tank Primary", "50% goes to Defense"], ["Healer Primary", "50% goes to resource regen"]] },
+      { name: "Forte", cap: "120%", desc: "Distributes bonus percentage to three role-specific stats based on your class and paragon path. The 50% primary stat depends on your role, while the 25% offensive and defensive stats are class-specific.", formula: "50% to primary role stat, 25% to offensive, 25% to defensive", details: [["Cap", "120%"], ["Rating to Cap", "= Total Item Level"]], forteTable: true },
       { name: "Maximum Hit Points", cap: "No cap", desc: "Total health pool. Scales with item level and Constitution.", formula: "(TIL x 10 + role bonus + item HP) x (1 + CON / 200)", details: [["Cap", "No percentage cap"], ["Scaling", "1:10 ratio with Total Item Level"], ["Tank Bonus", "+20% from role"], ["Healer Bonus", "+10% from role"]] },
       { section: "Utility Stats" },
       { name: "Action Point Gain", cap: "No cap", desc: "Multiplies the rate you fill your Daily Power meter. Does NOT affect Encounter Power cooldowns.", formula: "AP Generation x (1 + AP Gain %)", details: [["Cap", "No cap"], ["Rating", "400 points = 1%"], ["Note", "Recovery gives both AP Gain and Recharge Speed, but they are separate stats"]] },
@@ -444,6 +444,27 @@
       { section: "Healing Stats" },
       { name: "Outgoing Healing", cap: "120%", desc: "Multiplies all healing you provide to others.", formula: "Healing x (1 + Outgoing Healing %)", details: [["Cap", "120%"], ["Priority", "Match equally with Power for healers"]] },
       { name: "Incoming Healing", cap: "120%", desc: "Multiplies all healing you receive from any source.", formula: "Healing Received x (1 + Incoming Healing %)", details: [["Cap", "120%"], ["Note", "Multiplies independently of Power or Outgoing Healing"]] },
+    ];
+
+    var forteDistribution = [
+      { cls: "Barbarian", paragon: "Blademaster", role: "DPS", primary: "Power", offensive: "Critical Severity", defensive: "Awareness" },
+      { cls: "Barbarian", paragon: "Sentinel", role: "Tank", primary: "Defense", offensive: "Critical Severity", defensive: "Awareness" },
+      { cls: "Bard", paragon: "Songblade", role: "DPS", primary: "Power", offensive: "Critical Severity", defensive: "Deflect Severity" },
+      { cls: "Bard", paragon: "Minstrel", role: "Healer", primary: "Performance Regen", offensive: "Critical Severity", defensive: "Deflect Severity" },
+      { cls: "Cleric", paragon: "Arbiter", role: "DPS", primary: "Divinity Regen", offensive: "Critical Severity", defensive: "Deflect" },
+      { cls: "Cleric", paragon: "Devout", role: "Healer", primary: "Divinity Regen", offensive: "Critical Severity", defensive: "Deflect" },
+      { cls: "Fighter", paragon: "Dreadnought", role: "DPS", primary: "Power", offensive: "Accuracy", defensive: "Critical Avoidance" },
+      { cls: "Fighter", paragon: "Vanguard", role: "Tank", primary: "Defense", offensive: "Critical Strike", defensive: "Deflect Severity" },
+      { cls: "Paladin", paragon: "Oathkeeper", role: "Healer", primary: "Divinity Regen", offensive: "Accuracy", defensive: "Awareness" },
+      { cls: "Paladin", paragon: "Justicar", role: "Tank", primary: "Defense", offensive: "Critical Strike", defensive: "Deflect Severity" },
+      { cls: "Ranger", paragon: "Hunter", role: "DPS", primary: "Power", offensive: "Accuracy", defensive: "Deflect" },
+      { cls: "Ranger", paragon: "Warden", role: "DPS", primary: "Power", offensive: "Accuracy", defensive: "Deflect" },
+      { cls: "Rogue", paragon: "Assassin", role: "DPS", primary: "Power", offensive: "Combat Advantage", defensive: "Deflect Severity" },
+      { cls: "Rogue", paragon: "Whisperknife", role: "DPS", primary: "Power", offensive: "Combat Advantage", defensive: "Deflect Severity" },
+      { cls: "Warlock", paragon: "Hellbringer", role: "DPS", primary: "Power", offensive: "Critical Strike", defensive: "Awareness" },
+      { cls: "Warlock", paragon: "Soulweaver", role: "Healer", primary: "Soulweave Regen", offensive: "Critical Strike", defensive: "Awareness" },
+      { cls: "Wizard", paragon: "Arcanist", role: "DPS", primary: "Power", offensive: "Combat Advantage", defensive: "Critical Avoidance" },
+      { cls: "Wizard", paragon: "Thaumaturge", role: "DPS", primary: "Power", offensive: "Combat Advantage", defensive: "Critical Avoidance" },
     ];
 
     function renderStats() {
@@ -460,6 +481,19 @@
         html += '<div class="stat-formula">' + s.formula + '</div>';
         for (var d = 0; d < s.details.length; d++) {
           html += '<div class="stat-info-row"><span class="stat-info-label">' + s.details[d][0] + '</span><span class="stat-info-value">' + s.details[d][1] + '</span></div>';
+        }
+        // Forte distribution table
+        if (s.forteTable) {
+          html += '<div style="margin-top:0.75rem;"><table class="priority-table"><tr><th>Class</th><th>Paragon</th><th>Role</th><th>50% Primary</th><th>25% Offensive</th><th>25% Defensive</th></tr>';
+          for (var f = 0; f < forteDistribution.length; f++) {
+            var fd = forteDistribution[f];
+            var roleColor = fd.role === "DPS" ? "var(--stat-positive)" : fd.role === "Tank" ? "var(--stat-neutral)" : "var(--highlight)";
+            html += '<tr><td><strong>' + fd.cls + '</strong></td><td>' + fd.paragon + '</td>';
+            html += '<td style="color:' + roleColor + '">' + fd.role + '</td>';
+            html += '<td style="color:var(--highlight)">' + fd.primary + '</td>';
+            html += '<td>' + fd.offensive + '</td><td>' + fd.defensive + '</td></tr>';
+          }
+          html += '</table></div>';
         }
         html += '</div></div>';
       }
