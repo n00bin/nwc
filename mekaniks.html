@@ -71,8 +71,37 @@
 <body>
   <nav class="navbar"></nav>
   <div class="mek-container">
+    <h2 style="margin-bottom:0.5rem;">Core Mechanics</h2>
+
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header">
+        <span class="stat-card-name">Rating to Percentage</span>
+      </div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-desc">Every stat has a rating value that converts to a percentage. The conversion depends on your Total Item Level (TIL).</div>
+        <div class="stat-formula">Percentage = 50 - (TIL - Rating) / 1000 + Percent Bonuses</div>
+        <div class="stat-info-row"><span class="stat-info-label">At 0 rating</span><span class="stat-info-value">~45% base</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">At TIL rating</span><span class="stat-info-value">50% from rating alone</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Every 1,000 rating</span><span class="stat-info-value">+1% to stat percentage</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">To reach cap</span><span class="stat-info-value">Need rating + percent bonuses from gear, boons, companions, etc.</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card open" style="margin-bottom:1.5rem;">
+      <div class="stat-card-header">
+        <span class="stat-card-name">Combined Rating</span>
+      </div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-desc">Combined Rating is a single number that adds equally to ALL your core stats at once. It comes from companions, mounts, and certain gear. It's the most efficient way to raise multiple stats simultaneously.</div>
+        <div class="stat-formula">Combined Rating adds its value to every core stat (Power, Defense, Crit Strike, etc.)</div>
+        <div class="stat-info-row"><span class="stat-info-label">Sources</span><span class="stat-info-value">Companions, mounts, insignias, companion gear</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Example</span><span class="stat-info-value">+2,700 CR = +2,700 to Power, Defense, Crit Strike, etc.</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Why it matters</span><span class="stat-info-value">Higher CR items raise all stats, not just one</span></div>
+      </div>
+    </div>
+
     <h2 style="margin-bottom:0.5rem;">Stats Reference</h2>
-    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1.25rem;">Click any stat to expand details. All caps assume max item level.</p>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1.25rem;">Click any stat to expand details.</p>
     <div id="stats-list"></div>
   </div>
   <script src="js/shared.js"></script>
