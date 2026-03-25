@@ -163,6 +163,7 @@
     // ---- Power ----
     html += '<div class="section-header">Power</div>';
     if (pw) {
+      html += '<div class="proc-block">';
       html += '<div class="detail-name">' + escapeHtml(pw.name) + "</div>";
 
       // Slot badges
@@ -195,6 +196,8 @@
         html += '<div style="margin-top:0.4rem;"><span class="badge" style="background:var(--highlight);color:#000;">Zone Conditional</span></div>';
       }
 
+      html += "</div>"; // close proc-block
+
       if (pw.notes) {
         html += '<div class="effect-text">' + escapeHtml(cleanNotes(pw.notes)) + "</div>";
       }
@@ -205,6 +208,7 @@
     // ---- Enhancement ----
     html += '<div class="section-header">Enhancement</div>';
     if (en) {
+      html += '<div class="proc-block">';
       html += '<div class="detail-name">' + escapeHtml(en.name) + "</div>";
       html += '<div class="detail-meta">';
       html += "<span>IL " + formatNumber(en.item_level) + "</span>";
@@ -218,6 +222,7 @@
       html += '<span class="stat-name">' + escapeHtml(en.stat) + "</span>";
       html += renderStatValue(en.value, en.type);
       html += "</div>";
+      html += "</div>"; // close proc-block
 
       if (en.notes) {
         html += '<div class="effect-text">' + escapeHtml(cleanNotes(en.notes)) + "</div>";
