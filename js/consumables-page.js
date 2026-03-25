@@ -123,6 +123,9 @@
       html += "<span>Group: " + escapeHtml(buff.exclusiveGroup) + "</span>";
     }
     html += "</div>";
+    if (buff.source) {
+      html += '<div style="margin-top:0.4rem;font-size:0.85rem;"><span style="color:var(--text-muted);">Source: </span><span style="color:var(--highlight);">' + escapeHtml(buff.source) + "</span></div>";
+    }
     html += "</div>";
 
     // ---- Rating Stats ----
