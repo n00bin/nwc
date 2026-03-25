@@ -1,0 +1,68 @@
+name: Update Patch Notes
+
+on:
+  schedule:
+    # Run daily at 6 AM UTC (1 AM EST)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest patch notes from API
+        run: |
+          python3 << 'PYEOF'
+          import json, urllib.request
+
+          # Fetch all patch notes
+          all_notes = []
+          offset = 0
+          while True:
+              url = f'https://api.arcgames.com/v1.0/games/nw/news?tag=nw-patch-notes&limit=50&offset={offset}'
+              with urllib.request.urlopen(url) as resp:
+                  data = json.loads(resp.read().decode('utf-8'))
+              notes = data.get('news', [])
+              all_notes.extend(notes)
+              if not data.get('more_news') or len(notes) == 0:
+                  break
+              offset += 50
+
+          # Load existing
+          try:
+              with open('data/patch-notes.json', 'r', encoding='utf-8') as f:
+                  existing = json.load(f)
+              existing_ids = {n['id'] for n in existing}
+          except FileNotFoundError:
+              existing_ids = set()
+
+          new_count = sum(1 for n in all_notes if n['id'] not in existing_ids)
+          print(f'Total from API: {len(all_notes)}, New: {new_count}')
+
+          if new_count > 0:
+              # Save JSON
+              with open('data/patch-notes.json', 'w', encoding='utf-8') as f:
+                  json.dump(all_notes, f, indent=2, ensure_ascii=False)
+
+              # Save JS variable version
+              with open('data/patch-notes-var.js', 'w', encoding='utf-8') as f:
+                  f.write('const PATCH_NOTES_DATA = ')
+                  json.dump(all_notes, f, indent=2, ensure_ascii=False)
+                  f.write(';')
+
+              print(f'Updated with {new_count} new patch notes. Total: {len(all_notes)}')
+          else:
+              print('No new patch notes found.')
+          PYEOF
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/patch-notes.json data/patch-notes-var.js
+          git diff --cached --quiet || (git commit -m "Auto-update patch notes $(date -u +%Y-%m-%d)" && git push)

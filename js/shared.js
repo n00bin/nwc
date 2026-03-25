@@ -10,6 +10,7 @@ const NAV_PAGES = [
   { label: "Consumables", href: "consumables.html" },
   { label: "Artifacts",    href: "artifacts.html" },
   { label: "Mekaniks",    href: "mekaniks.html" },
+  { label: "Patch Notes", href: "patchnotes.html" },
   { label: "Reports",    href: "reports.html" },
 ];
 

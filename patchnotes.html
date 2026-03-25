@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patch Notes — Neverwinter Compendium</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .pn-container { max-width: 900px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
+    .pn-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: border-color 0.15s;
+    }
+    .pn-card:hover { border-color: var(--accent); }
+    .pn-card a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 600;
+      flex: 1;
+    }
+    .pn-card a:hover { color: var(--accent); }
+    .pn-platforms { display: flex; gap: 0.3rem; flex-shrink: 0; margin-left: 0.5rem; }
+    .pn-plat {
+      font-size: 0.65rem;
+      padding: 0.1rem 0.35rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .pn-plat-pc { background: var(--accent); color: #fff; }
+    .pn-plat-ps { background: var(--slot-defense); color: #fff; }
+    .pn-plat-xbox { background: var(--stat-positive); color: #fff; }
+    .pn-year-header {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--highlight);
+      padding: 1.25rem 0 0.4rem;
+      border-bottom: 1px solid var(--border-default);
+      margin-bottom: 0.75rem;
+    }
+    .pn-year-header:first-child { padding-top: 0; }
+    .pn-count { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <div class="controls-bar">
+    <input type="text" class="search-input" id="search" placeholder="Search patch notes...">
+    <select class="filter-select" id="filter-platform">
+      <option value="">All Platforms</option>
+      <option value="ps">PlayStation</option>
+      <option value="pc">PC</option>
+      <option value="xbox">Xbox</option>
+    </select>
+    <select class="filter-select" id="filter-year">
+      <option value="">All Years</option>
+    </select>
+  </div>
+
+  <div class="pn-container">
+    <div class="pn-count" id="pn-count"></div>
+    <div id="pn-list"></div>
+  </div>
+
+  <script src="js/shared.js"></script>
+  <script>
+    renderNav("Patch Notes");
+
+    var patchNotes = [];
+    var searchInput = document.getElementById("search");
+    var filterPlatform = document.getElementById("filter-platform");
+    var filterYear = document.getElementById("filter-year");
+
+    // Load patch notes data
+    fetch("data/patch-notes.json")
+      .then(function(r) { return r.json(); })
+      .catch(function() {
+        // Fallback for file:// - load via script tag
+        return null;
+      })
+      .then(function(data) {
+        if (data) {
+          patchNotes = data;
+          init();
+        }
+      });
+
+    // Also support file:// via script tag fallback
+    var script = document.createElement("script");
+    script.src = "data/patch-notes-var.js";
+    script.onload = function() {
+      if (typeof PATCH_NOTES_DATA !== "undefined" && patchNotes.length === 0) {
+        patchNotes = PATCH_NOTES_DATA;
+        init();
+      }
+    };
+    script.onerror = function() {}; // ignore if not found
+    document.head.appendChild(script);
+
+    function init() {
+      // Populate year filter
+      var years = {};
+      for (var i = 0; i < patchNotes.length; i++) {
+        var match = patchNotes[i].title.match(/\d{1,2}\/\d{1,2}\/(\d{2,4})/);
+        if (match) {
+          var yr = match[1].length === 2 ? "20" + match[1] : match[1];
+          years[yr] = true;
+          patchNotes[i]._year = yr;
+        } else {
+          // Try to extract year from title
+          var yrMatch = patchNotes[i].title.match(/(20\d{2})/);
+          patchNotes[i]._year = yrMatch ? yrMatch[1] : "";
+        }
+      }
+      var yearList = Object.keys(years).sort().reverse();
+      var yearHtml = '<option value="">All Years</option>';
+      for (var y = 0; y < yearList.length; y++) {
+        yearHtml += '<option value="' + yearList[y] + '">' + yearList[y] + '</option>';
+      }
+      filterYear.innerHTML = yearHtml;
+      renderList();
+    }
+
+    function renderList() {
+      var query = searchInput.value.trim().toLowerCase();
+      var platVal = filterPlatform.value;
+      var yearVal = filterYear.value;
+
+      var filtered = patchNotes.filter(function(n) {
+        if (query && n.title.toLowerCase().indexOf(query) === -1 && (n.summary || "").toLowerCase().indexOf(query) === -1) return false;
+        if (platVal && (!n.platforms || n.platforms.indexOf(platVal) === -1)) return false;
+        if (yearVal && n._year !== yearVal) return false;
+        return true;
+      });
+
+      document.getElementById("pn-count").textContent = filtered.length + " of " + patchNotes.length + " patch notes";
+
+      if (filtered.length === 0) {
+        document.getElementById("pn-list").innerHTML = '<div class="empty-state">No patch notes match your filters</div>';
+        return;
+      }
+
+      var html = "";
+      var lastYear = "";
+      for (var i = 0; i < filtered.length; i++) {
+        var n = filtered[i];
+        // Year header
+        if (n._year !== lastYear && !yearVal) {
+          html += '<div class="pn-year-header">' + (n._year || "Unknown") + '</div>';
+          lastYear = n._year;
+        }
+
+        var url = "https://www.playneverwinter.com/en/news/detail/" + n.id;
+        var platforms = n.platforms || [];
+
+        html += '<div class="pn-card">';
+        html += '<a href="' + url + '" target="_blank" rel="noopener">' + escapeHtml(n.title) + '</a>';
+        html += '<div class="pn-platforms">';
+        if (platforms.indexOf("ps") !== -1) html += '<span class="pn-plat pn-plat-ps">PS</span>';
+        if (platforms.indexOf("pc") !== -1) html += '<span class="pn-plat pn-plat-pc">PC</span>';
+        if (platforms.indexOf("xbox") !== -1) html += '<span class="pn-plat pn-plat-xbox">XB</span>';
+        html += '</div></div>';
+      }
+      document.getElementById("pn-list").innerHTML = html;
+    }
+
+    searchInput.addEventListener("input", renderList);
+    filterPlatform.addEventListener("change", renderList);
+    filterYear.addEventListener("change", renderList);
+  </script>
+</body>
+</html>
