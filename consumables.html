@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consumables — Neverwinter Compendium</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <!-- Filters / Search -->
+  <div class="controls-bar">
+    <input type="text" class="search-input" id="search" placeholder="Search consumables...">
+    <select class="filter-select" id="filter-category">
+      <option value="">All Categories</option>
+    </select>
+    <select class="filter-select" id="filter-expiration">
+      <option value="">All Durations</option>
+      <option value="persist">Persists through death</option>
+      <option value="on_death">Lost on death</option>
+      <option value="permanent">Permanent</option>
+    </select>
+  </div>
+
+  <!-- Two-panel layout -->
+  <div class="page-body">
+    <div class="list-panel" id="list-panel">
+      <div class="list-count" id="list-count"></div>
+      <div id="buff-list"></div>
+    </div>
+    <div class="detail-panel" id="detail-panel">
+      <div class="empty-state">Select a consumable to view details</div>
+    </div>
+  </div>
+
+  <!-- Data -->
+  <script src="data/buffs.js"></script>
+
+  <!-- Scripts -->
+  <script src="js/shared.js"></script>
+  <script src="js/consumables-page.js"></script>
+</body>
+</html>

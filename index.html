@@ -24,6 +24,10 @@
       <div class="card-title">Companions</div>
       <div class="card-count" id="companion-count">Loading...</div>
     </a>
+    <a href="consumables.html" class="landing-card" style="text-decoration:none; color:inherit;">
+      <div class="card-title">Consumables</div>
+      <div class="card-count" id="buff-count">Loading...</div>
+    </a>
     <a href="reports.html" class="landing-card" style="text-decoration:none; color:inherit;">
       <div class="card-title">Reports</div>
       <div class="card-count">Bugs, missing items &amp; suggestions</div>
@@ -33,11 +37,13 @@
   <!-- Data files for counts -->
   <script src="data/mounts.js"></script>
   <script src="data/companions.js"></script>
+  <script src="data/buffs.js"></script>
   <script src="js/shared.js"></script>
   <script>
     renderNav("Home");
     document.getElementById("mount-count").textContent = MOUNTS_DATA.length + " mounts";
     document.getElementById("companion-count").textContent = COMPANIONS_DATA.length + " companions";
+    document.getElementById("buff-count").textContent = BUFFS_DATA.length + " buffs";
   </script>
 </body>
 </html>
