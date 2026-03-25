@@ -314,31 +314,35 @@
       html += '<div class="detail-meta">No equip power data</div>';
     }
 
-    // ---- Insignia Bonuses (all compatible) ----
+    // ---- Insignia Bonuses (all compatible, collapsible) ----
     html += '<div class="section-header">Compatible Insignia Bonuses (' + compatibleBonuses.length + ')</div>';
     if (compatibleBonuses.length > 0) {
       for (var bi = 0; bi < compatibleBonuses.length; bi++) {
         var ib = compatibleBonuses[bi];
-        html += '<div class="card" style="margin-bottom:0.6rem;padding:0.8rem;">';
-        html += '<div class="detail-name">' + escapeHtml(ib.name) + "</div>";
-
-        // Required insignias
+        html += '<div class="card ib-collapse" style="margin-bottom:0.6rem;padding:0.6rem 0.8rem;cursor:pointer;">';
+        // Header row (always visible) - name + insignia badges
+        html += '<div class="ib-header" style="display:flex;justify-content:space-between;align-items:center;">';
+        html += '<div>';
+        html += '<span style="font-weight:600;">' + escapeHtml(ib.name) + "</span>";
         if (ib.requiredInsignias && ib.requiredInsignias.length > 0) {
-          html += '<div style="margin:0.3rem 0;">';
+          html += '<span style="margin-left:0.5rem;">';
           for (var ri = 0; ri < ib.requiredInsignias.length; ri++) {
             html += renderInsigniaBadge(ib.requiredInsignias[ri]) + " ";
           }
-          html += "</div>";
+          html += "</span>";
         }
-
-        // Stats from bonus
+        html += '</div>';
+        html += '<span class="ib-arrow" style="color:var(--text-muted);font-size:0.8rem;transition:transform 0.2s;">&#9654;</span>';
+        html += "</div>";
+        // Body (hidden by default)
+        html += '<div class="ib-body" style="display:none;margin-top:0.5rem;">';
         if (ib.stats && ib.stats.length > 0) {
           html += renderStatsTable(ib.stats);
         }
-
         if (ib.effectText) {
           html += '<div class="effect-text">' + escapeHtml(ib.effectText) + "</div>";
         }
+        html += "</div>";
         html += "</div>";
       }
     } else {
@@ -352,6 +356,24 @@
     }
 
     detailPanel.innerHTML = html;
+
+    // Wire up collapsible insignia bonus cards
+    var ibCards = detailPanel.querySelectorAll(".ib-collapse");
+    for (var ibc = 0; ibc < ibCards.length; ibc++) {
+      ibCards[ibc].addEventListener("click", function () {
+        var body = this.querySelector(".ib-body");
+        var arrow = this.querySelector(".ib-arrow");
+        if (body.style.display === "none") {
+          body.style.display = "";
+          arrow.style.transform = "rotate(90deg)";
+          this.style.borderColor = "var(--accent)";
+        } else {
+          body.style.display = "none";
+          arrow.style.transform = "";
+          this.style.borderColor = "";
+        }
+      });
+    }
   }
 
   // ---- Render combat power equip bonuses (handles roleMap) ----
