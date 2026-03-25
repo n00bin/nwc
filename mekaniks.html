@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mekaniks — Neverwinter Compendium</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .mek-container { max-width: 900px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .stat-card:hover { border-color: var(--border-accent); }
+    .stat-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .stat-card-name { font-weight: 700; font-size: 1.05rem; }
+    .stat-card-cap { font-family: var(--font-mono); font-weight: 600; font-size: 0.9rem; }
+    .stat-card-body { display: none; margin-top: 0.75rem; }
+    .stat-card.open .stat-card-body { display: block; }
+    .stat-card.open { border-color: var(--accent); }
+    .stat-info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--border-default);
+      font-size: 0.88rem;
+    }
+    .stat-info-row:last-child { border-bottom: none; }
+    .stat-info-label { color: var(--text-secondary); }
+    .stat-info-value { font-weight: 600; color: var(--text-primary); font-family: var(--font-mono); }
+    .stat-formula {
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--accent);
+      padding: 0.5rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+    .stat-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-top: 0.5rem;
+    }
+    .section-divider {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--highlight);
+      padding: 1.25rem 0 0.4rem;
+      border-bottom: 1px solid var(--border-default);
+      margin-bottom: 0.75rem;
+    }
+    .section-divider:first-child { padding-top: 0; }
+    .toggle-arrow { transition: transform 0.2s; font-size: 0.8rem; color: var(--text-muted); }
+    .stat-card.open .toggle-arrow { transform: rotate(90deg); }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+  <div class="mek-container">
+    <h2 style="margin-bottom:0.5rem;">Stats Reference</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1.25rem;">Click any stat to expand details. All caps assume max item level.</p>
+    <div id="stats-list"></div>
+  </div>
+  <script src="js/shared.js"></script>
+  <script>
+    renderNav("Mekaniks");
+
+    var stats = [
+      { section: "Offensive Stats" },
+      {
+        name: "Power", cap: "90%", type: "Offensive",
+        desc: "Multiplies all damage output. For healers, multiplies healing output instead.",
+        formula: "Damage x (1 + Power %)",
+        details: [
+          ["Cap", "90%"],
+          ["Rating to Cap", "= Total Item Level"],
+          ["Priority", "Top priority for DPS and Healers"],
+        ]
+      },
+      {
+        name: "Critical Strike", cap: "50%", type: "Offensive",
+        desc: "Percentage chance to land a critical hit. Has a unique hard cap lower than other stats.",
+        formula: "Crit Chance = Critical Strike %",
+        details: [
+          ["Cap", "50% (hard cap)"],
+          ["Rating to Cap", "~50,000 above enemy ratings"],
+          ["Note", "Should be balanced with Critical Severity"],
+          ["Healer Note", "Formula changes: Crit Chance = Crit Strike / (2.5 x Power)"],
+        ]
+      },
+      {
+        name: "Critical Severity", cap: "90%", type: "Offensive",
+        desc: "Multiplies damage of critical hits. Countered by opponent's Critical Avoidance.",
+        formula: "Crit Damage x (1 + your Crit Severity % - enemy Crit Avoidance %)",
+        details: [
+          ["Cap", "90%"],
+          ["Rating to Cap", "= Total Item Level"],
+          ["Note", "For healers, effectiveness is halved"],
+        ]
+      },
+      {
+        name: "Combat Advantage", cap: "90%", type: "Offensive",
+        desc: "Multiplies damage against surrounded enemies (blue stripes at their feet). Countered by Awareness.",
+        formula: "Damage x (1 + your CA % - enemy Awareness %)",
+        details: [
+          ["Cap", "90%"],
+          ["Rating to Cap", "= Total Item Level"],
+          ["Priority", "Equal to Power when positioning is maintained"],
+          ["Note", "All bosses have 90% Combat Advantage by default"],
+        ]
+      },
+      {
+        name: "Accuracy", cap: "90%", type: "Offensive",
+        desc: "Reduces the effectiveness of opponent's Deflect Severity.",
+        formula: "Deflected Damage = Base / (1 + enemy Deflect Severity % - your Accuracy %)",
+        details: [
+          ["Cap", "90%"],
+          ["Rating to Cap", "= Total Item Level"],
+          ["Priority", "Lowest priority offensive stat"],
+          ["Note", "Non-player enemies have 0% Accuracy"],
+        ]
+      },
+
+      { section: "Defensive Stats" },
+      {
+        name: "Defense", cap: "90%", type: "Defensive",
+        desc: "Divides all incoming damage, providing flat damage reduction.",
+        formula: "Damage Taken = Incoming Damage / (1 + Defense %)",
+        details: [
+          ["Cap", "90%"],
+          ["Rating to Cap", "= Total Item Level"],
+          ["Example", "50% Defense reduces damage by ~33%"],
+        ]
+      },
+      {
+        name: "Awareness", cap: "90%", type: "Defensive",
+        desc: "Reduces opponent's Combat Advantage bonus damage. Most important defensive stat above 45%.",
+        formula: "Damage Taken = Base x (1 + enemy CA % - your Awareness %)",
+        details: [
+          ["Cap", "90%"],
+          ["Rating to Cap", "= Total Item Level"],
+          ["Key Threshold", "Above 45%, becomes the most important defensive stat"],
+          ["Example", "50% Awareness vs 90% boss CA = you take 140% damage"],
+        ]
+      },
+      {
+        name: "Critical Avoidance", cap: "90%", type: "Defensive",
+        desc: "Reduces opponent's bonus damage from Critical Severity.",
+        formula: "Crit Damage Taken = Base x (1 + enemy Crit Sev % - your Crit Avoidance %)",
+        details: [
+          ["Cap", "90%"],
+          ["Rating to Cap", "~65,000 (higher than other stats)"],
+          ["Note", "Higher cap due to base +5,000 Critical Strike all characters start with"],
+        ]
+      },
+      {
+        name: "Deflect", cap: "90%", type: "Defensive",
+        desc: "Percentage chance to deflect a hit, reducing its damage based on Deflect Severity.",
+        formula: "Deflect Chance = Deflect %",
+        details: [
+          ["Cap", "90%"],
+          ["Rating to Cap", "= Total Item Level"],
+          ["Priority", "Low priority defensive stat"],
+        ]
+      },
+      {
+        name: "Deflect Severity", cap: "90%", type: "Defensive",
+        desc: "Reduces damage from deflected hits. Countered by opponent's Accuracy.",
+        formula: "Deflected Damage = Base / (1 + your Deflect Severity % - enemy Accuracy %)",
+        details: [
+          ["Cap", "90%"],
+          ["Rating to Cap", "= Total Item Level"],
+          ["Note", "Monsters have 90% Deflect Severity and 0% Accuracy"],
+        ]
+      },
+
+      { section: "Special Stats" },
+      {
+        name: "Forte", cap: "90%", type: "Special",
+        desc: "Distributes bonus percentage to three role-specific stats based on your class and paragon path.",
+        formula: "50% to primary role stat, 25% to offensive, 25% to defensive",
+        details: [
+          ["Cap", "90%"],
+          ["Rating to Cap", "= Total Item Level"],
+          ["DPS Primary", "50% goes to Power"],
+          ["Tank Primary", "50% goes to Defense"],
+          ["Healer Primary", "50% goes to Divinity/Soulweave/Performance Regen"],
+        ]
+      },
+      {
+        name: "Maximum Hit Points", cap: "No cap", type: "Special",
+        desc: "Total health pool. Scales with item level and Constitution ability score.",
+        formula: "(TIL x 10 + role bonus + item HP) x (1 + CON / 200)",
+        details: [
+          ["Cap", "No percentage cap"],
+          ["Scaling", "1:10 ratio with Total Item Level"],
+          ["Tank Bonus", "+20% from role"],
+          ["Healer Bonus", "+10% from role"],
+          ["CON Bonus", "+1% per point above 10"],
+        ]
+      },
+
+      { section: "Utility Stats" },
+      {
+        name: "Action Point Gain", cap: "No cap", type: "Utility",
+        desc: "Increases rate of Action Point generation for Daily powers.",
+        formula: "400 rating = 1% AP Gain",
+        details: [
+          ["Cap", "No hard cap"],
+          ["Rating", "400 points = 1%"],
+          ["Bonus", "Also provides +2% faster Encounter Power recharge"],
+          ["Scaling", "Bypasses scaling in scaled content"],
+        ]
+      },
+      {
+        name: "Recharge Speed", cap: "No cap", type: "Utility",
+        desc: "Divides recharge times of At-Will and Encounter powers.",
+        formula: "Recharge Time / (1 + Recharge Speed %)",
+        details: [
+          ["Cap", "No hard cap"],
+          ["Rating", "200 points = 1%"],
+          ["INT Bonus", "+1% per Intelligence point above 10"],
+          ["Scaling", "Bypasses scaling in scaled content"],
+        ]
+      },
+      {
+        name: "Movement Speed", cap: "No cap", type: "Utility",
+        desc: "Multiplies unmounted character movement speed.",
+        formula: "Movement Speed x (1 + MS %)",
+        details: [
+          ["Cap", "No hard cap"],
+        ]
+      },
+      {
+        name: "Stamina Regeneration", cap: "No cap", type: "Utility",
+        desc: "Rate at which stamina replenishes for dodge/block.",
+        formula: "Regen Rate x (1 + Stamina Regen %)",
+        details: [
+          ["Cap", "No hard cap"],
+          ["STR Bonus", "Strength ability score increases regen"],
+          ["Priority", "Important for Tanks"],
+        ]
+      },
+
+      { section: "Healing Stats" },
+      {
+        name: "Outgoing Healing", cap: "120%", type: "Healing",
+        desc: "Multiplies all healing you provide to others.",
+        formula: "Healing x (1 + Outgoing Healing %)",
+        details: [
+          ["Cap", "120% (higher than standard stats)"],
+          ["Priority", "Should be matched equally with Power for healers"],
+        ]
+      },
+      {
+        name: "Incoming Healing", cap: "120%", type: "Healing",
+        desc: "Multiplies all healing you receive from any source.",
+        formula: "Healing Received x (1 + Incoming Healing %)",
+        details: [
+          ["Cap", "120% (higher than standard stats)"],
+          ["Note", "Multiplies independently of Power or Outgoing Healing"],
+        ]
+      },
+    ];
+
+    function renderStats() {
+      var html = "";
+      for (var i = 0; i < stats.length; i++) {
+        var s = stats[i];
+        if (s.section) {
+          html += '<div class="section-divider">' + s.section + '</div>';
+          continue;
+        }
+
+        var capClass = s.cap === "No cap" ? "stat-neutral" : s.cap === "50%" ? "stat-negative" : "stat-positive";
+
+        html += '<div class="stat-card" data-idx="' + i + '">';
+        html += '<div class="stat-card-header">';
+        html += '<span class="stat-card-name">' + s.name + '</span>';
+        html += '<span><span class="stat-card-cap ' + capClass + '">' + s.cap + '</span> <span class="toggle-arrow">&#9654;</span></span>';
+        html += '</div>';
+        html += '<div class="stat-card-body">';
+        html += '<div class="stat-desc">' + s.desc + '</div>';
+        html += '<div class="stat-formula">' + s.formula + '</div>';
+        for (var d = 0; d < s.details.length; d++) {
+          html += '<div class="stat-info-row">';
+          html += '<span class="stat-info-label">' + s.details[d][0] + '</span>';
+          html += '<span class="stat-info-value">' + s.details[d][1] + '</span>';
+          html += '</div>';
+        }
+        html += '</div></div>';
+      }
+      document.getElementById("stats-list").innerHTML = html;
+    }
+
+    document.getElementById("stats-list").addEventListener("click", function(e) {
+      var card = e.target.closest(".stat-card");
+      if (card) card.classList.toggle("open");
+    });
+
+    renderStats();
+  </script>
+</body>
+</html>

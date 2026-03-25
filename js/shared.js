@@ -8,6 +8,7 @@ const NAV_PAGES = [
   { label: "Mounts",     href: "mounts.html" },
   { label: "Companions", href: "companions.html" },
   { label: "Consumables", href: "consumables.html" },
+  { label: "Mekaniks",    href: "mekaniks.html" },
   { label: "Reports",    href: "reports.html" },
 ];
 
