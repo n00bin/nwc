@@ -137,6 +137,10 @@
     }
     html += '<span>' + dateStr + "</span>";
     html += "</div>";
+    // Image
+    if (r.image_url) {
+      html += '<a href="' + escapeHtml(r.image_url) + '" target="_blank"><img class="report-img" src="' + escapeHtml(r.image_url) + '" alt="Report screenshot"></a>';
+    }
     html += "</div>";
 
     html += "</div>";
@@ -179,10 +183,37 @@
     submitBtn.disabled = true;
     submitBtn.textContent = "Submitting...";
 
+    // Upload image if provided
+    var imageUrl = "";
+    var imageFile = document.getElementById("report-image").files[0];
+    if (imageFile) {
+      if (imageFile.size > 5 * 1024 * 1024) {
+        formMsg.textContent = "Image must be under 5MB.";
+        formMsg.className = "form-msg error";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Report";
+        return;
+      }
+      var fileName = Date.now() + "_" + imageFile.name.replace(/[^a-zA-Z0-9._-]/g, "");
+      var { data: uploadData, error: uploadError } = await sb.storage
+        .from("report-images")
+        .upload(fileName, imageFile);
+      if (uploadError) {
+        formMsg.textContent = "Image upload failed: " + uploadError.message;
+        formMsg.className = "form-msg error";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Report";
+        return;
+      }
+      var { data: urlData } = sb.storage.from("report-images").getPublicUrl(fileName);
+      imageUrl = urlData.publicUrl;
+    }
+
     var { error } = await sb.from("reports").insert({
       title: title,
       description: description,
-      category: category
+      category: category,
+      image_url: imageUrl
     });
 
     if (error) {

@@ -169,6 +169,34 @@
       min-height: 100px;
       resize: vertical;
     }
+    .file-upload {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      font-family: var(--font-main);
+      cursor: pointer;
+    }
+    .file-upload::-webkit-file-upload-button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0.3rem 0.8rem;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+    .report-img {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: var(--radius-sm);
+      margin-top: 0.5rem;
+      cursor: pointer;
+    }
+    .report-img:hover { opacity: 0.8; }
     .submit-btn {
       background: var(--accent);
       color: #fff;
@@ -255,6 +283,10 @@
         <div class="form-group">
           <label for="report-desc">Description</label>
           <textarea class="form-textarea" id="report-desc" placeholder="Describe the issue in detail (at least 10 characters)" maxlength="2000" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="report-image">Screenshot (optional, max 5MB)</label>
+          <input type="file" class="file-upload" id="report-image" accept="image/jpeg,image/png,image/gif,image/webp">
         </div>
         <button type="submit" class="submit-btn" id="submit-btn">Submit Report</button>
         <div class="form-msg" id="form-msg"></div>
