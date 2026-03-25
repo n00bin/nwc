@@ -416,12 +416,12 @@
   var enhancementList = document.getElementById("enhancement-list");
 
   var enhancementRanking = [
-    { rank: 1, name: "Armor Break", companion: "Cave Bear", benefit: "-9% to enemies Defense (at 50% defense)" },
+    { rank: 1, name: "Armor Break", companion: "Cave Bear", benefit: "-9% to enemies Defense" },
     { rank: 2, name: "Dulled Senses", companion: "Renegade Illusionist", benefit: "-9% to enemies Awareness" },
     { rank: 3, name: "Vulnerability", companion: "Halfling Wayward Wizard", benefit: "-9% to enemies Critical Avoidance" },
-    { rank: 4, name: "Slowed Reactions", companion: "Apprentice Healer", benefit: "-9% to enemies Deflect (only useful when not capped)" },
-    { rank: 5, name: "Advantage Nullification", companion: "Portobello DaVinci", benefit: "-9% to enemies Combat Advantage (reliable survivability)" },
-    { rank: 6, name: "Weapon Break", companion: "Man-At-Arms", benefit: "-9% to enemies Critical Severity (survivability against crits)" },
+    { rank: 4, name: "Slowed Reactions", companion: "Apprentice Healer", benefit: "-9% to enemies Deflect" },
+    { rank: 5, name: "Advantage Nullification", companion: "Portobello DaVinci", benefit: "-9% to enemies Combat Advantage" },
+    { rank: 6, name: "Weapon Break", companion: "Man-At-Arms", benefit: "-9% to enemies Critical Severity" },
   ];
 
   function renderEnhancementView() {
