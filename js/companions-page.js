@@ -410,24 +410,65 @@
     summonedList.innerHTML = html;
   }
 
+  // ---- Enhancement Ranking View ----
+  var tabEnhancements = document.getElementById("tab-enhancements");
+  var enhancementView = document.getElementById("enhancement-view");
+  var enhancementList = document.getElementById("enhancement-list");
+
+  var enhancementRanking = [
+    { rank: 1, name: "Armor Break", companion: "Cave Bear", benefit: "-9% to enemies Defense (at 50% defense)", damage: "6.38%" },
+    { rank: 2, name: "Dulled Senses", companion: "Renegade Illusionist", benefit: "-9% to enemies Awareness", damage: "4.09%" },
+    { rank: 3, name: "Vulnerability", companion: "Halfling Wayward Wizard", benefit: "-9% to enemies Critical Avoidance", damage: "3.89%" },
+    { rank: 4, name: "Slowed Reactions", companion: "Apprentice Healer", benefit: "-9% to enemies Deflect (only useful when not capped)", damage: "0.00%" },
+    { rank: 5, name: "Advantage Nullification", companion: "Portobello DaVinci", benefit: "-9% to enemies Combat Advantage (reliable survivability)", damage: "" },
+    { rank: 6, name: "Weapon Break", companion: "Man-At-Arms", benefit: "-9% to enemies Critical Severity (survivability against crits)", damage: "" },
+  ];
+
+  function renderEnhancementView() {
+    var html = "";
+    for (var i = 0; i < enhancementRanking.length; i++) {
+      var e = enhancementRanking[i];
+      html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
+      html += '<div style="display:flex;justify-content:space-between;align-items:center;">';
+      html += '<div>';
+      html += '<span style="color:var(--highlight);font-weight:700;margin-right:0.5rem;">#' + e.rank + '</span>';
+      html += '<span style="font-weight:600;">' + escapeHtml(e.name) + '</span>';
+      html += '</div>';
+      if (e.damage) {
+        html += '<span class="summoned-stat stat-positive">+' + e.damage + ' DPS</span>';
+      }
+      html += '</div>';
+      html += '<div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Best companion: ' + escapeHtml(e.companion) + '</div>';
+      html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(e.benefit) + '</div>';
+      html += '</div>';
+    }
+    enhancementList.innerHTML = html;
+  }
+
   // Tab switching
+  function switchTab(activeTab) {
+    tabLookup.classList.toggle("active", activeTab === "lookup");
+    tabSummoned.classList.toggle("active", activeTab === "summoned");
+    tabEnhancements.classList.toggle("active", activeTab === "enhancements");
+    lookupView.style.display = activeTab === "lookup" ? "" : "none";
+    lookupControls.style.display = activeTab === "lookup" ? "" : "none";
+    summonedView.style.display = activeTab === "summoned" ? "" : "none";
+    summonedControls.style.display = activeTab === "summoned" ? "" : "none";
+    enhancementView.style.display = activeTab === "enhancements" ? "" : "none";
+  }
+
   tabLookup.addEventListener("click", function () {
-    tabLookup.classList.add("active");
-    tabSummoned.classList.remove("active");
-    lookupView.style.display = "";
-    lookupControls.style.display = "";
-    summonedView.style.display = "none";
-    summonedControls.style.display = "none";
+    switchTab("lookup");
   });
 
   tabSummoned.addEventListener("click", function () {
-    tabSummoned.classList.add("active");
-    tabLookup.classList.remove("active");
-    lookupView.style.display = "none";
-    lookupControls.style.display = "none";
-    summonedView.style.display = "";
-    summonedControls.style.display = "";
+    switchTab("summoned");
     renderSummonedView();
+  });
+
+  tabEnhancements.addEventListener("click", function () {
+    switchTab("enhancements");
+    renderEnhancementView();
   });
 
   summonedFilterStat.addEventListener("change", renderSummonedView);
