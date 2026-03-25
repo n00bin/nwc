@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artifacts — Neverwinter Compendium</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .view-tab {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-bottom: none;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      color: var(--text-secondary);
+      padding: 0.45rem 1rem;
+      font-size: 0.9rem;
+      font-family: var(--font-main);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .view-tab:hover { color: var(--text-primary); background: var(--bg-hover); }
+    .view-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .art-container { max-width: 900px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
+    .art-view { display: none; }
+    .art-view.active { display: block; }
+    .art-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+    }
+    .art-card:hover { border-color: var(--border-accent); }
+    .art-card.open { border-color: var(--accent); }
+    .art-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .art-card-name { font-weight: 700; font-size: 1.05rem; }
+    .art-card-body { display: none; margin-top: 0.75rem; }
+    .art-card.open .art-card-body { display: block; }
+    .art-info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--border-default);
+      font-size: 0.88rem;
+    }
+    .art-info-row:last-child { border-bottom: none; }
+    .art-info-label { color: var(--text-secondary); }
+    .art-info-value { font-weight: 600; color: var(--text-primary); text-align: right; max-width: 65%; }
+    .art-effect {
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--accent);
+      padding: 0.5rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+    .art-set {
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--highlight);
+      padding: 0.5rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+    .section-divider {
+      font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--highlight);
+      padding: 1.25rem 0 0.4rem; border-bottom: 1px solid var(--border-default);
+      margin-bottom: 0.75rem;
+    }
+    .section-divider:first-child { padding-top: 0; }
+    .toggle-arrow { transition: transform 0.2s; font-size: 0.8rem; color: var(--text-muted); }
+    .art-card.open .toggle-arrow { transform: rotate(90deg); }
+    .rank-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .rank-card:hover { border-color: var(--border-accent); }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <div class="controls-bar" style="gap:0.25rem;padding-bottom:0;">
+    <button class="view-tab active" data-tab="all">All Artifacts</button>
+    <button class="view-tab" data-tab="trial">Trial Ranking</button>
+    <button class="view-tab" data-tab="dungeon">Dungeon Ranking</button>
+    <button class="view-tab" data-tab="sets">Artifact Sets</button>
+  </div>
+
+  <!-- Filters for All Artifacts view -->
+  <div class="controls-bar" id="all-controls">
+    <input type="text" class="search-input" id="search" placeholder="Search artifacts...">
+    <select class="filter-select" id="filter-type">
+      <option value="">All Types</option>
+      <option value="debuff">Group Debuff</option>
+      <option value="personal">Personal DPS</option>
+      <option value="tank">Tank / Mitigation</option>
+      <option value="utility">Utility / Healing</option>
+      <option value="damage">Damage Only</option>
+    </select>
+  </div>
+
+  <div class="art-container art-view active" id="view-all"><div id="all-list"></div></div>
+  <div class="art-container art-view" id="view-trial"><div id="trial-list"></div></div>
+  <div class="art-container art-view" id="view-dungeon"><div id="dungeon-list"></div></div>
+  <div class="art-container art-view" id="view-sets"><div id="sets-list"></div></div>
+
+  <script src="js/shared.js"></script>
+  <script src="js/artifacts-page.js"></script>
+</body>
+</html>
