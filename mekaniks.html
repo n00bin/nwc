@@ -216,13 +216,12 @@
       { section: "Utility Stats" },
       {
         name: "Action Point Gain", cap: "No cap", type: "Utility",
-        desc: "Increases rate of Action Point generation for Daily powers.",
-        formula: "400 rating = 1% AP Gain",
+        desc: "Multiplies the rate you fill your Daily Power meter. Does NOT affect Encounter Power cooldowns (that's Recharge Speed).",
+        formula: "AP Generation x (1 + AP Gain %)",
         details: [
-          ["Cap", "No hard cap"],
+          ["Cap", "No hard cap (soft cap ~1,000 rating)"],
           ["Rating", "400 points = 1%"],
-          ["Bonus", "Also provides +2% faster Encounter Power recharge"],
-          ["Scaling", "Bypasses scaling in scaled content"],
+          ["Note", "Recovery rating gives both AP Gain and Recharge Speed, but they are separate stats"],
         ]
       },
       {
