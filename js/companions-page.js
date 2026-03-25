@@ -158,7 +158,10 @@
     var html = "";
 
     // Companion name
-    html += '<h2 style="margin-bottom:0.75rem;">' + escapeHtml(companion.name) + "</h2>";
+    html += '<h2 style="margin-bottom:0.25rem;">' + escapeHtml(companion.name) + "</h2>";
+    if (companion.source) {
+      html += '<div style="margin-bottom:0.75rem;font-size:0.85rem;"><span style="color:var(--text-muted);">Source: </span><span style="color:var(--highlight);">' + escapeHtml(companion.source) + "</span></div>";
+    }
 
     // ---- Power ----
     html += '<div class="section-header">Power</div>';
