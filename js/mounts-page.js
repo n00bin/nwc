@@ -494,11 +494,11 @@
   ];
 
   var equipData = [
-    { name: "Ebon Riding Lizard", bonus: "Pack Tactics", effect: "+2,953 Combat Advantage and Awareness" },
-    { name: "Myconid Bulette", bonus: "Mystic Aura", effect: "+2,953 Power and Accuracy" },
-    { name: "Runeclad Manticore", bonus: "Runic Aura", effect: "+2,953 Power and Defense" },
-    { name: "Dragon Chicken", bonus: "Avian Aura", effect: "Forte and Power" },
-    { name: "Turmish Lion", bonus: "Ferocity", effect: "Extra damage per hit" },
+    { rank: 1, power: "Pack Tactics", effect: "+2,953 Combat Advantage and Awareness to you and party members within 80'", mounts: ["Ebon Riding Lizard"] },
+    { rank: 2, power: "Mystic Aura", effect: "+2,953 Power and Accuracy to you and party members within 80'", mounts: ["Myconid Bulette"] },
+    { rank: 3, power: "Runic Aura", effect: "+2,953 Power and Defense to you and party members within 80'", mounts: ["Runeclad Manticore"] },
+    { rank: 4, power: "Avian Aura", effect: "Forte and Power to you and party members", mounts: ["Dragon Chicken"] },
+    { rank: 5, power: "Ferocity", effect: "Extra damage per hit, stacking buff", mounts: ["Turmish Lion"] },
   ];
 
   function renderCombatRanking(data, container) {
@@ -569,7 +569,7 @@
     switchMountTab("equip");
     tabEquip.classList.add("active");
     equipView.style.display = "";
-    renderSimpleList(equipData, "equip-list");
+    renderCombatRanking(equipData, "equip-list");
   });
 
   // ---- Initial render ----
