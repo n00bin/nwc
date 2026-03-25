@@ -357,6 +357,7 @@
     var comp = COMPANIONS_DATA[si];
     if (!comp.summonedBuff) continue;
     var sb = comp.summonedBuff;
+    if (sb.scope !== "party") continue;  // Only show party buffs
     summonedData.push({
       companionName: comp.name,
       companionId: comp.id,
@@ -369,26 +370,11 @@
     });
   }
 
-  // Populate scope filter with actual values
-  populateFilter(summonedFilterStat, ["Damage Buff", "Damage Debuff", "Stat Buff", "Stat Debuff", "CA Grant", "Shield/Heal"], "All Types");
+  // No type filter needed - party buffs only
+  summonedFilterStat.style.display = "none";
 
   function renderSummonedView() {
-    var typeVal = summonedFilterStat.value;
-    var scopeVal = summonedFilterScope.value;
-
-    var filtered = summonedData.filter(function (s) {
-      if (scopeVal && s.scope !== scopeVal) return false;
-      if (typeVal) {
-        var buff = s.buff.toLowerCase();
-        if (typeVal === "Damage Buff" && !(s.damageBoost && s.scope !== "enemy") && !buff.match(/damage buff/)) return false;
-        if (typeVal === "Damage Debuff" && !(s.damageBoost && s.scope === "enemy") && !buff.match(/damage debuff|damage reduction debuff/)) return false;
-        if (typeVal === "Stat Buff" && (s.damageBoost || buff.indexOf("combat advantage,") === -1 && !buff.match(/\+\d+%?\s+(power|crit|defense|movement|action|recharge|forte|combat adv|incoming|awareness|accuracy|deflect)/i))) return false;
-        if (typeVal === "Stat Debuff" && s.scope !== "enemy") return false;
-        if (typeVal === "CA Grant" && buff.indexOf("grant combat advantage") === -1) return false;
-        if (typeVal === "Shield/Heal" && buff.indexOf("shield") === -1 && buff.indexOf("heal") === -1) return false;
-      }
-      return true;
-    });
+    var filtered = summonedData;
 
     // Sort: party scope first, then by scope
     filtered.sort(function (a, b) {
@@ -407,27 +393,11 @@
     }
 
     var html = "";
-    var lastScope = "";
     for (var i = 0; i < filtered.length; i++) {
       var s = filtered[i];
 
-      // Group header by scope
-      if (s.scope !== lastScope) {
-        var scopeLabels = { party: "Party Buffs", self: "Self Buffs", enemy: "Enemy Debuffs / CA Grant", mixed: "Mixed" };
-        html += '<div class="summoned-group-header">' + (scopeLabels[s.scope] || s.scope) + '</div>';
-        lastScope = s.scope;
-      }
-
-      var scopeClass = s.scope === "enemy" ? "stat-negative" : "stat-positive";
-      var scopeBadge = s.scope === "party" ? '<span class="badge badge-utility" style="font-size:0.65rem;">Party</span>'
-                     : s.scope === "enemy" ? '<span class="badge badge-offense" style="font-size:0.65rem;">Enemy</span>'
-                     : '<span class="badge badge-defense" style="font-size:0.65rem;">Self</span>';
-
       html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
-      html += '<div style="display:flex;justify-content:space-between;align-items:center;">';
       html += '<div style="font-weight:600;">' + escapeHtml(s.companionName) + '</div>';
-      html += scopeBadge;
-      html += '</div>';
       html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(s.buff) + '</div>';
       if (s.range) {
         html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Range: ' + s.range + "'</div>";
