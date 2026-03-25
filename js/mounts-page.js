@@ -450,6 +450,149 @@
   filterBonus.addEventListener("change", onFilterChange);
   togglePreferred.addEventListener("change", onFilterChange);
 
+  // ============================================================
+  // Ranking Views
+  // ============================================================
+  var tabLookup  = document.getElementById("tab-lookup");
+  var tabTrial   = document.getElementById("tab-trial");
+  var tabDungeon = document.getElementById("tab-dungeon");
+  var tabStdps   = document.getElementById("tab-stdps");
+  var tabEquip   = document.getElementById("tab-equip");
+  var lookupView     = document.getElementById("lookup-view");
+  var lookupControls = document.getElementById("lookup-controls");
+  var trialView   = document.getElementById("trial-view");
+  var dungeonView = document.getElementById("dungeon-view");
+  var stdpsView   = document.getElementById("stdps-view");
+  var equipView   = document.getElementById("equip-view");
+
+  var trialData = [
+    { rank: 1, name: "Hag's Enchanted Cauldron", effect: "-7.5% to enemy Defense and Critical Avoidance" },
+    { rank: 2, name: "Pegasus", effect: "1,000 magnitude damage, all allies gain +15% damage or damage resist or healing depending on role", source: "Lockbox of Justice" },
+    { rank: 3, name: "Red Dragon", effect: "-15% to target's Critical Avoidance and outgoing damage, +15% damage to caster and +15% Crit Strike + Accuracy", source: "Jubilee 2024" },
+    { rank: 4, name: "Glorious Undead Lion", effect: "+16% incoming damage received by targets, reduces their Accuracy by 16%", source: "Glorious Undead Lockbox" },
+    { rank: 5, name: "Twice-Pale Alder", effect: "+16% incoming damage received by targets, reduces their outgoing damage by 16%" },
+    { rank: 6, name: "Phantom Panther", effect: "+16% incoming damage received by targets, reduces their Critical Strike by 16%", source: "Phantasmal Fantasy Lockbox" },
+    { rank: 7, name: "Swarm", effect: "+15% incoming damage received by target, -15% outgoing damage and Critical Chance", source: "Reaper's Challenge Store" },
+    { rank: 8, name: "Eclipse Lion / Neo Eclipse Lion", effect: "600 magnitude damage, +15% incoming damage received and -15% outgoing damage to targets", source: "Wondrous Bazaar / Astral Lockbox" },
+    { rank: 9, name: "King of Spines / Tyrannosaur", effect: "6s Root to controllable targets, +15% incoming damage received, minion consume", source: "Reaper's Challenge Store" },
+    { rank: 10, name: "Brain Stealer Dragon", effect: "+15% incoming damage received to targets", source: "Psionic Lockbox" },
+    { rank: 11, name: "Bestial Fire Archon", effect: "+15% incoming damage received to targets within magma pools", source: "Leaping Flame Lockbox" },
+    { rank: 12, name: "Barlgura", effect: "750 magnitude damage, 20 magnitude DoT for 10s, +11% damage taken by targets", source: "Appointment Event Store" },
+    { rank: 13, name: "Reconnaissance Balloons", effect: "800 magnitude, +7.5% damage taken by targets. Treasure increases a random stat by 1.5% for 10s", source: "Reconnaissance Lockbox" },
+    { rank: 14, name: "Hag's Cooking Cauldron", effect: "115 magnitude DoT for 10s, all allies gain +15% Accuracy + Combat Advantage", source: "Spellbound Lockbox" },
+    { rank: 15, name: "Frost Salamander", effect: "+15% damage buff to caster. Target is 13% slowed, -15% Deflect, -15% damage, -13% Crit Chance", source: "Stealth Lockbox" },
+  ];
+
+  var dungeonData = [
+    { rank: 1, name: "Hag's Enchanted Cauldron", effect: "-7.5% to enemy Defense and Critical Avoidance" },
+    { rank: 2, name: "Glorious Undead Lion", effect: "+16% incoming damage received by targets, reduces their Accuracy by 16%", source: "Glorious Undead Lockbox" },
+    { rank: 3, name: "Phantom Panther", effect: "+16% incoming damage received by targets, reduces their Critical Strike by 16%", source: "Phantasmal Fantasy Lockbox" },
+    { rank: 4, name: "Twice-Pale Alder", effect: "+16% incoming damage received by targets, reduces their outgoing damage by 16%" },
+    { rank: 5, name: "Swarm", effect: "+15% incoming damage received by target, -15% outgoing damage and Critical Chance", source: "Reaper's Challenge Store" },
+    { rank: 6, name: "Eclipse Lion / Neo Eclipse Lion", effect: "600 magnitude damage, +15% incoming damage received and -15% outgoing damage to targets", source: "Wondrous Bazaar / Astral Lockbox" },
+    { rank: 7, name: "Pegasus", effect: "1,000 magnitude damage, all allies gain +15% damage or damage resist or healing depending on role", source: "Lockbox of Justice" },
+    { rank: 8, name: "King of Spines / Tyrannosaur", effect: "6s Root to controllable targets, +15% incoming damage received, minion consume", source: "Reaper's Challenge Store" },
+    { rank: 9, name: "Brain Stealer Dragon", effect: "+15% incoming damage received to targets", source: "Psionic Lockbox" },
+    { rank: 10, name: "Bestial Fire Archon", effect: "+15% incoming damage received to targets within magma pools", source: "Leaping Flame Lockbox" },
+    { rank: 11, name: "Red Dragon", effect: "-15% to target's Critical Avoidance and outgoing damage, +15% damage to caster and +15% Crit Strike + Accuracy", source: "Jubilee 2024" },
+    { rank: 12, name: "Barlgura", effect: "750 magnitude damage, 20 magnitude DoT for 10s, +11% damage taken by targets", source: "Appointment Event Store" },
+    { rank: 13, name: "Reconnaissance Balloons", effect: "800 magnitude, +7.5% damage taken by targets. Treasure increases a random stat by 1.5% for 10s", source: "Reconnaissance Lockbox" },
+    { rank: 14, name: "Hag's Cooking Cauldron", effect: "115 magnitude DoT for 10s, all allies gain +15% Accuracy + Combat Advantage", source: "Spellbound Lockbox" },
+    { rank: 15, name: "Frost Salamander", effect: "+15% damage buff to caster. Target is 13% slowed, -15% Deflect, -15% damage, -13% Crit Chance", source: "Stealth Lockbox" },
+  ];
+
+  var stdpsData = [
+    { name: "Demonic Gravehound", effect: "Physical 3,938 + 394 magnitude damage against control immune enemies" },
+    { name: "Grubshank the Burdened", effect: "Magical 2,362 + 2,264 DoT for 5s" },
+    { name: "Legendary Hellfire Engine", effect: "Magical 1,969 + 2,264 DoT for 5s" },
+    { name: "Tunnel Vision mounts", effect: "Magical 3,938 magnitude damage" },
+    { name: "Legendary Giant Toad", effect: "Magical 3,938 magnitude damage", source: "Reaper's Challenge Store" },
+    { name: "Golden Warhorse", effect: "Magical 3,938 magnitude damage", source: "Appointment Event Store" },
+    { name: "Bigby's Hand", effect: "Physical 3,347 + 591 magnitude damage against control immune enemies", source: "Dragonslayer Lockbox" },
+  ];
+
+  var equipData = [
+    { name: "Ebon Riding Lizard", bonus: "Pack Tactics", effect: "+2,953 Combat Advantage and Awareness" },
+    { name: "Myconid Bulette", bonus: "Mystic Aura", effect: "+2,953 Power and Accuracy" },
+    { name: "Runeclad Manticore", bonus: "Runic Aura", effect: "+2,953 Power and Defense" },
+    { name: "Dragon Chicken", bonus: "Avian Aura", effect: "Forte and Power" },
+    { name: "Turmish Lion", bonus: "Ferocity", effect: "Extra damage per hit" },
+  ];
+
+  function renderRankingList(data, container) {
+    var html = "";
+    for (var i = 0; i < data.length; i++) {
+      var d = data[i];
+      html += '<div class="ranking-card">';
+      html += '<div style="display:flex;justify-content:space-between;align-items:center;">';
+      html += '<div style="font-weight:600;">';
+      if (d.rank) html += '<span style="color:var(--highlight);margin-right:0.5rem;">#' + d.rank + '</span>';
+      html += escapeHtml(d.name) + '</div>';
+      html += '</div>';
+      html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(d.effect) + '</div>';
+      if (d.source) {
+        html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.25rem;">Source: ' + escapeHtml(d.source) + '</div>';
+      }
+      if (d.bonus) {
+        html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.25rem;">Equip Power: ' + escapeHtml(d.bonus) + '</div>';
+      }
+      html += '</div>';
+    }
+    document.getElementById(container).innerHTML = html;
+  }
+
+  // Tab switching
+  function switchMountTab(activeTab) {
+    var tabs = [tabLookup, tabTrial, tabDungeon, tabStdps, tabEquip];
+    var views = {
+      lookup: [lookupView, lookupControls],
+      trial: [trialView],
+      dungeon: [dungeonView],
+      stdps: [stdpsView],
+      equip: [equipView]
+    };
+    for (var t = 0; t < tabs.length; t++) {
+      tabs[t].classList.remove("active");
+    }
+    // Hide all
+    lookupView.style.display = "none";
+    lookupControls.style.display = "none";
+    trialView.style.display = "none";
+    dungeonView.style.display = "none";
+    stdpsView.style.display = "none";
+    equipView.style.display = "none";
+    // Show active
+    var active = views[activeTab];
+    for (var v = 0; v < active.length; v++) {
+      active[v].style.display = "";
+    }
+  }
+
+  tabLookup.addEventListener("click", function () {
+    tabLookup.classList.add("active");
+    switchMountTab("lookup");
+  });
+  tabTrial.addEventListener("click", function () {
+    tabTrial.classList.add("active");
+    switchMountTab("trial");
+    renderRankingList(trialData, "trial-list");
+  });
+  tabDungeon.addEventListener("click", function () {
+    tabDungeon.classList.add("active");
+    switchMountTab("dungeon");
+    renderRankingList(dungeonData, "dungeon-list");
+  });
+  tabStdps.addEventListener("click", function () {
+    tabStdps.classList.add("active");
+    switchMountTab("stdps");
+    renderRankingList(stdpsData, "stdps-list");
+  });
+  tabEquip.addEventListener("click", function () {
+    tabEquip.classList.add("active");
+    switchMountTab("equip");
+    renderRankingList(equipData, "equip-list");
+  });
+
   // ---- Initial render ----
   renderList(MOUNTS_DATA);
 })();

@@ -6,12 +6,57 @@
   <title>Mounts — Neverwinter Compendium</title>
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .view-tab {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-bottom: none;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      color: var(--text-secondary);
+      padding: 0.45rem 1rem;
+      font-size: 0.9rem;
+      font-family: var(--font-main);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .view-tab:hover { color: var(--text-primary); background: var(--bg-hover); }
+    .view-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .ranking-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .ranking-card:hover { border-color: var(--border-accent); }
+    .ranking-header {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--highlight);
+      padding: 0.8rem 0 0.3rem;
+      border-bottom: 1px solid var(--border-default);
+      margin-bottom: 0.5rem;
+    }
+    .ranking-header:first-child { padding-top: 0; }
+  </style>
 </head>
 <body>
   <nav class="navbar"></nav>
 
-  <!-- Filters / Search -->
-  <div class="controls-bar">
+  <!-- View tabs -->
+  <div class="controls-bar" style="gap:0.25rem;padding-bottom:0;">
+    <button class="view-tab active" id="tab-lookup">Lookup</button>
+    <button class="view-tab" id="tab-trial">Trial Combat Powers</button>
+    <button class="view-tab" id="tab-dungeon">Dungeon Combat Powers</button>
+    <button class="view-tab" id="tab-stdps">ST DPS Powers</button>
+    <button class="view-tab" id="tab-equip">Equip Bonuses</button>
+  </div>
+
+  <!-- Filters / Search (lookup view) -->
+  <div class="controls-bar" id="lookup-controls">
     <input type="text" class="search-input" id="search" placeholder="Search mounts...">
     <select class="filter-select" id="filter-combat">
       <option value="">All Combat Powers</option>
@@ -27,8 +72,8 @@
     </label>
   </div>
 
-  <!-- Two-panel layout -->
-  <div class="page-body">
+  <!-- Two-panel layout (lookup view) -->
+  <div class="page-body" id="lookup-view">
     <div class="list-panel" id="list-panel">
       <div class="list-count" id="list-count"></div>
       <div id="mount-list"></div>
@@ -36,6 +81,26 @@
     <div class="detail-panel" id="detail-panel">
       <div class="empty-state">Select a mount to view details</div>
     </div>
+  </div>
+
+  <!-- Trial ranking view -->
+  <div id="trial-view" style="display:none; max-width:900px; margin:0 auto; padding:1rem 1.5rem 3rem;">
+    <div id="trial-list"></div>
+  </div>
+
+  <!-- Dungeon ranking view -->
+  <div id="dungeon-view" style="display:none; max-width:900px; margin:0 auto; padding:1rem 1.5rem 3rem;">
+    <div id="dungeon-list"></div>
+  </div>
+
+  <!-- ST DPS view -->
+  <div id="stdps-view" style="display:none; max-width:900px; margin:0 auto; padding:1rem 1.5rem 3rem;">
+    <div id="stdps-list"></div>
+  </div>
+
+  <!-- Equip bonuses view -->
+  <div id="equip-view" style="display:none; max-width:900px; margin:0 auto; padding:1rem 1.5rem 3rem;">
+    <div id="equip-list"></div>
   </div>
 
   <!-- Data -->
