@@ -106,12 +106,12 @@
 
   <div class="controls-bar" style="gap:0.25rem;padding-bottom:0;">
     <button class="view-tab active" data-tab="stats">Stats</button>
+    <button class="view-tab" data-tab="abilities">Ability Scores</button>
+    <button class="view-tab" data-tab="priorities">Stat Priorities</button>
     <button class="view-tab" data-tab="bolster">Bolster</button>
     <button class="view-tab" data-tab="damage">Damage</button>
     <button class="view-tab" data-tab="scaling">Scaling</button>
     <button class="view-tab" data-tab="stacking">Stacking</button>
-    <button class="view-tab" data-tab="abilities">Ability Scores</button>
-    <button class="view-tab" data-tab="priorities">Stat Priorities</button>
   </div>
 
   <!-- STATS TAB -->
@@ -303,37 +303,64 @@
     <div class="stat-card open" style="margin-bottom:0.75rem;">
       <div class="stat-card-header"><span class="stat-card-name">STR — Strength</span></div>
       <div class="stat-card-body" style="display:block;">
-        <div class="stat-info-row"><span class="stat-info-label">Bonus per point above 10</span><span class="stat-info-value">+1% Stamina Regeneration</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Primary (+1% per point)</span><span class="stat-info-value">Stamina Regeneration</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Secondary (+0.5% per point)</span><span class="stat-info-value">Physical Damage</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Best for</span><span class="stat-info-value">Physical DPS, Tanks</span></div>
       </div>
     </div>
     <div class="stat-card open" style="margin-bottom:0.75rem;">
       <div class="stat-card-header"><span class="stat-card-name">CON — Constitution</span></div>
       <div class="stat-card-body" style="display:block;">
-        <div class="stat-info-row"><span class="stat-info-label">Bonus per point above 10</span><span class="stat-info-value">+1% Maximum Hit Points</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Primary (+1% per point)</span><span class="stat-info-value">Maximum Hit Points</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Secondary (+0.5% per point)</span><span class="stat-info-value">Action Point Gain</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Best for</span><span class="stat-info-value">Tanks, Healers</span></div>
       </div>
     </div>
     <div class="stat-card open" style="margin-bottom:0.75rem;">
       <div class="stat-card-header"><span class="stat-card-name">DEX — Dexterity</span></div>
       <div class="stat-card-body" style="display:block;">
-        <div class="stat-info-row"><span class="stat-info-label">Bonus per point above 10</span><span class="stat-info-value">+1% Movement Speed</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Primary (+1% per point)</span><span class="stat-info-value">Critical Severity</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Secondary (+0.5% per point)</span><span class="stat-info-value">Movement Speed</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Best for</span><span class="stat-info-value">DPS</span></div>
       </div>
     </div>
     <div class="stat-card open" style="margin-bottom:0.75rem;">
       <div class="stat-card-header"><span class="stat-card-name">INT — Intelligence</span></div>
       <div class="stat-card-body" style="display:block;">
-        <div class="stat-info-row"><span class="stat-info-label">Bonus per point above 10</span><span class="stat-info-value">+1% Recharge Speed</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Primary (+1% per point)</span><span class="stat-info-value">Control Bonus</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Secondary (+0.5% per point)</span><span class="stat-info-value">Magical Damage</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Best for</span><span class="stat-info-value">Magical DPS</span></div>
       </div>
     </div>
     <div class="stat-card open" style="margin-bottom:0.75rem;">
       <div class="stat-card-header"><span class="stat-card-name">WIS — Wisdom</span></div>
       <div class="stat-card-body" style="display:block;">
-        <div class="stat-info-row"><span class="stat-info-label">Bonus per point above 10</span><span class="stat-info-value">+1% Control Bonus and Control Resist</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Primary (+1% per point)</span><span class="stat-info-value">Control Resist</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Secondary (+0.5% per point)</span><span class="stat-info-value">Outgoing Healing</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Best for</span><span class="stat-info-value">Healers</span></div>
       </div>
     </div>
-    <div class="stat-card open">
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
       <div class="stat-card-header"><span class="stat-card-name">CHA — Charisma</span></div>
       <div class="stat-card-body" style="display:block;">
-        <div class="stat-info-row"><span class="stat-info-label">Bonus per point above 10</span><span class="stat-info-value">+1% Forte</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Primary (+1% per point)</span><span class="stat-info-value">Forte</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Secondary (+0.5% per point)</span><span class="stat-info-value">Recharge Speed</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Best for</span><span class="stat-info-value">All roles (universal value)</span></div>
+      </div>
+    </div>
+
+    <div class="section-divider">How to Increase Ability Scores</div>
+    <div class="stat-card open">
+      <div class="stat-card-header"><span class="stat-card-name">Sources of Ability Score Points</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-info-row"><span class="stat-info-label">Character creation</span><span class="stat-info-value">Base scores 8-18</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Race bonus</span><span class="stat-info-value">+2 or +3 depending on race</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Class bonus</span><span class="stat-info-value">+2 to one ability score</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Level ups</span><span class="stat-info-value">Points at levels 3, 6, 9, 12, 14, 16, 18, 20</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Levels 30 and 60</span><span class="stat-info-value">+1 to every ability score</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Equipment</span><span class="stat-info-value">Gear can grant ability score bonuses</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Boons</span><span class="stat-info-value">Campaign boons provide permanent bonuses</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Consumables</span><span class="stat-info-value">Campfire, Elixir of Fate, etc.</span></div>
       </div>
     </div>
   </div>
