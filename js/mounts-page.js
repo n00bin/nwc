@@ -214,7 +214,10 @@
     var html = "";
 
     // Mount name
-    html += '<h2 style="margin-bottom:0.75rem;">' + escapeHtml(mount.name) + "</h2>";
+    html += '<h2 style="margin-bottom:0.25rem;">' + escapeHtml(mount.name) + "</h2>";
+    if (mount.source) {
+      html += '<div style="margin-bottom:0.75rem;font-size:0.85rem;"><span style="color:var(--text-muted);">Source: </span><span style="color:var(--highlight);">' + escapeHtml(mount.source) + "</span></div>";
+    }
 
     // ---- Pinned selected insignia bonus ----
     if (bonusVal) {
