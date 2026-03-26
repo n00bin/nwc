@@ -207,7 +207,7 @@ const BUFFS_DATA = [
   {
     "id": 33,
     "name": "Squash Soup",
-    "category": "Elixir",
+    "category": "Event Food",
     "exclusiveGroup": "Event Food",
     "duration_s": 1800,
     "expiration": "on_death",
