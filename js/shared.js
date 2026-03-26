@@ -172,6 +172,7 @@ function highlightMatch(text, query) {
 
 // ---- Community notice popup (home page only) ----
 (function () {
+  return; // DISABLED — remove this line to re-enable the popup
   // Only show on home/index page
   var path = window.location.pathname;
   if (path.indexOf("index.html") === -1 && !path.endsWith("/nwc/") && !path.endsWith("/")) return;
