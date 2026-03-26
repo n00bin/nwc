@@ -9,7 +9,7 @@
   // ============================================================
   var artifacts = [
     // -- Group Debuff --
-    { name: "Halaster's Blast Scepter", type: "debuff", power: "Single-target stun. Reduces target's damage resistance by 15% for 10s.", debuff: "15% damage resistance reduction", cooldown: 60, set: "Mad Dash", source: "Tower of the Mad Mage" },
+    { name: "Halaster's Blast Scepter", type: "debuff", power: "Single-target stun. Reduces target's damage resistance by 15% for 10s.", debuff: "15% damage resistance reduction", cooldown: 60, set: "Mad Dash", source: "Tower of the Mad Mage", image: "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/b/b9/Icon_Inventory_Artifact_Halaster.png/revision/latest?cb=20191012233012" },
     { name: "Wyvern-Venom Coated Knives", type: "debuff", power: "AoE knives + poison DoT. Envenomated enemies take 12% more damage and deal 12% less damage for 10s.", debuff: "12% more damage taken + 12% less damage dealt", cooldown: 60, set: "Armaments of the Wyvern", source: "Undermountain Campaign" },
     { name: "Frozen Storyteller's Journal", type: "debuff", power: "25' AoE damage. Stuns 3s. Summons 3 ice dwarves (20s). Allies deal 10% more damage. Incoming damage reduced 10% for 15s.", debuff: "10% party damage buff + 10% damage reduction", cooldown: 60, set: "Storyteller's Journals", source: "Zen Market / Tales of Old" },
     { name: "Charm of the Serpent", type: "debuff", power: "Cone attack. Targets take 16% more damage for 10s.", debuff: "16% more damage taken (cone)", cooldown: 60, set: "Set of the Serpent", source: "Tomb of the Nine Gods" },
@@ -214,6 +214,9 @@
       html += '<span><span class="' + (typeBadgeClass[a.type] || '') + '" style="font-size:0.78rem;">' + (typeLabels[a.type] || a.type) + '</span> <span class="toggle-arrow">&#9654;</span></span>';
       html += '</div>';
       html += '<div class="art-card-body">';
+      if (a.image) {
+        html += '<img class="art-icon" src="' + escapeHtml(a.image) + '" alt="' + escapeHtml(a.name) + '">';
+      }
       html += '<div class="art-effect">' + escapeHtml(a.power) + '</div>';
       if (a.debuff && a.debuff !== "None") {
         html += '<div class="art-info-row"><span class="art-info-label">Buff/Debuff</span><span class="art-info-value">' + escapeHtml(a.debuff) + '</span></div>';
