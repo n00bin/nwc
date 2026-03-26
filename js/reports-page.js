@@ -132,6 +132,7 @@
         html += '<option value="' + escapeHtml(statuses[si]) + '"' + sel + '>' + escapeHtml(statuses[si]) + "</option>";
       }
       html += "</select>";
+      html += ' <button class="delete-btn" data-id="' + r.id + '" title="Delete this report">&#10005;</button>';
     } else {
       html += statusBadge;
     }
@@ -373,6 +374,47 @@
     } else {
       alert("Failed: " + (data ? data.reason : "unknown error"));
       select.disabled = false;
+    }
+  });
+
+  // ---- Admin delete ----
+  reportsList.addEventListener("click", async function (e) {
+    var btn = e.target.closest(".delete-btn");
+    if (!btn || !adminMode) return;
+
+    var id = parseInt(btn.getAttribute("data-id"), 10);
+    if (!confirm("Delete this report? This cannot be undone.")) return;
+
+    btn.disabled = true;
+    btn.textContent = "...";
+
+    var { data, error } = await sb.rpc("delete_report", {
+      report_id: id,
+      admin_pass: adminPass
+    });
+
+    if (error) {
+      alert("Failed to delete. Check console for details.");
+      console.error("Delete error:", error);
+      btn.disabled = false;
+      btn.textContent = "\u2715";
+      return;
+    }
+
+    if (data && data.success) {
+      allReports = allReports.filter(function (r) { return r.id !== id; });
+      renderReports();
+    } else if (data && data.reason === "unauthorized") {
+      alert("Wrong password. Admin mode disabled.");
+      adminMode = false;
+      adminPass = "";
+      adminToggle.classList.remove("active");
+      adminToggle.textContent = "Admin";
+      renderReports();
+    } else {
+      alert("Failed: " + (data ? data.reason : "unknown error"));
+      btn.disabled = false;
+      btn.textContent = "\u2715";
     }
   });
 

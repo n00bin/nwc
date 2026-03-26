@@ -125,6 +125,21 @@
       cursor: pointer;
     }
     .status-select:focus { border-color: var(--accent); }
+    .delete-btn {
+      background: none;
+      border: 1px solid var(--stat-negative);
+      border-radius: var(--radius-sm);
+      color: var(--stat-negative);
+      font-size: 0.85rem;
+      padding: 0.15rem 0.5rem;
+      cursor: pointer;
+      margin-left: 0.25rem;
+      transition: background 0.15s, color 0.15s;
+    }
+    .delete-btn:hover {
+      background: var(--stat-negative);
+      color: #fff;
+    }
 
     /* Category badges */
     .badge-cat-bug          { background: var(--stat-negative); color: #fff; }

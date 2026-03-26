@@ -54,3 +54,36 @@ BEGIN
   RETURN json_build_object('success', true);
 END;
 $$;
+
+-- 5. Server-side function to delete a report (checks password)
+CREATE OR REPLACE FUNCTION delete_report(
+  report_id bigint,
+  admin_pass text
+)
+RETURNS json
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+DECLARE
+  stored_pass text;
+BEGIN
+  -- Get the stored admin password
+  SELECT value INTO stored_pass
+  FROM admin_config
+  WHERE key = 'admin_password';
+
+  -- Check password
+  IF stored_pass IS NULL OR admin_pass != stored_pass THEN
+    RETURN json_build_object('success', false, 'reason', 'unauthorized');
+  END IF;
+
+  -- Delete the report
+  DELETE FROM reports WHERE id = report_id;
+
+  IF NOT FOUND THEN
+    RETURN json_build_object('success', false, 'reason', 'not_found');
+  END IF;
+
+  RETURN json_build_object('success', true);
+END;
+$$;
