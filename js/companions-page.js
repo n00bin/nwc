@@ -21,6 +21,7 @@
   var SINGLE_STAT_SCALE = { 75: 0.75, 150: 1.50, 250: 2.50, 375: 3.75, 550: 5.50, 750: 7.50, 900: 9.00 };
   var DOUBLE_STAT_SCALE = { 75: 0.38, 150: 0.75, 250: 1.25, 375: 1.88, 550: 2.75, 750: 3.75, 900: 4.50 };
   var TRIPLE_STAT_SCALE = { 75: 0.25, 150: 0.50, 250: 0.83, 375: 1.25, 550: 1.83, 750: 2.50, 900: 3.00 };
+  var MAX_HP_SCALE = { 75: 1500, 150: 3000, 250: 5000, 375: 7500, 550: 11000, 750: 15000, 900: 18000 };
 
   var selectedRarity = 900; // Default to Celestial
 
@@ -53,7 +54,20 @@
     234: true, // Catti-brie - Catti's Coordination (Movement Speed, Control Resist)
     170: true, // Cleric Disciple - Cleric Disciple's Wisdom (Incoming Healing, Power)
     228: true, // Coldlight Walker - Coldlight Walker's Gaze (Critical Strike, Critical Severity)
-    232: true  // Dark Dealer - Dark Dealings (Combat Advantage, Accuracy + 10% Northdark Reaches currency)
+    232: true, // Dark Dealer - Dark Dealings (Combat Advantage, Accuracy + 10% Northdark Reaches currency)
+    113: true, // Dedicated Squire - Squire's Discipline (Accuracy, Incoming Healing)
+    210: true, // Deva Champion - Deva Champion's Insight (Critical Avoidance, Incoming Healing)
+    87: true,  // Diana - Acrobatic Speed (Movement Speed, Stamina Regeneration)
+    99: true,  // Githyanki - Githyanki Vigor (Stamina Regeneration, Power)
+    194: true, // Icosahedron Ioun Stone - Icosahedron Stone's Insight (Movement Speed)
+    226: true, // Linu La'neral - Divine Answers (Forte, Outgoing Healing)
+    161: true, // Lizardfolk Shaman - Lizardman Shaman's Wisdom (Awareness, Incoming Healing)
+    120: true, // Neverember Guard Archer - Archer Guard's Discipline (Power, Defense)
+    77: true,  // Rabbit - Elusive Rabbit (Movement Speed, Critical Avoidance)
+    242: true, // Shadar-kai Witch - Sense Through the Shadowfell (Power, Critical Strike + 10% Dragonbone Vale currency)
+    70: true,  // Snow Fawn - Snow Fawn's Instincts (Critical Severity, Defense)
+    128: true, // Storm Rider - Stormrider's Discipline (Power, Max HP)
+    26: true   // Watler - Watler's Presence (Deflect + 2x Portobello's Campaign currency)
   };
 
   function isScalablePower(pw) {
@@ -73,10 +87,24 @@
   function scaleStats(pw, targetIL) {
     if (!isScalablePower(pw)) return null;
     var realStats = pw.stats.filter(function (s) { return s.stat !== "CombinedRating"; });
-    var scale = realStats.length === 1 ? SINGLE_STAT_SCALE : DOUBLE_STAT_SCALE;
+    // Count non-HP stats to determine scaling table
+    var pctStats = realStats.filter(function (s) { return s.stat !== "MaximumHitPoints"; });
+    var hasHP = realStats.length !== pctStats.length;
+    var scale;
+    if (pctStats.length === 0) {
+      scale = SINGLE_STAT_SCALE; // HP-only, won't be used for pct but need a fallback
+    } else if (pctStats.length === 1 && !hasHP) {
+      scale = SINGLE_STAT_SCALE;
+    } else {
+      scale = DOUBLE_STAT_SCALE;
+    }
     var scaledStats = [];
     for (var i = 0; i < realStats.length; i++) {
-      scaledStats.push({ stat: realStats[i].stat, value: scale[targetIL], type: realStats[i].type || "percent" });
+      if (realStats[i].stat === "MaximumHitPoints") {
+        scaledStats.push({ stat: realStats[i].stat, value: MAX_HP_SCALE[targetIL], type: "flat" });
+      } else {
+        scaledStats.push({ stat: realStats[i].stat, value: scale[targetIL], type: realStats[i].type || "percent" });
+      }
     }
     return { stats: scaledStats, combinedRating: targetIL };
   }
