@@ -1183,7 +1183,7 @@ const BUFFS_DATA = [
   },
   {
     "name": "Potion of Coalesced",
-    "category": "Other",
+    "category": "Potion",
     "exclusiveGroup": "None",
     "duration_s": 20,
     "expiration": "on_death",
@@ -1203,7 +1203,7 @@ const BUFFS_DATA = [
   },
   {
     "name": "Minor Potion of Heroism",
-    "category": "Other",
+    "category": "Potion",
     "exclusiveGroup": "None",
     "duration_s": 300,
     "expiration": "on_death",
@@ -1221,7 +1221,7 @@ const BUFFS_DATA = [
   },
   {
     "name": "Potion of Power",
-    "category": "Other",
+    "category": "Potion",
     "exclusiveGroup": "None",
     "duration_s": 0,
     "expiration": "on_use",
@@ -1236,7 +1236,7 @@ const BUFFS_DATA = [
   },
   {
     "name": "Potion of Giant Strength",
-    "category": "Other",
+    "category": "Potion",
     "exclusiveGroup": "None",
     "duration_s": 1800,
     "expiration": "on_death",
@@ -1254,7 +1254,7 @@ const BUFFS_DATA = [
   },
   {
     "name": "Potion of Speed",
-    "category": "Other",
+    "category": "Potion",
     "exclusiveGroup": "None",
     "duration_s": 900,
     "expiration": "on_death",
