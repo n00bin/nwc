@@ -408,7 +408,7 @@
       var s = filtered[i];
 
       html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
-      html += '<div style="font-weight:600;">' + escapeHtml(s.companionName) + '</div>';
+      html += '<div style="font-weight:600;"><span style="color:var(--highlight);margin-right:0.5rem;">#' + (i + 1) + '</span>' + escapeHtml(s.companionName) + '</div>';
       html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(s.buff) + '</div>';
       if (s.range) {
         html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Range: ' + s.range + "'</div>";
