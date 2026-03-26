@@ -427,12 +427,18 @@
   var enhancementList = document.getElementById("enhancement-list");
 
   // Build enhancement list dynamically from data
+  function cleanNotes(notes) {
+    if (!notes) return "";
+    return notes.replace(/^Screenshot intake[^:]*:\s*/i, "").replace(/\s*Conditional proc;.*$/, "").replace(/\s*Value depends on summoned companion.*?(?=\.|$)\.?\s*/g, " ").replace(/\s*Debuff\s*[—\-]\s*reduces enemy stat\.?\s*/gi, "").replace(/\s*Heal effect\s*[—\-]\s*modeled as HP sustain\.?\s*/gi, "").replace(/\s*Permanent buff while summoned\s*\(not a proc\)\.?\s*/gi, "Permanent while summoned.").replace(/\s*Affects both.*$/gi, "").trim();
+  }
+
   function buildEnhancementList() {
     var enMap = {};
     for (var i = 0; i < COMPANION_ENHANCEMENTS_DATA.length; i++) {
       var en = COMPANION_ENHANCEMENTS_DATA[i];
       if (!enMap[en.name]) {
-        enMap[en.name] = { name: en.name, stat: en.stat, maxValue: en.maxValue, scope: en.scope, companions: [] };
+        var desc = en.notes ? cleanNotes(en.notes) : (en.stat + " +" + en.value + "%");
+        enMap[en.name] = { name: en.name, description: desc, companions: [] };
       }
     }
     // Map companions to their enhancements
@@ -462,7 +468,7 @@
     var html = "";
     for (var i = 0; i < enhancementListData.length; i++) {
       var e = enhancementListData[i];
-      if (query && (e.name + " " + e.stat + " " + e.companions.join(" ")).toLowerCase().indexOf(query) === -1) continue;
+      if (query && (e.name + " " + e.description + " " + e.companions.join(" ")).toLowerCase().indexOf(query) === -1) continue;
       var enImg = window.ENHANCEMENT_IMAGES && window.ENHANCEMENT_IMAGES[e.name];
       html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
       html += '<div style="display:flex;align-items:center;gap:0.5rem;">';
@@ -474,7 +480,7 @@
       html += '<span style="font-weight:600;">' + escapeHtml(e.name) + '</span>';
       html += '</div>';
       html += '</div>';
-      html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(e.stat) + '</div>';
+      html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(e.description) + '</div>';
       if (e.companions.length > 0) {
         html += '<div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Companions: ' + e.companions.map(function(c) { return escapeHtml(c); }).join(', ') + '</div>';
       }
