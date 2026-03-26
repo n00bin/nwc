@@ -213,6 +213,12 @@
 
     var html = "";
 
+    // Mount image
+    var mountImg = window.MOUNT_IMAGES && window.MOUNT_IMAGES[mount.name];
+    if (mountImg) {
+      html += '<img class="mount-icon" src="images/mounts/' + mountImg + '" alt="">';
+    }
+
     // Mount name
     html += '<h2 style="margin-bottom:0.25rem;">' + escapeHtml(mount.name) + "</h2>";
     if (mount.source) {
