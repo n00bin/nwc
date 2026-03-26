@@ -211,8 +211,14 @@
     // ---- Enhancement ----
     html += '<div class="section-header">Enhancement</div>';
     if (en) {
+      var enImg = window.ENHANCEMENT_IMAGES && window.ENHANCEMENT_IMAGES[en.name];
       html += '<div class="proc-block">';
+      html += '<div style="display:flex;align-items:center;gap:0.5rem;">';
+      if (enImg) {
+        html += '<img class="enhancement-icon" src="images/enhancements/' + enImg + '" alt="">';
+      }
       html += '<div class="detail-name">' + escapeHtml(en.name) + "</div>";
+      html += "</div>";
       html += '<div class="detail-meta">';
       html += "<span>IL " + formatNumber(en.item_level) + "</span>";
       if (en.scope) {
