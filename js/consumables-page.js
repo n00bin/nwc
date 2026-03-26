@@ -98,6 +98,12 @@
 
     var html = "";
 
+    // Image
+    var buffImg = window.CONSUMABLE_IMAGES && window.CONSUMABLE_IMAGES[buff.name];
+    if (buffImg) {
+      html += '<img class="consumable-icon" src="images/consumables/' + buffImg + '" alt="">';
+    }
+
     // Name
     html += '<h2 style="margin-bottom:0.75rem;">' + escapeHtml(buff.name) + "</h2>";
 
