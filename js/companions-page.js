@@ -426,30 +426,58 @@
   var enhancementView = document.getElementById("enhancement-view");
   var enhancementList = document.getElementById("enhancement-list");
 
-  var enhancementRanking = [
-    { rank: 1, name: "Armor Break", companions: ["Wailer", "Baby Polar Bear", "Cave Bear", "War Dog", "Dragon Hunter", "Lich", "Kenku Archer", "Icosahedron Ioun Stone", "Coldlight Walker", "Wulfgar", "Mini Apparatus of Gond", "Riotous Rothe"], benefit: "-9% to enemies Defense" },
-    { rank: 2, name: "Dulled Senses", companions: ["Mystic Phoera", "Pewter Golem", "Ambush Drake", "Cat", "Baby Bear", "Sergeant Knox", "Dwarven Battlerager", "Redcap Powrie", "Renegade Illusionist", "Air Archon"], benefit: "-9% to enemies Awareness" },
-    { rank: 3, name: "Vulnerability", companions: ["Shadow Demon", "Baby Owlbear", "Owl", "Earl the Chickenmancer", "Storm Rider", "Acolyte of Kelemvor", "Lizardfolk Shaman", "Quickling", "Windsoul Genasi", "Flaming Skull", "Lillend", "Sprite", "Laughing Skull"], benefit: "-9% to enemies Critical Avoidance" },
-    { rank: 4, name: "Slowed Reactions", companions: ["Baby Bulette", "Fawn", "Dragonborn Brawler", "Neverember Guard Archer", "Wiggins the Undead Intern", "Cantankerous Mage", "Apprentice Healer", "Cleric Disciple", "Angel of Protection", "Deva Champion", "Splinters"], benefit: "-9% to enemies Deflect" },
-    { rank: 5, name: "Advantage Nullification", companions: ["Portobello DaVinci"], benefit: "-9% to enemies Combat Advantage" },
-    { rank: 6, name: "Weapon Break", companions: ["Book Imp", "Vicious Dire Wolf", "Man at Arms", "Priestess of Sehanine Moonbow", "Cambion Magus", "Ioun Stone of Allure", "Dancing Shield", "Ioun Stone of Radiance", "Jarlaxle Baenre"], benefit: "-9% to enemies Critical Severity" },
-  ];
+  // Build enhancement list dynamically from data
+  function buildEnhancementList() {
+    var enMap = {};
+    for (var i = 0; i < COMPANION_ENHANCEMENTS_DATA.length; i++) {
+      var en = COMPANION_ENHANCEMENTS_DATA[i];
+      if (!enMap[en.name]) {
+        enMap[en.name] = { name: en.name, stat: en.stat, maxValue: en.maxValue, scope: en.scope, companions: [] };
+      }
+    }
+    // Map companions to their enhancements
+    for (var j = 0; j < COMPANIONS_DATA.length; j++) {
+      var c = COMPANIONS_DATA[j];
+      var ce = enhancementMap[c.enhancementRef];
+      if (ce && enMap[ce.name]) {
+        enMap[ce.name].companions.push(c.name);
+      }
+    }
+    var list = [];
+    for (var key in enMap) {
+      list.push(enMap[key]);
+    }
+    list.sort(function (a, b) { return a.name.localeCompare(b.name); });
+    // Number them
+    for (var k = 0; k < list.length; k++) {
+      list[k].num = k + 1;
+    }
+    return list;
+  }
+
+  var enhancementListData = buildEnhancementList();
 
   function renderEnhancementView() {
     var query = enhancementSearch.value.trim().toLowerCase();
     var html = "";
-    for (var i = 0; i < enhancementRanking.length; i++) {
-      var e = enhancementRanking[i];
-      if (query && (e.name + " " + e.benefit + " " + e.companions.join(" ")).toLowerCase().indexOf(query) === -1) continue;
+    for (var i = 0; i < enhancementListData.length; i++) {
+      var e = enhancementListData[i];
+      if (query && (e.name + " " + e.stat + " " + e.companions.join(" ")).toLowerCase().indexOf(query) === -1) continue;
+      var enImg = window.ENHANCEMENT_IMAGES && window.ENHANCEMENT_IMAGES[e.name];
       html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
-      html += '<div style="display:flex;justify-content:space-between;align-items:center;">';
+      html += '<div style="display:flex;align-items:center;gap:0.5rem;">';
+      if (enImg) {
+        html += '<img class="enhancement-icon" src="images/enhancements/' + enImg + '" alt="">';
+      }
       html += '<div>';
-      html += '<span style="color:var(--highlight);font-weight:700;margin-right:0.5rem;">#' + e.rank + '</span>';
+      html += '<span style="color:var(--highlight);font-weight:700;margin-right:0.5rem;">#' + e.num + '</span>';
       html += '<span style="font-weight:600;">' + escapeHtml(e.name) + '</span>';
       html += '</div>';
       html += '</div>';
-      html += '<div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Companions: ' + e.companions.map(function(c) { return escapeHtml(c); }).join(', ') + '</div>';
-      html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(e.benefit) + '</div>';
+      html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(e.stat) + '</div>';
+      if (e.companions.length > 0) {
+        html += '<div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Companions: ' + e.companions.map(function(c) { return escapeHtml(c); }).join(', ') + '</div>';
+      }
       html += '</div>';
     }
     enhancementList.innerHTML = html;
