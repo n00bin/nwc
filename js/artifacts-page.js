@@ -231,11 +231,22 @@
     document.getElementById("all-list").innerHTML = html || '<div class="empty-state">No artifacts match your filters</div>';
   }
 
+  function findArtifactImage(name) {
+    for (var i = 0; i < artifacts.length; i++) {
+      if (artifacts[i].name === name && artifacts[i].image) return artifacts[i].image;
+    }
+    return "";
+  }
+
   function renderRanking(data, containerId) {
     var html = "";
     for (var i = 0; i < data.length; i++) {
       var r = data[i];
+      var img = findArtifactImage(r.name);
       html += '<div class="rank-card">';
+      if (img) {
+        html += '<img class="art-icon" src="' + escapeHtml(img) + '" alt="' + escapeHtml(r.name) + '">';
+      }
       html += '<div style="font-weight:600;"><span style="color:var(--highlight);margin-right:0.5rem;">#' + r.rank + '</span>' + escapeHtml(r.name) + '</div>';
       html += '<div class="art-effect" style="margin-top:0.4rem;">' + escapeHtml(r.effect) + '</div>';
       html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.25rem;">Duration: ' + r.duration + '</div>';
