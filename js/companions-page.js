@@ -67,7 +67,8 @@
     242: true, // Shadar-kai Witch - Sense Through the Shadowfell (Power, Critical Strike + 10% Dragonbone Vale currency)
     70: true,  // Snow Fawn - Snow Fawn's Instincts (Critical Severity, Defense)
     128: true, // Storm Rider - Stormrider's Discipline (Power, Max HP)
-    26: true   // Watler - Watler's Presence (Deflect + 2x Portobello's Campaign currency)
+    26: true,  // Watler - Watler's Presence (Deflect + 2x Portobello's Campaign currency)
+    168: true  // Apprentice Healer - Apprentice's Wisdom (Max HP, Incoming Healing)
   };
 
   function isScalablePower(pw) {
