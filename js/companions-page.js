@@ -20,6 +20,7 @@
 
   var SINGLE_STAT_SCALE = { 75: 0.75, 150: 1.50, 250: 2.50, 375: 3.75, 550: 5.50, 750: 7.50, 900: 9.00 };
   var DOUBLE_STAT_SCALE = { 75: 0.38, 150: 0.75, 250: 1.25, 375: 1.88, 550: 2.75, 750: 3.75, 900: 4.50 };
+  var TRIPLE_STAT_SCALE = { 75: 0.25, 150: 0.50, 250: 0.83, 375: 1.25, 550: 1.83, 750: 2.50, 900: 3.00 };
 
   var selectedRarity = 900; // Default to Celestial
 
@@ -44,8 +45,19 @@
     return available;
   }
 
+  // Scalable power whitelist - companions confirmed to follow standard scaling
+  var SCALABLE_POWER_IDS = {
+    156: true,  // Acolyte of Kelemvor - Acolyte's Wisdom (Deflect, Incoming Healing)
+    54: true,  // Alpha Compy - Compy's Instincts (Power)
+    147: true, // Battlefield Medic - Battlefield Medic's Wisdom (Combat Advantage, Incoming Healing)
+    234: true  // Catti-brie - Catti's Coordination (Movement Speed, Control Resist)
+  };
+
   function isScalablePower(pw) {
     if (!pw || !pw.slot) return false;
+    // Check whitelist first
+    if (SCALABLE_POWER_IDS[pw.id]) return true;
+    // Default: Offense/Defense slot with 1-2 stats
     var hasOffDef = false;
     for (var i = 0; i < pw.slot.length; i++) {
       if (pw.slot[i] === "Offense" || pw.slot[i] === "Defense") { hasOffDef = true; break; }
