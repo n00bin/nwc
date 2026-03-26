@@ -81,7 +81,11 @@
       var name = currentQuery ? highlightMatch(b.name, currentQuery) : escapeHtml(b.name);
       var catClass = getCategoryClass(b.category);
 
+      var listImg = window.CONSUMABLE_IMAGES && window.CONSUMABLE_IMAGES[b.name];
       html += '<div class="list-item' + sel + '" data-id="' + b.id + '">';
+      if (listImg) {
+        html += '<img class="list-icon" src="images/consumables/' + listImg + '" alt="">';
+      }
       html += '<span class="item-name">' + name + "</span>";
       html += '<span class="item-meta"><span class="badge ' + catClass + '" style="font-size:0.6rem;padding:0.1rem 0.35rem;">' + escapeHtml(b.category.charAt(0)) + "</span></span>";
       html += "</div>";
