@@ -16,5 +16,16 @@ window.ENHANCEMENT_IMAGES = {
   "Redemption": "Power_Icon_Companion_Enhancement_Redemption.webp",
   "Reinvigorate": "Power_Icon_Companion_Enhancement_Reinvigorate.webp",
   "Vulnerability": "Power_Icon_Companion_Enhancement_Vulnerability.webp",
-  "Weapon Break": "Power_Icon_Companion_Enhancement_Weapon_Break.webp"
+  "Weapon Break": "Power_Icon_Companion_Enhancement_Weapon_Break.webp",
+  "Enduring Alacrity": "enduring_alacrity.webp",
+  "Enduring Craft": "enduring_craft.webp",
+  "Enduring Guard": "enduring_guard.webp",
+  "Enduring Precision": "enduring_precision.webp",
+  "Enduring Senses": "enduring_senses.webp",
+  "Exploit Weakness": "exploit_weakness.webp",
+  "Impactful Maneuvers": "impactful_maneuvers.webp",
+  "Mobility": "mobility.webp",
+  "Precision Breaker": "precision_breaker.webp",
+  "Slowed Reactions": "slowed_reactions.webp",
+  "Unflinching Will": "unflinching_will.webp"
 };
