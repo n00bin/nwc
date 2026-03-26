@@ -7,6 +7,65 @@
   var powerMap       = buildLookup(COMPANION_POWERS_DATA);
   var enhancementMap = buildLookup(COMPANION_ENHANCEMENTS_DATA);
 
+  // ---- Rarity scaling ----
+  var RARITIES = [
+    { name: "Common",    il: 75,  color: "#aaa" },
+    { name: "Uncommon",  il: 150, color: "#0f0" },
+    { name: "Rare",      il: 250, color: "#4af" },
+    { name: "Epic",      il: 375, color: "#a335ee" },
+    { name: "Legendary", il: 550, color: "#f80" },
+    { name: "Mythic",    il: 750, color: "#0ee" },
+    { name: "Celestial", il: 900, color: "#ff5" }
+  ];
+
+  var SINGLE_STAT_SCALE = { 75: 0.75, 150: 1.50, 250: 2.50, 375: 3.75, 550: 5.50, 750: 7.50, 900: 9.00 };
+  var DOUBLE_STAT_SCALE = { 75: 0.38, 150: 0.75, 250: 1.25, 375: 1.88, 550: 2.75, 750: 3.75, 900: 4.50 };
+
+  var selectedRarity = 900; // Default to Celestial
+
+  function getRarityByIL(il) {
+    for (var i = RARITIES.length - 1; i >= 0; i--) {
+      if (il >= RARITIES[i].il) return RARITIES[i];
+    }
+    return RARITIES[0];
+  }
+
+  function getBaseRarity(pw) {
+    if (!pw || !pw.item_level) return RARITIES[0];
+    return getRarityByIL(pw.item_level);
+  }
+
+  function getAvailableRarities(pw) {
+    var base = getBaseRarity(pw);
+    var available = [];
+    for (var i = 0; i < RARITIES.length; i++) {
+      if (RARITIES[i].il >= base.il) available.push(RARITIES[i]);
+    }
+    return available;
+  }
+
+  function isScalablePower(pw) {
+    if (!pw || !pw.slot) return false;
+    var hasOffDef = false;
+    for (var i = 0; i < pw.slot.length; i++) {
+      if (pw.slot[i] === "Offense" || pw.slot[i] === "Defense") { hasOffDef = true; break; }
+    }
+    if (!hasOffDef) return false;
+    var realStats = (pw.stats || []).filter(function (s) { return s.stat !== "CombinedRating"; });
+    return realStats.length === 1 || realStats.length === 2;
+  }
+
+  function scaleStats(pw, targetIL) {
+    if (!isScalablePower(pw)) return null;
+    var realStats = pw.stats.filter(function (s) { return s.stat !== "CombinedRating"; });
+    var scale = realStats.length === 1 ? SINGLE_STAT_SCALE : DOUBLE_STAT_SCALE;
+    var scaledStats = [];
+    for (var i = 0; i < realStats.length; i++) {
+      scaledStats.push({ stat: realStats[i].stat, value: scale[targetIL], type: realStats[i].type || "percent" });
+    }
+    return { stats: scaledStats, combinedRating: targetIL };
+  }
+
   // ---- DOM refs ----
   var searchInput       = document.getElementById("search");
   var filterSlot        = document.getElementById("filter-slot");
@@ -179,6 +238,19 @@
     // ---- Power ----
     html += '<div class="section-header">Power</div>';
     if (pw) {
+      var scalable = isScalablePower(pw);
+      var availableRarities = getAvailableRarities(pw);
+      var activeIL = scalable ? selectedRarity : pw.item_level;
+      // Clamp to available rarities
+      if (scalable) {
+        var validILs = availableRarities.map(function (r) { return r.il; });
+        if (validILs.indexOf(activeIL) === -1) activeIL = validILs[validILs.length - 1];
+      }
+      var activeRarity = getRarityByIL(activeIL);
+      var scaled = scalable ? scaleStats(pw, activeIL) : null;
+      var displayStats = scaled ? scaled.stats : pw.stats;
+      var displayCR = scaled ? scaled.combinedRating : pw.combinedRating;
+
       html += '<div class="proc-block">';
       html += '<div class="detail-name">' + escapeHtml(pw.name) + "</div>";
 
@@ -187,14 +259,25 @@
         html += '<div style="margin:0.3rem 0;">' + renderSlotBadges(pw.slot) + "</div>";
       }
 
+      // Rarity selector (only for scalable powers)
+      if (scalable) {
+        html += '<div style="margin:0.4rem 0;display:flex;flex-wrap:wrap;gap:0.25rem;">';
+        for (var ri = 0; ri < availableRarities.length; ri++) {
+          var r = availableRarities[ri];
+          var active = r.il === activeIL ? ' style="background:' + r.color + ';color:#000;border-color:' + r.color + ';"' : ' style="color:' + r.color + ';border-color:' + r.color + ';"';
+          html += '<button class="rarity-btn" data-il="' + r.il + '"' + active + '>' + r.name + '</button>';
+        }
+        html += '</div>';
+      }
+
       html += '<div class="detail-meta">';
-      html += "<span>IL " + formatNumber(pw.item_level) + "</span>";
-      html += "<span>Combined Rating " + formatNumber(pw.combinedRating) + "</span>";
+      html += '<span style="color:' + activeRarity.color + ';">IL ' + formatNumber(activeIL) + ' (' + activeRarity.name + ')</span>';
+      html += "<span>Combined Rating " + formatNumber(displayCR) + "</span>";
       html += "</div>";
 
       // Stats
-      if (pw.stats && pw.stats.length > 0) {
-        html += renderStatsTable(pw.stats);
+      if (displayStats && displayStats.length > 0) {
+        html += renderStatsTable(displayStats);
       }
 
       // Role conditional
@@ -354,6 +437,18 @@
       if (COMPANIONS_DATA[j].id === id) { companion = COMPANIONS_DATA[j]; break; }
     }
     renderDetail(companion);
+  });
+
+  detailPanel.addEventListener("click", function (e) {
+    var btn = e.target.closest(".rarity-btn");
+    if (!btn) return;
+    selectedRarity = parseInt(btn.getAttribute("data-il"), 10);
+    // Re-render current companion
+    if (selectedId) {
+      for (var j = 0; j < COMPANIONS_DATA.length; j++) {
+        if (COMPANIONS_DATA[j].id === selectedId) { renderDetail(COMPANIONS_DATA[j]); break; }
+      }
+    }
   });
 
   searchInput.addEventListener("input", onFilterChange);
