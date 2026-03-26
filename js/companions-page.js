@@ -137,8 +137,15 @@
         }
       }
 
+      // Companion list icon
+      var listImg = window.COMPANION_IMAGES && window.COMPANION_IMAGES[c.name];
+
       html += '<div class="list-item' + sel + '" data-id="' + c.id + '">';
-      html += '<span class="item-name">' + name + "</span>";
+      html += '<span class="item-name" style="display:flex;align-items:center;">';
+      if (listImg) {
+        html += '<img class="list-icon" src="images/companions/' + listImg + '" alt="">';
+      }
+      html += name + "</span>";
       html += '<span class="item-meta">' + badges + "</span>";
       html += "</div>";
     }
@@ -157,8 +164,14 @@
 
     var html = "";
 
-    // Companion name
-    html += '<h2 style="margin-bottom:0.25rem;">' + escapeHtml(companion.name) + "</h2>";
+    // Companion name with icon
+    var compImg = window.COMPANION_IMAGES && window.COMPANION_IMAGES[companion.name];
+    html += '<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;">';
+    if (compImg) {
+      html += '<img class="companion-icon" src="images/companions/' + compImg + '" alt="">';
+    }
+    html += '<h2 style="margin:0;">' + escapeHtml(companion.name) + "</h2>";
+    html += "</div>";
     if (companion.source) {
       html += '<div style="margin-bottom:0.75rem;font-size:0.85rem;"><span style="color:var(--text-muted);">Source: </span><span style="color:var(--highlight);">' + escapeHtml(companion.source) + "</span></div>";
     }
