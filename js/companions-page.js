@@ -50,7 +50,10 @@
     156: true,  // Acolyte of Kelemvor - Acolyte's Wisdom (Deflect, Incoming Healing)
     54: true,  // Alpha Compy - Compy's Instincts (Power)
     147: true, // Battlefield Medic - Battlefield Medic's Wisdom (Combat Advantage, Incoming Healing)
-    234: true  // Catti-brie - Catti's Coordination (Movement Speed, Control Resist)
+    234: true, // Catti-brie - Catti's Coordination (Movement Speed, Control Resist)
+    170: true, // Cleric Disciple - Cleric Disciple's Wisdom (Incoming Healing, Power)
+    228: true, // Coldlight Walker - Coldlight Walker's Gaze (Critical Strike, Critical Severity)
+    232: true  // Dark Dealer - Dark Dealings (Combat Advantage, Accuracy + 10% Northdark Reaches currency)
   };
 
   function isScalablePower(pw) {
