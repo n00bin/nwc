@@ -102,14 +102,14 @@
 
     var html = "";
 
-    // Image
+    // Name with icon
     var buffImg = window.CONSUMABLE_IMAGES && window.CONSUMABLE_IMAGES[buff.name];
+    html += '<div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">';
     if (buffImg) {
-      html += '<img class="consumable-icon" src="images/consumables/' + buffImg + '" alt="">';
+      html += '<img class="detail-icon" src="images/consumables/' + buffImg + '" alt="">';
     }
-
-    // Name
-    html += '<h2 style="margin-bottom:0.75rem;">' + escapeHtml(buff.name) + "</h2>";
+    html += '<h2 style="margin:0;">' + escapeHtml(buff.name) + "</h2>";
+    html += "</div>";
 
     // ---- Info block ----
     html += '<div class="proc-block">';
