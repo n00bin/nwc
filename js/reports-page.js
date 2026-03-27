@@ -157,13 +157,18 @@
     var date = new Date(r.created_at);
     var dateStr = date.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
 
+    var isResolved = r.status === "Fixed" || r.status === "Won't Fix";
     var html = '<div class="report-card">';
 
     // Vote column
     html += '<div class="vote-col">';
-    html += '<button class="vote-btn' + votedClass + '" data-id="' + r.id + '" title="' + (hasVoted ? "Already voted" : "Upvote this report") + '">';
-    html += "&#9650;"; // triangle up
-    html += "</button>";
+    if (isResolved) {
+      html += '<span class="vote-btn voted" style="opacity:0.3;cursor:default;" title="Resolved">&#9650;</span>';
+    } else {
+      html += '<button class="vote-btn' + votedClass + '" data-id="' + r.id + '" title="' + (hasVoted ? "Already voted" : "Upvote this report") + '">';
+      html += "&#9650;";
+      html += "</button>";
+    }
     html += '<span class="vote-count">' + r.upvotes + "</span>";
     html += "</div>";
 
