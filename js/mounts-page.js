@@ -34,16 +34,17 @@
   function getCompatibleBonuses(mount) {
     var slots = mount.insigniaSlots;
     if (!slots || slots.length === 0) return [];
-    // Only the first 3 slots count toward insignia bonuses; slot 4 is stats-only
-    var bonusSlots = slots.length > 3 ? slots.slice(0, 3) : slots;
     var result = [];
     for (var i = 0; i < MOUNT_INSIGNIA_BONUSES_DATA.length; i++) {
       var bonus = MOUNT_INSIGNIA_BONUSES_DATA[i];
       var req = bonus.requiredInsignias;
-      if (!req || req.length > bonusSlots.length) continue;
+      if (!req) continue;
+      // 3-slot bonuses can only use the first 3 slots; 4-slot bonuses use all 4
+      var checkSlots = (req.length <= 3 && slots.length > 3) ? slots.slice(0, 3) : slots;
+      if (req.length > checkSlots.length) continue;
       var used = [];
-      for (var u = 0; u < bonusSlots.length; u++) used.push(false);
-      if (canAssign(bonusSlots, req, 0, used)) {
+      for (var u = 0; u < checkSlots.length; u++) used.push(false);
+      if (canAssign(checkSlots, req, 0, used)) {
         result.push(bonus);
       }
     }
