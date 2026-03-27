@@ -183,6 +183,7 @@
 
   // ---- Render list ----
   function renderList(mounts) {
+    mounts.sort(function (a, b) { return a.name.localeCompare(b.name); });
     listCount.textContent = mounts.length + " of " + MOUNTS_DATA.length + " mounts";
 
     if (mounts.length === 0) {
