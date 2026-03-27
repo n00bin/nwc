@@ -81,7 +81,6 @@
     { name: "Darkened Storyteller's Journal", type: "personal", power: "25' AoE + stun 3.2s. +5% necrotic weapon damage per stack. -5,000 enemy Armor Pen.", debuff: "5% necrotic damage + enemy ArP shred", cooldown: 60, set: "Storyteller's Journals", source: "Zen Market / Tales of Old", image: "images/artifacts/Icon_Inventory_Artifacts_Storytellers_Journal_Idris.webp" },
     // -- Newly discovered artifacts --
     { name: "Demogorgon's Reach", type: "debuff", power: "Summons 6 tentacles over 6s. Struck foes gain Rotting for 6s: +3% damage taken per stack, -5% incoming healing per stack. Stacks up to 6x (max 18% more damage taken).", debuff: "18% stacking group debuff", cooldown: 60, set: "None", source: "Demogorgon (Master)", image: "images/artifacts/Icon_Inventory_Artifacts_Demogorgon_Revamp.webp" },
-    { name: "Vision of Lolth", type: "debuff", power: "Summons Vision for 10s in 20' radius. DoT 115 mag/s. Allies gain 1 stack every 0.5s: +1.5% Power, +1.5% Crit Severity, +0.75% Defense, +0.75% Awareness. Up to 20 stacks (max +30% Power/Crit Sev, +15% Def/Awareness).", debuff: "30% Power/Crit Sev + 15% Def/Awareness party buff", cooldown: 60, set: "None", source: "Demonweb Pits (Mod 26)" },
     { name: "Dragonbone Blades", type: "debuff", power: "Throws blades dealing Necrotic damage + DoT every 1s for 10s. Enemies take 12% more damage and deal 12% less damage.", debuff: "12% more damage taken + 12% less damage dealt", cooldown: 60, set: "None", source: "Lockbox", image: "images/artifacts/Icon_Inventory_Artifact_Dragonboneblades.webp" },
     { name: "Mythallar Fragment", type: "debuff", power: "Arcane blast, stuns target. Target's damage resistance lowered by 15% for duration.", debuff: "15% damage resistance reduction", cooldown: 60, set: "None", source: "Dragonbone Vale Campaign", image: "images/artifacts/Icon_Inventory_Artifact_M22_Zone.webp" },
     { name: "Jewel of the North", type: "debuff", power: "Lunge forward dealing line damage. Targets take 10% more damage for 10s. Passive: 15% more/less threat based on role.", debuff: "10% more damage taken", cooldown: 60, set: "None", source: "Echoes of Prophecy Battle Pass", image: "images/artifacts/Icon_Inventory_Artifacts_NorthernJewel.webp" },
@@ -125,42 +124,40 @@
   // TRIAL RANKING
   // ============================================================
   var trialRanking = [
-    { rank: 1, name: "Vision of Lolth", effect: "Stacking party buff: up to +30% Power/Crit Severity, +15% Defense/Awareness", duration: "10s" },
-    { rank: 2, name: "Demogorgon's Reach", effect: "Stacking debuff: +3% damage taken per stack, up to 18% (6 stacks)", duration: "6s per stack" },
-    { rank: 3, name: "Charm of the Serpent", effect: "+16% damage taken by enemies (cone)", duration: "10s" },
-    { rank: 4, name: "Halaster's Blast Scepter", effect: "-15% enemy damage resistance", duration: "10s" },
-    { rank: 5, name: "Mythallar Fragment", effect: "-15% enemy damage resistance", duration: "10s" },
-    { rank: 6, name: "Wyvern-Venom Coated Knives", effect: "+12% damage taken, -12% enemy damage dealt", duration: "10s" },
-    { rank: 7, name: "Dragonbone Blades", effect: "+12% damage taken, -12% enemy damage dealt", duration: "10s" },
-    { rank: 8, name: "Frozen Storyteller's Journal", effect: "+10% ally damage, -10% incoming damage, stun, summons", duration: "15s" },
-    { rank: 9, name: "Lantern of Revelation", effect: "+10% damage taken by enemies", duration: "10s" },
-    { rank: 10, name: "Thirst", effect: "+10% damage taken by enemies (lunge)", duration: "10s" },
-    { rank: 11, name: "Heart of the Black Dragon", effect: "+10% damage taken by enemies", duration: "6s" },
-    { rank: 12, name: "Black Dragon's Mark", effect: "-10% enemy damage resistance", duration: "10s" },
-    { rank: 13, name: "Vanguard's Banner", effect: "+5% damage taken, +5,000 ally Power", duration: "30s" },
-    { rank: 14, name: "Sparkling Fey Emblem", effect: "+5% damage taken, +5% ally Defense/Crit Avoidance", duration: "15s" },
-    { rank: 15, name: "Refulgent Diamond Pin", effect: "-5% enemy damage, +7.5% ally Combat Advantage", duration: "15s" },
+    { rank: 1, name: "Demogorgon's Reach", effect: "Stacking debuff: +3% damage taken per stack, up to 18% (6 stacks)", duration: "6s per stack" },
+    { rank: 2, name: "Charm of the Serpent", effect: "+16% damage taken by enemies (cone)", duration: "10s" },
+    { rank: 3, name: "Halaster's Blast Scepter", effect: "-15% enemy damage resistance", duration: "10s" },
+    { rank: 4, name: "Mythallar Fragment", effect: "-15% enemy damage resistance", duration: "10s" },
+    { rank: 5, name: "Wyvern-Venom Coated Knives", effect: "+12% damage taken, -12% enemy damage dealt", duration: "10s" },
+    { rank: 6, name: "Dragonbone Blades", effect: "+12% damage taken, -12% enemy damage dealt", duration: "10s" },
+    { rank: 7, name: "Frozen Storyteller's Journal", effect: "+10% ally damage, -10% incoming damage, stun, summons", duration: "15s" },
+    { rank: 8, name: "Lantern of Revelation", effect: "+10% damage taken by enemies", duration: "10s" },
+    { rank: 9, name: "Thirst", effect: "+10% damage taken by enemies (lunge)", duration: "10s" },
+    { rank: 10, name: "Heart of the Black Dragon", effect: "+10% damage taken by enemies", duration: "6s" },
+    { rank: 11, name: "Black Dragon's Mark", effect: "-10% enemy damage resistance", duration: "10s" },
+    { rank: 12, name: "Vanguard's Banner", effect: "+5% damage taken, +5,000 ally Power", duration: "30s" },
+    { rank: 13, name: "Sparkling Fey Emblem", effect: "+5% damage taken, +5% ally Defense/Crit Avoidance", duration: "15s" },
+    { rank: 14, name: "Refulgent Diamond Pin", effect: "-5% enemy damage, +7.5% ally Combat Advantage", duration: "15s" },
   ];
 
   // ============================================================
   // DUNGEON RANKING
   // ============================================================
   var dungeonRanking = [
-    { rank: 1, name: "Vision of Lolth", effect: "Stacking party buff: up to +30% Power/Crit Severity, +15% Defense/Awareness", duration: "10s" },
-    { rank: 2, name: "Demogorgon's Reach", effect: "Stacking debuff: +3% damage taken per stack, up to 18% (6 stacks)", duration: "6s per stack" },
-    { rank: 3, name: "Charm of the Serpent", effect: "+16% damage taken by enemies (cone)", duration: "10s" },
-    { rank: 4, name: "Halaster's Blast Scepter", effect: "-15% enemy damage resistance", duration: "10s" },
-    { rank: 5, name: "Mythallar Fragment", effect: "-15% enemy damage resistance", duration: "10s" },
-    { rank: 6, name: "Frozen Storyteller's Journal", effect: "+10% ally damage, -10% incoming damage, stun, summons", duration: "15s" },
-    { rank: 7, name: "Wyvern-Venom Coated Knives", effect: "+12% damage taken, -12% enemy damage dealt", duration: "10s" },
-    { rank: 8, name: "Dragonbone Blades", effect: "+12% damage taken, -12% enemy damage dealt", duration: "10s" },
-    { rank: 9, name: "Lantern of Revelation", effect: "+10% damage taken by enemies", duration: "10s" },
-    { rank: 10, name: "Thirst", effect: "+10% damage taken by enemies (lunge)", duration: "10s" },
-    { rank: 11, name: "Heart of the Black Dragon", effect: "+10% damage taken by enemies", duration: "6s" },
-    { rank: 12, name: "Black Dragon's Mark", effect: "-10% enemy damage resistance", duration: "10s" },
-    { rank: 13, name: "Vanguard's Banner", effect: "+5% damage taken, +5,000 ally Power", duration: "30s" },
-    { rank: 14, name: "Defender's Banner", effect: "-5% enemy damage, +5,000 ally Power/Awareness", duration: "30s" },
-    { rank: 15, name: "Sparkling Fey Emblem", effect: "+5% damage taken, +5% ally Defense/Crit Avoidance", duration: "15s" },
+    { rank: 1, name: "Demogorgon's Reach", effect: "Stacking debuff: +3% damage taken per stack, up to 18% (6 stacks)", duration: "6s per stack" },
+    { rank: 2, name: "Charm of the Serpent", effect: "+16% damage taken by enemies (cone)", duration: "10s" },
+    { rank: 3, name: "Halaster's Blast Scepter", effect: "-15% enemy damage resistance", duration: "10s" },
+    { rank: 4, name: "Mythallar Fragment", effect: "-15% enemy damage resistance", duration: "10s" },
+    { rank: 5, name: "Frozen Storyteller's Journal", effect: "+10% ally damage, -10% incoming damage, stun, summons", duration: "15s" },
+    { rank: 6, name: "Wyvern-Venom Coated Knives", effect: "+12% damage taken, -12% enemy damage dealt", duration: "10s" },
+    { rank: 7, name: "Dragonbone Blades", effect: "+12% damage taken, -12% enemy damage dealt", duration: "10s" },
+    { rank: 8, name: "Lantern of Revelation", effect: "+10% damage taken by enemies", duration: "10s" },
+    { rank: 9, name: "Thirst", effect: "+10% damage taken by enemies (lunge)", duration: "10s" },
+    { rank: 10, name: "Heart of the Black Dragon", effect: "+10% damage taken by enemies", duration: "6s" },
+    { rank: 11, name: "Black Dragon's Mark", effect: "-10% enemy damage resistance", duration: "10s" },
+    { rank: 12, name: "Vanguard's Banner", effect: "+5% damage taken, +5,000 ally Power", duration: "30s" },
+    { rank: 13, name: "Defender's Banner", effect: "-5% enemy damage, +5,000 ally Power/Awareness", duration: "30s" },
+    { rank: 14, name: "Sparkling Fey Emblem", effect: "+5% damage taken, +5% ally Defense/Crit Avoidance", duration: "15s" },
   ];
 
   // ============================================================
