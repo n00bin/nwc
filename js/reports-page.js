@@ -99,7 +99,7 @@
     }
 
     // Sort active: status priority (New > Confirmed > In Progress), then by upvotes
-    var statusOrder = { "New": 0, "Confirmed": 1, "In Progress": 2 };
+    var statusOrder = { "In Progress": 0, "New": 1, "Confirmed": 2 };
     active.sort(function (a, b) {
       var sa = statusOrder[a.status] !== undefined ? statusOrder[a.status] : 9;
       var sb = statusOrder[b.status] !== undefined ? statusOrder[b.status] : 9;
