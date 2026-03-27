@@ -64,6 +64,7 @@
   var filterEquip   = document.getElementById("filter-equip");
   var filterBonus     = document.getElementById("filter-bonus");
   var togglePreferred = document.getElementById("toggle-preferred");
+  var toggle4Slot     = document.getElementById("toggle-4slot");
   var listContainer   = document.getElementById("mount-list");
   var listCount     = document.getElementById("list-count");
   var detailPanel   = document.getElementById("detail-panel");
@@ -130,6 +131,11 @@
           if (compatible[bi].name === bonusVal) { found = true; break; }
         }
         if (!found) return false;
+      }
+      // 4-slot only toggle
+      if (toggle4Slot.checked) {
+        var slotCount = m.insigniaSlots ? m.insigniaSlots.length : 0;
+        if (slotCount < 4) return false;
       }
       // Preferred slot toggle
       if (togglePreferred.checked) {
@@ -484,6 +490,7 @@
   filterEquip.addEventListener("change", onFilterChange);
   filterBonus.addEventListener("change", onFilterChange);
   togglePreferred.addEventListener("change", onFilterChange);
+  toggle4Slot.addEventListener("change", onFilterChange);
 
   // ============================================================
   // Ranking Views
