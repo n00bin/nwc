@@ -215,7 +215,11 @@
       var a = filtered[i];
       html += '<div class="art-card" data-idx="' + i + '">';
       html += '<div class="art-card-header">';
-      html += '<span class="art-card-name">' + escapeHtml(a.name) + '</span>';
+      html += '<span class="art-card-name">';
+      if (a.image) {
+        html += '<img class="art-list-icon" src="' + escapeHtml(a.image) + '" alt="">';
+      }
+      html += escapeHtml(a.name) + '</span>';
       html += '<span><span class="' + (typeBadgeClass[a.type] || '') + '" style="font-size:0.78rem;">' + (typeLabels[a.type] || a.type) + '</span> <span class="toggle-arrow">&#9654;</span></span>';
       html += '</div>';
       html += '<div class="art-card-body">';
