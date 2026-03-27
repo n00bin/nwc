@@ -67,6 +67,8 @@
   }
 
   // ---- Render reports ----
+  var resolvedExpanded = false;
+
   function renderReports() {
     var catVal    = filterCategory.value;
     var statusVal = filterStatus.value;
@@ -84,10 +86,58 @@
       return;
     }
 
-    var html = "";
+    // Split into active and resolved
+    var active = [];
+    var resolved = [];
     for (var i = 0; i < filtered.length; i++) {
-      html += buildReportCard(filtered[i]);
+      var s = filtered[i].status;
+      if (s === "Fixed" || s === "Won't Fix") {
+        resolved.push(filtered[i]);
+      } else {
+        active.push(filtered[i]);
+      }
     }
+
+    // Sort active: status priority (New > Confirmed > In Progress), then by upvotes
+    var statusOrder = { "New": 0, "Confirmed": 1, "In Progress": 2 };
+    active.sort(function (a, b) {
+      var sa = statusOrder[a.status] !== undefined ? statusOrder[a.status] : 9;
+      var sb = statusOrder[b.status] !== undefined ? statusOrder[b.status] : 9;
+      if (sa !== sb) return sa - sb;
+      return b.upvotes - a.upvotes;
+    });
+
+    // Sort resolved: newest first
+    resolved.sort(function (a, b) {
+      return new Date(b.created_at) - new Date(a.created_at);
+    });
+
+    var html = "";
+
+    // Active section
+    if (active.length > 0) {
+      html += '<div class="reports-section-header">Active (' + active.length + ')</div>';
+      for (var j = 0; j < active.length; j++) {
+        html += buildReportCard(active[j]);
+      }
+    }
+
+    // Resolved section (collapsed by default)
+    if (resolved.length > 0) {
+      html += '<div class="reports-section-header resolved-toggle" id="resolved-toggle">';
+      html += (resolvedExpanded ? '&#9660;' : '&#9654;') + ' Resolved (' + resolved.length + ')';
+      html += '</div>';
+      if (resolvedExpanded) {
+        for (var k = 0; k < resolved.length; k++) {
+          html += buildReportCard(resolved[k]);
+        }
+      }
+    }
+
+    if (active.length === 0 && resolved.length === 0) {
+      html = '<div class="empty-state">No reports found</div>';
+    }
+
     reportsList.innerHTML = html;
   }
 
@@ -243,6 +293,14 @@
 
     // Refresh the list
     fetchReports();
+  });
+
+  // ---- Resolved toggle ----
+  reportsList.addEventListener("click", function (e) {
+    var toggle = e.target.closest(".resolved-toggle");
+    if (!toggle) return;
+    resolvedExpanded = !resolvedExpanded;
+    renderReports();
   });
 
   // ---- Upvote ----

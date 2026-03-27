@@ -125,6 +125,22 @@
       cursor: pointer;
     }
     .status-select:focus { border-color: var(--accent); }
+    .reports-section-header {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--highlight);
+      padding: 0.75rem 0 0.4rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .resolved-toggle {
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: color 0.15s;
+    }
+    .resolved-toggle:hover { color: var(--text-primary); }
     .delete-btn {
       background: none;
       border: 1px solid var(--stat-negative);
