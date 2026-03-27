@@ -30,7 +30,7 @@ var NEWS_DATA = [
       "<li>Filled in power data for all 256 companions</li>" +
       "<li>Added 177 companion sources</li>" +
       "<li>Added all 28 companion enhancement icons</li>" +
-      "<li>Added 241 companion icons from PS5 screenshots</li>" +
+      "<li>Added 241 companion icons</li>" +
       "<li>Added 92+ artifact icons and 50+ consumable icons</li>" +
       "<li>Added 4 new Mod 26 artifacts: Demon Skull, Nightflame Censer, Marilith Mask, Xeleth's Blast Scepter</li>" +
       "<li>Added new companions: Demonic Servant, Little White</li>" +
