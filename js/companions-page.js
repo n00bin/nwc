@@ -68,7 +68,9 @@
     70: true,  // Snow Fawn - Snow Fawn's Instincts (Critical Severity, Defense)
     128: true, // Storm Rider - Stormrider's Discipline (Power, Max HP)
     26: true,  // Watler - Watler's Presence (Deflect + 2x Portobello's Campaign currency)
-    168: true  // Apprentice Healer - Apprentice's Wisdom (Max HP, Incoming Healing)
+    168: true, // Apprentice Healer - Apprentice's Wisdom (Max HP, Incoming Healing)
+    174: true, // Lysaera - Spiteful Hex (Incoming Damage debuff, Defense buff)
+    104: true  // Tutor - Tutor's Discipline (Critical Severity, Combat Advantage)
   };
 
   function isScalablePower(pw) {
