@@ -563,8 +563,13 @@
     for (var i = 0; i < filtered.length; i++) {
       var s = filtered[i];
 
+      var sumImg = window.COMPANION_IMAGES && window.COMPANION_IMAGES[s.companionName];
       html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
-      html += '<div style="font-weight:600;"><span style="color:var(--highlight);margin-right:0.5rem;">#' + (i + 1) + '</span>' + escapeHtml(s.companionName) + '</div>';
+      html += '<div style="display:flex;align-items:center;gap:0.5rem;font-weight:600;">';
+      if (sumImg) {
+        html += '<img class="companion-icon" src="images/companions/' + sumImg + '" alt="">';
+      }
+      html += '<span><span style="color:var(--highlight);margin-right:0.5rem;">#' + (i + 1) + '</span>' + escapeHtml(s.companionName) + '</span></div>';
       html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(s.buff) + '</div>';
       if (s.range) {
         html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Range: ' + s.range + "'</div>";
