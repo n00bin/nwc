@@ -1,6 +1,34 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "March 28, 2026",
+    title: "Bug Reports Resolved + New Data",
+    tags: ["Feature", "Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li>Companion proc effects now scale with rarity (heal %, magnitude, etc. update when switching rarity)</li>" +
+      "<li>Rarity selector now shows on all companion powers, not just stat-scaling ones</li>" +
+      "<li>Admin notes on reports: admins can post status updates visible to everyone</li>" +
+      "<li>Community replies on reports: when admin requests help, users can reply with text and screenshots</li>" +
+      "<li>Added collaboration contact email to site footer</li>" +
+      "<li>Renamed YouTube links to The N00bin Network / Join on YouTube</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li>Fixed Hank's Aim: magnitude scales 30x single stat, was incorrectly listed as fixed 225 (Report #3)</li>" +
+      "<li>Fixed Elminster's Chain Lightning: scales 10x/2x single stat, old values 66/16.5 were wrong (Report #7)</li>" +
+      "<li>Fixed Doom and Bloom: heal % scales ~3.33x single stat, was showing 10% at all rarities (Report #10)</li>" +
+      "<li>Confirmed Ox Stot, Chickenmancer, Eric the Cavalier as intentionally fixed effects (Reports #6, #8, #9)</li>" +
+      "<li>Fixed Ox Stot base rarity from Mythic to Uncommon (was showing wrong rarity buttons)</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li>Added mount: Cactus the Hedgehog (Vigilance + Stabby Stabs) (Report #19)</li>" +
+      "<li>Added 6 companions: Soradiel, Kingfisher Intern, Elite Intern, Archmage's Apprentice, Crimson Crystal Golem, Proud Pink Yeti (Report #18)</li>" +
+      "<li>Added new enhancement: Deflecting Shards (Accuracy + companion Crit Avoidance)</li>" +
+      "</ul>"
+  },
+  {
     date: "March 27, 2026",
     title: "Major Site Update",
     tags: ["Feature", "Fix", "Data"],
