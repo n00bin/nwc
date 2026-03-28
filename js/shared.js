@@ -26,16 +26,16 @@ function renderNav(activePage) {
     const cls = p.label === activePage ? " active" : "";
     html += `<a href="${p.href}" class="${cls}">${p.label}</a>`;
   }
-  html += '<a href="https://www.youtube.com/@N00binHard" target="_blank" rel="noopener" style="color:#ff0000;" title="N00bin YouTube Channel">&#9654; YouTube</a>';
-  html += '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:#f0883e;" title="Join the N00bin Network">Join N00bin Network</a>';
+  html += '<a href="https://www.youtube.com/@N00binHard" target="_blank" rel="noopener" style="color:#ff0000;" title="The N00bin Network on YouTube">&#9654; The N00bin Network</a>';
+  html += '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:#f0883e;" title="Join The N00bin Network on YouTube">Join on YouTube</a>';
   html += "</div>";
   nav.innerHTML = html;
 
   // ---- Footer ----
   var footer = document.createElement("footer");
   footer.style.cssText = "text-align:center;padding:2rem 1rem;margin-top:3rem;border-top:1px solid var(--border-default);color:var(--text-muted);font-size:0.82rem;";
-  footer.innerHTML = '<a href="https://www.youtube.com/@N00binHard" target="_blank" rel="noopener" style="color:#ff0000;text-decoration:none;margin-right:1rem;">&#9654; YouTube</a>' +
-    '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:#f0883e;text-decoration:none;">Join N00bin Network</a>' +
+  footer.innerHTML = '<a href="https://www.youtube.com/@N00binHard" target="_blank" rel="noopener" style="color:#ff0000;text-decoration:none;margin-right:1rem;">&#9654; The N00bin Network</a>' +
+    '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:#f0883e;text-decoration:none;">Join on YouTube</a>' +
     '<div style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-secondary);">Want to collaborate or contribute data? Reach out: <a href="mailto:n00binhard@gmail.com" style="color:var(--accent);text-decoration:none;">n00binhard@gmail.com</a></div>' +
     '<div style="margin-top:0.5rem;">Neverwinter Compendium &copy; N00bin ' + new Date().getFullYear() + '</div>';
   document.body.appendChild(footer);
