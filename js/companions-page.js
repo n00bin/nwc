@@ -288,18 +288,15 @@
     if (pw) {
       var scalable = isScalablePower(pw);
       var hasProcScaling = pw.procEffect && pw.procEffect.effectScaling;
-      var showRaritySelector = scalable || hasProcScaling;
       var availableRarities = getAvailableRarities(pw);
-      var activeIL = showRaritySelector ? selectedRarity : pw.item_level;
+      var activeIL = selectedRarity;
       // Clamp to available rarities
-      if (showRaritySelector) {
-        var validILs = availableRarities.map(function (r) { return r.il; });
-        if (validILs.indexOf(activeIL) === -1) activeIL = validILs[validILs.length - 1];
-      }
+      var validILs = availableRarities.map(function (r) { return r.il; });
+      if (validILs.indexOf(activeIL) === -1) activeIL = validILs[validILs.length - 1];
       var activeRarity = getRarityByIL(activeIL);
       var scaled = scalable ? scaleStats(pw, activeIL) : null;
       var displayStats = scaled ? scaled.stats : pw.stats;
-      var displayCR = scaled ? scaled.combinedRating : (hasProcScaling ? activeIL : pw.combinedRating);
+      var displayCR = scaled ? scaled.combinedRating : activeIL;
 
       html += '<div class="proc-block">';
       html += '<div class="detail-name">' + escapeHtml(pw.name) + "</div>";
@@ -309,8 +306,8 @@
         html += '<div style="margin:0.3rem 0;">' + renderSlotBadges(pw.slot) + "</div>";
       }
 
-      // Rarity selector (for scalable powers or powers with proc scaling)
-      if (showRaritySelector) {
+      // Rarity selector (always shown — CR changes with rarity for all powers)
+      {
         html += '<div style="margin:0.4rem 0;display:flex;flex-wrap:wrap;gap:0.25rem;">';
         for (var ri = 0; ri < availableRarities.length; ri++) {
           var r = availableRarities[ri];
