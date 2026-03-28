@@ -287,17 +287,19 @@
     html += '<div class="section-header">Power</div>';
     if (pw) {
       var scalable = isScalablePower(pw);
+      var hasProcScaling = pw.procEffect && pw.procEffect.effectScaling;
+      var showRaritySelector = scalable || hasProcScaling;
       var availableRarities = getAvailableRarities(pw);
-      var activeIL = scalable ? selectedRarity : pw.item_level;
+      var activeIL = showRaritySelector ? selectedRarity : pw.item_level;
       // Clamp to available rarities
-      if (scalable) {
+      if (showRaritySelector) {
         var validILs = availableRarities.map(function (r) { return r.il; });
         if (validILs.indexOf(activeIL) === -1) activeIL = validILs[validILs.length - 1];
       }
       var activeRarity = getRarityByIL(activeIL);
       var scaled = scalable ? scaleStats(pw, activeIL) : null;
       var displayStats = scaled ? scaled.stats : pw.stats;
-      var displayCR = scaled ? scaled.combinedRating : pw.combinedRating;
+      var displayCR = scaled ? scaled.combinedRating : (hasProcScaling ? activeIL : pw.combinedRating);
 
       html += '<div class="proc-block">';
       html += '<div class="detail-name">' + escapeHtml(pw.name) + "</div>";
@@ -307,8 +309,8 @@
         html += '<div style="margin:0.3rem 0;">' + renderSlotBadges(pw.slot) + "</div>";
       }
 
-      // Rarity selector (only for scalable powers)
-      if (scalable) {
+      // Rarity selector (for scalable powers or powers with proc scaling)
+      if (showRaritySelector) {
         html += '<div style="margin:0.4rem 0;display:flex;flex-wrap:wrap;gap:0.25rem;">';
         for (var ri = 0; ri < availableRarities.length; ri++) {
           var r = availableRarities[ri];
@@ -335,7 +337,7 @@
 
       // Proc effect
       if (pw.procEffect) {
-        html += renderProcEffect(pw.procEffect);
+        html += renderProcEffect(pw.procEffect, activeIL);
       }
 
       // Zone conditional indicator
@@ -394,7 +396,7 @@
   }
 
   // ---- Render proc effect ----
-  function renderProcEffect(proc) {
+  function renderProcEffect(proc, il) {
     var html = '<div class="proc-block">';
     html += '<div class="proc-label">Proc Effect</div>';
 
@@ -405,7 +407,20 @@
       html += "<div><span class=\"stat-name\">Chance:</span> " + proc.chance + "%</div>";
     }
     if (proc.effect) {
-      html += "<div><span class=\"stat-name\">Effect:</span> " + escapeHtml(proc.effect) + "</div>";
+      var effectText = proc.effect;
+      // Interpolate scaled values if effectScaling is present
+      if (proc.effectScaling && il) {
+        var ilKey = String(il);
+        for (var key in proc.effectScaling) {
+          var val = proc.effectScaling[key][ilKey];
+          if (val != null) {
+            effectText = effectText.replace("{" + key + "}", val);
+          }
+        }
+      }
+      // Clean up any unresolved placeholders
+      effectText = effectText.replace(/\{[^}]+\}/g, "?");
+      html += "<div><span class=\"stat-name\">Effect:</span> " + escapeHtml(effectText) + "</div>";
     }
 
     // Stat effects within proc
