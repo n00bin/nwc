@@ -590,7 +590,7 @@
   // Build enhancement list dynamically from data
   function cleanNotes(notes) {
     if (!notes) return "";
-    return notes.replace(/^Screenshot intake[^:]*:\s*/i, "").replace(/^[A-Z][A-Za-z'\- ]+ enhancement\.\s*/i, "").replace(/\s*Conditional proc;.*$/, "").replace(/\s*Value depends on summoned companion.*?(?=\.|$)\.?\s*/g, " ").replace(/\s*Debuff\s*[—\-]\s*reduces enemy stat\.?\s*/gi, "").replace(/\s*Heal effect\s*[—\-]\s*modeled as HP sustain\.?\s*/gi, "").replace(/\s*Permanent buff while summoned\s*\(not a proc\)\.?\s*/gi, "Permanent while summoned.").replace(/\s*Affects both.*$/gi, "").trim();
+    return notes.replace(/^Screenshot intake[^:]*:\s*/i, "").replace(/^[A-Z][A-Za-z'\- ]+ enhancement\.\s*/i, "").replace(/\s*Conditional proc;.*$/, "").replace(/\s*Value depends on summoned companion.*?(?=\.|$)\.?\s*/g, " ").replace(/\s*Debuff\s*[—\-]\s*reduces enemy stat\.?\s*/gi, "").replace(/\s*Heal effect\s*[—\-]\s*modeled as HP sustain\.?\s*/gi, "").replace(/\s*Permanent buff while summoned\s*\(not a proc\)\.?\s*/gi, "Permanent while summoned.").replace(/\s*Affects both.*$/gi, "").replace(/\s*Scaling:.*$/gi, "").replace(/\s*Standard magnitude scaling:.*$/gi, "").replace(/\s*Follows \d+\.?\d*x (single|standard|double|triple) stat scaling\.?\s*/gi, "").replace(/\s*Magnitude scaling:.*$/gi, "").replace(/\s*Per-stack value follows.*$/gi, "").replace(/\s*Follows (single|double|triple) stat scaling\.?\s*/gi, "").trim();
   }
 
   function buildEnhancementList() {
