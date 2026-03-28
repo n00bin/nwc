@@ -697,7 +697,8 @@
 
       if (match) {
         var desc = pw.notes ? cleanNotes(pw.notes) : "";
-        result.push({ name: c.name, powerName: pw.name, category: category, description: desc });
+        var realStats = (pw.stats || []).filter(function (s) { return s.stat !== "CombinedRating"; });
+        result.push({ name: c.name, powerName: pw.name, category: category, description: desc, stats: realStats, il: pw.item_level || 0 });
       }
     }
     result.sort(function (a, b) {
@@ -737,6 +738,16 @@
         }
         html += '<span><span style="color:var(--highlight);margin-right:0.5rem;">#' + num + '</span>' + escapeHtml(d2.name) + '</span></div>';
         html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.2rem;">' + escapeHtml(d2.powerName) + '</div>';
+        if (d2.stats && d2.stats.length > 0) {
+          html += '<div style="margin-top:0.3rem;">';
+          for (var si = 0; si < d2.stats.length; si++) {
+            var st = d2.stats[si];
+            var statLabel = st.stat.replace(/([A-Z])/g, ' $1').trim();
+            var val = st.type === 'percent' ? st.value + '%' : st.value;
+            html += '<span style="display:inline-block;background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--radius-sm);padding:0.15rem 0.5rem;margin:0.15rem 0.25rem 0.15rem 0;font-size:0.82rem;font-weight:600;color:var(--stat-positive);">' + escapeHtml(statLabel) + ': ' + val + '</span>';
+          }
+          html += '</div>';
+        }
         html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(d2.description) + '</div>';
         html += '</div>';
         num++;
