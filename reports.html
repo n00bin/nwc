@@ -173,6 +173,79 @@
       color: var(--accent);
     }
 
+    /* Replies */
+    .replies-section {
+      margin-top: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--border-default);
+    }
+    .reply-card {
+      padding: 0.4rem 0;
+      font-size: 0.83rem;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .reply-card:last-child { border-bottom: none; }
+    .reply-msg {
+      color: var(--text-secondary);
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+    .reply-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+    .reply-img {
+      max-width: 100%;
+      max-height: 200px;
+      border-radius: var(--radius-sm);
+      margin-top: 0.3rem;
+      cursor: pointer;
+    }
+    .reply-img:hover { opacity: 0.8; }
+    .reply-form {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .reply-form textarea {
+      width: 100%;
+      min-height: 60px;
+      padding: 0.4rem 0.6rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 0.83rem;
+      font-family: var(--font-main);
+      resize: vertical;
+    }
+    .reply-form textarea:focus { border-color: var(--accent); outline: none; }
+    .reply-form-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .reply-submit-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .reply-submit-btn:hover { background: var(--accent-hover); }
+    .reply-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .reply-msg-feedback {
+      font-size: 0.78rem;
+      min-height: 1em;
+    }
+    .reply-msg-feedback.success { color: var(--stat-positive); }
+    .reply-msg-feedback.error { color: var(--stat-negative); }
+
     /* Category badges */
     .badge-cat-bug          { background: var(--stat-negative); color: #fff; }
     .badge-cat-missing-item { background: var(--highlight);     color: #000; }

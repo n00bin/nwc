@@ -10,9 +10,11 @@
 
   // ---- State ----
   var allReports = [];
+  var allReplies = {};  // keyed by report_id
   var votedIds = JSON.parse(localStorage.getItem("nwc_voted_reports") || "[]");
   var voterHash = generateVoterHash();
   var submitCooldown = false;
+  var replyCooldown = false;
   var adminMode = false;
   var adminPass = "";
 
@@ -51,18 +53,28 @@
   async function fetchReports() {
     var sortCol = filterSort.value === "most_voted" ? "upvotes" : "created_at";
 
-    var { data, error } = await sb
-      .from("reports_public")
-      .select("*")
-      .order(sortCol, { ascending: false });
+    var results = await Promise.all([
+      sb.from("reports_public").select("*").order(sortCol, { ascending: false }),
+      sb.from("report_replies_public").select("*").order("created_at", { ascending: true })
+    ]);
 
-    if (error) {
+    if (results[0].error) {
       reportsList.innerHTML = '<div class="empty-state">Failed to load reports. Please try again later.</div>';
-      console.error("Supabase error:", error);
+      console.error("Supabase error:", results[0].error);
       return;
     }
 
-    allReports = data || [];
+    allReports = results[0].data || [];
+
+    // Group replies by report_id
+    allReplies = {};
+    var replyData = results[1].data || [];
+    for (var i = 0; i < replyData.length; i++) {
+      var rid = replyData[i].report_id;
+      if (!allReplies[rid]) allReplies[rid] = [];
+      allReplies[rid].push(replyData[i]);
+    }
+
     renderReports();
   }
 
@@ -205,6 +217,39 @@
       html += '<div style="margin-top:0.4rem;">';
       html += '<input type="text" class="form-input note-input" data-id="' + r.id + '" placeholder="Add admin note..." value="' + escapeHtml(r.admin_notes || "") + '" style="font-size:0.8rem;padding:0.3rem 0.5rem;">';
       html += ' <button class="note-save-btn" data-id="' + r.id + '" style="font-size:0.78rem;padding:0.2rem 0.5rem;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);cursor:pointer;">Save Note</button>';
+      html += '</div>';
+    }
+    // Replies section (only when admin note exists)
+    if (r.admin_notes) {
+      var replies = allReplies[r.id] || [];
+      html += '<div class="replies-section">';
+      if (replies.length > 0) {
+        for (var ri = 0; ri < replies.length; ri++) {
+          var rp = replies[ri];
+          var rpDate = new Date(rp.created_at);
+          var rpDateStr = rpDate.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+          html += '<div class="reply-card">';
+          html += '<div class="reply-msg">' + escapeHtml(rp.message) + '</div>';
+          if (rp.image_url) {
+            html += '<a href="' + escapeHtml(rp.image_url) + '" target="_blank"><img class="reply-img" src="' + escapeHtml(rp.image_url) + '" alt="Reply image"></a>';
+          }
+          html += '<div class="reply-meta">' + rpDateStr;
+          if (adminMode) {
+            html += ' <button class="delete-btn reply-delete-btn" data-reply-id="' + rp.id + '" title="Delete reply">&#10005;</button>';
+          }
+          html += '</div>';
+          html += '</div>';
+        }
+      }
+      // Reply form
+      html += '<div class="reply-form" data-report-id="' + r.id + '">';
+      html += '<textarea class="reply-text" placeholder="Help with this report..." maxlength="1000"></textarea>';
+      html += '<div class="reply-form-actions">';
+      html += '<input type="file" class="reply-image-input" accept="image/jpeg,image/png,image/gif,image/webp" style="font-size:0.78rem;max-width:200px;">';
+      html += '<button class="reply-submit-btn">Reply</button>';
+      html += '</div>';
+      html += '<div class="reply-msg-feedback"></div>';
+      html += '</div>';
       html += '</div>';
     }
     html += "</div>";
@@ -538,6 +583,125 @@
       btn.disabled = false;
       btn.textContent = "Save Note";
     }
+  });
+
+  // ---- Submit reply ----
+  reportsList.addEventListener("click", async function (e) {
+    var btn = e.target.closest(".reply-submit-btn");
+    if (!btn) return;
+
+    var form = btn.closest(".reply-form");
+    if (!form) return;
+
+    var reportId = parseInt(form.getAttribute("data-report-id"), 10);
+    var textarea = form.querySelector(".reply-text");
+    var fileInput = form.querySelector(".reply-image-input");
+    var feedback = form.querySelector(".reply-msg-feedback");
+    var message = textarea.value.trim();
+
+    feedback.textContent = "";
+    feedback.className = "reply-msg-feedback";
+
+    if (replyCooldown) {
+      feedback.textContent = "Please wait before submitting another reply.";
+      feedback.className = "reply-msg-feedback error";
+      return;
+    }
+
+    if (message.length < 5) {
+      feedback.textContent = "Reply must be at least 5 characters.";
+      feedback.className = "reply-msg-feedback error";
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Submitting...";
+
+    // Upload image if provided
+    var imageUrl = "";
+    var imageFile = fileInput && fileInput.files[0];
+    if (imageFile) {
+      if (imageFile.size > 5 * 1024 * 1024) {
+        feedback.textContent = "Image must be under 5MB.";
+        feedback.className = "reply-msg-feedback error";
+        btn.disabled = false;
+        btn.textContent = "Reply";
+        return;
+      }
+      var fileName = Date.now() + "_reply_" + imageFile.name.replace(/[^a-zA-Z0-9._-]/g, "");
+      var uploadResult = await sb.storage.from("report-images").upload(fileName, imageFile);
+      if (uploadResult.error) {
+        feedback.textContent = "Image upload failed: " + uploadResult.error.message;
+        feedback.className = "reply-msg-feedback error";
+        btn.disabled = false;
+        btn.textContent = "Reply";
+        return;
+      }
+      var urlResult = sb.storage.from("report-images").getPublicUrl(fileName);
+      imageUrl = urlResult.data.publicUrl;
+    }
+
+    var { data, error } = await sb.rpc("submit_report_reply", {
+      p_report_id: reportId,
+      p_message: message,
+      p_image_url: imageUrl
+    });
+
+    if (error) {
+      feedback.textContent = "Failed to submit reply.";
+      feedback.className = "reply-msg-feedback error";
+      console.error("Reply error:", error);
+      btn.disabled = false;
+      btn.textContent = "Reply";
+      return;
+    }
+
+    if (data && data.success) {
+      feedback.textContent = "Reply submitted!";
+      feedback.className = "reply-msg-feedback success";
+      textarea.value = "";
+      if (fileInput) fileInput.value = "";
+
+      replyCooldown = true;
+      btn.disabled = true;
+      btn.textContent = "Please wait...";
+      setTimeout(function () {
+        replyCooldown = false;
+        btn.disabled = false;
+        btn.textContent = "Reply";
+      }, 15000);
+
+      fetchReports();
+    } else {
+      feedback.textContent = "Failed: " + (data ? data.reason : "unknown error");
+      feedback.className = "reply-msg-feedback error";
+      btn.disabled = false;
+      btn.textContent = "Reply";
+    }
+  });
+
+  // ---- Admin delete reply ----
+  reportsList.addEventListener("click", async function (e) {
+    var btn = e.target.closest(".reply-delete-btn");
+    if (!btn || !adminMode) return;
+
+    var replyId = parseInt(btn.getAttribute("data-reply-id"), 10);
+    if (!confirm("Delete this reply?")) return;
+
+    btn.disabled = true;
+
+    var { data, error } = await sb.rpc("delete_report_reply", {
+      reply_id: replyId,
+      admin_pass: adminPass
+    });
+
+    if (error || !data || !data.success) {
+      alert("Failed to delete reply.");
+      btn.disabled = false;
+      return;
+    }
+
+    fetchReports();
   });
 
   // ---- Filter handlers ----
