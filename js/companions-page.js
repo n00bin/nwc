@@ -220,6 +220,7 @@
 
   // ---- Render list ----
   function renderList(companions) {
+    companions.sort(function (a, b) { return a.name.localeCompare(b.name); });
     listCount.textContent = companions.length + " of " + COMPANIONS_DATA.length + " companions";
 
     if (companions.length === 0) {
