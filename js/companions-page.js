@@ -650,17 +650,114 @@
     enhancementList.innerHTML = html;
   }
 
+  // ---- Damage Companions View ----
+  var tabDamage = document.getElementById("tab-damage");
+  var damageView = document.getElementById("damage-view");
+  var damageControls = document.getElementById("damage-controls");
+  var damageList = document.getElementById("damage-list");
+  var damageSearch = document.getElementById("damage-search");
+
+  // Categorize damage companions from data
+  function buildDamageList() {
+    var result = [];
+    for (var di = 0; di < COMPANIONS_DATA.length; di++) {
+      var c = COMPANIONS_DATA[di];
+      var pw = powerMap[c.powerRef];
+      if (!pw) continue;
+      var notes = (pw.notes || "").toLowerCase();
+      var stats = (pw.stats || []).map(function (s) { return s.stat || ""; });
+
+      var match = false;
+      var category = "";
+
+      if (stats.indexOf("OutgoingDamage") !== -1) { match = true; category = "Outgoing Damage"; }
+      else if (stats.indexOf("DamageVsBosses") !== -1) { match = true; category = "Boss Damage"; }
+      else if (stats.some(function (s) { return s.indexOf("DamageVs") === 0; })) { match = true; category = "Enemy Type Damage"; }
+      else if (stats.some(function (s) { return s.indexOf("AtWillDamage") === 0; })) { match = true; category = "At-Will Damage"; }
+      else if (stats.indexOf("EncounterDamage") !== -1 || stats.indexOf("DailyDamage") !== -1) { match = true; category = "Power Damage"; }
+      else if (stats.indexOf("AtWillPower") !== -1) { match = true; category = "At-Will Damage"; }
+
+      if (notes.indexOf("magnitude") !== -1 && (notes.indexOf("chance") !== -1 || notes.indexOf("on hit") !== -1 || notes.indexOf("on critical") !== -1 || notes.indexOf("on attack") !== -1 || notes.indexOf("on encounter") !== -1 || notes.indexOf("on at-will") !== -1)) {
+        match = true; category = category || "Damage Proc";
+      }
+      if (notes.indexOf("incoming damage") !== -1 && (notes.indexOf("increase") !== -1 || notes.indexOf("14.8%") !== -1)) {
+        match = true; category = category || "Enemy Debuff";
+      }
+      if (notes.indexOf("more damage") !== -1 && notes.indexOf("bigger they are") === -1) {
+        match = true; category = category || "Enemy Debuff";
+      }
+      if (stats.indexOf("IncomingDamage") !== -1) { match = true; category = category || "Enemy Debuff"; }
+      if (notes.indexOf("additional hit") !== -1 || notes.indexOf("additional force") !== -1) {
+        match = true; category = category || "Extra Hit";
+      }
+      if (notes.indexOf("2.3% - 5.3% damage") !== -1) { match = true; category = category || "Boss Damage"; }
+
+      if (match) {
+        var desc = pw.notes ? cleanNotes(pw.notes) : "";
+        result.push({ name: c.name, powerName: pw.name, category: category, description: desc });
+      }
+    }
+    result.sort(function (a, b) {
+      if (a.category !== b.category) return a.category.localeCompare(b.category);
+      return a.name.localeCompare(b.name);
+    });
+    return result;
+  }
+
+  var damageData = buildDamageList();
+
+  function renderDamageView() {
+    var query = damageSearch.value.trim().toLowerCase();
+    var categories = {};
+    var order = ["Outgoing Damage", "Boss Damage", "At-Will Damage", "Power Damage", "Enemy Type Damage", "Damage Proc", "Extra Hit", "Enemy Debuff"];
+
+    for (var i = 0; i < damageData.length; i++) {
+      var d = damageData[i];
+      if (query && (d.name + " " + d.powerName + " " + d.description + " " + d.category).toLowerCase().indexOf(query) === -1) continue;
+      if (!categories[d.category]) categories[d.category] = [];
+      categories[d.category].push(d);
+    }
+
+    var html = "";
+    var num = 1;
+    for (var oi = 0; oi < order.length; oi++) {
+      var cat = order[oi];
+      if (!categories[cat]) continue;
+      html += '<div style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--highlight);padding:0.75rem 0 0.4rem;margin-bottom:0.5rem;border-bottom:1px solid var(--border-default);">' + cat + '</div>';
+      for (var j = 0; j < categories[cat].length; j++) {
+        var d2 = categories[cat][j];
+        var compImg = window.COMPANION_IMAGES && window.COMPANION_IMAGES[d2.name];
+        html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
+        html += '<div style="display:flex;align-items:center;gap:0.5rem;font-weight:600;">';
+        if (compImg) {
+          html += '<img class="companion-icon" src="images/companions/' + compImg + '" alt="">';
+        }
+        html += '<span><span style="color:var(--highlight);margin-right:0.5rem;">#' + num + '</span>' + escapeHtml(d2.name) + '</span></div>';
+        html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.2rem;">' + escapeHtml(d2.powerName) + '</div>';
+        html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(d2.description) + '</div>';
+        html += '</div>';
+        num++;
+      }
+    }
+
+    if (!html) html = '<div class="empty-state">No damage companions match your search</div>';
+    damageList.innerHTML = html;
+  }
+
   // Tab switching
   function switchTab(activeTab) {
     tabLookup.classList.toggle("active", activeTab === "lookup");
     tabSummoned.classList.toggle("active", activeTab === "summoned");
     tabEnhancements.classList.toggle("active", activeTab === "enhancements");
+    tabDamage.classList.toggle("active", activeTab === "damage");
     lookupView.style.display = activeTab === "lookup" ? "" : "none";
     lookupControls.style.display = activeTab === "lookup" ? "flex" : "none";
     summonedView.style.display = activeTab === "summoned" ? "" : "none";
     summonedControls.style.display = activeTab === "summoned" ? "flex" : "none";
     enhancementView.style.display = activeTab === "enhancements" ? "" : "none";
     enhancementControls.style.display = activeTab === "enhancements" ? "flex" : "none";
+    damageView.style.display = activeTab === "damage" ? "" : "none";
+    damageControls.style.display = activeTab === "damage" ? "flex" : "none";
   }
 
   tabLookup.addEventListener("click", function () {
@@ -677,8 +774,14 @@
     renderEnhancementView();
   });
 
+  tabDamage.addEventListener("click", function () {
+    switchTab("damage");
+    renderDamageView();
+  });
+
   summonedSearch.addEventListener("input", renderSummonedView);
   enhancementSearch.addEventListener("input", renderEnhancementView);
+  damageSearch.addEventListener("input", renderDamageView);
 
   // ---- Initial render ----
   renderList(COMPANIONS_DATA);

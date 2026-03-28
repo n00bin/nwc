@@ -22,6 +22,7 @@
     <button class="view-tab active" id="tab-lookup">Lookup</button>
     <button class="view-tab" id="tab-summoned">Summoned Buffs</button>
     <button class="view-tab" id="tab-enhancements">Enhancements</button>
+    <button class="view-tab" id="tab-damage">Damage Companions</button>
   </div>
 
   <!-- Filters / Search (lookup view) -->
@@ -45,6 +46,10 @@
 
   <div class="controls-bar" id="enhancement-controls" style="display:none;">
     <input type="text" class="search-input" id="enhancement-search" placeholder="Search enhancements...">
+  </div>
+
+  <div class="controls-bar" id="damage-controls" style="display:none;">
+    <input type="text" class="search-input" id="damage-search" placeholder="Search damage companions...">
   </div>
 
   <style>
@@ -108,6 +113,11 @@
   <!-- Enhancement ranking view -->
   <div id="enhancement-view" style="display:none; max-width:900px; margin:0 auto; padding:1rem 1.5rem 3rem;">
     <div id="enhancement-list"></div>
+  </div>
+
+  <!-- Damage companions view -->
+  <div id="damage-view" style="display:none; max-width:900px; margin:0 auto; padding:1rem 1.5rem 3rem;">
+    <div id="damage-list"></div>
   </div>
 
   <!-- Data -->
