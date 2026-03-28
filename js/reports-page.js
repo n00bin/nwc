@@ -241,15 +241,17 @@
           html += '</div>';
         }
       }
-      // Reply form
-      html += '<div class="reply-form" data-report-id="' + r.id + '">';
-      html += '<textarea class="reply-text" placeholder="Help with this report..." maxlength="1000"></textarea>';
-      html += '<div class="reply-form-actions">';
-      html += '<input type="file" class="reply-image-input" accept="image/jpeg,image/png,image/gif,image/webp" style="font-size:0.78rem;max-width:200px;">';
-      html += '<button class="reply-submit-btn">Reply</button>';
-      html += '</div>';
-      html += '<div class="reply-msg-feedback"></div>';
-      html += '</div>';
+      // Reply form (only if not resolved)
+      if (!isResolved) {
+        html += '<div class="reply-form" data-report-id="' + r.id + '">';
+        html += '<textarea class="reply-text" placeholder="Help with this report..." maxlength="1000"></textarea>';
+        html += '<div class="reply-form-actions">';
+        html += '<input type="file" class="reply-image-input" accept="image/jpeg,image/png,image/gif,image/webp" style="font-size:0.78rem;max-width:200px;">';
+        html += '<button class="reply-submit-btn">Reply</button>';
+        html += '</div>';
+        html += '<div class="reply-msg-feedback"></div>';
+        html += '</div>';
+      }
       html += '</div>';
     }
     html += "</div>";
