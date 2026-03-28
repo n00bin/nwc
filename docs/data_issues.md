@@ -3,17 +3,20 @@
 ## Companion Power Scaling Issues
 
 ### Fixed-Effect Powers (No Scaling)
-These powers show the same values at all rarities. Needs in-game verification — could be intentional or a display/data issue. Reports submitted to website.
+These powers show the same values at all rarities. Verified in-game — confirmed fixed or scaling added.
 
-- **Hank's Aim** (Hank the Ranger) — 225 magnitude bleed at all rarities. Report #3.
-- **Consume Soul** (Lich Makos) — 90 magnitude + 5% heal at all rarities. Report #4.
-- **Ox Stot's Instincts** (Ox Stot) — 20% stun 3s at all rarities. Report #6.
-- **Elminster's Chain Lightning** (Elminster Simulacrum) — 66 mag + 16.5 chain at all rarities. Report #7.
-- **Chickenmancer's Discipline** (Earl the Chickenmancer) — 10% polymorph at all rarities. Report #8.
-- **I'm Just a Little Adventurer** (Eric the Cavalier) — Stun 3s + 90% threat reduction at all rarities. Report #9.
-- **Doom and Bloom** (Fireblossom Zealot) — 50% chance, 10% heal at all rarities. Report #10.
+#### Resolved (2026-03-28)
+- **Hank's Aim** (Hank the Ranger) — DOES scale. 30x single stat magnitude (225 at Mythic, 270 at Celestial). Report #3 Fixed.
+- **Elminster's Chain Lightning** (Elminster Simulacrum) — DOES scale. 10x single stat main mag, 2x single stat chain. Old values (66/16.5) were wrong. Report #7 Fixed.
+- **Doom and Bloom** (Fireblossom Zealot) — DOES scale. ~3.33x single stat heal % (18.3% at Legendary, ~30% at Celestial). Report #10 Fixed.
+- **Ox Stot's Instincts** (Ox Stot) — Confirmed fixed effect. 20% stun 3s does not change (verified IL 150 vs 550). Report #6 Fixed.
+- **Chickenmancer's Discipline** (Earl the Chickenmancer) — Confirmed fixed effect. 10% polymorph does not change (verified IL 250 vs 375). Report #8 Fixed.
+- **I'm Just a Little Adventurer** (Eric the Cavalier) — Confirmed fixed effect. Stun 3s + 90% threat does not change (verified IL 375 vs 550). Report #9 Fixed.
+- **The Bigger They Are** (Minsc) — Previously fixed. Scales 6.8%-9.8% at Celestial. Report #16 Fixed.
+
+#### Still Open
+- **Consume Soul** (Lich Makos) — 90 magnitude + 5% heal. Needs verification at two rarities. Report #4 Confirmed. Need owner to check.
 - **Effulgent Epuration** (Elminster Aumar) — 15% shield at all rarities. No report submitted.
-- **The Bigger They Are** (Minsc) — 2.3-5.3% vs strong enemies at all rarities. No report submitted.
 - **Fiendish Charmer's Distraction** (Incubus) — 10% daze 3s at all rarities. No report submitted.
 - **Succubus's Distraction** (Succubus) — Same as Incubus. No report submitted.
 
@@ -72,4 +75,17 @@ Companions with campaign currency bonuses added to campaign-boosters.html:
 - Shadar-kai Witch (Dragonbone Vale +10%) — was already listed
 - Chultan Hunter (Chult +10%) — was already listed
 
-## Date: 2026-03-27
+### Companions Added (2026-03-28)
+From Report #18:
+- **Soradiel** — Divine Judgement (Defense), Crit Strike + Crit Severity, double stat. Enhancement: Redemption.
+- **Kingfisher Intern** — Kingfisher's Wisdom (Offense/Utility), Max HP + Combat Advantage. Enhancement: Slowed Reactions.
+- **Elite Intern** — Elite Intern's Wisdom (Offense), Crit Severity + Awareness, double stat. Enhancement: Dulled Senses. Source: Elite Intern Bundle (Module 15).
+- **Archmage's Apprentice** — Archmage's Wisdom (Utility), Movement Speed, single stat. No enhancement (old companion).
+- **Crimson Crystal Golem** — Crimson Crystal Golem's Influence (Utility/Defense), Accuracy + Combat Advantage, double stat. Enhancement: Deflecting Shards (new).
+- **Proud Pink Yeti** — Proud Pink Yeti's Presence (Defense/Offense/Utility), Outgoing Healing, single stat. Enhancement: Reinvigorate.
+
+### Mount Added (2026-03-28)
+From Report #19:
+- **Cactus the Hedgehog** — Equip: Vigilance (Awareness + Stamina Regen). Combat: Stabby Stabs (shield + defense + reflect). Slots: Regal/Barbed/Uni/Uni(Illuminated).
+
+## Date: 2026-03-28
