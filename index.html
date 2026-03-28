@@ -30,8 +30,12 @@
     }
     .news-entry:hover { border-color: var(--border-accent); }
     .news-date { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.3rem; }
-    .news-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--highlight); }
+    .news-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--highlight); cursor: pointer; }
+    .news-title:hover { color: var(--accent); }
+    .news-toggle { font-size: 0.8rem; margin-right: 0.4rem; display: inline-block; transition: transform 0.15s; }
+    .news-toggle.collapsed { transform: rotate(-90deg); }
     .news-body { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+    .news-body.collapsed { display: none; }
     .news-body ul { margin: 0.3rem 0 0 1.2rem; padding: 0; }
     .news-body li { margin-bottom: 0.2rem; }
     .news-tag { display: inline-block; font-size: 0.7rem; padding: 0.1rem 0.4rem; border-radius: 3px; font-weight: 600; margin-right: 0.3rem; }
@@ -146,9 +150,12 @@
       } else {
         for (var i = 0; i < NEWS_DATA.length; i++) {
           var n = NEWS_DATA[i];
+          var isCollapsed = i > 0;
+          var colClass = isCollapsed ? " collapsed" : "";
           html += '<div class="news-entry">';
           html += '<div class="news-date">' + n.date + '</div>';
-          html += '<div class="news-title">';
+          html += '<div class="news-title" data-news-idx="' + i + '">';
+          html += '<span class="news-toggle' + colClass + '">&#9660;</span>';
           if (n.tags) {
             for (var t = 0; t < n.tags.length; t++) {
               var tagClass = n.tags[t] === "Feature" ? "news-tag-feature" : n.tags[t] === "Fix" ? "news-tag-fix" : "news-tag-data";
@@ -156,12 +163,25 @@
             }
           }
           html += n.title + '</div>';
-          html += '<div class="news-body">' + n.body + '</div>';
+          html += '<div class="news-body' + colClass + '" data-news-body="' + i + '">' + n.body + '</div>';
           html += '</div>';
         }
       }
       document.getElementById("news-list").innerHTML = html;
     }
+
+    // Toggle news entries
+    document.getElementById("news-list").addEventListener("click", function (e) {
+      var title = e.target.closest(".news-title");
+      if (!title) return;
+      var idx = title.getAttribute("data-news-idx");
+      var body = document.querySelector('[data-news-body="' + idx + '"]');
+      var toggle = title.querySelector(".news-toggle");
+      if (body && toggle) {
+        body.classList.toggle("collapsed");
+        toggle.classList.toggle("collapsed");
+      }
+    });
   </script>
 </body>
 </html>
