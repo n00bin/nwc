@@ -658,10 +658,13 @@
   var damageSearch = document.getElementById("damage-search");
 
   // Categorize damage companions from data
+  var damageExclude = { "Baby Displacer Beast": true };
+
   function buildDamageList() {
     var result = [];
     for (var di = 0; di < COMPANIONS_DATA.length; di++) {
       var c = COMPANIONS_DATA[di];
+      if (damageExclude[c.name]) continue;
       var pw = powerMap[c.powerRef];
       if (!pw) continue;
       var notes = (pw.notes || "").toLowerCase();
