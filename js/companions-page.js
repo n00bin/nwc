@@ -698,6 +698,24 @@
       if (match) {
         var desc = pw.notes ? cleanNotes(pw.notes) : "";
         var realStats = (pw.stats || []).filter(function (s) { return s.stat !== "CombinedRating"; });
+        // Scale stats to Celestial using ratio from current IL
+        var curIL = pw.item_level || 75;
+        if (curIL !== 900 && realStats.length > 0) {
+          var pctCount = realStats.filter(function (x) { return x.stat !== "MaximumHitPoints"; }).length;
+          var curScale = pctCount <= 1 ? SINGLE_STAT_SCALE[curIL] : DOUBLE_STAT_SCALE[curIL];
+          var celScale = pctCount <= 1 ? SINGLE_STAT_SCALE[900] : DOUBLE_STAT_SCALE[900];
+          var ratio = curScale > 0 ? celScale / curScale : 1;
+          var scaledStats = [];
+          for (var sti = 0; sti < realStats.length; sti++) {
+            var rs = realStats[sti];
+            if (rs.stat === "MaximumHitPoints") {
+              scaledStats.push({ stat: rs.stat, value: MAX_HP_SCALE[900], type: "flat" });
+            } else {
+              scaledStats.push({ stat: rs.stat, value: Math.round(rs.value * ratio * 100) / 100, type: rs.type || "percent" });
+            }
+          }
+          realStats = scaledStats;
+        }
         // Extract Celestial magnitude from notes for procs
         var celMag = null;
         var rawNotes = pw.notes || "";
