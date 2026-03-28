@@ -186,7 +186,7 @@
 
     // Content
     html += '<div class="report-content">';
-    html += '<div class="report-title">' + escapeHtml(r.title) + "</div>";
+    html += '<div class="report-title"><span style="color:var(--text-muted);font-weight:400;font-size:0.85em;margin-right:0.4rem;">#' + r.id + '</span>' + escapeHtml(r.title) + "</div>";
     html += '<div class="report-desc">' + escapeHtml(r.description) + "</div>";
     html += '<div class="report-meta">';
     html += catBadge + " ";
