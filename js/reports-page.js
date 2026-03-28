@@ -197,6 +197,16 @@
     if (r.image_url) {
       html += '<a href="' + escapeHtml(r.image_url) + '" target="_blank"><img class="report-img" src="' + escapeHtml(r.image_url) + '" alt="Report screenshot"></a>';
     }
+    // Admin note (visible to all, editable in admin mode)
+    if (r.admin_notes) {
+      html += '<div class="admin-note"><span class="admin-note-label">Admin:</span> ' + escapeHtml(r.admin_notes) + '</div>';
+    }
+    if (adminMode) {
+      html += '<div style="margin-top:0.4rem;">';
+      html += '<input type="text" class="form-input note-input" data-id="' + r.id + '" placeholder="Add admin note..." value="' + escapeHtml(r.admin_notes || "") + '" style="font-size:0.8rem;padding:0.3rem 0.5rem;">';
+      html += ' <button class="note-save-btn" data-id="' + r.id + '" style="font-size:0.78rem;padding:0.2rem 0.5rem;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);cursor:pointer;">Save Note</button>';
+      html += '</div>';
+    }
     html += "</div>";
 
     html += "</div>";
@@ -478,6 +488,55 @@
       alert("Failed: " + (data ? data.reason : "unknown error"));
       btn.disabled = false;
       btn.textContent = "\u2715";
+    }
+  });
+
+  // ---- Admin note save ----
+  reportsList.addEventListener("click", async function (e) {
+    var btn = e.target.closest(".note-save-btn");
+    if (!btn || !adminMode) return;
+
+    var id = parseInt(btn.getAttribute("data-id"), 10);
+    var input = reportsList.querySelector('.note-input[data-id="' + id + '"]');
+    if (!input) return;
+
+    var noteText = input.value.trim();
+    btn.disabled = true;
+    btn.textContent = "Saving...";
+
+    var { data, error } = await sb.rpc("update_report_note", {
+      report_id: id,
+      note_text: noteText,
+      admin_pass: adminPass
+    });
+
+    if (error) {
+      alert("Failed to save note. Check console.");
+      console.error("Note error:", error);
+      btn.disabled = false;
+      btn.textContent = "Save Note";
+      return;
+    }
+
+    if (data && data.success) {
+      for (var i = 0; i < allReports.length; i++) {
+        if (allReports[i].id === id) {
+          allReports[i].admin_notes = noteText;
+          break;
+        }
+      }
+      renderReports();
+    } else if (data && data.reason === "unauthorized") {
+      alert("Wrong password. Admin mode disabled.");
+      adminMode = false;
+      adminPass = "";
+      adminToggle.classList.remove("active");
+      adminToggle.textContent = "Admin";
+      renderReports();
+    } else {
+      alert("Failed: " + (data ? data.reason : "unknown error"));
+      btn.disabled = false;
+      btn.textContent = "Save Note";
     }
   });
 
