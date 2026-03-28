@@ -656,6 +656,7 @@
   var damageControls = document.getElementById("damage-controls");
   var damageList = document.getElementById("damage-list");
   var damageSearch = document.getElementById("damage-search");
+  var filterDamageCat = document.getElementById("filter-damage-cat");
 
   // Categorize damage companions from data
   var damageExclude = { "Baby Displacer Beast": true };
@@ -740,12 +741,14 @@
 
   function renderDamageView() {
     var query = damageSearch.value.trim().toLowerCase();
+    var catFilter = filterDamageCat.value;
     var categories = {};
     var order = ["Outgoing Damage", "Boss Damage", "At-Will Damage", "Power Damage", "Enemy Type Damage", "Damage Proc", "Extra Hit", "Enemy Debuff"];
 
     for (var i = 0; i < damageData.length; i++) {
       var d = damageData[i];
       if (query && (d.name + " " + d.powerName + " " + d.description + " " + d.category).toLowerCase().indexOf(query) === -1) continue;
+      if (catFilter && d.category !== catFilter) continue;
       if (!categories[d.category]) categories[d.category] = [];
       categories[d.category].push(d);
     }
@@ -829,6 +832,7 @@
   summonedSearch.addEventListener("input", renderSummonedView);
   enhancementSearch.addEventListener("input", renderEnhancementView);
   damageSearch.addEventListener("input", renderDamageView);
+  filterDamageCat.addEventListener("change", renderDamageView);
 
   // ---- Initial render ----
   renderList(COMPANIONS_DATA);
