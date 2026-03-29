@@ -9,7 +9,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Added artifact icons for all artifacts (92+ from wiki, 4 from PS5 screenshots)
 - Added consumable icons (50+) with list and detail display
 - Added companion enhancement icons (all 28)
-- Added companion icons (241 matched from PS5 screenshots)
+- Added companion icons (all 264 companions now have icons from PS5 screenshots)
 - Added companion rarity scaling system (Common through Celestial)
 - Added rarity selector buttons on companion detail panel
 - Reports page: Active/Resolved split with collapsible resolved section
