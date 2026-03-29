@@ -202,8 +202,13 @@
       var m = mounts[i];
       var sel = m.id === selectedId ? " selected" : "";
       var name = currentQuery ? highlightMatch(m.name, currentQuery) : escapeHtml(m.name);
+      var listImg = window.MOUNT_IMAGES && window.MOUNT_IMAGES[m.name];
       html += '<div class="list-item' + sel + '" data-id="' + m.id + '">';
-      html += '<span class="item-name">' + name + "</span>";
+      html += '<span class="item-name" style="display:flex;align-items:center;">';
+      if (listImg) {
+        html += '<img class="list-icon" src="images/mounts/' + listImg + '" alt="">';
+      }
+      html += name + "</span>";
       html += "</div>";
     }
     listContainer.innerHTML = html;
@@ -223,14 +228,14 @@
 
     var html = "";
 
-    // Mount image
+    // Mount name with icon
     var mountImg = window.MOUNT_IMAGES && window.MOUNT_IMAGES[mount.name];
+    html += '<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;">';
     if (mountImg) {
       html += '<img class="mount-icon" src="images/mounts/' + mountImg + '" alt="">';
     }
-
-    // Mount name
-    html += '<h2 style="margin-bottom:0.25rem;">' + escapeHtml(mount.name) + "</h2>";
+    html += '<h2 style="margin:0;">' + escapeHtml(mount.name) + "</h2>";
+    html += "</div>";
     if (mount.source) {
       html += '<div style="margin-bottom:0.75rem;font-size:0.85rem;"><span style="color:var(--text-muted);">Source: </span><span style="color:var(--highlight);">' + escapeHtml(mount.source) + "</span></div>";
     }
