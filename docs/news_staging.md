@@ -2,6 +2,11 @@
 
 Add entries here as changes are made. When ready to publish, say "publish news" and these will be formatted and added to the News tab.
 
+## Week of 2026-04-28
+
+### Bug Fixes
+- Fixed Blue Fire Eye: power was incorrectly showing Movement Speed, corrected to damage versus Kabal's minions with full rarity scaling (Report #22)
+
 ## Week of 2026-03-25
 
 ### Features
