@@ -8,6 +8,24 @@
   var equipMap  = buildLookup(MOUNT_EQUIP_POWERS_DATA);
   var bonusMap  = buildLookup(MOUNT_INSIGNIA_BONUSES_DATA);
 
+  // ---- Stacking badge helper ----
+  function renderStackBadge(bonus) {
+    if (!bonus.maxStacks) return "";
+    var label, color;
+    if (bonus.maxStacks === 1) {
+      label = "1x only";
+      color = "var(--stat-negative)";
+    } else {
+      label = "Max " + bonus.maxStacks + "x";
+      color = "var(--highlight)";
+    }
+    var html = ' <span class="badge" style="background:' + color + ';color:#000;font-size:0.7rem;padding:0.1rem 0.35rem;">' + label + '</span>';
+    if (bonus.exclusiveWith) {
+      html += ' <span style="font-size:0.7rem;color:var(--text-muted);font-style:italic;">excl. ' + escapeHtml(bonus.exclusiveWith) + '</span>';
+    }
+    return html;
+  }
+
   // ---- Compute compatible insignia bonuses per mount ----
   // Check if a single slot can accept a required insignia type
   function slotAccepts(slotAllowed, requiredType) {
@@ -249,7 +267,7 @@
       if (pinnedBonus) {
         html += '<div class="pinned-bonus">';
         html += '<div class="section-header" style="margin-top:0;">Selected Insignia Bonus</div>';
-        html += '<div class="detail-name">' + escapeHtml(pinnedBonus.name) + "</div>";
+        html += '<div class="detail-name">' + escapeHtml(pinnedBonus.name) + renderStackBadge(pinnedBonus) + "</div>";
         if (pinnedBonus.requiredInsignias && pinnedBonus.requiredInsignias.length > 0) {
           html += '<div style="margin:0.3rem 0;">';
           for (var pri = 0; pri < pinnedBonus.requiredInsignias.length; pri++) {
@@ -344,7 +362,7 @@
         // Header row (always visible) - name + insignia badges
         html += '<div class="ib-header" style="display:flex;justify-content:space-between;align-items:center;">';
         html += '<div>';
-        html += '<span style="font-weight:600;">' + escapeHtml(ib.name) + "</span>";
+        html += '<span style="font-weight:600;">' + escapeHtml(ib.name) + "</span>" + renderStackBadge(ib);
         if (ib.requiredInsignias && ib.requiredInsignias.length > 0) {
           html += '<span style="margin-left:0.5rem;">';
           for (var ri = 0; ri < ib.requiredInsignias.length; ri++) {
