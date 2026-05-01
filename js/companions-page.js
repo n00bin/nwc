@@ -400,8 +400,13 @@
     if (proc.trigger) {
       html += "<div><span class=\"stat-name\">Trigger:</span> " + escapeHtml(proc.trigger) + "</div>";
     }
-    if (proc.chance != null) {
-      html += "<div><span class=\"stat-name\">Chance:</span> " + proc.chance + "%</div>";
+    var displayChance = proc.chance;
+    if (proc.chanceScaling && il != null) {
+      var chanceVal = proc.chanceScaling[String(il)];
+      if (chanceVal != null) displayChance = chanceVal;
+    }
+    if (displayChance != null) {
+      html += "<div><span class=\"stat-name\">Chance:</span> " + displayChance + "%</div>";
     }
     if (proc.effect) {
       var effectText = proc.effect;

@@ -4,8 +4,12 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of 2026-04-28
 
+### Features
+- Added per-rarity proc-chance scaling to companion powers (new `chanceScaling` field) — Chance line on the detail panel now updates with the selected rarity
+
 ### Bug Fixes
 - Fixed Blue Fire Eye: power was incorrectly showing Movement Speed, corrected to damage versus Kabal's minions with full rarity scaling (Report #22)
+- Fixed Abyssal Guidance: chance to summon Abyssal Chicken now scales with rarity (1.50%/3.00%/5.00%/7.50%/11.00%/15.00%/18.00%) instead of a flat 2.5%
 
 ## Week of 2026-03-25
 
