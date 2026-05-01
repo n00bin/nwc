@@ -60,11 +60,12 @@
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1rem;
     }
-    /* Comps section: stack one per row so each comp's pair (icon then power) reads top-to-bottom */
-    #comps-grid .preview-image-grid {
-      grid-template-columns: 1fr;
-      max-width: 600px;
-      margin: 0 auto;
+    /* Comps section: each comp's two screenshots (icon + power) are grouped into
+       a vertical pair, then pairs flow side-by-side as the viewport allows. */
+    .preview-pair {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
     .preview-image-card {
       background: var(--bg-surface);
@@ -196,29 +197,41 @@
 
     var NW_CLASSES = ["Barbarian", "Bard", "Cleric", "Fighter", "Paladin", "Ranger", "Rogue", "Warlock", "Wizard"];
 
-    function renderImageGrid(items) {
-      var html = '<div class="preview-image-grid">';
-      for (var i = 0; i < items.length; i++) {
-        var it = items[i];
-        html += '<div class="preview-image-card">';
-        html += '<img src="images/preview/' + escapeHtml(it.file) + '" alt="' + escapeHtml(it.title || "") + '" data-full="images/preview/' + escapeHtml(it.file) + '">';
-        if (it.title || it.note) {
-          html += '<div class="preview-image-caption">';
-          if (it.title) html += '<strong>' + escapeHtml(it.title) + '</strong>';
-          if (it.note) html += escapeHtml(it.note);
-          html += '</div>';
-        }
+    function renderCard(it) {
+      var html = '<div class="preview-image-card">';
+      html += '<img src="images/preview/' + escapeHtml(it.file) + '" alt="' + escapeHtml(it.title || "") + '" data-full="images/preview/' + escapeHtml(it.file) + '">';
+      if (it.title || it.note) {
+        html += '<div class="preview-image-caption">';
+        if (it.title) html += '<strong>' + escapeHtml(it.title) + '</strong>';
+        if (it.note) html += escapeHtml(it.note);
         html += '</div>';
       }
       html += '</div>';
       return html;
     }
 
-    function renderPreviewSection(containerId, items) {
+    function renderImageGrid(items, pairSize) {
+      var html = '<div class="preview-image-grid">';
+      if (pairSize && pairSize > 1) {
+        for (var i = 0; i < items.length; i += pairSize) {
+          html += '<div class="preview-pair">';
+          for (var j = 0; j < pairSize && i + j < items.length; j++) {
+            html += renderCard(items[i + j]);
+          }
+          html += '</div>';
+        }
+      } else {
+        for (var k = 0; k < items.length; k++) html += renderCard(items[k]);
+      }
+      html += '</div>';
+      return html;
+    }
+
+    function renderPreviewSection(containerId, items, pairSize) {
       var container = document.getElementById(containerId);
       if (!container) return;
       if (!items || items.length === 0) return; // keep placeholder
-      container.innerHTML = renderImageGrid(items);
+      container.innerHTML = renderImageGrid(items, pairSize);
     }
 
     // Gear: per-class buttons + filtered grid
@@ -256,7 +269,7 @@
 
     if (window.PREVIEW_DATA) {
       renderGearButtons();
-      renderPreviewSection("comps-grid", PREVIEW_DATA.companions);
+      renderPreviewSection("comps-grid", PREVIEW_DATA.companions, 2);
       renderPreviewSection("mounts-grid", PREVIEW_DATA.mounts);
       renderPreviewSection("other-grid", PREVIEW_DATA.other);
     }
