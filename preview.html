@@ -60,6 +60,12 @@
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1rem;
     }
+    /* Comps section: stack one per row so each comp's pair (icon then power) reads top-to-bottom */
+    #comps-grid .preview-image-grid {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      margin: 0 auto;
+    }
     .preview-image-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-default);
