@@ -99,6 +99,58 @@
     }
     .priority-table td { color: var(--text-secondary); }
     .priority-num { color: var(--highlight); font-weight: 700; margin-right: 0.3rem; }
+    .video-guide {
+      position: relative;
+      display: block;
+      margin: 0.75rem 0 0.25rem;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16 / 9;
+      cursor: pointer;
+      border: 1px solid var(--border-default);
+      max-width: 480px;
+    }
+    .video-guide:hover { border-color: var(--accent); }
+    .video-guide-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-guide-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1a1a2e 0%, #2a2a4e 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-secondary); font-size: 0.8rem; text-align: center;
+      padding: 1rem; line-height: 1.5;
+    }
+    .video-guide-play {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(229, 9, 20, 0.9);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.3rem; padding-left: 4px;
+      transition: transform 0.15s, background 0.15s;
+      pointer-events: none;
+    }
+    .video-guide:hover .video-guide-play {
+      background: rgba(229, 9, 20, 1);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    .video-guide-overlay {
+      position: absolute; inset: 0;
+      padding: 0.75rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 55%);
+      display: flex; align-items: flex-end;
+      pointer-events: none;
+    }
+    .video-guide-title {
+      color: #fff; font-weight: 700; font-size: 0.95rem;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+    }
+    .video-guide-meta {
+      color: rgba(255,255,255,0.85); font-size: 0.75rem;
+      margin-top: 0.15rem;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+    }
+    .video-guide iframe { width: 100%; height: 100%; border: 0; display: block; }
   </style>
 </head>
 <body>
@@ -112,6 +164,7 @@
     <button class="view-tab" data-tab="damage">Damage</button>
     <button class="view-tab" data-tab="scaling">Scaling</button>
     <button class="view-tab" data-tab="stacking">Stacking</button>
+    <button class="view-tab" data-tab="dungeons">Dungeons</button>
   </div>
 
   <!-- STATS TAB -->
@@ -366,6 +419,13 @@
     </div>
   </div>
 
+  <!-- DUNGEONS TAB -->
+  <div class="mek-container mek-view" id="view-dungeons">
+    <h2 style="margin-bottom:0.5rem;">Dungeon Guides</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1.25rem;">Video walkthroughs showing how to complete each dungeon. Click a thumbnail to play.</p>
+    <div id="dungeons-list"></div>
+  </div>
+
   <!-- STAT PRIORITIES TAB -->
   <div class="mek-container mek-view" id="view-priorities">
     <h2 style="margin-bottom:1rem;">Stat Priorities by Role</h2>
@@ -505,7 +565,58 @@
       if (card) card.classList.toggle("open");
     });
 
+    // Lite YouTube embed: iframe only loads on click, so multiple guides don't slow the page.
+    document.addEventListener("click", function(e) {
+      var vg = e.target.closest(".video-guide");
+      if (!vg || vg.dataset.playing) return;
+      var id = vg.dataset.videoId;
+      if (!id || id === "PLACEHOLDER") return;
+      vg.dataset.playing = "1";
+      vg.innerHTML = '<iframe src="https://www.youtube.com/embed/' + encodeURIComponent(id) + '?autoplay=1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    });
+
+    // Dungeon guide list. Each entry: { name, youtubeId, notes? }
+    // Replace PLACEHOLDER entries with real dungeons + YouTube IDs.
+    var dungeons = [
+      { name: "Example Dungeon (placeholder)", youtubeId: "PLACEHOLDER", notes: "Replace this entry with your real dungeon guides." }
+    ];
+
+    function ytIdFromUrl(input) {
+      if (!input) return "";
+      if (input.indexOf("http") !== 0) return input; // already an ID
+      var m = input.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+      return m ? m[1] : input;
+    }
+
+    function renderDungeons() {
+      var list = document.getElementById("dungeons-list");
+      if (!list) return;
+      var html = "";
+      for (var i = 0; i < dungeons.length; i++) {
+        var d = dungeons[i];
+        var id = ytIdFromUrl(d.youtubeId);
+        var thumb = (id && id !== "PLACEHOLDER")
+          ? '<img class="video-guide-thumb" src="https://i.ytimg.com/vi/' + id + '/hqdefault.jpg" alt="' + escapeHtml(d.name) + '">'
+          : '<div class="video-guide-placeholder">[ ' + escapeHtml(d.name) + ' &mdash; add YouTube URL ]</div>';
+        html += '<div class="stat-card open" style="margin-bottom:0.75rem;">';
+        html += '<div class="stat-card-header"><span class="stat-card-name">' + escapeHtml(d.name) + '</span></div>';
+        html += '<div class="stat-card-body" style="display:block;">';
+        html += '<div class="video-guide" data-video-id="' + (id || "PLACEHOLDER") + '">';
+        html += thumb;
+        html += '<div class="video-guide-play">&#9654;</div>';
+        html += '<div class="video-guide-overlay"><div>';
+        html += '<div class="video-guide-title">Watch: ' + escapeHtml(d.name) + '</div>';
+        html += '<div class="video-guide-meta">YouTube &middot; The N00bin Network</div>';
+        html += '</div></div>';
+        html += '</div>';
+        if (d.notes) html += '<div class="stat-desc">' + escapeHtml(d.notes) + '</div>';
+        html += '</div></div>';
+      }
+      list.innerHTML = html;
+    }
+
     renderStats();
+    renderDungeons();
   </script>
 </body>
 </html>
