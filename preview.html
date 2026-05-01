@@ -165,6 +165,14 @@
     </div>
 
     <div class="preview-section">
+      <h2 class="preview-section-title">Mounts</h2>
+      <p class="preview-section-desc">New mounts, combat powers, equip powers, and insignia layouts previewed for Mod 33.</p>
+      <div id="mounts-grid">
+        <div class="placeholder-tile">Mount screenshots coming soon — drop them in <code>images/preview/mounts/</code> and they'll show up here.</div>
+      </div>
+    </div>
+
+    <div class="preview-section">
       <h2 class="preview-section-title">Other</h2>
       <p class="preview-section-desc">Anything else worth flagging — adventure zone, dungeon, heroic encounters, mounts, artifacts, etc.</p>
       <div id="other-grid">
@@ -243,6 +251,7 @@
     if (window.PREVIEW_DATA) {
       renderGearButtons();
       renderPreviewSection("comps-grid", PREVIEW_DATA.companions);
+      renderPreviewSection("mounts-grid", PREVIEW_DATA.mounts);
       renderPreviewSection("other-grid", PREVIEW_DATA.other);
     }
 
