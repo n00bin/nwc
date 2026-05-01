@@ -89,6 +89,34 @@
       color: var(--text-muted);
       font-size: 0.9rem;
     }
+    .class-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .class-btn {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      padding: 0.45rem 0.9rem;
+      font-size: 0.88rem;
+      font-family: var(--font-main);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .class-btn:hover { color: var(--text-primary); background: var(--bg-hover); border-color: var(--border-accent); }
+    .class-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .class-prompt {
+      background: var(--bg-elevated);
+      border: 1px dashed var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
     /* Lightbox overlay */
     .lightbox {
       display: none;
@@ -121,16 +149,17 @@
 
     <div class="preview-section">
       <h2 class="preview-section-title">Gear</h2>
-      <p class="preview-section-desc">New gear sets, weapons, and armor previewed for Mod 33.</p>
-      <div class="preview-image-grid" id="gear-grid">
-        <div class="placeholder-tile">Gear screenshots coming soon — drop them in <code>images/preview/</code> and they'll show up here.</div>
+      <p class="preview-section-desc">New gear sets, weapons, and armor previewed for Mod 33. Pick a class to see their gear.</p>
+      <div class="class-buttons" id="gear-class-buttons"></div>
+      <div id="gear-grid">
+        <div class="class-prompt">Select a class above to see their preview gear.</div>
       </div>
     </div>
 
     <div class="preview-section">
       <h2 class="preview-section-title">Companions</h2>
       <p class="preview-section-desc">New companions, powers, and enhancements previewed for Mod 33.</p>
-      <div class="preview-image-grid" id="comps-grid">
+      <div id="comps-grid">
         <div class="placeholder-tile">Companion screenshots coming soon — drop them in <code>images/preview/</code> and they'll show up here.</div>
       </div>
     </div>
@@ -138,7 +167,7 @@
     <div class="preview-section">
       <h2 class="preview-section-title">Other</h2>
       <p class="preview-section-desc">Anything else worth flagging — adventure zone, dungeon, heroic encounters, mounts, artifacts, etc.</p>
-      <div class="preview-image-grid" id="other-grid">
+      <div id="other-grid">
         <div class="placeholder-tile">Additional preview screenshots coming soon.</div>
       </div>
     </div>
@@ -151,11 +180,10 @@
   <script>
     renderNav("Mod 33 Preview");
 
-    function renderPreviewGrid(containerId, items) {
-      var container = document.getElementById(containerId);
-      if (!container) return;
-      if (!items || items.length === 0) return; // keep placeholder
-      var html = "";
+    var NW_CLASSES = ["Barbarian", "Bard", "Cleric", "Fighter", "Paladin", "Ranger", "Rogue", "Warlock", "Wizard"];
+
+    function renderImageGrid(items) {
+      var html = '<div class="preview-image-grid">';
       for (var i = 0; i < items.length; i++) {
         var it = items[i];
         html += '<div class="preview-image-card">';
@@ -168,13 +196,54 @@
         }
         html += '</div>';
       }
-      container.innerHTML = html;
+      html += '</div>';
+      return html;
+    }
+
+    function renderPreviewSection(containerId, items) {
+      var container = document.getElementById(containerId);
+      if (!container) return;
+      if (!items || items.length === 0) return; // keep placeholder
+      container.innerHTML = renderImageGrid(items);
+    }
+
+    // Gear: per-class buttons + filtered grid
+    function renderGearButtons() {
+      var btnContainer = document.getElementById("gear-class-buttons");
+      var gridContainer = document.getElementById("gear-grid");
+      if (!btnContainer || !gridContainer) return;
+
+      var gearByClass = (window.PREVIEW_DATA && PREVIEW_DATA.gear) || {};
+      var html = "";
+      for (var i = 0; i < NW_CLASSES.length; i++) {
+        var cls = NW_CLASSES[i];
+        var count = (gearByClass[cls] || []).length;
+        var label = count > 0 ? cls + " (" + count + ")" : cls;
+        html += '<button class="class-btn" data-class="' + cls + '">' + label + '</button>';
+      }
+      btnContainer.innerHTML = html;
+
+      btnContainer.addEventListener("click", function (e) {
+        var btn = e.target.closest(".class-btn");
+        if (!btn) return;
+        var cls = btn.getAttribute("data-class");
+        var siblings = btnContainer.querySelectorAll(".class-btn");
+        for (var s = 0; s < siblings.length; s++) siblings[s].classList.remove("active");
+        btn.classList.add("active");
+
+        var items = gearByClass[cls] || [];
+        if (items.length === 0) {
+          gridContainer.innerHTML = '<div class="class-prompt">No ' + cls + ' gear previewed yet — check back soon.</div>';
+        } else {
+          gridContainer.innerHTML = renderImageGrid(items);
+        }
+      });
     }
 
     if (window.PREVIEW_DATA) {
-      renderPreviewGrid("gear-grid", PREVIEW_DATA.gear);
-      renderPreviewGrid("comps-grid", PREVIEW_DATA.companions);
-      renderPreviewGrid("other-grid", PREVIEW_DATA.other);
+      renderGearButtons();
+      renderPreviewSection("comps-grid", PREVIEW_DATA.companions);
+      renderPreviewSection("other-grid", PREVIEW_DATA.other);
     }
 
     // Lightbox
