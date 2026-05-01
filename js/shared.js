@@ -5,6 +5,7 @@
 // Navigation pages config
 const NAV_PAGES = [
   { label: "Home",       href: "index.html" },
+  { label: "Mod 33 Preview", href: "preview.html" },
   { label: "Mounts",     href: "mounts.html" },
   { label: "Companions", href: "companions.html" },
   { label: "Consumables", href: "consumables.html" },

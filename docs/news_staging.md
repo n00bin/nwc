@@ -6,6 +6,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 - Added per-rarity proc-chance scaling to companion powers (new `chanceScaling` field) — Chance line on the detail panel now updates with the selected rarity
+- Added Mod 33 Preview page (`preview.html`): rotating section for previewing upcoming module content (gear, companions, etc.) with a lightbox for full-size screenshots
+- Added Content Roadmap banner to home page linking to the preview
 
 ### Bug Fixes
 - Fixed Blue Fire Eye: power was incorrectly showing Movement Speed, corrected to damage versus Kabal's minions with full rarity scaling (Report #22)

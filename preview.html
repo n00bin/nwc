@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mod 33 Preview — Neverwinter Compendium</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .preview-container { max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
+    .preview-banner {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .preview-banner h1 { margin: 0 0 0.4rem; color: var(--highlight); font-size: 1.5rem; }
+    .preview-banner p { margin: 0; color: var(--text-secondary); font-size: 0.92rem; line-height: 1.5; }
+    .preview-meta {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .rotation-note {
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--highlight);
+      padding: 0.6rem 0.9rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .preview-section {
+      margin-bottom: 2rem;
+    }
+    .preview-section-title {
+      color: var(--highlight);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0 0 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .preview-section-desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    .preview-image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .preview-image-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .preview-image-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .preview-image-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      cursor: zoom-in;
+    }
+    .preview-image-caption {
+      padding: 0.6rem 0.9rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .preview-image-caption strong { color: var(--text-primary); display: block; margin-bottom: 0.15rem; }
+    .placeholder-tile {
+      background: var(--bg-elevated);
+      border: 1px dashed var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 2rem 1rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    /* Lightbox overlay */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 100%; max-height: 100%; border-radius: var(--radius-md); }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <div class="preview-container">
+    <div class="preview-banner">
+      <span class="preview-meta">Currently Previewing</span>
+      <h1>Mod 33 Preview</h1>
+      <p>Gear, companions, and other preview content from the upcoming Mod 33 release. Pulled from in-game test server screenshots.</p>
+    </div>
+
+    <div class="rotation-note">
+      <strong style="color:var(--highlight);">Note:</strong> This page rotates each module cycle. When Mod 33 ships, this content will be replaced with the next preview (Mod 33.5, then Mod 34, and so on).
+    </div>
+
+    <div class="preview-section">
+      <h2 class="preview-section-title">Gear</h2>
+      <p class="preview-section-desc">New gear sets, weapons, and armor previewed for Mod 33.</p>
+      <div class="preview-image-grid" id="gear-grid">
+        <div class="placeholder-tile">Gear screenshots coming soon — drop them in <code>images/preview/</code> and they'll show up here.</div>
+      </div>
+    </div>
+
+    <div class="preview-section">
+      <h2 class="preview-section-title">Companions</h2>
+      <p class="preview-section-desc">New companions, powers, and enhancements previewed for Mod 33.</p>
+      <div class="preview-image-grid" id="comps-grid">
+        <div class="placeholder-tile">Companion screenshots coming soon — drop them in <code>images/preview/</code> and they'll show up here.</div>
+      </div>
+    </div>
+
+    <div class="preview-section">
+      <h2 class="preview-section-title">Other</h2>
+      <p class="preview-section-desc">Anything else worth flagging — adventure zone, dungeon, heroic encounters, mounts, artifacts, etc.</p>
+      <div class="preview-image-grid" id="other-grid">
+        <div class="placeholder-tile">Additional preview screenshots coming soon.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox"><img id="lightbox-img" src="" alt=""></div>
+
+  <script src="js/shared.js"></script>
+  <script src="data/preview.js"></script>
+  <script>
+    renderNav("Mod 33 Preview");
+
+    function renderPreviewGrid(containerId, items) {
+      var container = document.getElementById(containerId);
+      if (!container) return;
+      if (!items || items.length === 0) return; // keep placeholder
+      var html = "";
+      for (var i = 0; i < items.length; i++) {
+        var it = items[i];
+        html += '<div class="preview-image-card">';
+        html += '<img src="images/preview/' + escapeHtml(it.file) + '" alt="' + escapeHtml(it.title || "") + '" data-full="images/preview/' + escapeHtml(it.file) + '">';
+        if (it.title || it.note) {
+          html += '<div class="preview-image-caption">';
+          if (it.title) html += '<strong>' + escapeHtml(it.title) + '</strong>';
+          if (it.note) html += escapeHtml(it.note);
+          html += '</div>';
+        }
+        html += '</div>';
+      }
+      container.innerHTML = html;
+    }
+
+    if (window.PREVIEW_DATA) {
+      renderPreviewGrid("gear-grid", PREVIEW_DATA.gear);
+      renderPreviewGrid("comps-grid", PREVIEW_DATA.companions);
+      renderPreviewGrid("other-grid", PREVIEW_DATA.other);
+    }
+
+    // Lightbox
+    var lightbox = document.getElementById("lightbox");
+    var lightboxImg = document.getElementById("lightbox-img");
+    document.body.addEventListener("click", function (e) {
+      var img = e.target.closest("img[data-full]");
+      if (img) {
+        lightboxImg.src = img.getAttribute("data-full");
+        lightbox.classList.add("open");
+      } else if (e.target === lightbox || e.target === lightboxImg) {
+        lightbox.classList.remove("open");
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") lightbox.classList.remove("open");
+    });
+  </script>
+</body>
+</html>
