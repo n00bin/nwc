@@ -158,6 +158,7 @@
       <h2 class="preview-section-title">Gear</h2>
       <p class="preview-section-desc">New gear sets, weapons, and armor previewed for Mod 33. Pick a class to see their gear.</p>
       <div class="class-buttons" id="gear-class-buttons"></div>
+      <div class="class-buttons" id="gear-slot-buttons" style="display:none;"></div>
       <div id="gear-grid">
         <div class="class-prompt">Select a class above to see their preview gear.</div>
       </div>
@@ -234,11 +235,34 @@
       container.innerHTML = renderImageGrid(items, pairSize);
     }
 
-    // Gear: per-class buttons + filtered grid
+    // Slot label formatting: "main-hand" -> "Main Hand", "off-hand" -> "Off Hand", etc.
+    function formatSlotLabel(slot) {
+      return slot.split("-").map(function (w) {
+        return w.charAt(0).toUpperCase() + w.slice(1);
+      }).join(" ");
+    }
+
+    // Slot ordering for buttons (gear-natural reading order, then anything else alphabetically)
+    var SLOT_ORDER = ["head", "chest", "arms", "feet", "shirt", "pants", "belt", "neck", "ring", "main-hand", "off-hand", "artifact", "cloak"];
+    function sortSlots(slotList) {
+      var ordered = [];
+      var seen = {};
+      for (var i = 0; i < SLOT_ORDER.length; i++) {
+        if (slotList.indexOf(SLOT_ORDER[i]) !== -1) {
+          ordered.push(SLOT_ORDER[i]);
+          seen[SLOT_ORDER[i]] = true;
+        }
+      }
+      var leftovers = slotList.filter(function (s) { return !seen[s]; }).sort();
+      return ordered.concat(leftovers);
+    }
+
+    // Gear: per-class buttons + (if class data has slot tags) per-slot buttons + filtered grid
     function renderGearButtons() {
-      var btnContainer = document.getElementById("gear-class-buttons");
+      var classBtnContainer = document.getElementById("gear-class-buttons");
+      var slotBtnContainer = document.getElementById("gear-slot-buttons");
       var gridContainer = document.getElementById("gear-grid");
-      if (!btnContainer || !gridContainer) return;
+      if (!classBtnContainer || !slotBtnContainer || !gridContainer) return;
 
       var gearByClass = (window.PREVIEW_DATA && PREVIEW_DATA.gear) || {};
       var html = "";
@@ -248,21 +272,79 @@
         var label = count > 0 ? cls + " (" + count + ")" : cls;
         html += '<button class="class-btn" data-class="' + cls + '">' + label + '</button>';
       }
-      btnContainer.innerHTML = html;
+      classBtnContainer.innerHTML = html;
 
-      btnContainer.addEventListener("click", function (e) {
+      // State for currently-selected class (so slot click can re-filter)
+      var currentItems = [];
+
+      function renderSlotButtons(items) {
+        // Collect unique slots present in this class's items
+        var slotMap = {};
+        var untaggedCount = 0;
+        for (var i = 0; i < items.length; i++) {
+          if (items[i].slot) {
+            slotMap[items[i].slot] = (slotMap[items[i].slot] || 0) + 1;
+          } else {
+            untaggedCount++;
+          }
+        }
+        var slots = sortSlots(Object.keys(slotMap));
+        if (slots.length === 0) {
+          // No slot tags at all — hide slot buttons and show full grid
+          slotBtnContainer.style.display = "none";
+          gridContainer.innerHTML = renderImageGrid(items);
+          return;
+        }
+        var btns = '<button class="class-btn active" data-slot="__all__">All (' + items.length + ')</button>';
+        for (var k = 0; k < slots.length; k++) {
+          btns += '<button class="class-btn" data-slot="' + slots[k] + '">' + formatSlotLabel(slots[k]) + ' (' + slotMap[slots[k]] + ')</button>';
+        }
+        if (untaggedCount > 0) {
+          btns += '<button class="class-btn" data-slot="__untagged__">Untagged (' + untaggedCount + ')</button>';
+        }
+        slotBtnContainer.innerHTML = btns;
+        slotBtnContainer.style.display = "flex";
+        // Default view: show all
+        gridContainer.innerHTML = renderImageGrid(items);
+      }
+
+      classBtnContainer.addEventListener("click", function (e) {
         var btn = e.target.closest(".class-btn");
         if (!btn) return;
         var cls = btn.getAttribute("data-class");
-        var siblings = btnContainer.querySelectorAll(".class-btn");
+        var siblings = classBtnContainer.querySelectorAll(".class-btn");
         for (var s = 0; s < siblings.length; s++) siblings[s].classList.remove("active");
         btn.classList.add("active");
 
-        var items = gearByClass[cls] || [];
-        if (items.length === 0) {
+        currentItems = gearByClass[cls] || [];
+        if (currentItems.length === 0) {
+          slotBtnContainer.style.display = "none";
           gridContainer.innerHTML = '<div class="class-prompt">No ' + cls + ' gear previewed yet — check back soon.</div>';
+          return;
+        }
+        renderSlotButtons(currentItems);
+      });
+
+      slotBtnContainer.addEventListener("click", function (e) {
+        var btn = e.target.closest(".class-btn");
+        if (!btn) return;
+        var slot = btn.getAttribute("data-slot");
+        var siblings = slotBtnContainer.querySelectorAll(".class-btn");
+        for (var s = 0; s < siblings.length; s++) siblings[s].classList.remove("active");
+        btn.classList.add("active");
+
+        var filtered;
+        if (slot === "__all__") {
+          filtered = currentItems;
+        } else if (slot === "__untagged__") {
+          filtered = currentItems.filter(function (it) { return !it.slot; });
         } else {
-          gridContainer.innerHTML = renderImageGrid(items);
+          filtered = currentItems.filter(function (it) { return it.slot === slot; });
+        }
+        if (filtered.length === 0) {
+          gridContainer.innerHTML = '<div class="class-prompt">No items in this slot.</div>';
+        } else {
+          gridContainer.innerHTML = renderImageGrid(filtered);
         }
       });
     }

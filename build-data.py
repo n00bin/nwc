@@ -101,7 +101,32 @@ def build_preview_data():
             items.append({"file": rel_dir.replace(os.sep, "/") + "/" + name})
         return items
 
-    gear = {cls: list_images(os.path.join("gear", cls)) for cls in classes}
+    def list_gear_for_class(cls):
+        """Walk gear/<class>/. If it contains slot subfolders, walk one more level
+        and tag each entry with its slot. If files are flat at the class level
+        (no subfolders), return them without a slot tag (back-compat)."""
+        class_dir = os.path.join(preview_root, "gear", cls)
+        if not os.path.isdir(class_dir):
+            return []
+        # Detect slot subfolders (any subdirectory inside the class folder)
+        subdirs = [
+            d for d in sorted(os.listdir(class_dir))
+            if not d.startswith(".") and os.path.isdir(os.path.join(class_dir, d))
+        ]
+        if subdirs:
+            items = []
+            for slot in subdirs:
+                slot_items = list_images(os.path.join("gear", cls, slot))
+                for it in slot_items:
+                    it["slot"] = slot
+                    items.append(it)
+            # Also include any files dropped at the class root (untagged)
+            root_items = list_images(os.path.join("gear", cls))
+            return items + root_items
+        # No subfolders → flat layout, no slot tags
+        return list_images(os.path.join("gear", cls))
+
+    gear = {cls: list_gear_for_class(cls) for cls in classes}
     companions = list_images("companions")
     mounts = list_images("mounts")
     other = list_images("other")
