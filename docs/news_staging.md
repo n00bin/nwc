@@ -8,6 +8,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Added per-rarity proc-chance scaling to companion powers (new `chanceScaling` field) — Chance line on the detail panel now updates with the selected rarity
 - Added Mod 33 Preview page (`preview.html`): rotating section for previewing upcoming module content (gear, companions, etc.) with a lightbox for full-size screenshots
 - Added Content Roadmap banner to home page linking to the preview
+- Added Celestial Insignia Tracker tool (`insignia-priority.html`) under Creators & Tools: track non-CAB insignias across your roster, set rarities and quantities per character, promote copies up the rarity ladder as you upgrade them in-game, and see a roster-wide priority ranking for which insignia types give the most leverage when promoted to Celestial Account-Bound. Data saved to your browser with export/import backup.
 
 ### Bug Fixes
 - Fixed Blue Fire Eye: power was incorrectly showing Movement Speed, corrected to damage versus Kabal's minions with full rarity scaling (Report #22)

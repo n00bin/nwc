@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celestial Insignia Tracker — Neverwinter Compendium</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <style>
+    body.ip-themed {
+      background: radial-gradient(ellipse at top, #1a1208 0%, #0a0705 55%, #050302 100%) fixed;
+      color: #e8d9b0;
+      font-family: 'EB Garamond', Georgia, serif;
+    }
+    .ip-page {
+      --gold:        #d4af37;
+      --gold-warm:   #c9a961;
+      --gold-bright: #e8c878;
+      --gold-faint:  rgba(212, 175, 55, 0.18);
+      --bone:        #f0e2bc;
+      --bone-soft:   rgba(232, 217, 176, 0.75);
+      --bone-faint:  rgba(232, 217, 176, 0.45);
+      --bone-dim:    rgba(232, 217, 176, 0.3);
+      --ink:         rgba(0, 0, 0, 0.45);
+      --ink-deep:    rgba(0, 0, 0, 0.5);
+      --crimson:     #c45a5a;
+
+      /* Rarity colors */
+      --rar-common:    #a8a8a8;
+      --rar-uncommon:  #4caf50;
+      --rar-rare:      #4a9eff;
+      --rar-epic:      #b46cff;
+      --rar-legendary: #ff9c3a;
+      --rar-mythic:    #ff5a5a;
+      --rar-celestial: #9eb6ff;
+
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    @keyframes ipFadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes ipGlow {
+      0%, 100% { text-shadow: 0 0 18px rgba(212, 175, 55, 0.25); }
+      50%      { text-shadow: 0 0 28px rgba(212, 175, 55, 0.55); }
+    }
+    .ip-fade-in { animation: ipFadeUp 0.4s ease-out; }
+
+    .ip-header { text-align: center; padding: 2rem 0 1rem; }
+    .ip-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: rgba(212, 175, 55, 0.55);
+      margin-bottom: 0.85rem;
+    }
+    .ip-header h1 {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-bright);
+      margin: 0 0 0.6rem;
+      animation: ipGlow 4s ease-in-out infinite;
+    }
+    @media (min-width: 720px) {
+      .ip-header h1 { font-size: 2.6rem; }
+    }
+    .ip-header h1::before, .ip-header h1::after {
+      content: '✦';
+      color: rgba(212, 175, 55, 0.5);
+      margin: 0 0.6em;
+      font-size: 0.65em;
+      vertical-align: middle;
+    }
+    .ip-header p {
+      font-style: italic;
+      color: var(--bone-soft);
+      font-size: 0.95rem;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    .ip-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    @media (min-width: 720px) {
+      .ip-stats { grid-template-columns: repeat(4, 1fr); }
+    }
+    .ip-stat {
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.05), rgba(0,0,0,0));
+      border: 1px solid var(--gold-faint);
+      border-radius: 3px;
+      padding: 0.75rem 1rem;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.4) inset, 0 6px 18px rgba(0,0,0,0.4);
+      transition: border-color 0.2s;
+    }
+    .ip-stat.highlight { border-color: rgba(212, 175, 55, 0.5); }
+    .ip-stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--bone-soft);
+      margin-bottom: 0.35rem;
+    }
+    .ip-stat-value {
+      font-family: 'Cinzel', serif;
+      font-size: 1.7rem;
+      color: var(--bone);
+    }
+
+    .ip-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 960px) {
+      .ip-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .ip-panel {
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.05), rgba(0,0,0,0));
+      border: 1px solid var(--gold-faint);
+      border-radius: 3px;
+      padding: 1.25rem;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.4) inset, 0 8px 30px rgba(0,0,0,0.5);
+    }
+    .ip-panel-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.06em;
+      color: var(--gold-bright);
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--gold-faint);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .ip-panel-title::before { content: '✦'; color: var(--gold-warm); font-size: 0.85em; }
+
+    .ip-input, .ip-select {
+      background: var(--ink);
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      border-radius: 2px;
+      color: var(--bone);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.95rem;
+      padding: 0.55rem 0.8rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .ip-input { flex: 1; }
+    .ip-input::placeholder { color: rgba(232, 217, 176, 0.35); font-style: italic; }
+    .ip-input:focus, .ip-select:focus {
+      border-color: rgba(212, 175, 55, 0.6);
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.18);
+    }
+    .ip-select {
+      flex: none;
+      font-size: 0.85rem;
+      padding: 0.4rem 0.55rem;
+      cursor: pointer;
+    }
+    .ip-select option { background: #1a1208; color: var(--bone); }
+
+    .ip-btn {
+      background: linear-gradient(180deg, #c9a961 0%, #8b6f2f 100%);
+      color: #1a1208;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 2px;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0.55rem 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+    .ip-btn:hover:not(:disabled) {
+      background: linear-gradient(180deg, #d4b76a 0%, #9a7c34 100%);
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.4);
+    }
+    .ip-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .ip-btn-ghost {
+      background: transparent;
+      color: rgba(212, 175, 55, 0.65);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    .ip-btn-ghost:hover:not(:disabled) {
+      background: transparent;
+      color: var(--gold-bright);
+      border-color: rgba(212, 175, 55, 0.55);
+      box-shadow: none;
+    }
+
+    .ip-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .ip-add-char { margin-bottom: 1.25rem; flex-wrap: nowrap; }
+
+    .ip-tip {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--bone-soft);
+      margin-bottom: 1rem;
+      line-height: 1.65;
+    }
+    .ip-tip strong { color: var(--gold-warm); font-weight: 600; font-style: normal; }
+    .ip-tip code {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--gold-faint);
+      border-radius: 2px;
+      padding: 0.05em 0.4em;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9em;
+      color: var(--gold-warm);
+      font-style: normal;
+    }
+
+    .ip-char {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--gold-faint);
+      border-radius: 2px;
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.85rem;
+      animation: ipFadeUp 0.35s ease-out;
+    }
+    .ip-char-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.55rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .ip-char-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+      color: var(--bone);
+    }
+    .ip-char-actions {
+      display: flex;
+      gap: 0.55rem;
+      align-items: center;
+      font-size: 0.78rem;
+      flex-wrap: wrap;
+    }
+
+    .ip-link {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(180, 70, 70, 0.55);
+      font-family: 'EB Garamond', serif;
+      font-size: 0.92rem;
+      font-style: italic;
+      padding: 0.15rem 0.3rem;
+      transition: color 0.2s;
+    }
+    .ip-link:hover { color: #d44a4a; }
+    .ip-link.confirm { color: var(--crimson); text-decoration: underline; }
+    .ip-link.cancel  { color: var(--bone-soft); text-decoration: underline; }
+    .ip-link.cancel:hover { color: var(--bone); }
+    .ip-link.muted { color: var(--bone-dim); }
+    .ip-link.muted:hover { color: var(--crimson); }
+
+    .ip-copy-wrap { display: inline-flex; align-items: center; gap: 0.35rem; }
+    .ip-copy-wrap select {
+      background: var(--ink);
+      color: var(--bone-soft);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 2px;
+      padding: 0.3rem 0.5rem;
+      font-family: 'EB Garamond', serif;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+    .ip-copy-wrap select option { background: #1a1208; }
+
+    .ip-insig-list { list-style: none; padding: 0; margin: 0 0 0.8rem 0; }
+    .ip-insig-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0.55rem;
+      border-radius: 2px;
+      font-size: 1rem;
+      color: var(--bone);
+      transition: background 0.15s;
+      gap: 0.5rem;
+    }
+    .ip-insig-item:hover { background: rgba(212, 175, 55, 0.06); }
+    .ip-insig-name {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .ip-insig-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+
+    /* Rarity dot/pill */
+    .ip-rarity-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 2px;
+      padding: 0.22rem 0.6rem 0.22rem 0.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--bone-soft);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .ip-rarity-pill:hover {
+      border-color: rgba(212, 175, 55, 0.5);
+      background: rgba(0, 0, 0, 0.55);
+    }
+    .ip-rarity-dot {
+      display: inline-block;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .ip-rarity-dot.common    { background: var(--rar-common);    box-shadow: 0 0 6px rgba(168, 168, 168, 0.5); }
+    .ip-rarity-dot.uncommon  { background: var(--rar-uncommon);  box-shadow: 0 0 6px rgba(76, 175, 80, 0.5); }
+    .ip-rarity-dot.rare      { background: var(--rar-rare);      box-shadow: 0 0 6px rgba(74, 158, 255, 0.5); }
+    .ip-rarity-dot.epic      { background: var(--rar-epic);      box-shadow: 0 0 6px rgba(180, 108, 255, 0.5); }
+    .ip-rarity-dot.legendary { background: var(--rar-legendary); box-shadow: 0 0 6px rgba(255, 156, 58, 0.5); }
+    .ip-rarity-dot.mythic    { background: var(--rar-mythic);    box-shadow: 0 0 6px rgba(255, 90, 90, 0.5); }
+    .ip-rarity-dot.celestial { background: var(--rar-celestial); box-shadow: 0 0 6px rgba(158, 182, 255, 0.6); }
+
+    .ip-promote-btn {
+      background: transparent;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: rgba(212, 175, 55, 0.7);
+      border-radius: 2px;
+      width: 1.9rem;
+      height: 1.9rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .ip-promote-btn:hover {
+      color: var(--gold-bright);
+      border-color: rgba(212, 175, 55, 0.6);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.25);
+    }
+
+    .ip-count-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 2px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      color: var(--bone-soft);
+      flex-shrink: 0;
+    }
+    .ip-count-btn {
+      background: none;
+      border: none;
+      color: rgba(212, 175, 55, 0.5);
+      cursor: pointer;
+      width: 1.7rem;
+      height: 1.7rem;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 0;
+      transition: color 0.2s, background 0.2s;
+    }
+    .ip-count-btn:hover { color: var(--gold-bright); background: rgba(212, 175, 55, 0.1); }
+    .ip-count-num {
+      min-width: 1.6rem;
+      text-align: center;
+      padding: 0 0.25rem;
+      color: var(--bone);
+      font-weight: 600;
+    }
+    .ip-x {
+      opacity: 0;
+      background: none;
+      border: none;
+      color: rgba(180, 70, 70, 0.55);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 0 0.3rem;
+      transition: opacity 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+    .ip-insig-item:hover .ip-x { opacity: 1; }
+    .ip-x:hover { color: #d44a4a; }
+
+    .ip-insig-empty {
+      color: var(--bone-soft);
+      font-size: 0.95rem;
+      font-style: italic;
+      padding: 0.4rem 0.55rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .ip-empty {
+      border: 1px dashed rgba(212, 175, 55, 0.2);
+      border-radius: 2px;
+      padding: 2.75rem 1rem;
+      text-align: center;
+      color: var(--bone-soft);
+      font-size: 1rem;
+      font-style: italic;
+    }
+    .ip-empty.complete {
+      border-color: rgba(158, 182, 255, 0.3);
+      color: var(--rar-celestial);
+      font-style: normal;
+    }
+    .ip-empty.complete::before {
+      content: '⚜';
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--rar-celestial);
+    }
+
+    .ip-intro {
+      font-size: 1rem;
+      color: var(--bone-soft);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .ip-intro strong { color: var(--gold-warm); font-weight: 600; font-style: normal; }
+
+    .ip-rank {
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.04), rgba(0,0,0,0));
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      border-radius: 2px;
+      padding: 0.75rem 0.9rem;
+      margin-bottom: 0.55rem;
+      transition: all 0.25s;
+      animation: ipFadeUp 0.35s ease-out;
+    }
+    .ip-rank:hover { border-color: rgba(212, 175, 55, 0.3); }
+    .ip-rank.top {
+      border-color: rgba(212, 175, 55, 0.5);
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.1), rgba(0,0,0,0));
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.1);
+    }
+
+    .ip-rank-head {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 0.45rem;
+    }
+    .ip-rank-num {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      width: 1.85rem;
+      text-align: center;
+      color: rgba(232, 217, 176, 0.6);
+      flex-shrink: 0;
+    }
+    .ip-rank.top .ip-rank-num { color: var(--gold-bright); }
+
+    .ip-rank-info { flex: 1; min-width: 0; }
+    .ip-rank-name {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: rgba(232, 217, 176, 0.85);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ip-rank.top .ip-rank-name { color: var(--bone); }
+    .ip-rank-chars {
+      font-size: 0.88rem;
+      color: var(--bone-faint);
+      font-style: italic;
+      margin-top: 0.3rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ip-rank-rarities {
+      display: flex;
+      gap: 0.35rem;
+      margin-top: 0.45rem;
+      flex-wrap: wrap;
+    }
+    .ip-rank-rarity-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--bone-soft);
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 2px;
+      padding: 0.18rem 0.55rem;
+    }
+
+    .ip-rank-count { flex-shrink: 0; text-align: right; padding-left: 0.5rem; }
+    .ip-rank-count-num {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: rgba(232, 217, 176, 0.7);
+    }
+    .ip-rank.top .ip-rank-count-num { color: var(--gold-bright); }
+    .ip-rank-count-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+      letter-spacing: 0.1em;
+    }
+
+    .ip-bar-track {
+      height: 3px;
+      background: var(--ink-deep);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-left: 2.7rem;
+      margin-top: 0.4rem;
+    }
+    .ip-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #c9a961 0%, #8b6f2f 100%);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.35);
+      transition: width 0.5s ease;
+    }
+
+    .ip-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      text-align: center;
+      color: var(--bone-soft);
+      font-size: 0.92rem;
+      font-style: italic;
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+    }
+    .ip-footer .ip-flourish { color: var(--gold-warm); margin: 0 0.5em; }
+    .ip-backup-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+      flex-wrap: wrap;
+    }
+    .ip-btn-mini {
+      background: transparent;
+      color: rgba(212, 175, 55, 0.75);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 2px;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.06em;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .ip-btn-mini:hover {
+      color: var(--gold-bright);
+      border-color: rgba(212, 175, 55, 0.6);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+    }
+    .ip-backup-msg {
+      margin-top: 0.55rem;
+      min-height: 1.1rem;
+      font-size: 0.92rem;
+      font-style: italic;
+      color: var(--gold-bright);
+      transition: opacity 0.3s;
+    }
+    .ip-backup-msg.error { color: var(--crimson); }
+    .ip-backup-msg.fade { opacity: 0; }
+  </style>
+</head>
+<body class="ip-themed">
+  <nav class="navbar"></nav>
+
+  <main class="ip-page">
+    <header class="ip-header ip-fade-in">
+      <div class="ip-eyebrow">⚜ NEVERWINTER ⚜</div>
+      <h1>Celestial Insignia Tracker</h1>
+      <p>Track every non-celestial-account-bound insignia in your roster and see which ones to upgrade first for maximum payoff across your characters.</p>
+    </header>
+
+    <section id="ip-stats" class="ip-stats ip-fade-in" style="display:none;">
+      <div class="ip-stat">
+        <div class="ip-stat-label">Characters</div>
+        <div class="ip-stat-value" id="ip-stat-chars">0</div>
+      </div>
+      <div class="ip-stat">
+        <div class="ip-stat-label">Insignias to upgrade</div>
+        <div class="ip-stat-value" id="ip-stat-total">0</div>
+      </div>
+      <div class="ip-stat">
+        <div class="ip-stat-label">Unique types</div>
+        <div class="ip-stat-value" id="ip-stat-unique">0</div>
+      </div>
+      <div class="ip-stat" id="ip-stat-shared-tile">
+        <div class="ip-stat-label">Shared (2+ chars)</div>
+        <div class="ip-stat-value" id="ip-stat-shared">0</div>
+      </div>
+    </section>
+
+    <div class="ip-grid">
+      <section class="ip-panel ip-fade-in">
+        <div class="ip-panel-title">Your Roster</div>
+
+        <p class="ip-tip">
+          <strong>How it works:</strong> Add only the insignias that aren't yet Celestial Account-Bound. Each entry has a rarity pill and a quantity. When you upgrade one in-game, click the <strong>↑</strong> next to that insignia to bump that copy up the rarity ladder (Epic → Legendary → Mythic → Celestial). When you upgrade a Celestial copy to Celestial Account-Bound, click <strong>↑</strong> once more — that copy graduates and is removed from tracking. Then you can 1-for-1 swap it onto every other character that has the same insignia, and click <strong>↑</strong> on each of their Celestial copies too as you do.
+        </p>
+
+        <div class="ip-row ip-add-char">
+          <input type="text" id="ip-new-char" class="ip-input" placeholder="Character name…" maxlength="40">
+          <button id="ip-add-char-btn" class="ip-btn">+ Add</button>
+        </div>
+
+        <div id="ip-char-list"></div>
+        <div id="ip-roster-empty" class="ip-empty">No characters yet. Add your first hero to begin.</div>
+      </section>
+
+      <section class="ip-panel ip-fade-in">
+        <div class="ip-panel-title">Upgrade Priority</div>
+
+        <div id="ip-rank-intro" class="ip-intro" style="display:none;">
+          Ranked by how many of your characters have copies of each insignia type. Top of the list = best <strong>future</strong> leverage — once you push those copies up to Celestial, the upgrade to Celestial Account-Bound will give you a 1-for-1 swap onto every toon that uses it. Below Celestial, each click of <strong>↑</strong> just upgrades that single copy to the next rarity.
+        </div>
+
+        <div id="ip-rank-list"></div>
+        <div id="ip-rank-empty" class="ip-empty">Add characters and their insignias to see which to upgrade first.</div>
+      </section>
+    </div>
+
+    <footer class="ip-footer">
+      <p><span class="ip-flourish">⚔</span> The N00bin Network · Your data is saved in this browser <span class="ip-flourish">⚔</span></p>
+
+      <div class="ip-backup-bar">
+        <button id="ip-export-btn" class="ip-btn-mini">⬇ Export backup</button>
+        <button id="ip-import-btn" class="ip-btn-mini">⬆ Import backup</button>
+        <input type="file" id="ip-import-file" accept=".json,application/json" style="display:none;">
+      </div>
+      <div id="ip-backup-msg" class="ip-backup-msg"></div>
+
+      <div id="ip-reset-area" style="margin-top:0.6rem;"></div>
+    </footer>
+  </main>
+
+  <datalist id="ip-insignia-names"></datalist>
+
+  <script src="js/shared.js"></script>
+
+  <script>
+    /* ============================================================
+       Celestial Insignia Tracker — vanilla JS
+       Storage: localStorage (key: nw-insignia-roster)
+       Data shape:
+         characters: [{ id, name, insignias: [{ id, name, rarity, count }] }]
+       Rarities are tracked per insignia entry. Once an entry reaches
+       Celestial Account-Bound and is "promoted" once more, it's removed.
+       ============================================================ */
+
+    var STORAGE_KEY = 'nw-insignia-roster';
+
+    // Rarity ladder. The last step (CAB) is the GOAL — promoting from CAB
+    // removes the entry from tracking entirely.
+    var RARITIES = [
+      { key: 'common',    label: 'Common' },
+      { key: 'uncommon',  label: 'Uncommon' },
+      { key: 'rare',      label: 'Rare' },
+      { key: 'epic',      label: 'Epic' },
+      { key: 'legendary', label: 'Legendary' },
+      { key: 'mythic',    label: 'Mythic' },
+      { key: 'celestial', label: 'Celestial' }
+    ];
+    function rarityIndex(key) {
+      for (var i = 0; i < RARITIES.length; i++) {
+        if (RARITIES[i].key === key) return i;
+      }
+      return -1;
+    }
+    function rarityLabel(key) {
+      var i = rarityIndex(key);
+      return i >= 0 ? RARITIES[i].label : key;
+    }
+    function nextRarity(key) {
+      var i = rarityIndex(key);
+      if (i < 0 || i >= RARITIES.length - 1) return null; // null = becomes CAB / removed
+      return RARITIES[i + 1].key;
+    }
+
+    var state = { characters: [] };
+
+    /* ---------- Storage ---------- */
+    function load() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          var parsed = JSON.parse(raw);
+          var chars = Array.isArray(parsed) ? parsed : (parsed.characters || []);
+          state.characters = chars.map(function (c) {
+            return {
+              id: c.id || newId('c'),
+              name: String(c.name || ''),
+              insignias: (c.insignias || []).map(function (i) {
+                // Migrate: older versions had no rarity field. Default to 'epic'
+                // since most active insignias people track will be epic+.
+                var rar = i.rarity && rarityIndex(i.rarity) >= 0 ? i.rarity : 'epic';
+                return {
+                  id: i.id || newId('i'),
+                  name: String(i.name || ''),
+                  rarity: rar,
+                  count: typeof i.count === 'number' && i.count > 0 ? i.count : 1
+                };
+              })
+            };
+          });
+        }
+      } catch (e) {
+        console.error('Load failed', e);
+        state.characters = [];
+      }
+    }
+    function save() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ characters: state.characters }));
+      } catch (e) { console.error('Save failed', e); }
+    }
+
+    /* ---------- Helpers ---------- */
+    function newId(prefix) {
+      return prefix + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
+    }
+    function escapeHtml(s) {
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+    function normalizeKey(name) {
+      return name.toLowerCase().trim().replace(/\s+/g, ' ');
+    }
+    function findExisting(insignias, name, rarity) {
+      // Match on name + rarity (so the same insignia at different rarities are separate rows)
+      var key = normalizeKey(name);
+      for (var i = 0; i < insignias.length; i++) {
+        if (normalizeKey(insignias[i].name) === key && insignias[i].rarity === rarity) {
+          return insignias[i];
+        }
+      }
+      return null;
+    }
+
+    /* ---------- Autocomplete ---------- */
+    function getAllInsigniaNames() {
+      var names = {};
+      state.characters.forEach(function (c) {
+        c.insignias.forEach(function (i) { names[i.name] = true; });
+      });
+      if (typeof window.INSIGNIA_NAMES !== 'undefined' && Array.isArray(window.INSIGNIA_NAMES)) {
+        window.INSIGNIA_NAMES.forEach(function (n) { if (n) names[String(n)] = true; });
+      }
+      return Object.keys(names).sort(function (a, b) { return a.localeCompare(b); });
+    }
+    function renderDatalist() {
+      var dl = document.getElementById('ip-insignia-names');
+      var names = getAllInsigniaNames();
+      var html = '';
+      for (var i = 0; i < names.length; i++) {
+        html += '<option value="' + escapeHtml(names[i]) + '">';
+      }
+      dl.innerHTML = html;
+    }
+
+    /* ---------- Rankings ---------- */
+    function computeRankings() {
+      // Group all insignia entries by name (regardless of rarity).
+      // For each unique name: total non-CAB copies + how many distinct toons own them
+      // + a breakdown of which rarities and how many at each.
+      var map = {};
+      state.characters.forEach(function (char) {
+        var seenInChar = {};
+        char.insignias.forEach(function (insig) {
+          var key = normalizeKey(insig.name);
+          if (!key) return;
+          if (!map[key]) {
+            map[key] = {
+              key: key,
+              displayName: insig.name.trim(),
+              characters: [],
+              charCount: 0,
+              totalCopies: 0,
+              byRarity: {}
+            };
+          }
+          map[key].totalCopies += (insig.count || 1);
+          var rarity = insig.rarity || 'epic';
+          map[key].byRarity[rarity] = (map[key].byRarity[rarity] || 0) + (insig.count || 1);
+          if (!seenInChar[key]) {
+            seenInChar[key] = true;
+            map[key].characters.push(char.name);
+            map[key].charCount += 1;
+          }
+        });
+      });
+      var arr = Object.keys(map).map(function (k) { return map[k]; });
+      // Sort: most distinct toons first, then most total copies, then name
+      arr.sort(function (a, b) {
+        if (b.charCount !== a.charCount) return b.charCount - a.charCount;
+        if (b.totalCopies !== a.totalCopies) return b.totalCopies - a.totalCopies;
+        return a.displayName.localeCompare(b.displayName);
+      });
+      return arr;
+    }
+
+    /* ---------- Render ---------- */
+    function render() {
+      renderRoster();
+      renderRankings();
+      renderStats();
+      renderResetArea();
+      renderDatalist();
+    }
+
+    function renderStats() {
+      var chars = state.characters.length;
+      var totalCopies = 0;
+      state.characters.forEach(function (c) {
+        c.insignias.forEach(function (i) { totalCopies += (i.count || 1); });
+      });
+      var rankings = computeRankings();
+      var unique = rankings.length;
+      var shared = rankings.filter(function (r) { return r.charCount >= 2; }).length;
+
+      document.getElementById('ip-stats').style.display = chars > 0 ? '' : 'none';
+      document.getElementById('ip-stat-chars').textContent = chars;
+      document.getElementById('ip-stat-total').textContent = totalCopies;
+      document.getElementById('ip-stat-unique').textContent = unique;
+      document.getElementById('ip-stat-shared').textContent = shared;
+      document.getElementById('ip-stat-shared-tile').classList.toggle('highlight', shared > 0);
+    }
+
+    function buildCopyFromControl(currentCharId) {
+      var others = state.characters.filter(function (c) {
+        return c.id !== currentCharId && c.insignias.length > 0;
+      });
+      if (others.length === 0) return '';
+      var html = '<span class="ip-copy-wrap">';
+      html +=   '<select data-action="copy-from" data-target="' + currentCharId + '">';
+      html +=     '<option value="">Copy from…</option>';
+      others.forEach(function (c) {
+        html += '<option value="' + c.id + '">' + escapeHtml(c.name) + '</option>';
+      });
+      html +=   '</select>';
+      html += '</span>';
+      return html;
+    }
+
+    function buildRaritySelect(selectedKey, idAttr) {
+      var html = '<select class="ip-select" ' + idAttr + '>';
+      RARITIES.forEach(function (r) {
+        html += '<option value="' + r.key + '"' + (r.key === selectedKey ? ' selected' : '') + '>' + r.label + '</option>';
+      });
+      html += '</select>';
+      return html;
+    }
+
+    function renderRoster() {
+      var listEl = document.getElementById('ip-char-list');
+      var emptyEl = document.getElementById('ip-roster-empty');
+
+      if (state.characters.length === 0) {
+        listEl.innerHTML = '';
+        emptyEl.style.display = '';
+        return;
+      }
+      emptyEl.style.display = 'none';
+
+      var html = '';
+      state.characters.forEach(function (char) {
+        html += '<div class="ip-char" data-char-id="' + char.id + '">';
+        html +=   '<div class="ip-char-head">';
+        html +=     '<div class="ip-char-name">' + escapeHtml(char.name) + '</div>';
+        html +=     '<div class="ip-char-actions" data-char-actions="' + char.id + '">';
+        html +=       buildCopyFromControl(char.id);
+        html +=       '<button class="ip-link" data-action="del-char" data-id="' + char.id + '">Remove</button>';
+        html +=     '</div>';
+        html +=   '</div>';
+
+        if (char.insignias.length > 0) {
+          html += '<ul class="ip-insig-list">';
+          char.insignias.forEach(function (insig) {
+            var count = insig.count || 1;
+            var rarity = insig.rarity || 'epic';
+            var nextRar = nextRarity(rarity);
+            var promoteTitle = nextRar
+              ? 'I just upgraded one — promote to ' + rarityLabel(nextRar)
+              : 'I just made one Celestial Account-Bound — remove from tracking';
+            html += '<li class="ip-insig-item">';
+            html +=   '<span class="ip-insig-name">';
+            html +=     '<span class="ip-rarity-pill" data-action="cycle-rarity" data-char="' + char.id + '" data-id="' + insig.id + '" title="Click to change rarity">';
+            html +=       '<span class="ip-rarity-dot ' + rarity + '"></span>';
+            html +=       rarityLabel(rarity);
+            html +=     '</span>';
+            html +=     escapeHtml(insig.name);
+            html +=   '</span>';
+            html +=   '<span class="ip-insig-controls">';
+            html +=     '<button class="ip-promote-btn" data-action="promote" data-char="' + char.id + '" data-id="' + insig.id + '" title="' + promoteTitle + '">↑</button>';
+            html +=     '<span class="ip-count-badge" title="Adjust quantity">';
+            html +=       '<button class="ip-count-btn" data-action="dec-insig" data-char="' + char.id + '" data-id="' + insig.id + '" aria-label="Decrease">−</button>';
+            html +=       '<span class="ip-count-num">' + count + '</span>';
+            html +=       '<button class="ip-count-btn" data-action="inc-insig" data-char="' + char.id + '" data-id="' + insig.id + '" aria-label="Increase">+</button>';
+            html +=     '</span>';
+            html +=     '<button class="ip-x" data-action="del-insig" data-char="' + char.id + '" data-id="' + insig.id + '" aria-label="Remove">&times;</button>';
+            html +=   '</span>';
+            html += '</li>';
+          });
+          html += '</ul>';
+        } else {
+          html += '<div class="ip-insig-empty">No insignias here yet — every slot is celestial-account-bound or empty. ⚜</div>';
+        }
+
+        // Add row: name + rarity selector + Add button
+        html += '<div class="ip-row">';
+        html +=   '<input type="text" class="ip-input" data-insig-input="' + char.id + '" list="ip-insignia-names" placeholder="Insignia name…" maxlength="80" autocomplete="off">';
+        html +=   buildRaritySelect('epic', 'data-rarity-input="' + char.id + '"');
+        html +=   '<button class="ip-btn ip-btn-ghost" data-action="add-insig" data-id="' + char.id + '">+ Add</button>';
+        html += '</div>';
+
+        html += '</div>';
+      });
+      listEl.innerHTML = html;
+    }
+
+    function renderRankings() {
+      var listEl = document.getElementById('ip-rank-list');
+      var emptyEl = document.getElementById('ip-rank-empty');
+      var introEl = document.getElementById('ip-rank-intro');
+
+      var rankings = computeRankings();
+
+      if (state.characters.length === 0) {
+        listEl.innerHTML = '';
+        emptyEl.textContent = 'Add characters and their insignias to see which to upgrade first.';
+        emptyEl.classList.remove('complete');
+        emptyEl.style.display = '';
+        introEl.style.display = 'none';
+        return;
+      }
+      if (rankings.length === 0) {
+        listEl.innerHTML = '';
+        emptyEl.innerHTML = 'All upgrades complete! Every insignia in your roster is Celestial Account-Bound.';
+        emptyEl.classList.add('complete');
+        emptyEl.style.display = '';
+        introEl.style.display = 'none';
+        return;
+      }
+      emptyEl.style.display = 'none';
+      introEl.style.display = '';
+
+      var maxToons = rankings[0].charCount;
+      var html = '';
+      rankings.forEach(function (r, i) {
+        var pct = (r.charCount / maxToons) * 100;
+        var isTop = (i === 0 && r.charCount >= 2);
+
+        // Build rarity breakdown chips (only show rarities present)
+        var rarityChips = '';
+        RARITIES.forEach(function (rar) {
+          var n = r.byRarity[rar.key];
+          if (!n) return;
+          rarityChips += '<span class="ip-rank-rarity-chip">';
+          rarityChips +=   '<span class="ip-rarity-dot ' + rar.key + '"></span>';
+          rarityChips +=   rar.label + ' ×' + n;
+          rarityChips += '</span>';
+        });
+
+        html += '<div class="ip-rank' + (isTop ? ' top' : '') + '">';
+        html +=   '<div class="ip-rank-head">';
+        html +=     '<div class="ip-rank-num">' + (i + 1) + '</div>';
+        html +=     '<div class="ip-rank-info">';
+        html +=       '<div class="ip-rank-name">' + escapeHtml(r.displayName) + '</div>';
+        html +=       '<div class="ip-rank-chars">Used by: ' + escapeHtml(r.characters.join(' · ')) + '</div>';
+        html +=       '<div class="ip-rank-rarities">' + rarityChips + '</div>';
+        html +=     '</div>';
+        html +=     '<div class="ip-rank-count">';
+        html +=       '<div class="ip-rank-count-num">' + r.charCount + '</div>';
+        html +=       '<div class="ip-rank-count-label">' + (r.charCount === 1 ? 'toon' : 'toons') + '</div>';
+        html +=     '</div>';
+        html +=   '</div>';
+        html +=   '<div class="ip-bar-track"><div class="ip-bar-fill" style="width:' + pct + '%;"></div></div>';
+        html += '</div>';
+      });
+      listEl.innerHTML = html;
+    }
+
+    function renderResetArea() {
+      var el = document.getElementById('ip-reset-area');
+      if (state.characters.length === 0) { el.innerHTML = ''; return; }
+      el.innerHTML = '<button class="ip-link muted" id="ip-reset-btn">clear all data</button>';
+      document.getElementById('ip-reset-btn').addEventListener('click', confirmReset);
+    }
+
+    function confirmReset() {
+      var el = document.getElementById('ip-reset-area');
+      el.innerHTML =
+        '<span style="color:rgba(232, 217, 176, 0.75);font-size:0.85rem;font-style:italic;">Erase all characters and insignias? </span>' +
+        '<button class="ip-link confirm" id="ip-reset-yes">yes, erase</button>' +
+        '<span style="color:rgba(232, 217, 176, 0.3);"> · </span>' +
+        '<button class="ip-link cancel" id="ip-reset-no">cancel</button>';
+      document.getElementById('ip-reset-yes').addEventListener('click', function () {
+        state.characters = []; save(); render();
+      });
+      document.getElementById('ip-reset-no').addEventListener('click', renderResetArea);
+    }
+
+    /* ---------- Actions ---------- */
+    function addCharacter() {
+      var input = document.getElementById('ip-new-char');
+      var name = input.value.trim();
+      if (!name) return;
+      state.characters.push({ id: newId('c'), name: name, insignias: [] });
+      input.value = '';
+      save(); render();
+    }
+
+    function deleteCharacterPrompt(id) {
+      var actionsEl = document.querySelector('[data-char-actions="' + id + '"]');
+      if (!actionsEl) return;
+      actionsEl.innerHTML =
+        '<span style="color:rgba(232, 217, 176, 0.75);font-style:italic;">Sure? </span>' +
+        '<button class="ip-link confirm" data-action="del-char-yes" data-id="' + id + '">yes</button>' +
+        '<button class="ip-link cancel" data-action="del-char-no" data-id="' + id + '">no</button>';
+    }
+    function confirmDeleteCharacter(id) {
+      state.characters = state.characters.filter(function (c) { return c.id !== id; });
+      save(); render();
+    }
+
+    function addInsignia(charId) {
+      var nameInput = document.querySelector('[data-insig-input="' + charId + '"]');
+      var rarSelect = document.querySelector('[data-rarity-input="' + charId + '"]');
+      if (!nameInput) return;
+      var name = nameInput.value.trim();
+      if (!name) return;
+      var rarity = (rarSelect && rarSelect.value) ? rarSelect.value : 'epic';
+      var char = state.characters.find(function (c) { return c.id === charId; });
+      if (!char) return;
+      var existing = findExisting(char.insignias, name, rarity);
+      if (existing) existing.count = (existing.count || 1) + 1;
+      else char.insignias.push({ id: newId('i'), name: name, rarity: rarity, count: 1 });
+      nameInput.value = '';
+      save(); render();
+      var newInput = document.querySelector('[data-insig-input="' + charId + '"]');
+      if (newInput) newInput.focus();
+    }
+
+    function incInsignia(charId, insigId) {
+      var ins = findInsig(charId, insigId);
+      if (!ins) return;
+      ins.count = (ins.count || 1) + 1;
+      save(); render();
+    }
+    function decInsignia(charId, insigId) {
+      var char = state.characters.find(function (c) { return c.id === charId; });
+      if (!char) return;
+      var insig = char.insignias.find(function (i) { return i.id === insigId; });
+      if (!insig) return;
+      insig.count = (insig.count || 1) - 1;
+      if (insig.count <= 0) {
+        char.insignias = char.insignias.filter(function (i) { return i.id !== insigId; });
+      }
+      save(); render();
+    }
+    function deleteInsignia(charId, insigId) {
+      var char = state.characters.find(function (c) { return c.id === charId; });
+      if (!char) return;
+      char.insignias = char.insignias.filter(function (i) { return i.id !== insigId; });
+      save(); render();
+    }
+
+    function findInsig(charId, insigId) {
+      var char = state.characters.find(function (c) { return c.id === charId; });
+      if (!char) return null;
+      return char.insignias.find(function (i) { return i.id === insigId; }) || null;
+    }
+
+    function promoteInsignia(charId, insigId) {
+      // "I just upgraded one in-game" — promote a single copy up the ladder.
+      // If the entry was already at Celestial, that one copy becomes
+      // Celestial Account-Bound (untracked) and is removed.
+      var char = state.characters.find(function (c) { return c.id === charId; });
+      if (!char) return;
+      var insig = char.insignias.find(function (i) { return i.id === insigId; });
+      if (!insig) return;
+      var nextRar = nextRarity(insig.rarity);
+      var count = insig.count || 1;
+
+      // Decrement the source entry by 1 (or remove if it was the last)
+      if (count <= 1) {
+        char.insignias = char.insignias.filter(function (i) { return i.id !== insigId; });
+      } else {
+        insig.count = count - 1;
+      }
+
+      // If next rarity exists, add 1 copy at that rarity (merging if a row
+      // for the same name+next-rarity already exists on this character).
+      if (nextRar) {
+        var existing = findExisting(char.insignias, insig.name, nextRar);
+        if (existing) existing.count = (existing.count || 1) + 1;
+        else char.insignias.push({ id: newId('i'), name: insig.name, rarity: nextRar, count: 1 });
+      }
+      // If nextRar is null, the copy graduated to CAB and is no longer tracked.
+
+      save(); render();
+    }
+
+    function changeRarity(charId, insigId, newRarity) {
+      // Used when the user clicks the rarity pill and picks a new value.
+      // This changes the rarity of the entire entry (all copies), or merges
+      // into an existing entry of the same name+rarity if one exists.
+      var char = state.characters.find(function (c) { return c.id === charId; });
+      if (!char) return;
+      var insig = char.insignias.find(function (i) { return i.id === insigId; });
+      if (!insig) return;
+      if (newRarity === insig.rarity) return;
+      if (rarityIndex(newRarity) < 0) return;
+
+      var sameTarget = char.insignias.find(function (i) {
+        return i.id !== insigId
+          && normalizeKey(i.name) === normalizeKey(insig.name)
+          && i.rarity === newRarity;
+      });
+      if (sameTarget) {
+        // Merge into the existing row
+        sameTarget.count = (sameTarget.count || 1) + (insig.count || 1);
+        char.insignias = char.insignias.filter(function (i) { return i.id !== insigId; });
+      } else {
+        insig.rarity = newRarity;
+      }
+      save(); render();
+    }
+
+    function cycleRarityPrompt(charId, insigId) {
+      // Click on rarity pill: open a temporary inline <select> at that spot.
+      var pill = document.querySelector(
+        '[data-action="cycle-rarity"][data-char="' + charId + '"][data-id="' + insigId + '"]'
+      );
+      if (!pill) return;
+      var insig = findInsig(charId, insigId);
+      if (!insig) return;
+      pill.outerHTML = buildRaritySelect(insig.rarity,
+        'data-action="rarity-change-select" data-char="' + charId + '" data-id="' + insigId + '"');
+      var sel = document.querySelector(
+        '[data-action="rarity-change-select"][data-char="' + charId + '"][data-id="' + insigId + '"]'
+      );
+      if (sel) {
+        sel.focus();
+        // Cancel on blur without selection (re-render brings back the pill)
+        sel.addEventListener('blur', function () {
+          setTimeout(function () { render(); }, 100);
+        });
+      }
+    }
+
+    function copyInsigniasFrom(targetCharId, sourceCharId) {
+      if (!sourceCharId) return;
+      var source = state.characters.find(function (c) { return c.id === sourceCharId; });
+      var target = state.characters.find(function (c) { return c.id === targetCharId; });
+      if (!source || !target) return;
+      source.insignias.forEach(function (srcInsig) {
+        var existing = findExisting(target.insignias, srcInsig.name, srcInsig.rarity);
+        if (existing) existing.count = (existing.count || 1) + (srcInsig.count || 1);
+        else target.insignias.push({
+          id: newId('i'),
+          name: srcInsig.name,
+          rarity: srcInsig.rarity,
+          count: srcInsig.count || 1
+        });
+      });
+      save(); render();
+    }
+
+    /* ---------- Events ---------- */
+    document.getElementById('ip-add-char-btn').addEventListener('click', addCharacter);
+    document.getElementById('ip-new-char').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') addCharacter();
+    });
+
+    document.body.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-action]');
+      if (!btn) return;
+      // Don't intercept clicks on selects (handled by 'change')
+      if (btn.tagName === 'SELECT') return;
+      var action = btn.getAttribute('data-action');
+      var id = btn.getAttribute('data-id');
+      var charId = btn.getAttribute('data-char');
+
+      if (action === 'del-char') deleteCharacterPrompt(id);
+      else if (action === 'del-char-yes') confirmDeleteCharacter(id);
+      else if (action === 'del-char-no') render();
+      else if (action === 'add-insig') addInsignia(id);
+      else if (action === 'inc-insig') incInsignia(charId, id);
+      else if (action === 'dec-insig') decInsignia(charId, id);
+      else if (action === 'del-insig') deleteInsignia(charId, id);
+      else if (action === 'promote') promoteInsignia(charId, id);
+      else if (action === 'cycle-rarity') cycleRarityPrompt(charId, id);
+    });
+
+    document.body.addEventListener('change', function (e) {
+      var sel = e.target.closest('[data-action]');
+      if (!sel) return;
+      var action = sel.getAttribute('data-action');
+
+      if (action === 'copy-from') {
+        var targetId = sel.getAttribute('data-target');
+        var sourceId = sel.value;
+        sel.value = '';
+        copyInsigniasFrom(targetId, sourceId);
+      } else if (action === 'rarity-change-select') {
+        var charId = sel.getAttribute('data-char');
+        var insigId = sel.getAttribute('data-id');
+        changeRarity(charId, insigId, sel.value);
+      }
+    });
+
+    document.body.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter') return;
+      var input = e.target.closest('[data-insig-input]');
+      if (!input) return;
+      var charId = input.getAttribute('data-insig-input');
+      addInsignia(charId);
+    });
+
+    /* ---------- Backup / Restore ---------- */
+    function showBackupMsg(text, isError) {
+      var el = document.getElementById('ip-backup-msg');
+      el.textContent = text;
+      el.classList.toggle('error', !!isError);
+      el.classList.remove('fade');
+      clearTimeout(el._fadeTimer);
+      el._fadeTimer = setTimeout(function () { el.classList.add('fade'); }, 5000);
+    }
+    function exportBackup() {
+      if (state.characters.length === 0) {
+        showBackupMsg('Nothing to back up — your roster is empty.', true);
+        return;
+      }
+      var payload = {
+        app: 'nw-insignia-priority',
+        version: 3,
+        exportedAt: new Date().toISOString(),
+        characters: state.characters
+      };
+      var json = JSON.stringify(payload, null, 2);
+      var blob = new Blob([json], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      var date = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = 'nw-insignia-roster-' + date + '.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      showBackupMsg('Backup downloaded. Save it somewhere safe!');
+    }
+    function importBackup(file) {
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        try {
+          var data = JSON.parse(e.target.result);
+          var chars = Array.isArray(data) ? data : data.characters;
+          if (!Array.isArray(chars)) throw new Error('File does not contain a valid roster.');
+          for (var i = 0; i < chars.length; i++) {
+            if (typeof chars[i].name !== 'string' || !Array.isArray(chars[i].insignias)) {
+              throw new Error('File format is not recognized.');
+            }
+          }
+          if (state.characters.length > 0) {
+            var ok = confirm(
+              'You already have ' + state.characters.length + ' character(s) saved.\n\n' +
+              'Importing will REPLACE your current roster with the backup file.\n\nContinue?'
+            );
+            if (!ok) { showBackupMsg('Import cancelled.'); return; }
+          }
+          state.characters = chars.map(function (c) {
+            return {
+              id: c.id || newId('c'),
+              name: String(c.name),
+              insignias: c.insignias.map(function (ins) {
+                var rar = ins.rarity && rarityIndex(ins.rarity) >= 0 ? ins.rarity : 'epic';
+                return {
+                  id: ins.id || newId('i'),
+                  name: String(ins.name || ''),
+                  rarity: rar,
+                  count: typeof ins.count === 'number' && ins.count > 0 ? ins.count : 1
+                };
+              })
+            };
+          });
+          save();
+          render();
+          showBackupMsg('Restored ' + state.characters.length + ' character(s) from backup.');
+        } catch (err) {
+          showBackupMsg('Import failed: ' + err.message, true);
+        }
+      };
+      reader.onerror = function () { showBackupMsg('Could not read file.', true); };
+      reader.readAsText(file);
+    }
+
+    document.getElementById('ip-export-btn').addEventListener('click', exportBackup);
+    document.getElementById('ip-import-btn').addEventListener('click', function () {
+      document.getElementById('ip-import-file').click();
+    });
+    document.getElementById('ip-import-file').addEventListener('change', function (e) {
+      var file = e.target.files && e.target.files[0];
+      importBackup(file);
+      e.target.value = '';
+    });
+
+    /* ---------- Init ---------- */
+    load();
+    render();
+
+    if (typeof renderNav === 'function') {
+      try { renderNav('Creators & Tools'); } catch (e) {}
+    }
+  </script>
+</body>
+</html>
