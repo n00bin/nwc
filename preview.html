@@ -199,7 +199,7 @@
 
     function renderCard(it) {
       var html = '<div class="preview-image-card">';
-      html += '<img src="images/preview/' + escapeHtml(it.file) + '" alt="' + escapeHtml(it.title || "") + '" data-full="images/preview/' + escapeHtml(it.file) + '">';
+      html += '<img src="images/preview/' + escapeHtml(it.file) + '" alt="' + escapeHtml(it.title || "") + '" data-full="images/preview/' + escapeHtml(it.file) + '" loading="lazy" decoding="async">';
       if (it.title || it.note) {
         html += '<div class="preview-image-caption">';
         if (it.title) html += '<strong>' + escapeHtml(it.title) + '</strong>';
