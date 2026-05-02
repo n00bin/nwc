@@ -15,6 +15,7 @@ const NAV_PAGES = [
   { label: "Professions", href: "professions.html" },
   { label: "NW Patch Notes", href: "patchnotes.html" },
   { label: "Reports",    href: "reports.html" },
+  { label: "Creators & Tools", href: "creators-tools.html" },
 ];
 
 // ---- Navigation ----

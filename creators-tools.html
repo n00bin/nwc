@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creators & Tools — Neverwinter Compendium</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .ct-container { max-width: 900px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
+    .ct-intro { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin-bottom: 1.5rem; }
+    .ct-card {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      transition: border-color 0.15s;
+    }
+    .ct-card:hover { border-color: var(--border-accent); }
+    .ct-favicon {
+      width: 32px; height: 32px;
+      flex-shrink: 0;
+      border-radius: 4px;
+      background: var(--bg-elevated);
+      object-fit: contain;
+      padding: 2px;
+    }
+    .ct-body { flex: 1; min-width: 0; }
+    .ct-name-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.3rem;
+    }
+    .ct-name { font-weight: 700; font-size: 1.05rem; color: var(--text-primary); }
+    .ct-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-default);
+    }
+    .ct-badge-tool         { color: #58a6ff; border-color: #1f4f8a; background: rgba(88,166,255,0.1); }
+    .ct-badge-content      { color: #ff6b6b; border-color: #8a1f1f; background: rgba(255,107,107,0.1); }
+    .ct-badge-site         { color: #f0883e; border-color: #8a4f1f; background: rgba(240,136,62,0.1); }
+    .ct-badge-discord      { color: #7c89ff; border-color: #2f3a8a; background: rgba(124,137,255,0.1); }
+    .ct-blurb {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+    .ct-link {
+      display: inline-block;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .ct-link:hover { text-decoration: underline; }
+    .ct-link::after { content: " \2197"; }
+    .ct-empty {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 2rem;
+      border: 1px dashed var(--border-default);
+      border-radius: var(--radius-md);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <div class="ct-container">
+    <h2 style="margin-bottom:0.5rem;">Creators & Tools</h2>
+    <p class="ct-intro">Friends and community members making Neverwinter content, tools, and resources. Want to be listed? <a href="mailto:n00binhard@gmail.com" style="color:var(--accent);text-decoration:none;">Reach out</a>.</p>
+    <div id="ct-list"></div>
+  </div>
+
+  <script src="js/shared.js"></script>
+  <script>
+    renderNav("Creators & Tools");
+
+    // Each entry: { name, type, url, blurb, favicon? }
+    // type values: "Tool", "Content Creator", "Site", "Discord"
+    var creatorsTools = [
+      {
+        name: "ValTheRogue — Stat Calculator",
+        type: "Tool",
+        url: "https://giztux.github.io/Neverwinter/",
+        blurb: "Neverwinter stat calculator. Plug in your gear and see your computed stats."
+      }
+    ];
+
+    function faviconFor(url) {
+      try {
+        var u = new URL(url);
+        return "https://www.google.com/s2/favicons?domain=" + u.hostname + "&sz=64";
+      } catch (e) {
+        return "";
+      }
+    }
+
+    function badgeClass(type) {
+      var t = (type || "").toLowerCase();
+      if (t.indexOf("tool") !== -1) return "ct-badge-tool";
+      if (t.indexOf("content") !== -1 || t.indexOf("creator") !== -1 || t.indexOf("youtube") !== -1 || t.indexOf("twitch") !== -1) return "ct-badge-content";
+      if (t.indexOf("discord") !== -1) return "ct-badge-discord";
+      return "ct-badge-site";
+    }
+
+    function renderList() {
+      var list = document.getElementById("ct-list");
+      if (!creatorsTools.length) {
+        list.innerHTML = '<div class="ct-empty">No entries yet.</div>';
+        return;
+      }
+      var html = "";
+      for (var i = 0; i < creatorsTools.length; i++) {
+        var c = creatorsTools[i];
+        var fav = c.favicon || faviconFor(c.url);
+        html += '<div class="ct-card">';
+        html += fav ? '<img class="ct-favicon" src="' + escapeHtml(fav) + '" alt="" loading="lazy">' : '<div class="ct-favicon"></div>';
+        html += '<div class="ct-body">';
+        html += '<div class="ct-name-row">';
+        html += '<span class="ct-name">' + escapeHtml(c.name) + '</span>';
+        html += '<span class="ct-badge ' + badgeClass(c.type) + '">' + escapeHtml(c.type) + '</span>';
+        html += '</div>';
+        if (c.blurb) html += '<div class="ct-blurb">' + escapeHtml(c.blurb) + '</div>';
+        html += '<a class="ct-link" href="' + escapeHtml(c.url) + '" target="_blank" rel="noopener">' + escapeHtml(c.url.replace(/^https?:\/\//, "")) + '</a>';
+        html += '</div></div>';
+      }
+      list.innerHTML = html;
+    }
+
+    renderList();
+  </script>
+</body>
+</html>
