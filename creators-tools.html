@@ -149,7 +149,9 @@
         html += '</div>';
         if (c.creator) html += '<div class="ct-creator">by <strong>' + escapeHtml(c.creator) + '</strong></div>';
         if (c.blurb) html += '<div class="ct-blurb">' + escapeHtml(c.blurb) + '</div>';
-        html += '<a class="ct-link" href="' + escapeHtml(c.url) + '" target="_blank" rel="noopener">' + escapeHtml(c.url.replace(/^https?:\/\//, "")) + '</a>';
+        var isExternal = /^https?:\/\//i.test(c.url);
+        var linkText = isExternal ? c.url.replace(/^https?:\/\//, "") : c.name;
+        html += '<a class="ct-link" href="' + escapeHtml(c.url) + '"' + (isExternal ? ' target="_blank" rel="noopener"' : '') + '>' + escapeHtml(linkText) + '</a>';
         html += '</div></div>';
       }
       list.innerHTML = html;
