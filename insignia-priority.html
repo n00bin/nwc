@@ -614,7 +614,160 @@
     }
     .ip-backup-msg.error { color: var(--crimson); }
     .ip-backup-msg.fade { opacity: 0; }
-  </style>
+
+    /* ---------- Mode toggle ---------- */
+    .ip-mode-toggle {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1rem;
+      border: 1px solid var(--gold-faint);
+      border-radius: 2px;
+      overflow: hidden;
+      background: rgba(0,0,0,0.35);
+    }
+    .ip-mode-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 0.55rem 0.75rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bone-soft);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .ip-mode-btn:hover {
+      color: var(--gold-bright);
+      background: rgba(212, 175, 55, 0.06);
+    }
+    .ip-mode-btn.active {
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.18), rgba(0,0,0,0));
+      color: var(--gold-bright);
+    }
+
+    /* ---------- Insignia type chip ---------- */
+    .ip-type-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 2px;
+      padding: 0.22rem 0.55rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--bone-soft);
+      white-space: nowrap;
+    }
+    .ip-type-dot {
+      display: inline-block;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .ip-type-dot.crescent    { background: #c45a5a; box-shadow: 0 0 5px rgba(196, 90, 90, 0.6); }
+    .ip-type-dot.barbed      { background: #d4af37; box-shadow: 0 0 5px rgba(212, 175, 55, 0.6); }
+    .ip-type-dot.illuminated { background: #58a6ff; box-shadow: 0 0 5px rgba(88, 166, 255, 0.6); }
+    .ip-type-dot.enlightened { background: #b46cff; box-shadow: 0 0 5px rgba(180, 108, 255, 0.6); }
+    .ip-type-dot.regal       { background: #4caf50; box-shadow: 0 0 5px rgba(76, 175, 80, 0.6); }
+    .ip-type-dot.unknown     { background: #888; box-shadow: 0 0 5px rgba(136, 136, 136, 0.5); }
+
+    /* ---------- Bonus rows ---------- */
+    .ip-bonus-note {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--bone-faint);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+    .ip-bonus {
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.04), rgba(0,0,0,0));
+      border: 1px solid rgba(212, 175, 55, 0.13);
+      border-radius: 2px;
+      margin-bottom: 0.6rem;
+      transition: border-color 0.2s;
+      animation: ipFadeUp 0.35s ease-out;
+    }
+    .ip-bonus:hover { border-color: rgba(212, 175, 55, 0.3); }
+    .ip-bonus.ready {
+      border-color: rgba(158, 182, 255, 0.4);
+      background: linear-gradient(180deg, rgba(158, 182, 255, 0.05), rgba(0,0,0,0));
+    }
+    .ip-bonus > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.75rem 0.95rem;
+      outline: none;
+    }
+    .ip-bonus > summary::-webkit-details-marker { display: none; }
+    .ip-bonus > summary::marker { display: none; content: ''; }
+    .ip-bonus[open] > summary { border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
+    .ip-bonus-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.45rem;
+    }
+    .ip-bonus-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      color: var(--bone);
+    }
+    .ip-bonus.ready .ip-bonus-name { color: var(--rar-celestial); }
+    .ip-bonus-summary {
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      color: var(--bone-soft);
+      text-align: right;
+      font-style: italic;
+    }
+    .ip-bonus-summary .ready-count {
+      color: var(--rar-celestial);
+      font-weight: 600;
+      font-style: normal;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.03em;
+    }
+    .ip-bonus-types {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+    .ip-bonus-body {
+      padding: 0.65rem 0.95rem 0.85rem;
+    }
+    .ip-bonus-effect {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--bone-soft);
+      line-height: 1.55;
+      margin-bottom: 0.75rem;
+    }
+    .ip-bonus-toon {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.4rem 0;
+      font-size: 0.92rem;
+      border-bottom: 1px dashed rgba(212, 175, 55, 0.08);
+    }
+    .ip-bonus-toon:last-child { border-bottom: none; }
+    .ip-bonus-toon-name { color: var(--bone); font-weight: 500; }
+    .ip-bonus-toon-status {
+      color: var(--bone-soft);
+      font-style: italic;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .ip-bonus-toon-status.ready { color: var(--rar-celestial); font-style: normal; }
 </head>
 <body class="ip-themed">
   <nav class="navbar"></nav>
@@ -663,14 +816,30 @@
       </section>
 
       <section class="ip-panel ip-fade-in">
-        <div class="ip-panel-title">Upgrade Priority</div>
+        <div class="ip-panel-title" id="ip-right-title">Upgrade Insights</div>
 
-        <div id="ip-rank-intro" class="ip-intro" style="display:none;">
-          Ranked by how many of your characters have copies of each insignia type. Top of the list = best <strong>future</strong> leverage — once you push those copies up to Celestial, the upgrade to Celestial Account-Bound will give you a 1-for-1 swap onto every toon that uses it. Below Celestial, each click of <strong>↑</strong> just upgrades that single copy to the next rarity.
+        <div class="ip-mode-toggle">
+          <button class="ip-mode-btn active" data-action="set-mode" data-mode="priority">Upgrade Priority</button>
+          <button class="ip-mode-btn" data-action="set-mode" data-mode="bonuses">Bonus Explorer</button>
         </div>
 
-        <div id="ip-rank-list"></div>
-        <div id="ip-rank-empty" class="ip-empty">Add characters and their insignias to see which to upgrade first.</div>
+        <div id="ip-priority-view">
+          <div id="ip-rank-intro" class="ip-intro" style="display:none;">
+            Ranked by how many of your characters have copies of each insignia type. Top of the list = best <strong>future</strong> leverage — once you push those copies up to Celestial, the upgrade to Celestial Account-Bound will give you a 1-for-1 swap onto every toon that uses it. Below Celestial, each click of <strong>↑</strong> just upgrades that single copy to the next rarity.
+          </div>
+
+          <div id="ip-rank-list"></div>
+          <div id="ip-rank-empty" class="ip-empty">Add characters and their insignias to see which to upgrade first.</div>
+        </div>
+
+        <div id="ip-bonus-view" style="display:none;">
+          <div class="ip-bonus-note">
+            Browse mount insignia bonuses sorted by how close you are to filling them. Coverage is calculated from each character's <strong>tracked (non-CAB)</strong> insignias only — celestial-account-bound copies aren't visible here. Click any bonus to see the per-character readiness.
+          </div>
+
+          <div id="ip-bonus-list"></div>
+          <div id="ip-bonus-empty" class="ip-empty">Add characters and their insignias to see bonus readiness.</div>
+        </div>
       </section>
     </div>
 
@@ -690,6 +859,8 @@
 
   <datalist id="ip-insignia-names"></datalist>
 
+  <script src="data/mount-insignias.js"></script>
+  <script src="data/mount-insignia-bonuses.js"></script>
   <script src="js/shared.js"></script>
 
   <script>
@@ -731,7 +902,27 @@
       return RARITIES[i + 1].key;
     }
 
-    var state = { characters: [] };
+    // Insignia type catalog (matches mount_insignia_bonuses requiredInsignias values)
+    var INSIGNIA_TYPES = ['Crescent', 'Barbed', 'Illuminated', 'Enlightened', 'Regal'];
+
+    // Built from MOUNT_INSIGNIAS_DATA at init: { normalizedName: 'Regal' / 'Crescent' / ... }
+    var INSIGNIA_NAME_TO_CATEGORY = {};
+
+    function buildInsigniaCategoryLookup() {
+      if (typeof MOUNT_INSIGNIAS_DATA === 'undefined' || !Array.isArray(MOUNT_INSIGNIAS_DATA)) return;
+      for (var i = 0; i < MOUNT_INSIGNIAS_DATA.length; i++) {
+        var item = MOUNT_INSIGNIAS_DATA[i];
+        if (item && item.name && item.category) {
+          INSIGNIA_NAME_TO_CATEGORY[normalizeKey(item.name)] = item.category;
+        }
+      }
+    }
+    function lookupCategory(name) {
+      if (!name) return 'Unknown';
+      return INSIGNIA_NAME_TO_CATEGORY[normalizeKey(name)] || 'Unknown';
+    }
+
+    var state = { characters: [], mode: 'priority' };
 
     /* ---------- Storage ---------- */
     function load() {
@@ -748,10 +939,14 @@
                 // Migrate: older versions had no rarity field. Default to 'epic'
                 // since most active insignias people track will be epic+.
                 var rar = i.rarity && rarityIndex(i.rarity) >= 0 ? i.rarity : 'epic';
+                var name = String(i.name || '');
+                // Migrate: classify the insignia type from the catalog if not stored.
+                var cat = i.category || lookupCategory(name);
                 return {
                   id: i.id || newId('i'),
-                  name: String(i.name || ''),
+                  name: name,
                   rarity: rar,
+                  category: cat,
                   count: typeof i.count === 'number' && i.count > 0 ? i.count : 1
                 };
               })
@@ -797,6 +992,11 @@
       state.characters.forEach(function (c) {
         c.insignias.forEach(function (i) { names[i.name] = true; });
       });
+      if (typeof MOUNT_INSIGNIAS_DATA !== 'undefined' && Array.isArray(MOUNT_INSIGNIAS_DATA)) {
+        MOUNT_INSIGNIAS_DATA.forEach(function (item) {
+          if (item && item.name) names[String(item.name)] = true;
+        });
+      }
       if (typeof window.INSIGNIA_NAMES !== 'undefined' && Array.isArray(window.INSIGNIA_NAMES)) {
         window.INSIGNIA_NAMES.forEach(function (n) { if (n) names[String(n)] = true; });
       }
@@ -853,13 +1053,146 @@
       return arr;
     }
 
+    /* ---------- Bonus coverage ---------- */
+    function computeBonusCoverage(bonus, character) {
+      var available = {};
+      character.insignias.forEach(function (ins) {
+        var cat = ins.category || lookupCategory(ins.name);
+        available[cat] = (available[cat] || 0) + (ins.count || 1);
+      });
+      var required = bonus.requiredInsignias || [];
+      var filled = 0;
+      var missing = {};
+      for (var i = 0; i < required.length; i++) {
+        var t = required[i];
+        if (available[t] && available[t] > 0) {
+          available[t] -= 1;
+          filled += 1;
+        } else {
+          missing[t] = (missing[t] || 0) + 1;
+        }
+      }
+      return { filled: filled, total: required.length, missing: missing };
+    }
+
+    function buildTypeChip(type) {
+      var typeKey = (type || 'Unknown').toLowerCase();
+      return '<span class="ip-type-chip"><span class="ip-type-dot ' + typeKey + '"></span>' + escapeHtml(type) + '</span>';
+    }
+
     /* ---------- Render ---------- */
     function render() {
       renderRoster();
       renderRankings();
+      renderBonuses();
       renderStats();
       renderResetArea();
       renderDatalist();
+    }
+
+    function setMode(mode) {
+      if (mode !== 'priority' && mode !== 'bonuses') return;
+      state.mode = mode;
+      var btns = document.querySelectorAll('.ip-mode-btn');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].classList.toggle('active', btns[i].getAttribute('data-mode') === mode);
+      }
+      document.getElementById('ip-priority-view').style.display = mode === 'priority' ? '' : 'none';
+      document.getElementById('ip-bonus-view').style.display = mode === 'bonuses' ? '' : 'none';
+      if (mode === 'bonuses') renderBonuses();
+    }
+
+    function renderBonuses() {
+      var listEl = document.getElementById('ip-bonus-list');
+      var emptyEl = document.getElementById('ip-bonus-empty');
+      if (!listEl || !emptyEl) return;
+
+      var hasData = (typeof MOUNT_INSIGNIA_BONUSES_DATA !== 'undefined') && Array.isArray(MOUNT_INSIGNIA_BONUSES_DATA);
+
+      if (state.characters.length === 0) {
+        listEl.innerHTML = '';
+        emptyEl.textContent = 'Add characters and their insignias to see bonus readiness.';
+        emptyEl.style.display = '';
+        return;
+      }
+      if (!hasData) {
+        listEl.innerHTML = '';
+        emptyEl.textContent = 'Bonus catalog data is unavailable.';
+        emptyEl.style.display = '';
+        return;
+      }
+      emptyEl.style.display = 'none';
+
+      var items = MOUNT_INSIGNIA_BONUSES_DATA.map(function (b) {
+        var coverage = state.characters.map(function (c) {
+          var cov = computeBonusCoverage(b, c);
+          return { name: c.name, filled: cov.filled, total: cov.total, missing: cov.missing };
+        });
+        var ready = 0, partial = 0, totalFilled = 0;
+        coverage.forEach(function (c) {
+          if (c.total > 0 && c.filled === c.total) ready += 1;
+          else if (c.filled > 0) partial += 1;
+          totalFilled += c.filled;
+        });
+        return { bonus: b, coverage: coverage, ready: ready, partial: partial, totalFilled: totalFilled };
+      });
+
+      items.sort(function (a, b) {
+        if (b.ready !== a.ready) return b.ready - a.ready;
+        if (b.totalFilled !== a.totalFilled) return b.totalFilled - a.totalFilled;
+        return (a.bonus.name || '').localeCompare(b.bonus.name || '');
+      });
+
+      var html = '';
+      items.forEach(function (item) {
+        var b = item.bonus;
+        var typesHtml = (b.requiredInsignias || []).map(buildTypeChip).join('');
+
+        var summaryHtml = '';
+        if (item.ready > 0) {
+          summaryHtml += '<span class="ready-count">' + item.ready + ' ready</span>';
+        }
+        if (item.partial > 0) {
+          if (summaryHtml) summaryHtml += ' &middot; ';
+          summaryHtml += item.partial + ' partial';
+        }
+        if (!summaryHtml) summaryHtml = 'no coverage yet';
+
+        var detailHtml = '';
+        item.coverage.forEach(function (c) {
+          var statusText, statusClass = '';
+          if (c.total > 0 && c.filled === c.total) {
+            statusText = 'Ready (' + c.filled + '/' + c.total + ')';
+            statusClass = 'ready';
+          } else {
+            var parts = [];
+            Object.keys(c.missing).forEach(function (t) {
+              parts.push(c.missing[t] + ' ' + t);
+            });
+            statusText = c.filled + '/' + c.total + (parts.length ? ' — missing ' + parts.join(', ') : '');
+          }
+          detailHtml += '<div class="ip-bonus-toon">';
+          detailHtml +=   '<span class="ip-bonus-toon-name">' + escapeHtml(c.name) + '</span>';
+          detailHtml +=   '<span class="ip-bonus-toon-status ' + statusClass + '">' + escapeHtml(statusText) + '</span>';
+          detailHtml += '</div>';
+        });
+
+        html += '<details class="ip-bonus' + (item.ready > 0 ? ' ready' : '') + '">';
+        html +=   '<summary>';
+        html +=     '<div class="ip-bonus-head">';
+        html +=       '<div class="ip-bonus-name">' + escapeHtml(b.name || '(unnamed)') + '</div>';
+        html +=       '<div class="ip-bonus-summary">' + summaryHtml + '</div>';
+        html +=     '</div>';
+        html +=     '<div class="ip-bonus-types">' + typesHtml + '</div>';
+        html +=   '</summary>';
+        html +=   '<div class="ip-bonus-body">';
+        if (b.effectText) html += '<div class="ip-bonus-effect">' + escapeHtml(b.effectText) + '</div>';
+        html +=     detailHtml;
+        html +=   '</div>';
+        html += '</details>';
+      });
+
+      listEl.innerHTML = html;
     }
 
     function renderStats() {
@@ -1088,7 +1421,7 @@
       if (!char) return;
       var existing = findExisting(char.insignias, name, rarity);
       if (existing) existing.count = (existing.count || 1) + 1;
-      else char.insignias.push({ id: newId('i'), name: name, rarity: rarity, count: 1 });
+      else char.insignias.push({ id: newId('i'), name: name, rarity: rarity, category: lookupCategory(name), count: 1 });
       nameInput.value = '';
       save(); render();
       var newInput = document.querySelector('[data-insig-input="' + charId + '"]');
@@ -1148,7 +1481,7 @@
       if (nextRar) {
         var existing = findExisting(char.insignias, insig.name, nextRar);
         if (existing) existing.count = (existing.count || 1) + 1;
-        else char.insignias.push({ id: newId('i'), name: insig.name, rarity: nextRar, count: 1 });
+        else char.insignias.push({ id: newId('i'), name: insig.name, rarity: nextRar, category: insig.category || lookupCategory(insig.name), count: 1 });
       }
       // If nextRar is null, the copy graduated to CAB and is no longer tracked.
 
@@ -1215,6 +1548,7 @@
           id: newId('i'),
           name: srcInsig.name,
           rarity: srcInsig.rarity,
+          category: srcInsig.category || lookupCategory(srcInsig.name),
           count: srcInsig.count || 1
         });
       });
@@ -1245,6 +1579,7 @@
       else if (action === 'del-insig') deleteInsignia(charId, id);
       else if (action === 'promote') promoteInsignia(charId, id);
       else if (action === 'cycle-rarity') cycleRarityPrompt(charId, id);
+      else if (action === 'set-mode') setMode(btn.getAttribute('data-mode'));
     });
 
     document.body.addEventListener('change', function (e) {
@@ -1331,10 +1666,12 @@
               name: String(c.name),
               insignias: c.insignias.map(function (ins) {
                 var rar = ins.rarity && rarityIndex(ins.rarity) >= 0 ? ins.rarity : 'epic';
+                var name = String(ins.name || '');
                 return {
                   id: ins.id || newId('i'),
-                  name: String(ins.name || ''),
+                  name: name,
                   rarity: rar,
+                  category: ins.category || lookupCategory(name),
                   count: typeof ins.count === 'number' && ins.count > 0 ? ins.count : 1
                 };
               })
@@ -1362,6 +1699,7 @@
     });
 
     /* ---------- Init ---------- */
+    buildInsigniaCategoryLookup();
     load();
     render();
 
