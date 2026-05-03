@@ -71,6 +71,85 @@
     return false;
   }
 
+  // canAssign variant that records which insignia type each slot received
+  // into the assignment[] out-array. Same backtracking shape as canAssign.
+  function tryAssignWithRecord(slots, required, rIdx, used, assignment) {
+    if (rIdx >= required.length) return true;
+    for (var s = 0; s < slots.length; s++) {
+      if (used[s]) continue;
+      if (slotAccepts(slots[s].allowed, required[rIdx])) {
+        used[s] = true;
+        assignment[s] = required[rIdx];
+        if (tryAssignWithRecord(slots, required, rIdx + 1, used, assignment)) return true;
+        used[s] = false;
+        assignment[s] = null;
+      }
+    }
+    return false;
+  }
+
+  // Returns an array (length = checkSlots.length) of insignia types in slot
+  // order, representing how this bonus's required insignias would be placed
+  // onto the mount's slots. Prefers an assignment that lands a preferred-type
+  // insignia in a preferred slot (activating the +20% IL/stat bonus). Returns
+  // null if no valid assignment exists.
+  function assignBonusToSlots(mount, bonus) {
+    var slots = mount.insigniaSlots || [];
+    var required = bonus && bonus.requiredInsignias ? bonus.requiredInsignias : [];
+    if (!required.length || !slots.length) return null;
+    var checkSlots = (required.length <= 3 && slots.length > 3) ? slots.slice(0, 3) : slots;
+
+    // First: try to find an assignment that activates a preferred slot
+    for (var pi = 0; pi < checkSlots.length; pi++) {
+      var pref = checkSlots[pi].preferred;
+      if (!pref || pref === "unknown" || pref === true) continue;
+      if (required.indexOf(pref) === -1) continue;
+      var remainingReq = required.slice();
+      remainingReq.splice(remainingReq.indexOf(pref), 1);
+      var assignment = [];
+      var used = [];
+      for (var u = 0; u < checkSlots.length; u++) {
+        assignment.push(u === pi ? pref : null);
+        used.push(u === pi);
+      }
+      if (tryAssignWithRecord(checkSlots, remainingReq, 0, used, assignment)) {
+        return assignment;
+      }
+    }
+    // Fallback: any valid assignment
+    var assignment2 = [];
+    var used2 = [];
+    for (var u2 = 0; u2 < checkSlots.length; u2++) {
+      assignment2.push(null);
+      used2.push(false);
+    }
+    if (tryAssignWithRecord(checkSlots, required, 0, used2, assignment2)) {
+      return assignment2;
+    }
+    return null;
+  }
+
+  // Render insignia badges in slot order using the assignment from
+  // assignBonusToSlots. Falls back to canonical requiredInsignias order
+  // if no valid assignment is found (defensive — shouldn't happen for
+  // bonuses already filtered as compatible).
+  function renderSlotOrderedBadges(mount, bonus) {
+    var assignment = assignBonusToSlots(mount, bonus);
+    var html = "";
+    if (assignment) {
+      for (var ai = 0; ai < assignment.length; ai++) {
+        if (assignment[ai] !== null) {
+          html += renderInsigniaBadge(assignment[ai]) + " ";
+        }
+      }
+    } else if (bonus.requiredInsignias) {
+      for (var ri = 0; ri < bonus.requiredInsignias.length; ri++) {
+        html += renderInsigniaBadge(bonus.requiredInsignias[ri]) + " ";
+      }
+    }
+    return html;
+  }
+
   function getCompatibleBonuses(mount) {
     var slots = mount.insigniaSlots;
     if (!slots || slots.length === 0) return [];
@@ -292,9 +371,7 @@
         html += '<div class="detail-name">' + escapeHtml(pinnedBonus.name) + renderStackBadge(pinnedBonus) + "</div>";
         if (pinnedBonus.requiredInsignias && pinnedBonus.requiredInsignias.length > 0) {
           html += '<div style="margin:0.3rem 0;">';
-          for (var pri = 0; pri < pinnedBonus.requiredInsignias.length; pri++) {
-            html += renderInsigniaBadge(pinnedBonus.requiredInsignias[pri]) + " ";
-          }
+          html += renderSlotOrderedBadges(mount, pinnedBonus);
           html += "</div>";
         }
         if (pinnedBonus.stats && pinnedBonus.stats.length > 0) {
@@ -398,9 +475,7 @@
         html += renderStackBadge(ib);
         if (ib.requiredInsignias && ib.requiredInsignias.length > 0) {
           html += '<span style="margin-left:0.5rem;">';
-          for (var ri = 0; ri < ib.requiredInsignias.length; ri++) {
-            html += renderInsigniaBadge(ib.requiredInsignias[ri]) + " ";
-          }
+          html += renderSlotOrderedBadges(mount, ib);
           html += "</span>";
         }
         html += '</div>';
