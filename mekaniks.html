@@ -161,7 +161,7 @@
     <button class="view-tab" data-tab="abilities">Ability Scores</button>
     <button class="view-tab" data-tab="priorities">Stat Priorities</button>
     <button class="view-tab" data-tab="bolster">Bolster</button>
-    <button class="view-tab" data-tab="damage">Damage &amp; Healing</button>
+    <button class="view-tab" data-tab="damage">Combat Formulas</button>
     <button class="view-tab" data-tab="scaling">Scaling</button>
     <button class="view-tab" data-tab="stacking">Stacking</button>
     <button class="view-tab" data-tab="dungeons">Dungeons</button>
@@ -245,9 +245,9 @@
     </div>
   </div>
 
-  <!-- DAMAGE & HEALING TAB -->
+  <!-- COMBAT FORMULAS TAB -->
   <div class="mek-container mek-view" id="view-damage">
-    <h2 style="margin-bottom:1rem;">Damage &amp; Healing Math</h2>
+    <h2 style="margin-bottom:1rem;">Combat Formulas</h2>
 
     <div class="stat-card open" style="margin-bottom:0.75rem;">
       <div class="stat-card-header"><span class="stat-card-name">Base Damage & Base HP by Role</span></div>
@@ -372,6 +372,46 @@
         <div class="stat-info-row"><span class="stat-info-label">Stack Incoming Healing on tanks</span><span class="stat-info-value">It multiplies on top of your output independently of your stats</span></div>
         <div class="stat-info-row"><span class="stat-info-label">No defensive interaction</span><span class="stat-info-value">Heals aren't reduced by defense/deflect/mitigation — every cast lands at full math</span></div>
         <div class="stat-info-row"><span class="stat-info-label">Power and OH are equal-priority</span><span class="stat-info-value">Both are flat multipliers in the formula — balance them rather than stacking one</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card" id="full-ehp-formula" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header">
+        <span class="stat-card-name">Full Expected-Value EHP Formula</span>
+        <span class="toggle-arrow">&#9654;</span>
+      </div>
+      <div class="stat-card-body">
+        <div class="stat-desc"><strong>Effective HP — how much damage can be applied to you before you die.</strong> Structurally the mirror of the damage formula from the defender's perspective: every per-hit damage multiplier becomes a divisor, and your defensive stats (Defense, Deflect, Crit Avoidance, Awareness) shrink those divisors so EHP grows. Useful for comparing survivability across builds.</div>
+
+        <div class="section-divider" style="padding-top:0.5rem;">Three EHP Cases</div>
+        <div class="stat-info-row"><span class="stat-info-label">Minimum EHP</span><span class="stat-info-value">Worst case — attacker crits, has CA, you don't deflect</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Average EHP</span><span class="stat-info-value">Expected value over many hits (this is the formula below)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Maximum EHP</span><span class="stat-info-value">Best case — every defensive proc lands, no enemy crit/CA</span></div>
+
+        <pre style="background:var(--bg-elevated);border-left:3px solid var(--accent);padding:0.6rem 0.9rem;border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:0.78rem;color:var(--text-secondary);line-height:1.55;overflow-x:auto;margin:0.6rem 0;white-space:pre;">E[EHP] = IL × 10 × Role Bonus
+       ÷ (1 + (EnemyCritChance / 100) × ((EnemyCritSev − CritAvoidance) / 100))
+       ÷ (1 + (EnemyCAUpTime% / 100) × ((EnemyCATotal − Awareness) / 100))
+       ÷ (1 + DeflectChance × (1 / (DeflectSev − EnemyAccuracy + 100) − 1 / 100))
+       ÷ (100 / (100 + DefenseTotal − ΣDefenseDebuffsOnPlayer))
+       ÷ Π (1 / Mitigation)
+       ÷ (1 / SpecialDebuffsOnPlayer)</pre>
+
+        <div class="section-divider" style="padding-top:0.5rem;">Variable Glossary</div>
+        <div class="stat-info-row"><span class="stat-info-label">IL × 10 × Role Bonus</span><span class="stat-info-value">Base HP. Role multiplier: Tank ×1.2, Healer ×1.1, DPS ×1.0</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">EnemyCritChance / EnemyCritSev</span><span class="stat-info-value">Attacker's crit chance and crit severity (your Critical Avoidance subtracts from severity)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">EnemyCAUpTime%</span><span class="stat-info-value">How often the enemy has CA on you (positioning by your tank/group affects this)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">EnemyCATotal − Awareness</span><span class="stat-info-value">Effective enemy CA after your Awareness mitigation</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">DeflectChance</span><span class="stat-info-value">Your deflect % (chance to deflect a hit)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">DeflectSev − EnemyAccuracy</span><span class="stat-info-value">Reduction applied on deflected hits (enemy's Accuracy lowers your deflect mitigation)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">DefenseTotal − ΣDefenseDebuffsOnPlayer</span><span class="stat-info-value">Your defense after enemy debuffs reduce it</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Π (1 / Mitigation)</span><span class="stat-info-value">Product over multiple personal mitigation effects (damage resistance auras, shields, etc.)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">1 / SpecialDebuffsOnPlayer</span><span class="stat-info-value">Special debuffs that scale incoming damage on you up (vulnerability marks, etc.)</span></div>
+
+        <div class="section-divider">Key insights from the formula</div>
+        <div class="stat-info-row"><span class="stat-info-label">Defensive stats compound</span><span class="stat-info-value">Each defensive stat is its own divisor — Defense, Awareness, Crit Avoid, Deflect all multiply EHP independently</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Awareness > Defense above 45%</span><span class="stat-info-value">Bosses have ~90% CA. Each point of Awareness directly subtracts from that 90% — high impact when stacked</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Crit Avoidance prevents one-shots</span><span class="stat-info-value">Boss crits scale by enemy Crit Severity (often 100%+). Crit Avoidance subtracts directly — critical for tanks</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">EHP isn't HP</span><span class="stat-info-value">Adding flat HP raises EHP linearly; raising defensive stats raises EHP multiplicatively. Stat investment usually beats HP at scale</span></div>
       </div>
     </div>
 
@@ -669,8 +709,8 @@
       if (card) card.classList.toggle("open");
     });
 
-    // Damage & Healing tab: full-formula cards are collapsed by default (others are forced-open).
-    ["full-damage-formula", "full-healing-formula"].forEach(function(id) {
+    // Combat Formulas tab: full-formula cards are collapsed by default (others are forced-open).
+    ["full-damage-formula", "full-healing-formula", "full-ehp-formula"].forEach(function(id) {
       var card = document.getElementById(id);
       if (!card) return;
       card.querySelector(".stat-card-header").addEventListener("click", function() {
