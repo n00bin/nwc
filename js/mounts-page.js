@@ -49,6 +49,28 @@
     return false;
   }
 
+  // True if there is some assignment of the bonus's required insignias to this
+  // mount's slots such that a preferred slot ends up holding its preferred type
+  // (granting the +20% IL/stat bonus). Mirrors the 3-slot truncation rule used
+  // by getCompatibleBonuses below.
+  function bonusActivatesPreferred(mount, bonus) {
+    var slots = mount.insigniaSlots || [];
+    var required = bonus && bonus.requiredInsignias ? bonus.requiredInsignias : [];
+    if (!required.length || !slots.length) return false;
+    var checkSlots = (required.length <= 3 && slots.length > 3) ? slots.slice(0, 3) : slots;
+    for (var pi = 0; pi < checkSlots.length; pi++) {
+      var pref = checkSlots[pi].preferred;
+      if (!pref || pref === "unknown" || pref === true) continue;
+      if (required.indexOf(pref) === -1) continue;
+      var remainingReq = required.slice();
+      remainingReq.splice(remainingReq.indexOf(pref), 1);
+      var used = [];
+      for (var u = 0; u < checkSlots.length; u++) used.push(u === pi);
+      if (canAssign(checkSlots, remainingReq, 0, used)) return true;
+    }
+    return false;
+  }
+
   function getCompatibleBonuses(mount) {
     var slots = mount.insigniaSlots;
     if (!slots || slots.length === 0) return [];
@@ -298,7 +320,7 @@
           html += renderInsigniaBadge(slot.allowed[a]) + " ";
         }
         if (slot.preferred) {
-          html += '<div style="font-size:0.7rem;color:var(--text-muted);margin-top:0.2rem;">Preferred: ' + escapeHtml(String(slot.preferred)) + "</div>";
+          html += '<div style="font-size:0.7rem;color:var(--text-muted);margin-top:0.2rem;" title="Preferred slot grants +20% IL & stats when this insignia type is equipped"><span style="color:var(--highlight);">&#9733;</span> Preferred: ' + escapeHtml(String(slot.preferred)) + "</div>";
         }
         html += "</div>";
       }
@@ -364,11 +386,16 @@
     if (compatibleBonuses.length > 0) {
       for (var bi = 0; bi < compatibleBonuses.length; bi++) {
         var ib = compatibleBonuses[bi];
+        var activatesPref = bonusActivatesPreferred(mount, ib);
         html += '<div class="card ib-collapse" style="margin-bottom:0.6rem;padding:0.6rem 0.8rem;cursor:pointer;">';
         // Header row (always visible) - name + insignia badges
         html += '<div class="ib-header" style="display:flex;justify-content:space-between;align-items:center;">';
         html += '<div>';
-        html += '<span style="font-weight:600;">' + escapeHtml(ib.name) + "</span>" + renderStackBadge(ib);
+        html += '<span style="font-weight:600;">' + escapeHtml(ib.name) + "</span>";
+        if (activatesPref) {
+          html += ' <span title="Activates preferred slot (+20% IL & stats)" style="color:var(--highlight);font-size:0.95em;">&#9733;</span>';
+        }
+        html += renderStackBadge(ib);
         if (ib.requiredInsignias && ib.requiredInsignias.length > 0) {
           html += '<span style="margin-left:0.5rem;">';
           for (var ri = 0; ri < ib.requiredInsignias.length; ri++) {
@@ -548,7 +575,7 @@
     { rank: 9, power: "Mythic Tyrannosaurus Rex'em", effect: "6s Root to controllable targets, +15% incoming damage received, minion consume", mounts: ["King of Spines"] },
     { rank: 10, power: "Psionic Blast", effect: "+15% incoming damage received to targets", mounts: ["Brain Stealer Dragon"] },
     { rank: 11, power: "Hot Streak", effect: "+15% incoming damage received to targets within magma pools", mounts: ["Bestial Fire Archon"] },
-    { rank: 12, power: "Meteoric Impact", effect: "750 magnitude damage, 20 magnitude DoT for 10s, +11% damage taken by targets", mounts: ["Legendary Barigura", "Barlgura"] },
+    { rank: 12, power: "Meteoric Impact", effect: "750 magnitude damage, 20 magnitude DoT for 10s, +11% damage taken by targets", mounts: ["Legendary Barlgura", "Barlgura"] },
     { rank: 13, power: "Marvelous Balloon Bombardment", effect: "800 magnitude, +7.5% damage taken by targets. Treasure increases a random stat by 1.5% for 10s", mounts: ["Marvelous Reconnaissance Balloons", "Legendary Reconnaissance Balloons"] },
     { rank: 14, power: "Cauldron Gasses", effect: "115 magnitude DoT for 10s, all allies gain +15% Accuracy + Combat Advantage", mounts: ["Hag's Cooking Cauldron"] },
     { rank: 15, power: "Frozen Retribution", effect: "+15% damage buff to caster. Target is 13% slowed, -15% Deflect, -15% damage, -13% Crit Chance", mounts: ["Frost Salamander", "Rimefire Salamander"] },
