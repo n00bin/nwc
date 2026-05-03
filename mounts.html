@@ -80,6 +80,48 @@
     .collar-rank-epic      { color: #a371f7; }
     .collar-rank-legendary { color: #d29922; }
     .collar-rank-mythic    { color: #f85149; }
+    .tier-celestial        { color: #f178ff; }
+
+    /* Insignias table */
+    .insignias-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .insignias-table th, .insignias-table td {
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-default);
+      vertical-align: middle;
+    }
+    .insignias-table thead th {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: var(--bg-elevated);
+    }
+    .insignias-table tbody tr:hover { background: var(--bg-hover); }
+    .insignias-table tbody tr:last-child td { border-bottom: none; }
+    .insignias-table .stat-pill {
+      display: inline-block;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      padding: 0.1rem 0.45rem;
+      margin: 0.1rem 0.25rem 0.1rem 0;
+      font-size: 0.78rem;
+      color: var(--stat-positive, var(--text-primary));
+      white-space: nowrap;
+    }
+    .insignias-table .stat-pill-cr {
+      color: var(--text-muted);
+    }
   </style>
 </head>
 <body>
@@ -92,6 +134,7 @@
     <button class="view-tab" id="tab-stdps">DPS Combat Power Ranking</button>
     <button class="view-tab" id="tab-equip">Support Equip Bonuses</button>
     <button class="view-tab" id="tab-collars">Collars</button>
+    <button class="view-tab" id="tab-insignias">Insignias</button>
   </div>
 
   <!-- Filters / Search (lookup view) -->
@@ -164,6 +207,36 @@
       Companion collars come in 5 categories (Practical, Sturdy, Supportive, Unified, Wayfaring) and 3 slot types (Barbed, Crescent, Regal). Each collar bonus has 5 ranks (I → V) that scale linearly. Collars equip into the special slot on the companion's collar slot — they do not occupy mount insignia slots.
     </div>
     <div id="collars-list"></div>
+  </div>
+
+  <!-- Insignias controls -->
+  <div class="controls-bar" id="insignias-controls" style="display:none;">
+    <select class="filter-select" id="filter-insignia-template">
+      <option value="">All Names</option>
+    </select>
+    <select class="filter-select" id="filter-insignia-tier">
+      <option value="">All Qualities</option>
+      <option value="Celestial">Celestial</option>
+      <option value="Mythic">Mythic</option>
+      <option value="Legendary">Legendary</option>
+      <option value="Epic">Epic</option>
+      <option value="Rare">Rare</option>
+      <option value="Uncommon">Uncommon</option>
+    </select>
+    <select class="filter-select" id="filter-insignia-category">
+      <option value="">All Slot Types</option>
+      <option value="Regal">Regal</option>
+      <option value="Barbed">Barbed</option>
+      <option value="Crescent">Crescent</option>
+      <option value="Illuminated">Illuminated</option>
+      <option value="Enlightened">Enlightened</option>
+    </select>
+  </div>
+  <div id="insignias-view" style="display:none; max-width:1200px; margin:0 auto; padding:1rem 1.5rem 3rem;">
+    <div id="insignias-intro" style="color:var(--text-secondary);font-size:0.9rem;line-height:1.55;margin-bottom:1.25rem;">
+      All mount insignias by stat template. Stats are stored at Mythic (IL 500) and scaled by tier multipliers (Uncommon ×0.05 → Celestial ×1.5). The "Slot Types" column shows which insignia categories carry each template.
+    </div>
+    <div id="insignias-list"></div>
   </div>
 
   <!-- Data -->

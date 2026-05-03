@@ -728,9 +728,16 @@
 
   var activeRankingTab = "lookup";
 
+  var tabInsignias = document.getElementById("tab-insignias");
+  var insigniasView = document.getElementById("insignias-view");
+  var insigniasControls = document.getElementById("insignias-controls");
+  var filterInsigniaTemplate = document.getElementById("filter-insignia-template");
+  var filterInsigniaTier = document.getElementById("filter-insignia-tier");
+  var filterInsigniaCategory = document.getElementById("filter-insignia-category");
+
   function switchMountTab(activeTab) {
     activeRankingTab = activeTab;
-    var tabs = [tabLookup, tabCombat, tabStdps, tabEquip, tabCollars];
+    var tabs = [tabLookup, tabCombat, tabStdps, tabEquip, tabCollars, tabInsignias];
     for (var t = 0; t < tabs.length; t++) if (tabs[t]) tabs[t].classList.remove("active");
     lookupView.style.display = "none";
     lookupControls.style.display = "none";
@@ -742,6 +749,8 @@
     equipControls.style.display = "none";
     if (collarsView) collarsView.style.display = "none";
     if (collarsControls) collarsControls.style.display = "none";
+    if (insigniasView) insigniasView.style.display = "none";
+    if (insigniasControls) insigniasControls.style.display = "none";
   }
 
   tabLookup.addEventListener("click", function () {
@@ -915,6 +924,162 @@
     collarsSearch.addEventListener("input", renderCollars);
     filterCollarCategory.addEventListener("change", renderCollars);
     filterCollarSlot.addEventListener("change", renderCollars);
+  }
+
+  // ============================================================
+  // Insignias view — aggregated by stat template, scaled per tier
+  // ============================================================
+  var INSIGNIA_TIER_ORDER = ["Celestial", "Mythic", "Legendary", "Epic", "Rare", "Uncommon"];
+  var INSIGNIA_TIER_CLASS = {
+    Celestial:  "tier-celestial",
+    Mythic:     "collar-rank-mythic",
+    Legendary:  "collar-rank-legendary",
+    Epic:       "collar-rank-epic",
+    Rare:       "collar-rank-rare",
+    Uncommon:   "collar-rank-uncommon"
+  };
+
+  function prettyInsigniaStat(stat) {
+    return String(stat)
+      .replace(/MaximumHitPoints/, "Max HP")
+      .replace(/CriticalStrike/,   "Crit Strike")
+      .replace(/CriticalSeverity/, "Crit Severity")
+      .replace(/CriticalAvoidance/,"Crit Avoidance")
+      .replace(/ControlBonus/,     "Control Bonus")
+      .replace(/ControlResist/,    "Control Resist")
+      .replace(/OutgoingHealing/,  "Outgoing Healing")
+      .replace(/GoldBonus/,        "Gold Bonus")
+      .replace(/GloryBonus/,       "Glory Bonus");
+  }
+
+  // Group all 49 insignia items by statTemplate. All categories of a template
+  // share the same Mythic-base stats and combinedRating.
+  function buildInsigniaTemplates() {
+    if (typeof MOUNT_INSIGNIAS_DATA === "undefined") return {};
+    var byTemplate = {};
+    for (var i = 0; i < MOUNT_INSIGNIAS_DATA.length; i++) {
+      var ins = MOUNT_INSIGNIAS_DATA[i];
+      var t = ins.statTemplate;
+      if (!byTemplate[t]) {
+        byTemplate[t] = {
+          template: t,
+          categories: [],
+          stats: ins.stats,
+          baseCombinedRating: ins.combinedRating
+        };
+      }
+      if (byTemplate[t].categories.indexOf(ins.category) === -1) {
+        byTemplate[t].categories.push(ins.category);
+      }
+    }
+    return byTemplate;
+  }
+
+  function renderInsignias() {
+    if (typeof MOUNT_INSIGNIAS_TIER_SCALING === "undefined") {
+      document.getElementById("insignias-list").innerHTML =
+        '<div class="empty-state">Insignia data not loaded.</div>';
+      return;
+    }
+    var byTemplate = buildInsigniaTemplates();
+    var templates = Object.keys(byTemplate).sort();
+    var templateFilter = filterInsigniaTemplate.value;
+    var tierFilter = filterInsigniaTier.value;
+    var categoryFilter = filterInsigniaCategory.value;
+
+    var rows = [];
+    for (var ti = 0; ti < templates.length; ti++) {
+      var t = byTemplate[templates[ti]];
+      if (templateFilter && t.template !== templateFilter) continue;
+      if (categoryFilter && t.categories.indexOf(categoryFilter) === -1) continue;
+
+      for (var tii = 0; tii < INSIGNIA_TIER_ORDER.length; tii++) {
+        var tier = INSIGNIA_TIER_ORDER[tii];
+        if (tierFilter && tier !== tierFilter) continue;
+        var scaling = MOUNT_INSIGNIAS_TIER_SCALING[tier];
+        if (!scaling) continue;
+        rows.push({
+          template:        t.template,
+          tier:            tier,
+          item_level:      scaling.item_level,
+          multiplier:      scaling.multiplier,
+          stats:           t.stats,
+          combinedRating:  Math.round(t.baseCombinedRating * scaling.multiplier),
+          categories:      t.categories
+        });
+      }
+    }
+
+    if (rows.length === 0) {
+      document.getElementById("insignias-list").innerHTML =
+        '<div class="empty-state">No insignias match your filters.</div>';
+      return;
+    }
+
+    var html = '<table class="insignias-table"><thead><tr>'
+      + '<th>Name</th><th>Quality</th><th>Item Level</th><th>Stats</th><th>Slot Types</th>'
+      + '</tr></thead><tbody>';
+    for (var ri = 0; ri < rows.length; ri++) {
+      var r = rows[ri];
+      var tierClass = INSIGNIA_TIER_CLASS[r.tier] || "";
+      html += "<tr>";
+      html += "<td>" + escapeHtml(r.template) + "</td>";
+      html += '<td><span class="' + tierClass + '" style="font-weight:600;">' + r.tier + "</span></td>";
+      html += "<td>" + r.item_level + "</td>";
+      // Stats column
+      html += "<td>";
+      for (var si = 0; si < r.stats.length; si++) {
+        var st = r.stats[si];
+        var label = prettyInsigniaStat(st.stat);
+        var val;
+        var suffix = "";
+        if (st.type === "percent") {
+          val = Math.round(st.value * r.multiplier * 10) / 10;
+          suffix = "%";
+        } else {
+          val = Math.round(st.value * r.multiplier);
+        }
+        html += '<span class="stat-pill">' + escapeHtml(label) + ": " + val + suffix + "</span> ";
+      }
+      html += '<span class="stat-pill stat-pill-cr">Combined Rating: ' + r.combinedRating + "</span>";
+      html += "</td>";
+      // Slot types
+      html += "<td>";
+      for (var ci = 0; ci < r.categories.length; ci++) {
+        html += renderInsigniaBadge(r.categories[ci]) + " ";
+      }
+      html += "</td>";
+      html += "</tr>";
+    }
+    html += "</tbody></table>";
+    document.getElementById("insignias-list").innerHTML = html;
+  }
+
+  function populateInsigniaTemplateFilter() {
+    if (!filterInsigniaTemplate) return;
+    var byTemplate = buildInsigniaTemplates();
+    var names = Object.keys(byTemplate).sort();
+    for (var i = 0; i < names.length; i++) {
+      var opt = document.createElement("option");
+      opt.value = names[i];
+      opt.textContent = names[i];
+      filterInsigniaTemplate.appendChild(opt);
+    }
+  }
+
+  if (tabInsignias) {
+    populateInsigniaTemplateFilter();
+
+    tabInsignias.addEventListener("click", function () {
+      switchMountTab("insignias");
+      tabInsignias.classList.add("active");
+      insigniasView.style.display = "";
+      insigniasControls.style.display = "";
+      renderInsignias();
+    });
+    filterInsigniaTemplate.addEventListener("change", renderInsignias);
+    filterInsigniaTier.addEventListener("change", renderInsignias);
+    filterInsigniaCategory.addEventListener("change", renderInsignias);
   }
 
   // ---- Initial render ----
