@@ -288,6 +288,7 @@
     // ---- Insignia Slots (at top) ----
     html += '<div class="section-header">Insignia Slots</div>';
     if (mount.insigniaSlots && mount.insigniaSlots.length > 0) {
+      html += '<div class="proc-block">';
       html += '<div class="insignia-slots-grid">';
       for (var s = 0; s < mount.insigniaSlots.length; s++) {
         var slot = mount.insigniaSlots[s];
@@ -302,6 +303,7 @@
         html += "</div>";
       }
       html += "</div>";
+      html += "</div>";
     } else {
       html += '<div class="detail-meta">No insignia slots</div>';
     }
@@ -309,6 +311,7 @@
     // ---- Combat Power ----
     html += '<div class="section-header">Combat Power</div>';
     if (cp) {
+      html += '<div class="proc-block">';
       html += '<div class="detail-name">' + escapeHtml(cp.name) + "</div>";
       html += '<div class="detail-meta">';
       html += "<span>IL " + formatNumber(cp.item_level) + "</span>";
@@ -320,6 +323,7 @@
       if (cp.equipBonuses && cp.equipBonuses.length > 0) {
         html += renderCombatBonuses(cp.equipBonuses);
       }
+      html += "</div>"; // close proc-block
 
       if (cp.notes) {
         html += '<div class="effect-text">' + escapeHtml(cleanNotes(cp.notes)) + "</div>";
@@ -331,6 +335,7 @@
     // ---- Equip Power ----
     html += '<div class="section-header">Equip Power</div>';
     if (ep) {
+      html += '<div class="proc-block">';
       html += '<div class="detail-name">' + escapeHtml(ep.name) + "</div>";
       html += '<div class="detail-meta">';
       html += "<span>IL " + formatNumber(ep.item_level) + "</span>";
@@ -345,6 +350,7 @@
       if (ep.stackingBuff) {
         html += renderStackingBuff(ep.stackingBuff);
       }
+      html += "</div>"; // close proc-block
 
       if (ep.notes) {
         html += '<div class="effect-text">' + escapeHtml(cleanNotes(ep.notes)) + "</div>";
