@@ -161,7 +161,7 @@
     <button class="view-tab" data-tab="abilities">Ability Scores</button>
     <button class="view-tab" data-tab="priorities">Stat Priorities</button>
     <button class="view-tab" data-tab="bolster">Bolster</button>
-    <button class="view-tab" data-tab="damage">Damage</button>
+    <button class="view-tab" data-tab="damage">Damage &amp; Healing</button>
     <button class="view-tab" data-tab="scaling">Scaling</button>
     <button class="view-tab" data-tab="stacking">Stacking</button>
     <button class="view-tab" data-tab="dungeons">Dungeons</button>
@@ -245,9 +245,9 @@
     </div>
   </div>
 
-  <!-- DAMAGE TAB -->
+  <!-- DAMAGE & HEALING TAB -->
   <div class="mek-container mek-view" id="view-damage">
-    <h2 style="margin-bottom:1rem;">Damage Calculation</h2>
+    <h2 style="margin-bottom:1rem;">Damage &amp; Healing Math</h2>
 
     <div class="stat-card open" style="margin-bottom:0.75rem;">
       <div class="stat-card-header"><span class="stat-card-name">Base Damage & Base HP by Role</span></div>
@@ -341,6 +341,37 @@
         <div class="stat-info-row"><span class="stat-info-label">CA Uptime matters</span><span class="stat-info-value">Combat Advantage scales by your uptime — 50% uptime halves its effective value</span></div>
         <div class="stat-info-row"><span class="stat-info-label">Categories stack multiplicatively</span><span class="stat-info-value">DamageBonuses, BaseDamage, Magical/Physical, Slot-type, Target debuffs are all separate multipliers</span></div>
         <div class="stat-info-row"><span class="stat-info-label">Within a category: additive</span><span class="stat-info-value">Two +10% damage bonuses in the same bucket = +20%, not ×1.21</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card" id="full-healing-formula" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header">
+        <span class="stat-card-name">Full Expected-Value Healing Formula</span>
+        <span class="toggle-arrow">&#9654;</span>
+      </div>
+      <div class="stat-card-body">
+        <div class="stat-desc"><strong>For theorycraft and healing calculators.</strong> Average HP restored over many casts. Simpler than the damage formula — no defense, deflect, or target mitigation, since healing isn't reduced by defensive stats. Note that healing crits are half-effective: Critical Severity is divided by 2.</div>
+        <pre style="background:var(--bg-elevated);border-left:3px solid var(--accent);padding:0.6rem 0.9rem;border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:0.78rem;color:var(--text-secondary);line-height:1.55;overflow-x:auto;margin:0.6rem 0;white-space:pre;">E[healing] = (IL / 10) × (Magnitude / 100)
+           × (1 + PowerTotal / 100)
+           × (1 + (CritChanceTotal / 100) × (CritSeverityTotal / (100 × 2)))
+           × (1 + OutgoingHealing% / 100)
+           × (1 + TargetIncomingHealing% / 100)
+           × (1 + MultiplicativeExceptions / 100)</pre>
+
+        <div class="section-divider" style="padding-top:0.5rem;">Variable Glossary</div>
+        <div class="stat-info-row"><span class="stat-info-label">IL / 10</span><span class="stat-info-value">Base healing. Healer role bonus (×1.1) applies analogously to damage's role bonus</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Magnitude</span><span class="stat-info-value">Healing power's listed magnitude (same scale as damage powers)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">PowerTotal</span><span class="stat-info-value">Your final Power %, after rating + percent bonuses</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">CritChanceTotal × (CritSev / 200)</span><span class="stat-info-value">Heal crit chance × half-effective crit severity (the /2 is the healer crit penalty)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">OutgoingHealing%</span><span class="stat-info-value">Your outgoing healing % (caps at 120%)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">TargetIncomingHealing%</span><span class="stat-info-value">Receiver's incoming healing % — stacks on top of your output</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">MultiplicativeExceptions</span><span class="stat-info-value">Catch-all for special healing buffs (power-specific multipliers)</span></div>
+
+        <div class="section-divider">Key insights from the formula</div>
+        <div class="stat-info-row"><span class="stat-info-label">Crit severity is halved</span><span class="stat-info-value">Healers gain only 50% of their Crit Severity stat — Power and Outgoing Healing scale better point-for-point</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Stack Incoming Healing on tanks</span><span class="stat-info-value">It multiplies on top of your output independently of your stats</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">No defensive interaction</span><span class="stat-info-value">Heals aren't reduced by defense/deflect/mitigation — every cast lands at full math</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Power and OH are equal-priority</span><span class="stat-info-value">Both are flat multipliers in the formula — balance them rather than stacking one</span></div>
       </div>
     </div>
 
@@ -638,13 +669,14 @@
       if (card) card.classList.toggle("open");
     });
 
-    // Damage tab: only the Full Formula card is collapsible (others are forced-open).
-    var fullFormulaCard = document.getElementById("full-damage-formula");
-    if (fullFormulaCard) {
-      fullFormulaCard.querySelector(".stat-card-header").addEventListener("click", function() {
-        fullFormulaCard.classList.toggle("open");
+    // Damage & Healing tab: full-formula cards are collapsed by default (others are forced-open).
+    ["full-damage-formula", "full-healing-formula"].forEach(function(id) {
+      var card = document.getElementById(id);
+      if (!card) return;
+      card.querySelector(".stat-card-header").addEventListener("click", function() {
+        card.classList.toggle("open");
       });
-    }
+    });
 
     // Lite YouTube embed: iframe only loads on click, so multiple guides don't slow the page.
     document.addEventListener("click", function(e) {
