@@ -611,12 +611,19 @@
   var equipControls = document.getElementById("equip-controls");
   var equipSearchInput = document.getElementById("equip-search");
 
+  var tabCollars = document.getElementById("tab-collars");
+  var collarsView = document.getElementById("collars-view");
+  var collarsControls = document.getElementById("collars-controls");
+  var collarsSearch = document.getElementById("collars-search");
+  var filterCollarCategory = document.getElementById("filter-collar-category");
+  var filterCollarSlot = document.getElementById("filter-collar-slot");
+
   var activeRankingTab = "lookup";
 
   function switchMountTab(activeTab) {
     activeRankingTab = activeTab;
-    var tabs = [tabLookup, tabCombat, tabStdps, tabEquip];
-    for (var t = 0; t < tabs.length; t++) tabs[t].classList.remove("active");
+    var tabs = [tabLookup, tabCombat, tabStdps, tabEquip, tabCollars];
+    for (var t = 0; t < tabs.length; t++) if (tabs[t]) tabs[t].classList.remove("active");
     lookupView.style.display = "none";
     lookupControls.style.display = "none";
     combatView.style.display = "none";
@@ -625,6 +632,8 @@
     stdpsControls.style.display = "none";
     equipView.style.display = "none";
     equipControls.style.display = "none";
+    if (collarsView) collarsView.style.display = "none";
+    if (collarsControls) collarsControls.style.display = "none";
   }
 
   tabLookup.addEventListener("click", function () {
@@ -664,6 +673,141 @@
   equipSearchInput.addEventListener("input", function () {
     renderCombatRanking(equipData, "equip-list", equipSearchInput.value);
   });
+
+  // ============================================================
+  // Collars view
+  // ============================================================
+  var COLLAR_RANK_LABEL = { 1: "I (Uncommon)", 2: "II (Rare)", 3: "III (Epic)", 4: "IV (Legendary)", 5: "V (Mythic)" };
+  var COLLAR_RANK_CLASS = { 1: "uncommon", 2: "rare", 3: "epic", 4: "legendary", 5: "mythic" };
+
+  function parseCollarName(name) {
+    var m = (name || "").match(/^(\w+)\s+(\w+)\s+Collar\s+(I{1,3}|IV|V)$/i);
+    if (!m) return { category: "", slot: "", rank: 0 };
+    var rankMap = { I: 1, II: 2, III: 3, IV: 4, V: 5 };
+    return {
+      category: m[1],
+      slot: m[2],
+      rank: rankMap[m[3].toUpperCase()] || 0
+    };
+  }
+
+  function getCollarPercent(c) {
+    // percentStats holds at most one entry per collar (eg {GloryBonus: 2.0})
+    if (c.percentStats) {
+      var keys = Object.keys(c.percentStats);
+      if (keys.length > 0) return c.percentStats[keys[0]];
+    }
+    // Practical Regal collars store nothing in percentStats — value is in effectText
+    var m = (c.effectText || "").match(/(\d+(?:\.\d+)?)\s*%/);
+    return m ? parseFloat(m[1]) : null;
+  }
+
+  function buildCollarBonusText(c) {
+    // "Glory Gain increased by 2%" -> "Glory Gain"
+    return (c.effectText || "")
+      .replace(/\s+increased\s+by\s+\d+(\.\d+)?\s*%\s*\.?\s*$/i, "")
+      .replace(/\s+do\s+\d+(\.\d+)?\s*%\s+more\s+damage\s*\.?\s*$/i, " Damage")
+      .replace(/\.\s*$/, "");
+  }
+
+  function populateCollarFilters() {
+    if (typeof MOUNT_COLLARS_DATA === "undefined") return;
+    var cats = {}, slots = {};
+    for (var i = 0; i < MOUNT_COLLARS_DATA.length; i++) {
+      var p = parseCollarName(MOUNT_COLLARS_DATA[i].name);
+      if (p.category) cats[p.category] = true;
+      if (p.slot) slots[p.slot] = true;
+    }
+    populateFilter(filterCollarCategory, Object.keys(cats).sort(), "All Categories");
+    populateFilter(filterCollarSlot, Object.keys(slots).sort(), "All Slot Types");
+  }
+
+  function renderCollars() {
+    var listEl = document.getElementById("collars-list");
+    if (!listEl) return;
+    if (typeof MOUNT_COLLARS_DATA === "undefined") {
+      listEl.innerHTML = '<div class="empty-state">Collar data is not available.</div>';
+      return;
+    }
+
+    var query = (collarsSearch.value || "").trim().toLowerCase();
+    var catFilter = filterCollarCategory.value;
+    var slotFilter = filterCollarSlot.value;
+
+    // Build rows: parse + filter + sort
+    var rows = [];
+    for (var i = 0; i < MOUNT_COLLARS_DATA.length; i++) {
+      var c = MOUNT_COLLARS_DATA[i];
+      var p = parseCollarName(c.name);
+      if (catFilter && p.category !== catFilter) continue;
+      if (slotFilter && p.slot !== slotFilter) continue;
+
+      var bonusText = buildCollarBonusText(c);
+      if (query) {
+        var hay = (c.name + " " + (c.effectText || "") + " " + bonusText).toLowerCase();
+        if (hay.indexOf(query) === -1) continue;
+      }
+      rows.push({
+        category: p.category,
+        slot: p.slot,
+        rank: p.rank,
+        bonusText: bonusText,
+        effect: c.effectText || "",
+        pct: getCollarPercent(c),
+        combinedRating: c.combinedRating,
+        itemLevel: c.item_level
+      });
+    }
+
+    if (rows.length === 0) {
+      listEl.innerHTML = '<div class="empty-state">No collars match your filters.</div>';
+      return;
+    }
+
+    rows.sort(function (a, b) {
+      if (a.category !== b.category) return a.category.localeCompare(b.category);
+      if (a.slot !== b.slot) return a.slot.localeCompare(b.slot);
+      return a.rank - b.rank;
+    });
+
+    var html = '<table class="collars-table">';
+    html += '<thead><tr>';
+    html += '<th>Slot</th><th>Category</th><th>Bonus</th><th>Rank</th><th style="text-align:right;">%</th><th style="text-align:right;">Combined Rating</th><th style="text-align:right;">Item Level</th>';
+    html += '</tr></thead><tbody>';
+    for (var r = 0; r < rows.length; r++) {
+      var row = rows[r];
+      var slotLower = (row.slot || "").toLowerCase();
+      var rankLabel = COLLAR_RANK_LABEL[row.rank] || "—";
+      var rankClass = COLLAR_RANK_CLASS[row.rank] || "";
+      var pctText = row.pct == null ? "—" : (row.pct + "%");
+      html += '<tr>';
+      html += '<td><span class="badge badge-' + escapeHtml(slotLower) + '" style="font-size:0.7rem;padding:0.15rem 0.55rem;">' + escapeHtml(row.slot) + '</span></td>';
+      html += '<td>' + escapeHtml(row.category) + '</td>';
+      html += '<td>' + escapeHtml(row.bonusText) + '</td>';
+      html += '<td><span class="collar-rank collar-rank-' + rankClass + '">' + escapeHtml(rankLabel) + '</span></td>';
+      html += '<td style="text-align:right;font-family:var(--font-mono,monospace);">' + escapeHtml(pctText) + '</td>';
+      html += '<td style="text-align:right;font-family:var(--font-mono,monospace);color:var(--text-secondary);">' + (row.combinedRating != null ? row.combinedRating.toLocaleString() : "—") + '</td>';
+      html += '<td style="text-align:right;font-family:var(--font-mono,monospace);color:var(--text-secondary);">' + (row.itemLevel != null ? row.itemLevel.toLocaleString() : "—") + '</td>';
+      html += '</tr>';
+    }
+    html += '</tbody></table>';
+    listEl.innerHTML = html;
+  }
+
+  if (tabCollars) {
+    populateCollarFilters();
+
+    tabCollars.addEventListener("click", function () {
+      switchMountTab("collars");
+      tabCollars.classList.add("active");
+      collarsView.style.display = "";
+      collarsControls.style.display = "";
+      renderCollars();
+    });
+    collarsSearch.addEventListener("input", renderCollars);
+    filterCollarCategory.addEventListener("change", renderCollars);
+    filterCollarSlot.addEventListener("change", renderCollars);
+  }
 
   // ---- Initial render ----
   renderList(MOUNTS_DATA);

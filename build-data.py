@@ -25,6 +25,7 @@ FILE_MAP = {
     "mount_equip_powers.json":      ("mount-equip-powers.js",      "MOUNT_EQUIP_POWERS_DATA"),
     "mount_insignia_bonuses.json":  ("mount-insignia-bonuses.js",  "MOUNT_INSIGNIA_BONUSES_DATA"),
     "mount_insignias.json":         ("mount-insignias.js",         None),  # Special: object with tierScaling + insignias
+    "mount_collars.json":           ("mount-collars.js",           "MOUNT_COLLARS_DATA"),
     "companions.json":              ("companions.js",              "COMPANIONS_DATA"),
     "companion_powers.json":        ("companion-powers.js",        "COMPANION_POWERS_DATA"),
     "companion_enhancements.json":  ("companion-enhancements.js",  "COMPANION_ENHANCEMENTS_DATA"),
