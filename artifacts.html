@@ -98,8 +98,7 @@
 
   <div class="controls-bar" style="gap:0.25rem;padding-bottom:0;">
     <button class="view-tab active" data-tab="all">All Artifacts</button>
-    <button class="view-tab" data-tab="trial">Trial Ranking</button>
-    <button class="view-tab" data-tab="dungeon">Dungeon Ranking</button>
+    <button class="view-tab" data-tab="ranking">Dungeon / Trial Ranking</button>
     <button class="view-tab" data-tab="sets">Artifact Sets</button>
   </div>
 
@@ -117,8 +116,12 @@
   </div>
 
   <div class="art-container art-view active" id="view-all"><div id="all-list"></div></div>
-  <div class="art-container art-view" id="view-trial"><div id="trial-list"></div></div>
-  <div class="art-container art-view" id="view-dungeon"><div id="dungeon-list"></div></div>
+  <div class="art-container art-view" id="view-ranking">
+    <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.55;margin-bottom:1rem;">
+      Ranked by debuff strength against enemies — either <strong>+ damage taken</strong> or <strong>− damage resistance</strong>. Higher rank = stronger group buff to your party's damage output.
+    </div>
+    <div id="ranking-list"></div>
+  </div>
   <div class="art-container art-view" id="view-sets"><div id="sets-list"></div></div>
 
   <script src="js/shared.js"></script>

@@ -162,43 +162,42 @@
   ];
 
   // ============================================================
-  // TRIAL RANKING
+  // DUNGEON / TRIAL RANKING (unified)
+  // Ranked by debuff strength: + damage taken or − damage resistance.
+  // Higher rank = stronger group damage amplification.
   // ============================================================
-  var trialRanking = [
-    { rank: 1, name: "Demogorgon's Reach", effect: "Stacking debuff: +3% damage taken per stack, up to 18% (6 stacks)", duration: "6s per stack" },
-    { rank: 2, name: "Charm of the Serpent", effect: "+16% damage taken by enemies (cone)", duration: "10s" },
-    { rank: 3, name: "Halaster's Blast Scepter", effect: "-15% enemy damage resistance", duration: "10s" },
-    { rank: 4, name: "Mythallar Fragment", effect: "-15% enemy damage resistance", duration: "10s" },
-    { rank: 5, name: "Wyvern-Venom Coated Knives", effect: "+12% damage taken, -12% enemy damage dealt", duration: "10s" },
-    { rank: 6, name: "Dragonbone Blades", effect: "+12% damage taken, -12% enemy damage dealt", duration: "10s" },
-    { rank: 7, name: "Frozen Storyteller's Journal", effect: "+10% ally damage, -10% incoming damage, stun, summons", duration: "15s" },
-    { rank: 8, name: "Lantern of Revelation", effect: "+10% damage taken by enemies", duration: "10s" },
-    { rank: 9, name: "Thirst", effect: "+10% damage taken by enemies (lunge)", duration: "10s" },
-    { rank: 10, name: "Heart of the Black Dragon", effect: "+10% damage taken by enemies", duration: "6s" },
-    { rank: 11, name: "Black Dragon's Mark", effect: "-10% enemy damage resistance", duration: "10s" },
-    { rank: 12, name: "Vanguard's Banner", effect: "+5% damage taken, +5,000 ally Power", duration: "30s" },
-    { rank: 13, name: "Sparkling Fey Emblem", effect: "+5% damage taken, +5% ally Defense/Crit Avoidance", duration: "15s" },
-    { rank: 14, name: "Refulgent Diamond Pin", effect: "-5% enemy damage, +7.5% ally Combat Advantage", duration: "15s" },
-  ];
-
-  // ============================================================
-  // DUNGEON RANKING
-  // ============================================================
-  var dungeonRanking = [
-    { rank: 1, name: "Demogorgon's Reach", effect: "Stacking debuff: +3% damage taken per stack, up to 18% (6 stacks)", duration: "6s per stack" },
-    { rank: 2, name: "Charm of the Serpent", effect: "+16% damage taken by enemies (cone)", duration: "10s" },
-    { rank: 3, name: "Halaster's Blast Scepter", effect: "-15% enemy damage resistance", duration: "10s" },
-    { rank: 4, name: "Mythallar Fragment", effect: "-15% enemy damage resistance", duration: "10s" },
-    { rank: 5, name: "Frozen Storyteller's Journal", effect: "+10% ally damage, -10% incoming damage, stun, summons", duration: "15s" },
-    { rank: 6, name: "Wyvern-Venom Coated Knives", effect: "+12% damage taken, -12% enemy damage dealt", duration: "10s" },
-    { rank: 7, name: "Dragonbone Blades", effect: "+12% damage taken, -12% enemy damage dealt", duration: "10s" },
-    { rank: 8, name: "Lantern of Revelation", effect: "+10% damage taken by enemies", duration: "10s" },
-    { rank: 9, name: "Thirst", effect: "+10% damage taken by enemies (lunge)", duration: "10s" },
-    { rank: 10, name: "Heart of the Black Dragon", effect: "+10% damage taken by enemies", duration: "6s" },
-    { rank: 11, name: "Black Dragon's Mark", effect: "-10% enemy damage resistance", duration: "10s" },
-    { rank: 12, name: "Vanguard's Banner", effect: "+5% damage taken, +5,000 ally Power", duration: "30s" },
-    { rank: 13, name: "Defender's Banner", effect: "-5% enemy damage, +5,000 ally Power/Awareness", duration: "30s" },
-    { rank: 14, name: "Sparkling Fey Emblem", effect: "+5% damage taken, +5% ally Defense/Crit Avoidance", duration: "15s" },
+  var groupRanking = [
+    { rank: 1,  name: "Demogorgon's Reach",            effect: "+3% damage taken per stack, up to +18% (6 stacks)",                       duration: "6s per stack" },
+    { rank: 2,  name: "Charm of the Serpent",          effect: "+16% damage taken by enemies (cone)",                                     duration: "10s" },
+    { rank: 3,  name: "Halaster's Blast Scepter",      effect: "−15% enemy damage resistance",                                            duration: "10s" },
+    { rank: 4,  name: "Mythallar Fragment",            effect: "−15% enemy damage resistance",                                            duration: "10s" },
+    { rank: 5,  name: "Nightflame Censer",             effect: "+12.5% damage taken, −11.9% enemy damage dealt + DoT",                    duration: "10s" },
+    { rank: 6,  name: "Wyvern-Venom Coated Knives",    effect: "+12% damage taken, −12% enemy damage dealt",                              duration: "10s" },
+    { rank: 7,  name: "Dragonbone Blades",             effect: "+12% damage taken, −12% enemy damage dealt",                              duration: "10s" },
+    { rank: 8,  name: "Portable Spelljammer Detector", effect: "+12% damage taken (single-target arcane disrupt)",                        duration: "10s" },
+    { rank: 9,  name: "Beacon of Meteor Swarm",        effect: "+10% damage taken + stun + DoT (AoE meteor storm)",                       duration: "10s" },
+    { rank: 10, name: "Heart of the Volcano",          effect: "+10% damage taken from all sources + 10% self DR (line)",                 duration: "10s" },
+    { rank: 11, name: "Jewel of the Caldera",          effect: "+10% damage taken (lunge, line)",                                         duration: "10s" },
+    { rank: 12, name: "Marco's Mystic Marker",         effect: "+10% damage taken from all sources (single-target rapid arcane)",         duration: "10s" },
+    { rank: 13, name: "Crystal of Soul's Flight",      effect: "+10% damage taken (all sources) + 15% from your attacks",                 duration: "10s" },
+    { rank: 14, name: "Lantern of Revelation",         effect: "+10% damage taken by enemies (AoE)",                                      duration: "10s" },
+    { rank: 15, name: "Thirst",                        effect: "+10% damage taken by enemies (lunge, line)",                              duration: "10s" },
+    { rank: 16, name: "Frozen Storyteller's Journal",  effect: "+10% ally damage + 10% incoming damage reduction + stun",                 duration: "15s" },
+    { rank: 17, name: "Black Dragon's Mark",           effect: "−10% enemy damage resistance (acid ball)",                                duration: "10s" },
+    { rank: 18, name: "Heart of the Black Dragon",     effect: "+10% damage taken by enemies (line, shorter duration)",                   duration: "6s" },
+    { rank: 19, name: "Broken Halo",                   effect: "+9% damage taken + stuns lesser enemies (AoE light burst)",               duration: "10s" },
+    { rank: 20, name: "Marilith Mask",                 effect: "+7.5% damage taken (laser beams)",                                        duration: "10s" },
+    { rank: 21, name: "Realm Engine Core",             effect: "+7.5% damage taken + self shield 15% HP (single-target)",                 duration: "10s" },
+    { rank: 22, name: "Sealing Parchment",             effect: "+7.5% damage taken + DoT + self Deflect/Sev",                             duration: "10s" },
+    { rank: 23, name: "Wand of Domination",            effect: "+7.5% damage taken + 4s charm (frontal gaze)",                            duration: "10s" },
+    { rank: 24, name: "Wrath of Kossuth",              effect: "+7.5% damage taken (Primordial Burn) on attackers",                       duration: "10s" },
+    { rank: 25, name: "Bloodbrass Pistol",             effect: "+6% damage taken (single-target Blunderbuss)",                            duration: "10s" },
+    { rank: 26, name: "Demon Skull",                   effect: "+5% damage taken + −5% Accuracy (3-imp swarm)",                           duration: "10s" },
+    { rank: 27, name: "Tentacle Rod",                  effect: "+5% damage taken + −5% Movement/Awareness + daze",                        duration: "10s" },
+    { rank: 28, name: "Vanguard's Banner",             effect: "+5% damage taken + 5,000 ally Power/Crit Avoidance",                      duration: "30s" },
+    { rank: 29, name: "Sparkling Fey Emblem",          effect: "+5% damage taken + 5% ally Defense/Crit Avoidance",                       duration: "15s" },
+    { rank: 30, name: "Neverwinter's Standard",        effect: "+5% damage taken + 5% ally Recharge Speed",                               duration: "15s" },
+    { rank: 31, name: "Alaric's Artillery Beacon",     effect: "Up to +5% damage taken + stun (AoE)",                                     duration: "10s" },
   ];
 
   // ============================================================
@@ -331,8 +330,7 @@
       document.getElementById("view-" + tab.getAttribute("data-tab")).classList.add("active");
       allControls.style.display = tab.getAttribute("data-tab") === "all" ? "" : "none";
 
-      if (tab.getAttribute("data-tab") === "trial") renderRanking(trialRanking, "trial-list");
-      if (tab.getAttribute("data-tab") === "dungeon") renderRanking(dungeonRanking, "dungeon-list");
+      if (tab.getAttribute("data-tab") === "ranking") renderRanking(groupRanking, "ranking-list");
       if (tab.getAttribute("data-tab") === "sets") renderSets();
     });
   });
