@@ -296,6 +296,54 @@
       </div>
     </div>
 
+    <div class="stat-card" id="full-damage-formula" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header">
+        <span class="stat-card-name">Full Expected-Value Formula</span>
+        <span class="toggle-arrow">&#9654;</span>
+      </div>
+      <div class="stat-card-body">
+        <div class="stat-desc"><strong>For theorycraft and DPS calculators.</strong> Most players don't need this — see the simplified Pipeline above. This is the canonical expected-value formula: average damage over many hits, accounting for crit chance × severity, CA uptime, deflect probability, and all the multiplicative damage-boost categories.</div>
+        <pre style="background:var(--bg-elevated);border-left:3px solid var(--accent);padding:0.6rem 0.9rem;border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:0.78rem;color:var(--text-secondary);line-height:1.55;overflow-x:auto;margin:0.6rem 0;white-space:pre;">E[damage] = (IL / 10) × Role Bonus
+          × (Magnitude / 100)
+          × (1 + PowerTotal / 100)
+          × (1 + (CritChanceTotal / 100) × ((CritSeverityTotal − TargetCritAvoidanceTotal) / 100))
+          × (1 + (CombatAdvantageUpTime% / 100) × ((CombatAdvantageTotal − TargetAwareness) / 100))
+          × (1 + TargetDeflectChance × (1 / (TargetDeflectSev − AccuracyTotal + 100) − 1 / 100))
+          × (100 / (100 + TargetDefenseTotal − ΣDefenseDebuffs))
+          × (1 + (ΣDamageBonuses% + OutgoingDamage%) / 100)
+          × (1 + BaseDamageBoost / 100)
+          × (1 + (MagicalDamageBoost or PhysicalDamageBoost) / 100)
+          × (1 + (AtWill / Encounter / DailyDamageBoost) / 100)
+          × Π (1 / TargetMitigation)
+          × (1 / SpecialDebuffsOnPlayer)
+          × (1 + ΣTargetDebuffsIn% / 100)</pre>
+
+        <div class="section-divider" style="padding-top:0.5rem;">Variable Glossary</div>
+        <div class="stat-info-row"><span class="stat-info-label">IL / 10 × Role Bonus</span><span class="stat-info-value">Base damage. Role multiplier: DPS ×1.2, Healer ×1.1, Tank ×1.0</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Magnitude</span><span class="stat-info-value">Power's listed magnitude (e.g. an at-will hitting for 200 magnitude)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">PowerTotal</span><span class="stat-info-value">Your final Power %, after rating + percent bonuses</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">CritChanceTotal</span><span class="stat-info-value">Final Critical Strike % (the chance to crit)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">CritSeverityTotal − TargetCritAvoidance</span><span class="stat-info-value">Effective crit severity after target's mitigation</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">CombatAdvantageUpTime%</span><span class="stat-info-value">How often you actually have CA (positioning matters — 100% if always flanking)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">CombatAdvantageTotal − TargetAwareness</span><span class="stat-info-value">Effective CA bonus after target's mitigation</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">TargetDeflectChance</span><span class="stat-info-value">Target's chance to deflect your hits (PvE enemies typically 50%)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">TargetDeflectSev − AccuracyTotal</span><span class="stat-info-value">Reduction applied on deflected hits (your Accuracy lowers it)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">TargetDefenseTotal − ΣDefenseDebuffs</span><span class="stat-info-value">Target's defense after all debuffs you've stacked on it</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">ΣDamageBonuses% + OutgoingDamage%</span><span class="stat-info-value">Sum of generic damage % bonuses (companions, boons, gear) + role-scaled outgoing</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">BaseDamageBoost</span><span class="stat-info-value">Bonus to base damage from companion bonus powers and similar sources</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Magical / Physical DamageBoost</span><span class="stat-info-value">Damage-type-specific bonus (one or the other, depending on power)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">AtWill / Encounter / Daily Boost</span><span class="stat-info-value">Power-slot-specific bonus (separate multiplier per slot type)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Π (1 / TargetMitigation)</span><span class="stat-info-value">Product over multiple target mitigation effects (e.g. damage resistance auras)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">SpecialDebuffsOnPlayer</span><span class="stat-info-value">Debuffs that scale your outgoing damage down (dazes, etc.)</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">ΣTargetDebuffsIn%</span><span class="stat-info-value">Sum of "incoming damage to target" debuffs you've applied</span></div>
+
+        <div class="section-divider">Key insights from the formula</div>
+        <div class="stat-info-row"><span class="stat-info-label">CA Uptime matters</span><span class="stat-info-value">Combat Advantage scales by your uptime — 50% uptime halves its effective value</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Categories stack multiplicatively</span><span class="stat-info-value">DamageBonuses, BaseDamage, Magical/Physical, Slot-type, Target debuffs are all separate multipliers</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Within a category: additive</span><span class="stat-info-value">Two +10% damage bonuses in the same bucket = +20%, not ×1.21</span></div>
+      </div>
+    </div>
+
     <div class="stat-card open">
       <div class="stat-card-header"><span class="stat-card-name">Diminishing Returns</span></div>
       <div class="stat-card-body" style="display:block;">
@@ -589,6 +637,14 @@
       var card = e.target.closest(".stat-card");
       if (card) card.classList.toggle("open");
     });
+
+    // Damage tab: only the Full Formula card is collapsible (others are forced-open).
+    var fullFormulaCard = document.getElementById("full-damage-formula");
+    if (fullFormulaCard) {
+      fullFormulaCard.querySelector(".stat-card-header").addEventListener("click", function() {
+        fullFormulaCard.classList.toggle("open");
+      });
+    }
 
     // Lite YouTube embed: iframe only loads on click, so multiple guides don't slow the page.
     document.addEventListener("click", function(e) {

@@ -20,3 +20,4 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Mekaniks: documented Forte's special property of **bypassing individual rating caps** (contributes directly to total percentage).
 - Mekaniks: added "1 IL ≈ 15 stat rating points" rule of thumb and a worked rating-to-percent example.
 - Mekaniks: new **Base Damage & Base HP by Role** card on the Damage tab, showing the inverted role multipliers (DPS ×1.2 dmg / ×1.0 HP, Healer ×1.1 / ×1.1, Tank ×1.0 / ×1.2).
+- Mekaniks: new **Full Expected-Value Formula** card on the Damage tab (collapsed by default) for theorycrafters. Shows the complete 13-term damage formula with variable glossary, plus key insights — CA uptime matters, damage-boost categories stack multiplicatively, within-category bonuses are additive.
