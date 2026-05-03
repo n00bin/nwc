@@ -1043,10 +1043,11 @@
       }
       html += '<span class="stat-pill stat-pill-cr">Combined Rating: ' + r.combinedRating + "</span>";
       html += "</td>";
-      // Slot types
+      // Slot types — pill color tinted by row quality
       html += "<td>";
       for (var ci = 0; ci < r.categories.length; ci++) {
-        html += renderInsigniaBadge(r.categories[ci]) + " ";
+        html += '<span class="insignia-cat-pill" data-tier="' + r.tier + '">'
+              + escapeHtml(r.categories[ci]) + "</span> ";
       }
       html += "</td>";
       html += "</tr>";

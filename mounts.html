@@ -122,6 +122,23 @@
     .insignias-table .stat-pill-cr {
       color: var(--text-muted);
     }
+    /* Slot-type pills tinted by row quality */
+    .insignia-cat-pill {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: var(--radius-sm);
+      margin: 0.1rem 0.25rem 0.1rem 0;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .insignia-cat-pill[data-tier="Celestial"]  { background: #f178ff; color: #000; }
+    .insignia-cat-pill[data-tier="Mythic"]     { background: #f85149; color: #fff; }
+    .insignia-cat-pill[data-tier="Legendary"]  { background: #d29922; color: #000; }
+    .insignia-cat-pill[data-tier="Epic"]       { background: #a371f7; color: #fff; }
+    .insignia-cat-pill[data-tier="Rare"]       { background: #58a6ff; color: #fff; }
+    .insignia-cat-pill[data-tier="Uncommon"]   { background: #3fb950; color: #000; }
   </style>
 </head>
 <body>
