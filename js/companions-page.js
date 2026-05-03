@@ -9,13 +9,13 @@
 
   // ---- Rarity scaling ----
   var RARITIES = [
-    { name: "Common",    il: 75,  color: "#fff" },
-    { name: "Uncommon",  il: 150, color: "#00cc00" },
-    { name: "Rare",      il: 250, color: "#4488ff" },
-    { name: "Epic",      il: 375, color: "#a335ee" },
-    { name: "Legendary", il: 550, color: "#f0a000" },
-    { name: "Mythic",    il: 750, color: "#66ddff" },
-    { name: "Celestial", il: 900, color: "#cc66ff" }
+    { name: "Common",    il: 75,  color: "#a8a8a8" },
+    { name: "Uncommon",  il: 150, color: "#4caf50" },
+    { name: "Rare",      il: 250, color: "#4a9eff" },
+    { name: "Epic",      il: 375, color: "#b46cff" },
+    { name: "Legendary", il: 550, color: "#ff9c3a" },
+    { name: "Mythic",    il: 750, color: "#ff5a5a" },
+    { name: "Celestial", il: 900, color: "#9eb6ff" }
   ];
 
   var SINGLE_STAT_SCALE = { 75: 0.75, 150: 1.50, 250: 2.50, 375: 3.75, 550: 5.50, 750: 7.50, 900: 9.00 };
