@@ -173,12 +173,15 @@
     <div class="stat-card open" style="margin-bottom:0.75rem;">
       <div class="stat-card-header"><span class="stat-card-name">Rating to Percentage</span></div>
       <div class="stat-card-body" style="display:block;">
-        <div class="stat-desc">Every stat has a rating value that converts to a percentage. The conversion depends on your Total Item Level (TIL).</div>
-        <div class="stat-formula">Percentage = 50 - (TIL - Rating) / 1000 + Percent Bonuses</div>
-        <div class="stat-info-row"><span class="stat-info-label">At 0 rating</span><span class="stat-info-value">~45% base</span></div>
-        <div class="stat-info-row"><span class="stat-info-label">At TIL rating</span><span class="stat-info-value">50% from rating alone</span></div>
-        <div class="stat-info-row"><span class="stat-info-label">Every 1,000 rating</span><span class="stat-info-value">+1% to stat percentage</span></div>
-        <div class="stat-info-row"><span class="stat-info-label">To reach cap</span><span class="stat-info-value">Need rating + percent bonuses from gear, boons, companions, etc.</span></div>
+        <div class="stat-desc">Each stat has a rating value (large numbers in thousands) that converts to a percentage. The conversion depends on your Total Item Level (TIL). The rating contribution alone is capped — you reach the total cap by combining rating with non-rating sources (companions, boons, percent items).</div>
+        <div class="stat-formula">Rating contribution = 50 + (Rating - TIL) / 1000<br>Stat % total = Rating contribution + Percent Bonuses (up to total cap)</div>
+        <div class="stat-info-row"><span class="stat-info-label">At rating = TIL</span><span class="stat-info-value">50% contribution from rating</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Every 1,000 rating above/below TIL</span><span class="stat-info-value">±1% to rating contribution</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Rating cap (90% total stats)</span><span class="stat-info-value">50% — reached when rating = TIL</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Rating cap (120% total stats)</span><span class="stat-info-value">60% — reached when rating = TIL + 10,000</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">To reach total cap</span><span class="stat-info-value">Add percent bonuses (companions, boons, items) — these are not rating-capped</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Rule of thumb</span><span class="stat-info-value">1 IL on gear ≈ 15 stat rating points</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Example</span><span class="stat-info-value">120k IL with 100k Deflect rating: 50 + (100k - 120k)/1k = 30% from rating</span></div>
       </div>
     </div>
     <div class="stat-card open" style="margin-bottom:1.5rem;">
@@ -245,6 +248,25 @@
   <!-- DAMAGE TAB -->
   <div class="mek-container mek-view" id="view-damage">
     <h2 style="margin-bottom:1rem;">Damage Calculation</h2>
+
+    <div class="stat-card open" style="margin-bottom:0.75rem;">
+      <div class="stat-card-header"><span class="stat-card-name">Base Damage & Base HP by Role</span></div>
+      <div class="stat-card-body" style="display:block;">
+        <div class="stat-desc">Base Damage and Base HP are derived from your Total Item Level (TIL) plus a role multiplier. Damage roles favor offense; HP favors defense. The multipliers are inverted between the two.</div>
+        <div class="section-divider" style="padding-top:0.5rem;">Base Damage</div>
+        <div class="stat-formula">Base Damage = (TIL / 10) × role multiplier</div>
+        <div class="stat-info-row"><span class="stat-info-label">DPS</span><span class="stat-info-value">× 1.20</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Healer</span><span class="stat-info-value">× 1.10</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Tank</span><span class="stat-info-value">× 1.00</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Example (44,632 IL DPS)</span><span class="stat-info-value">4,463.2 × 1.2 = 5,355.84 base damage</span></div>
+        <div class="section-divider">Base HP</div>
+        <div class="stat-formula">Base HP = (TIL × 10) × role multiplier</div>
+        <div class="stat-info-row"><span class="stat-info-label">Tank</span><span class="stat-info-value">× 1.20</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Healer</span><span class="stat-info-value">× 1.10</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">DPS</span><span class="stat-info-value">× 1.00</span></div>
+        <div class="stat-info-row"><span class="stat-info-label">Example (44,632 IL DPS)</span><span class="stat-info-value">446,320 base HP (before CON, gear, buffs)</span></div>
+      </div>
+    </div>
 
     <div class="stat-card open" style="margin-bottom:0.75rem;">
       <div class="stat-card-header"><span class="stat-card-name">Magnitude</span></div>
@@ -493,8 +515,11 @@
       { name: "Critical Avoidance", cap: "90%", desc: "Reduces opponent's bonus damage from Critical Severity.", formula: "Crit Damage Taken = Base x (1 + enemy Crit Sev % - your Crit Avoidance %)", details: [["Cap", "90%"], ["Rating to Cap", "= Total Item Level"], ["Note", "Protects against burst damage from boss crits — particularly important for Tanks who can get one-shot without enough Critical Avoidance. Directly subtracts from enemy Critical Severity."]] },
       { name: "Deflect", cap: "90%", desc: "Percentage chance to deflect a hit, reducing its damage based on Deflect Severity.", formula: "Deflect Chance = Deflect %", details: [["Cap", "90%"], ["Rating to Cap", "= Total Item Level"], ["Note", "Deflect is chance-based and unreliable compared to Defense and Awareness which always work. A 50% Deflect chance means half your incoming hits are unaffected. Best paired with high Deflect Severity — without it, deflecting barely reduces damage."]] },
       { name: "Deflect Severity", cap: "120%", desc: "Reduces damage from deflected hits. Countered by opponent's Accuracy.", formula: "Deflected Damage = Base / (1 + your Deflect Severity % - enemy Accuracy %)", details: [["Cap", "120%"], ["Rating to Cap", "= Total Item Level"], ["Note", "PvE enemies have 0% Accuracy, so your full Deflect Severity applies against them. Only useful if you also have high Deflect chance. Without Deflect, this stat does literally nothing. With both maxed, deflected hits are reduced to less than half damage."]] },
+      { section: "Control Stats" },
+      { name: "Control Bonus", cap: "Unverified", desc: "Increases the duration of control effects (stuns, dazes, slows, holds) you apply to enemies. Reduced by enemy Control Resist.", formula: "Effective Duration = Base Duration x (1 + Control Bonus % - target Control Resist %)", details: [["Cap", "Verification needed in-game"], ["Source", "INT primary +1% per point above 10"], ["Note", "Most relevant for control-focused builds (Wizard, Warlock). PvE bosses are immune to most control effects, so Control Bonus mainly matters in trash mob clears and PvP."]] },
+      { name: "Control Resist", cap: "Unverified", desc: "Reduces the duration of control effects enemies apply to you.", formula: "Effective CC on you = Base Duration x (1 - Control Resist %), clamped at 0", details: [["Cap", "Verification needed in-game"], ["Source", "WIS primary +1% per point above 10"], ["Note", "Helps you stay free during enemy CC mechanics. Tanks especially benefit — losing block uptime to a stun can mean death. Valuable in any content with frequent CC effects."]] },
       { section: "Special Stats" },
-      { name: "Forte", cap: "120%", desc: "Distributes bonus percentage to three role-specific stats based on your class and paragon path. The 50% primary stat depends on your role, while the 25% offensive and defensive stats are class-specific.", formula: "50% to primary role stat, 25% to offensive, 25% to defensive", details: [["Cap", "120%"], ["Rating to Cap", "= Total Item Level"], ["Note", "Forte is essentially 3 stats in 1. Classes that get Combat Advantage or Awareness from Forte (Rogues, Wizards, Barbarians, Warlocks) benefit more because those stats have high value. Check the distribution table below to see exactly where your Forte goes."]], forteTable: true },
+      { name: "Forte", cap: "120%", desc: "Distributes bonus percentage to three role-specific stats based on your class and paragon path. The 50% primary stat depends on your role, while the 25% offensive and defensive stats are class-specific. Forte's contribution feeds directly into the total percentage of those three stats — bypassing their individual rating caps.", formula: "50% to primary role stat, 25% to offensive, 25% to defensive", details: [["Cap", "120%"], ["Rating to Cap", "= Total Item Level"], ["Bypass Rating Caps", "Forte contributes directly to the total percentage of its 3 fed stats, sidestepping the 50%/60% rating caps of those stats — one of the few ways to push past the rating cap toward the total cap."], ["Tradeoff", "The 3 stats are fixed per paragon. You can't pick — and at least one is usually less useful for your build."], ["Note", "Forte is essentially 3 stats in 1. Classes that get Combat Advantage or Awareness from Forte (Rogues, Wizards, Barbarians, Warlocks) benefit more because those stats have high value. Check the distribution table below to see exactly where your Forte goes."]], forteTable: true },
       { name: "Maximum Hit Points", cap: "No cap", desc: "Total health pool. Scales with item level and Constitution.", formula: "(TIL x 10 + role bonus + item HP) x (1 + CON / 200)", details: [["Cap", "No percentage cap"], ["Scaling", "1:10 ratio with Total Item Level"], ["Note", "Tanks get +20% HP from role, Healers get +10%. Constitution ability score also scales HP. More HP means you survive bigger hits and gives healers more time to top you off. Important for all roles in end-game content."]] },
       { section: "Utility Stats" },
       { name: "Action Point Gain", cap: "No cap", desc: "Multiplies the rate you fill your Daily Power meter. Does NOT affect Encounter Power cooldowns.", formula: "AP Generation x (1 + AP Gain %)", details: [["Cap", "No cap"], ["Rating", "400 points = 1%"], ["Note", "Daily powers are some of the strongest abilities in the game. Faster AP means more Dailies. This stat is separate from Recharge Speed — Recovery rating gives both, but they are different stats. Particularly valuable for Tanks and Healers who rely on defensive Dailies."]] },
@@ -511,11 +536,11 @@
       { cls: "Barbarian", paragon: "Sentinel", role: "Tank", primary: "Defense", offensive: "Critical Severity", defensive: "Awareness" },
       { cls: "Bard", paragon: "Songblade", role: "DPS", primary: "Power", offensive: "Critical Severity", defensive: "Deflect Severity" },
       { cls: "Bard", paragon: "Minstrel", role: "Healer", primary: "Performance Regen", offensive: "Critical Severity", defensive: "Deflect Severity" },
-      { cls: "Cleric", paragon: "Arbiter", role: "DPS", primary: "Divinity Regen", offensive: "Critical Severity", defensive: "Deflect" },
+      { cls: "Cleric", paragon: "Arbiter", role: "DPS", primary: "Power", offensive: "Critical Severity", defensive: "Deflect" },
       { cls: "Cleric", paragon: "Devout", role: "Healer", primary: "Divinity Regen", offensive: "Critical Severity", defensive: "Deflect" },
       { cls: "Fighter", paragon: "Dreadnought", role: "DPS", primary: "Power", offensive: "Accuracy", defensive: "Critical Avoidance" },
-      { cls: "Fighter", paragon: "Vanguard", role: "Tank", primary: "Defense", offensive: "Critical Strike", defensive: "Deflect Severity" },
-      { cls: "Paladin", paragon: "Oathkeeper", role: "Healer", primary: "Divinity Regen", offensive: "Accuracy", defensive: "Awareness" },
+      { cls: "Fighter", paragon: "Vanguard", role: "Tank", primary: "Defense", offensive: "Accuracy", defensive: "Critical Avoidance" },
+      { cls: "Paladin", paragon: "Oathkeeper", role: "Healer", primary: "Divinity Regen", offensive: "Critical Strike", defensive: "Deflect Severity" },
       { cls: "Paladin", paragon: "Justicar", role: "Tank", primary: "Defense", offensive: "Critical Strike", defensive: "Deflect Severity" },
       { cls: "Ranger", paragon: "Hunter", role: "DPS", primary: "Power", offensive: "Accuracy", defensive: "Deflect" },
       { cls: "Ranger", paragon: "Warden", role: "DPS", primary: "Power", offensive: "Accuracy", defensive: "Deflect" },
