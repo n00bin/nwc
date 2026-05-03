@@ -61,7 +61,7 @@
 /* ---- Right panel: detail view ---- */
 .detail-panel {
   overflow-y: auto;
-  padding: 1.25rem max(1.5rem, calc((100% - 900px) / 2));
+  padding: 1.25rem max(1.5rem, calc((100% - 720px) / 2));
 }
 
 /* ---- Custom Scrollbars ---- */
