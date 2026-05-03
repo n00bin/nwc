@@ -719,7 +719,7 @@
       if (p.slot) slots[p.slot] = true;
     }
     populateFilter(filterCollarCategory, Object.keys(cats).sort(), "All Categories");
-    populateFilter(filterCollarSlot, Object.keys(slots).sort(), "All Slot Types");
+    populateFilter(filterCollarSlot, Object.keys(slots).sort(), "All Types");
   }
 
   function renderCollars() {
@@ -772,7 +772,7 @@
 
     var html = '<table class="collars-table">';
     html += '<thead><tr>';
-    html += '<th>Slot</th><th>Category</th><th>Bonus</th><th>Rank</th><th style="text-align:right;">%</th><th style="text-align:right;">Combined Rating</th><th style="text-align:right;">Item Level</th>';
+    html += '<th>Category</th><th>Type</th><th>Bonus</th><th>Rank</th><th style="text-align:right;">%</th><th style="text-align:right;">Combined Rating</th><th style="text-align:right;">Item Level</th>';
     html += '</tr></thead><tbody>';
     for (var r = 0; r < rows.length; r++) {
       var row = rows[r];
@@ -781,8 +781,8 @@
       var rankClass = COLLAR_RANK_CLASS[row.rank] || "";
       var pctText = row.pct == null ? "—" : (row.pct + "%");
       html += '<tr>';
-      html += '<td><span class="badge badge-' + escapeHtml(slotLower) + '" style="font-size:0.7rem;padding:0.15rem 0.55rem;">' + escapeHtml(row.slot) + '</span></td>';
       html += '<td>' + escapeHtml(row.category) + '</td>';
+      html += '<td><span class="badge badge-' + escapeHtml(slotLower) + '" style="font-size:0.7rem;padding:0.15rem 0.55rem;">' + escapeHtml(row.slot) + '</span></td>';
       html += '<td>' + escapeHtml(row.bonusText) + '</td>';
       html += '<td><span class="collar-rank collar-rank-' + rankClass + '">' + escapeHtml(rankLabel) + '</span></td>';
       html += '<td style="text-align:right;font-family:var(--font-mono,monospace);">' + escapeHtml(pctText) + '</td>';
