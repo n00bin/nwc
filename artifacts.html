@@ -91,6 +91,64 @@
       overflow: hidden;
     }
     .rank-card:hover { border-color: var(--border-accent); }
+
+    .ranking-info {
+      background: linear-gradient(135deg, rgba(240, 136, 62, 0.08), rgba(240, 136, 62, 0.02));
+      border: 1px solid rgba(240, 136, 62, 0.4);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+    .ranking-info-icon {
+      flex-shrink: 0;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background: rgba(240, 136, 62, 0.15);
+      border: 1px solid rgba(240, 136, 62, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f0883e;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .ranking-info-body { flex: 1; }
+    .ranking-info-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #f0883e;
+      margin-bottom: 0.35rem;
+    }
+    .ranking-info-text {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    .ranking-info-text strong { color: var(--text-primary); }
+    .ranking-info-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.55rem;
+    }
+    .ranking-info-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(240, 136, 62, 0.1);
+      color: #f0883e;
+      border: 1px solid rgba(240, 136, 62, 0.3);
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -117,8 +175,18 @@
 
   <div class="art-container art-view active" id="view-all"><div id="all-list"></div></div>
   <div class="art-container art-view" id="view-ranking">
-    <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.55;margin-bottom:1rem;">
-      Ranked by debuff strength against enemies — either <strong>+ damage taken</strong> or <strong>− damage resistance</strong>. Higher rank = stronger group buff to your party's damage output.
+    <div class="ranking-info">
+      <div class="ranking-info-icon">⚔</div>
+      <div class="ranking-info-body">
+        <div class="ranking-info-title">How this list is ranked</div>
+        <div class="ranking-info-text">
+          Sorted by <strong>group debuff strength</strong> — how much each artifact amplifies your party's damage against the enemy. Higher rank = stronger contribution to total team DPS.
+        </div>
+        <div class="ranking-info-tags">
+          <span class="ranking-info-tag">+ Damage Taken</span>
+          <span class="ranking-info-tag">− Damage Resistance</span>
+        </div>
+      </div>
     </div>
     <div id="ranking-list"></div>
   </div>
