@@ -1,7 +1,5 @@
 // Mount name -> mount image filename mapping
 window.MOUNT_IMAGES = {
-  "Aberrant Drake": "aberrant-drake.webp",
-  "Aberrant Fey Wolf": "aberrant-fey-wolf.webp",
   "Amphail Fancy Horse": "amphail-fancy-horse.webp",
   "Apparatus of Gond": "apparatus-of-gond.webp",
   "Apparatus of Kwalish": "apparatus-of-kwalish.webp",

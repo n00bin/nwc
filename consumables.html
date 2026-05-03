@@ -23,18 +23,6 @@
       gap: 0.6rem;
       margin-bottom: 1.5rem;
     }
-    .cnsm-search {
-      flex: 1;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      font-size: 0.95rem;
-      padding: 0.55rem 0.8rem;
-      outline: none;
-      transition: border-color 0.15s;
-    }
-    .cnsm-search:focus { border-color: var(--accent); }
     .cnsm-count { font-size: 0.85rem; color: var(--text-muted); flex-shrink: 0; }
 
     /* Buff slot rules box */
@@ -268,7 +256,7 @@
     <p class="cnsm-intro">Items that apply self-buffs to your character. Categories below marked <span class="cnsm-excl-badge">Only one active at a time</span> are exclusive within themselves but stack with other categories.</p>
 
     <div class="cnsm-search-bar">
-      <input type="text" class="cnsm-search" id="cnsm-search" placeholder="Search consumables...">
+      <input type="text" class="search-input" id="cnsm-search" placeholder="Search consumables...">
       <span class="cnsm-count" id="cnsm-count"></span>
     </div>
 
