@@ -20,3 +20,10 @@ images/enhancements/names/
 images/companions/check_*
 images/companions/powernames/
 images/companions/unique/
+
+# Local dev tooling (puppeteer for headless render checks)
+node_modules/
+package.json
+package-lock.json
+_test_*.js
+_check_*.js

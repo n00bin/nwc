@@ -234,13 +234,13 @@
       var sel = c.id === selectedId ? " selected" : "";
       var name = currentQuery ? highlightMatch(c.name, currentQuery) : escapeHtml(c.name);
 
-      // Show slot badges in the list
+      // Show slot pills in the list
       var pw = powerMap[c.powerRef];
       var badges = "";
       if (pw && pw.slot) {
         for (var s = 0; s < pw.slot.length; s++) {
           var slotLower = pw.slot[s].toLowerCase();
-          badges += '<span class="badge badge-' + slotLower + '" style="font-size:0.6rem;padding:0.1rem 0.35rem;">' + pw.slot[s].charAt(0) + "</span> ";
+          badges += '<span class="badge badge-' + slotLower + '" style="font-size:0.65rem;padding:0.12rem 0.55rem;margin-left:0.3rem;">' + escapeHtml(pw.slot[s]) + "</span>";
         }
       }
 
