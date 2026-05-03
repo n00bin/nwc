@@ -7,43 +7,288 @@
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/layout.css">
   <style>
-    .detail-icon { width: 48px; height: 48px; border-radius: var(--radius-sm); border: 1px solid var(--border-default); flex-shrink: 0; }
-    .list-icon { width: 28px; height: 28px; border-radius: 3px; margin-right: 0.4rem; vertical-align: middle; flex-shrink: 0; }
+    .cnsm-page { max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
+    .cnsm-page h2 { margin: 0 0 0.4rem; }
+    .cnsm-intro {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Search bar */
+    .cnsm-search-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .cnsm-search {
+      flex: 1;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      padding: 0.55rem 0.8rem;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .cnsm-search:focus { border-color: var(--accent); }
+    .cnsm-count { font-size: 0.85rem; color: var(--text-muted); flex-shrink: 0; }
+
+    /* Buff slot rules box */
+    .cnsm-rules {
+      background: rgba(240, 136, 62, 0.07);
+      border: 1px solid rgba(240, 136, 62, 0.4);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+    .cnsm-rules-title {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #f0883e;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+    }
+    .cnsm-rules p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin: 0 0 0.5rem;
+    }
+    .cnsm-rules ul { margin: 0.5rem 0 0.6rem; padding-left: 1.4rem; }
+    .cnsm-rules li {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .cnsm-rules li strong { color: var(--text-primary); }
+    .cnsm-rules .small {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin: 0.4rem 0 0;
+    }
+
+    /* Sections */
+    .cnsm-section { margin-bottom: 2rem; }
+    .cnsm-section-head {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .cnsm-section-name {
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    .cnsm-excl-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(240, 136, 62, 0.12);
+      color: #f0883e;
+      border: 1px solid rgba(240, 136, 62, 0.35);
+      white-space: nowrap;
+    }
+    .cnsm-section-count {
+      margin-left: auto;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Card grid */
+    .cnsm-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+    @media (min-width: 720px) {
+      .cnsm-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Card */
+    .cnsm-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      transition: border-color 0.15s, transform 0.15s;
+      display: flex;
+      flex-direction: column;
+    }
+    .cnsm-card:hover { border-color: var(--border-accent); }
+    .cnsm-card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      margin-bottom: 0.5rem;
+    }
+    .cnsm-card-icon, .cnsm-card-icon-ph {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+    }
+    .cnsm-card-icon { object-fit: contain; padding: 2px; }
+    .cnsm-card-icon-ph { border: 1px dashed var(--border-default); }
+    .cnsm-card-id { flex: 1; min-width: 0; }
+    .cnsm-card-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+    .cnsm-card-source {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 0.15rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cnsm-card-text {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0.4rem 0 0.6rem;
+    }
+
+    /* Stat chips */
+    .cnsm-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.6rem;
+    }
+    .cnsm-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.18rem 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+    }
+    .cnsm-chip-power      { color: #ff8a4c; border-color: rgba(255,138,76,0.45);  background: rgba(255,138,76,0.12); }
+    .cnsm-chip-defense    { color: #5fc4ff; border-color: rgba(95,196,255,0.45);  background: rgba(95,196,255,0.12); }
+    .cnsm-chip-crit       { color: #ff6a6a; border-color: rgba(255,106,106,0.45); background: rgba(255,106,106,0.12); }
+    .cnsm-chip-critsev    { color: #ffae5f; border-color: rgba(255,174,95,0.45);  background: rgba(255,174,95,0.12); }
+    .cnsm-chip-critavoid  { color: #5fa3ff; border-color: rgba(95,163,255,0.45);  background: rgba(95,163,255,0.12); }
+    .cnsm-chip-deflect    { color: #5fff8a; border-color: rgba(95,255,138,0.45);  background: rgba(95,255,138,0.12); }
+    .cnsm-chip-accuracy   { color: #8aff5f; border-color: rgba(138,255,95,0.45);  background: rgba(138,255,95,0.12); }
+    .cnsm-chip-awareness  { color: #c46cff; border-color: rgba(196,108,255,0.45); background: rgba(196,108,255,0.12); }
+    .cnsm-chip-cadv       { color: #ffd05f; border-color: rgba(255,208,95,0.45);  background: rgba(255,208,95,0.12); }
+    .cnsm-chip-movement   { color: #ffe45f; border-color: rgba(255,228,95,0.45);  background: rgba(255,228,95,0.12); }
+    .cnsm-chip-healing    { color: #ff7aae; border-color: rgba(255,122,174,0.45); background: rgba(255,122,174,0.12); }
+    .cnsm-chip-hp         { color: #ff5a5a; border-color: rgba(255,90,90,0.45);   background: rgba(255,90,90,0.12); }
+    .cnsm-chip-stamina    { color: #ffa55f; border-color: rgba(255,165,95,0.45);  background: rgba(255,165,95,0.12); }
+    .cnsm-chip-ap         { color: #5ff5ff; border-color: rgba(95,245,255,0.45);  background: rgba(95,245,255,0.12); }
+    .cnsm-chip-damage     { color: #ff5a8a; border-color: rgba(255,90,138,0.45);  background: rgba(255,90,138,0.12); }
+    .cnsm-chip-ability    { color: #c4c4c4; border-color: rgba(196,196,196,0.35); background: rgba(196,196,196,0.08); }
+    .cnsm-chip-default    { color: var(--text-secondary); border-color: var(--border-default); background: var(--bg-elevated); }
+
+    /* Status pills */
+    .cnsm-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      align-items: center;
+      margin-top: auto;
+    }
+    .cnsm-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.76rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-default);
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .cnsm-pill-persist {
+      color: #6cd96c;
+      border-color: rgba(108,217,108,0.4);
+      background: rgba(108,217,108,0.08);
+    }
+    .cnsm-pill-ondeath {
+      color: #ff8a8a;
+      border-color: rgba(255,138,138,0.35);
+      background: rgba(255,138,138,0.08);
+    }
+    .cnsm-pill-permanent {
+      color: var(--accent);
+      border-color: rgba(88,166,255,0.35);
+      background: rgba(88,166,255,0.08);
+    }
+    .cnsm-pill-party {
+      color: #c4d4ff;
+      border-color: rgba(196,212,255,0.3);
+      background: rgba(196,212,255,0.06);
+    }
+
+    .cnsm-empty {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      padding: 2.5rem;
+      border: 1px dashed var(--border-default);
+      border-radius: var(--radius-md);
+    }
+    .cnsm-note {
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin: 0.2rem 0 0.6rem;
+      line-height: 1.45;
+    }
   </style>
 </head>
 <body>
   <nav class="navbar"></nav>
 
-  <!-- Filters / Search -->
-  <div class="controls-bar">
-    <input type="text" class="search-input" id="search" placeholder="Search consumables...">
-    <select class="filter-select" id="filter-category">
-      <option value="">All Categories</option>
-    </select>
-    <select class="filter-select" id="filter-expiration">
-      <option value="">All Durations</option>
-      <option value="persist">Persists through death</option>
-      <option value="on_death">Lost on death</option>
-      <option value="permanent">Permanent</option>
-    </select>
+  <div class="cnsm-page">
+    <h2>Consumables &amp; Buffs</h2>
+    <p class="cnsm-intro">Items that apply self-buffs to your character. Categories below marked <span class="cnsm-excl-badge">Only one active at a time</span> are exclusive within themselves but stack with other categories.</p>
+
+    <div class="cnsm-search-bar">
+      <input type="text" class="cnsm-search" id="cnsm-search" placeholder="Search consumables...">
+      <span class="cnsm-count" id="cnsm-count"></span>
+    </div>
+
+    <div class="cnsm-rules">
+      <div class="cnsm-rules-title">⚠ Buff Slot Rules</div>
+      <p>Each character can have <strong>one buff active per exclusive category</strong> at the same time. The exclusive categories occupy independent buff slots, so you can simultaneously have:</p>
+      <ul>
+        <li><strong>1 Potion</strong> — only one potion in effect at a time</li>
+        <li><strong>1 Elixir</strong> — only one elixir in effect at a time</li>
+        <li><strong>1 Stronghold Food</strong> — only one stronghold food may be in effect at a time</li>
+        <li><strong>1 Event Food</strong> — only one Event Food buff at a time</li>
+      </ul>
+      <p class="small">Scrolls, Belt Items, and Other buffs stack independently — you can have many of those active at once.</p>
+    </div>
+
+    <div id="cnsm-sections"></div>
   </div>
 
-  <!-- Two-panel layout -->
-  <div class="page-body">
-    <div class="list-panel" id="list-panel">
-      <div class="list-count" id="list-count"></div>
-      <div id="buff-list"></div>
-    </div>
-    <div class="detail-panel" id="detail-panel">
-      <div class="empty-state">Select a consumable to view details</div>
-    </div>
-  </div>
-
-  <!-- Data -->
   <script src="data/buffs.js"></script>
   <script src="data/consumable-images.js"></script>
-
-  <!-- Scripts -->
   <script src="js/shared.js"></script>
   <script src="js/consumables-page.js"></script>
 </body>

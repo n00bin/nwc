@@ -1,246 +1,250 @@
 /* ============================================================
-   NWC Consumables Page
+   NWC Consumables Page — card grid layout
    ============================================================ */
 
 (function () {
-  // ---- DOM refs ----
-  var searchInput      = document.getElementById("search");
-  var filterCategory   = document.getElementById("filter-category");
-  var filterExpiration = document.getElementById("filter-expiration");
-  var listContainer    = document.getElementById("buff-list");
-  var listCount        = document.getElementById("list-count");
-  var detailPanel      = document.getElementById("detail-panel");
+  var searchInput = document.getElementById('cnsm-search');
+  var sectionsEl  = document.getElementById('cnsm-sections');
+  var countEl     = document.getElementById('cnsm-count');
 
-  var selectedId = null;
-  var currentQuery = "";
+  renderNav('Consumables');
 
-  // ---- Init nav ----
-  renderNav("Consumables");
+  // Section ordering and exclusivity flags (matches Neverwinter rules).
+  // Categories not in this list still render under "Other" at the end.
+  var SECTIONS = [
+    { key: 'Elixir',          exclusive: true  },
+    { key: 'Event Food',      exclusive: true  },
+    { key: 'Stronghold Food', exclusive: true  },
+    { key: 'Potion',          exclusive: true  },
+    { key: 'Scroll',          exclusive: false },
+    { key: 'Belt Item',       exclusive: false },
+    { key: 'Other',           exclusive: false }
+  ];
 
-  // ---- Populate category filter ----
-  var categories = {};
-  for (var i = 0; i < BUFFS_DATA.length; i++) {
-    var cat = BUFFS_DATA[i].category;
-    if (cat) categories[cat] = true;
-  }
-  populateFilter(filterCategory, Object.keys(categories).sort(), "All Categories");
+  var STAT_CHIP_CLASSES = {
+    'Power':              'cnsm-chip-power',
+    'Defense':            'cnsm-chip-defense',
+    'CriticalStrike':     'cnsm-chip-crit',
+    'CriticalSeverity':   'cnsm-chip-critsev',
+    'CriticalAvoidance':  'cnsm-chip-critavoid',
+    'Deflect':            'cnsm-chip-deflect',
+    'Accuracy':           'cnsm-chip-accuracy',
+    'Awareness':          'cnsm-chip-awareness',
+    'CombatAdvantage':    'cnsm-chip-cadv',
+    'Combat Advantage':   'cnsm-chip-cadv',
+    'MovementSpeed':      'cnsm-chip-movement',
+    'IncomingHealing':    'cnsm-chip-healing',
+    'OutgoingHealing':    'cnsm-chip-healing',
+    'MaxHPPercent':       'cnsm-chip-hp',
+    'MaximumHitPoints':   'cnsm-chip-hp',
+    'IncomingDamage':     'cnsm-chip-damage',
+    'OutgoingDamage':     'cnsm-chip-damage',
+    'Stamina':            'cnsm-chip-stamina',
+    'StaminaRegen':       'cnsm-chip-stamina',
+    'ActionPoints':       'cnsm-chip-ap'
+  };
 
-  // ---- Filter logic ----
-  function getFilteredBuffs() {
-    var query   = searchInput.value.trim().toLowerCase();
-    var catVal  = filterCategory.value;
-    var expVal  = filterExpiration.value;
-    currentQuery = query;
-
-    return BUFFS_DATA.filter(function (b) {
-      if (query) {
-        var haystack = (b.name + " " + b.category + " " + (b.notes || "")).toLowerCase();
-        if (haystack.indexOf(query) === -1) return false;
-      }
-      if (catVal && b.category !== catVal) return false;
-      if (expVal && b.expiration !== expVal) return false;
-      return true;
-    });
-  }
-
-  // ---- Category badge class ----
-  function getCategoryClass(cat) {
-    var map = {
-      "Elixir": "badge-defense",
-      "Potion": "badge-offense",
-      "Event Food": "badge-utility",
-      "Stronghold Food": "badge-utility",
-      "Scroll": "badge-offense",
-      "Belt Item": "badge-defense",
-      "Other": "badge-universal"
-    };
-    return map[cat] || "badge-universal";
+  function chipClass(stat) {
+    return STAT_CHIP_CLASSES[stat] || 'cnsm-chip-default';
   }
 
-  // ---- Format duration ----
+  function prettyStat(stat) {
+    return String(stat)
+      .replace(/MaxHPPercent/, 'Max HP %')
+      .replace(/MaximumHitPoints/, 'Max HP')
+      .replace(/ActionPoints/, 'AP')
+      .replace(/StaminaRegen/, 'Stamina Regen')
+      .replace(/IncomingHealing/, 'Incoming Healing')
+      .replace(/OutgoingHealing/, 'Outgoing Healing')
+      .replace(/IncomingDamage/, 'Incoming Damage')
+      .replace(/OutgoingDamage/, 'Outgoing Damage')
+      .replace(/CombatAdvantage/, 'Combat Advantage')
+      .replace(/CriticalStrike/, 'Critical Strike')
+      .replace(/CriticalSeverity/, 'Critical Severity')
+      .replace(/CriticalAvoidance/, 'Critical Avoidance')
+      .replace(/MovementSpeed/, 'Movement Speed');
+  }
+
+  function formatRating(v) {
+    if (v == null) return '';
+    var sign = v > 0 ? '+' : (v < 0 ? '' : '');
+    return sign + Math.round(v).toLocaleString();
+  }
+
+  function formatPercent(v) {
+    if (v == null) return '';
+    var sign = v > 0 ? '+' : '';
+    return sign + v + '%';
+  }
+
   function formatDuration(seconds) {
-    if (!seconds || seconds === 0) return "Permanent";
-    if (seconds < 60) return seconds + "s";
-    if (seconds < 3600) return Math.round(seconds / 60) + " min";
-    return Math.round(seconds / 3600) + " hour";
+    if (!seconds || seconds === 0) return null;
+    if (seconds < 60) return seconds + 's';
+    if (seconds < 3600) return Math.round(seconds / 60) + ' min';
+    var hours = seconds / 3600;
+    if (hours === Math.floor(hours)) return hours + 'h';
+    return hours.toFixed(1) + 'h';
   }
 
-  // ---- Render list ----
-  function renderList(buffs) {
-    listCount.textContent = buffs.length + " of " + BUFFS_DATA.length + " consumables";
+  // Some notes are plain stat dumps duplicating the chips. Skip those.
+  // Show notes only if they contain narrative info.
+  function shouldShowNotes(notes) {
+    if (!notes) return false;
+    var trimmed = notes.replace(/normalized:.*$/i, '').trim();
+    if (!trimmed) return false;
+    // Looks like just "+X stat" or "+X% stat" repeated? skip.
+    if (/^[+\-]?[\d.,%\sA-Za-z\/]+$/.test(trimmed) && trimmed.length < 60) return false;
+    return true;
+  }
 
-    if (buffs.length === 0) {
-      listContainer.innerHTML = '<div class="empty-state">No consumables match your filters</div>';
+  function cleanCardNote(notes) {
+    return notes
+      .replace(/\|\s*normalized:.*$/i, '')
+      .replace(/normalized:.*$/i, '')
+      .trim();
+  }
+
+  function renderCard(b) {
+    var img = window.CONSUMABLE_IMAGES && window.CONSUMABLE_IMAGES[b.name];
+    var html = '<div class="cnsm-card">';
+
+    html += '<div class="cnsm-card-head">';
+    if (img) {
+      html += '<img class="cnsm-card-icon" src="images/consumables/' + escapeHtml(img) + '" alt="" loading="lazy">';
+    } else {
+      html += '<div class="cnsm-card-icon-ph"></div>';
+    }
+    html += '<div class="cnsm-card-id">';
+    html += '<div class="cnsm-card-name">' + escapeHtml(b.name) + '</div>';
+    if (b.source) html += '<div class="cnsm-card-source">' + escapeHtml(b.source) + '</div>';
+    html += '</div>';
+    html += '</div>';
+
+    // Stat chips
+    var chips = '';
+    if (b.ratingStats) {
+      Object.keys(b.ratingStats).forEach(function (s) {
+        chips += '<span class="cnsm-chip ' + chipClass(s) + '">'
+              +  escapeHtml(formatRating(b.ratingStats[s])) + ' ' + escapeHtml(prettyStat(s))
+              +  '</span>';
+      });
+    }
+    if (b.percentStats) {
+      Object.keys(b.percentStats).forEach(function (s) {
+        chips += '<span class="cnsm-chip ' + chipClass(s) + '">'
+              +  escapeHtml(formatPercent(b.percentStats[s])) + ' ' + escapeHtml(prettyStat(s))
+              +  '</span>';
+      });
+    }
+    if (b.abilityBonuses) {
+      Object.keys(b.abilityBonuses).forEach(function (s) {
+        chips += '<span class="cnsm-chip cnsm-chip-ability">'
+              +  escapeHtml(formatRating(b.abilityBonuses[s])) + ' ' + escapeHtml(s)
+              +  '</span>';
+      });
+    }
+    if (b.enemyType && b.damagePct) {
+      chips += '<span class="cnsm-chip cnsm-chip-damage">'
+            +  escapeHtml(formatPercent(b.damagePct)) + ' vs ' + escapeHtml(b.enemyType)
+            +  '</span>';
+    }
+    if (chips) {
+      html += '<div class="cnsm-chips">' + chips + '</div>';
+    }
+
+    // Narrative note (only if it adds info beyond the chips)
+    if (shouldShowNotes(b.notes)) {
+      html += '<div class="cnsm-note">' + escapeHtml(cleanCardNote(b.notes)) + '</div>';
+    }
+
+    // Status pills
+    var pills = '';
+    var dur = formatDuration(b.duration_s);
+    if (dur) pills += '<span class="cnsm-pill">⏱ ' + escapeHtml(dur) + '</span>';
+    if (b.expiration === 'persist') {
+      pills += '<span class="cnsm-pill cnsm-pill-persist">Persists through death</span>';
+    } else if (b.expiration === 'on_death') {
+      pills += '<span class="cnsm-pill cnsm-pill-ondeath">Lost on death</span>';
+    } else if (b.expiration === 'permanent') {
+      pills += '<span class="cnsm-pill cnsm-pill-permanent">Permanent</span>';
+    }
+    if (b.scope === 'party') {
+      pills += '<span class="cnsm-pill cnsm-pill-party">Party</span>';
+    }
+    if (pills) {
+      html += '<div class="cnsm-pills">' + pills + '</div>';
+    }
+
+    html += '</div>';
+    return html;
+  }
+
+  function render() {
+    var query = (searchInput.value || '').trim().toLowerCase();
+    var groups = {};
+    SECTIONS.forEach(function (s) { groups[s.key] = []; });
+
+    var totalShown = 0;
+    BUFFS_DATA.forEach(function (b) {
+      if (query) {
+        var hay = (b.name + ' ' + (b.category || '') + ' ' + (b.notes || '') + ' ' + (b.source || '')).toLowerCase();
+        if (hay.indexOf(query) === -1) return;
+      }
+      var cat = b.category || 'Other';
+      if (!groups.hasOwnProperty(cat)) groups[cat] = [];
+      groups[cat].push(b);
+      totalShown += 1;
+    });
+
+    countEl.textContent = totalShown + ' of ' + BUFFS_DATA.length;
+
+    if (totalShown === 0) {
+      sectionsEl.innerHTML = '<div class="cnsm-empty">No consumables match your search.</div>';
       return;
     }
 
-    var html = "";
-    for (var i = 0; i < buffs.length; i++) {
-      var b = buffs[i];
-      var sel = b.id === selectedId ? " selected" : "";
-      var name = currentQuery ? highlightMatch(b.name, currentQuery) : escapeHtml(b.name);
-      var catClass = getCategoryClass(b.category);
+    var html = '';
+    // Render sections in defined order, then any extra categories at the end.
+    var rendered = {};
+    SECTIONS.forEach(function (s) {
+      rendered[s.key] = true;
+      var items = groups[s.key];
+      if (!items || items.length === 0) return;
+      items.sort(function (a, b) { return a.name.localeCompare(b.name); });
 
-      var listImg = window.CONSUMABLE_IMAGES && window.CONSUMABLE_IMAGES[b.name];
-      html += '<div class="list-item' + sel + '" data-id="' + b.id + '">';
-      if (listImg) {
-        html += '<img class="list-icon" src="images/consumables/' + listImg + '" alt="">';
+      html += '<div class="cnsm-section">';
+      html += '<div class="cnsm-section-head">';
+      html += '<div class="cnsm-section-name">' + escapeHtml(s.key) + '</div>';
+      if (s.exclusive) {
+        html += '<span class="cnsm-excl-badge">Only one active at a time</span>';
       }
-      html += '<span class="item-name">' + name + "</span>";
-      html += '<span class="item-meta"><span class="badge ' + catClass + '" style="font-size:0.6rem;padding:0.1rem 0.35rem;">' + escapeHtml(b.category.charAt(0)) + "</span></span>";
-      html += "</div>";
-    }
-    listContainer.innerHTML = html;
+      html += '<span class="cnsm-section-count">' + items.length + '</span>';
+      html += '</div>';
+      html += '<div class="cnsm-grid">';
+      items.forEach(function (b) { html += renderCard(b); });
+      html += '</div>';
+      html += '</div>';
+    });
+    Object.keys(groups).forEach(function (k) {
+      if (rendered[k]) return;
+      var items = groups[k];
+      if (!items || items.length === 0) return;
+      items.sort(function (a, b) { return a.name.localeCompare(b.name); });
+
+      html += '<div class="cnsm-section">';
+      html += '<div class="cnsm-section-head">';
+      html += '<div class="cnsm-section-name">' + escapeHtml(k) + '</div>';
+      html += '<span class="cnsm-section-count">' + items.length + '</span>';
+      html += '</div>';
+      html += '<div class="cnsm-grid">';
+      items.forEach(function (b) { html += renderCard(b); });
+      html += '</div>';
+      html += '</div>';
+    });
+
+    sectionsEl.innerHTML = html;
   }
 
-  // ---- Render detail ----
-  function renderDetail(buff) {
-    if (!buff) {
-      detailPanel.innerHTML = '<div class="empty-state">Select a consumable to view details</div>';
-      return;
-    }
-
-    var html = "";
-
-    // Name with icon
-    var buffImg = window.CONSUMABLE_IMAGES && window.CONSUMABLE_IMAGES[buff.name];
-    html += '<div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">';
-    if (buffImg) {
-      html += '<img class="detail-icon" src="images/consumables/' + buffImg + '" alt="">';
-    }
-    html += '<h2 style="margin:0;">' + escapeHtml(buff.name) + "</h2>";
-    html += "</div>";
-
-    // ---- Info block ----
-    html += '<div class="proc-block">';
-    html += '<div class="detail-meta">';
-    html += '<span class="badge ' + getCategoryClass(buff.category) + '">' + escapeHtml(buff.category) + "</span> ";
-    if (buff.expiration === "persist") {
-      html += '<span class="badge" style="background:var(--stat-positive);color:#fff;">Persists through death</span> ';
-    } else if (buff.expiration === "on_death") {
-      html += '<span class="badge" style="background:var(--stat-negative);color:#fff;">Lost on death</span> ';
-    } else if (buff.expiration === "permanent") {
-      html += '<span class="badge" style="background:var(--accent);color:#fff;">Permanent</span> ';
-    }
-    html += "</div>";
-
-    html += '<div class="detail-meta" style="margin-top:0.4rem;">';
-    html += "<span>Duration: " + formatDuration(buff.duration_s) + "</span>";
-    if (buff.scope) {
-      html += "<span>Scope: " + escapeHtml(buff.scope) + "</span>";
-    }
-    if (buff.exclusiveGroup) {
-      html += "<span>Group: " + escapeHtml(buff.exclusiveGroup) + "</span>";
-    }
-    html += "</div>";
-    if (buff.source) {
-      html += '<div style="margin-top:0.4rem;font-size:0.85rem;"><span style="color:var(--text-muted);">Source: </span><span style="color:var(--highlight);">' + escapeHtml(buff.source) + "</span></div>";
-    }
-    html += "</div>";
-
-    // ---- Rating Stats ----
-    var ratingKeys = buff.ratingStats ? Object.keys(buff.ratingStats) : [];
-    if (ratingKeys.length > 0) {
-      html += '<div class="section-header">Rating Stats</div>';
-      html += '<div class="proc-block">';
-      for (var r = 0; r < ratingKeys.length; r++) {
-        var stat = ratingKeys[r];
-        var val = buff.ratingStats[stat];
-        html += '<div class="stat-row">';
-        html += '<span class="stat-name">' + escapeHtml(stat) + "</span>";
-        html += renderStatValue(val, "rating");
-        html += "</div>";
-      }
-      html += "</div>";
-    }
-
-    // ---- Percent Stats ----
-    var pctKeys = buff.percentStats ? Object.keys(buff.percentStats) : [];
-    if (pctKeys.length > 0) {
-      html += '<div class="section-header">Percent Stats</div>';
-      html += '<div class="proc-block">';
-      for (var p = 0; p < pctKeys.length; p++) {
-        var pstat = pctKeys[p];
-        var pval = buff.percentStats[pstat];
-        html += '<div class="stat-row">';
-        html += '<span class="stat-name">' + escapeHtml(pstat) + "</span>";
-        html += renderStatValue(pval, "percent");
-        html += "</div>";
-      }
-      html += "</div>";
-    }
-
-    // ---- Ability Bonuses ----
-    if (buff.abilityBonuses) {
-      var abilityKeys = Object.keys(buff.abilityBonuses);
-      if (abilityKeys.length > 0) {
-        html += '<div class="section-header">Ability Bonuses</div>';
-        html += '<div class="proc-block">';
-        for (var a = 0; a < abilityKeys.length; a++) {
-          html += '<div class="stat-row">';
-          html += '<span class="stat-name">' + escapeHtml(abilityKeys[a]) + "</span>";
-          html += renderStatValue(buff.abilityBonuses[abilityKeys[a]], "rating");
-          html += "</div>";
-        }
-        html += "</div>";
-      }
-    }
-
-    // ---- Enemy Type Damage ----
-    if (buff.enemyType && buff.damagePct) {
-      html += '<div class="section-header">Special Effect</div>';
-      html += '<div class="proc-block">';
-      html += '<div class="stat-row">';
-      html += '<span class="stat-name">Damage vs ' + escapeHtml(buff.enemyType) + "</span>";
-      html += renderStatValue(buff.damagePct, "percent");
-      html += "</div>";
-      html += "</div>";
-    }
-
-    // ---- Notes ----
-    if (buff.notes) {
-      html += '<div class="section-header">Notes</div>';
-      html += '<div class="effect-text">' + escapeHtml(cleanNotes(buff.notes)) + "</div>";
-    }
-
-    detailPanel.innerHTML = html;
-  }
-
-  // ---- Event handlers ----
-  function onFilterChange() {
-    var filtered = getFilteredBuffs();
-    renderList(filtered);
-    if (selectedId != null) {
-      var stillVisible = filtered.some(function (b) { return b.id === selectedId; });
-      if (!stillVisible) {
-        selectedId = null;
-        renderDetail(null);
-      }
-    }
-  }
-
-  listContainer.addEventListener("click", function (e) {
-    var item = e.target.closest(".list-item");
-    if (!item) return;
-    var id = parseInt(item.getAttribute("data-id"), 10);
-    selectedId = id;
-
-    var items = listContainer.querySelectorAll(".list-item");
-    for (var i = 0; i < items.length; i++) {
-      items[i].classList.toggle("selected", parseInt(items[i].getAttribute("data-id"), 10) === id);
-    }
-
-    var buff = null;
-    for (var j = 0; j < BUFFS_DATA.length; j++) {
-      if (BUFFS_DATA[j].id === id) { buff = BUFFS_DATA[j]; break; }
-    }
-    renderDetail(buff);
-  });
-
-  searchInput.addEventListener("input", onFilterChange);
-  filterCategory.addEventListener("change", onFilterChange);
-  filterExpiration.addEventListener("change", onFilterChange);
-
-  // ---- Initial render ----
-  renderList(BUFFS_DATA);
+  searchInput.addEventListener('input', render);
+  render();
 })();
