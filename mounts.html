@@ -261,9 +261,9 @@
     <span style="color:var(--text-muted);font-size:0.85rem;">Saved in this browser only.</span>
   </div>
   <div id="planner-view" style="display:none; max-width:1400px; margin:0 auto; padding:1rem 1.5rem 3rem;">
-    <details id="planner-howto" style="margin-bottom:1.25rem;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);">
-      <summary style="cursor:pointer;padding:0.6rem 0.9rem;font-weight:600;color:var(--accent,#58a6ff);font-size:0.95rem;list-style:none;">How to use the Stable Planner</summary>
-      <ol style="color:var(--text-secondary);font-size:0.9rem;line-height:1.6;margin:0;padding:0 1.5rem 0.9rem 2.4rem;">
+    <div id="planner-howto" class="ranking-card" style="flex-direction:column;align-items:stretch;margin-bottom:1.25rem;">
+      <div style="font-weight:700;font-size:1rem;color:var(--accent,#58a6ff);margin-bottom:0.6rem;">How to use the Stable Planner</div>
+      <ol style="color:var(--text-secondary);font-size:0.9rem;line-height:1.6;margin:0;padding-left:1.4rem;">
         <li><strong>Click "+ Add Loadout"</strong> for each loadout you actually run in-game (e.g., one for healer, one for tank, one per DPS spec).</li>
         <li><strong>Name it, pick a role</strong> (DPS / Tank / Healer), then add up to 5 insignia bonuses you want active in that loadout. The same bonus can be added more than once if you want it on multiple mounts.</li>
         <li><strong>Check the Insignia Sharing Plan below.</strong> For each bonus, it shows the minimum number of distinct mounts you need across all your loadouts — and exactly which mounts to pick — so the same insignia set covers every loadout that wants the bonus. Each row has a "Save N upgrades" badge.</li>
@@ -271,7 +271,7 @@
         <li><strong>Don't own a recommended mount?</strong> Click the × on its tile. It moves to the "Excluded mounts" bar and the next-best candidate takes its place. Click ↻ to restore.</li>
         <li><strong>Everything saves automatically</strong> in this browser only — refresh, come back tomorrow, your loadouts are still there. Use "Clear All" to reset.</li>
       </ol>
-    </details>
+    </div>
     <div id="planner-editor"></div>
     <div id="planner-results" style="margin-top:1.5rem;"></div>
   </div>
