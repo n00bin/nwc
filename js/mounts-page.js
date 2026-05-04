@@ -1098,7 +1098,7 @@
   // ============================================================
   var PLANNER_STORAGE_KEY = "nwcb.loadouts.v1";
   var ROLE_OPTIONS = ["DPS", "Tank", "Healer"];
-  var MAX_BONUSES_PER_LOADOUT = 6;
+  var MAX_BONUSES_PER_LOADOUT = 5;
 
   var plannerState = loadPlannerState();
   var plannerIdCounter = computeNextLoadoutId(plannerState.loadouts);
