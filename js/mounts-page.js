@@ -1098,7 +1098,7 @@
   // ============================================================
   var PLANNER_STORAGE_KEY = "nwcb.loadouts.v1";
   var ROLE_OPTIONS = ["DPS", "Tank", "Healer"];
-  var MAX_BONUSES_PER_LOADOUT = 6;
+  var MAX_BONUSES_PER_LOADOUT = 5;
 
   var plannerState = loadPlannerState();
   var plannerIdCounter = computeNextLoadoutId(plannerState.loadouts);
@@ -1181,7 +1181,7 @@
       if (!bonus) continue;
       html += '<span class="badge" style="background:var(--bg-elevated);border:1px solid var(--border-default);color:var(--text-primary);padding:0.2rem 0.5rem;display:inline-flex;align-items:center;gap:0.25rem;">';
       html += escapeHtml(bonus.name);
-      html += '<button class="planner-remove-bonus" data-id="' + ld.id + '" data-bonus="' + bonus.id + '" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1rem;line-height:1;padding:0 0.15rem;">×</button>';
+      html += '<button class="planner-remove-bonus" data-id="' + ld.id + '" data-index="' + b + '" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1rem;line-height:1;padding:0 0.15rem;">×</button>';
       html += '</span>';
     }
     if (ld.desiredBonuses.length < MAX_BONUSES_PER_LOADOUT) {
@@ -1192,12 +1192,12 @@
       });
       for (var sb = 0; sb < sorted.length; sb++) {
         var sbo = sorted[sb];
-        if (ld.desiredBonuses.indexOf(sbo.id) !== -1) continue;
         html += '<option value="' + sbo.id + '">' + escapeHtml(sbo.name) + '</option>';
       }
       html += '</select>';
+      html += '<span style="color:var(--text-muted);font-size:0.75rem;">' + ld.desiredBonuses.length + '/' + MAX_BONUSES_PER_LOADOUT + ' slots used</span>';
     } else {
-      html += '<span style="color:var(--text-muted);font-size:0.8rem;">Max ' + MAX_BONUSES_PER_LOADOUT + ' bonuses reached</span>';
+      html += '<span style="color:var(--text-muted);font-size:0.8rem;">All ' + MAX_BONUSES_PER_LOADOUT + ' slots filled</span>';
     }
     html += '</div></div>';
     return html;
@@ -1243,12 +1243,15 @@
     return candidates;
   }
 
-  function renderBonusBlock(bonus, currentLoadout, sharingLoadoutNames) {
+  function renderBonusBlock(bonus, currentLoadout, sharingLoadoutNames, count) {
     var candidates = getCandidateMounts(bonus);
     var others = sharingLoadoutNames.filter(function (n) { return n !== currentLoadout.name; });
     var html = '<div style="margin:0.75rem 0 0.5rem;border-top:1px solid var(--border-default);padding-top:0.6rem;">';
     html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.4rem;">';
     html += '<span style="font-weight:600;color:var(--highlight);">' + escapeHtml(bonus.name) + '</span>';
+    if (count > 1) {
+      html += '<span style="font-size:0.75rem;font-weight:700;color:#000;background:var(--accent,#58a6ff);border-radius:var(--radius-sm);padding:0.1rem 0.4rem;">×' + count + ' (needs ' + count + ' distinct mounts)</span>';
+    }
     var req = bonus.requiredInsignias || [];
     for (var r = 0; r < req.length; r++) html += renderInsigniaBadge(req[r]);
     if (others.length) {
@@ -1286,10 +1289,18 @@
     if (!ld.desiredBonuses.length) {
       html += '<div class="empty-state" style="padding:0.5rem;">No bonuses selected.</div>';
     } else {
+      // Count occurrences per bonus to render each unique bonus once with a ×N badge
+      var counts = {};
+      var order = [];
       for (var b = 0; b < ld.desiredBonuses.length; b++) {
-        var bonus = bonusMap[ld.desiredBonuses[b]];
+        var bid = ld.desiredBonuses[b];
+        if (counts[bid] === undefined) { counts[bid] = 0; order.push(bid); }
+        counts[bid]++;
+      }
+      for (var oi = 0; oi < order.length; oi++) {
+        var bonus = bonusMap[order[oi]];
         if (!bonus) continue;
-        html += renderBonusBlock(bonus, ld, bonusToLoadoutNames[bonus.id] || []);
+        html += renderBonusBlock(bonus, ld, bonusToLoadoutNames[bonus.id] || [], counts[bonus.id]);
       }
     }
     html += '</div>';
@@ -1307,7 +1318,9 @@
       for (var b = 0; b < ld.desiredBonuses.length; b++) {
         var bid = ld.desiredBonuses[b];
         if (!bonusToLoadoutNames[bid]) bonusToLoadoutNames[bid] = [];
-        bonusToLoadoutNames[bid].push(ld.name);
+        if (bonusToLoadoutNames[bid].indexOf(ld.name) === -1) {
+          bonusToLoadoutNames[bid].push(ld.name);
+        }
       }
     }
     var html = '<h3 style="margin:0 0 0.75rem;color:var(--highlight);">Candidate Mounts</h3>';
@@ -1349,11 +1362,10 @@
         if (!ld2) return;
         var bid = parseInt(t.value, 10);
         if (!bid) return;
-        if (ld2.desiredBonuses.indexOf(bid) === -1) {
-          ld2.desiredBonuses.push(bid);
-          savePlannerState();
-          renderPlanner();
-        }
+        if (ld2.desiredBonuses.length >= MAX_BONUSES_PER_LOADOUT) return;
+        ld2.desiredBonuses.push(bid);
+        savePlannerState();
+        renderPlanner();
       }
     });
     plannerEditor.addEventListener("click", function (e) {
@@ -1364,10 +1376,12 @@
       } else if (t.classList.contains("planner-remove-bonus")) {
         var ld = findLoadout(t.dataset.id);
         if (!ld) return;
-        var bid = parseInt(t.dataset.bonus, 10);
-        ld.desiredBonuses = ld.desiredBonuses.filter(function (x) { return x !== bid; });
-        savePlannerState();
-        renderPlanner();
+        var idx = parseInt(t.dataset.index, 10);
+        if (idx >= 0 && idx < ld.desiredBonuses.length) {
+          ld.desiredBonuses.splice(idx, 1);
+          savePlannerState();
+          renderPlanner();
+        }
       }
     });
   }
