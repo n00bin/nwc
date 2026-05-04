@@ -735,9 +735,17 @@
   var filterInsigniaTier = document.getElementById("filter-insignia-tier");
   var filterInsigniaCategory = document.getElementById("filter-insignia-category");
 
+  var tabPlanner       = document.getElementById("tab-planner");
+  var plannerView      = document.getElementById("planner-view");
+  var plannerControls  = document.getElementById("planner-controls");
+  var plannerEditor    = document.getElementById("planner-editor");
+  var plannerResults   = document.getElementById("planner-results");
+  var plannerAddBtn    = document.getElementById("planner-add-loadout");
+  var plannerClearBtn  = document.getElementById("planner-clear");
+
   function switchMountTab(activeTab) {
     activeRankingTab = activeTab;
-    var tabs = [tabLookup, tabCombat, tabStdps, tabEquip, tabCollars, tabInsignias];
+    var tabs = [tabLookup, tabCombat, tabStdps, tabEquip, tabCollars, tabInsignias, tabPlanner];
     for (var t = 0; t < tabs.length; t++) if (tabs[t]) tabs[t].classList.remove("active");
     lookupView.style.display = "none";
     lookupControls.style.display = "none";
@@ -751,6 +759,8 @@
     if (collarsControls) collarsControls.style.display = "none";
     if (insigniasView) insigniasView.style.display = "none";
     if (insigniasControls) insigniasControls.style.display = "none";
+    if (plannerView) plannerView.style.display = "none";
+    if (plannerControls) plannerControls.style.display = "none";
   }
 
   tabLookup.addEventListener("click", function () {
@@ -1081,6 +1091,298 @@
     filterInsigniaTemplate.addEventListener("change", renderInsignias);
     filterInsigniaTier.addEventListener("change", renderInsignias);
     filterInsigniaCategory.addEventListener("change", renderInsignias);
+  }
+
+  // ============================================================
+  // Loadout Planner
+  // ============================================================
+  var PLANNER_STORAGE_KEY = "nwcb.loadouts.v1";
+  var ROLE_OPTIONS = ["DPS", "Tank", "Healer"];
+  var MAX_BONUSES_PER_LOADOUT = 6;
+
+  var plannerState = loadPlannerState();
+  var plannerIdCounter = computeNextLoadoutId(plannerState.loadouts);
+
+  function loadPlannerState() {
+    try {
+      var raw = localStorage.getItem(PLANNER_STORAGE_KEY);
+      if (!raw) return { loadouts: [] };
+      var parsed = JSON.parse(raw);
+      if (!parsed || !Array.isArray(parsed.loadouts)) return { loadouts: [] };
+      return parsed;
+    } catch (e) {
+      return { loadouts: [] };
+    }
+  }
+
+  function savePlannerState() {
+    try { localStorage.setItem(PLANNER_STORAGE_KEY, JSON.stringify(plannerState)); }
+    catch (e) { /* quota — ignore */ }
+  }
+
+  function computeNextLoadoutId(loadouts) {
+    var max = 0;
+    for (var i = 0; i < loadouts.length; i++) {
+      var m = /^ld(\d+)$/.exec(loadouts[i].id || "");
+      if (m) { var n = parseInt(m[1], 10); if (n > max) max = n; }
+    }
+    return max + 1;
+  }
+
+  function newLoadoutId() { return "ld" + (plannerIdCounter++); }
+
+  function findLoadout(id) {
+    for (var i = 0; i < plannerState.loadouts.length; i++) {
+      if (plannerState.loadouts[i].id === id) return plannerState.loadouts[i];
+    }
+    return null;
+  }
+
+  function addPlannerLoadout() {
+    plannerState.loadouts.push({
+      id: newLoadoutId(),
+      name: "Loadout " + (plannerState.loadouts.length + 1),
+      role: "DPS",
+      desiredBonuses: []
+    });
+    savePlannerState();
+    renderPlanner();
+  }
+
+  function deletePlannerLoadout(id) {
+    plannerState.loadouts = plannerState.loadouts.filter(function (l) { return l.id !== id; });
+    savePlannerState();
+    renderPlanner();
+  }
+
+  function clearAllPlannerLoadouts() {
+    if (!plannerState.loadouts.length) return;
+    if (!window.confirm("Delete all loadouts? This cannot be undone.")) return;
+    plannerState.loadouts = [];
+    savePlannerState();
+    renderPlanner();
+  }
+
+  function renderLoadoutCard(ld) {
+    var html = '<div class="ranking-card" data-loadout-id="' + ld.id + '" style="flex-direction:column;align-items:stretch;gap:0.5rem;margin-bottom:0.75rem;">';
+    html += '<div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">';
+    html += '<input type="text" class="search-input planner-name" data-id="' + ld.id + '" value="' + escapeHtml(ld.name) + '" style="max-width:240px;">';
+    html += '<select class="filter-select planner-role" data-id="' + ld.id + '">';
+    for (var r = 0; r < ROLE_OPTIONS.length; r++) {
+      var role = ROLE_OPTIONS[r];
+      html += '<option value="' + role + '"' + (ld.role === role ? ' selected' : '') + '>' + role + '</option>';
+    }
+    html += '</select>';
+    html += '<button class="filter-select planner-delete" data-id="' + ld.id + '" style="cursor:pointer;color:var(--stat-negative,#f85149);">Delete</button>';
+    html += '</div>';
+    html += '<div style="display:flex;gap:0.4rem;flex-wrap:wrap;align-items:center;">';
+    for (var b = 0; b < ld.desiredBonuses.length; b++) {
+      var bonus = bonusMap[ld.desiredBonuses[b]];
+      if (!bonus) continue;
+      html += '<span class="badge" style="background:var(--bg-elevated);border:1px solid var(--border-default);color:var(--text-primary);padding:0.2rem 0.5rem;display:inline-flex;align-items:center;gap:0.25rem;">';
+      html += escapeHtml(bonus.name);
+      html += '<button class="planner-remove-bonus" data-id="' + ld.id + '" data-bonus="' + bonus.id + '" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1rem;line-height:1;padding:0 0.15rem;">×</button>';
+      html += '</span>';
+    }
+    if (ld.desiredBonuses.length < MAX_BONUSES_PER_LOADOUT) {
+      html += '<select class="filter-select planner-add-bonus" data-id="' + ld.id + '">';
+      html += '<option value="">+ Add Bonus…</option>';
+      var sorted = MOUNT_INSIGNIA_BONUSES_DATA.slice().sort(function (a, b) {
+        return (a.name || "").localeCompare(b.name || "");
+      });
+      for (var sb = 0; sb < sorted.length; sb++) {
+        var sbo = sorted[sb];
+        if (ld.desiredBonuses.indexOf(sbo.id) !== -1) continue;
+        html += '<option value="' + sbo.id + '">' + escapeHtml(sbo.name) + '</option>';
+      }
+      html += '</select>';
+    } else {
+      html += '<span style="color:var(--text-muted);font-size:0.8rem;">Max ' + MAX_BONUSES_PER_LOADOUT + ' bonuses reached</span>';
+    }
+    html += '</div></div>';
+    return html;
+  }
+
+  function renderPlannerEditor() {
+    if (!plannerState.loadouts.length) {
+      plannerEditor.innerHTML = '<div class="empty-state">No loadouts yet. Click "+ Add Loadout" to start.</div>';
+      return;
+    }
+    var html = "";
+    for (var i = 0; i < plannerState.loadouts.length; i++) {
+      html += renderLoadoutCard(plannerState.loadouts[i]);
+    }
+    plannerEditor.innerHTML = html;
+  }
+
+  function getCandidateMounts(bonus) {
+    var candidates = [];
+    for (var mi = 0; mi < MOUNTS_DATA.length; mi++) {
+      var m = MOUNTS_DATA[mi];
+      var compatible = mountBonusCache[m.id] || [];
+      var hosts = false;
+      for (var ci = 0; ci < compatible.length; ci++) {
+        if (compatible[ci].id === bonus.id) { hosts = true; break; }
+      }
+      if (!hosts) continue;
+      candidates.push({
+        mount: m,
+        preferred: bonusActivatesPreferred(m, bonus),
+        slotCount: (m.insigniaSlots || []).length
+      });
+    }
+    var bonusSize = (bonus.requiredInsignias || []).length;
+    candidates.sort(function (a, b) {
+      // Prefer mounts with exactly the bonus's slot count (fewer wasted slots = fewer extra insignias)
+      var aExact = a.slotCount === bonusSize ? 0 : 1;
+      var bExact = b.slotCount === bonusSize ? 0 : 1;
+      if (aExact !== bExact) return aExact - bExact;
+      if (a.preferred !== b.preferred) return a.preferred ? -1 : 1;
+      return (a.mount.name || "").localeCompare(b.mount.name || "");
+    });
+    return candidates;
+  }
+
+  function renderBonusBlock(bonus, currentLoadout, sharingLoadoutNames) {
+    var candidates = getCandidateMounts(bonus);
+    var others = sharingLoadoutNames.filter(function (n) { return n !== currentLoadout.name; });
+    var html = '<div style="margin:0.75rem 0 0.5rem;border-top:1px solid var(--border-default);padding-top:0.6rem;">';
+    html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.4rem;">';
+    html += '<span style="font-weight:600;color:var(--highlight);">' + escapeHtml(bonus.name) + '</span>';
+    var req = bonus.requiredInsignias || [];
+    for (var r = 0; r < req.length; r++) html += renderInsigniaBadge(req[r]);
+    if (others.length) {
+      html += '<span style="font-size:0.72rem;font-weight:600;color:#000;background:#d29922;border-radius:var(--radius-sm);padding:0.1rem 0.4rem;">↔ Also wanted by: ' + escapeHtml(others.join(", ")) + '</span>';
+    }
+    html += '</div>';
+    if (bonus.effectText) {
+      html += '<div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.4rem;">' + escapeHtml(bonus.effectText) + '</div>';
+    }
+    if (!candidates.length) {
+      html += '<div style="color:var(--stat-negative,#f85149);font-size:0.85rem;">No mount in the database can host this bonus.</div>';
+    } else {
+      html += '<div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.3rem;">' + candidates.length + ' candidate mount' + (candidates.length === 1 ? '' : 's') + ' (★ = a preferred slot can be filled with its preferred type)</div>';
+      html += '<div style="display:flex;flex-wrap:wrap;gap:0.4rem;">';
+      for (var c = 0; c < candidates.length; c++) {
+        var cand = candidates[c];
+        var prefStr = cand.preferred ? ' ★' : '';
+        var slotInfo = cand.slotCount + '-slot';
+        html += '<span style="display:inline-flex;align-items:center;gap:0.3rem;background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--radius-sm);padding:0.2rem 0.5rem;font-size:0.85rem;">';
+        html += escapeHtml(cand.mount.name) + prefStr;
+        html += '<span style="font-size:0.7rem;color:var(--text-muted);">' + slotInfo + '</span>';
+        html += '</span>';
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function renderLoadoutResultsCard(ld, bonusToLoadoutNames) {
+    var html = '<div class="ranking-card" style="flex-direction:column;align-items:stretch;margin-bottom:1rem;">';
+    html += '<div style="font-weight:700;font-size:1rem;color:var(--text-primary);margin-bottom:0.5rem;">';
+    html += escapeHtml(ld.name) + ' <span style="color:var(--text-muted);font-weight:400;font-size:0.8rem;">— ' + escapeHtml(ld.role) + '</span>';
+    html += '</div>';
+    if (!ld.desiredBonuses.length) {
+      html += '<div class="empty-state" style="padding:0.5rem;">No bonuses selected.</div>';
+    } else {
+      for (var b = 0; b < ld.desiredBonuses.length; b++) {
+        var bonus = bonusMap[ld.desiredBonuses[b]];
+        if (!bonus) continue;
+        html += renderBonusBlock(bonus, ld, bonusToLoadoutNames[bonus.id] || []);
+      }
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function renderPlannerResults() {
+    if (!plannerState.loadouts.length) {
+      plannerResults.innerHTML = "";
+      return;
+    }
+    var bonusToLoadoutNames = {};
+    for (var i = 0; i < plannerState.loadouts.length; i++) {
+      var ld = plannerState.loadouts[i];
+      for (var b = 0; b < ld.desiredBonuses.length; b++) {
+        var bid = ld.desiredBonuses[b];
+        if (!bonusToLoadoutNames[bid]) bonusToLoadoutNames[bid] = [];
+        bonusToLoadoutNames[bid].push(ld.name);
+      }
+    }
+    var html = '<h3 style="margin:0 0 0.75rem;color:var(--highlight);">Candidate Mounts</h3>';
+    for (var li = 0; li < plannerState.loadouts.length; li++) {
+      html += renderLoadoutResultsCard(plannerState.loadouts[li], bonusToLoadoutNames);
+    }
+    plannerResults.innerHTML = html;
+  }
+
+  function renderPlanner() {
+    renderPlannerEditor();
+    renderPlannerResults();
+  }
+
+  // Event delegation for editor (handles dynamically-rendered inputs)
+  if (plannerEditor) {
+    plannerEditor.addEventListener("input", function (e) {
+      var t = e.target;
+      if (!t || !t.dataset || !t.dataset.id) return;
+      var ld = findLoadout(t.dataset.id);
+      if (!ld) return;
+      if (t.classList.contains("planner-name")) {
+        ld.name = t.value;
+        savePlannerState();
+        renderPlannerResults(); // name change affects "Also wanted by" labels
+      }
+    });
+    plannerEditor.addEventListener("change", function (e) {
+      var t = e.target;
+      if (!t || !t.dataset) return;
+      if (t.classList.contains("planner-role")) {
+        var ld = findLoadout(t.dataset.id);
+        if (!ld) return;
+        ld.role = t.value;
+        savePlannerState();
+        renderPlannerResults();
+      } else if (t.classList.contains("planner-add-bonus")) {
+        var ld2 = findLoadout(t.dataset.id);
+        if (!ld2) return;
+        var bid = parseInt(t.value, 10);
+        if (!bid) return;
+        if (ld2.desiredBonuses.indexOf(bid) === -1) {
+          ld2.desiredBonuses.push(bid);
+          savePlannerState();
+          renderPlanner();
+        }
+      }
+    });
+    plannerEditor.addEventListener("click", function (e) {
+      var t = e.target;
+      if (!t || !t.dataset) return;
+      if (t.classList.contains("planner-delete")) {
+        deletePlannerLoadout(t.dataset.id);
+      } else if (t.classList.contains("planner-remove-bonus")) {
+        var ld = findLoadout(t.dataset.id);
+        if (!ld) return;
+        var bid = parseInt(t.dataset.bonus, 10);
+        ld.desiredBonuses = ld.desiredBonuses.filter(function (x) { return x !== bid; });
+        savePlannerState();
+        renderPlanner();
+      }
+    });
+  }
+
+  if (plannerAddBtn) plannerAddBtn.addEventListener("click", addPlannerLoadout);
+  if (plannerClearBtn) plannerClearBtn.addEventListener("click", clearAllPlannerLoadouts);
+
+  if (tabPlanner) {
+    tabPlanner.addEventListener("click", function () {
+      switchMountTab("planner");
+      tabPlanner.classList.add("active");
+      plannerView.style.display = "";
+      plannerControls.style.display = "";
+      renderPlanner();
+    });
   }
 
   // ---- Initial render ----

@@ -5,6 +5,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ## Week of 2026-05-03
 
 ### Features
+- New **Loadout Planner** tab on the Mounts page: define your loadouts (name + role + desired insignia bonuses) and the planner finds every mount whose 4 (or 3) slots can host each bonus. Mounts where a preferred slot can be filled with its preferred type are listed first. Bonuses wanted by multiple loadouts get an "Also wanted by" badge so you can pick a shared mount and skip duplicate insignia upgrades. Saved per browser via localStorage.
 - New **Insignias** tab on the Mounts page: browseable reference of all 16 stat templates × 6 quality tiers (Uncommon → Celestial), with stats auto-scaled per tier and slot-type badges showing which insignia categories carry each template. Filter by name, quality, or slot type. Cross-checked against external sources — every value verified.
 - Mount detail panel now shows compatible bonuses with their required insignias **in slot order** (matching the mount's actual slot layout) instead of canonical order. Makes it visible at a glance which slot each insignia would land in.
 - Gold ★ markers on bonuses that activate a preferred slot (+20% IL & stats), and on slot boxes themselves with a preferred type. Tooltips on hover.
