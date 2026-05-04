@@ -1341,10 +1341,12 @@
     html += '</div>';
     html += '<div style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem;">For each bonus wanted across your loadouts, this shows the minimum number of distinct mounts you need — and which mounts to pick so the same insignia set covers every loadout that wants the bonus. Pick these mounts and slot insignias once.</div>';
 
-    // Track mount usage per loadout. Mounts can host different bonuses across
-    // different loadouts (each loadout saves its own insignia configuration),
-    // so a mount only "conflicts" if reused for a different bonus within the
-    // same loadout.
+    // Track mount usage per loadout. Loadouts save insignia configurations
+    // independently, so the same mount can host different bonuses in different
+    // loadouts. We actively prefer reusing already-picked mounts (saves the
+    // user from owning a separate mount per bonus). A mount only conflicts if
+    // it's already been picked for a different bonus in a loadout that also
+    // wants this one.
     var mountLoadoutUsage = {};
     for (var ri = 0; ri < rows.length; ri++) {
       var r = rows[ri];
@@ -1354,24 +1356,23 @@
       for (var pli = 0; pli < r.stats.perLoadout.length; pli++) {
         wantedLoadouts[r.stats.perLoadout[pli].id] = true;
       }
-      var unused = [];
-      var alreadyUsed = [];
+      var crossUsed = [];   // already picked for a bonus in a different loadout — preferred (saves a mount)
+      var fresh = [];       // never picked
+      var conflicting = []; // already picked for a different bonus in a loadout that also wants this one — last resort
       for (var ci = 0; ci < candidates.length; ci++) {
         var deployed = mountLoadoutUsage[candidates[ci].mount.id];
+        if (!deployed) { fresh.push(candidates[ci]); continue; }
         var conflict = false;
-        if (deployed) {
-          for (var lid in wantedLoadouts) {
-            if (deployed[lid]) { conflict = true; break; }
-          }
+        for (var lid in wantedLoadouts) {
+          if (deployed[lid]) { conflict = true; break; }
         }
-        if (conflict) alreadyUsed.push(candidates[ci]);
-        else unused.push(candidates[ci]);
+        if (conflict) conflicting.push(candidates[ci]);
+        else crossUsed.push(candidates[ci]);
       }
-      var recommended = unused.slice(0, minMounts);
-      var forcedReuseStart = recommended.length;
-      if (recommended.length < minMounts) {
-        recommended = recommended.concat(alreadyUsed.slice(0, minMounts - recommended.length));
-      }
+      var ordered = crossUsed.concat(fresh).concat(conflicting);
+      var recommended = ordered.slice(0, minMounts);
+      var forcedReuseStart = crossUsed.length + fresh.length;
+      var sharedReuseEnd = Math.min(crossUsed.length, recommended.length);
       for (var ui = 0; ui < recommended.length; ui++) {
         var rmid = recommended[ui].mount.id;
         if (!mountLoadoutUsage[rmid]) mountLoadoutUsage[rmid] = {};
@@ -1412,14 +1413,19 @@
         for (var rec = 0; rec < recommended.length; rec++) {
           var cand = recommended[rec];
           var prefStr = cand.preferred ? ' ★' : '';
-          var isReuse = rec >= forcedReuseStart;
-          var borderColor = isReuse ? '#d29922' : 'var(--accent,#58a6ff)';
-          var reuseTitle = isReuse ? ' title="Already picked for a higher-savings bonus — not enough distinct mounts available."' : '';
-          html += '<span' + reuseTitle + ' style="display:inline-flex;align-items:center;gap:0.3rem;background:var(--bg-elevated);border:2px solid ' + borderColor + ';border-radius:var(--radius-sm);padding:0.25rem 0.6rem;font-size:0.92rem;font-weight:600;">';
+          var isForced = rec >= forcedReuseStart;
+          var isShared = rec < sharedReuseEnd;
+          var borderColor = isForced ? '#d29922' : (isShared ? '#3fb950' : 'var(--accent,#58a6ff)');
+          var pickTitle = '';
+          if (isForced) pickTitle = ' title="Already picked for another bonus in a loadout that also wants this one — not enough distinct mounts available."';
+          else if (isShared) pickTitle = ' title="Same mount serves another bonus in a different loadout. Loadouts save insignia configs separately, so one mount can do double duty."';
+          html += '<span' + pickTitle + ' style="display:inline-flex;align-items:center;gap:0.3rem;background:var(--bg-elevated);border:2px solid ' + borderColor + ';border-radius:var(--radius-sm);padding:0.25rem 0.6rem;font-size:0.92rem;font-weight:600;">';
           html += escapeHtml(cand.mount.name) + prefStr;
           html += '<span style="font-size:0.7rem;font-weight:400;color:var(--text-muted);">' + cand.slotCount + '-slot</span>';
-          if (isReuse) {
+          if (isForced) {
             html += '<span style="font-size:0.65rem;font-weight:700;color:#000;background:#d29922;border-radius:var(--radius-sm);padding:0.05rem 0.3rem;">reused</span>';
+          } else if (isShared) {
+            html += '<span style="font-size:0.65rem;font-weight:700;color:#000;background:#3fb950;border-radius:var(--radius-sm);padding:0.05rem 0.3rem;">shared</span>';
           }
           html += '<button class="planner-exclude-mount" data-mount="' + cand.mount.id + '" title="I don\'t own this — pick something else" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1rem;line-height:1;padding:0 0.15rem;margin-left:0.15rem;">×</button>';
           html += '</span>';
