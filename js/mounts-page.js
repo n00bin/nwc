@@ -1246,70 +1246,6 @@
     return candidates;
   }
 
-  function renderBonusBlock(bonus, currentLoadout, sharingLoadoutNames, count) {
-    var candidates = getCandidateMounts(bonus);
-    var others = sharingLoadoutNames.filter(function (n) { return n !== currentLoadout.name; });
-    var html = '<div style="margin:0.75rem 0 0.5rem;border-top:1px solid var(--border-default);padding-top:0.6rem;">';
-    html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.4rem;">';
-    html += '<span style="font-weight:600;color:var(--highlight);">' + escapeHtml(bonus.name) + '</span>';
-    if (count > 1) {
-      html += '<span style="font-size:0.75rem;font-weight:700;color:#000;background:var(--accent,#58a6ff);border-radius:var(--radius-sm);padding:0.1rem 0.4rem;">×' + count + ' (needs ' + count + ' distinct mounts)</span>';
-    }
-    var req = bonus.requiredInsignias || [];
-    for (var r = 0; r < req.length; r++) html += renderInsigniaBadge(req[r]);
-    if (others.length) {
-      html += '<span style="font-size:0.72rem;font-weight:600;color:#000;background:#d29922;border-radius:var(--radius-sm);padding:0.1rem 0.4rem;">↔ Also wanted by: ' + escapeHtml(others.join(", ")) + '</span>';
-    }
-    html += '</div>';
-    if (bonus.effectText) {
-      html += '<div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.4rem;">' + escapeHtml(bonus.effectText) + '</div>';
-    }
-    if (!candidates.length) {
-      html += '<div style="color:var(--stat-negative,#f85149);font-size:0.85rem;">No mount in the database can host this bonus.</div>';
-    } else {
-      html += '<div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.3rem;">' + candidates.length + ' candidate mount' + (candidates.length === 1 ? '' : 's') + ' (★ = a preferred slot can be filled with its preferred type)</div>';
-      html += '<div style="display:flex;flex-wrap:wrap;gap:0.4rem;">';
-      for (var c = 0; c < candidates.length; c++) {
-        var cand = candidates[c];
-        var prefStr = cand.preferred ? ' ★' : '';
-        var slotInfo = cand.slotCount + '-slot';
-        html += '<span style="display:inline-flex;align-items:center;gap:0.3rem;background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--radius-sm);padding:0.2rem 0.5rem;font-size:0.85rem;">';
-        html += escapeHtml(cand.mount.name) + prefStr;
-        html += '<span style="font-size:0.7rem;color:var(--text-muted);">' + slotInfo + '</span>';
-        html += '</span>';
-      }
-      html += '</div>';
-    }
-    html += '</div>';
-    return html;
-  }
-
-  function renderLoadoutResultsCard(ld, bonusToLoadoutNames) {
-    var html = '<div class="ranking-card" style="flex-direction:column;align-items:stretch;margin-bottom:1rem;">';
-    html += '<div style="font-weight:700;font-size:1rem;color:var(--text-primary);margin-bottom:0.5rem;">';
-    html += escapeHtml(ld.name) + ' <span style="color:var(--text-muted);font-weight:400;font-size:0.8rem;">— ' + escapeHtml(ld.role) + '</span>';
-    html += '</div>';
-    if (!ld.desiredBonuses.length) {
-      html += '<div class="empty-state" style="padding:0.5rem;">No bonuses selected.</div>';
-    } else {
-      // Count occurrences per bonus to render each unique bonus once with a ×N badge
-      var counts = {};
-      var order = [];
-      for (var b = 0; b < ld.desiredBonuses.length; b++) {
-        var bid = ld.desiredBonuses[b];
-        if (counts[bid] === undefined) { counts[bid] = 0; order.push(bid); }
-        counts[bid]++;
-      }
-      for (var oi = 0; oi < order.length; oi++) {
-        var bonus = bonusMap[order[oi]];
-        if (!bonus) continue;
-        html += renderBonusBlock(bonus, ld, bonusToLoadoutNames[bonus.id] || [], counts[bonus.id]);
-      }
-    }
-    html += '</div>';
-    return html;
-  }
-
   function renderExcludedMountsBar() {
     var excluded = plannerState.excludedMounts || [];
     if (!excluded.length) return "";
@@ -1483,24 +1419,7 @@
       plannerResults.innerHTML = "";
       return;
     }
-    var bonusToLoadoutNames = {};
-    for (var i = 0; i < plannerState.loadouts.length; i++) {
-      var ld = plannerState.loadouts[i];
-      for (var b = 0; b < ld.desiredBonuses.length; b++) {
-        var bid = ld.desiredBonuses[b];
-        if (!bonusToLoadoutNames[bid]) bonusToLoadoutNames[bid] = [];
-        if (bonusToLoadoutNames[bid].indexOf(ld.name) === -1) {
-          bonusToLoadoutNames[bid].push(ld.name);
-        }
-      }
-    }
-    var html = renderExcludedMountsBar();
-    html += renderSharingSummary();
-    html += '<h3 style="margin:1rem 0 0.75rem;color:var(--text-secondary);font-size:0.95rem;">All Candidate Mounts (per loadout, for reference)</h3>';
-    for (var li = 0; li < plannerState.loadouts.length; li++) {
-      html += renderLoadoutResultsCard(plannerState.loadouts[li], bonusToLoadoutNames);
-    }
-    plannerResults.innerHTML = html;
+    plannerResults.innerHTML = renderExcludedMountsBar() + renderSharingSummary();
   }
 
   function renderPlanner() {
