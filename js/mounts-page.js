@@ -1094,7 +1094,7 @@
   }
 
   // ============================================================
-  // Loadout Planner
+  // Stable Planner
   // ============================================================
   var PLANNER_STORAGE_KEY = "nwcb.loadouts.v1";
   var ROLE_OPTIONS = ["DPS", "Tank", "Healer"];
