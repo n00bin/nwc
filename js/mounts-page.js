@@ -1307,6 +1307,105 @@
     return html;
   }
 
+  function computeSharingPlan() {
+    var bonusStats = {};
+    for (var i = 0; i < plannerState.loadouts.length; i++) {
+      var ld = plannerState.loadouts[i];
+      var localCount = {};
+      for (var b = 0; b < ld.desiredBonuses.length; b++) {
+        var bid = ld.desiredBonuses[b];
+        localCount[bid] = (localCount[bid] || 0) + 1;
+      }
+      for (var key in localCount) {
+        if (!bonusStats[key]) bonusStats[key] = { perLoadout: [], totalInstances: 0, maxPerLoadout: 0 };
+        bonusStats[key].perLoadout.push({ name: ld.name, count: localCount[key] });
+        bonusStats[key].totalInstances += localCount[key];
+        if (localCount[key] > bonusStats[key].maxPerLoadout) bonusStats[key].maxPerLoadout = localCount[key];
+      }
+    }
+    var rows = [];
+    for (var bid2 in bonusStats) {
+      var bonus = bonusMap[bid2];
+      if (!bonus) continue;
+      var s = bonusStats[bid2];
+      var bonusSize = (bonus.requiredInsignias || []).length;
+      var savings = (s.totalInstances - s.maxPerLoadout) * bonusSize;
+      rows.push({ bonus: bonus, stats: s, bonusSize: bonusSize, savings: savings });
+    }
+    rows.sort(function (a, b) {
+      if (a.savings !== b.savings) return b.savings - a.savings;
+      return (a.bonus.name || "").localeCompare(b.bonus.name || "");
+    });
+    return rows;
+  }
+
+  function renderSharingSummary() {
+    var rows = computeSharingPlan();
+    if (!rows.length) return "";
+
+    var totalSavings = 0;
+    for (var s = 0; s < rows.length; s++) totalSavings += rows[s].savings;
+
+    var html = '<div class="ranking-card" style="flex-direction:column;align-items:stretch;margin-bottom:1.25rem;border-color:var(--accent,#58a6ff);border-width:2px;">';
+    html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.4rem;">';
+    html += '<span style="font-weight:700;font-size:1.05rem;color:var(--accent,#58a6ff);">Insignia Sharing Plan</span>';
+    if (totalSavings > 0) {
+      html += '<span style="font-size:0.78rem;font-weight:700;color:#000;background:#3fb950;border-radius:var(--radius-sm);padding:0.15rem 0.5rem;">Total potential savings: ' + totalSavings + ' insignia upgrades</span>';
+    }
+    html += '</div>';
+    html += '<div style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem;">For each bonus wanted across your loadouts, this shows the minimum number of distinct mounts you need — and which mounts to pick so the same insignia set covers every loadout that wants the bonus. Pick these mounts and slot insignias once.</div>';
+
+    for (var ri = 0; ri < rows.length; ri++) {
+      var r = rows[ri];
+      var candidates = getCandidateMounts(r.bonus);
+      var minMounts = Math.min(r.stats.maxPerLoadout, candidates.length);
+      var recommended = candidates.slice(0, minMounts);
+
+      html += '<div style="border-top:1px solid var(--border-default);padding-top:0.6rem;margin-top:0.5rem;">';
+      html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.3rem;">';
+      html += '<span style="font-weight:600;color:var(--highlight);">' + escapeHtml(r.bonus.name) + '</span>';
+      var req = r.bonus.requiredInsignias || [];
+      for (var rq = 0; rq < req.length; rq++) html += renderInsigniaBadge(req[rq]);
+      if (r.savings > 0) {
+        html += '<span style="font-size:0.72rem;font-weight:700;color:#000;background:#3fb950;border-radius:var(--radius-sm);padding:0.1rem 0.4rem;">Save ' + r.savings + ' insignia upgrade' + (r.savings === 1 ? '' : 's') + '</span>';
+      } else if (r.stats.totalInstances === 1) {
+        html += '<span style="font-size:0.72rem;color:var(--text-muted);">single use — no sharing possible</span>';
+      } else {
+        html += '<span style="font-size:0.72rem;color:var(--text-muted);">all instances in one loadout — already optimal</span>';
+      }
+      html += '</div>';
+
+      var pieces = [];
+      for (var pl = 0; pl < r.stats.perLoadout.length; pl++) {
+        var pe = r.stats.perLoadout[pl];
+        pieces.push(escapeHtml(pe.name) + (pe.count > 1 ? ' ×' + pe.count : ''));
+      }
+      html += '<div style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:0.4rem;">Wanted by: ' + pieces.join(', ');
+      html += ' &nbsp;·&nbsp; ' + r.stats.totalInstances + ' instance' + (r.stats.totalInstances === 1 ? '' : 's') + ', need ' + minMounts + ' distinct mount' + (minMounts === 1 ? '' : 's') + '.</div>';
+
+      if (!recommended.length) {
+        html += '<div style="color:var(--stat-negative,#f85149);font-size:0.85rem;">No mount in the database can host this bonus.</div>';
+      } else if (candidates.length < r.stats.maxPerLoadout) {
+        html += '<div style="color:var(--stat-negative,#f85149);font-size:0.85rem;">Only ' + candidates.length + ' mount' + (candidates.length === 1 ? '' : 's') + ' can host this bonus, but you need ' + r.stats.maxPerLoadout + ' distinct mounts in a single loadout.</div>';
+      } else {
+        html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.25rem;">Pick ' + (recommended.length === 1 ? 'this mount' : 'these ' + recommended.length + ' mounts') + ' and use ' + (recommended.length === 1 ? 'it' : 'them') + ' in every loadout wanting this bonus:</div>';
+        html += '<div style="display:flex;flex-wrap:wrap;gap:0.4rem;">';
+        for (var rec = 0; rec < recommended.length; rec++) {
+          var cand = recommended[rec];
+          var prefStr = cand.preferred ? ' ★' : '';
+          html += '<span style="display:inline-flex;align-items:center;gap:0.3rem;background:var(--bg-elevated);border:2px solid var(--accent,#58a6ff);border-radius:var(--radius-sm);padding:0.25rem 0.6rem;font-size:0.92rem;font-weight:600;">';
+          html += escapeHtml(cand.mount.name) + prefStr;
+          html += '<span style="font-size:0.7rem;font-weight:400;color:var(--text-muted);">' + cand.slotCount + '-slot</span>';
+          html += '</span>';
+        }
+        html += '</div>';
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
   function renderPlannerResults() {
     if (!plannerState.loadouts.length) {
       plannerResults.innerHTML = "";
@@ -1323,7 +1422,8 @@
         }
       }
     }
-    var html = '<h3 style="margin:0 0 0.75rem;color:var(--highlight);">Candidate Mounts</h3>';
+    var html = renderSharingSummary();
+    html += '<h3 style="margin:1rem 0 0.75rem;color:var(--text-secondary);font-size:0.95rem;">All Candidate Mounts (per loadout, for reference)</h3>';
     for (var li = 0; li < plannerState.loadouts.length; li++) {
       html += renderLoadoutResultsCard(plannerState.loadouts[li], bonusToLoadoutNames);
     }
