@@ -1405,11 +1405,26 @@
     html += '</div>';
     html += '<div style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem;">For each bonus wanted across your loadouts, this shows the minimum number of distinct mounts you need — and which mounts to pick so the same insignia set covers every loadout that wants the bonus. Pick these mounts and slot insignias once.</div>';
 
+    var usedMountIds = {};
     for (var ri = 0; ri < rows.length; ri++) {
       var r = rows[ri];
       var candidates = getCandidateMounts(r.bonus);
       var minMounts = Math.min(r.stats.maxPerLoadout, candidates.length);
-      var recommended = candidates.slice(0, minMounts);
+      // Prefer mounts not yet picked for an earlier (higher-savings) bonus
+      var unused = [];
+      var alreadyUsed = [];
+      for (var ci = 0; ci < candidates.length; ci++) {
+        if (usedMountIds[candidates[ci].mount.id]) alreadyUsed.push(candidates[ci]);
+        else unused.push(candidates[ci]);
+      }
+      var recommended = unused.slice(0, minMounts);
+      var forcedReuseStart = recommended.length;
+      if (recommended.length < minMounts) {
+        recommended = recommended.concat(alreadyUsed.slice(0, minMounts - recommended.length));
+      }
+      for (var ui = 0; ui < recommended.length; ui++) {
+        usedMountIds[recommended[ui].mount.id] = true;
+      }
 
       html += '<div style="border-top:1px solid var(--border-default);padding-top:0.6rem;margin-top:0.5rem;">';
       html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.3rem;">';
@@ -1443,9 +1458,15 @@
         for (var rec = 0; rec < recommended.length; rec++) {
           var cand = recommended[rec];
           var prefStr = cand.preferred ? ' ★' : '';
-          html += '<span style="display:inline-flex;align-items:center;gap:0.3rem;background:var(--bg-elevated);border:2px solid var(--accent,#58a6ff);border-radius:var(--radius-sm);padding:0.25rem 0.6rem;font-size:0.92rem;font-weight:600;">';
+          var isReuse = rec >= forcedReuseStart;
+          var borderColor = isReuse ? '#d29922' : 'var(--accent,#58a6ff)';
+          var reuseTitle = isReuse ? ' title="Already picked for a higher-savings bonus — not enough distinct mounts available."' : '';
+          html += '<span' + reuseTitle + ' style="display:inline-flex;align-items:center;gap:0.3rem;background:var(--bg-elevated);border:2px solid ' + borderColor + ';border-radius:var(--radius-sm);padding:0.25rem 0.6rem;font-size:0.92rem;font-weight:600;">';
           html += escapeHtml(cand.mount.name) + prefStr;
           html += '<span style="font-size:0.7rem;font-weight:400;color:var(--text-muted);">' + cand.slotCount + '-slot</span>';
+          if (isReuse) {
+            html += '<span style="font-size:0.65rem;font-weight:700;color:#000;background:#d29922;border-radius:var(--radius-sm);padding:0.05rem 0.3rem;">reused</span>';
+          }
           html += '<button class="planner-exclude-mount" data-mount="' + cand.mount.id + '" title="I don\'t own this — pick something else" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1rem;line-height:1;padding:0 0.15rem;margin-left:0.15rem;">×</button>';
           html += '</span>';
         }
