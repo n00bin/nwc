@@ -1588,6 +1588,23 @@
     });
   }
 
+  // ---- Hash-based deep link (e.g., mounts.html#planner) ----
+  (function () {
+    var hashTabs = {
+      "planner": tabPlanner,
+      "lookup": tabLookup,
+      "combat": tabCombat,
+      "stdps": tabStdps,
+      "equip": tabEquip,
+      "collars": tabCollars,
+      "insignias": tabInsignias
+    };
+    var initial = (window.location.hash || "").replace(/^#/, "");
+    if (initial && hashTabs[initial]) {
+      hashTabs[initial].click();
+    }
+  })();
+
   // ---- Initial render ----
   renderList(MOUNTS_DATA);
 })();
