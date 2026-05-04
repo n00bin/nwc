@@ -1106,12 +1106,13 @@
   function loadPlannerState() {
     try {
       var raw = localStorage.getItem(PLANNER_STORAGE_KEY);
-      if (!raw) return { loadouts: [] };
+      if (!raw) return { loadouts: [], excludedMounts: [] };
       var parsed = JSON.parse(raw);
-      if (!parsed || !Array.isArray(parsed.loadouts)) return { loadouts: [] };
+      if (!parsed || !Array.isArray(parsed.loadouts)) return { loadouts: [], excludedMounts: [] };
+      if (!Array.isArray(parsed.excludedMounts)) parsed.excludedMounts = [];
       return parsed;
     } catch (e) {
-      return { loadouts: [] };
+      return { loadouts: [], excludedMounts: [] };
     }
   }
 
@@ -1216,9 +1217,11 @@
   }
 
   function getCandidateMounts(bonus) {
+    var excluded = plannerState.excludedMounts || [];
     var candidates = [];
     for (var mi = 0; mi < MOUNTS_DATA.length; mi++) {
       var m = MOUNTS_DATA[mi];
+      if (excluded.indexOf(m.id) !== -1) continue;
       var compatible = mountBonusCache[m.id] || [];
       var hosts = false;
       for (var ci = 0; ci < compatible.length; ci++) {
@@ -1305,6 +1308,53 @@
     }
     html += '</div>';
     return html;
+  }
+
+  function renderExcludedMountsBar() {
+    var excluded = plannerState.excludedMounts || [];
+    if (!excluded.length) return "";
+    var mountById = {};
+    for (var mi = 0; mi < MOUNTS_DATA.length; mi++) mountById[MOUNTS_DATA[mi].id] = MOUNTS_DATA[mi];
+    var html = '<div class="ranking-card" style="flex-direction:column;align-items:stretch;margin-bottom:1rem;border-color:var(--border-default);">';
+    html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.4rem;">';
+    html += '<span style="font-weight:600;color:var(--text-secondary);">Excluded mounts</span>';
+    html += '<span style="font-size:0.75rem;color:var(--text-muted);">(' + excluded.length + ' — these will not be recommended)</span>';
+    html += '<button class="planner-clear-excluded" style="background:transparent;border:1px solid var(--border-default);border-radius:var(--radius-sm);color:var(--text-secondary);cursor:pointer;font-size:0.75rem;padding:0.15rem 0.5rem;margin-left:auto;">Restore all</button>';
+    html += '</div>';
+    html += '<div style="display:flex;flex-wrap:wrap;gap:0.4rem;">';
+    for (var i = 0; i < excluded.length; i++) {
+      var m = mountById[excluded[i]];
+      var name = m ? m.name : ('mount #' + excluded[i]);
+      html += '<span style="display:inline-flex;align-items:center;gap:0.3rem;background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--radius-sm);padding:0.15rem 0.5rem;font-size:0.85rem;color:var(--text-muted);text-decoration:line-through;">';
+      html += escapeHtml(name);
+      html += '<button class="planner-restore-mount" data-mount="' + excluded[i] + '" title="Restore this mount" style="background:transparent;border:none;color:var(--accent,#58a6ff);cursor:pointer;font-weight:700;font-size:0.95rem;line-height:1;padding:0 0.15rem;text-decoration:none;">↻</button>';
+      html += '</span>';
+    }
+    html += '</div></div>';
+    return html;
+  }
+
+  function excludeMount(mountId) {
+    if (!plannerState.excludedMounts) plannerState.excludedMounts = [];
+    if (plannerState.excludedMounts.indexOf(mountId) === -1) {
+      plannerState.excludedMounts.push(mountId);
+      savePlannerState();
+      renderPlanner();
+    }
+  }
+
+  function restoreMount(mountId) {
+    if (!plannerState.excludedMounts) return;
+    plannerState.excludedMounts = plannerState.excludedMounts.filter(function (x) { return x !== mountId; });
+    savePlannerState();
+    renderPlanner();
+  }
+
+  function clearExcludedMounts() {
+    if (!plannerState.excludedMounts || !plannerState.excludedMounts.length) return;
+    plannerState.excludedMounts = [];
+    savePlannerState();
+    renderPlanner();
   }
 
   function computeSharingPlan() {
@@ -1396,6 +1446,7 @@
           html += '<span style="display:inline-flex;align-items:center;gap:0.3rem;background:var(--bg-elevated);border:2px solid var(--accent,#58a6ff);border-radius:var(--radius-sm);padding:0.25rem 0.6rem;font-size:0.92rem;font-weight:600;">';
           html += escapeHtml(cand.mount.name) + prefStr;
           html += '<span style="font-size:0.7rem;font-weight:400;color:var(--text-muted);">' + cand.slotCount + '-slot</span>';
+          html += '<button class="planner-exclude-mount" data-mount="' + cand.mount.id + '" title="I don\'t own this — pick something else" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1rem;line-height:1;padding:0 0.15rem;margin-left:0.15rem;">×</button>';
           html += '</span>';
         }
         html += '</div>';
@@ -1422,7 +1473,8 @@
         }
       }
     }
-    var html = renderSharingSummary();
+    var html = renderExcludedMountsBar();
+    html += renderSharingSummary();
     html += '<h3 style="margin:1rem 0 0.75rem;color:var(--text-secondary);font-size:0.95rem;">All Candidate Mounts (per loadout, for reference)</h3>';
     for (var li = 0; li < plannerState.loadouts.length; li++) {
       html += renderLoadoutResultsCard(plannerState.loadouts[li], bonusToLoadoutNames);
@@ -1482,6 +1534,22 @@
           savePlannerState();
           renderPlanner();
         }
+      }
+    });
+  }
+
+  if (plannerResults) {
+    plannerResults.addEventListener("click", function (e) {
+      var t = e.target;
+      if (!t) return;
+      if (t.classList.contains("planner-exclude-mount")) {
+        var mid = parseInt(t.dataset.mount, 10);
+        if (mid) excludeMount(mid);
+      } else if (t.classList.contains("planner-restore-mount")) {
+        var mid2 = parseInt(t.dataset.mount, 10);
+        if (mid2) restoreMount(mid2);
+      } else if (t.classList.contains("planner-clear-excluded")) {
+        clearExcludedMounts();
       }
     });
   }
