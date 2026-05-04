@@ -1304,7 +1304,7 @@
       }
       for (var key in localCount) {
         if (!bonusStats[key]) bonusStats[key] = { perLoadout: [], totalInstances: 0, maxPerLoadout: 0 };
-        bonusStats[key].perLoadout.push({ name: ld.name, count: localCount[key] });
+        bonusStats[key].perLoadout.push({ id: ld.id, name: ld.name, count: localCount[key] });
         bonusStats[key].totalInstances += localCount[key];
         if (localCount[key] > bonusStats[key].maxPerLoadout) bonusStats[key].maxPerLoadout = localCount[key];
       }
@@ -1341,16 +1341,30 @@
     html += '</div>';
     html += '<div style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem;">For each bonus wanted across your loadouts, this shows the minimum number of distinct mounts you need — and which mounts to pick so the same insignia set covers every loadout that wants the bonus. Pick these mounts and slot insignias once.</div>';
 
-    var usedMountIds = {};
+    // Track mount usage per loadout. Mounts can host different bonuses across
+    // different loadouts (each loadout saves its own insignia configuration),
+    // so a mount only "conflicts" if reused for a different bonus within the
+    // same loadout.
+    var mountLoadoutUsage = {};
     for (var ri = 0; ri < rows.length; ri++) {
       var r = rows[ri];
       var candidates = getCandidateMounts(r.bonus);
       var minMounts = Math.min(r.stats.maxPerLoadout, candidates.length);
-      // Prefer mounts not yet picked for an earlier (higher-savings) bonus
+      var wantedLoadouts = {};
+      for (var pli = 0; pli < r.stats.perLoadout.length; pli++) {
+        wantedLoadouts[r.stats.perLoadout[pli].id] = true;
+      }
       var unused = [];
       var alreadyUsed = [];
       for (var ci = 0; ci < candidates.length; ci++) {
-        if (usedMountIds[candidates[ci].mount.id]) alreadyUsed.push(candidates[ci]);
+        var deployed = mountLoadoutUsage[candidates[ci].mount.id];
+        var conflict = false;
+        if (deployed) {
+          for (var lid in wantedLoadouts) {
+            if (deployed[lid]) { conflict = true; break; }
+          }
+        }
+        if (conflict) alreadyUsed.push(candidates[ci]);
         else unused.push(candidates[ci]);
       }
       var recommended = unused.slice(0, minMounts);
@@ -1359,7 +1373,11 @@
         recommended = recommended.concat(alreadyUsed.slice(0, minMounts - recommended.length));
       }
       for (var ui = 0; ui < recommended.length; ui++) {
-        usedMountIds[recommended[ui].mount.id] = true;
+        var rmid = recommended[ui].mount.id;
+        if (!mountLoadoutUsage[rmid]) mountLoadoutUsage[rmid] = {};
+        for (var lid2 in wantedLoadouts) {
+          mountLoadoutUsage[rmid][lid2] = true;
+        }
       }
 
       html += '<div style="border-top:1px solid var(--border-default);padding-top:0.6rem;margin-top:0.5rem;">';
