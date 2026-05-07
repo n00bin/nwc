@@ -250,7 +250,7 @@
       html += '<div class="list-item' + sel + '" data-id="' + c.id + '">';
       html += '<span class="item-name" style="display:flex;align-items:center;">';
       if (listImg) {
-        html += '<img class="list-icon" src="images/companions/' + listImg + '" alt="">';
+        html += \'<img loading="lazy" class=""list-icon" src="images/companions/' + listImg + '" alt="">';
       }
       html += name + "</span>";
       html += '<span class="item-meta">' + badges + "</span>";
@@ -275,7 +275,7 @@
     var compImg = window.COMPANION_IMAGES && window.COMPANION_IMAGES[companion.name];
     html += '<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;">';
     if (compImg) {
-      html += '<img class="companion-icon" src="images/companions/' + compImg + '" alt="">';
+      html += \'<img loading="lazy" class=""companion-icon" src="images/companions/' + compImg + '" alt="">';
     }
     html += '<h2 style="margin:0;">' + escapeHtml(companion.name) + "</h2>";
     html += "</div>";
@@ -358,7 +358,7 @@
       html += '<div class="proc-block">';
       html += '<div style="display:flex;align-items:center;gap:0.5rem;">';
       if (enImg) {
-        html += '<img class="enhancement-icon" src="images/enhancements/' + enImg + '" alt="">';
+        html += \'<img loading="lazy" class=""enhancement-icon" src="images/enhancements/' + enImg + '" alt="">';
       }
       html += '<div class="detail-name">' + escapeHtml(en.name) + "</div>";
       html += "</div>";
@@ -584,7 +584,7 @@
       html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
       html += '<div style="display:flex;align-items:center;gap:0.5rem;font-weight:600;">';
       if (sumImg) {
-        html += '<img class="companion-icon" src="images/companions/' + sumImg + '" alt="">';
+        html += \'<img loading="lazy" class=""companion-icon" src="images/companions/' + sumImg + '" alt="">';
       }
       html += '<span><span style="color:var(--highlight);margin-right:0.5rem;">#' + (i + 1) + '</span>' + escapeHtml(s.companionName) + '</span></div>';
       html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(s.buff) + '</div>';
@@ -651,7 +651,7 @@
       html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
       html += '<div style="display:flex;align-items:center;gap:0.5rem;">';
       if (enImg) {
-        html += '<img class="enhancement-icon" src="images/enhancements/' + enImg + '" alt="">';
+        html += \'<img loading="lazy" class=""enhancement-icon" src="images/enhancements/' + enImg + '" alt="">';
       }
       html += '<div>';
       html += '<span style="color:var(--highlight);font-weight:700;margin-right:0.5rem;">#' + e.num + '</span>';
@@ -782,7 +782,7 @@
         html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
         html += '<div style="display:flex;align-items:center;gap:0.5rem;font-weight:600;">';
         if (compImg) {
-          html += '<img class="companion-icon" src="images/companions/' + compImg + '" alt="">';
+          html += \'<img loading="lazy" class=""companion-icon" src="images/companions/' + compImg + '" alt="">';
         }
         html += '<span><span style="color:var(--highlight);margin-right:0.5rem;">#' + num + '</span>' + escapeHtml(d2.name) + '</span></div>';
         html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.2rem;">' + escapeHtml(d2.powerName) + '</div>';

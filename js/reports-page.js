@@ -207,7 +207,7 @@
     html += "</div>";
     // Image
     if (r.image_url) {
-      html += '<a href="' + escapeHtml(r.image_url) + '" target="_blank"><img class="report-img" src="' + escapeHtml(r.image_url) + '" alt="Report screenshot"></a>';
+      html += '<a href="' + escapeHtml(r.image_url) + '" target="_blank"><img loading="lazy" class="report-img" src="' + escapeHtml(r.image_url) + '" alt="Report screenshot"></a>';
     }
     // Admin note (visible to all, editable in admin mode)
     if (r.admin_notes) {
@@ -231,7 +231,7 @@
           html += '<div class="reply-card">';
           html += '<div class="reply-msg">' + escapeHtml(rp.message) + '</div>';
           if (rp.image_url) {
-            html += '<a href="' + escapeHtml(rp.image_url) + '" target="_blank"><img class="reply-img" src="' + escapeHtml(rp.image_url) + '" alt="Reply image"></a>';
+            html += '<a href="' + escapeHtml(rp.image_url) + '" target="_blank"><img loading="lazy" class="reply-img" src="' + escapeHtml(rp.image_url) + '" alt="Reply image"></a>';
           }
           html += '<div class="reply-meta">' + rpDateStr;
           if (adminMode) {
