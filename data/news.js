@@ -1,6 +1,27 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "May 6, 2026",
+    title: "Stable Planner Fix + Site-Wide Polish Pass",
+    tags: ["Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Stable Planner — Insignia Sharing Plan now reuses mounts across loadouts.</strong> Previously, if a mount was picked for one bonus (e.g., Crimson Crystal Horse for Cautious Devotion in a Healer loadout), the planner refused to suggest it for a different bonus in another loadout (e.g., Guardian's Spirit in a Tank loadout) — even though only one loadout is active at a time. The planner now actively prefers reusing already-picked mounts across loadouts (saves you from owning a separate mount for every bonus) and marks those picks with a green \"shared\" badge. A mount only conflicts if it's already picked for a different bonus <em>in the same loadout</em>.</li>" +
+      "<li><strong>Resolved 5 orphan companion power references</strong> — Phasespider, Celeste, Harper Bard, Riotous Rothé, and Armored Orc Wolf all referenced power entries that didn't exist. The 5 missing powers are now in the database with full stat data sourced from NW Hub click-through tooltips: Phasespider's Presence (Defense, 4.5% Crit/CA), Celeste's Wisdom (Utility, 20% heal-on-low-HP proc), Bard's Discipline (Defense+Utility, 18,000 Max HP / 4.5% Awareness), Snow Worries (Defense+Utility, 9% Incoming Healing), Orc Wolf's Instincts (Offense, 4.5% Accuracy/Crit).</li>" +
+      "<li><strong>Filled in stat data for 7 companion powers</strong> that previously had IL 0 and zero stat values: Wolf's Instincts (9% Crit Severity), Damaran Shepherd's Instincts (4.5%/4.5% Crit Strike + Crit Avoidance), Feywild Sylph's Insight, Cryptic Insight, Cambion's Insight, Dancing Blade's Insight, Maestro's Observation. Stat names corrected on 3 entries where the placeholders had wrong names.</li>" +
+      "<li>Removed 2 broken mount image references that pointed to missing files (Aberrant Drake, Aberrant Fey Wolf) — those mounts now render without a broken-image icon.</li>" +
+      "<li>Renamed companion id 76 from \"Stag\" placeholder to \"Festive Tiger\" (in-game verified).</li>" +
+      "<li>Visual polish: card padding standardized across all pages, consumables search input now uses the shared style, table header font sizes unified, hardcoded border-radius values replaced with the design-system variable, section-header padding consolidated.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li><strong>Companion sources — 100% coverage.</strong> Backfilled real source data for 11 companions that were missing it: Tutor (Astral Lockbox), Cantankerous Mage (Random queue / 2013 Zen Market), Lysaera (Phantasmal Fantasy Lockbox), Soradiel (Mod 19 Redeemed Citadel Zen Market), Kingfisher Intern (Astral Lockbox post-Mod 26), Archmage's Apprentice (Newegg/Razer promo code), Crimson Crystal Golem (Protector's Jubilee 12-yr), Proud Pink Yeti (Hugs and Kisses Valentine's), Coldlight Walker (Simril's Winter Festival), Little White (Rothé Valley adventure), Festive Tiger (formerly Stag).</li>" +
+      "<li><strong>Mount sources — 98% coverage</strong> (up from ~59%). Backfilled source data for 100+ mounts. Highlights: 4 Zen Market 4-insignia slot mounts (Armored Pale Horse, Maltese Tiger, Red Dragon Wings, Golden Rage Drake); 5 horse variants from the Mysterious Crystal Charger; the Day of the Dungeon Master event mounts (Balgora, Beholder Personal Tank); Cavalry's Mount Pack family (Heavy Inferno Nightmare, Hell Emblazon Worg, Poisonous Looking Spider); Abolethic Mount Pack family (Heavy Twilight Nightmare, Sylvan Stag, Shadow Wolf); the Atramentous and Lolthian Choice Pack pairs (Deadly Driderform, Ebon Riding Lizard); recent additions like Twice-Pale Alder, Neverwinter's Hand, Red Mountain Fox, Sunscorch Rune Board, Regal Cobra; and dozens of campaign/event sources verified.</li>" +
+      "<li>Trimmed 1,153 orphan image files (~59 MB) from local disk that were never referenced by anything. Repo footprint smaller; nothing user-visible removed.</li>" +
+      "<li>Verified 21 mount combat powers with magnitude=0 are legitimately status-only effects (debuffs, shields, stuns) — not placeholders.</li>" +
+      "</ul>"
+  },
+  {
     date: "May 4, 2026",
     title: "Stable Planner, Insignias Reference + Combat Formulas",
     tags: ["Feature", "Fix", "Data"],
