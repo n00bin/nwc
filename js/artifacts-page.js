@@ -276,14 +276,14 @@
       html += '<div class="art-card-header">';
       html += '<span class="art-card-name">';
       if (a.image) {
-        html += \'<img loading="lazy" class=""art-list-icon" src="' + escapeHtml(a.image) + '" alt="">';
+        html += '<img loading="lazy" class="art-list-icon" src="' + escapeHtml(a.image) + '" alt="">';
       }
       html += escapeHtml(a.name) + '</span>';
       html += '<span><span class="' + (typeBadgeClass[a.type] || '') + '" style="font-size:0.78rem;">' + (typeLabels[a.type] || a.type) + '</span> <span class="toggle-arrow">&#9654;</span></span>';
       html += '</div>';
       html += '<div class="art-card-body">';
       if (a.image) {
-        html += \'<img loading="lazy" class=""art-icon" src="' + escapeHtml(a.image) + '" alt="' + escapeHtml(a.name) + '">';
+        html += '<img loading="lazy" class="art-icon" src="' + escapeHtml(a.image) + '" alt="' + escapeHtml(a.name) + '">';
       }
       html += '<div class="art-effect">' + escapeHtml(a.power) + '</div>';
       if (a.itemLevel || a.combinedRating) {
@@ -333,7 +333,7 @@
       var img = findArtifactImage(r.name);
       html += '<div class="rank-card">';
       if (img) {
-        html += \'<img loading="lazy" class=""art-icon" src="' + escapeHtml(img) + '" alt="' + escapeHtml(r.name) + '">';
+        html += '<img loading="lazy" class="art-icon" src="' + escapeHtml(img) + '" alt="' + escapeHtml(r.name) + '">';
       }
       html += '<div style="font-weight:600;"><span style="color:var(--highlight);margin-right:0.5rem;">#' + r.rank + '</span>' + escapeHtml(r.name) + '</div>';
       html += '<div class="art-effect" style="margin-top:0.4rem;">' + escapeHtml(r.effect) + '</div>';
