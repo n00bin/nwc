@@ -92,7 +92,7 @@
     if (!isScalablePower(pw)) return null;
     var realStats = pw.stats.filter(function (s) { return s.stat !== "CombinedRating"; });
     // Count non-HP stats to determine scaling table
-    var pctStats = realStats.filter(function (s) { return s.stat !== "MaximumHitPoints"; });
+    var pctStats = realStats.filter(function (s) { return s.stat !== "Maximum Hit Points"; });
     var hasHP = realStats.length !== pctStats.length;
     var scale;
     if (pctStats.length === 0) {
@@ -104,7 +104,7 @@
     }
     var scaledStats = [];
     for (var i = 0; i < realStats.length; i++) {
-      if (realStats[i].stat === "MaximumHitPoints") {
+      if (realStats[i].stat === "Maximum Hit Points") {
         scaledStats.push({ stat: realStats[i].stat, value: MAX_HP_SCALE[targetIL], type: "flat" });
       } else {
         scaledStats.push({ stat: realStats[i].stat, value: scale[targetIL], type: realStats[i].type || "percent" });
@@ -691,12 +691,12 @@
       var match = false;
       var category = "";
 
-      if (stats.indexOf("OutgoingDamage") !== -1) { match = true; category = "Outgoing Damage"; }
-      else if (stats.indexOf("DamageVsBosses") !== -1) { match = true; category = "Boss Damage"; }
+      if (stats.indexOf("Outgoing Damage") !== -1) { match = true; category = "Outgoing Damage"; }
+      else if (stats.indexOf("Damage Vs Bosses") !== -1) { match = true; category = "Boss Damage"; }
       else if (stats.some(function (s) { return s.indexOf("DamageVs") === 0; })) { match = true; category = "Enemy Type Damage"; }
       else if (stats.some(function (s) { return s.indexOf("AtWillDamage") === 0; })) { match = true; category = "At-Will Damage"; }
-      else if (stats.indexOf("EncounterDamage") !== -1 || stats.indexOf("DailyDamage") !== -1) { match = true; category = "Power Damage"; }
-      else if (stats.indexOf("AtWillPower") !== -1) { match = true; category = "At-Will Damage"; }
+      else if (stats.indexOf("Encounter Damage") !== -1 || stats.indexOf("Daily Damage") !== -1) { match = true; category = "Power Damage"; }
+      else if (stats.indexOf("At Will Power") !== -1) { match = true; category = "At-Will Damage"; }
 
       if (notes.indexOf("magnitude") !== -1 && (notes.indexOf("chance") !== -1 || notes.indexOf("on hit") !== -1 || notes.indexOf("on critical") !== -1 || notes.indexOf("on attack") !== -1 || notes.indexOf("on encounter") !== -1 || notes.indexOf("on at-will") !== -1)) {
         match = true; category = category || "Damage Proc";
@@ -707,7 +707,7 @@
       if (notes.indexOf("more damage") !== -1 && notes.indexOf("bigger they are") === -1) {
         match = true; category = category || "Enemy Debuff";
       }
-      if (stats.indexOf("IncomingDamage") !== -1) { match = true; category = category || "Enemy Debuff"; }
+      if (stats.indexOf("Incoming Damage") !== -1) { match = true; category = category || "Enemy Debuff"; }
       if (notes.indexOf("additional hit") !== -1 || notes.indexOf("additional force") !== -1) {
         match = true; category = category || "Extra Hit";
       }
@@ -719,14 +719,14 @@
         // Scale stats to Celestial using ratio from current IL
         var curIL = pw.item_level || 75;
         if (curIL !== 900 && realStats.length > 0) {
-          var pctCount = realStats.filter(function (x) { return x.stat !== "MaximumHitPoints"; }).length;
+          var pctCount = realStats.filter(function (x) { return x.stat !== "Maximum Hit Points"; }).length;
           var curScale = pctCount <= 1 ? SINGLE_STAT_SCALE[curIL] : DOUBLE_STAT_SCALE[curIL];
           var celScale = pctCount <= 1 ? SINGLE_STAT_SCALE[900] : DOUBLE_STAT_SCALE[900];
           var ratio = curScale > 0 ? celScale / curScale : 1;
           var scaledStats = [];
           for (var sti = 0; sti < realStats.length; sti++) {
             var rs = realStats[sti];
-            if (rs.stat === "MaximumHitPoints") {
+            if (rs.stat === "Maximum Hit Points") {
               scaledStats.push({ stat: rs.stat, value: MAX_HP_SCALE[900], type: "flat" });
             } else {
               scaledStats.push({ stat: rs.stat, value: Math.round(rs.value * ratio * 100) / 100, type: rs.type || "percent" });
