@@ -627,14 +627,10 @@
   // Ranking Views
   // ============================================================
   var tabLookup  = document.getElementById("tab-lookup");
-  var tabTrial   = document.getElementById("tab-trial");
-  var tabDungeon = document.getElementById("tab-dungeon");
   var tabStdps   = document.getElementById("tab-stdps");
   var tabEquip   = document.getElementById("tab-equip");
   var lookupView     = document.getElementById("lookup-view");
   var lookupControls = document.getElementById("lookup-controls");
-  var trialView   = document.getElementById("trial-view");
-  var dungeonView = document.getElementById("dungeon-view");
   var stdpsView   = document.getElementById("stdps-view");
   var equipView   = document.getElementById("equip-view");
 
