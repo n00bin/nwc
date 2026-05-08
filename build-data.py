@@ -33,6 +33,8 @@ FILE_MAP = {
     "artifacts.json":               ("artifacts.js",               "ARTIFACTS_DATA"),
     "classes.json":                 ("classes.js",                 "CLASSES_DATA"),
     "races.json":                   ("races.js",                   "RACES_DATA"),
+    "campaign_boons.json":          ("campaign-boons.js",          "CAMPAIGN_BOONS_DATA"),
+    "guild_boons.json":             ("guild-boons.js",             "GUILD_BOONS_DATA"),
 }
 
 def build_header(source_name):
