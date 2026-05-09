@@ -1095,7 +1095,7 @@
   <div class="hero">
     <span class="save-status" id="save-status">Auto-saved · just now</span>
     <h1>Toon Forge<span class="accent">— build your character, see what hits</span><span class="badge">Prototype</span></h1>
-    <p>A friendly character builder for Neverwinter PS5. Pick your role, deck out your gear, and watch the build come together — no spreadsheet skills required.</p>
+    <p>A friendly character builder for Neverwinter. Pick your role, deck out your gear, and watch the build come together — no spreadsheet skills required.</p>
   </div>
 
   <div class="steps" id="steps">
@@ -1113,7 +1113,7 @@
     <div class="step-panel active" data-panel="1">
       <div class="panel">
         <h2>What does your toon do?</h2>
-        <p class="hint">Pick the role you want to play in groups. We'll tune the suggestions and stat priorities to match.</p>
+        <p class="hint">Pick what you want to do in a fight. Everything else flows from this.</p>
         <div class="role-grid" id="role-grid">
           <div class="role-card dps"  data-role="dps">
             <div class="icon" style="color:var(--dps);">⚔</div>
@@ -1135,7 +1135,7 @@
 
       <div class="panel">
         <h2>Pick your class</h2>
-        <p class="hint">Each class has 2 paragon paths — we'll filter to ones that fit your role above.</p>
+        <p class="hint">Pick your flavor. Two paragon paths each — we'll trim the dropdown to whatever matches your role.</p>
         <div class="class-grid" id="class-grid">
           <div class="pick-card" data-class="Barbarian">Barbarian</div>
           <div class="pick-card" data-class="Bard">Bard</div>
@@ -1159,7 +1159,7 @@
     <div class="step-panel" data-panel="2">
       <div class="panel">
         <h2>Tell us about your toon</h2>
-        <p class="hint">Pick your paragon path, race, and current item level so we can dial in suggestions.</p>
+        <p class="hint">Paragon, race, item level. The three knobs that decide what your stats actually mean.</p>
 
         <div class="row-2">
           <div class="field">
@@ -1200,7 +1200,7 @@
 
       <div class="panel">
         <h2>Ability scores</h2>
-        <p class="hint">Base from class. <strong>L9 and L16</strong> grant +1 to <strong>all</strong> stats automatically. Other levels (L3, L6, L12, L14, L18, L20): pick exactly 2 stats per level to gain +1 each. Use <strong>Bonus</strong> for gear / boons / consumables.</p>
+        <p class="hint">Class hands you a base. <strong>L9 and L16</strong> sprinkle +1 on everyone for free. The other six levels each let you pick <strong>two</strong> stats and bump them by +1. Gear and boons stack on top automatically.</p>
         <div id="abil-grid-wrapper"></div>
       </div>
 
@@ -1214,14 +1214,14 @@
     <div class="step-panel" data-panel="3">
       <div class="panel">
         <h2>Equip your gear</h2>
-        <p class="hint">Click a slot to pick what's equipped. Empty slots will hurt your build score.</p>
+        <p class="hint">Click any slot. The pickers know which class wears what. Empty slots are just wasted Item Level.</p>
         <div id="gear-warnings"></div>
         <div class="slot-grid" id="gear-grid"></div>
       </div>
 
       <div class="panel">
         <h2>Enchantments</h2>
-        <p class="hint">11 enchantment slots: <strong>4 Offense</strong>, <strong>4 Defense</strong>, <strong>1 Utility</strong>, <strong>1 Combat</strong>, <strong>1 Bonus</strong>.</p>
+        <p class="hint">Eleven slots, three flavors. <strong>4 Offense</strong>, <strong>4 Defense</strong>, <strong>1 Utility</strong>, <strong>1 Combat</strong>, <strong>1 Bonus</strong>. Universal enchants morph their effect to the slot type they sit in.</p>
         <div id="ench-offense-grid"></div>
         <div id="ench-defense-grid"></div>
         <div id="ench-other-grid"></div>
@@ -1229,13 +1229,13 @@
 
       <div class="panel">
         <h2>Overloads</h2>
-        <p class="hint">2 overload slots — direct percent buffs (e.g. +5% Power). Each overload can only be used once.</p>
+        <p class="hint">Two slots, each a flat percent buff. Pick the same one twice and the dropdown will quietly hide it from you.</p>
         <div class="slot-grid" id="overload-grid"></div>
       </div>
 
       <div class="panel">
         <h2>Artifacts</h2>
-        <p class="hint">Your Primary artifact's combat power is the active one — pick wisely.</p>
+        <p class="hint">Primary's combat power is what you press in fights. The other three sit pretty for stat bonuses.</p>
         <div class="slot-grid" id="artifact-grid" style="grid-template-columns:repeat(2,1fr);"></div>
       </div>
 
@@ -1249,7 +1249,7 @@
     <div class="step-panel" data-panel="4">
       <div class="panel">
         <h2>Pick your companions</h2>
-        <p class="hint">Top row = summoned-companion loadout: <strong>Enchantment</strong>, <strong>Enhancement</strong>, and 3 <strong>Equipment</strong> pieces. Below: pick your <strong>Summoned</strong> companion plus 5 active companions (typed by power category).</p>
+        <p class="hint">Top row dresses up your summoned companion — <strong>Enchantment</strong>, <strong>Enhancement</strong>, and 3 <strong>Equipment</strong> slots. Bottom: pick the summoned itself and 5 active companions, each one typed by what their power buffs.</p>
         <div id="comp-loadout-row" class="comp-loadout">
           <div class="comp-loadout-chip" id="comp-enchant-chip">+ Enchantment</div>
           <div class="comp-loadout-chip" id="comp-enh-chip">+ Enhancement</div>
@@ -1262,7 +1262,7 @@
 
       <div class="panel">
         <h2>Mount stable</h2>
-        <p class="hint">5 mount slots. Each holds a <strong>mount</strong>, a <strong>collar</strong>, and the mount's <strong>insignias</strong>. Each mount has ONE assigned <strong>Insignia Bonus</strong> — activate it by slotting the right combination of insignia categories on that mount.</p>
+        <p class="hint">Five mounts in your stable. Each gets a <strong>collar</strong>, a <strong>mount</strong>, and a fistful of <strong>insignias</strong>. Pick which <strong>Insignia Bonus</strong> you want per mount — slot the matching insignia categories and the row turns green.</p>
         <div style="margin-bottom:0.6rem;">
           <button class="btn btn-ghost" id="find-bonus-btn" style="font-size:0.85rem;">🔍 Find an Insignia Bonus</button>
         </div>
@@ -1285,19 +1285,19 @@
     <div class="step-panel" data-panel="5">
       <div class="panel">
         <h2>Boons</h2>
-        <p class="hint">Allocate campaign boon points (5-tier ladder + Master). Click +/− on each row.</p>
+        <p class="hint">Spend your campaign points. Tap the +/− on each row. Master tier costs more per rank but stacks all three effects.</p>
         <div id="boon-list"></div>
       </div>
 
       <div class="panel">
         <h2>Guild boons</h2>
-        <p class="hint">Pick one active boon per category (Offense / Defense / Utility). Whatever your guild's stronghold has unlocked.</p>
+        <p class="hint">One pick per category — whatever your guild's stronghold has unlocked. Offense, Defense, Utility.</p>
         <div id="guild-boon-list"></div>
       </div>
 
       <div class="panel">
         <h2>Optional buffs</h2>
-        <p class="hint">Food, scrolls, potions you'd run during a fight.</p>
+        <p class="hint">Stuff you eat, drink, or smash before a fight. One per category. Always-on freebies sit at the bottom — uncheck the ones you don't actually have.</p>
         <div class="toggle-list" id="buff-list"></div>
       </div>
 
@@ -1311,7 +1311,7 @@
     <div class="step-panel" data-panel="6">
       <div class="panel">
         <h2>Run the math</h2>
-        <p class="hint">Pick a sample power magnitude and we'll show what every hit scenario looks like with your current build.</p>
+        <p class="hint">Pick a power magnitude. We'll show every hit scenario — flank, crit, deflect, the whole table.</p>
         <div class="row-2">
           <div class="field">
             <label>Sample power magnitude</label>
@@ -1474,6 +1474,10 @@
       activeCombatPower: null,   // id from mount_combat_powers.json — drawn from stable mounts
       activeEquipPower:  null,   // id from mount_equip_powers.json — drawn from stable mounts
       boons: new Map(),  // key: "tier1:1" / "master:3" → { tier, boonId, points or ranks }
+      // Order in which master boons were first ranked (by boonId).
+      // Determines each boon's cost slot: slot N → N pts/rank to fully rank.
+      // 1st boon ranked = 1 pt/rank, 2nd = 2 pt/rank, ..., 8th = 8 pt/rank.
+      masterOrder: [],
       guildBoonPicks: { Offense: null, Defense: null, Utility: null },  // 1 pick per category
       // Set<buffName>; grouped buffs auto-deconflict.
       // Defaults are applied for buffs every player has by default in normal
@@ -2558,17 +2562,25 @@
       const id = +idStr;
       return getTierBoons(tier).find(b => b.id === id) || null;
     }
-    function masterPointsSpent(boon, ranks) {
-      if (!boon || !ranks) return 0;
-      // Each rank costs totalCost / maxRanks (3/3, 6/3, 9/3, ...)
-      return Math.round((boon.totalCost / boon.maxRanks) * ranks);
+    // Master cost is determined by ORDER of selection, not boon identity.
+    // 1st master boon ranked = slot 1 = 1 pt/rank (3 to fully rank).
+    // 2nd = slot 2 = 2 pt/rank (6 to fully rank). Etc up to 8 pt/rank.
+    function masterCostSlot(boonId) {
+      const idx = state.masterOrder.indexOf(boonId);
+      if (idx < 0) return state.masterOrder.length;  // will be appended here
+      return idx;
+    }
+    function masterPerRankCost(boonId) {
+      return masterCostSlot(boonId) + 1;   // slot 0 → 1, slot 7 → 8
+    }
+    function masterPointsSpent(boonId, ranks) {
+      return masterPerRankCost(boonId) * (ranks || 0);
     }
     function totalBoonPoints() {
       let total = 0;
-      for (const [key, v] of state.boons) {
+      for (const [, v] of state.boons) {
         if (v.tier === "master") {
-          const b = findBoonByKey(key);
-          total += masterPointsSpent(b, v.ranks || 0);
+          total += masterPointsSpent(v.boonId, v.ranks || 0);
         } else {
           total += (v.points || 0);   // tier 1-5: 1 point per allocated point
         }
@@ -3108,7 +3120,9 @@
           const v = state.boons.get(key);
           const cur = (v && v.points) || 0;
           const max = b.maxPoints;
-          const effect = `+${b.perPoint}% ${b.stat} per pt (max +${(max * b.perPoint).toFixed(2)}%)`;
+          const curPct = (cur * b.perPoint).toFixed(2);
+          const maxPct = (max * b.perPoint).toFixed(2);
+          const effect = `<strong style="color:${cur>0?'var(--gold)':'var(--text-mute)'}">+${curPct}%</strong> / +${maxPct}% ${b.stat}`;
           html += `<div class="boon-row ${cur > 0 ? "has-pts" : ""}">
             <div class="boon-row-info">
               <div class="boon-row-name">${b.name}</div>
@@ -3124,24 +3138,34 @@
         html += `</div>`;
       }
 
-      // Master tier (rank counter, varying cost)
+      // Master tier — cost is order-based. The order in which you START
+      // ranking each boon determines its cost slot (1pt/rank → 8pt/rank).
       const masterList = getTierBoons("master");
       if (masterList.length) {
-        html += `<div class="boon-tier"><div class="boon-tier-header">Master — ${masterList.length} boons (varying cost per rank)</div>`;
+        html += `<div class="boon-tier"><div class="boon-tier-header">Master — ${masterList.length} boons <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(cost grows with each new boon you rank)</span></div>`;
         for (const b of masterList) {
           const key = `master:${b.id}`;
           const v = state.boons.get(key);
           const cur = (v && v.ranks) || 0;
           const max = b.maxRanks || 3;
-          const perRankCost = Math.round((b.totalCost || 0) / max);
+          const isActive = cur > 0;
+          // If active, show actual slot (1-indexed). If not, show projected slot.
+          const slotIdx = isActive ? state.masterOrder.indexOf(b.id) : state.masterOrder.length;
+          const slotNum = slotIdx + 1;
+          const perRankCost = slotNum;
+          const totalCost = perRankCost * max;
+          const spent = perRankCost * cur;
+          const slotLabel = isActive
+            ? `<strong style="color:var(--gold)">slot ${slotNum}</strong>`
+            : `next slot would be <strong>${slotNum}</strong>`;
           const effSummary = (b.perRankEffects || [])
             .filter(e => e.type === "percent" && e.scope !== "enemy")
             .map(e => `+${e.amount}% ${e.stat}/rank`)
             .join(", ") || "specials";
-          html += `<div class="boon-row ${cur > 0 ? "has-pts" : ""}">
+          html += `<div class="boon-row ${isActive ? "has-pts" : ""}">
             <div class="boon-row-info">
               <div class="boon-row-name">${b.name}</div>
-              <div class="boon-row-effect">${effSummary} · ${perRankCost} pts/rank · trigger: ${b.trigger || "?"}</div>
+              <div class="boon-row-effect">${effSummary} · ${slotLabel} · <strong style="color:${isActive?'var(--gold)':'var(--text-mute)'}">${spent}</strong> / ${totalCost} pts (${perRankCost} per rank)</div>
             </div>
             <div class="boon-counter">
               <button class="boon-btn" data-boon-action="dec" data-key="${key}" data-tier="master">−</button>
@@ -3169,14 +3193,25 @@
           if (action === "inc") {
             if (curN >= max) return;
             const next = curN + 1;
-            if (isMaster) state.boons.set(key, { tier, boonId: b.id, ranks: next });
-            else          state.boons.set(key, { tier, boonId: b.id, points: next });
+            if (isMaster) {
+              if (!state.masterOrder.includes(b.id)) state.masterOrder.push(b.id);
+              state.boons.set(key, { tier, boonId: b.id, ranks: next });
+            } else {
+              state.boons.set(key, { tier, boonId: b.id, points: next });
+            }
           } else {
             if (curN <= 0) return;
             const next = curN - 1;
-            if (next === 0) state.boons.delete(key);
-            else if (isMaster) state.boons.set(key, { tier, boonId: b.id, ranks: next });
-            else state.boons.set(key, { tier, boonId: b.id, points: next });
+            if (next === 0) {
+              state.boons.delete(key);
+              if (isMaster) {
+                state.masterOrder = state.masterOrder.filter(id => id !== b.id);
+              }
+            } else if (isMaster) {
+              state.boons.set(key, { tier, boonId: b.id, ranks: next });
+            } else {
+              state.boons.set(key, { tier, boonId: b.id, points: next });
+            }
           }
           renderBoons(); rerenderAll();
         });
