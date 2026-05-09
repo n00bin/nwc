@@ -1377,7 +1377,7 @@
     <div class="step-panel" data-panel="6">
       <div class="panel">
         <h2>Run the math</h2>
-        <p class="hint">Pick a power magnitude and a target. We'll show every hit scenario — flank, crit, deflect, the whole table.</p>
+        <p class="hint">Pick a power magnitude. The math uses the universal NW PvE enemy: <strong>50% Defense</strong>, <strong>50% Deflect</strong>, <strong>90% Deflect Severity</strong>, and 0% Awareness / Crit Avoid / Accuracy. Your Accuracy counters their Deflect Severity.</p>
         <div class="row-2">
           <div class="field">
             <label>Sample power magnitude
@@ -1397,20 +1397,6 @@
             </select>
           </div>
         </div>
-        <div class="row-2">
-          <div class="field">
-            <label>Target</label>
-            <select id="sim-enemy">
-              <option value="dummy">Test Dummy (no defenses)</option>
-              <option value="pve" selected>Standard PvE Enemy</option>
-              <option value="boss">Boss</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Enemy HP <span class="hint-icon" data-tip="Used for hits-to-kill estimate. Defaults are rough; type your own to match real fights.">?</span></label>
-            <input type="number" id="sim-hp" value="1000000">
-          </div>
-        </div>
 
         <table class="sim-table">
           <thead>
@@ -1423,8 +1409,6 @@
           </thead>
           <tbody id="sim-body"></tbody>
         </table>
-
-        <div id="ttk-summary" style="margin-top:0.6rem;font-size:0.88rem;color:var(--text-mute);"></div>
       </div>
 
       <div class="panel">
@@ -1575,9 +1559,10 @@
       masterOrder: [],
       guildBoonPicks: { Offense: null, Defense: null, Utility: null },  // 1 pick per category
       // Set<buffName>; grouped buffs auto-deconflict.
-      // Defaults are applied for buffs every player has by default in normal
-      // play (campfire / VIP / invocation blessing). User can uncheck them.
-      buffs: new Set(["Campfire", "VIP Rank 3 Bonus", "Invocation Blessing"]),
+      // Defaults are applied for buffs every player has passively (Campfire
+      // is everywhere; VIP is permanent for paying players). Invocation
+      // Blessing requires daily invocation, so we don't pre-check it.
+      buffs: new Set(["Campfire", "VIP Rank 3 Bonus"]),
       simMag: 100,
     };
 
@@ -3733,25 +3718,29 @@
     */
     const ROLE_MULT = { dps: 1.20, heal: 1.10, tank: 1.00 };
 
-    // Enemy presets per docs/enemy_pips.md. PvE/Boss apply the universal
-    // "Defenses Ignored: -15%" modifier (effectively -15% defense → ×1.176
-    // damage). Universal enemy stats: Awareness 0%, Crit Avoid 0%, Accuracy 0%
-    // — so our CA, CritSev, and Accuracy all apply fully.
+    // Standard NW PvE enemy stats (researched from Fandom Wiki +
+    // Obikin89 + nwguide.gitbook + nw-hub.com/mechanics/stats):
+    //   Defense:         50%  (verified)
+    //   Deflect chance:  50%  (enemies CAN deflect your hits)
+    //   Deflect Severity: 90% (your Accuracy counters this)
+    //   Awareness:        0%  (your CA penetrates fully)
+    //   Critical Avoid:   0%  (your CritSev penetrates fully)
+    //   Accuracy:         0%  (their Accuracy doesn't reduce YOUR deflect)
+    //
+    // NOTE: an earlier doc claimed a universal "Defenses Ignored: −15%"
+    // modifier across all enemies, but research couldn't independently
+    // verify it. That claim came from old (pre-Mod 16 / Armor Penetration
+    // era) data. We use raw 50% Defense without the −15% adjustment.
     function getEnemyStats() {
-      const sel = document.getElementById("sim-enemy");
-      const preset = sel ? sel.value : "pve";
-      // All PvE enemies have effectively 0% defense baseline; the -15%
-      // "Defenses Ignored" makes the divisor 0.85 → outgoing damage ×1.176.
-      const defensesIgnored = preset === "dummy" ? 0 : -0.15;
       return {
-        preset,
-        awareness: 0, critAvoid: 0, accuracy: 0,
-        defense: defensesIgnored,    // -15% PvE/Boss; 0 for dummy
-        deflect: 0, deflectSev: 0    // PvE doesn't deflect player attacks
+        awareness:  0,
+        critAvoid:  0,
+        accuracy:   0,
+        defense:    0.50,
+        deflect:    0.50,
+        deflectSev: 0.90
       };
     }
-    // Default HP per preset (rough — user can override).
-    const ENEMY_HP_DEFAULTS = { dummy: 1, pve: 1000000, boss: 100000000 };
 
     function renderSim() {
       const magInput = document.getElementById("sim-mag");
@@ -3950,26 +3939,6 @@
         }).join("");
       }
 
-      // Hits-to-kill / time-to-kill estimate
-      const hpInput = document.getElementById("sim-hp");
-      const ttkEl   = document.getElementById("ttk-summary");
-      if (ttkEl) {
-        const hp = +(hpInput && hpInput.value) || 0;
-        if (hp > 0 && expected > 0) {
-          const hitsToKill = hp / expected;
-          // Rough time estimate: assume one cast every 1.5s (typical encounter cooldown).
-          const seconds = hitsToKill * 1.5;
-          const enemyLabel = e.preset === "dummy" ? "Test Dummy" : (e.preset === "boss" ? "Boss" : "PvE Enemy");
-          ttkEl.innerHTML = `
-            Against <strong>${enemyLabel}</strong> (HP ${hp.toLocaleString()}):
-            <strong style="color:var(--amber);">${hitsToKill < 100 ? hitsToKill.toFixed(1) : Math.round(hitsToKill).toLocaleString()}</strong> hits to kill
-            · ~<strong style="color:var(--amber);">${seconds < 60 ? seconds.toFixed(1) + 's' : (seconds/60).toFixed(1) + 'm'}</strong>
-            <span style="color:var(--text-dim);font-size:0.78rem;">at 1 cast / 1.5s</span>
-          `;
-        } else {
-          ttkEl.innerHTML = `<span style="color:var(--text-dim);">Set HP and equip gear to see hits-to-kill.</span>`;
-        }
-      }
     }
 
     function renderSummary() {
@@ -4129,14 +4098,6 @@
         }
       });
     });
-    // Auto-update HP when preset changes; user can still override after.
-    document.getElementById("sim-enemy").addEventListener("change", e => {
-      const def = ENEMY_HP_DEFAULTS[e.target.value] || 1;
-      document.getElementById("sim-hp").value = def;
-      renderSim();
-    });
-    document.getElementById("sim-hp").addEventListener("input", () => renderSim());
-
     // (Summoned + active companion picker handlers are wired inside
     //  renderCompPickRows() since those tiles are rebuilt on every render.)
 

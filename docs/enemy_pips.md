@@ -105,22 +105,26 @@ The wiki uses the label "Damage Taken" but the directionality isn't perfectly ex
 
 These baseline stats apply to **all** enemies regardless of tier or role (player-side reference):
 
-| Stat | Value |
-|---|---|
-| Power | 90% |
-| Combat Advantage | 90% |
-| Critical Severity | 90% |
-| Deflect Severity | 90% |
-| Critical Strike | 50% |
-| Awareness | 0% |
-| Accuracy | 0% |
-| Critical Avoidance | 0% |
+| Stat | Value | Notes |
+|---|---|---|
+| Power | 90% | offensive — they apply this against you |
+| Combat Advantage | 90% | offensive |
+| Critical Severity | 90% | offensive |
+| Critical Strike | 50% | offensive |
+| Defense | **50%** | reduces YOUR damage to them; divisor 1.5 (or 1.35 with Defenses Ignored) |
+| Deflect Severity | 90% | countered by your Accuracy when they deflect your hits |
+| Deflect chance | **50%** | half of your hits get deflected by PvE enemies |
+| Awareness | 0% | they don't reduce your Combat Advantage |
+| Accuracy | 0% | their Accuracy doesn't reduce your Deflect Severity |
+| Critical Avoidance | 0% | they don't reduce your Critical Severity |
+
+(Defense and Deflect were missing from the v1 doc — added 2026-05 from cross-referenced sources: Fandom Wiki, Obikin89, nwguide.gitbook.io, nw-hub.com/mechanics/stats.)
 
 ### Boss-specific
 - **Combat Advantage Uptime: 100%** — bosses always have CA against the player and don't need surrounding allies to trigger it. This is why Awareness becomes the dominant defensive stat past ~45%.
 
 ### Universal modifier
-- **Defenses Ignored: -15%** flat across all enemies.
+- ~~**Defenses Ignored: -15%** flat across all enemies.~~  **REMOVED 2026-05** — could not be independently verified by research. "Defenses Ignored" appears to be the old Armor Penetration stat from pre-Mod 16, not a universal enemy modifier in current NW. The Toon Forge prototype uses raw 50% Defense without this adjustment.
 
 ---
 

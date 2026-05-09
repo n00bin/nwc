@@ -443,8 +443,11 @@
 
       // ----- kind: "rating" -----
       // Standard rating-to-% formula with cap clamping.
+      // When TIL is 0 (no gear picked yet), the rating-to-% formula
+      // is degenerate (treats any positive rating as near-cap). Skip it
+      // and show 0% rating contribution — percent bonuses still apply.
       var ratingCap = ratingCapForStat(def);
-      var rawContrib = (s.ratingTotal === 0)
+      var rawContrib = (s.ratingTotal === 0 || TIL === 0)
         ? 0
         : ratingToPercent(s.ratingTotal, TIL);
 
