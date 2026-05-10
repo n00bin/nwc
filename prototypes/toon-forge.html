@@ -3214,10 +3214,15 @@
     // powers, mount collars, mount insignias). The value adds equally to
     // each of the 12 core stats as RATING. Sources are listed in
     // mekaniks.html "Combined Rating".
+    // 13 core stats Combined Rating distributes to. Forte was previously
+    // excluded but n00b's in-game numbers (Forte rating 121,407 for an
+    // end-game build) confirm CR sources feed Forte too — without Forte
+    // in this list, Forte rating undercounts by ~100k for end-game.
     const CR_CORE_STATS = [
       "Power", "Critical Strike", "Critical Severity", "Combat Advantage",
       "Accuracy", "Defense", "Awareness", "Critical Avoidance",
-      "Deflect", "Deflect Severity", "Outgoing Healing", "Incoming Healing"
+      "Deflect", "Deflect Severity", "Outgoing Healing", "Incoming Healing",
+      "Forte"
     ];
     function expandCR(amount, multiplier) {
       const m = (multiplier == null) ? 1 : multiplier;
