@@ -1225,23 +1225,6 @@
     .advisor-advice.dim { color: var(--text-dim); font-style: italic; }
     .advisor-advice strong { color: var(--text); }
 
-    .advisor-empty {
-      padding: 1.2rem 1rem;
-      text-align: center;
-      background: var(--elevated);
-      border: 1px dashed var(--border);
-      border-radius: 8px;
-      color: var(--text-mute);
-    }
-    .advisor-empty-title {
-      font-family: Georgia, serif;
-      color: var(--amber);
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-    .advisor-empty-body { font-size: 0.85rem; line-height: 1.5; }
-
     /* ===== Sim hit-table for step 6 ===== */
     .sim-table {
       width: 100%;
@@ -4397,21 +4380,13 @@
       }
 
       const advisor = document.getElementById("stat-advisor");
-      if (advisor && TIL <= 0) {
-        advisor.innerHTML = `<div class="advisor-empty">
-          <div class="advisor-empty-title">Pick some gear first</div>
-          <div class="advisor-empty-body">The advisor uses your real character to recommend stats. Equip a few items in step 3 to fill in your Item Level — then we'll show what to invest in next.</div>
-        </div>`;
-      } else if (advisor) {
+      if (advisor) {
         const priority = isTank
           ? ["Awareness", "Defense", "Critical Avoidance", "Deflect", "Deflect Severity"]
           : isHealer
           ? ["Power", "Outgoing Healing", "Critical Severity", "Critical Strike"]
           : ["Power", "Combat Advantage", "Critical Severity", "Critical Strike", "Accuracy"];
 
-        // No synthetic baseline — the advisor is useful only when the
-        // character has real numbers. If TIL is 0 (no gear picked yet),
-        // we show a "pick gear first" message instead of fake gains.
         const advisorTIL = TIL;
         const advisorBaseVal = (mag / 100) * (advisorTIL / 10) * roleMult;
         const FLANK_UPTIME_ADV = Math.max(0, Math.min(1, state.flankUptime || 0));
