@@ -3890,7 +3890,7 @@
     const ROLE_QUICK_STATS = {
       dps:  ["Power", "Combat Advantage", "Critical Severity", "Critical Strike", "Accuracy"],
       tank: ["Awareness", "Defense", "Critical Avoidance", "Maximum Hit Points", "Deflect"],
-      heal: ["Power", "Outgoing Healing", "Critical Strike", "Critical Severity"]
+      heal: ["Power", "Outgoing Healing", "Critical Strike", "Critical Severity", "Forte"]
     };
 
     // Friendlier short labels for the tiny tiles.
@@ -5171,7 +5171,7 @@
         const priority = isTank
           ? ["Awareness", "Defense", "Critical Avoidance", "Deflect", "Deflect Severity"]
           : isHealer
-          ? ["Power", "Outgoing Healing", "Critical Strike", "Critical Severity"]
+          ? ["Power", "Outgoing Healing", "Critical Strike", "Critical Severity", "Forte"]
           : ["Power", "Combat Advantage", "Critical Severity", "Critical Strike", "Accuracy"];
 
         const advisorTIL = TIL;
