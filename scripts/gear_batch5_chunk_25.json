@@ -1,0 +1,1664 @@
+[
+  {
+    "name": "Brynnyr's Demise",
+    "slot": "Head",
+    "item_level": 610,
+    "ratingStats": {
+      "Accuracy": 111,
+      "Combat Advantage": 82,
+      "Critical Strike": 5,
+      "Critical Severity": 143,
+      "Defense": 472,
+      "Critical Avoidance": 129,
+      "Combined Rating": 567
+    },
+    "equipBonuses": [
+      {"name": "Power/Defense Boost", "description": "+2000 Power if your Defense is higher than your Power. +2000 Defense if your Power is higher than your Defense."}
+    ],
+    "source": "Demogorgon (Master)",
+    "notes": "Demonic Artifacts and Gear collection"
+  },
+  {
+    "name": "Survivor's Wraps",
+    "slot": "Arms",
+    "item_level": 610,
+    "ratingStats": {
+      "Combat Advantage": 472,
+      "Defense": 472,
+      "Combined Rating": 567
+    },
+    "equipBonuses": [
+      {"name": "On Daily Use", "description": "You lose 25% of your Hit Points over 10 seconds as bleed damage."}
+    ],
+    "source": "Demogorgon",
+    "notes": "Demonic Artifacts and Gear collection"
+  },
+  {
+    "name": "Bloodlord's Visage",
+    "slot": "Head",
+    "item_level": 610,
+    "ratingStats": {
+      "Critical Strike": 284,
+      "Defense": 472,
+      "Critical Avoidance": 189,
+      "Combined Rating": 567
+    },
+    "equipBonuses": [
+      {"name": "Bloodlust", "description": "When you kill an enemy, you gain 100 Power for 1 minute (Max 25 Stacks)."}
+    ],
+    "source": "Castle Never",
+    "notes": "Demonic Artifacts and Gear collection"
+  },
+  {
+    "name": "Deepknight's Brigandine",
+    "slot": "Armor",
+    "item_level": 610,
+    "allowedClasses": ["Barbarian", "Fighter", "Paladin"],
+    "ratingStats": {
+      "Defense": 472,
+      "Combined Rating": 567
+    },
+    "source": "Throne of the Dwarven Gods",
+    "notes": "Demonic Artifacts and Gear collection"
+  },
+  {
+    "name": "Demogorgon's Girdle of Might",
+    "slot": "Belt",
+    "item_level": 300,
+    "abilityBonuses": {"Strength": 1, "Constitution": 0},
+    "ratingStats": {
+      "Critical Strike": 225,
+      "Deflection": 225,
+      "Combined Rating": 270
+    },
+    "set": "Demon Lords' Immortality",
+    "setSize": 3,
+    "setPartners": ["Baphomet's Infernal Talisman", "Shard of Orcus' Wand"],
+    "setBonus": "3 of Set: Deal up to 10% additional damage based on the difference in hit point percentage between the player and target.",
+    "notes": "Artifact Equipment"
+  },
+  {
+    "name": "Shard of Orcus' Wand",
+    "slot": "Main Hand",
+    "item_level": 250,
+    "ratingStats": {
+      "Power": 75,
+      "Critical Avoidance": 75,
+      "Accuracy": 75,
+      "Combined Rating": 85
+    },
+    "equipBonuses": [
+      {"name": "Conjure Orb", "description": "Conjures an orb that pursues nearby foes at random, dealing 147 damage to nearby foes every second. After dealing damage 5 times to any number of foes or after 15 seconds, the sphere explodes dealing 324 damage to nearby foes. Damage dealt by the orb increases as it remains active, up to 250%."}
+    ],
+    "set": "Demon Lords' Immortality",
+    "setSize": 3,
+    "setPartners": ["Baphomet's Infernal Talisman", "Demogorgon's Girdle of Might"],
+    "setBonus": "3 of Set: Deal up to 10% additional damage based on the difference in hit point percentage between the player and target.",
+    "notes": "Artifact Equipment; Recharge Time 140s; No Level Requirement"
+  },
+  {
+    "name": "Baphomet's Infernal Talisman",
+    "slot": "Neck",
+    "item_level": 250,
+    "abilityBonuses": {"Strength": 1, "Constitution": 0},
+    "ratingStats": {
+      "Critical Strike": 225,
+      "Deflection": 225,
+      "Combined Rating": 270
+    },
+    "set": "Demon Lords' Immortality",
+    "setSize": 3,
+    "setPartners": ["Demogorgon's Girdle of Might", "Shard of Orcus' Wand"],
+    "setBonus": "3 of Set: Deal up to 10% additional damage based on the difference in hit point percentage between the player and target.",
+    "notes": "Artifact Equipment"
+  },
+  {
+    "name": "Dusk Ward Armet",
+    "slot": "Head",
+    "item_level": 1058,
+    "ratingStats": {
+      "Combat Advantage": 352,
+      "Defense": 881,
+      "Awareness": 529,
+      "Combined Rating": 1058
+    },
+    "set": "Dusk",
+    "setSize": 4,
+    "setPartners": ["Dusk Head", "Dusk Body", "Dusk Arms", "Dusk Feet"],
+    "setBonus": "1 of Set: Wanderer's Vigor — When not in a party, you regenerate 2000 Hit Points, every 3 seconds. 2 of Set: When in a party: +5,000 Maximum Hit Points, +1% Power, +1% Defense. 3 of Set: When on the Stronghold map: You and your allies gain 5 Movement Speed. This effect does not stack. No effect in Stronghold Siege.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Dusk Ward Cuirass",
+    "slot": "Armor",
+    "item_level": 1058,
+    "ratingStats": {
+      "Awareness": 352,
+      "Deflection": 529,
+      "Defense": 881,
+      "Combined Rating": 1058
+    },
+    "set": "Dusk",
+    "setSize": 4,
+    "setPartners": ["Dusk Head", "Dusk Body", "Dusk Arms", "Dusk Feet"],
+    "setBonus": "1 of Set: Wanderer's Vigor. 2 of Set: When in a party: +5,000 Max HP, +1% Power, +1% Defense. 3 of Set: Stronghold map +5 Movement Speed.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Dusk Ward Couters",
+    "slot": "Arms",
+    "item_level": 1058,
+    "ratingStats": {
+      "Critical Severity": 529,
+      "Defense": 881,
+      "Awareness": 352,
+      "Combined Rating": 1058
+    },
+    "set": "Dusk",
+    "setSize": 4,
+    "setPartners": ["Dusk Head", "Dusk Body", "Dusk Arms", "Dusk Feet"],
+    "setBonus": "1 of Set: Wanderer's Vigor. 2 of Set: party bonuses. 3 of Set: Stronghold bonus.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Dusk Ward Cuirass — Defense variant",
+    "displayName": "Dusk Ward Cuirass",
+    "slot": "Armor",
+    "item_level": 1058,
+    "ratingStats": {
+      "Defense": 881,
+      "Awareness": 352,
+      "Deflection": 529,
+      "Combined Rating": 1058
+    },
+    "set": "Dusk",
+    "setSize": 4,
+    "setPartners": ["Dusk Head", "Dusk Body", "Dusk Arms", "Dusk Feet"],
+    "setBonus": "1 of Set: Wanderer's Vigor. 2 of Set: party bonuses. 3 of Set: Stronghold bonus.",
+    "source": "Underdark Mount & Companion Affinity",
+    "variant": "Defense lead",
+    "notes": "Variant with Defense as primary stat"
+  },
+  {
+    "name": "Dusk Ward Poleyns",
+    "slot": "Feet",
+    "item_level": 1058,
+    "ratingStats": {
+      "Accuracy": 529,
+      "Defense": 881,
+      "Deflection": 352,
+      "Combined Rating": 1058
+    },
+    "set": "Dusk",
+    "setSize": 4,
+    "setPartners": ["Dusk Head", "Dusk Body", "Dusk Arms", "Dusk Feet"],
+    "setBonus": "1 of Set: Wanderer's Vigor. 2 of Set: party bonuses. 3 of Set: Stronghold bonus.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Dusk Restoration Armet",
+    "slot": "Head",
+    "item_level": 1058,
+    "ratingStats": {
+      "Accuracy": 529,
+      "Critical Strike": 352,
+      "Defense": 881,
+      "Combined Rating": 1058
+    },
+    "set": "Dusk",
+    "setSize": 4,
+    "setPartners": ["Dusk Head", "Dusk Body", "Dusk Arms", "Dusk Feet"],
+    "setBonus": "1 of Set: Wanderer's Vigor. 2 of Set: party bonuses. 3 of Set: Stronghold bonus.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Dusk Restoration Poleyns",
+    "slot": "Feet",
+    "item_level": 1058,
+    "ratingStats": {
+      "Combat Advantage": 352,
+      "Critical Strike": 529,
+      "Defense": 881,
+      "Combined Rating": 1058
+    },
+    "set": "Dusk",
+    "setSize": 4,
+    "setPartners": ["Dusk Head", "Dusk Body", "Dusk Arms", "Dusk Feet"],
+    "setBonus": "1 of Set: Wanderer's Vigor. 2 of Set: party bonuses. 3 of Set: Stronghold bonus.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Dusk Restoration Couters",
+    "slot": "Arms",
+    "item_level": 1058,
+    "ratingStats": {
+      "Accuracy": 529,
+      "Combat Advantage": 352,
+      "Defense": 881,
+      "Combined Rating": 1058
+    },
+    "set": "Dusk",
+    "setSize": 4,
+    "setPartners": ["Dusk Head", "Dusk Body", "Dusk Arms", "Dusk Feet"],
+    "setBonus": "1 of Set: Wanderer's Vigor. 2 of Set: party bonuses. 3 of Set: Stronghold bonus.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Dusk Restoration Cuirass",
+    "slot": "Armor",
+    "item_level": 1058,
+    "ratingStats": {
+      "Accuracy": 352,
+      "Critical Strike": 529,
+      "Defense": 881,
+      "Combined Rating": 1058
+    },
+    "set": "Dusk",
+    "setSize": 4,
+    "setPartners": ["Dusk Head", "Dusk Body", "Dusk Arms", "Dusk Feet"],
+    "setBonus": "1 of Set: Wanderer's Vigor. 2 of Set: party bonuses. 3 of Set: Stronghold bonus.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Drowcraft Armet",
+    "slot": "Head",
+    "item_level": 510,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 170,
+      "Critical Strike": 255,
+      "Awareness": 425,
+      "Defense": 510,
+      "Combined Rating": 510
+    },
+    "set": "Drowcraft",
+    "setSize": 4,
+    "setPartners": ["Drowcraft Head", "Drowcraft Body", "Drowcraft Arms", "Drowcraft Feet"],
+    "setBonus": "1 of Set: -10% Incoming Damage against Demon type enemies. 2 of Set: Reduces the amount of Madness inflicted by Demogorgon. Maddening Aura is not affected. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Drowcraft Couters",
+    "slot": "Arms",
+    "item_level": 510,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Strike": 255,
+      "Defense": 425,
+      "Awareness": 170,
+      "Combined Rating": 510
+    },
+    "set": "Drowcraft",
+    "setSize": 4,
+    "setPartners": ["Drowcraft Head", "Drowcraft Body", "Drowcraft Arms", "Drowcraft Feet"],
+    "setBonus": "1 of Set: -10% Incoming Damage against Demons. 2 of Set: Reduces Madness from Demogorgon. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Drowcraft Cuirass",
+    "slot": "Armor",
+    "subSlot": "Plate",
+    "item_level": 510,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 255,
+      "Defense": 425,
+      "Deflection": 170,
+      "Combined Rating": 510
+    },
+    "set": "Drowcraft",
+    "setSize": 4,
+    "setPartners": ["Drowcraft Head", "Drowcraft Body", "Drowcraft Arms", "Drowcraft Feet"],
+    "setBonus": "1 of Set: -10% Incoming Damage against Demons. 2 of Set: Reduces Madness from Demogorgon. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Drowcraft Poleyns",
+    "slot": "Feet",
+    "item_level": 510,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 170,
+      "Combat Advantage": 255,
+      "Defense": 425,
+      "Combined Rating": 510
+    },
+    "set": "Drowcraft",
+    "setSize": 4,
+    "setPartners": ["Drowcraft Head", "Drowcraft Body", "Drowcraft Arms", "Drowcraft Feet"],
+    "setBonus": "1 of Set: -10% Incoming Damage against Demons. 2 of Set: Reduces Madness from Demogorgon. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Elemental Drowcraft Ward Armet",
+    "slot": "Head",
+    "item_level": 529,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 176,
+      "Defense": 441,
+      "Deflection": 265,
+      "Combined Rating": 529
+    },
+    "set": "Drowcraft",
+    "setSize": 4,
+    "setPartners": ["Drowcraft Head", "Drowcraft Body", "Drowcraft Arms", "Drowcraft Feet"],
+    "setBonus": "1 of Set: -10% Incoming Damage against Demons. 2 of Set: Reduces Madness from Demogorgon. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Elemental Drowcraft Restoration Cuirass",
+    "slot": "Armor",
+    "subSlot": "Plate",
+    "item_level": 529,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 265,
+      "Combat Advantage": 441,
+      "Defense": 441,
+      "Combined Rating": 529
+    },
+    "set": "Drowcraft",
+    "setSize": 4,
+    "setPartners": ["Drowcraft Head", "Drowcraft Body", "Drowcraft Arms", "Drowcraft Feet"],
+    "setBonus": "1 of Set: -10% Incoming Damage against Demons. 2 of Set: Reduces Madness from Demogorgon. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Elemental Drowcraft Restoration Armet",
+    "slot": "Head",
+    "item_level": 529,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 176,
+      "Critical Strike": 265,
+      "Defense": 441,
+      "Combined Rating": 529
+    },
+    "set": "Drowcraft",
+    "setSize": 4,
+    "setPartners": ["Drowcraft Head", "Drowcraft Body", "Drowcraft Arms", "Drowcraft Feet"],
+    "setBonus": "1 of Set: -10% Incoming Damage against Demons. 2 of Set: Reduces Madness from Demogorgon. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Elemental Drowcraft Ward Poleyns",
+    "slot": "Feet",
+    "item_level": 529,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 176,
+      "Defense": 441,
+      "Deflection": 265,
+      "Combined Rating": 529
+    },
+    "set": "Drowcraft",
+    "setSize": 4,
+    "setPartners": ["Drowcraft Head", "Drowcraft Body", "Drowcraft Arms", "Drowcraft Feet"],
+    "setBonus": "1 of Set: -10% Incoming Damage against Demons. 2 of Set: Reduces Madness from Demogorgon. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Elemental Drowcraft Ward Couters",
+    "slot": "Arms",
+    "item_level": 529,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Strike": 265,
+      "Defense": 441,
+      "Awareness": 176,
+      "Combined Rating": 529
+    },
+    "set": "Drowcraft",
+    "setSize": 4,
+    "setPartners": ["Drowcraft Head", "Drowcraft Body", "Drowcraft Arms", "Drowcraft Feet"],
+    "setBonus": "1 of Set: -10% Incoming Damage against Demons. 2 of Set: Reduces Madness from Demogorgon. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Elemental Drowcraft Ward Cuirass",
+    "slot": "Armor",
+    "subSlot": "Plate",
+    "item_level": 529,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 265,
+      "Defense": 441,
+      "Deflection": 176,
+      "Combined Rating": 529
+    },
+    "set": "Drowcraft",
+    "setSize": 4,
+    "setPartners": ["Drowcraft Head", "Drowcraft Body", "Drowcraft Arms", "Drowcraft Feet"],
+    "setBonus": "1 of Set: -10% Incoming Damage against Demons. 2 of Set: Reduces Madness from Demogorgon. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Elemental Drowcraft Restoration Couters",
+    "slot": "Arms",
+    "item_level": 529,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 176,
+      "Critical Strike": 265,
+      "Defense": 441,
+      "Combined Rating": 529
+    },
+    "set": "Drowcraft",
+    "setSize": 4,
+    "setPartners": ["Drowcraft Head", "Drowcraft Body", "Drowcraft Arms", "Drowcraft Feet"],
+    "setBonus": "1 of Set: -10% Incoming Damage against Demons. 2 of Set: Reduces Madness from Demogorgon. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Elemental Drowcraft Restoration Poleyns",
+    "slot": "Feet",
+    "item_level": 529,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 176,
+      "Combat Advantage": 265,
+      "Defense": 441,
+      "Combined Rating": 529
+    },
+    "set": "Drowcraft",
+    "setSize": 4,
+    "setPartners": ["Drowcraft Head", "Drowcraft Body", "Drowcraft Arms", "Drowcraft Feet"],
+    "setBonus": "1 of Set: -10% Incoming Damage against Demons. 2 of Set: Reduces Madness from Demogorgon. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Drowcraft Chaincoat",
+    "slot": "Shirt",
+    "item_level": 567,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian", "Cleric"],
+    "ratingStats": {
+      "Combat Advantage": 340,
+      "Critical Avoidance": 170,
+      "Combined Rating": 510
+    },
+    "set": "Drowcraft Undergarb",
+    "setSize": 2,
+    "setPartners": ["Drowcraft Shirt", "Drowcraft Pants"],
+    "setBonus": "2 of Set: When you land a Critical Strike you Heal nearby allies for up to that Maximum Hit Points to up to 1000. This effect may only occur every 3 seconds.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Drowcraft Chausses",
+    "slot": "Pants",
+    "item_level": 567,
+    "ratingStats": {
+      "Accuracy": 340,
+      "Critical Avoidance": 170,
+      "Combined Rating": 510
+    },
+    "set": "Drowcraft Undergarb",
+    "setSize": 2,
+    "setPartners": ["Drowcraft Shirt", "Drowcraft Pants"],
+    "setBonus": "2 of Set: Critical Strike Heal effect.",
+    "source": "Underdark Mount & Companion Affinity"
+  },
+  {
+    "name": "Drowcraft Ward Ring",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Critical Avoidance": 1276,
+      "Deflection": 425,
+      "Combined Rating": 454
+    },
+    "notes": "Underdark Rings collection"
+  },
+  {
+    "name": "Drowcraft Assault Ring",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Critical Strike": 425,
+      "Critical Severity": 1276,
+      "Combined Rating": 454
+    },
+    "source": "Mantol-Derith Armor Dealer",
+    "notes": "Underdark Rings collection"
+  },
+  {
+    "name": "Drowcraft Raid Ring",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Accuracy": 425,
+      "Critical Strike": 1276,
+      "Combined Rating": 454
+    },
+    "source": "Mantol-Derith Armor Dealer",
+    "notes": "Underdark Rings collection"
+  },
+  {
+    "name": "Drowcraft Restoration Ring",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Accuracy": 1276,
+      "Combat Advantage": 425,
+      "Combined Rating": 454
+    },
+    "source": "Mantol-Derith Armor Dealer",
+    "notes": "Underdark Rings collection"
+  },
+  {
+    "name": "Ring of Vanishing Presence +5",
+    "displayName": "Ring of Vanishing Presence",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Accuracy": 914,
+      "Defense": 914,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Vanishing Presence", "description": "When struck by a foe you have a 100% chance to vanish for 2.5 seconds. This effect can only trigger once every 60 seconds and does not affect companions."}
+    ],
+    "source": "Demogorgon (Master)",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Vanishing Presence +4",
+    "displayName": "Ring of Vanishing Presence",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Accuracy": 894,
+      "Defense": 894,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Vanishing Presence", "description": "When struck by a foe you have a 80% chance to vanish for 2.5 seconds. This effect can only trigger once every 60 seconds and does not affect companions."}
+    ],
+    "source": "Demogorgon",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Vanishing Presence +3",
+    "displayName": "Ring of Vanishing Presence",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Accuracy": 882,
+      "Defense": 882,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Vanishing Presence", "description": "When struck by a foe you have a 60% chance to vanish for 2.5 seconds. This effect can only trigger once every 60 seconds and does not affect companions."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Vanishing Presence +2",
+    "displayName": "Ring of Vanishing Presence",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Accuracy": 862,
+      "Defense": 862,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Vanishing Presence", "description": "When struck by a foe you have a 40% chance to vanish for 2.5 seconds. This effect can only trigger once every 60 seconds and does not affect companions."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Vanishing Presence +1",
+    "displayName": "Ring of Vanishing Presence",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Accuracy": 850,
+      "Defense": 850,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Vanishing Presence", "description": "When struck by a foe you have a 20% chance to vanish for 2.5 seconds. This effect can only trigger once every 60 seconds and does not affect companions."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of Reflex Sight +1",
+    "displayName": "Ring of Reflex Sight",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Defense": 850,
+      "Awareness": 850,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Reflexive Sight", "description": "When struck by a foe you have a 5% chance to reveal all stealthed foes near you. This effect can only trigger once every 20 seconds and does not affect companions."}
+    ],
+    "source": "Prophecy of Madness / Demonic Heroic Encounters",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of Reflex Sight +2",
+    "displayName": "Ring of Reflex Sight",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Defense": 862,
+      "Awareness": 862,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Reflexive Sight", "description": "When struck by a foe you have a 10% chance to reveal all stealthed foes near you. This effect can only trigger once every 20 seconds and does not affect companions."}
+    ],
+    "source": "Prophecy of Madness / Demonic Heroic Encounters",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Reflex Sight +3",
+    "displayName": "Ring of Reflex Sight",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Defense": 882,
+      "Awareness": 882,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Reflexive Sight", "description": "When struck by a foe you have a 15% chance to reveal all stealthed foes near you. This effect can only trigger once every 20 seconds and does not affect companions."}
+    ],
+    "source": "Prophecy of Madness / Demonic Heroic Encounters",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Reflex Sight +4",
+    "displayName": "Ring of Reflex Sight",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Defense": 894,
+      "Awareness": 894,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Reflexive Sight", "description": "When struck by a foe you have a 20% chance to reveal all stealthed foes near you. This effect can only trigger once every 20 seconds and does not affect companions."}
+    ],
+    "source": "Prophecy of Madness",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Reflex Sight +5",
+    "displayName": "Ring of Reflex Sight",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Defense": 914,
+      "Awareness": 914,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Reflexive Sight", "description": "When struck by a foe you have a 25% chance to reveal all stealthed foes near you. This effect can only trigger once every 20 seconds and does not affect companions."}
+    ],
+    "source": "Prophecy of Madness",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Impenetrability +5",
+    "displayName": "Ring of Impenetrability",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Defense": 1827,
+      "Critical Avoidance": 1827,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Impenetrability", "description": "When your health drops below 25% you become invulnerable for 2 seconds. This effect can only trigger once every 120 seconds and does not affect companions."}
+    ],
+    "source": "Demogorgon (Master) / Demogorgon",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Impenetrability +4",
+    "displayName": "Ring of Impenetrability",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Defense": 1788,
+      "Critical Avoidance": 1788,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Impenetrability", "description": "When your health drops below 20% you become invulnerable for 2 seconds. This effect can only trigger once every 120 seconds and does not affect companions."}
+    ],
+    "source": "Demogorgon (Master) / Demogorgon",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Impenetrability +3",
+    "displayName": "Ring of Impenetrability",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Defense": 1764,
+      "Critical Avoidance": 1764,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Impenetrability", "description": "When your health drops below 15% you become invulnerable for 2 seconds. This effect can only trigger once every 120 seconds and does not affect companions."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Impenetrability +2",
+    "displayName": "Ring of Impenetrability",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Defense": 1725,
+      "Critical Avoidance": 1725,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Impenetrability", "description": "When your health drops below 10% you become invulnerable for 2 seconds. This effect can only trigger once every 120 seconds and does not affect companions."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Impenetrability +1",
+    "displayName": "Ring of Impenetrability",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Defense": 1701,
+      "Critical Avoidance": 1701,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Impenetrability", "description": "When your health drops below 5% you become invulnerable for 2 seconds. This effect can only trigger once every 120 seconds and does not affect companions."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of Cowardice +1",
+    "displayName": "Ring of Cowardice",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Defense": 850,
+      "Critical Avoidance": 850,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Cowardice", "description": "When struck from behind by a foe you have a 10% chance to repel your target 10 feet and root your attacker for 2 seconds. This effect can only trigger once every 20 seconds and does not affect companions."}
+    ],
+    "source": "Throne of the Dwarven Gods / Demonic Heroic Encounters",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of Cowardice +2",
+    "displayName": "Ring of Cowardice",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Defense": 862,
+      "Critical Avoidance": 862,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Cowardice", "description": "When struck from behind by a foe you have a 20% chance to repel your target 10 feet and root your attacker for 2 seconds. This effect can only trigger once every 20 seconds and does not affect companions."}
+    ],
+    "source": "Throne of the Dwarven Gods / Demonic Heroic Encounters",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Cowardice +3",
+    "displayName": "Ring of Cowardice",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Defense": 882,
+      "Critical Avoidance": 882,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Cowardice", "description": "When struck from behind by a foe you have a 30% chance to repel your target 10 feet and root your attacker for 2 seconds. This effect can only trigger once every 20 seconds and does not affect companions."}
+    ],
+    "source": "Throne of the Dwarven Gods / Demonic Heroic Encounters",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Cowardice +4",
+    "displayName": "Ring of Cowardice",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Defense": 894,
+      "Critical Avoidance": 894,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Cowardice", "description": "When struck from behind by a foe you have a 40% chance to repel your target 10 feet and root your attacker for 2 seconds. This effect can only trigger once every 20 seconds and does not affect companions."}
+    ],
+    "source": "Throne of the Dwarven Gods",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Cowardice +5",
+    "displayName": "Ring of Cowardice",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Defense": 914,
+      "Critical Avoidance": 914,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Cowardice", "description": "When struck from behind by a foe you have a 30% chance to repel your target 10 feet and root your attacker for 2 seconds. This effect can only trigger once every 20 seconds and does not affect companions."}
+    ],
+    "source": "Throne of the Dwarven Gods",
+    "variant": "+5",
+    "notes": "Equip text on screenshot shows 30% — may be screenshot error"
+  },
+  {
+    "name": "Ring of Vision +5",
+    "displayName": "Ring of Vision",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Accuracy": 914,
+      "Awareness": 914,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Vision", "description": "Every 30 seconds you gain Stealth Sight for 10 seconds. This effect only works in combat."}
+    ],
+    "source": "Demogorgon (Master) / Demogorgon",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Vision +4",
+    "displayName": "Ring of Vision",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Accuracy": 894,
+      "Awareness": 894,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Vision", "description": "Every 30 seconds you gain Stealth Sight for 8 seconds. This effect only works in combat."}
+    ],
+    "source": "Demogorgon (Master) / Demogorgon",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Vision +3",
+    "displayName": "Ring of Vision",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Accuracy": 882,
+      "Awareness": 882,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Vision", "description": "Every 30 seconds you gain Stealth Sight for 6 seconds. This effect only works in combat."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Vision +2",
+    "displayName": "Ring of Vision",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Accuracy": 862,
+      "Awareness": 862,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Vision", "description": "Every 30 seconds you gain Stealth Sight for 4 seconds. This effect only works in combat."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Vision +1",
+    "displayName": "Ring of Vision",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Accuracy": 850,
+      "Awareness": 850,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Vision", "description": "Every 30 seconds you gain Stealth Sight for 2 seconds. This effect only works in combat."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Fortress +1",
+    "displayName": "Ring of the Fortress",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Awareness": 1701,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Fortress", "description": "Every 30 seconds you gain Invulnerability for 0.22 seconds. This effect only works in combat."}
+    ],
+    "source": "Prophecy of Madness / Demonic Heroic Encounters",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Fortress +2",
+    "displayName": "Ring of the Fortress",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Awareness": 1725,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Fortress", "description": "Every 30 seconds you gain Invulnerability for 0.44 seconds. This effect only works in combat."}
+    ],
+    "source": "Prophecy of Madness / Demonic Heroic Encounters",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of the Fortress +3",
+    "displayName": "Ring of the Fortress",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Awareness": 1764,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Fortress", "description": "Every 30 seconds you gain Invulnerability for 0.66 seconds. This effect only works in combat."}
+    ],
+    "source": "Prophecy of Madness / Demonic Heroic Encounters",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of the Fortress +4",
+    "displayName": "Ring of the Fortress",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Awareness": 1788,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Fortress", "description": "Every 30 seconds you gain Invulnerability for 0.88 seconds. This effect only works in combat."}
+    ],
+    "source": "Prophecy of Madness",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of the Fortress +5",
+    "displayName": "Ring of the Fortress",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Awareness": 1827,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Fortress", "description": "Every 30 seconds you gain Invulnerability for 1.1 seconds. This effect only works in combat."}
+    ],
+    "source": "Prophecy of Madness",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Brutality +5",
+    "displayName": "Ring of Brutality",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Critical Severity": 1827,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Brutality", "description": "Every 30 seconds you gain 4000 Power for 10 seconds. This effect only works in combat."}
+    ],
+    "source": "Demogorgon (Master) / Demogorgon",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Brutality +4",
+    "displayName": "Ring of Brutality",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Critical Severity": 1788,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Brutality", "description": "Every 30 seconds you gain 4000 Power for 8 seconds. This effect only works in combat."}
+    ],
+    "source": "Demogorgon (Master) / Demogorgon",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Brutality +3",
+    "displayName": "Ring of Brutality",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Critical Severity": 1764,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Brutality", "description": "Every 30 seconds you gain 4000 Power for 6 seconds. This effect only works in combat."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Brutality +2",
+    "displayName": "Ring of Brutality",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Critical Severity": 1725,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Brutality", "description": "Every 30 seconds you gain 4000 Power for 4 seconds. This effect only works in combat."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Brutality +1",
+    "displayName": "Ring of Brutality",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Critical Severity": 1701,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Brutality", "description": "Every 30 seconds you gain 4000 Power for 2 seconds. This effect only works in combat."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of Rising Fortitude +1",
+    "displayName": "Ring of Rising Fortitude",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Critical Avoidance": 1701,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Rising Awareness", "description": "When hit by a foe you gain 55 Awareness for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Throne of the Dwarven Gods / Demonic Heroic Encounters",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of Rising Fortitude +2",
+    "displayName": "Ring of Rising Fortitude",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Critical Avoidance": 1725,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Rising Awareness", "description": "When hit by a foe you gain 75 Awareness for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Throne of the Dwarven Gods / Demonic Heroic Encounters",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Rising Fortitude +3",
+    "displayName": "Ring of Rising Fortitude",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Critical Avoidance": 1764,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Rising Awareness", "description": "When hit by a foe you gain 95 Awareness for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Throne of the Dwarven Gods / Demonic Heroic Encounters",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Rising Fortitude +4",
+    "displayName": "Ring of Rising Fortitude",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Critical Avoidance": 1788,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Rising Awareness", "description": "When hit by a foe you gain 115 Awareness for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Throne of the Dwarven Gods",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Rising Fortitude +5",
+    "displayName": "Ring of Rising Fortitude",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Critical Avoidance": 1827,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Rising Awareness", "description": "When hit by a foe you gain 135 Awareness for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Throne of the Dwarven Gods",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Rising Focus +5",
+    "displayName": "Ring of Rising Focus",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Critical Strike": 1827,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Rising Focus", "description": "On hitting a foe you gain 135 Accuracy for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Prophecy of Madness",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Rising Focus +4",
+    "displayName": "Ring of Rising Focus",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Critical Severity": 1788,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Rising Focus", "description": "On hitting a foe you gain 115 Accuracy for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Prophecy of Madness",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Rising Focus +3",
+    "displayName": "Ring of Rising Focus",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Critical Severity": 1764,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Rising Focus", "description": "On hitting a foe you gain 95 Accuracy for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Prophecy of Madness / Demonic Heroic Encounters",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Rising Focus +2",
+    "displayName": "Ring of Rising Focus",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Critical Severity": 1725,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Rising Focus", "description": "On hitting a foe you gain 75 Accuracy for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Prophecy of Madness / Demonic Heroic Encounters",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Rising Focus +1",
+    "displayName": "Ring of Rising Focus",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Critical Strike": 1701,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Rising Focus", "description": "On hitting a foe you gain 55 Accuracy for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Prophecy of Madness / Demonic Heroic Encounters",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of Rising Power +1",
+    "displayName": "Ring of Rising Power",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Critical Strike": 850,
+      "Critical Severity": 850,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Rising Power", "description": "On hitting a foe you gain 55 Power for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of Rising Power +2",
+    "displayName": "Ring of Rising Power",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Critical Strike": 862,
+      "Critical Severity": 862,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Rising Power", "description": "On hitting a foe you gain 75 Power for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Rising Power +3",
+    "displayName": "Ring of Rising Power",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Critical Strike": 882,
+      "Critical Severity": 882,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Rising Power", "description": "On hitting a foe you gain 95 Power for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Rising Power +4",
+    "displayName": "Ring of Rising Power",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Critical Strike": 894,
+      "Critical Severity": 894,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Rising Power", "description": "On hitting a foe you gain 115 Power for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Demogorgon (Master) / Demogorgon",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Rising Power +5",
+    "displayName": "Ring of Rising Power",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Critical Strike": 914,
+      "Critical Severity": 914,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Rising Power", "description": "On hitting a foe you gain 135 Power for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Demogorgon (Master) / Demogorgon",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Rising Deflect +5",
+    "displayName": "Ring of Rising Deflect",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Deflect Severity": 1827,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Rising Agility", "description": "When hit by a foe you gain 135 Deflect for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Throne of the Dwarven Gods",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Rising Deflect +4",
+    "displayName": "Ring of Rising Deflect",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Deflect Severity": 1788,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Rising Agility", "description": "When hit by a foe you gain 115 Deflect for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Throne of the Dwarven Gods",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Rising Deflect +3",
+    "displayName": "Ring of Rising Deflect",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Deflect Severity": 1764,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Rising Agility", "description": "When hit by a foe you gain 95 Deflect for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Throne of the Dwarven Gods / Demonic Heroic Encounters",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Rising Deflect +2",
+    "displayName": "Ring of Rising Deflect",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Deflect Severity": 1725,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Rising Agility", "description": "When hit by a foe you gain 75 Deflect for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Throne of the Dwarven Gods / Demonic Heroic Encounters",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Rising Deflect +1",
+    "displayName": "Ring of Rising Deflect",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Deflect Severity": 1701,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Rising Agility", "description": "When hit by a foe you gain 55 Deflect for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Throne of the Dwarven Gods / Demonic Heroic Encounters",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of Rising Defense +1",
+    "displayName": "Ring of Rising Defense",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Deflection": 1701,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Rising Defense", "description": "When hit by a foe you gain 55 Defense for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of Rising Defense +2",
+    "displayName": "Ring of Rising Defense",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Deflection": 1725,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Rising Defense", "description": "When hit by a foe you gain 75 Defense for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Rising Defense +3",
+    "displayName": "Ring of Rising Defense",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Deflection": 1764,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Rising Defense", "description": "When hit by a foe you gain 95 Defense for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Demogorgon (Master) / Demonic Heroic Encounters / Demogorgon",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Rising Defense +4",
+    "displayName": "Ring of Rising Defense",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Deflection": 1788,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Rising Defense", "description": "When hit by a foe you gain 115 Defense for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Demogorgon (Master) / Demogorgon",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Rising Defense +5",
+    "displayName": "Ring of Rising Defense",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Deflection": 1827,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Rising Defense", "description": "When hit by a foe you gain 135 Defense for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Demogorgon (Master) / Demogorgon",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Rising Precision +5",
+    "displayName": "Ring of Rising Precision",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Accuracy": 914,
+      "Critical Severity": 914,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Rising Precision", "description": "On hitting a foe you gain 135 Crit for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Prophecy of Madness",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Rising Precision +4",
+    "displayName": "Ring of Rising Precision",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Accuracy": 894,
+      "Critical Severity": 894,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Rising Precision", "description": "On hitting a foe you gain 115 Crit for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Prophecy of Madness",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Rising Precision +3",
+    "displayName": "Ring of Rising Precision",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Accuracy": 882,
+      "Critical Severity": 882,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Rising Precision", "description": "On hitting a foe you gain 95 Crit for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Prophecy of Madness / Demonic Heroic Encounters",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Rising Precision +2",
+    "displayName": "Ring of Rising Precision",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Accuracy": 862,
+      "Critical Severity": 862,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Rising Precision", "description": "On hitting a foe you gain 75 Crit for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Prophecy of Madness / Demonic Heroic Encounters",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Rising Precision +1",
+    "displayName": "Ring of Rising Precision",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Accuracy": 850,
+      "Critical Severity": 850,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Rising Precision", "description": "On hitting a foe you gain 55 Crit for 4 seconds. This effect can stack a maximum of 10 times."}
+    ],
+    "source": "Prophecy of Madness / Demonic Heroic Encounters",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of Sieging +1",
+    "displayName": "Ring of Sieging",
+    "slot": "Ring",
+    "item_level": 567,
+    "ratingStats": {
+      "Critical Avoidance": 1701,
+      "Combined Rating": 454
+    },
+    "equipBonuses": [
+      {"name": "Sieging", "description": "When you have been running for 5 seconds you gain 10% increased damage resistance as long as you continue running and does not affect companions."}
+    ],
+    "source": "Throne of the Dwarven Gods / Demonic Heroic Encounters",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of Sieging +2",
+    "displayName": "Ring of Sieging",
+    "slot": "Ring",
+    "item_level": 575,
+    "ratingStats": {
+      "Critical Avoidance": 1725,
+      "Combined Rating": 460
+    },
+    "equipBonuses": [
+      {"name": "Sieging", "description": "When you have been running for 4 seconds you gain 10% increased damage resistance as long as you continue running and does not affect companions."}
+    ],
+    "source": "Throne of the Dwarven Gods / Demonic Heroic Encounters",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of Sieging +3",
+    "displayName": "Ring of Sieging",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Critical Avoidance": 1764,
+      "Combined Rating": 470
+    },
+    "equipBonuses": [
+      {"name": "Sieging", "description": "When you have been running for 3 seconds you gain 10% increased damage resistance as long as you continue running and does not affect companions."}
+    ],
+    "source": "Throne of the Dwarven Gods / Demonic Heroic Encounters",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of Sieging +4",
+    "displayName": "Ring of Sieging",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Critical Avoidance": 1788,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Sieging", "description": "When you have been running for 2 seconds you gain 10% increased damage resistance as long as you continue running and does not affect companions."}
+    ],
+    "source": "Throne of the Dwarven Gods",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of Sieging +5",
+    "displayName": "Ring of Sieging",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Critical Avoidance": 1827,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Sieging", "description": "When you have been running for 1 seconds you gain 10% increased damage resistance as long as you continue running and does not affect companions."}
+    ],
+    "source": "Throne of the Dwarven Gods",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Charging Bull +5",
+    "displayName": "Ring of Charging Bull",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Defense": 1827,
+      "Combined Rating": 487
+    },
+    "equipBonuses": [
+      {"name": "Charging Bull", "description": "When you have been running for 1 seconds you generate threat around you every second as long as you continue running."}
+    ],
+    "source": "Throne of the Dwarven Gods",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of Charging Bull +4",
+    "displayName": "Ring of Charging Bull",
+    "slot": "Ring",
+    "item_level": 596,
+    "ratingStats": {
+      "Defense": 1788,
+      "Combined Rating": 477
+    },
+    "equipBonuses": [
+      {"name": "Charging Bull", "description": "When you have been running for 2 seconds you generate threat around you every second as long as you continue running."}
+    ],
+    "source": "Throne of the Dwarven Gods",
+    "variant": "+4"
+  }
+]

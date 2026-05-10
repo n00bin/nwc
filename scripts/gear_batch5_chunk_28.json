@@ -1,0 +1,1439 @@
+[
+  {
+    "name": "Dragonflight Shirt of Determination",
+    "displayName": "Dragonflight Shirt",
+    "slot": "Shirt",
+    "item_level": 1500,
+    "ratingStats": {
+      "Accuracy": 1125,
+      "Critical Strike": 1125,
+      "Stamina Regeneration": 1.5
+    },
+    "combinedRating": 1350,
+    "equipBonuses": [
+      {"name": "Charged Fury", "description": "When your Stamina is over 75%, your Power is increased by 5000."}
+    ],
+    "variant": "Determination",
+    "notes": "Stamina Regeneration listed at +1.5 (rating-like display, no % symbol shown). Bind on Equip."
+  },
+  {
+    "name": "Dragonflight Shirt of Faith",
+    "displayName": "Dragonflight Shirt",
+    "slot": "Shirt",
+    "item_level": 1500,
+    "ratingStats": {
+      "Critical Severity": 1125,
+      "Deflection": 1125,
+      "Stamina Regeneration": 1.5
+    },
+    "combinedRating": 1350,
+    "equipBonuses": [
+      {"name": "Charged Fury", "description": "When your Stamina is over 75%, your Power is increased by 5000."}
+    ],
+    "variant": "Faith"
+  },
+  {
+    "name": "Dragonflight Shirt of Regret",
+    "displayName": "Dragonflight Shirt",
+    "slot": "Shirt",
+    "item_level": 1500,
+    "ratingStats": {
+      "Critical Severity": 1125,
+      "Outgoing Healing": 1125,
+      "Stamina Regeneration": 1.5
+    },
+    "combinedRating": 1350,
+    "equipBonuses": [
+      {"name": "Charged Fury", "description": "When your Stamina is over 75%, your Power is increased by 5000."}
+    ],
+    "variant": "Regret"
+  },
+  {
+    "name": "Dragonflight Shirt of Repentance",
+    "displayName": "Dragonflight Shirt",
+    "slot": "Shirt",
+    "item_level": 1500,
+    "ratingStats": {
+      "Combat Advantage": 1125,
+      "Deflection": 1125,
+      "Stamina Regeneration": 1.5
+    },
+    "combinedRating": 1350,
+    "equipBonuses": [
+      {"name": "Charged Fury", "description": "When your Stamina is over 75%, your Power is increased by 5000."}
+    ],
+    "variant": "Repentance"
+  },
+  {
+    "name": "Bronzewood Ward Umqhele",
+    "slot": "Head",
+    "item_level": 784,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 353,
+      "Defense": 588,
+      "Awareness": 235
+    },
+    "combinedRating": 706,
+    "equipBonuses": [
+      {"name": "Gladiator's Accuracy", "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "set": "Masterwork Armor III",
+    "notes": "Reinforced Dragonflight Gear / Masterwork Armor III collection (Set 2 of 20)."
+  },
+  {
+    "name": "Bronzewood Ward Ibhantshi",
+    "slot": "Armor",
+    "subSlot": "Plate",
+    "item_level": 784,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 353,
+      "Defense": 588,
+      "Awareness": 235
+    },
+    "combinedRating": 706,
+    "equipBonuses": [
+      {"name": "Challenger's Might", "description": "When in combat with only one enemy, your Power is increased by 1500."}
+    ],
+    "set": "Masterwork Armor III"
+  },
+  {
+    "name": "Bronzewood Ward Ibhendis",
+    "slot": "Arms",
+    "item_level": 784,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Awareness": 235,
+      "Critical Strike": 353,
+      "Defense": 588
+    },
+    "combinedRating": 706,
+    "equipBonuses": [
+      {"name": "Survivor's Parry", "description": "Gain 25 Deflect for each percent of health you are missing."}
+    ],
+    "set": "Masterwork Armor III"
+  },
+  {
+    "name": "Bronzewood Ward Isikhumbas",
+    "slot": "Feet",
+    "item_level": 784,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Defense": 588,
+      "Awareness": 353,
+      "Deflection": 235
+    },
+    "combinedRating": 706,
+    "equipBonuses": [
+      {"name": "Gladiator's Focus", "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "set": "Masterwork Armor III"
+  },
+  {
+    "name": "Bronzewood Restoration Umqhele",
+    "slot": "Head",
+    "item_level": 784,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 353,
+      "Critical Strike": 235,
+      "Defense": 588
+    },
+    "combinedRating": 706,
+    "equipBonuses": [
+      {"name": "Gladiator's Accuracy", "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "set": "Masterwork Armor III"
+  },
+  {
+    "name": "Beaded Restoration Ring",
+    "slot": "Ring",
+    "item_level": 784,
+    "ratingStats": {
+      "Accuracy": 1764,
+      "Combat Advantage": 588
+    },
+    "combinedRating": 627,
+    "equipBonuses": [
+      {"name": "Challenger's Accuracy", "description": "When in combat with only one enemy, your Accuracy is increased by 1000."}
+    ]
+  },
+  {
+    "name": "Lichstone Ward Ring",
+    "slot": "Ring",
+    "item_level": 784,
+    "ratingStats": {
+      "Critical Avoidance": 1764,
+      "Deflection": 588
+    },
+    "combinedRating": 627,
+    "equipBonuses": [
+      {"name": "Challenger's Parry", "description": "When in combat with only one enemy, your Deflect is increased by 1000."}
+    ]
+  },
+  {
+    "name": "Bronzewood Restoration Isikhumbas",
+    "slot": "Feet",
+    "item_level": 784,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 235,
+      "Critical Strike": 353,
+      "Defense": 588
+    },
+    "combinedRating": 706,
+    "equipBonuses": [
+      {"name": "Gladiator's Focus", "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "set": "Masterwork Armor III"
+  },
+  {
+    "name": "Bronzewood Restoration Ibhendis",
+    "slot": "Arms",
+    "item_level": 784,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 235,
+      "Critical Strike": 353,
+      "Defense": 588
+    },
+    "combinedRating": 706,
+    "equipBonuses": [
+      {"name": "Survivor's Parry", "description": "Gain 25 Deflect for each percent of health you are missing."}
+    ],
+    "set": "Masterwork Armor III"
+  },
+  {
+    "name": "Bronzewood Restoration Ibhantshi",
+    "slot": "Armor",
+    "subSlot": "Plate",
+    "item_level": 784,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 235,
+      "Critical Strike": 353,
+      "Defense": 588
+    },
+    "combinedRating": 706,
+    "equipBonuses": [
+      {"name": "Challenger's Might", "description": "When in combat with only one enemy, your Power is increased by 1500."}
+    ],
+    "set": "Masterwork Armor III"
+  },
+  {
+    "name": "Bronzewood Raid Ring",
+    "slot": "Ring",
+    "item_level": 784,
+    "ratingStats": {
+      "Combat Advantage": 588,
+      "Critical Strike": 1764
+    },
+    "combinedRating": 627,
+    "equipBonuses": [
+      {"name": "Challenger's Might", "description": "When in combat with only one enemy, your Power is increased by 1000."}
+    ]
+  },
+  {
+    "name": "Beaded Assault Ring",
+    "slot": "Ring",
+    "item_level": 784,
+    "ratingStats": {
+      "Critical Strike": 588,
+      "Critical Severity": 1764
+    },
+    "combinedRating": 627,
+    "equipBonuses": [
+      {"name": "Challenger's Focus", "description": "When in combat with only one enemy, your Critical Strike is increased by 1000."}
+    ]
+  },
+  {
+    "name": "Bronzewood Quauhololli · IL 350",
+    "displayName": "Bronzewood Quauhololli",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 350,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 262,
+      "Critical Strike": 131,
+      "Deflection": 131
+    },
+    "combinedRating": 315,
+    "set": "Masterwork III Weapon Set",
+    "setSize": 2,
+    "setPartners": ["Bronzewood Cuauhchimalli"],
+    "setBonus": "2 of Set: You and nearby allies are granted the following: +2% Base Damage Boost, +2% Overall Outgoing Healing, -2% Incoming Damage. This effect may stack up to 5 times when allies are equipped with a set of Stronghold weapons.",
+    "notes": "Artifact Equipment. Recommended."
+  },
+  {
+    "name": "Bronzewood Quauhololli · IL 500",
+    "displayName": "Bronzewood Quauhololli",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 500,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 375,
+      "Critical Strike": 188,
+      "Deflection": 187
+    },
+    "combinedRating": 450,
+    "set": "Masterwork III Weapon Set"
+  },
+  {
+    "name": "Bronzewood Quauhololli · IL 650",
+    "displayName": "Bronzewood Quauhololli",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 650,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 488,
+      "Critical Strike": 244,
+      "Deflection": 244
+    },
+    "combinedRating": 585,
+    "set": "Masterwork III Weapon Set"
+  },
+  {
+    "name": "Bronzewood Quauhololli · IL 800",
+    "displayName": "Bronzewood Quauhololli",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 600,
+      "Critical Strike": 300,
+      "Deflection": 300
+    },
+    "combinedRating": 720,
+    "set": "Masterwork III Weapon Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Bronzewood Cuauhchimalli · IL 350",
+    "displayName": "Bronzewood Cuauhchimalli",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 350,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 262,
+      "Critical Strike": 131,
+      "Deflection": 131
+    },
+    "combinedRating": 315,
+    "set": "Masterwork III Weapon Set",
+    "setSize": 2,
+    "setPartners": ["Bronzewood Quauhololli"],
+    "notes": "Artifact Stat Increase unlocks at Epic Rarity. Off-Hand, Heavy, Shield."
+  },
+  {
+    "name": "Bronzewood Cuauhchimalli · IL 500",
+    "displayName": "Bronzewood Cuauhchimalli",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 500,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 375,
+      "Critical Strike": 188,
+      "Deflection": 187
+    },
+    "combinedRating": 450,
+    "set": "Masterwork III Weapon Set"
+  },
+  {
+    "name": "Bronzewood Cuauhchimalli · IL 650",
+    "displayName": "Bronzewood Cuauhchimalli",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 650,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 488,
+      "Critical Strike": 244,
+      "Deflection": 244
+    },
+    "combinedRating": 585,
+    "set": "Masterwork III Weapon Set"
+  },
+  {
+    "name": "Bronzewood Cuauhchimalli · IL 800",
+    "displayName": "Bronzewood Cuauhchimalli",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 600,
+      "Critical Strike": 300,
+      "Deflection": 300
+    },
+    "combinedRating": 720,
+    "set": "Masterwork III Weapon Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Exalted Bronzewood Quauhololli · IL 400",
+    "displayName": "Exalted Bronzewood Quauhololli",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 300,
+      "Critical Strike": 150,
+      "Deflection": 150
+    },
+    "combinedRating": 360,
+    "set": "Masterwork III Weapon Set"
+  },
+  {
+    "name": "Exalted Bronzewood Quauhololli · IL 550",
+    "displayName": "Exalted Bronzewood Quauhololli",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 550,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 412,
+      "Critical Strike": 206,
+      "Deflection": 206
+    },
+    "combinedRating": 495,
+    "set": "Masterwork III Weapon Set"
+  },
+  {
+    "name": "Exalted Bronzewood Quauhololli · IL 700",
+    "displayName": "Exalted Bronzewood Quauhololli",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 700,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 525,
+      "Critical Strike": 262,
+      "Deflection": 262
+    },
+    "combinedRating": 630,
+    "set": "Masterwork III Weapon Set"
+  },
+  {
+    "name": "Exalted Bronzewood Quauhololli · IL 850",
+    "displayName": "Exalted Bronzewood Quauhololli",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 850,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 638,
+      "Critical Strike": 319,
+      "Deflection": 319
+    },
+    "combinedRating": 765,
+    "set": "Masterwork III Weapon Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Exalted Bronzewood Cuauhchimalli · IL 400",
+    "displayName": "Exalted Bronzewood Cuauhchimalli",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 300,
+      "Critical Strike": 150,
+      "Deflection": 150
+    },
+    "combinedRating": 360,
+    "set": "Masterwork III Weapon Set",
+    "notes": "Artifact Stat Increase unlocks at Epic Rarity."
+  },
+  {
+    "name": "Exalted Bronzewood Cuauhchimalli · IL 550",
+    "displayName": "Exalted Bronzewood Cuauhchimalli",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 550,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 412,
+      "Critical Strike": 206,
+      "Deflection": 206
+    },
+    "combinedRating": 495,
+    "set": "Masterwork III Weapon Set"
+  },
+  {
+    "name": "Exalted Bronzewood Cuauhchimalli · IL 700",
+    "displayName": "Exalted Bronzewood Cuauhchimalli",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 700,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 525,
+      "Critical Strike": 262,
+      "Deflection": 262
+    },
+    "combinedRating": 630,
+    "set": "Masterwork III Weapon Set"
+  },
+  {
+    "name": "Exalted Bronzewood Cuauhchimalli · IL 850",
+    "displayName": "Exalted Bronzewood Cuauhchimalli",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 850,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 638,
+      "Critical Strike": 319,
+      "Deflection": 319
+    },
+    "combinedRating": 765,
+    "set": "Masterwork III Weapon Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Bronzewood Sash · IL 350",
+    "displayName": "Bronzewood Sash",
+    "slot": "Belt",
+    "item_level": 350,
+    "ratingStats": {
+      "Combat Advantage": 175,
+      "Critical Strike": 175,
+      "Critical Severity": 175
+    },
+    "abilityBonuses": {"Strength": 1, "Dexterity": 1},
+    "combinedRating": 315,
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "setPartners": ["Masterwork III Neck Piece", "Masterwork III Waist Piece"],
+    "setBonus": "2 of Set: When you use an encounter power, you gain a stack of Alacrity, granting 1% Accuracy and 5% Movement for 5 seconds. Stacks up to 3 times.",
+    "notes": "Artifact Equipment. Recommended."
+  },
+  {
+    "name": "Bronzewood Sash · IL 500",
+    "displayName": "Bronzewood Sash",
+    "slot": "Belt",
+    "item_level": 500,
+    "ratingStats": {
+      "Combat Advantage": 250,
+      "Critical Strike": 250,
+      "Critical Severity": 250
+    },
+    "abilityBonuses": {"Strength": 1, "Dexterity": 1},
+    "combinedRating": 450,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Bronzewood Sash · IL 650",
+    "displayName": "Bronzewood Sash",
+    "slot": "Belt",
+    "item_level": 650,
+    "ratingStats": {
+      "Combat Advantage": 325,
+      "Critical Strike": 326,
+      "Critical Severity": 325
+    },
+    "abilityBonuses": {"Strength": 1, "Dexterity": 2},
+    "combinedRating": 585,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Bronzewood Sash · IL 800",
+    "displayName": "Bronzewood Sash",
+    "slot": "Belt",
+    "item_level": 800,
+    "ratingStats": {
+      "Combat Advantage": 400,
+      "Critical Strike": 401,
+      "Critical Severity": 400
+    },
+    "abilityBonuses": {"Strength": 2, "Dexterity": 2},
+    "combinedRating": 720,
+    "set": "Masterwork III Equipment Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Lichstone Sash · IL 350",
+    "displayName": "Lichstone Sash",
+    "slot": "Belt",
+    "item_level": 350,
+    "ratingStats": {
+      "Critical Avoidance": 350,
+      "Deflection": 175
+    },
+    "abilityBonuses": {"Constitution": 2},
+    "combinedRating": 315,
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "setPartners": ["Masterwork III Neck Piece", "Masterwork III Waist Piece"]
+  },
+  {
+    "name": "Lichstone Sash · IL 500",
+    "displayName": "Lichstone Sash",
+    "slot": "Belt",
+    "item_level": 500,
+    "ratingStats": {
+      "Critical Avoidance": 500,
+      "Deflection": 250
+    },
+    "abilityBonuses": {"Constitution": 2},
+    "combinedRating": 450,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Lichstone Sash · IL 650",
+    "displayName": "Lichstone Sash",
+    "slot": "Belt",
+    "item_level": 650,
+    "ratingStats": {
+      "Critical Avoidance": 649,
+      "Deflection": 325
+    },
+    "abilityBonuses": {"Constitution": 3},
+    "combinedRating": 585,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Lichstone Sash · IL 800",
+    "displayName": "Lichstone Sash",
+    "slot": "Belt",
+    "item_level": 800,
+    "ratingStats": {
+      "Critical Avoidance": 799,
+      "Deflection": 400
+    },
+    "abilityBonuses": {"Constitution": 4},
+    "combinedRating": 720,
+    "set": "Masterwork III Equipment Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Fanged Sash · IL 350",
+    "displayName": "Fanged Sash",
+    "slot": "Belt",
+    "item_level": 350,
+    "ratingStats": {
+      "Accuracy": 175,
+      "Combat Advantage": 175,
+      "Critical Strike": 175
+    },
+    "abilityBonuses": {"Wisdom": 1, "Charisma": 1},
+    "combinedRating": 315,
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "setPartners": ["Masterwork III Neck Piece", "Masterwork III Waist Piece"]
+  },
+  {
+    "name": "Fanged Sash · IL 500",
+    "displayName": "Fanged Sash",
+    "slot": "Belt",
+    "item_level": 500,
+    "ratingStats": {
+      "Accuracy": 250,
+      "Combat Advantage": 250,
+      "Critical Strike": 250
+    },
+    "abilityBonuses": {"Wisdom": 1, "Charisma": 1},
+    "combinedRating": 450,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Fanged Sash · IL 650",
+    "displayName": "Fanged Sash",
+    "slot": "Belt",
+    "item_level": 650,
+    "ratingStats": {
+      "Accuracy": 325,
+      "Combat Advantage": 325,
+      "Critical Strike": 325
+    },
+    "abilityBonuses": {"Wisdom": 2, "Charisma": 1},
+    "combinedRating": 585,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Fanged Sash · IL 800",
+    "displayName": "Fanged Sash",
+    "slot": "Belt",
+    "item_level": 800,
+    "ratingStats": {
+      "Accuracy": 400,
+      "Combat Advantage": 400,
+      "Critical Strike": 400
+    },
+    "abilityBonuses": {"Wisdom": 2, "Charisma": 2},
+    "combinedRating": 720,
+    "set": "Masterwork III Equipment Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Beaded Sash · IL 350",
+    "displayName": "Beaded Sash",
+    "slot": "Belt",
+    "item_level": 350,
+    "ratingStats": {
+      "Accuracy": 175,
+      "Combat Advantage": 175,
+      "Critical Strike": 175
+    },
+    "abilityBonuses": {"Intelligence": 1, "Charisma": 1},
+    "combinedRating": 315,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Beaded Sash · IL 500",
+    "displayName": "Beaded Sash",
+    "slot": "Belt",
+    "item_level": 500,
+    "ratingStats": {
+      "Accuracy": 250,
+      "Combat Advantage": 250,
+      "Critical Strike": 250
+    },
+    "abilityBonuses": {"Intelligence": 1, "Charisma": 1},
+    "combinedRating": 450,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Beaded Sash · IL 650",
+    "displayName": "Beaded Sash",
+    "slot": "Belt",
+    "item_level": 650,
+    "ratingStats": {
+      "Accuracy": 325,
+      "Combat Advantage": 325,
+      "Critical Strike": 326
+    },
+    "abilityBonuses": {"Intelligence": 2, "Charisma": 1},
+    "combinedRating": 585,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Beaded Sash · IL 800",
+    "displayName": "Beaded Sash",
+    "slot": "Belt",
+    "item_level": 800,
+    "ratingStats": {
+      "Accuracy": 400,
+      "Combat Advantage": 400,
+      "Critical Strike": 401
+    },
+    "abilityBonuses": {"Intelligence": 2, "Charisma": 2},
+    "combinedRating": 720,
+    "set": "Masterwork III Equipment Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Beaded Amulet · IL 350",
+    "displayName": "Beaded Amulet",
+    "slot": "Neck",
+    "item_level": 350,
+    "ratingStats": {
+      "Combat Advantage": 175,
+      "Critical Strike": 175,
+      "Critical Severity": 175
+    },
+    "abilityBonuses": {"Constitution": 1},
+    "combinedRating": 315,
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "setPartners": ["Masterwork III Neck Piece", "Masterwork III Waist Piece"],
+    "setBonus": "2 of Set: When you use an encounter power, you gain a stack of Alacrity, granting 1% Accuracy and 5% Movement for 5 seconds. Stacks up to 3 times.",
+    "notes": "Artifact Equipment. Recommended."
+  },
+  {
+    "name": "Beaded Amulet · IL 500",
+    "displayName": "Beaded Amulet",
+    "slot": "Neck",
+    "item_level": 500,
+    "ratingStats": {
+      "Combat Advantage": 250,
+      "Critical Strike": 250,
+      "Critical Severity": 250
+    },
+    "abilityBonuses": {"Constitution": 2},
+    "combinedRating": 450,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Beaded Amulet · IL 650",
+    "displayName": "Beaded Amulet",
+    "slot": "Neck",
+    "item_level": 650,
+    "ratingStats": {
+      "Combat Advantage": 326,
+      "Critical Strike": 325,
+      "Critical Severity": 325
+    },
+    "abilityBonuses": {"Constitution": 3},
+    "combinedRating": 585,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Beaded Amulet · IL 800",
+    "displayName": "Beaded Amulet",
+    "slot": "Neck",
+    "item_level": 800,
+    "ratingStats": {
+      "Combat Advantage": 400,
+      "Critical Strike": 401,
+      "Critical Severity": 400
+    },
+    "abilityBonuses": {"Constitution": 4},
+    "combinedRating": 720,
+    "set": "Masterwork III Equipment Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Lichstone Amulet · IL 350",
+    "displayName": "Lichstone Amulet",
+    "slot": "Neck",
+    "item_level": 350,
+    "ratingStats": {
+      "Accuracy": 175,
+      "Critical Avoidance": 175,
+      "Deflection": 175
+    },
+    "abilityBonuses": {"Constitution": 1},
+    "combinedRating": 315,
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "setPartners": ["Masterwork III Neck Piece", "Masterwork III Waist Piece"]
+  },
+  {
+    "name": "Lichstone Amulet · IL 500",
+    "displayName": "Lichstone Amulet",
+    "slot": "Neck",
+    "item_level": 500,
+    "ratingStats": {
+      "Accuracy": 250,
+      "Critical Avoidance": 250,
+      "Deflection": 250
+    },
+    "abilityBonuses": {"Constitution": 2},
+    "combinedRating": 450,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Lichstone Amulet · IL 650",
+    "displayName": "Lichstone Amulet",
+    "slot": "Neck",
+    "item_level": 650,
+    "ratingStats": {
+      "Accuracy": 325,
+      "Critical Avoidance": 325,
+      "Deflection": 325
+    },
+    "abilityBonuses": {"Constitution": 3},
+    "combinedRating": 585,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Lichstone Amulet · IL 800",
+    "displayName": "Lichstone Amulet",
+    "slot": "Neck",
+    "item_level": 800,
+    "ratingStats": {
+      "Accuracy": 400,
+      "Critical Avoidance": 400,
+      "Deflection": 400
+    },
+    "abilityBonuses": {"Constitution": 4},
+    "combinedRating": 720,
+    "set": "Masterwork III Equipment Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Fanged Beaded Amulet · IL 350",
+    "displayName": "Fanged Beaded Amulet",
+    "slot": "Neck",
+    "item_level": 350,
+    "ratingStats": {
+      "Accuracy": 175,
+      "Combat Advantage": 175,
+      "Critical Strike": 175
+    },
+    "abilityBonuses": {"Constitution": 1},
+    "combinedRating": 315,
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "setPartners": ["Masterwork III Neck Piece", "Masterwork III Waist Piece"],
+    "setBonus": "2 of Set: When you use an encounter power, you gain a stack of Alacrity, granting 1% Accuracy and 5% Movement for 5 seconds. Stacks up to 3 times."
+  },
+  {
+    "name": "Fanged Beaded Amulet · IL 500",
+    "displayName": "Fanged Beaded Amulet",
+    "slot": "Neck",
+    "item_level": 500,
+    "ratingStats": {
+      "Accuracy": 250,
+      "Combat Advantage": 250,
+      "Critical Strike": 250
+    },
+    "abilityBonuses": {"Constitution": 2},
+    "combinedRating": 450,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Fanged Beaded Amulet · IL 650",
+    "displayName": "Fanged Beaded Amulet",
+    "slot": "Neck",
+    "item_level": 650,
+    "ratingStats": {
+      "Accuracy": 325,
+      "Combat Advantage": 325,
+      "Critical Strike": 326
+    },
+    "abilityBonuses": {"Constitution": 3},
+    "combinedRating": 585,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Fanged Beaded Amulet · IL 800",
+    "displayName": "Fanged Beaded Amulet",
+    "slot": "Neck",
+    "item_level": 800,
+    "ratingStats": {
+      "Accuracy": 400,
+      "Combat Advantage": 400,
+      "Critical Strike": 401
+    },
+    "abilityBonuses": {"Constitution": 4},
+    "combinedRating": 720,
+    "set": "Masterwork III Equipment Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Bronzewood Amulet · IL 350",
+    "displayName": "Bronzewood Amulet",
+    "slot": "Neck",
+    "item_level": 350,
+    "ratingStats": {
+      "Accuracy": 175,
+      "Combat Advantage": 175,
+      "Critical Strike": 175
+    },
+    "abilityBonuses": {"Constitution": 1},
+    "combinedRating": 315,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Bronzewood Amulet · IL 500",
+    "displayName": "Bronzewood Amulet",
+    "slot": "Neck",
+    "item_level": 500,
+    "ratingStats": {
+      "Accuracy": 250,
+      "Combat Advantage": 250,
+      "Critical Strike": 250
+    },
+    "abilityBonuses": {"Constitution": 2},
+    "combinedRating": 450,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Bronzewood Amulet · IL 650",
+    "displayName": "Bronzewood Amulet",
+    "slot": "Neck",
+    "item_level": 650,
+    "ratingStats": {
+      "Accuracy": 325,
+      "Combat Advantage": 325,
+      "Critical Strike": 326
+    },
+    "abilityBonuses": {"Constitution": 3},
+    "combinedRating": 585,
+    "set": "Masterwork III Equipment Set"
+  },
+  {
+    "name": "Bronzewood Amulet · IL 800",
+    "displayName": "Bronzewood Amulet",
+    "slot": "Neck",
+    "item_level": 800,
+    "ratingStats": {
+      "Accuracy": 400,
+      "Combat Advantage": 400,
+      "Critical Strike": 401
+    },
+    "abilityBonuses": {"Constitution": 4},
+    "combinedRating": 720,
+    "set": "Masterwork III Equipment Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Titansteel Mace · IL 350",
+    "displayName": "Titansteel Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 350,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 262,
+      "Critical Strike": 131,
+      "Deflection": 131
+    },
+    "combinedRating": 315,
+    "set": "Masterwork II Weapon Set",
+    "setSize": 2,
+    "setPartners": ["Titansteel Kite Shield"],
+    "setBonus": "2 of Set: You and nearby allies are granted the following: +2% Base Damage Boost, +2% Overall Outgoing Healing, -2% Incoming Damage. This effect may stack up to 5 times when allies are equipped with a set of Stronghold weapons.",
+    "notes": "Artifact Equipment. Recommended."
+  },
+  {
+    "name": "Titansteel Mace · IL 500",
+    "displayName": "Titansteel Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 500,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 375,
+      "Critical Strike": 188,
+      "Deflection": 188
+    },
+    "combinedRating": 450,
+    "set": "Masterwork II Weapon Set"
+  },
+  {
+    "name": "Titansteel Mace · IL 650",
+    "displayName": "Titansteel Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 650,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 488,
+      "Critical Strike": 244,
+      "Deflection": 244
+    },
+    "combinedRating": 585,
+    "set": "Masterwork II Weapon Set"
+  },
+  {
+    "name": "Titansteel Mace · IL 800",
+    "displayName": "Titansteel Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 600,
+      "Critical Strike": 300,
+      "Deflection": 300
+    },
+    "combinedRating": 720,
+    "set": "Masterwork II Weapon Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Titansteel Kite Shield · IL 350",
+    "displayName": "Titansteel Kite Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 350,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 262,
+      "Critical Strike": 131,
+      "Deflection": 131
+    },
+    "combinedRating": 315,
+    "set": "Masterwork II Weapon Set",
+    "setSize": 2,
+    "setPartners": ["Titansteel Mace"],
+    "notes": "Artifact Stat Increase unlocks at Epic Rarity. Off-Hand, Heavy, Shield."
+  },
+  {
+    "name": "Titansteel Kite Shield · IL 500",
+    "displayName": "Titansteel Kite Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 500,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 375,
+      "Critical Strike": 188,
+      "Deflection": 188
+    },
+    "combinedRating": 450,
+    "set": "Masterwork II Weapon Set"
+  },
+  {
+    "name": "Titansteel Kite Shield · IL 650",
+    "displayName": "Titansteel Kite Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 650,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 488,
+      "Critical Strike": 244,
+      "Deflection": 244
+    },
+    "combinedRating": 585,
+    "set": "Masterwork II Weapon Set"
+  },
+  {
+    "name": "Titansteel Kite Shield · IL 800",
+    "displayName": "Titansteel Kite Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 600,
+      "Critical Strike": 300,
+      "Deflection": 300
+    },
+    "combinedRating": 720,
+    "set": "Masterwork II Weapon Set",
+    "tier": "Maximum Quality"
+  },
+  {
+    "name": "Titansteel Ward Armet",
+    "slot": "Head",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 340,
+      "Defense": 567,
+      "Deflection": 227
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Gladiator's Accuracy", "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Ward Cuirass",
+    "slot": "Armor",
+    "subSlot": "Plate",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 340,
+      "Defense": 567,
+      "Awareness": 227
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Challenger's Might", "description": "When in combat with only one enemy, your Power is increased by 1500."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Ward Couters",
+    "slot": "Arms",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 227,
+      "Defense": 567,
+      "Awareness": 340
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Survivor's Parry", "description": "Gain 25 Deflect for each percent of health you are missing."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Ward Poleyns",
+    "slot": "Feet",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Defense": 567,
+      "Awareness": 340,
+      "Deflection": 227
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Gladiator's Focus", "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Restoration Armet",
+    "slot": "Head",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 340,
+      "Critical Strike": 227,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Gladiator's Accuracy", "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Gladiator Cuirass",
+    "slot": "Armor",
+    "subSlot": "Plate",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 227,
+      "Defense": 567,
+      "Awareness": 170,
+      "Deflection": 170
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Challenger's Might", "description": "When in combat with only one enemy, your Power is increased by 1500."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Gladiator Armet",
+    "slot": "Head",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 170,
+      "Defense": 567,
+      "Awareness": 170,
+      "Deflection": 227
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Gladiator's Accuracy", "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Restoration Poleyns",
+    "slot": "Feet",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 227,
+      "Critical Strike": 340,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Gladiator's Focus", "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Restoration Couters",
+    "slot": "Arms",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 227,
+      "Critical Strike": 340,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Survivor's Parry", "description": "Gain 25 Deflect for each percent of health you are missing."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Restoration Cuirass",
+    "slot": "Armor",
+    "subSlot": "Plate",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 227,
+      "Combat Advantage": 340,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Challenger's Might", "description": "When in combat with only one enemy, your Power is increased by 1500."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Gladiator Couters",
+    "slot": "Arms",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 170,
+      "Defense": 567,
+      "Critical Avoidance": 170,
+      "Deflection": 227
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Survivor's Parry", "description": "Gain 25 Deflect for each percent of health you are missing."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Gladiator Poleyns",
+    "slot": "Feet",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 170,
+      "Defense": 567,
+      "Awareness": 340,
+      "Deflection": 227
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Gladiator's Focus", "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Medic Armet",
+    "slot": "Head",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 227,
+      "Combat Advantage": 170,
+      "Defense": 567,
+      "Awareness": 170
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Gladiator's Accuracy", "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Medic Cuirass",
+    "slot": "Armor",
+    "subSlot": "Plate",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 170,
+      "Critical Strike": 227,
+      "Defense": 567,
+      "Awareness": 170
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Challenger's Might", "description": "When in combat with only one enemy, your Power is increased by 1500."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Titansteel Medic Couters",
+    "slot": "Arms",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 227,
+      "Combat Advantage": 170,
+      "Defense": 567,
+      "Awareness": 170
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Survivor's Parry", "description": "Gain 25 Deflect for each percent of health you are missing."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Rubellite Assault Ring",
+    "slot": "Ring",
+    "item_level": 756,
+    "ratingStats": {
+      "Critical Strike": 567,
+      "Critical Severity": 1701
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Challenger's Focus", "description": "When in combat with only one enemy, your Critical Strike is increased by 1000."}
+    ]
+  },
+  {
+    "name": "Scintillant Raid Ring",
+    "slot": "Ring",
+    "item_level": 756,
+    "ratingStats": {
+      "Accuracy": 567,
+      "Critical Strike": 1701
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Challenger's Might", "description": "When in combat with only one enemy, your Power is increased by 1000."}
+    ]
+  },
+  {
+    "name": "Sphene Restoration Ring",
+    "slot": "Ring",
+    "item_level": 756,
+    "ratingStats": {
+      "Accuracy": 1701,
+      "Combat Advantage": 567
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Challenger's Accuracy", "description": "When in combat with only one enemy, your Accuracy is increased by 1000."}
+    ]
+  },
+  {
+    "name": "Silverspruce Ward Ring",
+    "slot": "Ring",
+    "item_level": 756,
+    "ratingStats": {
+      "Critical Avoidance": 1701,
+      "Deflection": 567
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Challenger's Parry", "description": "When in combat with only one enemy, your Deflect is increased by 1000."}
+    ]
+  },
+  {
+    "name": "Titansteel Medic Poleyns",
+    "slot": "Feet",
+    "item_level": 756,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 324,
+      "Combat Advantage": 243,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Gladiator's Focus", "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "set": "Masterwork Armor II"
+  },
+  {
+    "name": "Silverspruce Gladiator Ring",
+    "slot": "Ring",
+    "item_level": 756,
+    "ratingStats": {
+      "Awareness": 567,
+      "Critical Avoidance": 1701
+    },
+    "combinedRating": 605
+  },
+  {
+    "name": "Sphene Medic Ring",
+    "slot": "Ring",
+    "item_level": 756,
+    "ratingStats": {
+      "Accuracy": 567,
+      "Critical Strike": 1701
+    },
+    "combinedRating": 605
+  }
+]

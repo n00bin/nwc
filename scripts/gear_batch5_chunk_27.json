@@ -1,0 +1,904 @@
+[
+  {
+    "name": "Elven Ward Armet",
+    "slot": "Head",
+    "item_level": 567,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Combat Advantage": 255, "Defense": 425, "Deflection": 170, "Combined Rating": 510},
+    "source": "Seal of the Protector",
+    "set": "Elven Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Elemental Alliance Ward Armet",
+    "slot": "Head",
+    "item_level": 554,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Severity": 166, "Defense": 416, "Awareness": 249, "Combined Rating": 499},
+    "source": "Elemental Infusion",
+    "set": "Elemental Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Elemental Alliance Ward Cuirass",
+    "slot": "Armor",
+    "item_level": 554,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Combat Advantage": 249, "Critical Strike": 166, "Defense": 416, "Combined Rating": 499},
+    "source": "Elemental Infusion",
+    "set": "Elemental Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Elemental Alliance Ward Couters",
+    "slot": "Arms",
+    "item_level": 554,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Combat Advantage": 249, "Defense": 416, "Deflection": 166, "Combined Rating": 499},
+    "source": "Elemental Infusion",
+    "set": "Elemental Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Elemental Alliance Ward Poleyns",
+    "slot": "Feet",
+    "item_level": 554,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 416, "Awareness": 249, "Deflection": 166, "Combined Rating": 499},
+    "source": "Elemental Infusion",
+    "set": "Elemental Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Elemental Alliance Ward Necklace",
+    "slot": "Neck",
+    "item_level": 554,
+    "ratingStats": {"Accuracy": 332, "Critical Avoidance": 499, "Combined Rating": 499},
+    "source": "Cragmire Crypt (Master)",
+    "set": "Elemental Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Elemental Alliance Restoration Couters",
+    "slot": "Arms",
+    "item_level": 554,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Accuracy": 166, "Critical Strike": 249, "Defense": 416, "Combined Rating": 499},
+    "source": "Elemental Infusion",
+    "set": "Elemental Alliance Armor",
+    "variant": "Restoration"
+  },
+  {
+    "name": "Elemental Alliance Restoration Cuirass",
+    "slot": "Armor",
+    "item_level": 554,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Combat Advantage": 249, "Critical Strike": 166, "Defense": 416, "Combined Rating": 499},
+    "source": "Elemental Infusion",
+    "set": "Elemental Alliance Armor",
+    "variant": "Restoration"
+  },
+  {
+    "name": "Elemental Alliance Restoration Armet",
+    "slot": "Head",
+    "item_level": 554,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Accuracy": 249, "Critical Strike": 166, "Defense": 416, "Combined Rating": 499},
+    "source": "Elemental Infusion",
+    "set": "Elemental Alliance Armor",
+    "variant": "Restoration"
+  },
+  {
+    "name": "Elemental Alliance Ward Belt",
+    "slot": "Belt",
+    "item_level": 554,
+    "ratingStats": {"Critical Avoidance": 332, "Deflection": 499, "Combined Rating": 499},
+    "source": "The Gray Wolf Den (Master)",
+    "set": "Elemental Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Elemental Alliance Ward Ring",
+    "slot": "Ring",
+    "item_level": 554,
+    "ratingStats": {"Critical Severity": 1994, "Critical Avoidance": 2992, "Combined Rating": 222},
+    "source": "Temple of the Spider (Master)",
+    "set": "Elemental Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Elemental Alliance Restoration Poleyns",
+    "slot": "Feet",
+    "item_level": 554,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Accuracy": 166, "Combat Advantage": 249, "Defense": 416, "Combined Rating": 499},
+    "source": "Elemental Infusion",
+    "set": "Elemental Alliance Armor",
+    "variant": "Restoration"
+  },
+  {
+    "name": "Elemental Alliance Assault Necklace",
+    "slot": "Neck",
+    "item_level": 554,
+    "ratingStats": {"Accuracy": 499, "Combat Advantage": 332, "Combined Rating": 499},
+    "source": "Cragmire Crypt (Master)",
+    "set": "Elemental Alliance Armor",
+    "variant": "Assault"
+  },
+  {
+    "name": "Elemental Alliance Assault Ring",
+    "slot": "Ring",
+    "item_level": 554,
+    "ratingStats": {"Combat Advantage": 2992, "Critical Strike": 1994, "Combined Rating": 222},
+    "source": "Temple of the Spider (Master)",
+    "set": "Elemental Alliance Armor",
+    "variant": "Assault"
+  },
+  {
+    "name": "Elemental Alliance Assault Belt",
+    "slot": "Belt",
+    "item_level": 554,
+    "ratingStats": {"Accuracy": 332, "Critical Strike": 499, "Combined Rating": 499},
+    "source": "The Gray Wolf Den (Master)",
+    "set": "Elemental Alliance Armor",
+    "variant": "Assault"
+  },
+  {
+    "name": "Alliance Assault Breastplate",
+    "slot": "Armor",
+    "item_level": 546,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {"Accuracy": 164, "Combat Advantage": 246, "Defense": 410, "Combined Rating": 491},
+    "source": "Seal of the Elements",
+    "set": "Alliance Armor",
+    "variant": "Assault"
+  },
+  {
+    "name": "Alliance Restoration Couters",
+    "slot": "Arms",
+    "item_level": 546,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Accuracy": 164, "Critical Strike": 166, "Defense": 410, "Combined Rating": 491},
+    "source": "Seal of the Elements",
+    "set": "Alliance Armor",
+    "variant": "Restoration"
+  },
+  {
+    "name": "Alliance Restoration Poleyns",
+    "slot": "Feet",
+    "item_level": 546,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Accuracy": 164, "Combat Advantage": 246, "Defense": 410, "Combined Rating": 491},
+    "source": "Seal of the Elements",
+    "set": "Alliance Armor",
+    "variant": "Restoration"
+  },
+  {
+    "name": "Alliance Assault Necklace",
+    "slot": "Neck",
+    "item_level": 546,
+    "ratingStats": {"Accuracy": 491, "Combat Advantage": 328, "Combined Rating": 491},
+    "source": "Seal of the Elements / Lair of Lostmouth",
+    "set": "Alliance Armor",
+    "variant": "Assault"
+  },
+  {
+    "name": "Alliance Assault Ring",
+    "slot": "Ring",
+    "item_level": 546,
+    "ratingStats": {"Combat Advantage": 2948, "Critical Strike": 1966, "Combined Rating": 218},
+    "source": "Valindra's Tower / Seal of the Elements",
+    "set": "Alliance Armor",
+    "variant": "Assault"
+  },
+  {
+    "name": "Alliance Assault Belt",
+    "slot": "Belt",
+    "item_level": 546,
+    "ratingStats": {"Accuracy": 328, "Critical Strike": 491, "Combined Rating": 491},
+    "source": "Seal of the Elements / Malabog's Castle",
+    "set": "Alliance Armor",
+    "variant": "Assault"
+  },
+  {
+    "name": "Alliance Restoration Cuirass",
+    "slot": "Armor",
+    "item_level": 546,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Combat Advantage": 246, "Critical Strike": 164, "Defense": 410, "Combined Rating": 491},
+    "source": "Seal of the Elements",
+    "set": "Alliance Armor",
+    "variant": "Restoration"
+  },
+  {
+    "name": "Alliance Restoration Armet",
+    "slot": "Head",
+    "item_level": 546,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Accuracy": 223, "Critical Strike": 187, "Defense": 410, "Combined Rating": 491},
+    "source": "Seal of the Elements",
+    "set": "Alliance Armor",
+    "variant": "Restoration"
+  },
+  {
+    "name": "Alliance Ward Belt",
+    "slot": "Belt",
+    "item_level": 546,
+    "ratingStats": {"Critical Avoidance": 328, "Deflection": 491, "Combined Rating": 491},
+    "source": "Seal of the Elements / Malabog's Castle",
+    "set": "Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Alliance Ward Ring",
+    "slot": "Ring",
+    "item_level": 546,
+    "ratingStats": {"Critical Severity": 1966, "Critical Avoidance": 2948, "Combined Rating": 218},
+    "source": "Valindra's Tower / Seal of the Elements",
+    "set": "Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Alliance Ward Necklace",
+    "slot": "Neck",
+    "item_level": 546,
+    "ratingStats": {"Accuracy": 328, "Critical Avoidance": 491, "Combined Rating": 491},
+    "source": "Seal of the Elements / Lair of Lostmouth",
+    "set": "Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Alliance Ward Armet",
+    "slot": "Head",
+    "item_level": 546,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Severity": 164, "Defense": 410, "Awareness": 246, "Combined Rating": 491},
+    "source": "Seal of the Elements",
+    "set": "Alliance Armor",
+    "variant": "Ward (Paladin)"
+  },
+  {
+    "name": "Alliance Ward Cuirass",
+    "slot": "Armor",
+    "item_level": 546,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Severity": 164, "Defense": 410, "Deflection": 246, "Combined Rating": 491},
+    "source": "Seal of the Elements",
+    "set": "Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Alliance Ward Breastplate",
+    "slot": "Armor",
+    "item_level": 546,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {"Critical Severity": 246, "Defense": 410, "Deflection": 164, "Combined Rating": 491},
+    "source": "Valindra's Tower / Seal of the Elements / Lair of Lostmouth",
+    "set": "Alliance Armor",
+    "variant": "Ward (Plate)"
+  },
+  {
+    "name": "Alliance Ward Couters",
+    "slot": "Arms",
+    "item_level": 546,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 410, "Awareness": 246, "Deflection": 164, "Combined Rating": 491},
+    "source": "Seal of the Elements",
+    "set": "Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Alliance Ward Poleyns",
+    "slot": "Feet",
+    "item_level": 546,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Combat Advantage": 246, "Defense": 410, "Deflection": 164, "Combined Rating": 491},
+    "source": "Seal of the Elements",
+    "set": "Alliance Armor",
+    "variant": "Ward"
+  },
+  {
+    "name": "Eternal Boots",
+    "slot": "Feet",
+    "item_level": 1300,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {"Combat Advantage": 355, "Defense": 975, "Critical Avoidance": 616, "Combined Rating": 1170},
+    "source": "Tyranny of Dragons Epic Adventure",
+    "set": "Eternal Armor"
+  },
+  {
+    "name": "Eternal Gauntlets",
+    "slot": "Arms",
+    "item_level": 1300,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {"Accuracy": 337, "Combat Advantage": 337, "Defense": 975, "Critical Avoidance": 296, "Combined Rating": 1170},
+    "source": "Tyranny of Dragons Epic Adventure",
+    "set": "Eternal Armor"
+  },
+  {
+    "name": "Eternal Plate Armor",
+    "slot": "Armor",
+    "item_level": 1300,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {"Combat Advantage": 337, "Critical Strike": 339, "Defense": 975, "Deflection": 294, "Combined Rating": 1170},
+    "source": "Tyranny of Dragons Epic Adventure",
+    "set": "Eternal Armor"
+  },
+  {
+    "name": "Eternal Helm",
+    "slot": "Head",
+    "item_level": 1300,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {"Accuracy": 337, "Combat Advantage": 337, "Defense": 975, "Critical Avoidance": 296, "Combined Rating": 1170},
+    "source": "Tyranny of Dragons Epic Adventure",
+    "set": "Eternal Armor"
+  },
+  {
+    "name": "White Draconic Guise",
+    "slot": "Head",
+    "item_level": 610,
+    "ratingStats": {"Defense": 472, "Critical Avoidance": 472, "Combined Rating": 367},
+    "source": "The Temple of Tiamat",
+    "variant": "White"
+  },
+  {
+    "name": "Red Draconic Guise",
+    "slot": "Head",
+    "item_level": 610,
+    "ratingStats": {"Combat Advantage": 472, "Defense": 472, "Combined Rating": 367},
+    "source": "The Temple of Tiamat",
+    "variant": "Red"
+  },
+  {
+    "name": "Green Draconic Guise",
+    "slot": "Head",
+    "item_level": 610,
+    "ratingStats": {"Critical Strike": 472, "Defense": 472, "Combined Rating": 367},
+    "source": "The Temple of Tiamat",
+    "variant": "Green"
+  },
+  {
+    "name": "Blue Draconic Guise",
+    "slot": "Head",
+    "item_level": 610,
+    "ratingStats": {"Accuracy": 472, "Defense": 472, "Combined Rating": 367},
+    "source": "The Temple of Tiamat",
+    "variant": "Blue"
+  },
+  {
+    "name": "Black Draconic Guise",
+    "slot": "Head",
+    "item_level": 610,
+    "ratingStats": {"Defense": 472, "Critical Avoidance": 472, "Combined Rating": 367},
+    "source": "The Temple of Tiamat",
+    "variant": "Black"
+  },
+  {
+    "name": "Golden Dragon Swordmaster",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 300,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {"Combat Advantage": 150, "Critical Severity": 150, "Critical Avoidance": 150, "Combined Rating": 270},
+    "equipBonuses": [{"name": "Equip", "description": "Increase the damage done by Reave by 10%."}],
+    "set": "Golden Dragon",
+    "setSize": 2,
+    "setPartners": ["Any Golden Dragon Longsword", "Golden Dragon Shield"],
+    "setBonus": "2 of Set: Equip: 0 Maximum Hit Points / Equip: 0 Defense",
+    "notes": "Artifact Equipment"
+  },
+  {
+    "name": "Vanguard of the Golden Dragon",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 300,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {"Combat Advantage": 150, "Critical Avoidance": 300, "Combined Rating": 270},
+    "equipBonuses": [{"name": "Equip", "description": "Increase the damage done by Threatening Rush by 10%."}],
+    "set": "Golden Dragon",
+    "setSize": 2,
+    "setPartners": ["Any Golden Dragon Longsword", "Golden Dragon Shield"],
+    "setBonus": "2 of Set: Equip: 0 Maximum Hit Points / Equip: 0 Defense",
+    "notes": "Artifact Equipment"
+  },
+  {
+    "name": "Shield of the Golden Dragon",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 300,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Combat Advantage": 150, "Critical Strike": 150, "Critical Avoidance": 150, "Combined Rating": 270},
+    "set": "Golden Dragon",
+    "setSize": 2,
+    "setPartners": ["Golden Dragon Longsword", "Shield of the Golden Dragon"],
+    "setBonus": "2 of Set: Equip: 0 Critical Strike / Equip: 0 Defense",
+    "notes": "Artifact Equipment; Heavy Off-Hand Shield. Artifact Stat Increase: Unlocks at Epic Rarity Modification."
+  },
+  {
+    "name": "Kite Shield of Elemental Fire",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 300,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Combat Advantage": 150, "Critical Strike": 150, "Critical Avoidance": 150, "Combined Rating": 270},
+    "set": "Elemental Fire",
+    "setSize": 2,
+    "setPartners": ["Mace of Elemental Fire", "Kite Shield of Elemental Fire"],
+    "setBonus": "2 of Set: Equip: 0 Critical Strike / Equip: 0 Defense",
+    "notes": "Artifact Equipment; Heavy Off-Hand Shield. Artifact Stat Increase: Unlocks at Epic Rarity Modification."
+  },
+  {
+    "name": "Mace of Elemental Fire",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 300,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Combat Advantage": 150, "Critical Strike": 150, "Critical Avoidance": 150, "Combined Rating": 270},
+    "set": "Elemental Fire",
+    "setSize": 2,
+    "setPartners": ["Mace of Elemental Fire", "Kite Shield of Elemental Fire"],
+    "setBonus": "2 of Set: Equip: 0 Critical Strike / Equip: 0 Defense",
+    "notes": "Artifact Equipment"
+  },
+  {
+    "name": "Dragon Loyalist's Visage",
+    "slot": "Head",
+    "item_level": 610,
+    "ratingStats": {"Combat Advantage": 284, "Critical Severity": 189, "Defense": 472, "Combined Rating": 567},
+    "equipBonuses": [{"name": "Equip", "description": "When you have a draconic companion summoned, you gain a bonus effect. (Bonus varies by companion.)"}],
+    "source": "The Shores of Tuern"
+  },
+  {
+    "name": "Cambist's Gauntlets",
+    "slot": "Arms",
+    "item_level": 610,
+    "ratingStats": {"Critical Strike": 189, "Critical Severity": 284, "Defense": 472, "Combined Rating": 567},
+    "equipBonuses": [{"name": "Golden Steal", "description": "Your attacks have a chance to cause extra damage, but at a financial cost."}],
+    "source": "Lair of Lostmauth"
+  },
+  {
+    "name": "Lostmauth's Hoard Necklace",
+    "slot": "Neck",
+    "item_level": 600,
+    "abilityBonuses": {"Constitution": 3},
+    "ratingStats": {"Combat Advantage": 300, "Critical Strike": 300, "Critical Severity": 301, "Combined Rating": 540},
+    "set": "Lostmauth's Hoard",
+    "setSize": 3,
+    "setPartners": ["Lostmauth's Hoard Necklace", "Golden Belt of Puissance", "Lostmauth's Horn of Blasting"],
+    "setBonus": "3 of Set: Do an additional hit for 100 magnitude damage on a Critical hit.",
+    "source": "Lair of Lostmauth",
+    "notes": "Artifact Equipment Maximum Quality"
+  },
+  {
+    "name": "Golden Belt of Puissance",
+    "slot": "Belt",
+    "item_level": 600,
+    "abilityBonuses": {"Strength": 2, "Dexterity": 2},
+    "ratingStats": {"Combat Advantage": 300, "Critical Strike": 301, "Critical Severity": 300, "Combined Rating": 540},
+    "set": "Lostmauth's Hoard",
+    "setSize": 3,
+    "setPartners": ["Lostmauth's Hoard Necklace", "Golden Belt of Puissance", "Lostmauth's Horn of Blasting"],
+    "setBonus": "3 of Set: Do an additional hit for 100 magnitude damage on a Critical hit.",
+    "source": "Lair of Lostmauth",
+    "notes": "Artifact Equipment Maximum Quality"
+  },
+  {
+    "name": "Dragon Bone Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Accuracy": 350, "Combat Advantage": 422, "Critical Strike": 422},
+    "source": "The Dragon Charthraxis - Neverdeath / The Dragon Menothrax, the Greedy - Icespire Peak / The Dragon Vartilingoix - Ebon Downs",
+    "set": "Dragon Bone Weapons"
+  },
+  {
+    "name": "Dragon Bone Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 800,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {"Awareness": 350, "Critical Avoidance": 427, "Deflection": 422},
+    "source": "The Dragon Charthraxis - Neverdeath / The Dragon Menothrax, the Greedy - Icespire Peak / The Dragon Vartilingoix - Ebon Downs",
+    "set": "Dragon Bone Weapons",
+    "notes": "Heavy Off-Hand Shield"
+  },
+  {
+    "name": "Reinforced Dragonflight Ward Armet",
+    "slot": "Head",
+    "item_level": 1400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Combat Advantage": 420, "Defense": 1050, "Awareness": 630, "Combined Rating": 1260},
+    "source": "Stronghold Guild Marketplace (Rank 3)",
+    "set": "Reinforced Dragonflight",
+    "setSize": 4,
+    "setPartners": ["Reinforced Dragonflight Head", "Reinforced Dragonflight Body", "Reinforced Dragonflight Arms", "Reinforced Dragonflight Feet"],
+    "setBonus": "2 of Set: +5,000 Maximum Hit Points / 3 of Set: +5,000 Power",
+    "variant": "Ward"
+  },
+  {
+    "name": "Reinforced Dragonflight Ward Cuirass",
+    "slot": "Armor",
+    "item_level": 1400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 1050, "Awareness": 420, "Deflection": 630, "Combined Rating": 1260},
+    "source": "Stronghold Guild Marketplace (Rank 3)",
+    "set": "Reinforced Dragonflight",
+    "setSize": 4,
+    "setPartners": ["Reinforced Dragonflight Head", "Reinforced Dragonflight Body", "Reinforced Dragonflight Arms", "Reinforced Dragonflight Feet"],
+    "setBonus": "2 of Set: +5,000 Maximum Hit Points / 3 of Set: +5,000 Power",
+    "variant": "Ward"
+  },
+  {
+    "name": "Reinforced Dragonflight Ward Couters",
+    "slot": "Arms",
+    "item_level": 1400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Severity": 630, "Defense": 1050, "Awareness": 420, "Combined Rating": 1260},
+    "source": "Stronghold Guild Marketplace (Rank 3)",
+    "set": "Reinforced Dragonflight",
+    "setSize": 4,
+    "setPartners": ["Reinforced Dragonflight Head", "Reinforced Dragonflight Body", "Reinforced Dragonflight Arms", "Reinforced Dragonflight Feet"],
+    "setBonus": "2 of Set: +5,000 Maximum Hit Points / 3 of Set: +5,000 Power",
+    "variant": "Ward"
+  },
+  {
+    "name": "Reinforced Dragonflight Ward Poleyns",
+    "slot": "Feet",
+    "item_level": 1400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 1050, "Deflection": 420, "Deflect Severity": 630, "Combined Rating": 1260},
+    "source": "Stronghold Guild Marketplace (Rank 3)",
+    "set": "Reinforced Dragonflight",
+    "setSize": 4,
+    "setPartners": ["Reinforced Dragonflight Head", "Reinforced Dragonflight Body", "Reinforced Dragonflight Arms", "Reinforced Dragonflight Feet"],
+    "setBonus": "2 of Set: +5,000 Maximum Hit Points / 3 of Set: +5,000 Power",
+    "variant": "Ward"
+  },
+  {
+    "name": "Reinforced Dragonflight Restoration Armet",
+    "slot": "Head",
+    "item_level": 1400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 420, "Defense": 1050, "Outgoing Healing": 630, "Combined Rating": 1260},
+    "source": "Stronghold Guild Marketplace (Rank 3)",
+    "set": "Reinforced Dragonflight",
+    "setSize": 4,
+    "setPartners": ["Reinforced Dragonflight Head", "Reinforced Dragonflight Body", "Reinforced Dragonflight Arms", "Reinforced Dragonflight Feet"],
+    "setBonus": "2 of Set: +5,000 Maximum Hit Points / 3 of Set: +5,000 Power",
+    "variant": "Restoration"
+  },
+  {
+    "name": "Reinforced Dragonflight Restoration Poleyns",
+    "slot": "Feet",
+    "item_level": 1400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 630, "Defense": 1050, "Outgoing Healing": 420, "Combined Rating": 1260},
+    "source": "Stronghold Guild Marketplace (Rank 3)",
+    "set": "Reinforced Dragonflight",
+    "setSize": 4,
+    "setPartners": ["Reinforced Dragonflight Head", "Reinforced Dragonflight Body", "Reinforced Dragonflight Arms", "Reinforced Dragonflight Feet"],
+    "setBonus": "2 of Set: +5,000 Maximum Hit Points / 3 of Set: +5,000 Power",
+    "variant": "Restoration"
+  },
+  {
+    "name": "Reinforced Dragonflight Restoration Couters",
+    "slot": "Arms",
+    "item_level": 1400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Combat Advantage": 420, "Defense": 1050, "Outgoing Healing": 630, "Combined Rating": 1260},
+    "source": "Stronghold Guild Marketplace (Rank 3)",
+    "set": "Reinforced Dragonflight",
+    "setSize": 4,
+    "setPartners": ["Reinforced Dragonflight Head", "Reinforced Dragonflight Body", "Reinforced Dragonflight Arms", "Reinforced Dragonflight Feet"],
+    "setBonus": "2 of Set: +5,000 Maximum Hit Points / 3 of Set: +5,000 Power",
+    "variant": "Restoration"
+  },
+  {
+    "name": "Reinforced Dragonflight Restoration Cuirass",
+    "slot": "Armor",
+    "item_level": 1400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 630, "Defense": 1050, "Outgoing Healing": 420, "Combined Rating": 1260},
+    "source": "Stronghold Guild Marketplace (Rank 3)",
+    "set": "Reinforced Dragonflight",
+    "setSize": 4,
+    "setPartners": ["Reinforced Dragonflight Head", "Reinforced Dragonflight Body", "Reinforced Dragonflight Arms", "Reinforced Dragonflight Feet"],
+    "setBonus": "2 of Set: +5,000 Maximum Hit Points / 3 of Set: +5,000 Power",
+    "variant": "Restoration"
+  },
+  {
+    "name": "Spellcaster's Dragonflight Ring",
+    "slot": "Ring",
+    "item_level": 1600,
+    "ratingStats": {"Accuracy": 1200, "Critical Strike": 3600, "Combined Rating": 1280},
+    "percentStats": {"Movement Speed": 1.5},
+    "equipBonuses": [{"name": "Expert's Might", "description": "Your Power is increased by 5% when you are moving."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Tracker's Dragonflight Ring",
+    "slot": "Ring",
+    "item_level": 1600,
+    "ratingStats": {"Combat Advantage": 1200, "Critical Strike": 3600, "Combined Rating": 1280},
+    "percentStats": {"Movement Speed": 1.5},
+    "equipBonuses": [{"name": "Dashing Ranger", "description": "Your Accuracy and Critical Severity is increased by 3,000 when you are moving."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Commander's Dragonflight Ring",
+    "slot": "Ring",
+    "item_level": 1600,
+    "ratingStats": {"Awareness": 3600, "Deflection": 1200, "Combined Rating": 1280},
+    "percentStats": {"Movement Speed": 1.5},
+    "equipBonuses": [{"name": "Expert's Parry", "description": "Your Deflect is increased by 5% when you are moving."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Physician's Dragonflight Ring",
+    "slot": "Ring",
+    "item_level": 1600,
+    "ratingStats": {"Critical Severity": 3600, "Forte": 1200, "Combined Rating": 1280},
+    "percentStats": {"Movement Speed": 1.5},
+    "equipBonuses": [{"name": "Expert's Focus", "description": "Your Outgoing Healing is increased by 5% when you are moving."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Gladiator's Dragonflight Ring",
+    "slot": "Ring",
+    "item_level": 1600,
+    "ratingStats": {"Accuracy": 3600, "Combat Advantage": 1200, "Combined Rating": 1280},
+    "percentStats": {"Movement Speed": 1.5},
+    "equipBonuses": [{"name": "Enduring Focus", "description": "Your current Hit Points increases your Critical Severity, up to a maximum of 5%."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Apothecary's Dragonflight Ring",
+    "slot": "Ring",
+    "item_level": 1600,
+    "ratingStats": {"Critical Strike": 3600, "Outgoing Healing": 1200, "Combined Rating": 1280},
+    "percentStats": {"Movement Speed": 1.5},
+    "equipBonuses": [{"name": "Running Apothecary", "description": "Your Critical Strike and Forte is increased by 3,000 when you are moving."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Mercenary's Dragonflight Ring",
+    "slot": "Ring",
+    "item_level": 1500,
+    "ratingStats": {"Accuracy": 1125, "Combat Advantage": 3375, "Combined Rating": 1200},
+    "percentStats": {"Recharge Speed": 1.5},
+    "equipBonuses": [{"name": "Gutsy Mercenary", "description": "Your Combat Advantage and Power is increased by 3,000 when you are moving."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Arcanist's Dragonflight Ring",
+    "slot": "Ring",
+    "item_level": 1500,
+    "ratingStats": {"Accuracy": 1125, "Combat Advantage": 3375, "Combined Rating": 1200},
+    "percentStats": {"Recharge Speed": 1.5},
+    "equipBonuses": [{"name": "Tit for Tat", "description": "Your At-Will and Encounter Powers do 3% more damage, but your Daily Powers do 30% less damage."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Saboteur's Dragonflight Ring",
+    "slot": "Ring",
+    "item_level": 1500,
+    "ratingStats": {"Combat Advantage": 3375, "Critical Strike": 1125, "Combined Rating": 1200},
+    "percentStats": {"Recharge Speed": 1.5},
+    "equipBonuses": [{"name": "Enduring Accuracy", "description": "Your current Hit Points increases your Accuracy, up to a maximum of 5%."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Knight's Dragonflight Ring",
+    "slot": "Ring",
+    "item_level": 1500,
+    "ratingStats": {"Defense": 1125, "Incoming Healing": 3375, "Combined Rating": 1200},
+    "percentStats": {"Recharge Speed": 1.5},
+    "equipBonuses": [{"name": "Defense Preparation", "description": "When you stand still for 6 seconds, your Defense and Movement Speed is increased by 10% for 6 seconds."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Prophet's Dragonflight Ring",
+    "slot": "Ring",
+    "item_level": 1500,
+    "ratingStats": {"Critical Avoidance": 1125, "Deflection": 3375, "Combined Rating": 1200},
+    "percentStats": {"Recharge Speed": 1.5},
+    "equipBonuses": [{"name": "Medic's Expertise", "description": "Your Incoming Healing and Critical Avoidance is increased by 3,000 when you are moving."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Medic's Dragonflight Ring",
+    "slot": "Ring",
+    "item_level": 1500,
+    "ratingStats": {"Critical Strike": 1125, "Outgoing Healing": 3375, "Combined Rating": 1200},
+    "percentStats": {"Recharge Speed": 1.5},
+    "equipBonuses": [{"name": "Control Preparation", "description": "When you stand still for 6 seconds, your Control Bonus is increased by 10% and your Critical Severity is increased by 5% for 6 seconds."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Polished Amber Dwarven Ring",
+    "slot": "Ring",
+    "item_level": 2500,
+    "ratingStats": {"Critical Strike": 7500, "Combined Rating": 2000},
+    "percentStats": {"Action Point Gain": 1.5},
+    "equipBonuses": [{"name": "The Ol' Switcheroo", "description": "+7,825 Outgoing Healing / -2,600 Defense"}],
+    "source": "Stronghold Guild Marketplace",
+    "variant": "Amber (Polished)"
+  },
+  {
+    "name": "Polished Diamond Dwarven Ring",
+    "slot": "Ring",
+    "item_level": 2500,
+    "ratingStats": {"Awareness": 7500, "Combined Rating": 2000},
+    "percentStats": {"Action Point Gain": 1.5},
+    "equipBonuses": [{"name": "The Ol' Switcheroo", "description": "+7,825 Defense / -2,600 Power"}],
+    "source": "Stronghold Guild Marketplace",
+    "variant": "Diamond (Polished)"
+  },
+  {
+    "name": "Polished Emerald Dwarven Ring",
+    "slot": "Ring",
+    "item_level": 2500,
+    "ratingStats": {"Critical Strike": 7500, "Combined Rating": 2000},
+    "percentStats": {"Action Point Gain": 1.5},
+    "equipBonuses": [{"name": "Sniper's Fury", "description": "Your Powers deal 2% more damage when you are 50' or further away from your target."}],
+    "source": "Stronghold Guild Marketplace",
+    "variant": "Emerald (Polished)"
+  },
+  {
+    "name": "Polished Ivory Dwarven Ring",
+    "slot": "Ring",
+    "item_level": 2500,
+    "ratingStats": {"Critical Severity": 7500, "Combined Rating": 2000},
+    "percentStats": {"Action Point Gain": 1.5},
+    "equipBonuses": [{"name": "Sniper's Fury", "description": "Your Powers deal 2% more damage when you are 50' or further away from your target."}],
+    "source": "Stronghold Guild Marketplace",
+    "variant": "Ivory (Polished)"
+  },
+  {
+    "name": "Polished Ruby Dwarven Ring",
+    "slot": "Ring",
+    "item_level": 2500,
+    "ratingStats": {"Critical Severity": 7500, "Combined Rating": 2000},
+    "percentStats": {"Action Point Gain": 1.5},
+    "equipBonuses": [{"name": "Brute's Fury", "description": "Your Powers deal 1.5% more damage when you are 25' or closer to your target."}],
+    "source": "Stronghold Guild Marketplace",
+    "variant": "Ruby (Polished)"
+  },
+  {
+    "name": "Amber Dwarven Ring",
+    "slot": "Ring",
+    "item_level": 1500,
+    "ratingStats": {"Accuracy": 3375, "Awareness": 1125, "Combined Rating": 1200},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Survivor's Parry", "description": "Gain 75 Deflect for each percent of health you are missing."}],
+    "source": "Stronghold Guild Marketplace"
+  },
+  {
+    "name": "Ivory Dwarven Ring",
+    "slot": "Ring",
+    "item_level": 1500,
+    "ratingStats": {"Deflection": 3375, "Outgoing Healing": 1125, "Combined Rating": 1200},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Survivor's Parry", "description": "Gain 75 Deflect for each percent of health you are missing."}],
+    "source": "Stronghold Guild Marketplace"
+  },
+  {
+    "name": "Emerald Dwarven Ring",
+    "slot": "Ring",
+    "item_level": 1500,
+    "ratingStats": {"Combat Advantage": 3375, "Critical Strike": 1125, "Combined Rating": 1200},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Survivor's Might", "description": "Gain 75 Power for each percent of health you are missing."}],
+    "source": "Stronghold Guild Marketplace"
+  },
+  {
+    "name": "Diamond Dwarven Ring",
+    "slot": "Ring",
+    "item_level": 1500,
+    "ratingStats": {"Combat Advantage": 3375, "Awareness": 1125, "Combined Rating": 1200},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Survivor's Parry", "description": "Gain 75 Deflect for each percent of health you are missing."}],
+    "source": "Stronghold Guild Marketplace"
+  },
+  {
+    "name": "Polished Sapphire Dwarven Ring",
+    "slot": "Ring",
+    "item_level": 2500,
+    "ratingStats": {"Combat Advantage": 7500, "Combined Rating": 2000},
+    "percentStats": {"Action Point Gain": 1.5},
+    "equipBonuses": [{"name": "Brute's Fury", "description": "Your Powers deal 1.5% more damage when you are 25' or closer to your target."}],
+    "source": "Stronghold Guild Marketplace",
+    "variant": "Sapphire (Polished)"
+  },
+  {
+    "name": "Ruby Dwarven Ring",
+    "slot": "Ring",
+    "item_level": 1500,
+    "ratingStats": {"Awareness": 1125, "Control Bonus": 3375, "Combined Rating": 1200},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Survivor's Might", "description": "Gain 75 Power for each percent of health you are missing."}],
+    "source": "Stronghold Guild Marketplace"
+  },
+  {
+    "name": "Sapphire Dwarven Ring",
+    "slot": "Ring",
+    "item_level": 1500,
+    "ratingStats": {"Accuracy": 3375, "Critical Strike": 1125, "Combined Rating": 1200},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Survivor's Might", "description": "Gain 75 Power for each percent of health you are missing."}],
+    "source": "Stronghold Guild Marketplace"
+  },
+  {
+    "name": "Dragonflight Pants of Forgiveness",
+    "slot": "Pants",
+    "item_level": 1500,
+    "ratingStats": {"Awareness": 1125, "Control Resistance": 1125, "Combined Rating": 1350},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Survivor's Rush", "description": "Gain Recharge Speed as your health decreases to a maximum of 5%."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Dragonflight Pants of Grit",
+    "slot": "Pants",
+    "item_level": 1500,
+    "ratingStats": {"Defense": 1125, "Incoming Healing": 1125, "Combined Rating": 1350},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Survivor's Rush", "description": "Gain Recharge Speed as your health decreases to a maximum of 5%."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Dragonflight Pants of Determination",
+    "slot": "Pants",
+    "item_level": 1500,
+    "ratingStats": {"Accuracy": 1125, "Deflect Severity": 1125, "Combined Rating": 1350},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Survivor's Rush", "description": "Gain Recharge Speed as your health decreases to a maximum of 5%."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Dragonflight Pants of Piety",
+    "slot": "Pants",
+    "item_level": 1500,
+    "ratingStats": {"Deflect Severity": 1125, "Outgoing Healing": 1125, "Combined Rating": 1350},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Survivor's Rush", "description": "Gain Recharge Speed as your health decreases to a maximum of 5%."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Dragonflight Shirt of Cunning",
+    "slot": "Shirt",
+    "item_level": 1500,
+    "ratingStats": {"Combat Advantage": 1125, "Critical Strike": 1125, "Combined Rating": 1350},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Charged Fury", "description": "When your Stamina is over 75%, your Power is increased by 3000."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Dragonflight Shirt of Charming",
+    "slot": "Shirt",
+    "item_level": 1500,
+    "ratingStats": {"Critical Strike": 1125, "Critical Severity": 1125, "Combined Rating": 1350},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Charged Fury", "description": "When your Stamina is over 75%, your Power is increased by 3000."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Dragonflight Pants of Remorse",
+    "slot": "Pants",
+    "item_level": 1500,
+    "ratingStats": {"Critical Avoidance": 1125, "Outgoing Healing": 1125, "Combined Rating": 1350},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Survivor's Rush", "description": "Gain Recharge Speed as your health decreases to a maximum of 5%."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  },
+  {
+    "name": "Dragonflight Pants of Rage",
+    "slot": "Pants",
+    "item_level": 1500,
+    "ratingStats": {"Critical Severity": 1125, "Deflect Severity": 1125, "Combined Rating": 1350},
+    "percentStats": {"Stamina Regeneration": 1.5},
+    "equipBonuses": [{"name": "Survivor's Rush", "description": "Gain Recharge Speed as your health decreases to a maximum of 5%."}],
+    "source": "Stronghold Guild Marketplace (Rank 3)"
+  }
+]

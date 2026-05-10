@@ -1,0 +1,1628 @@
+[
+  {
+    "name": "Vivified Oathkeeper's Ward Coulters",
+    "slot": "Arms",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Strike": 189,
+      "Defense": 472,
+      "Awareness": 284,
+      "Combined Rating": 567
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Vivified Oathkeeper's Ward Poleyns",
+    "slot": "Feet",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 189,
+      "Defense": 472,
+      "Deflection": 284,
+      "Combined Rating": 567
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Vivified Oathkeeper's Restoration Armet",
+    "slot": "Head",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 189,
+      "Critical Strike": 284,
+      "Defense": 472,
+      "Combined Rating": 567
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Oathkeeper's Ward Cuirass",
+    "slot": "Armor",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Combat Advantage": 265,
+      "Defense": 441,
+      "Deflection": 176,
+      "Awareness": 265,
+      "Combined Rating": 529
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "notes": "Unrestored Relic — Tier 2 Combat Time Remaining: 1:00:00",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Oathkeeper's Ward Armet",
+    "slot": "Head",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Combat Advantage": 265,
+      "Defense": 441,
+      "Deflection": 176,
+      "Awareness": 265,
+      "Combined Rating": 529
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "notes": "Unrestored Relic — Tier 2",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Vivified Oathkeeper's Restoration Poleyns",
+    "slot": "Feet",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 284,
+      "Critical Strike": 189,
+      "Defense": 472,
+      "Combined Rating": 567
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Vivified Oathkeeper's Restoration Coulters",
+    "slot": "Arms",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 189,
+      "Combat Advantage": 284,
+      "Defense": 472,
+      "Combined Rating": 567
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Vivified Oathkeeper's Restoration Cuirass",
+    "slot": "Armor",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 284,
+      "Critical Strike": 189,
+      "Defense": 472,
+      "Combined Rating": 567
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Oathkeeper's Ward Coulters",
+    "slot": "Arms",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Strike": 176,
+      "Defense": 441,
+      "Awareness": 265,
+      "Combined Rating": 529
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Oathkeeper's Ward Poleyns",
+    "slot": "Feet",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Accuracy": 176,
+      "Defense": 441,
+      "Deflection": 265,
+      "Combined Rating": 529
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "notes": "Unrestored Relic — Tier 2",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Oathkeeper's Restoration Armet",
+    "slot": "Head",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Accuracy": 176,
+      "Critical Strike": 265,
+      "Defense": 441,
+      "Combined Rating": 529
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "notes": "Unrestored Relic — Tier 2 Combat Time Remaining: 1:00:00",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Oathkeeper's Restoration Cuirass",
+    "slot": "Armor",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Combat Advantage": 265,
+      "Critical Strike": 176,
+      "Defense": 441,
+      "Combined Rating": 529
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "notes": "Unrestored Relic — Tier 2",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Oathkeeper's Restoration Coulters",
+    "slot": "Arms",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Combat Advantage": 265,
+      "Critical Strike": 176,
+      "Defense": 441,
+      "Combined Rating": 529
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "notes": "Unrestored Relic — Tier 2",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Oathkeeper's Restoration Poleyns",
+    "slot": "Feet",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 265,
+      "Critical Strike": 176,
+      "Defense": 441,
+      "Combined Rating": 529
+    },
+    "set": "Oathkeeper's Relic",
+    "setSize": 4,
+    "setPartners": ["Relic Head", "Relic Body", "Relic Arms", "Relic Feet"],
+    "setBonus": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Prestige Gladiator Armet",
+    "slot": "Head",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 176,
+      "Combat Advantage": 132,
+      "Defense": 441,
+      "Awareness": 132,
+      "Combined Rating": 529
+    },
+    "set": "Prestige",
+    "setSize": 4,
+    "setPartners": ["Prestige Head", "Prestige Body", "Prestige Arms", "Prestige Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: +10% Damage Resistance while Controlled.",
+    "notes": "Bind on Pickup (Account)"
+  },
+  {
+    "name": "Prestige Gladiator Cuirass",
+    "slot": "Armor",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 132,
+      "Combat Advantage": 176,
+      "Defense": 441,
+      "Awareness": 132,
+      "Combined Rating": 529
+    },
+    "set": "Prestige",
+    "setSize": 4,
+    "setPartners": ["Prestige Head", "Prestige Body", "Prestige Arms", "Prestige Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: +10% Damage Resistance while Controlled.",
+    "notes": "Bind on Pickup (Account)"
+  },
+  {
+    "name": "Prestige Gladiator Coulters",
+    "slot": "Arms",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 176,
+      "Defense": 441,
+      "Critical Avoidance": 132,
+      "Awareness": 132,
+      "Combined Rating": 529
+    },
+    "set": "Prestige",
+    "setSize": 4,
+    "setPartners": ["Prestige Head", "Prestige Body", "Prestige Arms", "Prestige Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: +10% Damage Resistance while Controlled.",
+    "notes": "Bind on Pickup (Account)"
+  },
+  {
+    "name": "Prestige Gladiator Poleyns",
+    "slot": "Feet",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 132,
+      "Defense": 441,
+      "Awareness": 176,
+      "Combined Rating": 529
+    },
+    "set": "Prestige",
+    "setSize": 4,
+    "setPartners": ["Prestige Head", "Prestige Body", "Prestige Arms", "Prestige Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: +10% Damage Resistance while Controlled.",
+    "notes": "Bind on Pickup (Account)"
+  },
+  {
+    "name": "Prestige Medic Armet",
+    "slot": "Head",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 132,
+      "Combat Advantage": 132,
+      "Defense": 441,
+      "Awareness": 176,
+      "Combined Rating": 529
+    },
+    "set": "Prestige",
+    "setSize": 4,
+    "setPartners": ["Prestige Head", "Prestige Body", "Prestige Arms", "Prestige Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: +10% Damage Resistance while Controlled.",
+    "notes": "Bind on Pickup (Account)"
+  },
+  {
+    "name": "Prestige Medic Poleyns",
+    "slot": "Feet",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 190,
+      "Combat Advantage": 251,
+      "Defense": 441,
+      "Combined Rating": 529
+    },
+    "set": "Prestige",
+    "setSize": 4,
+    "setPartners": ["Prestige Head", "Prestige Body", "Prestige Arms", "Prestige Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: +10% Damage Resistance while Controlled."
+  },
+  {
+    "name": "Prestige Medic Coulters",
+    "slot": "Arms",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 132,
+      "Combat Advantage": 176,
+      "Defense": 441,
+      "Awareness": 132,
+      "Combined Rating": 529
+    },
+    "set": "Prestige",
+    "setSize": 4,
+    "setPartners": ["Prestige Head", "Prestige Body", "Prestige Arms", "Prestige Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: +10% Damage Resistance while Controlled.",
+    "notes": "Bind on Pickup (Account)"
+  },
+  {
+    "name": "Prestige Medic Cuirass",
+    "slot": "Armor",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 176,
+      "Critical Strike": 172,
+      "Defense": 441,
+      "Awareness": 132,
+      "Combined Rating": 529
+    },
+    "set": "Prestige",
+    "setSize": 4,
+    "setPartners": ["Prestige Head", "Prestige Body", "Prestige Arms", "Prestige Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: +10% Damage Resistance while Controlled.",
+    "notes": "Bind on Pickup (Account)"
+  },
+  {
+    "name": "Frostborn Ward Armet",
+    "slot": "Head",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Combat Advantage": 164,
+      "Defense": 410,
+      "Awareness": 246,
+      "Deflection": 164,
+      "Combined Rating": 491
+    },
+    "set": "Frostborn",
+    "setSize": 4,
+    "setPartners": ["Frostborn Head", "Frostborn Body", "Frostborn Arms", "Frostborn Feet"],
+    "setBonus": "1 of Set: When digging for Ostorian Relics there is a 25% chance you will obtain an additional relic. 2 of Set: Wanderer's Vigor — When not in a party, you regenerate 3% of your Maximum Hit Points, up to 1000, every 3 seconds. 3 of Set: When in Icewind Dale: You and your allies gain 5 Movement Speed. This affect does not stack.",
+    "notes": "Tier 2 Combat Time Remaining: 1:00:00",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Frostborn Ward Cuirass",
+    "slot": "Armor",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Defense": 410,
+      "Awareness": 246,
+      "Deflection": 164,
+      "Combined Rating": 491
+    },
+    "set": "Frostborn",
+    "setSize": 4,
+    "setPartners": ["Frostborn Head", "Frostborn Body", "Frostborn Arms", "Frostborn Feet"],
+    "setBonus": "1 of Set: When digging for Ostorian Relics there is a 25% chance you will obtain an additional relic. 2 of Set: Wanderer's Vigor — When not in a party, you regenerate 3% of your Maximum Hit Points, up to 1000, every 3 seconds. 3 of Set: When in Icewind Dale: You and your allies gain 5 Movement Speed. This affect does not stack.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Frostborn Ward Coulters",
+    "slot": "Arms",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Severity": 246,
+      "Defense": 410,
+      "Awareness": 164,
+      "Combined Rating": 491
+    },
+    "set": "Frostborn",
+    "setSize": 4,
+    "setPartners": ["Frostborn Head", "Frostborn Body", "Frostborn Arms", "Frostborn Feet"],
+    "setBonus": "1 of Set: When digging for Ostorian Relics there is a 25% chance you will obtain an additional relic. 2 of Set: Wanderer's Vigor — When not in a party, you regenerate 3% of your Maximum Hit Points, up to 1000, every 3 seconds. 3 of Set: When in Icewind Dale: You and your allies gain 5 Movement Speed. This affect does not stack.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Frostborn Ward Poleyns",
+    "slot": "Feet",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 246,
+      "Defense": 410,
+      "Deflection": 164,
+      "Combined Rating": 491
+    },
+    "set": "Frostborn",
+    "setSize": 4,
+    "setPartners": ["Frostborn Head", "Frostborn Body", "Frostborn Arms", "Frostborn Feet"],
+    "setBonus": "1 of Set: When digging for Ostorian Relics there is a 25% chance you will obtain an additional relic. 2 of Set: Wanderer's Vigor — When not in a party, you regenerate 3% of your Maximum Hit Points, up to 1000, every 3 seconds. 3 of Set: When in Icewind Dale: You and your allies gain 5 Movement Speed. This affect does not stack.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Frostborn Restoration Armet",
+    "slot": "Head",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 246,
+      "Critical Strike": 164,
+      "Defense": 410,
+      "Combined Rating": 491
+    },
+    "set": "Frostborn",
+    "setSize": 4,
+    "setPartners": ["Frostborn Head", "Frostborn Body", "Frostborn Arms", "Frostborn Feet"],
+    "setBonus": "1 of Set: When digging for Ostorian Relics there is a 25% chance you will obtain an additional relic. 2 of Set: Wanderer's Vigor — When not in a party, you regenerate 3% of your Maximum Hit Points, up to 1000, every 3 seconds. 3 of Set: When in Icewind Dale: You and your allies gain 5 Movement Speed. This affect does not stack.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Frostborn Restoration Poleyns",
+    "slot": "Feet",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 164,
+      "Critical Strike": 246,
+      "Defense": 410,
+      "Combined Rating": 491
+    },
+    "set": "Frostborn",
+    "setSize": 4,
+    "setPartners": ["Frostborn Head", "Frostborn Body", "Frostborn Arms", "Frostborn Feet"],
+    "setBonus": "1 of Set: When digging for Ostorian Relics there is a 25% chance you will obtain an additional relic. 2 of Set: Wanderer's Vigor — When not in a party, you regenerate 3% of your Maximum Hit Points, up to 1000, every 3 seconds. 3 of Set: When in Icewind Dale: You and your allies gain 5 Movement Speed. This affect does not stack.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Frostborn Restoration Coulters",
+    "slot": "Arms",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 246,
+      "Combat Advantage": 164,
+      "Defense": 410,
+      "Combined Rating": 491
+    },
+    "set": "Frostborn",
+    "setSize": 4,
+    "setPartners": ["Frostborn Head", "Frostborn Body", "Frostborn Arms", "Frostborn Feet"],
+    "setBonus": "1 of Set: When digging for Ostorian Relics there is a 25% chance you will obtain an additional relic. 2 of Set: Wanderer's Vigor — When not in a party, you regenerate 3% of your Maximum Hit Points, up to 1000, every 3 seconds. 3 of Set: When in Icewind Dale: You and your allies gain 5 Movement Speed. This affect does not stack.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Frostborn Restoration Cuirass",
+    "slot": "Armor",
+    "item_level": 588,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 164,
+      "Critical Strike": 246,
+      "Defense": 410,
+      "Combined Rating": 491
+    },
+    "set": "Frostborn",
+    "setSize": 4,
+    "setPartners": ["Frostborn Head", "Frostborn Body", "Frostborn Arms", "Frostborn Feet"],
+    "setBonus": "1 of Set: When digging for Ostorian Relics there is a 25% chance you will obtain an additional relic. 2 of Set: Wanderer's Vigor — When not in a party, you regenerate 3% of your Maximum Hit Points, up to 1000, every 3 seconds. 3 of Set: When in Icewind Dale: You and your allies gain 5 Movement Speed. This affect does not stack.",
+    "source": "Storm King's Thunder"
+  },
+  {
+    "name": "Warborn Gladiator Armet",
+    "slot": "Head",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 126,
+      "Combat Advantage": 420,
+      "Awareness": 168,
+      "Deflection": 168,
+      "Combined Rating": 504
+    },
+    "set": "Warborn",
+    "setSize": 4,
+    "setPartners": ["Warborn Head", "Warborn Body", "Warborn Arms", "Warborn Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: When two or more enemy players are nearby: +10% Movement Speed, +1% Power.",
+    "notes": "Bind on Pickup (Account); PvP set"
+  },
+  {
+    "name": "Warborn Gladiator Cuirass",
+    "slot": "Armor",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 168,
+      "Critical Strike": 126,
+      "Defense": 420,
+      "Awareness": 168,
+      "Combined Rating": 504
+    },
+    "set": "Warborn",
+    "setSize": 4,
+    "setPartners": ["Warborn Head", "Warborn Body", "Warborn Arms", "Warborn Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: When two or more enemy players are nearby: +10% Movement Speed, +1% Power.",
+    "notes": "Bind on Pickup (Account); PvP set"
+  },
+  {
+    "name": "Warborn Gladiator Coulters",
+    "slot": "Arms",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 126,
+      "Combat Advantage": 126,
+      "Critical Avoidance": 168,
+      "Defense": 420,
+      "Combined Rating": 504
+    },
+    "set": "Warborn",
+    "setSize": 4,
+    "setPartners": ["Warborn Head", "Warborn Body", "Warborn Arms", "Warborn Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: When two or more enemy players are nearby: +10% Movement Speed, +1% Power.",
+    "notes": "Bind on Pickup (Account); PvP set"
+  },
+  {
+    "name": "Warborn Gladiator Poleyns",
+    "slot": "Feet",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 126,
+      "Combat Advantage": 126,
+      "Defense": 420,
+      "Awareness": 168,
+      "Combined Rating": 504
+    },
+    "set": "Warborn",
+    "setSize": 4,
+    "setPartners": ["Warborn Head", "Warborn Body", "Warborn Arms", "Warborn Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: When two or more enemy players are nearby: +10% Movement Speed, +1% Power.",
+    "notes": "Bind on Pickup (Account); PvP set"
+  },
+  {
+    "name": "Warborn Medic Armet",
+    "slot": "Head",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 168,
+      "Combat Advantage": 126,
+      "Defense": 420,
+      "Awareness": 168,
+      "Combined Rating": 504
+    },
+    "set": "Warborn",
+    "setSize": 4,
+    "setPartners": ["Warborn Head", "Warborn Body", "Warborn Arms", "Warborn Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: When two or more enemy players are nearby: +10% Movement Speed, +1% Power.",
+    "notes": "Bind on Pickup (Account); PvP set"
+  },
+  {
+    "name": "Warborn Medic Poleyns",
+    "slot": "Feet",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 240,
+      "Combat Advantage": 180,
+      "Defense": 420,
+      "Combined Rating": 504
+    },
+    "set": "Warborn",
+    "setSize": 4,
+    "setPartners": ["Warborn Head", "Warborn Body", "Warborn Arms", "Warborn Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: When two or more enemy players are nearby: +10% Movement Speed, +1% Power.",
+    "notes": "PvP set"
+  },
+  {
+    "name": "Warborn Medic Coulters",
+    "slot": "Arms",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 168,
+      "Combat Advantage": 126,
+      "Defense": 420,
+      "Awareness": 168,
+      "Combined Rating": 504
+    },
+    "set": "Warborn",
+    "setSize": 4,
+    "setPartners": ["Warborn Head", "Warborn Body", "Warborn Arms", "Warborn Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: When two or more enemy players are nearby: +10% Movement Speed, +1% Power.",
+    "notes": "Bind on Pickup (Account); PvP set"
+  },
+  {
+    "name": "Warborn Medic Cuirass",
+    "slot": "Armor",
+    "item_level": 560,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 126,
+      "Combat Advantage": 168,
+      "Defense": 420,
+      "Awareness": 168,
+      "Combined Rating": 504
+    },
+    "set": "Warborn",
+    "setSize": 4,
+    "setPartners": ["Warborn Head", "Warborn Body", "Warborn Arms", "Warborn Feet"],
+    "setBonus": "2 of Set: +1% Power. 3 of Set: When two or more enemy players are nearby: +10% Movement Speed, +1% Power.",
+    "notes": "Bind on Pickup (Account); PvP set"
+  },
+  {
+    "name": "Horn of Valhalla",
+    "slot": "Neck",
+    "item_level": 0,
+    "ratingStats": {
+      "Maximum Hit Points": 450,
+      "Critical Strike": 112,
+      "Combat Advantage": 172,
+      "Awareness": 128
+    },
+    "abilityBonuses": {"CON": 1},
+    "equipBonuses": [
+      {
+        "name": "Artifact Equipment",
+        "description": "Summons a single ghostly Barbarian that will protect you for 6 seconds. The Barbarian will threaten nearby enemies, placing himself at the top of their threat list and strike random targets in front of him for 8,718 damage every few seconds. Recharge time: 160s."
+      }
+    ],
+    "set": "Valhalla's Rebuke",
+    "setSize": 3,
+    "setPartners": ["Cloak of Valhalla", "Belt of Valhalla", "Horn of Valhalla"],
+    "setBonus": "3 of Set: Whenever an enemy attacks the bearer, that enemy's damage is reduced by 1% for 6 seconds. Stacks up to 5 times.",
+    "notes": "No Level Requirement; Artifact Equipment"
+  },
+  {
+    "name": "Belt of Valhalla",
+    "slot": "Belt",
+    "item_level": 0,
+    "ratingStats": {
+      "Critical Avoidance": 562,
+      "Deflection": 237,
+      "Combined Rating": 469
+    },
+    "abilityBonuses": {"CON": 1},
+    "equipBonuses": [
+      {
+        "name": "Artifact Equipment",
+        "description": "Though it appears to be typical barbarian apparel, this belt empowers its wearer with stalwart toughness."
+      }
+    ],
+    "set": "Valhalla's Rebuke",
+    "setSize": 3,
+    "setPartners": ["Cloak of Valhalla", "Belt of Valhalla", "Horn of Valhalla"],
+    "setBonus": "3 of Set: Whenever an enemy attacks the bearer, that enemy's damage is reduced by 1% for 6 seconds. Stacks up to 5 times."
+  },
+  {
+    "name": "Cloak of Valhalla",
+    "slot": "Neck",
+    "subSlot": "Cloak",
+    "item_level": 0,
+    "ratingStats": {
+      "Accuracy": 150,
+      "Combat Advantage": 150,
+      "Critical Avoidance": 150,
+      "Combined Rating": 270
+    },
+    "abilityBonuses": {"CON": 1},
+    "equipBonuses": [
+      {
+        "name": "Artifact Equipment",
+        "description": "This intricately woven cloak's unique pattern is an inspiration to those who follow its wearer into battle."
+      }
+    ],
+    "set": "Valhalla's Rebuke",
+    "setSize": 3,
+    "setPartners": ["Cloak of Valhalla", "Belt of Valhalla", "Horn of Valhalla"],
+    "setBonus": "3 of Set: Whenever an enemy attacks the bearer, that enemy's damage is reduced by 1% for 6 seconds. Stacks up to 5 times."
+  },
+  {
+    "name": "Greater Ostorian Ring of Skold",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Accuracy": 914,
+      "Defense": 914,
+      "Combined Rating": 487
+    },
+    "set": "Storm King's Thunder Curiosities",
+    "setSize": 8,
+    "source": "Assault on Svardborg (Master) · Fangbreaker Island"
+  },
+  {
+    "name": "Greater Ostorian Ring of Dod",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Combat Advantage": 914,
+      "Critical Strike": 914,
+      "Combined Rating": 487
+    },
+    "set": "Storm King's Thunder Curiosities",
+    "setSize": 8,
+    "source": "Assault on Svardborg (Master) · Fangbreaker Island"
+  },
+  {
+    "name": "Greater Ostorian Ring of Krig",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Accuracy": 914,
+      "Critical Strike": 914,
+      "Combined Rating": 487
+    },
+    "set": "Storm King's Thunder Curiosities",
+    "setSize": 8,
+    "source": "Assault on Svardborg (Master) · Fangbreaker Island"
+  },
+  {
+    "name": "Greater Ostorian Ring of Stein",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Defense": 914,
+      "Deflection": 914,
+      "Combined Rating": 487
+    },
+    "set": "Storm King's Thunder Curiosities",
+    "setSize": 8,
+    "source": "Assault on Svardborg (Master) · Fangbreaker Island"
+  },
+  {
+    "name": "Greater Ostorian Ring of Hellig",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Accuracy": 914,
+      "Combat Advantage": 914,
+      "Combined Rating": 487
+    },
+    "set": "Storm King's Thunder Curiosities",
+    "setSize": 8,
+    "source": "Assault on Svardborg (Master) · Fangbreaker Island"
+  },
+  {
+    "name": "Ostorian Ring of Stein",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Defense": 882,
+      "Deflection": 882,
+      "Combined Rating": 470
+    },
+    "set": "Storm King's Thunder Curiosities",
+    "setSize": 8,
+    "source": "Assault on Svardborg (Master) · Assault on Svardborg · Fangbreaker Island"
+  },
+  {
+    "name": "Ostorian Ring of Krig",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Accuracy": 882,
+      "Critical Strike": 882,
+      "Combined Rating": 470
+    },
+    "set": "Storm King's Thunder Curiosities",
+    "setSize": 8,
+    "source": "Assault on Svardborg (Master) · Assault on Svardborg · Fangbreaker Island"
+  },
+  {
+    "name": "Ostorian Ring of Dod",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Combat Advantage": 882,
+      "Critical Strike": 882,
+      "Combined Rating": 470
+    },
+    "set": "Storm King's Thunder Curiosities",
+    "setSize": 8,
+    "source": "Assault on Svardborg (Master) · Assault on Svardborg · Fangbreaker Island"
+  },
+  {
+    "name": "Ostorian Ring of Skold",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Accuracy": 882,
+      "Defense": 882,
+      "Combined Rating": 470
+    },
+    "set": "Storm King's Thunder Curiosities",
+    "setSize": 8,
+    "source": "Assault on Svardborg (Master) · Assault on Svardborg · Fangbreaker Island"
+  },
+  {
+    "name": "Greater Ostorian Ring of Blod",
+    "slot": "Ring",
+    "item_level": 609,
+    "ratingStats": {
+      "Awareness": 914,
+      "Critical Avoidance": 914,
+      "Combined Rating": 487
+    },
+    "set": "Storm King's Thunder Curiosities",
+    "setSize": 8,
+    "source": "Assault on Svardborg (Master) · Fangbreaker Island"
+  },
+  {
+    "name": "Rusted Oathkeeper's Ward Armet",
+    "slot": "Head",
+    "item_level": 420,
+    "allowedClasses": ["Paladin"],
+    "notes": "Bind on Pickup (Account); Ancient armor that must undergo relic restoration before it may be equipped; collection-only display, no live stats shown. No Level Requirement.",
+    "source": "Fangbreaker Island"
+  },
+  {
+    "name": "Historian's Regalia",
+    "slot": "Armor",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 202,
+      "Critical Strike": 302,
+      "Defense": 504,
+      "Combined Rating": 605
+    },
+    "equipBonuses": [
+      {
+        "name": "Equip",
+        "description": "When digging for Ostorian Relics there is a 25% chance you will obtain an additional relic."
+      }
+    ],
+    "notes": "Bind on Pickup (Account); Bind on Equip (Character)",
+    "source": "Assault on Svardborg"
+  },
+  {
+    "name": "Jarl's Gaze",
+    "slot": "Head",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 504,
+      "Defense": 504,
+      "Combined Rating": 605
+    },
+    "equipBonuses": [
+      {
+        "name": "Death Defier's Might",
+        "description": "Gain 175 Power for each enemy you are engaged in battle. (Max of 15 targets)"
+      }
+    ],
+    "notes": "Bind on Pickup (Account); Bind on Equip (Character)",
+    "source": "Assault on Svardborg (Master)"
+  },
+  {
+    "name": "Ostorian Ring of Blod",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Awareness": 882,
+      "Critical Avoidance": 882,
+      "Combined Rating": 470
+    },
+    "set": "Storm King's Thunder Curiosities",
+    "setSize": 8,
+    "source": "Assault on Svardborg (Master) · Assault on Svardborg · Fangbreaker Island"
+  },
+  {
+    "name": "Ostorian Ring of Hellig",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Accuracy": 882,
+      "Combat Advantage": 882,
+      "Combined Rating": 470
+    },
+    "set": "Storm King's Thunder Curiosities",
+    "setSize": 8,
+    "source": "Assault on Svardborg (Master) · Assault on Svardborg · Fangbreaker Island"
+  },
+  {
+    "name": "Rusted Oathkeeper's Ward Cuirass",
+    "slot": "Armor",
+    "item_level": 420,
+    "allowedClasses": ["Paladin"],
+    "notes": "Bind on Pickup (Account); Ancient armor that must undergo relic restoration before it may be equipped; collection-only display, no live stats shown. No Level Requirement.",
+    "source": "Fangbreaker Island"
+  },
+  {
+    "name": "Rusted Oathkeeper's Ward Couters",
+    "slot": "Arms",
+    "item_level": 420,
+    "allowedClasses": ["Paladin"],
+    "notes": "Bind on Pickup (Account); Ancient armor that must undergo relic restoration before it may be equipped; collection-only display, no live stats shown. No Level Requirement.",
+    "source": "Fangbreaker Island"
+  },
+  {
+    "name": "Rusted Oathkeeper's Ward Poleyns",
+    "slot": "Feet",
+    "item_level": 420,
+    "allowedClasses": ["Paladin"],
+    "notes": "Bind on Pickup (Account); Ancient armor that must undergo relic restoration before it may be equipped; collection-only display, no live stats shown. No Level Requirement.",
+    "source": "Heroic Encounters"
+  },
+  {
+    "name": "Rusted Oathkeeper's Restoration Armet",
+    "slot": "Head",
+    "item_level": 420,
+    "allowedClasses": ["Paladin"],
+    "notes": "Bind on Pickup (Account); Ancient armor that must undergo relic restoration before it may be equipped; collection-only display, no live stats shown. No Level Requirement.",
+    "source": "Fangbreaker Island"
+  },
+  {
+    "name": "Rusted Oathkeeper's Restoration Cuirass",
+    "slot": "Armor",
+    "item_level": 420,
+    "allowedClasses": ["Paladin"],
+    "notes": "Bind on Pickup (Account); Ancient armor that must undergo relic restoration before it may be equipped; collection-only display, no live stats shown. No Level Requirement.",
+    "source": "Fangbreaker Island"
+  },
+  {
+    "name": "Rusted Oathkeeper's Restoration Poleyns",
+    "slot": "Feet",
+    "item_level": 420,
+    "allowedClasses": ["Paladin"],
+    "notes": "Bind on Pickup (Account); Ancient armor that must undergo relic restoration before it may be equipped; collection-only display, no live stats shown. No Level Requirement.",
+    "source": "Heroic Encounters"
+  },
+  {
+    "name": "Rusted Oathkeeper's Restoration Couters",
+    "slot": "Arms",
+    "item_level": 420,
+    "allowedClasses": ["Paladin"],
+    "notes": "Bind on Pickup (Account); Ancient armor that must undergo relic restoration before it may be equipped; collection-only display, no live stats shown. No Level Requirement.",
+    "source": "Fangbreaker Island"
+  },
+  {
+    "name": "Elemental Purified Black Ice Helm",
+    "slot": "Head",
+    "item_level": 546,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Accuracy": 247,
+      "Combat Advantage": 163,
+      "Defense": 410,
+      "Combined Rating": 491
+    },
+    "set": "Elemental Purified Black Ice Gear",
+    "setSize": 4,
+    "notes": "Bind on Pickup (Character); Tier 2 Combat Time Remaining: 2:18:53",
+    "source": "Black Ice Crafting"
+  },
+  {
+    "name": "Elemental Purified Black Ice Armor",
+    "slot": "Armor",
+    "item_level": 546,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Accuracy": 205,
+      "Critical Strike": 137,
+      "Defense": 410,
+      "Awareness": 68,
+      "Combined Rating": 491
+    },
+    "set": "Elemental Purified Black Ice Gear",
+    "setSize": 4,
+    "notes": "Bind on Pickup (Character); Tier 2 Combat Time Remaining: 2:18:53",
+    "source": "Black Ice Crafting"
+  },
+  {
+    "name": "Elemental Purified Black Ice Gauntlets",
+    "slot": "Arms",
+    "item_level": 546,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Combat Advantage": 246,
+      "Critical Strike": 164,
+      "Defense": 410,
+      "Combined Rating": 491
+    },
+    "set": "Elemental Purified Black Ice Gear",
+    "setSize": 4,
+    "notes": "Bind on Pickup (Character); Tier 2 Combat Time Remaining: 2:18:53",
+    "source": "Black Ice Crafting"
+  },
+  {
+    "name": "Elemental Purified Black Ice Greaves",
+    "slot": "Feet",
+    "item_level": 546,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Combat Advantage": 163,
+      "Critical Strike": 247,
+      "Defense": 410,
+      "Combined Rating": 491
+    },
+    "set": "Elemental Purified Black Ice Gear",
+    "setSize": 4,
+    "notes": "Bind on Pickup (Character); Tier 2 Combat Time Remaining: 2:18:53",
+    "source": "Black Ice Crafting"
+  },
+  {
+    "name": "Elemental Corrupted Black Ice Helm",
+    "slot": "Head",
+    "item_level": 546,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Accuracy": 247,
+      "Critical Severity": 163,
+      "Defense": 410,
+      "Combined Rating": 491
+    },
+    "set": "Elemental Corrupted Black Ice Gear",
+    "setSize": 4,
+    "notes": "Bind on Pickup (Character); Tier 2 Combat Time Remaining: 2:18:53"
+  },
+  {
+    "name": "Elemental Corrupted Black Ice Armor",
+    "slot": "Armor",
+    "item_level": 546,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Combat Advantage": 205,
+      "Defense": 410,
+      "Awareness": 68.8,
+      "Deflection": 136,
+      "Combined Rating": 491
+    },
+    "set": "Elemental Corrupted Black Ice Gear",
+    "setSize": 4,
+    "notes": "Bind on Pickup (Character); Tier 2"
+  },
+  {
+    "name": "Elemental Corrupted Black Ice Gauntlets",
+    "slot": "Arms",
+    "item_level": 546,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Critical Strike": 205,
+      "Defense": 410,
+      "Critical Avoidance": 68.8,
+      "Deflection": 136,
+      "Combined Rating": 491
+    },
+    "set": "Elemental Corrupted Black Ice Gear",
+    "setSize": 4,
+    "notes": "Bind on Pickup (Character); Tier 2"
+  },
+  {
+    "name": "Elemental Corrupted Black Ice Greaves",
+    "slot": "Feet",
+    "item_level": 546,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "tier": "Tier 2",
+    "ratingStats": {
+      "Critical Severity": 247,
+      "Critical Strike": 163,
+      "Defense": 410,
+      "Combined Rating": 491
+    },
+    "set": "Elemental Corrupted Black Ice Gear",
+    "setSize": 4,
+    "notes": "Bind on Pickup (Character); Tier 2"
+  },
+  {
+    "name": "Black Ice Greaves",
+    "slot": "Feet",
+    "item_level": 512,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {
+      "Accuracy": 59.1,
+      "Combat Advantage": 131,
+      "Defense": 384,
+      "Critical Avoidance": 59.9,
+      "Deflection": 131,
+      "Combined Rating": 461
+    },
+    "set": "Black Ice Gear",
+    "setSize": 4,
+    "notes": "Bind on Pickup (Account)",
+    "source": "Black Ice Forge"
+  },
+  {
+    "name": "Black Ice Gauntlets",
+    "slot": "Arms",
+    "item_level": 512,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {
+      "Accuracy": 59.1,
+      "Combat Advantage": 132,
+      "Defense": 384,
+      "Awareness": 59.9,
+      "Critical Avoidance": 132,
+      "Combined Rating": 461
+    },
+    "set": "Black Ice Gear",
+    "setSize": 4,
+    "notes": "Bind on Pickup (Account)",
+    "source": "Icewind Pass"
+  },
+  {
+    "name": "Black Ice Armor",
+    "slot": "Armor",
+    "item_level": 512,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {
+      "Accuracy": 59.1,
+      "Combat Advantage": 131,
+      "Defense": 384,
+      "Awareness": 59.9,
+      "Critical Avoidance": 131,
+      "Combined Rating": 461
+    },
+    "set": "Black Ice Gear",
+    "setSize": 4,
+    "notes": "Bind on Pickup (Account)",
+    "source": "Black Ice Forge"
+  },
+  {
+    "name": "Black Ice Helmet",
+    "slot": "Head",
+    "item_level": 512,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {
+      "Accuracy": 59.1,
+      "Critical Severity": 131,
+      "Defense": 384,
+      "Critical Avoidance": 59.9,
+      "Deflection": 131,
+      "Combined Rating": 461
+    },
+    "set": "Black Ice Gear",
+    "setSize": 4,
+    "notes": "Bind on Pickup (Account)",
+    "source": "Black Ice Forge"
+  },
+  {
+    "name": "Hammerstone Helmet",
+    "slot": "Head",
+    "item_level": 352,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {
+      "Accuracy": 39.6,
+      "Critical Severity": 39.6,
+      "Defense": 264,
+      "Critical Avoidance": 92.4,
+      "Deflection": 92.4,
+      "Combined Rating": 317
+    },
+    "set": "Hammerstone Armor",
+    "setSize": 4,
+    "notes": "Bind on Equip (Character)",
+    "source": "Dwarven Valley"
+  },
+  {
+    "name": "Hammerstone Breastplate",
+    "slot": "Armor",
+    "item_level": 352,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {
+      "Accuracy": 39.6,
+      "Critical Severity": 39.6,
+      "Defense": 264,
+      "Critical Avoidance": 92.4,
+      "Deflection": 92.4,
+      "Combined Rating": 317
+    },
+    "set": "Hammerstone Armor",
+    "setSize": 4,
+    "notes": "Bind on Equip (Character)",
+    "source": "Dwarven Valley"
+  },
+  {
+    "name": "Hammerstone Gauntlets",
+    "slot": "Arms",
+    "item_level": 352,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {
+      "Accuracy": 39.6,
+      "Critical Severity": 39.6,
+      "Defense": 264,
+      "Critical Avoidance": 92.4,
+      "Deflection": 92.4,
+      "Combined Rating": 317
+    },
+    "set": "Hammerstone Armor",
+    "setSize": 4,
+    "notes": "Bind on Equip (Character)",
+    "source": "Dwarven Valley"
+  },
+  {
+    "name": "Hammerstone Greaves",
+    "slot": "Feet",
+    "item_level": 352,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {
+      "Accuracy": 39.6,
+      "Critical Severity": 39.6,
+      "Defense": 264,
+      "Critical Avoidance": 92.4,
+      "Deflection": 92.4,
+      "Combined Rating": 317
+    },
+    "set": "Hammerstone Armor",
+    "setSize": 4,
+    "notes": "Bind on Equip (Character)",
+    "source": "Dwarven Valley"
+  },
+  {
+    "name": "Hammerstone Warhammer",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 352,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {
+      "Accuracy": 79.2,
+      "Critical Severity": 79.2,
+      "Critical Avoidance": 185,
+      "Deflection": 185,
+      "Combined Rating": 317
+    },
+    "set": "Weapons of the Elk Tribe Chiefs",
+    "setSize": 2,
+    "notes": "Bind on Equip (Character)",
+    "source": "Dwarven Valley"
+  },
+  {
+    "name": "Hammerstone Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 352,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {
+      "Accuracy": 79.2,
+      "Critical Severity": 79.2,
+      "Critical Avoidance": 185,
+      "Deflection": 185,
+      "Combined Rating": 317
+    },
+    "set": "Weapons of the Elk Tribe Chiefs",
+    "setSize": 2,
+    "notes": "Bind on Equip (Character); Heavy",
+    "source": "Dwarven Valley"
+  },
+  {
+    "name": "Elk Tribe Noble's Roundshield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 399,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "ratingStats": {
+      "Accuracy": 118,
+      "Critical Avoidance": 236,
+      "Deflection": 244,
+      "Combined Rating": 359
+    },
+    "set": "Weapons of the Elk Tribe Chiefs",
+    "setSize": 2,
+    "notes": "Bind on Equip (Character); Free Appearance Change; Heavy",
+    "source": "Icewind Pass"
+  },
+  {
+    "name": "Elk Tribe Noble's Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blunt",
+    "item_level": 399,
+    "ratingStats": {
+      "Accuracy": 118,
+      "Critical Avoidance": 236,
+      "Deflection": 244,
+      "Combined Rating": 359
+    },
+    "set": "Weapons of the Elk Tribe Chiefs",
+    "setSize": 2,
+    "notes": "Bind on Equip (Character); Free Appearance Change"
+  },
+  {
+    "name": "Bear Tribe Blade",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 4,
+    "allowedClasses": ["Paladin"],
+    "set": "Weapons of the Bear Tribe",
+    "setSize": 2,
+    "notes": "Bind on Pickup (Account); Free Appearance Change; No Level Requirement",
+    "source": "Scrimshaw Vendor"
+  },
+  {
+    "name": "Bear Tribe Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 4,
+    "allowedClasses": ["Paladin", "Fighter"],
+    "set": "Weapons of the Bear Tribe",
+    "setSize": 2,
+    "notes": "Bind on Pickup (Account); Free Appearance Change; Heavy; No Level Requirement",
+    "source": "Scrimshaw Vendor"
+  },
+  {
+    "name": "Black Ice Treads",
+    "slot": "Feet",
+    "item_level": 588,
+    "tier": "Tier 1",
+    "ratingStats": {
+      "Accuracy": 441,
+      "Defense": 441,
+      "Combined Rating": 529
+    },
+    "equipBonuses": [
+      {
+        "name": "Equip",
+        "description": "Speed Increased by 10% when charged with Black Ice. (Does not work in PvP)"
+      }
+    ],
+    "notes": "Bind on Pickup (Account); Bind on Equip (Character); Tier 1 Combat Time Remaining: 6:56:23",
+    "source": "Kessell's Retreat"
+  },
+  {
+    "name": "Greater Belt of Black Ice",
+    "slot": "Belt",
+    "item_level": 501,
+    "ratingStats": {
+      "Combat Advantage": 251,
+      "Critical Strike": 252,
+      "Critical Severity": 253,
+      "Combined Rating": 453
+    },
+    "abilityBonuses": {"CHA": 1},
+    "equipBonuses": [
+      {
+        "name": "Artifact Equipment",
+        "description": "This belt is generally worn by the miners of the Hammerstone dwarves as they quest for Black Ice."
+      }
+    ],
+    "set": "Black Ice set",
+    "setSize": 3,
+    "setPartners": ["Cloak of Black Ice", "Greater Belt of Black Ice", "Black Ice Beholder"],
+    "setBonus": "3 of Set: Your powers have a chance to deal additional unresistable 10 magnitude damage.",
+    "notes": "Bind on Equip (Character); Artifact Equipment"
+  },
+  {
+    "name": "Greater Cloak of Black Ice",
+    "slot": "Neck",
+    "subSlot": "Cloak",
+    "item_level": 0,
+    "ratingStats": {
+      "Combat Advantage": 150,
+      "Critical Strike": 150,
+      "Critical Severity": 150,
+      "Combined Rating": 270
+    },
+    "abilityBonuses": {"CON": 1},
+    "equipBonuses": [
+      {
+        "name": "Artifact Equipment",
+        "description": "The threads that are used in this cloak have been infused with Black Ice using a new process discovered by the Hammerstone dwarves."
+      }
+    ],
+    "set": "Black Ice set",
+    "setSize": 3,
+    "setPartners": ["Cloak of Black Ice", "Greater Belt of Black Ice", "Black Ice Beholder"],
+    "setBonus": "3 of Set: Your powers have a chance to deal additional unresistable 10 magnitude damage."
+  },
+  {
+    "name": "Zulkir's Dreadnought",
+    "slot": "Armor",
+    "item_level": 610,
+    "ratingStats": {
+      "Combat Advantage": 284,
+      "Defense": 472,
+      "Critical Avoidance": 189,
+      "Combined Rating": 567
+    },
+    "equipBonuses": [
+      {
+        "name": "Equip",
+        "description": "When you have an undead companion summoned, you gain a bonus effect. (Bonus varies by companion.)"
+      }
+    ],
+    "notes": "Bind on Pickup (Account); Bind on Equip (Character)",
+    "source": "Valindra's Tower"
+  },
+  {
+    "name": "Twisted Ropalo — IL 300",
+    "displayName": "Twisted Ropalo",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 300,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 225,
+      "Critical Strike": 112,
+      "Deflection": 112,
+      "Combined Rating": 270
+    },
+    "equipBonuses": [
+      {"name": "Artifact Equipment", "description": "Demonic artifact weapon."}
+    ],
+    "set": "Duality",
+    "setSize": 2,
+    "setPartners": ["Twisted Ropalo", "Twisted Hoplon"],
+    "setBonus": "2 of Set: Gain the affect of paranoia and bloodlust. Paranoia: Gain 10 Defense when struck, lose a stack when you strike an enemy. Bloodlust: Gain 10 Power when you strike an enemy, lose a stack when you are struck. Neither paranoia nor bloodlust may exceed 24 stacks or be reduced below 1 stack.",
+    "notes": "Bind on Pickup (Account); Artifact Equipment; Recommended",
+    "source": "Demogorgon (Master) · Mantol-Derith"
+  },
+  {
+    "name": "Twisted Ropalo — IL 400",
+    "displayName": "Twisted Ropalo",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 300,
+      "Critical Strike": 150,
+      "Deflection": 150,
+      "Combined Rating": 360
+    },
+    "equipBonuses": [
+      {"name": "Artifact Equipment", "description": "Demonic artifact weapon."}
+    ],
+    "set": "Duality",
+    "setSize": 2,
+    "setPartners": ["Twisted Ropalo", "Twisted Hoplon"],
+    "notes": "Bind on Pickup (Account); Recommended",
+    "source": "Demogorgon (Master) · Mantol-Derith"
+  },
+  {
+    "name": "Twisted Ropalo — IL 500",
+    "displayName": "Twisted Ropalo",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 500,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 375,
+      "Critical Strike": 188,
+      "Deflection": 188,
+      "Combined Rating": 450
+    },
+    "equipBonuses": [
+      {"name": "Artifact Equipment", "description": "Demonic artifact weapon."}
+    ],
+    "set": "Duality",
+    "setSize": 2,
+    "setPartners": ["Twisted Ropalo", "Twisted Hoplon"],
+    "notes": "Bind on Pickup (Account); Recommended",
+    "source": "Demogorgon (Master) · Mantol-Derith"
+  },
+  {
+    "name": "Twisted Ropalo — IL 600",
+    "displayName": "Twisted Ropalo",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 600,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 450,
+      "Critical Strike": 223,
+      "Deflection": 223,
+      "Combined Rating": 540
+    },
+    "equipBonuses": [
+      {"name": "Artifact Equipment Maximum Quality", "description": "Demonic artifact weapon."}
+    ],
+    "set": "Duality",
+    "setSize": 2,
+    "setPartners": ["Twisted Ropalo", "Twisted Hoplon"],
+    "notes": "Bind on Pickup (Account); Recommended; Maximum Quality",
+    "source": "Demogorgon (Master) · Mantol-Derith"
+  },
+  {
+    "name": "Twisted Hoplon — IL 300",
+    "displayName": "Twisted Hoplon",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 300,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 225,
+      "Critical Strike": 112,
+      "Deflection": 112,
+      "Combined Rating": 270
+    },
+    "equipBonuses": [
+      {"name": "Artifact Equipment", "description": "Artifact Stat Increase: Unlocks at Epic Rarity. Modification: This slot will hold an enhancement to one of the 10 Class Features of your class."}
+    ],
+    "set": "Duality",
+    "setSize": 2,
+    "setPartners": ["Twisted Ropalo", "Twisted Hoplon"],
+    "notes": "Bind on Pickup (Account); Recommended; Heavy",
+    "source": "Demogorgon (Master) · Mantol-Derith"
+  },
+  {
+    "name": "Twisted Hoplon — IL 400",
+    "displayName": "Twisted Hoplon",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 300,
+      "Critical Strike": 150,
+      "Deflection": 150,
+      "Combined Rating": 360
+    },
+    "equipBonuses": [
+      {"name": "Artifact Equipment", "description": "Demonic artifact off-hand."}
+    ],
+    "set": "Duality",
+    "setSize": 2,
+    "setPartners": ["Twisted Ropalo", "Twisted Hoplon"],
+    "notes": "Bind on Pickup (Account); Recommended; Heavy"
+  },
+  {
+    "name": "Twisted Hoplon — IL 500",
+    "displayName": "Twisted Hoplon",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 500,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 375,
+      "Critical Strike": 188,
+      "Deflection": 188,
+      "Combined Rating": 450
+    },
+    "equipBonuses": [
+      {"name": "Artifact Equipment", "description": "Demonic artifact off-hand."}
+    ],
+    "set": "Duality",
+    "setSize": 2,
+    "setPartners": ["Twisted Ropalo", "Twisted Hoplon"],
+    "notes": "Bind on Pickup (Account); Recommended; Heavy"
+  },
+  {
+    "name": "Twisted Hoplon — IL 600",
+    "displayName": "Twisted Hoplon",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 600,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 450,
+      "Critical Strike": 223,
+      "Deflection": 223,
+      "Combined Rating": 540
+    },
+    "equipBonuses": [
+      {"name": "Artifact Equipment Maximum Quality", "description": "Demonic artifact off-hand."}
+    ],
+    "set": "Duality",
+    "setSize": 2,
+    "setPartners": ["Twisted Ropalo", "Twisted Hoplon"],
+    "notes": "Bind on Pickup (Account); Recommended; Heavy; Maximum Quality"
+  }
+]

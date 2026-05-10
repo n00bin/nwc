@@ -1,0 +1,1587 @@
+[
+  {
+    "name": "Wootz Hirawa · IL 350",
+    "displayName": "Wootz Hirawa",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 350,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 262,
+      "Critical Strike": 131,
+      "Deflection": 131
+    },
+    "combinedRating": 355,
+    "set": "Chultan",
+    "setSize": 2,
+    "setPartners": ["Wootz Kalkan"],
+    "setBonus": "2 of Set: Contender's Surprise — At the start of combat, a random stat is increased by 2000 for 10 seconds.",
+    "notes": "Artifact Equipment. Source: Professions."
+  },
+  {
+    "name": "Wootz Hirawa · IL 500",
+    "displayName": "Wootz Hirawa",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 500,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 375,
+      "Critical Strike": 188,
+      "Deflection": 188
+    },
+    "combinedRating": 450,
+    "set": "Chultan",
+    "setSize": 2,
+    "setPartners": ["Wootz Kalkan"],
+    "notes": "Artifact Equipment."
+  },
+  {
+    "name": "Wootz Hirawa · IL 650",
+    "displayName": "Wootz Hirawa",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 650,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 488,
+      "Critical Strike": 244,
+      "Deflection": 244
+    },
+    "combinedRating": 585,
+    "set": "Chultan",
+    "setSize": 2,
+    "setPartners": ["Wootz Kalkan"],
+    "notes": "Artifact Equipment."
+  },
+  {
+    "name": "Wootz Hirawa · IL 800",
+    "displayName": "Wootz Hirawa",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 600,
+      "Critical Strike": 300,
+      "Deflection": 300
+    },
+    "combinedRating": 720,
+    "set": "Chultan",
+    "setSize": 2,
+    "setPartners": ["Wootz Kalkan"],
+    "notes": "Artifact Equipment Maximum Quality."
+  },
+  {
+    "name": "Wootz Kalkan · IL 350",
+    "displayName": "Wootz Kalkan",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 350,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 262,
+      "Critical Strike": 131,
+      "Deflection": 131
+    },
+    "combinedRating": 355,
+    "set": "Chultan",
+    "setSize": 2,
+    "setPartners": ["Wootz Hirawa"],
+    "notes": "Artifact Equipment. Purified Black Ice, Shield, Heavy, Off-Hand."
+  },
+  {
+    "name": "Wootz Kalkan · IL 500",
+    "displayName": "Wootz Kalkan",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 500,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 375,
+      "Critical Strike": 188,
+      "Deflection": 188
+    },
+    "combinedRating": 450,
+    "set": "Chultan",
+    "setSize": 2,
+    "setPartners": ["Wootz Hirawa"],
+    "notes": "Artifact Equipment. Off-Hand, Heavy, Shield."
+  },
+  {
+    "name": "Wootz Kalkan · IL 650",
+    "displayName": "Wootz Kalkan",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 650,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 488,
+      "Critical Strike": 244,
+      "Deflection": 244
+    },
+    "combinedRating": 585,
+    "set": "Chultan",
+    "setSize": 2,
+    "setPartners": ["Wootz Hirawa"],
+    "notes": "Artifact Equipment."
+  },
+  {
+    "name": "Wootz Kalkan · IL 800",
+    "displayName": "Wootz Kalkan",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 600,
+      "Critical Strike": 300,
+      "Deflection": 300
+    },
+    "combinedRating": 720,
+    "set": "Chultan",
+    "setSize": 2,
+    "setPartners": ["Wootz Hirawa"],
+    "notes": "Artifact Equipment Maximum Quality."
+  },
+  {
+    "name": "Cincture of Atropal Essence",
+    "slot": "Belt",
+    "item_level": 350,
+    "ratingStats": {
+      "Combat Advantage": 175,
+      "Critical Severity": 175,
+      "Critical Avoidance": 175
+    },
+    "combinedRating": 385,
+    "abilityBonuses": {"Wisdom": 1},
+    "set": "Soulmonger",
+    "setSize": 3,
+    "setPartners": ["Mantle of Atropal Essence", "Decanter of Atropal Essence"],
+    "setBonus": "3 of Set: Whenever you gain health, you gain Temp HP equal to 25% of the health gained, to a total of 5% of your health. (30 second cooldown)",
+    "notes": "Artifact Equipment. Reinforced slot. Source: Cradle of the Death God."
+  },
+  {
+    "name": "Mantle of Atropal Essence",
+    "slot": "Neck",
+    "item_level": 350,
+    "ratingStats": {
+      "Combat Advantage": 175,
+      "Critical Avoidance": 175,
+      "Deflection": 175
+    },
+    "combinedRating": 385,
+    "abilityBonuses": {"Constitution": 1},
+    "set": "Soulmonger",
+    "setSize": 3,
+    "setPartners": ["Cincture of Atropal Essence", "Decanter of Atropal Essence"],
+    "notes": "Artifact Equipment. Reinforced slot. Source: Cradle of the Death God."
+  },
+  {
+    "name": "Chest of the Fallen Reign",
+    "slot": "Armor",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 202,
+      "Critical Strike": 151,
+      "Critical Severity": 151,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Death's Endowment", "description": "When you slay your target with an attack's damage that is more than 25% of your Maximum Hit Points, an endowment from the dead will appear near you. When picked up by you or an ally, the endowment will increase a random stat by 1000 for 10 seconds."}
+    ],
+    "source": "Hunts of Omu - Tyrant",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Vined Deathdelayer",
+    "slot": "Armor",
+    "item_level": 672,
+    "ratingStats": {
+      "Defense": 504,
+      "Critical Avoidance": 504,
+      "Deflection": 202
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Victim's Parry", "description": "When you are hit at 25% health or lower, your Deflect increases 15% for 5 seconds. If you have less than 10000 Deflect, you will gain 7500 for 5 seconds instead. (15 second cooldown)"}
+    ],
+    "source": "Hunts of Omu - Maita",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Stalkwrapped Armor",
+    "slot": "Armor",
+    "item_level": 672,
+    "ratingStats": {
+      "Defense": 504,
+      "Critical Avoidance": 302,
+      "Deflection": 202
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Victim's Resistance", "description": "When you are hit at 25% health or lower, your Critical Avoidance increases 15% for 5 seconds. If you have less than 3000 Critical Avoidance, you will gain 2000 for 5 seconds instead. (15 second cooldown)"}
+    ],
+    "source": "Hunts of Omu - Erjellel",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Furred Kiuno of the Bear",
+    "slot": "Armor",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 302,
+      "Critical Strike": 202,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Swordsman's Perk", "description": "Your Melee Powers do 3% more damage."}
+    ],
+    "source": "Hunts of Omu - Polaris",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Mane of the Manticore",
+    "slot": "Head",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 252,
+      "Defense": 504,
+      "Deflection": 252
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Manticore's Mane Bite", "description": "When you use a Daily power, the next enemy that attacks you takes damage equal to 50% of your max health (30 second cooldown). In PvP this damage is reduced to 10% of your max health."}
+    ],
+    "source": "Hunts of Omu - Rasalas",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Gigantopithecus's Vise",
+    "slot": "Arms",
+    "item_level": 672,
+    "ratingStats": {
+      "Defense": 504,
+      "Critical Avoidance": 302,
+      "Deflection": 202
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Protector's Focus", "description": "When you have a Shield or Temp HP, your Critical Strike is increased by 1000."}
+    ],
+    "source": "Hunts of Omu - Gigantopithecus",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Jawripper's Gloves",
+    "slot": "Arms",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 302,
+      "Critical Strike": 202,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Encounter Perk", "description": "Your Encounter Powers do 3% more damage."}
+    ],
+    "source": "Hunts of Omu - Tyrant",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Fearbringers",
+    "slot": "Arms",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 202,
+      "Defense": 504,
+      "Critical Avoidance": 302
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Tit for Tat", "description": "Your At-Will and Encounter Powers do 30% more damage, but your Daily Powers do 30% less damage."}
+    ],
+    "source": "Hunts of Omu - Rasalas",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Crown of the Monkey King",
+    "slot": "Head",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 252,
+      "Defense": 504,
+      "Critical Avoidance": 252
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Death Defier's Focus", "description": "Gain 200 Critical Strike for each enemy you have engaged in battle. (Max of 15 targets)"}
+    ],
+    "source": "Hunts of Omu - Gigantopithecus",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Chitter's Fangs",
+    "slot": "Head",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 126,
+      "Critical Strike": 188,
+      "Defense": 504,
+      "Critical Avoidance": 190
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Fanged Vex", "description": "When you use an encounter power, the next enemy that attacks you takes damage equal to 5% of your max health. (10 second cooldown)"}
+    ],
+    "source": "Hunts of Omu - Chitters",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Eyestalk Wrappers",
+    "slot": "Arms",
+    "item_level": 672,
+    "ratingStats": {
+      "Critical Strike": 202,
+      "Critical Severity": 302,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Sniper's Perk", "description": "Your Ranged Powers do 3% more damage."}
+    ],
+    "source": "Hunts of Omu - Erjellel",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Deathstriders",
+    "slot": "Feet",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 202,
+      "Critical Severity": 302,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Charged Might", "description": "When Action Points are full, your Power is increased by 1000."}
+    ],
+    "source": "Hunts of Omu - Musshussu",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Boots of the Willed",
+    "slot": "Feet",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 202,
+      "Critical Severity": 302,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "At-Will Perk", "description": "Your At-Will Powers do 3% more damage."}
+    ],
+    "source": "Hunts of Omu - Tyrant",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Destroyed Boots of the Deformed",
+    "slot": "Feet",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 202,
+      "Critical Strike": 151,
+      "Critical Severity": 151,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Victim's Belief", "description": "When you are hit at 25% health or lower, your Incoming Damage is decreased by 10%, but your Base Damage boost is decreased by 10%. (15 second cooldown)"}
+    ],
+    "source": "Hunts of Omu - Kutlass",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Earthtreaders",
+    "slot": "Feet",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 202,
+      "Defense": 504,
+      "Critical Avoidance": 302
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Blessed Land", "description": "At the start of combat, an area of land near you will be blessed for 30 seconds. While standing in this area, gain 5% Base Damage Boost and -5% Incoming Damage. (This power does not stack.)"}
+    ],
+    "source": "Hunts of Omu - Redfang",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Ring of the Spellflinger +1",
+    "displayName": "Ring of the Spellflinger",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Accuracy": 441,
+      "Critical Strike": 1323
+    },
+    "combinedRating": 470,
+    "equipBonuses": [
+      {"name": "Sniper's Fury", "description": "Your Powers deal .5% more damage when you are 50' or further away from your target."}
+    ],
+    "source": "Hunts of Omu - Kutlass / Erjellel",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Spellflinger +2",
+    "displayName": "Ring of the Spellflinger",
+    "slot": "Ring",
+    "item_level": 602,
+    "ratingStats": {
+      "Accuracy": 452,
+      "Critical Strike": 1354
+    },
+    "combinedRating": 482,
+    "equipBonuses": [
+      {"name": "Sniper's Fury", "description": "Your Powers deal 1% more damage when you are 50' or further away from your target."}
+    ],
+    "source": "Hunts of Omu - Kutlass / Erjellel",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of the Spellflinger +3",
+    "displayName": "Ring of the Spellflinger",
+    "slot": "Ring",
+    "item_level": 616,
+    "ratingStats": {
+      "Accuracy": 462,
+      "Critical Strike": 1386
+    },
+    "combinedRating": 493,
+    "equipBonuses": [
+      {"name": "Sniper's Fury", "description": "Your Powers deal 1.5% more damage when you are 50' or further away from your target."}
+    ],
+    "source": "Hunts of Omu - Kutlass / Erjellel",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of the Spellflinger +4",
+    "displayName": "Ring of the Spellflinger",
+    "slot": "Ring",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 504,
+      "Critical Strike": 1512
+    },
+    "combinedRating": 538,
+    "equipBonuses": [
+      {"name": "Sniper's Fury", "description": "Your Powers deal 2% more damage when you are 50' or further away from your target."}
+    ],
+    "source": "Hunts of Omu - Tyrant / Kutlass / Erjellel",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of the Spellflinger +5",
+    "displayName": "Ring of the Spellflinger",
+    "slot": "Ring",
+    "item_level": 714,
+    "ratingStats": {
+      "Accuracy": 536,
+      "Critical Strike": 1607
+    },
+    "combinedRating": 571,
+    "equipBonuses": [
+      {"name": "Sniper's Fury", "description": "Your Powers deal 2.5% more damage when you are 50' or further away from your target."}
+    ],
+    "source": "Hunts of Omu - Tyrant / Kutlass / Erjellel",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of the Lifekeeper +1",
+    "displayName": "Ring of the Lifekeeper",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Critical Avoidance": 1323,
+      "Deflection": 441
+    },
+    "combinedRating": 470,
+    "equipBonuses": [
+      {"name": "Martyr's Guard", "description": "When your health is below 25%, your Defense is increased by 500."}
+    ],
+    "source": "Hunts of Omu - Rasalas / Maita",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Lifekeeper +2",
+    "displayName": "Ring of the Lifekeeper",
+    "slot": "Ring",
+    "item_level": 602,
+    "ratingStats": {
+      "Critical Avoidance": 1354,
+      "Deflection": 452
+    },
+    "combinedRating": 482,
+    "equipBonuses": [
+      {"name": "Martyr's Guard", "description": "When your health is below 25%, your Defense is increased by 600."}
+    ],
+    "source": "Hunts of Omu - Rasalas / Maita",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of the Lifekeeper +3",
+    "displayName": "Ring of the Lifekeeper",
+    "slot": "Ring",
+    "item_level": 616,
+    "ratingStats": {
+      "Critical Avoidance": 1386,
+      "Deflection": 462
+    },
+    "combinedRating": 493,
+    "equipBonuses": [
+      {"name": "Martyr's Guard", "description": "When your health is below 25%, your Defense is increased by 700."}
+    ],
+    "source": "Hunts of Omu - Rasalas / Maita",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of the Lifekeeper +4",
+    "displayName": "Ring of the Lifekeeper",
+    "slot": "Ring",
+    "item_level": 672,
+    "ratingStats": {
+      "Critical Avoidance": 1512,
+      "Deflection": 504
+    },
+    "combinedRating": 538,
+    "equipBonuses": [
+      {"name": "Martyr's Guard", "description": "When your health is below 25%, your Defense is increased by 800."}
+    ],
+    "source": "Hunts of Omu - Tyrant / Rasalas / Maita",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of the Lifekeeper +5",
+    "displayName": "Ring of the Lifekeeper",
+    "slot": "Ring",
+    "item_level": 714,
+    "ratingStats": {
+      "Critical Avoidance": 1607,
+      "Deflection": 536
+    },
+    "combinedRating": 571,
+    "equipBonuses": [
+      {"name": "Martyr's Guard", "description": "When your health is below 25%, your Defense is increased by 1,000."}
+    ],
+    "source": "Hunts of Omu - Tyrant / Rasalas / Maita",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of the Hurtmocker +1",
+    "displayName": "Ring of the Hurtmocker",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Defense": 441,
+      "Critical Avoidance": 1323
+    },
+    "combinedRating": 470,
+    "equipBonuses": [
+      {"name": "Protector's Guard", "description": "When you have a Shield or Temp HP, your Defense is increased by 500."}
+    ],
+    "source": "Hunts of Omu - Polaris / Gigantopithecus",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Hurtmocker +2",
+    "displayName": "Ring of the Hurtmocker",
+    "slot": "Ring",
+    "item_level": 602,
+    "ratingStats": {
+      "Defense": 452,
+      "Critical Avoidance": 1354
+    },
+    "combinedRating": 482,
+    "equipBonuses": [
+      {"name": "Protector's Guard", "description": "When you have a Shield or Temp HP, your Defense is increased by 600."}
+    ],
+    "source": "Hunts of Omu - Polaris / Gigantopithecus",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of the Hurtmocker +3",
+    "displayName": "Ring of the Hurtmocker",
+    "slot": "Ring",
+    "item_level": 616,
+    "ratingStats": {
+      "Defense": 462,
+      "Critical Avoidance": 1386
+    },
+    "combinedRating": 493,
+    "equipBonuses": [
+      {"name": "Protector's Guard", "description": "When you have a Shield or Temp HP, your Defense is increased by 700."}
+    ],
+    "source": "Hunts of Omu - Polaris / Gigantopithecus",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of the Hurtmocker +4",
+    "displayName": "Ring of the Hurtmocker",
+    "slot": "Ring",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 504,
+      "Defense": 504,
+      "Critical Avoidance": 504
+    },
+    "combinedRating": 571,
+    "equipBonuses": [
+      {"name": "Protector's Guard", "description": "When you have a Shield or Temp HP, your Defense is increased by 800."}
+    ],
+    "source": "Hunts of Omu - Tyrant / Polaris / Gigantopithecus",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of the Hurtmocker +5",
+    "displayName": "Ring of the Hurtmocker",
+    "slot": "Ring",
+    "item_level": 714,
+    "ratingStats": {
+      "Accuracy": 536,
+      "Defense": 536,
+      "Critical Avoidance": 536
+    },
+    "combinedRating": 607,
+    "equipBonuses": [
+      {"name": "Protector's Guard", "description": "When you have a Shield or Temp HP, your Defense is increased by 1,000."}
+    ],
+    "source": "Hunts of Omu - Tyrant / Polaris / Gigantopithecus",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of the Gravestriker +1",
+    "displayName": "Ring of the Gravestriker",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Combat Advantage": 441,
+      "Critical Strike": 1323
+    },
+    "combinedRating": 470,
+    "equipBonuses": [
+      {"name": "Champion's Might", "description": "When your health is greater than 85%, your Power is increased by 500."}
+    ],
+    "source": "Omu's Finds and Treasures",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Gravestriker +2",
+    "displayName": "Ring of the Gravestriker",
+    "slot": "Ring",
+    "item_level": 602,
+    "ratingStats": {
+      "Combat Advantage": 452,
+      "Critical Strike": 1354
+    },
+    "combinedRating": 482,
+    "equipBonuses": [
+      {"name": "Champion's Might", "description": "When your health is greater than 85%, your Power is increased by 600."}
+    ],
+    "source": "Omu's Finds and Treasures",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of the Gravestriker +3",
+    "displayName": "Ring of the Gravestriker",
+    "slot": "Ring",
+    "item_level": 616,
+    "ratingStats": {
+      "Combat Advantage": 462,
+      "Critical Strike": 1386
+    },
+    "combinedRating": 493,
+    "equipBonuses": [
+      {"name": "Champion's Might", "description": "When your health is greater than 85%, your Power is increased by 700."}
+    ],
+    "source": "Omu's Finds and Treasures",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of the Gravestriker +4",
+    "displayName": "Ring of the Gravestriker",
+    "slot": "Ring",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 504,
+      "Critical Strike": 1512
+    },
+    "combinedRating": 538,
+    "equipBonuses": [
+      {"name": "Champion's Might", "description": "When your health is greater than 85%, your Power is increased by 800."}
+    ],
+    "source": "Omu's Finds and Treasures",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of the Gravestriker +5",
+    "displayName": "Ring of the Gravestriker",
+    "slot": "Ring",
+    "item_level": 714,
+    "ratingStats": {
+      "Combat Advantage": 536,
+      "Critical Strike": 1607
+    },
+    "combinedRating": 571,
+    "equipBonuses": [
+      {"name": "Champion's Might", "description": "When your health is greater than 85%, your Power is increased by 1,000."}
+    ],
+    "source": "Omu's Finds and Treasures",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of the Deathdasher +1",
+    "displayName": "Ring of the Deathdasher",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Accuracy": 1323,
+      "Combat Advantage": 441
+    },
+    "combinedRating": 470,
+    "equipBonuses": [
+      {"name": "Martyr's Haste", "description": "When your health is below 25%, your Movement Speed is increased by 5%."}
+    ],
+    "source": "Hunts of Omu - Redfang / Chitters",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Deathdasher +2",
+    "displayName": "Ring of the Deathdasher",
+    "slot": "Ring",
+    "item_level": 602,
+    "ratingStats": {
+      "Accuracy": 1354,
+      "Combat Advantage": 452
+    },
+    "combinedRating": 482,
+    "equipBonuses": [
+      {"name": "Martyr's Haste", "description": "When your health is below 25%, your Movement Speed is increased by 6%."}
+    ],
+    "source": "Hunts of Omu - Redfang / Chitters",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of the Deathdasher +3",
+    "displayName": "Ring of the Deathdasher",
+    "slot": "Ring",
+    "item_level": 616,
+    "ratingStats": {
+      "Accuracy": 1386,
+      "Combat Advantage": 462
+    },
+    "combinedRating": 493,
+    "equipBonuses": [
+      {"name": "Martyr's Haste", "description": "When your health is below 25%, your Movement Speed is increased by 7%."}
+    ],
+    "source": "Hunts of Omu - Redfang / Chitters",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of the Deathdasher +4",
+    "displayName": "Ring of the Deathdasher",
+    "slot": "Ring",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 1512,
+      "Combat Advantage": 504
+    },
+    "combinedRating": 538,
+    "equipBonuses": [
+      {"name": "Martyr's Haste", "description": "When your health is below 25%, your Movement Speed is increased by 8%."}
+    ],
+    "source": "Hunts of Omu - Tyrant / Redfang / Chitters",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of the Deathdasher +5",
+    "displayName": "Ring of the Deathdasher",
+    "slot": "Ring",
+    "item_level": 714,
+    "ratingStats": {
+      "Accuracy": 1607,
+      "Combat Advantage": 536
+    },
+    "combinedRating": 571,
+    "equipBonuses": [
+      {"name": "Martyr's Haste", "description": "When your health is below 25%, your Movement Speed is increased by 10%."}
+    ],
+    "source": "Hunts of Omu - Tyrant / Redfang / Chitters",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of the Battledancer +1",
+    "displayName": "Ring of the Battledancer",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Critical Strike": 1764
+    },
+    "combinedRating": 470,
+    "equipBonuses": [
+      {"name": "Dancer's Guard", "description": "Your Defense is increased by 500 when you are moving."}
+    ],
+    "source": "Hunts of Omu - Musshussu",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Battledancer +2",
+    "displayName": "Ring of the Battledancer",
+    "slot": "Ring",
+    "item_level": 602,
+    "ratingStats": {
+      "Critical Strike": 1806
+    },
+    "combinedRating": 482,
+    "equipBonuses": [
+      {"name": "Dancer's Guard", "description": "Your Defense is increased by 600 when you are moving."}
+    ],
+    "source": "Hunts of Omu - Musshussu",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of the Battledancer +3",
+    "displayName": "Ring of the Battledancer",
+    "slot": "Ring",
+    "item_level": 616,
+    "ratingStats": {
+      "Critical Strike": 1848
+    },
+    "combinedRating": 493,
+    "equipBonuses": [
+      {"name": "Dancer's Guard", "description": "Your Defense is increased by 700 when you are moving."}
+    ],
+    "source": "Hunts of Omu - Musshussu",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of the Battledancer +4",
+    "displayName": "Ring of the Battledancer",
+    "slot": "Ring",
+    "item_level": 672,
+    "ratingStats": {
+      "Critical Strike": 2016
+    },
+    "combinedRating": 538,
+    "equipBonuses": [
+      {"name": "Dancer's Guard", "description": "Your Defense is increased by 800 when you are moving."}
+    ],
+    "source": "Hunts of Omu - Tyrant / Musshussu",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of the Battledancer +5",
+    "displayName": "Ring of the Battledancer",
+    "slot": "Ring",
+    "item_level": 714,
+    "ratingStats": {
+      "Critical Strike": 2142
+    },
+    "combinedRating": 571,
+    "equipBonuses": [
+      {"name": "Dancer's Guard", "description": "Your Defense is increased by 1,000 when you are moving."}
+    ],
+    "source": "Hunts of Omu - Tyrant / Musshussu",
+    "variant": "+5"
+  },
+  {
+    "name": "Wrap of the Serpent",
+    "slot": "Belt",
+    "item_level": 350,
+    "ratingStats": {
+      "Critical Avoidance": 350,
+      "Deflection": 175
+    },
+    "combinedRating": 315,
+    "abilityBonuses": {"Dexterity": 1},
+    "set": "Skin of the Serpent",
+    "setSize": 3,
+    "setPartners": ["Skin of the Serpent", "Charm of the Serpent"],
+    "setBonus": "3 of Set: While you are moving for 3 seconds, your damage is increased by 1%. This effect stacks up to 5 times and is removed if you stand still for longer than 5 seconds.",
+    "notes": "Artifact Equipment. Reinforced slot. Sources: Hunts of Omu (Rasalas / Gigantopithecus / Erjellel)."
+  },
+  {
+    "name": "Skull Lord Sash",
+    "slot": "Belt",
+    "item_level": 350,
+    "ratingStats": {
+      "Combat Advantage": 175,
+      "Critical Strike": 175,
+      "Critical Severity": 175
+    },
+    "combinedRating": 385,
+    "abilityBonuses": {"Wisdom": 1},
+    "set": "Skull Lord",
+    "setSize": 3,
+    "setPartners": ["Skull Lord Medallion", "Skull Lord Staff"],
+    "setBonus": "3 of Set: When you kill an enemy, you gain Temp HP equal to 3% of the damage inflicted, 5% if the enemy is undead.",
+    "notes": "Artifact Equipment. Reinforced slot. Sources: Hunts of Omu (Rasalas / Gigantopithecus / Erjellel)."
+  },
+  {
+    "name": "Pants of the Chultan Merchant",
+    "slot": "Pants",
+    "item_level": 672,
+    "ratingStats": {
+      "Critical Severity": 605,
+      "Critical Avoidance": 403
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Survivor's Resistance", "description": "Gain 15 Critical Avoidance for each percent of health you are missing."}
+    ],
+    "source": "Skirmish - The Merchant Prince's Folly",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Shirt of the Chultan Merchant",
+    "slot": "Shirt",
+    "item_level": 672,
+    "ratingStats": {
+      "Critical Strike": 504,
+      "Critical Avoidance": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Leader's Accuracy", "description": "Gain 150 Accuracy for each player in your team."}
+    ],
+    "source": "Skirmish - The Merchant Prince's Folly",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Gravemaster's Habit",
+    "slot": "Armor",
+    "item_level": 672,
+    "ratingStats": {
+      "Critical Strike": 302,
+      "Defense": 504,
+      "Critical Avoidance": 202
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Gladiator's Focus", "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "source": "Hunts of Soshenstar - Zulkir",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Rex Amiculum",
+    "slot": "Armor",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 302,
+      "Critical Strike": 202,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Contender's Might", "description": "At the start of combat, your Power is increased by 1500 for 10 seconds."}
+    ],
+    "source": "Hunts of Soshenstar - King of Spines",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Martyr's Plackart",
+    "slot": "Armor",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 302,
+      "Combat Advantage": 202,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Gladiator's Guard", "description": "For every 5 seconds you are in combat, you gain 100 Defense. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "source": "Hunts of Soshenstar - Hedetet",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Gravemaster's Blinder",
+    "slot": "Head",
+    "item_level": 672,
+    "ratingStats": {
+      "Critical Strike": 188,
+      "Defense": 504,
+      "Critical Avoidance": 190,
+      "Deflection": 126
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Executioner's Wraith", "description": "When you kill an enemy, there is a chance you will summon a Wraith that will fight for you for 1 minute."}
+    ],
+    "source": "Hunts of Soshenstar - Zulkir",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Rex Corona",
+    "slot": "Head",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 504,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Gladiator's Might", "description": "For every 5 seconds you are in combat, you gain 100 Power. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "source": "Hunts of Soshenstar - King of Spines",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Hullsnapper",
+    "slot": "Arms",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 302,
+      "Defense": 504,
+      "Deflection": 202
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Contender's Guard", "description": "At the start of combat, your Defense is increased by 1500 for 10 seconds."}
+    ],
+    "source": "Hunts of Soshenstar - Karkinos",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Royalsilk Mousquetaires",
+    "slot": "Arms",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 302,
+      "Critical Strike": 202,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Survivor's Accuracy", "description": "Gain 10 Accuracy for each percent of health you are missing."}
+    ],
+    "source": "Hunts of Soshenstar - Arachne",
+    "notes": "Reinforced slot. Drop also: +10% increase drop rate of Spider Silk."
+  },
+  {
+    "name": "Batiri Shaman Mask",
+    "slot": "Head",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 190,
+      "Combat Advantage": 188,
+      "Defense": 504,
+      "Awareness": 126
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Executioner's Phantom", "description": "When you kill an enemy, you will summon a Phantom Batiri that will fight for you for 1 minute. (3 minute cooldown)"}
+    ],
+    "source": "Hunts of Soshenstar - Clawglaze",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Dawnhide Mask",
+    "slot": "Head",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 252,
+      "Defense": 504,
+      "Deflection": 252
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Gladiator's Tenacity", "description": "For every 5 seconds you are in combat, you gain 100 Critical Severity. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}
+    ],
+    "source": "Hunts of Soshenstar - Sirrush",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Hunter's Keffiyeh",
+    "slot": "Head",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 504,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Trophy Hunter", "description": "When you kill a Hunt, your Power increases by 10% for 15 minutes. This power will expire when you leave Chult."}
+    ],
+    "source": "Hunts of Soshenstar - King of Spines",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Zephyr Armguards",
+    "slot": "Arms",
+    "item_level": 672,
+    "ratingStats": {
+      "Critical Strike": 202,
+      "Critical Severity": 302,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Contender's Focus", "description": "At the start of combat, your Critical Strike is increased by 1500 for 10 seconds."}
+    ],
+    "source": "Hunts of Soshenstar - Baccho",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Ring of the Curse Bringer",
+    "slot": "Ring",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 504,
+      "Critical Strike": 1512
+    },
+    "combinedRating": 538,
+    "equipBonuses": [
+      {"name": "Cursed Strike", "description": "Your attacks have a chance to inflict Partial Paralysis. Targets under the effect of partial paralysis may be periodically stunned for a short duration. Does not apply to PvP targets."}
+    ],
+    "source": "Hunts of Soshenstar - Deindar",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Boots of the Alpha",
+    "slot": "Feet",
+    "item_level": 672,
+    "ratingStats": {
+      "Combat Advantage": 302,
+      "Critical Strike": 202,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Primal Rush", "description": "At the start of combat, you summon a dinosaur to fight for you for 15 seconds. (45 second cooldown)"}
+    ],
+    "source": "Hunts of Soshenstar - Sirrush",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Bonespurs",
+    "slot": "Feet",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 202,
+      "Critical Severity": 302,
+      "Defense": 504
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Butcher's Tenacity", "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Critical Severity for 10 seconds. (Max stack 5)"}
+    ],
+    "source": "Hunts of Soshenstar - Spili-Ti",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Spiteful Heels",
+    "slot": "Feet",
+    "item_level": 672,
+    "ratingStats": {
+      "Critical Strike": 302,
+      "Defense": 504,
+      "Deflection": 202
+    },
+    "combinedRating": 605,
+    "equipBonuses": [
+      {"name": "Warden's Focus", "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 5% Critical Strike for 10 seconds."}
+    ],
+    "source": "Hunts of Soshenstar - Hedetet",
+    "notes": "Reinforced slot."
+  },
+  {
+    "name": "Ring of the Beast Slayer +1",
+    "displayName": "Ring of the Beast Slayer",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Accuracy": 441,
+      "Critical Strike": 1323
+    },
+    "combinedRating": 470,
+    "equipBonuses": [
+      {"name": "Beast Hunter", "description": "+1% Damage against Beasts."}
+    ],
+    "source": "Hunts of Soshenstar - Karkinos / Hedetet / Baccho / Arachne",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Beast Slayer +2",
+    "displayName": "Ring of the Beast Slayer",
+    "slot": "Ring",
+    "item_level": 602,
+    "ratingStats": {
+      "Accuracy": 452,
+      "Critical Strike": 1354
+    },
+    "combinedRating": 482,
+    "equipBonuses": [
+      {"name": "Beast Hunter", "description": "+2% Damage against Beasts."}
+    ],
+    "source": "Hunts of Soshenstar - Karkinos / Hedetet / Baccho / Arachne",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of the Beast Slayer +3",
+    "displayName": "Ring of the Beast Slayer",
+    "slot": "Ring",
+    "item_level": 616,
+    "ratingStats": {
+      "Accuracy": 462,
+      "Critical Strike": 1386
+    },
+    "combinedRating": 493,
+    "equipBonuses": [
+      {"name": "Beast Hunter", "description": "+3% Damage against Beasts."}
+    ],
+    "source": "Hunts of Soshenstar - Karkinos / Hedetet / Baccho / Arachne",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of the Beast Slayer +4",
+    "displayName": "Ring of the Beast Slayer",
+    "slot": "Ring",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 504,
+      "Critical Strike": 1512
+    },
+    "combinedRating": 538,
+    "equipBonuses": [
+      {"name": "Beast Hunter", "description": "+4% Damage against Beasts."}
+    ],
+    "source": "Hunts of Soshenstar - King of Spines / Karkinos / Baccho / Arachne",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of the Beast Slayer +5",
+    "displayName": "Ring of the Beast Slayer",
+    "slot": "Ring",
+    "item_level": 714,
+    "ratingStats": {
+      "Accuracy": 536,
+      "Critical Strike": 1607
+    },
+    "combinedRating": 571,
+    "equipBonuses": [
+      {"name": "Beast Hunter", "description": "+5% Damage against Beasts."}
+    ],
+    "source": "Hunts of Soshenstar - King of Spines / Karkinos / Hedetet / Baccho / Arachne",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of the Yuan-Ti Slayer +1",
+    "displayName": "Ring of the Yuan-Ti Slayer",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Defense": 441,
+      "Critical Avoidance": 1323
+    },
+    "combinedRating": 470,
+    "equipBonuses": [
+      {"name": "Yuan-Ti Hunter", "description": "+1% Damage against Yuan-Ti."}
+    ],
+    "source": "Hunts of Soshenstar - Deindar",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Yuan-Ti Slayer +2",
+    "displayName": "Ring of the Yuan-Ti Slayer",
+    "slot": "Ring",
+    "item_level": 602,
+    "ratingStats": {
+      "Defense": 452,
+      "Critical Avoidance": 1354
+    },
+    "combinedRating": 482,
+    "equipBonuses": [
+      {"name": "Yuan-Ti Hunter", "description": "+2% Damage against Yuan-Ti."}
+    ],
+    "source": "Hunts of Soshenstar - Deindar",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of the Yuan-Ti Slayer +3",
+    "displayName": "Ring of the Yuan-Ti Slayer",
+    "slot": "Ring",
+    "item_level": 616,
+    "ratingStats": {
+      "Defense": 462,
+      "Critical Avoidance": 1386
+    },
+    "combinedRating": 493,
+    "equipBonuses": [
+      {"name": "Yuan-Ti Hunter", "description": "+3% Damage against Yuan-Ti."}
+    ],
+    "source": "Hunts of Soshenstar - Deindar",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of the Yuan-Ti Slayer +4",
+    "displayName": "Ring of the Yuan-Ti Slayer",
+    "slot": "Ring",
+    "item_level": 672,
+    "ratingStats": {
+      "Defense": 504,
+      "Critical Avoidance": 1008
+    },
+    "combinedRating": 538,
+    "equipBonuses": [
+      {"name": "Yuan-Ti Hunter", "description": "+4% Damage against Yuan-Ti."}
+    ],
+    "source": "Hunts of Soshenstar - King of Spines / Deindar",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of the Yuan-Ti Slayer +5",
+    "displayName": "Ring of the Yuan-Ti Slayer",
+    "slot": "Ring",
+    "item_level": 714,
+    "ratingStats": {
+      "Accuracy": 536,
+      "Defense": 536,
+      "Critical Avoidance": 1071
+    },
+    "combinedRating": 571,
+    "equipBonuses": [
+      {"name": "Yuan-Ti Hunter", "description": "+5% Damage against Yuan-Ti."}
+    ],
+    "source": "Hunts of Soshenstar - King of Spines / Deindar",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of the Undead Slayer +1",
+    "displayName": "Ring of the Undead Slayer",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Critical Avoidance": 1323,
+      "Deflection": 441
+    },
+    "combinedRating": 470,
+    "equipBonuses": [
+      {"name": "Undead Hunter", "description": "+1% Damage against Undead."}
+    ],
+    "source": "Hunts of Soshenstar - Zulkir / Spili-Ti",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Undead Slayer +2",
+    "displayName": "Ring of the Undead Slayer",
+    "slot": "Ring",
+    "item_level": 602,
+    "ratingStats": {
+      "Critical Avoidance": 1354,
+      "Deflection": 452
+    },
+    "combinedRating": 482,
+    "equipBonuses": [
+      {"name": "Undead Hunter", "description": "+2% Damage against Undead."}
+    ],
+    "source": "Hunts of Soshenstar - Zulkir / Spili-Ti",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of the Undead Slayer +3",
+    "displayName": "Ring of the Undead Slayer",
+    "slot": "Ring",
+    "item_level": 616,
+    "ratingStats": {
+      "Critical Avoidance": 1386,
+      "Deflection": 462
+    },
+    "combinedRating": 493,
+    "equipBonuses": [
+      {"name": "Undead Hunter", "description": "+3% Damage against Undead."}
+    ],
+    "source": "Hunts of Soshenstar - Zulkir / Spili-Ti",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of the Undead Slayer +4",
+    "displayName": "Ring of the Undead Slayer",
+    "slot": "Ring",
+    "item_level": 672,
+    "ratingStats": {
+      "Critical Avoidance": 1512,
+      "Deflection": 504
+    },
+    "combinedRating": 538,
+    "equipBonuses": [
+      {"name": "Undead Hunter", "description": "+4% Damage against Undead."}
+    ],
+    "source": "Hunts of Soshenstar - Zulkir / King of Spines / Spili-Ti",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of the Undead Slayer +5",
+    "displayName": "Ring of the Undead Slayer",
+    "slot": "Ring",
+    "item_level": 714,
+    "ratingStats": {
+      "Critical Avoidance": 1607,
+      "Deflection": 536
+    },
+    "combinedRating": 571,
+    "equipBonuses": [
+      {"name": "Undead Hunter", "description": "+5% Damage against Undead."}
+    ],
+    "source": "Hunts of Soshenstar - Zulkir / King of Spines / Spili-Ti",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of the Goblin Slayer +1",
+    "displayName": "Ring of the Goblin Slayer",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Accuracy": 1323,
+      "Combat Advantage": 441
+    },
+    "combinedRating": 470,
+    "equipBonuses": [
+      {"name": "Goblin Hunter", "description": "+1% Damage against Goblins."}
+    ],
+    "source": "Hunts of Soshenstar - Clawglaze",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Goblin Slayer +2",
+    "displayName": "Ring of the Goblin Slayer",
+    "slot": "Ring",
+    "item_level": 602,
+    "ratingStats": {
+      "Accuracy": 1354,
+      "Combat Advantage": 452
+    },
+    "combinedRating": 482,
+    "equipBonuses": [
+      {"name": "Goblin Hunter", "description": "+2% Damage against Goblins."}
+    ],
+    "source": "Hunts of Soshenstar - Clawglaze",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of the Goblin Slayer +3",
+    "displayName": "Ring of the Goblin Slayer",
+    "slot": "Ring",
+    "item_level": 616,
+    "ratingStats": {
+      "Accuracy": 1386,
+      "Combat Advantage": 462
+    },
+    "combinedRating": 493,
+    "equipBonuses": [
+      {"name": "Goblin Hunter", "description": "+3% Damage against Goblins."}
+    ],
+    "source": "Hunts of Soshenstar - Clawglaze",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of the Goblin Slayer +4",
+    "displayName": "Ring of the Goblin Slayer",
+    "slot": "Ring",
+    "item_level": 672,
+    "ratingStats": {
+      "Accuracy": 1512,
+      "Combat Advantage": 504
+    },
+    "combinedRating": 538,
+    "equipBonuses": [
+      {"name": "Goblin Hunter", "description": "+4% Damage against Goblins."}
+    ],
+    "source": "Hunts of Soshenstar - King of Spines / Clawglaze",
+    "variant": "+4"
+  },
+  {
+    "name": "Ring of the Goblin Slayer +5",
+    "displayName": "Ring of the Goblin Slayer",
+    "slot": "Ring",
+    "item_level": 714,
+    "ratingStats": {
+      "Accuracy": 1607,
+      "Combat Advantage": 536
+    },
+    "combinedRating": 571,
+    "equipBonuses": [
+      {"name": "Goblin Hunter", "description": "+5% Damage against Goblins."}
+    ],
+    "source": "Hunts of Soshenstar - King of Spines / Clawglaze",
+    "variant": "+5"
+  },
+  {
+    "name": "Ring of the Dinosaur Slayer +1",
+    "displayName": "Ring of the Dinosaur Slayer",
+    "slot": "Ring",
+    "item_level": 588,
+    "ratingStats": {
+      "Critical Strike": 441,
+      "Critical Severity": 1323
+    },
+    "combinedRating": 470,
+    "equipBonuses": [
+      {"name": "Dinosaur Hunter", "description": "+1% Damage against Dinosaurs."}
+    ],
+    "source": "Hunts of Soshenstar - Sirrush",
+    "variant": "+1"
+  },
+  {
+    "name": "Ring of the Dinosaur Slayer +2",
+    "displayName": "Ring of the Dinosaur Slayer",
+    "slot": "Ring",
+    "item_level": 602,
+    "ratingStats": {
+      "Critical Strike": 452,
+      "Critical Severity": 1354
+    },
+    "combinedRating": 482,
+    "equipBonuses": [
+      {"name": "Dinosaur Hunter", "description": "+2% Damage against Dinosaurs."}
+    ],
+    "source": "Hunts of Soshenstar - Sirrush",
+    "variant": "+2"
+  },
+  {
+    "name": "Ring of the Dinosaur Slayer +3",
+    "displayName": "Ring of the Dinosaur Slayer",
+    "slot": "Ring",
+    "item_level": 616,
+    "ratingStats": {
+      "Critical Strike": 462,
+      "Critical Severity": 1386
+    },
+    "combinedRating": 493,
+    "equipBonuses": [
+      {"name": "Dinosaur Hunter", "description": "+3% Damage against Dinosaurs."}
+    ],
+    "source": "Hunts of Soshenstar - Sirrush",
+    "variant": "+3"
+  },
+  {
+    "name": "Ring of the Dinosaur Slayer +4",
+    "displayName": "Ring of the Dinosaur Slayer",
+    "slot": "Ring",
+    "item_level": 672,
+    "ratingStats": {
+      "Critical Strike": 504,
+      "Critical Severity": 1512
+    },
+    "combinedRating": 538,
+    "equipBonuses": [
+      {"name": "Dinosaur Hunter", "description": "+4% Damage against Dinosaurs."}
+    ],
+    "source": "Hunts of Soshenstar - King of Spines / Sirrush",
+    "variant": "+4"
+  }
+]
