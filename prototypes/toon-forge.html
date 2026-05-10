@@ -2596,13 +2596,22 @@
       renderAbilityGrid();
     }
 
-    // Sum ability score bonuses from a percentStats-like dict like {STR: 2, INT: 1}.
-    // Handles both upper-case (STR) and lower-case (str) keys.
+    // Sum ability score bonuses from a percentStats-like dict. Source data
+    // uses any of: full names ({Strength, Intelligence, ...}), 3-letter
+    // abbreviations ({STR, INT, ...}), or lowercase ({str, int, ...}).
+    const ABIL_NAME_TO_KEY = {
+      "strength": "str", "str": "str",
+      "constitution": "con", "con": "con",
+      "dexterity": "dex", "dex": "dex",
+      "intelligence": "int", "int": "int",
+      "wisdom": "wis", "wis": "wis",
+      "charisma": "cha", "cha": "cha"
+    };
     function addAbilityBonus(out, src) {
       if (!src) return;
       for (const rawKey in src) {
-        const k = rawKey.toLowerCase();
-        if (!ABIL_KEYS.includes(k)) continue;
+        const k = ABIL_NAME_TO_KEY[rawKey.toLowerCase()];
+        if (!k) continue;
         out[k] = (out[k] || 0) + (+src[rawKey] || 0);
       }
     }
@@ -2822,25 +2831,38 @@
     }
 
     /* ===== Auto Total Item Level =====
-       Sums item_level of every equipped gear piece. Updates state.il
-       and the input field whenever gear changes. The user can still
-       type into the field; their value persists until the next gear
-       change overwrites it. */
-    function computeTILFromGear() {
-      if (!state.gear) return 0;
+       Sums item_level of every equipped gear piece + equipped artifacts.
+       In NW, both contribute to the displayed Total Item Level. Updates
+       state.il and the input field whenever gear or artifacts change.
+       The user can still type into the field; their value persists until
+       the next gear/artifact change overwrites it. */
+    function computeTILFromBuild() {
       let sum = 0;
-      if (typeof GEAR_SLOTS !== "undefined") {
+      // Equipped gear (12 slots; rings dedup)
+      if (state.gear && typeof GEAR_SLOTS !== "undefined") {
+        const seen = new Set();
         for (const slotEntry of GEAR_SLOTS) {
           const itemName = state.gear[slotEntry.label];
           if (!itemName) continue;
+          // Two ring slots share a data slot; if both are the same item we
+          // still count IL from each (NW counts both equipped rings).
           const item = findGearByName(itemName, slotEntry.slot);
           if (item && item.item_level) sum += item.item_level;
+        }
+      }
+      // Equipped artifacts (1 primary + up to 3 secondary)
+      if (state.artifacts) {
+        const primary = findArtifactByName(state.artifacts["Primary"]);
+        if (primary && primary.item_level) sum += primary.item_level;
+        for (let i = 1; i <= 3; i++) {
+          const a = findArtifactByName(state.artifacts["Secondary " + i]);
+          if (a && a.item_level) sum += a.item_level;
         }
       }
       return sum;
     }
     function applyAutoTIL() {
-      const til = computeTILFromGear();
+      const til = computeTILFromBuild();
       if (til <= 0) return;
       state.il = String(til);
       const f = document.getElementById("f-il");
@@ -3765,6 +3787,7 @@
       g.querySelectorAll("select").forEach(sel => {
         sel.addEventListener("change", e => {
           state.artifacts[sel.dataset.art] = e.target.value;
+          applyAutoTIL();
           recomputeAbilityTotals();
           renderAbilityGrid();
           renderArtifacts();   // re-filter other dropdowns to exclude the new pick
