@@ -1812,5 +1812,834 @@
     "set": "Enchanted Advantage",
     "setSize": 2,
     "notes": "Offense Pants (paired with Bloodwoven Signs)"
+  },
+  {
+    "name": "Bloodwoven Runes",
+    "slot": "Pants",
+    "item_level": 3150,
+    "ratingStats": {
+      "Combat Advantage": 1512,
+      "Critical Severity": 1701,
+      "Critical Avoidance": 1559
+    },
+    "combinedRating": 2835,
+    "equipBonuses": [
+      {
+        "name": "Skirmisher's Zeal",
+        "description": "Whenever you deal Combat Advantage damage with your Powers, you have a 20% chance to gain 25 Action Points. This effect can only occur once every 10 seconds."
+      }
+    ],
+    "set": "Enchanted Advantage",
+    "setSize": 2,
+    "notes": "Offense Pants variant"
+  },
+  {
+    "name": "Bloodwoven Brands — Depleted Defiance",
+    "displayName": "Bloodwoven Brands",
+    "slot": "Shirt",
+    "item_level": 3150,
+    "ratingStats": {
+      "Defense": 1323,
+      "Critical Avoidance": 1559,
+      "Combat Resistance": 1418
+    },
+    "percentStats": {
+      "Recharge Speed": 1.5
+    },
+    "combinedRating": 2835,
+    "equipBonuses": [
+      {
+        "name": "Depleted Defiance",
+        "description": "When your Stamina is under 15%, your Movement Speed is increased by 20%. This boost only applies during combat."
+      }
+    ],
+    "set": "Enchanted Awareness",
+    "setSize": 2,
+    "variant": "Depleted Defiance",
+    "notes": "Defense Shirt variant — co-exists with Warden's Defense version of same display name"
+  },
+  {
+    "name": "Bloodwoven Symbols — Graceful Harmony",
+    "displayName": "Bloodwoven Symbols",
+    "slot": "Shirt",
+    "item_level": 3150,
+    "ratingStats": {
+      "Critical Severity": 1701,
+      "Deflection": 2126,
+      "Outgoing Healing": 1512
+    },
+    "percentStats": {
+      "Recharge Speed": 1.5
+    },
+    "combinedRating": 2835,
+    "equipBonuses": [
+      {
+        "name": "Graceful Harmony",
+        "description": "You gain 1.5% Outgoing Healing for each player in your team. When your teammates are 20' or closer to you, their Forte is increased by 1.5%."
+      }
+    ],
+    "set": "Enchanted Healing",
+    "setSize": 2,
+    "variant": "Graceful Harmony",
+    "notes": "Healer Shirt variant — co-exists with Medic's Haste version of same display name"
+  },
+  {
+    "name": "Bloodwoven Runes — Challenger's Strength",
+    "displayName": "Bloodwoven Runes",
+    "slot": "Pants",
+    "item_level": 3150,
+    "ratingStats": {
+      "Combat Advantage": 1512,
+      "Awareness": 1134,
+      "Control Bonus": 1418
+    },
+    "percentStats": {
+      "Recharge Speed": 1.5
+    },
+    "combinedRating": 2835,
+    "equipBonuses": [
+      {
+        "name": "Challenger's Strength",
+        "description": "When in combat with only 1 enemy, your Power is increased by 2,330 every 2 seconds. Every 2 seconds you are in combat with 4 or more enemies, lose 1 stack. Max Stacks: 5 — 11,650 Power."
+      }
+    ],
+    "set": "Enchanted Advantage",
+    "setSize": 2,
+    "variant": "Challenger's Strength",
+    "notes": "Offense Pants variant — co-exists with Skirmisher's Zeal version of same display name"
+  },
+  {
+    "name": "Bloodwoven Sigils — Charged At-Will",
+    "displayName": "Bloodwoven Sigils",
+    "slot": "Pants",
+    "item_level": 3150,
+    "ratingStats": {
+      "Combat Advantage": 1512,
+      "Critical Severity": 1701,
+      "Critical Avoidance": 1559
+    },
+    "percentStats": {
+      "Recharge Speed": 1.5
+    },
+    "combinedRating": 2835,
+    "equipBonuses": [
+      {
+        "name": "Charged At-Will",
+        "description": "Whenever you activate a Daily power, increase the damage dealt by your at-will attacks by 15% for 10 seconds. (20 second cooldown)"
+      }
+    ],
+    "set": "Enchanted Advantage",
+    "setSize": 2,
+    "variant": "Charged At-Will",
+    "notes": "Offense Pants variant — co-exists with Reckless Advantage version of same display name"
+  },
+  {
+    "name": "Bloodwoven Ink — Butcher's Zeal",
+    "displayName": "Bloodwoven Ink",
+    "slot": "Pants",
+    "item_level": 3150,
+    "ratingStats": {
+      "Critical Severity": 2268,
+      "Forte": 1276,
+      "Outgoing Healing": 1134
+    },
+    "percentStats": {
+      "Recharge Speed": 1.5
+    },
+    "combinedRating": 2835,
+    "equipBonuses": [
+      {
+        "name": "Butcher's Zeal",
+        "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 10 Action Points. Can only occur once every 5 seconds."
+      }
+    ],
+    "set": "Enchanted Healing",
+    "setSize": 2,
+    "variant": "Butcher's Zeal",
+    "notes": "Healer Pants variant — co-exists with Survivor's Gift version of same display name"
+  },
+  {
+    "name": "Bloodwoven Signs — Critical Empowerment",
+    "displayName": "Bloodwoven Signs",
+    "slot": "Shirt",
+    "item_level": 3150,
+    "ratingStats": {
+      "Accuracy": 2457,
+      "Defense": 992,
+      "Outgoing Healing": 1276
+    },
+    "percentStats": {
+      "Recharge Speed": 1.5
+    },
+    "combinedRating": 2835,
+    "equipBonuses": [
+      {
+        "name": "Critical Empowerment",
+        "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 3.5% Damage for 10 seconds. Effect is doubled in Thay."
+      }
+    ],
+    "set": "Enchanted Advantage",
+    "setSize": 2,
+    "variant": "Critical Empowerment",
+    "notes": "Offense Shirt variant — co-exists with Occult Advantage version of same display name"
+  },
+  {
+    "name": "The Twisted Pact",
+    "slot": "Ring",
+    "item_level": 4150,
+    "ratingStats": {
+      "Critical Strike": 8964,
+      "Forte": 4482
+    },
+    "percentStats": {
+      "Action Point Gain": 1.5
+    },
+    "combinedRating": 3520,
+    "equipBonuses": [
+      {
+        "name": "Enduring Critical",
+        "description": "Your current Hit Points increases your Critical Severity, up to a maximum of 7%."
+      }
+    ],
+    "set": "Rings: Shackles of Divinity",
+    "setSize": 8,
+    "source": "Shackles of Divinity"
+  },
+  {
+    "name": "The Bloodlit Veil",
+    "slot": "Ring",
+    "item_level": 4150,
+    "ratingStats": {
+      "Accuracy": 8092,
+      "Critical Severity": 7470
+    },
+    "percentStats": {
+      "Action Point Gain": 1.5
+    },
+    "combinedRating": 3320,
+    "equipBonuses": [
+      {
+        "name": "Maiden's Advantage",
+        "description": "You gain 5% Combat Advantage. When in combat with 2 or more enemies, you also gain 2.5% Power."
+      }
+    ],
+    "set": "Rings: Shackles of Divinity",
+    "setSize": 8,
+    "source": "Shackles of Divinity"
+  },
+  {
+    "name": "The Spine of Dominion",
+    "slot": "Ring",
+    "item_level": 4150,
+    "ratingStats": {
+      "Critical Severity": 5976,
+      "Outgoing Healing": 5976
+    },
+    "percentStats": {
+      "Action Point Gain": 1.5
+    },
+    "combinedRating": 3320,
+    "equipBonuses": [
+      {
+        "name": "Enduring Critical",
+        "description": "Your current Hit Points increases your Critical Severity, up to a maximum of 7%."
+      }
+    ],
+    "set": "Rings: Shackles of Divinity",
+    "setSize": 8,
+    "source": "Shackles of Divinity"
+  },
+  {
+    "name": "The Claw of Covetous Flame",
+    "slot": "Ring",
+    "item_level": 4150,
+    "ratingStats": {
+      "Defense": 3486,
+      "Critical Avoidance": 8217
+    },
+    "percentStats": {
+      "Stamina Regeneration": 1.5
+    },
+    "combinedRating": 3320,
+    "equipBonuses": [
+      {
+        "name": "Pact of Vengence",
+        "description": "When you use an Encounter power, the next enemy that attacks you takes lightning damage equal to 25% of your max health. Cooldown: 20 seconds. Disabled in Thay Arena PvP."
+      }
+    ],
+    "set": "Rings: Shackles of Divinity",
+    "setSize": 8,
+    "source": "Shackles of Divinity"
+  },
+  {
+    "name": "The Obsidian Bastion",
+    "slot": "Ring",
+    "item_level": 4150,
+    "ratingStats": {
+      "Combat Advantage": 3984,
+      "Critical Severity": 8964
+    },
+    "percentStats": {
+      "Action Point Gain": 1.5
+    },
+    "combinedRating": 3320,
+    "equipBonuses": [
+      {
+        "name": "Unseelie Might",
+        "description": "When in combat with only one enemy, your Power is increased by 5% and Critical Severity by 2.5%."
+      }
+    ],
+    "set": "Rings: Shackles of Divinity",
+    "setSize": 8,
+    "source": "Shackles of Divinity"
+  },
+  {
+    "name": "The Watcher's Gaze",
+    "slot": "Ring",
+    "item_level": 4150,
+    "ratingStats": {
+      "Critical Strike": 8964,
+      "Critical Severity": 5976
+    },
+    "percentStats": {
+      "Action Point Gain": 1.5
+    },
+    "combinedRating": 3320,
+    "equipBonuses": [
+      {
+        "name": "Power at Any Cost",
+        "description": "Every 3 seconds your next attack deals 91,980 damage to your target, but you take 46,990 poison damage."
+      }
+    ],
+    "set": "Rings: Shackles of Divinity",
+    "setSize": 8,
+    "source": "Shackles of Divinity"
+  },
+  {
+    "name": "Belt of the Forsaken",
+    "slot": "Belt",
+    "item_level": 4050,
+    "abilityBonuses": {
+      "Dexterity": 3,
+      "Intelligence": 3
+    },
+    "ratingStats": {
+      "Critical Strike": 3645,
+      "Defense": 1063,
+      "Deflection": 2278
+    },
+    "combinedRating": 3645,
+    "set": "Focused Radiance",
+    "setSize": 3,
+    "setPartners": [
+      "Necklace of the Forsaken",
+      "Broken Halo"
+    ],
+    "setBonus": "3 of Set: Using the artifact additionally gives 1,500 Power and 1,500 Critical Avoidance to allies within the AoE area for 10 seconds."
+  },
+  {
+    "name": "Necklace of the Forsaken",
+    "slot": "Neck",
+    "item_level": 4050,
+    "abilityBonuses": {
+      "Strength": 3,
+      "Constitution": 3
+    },
+    "ratingStats": {
+      "Combat Advantage": 1215,
+      "Defense": 2126,
+      "Awareness": 1215
+    },
+    "combinedRating": 3645,
+    "set": "Focused Radiance",
+    "setSize": 3,
+    "setPartners": [
+      "Belt of the Forsaken",
+      "Broken Halo"
+    ],
+    "setBonus": "3 of Set: Using the artifact additionally gives 1,500 Power and 1,500 Critical Avoidance to allies within the AoE area for 10 seconds."
+  },
+  {
+    "name": "Boots of the Marching Legions",
+    "slot": "Feet",
+    "item_level": 4050,
+    "ratingStats": {
+      "Critical Avoidance": 3007,
+      "Control Resist": 3341
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Abyssal Might (Lesser)",
+        "description": "When you use an encounter power, you have a 15% chance to gain 8% Critical Severity for 8 seconds."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Gauntlets of the Hierarch",
+    "slot": "Arms",
+    "item_level": 4050,
+    "ratingStats": {
+      "Critical Severity": 4010,
+      "Defense": 1914
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Fount of Healing (Lesser)",
+        "description": "Whenever you are damaged for more than 50% of your Maximum Hit Points in a single blow, you drop 3 orbs around you that can be collected by you or other members of your party to heal for 12% of their Maximum Hit Points over 8 seconds. Anyone who picks up an orb gains 1% Forte for 10 seconds. (30 second cooldown)"
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Cuirass of the Ethralled Flame",
+    "slot": "Armor",
+    "item_level": 4050,
+    "ratingStats": {
+      "Accuracy": 4344,
+      "Combat Advantage": 2187,
+      "Awareness": 2187
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Executioner's Remedy (Lesser)",
+        "description": "When you kill an enemy, you gain 3.5% of your health back."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Bindings of the Black Pact",
+    "slot": "Arms",
+    "item_level": 4050,
+    "ratingStats": {
+      "Accuracy": 4344,
+      "Critical Severity": 3281
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Berserking Might (Lesser)",
+        "description": "Gain 0.7% Damage for 5 seconds to each enemy you're fighting around you. (Max of 10 targets)"
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Treads of the Arcane Thrall",
+    "slot": "Feet",
+    "item_level": 4050,
+    "ratingStats": {
+      "Combat Advantage": 2673,
+      "Forte": 2460
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Eagle's Mastery (Lesser)",
+        "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your Power, Critical Strike, and Critical Severity are increased by 0.6% for 10 seconds. Max Stacks: 5 — 3% Power, Critical Strike, and Critical Severity."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Hood of the Obedient",
+    "slot": "Head",
+    "item_level": 4050,
+    "ratingStats": {
+      "Forte": 2460,
+      "Outgoing Healing": 2673
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Survivor's Grace (Lesser)",
+        "description": "When your health is above 90%, your Outgoing Healing is increased by 6%. When your health is below 50%, Movement Speed is increased by 10%."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Robes of the Crimson Order",
+    "slot": "Armor",
+    "item_level": 4050,
+    "ratingStats": {
+      "Combat Advantage": 2673,
+      "Control Bonus": 2734,
+      "Combat Resistance": 2734
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Thayan Hunter (Lesser)",
+        "description": "+2% Power and Defense in Thay. +1% Power and Defense outside of Thay."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Veil of the Enclave",
+    "slot": "Head",
+    "item_level": 4050,
+    "ratingStats": {
+      "Critical Strike": 2916,
+      "Critical Severity": 2187
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Critical Daily (Lesser)",
+        "description": "When you deal damage with a Daily power, your Critical Strike is increased by 13% for 10 seconds. (10 second cooldown)"
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Greaves of the Iron Doctrine",
+    "slot": "Feet",
+    "item_level": 4050,
+    "ratingStats": {
+      "Defense": 1914,
+      "Control Resist": 3341
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Undying's Grasp (Lesser)",
+        "description": "When you are hit at 30% health or lower, you get 30% Movement Speed and 10% Incoming Healing for 8 seconds. (15 second cooldown)"
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Crown of the Supreme Will",
+    "slot": "Head",
+    "item_level": 4050,
+    "ratingStats": {
+      "Defense": 1914,
+      "Awareness": 2673
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Gladiator's Sustenance (Lesser)",
+        "description": "For every 10 seconds you are in combat, you gain 1.6% Incoming Healing. Max Stacks: 5 — 9% Incoming Healing."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Bulwark of the Zulkirate",
+    "slot": "Armor",
+    "item_level": 4050,
+    "ratingStats": {
+      "Critical Avoidance": 3007,
+      "Deflect Severity": 4101,
+      "Control Bonus": 3341
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Ruthless Might (Lesser)",
+        "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1% Critical Strike and Critical Severity for 15 seconds. Max Stacks: 5 — 6% Critical Strike and Critical Severity."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Vambraces of the Tyrant's Grip",
+    "slot": "Arms",
+    "item_level": 4050,
+    "ratingStats": {
+      "Accuracy": 4344,
+      "Combat Advantage": 2187
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Warden's Versatility (Lesser)",
+        "description": "When your health is 50% or more, your Defense is increased by 4%. When your health is below 50%, Power is increased by 5%."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Sabatons of the Exalted Martyr",
+    "slot": "Feet",
+    "item_level": 4050,
+    "ratingStats": {
+      "Combat Advantage": 2673,
+      "Combat Resistance": 2734
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Healer's Influence (Lesser)",
+        "description": "Healing an ally with an Encounter also heals you for 80,000 and grants allies close to you 2.1% Defense for 5 seconds."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Vambraces of the Red Sacrament",
+    "slot": "Arms",
+    "item_level": 4050,
+    "ratingStats": {
+      "Critical Severity": 3281,
+      "Forte": 3007
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Warden's Reflexes (Lesser)",
+        "description": "When you use an encounter power, you have a 30% chance to gain 5.6% Awareness for 6 seconds."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Vambrace of the Bloodbound Cleric",
+    "slot": "Armor",
+    "item_level": 4050,
+    "ratingStats": {
+      "Combat Advantage": 2673,
+      "Critical Strike": 3281,
+      "Outgoing Healing": 2187
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Gladiator's Restoration (Lesser)",
+        "description": "For every 5 seconds you are in combat, you gain 0.5% Outgoing Healing and Critical Strike. Max Stacks: 5."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)",
+    "notes": "Slot labelled 'Armor' in collection despite Vambrace naming"
+  },
+  {
+    "name": "Gauntlets of Merciless Blows",
+    "slot": "Arms",
+    "item_level": 4050,
+    "ratingStats": {
+      "Accuracy": 4344,
+      "Critical Severity": 3281
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Enveloped Rage (Lesser)",
+        "description": "When in combat with 1 or more enemies, your Critical Severity is increased by 1.2% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max Stacks: 5 — 6% Critical Severity."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Warboots of Relentless Onslaught",
+    "slot": "Feet",
+    "item_level": 4050,
+    "ratingStats": {
+      "Accuracy": 2369,
+      "Control Resist": 2430
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Sudden Defense (Lesser)",
+        "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Deflect Severity by 8% and Forte by 5% for 8 seconds. (15 second cooldown)"
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Visage of the Undying Faith",
+    "slot": "Head",
+    "item_level": 4050,
+    "ratingStats": {
+      "Deflect Severity": 5012,
+      "Outgoing Healing": 2187
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Ruthless Resources (Lesser)",
+        "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 4% faster Divinity/Performance/Soulweave regeneration for 15 seconds. (Max stack 5)"
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Cuirass of the Crimson Reckoning",
+    "slot": "Armor",
+    "item_level": 4050,
+    "ratingStats": {
+      "Combat Advantage": 2673,
+      "Forte": 2460,
+      "Incoming Healing": 3281
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Enduring Resilience (Lesser)",
+        "description": "Gain up to 3.3% Control Resistance and -1.8% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Mask of the Bloodletter",
+    "slot": "Head",
+    "item_level": 4050,
+    "ratingStats": {
+      "Critical Strike": 4010,
+      "Defense": 1914
+    },
+    "combinedRating": 3645,
+    "equipBonuses": [
+      {
+        "name": "Tactical Defense (Lesser)",
+        "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (10 second cooldown). You gain 3% Combat Advantage."
+      }
+    ],
+    "set": "Dominion Armor",
+    "setSize": 2,
+    "tier": "Lesser",
+    "source": "Shackles of Divinity (Advanced)"
+  },
+  {
+    "name": "Ebon Crusader's Ward",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 3800,
+    "allowedClasses": [
+      "Paladin"
+    ],
+    "ratingStats": {
+      "Critical Strike": 3762,
+      "Awareness": 2052
+    },
+    "combinedRating": 3420,
+    "equipBonuses": [
+      {
+        "name": "Blood Bargain Equip",
+        "description": "Whenever you are struck by a Critical Strike, you have a 10% chance to increase your Critical Avoidance by 10% and gain 5% Power for 10 seconds."
+      }
+    ],
+    "set": "Blood Bargain",
+    "setSize": 2,
+    "setBonus": "While in Thay, your Movement Speed is increased by 10%.",
+    "setPartners": [
+      "Oathbound Judgment"
+    ],
+    "notes": "Heavy, Off-Hand, Shield"
+  },
+  {
+    "name": "Oathbound Judgment",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 3800,
+    "allowedClasses": [
+      "Paladin"
+    ],
+    "weaponDamage": 50,
+    "ratingStats": {
+      "Awareness": 2508,
+      "Forte": 2308
+    },
+    "combinedRating": 3420,
+    "equipBonuses": [
+      {
+        "name": "Blood Bargain Equip",
+        "description": "Whenever you are struck by a Critical Strike, you have a 10% chance to increase your Critical Avoidance by 10% and gain 5% Power for 10 seconds."
+      }
+    ],
+    "set": "Blood Bargain",
+    "setSize": 2,
+    "setBonus": "While in Thay, your Movement Speed is increased by 10%.",
+    "setPartners": [
+      "Ebon Crusader's Ward"
+    ],
+    "notes": "Blade, Weapon"
+  },
+  {
+    "name": "Runes of the Avowed",
+    "slot": "Pants",
+    "item_level": 3000,
+    "ratingStats": {
+      "Combat Advantage": 1080,
+      "Forte": 1215,
+      "Incoming Healing": 2160
+    },
+    "percentStats": {
+      "Action Point Gain": 1.5
+    },
+    "combinedRating": 2700,
+    "equipBonuses": [
+      {
+        "name": "Challenger's Resilience",
+        "description": "When in combat with 3 or more enemies, your Incoming Damage is decreased by 0.125% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max Stacks: 10 — -1.25% Incoming Damage."
+      }
+    ],
+    "set": "Enchanted Awareness",
+    "setSize": 2
   }
 ]
