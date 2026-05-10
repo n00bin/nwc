@@ -1520,24 +1520,12 @@
           </label>
           <input type="range" id="comp-bolster" min="0" max="120" value="100" style="width:100%;">
         </div>
-        <div class="field" style="margin-top:0.4rem;">
-          <label>Companion IL contribution
-            <span class="hint-icon" data-tip="Read this from your in-game character sheet — NW shows it under 'Bolster' on the Companions panel. We don't compute it because the formula varies by character.">?</span>
-          </label>
-          <input type="number" id="comp-il-contrib" min="0" placeholder="e.g. 3960" style="width:100%;">
-        </div>
         <div class="field" style="margin-top:0.6rem;">
           <label>Mount bolster
             <span class="hint-icon" data-tip="0–125%. Scales mount Equip Power rating values and Combat Power magnitude. Insignia stats and Insignia Bonuses are NOT affected by bolster.">?</span>
             <span style="float:right;color:var(--amber);font-weight:600;" id="mount-bolster-display">100%</span>
           </label>
           <input type="range" id="mount-bolster" min="0" max="125" value="100" style="width:100%;">
-        </div>
-        <div class="field" style="margin-top:0.4rem;">
-          <label>Mount IL contribution
-            <span class="hint-icon" data-tip="Read this from your in-game character sheet — NW shows it under 'Bolster' on the Mounts panel.">?</span>
-          </label>
-          <input type="number" id="mount-il-contrib" min="0" placeholder="e.g. 7312" style="width:100%;">
         </div>
         <div class="field" style="margin-top:0.6rem;">
           <label>All companion rarity
@@ -1925,14 +1913,10 @@
       if (state.mountBolster     == null) state.mountBolster     = 100;
       if (state.companionRarity  == null) state.companionRarity  = "Mythic";
       if (state.insigniaRarity   == null) state.insigniaRarity   = "Mythic";
-      if (state.compBolsterILContribution  == null) state.compBolsterILContribution  = 0;
-      if (state.mountBolsterILContribution == null) state.mountBolsterILContribution = 0;
       setVal("comp-bolster",  state.companionBolster);
       setVal("mount-bolster", state.mountBolster);
       setVal("comp-rarity",   state.companionRarity);
       setVal("insignia-rarity", state.insigniaRarity);
-      setVal("comp-il-contrib",  state.compBolsterILContribution || "");
-      setVal("mount-il-contrib", state.mountBolsterILContribution || "");
       const cbd = document.getElementById("comp-bolster-display");
       if (cbd) cbd.textContent = state.companionBolster + "%";
       const mbd = document.getElementById("mount-bolster-display");
@@ -3013,12 +2997,16 @@
     }
     function computeTILFromBuild() {
       const gearIL = computeGearArtifactIL();
-      // Bolster IL contributions are user inputs read off the in-game
-      // character sheet — the formula NW uses isn't well-known and our
-      // earlier auto-computation was over-counting by 5–6×. Defaults are
-      // 0 until the user fills them in.
-      const compBolsterIL  = +state.compBolsterILContribution  || 0;
-      const mountBolsterIL = +state.mountBolsterILContribution || 0;
+      // Auto-computed bolster IL contributions:
+      //   contribution = base_IL_for_rarity × (bolster_pct / 100)
+      // Verified against n00b's in-game character sheet.
+      const compRarity = state.companionRarity || "Mythic";
+      const cb = (state.companionBolster == null ? 100 : +state.companionBolster) / 100;
+      const mb = (state.mountBolster     == null ? 100 : +state.mountBolster)     / 100;
+      const compBase  = COMP_BOLSTER_BASE_IL[compRarity]  || COMP_BOLSTER_BASE_IL.Mythic;
+      const mountBase = MOUNT_BOLSTER_BASE_IL[compRarity] || MOUNT_BOLSTER_BASE_IL.Mythic;
+      const compBolsterIL  = Math.round(compBase  * cb);
+      const mountBolsterIL = Math.round(mountBase * mb);
       return gearIL + compBolsterIL + mountBolsterIL;
     }
     function applyAutoTIL() {
@@ -3085,6 +3073,34 @@
       if (baseIL <= 0) return 1;
       return targetIL / baseIL;
     }
+
+    // Bolster IL contribution to TIL — verified from in-game character
+    // sheet readings. Formula:
+    //   contribution = base_IL × (bolster_pct / 100)
+    // where base_IL is set by the summoned companion's / active mount's
+    // rarity. Mythic anchors come from Obikin's published bolster guide;
+    // Celestial values are derived from n00b's in-game test:
+    //   Celestial summoned at 120% bolster → 3960 → base = 3300
+    //   Celestial mount    at 125% bolster → 7312 → base ≈ 5850
+    // Other rarities are scaled estimates pending verification.
+    const COMP_BOLSTER_BASE_IL = {
+      "Common":    150,
+      "Uncommon":  300,
+      "Rare":      500,
+      "Epic":      750,
+      "Legendary": 1100,
+      "Mythic":    1650,   // Obikin guide
+      "Celestial": 3300    // n00b in-game test 2026-05-10
+    };
+    const MOUNT_BOLSTER_BASE_IL = {
+      "Common":    250,
+      "Uncommon":  500,
+      "Rare":      1000,
+      "Epic":      1500,
+      "Legendary": 2200,
+      "Mythic":    3000,   // Obikin guide
+      "Celestial": 5850    // n00b in-game test 2026-05-10
+    };
 
     // Insignia tier scaling. Mythic is the baseline (multiplier 1.0)
     // matching the data file's stored values. Other tiers use the table
@@ -5239,20 +5255,9 @@
         rerenderAll();
       });
     }
-    // Bolster IL contribution inputs — user-typed from in-game character
-    // sheet. Auto-computation isn't reliable; let the player put the
-    // exact NW-displayed value in.
-    function wireILContrib(id, key) {
-      const inp = document.getElementById(id);
-      if (!inp) return;
-      inp.value = state[key] || "";
-      inp.addEventListener("input", e => {
-        state[key] = +e.target.value || 0;
-        rerenderAll();
-      });
-    }
-    wireILContrib("comp-il-contrib",  "compBolsterILContribution");
-    wireILContrib("mount-il-contrib", "mountBolsterILContribution");
+    // (Bolster IL contributions are now auto-computed from rarity +
+    //  bolster %; no user input needed. See COMP_BOLSTER_BASE_IL and
+    //  MOUNT_BOLSTER_BASE_IL above.)
     // (Power picker removed — type magnitude directly. Sourcing reliable
     //  per-class power data is deferred until we have a sustainable
     //  pipeline for all 9 classes.)
