@@ -2842,6 +2842,7 @@
     */
     function computeGearArtifactIL() {
       let sum = 0;
+      // Equipped gear (12 slots; both rings count)
       if (state.gear && typeof GEAR_SLOTS !== "undefined") {
         for (const slotEntry of GEAR_SLOTS) {
           const itemName = state.gear[slotEntry.label];
@@ -2850,12 +2851,61 @@
           if (item && item.item_level) sum += item.item_level;
         }
       }
+      // Equipped artifacts (1 primary + up to 3 secondary)
       if (state.artifacts) {
         const primary = findArtifactByName(state.artifacts["Primary"]);
         if (primary && primary.item_level) sum += primary.item_level;
         for (let i = 1; i <= 3; i++) {
           const a = findArtifactByName(state.artifacts["Secondary " + i]);
           if (a && a.item_level) sum += a.item_level;
+        }
+      }
+      // Enchantments — 11 slots (4 offense + 4 defense + utility + combat + bonus)
+      if (state.enchants) {
+        const ench = state.enchants;
+        const list = [
+          ...(ench.offense || []), ...(ench.defense || []),
+          ench.utility, ench.combat, ench.bonus
+        ];
+        for (const name of list) {
+          const e = findEnchantByName(name);
+          if (e && e.item_level) sum += e.item_level;
+        }
+      }
+      // Overloads (2 slots)
+      for (const name of (state.overloads || [])) {
+        const o = findOverloadByName(name);
+        if (o && o.item_level) sum += o.item_level;
+      }
+      // Reinforcement kits (per gear slot)
+      if (state.kits) {
+        for (const slotLabel in state.kits) {
+          const k = findKitByName(state.kits[slotLabel]);
+          if (k && k.item_level) sum += k.item_level;
+        }
+      }
+      // Guild boons (3 picks: Offense / Defense / Utility)
+      if (state.guildBoonPicks) {
+        for (const cat of ["Offense", "Defense", "Utility"]) {
+          const name = state.guildBoonPicks[cat];
+          if (!name) continue;
+          const b = findGuildBoon(cat, name);
+          if (b && b.item_level) sum += b.item_level;
+        }
+      }
+      // Mount insignias and collars across all 5 stable slots.
+      // Insignias and collars are equipped on mounts (not bolstered per
+      // docs); their flat IL still rolls up into the character total.
+      for (const slot of (state.stable || [])) {
+        if (!slot) continue;
+        if (slot.collar) {
+          const c = findCollarByName(slot.collar);
+          if (c && c.item_level) sum += c.item_level;
+        }
+        for (const insName of (slot.insignias || [])) {
+          if (!insName) continue;
+          const ins = findInsigniaByName(insName);
+          if (ins && ins.item_level) sum += ins.item_level;
         }
       }
       return sum;
