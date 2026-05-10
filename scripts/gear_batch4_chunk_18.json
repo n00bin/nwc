@@ -1,0 +1,860 @@
+[
+  {
+    "name": "Sunset Mace · IL 350",
+    "displayName": "Sunset Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 350,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 262,
+      "Critical Strike": 131,
+      "Deflection": 131
+    },
+    "combinedRating": 355,
+    "set": "Sun",
+    "setSize": 2,
+    "setPartners": ["Sunset Shield"],
+    "setBonus": "2 of Set: Your Base Damage Boost and Overall Outgoing Healing are increased by 5%. While in Barovia, your Damage Resistance and Movement Speed are also increased by 5%. While in Barovia during nightfall, your Base Damage Boost, Damage Resistance, Overall Outgoing Healing and Movement Speed are increased by 10%.",
+    "notes": "Artifact Equipment. Minimum Level 18. Source: Module 14 Ravenloft PvP set."
+  },
+  {
+    "name": "Sunset Mace · IL 500",
+    "displayName": "Sunset Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 500,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 375,
+      "Critical Strike": 188,
+      "Deflection": 188
+    },
+    "combinedRating": 450,
+    "set": "Sun",
+    "setSize": 2,
+    "setPartners": ["Sunset Shield"],
+    "notes": "Artifact Equipment. Minimum Level 18."
+  },
+  {
+    "name": "Sunset Mace · IL 650",
+    "displayName": "Sunset Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 650,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 488,
+      "Critical Strike": 244,
+      "Deflection": 244
+    },
+    "combinedRating": 585,
+    "set": "Sun",
+    "setSize": 2,
+    "setPartners": ["Sunset Shield"],
+    "notes": "Artifact Equipment. Minimum Level 18."
+  },
+  {
+    "name": "Sunset Mace · IL 800",
+    "displayName": "Sunset Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 600,
+      "Critical Strike": 300,
+      "Deflection": 300
+    },
+    "combinedRating": 720,
+    "set": "Sun",
+    "setSize": 2,
+    "setPartners": ["Sunset Shield"],
+    "notes": "Artifact Equipment Maximum Quality. Minimum Level 18."
+  },
+  {
+    "name": "Sunset Shield · IL 350",
+    "displayName": "Sunset Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 350,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 262,
+      "Critical Strike": 131,
+      "Deflection": 131
+    },
+    "combinedRating": 315,
+    "set": "Sun",
+    "setSize": 2,
+    "setPartners": ["Sunset Mace"],
+    "notes": "Artifact Equipment. Off-Hand, Shield, Heavy. Minimum Level 18. Artifact Stat Increase: Unlocks at Epic Rarity."
+  },
+  {
+    "name": "Sunset Shield · IL 500",
+    "displayName": "Sunset Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 500,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 375,
+      "Critical Strike": 188,
+      "Deflection": 188
+    },
+    "combinedRating": 450,
+    "set": "Sun",
+    "setSize": 2,
+    "setPartners": ["Sunset Mace"],
+    "notes": "Artifact Equipment. Shield, Heavy, Off-Hand. Minimum Level 18."
+  },
+  {
+    "name": "Sunset Shield · IL 650",
+    "displayName": "Sunset Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 650,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 488,
+      "Critical Strike": 244,
+      "Deflection": 244
+    },
+    "combinedRating": 585,
+    "set": "Sun",
+    "setSize": 2,
+    "setPartners": ["Sunset Mace"],
+    "notes": "Artifact Equipment. Shield, Heavy, Off-Hand. Minimum Level 18."
+  },
+  {
+    "name": "Sunset Shield · IL 800",
+    "displayName": "Sunset Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 600,
+      "Critical Strike": 300,
+      "Deflection": 300
+    },
+    "combinedRating": 720,
+    "set": "Sun",
+    "setSize": 2,
+    "setPartners": ["Sunset Mace"],
+    "notes": "Artifact Equipment Maximum Quality. Heavy, Off-Hand, Shield. Minimum Level 18."
+  },
+  {
+    "name": "Vistani Mace · IL 350",
+    "displayName": "Vistani Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 350,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Strike": 262,
+      "Deflection": 262,
+      "Combined Rating": 315
+    },
+    "combinedRating": 315,
+    "set": "Vistani",
+    "setSize": 2,
+    "setPartners": ["Vistani Shield"],
+    "setBonus": "3 of Set: When you cast a damaging aoe but it only hits one target, the target will take 5% more damage for 5 seconds.",
+    "notes": "Artifact Equipment. Blade. Minimum Level 18. Source: Welcome to Barovia, in the Ravenloft campaign."
+  },
+  {
+    "name": "Vistani Mace · IL 500",
+    "displayName": "Vistani Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 500,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Strike": 375,
+      "Deflection": 375
+    },
+    "combinedRating": 450,
+    "set": "Vistani",
+    "setSize": 2,
+    "setPartners": ["Vistani Shield"],
+    "notes": "Artifact Equipment. Blade. Minimum Level 18."
+  },
+  {
+    "name": "Vistani Mace · IL 650",
+    "displayName": "Vistani Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 650,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Strike": 488,
+      "Deflection": 488
+    },
+    "combinedRating": 585,
+    "set": "Vistani",
+    "setSize": 2,
+    "setPartners": ["Vistani Shield"],
+    "notes": "Artifact Equipment. Blade. Minimum Level 18."
+  },
+  {
+    "name": "Vistani Mace · IL 800",
+    "displayName": "Vistani Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Strike": 600,
+      "Deflection": 600
+    },
+    "combinedRating": 720,
+    "set": "Vistani",
+    "setSize": 2,
+    "setPartners": ["Vistani Shield"],
+    "notes": "Artifact Equipment Maximum Quality. Blade. Minimum Level 18."
+  },
+  {
+    "name": "Vistani Shield · IL 350",
+    "displayName": "Vistani Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 350,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Strike": 271,
+      "Defense": 151,
+      "Deflection": 103
+    },
+    "combinedRating": 315,
+    "set": "Vistani",
+    "setSize": 2,
+    "setPartners": ["Vistani Mace"],
+    "notes": "Artifact Equipment. Off-Hand, Shield, Heavy. Minimum Level 18. Artifact Stat Increase: Unlocks at Epic Rarity."
+  },
+  {
+    "name": "Vistani Shield · IL 500",
+    "displayName": "Vistani Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 500,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Strike": 387,
+      "Defense": 215,
+      "Deflection": 148
+    },
+    "combinedRating": 450,
+    "set": "Vistani",
+    "setSize": 2,
+    "setPartners": ["Vistani Mace"],
+    "notes": "Artifact Equipment. Shield, Heavy, Off-Hand. Minimum Level 18."
+  },
+  {
+    "name": "Vistani Shield · IL 650",
+    "displayName": "Vistani Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 650,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Strike": 503,
+      "Defense": 280,
+      "Deflection": 192
+    },
+    "combinedRating": 585,
+    "set": "Vistani",
+    "setSize": 2,
+    "setPartners": ["Vistani Mace"],
+    "notes": "Artifact Equipment. Shield, Heavy, Off-Hand. Minimum Level 18."
+  },
+  {
+    "name": "Vistani Shield · IL 800",
+    "displayName": "Vistani Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Critical Strike": 619,
+      "Defense": 344,
+      "Deflection": 236
+    },
+    "combinedRating": 720,
+    "set": "Vistani",
+    "setSize": 2,
+    "setPartners": ["Vistani Mace"],
+    "notes": "Artifact Equipment Maximum Quality. Heavy, Off-Hand, Shield. Minimum Level 18."
+  },
+  {
+    "name": "Oathlord's Ward Barbute",
+    "slot": "Head",
+    "item_level": 770,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 329,
+      "Critical Severity": 248,
+      "Defense": 578
+    },
+    "combinedRating": 693,
+    "equipBonuses": [
+      {"name": "Survivor's Savagery", "description": "When your health is 50% or more, your Critical Strike is increased by 1500. When your health is below 50%, Critical Avoidance is increased by 2000."}
+    ],
+    "set": "Barovian Lord's Armor",
+    "setBonus": "Completing this collection will give you an additional bonus of +20 Power",
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Barovia - Seals Store."
+  },
+  {
+    "name": "Oathlord's Ward Cuirass",
+    "slot": "Armor",
+    "item_level": 770,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 329,
+      "Critical Strike": 248,
+      "Defense": 578
+    },
+    "combinedRating": 693,
+    "equipBonuses": [
+      {"name": "Warden's Balance", "description": "When your health is 50% or more, your Power is increased by 1500. When your health is below 50%, Defense is increased by 2000."}
+    ],
+    "set": "Barovian Lord's Armor",
+    "notes": "Armor, Plate. Reinforced: Empty. Minimum Level 18. Source: Barovia - Seals Store."
+  },
+  {
+    "name": "Oathlord's Ward Gauntlets",
+    "slot": "Arms",
+    "item_level": 770,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 329,
+      "Defense": 578,
+      "Deflection": 248
+    },
+    "combinedRating": 693,
+    "equipBonuses": [
+      {"name": "Survivor's Finesse", "description": "When your health is 50% or more, your Critical Severity is increased by 1500. When your health is below 50%, Deflect is increased by 2000."}
+    ],
+    "set": "Barovian Lord's Armor",
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Barovia - Seals Store."
+  },
+  {
+    "name": "Oathlord's Ward Sabatons",
+    "slot": "Feet",
+    "item_level": 770,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 329,
+      "Defense": 578,
+      "Deflection": 248
+    },
+    "combinedRating": 693,
+    "equipBonuses": [
+      {"name": "Survivor's Strike", "description": "When your health is 50% or more, your Accuracy is increased by 1500. When your health is below 50%, Movement Speed is increased by 10%."}
+    ],
+    "set": "Barovian Lord's Armor",
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Barovia - Seals Store."
+  },
+  {
+    "name": "Oathlord's Restoration Barbute",
+    "slot": "Head",
+    "item_level": 770,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 247,
+      "Critical Strike": 330,
+      "Defense": 578
+    },
+    "combinedRating": 693,
+    "equipBonuses": [
+      {"name": "Survivor's Savagery", "description": "When your health is 50% or more, your Critical Strike is increased by 1500. When your health is below 50%, Critical Avoidance is increased by 2000."}
+    ],
+    "set": "Barovian Lord's Armor",
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Barovia - Seals Store."
+  },
+  {
+    "name": "Oathlord's Restoration Sabatons",
+    "slot": "Feet",
+    "item_level": 770,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 247,
+      "Critical Strike": 330,
+      "Defense": 578
+    },
+    "combinedRating": 693,
+    "equipBonuses": [
+      {"name": "Survivor's Strike", "description": "When your health is 50% or more, your Accuracy is increased by 1500. When your health is below 50%, Movement Speed is increased by 10%."}
+    ],
+    "set": "Barovian Lord's Armor",
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Barovia - Seals Store."
+  },
+  {
+    "name": "Oathlord's Restoration Gauntlets",
+    "slot": "Arms",
+    "item_level": 770,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Combat Advantage": 329,
+      "Critical Strike": 248,
+      "Defense": 578
+    },
+    "combinedRating": 693,
+    "equipBonuses": [
+      {"name": "Survivor's Finesse", "description": "When your health is 50% or more, your Critical Severity is increased by 1500. When your health is below 50%, Deflect is increased by 2000."}
+    ],
+    "set": "Barovian Lord's Armor",
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Barovia - Seals Store."
+  },
+  {
+    "name": "Oathlord's Restoration Cuirass",
+    "slot": "Armor",
+    "item_level": 770,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {
+      "Accuracy": 247,
+      "Critical Strike": 330,
+      "Defense": 578
+    },
+    "combinedRating": 693,
+    "equipBonuses": [
+      {"name": "Warden's Balance", "description": "When your health is 50% or more, your Power is increased by 1500. When your health is below 50%, Defense is increased by 2000."}
+    ],
+    "set": "Barovian Lord's Armor",
+    "notes": "Plate, Armor. Reinforced: Empty. Minimum Level 18. Source: Barovia - Seals Store."
+  },
+  {
+    "name": "Apocalypse Choker",
+    "slot": "Neck",
+    "item_level": 0,
+    "ratingStats": {
+      "Accuracy": 175,
+      "Critical Strike": 175,
+      "Critical Avoidance": 175
+    },
+    "combinedRating": 315,
+    "abilityBonuses": {"Constitution": 1},
+    "set": "Apocalypse",
+    "setSize": 3,
+    "setPartners": ["Apocalypse Bindings", "Apocalypse Dagger"],
+    "setBonus": "3 of Set: When you hit an enemy with a critical attack, the damage the enemy takes will be increased by 1% for 5 seconds. This can stack up to 5 times.",
+    "notes": "Artifact Equipment. Reinforced: Empty. Minimum Level 18. Captured from If Equipped tab."
+  },
+  {
+    "name": "Vistani Pendant",
+    "slot": "Neck",
+    "item_level": 0,
+    "ratingStats": {
+      "Accuracy": 175,
+      "Combat Advantage": 175,
+      "Critical Avoidance": 175
+    },
+    "combinedRating": 315,
+    "abilityBonuses": {"Constitution": 1},
+    "set": "Vistani",
+    "setSize": 3,
+    "setPartners": ["Vistani Raiments", "Tarokka Deck"],
+    "setBonus": "3 of Set: When you cast a damaging aoe but it only hits one target, the target will take 5% more damage for 5 seconds.",
+    "notes": "Artifact Equipment. Reinforced: Empty. Minimum Level 18. Captured from If Equipped tab."
+  },
+  {
+    "name": "Vistani Raiments",
+    "slot": "Belt",
+    "item_level": 0,
+    "ratingStats": {
+      "Critical Advantage": 262,
+      "Critical Strike": 262
+    },
+    "combinedRating": 315,
+    "abilityBonuses": {"Dexterity": 1},
+    "set": "Vistani",
+    "setSize": 3,
+    "setPartners": ["Vistani Pendant", "Tarokka Deck"],
+    "setBonus": "3 of Set: When you cast a damaging aoe but it only hits one target, the target will take 5% more damage for 5 seconds.",
+    "notes": "Artifact Equipment. Reinforced: Empty. Minimum Level 18. Captured from If Equipped tab."
+  },
+  {
+    "name": "Apocalypse Bindings",
+    "slot": "Belt",
+    "item_level": 0,
+    "ratingStats": {
+      "Combat Advantage": 175,
+      "Critical Strike": 175,
+      "Critical Severity": 175
+    },
+    "combinedRating": 315,
+    "abilityBonuses": {"Charisma": 1},
+    "set": "Apocalypse",
+    "setSize": 3,
+    "setPartners": ["Apocalypse Choker", "Apocalypse Dagger"],
+    "setBonus": "3 of Set: Whenever you hit an enemy with a critical attack, the damage the enemy takes will be increased by 1% for 5 seconds. This can stack up to 5 times.",
+    "notes": "Artifact Equipment. Reinforced: Empty. Minimum Level 18. Captured from If Equipped tab."
+  },
+  {
+    "name": "Barovian Cumberbund",
+    "slot": "Belt",
+    "item_level": 0,
+    "ratingStats": {
+      "Combat Advantage": 175,
+      "Critical Strike": 175,
+      "Critical Severity": 175
+    },
+    "combinedRating": 315,
+    "abilityBonuses": {"Constitution": 1},
+    "set": "Ravenloft",
+    "setSize": 3,
+    "setPartners": ["Barovian Lavaliere", "Thirst"],
+    "setBonus": "3 of Set: When you have a Shield or Temp HP, gain 2% Power.",
+    "notes": "Artifact Equipment. Reinforced: Empty. Minimum Level 18. Captured from If Equipped tab."
+  },
+  {
+    "name": "Carcanet of the Dead",
+    "slot": "Neck",
+    "item_level": 0,
+    "ratingStats": {
+      "Accuracy": 175,
+      "Combat Advantage": 175,
+      "Critical Strike": 175
+    },
+    "combinedRating": 315,
+    "abilityBonuses": {"Constitution": 1},
+    "set": "Dead",
+    "setSize": 3,
+    "setPartners": ["Lacings of the Dead", "Thayan Book of the Dead"],
+    "setBonus": "3 of Set: When you dodge, block, sprint or shadow slip, your Power and Movement Speed will increase by 5% for 10 seconds. (45 second cooldown)",
+    "notes": "Artifact Equipment. Reinforced: Empty. Minimum Level 18. Captured from If Equipped tab."
+  },
+  {
+    "name": "Blood Raven Pendant",
+    "slot": "Neck",
+    "item_level": 0,
+    "ratingStats": {
+      "Accuracy": 175,
+      "Critical Avoidance": 175,
+      "Deflection": 175
+    },
+    "combinedRating": 315,
+    "set": "Blood Raven",
+    "setSize": 3,
+    "setPartners": ["Blood Raven Ribbons", "Bloodcrystal Raven Skull"],
+    "setBonus": "3 of Set: When you cast a healing aoe that only hits you or one ally, the target's Power and Accuracy will increase by 5% for 5 seconds.",
+    "notes": "Artifact Equipment. Reinforced: Empty. Minimum Level 18. Captured from If Equipped tab."
+  },
+  {
+    "name": "Blood Raven Ribbons",
+    "slot": "Belt",
+    "item_level": 0,
+    "ratingStats": {
+      "Accuracy": 175,
+      "Critical Strike": 175,
+      "Critical Avoidance": 175
+    },
+    "combinedRating": 315,
+    "abilityBonuses": {"Wisdom": 1},
+    "set": "Blood Raven",
+    "setSize": 3,
+    "setPartners": ["Blood Raven Pendant", "Bloodcrystal Raven Skull"],
+    "setBonus": "3 of Set: When you cast a healing aoe that only hits you or one ally, the target's Power and Accuracy will increase by 5% for 5 seconds.",
+    "notes": "Artifact Equipment. Reinforced: Empty. Minimum Level 18. Captured from If Equipped tab."
+  },
+  {
+    "name": "Lacings of the Dead",
+    "slot": "Belt",
+    "item_level": 0,
+    "ratingStats": {
+      "Combat Advantage": 175,
+      "Critical Avoidance": 159
+    },
+    "combinedRating": 315,
+    "abilityBonuses": {"Charisma": 1},
+    "set": "Dead",
+    "setSize": 3,
+    "setPartners": ["Carcanet of the Dead", "Thayan Book of the Dead"],
+    "setBonus": "3 of Set: When you dodge, block, sprint or shadow slip, your Power and Movement Speed will increase by 5% for 10 seconds. (45 second cooldown)",
+    "notes": "Artifact Equipment. Reinforced: Empty. Minimum Level 18. Captured from If Equipped tab."
+  },
+  {
+    "name": "Cowl of the Dead",
+    "slot": "Head",
+    "item_level": 756,
+    "ratingStats": {
+      "Critical Strike": 227,
+      "Defense": 567,
+      "Deflection": 340
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Necromancer's Repel", "description": "When you use a Daily power, you knockback all enemies within 20 feet away from you, stunning undead enemies for 3 seconds. (30 second cooldown) (Not usable in PvP)"}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Crown of the Undead",
+    "slot": "Head",
+    "item_level": 756,
+    "ratingStats": {
+      "Combat Advantage": 227,
+      "Critical Strike": 340,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Necromancer's Command", "description": "When you use a Daily power, you pull all enemies within 20 feet towards you, stunning undead enemies for 3 seconds. (30 second cooldown)"}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Sister's Clutches",
+    "slot": "Arms",
+    "item_level": 756,
+    "ratingStats": {
+      "Combat Advantage": 227,
+      "Critical Strike": 340,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Warden's Focus", "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Critical Strike for 10 seconds."}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Tattered Exorcist Robes",
+    "slot": "Armor",
+    "item_level": 756,
+    "ratingStats": {
+      "Combat Advantage": 340,
+      "Defense": 567,
+      "Critical Avoidance": 227
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Bring Out Your Dead", "description": "At the start of combat, you will summon the dead to help you for 30 seconds. (2 minute cooldown)"}
+    ],
+    "notes": "Armor. Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Terrored Grips",
+    "slot": "Arms",
+    "item_level": 756,
+    "ratingStats": {
+      "Combat Advantage": 227,
+      "Critical Severity": 340,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Encounter Perk", "description": "Your Encounter Powers do 3% more damage."}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Hag's Rags",
+    "slot": "Armor",
+    "item_level": 756,
+    "ratingStats": {
+      "Combat Advantage": 340,
+      "Critical Strike": 227,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Sniper's Perk", "description": "Your Ranged Powers do 3% more damage."}
+    ],
+    "notes": "Armor. Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Lazaric's Hide Gloves",
+    "slot": "Arms",
+    "item_level": 756,
+    "ratingStats": {
+      "Combat Advantage": 340,
+      "Defense": 567,
+      "Critical Avoidance": 227
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Charged Defiance", "description": "When your Stamina is over 75%, you take 3% less damage."}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Warden's Chestplate",
+    "slot": "Armor",
+    "item_level": 756,
+    "ratingStats": {
+      "Combat Advantage": 227,
+      "Critical Strike": 340,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Calling the Guards", "description": "At the start of combat, you will call out for help, summoning the help of nearby guards for 15 seconds. (60 second cooldown)"}
+    ],
+    "notes": "Armor. Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Heels of Fury",
+    "slot": "Feet",
+    "item_level": 756,
+    "ratingStats": {
+      "Critical Strike": 340,
+      "Critical Severity": 227,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Swordsman's Perk", "description": "Your Melee Powers do 3% more damage."}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Decaying Habit",
+    "slot": "Head",
+    "item_level": 756,
+    "ratingStats": {
+      "Combat Advantage": 567,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Berserker's Might", "description": "For the first minute you are in combat, you will gain 200 Power every 5 seconds. If you stay in combat for longer than one minute, you will lose 250 Power every 5 seconds, to a total loss of 2600 Power."}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Boots of the Bandit",
+    "slot": "Feet",
+    "item_level": 756,
+    "ratingStats": {
+      "Accuracy": 227,
+      "Critical Strike": 340,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Contender's Focus", "description": "At the start of combat, your Critical Strike is increased by 1500 for 10 seconds. (20 seconds when in Barovia at night time)"}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Lycan Boots of the Pack",
+    "slot": "Feet",
+    "item_level": 756,
+    "ratingStats": {
+      "Accuracy": 227,
+      "Defense": 567,
+      "Deflection": 340
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Pack Mentality", "description": "When in combat and your active companion is 50' or closer to you, you gain 1500 Power. When your active companion is further than 50' from you, you gain 1500 Defense."}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Knotted Garbs",
+    "slot": "Armor",
+    "item_level": 756,
+    "ratingStats": {
+      "Combat Advantage": 340,
+      "Critical Strike": 227,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Contender's Might", "description": "At the start of combat, your Power is increased by 1500 for 10 seconds. (20 seconds when in Barovia at night time)"}
+    ],
+    "notes": "Armor. Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Puppet's Plate",
+    "slot": "Armor",
+    "item_level": 756,
+    "ratingStats": {
+      "Combat Advantage": 340,
+      "Critical Severity": 227,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Contender's Parry", "description": "At the start of combat, your Deflect is increased by 1500 for 10 seconds. (20 seconds when in Barovia at night time)"}
+    ],
+    "notes": "Armor. Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Rusted Rider Greaves",
+    "slot": "Feet",
+    "item_level": 756,
+    "ratingStats": {
+      "Defense": 567,
+      "Critical Avoidance": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Cursed Step", "description": "Your Movement Speed is decreased by 15%."},
+      {"name": "Defiance", "description": "You take 3% less damage."}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Ras Manca's Spare Hat",
+    "slot": "Head",
+    "item_level": 756,
+    "ratingStats": {
+      "Accuracy": 227,
+      "Combat Advantage": 340,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Poisonous Daily", "description": "When you use a Daily power, your targets will be poisoned for 5 seconds. (30 second cooldown)"}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Crown of Brambles",
+    "slot": "Head",
+    "item_level": 756,
+    "ratingStats": {
+      "Combat Advantage": 340,
+      "Defense": 567,
+      "Critical Avoidance": 227
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Daily Daze", "description": "When you use a Daily power, there is a 20% chance that you will be Stunned for 3 seconds."}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Shoes of Superstition",
+    "slot": "Feet",
+    "item_level": 756,
+    "ratingStats": {
+      "Combat Advantage": 227,
+      "Critical Severity": 340,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Superstition", "description": "At the start of combat, you will be surrounded by a ring of lucky trinkets for 7 seconds. If you pick up all the trinkets before they disappear, you will gain 1500 Power and Defense for 15 seconds. (30 second cooldown)"}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  },
+  {
+    "name": "Lycosa's Barbed Gloves",
+    "slot": "Arms",
+    "item_level": 756,
+    "ratingStats": {
+      "Accuracy": 227,
+      "Combat Advantage": 340,
+      "Defense": 567
+    },
+    "combinedRating": 680,
+    "equipBonuses": [
+      {"name": "Cursed Strike", "description": "Your attacks have a chance to inflict Partial Paralysis. Targets under the affect of partial paralysis may be periodically stunned for a short duration. Does not apply to PvP targets."}
+    ],
+    "notes": "Reinforced: Empty. Minimum Level 18. Source: Monster Hunts of Barovia."
+  }
+]

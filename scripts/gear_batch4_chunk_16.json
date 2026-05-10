@@ -1,0 +1,729 @@
+[
+  {
+    "name": "Dungeon Raider's Helm",
+    "slot": "Head",
+    "item_level": 940,
+    "allowedClasses": ["Barbarian", "Fighter", "Paladin"],
+    "ratingStats": {"Critical Strike": 282, "Defense": 705, "Critical Avoidance": 423},
+    "combinedRating": 846,
+    "percentStats": {"Damage in the Undermountain": 5},
+    "equipBonuses": [{"name": "Undermountain Hunter", "description": "+5% Damage in the Undermountain"}],
+    "set": "Armor of the Dungeon Raider",
+    "source": "Zen Market"
+  },
+  {
+    "name": "Dungeon Raider's Cuisses",
+    "slot": "Feet",
+    "item_level": 940,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Combat Advantage": 352, "Defense": 705, "Awareness": 352},
+    "combinedRating": 846,
+    "equipBonuses": [{"name": "Death Defier's Advantage", "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)"}],
+    "set": "Armor of the Dungeon Raider",
+    "source": "Zen Market"
+  },
+  {
+    "name": "Dungeon Raider's Sabatons",
+    "slot": "Feet",
+    "item_level": 940,
+    "allowedClasses": ["Barbarian", "Fighter", "Paladin"],
+    "ratingStats": {"Combat Advantage": 352, "Defense": 705, "Awareness": 352},
+    "combinedRating": 846,
+    "equipBonuses": [{"name": "Death Defier's Advantage", "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)"}],
+    "set": "Armor of the Dungeon Raider",
+    "source": "Zen Market"
+  },
+  {
+    "name": "Dungeon Raider's Scalemail",
+    "slot": "Armor",
+    "item_level": 940,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Defense": 705, "Deflection": 705},
+    "combinedRating": 846,
+    "equipBonuses": [{"name": "Warden's Defense", "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds."}],
+    "set": "Armor of the Dungeon Raider",
+    "notes": "Armor, Chain",
+    "source": "Zen Market"
+  },
+  {
+    "name": "Dungeon Raider's Gauntlets",
+    "slot": "Arms",
+    "item_level": 940,
+    "allowedClasses": ["Barbarian", "Fighter", "Paladin"],
+    "ratingStats": {"Accuracy": 352, "Defense": 705, "Deflection": 352},
+    "combinedRating": 846,
+    "equipBonuses": [{"name": "Leader's Might", "description": "Gain 250 Power for each player in your team."}],
+    "set": "Armor of the Dungeon Raider",
+    "source": "Zen Market"
+  },
+  {
+    "name": "Dungeon Raider's Braces",
+    "slot": "Arms",
+    "item_level": 940,
+    "allowedClasses": ["Bard", "Warlock", "Paladin"],
+    "ratingStats": {"Critical Strike": 352, "Defense": 705, "Deflection": 352},
+    "combinedRating": 846,
+    "equipBonuses": [{"name": "Leader's Might", "description": "Gain 250 Power for each player in your team."}],
+    "set": "Armor of the Dungeon Raider",
+    "source": "Zen Market"
+  },
+  {
+    "name": "Dungeon Raider's Breastplate",
+    "slot": "Armor",
+    "item_level": 940,
+    "allowedClasses": ["Barbarian", "Fighter", "Paladin"],
+    "ratingStats": {"Critical Severity": 705, "Defense": 705},
+    "combinedRating": 846,
+    "equipBonuses": [{"name": "Warden's Defense", "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds."}],
+    "set": "Armor of the Dungeon Raider",
+    "notes": "Armor, Plate",
+    "source": "Zen Market"
+  },
+  {
+    "name": "Wyvern's Eye Necklace",
+    "slot": "Neck",
+    "item_level": 550,
+    "abilityBonuses": {"Constitution": 2},
+    "ratingStats": {"Critical Strike": 412, "Awareness": 412},
+    "combinedRating": 495,
+    "set": "Armaments of the Wyvern",
+    "setSize": 3,
+    "setPartners": ["Wyvern-Skin Belt", "Wyvern-Venom Coated Knives"],
+    "notes": "Artifact Equipment. Campaign Rewards and Store"
+  },
+  {
+    "name": "Electric Collar",
+    "slot": "Neck",
+    "item_level": 550,
+    "abilityBonuses": {"Constitution": 2},
+    "ratingStats": {"Accuracy": 412, "Critical Severity": 412},
+    "combinedRating": 495,
+    "set": "Armaments of Constructed Demise",
+    "setSize": 3,
+    "setPartners": ["Chained Restraints", "Trobriand's Ring"],
+    "notes": "Artifact Equipment. Lair of the Mad Mage"
+  },
+  {
+    "name": "Jhesyra's Tattered Mantle",
+    "slot": "Neck",
+    "item_level": 550,
+    "abilityBonuses": {"Constitution": 2},
+    "ratingStats": {"Accuracy": 412, "Combat Advantage": 412},
+    "combinedRating": 495,
+    "set": "Apprentice's Spoils",
+    "setSize": 3,
+    "setPartners": ["Trobriand's Conduction Cable", "Arcturia's Music Box"],
+    "notes": "Artifact Equipment"
+  },
+  {
+    "name": "Woven Vine",
+    "slot": "Neck",
+    "item_level": 550,
+    "abilityBonuses": {"Constitution": 2},
+    "ratingStats": {"Critical Strike": 412, "Critical Avoidance": 412},
+    "combinedRating": 495,
+    "set": "Enchanted Thumb",
+    "setSize": 3,
+    "setPartners": ["Blooming Cord", "Staff of Flowers"],
+    "notes": "Artifact Equipment"
+  },
+  {
+    "name": "Reflective Collar",
+    "slot": "Neck",
+    "item_level": 550,
+    "abilityBonuses": {"Constitution": 2},
+    "ratingStats": {"Awareness": 412, "Critical Avoidance": 412},
+    "combinedRating": 495,
+    "set": "Reflective Armaments",
+    "setSize": 3,
+    "setPartners": ["Mirror-Plated Belt", "Errata: Drift Globe"],
+    "notes": "Artifact Equipment. Campaign Rewards and Store"
+  },
+  {
+    "name": "Mirror-Plated Belt",
+    "slot": "Belt",
+    "item_level": 875,
+    "abilityBonuses": {"Constitution": 2},
+    "ratingStats": {"Defense": 874, "Awareness": 438},
+    "combinedRating": 788,
+    "set": "Reflective Armaments",
+    "setSize": 3,
+    "setPartners": ["Reflective Collar", "Errata: Drift Globe"],
+    "notes": "Artifact Equipment. Campaign Rewards and Store"
+  },
+  {
+    "name": "Blooming Cord",
+    "slot": "Belt",
+    "item_level": 550,
+    "abilityBonuses": {"Charisma": 1},
+    "ratingStats": {"Critical Strike": 412, "Awareness": 412},
+    "combinedRating": 495,
+    "set": "Enchanted Thumb",
+    "setSize": 3,
+    "setPartners": ["Woven Vine", "Staff of Flowers"],
+    "notes": "Artifact Equipment"
+  },
+  {
+    "name": "Trobriand's Conduction Cable",
+    "slot": "Belt",
+    "item_level": 550,
+    "abilityBonuses": {"Intelligence": 1},
+    "ratingStats": {"Combat Advantage": 412, "Critical Strike": 412},
+    "combinedRating": 495,
+    "set": "Apprentice's Spoils",
+    "setSize": 3,
+    "setPartners": ["Jhesyra's Tattered Mantle", "Arcturia's Music Box"],
+    "notes": "Artifact Equipment"
+  },
+  {
+    "name": "Chained Restraints",
+    "slot": "Belt",
+    "item_level": 550,
+    "abilityBonuses": {"Dexterity": 1},
+    "ratingStats": {"Accuracy": 412, "Critical Avoidance": 412},
+    "combinedRating": 495,
+    "set": "Armaments of Constructed Demise",
+    "setSize": 3,
+    "setPartners": ["Electric Collar", "Trobriand's Ring"],
+    "notes": "Artifact Equipment. Lair of the Mad Mage"
+  },
+  {
+    "name": "Wyvern-Skin Belt",
+    "slot": "Belt",
+    "item_level": 550,
+    "abilityBonuses": {"Dexterity": 1},
+    "ratingStats": {"Critical Severity": 412, "Deflection": 412},
+    "combinedRating": 495,
+    "set": "Armaments of the Wyvern",
+    "setSize": 3,
+    "setPartners": ["Wyvern's Eye Necklace", "Wyvern-Venom Coated Knives"],
+    "notes": "Artifact Equipment. Campaign Rewards and Store"
+  },
+  {
+    "name": "Necklace of the Mad Mage",
+    "slot": "Neck",
+    "item_level": 550,
+    "abilityBonuses": {"Constitution": 2},
+    "ratingStats": {"Critical Strike": 412, "Critical Severity": 412},
+    "combinedRating": 495,
+    "set": "Mad Dash",
+    "setSize": 3,
+    "setPartners": ["Belt of the Mad Mage", "Halaster's Blast Scepter"],
+    "notes": "Artifact Equipment. Tower of the Mad Mage"
+  },
+  {
+    "name": "Belt of the Mad Mage",
+    "slot": "Belt",
+    "item_level": 550,
+    "abilityBonuses": {"Intelligence": 1},
+    "ratingStats": {"Accuracy": 412, "Defense": 412},
+    "combinedRating": 495,
+    "set": "Mad Dash",
+    "setSize": 3,
+    "setPartners": ["Necklace of the Mad Mage", "Halaster's Blast Scepter"],
+    "notes": "Artifact Equipment. Tower of the Mad Mage"
+  },
+  {
+    "name": "Templar of the Twilight's Helm",
+    "slot": "Head",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Accuracy": 375, "Critical Severity": 375, "Defense": 450, "Deflection": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Executioner's Might", "description": "When you kill an enemy, your Power increases by 5% for 10 seconds. (10 second cooldown)"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Sentinel of the Star's Helm",
+    "slot": "Head",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Strike": 375, "Defense": 450, "Deflection": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Executioner's Zeal", "description": "When you kill an enemy, you gain 1% Action Points."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Mercenary of the Maze's Helm",
+    "slot": "Head",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Accuracy": 375, "Combat Advantage": 375, "Defense": 450, "Deflection": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Executioner's Guard", "description": "When you kill an enemy, your Defense increases by 5% for 10 seconds. (10 second cooldown)"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Templar of the Twilight's Sabatons",
+    "slot": "Feet",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Combat Advantage": 375, "Critical Severity": 375, "Defense": 450, "Deflection": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Death Defier's Haste", "description": "Gain 2.5% Movement Speed for each enemy you are engaged in battle, to the max of 12%."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Sentinel of the Star's Sabatons",
+    "slot": "Feet",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Combat Advantage": 375, "Critical Strike": 375, "Defense": 450, "Deflection": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Death Defier's Might", "description": "Gain 250 Power for each enemy you are engaged in battle. (Max of 15 targets)"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Templar of the Twilight's Bracers",
+    "slot": "Arms",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Strike": 375, "Critical Severity": 375, "Defense": 450, "Deflection": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Encounter Perk", "description": "Your Encounter Powers do 3% more damage."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Mercenary of the Maze's Breastplate",
+    "slot": "Armor",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Combat Advantage": 375, "Critical Severity": 375, "Defense": 450, "Deflection": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Butcher's Remedy", "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% of your health back."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Sentinel of the Star's Breastplate",
+    "slot": "Armor",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Strike": 375, "Critical Severity": 375, "Defense": 450, "Deflection": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Butcher's Might", "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Power for 10 seconds. (Max stack 5)"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Templar of the Twilight's Breastplate",
+    "slot": "Armor",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Severity": 750, "Defense": 450, "Deflection": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Butcher's Tenacity", "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Critical Severity for 10 seconds. (Max stack 5)"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Mercenary of the Maze's Sabatons",
+    "slot": "Feet",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Combat Advantage": 750, "Defense": 450, "Deflection": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Death Defier's Focus", "description": "Gain 200 Critical Strike for each enemy you are engaged in battle. (Max of 15 targets)"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Sentinel of the Star's Bracers",
+    "slot": "Arms",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Strike": 750, "Defense": 450, "Deflection": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "At-Will Perk", "description": "Your At-Will Powers do 3% more damage."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Mercenary of the Maze's Bracers",
+    "slot": "Arms",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Strike": 375, "Critical Severity": 375, "Defense": 450, "Deflection": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Bulwark's Shield", "description": "You take 3% less damage from Ranged attacks."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Crash Guards",
+    "slot": "Arms",
+    "item_level": 950,
+    "ratingStats": {"Critical Strike": 285, "Critical Severity": 428, "Defense": 712},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "Leader's Might", "description": "Gain 250 Power for each player in your team."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Curtunk's Furry Sleeves",
+    "slot": "Arms",
+    "item_level": 1000,
+    "ratingStats": {"Defense": 750, "Critical Avoidance": 300, "Deflection": 450},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Challenger's Guard", "description": "When in combat with only one enemy, your Defense and Deflect is increased by 1000."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Moldy Apprentice Braces",
+    "slot": "Arms",
+    "item_level": 950,
+    "ratingStats": {"Accuracy": 428, "Defense": 712, "Awareness": 285},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "The Ol' Switcheroo", "description": "+1300 Critical Severity, -2500 Defense"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Glistening Scales",
+    "slot": "Armor",
+    "item_level": 950,
+    "ratingStats": {"Combat Advantage": 356, "Defense": 712, "Deflection": 356},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "Victim's Parry", "description": "When you are hit at 25% health or lower, your Deflect increases 15% for 5 seconds. If you have less than 7500 Deflect, you will gain 7500 for 5 seconds instead. (15 second cooldown)"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Barkhide",
+    "slot": "Armor",
+    "item_level": 1000,
+    "ratingStats": {"Defense": 750, "Awareness": 375, "Critical Avoidance": 375},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Warden's Defiance", "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you will take 3% less damage for 10 seconds. Cooldown 10 seconds."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Thief's Stolen Gloves",
+    "slot": "Arms",
+    "item_level": 950,
+    "ratingStats": {"Accuracy": 428, "Critical Severity": 285, "Defense": 712},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "Golden Steal", "description": "Your attacks have a chance to cause extra damage, but at a chance financial cost."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Slimy Bracers of the Kuo-Toa",
+    "slot": "Arms",
+    "item_level": 1000,
+    "ratingStats": {"Combat Advantage": 450, "Defense": 750, "Critical Avoidance": 300},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Sniper's Advantage", "description": "When you are 50' or further away from your target, your Combat Advantage is increased by 1,500."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Quark's Rock Gauntlets",
+    "slot": "Arms",
+    "item_level": 950,
+    "ratingStats": {"Defense": 712, "Critical Avoidance": 285, "Deflection": 428},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "Leader's Guard", "description": "Gain 250 Defense for each player in your team."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Gurdunn's Defense",
+    "slot": "Armor",
+    "item_level": 950,
+    "ratingStats": {"Accuracy": 356, "Critical Severity": 356, "Defense": 712},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "The Ol' Switcheroo", "description": "+1300 Power, -2500 Defense"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Haunted Hides of the Hall",
+    "slot": "Armor",
+    "item_level": 1000,
+    "ratingStats": {"Critical Strike": 375, "Critical Severity": 375, "Defense": 750},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Berserker's Might", "description": "For the first minute you are in combat, you will gain 200 Power every 5 seconds. If you stay in combat for longer than one minute, you will lose 250 Power every 5 seconds, to a total loss of 2600 Power."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Shimbly's Knotted Bark",
+    "slot": "Armor",
+    "item_level": 950,
+    "ratingStats": {"Accuracy": 356, "Defense": 712, "Critical Avoidance": 356},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "Gladiator's Guard", "description": "For every 5 seconds you are in combat, you gain 125 Defense. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Robes of the Last Profit",
+    "slot": "Armor",
+    "item_level": 1000,
+    "ratingStats": {"Critical Severity": 375, "Defense": 750, "Awareness": 375},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Gladiator's Might", "description": "For every 5 seconds you are in combat, you gain 125 Power. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Shattered Plate of the Fallen",
+    "slot": "Armor",
+    "item_level": 950,
+    "ratingStats": {"Defense": 712, "Awareness": 356, "Deflection": 356},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "Gladiator's Might", "description": "For every 5 seconds you are in combat, you gain 125 Power. If you stay in combat for longer than 2 minutes, this ability will no longer be active."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Root Stompers",
+    "slot": "Feet",
+    "item_level": 1000,
+    "ratingStats": {"Accuracy": 375, "Defense": 750, "Deflection": 375},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Sniper's Fury", "description": "Your Powers deal 2.5% more damage when you are 50' or further away from your target."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Hard Rock Kickers",
+    "slot": "Feet",
+    "item_level": 950,
+    "ratingStats": {"Accuracy": 356, "Critical Strike": 356, "Defense": 712},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "Contender's Might", "description": "At the start of combat, your Power is increased by 1500 for 10 seconds."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Gurtunk's Booties",
+    "slot": "Feet",
+    "item_level": 950,
+    "ratingStats": {"Combat Advantage": 356, "Critical Strike": 356, "Defense": 712},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "Death Defier's Might", "description": "Gain 200 Power for each enemy you are engaged in battle. (Max of 15 targets)"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Gilded Spike Gaiters",
+    "slot": "Feet",
+    "item_level": 1000,
+    "ratingStats": {"Defense": 750, "Critical Avoidance": 375, "Deflection": 375},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Brute's Advantage", "description": "When you are 25' or closer to your target, your Combat Advantage and Accuracy are increased by 1,000."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Sparkly Slippers of Sloopna",
+    "slot": "Feet",
+    "item_level": 950,
+    "ratingStats": {"Combat Advantage": 356, "Critical Strike": 356, "Defense": 712},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "Contender's Haste", "description": "At the start of combat, your Movement Speed is increased by 5% and your Awareness is increased by 1000 for 10 seconds."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Broken Cap of the Omnipotent",
+    "slot": "Head",
+    "item_level": 1000,
+    "ratingStats": {"Combat Advantage": 375, "Critical Strike": 375, "Defense": 750},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Executioner's Might", "description": "When you kill an enemy, your Power increases by 5% for 10 seconds. (10 second cooldown)"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "The Cardinal's Coral Coif",
+    "slot": "Head",
+    "item_level": 950,
+    "ratingStats": {"Combat Advantage": 356, "Critical Severity": 356, "Defense": 712},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "The Ol' Switcheroo", "description": "+1300 Critical Severity, -2500 Combat Advantage"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Hat of the Cowardly",
+    "slot": "Head",
+    "item_level": 950,
+    "ratingStats": {"Accuracy": 356, "Defense": 712, "Critical Avoidance": 356},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "Executioner's Haste", "description": "When you kill an enemy, your Movement Speed and Accuracy increases by 5% for 10 seconds."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Crown of the Lost King",
+    "slot": "Head",
+    "item_level": 1000,
+    "ratingStats": {"Accuracy": 375, "Critical Strike": 375, "Defense": 750},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Challenger's Might", "description": "When in combat with only one enemy, your Power is increased by 2000."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Sood's Good Wood Hood",
+    "slot": "Head",
+    "item_level": 1000,
+    "ratingStats": {"Combat Advantage": 375, "Defense": 750, "Deflection": 375},
+    "combinedRating": 900,
+    "equipBonuses": [{"name": "Challenger's Resilience", "description": "When in combat with only one enemy, your Defense and Critical Avoidance is increased by 1500."}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Murme's Soup Bowl",
+    "slot": "Head",
+    "item_level": 950,
+    "ratingStats": {"Critical Strike": 712, "Defense": 712, "Awareness": 356},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "Executioner's Fury", "description": "When you kill an enemy, your Damage increases by 5% for 5 seconds. (30 second cooldown)"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Leafy Disguise of the Wanted",
+    "slot": "Head",
+    "item_level": 950,
+    "ratingStats": {"Critical Strike": 356, "Critical Severity": 356, "Defense": 712},
+    "combinedRating": 855,
+    "equipBonuses": [{"name": "The Ol' Switcheroo", "description": "+1300 Critical Strike, -2500 Critical Avoidance"}],
+    "source": "Expeditions"
+  },
+  {
+    "name": "Inherited Ring",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Combat Advantage": 738, "Critical Strike": 2272},
+    "combinedRating": 808,
+    "percentStats": {"Damage against Beasts": 10},
+    "equipBonuses": [{"name": "Beast Hunter", "description": "+10% Damage against Beasts"}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Borrowed Ring",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Combat Advantage": 742, "Critical Strike": 2228},
+    "combinedRating": 792,
+    "percentStats": {"Damage against Beasts": 10},
+    "equipBonuses": [{"name": "Beast Hunter", "description": "+10% Damage against Beasts"}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Taken Ring",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Combat Advantage": 735, "Critical Strike": 2205},
+    "combinedRating": 784
+  },
+  {
+    "name": "Snatched Ring",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Combat Advantage": 724, "Critical Strike": 2171},
+    "combinedRating": 772
+  },
+  {
+    "name": "Stolen Ring",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Combat Advantage": 705, "Critical Strike": 2115},
+    "combinedRating": 752
+  },
+  {
+    "name": "Lead-plated Ring",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Accuracy": 705, "Critical Severity": 2115},
+    "combinedRating": 752
+  },
+  {
+    "name": "Copper-plated Ring",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Accuracy": 724, "Critical Severity": 2171},
+    "combinedRating": 772
+  },
+  {
+    "name": "Tin-plated Ring",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Accuracy": 735, "Critical Severity": 2205},
+    "combinedRating": 784
+  },
+  {
+    "name": "Nickel-plated Ring",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Critical Strike": 742, "Critical Severity": 2228},
+    "combinedRating": 792,
+    "equipBonuses": [{"name": "Encounter Perk", "description": "Your Encounter Powers do 3% more damage."}]
+  },
+  {
+    "name": "Gold-plated Ring",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Critical Strike": 758, "Critical Severity": 2272},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "Encounter Perk", "description": "Your Encounter Powers do 3% more damage."}]
+  },
+  {
+    "name": "Bypass Silver Ring",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Accuracy": 2272, "Defense": 758},
+    "combinedRating": 808,
+    "percentStats": {"Damage against Beasts": 10},
+    "equipBonuses": [{"name": "Beast Hunter", "description": "+10% Damage against Beasts"}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Twisting Silver Ring",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Accuracy": 2228, "Defense": 742},
+    "combinedRating": 792,
+    "percentStats": {"Damage against Beasts": 10},
+    "equipBonuses": [{"name": "Beast Hunter", "description": "+10% Damage against Beasts"}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Split Silver Ring",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Accuracy": 2205, "Defense": 735},
+    "combinedRating": 784
+  },
+  {
+    "name": "Tapered Silver Ring",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Accuracy": 2171, "Defense": 724},
+    "combinedRating": 772
+  },
+  {
+    "name": "Pinched Silver Ring",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Accuracy": 2115, "Defense": 705},
+    "combinedRating": 752
+  },
+  {
+    "name": "Fish Scale Ring",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Critical Strike": 2115, "Defense": 705},
+    "combinedRating": 752
+  },
+  {
+    "name": "Kuo-Toa Scale Ring",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Critical Strike": 2171, "Defense": 724},
+    "combinedRating": 772
+  },
+  {
+    "name": "Merrow Scale Ring",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Critical Strike": 2205, "Defense": 735},
+    "combinedRating": 784
+  },
+  {
+    "name": "Hydra Scale Ring",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Critical Strike": 2228, "Defense": 742},
+    "combinedRating": 792,
+    "equipBonuses": [{"name": "Poisonous Daily", "description": "When you use a Daily power, your targets will be poisoned for 5 seconds. (30 second cooldown)"}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Dragon Turtle Scale Ring",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Critical Strike": 2272, "Defense": 758},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "Poisonous Daily", "description": "When you use a Daily power, your targets will be poisoned for 5 seconds. (30 second cooldown)"}],
+    "source": "Tower of the Mad Mage"
+  }
+]

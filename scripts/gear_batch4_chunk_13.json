@@ -1,0 +1,1074 @@
+[
+  {
+    "name": "Celestial Gavel of Justice",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 1400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 1050, "Critical Severity": 1050},
+    "combinedRating": 1260,
+    "set": "Celestial",
+    "setSize": 2,
+    "tier": "Mythic",
+    "notes": "Artifact Equipment Maximum Quality. PvE Celestial set, drops in Zariel's Challenge."
+  },
+  {
+    "name": "Celestial Shield of Aegis · IL 1400",
+    "displayName": "Celestial Shield of Aegis",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 1400,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 701, "Critical Avoidance": 1399},
+    "combinedRating": 1260,
+    "set": "Celestial",
+    "setSize": 2,
+    "tier": "Mythic",
+    "notes": "Artifact Equipment Maximum Quality. Heavy, Off-Hand, Shield."
+  },
+  {
+    "name": "Celestial Shield of Aegis · IL 1150",
+    "displayName": "Celestial Shield of Aegis",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 1150,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 576, "Critical Avoidance": 1149},
+    "combinedRating": 1035,
+    "set": "Celestial",
+    "setSize": 2,
+    "notes": "Artifact Equipment. Heavy, Off-Hand, Shield."
+  },
+  {
+    "name": "Celestial Shield of Aegis · IL 900",
+    "displayName": "Celestial Shield of Aegis",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 900,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 451, "Critical Avoidance": 899},
+    "combinedRating": 810,
+    "set": "Celestial",
+    "setSize": 2,
+    "notes": "Artifact Equipment. Heavy, Off-Hand, Shield. Artifact Stat Increase: Unlocks at Epic Rarity."
+  },
+  {
+    "name": "Celestial Shield of Aegis · IL 650",
+    "displayName": "Celestial Shield of Aegis",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 650,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 326, "Critical Avoidance": 649},
+    "combinedRating": 585,
+    "set": "Celestial",
+    "setSize": 2,
+    "source": "Trial - Zariel's Challenge",
+    "notes": "Artifact Equipment. Purified Black Ice, Heavy, Off-Hand, Shield. Artifact Stat Increase: Unlocks at Epic Rarity."
+  },
+  {
+    "name": "The Legion Guard's Damned Mace · IL 600",
+    "displayName": "The Legion Guard's Damned Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 600,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 450, "Critical Severity": 450},
+    "combinedRating": 540,
+    "set": "Devil's Legion",
+    "setSize": 2,
+    "setBonus": "2 of Set: When you nearby allies are granted the following: +1500 Power, +1000 Combat Advantage, +1000 Defense, +1000 Critical Avoidance. This effect may stack up to 5 times when other allies are equipped with a full set of Legion Guard's weapons.",
+    "source": "Avernus Adventure Zone",
+    "notes": "Artifact Equipment."
+  },
+  {
+    "name": "The Legion Guard's Damned Mace · IL 800",
+    "displayName": "The Legion Guard's Damned Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 600, "Critical Severity": 600},
+    "combinedRating": 720,
+    "set": "Devil's Legion",
+    "setSize": 2,
+    "notes": "Artifact Equipment."
+  },
+  {
+    "name": "The Legion Guard's Damned Mace · IL 1000",
+    "displayName": "The Legion Guard's Damned Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 750, "Critical Severity": 750},
+    "combinedRating": 900,
+    "set": "Devil's Legion",
+    "setSize": 2,
+    "notes": "Artifact Equipment."
+  },
+  {
+    "name": "The Legion Guard's Damned Mace · IL 1200",
+    "displayName": "The Legion Guard's Damned Mace",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 1200,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 900, "Critical Severity": 900},
+    "combinedRating": 1080,
+    "set": "Devil's Legion",
+    "setSize": 2,
+    "tier": "Mythic",
+    "notes": "Artifact Equipment Maximum Quality."
+  },
+  {
+    "name": "The Legion Guard's Gore Shield · IL 600",
+    "displayName": "The Legion Guard's Gore Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 600,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 301, "Critical Avoidance": 599},
+    "combinedRating": 540,
+    "set": "Devil's Legion",
+    "setSize": 2,
+    "notes": "Artifact Equipment. Heavy, Off-Hand, Shield. Artifact Stat Increase: Unlocks at Epic Rarity."
+  },
+  {
+    "name": "The Legion Guard's Gore Shield · IL 800",
+    "displayName": "The Legion Guard's Gore Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 401, "Critical Avoidance": 799},
+    "combinedRating": 720,
+    "set": "Devil's Legion",
+    "setSize": 2,
+    "notes": "Artifact Equipment. Heavy, Off-Hand, Shield. Artifact Stat Increase: Unlocks at Epic Rarity."
+  },
+  {
+    "name": "The Legion Guard's Gore Shield · IL 1000",
+    "displayName": "The Legion Guard's Gore Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 501, "Critical Avoidance": 999},
+    "combinedRating": 900,
+    "set": "Devil's Legion",
+    "setSize": 2,
+    "notes": "Artifact Equipment. Heavy, Off-Hand, Shield."
+  },
+  {
+    "name": "The Legion Guard's Gore Shield · IL 1200",
+    "displayName": "The Legion Guard's Gore Shield",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 1200,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 601, "Critical Avoidance": 1199},
+    "combinedRating": 1080,
+    "set": "Devil's Legion",
+    "setSize": 2,
+    "tier": "Mythic",
+    "notes": "Artifact Equipment Maximum Quality. Heavy, Off-Hand, Shield."
+  },
+  {
+    "name": "Hellfire Engine Clatter · IL 600",
+    "displayName": "Hellfire Engine Clatter",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 600,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 450, "Critical Severity": 450},
+    "combinedRating": 540,
+    "set": "Hellfire Engine Remains",
+    "setSize": 2,
+    "setBonus": "2 of Set: At the start of combat, your Stamina Regeneration will be increased by 15%, and your Movement Speed will be increased by 15% for 10 seconds. When you kill an enemy, this buff will refresh. When you leave combat, this buff will expire.",
+    "source": "Blood War Campaign",
+    "notes": "Artifact Equipment. Pieces of Fire Engines riddle this level of hell."
+  },
+  {
+    "name": "Hellfire Engine Clatter · IL 800",
+    "displayName": "Hellfire Engine Clatter",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 600, "Critical Severity": 600},
+    "combinedRating": 720,
+    "set": "Hellfire Engine Remains",
+    "setSize": 2,
+    "notes": "Artifact Equipment."
+  },
+  {
+    "name": "Hellfire Engine Clatter · IL 1000",
+    "displayName": "Hellfire Engine Clatter",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 750, "Critical Severity": 750},
+    "combinedRating": 900,
+    "set": "Hellfire Engine Remains",
+    "setSize": 2,
+    "notes": "Artifact Equipment."
+  },
+  {
+    "name": "Hellfire Engine Clatter · IL 1200",
+    "displayName": "Hellfire Engine Clatter",
+    "slot": "Main Hand",
+    "subSlot": "Blade",
+    "item_level": 1200,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 900, "Critical Severity": 900},
+    "combinedRating": 1080,
+    "set": "Hellfire Engine Remains",
+    "setSize": 2,
+    "tier": "Mythic",
+    "notes": "Artifact Equipment Maximum Quality."
+  },
+  {
+    "name": "Hellfire Engine Sidepanel · IL 1200",
+    "displayName": "Hellfire Engine Sidepanel",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 1200,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 601, "Critical Avoidance": 1199},
+    "combinedRating": 1080,
+    "set": "Hellfire Engine Remains",
+    "setSize": 2,
+    "tier": "Mythic",
+    "notes": "Artifact Equipment Maximum Quality. Heavy, Off-Hand, Shield."
+  },
+  {
+    "name": "Hellfire Engine Sidepanel · IL 1000",
+    "displayName": "Hellfire Engine Sidepanel",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 1000,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 501, "Critical Avoidance": 999},
+    "combinedRating": 900,
+    "set": "Hellfire Engine Remains",
+    "setSize": 2,
+    "notes": "Artifact Equipment. Heavy, Off-Hand, Shield."
+  },
+  {
+    "name": "Hellfire Engine Sidepanel · IL 800",
+    "displayName": "Hellfire Engine Sidepanel",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 800,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 401, "Critical Avoidance": 799},
+    "combinedRating": 720,
+    "set": "Hellfire Engine Remains",
+    "setSize": 2,
+    "notes": "Artifact Equipment. Heavy, Off-Hand, Shield. Artifact Stat Increase: Unlocks at Epic Rarity."
+  },
+  {
+    "name": "Hellfire Engine Sidepanel · IL 600",
+    "displayName": "Hellfire Engine Sidepanel",
+    "slot": "Off Hand",
+    "subSlot": "Shield",
+    "item_level": 600,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 301, "Critical Avoidance": 599},
+    "combinedRating": 540,
+    "set": "Hellfire Engine Remains",
+    "setSize": 2,
+    "source": "Blood War Campaign",
+    "notes": "Artifact Equipment. Purified Black Ice, Heavy, Off-Hand, Shield. Artifact Stat Increase: Unlocks at Epic Rarity."
+  },
+  {
+    "name": "Divine Ward Sallet",
+    "slot": "Head",
+    "item_level": 1230,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Strike": 369, "Defense": 922, "Critical Avoidance": 554},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Charged Might", "description": "When your Stamina is over 75%, your Power is increased by 5000."}],
+    "set": "Divine Armor",
+    "setSize": 5,
+    "source": "The Redeemed Citadel"
+  },
+  {
+    "name": "Divine Mystic Helm",
+    "slot": "Head",
+    "item_level": 1230,
+    "allowedClasses": ["Cleric", "Paladin"],
+    "ratingStats": {"Critical Strike": 646, "Defense": 922, "Critical Avoidance": 277},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Charged Might", "description": "When your Stamina is over 75%, your Power is increased by 5000."}],
+    "set": "Divine Armor",
+    "setSize": 5,
+    "source": "The Redeemed Citadel"
+  },
+  {
+    "name": "Divine Ward Greaves",
+    "slot": "Feet",
+    "item_level": 1230,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Combat Advantage": 461, "Defense": 922, "Awareness": 461},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Death Defier's Might", "description": "Gain 300 Power for each enemy you are engaged in battle. (Max of 15 targets)"}],
+    "set": "Divine Armor",
+    "setSize": 5,
+    "source": "The Redeemed Citadel"
+  },
+  {
+    "name": "Divine Mystic Pigaches",
+    "slot": "Feet",
+    "item_level": 1230,
+    "allowedClasses": ["Cleric", "Paladin"],
+    "ratingStats": {"Critical Strike": 461, "Defense": 922, "Critical Avoidance": 461},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Death Defier's Might", "description": "Gain 300 Power for each enemy you are engaged in battle. (Max of 15 targets)"}],
+    "set": "Divine Armor",
+    "setSize": 5,
+    "source": "The Redeemed Citadel"
+  },
+  {
+    "name": "Divine Ward Breastplate",
+    "slot": "Armor",
+    "item_level": 1230,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Severity": 461, "Defense": 1384},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Critical Remedy", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds."}],
+    "set": "Divine Armor",
+    "setSize": 5,
+    "source": "The Redeemed Citadel",
+    "notes": "Armor, Scale."
+  },
+  {
+    "name": "Divine Mystic Wristguards",
+    "slot": "Arms",
+    "item_level": 1230,
+    "allowedClasses": ["Cleric", "Paladin"],
+    "ratingStats": {"Critical Strike": 461, "Defense": 922, "Deflection": 461},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Escalating Might", "description": "Gain 250 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Max 20 Stacks: 5000 Power"}],
+    "set": "Divine Armor",
+    "setSize": 5,
+    "source": "The Redeemed Citadel"
+  },
+  {
+    "name": "Divine Ward Vambraces",
+    "slot": "Arms",
+    "item_level": 1230,
+    "allowedClasses": ["Fighter", "Paladin", "Barbarian"],
+    "ratingStats": {"Accuracy": 461, "Defense": 922, "Deflection": 461},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Escalating Might", "description": "Gain 250 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Max 20 Stacks: 5000 Power"}],
+    "set": "Divine Armor",
+    "setSize": 5,
+    "source": "The Redeemed Citadel"
+  },
+  {
+    "name": "Divine Mystic Chestpiece",
+    "slot": "Armor",
+    "item_level": 1230,
+    "allowedClasses": ["Cleric", "Paladin"],
+    "ratingStats": {"Defense": 922, "Deflection": 922},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Critical Remedy", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds."}],
+    "set": "Divine Armor",
+    "setSize": 5,
+    "source": "The Redeemed Citadel",
+    "notes": "Armor, Chain."
+  },
+  {
+    "name": "Lion Guard's Ward Cuirass",
+    "slot": "Armor",
+    "item_level": 1250,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Severity": 469, "Defense": 1406},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Critical Remedy", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds."}],
+    "set": "Lion Guard Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Campaign Rewards and Store",
+    "notes": "Armor, Plate."
+  },
+  {
+    "name": "Lion Guard's Restoration Couters",
+    "slot": "Arms",
+    "item_level": 1250,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 469, "Defense": 938, "Deflection": 469},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Escalating Might", "description": "Gain 250 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Max 20 Stacks: 5000 Power"}],
+    "set": "Lion Guard Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Campaign Rewards and Store"
+  },
+  {
+    "name": "Lion Guard's Ward Couters",
+    "slot": "Arms",
+    "item_level": 1250,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Accuracy": 469, "Defense": 938, "Deflection": 469},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Escalating Might", "description": "Gain 250 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Max 20 Stacks: 5000 Power"}],
+    "set": "Lion Guard Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Campaign Rewards and Store"
+  },
+  {
+    "name": "Lion Guard's Restoration Cuirass",
+    "slot": "Armor",
+    "item_level": 1250,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Defense": 938, "Deflection": 938},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Critical Remedy", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds."}],
+    "set": "Lion Guard Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Campaign Rewards and Store",
+    "notes": "Armor, Chain."
+  },
+  {
+    "name": "Lion Guard's Ward Poleyns",
+    "slot": "Feet",
+    "item_level": 1250,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Combat Advantage": 469, "Defense": 938, "Awareness": 469},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Death Defier's Might", "description": "Gain 300 Power for each enemy you are engaged in battle. (Max of 15 targets)"}],
+    "set": "Lion Guard Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Campaign Rewards and Store"
+  },
+  {
+    "name": "Lion Guard's Restoration Poleyns",
+    "slot": "Feet",
+    "item_level": 1250,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 469, "Defense": 938, "Critical Avoidance": 562},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Death Defier's Might", "description": "Gain 300 Power for each enemy you are engaged in battle. (Max of 15 targets)"}],
+    "set": "Lion Guard Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Campaign Rewards and Store"
+  },
+  {
+    "name": "Lion Guard's Ward Barbute",
+    "slot": "Head",
+    "item_level": 1250,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 375, "Defense": 938, "Critical Avoidance": 562},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Charged Might", "description": "When your Stamina is over 75%, your Power is increased by 5000."}],
+    "set": "Lion Guard Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Campaign Rewards and Store"
+  },
+  {
+    "name": "Lion Guard's Restoration Barbute",
+    "slot": "Head",
+    "item_level": 1250,
+    "allowedClasses": ["Paladin"],
+    "ratingStats": {"Critical Strike": 656, "Defense": 938, "Critical Avoidance": 281},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Charged Might", "description": "When your Stamina is over 75%, your Power is increased by 5000."}],
+    "set": "Lion Guard Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Campaign Rewards and Store"
+  },
+  {
+    "name": "Fiend Forged Coif",
+    "slot": "Head",
+    "item_level": 1230,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 646, "Defense": 922, "Critical Avoidance": 277},
+    "combinedRating": 1107,
+    "percentStats": {"Damage against Demons, Devils, and Fiends": 1},
+    "equipBonuses": [
+      {"name": "Skirmisher's Might", "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)"},
+      {"name": "Fiend Hunter", "description": "+1% Damage against Demons, Devils, and Fiends"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Seals of the Fallen - The Infernal Citadel Epic Dungeon",
+    "tier": "Mythic",
+    "notes": "Maximum Quality."
+  },
+  {
+    "name": "Fiend Forged Helm",
+    "slot": "Head",
+    "item_level": 1230,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Strike": 369, "Defense": 922, "Critical Avoidance": 554},
+    "combinedRating": 1107,
+    "percentStats": {"Damage against Demons, Devils, and Fiends": 1},
+    "equipBonuses": [
+      {"name": "Skirmisher's Might", "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)"},
+      {"name": "Fiend Hunter", "description": "+1% Damage against Demons, Devils, and Fiends"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Seals of the Fallen - The Infernal Citadel Epic Dungeon",
+    "tier": "Mythic",
+    "notes": "Maximum Quality."
+  },
+  {
+    "name": "Fiend Forged Cuisses",
+    "slot": "Feet",
+    "item_level": 1230,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 461, "Defense": 922, "Awareness": 461},
+    "combinedRating": 1107,
+    "percentStats": {"Damage against Demons, Devils, and Fiends": 1},
+    "equipBonuses": [
+      {"name": "Gladiator's Might", "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power"},
+      {"name": "Fiend Hunter", "description": "+1% Damage against Demons, Devils, and Fiends"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Seals of the Fallen - The Infernal Citadel Epic Dungeon",
+    "tier": "Mythic",
+    "notes": "Maximum Quality."
+  },
+  {
+    "name": "Fiend Forged Sabatons",
+    "slot": "Feet",
+    "item_level": 1230,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Combat Advantage": 461, "Defense": 922, "Awareness": 461},
+    "combinedRating": 1107,
+    "percentStats": {"Damage against Demons, Devils, and Fiends": 1},
+    "equipBonuses": [
+      {"name": "Gladiator's Might", "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power"},
+      {"name": "Fiend Hunter", "description": "+1% Damage against Demons, Devils, and Fiends"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Seals of the Fallen - The Infernal Citadel Epic Dungeon",
+    "tier": "Mythic",
+    "notes": "Maximum Quality."
+  },
+  {
+    "name": "Fiend Forged Scalemail",
+    "slot": "Armor",
+    "item_level": 1230,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Defense": 922, "Deflection": 922},
+    "combinedRating": 1107,
+    "percentStats": {"Damage against Demons, Devils, and Fiends": 1},
+    "equipBonuses": [
+      {"name": "Leader's Guard", "description": "Gain 1000 Defense for each player in your team."},
+      {"name": "Fiend Hunter", "description": "+1% Damage against Demons, Devils, and Fiends"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Seals of the Fallen - The Infernal Citadel Epic Dungeon",
+    "tier": "Mythic",
+    "notes": "Armor, Chain. Maximum Quality."
+  },
+  {
+    "name": "Devil Forged Helm",
+    "slot": "Head",
+    "item_level": 1215,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Strike": 364, "Defense": 911, "Critical Avoidance": 547},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Demons": 1},
+    "equipBonuses": [
+      {"name": "Skirmisher's Might", "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)"},
+      {"name": "Devil Hunter", "description": "+1% Damage against Demons"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "The Infernal Citadel Epic Dungeon"
+  },
+  {
+    "name": "Devil Forged Coif",
+    "slot": "Head",
+    "item_level": 1215,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 638, "Defense": 911, "Critical Avoidance": 273},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Demons": 1},
+    "equipBonuses": [
+      {"name": "Skirmisher's Might", "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)"},
+      {"name": "Devil Hunter", "description": "+1% Damage against Demons"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "The Infernal Citadel Epic Dungeon"
+  },
+  {
+    "name": "Fiend Forged Gauntlets",
+    "slot": "Arms",
+    "item_level": 1230,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Strike": 461, "Defense": 922, "Deflection": 461},
+    "combinedRating": 1107,
+    "percentStats": {"Damage against Demons, Devils, and Fiends": 1},
+    "equipBonuses": [
+      {"name": "Survivor's Might", "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)"},
+      {"name": "Fiend Hunter", "description": "+1% Damage against Demons, Devils, and Fiends"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Seals of the Fallen - The Infernal Citadel Epic Dungeon",
+    "tier": "Mythic",
+    "notes": "Maximum Quality."
+  },
+  {
+    "name": "Fiend Forged Braces",
+    "slot": "Arms",
+    "item_level": 1230,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 461, "Defense": 922, "Deflection": 461},
+    "combinedRating": 1107,
+    "percentStats": {"Damage against Demons, Devils, and Fiends": 1},
+    "equipBonuses": [
+      {"name": "Survivor's Might", "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)"},
+      {"name": "Fiend Hunter", "description": "+1% Damage against Demons, Devils, and Fiends"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Seals of the Fallen - The Infernal Citadel Epic Dungeon",
+    "tier": "Mythic",
+    "notes": "Maximum Quality."
+  },
+  {
+    "name": "Fiend Forged Breastplate",
+    "slot": "Armor",
+    "item_level": 1230,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Severity": 461, "Defense": 1384},
+    "combinedRating": 1107,
+    "percentStats": {"Damage against Demons, Devils, and Fiends": 1},
+    "equipBonuses": [
+      {"name": "Leader's Guard", "description": "Gain 1000 Defense for each player in your team."},
+      {"name": "Fiend Hunter", "description": "+1% Damage against Demons, Devils, and Fiends"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Seals of the Fallen - The Infernal Citadel Epic Dungeon",
+    "tier": "Mythic",
+    "notes": "Armor, Plate. Maximum Quality."
+  },
+  {
+    "name": "Devil Forged Cuisses",
+    "slot": "Feet",
+    "item_level": 1215,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 456, "Defense": 911, "Critical Avoidance": 456},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Demons": 1},
+    "equipBonuses": [
+      {"name": "Gladiator's Might", "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power"},
+      {"name": "Devil Hunter", "description": "+1% Damage against Demons"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5
+  },
+  {
+    "name": "Devil Forged Sabatons",
+    "slot": "Feet",
+    "item_level": 1215,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Combat Advantage": 461, "Defense": 911, "Awareness": 456},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Demons": 1},
+    "equipBonuses": [
+      {"name": "Gladiator's Might", "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power"},
+      {"name": "Devil Hunter", "description": "+1% Damage against Demons"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5
+  },
+  {
+    "name": "Devil Forged Scalemail",
+    "slot": "Armor",
+    "item_level": 1215,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Defense": 911, "Deflection": 911},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Demons": 1},
+    "equipBonuses": [
+      {"name": "Leader's Guard", "description": "Gain 1000 Defense for each player in your team."},
+      {"name": "Devil Hunter", "description": "+1% Damage against Demons"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "notes": "Armor, Chain."
+  },
+  {
+    "name": "Devil Forged Breastplate",
+    "slot": "Armor",
+    "item_level": 1215,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Severity": 456, "Defense": 1367},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Demons": 1},
+    "equipBonuses": [
+      {"name": "Leader's Guard", "description": "Gain 1000 Defense for each player in your team."},
+      {"name": "Devil Hunter", "description": "+1% Damage against Demons"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "notes": "Armor, Plate."
+  },
+  {
+    "name": "Devil Forged Braces",
+    "slot": "Arms",
+    "item_level": 1215,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 456, "Defense": 911, "Deflection": 456},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Demons": 1},
+    "equipBonuses": [
+      {"name": "Survivor's Might", "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)"},
+      {"name": "Devil Hunter", "description": "+1% Damage against Demons"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5
+  },
+  {
+    "name": "Demon Forged Sabatons",
+    "slot": "Feet",
+    "item_level": 1215,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Combat Advantage": 456, "Defense": 911, "Awareness": 456},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Devils": 1},
+    "equipBonuses": [
+      {"name": "Gladiator's Might", "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power"},
+      {"name": "Devil Hunter", "description": "+1% Damage against Devils"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5
+  },
+  {
+    "name": "Demon Forged Cuisses",
+    "slot": "Feet",
+    "item_level": 1215,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 456, "Defense": 911, "Critical Avoidance": 456},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Devils": 1},
+    "equipBonuses": [
+      {"name": "Gladiator's Might", "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power"},
+      {"name": "Devil Hunter", "description": "+1% Damage against Devils"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5
+  },
+  {
+    "name": "Demon Forged Helm",
+    "slot": "Head",
+    "item_level": 1215,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Strike": 364, "Defense": 911, "Critical Avoidance": 547},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Devils": 1},
+    "equipBonuses": [
+      {"name": "Skirmisher's Might", "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)"},
+      {"name": "Devil Hunter", "description": "+1% Damage against Devils"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5
+  },
+  {
+    "name": "Demon Forged Coif",
+    "slot": "Head",
+    "item_level": 1215,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 638, "Defense": 911, "Critical Avoidance": 273},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Devils": 1},
+    "equipBonuses": [
+      {"name": "Skirmisher's Might", "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)"},
+      {"name": "Devil Hunter", "description": "+1% Damage against Devils"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5
+  },
+  {
+    "name": "Devil Forged Gauntlets",
+    "slot": "Arms",
+    "item_level": 1215,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Accuracy": 456, "Defense": 911, "Deflection": 456},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Demons": 1},
+    "equipBonuses": [
+      {"name": "Survivor's Might", "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)"},
+      {"name": "Devil Hunter", "description": "+1% Damage against Demons"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5
+  },
+  {
+    "name": "Demon Forged Scalemail",
+    "slot": "Armor",
+    "item_level": 1215,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Defense": 911, "Deflection": 911},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Devils": 1},
+    "equipBonuses": [
+      {"name": "Leader's Guard", "description": "Gain 1000 Defense for each player in your team."},
+      {"name": "Devil Hunter", "description": "+1% Damage against Devils"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "notes": "Armor, Chain."
+  },
+  {
+    "name": "Demon Forged Breastplate",
+    "slot": "Armor",
+    "item_level": 1215,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Severity": 456, "Defense": 1367},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Devils": 1},
+    "equipBonuses": [
+      {"name": "Leader's Guard", "description": "Gain 1000 Defense for each player in your team."},
+      {"name": "Devil Hunter", "description": "+1% Damage against Devils"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "notes": "Armor, Plate."
+  },
+  {
+    "name": "Demon Forged Braces",
+    "slot": "Arms",
+    "item_level": 1215,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 456, "Defense": 911, "Deflection": 456},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Devils": 1},
+    "equipBonuses": [
+      {"name": "Survivor's Might", "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)"},
+      {"name": "Devil Hunter", "description": "+1% Damage against Devils"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5
+  },
+  {
+    "name": "Demon Forged Gauntlets",
+    "slot": "Arms",
+    "item_level": 1215,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Accuracy": 456, "Defense": 911, "Deflection": 456},
+    "combinedRating": 1094,
+    "percentStats": {"Damage against Devils": 1},
+    "equipBonuses": [
+      {"name": "Survivor's Might", "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)"},
+      {"name": "Devil Hunter", "description": "+1% Damage against Devils"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5
+  },
+  {
+    "name": "Infernal Forged Coif",
+    "slot": "Head",
+    "item_level": 1200,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 630, "Defense": 900, "Critical Avoidance": 270},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Skirmisher's Might", "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Breastplate",
+    "slot": "Armor",
+    "item_level": 1200,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Severity": 450, "Defense": 1350},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Leader's Guard", "description": "Gain 1000 Defense for each player in your team."}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Seals Store",
+    "notes": "Armor, Plate."
+  },
+  {
+    "name": "Infernal Forged Scalemail",
+    "slot": "Armor",
+    "item_level": 1200,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Defense": 900, "Deflection": 900},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Leader's Guard", "description": "Gain 1000 Defense for each player in your team."}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Seals Store",
+    "notes": "Armor, Chain."
+  },
+  {
+    "name": "Infernal Forged Sabatons",
+    "slot": "Feet",
+    "item_level": 1200,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Combat Advantage": 450, "Defense": 900, "Awareness": 450},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Gladiator's Might", "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Cuisses",
+    "slot": "Feet",
+    "item_level": 1200,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 450, "Defense": 900, "Critical Avoidance": 450},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Gladiator's Might", "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Helm",
+    "slot": "Head",
+    "item_level": 1200,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Strike": 360, "Defense": 900, "Critical Avoidance": 540},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Skirmisher's Might", "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Braces",
+    "slot": "Arms",
+    "item_level": 1200,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 450, "Defense": 900, "Deflection": 450},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Survivor's Might", "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Gauntlets",
+    "slot": "Arms",
+    "item_level": 1200,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Accuracy": 450, "Defense": 900, "Deflection": 450},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Survivor's Might", "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)"}
+    ],
+    "set": "Infernal Forged Armor",
+    "setSize": 5,
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Ward Trousers",
+    "slot": "Pants",
+    "item_level": 1200,
+    "ratingStats": {"Defense": 601, "Deflection": 1199},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Warden's Haste", "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds."}
+    ],
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Restoration Trousers",
+    "slot": "Pants",
+    "item_level": 1200,
+    "ratingStats": {"Defense": 601, "Awareness": 1199},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Warden's Haste", "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds."}
+    ],
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Raid Trousers",
+    "slot": "Pants",
+    "item_level": 1200,
+    "ratingStats": {"Defense": 601, "Critical Avoidance": 1199},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Warden's Haste", "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds."}
+    ],
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Assault Shirt",
+    "slot": "Shirt",
+    "item_level": 1200,
+    "ratingStats": {"Accuracy": 900, "Critical Severity": 900},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Butcher's Zeal", "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 10 Action Points. Can only occur once every 5 seconds."}
+    ],
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Raid Shirt",
+    "slot": "Shirt",
+    "item_level": 1200,
+    "ratingStats": {"Combat Advantage": 900, "Critical Severity": 900},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Butcher's Zeal", "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 10 Action Points. Can only occur once every 5 seconds."}
+    ],
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Restoration Shirt",
+    "slot": "Shirt",
+    "item_level": 1200,
+    "ratingStats": {"Combat Advantage": 900, "Critical Strike": 900},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Butcher's Zeal", "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 10 Action Points. Can only occur once every 5 seconds."}
+    ],
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Ward Shirt",
+    "slot": "Shirt",
+    "item_level": 1200,
+    "ratingStats": {"Accuracy": 900, "Critical Strike": 900},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Butcher's Zeal", "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 10 Action Points. Can only occur once every 5 seconds."}
+    ],
+    "source": "Vallenhas - Seals Store"
+  },
+  {
+    "name": "Infernal Forged Assault Trousers",
+    "slot": "Pants",
+    "item_level": 1200,
+    "ratingStats": {"Awareness": 900, "Deflection": 900},
+    "combinedRating": 1080,
+    "equipBonuses": [
+      {"name": "Warden's Haste", "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds."}
+    ],
+    "source": "Vallenhas - Seals Store"
+  }
+]

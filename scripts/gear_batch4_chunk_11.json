@@ -1,0 +1,373 @@
+[
+  {
+    "name": "Diamond Ring of Spite +2",
+    "displayName": "Diamond Ring of Spite",
+    "slot": "Ring",
+    "item_level": 1250,
+    "ratingStats": {"Critical Strike": 3750},
+    "combinedRating": 1000,
+    "source": "Epic Dungeon - Vault of Stars",
+    "notes": "Reinforced: Empty; Binds on Pickup (Account)"
+  },
+  {
+    "name": "Diamond Ring of Might +2",
+    "displayName": "Diamond Ring of Might",
+    "slot": "Ring",
+    "item_level": 1250,
+    "ratingStats": {"Combat Advantage": 3750},
+    "combinedRating": 1000,
+    "source": "Epic Dungeon - Vault of Stars",
+    "notes": "Reinforced: Empty; Binds on Pickup (Account)"
+  },
+  {
+    "name": "Diamond Ring of Might +1",
+    "displayName": "Diamond Ring of Might",
+    "slot": "Ring",
+    "item_level": 1225,
+    "ratingStats": {"Combat Advantage": 3675},
+    "combinedRating": 980,
+    "source": "Epic Dungeon - Vault of Stars",
+    "notes": "Reinforced: Empty; Binds on Pickup (Account)"
+  },
+  {
+    "name": "Diamond Ring of Spite +1",
+    "displayName": "Diamond Ring of Spite",
+    "slot": "Ring",
+    "item_level": 1225,
+    "ratingStats": {"Critical Strike": 3675},
+    "combinedRating": 980,
+    "source": "Epic Dungeon - Vault of Stars",
+    "notes": "Reinforced: Empty; Binds on Pickup (Account)"
+  },
+  {
+    "name": "Diamond Ring of Flight +1",
+    "displayName": "Diamond Ring of Flight",
+    "slot": "Ring",
+    "item_level": 1225,
+    "ratingStats": {"Defense": 3675},
+    "combinedRating": 980,
+    "source": "Epic Dungeon - Vault of Stars",
+    "notes": "Reinforced: Empty; Binds on Pickup (Account)"
+  },
+  {
+    "name": "Shirt of the Red Waters +4",
+    "displayName": "Shirt of the Red Waters",
+    "slot": "Shirt",
+    "item_level": 1300,
+    "ratingStats": {"Critical Strike": 1950},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Sharandar Heroic Encounters"
+  },
+  {
+    "name": "Shirt of the Red Waters +3",
+    "displayName": "Shirt of the Red Waters",
+    "slot": "Shirt",
+    "item_level": 1275,
+    "ratingStats": {"Critical Strike": 1912},
+    "combinedRating": 1148,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Pickup (Account); Binds on Equip (Character)"
+  },
+  {
+    "name": "Shirt of the Green Storm +2",
+    "displayName": "Shirt of the Green Storm",
+    "slot": "Shirt",
+    "item_level": 1250,
+    "ratingStats": {"Combat Advantage": 1875},
+    "combinedRating": 1125,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Shirt of the Green Storm +3",
+    "displayName": "Shirt of the Green Storm",
+    "slot": "Shirt",
+    "item_level": 1275,
+    "ratingStats": {"Combat Advantage": 1912},
+    "combinedRating": 1148,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Pickup (Account); Binds on Equip (Character)"
+  },
+  {
+    "name": "Shirt of the Green Storm +4",
+    "displayName": "Shirt of the Green Storm",
+    "slot": "Shirt",
+    "item_level": 1300,
+    "ratingStats": {"Combat Advantage": 1950},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Sharandar Heroic Encounters"
+  },
+  {
+    "name": "Shirt of the Red Waters +1",
+    "displayName": "Shirt of the Red Waters",
+    "slot": "Shirt",
+    "item_level": 1225,
+    "ratingStats": {"Critical Strike": 1838},
+    "combinedRating": 1102,
+    "source": "Sharandar - Campaign Store",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Shirt of the Red Waters +2",
+    "displayName": "Shirt of the Red Waters",
+    "slot": "Shirt",
+    "item_level": 1250,
+    "ratingStats": {"Critical Strike": 1875},
+    "combinedRating": 1125,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Shirt of the Green Storm +1",
+    "displayName": "Shirt of the Green Storm",
+    "slot": "Shirt",
+    "item_level": 1225,
+    "ratingStats": {"Combat Advantage": 1838},
+    "combinedRating": 1102,
+    "source": "Sharandar - Campaign Store",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Shirt of the Gold Dawn +4",
+    "displayName": "Shirt of the Gold Dawn",
+    "slot": "Shirt",
+    "item_level": 1300,
+    "ratingStats": {"Critical Severity": 1950},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Sharandar Heroic Encounters"
+  },
+  {
+    "name": "Shirt of the Gold Dawn +3",
+    "displayName": "Shirt of the Gold Dawn",
+    "slot": "Shirt",
+    "item_level": 1275,
+    "ratingStats": {"Critical Severity": 1912},
+    "combinedRating": 1148,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Pickup (Account); Binds on Equip (Character)"
+  },
+  {
+    "name": "Shirt of the Gold Dawn +2",
+    "displayName": "Shirt of the Gold Dawn",
+    "slot": "Shirt",
+    "item_level": 1250,
+    "ratingStats": {"Critical Severity": 1875},
+    "combinedRating": 1125,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Shirt of the Gold Dawn +1",
+    "displayName": "Shirt of the Gold Dawn",
+    "slot": "Shirt",
+    "item_level": 1225,
+    "ratingStats": {"Critical Severity": 1838},
+    "combinedRating": 1102,
+    "source": "Sharandar - Campaign Store",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Pants of the Red Waters +4",
+    "displayName": "Pants of the Red Waters",
+    "slot": "Pants",
+    "item_level": 1300,
+    "ratingStats": {"Deflection": 1950},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Sharandar Heroic Encounters"
+  },
+  {
+    "name": "Shirt of the Blue Leaf +1",
+    "displayName": "Shirt of the Blue Leaf",
+    "slot": "Shirt",
+    "item_level": 1225,
+    "ratingStats": {"Accuracy": 1838},
+    "combinedRating": 1102,
+    "source": "Sharandar - Campaign Store",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Shirt of the Blue Leaf +2",
+    "displayName": "Shirt of the Blue Leaf",
+    "slot": "Shirt",
+    "item_level": 1250,
+    "ratingStats": {"Accuracy": 1875},
+    "combinedRating": 1125,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Shirt of the Blue Leaf +3",
+    "displayName": "Shirt of the Blue Leaf",
+    "slot": "Shirt",
+    "item_level": 1275,
+    "ratingStats": {"Accuracy": 1912},
+    "combinedRating": 1148,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Pickup (Account); Binds on Equip (Character)"
+  },
+  {
+    "name": "Shirt of the Blue Leaf +4",
+    "displayName": "Shirt of the Blue Leaf",
+    "slot": "Shirt",
+    "item_level": 1300,
+    "ratingStats": {"Accuracy": 1950},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Sharandar Heroic Encounters"
+  },
+  {
+    "name": "Pants of the Red Waters +3",
+    "displayName": "Pants of the Red Waters",
+    "slot": "Pants",
+    "item_level": 1275,
+    "ratingStats": {"Deflection": 1912},
+    "combinedRating": 1148,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Pickup (Account); Binds on Equip (Character)"
+  },
+  {
+    "name": "Pants of the Red Waters +2",
+    "displayName": "Pants of the Red Waters",
+    "slot": "Pants",
+    "item_level": 1250,
+    "ratingStats": {"Deflection": 1875},
+    "combinedRating": 1125,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Pants of the Red Waters +1",
+    "displayName": "Pants of the Red Waters",
+    "slot": "Pants",
+    "item_level": 1225,
+    "ratingStats": {"Deflection": 1838},
+    "combinedRating": 1102,
+    "source": "Sharandar - Campaign Store",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Pants of the Green Storm +4",
+    "displayName": "Pants of the Green Storm",
+    "slot": "Pants",
+    "item_level": 1300,
+    "ratingStats": {"Critical Avoidance": 1950},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Sharandar Heroic Encounters"
+  },
+  {
+    "name": "Pants of the Green Storm +3",
+    "displayName": "Pants of the Green Storm",
+    "slot": "Pants",
+    "item_level": 1275,
+    "ratingStats": {"Critical Avoidance": 1912},
+    "combinedRating": 1148,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Pickup (Account); Binds on Equip (Character)"
+  },
+  {
+    "name": "Pants of the Gold Dawn +2",
+    "displayName": "Pants of the Gold Dawn",
+    "slot": "Pants",
+    "item_level": 1250,
+    "ratingStats": {"Defense": 1875},
+    "combinedRating": 1125,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Pants of the Gold Dawn +3",
+    "displayName": "Pants of the Gold Dawn",
+    "slot": "Pants",
+    "item_level": 1275,
+    "ratingStats": {"Defense": 1912},
+    "combinedRating": 1148,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Pickup (Account); Binds on Equip (Character)"
+  },
+  {
+    "name": "Pants of the Gold Dawn +4",
+    "displayName": "Pants of the Gold Dawn",
+    "slot": "Pants",
+    "item_level": 1300,
+    "ratingStats": {"Defense": 1950},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Sharandar Heroic Encounters"
+  },
+  {
+    "name": "Pants of the Green Storm +3 (Avoidance variant)",
+    "displayName": "Pants of the Green Storm",
+    "slot": "Pants",
+    "item_level": 1225,
+    "ratingStats": {"Critical Avoidance": 1838},
+    "combinedRating": 1102,
+    "source": "Sharandar - Campaign Store",
+    "notes": "Binds on Equip (Character); +3 from store",
+    "variant": "Store +3"
+  },
+  {
+    "name": "Pants of the Green Storm +2",
+    "displayName": "Pants of the Green Storm",
+    "slot": "Pants",
+    "item_level": 1250,
+    "ratingStats": {"Critical Avoidance": 1875},
+    "combinedRating": 1125,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Pants of the Gold Dawn +1",
+    "displayName": "Pants of the Gold Dawn",
+    "slot": "Pants",
+    "item_level": 1225,
+    "ratingStats": {"Defense": 1838},
+    "combinedRating": 1102,
+    "source": "Sharandar - Campaign Store",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Pants of the Blue Leaf +4",
+    "displayName": "Pants of the Blue Leaf",
+    "slot": "Pants",
+    "item_level": 1300,
+    "ratingStats": {"Awareness": 1950},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Sharandar Heroic Encounters"
+  },
+  {
+    "name": "Pants of the Blue Leaf +3",
+    "displayName": "Pants of the Blue Leaf",
+    "slot": "Pants",
+    "item_level": 1275,
+    "ratingStats": {"Awareness": 1912},
+    "combinedRating": 1148,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Pickup (Account); Binds on Equip (Character)"
+  },
+  {
+    "name": "Pants of the Blue Leaf +2",
+    "displayName": "Pants of the Blue Leaf",
+    "slot": "Pants",
+    "item_level": 1250,
+    "ratingStats": {"Awareness": 1875},
+    "combinedRating": 1125,
+    "source": "Sharandar Heroic Encounters",
+    "notes": "Binds on Equip (Character)"
+  },
+  {
+    "name": "Pants of the Blue Leaf +1",
+    "displayName": "Pants of the Blue Leaf",
+    "slot": "Pants",
+    "item_level": 1225,
+    "ratingStats": {"Awareness": 1838},
+    "combinedRating": 1102,
+    "source": "Sharandar - Campaign Store",
+    "notes": "Binds on Equip (Character)"
+  }
+]

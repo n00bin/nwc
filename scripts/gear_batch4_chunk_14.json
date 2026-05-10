@@ -1,0 +1,688 @@
+[
+  {
+    "name": "Divine Focus",
+    "slot": "Neck",
+    "item_level": 550,
+    "abilityBonuses": {"CON": 2},
+    "ratingStats": {"Critical Strike": 412, "Critical Severity": 412},
+    "combinedRating": 495,
+    "notes": "Artifact Equipment. Source: The Redeemed Citadel. Set Redeemed (0/3)."
+  },
+  {
+    "name": "Celestial Sash",
+    "slot": "Belt",
+    "item_level": 550,
+    "abilityBonuses": {"DEX": 1},
+    "ratingStats": {"Accuracy": 412, "Defense": 412},
+    "combinedRating": 495,
+    "notes": "Artifact Equipment. Source: The Redeemed Citadel. Set Redeemed (0/3)."
+  },
+  {
+    "name": "Chains of Glory",
+    "slot": "Neck",
+    "item_level": 550,
+    "abilityBonuses": {"CON": 2},
+    "ratingStats": {"Critical Strike": 412, "Critical Severity": 412},
+    "combinedRating": 495,
+    "set": "Glorious Light",
+    "setSize": 3,
+    "setPartners": ["Belt of Victory", "Sword of Zariel"],
+    "setBonus": "3 of Set: Forgiveness of the Fallen. You gain up to 3% Power as your health decreases. That bonus is doubled for 15 seconds when a nearby ally falls in battle.",
+    "notes": "Artifact Equipment. Source: Trial - Zariel's Challenge."
+  },
+  {
+    "name": "Belt of Victory",
+    "slot": "Belt",
+    "item_level": 550,
+    "abilityBonuses": {"CON": 1},
+    "ratingStats": {"Accuracy": 412, "Defense": 412},
+    "combinedRating": 495,
+    "set": "Glorious Light",
+    "setSize": 3,
+    "setPartners": ["Chains of Glory", "Sword of Zariel"],
+    "setBonus": "3 of Set: Forgiveness of the Fallen. You gain up to 3% Power as your health decreases. That bonus is doubled for 15 seconds when a nearby ally falls in battle.",
+    "notes": "Artifact Equipment. Source: Trial - Zariel's Challenge."
+  },
+  {
+    "name": "The Engine Master's Mantle",
+    "slot": "Neck",
+    "item_level": 550,
+    "abilityBonuses": {"CON": 2},
+    "ratingStats": {"Critical Strike": 412, "Critical Severity": 412},
+    "combinedRating": 495,
+    "set": "Dark Remnants",
+    "setSize": 3,
+    "setPartners": ["Whip of the Erinyes", "Book of Vile Darkness"],
+    "setBonus": "3 of Set: Call of Evil. Increases damage dealt by 2.5%. Increases damage dealt by an additional 2.5% against demons, devils, and fiends.",
+    "notes": "Artifact Equipment. The smell of brimstone still lingers on this cloak, a testament to the dedication of its former owner. Source: The Infernal Citadel."
+  },
+  {
+    "name": "Whip of the Erinyes",
+    "slot": "Belt",
+    "item_level": 550,
+    "abilityBonuses": {"INT": 1},
+    "ratingStats": {"Accuracy": 412, "Defense": 412},
+    "combinedRating": 495,
+    "set": "Dark Remnants",
+    "setSize": 3,
+    "setPartners": ["The Engine Master's Mantle", "Book of Vile Darkness"],
+    "setBonus": "3 of Set: Call of Evil. Increases damage dealt by 2.5%. Increases damage dealt by an additional 2.5% against demons, devils, and fiends.",
+    "notes": "Artifact Equipment. A rope of entanglement, once used by an Erinyes devil, holds securely around the wearer's waist to function as a sturdy belt."
+  },
+  {
+    "name": "Ring of Bel +1",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Accuracy": 735, "Combat Advantage": 2205},
+    "combinedRating": 784,
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Ring of Bel +2",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Accuracy": 742, "Combat Advantage": 2228},
+    "combinedRating": 792,
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Ring of Bel +3",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Accuracy": 758, "Combat Advantage": 2272},
+    "combinedRating": 808,
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Ring of Bel +4",
+    "slot": "Ring",
+    "item_level": 1050,
+    "ratingStats": {"Accuracy": 788, "Combat Advantage": 2362},
+    "combinedRating": 840,
+    "equipBonuses": [{"name": "Summon Devil", "description": "When struck by a foe you have a 10% chance to summon a devil servant to attack that foe doing 200 magnitude damage. This effect can only trigger once every 30 seconds and does not affect companions."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Ring of Bel +5",
+    "slot": "Ring",
+    "item_level": 1100,
+    "ratingStats": {"Accuracy": 825, "Combat Advantage": 2475},
+    "combinedRating": 880,
+    "equipBonuses": [{"name": "Summon Devil", "description": "When struck by a foe you have a 10% chance to summon a devil servant to attack that foe doing 200 magnitude damage. This effect can only trigger once every 30 seconds and does not affect companions."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Crown of the Pit Fiend",
+    "slot": "Head",
+    "item_level": 1240,
+    "ratingStats": {"Critical Strike": 465, "Defense": 930, "Critical Avoidance": 465},
+    "combinedRating": 1116,
+    "equipBonuses": [{"name": "Martyr's Might", "description": "When your health is below 50%, your Power is increased by 15,000."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Goristro's Horns",
+    "slot": "Head",
+    "item_level": 1230,
+    "ratingStats": {"Critical Strike": 461, "Defense": 1384},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Butcher's Focus", "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, gain 196 Critical Strike for 10 seconds. (Max stack 10)"}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Demon Hunter's Trackers",
+    "slot": "Head",
+    "item_level": 1230,
+    "ratingStats": {"Accuracy": 461, "Critical Severity": 461, "Defense": 922},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Executioner's Pursuit", "description": "When you kill an enemy, there is a 20% chance you will teleport to a nearby enemy. Can only occur every 10 seconds."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Boots of the Herald",
+    "slot": "Feet",
+    "item_level": 1240,
+    "ratingStats": {"Defense": 1395, "Critical Avoidance": 465},
+    "combinedRating": 1116,
+    "equipBonuses": [{"name": "Herald's Defense", "description": "You gain 1% Defense for each player in your team. When your teammates are 25' or closer to you, their Defense is increased by 1."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Greaves of the Fallen Angel",
+    "slot": "Feet",
+    "item_level": 1230,
+    "ratingStats": {"Combat Advantage": 461, "Defense": 1384},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Brute's Might", "description": "When you are 25' or closer to your target, your Power is increased by 5,000."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Wisps of the Shadow Demon",
+    "slot": "Feet",
+    "item_level": 1230,
+    "ratingStats": {"Accuracy": 461, "Defense": 922, "Deflection": 461},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Ghosted", "description": "Whenever you are struck by a Critical Strike, you have a 10% chance to increase your Maximum Hit Points by 20% and gain 3% Defense for 10 seconds. Disabled in Thay Arena PvP."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Helm of the Skyblazer",
+    "slot": "Head",
+    "item_level": 1250,
+    "ratingStats": {"Accuracy": 469, "Critical Severity": 469, "Defense": 938},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Maximized Opportunity", "description": "When in combat with only one enemy, your Combat Advantage is increased by 7%."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Whisper's Hood of Quiet",
+    "slot": "Head",
+    "item_level": 1250,
+    "ratingStats": {"Critical Strike": 469, "Critical Severity": 469, "Defense": 938},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Eagle's Precision", "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, your Accuracy is 1.5% and Movement Speed increased by 1% for 10 seconds. (Max stack 5)"}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Greaves of the Lightguard",
+    "slot": "Feet",
+    "item_level": 1250,
+    "ratingStats": {"Defense": 1875},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Champion's Might", "description": "When your health is greater than 85%, your Power is increased by 7,500."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Garbs of the Cubi",
+    "slot": "Armor",
+    "item_level": 1230,
+    "ratingStats": {"Defense": 922, "Awareness": 461, "Deflection": 461},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Perilous Attraction", "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your target is pulled towards you for 3 seconds. Applies to a single target and does not stack. Control Immune targets suffer a 20 magnitude Bleed over its duration. Can only occur once every 10 seconds. (Not usable in PVP)"}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Plate of the Erinyes",
+    "slot": "Armor",
+    "item_level": 1240,
+    "ratingStats": {"Combat Advantage": 465, "Defense": 930, "Deflection": 465},
+    "combinedRating": 1116,
+    "equipBonuses": [{"name": "Soul Siphon", "description": "Your powers have a 10% chance to siphon life essence from your target, creating a nearby healing orb which can be picked up to restore 3% of your Maximum Hit Points over 5 seconds. (20 second cooldown)"}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Garbs of the Herald",
+    "slot": "Armor",
+    "item_level": 1240,
+    "ratingStats": {"Accuracy": 465, "Combat Advantage": 465, "Defense": 930},
+    "combinedRating": 1116,
+    "equipBonuses": [{"name": "Herald's Cry", "description": "You gain 1000 Power for each player in your team. When your teammates are 25' or further away from you, their Power is increased by 1,000."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Bone Devil's Ribcage",
+    "slot": "Armor",
+    "item_level": 1250,
+    "ratingStats": {"Critical Strike": 469, "Critical Severity": 469, "Defense": 938},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Ruthless Might", "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Strike and Critical Severity for 15 seconds. Max 5 Stacks: 7.5% Critical Strike and Critical Severity"}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Ethereal Bracers of the Past",
+    "slot": "Arms",
+    "item_level": 1240,
+    "ratingStats": {"Combat Advantage": 372, "Defense": 558, "Awareness": 930},
+    "combinedRating": 1116,
+    "equipBonuses": [{"name": "Past Regards", "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you will be teleported back 25 feet, and will gain 5000 Power for 10 seconds. (20 second cooldown)"}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Balor Braces",
+    "slot": "Arms",
+    "item_level": 1230,
+    "ratingStats": {"Accuracy": 922, "Critical Strike": 369, "Defense": 554},
+    "combinedRating": 1107,
+    "equipBonuses": [{"name": "Death Defier's Might", "description": "Gain 500 Power for each enemy you are engaged in battle. (Max of 15 targets)"}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Arms of the Last Resistance",
+    "slot": "Arms",
+    "item_level": 1250,
+    "ratingStats": {"Critical Strike": 375, "Defense": 1500},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Herald's Decree", "description": "When you have no teammates within 30' of you, your Power and Defense is increased by 5%."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Arms of the Living Fire",
+    "slot": "Arms",
+    "item_level": 1240,
+    "ratingStats": {"Critical Strike": 465, "Critical Severity": 465, "Defense": 558},
+    "combinedRating": 1116,
+    "equipBonuses": [{"name": "Survivor's Might", "description": "Gain 200 Power for each percent of health you are missing."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Breastplate of the Crusader",
+    "slot": "Armor",
+    "item_level": 1250,
+    "ratingStats": {"Combat Advantage": 469, "Defense": 938, "Critical Avoidance": 469},
+    "combinedRating": 1125,
+    "equipBonuses": [{"name": "Berserker's Might", "description": "When you have a Shield or Temp HP, your Power is increased by 8000."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Tunic of the Hell's Negotiator",
+    "slot": "Armor",
+    "item_level": 1323,
+    "ratingStats": {"Critical Strike": 1988},
+    "combinedRating": 1192,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}]
+  },
+  {
+    "name": "Tunic of the Gifted Negotiator",
+    "slot": "Armor",
+    "item_level": 1300,
+    "ratingStats": {"Critical Strike": 1950},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}]
+  },
+  {
+    "name": "Tunic of the Negotiator",
+    "slot": "Armor",
+    "item_level": 1275,
+    "ratingStats": {"Critical Strike": 1912},
+    "combinedRating": 1148
+  },
+  {
+    "name": "Tunic of the Temporary Negotiator",
+    "slot": "Armor",
+    "item_level": 1250,
+    "ratingStats": {"Critical Strike": 1875},
+    "combinedRating": 1125
+  },
+  {
+    "name": "Tunic of the Deceased Negotiator",
+    "slot": "Armor",
+    "item_level": 1225,
+    "ratingStats": {"Critical Strike": 1838},
+    "combinedRating": 1102
+  },
+  {
+    "name": "Shirt of the Interrogator",
+    "slot": "Shirt",
+    "item_level": 1225,
+    "ratingStats": {"Accuracy": 919, "Critical Severity": 919},
+    "combinedRating": 1102
+  },
+  {
+    "name": "Shirt of the Strict Interrogator",
+    "slot": "Shirt",
+    "item_level": 1250,
+    "ratingStats": {"Accuracy": 938, "Critical Severity": 938},
+    "combinedRating": 1125
+  },
+  {
+    "name": "Shirt of the Cruel Interrogator",
+    "slot": "Shirt",
+    "item_level": 1275,
+    "ratingStats": {"Accuracy": 956, "Critical Severity": 956},
+    "combinedRating": 1148
+  },
+  {
+    "name": "Shirt of the Vicious Interrogator",
+    "slot": "Shirt",
+    "item_level": 1300,
+    "ratingStats": {"Accuracy": 975, "Critical Severity": 975},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Killer's Might", "description": "When your enemy's health is greater than 75%, your Power is increased by 5,000."}]
+  },
+  {
+    "name": "Shirt of the Hell's Interrogator",
+    "slot": "Shirt",
+    "item_level": 1325,
+    "ratingStats": {"Accuracy": 994, "Critical Severity": 994},
+    "combinedRating": 1192,
+    "equipBonuses": [{"name": "Killer's Might", "description": "When your enemy's health is greater than 75%, your Power is increased by 5,000."}]
+  },
+  {
+    "name": "Upper Pact Brands of the Blaze-bond",
+    "slot": "Pants",
+    "item_level": 1325,
+    "ratingStats": {"Combat Advantage": 994, "Critical Strike": 994},
+    "combinedRating": 1192,
+    "equipBonuses": [{"name": "Charged Fury", "description": "When your Stamina is over 75%, your Power is increased by 5000."}]
+  },
+  {
+    "name": "Upper Pact Brands of the Inferno",
+    "slot": "Pants",
+    "item_level": 1300,
+    "ratingStats": {"Combat Advantage": 975, "Critical Strike": 975},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Charged Fury", "description": "When your Stamina is over 75%, your Power is increased by 5000."}]
+  },
+  {
+    "name": "Upper Pact Brands of the Pyre",
+    "slot": "Pants",
+    "item_level": 1275,
+    "ratingStats": {"Combat Advantage": 956, "Critical Strike": 956},
+    "combinedRating": 1148
+  },
+  {
+    "name": "Upper Pact Brands of the Fire",
+    "slot": "Pants",
+    "item_level": 1250,
+    "ratingStats": {"Combat Advantage": 938, "Critical Strike": 938},
+    "combinedRating": 1125
+  },
+  {
+    "name": "Upper Pact Brands of the Flame",
+    "slot": "Pants",
+    "item_level": 1225,
+    "ratingStats": {"Combat Advantage": 919, "Critical Strike": 919},
+    "combinedRating": 1102
+  },
+  {
+    "name": "Pants of the Deceased Negotiator",
+    "slot": "Pants",
+    "item_level": 1225,
+    "ratingStats": {"Critical Avoidance": 1838},
+    "combinedRating": 1102
+  },
+  {
+    "name": "Pants of the Temporary Negotiator",
+    "slot": "Pants",
+    "item_level": 1250,
+    "ratingStats": {"Critical Avoidance": 1875},
+    "combinedRating": 1125
+  },
+  {
+    "name": "Pants of the Negotiator",
+    "slot": "Pants",
+    "item_level": 1275,
+    "ratingStats": {"Critical Avoidance": 1912},
+    "combinedRating": 1148
+  },
+  {
+    "name": "Pants of the Gifted Negotiator",
+    "slot": "Pants",
+    "item_level": 1300,
+    "ratingStats": {"Critical Avoidance": 1950},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}]
+  },
+  {
+    "name": "Pants of the Hell's Negotiator",
+    "slot": "Pants",
+    "item_level": 1325,
+    "ratingStats": {"Critical Avoidance": 1988},
+    "combinedRating": 1192,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}]
+  },
+  {
+    "name": "Pants of the Hell's Interrogator",
+    "slot": "Pants",
+    "item_level": 1325,
+    "ratingStats": {"Defense": 1988},
+    "combinedRating": 1192,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}]
+  },
+  {
+    "name": "Pants of the Vicious Interrogator",
+    "slot": "Pants",
+    "item_level": 1300,
+    "ratingStats": {"Defense": 1950},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}]
+  },
+  {
+    "name": "Pants of the Cruel Interrogator",
+    "slot": "Pants",
+    "item_level": 1275,
+    "ratingStats": {"Defense": 1912},
+    "combinedRating": 1148
+  },
+  {
+    "name": "Pants of the Strict Interrogator",
+    "slot": "Pants",
+    "item_level": 1250,
+    "ratingStats": {"Defense": 1875},
+    "combinedRating": 1125
+  },
+  {
+    "name": "Pants of the Interrogator",
+    "slot": "Pants",
+    "item_level": 1225,
+    "ratingStats": {"Defense": 1838},
+    "combinedRating": 1102
+  },
+  {
+    "name": "Lower Pact Brands of the Flame",
+    "slot": "Pants",
+    "item_level": 1225,
+    "ratingStats": {"Awareness": 919, "Deflection": 919},
+    "combinedRating": 1102
+  },
+  {
+    "name": "Lower Pact Brands of the Fire",
+    "slot": "Pants",
+    "item_level": 1250,
+    "ratingStats": {"Awareness": 938, "Deflection": 938},
+    "combinedRating": 1125
+  },
+  {
+    "name": "Lower Pact Brands of the Pyre",
+    "slot": "Pants",
+    "item_level": 1275,
+    "ratingStats": {"Awareness": 956, "Deflection": 956},
+    "combinedRating": 1148
+  },
+  {
+    "name": "Lower Pact Brands of the Inferno",
+    "slot": "Pants",
+    "item_level": 1300,
+    "ratingStats": {"Awareness": 975, "Deflection": 975},
+    "combinedRating": 1170,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}]
+  },
+  {
+    "name": "Lower Pact Brands of the Blaze-bond",
+    "slot": "Pants",
+    "item_level": 1325,
+    "ratingStats": {"Awareness": 994, "Deflection": 994},
+    "combinedRating": 1192,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}]
+  },
+  {
+    "name": "Forsaken Mender's Coif",
+    "slot": "Head",
+    "item_level": 1225,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 643, "Defense": 919, "Critical Avoidance": 276},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Executioner's Might", "description": "When you kill an enemy, your Power increases by 3000 for 10 seconds. (30 second cooldown)"}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Forsaken Sentinel's Helm",
+    "slot": "Head",
+    "item_level": 1225,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Strike": 368, "Defense": 919, "Critical Avoidance": 551},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Executioner's Might", "description": "When you kill an enemy, your Power increases by 3000 for 10 seconds. (30 second cooldown)"}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Forsaken Mender's Cuisses",
+    "slot": "Feet",
+    "item_level": 1225,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 459, "Defense": 919, "Critical Avoidance": 459},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Contender's Might", "description": "At the start of combat, your Power is increased by 3000 for 10 seconds."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Forsaken Sentinel's Sabatons",
+    "slot": "Feet",
+    "item_level": 1225,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Combat Advantage": 459, "Defense": 919, "Awareness": 459},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Contender's Might", "description": "At the start of combat, your Power is increased by 3000 for 10 seconds."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Forsaken Mender's Scalemail",
+    "slot": "Armor",
+    "subSlot": "Chain",
+    "item_level": 1225,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Defense": 919, "Deflection": 919},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Survivor's Remedy", "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Brailiel's Planar Bindings",
+    "slot": "Arms",
+    "item_level": 1225,
+    "ratingStats": {"Accuracy": 919, "Defense": 551, "Awareness": 368},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Call of the Nine Hells", "description": "At the start of combat, you will call forth denizens of the Nine Hells, summoning them to help you and increasing your Power by 5000 for 15 seconds. (60 second cooldown)"}],
+    "notes": "Source: Rare Monster Oddments."
+  },
+  {
+    "name": "Frenzy Mitts",
+    "slot": "Arms",
+    "item_level": 1225,
+    "ratingStats": {"Accuracy": 919, "Critical Severity": 368, "Defense": 551},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Death Defier's Might", "description": "Gain 300 Power for each enemy you are engaged in battle. (Max of 15 targets)"}],
+    "notes": "Source: Rare Monster Oddments."
+  },
+  {
+    "name": "Forsaken Sentinel's Gauntlets",
+    "slot": "Arms",
+    "item_level": 1225,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Accuracy": 459, "Defense": 919, "Deflection": 459},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Survivor's Might", "description": "Gain 45 Power for each percent of health you are missing."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Forsaken Mender's Braces",
+    "slot": "Arms",
+    "item_level": 1225,
+    "allowedClasses": ["Bard", "Warlock", "Paladin", "Cleric"],
+    "ratingStats": {"Critical Strike": 459, "Defense": 919, "Deflection": 459},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Survivor's Might", "description": "Gain 45 Power for each percent of health you are missing."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Forsaken Sentinel's Breastplate",
+    "slot": "Armor",
+    "subSlot": "Plate",
+    "item_level": 1225,
+    "allowedClasses": ["Paladin", "Fighter", "Barbarian"],
+    "ratingStats": {"Critical Severity": 919, "Defense": 919},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Survivor's Remedy", "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds."}],
+    "notes": "Source: Avernus Adventure Zone."
+  },
+  {
+    "name": "Shielded Defender Vambrace",
+    "slot": "Arms",
+    "item_level": 1225,
+    "ratingStats": {"Defense": 551, "Critical Avoidance": 919, "Deflection": 368},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Defender Guard", "description": "Gain 1% Base Damage Boost when struck. Stacks 5 times. When you strike an enemy, the stacks are consumed and you gain -1% Incoming Damage per stack consumed for 10 seconds. Stacks cannot be applied at the same time."}],
+    "notes": "Source: Rare Monster Oddments."
+  },
+  {
+    "name": "Spiked Defender Vambrace",
+    "slot": "Arms",
+    "item_level": 1225,
+    "ratingStats": {"Critical Strike": 919, "Critical Severity": 368, "Defense": 551},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Defender Strike", "description": "Gain 1% Incoming Damage when you strike an enemy. Stacks 5 times. When you are struck, the stacks are consumed and you gain 1% Base Damage Boost per stack consumed for 10 seconds. Stacks cannot be applied at the same time."}],
+    "notes": "Source: Juma's Surprise Bag."
+  },
+  {
+    "name": "Clingy Leather Coat",
+    "slot": "Armor",
+    "item_level": 1225,
+    "ratingStats": {"Accuracy": 459, "Defense": 919, "Critical Avoidance": 459},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Perilous Attraction", "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your target is pulled towards you for 3 seconds. Applies to a single target and does not stack. Control Immune targets suffer a 20 magnitude Bleed over its duration. Can only occur once every 10 seconds. (Not usable in PVP)"}],
+    "notes": "Source: Rare Monster Oddments."
+  },
+  {
+    "name": "Dark Ritual Robe",
+    "slot": "Armor",
+    "item_level": 1225,
+    "ratingStats": {"Combat Advantage": 459, "Defense": 919, "Deflection": 459},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Soul Siphon", "description": "Your powers have a 10% chance to siphon life essence from your target, creating a nearby healing orb which can be picked up to restore 3% of your Maximum Hit Points over 5 seconds. (20 second cooldown)"}],
+    "notes": "Source: Rare Monster Oddments."
+  },
+  {
+    "name": "Safety Harness of Protection",
+    "slot": "Armor",
+    "item_level": 1225,
+    "ratingStats": {"Defense": 919, "Awareness": 459, "Deflection": 459},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Veiled Barricade", "description": "Receiving damage from an enemy increases your Defense by 1000 but reduces your Accuracy by 1000. (Max 5 stacks)"}],
+    "notes": "Source: Rare Monster Oddments."
+  },
+  {
+    "name": "Busted Iron Leggings",
+    "slot": "Feet",
+    "item_level": 1225,
+    "ratingStats": {"Defense": 919, "Awareness": 459, "Critical Avoidance": 459},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Gluttonous Might", "description": "Increases damage dealt by 5%. Decreases incoming healing by 25%."}],
+    "notes": "Source: Rare Monster Oddments."
+  },
+  {
+    "name": "Armando's Dueling Boots",
+    "slot": "Feet",
+    "item_level": 1225,
+    "ratingStats": {"Critical Strike": 459, "Critical Severity": 459, "Defense": 919},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Elegant Reply", "description": "Whenever you Deflect an attack, you have a 30% chance to reflect 5% of the damage back to the attacker. This effect may only occur once every 10 seconds."}],
+    "notes": "Source: Rare Monster Oddments."
+  },
+  {
+    "name": "Mighty Storm Slippers",
+    "slot": "Feet",
+    "item_level": 1225,
+    "ratingStats": {"Combat Advantage": 459, "Critical Strike": 459, "Defense": 919},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Charged Might", "description": "When Action Points are full, your Power is increased by 5000."}],
+    "notes": "Source: Rare Monster Oddments."
+  },
+  {
+    "name": "Barbed Cultist Greaves",
+    "slot": "Feet",
+    "item_level": 1225,
+    "ratingStats": {"Accuracy": 459, "Critical Strike": 459, "Defense": 919},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Bloodletting", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Maximum Hit Points by 20% and gain 3% Damage for 10 seconds."}],
+    "notes": "Source: Juma's Surprise Bag."
+  },
+  {
+    "name": "Poisoned Leathers of Rage",
+    "slot": "Armor",
+    "item_level": 1225,
+    "ratingStats": {"Accuracy": 459, "Critical Severity": 459, "Defense": 919},
+    "combinedRating": 1102,
+    "equipBonuses": [{"name": "Reckless Brutality", "description": "Whenever you deal damage to an enemy gain a stack of Reckless Brutality, increasing your Power by 1000 but increasing your damage taken by 2% for 5 seconds. (Max 5 stacks)"}],
+    "notes": "Source: Rare Monster Oddments."
+  }
+]

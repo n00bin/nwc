@@ -1,0 +1,587 @@
+[
+  {
+    "name": "Dragon Turtle Scale Ring",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Critical Strike": 2272, "Defense": 758},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "Poisonous Daily", "description": "When you use a Daily power, your targets will be poisoned for 5 seconds. (30 second cooldown)"}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Blooming Ring of the Rose",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Combat Advantage": 758, "Critical Severity": 2272},
+    "percentStats": {"Damage against Beasts": 10},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "Beast Hunter", "description": "+10% Damage against Beasts"}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Budding Ring of the Rose",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Combat Advantage": 742, "Critical Severity": 2228},
+    "percentStats": {"Damage against Beasts": 10},
+    "combinedRating": 792,
+    "equipBonuses": [{"name": "Beast Hunter", "description": "+10% Damage against Beasts"}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Sprouting Ring of the Rose",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Combat Advantage": 735, "Critical Severity": 2205},
+    "combinedRating": 784
+  },
+  {
+    "name": "Withering Ring of the Rose",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Combat Advantage": 724, "Critical Severity": 2171},
+    "combinedRating": 772
+  },
+  {
+    "name": "Decaying Ring of the Rose",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Combat Advantage": 705, "Critical Severity": 2115},
+    "combinedRating": 752
+  },
+  {
+    "name": "Leading Ring of the Herald",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Combat Advantage": 2820},
+    "combinedRating": 752
+  },
+  {
+    "name": "Leading Ring of the Guide",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Combat Advantage": 2895},
+    "combinedRating": 772
+  },
+  {
+    "name": "Leading Ring of the Mentor",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Combat Advantage": 2940},
+    "combinedRating": 784
+  },
+  {
+    "name": "Leading Ring of the Teacher",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Combat Advantage": 2970},
+    "combinedRating": 792,
+    "equipBonuses": [{"name": "Tit for Tat", "description": "Your At-Will and Encounter Powers do 3% more damage, but your Daily Powers do 30% less damage."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Leading Ring of the Sage",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Combat Advantage": 3030},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "Tit for Tat", "description": "Your At-Will and Encounter Powers do 3% more damage, but your Daily Powers do 30% less damage."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Striking Ring of the Veteran",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Critical Strike": 3030},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "Swordsman's Perk", "description": "Your Melee Powers do 3% more damage."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Striking Ring of the Master",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Critical Strike": 2970},
+    "combinedRating": 792,
+    "equipBonuses": [{"name": "Swordsman's Perk", "description": "Your Melee Powers do 3% more damage."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Striking Ring of the Knight",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Critical Strike": 2940},
+    "combinedRating": 784
+  },
+  {
+    "name": "Striking Ring of the Squire",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Critical Strike": 2895},
+    "combinedRating": 772
+  },
+  {
+    "name": "Striking Ring of the Soldier",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Critical Strike": 2820},
+    "combinedRating": 752
+  },
+  {
+    "name": "Piercing Ring of the Urchin",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Critical Severity": 2820},
+    "combinedRating": 752
+  },
+  {
+    "name": "Piercing Ring of the Thief",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Critical Severity": 2895},
+    "combinedRating": 772
+  },
+  {
+    "name": "Piercing Ring of the Criminal",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Critical Severity": 2940},
+    "combinedRating": 784
+  },
+  {
+    "name": "Piercing Ring of the Killer",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Critical Severity": 2970},
+    "percentStats": {"Damage against Undead": 10},
+    "combinedRating": 792,
+    "equipBonuses": [{"name": "Undead Hunter", "description": "+10% Damage against Undead"}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Piercing Ring of the Assassin",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Critical Severity": 3030},
+    "percentStats": {"Damage against Undead": 10},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "Undead Hunter", "description": "+10% Damage against Undead"}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Blooming Ring of Ivy",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Accuracy": 758, "Critical Strike": 2272},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "Poisonous Strike", "description": "Your powers have a 3% chance to Poison their target."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Budding Ring of Ivy",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Accuracy": 742, "Critical Strike": 2228},
+    "combinedRating": 792,
+    "equipBonuses": [{"name": "Poisonous Strike", "description": "Your powers have a 3% chance to Poison their target."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Sprouting Ring of Ivy",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Accuracy": 735, "Critical Strike": 2205},
+    "combinedRating": 784
+  },
+  {
+    "name": "Withering Ring of Ivy",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Accuracy": 724, "Critical Strike": 2171},
+    "combinedRating": 772
+  },
+  {
+    "name": "Decaying Ring of Ivy",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Accuracy": 705, "Critical Strike": 2115},
+    "combinedRating": 752
+  },
+  {
+    "name": "Tanner's Scrapped Ring",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Accuracy": 705, "Critical Severity": 2115},
+    "combinedRating": 752
+  },
+  {
+    "name": "Tanner's Furred Ring",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Accuracy": 724, "Critical Severity": 2171},
+    "combinedRating": 772
+  },
+  {
+    "name": "Tanner's Hide Ring",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Accuracy": 735, "Critical Severity": 2205},
+    "combinedRating": 784
+  },
+  {
+    "name": "Tanner's Leather Ring",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Accuracy": 742, "Critical Severity": 2228},
+    "combinedRating": 792,
+    "equipBonuses": [{"name": "Manticore's Mane Bite", "description": "When you use a Daily power, the next enemy that attacks you takes damage equal to 50% of your max health (30 second cooldown). In PvP this damage is reduced to 10% of your max health."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Tanner's Hardened Leather Ring",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Accuracy": 738, "Critical Severity": 2272},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "Manticore's Mane Bite", "description": "When you use a Daily power, the next enemy that attacks you takes damage equal to 50% of your max health (30 second cooldown). In PvP this damage is reduced to 10% of your max health."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Defending Ring of the Sentinel",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Defense": 3030},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "Bulwark's Shield", "description": "You take 3% less damage from Ranged attacks."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Defending Ring of the Keeper",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Defense": 2970},
+    "combinedRating": 792,
+    "equipBonuses": [{"name": "Bulwark's Shield", "description": "You take 3% less damage from Ranged attacks."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Defending Ring of the Warden",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Defense": 2940},
+    "combinedRating": 784
+  },
+  {
+    "name": "Defending Ring of the Sentry",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Defense": 2895},
+    "combinedRating": 772
+  },
+  {
+    "name": "Defending Ring of the Guard",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Defense": 2820},
+    "combinedRating": 752
+  },
+  {
+    "name": "Pinched Gold Ring",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Accuracy": 705, "Combat Advantage": 2115},
+    "combinedRating": 752
+  },
+  {
+    "name": "Tapered Gold Ring",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Accuracy": 724, "Combat Advantage": 2171},
+    "combinedRating": 772
+  },
+  {
+    "name": "Split Gold Ring",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Accuracy": 735, "Combat Advantage": 2205},
+    "combinedRating": 784
+  },
+  {
+    "name": "Twisting Gold Ring",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Accuracy": 742, "Combat Advantage": 2228},
+    "combinedRating": 792,
+    "equipBonuses": [{"name": "At-Will Perk", "description": "Your At-Will Powers do 3% more damage."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Bypass Gold Ring",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Accuracy": 758, "Combat Advantage": 2272},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "At-Will Perk", "description": "Your At-Will Powers do 3% more damage."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Thorn Ring of the Forest",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Combat Advantage": 2272, "Defense": 758},
+    "percentStats": {"Damage against Beasts": 10},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "Beast Hunter", "description": "+10% Damage against Beasts"}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Spined Ring of the Forest",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Combat Advantage": 2228, "Defense": 742},
+    "percentStats": {"Damage against Beasts": 10},
+    "combinedRating": 792,
+    "equipBonuses": [{"name": "Beast Hunter", "description": "+10% Damage against Beasts"}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Prickly Ring of the Forest",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Combat Advantage": 2205, "Defense": 735},
+    "combinedRating": 784
+  },
+  {
+    "name": "Vine Ring of the Forest",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Combat Advantage": 2171, "Defense": 724},
+    "combinedRating": 772
+  },
+  {
+    "name": "Moss Ring of the Forest",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Combat Advantage": 2115, "Defense": 705},
+    "combinedRating": 752
+  },
+  {
+    "name": "Guiding Ring of the Traveler",
+    "slot": "Ring",
+    "item_level": 940,
+    "ratingStats": {"Accuracy": 2820},
+    "combinedRating": 752
+  },
+  {
+    "name": "Guiding Ring of the Scout",
+    "slot": "Ring",
+    "item_level": 965,
+    "ratingStats": {"Accuracy": 2895},
+    "combinedRating": 772
+  },
+  {
+    "name": "Guiding Ring of the Archer",
+    "slot": "Ring",
+    "item_level": 980,
+    "ratingStats": {"Accuracy": 2940},
+    "combinedRating": 784
+  },
+  {
+    "name": "Guiding Ring of the Spy",
+    "slot": "Ring",
+    "item_level": 990,
+    "ratingStats": {"Accuracy": 2970},
+    "combinedRating": 792,
+    "equipBonuses": [{"name": "Sniper's Perk", "description": "Your Ranged Powers do 3% more damage."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Guiding Ring of the Sharp-shooter",
+    "slot": "Ring",
+    "item_level": 1010,
+    "ratingStats": {"Accuracy": 3030},
+    "combinedRating": 808,
+    "equipBonuses": [{"name": "Sniper's Perk", "description": "Your Ranged Powers do 3% more damage."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Star-tanned Shirt of Hardened Leather",
+    "slot": "Shirt",
+    "item_level": 1010,
+    "ratingStats": {"Combat Advantage": 758, "Critical Strike": 758},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Star-bleached Shirt of Silk",
+    "slot": "Shirt",
+    "item_level": 1010,
+    "ratingStats": {"Combat Advantage": 758, "Critical Severity": 758},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Star-studded Shirt of Gold",
+    "slot": "Shirt",
+    "item_level": 1010,
+    "ratingStats": {"Accuracy": 758, "Critical Strike": 758},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Shirt of the Outfitter",
+    "slot": "Shirt",
+    "item_level": 1010,
+    "ratingStats": {"Critical Strike": 758, "Critical Severity": 758},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Shirt of the Sage",
+    "slot": "Shirt",
+    "item_level": 1010,
+    "ratingStats": {"Combat Advantage": 1515},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Shirt of the Sharp-shooter",
+    "slot": "Shirt",
+    "item_level": 1010,
+    "ratingStats": {"Accuracy": 1515},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Shirt of the Champion",
+    "slot": "Shirt",
+    "item_level": 1010,
+    "ratingStats": {"Critical Strike": 1515},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Shirt of the Enchanter",
+    "slot": "Shirt",
+    "item_level": 1010,
+    "ratingStats": {"Accuracy": 758, "Combat Advantage": 758},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Halaster's Party Shirt",
+    "slot": "Shirt",
+    "item_level": 1010,
+    "ratingStats": {"Accuracy": 758, "Critical Severity": 758},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Shirt of the Assassin",
+    "slot": "Shirt",
+    "item_level": 1010,
+    "ratingStats": {"Critical Severity": 1515},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Encounter Reprieve", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Pants of the Strategist",
+    "slot": "Pants",
+    "item_level": 1010,
+    "ratingStats": {"Awareness": 1515},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Star-tanned Pants of Hardened Leather",
+    "slot": "Pants",
+    "item_level": 1010,
+    "ratingStats": {"Critical Avoidance": 758, "Deflection": 758},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Star-bleached Pants of Silk",
+    "slot": "Pants",
+    "item_level": 1010,
+    "ratingStats": {"Defense": 758, "Critical Avoidance": 758},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Star-studded Pants of Gold",
+    "slot": "Pants",
+    "item_level": 1010,
+    "ratingStats": {"Awareness": 758, "Deflection": 758},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Pants of the Outfitter",
+    "slot": "Pants",
+    "item_level": 1010,
+    "ratingStats": {"Defense": 758, "Deflection": 758},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Pants of the Duelist",
+    "slot": "Pants",
+    "item_level": 1010,
+    "ratingStats": {"Deflection": 1515},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Pants of the Enchanter",
+    "slot": "Pants",
+    "item_level": 1010,
+    "ratingStats": {"Awareness": 758, "Critical Avoidance": 758},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Pants of the Sentinel",
+    "slot": "Pants",
+    "item_level": 1010,
+    "ratingStats": {"Defense": 1515},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Halaster's Party Pants",
+    "slot": "Pants",
+    "item_level": 1010,
+    "ratingStats": {"Defense": 758, "Awareness": 758},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  },
+  {
+    "name": "Pants of the Veteran",
+    "slot": "Pants",
+    "item_level": 1010,
+    "ratingStats": {"Critical Avoidance": 1515},
+    "combinedRating": 909,
+    "equipBonuses": [{"name": "Critical Charge", "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds."}],
+    "source": "Tower of the Mad Mage"
+  }
+]
