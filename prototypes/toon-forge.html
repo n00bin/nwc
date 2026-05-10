@@ -1896,6 +1896,7 @@
           role: state.role, class: state.class, paragon: state.paragon,
           race: state.race, raceChoices: state.raceChoices,
           il: state.il, name: state.name,
+          gearRarities: state.gearRarities,
           abil: state.abil, abilBase: state.abilBase, abilLevels: state.abilLevels,
           gear: state.gear, kits: state.kits,
           artifacts: state.artifacts,
@@ -1966,6 +1967,16 @@
       }
       if (!state.mountCollection) {
         state.mountCollection = { Common: 0, Uncommon: 0, Rare: 0, Epic: 0, Legendary: 0, Mythic: 0, Celestial: 0 };
+      }
+      // Per-gear-slot rarity (Mythic / Celestial) — defaults to Celestial
+      // since the gear data is captured at that baseline.
+      if (!state.gearRarities) state.gearRarities = {};
+      if (typeof GEAR_SLOTS !== "undefined") {
+        for (const slotEntry of GEAR_SLOTS) {
+          if (state.gearRarities[slotEntry.label] == null) {
+            state.gearRarities[slotEntry.label] = "Celestial";
+          }
+        }
       }
       // Per-individual-insignia tier — fall back chain:
       //   slot.insigniaTiers (current) > slot.insigniaTier (per-mount-slot
@@ -2948,6 +2959,19 @@
          summoned_comp_IL = rarity_IL + companion_gear + enchant + enhancement
          active_mount_IL  = active_equip_power_IL + active_combat_power_IL
     */
+    // Per-gear-slot rarity → IL multiplier. Data file is stored at the
+    // Celestial baseline; selecting Mythic for a gear slot scales its IL
+    // down by ~12.5% (verified: n00b's 2 weapons being Mythic produce
+    // a 1,314 IL drop on a build whose data has them at Celestial).
+    const GEAR_RARITY_IL_FACTOR = {
+      "Celestial": 1.0,
+      "Mythic":    0.875
+    };
+    function gearRarityFactor(slotLabel) {
+      const r = (state.gearRarities && state.gearRarities[slotLabel]) || "Celestial";
+      return GEAR_RARITY_IL_FACTOR[r] != null ? GEAR_RARITY_IL_FACTOR[r] : 1.0;
+    }
+
     // Returns { total, parts: [{label, value, sources?:[{name, il}]}] }
     // The parts list lets us show a TIL breakdown panel for debugging.
     function computeGearArtifactILBreakdown() {
@@ -2956,7 +2980,8 @@
         if (value > 0) parts.push({ label, value, sources });
       };
       let cur, sources;
-      // Equipped gear (12 slots; both rings count)
+      // Equipped gear (12 slots; both rings count). IL is scaled by the
+      // per-slot rarity (data is at Celestial baseline; Mythic = ×0.875).
       cur = 0; sources = [];
       if (state.gear && typeof GEAR_SLOTS !== "undefined") {
         for (const slotEntry of GEAR_SLOTS) {
@@ -2964,8 +2989,11 @@
           if (!itemName) continue;
           const item = findGearByName(itemName, slotEntry.slot);
           if (item && item.item_level) {
-            cur += item.item_level;
-            sources.push({ name: `${slotEntry.label}: ${item.name}`, il: item.item_level });
+            const factor = gearRarityFactor(slotEntry.label);
+            const scaledIL = Math.round(item.item_level * factor);
+            cur += scaledIL;
+            const rarity = (state.gearRarities && state.gearRarities[slotEntry.label]) || "Celestial";
+            sources.push({ name: `${slotEntry.label}: ${item.name} (${rarity})`, il: scaledIL });
           }
         }
       }
@@ -3792,6 +3820,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
+        gr: state.gearRarities,
         boons: [...state.boons], buffs: [...state.buffs]
       });
       if (key === _engineCacheKey && _engineResult) return _engineResult;
@@ -4011,6 +4040,7 @@
 
     function renderGear() {
       const g = document.getElementById("gear-grid");
+      const RARITY_LIST = ["Mythic","Celestial"];
       g.innerHTML = GEAR_SLOTS.map(s => {
         const v = state.gear[s.label] || "";
         const filled = !!v;
@@ -4028,16 +4058,28 @@
                ${kitName ? "🔧 " + kitName : "+ Reinforcement Kit"}
              </div>`
           : "";
+        // Rarity picker — Mythic / Celestial. Data is stored at Celestial
+        // baseline; picking Mythic scales IL down (and stats, eventually).
+        const curRar = (state.gearRarities && state.gearRarities[s.label]) || "Celestial";
+        const rarityOpts = RARITY_LIST.map(t =>
+          `<option value="${t}"${t === curRar ? " selected" : ""}>${t}</option>`).join("");
+        const rarityChip = filled
+          ? `<select class="gear-rarity-mini" data-gear-rarity="${s.label}"
+                style="margin-top:0.25rem;font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;width:100%;">
+              ${rarityOpts}
+             </select>`
+          : "";
         return `
           <div class="slot ${filled ? "filled" : ""}">
             <div class="slot-label">${s.label}${opts.length === 0 ? " — no items" : ""}</div>
             <select data-gear="${s.label}" data-slot-type="${s.slot}">
               ${optionsHtml}
             </select>
+            ${rarityChip}
             ${kitChip}
           </div>`;
       }).join("");
-      g.querySelectorAll("select").forEach(sel => {
+      g.querySelectorAll("select[data-gear]").forEach(sel => {
         sel.addEventListener("change", e => {
           state.gear[sel.dataset.gear] = e.target.value;
           applyAutoTIL();
@@ -4047,6 +4089,13 @@
           renderGearWarnings();
           rerenderAll();
           toast(e.target.value ? `Equipped ${e.target.value} (${sel.dataset.gear})` : `Cleared ${sel.dataset.gear}`);
+        });
+      });
+      g.querySelectorAll("select[data-gear-rarity]").forEach(sel => {
+        sel.addEventListener("change", e => {
+          if (!state.gearRarities) state.gearRarities = {};
+          state.gearRarities[sel.dataset.gearRarity] = e.target.value;
+          rerenderAll();
         });
       });
       g.querySelectorAll("[data-gear-kit]").forEach(el => {
