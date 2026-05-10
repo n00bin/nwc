@@ -1527,6 +1527,20 @@
           </label>
           <input type="range" id="mount-bolster" min="0" max="125" value="100" style="width:100%;">
         </div>
+        <div class="field" style="margin-top:0.6rem;">
+          <label>All companion rarity
+            <span class="hint-icon" data-tip="The tier we assume your slotted companions (summoned + 5 active) are running at. The engine scales each companion's Combined Rating and per-stat percent boosts from the data's base rarity up to this tier.">?</span>
+          </label>
+          <select id="comp-rarity" style="width:100%;">
+            <option value="Common">Common (75 IL)</option>
+            <option value="Uncommon">Uncommon (150 IL)</option>
+            <option value="Rare">Rare (250 IL)</option>
+            <option value="Epic">Epic (375 IL)</option>
+            <option value="Legendary">Legendary (550 IL)</option>
+            <option value="Mythic" selected>Mythic (750 IL)</option>
+            <option value="Celestial">Celestial (900 IL)</option>
+          </select>
+        </div>
       </div>
 
       <div class="panel">
@@ -1787,6 +1801,11 @@
       // i.e. data values apply as listed. See mekaniks.html "Bolster".
       companionBolster: 100,
       mountBolster: 100,
+      // Rarity tier we assume your slotted comps (summoned + 5 active) are
+      // running at. Companion power data is captured at each power's base
+      // rarity (item_level field); the engine scales CR + stats[] from the
+      // base IL up to this target IL.
+      companionRarity: "Mythic",
       flankUptime: 0.70,  // % of hits with Combat Advantage active (0..1)
       boons: new Map(),  // key: "tier1:1" / "master:3" → { tier, boonId, points or ranks }
       // Order in which master boons were first ranked (by boonId).
@@ -1829,6 +1848,7 @@
           activeEquipPower: state.activeEquipPower,
           companionBolster: state.companionBolster,
           mountBolster: state.mountBolster,
+          companionRarity: state.companionRarity,
           boons: [...state.boons],
           masterOrder: state.masterOrder,
           guildBoonPicks: state.guildBoonPicks,
@@ -1865,8 +1885,10 @@
       // Bolster sliders
       if (state.companionBolster == null) state.companionBolster = 100;
       if (state.mountBolster     == null) state.mountBolster     = 100;
+      if (state.companionRarity  == null) state.companionRarity  = "Mythic";
       setVal("comp-bolster",  state.companionBolster);
       setVal("mount-bolster", state.mountBolster);
+      setVal("comp-rarity",   state.companionRarity);
       const cbd = document.getElementById("comp-bolster-display");
       if (cbd) cbd.textContent = state.companionBolster + "%";
       const mbd = document.getElementById("mount-bolster-display");
@@ -2862,6 +2884,26 @@
       return COMPANIONS_DATA.find(c => c.name === name) || null;
     }
 
+    // Companion rarity → item-level mapping. Both CR and percent stats[]
+    // scale linearly with IL. SINGLE_STAT and DOUBLE_STAT tables in the
+    // CLAUDE.md companion notes both follow value/IL = constant, so a
+    // simple linear ratio works for any companion power.
+    const COMPANION_RARITY_IL = {
+      "Common":    75,
+      "Uncommon":  150,
+      "Rare":      250,
+      "Epic":      375,
+      "Legendary": 550,
+      "Mythic":    750,
+      "Celestial": 900
+    };
+    function compRarityScale(targetRarity, basePower) {
+      const targetIL = COMPANION_RARITY_IL[targetRarity] || COMPANION_RARITY_IL.Mythic;
+      const baseIL = (basePower && basePower.item_level) || targetIL;
+      if (baseIL <= 0) return 1;
+      return targetIL / baseIL;
+    }
+
     function buildEngineCharacter(s) {
       // Resolve gear: state.gear is { "Head": "name string", ... };
       // engine wants { "Head": gearObject }.
@@ -3063,20 +3105,23 @@
       // Helper: take a companion power and push its CR (12-stat distribution)
       // plus its per-stat percent contributions. Not bolstered (player bonus
       // powers are exempt per mekaniks docs). Companion power stats[] are
-      // percentages stored at the data's base rarity.
+      // percentages stored at the data's BASE rarity (item_level field);
+      // we scale them up to the user's chosen `companionRarity`.
+      const compRarity = s.companionRarity || "Mythic";
       function pushCompanionPower(label, power) {
         if (!power) return;
-        const cr = expandCR(power.combinedRating, 1);
+        const scale = compRarityScale(compRarity, power);
+        const cr = expandCR(power.combinedRating, scale);
         if (cr) {
-          buffs.push({ source: label + " CR", ratingStats: cr });
+          buffs.push({ source: label + " CR (" + compRarity + ")", ratingStats: cr });
         }
         const percentStats = {};
         for (const st of (power.stats || [])) {
           if (!st || !st.stat) continue;
-          percentStats[st.stat] = (percentStats[st.stat] || 0) + (st.value || 0);
+          percentStats[st.stat] = (percentStats[st.stat] || 0) + (st.value || 0) * scale;
         }
         if (Object.keys(percentStats).length) {
-          buffs.push({ source: label + " bonus", percentStats });
+          buffs.push({ source: label + " bonus (" + compRarity + ")", percentStats });
         }
       }
 
@@ -4940,6 +4985,16 @@
     }
     wireBolsterSlider("comp-bolster",  "comp-bolster-display",  "companionBolster");
     wireBolsterSlider("mount-bolster", "mount-bolster-display", "mountBolster");
+
+    // Companion rarity dropdown — scales all 6 slotted comps' CR + stats[]
+    const compRaritySel = document.getElementById("comp-rarity");
+    if (compRaritySel) {
+      compRaritySel.value = state.companionRarity || "Mythic";
+      compRaritySel.addEventListener("change", e => {
+        state.companionRarity = e.target.value;
+        rerenderAll();
+      });
+    }
     // (Power picker removed — type magnitude directly. Sourcing reliable
     //  per-class power data is deferred until we have a sustainable
     //  pipeline for all 9 classes.)
