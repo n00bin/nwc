@@ -3370,9 +3370,11 @@
         role: state.role, gear: state.gear, art: state.artifacts, abil: state.abil,
         sum: state.summoned, sumEnh: state.summonedEnh, sumEnch: state.summonedEnchant,
         sumG: state.summonedGear,
+        ac: state.activeComps,
         stable: state.stable, mcp: state.activeCombatPower, mep: state.activeEquipPower,
         ench: state.enchants, ovr: state.overloads, kits: state.kits,
         gld: state.guildBoonPicks,
+        cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity,
         boons: [...state.boons], buffs: [...state.buffs]
       });
       if (key === _engineCacheKey && _engineResult) return _engineResult;
