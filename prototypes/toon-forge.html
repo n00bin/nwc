@@ -3752,6 +3752,18 @@
           entry.percentStats = e.percentStats || {};
         }
         buffs.push(entry);
+        // Enchants with a combinedRating contribute that CR to all 13 core
+        // stats (verified vs in-game stat panel 2026-05-10). Universal enchants
+        // at Celestial are 1620 CR; Combat/Bonus slots are 0 CR in current data.
+        if (e.combinedRating) {
+          const cr = expandCR(e.combinedRating, 1);
+          if (cr) {
+            buffs.push({
+              source: `Enchant ${slotLabel} CR: ${e.name}`,
+              ratingStats: cr
+            });
+          }
+        }
       }
       const ench = s.enchants || {};
       (ench.offense || []).forEach((n, i) => pushEnchant("offense", `Offense ${i+1}`, n));
