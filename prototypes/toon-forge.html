@@ -1574,7 +1574,7 @@
     <div class="step-panel" data-panel="6">
       <div class="panel">
         <h2 id="sim-title">Run the math</h2>
-        <p class="hint" id="sim-hint">Pick a power magnitude. The math uses the universal NW PvE enemy: <strong>50% Defense</strong>, <strong>50% Deflect</strong>, <strong>90% Deflect Severity</strong>, and 0% Awareness / Crit Avoid / Accuracy. Your Accuracy counters their Deflect Severity.</p>
+        <p class="hint" id="sim-hint">Type your power's magnitude from the in-game tooltip. We'll run the math against a typical PvE enemy and show what one hit would actually do.</p>
         <div class="row-2">
           <div class="field">
             <label>Sample power magnitude
@@ -4199,10 +4199,10 @@
       }
       if (hintEl) {
         hintEl.innerHTML = isHealer
-          ? `Pick a power magnitude. Healing math: <strong>(mag/100) × (TIL/10) × 1.10 × (1+Power) × (1+Outgoing Healing)</strong>, then × (1+CritSev/2) on a crit. NW halves Critical Severity for heals.`
+          ? `Type your heal's magnitude from the in-game tooltip. We'll show roughly how much it heals. <strong>Critical Severity is halved on heals</strong>, so crit-heals get a smaller bonus than crit-damage.`
           : isTank
-          ? `How much damage you'd take from one boss hit. Universal boss: <strong>90% Power, 90% CA (always on you), 90% CritSev, 50% crit chance</strong>. Your Awareness, Defense, Crit Avoid, Deflect, and Deflect Severity all reduce incoming damage.`
-          : `Pick a power magnitude. The math uses the universal NW PvE enemy: <strong>50% Defense</strong>, <strong>50% Deflect</strong>, <strong>90% Deflect Severity</strong>, and 0% Awareness / Crit Avoid / Accuracy. Your Accuracy counters their Deflect Severity.`;
+          ? `Type a sample boss-hit magnitude. We'll show how much damage you'd take — your defensive stats (Awareness, Defense, Crit Avoid, Deflect) cut it down.`
+          : `Type your power's magnitude from the in-game tooltip. We'll run the math against a typical PvE enemy and show what one hit would actually do.`;
       }
 
       // Base before per-hit multipliers
