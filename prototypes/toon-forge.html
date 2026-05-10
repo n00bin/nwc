@@ -3559,6 +3559,43 @@
         }
       }
 
+      // Equipped gear's Combined Rating distributes to all 12 core stats.
+      // Per mekaniks: CR comes from companions, mounts, insignias, AND
+      // certain gear. Each gear piece's combinedRating field is a per-stat
+      // bonus on top of its specific ratingStats. Scaled by per-slot
+      // gear rarity (Mythic 0.875× Celestial baseline).
+      if (gear) {
+        for (const slotLabel in gear) {
+          const item = gear[slotLabel];
+          if (!item || !item.combinedRating) continue;
+          const factor = gearRarityFactor(slotLabel);
+          const cr = expandCR(item.combinedRating, factor);
+          if (cr) {
+            const rarity = (s.gearRarities && s.gearRarities[slotLabel]) || "Celestial";
+            buffs.push({
+              source: `Gear CR: ${slotLabel} — ${item.name} (${rarity})`,
+              ratingStats: cr
+            });
+          }
+        }
+      }
+      // Artifact CR — same distribution, no rarity scaling for now.
+      if (artifacts.primary && artifacts.primary.combinedRating) {
+        const cr = expandCR(artifacts.primary.combinedRating, 1);
+        if (cr) buffs.push({
+          source: `Artifact CR: ${artifacts.primary.name} (primary)`,
+          ratingStats: cr
+        });
+      }
+      for (const a of (artifacts.secondary || [])) {
+        if (!a || !a.combinedRating) continue;
+        const cr = expandCR(a.combinedRating, 1);
+        if (cr) buffs.push({
+          source: `Artifact CR: ${a.name} (secondary)`,
+          ratingStats: cr
+        });
+      }
+
       // Helper: take a companion power and push its CR (12-stat distribution)
       // plus its per-stat percent contributions. Not bolstered (player bonus
       // powers are exempt per mekaniks docs). Companion power stats[] are
