@@ -1269,6 +1269,75 @@
     }
     .sim-table tr.expected { background: rgba(240,136,62,0.08); }
     .sim-table tr.expected td.dmg { color: var(--gold); font-size: 1.05em; }
+
+    /* ===== Sim cards (replaces sim-table for step 6) ===== */
+    .sim-cards { display: flex; flex-direction: column; gap: 0.55rem; margin-top: 0.6rem; }
+    .sim-hero {
+      background: linear-gradient(180deg, rgba(240,136,62,0.14), rgba(240,136,62,0.04));
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 0.95rem 1rem 1.05rem;
+      text-align: center;
+    }
+    .sim-hero-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-mute);
+    }
+    .sim-hero-value {
+      font-family: Georgia, serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-top: 0.25rem;
+      line-height: 1.1;
+    }
+    .sim-card {
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.7rem 0.85rem 0.75rem;
+    }
+    .sim-card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .sim-card-icon { font-size: 1.05rem; line-height: 1; }
+    .sim-card-desc {
+      font-size: 0.78rem;
+      color: var(--text-mute);
+      margin-top: 0.3rem;
+      line-height: 1.45;
+    }
+    .sim-card-divider {
+      border-top: 1px solid var(--border);
+      margin: 0.6rem 0 0.5rem;
+    }
+    .sim-card-stats {
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+    }
+    .sim-card-stat { text-align: center; flex: 1; min-width: 0; }
+    .sim-card-stat-label {
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-mute);
+    }
+    .sim-card-stat-value {
+      font-family: Georgia, serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 0.18rem;
+      color: var(--text);
+    }
+    .sim-card-stat-value.dmg { color: var(--amber); }
     .tag {
       display: inline-block;
       font-size: 0.66rem;
@@ -1278,7 +1347,7 @@
       letter-spacing: 0.05em;
     }
     .tag-cr { background: rgba(240,136,62,0.2); color: var(--amber); }
-    .tag-fl { background: rgba(63,185,80,0.2); color: var(--pos); }
+    .tag-ca { background: rgba(63,185,80,0.2); color: var(--pos); }
     .tag-df { background: rgba(248,81,73,0.2); color: var(--neg); }
 
     .toast {
@@ -1540,8 +1609,8 @@
         </div>
 
         <div class="field" id="sim-flank-field">
-          <label>Flank uptime
-            <span class="hint-icon" data-tip="What % of your hits land while flanking the enemy. In a group with a tank, ~95% (tank creates CA). Solo, usually ~5%. Affects how much Combat Advantage actually matters.">?</span>
+          <label>Combat Advantage uptime
+            <span class="hint-icon" data-tip="What % of your hits land with Combat Advantage (CA) active — typically when flanking or when a tank/teammate creates CA for you. In a group with a tank, ~95%. Solo, usually ~5%. Affects how much your CA stat actually matters.">?</span>
             <span style="float:right;color:var(--amber);font-weight:600;" id="sim-flank-display">70%</span>
           </label>
           <div style="display:flex;gap:0.4rem;align-items:center;">
@@ -1551,17 +1620,7 @@
           </div>
         </div>
 
-        <table class="sim-table">
-          <thead>
-            <tr>
-              <th>Scenario</th>
-              <th>Tags</th>
-              <th>Probability</th>
-              <th style="text-align:right;">Damage</th>
-            </tr>
-          </thead>
-          <tbody id="sim-body"></tbody>
-        </table>
+        <div class="sim-cards" id="sim-body"></div>
       </div>
 
       <div class="panel">
@@ -4146,9 +4205,7 @@
       const flankField = document.getElementById("sim-flank-field");
       if (flankField) flankField.style.display = isHealer ? "none" : "";
 
-      // Update the table column header + panel title/hint for the current mode.
-      const lastTh = document.querySelector(".sim-table thead th:last-child");
-      if (lastTh) lastTh.textContent = isHealer ? "Heal Output" : (isTank ? "Damage Taken" : "Damage");
+      // Update the panel title/hint for the current mode.
       const titleEl = document.getElementById("sim-title");
       const hintEl = document.getElementById("sim-hint");
       if (titleEl) {
@@ -4213,10 +4270,10 @@
         expected = Math.round(pStd * dStandard + pCo * dCrit + pDf * dDefl + pCD * dCritDefl);
 
         rows = [
-          { sc: "Standard hit",   tags: ["—","—"],   p: pStd, d: dStandard },
-          { sc: "Crit",           tags: ["CR","—"],  p: pCo,  d: dCrit     },
-          { sc: "Deflected",      tags: ["—","DF"],  p: pDf,  d: dDefl     },
-          { sc: "Crit + Deflect", tags: ["CR","DF"], p: pCD,  d: dCritDefl },
+          { sc: "Standard hit",   icon: "⚔️", desc: "Boss landed a normal hit on you. No crit, no deflect.",                                p: pStd, d: dStandard },
+          { sc: "Crit",           icon: "💥", desc: "Boss critically hit you — extra damage from boss Critical Severity.",                  p: pCo,  d: dCrit     },
+          { sc: "Deflected",      icon: "🛡️", desc: "You deflected the hit, reducing the damage taken.",                                    p: pDf,  d: dDefl     },
+          { sc: "Crit + Deflect", icon: "⚡", desc: "Boss critted but you deflected — softer than a full crit, but still extra damage.",   p: pCD,  d: dCritDefl },
         ];
       }
       // -------------------------------------------------------
@@ -4239,8 +4296,8 @@
         expected = Math.round(pBaseH * baseHeal + pCritH * critHeal);
 
         rows = [
-          { sc: "Base heal", tags: ["—"],     p: pBaseH, d: baseHeal },
-          { sc: "Crit heal", tags: ["CR"],    p: pCritH, d: critHeal },
+          { sc: "Base heal", icon: "💚", desc: "Standard heal — no critical.",                                                  p: pBaseH, d: baseHeal },
+          { sc: "Crit heal", icon: "✨", desc: "Critical heal. Crit Severity is halved on heals, so the bonus is smaller.",      p: pCritH, d: critHeal },
         ];
       } else {
         // -------------------------------------------------------
@@ -4283,32 +4340,44 @@
         );
 
         rows = [
-          { sc: "Base hit",     tags: ["—","—","—"],  p: pBase,    d: dBase  },
-          { sc: "Flank only",   tags: ["—","FL","—"], p: pFlank,   d: dFlank },
-          { sc: "Crit only",    tags: ["CR","—","—"], p: pCritOnly,d: dCrit  },
-          { sc: "Crit + Flank", tags: ["CR","FL","—"],p: pBoth,    d: dBoth  },
-          { sc: "Deflected",    tags: ["—","—","DF"], p: pDefl,    d: dDefl  },
+          { sc: "Normal hit",  icon: "⚔️", desc: "You didn't crit and weren't flanking — a plain hit with no bonuses.",                            p: pBase,    d: dBase  },
+          { sc: "With CA",     icon: "🟢", desc: "You're flanking the enemy. Your Combat Advantage stat boosts this hit.",                          p: pFlank,   d: dFlank },
+          { sc: "Critical",    icon: "🟠", desc: "Lucky big hit — your Critical Severity boosts the damage. No CA bonus on this one.",              p: pCritOnly,d: dCrit  },
+          { sc: "Crit + CA",   icon: "💥", desc: "Best case — you crit while flanking. Both Critical Severity and Combat Advantage stack here.",   p: pBoth,    d: dBoth  },
+          { sc: "Deflected",   icon: "🛡️", desc: "Enemy deflected the hit. Their Deflect Severity reduces the damage you deal.",                   p: pDefl,    d: dDefl  },
         ];
       }
 
       const fmtPct = (x) => (x * 100).toFixed(1) + "%";
-      body.innerHTML = rows.map(row => `
-        <tr>
-          <td>${row.sc}</td>
-          <td>${row.tags.map(t => t === "—"
-              ? `<span class="tag" style="background:transparent;color:var(--text-dim);">—</span>`
-              : `<span class="tag tag-${t.toLowerCase()}">${t}</span>`).join(" ")}</td>
-          <td>${fmtPct(row.p)}</td>
-          <td class="dmg">${row.d.toLocaleString()}</td>
-        </tr>`).join("") + `
-        <tr class="expected">
-          <td><strong>Expected (weighted)</strong></td>
-          <td>—</td>
-          <td>100%</td>
-          <td class="dmg">${expected.toLocaleString()}</td>
-        </tr>`;
+      const heroLabel  = isHealer ? "Average heal per cast"
+                       : isTank   ? "Average damage taken per hit"
+                       :            "Average damage per hit";
+      const valueLabel = isHealer ? "Heal" : isTank ? "Damage taken" : "Damage";
 
-      // If TIL is 0 (no gear yet), show a hint above the table
+      body.innerHTML = `
+        <div class="sim-hero">
+          <div class="sim-hero-label">${heroLabel}</div>
+          <div class="sim-hero-value">${expected.toLocaleString()}</div>
+        </div>` + rows.map(row => `
+        <div class="sim-card">
+          <div class="sim-card-title">
+            <span class="sim-card-icon">${row.icon}</span>${row.sc}
+          </div>
+          <div class="sim-card-desc">${row.desc}</div>
+          <div class="sim-card-divider"></div>
+          <div class="sim-card-stats">
+            <div class="sim-card-stat">
+              <div class="sim-card-stat-label">Chance</div>
+              <div class="sim-card-stat-value">${fmtPct(row.p)}</div>
+            </div>
+            <div class="sim-card-stat">
+              <div class="sim-card-stat-label">${valueLabel}</div>
+              <div class="sim-card-stat-value dmg">${row.d.toLocaleString()}</div>
+            </div>
+          </div>
+        </div>`).join("");
+
+      // If TIL is 0 (no gear yet), show a hint above the cards
       const wrap = body.parentElement;
       let warn = wrap.querySelector(".sim-warn");
       if (TIL === 0) {
@@ -4317,7 +4386,7 @@
           warn.className = "sim-warn";
           warn.style.cssText = "padding:0.5rem 0.7rem;background:rgba(210,153,34,0.08);border:1px solid var(--gold);border-radius:6px;color:var(--gold);font-size:0.82rem;margin-bottom:0.5rem;";
           warn.textContent = "Total Item Level is 0 — equip some gear in step 3 to get real numbers.";
-          wrap.insertBefore(warn, wrap.firstChild);
+          wrap.insertBefore(warn, body);
         }
       } else if (warn) {
         warn.remove();
