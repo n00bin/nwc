@@ -1541,6 +1541,19 @@
             <option value="Celestial">Celestial (900 IL)</option>
           </select>
         </div>
+        <div class="field" style="margin-top:0.6rem;">
+          <label>All insignia tier
+            <span class="hint-icon" data-tip="The tier we assume all 20 slotted insignias are at. Insignia data is stored at Mythic base; tier scales IL and stat values per the in-game scaling table (Celestial = 1.5× Mythic).">?</span>
+          </label>
+          <select id="insignia-rarity" style="width:100%;">
+            <option value="Uncommon">Uncommon (25 IL)</option>
+            <option value="Rare">Rare (50 IL)</option>
+            <option value="Epic">Epic (100 IL)</option>
+            <option value="Legendary">Legendary (200 IL)</option>
+            <option value="Mythic" selected>Mythic (500 IL)</option>
+            <option value="Celestial">Celestial (750 IL)</option>
+          </select>
+        </div>
       </div>
 
       <div class="panel">
@@ -1806,6 +1819,10 @@
       // rarity (item_level field); the engine scales CR + stats[] from the
       // base IL up to this target IL.
       companionRarity: "Mythic",
+      // Tier we assume all 20 slotted insignias are at. Insignia data is
+      // captured at Mythic base; the MOUNT_INSIGNIAS_TIER_SCALING table
+      // gives per-tier IL and stat multiplier (Celestial = 1.5×, etc.).
+      insigniaRarity: "Mythic",
       flankUptime: 0.70,  // % of hits with Combat Advantage active (0..1)
       boons: new Map(),  // key: "tier1:1" / "master:3" → { tier, boonId, points or ranks }
       // Order in which master boons were first ranked (by boonId).
@@ -1849,6 +1866,7 @@
           companionBolster: state.companionBolster,
           mountBolster: state.mountBolster,
           companionRarity: state.companionRarity,
+          insigniaRarity: state.insigniaRarity,
           boons: [...state.boons],
           masterOrder: state.masterOrder,
           guildBoonPicks: state.guildBoonPicks,
@@ -1886,9 +1904,11 @@
       if (state.companionBolster == null) state.companionBolster = 100;
       if (state.mountBolster     == null) state.mountBolster     = 100;
       if (state.companionRarity  == null) state.companionRarity  = "Mythic";
+      if (state.insigniaRarity   == null) state.insigniaRarity   = "Mythic";
       setVal("comp-bolster",  state.companionBolster);
       setVal("mount-bolster", state.mountBolster);
       setVal("comp-rarity",   state.companionRarity);
+      setVal("insignia-rarity", state.insigniaRarity);
       const cbd = document.getElementById("comp-bolster-display");
       if (cbd) cbd.textContent = state.companionBolster + "%";
       const mbd = document.getElementById("mount-bolster-display");
@@ -2896,6 +2916,8 @@
       // Mount insignias and collars across all 5 stable slots.
       // Insignias and collars are equipped on mounts (not bolstered per
       // docs); their flat IL still rolls up into the character total.
+      // Insignia IL scales with the user-selected tier (Mythic baseline).
+      const insIL = insigniaTierIL(state.insigniaRarity || "Mythic");
       for (const slot of (state.stable || [])) {
         if (!slot) continue;
         if (slot.collar) {
@@ -2905,7 +2927,7 @@
         for (const insName of (slot.insignias || [])) {
           if (!insName) continue;
           const ins = findInsigniaByName(insName);
-          if (ins && ins.item_level) sum += ins.item_level;
+          if (ins) sum += insIL;
         }
       }
       return sum;
@@ -3011,6 +3033,20 @@
       const baseIL = (basePower && basePower.item_level) || targetIL;
       if (baseIL <= 0) return 1;
       return targetIL / baseIL;
+    }
+
+    // Insignia tier scaling. Mythic is the baseline (multiplier 1.0)
+    // matching the data file's stored values. Other tiers use the table
+    // multiplier from MOUNT_INSIGNIAS_TIER_SCALING.
+    function insigniaTierMultiplier(tier) {
+      if (typeof MOUNT_INSIGNIAS_TIER_SCALING === "undefined") return 1;
+      const t = MOUNT_INSIGNIAS_TIER_SCALING[tier];
+      return (t && typeof t.multiplier === "number") ? t.multiplier : 1;
+    }
+    function insigniaTierIL(tier) {
+      if (typeof MOUNT_INSIGNIAS_TIER_SCALING === "undefined") return 500;
+      const t = MOUNT_INSIGNIAS_TIER_SCALING[tier];
+      return (t && t.item_level) || 500;
     }
 
     function buildEngineCharacter(s) {
@@ -3167,7 +3203,10 @@
         }
 
         // Insignias — each slotted insignia adds its own stats + CR.
-        // Default tier = Mythic (the value as listed in the data).
+        // Stats and CR scale with the user-selected tier (Mythic = 1.0,
+        // Celestial = 1.5, etc.).
+        const insMult = insigniaTierMultiplier(s.insigniaRarity || "Mythic");
+        const insTier = s.insigniaRarity || "Mythic";
         for (let iIdx = 0; iIdx < (slot.insignias || []).length; iIdx++) {
           const insName = slot.insignias[iIdx];
           if (!insName) continue;
@@ -3177,16 +3216,16 @@
           const percentStats = {};
           for (const st of (ins.stats || [])) {
             const tgt = st.type === "percent" ? percentStats : ratingStats;
-            tgt[st.stat] = (tgt[st.stat] || 0) + (st.value || 0);
+            tgt[st.stat] = (tgt[st.stat] || 0) + (st.value || 0) * insMult;
           }
           buffs.push({
-            source: `${slotLabel} Insignia: ${ins.name}`,
+            source: `${slotLabel} Insignia: ${ins.name} (${insTier})`,
             ratingStats, percentStats
           });
-          const icr = expandCR(ins.combinedRating, 1);
+          const icr = expandCR(ins.combinedRating, insMult);
           if (icr) {
             buffs.push({
-              source: `${slotLabel} Insignia CR: ${ins.name}`,
+              source: `${slotLabel} Insignia CR: ${ins.name} (${insTier})`,
               ratingStats: icr
             });
           }
@@ -3461,7 +3500,7 @@
         stable: state.stable, mcp: state.activeCombatPower, mep: state.activeEquipPower,
         ench: state.enchants, ovr: state.overloads, kits: state.kits,
         gld: state.guildBoonPicks,
-        cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity,
+        cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         boons: [...state.boons], buffs: [...state.buffs]
       });
       if (key === _engineCacheKey && _engineResult) return _engineResult;
@@ -5113,6 +5152,15 @@
       compRaritySel.value = state.companionRarity || "Mythic";
       compRaritySel.addEventListener("change", e => {
         state.companionRarity = e.target.value;
+        rerenderAll();
+      });
+    }
+    // Insignia tier dropdown — scales all slotted insignia IL + CR + stats
+    const insRaritySel = document.getElementById("insignia-rarity");
+    if (insRaritySel) {
+      insRaritySel.value = state.insigniaRarity || "Mythic";
+      insRaritySel.addEventListener("change", e => {
+        state.insigniaRarity = e.target.value;
         rerenderAll();
       });
     }
