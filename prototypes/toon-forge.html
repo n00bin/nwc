@@ -3534,6 +3534,25 @@
         buffs.push(entry);
       }
 
+      // Paragon Class Features — passive abilities granted by the chosen
+      // class+paragon combo (e.g. Oathkeeper's Composure / Aura of
+      // Restoration). Until we have a UI for the user to pick their
+      // active 2 class features, the paragon entry in classes.json carries
+      // a default list. Source: in-game Powers screenshots from n00b
+      // 2026-05-11. Each entry can contribute percentStats and/or
+      // ratingStats just like a buff.
+      const paragonDef = findParagon(s.class, s.paragon);
+      if (paragonDef && Array.isArray(paragonDef.classFeatures)) {
+        for (const cf of paragonDef.classFeatures) {
+          if (!cf) continue;
+          buffs.push({
+            source: `Class Feature: ${cf.name}`,
+            percentStats: cf.percentStats || {},
+            ratingStats:  cf.ratingStats  || {}
+          });
+        }
+      }
+
       // Active mount equip power — passive stats from your stable's chosen
       // equip power. The values shown in the in-game tooltip (e.g. Pack
       // Tactics at max rank: +2953 CA, +2953 Awareness, +3544 CR) are
