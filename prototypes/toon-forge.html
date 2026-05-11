@@ -1039,11 +1039,42 @@
     .dstat-sources[open] > summary::before { content: "▾ "; }
     .dstat-sources > summary:hover { color: var(--text); }
     .dstat-sources-body {
-      padding: 0.4rem 0.2rem 0.2rem;
+      padding: 0.5rem 0.2rem 0.2rem;
       border-top: 1px dashed var(--border);
       margin-top: 0.3rem;
-      line-height: 1.5;
     }
+    .dstat-source-group {
+      margin-bottom: 0.6rem;
+    }
+    .dstat-source-group:last-child { margin-bottom: 0; }
+    .dstat-source-group-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--amber);
+      margin-bottom: 0.25rem;
+      opacity: 0.85;
+    }
+    .dstat-source-list {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.15rem 0.8rem;
+      align-items: baseline;
+    }
+    .dstat-source-list .src {
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dstat-source-list .val {
+      font-family: ui-monospace, monospace;
+      color: var(--text);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .dstat-source-list .val.neg { color: var(--neg); }
+    .dstat-source-list .val.pos { color: var(--pos); opacity: 0.85; }
     .dstats-warnings {
       background: rgba(248,81,73,0.08);
       border: 1px solid var(--neg);
@@ -4111,17 +4142,42 @@
       }
 
       const n = (s.contributors || []).length;
+      // Tidy a source label: drop redundant "Buff: " / "Buff: Buff: " prefixes,
+      // strip "(Celestial)" suffix that adds visual noise, leave the core meaningful name.
+      function cleanSource(src) {
+        return String(src || "")
+          .replace(/^Buff:\s*Buff:\s*/, "Buff: ")
+          .replace(/^Buff:\s*/, "")
+          .replace(/\s*\(Celestial\)\s*$/, "")
+          .trim();
+      }
+      function renderSourceGroup(title, items) {
+        if (!items.length) return "";
+        const rows = items.map(c => {
+          const sign = c.amount >= 0 ? "+" : "";
+          const cls = c.amount < 0 ? "neg" : (c.type === "rating" ? "pos" : "");
+          const unit = c.type === "rating" ? "" : "%";
+          return `<div class="src">${cleanSource(c.source)}</div>
+                  <div class="val ${cls}">${sign}${c.amount.toLocaleString()}${unit}</div>`;
+        }).join("");
+        return `<div class="dstat-source-group">
+          <div class="dstat-source-group-title">${title} (${items.length})</div>
+          <div class="dstat-source-list">${rows}</div>
+        </div>`;
+      }
+      const ratingContribs = (s.contributors || [])
+        .filter(c => c.type === "rating")
+        .slice().sort((a, b) => Math.abs(b.amount) - Math.abs(a.amount));
+      const percentContribs = (s.contributors || [])
+        .filter(c => c.type !== "rating")
+        .slice().sort((a, b) => Math.abs(b.amount) - Math.abs(a.amount));
       const sourcesBlock = n
         ? `<details class="dstat-sources">
              <summary>Sources (${n})</summary>
-             <div class="dstat-sources-body">${
-               s.contributors.slice().sort((a,b) => Math.abs(b.amount) - Math.abs(a.amount))
-                 .map(c => {
-                   const sign = c.amount >= 0 ? "+" : "";
-                   return `${c.source}: ${sign}${c.amount}${c.type === "rating" ? " rating" : "%"}`;
-                 })
-                 .join(" • ")
-             }</div>
+             <div class="dstat-sources-body">
+               ${renderSourceGroup("Rating", ratingContribs)}
+               ${renderSourceGroup("Percent bonuses", percentContribs)}
+             </div>
            </details>`
         : "";
 
