@@ -3534,9 +3534,16 @@
         buffs.push(entry);
       }
 
-      // Active mount equip power — passive stats from your stable's chosen equip power.
-      // Bolster scales equip-power rating values (per mekaniks docs).
-      const mountBolster = ((s.mountBolster == null ? 100 : +s.mountBolster) || 0) / 100;
+      // Active mount equip power — passive stats from your stable's chosen
+      // equip power. The values shown in the in-game tooltip (e.g. Pack
+      // Tactics at max rank: +2953 CA, +2953 Awareness, +3544 CR) are
+      // EXACTLY what gets applied to player stats — NOT pre-bolster bases
+      // to be scaled further. Verified 2026-05-11 by n00b: in-game CA
+      // matches Pack Tactics 2953 + CR 3544 unscaled almost exactly
+      // (off by 10 across the whole sheet). The prior "Bolster scales
+      // equip-power rating values (per mekaniks docs)" multiplier was
+      // double-counting since the equip power's IL is already added to
+      // TIL on the bolster track separately.
       if (s.activeEquipPower) {
         const ep = findEquipPowerById(s.activeEquipPower);
         if (ep) {
@@ -3544,16 +3551,16 @@
           const percentStats = {};
           for (const st of (ep.stats || [])) {
             const tgt = st.type === "percent" ? percentStats : ratingStats;
-            const scaled = (st.value || 0) * (st.type === "percent" ? 1 : mountBolster);
-            tgt[st.stat] = (tgt[st.stat] || 0) + scaled;
+            tgt[st.stat] = (tgt[st.stat] || 0) + (st.value || 0);
           }
           buffs.push({
             source: "Mount Equip Power: " + ep.name,
             ratingStats, percentStats
           });
-          // Combined Rating from the equip power, distributed to all 12 core
-          // stats. Bolstered (per mekaniks docs).
-          const cr = expandCR(ep.combinedRating, mountBolster);
+          // Combined Rating from the equip power, distributed to all 13 core
+          // stats. NOT scaled by mount bolster — the data's combinedRating
+          // is the final value applied (same reasoning as the stats above).
+          const cr = expandCR(ep.combinedRating, 1);
           if (cr) {
             buffs.push({
               source: "Mount Equip CR: " + ep.name,
