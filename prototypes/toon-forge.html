@@ -4224,7 +4224,6 @@
         barUncapped = true;
       }
 
-      const n = allContribsFiltered.length;
       // Tidy a source label: drop redundant "Buff: " / "Buff: Buff: " prefixes,
       // strip "(Celestial)" suffix that adds visual noise, leave the core meaningful name.
       function cleanSource(src) {
@@ -4273,6 +4272,7 @@
       // Group subtotals so the user can see the rating split at a glance.
       const directTotal = directContribs.reduce((s, c) => s + c.amount, 0);
       const crTotal     = crContribs.reduce((s, c) => s + c.amount, 0);
+      const n = allContribsFiltered.length;
       const sourcesBlock = n
         ? `<details class="dstat-sources">
              <summary>Sources (${n})</summary>
