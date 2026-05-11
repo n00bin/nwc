@@ -94,7 +94,7 @@
   // Race fixed bonuses (ability scores) are NOT rating contributions —
   // they're handled separately by ability-score scaling.
 
-  function addRating(result, statName, amount, sourceLabel) {
+  function addRating(result, statName, amount, sourceLabel, conditional) {
     // Canonicalize camelCase / abbreviated stat names so source data
     // doesn't get silently dropped into unknown-stat warnings.
     if (STAT_NAME_ALIASES[statName]) statName = STAT_NAME_ALIASES[statName];
@@ -113,15 +113,16 @@
     statResult.contributors.push({
       source: sourceLabel,
       amount: amount,
-      type: "rating"
+      type: "rating",
+      conditional: !!conditional
     });
   }
 
-  function ingestRatingStats(result, ratingStats, sourceLabel) {
+  function ingestRatingStats(result, ratingStats, sourceLabel, conditional) {
     if (!ratingStats) return;
     for (var statName in ratingStats) {
       if (!Object.prototype.hasOwnProperty.call(ratingStats, statName)) continue;
-      addRating(result, statName, ratingStats[statName], sourceLabel);
+      addRating(result, statName, ratingStats[statName], sourceLabel, conditional);
     }
   }
 
@@ -178,7 +179,7 @@
   //
   // Adds into result.stats[stat].percentTotal.
 
-  function addPercent(result, statName, amount, sourceLabel) {
+  function addPercent(result, statName, amount, sourceLabel, conditional) {
     // Route Class Resource Regen aliases to the canonical name
     if (CLASS_RESOURCE_REGEN_ALIASES.indexOf(statName) !== -1) {
       statName = "Class Resource Regen";
@@ -200,15 +201,16 @@
     statResult.contributors.push({
       source: sourceLabel,
       amount: amount,
-      type: "percent"
+      type: "percent",
+      conditional: !!conditional
     });
   }
 
-  function ingestPercentStats(result, percentStats, sourceLabel) {
+  function ingestPercentStats(result, percentStats, sourceLabel, conditional) {
     if (!percentStats) return;
     for (var statName in percentStats) {
       if (!Object.prototype.hasOwnProperty.call(percentStats, statName)) continue;
-      addPercent(result, statName, percentStats[statName], sourceLabel);
+      addPercent(result, statName, percentStats[statName], sourceLabel, conditional);
     }
   }
 
@@ -296,13 +298,18 @@
 
     // 8. Buffs (any active effect with percentStats/ratingStats).
     //    Currently used for: summoned-companion party buffs.
+    //    Each buff may carry a `conditional: true` flag (e.g. in-combat
+    //    stacking effects, proc bonuses, group-only effects). That flag
+    //    is propagated to each contributor so the Detailed Stats panel
+    //    can include/exclude it via the "Show conditional" toggle.
     var buffs = character.buffs || [];
     for (var bi = 0; bi < buffs.length; bi++) {
       var buff = buffs[bi];
       if (!buff) continue;
       var label = "Buff: " + (buff.source || buff.name || "?");
-      ingestPercentStats(result, buff.percentStats, label);
-      ingestRatingStats(result, buff.ratingStats, label);
+      var isConditional = !!buff.conditional;
+      ingestPercentStats(result, buff.percentStats, label, isConditional);
+      ingestRatingStats(result, buff.ratingStats, label, isConditional);
     }
 
     return result;

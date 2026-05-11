@@ -1858,6 +1858,10 @@
             <input type="checkbox" id="dstats-hide-buffs">
             Hide buffs
           </label>
+          <label class="dstats-hide-buffs" id="dstats-show-cond-label" title="Include conditional / in-combat / proc bonuses at their maximum value. Examples: Channeler's Focus at 10 stacks, Critical Harmony in a full 5-person party, Ruthless Resources proc active, Dark Matter Wildspace doubling. Standing-around values otherwise hide these.">
+            <input type="checkbox" id="dstats-show-cond">
+            Show conditional
+          </label>
           <button class="dstats-close" id="dstats-close">✕ Close</button>
         </div>
       </div>
@@ -3830,13 +3834,19 @@
         for (const eb of item.equipBonuses) {
           if (!eb || !eb.stat || eb.amount == null) continue;
           if (eb.scope && eb.scope !== "self") continue;  // party/enemy buffs handled elsewhere
-          if (eb.alwaysActive === false) continue;        // conditional → skip standing-around
           if (eb.role && !roleMatches(eb.role)) continue; // role-conditional set bonuses
+          // Conditional bonuses (in-combat stacks, procs, group-only, etc.)
+          // are pushed with conditional: true so the renderer can filter
+          // them out for "standing around" view or include them at max
+          // value for "with conditionals" view. The renderer's Detailed
+          // Stats panel has a checkbox to switch between the two modes.
+          const isConditional = (eb.alwaysActive === false);
           // amount is percent by default; kind: "rating" means flat rating value
           const channel = (eb.kind === "rating") ? "ratingStats" : "percentStats";
           if (eb.type === "Equip") {
             buffs.push({
               source: `${label} bonus: ${eb.name || eb.stat}`,
+              conditional: isConditional,
               [channel]: { [eb.stat]: eb.amount }
             });
           } else if (eb.type === "Set") {
@@ -3844,6 +3854,7 @@
             if (have >= (eb.pieces || 2)) {
               buffs.push({
                 source: `${label} set: ${eb.setName} (${have}-pc)`,
+                conditional: isConditional,
                 [channel]: { [eb.stat]: eb.amount }
               });
             }
@@ -4314,11 +4325,13 @@
     function formatStatRow(def, s, ctx) {
       const TIL = (ctx && ctx.totalItemLevel) || 0;
       const hideBuffs = !!(ctx && ctx.hideBuffs);
+      const showConditional = !!(ctx && ctx.showConditional);
       const isFlat = def.kind === "flat";
       let valueLabel, detailLabel, barWidth, barUncapped = false;
 
-      // Working copies of the stat numbers, optionally reduced by the
-      // buff contributions when the user has "Hide buffs" toggled on.
+      // Working copies of the stat numbers. Engine includes conditional
+      // contributors (alwaysActive: false items) in totals by default;
+      // we adjust below depending on the "Show conditional" toggle.
       let ratingTotal = (s.contributors || [])
         .filter(c => c.type === "rating")
         .reduce((sum, c) => sum + (c.amount || 0), 0);
@@ -4327,27 +4340,46 @@
       let finalPct = s.finalPct;
       let flatValue = s.flat || 0;
 
-      if (hideBuffs) {
-        const allContribs = s.contributors || [];
-        const buffRating = allContribs
-          .filter(c => isConsumableBuffContributor(c) && c.type === "rating")
-          .reduce((sum, c) => sum + (c.amount || 0), 0);
-        const buffPercent = allContribs
-          .filter(c => isConsumableBuffContributor(c) && c.type === "percent")
-          .reduce((sum, c) => sum + (c.amount || 0), 0);
-        ratingTotal -= buffRating;
-        percentTotal -= buffPercent;
+      // Helper: recompute the rating/bonus/final % after a given amount
+      // has been removed from rating and/or percent totals.
+      function rebase(deltaRating, deltaPercent) {
+        ratingTotal -= deltaRating;
+        percentTotal -= deltaPercent;
         if (isFlat) {
-          flatValue -= buffRating;
+          flatValue -= deltaRating;
         } else if (def.kind === "fixed" && def.flatRating) {
           ratingContribPct = ratingTotal / def.flatRating;
           finalPct = ratingContribPct + percentTotal;
         } else {
-          // kind: "rating" — replay the engine clamp/cap logic.
           ratingContribPct = ratingToPercentLocal(ratingTotal, TIL, def.cap);
           finalPct = ratingContribPct + percentTotal;
           if (typeof def.cap === "number" && finalPct > def.cap) finalPct = def.cap;
         }
+      }
+
+      // When "Show conditional" is OFF (default), strip conditional
+      // contributions (procs, in-combat stacks, group-only buffs) so the
+      // panel reflects a standing-around state. They're still listed in
+      // the Sources block so the user can see what's being excluded.
+      if (!showConditional) {
+        const condRating = (s.contributors || [])
+          .filter(c => c.conditional && c.type === "rating")
+          .reduce((sum, c) => sum + (c.amount || 0), 0);
+        const condPercent = (s.contributors || [])
+          .filter(c => c.conditional && c.type === "percent")
+          .reduce((sum, c) => sum + (c.amount || 0), 0);
+        if (condRating || condPercent) rebase(condRating, condPercent);
+      }
+
+      if (hideBuffs) {
+        const allContribs = s.contributors || [];
+        const buffRating = allContribs
+          .filter(c => isConsumableBuffContributor(c) && c.type === "rating" && (showConditional || !c.conditional))
+          .reduce((sum, c) => sum + (c.amount || 0), 0);
+        const buffPercent = allContribs
+          .filter(c => isConsumableBuffContributor(c) && c.type === "percent" && (showConditional || !c.conditional))
+          .reduce((sum, c) => sum + (c.amount || 0), 0);
+        if (buffRating || buffPercent) rebase(buffRating, buffPercent);
       }
 
       const capReached = !isFlat && typeof def.cap === "number" && finalPct >= def.cap - 0.05;
@@ -4404,10 +4436,12 @@
         const s = String(src || "");
         return /\bCR\b/.test(s) || /base IL:/i.test(s);
       }
-      // When "Hide buffs" is on, drop consumable-buff entries from the
-      // contributor lists (the subtotals below will adjust to match).
+      // Filter the contributor list:
+      // - "Hide buffs" ON → drop consumable-buff entries
+      // - "Show conditional" OFF (default) → drop conditional entries
       const allContribsFiltered = (s.contributors || [])
-        .filter(c => !hideBuffs || !isConsumableBuffContributor(c));
+        .filter(c => !hideBuffs || !isConsumableBuffContributor(c))
+        .filter(c => showConditional || !c.conditional);
       const allRating = allContribsFiltered.filter(c => c.type === "rating");
       const directContribs = allRating
         .filter(c => !isCRSource(c.source))
@@ -4445,9 +4479,10 @@
         </div>`;
     }
 
-    // Toggle state for the "Hide buffs" checkbox — persists across opens
-    // within the session so the user doesn't have to re-tick it every time.
+    // Toggle state for the Detailed Stats modal — persists across opens
+    // within the session so the user doesn't have to re-tick every time.
     let _dstatsHideBuffs = false;
+    let _dstatsShowConditional = false;
 
     function openDetailedStats() {
       const r = getEngineResult();
@@ -4456,6 +4491,10 @@
       if (cb) cb.checked = _dstatsHideBuffs;
       const lbl = document.getElementById("dstats-hide-buffs-label");
       if (lbl) lbl.classList.toggle("on", _dstatsHideBuffs);
+      const cbCond = document.getElementById("dstats-show-cond");
+      if (cbCond) cbCond.checked = _dstatsShowConditional;
+      const lblCond = document.getElementById("dstats-show-cond-label");
+      if (lblCond) lblCond.classList.toggle("on", _dstatsShowConditional);
       let html = "";
 
       // Warnings block
@@ -4474,7 +4513,11 @@
       </div>`;
 
       // Group stats by category
-      const ctx = { totalItemLevel: r.totalItemLevel, hideBuffs: _dstatsHideBuffs };
+      const ctx = {
+        totalItemLevel: r.totalItemLevel,
+        hideBuffs: _dstatsHideBuffs,
+        showConditional: _dstatsShowConditional
+      };
       for (const cat of DSTATS_CATEGORIES) {
         const stats = TOON_FORGE_STATS.filter(d => d.category === cat);
         if (!stats.length) continue;
@@ -6206,6 +6249,12 @@
       const lbl = document.getElementById("dstats-hide-buffs-label");
       if (lbl) lbl.classList.toggle("on", _dstatsHideBuffs);
       openDetailedStats();  // re-render the modal body with the new flag
+    });
+    document.getElementById("dstats-show-cond").addEventListener("change", (e) => {
+      _dstatsShowConditional = !!e.target.checked;
+      const lbl = document.getElementById("dstats-show-cond-label");
+      if (lbl) lbl.classList.toggle("on", _dstatsShowConditional);
+      openDetailedStats();
     });
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeDetailedStats();
