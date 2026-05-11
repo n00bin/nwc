@@ -80,6 +80,16 @@ const TOON_FORGE_BONUS_STATS = [
   "Damage Bonus",     // alias of the above
   "Damage Vs Bosses", // boon/feat conditional bonus
   "Outgoing Damage",  // class power data; not a stat panel entry
+
+  // === Silenced 2026-05-10: data references these but no layer to apply them yet ===
+  // When the prototype gains a damage-output layer / heal-sim HoT layer /
+  // incoming-damage survivability layer, MOVE these out of this list into
+  // TOON_FORGE_STATS (or wire them into the appropriate formula) and
+  // un-silence so we get the warning back if anything is overlooked.
+  // Tracked in docs/toon_coverage.md → "Open Gaps → Toon Forge stat catalog".
+  "At Will Dmg Bonus",  // Sturdy Barbed Collar V "At-Will Powers do 5% more damage" — multiplies at-will magnitudes. Wire when damage-output layer exists.
+  "heal_pct_damage",    // Master Boon Life Lessons R3 "Return 15% of damage done as a heal over time per rank" — converts damage→HoT. Wire when heal-sim HoT layer exists.
+  "damage_taken",       // Master Boon Enhanced Application R3 "Reduces damage of next 1 attack taken by 15% per rank" — incoming-damage mitigation. Wire when survivability layer exists.
 ];
 
 // Per-paragon display labels for the class resource. The internal
