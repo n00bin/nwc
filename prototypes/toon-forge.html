@@ -3660,22 +3660,58 @@
           }
         }
 
-        // Insignia bonus — only counts when the slotted insignia categories
-        // satisfy the bonus's requirements. Bonus stats list ratings/percents.
-        if (slot.desiredBonus) {
-          const bonus = findBonusById(slot.desiredBonus);
-          if (bonus && bonusActive(bonus.requiredInsignias, slottedCategoriesForRow(slot))) {
-            const ratingStats = {};
-            const percentStats = {};
-            for (const st of (bonus.stats || [])) {
-              const tgt = st.type === "percent" ? percentStats : ratingStats;
-              tgt[st.stat] = (tgt[st.stat] || 0) + (st.value || 0);
-            }
-            buffs.push({
-              source: `${slotLabel} Insignia Bonus: ${bonus.name}`,
-              ratingStats, percentStats
-            });
+        // Insignia bonus is now handled in a SECOND PASS (below) so we can
+        // apply NW's diminishing-returns stacking rule (100% / 50% / 25%,
+        // max 3 stacks) across all mounts. We collect active instances
+        // here, then apply after the per-mount loop ends.
+      }
+
+      // ===== Second pass: insignia bonuses with diminishing returns =====
+      // NW rule (verified 2026-05-11 by n00b): an insignia bonus equipped
+      // on multiple stable mounts stacks with diminishing returns —
+      // 100% / 50% / 25%, max 3 stacks (e.g., Mender's Covenant 1500
+      // becomes 1500 + 750 + 375 = 2625 at 3 stacks, NOT 4500).
+      //
+      // Exceptions: some bonuses (e.g., Cautious Devotion "stacks up
+      // to 5 times") are flagged with stackingMode: "linear" in the
+      // mount_insignia_bonuses.json data, in which case each instance
+      // contributes its full value up to its own maxStacks cap.
+      const bonusInstances = {};  // bonusName -> [{ slotIdx, bonus }]
+      for (let stIdx = 0; stIdx < (s.stable || []).length; stIdx++) {
+        const slot = s.stable[stIdx];
+        if (!slot || !slot.desiredBonus) continue;
+        const bonus = findBonusById(slot.desiredBonus);
+        if (!bonus) continue;
+        if (!bonusActive(bonus.requiredInsignias, slottedCategoriesForRow(slot))) continue;
+        if (!bonusInstances[bonus.name]) bonusInstances[bonus.name] = [];
+        bonusInstances[bonus.name].push({ slotIdx: stIdx, bonus });
+      }
+      const DIMINISHING_MULTIPLIERS = [1, 0.5, 0.25];
+      for (const bonusName in bonusInstances) {
+        if (!Object.prototype.hasOwnProperty.call(bonusInstances, bonusName)) continue;
+        const insts = bonusInstances[bonusName];
+        const bonus = insts[0].bonus;
+        const mode = bonus.stackingMode || "diminishing";
+        const maxStacks = bonus.maxStacks || (mode === "diminishing" ? 3 : 5);
+        const n = Math.min(insts.length, maxStacks);
+        for (let i = 0; i < n; i++) {
+          const mult = (mode === "linear") ? 1 : (DIMINISHING_MULTIPLIERS[i] || 0);
+          if (mult === 0) break;
+          const inst = insts[i];
+          const slotLabel = "Mount " + (inst.slotIdx + 1);
+          const ratingStats = {};
+          const percentStats = {};
+          for (const st of (bonus.stats || [])) {
+            const tgt = st.type === "percent" ? percentStats : ratingStats;
+            tgt[st.stat] = (tgt[st.stat] || 0) + (st.value || 0) * mult;
           }
+          const stackTag = (mode === "diminishing" && n > 1)
+            ? ` (stack ${i+1}/${n} ×${mult})`
+            : (mode === "linear" && insts.length > 1 ? ` (stack ${i+1}/${insts.length})` : "");
+          buffs.push({
+            source: `${slotLabel} Insignia Bonus: ${bonus.name}${stackTag}`,
+            ratingStats, percentStats
+          });
         }
       }
 
