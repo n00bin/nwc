@@ -3832,11 +3832,24 @@
       // percentages stored at the data's BASE rarity (item_level field);
       // we scale them up to the rarity passed in for this slot.
       const defaultRarity = s.companionRarity || "Mythic";
-      function pushCompanionPower(label, power, rarity) {
+      function pushCompanionPower(label, power, rarity, isSummoned) {
         if (!power) return;
         const r = rarity || defaultRarity;
         const scale = compRarityScale(r, power);
-        const cr = expandCR(power.combinedRating, scale);
+        // CR contribution differs between summoned vs active:
+        //   - Summoned: 85% × the summoned companion's rarity IL
+        //     (verified by n00b 2026-05-11: "Combined rating from the
+        //     companion itself: ~85% of its item level converted to
+        //     combined rating across all stats")
+        //   - Active: power.combinedRating × rarity scale (data field)
+        let crValue;
+        if (isSummoned) {
+          const summonedIL = COMPANION_RARITY_IL[r] || 750;
+          crValue = Math.round(summonedIL * 0.85);
+        } else {
+          crValue = (power.combinedRating || 0) * scale;
+        }
+        const cr = expandCR(crValue, 1);
         if (cr) {
           buffs.push({ source: label + " CR (" + r + ")", ratingStats: cr });
         }
@@ -3852,10 +3865,12 @@
 
       // Summoned companion's bonus power — applies to the player like the
       // 5 active. Not bolstered. Uses summoned-specific rarity.
+      // Passes isSummoned=true to invoke the 85%-of-IL CR rule above.
       if (summonedComp && summonedComp.powerRef) {
         pushCompanionPower("Summoned: " + summonedComp.name,
           findCompanionPower(summonedComp.powerRef),
-          s.summonedRarity || defaultRarity);
+          s.summonedRarity || defaultRarity,
+          true);
       }
 
       // Active (non-summoned) companions — each slotted companion's bonus
