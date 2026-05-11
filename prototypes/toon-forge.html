@@ -3842,6 +3842,23 @@
         const entry = { source: `Enchant ${slotLabel}: ${e.name}` };
         if (e.universal && (slotType === "offense" || slotType === "defense" || slotType === "utility")) {
           entry.ratingStats = e.universal[slotType] || {};
+        } else if (slotType === "combat") {
+          // Combat enchants (e.g. Celestial Swift Synergy R) describe their
+          // effect as "Your attacks grant you a stack of Preparation..."
+          // — the per-stack % bonuses listed in percentStats are achieved
+          // only by attacking, and decay out of combat. They MUST NOT
+          // contribute to the standing-around stat panel. n00b verified
+          // 2026-05-11 that in-game Crit Sev / Combat Advantage do not
+          // include these values when out of combat.
+          //
+          // Some Combat enchants also have an always-on "Equip:" damage
+          // line (e.g. Swift Synergy R: +12% Dmg Bonus). That bonus stat
+          // ("Dmg Bonus") is in TOON_FORGE_BONUS_STATS — silenced
+          // anyway — so skipping the whole percentStats block here doesn't
+          // drop any stat-panel value. Revisit if a future Combat enchant
+          // has a true always-on, panel-visible % bonus.
+          entry.ratingStats = e.ratingStats || {};
+          // intentionally skipping e.percentStats
         } else {
           entry.ratingStats = e.ratingStats || {};
           entry.percentStats = e.percentStats || {};
