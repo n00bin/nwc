@@ -3854,10 +3854,14 @@
       // Helper: turn a companion enhancement into a buffs[] entry.
       // Enhancement value is rank-only — NOT bolster-scaled (per Obikin guide:
       // "Enhancement Power: 750 IL ← quality-dependent, NOT affected by bolster").
+      // Skip enemy-scope enhancements (debuffs like Slowed Reactions lower
+      // the ENEMY's stat, not the player's — they should NOT add to your
+      // own stat panel even though the data carries a stat/value pair).
       function enhToBuff(label, name) {
         if (!name) return;
         const e = findEnhancementByName(name);
         if (!e || !e.stat) return;
+        if (e.scope === "enemy") return;
         const v = (e.value || 0);
         const entry = { source: label + ": " + e.name };
         if (e.type === "percent") entry.percentStats = { [e.stat]: v };
