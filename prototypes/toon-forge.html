@@ -2707,14 +2707,22 @@
         .sort((a,b) => (b.item_level || 0) - (a.item_level || 0) || a.name.localeCompare(b.name));
     }
     function renderCompGear(item) {
-      const stats = item.ratingStats
-        ? Object.entries(item.ratingStats).map(([s,v]) => `+${v} ${s}`).join(", ")
-        : "";
-      return {
-        name: item.name,
-        meta: `IL ${item.item_level || "?"} · ${item.tier || "?"} · (orig. ${item.slot || "?"})`,
-        desc: stats
-      };
+      const il = item.item_level ? "IL " + item.item_level : "";
+      const cr = item.combinedRating ? "CR " + item.combinedRating : "";
+      const tier = item.tier || "";
+      const origSlot = item.slot ? "orig. " + item.slot : "";
+      const meta = [il, cr, tier, origSlot].filter(Boolean).join(" · ");
+      const desc = [
+        _statSection(item, "Stats"),
+        _equipBonusSection(item.equipBonuses, "Equip Bonuses"),
+        item.notes
+          ? `<div class="gear-card-section">
+               <div class="gear-card-section-title">Notes</div>
+               <div class="gear-card-set-text">${_escHTML(item.notes)}</div>
+             </div>`
+          : ""
+      ].filter(Boolean).join("");
+      return { name: item.name, meta, desc };
     }
 
     /* ===== Companion enhancement helpers ===== */
@@ -2729,33 +2737,63 @@
     function renderEnhancement(e) {
       const isPct = e.type === "percent";
       const v = e.value || 0;
-      return {
-        name: e.name,
-        meta: `IL ${e.item_level || "?"}`,
-        desc: `+${v}${isPct ? "%" : ""} ${e.stat}${e.notes ? " — " + e.notes : ""}`
-      };
+      const il = e.item_level ? "IL " + e.item_level : "";
+      const meta = [il, e.type ? e.type + " enhancement" : ""].filter(Boolean).join(" · ");
+      const stat = e.stat
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Effect</div>
+             <div class="gear-card-stat-line">+${v}${isPct ? "%" : ""} ${_escHTML(e.stat)}</div>
+           </div>`
+        : "";
+      const notes = e.notes
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Notes</div>
+             <div class="gear-card-set-text">${_escHTML(e.notes)}</div>
+           </div>`
+        : "";
+      return { name: e.name, meta, desc: [stat, notes].filter(Boolean).join("") };
     }
 
-    /* Description builders for each picker. */
-    function describeCompanionPower(power) {
-      if (!power) return "";
-      const stats = (power.stats || []).map(s => {
-        const v = s.value;
-        const isPercent = (typeof v === "number" && v <= 50);
-        return `${v}${isPercent ? "%" : ""} ${s.stat}`;
-      }).join(", ");
-      const slots = Array.isArray(power.slot) ? "[" + power.slot.join("/") + "]" : "";
-      return [slots, power.name, stats].filter(Boolean).join(" · ");
-    }
+    /* Description builders for each picker. Rich-card style — same
+       structure as the gear/artifact pickers above. */
     function renderCompanion(c) {
       const power = findCompanionPower(c.powerRef);
       const tier = state.companionRarity || "Mythic";
       const tierIL = COMPANION_RARITY_IL[tier] || 750;
-      return {
-        name: c.name,
-        meta: power ? `IL ${tierIL} (${tier}) · ${(power.slot || []).join("/")} (active)` : "(active)",
-        desc: power ? describeCompanionPower(power) : ""
-      };
+      const slotTypes = power && Array.isArray(power.slot) ? power.slot.join(" / ") : "";
+      const meta = [`IL ${tierIL} (${tier})`, slotTypes, "active"].filter(Boolean).join(" · ");
+
+      // Build a synthetic "item" for the helpers — companion powers
+      // store contributions in stats[] as percent values; convert into
+      // a percentStats object so _statSection picks them up.
+      const synth = { percentStats: {} };
+      if (power) {
+        for (const st of (power.stats || [])) {
+          if (st && st.stat) synth.percentStats[st.stat] = (synth.percentStats[st.stat] || 0) + (st.value || 0);
+        }
+      }
+      const statBlock = _statSection(synth, "Active-Slot Bonus (per " + tier + ")");
+      const procText = power && power.procEffect && (power.procEffect.effect || power.procEffect.description);
+      const procBlock = procText
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Proc${power.procEffect.chance ? " (" + power.procEffect.chance + "% chance, " + (power.procEffect.trigger || "trigger") + ")" : ""}</div>
+             <div class="gear-card-bonus-desc">${_escHTML(procText)}</div>
+           </div>`
+        : "";
+      const crBlock = power && power.combinedRating
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Combined Rating</div>
+             <div class="gear-card-stat-line">+${(power.combinedRating || 0).toLocaleString()} to all stats (at base IL ${power.item_level || tierIL})</div>
+           </div>`
+        : "";
+      const notesBlock = power && power.notes
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Notes</div>
+             <div class="gear-card-set-text">${_escHTML(power.notes)}</div>
+           </div>`
+        : "";
+      const desc = [statBlock, procBlock, crBlock, notesBlock].filter(Boolean).join("");
+      return { name: c.name, meta, desc: desc || "No power data captured." };
     }
     // Summoned slot uses a different field — companion.summonedBuff —
     // because the summon's effect on the party is unrelated to the
@@ -2764,32 +2802,100 @@
       const sb = c.summonedBuff;
       const tier = state.companionRarity || "Mythic";
       const tierIL = COMPANION_RARITY_IL[tier] || 750;
+      const scope = sb && sb.scope ? sb.scope : "self";
+      const range = sb && sb.range ? sb.range + "'" : "";
+      const meta = ["summon", `IL ${tierIL} (${tier})`, scope, range].filter(Boolean).join(" · ");
       if (!sb) {
         return {
           name: c.name,
-          meta: `summon · IL ${tierIL} (${tier}) · party bonus unknown`,
-          desc: "No summoned-buff data captured for this companion yet."
+          meta,
+          desc: `<div class="gear-card-section">
+                   <div class="gear-card-section-title">Summoned Buff</div>
+                   <div class="gear-card-set-text">No summoned-buff data captured for this companion yet.</div>
+                 </div>`
         };
       }
-      return {
-        name: c.name,
-        meta: `summon · IL ${tierIL} (${tier}) · ${sb.scope || "self"}${sb.range ? " · " + sb.range + "'" : ""}`,
-        desc: sb.buff || ""
-      };
+      const synth = { percentStats: {} };
+      if (sb.stat && typeof sb.value === "number") synth.percentStats[sb.stat] = sb.value;
+      const statBlock = _statSection(synth, "Summoned Party Buff (per " + tier + ")");
+      const buffText = sb.buff || sb.description || "";
+      const buffTextBlock = buffText
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Effect</div>
+             <div class="gear-card-set-text">${_escHTML(buffText)}</div>
+           </div>`
+        : "";
+      const sourceBlock = c.source
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Source</div>
+             <div class="gear-card-set-text">${_escHTML(c.source)}</div>
+           </div>`
+        : "";
+      const desc = [statBlock, buffTextBlock, sourceBlock].filter(Boolean).join("");
+      return { name: c.name, meta, desc };
     }
     function renderMount(m) {
-      const slots = (m.insigniaSlots || []).map(s =>
-        (s.allowed || []).join("/").replace("*", "Universal")
-      );
-      return {
-        name: m.name,
-        meta: `${slots.length} insignia slot${slots.length === 1 ? "" : "s"}`,
-        desc: slots.length ? "Slots: " + slots.join(" · ") : ""
-      };
+      const slots = (m.insigniaSlots || []);
+      const meta = `${slots.length} insignia slot${slots.length === 1 ? "" : "s"}`;
+      // One row per slot with preferred-badge surfacing
+      const slotRows = slots.map((s, i) => {
+        const cats = (s.allowed || []).map(c => c === "*" ? "Universal" : c).join(" / ");
+        const preferred = s.preferred ? ` <span class="gear-card-bonus-tag">★ prefers ${_escHTML(s.preferred)} (+20%)</span>` : "";
+        return `<div class="gear-card-stat-line">Slot ${i+1}: ${_escHTML(cats || "?")}${preferred}</div>`;
+      }).join("");
+      const slotBlock = slots.length
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Insignia Slots</div>
+             ${slotRows}
+           </div>`
+        : "";
+      const combat = findCombatPowerById(m.combatRef);
+      const combatBlock = combat
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Mount Combat Power</div>
+             <div class="gear-card-bonus-name">⚔ ${_escHTML(combat.name)}</div>
+             <div class="gear-card-bonus-desc">${[combat.magnitude ? "Magnitude " + combat.magnitude : "", combat.rechargeTimeSeconds ? combat.rechargeTimeSeconds + "s recharge" : ""].filter(Boolean).join(" · ")}</div>
+           </div>`
+        : "";
+      const equip = findEquipPowerById(m.equipRef);
+      const equipBlock = equip
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Mount Equip Power</div>
+             <div class="gear-card-bonus-name">✦ ${_escHTML(equip.name)}</div>
+             <div class="gear-card-bonus-desc">${(equip.stats || []).map(s => `+${s.value}${s.type === "percent" ? "%" : ""} ${s.stat}`).join(" · ")}${equip.combinedRating ? " · +" + equip.combinedRating + " CR" : ""}</div>
+           </div>`
+        : "";
+      const sourceBlock = m.source
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Source</div>
+             <div class="gear-card-set-text">${_escHTML(m.source)}</div>
+           </div>`
+        : "";
+      const desc = [slotBlock, combatBlock, equipBlock, sourceBlock].filter(Boolean).join("");
+      return { name: m.name, meta, desc };
     }
     function renderCollar(c) {
-      const stats = (c.stats || []).map(s => `+${s.value} ${s.stat}`).join(", ");
-      return { name: c.name, meta: c.tier || "", desc: stats };
+      const meta = [c.tier || "", c.item_level ? "IL " + c.item_level : "", c.combinedRating ? "CR " + c.combinedRating : ""].filter(Boolean).join(" · ");
+      const synth = {
+        ratingStats: c.ratingStats || {},
+        percentStats: c.percentStats || {}
+      };
+      // Some collars also use a stats[] array
+      if (Array.isArray(c.stats)) {
+        for (const s of c.stats) {
+          if (!s || !s.stat) continue;
+          if (s.type === "percent") synth.percentStats[s.stat] = (synth.percentStats[s.stat] || 0) + (s.value || 0);
+          else synth.ratingStats[s.stat] = (synth.ratingStats[s.stat] || 0) + (s.value || 0);
+        }
+      }
+      const effectBlock = c.effectText
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Effect</div>
+             <div class="gear-card-set-text">${_escHTML(c.effectText)}</div>
+           </div>`
+        : "";
+      const desc = [_statSection(synth, "Stats"), effectBlock].filter(Boolean).join("");
+      return { name: c.name, meta, desc };
     }
     // Slot-aware: when the picker is open for a specific stable slot,
     // pickInsignia sets _activeInsigniaTier so the picker meta + values
@@ -2799,18 +2905,25 @@
       const tier = _activeInsigniaTier || state.insigniaRarity || "Mythic";
       const tierIL = insigniaTierIL(tier);
       const mult = insigniaTierMultiplier(tier);
-      const stats = (i.stats || []).map(s => {
+      const baseCR = i.combinedRating || 0;
+      const scaledCR = Math.round(baseCR * mult);
+      const meta = [
+        i.category || "?",
+        i.statTemplate ? "(" + i.statTemplate + ")" : "",
+        `IL ${tierIL} (${tier})`,
+        scaledCR ? "CR " + scaledCR : ""
+      ].filter(Boolean).join(" · ");
+      const synth = { ratingStats: {}, percentStats: {} };
+      for (const s of (i.stats || [])) {
+        if (!s || !s.stat) continue;
         const isPct = s.type === "percent";
         const v = (s.value || 0) * mult;
-        // Show scaled values; rating stats are integers, percent keeps a digit
-        const shown = isPct ? v.toFixed(2).replace(/\.?0+$/, "") : Math.round(v);
-        return `+${shown}${isPct ? "%" : ""} ${s.stat}`;
-      }).join(", ");
-      return {
-        name: i.name,
-        meta: `${i.category || "?"} · IL ${tierIL} (${tier})`,
-        desc: stats
-      };
+        const shown = isPct ? +v.toFixed(2) : Math.round(v);
+        if (isPct) synth.percentStats[s.stat] = shown;
+        else synth.ratingStats[s.stat] = shown;
+      }
+      const desc = _statSection(synth, "Stats (at " + tier + ")");
+      return { name: i.name, meta, desc };
     }
 
     /* ===== Mount stable helpers ===== */
@@ -2840,23 +2953,60 @@
     }
     function renderCombatPower(p) {
       const cdr = p.rechargeTimeSeconds ? `${p.rechargeTimeSeconds}s recharge` : "";
-      const mag = p.magnitude ? `mag ${p.magnitude}` : "";
+      const mag = p.magnitude ? `magnitude ${p.magnitude}` : "";
       const meta = [`IL ${p.item_level || "?"}`, mag, cdr].filter(Boolean).join(" · ");
-      const bonuses = (p.equipBonuses || []).map(b =>
-        `${b.amount > 0 ? "+" : ""}${b.amount}% ${b.stat}${b.scope === "enemy" ? " (enemy)" : ""}`
-      ).join(", ");
-      return { name: p.name, meta, desc: bonuses };
+      // Build equip-bonus rows (combat powers' equipBonuses are usually
+      // buff/debuff effects rather than gear-style structured stats).
+      const bonusBlocks = (p.equipBonuses || []).map(b => {
+        if (!b || !b.stat) return "";
+        const sign = (b.amount > 0 ? "+" : "");
+        const scopeTag = b.scope === "enemy" ? " <span class='gear-card-bonus-tag'>vs enemy</span>" : "";
+        const durTag = b.duration ? ` <span class="gear-card-bonus-tag">${b.duration}s</span>` : "";
+        return `<div class="gear-card-bonus">
+          <div class="gear-card-bonus-name">${sign}${b.amount}${b.type === "percent" || (b.amount !== undefined && Math.abs(b.amount) < 100) ? "%" : ""} ${_escHTML(b.stat)}${scopeTag}${durTag}</div>
+        </div>`;
+      }).filter(Boolean).join("");
+      const bonusBlock = bonusBlocks
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Effects</div>
+             ${bonusBlocks}
+           </div>`
+        : "";
+      const notesBlock = p.notes
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Notes</div>
+             <div class="gear-card-set-text">${_escHTML(p.notes)}</div>
+           </div>`
+        : "";
+      const desc = [bonusBlock, notesBlock].filter(Boolean).join("");
+      return { name: p.name, meta, desc };
     }
     function renderEquipPower(p) {
-      const stats = (p.stats || []).map(s => {
-        const isPct = s.type === "percent";
-        return `+${s.value}${isPct ? "%" : ""} ${s.stat}`;
-      }).join(", ");
-      return {
-        name: p.name,
-        meta: `IL ${p.item_level || "?"}`,
-        desc: stats || (p.notes ? p.notes.slice(0, 100) : "")
-      };
+      const il = p.item_level ? "IL " + p.item_level : "";
+      const cr = p.combinedRating ? "CR " + p.combinedRating : "";
+      const meta = [il, cr].filter(Boolean).join(" · ");
+      // Stats list (mount equip powers store contributions in stats[])
+      const synth = { ratingStats: {}, percentStats: {} };
+      for (const s of (p.stats || [])) {
+        if (!s || !s.stat) continue;
+        if (s.type === "percent") synth.percentStats[s.stat] = (synth.percentStats[s.stat] || 0) + (s.value || 0);
+        else synth.ratingStats[s.stat] = (synth.ratingStats[s.stat] || 0) + (s.value || 0);
+      }
+      const statBlock = _statSection(synth, "Aura Stats");
+      const crBlock = p.combinedRating
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Combined Rating</div>
+             <div class="gear-card-stat-line">+${(p.combinedRating || 0).toLocaleString()} to all stats</div>
+           </div>`
+        : "";
+      const notesBlock = p.notes
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Notes</div>
+             <div class="gear-card-set-text">${_escHTML(p.notes)}</div>
+           </div>`
+        : "";
+      const desc = [statBlock, crBlock, notesBlock].filter(Boolean).join("");
+      return { name: p.name, meta, desc };
     }
     function findInsigniaByName(name) {
       if (!name || typeof MOUNT_INSIGNIAS_DATA === "undefined") return null;
