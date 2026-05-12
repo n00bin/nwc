@@ -4231,21 +4231,56 @@
           const isConditional = (eb.alwaysActive === false);
           // amount is percent by default; kind: "rating" means flat rating value
           const channel = (eb.kind === "rating") ? "ratingStats" : "percentStats";
-          if (eb.type === "Equip") {
+          // perStack scaling — gear/sets with maxStacks > 1 that stack per
+          // party member, per kill, per crit, etc. Two variants:
+          //   alwaysActive: true  → 1-stack baseline always-on, extra
+          //     (maxStacks − 1) stacks become available conditionally
+          //     (e.g. Critical Harmony on Abyss Conqueror's Healing
+          //     Raiment: 1.5% OH solo, up to 7.5% at full party).
+          //   alwaysActive: false → 0 standing-around, maxStacks × amount
+          //     conditional at full proc (e.g. Ruthless Resources on
+          //     Prismatic Luminstep Sabatons: 0 standing-around, up to
+          //     25% Class Resource Regen at 5 stacks).
+          const isStacked = eb.perStack && (eb.maxStacks || 0) > 1;
+          const labelKind = (eb.type === "Set") ? "set" : "bonus";
+          const haveOK = (eb.type !== "Set") || ((setPieceCounts[eb.setName] || 0) >= (eb.pieces || 2));
+          if (!haveOK) continue;
+          const setTag = (eb.type === "Set")
+            ? ` (${(setPieceCounts[eb.setName] || 0)}-pc)` : "";
+          const baseLabel = (eb.type === "Set")
+            ? `${label} set: ${eb.setName}${setTag}`
+            : `${label} bonus: ${eb.name || eb.stat}`;
+          if (isStacked) {
+            const maxStacks = eb.maxStacks;
+            if (isConditional) {
+              // Purely conditional - full stack value at proc
+              buffs.push({
+                source: `${baseLabel} (full ${maxStacks} stacks)`,
+                conditional: true,
+                [channel]: { [eb.stat]: eb.amount * maxStacks }
+              });
+            } else {
+              // 1-stack always-on baseline + extra stacks conditional
+              buffs.push({
+                source: baseLabel,
+                conditional: false,
+                [channel]: { [eb.stat]: eb.amount }
+              });
+              const extra = maxStacks - 1;
+              if (extra > 0) {
+                buffs.push({
+                  source: `${baseLabel} (full ${maxStacks} stacks)`,
+                  conditional: true,
+                  [channel]: { [eb.stat]: eb.amount * extra }
+                });
+              }
+            }
+          } else if (eb.type === "Equip" || eb.type === "Set") {
             buffs.push({
-              source: `${label} bonus: ${eb.name || eb.stat}`,
+              source: baseLabel,
               conditional: isConditional,
               [channel]: { [eb.stat]: eb.amount }
             });
-          } else if (eb.type === "Set") {
-            const have = setPieceCounts[eb.setName] || 0;
-            if (have >= (eb.pieces || 2)) {
-              buffs.push({
-                source: `${label} set: ${eb.setName} (${have}-pc)`,
-                conditional: isConditional,
-                [channel]: { [eb.stat]: eb.amount }
-              });
-            }
           }
           // type === "Modification" or anything else: skip (narrative)
         }
