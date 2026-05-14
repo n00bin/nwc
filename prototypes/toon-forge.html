@@ -2268,9 +2268,10 @@
       // trial — user picks content type, then which companion is in
       // each slot. Companions can repeat in-game but each unique buff
       // only stacks once, so duplicates are not allowed in the picker.
-      partyContent: "dungeon",        // "dungeon" (5 slots) | "trial" (10 slots)
-      partyAllies: ["","","","",""],  // companion name per slot, "" = empty
-      partyVipRank3: false,            // separate toggle for ally VIP +1% MaxHP party
+      partyContent: "dungeon",                  // "dungeon" (5 slots) | "trial" (10 slots)
+      partyAllies: ["","","","",""],            // ally companion per slot, "" = empty
+      partyMountAllies: ["","","","",""],       // ally mount equip power per slot, "" = empty
+      partyVipRank3: false,                      // separate toggle for ally VIP +1% MaxHP party
       // (legacy — kept so older saves still load without losing data)
       partyBuffs: new Set(),
       simMag: 100,
@@ -2314,7 +2315,8 @@
           guildBoonPicks: state.guildBoonPicks,
           buffs: [...state.buffs],
           partyContent: state.partyContent || "dungeon",
-          partyAllies: [...(state.partyAllies || [])]
+          partyAllies: [...(state.partyAllies || [])],
+          partyMountAllies: [...(state.partyMountAllies || [])]
         }
       };
     }
@@ -2327,6 +2329,7 @@
       state.buffs = new Set(s.buffs || []);
       state.partyContent = s.partyContent || "dungeon";
       state.partyAllies = Array.isArray(s.partyAllies) ? s.partyAllies.slice() : [];
+      state.partyMountAllies = Array.isArray(s.partyMountAllies) ? s.partyMountAllies.slice() : [];
       // Re-render every section
       populateParagons(state.class || null);
       recomputeAbilityTotals();
@@ -4435,6 +4438,33 @@
         });
       }
 
+      // Party mount equip powers — when an ALLY has a mount with an
+      // aura-style equip power (Mystic Aura, Pack Tactics, etc.), those
+      // stats apply to you. Each ally slot picks one mount equip power.
+      // Duplicates de-duped engine-side and via UI.
+      const _seenPartyMounts = new Set();
+      for (const epName of (s.partyMountAllies || [])) {
+        if (!epName) continue;
+        if (_seenPartyMounts.has(epName)) continue;
+        _seenPartyMounts.add(epName);
+        const ep = (typeof MOUNT_EQUIP_POWERS_DATA !== "undefined")
+          ? MOUNT_EQUIP_POWERS_DATA.find(p => p.name === epName)
+          : null;
+        if (!ep || !Array.isArray(ep.partyEffects) || !ep.partyEffects.length) continue;
+        const ratingStats = {};
+        const percentStats = {};
+        for (const eff of ep.partyEffects) {
+          if (!eff || !eff.stat) continue;
+          const channel = (eff.type === "rating") ? ratingStats : percentStats;
+          channel[eff.stat] = (channel[eff.stat] || 0) + (eff.amount || 0);
+        }
+        buffs.push({
+          source: `Party Mount Buff: Ally's ${epName}`,
+          ratingStats,
+          percentStats
+        });
+      }
+
       // Guild boons — 1 pick per category (Offense / Defense / Utility).
       // Each active guild boon contributes:
       //   1) Its specific stat bonus (e.g., +3000 Crit Sev rating)
@@ -5221,7 +5251,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, partyAllies: state.partyAllies
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies
       });
       if (key === _engineCacheKey && _engineResult) return _engineResult;
       _engineCacheKey = key;
@@ -6400,15 +6430,18 @@
         html += `</div>`;
       }
 
-      // Party Buffs — content-type selector + ally companion slot dropdowns.
-      // NW party = 5 (dungeon) or 10 (trial). User picks which companion is
-      // in each slot; their summonedBuff applies to the player. Duplicates
-      // are disabled so the same buff doesn't double-apply (NW allows the
-      // companion to be slotted twice but the buff only stacks once).
+      // Party Buffs — content-type selector + ally companion slot pickers
+      // + ally mount equip power slot pickers in one combined section.
+      // NW party = 5 (dungeon) or 10 (trial). User picks one ally
+      // companion + one ally mount equip power per slot (allies have both).
+      // Duplicates disabled per list (same buff doesn't stack).
       const partyBuffCompanions = (typeof COMPANIONS_DATA !== "undefined")
         ? COMPANIONS_DATA.filter(c => c.summonedBuff && c.summonedBuff.scope === "party" && Array.isArray(c.summonedBuff.effects)).slice().sort((a,b) => a.name.localeCompare(b.name))
         : [];
-      if (partyBuffCompanions.length) {
+      const partyMountPowersInner = (typeof MOUNT_EQUIP_POWERS_DATA !== "undefined")
+        ? MOUNT_EQUIP_POWERS_DATA.filter(ep => Array.isArray(ep.partyEffects)).slice().sort((a,b) => a.name.localeCompare(b.name))
+        : [];
+      if (partyBuffCompanions.length || partyMountPowersInner.length) {
         const content = state.partyContent || "dungeon";
         const slotCount = content === "trial" ? 10 : 5;
         if (!Array.isArray(state.partyAllies)) state.partyAllies = [];
@@ -6437,18 +6470,50 @@
               </select>
             </div>
           </div>`;
-        for (let i = 0; i < slotCount; i++) {
-          const picked = state.partyAllies[i] || "";
-          const desc = picked ? effSummary[picked] : "click to pick an ally companion";
-          const chipLabel = picked ? `👥 ${picked}` : "+ Pick ally";
-          html += `<div class="boon-row ${picked ? "has-pts" : ""}" data-party-slot-pick="${i}" style="cursor:pointer;">
-            <div class="boon-row-info">
-              <div class="boon-row-name">Ally slot ${i + 1} — ${picked || "(empty)"}</div>
-              <div class="boon-row-effect">${desc}</div>
-            </div>
-            <div class="boon-counter"><span style="font-size:0.75rem;color:${picked?'var(--gold)':'var(--text-dim)'};">${chipLabel}</span></div>
-          </div>`;
+        // Companion slot subsection
+        if (partyBuffCompanions.length) {
+          html += `<div style="margin-top:0.4rem;font-size:0.78rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;">Ally summoned companions</div>`;
+          for (let i = 0; i < slotCount; i++) {
+            const picked = state.partyAllies[i] || "";
+            const desc = picked ? effSummary[picked] : "click to pick an ally companion";
+            const chipLabel = picked ? `👥 ${picked}` : "+ Pick ally";
+            html += `<div class="boon-row ${picked ? "has-pts" : ""}" data-party-slot-pick="${i}" style="cursor:pointer;">
+              <div class="boon-row-info">
+                <div class="boon-row-name">Ally slot ${i + 1} — ${picked || "(empty)"}</div>
+                <div class="boon-row-effect">${desc}</div>
+              </div>
+              <div class="boon-counter"><span style="font-size:0.75rem;color:${picked?'var(--gold)':'var(--text-dim)'};">${chipLabel}</span></div>
+            </div>`;
+          }
         }
+
+        // Mount equip power subsection (same combined section, just a
+        // labeled divider between the two slot lists).
+        if (partyMountPowersInner.length) {
+          if (!Array.isArray(state.partyMountAllies)) state.partyMountAllies = [];
+          while (state.partyMountAllies.length < slotCount) state.partyMountAllies.push("");
+          if (state.partyMountAllies.length > slotCount) state.partyMountAllies = state.partyMountAllies.slice(0, slotCount);
+          const mEffSummary = {};
+          for (const ep of partyMountPowersInner) {
+            mEffSummary[ep.name] = (ep.partyEffects || []).map(e =>
+              `${e.amount > 0 ? "+" : ""}${e.amount}${e.type === "percent" ? "%" : ""} ${e.stat}`
+            ).join(", ") || "(no structured party stats)";
+          }
+          html += `<div style="border-top:1px solid var(--border);margin-top:0.6rem;padding-top:0.4rem;font-size:0.78rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;">Ally mount equip powers</div>`;
+          for (let i = 0; i < slotCount; i++) {
+            const picked = state.partyMountAllies[i] || "";
+            const desc = picked ? mEffSummary[picked] : "click to pick an ally's mount equip power";
+            const chipLabel = picked ? `🐉 ${picked}` : "+ Pick mount power";
+            html += `<div class="boon-row ${picked ? "has-pts" : ""}" data-party-mount-slot-pick="${i}" style="cursor:pointer;">
+              <div class="boon-row-info">
+                <div class="boon-row-name">Ally mount slot ${i + 1} — ${picked || "(empty)"}</div>
+                <div class="boon-row-effect">${desc}</div>
+              </div>
+              <div class="boon-counter"><span style="font-size:0.75rem;color:${picked?'var(--gold)':'var(--text-dim)'};">${chipLabel}</span></div>
+            </div>`;
+          }
+        }
+
         html += `</div>`;
       }
 
@@ -6498,6 +6563,51 @@
           renderBuffs(); rerenderAll();
         });
       }
+      // Per-slot ally mount equip power picker
+      el.querySelectorAll("[data-party-mount-slot-pick]").forEach(row => {
+        row.addEventListener("click", () => {
+          const slot = +row.dataset.partyMountSlotPick;
+          const taken = new Set((state.partyMountAllies || []).filter((n, i) => n && i !== slot));
+          const partyMountPowers = (typeof MOUNT_EQUIP_POWERS_DATA !== "undefined")
+            ? MOUNT_EQUIP_POWERS_DATA.filter(ep => Array.isArray(ep.partyEffects)).slice().sort((a,b) => a.name.localeCompare(b.name))
+            : [];
+          const noneItem = { __none: true, name: "— None — (clear slot)" };
+          const items = [noneItem, ...partyMountPowers];
+          openPicker({
+            dataType: "party_mount_equip_power",
+            title: `Ally mount slot ${slot + 1} — pick a mount equip power`,
+            items,
+            render: (ep) => {
+              if (ep.__none) {
+                return { name: ep.name, meta: "", desc: "Clears this slot." };
+              }
+              const eff = (ep.partyEffects || []).map(e =>
+                `${e.amount > 0 ? "+" : ""}${e.amount}${e.type === "percent" ? "%" : ""} ${e.stat}`
+              ).join(", ") || "(no structured party stats)";
+              const dup = taken.has(ep.name) ? " · already in another slot" : "";
+              const note = ep.notes ? ep.notes.split(".")[0] + "." : "";
+              return {
+                name: ep.name + dup,
+                meta: `Party buff: ${eff}`,
+                desc: note
+              };
+            },
+            onPick: (ep) => {
+              if (!Array.isArray(state.partyMountAllies)) state.partyMountAllies = [];
+              if (!ep || ep.__none) {
+                state.partyMountAllies[slot] = "";
+              } else if (taken.has(ep.name)) {
+                toast(`${ep.name} is already in another slot.`);
+                return;
+              } else {
+                state.partyMountAllies[slot] = ep.name;
+              }
+              renderBuffs(); rerenderAll();
+            }
+          });
+        });
+      });
+
       // Per-slot ally companion picker — opens the standard picker UI
       // so the user can see each companion's buff effects (and full
       // details via 🔍) before choosing. Already-selected companions
