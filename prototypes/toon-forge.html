@@ -335,6 +335,150 @@
     .gear-pick-chip.disabled:hover { border-color: var(--border); color: var(--text-dim); }
     .slot.filled { border-color: rgba(240,136,62,0.4); background: rgba(240,136,62,0.04); }
 
+    /* ===== Class loadout panel styles =====
+       Used for mechanics, general, and read-only info rows. Slot chips
+       (at-will/encounter/daily/feat) reuse .slot + .gear-pick-chip
+       with extra polish from .loadout-* selectors below. */
+    .loadout-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.6rem;
+    }
+    .loadout-card {
+      position: relative;
+      background: linear-gradient(135deg, var(--elevated) 0%, rgba(255,255,255,0.015) 100%);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem 0.8rem 0.65rem 0.85rem;
+      line-height: 1.35;
+      transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+      overflow: hidden;
+    }
+    .loadout-card::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, rgba(240,136,62,0.85), rgba(240,136,62,0.15));
+      opacity: 0.55;
+      transition: opacity 0.15s ease;
+    }
+    .loadout-card:hover {
+      border-color: rgba(240,136,62,0.55);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px -6px rgba(240,136,62,0.45);
+    }
+    .loadout-card:hover::before { opacity: 1; }
+    .loadout-card-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.005em;
+    }
+    .loadout-card-tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+      font-weight: 700;
+      margin-left: 0.5rem;
+      padding: 0.08rem 0.4rem;
+      border: 1px solid rgba(240,136,62,0.3);
+      border-radius: 999px;
+      background: rgba(240,136,62,0.07);
+      vertical-align: middle;
+    }
+    .loadout-card-bonus {
+      margin-top: 0.25rem;
+      font-size: 0.8rem;
+      color: var(--amber);
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+    .loadout-card-desc {
+      margin-top: 0.3rem;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      line-height: 1.45;
+    }
+    .loadout-card-substat {
+      margin-top: 0.22rem;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+    .loadout-card-substat strong { color: var(--text); }
+
+    /* Slot chip polish — used by at-will/encounter/daily/feat picker
+       slots. Filled state pops with a soft amber gradient + glow. */
+    .slot {
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    }
+    .slot:hover { transform: translateY(-1px); }
+    .slot.filled {
+      background: linear-gradient(135deg, rgba(240,136,62,0.07) 0%, rgba(240,136,62,0.015) 100%);
+      box-shadow: inset 0 0 0 1px rgba(240,136,62,0.15);
+    }
+    .gear-pick-chip {
+      transition: border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .gear-pick-chip:hover {
+      box-shadow: 0 0 0 1px rgba(240,136,62,0.35), 0 2px 8px -4px rgba(240,136,62,0.5);
+    }
+    .gear-pick-chip.filled {
+      background: linear-gradient(135deg, rgba(240,136,62,0.05) 0%, rgba(240,136,62,0.01) 100%);
+    }
+
+    /* Ranger ranged/melee pair shown inside a gear-pick-chip slot.
+       Override the chip's nowrap/ellipsis so both lines fit, and add
+       a small left rule between the active/inactive stance lines. */
+    .gear-pick-chip.pair-chip {
+      white-space: normal;
+      padding: 0.55rem 0.7rem;
+      line-height: 1.45;
+    }
+    .pair-line {
+      display: block;
+      font-size: 0.85rem;
+      transition: color 0.15s ease;
+    }
+    .pair-line.active {
+      color: var(--gold);
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(240,136,62,0.25);
+    }
+    .pair-line.inactive {
+      color: var(--text-dim);
+      font-weight: 400;
+      opacity: 0.7;
+    }
+
+    /* Feat tier slot label slightly narrower than the default chip so 5
+       slots fit cleanly side-by-side on desktop. */
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.5rem;
+    }
+    @media (max-width: 900px) {
+      .feat-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .feat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Picker modal item polish — used by at-will/encounter/daily/feat
+       openPicker() modals. The base .picker-item class is defined
+       higher up; we layer transitions and accent border on top. */
+    .picker-item {
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .picker-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px -6px rgba(240,136,62,0.4);
+    }
+
     /* ===== Companions / Mounts mini-grid ===== */
     .comp-grid {
       display: grid;
@@ -2158,6 +2302,7 @@
   <script src="../data/enchants.js"></script>
   <script src="../data/overloads.js"></script>
   <script src="../data/kits.js"></script>
+  <script src="../data/general-feats.js"></script>
   <script src="../data/companions.js"></script>
   <script src="../data/companion-powers.js"></script>
   <script src="../data/companion-enhancements.js"></script>
@@ -2301,6 +2446,25 @@
       // sparks deplete via Soul Scorch but the stat panel models the
       // assumed average uptime.
       warlockSoulSparks: 0,
+      // Hotbar at-will slots — what the player has equipped going into
+      // combat (NW gives you 2 at-will slots per Powers Set). Display-
+      // only today; engine wiring lands with the damage simulator.
+      // Stored as power names from the class + paragon at-will lists.
+      // For Ranger, each entry is the ranged-side name; the melee side
+      // is its paired partner in the list.
+      slottedAtWills: ["", ""],
+      // Encounter hotbar slots — NW gives 3 encounter slots per Powers
+      // Set. Same Ranger ranged/melee pairing rules as at-wills.
+      slottedEncounters: ["", "", ""],
+      // Daily hotbar slots — 2 slots per Powers Set. Dailies do NOT
+      // pair ranged/melee even for Ranger (each daily is its own
+      // power; Forest Ghost is stance-neutral, Seismic Shot is its
+      // own thing, etc.). Stored as plain power names.
+      slottedDailies: ["", ""],
+      // Selected paragon feats — 5 slots, 1 per tier of the in-game
+      // paragon feat tree. Stored as feat names; "" = empty slot.
+      // Display-only today.
+      slottedFeats: ["", "", "", "", ""],
     };
 
     /* ===== Save / Load / Share =====
@@ -2346,7 +2510,11 @@
           slottedClassFeaturePicks: [...(state.slottedClassFeaturePicks || [])],
           rangerStance: state.rangerStance || "ranged",
           bardActiveSong: state.bardActiveSong || "",
-          warlockSoulSparks: state.warlockSoulSparks || 0
+          warlockSoulSparks: state.warlockSoulSparks || 0,
+          slottedAtWills: [...(state.slottedAtWills || [])],
+          slottedEncounters: [...(state.slottedEncounters || [])],
+          slottedDailies: [...(state.slottedDailies || [])],
+          slottedFeats: [...(state.slottedFeats || [])]
         }
       };
     }
@@ -2364,6 +2532,22 @@
       state.rangerStance = s.rangerStance || "ranged";
       state.bardActiveSong = s.bardActiveSong || "";
       state.warlockSoulSparks = typeof s.warlockSoulSparks === "number" ? s.warlockSoulSparks : 0;
+      // Pad at-will slot array to exactly 2 entries so older saves load.
+      const _aw = Array.isArray(s.slottedAtWills) ? s.slottedAtWills.slice(0, 2) : [];
+      while (_aw.length < 2) _aw.push("");
+      state.slottedAtWills = _aw;
+      // Pad encounter slot array to exactly 3 entries.
+      const _enc = Array.isArray(s.slottedEncounters) ? s.slottedEncounters.slice(0, 3) : [];
+      while (_enc.length < 3) _enc.push("");
+      state.slottedEncounters = _enc;
+      // Pad daily slot array to exactly 2 entries.
+      const _dly = Array.isArray(s.slottedDailies) ? s.slottedDailies.slice(0, 2) : [];
+      while (_dly.length < 2) _dly.push("");
+      state.slottedDailies = _dly;
+      // Feats — pad to exactly 5 slots (1 per in-game feat tier).
+      const _ft = Array.isArray(s.slottedFeats) ? s.slottedFeats.slice(0, 5) : [];
+      while (_ft.length < 5) _ft.push("");
+      state.slottedFeats = _ft;
       // Re-render every section
       populateParagons(state.class || null);
       recomputeAbilityTotals();
@@ -6495,35 +6679,375 @@
       panel.style.display = "";
 
       const out = [];
-      const slotted = Array.isArray(paragonDef.slottedClassFeatures) ? paragonDef.slottedClassFeatures : [];
 
-      // Drop the cross-reference stubs (e.g. Hunter's Seeker's Vengeance
-      // shim that points to Warden) — they're informational only.
+      // Slotted class features data — used in the picker block lower
+      // down (after Mechanics). Hoisted here so the picker logic and
+      // its wireup share the same `picks` / `pickable` references.
+      const slotted = Array.isArray(paragonDef.slottedClassFeatures) ? paragonDef.slottedClassFeatures : [];
       const pickable = slotted.filter(f => !f.classShared);
       const picks = (state.slottedClassFeaturePicks || []).slice();
 
-      out.push('<div class="field"><label>Slotted Class Features <span style="color:var(--text-dim);font-weight:400;">(pick up to 2)</span></label>');
-      out.push('<div style="display:flex;gap:0.5rem;flex-wrap:wrap;">');
-      for (let i = 0; i < 2; i++) {
-        const current = picks[i] || "";
-        out.push('<select data-cf-slot="' + i + '" style="flex:1;min-width:200px;">');
-        out.push('<option value="">— empty —</option>');
-        for (const f of pickable) {
-          // Don't allow the same feature in both slots.
-          if (picks[1 - i] && picks[1 - i] === f.name) continue;
-          const sel = (current === f.name) ? ' selected' : '';
-          out.push('<option value="' + escAttr(f.name) + '"' + sel + '>' + escHtml(f.name) + '</option>');
+      // --- At-Will hotbar slots (2) ---
+      // Pickable list = class.powers.atWill + paragon.powers.atWill.
+      // Uses the same openPicker modal pattern as gear/companions so
+      // the UX feels consistent with the rest of Toon Forge. Display-
+      // only today; engine wiring lands with the damage simulator.
+      //
+      // Ranger special case: each at-will hotbar slot holds a PAIR
+      // (ranged + melee side); stance-switching (R3) swaps which side
+      // fires. The data lists them in sequence (Rapid Shot then Rapid
+      // Strike, Split Shot then Split Strike, etc.) so we pair them
+      // by position. State stores the ranged name as the pair's
+      // canonical identifier; display shows both names with the
+      // active stance highlighted.
+      const classDefForLoadout = findClass(state.class);
+      const atwillRaw = []
+        .concat(classDefForLoadout && classDefForLoadout.powers && Array.isArray(classDefForLoadout.powers.atWill) ? classDefForLoadout.powers.atWill : [])
+        .concat(paragonDef.powers && Array.isArray(paragonDef.powers.atWill) ? paragonDef.powers.atWill : [])
+        .filter(p => p && p.name);
+
+      // Build atwillPool: for Ranger we synthesize pair items; everyone
+      // else gets the flat list. A "pair item" carries .ranged/.melee
+      // sub-objects plus a name that combines both for picker display.
+      let atwillPool;
+      if (state.class === "Ranger") {
+        const ranged = atwillRaw.filter(p => p.stance === "ranged");
+        const melee  = atwillRaw.filter(p => p.stance === "melee");
+        const pairs  = [];
+        for (let i = 0; i < Math.min(ranged.length, melee.length); i++) {
+          pairs.push({
+            name: ranged[i].name + " / " + melee[i].name,
+            pairId: ranged[i].name,   // canonical pair id = ranged-side name
+            ranged: ranged[i],
+            melee:  melee[i],
+            // Combined meta for the picker formatter.
+            castSeconds: ranged[i].castSeconds,
+            range: ranged[i].range,
+            paragon: !!(ranged[i].paragon || melee[i].paragon),
+            notes: (ranged[i].notes || "") + (melee[i].notes ? " // Melee: " + melee[i].notes : ""),
+            addedEffect: ranged[i].addedEffect || melee[i].addedEffect
+          });
         }
-        out.push('</select>');
+        atwillPool = pairs;
+      } else {
+        atwillPool = atwillRaw;
       }
-      out.push('</div>');
-      // Description box for the picks
-      const descLines = picks.filter(Boolean).map(name => {
-        const f = pickable.find(x => x.name === name);
-        return f ? ('<div style="margin-top:0.4rem;font-size:0.78rem;color:var(--text-dim);"><strong>' + escHtml(f.name) + ':</strong> ' + escHtml(f.description || "") + '</div>') : '';
-      }).join('');
-      if (descLines) out.push(descLines);
-      out.push('</div>');
+
+      if (atwillPool.length) {
+        const awSlots = (state.slottedAtWills || []).slice();
+        while (awSlots.length < 2) awSlots.push("");
+        // Helper to look up a pair by its stored canonical id (the
+        // ranged-side name) so we can label the chip with both names.
+        const lookupRangerPair = (id) => atwillPool.find(p => p.pairId === id) || null;
+        out.push('<div class="field" style="margin-top:0.8rem;"><label>At-Wills <span style="color:var(--text-dim);font-weight:400;">(2 hotbar slots · click to pick' + (state.class === "Ranger" ? " · each slot is a ranged/melee pair, swap via stance" : "") + ')</span></label>');
+        out.push('<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:0.5rem;">');
+        for (let i = 0; i < 2; i++) {
+          const name = awSlots[i] || "";
+          const filled = !!name;
+          let label;
+          if (filled && state.class === "Ranger") {
+            const pair = lookupRangerPair(name);
+            if (pair) {
+              const activeIsMelee = state.rangerStance === "melee";
+              label =
+                '<span class="pair-line ' + (activeIsMelee ? "inactive" : "active") + '">🏹 ' + escHtml(pair.ranged.name) + '</span>' +
+                '<span class="pair-line ' + (activeIsMelee ? "active"   : "inactive") + '">⚔ ' + escHtml(pair.melee.name) + '</span>';
+            } else {
+              label = "⚡ " + escHtml(name);
+            }
+          } else {
+            label = filled ? "⚡ " + escHtml(name) : "+ Pick at-will";
+          }
+          out.push(
+            '<div class="slot ' + (filled ? "filled" : "") + '">' +
+              '<div class="slot-label">Slot ' + (i + 1) + '</div>' +
+              '<div class="gear-pick-chip' + (filled ? " filled" : "") + (filled && state.class === "Ranger" ? " pair-chip" : "") + '" data-atwill-pick="' + i + '" title="' + (filled ? escAttr(name) : 'Click to pick an at-will') + '">' +
+                label +
+              '</div>' +
+            '</div>'
+          );
+        }
+        out.push('</div></div>');
+      }
+
+      // --- Encounter hotbar slots (3) ---
+      // Same structure as At-Wills: class.powers.encounter +
+      // paragon.powers.encounter, with Ranger ranged/melee pairing.
+      const encRaw = []
+        .concat(classDefForLoadout && classDefForLoadout.powers && Array.isArray(classDefForLoadout.powers.encounter) ? classDefForLoadout.powers.encounter : [])
+        .concat(paragonDef.powers && Array.isArray(paragonDef.powers.encounter) ? paragonDef.powers.encounter : [])
+        .filter(p => p && p.name);
+
+      let encPool;
+      if (state.class === "Ranger") {
+        const ranged = encRaw.filter(p => p.stance === "ranged");
+        const melee  = encRaw.filter(p => p.stance === "melee");
+        const pairs  = [];
+        for (let i = 0; i < Math.min(ranged.length, melee.length); i++) {
+          pairs.push({
+            name: ranged[i].name + " / " + melee[i].name,
+            pairId: ranged[i].name,
+            ranged: ranged[i],
+            melee:  melee[i],
+            castSeconds: ranged[i].castSeconds,
+            range: ranged[i].range,
+            paragon: !!(ranged[i].paragon || melee[i].paragon),
+            notes: ranged[i].notes,
+            addedEffect: ranged[i].addedEffect || melee[i].addedEffect
+          });
+        }
+        encPool = pairs;
+      } else {
+        encPool = encRaw;
+      }
+
+      if (encPool.length) {
+        const encSlots = (state.slottedEncounters || []).slice();
+        while (encSlots.length < 3) encSlots.push("");
+        const lookupRangerEncPair = (id) => encPool.find(p => p.pairId === id) || null;
+        out.push('<div class="field" style="margin-top:0.8rem;"><label>Encounters <span style="color:var(--text-dim);font-weight:400;">(3 hotbar slots · click to pick' + (state.class === "Ranger" ? " · each slot is a ranged/melee pair, swap via stance" : "") + ')</span></label>');
+        out.push('<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:0.5rem;">');
+        for (let i = 0; i < 3; i++) {
+          const name = encSlots[i] || "";
+          const filled = !!name;
+          let label;
+          if (filled && state.class === "Ranger") {
+            const pair = lookupRangerEncPair(name);
+            if (pair) {
+              const activeIsMelee = state.rangerStance === "melee";
+              label =
+                '<span class="pair-line ' + (activeIsMelee ? "inactive" : "active") + '">🏹 ' + escHtml(pair.ranged.name) + '</span>' +
+                '<span class="pair-line ' + (activeIsMelee ? "active"   : "inactive") + '">⚔ ' + escHtml(pair.melee.name) + '</span>';
+            } else {
+              label = "✦ " + escHtml(name);
+            }
+          } else {
+            label = filled ? "✦ " + escHtml(name) : "+ Pick encounter";
+          }
+          out.push(
+            '<div class="slot ' + (filled ? "filled" : "") + '">' +
+              '<div class="slot-label">Slot ' + (i + 1) + '</div>' +
+              '<div class="gear-pick-chip' + (filled ? " filled" : "") + (filled && state.class === "Ranger" ? " pair-chip" : "") + '" data-enc-pick="' + i + '" title="' + (filled ? escAttr(name) : 'Click to pick an encounter') + '">' +
+                label +
+              '</div>' +
+            '</div>'
+          );
+        }
+        out.push('</div></div>');
+      }
+
+      // --- Daily hotbar slots (2) ---
+      // Dailies are flat across all classes — unlike at-wills and
+      // encounters, Ranger dailies are not paired ranged/melee.
+      // (Forest Ghost is stance-neutral, Seismic Shot is ranged-only,
+      // Slasher's Mark is its own thing, etc.) Simple flat picker.
+      const dailyPool = []
+        .concat(classDefForLoadout && classDefForLoadout.powers && Array.isArray(classDefForLoadout.powers.daily) ? classDefForLoadout.powers.daily : [])
+        .concat(paragonDef.powers && Array.isArray(paragonDef.powers.daily) ? paragonDef.powers.daily : [])
+        .filter(p => p && p.name);
+
+      if (dailyPool.length) {
+        const dlySlots = (state.slottedDailies || []).slice();
+        while (dlySlots.length < 2) dlySlots.push("");
+        out.push('<div class="field" style="margin-top:0.8rem;"><label>Dailies <span style="color:var(--text-dim);font-weight:400;">(2 hotbar slots · click to pick)</span></label>');
+        out.push('<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:0.5rem;">');
+        for (let i = 0; i < 2; i++) {
+          const name = dlySlots[i] || "";
+          const filled = !!name;
+          const label = filled ? "★ " + escHtml(name) : "+ Pick daily";
+          out.push(
+            '<div class="slot ' + (filled ? "filled" : "") + '">' +
+              '<div class="slot-label">Slot ' + (i + 1) + '</div>' +
+              '<div class="gear-pick-chip' + (filled ? " filled" : "") + '" data-daily-pick="' + i + '" title="' + (filled ? escAttr(name) : 'Click to pick a daily') + '">' +
+                label +
+              '</div>' +
+            '</div>'
+          );
+        }
+        out.push('</div></div>');
+      }
+
+      // --- Mechanics (read-only display) ---
+      // Mechanics aren't slotted in NW — they're class-fixed systems
+      // (Forte, class resource, tactical dodge, paragon abilities).
+      // Display the full list with descriptions so users can see what
+      // their class brings to the table.
+      const mechanicRaw = []
+        .concat(classDefForLoadout && classDefForLoadout.powers && Array.isArray(classDefForLoadout.powers.mechanic) ? classDefForLoadout.powers.mechanic : [])
+        .concat(paragonDef.powers && Array.isArray(paragonDef.powers.mechanic) ? paragonDef.powers.mechanic : [])
+        .filter(p => p && p.name);
+
+      // (cleanNote is defined at module scope — used here to strip
+      // "Screenshot intake YYYY-MM-DD." capture boilerplate.)
+
+      // Pick the most user-facing field: description (in-game tooltip
+      // text) wins, then addedEffect (mechanic summary), then notes
+      // (which is sometimes capture metadata, sometimes the only field
+      // available for older entries).
+      const mechDesc = (m) => cleanNote(m && (m.description || m.addedEffect || m.notes)) || "";
+
+      // For Ranger, the two stance mechanics (Ranged Stance / Melee
+      // Stance) are two halves of the same toggle — collapse them into
+      // a single "Stance" card so the display matches how it actually
+      // works in-game.
+      let mechanicList;
+      if (state.class === "Ranger") {
+        const ranged = mechanicRaw.find(m => m.name === "Ranged Stance");
+        const melee  = mechanicRaw.find(m => m.name === "Melee Stance");
+        const others = mechanicRaw.filter(m => m.name !== "Ranged Stance" && m.name !== "Melee Stance");
+        mechanicList = [];
+        if (ranged || melee) {
+          mechanicList.push({
+            name: "Stance",
+            isStancePair: true,
+            ranged, melee,
+            rNote: mechDesc(ranged),
+            mNote: mechDesc(melee)
+          });
+        }
+        mechanicList.push(...others);
+      } else {
+        mechanicList = mechanicRaw;
+      }
+
+      if (mechanicList.length) {
+        out.push('<div class="field" style="margin-top:0.8rem;"><label>Mechanics <span style="color:var(--text-dim);font-weight:400;">(class-fixed systems · reference only)</span></label>');
+        out.push('<div class="loadout-grid">');
+        for (const m of mechanicList) {
+          // Combined Ranger stance card — show both stances in one box.
+          if (m.isStancePair) {
+            out.push(
+              '<div class="loadout-card">' +
+                '<div class="loadout-card-title">Stance</div>' +
+                '<div class="loadout-card-substat"><strong>🏹 Ranged Stance</strong>' + (m.rNote ? ' — ' + escHtml(m.rNote) : '') + '</div>' +
+                '<div class="loadout-card-substat"><strong>⚔ Melee Stance</strong>'  + (m.mNote ? ' — ' + escHtml(m.mNote) : '') + '</div>' +
+              '</div>'
+            );
+            continue;
+          }
+          const tagBits = [];
+          if (m.tactical) tagBits.push("tactical");
+          if (m.paragon)  tagBits.push("paragon");
+          const tag = tagBits.length ? '<span class="loadout-card-tag">' + escHtml(tagBits.join(" · ")) + '</span>' : '';
+          const desc = mechDesc(m);
+          out.push(
+            '<div class="loadout-card">' +
+              '<div class="loadout-card-title">' + escHtml(m.name) + tag + '</div>' +
+              (desc ? '<div class="loadout-card-desc">' + escHtml(desc) + '</div>' : '') +
+            '</div>'
+          );
+        }
+        out.push('</div></div>');
+      }
+
+      // --- Slotted Class Features (pick up to 2) ---
+      // Lives after Mechanics so the loadout reads at-wills → encounters
+      // → dailies → mechanics → class features, mirroring the in-game
+      // Powers tab row order.
+      if (pickable.length) {
+        out.push('<div class="field" style="margin-top:0.8rem;"><label>Class Features <span style="color:var(--text-dim);font-weight:400;">(pick up to 2)</span></label>');
+        out.push('<div style="display:flex;gap:0.5rem;flex-wrap:wrap;">');
+        for (let i = 0; i < 2; i++) {
+          const current = picks[i] || "";
+          out.push('<select data-cf-slot="' + i + '" style="flex:1;min-width:200px;">');
+          out.push('<option value="">— empty —</option>');
+          for (const f of pickable) {
+            // Don't allow the same feature in both slots.
+            if (picks[1 - i] && picks[1 - i] === f.name) continue;
+            const sel = (current === f.name) ? ' selected' : '';
+            out.push('<option value="' + escAttr(f.name) + '"' + sel + '>' + escHtml(f.name) + '</option>');
+          }
+          out.push('</select>');
+        }
+        out.push('</div>');
+        // Description box for the picks
+        const descLines = picks.filter(Boolean).map(name => {
+          const f = pickable.find(x => x.name === name);
+          return f ? ('<div style="margin-top:0.4rem;font-size:0.78rem;color:var(--text-dim);"><strong>' + escHtml(f.name) + ':</strong> ' + escHtml(f.description || "") + '</div>') : '';
+        }).join('');
+        if (descLines) out.push(descLines);
+        out.push('</div>');
+      }
+
+      // --- Paragon Feats (5 slot cards + modal picker) ---
+      // In-game NW paragon tree has 5 tiers; each tier the user picks
+      // 1 of 2 feats. Same slot+picker pattern as dailies — each slot
+      // opens a modal showing all 10 paragon feats. A feat is blocked
+      // from appearing in other slots once picked elsewhere.
+      const featList = (paragonDef && Array.isArray(paragonDef.feats)) ? paragonDef.feats : [];
+      if (featList.length) {
+        const featSlots = (state.slottedFeats || []).slice();
+        while (featSlots.length < 5) featSlots.push("");
+        out.push('<div class="field" style="margin-top:0.8rem;"><label>Feats <span style="color:var(--text-dim);font-weight:400;">(5 paragon feat slots · click to pick)</span></label>');
+        out.push('<div class="feat-grid">');
+        for (let i = 0; i < 5; i++) {
+          const name = featSlots[i] || "";
+          const filled = !!name;
+          const label = filled ? "✦ " + escHtml(name) : "+ Pick feat";
+          out.push(
+            '<div class="slot ' + (filled ? "filled" : "") + '">' +
+              '<div class="slot-label">Tier ' + (i + 1) + '</div>' +
+              '<div class="gear-pick-chip' + (filled ? " filled" : "") + '" data-feat-pick="' + i + '" title="' + (filled ? escAttr(name) : 'Click to pick a feat') + '">' +
+                label +
+              '</div>' +
+            '</div>'
+          );
+        }
+        out.push('</div></div>');
+      }
+
+      // --- General (read-only: class skills + racial traits) ---
+      // Auto-applied passives — what's always boosting your stat panel
+      // because of your class, paragon, and selected race. Same card
+      // grid pattern as Mechanics: name + tag + description.
+      const generalEntries = [];
+      // Class-level passives (Weapon Mastery, Lucky Skirmisher, Demonic
+      // Vision, etc.) — these are class skills granted automatically.
+      if (classDefForLoadout && Array.isArray(classDefForLoadout.classFeatures)) {
+        for (const cf of classDefForLoadout.classFeatures) {
+          if (cf && cf.name) generalEntries.push({ feature: cf, kind: state.class + " skill" });
+        }
+      }
+      // Paragon-level passives (Warden's Skirmisher's Gambit, etc.).
+      if (paragonDef && Array.isArray(paragonDef.classFeatures)) {
+        for (const cf of paragonDef.classFeatures) {
+          if (cf && cf.name) generalEntries.push({ feature: cf, kind: state.paragon + " passive" });
+        }
+      }
+      // Racial traits — pulled from races.json for the SELECTED race
+      // only (so a Wood Elf Ranger sees Elven Accuracy + Wild Step but
+      // not Drow's Faerie Fire). general_feats.json is no longer used
+      // here since the canonical source for racial traits is races.json.
+      if (state.race && typeof RACES_DATA !== "undefined" && Array.isArray(RACES_DATA)) {
+        const raceDef = RACES_DATA.find(r => r.name === state.race);
+        const traits = raceDef ? (raceDef.traits || raceDef.racialTraits || []) : [];
+        for (const tr of traits) {
+          if (tr && tr.name) generalEntries.push({ feature: tr, kind: state.race + " racial" });
+        }
+      }
+
+      if (generalEntries.length) {
+        out.push('<div class="field" style="margin-top:0.8rem;"><label>General <span style="color:var(--text-dim);font-weight:400;">(auto-applied passives · class skills + racial traits)</span></label>');
+        out.push('<div class="loadout-grid">');
+        for (const ge of generalEntries) {
+          const cf = ge.feature;
+          const bonusBits = [];
+          for (const [k, v] of Object.entries(cf.percentStats || {})) bonusBits.push("+" + v + "% " + k);
+          for (const [k, v] of Object.entries(cf.ratingStats  || {})) bonusBits.push("+" + v + " "  + k);
+          const bonus = bonusBits.length
+            ? '<div class="loadout-card-bonus">' + escHtml(bonusBits.join(", ")) + '</div>'
+            : '';
+          const desc = cleanNote(cf.description || cf.notes || "");
+          out.push(
+            '<div class="loadout-card">' +
+              '<div class="loadout-card-title">' + escHtml(cf.name) + '<span class="loadout-card-tag">' + escHtml(ge.kind) + '</span></div>' +
+              bonus +
+              (desc ? '<div class="loadout-card-desc">' + escHtml(desc) + '</div>' : '') +
+            '</div>'
+          );
+        }
+        out.push('</div></div>');
+      }
 
       // --- Ranger stance toggle ---
       if (state.class === "Ranger") {
@@ -6569,6 +7093,101 @@
       body.innerHTML = out.join("");
 
       // --- Wire the picker controls ---
+      // At-Will slot clicks → open modal picker. We hand openPicker the
+      // class+paragon at-will pool plus a renderAtWillItem formatter,
+      // and onPick updates state.slottedAtWills[i].
+      body.querySelectorAll('[data-atwill-pick]').forEach(el => {
+        el.addEventListener('click', () => {
+          const idx = parseInt(el.dataset.atwillPick, 10);
+          openPicker({
+            title: "At-Will — slot " + (idx + 1),
+            items: atwillPool,
+            render: renderAtWillItem,
+            allowNone: true,
+            onPick: (item) => {
+              const arr = (state.slottedAtWills || []).slice();
+              while (arr.length < 2) arr.push("");
+              // Ranger pair items carry .pairId (canonical = ranged-side
+              // name). Everyone else just uses the power's .name.
+              const stored = !item ? "" : (item.pairId || item.name);
+              arr[idx] = stored;
+              state.slottedAtWills = arr;
+              renderClassLoadout();
+              rerenderAll();
+            }
+          });
+        });
+      });
+      // Encounter slot clicks → same modal pattern, three slots, uses
+      // renderEncounterItem to surface cooldowns and per-side magnitudes.
+      body.querySelectorAll('[data-enc-pick]').forEach(el => {
+        el.addEventListener('click', () => {
+          const idx = parseInt(el.dataset.encPick, 10);
+          openPicker({
+            title: "Encounter — slot " + (idx + 1),
+            items: encPool,
+            render: renderEncounterItem,
+            allowNone: true,
+            onPick: (item) => {
+              const arr = (state.slottedEncounters || []).slice();
+              while (arr.length < 3) arr.push("");
+              const stored = !item ? "" : (item.pairId || item.name);
+              arr[idx] = stored;
+              state.slottedEncounters = arr;
+              renderClassLoadout();
+              rerenderAll();
+            }
+          });
+        });
+      });
+      // Feat slot clicks — modal picker showing ONLY the 2 options for
+      // that specific tier. The in-game paragon feat tree is laid out
+      // as 5 tiers × 2 options each; we slice featList by position so
+      // tier 1 = featList[0..1], tier 2 = featList[2..3], etc. Each
+      // feat appears in only one tier's picker, so cross-slot
+      // deduplication isn't needed.
+      body.querySelectorAll('[data-feat-pick]').forEach(el => {
+        el.addEventListener('click', () => {
+          const idx = parseInt(el.dataset.featPick, 10);
+          const tierFeats = featList.slice(idx * 2, idx * 2 + 2);
+          openPicker({
+            title: "Feat — tier " + (idx + 1),
+            items: tierFeats,
+            render: renderFeatItem,
+            allowNone: true,
+            onPick: (item) => {
+              const arr = (state.slottedFeats || []).slice();
+              while (arr.length < 5) arr.push("");
+              arr[idx] = item ? item.name : "";
+              state.slottedFeats = arr;
+              renderClassLoadout();
+              rerenderAll();
+            }
+          });
+        });
+      });
+
+      // Daily slot clicks — flat list, no pair logic.
+      body.querySelectorAll('[data-daily-pick]').forEach(el => {
+        el.addEventListener('click', () => {
+          const idx = parseInt(el.dataset.dailyPick, 10);
+          openPicker({
+            title: "Daily — slot " + (idx + 1),
+            items: dailyPool,
+            render: renderDailyItem,
+            allowNone: true,
+            onPick: (item) => {
+              const arr = (state.slottedDailies || []).slice();
+              while (arr.length < 2) arr.push("");
+              arr[idx] = item ? item.name : "";
+              state.slottedDailies = arr;
+              renderClassLoadout();
+              rerenderAll();
+            }
+          });
+        });
+      });
+
       body.querySelectorAll('select[data-cf-slot]').forEach(sel => {
         sel.addEventListener('change', e => {
           const idx = parseInt(e.target.dataset.cfSlot, 10);
@@ -6617,6 +7236,175 @@
     }
     function escAttr(s) {
       return escHtml(s).replace(/"/g, "&quot;");
+    }
+
+    /* ===== At-Will picker formatter =====
+       Shape: { name, meta, desc } — fed to the generic openPicker modal.
+       Two shapes of input:
+         single power:  { name, stance, castSeconds, range, magnitude, ... }
+         Ranger pair:   { name, ranged: {...}, melee: {...}, pairId, ... }
+       For pairs we summarize both sides so the user sees ranged stats
+       and melee stats together in one row. */
+    function renderAtWillItem(p) {
+      if (!p) return { name: "", meta: "", desc: "" };
+      const e = (v) => escHtml(v);
+      // Ranger pair branch: ranged name → ranged description, then
+      // melee name → melee description. We pack both sides into r.name
+      // as a structured block so the picker row reads top-down like a
+      // mini two-section card. meta/desc left blank for this branch.
+      if (p.ranged && p.melee) {
+        const r = p.ranged, m = p.melee;
+        const sideBlock = (icon, side) => {
+          // One-line "name — meta" (magnitude + cast + range), then the
+          // notes/description on a second line dimmed.
+          const metaBits = [];
+          if (typeof side.magnitude !== "undefined") {
+            const mag = "mag " + side.magnitude + (typeof side.enhancedMagnitude === "number" ? "/" + side.enhancedMagnitude : "");
+            metaBits.push(mag);
+          }
+          if (typeof side.castSeconds === "number") metaBits.push(side.castSeconds + "s cast");
+          if (side.range) metaBits.push("range " + side.range);
+          const meta = metaBits.length ? '<span style="color:var(--text-dim);font-weight:400;font-size:0.78rem;"> — ' + e(metaBits.join(" · ")) + '</span>' : "";
+          const descBits = [];
+          if (side.notes) descBits.push(side.notes);
+          if (side.addedEffect) descBits.push("Effect: " + side.addedEffect);
+          const desc = descBits.length
+            ? '<div style="color:var(--text-dim);font-size:0.78rem;font-weight:400;margin-top:0.1rem;">' + e(descBits.join(" — ")) + '</div>'
+            : "";
+          return '<div>' +
+                   '<div>' + icon + ' ' + e(side.name) + meta + '</div>' +
+                   desc +
+                 '</div>';
+        };
+        const stackedName =
+          '<div style="display:flex;flex-direction:column;gap:0.45rem;line-height:1.3;">' +
+            sideBlock("🏹", r) +
+            sideBlock("⚔",  m) +
+          '</div>';
+        // meta/desc handled inside the stacked block per side.
+        return { name: stackedName, meta: "", desc: "" };
+      }
+      // Single-power branch (non-Ranger or unpaired entries).
+      const metaParts = [];
+      if (typeof p.castSeconds === "number") metaParts.push(p.castSeconds + "s cast");
+      if (p.range)        metaParts.push("range " + p.range);
+      if (p.rangeMelee)   metaParts.push(p.rangeMelee);
+      if (p.stance)       metaParts.push(p.stance + " stance");
+      if (p.paragon)      metaParts.push("paragon");
+      if (typeof p.magnitude !== "undefined") metaParts.push("mag " + p.magnitude);
+      if (typeof p.enhancedMagnitude === "number") metaParts.push("enh " + p.enhancedMagnitude);
+      const descBits = [];
+      if (p.notes) descBits.push(p.notes);
+      if (p.addedEffect) descBits.push("Effect: " + p.addedEffect);
+      if (p.secondaryEffect) descBits.push("Secondary: " + p.secondaryEffect);
+      return { name: e(p.name), meta: e(metaParts.join(" · ")), desc: e(descBits.join(" — ")) };
+    }
+
+    /* ===== Encounter picker formatter =====
+       Same shape as renderAtWillItem with cooldown info. Ranger pairs
+       stack ranged → desc → melee → desc identical to at-wills. */
+    function renderEncounterItem(p) {
+      if (!p) return { name: "", meta: "", desc: "" };
+      const e = (v) => escHtml(v);
+      // Helper to format cooldown (handles cooldownByParagon).
+      const cdOf = (side) => {
+        if (!side) return null;
+        if (typeof side.cooldownSeconds === "number") return side.cooldownSeconds;
+        if (side.cooldownByParagon && state.paragon && typeof side.cooldownByParagon[state.paragon] === "number") {
+          return side.cooldownByParagon[state.paragon];
+        }
+        return null;
+      };
+      // Ranger pair branch: stacked layout, each side with its meta + desc.
+      if (p.ranged && p.melee) {
+        const sideBlock = (icon, side) => {
+          const metaBits = [];
+          if (typeof side.magnitude !== "undefined") metaBits.push("mag " + side.magnitude);
+          else if (side.minMagnitude && side.maxMagnitude) metaBits.push("mag " + side.minMagnitude + "-" + side.maxMagnitude);
+          if (typeof side.castSeconds === "number") metaBits.push(side.castSeconds + "s cast");
+          const cd = cdOf(side);
+          if (cd !== null) metaBits.push(cd + "s cd");
+          if (side.range) metaBits.push("range " + side.range);
+          const meta = metaBits.length ? '<span style="color:var(--text-dim);font-weight:400;font-size:0.78rem;"> — ' + e(metaBits.join(" · ")) + '</span>' : "";
+          const descBits = [];
+          if (side.notes) descBits.push(side.notes);
+          if (side.addedEffect) descBits.push("Effect: " + side.addedEffect);
+          const desc = descBits.length
+            ? '<div style="color:var(--text-dim);font-size:0.78rem;font-weight:400;margin-top:0.1rem;">' + e(descBits.join(" — ")) + '</div>'
+            : "";
+          return '<div>' +
+                   '<div>' + icon + ' ' + e(side.name) + meta + '</div>' +
+                   desc +
+                 '</div>';
+        };
+        const stackedName =
+          '<div style="display:flex;flex-direction:column;gap:0.45rem;line-height:1.3;">' +
+            sideBlock("🏹", p.ranged) +
+            sideBlock("⚔",  p.melee) +
+          '</div>';
+        return { name: stackedName, meta: "", desc: "" };
+      }
+      // Single-power branch.
+      const metaParts = [];
+      if (typeof p.magnitude !== "undefined") metaParts.push("mag " + p.magnitude);
+      else if (p.minMagnitude && p.maxMagnitude) metaParts.push("mag " + p.minMagnitude + "-" + p.maxMagnitude);
+      if (typeof p.castSeconds === "number") metaParts.push(p.castSeconds + "s cast");
+      const cd = cdOf(p);
+      if (cd !== null) metaParts.push(cd + "s cd");
+      if (p.range)         metaParts.push("range " + p.range);
+      if (p.radius)        metaParts.push("radius " + p.radius);
+      if (p.charges)       metaParts.push(p.charges + " charges");
+      if (p.paragon)       metaParts.push("paragon");
+      if (typeof p.soulweaveCost === "number") metaParts.push(p.soulweaveCost + " soulweave");
+      if (typeof p.performanceCost === "number") metaParts.push(p.performanceCost + " performance");
+      const descBits = [];
+      if (p.notes) descBits.push(p.notes);
+      if (p.addedEffect) descBits.push("Effect: " + p.addedEffect);
+      return { name: e(p.name), meta: e(metaParts.join(" · ")), desc: e(descBits.join(" — ")) };
+    }
+
+    /* ===== Feat picker formatter =====
+       Paragon feats are simple — they don't have magnitudes/cooldowns
+       like at-wills/encounters. Surface the description (which is the
+       in-game tooltip text) prominently; the picker name is the feat
+       name and the desc is the description. */
+    function renderFeatItem(f) {
+      if (!f) return { name: "", meta: "", desc: "" };
+      const e = (v) => escHtml(v);
+      const desc = cleanNote(f.description || "") || cleanNote(f.notes || "");
+      return { name: e(f.name), meta: "", desc: e(desc) };
+    }
+
+    // cleanNote is defined inside renderClassLoadout's scope; mirror a
+    // module-level copy here so the picker formatter can reuse it.
+    function cleanNote(raw) {
+      if (!raw) return "";
+      return String(raw)
+        .replace(/\s*Screenshot\s+intake\s+\d{4}-\d{2}-\d{2}\.?/gi, "")
+        .replace(/\s*Screenshot\s+capture\s+\d{4}-\d{2}-\d{2}\.?/gi, "")
+        .trim();
+    }
+
+    /* ===== Daily picker formatter =====
+       Flat (no Ranger pairing). Highlights AP cost since that's the
+       distinguishing daily-power attribute, plus magnitude / cast /
+       range. */
+    function renderDailyItem(p) {
+      if (!p) return { name: "", meta: "", desc: "" };
+      const e = (v) => escHtml(v);
+      const metaParts = [];
+      if (typeof p.actionPointCost === "number") metaParts.push(p.actionPointCost + " AP");
+      if (typeof p.magnitude !== "undefined") metaParts.push("mag " + p.magnitude);
+      else if (p.minMagnitude && p.maxMagnitude) metaParts.push("mag " + p.minMagnitude + "-" + p.maxMagnitude);
+      if (typeof p.castSeconds === "number") metaParts.push(p.castSeconds + "s cast");
+      if (p.range)  metaParts.push("range " + p.range);
+      if (p.radius) metaParts.push("radius " + p.radius);
+      if (p.paragon) metaParts.push("paragon");
+      if (typeof p.healMagnitude !== "undefined") metaParts.push("heal mag " + p.healMagnitude);
+      const descBits = [];
+      if (p.notes) descBits.push(p.notes);
+      if (p.addedEffect) descBits.push("Effect: " + p.addedEffect);
+      return { name: e(p.name), meta: e(metaParts.join(" · ")), desc: e(descBits.join(" — ")) };
     }
 
     function renderBuffs() {
@@ -7991,11 +8779,15 @@
         state.class = c.dataset.class;
         state.paragon = "";   // class changed → paragon no longer applies
         // Reset class-specific loadout state — picks/stance/song/sparks
-        // are all keyed to the prior class.
+        // and hotbar slots are all keyed to the prior class.
         state.slottedClassFeaturePicks = [];
         state.bardActiveSong = "";
         state.warlockSoulSparks = 0;
         state.rangerStance = "ranged";
+        state.slottedAtWills = ["", ""];
+        state.slottedEncounters = ["", "", ""];
+        state.slottedDailies = ["", ""];
+        state.slottedFeats = ["", "", "", "", ""];
         populateParagons(state.class);
         applyClassBaseScores(state.class);
         renderGear();
@@ -8023,10 +8815,15 @@
     document.getElementById("f-paragon").addEventListener("change", e => {
       state.paragon = e.target.value;
       // Switching paragon invalidates feature picks (different
-      // slottedClassFeatures lists per paragon) and the active song
-      // (Songblade ≠ Minstrel songs).
+      // slottedClassFeatures lists per paragon), the active song
+      // (Songblade ≠ Minstrel songs), and any paragon-specific
+      // at-wills/encounters the user had slotted.
       state.slottedClassFeaturePicks = [];
       state.bardActiveSong = "";
+      state.slottedAtWills = ["", ""];
+      state.slottedEncounters = ["", "", ""];
+      state.slottedDailies = ["", ""];
+      state.slottedFeats = ["", "", "", "", ""];
       rerenderAll();
     });
     document.getElementById("f-race").addEventListener("change",    e => {

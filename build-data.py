@@ -40,6 +40,7 @@ FILE_MAP = {
     "enchants.json":                ("enchants.js",                "ENCHANTS_DATA"),
     "overloads.json":               ("overloads.js",               "OVERLOADS_DATA"),
     "kits.json":                    ("kits.js",                    "KITS_DATA"),
+    "general_feats.json":           ("general-feats.js",           "GENERAL_FEATS_DATA"),
 }
 
 def build_header(source_name):
