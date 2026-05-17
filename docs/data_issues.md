@@ -1,5 +1,30 @@
 # Data Issues To Investigate
 
+## Avernus Campaign Leveling Conduits — Set Name Best-Guess (2026-05-17)
+
+Backfilled 25 Shirt/Pants orphans (IL 1225-1325, 5 rarity tiers each) into
+two best-guess set buckets pending in-game verification:
+
+- `Avernus Campaign Leveling Armor` — Shirts/Pants of the Negotiator/Interrogator
+  (15 items, ids 1469-1473, 1479-1488)
+- `Avernus Campaign Leveling Conduits` — Upper/Lower Pact Brands of the
+  Flame/Fire/Pyre/Inferno/Blaze-bond (10 items, ids 1474-1478, 1489-1493)
+
+Source set to "Avernus Campaign" for all. Note these are pre-Mod 16 era
+leveling Conduits — not relevant to current endgame builds.
+
+**Action:** Verify actual set names in-game if/when n00b encounters them on
+a low-level Avernus playthrough or in the campaign collections menu.
+Related Tunic items (ids 1464-1468 Armor slot) remain orphans — same
+verification path applies.
+
+## Dragonflight Shirt Orphans — Source Backfilled, Set Unknown (2026-05-17)
+
+4 Dragonflight Shirts (ids 2402-2405, IL 1500) backfilled with source
+"Stronghold Guild Marketplace (Rank 3)" derived from sibling entries
+(ids 2398-2399). Set name still unknown — possibly "Dragonflight Conduit"
+or similar Mod 18 Stronghold-themed name.
+
 ## Bloodwoven / Tempest Gaze Conduit Family — Triple-Entry Pattern (2026-05-17)
 
 Discovered during orphan cleanup. For each base Conduit name (e.g.,
