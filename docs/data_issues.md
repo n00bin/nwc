@@ -1,5 +1,39 @@
 # Data Issues To Investigate
 
+## Bloodwoven / Tempest Gaze Conduit Family — Triple-Entry Pattern (2026-05-17)
+
+Discovered during orphan cleanup. For each base Conduit name (e.g.,
+`Bloodwoven Signs`), the data has up to 3 entries:
+
+  1. **Parenthetical:** `Bloodwoven Signs (Critical Empowerment)` —
+     has source ("Collection Set 16 of 21 — Doomvault Remains") but no set
+  2. **Em-dash:** `Bloodwoven Signs — Critical Empowerment` —
+     has set name (Enchanted Awareness/Healing/Advantage) but no source
+
+These should probably be merged so each (base + equip power) combination
+is ONE entry that carries both `set` AND `source`. Affects:
+
+- Bloodwoven (Brands/Ink/Runes/Sigils/Signs/Symbols) — 6 base names
+- Tempest Gaze (Sigil/Seal/Mark/Crest/Insignia/Ink/Mark) — similar pattern
+
+**Action:** Walk through each base name pair and merge. Verify in-game that
+the slot assignment (some are Pants, some Shirt) is correct per equip
+power, since base orphan entries showed Pants/Shirt inconsistencies.
+
+## Paladin IL 3900 'of the Thayan Zealot' Weapons — Set Unknown (2026-05-17)
+
+Two Paladin orphan weapons at IL 3900 share the "Thayan Zealot" naming
+convention with the Umbral Stride set, but the IL doesn't match any
+known Umbral Stride tier (existing pieces are all IL 3300):
+
+- id 374 `Oathbreaker's Judgment of the Thayan Zealot` (Main Hand)
+  ratings: Critical Severity / Defense
+- id 373 `Doomward Bastion of the Thayan Zealot` (Off Hand)
+  ratings: Awareness / Forte
+
+**Action:** Verify in-game — could be Umbral Stride at a different tier,
+a separate Paladin-only set, or a Whisper of Power lower-tier variant.
+
 ## Role-Variant Gear Pairs — Needs In-Game Verification (2026-05-16)
 
 Audit found 10 gear entries that share the same (slot, name, item_level, set,
