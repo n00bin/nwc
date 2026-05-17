@@ -1,5 +1,69 @@
 # Data Issues To Investigate
 
+## Role-Variant Gear Pairs — Needs In-Game Verification (2026-05-16)
+
+Audit found 10 gear entries that share the same (slot, name, item_level, set,
+allowedClasses) but have *different* `ratingStats`. Each pair is either a
+legitimate role variant (DPS vs Tank version of the same item) or a data error.
+n00b is walking through one at a time and verifying in-game.
+
+**Status of each pair:**
+
+- [x] **Fiend Forged Cuisses** (Feet, IL 1230, Infernal Forged Armor) —
+  Resolved 2026-05-16. n00b confirmed in-game shows Crit Strike / Defense /
+  Crit Avoidance only. Deleted id 1397 (had wrong Awareness stat); kept id
+  3412 and added missing +1% Damage vs Demons/Devils/Fiends bonus.
+
+- [ ] **Dungeon Raider's Cuisses** (Feet, IL 940, Armor of the Dungeon Raider) —
+  Flagged 2026-05-16. n00b does not see this item in-game; unclear whether it
+  was retired in Mod 16 rework or still exists as legacy Zen Market gear.
+  - id 1591: CA 352 / Defense 705 / Awareness 352 — source Zen Market
+  - id 3492: Crit Strike 352 / Defense 705 / Crit Avoidance 352 — source
+    Zen Market / Trade Bar Store
+  - **Action:** Verify if item still exists in-game. If retired, delete both.
+    If exists, verify which stats are correct.
+
+- [x] **Greaves of the Scarlet Arcanum** (Feet, IL 5000, Doomed Reaver) —
+  Resolved 2026-05-16. n00b confirmed in-game CA=3300. Deleted id 2710
+  (wrong CA=3500); kept id 3924.
+
+- [x] **Gauntlets of the Scarlet Arcanum** (Arms, IL 5000, Doomed Reaver) —
+  Resolved 2026-05-16. n00b confirmed in-game CA=3300, CritSev=4050.
+  Deleted id 2711 (wrong: CA=3500, CritStrike); kept id 3931.
+
+- [x] **Umbral Duelist Longcoat** (Armor, IL 728, Umbral Set, Warlock) —
+  Resolved 2026-05-16. n00b confirmed Awareness. Deleted id 3860 (Crit
+  Strike variant); kept id 3897.
+
+- [x] **Umbral Executioner Longcoat** (Armor, IL 728, Umbral Set, Warlock) —
+  Resolved 2026-05-16. n00b confirmed Crit Avoidance. Deleted id 3864 (Crit
+  Sev variant); kept id 3898.
+
+- [x] **Company Raid Wristguards** (Arms, IL 588, Company PVE Armor, Warlock) —
+  Resolved 2026-05-16. n00b confirmed Crit Strike. Deleted id 3869
+  (Accuracy variant); kept id 3889.
+
+- [x] **Company Assault Cowl** (Head, IL 588, Company PVE Armor, Warlock) —
+  Resolved 2026-05-16. n00b confirmed CA 265 / Crit Sev 176. Deleted id 3871
+  (Crit Strike variant); kept id 3888.
+
+- [x] **Company Assault Longcoat** (Armor, IL 588, Company PVE Armor, Warlock) —
+  Resolved 2026-05-16. n00b confirmed CA 265 / Crit Sev 176. Deleted id 3872
+  (Crit Strike variant); kept id 3885.
+
+- [x] **Company Assault Pigaches** (Feet, IL 588, Company PVE Armor, Warlock) —
+  Resolved 2026-05-16. n00b confirmed Crit Strike 265 / Crit Sev 176 /
+  Defense 441. Deleted id 3874 (no Crit Sev); kept id 3886.
+
+**Decision rule when resolving:** if both variants genuinely exist in-game,
+disambiguate names (e.g., "Item Name (DPS)" / "Item Name (Tank)"). If only
+one is correct, delete the wrong id and update the surviving entry.
+
+**Outcome (2026-05-16):** 9 of 10 pairs were data-entry errors (not real
+role variants). One entry had the correct stats, the other was wrong from
+an old intake batch. Only Dungeon Raider's Cuisses remains open pending
+n00b finding the item in-game.
+
 ## Gear Slot Assignment Audit Needed
 
 Verified 2026-05-12 by n00b: **Mystic Conduit Mark** (Conduit family Shirt/Trousers
