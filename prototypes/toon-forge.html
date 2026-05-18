@@ -1862,8 +1862,8 @@
     <div class="hero-correction-callout" role="note">
       <span class="hcc-icon">✎</span>
       <div class="hcc-body">
-        <strong>Spotted a wrong number?</strong>
-        Tap the <span class="hcc-pencil">✎</span> next to any item and type what you see in your game. Done!
+        <strong>Something not matching your game?</strong>
+        Tap the <span class="hcc-pencil">✎</span> next to any item to fix it — stats, names, anything. Your build uses your version right away!
       </div>
     </div>
   </div>
@@ -2281,30 +2281,30 @@
   <!-- ===== Correction modal — submit a data fix for any item ===== -->
   <div class="correction-overlay" id="correction-overlay">
     <div class="correction-modal">
-      <h3 id="correction-title">Suggest a correction</h3>
+      <h3 id="correction-title">Fix this item</h3>
       <div class="correction-body">
         <div class="correction-hint" id="correction-context"></div>
         <div>
-          <label>What's wrong? (field name)</label>
-          <input type="text" id="correction-field" placeholder='e.g. "Power", "Item Level", "stats[0].value", "Combined Rating"' autocomplete="off">
+          <label>What needs fixing?</label>
+          <input type="text" id="correction-field" placeholder='e.g. Power, Crit Strike, Item Level, Name, Set Name' autocomplete="off">
         </div>
         <div>
-          <label>Correct value (as it appears in-game at your rarity)</label>
-          <input type="text" id="correction-value" placeholder='e.g. "4.50" or "3.75%" or "5850"' autocomplete="off">
+          <label>What does your game show?</label>
+          <input type="text" id="correction-value" placeholder='Whatever your in-game tooltip says (e.g. 5850 or 3.75%)' autocomplete="off">
         </div>
         <div>
-          <label>What you saw in-game (optional context)</label>
-          <input type="text" id="correction-observed" placeholder='Rarity + value, e.g. "Celestial 4.50%"' autocomplete="off">
+          <label>Your rarity (optional)</label>
+          <input type="text" id="correction-observed" placeholder='e.g. Celestial, Mythic, Legendary' autocomplete="off">
         </div>
         <div>
-          <label>Notes (optional)</label>
-          <textarea id="correction-notes" placeholder="Anything extra — screenshot details, in-game tooltip text, etc."></textarea>
+          <label>Anything else? (optional)</label>
+          <textarea id="correction-notes" placeholder="Screenshot link, tooltip text, or any extra details"></textarea>
         </div>
       </div>
       <div class="correction-footer">
         <span class="correction-status" id="correction-status"></span>
         <button class="correction-btn" id="correction-cancel">Cancel</button>
-        <button class="correction-btn primary" id="correction-submit">Submit</button>
+        <button class="correction-btn primary" id="correction-submit">Save my fix</button>
       </div>
     </div>
   </div>
@@ -2916,8 +2916,8 @@
       if (showPencil) {
         html += `<div class="picker-tip">
           <span class="picker-tip-icon">💡</span>
-          <span>Number wrong? Tap the <strong class="picker-tip-pencil">✎</strong>
-          next to the item and type what your game shows.</span>
+          <span>Something not matching your game? Tap the <strong class="picker-tip-pencil">✎</strong>
+          on any item to fix it for your build.</span>
         </div>`;
       }
       if (_pickerState.allowNone !== false) {
@@ -2929,7 +2929,7 @@
       for (let i = 0; i < items.length; i++) {
         const r = _pickerState.render(items[i]);
         const pencilHTML = showPencil
-          ? `<button class="correction-pencil" data-correct="${i}" title="Found a wrong value on this item? Click to suggest a fix (sends a correction report — duplicates get upvoted, not re-filed).">✎</button>`
+          ? `<button class="correction-pencil" data-correct="${i}" title="Fix anything wrong on this item for your build">✎</button>`
           : "";
         html += `<div class="picker-item" data-pick="${i}">
           <div class="picker-item-name"><span>${r.name}</span>${pencilHTML}</div>
@@ -3079,7 +3079,7 @@
       if (!item) return;
       _correctionCtx = { dataType: dataType, item: item };
       const ctxLine = `${dataType} · id ${item.id} · "${item.name || "(unnamed)"}"`;
-      document.getElementById("correction-title").textContent = `Suggest a fix for ${item.name || dataType}`;
+      document.getElementById("correction-title").textContent = `Fix ${item.name || dataType} for your build`;
       document.getElementById("correction-context").textContent = ctxLine;
       document.getElementById("correction-field").value = "";
       document.getElementById("correction-value").value = "";
@@ -3107,12 +3107,12 @@
       const observed = (document.getElementById("correction-observed").value || "").trim();
       const notes    = (document.getElementById("correction-notes").value || "").trim();
       if (!field) {
-        status.textContent = "Tell us which field is wrong.";
+        status.textContent = "Pick what you want to fix (like Crit Strike, Defense, etc.).";
         status.className = "correction-status err";
         return;
       }
       if (!value) {
-        status.textContent = "Tell us the correct value.";
+        status.textContent = "Type the right value (what your game shows).";
         status.className = "correction-status err";
         return;
       }
@@ -3127,7 +3127,7 @@
       const item = _correctionCtx.item;
       const dataType = _correctionCtx.dataType;
       const title = `Data fix: ${item.name || dataType} · ${field} → ${value}`.slice(0, 200);
-      status.textContent = "Submitting…";
+      status.textContent = "Saving…";
       status.className = "correction-status";
       document.getElementById("correction-submit").disabled = true;
       window.NWCBDataCorrections.submitCorrection({
@@ -3149,8 +3149,7 @@
           window.NWCBDataCorrections.setOverride(overrideKey, claimedBaseValue);
           // Recompute build immediately so the user sees their fix take effect.
           if (typeof rerenderAll === "function") rerenderAll();
-          const verb = res.action === "created" ? "Created" : res.action === "upvoted" ? "Upvoted" : "Already voted";
-          status.textContent = `${verb} report #${res.report_id} (${res.upvotes} upvote${res.upvotes === 1 ? "" : "s"}). Applied to your build locally.`;
+          status.textContent = "Saved! Your build is using your version now.";
           status.className = "correction-status ok";
           setTimeout(closeCorrectionModal, 1700);
         } else {
