@@ -2014,9 +2014,79 @@
       transition: opacity 0.3s, transform 0.3s;
     }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    /* ===== NWCB nav bar — slim inline version matching Toon Forge's
+       amber theme. Mirrors the NAV_PAGES list in js/shared.js so users
+       can navigate to other compendium pages without losing context. */
+    .tf-navbar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 500;
+    }
+    .tf-navbar-brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: 0.02em;
+      flex: 0 0 auto;
+    }
+    .tf-navbar-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+      flex: 1 1 auto;
+    }
+    .tf-navbar-links a {
+      padding: 0.35rem 0.7rem;
+      border-radius: 4px;
+      color: var(--text-mute);
+      font-size: 0.85rem;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+    .tf-navbar-links a:hover {
+      background: var(--hover);
+      color: var(--text);
+    }
+    .tf-navbar-links a.active {
+      background: var(--amber);
+      color: #000;
+    }
+    .tf-navbar-yt {
+      color: #ff0000 !important;
+    }
+    .tf-navbar-join {
+      color: var(--amber) !important;
+    }
   </style>
 </head>
 <body>
+
+  <nav class="tf-navbar">
+    <span class="tf-navbar-brand">NWC</span>
+    <div class="tf-navbar-links">
+      <a href="index.html">Home</a>
+      <a href="preview.html">Mod 33 Preview</a>
+      <a href="mounts.html">Mounts</a>
+      <a href="companions.html">Companions</a>
+      <a href="consumables.html">Consumables</a>
+      <a href="artifacts.html">Artifacts</a>
+      <a href="mekaniks.html">Mekaniks</a>
+      <a href="campaign-boosters.html">Campaign Boosters</a>
+      <a href="professions.html">Professions</a>
+      <a href="patchnotes.html">NW Patch Notes</a>
+      <a href="reports.html">Reports</a>
+      <a href="creators-tools.html" class="active">Creators &amp; Tools</a>
+      <a href="https://www.youtube.com/@N00binHard" target="_blank" rel="noopener" class="tf-navbar-yt" title="The N00bin Network on YouTube">▶ The N00bin Network</a>
+      <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" class="tf-navbar-join" title="Join The N00bin Network on YouTube">Join on YouTube</a>
+    </div>
+  </nav>
 
   <div class="hero">
     <span class="save-status" id="save-status">Auto-saved · just now</span>
