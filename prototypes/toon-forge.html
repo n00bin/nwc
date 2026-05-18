@@ -2422,7 +2422,7 @@
     <div class="picker-modal">
       <div class="picker-header">
         <h3 id="picker-title">Pick</h3>
-        <input type="text" id="picker-search" placeholder="Type to filter…" autocomplete="off">
+        <input type="text" id="picker-search" placeholder="Search…" autocomplete="off">
         <button class="picker-close" id="picker-close">✕</button>
       </div>
       <div class="picker-list" id="picker-list"></div>
@@ -2465,9 +2465,9 @@
             <input type="checkbox" id="dstats-hide-buffs">
             Hide buffs
           </label>
-          <label class="dstats-hide-buffs" id="dstats-show-cond-label" title="Some bonuses only fire in combat, at low health, after a hit, or with teammates nearby. Turn this on to see what your stats would look like if every one of those was active at full strength. Leave it off to see your everyday standing-around values.">
+          <label class="dstats-hide-buffs" id="dstats-show-cond-label" title="Some bonuses only activate in combat, at low health, after a hit, or with teammates nearby. Turn this on to see your stats at full power with everything active. Leave it off to see your normal out-of-combat stats.">
             <input type="checkbox" id="dstats-show-cond">
-            Show conditional
+            Show in-combat bonuses
           </label>
           <button class="dstats-close" id="dstats-close">✕ Close</button>
         </div>
@@ -2915,7 +2915,7 @@
           if (!saved) return;
           const json = JSON.stringify(saved);
           const url = location.origin + location.pathname + "#b=" + b64encode(json);
-          navigator.clipboard.writeText(url).then(() => toast("Share link copied to clipboard"));
+          navigator.clipboard.writeText(url).then(() => toast("Link copied!"));
         });
       });
       // Delete
@@ -9528,8 +9528,8 @@
     document.getElementById("share-build").addEventListener("click", () => {
       const url = makeShareLink();
       navigator.clipboard.writeText(url).then(
-        () => toast("Share link copied to clipboard! Paste in browser to load."),
-        () => toast("Couldn't access clipboard — link: " + url.slice(0, 60) + "...")
+        () => toast("Link copied! Share it to load your build anywhere."),
+        () => toast("Couldn't copy — copy this link yourself: " + url)
       );
     });
     document.getElementById("open-builds").addEventListener("click", openBuildsModal);
