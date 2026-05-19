@@ -6069,6 +6069,67 @@
               ratingStats: cr
             });
           }
+
+          // === Mount equip-power triggered procs ===
+          // Applied at full theoretical max value (perStack × maxStacks for
+          // stackingBuff). Conditional (triggered, not always-on), so gated
+          // by the "Show in-combat bonuses" toggle. Matches companion-power
+          // proc pattern above.
+          //
+          // Rating-vs-percent routing for stackingBuff perStack values:
+          //   perStack > 100 → ratingStats (flat rating)
+          //   perStack ≤ 100 → percentStats (flat %)
+          // Unambiguous for the 3 current entries (CA 3544 = rating;
+          // MS 15 / BDB 0.4 = percent). Document in data if future entries
+          // violate this assumption.
+          const MOUNT_PROC_STAT_ALIASES = {
+            "BaseDamageBoost":   "Base Damage Boost",
+            "CriticalAvoidance": "Critical Avoidance",
+            "MovementSpeed":     "Movement Speed"
+          };
+          const _normalizeMountProcStat = key =>
+            MOUNT_PROC_STAT_ALIASES[key] || key;
+
+          // equipEffect: single triggered effect (e.g. Quick Action +2.4%
+          // AP Gain on Daily Power use). Routes to percentStats by default,
+          // ratingStats only when unit === "rating".
+          if (ep.equipEffect && ep.equipEffect.stat) {
+            const ef = ep.equipEffect;
+            const entry = {
+              source: `Mount Equip Proc: ${ep.name} (on ${ef.trigger || "trigger"})`,
+              conditional: true
+            };
+            if (ef.unit === "rating") {
+              entry.ratingStats = { [_normalizeMountProcStat(ef.stat)]: ef.amount || 0 };
+            } else {
+              entry.percentStats = { [_normalizeMountProcStat(ef.stat)]: ef.amount || 0 };
+            }
+            buffs.push(entry);
+          }
+
+          // stackingBuff: perStack × maxStacks per stat, normalized and
+          // routed by the >100 heuristic above.
+          //
+          // Note: Ferocity (id 45) also has a partyEffects array — that's
+          // the ally version and runs in a different loop. No double-count.
+          if (ep.stackingBuff && ep.stackingBuff.perStack) {
+            const sb = ep.stackingBuff;
+            const stacks = sb.maxStacks || 1;
+            const sbRating = {};
+            const sbPercent = {};
+            for (const [rawKey, perStack] of Object.entries(sb.perStack)) {
+              const stat = _normalizeMountProcStat(rawKey);
+              const total = (perStack || 0) * stacks;
+              if (perStack > 100) sbRating[stat] = total;
+              else                sbPercent[stat] = total;
+            }
+            buffs.push({
+              source: `Mount Equip Proc: ${ep.name} (full ${stacks} stacks on ${sb.trigger || "trigger"})`,
+              conditional: true,
+              ratingStats: sbRating,
+              percentStats: sbPercent
+            });
+          }
         }
       }
 
