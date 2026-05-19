@@ -3302,6 +3302,57 @@
         .replace(/"/g, "&quot;");
     }
 
+    // Fields that should never get a pencil — exposing them breaks references
+    // or pipeline ownership. See docs/preview-cycle.md style: this is the single
+    // source of truth for non-editable fields.
+    const NEVER_EDIT_FIELDS = new Set([
+      "id",
+      "powerRef", "combatRef", "equipRef", "enhancementRef", "bonusRef",
+      "source_version", "effects"
+    ]);
+
+    // Maps ref-field names to the dataset variable that holds the referenced item
+    // and the dataType string used by openCorrectionModal. When the user clicks
+    // "view →" on a ref row, we open the referenced item's own modal.
+    const REF_FIELD_MAP = {
+      powerRef:       { dataType: "companion_power",       datasetVar: "COMPANION_POWERS_DATA" },
+      combatRef:      { dataType: "combat_power",          datasetVar: "MOUNT_COMBAT_POWERS_DATA" },
+      equipRef:       { dataType: "equip_power",           datasetVar: "MOUNT_EQUIP_POWERS_DATA" },
+      enhancementRef: { dataType: "companion_enhancement", datasetVar: "COMPANION_ENHANCEMENTS_DATA" },
+      bonusRef:       { dataType: "insignia_bonus",        datasetVar: "MOUNT_INSIGNIA_BONUSES_DATA" }
+    };
+
+    // Render a read-only ref row that shows the referenced item's name + id
+    // with a "view →" button that opens that item's correction modal.
+    function _ccDerefRow(field, value, label) {
+      const refEntry = REF_FIELD_MAP[field];
+      if (!refEntry) return "";
+      const dataset = (typeof window !== "undefined") ? window[refEntry.datasetVar] : undefined;
+      const datasetGlobal = (typeof globalThis !== "undefined") ? globalThis[refEntry.datasetVar] : undefined;
+      const arr = dataset || datasetGlobal || (typeof eval !== "undefined" ? (function(){ try { return eval(refEntry.datasetVar); } catch(e){ return undefined; } })() : undefined);
+
+      let refItem = null;
+      if (Array.isArray(arr) && value != null) {
+        refItem = arr.find(it => it && it.id === value) || null;
+      }
+
+      const refName = refItem ? (refItem.name || "(unnamed)") : `(id ${value} — not found)`;
+      const safeName = _esc(refName);
+      const safeLabel = _esc(label || field);
+
+      // No pencil button — this is read-only navigation.
+      // The "view →" button is enabled only when refItem was found.
+      const viewBtn = refItem
+        ? `<button class="cc-edit" data-deref-type="${_esc(refEntry.dataType)}" data-deref-id="${_esc(String(value))}" title="Open ${safeName}">view →</button>`
+        : `<span style="color:var(--text-mute);font-style:italic;font-size:0.75rem;">not found</span>`;
+
+      return `<div class="cc-row" data-row="${_esc(field)}">
+        <span class="cc-row-label">${safeLabel}</span>
+        <span class="cc-row-value">${safeName} <span style="color:var(--text-mute);font-size:0.75rem;">(id ${_esc(String(value))})</span></span>
+        ${viewBtn}
+      </div>`;
+    }
+
     // Build the card-style readout of an item. Each editable cell carries
     // data-field (the override path) + data-kind ("text" or "num" or
     // "longtext") so the inline edit form can re-render properly.
@@ -3318,6 +3369,11 @@
           <button class="cc-edit" data-edit="${_esc(field)}" data-kind="${kind || 'text'}" title="Edit ${_esc(label)}">✎</button>
         </div>`;
       };
+      const rendered = new Set([
+        "name", "slot", "item_level", "set", "source",
+        "ratingStats", "percentStats", "abilityBonuses",
+        "equipBonuses", "combinedRating"
+      ]);
       let html = "";
 
       // Header block: name + slot/IL
@@ -3327,7 +3383,10 @@
         <button class="cc-edit" data-edit="name" data-kind="text" title="Edit name">✎</button>
       </div>`;
       const subParts = [];
-      if (item.slot) subParts.push(`<span>${_esc(item.slot)}</span>`);
+      if (item.slot) {
+        const slotDisplay = Array.isArray(item.slot) ? item.slot.join(" / ") : item.slot;
+        subParts.push(`<span>${_esc(slotDisplay)}</span>`);
+      }
       if (item.item_level !== undefined && item.item_level !== null) {
         subParts.push(`<span class="cc-row" style="display:inline-flex;padding:0;min-height:0;">
           <span>Item Level&nbsp;</span>
@@ -3401,6 +3460,32 @@
         html += `</div>`;
       }
 
+      // Fallback: surface every remaining scalar field with a pencil, and every
+      // ref field as a read-only deref row.
+      const auto = [];
+      for (const key of Object.keys(item)) {
+        if (rendered.has(key)) continue;
+        if (NEVER_EDIT_FIELDS.has(key) && !REF_FIELD_MAP[key]) continue;
+        const value = item[key];
+
+        if (REF_FIELD_MAP[key]) {
+          auto.push(_ccDerefRow(key, value, key));
+          continue;
+        }
+
+        if (value === null || value === undefined) continue;
+        if (typeof value === "object") continue;  // arrays + objects deferred to Phase 2
+
+        const kind = (typeof value === "number")
+          ? "num"
+          : (typeof value === "string" && value.length > 100 ? "longtext" : "text");
+        auto.push(r(_ccHumanFieldName(key, null) || key, value, key, kind));
+      }
+
+      if (auto.length) {
+        html += `<div class="cc-section"><div class="cc-section-title">Other Fields</div>${auto.join("")}</div>`;
+      }
+
       return html;
     }
 
@@ -3438,10 +3523,29 @@
       });
     }
 
+    // Delegated handler for "view →" deref navigation. Replaces current modal
+    // content with the referenced item's correction modal in place. Any
+    // in-progress inline edit is abandoned — that's the simpler model the
+    // plan locked in.
+    document.getElementById("correction-card").addEventListener("click", (e) => {
+      const btn = e.target.closest && e.target.closest("[data-deref-type]");
+      if (!btn) return;
+      e.stopPropagation();
+      const refType = btn.dataset.derefType;
+      const refId = Number(btn.dataset.derefId);
+      const refEntry = Object.values(REF_FIELD_MAP).find(r => r.dataType === refType);
+      if (!refEntry) return;
+      const arr = (typeof window !== "undefined" ? window[refEntry.datasetVar] : null);
+      const refItem = arr ? arr.find(it => it && it.id === refId) : null;
+      if (refItem) openCorrectionModal(refType, refItem);
+    });
+
     // Delegated handler: ✎ on any row → swap that row to inline-edit mode.
     document.getElementById("correction-card").addEventListener("click", (e) => {
       const btn = e.target.closest && e.target.closest(".cc-edit");
       if (!btn) return;
+      // Skip deref "view →" buttons — those are handled by the handler above.
+      if (btn.dataset.derefType) return;
       const field = btn.dataset.edit;
       const kind = btn.dataset.kind;
       const row = btn.closest(".cc-row");
