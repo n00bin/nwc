@@ -5,7 +5,6 @@
 // Navigation pages config
 const NAV_PAGES = [
   { label: "Home",       href: "index.html" },
-  { label: "Mod 33 Preview", href: "preview.html" },
   { label: "Mounts",     href: "mounts.html" },
   { label: "Companions", href: "companions.html" },
   { label: "Consumables", href: "consumables.html" },
@@ -23,8 +22,14 @@ function renderNav(activePage) {
   const nav = document.querySelector(".navbar");
   if (!nav) return;
 
+  // Build a working copy so we don't mutate NAV_PAGES.
+  const pages = NAV_PAGES.slice();
+  if (typeof PREVIEW_ACTIVE !== "undefined" && PREVIEW_ACTIVE) {
+    pages.splice(1, 0, { label: PREVIEW_LABEL, href: "preview.html" });
+  }
+
   let html = '<span class="navbar-brand">NWC</span><div class="navbar-links">';
-  for (const p of NAV_PAGES) {
+  for (const p of pages) {
     const cls = p.label === activePage ? " active" : "";
     html += `<a href="${p.href}" class="${cls}">${p.label}</a>`;
   }

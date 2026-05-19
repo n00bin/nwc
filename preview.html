@@ -147,6 +147,10 @@
 </head>
 <body>
   <nav class="navbar"></nav>
+  <div id="preview-closed-notice" style="display:none;background:#21262d;border:1px solid #f0883e;border-radius:8px;padding:1rem 1.25rem;margin:1.5rem auto;max-width:900px;color:#e6edf3;line-height:1.6;text-align:center;">
+    <strong style="color:#f0883e;">This preview is now archived.</strong>
+    The mod has shipped — its content is live in the main compendium. This page is kept for reference.
+  </div>
 
   <div class="preview-container">
     <div class="preview-banner">
@@ -196,10 +200,15 @@
 
   <div class="lightbox" id="lightbox"><img id="lightbox-img" src="" alt=""></div>
 
+  <script src="js/preview-config.js"></script>
   <script src="js/shared.js"></script>
   <script src="data/preview.js"></script>
   <script>
     renderNav("Mod 33 Preview");
+    if (typeof PREVIEW_ACTIVE !== "undefined" && !PREVIEW_ACTIVE) {
+      var notice = document.getElementById("preview-closed-notice");
+      if (notice) notice.style.display = "block";
+    }
 
     var NW_CLASSES = ["Barbarian", "Bard", "Cleric", "Fighter", "Paladin", "Ranger", "Rogue", "Warlock", "Wizard"];
 
