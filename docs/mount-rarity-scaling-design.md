@@ -81,7 +81,7 @@ For every field on a mount entry, exactly one of these rules applies. Plan steps
 
 - **No "set all" bulk-rarity button.** Per-slot only; add later if needed.
 - **No per-mount "native rarity" field in JSON.** Default-to-Mythic is global, not data-driven.
-- **No "highest rarity wins" cross-mount rule** (future task #34).
+- **No "highest rarity wins" cross-mount rule** (was future task #34, **closed 2026-05-21 as obsolete**). Reason: Decision 11 makes the user pick the active power's rarity directly via dropdown. The user reads their in-game tooltip (which already shows the post-HRW effective rarity) and sets the dropdown to match. Replicating the game's HRW logic in the builder would mean tracking owned-mount inventory — out of scope for a planner tool, since the user's eyes already do the HRW lookup.
 - **No re-baselining of stored data** to Common or Celestial. Mythic-125% baseline stays.
 - **No changes to per-insignia stat bonus rendering or scaling** (those follow each insignia's own tier).
 - **No changes to the bolster slider's tooltip or behavior** beyond what the new formula requires.
