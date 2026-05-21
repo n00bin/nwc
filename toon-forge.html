@@ -2359,9 +2359,42 @@
           <button class="btn btn-ghost" id="find-bonus-btn" style="font-size:0.85rem;">🔍 Find an Insignia Bonus</button>
         </div>
         <!-- Active combat + equip power loadout (drawn from stable mounts) -->
+        <!-- Decision 11: rarity pickers live here, next to the active-power chips. -->
         <div class="active-power-row">
-          <div class="comp-loadout-chip" id="active-combat-chip">+ Active Combat Power</div>
-          <div class="comp-loadout-chip" id="active-equip-chip">+ Active Equip Power</div>
+          <div class="active-power-col" style="display:flex;flex-direction:column;gap:0.2rem;">
+            <div class="comp-loadout-chip" id="active-combat-chip">+ Active Combat Power</div>
+            <div style="display:flex;align-items:center;gap:0.3rem;">
+              <label style="font-size:0.7rem;color:var(--text-muted);white-space:nowrap;">Combat rarity:</label>
+              <select id="active-combat-power-rarity"
+                      title="Rarity of the mount whose Combat Power you are using. Scales the combat-power detail card values only — does NOT change the stat bar."
+                      style="font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
+                <option value="Common">Common</option>
+                <option value="Uncommon">Uncommon</option>
+                <option value="Rare">Rare</option>
+                <option value="Epic">Epic</option>
+                <option value="Legendary">Legendary</option>
+                <option value="Mythic" selected>Mythic</option>
+                <option value="Celestial">Celestial</option>
+              </select>
+            </div>
+          </div>
+          <div class="active-power-col" style="display:flex;flex-direction:column;gap:0.2rem;">
+            <div class="comp-loadout-chip" id="active-equip-chip">+ Active Equip Power</div>
+            <div style="display:flex;align-items:center;gap:0.3rem;">
+              <label style="font-size:0.7rem;color:var(--text-muted);white-space:nowrap;">Equip rarity:</label>
+              <select id="active-equip-power-rarity"
+                      title="Rarity of the mount whose Equip Power you are using. Scales the stat bar immediately — works even if that mount is not in any stable slot. Note: the browse picker still shows Mythic-baseline numbers; only the stat bar reflects this rarity."
+                      style="font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
+                <option value="Common">Common</option>
+                <option value="Uncommon">Uncommon</option>
+                <option value="Rare">Rare</option>
+                <option value="Epic">Epic</option>
+                <option value="Legendary">Legendary</option>
+                <option value="Mythic" selected>Mythic</option>
+                <option value="Celestial">Celestial</option>
+              </select>
+            </div>
+          </div>
         </div>
         <div id="stable-grid"></div>
         <div id="insignia-summary"></div>
@@ -2637,6 +2670,10 @@
       ],
       activeCombatPower: null,   // id from mount_combat_powers.json — drawn from stable mounts
       activeEquipPower:  null,   // id from mount_equip_powers.json — drawn from stable mounts
+      // Decision 11: per-active-power rarity (supersedes per-slot mountRarity).
+      // Rarity applies to the active power itself, not the stable slot it came from.
+      activeEquipPowerRarity:   "Mythic",
+      activeCombatPowerRarity:  "Mythic",
       // Bolster percentages (0–120 for comp, 0–125 for mount). 100 = baseline,
       // i.e. data values apply as listed. See mekaniks.html "Bolster".
       companionBolster: 100,
@@ -2756,6 +2793,8 @@
           stable: state.stable,
           activeCombatPower: state.activeCombatPower,
           activeEquipPower: state.activeEquipPower,
+          activeEquipPowerRarity:  state.activeEquipPowerRarity  || "Mythic",
+          activeCombatPowerRarity: state.activeCombatPowerRarity || "Mythic",
           companionBolster: state.companionBolster,
           mountBolster: state.mountBolster,
           companionRarity: state.companionRarity,
@@ -2861,6 +2900,14 @@
           slot.insigniaTiers = [baseTier, baseTier, baseTier, baseTier];
         }
       }
+      // Decision 11: active-power rarity replaces per-slot mountRarity.
+      // Default both fields to Mythic if missing (old saves pre-Decision 11).
+      if (!state.activeEquipPowerRarity)  state.activeEquipPowerRarity  = "Mythic";
+      if (!state.activeCombatPowerRarity) state.activeCombatPowerRarity = "Mythic";
+      // mountRarity was removed in Decision 11; delete it from any save that still carries it.
+      (state.stable || []).forEach(slot => {
+        if (slot) delete slot.mountRarity;
+      });
       if (typeof applyCompCollectionToInputs  === "function") applyCompCollectionToInputs();
       if (typeof applyMountCollectionToInputs === "function") applyMountCollectionToInputs();
       setVal("comp-bolster",  state.companionBolster);
@@ -2870,6 +2917,11 @@
       if (cbd) cbd.textContent = state.companionBolster + "%";
       const mbd = document.getElementById("mount-bolster-display");
       if (mbd) mbd.textContent = state.mountBolster + "%";
+      // Decision 11: sync active-power rarity selects from loaded state.
+      const _epRarSel = document.getElementById("active-equip-power-rarity");
+      if (_epRarSel) _epRarSel.value = state.activeEquipPowerRarity || "Mythic";
+      const _cpRarSel = document.getElementById("active-combat-power-rarity");
+      if (_cpRarSel) _cpRarSel.value = state.activeCombatPowerRarity || "Mythic";
       // Active class card highlight
       document.querySelectorAll(".pick-card").forEach(c => {
         c.classList.toggle("active", c.dataset.class === state.class);
@@ -4790,18 +4842,32 @@
       return MOUNT_EQUIP_POWERS_DATA.slice().sort((a,b) => a.name.localeCompare(b.name));
     }
     function renderCombatPower(p) {
+      // Decision 9: combat power values scale rarity × bolster in tooltip display only.
+      // renderCombatPower is called in 2 contexts: picker browser + detail-card viewer.
+      // Mythic fallback when mount is not in stable is correct per Decision 9 — the
+      // detail card can render any combat power regardless of whether the owning
+      // mount is currently slotted.
+      // Decision 11: read rarity from state.activeCombatPowerRarity, not per-slot mountRarity.
+      const _cpRarityFactor = mountRarityFactor(state.activeCombatPowerRarity || "Mythic");
+      const _cpBolsterFactor = mountPowerBolsterFactor(state.mountBolster);
+      function _scaleCombat(stored) {
+        return Math.min((stored || 0) * _cpBolsterFactor * _cpRarityFactor, (stored || 0) * 1.3124);
+      }
       const cdr = p.rechargeTimeSeconds ? `${p.rechargeTimeSeconds}s recharge` : "";
-      const mag = p.magnitude ? `magnitude ${p.magnitude}` : "";
+      const mag = p.magnitude ? `magnitude ${Math.round(_scaleCombat(p.magnitude))}` : "";
       const meta = [`IL ${p.item_level || "?"}`, mag, cdr].filter(Boolean).join(" · ");
       // Combat powers' equipBonuses are buff/debuff effects rather than
-      // gear-style structured stats. Intrinsic values — not bolster-scaled.
+      // gear-style structured stats. Scaled for tooltip display (Decision 9).
       const bonusBlocks = (p.equipBonuses || []).map(b => {
         if (!b || !b.stat) return "";
-        const sign = (b.amount > 0 ? "+" : "");
+        const scaledAmount = _scaleCombat(b.amount);
+        const _isPercent = b.type === "percent" || (b.amount !== undefined && Math.abs(b.amount) < 100);
+        const _displayAmt = _isPercent ? scaledAmount.toFixed(2) : Math.round(scaledAmount);
+        const sign = (scaledAmount > 0 ? "+" : "");
         const scopeTag = b.scope === "enemy" ? " <span class='gear-card-bonus-tag'>vs enemy</span>" : "";
         const durTag = b.duration ? ` <span class="gear-card-bonus-tag">${b.duration}s</span>` : "";
         return `<div class="gear-card-bonus">
-          <div class="gear-card-bonus-name">${sign}${b.amount}${b.type === "percent" || (b.amount !== undefined && Math.abs(b.amount) < 100) ? "%" : ""} ${_escHTML(b.stat)}${scopeTag}${durTag}</div>
+          <div class="gear-card-bonus-name">${sign}${_displayAmt}${_isPercent ? "%" : ""} ${_escHTML(b.stat)}${scopeTag}${durTag}</div>
         </div>`;
       }).filter(Boolean).join("");
       const bonusBlock = bonusBlocks
@@ -5509,6 +5575,20 @@
       const anchor = 1 + MOUNT_POWER_CALIBRATION_BOLSTER_PCT / 100;
       return (1 + b / 100) / anchor;
     }
+    // Per-slot mount rarity scaling multipliers. Stored values are at Mythic
+    // baseline (factor 1.0). Celestial cap (1.3124) matches Decision 4.
+    const MOUNT_RARITY_MULTIPLIERS = {
+      "Common":    0.00667,
+      "Uncommon":  0.0667,
+      "Rare":      0.2,
+      "Epic":      0.4,
+      "Legendary": 0.667,
+      "Mythic":    1.0,
+      "Celestial": 1.3124
+    };
+    function mountRarityFactor(rarity) {
+      return MOUNT_RARITY_MULTIPLIERS[rarity] || 1.0;
+    }
     // Base IL every NW character has just for existing (level 20 floor).
     // Documented 2026-05-12 by n00b's community-doc dump: "you start the
     // game with 5000 TIL, but 0 in your Ratings. That means that all of
@@ -5882,7 +5962,11 @@
         for (const eff of ep.partyEffects) {
           if (!eff || !eff.stat) continue;
           const channel = (eff.type === "rating") ? ratingStats : percentStats;
-          channel[eff.stat] = (channel[eff.stat] || 0) + (eff.amount || 0);
+          // Decision 8: party ally equip powers always evaluated at Mythic rarity in v1.
+          // Mythic factor is 1.0 — mathematically a no-op, but makes scope cut explicit.
+          const _partyRarityFactor = mountRarityFactor("Mythic");
+          channel[eff.stat] = (channel[eff.stat] || 0) +
+            Math.min((eff.amount || 0) * _partyRarityFactor, (eff.amount || 0) * 1.3124);
         }
         buffs.push({
           source: `Party Mount Buff: Ally's ${epName}`,
@@ -6048,21 +6132,22 @@
       if (s.activeEquipPower) {
         const ep = findEquipPowerById(s.activeEquipPower);
         if (ep) {
-          // Reverted 2026-05-12 — n00b verified mount equip powers have
-          // intrinsic fixed values (no rarity tier; tooltip shows the
-          // power's actual contribution as-is). Earlier bolster-scaling
-          // hypothesis was wrong; values from data apply at face value.
+          // Rarity scaling (Decision 3 / R-only row): rarity YES, bolster NO.
+          // Decision 11: read rarity from state.activeEquipPowerRarity, not per-slot mountRarity.
+          const _rarityFactor = mountRarityFactor(s.activeEquipPowerRarity || "Mythic");
           const ratingStats = {};
           const percentStats = {};
           for (const st of (ep.stats || [])) {
             const tgt = st.type === "percent" ? percentStats : ratingStats;
-            tgt[st.stat] = (tgt[st.stat] || 0) + (st.value || 0);
+            const _scaledValue = Math.min((st.value || 0) * _rarityFactor, (st.value || 0) * 1.3124);
+            tgt[st.stat] = (tgt[st.stat] || 0) + _scaledValue;
           }
           buffs.push({
             source: "Mount Equip Power: " + ep.name,
             ratingStats, percentStats
           });
-          const cr = expandCR(ep.combinedRating, 1);
+          const _scaledCR = Math.min((ep.combinedRating || 0) * _rarityFactor, (ep.combinedRating || 0) * 1.3124);
+          const cr = expandCR(_scaledCR, 1);
           if (cr) {
             buffs.push({
               source: "Mount Equip CR: " + ep.name,
@@ -6093,22 +6178,25 @@
           // equipEffect: single triggered effect (e.g. Quick Action +2.4%
           // AP Gain on Daily Power use). Routes to percentStats by default,
           // ratingStats only when unit === "rating".
+          // Decision 10 / R-only row: amount scales with rarity, not bolster.
           if (ep.equipEffect && ep.equipEffect.stat) {
             const ef = ep.equipEffect;
+            const _scaledAmount = Math.min((ef.amount || 0) * _rarityFactor, (ef.amount || 0) * 1.3124);
             const entry = {
               source: `Mount Equip Proc: ${ep.name} (on ${ef.trigger || "trigger"})`,
               conditional: true
             };
             if (ef.unit === "rating") {
-              entry.ratingStats = { [_normalizeMountProcStat(ef.stat)]: ef.amount || 0 };
+              entry.ratingStats = { [_normalizeMountProcStat(ef.stat)]: _scaledAmount };
             } else {
-              entry.percentStats = { [_normalizeMountProcStat(ef.stat)]: ef.amount || 0 };
+              entry.percentStats = { [_normalizeMountProcStat(ef.stat)]: _scaledAmount };
             }
             buffs.push(entry);
           }
 
           // stackingBuff: perStack × maxStacks per stat, normalized and
           // routed by the >100 heuristic above.
+          // Decision 10 / R-only row: perStack scales with rarity, not bolster.
           //
           // Note: Ferocity (id 45) also has a partyEffects array — that's
           // the ally version and runs in a different loop. No double-count.
@@ -6119,7 +6207,8 @@
             const sbPercent = {};
             for (const [rawKey, perStack] of Object.entries(sb.perStack)) {
               const stat = _normalizeMountProcStat(rawKey);
-              const total = (perStack || 0) * stacks;
+              const _scaledPerStack = Math.min((perStack || 0) * _rarityFactor, (perStack || 0) * 1.3124);
+              const total = _scaledPerStack * stacks;
               if (perStack > 100) sbRating[stat] = total;
               else                sbPercent[stat] = total;
             }
@@ -6823,6 +6912,8 @@
         sumG: state.summonedGear,
         ac: state.activeComps,
         stable: state.stable, mcp: state.activeCombatPower, mep: state.activeEquipPower,
+        // Decision 11: active-power rarity must invalidate cache on change
+        aepr: state.activeEquipPowerRarity, acpr: state.activeCombatPowerRarity,
         ench: state.enchants, ovr: state.overloads, kits: state.kits,
         gld: state.guildBoonPicks,
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
@@ -9101,6 +9192,7 @@
           rerenderAll();
         });
       });
+      // mount-rarity per-slot change handler removed (Decision 11).
       wrap.querySelectorAll("[data-stable='bonus']").forEach(el => {
         el.addEventListener("click", (e) => {
           if (e.target.classList.contains("chip-info")) return;
@@ -10314,6 +10406,16 @@
           renderActivePowerChips(); rerenderAll();
         }
       });
+    });
+
+    // Decision 11: rarity pickers for active powers — update state and rerender.
+    document.getElementById("active-combat-power-rarity").addEventListener("change", e => {
+      state.activeCombatPowerRarity = e.target.value;
+      rerenderAll();
+    });
+    document.getElementById("active-equip-power-rarity").addEventListener("change", e => {
+      state.activeEquipPowerRarity = e.target.value;
+      rerenderAll();
     });
 
     // Find-a-Bonus browser
