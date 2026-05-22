@@ -67,14 +67,44 @@ function escapeHtml(str) {
 }
 
 // ---- Clean notes for display ----
-// Strips internal prefixes like "Screenshot intake (Mount Preview): ..." → "Tooltip: ..."
+// Strips internal prefixes ("Screenshot intake (Mount Preview): ...")
+// and audit-trail / calibration sentences (verification dates, bolster
+// baselines, previously-stored values, NW Hub source notes).
+// Sentence terminator allows decimals like "1.3124" inside the matched span
+// by requiring the terminating "." to be followed by whitespace or end-of-string.
+var AUDIT_TRAIL_PATTERNS = [
+  /\s*Stored at Mythic.*?\.(?:\s|$)/gi,
+  /\s*Re-verified \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
+  /\s*(?:In-game )?(?:re-)?verified \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
+  /\s*In-game confirmed \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
+  /\s*Recalibrated \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
+  /\s*Corrected \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
+  /\s*Previously-stored values?.*?\.(?:\s|$)/gi,
+  /\s*Previous stored value.*?\.(?:\s|$)/gi,
+  /\s*Source:?\s*confirmed by n00b.*?\.(?:\s|$)/gi,
+  /\s*Source from NW Hub.*?\.(?:\s|$)/gi,
+  /\s*Power data confirmed by n00b.*?\.(?:\s|$)/gi,
+  /\s*confirmed by n00b \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
+  /\s*\(Mythic-\d+%-bolster baseline\)/gi
+];
+
+function stripAuditTrail(str) {
+  if (!str) return "";
+  var s = str;
+  for (var i = 0; i < AUDIT_TRAIL_PATTERNS.length; i++) {
+    s = s.replace(AUDIT_TRAIL_PATTERNS[i], "");
+  }
+  return s.replace(/\s+/g, " ").trim();
+}
+
 function cleanNotes(str) {
   if (!str) return "";
-  return str
+  var s = str
     .replace(/^Screenshot (?:intake|confirmed|reconciliation) \(Mount Preview(?:, scrolled)?\)[.:]\s*/i, "Tooltip: ")
     .replace(/^Screenshot (?:intake|confirmed|reconciliation) \(Inspect Companion\)[.:]\s*/i, "Tooltip: ")
     .replace(/^Screenshot (?:intake|confirmed|reconciliation)[.:]\s*/i, "")
     .replace(/^Tooltip:\s*$/i, "");
+  return stripAuditTrail(s);
 }
 
 // ---- Number formatting ----
