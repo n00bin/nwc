@@ -74,11 +74,14 @@ function escapeHtml(str) {
 // by requiring the terminating "." to be followed by whitespace or end-of-string.
 var AUDIT_TRAIL_PATTERNS = [
   /\s*Stored at Mythic.*?\.(?:\s|$)/gi,
-  /\s*Re-verified \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
+  /\s*Re-verified(?:\s+in-game)? \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
   /\s*(?:In-game )?(?:re-)?verified \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
   /\s*In-game confirmed \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
   /\s*Recalibrated \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
   /\s*Corrected \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
+  /\s*The earlier \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
+  /\s*The notes claim of .*?\.(?:\s|$)/gi,
+  /\s*Standard \w+-tier \w+ power with intrinsically.*?\.(?:\s|$)/gi,
   /\s*Previously-stored values?.*?\.(?:\s|$)/gi,
   /\s*Previous stored value.*?\.(?:\s|$)/gi,
   /\s*Source:?\s*confirmed by n00b.*?\.(?:\s|$)/gi,
