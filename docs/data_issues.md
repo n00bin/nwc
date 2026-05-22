@@ -1,5 +1,20 @@
 # Data Issues To Investigate
 
+## B2 — Mount Equip Power ID 56 "Seeing Red" Missing Stats (2026-05-22)
+
+Mount 271 (Balgora) references equip power ID 56 ("Seeing Red") via `equipRef: 56`.
+That equip power entry in `mount_equip_powers.json` is missing `item_level`,
+`combinedRating`, and `stats` — the fields needed for it to display correctly in the
+mount inspector and to be included in any future optimizer calculations.
+
+**Blocked on:** in-game verification. Someone needs to open Balgora's tooltip in-game
+and read the equip power values directly.
+
+**Action:** Backfill `item_level`, `combinedRating`, and `stats` for equip power ID 56
+in `G:/ai_projects/nwcb/data/mount_equip_powers.json`, then re-run `build-data.py`.
+
+---
+
 ## Avernus Campaign Leveling Conduits — Set Name Best-Guess (2026-05-17)
 
 Backfilled 25 Shirt/Pants orphans (IL 1225-1325, 5 rarity tiers each) into

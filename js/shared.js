@@ -83,6 +83,128 @@ function formatNumber(n) {
   return Number(n).toLocaleString();
 }
 
+// ---- Stat display name map ----
+// Maps raw stat keys (camelCase or single-word) to human-readable display names.
+// Identity entries for already-spaced names are included so the map is the
+// single canonical reference for any new rendering code.
+// Fallback (for unmapped keys): insert spaces before capital letters.
+const STAT_DISPLAY_NAMES = {
+  // === Offensive ===
+  "Power":                       "Power",
+  "CriticalStrike":              "Critical Strike",
+  "Critical Strike":             "Critical Strike",
+  "CriticalSeverity":            "Critical Severity",
+  "Critical Severity":           "Critical Severity",
+  "CombatAdvantage":             "Combat Advantage",
+  "Combat Advantage":            "Combat Advantage",
+  "Accuracy":                    "Accuracy",
+  "AccuracyReduction":           "Accuracy Reduction",
+  "Accuracy Reduction":          "Accuracy Reduction",
+
+  // === Defensive ===
+  "Defense":                     "Defense",
+  "DefenseReduction":            "Defense Reduction",
+  "Defense Reduction":           "Defense Reduction",
+  "Awareness":                   "Awareness",
+  "CriticalAvoidance":           "Critical Avoidance",
+  "Critical Avoidance":          "Critical Avoidance",
+  "Deflect":                     "Deflect",
+  "DeflectSeverity":             "Deflect Severity",
+  "Deflect Severity":            "Deflect Severity",
+  "DamageResistance":            "Damage Resistance",
+  "Damage Resistance":           "Damage Resistance",
+  "DamageTakenReduction":        "Damage Taken Reduction",
+  "Damage Taken Reduction":      "Damage Taken Reduction",
+  "IncomingDamage":              "Incoming Damage",
+  "Incoming Damage":             "Incoming Damage",
+  "IncomingDamageReduction":     "Incoming Damage Reduction",
+  "Incoming Damage Reduction":   "Incoming Damage Reduction",
+
+  // === Control ===
+  "ControlBonus":                "Control Bonus",
+  "Control Bonus":               "Control Bonus",
+  "ControlResist":               "Control Resist",
+  "Control Resist":              "Control Resist",
+
+  // === Special ===
+  "Forte":                       "Forte",
+  "MaximumHitPoints":            "Maximum Hit Points",
+  "Maximum Hit Points":          "Maximum Hit Points",
+  "CombinedRating":              "Combined Rating",
+  "Combined Rating":             "Combined Rating",
+
+  // === Utility ===
+  "ActionPointGain":             "Action Point Gain",
+  "Action Point Gain":           "Action Point Gain",
+  "RechargeSpeed":               "Recharge Speed",
+  "Recharge Speed":              "Recharge Speed",
+  "MovementSpeed":               "Movement Speed",
+  "Movement Speed":              "Movement Speed",
+  "StaminaRegeneration":         "Stamina Regeneration",
+  "Stamina Regeneration":        "Stamina Regeneration",
+  "Stamina Restore":             "Stamina Restore",
+  "Stamina":                     "Stamina",
+  "MovementDebuff":              "Movement Debuff",
+  "Movement Debuff":             "Movement Debuff",
+
+  // === Healing ===
+  "OutgoingHealing":             "Outgoing Healing",
+  "Outgoing Healing":            "Outgoing Healing",
+  "IncomingHealing":             "Incoming Healing",
+  "Incoming Healing":            "Incoming Healing",
+  "OverallOutgoingHealing":      "Overall Outgoing Healing",
+  "Overall Outgoing Healing":    "Overall Outgoing Healing",
+  "Heal And Damage":             "Heal And Damage",
+  "Heal Percent":                "Heal Percent",
+
+  // === Combat / Damage modifiers ===
+  "CriticalSeverityReduction":   "Critical Severity Reduction",
+  "Critical Severity Reduction": "Critical Severity Reduction",
+  "OutgoingDamage":              "Outgoing Damage",
+  "Outgoing Damage":             "Outgoing Damage",
+  "DamageBonus":                 "Damage Bonus",
+  "Damage Bonus":                "Damage Bonus",
+  "DmgBonus":                    "Dmg Bonus",
+  "Dmg Bonus":                   "Dmg Bonus",
+  "EncounterDamage":             "Encounter Damage",
+  "Encounter Damage":            "Encounter Damage",
+  "Encounter Damage Vs Disabled":"Encounter Damage Vs Disabled",
+  "DailyDamage":                 "Daily Damage",
+  "Daily Damage":                "Daily Damage",
+  "Damage Vs Bosses":            "Damage Vs Bosses",
+  "Damage Vs Dragons":           "Damage Vs Dragons",
+  "Damage Vs Fey":               "Damage Vs Fey",
+  "Damage Vs Gyrion":            "Damage Vs Gyrion",
+  "Damage Vs Kabal":             "Damage Vs Kabal",
+  "Damage Vs Not Facing":        "Damage Vs Not Facing",
+  "Damage Vs Strong":            "Damage Vs Strong",
+  "At Will Power":               "At Will Power",
+  "At Will Damage Range":        "At Will Damage Range",
+  "At Will Damage Vs Disabled":  "At Will Damage Vs Disabled",
+  "At Will Damage Vs Rooted":    "At Will Damage Vs Rooted",
+  "CompanionDamageBoost":        "Companion Damage Boost",
+  "Companion Damage Boost":      "Companion Damage Boost",
+
+  // === Class resource ===
+  "ClassResourceRegen":          "Class Resource Regen",
+  "Class Resource Regen":        "Class Resource Regen",
+  "DivinityRegen":               "Divinity Regen",
+  "Divinity Regen":              "Divinity Regen",
+  "SoulweaveRegen":              "Soulweave Regen",
+  "Soulweave Regen":             "Soulweave Regen",
+  "PerformanceRegen":            "Performance Regen",
+  "Performance Regen":           "Performance Regen",
+};
+
+// Returns human-readable display name for a stat key.
+// Falls back to inserting spaces before capital letters if key not in map.
+function getStatDisplayName(key) {
+  if (!key) return key;
+  if (STAT_DISPLAY_NAMES[key] !== undefined) return STAT_DISPLAY_NAMES[key];
+  // Graceful fallback: split camelCase only (already-spaced strings pass through unchanged)
+  return key.replace(/([a-z])([A-Z])/g, '$1 $2');
+}
+
 // ---- Stat rendering ----
 function renderStatValue(value, type) {
   if (value == null) return "—";
@@ -103,7 +225,7 @@ function renderStatsTable(stats) {
   for (var i = 0; i < stats.length; i++) {
     var s = stats[i];
     html += '<div class="stat-row">';
-    html += '<span class="stat-name">' + escapeHtml(s.stat) + "</span>";
+    html += '<span class="stat-name">' + escapeHtml(getStatDisplayName(s.stat)) + "</span>";
     html += renderStatValue(s.value, s.type);
     html += "</div>";
   }

@@ -114,8 +114,8 @@
     var statusOrder = { "In Progress": 0, "New": 1, "Confirmed": 2 };
     active.sort(function (a, b) {
       var sa = statusOrder[a.status] !== undefined ? statusOrder[a.status] : 9;
-      var sb = statusOrder[b.status] !== undefined ? statusOrder[b.status] : 9;
-      if (sa !== sb) return sa - sb;
+      var sb2 = statusOrder[b.status] !== undefined ? statusOrder[b.status] : 9;
+      if (sa !== sb2) return sa - sb2;
       return b.upvotes - a.upvotes;
     });
 
@@ -220,6 +220,10 @@
       html += '</div>';
     }
     // Replies section (only when admin note exists)
+    // When no admin note and not resolved, show a pending notice so users know replies aren't hidden by accident.
+    if (!r.admin_notes && !isResolved) {
+      html += '<div class="reply-pending-notice" style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem;padding:0.4rem 0.6rem;background:var(--bg-elevated,#1c2129);border-radius:var(--radius-sm,4px);">Replies open once an admin has reviewed this report.</div>';
+    }
     if (r.admin_notes) {
       var replies = allReplies[r.id] || [];
       html += '<div class="replies-section">';
@@ -483,6 +487,7 @@
           break;
         }
       }
+      renderReports();
       select.disabled = false;
     } else if (data && data.reason === "unauthorized") {
       alert("Wrong password. Admin mode disabled.");
