@@ -146,6 +146,7 @@ const CLASS_RESOURCE_REGEN_ALIASES = [
 // canonicalizes them on ingest so contributions don't get silently
 // dropped into "unknown-stat" warnings.
 const STAT_NAME_ALIASES = {
+  // CamelCase (from enchants.js and some gear)
   "CriticalStrike":     "Critical Strike",
   "CriticalSeverity":   "Critical Severity",
   "CombatAdvantage":    "Combat Advantage",
@@ -167,5 +168,11 @@ const STAT_NAME_ALIASES = {
   "DeflectSev":         "Deflect Severity",
   "CritStrike":         "Critical Strike",
   "CritSeverity":       "Critical Severity",
-  "CritAvoidance":      "Critical Avoidance"
+  "CritAvoidance":      "Critical Avoidance",
+  // Plural variants found in gear.json (audit C8 fix) — same in-game stat
+  "Deflection":         "Deflect",               // 708 gear entries; in-game stat is "Deflect"
+  "Control Resistance": "Control Resist",        // 72 gear entries; in-game stat is "Control Resist"
+  // Number-suffixed dupes (audit C10 — two values of same stat on one item)
+  "Critical Severity 2": "Critical Severity",    // Lunar Knot — second source stacks
+  "Deflection 2":        "Deflect"               // Solar Band — second source stacks
 };
