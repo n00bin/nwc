@@ -135,6 +135,32 @@
       return Promise.resolve({ ok: false, error: "This field is not user-correctable." });
     }
 
+    // Defensive: refuse zero-change submissions. The Toon Forge modal
+    // (_ccSaveField) already guards against this, but a direct caller
+    // could submit identical old/new values and create a noise report
+    // (see Won't-Fix Report #31). When userObserved.old === .new after
+    // normalization, treat it as a no-op.
+    if (opts.userObserved && typeof opts.userObserved === "object") {
+      var oldV = opts.userObserved.old;
+      var newV = opts.userObserved.new;
+      var same = oldV === newV;
+      if (!same && oldV != null && newV != null) {
+        var oldS = String(oldV).trim();
+        var newS = String(newV).trim();
+        var oldN = Number(oldS), newN = Number(newS);
+        if (oldS !== "" && newS !== "" && isFinite(oldN) && isFinite(newN)) {
+          same = Math.round(oldN * 10000) === Math.round(newN * 10000);
+        } else if (typeof oldV === "object" || typeof newV === "object") {
+          try { same = JSON.stringify(oldV) === JSON.stringify(newV); } catch (e) { same = false; }
+        } else {
+          same = oldS === newS;
+        }
+      }
+      if (same) {
+        return Promise.resolve({ ok: false, error: "No change to submit — old and new values are identical." });
+      }
+    }
+
     var sb = sbClient();
     if (!sb) return Promise.resolve({ ok: false, error: "supabase client not loaded" });
 

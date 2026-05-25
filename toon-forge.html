@@ -4250,6 +4250,29 @@
       return field;
     }
 
+    // Compare a candidate "new" value against the existing source value.
+    // Returns true when the user effectively didn't change anything — used
+    // to block zero-change correction reports from being created.
+    function _ccValuesEqual(a, b) {
+      if (a === b) return true;
+      if (a == null && b == null) return true;
+      if (a == null || b == null) return false;
+      // Numbers (or numeric strings) — compare with 4-decimal rounding so
+      // floating-point noise doesn't trick us. Matches _normalizeNumber in
+      // data-corrections.js.
+      const sa = String(a), sb = String(b);
+      const an = Number(sa), bn = Number(sb);
+      if (sa.trim() !== "" && sb.trim() !== "" && Number.isFinite(an) && Number.isFinite(bn)) {
+        return Math.round(an * 10000) === Math.round(bn * 10000);
+      }
+      // Objects/arrays (json kind) — structural compare via JSON.stringify.
+      if (typeof a === "object" || typeof b === "object") {
+        try { return JSON.stringify(a) === JSON.stringify(b); } catch (e) { return false; }
+      }
+      // Strings — trim and compare.
+      return sa.trim() === sb.trim();
+    }
+
     // Build the description body the admin will see on the report.
     function _ccBuildReportDescription(item, dataType, fieldHuman, oldVal, newVal) {
       const lines = [];
@@ -4324,6 +4347,19 @@
         const n = Number(originalSourceValue);
         if (originalSourceValue !== "" && Number.isFinite(n)) originalSourceValue = n;
       }
+
+      // Bail out if the user didn't actually change anything. Without this
+      // check, the form would create a zero-change correction report
+      // (e.g. Report #31 — identical "before" and "after" text).
+      if (_ccValuesEqual(claimedValue, originalSourceValue)) {
+        status.textContent = `No change to submit — that's the same value that's already there.`;
+        status.className = "correction-status";
+        editor.remove();
+        if (btn) btn.style.display = "";
+        if (valueEl) valueEl.style.display = "";
+        return;
+      }
+
       window.NWCBDataCorrections.setOverride(overrideKey, claimedValue, originalSourceValue);
       if (typeof rerenderAll === "function") rerenderAll();
 
