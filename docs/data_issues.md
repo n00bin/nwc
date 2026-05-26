@@ -11,6 +11,30 @@ Player report flagged the following gear as missing from the site:
 Need to: source screenshots (in-game tooltips or NW Hub references),
 extract stats, add to `gear.json` with proper slot/set/IL data.
 
+## Missing Gear — Doomcleaver (Reports #36–#40, 2026-05-26)
+
+Player tried to use the data-correction form on Elk Tribe Noble's Mace
+to flag a missing weapon called **Doomcleaver** (didn't find it in our
+database, so they used the closest weapon-shaped entry as a vehicle).
+
+Suspected stats from the corrections submitted:
+- Name: **Doomcleaver**
+- Slot: Main Hand
+- Item Level: 4450
+- Set: **Impending Doom** (Mod 33)
+- Combined Rating: 4005
+- Accuracy: 0 (i.e. likely a Tank/Healer-stat distribution — Defense / Crit Avoidance / Awareness)
+
+Set context: Impending Doom main-hand weapons we already have are
+Oathbreaker's Malevolence, Grimfang, Omen of Doom, Scream Seeker,
+Dirgeblade — Doomcleaver is the missing 6th, likely the Barbarian or
+Fighter variant.
+
+**Action:** Source an in-game screenshot of Doomcleaver tooltip
+(stats + equip bonus) and add as a new gear.json entry. Don't apply
+the submitted stat values directly — they came from a correction
+form on the wrong item, so they should be treated as unverified hints.
+
 ## B2 — Mount Equip Power ID 56 "Seeing Red" Missing Stats (2026-05-22)
 
 Mount 271 (Balgora) references equip power ID 56 ("Seeing Red") via `equipRef: 56`.

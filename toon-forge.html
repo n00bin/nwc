@@ -925,6 +925,91 @@
       border-radius: 3px;
       font-weight: 700;
     }
+    /* "+ Add Missing Item" button shown at the top of the gear picker. */
+    .picker-add-missing-btn {
+      display: flex; flex-direction: column; gap: 0.15rem;
+      width: 100%; text-align: left;
+      padding: 0.55rem 0.75rem;
+      margin-bottom: 0.6rem;
+      background: rgba(76, 188, 122, 0.07);
+      border: 1px dashed var(--stat-positive, #4cbc7a);
+      border-radius: 6px;
+      color: var(--text-bright, #fff);
+      font-family: inherit; font-size: 0.92rem;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .picker-add-missing-btn:hover {
+      background: rgba(76, 188, 122, 0.14);
+      border-style: solid;
+    }
+    .picker-add-missing-btn .picker-add-missing-hint {
+      color: var(--text-mute);
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+    /* Add-missing-item modal */
+    .ami-overlay {
+      position: fixed; inset: 0; z-index: 10001;
+      background: rgba(0,0,0,0.7);
+      display: none; align-items: flex-start; justify-content: center;
+      padding: 2rem 1rem; overflow-y: auto;
+    }
+    .ami-overlay.open { display: flex; }
+    .ami-panel {
+      background: var(--bg-elev, #1c1f24);
+      border: 1px solid var(--border, #2a2f37);
+      border-radius: 8px;
+      width: 100%; max-width: 640px;
+      display: flex; flex-direction: column;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+    }
+    .ami-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--border, #2a2f37);
+    }
+    .ami-header h3 { margin: 0; font-size: 1.05rem; }
+    .ami-close {
+      background: transparent; border: none; color: var(--text-mute);
+      cursor: pointer; font-size: 1.4rem; line-height: 1;
+      padding: 0.2rem 0.5rem;
+    }
+    .ami-body { padding: 0.9rem 1rem; display: flex; flex-direction: column; gap: 0.7rem; }
+    .ami-row { display: flex; flex-direction: column; gap: 0.25rem; }
+    .ami-row label {
+      font-size: 0.82rem; color: var(--text-mute);
+    }
+    .ami-row .req { color: var(--stat-negative, #d96565); }
+    .ami-row input[type="text"], .ami-row input[type="number"], .ami-row textarea, .ami-row select {
+      background: var(--bg, #11141a);
+      border: 1px solid var(--border, #2a2f37);
+      border-radius: 4px;
+      color: var(--text-bright, #fff);
+      font-family: inherit; font-size: 0.9rem;
+      padding: 0.4rem 0.55rem;
+      outline: none;
+    }
+    .ami-row input:focus, .ami-row textarea:focus, .ami-row select:focus {
+      border-color: var(--amber, #f0883e);
+    }
+    .ami-stat-row { display: grid; grid-template-columns: 1fr 100px; gap: 0.4rem; }
+    .ami-footer {
+      display: flex; gap: 0.5rem; align-items: center;
+      padding: 0.7rem 1rem;
+      border-top: 1px solid var(--border, #2a2f37);
+    }
+    .ami-save-btn {
+      background: var(--stat-positive, #4cbc7a); color: #fff;
+      border: none; border-radius: 4px;
+      padding: 0.5rem 1.1rem; cursor: pointer;
+      font-weight: 600;
+    }
+    .ami-save-btn:hover { filter: brightness(1.1); }
+    .ami-save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .ami-msg { font-size: 0.85rem; }
+    .ami-msg.success { color: var(--stat-positive, #4cbc7a); }
+    .ami-msg.error   { color: var(--stat-negative, #d96565); }
     /* Persistent corrections callout shown in the hero. Catches new
        users before they start building so they know the ✎ pattern
        exists on every picker row. */
@@ -3189,12 +3274,20 @@
       // submit_data_correction RPC; click is stopPropagation'd so it
       // doesn't also trigger the row's pick handler.
       const showPencil = !!_pickerState.dataType;
+      const isGearPicker = _pickerState.dataType === "gear" && _pickerState.slot;
       if (showPencil) {
         html += `<div class="picker-tip">
           <span class="picker-tip-icon">💡</span>
           <span>Something not matching in-game? Tap the <strong class="picker-tip-pencil">✎</strong>
           on any item to fix it for your build.</span>
         </div>`;
+      }
+      if (isGearPicker) {
+        html += `<button id="picker-add-missing" class="picker-add-missing-btn" type="button">
+          <span style="font-size:1.1em;">＋</span>
+          <span>Add Missing Item</span>
+          <span class="picker-add-missing-hint">Don't see what you need? Add the gear yourself — it'll show up in your build right away.</span>
+        </button>`;
       }
       if (_pickerState.allowNone !== false) {
         html += `<div class="picker-item empty" data-pick-none="1">— None —</div>`;
@@ -3233,6 +3326,13 @@
             const it = items[+el.dataset.correct];
             openCorrectionModal(_pickerState.dataType, it);
           });
+        });
+      }
+      const addBtn = document.getElementById("picker-add-missing");
+      if (addBtn) {
+        addBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openAddMissingItemModal(_pickerState.slot, _pickerState.className || (window.state && state.class));
         });
       }
       list.querySelectorAll("[data-pick-none]").forEach(el => {
@@ -5094,10 +5194,286 @@
     }
     function gearOptionsForSlot(slotType, className) {
       if (typeof GEAR_DATA === "undefined") return [];
-      return GEAR_DATA
+      const base = GEAR_DATA
         .filter(item => item.slot === slotType)
-        .filter(item => !className || !item.allowedClasses || item.allowedClasses.indexOf(className) !== -1)
+        .filter(item => !className || !item.allowedClasses || item.allowedClasses.indexOf(className) !== -1);
+      const userAdded = getUserAddedGear()
+        .filter(item => item.slot === slotType)
+        .filter(item => !className || !item.allowedClasses || item.allowedClasses.length === 0 || item.allowedClasses.indexOf(className) !== -1);
+      return base.concat(userAdded)
         .sort((a, b) => (b.item_level || 0) - (a.item_level || 0) || a.name.localeCompare(b.name));
+    }
+
+    /* ===== User-added gear (locally) =====
+       Players can add missing gear via the "+ Add Missing Item" button in the
+       gear picker. Items are stored in localStorage so they show up in the
+       player's build immediately. A report is also sent to the admin so the
+       item can be reviewed and added to the canonical gear.json for everyone.
+       User-added items are tagged with `__userAdded: true` and have negative
+       ids so they never collide with canonical gear. */
+    const USER_GEAR_KEY = "nwcb_user_added_gear_v1";
+    function getUserAddedGear() {
+      try {
+        const raw = localStorage.getItem(USER_GEAR_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveUserAddedGear(list) {
+      try { localStorage.setItem(USER_GEAR_KEY, JSON.stringify(list)); }
+      catch (e) { /* quota — ignore */ }
+    }
+    function addUserGear(item) {
+      const list = getUserAddedGear();
+      const minId = list.reduce((m, x) => Math.min(m, x.id || 0), 0);
+      item.id = (minId < 0 ? minId : 0) - 1;
+      item.__userAdded = true;
+      list.push(item);
+      saveUserAddedGear(list);
+      return item;
+    }
+
+    /* ===== Add Missing Item modal =====
+       Lets a player add a gear piece that's not in our database. The item is
+       saved to localStorage so it shows up in the player's build immediately,
+       and a report is sent to the admin so it can be reviewed and merged into
+       the canonical gear.json for everyone. */
+    const AMI_STAT_OPTIONS = [
+      "Power", "Critical Strike", "Critical Severity", "Combat Advantage",
+      "Accuracy", "Defense", "Critical Avoidance", "Awareness",
+      "Outgoing Healing", "Incoming Healing", "Maximum Hit Points",
+      "Recharge Speed", "Forte", "Deflect", "Deflect Severity",
+      "Movement Speed", "Stamina Regeneration", "Damage",
+      "Action Point Gain", "Control Bonus", "Control Resist"
+    ];
+
+    function ensureAddMissingItemDOM() {
+      if (document.getElementById("ami-overlay")) return;
+      const overlay = document.createElement("div");
+      overlay.id = "ami-overlay";
+      overlay.className = "ami-overlay";
+      let statRows = "";
+      for (let i = 0; i < 6; i++) {
+        statRows += `
+          <div class="ami-stat-row">
+            <select class="ami-stat-name" data-row="${i}">
+              <option value="">— stat ${i + 1} —</option>
+              ${AMI_STAT_OPTIONS.map(s => `<option value="${s}">${s}</option>`).join("")}
+            </select>
+            <input type="number" class="ami-stat-value" data-row="${i}" placeholder="value" step="any">
+          </div>`;
+      }
+      overlay.innerHTML = `
+        <div class="ami-panel">
+          <div class="ami-header">
+            <h3>Add Missing Item</h3>
+            <button class="ami-close" id="ami-close" type="button">×</button>
+          </div>
+          <div class="ami-body">
+            <div class="ami-row">
+              <label>Slot</label>
+              <input type="text" id="ami-slot" readonly>
+            </div>
+            <div class="ami-row">
+              <label>Item Name <span class="req">*</span></label>
+              <input type="text" id="ami-name" placeholder="e.g. Doomcleaver" maxlength="120" required>
+            </div>
+            <div class="ami-row">
+              <label>Item Level <span class="req">*</span></label>
+              <input type="number" id="ami-il" min="0" step="1" placeholder="e.g. 4450" required>
+            </div>
+            <div class="ami-row">
+              <label>Combined Rating <span style="color:var(--text-mute);font-weight:400;font-size:0.78rem;">(optional — leave blank to auto-sum stats)</span></label>
+              <input type="number" id="ami-cr" min="0" step="1" placeholder="auto">
+            </div>
+            <div class="ami-row">
+              <label>Set Name (optional)</label>
+              <input type="text" id="ami-set" placeholder="e.g. Impending Doom" maxlength="80">
+            </div>
+            <div class="ami-row">
+              <label>Stats (up to 6 — pick the stat, type the +value)</label>
+              ${statRows}
+            </div>
+            <div class="ami-row">
+              <label>In-Game Description / Equip Bonus (optional)</label>
+              <textarea id="ami-desc" rows="3" placeholder="Copy the equip-bonus text from the tooltip if any. E.g. 'When in combat with only one enemy, your Power is increased by 1500.'" maxlength="2000"></textarea>
+            </div>
+            <div class="ami-row">
+              <label>Where you got it / class restrictions / anything else useful (optional)</label>
+              <textarea id="ami-notes" rows="2" placeholder="e.g. 'Drops from Master Spellplague Cavern, Barbarian only.'" maxlength="600"></textarea>
+            </div>
+          </div>
+          <div class="ami-footer">
+            <button class="ami-save-btn" id="ami-save" type="button">Add to my build</button>
+            <div class="ami-msg" id="ami-msg"></div>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target.id === "ami-overlay") closeAddMissingItemModal();
+      });
+      document.getElementById("ami-close").addEventListener("click", closeAddMissingItemModal);
+      document.getElementById("ami-save").addEventListener("click", saveAddMissingItem);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("ami-overlay").classList.contains("open")) {
+          closeAddMissingItemModal();
+        }
+      });
+    }
+
+    let _amiSlot = null;
+    let _amiClass = null;
+
+    function openAddMissingItemModal(slot, className) {
+      ensureAddMissingItemDOM();
+      _amiSlot = slot || "Unknown";
+      _amiClass = className || null;
+      // Reset form
+      document.getElementById("ami-slot").value = _amiSlot;
+      document.getElementById("ami-name").value = "";
+      document.getElementById("ami-il").value = "";
+      document.getElementById("ami-cr").value = "";
+      document.getElementById("ami-set").value = "";
+      document.getElementById("ami-desc").value = "";
+      document.getElementById("ami-notes").value = "";
+      document.querySelectorAll(".ami-stat-name").forEach(el => el.value = "");
+      document.querySelectorAll(".ami-stat-value").forEach(el => el.value = "");
+      const msg = document.getElementById("ami-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+      const saveBtn = document.getElementById("ami-save");
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      document.getElementById("ami-overlay").classList.add("open");
+      setTimeout(() => document.getElementById("ami-name").focus(), 50);
+    }
+
+    function closeAddMissingItemModal() {
+      const o = document.getElementById("ami-overlay");
+      if (o) o.classList.remove("open");
+    }
+
+    async function saveAddMissingItem() {
+      const msg = document.getElementById("ami-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+
+      const name = document.getElementById("ami-name").value.trim();
+      const il   = parseInt(document.getElementById("ami-il").value, 10);
+      const crIn = document.getElementById("ami-cr").value;
+      const setName = document.getElementById("ami-set").value.trim();
+      const desc = document.getElementById("ami-desc").value.trim();
+      const notes = document.getElementById("ami-notes").value.trim();
+
+      if (name.length < 2) { msg.textContent = "Item name is required."; msg.className = "ami-msg error"; return; }
+      if (!il || il < 0)   { msg.textContent = "Item Level is required."; msg.className = "ami-msg error"; return; }
+
+      // Collect stats
+      const ratingStats = {};
+      let statSum = 0;
+      document.querySelectorAll(".ami-stat-name").forEach((sel, i) => {
+        const sName = sel.value;
+        const sVal = parseFloat(document.querySelectorAll(".ami-stat-value")[i].value);
+        if (sName && !isNaN(sVal)) {
+          ratingStats[sName] = sVal;
+          statSum += sVal;
+        }
+      });
+      const combinedRating = (crIn === "" || isNaN(parseInt(crIn, 10)))
+        ? Math.round(statSum)
+        : parseInt(crIn, 10);
+
+      const equipBonuses = [];
+      if (desc) {
+        equipBonuses.push({ type: "Equip", name: "", description: desc });
+      }
+
+      const item = {
+        name: name,
+        slot: _amiSlot,
+        item_level: il,
+        ratingStats: ratingStats,
+        combinedRating: combinedRating,
+        percentStats: {},
+        abilityBonuses: {},
+        set: setName,
+        setSize: setName ? 2 : 0,
+        source: "User-added (pending review)",
+        allowedClasses: _amiClass ? [_amiClass] : [],
+        equipBonuses: equipBonuses,
+        notes: notes || "User-added — pending admin review."
+      };
+
+      // 1. Save locally so it shows in the player's build
+      const saved = addUserGear(item);
+
+      // 2. Submit a report to the admin (best-effort; don't block local save)
+      const saveBtn = document.getElementById("ami-save");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Sending report…";
+      try {
+        const reportPayload = {
+          name, slot: _amiSlot, item_level: il, combinedRating,
+          set: setName, ratingStats, equipBonus: desc, notes,
+          submittedFrom: "Toon Forge — Add Missing Item",
+          requestedClass: _amiClass || null
+        };
+        const reportLines = [
+          "Missing item submitted by a player from the Toon Forge picker.",
+          "",
+          "Item: " + name,
+          "Slot: " + _amiSlot,
+          "Item Level: " + il,
+          "Combined Rating: " + combinedRating
+        ];
+        if (setName) reportLines.push("Set: " + setName);
+        if (_amiClass) reportLines.push("Picker class context: " + _amiClass);
+        if (Object.keys(ratingStats).length) {
+          reportLines.push("");
+          reportLines.push("Stats:");
+          for (const k of Object.keys(ratingStats)) {
+            reportLines.push("  " + k + ": " + ratingStats[k]);
+          }
+        }
+        if (desc)  { reportLines.push(""); reportLines.push("Equip bonus / description:"); reportLines.push(desc); }
+        if (notes) { reportLines.push(""); reportLines.push("Player notes:"); reportLines.push(notes); }
+        reportLines.push("");
+        reportLines.push("Raw JSON:");
+        reportLines.push(JSON.stringify(reportPayload, null, 2));
+
+        if (window.supabase) {
+          const sb = window.supabase.createClient(
+            "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+            "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+          );
+          await sb.from("reports").insert({
+            title: "Missing item: " + name,
+            description: reportLines.join("\n"),
+            category: "Missing Item",
+            image_url: ""
+          });
+        }
+      } catch (e) {
+        // Report send failed — the local save still succeeded. Tell the player.
+        msg.textContent = "Added to your build (couldn't send report — please try again later).";
+        msg.className = "ami-msg success";
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Add to my build";
+        // Refresh picker so the new item is visible
+        if (typeof renderPickerList === "function") renderPickerList("");
+        setTimeout(closeAddMissingItemModal, 1800);
+        return;
+      }
+
+      msg.textContent = "Added to your build! Sent to the team for review.";
+      msg.className = "ami-msg success";
+      saveBtn.textContent = "Added!";
+      // Refresh picker so the new item shows up
+      if (_pickerState && _pickerState.dataType === "gear" && _pickerState.slot) {
+        _pickerState.items = gearOptionsForSlot(_pickerState.slot, _pickerState.className);
+        renderPickerList(document.getElementById("picker-search").value || "");
+      }
+      setTimeout(closeAddMissingItemModal, 1500);
     }
     /* ===== Class base ability scores =====
        Pulled from CLASSES_DATA (sourced from NW Hub character editor).
@@ -7601,6 +7977,9 @@
           if (!items.length) return;
           openPicker({
             dataType: "gear",
+            slot: slotData.slot,
+            slotLabel: slotLabel,
+            className: state.class,
             title: `${slotLabel} — ${items.length} items available`,
             items,
             render: renderGearItem,
