@@ -1176,9 +1176,10 @@
     for (var b = 0; b < ld.desiredBonuses.length; b++) {
       var bonus = bonusMap[ld.desiredBonuses[b]];
       if (!bonus) continue;
-      html += '<span class="badge" style="background:var(--bg-elevated);border:1px solid var(--border-default);color:var(--text-primary);padding:0.2rem 0.5rem;display:inline-flex;align-items:center;gap:0.25rem;">';
+      var bonusTip = bonus.effectText || bonus.description || "";
+      html += '<span class="badge" title="' + escapeHtml(bonusTip) + '" style="background:var(--bg-elevated);border:1px solid var(--border-default);color:var(--text-primary);padding:0.2rem 0.5rem;display:inline-flex;align-items:center;gap:0.25rem;cursor:help;">';
       html += escapeHtml(bonus.name);
-      html += '<button class="planner-remove-bonus" data-id="' + ld.id + '" data-index="' + b + '" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1rem;line-height:1;padding:0 0.15rem;">×</button>';
+      html += '<button class="planner-remove-bonus" data-id="' + ld.id + '" data-index="' + b + '" title="Remove this bonus" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1rem;line-height:1;padding:0 0.15rem;">×</button>';
       html += '</span>';
     }
     if (ld.desiredBonuses.length < MAX_BONUSES_PER_LOADOUT) {
