@@ -5252,23 +5252,29 @@
       }
       return null;
     }
+    // C5 legacy duplicate cleanup runs once per page load (flag resets on reload).
+    let _c5CleanupDone = false;
+
     function gearOptionsForSlot(slotType, className) {
       if (typeof GEAR_DATA === "undefined") return [];
       const base = GEAR_DATA
         .filter(item => item.slot === slotType)
         .filter(item => !className || !item.allowedClasses || item.allowedClasses.indexOf(className) !== -1);
 
-      // C5 — Legacy duplicate cleanup (one-time silent pass per call).
+      // C5 — Legacy duplicate cleanup (one-time silent pass, runs on first call only).
       // If a user-added item's name exactly matches a canonical GEAR_DATA entry
       // at the same slot, the item has since been added to the site. Drop the
       // local copy so the canonical version is used instead.
       // Case-sensitive match is intentional (v1 — acceptable for gear names).
-      const canonicalNames = new Set(base.map(i => i.name));
-      const userAll = getUserAddedGear();
-      const duplicates = userAll.filter(i => i.slot === slotType && canonicalNames.has(i.name));
-      if (duplicates.length > 0) {
-        const dupIds = new Set(duplicates.map(i => i.id));
-        saveUserAddedGear(userAll.filter(i => !dupIds.has(i.id)));
+      if (!_c5CleanupDone) {
+        _c5CleanupDone = true;
+        const canonicalNames = new Set(base.map(i => i.name));
+        const userAll = getUserAddedGear();
+        const duplicates = userAll.filter(i => i.slot === slotType && canonicalNames.has(i.name));
+        if (duplicates.length > 0) {
+          const dupIds = new Set(duplicates.map(i => i.id));
+          saveUserAddedGear(userAll.filter(i => !dupIds.has(i.id)));
+        }
       }
 
       const userAdded = getUserAddedGear()
@@ -11172,6 +11178,10 @@
           }
           rows = result.data || [];
           try {
+            // Cache covers the ID set at fetch time. If new submissions appear within the
+            // same page-load (rare — user typically reloads between submissions), they're
+            // deferred to next reload. The contributions modal force-refreshes the cache,
+            // so the player always sees fresh status when they open it.
             sessionStorage.setItem(CACHE_KEY, JSON.stringify({ cachedAt: Date.now(), rows }));
           } catch (e) { /* quota — ignore */ }
         } catch (e) {
