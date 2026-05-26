@@ -6,6 +6,9 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of 2026-05-26
 
+### Features
+- **+ Add Missing Item in Toon Forge:** Open any gear slot picker and you'll see a "+ Add Missing Item" button at the top. Click it and a form lets you add a missing piece of gear directly — name, item level, set, up to 6 stats (pick the stat, type the value), equip bonus text. The slot fills in automatically. Once you save, the item shows up in your build right away — your stats update with the values you entered — and a report is sent to the team so we can review and add it to the site for everyone. (Driven by community feedback from KnovaFit and players using the data-correction form as a workaround.)
+
 ### Bug Fixes
 - **Stable Planner — bonus descriptions everywhere:** Two improvements to the insignia bonus UX:
   - **Picking a bonus:** Clicking "+ Add Bonus" now opens a searchable popup where every bonus shows its name and full effect text side-by-side. Previously it was just a dropdown of cryptic names — no way for a new player to tell what they did without picking blindly.

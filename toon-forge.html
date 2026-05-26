@@ -925,6 +925,127 @@
       border-radius: 3px;
       font-weight: 700;
     }
+    /* "+ Add Missing Item" button shown at the top of the gear picker. */
+    .picker-add-missing-btn {
+      display: flex; flex-direction: column; gap: 0.15rem;
+      width: 100%; text-align: left;
+      padding: 0.55rem 0.75rem;
+      margin-bottom: 0.6rem;
+      background: rgba(76, 188, 122, 0.07);
+      border: 1px dashed var(--stat-positive, #4cbc7a);
+      border-radius: 6px;
+      color: var(--text-bright, #fff);
+      font-family: inherit; font-size: 0.92rem;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .picker-add-missing-btn:hover {
+      background: rgba(76, 188, 122, 0.14);
+      border-style: solid;
+    }
+    .picker-add-missing-btn .picker-add-missing-hint {
+      color: var(--text-mute);
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+    /* Add-missing-item modal */
+    .ami-overlay {
+      position: fixed; inset: 0; z-index: 10001;
+      background: rgba(0,0,0,0.7);
+      display: none; align-items: flex-start; justify-content: center;
+      padding: 2rem 1rem; overflow-y: auto;
+    }
+    .ami-overlay.open { display: flex; }
+    .ami-panel {
+      background: var(--bg-elev, #1c1f24);
+      border: 1px solid var(--border, #2a2f37);
+      border-radius: 8px;
+      width: 100%; max-width: 640px;
+      display: flex; flex-direction: column;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+    }
+    .ami-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--border, #2a2f37);
+    }
+    .ami-header h3 { margin: 0; font-size: 1.05rem; }
+    .ami-close {
+      background: transparent; border: none; color: var(--text-mute);
+      cursor: pointer; font-size: 1.4rem; line-height: 1;
+      padding: 0.2rem 0.5rem;
+    }
+    .ami-body { padding: 0.9rem 1rem; display: flex; flex-direction: column; gap: 0.7rem; }
+    .ami-row { display: flex; flex-direction: column; gap: 0.25rem; }
+    .ami-row label {
+      font-size: 0.82rem; color: var(--text-mute);
+    }
+    .ami-row .req { color: var(--stat-negative, #d96565); }
+    .ami-row input[type="text"], .ami-row input[type="number"], .ami-row textarea, .ami-row select {
+      background: var(--bg, #11141a);
+      border: 1px solid var(--border, #2a2f37);
+      border-radius: 4px;
+      color: var(--text-bright, #fff);
+      font-family: inherit; font-size: 0.9rem;
+      padding: 0.4rem 0.55rem;
+      outline: none;
+    }
+    .ami-row input:focus, .ami-row textarea:focus, .ami-row select:focus {
+      border-color: var(--amber, #f0883e);
+    }
+    .ami-stat-row { display: grid; grid-template-columns: 1fr 100px; gap: 0.4rem; }
+    .ami-footer {
+      display: flex; gap: 0.5rem; align-items: center;
+      padding: 0.7rem 1rem;
+      border-top: 1px solid var(--border, #2a2f37);
+    }
+    .ami-save-btn {
+      background: var(--stat-positive, #4cbc7a); color: #fff;
+      border: none; border-radius: 4px;
+      padding: 0.5rem 1.1rem; cursor: pointer;
+      font-weight: 600;
+    }
+    .ami-save-btn:hover { filter: brightness(1.1); }
+    .ami-save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .ami-msg { font-size: 0.85rem; }
+    .ami-msg.success { color: var(--stat-positive, #4cbc7a); }
+    .ami-msg.error   { color: var(--stat-negative, #d96565); }
+    .ami-class-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 0.25rem 0.5rem;
+      padding: 0.4rem 0.5rem;
+      background: var(--bg, #11141a);
+      border: 1px solid var(--border, #2a2f37);
+      border-radius: 4px;
+    }
+    .ami-class-check {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.88rem; color: var(--text-bright, #fff);
+      cursor: pointer;
+    }
+    .ami-class-check input[type="checkbox"] {
+      width: 14px; height: 14px; cursor: pointer;
+    }
+    .ami-class-all-btn {
+      background: transparent;
+      border: 1px solid var(--border, #2a2f37);
+      color: var(--text-bright, #fff);
+      border-radius: 4px;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .ami-class-all-btn:hover {
+      background: rgba(240, 136, 62, 0.1);
+      border-color: var(--amber, #f0883e);
+    }
+    .ami-class-all-btn.active {
+      background: var(--amber, #f0883e);
+      color: #000;
+      border-color: var(--amber, #f0883e);
+    }
     /* Persistent corrections callout shown in the hero. Catches new
        users before they start building so they know the ✎ pattern
        exists on every picker row. */
@@ -2105,6 +2226,7 @@
       <div class="hcc-body">
         <strong>Something not matching in-game?</strong>
         Tap the <span class="hcc-pencil">✎</span> next to any item to fix it — stats, names, anything. Your build uses your version right away!
+        <a href="#" id="contributions-link" onclick="openContributionsModal();return false;" style="margin-left:0.75em;color:var(--amber);font-size:0.85em;text-decoration:none;white-space:nowrap;">&#128203; Your submissions</a>
       </div>
     </div>
   </div>
@@ -2524,6 +2646,19 @@
       </div>
       <div class="picker-list" id="builds-list">
         <!-- populated by openBuildsModal() -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Your Contributions modal (C4) ===== -->
+  <div class="picker-overlay" id="contributions-overlay">
+    <div class="picker-modal" style="max-width:540px;">
+      <div class="picker-header">
+        <h3>Your Submissions</h3>
+        <button class="picker-close" id="contributions-close" onclick="document.getElementById('contributions-overlay').classList.remove('open')">✕</button>
+      </div>
+      <div class="picker-list" id="contributions-list" style="padding:1rem;">
+        <p style="color:var(--muted);">Loading…</p>
       </div>
     </div>
   </div>
@@ -3189,12 +3324,20 @@
       // submit_data_correction RPC; click is stopPropagation'd so it
       // doesn't also trigger the row's pick handler.
       const showPencil = !!_pickerState.dataType;
+      const isGearPicker = _pickerState.dataType === "gear" && _pickerState.slot;
       if (showPencil) {
         html += `<div class="picker-tip">
           <span class="picker-tip-icon">💡</span>
           <span>Something not matching in-game? Tap the <strong class="picker-tip-pencil">✎</strong>
           on any item to fix it for your build.</span>
         </div>`;
+      }
+      if (isGearPicker) {
+        html += `<button id="picker-add-missing" class="picker-add-missing-btn" type="button">
+          <span style="font-size:1.1em;">＋</span>
+          <span>Add Missing Item</span>
+          <span class="picker-add-missing-hint">Don't see what you need? Add the gear yourself — it'll show up in your build right away.</span>
+        </button>`;
       }
       if (_pickerState.allowNone !== false) {
         html += `<div class="picker-item empty" data-pick-none="1">— None —</div>`;
@@ -3233,6 +3376,13 @@
             const it = items[+el.dataset.correct];
             openCorrectionModal(_pickerState.dataType, it);
           });
+        });
+      }
+      const addBtn = document.getElementById("picker-add-missing");
+      if (addBtn) {
+        addBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openAddMissingItemModal(_pickerState.slot, _pickerState.className || (window.state && state.class));
         });
       }
       list.querySelectorAll("[data-pick-none]").forEach(el => {
@@ -4223,30 +4373,28 @@
       if (map[field]) return map[field];
       let m = field.match(/^equipBonuses\[(\d+)\]\.(.+)$/);
       if (m) {
-        const i = Number(m[1]) + 1;
         const sub = m[2] === "name" ? "name" : m[2] === "description" ? "description" : m[2];
-        return `Equip Power #${i} ${sub}`;
+        return `Equip bonus ${sub}`;
       }
       m = field.match(/^percentStats\.(.+)$/);
-      if (m) return `${m[1]} (%)`;
+      if (m) return `${m[1]} (percent)`;
       m = field.match(/^abilityBonuses\.(.+)$/);
       if (m) return `${m[1]} bonus`;
       m = field.match(/^ratingStats\.(.+)$/);
       if (m) return m[1];
-      // Phase 2 additions:
       m = field.match(/^stats\[(\d+)\]\.value$/);
-      if (m) return `Stat #${Number(m[1]) + 1} value`;
+      if (m) return `Stat ${Number(m[1]) + 1} value`;
       m = field.match(/^stats\[(\d+)\]\.stat$/);
-      if (m) return `Stat #${Number(m[1]) + 1} name`;
+      if (m) return `Stat ${Number(m[1]) + 1} name`;
       m = field.match(/^procEffect\.(.+)$/);
-      if (m) return `Proc Effect — ${m[1]}`;
+      if (m) return `Proc effect ${m[1]}`;
       m = field.match(/^insigniaSlots\[(\d+)\]\.preferred$/);
-      if (m) return `Slot ${Number(m[1]) + 1} preferred`;
+      if (m) return `Slot ${Number(m[1]) + 1} preferred insignia`;
       m = field.match(/^slot\[(\d+)\]$/);
       if (m) return `Slot option ${Number(m[1]) + 1}`;
-      // Generic dotted/bracketed path — make it human-readable
+      // Generic dotted/bracketed path — humanize a bit (drop the brackets).
       m = field.match(/^(\w+)\[(\d+)\]\.(.+)$/);
-      if (m) return `${m[1]} #${Number(m[2]) + 1} ${m[3]}`;
+      if (m) return `${m[1]} ${m[3]}`;
       return field;
     }
 
@@ -4274,21 +4422,19 @@
     }
 
     // Build the description body the admin will see on the report.
+    // Keep it plain English — no dev jargon, no internal field paths.
     function _ccBuildReportDescription(item, dataType, fieldHuman, oldVal, newVal) {
       const lines = [];
-      lines.push(`Player flagged a mismatch between the site data and what they see in-game.`);
+      lines.push(`A player spotted something wrong on this item:`);
       lines.push(``);
       lines.push(`Item: ${item.name || "(unnamed)"}`);
       if (item.slot) lines.push(`Slot: ${item.slot}`);
       if (item.item_level != null) lines.push(`Item Level: ${item.item_level}`);
       if (item.set) lines.push(`Set: ${item.set}`);
       lines.push(``);
-      lines.push(`Field: ${fieldHuman}`);
+      lines.push(`What's wrong: ${fieldHuman}`);
       lines.push(`Site shows: ${oldVal == null || oldVal === "" ? "(empty)" : String(oldVal)}`);
-      lines.push(`Player says in-game: ${newVal == null || newVal === "" ? "(empty)" : String(newVal)}`);
-      lines.push(``);
-      lines.push(`Submitted via Toon Forge correction editor.`);
-      lines.push(`Data type: ${dataType} · Source id: ${item.id}`);
+      lines.push(`Player says it's: ${newVal == null || newVal === "" ? "(empty)" : String(newVal)}`);
       return lines.join("\n");
     }
 
@@ -5081,23 +5227,386 @@
     }
 
     function findGearByName(name, slotType) {
-      if (!name || typeof GEAR_DATA === "undefined") return null;
+      if (!name) return null;
       // When a slot is supplied, disambiguate against it (same-name items
       // can exist across slots). When omitted, fall back to first-by-name —
       // used by the Details modal which only knows the name.
-      for (const item of GEAR_DATA) {
+      if (typeof GEAR_DATA !== "undefined") {
+        for (const item of GEAR_DATA) {
+          if (item.name !== name) continue;
+          if (slotType && item.slot !== slotType) continue;
+          return item;
+        }
+      }
+      // Fall back to user-added gear so the engine can compute stats for
+      // items the player added via the "+ Add Missing Item" flow.
+      const userGear = (typeof getUserAddedGear === "function") ? getUserAddedGear() : [];
+      for (const item of userGear) {
         if (item.name !== name) continue;
         if (slotType && item.slot !== slotType) continue;
         return item;
       }
       return null;
     }
+    // C5 legacy duplicate cleanup runs once per page load (flag resets on reload).
+    let _c5CleanupDone = false;
+
     function gearOptionsForSlot(slotType, className) {
       if (typeof GEAR_DATA === "undefined") return [];
-      return GEAR_DATA
+      const base = GEAR_DATA
         .filter(item => item.slot === slotType)
-        .filter(item => !className || !item.allowedClasses || item.allowedClasses.indexOf(className) !== -1)
+        .filter(item => !className || !item.allowedClasses || item.allowedClasses.indexOf(className) !== -1);
+
+      // C5 — Legacy duplicate cleanup (one-time silent pass, runs on first call only).
+      // If a user-added item's name exactly matches a canonical GEAR_DATA entry
+      // at the same slot, the item has since been added to the site. Drop the
+      // local copy so the canonical version is used instead.
+      // Case-sensitive match is intentional (v1 — acceptable for gear names).
+      if (!_c5CleanupDone) {
+        _c5CleanupDone = true;
+        const canonicalNames = new Set(base.map(i => i.name));
+        const userAll = getUserAddedGear();
+        const duplicates = userAll.filter(i => i.slot === slotType && canonicalNames.has(i.name));
+        if (duplicates.length > 0) {
+          const dupIds = new Set(duplicates.map(i => i.id));
+          saveUserAddedGear(userAll.filter(i => !dupIds.has(i.id)));
+        }
+      }
+
+      const userAdded = getUserAddedGear()
+        .filter(item => item.slot === slotType)
+        .filter(item => !className || !item.allowedClasses || item.allowedClasses.length === 0 || item.allowedClasses.indexOf(className) !== -1);
+      return base.concat(userAdded)
         .sort((a, b) => (b.item_level || 0) - (a.item_level || 0) || a.name.localeCompare(b.name));
+    }
+
+    /* ===== User-added gear (locally) =====
+       Players can add missing gear via the "+ Add Missing Item" button in the
+       gear picker. Items are stored in localStorage so they show up in the
+       player's build immediately. A report is also sent to the admin so the
+       item can be reviewed and added to the canonical gear.json for everyone.
+       User-added items are tagged with `__userAdded: true` and have negative
+       ids so they never collide with canonical gear. */
+    const USER_GEAR_KEY = "nwcb_user_added_gear_v1";
+    function getUserAddedGear() {
+      try {
+        const raw = localStorage.getItem(USER_GEAR_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveUserAddedGear(list) {
+      try { localStorage.setItem(USER_GEAR_KEY, JSON.stringify(list)); }
+      catch (e) { /* quota — ignore */ }
+    }
+    function addUserGear(item) {
+      const list = getUserAddedGear();
+      const minId = list.reduce((m, x) => Math.min(m, x.id || 0), 0);
+      item.id = (minId < 0 ? minId : 0) - 1;
+      item.__userAdded = true;
+      item.addedAt = new Date().toISOString();
+      list.push(item);
+      saveUserAddedGear(list);
+      return item;
+    }
+
+    /* ===== Add Missing Item modal =====
+       Lets a player add a gear piece that's not in our database. The item is
+       saved to localStorage so it shows up in the player's build immediately,
+       and a report is sent to the admin so it can be reviewed and merged into
+       the canonical gear.json for everyone. */
+    const AMI_STAT_OPTIONS = [
+      "Power", "Critical Strike", "Critical Severity", "Combat Advantage",
+      "Accuracy", "Defense", "Critical Avoidance", "Awareness",
+      "Outgoing Healing", "Incoming Healing", "Maximum Hit Points",
+      "Recharge Speed", "Forte", "Deflect", "Deflect Severity",
+      "Movement Speed", "Stamina Regeneration", "Damage",
+      "Action Point Gain", "Control Bonus", "Control Resist"
+    ];
+
+    function ensureAddMissingItemDOM() {
+      if (document.getElementById("ami-overlay")) return;
+      const overlay = document.createElement("div");
+      overlay.id = "ami-overlay";
+      overlay.className = "ami-overlay";
+      let statRows = "";
+      for (let i = 0; i < 6; i++) {
+        statRows += `
+          <div class="ami-stat-row">
+            <select class="ami-stat-name" data-row="${i}">
+              <option value="">— stat ${i + 1} —</option>
+              ${AMI_STAT_OPTIONS.map(s => `<option value="${s}">${s}</option>`).join("")}
+            </select>
+            <input type="number" class="ami-stat-value" data-row="${i}" placeholder="value" step="any">
+          </div>`;
+      }
+      // Class checkboxes — pulled from CLASSES_DATA so the list stays in sync
+      const classList = (typeof CLASSES_DATA !== "undefined" && Array.isArray(CLASSES_DATA))
+        ? CLASSES_DATA.map(c => c.name || c.class).filter(Boolean)
+        : ["Barbarian","Bard","Cleric","Fighter","Paladin","Ranger","Warlock","Wizard","Rogue"];
+      const classChecks = classList.map(cn => `
+        <label class="ami-class-check">
+          <input type="checkbox" class="ami-class" value="${cn}"> ${cn}
+        </label>`).join("");
+
+      overlay.innerHTML = `
+        <div class="ami-panel">
+          <div class="ami-header">
+            <h3>Add Missing Item</h3>
+            <button class="ami-close" id="ami-close" type="button">×</button>
+          </div>
+          <div class="ami-body">
+            <div class="ami-row">
+              <label>Slot</label>
+              <input type="text" id="ami-slot" readonly>
+            </div>
+            <div class="ami-row">
+              <label>Item Name <span class="req">*</span></label>
+              <input type="text" id="ami-name" placeholder="e.g. Doomcleaver" maxlength="120" required>
+            </div>
+            <div class="ami-row">
+              <label>Item Level <span class="req">*</span></label>
+              <input type="number" id="ami-il" min="0" step="1" placeholder="e.g. 4450" required>
+            </div>
+            <div class="ami-row">
+              <label>Stats (up to 6 — pick the stat, type the +value)</label>
+              ${statRows}
+            </div>
+            <div class="ami-row">
+              <label>Combined Rating <span class="req">*</span></label>
+              <input type="number" id="ami-cr" min="0" step="1" placeholder="e.g. 4005" required>
+            </div>
+            <div class="ami-row">
+              <label>Set Name (optional)</label>
+              <input type="text" id="ami-set" placeholder="e.g. Impending Doom" maxlength="80">
+            </div>
+            <div class="ami-row">
+              <label>In-Game Description / Equip Bonus (optional)</label>
+              <textarea id="ami-desc" rows="3" placeholder="Copy the equip-bonus text from the tooltip if any. E.g. 'When in combat with only one enemy, your Power is increased by 1500.'" maxlength="2000"></textarea>
+            </div>
+            <div class="ami-row">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;">
+                <label style="margin:0;">Allowed Classes <span style="color:var(--text-mute);font-weight:400;font-size:0.78rem;">(check every class that can equip this item)</span></label>
+                <button type="button" id="ami-class-all" class="ami-class-all-btn">All</button>
+              </div>
+              <div class="ami-class-grid">${classChecks}</div>
+            </div>
+            <div class="ami-row">
+              <label>Where you got it / anything else useful (optional)</label>
+              <textarea id="ami-notes" rows="2" placeholder="e.g. 'Drops from Master Spellplague Cavern.'" maxlength="600"></textarea>
+            </div>
+          </div>
+          <div class="ami-footer">
+            <button class="ami-save-btn" id="ami-save" type="button">Add to my build</button>
+            <div class="ami-msg" id="ami-msg"></div>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target.id === "ami-overlay") closeAddMissingItemModal();
+      });
+      document.getElementById("ami-close").addEventListener("click", closeAddMissingItemModal);
+      document.getElementById("ami-save").addEventListener("click", saveAddMissingItem);
+      document.getElementById("ami-class-all").addEventListener("click", () => {
+        const boxes = document.querySelectorAll(".ami-class");
+        const anyUnchecked = Array.from(boxes).some(cb => !cb.checked);
+        boxes.forEach(cb => { cb.checked = anyUnchecked; });
+        // Reflect state visually
+        const btn = document.getElementById("ami-class-all");
+        if (anyUnchecked) { btn.classList.add("active"); btn.textContent = "None"; }
+        else              { btn.classList.remove("active"); btn.textContent = "All"; }
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("ami-overlay").classList.contains("open")) {
+          closeAddMissingItemModal();
+        }
+      });
+    }
+
+    let _amiSlot = null;
+    let _amiClass = null;
+
+    function openAddMissingItemModal(slot, className) {
+      ensureAddMissingItemDOM();
+      _amiSlot = slot || "Unknown";
+      _amiClass = className || null;
+      // Reset form
+      document.getElementById("ami-slot").value = _amiSlot;
+      document.getElementById("ami-name").value = "";
+      document.getElementById("ami-il").value = "";
+      document.getElementById("ami-cr").value = "";
+      document.getElementById("ami-set").value = "";
+      document.getElementById("ami-desc").value = "";
+      document.getElementById("ami-notes").value = "";
+      document.querySelectorAll(".ami-stat-name").forEach(el => el.value = "");
+      document.querySelectorAll(".ami-stat-value").forEach(el => el.value = "");
+      // Reset class checkboxes — default-check the picker's current class so the
+      // player can confirm or expand from there
+      document.querySelectorAll(".ami-class").forEach(cb => {
+        cb.checked = !!(_amiClass && cb.value === _amiClass);
+      });
+      const allBtn = document.getElementById("ami-class-all");
+      if (allBtn) { allBtn.classList.remove("active"); allBtn.textContent = "All"; }
+      const msg = document.getElementById("ami-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+      const saveBtn = document.getElementById("ami-save");
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      document.getElementById("ami-overlay").classList.add("open");
+      setTimeout(() => document.getElementById("ami-name").focus(), 50);
+    }
+
+    function closeAddMissingItemModal() {
+      const o = document.getElementById("ami-overlay");
+      if (o) o.classList.remove("open");
+    }
+
+    async function saveAddMissingItem() {
+      const msg = document.getElementById("ami-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+
+      const name = document.getElementById("ami-name").value.trim();
+      const il   = parseInt(document.getElementById("ami-il").value, 10);
+      const crStr = document.getElementById("ami-cr").value;
+      const cr   = parseInt(crStr, 10);
+      const setName = document.getElementById("ami-set").value.trim();
+      const desc = document.getElementById("ami-desc").value.trim();
+      const notes = document.getElementById("ami-notes").value.trim();
+      const allowedClasses = Array.from(document.querySelectorAll(".ami-class"))
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+
+      if (name.length < 2) { msg.textContent = "Item name is required."; msg.className = "ami-msg error"; return; }
+      if (!il || il < 0)   { msg.textContent = "Item Level is required."; msg.className = "ami-msg error"; return; }
+      if (crStr === "" || isNaN(cr) || cr < 0) {
+        msg.textContent = "Combined Rating is required.";
+        msg.className = "ami-msg error"; return;
+      }
+
+      // Collect stats
+      const ratingStats = {};
+      document.querySelectorAll(".ami-stat-name").forEach((sel, i) => {
+        const sName = sel.value;
+        const sVal = parseFloat(document.querySelectorAll(".ami-stat-value")[i].value);
+        if (sName && !isNaN(sVal)) {
+          ratingStats[sName] = sVal;
+        }
+      });
+
+      const equipBonuses = [];
+      if (desc) {
+        equipBonuses.push({ type: "Equip", name: "", description: desc });
+      }
+
+      const item = {
+        name: name,
+        slot: _amiSlot,
+        item_level: il,
+        ratingStats: ratingStats,
+        combinedRating: cr,
+        percentStats: {},
+        abilityBonuses: {},
+        set: setName,
+        setSize: setName ? 2 : 0,
+        source: "User-added (pending review)",
+        allowedClasses: allowedClasses,
+        equipBonuses: equipBonuses,
+        notes: notes || "User-added — pending admin review."
+      };
+
+      // 1. Save locally — unconditional, outside try. The build always gets
+      // the item regardless of whether the report send succeeds.
+      const saved = addUserGear(item);
+
+      // Resolve the picker callback now (before the await) so we always have it.
+      const pickerOnPick = (_pickerState && _pickerState.dataType === "gear")
+        ? _pickerState.onPick
+        : null;
+
+      // 2. Submit a report via RPC (best-effort; never blocks local save).
+      const saveBtn = document.getElementById("ami-save");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Sending report…";
+
+      let reportId = null;
+
+      // Build a clean, human-readable report body — no dev jargon, no raw JSON.
+      // Admin reads this on the Reports page so it should look like a tooltip.
+      const reportLines = [];
+      reportLines.push("A player added this missing piece of gear:");
+      reportLines.push("");
+      reportLines.push("Name: " + name);
+      reportLines.push("Slot: " + _amiSlot);
+      reportLines.push("Item Level: " + il);
+      reportLines.push("Combined Rating: " + cr);
+      if (setName) reportLines.push("Set: " + setName);
+      if (allowedClasses.length) {
+        reportLines.push("Usable by: " + allowedClasses.join(", "));
+      }
+      if (Object.keys(ratingStats).length) {
+        reportLines.push("");
+        reportLines.push("Stats:");
+        for (const k of Object.keys(ratingStats)) {
+          reportLines.push("  • " + k + ": +" + ratingStats[k]);
+        }
+      }
+      if (desc) {
+        reportLines.push("");
+        reportLines.push("In-game description / equip bonus:");
+        reportLines.push(desc);
+      }
+      if (notes) {
+        reportLines.push("");
+        reportLines.push("Player notes:");
+        reportLines.push(notes);
+      }
+
+      const p_title       = "Missing item: " + name;
+      const p_description = reportLines.join("\n");
+      const p_category    = "Missing Item";
+      const p_image_url   = "";
+
+      if (window.supabase) {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        try {
+          const rpcRes = await sb.rpc("submit_missing_item_report", {
+            p_title, p_description, p_category, p_image_url
+          });
+          if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
+            reportId = rpcRes.data.report_id;
+          }
+        } catch (err) {
+          console.warn("AMI report send failed:", err);
+        }
+      }
+
+      // If we got a reportId back, stamp it onto the saved item so
+      // runReconciliation() can match it later.
+      if (reportId) {
+        saved.__reportId = reportId;
+        const list = getUserAddedGear();
+        const idx = list.findIndex(x => x.id === saved.id);
+        if (idx !== -1) { list[idx] = saved; saveUserAddedGear(list); }
+      }
+
+      // 3. Equip the item — outside try (always runs regardless of report outcome).
+      if (pickerOnPick) pickerOnPick(item);
+
+      // 4. Toast + clean up UI.
+      const toastMsg = reportId
+        ? "Added to your build! We'll review and add it to the site."
+        : "Added to your build — couldn't send report, please try again later.";
+      toast(toastMsg);
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      closeAddMissingItemModal();
+      if (typeof closePicker === "function") closePicker();
     }
     /* ===== Class base ability scores =====
        Pulled from CLASSES_DATA (sourced from NW Hub character editor).
@@ -7601,6 +8110,9 @@
           if (!items.length) return;
           openPicker({
             dataType: "gear",
+            slot: slotData.slot,
+            slotLabel: slotLabel,
+            className: state.class,
             title: `${slotLabel} — ${items.length} items available`,
             items,
             render: renderGearItem,
@@ -10128,6 +10640,34 @@
       toast._to = setTimeout(() => t.classList.remove("show"), 1800);
     }
 
+    // Long-form toast with a × close button. Use when the message is
+    // important enough that the player needs time to read it (e.g.
+    // reconciliation results that include admin notes).
+    function toastSticky(msg, durationMs) {
+      const t = document.getElementById("toast");
+      const dur = typeof durationMs === "number" ? durationMs : 8000;
+      // Build inner HTML: message + close button
+      t.innerHTML = "";
+      const span = document.createElement("span");
+      span.textContent = msg;
+      const btn = document.createElement("button");
+      btn.textContent = "×";
+      btn.setAttribute("aria-label", "Dismiss");
+      btn.style.cssText = "background:transparent;border:none;color:inherit;cursor:pointer;font-size:1.25rem;line-height:1;margin-left:0.6rem;padding:0 0.2rem;";
+      const dismiss = () => {
+        t.classList.remove("show");
+        // Reset back to plain-text mode so the regular toast() works later
+        clearTimeout(toast._to);
+        setTimeout(() => { t.innerHTML = ""; }, 250);
+      };
+      btn.addEventListener("click", dismiss);
+      t.appendChild(span);
+      t.appendChild(btn);
+      t.classList.add("show");
+      clearTimeout(toast._to);
+      toast._to = setTimeout(dismiss, dur);
+    }
+
     /* ===== Step nav ===== */
     function gotoStep(n) {
       state.step = n;
@@ -10571,6 +11111,374 @@
       }
       for (var k in MAP) if (Object.prototype.hasOwnProperty.call(MAP, k)) wrap(k, MAP[k]);
     })();
+
+    // =========================================================================
+    // findGearById — looks up a canonical gear entry by its numeric id.
+    // Checks GEAR_DATA first, then user-added gear. Used by runReconciliation
+    // to swap a user-added item for its canonical counterpart after it's merged.
+    // =========================================================================
+    function findGearById(id) {
+      if (typeof GEAR_DATA !== "undefined") {
+        for (const item of GEAR_DATA) {
+          if (item.id === id) return item;
+        }
+      }
+      const userGear = getUserAddedGear();
+      for (const item of userGear) {
+        if (item.id === id) return item;
+      }
+      return null;
+    }
+
+    // =========================================================================
+    // runReconciliation — called once on page load when supabase is available.
+    //
+    // Collects all pending report ids from:
+    //   a) user-added gear items (.__reportId)
+    //   b) data-correction overrides (.reportId field)
+    //
+    // Fetches their current status from reports_public (cached 10 min in
+    // sessionStorage to avoid hammering Supabase on every page load).
+    //
+    // Dispatches each row to a handler:
+    //   Fixed + resolved_gear_id set → swap user-added item for canonical gear
+    //     (slot guard: only update state.gear if the user still has the old item
+    //     equipped in that slot), then drop the user-added entry.
+    //   Won't Fix → drop user-added entry / override.
+    //   Corrections with reportId: Fixed → drop override (source is now correct),
+    //     Won't Fix → drop override + surface admin note.
+    //   Active / no resolved_gear_id → keep local, no action.
+    //
+    // After processing, calls rerenderAll() and shows a toast for any changes.
+    // =========================================================================
+    async function runReconciliation() {
+      if (!window.supabase) return;
+
+      // 1. Collect all pending report ids.
+      const userGear = getUserAddedGear();
+      const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
+        ? NWCBDataCorrections.getAllOverrides()
+        : {};
+
+      const idSet = new Set();
+      // From user-added gear
+      for (const item of userGear) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      // From data-correction overrides
+      for (const key of Object.keys(overrides)) {
+        const entry = overrides[key];
+        if (entry && entry.reportId) idSet.add(entry.reportId);
+      }
+
+      if (idSet.size === 0) return; // Nothing to check.
+
+      const ids = Array.from(idSet);
+
+      // 2. Check sessionStorage cache (10-minute TTL).
+      const CACHE_KEY = "nwcb_recon_cache";
+      const TEN_MIN = 10 * 60 * 1000;
+      let rows = null;
+      try {
+        const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || "null");
+        if (cached && cached.cachedAt && (Date.now() - cached.cachedAt) < TEN_MIN) {
+          rows = cached.rows;
+        }
+      } catch (e) { /* ignore */ }
+
+      // 3. Fetch from Supabase if cache is stale or missing.
+      if (!rows) {
+        try {
+          const sb = window.supabase.createClient(
+            "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+            "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+          );
+          const result = await sb
+            .from("reports_public")
+            .select("id,status,resolved_gear_id,admin_notes")
+            .in("id", ids);
+          if (result.error) {
+            console.warn("runReconciliation: fetch failed", result.error);
+            return;
+          }
+          rows = result.data || [];
+          try {
+            // Cache covers the ID set at fetch time. If new submissions appear within the
+            // same page-load (rare — user typically reloads between submissions), they're
+            // deferred to next reload. The contributions modal force-refreshes the cache,
+            // so the player always sees fresh status when they open it.
+            sessionStorage.setItem(CACHE_KEY, JSON.stringify({ cachedAt: Date.now(), rows }));
+          } catch (e) { /* quota — ignore */ }
+        } catch (e) {
+          console.warn("runReconciliation: network error", e);
+          return;
+        }
+      }
+
+      // 4. Process each row.
+      const toastItems = [];
+      let anyChange = false;
+
+      for (const row of rows) {
+        const { id: reportId, status, resolved_gear_id, admin_notes } = row;
+
+        if (status === "Fixed" && resolved_gear_id) {
+          // --- User-added gear: swap for canonical ---
+          const userList = getUserAddedGear();
+          const itemIdx = userList.findIndex(x => x.__reportId === reportId);
+          if (itemIdx !== -1) {
+            const userItem = userList[itemIdx];
+            const canonical = findGearById(resolved_gear_id);
+            if (canonical) {
+              // C3 slot guard: only update state.gear if the player still has the
+              // old user-added item equipped in that slot.
+              if (state.gear[userItem.slot] === userItem.name) {
+                state.gear[userItem.slot] = canonical.name;
+              }
+              toastItems.push(`"${userItem.name}" is now in the site database — your build has been updated.`);
+            } else {
+              // Canonical item not in local data yet (data JS not rebuilt) — keep
+              // the user-added entry until the next data refresh.
+              toastItems.push(`"${userItem.name}" was approved but data hasn't refreshed yet — reload the page to update.`);
+            }
+            // Drop the user-added entry regardless (canonical takes over or will on reload).
+            userList.splice(itemIdx, 1);
+            saveUserAddedGear(userList);
+            anyChange = true;
+          }
+
+          // --- Data-correction overrides: drop (source is now correct) ---
+          for (const key of Object.keys(overrides)) {
+            const entry = overrides[key];
+            if (entry && entry.reportId === reportId) {
+              if (window.NWCBDataCorrections && NWCBDataCorrections.setOverride) {
+                NWCBDataCorrections.setOverride(key, null);
+              }
+              anyChange = true;
+            }
+          }
+
+        } else if (status === "Won't Fix") {
+          // --- User-added gear: drop and notify ---
+          const userList = getUserAddedGear();
+          const itemIdx = userList.findIndex(x => x.__reportId === reportId);
+          if (itemIdx !== -1) {
+            const userItem = userList[itemIdx];
+            if (state.gear[userItem.slot] === userItem.name) {
+              state.gear[userItem.slot] = "";
+            }
+            const noteStr = admin_notes ? ` (${admin_notes})` : "";
+            toastItems.push(`"${userItem.name}" won't be added to the site${noteStr}.`);
+            userList.splice(itemIdx, 1);
+            saveUserAddedGear(userList);
+            anyChange = true;
+          }
+
+          // --- Data-correction overrides: drop and notify ---
+          for (const key of Object.keys(overrides)) {
+            const entry = overrides[key];
+            if (entry && entry.reportId === reportId) {
+              const fieldLabel = key.split(":").slice(2).join(":") || key;
+              const noteStr = admin_notes ? ` (${admin_notes})` : "";
+              toastItems.push(`Your correction to "${fieldLabel}" was declined${noteStr}.`);
+              if (window.NWCBDataCorrections && NWCBDataCorrections.setOverride) {
+                NWCBDataCorrections.setOverride(key, null);
+              }
+              anyChange = true;
+            }
+          }
+        }
+        // Active statuses (New, Confirmed, In Progress) or Fixed without
+        // resolved_gear_id: keep local, no action needed.
+      }
+
+      // 5. Re-render and toast if anything changed.
+      if (anyChange) rerenderAll();
+      if (toastItems.length > 0) {
+        // Sticky toast so the player can actually read the message — these
+        // include admin notes and resolved/rejected status, not just a quick ack.
+        setTimeout(() => toastSticky(toastItems.join(" · "), 8000), 300);
+      }
+    }
+
+    // Wire runReconciliation into page init (after rerenderAll on line 11021).
+    if (window.supabase) runReconciliation();
+
+    // =========================================================================
+    // openContributionsModal (C4) — shows pending + resolved submissions.
+    // Force-refreshes the cache on open so the player always sees current status.
+    // =========================================================================
+    async function openContributionsModal() {
+      const overlay = document.getElementById("contributions-overlay");
+      const list    = document.getElementById("contributions-list");
+      overlay.classList.add("open");
+      list.innerHTML = '<p style="color:var(--muted);">Loading…</p>';
+
+      // Collect all pending report ids.
+      const userGear  = getUserAddedGear();
+      const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
+        ? NWCBDataCorrections.getAllOverrides()
+        : {};
+
+      const idSet = new Set();
+      for (const item of userGear) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      for (const key of Object.keys(overrides)) {
+        const entry = overrides[key];
+        if (entry && entry.reportId) idSet.add(entry.reportId);
+      }
+
+      if (idSet.size === 0) {
+        list.innerHTML = '<p style="color:var(--muted);">You have no submissions on record in this browser.</p>';
+        return;
+      }
+
+      const ids = Array.from(idSet);
+
+      // Force-refresh the cache (bypass 10-min TTL on modal open).
+      let rows = [];
+      if (window.supabase) {
+        try {
+          const sb = window.supabase.createClient(
+            "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+            "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+          );
+          const result = await sb
+            .from("reports_public")
+            .select("id,status,resolved_gear_id,admin_notes,created_at,title")
+            .in("id", ids);
+          if (!result.error) {
+            rows = result.data || [];
+            try {
+              sessionStorage.setItem("nwcb_recon_cache", JSON.stringify({ cachedAt: Date.now(), rows }));
+            } catch (e) { /* quota */ }
+          }
+        } catch (e) { /* network error */ }
+      }
+
+      // Build a lookup from reportId → row.
+      const rowById = {};
+      for (const r of rows) rowById[r.id] = r;
+
+      // Separate entries into pending and resolved.
+      const pending  = [];
+      const resolved = [];
+
+      // User-added gear
+      for (const item of userGear) {
+        if (!item.__reportId) continue;
+        const row = rowById[item.__reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        const entry = {
+          kind: "item",
+          name: item.name,
+          slot: item.slot,
+          reportId: item.__reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: item.addedAt || null
+        };
+        if (isActive) pending.push(entry);
+        else resolved.push(entry);
+      }
+
+      // Data-correction overrides
+      for (const key of Object.keys(overrides)) {
+        const entry = overrides[key];
+        if (!entry || !entry.reportId) continue;
+        const row = rowById[entry.reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        // Parse key: "type:id:field"
+        const parts = key.split(":");
+        const fieldLabel = parts.slice(2).join(":") || key;
+        const itemId = parts[1] || "?";
+        const corrEntry = {
+          kind: "correction",
+          key,
+          fieldLabel,
+          itemId,
+          oldValue: entry.originalSourceValue,
+          newValue: entry.value,
+          reportId: entry.reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: entry.savedAt || null
+        };
+        if (isActive) pending.push(corrEntry);
+        else resolved.push(corrEntry);
+      }
+
+      // Render
+      const lines = [];
+
+      function statusBadge(s) {
+        const colours = { "New": "#888", "Confirmed": "#4a9", "In Progress": "#f90",
+                          "Fixed": "#4a9", "Won't Fix": "#c44" };
+        const c = colours[s] || "#888";
+        return `<span style="font-size:0.78em;background:${c};color:#fff;border-radius:3px;padding:1px 6px;">${s}</span>`;
+      }
+
+      if (pending.length > 0) {
+        lines.push('<h4 style="margin:0 0 0.5rem;color:var(--amber);">Pending</h4>');
+        for (const e of pending) {
+          if (e.kind === "item") {
+            const date = e.submittedAt ? new Date(e.submittedAt).toLocaleDateString() : "?";
+            lines.push(`<div style="margin-bottom:0.6rem;padding:0.5rem;background:var(--surface2);border-radius:6px;">
+              <strong>${e.name}</strong> <span style="color:var(--muted);font-size:0.85em;">(${e.slot})</span>
+              ${statusBadge(e.status)}
+              <br><span style="color:var(--muted);font-size:0.8em;">Submitted: ${date} &middot; Report #${e.reportId}</span>
+            </div>`);
+          } else {
+            const date = e.submittedAt ? new Date(e.submittedAt).toLocaleDateString() : "?";
+            lines.push(`<div style="margin-bottom:0.6rem;padding:0.5rem;background:var(--surface2);border-radius:6px;">
+              <span style="color:var(--amber);">&#9998;</span> Edited <strong>${e.fieldLabel}</strong>
+              &mdash; old: ${e.oldValue ?? "?"}, new: ${e.newValue ?? "?"}
+              ${statusBadge(e.status)}
+              <br><span style="color:var(--muted);font-size:0.8em;">Submitted: ${date} &middot; Report #${e.reportId}</span>
+            </div>`);
+          }
+        }
+      }
+
+      if (resolved.length > 0) {
+        lines.push('<h4 style="margin:1rem 0 0.5rem;color:var(--muted);">Resolved</h4>');
+        for (const e of resolved) {
+          const note = e.adminNote ? `<br><em style="color:var(--muted);font-size:0.85em;">${e.adminNote}</em>` : "";
+          if (e.kind === "item") {
+            lines.push(`<div style="margin-bottom:0.6rem;padding:0.5rem;background:var(--surface2);border-radius:6px;opacity:0.75;">
+              <strong>${e.name}</strong> <span style="color:var(--muted);font-size:0.85em;">(${e.slot})</span>
+              ${statusBadge(e.status)}${note}
+            </div>`);
+          } else {
+            lines.push(`<div style="margin-bottom:0.6rem;padding:0.5rem;background:var(--surface2);border-radius:6px;opacity:0.75;">
+              <span style="color:var(--amber);">&#9998;</span> Edited <strong>${e.fieldLabel}</strong>
+              ${statusBadge(e.status)}${note}
+            </div>`);
+          }
+        }
+      }
+
+      if (lines.length === 0) {
+        lines.push('<p style="color:var(--muted);">No submission records found. They may have been cleared.</p>');
+      }
+
+      list.innerHTML = lines.join("\n");
+    }
+
+    // Close contributions overlay on backdrop click + Escape.
+    document.getElementById("contributions-overlay").addEventListener("click", (e) => {
+      if (e.target.id === "contributions-overlay") {
+        document.getElementById("contributions-overlay").classList.remove("open");
+      }
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && document.getElementById("contributions-overlay").classList.contains("open")) {
+        document.getElementById("contributions-overlay").classList.remove("open");
+      }
+    });
 
 </script>
 </body>

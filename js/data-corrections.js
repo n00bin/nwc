@@ -194,12 +194,26 @@
     }).then(function (res) {
       if (res && res.error) return { ok: false, error: res.error.message || String(res.error) };
       var data = (res && res.data) || {};
-      return {
+      var result = {
         ok:        true,
         action:    data.action,
         report_id: data.report_id,
         upvotes:   data.upvotes
       };
+      // When the RPC returns a report_id, stamp it onto the stored override entry
+      // so runReconciliation() can later match this correction against its report.
+      // setOverride is called with (key, existingValue, existingOriginalSourceValue,
+      // reportId) — but we only know the key here, not the stored value. Passing
+      // undefined for value/originalSourceValue triggers the deletion path, so
+      // we guard: only call when there IS a stored entry to update.
+      if (result.report_id && opts.type && opts.id != null && opts.field) {
+        var overrideKey = opts.type + ":" + opts.id + ":" + opts.field;
+        var existing = getAllOverrides()[overrideKey];
+        if (existing) {
+          setOverride(overrideKey, existing.value, existing.originalSourceValue, result.report_id);
+        }
+      }
+      return result;
     }).catch(function (err) {
       return { ok: false, error: (err && err.message) || String(err) };
     });
@@ -227,7 +241,13 @@
     } catch (e) { return {}; }
   }
 
-  function setOverride(key, value, originalSourceValue) {
+  // setOverride(key, value, originalSourceValue, reportId?)
+  //   reportId (optional) — the Supabase report id returned by submit_missing_item_report
+  //   or submit_data_correction, stored so runReconciliation() can match this
+  //   override against its server-side report when checking for Fixed/Won't Fix status.
+  //   Passing reportId on an existing entry updates it in-place; existing entries
+  //   without a reportId are unaffected (backward compatible — 3-arg callers work fine).
+  function setOverride(key, value, originalSourceValue, reportId) {
     var all = getAllOverrides();
     if (value === null || value === undefined) {
       delete all[key];
@@ -243,6 +263,12 @@
         entry.originalSourceValue = existing.originalSourceValue;
       } else if (originalSourceValue !== undefined && originalSourceValue !== null) {
         entry.originalSourceValue = originalSourceValue;
+      }
+      // Preserve an existing reportId if the caller doesn't supply a new one.
+      if (reportId !== undefined && reportId !== null) {
+        entry.reportId = reportId;
+      } else if (existing && existing.reportId !== undefined) {
+        entry.reportId = existing.reportId;
       }
       all[key] = entry;
     }
