@@ -1027,6 +1027,25 @@
     .ami-class-check input[type="checkbox"] {
       width: 14px; height: 14px; cursor: pointer;
     }
+    .ami-class-all-btn {
+      background: transparent;
+      border: 1px solid var(--border, #2a2f37);
+      color: var(--text-bright, #fff);
+      border-radius: 4px;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .ami-class-all-btn:hover {
+      background: rgba(240, 136, 62, 0.1);
+      border-color: var(--amber, #f0883e);
+    }
+    .ami-class-all-btn.active {
+      background: var(--amber, #f0883e);
+      color: #000;
+      border-color: var(--amber, #f0883e);
+    }
     /* Persistent corrections callout shown in the hero. Catches new
        users before they start building so they know the ✎ pattern
        exists on every picker row. */
@@ -5310,12 +5329,12 @@
               <input type="number" id="ami-il" min="0" step="1" placeholder="e.g. 4450" required>
             </div>
             <div class="ami-row">
-              <label>Combined Rating <span class="req">*</span></label>
-              <input type="number" id="ami-cr" min="0" step="1" placeholder="e.g. 4005" required>
-            </div>
-            <div class="ami-row">
               <label>Stats (up to 6 — pick the stat, type the +value)</label>
               ${statRows}
+            </div>
+            <div class="ami-row">
+              <label>Combined Rating <span class="req">*</span></label>
+              <input type="number" id="ami-cr" min="0" step="1" placeholder="e.g. 4005" required>
             </div>
             <div class="ami-row">
               <label>Set Name (optional)</label>
@@ -5326,7 +5345,10 @@
               <textarea id="ami-desc" rows="3" placeholder="Copy the equip-bonus text from the tooltip if any. E.g. 'When in combat with only one enemy, your Power is increased by 1500.'" maxlength="2000"></textarea>
             </div>
             <div class="ami-row">
-              <label>Allowed Classes <span style="color:var(--text-mute);font-weight:400;font-size:0.78rem;">(check every class that can equip this item)</span></label>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;">
+                <label style="margin:0;">Allowed Classes <span style="color:var(--text-mute);font-weight:400;font-size:0.78rem;">(check every class that can equip this item)</span></label>
+                <button type="button" id="ami-class-all" class="ami-class-all-btn">All</button>
+              </div>
               <div class="ami-class-grid">${classChecks}</div>
             </div>
             <div class="ami-row">
@@ -5346,6 +5368,15 @@
       });
       document.getElementById("ami-close").addEventListener("click", closeAddMissingItemModal);
       document.getElementById("ami-save").addEventListener("click", saveAddMissingItem);
+      document.getElementById("ami-class-all").addEventListener("click", () => {
+        const boxes = document.querySelectorAll(".ami-class");
+        const anyUnchecked = Array.from(boxes).some(cb => !cb.checked);
+        boxes.forEach(cb => { cb.checked = anyUnchecked; });
+        // Reflect state visually
+        const btn = document.getElementById("ami-class-all");
+        if (anyUnchecked) { btn.classList.add("active"); btn.textContent = "None"; }
+        else              { btn.classList.remove("active"); btn.textContent = "All"; }
+      });
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && document.getElementById("ami-overlay").classList.contains("open")) {
           closeAddMissingItemModal();
@@ -5375,6 +5406,8 @@
       document.querySelectorAll(".ami-class").forEach(cb => {
         cb.checked = !!(_amiClass && cb.value === _amiClass);
       });
+      const allBtn = document.getElementById("ami-class-all");
+      if (allBtn) { allBtn.classList.remove("active"); allBtn.textContent = "All"; }
       const msg = document.getElementById("ami-msg");
       msg.textContent = ""; msg.className = "ami-msg";
       const saveBtn = document.getElementById("ami-save");
@@ -5445,6 +5478,12 @@
       // 1. Save locally so it shows in the player's build
       const saved = addUserGear(item);
 
+      // Equip it to the slot the player was filling, so "Add to my build"
+      // actually equips the item rather than just adding it to the list
+      const pickerOnPick = (_pickerState && _pickerState.dataType === "gear")
+        ? _pickerState.onPick
+        : null;
+
       // 2. Submit a report to the admin (best-effort; don't block local save)
       const saveBtn = document.getElementById("ami-save");
       saveBtn.disabled = true;
@@ -5494,26 +5533,36 @@
           });
         }
       } catch (e) {
-        // Report send failed — the local save still succeeded. Tell the player.
+        // Report send failed — the local save still succeeded. Tell the player,
+        // then still equip the item so their build benefits.
         msg.textContent = "Added to your build (couldn't send report — please try again later).";
         msg.className = "ami-msg success";
         saveBtn.disabled = false;
         saveBtn.textContent = "Add to my build";
-        // Refresh picker so the new item is visible
-        if (typeof renderPickerList === "function") renderPickerList("");
-        setTimeout(closeAddMissingItemModal, 1800);
+        setTimeout(() => {
+          closeAddMissingItemModal();
+          if (pickerOnPick) {
+            try { pickerOnPick(saved); } catch (err) { console.error(err); }
+            if (typeof closePicker === "function") closePicker();
+          }
+        }, 1800);
         return;
       }
 
       msg.textContent = "Added to your build! Sent to the team for review.";
       msg.className = "ami-msg success";
       saveBtn.textContent = "Added!";
-      // Refresh picker so the new item shows up
-      if (_pickerState && _pickerState.dataType === "gear" && _pickerState.slot) {
-        _pickerState.items = gearOptionsForSlot(_pickerState.slot, _pickerState.className);
-        renderPickerList(document.getElementById("picker-search").value || "");
-      }
-      setTimeout(closeAddMissingItemModal, 1500);
+
+      // Equip the new item to the slot the player was filling, then close
+      // both the modal and the picker so they see the equipped item right away
+      setTimeout(() => {
+        closeAddMissingItemModal();
+        if (pickerOnPick) {
+          try { pickerOnPick(saved); } catch (e) { console.error(e); }
+          // Close the picker too — same behavior as picking an existing item
+          if (typeof closePicker === "function") closePicker();
+        }
+      }, 1200);
     }
     /* ===== Class base ability scores =====
        Pulled from CLASSES_DATA (sourced from NW Hub character editor).
