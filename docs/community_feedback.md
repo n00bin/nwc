@@ -6,6 +6,22 @@ A log of community-suggested features, organized by where they came from. Separa
 
 ## Toon Forge — Roadmap signal
 
+### Extend "+ Add Missing Item" to artifacts, companions, mounts, etc.
+**Source:** Internal — n00b, 2026-05-26 (the day AMI shipped for gear)
+
+**Status:** Deferred. The Add Missing Item modal currently exists only on the gear picker. The reconciliation backbone (Supabase RPCs, `__reportId` linkage, "Your Submissions" modal, intake-script auto-linking) is generic — extending to other types is mostly schema-specific form work, not re-architect.
+
+**Priority ranking (when this gets picked up):**
+1. **Artifacts** — simplest schema (name, IL, on-use power, equip power, stats); new ones each module. ~1-2 hr build.
+2. **Companions** — more fields (slot, rarity, summoned/active stats, enhancement). High community value. ~3-4 hr.
+3. **Mounts** — most complex (combat power, equip power, insignia slots). ~3-4 hr.
+4. **Insignias** — tied to mount set releases.
+5. **Mount Collars** — small catalog, rare additions.
+
+Lower-priority types (probably skip unless requested): enchants, boons, buffs/consumables — small catalogs, change rarely.
+
+**Trigger to revisit:** when a community comment or report asks "can I add a missing X?" where X is one of the types above. Start with whatever was asked.
+
 ### "Best Build" min/max optimizer
 **Source:** YouTube comment by @MarkLewis (27 subs), 2026-05-25
 
