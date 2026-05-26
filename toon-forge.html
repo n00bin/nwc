@@ -1010,6 +1010,23 @@
     .ami-msg { font-size: 0.85rem; }
     .ami-msg.success { color: var(--stat-positive, #4cbc7a); }
     .ami-msg.error   { color: var(--stat-negative, #d96565); }
+    .ami-class-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 0.25rem 0.5rem;
+      padding: 0.4rem 0.5rem;
+      background: var(--bg, #11141a);
+      border: 1px solid var(--border, #2a2f37);
+      border-radius: 4px;
+    }
+    .ami-class-check {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.88rem; color: var(--text-bright, #fff);
+      cursor: pointer;
+    }
+    .ami-class-check input[type="checkbox"] {
+      width: 14px; height: 14px; cursor: pointer;
+    }
     /* Persistent corrections callout shown in the hero. Catches new
        users before they start building so they know the ✎ pattern
        exists on every picker row. */
@@ -5264,6 +5281,15 @@
             <input type="number" class="ami-stat-value" data-row="${i}" placeholder="value" step="any">
           </div>`;
       }
+      // Class checkboxes — pulled from CLASSES_DATA so the list stays in sync
+      const classList = (typeof CLASSES_DATA !== "undefined" && Array.isArray(CLASSES_DATA))
+        ? CLASSES_DATA.map(c => c.name || c.class).filter(Boolean)
+        : ["Barbarian","Bard","Cleric","Fighter","Paladin","Ranger","Warlock","Wizard","Rogue"];
+      const classChecks = classList.map(cn => `
+        <label class="ami-class-check">
+          <input type="checkbox" class="ami-class" value="${cn}"> ${cn}
+        </label>`).join("");
+
       overlay.innerHTML = `
         <div class="ami-panel">
           <div class="ami-header">
@@ -5284,24 +5310,28 @@
               <input type="number" id="ami-il" min="0" step="1" placeholder="e.g. 4450" required>
             </div>
             <div class="ami-row">
-              <label>Combined Rating <span style="color:var(--text-mute);font-weight:400;font-size:0.78rem;">(optional — leave blank to auto-sum stats)</span></label>
-              <input type="number" id="ami-cr" min="0" step="1" placeholder="auto">
-            </div>
-            <div class="ami-row">
-              <label>Set Name (optional)</label>
-              <input type="text" id="ami-set" placeholder="e.g. Impending Doom" maxlength="80">
+              <label>Combined Rating <span class="req">*</span></label>
+              <input type="number" id="ami-cr" min="0" step="1" placeholder="e.g. 4005" required>
             </div>
             <div class="ami-row">
               <label>Stats (up to 6 — pick the stat, type the +value)</label>
               ${statRows}
             </div>
             <div class="ami-row">
+              <label>Set Name (optional)</label>
+              <input type="text" id="ami-set" placeholder="e.g. Impending Doom" maxlength="80">
+            </div>
+            <div class="ami-row">
               <label>In-Game Description / Equip Bonus (optional)</label>
               <textarea id="ami-desc" rows="3" placeholder="Copy the equip-bonus text from the tooltip if any. E.g. 'When in combat with only one enemy, your Power is increased by 1500.'" maxlength="2000"></textarea>
             </div>
             <div class="ami-row">
-              <label>Where you got it / class restrictions / anything else useful (optional)</label>
-              <textarea id="ami-notes" rows="2" placeholder="e.g. 'Drops from Master Spellplague Cavern, Barbarian only.'" maxlength="600"></textarea>
+              <label>Allowed Classes <span style="color:var(--text-mute);font-weight:400;font-size:0.78rem;">(check every class that can equip this item)</span></label>
+              <div class="ami-class-grid">${classChecks}</div>
+            </div>
+            <div class="ami-row">
+              <label>Where you got it / anything else useful (optional)</label>
+              <textarea id="ami-notes" rows="2" placeholder="e.g. 'Drops from Master Spellplague Cavern.'" maxlength="600"></textarea>
             </div>
           </div>
           <div class="ami-footer">
@@ -5340,6 +5370,11 @@
       document.getElementById("ami-notes").value = "";
       document.querySelectorAll(".ami-stat-name").forEach(el => el.value = "");
       document.querySelectorAll(".ami-stat-value").forEach(el => el.value = "");
+      // Reset class checkboxes — default-check the picker's current class so the
+      // player can confirm or expand from there
+      document.querySelectorAll(".ami-class").forEach(cb => {
+        cb.checked = !!(_amiClass && cb.value === _amiClass);
+      });
       const msg = document.getElementById("ami-msg");
       msg.textContent = ""; msg.className = "ami-msg";
       const saveBtn = document.getElementById("ami-save");
@@ -5360,28 +5395,31 @@
 
       const name = document.getElementById("ami-name").value.trim();
       const il   = parseInt(document.getElementById("ami-il").value, 10);
-      const crIn = document.getElementById("ami-cr").value;
+      const crStr = document.getElementById("ami-cr").value;
+      const cr   = parseInt(crStr, 10);
       const setName = document.getElementById("ami-set").value.trim();
       const desc = document.getElementById("ami-desc").value.trim();
       const notes = document.getElementById("ami-notes").value.trim();
+      const allowedClasses = Array.from(document.querySelectorAll(".ami-class"))
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
 
       if (name.length < 2) { msg.textContent = "Item name is required."; msg.className = "ami-msg error"; return; }
       if (!il || il < 0)   { msg.textContent = "Item Level is required."; msg.className = "ami-msg error"; return; }
+      if (crStr === "" || isNaN(cr) || cr < 0) {
+        msg.textContent = "Combined Rating is required.";
+        msg.className = "ami-msg error"; return;
+      }
 
       // Collect stats
       const ratingStats = {};
-      let statSum = 0;
       document.querySelectorAll(".ami-stat-name").forEach((sel, i) => {
         const sName = sel.value;
         const sVal = parseFloat(document.querySelectorAll(".ami-stat-value")[i].value);
         if (sName && !isNaN(sVal)) {
           ratingStats[sName] = sVal;
-          statSum += sVal;
         }
       });
-      const combinedRating = (crIn === "" || isNaN(parseInt(crIn, 10)))
-        ? Math.round(statSum)
-        : parseInt(crIn, 10);
 
       const equipBonuses = [];
       if (desc) {
@@ -5393,13 +5431,13 @@
         slot: _amiSlot,
         item_level: il,
         ratingStats: ratingStats,
-        combinedRating: combinedRating,
+        combinedRating: cr,
         percentStats: {},
         abilityBonuses: {},
         set: setName,
         setSize: setName ? 2 : 0,
         source: "User-added (pending review)",
-        allowedClasses: _amiClass ? [_amiClass] : [],
+        allowedClasses: allowedClasses,
         equipBonuses: equipBonuses,
         notes: notes || "User-added — pending admin review."
       };
@@ -5413,10 +5451,11 @@
       saveBtn.textContent = "Sending report…";
       try {
         const reportPayload = {
-          name, slot: _amiSlot, item_level: il, combinedRating,
+          name, slot: _amiSlot, item_level: il, combinedRating: cr,
           set: setName, ratingStats, equipBonus: desc, notes,
+          allowedClasses: allowedClasses,
           submittedFrom: "Toon Forge — Add Missing Item",
-          requestedClass: _amiClass || null
+          pickerClassContext: _amiClass || null
         };
         const reportLines = [
           "Missing item submitted by a player from the Toon Forge picker.",
@@ -5424,9 +5463,10 @@
           "Item: " + name,
           "Slot: " + _amiSlot,
           "Item Level: " + il,
-          "Combined Rating: " + combinedRating
+          "Combined Rating: " + cr
         ];
         if (setName) reportLines.push("Set: " + setName);
+        if (allowedClasses.length) reportLines.push("Allowed Classes: " + allowedClasses.join(", "));
         if (_amiClass) reportLines.push("Picker class context: " + _amiClass);
         if (Object.keys(ratingStats).length) {
           reportLines.push("");
