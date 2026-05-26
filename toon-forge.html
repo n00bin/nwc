@@ -5217,11 +5217,21 @@
     }
 
     function findGearByName(name, slotType) {
-      if (!name || typeof GEAR_DATA === "undefined") return null;
+      if (!name) return null;
       // When a slot is supplied, disambiguate against it (same-name items
       // can exist across slots). When omitted, fall back to first-by-name —
       // used by the Details modal which only knows the name.
-      for (const item of GEAR_DATA) {
+      if (typeof GEAR_DATA !== "undefined") {
+        for (const item of GEAR_DATA) {
+          if (item.name !== name) continue;
+          if (slotType && item.slot !== slotType) continue;
+          return item;
+        }
+      }
+      // Fall back to user-added gear so the engine can compute stats for
+      // items the player added via the "+ Add Missing Item" flow.
+      const userGear = (typeof getUserAddedGear === "function") ? getUserAddedGear() : [];
+      for (const item of userGear) {
         if (item.name !== name) continue;
         if (slotType && item.slot !== slotType) continue;
         return item;
