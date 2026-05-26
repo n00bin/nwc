@@ -11253,8 +11253,9 @@
           for (const key of Object.keys(overrides)) {
             const entry = overrides[key];
             if (entry && entry.reportId === reportId) {
+              const fieldLabel = key.split(":").slice(2).join(":") || key;
               const noteStr = admin_notes ? ` (${admin_notes})` : "";
-              toastItems.push(`A data correction was declined${noteStr}.`);
+              toastItems.push(`Your correction to "${fieldLabel}" was declined${noteStr}.`);
               if (window.NWCBDataCorrections && NWCBDataCorrections.setOverride) {
                 NWCBDataCorrections.setOverride(key, null);
               }
