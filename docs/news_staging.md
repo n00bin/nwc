@@ -7,7 +7,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ## Week of 2026-05-26
 
 ### Bug Fixes
-- **Stable Planner — bonus descriptions now visible:** When you add an insignia bonus to a loadout, hovering over the bonus name now shows the full effect text (what stat it gives, when it triggers, stacking rules). Previously only the bonus name was shown, so you had to remember what each one did.
+- **Stable Planner — bonus descriptions now visible:** When you add an insignia bonus to a loadout, the planner now shows the full effect text directly under the bonus name (what stat it gives, when it triggers, stacking rules). Always visible — works on desktop and mobile. Previously only the bonus name was shown, so you had to remember what each one did.
 
 ### Data Additions
 - **Ranger weapons batch (2026-05-12 intake):** Added 27 new Ranger weapons across artifact and Masterwork sets — Pilgrim (Eyepiercer, Exalted Eyepiercer), Pioneer Alqaws, Primal Tlahuitolli, Tyrant (Woundsender), Trailblazer's Axes, Howling Longbow, Hammerstone Bow, Blessed Blade, Celestial Bow of Dignity, Masterwork II/III Ranger weapons, Chultan Wootz Kilij. Stats verified from in-game screenshots at multiple item levels.

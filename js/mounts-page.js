@@ -1172,15 +1172,20 @@
     html += '</select>';
     html += '<button class="filter-select planner-delete" data-id="' + ld.id + '" style="cursor:pointer;color:var(--stat-negative,#f85149);">Delete</button>';
     html += '</div>';
-    html += '<div style="display:flex;gap:0.4rem;flex-wrap:wrap;align-items:center;">';
+    html += '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:stretch;">';
     for (var b = 0; b < ld.desiredBonuses.length; b++) {
       var bonus = bonusMap[ld.desiredBonuses[b]];
       if (!bonus) continue;
-      var bonusTip = bonus.effectText || bonus.description || "";
-      html += '<span class="badge" title="' + escapeHtml(bonusTip) + '" style="background:var(--bg-elevated);border:1px solid var(--border-default);color:var(--text-primary);padding:0.2rem 0.5rem;display:inline-flex;align-items:center;gap:0.25rem;cursor:help;">';
-      html += escapeHtml(bonus.name);
-      html += '<button class="planner-remove-bonus" data-id="' + ld.id + '" data-index="' + b + '" title="Remove this bonus" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1rem;line-height:1;padding:0 0.15rem;">×</button>';
-      html += '</span>';
+      var bonusDesc = bonus.effectText || bonus.description || "";
+      html += '<div class="planner-bonus-card" style="background:var(--bg-elevated);border:1px solid var(--border-default);color:var(--text-primary);padding:0.4rem 0.6rem;border-radius:var(--radius-sm);display:flex;flex-direction:column;gap:0.3rem;flex:1 1 280px;max-width:380px;min-width:240px;">';
+      html += '<div style="display:flex;align-items:center;justify-content:space-between;gap:0.4rem;">';
+      html += '<span style="font-weight:600;color:var(--text-primary);">' + escapeHtml(bonus.name) + '</span>';
+      html += '<button class="planner-remove-bonus" data-id="' + ld.id + '" data-index="' + b + '" title="Remove this bonus" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1.1rem;line-height:1;padding:0 0.2rem;flex-shrink:0;">×</button>';
+      html += '</div>';
+      if (bonusDesc) {
+        html += '<div style="font-size:0.8rem;color:var(--text-muted);line-height:1.4;">' + escapeHtml(bonusDesc) + '</div>';
+      }
+      html += '</div>';
     }
     if (ld.desiredBonuses.length < MAX_BONUSES_PER_LOADOUT) {
       html += '<select class="filter-select planner-add-bonus" data-id="' + ld.id + '">';
