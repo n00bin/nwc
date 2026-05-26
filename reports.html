@@ -389,6 +389,52 @@
       <div class="empty-state">Loading reports...</div>
     </div>
 
+    <!-- Submit missing gear form -->
+    <div class="submit-section" id="missing-gear-section">
+      <h3>Submit Missing Gear</h3>
+      <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.5;margin-top:-0.5rem;margin-bottom:1rem;">
+        Found a piece of gear that's not on the site? Send it in and we'll add it.
+        A screenshot of the in-game tooltip is required so we can verify the stats.
+      </p>
+      <form id="missing-gear-form">
+        <div class="form-group">
+          <label for="mg-name">Item Name <span style="color:var(--stat-negative);">*</span></label>
+          <input type="text" class="form-input" id="mg-name" placeholder="e.g. Doomcleaver" maxlength="120" required>
+        </div>
+        <div class="form-group">
+          <label for="mg-slot">Slot (if you know it)</label>
+          <select class="filter-select" id="mg-slot" style="width:100%;">
+            <option value="">— Optional —</option>
+            <option value="Main Hand">Main Hand</option>
+            <option value="Off Hand">Off Hand</option>
+            <option value="Head">Head</option>
+            <option value="Armor">Armor (Chest)</option>
+            <option value="Arms">Arms</option>
+            <option value="Feet">Feet</option>
+            <option value="Belt">Belt / Waist</option>
+            <option value="Neck">Neck</option>
+            <option value="Cloak">Cloak</option>
+            <option value="Ring">Ring</option>
+            <option value="Shirt">Shirt</option>
+            <option value="Pants">Pants</option>
+            <option value="Companion Equipment">Companion Equipment</option>
+            <option value="Artifact">Artifact</option>
+            <option value="Other">Other / Not sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mg-notes">Notes (set name, source, class restrictions — anything helpful)</label>
+          <textarea class="form-textarea" id="mg-notes" placeholder="Optional. E.g. 'Drops from Master Spellplague Cavern, Barbarian-only, part of the Impending Doom set.'" maxlength="1000"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="mg-image">Screenshot of in-game tooltip <span style="color:var(--stat-negative);">*</span> <span style="color:var(--text-muted);font-size:0.78rem;">(required, max 5MB)</span></label>
+          <input type="file" class="file-upload" id="mg-image" accept="image/jpeg,image/png,image/gif,image/webp" required>
+        </div>
+        <button type="submit" class="submit-btn" id="mg-submit-btn">Submit Missing Gear</button>
+        <div class="form-msg" id="mg-form-msg"></div>
+      </form>
+    </div>
+
     <!-- Submit form -->
     <div class="submit-section">
       <h3>Submit a Report</h3>

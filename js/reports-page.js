@@ -264,6 +264,103 @@
     return html;
   }
 
+  // ---- Submit missing gear ----
+  var mgForm    = document.getElementById("missing-gear-form");
+  var mgBtn     = document.getElementById("mg-submit-btn");
+  var mgFormMsg = document.getElementById("mg-form-msg");
+  var mgCooldown = false;
+
+  if (mgForm) {
+    mgForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      mgFormMsg.textContent = "";
+      mgFormMsg.className = "form-msg";
+
+      if (mgCooldown) {
+        mgFormMsg.textContent = "Please wait before submitting another item.";
+        mgFormMsg.className = "form-msg error";
+        return;
+      }
+
+      var name  = document.getElementById("mg-name").value.trim();
+      var slot  = document.getElementById("mg-slot").value;
+      var notes = document.getElementById("mg-notes").value.trim();
+      var fileInput = document.getElementById("mg-image");
+      var imageFile = fileInput.files[0];
+
+      if (name.length < 2) {
+        mgFormMsg.textContent = "Please enter the item name.";
+        mgFormMsg.className = "form-msg error";
+        return;
+      }
+      if (!imageFile) {
+        mgFormMsg.textContent = "A screenshot is required so we can verify the stats.";
+        mgFormMsg.className = "form-msg error";
+        return;
+      }
+      if (imageFile.size > 5 * 1024 * 1024) {
+        mgFormMsg.textContent = "Image must be under 5MB.";
+        mgFormMsg.className = "form-msg error";
+        return;
+      }
+
+      mgBtn.disabled = true;
+      mgBtn.textContent = "Uploading...";
+
+      // Upload screenshot
+      var fileName = "missing-gear/" + Date.now() + "_" + imageFile.name.replace(/[^a-zA-Z0-9._-]/g, "");
+      var uploadResult = await sb.storage.from("report-images").upload(fileName, imageFile);
+      if (uploadResult.error) {
+        mgFormMsg.textContent = "Image upload failed: " + uploadResult.error.message;
+        mgFormMsg.className = "form-msg error";
+        mgBtn.disabled = false;
+        mgBtn.textContent = "Submit Missing Gear";
+        return;
+      }
+      var urlResult = sb.storage.from("report-images").getPublicUrl(fileName);
+      var imageUrl  = urlResult.data.publicUrl;
+
+      // Build structured description so admin can read at a glance
+      var descLines = ["Missing item submitted by a player.", "", "Item: " + name];
+      if (slot)  descLines.push("Slot: " + slot);
+      if (notes) { descLines.push(""); descLines.push("Notes: " + notes); }
+      var description = descLines.join("\n");
+
+      var insertResult = await sb.from("reports").insert({
+        title: "Missing item: " + name,
+        description: description,
+        category: "Missing Item",
+        image_url: imageUrl
+      });
+
+      if (insertResult.error) {
+        mgFormMsg.textContent = "Failed to submit. Please try again.";
+        mgFormMsg.className = "form-msg error";
+        console.error("Missing-gear submit error:", insertResult.error);
+        mgBtn.disabled = false;
+        mgBtn.textContent = "Submit Missing Gear";
+        return;
+      }
+
+      mgFormMsg.textContent = "Thanks! Your submission is in the queue — once reviewed it'll be added to the site.";
+      mgFormMsg.className = "form-msg success";
+      mgForm.reset();
+
+      // Refresh the reports list so the player can see their submission
+      fetchReports();
+
+      // 30s cooldown
+      mgCooldown = true;
+      mgBtn.disabled = true;
+      mgBtn.textContent = "Please wait...";
+      setTimeout(function () {
+        mgCooldown = false;
+        mgBtn.disabled = false;
+        mgBtn.textContent = "Submit Missing Gear";
+      }, 30000);
+    });
+  }
+
   // ---- Submit report ----
   submitForm.addEventListener("submit", async function (e) {
     e.preventDefault();

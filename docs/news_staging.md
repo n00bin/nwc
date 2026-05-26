@@ -6,6 +6,9 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of 2026-05-26
 
+### Features
+- **Submit Missing Gear form (Reports page):** Players can now submit gear that's not yet on the site through a dedicated form on the Reports page. Required: item name + a screenshot of the in-game tooltip. Optional: slot, set, notes. Once reviewed, the item is added to the site for everyone. (Driven by community feedback — multiple players were using the data-correction form on existing items as a workaround.)
+
 ### Bug Fixes
 - **Stable Planner — bonus descriptions everywhere:** Two improvements to the insignia bonus UX:
   - **Picking a bonus:** Clicking "+ Add Bonus" now opens a searchable popup where every bonus shows its name and full effect text side-by-side. Previously it was just a dropdown of cryptic names — no way for a new player to tell what they did without picking blindly.
