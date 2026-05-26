@@ -1188,16 +1188,7 @@
       html += '</div>';
     }
     if (ld.desiredBonuses.length < MAX_BONUSES_PER_LOADOUT) {
-      html += '<select class="filter-select planner-add-bonus" data-id="' + ld.id + '">';
-      html += '<option value="">+ Add Bonus…</option>';
-      var sorted = MOUNT_INSIGNIA_BONUSES_DATA.slice().sort(function (a, b) {
-        return (a.name || "").localeCompare(b.name || "");
-      });
-      for (var sb = 0; sb < sorted.length; sb++) {
-        var sbo = sorted[sb];
-        html += '<option value="' + sbo.id + '">' + escapeHtml(sbo.name) + '</option>';
-      }
-      html += '</select>';
+      html += '<button class="filter-select planner-open-bonus-picker" data-id="' + ld.id + '" style="cursor:pointer;">+ Add Bonus…</button>';
       html += '<span style="color:var(--text-muted);font-size:0.75rem;">' + ld.desiredBonuses.length + '/' + MAX_BONUSES_PER_LOADOUT + ' slots used</span>';
     } else {
       html += '<span style="color:var(--text-muted);font-size:0.8rem;">All ' + MAX_BONUSES_PER_LOADOUT + ' slots filled</span>';
@@ -1453,6 +1444,119 @@
     renderPlannerResults();
   }
 
+  // ===== Bonus Picker Modal =====
+  var bonusPickerEl = null;
+  var bonusPickerActiveLoadoutId = null;
+
+  function ensureBonusPickerDOM() {
+    if (bonusPickerEl) return bonusPickerEl;
+    var el = document.createElement("div");
+    el.className = "planner-bonus-picker-modal";
+    el.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,0.65);display:none;align-items:flex-start;justify-content:center;z-index:9999;padding:2rem 1rem;overflow-y:auto;";
+    el.innerHTML =
+      '<div class="planner-bonus-picker-panel" style="background:var(--bg-surface,#161b22);border:1px solid var(--border-default,#30363d);border-radius:var(--radius-md,8px);width:100%;max-width:640px;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 16px 48px rgba(0,0,0,0.6);">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;border-bottom:1px solid var(--border-default,#30363d);">' +
+          '<h3 style="margin:0;color:var(--text-primary);font-size:1.05rem;">Pick an Insignia Bonus</h3>' +
+          '<button class="planner-bonus-picker-close" title="Close" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:1.4rem;line-height:1;padding:0.2rem 0.5rem;">×</button>' +
+        '</div>' +
+        '<div style="padding:0.75rem 1rem 0.5rem 1rem;">' +
+          '<input type="text" class="planner-bonus-picker-search search-input" placeholder="Search bonuses by name or effect…" style="width:100%;box-sizing:border-box;">' +
+        '</div>' +
+        '<div class="planner-bonus-picker-list" style="overflow-y:auto;padding:0.5rem 1rem 1rem 1rem;display:flex;flex-direction:column;gap:0.5rem;">' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(el);
+    bonusPickerEl = el;
+
+    // Backdrop click closes
+    el.addEventListener("click", function (e) {
+      if (e.target === el) closeBonusPicker();
+    });
+    // Close button
+    el.querySelector(".planner-bonus-picker-close").addEventListener("click", closeBonusPicker);
+    // Search filter
+    el.querySelector(".planner-bonus-picker-search").addEventListener("input", function (e) {
+      renderBonusPickerList(e.target.value);
+    });
+    // Esc key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && bonusPickerEl && bonusPickerEl.style.display === "flex") {
+        closeBonusPicker();
+      }
+    });
+    // Card click → add to loadout
+    el.querySelector(".planner-bonus-picker-list").addEventListener("click", function (e) {
+      var card = e.target.closest(".planner-bonus-picker-card");
+      if (!card) return;
+      var bid = parseInt(card.dataset.bonusId, 10);
+      if (!bid || !bonusPickerActiveLoadoutId) return;
+      var ld = findLoadout(bonusPickerActiveLoadoutId);
+      if (!ld) return;
+      if (ld.desiredBonuses.length >= MAX_BONUSES_PER_LOADOUT) return;
+      if (ld.desiredBonuses.indexOf(bid) !== -1) return; // already added
+      ld.desiredBonuses.push(bid);
+      savePlannerState();
+      closeBonusPicker();
+      renderPlanner();
+    });
+
+    return bonusPickerEl;
+  }
+
+  function renderBonusPickerList(filterText) {
+    var list = bonusPickerEl.querySelector(".planner-bonus-picker-list");
+    var ld = findLoadout(bonusPickerActiveLoadoutId);
+    var alreadyAdded = ld ? ld.desiredBonuses : [];
+    var q = (filterText || "").toLowerCase().trim();
+    var sorted = MOUNT_INSIGNIA_BONUSES_DATA.slice().sort(function (a, b) {
+      return (a.name || "").localeCompare(b.name || "");
+    });
+    var html = "";
+    var shown = 0;
+    for (var i = 0; i < sorted.length; i++) {
+      var b = sorted[i];
+      var desc = b.effectText || b.description || "";
+      if (q && b.name.toLowerCase().indexOf(q) === -1 && desc.toLowerCase().indexOf(q) === -1) continue;
+      var isAdded = alreadyAdded.indexOf(b.id) !== -1;
+      var cardStyle = "background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--radius-sm);padding:0.55rem 0.7rem;cursor:pointer;display:flex;flex-direction:column;gap:0.25rem;transition:border-color 0.15s;";
+      if (isAdded) cardStyle += "opacity:0.45;cursor:not-allowed;";
+      html += '<div class="planner-bonus-picker-card" data-bonus-id="' + b.id + '" style="' + cardStyle + '" ' + (isAdded ? 'data-disabled="1"' : '') + '>';
+      html += '<div style="display:flex;align-items:center;justify-content:space-between;gap:0.4rem;">';
+      html += '<span style="font-weight:600;color:var(--text-primary);">' + escapeHtml(b.name) + '</span>';
+      if (isAdded) html += '<span style="font-size:0.7rem;color:var(--text-muted);">already added</span>';
+      html += '</div>';
+      if (desc) html += '<div style="font-size:0.8rem;color:var(--text-muted);line-height:1.4;">' + escapeHtml(desc) + '</div>';
+      html += '</div>';
+      shown++;
+    }
+    if (!shown) {
+      html = '<div style="color:var(--text-muted);padding:1rem;text-align:center;">No bonuses match "' + escapeHtml(q) + '".</div>';
+    }
+    list.innerHTML = html;
+    // Block clicks on already-added cards
+    var cards = list.querySelectorAll(".planner-bonus-picker-card[data-disabled]");
+    for (var c = 0; c < cards.length; c++) {
+      cards[c].addEventListener("click", function (ev) { ev.stopPropagation(); });
+    }
+  }
+
+  function openBonusPicker(loadoutId) {
+    ensureBonusPickerDOM();
+    bonusPickerActiveLoadoutId = loadoutId;
+    bonusPickerEl.querySelector(".planner-bonus-picker-search").value = "";
+    renderBonusPickerList("");
+    bonusPickerEl.style.display = "flex";
+    setTimeout(function () {
+      bonusPickerEl.querySelector(".planner-bonus-picker-search").focus();
+    }, 50);
+  }
+
+  function closeBonusPicker() {
+    if (!bonusPickerEl) return;
+    bonusPickerEl.style.display = "none";
+    bonusPickerActiveLoadoutId = null;
+  }
+
   // Event delegation for editor (handles dynamically-rendered inputs)
   if (plannerEditor) {
     plannerEditor.addEventListener("input", function (e) {
@@ -1475,21 +1579,14 @@
         ld.role = t.value;
         savePlannerState();
         renderPlannerResults();
-      } else if (t.classList.contains("planner-add-bonus")) {
-        var ld2 = findLoadout(t.dataset.id);
-        if (!ld2) return;
-        var bid = parseInt(t.value, 10);
-        if (!bid) return;
-        if (ld2.desiredBonuses.length >= MAX_BONUSES_PER_LOADOUT) return;
-        ld2.desiredBonuses.push(bid);
-        savePlannerState();
-        renderPlanner();
       }
     });
     plannerEditor.addEventListener("click", function (e) {
       var t = e.target;
       if (!t || !t.dataset) return;
-      if (t.classList.contains("planner-delete")) {
+      if (t.classList.contains("planner-open-bonus-picker")) {
+        openBonusPicker(t.dataset.id);
+      } else if (t.classList.contains("planner-delete")) {
         deletePlannerLoadout(t.dataset.id);
       } else if (t.classList.contains("planner-remove-bonus")) {
         var ld = findLoadout(t.dataset.id);
