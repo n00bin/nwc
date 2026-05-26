@@ -2226,6 +2226,7 @@
       <div class="hcc-body">
         <strong>Something not matching in-game?</strong>
         Tap the <span class="hcc-pencil">✎</span> next to any item to fix it — stats, names, anything. Your build uses your version right away!
+        <a href="#" id="contributions-link" onclick="openContributionsModal();return false;" style="margin-left:0.75em;color:var(--amber);font-size:0.85em;text-decoration:none;white-space:nowrap;">&#128203; Your submissions</a>
       </div>
     </div>
   </div>
@@ -2645,6 +2646,19 @@
       </div>
       <div class="picker-list" id="builds-list">
         <!-- populated by openBuildsModal() -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Your Contributions modal (C4) ===== -->
+  <div class="picker-overlay" id="contributions-overlay">
+    <div class="picker-modal" style="max-width:540px;">
+      <div class="picker-header">
+        <h3>Your Submissions</h3>
+        <button class="picker-close" id="contributions-close" onclick="document.getElementById('contributions-overlay').classList.remove('open')">✕</button>
+      </div>
+      <div class="picker-list" id="contributions-list" style="padding:1rem;">
+        <p style="color:var(--muted);">Loading…</p>
       </div>
     </div>
   </div>
@@ -5243,6 +5257,20 @@
       const base = GEAR_DATA
         .filter(item => item.slot === slotType)
         .filter(item => !className || !item.allowedClasses || item.allowedClasses.indexOf(className) !== -1);
+
+      // C5 — Legacy duplicate cleanup (one-time silent pass per call).
+      // If a user-added item's name exactly matches a canonical GEAR_DATA entry
+      // at the same slot, the item has since been added to the site. Drop the
+      // local copy so the canonical version is used instead.
+      // Case-sensitive match is intentional (v1 — acceptable for gear names).
+      const canonicalNames = new Set(base.map(i => i.name));
+      const userAll = getUserAddedGear();
+      const duplicates = userAll.filter(i => i.slot === slotType && canonicalNames.has(i.name));
+      if (duplicates.length > 0) {
+        const dupIds = new Set(duplicates.map(i => i.id));
+        saveUserAddedGear(userAll.filter(i => !dupIds.has(i.id)));
+      }
+
       const userAdded = getUserAddedGear()
         .filter(item => item.slot === slotType)
         .filter(item => !className || !item.allowedClasses || item.allowedClasses.length === 0 || item.allowedClasses.indexOf(className) !== -1);
@@ -5275,6 +5303,7 @@
       const minId = list.reduce((m, x) => Math.min(m, x.id || 0), 0);
       item.id = (minId < 0 ? minId : 0) - 1;
       item.__userAdded = true;
+      item.addedAt = new Date().toISOString();
       list.push(item);
       saveUserAddedGear(list);
       return item;
@@ -5485,94 +5514,96 @@
         notes: notes || "User-added — pending admin review."
       };
 
-      // 1. Save locally so it shows in the player's build
+      // 1. Save locally — unconditional, outside try. The build always gets
+      // the item regardless of whether the report send succeeds.
       const saved = addUserGear(item);
 
-      // Equip it to the slot the player was filling, so "Add to my build"
-      // actually equips the item rather than just adding it to the list
+      // Resolve the picker callback now (before the await) so we always have it.
       const pickerOnPick = (_pickerState && _pickerState.dataType === "gear")
         ? _pickerState.onPick
         : null;
 
-      // 2. Submit a report to the admin (best-effort; don't block local save)
+      // 2. Submit a report via RPC (best-effort; never blocks local save).
       const saveBtn = document.getElementById("ami-save");
       saveBtn.disabled = true;
       saveBtn.textContent = "Sending report…";
-      try {
-        const reportPayload = {
-          name, slot: _amiSlot, item_level: il, combinedRating: cr,
-          set: setName, ratingStats, equipBonus: desc, notes,
-          allowedClasses: allowedClasses,
-          submittedFrom: "Toon Forge — Add Missing Item",
-          pickerClassContext: _amiClass || null
-        };
-        const reportLines = [
-          "Missing item submitted by a player from the Toon Forge picker.",
-          "",
-          "Item: " + name,
-          "Slot: " + _amiSlot,
-          "Item Level: " + il,
-          "Combined Rating: " + cr
-        ];
-        if (setName) reportLines.push("Set: " + setName);
-        if (allowedClasses.length) reportLines.push("Allowed Classes: " + allowedClasses.join(", "));
-        if (_amiClass) reportLines.push("Picker class context: " + _amiClass);
-        if (Object.keys(ratingStats).length) {
-          reportLines.push("");
-          reportLines.push("Stats:");
-          for (const k of Object.keys(ratingStats)) {
-            reportLines.push("  " + k + ": " + ratingStats[k]);
-          }
-        }
-        if (desc)  { reportLines.push(""); reportLines.push("Equip bonus / description:"); reportLines.push(desc); }
-        if (notes) { reportLines.push(""); reportLines.push("Player notes:"); reportLines.push(notes); }
-        reportLines.push("");
-        reportLines.push("Raw JSON:");
-        reportLines.push(JSON.stringify(reportPayload, null, 2));
 
-        if (window.supabase) {
-          const sb = window.supabase.createClient(
-            "https://ynrfmmccarrpqjdrpvqn.supabase.co",
-            "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
-          );
-          await sb.from("reports").insert({
-            title: "Missing item: " + name,
-            description: reportLines.join("\n"),
-            category: "Missing Item",
-            image_url: ""
-          });
+      let reportId = null;
+      const reportPayload = {
+        name, slot: _amiSlot, item_level: il, combinedRating: cr,
+        set: setName, ratingStats, equipBonus: desc, notes,
+        allowedClasses: allowedClasses,
+        submittedFrom: "Toon Forge — Add Missing Item",
+        pickerClassContext: _amiClass || null
+      };
+      const reportLines = [
+        "Missing item submitted by a player from the Toon Forge picker.",
+        "",
+        "Item: " + name,
+        "Slot: " + _amiSlot,
+        "Item Level: " + il,
+        "Combined Rating: " + cr
+      ];
+      if (setName) reportLines.push("Set: " + setName);
+      if (allowedClasses.length) reportLines.push("Allowed Classes: " + allowedClasses.join(", "));
+      if (_amiClass) reportLines.push("Picker class context: " + _amiClass);
+      if (Object.keys(ratingStats).length) {
+        reportLines.push("");
+        reportLines.push("Stats:");
+        for (const k of Object.keys(ratingStats)) {
+          reportLines.push("  " + k + ": " + ratingStats[k]);
         }
-      } catch (e) {
-        // Report send failed — the local save still succeeded. Tell the player,
-        // then still equip the item so their build benefits.
-        msg.textContent = "Added to your build (couldn't send report — please try again later).";
-        msg.className = "ami-msg success";
-        saveBtn.disabled = false;
-        saveBtn.textContent = "Add to my build";
-        setTimeout(() => {
-          closeAddMissingItemModal();
-          if (pickerOnPick) {
-            try { pickerOnPick(saved); } catch (err) { console.error(err); }
-            if (typeof closePicker === "function") closePicker();
+      }
+      if (desc)  { reportLines.push(""); reportLines.push("Equip bonus / description:"); reportLines.push(desc); }
+      if (notes) { reportLines.push(""); reportLines.push("Player notes:"); reportLines.push(notes); }
+      reportLines.push("");
+      reportLines.push("Raw JSON:");
+      reportLines.push(JSON.stringify(reportPayload, null, 2));
+
+      const p_title       = "Missing item: " + name;
+      const p_description = reportLines.join("\n");
+      const p_category    = "Missing Item";
+      const p_image_url   = "";
+
+      if (window.supabase) {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        try {
+          const rpcRes = await sb.rpc("submit_missing_item_report", {
+            p_title, p_description, p_category, p_image_url
+          });
+          if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
+            reportId = rpcRes.data.report_id;
           }
-        }, 1800);
-        return;
+        } catch (err) {
+          console.warn("AMI report send failed:", err);
+        }
       }
 
-      msg.textContent = "Added to your build! Sent to the team for review.";
-      msg.className = "ami-msg success";
-      saveBtn.textContent = "Added!";
+      // If we got a reportId back, stamp it onto the saved item so
+      // runReconciliation() can match it later.
+      if (reportId) {
+        saved.__reportId = reportId;
+        const list = getUserAddedGear();
+        const idx = list.findIndex(x => x.id === saved.id);
+        if (idx !== -1) { list[idx] = saved; saveUserAddedGear(list); }
+      }
 
-      // Equip the new item to the slot the player was filling, then close
-      // both the modal and the picker so they see the equipped item right away
-      setTimeout(() => {
-        closeAddMissingItemModal();
-        if (pickerOnPick) {
-          try { pickerOnPick(saved); } catch (e) { console.error(e); }
-          // Close the picker too — same behavior as picking an existing item
-          if (typeof closePicker === "function") closePicker();
-        }
-      }, 1200);
+      // 3. Equip the item — outside try (always runs regardless of report outcome).
+      if (pickerOnPick) pickerOnPick(item);
+
+      // 4. Toast + clean up UI.
+      const toastMsg = reportId
+        ? "Added to your build! We'll review and add it to the site."
+        : "Added to your build — couldn't send report, please try again later.";
+      toast(toastMsg);
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      closeAddMissingItemModal();
+      if (typeof closePicker === "function") closePicker();
     }
     /* ===== Class base ability scores =====
        Pulled from CLASSES_DATA (sourced from NW Hub character editor).
@@ -11049,6 +11080,367 @@
       }
       for (var k in MAP) if (Object.prototype.hasOwnProperty.call(MAP, k)) wrap(k, MAP[k]);
     })();
+
+    // =========================================================================
+    // findGearById — looks up a canonical gear entry by its numeric id.
+    // Checks GEAR_DATA first, then user-added gear. Used by runReconciliation
+    // to swap a user-added item for its canonical counterpart after it's merged.
+    // =========================================================================
+    function findGearById(id) {
+      if (typeof GEAR_DATA !== "undefined") {
+        for (const item of GEAR_DATA) {
+          if (item.id === id) return item;
+        }
+      }
+      const userGear = getUserAddedGear();
+      for (const item of userGear) {
+        if (item.id === id) return item;
+      }
+      return null;
+    }
+
+    // =========================================================================
+    // runReconciliation — called once on page load when supabase is available.
+    //
+    // Collects all pending report ids from:
+    //   a) user-added gear items (.__reportId)
+    //   b) data-correction overrides (.reportId field)
+    //
+    // Fetches their current status from reports_public (cached 10 min in
+    // sessionStorage to avoid hammering Supabase on every page load).
+    //
+    // Dispatches each row to a handler:
+    //   Fixed + resolved_gear_id set → swap user-added item for canonical gear
+    //     (slot guard: only update state.gear if the user still has the old item
+    //     equipped in that slot), then drop the user-added entry.
+    //   Won't Fix → drop user-added entry / override.
+    //   Corrections with reportId: Fixed → drop override (source is now correct),
+    //     Won't Fix → drop override + surface admin note.
+    //   Active / no resolved_gear_id → keep local, no action.
+    //
+    // After processing, calls rerenderAll() and shows a toast for any changes.
+    // =========================================================================
+    async function runReconciliation() {
+      if (!window.supabase) return;
+
+      // 1. Collect all pending report ids.
+      const userGear = getUserAddedGear();
+      const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
+        ? NWCBDataCorrections.getAllOverrides()
+        : {};
+
+      const idSet = new Set();
+      // From user-added gear
+      for (const item of userGear) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      // From data-correction overrides
+      for (const key of Object.keys(overrides)) {
+        const entry = overrides[key];
+        if (entry && entry.reportId) idSet.add(entry.reportId);
+      }
+
+      if (idSet.size === 0) return; // Nothing to check.
+
+      const ids = Array.from(idSet);
+
+      // 2. Check sessionStorage cache (10-minute TTL).
+      const CACHE_KEY = "nwcb_recon_cache";
+      const TEN_MIN = 10 * 60 * 1000;
+      let rows = null;
+      try {
+        const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || "null");
+        if (cached && cached.cachedAt && (Date.now() - cached.cachedAt) < TEN_MIN) {
+          rows = cached.rows;
+        }
+      } catch (e) { /* ignore */ }
+
+      // 3. Fetch from Supabase if cache is stale or missing.
+      if (!rows) {
+        try {
+          const sb = window.supabase.createClient(
+            "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+            "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+          );
+          const result = await sb
+            .from("reports_public")
+            .select("id,status,resolved_gear_id,admin_notes")
+            .in("id", ids);
+          if (result.error) {
+            console.warn("runReconciliation: fetch failed", result.error);
+            return;
+          }
+          rows = result.data || [];
+          try {
+            sessionStorage.setItem(CACHE_KEY, JSON.stringify({ cachedAt: Date.now(), rows }));
+          } catch (e) { /* quota — ignore */ }
+        } catch (e) {
+          console.warn("runReconciliation: network error", e);
+          return;
+        }
+      }
+
+      // 4. Process each row.
+      const toastItems = [];
+      let anyChange = false;
+
+      for (const row of rows) {
+        const { id: reportId, status, resolved_gear_id, admin_notes } = row;
+
+        if (status === "Fixed" && resolved_gear_id) {
+          // --- User-added gear: swap for canonical ---
+          const userList = getUserAddedGear();
+          const itemIdx = userList.findIndex(x => x.__reportId === reportId);
+          if (itemIdx !== -1) {
+            const userItem = userList[itemIdx];
+            const canonical = findGearById(resolved_gear_id);
+            if (canonical) {
+              // C3 slot guard: only update state.gear if the player still has the
+              // old user-added item equipped in that slot.
+              if (state.gear[userItem.slot] === userItem.name) {
+                state.gear[userItem.slot] = canonical.name;
+              }
+              toastItems.push(`"${userItem.name}" is now in the site database — your build has been updated.`);
+            } else {
+              // Canonical item not in local data yet (data JS not rebuilt) — keep
+              // the user-added entry until the next data refresh.
+              toastItems.push(`"${userItem.name}" was approved but data hasn't refreshed yet — reload the page to update.`);
+            }
+            // Drop the user-added entry regardless (canonical takes over or will on reload).
+            userList.splice(itemIdx, 1);
+            saveUserAddedGear(userList);
+            anyChange = true;
+          }
+
+          // --- Data-correction overrides: drop (source is now correct) ---
+          for (const key of Object.keys(overrides)) {
+            const entry = overrides[key];
+            if (entry && entry.reportId === reportId) {
+              if (window.NWCBDataCorrections && NWCBDataCorrections.setOverride) {
+                NWCBDataCorrections.setOverride(key, null);
+              }
+              anyChange = true;
+            }
+          }
+
+        } else if (status === "Won't Fix") {
+          // --- User-added gear: drop and notify ---
+          const userList = getUserAddedGear();
+          const itemIdx = userList.findIndex(x => x.__reportId === reportId);
+          if (itemIdx !== -1) {
+            const userItem = userList[itemIdx];
+            if (state.gear[userItem.slot] === userItem.name) {
+              state.gear[userItem.slot] = "";
+            }
+            const noteStr = admin_notes ? ` (${admin_notes})` : "";
+            toastItems.push(`"${userItem.name}" won't be added to the site${noteStr}.`);
+            userList.splice(itemIdx, 1);
+            saveUserAddedGear(userList);
+            anyChange = true;
+          }
+
+          // --- Data-correction overrides: drop and notify ---
+          for (const key of Object.keys(overrides)) {
+            const entry = overrides[key];
+            if (entry && entry.reportId === reportId) {
+              const noteStr = admin_notes ? ` (${admin_notes})` : "";
+              toastItems.push(`A data correction was declined${noteStr}.`);
+              if (window.NWCBDataCorrections && NWCBDataCorrections.setOverride) {
+                NWCBDataCorrections.setOverride(key, null);
+              }
+              anyChange = true;
+            }
+          }
+        }
+        // Active statuses (New, Confirmed, In Progress) or Fixed without
+        // resolved_gear_id: keep local, no action needed.
+      }
+
+      // 5. Re-render and toast if anything changed.
+      if (anyChange) rerenderAll();
+      if (toastItems.length > 0) {
+        setTimeout(() => toast(toastItems.join(" · ")), 300);
+      }
+    }
+
+    // Wire runReconciliation into page init (after rerenderAll on line 11021).
+    if (window.supabase) runReconciliation();
+
+    // =========================================================================
+    // openContributionsModal (C4) — shows pending + resolved submissions.
+    // Force-refreshes the cache on open so the player always sees current status.
+    // =========================================================================
+    async function openContributionsModal() {
+      const overlay = document.getElementById("contributions-overlay");
+      const list    = document.getElementById("contributions-list");
+      overlay.classList.add("open");
+      list.innerHTML = '<p style="color:var(--muted);">Loading…</p>';
+
+      // Collect all pending report ids.
+      const userGear  = getUserAddedGear();
+      const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
+        ? NWCBDataCorrections.getAllOverrides()
+        : {};
+
+      const idSet = new Set();
+      for (const item of userGear) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      for (const key of Object.keys(overrides)) {
+        const entry = overrides[key];
+        if (entry && entry.reportId) idSet.add(entry.reportId);
+      }
+
+      if (idSet.size === 0) {
+        list.innerHTML = '<p style="color:var(--muted);">You have no submissions on record in this browser.</p>';
+        return;
+      }
+
+      const ids = Array.from(idSet);
+
+      // Force-refresh the cache (bypass 10-min TTL on modal open).
+      let rows = [];
+      if (window.supabase) {
+        try {
+          const sb = window.supabase.createClient(
+            "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+            "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+          );
+          const result = await sb
+            .from("reports_public")
+            .select("id,status,resolved_gear_id,admin_notes,created_at,title")
+            .in("id", ids);
+          if (!result.error) {
+            rows = result.data || [];
+            try {
+              sessionStorage.setItem("nwcb_recon_cache", JSON.stringify({ cachedAt: Date.now(), rows }));
+            } catch (e) { /* quota */ }
+          }
+        } catch (e) { /* network error */ }
+      }
+
+      // Build a lookup from reportId → row.
+      const rowById = {};
+      for (const r of rows) rowById[r.id] = r;
+
+      // Separate entries into pending and resolved.
+      const pending  = [];
+      const resolved = [];
+
+      // User-added gear
+      for (const item of userGear) {
+        if (!item.__reportId) continue;
+        const row = rowById[item.__reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        const entry = {
+          kind: "item",
+          name: item.name,
+          slot: item.slot,
+          reportId: item.__reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: item.addedAt || null
+        };
+        if (isActive) pending.push(entry);
+        else resolved.push(entry);
+      }
+
+      // Data-correction overrides
+      for (const key of Object.keys(overrides)) {
+        const entry = overrides[key];
+        if (!entry || !entry.reportId) continue;
+        const row = rowById[entry.reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        // Parse key: "type:id:field"
+        const parts = key.split(":");
+        const fieldLabel = parts.slice(2).join(":") || key;
+        const itemId = parts[1] || "?";
+        const corrEntry = {
+          kind: "correction",
+          key,
+          fieldLabel,
+          itemId,
+          oldValue: entry.originalSourceValue,
+          newValue: entry.value,
+          reportId: entry.reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: entry.savedAt || null
+        };
+        if (isActive) pending.push(corrEntry);
+        else resolved.push(corrEntry);
+      }
+
+      // Render
+      const lines = [];
+
+      function statusBadge(s) {
+        const colours = { "New": "#888", "Confirmed": "#4a9", "In Progress": "#f90",
+                          "Fixed": "#4a9", "Won't Fix": "#c44" };
+        const c = colours[s] || "#888";
+        return `<span style="font-size:0.78em;background:${c};color:#fff;border-radius:3px;padding:1px 6px;">${s}</span>`;
+      }
+
+      if (pending.length > 0) {
+        lines.push('<h4 style="margin:0 0 0.5rem;color:var(--amber);">Pending</h4>');
+        for (const e of pending) {
+          if (e.kind === "item") {
+            const date = e.submittedAt ? new Date(e.submittedAt).toLocaleDateString() : "?";
+            lines.push(`<div style="margin-bottom:0.6rem;padding:0.5rem;background:var(--surface2);border-radius:6px;">
+              <strong>${e.name}</strong> <span style="color:var(--muted);font-size:0.85em;">(${e.slot})</span>
+              ${statusBadge(e.status)}
+              <br><span style="color:var(--muted);font-size:0.8em;">Submitted: ${date} &middot; Report #${e.reportId}</span>
+            </div>`);
+          } else {
+            const date = e.submittedAt ? new Date(e.submittedAt).toLocaleDateString() : "?";
+            lines.push(`<div style="margin-bottom:0.6rem;padding:0.5rem;background:var(--surface2);border-radius:6px;">
+              <span style="color:var(--amber);">&#9998;</span> Edited <strong>${e.fieldLabel}</strong>
+              &mdash; old: ${e.oldValue ?? "?"}, new: ${e.newValue ?? "?"}
+              ${statusBadge(e.status)}
+              <br><span style="color:var(--muted);font-size:0.8em;">Submitted: ${date} &middot; Report #${e.reportId}</span>
+            </div>`);
+          }
+        }
+      }
+
+      if (resolved.length > 0) {
+        lines.push('<h4 style="margin:1rem 0 0.5rem;color:var(--muted);">Resolved</h4>');
+        for (const e of resolved) {
+          const note = e.adminNote ? `<br><em style="color:var(--muted);font-size:0.85em;">${e.adminNote}</em>` : "";
+          if (e.kind === "item") {
+            lines.push(`<div style="margin-bottom:0.6rem;padding:0.5rem;background:var(--surface2);border-radius:6px;opacity:0.75;">
+              <strong>${e.name}</strong> <span style="color:var(--muted);font-size:0.85em;">(${e.slot})</span>
+              ${statusBadge(e.status)}${note}
+            </div>`);
+          } else {
+            lines.push(`<div style="margin-bottom:0.6rem;padding:0.5rem;background:var(--surface2);border-radius:6px;opacity:0.75;">
+              <span style="color:var(--amber);">&#9998;</span> Edited <strong>${e.fieldLabel}</strong>
+              ${statusBadge(e.status)}${note}
+            </div>`);
+          }
+        }
+      }
+
+      if (lines.length === 0) {
+        lines.push('<p style="color:var(--muted);">No submission records found. They may have been cleared.</p>');
+      }
+
+      list.innerHTML = lines.join("\n");
+    }
+
+    // Close contributions overlay on backdrop click + Escape.
+    document.getElementById("contributions-overlay").addEventListener("click", (e) => {
+      if (e.target.id === "contributions-overlay") {
+        document.getElementById("contributions-overlay").classList.remove("open");
+      }
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && document.getElementById("contributions-overlay").classList.contains("open")) {
+        document.getElementById("contributions-overlay").classList.remove("open");
+      }
+    });
 
 </script>
 </body>
