@@ -4373,30 +4373,28 @@
       if (map[field]) return map[field];
       let m = field.match(/^equipBonuses\[(\d+)\]\.(.+)$/);
       if (m) {
-        const i = Number(m[1]) + 1;
         const sub = m[2] === "name" ? "name" : m[2] === "description" ? "description" : m[2];
-        return `Equip Power #${i} ${sub}`;
+        return `Equip bonus ${sub}`;
       }
       m = field.match(/^percentStats\.(.+)$/);
-      if (m) return `${m[1]} (%)`;
+      if (m) return `${m[1]} (percent)`;
       m = field.match(/^abilityBonuses\.(.+)$/);
       if (m) return `${m[1]} bonus`;
       m = field.match(/^ratingStats\.(.+)$/);
       if (m) return m[1];
-      // Phase 2 additions:
       m = field.match(/^stats\[(\d+)\]\.value$/);
-      if (m) return `Stat #${Number(m[1]) + 1} value`;
+      if (m) return `Stat ${Number(m[1]) + 1} value`;
       m = field.match(/^stats\[(\d+)\]\.stat$/);
-      if (m) return `Stat #${Number(m[1]) + 1} name`;
+      if (m) return `Stat ${Number(m[1]) + 1} name`;
       m = field.match(/^procEffect\.(.+)$/);
-      if (m) return `Proc Effect — ${m[1]}`;
+      if (m) return `Proc effect ${m[1]}`;
       m = field.match(/^insigniaSlots\[(\d+)\]\.preferred$/);
-      if (m) return `Slot ${Number(m[1]) + 1} preferred`;
+      if (m) return `Slot ${Number(m[1]) + 1} preferred insignia`;
       m = field.match(/^slot\[(\d+)\]$/);
       if (m) return `Slot option ${Number(m[1]) + 1}`;
-      // Generic dotted/bracketed path — make it human-readable
+      // Generic dotted/bracketed path — humanize a bit (drop the brackets).
       m = field.match(/^(\w+)\[(\d+)\]\.(.+)$/);
-      if (m) return `${m[1]} #${Number(m[2]) + 1} ${m[3]}`;
+      if (m) return `${m[1]} ${m[3]}`;
       return field;
     }
 
@@ -4424,21 +4422,19 @@
     }
 
     // Build the description body the admin will see on the report.
+    // Keep it plain English — no dev jargon, no internal field paths.
     function _ccBuildReportDescription(item, dataType, fieldHuman, oldVal, newVal) {
       const lines = [];
-      lines.push(`Player flagged a mismatch between the site data and what they see in-game.`);
+      lines.push(`A player spotted something wrong on this item:`);
       lines.push(``);
       lines.push(`Item: ${item.name || "(unnamed)"}`);
       if (item.slot) lines.push(`Slot: ${item.slot}`);
       if (item.item_level != null) lines.push(`Item Level: ${item.item_level}`);
       if (item.set) lines.push(`Set: ${item.set}`);
       lines.push(``);
-      lines.push(`Field: ${fieldHuman}`);
+      lines.push(`What's wrong: ${fieldHuman}`);
       lines.push(`Site shows: ${oldVal == null || oldVal === "" ? "(empty)" : String(oldVal)}`);
-      lines.push(`Player says in-game: ${newVal == null || newVal === "" ? "(empty)" : String(newVal)}`);
-      lines.push(``);
-      lines.push(`Submitted via Toon Forge correction editor.`);
-      lines.push(`Data type: ${dataType} · Source id: ${item.id}`);
+      lines.push(`Player says it's: ${newVal == null || newVal === "" ? "(empty)" : String(newVal)}`);
       return lines.join("\n");
     }
 
@@ -5535,36 +5531,37 @@
       saveBtn.textContent = "Sending report…";
 
       let reportId = null;
-      const reportPayload = {
-        name, slot: _amiSlot, item_level: il, combinedRating: cr,
-        set: setName, ratingStats, equipBonus: desc, notes,
-        allowedClasses: allowedClasses,
-        submittedFrom: "Toon Forge — Add Missing Item",
-        pickerClassContext: _amiClass || null
-      };
-      const reportLines = [
-        "Missing item submitted by a player from the Toon Forge picker.",
-        "",
-        "Item: " + name,
-        "Slot: " + _amiSlot,
-        "Item Level: " + il,
-        "Combined Rating: " + cr
-      ];
+
+      // Build a clean, human-readable report body — no dev jargon, no raw JSON.
+      // Admin reads this on the Reports page so it should look like a tooltip.
+      const reportLines = [];
+      reportLines.push("A player added this missing piece of gear:");
+      reportLines.push("");
+      reportLines.push("Name: " + name);
+      reportLines.push("Slot: " + _amiSlot);
+      reportLines.push("Item Level: " + il);
+      reportLines.push("Combined Rating: " + cr);
       if (setName) reportLines.push("Set: " + setName);
-      if (allowedClasses.length) reportLines.push("Allowed Classes: " + allowedClasses.join(", "));
-      if (_amiClass) reportLines.push("Picker class context: " + _amiClass);
+      if (allowedClasses.length) {
+        reportLines.push("Usable by: " + allowedClasses.join(", "));
+      }
       if (Object.keys(ratingStats).length) {
         reportLines.push("");
         reportLines.push("Stats:");
         for (const k of Object.keys(ratingStats)) {
-          reportLines.push("  " + k + ": " + ratingStats[k]);
+          reportLines.push("  • " + k + ": +" + ratingStats[k]);
         }
       }
-      if (desc)  { reportLines.push(""); reportLines.push("Equip bonus / description:"); reportLines.push(desc); }
-      if (notes) { reportLines.push(""); reportLines.push("Player notes:"); reportLines.push(notes); }
-      reportLines.push("");
-      reportLines.push("Raw JSON:");
-      reportLines.push(JSON.stringify(reportPayload, null, 2));
+      if (desc) {
+        reportLines.push("");
+        reportLines.push("In-game description / equip bonus:");
+        reportLines.push(desc);
+      }
+      if (notes) {
+        reportLines.push("");
+        reportLines.push("Player notes:");
+        reportLines.push(notes);
+      }
 
       const p_title       = "Missing item: " + name;
       const p_description = reportLines.join("\n");
