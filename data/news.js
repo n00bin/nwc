@@ -1,6 +1,48 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "May 25, 2026",
+    title: "Major Data Pass — Gear, Feats, Set Bonuses, Optimizer Fixes",
+    tags: ["Feature", "Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li><strong>5 missing paragon feats added</strong> with descriptions read straight from in-game tooltips: Trip Attack (Fighter Dreadnought T1), Piercing Javelin and Tipping Scales (Cleric Arbiter), Shatter Strike and Frigid Winds (Wizard Thaumaturge). These feats existed in NW but were missing from Toon Forge entirely.</li>" +
+      "<li><strong>Toon Forge correction submissions now validate.</strong> The data-correction form was accepting submissions where the player hadn't actually changed the value (form pre-filled both fields and got sent back unchanged). Now the form blocks zero-change submissions with a friendly \"that's the same value that's already there\" message.</li>" +
+      "<li><strong>Set bonus descriptions visible on item cards.</strong> 312+ items across 27 different sets (Impending Doom, Whisper of Power, Celestial, Hellfire Engine Remains, Pioneer, Primal, Tyrant, Pilgrim, Skyhold Arms, Prismatic Defier of Dread, Devil's Legion, Blessed Blade, Dark Matter, Peer Into the Void, Meteoric Fury, Demonweb Empowerment, Duergar, Beholder Slayer, Living Magma, Stormforged, Blaspheme, Vale, Fortified Vale, Scalebreaker's Wrath, Grand Alliance, Sun, Vistani, Umbral Stride, plus more) now show their 2-piece set bonus text on the gear card.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Paragon feat tier ordering corrected across ALL 18 paragons.</strong> A viewer reported feat tiers were swapped for Warlock; turned out every paragon had ordering issues. All 9 classes × 2 paragons = 18 paragons verified in-game and reordered to match what you see when picking feats on your character. Highlights: Cleric Arbiter and Wizard Thaumaturge gained 2 missing feats each; Fighter Dreadnought gained 1; Barbarian Blademaster lost a stray feat (\"Raging Criticals\" — not a real Blademaster feat).</li>" +
+      "<li><strong>~960 items now contribute their stats correctly to the optimizer.</strong> Hundreds of items had their stats silently dropped because the engine didn't recognize the stat name format. Tank, Deflect-stacking, and Control-Resist builds will see different (and correct) optimization results.</li>" +
+      "<li><strong>Solar Band and Lunar Knot — double stat values now apply.</strong> Both rings show two stacking sources of the same stat in their tooltip but only half was counting. Solar Band now shows Deflect 6,000 (was 4,500); Lunar Knot Critical Severity 6,600 (was 4,950).</li>" +
+      "<li><strong>7 Coldsilver Jotunskar rings (IL 5,700) fully updated</strong> — each ring now shows its unique equip effect (Deity's Gift, Manticore's Mane Bite, Accumulating Precision, Circular Healing, Charging Bull, Dashing Ranger, Maiden's Advantage), 4 stat misreads corrected, percent stats moved to the right field.</li>" +
+      "<li><strong>Item stat misreads fixed:</strong> Strings of the Forsaken (Critical Severity at IL 3,400 and 4,100 + set assignment), Titansteel Lute IL 800 (Accuracy and Critical Strike), Bulwark of the Zulkirate (Critical Avoidance value verified), Vestments of the Crimson Magister (Combat Advantage + Control Bonus + Control Resist), Vistani Raiments (Critical Strike + Combat Advantage), Elemental Drowcraft Raid Wristguards (Accuracy + Combat Advantage + Defense), Ring of Orcus +1 through +5 (stat is Forte), 5 Bard weapons (missing third stat identified as Critical Strike), 6 Dominion tank pieces (\"Combat Resistance\" → Control Resist).</li>" +
+      "<li><strong>Mount and companion notes panels cleaned up.</strong> Notes sections were leaking developer calibration trails (e.g., \"Stored at Mythic-125%-bolster baseline (3000). Re-verified 2026-05-20...\") into the user-visible Notes block. These developer audit sentences are now stripped from display; real game-info text (proc effects, magnitudes, slot info) still shows.</li>" +
+      "<li><strong>Item name OCR corrections (35 fixes):</strong> Loithian → Lolthian, Cuises → Cuisses, Crystallex → Crystalflex, Glaves → Greaves, Bronerwood → Bronzewood, Chinibii → Chinibili, Omibuitsili → Omihuiclli, Tecpail → Tecpatl, Preaches → Breeches, plus the Veinlit set (three OCR variants consolidated). Also fixed Luremaster → Loremaster (Bard Songblade feat).</li>" +
+      "<li><strong>5 mounts — insignia slots fixed:</strong> Ornate Apparatus of Gond, Red-Hued Apparatus of Gond, Carmine Bulette, Sienna Tribal Lion, Blueforged Rage Drake were showing no valid insignia types in the slot calculator. Their universal slots now work.</li>" +
+      "<li><strong>Two Pact Blade items</strong> (Durgarrn Thord Pactblade, Earthen Pact Blade) had garbled arrow symbols in their description text. Fixed.</li>" +
+      "<li><strong>Companion \"Rothé\" name display fixed</strong> — was rendering as \"RothÃ©\" in some browsers due to a double-encoded character.</li>" +
+      "<li><strong>Reports page — three improvements:</strong> admin status changes now refresh the list immediately (no manual reload); a shadow variable bug in the sort logic was breaking ordering; reports awaiting admin review now show \"Replies open once an admin has reviewed this report.\" instead of a blank reply area.</li>" +
+      "<li><strong>Insignia Tracker page</strong> was incorrectly highlighting \"Creators & Tools\" in the nav bar. Fixed.</li>" +
+      "<li><strong>Stat name display</strong> — internal stat names like \"CriticalStrike\" and \"MaximumHitPoints\" now render as \"Critical Strike\" and \"Maximum Hit Points\" throughout the site.</li>" +
+      "<li><strong>83 duplicate gear entries removed.</strong> Some items had been entered twice from separate screenshot sessions. Less-complete copies removed; more-complete versions (with set bonus info and class restrictions) kept.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li><strong>Gear database expanded by ~376 net new items.</strong> Major intake pass covering bard, warlock (current + legacy), and rogue gear from screenshot batches. Highlights:" +
+        "<ul>" +
+        "<li><strong>Bard:</strong> Strings of the Forsaken (IL 3,400 / 4,100 / 4,800), Bismuth Lute, Bloodbrass Lute, Solarium and Xaryxian Rapier variants, full Howling / Earthen / Burning / Drowned Bard artifact sets, Woote Jambiya and Lute variants (IL 350–800), Shadesinger's Rapier and Lute.</li>" +
+        "<li><strong>Warlock:</strong> Curseford's Raid + Assault 8-piece armor set (IL 770), Codex of Eternal Chains at IL 3,400 / 3,750 / 4,100 (previously only IL 4,800), Bronzewood Quauhololli / Tlahuitolli weapon set, Mirage / Fey / Lifeforged / Aboleth / Hexweaver Pact Blade and Grimoire variants, Dusk Raid + Assault armor at IL 1,375.</li>" +
+        "<li><strong>Rogue:</strong> Lionsmane Stronghold armor (Duelist + Executioner sets), Trapper of the Twilight / Stealer of the Star / Mugger of the Maze 3-set armor at IL 3,000, Nightspiercer Dagger of the Thayan Zealot, Lolthian set, Primal Omihuiclli weapon variants.</li>" +
+        "<li><strong>High-end:</strong> Coldsilver Jotunskar rings (IL 5,700, all 7 variants with full equip effects), Celestial Bow of Dignity and Celestial Steel of Grace (IL 650–1,400), Manticore Raid/Duelist gear.</li>" +
+        "<li><strong>Low-IL variants:</strong> Hammerstone full set at IL 152, Elk Tribe Noble's weapons at IL 199 — so early-game characters can find appropriate gear in Toon Forge.</li>" +
+        "</ul>" +
+      "</li>" +
+      "<li><strong>Enchant stat names normalized</strong> (21 universal enchants, 70 stat entries) — now consistently Title Case to match gear and other data.</li>" +
+      "<li><strong>Schema cleanup:</strong> 44 entries unified — \"Off-hand\" → \"Off Hand\" and \"Waist\" → \"Belt\" — so Toon Forge's slot filter behaves consistently.</li>" +
+      "</ul>"
+  },
+  {
     date: "May 6, 2026",
     title: "Stable Planner Fix + Site-Wide Polish Pass",
     tags: ["Fix", "Data"],
