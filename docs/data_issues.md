@@ -1,5 +1,16 @@
 # Data Issues To Investigate
 
+## Missing Gear Sets — flagged by community (Report #33, 2026-05-26)
+
+Player report flagged the following gear as missing from the site:
+
+- **Slaughterhouse Cindersilk gear** — likely a Mod 32+ clothing set
+- **Ritualistic Necklace & Strap** — accessory pieces
+- **Mod 33 gear** — new equipment from the latest module
+
+Need to: source screenshots (in-game tooltips or NW Hub references),
+extract stats, add to `gear.json` with proper slot/set/IL data.
+
 ## B2 — Mount Equip Power ID 56 "Seeing Red" Missing Stats (2026-05-22)
 
 Mount 271 (Balgora) references equip power ID 56 ("Seeing Red") via `equipRef: 56`.

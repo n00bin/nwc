@@ -25,6 +25,20 @@ A log of community-suggested features, organized by where they came from. Separa
 
 ---
 
+### Weapon upgrade-level chooser
+**Source:** Toon Forge correction-editor submission, Report #33, 2026-05-26
+
+> "Upgrade Level for Main Hand and Off Hand/Grimoire needs to have a choice (Epic, Legendary, Mythic, etc.)."
+
+**Status:** Concrete UI request. Currently Main Hand and Off Hand items display at their base IL only; the request is to expose a rarity/upgrade-level selector similar to how companion powers already have one.
+
+**Scope:**
+- Add a rarity/upgrade-level dropdown to the Main Hand and Off Hand pickers in Toon Forge
+- Stats should scale based on the chosen rarity (similar to how companion power scaling already works)
+- Need a stat-scaling table per rarity tier for weapons (research input from NW Hub or in-game)
+
+---
+
 ### AI build-improvement assistant
 **Source:** YouTube comment by @JHON_AMORIM (612 subs), 2026-05-25
 
