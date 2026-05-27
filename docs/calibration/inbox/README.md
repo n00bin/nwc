@@ -6,83 +6,80 @@ This is where raw screenshots land before they're processed into `data/*.json`.
 
 ```
 inbox/
-├── gear/                  → gear/item screenshots
-│   ├── _pending_review/   → unprocessed screenshots waiting for the reviewer
-│   ├── _approved/         → reviewed + passed (sidecar .json saved alongside the .png)
-│   ├── _skipped/          → "come back to" pile
-│   ├── _trash/            → OCR garbage, mis-screenshots, anything to drop
-│   └── <batch folders>    → final destination after batch-sort
-├── powers/                → class power screenshots (At-Will, Encounter, Daily, Class Feature)
-│   └── <batch folders>    → e.g., barbarian-powers-2026-05-16
-├── companions/            → companion screenshots (cards, enhancement icons, stats)
-├── mounts/                → mount screenshots (cards, combat power, equip power, insignia slots)
-├── enhancements/          → companion enhancement icons (small icons cropped from tooltips)
-└── other/                 → anything that doesn't fit (artifacts, consumables, boons, etc.)
+├── _pending_review/      → raw screenshots waiting for the cropper
+├── _ready_for_db/        → cropped, awaiting renamer
+├── _ready_to_add/        → cropped + renamed, awaiting intake
+├── _already_in_db/       → archive of items already cataloged
+├── _skipped/             → "come back to" pile (set-detail panels, weird formatting)
+├── _trash/               → discarded (OCR garbage, mis-screenshots)
+├── gear/                 → archived gear screenshots, per-class subfolders
+│   ├── bard-gear/
+│   ├── paladin-gear/
+│   ├── ranger-gear/
+│   ├── rogue-gear/
+│   ├── warlock-gear/
+│   └── accessories/      → unbound rings, amulets, belts, sashes, etc.
+├── powers/               → archived class-power screenshots, per-class subfolders
+│   ├── barbarian-powers/
+│   ├── bard-powers/
+│   └── … (one per class)
+├── companions/           → companion screenshots (cards, enhancement icons, stats)
+├── mounts/               → mount screenshots (cards, combat/equip powers, slots)
+├── enhancements/         → companion enhancement icons
+└── other/                → anything that doesn't fit the above
 ```
-
-## Review workflow for the pending pile
-
-The `gear/_pending_review/` folder is fed into the desktop reviewer:
-
-```
-python scripts/screenshot_reviewer.py
-```
-
-See `scripts/SCREENSHOT_REVIEWER_README.md` for setup + usage. The flow:
-1. Reviewer reads each PNG from `_pending_review/`
-2. OCR pre-fills a form; you edit any errors
-3. **Pass** → screenshot + sidecar `.json` move to `_approved/`
-4. **Skip** → moves to `_skipped/` for later
-5. **Trash** → moves to `_trash/` to drop
-
-When `_approved/` has a batch of items, run:
-
-```
-python scripts/batch_sort_approved.py --dry-run
-python scripts/batch_sort_approved.py --merge       # also adds to data/gear.json
-```
-
-Batch-sort moves screenshots into final per-set folders and merges the items into `data/gear.json` (with dedup on name+IL).
-
-## Naming Convention for Batch Folders
-
-When intaking a new batch, create a subfolder named:
-
-```
-<class>-<type>-YYYY-MM-DD
-```
-
-Examples:
-- `paladin-gear-2026-05-25` — Paladin gear screenshots intaken on May 25
-- `bard-powers-2026-05-13` — Bard class powers
-- `warlock-gear-legacy-2026-05-13` — extra qualifier OK (e.g., "legacy")
-
-For non-class-specific items, drop the class prefix:
-- `mounts-2026-06-01`
-- `companions-2026-06-01`
-
-## Filename Convention Inside Batches
-
-```
-<Item Name>_IL<level>.png
-```
-
-Examples:
-- `Wintermarked Hunter Hood_IL5700.png`
-- `Trailblazer's Axes_IL500.png`
-
-For set-bonus detail panels, append `_details`:
-- `Wintermarked Grimoire of Rime_IL5800_details.png`
 
 ## Workflow
 
-1. New screenshots arrive (usually OneDrive Screenshots folder or a specific drop folder).
-2. **Read them** to identify name + item level.
-3. **Rename** to the convention above.
-4. **Move** into the right batch folder under `gear/`, `powers/`, etc.
-5. Run the appropriate intake script (e.g., `scripts/add_<class>_intake_<date>.py`).
-6. After intake, the batch folder serves as the source-of-truth screenshot archive — don't delete it; future verification depends on it.
+The six folders at the top (`_pending_review/`, `_ready_for_db/`, `_ready_to_add/`,
+`_already_in_db/`, `_skipped/`, `_trash/`) form the **processing pipeline** that
+applies to ANY type of screenshot — gear, powers, companions, mounts, etc.
+
+```
+   raw screenshots dropped in
+              ↓
+       _pending_review/         (1,469 files at last count)
+              ↓
+   python scripts/screenshot_reviewer.py
+   ├ auto-crops via OCR
+   ├ user reviews + manual crop if needed
+   └ Pass → saves crop to _ready_for_db/
+              ↓
+       _ready_for_db/           (cropped, awaiting rename)
+              ↓
+   python scripts/screenshot_renamer.py
+   ├ OCRs the crop to identify name + IL
+   ├ user reviews proposed filename
+   └ Pass → renames and moves to _ready_to_add/
+              ↓
+       _ready_to_add/           (cropped + named, ready for intake)
+              ↓
+   Hand off to Claude (or the intake script) for gear.json ingestion.
+   After processing, screenshot moves into the right archive folder
+   under gear/<class>-gear/ or powers/<class>-powers/ etc.
+```
+
+## Naming Convention
+
+Files inside any archive folder use:
+```
+<Item Name>_IL<level>.png
+```
+e.g. `Wintermarked Hunter Hood_IL5700.png`. For set-bonus detail panels:
+```
+<Set Name>_set_details.png
+```
 
 ## Cleanup History
 
-- 2026-05-26: Initial reorganization. 1,978 loose PNGs from inbox root moved to `gear/_uncategorized/` for later sorting into batches. 18 existing class-batch folders moved into `gear/` or `powers/` parents.
+- 2026-05-26: Initial reorganization. 1,978 loose PNGs from inbox root moved to
+  `gear/_uncategorized/` for sorting. 18 existing class-batch folders moved
+  into `gear/` or `powers/` parents.
+- 2026-05-27: Built screenshot reviewer + renamer apps. Renamed
+  `_uncategorized/` → `_pending_review/` and added `_approved/` (later renamed
+  to `_ready_for_db/`), `_ready_to_add/`, `_already_in_db/`, `_skipped/`,
+  `_trash/`. Date suffixes dropped from per-class archive folders
+  (e.g. `paladin-gear-2026-05-25/` + `paladin-gear-2026-05-27/` → `paladin-gear/`).
+- 2026-05-27: Workflow folders moved up one level — they were nested under
+  `gear/` but the same pipeline applies to powers / companions / mounts too,
+  so they now live at the inbox root.
