@@ -7,8 +7,11 @@ This is where raw screenshots land before they're processed into `data/*.json`.
 ```
 inbox/
 ├── gear/                  → gear/item screenshots
-│   ├── _uncategorized/    → loose files awaiting sorting into a batch
-│   └── <batch folders>    → e.g., paladin-gear-2026-05-25
+│   ├── _pending_review/   → unprocessed screenshots waiting for the reviewer
+│   ├── _approved/         → reviewed + passed (sidecar .json saved alongside the .png)
+│   ├── _skipped/          → "come back to" pile
+│   ├── _trash/            → OCR garbage, mis-screenshots, anything to drop
+│   └── <batch folders>    → final destination after batch-sort
 ├── powers/                → class power screenshots (At-Will, Encounter, Daily, Class Feature)
 │   └── <batch folders>    → e.g., barbarian-powers-2026-05-16
 ├── companions/            → companion screenshots (cards, enhancement icons, stats)
@@ -16,6 +19,30 @@ inbox/
 ├── enhancements/          → companion enhancement icons (small icons cropped from tooltips)
 └── other/                 → anything that doesn't fit (artifacts, consumables, boons, etc.)
 ```
+
+## Review workflow for the pending pile
+
+The `gear/_pending_review/` folder is fed into the desktop reviewer:
+
+```
+python scripts/screenshot_reviewer.py
+```
+
+See `scripts/SCREENSHOT_REVIEWER_README.md` for setup + usage. The flow:
+1. Reviewer reads each PNG from `_pending_review/`
+2. OCR pre-fills a form; you edit any errors
+3. **Pass** → screenshot + sidecar `.json` move to `_approved/`
+4. **Skip** → moves to `_skipped/` for later
+5. **Trash** → moves to `_trash/` to drop
+
+When `_approved/` has a batch of items, run:
+
+```
+python scripts/batch_sort_approved.py --dry-run
+python scripts/batch_sort_approved.py --merge       # also adds to data/gear.json
+```
+
+Batch-sort moves screenshots into final per-set folders and merges the items into `data/gear.json` (with dedup on name+IL).
 
 ## Naming Convention for Batch Folders
 
