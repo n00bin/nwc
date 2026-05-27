@@ -1,2 +1,5 @@
+# Inbox contents (screenshots) stay local — they're huge and don't need to be in git.
+# Exceptions: the README and this .gitignore itself.
 *
 !.gitignore
+!README.md
