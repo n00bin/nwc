@@ -1,6 +1,33 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "May 26, 2026",
+    title: "Add Missing Item in Toon Forge + Stable Planner Bonus Descriptions",
+    tags: ["Feature", "Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li><strong>+ Add Missing Item button in every Toon Forge gear picker.</strong> Found a piece of gear that isn't on the site? Open any gear slot, click the green <strong>+ Add Missing Item</strong> button at the top of the picker, and fill in a quick form: name, item level, Combined Rating, up to 6 stats (pick the stat name, type the +value), set name, in-game description, allowed classes (multi-select with an All toggle). The slot fills in automatically based on which picker you're in.</li>" +
+      "<li><strong>Items work in your build immediately.</strong> Hit <strong>Add to my build</strong> — the item equips right away with the stats you entered, so you can keep building without waiting. Your submission is also sent to the team for review.</li>" +
+      "<li><strong>Auto-cleanup when reviewed.</strong> When we add the verified item to the database (or decide it shouldn't be added), the next time you load Toon Forge your local placeholder is automatically cleaned up and your build switches to the verified version. No need to re-equip or re-add anything.</li>" +
+      "<li><strong>📋 Your Submissions panel</strong> in the Toon Forge hero area lets you see exactly which submissions are still pending review, which have been added, and which were declined — with admin notes for the declined ones so you know why.</li>" +
+      "<li><strong>Cleaner report formatting.</strong> Reports submitted via the ✎ correction pencil or the new + Add Missing Item button now read like plain English instead of dumping developer field paths and raw JSON. Easier for everyone (including us) to actually read.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Stable Planner — bonus descriptions everywhere.</strong> Two improvements to the insignia bonus UX:" +
+        "<ul>" +
+        "<li><strong>Picking a bonus:</strong> Clicking <strong>+ Add Bonus</strong> now opens a searchable popup where every bonus shows its name and full effect text side-by-side. Previously it was just a dropdown of cryptic names — no way for a new player to tell what each one did without picking blindly.</li>" +
+        "<li><strong>After adding:</strong> Each selected bonus shows as a small card with the full effect text directly under the name. Always visible, works on desktop and mobile.</li>" +
+        "</ul>" +
+      "</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li><strong>Ranger weapons batch — 27 new entries</strong> across artifact and Masterwork sets: Pilgrim (Eyepiercer, Exalted Eyepiercer), Pioneer Alqaws, Primal Tlahuitolli, Tyrant (Woundsender), Trailblazer's Axes, Howling Longbow, Hammerstone Bow, Blessed Blade, Celestial Bow of Dignity, Masterwork II/III Ranger weapons, Chultan Wootz Kilij. Stats verified from in-game screenshots at multiple item levels.</li>" +
+      "<li><strong>Warlock Jotunskar gear batch — 22 new Mod 33 items</strong> from Jotunskar (Master + Advanced) and The Biting Cold Campaign Store: 6 weapons in the Chilling Flow set (Wintermarked / Runefrost / Frostbound Grimoires + Pact Blades) and 16 Frostforged Warplate armor pieces — Hunter / Trail / Swift (Warlock + Wizard DPS) and Mender / Pilgrim (Warlock + Bard healer) variants. All stats and equip effects verified from in-game screenshots.</li>" +
+      "</ul>"
+  },
+  {
     date: "May 25, 2026",
     title: "Major Data Pass — Gear, Feats, Set Bonuses, Optimizer Fixes",
     tags: ["Feature", "Fix", "Data"],
