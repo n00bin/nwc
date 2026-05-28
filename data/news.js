@@ -1,6 +1,16 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "May 28, 2026",
+    title: "Ice Cold Aggression Insignia Requirement Updated (05/28 Patch)",
+    tags: ["Fix"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Ice Cold Aggression now requires Regal + Enlightened ×3.</strong> The 05/28/2026 game patch changed this insignia bonus's requirement from Regal / Illuminated / Enlightened / Enlightened to <strong>Regal / Enlightened / Enlightened / Enlightened</strong>. The Mounts page, the Insignia Calculator, and the Stable Planner all use the new requirement.</li>" +
+      "<li><strong>Fewer mounts can run it now.</strong> Because the bonus no longer uses an Illuminated insignia, mounts with an Illuminated-locked slot (such as Bestial Fire Archon) can no longer assemble the full set on their own. The bonus filter correctly shows only the mounts whose slots can hold Regal + 3 Enlightened.</li>" +
+      "</ul>"
+  },
+  {
     date: "May 26, 2026",
     title: "Add Missing Item in Toon Forge + Stable Planner Bonus Descriptions",
     tags: ["Feature", "Fix", "Data"],
