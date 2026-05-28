@@ -27,3 +27,7 @@ package.json
 package-lock.json
 _test_*.js
 _check_*.js
+
+# Python bytecode cache
+scripts/__pycache__/
+__pycache__/
