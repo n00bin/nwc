@@ -1096,6 +1096,20 @@
   var ROLE_OPTIONS = ["DPS", "Tank", "Healer"];
   var MAX_BONUSES_PER_LOADOUT = 5;
 
+  // How many copies of one bonus may run in a single loadout. A bonus stacks
+  // up to its maxStacks (1 = doesn't stack); bonuses without a maxStacks field
+  // have no special cap, so they're limited only by the loadout's slot count.
+  function maxCopiesForBonus(bonus) {
+    var cap = bonus && bonus.maxStacks ? bonus.maxStacks : MAX_BONUSES_PER_LOADOUT;
+    return Math.min(cap, MAX_BONUSES_PER_LOADOUT);
+  }
+
+  function countCopies(list, bid) {
+    var n = 0;
+    for (var i = 0; i < list.length; i++) if (list[i] === bid) n++;
+    return n;
+  }
+
   var plannerState = loadPlannerState();
   var plannerIdCounter = computeNextLoadoutId(plannerState.loadouts);
 
@@ -1493,7 +1507,10 @@
       var ld = findLoadout(bonusPickerActiveLoadoutId);
       if (!ld) return;
       if (ld.desiredBonuses.length >= MAX_BONUSES_PER_LOADOUT) return;
-      if (ld.desiredBonuses.indexOf(bid) !== -1) return; // already added
+      // Duplicates allowed: the same bonus can run on several mounts in one
+      // loadout (the sharing engine counts copies), but never more than the
+      // bonus stacks usefully.
+      if (countCopies(ld.desiredBonuses, bid) >= maxCopiesForBonus(bonusMap[bid])) return;
       ld.desiredBonuses.push(bid);
       savePlannerState();
       closeBonusPicker();
@@ -1517,13 +1534,25 @@
       var b = sorted[i];
       var desc = b.effectText || b.description || "";
       if (q && b.name.toLowerCase().indexOf(q) === -1 && desc.toLowerCase().indexOf(q) === -1) continue;
-      var isAdded = alreadyAdded.indexOf(b.id) !== -1;
+      // Count how many copies are already in this loadout (duplicates allowed).
+      var addedCount = countCopies(alreadyAdded, b.id);
+      var maxCopies = maxCopiesForBonus(b);
+      var loadoutFull = alreadyAdded.length >= MAX_BONUSES_PER_LOADOUT;
+      var atCap = addedCount >= maxCopies || loadoutFull;
       var cardStyle = "background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--radius-sm);padding:0.55rem 0.7rem;cursor:pointer;display:flex;flex-direction:column;gap:0.25rem;transition:border-color 0.15s;";
-      if (isAdded) cardStyle += "opacity:0.45;cursor:not-allowed;";
-      html += '<div class="planner-bonus-picker-card" data-bonus-id="' + b.id + '" style="' + cardStyle + '" ' + (isAdded ? 'data-disabled="1"' : '') + '>';
+      if (atCap) cardStyle += "opacity:0.45;cursor:not-allowed;";
+      html += '<div class="planner-bonus-picker-card" data-bonus-id="' + b.id + '" style="' + cardStyle + '"' + (atCap ? ' data-disabled="1"' : '') + '>';
       html += '<div style="display:flex;align-items:center;justify-content:space-between;gap:0.4rem;">';
       html += '<span style="font-weight:600;color:var(--text-primary);">' + escapeHtml(b.name) + '</span>';
-      if (isAdded) html += '<span style="font-size:0.7rem;color:var(--text-muted);">already added</span>';
+      var note = "";
+      if (addedCount > 0 && addedCount >= maxCopies) {
+        note = maxCopies === 1 ? "added (1× only)" : "max ×" + maxCopies + " reached";
+      } else if (addedCount > 0) {
+        note = "added ×" + addedCount + (maxCopies < MAX_BONUSES_PER_LOADOUT ? " of " + maxCopies : "");
+      } else if (loadoutFull) {
+        note = "loadout full";
+      }
+      if (note) html += '<span style="font-size:0.7rem;color:var(--text-muted);">' + note + '</span>';
       html += '</div>';
       if (desc) html += '<div style="font-size:0.8rem;color:var(--text-muted);line-height:1.4;">' + escapeHtml(desc) + '</div>';
       html += '</div>';
@@ -1533,11 +1562,6 @@
       html = '<div style="color:var(--text-muted);padding:1rem;text-align:center;">No bonuses match "' + escapeHtml(q) + '".</div>';
     }
     list.innerHTML = html;
-    // Block clicks on already-added cards
-    var cards = list.querySelectorAll(".planner-bonus-picker-card[data-disabled]");
-    for (var c = 0; c < cards.length; c++) {
-      cards[c].addEventListener("click", function (ev) { ev.stopPropagation(); });
-    }
   }
 
   function openBonusPicker(loadoutId) {
