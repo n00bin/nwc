@@ -2982,6 +2982,23 @@
       if (!saved || !saved.s) return false;
       const s = saved.s;
       Object.assign(state, s);
+      // Migrate any renamed/merged gear in the saved loadout so the slot keeps
+      // its item instead of silently going blank. Rewrites the stored name to
+      // the current canonical name and tells the player what changed.
+      if (state.gear && typeof GEAR_NAME_ALIASES !== "undefined") {
+        const _renamed = [];
+        for (const slot in state.gear) {
+          const oldName = state.gear[slot];
+          if (oldName && Object.prototype.hasOwnProperty.call(GEAR_NAME_ALIASES, oldName)) {
+            state.gear[slot] = GEAR_NAME_ALIASES[oldName];
+            _renamed.push({ from: oldName, to: GEAR_NAME_ALIASES[oldName] });
+          }
+        }
+        if (_renamed.length && typeof toast === "function") {
+          const r = _renamed[0];
+          setTimeout(() => toast(`"${r.from}" was renamed to "${r.to}" — your build was updated.`), 600);
+        }
+      }
       // Restore Map and Set from arrays
       state.boons = new Map(s.boons || []);
       state.buffs = new Set(s.buffs || []);
@@ -5511,6 +5528,18 @@
         .sort();
     }
 
+    // Renamed/merged gear: old saved name → current canonical name. When a
+    // build references an old name that no longer exists (e.g. a duplicate
+    // entry was removed and folded into a clearer-named one), resolve it here
+    // so the slot doesn't silently go blank. applyBuild() also rewrites these
+    // in state.gear on load and toasts the player. Keep keys exact (the name
+    // string the old build saved).
+    const GEAR_NAME_ALIASES = {
+      // Removed generic duplicate (old id 393, IL 3600). It was the Explosive
+      // Defense variant all along; fold into the labeled entry (id 447).
+      "Arcane Conduit Sigil": "Arcane Conduit Sigil — Explosive Defense"
+    };
+
     function findGearByName(name, slotType) {
       if (!name) return null;
       // When a slot is supplied, disambiguate against it (same-name items
@@ -5530,6 +5559,11 @@
         if (item.name !== name) continue;
         if (slotType && item.slot !== slotType) continue;
         return item;
+      }
+      // Last resort: the saved name may be an old name for a renamed/merged
+      // item. Resolve through the alias map and retry (once).
+      if (Object.prototype.hasOwnProperty.call(GEAR_NAME_ALIASES, name)) {
+        return findGearByName(GEAR_NAME_ALIASES[name], slotType);
       }
       return null;
     }
