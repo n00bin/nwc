@@ -7,6 +7,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ## Week of 2026-05-29
 
 ### Bug Fixes
+- Gear: fixed Bulwark of the Eternal Zulkirate (Eternal Dominion Armor) so its Ruthless Might (Greater) buff now applies in the builder. The 1.5% Critical Strike and Critical Severity per stack (up to 7.5% each at 5 stacks) was stored as text only, so the stat engine never counted it. It now contributes correctly as a conditional in-combat buff.
 - Mounts: fixed insignia-bonus matching for 4-slot mounts. The old logic only ever looked at the first 3 slots, which both hid valid bonuses and showed invalid ones. The matcher now follows the real rule: a mount's fixed (non-universal) slots are mandatory, so every bonus it forms must use them, while universal slots are optional fill. This means a mount with 4 locked slots can only form 4-insignia bonuses, and a mount with universal slots correctly lists exactly the bonuses it can actually build. Affects all 51 four-slot mounts.
 
 ### Data Additions
