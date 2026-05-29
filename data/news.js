@@ -2,6 +2,26 @@
 var NEWS_DATA = [
   {
     date: "May 29, 2026",
+    title: "Insignia Bonus Matching Fixes + Add Missing Enchantment",
+    tags: ["Feature", "Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li><strong>Fix the stat itself in the Toon Forge enchantment editor.</strong> The ✎ correction editor now lets you fix the stat name, not just its value. Each stat line in an enchant (Rating Stats, Percent Bonuses, and the Universal Offense/Defense/Utility stats) has a small ✎ on the stat name that opens a dropdown of the game's real stats. Pick the correct one and the value resets to 0 so you enter the right number — your build uses the corrected stat immediately, and a report is filed so we can fix it site-wide.</li>" +
+      "<li><strong>+ Add Missing Enchantment in Toon Forge.</strong> The enchantment pickers (Offense / Defense / Utility / Combat / Bonus) now have a green <strong>+ Add Missing Enchantment</strong> button, matching the gear flow. If an enchantment isn't in our list, add it yourself — it slots into your build right away with its stats, and a report is filed so we can add it site-wide. The form adapts to the slot: Universal enchants capture per-slot stats, while Combat/Bonus enchants capture rating + percent stats and an optional effect description. Pending, approved, and declined submissions show in <strong>My Contributions</strong> and clean up automatically once reviewed.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Mounts — insignia bonus matching for 4-slot mounts.</strong> The old logic only ever checked the first 3 slots, which both hid valid bonuses and showed invalid ones. It now follows the real rule: a mount's fixed (locked) slots are mandatory, so every bonus must use them, while universal slots are optional fill. A mount with 4 locked slots can only form 4-insignia bonuses; a mount with universal slots lists exactly the bonuses it can actually build. Affects all 51 four-slot mounts.</li>" +
+      "<li><strong>Toon Forge — bonus no longer turns off when you fill the 4th slot.</strong> A 3-insignia bonus on a 4-slot mount stayed active with 3 insignias but went inactive the moment you slotted a 4th, even though the extra insignia just adds stats. The builder now uses the same rule as the Mounts page: the bonus stays active as long as your fixed slots feed it and any leftover insignia sits in a universal slot. The bonus picker also now offers only bonuses a mount can actually run.</li>" +
+      "<li><strong>Gear — Bulwark of the Eternal Zulkirate (Eternal Dominion Armor).</strong> Its Ruthless Might (Greater) buff (1.5% Critical Strike and Critical Severity per stack, up to 7.5% each at 5 stacks) was stored as text only, so the stat engine never counted it. It now applies correctly as a conditional in-combat buff.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li><strong>Snowtusk insignia slots corrected</strong> to Regal / Illuminated / Universal / Universal (4th slot prefers Enlightened), verified in-game. Slots 3-4 were previously mis-recorded as locked Enlightened. Snowtusk now lists exactly its 5 three-insignia bonuses (Gladiator's Guile, Shepherd's Devotion, Wanderer's Fortune, Alchemist's Invigoration, Combatant's Maneuver) plus 7 four-insignia bonuses.</li>" +
+      "</ul>"
+  },
+  {
+    date: "May 29, 2026",
     title: "Toon Forge Auto-Save Fixed + Stackable Insignia Bonuses",
     tags: ["Feature", "Fix"],
     body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
