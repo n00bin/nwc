@@ -12,3 +12,4 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes
 - Black Scorpion (and 17 other companions) were missing from the Summoned Buffs list and the Toon Forge Party Buffs picker.
+- Enchantments: Celestial Jade's defense stat was wrong — it listed Deflect Severity but the enchant actually gives Critical Avoidance (2,700 at Celestial). Corrected, so Jade now shows Critical Strike / Critical Avoidance / Outgoing Healing. (Reports #71, #72)
