@@ -1,6 +1,19 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "May 29, 2026",
+    title: "Toon Forge Auto-Save Fixed + Stackable Insignia Bonuses",
+    tags: ["Feature", "Fix"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li><strong>Stable Planner — stack the same insignia bonus.</strong> You can now add the same insignia bonus to a loadout multiple times to plan stacked bonuses (like Ice Cold Aggression). Copies are capped at each bonus's max stacks (1× bonuses can't be duplicated) and at the 5-slot loadout limit; the picker greys out a bonus once its cap is reached.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Toon Forge now actually auto-saves your build.</strong> The \"Auto-saved\" label used to be cosmetic only — reloading the page or hitting the back button would wipe your work. Your current build now saves automatically as you edit and reloads when you come back, even after closing the tab. (Use <strong>📁 My Builds</strong> to keep multiple named builds.)</li>" +
+      "</ul>"
+  },
+  {
     date: "May 28, 2026",
     title: "Ice Cold Aggression Insignia Requirement Updated (05/28 Patch)",
     tags: ["Fix"],
