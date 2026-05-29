@@ -6850,6 +6850,96 @@
       return COMPANIONS_DATA.find(c => c.name === name) || null;
     }
 
+    // ---- Summoned-buff display + party combat-modifier helpers --------
+    // A companion's summonedBuff comes in several shapes:
+    //   • party stat buff:  { scope:"party", effects:[{stat,amount,type}] }
+    //   • enemy CA grant:   { scope:"enemy", effect:"combat_advantage_grant", uptime }
+    //   • enemy dmg debuff: { scope:"enemy", damageBoost, uptime? }  (target takes +X% dmg)
+    //   • enemy stat debuff:{ scope:"enemy", stats:{Stat:-N} }
+    //   • self buff:        { scope:"self",  stat/value | effect:"shield" | damageBoost }
+    //   • mixed:            { scope:"mixed", stats:{Stat:+N} }
+    // Returns a one-line human summary, a scope tag, and whether the buff
+    // actually feeds the player's numbers (true) or is shown for reference
+    // only (false — e.g. a self buff on an ALLY never reaches you).
+    const SUMMON_SCOPE_LABEL = { party: "Party", self: "Self", enemy: "Enemy Debuff", mixed: "Mixed" };
+    function summonedBuffDisplay(c) {
+      const sb = c && c.summonedBuff;
+      if (!sb) return { scope: "", scopeLabel: "", effText: "", contributes: false };
+      const scope = sb.scope || "party";
+      const scopeLabel = SUMMON_SCOPE_LABEL[scope] || scope;
+      let effText = sb.buff || "";
+      let contributes = false;
+      if (Array.isArray(sb.effects) && sb.effects.length) {
+        effText = sb.effects.map(e => `${e.amount > 0 ? "+" : ""}${e.amount}${e.type === "percent" ? "%" : ""} ${e.stat}`).join(", ");
+        contributes = scope === "party";
+      } else if (sb.effect === "combat_advantage_grant") {
+        effText = `Grants Combat Advantage vs target (${sb.uptime || 0}% uptime) — raises your effective CA uptime`;
+        contributes = true;
+      } else if (scope === "enemy" && typeof sb.damageBoost === "number") {
+        const up = (typeof sb.uptime === "number") ? sb.uptime : 100;
+        effText = `Enemy takes +${sb.damageBoost}% damage (${up}% uptime) — boosts your damage`;
+        contributes = true;
+      } else if (scope === "mixed" && sb.stats) {
+        const pos = Object.entries(sb.stats).filter(([, v]) => v > 0).map(([k, v]) => `+${v} ${k}`);
+        effText = (sb.buff || "") + (pos.length ? ` — applies ${pos.join(", ")} to your party` : "");
+        contributes = pos.length > 0;
+      } else {
+        // self buffs, enemy rating/percent stat debuffs, Riotous Rothe:
+        // genuine in-game effects we deliberately don't fold into YOUR
+        // numbers (they don't reach you, or the simplified fixed-enemy
+        // model can't quantify them). Shown for reference only.
+        effText = (sb.buff || "") + " (reference only — not added to your numbers)";
+        contributes = false;
+      }
+      return { scope, scopeLabel, effText, contributes };
+    }
+
+    // Aggregate the combat-only effects of the player's slotted party
+    // allies. These are NOT stat-sheet values — they feed the damage
+    // simulator only:
+    //   • CA grants raise effective flank uptime (union, never >100%)
+    //   • enemy "takes +X% damage" debuffs multiply your outgoing damage
+    // Returns { caUnion, caGrants[], dmgTaken, dmgSources[], info[] }.
+    function getPartySummonedCombatMods() {
+      const caGrants = [];     // {name, uptime 0..1}
+      const dmgSources = [];   // {name, pct 0..1}
+      const info = [];         // {name, text} shown but not calculated
+      const seen = new Set();
+      let spined = null, succubus = null;   // Succubus doesn't stack w/ Spined Devil
+      for (const name of (state.partyAllies || [])) {
+        if (!name || seen.has(name)) continue;
+        seen.add(name);
+        const c = findCompanionByName(name);
+        const sb = c && c.summonedBuff;
+        if (!sb) continue;
+        if (sb.effect === "combat_advantage_grant") {
+          caGrants.push({ name, uptime: Math.max(0, Math.min(1, (sb.uptime || 0) / 100)) });
+        } else if (sb.scope === "enemy" && typeof sb.damageBoost === "number") {
+          const up = (typeof sb.uptime === "number") ? sb.uptime / 100 : 1;
+          const pct = (sb.damageBoost / 100) * up;
+          if (name === "Spined Devil") spined = { name, pct };
+          else if (name === "Succubus") succubus = { name, pct };
+          else dmgSources.push({ name, pct });
+        } else if (Array.isArray(sb.effects) || (sb.scope === "mixed" && sb.stats)) {
+          // party stat buffs / Priestess — handled on the stat sheet, not here.
+        } else {
+          info.push({ name, text: sb.buff || "" });
+        }
+      }
+      // Succubus & Spined Devil don't stack — keep the stronger one.
+      if (spined && succubus) {
+        dmgSources.push(spined.pct >= succubus.pct ? spined : succubus);
+        info.push({ name: "Succubus", text: "Doesn't stack with Spined Devil — using the stronger debuff." });
+      } else if (spined) dmgSources.push(spined);
+      else if (succubus) dmgSources.push(succubus);
+      // Union of CA-grant uptimes: 1 − ∏(1 − uptime).
+      let miss = 1;
+      for (const g of caGrants) miss *= (1 - g.uptime);
+      const caUnion = caGrants.length ? (1 - miss) : 0;
+      const dmgTaken = dmgSources.reduce((s, x) => s + x.pct, 0);
+      return { caUnion, caGrants, dmgTaken, dmgSources, info };
+    }
+
     // Companion rarity → item-level mapping. Both CR and percent stats[]
     // scale linearly with IL. SINGLE_STAT and DOUBLE_STAT tables in the
     // CLAUDE.md companion notes both follow value/IL = constant, so a
@@ -7083,14 +7173,27 @@
         _seenPartyBuffs.add(compName);
         const comp = findCompanionByName(compName);
         const sb = comp && comp.summonedBuff;
-        if (!sb || !Array.isArray(sb.effects) || !sb.effects.length) continue;
+        if (!sb) continue;
         const ratingStats = {};
         const percentStats = {};
-        for (const eff of sb.effects) {
-          if (!eff || !eff.stat) continue;
-          const channel = (eff.type === "rating") ? ratingStats : percentStats;
-          channel[eff.stat] = (channel[eff.stat] || 0) + (eff.amount || 0);
+        if (Array.isArray(sb.effects) && sb.effects.length) {
+          for (const eff of sb.effects) {
+            if (!eff || !eff.stat) continue;
+            const channel = (eff.type === "rating") ? ratingStats : percentStats;
+            channel[eff.stat] = (channel[eff.stat] || 0) + (eff.amount || 0);
+          }
+        } else if ((sb.scope === "party" || sb.scope === "mixed") && sb.stats) {
+          // Plain {Stat:value} shape (e.g. Priestess of Sehanine Moonbow's
+          // +100 Critical Strike). Only positive, player-facing stats reach
+          // you; negative entries are enemy debuffs handled elsewhere.
+          for (const [stat, val] of Object.entries(sb.stats)) {
+            if (typeof val === "number" && val > 0) ratingStats[stat] = (ratingStats[stat] || 0) + val;
+          }
         }
+        // CA grants, enemy damage debuffs, self buffs and enemy stat
+        // debuffs contribute no stat-sheet value here — they're handled by
+        // getPartySummonedCombatMods() (sim) or shown reference-only.
+        if (!Object.keys(ratingStats).length && !Object.keys(percentStats).length) continue;
         buffs.push({
           source: `Party Buff: Ally's ${compName}`,
           ratingStats,
@@ -10016,8 +10119,12 @@
       // NW party = 5 (dungeon) or 10 (trial). User picks one ally
       // companion + one ally mount equip power per slot (allies have both).
       // Duplicates disabled per list (same buff doesn't stack).
+      // Every companion with a summoned buff is selectable — party stat
+      // buffs, enemy debuffs (CA grants, "takes more damage"), self buffs
+      // and mixed. How each one actually affects your numbers is handled
+      // downstream (stat sheet, damage sim, or shown reference-only).
       const partyBuffCompanions = (typeof COMPANIONS_DATA !== "undefined")
-        ? COMPANIONS_DATA.filter(c => c.summonedBuff && c.summonedBuff.scope === "party" && Array.isArray(c.summonedBuff.effects)).slice().sort((a,b) => a.name.localeCompare(b.name))
+        ? COMPANIONS_DATA.filter(c => c.summonedBuff).slice().sort((a,b) => a.name.localeCompare(b.name))
         : [];
       const partyMountPowersInner = (typeof MOUNT_EQUIP_POWERS_DATA !== "undefined")
         ? MOUNT_EQUIP_POWERS_DATA.filter(ep => Array.isArray(ep.partyEffects)).slice().sort((a,b) => a.name.localeCompare(b.name))
@@ -10029,12 +10136,12 @@
         // Ensure the array is the right length without losing existing picks
         while (state.partyAllies.length < slotCount) state.partyAllies.push("");
         if (state.partyAllies.length > slotCount) state.partyAllies = state.partyAllies.slice(0, slotCount);
-        // Build effect summary lookup
-        const effSummary = {};
+        // Build effect summary + scope tag lookup (handles every buff shape).
+        const effSummary = {}, scopeTag = {};
         for (const c of partyBuffCompanions) {
-          effSummary[c.name] = c.summonedBuff.effects.map(e =>
-            `${e.amount > 0 ? "+" : ""}${e.amount}${e.type === "percent" ? "%" : ""} ${e.stat}`
-          ).join(", ");
+          const d = summonedBuffDisplay(c);
+          effSummary[c.name] = d.effText;
+          scopeTag[c.name] = d.scopeLabel;
         }
         const taken = new Set(state.partyAllies.filter(x => x));
         html += `<div class="boon-tier" style="margin-top:0.8rem;">
@@ -10052,15 +10159,33 @@
             </div>
           </div>`;
         // Companion slot subsection
+        const SCOPE_COLOR = { Party: "#4caf50", Self: "#42a5f5", "Enemy Debuff": "#ef5350", Mixed: "#ffb300" };
+        const scopeTagHtml = (name) => {
+          const lbl = scopeTag[name]; if (!lbl) return "";
+          const col = SCOPE_COLOR[lbl] || "var(--text-dim)";
+          return ` <span style="font-size:0.62rem;font-weight:600;padding:0 0.3rem;border-radius:3px;border:1px solid ${col};color:${col};vertical-align:middle;">${lbl}</span>`;
+        };
         if (partyBuffCompanions.length) {
           html += `<div style="margin-top:0.4rem;font-size:0.78rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;">Ally summoned companions</div>`;
+          // Aggregate combat-only effects from the slotted allies (CA grants
+          // raise flank uptime; enemy "takes +dmg" debuffs boost damage).
+          const pmods = getPartySummonedCombatMods();
+          const aggBits = [];
+          if (pmods.caUnion > 0) aggBits.push(`effective Combat Advantage uptime +${Math.round(pmods.caUnion * 100)}% (${pmods.caGrants.map(g => g.name).join(", ")})`);
+          if (pmods.dmgTaken > 0) aggBits.push(`enemy takes +${(pmods.dmgTaken * 100).toFixed(1)}% damage (${pmods.dmgSources.map(s => s.name).join(", ")})`);
+          if (aggBits.length) {
+            html += `<div style="font-size:0.72rem;color:var(--gold);margin:0.15rem 0 0.2rem;">⚔ Applied to your damage sim: ${aggBits.join(" · ")}</div>`;
+          }
+          if (pmods.info.length) {
+            html += `<div style="font-size:0.7rem;color:var(--text-dim);margin-bottom:0.2rem;">ⓘ Reference-only (no effect on your numbers): ${pmods.info.map(x => x.name).join(", ")}</div>`;
+          }
           for (let i = 0; i < slotCount; i++) {
             const picked = state.partyAllies[i] || "";
             const desc = picked ? effSummary[picked] : "click to pick an ally companion";
             const chipLabel = picked ? `👥 ${picked}` : "+ Pick ally";
             html += `<div class="boon-row ${picked ? "has-pts" : ""}" data-party-slot-pick="${i}" style="cursor:pointer;">
               <div class="boon-row-info">
-                <div class="boon-row-name">Ally slot ${i + 1} — ${picked || "(empty)"}</div>
+                <div class="boon-row-name">Ally slot ${i + 1} — ${picked || "(empty)"}${picked ? scopeTagHtml(picked) : ""}</div>
                 <div class="boon-row-effect">${desc}</div>
               </div>
               <div class="boon-counter"><span style="font-size:0.75rem;color:${picked?'var(--gold)':'var(--text-dim)'};">${chipLabel}</span></div>
@@ -10208,19 +10333,15 @@
               if (c.__none) {
                 return { name: c.name, meta: "", desc: "Clears this ally slot." };
               }
-              // Only show the party buff — that's the only thing that
-              // applies to the user when this companion is on an ally.
-              // Active-slot bonus / proc / CR don't matter (those need
-              // the companion in YOUR slot, not your ally's).
-              const eff = c.summonedBuff && Array.isArray(c.summonedBuff.effects)
-                ? c.summonedBuff.effects.map(e => `${e.amount > 0 ? "+" : ""}${e.amount}${e.type === "percent" ? "%" : ""} ${e.stat}`).join(", ")
-                : "(no structured party effects)";
-              const buffText = (c.summonedBuff && c.summonedBuff.buff) || "";
+              // Show the summoned-buff summary + scope tag. Only the
+              // summoned buff matters when this companion is on an ALLY;
+              // active-slot bonus / proc / CR need it in YOUR slot.
+              const d = summonedBuffDisplay(c);
               const dup = taken.has(c.name) ? " · already in another slot" : "";
               return {
                 name: c.name + dup,
-                meta: `Party buff: ${eff}`,
-                desc: buffText
+                meta: `[${d.scopeLabel}] ${d.effText}`,
+                desc: (c.summonedBuff && c.summonedBuff.buff) || ""
               };
             },
             onPick: (c) => {
@@ -10805,6 +10926,13 @@
 
       const e = getEnemyStats();
 
+      // Party allies' combat-only effects (CA grants + enemy "takes more
+      // damage" debuffs). Combine the CA-grant uptime with the player's own
+      // flanking slider as a UNION so we never double-count or exceed 100%.
+      const pmods = getPartySummonedCombatMods();
+      const sliderFlank = Math.max(0, Math.min(1, state.flankUptime || 0));
+      const effFlank = pmods.caUnion > 0 ? (1 - (1 - sliderFlank) * (1 - pmods.caUnion)) : sliderFlank;
+
       // Hide the flank slider in healer mode — heals don't have flank.
       const flankField = document.getElementById("sim-flank-field");
       if (flankField) flankField.style.display = isHealer ? "none" : "";
@@ -10907,7 +11035,8 @@
         // -------------------------------------------------------
         // DPS / TANK MODE: full damage formula
         // -------------------------------------------------------
-        const baseDmg = baseVal;
+        // Party "enemy takes +X% damage" debuffs scale every hit.
+        const baseDmg = baseVal * (1 + pmods.dmgTaken);
         const powerMult     = 1 + power;
         const flankBonus    = 1 + Math.max(0, ca       - e.awareness);
         const critBonus     = 1 + Math.max(0, critSev  - e.critAvoid);
@@ -10923,7 +11052,7 @@
           return Math.round(d);
         };
 
-        const FLANK_UPTIME = Math.max(0, Math.min(1, state.flankUptime || 0));
+        const FLANK_UPTIME = effFlank;   // your slider unioned with ally CA grants
         const pCrit    = Math.max(0, Math.min(1, critStrike));
         const pDeflect = Math.max(0, Math.min(1, e.deflect));
         const nonDefl  = 1 - pDeflect;
@@ -10958,11 +11087,20 @@
                        :            "Average damage per hit";
       const valueLabel = isHealer ? "Heal" : isTank ? "Damage taken" : "Damage";
 
+      // Explain any party-ally combat effects folded into the DPS numbers.
+      let partyNote = "";
+      if (!isHealer && !isTank && (pmods.caUnion > 0 || pmods.dmgTaken > 0)) {
+        const bits = [];
+        if (pmods.caUnion > 0) bits.push(`effective CA uptime ${Math.round(effFlank * 100)}% (allies: ${pmods.caGrants.map(g => g.name).join(", ")})`);
+        if (pmods.dmgTaken > 0) bits.push(`+${(pmods.dmgTaken * 100).toFixed(1)}% enemy damage taken (${pmods.dmgSources.map(s => s.name).join(", ")})`);
+        partyNote = `<div style="font-size:0.74rem;color:var(--gold);margin:0.3rem 0 0.1rem;">⚔ Party allies applied: ${bits.join("; ")}</div>`;
+      }
+
       body.innerHTML = `
         <div class="sim-hero">
           <div class="sim-hero-label">${heroLabel}</div>
           <div class="sim-hero-value">${expected.toLocaleString()}</div>
-        </div>` + rows.map(row => `
+        </div>${partyNote}` + rows.map(row => `
         <div class="sim-card">
           <div class="sim-card-title">
             <span class="sim-card-icon">${row.icon}</span>${row.sc}
@@ -11008,8 +11146,8 @@
           : ["Power", "Combat Advantage", "Critical Severity", "Critical Strike", "Accuracy"];
 
         const advisorTIL = TIL;
-        const advisorBaseVal = (mag / 100) * (advisorTIL / 10) * roleMult;
-        const FLANK_UPTIME_ADV = Math.max(0, Math.min(1, state.flankUptime || 0));
+        const advisorBaseVal = (mag / 100) * (advisorTIL / 10) * roleMult * (1 + pmods.dmgTaken);
+        const FLANK_UPTIME_ADV = effFlank;
 
         // Damage-mode expected calc
         function expectedDmg(p, c, cs, cst, ac) {
