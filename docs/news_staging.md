@@ -16,6 +16,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Gear: Bloodwoven Signs (Critical Empowerment), Shirt version, was showing Outgoing Healing where it should show Forte. Corrected to Forte 1,276 to match the in-game card. (Report #49)
 - Gear: removed a duplicate, generically-named "Arcane Conduit Sigil" — it was the Explosive Defense variant all along, identical to the properly-named entry. Toon Forge now auto-updates any saved build that had the old one equipped, so nothing breaks. (Report #65)
 - Gear: removed a second broken generic entry, "Arcane Conduit Insignia" — its stats and our in-game screenshot show it's the Challenger's Awareness variant (its old bonus text was wrong). Builder auto-updates affected saved builds. (found while verifying Report #41)
+- Gear: Arcane Conduit Insignia (Corrupt Power) — fixed its third stat from Power to Defense to match the in-game card; its Corrupt Power bonus (+5% Power, −7.5% Incoming Healing) was verified correct from an in-game screenshot. (Report #41)
 
 ### Data Additions
 - **Gear database — screenshot intake backlog fully cleared.** Worked through the remaining gear card screenshots and added every genuinely-new item. Final additions this session: the Wizard Reinforced Dragonflight Assault/Raid set, Duergar Wizard Orb & Talisman, Weathered Bracers of the Successor (Ranger), the Wintermarked & Frostbound "Chilling Flow" weapons, the Wintermarked Skirmisher armor set, the Stormforged Orb, Huntsman Assault Cap, and more.
