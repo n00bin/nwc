@@ -1,5 +1,16 @@
 # Data Issues To Investigate
 
+## Arcane Conduit Insignia — Corrupt Power: flat vs % Power (Report #41, OPEN)
+
+Player reports the "Corrupt Power" bonus shows **+11,250 Power** in-game; our data
+stores **+5% Power, -7.5% Incoming Healing** (id 451, Shirt, IL 3800, Soul Harvest).
+`5% × ~225k Power = 11,250`, so the player is likely reading the game's flat-converted
+display of our +5% — i.e. our data is probably correct. **Not certain:** we have NO
+screenshot of the Corrupt Power variant (we have all six *other* Arcane Conduit IL 3800
+bonus variants, just not this one). Report reopened to **New** pending an in-game tooltip
+of the Corrupt Power piece. Also verify the **slot**: id 448 (Challenger's Awareness) is
+Pants but id 451 (Corrupt Power) is Shirt for the same Insignia — one is wrong.
+
 ## Missing Gear Sets — flagged by community (Report #33, 2026-05-26)
 
 Player report flagged the following gear as missing from the site:
