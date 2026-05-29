@@ -3920,9 +3920,13 @@
             if (!obj || typeof obj !== "object" || Array.isArray(obj)) continue;
             const keys = Object.keys(obj);
             if (!keys.length) continue;
+            // Combat-stat maps (ratingStats / percentStats) get the stat-name
+            // dropdown on every item type. abilityBonuses stays value-only —
+            // those are ability scores (STR/DEX/…), a different list.
+            const editableMap = desc.editableKey || field === "ratingStats" || field === "percentStats";
             secHtml += `<div class="cc-subsection-title">${_esc(label)}</div>`;
             for (const k of keys) {
-              if (desc.editableKey) {
+              if (editableMap) {
                 secHtml += _ccStatRow(field, k, obj[k]);
               } else {
                 secHtml += r(k, obj[k], `${field}.${k}`, "num");
@@ -3941,9 +3945,10 @@
             if (!obj || typeof obj !== "object" || Array.isArray(obj)) continue;
             const keys = Object.keys(obj);
             if (!keys.length) continue;
+            const editableMap = desc.editableKey || field.indexOf("universal.") === 0;
             secHtml += `<div class="cc-subsection-title">${_esc(label)}</div>`;
             for (const k of keys) {
-              if (desc.editableKey) {
+              if (editableMap) {
                 secHtml += _ccStatRow(field, k, obj[k]);
               } else {
                 secHtml += r(k, obj[k], `${field}.${k}`, "num");
@@ -4368,9 +4373,16 @@
 
       // Build the inline editor
       const useTextarea = kind === "longtext" || kind === "json";
+      // A text field that NAMES a combat stat (array rows like stats[0].stat or
+      // equipBonuses[0].stat, or a top-level "stat") gets a dropdown instead of
+      // a free-text box, so the chosen name always matches what the engine
+      // expects. (Map stat keys use the separate kind="stat" path above.)
+      const isStatNameField = kind === "text" && (field === "stat" || /\.stat$/.test(field));
       const editHtml = `
         <div class="cc-row-edit" data-editing="${_esc(field)}" data-kind="${_esc(kind)}">
-          ${useTextarea
+          ${isStatNameField
+            ? `<select class="cc-input">${_ccStatOptionsHtml(current)}</select>`
+            : useTextarea
             ? `<textarea class="cc-input" style="${kind === 'json' ? 'font-family:monospace;font-size:0.8rem;min-height:8rem;' : ''}">${_esc(current)}</textarea>`
             : `<input type="text" class="cc-input" value="${_esc(current)}" inputmode="${kind === 'num' ? 'decimal' : 'text'}">`}
           <button class="cc-save" title="Save">✓</button>
@@ -4629,6 +4641,20 @@
         "Action Point Gain", "Recharge Speed", "Movement Speed", "Stamina Regeneration",
         "Outgoing Healing", "Incoming Healing", "Overall Outgoing Healing"
       ];
+    }
+
+    // Build <option> tags for a stat dropdown, selecting `current` (and keeping
+    // it as an option even if it's not in the canonical list, so a stat we don't
+    // recognize is never silently dropped).
+    function _ccStatOptionsHtml(current) {
+      const cur = current == null ? "" : String(current);
+      const curLabel = _ccStatLabel(cur);
+      const opts = _ccStatOptions();
+      if (cur && opts.indexOf(curLabel) === -1) opts.unshift(curLabel);
+      return opts.map(function (o) {
+        const sel = (o === curLabel) ? " selected" : "";
+        return `<option value="${_esc(o)}"${sel}>${_esc(o)}</option>`;
+      }).join("");
     }
 
     // Turn a stored stat key (often CamelCase, e.g. "CriticalStrike") into its
