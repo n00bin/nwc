@@ -9,10 +9,13 @@ Tooltip confirms the equip bonus IS **+5% Power, -7.5% Incoming Healing** (playe
 Separate bug fixed while verifying: id 451's third rating stat was **Power 1197**, in-game
 it's **Defense 1197** — corrected.
 
-STILL OPEN — slot inconsistency: id 448 (Challenger's Awareness) is **Pants** but id 451
-(Corrupt Power) is **Shirt** for the same "Arcane Conduit Insignia" piece. Reports #34/#35
-ruled Insignia → Shirt, so id 448 is likely wrong (should be Shirt). Needs a slot-confirming
-screenshot of the Challenger's Awareness variant.
+SLOTS CONFIRMED (n00b, 2026-05-29): the two Insignia variants are in DIFFERENT slots —
+Challenger's Awareness = **Pants** (id 448), Corrupt Power = **Shirt** (id 451). Both are
+correct in the data. **Lesson: slot is per bonus-variant, NOT per piece-name** — do not
+infer a piece's slot from another variant with the same name. (An earlier "consistency"
+edit that flipped 448 to Shirt was reverted.) By the same logic the Critical Momentum
+Crests (388/452, Shirt) are NOT assumed wrong just because the Combatant's Advantage
+Crest (445) is Pants — leave them unless a screenshot says otherwise.
 
 ## Missing Gear Sets — flagged by community (Report #33, 2026-05-26)
 
