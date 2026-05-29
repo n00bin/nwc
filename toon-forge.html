@@ -1046,6 +1046,23 @@
       color: #000;
       border-color: var(--amber, #f0883e);
     }
+    /* Universal-enchant per-slot stat groups in the Add Missing Enchantment modal */
+    .ame-uni-group {
+      border: 1px solid var(--border, #2a2f37);
+      border-radius: 6px;
+      padding: 0.5rem 0.6rem;
+      margin-bottom: 0.5rem;
+      display: flex; flex-direction: column; gap: 0.4rem;
+    }
+    .ame-uni-group.active {
+      border-color: var(--amber, #f0883e);
+      background: rgba(240, 136, 62, 0.06);
+    }
+    .ame-group-title {
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--text-mute);
+    }
+    .ame-uni-group.active .ame-group-title { color: var(--amber, #f0883e); }
     /* Persistent corrections callout shown in the hero. Catches new
        users before they start building so they know the ✎ pattern
        exists on every picker row. */
@@ -3330,6 +3347,7 @@
       // doesn't also trigger the row's pick handler.
       const showPencil = !!_pickerState.dataType;
       const isGearPicker = _pickerState.dataType === "gear" && _pickerState.slot;
+      const isEnchantPicker = _pickerState.dataType === "enchant" && _pickerState.enchantSlotType;
       if (showPencil) {
         html += `<div class="picker-tip">
           <span class="picker-tip-icon">💡</span>
@@ -3342,6 +3360,13 @@
           <span style="font-size:1.1em;">＋</span>
           <span>Add Missing Item</span>
           <span class="picker-add-missing-hint">Don't see what you need? Add the gear yourself — it'll show up in your build right away.</span>
+        </button>`;
+      }
+      if (isEnchantPicker) {
+        html += `<button id="picker-add-missing-enchant" class="picker-add-missing-btn" type="button">
+          <span style="font-size:1.1em;">＋</span>
+          <span>Add Missing Enchantment</span>
+          <span class="picker-add-missing-hint">Don't see your enchantment? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
       }
       if (_pickerState.allowNone !== false) {
@@ -3388,6 +3413,13 @@
         addBtn.addEventListener("click", (e) => {
           e.stopPropagation();
           openAddMissingItemModal(_pickerState.slot, _pickerState.className || (window.state && state.class));
+        });
+      }
+      const addEnchBtn = document.getElementById("picker-add-missing-enchant");
+      if (addEnchBtn) {
+        addEnchBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openAddMissingEnchantModal(_pickerState.enchantSlotType);
         });
       }
       list.querySelectorAll("[data-pick-none]").forEach(el => {
@@ -4679,8 +4711,15 @@
 
     /* ===== Enchant + Overload helpers ===== */
     function findEnchantByName(name) {
-      if (!name || typeof ENCHANTS_DATA === "undefined") return null;
-      return ENCHANTS_DATA.find(e => e.name === name) || null;
+      if (!name) return null;
+      // Canonical data first, then player-added enchants (so an official entry
+      // always wins over a local copy of the same name once it's merged in).
+      if (typeof ENCHANTS_DATA !== "undefined") {
+        const hit = ENCHANTS_DATA.find(e => e.name === name);
+        if (hit) return hit;
+      }
+      const userEnch = (typeof getUserAddedEnchants === "function") ? getUserAddedEnchants() : [];
+      return userEnch.find(e => e.name === name) || null;
     }
     function getEnchantList() {
       if (typeof ENCHANTS_DATA === "undefined") return [];
@@ -5613,6 +5652,356 @@
       closeAddMissingItemModal();
       if (typeof closePicker === "function") closePicker();
     }
+
+    /* ===== User-added enchantments (locally) =====
+       Mirrors the user-added gear flow. Players can add a missing enchantment
+       via the "+ Add Missing Enchantment" button in any enchant picker. The
+       enchant is saved to localStorage so it works in the player's build
+       immediately, and an admin report is filed so it can be reviewed and
+       merged into the canonical enchants.json for everyone.
+       Stored with `__userAdded: true` and negative ids (separate id space from
+       gear — findEnchantByName matches on name, so ids never collide). */
+    const USER_ENCHANT_KEY = "nwcb_user_added_enchants_v1";
+    function getUserAddedEnchants() {
+      try {
+        const raw = localStorage.getItem(USER_ENCHANT_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveUserAddedEnchants(list) {
+      try { localStorage.setItem(USER_ENCHANT_KEY, JSON.stringify(list)); }
+      catch (e) { /* quota — ignore */ }
+    }
+    function addUserEnchant(item) {
+      const list = getUserAddedEnchants();
+      const minId = list.reduce((m, x) => Math.min(m, x.id || 0), 0);
+      item.id = (minId < 0 ? minId : 0) - 1;
+      item.__userAdded = true;
+      item.addedAt = new Date().toISOString();
+      list.push(item);
+      saveUserAddedEnchants(list);
+      return item;
+    }
+    // Remove a user-added enchant by name from every enchant slot it occupies.
+    // Used by reconciliation when a submission is approved (and the canonical
+    // entry takes over) or declined.
+    function clearEnchantFromSlots(name) {
+      if (!name || !state.enchants) return;
+      const e = state.enchants;
+      ["offense", "defense"].forEach(fam => {
+        if (Array.isArray(e[fam])) {
+          for (let i = 0; i < e[fam].length; i++) {
+            if (e[fam][i] === name) e[fam][i] = null;
+          }
+        }
+      });
+      ["utility", "combat", "bonus"].forEach(fam => {
+        if (e[fam] === name) e[fam] = null;
+      });
+    }
+
+    /* ===== Add Missing Enchantment modal =====
+       The form adapts to the slot family the player opened the picker from:
+       - offense / defense / utility  → a Universal enchant (morphs per slot;
+         capture stats for each of the three sub-slots)
+       - combat / bonus               → a flat enchant (rating + percent stats,
+         plus an optional in-game effect description) */
+    const ENCH_STAT_OPTIONS = AMI_STAT_OPTIONS.slice();           // rating stats
+    const ENCH_PCT_STAT_OPTIONS = AMI_STAT_OPTIONS.concat(["Dmg Bonus"]); // % stats
+
+    function _ameStatRows(prefix, count, optionList) {
+      let html = "";
+      for (let i = 0; i < count; i++) {
+        html += `
+          <div class="ami-stat-row">
+            <select class="${prefix}-name" data-row="${i}">
+              <option value="">— stat ${i + 1} —</option>
+              ${optionList.map(s => `<option value="${s}">${s}</option>`).join("")}
+            </select>
+            <input type="number" class="${prefix}-value" data-row="${i}" placeholder="value" step="any">
+          </div>`;
+      }
+      return html;
+    }
+
+    function ensureAddMissingEnchantDOM() {
+      if (document.getElementById("ame-overlay")) return;
+      const overlay = document.createElement("div");
+      overlay.id = "ame-overlay";
+      overlay.className = "ami-overlay";
+
+      // Universal sub-slot groups (offense / defense / utility)
+      const uniGroups = ["offense", "defense", "utility"].map(fam => `
+        <div class="ame-uni-group" data-fam="${fam}">
+          <div class="ame-group-title">In ${fam[0].toUpperCase() + fam.slice(1)} slot</div>
+          ${_ameStatRows("ame-u-" + fam, 3, ENCH_STAT_OPTIONS)}
+        </div>`).join("");
+
+      overlay.innerHTML = `
+        <div class="ami-panel">
+          <div class="ami-header">
+            <h3>Add Missing Enchantment</h3>
+            <button class="ami-close" id="ame-close" type="button">×</button>
+          </div>
+          <div class="ami-body">
+            <div class="ami-row">
+              <label>Slot</label>
+              <input type="text" id="ame-slot" readonly>
+            </div>
+            <div class="ami-row">
+              <label>Enchantment Name <span class="req">*</span></label>
+              <input type="text" id="ame-name" placeholder="e.g. Celestial Radiant" maxlength="120" required>
+            </div>
+            <div class="ami-row">
+              <label>Item Level <span class="req">*</span></label>
+              <input type="number" id="ame-il" min="0" step="1" placeholder="e.g. 1800" required>
+            </div>
+
+            <div id="ame-universal-section">
+              <div class="ami-row">
+                <label>Per-slot stats — a Universal enchant gives different stats in each slot. Fill in what you can (the slot you're using is highlighted).</label>
+              </div>
+              ${uniGroups}
+            </div>
+
+            <div id="ame-simple-section">
+              <div class="ami-row">
+                <label>Rating stats (pick the stat, type the +value)</label>
+                ${_ameStatRows("ame-r", 2, ENCH_STAT_OPTIONS)}
+              </div>
+              <div class="ami-row">
+                <label>Percent stats (e.g. +12% Dmg Bonus)</label>
+                ${_ameStatRows("ame-p", 2, ENCH_PCT_STAT_OPTIONS)}
+              </div>
+              <div class="ami-row">
+                <label>In-Game Effect / Description (optional)</label>
+                <textarea id="ame-desc" rows="3" placeholder="Copy the enchant's effect text from the tooltip if any." maxlength="2000"></textarea>
+              </div>
+            </div>
+
+            <div class="ami-row">
+              <label>Combined Rating <span class="req">*</span></label>
+              <input type="number" id="ame-cr" min="0" step="1" placeholder="e.g. 1620">
+            </div>
+            <div class="ami-row">
+              <label>Where you got it / anything else useful (optional)</label>
+              <textarea id="ame-notes" rows="2" placeholder="e.g. 'Refined from a Radiant Enchantment, Rank 15.'" maxlength="600"></textarea>
+            </div>
+          </div>
+          <div class="ami-footer">
+            <button class="ami-save-btn" id="ame-save" type="button">Add to my build</button>
+            <div class="ami-msg" id="ame-msg"></div>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target.id === "ame-overlay") closeAddMissingEnchantModal();
+      });
+      document.getElementById("ame-close").addEventListener("click", closeAddMissingEnchantModal);
+      document.getElementById("ame-save").addEventListener("click", saveAddMissingEnchant);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("ame-overlay").classList.contains("open")) {
+          closeAddMissingEnchantModal();
+        }
+      });
+    }
+
+    let _ameSlotType = null;   // offense | defense | utility | combat | bonus
+    // offense/defense/utility share the "Universal" enchant family.
+    function _ameIsUniversal(slotType) {
+      return slotType === "offense" || slotType === "defense" || slotType === "utility";
+    }
+
+    function openAddMissingEnchantModal(slotType) {
+      ensureAddMissingEnchantDOM();
+      _ameSlotType = slotType || "offense";
+      const isUni = _ameIsUniversal(_ameSlotType);
+
+      // Reset shared fields
+      document.getElementById("ame-slot").value = _ameSlotType[0].toUpperCase() + _ameSlotType.slice(1);
+      document.getElementById("ame-name").value = "";
+      document.getElementById("ame-il").value = isUni ? "1800" : "";
+      document.getElementById("ame-cr").value = isUni ? "1620" : "0";
+      document.getElementById("ame-notes").value = "";
+      const descEl = document.getElementById("ame-desc");
+      if (descEl) descEl.value = "";
+      document.querySelectorAll("#ame-overlay select").forEach(el => el.value = "");
+      document.querySelectorAll("#ame-overlay input[type='number'].ame-u-offense-value, #ame-overlay input.ame-u-defense-value, #ame-overlay input.ame-u-utility-value, #ame-overlay input.ame-r-value, #ame-overlay input.ame-p-value")
+        .forEach(el => el.value = "");
+
+      // Show only the section that matches the slot family
+      document.getElementById("ame-universal-section").style.display = isUni ? "" : "none";
+      document.getElementById("ame-simple-section").style.display = isUni ? "none" : "";
+
+      // Highlight the active sub-slot group for Universal enchants
+      document.querySelectorAll(".ame-uni-group").forEach(g => {
+        g.classList.toggle("active", isUni && g.dataset.fam === _ameSlotType);
+      });
+
+      const msg = document.getElementById("ame-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+      const saveBtn = document.getElementById("ame-save");
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      document.getElementById("ame-overlay").classList.add("open");
+      setTimeout(() => document.getElementById("ame-name").focus(), 50);
+    }
+
+    function closeAddMissingEnchantModal() {
+      const o = document.getElementById("ame-overlay");
+      if (o) o.classList.remove("open");
+    }
+
+    // Collect {stat: value} from a paired set of .NAME / .VALUE inputs.
+    function _ameCollectStats(nameClass, valueClass) {
+      const out = {};
+      const names = document.querySelectorAll("#ame-overlay ." + nameClass);
+      const values = document.querySelectorAll("#ame-overlay ." + valueClass);
+      names.forEach((sel, i) => {
+        const sName = sel.value;
+        const sVal = parseFloat(values[i] ? values[i].value : "");
+        if (sName && !isNaN(sVal)) out[sName] = sVal;
+      });
+      return out;
+    }
+
+    async function saveAddMissingEnchant() {
+      const msg = document.getElementById("ame-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+
+      const name = document.getElementById("ame-name").value.trim();
+      const il   = parseInt(document.getElementById("ame-il").value, 10);
+      const crStr = document.getElementById("ame-cr").value;
+      const cr   = parseInt(crStr, 10) || 0;
+      const notes = document.getElementById("ame-notes").value.trim();
+      const isUni = _ameIsUniversal(_ameSlotType);
+
+      if (name.length < 2) { msg.textContent = "Enchantment name is required."; msg.className = "ami-msg error"; return; }
+      if (!il || il < 0)   { msg.textContent = "Item Level is required."; msg.className = "ami-msg error"; return; }
+
+      // Build the enchant object in the shape the engine expects.
+      let item, reportStatLines = [];
+      if (isUni) {
+        const universal = {
+          offense: _ameCollectStats("ame-u-offense-name", "ame-u-offense-value"),
+          defense: _ameCollectStats("ame-u-defense-name", "ame-u-defense-value"),
+          utility: _ameCollectStats("ame-u-utility-name", "ame-u-utility-value")
+        };
+        const anyStat = ["offense","defense","utility"].some(f => Object.keys(universal[f]).length);
+        if (!anyStat) { msg.textContent = "Add at least one stat for one slot."; msg.className = "ami-msg error"; return; }
+        item = {
+          name, slotType: "Universal", item_level: il, combinedRating: cr,
+          universal, ratingStats: {}, percentStats: {},
+          source: "User-added (pending review)",
+          notes: notes || "User-added — pending admin review."
+        };
+        for (const fam of ["offense","defense","utility"]) {
+          const obj = universal[fam];
+          if (Object.keys(obj).length) {
+            reportStatLines.push("  In " + fam + " slot:");
+            for (const k of Object.keys(obj)) reportStatLines.push("    • " + k + ": +" + obj[k]);
+          }
+        }
+      } else {
+        const ratingStats = _ameCollectStats("ame-r-name", "ame-r-value");
+        const percentStats = _ameCollectStats("ame-p-name", "ame-p-value");
+        const desc = document.getElementById("ame-desc").value.trim();
+        const slotTypeName = _ameSlotType[0].toUpperCase() + _ameSlotType.slice(1); // Combat | Bonus
+        item = {
+          name, slotType: slotTypeName, item_level: il, combinedRating: cr,
+          ratingStats, percentStats,
+          appliesTo: [_ameSlotType === "combat" ? "Offense" : "Utility"],
+          source: "User-added (pending review)",
+          notes: notes || "User-added — pending admin review."
+        };
+        if (desc) item.description = desc;
+        for (const k of Object.keys(ratingStats)) reportStatLines.push("  • " + k + ": +" + ratingStats[k]);
+        for (const k of Object.keys(percentStats)) reportStatLines.push("  • " + k + ": +" + percentStats[k] + "%");
+      }
+
+      // 1. Save locally — unconditional. The build gets the enchant regardless
+      // of whether the report send succeeds.
+      const saved = addUserEnchant(item);
+
+      // Resolve the picker callback before the await so it always fires.
+      const pickerOnPick = (_pickerState && _pickerState.dataType === "enchant")
+        ? _pickerState.onPick
+        : null;
+
+      // 2. Submit a report (best-effort; never blocks the local save).
+      const saveBtn = document.getElementById("ame-save");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Sending report…";
+
+      let reportId = null;
+      const reportLines = [];
+      reportLines.push("A player added this missing enchantment:");
+      reportLines.push("");
+      reportLines.push("Name: " + name);
+      reportLines.push("Slot: " + (isUni ? "Universal (Offense / Defense / Utility)" : item.slotType));
+      reportLines.push("Item Level: " + il);
+      reportLines.push("Combined Rating: " + cr);
+      if (reportStatLines.length) {
+        reportLines.push("");
+        reportLines.push("Stats:");
+        reportLines.push(...reportStatLines);
+      }
+      if (item.description) {
+        reportLines.push("");
+        reportLines.push("In-game effect:");
+        reportLines.push(item.description);
+      }
+      if (notes) {
+        reportLines.push("");
+        reportLines.push("Player notes:");
+        reportLines.push(notes);
+      }
+
+      if (window.supabase) {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        try {
+          const rpcRes = await sb.rpc("submit_missing_item_report", {
+            p_title: "Missing enchantment: " + name,
+            p_description: reportLines.join("\n"),
+            p_category: "Missing Enchantment",
+            p_image_url: ""
+          });
+          if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
+            reportId = rpcRes.data.report_id;
+          }
+        } catch (err) {
+          console.warn("AME report send failed:", err);
+        }
+      }
+
+      // Stamp the report id so runReconciliation() can match it later.
+      if (reportId) {
+        saved.__reportId = reportId;
+        const list = getUserAddedEnchants();
+        const idx = list.findIndex(x => x.id === saved.id);
+        if (idx !== -1) { list[idx] = saved; saveUserAddedEnchants(list); }
+      }
+
+      // 3. Equip it (always runs regardless of report outcome).
+      if (pickerOnPick) pickerOnPick(item);
+
+      // 4. Toast + clean up.
+      toast(reportId
+        ? "Added to your build! We'll review and add it to the site."
+        : "Added to your build — couldn't send report, please try again later.");
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      closeAddMissingEnchantModal();
+      if (typeof closePicker === "function") closePicker();
+    }
+
     /* ===== Class base ability scores =====
        Pulled from CLASSES_DATA (sourced from NW Hub character editor).
        Falls back to 10/10/10/10/10/10 if the class isn't found. */
@@ -8158,13 +8547,18 @@
     //   combat → slotType === "Combat"
     //   bonus  → slotType === "Bonus"
     function enchantsForSlotType(slotType) {
-      if (typeof ENCHANTS_DATA === "undefined") return [];
-      if (slotType === "offense" || slotType === "defense" || slotType === "utility") {
-        return ENCHANTS_DATA.filter(e => e.slotType === "Universal")
-          .sort((a,b) => (b.item_level||0)-(a.item_level||0) || a.name.localeCompare(b.name));
-      }
-      const want = slotType[0].toUpperCase() + slotType.slice(1);  // "Combat" / "Bonus"
-      return ENCHANTS_DATA.filter(e => e.slotType === want)
+      const canonical = (typeof ENCHANTS_DATA !== "undefined") ? ENCHANTS_DATA : [];
+      // Player-added enchants (from the "+ Add Missing Enchantment" flow) join
+      // the same list so they show up in the picker right away. Drop any whose
+      // name now matches a canonical entry — the official one has taken over.
+      const canonicalNames = new Set(canonical.map(e => e.name));
+      const userAdded = (typeof getUserAddedEnchants === "function" ? getUserAddedEnchants() : [])
+        .filter(e => !canonicalNames.has(e.name));
+      const want = (slotType === "offense" || slotType === "defense" || slotType === "utility")
+        ? "Universal"
+        : slotType[0].toUpperCase() + slotType.slice(1);  // "Combat" / "Bonus"
+      return canonical.concat(userAdded)
+        .filter(e => e.slotType === want)
         .sort((a,b) => (b.item_level||0)-(a.item_level||0) || a.name.localeCompare(b.name));
     }
     // Description tailored to which slot it's going into (Universal varies by slot).
@@ -8223,6 +8617,7 @@
             const idx = el.dataset.enchIdx !== undefined ? +el.dataset.enchIdx : null;
             openPicker({
               dataType: "enchant",
+              enchantSlotType: t,
               title: `${t[0].toUpperCase()+t.slice(1)} enchantment` + (idx !== null ? ` (slot ${idx + 1})` : ""),
               items: enchantsForSlotType(t),
               render: renderEnchantPickFor(t),
@@ -11196,6 +11591,7 @@
 
       // 1. Collect all pending report ids.
       const userGear = getUserAddedGear();
+      const userEnchants = getUserAddedEnchants();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -11203,6 +11599,10 @@
       const idSet = new Set();
       // From user-added gear
       for (const item of userGear) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      // From user-added enchantments
+      for (const item of userEnchants) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       // From data-correction overrides
@@ -11328,6 +11728,40 @@
             }
           }
         }
+
+        // --- User-added enchantments (no resolved id field; matched by name) ---
+        // Runs for every row regardless of the gear branches above. Enchant
+        // reports carry no resolved_gear_id, so a "Fixed" enchant falls through
+        // both gear branches and is handled here.
+        if (status === "Fixed" || status === "Won't Fix") {
+          const enchList = getUserAddedEnchants();
+          const eIdx = enchList.findIndex(x => x.__reportId === reportId);
+          if (eIdx !== -1) {
+            const userEnch = enchList[eIdx];
+            const canonicalExists = (typeof ENCHANTS_DATA !== "undefined") &&
+              ENCHANTS_DATA.some(e => e.name === userEnch.name);
+            if (status === "Fixed") {
+              if (canonicalExists) {
+                // Canonical entry is live; the slot name already matches it, so
+                // findEnchantByName now resolves to the official version. Drop
+                // the local copy.
+                toastItems.push(`"${userEnch.name}" is now in the site database — your build has been updated.`);
+                enchList.splice(eIdx, 1);
+                saveUserAddedEnchants(enchList);
+              } else {
+                // Approved but data JS not rebuilt yet — keep the local copy.
+                toastItems.push(`"${userEnch.name}" was approved but data hasn't refreshed yet — reload the page to update.`);
+              }
+            } else { // Won't Fix
+              clearEnchantFromSlots(userEnch.name);
+              const noteStr = admin_notes ? ` (${admin_notes})` : "";
+              toastItems.push(`"${userEnch.name}" won't be added to the site${noteStr}.`);
+              enchList.splice(eIdx, 1);
+              saveUserAddedEnchants(enchList);
+            }
+            anyChange = true;
+          }
+        }
         // Active statuses (New, Confirmed, In Progress) or Fixed without
         // resolved_gear_id: keep local, no action needed.
       }
@@ -11356,12 +11790,16 @@
 
       // Collect all pending report ids.
       const userGear  = getUserAddedGear();
+      const userEnchants = getUserAddedEnchants();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
 
       const idSet = new Set();
       for (const item of userGear) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      for (const item of userEnchants) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const key of Object.keys(overrides)) {
@@ -11415,6 +11853,25 @@
           kind: "item",
           name: item.name,
           slot: item.slot,
+          reportId: item.__reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: item.addedAt || null
+        };
+        if (isActive) pending.push(entry);
+        else resolved.push(entry);
+      }
+
+      // User-added enchantments (reuse the "item" render shape)
+      for (const item of userEnchants) {
+        if (!item.__reportId) continue;
+        const row = rowById[item.__reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        const entry = {
+          kind: "item",
+          name: item.name,
+          slot: (item.slotType || "Enchant") + " enchant",
           reportId: item.__reportId,
           status,
           adminNote: row ? row.admin_notes : null,
