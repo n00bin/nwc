@@ -540,7 +540,6 @@
     var comp = COMPANIONS_DATA[si];
     if (!comp.summonedBuff) continue;
     var sb = comp.summonedBuff;
-    if (sb.scope !== "party") continue;  // Only show party buffs
     summonedData.push({
       companionName: comp.name,
       companionId: comp.id,
@@ -586,7 +585,15 @@
       if (sumImg) {
         html += '<img loading="lazy" class="companion-icon" src="images/companions/' + sumImg + '" alt="">';
       }
-      html += '<span><span style="color:var(--highlight);margin-right:0.5rem;">#' + (i + 1) + '</span>' + escapeHtml(s.companionName) + '</span></div>';
+      html += '<span><span style="color:var(--highlight);margin-right:0.5rem;">#' + (i + 1) + '</span>' + escapeHtml(s.companionName) + '</span>';
+      var scopeMeta = {
+        party: { label: "Party", color: "#4caf50" },
+        self: { label: "Self", color: "#42a5f5" },
+        enemy: { label: "Enemy Debuff", color: "#ef5350" },
+        mixed: { label: "Mixed", color: "#ffb300" }
+      }[s.scope] || { label: s.scope, color: "var(--text-muted)" };
+      html += '<span style="margin-left:auto;font-size:0.7rem;font-weight:600;padding:0.1rem 0.45rem;border-radius:4px;border:1px solid ' + scopeMeta.color + ';color:' + scopeMeta.color + ';">' + escapeHtml(scopeMeta.label) + '</span>';
+      html += '</div>';
       html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(s.buff) + '</div>';
       if (s.range) {
         html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Range: ' + s.range + "'</div>";
