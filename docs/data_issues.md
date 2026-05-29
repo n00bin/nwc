@@ -24,7 +24,9 @@ it's **Defense 1197** — corrected.
 
 SLOTS CONFIRMED (n00b, 2026-05-29): the two Insignia variants are in DIFFERENT slots —
 Challenger's Awareness = **Pants** (id 448), Corrupt Power = **Shirt** (id 451). Both are
-correct in the data. **Lesson: slot is per bonus-variant, NOT per piece-name** — do not
+correct in the data. Sigil variants likewise: Explosive Defense = **Shirt** (id 447, was
+wrongly Pants, fixed Report #64), Survivor's Avoidance = **Pants** (id 442). All four
+verified by in-game screenshots. **Lesson: slot is per bonus-variant, NOT per piece-name** — do not
 infer a piece's slot from another variant with the same name. (An earlier "consistency"
 edit that flipped 448 to Shirt was reverted.) By the same logic the Critical Momentum
 Crests (388/452, Shirt) are NOT assumed wrong just because the Combatant's Advantage
