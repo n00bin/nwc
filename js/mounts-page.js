@@ -51,13 +51,13 @@
 
   // True if there is some assignment of the bonus's required insignias to this
   // mount's slots such that a preferred slot ends up holding its preferred type
-  // (granting the +20% IL/stat bonus). Mirrors the 3-slot truncation rule used
-  // by getCompatibleBonuses below.
+  // (granting the +20% IL/stat bonus). All insignia slots count toward bonuses,
+  // including the 4th slot (confirmed in-game 2026-05-29).
   function bonusActivatesPreferred(mount, bonus) {
     var slots = mount.insigniaSlots || [];
     var required = bonus && bonus.requiredInsignias ? bonus.requiredInsignias : [];
     if (!required.length || !slots.length) return false;
-    var checkSlots = (required.length <= 3 && slots.length > 3) ? slots.slice(0, 3) : slots;
+    var checkSlots = slots;
     for (var pi = 0; pi < checkSlots.length; pi++) {
       var pref = checkSlots[pi].preferred;
       if (!pref || pref === "unknown" || pref === true) continue;
@@ -97,7 +97,8 @@
     var slots = mount.insigniaSlots || [];
     var required = bonus && bonus.requiredInsignias ? bonus.requiredInsignias : [];
     if (!required.length || !slots.length) return null;
-    var checkSlots = (required.length <= 3 && slots.length > 3) ? slots.slice(0, 3) : slots;
+    // All insignia slots count toward bonuses (confirmed in-game 2026-05-29).
+    var checkSlots = slots;
 
     // First: try to find an assignment that activates a preferred slot
     for (var pi = 0; pi < checkSlots.length; pi++) {
@@ -158,8 +159,10 @@
       var bonus = MOUNT_INSIGNIA_BONUSES_DATA[i];
       var req = bonus.requiredInsignias;
       if (!req) continue;
-      // 3-slot bonuses can only use the first 3 slots; 4-slot bonuses use all 4
-      var checkSlots = (req.length <= 3 && slots.length > 3) ? slots.slice(0, 3) : slots;
+      // Every insignia slot counts toward bonuses, including the 4th slot
+      // (confirmed in-game 2026-05-29; reverses the old Report #13 assumption
+      // that slot 4 was stats-only).
+      var checkSlots = slots;
       if (req.length > checkSlots.length) continue;
       var used = [];
       for (var u = 0; u < checkSlots.length; u++) used.push(false);
