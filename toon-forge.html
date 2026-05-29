@@ -4605,6 +4605,165 @@
       }).catch(() => { /* silent failure — local override already applied */ });
     }
 
+    // ===== Editable stat-name (map key) support =====
+    // Enchant stats live in maps keyed by stat name (ratingStats.Power,
+    // universal.offense.CriticalStrike, …). The value already gets a ✎; this
+    // adds a second ✎ on the stat NAME so a wrong stat can be corrected via a
+    // dropdown of the game's real stat names. Changing the stat zeroes the
+    // value (old stat → 0, new stat added at 0) and forces the player to enter
+    // the correct number, which is then what applies to their build.
+
+    // Canonical stat names for the dropdown. Prefers the engine's catalog
+    // (toon-forge-stats.js); falls back to a hardcoded list if it isn't in
+    // scope so the editor can never crash.
+    function _ccStatOptions() {
+      try {
+        if (typeof TOON_FORGE_STAT_NAMES !== "undefined" && Array.isArray(TOON_FORGE_STAT_NAMES)) {
+          return TOON_FORGE_STAT_NAMES.slice();
+        }
+      } catch (e) {}
+      return [
+        "Power", "Critical Strike", "Critical Severity", "Combat Advantage", "Accuracy",
+        "Defense", "Awareness", "Critical Avoidance", "Deflect", "Deflect Severity",
+        "Control Bonus", "Control Resist", "Forte", "Maximum Hit Points",
+        "Action Point Gain", "Recharge Speed", "Movement Speed", "Stamina Regeneration",
+        "Outgoing Healing", "Incoming Healing", "Overall Outgoing Healing"
+      ];
+    }
+
+    // Turn a stored stat key (often CamelCase, e.g. "CriticalStrike") into its
+    // display name ("Critical Strike") using the engine's alias map.
+    function _ccStatLabel(key) {
+      try {
+        if (typeof STAT_NAME_ALIASES !== "undefined" && STAT_NAME_ALIASES[key]) {
+          return STAT_NAME_ALIASES[key];
+        }
+      } catch (e) {}
+      return key;
+    }
+
+    // Inner HTML of an editable stat row: [name] ✎name  …  [value] ✎value.
+    function _ccStatRowInner(base, statKey, value) {
+      const path = base + "." + statKey;
+      const display = (value == null || value === "")
+        ? '<span style="color:var(--text-mute);font-style:italic;">(empty)</span>'
+        : _esc(value);
+      // position:static on the pencils overrides the page's absolutely-
+      // positioned .cc-edit rule so BOTH pencils flow inline and stay
+      // clickable (otherwise they stack at the right edge and overlap).
+      const ed = "position:static;flex:0 0 auto;";
+      return `<span class="cc-row-label" style="flex:0 0 auto;">${_esc(_ccStatLabel(statKey))}</span>
+        <button class="cc-edit cc-edit-statname" data-edit="${_esc(path)}" data-kind="stat" title="Change which stat this is" style="${ed}margin-right:auto;">✎</button>
+        <span class="cc-row-value cc-row-value-num" data-value="${_esc(value == null ? "" : value)}" style="flex:0 0 auto;">${display}</span>
+        <button class="cc-edit" data-edit="${_esc(path)}" data-kind="num" title="Edit value" style="${ed}">✎</button>`;
+    }
+
+    // Full editable stat row (used by the map / submap renderer).
+    function _ccStatRow(base, statKey, value) {
+      return `<div class="cc-row cc-row-statedit" style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;" data-row="${_esc(base + "." + statKey)}" data-stat-base="${_esc(base)}" data-stat-key="${_esc(statKey)}">${_ccStatRowInner(base, statKey, value)}</div>`;
+    }
+
+    // Swap a stat row's name into a <select> of canonical stats.
+    function _ccEditStatName(btn) {
+      if (!_correctionCtx) return;
+      const row = btn.closest(".cc-row");
+      if (!row) return;
+      const base = row.dataset.statBase;
+      const oldKey = row.dataset.statKey;
+      const currentLabel = _ccStatLabel(oldKey);
+      const nameEl = row.querySelector(".cc-row-label");
+
+      const opts = _ccStatOptions();
+      if (opts.indexOf(currentLabel) === -1) opts.unshift(currentLabel);
+
+      const wrap = document.createElement("span");
+      wrap.className = "cc-row-edit";
+      wrap.style.cssText = "display:inline-flex;align-items:center;gap:0.3rem;flex:1 1 auto;";
+      const sel = document.createElement("select");
+      sel.className = "cc-input";
+      opts.forEach(function (o) {
+        const op = document.createElement("option");
+        op.value = o; op.textContent = o;
+        if (o === currentLabel) op.selected = true;
+        sel.appendChild(op);
+      });
+      const saveB = document.createElement("button");
+      saveB.className = "cc-save"; saveB.textContent = "✓"; saveB.title = "Save";
+      const cancelB = document.createElement("button");
+      cancelB.className = "cc-cancel"; cancelB.textContent = "✕"; cancelB.title = "Cancel";
+      wrap.appendChild(sel); wrap.appendChild(saveB); wrap.appendChild(cancelB);
+
+      if (nameEl) nameEl.style.display = "none";
+      btn.style.display = "none";
+      btn.parentNode.insertBefore(wrap, btn.nextSibling);
+      sel.focus();
+
+      cancelB.addEventListener("click", function () {
+        wrap.remove();
+        if (nameEl) nameEl.style.display = "";
+        btn.style.display = "";
+      });
+      saveB.addEventListener("click", function () {
+        const newStat = sel.value;
+        wrap.remove();
+        if (nameEl) nameEl.style.display = "";
+        btn.style.display = "";
+        if (!newStat || newStat === currentLabel) return;
+        _ccChangeStatName(base, oldKey, newStat, row);
+      });
+    }
+
+    // Apply a stat-name change: zero the old stat, add the new one at 0,
+    // recompute the build, then force the player to enter the new value.
+    function _ccChangeStatName(base, oldKey, newStat, row) {
+      if (!_correctionCtx) return;
+      const status = document.getElementById("correction-status");
+      const item = _correctionCtx.item;
+      const dataType = _correctionCtx.dataType;
+
+      const valueEl = row.querySelector(".cc-row-value");
+      let oldVal = valueEl ? valueEl.dataset.value : "";
+      const oldValNum = Number(oldVal);
+      if (oldVal !== "" && Number.isFinite(oldValNum)) oldVal = oldValNum;
+
+      const oldPath = base + "." + oldKey;
+      const newPath = base + "." + newStat;
+
+      // Zero the wrong stat; add the corrected stat at 0 (player sets value next).
+      window.NWCBDataCorrections.setOverride(dataType + ":" + item.id + ":" + oldPath, 0, oldVal);
+      window.NWCBDataCorrections.setOverride(dataType + ":" + item.id + ":" + newPath, 0);
+      if (typeof rerenderAll === "function") rerenderAll();
+
+      // Re-render this row in place as the new stat at value 0.
+      row.dataset.statKey = newStat;
+      row.innerHTML = _ccStatRowInner(base, newStat, 0);
+      row.classList.add("cc-row-changed");
+
+      if (status) {
+        status.textContent = "Stat changed to " + newStat + " — now enter its value.";
+        status.className = "correction-status ok";
+      }
+
+      // Background report so the data can be fixed at the source.
+      const oldLabel = _ccStatLabel(oldKey);
+      const title = ((item.name || dataType) + " — stat should be " + newStat + ", not " + oldLabel).slice(0, 200);
+      const notes = "A player spotted a wrong stat on this item:\n\n"
+        + "Item: " + (item.name || "(unnamed)") + "\n\n"
+        + "What's wrong: this enchant lists " + oldLabel + ", but it should be " + newStat + ".\n"
+        + "The player is setting the correct value separately.";
+      window.NWCBDataCorrections.submitCorrection({
+        type: dataType, id: item.id, field: oldPath,
+        rarityScalingRule: null, baseIL: item.item_level || null,
+        claimedBaseValue: newStat,
+        userObserved: { old: oldLabel, new: newStat },
+        title: title, notes: notes
+      }).catch(function () {});
+
+      // Force the value editor open so the player must enter the new number.
+      const valBtn = row.querySelector('.cc-edit[data-kind="num"]');
+      if (valBtn) valBtn.click();
+    }
+
     /* ===== Reinforcement kit helpers ===== */
     // Map prototype slot label ("Ring 1"/"Ring 2") to the canonical
     // appliesTo entry ("Ring") for filtering.
