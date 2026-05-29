@@ -2907,6 +2907,11 @@
        Serializes the entire build state to JSON. Stored locally via
        localStorage (multi-slot). Sharable via URL hash (#b=<base64>). */
     const BUILDS_KEY = "toon-forge:builds";
+    // Working-draft autosave. Separate from BUILDS_KEY (named saves) — this is
+    // the single live build the player is editing right now, written on every
+    // change and restored on page load so a reload or back-button never wipes
+    // their work.
+    const AUTOSAVE_KEY = "toon-forge:autosave";
 
     function serializeBuild(name) {
       return {
@@ -10620,6 +10625,19 @@
       flashSaved();
     }
 
+    // Write the current working build to localStorage. Returns true on
+    // success. Kept separate from the debounced label so we can also flush
+    // synchronously when the page is being hidden/closed (see pagehide below).
+    function persistAutosave() {
+      try {
+        localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(serializeBuild()));
+        return true;
+      } catch (e) {
+        // Storage full or blocked (private mode): fail quietly, don't crash.
+        return false;
+      }
+    }
+
     let saveTO;
     function flashSaved() {
       clearTimeout(saveTO);
@@ -10627,8 +10645,9 @@
       el.textContent = "Saving…";
       el.classList.remove("saved");
       saveTO = setTimeout(() => {
-        el.textContent = "Auto-saved · just now";
-        el.classList.add("saved");
+        const ok = persistAutosave();
+        el.textContent = ok ? "Auto-saved · just now" : "Couldn't auto-save";
+        el.classList.toggle("saved", ok);
       }, 350);
     }
 
@@ -11082,11 +11101,32 @@
     updateRoleClassCompatibility();
     rerenderAll();
 
-    // If the URL has a #b=... share-link payload, load it now.
+    // Restore the player's work. A #b=... share link in the URL wins (the
+    // player explicitly opened a shared build); otherwise fall back to the
+    // autosaved working draft so a reload / back-button picks up where they
+    // left off.
     if (location.hash && /b=/.test(location.hash)) {
       loadFromUrlHash();
       updateRoleClassCompatibility();
+    } else {
+      try {
+        const rawAuto = localStorage.getItem(AUTOSAVE_KEY);
+        if (rawAuto) {
+          const savedAuto = JSON.parse(rawAuto);
+          if (applyBuild(savedAuto)) updateRoleClassCompatibility();
+        }
+      } catch (e) {
+        console.warn("Failed to restore autosaved build", e);
+      }
     }
+
+    // Belt-and-braces: if the page is being hidden or closed (back-button,
+    // tab close, app switch) within the 350ms debounce window, flush the
+    // working draft synchronously so the very last edit isn't lost.
+    window.addEventListener("pagehide", persistAutosave);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") persistAutosave();
+    });
   
     /* OVERRIDE_WRAPPER_INJECT */
     // Engine override layer: wraps each find* lookup to apply any user-
