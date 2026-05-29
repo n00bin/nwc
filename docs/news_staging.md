@@ -14,6 +14,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Black Scorpion (and 17 other companions) were missing from the Summoned Buffs list and the Toon Forge Party Buffs picker.
 - Enchantments: Celestial Jade's defense stat was wrong — it listed Deflect Severity but the enchant actually gives Critical Avoidance (2,700 at Celestial). Corrected, so Jade now shows Critical Strike / Critical Avoidance / Outgoing Healing. (Reports #71, #72)
 - Gear: Bloodwoven Signs (Critical Empowerment), Shirt version, was showing Outgoing Healing where it should show Forte. Corrected to Forte 1,276 to match the in-game card. (Report #49)
+- Gear: removed a duplicate, generically-named "Arcane Conduit Sigil" — it was the Explosive Defense variant all along, identical to the properly-named entry. Toon Forge now auto-updates any saved build that had the old one equipped, so nothing breaks. (Report #65)
 
 ### Data Additions
 - **Gear database — screenshot intake backlog fully cleared.** Worked through the remaining gear card screenshots and added every genuinely-new item. Final additions this session: the Wizard Reinforced Dragonflight Assault/Raid set, Duergar Wizard Orb & Talisman, Weathered Bracers of the Successor (Ranger), the Wintermarked & Frostbound "Chilling Flow" weapons, the Wintermarked Skirmisher armor set, the Stormforged Orb, Huntsman Assault Cap, and more.
