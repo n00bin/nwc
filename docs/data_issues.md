@@ -1,5 +1,18 @@
 # Data Issues To Investigate
 
+## Bloodwoven set — slot-conflict pairs need screenshots (OPEN, 2026-05-29)
+
+Cleaned up 2026-05-29: deleted exact-dup em-dash entries (468, 470) and two malformed
+"Bloodwoven Ink" Armor-slot stubs (5268, 5333; folded into real id 416 Survivor's Gift
+Ink, confirmed by screenshot). STILL OPEN — same-name+bonus pairs sitting in DIFFERENT
+slots; per the per-variant-slot lesson ([[reference_nw_collection_slot_per_variant]]) these
+may both be real or one may be a slot error. Need in-game shots to decide:
+- Critical Empowerment: id 420 (Pants) vs id 472 (Shirt)
+- Challenger's Strength: id 421 (Shirt) vs id 469 (Pants)
+- Butcher's Zeal: id 423 (Shirt) vs id 471 (Pants)
+Also: Bloodwoven uses two naming styles — "(Bonus)" parens (415-424) and "- Bonus"
+em-dash (467-472). Pick one convention during a future set audit.
+
 ## Arcane Conduit Insignia — Corrupt Power (Report #41, RESOLVED 2026-05-29)
 
 RESOLVED via in-game screenshot of the Corrupt Power variant (Screenshot 2026-05-29
