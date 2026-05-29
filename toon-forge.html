@@ -3777,12 +3777,12 @@
         { field: "item_level",     label: "Item Level",      kind: "num" },
         { field: "combinedRating", label: "Combined Rating", kind: "num" },
         { field: "notes",          label: "Notes",           kind: "longtext" },
-        { kind: "map", field: "ratingStats",  label: "Rating Stats" },
-        { kind: "map", field: "percentStats", label: "Percent Bonuses" },
+        { kind: "map", field: "ratingStats",  label: "Rating Stats",    editableKey: true },
+        { kind: "map", field: "percentStats", label: "Percent Bonuses", editableKey: true },
         // universal sub-maps rendered as separate map sections
-        { kind: "submap", field: "universal.offense",  label: "Universal (Offense)" },
-        { kind: "submap", field: "universal.defense",  label: "Universal (Defense)" },
-        { kind: "submap", field: "universal.utility",  label: "Universal (Utility)" }
+        { kind: "submap", field: "universal.offense",  label: "Universal (Offense)", editableKey: true },
+        { kind: "submap", field: "universal.defense",  label: "Universal (Defense)", editableKey: true },
+        { kind: "submap", field: "universal.utility",  label: "Universal (Utility)", editableKey: true }
       ],
       overload: [
         { field: "name",            label: "Name",            kind: "text" },
@@ -3922,8 +3922,11 @@
             if (!keys.length) continue;
             secHtml += `<div class="cc-subsection-title">${_esc(label)}</div>`;
             for (const k of keys) {
-              const mapPath = `${field}.${k}`;
-              secHtml += r(k, obj[k], mapPath, "num");
+              if (desc.editableKey) {
+                secHtml += _ccStatRow(field, k, obj[k]);
+              } else {
+                secHtml += r(k, obj[k], `${field}.${k}`, "num");
+              }
             }
             continue;
           }
@@ -3940,7 +3943,11 @@
             if (!keys.length) continue;
             secHtml += `<div class="cc-subsection-title">${_esc(label)}</div>`;
             for (const k of keys) {
-              secHtml += r(k, obj[k], `${field}.${k}`, "num");
+              if (desc.editableKey) {
+                secHtml += _ccStatRow(field, k, obj[k]);
+              } else {
+                secHtml += r(k, obj[k], `${field}.${k}`, "num");
+              }
             }
             continue;
           }
@@ -4348,6 +4355,8 @@
       if (!btn) return;
       // Skip deref "view →" buttons — those are handled by the handler above.
       if (btn.dataset.derefType) return;
+      // Stat-name edit (editable map keys): open a dropdown of real stats.
+      if (btn.dataset.kind === "stat") { _ccEditStatName(btn); return; }
       const field = btn.dataset.edit;
       const kind = btn.dataset.kind;
       const row = btn.closest(".cc-row");
@@ -5147,11 +5156,44 @@
       return MOUNT_INSIGNIA_BONUSES_DATA.find(b => b.id === id) || null;
     }
     // Returns true if the multiset of `slotted` categories matches `required`.
-    function bonusActive(required, slotted) {
+    // Is an insignia bonus active for a single mount, given the insignias the
+    // player has actually slotted on it?
+    //
+    // The bonus's required insignia categories must each be matched to a
+    // distinct slotted insignia of that category, AND every FILLED FIXED
+    // (non-universal) slot must be used by the bonus. Insignias sitting in
+    // UNIVERSAL slots may be left over — so adding a 4th insignia to a mount
+    // running a 3-insignia bonus does NOT turn the bonus off, as long as the
+    // extra lands in a universal slot. This mirrors the mounts-page fixed-slot
+    // rule (see allFixedSlotsFilled in mounts-page.js) and is why, e.g.,
+    // Grubshank keeps Champion's Return with all 4 slots filled, while Snowtusk
+    // still can't run Assassin's Covenant (its fixed Illuminated slot would go
+    // unused). mountSlots is the mount's insigniaSlots array, index-aligned
+    // with `slotted`; a missing entry is treated as universal (lenient).
+    function bonusActive(required, slotted, mountSlots) {
       if (!required || !required.length) return false;
-      const a = required.slice().sort().join("|");
-      const b = (slotted || []).filter(Boolean).sort().join("|");
-      return a === b;
+      const filled = [];
+      (slotted || []).forEach((cat, i) => {
+        if (!cat) return;
+        const def = mountSlots && mountSlots[i];
+        const universal = !def || (def.allowed || []).indexOf("*") !== -1;
+        filled.push({ cat: cat, universal: universal, used: false });
+      });
+      if (required.length > filled.length) return false;
+      function match(ri) {
+        if (ri >= required.length) {
+          // Every filled fixed slot must be consumed by the bonus.
+          return filled.every(sl => sl.used || sl.universal);
+        }
+        for (let k = 0; k < filled.length; k++) {
+          if (filled[k].used || filled[k].cat !== required[ri]) continue;
+          filled[k].used = true;
+          if (match(ri + 1)) return true;
+          filled[k].used = false;
+        }
+        return false;
+      }
+      return match(0);
     }
     // Resolves a stable row's slotted insignia categories.
     function slottedCategoriesForRow(stableSlot) {
@@ -5170,26 +5212,40 @@
     }
 
     // Can a mount accommodate a bonus's required insignia categories?
-    // Each required category must land in a slot that allows it
-    // (specific match) or that allows "*" (universal). Greedy with
-    // specific-before-universal priority is sufficient for the small
-    // 4-slot, 4-required problem in NW.
+    // Each required category must land in a slot that allows it (specific
+    // match or "*" universal), AND every FIXED (non-universal) slot must be
+    // used by the bonus — a mount can't form a bonus that leaves one of its
+    // locked slots out. (Same fixed-slot rule as mounts-page.js; confirmed
+    // in-game 2026-05-29.) So a 4-locked-slot mount can only form 4-insignia
+    // bonuses, and Snowtusk [Regal, Illuminated, *, *] can only form bonuses
+    // that include both Regal and Illuminated.
     function canMountFitBonus(mount, required) {
       if (!mount || !required || !required.length) return false;
-      const slots = (mount.insigniaSlots || []).map(s => ({
-        allowed: s.allowed || [],
-        used: false
-      }));
+      const slots = mount.insigniaSlots || [];
       if (slots.length < required.length) return false;
-      for (const cat of required) {
-        // Prefer a slot that specifically allows this category
-        let slot = slots.find(s => !s.used && s.allowed.includes(cat) && !s.allowed.includes("*"));
-        if (!slot) slot = slots.find(s => !s.used && s.allowed.includes(cat));
-        if (!slot) slot = slots.find(s => !s.used && s.allowed.includes("*"));
-        if (!slot) return false;
-        slot.used = true;
+      const isUniv = (s) => (s.allowed || []).indexOf("*") !== -1;
+      const accepts = (s, cat) => {
+        const a = s.allowed || [];
+        return a.indexOf("*") !== -1 || a.indexOf(cat) !== -1;
+      };
+      const used = new Array(slots.length).fill(false);
+      function assign(ri) {
+        if (ri >= required.length) {
+          // Every fixed slot must end up filled; universals may stay empty.
+          for (let f = 0; f < slots.length; f++) {
+            if (!used[f] && !isUniv(slots[f])) return false;
+          }
+          return true;
+        }
+        for (let k = 0; k < slots.length; k++) {
+          if (used[k] || !accepts(slots[k], required[ri])) continue;
+          used[k] = true;
+          if (assign(ri + 1)) return true;
+          used[k] = false;
+        }
+        return false;
       }
-      return true;
+      return assign(0);
     }
 
     // Returns sorted array of bonuses this mount CAN unlock.
@@ -7263,7 +7319,8 @@
         if (!slot || !slot.desiredBonus) continue;
         const bonus = findBonusById(slot.desiredBonus);
         if (!bonus) continue;
-        if (!bonusActive(bonus.requiredInsignias, slottedCategoriesForRow(slot))) continue;
+        const bonusMount = findMountByName(slot.mount);
+        if (!bonusActive(bonus.requiredInsignias, slottedCategoriesForRow(slot), bonusMount ? bonusMount.insigniaSlots : null)) continue;
         if (!bonusInstances[bonus.name]) bonusInstances[bonus.name] = [];
         bonusInstances[bonus.name].push({ slotIdx: stIdx, bonus });
       }
@@ -10082,7 +10139,7 @@
         if (mount) {
           const desiredBonus = slot.desiredBonus ? findBonusById(slot.desiredBonus) : null;
           const slotted = slottedCategoriesForRow(slot);
-          const active = desiredBonus && bonusActive(desiredBonus.requiredInsignias, slotted);
+          const active = desiredBonus && bonusActive(desiredBonus.requiredInsignias, slotted, mount.insigniaSlots);
           html += `<div class="stable-bonus-row">
             <div class="stable-bonus-pick comp-slot ${desiredBonus ? "filled" : ""}" data-stable="bonus" data-idx="${i}">
               ${desiredBonus ? "🏆 " + desiredBonus.name : "+ Pick desired Insignia Bonus"}
