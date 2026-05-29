@@ -20,4 +20,5 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Gear: cleaned up the Bloodwoven set — removed four duplicate/broken entries (two exact-duplicate listings and two malformed copies of Bloodwoven Ink). Saved builds using the removed names auto-update in the builder. (found while checking Report #70)
 
 ### Data Additions
+- **Masterwork "+1" gear tiers added (IL 1800).** From in-game auction-house screenshots: Shroomwood Amulet +1, Shroomwood Sash +1, and Scintillant Sash +1 — the refined-rank versions of the existing IL 1700 pieces. (Reports #66, #48)
 - **Gear database — screenshot intake backlog fully cleared.** Worked through the remaining gear card screenshots and added every genuinely-new item. Final additions this session: the Wizard Reinforced Dragonflight Assault/Raid set, Duergar Wizard Orb & Talisman, Weathered Bracers of the Successor (Ranger), the Wintermarked & Frostbound "Chilling Flow" weapons, the Wintermarked Skirmisher armor set, the Stormforged Orb, Huntsman Assault Cap, and more.
