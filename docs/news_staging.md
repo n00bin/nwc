@@ -16,6 +16,9 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Gear: Bloodwoven Signs (Critical Empowerment), Shirt version, was showing Outgoing Healing where it should show Forte. Corrected to Forte 1,276 to match the in-game card. (Report #49)
 - Gear: removed a duplicate, generically-named "Arcane Conduit Sigil" — it was the Explosive Defense variant all along, identical to the properly-named entry. Toon Forge now auto-updates any saved build that had the old one equipped, so nothing breaks. (Report #65)
 - Gear: removed a second broken generic entry, "Arcane Conduit Insignia" — its stats and our in-game screenshot show it's the Challenger's Awareness variant (its old bonus text was wrong). Builder auto-updates affected saved builds. (found while verifying Report #41)
+- Gear: Darklake Ward Ring — corrected its stats (Critical Avoidance 3825 / Deflection 1275 were reversed) and opened it to all classes (it was wrongly limited to four). Verified from an in-game screenshot. (Report #61)
+- Gear: Arcane Conduit Sigil (Explosive Defense) — moved from Pants to its correct Shirt slot. (Report #64)
+- Gear: Scintillant & Shroomwood Sash and Amulet — corrected to be usable by all classes (they were wrongly limited to four).
 - Gear: Arcane Conduit Insignia (Corrupt Power) — fixed its third stat from Power to Defense to match the in-game card; its Corrupt Power bonus (+5% Power, −7.5% Incoming Healing) was verified correct from an in-game screenshot. (Report #41)
 - Gear: cleaned up the Bloodwoven set — removed four duplicate/broken entries (two exact-duplicate listings and two malformed copies of Bloodwoven Ink). Saved builds using the removed names auto-update in the builder. (found while checking Report #70)
 
