@@ -35,9 +35,27 @@
     return false;
   }
 
-  // Recursive check: can we assign required[rIdx..] to some subset of unused slots?
+  // A slot is "universal" if it accepts any insignia type ("*").
+  function slotIsUniversal(slot) {
+    return slot.allowed.indexOf("*") !== -1;
+  }
+
+  // True when every FIXED (non-universal) slot has been filled. In-game you
+  // cannot leave a fixed slot empty when forming a bonus — e.g. Snowtusk's
+  // Regal and Illuminated slots are mandatory, so any bonus it forms must use
+  // both. Only universal slots may be left empty (when a bonus needs fewer
+  // insignias than the mount has slots). Confirmed in-game 2026-05-29.
+  function allFixedSlotsFilled(slots, used) {
+    for (var f = 0; f < slots.length; f++) {
+      if (!used[f] && !slotIsUniversal(slots[f])) return false;
+    }
+    return true;
+  }
+
+  // Recursive check: can we assign required[rIdx..] to unused slots such that
+  // every fixed slot ends up filled? (Universal slots may be left empty.)
   function canAssign(slots, required, rIdx, used) {
-    if (rIdx >= required.length) return true;
+    if (rIdx >= required.length) return allFixedSlotsFilled(slots, used);
     for (var s = 0; s < slots.length; s++) {
       if (used[s]) continue;
       if (slotAccepts(slots[s].allowed, required[rIdx])) {
@@ -51,8 +69,8 @@
 
   // True if there is some assignment of the bonus's required insignias to this
   // mount's slots such that a preferred slot ends up holding its preferred type
-  // (granting the +20% IL/stat bonus). All insignia slots count toward bonuses,
-  // including the 4th slot (confirmed in-game 2026-05-29).
+  // (granting the +20% IL/stat bonus). Relies on canAssign, which enforces that
+  // all fixed slots are filled.
   function bonusActivatesPreferred(mount, bonus) {
     var slots = mount.insigniaSlots || [];
     var required = bonus && bonus.requiredInsignias ? bonus.requiredInsignias : [];
@@ -72,9 +90,10 @@
   }
 
   // canAssign variant that records which insignia type each slot received
-  // into the assignment[] out-array. Same backtracking shape as canAssign.
+  // into the assignment[] out-array. Same backtracking shape as canAssign,
+  // including the rule that every fixed slot must end up filled.
   function tryAssignWithRecord(slots, required, rIdx, used, assignment) {
-    if (rIdx >= required.length) return true;
+    if (rIdx >= required.length) return allFixedSlotsFilled(slots, used);
     for (var s = 0; s < slots.length; s++) {
       if (used[s]) continue;
       if (slotAccepts(slots[s].allowed, required[rIdx])) {
@@ -97,7 +116,8 @@
     var slots = mount.insigniaSlots || [];
     var required = bonus && bonus.requiredInsignias ? bonus.requiredInsignias : [];
     if (!required.length || !slots.length) return null;
-    // All insignia slots count toward bonuses (confirmed in-game 2026-05-29).
+    // Match against every slot; canAssign/tryAssignWithRecord enforce that all
+    // fixed slots are filled (see allFixedSlotsFilled).
     var checkSlots = slots;
 
     // First: try to find an assignment that activates a preferred slot
@@ -159,9 +179,10 @@
       var bonus = MOUNT_INSIGNIA_BONUSES_DATA[i];
       var req = bonus.requiredInsignias;
       if (!req) continue;
-      // Every insignia slot counts toward bonuses, including the 4th slot
-      // (confirmed in-game 2026-05-29; reverses the old Report #13 assumption
-      // that slot 4 was stats-only).
+      // Match against every slot. canAssign enforces that all fixed slots are
+      // filled, so a 4-fixed-slot mount can only form 4-insignia bonuses, and
+      // a mount with universal slots can leave universals empty for smaller
+      // bonuses. (Confirmed in-game 2026-05-29 via Snowtusk.)
       var checkSlots = slots;
       if (req.length > checkSlots.length) continue;
       var used = [];
