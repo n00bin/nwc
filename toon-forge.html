@@ -3383,7 +3383,14 @@
     const PICKER_FILTERS = {
       mount_collar: [
         { field: "collarSlot", allLabel: "All types" },
-        { field: "item_level", allLabel: "All levels", numeric: true, optLabel: v => "Level " + v }
+        // Show the collar's rank (Roman numeral, read from the name e.g.
+        // "... Collar III") rather than the raw item level. Falls back to the IL.
+        { field: "item_level", allLabel: "All levels", numeric: true,
+          optLabel: (v, items) => {
+            const c = (items || []).find(x => x.item_level === v);
+            const m = c && / ([IVXLCDM]+)$/.exec(c.name);
+            return m ? "Level " + m[1] : "Level " + v;
+          } }
       ],
       insignia: [
         { field: "category", allLabel: "All types" }
@@ -3431,7 +3438,7 @@
           const cur = filterVals[pf.field] || "";
           selects.push(`<select class="picker-collar-filter" data-pf-field="${_escAttr(pf.field)}" aria-label="${_escAttr(pf.allLabel)}">
             <option value="">${_escHTML(pf.allLabel)}</option>
-            ${vals.map(v => `<option value="${_escAttr(String(v))}"${String(v) === cur ? " selected" : ""}>${_escHTML(pf.optLabel ? pf.optLabel(v) : String(v))}</option>`).join("")}
+            ${vals.map(v => `<option value="${_escAttr(String(v))}"${String(v) === cur ? " selected" : ""}>${_escHTML(pf.optLabel ? pf.optLabel(v, _pickerState.items) : String(v))}</option>`).join("")}
           </select>`);
         }
         if (selects.length) html += `<div class="picker-collar-filters">${selects.join("")}</div>`;
