@@ -9414,7 +9414,7 @@
       const classDefForLoadout = findClass(state.class);
       const atwillRaw = []
         .concat(classDefForLoadout && classDefForLoadout.powers && Array.isArray(classDefForLoadout.powers.atWill) ? classDefForLoadout.powers.atWill : [])
-        .concat(paragonDef.powers && Array.isArray(paragonDef.powers.atWill) ? paragonDef.powers.atWill : [])
+        .concat(Array.isArray(paragonDef.atWill) ? paragonDef.atWill : (paragonDef.powers && Array.isArray(paragonDef.powers.atWill) ? paragonDef.powers.atWill : []))
         .filter(p => p && p.name);
 
       // Build atwillPool: for Ranger we synthesize pair items; everyone
@@ -9486,7 +9486,7 @@
       // paragon.powers.encounter, with Ranger ranged/melee pairing.
       const encRaw = []
         .concat(classDefForLoadout && classDefForLoadout.powers && Array.isArray(classDefForLoadout.powers.encounter) ? classDefForLoadout.powers.encounter : [])
-        .concat(paragonDef.powers && Array.isArray(paragonDef.powers.encounter) ? paragonDef.powers.encounter : [])
+        .concat(Array.isArray(paragonDef.encounter) ? paragonDef.encounter : (paragonDef.powers && Array.isArray(paragonDef.powers.encounter) ? paragonDef.powers.encounter : []))
         .filter(p => p && p.name);
 
       let encPool;
@@ -9554,7 +9554,7 @@
       // Slasher's Mark is its own thing, etc.) Simple flat picker.
       const dailyPool = []
         .concat(classDefForLoadout && classDefForLoadout.powers && Array.isArray(classDefForLoadout.powers.daily) ? classDefForLoadout.powers.daily : [])
-        .concat(paragonDef.powers && Array.isArray(paragonDef.powers.daily) ? paragonDef.powers.daily : [])
+        .concat(Array.isArray(paragonDef.daily) ? paragonDef.daily : (paragonDef.powers && Array.isArray(paragonDef.powers.daily) ? paragonDef.powers.daily : []))
         .filter(p => p && p.name);
 
       if (dailyPool.length) {
@@ -9585,7 +9585,7 @@
       // their class brings to the table.
       const mechanicRaw = []
         .concat(classDefForLoadout && classDefForLoadout.powers && Array.isArray(classDefForLoadout.powers.mechanic) ? classDefForLoadout.powers.mechanic : [])
-        .concat(paragonDef.powers && Array.isArray(paragonDef.powers.mechanic) ? paragonDef.powers.mechanic : [])
+        .concat(Array.isArray(paragonDef.mechanic) ? paragonDef.mechanic : (paragonDef.powers && Array.isArray(paragonDef.powers.mechanic) ? paragonDef.powers.mechanic : []))
         .filter(p => p && p.name);
 
       // (cleanNote is defined at module scope — used here to strip
