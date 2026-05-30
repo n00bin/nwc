@@ -20,6 +20,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Gear: Darklake Ward Ring — corrected its stats (Critical Avoidance 3825 / Deflection 1275 were reversed) and opened it to all classes (it was wrongly limited to four). Verified from an in-game screenshot. (Report #61) Also added its **+1** tier (IL 1800).
 - Gear: Arcane Conduit Sigil (Explosive Defense) — moved from Pants to its correct Shirt slot. (Report #64)
 - Gear: Scintillant & Shroomwood Sash and Amulet — corrected to be usable by all classes (they were wrongly limited to four).
+- Gear: fixed class restrictions across the board — every Pants-slot item (26 of them, mostly the Jotunskar Stonevein/Titanweave/Dawnshard/Earthshard line) is now correctly usable by all classes. (Pants gear is never class-locked in Neverwinter.)
 - Gear: Arcane Conduit Insignia (Corrupt Power) — fixed its third stat from Power to Defense to match the in-game card; its Corrupt Power bonus (+5% Power, −7.5% Incoming Healing) was verified correct from an in-game screenshot. (Report #41)
 - Gear: cleaned up the Bloodwoven set — removed four duplicate/broken entries (two exact-duplicate listings and two malformed copies of Bloodwoven Ink). Saved builds using the removed names auto-update in the builder. (found while checking Report #70)
 
