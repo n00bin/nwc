@@ -3427,6 +3427,14 @@
           <span class="picker-add-missing-hint">Don't see your buff? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
       }
+      const isGuildBoonPicker = _pickerState.dataType === "guild_boon";
+      if (isGuildBoonPicker) {
+        html += `<button id="picker-add-missing-guildboon" class="picker-add-missing-btn" type="button">
+          <span style="font-size:1.1em;">＋</span>
+          <span>Add Missing Guild Boon</span>
+          <span class="picker-add-missing-hint">Don't see your guild boon? Add it yourself — it'll show up in your build right away.</span>
+        </button>`;
+      }
       if (_pickerState.allowNone !== false) {
         html += `<div class="picker-item empty" data-pick-none="1">— None —</div>`;
       }
@@ -3499,6 +3507,13 @@
         addBuffBtn.addEventListener("click", (e) => {
           e.stopPropagation();
           openAddMissingBuffModal();
+        });
+      }
+      const addGuildBoonBtn = document.getElementById("picker-add-missing-guildboon");
+      if (addGuildBoonBtn) {
+        addGuildBoonBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openAddMissingGuildBoonModal();
         });
       }
       list.querySelectorAll("[data-pick-none]").forEach(el => {
@@ -7226,6 +7241,253 @@
       if (typeof closePicker === "function") closePicker();
     }
 
+    // =========================================================================
+    // Add Missing Guild Boon flow (_amgb prefix)
+    // Storage mirrors the overload/insignia/buff trios.  Guild boons are
+    // category-keyed (Offense / Defense / Utility); state.guildBoonPicks[cat]
+    // stores the chosen boon name.  The category is stashed on _pickerState as
+    // _pickerState.guildBoonCat (mirrors how buff flow stashes buffGroup).
+    // =========================================================================
+    const USER_GUILD_BOON_KEY = "nwcb_user_added_guild_boons_v1";
+    function getUserAddedGuildBoons() {
+      try {
+        const raw = localStorage.getItem(USER_GUILD_BOON_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveUserAddedGuildBoons(list) {
+      try { localStorage.setItem(USER_GUILD_BOON_KEY, JSON.stringify(list)); }
+      catch (e) { /* quota — ignore */ }
+    }
+    function addUserGuildBoon(item) {
+      const list = getUserAddedGuildBoons();
+      const minId = list.reduce((m, x) => Math.min(m, x.id || 0), 0);
+      item.id = (minId < 0 ? minId : 0) - 1;
+      item.__userAdded = true;
+      item.addedAt = new Date().toISOString();
+      list.push(item);
+      saveUserAddedGuildBoons(list);
+      return item;
+    }
+
+    /* ===== Add Missing Guild Boon modal (_amgb prefix) =====
+       Form collects: name (required), category (Offense/Defense/Utility —
+       defaults to _pickerState.guildBoonCat if set), a single stat row
+       (stat name + amount + statType: rating/percent), item level (default
+       1000), combined rating (default 800), and optional notes.
+       Requires name + stat + amount before saving. */
+    const AMGB_STAT_OPTIONS = AMI_STAT_OPTIONS.slice();
+
+    function ensureAddMissingGuildBoonDOM() {
+      if (document.getElementById("amgb-overlay")) return;
+      const overlay = document.createElement("div");
+      overlay.id = "amgb-overlay";
+      overlay.className = "ami-overlay";
+
+      overlay.innerHTML = `
+        <div class="ami-panel">
+          <div class="ami-header">
+            <h3>Add Missing Guild Boon</h3>
+            <button class="ami-close" id="amgb-close" type="button">×</button>
+          </div>
+          <div class="ami-body">
+            <div class="ami-row">
+              <label>Boon Name <span class="req">*</span></label>
+              <input type="text" id="amgb-name" placeholder="e.g. Combat Advantage Bonus" maxlength="120" required>
+            </div>
+            <div class="ami-row">
+              <label>Category <span class="req">*</span></label>
+              <select id="amgb-category">
+                <option value="Offense">Offense</option>
+                <option value="Defense">Defense</option>
+                <option value="Utility">Utility</option>
+              </select>
+            </div>
+            <div class="ami-row">
+              <label>Stat <span class="req">*</span></label>
+              <select id="amgb-stat">
+                <option value="">— choose stat —</option>
+                ${AMGB_STAT_OPTIONS.map(s => `<option value="${s}">${s}</option>`).join("")}
+              </select>
+            </div>
+            <div class="ami-row">
+              <label>Amount <span class="req">*</span> (rating value or percent number)</label>
+              <input type="number" id="amgb-amount" placeholder="e.g. 3000" step="any">
+            </div>
+            <div class="ami-row">
+              <label>Stat Type</label>
+              <select id="amgb-stat-type">
+                <option value="rating">Rating (flat number)</option>
+                <option value="percent">Percent (%)</option>
+              </select>
+            </div>
+            <div class="ami-row">
+              <label>Item Level (default 1000)</label>
+              <input type="number" id="amgb-item-level" placeholder="1000" min="0" step="1" value="1000">
+            </div>
+            <div class="ami-row">
+              <label>Combined Rating (default 800)</label>
+              <input type="number" id="amgb-combined-rating" placeholder="800" min="0" step="1" value="800">
+            </div>
+            <div class="ami-row">
+              <label>Notes / where you found it (optional)</label>
+              <textarea id="amgb-notes" rows="2" placeholder="e.g. 'Guild Hall rank 20 boon.'" maxlength="600"></textarea>
+            </div>
+          </div>
+          <div class="ami-footer">
+            <button class="ami-save-btn" id="amgb-save" type="button">Add to my build</button>
+            <div class="ami-msg" id="amgb-msg"></div>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target.id === "amgb-overlay") closeAddMissingGuildBoonModal();
+      });
+      document.getElementById("amgb-close").addEventListener("click", closeAddMissingGuildBoonModal);
+      document.getElementById("amgb-save").addEventListener("click", saveAddMissingGuildBoon);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("amgb-overlay").classList.contains("open")) {
+          closeAddMissingGuildBoonModal();
+        }
+      });
+    }
+
+    function openAddMissingGuildBoonModal() {
+      ensureAddMissingGuildBoonDOM();
+
+      // Default category to the one currently being picked
+      // (_pickerState.guildBoonCat is stashed in renderGuildBoons when openPicker is called).
+      const currentCat = (_pickerState && _pickerState.guildBoonCat) ? _pickerState.guildBoonCat : "Offense";
+
+      // Reset all fields
+      document.getElementById("amgb-name").value = "";
+      document.getElementById("amgb-category").value = currentCat;
+      document.getElementById("amgb-stat").value = "";
+      document.getElementById("amgb-amount").value = "";
+      document.getElementById("amgb-stat-type").value = "rating";
+      document.getElementById("amgb-item-level").value = "1000";
+      document.getElementById("amgb-combined-rating").value = "800";
+      document.getElementById("amgb-notes").value = "";
+
+      const msg = document.getElementById("amgb-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+      const saveBtn = document.getElementById("amgb-save");
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      document.getElementById("amgb-overlay").classList.add("open");
+      setTimeout(() => document.getElementById("amgb-name").focus(), 50);
+    }
+
+    function closeAddMissingGuildBoonModal() {
+      const o = document.getElementById("amgb-overlay");
+      if (o) o.classList.remove("open");
+    }
+
+    async function saveAddMissingGuildBoon() {
+      const msg = document.getElementById("amgb-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+
+      const name        = document.getElementById("amgb-name").value.trim();
+      const category    = document.getElementById("amgb-category").value || "Offense";
+      const stat        = document.getElementById("amgb-stat").value;
+      const amountRaw   = document.getElementById("amgb-amount").value;
+      const amount      = parseFloat(amountRaw);
+      const statType    = document.getElementById("amgb-stat-type").value || "rating";
+      const ilRaw       = document.getElementById("amgb-item-level").value;
+      const item_level  = ilRaw ? (parseInt(ilRaw, 10) || 1000) : 1000;
+      const crRaw       = document.getElementById("amgb-combined-rating").value;
+      const combinedRating = crRaw ? (parseInt(crRaw, 10) || 800) : 800;
+      const notes       = document.getElementById("amgb-notes").value.trim();
+
+      if (name.length < 2) { msg.textContent = "Boon name is required."; msg.className = "ami-msg error"; return; }
+      if (!stat) { msg.textContent = "Choose a stat."; msg.className = "ami-msg error"; return; }
+      if (isNaN(amount)) { msg.textContent = "Enter a valid amount."; msg.className = "ami-msg error"; return; }
+
+      const item = {
+        name,
+        category,
+        item_level,
+        combinedRating,
+        statType,
+        stat,
+        amount,
+        source: "User-added (pending review)",
+        notes: notes || "User-added — pending admin review."
+      };
+
+      // 1. Save locally — unconditional.
+      const saved = addUserGuildBoon(item);
+
+      // Resolve the picker callback before the await so it always fires.
+      const pickerOnPick = (_pickerState && _pickerState.dataType === "guild_boon")
+        ? _pickerState.onPick
+        : null;
+
+      // 2. Submit a report (best-effort; never blocks the local save).
+      const saveBtn = document.getElementById("amgb-save");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Sending report…";
+
+      let reportId = null;
+      const reportLines = [];
+      reportLines.push("A player added this missing guild boon:");
+      reportLines.push("");
+      reportLines.push("Name: " + name);
+      reportLines.push("Category: " + category);
+      reportLines.push("Stat: " + stat + " +" + amount + (statType === "percent" ? "%" : " (rating)"));
+      reportLines.push("Item Level: " + item_level);
+      reportLines.push("Combined Rating: " + combinedRating);
+      if (notes) {
+        reportLines.push("");
+        reportLines.push("Player notes:");
+        reportLines.push(notes);
+      }
+
+      if (window.supabase) {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        try {
+          const rpcRes = await sb.rpc("submit_missing_item_report", {
+            p_title: "Missing guild boon: " + name,
+            p_description: reportLines.join("\n"),
+            p_category: "Missing Guild Boon",
+            p_image_url: ""
+          });
+          if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
+            reportId = rpcRes.data.report_id;
+          }
+        } catch (err) {
+          console.warn("AMGB report send failed:", err);
+        }
+      }
+
+      // Stamp the report id so runReconciliation() can match it later.
+      if (reportId) {
+        saved.__reportId = reportId;
+        const list = getUserAddedGuildBoons();
+        const idx = list.findIndex(x => x.id === saved.id);
+        if (idx !== -1) { list[idx] = saved; saveUserAddedGuildBoons(list); }
+      }
+
+      // 3. Call the picker's onPick to set the category pick (always runs regardless of report outcome).
+      if (pickerOnPick) pickerOnPick(item);
+
+      // 4. Toast + clean up.
+      toast(reportId
+        ? "Added to your build! We'll review and add it to the site."
+        : "Added to your build — couldn't send report, please try again later.");
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      closeAddMissingGuildBoonModal();
+      if (typeof closePicker === "function") closePicker();
+    }
+
     /* ===== Class base ability scores =====
        Pulled from CLASSES_DATA (sourced from NW Hub character editor).
        Falls back to 10/10/10/10/10/10 if the class isn't found. */
@@ -10218,11 +10480,22 @@
 
     /* ===== Guild boons ===== */
     function getGuildBoonsByCategory(cat) {
-      if (typeof GUILD_BOONS_DATA === "undefined") return [];
-      return (GUILD_BOONS_DATA[cat] || []).slice();
+      const canonical = (typeof GUILD_BOONS_DATA !== "undefined") ? (GUILD_BOONS_DATA[cat] || []).slice() : [];
+      const canonicalNames = new Set(canonical.map(b => b.name));
+      const userAdded = (typeof getUserAddedGuildBoons === "function")
+        ? getUserAddedGuildBoons().filter(b => b.category === cat && !canonicalNames.has(b.name))
+        : [];
+      return canonical.concat(userAdded);
     }
     function findGuildBoon(cat, name) {
-      return getGuildBoonsByCategory(cat).find(b => b.name === name) || null;
+      if (!name) return null;
+      const fromCategory = getGuildBoonsByCategory(cat).find(b => b.name === name);
+      if (fromCategory) return fromCategory;
+      // Fallback: search user-added across all categories (in case category changed)
+      if (typeof getUserAddedGuildBoons === "function") {
+        return getUserAddedGuildBoons().find(b => b.category === cat && b.name === name) || null;
+      }
+      return null;
     }
     function renderGuildBoonPick(b) {
       const isPct = b.statType === "percent";
@@ -10260,6 +10533,7 @@
             title: `Guild boon — ${cat}`,
             items: getGuildBoonsByCategory(cat),
             render: renderGuildBoonPick,
+            guildBoonCat: cat,
             onPick: (b) => {
               state.guildBoonPicks[cat] = b ? b.name : null;
               renderGuildBoons(); rerenderAll();
@@ -13040,6 +13314,7 @@
       const userOverloads = getUserAddedOverloads();
       const userInsignias = getUserAddedInsignias();
       const userBuffsRecon = getUserAddedBuffs();
+      const userGuildBoonsRecon = getUserAddedGuildBoons();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -13063,6 +13338,10 @@
       }
       // From user-added buffs
       for (const item of userBuffsRecon) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      // From user-added guild boons
+      for (const item of userGuildBoonsRecon) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       // From data-correction overrides
@@ -13318,6 +13597,40 @@
             anyChange = true;
           }
         }
+        // --- User-added guild boons (no resolved id field; matched by name + category) ---
+        // Mirrors the buff branch.  Won't Fix clears the pick for that category
+        // from state.guildBoonPicks if the player had it selected.
+        if (status === "Fixed" || status === "Won't Fix") {
+          const gbList = getUserAddedGuildBoons();
+          const gbIdx = gbList.findIndex(x => x.__reportId === reportId);
+          if (gbIdx !== -1) {
+            const userGB = gbList[gbIdx];
+            const canonicalExists = (typeof GUILD_BOONS_DATA !== "undefined") &&
+              (GUILD_BOONS_DATA[userGB.category] || []).some(b => b.name === userGB.name);
+            if (status === "Fixed") {
+              if (canonicalExists) {
+                // Canonical entry is live; findGuildBoon now resolves to it.
+                // Drop the local copy.
+                toastItems.push(`"${userGB.name}" is now in the site database — your build has been updated.`);
+                gbList.splice(gbIdx, 1);
+                saveUserAddedGuildBoons(gbList);
+              } else {
+                // Approved but data JS not rebuilt yet — keep the local copy.
+                toastItems.push(`"${userGB.name}" was approved but data hasn't refreshed yet — reload the page to update.`);
+              }
+            } else { // Won't Fix
+              // Clear the pick if this boon is currently selected for its category.
+              if (state.guildBoonPicks && state.guildBoonPicks[userGB.category] === userGB.name) {
+                state.guildBoonPicks[userGB.category] = null;
+              }
+              const noteStr = admin_notes ? ` (${admin_notes})` : "";
+              toastItems.push(`"${userGB.name}" won't be added to the site${noteStr}.`);
+              gbList.splice(gbIdx, 1);
+              saveUserAddedGuildBoons(gbList);
+            }
+            anyChange = true;
+          }
+        }
         // Active statuses (New, Confirmed, In Progress) or Fixed without
         // resolved_gear_id: keep local, no action needed.
       }
@@ -13350,6 +13663,7 @@
       const userOverloads = getUserAddedOverloads();
       const userInsignias = getUserAddedInsignias();
       const userBuffsModal = getUserAddedBuffs();
+      const userGuildBoonsModal = getUserAddedGuildBoons();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -13368,6 +13682,9 @@
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const item of userBuffsModal) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      for (const item of userGuildBoonsModal) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const key of Object.keys(overrides)) {
@@ -13497,6 +13814,25 @@
           kind: "item",
           name: item.name,
           slot: "Buff",
+          reportId: item.__reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: item.addedAt || null
+        };
+        if (isActive) pending.push(entry);
+        else resolved.push(entry);
+      }
+
+      // User-added guild boons (reuse the "item" render shape)
+      for (const item of userGuildBoonsModal) {
+        if (!item.__reportId) continue;
+        const row = rowById[item.__reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        const entry = {
+          kind: "item",
+          name: item.name,
+          slot: "Guild Boon (" + (item.category || "?") + ")",
           reportId: item.__reportId,
           status,
           adminNote: row ? row.admin_notes : null,
