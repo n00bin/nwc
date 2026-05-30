@@ -1,5 +1,17 @@
 # Data Issues To Investigate
 
+## Jotunskar gear: "Winterworn Harness" is a placeholder set name (OPEN, 2026-05-29)
+
+37 Jotunskar (Master) entries carry `set: "Winterworn Harness"` — but it spans many
+unrelated item lines (Aetherwrap, Dawnshard Raiment, Earthshard Guard, Stormbind Tunic,
+Titanweave Harness, Lifebraid Vestment, Stonevein, AND the Frostbound 4-piece armor). It's
+an intake placeholder; no in-game tooltip shows "Winterworn Harness" as a set.
+KNOWN so far (from screenshots): the **Stonevein** line (Harness=Pants, Straps=Shirt) =
+**Freezing Fortitude** (Reports #59/#60) — fixed on ids 5371, 5377, 5447. The other lines'
+real set names need screenshots. Also: each shirt/pants line is a 2-piece set (Harness=Pants,
+Straps=Shirt; likely Raiment/Guard/Vestment/Tunic/Aetherwrap pair up similarly) — verify
+slots per line. And Veinlit Stonevein Straps (5447) stats are still UNVERIFIED.
+
 ## Bloodwoven set — slot-conflict pairs need screenshots (OPEN, 2026-05-29)
 
 Cleaned up 2026-05-29: deleted exact-dup em-dash entries (468, 470) and two malformed
