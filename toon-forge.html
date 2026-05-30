@@ -7130,6 +7130,30 @@
       if (gear["Ring 1"] && gear["Ring 2"] && gear["Ring 1"].name === gear["Ring 2"].name) {
         delete gear["Ring 2"];
       }
+      // Gem synergy (Frostsilver-style rings): a ring hard-slots specific gems,
+      // but each gem's +% only applies when the player has that exact enchant
+      // (type + rank) slotted in their enchantment loadout. Independent per gem.
+      // Merge the *active* bonuses into a cloned item's percentStats so the rest
+      // of the pipeline sums them like any other percent stat.
+      {
+        const slottedEnch = new Set();
+        if (s.enchants) {
+          const e = s.enchants;
+          [].concat(e.offense || [], e.defense || [], [e.utility], [e.combat], [e.bonus])
+            .forEach(n => { if (n) slottedEnch.add(n); });
+        }
+        for (const slot in gear) {
+          const it = gear[slot];
+          if (!it || !Array.isArray(it.gemSynergy) || !it.gemSynergy.length) continue;
+          const active = it.gemSynergy.filter(g => slottedEnch.has(g.enchant));
+          if (!active.length) continue;
+          const merged = Object.assign({}, it, { percentStats: Object.assign({}, it.percentStats) });
+          active.forEach(g => {
+            merged.percentStats[g.stat] = (merged.percentStats[g.stat] || 0) + g.percent;
+          });
+          gear[slot] = merged;
+        }
+      }
       // Resolve artifacts: state.artifacts is { "Primary": "name", "Secondary 1": "name", ... }
       const artifacts = { primary: null, secondary: [] };
       if (s.artifacts) {
@@ -8846,7 +8870,28 @@
            </div>`
         : "";
 
-      const desc = [statBlock, bonusBlock, setBlock, classNote, notesBlock].filter(Boolean).join("");
+      // ---- gem synergy block (Frostsilver-style rings: hard-slotted gems
+      //      whose +% only applies while the matching enchant is slotted) ----
+      let gemBlock = "";
+      if (Array.isArray(item.gemSynergy) && item.gemSynergy.length) {
+        const slotted = new Set();
+        if (typeof state !== "undefined" && state.enchants) {
+          const e = state.enchants;
+          [].concat(e.offense || [], e.defense || [], [e.utility], [e.combat], [e.bonus])
+            .forEach(n => { if (n) slotted.add(n); });
+        }
+        const rows = item.gemSynergy.map(g => {
+          const on = slotted.has(g.enchant);
+          return `<div class="gear-card-stat-line">${on ? "✅" : "⬜"} ${escape(g.enchant)} → +${g.percent}% ${escape(g.stat)}${on ? "" : " — slot this enchant to activate"}</div>`;
+        }).join("");
+        gemBlock = `<div class="gear-card-section">
+             <div class="gear-card-section-title">Gem Synergy</div>
+             <div class="gear-card-set-text" style="margin-bottom:0.3rem;">Hard-slotted gems — each bonus applies only while you have that exact enchant (type &amp; rank) slotted.</div>
+             ${rows}
+           </div>`;
+      }
+
+      const desc = [statBlock, bonusBlock, gemBlock, setBlock, classNote, notesBlock].filter(Boolean).join("");
       return { name: item.name, meta, desc };
     }
 
