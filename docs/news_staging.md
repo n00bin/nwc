@@ -7,4 +7,4 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ## Week of 2026-05-30
 
 ### Features
-- **Toon Forge — Add Missing Overload.** The overload pickers now have a green "Add Missing Overload" button (matching gear and enchantments). If an overload enchantment isn't in our list, add it yourself with its stats — it slots into your build right away and files a report so we can add it site-wide. Pending/added/declined submissions show in My Contributions.
+- **Toon Forge — Add Missing button for more pickers.** The "Add Missing" flow (add it yourself, it slots into your build immediately, files a report, tracked in My Contributions) now covers **Overloads** and **Insignias** too — not just gear and enchantments. More picker types coming.
