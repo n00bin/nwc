@@ -2,6 +2,31 @@
 var NEWS_DATA = [
   {
     date: "May 29, 2026",
+    title: "Toon Forge Power Fixes, Frostsilver Gem Synergy & Gear Cleanup",
+    tags: ["Feature", "Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li><strong>Toon Forge — paragon powers now show up in the power picker.</strong> A display bug was hiding every paragon-path at-will, encounter, and daily for most classes (only Paladin was unaffected). The full power list is now selectable — e.g. Devout Cleric jumps from 2/5/3 to 4/10/5 powers, and Barbarian, Bard, Fighter, Ranger, Warlock, Wizard, and Rogue all regained their hidden paragon powers.</li>" +
+      "<li><strong>Toon Forge — Frostsilver ring gem synergy is now modeled.</strong> The 7 Frostsilver rings hard-slot two Celestial gems each, but those +3% bonuses only count when you have the matching enchantment (same type and rank) slotted in your build. The builder applies each bonus only when its gem is slotted, and shows a ✅ / ⬜ status for each gem both in the ring picker and on the equipped ring — updating live as you slot or remove gems.</li>" +
+      "<li><strong>Toon Forge — empty gear slots are now usable.</strong> A slot with no items yet (like a Cleric off-hand) wouldn't open at all, which also hid the Add Missing Item button. Empty slots now open their picker so you can add the gear yourself.</li>" +
+      "<li><strong>Companions — Summoned Buffs tab now shows all buff scopes.</strong> Enemy debuffs (like Black Scorpion's Combat Advantage grant), self buffs, and mixed buffs were hidden before. Each entry now carries a color-coded scope tag (Party / Self / Enemy Debuff / Mixed), and the Toon Forge Party Buffs section models ally summoned companions of every scope (Spined Devil and Succubus correctly don't stack). All 40 summoned-buff companions are selectable.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Class restrictions corrected across rings and pants.</strong> Every Pants-slot item (26) and every Ring (24 — the Frostsilver, Rimetouched, Snowbound and Demonweb lines), plus the Scintillant and Shroomwood Sash and Amulet, were wrongly limited to a few classes. Pants and rings are never class-locked in Neverwinter, so all are now usable by any class.</li>" +
+      "<li><strong>Gear stats and slots corrected from in-game screenshots.</strong> Frostsilver Hoop of Tenacity (second stat is Critical Avoidance 9,900, plus +5% Forte); Deep-Riven Stonevein Harness (Deflect 2,728, +1.5% Recharge Speed, set Freezing Fortitude); Darklake Ward Ring (Critical Avoidance 3,825 / Deflection 1,275 were reversed); Arcane Conduit Sigil (Explosive Defense) moved to its correct Shirt slot; Arcane Conduit Insignia (Corrupt Power) third stat fixed to Defense; Bloodwoven Signs (Critical Empowerment) corrected to Forte 1,276.</li>" +
+      "<li><strong>Removed duplicate and broken gear entries.</strong> Two generic Arcane Conduit duplicates and four broken Bloodwoven entries were removed; the builder auto-updates any saved build that used the old names, so nothing breaks.</li>" +
+      "<li><strong>Enchantments — Celestial Jade</strong> was listing Deflect Severity but actually gives Critical Avoidance (2,700 at Celestial). Corrected, so Jade now shows Critical Strike / Critical Avoidance / Outgoing Healing.</li>" +
+      "<li><strong>Companions</strong> — Black Scorpion and 17 others were missing from the Summoned Buffs list and the Party Buffs picker; all added.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li><strong>Masterwork +1 gear tiers added (IL 1,800).</strong> Shroomwood Amulet +1, Shroomwood Sash +1, Scintillant Sash +1, and Scintillant Amulet +1 — the refined-rank versions of the IL 1,700 pieces, completing the base/+1 set for all four. Plus the Darklake Ward Ring +1.</li>" +
+      "<li><strong>Gear screenshot backlog cleared.</strong> Worked through the remaining in-game gear card screenshots and added every genuinely-new item — the Wizard Reinforced Dragonflight set, Duergar Wizard Orb and Talisman, Weathered Bracers of the Successor, the Wintermarked and Frostbound weapons, the Wintermarked Skirmisher armor set, the Stormforged Orb, and more.</li>" +
+      "</ul>"
+  },
+  {
+    date: "May 29, 2026",
     title: "Insignia Bonus Matching Fixes + Add Missing Enchantment",
     tags: ["Feature", "Fix", "Data"],
     body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
