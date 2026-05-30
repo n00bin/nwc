@@ -3376,19 +3376,31 @@
       document.getElementById("picker-overlay").classList.remove("open");
       _pickerState = null;
     }
+    // Per-dataType dropdown filters for a picker, derived from a field on each
+    // item. Each filter adds a <select> above the list whose options are the
+    // distinct values of `field`. Selections persist on _pickerState.filterVals
+    // and combine with the text search. Add a new picker here to give it filters.
+    const PICKER_FILTERS = {
+      mount_collar: [
+        { field: "collarSlot", allLabel: "All types" },
+        { field: "item_level", allLabel: "All levels", numeric: true, optLabel: v => "Level " + v }
+      ],
+      insignia: [
+        { field: "category", allLabel: "All types" }
+      ]
+    };
     function renderPickerList(filter) {
       if (!_pickerState) return;
       const list = document.getElementById("picker-list");
       const f = (filter || "").toLowerCase().trim();
-      // Collar picker gets two extra dropdown filters: type (collarSlot) and
-      // level (item_level). Selections persist on _pickerState across re-renders.
-      const isCollarPicker = _pickerState.dataType === "mount_collar";
-      const collarTypeF = isCollarPicker ? (_pickerState.collarTypeFilter || "") : "";
-      const collarLevelF = isCollarPicker ? (_pickerState.collarLevelFilter || "") : "";
+      // Dropdown filters (type/level/etc.) for pickers configured in PICKER_FILTERS.
+      // Selections persist on _pickerState.filterVals and combine with text search.
+      const pickerFilters = PICKER_FILTERS[_pickerState.dataType] || [];
+      const filterVals = _pickerState.filterVals || (_pickerState.filterVals = {});
       const items = _pickerState.items.filter(it => {
-        if (isCollarPicker) {
-          if (collarTypeF && it.collarSlot !== collarTypeF) return false;
-          if (collarLevelF && String(it.item_level) !== collarLevelF) return false;
+        for (const pf of pickerFilters) {
+          const sel = filterVals[pf.field];
+          if (sel && String(it[pf.field]) !== sel) return false;
         }
         if (!f) return true;
         const r = _pickerState.render(it);
@@ -3410,19 +3422,19 @@
           on any item to fix it for your build.</span>
         </div>`;
       }
-      if (isCollarPicker) {
-        const types = Array.from(new Set(_pickerState.items.map(c => c.collarSlot).filter(Boolean))).sort();
-        const levels = Array.from(new Set(_pickerState.items.map(c => c.item_level).filter(v => v != null))).sort((a, b) => a - b);
-        html += `<div class="picker-collar-filters">
-          <select id="picker-collar-type" class="picker-collar-filter" aria-label="Filter by collar type">
-            <option value="">All types</option>
-            ${types.map(t => `<option value="${_escAttr(t)}"${t === collarTypeF ? " selected" : ""}>${_escHTML(t)}</option>`).join("")}
-          </select>
-          <select id="picker-collar-level" class="picker-collar-filter" aria-label="Filter by collar level">
-            <option value="">All levels</option>
-            ${levels.map(l => `<option value="${l}"${String(l) === collarLevelF ? " selected" : ""}>Level ${l}</option>`).join("")}
-          </select>
-        </div>`;
+      if (pickerFilters.length) {
+        const selects = [];
+        for (const pf of pickerFilters) {
+          const vals = Array.from(new Set(_pickerState.items.map(it => it[pf.field]).filter(v => v != null)));
+          if (vals.length < 2) continue; // nothing to filter on (e.g. a single-category slot)
+          vals.sort(pf.numeric ? (a, b) => a - b : (a, b) => String(a).localeCompare(String(b)));
+          const cur = filterVals[pf.field] || "";
+          selects.push(`<select class="picker-collar-filter" data-pf-field="${_escAttr(pf.field)}" aria-label="${_escAttr(pf.allLabel)}">
+            <option value="">${_escHTML(pf.allLabel)}</option>
+            ${vals.map(v => `<option value="${_escAttr(String(v))}"${String(v) === cur ? " selected" : ""}>${_escHTML(pf.optLabel ? pf.optLabel(v) : String(v))}</option>`).join("")}
+          </select>`);
+        }
+        if (selects.length) html += `<div class="picker-collar-filters">${selects.join("")}</div>`;
       }
       if (isGearPicker) {
         html += `<button id="picker-add-missing" class="picker-add-missing-btn" type="button">
@@ -3511,13 +3523,14 @@
         </div>`;
       }
       list.innerHTML = html;
-      if (isCollarPicker) {
+      if (pickerFilters.length) {
         const searchEl = document.getElementById("picker-search");
-        const reRender = () => renderPickerList(searchEl ? searchEl.value : "");
-        const ctf = document.getElementById("picker-collar-type");
-        const clf = document.getElementById("picker-collar-level");
-        if (ctf) ctf.addEventListener("change", e => { _pickerState.collarTypeFilter = e.target.value; reRender(); });
-        if (clf) clf.addEventListener("change", e => { _pickerState.collarLevelFilter = e.target.value; reRender(); });
+        list.querySelectorAll("[data-pf-field]").forEach(sel => {
+          sel.addEventListener("change", e => {
+            _pickerState.filterVals[e.target.dataset.pfField] = e.target.value;
+            renderPickerList(searchEl ? searchEl.value : "");
+          });
+        });
       }
       list.querySelectorAll("[data-pick]").forEach(el => {
         el.addEventListener("click", (e) => {
