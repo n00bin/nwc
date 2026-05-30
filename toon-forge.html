@@ -3382,6 +3382,7 @@
       const showPencil = !!_pickerState.dataType;
       const isGearPicker = _pickerState.dataType === "gear" && _pickerState.slot;
       const isEnchantPicker = _pickerState.dataType === "enchant" && _pickerState.enchantSlotType;
+      const isOverloadPicker = _pickerState.dataType === "overload";
       if (showPencil) {
         html += `<div class="picker-tip">
           <span class="picker-tip-icon">💡</span>
@@ -3401,6 +3402,13 @@
           <span style="font-size:1.1em;">＋</span>
           <span>Add Missing Enchantment</span>
           <span class="picker-add-missing-hint">Don't see your enchantment? Add it yourself — it'll show up in your build right away.</span>
+        </button>`;
+      }
+      if (isOverloadPicker) {
+        html += `<button id="picker-add-missing-overload" class="picker-add-missing-btn" type="button">
+          <span style="font-size:1.1em;">＋</span>
+          <span>Add Missing Overload</span>
+          <span class="picker-add-missing-hint">Don't see your overload? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
       }
       if (_pickerState.allowNone !== false) {
@@ -3454,6 +3462,13 @@
         addEnchBtn.addEventListener("click", (e) => {
           e.stopPropagation();
           openAddMissingEnchantModal(_pickerState.enchantSlotType);
+        });
+      }
+      const addOverloadBtn = document.getElementById("picker-add-missing-overload");
+      if (addOverloadBtn) {
+        addOverloadBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openAddMissingOverloadModal();
         });
       }
       list.querySelectorAll("[data-pick-none]").forEach(el => {
@@ -5018,12 +5033,26 @@
       return { name: e.name, meta, desc };
     }
     function findOverloadByName(name) {
-      if (!name || typeof OVERLOADS_DATA === "undefined") return null;
-      return OVERLOADS_DATA.find(o => o.name === name) || null;
+      if (!name) return null;
+      const canonical = (typeof OVERLOADS_DATA !== "undefined")
+        ? OVERLOADS_DATA.find(o => o.name === name) || null
+        : null;
+      if (canonical) return canonical;
+      // Fall back to user-added overloads (pending review).
+      if (typeof getUserAddedOverloads === "function") {
+        return getUserAddedOverloads().find(o => o.name === name) || null;
+      }
+      return null;
     }
     function getOverloadList() {
-      if (typeof OVERLOADS_DATA === "undefined") return [];
-      return OVERLOADS_DATA.slice().sort((a,b) => a.name.localeCompare(b.name));
+      const canonical = (typeof OVERLOADS_DATA !== "undefined") ? OVERLOADS_DATA : [];
+      // Player-added overloads (from the "+ Add Missing Overload" flow) join
+      // the same list so they show up in the picker right away. Drop any whose
+      // name now matches a canonical entry — the official one has taken over.
+      const canonicalNames = new Set(canonical.map(o => o.name));
+      const userAdded = (typeof getUserAddedOverloads === "function" ? getUserAddedOverloads() : [])
+        .filter(o => !canonicalNames.has(o.name));
+      return canonical.concat(userAdded).sort((a,b) => a.name.localeCompare(b.name));
     }
     function renderOverloadPick(o) {
       const il = o.item_level ? "IL " + o.item_level : "";
@@ -6306,6 +6335,279 @@
       saveBtn.disabled = false;
       saveBtn.textContent = "Add to my build";
       closeAddMissingEnchantModal();
+      if (typeof closePicker === "function") closePicker();
+    }
+
+    /* ===== User-added overloads (locally) =====
+       Mirrors the user-added enchantment flow exactly. Players can add a missing
+       overload via the "+ Add Missing Overload" button in any overload picker. The
+       overload is saved to localStorage so it works in the player's build
+       immediately, and an admin report is filed so it can be reviewed and
+       merged into the canonical overloads data for everyone.
+       Stored with `__userAdded: true` and negative ids (separate id space —
+       findOverloadByName matches on name, so ids never collide). */
+    const USER_OVERLOAD_KEY = "nwcb_user_added_overloads_v1";
+    function getUserAddedOverloads() {
+      try {
+        const raw = localStorage.getItem(USER_OVERLOAD_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveUserAddedOverloads(list) {
+      try { localStorage.setItem(USER_OVERLOAD_KEY, JSON.stringify(list)); }
+      catch (e) { /* quota — ignore */ }
+    }
+    function addUserOverload(item) {
+      const list = getUserAddedOverloads();
+      const minId = list.reduce((m, x) => Math.min(m, x.id || 0), 0);
+      item.id = (minId < 0 ? minId : 0) - 1;
+      item.__userAdded = true;
+      item.addedAt = new Date().toISOString();
+      list.push(item);
+      saveUserAddedOverloads(list);
+      return item;
+    }
+    // Remove a user-added overload by name from every overload slot it occupies.
+    // Used by reconciliation when a submission is approved or declined.
+    function clearOverloadFromSlots(name) {
+      if (!name || !state.overloads) return;
+      for (let i = 0; i < state.overloads.length; i++) {
+        if (state.overloads[i] === name) state.overloads[i] = null;
+      }
+    }
+
+    /* ===== Add Missing Overload modal =====
+       Simple form: name, item level, up to 3 rating-stat rows, up to 3
+       percent-stat rows, and an optional description/notes field.
+       At least one stat is required before the form can be saved. */
+    const AMO_STAT_OPTIONS = AMI_STAT_OPTIONS.slice();           // rating stats
+    const AMO_PCT_STAT_OPTIONS = AMI_STAT_OPTIONS.concat(["Dmg Bonus"]); // % stats
+
+    function _amoStatRows(prefix, count, optionList) {
+      let html = "";
+      for (let i = 0; i < count; i++) {
+        html += `
+          <div class="ami-stat-row">
+            <select class="${prefix}-name" data-row="${i}">
+              <option value="">— stat ${i + 1} —</option>
+              ${optionList.map(s => `<option value="${s}">${s}</option>`).join("")}
+            </select>
+            <input type="number" class="${prefix}-value" data-row="${i}" placeholder="value" step="any">
+          </div>`;
+      }
+      return html;
+    }
+
+    function ensureAddMissingOverloadDOM() {
+      if (document.getElementById("amo-overlay")) return;
+      const overlay = document.createElement("div");
+      overlay.id = "amo-overlay";
+      overlay.className = "ami-overlay";
+
+      overlay.innerHTML = `
+        <div class="ami-panel">
+          <div class="ami-header">
+            <h3>Add Missing Overload</h3>
+            <button class="ami-close" id="amo-close" type="button">×</button>
+          </div>
+          <div class="ami-body">
+            <div class="ami-row">
+              <label>Overload Name <span class="req">*</span></label>
+              <input type="text" id="amo-name" placeholder="e.g. Masterwork Overload" maxlength="120" required>
+            </div>
+            <div class="ami-row">
+              <label>Item Level (optional)</label>
+              <input type="number" id="amo-il" min="0" step="1" placeholder="e.g. 1">
+            </div>
+            <div class="ami-row">
+              <label>Rating stats (pick the stat, type the +value)</label>
+              ${_amoStatRows("amo-r", 3, AMO_STAT_OPTIONS)}
+            </div>
+            <div class="ami-row">
+              <label>Percent stats (e.g. +5% Dmg Bonus)</label>
+              ${_amoStatRows("amo-p", 3, AMO_PCT_STAT_OPTIONS)}
+            </div>
+            <div class="ami-row">
+              <label>In-Game Effect / Description (optional)</label>
+              <textarea id="amo-desc" rows="3" placeholder="Copy the overload's effect text from the tooltip if any." maxlength="2000"></textarea>
+            </div>
+            <div class="ami-row">
+              <label>Where you got it / anything else useful (optional)</label>
+              <textarea id="amo-notes" rows="2" placeholder="e.g. 'Dropped in Ravenloft.'" maxlength="600"></textarea>
+            </div>
+          </div>
+          <div class="ami-footer">
+            <button class="ami-save-btn" id="amo-save" type="button">Add to my build</button>
+            <div class="ami-msg" id="amo-msg"></div>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target.id === "amo-overlay") closeAddMissingOverloadModal();
+      });
+      document.getElementById("amo-close").addEventListener("click", closeAddMissingOverloadModal);
+      document.getElementById("amo-save").addEventListener("click", saveAddMissingOverload);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("amo-overlay").classList.contains("open")) {
+          closeAddMissingOverloadModal();
+        }
+      });
+    }
+
+    function openAddMissingOverloadModal() {
+      ensureAddMissingOverloadDOM();
+
+      // Reset all fields
+      document.getElementById("amo-name").value = "";
+      document.getElementById("amo-il").value = "";
+      document.getElementById("amo-desc").value = "";
+      document.getElementById("amo-notes").value = "";
+      document.querySelectorAll("#amo-overlay select").forEach(el => el.value = "");
+      document.querySelectorAll("#amo-overlay input[type='number']").forEach(el => el.value = "");
+
+      const msg = document.getElementById("amo-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+      const saveBtn = document.getElementById("amo-save");
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      document.getElementById("amo-overlay").classList.add("open");
+      setTimeout(() => document.getElementById("amo-name").focus(), 50);
+    }
+
+    function closeAddMissingOverloadModal() {
+      const o = document.getElementById("amo-overlay");
+      if (o) o.classList.remove("open");
+    }
+
+    // Collect {stat: value} from a paired set of .NAME / .VALUE inputs within amo-overlay.
+    function _amoCollectStats(nameClass, valueClass) {
+      const out = {};
+      const names = document.querySelectorAll("#amo-overlay ." + nameClass);
+      const values = document.querySelectorAll("#amo-overlay ." + valueClass);
+      names.forEach((sel, i) => {
+        const sName = sel.value;
+        const sVal = parseFloat(values[i] ? values[i].value : "");
+        if (sName && !isNaN(sVal)) out[sName] = sVal;
+      });
+      return out;
+    }
+
+    async function saveAddMissingOverload() {
+      const msg = document.getElementById("amo-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+
+      const name  = document.getElementById("amo-name").value.trim();
+      const ilRaw = document.getElementById("amo-il").value;
+      const il    = ilRaw ? (parseInt(ilRaw, 10) || 1) : 1;
+      const desc  = document.getElementById("amo-desc").value.trim();
+      const notes = document.getElementById("amo-notes").value.trim();
+
+      if (name.length < 2) { msg.textContent = "Overload name is required."; msg.className = "ami-msg error"; return; }
+
+      const ratingStats  = _amoCollectStats("amo-r-name", "amo-r-value");
+      const percentStats = _amoCollectStats("amo-p-name", "amo-p-value");
+
+      const anyStat = Object.keys(ratingStats).length > 0 || Object.keys(percentStats).length > 0;
+      if (!anyStat) { msg.textContent = "Add at least one stat."; msg.className = "ami-msg error"; return; }
+
+      // Build the overload object in the shape the engine expects.
+      const item = {
+        name,
+        item_level: il,
+        combinedPercent: 0,
+        slotType: "Overload",
+        ratingStats,
+        percentStats,
+        enemyType: "",
+        damagePct: 0,
+        source: "User-added (pending review)",
+        notes: notes || "User-added — pending admin review."
+      };
+      if (desc) item.description = desc;
+
+      // 1. Save locally — unconditional. The build gets the overload regardless
+      // of whether the report send succeeds.
+      const saved = addUserOverload(item);
+
+      // Resolve the picker callback before the await so it always fires.
+      const pickerOnPick = (_pickerState && _pickerState.dataType === "overload")
+        ? _pickerState.onPick
+        : null;
+
+      // 2. Submit a report (best-effort; never blocks the local save).
+      const saveBtn = document.getElementById("amo-save");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Sending report…";
+
+      let reportId = null;
+      const reportLines = [];
+      reportLines.push("A player added this missing overload:");
+      reportLines.push("");
+      reportLines.push("Name: " + name);
+      reportLines.push("Item Level: " + il);
+      if (Object.keys(ratingStats).length) {
+        reportLines.push("");
+        reportLines.push("Rating stats:");
+        for (const k of Object.keys(ratingStats)) reportLines.push("  • " + k + ": +" + ratingStats[k]);
+      }
+      if (Object.keys(percentStats).length) {
+        reportLines.push("");
+        reportLines.push("Percent stats:");
+        for (const k of Object.keys(percentStats)) reportLines.push("  • " + k + ": +" + percentStats[k] + "%");
+      }
+      if (desc) {
+        reportLines.push("");
+        reportLines.push("In-game effect:");
+        reportLines.push(desc);
+      }
+      if (notes) {
+        reportLines.push("");
+        reportLines.push("Player notes:");
+        reportLines.push(notes);
+      }
+
+      if (window.supabase) {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        try {
+          const rpcRes = await sb.rpc("submit_missing_item_report", {
+            p_title: "Missing overload: " + name,
+            p_description: reportLines.join("\n"),
+            p_category: "Missing Overload",
+            p_image_url: ""
+          });
+          if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
+            reportId = rpcRes.data.report_id;
+          }
+        } catch (err) {
+          console.warn("AMO report send failed:", err);
+        }
+      }
+
+      // Stamp the report id so runReconciliation() can match it later.
+      if (reportId) {
+        saved.__reportId = reportId;
+        const list = getUserAddedOverloads();
+        const idx = list.findIndex(x => x.id === saved.id);
+        if (idx !== -1) { list[idx] = saved; saveUserAddedOverloads(list); }
+      }
+
+      // 3. Equip it (always runs regardless of report outcome).
+      if (pickerOnPick) pickerOnPick(item);
+
+      // 4. Toast + clean up.
+      toast(reportId
+        ? "Added to your build! We'll review and add it to the site."
+        : "Added to your build — couldn't send report, please try again later.");
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      closeAddMissingOverloadModal();
       if (typeof closePicker === "function") closePicker();
     }
 
@@ -12108,6 +12410,7 @@
       // 1. Collect all pending report ids.
       const userGear = getUserAddedGear();
       const userEnchants = getUserAddedEnchants();
+      const userOverloads = getUserAddedOverloads();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -12119,6 +12422,10 @@
       }
       // From user-added enchantments
       for (const item of userEnchants) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      // From user-added overloads
+      for (const item of userOverloads) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       // From data-correction overrides
@@ -12278,6 +12585,39 @@
             anyChange = true;
           }
         }
+        // --- User-added overloads (no resolved id field; matched by name) ---
+        // Mirrors the enchant branch above. Overload reports carry no
+        // resolved_gear_id, so a "Fixed" overload falls through both gear
+        // branches and is handled here.
+        if (status === "Fixed" || status === "Won't Fix") {
+          const ovList = getUserAddedOverloads();
+          const ovIdx = ovList.findIndex(x => x.__reportId === reportId);
+          if (ovIdx !== -1) {
+            const userOv = ovList[ovIdx];
+            const canonicalExists = (typeof OVERLOADS_DATA !== "undefined") &&
+              OVERLOADS_DATA.some(o => o.name === userOv.name);
+            if (status === "Fixed") {
+              if (canonicalExists) {
+                // Canonical entry is live; the slot name already matches it, so
+                // findOverloadByName now resolves to the official version. Drop
+                // the local copy.
+                toastItems.push(`"${userOv.name}" is now in the site database — your build has been updated.`);
+                ovList.splice(ovIdx, 1);
+                saveUserAddedOverloads(ovList);
+              } else {
+                // Approved but data JS not rebuilt yet — keep the local copy.
+                toastItems.push(`"${userOv.name}" was approved but data hasn't refreshed yet — reload the page to update.`);
+              }
+            } else { // Won't Fix
+              clearOverloadFromSlots(userOv.name);
+              const noteStr = admin_notes ? ` (${admin_notes})` : "";
+              toastItems.push(`"${userOv.name}" won't be added to the site${noteStr}.`);
+              ovList.splice(ovIdx, 1);
+              saveUserAddedOverloads(ovList);
+            }
+            anyChange = true;
+          }
+        }
         // Active statuses (New, Confirmed, In Progress) or Fixed without
         // resolved_gear_id: keep local, no action needed.
       }
@@ -12307,6 +12647,7 @@
       // Collect all pending report ids.
       const userGear  = getUserAddedGear();
       const userEnchants = getUserAddedEnchants();
+      const userOverloads = getUserAddedOverloads();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -12316,6 +12657,9 @@
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const item of userEnchants) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      for (const item of userOverloads) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const key of Object.keys(overrides)) {
@@ -12388,6 +12732,25 @@
           kind: "item",
           name: item.name,
           slot: (item.slotType || "Enchant") + " enchant",
+          reportId: item.__reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: item.addedAt || null
+        };
+        if (isActive) pending.push(entry);
+        else resolved.push(entry);
+      }
+
+      // User-added overloads (reuse the "item" render shape)
+      for (const item of userOverloads) {
+        if (!item.__reportId) continue;
+        const row = rowById[item.__reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        const entry = {
+          kind: "item",
+          name: item.name,
+          slot: "Overload",
           reportId: item.__reportId,
           status,
           adminNote: row ? row.admin_notes : null,
