@@ -738,6 +738,23 @@
       transition: border-color 0.12s, color 0.12s;
     }
     .gear-kit-chip:hover { border-color: var(--amber); color: var(--amber); }
+    /* Gem-synergy status under an equipped Frostsilver-style ring. */
+    .gem-syn-row {
+      margin-top: 0.35rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      align-items: center;
+      font-size: 0.72rem;
+    }
+    .gem-syn-pill {
+      padding: 0.12rem 0.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .gem-syn-pill.on  { color: #6ee7a8; border-color: rgba(110,231,168,0.45); background: rgba(110,231,168,0.08); }
+    .gem-syn-pill.off { color: var(--text-dim); opacity: 0.8; }
     .gear-kit-chip.filled { border-style: solid; border-color: var(--gold); color: var(--gold); }
 
     /* Enchantment row — typed slot chips laid out side-by-side */
@@ -8901,6 +8918,14 @@
 
     function renderGear() {
       const g = document.getElementById("gear-grid");
+      // Set of currently-slotted enchant names, for gem-synergy status on
+      // equipped Frostsilver-style rings (computed once per render).
+      const slottedEnchSet = new Set();
+      if (state.enchants) {
+        const e = state.enchants;
+        [].concat(e.offense || [], e.defense || [], [e.utility], [e.combat], [e.bonus])
+          .forEach(n => { if (n) slottedEnchSet.add(n); });
+      }
       g.innerHTML = GEAR_SLOTS.map(s => {
         const v = state.gear[s.label] || "";
         const filled = !!v;
@@ -8925,6 +8950,20 @@
              </div>`
           : "";
         const gearInfo = filled ? `<button class="chip-info" data-details-type="gear" data-details-key="${_escAttr(v)}" data-details-slot="${_escAttr(s.slot)}" title="See gear details">\u{1F50D}</button>` : "";
+        // Gem-synergy status for an equipped Frostsilver-style ring: show each
+        // hard-slotted gem as active (matching enchant slotted) or inactive.
+        let gemStatus = "";
+        if (filled) {
+          const eqItem = findGearByName(v, s.slot);
+          if (eqItem && Array.isArray(eqItem.gemSynergy) && eqItem.gemSynergy.length) {
+            const pills = eqItem.gemSynergy.map(gx => {
+              const on = slottedEnchSet.has(gx.enchant);
+              const tip = `${gx.enchant} → +${gx.percent}% ${gx.stat}${on ? " (active)" : " — slot " + gx.enchant + " to activate"}`;
+              return `<span class="gem-syn-pill ${on ? "on" : "off"}" title="${_escAttr(tip)}">${on ? "✅" : "⬜"} +${gx.percent}% ${_escAttr(gx.stat)}</span>`;
+            }).join("");
+            gemStatus = `<div class="gem-syn-row" title="These bonuses apply only while the matching gem enchant is slotted">💎 ${pills}</div>`;
+          }
+        }
         return `
           <div class="slot ${filled ? "filled" : ""}">
             <div class="slot-label">${s.label}${noItems ? " — none yet" : ""}</div>
@@ -8932,6 +8971,7 @@
               ${chipLabel}
               ${gearInfo}
             </div>
+            ${gemStatus}
             ${kitChip}
           </div>`;
       }).join("");
@@ -9064,7 +9104,8 @@
               onPick: (e) => {
                 if (idx === null) state.enchants[t] = e ? e.name : null;
                 else              state.enchants[t][idx] = e ? e.name : null;
-                renderEnchantments(); rerenderAll();
+                // renderGear() so equipped-ring gem-synergy ✅/⬜ status updates live.
+                renderEnchantments(); renderGear(); rerenderAll();
               }
             });
           });
