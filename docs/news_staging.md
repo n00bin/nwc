@@ -14,3 +14,4 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes
 - **Wizard weapons now show up in the Main Hand and Off Hand pickers.** Hundreds of Wizard Orbs and Talismans were mis-filed as "Artifact Equipment," so the Wizard weapon pickers looked nearly empty. All 232 were re-sorted into Main Hand (Orbs) and Off Hand (Talismans) — the pickers now list 144 / 145 weapons instead of 23 / 22.
+- **Report #84 — Bloodwoven Ink (healer Pants) corrected.** The Pants showed the Butcher's Zeal bonus, but it's actually the Survivor's Gift version (current HP boosts Outgoing Healing + Power). The two look identical in-game; the stats and bonus were swapped to match the real tooltip.
