@@ -1,5 +1,12 @@
 # Data Issues To Investigate
 
+## Pending Cleric add: Warden of the Last Rite (Report #78, Confirmed 2026-05-30)
+
+Genuinely missing Cleric main-hand weapon. Player-form data (verify vs screenshot when
+processing Cleric gear): Main Hand, IL 4800, CR 4320, Set Impending Doom, Soul Harvest.
+Stats Damage 100 / Power 1680 / Critical Severity 2880 / Outgoing Healing 1920. Usable by
+Cleric. Add during the Cleric-gear pass with an in-game screenshot.
+
 ## Jotunskar gear: "Winterworn Harness" is a placeholder set name (OPEN, 2026-05-29)
 
 37 Jotunskar (Master) entries carry `set: "Winterworn Harness"` — but it spans many
