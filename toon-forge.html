@@ -5585,7 +5585,11 @@
       if (typeof GEAR_DATA === "undefined") return [];
       const base = GEAR_DATA
         .filter(item => item.slot === slotType)
-        .filter(item => !className || !item.allowedClasses || item.allowedClasses.indexOf(className) !== -1);
+        // allowedClasses: missing/null OR an empty array both mean "unbound —
+        // any class can equip". A non-empty array restricts to those classes.
+        // (Empty array must be treated as unbound to match the documented
+        // convention; `![]` is false in JS, so the length check is required.)
+        .filter(item => !className || !item.allowedClasses || item.allowedClasses.length === 0 || item.allowedClasses.indexOf(className) !== -1);
 
       // C5 — Legacy duplicate cleanup (one-time silent pass, runs on first call only).
       // If a user-added item's name exactly matches a canonical GEAR_DATA entry
@@ -6887,7 +6891,7 @@
     function artifactOptions(className) {
       if (typeof ARTIFACTS_DATA === "undefined") return [];
       return ARTIFACTS_DATA
-        .filter(a => !className || !a.allowedClasses || a.allowedClasses.indexOf(className) !== -1)
+        .filter(a => !className || !a.allowedClasses || a.allowedClasses.length === 0 || a.allowedClasses.indexOf(className) !== -1)
         .sort((a, b) => (b.item_level || 0) - (a.item_level || 0) || a.name.localeCompare(b.name));
     }
 
@@ -8855,7 +8859,7 @@
         : "";
 
       // ---- class restriction note ----
-      const classNote = Array.isArray(item.allowedClasses) && item.allowedClasses.length < 9
+      const classNote = Array.isArray(item.allowedClasses) && item.allowedClasses.length > 0 && item.allowedClasses.length < 9
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Class</div>
              <div class="gear-card-stat-line">${escape(item.allowedClasses.join(" / "))}</div>
@@ -9179,7 +9183,7 @@
         : "";
 
       // Class restriction
-      const classNote = Array.isArray(item.allowedClasses) && item.allowedClasses.length < 9
+      const classNote = Array.isArray(item.allowedClasses) && item.allowedClasses.length > 0 && item.allowedClasses.length < 9
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Class</div>
              <div class="gear-card-stat-line">${escape(item.allowedClasses.join(" / "))}</div>
