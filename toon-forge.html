@@ -8861,10 +8861,12 @@
         const noItems = opts.length === 0;
         const chipLabel = filled
           ? "⚔ " + v
-          : (noItems ? "(no items available)" : "+ Pick item");
+          : (noItems ? "+ Add item" : "+ Pick item");
         const chipClasses = ["gear-pick-chip"];
         if (filled) chipClasses.push("filled");
-        if (noItems) chipClasses.push("disabled");
+        // Note: an empty slot is NOT disabled — clicking still opens the picker
+        // so the "Add Missing Item" button is reachable (e.g. Cleric off-hand
+        // before any have been added). Report #80.
         // Reinforcement kit chip — only shown when the slot has applicable kits
         const kitInfo = kitName ? `<button class="chip-info" data-details-type="kit" data-details-key="${_escAttr(kitName)}" title="See kit details">\u{1F50D}</button>` : "";
         const kitChip = kitOptions.length
@@ -8876,7 +8878,7 @@
         const gearInfo = filled ? `<button class="chip-info" data-details-type="gear" data-details-key="${_escAttr(v)}" data-details-slot="${_escAttr(s.slot)}" title="See gear details">\u{1F50D}</button>` : "";
         return `
           <div class="slot ${filled ? "filled" : ""}">
-            <div class="slot-label">${s.label}${noItems ? " — no items" : ""}</div>
+            <div class="slot-label">${s.label}${noItems ? " — none yet" : ""}</div>
             <div class="${chipClasses.join(" ")}" data-gear-pick="${s.label}" data-slot-type="${s.slot}" title="${filled ? v : "Click to pick an item"}">
               ${chipLabel}
               ${gearInfo}
@@ -8891,13 +8893,12 @@
           const slotData = GEAR_SLOTS.find(x => x.label === slotLabel);
           if (!slotData) return;
           const items = gearOptionsForSlot(slotData.slot, state.class);
-          if (!items.length) return;
           openPicker({
             dataType: "gear",
             slot: slotData.slot,
             slotLabel: slotLabel,
             className: state.class,
-            title: `${slotLabel} — ${items.length} items available`,
+            title: items.length ? `${slotLabel} — ${items.length} items available` : `${slotLabel} — none yet · add one below`,
             items,
             render: renderGearItem,
             onPick: (item) => {
