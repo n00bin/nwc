@@ -934,6 +934,17 @@
       font-size: 0.8rem;
       line-height: 1.4;
     }
+    .picker-collar-filters {
+      display: flex; gap: 0.5rem; margin-bottom: 0.6rem; flex-wrap: wrap;
+    }
+    .picker-collar-filter {
+      flex: 1 1 auto; min-width: 120px;
+      padding: 0.4rem 0.5rem;
+      background: var(--bg); color: var(--text);
+      border: 1px solid var(--border); border-radius: 6px;
+      font-size: 0.85rem; cursor: pointer;
+    }
+    .picker-collar-filter:hover { border-color: var(--amber); }
     .picker-tip-icon { font-size: 1rem; line-height: 1; flex: 0 0 auto; }
     .picker-tip-pencil {
       color: var(--amber);
@@ -3369,7 +3380,16 @@
       if (!_pickerState) return;
       const list = document.getElementById("picker-list");
       const f = (filter || "").toLowerCase().trim();
+      // Collar picker gets two extra dropdown filters: type (collarSlot) and
+      // level (item_level). Selections persist on _pickerState across re-renders.
+      const isCollarPicker = _pickerState.dataType === "mount_collar";
+      const collarTypeF = isCollarPicker ? (_pickerState.collarTypeFilter || "") : "";
+      const collarLevelF = isCollarPicker ? (_pickerState.collarLevelFilter || "") : "";
       const items = _pickerState.items.filter(it => {
+        if (isCollarPicker) {
+          if (collarTypeF && it.collarSlot !== collarTypeF) return false;
+          if (collarLevelF && String(it.item_level) !== collarLevelF) return false;
+        }
         if (!f) return true;
         const r = _pickerState.render(it);
         return (r.name + " " + (r.meta || "") + " " + (r.desc || "")).toLowerCase().includes(f);
@@ -3388,6 +3408,20 @@
           <span class="picker-tip-icon">💡</span>
           <span>Something not matching in-game? Tap the <strong class="picker-tip-pencil">✎</strong>
           on any item to fix it for your build.</span>
+        </div>`;
+      }
+      if (isCollarPicker) {
+        const types = Array.from(new Set(_pickerState.items.map(c => c.collarSlot).filter(Boolean))).sort();
+        const levels = Array.from(new Set(_pickerState.items.map(c => c.item_level).filter(v => v != null))).sort((a, b) => a - b);
+        html += `<div class="picker-collar-filters">
+          <select id="picker-collar-type" class="picker-collar-filter" aria-label="Filter by collar type">
+            <option value="">All types</option>
+            ${types.map(t => `<option value="${_escAttr(t)}"${t === collarTypeF ? " selected" : ""}>${_escHTML(t)}</option>`).join("")}
+          </select>
+          <select id="picker-collar-level" class="picker-collar-filter" aria-label="Filter by collar level">
+            <option value="">All levels</option>
+            ${levels.map(l => `<option value="${l}"${String(l) === collarLevelF ? " selected" : ""}>Level ${l}</option>`).join("")}
+          </select>
         </div>`;
       }
       if (isGearPicker) {
@@ -3477,6 +3511,14 @@
         </div>`;
       }
       list.innerHTML = html;
+      if (isCollarPicker) {
+        const searchEl = document.getElementById("picker-search");
+        const reRender = () => renderPickerList(searchEl ? searchEl.value : "");
+        const ctf = document.getElementById("picker-collar-type");
+        const clf = document.getElementById("picker-collar-level");
+        if (ctf) ctf.addEventListener("change", e => { _pickerState.collarTypeFilter = e.target.value; reRender(); });
+        if (clf) clf.addEventListener("change", e => { _pickerState.collarLevelFilter = e.target.value; reRender(); });
+      }
       list.querySelectorAll("[data-pick]").forEach(el => {
         el.addEventListener("click", (e) => {
           if (e.target.classList.contains("correction-pencil")) return; // pencil click handled below
