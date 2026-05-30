@@ -3435,6 +3435,14 @@
           <span class="picker-add-missing-hint">Don't see your guild boon? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
       }
+      const isArtifactPicker = _pickerState.dataType === "artifact";
+      if (isArtifactPicker) {
+        html += `<button id="picker-add-missing-artifact" class="picker-add-missing-btn" type="button">
+          <span style="font-size:1.1em;">＋</span>
+          <span>Add Missing Artifact</span>
+          <span class="picker-add-missing-hint">Don't see your artifact? Add it yourself — it'll show up in your build right away.</span>
+        </button>`;
+      }
       if (_pickerState.allowNone !== false) {
         html += `<div class="picker-item empty" data-pick-none="1">— None —</div>`;
       }
@@ -3514,6 +3522,13 @@
         addGuildBoonBtn.addEventListener("click", (e) => {
           e.stopPropagation();
           openAddMissingGuildBoonModal();
+        });
+      }
+      const addArtifactBtn = document.getElementById("picker-add-missing-artifact");
+      if (addArtifactBtn) {
+        addArtifactBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openAddMissingArtifactModal();
         });
       }
       list.querySelectorAll("[data-pick-none]").forEach(el => {
@@ -7488,6 +7503,364 @@
       if (typeof closePicker === "function") closePicker();
     }
 
+    // =========================================================================
+    // Add Missing Artifact flow (_amart prefix)
+    // Storage mirrors the overload/insignia/buff/guild-boon trios.
+    // state.artifacts stores artifact names keyed by slot name ("Primary",
+    // "Secondary 1", "Secondary 2", "Secondary 3").
+    // The artifact picker is class-filtered; openPicker is called with
+    // className: state.class so the modal can default-check the player's class.
+    // =========================================================================
+    const USER_ARTIFACT_KEY = "nwcb_user_added_artifacts_v1";
+    function getUserAddedArtifacts() {
+      try {
+        const raw = localStorage.getItem(USER_ARTIFACT_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveUserAddedArtifacts(list) {
+      try { localStorage.setItem(USER_ARTIFACT_KEY, JSON.stringify(list)); }
+      catch (e) { /* quota — ignore */ }
+    }
+    function addUserArtifact(item) {
+      const list = getUserAddedArtifacts();
+      const minId = list.reduce((m, x) => Math.min(m, x.id || 0), 0);
+      item.id = (minId < 0 ? minId : 0) - 1;
+      item.__userAdded = true;
+      item.addedAt = new Date().toISOString();
+      list.push(item);
+      saveUserAddedArtifacts(list);
+      return item;
+    }
+    // Remove a user-added artifact by name from every artifact slot that holds it.
+    // state.artifacts uses "" as the empty convention (not null).
+    function clearArtifactFromSlots(name) {
+      if (!name || !state.artifacts) return;
+      for (const slot of Object.keys(state.artifacts)) {
+        if (state.artifacts[slot] === name) state.artifacts[slot] = "";
+      }
+    }
+
+    /* ===== Add Missing Artifact modal (_amart prefix) =====
+       Form: name (required), item level, combined rating,
+       type dropdown (debuff/tank/personal/utility/damage),
+       3 rating-stat rows, 3 percent-stat rows, artifact power textarea,
+       cooldown (optional, seconds), allowed-classes multi-select with
+       All/None toggle (reuses the same ami-class-check / ami-class-all-btn
+       pattern from the gear modal — the CSS is already defined globally).
+       Requires name + at least one stat. */
+    const AMART_STAT_OPTIONS = AMI_STAT_OPTIONS.slice();           // rating stats
+    const AMART_PCT_STAT_OPTIONS = AMI_STAT_OPTIONS.concat(["Dmg Bonus"]); // % stats
+
+    function _amartStatRows(prefix, count, optionList) {
+      let html = "";
+      for (let i = 0; i < count; i++) {
+        html += `
+          <div class="ami-stat-row">
+            <select class="${prefix}-name" data-row="${i}">
+              <option value="">— stat ${i + 1} —</option>
+              ${optionList.map(s => `<option value="${s}">${s}</option>`).join("")}
+            </select>
+            <input type="number" class="${prefix}-value" data-row="${i}" placeholder="value" step="any">
+          </div>`;
+      }
+      return html;
+    }
+
+    function _amartCollectStats(nameClass, valueClass) {
+      const out = {};
+      const names  = document.querySelectorAll("#amart-overlay ." + nameClass);
+      const values = document.querySelectorAll("#amart-overlay ." + valueClass);
+      names.forEach((sel, i) => {
+        const sName = sel.value;
+        const sVal  = parseFloat(values[i] && values[i].value);
+        if (sName && !isNaN(sVal)) out[sName] = sVal;
+      });
+      return out;
+    }
+
+    function ensureAddMissingArtifactDOM() {
+      if (document.getElementById("amart-overlay")) return;
+      const overlay = document.createElement("div");
+      overlay.id = "amart-overlay";
+      overlay.className = "ami-overlay";
+
+      // Class checkboxes — same pool as the gear modal
+      const classList = (typeof CLASSES_DATA !== "undefined" && Array.isArray(CLASSES_DATA))
+        ? CLASSES_DATA.map(c => c.name || c.class).filter(Boolean)
+        : ["Barbarian","Bard","Cleric","Fighter","Paladin","Ranger","Warlock","Wizard","Rogue"];
+      const classChecks = classList.map(cn => `
+        <label class="ami-class-check">
+          <input type="checkbox" class="amart-class" value="${cn}"> ${cn}
+        </label>`).join("");
+
+      overlay.innerHTML = `
+        <div class="ami-panel">
+          <div class="ami-header">
+            <h3>Add Missing Artifact</h3>
+            <button class="ami-close" id="amart-close" type="button">×</button>
+          </div>
+          <div class="ami-body">
+            <div class="ami-row">
+              <label>Artifact Name <span class="req">*</span></label>
+              <input type="text" id="amart-name" placeholder="e.g. Sigil of the Devoted" maxlength="120" required>
+            </div>
+            <div class="ami-row">
+              <label>Item Level</label>
+              <input type="number" id="amart-il" min="0" step="1" placeholder="e.g. 4000">
+            </div>
+            <div class="ami-row">
+              <label>Combined Rating</label>
+              <input type="number" id="amart-cr" min="0" step="1" placeholder="e.g. 3600">
+            </div>
+            <div class="ami-row">
+              <label>Type</label>
+              <select id="amart-type">
+                <option value="personal">personal</option>
+                <option value="debuff">debuff</option>
+                <option value="tank">tank</option>
+                <option value="utility">utility</option>
+                <option value="damage">damage</option>
+              </select>
+            </div>
+            <div class="ami-row">
+              <label>Rating Stats (up to 3 — pick the stat, type the +value)</label>
+              ${_amartStatRows("amart-r", 3, AMART_STAT_OPTIONS)}
+            </div>
+            <div class="ami-row">
+              <label>Percent Stats (up to 3)</label>
+              ${_amartStatRows("amart-p", 3, AMART_PCT_STAT_OPTIONS)}
+            </div>
+            <div class="ami-row">
+              <label>Artifact Power (active ability text) <span class="req">*</span></label>
+              <textarea id="amart-power" rows="3" placeholder="Copy the artifact's active ability description from the tooltip." maxlength="2000"></textarea>
+            </div>
+            <div class="ami-row">
+              <label>Cooldown (seconds, optional)</label>
+              <input type="number" id="amart-cooldown" min="0" step="1" placeholder="e.g. 60">
+            </div>
+            <div class="ami-row">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;">
+                <label style="margin:0;">Allowed Classes <span style="color:var(--text-mute);font-weight:400;font-size:0.78rem;">(check every class that can use this artifact)</span></label>
+                <button type="button" id="amart-class-all" class="ami-class-all-btn">All</button>
+              </div>
+              <div class="ami-class-grid">${classChecks}</div>
+            </div>
+            <div class="ami-row">
+              <label>Where you got it / anything else useful (optional)</label>
+              <textarea id="amart-notes" rows="2" placeholder="e.g. 'From the Throne of the Dwarven Gods campaign.'" maxlength="600"></textarea>
+            </div>
+          </div>
+          <div class="ami-footer">
+            <button class="ami-save-btn" id="amart-save" type="button">Add to my build</button>
+            <div class="ami-msg" id="amart-msg"></div>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target.id === "amart-overlay") closeAddMissingArtifactModal();
+      });
+      document.getElementById("amart-close").addEventListener("click", closeAddMissingArtifactModal);
+      document.getElementById("amart-save").addEventListener("click", saveAddMissingArtifact);
+      document.getElementById("amart-class-all").addEventListener("click", () => {
+        const boxes = document.querySelectorAll(".amart-class");
+        const anyUnchecked = Array.from(boxes).some(cb => !cb.checked);
+        boxes.forEach(cb => { cb.checked = anyUnchecked; });
+        const btn = document.getElementById("amart-class-all");
+        if (anyUnchecked) { btn.classList.add("active"); btn.textContent = "None"; }
+        else              { btn.classList.remove("active"); btn.textContent = "All"; }
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("amart-overlay").classList.contains("open")) {
+          closeAddMissingArtifactModal();
+        }
+      });
+    }
+
+    // Stash the player's class when the artifact picker opens so the modal
+    // can pre-check the right class checkbox.
+    let _amartClass = null;
+
+    function openAddMissingArtifactModal() {
+      ensureAddMissingArtifactDOM();
+      // Read player class from the picker state (set in renderArtifacts via className: state.class)
+      _amartClass = (_pickerState && _pickerState.className) || (window.state && state.class) || null;
+
+      // Reset form
+      document.getElementById("amart-name").value = "";
+      document.getElementById("amart-il").value = "";
+      document.getElementById("amart-cr").value = "";
+      document.getElementById("amart-type").value = "personal";
+      document.getElementById("amart-power").value = "";
+      document.getElementById("amart-cooldown").value = "";
+      document.getElementById("amart-notes").value = "";
+      document.querySelectorAll(".amart-r-name").forEach(el => el.value = "");
+      document.querySelectorAll(".amart-r-value").forEach(el => el.value = "");
+      document.querySelectorAll(".amart-p-name").forEach(el => el.value = "");
+      document.querySelectorAll(".amart-p-value").forEach(el => el.value = "");
+      // Default-check the player's current class (same convention as gear modal)
+      document.querySelectorAll(".amart-class").forEach(cb => {
+        cb.checked = !!(_amartClass && cb.value === _amartClass);
+      });
+      const allBtn = document.getElementById("amart-class-all");
+      if (allBtn) { allBtn.classList.remove("active"); allBtn.textContent = "All"; }
+      const msg = document.getElementById("amart-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+      const saveBtn = document.getElementById("amart-save");
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      document.getElementById("amart-overlay").classList.add("open");
+      setTimeout(() => document.getElementById("amart-name").focus(), 50);
+    }
+
+    function closeAddMissingArtifactModal() {
+      const o = document.getElementById("amart-overlay");
+      if (o) o.classList.remove("open");
+    }
+
+    async function saveAddMissingArtifact() {
+      const msg = document.getElementById("amart-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+
+      const name      = document.getElementById("amart-name").value.trim();
+      const ilRaw     = document.getElementById("amart-il").value;
+      const il        = ilRaw ? (parseInt(ilRaw, 10) || 0) : 0;
+      const crRaw     = document.getElementById("amart-cr").value;
+      const cr        = crRaw ? (parseInt(crRaw, 10) || 0) : 0;
+      const type      = document.getElementById("amart-type").value || "personal";
+      const power     = document.getElementById("amart-power").value.trim();
+      const cooldownRaw = document.getElementById("amart-cooldown").value;
+      const cooldown  = cooldownRaw ? (parseInt(cooldownRaw, 10) || 60) : 60;
+      const notes     = document.getElementById("amart-notes").value.trim();
+      const allowedClasses = Array.from(document.querySelectorAll(".amart-class"))
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+
+      if (name.length < 2) { msg.textContent = "Artifact name is required."; msg.className = "ami-msg error"; return; }
+      // Power text is optional — don't block players who only know the stats.
+
+      const ratingStats  = _amartCollectStats("amart-r-name", "amart-r-value");
+      const percentStats = _amartCollectStats("amart-p-name", "amart-p-value");
+
+      if (!Object.keys(ratingStats).length && !Object.keys(percentStats).length) {
+        msg.textContent = "Add at least one stat.";
+        msg.className = "ami-msg error"; return;
+      }
+
+      const artifact = {
+        name,
+        slot: "Artifact",
+        type,
+        item_level: il,
+        combinedRating: cr,
+        allowedClasses,
+        ratingStats,
+        percentStats,
+        abilityBonuses: {},
+        equipBonuses: [],
+        power,
+        debuff: "",
+        cooldown,
+        set: "",
+        source: "User-added (pending review)",
+        notes: notes || "User-added — pending admin review."
+      };
+
+      // 1. Save locally — unconditional.
+      const saved = addUserArtifact(artifact);
+
+      // Capture picker callback before the await so it always fires.
+      const pickerOnPick = (_pickerState && _pickerState.dataType === "artifact")
+        ? _pickerState.onPick
+        : null;
+
+      // 2. Submit report (best-effort; never blocks the local save).
+      const saveBtn = document.getElementById("amart-save");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Sending report…";
+
+      let reportId = null;
+
+      const reportLines = [];
+      reportLines.push("A player added this missing artifact:");
+      reportLines.push("");
+      reportLines.push("Name: " + name);
+      reportLines.push("Type: " + type);
+      if (il) reportLines.push("Item Level: " + il);
+      if (cr) reportLines.push("Combined Rating: " + cr);
+      if (allowedClasses.length) {
+        reportLines.push("Usable by: " + (allowedClasses.length === 9 ? "all 9 classes" : allowedClasses.join(", ")));
+      }
+      if (Object.keys(ratingStats).length) {
+        reportLines.push("");
+        reportLines.push("Rating Stats:");
+        for (const k of Object.keys(ratingStats)) {
+          reportLines.push("  • " + k + ": +" + ratingStats[k]);
+        }
+      }
+      if (Object.keys(percentStats).length) {
+        reportLines.push("");
+        reportLines.push("Percent Stats:");
+        for (const k of Object.keys(percentStats)) {
+          reportLines.push("  • " + k + ": +" + percentStats[k] + "%");
+        }
+      }
+      reportLines.push("");
+      reportLines.push("Artifact Power:");
+      reportLines.push(power);
+      reportLines.push("Cooldown: " + cooldown + "s");
+      if (notes) {
+        reportLines.push("");
+        reportLines.push("Player notes:");
+        reportLines.push(notes);
+      }
+
+      if (window.supabase) {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        try {
+          const rpcRes = await sb.rpc("submit_missing_item_report", {
+            p_title: "Missing artifact: " + name,
+            p_description: reportLines.join("\n"),
+            p_category: "Missing Artifact",
+            p_image_url: ""
+          });
+          if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
+            reportId = rpcRes.data.report_id;
+          }
+        } catch (err) {
+          console.warn("AMART report send failed:", err);
+        }
+      }
+
+      // Stamp the report id so runReconciliation() can match it later.
+      if (reportId) {
+        saved.__reportId = reportId;
+        const list = getUserAddedArtifacts();
+        const idx = list.findIndex(x => x.id === saved.id);
+        if (idx !== -1) { list[idx] = saved; saveUserAddedArtifacts(list); }
+      }
+
+      // 3. Equip the artifact into the slot via the picker callback.
+      if (pickerOnPick) pickerOnPick(artifact);
+
+      // 4. Toast + clean up.
+      const toastMsg = reportId
+        ? "Added to your build! We'll review and add it to the site."
+        : "Added to your build — couldn't send report, please try again later.";
+      toast(toastMsg);
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      closeAddMissingArtifactModal();
+      if (typeof closePicker === "function") closePicker();
+    }
+
     /* ===== Class base ability scores =====
        Pulled from CLASSES_DATA (sourced from NW Hub character editor).
        Falls back to 10/10/10/10/10/10 if the class isn't found. */
@@ -8078,16 +8451,31 @@
     }
 
     function findArtifactByName(name) {
-      if (!name || typeof ARTIFACTS_DATA === "undefined") return null;
-      for (const a of ARTIFACTS_DATA) {
-        if (a.name === name) return a;
+      if (!name) return null;
+      if (typeof ARTIFACTS_DATA !== "undefined") {
+        for (const a of ARTIFACTS_DATA) {
+          if (a.name === name) return a;
+        }
+      }
+      // Fall back to user-added artifacts
+      if (typeof getUserAddedArtifacts === "function") {
+        return getUserAddedArtifacts().find(a => a.name === name) || null;
       }
       return null;
     }
     function artifactOptions(className) {
-      if (typeof ARTIFACTS_DATA === "undefined") return [];
-      return ARTIFACTS_DATA
-        .filter(a => !className || !a.allowedClasses || a.allowedClasses.length === 0 || a.allowedClasses.indexOf(className) !== -1)
+      const canonical = (typeof ARTIFACTS_DATA !== "undefined") ? ARTIFACTS_DATA : [];
+      const canonicalNames = new Set(canonical.map(a => a.name));
+      // Apply the same class filter to canonical entries (length===0 = unbound = all classes)
+      function classMatch(a) {
+        return !className || !a.allowedClasses || a.allowedClasses.length === 0 || a.allowedClasses.indexOf(className) !== -1;
+      }
+      const filtered = canonical.filter(classMatch);
+      // Merge user-added: apply same class filter and deduplicate by name vs canonical
+      const userAdded = (typeof getUserAddedArtifacts === "function")
+        ? getUserAddedArtifacts().filter(a => classMatch(a) && !canonicalNames.has(a.name))
+        : [];
+      return filtered.concat(userAdded)
         .sort((a, b) => (b.item_level || 0) - (a.item_level || 0) || a.name.localeCompare(b.name));
     }
 
@@ -10464,6 +10852,7 @@
             title: `${slot} — ${allowed.length} artifacts available`,
             items: allowed,
             render: renderArtifactItem,
+            className: state.class,
             onPick: (item) => {
               state.artifacts[slot] = item ? item.name : "";
               applyAutoTIL();
@@ -13315,6 +13704,7 @@
       const userInsignias = getUserAddedInsignias();
       const userBuffsRecon = getUserAddedBuffs();
       const userGuildBoonsRecon = getUserAddedGuildBoons();
+      const userArtifactsRecon = getUserAddedArtifacts();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -13342,6 +13732,10 @@
       }
       // From user-added guild boons
       for (const item of userGuildBoonsRecon) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      // From user-added artifacts
+      for (const item of userArtifactsRecon) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       // From data-correction overrides
@@ -13631,6 +14025,37 @@
             anyChange = true;
           }
         }
+        // --- User-added artifacts (no resolved id field; matched by name) ---
+        // Mirrors the enchant/overload/insignia/buff/guild-boon branches.
+        // Won't Fix clears the artifact name from every slot in state.artifacts.
+        if (status === "Fixed" || status === "Won't Fix") {
+          const artList = getUserAddedArtifacts();
+          const artIdx = artList.findIndex(x => x.__reportId === reportId);
+          if (artIdx !== -1) {
+            const userArt = artList[artIdx];
+            const canonicalExists = (typeof ARTIFACTS_DATA !== "undefined") &&
+              ARTIFACTS_DATA.some(a => a.name === userArt.name);
+            if (status === "Fixed") {
+              if (canonicalExists) {
+                // Canonical entry is live; findArtifactByName now resolves to it.
+                // Drop the local copy.
+                toastItems.push(`"${userArt.name}" is now in the site database — your build has been updated.`);
+                artList.splice(artIdx, 1);
+                saveUserAddedArtifacts(artList);
+              } else {
+                // Approved but data JS not rebuilt yet — keep the local copy.
+                toastItems.push(`"${userArt.name}" was approved but data hasn't refreshed yet — reload the page to update.`);
+              }
+            } else { // Won't Fix
+              clearArtifactFromSlots(userArt.name);
+              const noteStr = admin_notes ? ` (${admin_notes})` : "";
+              toastItems.push(`"${userArt.name}" won't be added to the site${noteStr}.`);
+              artList.splice(artIdx, 1);
+              saveUserAddedArtifacts(artList);
+            }
+            anyChange = true;
+          }
+        }
         // Active statuses (New, Confirmed, In Progress) or Fixed without
         // resolved_gear_id: keep local, no action needed.
       }
@@ -13664,6 +14089,7 @@
       const userInsignias = getUserAddedInsignias();
       const userBuffsModal = getUserAddedBuffs();
       const userGuildBoonsModal = getUserAddedGuildBoons();
+      const userArtifactsModal = getUserAddedArtifacts();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -13685,6 +14111,9 @@
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const item of userGuildBoonsModal) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      for (const item of userArtifactsModal) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const key of Object.keys(overrides)) {
@@ -13833,6 +14262,25 @@
           kind: "item",
           name: item.name,
           slot: "Guild Boon (" + (item.category || "?") + ")",
+          reportId: item.__reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: item.addedAt || null
+        };
+        if (isActive) pending.push(entry);
+        else resolved.push(entry);
+      }
+
+      // User-added artifacts (reuse the "item" render shape)
+      for (const item of userArtifactsModal) {
+        if (!item.__reportId) continue;
+        const row = rowById[item.__reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        const entry = {
+          kind: "item",
+          name: item.name,
+          slot: "Artifact",
           reportId: item.__reportId,
           status,
           adminNote: row ? row.admin_notes : null,
