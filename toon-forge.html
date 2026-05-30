@@ -3451,6 +3451,14 @@
           <span class="picker-add-missing-hint">Don't see your companion? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
       }
+      const isMountPicker = _pickerState.dataType === "mount";
+      if (isMountPicker) {
+        html += `<button id="picker-add-missing-mount" class="picker-add-missing-btn" type="button">
+          <span style="font-size:1.1em;">＋</span>
+          <span>Add Missing Mount</span>
+          <span class="picker-add-missing-hint">Don't see your mount? Add it yourself — it'll show up in your build right away.</span>
+        </button>`;
+      }
       if (_pickerState.allowNone !== false) {
         html += `<div class="picker-item empty" data-pick-none="1">— None —</div>`;
       }
@@ -3544,6 +3552,13 @@
         addCompanionBtn.addEventListener("click", (e) => {
           e.stopPropagation();
           openAddMissingCompanionModal();
+        });
+      }
+      const addMountBtn = document.getElementById("picker-add-missing-mount");
+      if (addMountBtn) {
+        addMountBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openAddMissingMountModal();
         });
       }
       list.querySelectorAll("[data-pick-none]").forEach(el => {
@@ -5377,7 +5392,14 @@
     /* ===== Mount stable helpers ===== */
     function findMountByName(name) {
       if (!name || typeof MOUNTS_DATA === "undefined") return null;
-      return MOUNTS_DATA.find(m => m.name === name) || null;
+      const canonical = MOUNTS_DATA.find(m => m.name === name);
+      if (canonical) return canonical;
+      // Fall back to user-added mounts (negative ids from _ammt flow).
+      if (typeof getUserAddedMounts === "function") {
+        const userMounts = getUserAddedMounts();
+        return userMounts.find(m => m.name === name) || null;
+      }
+      return null;
     }
     function findCollarByName(name) {
       if (!name || typeof MOUNT_COLLARS_DATA === "undefined") return null;
@@ -5538,7 +5560,13 @@
       if (typeof MOUNTS_DATA === "undefined") return [];
       const bonus = findBonusById(bonusId);
       if (!bonus) return [];
-      return MOUNTS_DATA.filter(m => canMountFitBonus(m, bonus.requiredInsignias)).map(m => m.name);
+      const canonical = MOUNTS_DATA.filter(m => canMountFitBonus(m, bonus.requiredInsignias));
+      const canonicalNames = new Set(canonical.map(m => m.name));
+      const userMountList = (typeof getUserAddedMounts === "function") ? getUserAddedMounts() : [];
+      const userMatches = userMountList.filter(m =>
+        !canonicalNames.has(m.name) && canMountFitBonus(m, bonus.requiredInsignias)
+      );
+      return canonical.concat(userMatches).map(m => m.name);
     }
 
     // Can a mount accommodate a bonus's required insignia categories?
@@ -5607,7 +5635,12 @@
     }
     function getMountList() {
       if (typeof MOUNTS_DATA === "undefined") return [];
-      return MOUNTS_DATA.slice().sort((a,b) => a.name.localeCompare(b.name));
+      const canonical = MOUNTS_DATA.slice();
+      const canonicalNames = new Set(canonical.map(m => m.name));
+      const userAdded = (typeof getUserAddedMounts === "function")
+        ? getUserAddedMounts().filter(m => !canonicalNames.has(m.name))
+        : [];
+      return canonical.concat(userAdded).sort((a, b) => a.name.localeCompare(b.name));
     }
 
     // Sum insignias by type across all 5 stable mounts.
@@ -7885,6 +7918,313 @@
       saveBtn.disabled = false;
       saveBtn.textContent = "Add to my build";
       closeAddMissingArtifactModal();
+      if (typeof closePicker === "function") closePicker();
+    }
+
+    // =========================================================================
+    // Add Missing Mount flow (_ammt prefix)
+    // Single-store design: USER_MOUNT_KEY.  A user-added mount only needs
+    // name + insigniaSlots.  combatRef/equipRef/bonusRef are null/0 because
+    // those are picked separately via their own pickers.
+    // findMountByName() and getMountList() both fall back to this store so
+    // the stable picker and insignia-bonus matcher pick up user-added mounts
+    // exactly like canonical ones.
+    // =========================================================================
+    const USER_MOUNT_KEY = "nwcb_user_added_mounts_v1";
+    function getUserAddedMounts() {
+      try {
+        const raw = localStorage.getItem(USER_MOUNT_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveUserAddedMounts(list) {
+      try { localStorage.setItem(USER_MOUNT_KEY, JSON.stringify(list)); }
+      catch (e) { /* quota — ignore */ }
+    }
+    function addUserMount(item) {
+      const list = getUserAddedMounts();
+      const minId = list.reduce((m, x) => Math.min(m, x.id || 0), 0);
+      item.id = (minId < 0 ? minId : 0) - 1;
+      item.__userAdded = true;
+      item.addedAt = new Date().toISOString();
+      list.push(item);
+      saveUserAddedMounts(list);
+      return item;
+    }
+    // Remove a user-added mount by name from every stable slot that holds it.
+    // state.stable[idx].mount uses "" as the empty convention (not null).
+    function clearMountFromStable(name) {
+      if (!name || !state.stable) return;
+      for (const slot of state.stable) {
+        if (slot.mount === name) slot.mount = "";
+      }
+    }
+
+    /* ===== Add Missing Mount modal (_ammt prefix) =====
+       Form: mount name (required); 5 insignia-slot rows.
+       Each row has checkboxes for the 5 named types + a "Universal (any type)"
+       checkbox that, when checked, overrides typed selections.
+       An optional "preferred" dropdown per row.
+       Rows with nothing checked are skipped (unused slot).
+       At least one slot must be configured.
+       Built object: { name, combatRef:null, equipRef:null, bonusRef:0,
+         insigniaSlots:[{allowed:[...],...}], source, notes }  */
+    const AMMT_INSIGNIA_TYPES = ["Crescent", "Barbed", "Illuminated", "Enlightened", "Regal"];
+
+    function _ammtSlotRows() {
+      let html = '<div id="ammt-slots">';
+      for (let i = 0; i < 5; i++) {
+        const typeChecks = AMMT_INSIGNIA_TYPES.map(t =>
+          `<label style="display:inline-flex;align-items:center;gap:3px;margin-right:8px;font-size:0.82rem;">
+            <input type="checkbox" class="ammt-slot-type" data-slot="${i}" value="${t}"> ${t}
+          </label>`
+        ).join("");
+        const prefOpts = ["— none —", ...AMMT_INSIGNIA_TYPES].map(t =>
+          `<option value="${t === "— none —" ? "" : t}">${t}</option>`
+        ).join("");
+        html += `
+          <div class="ammt-slot-row" data-slot="${i}">
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:3px;">
+              <span style="font-size:0.8rem;color:var(--text-mute);min-width:42px;">Slot ${i + 1}</span>
+              ${typeChecks}
+              <label style="display:inline-flex;align-items:center;gap:3px;font-size:0.82rem;">
+                <input type="checkbox" class="ammt-slot-universal" data-slot="${i}"> Universal (any type)
+              </label>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;margin-left:50px;">
+              <label style="font-size:0.78rem;color:var(--text-mute);">Preferred type:</label>
+              <select class="ammt-slot-preferred" data-slot="${i}" style="font-size:0.82rem;padding:1px 4px;">
+                ${prefOpts}
+              </select>
+            </div>
+          </div>`;
+      }
+      html += '</div>';
+      return html;
+    }
+
+    function ensureAddMissingMountDOM() {
+      if (document.getElementById("ammt-overlay")) return;
+      const overlay = document.createElement("div");
+      overlay.id = "ammt-overlay";
+      overlay.className = "ami-overlay";
+
+      overlay.innerHTML = `
+        <div class="ami-panel">
+          <div class="ami-header">
+            <h3>Add Missing Mount</h3>
+            <button class="ami-close" id="ammt-close" type="button">×</button>
+          </div>
+          <div class="ami-body">
+            <div class="ami-row">
+              <label>Mount Name <span class="req">*</span></label>
+              <input type="text" id="ammt-name" placeholder="e.g. Armored Owlbear" maxlength="120" required>
+            </div>
+            <div class="ami-row">
+              <label>Insignia Slots <span class="req">*</span>
+                <span style="color:var(--text-mute);font-weight:400;font-size:0.78rem;">
+                  — check which types fit each slot. Rows left blank are skipped. At least one slot required.
+                </span>
+              </label>
+              ${_ammtSlotRows()}
+            </div>
+            <div class="ami-row">
+              <label>Where you got it / anything else useful (optional)</label>
+              <textarea id="ammt-notes" rows="2" placeholder="e.g. 'Purchased from the Zen Market.'" maxlength="600"></textarea>
+            </div>
+          </div>
+          <div class="ami-footer">
+            <button class="ami-save-btn" id="ammt-save" type="button">Add to my build</button>
+            <div class="ami-msg" id="ammt-msg"></div>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target.id === "ammt-overlay") closeAddMissingMountModal();
+      });
+      document.getElementById("ammt-close").addEventListener("click", closeAddMissingMountModal);
+      document.getElementById("ammt-save").addEventListener("click", saveAddMissingMount);
+
+      // When "Universal" is checked on a row, uncheck all named types for that row
+      // (and vice-versa — checking a named type un-checks Universal).
+      overlay.addEventListener("change", (e) => {
+        const el = e.target;
+        if (el.classList.contains("ammt-slot-universal")) {
+          const slot = el.dataset.slot;
+          if (el.checked) {
+            overlay.querySelectorAll(`.ammt-slot-type[data-slot="${slot}"]`)
+              .forEach(cb => { cb.checked = false; });
+          }
+        } else if (el.classList.contains("ammt-slot-type")) {
+          const slot = el.dataset.slot;
+          if (el.checked) {
+            const uniCb = overlay.querySelector(`.ammt-slot-universal[data-slot="${slot}"]`);
+            if (uniCb) uniCb.checked = false;
+          }
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("ammt-overlay").classList.contains("open")) {
+          closeAddMissingMountModal();
+        }
+      });
+    }
+
+    function openAddMissingMountModal() {
+      ensureAddMissingMountDOM();
+
+      // Reset form
+      document.getElementById("ammt-name").value = "";
+      document.getElementById("ammt-notes").value = "";
+      document.querySelectorAll("#ammt-overlay .ammt-slot-type").forEach(cb => { cb.checked = false; });
+      document.querySelectorAll("#ammt-overlay .ammt-slot-universal").forEach(cb => { cb.checked = false; });
+      document.querySelectorAll("#ammt-overlay .ammt-slot-preferred").forEach(sel => { sel.value = ""; });
+
+      const msg = document.getElementById("ammt-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+      const saveBtn = document.getElementById("ammt-save");
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+
+      document.getElementById("ammt-overlay").classList.add("open");
+      setTimeout(() => document.getElementById("ammt-name").focus(), 50);
+    }
+
+    function closeAddMissingMountModal() {
+      const o = document.getElementById("ammt-overlay");
+      if (o) o.classList.remove("open");
+    }
+
+    // Build insigniaSlots from the 5 slot rows.
+    // Returns an array; rows with no checked boxes are omitted.
+    function _ammtBuildInsigniaSlots() {
+      const slots = [];
+      for (let i = 0; i < 5; i++) {
+        const isUniversal = document.querySelector(`#ammt-overlay .ammt-slot-universal[data-slot="${i}"]`);
+        const preferred   = document.querySelector(`#ammt-overlay .ammt-slot-preferred[data-slot="${i}"]`);
+        const typeCbs     = document.querySelectorAll(`#ammt-overlay .ammt-slot-type[data-slot="${i}"]`);
+
+        if (isUniversal && isUniversal.checked) {
+          const slot = { allowed: ["*"] };
+          if (preferred && preferred.value) slot.preferred = preferred.value;
+          slots.push(slot);
+        } else {
+          const checked = Array.from(typeCbs).filter(cb => cb.checked).map(cb => cb.value);
+          if (checked.length === 0) continue; // unused row
+          const slot = { allowed: checked };
+          if (preferred && preferred.value) slot.preferred = preferred.value;
+          slots.push(slot);
+        }
+      }
+      return slots;
+    }
+
+    async function saveAddMissingMount() {
+      const msg = document.getElementById("ammt-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+
+      const name  = document.getElementById("ammt-name").value.trim();
+      const notes = document.getElementById("ammt-notes").value.trim();
+
+      if (name.length < 2) {
+        msg.textContent = "Mount name is required.";
+        msg.className = "ami-msg error"; return;
+      }
+
+      const insigniaSlots = _ammtBuildInsigniaSlots();
+      if (!insigniaSlots.length) {
+        msg.textContent = "Configure at least one insignia slot.";
+        msg.className = "ami-msg error"; return;
+      }
+
+      const mount = {
+        name,
+        combatRef:  null,
+        equipRef:   null,
+        bonusRef:   0,
+        insigniaSlots,
+        source: "User-added (pending review)",
+        notes:  notes || "User-added — pending admin review."
+      };
+
+      // 1. Save locally — unconditional.
+      const saved = addUserMount(mount);
+
+      // Capture picker callback before the await so it always fires.
+      const pickerOnPick = (_pickerState && _pickerState.dataType === "mount")
+        ? _pickerState.onPick
+        : null;
+
+      // 2. Submit report (best-effort; never blocks the local save).
+      const saveBtn = document.getElementById("ammt-save");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Sending report…";
+
+      let reportId = null;
+
+      // Build a readable slot layout description for the report body.
+      const slotLines = insigniaSlots.map((s, idx) => {
+        const allowed = (s.allowed || []).includes("*") ? "Universal (any type)" : (s.allowed || []).join(", ");
+        const pref = s.preferred ? ` (preferred: ${s.preferred})` : "";
+        return `  Slot ${idx + 1}: ${allowed}${pref}`;
+      });
+      const reportLines = [];
+      reportLines.push("A player added this missing mount:");
+      reportLines.push("");
+      reportLines.push("Name: " + name);
+      reportLines.push("");
+      reportLines.push("Insignia Slots (" + insigniaSlots.length + " total):");
+      reportLines.push(...slotLines);
+      if (notes) {
+        reportLines.push("");
+        reportLines.push("Player notes:");
+        reportLines.push(notes);
+      }
+
+      if (window.supabase) {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        try {
+          const rpcRes = await sb.rpc("submit_missing_item_report", {
+            p_title:       "Missing mount: " + name,
+            p_description: reportLines.join("\n"),
+            p_category:    "Missing Mount",
+            p_image_url:   ""
+          });
+          if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
+            reportId = rpcRes.data.report_id;
+          }
+        } catch (err) {
+          console.warn("AMMT report send failed:", err);
+        }
+      }
+
+      // Stamp the report id so runReconciliation() can match it later.
+      if (reportId) {
+        saved.__reportId = reportId;
+        const list = getUserAddedMounts();
+        const idx = list.findIndex(x => x.id === saved.id);
+        if (idx !== -1) { list[idx] = saved; saveUserAddedMounts(list); }
+      }
+
+      // 3. Slot the mount via the picker callback.
+      if (pickerOnPick) pickerOnPick(mount);
+
+      // 4. Toast + clean up.
+      const toastMsg = reportId
+        ? "Added to your build! We'll review and add it to the site."
+        : "Added to your build — couldn't send report, please try again later.";
+      toast(toastMsg);
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      closeAddMissingMountModal();
       if (typeof closePicker === "function") closePicker();
     }
 
@@ -12660,7 +13000,15 @@
           }
           // Stage 2: filter mounts by canMountFitBonus(b.requiredInsignias).
           const mountNames = mountsThatGrantBonus(bonus.id);
-          const allowed = MOUNTS_DATA.filter(m => mountNames.includes(m.name));
+          const nameSet = new Set(mountNames);
+          const canonicalAllowed = (typeof MOUNTS_DATA !== "undefined")
+            ? MOUNTS_DATA.filter(m => nameSet.has(m.name))
+            : [];
+          const canonicalNames = new Set(canonicalAllowed.map(m => m.name));
+          const userAllowed = (typeof getUserAddedMounts === "function")
+            ? getUserAddedMounts().filter(m => nameSet.has(m.name) && !canonicalNames.has(m.name))
+            : [];
+          const allowed = canonicalAllowed.concat(userAllowed);
           openMountStage(idx, bonus, allowed);
         }
       });
@@ -14087,6 +14435,7 @@
       const userGuildBoonsRecon = getUserAddedGuildBoons();
       const userArtifactsRecon = getUserAddedArtifacts();
       const userCompanionsRecon = getUserAddedCompanions();
+      const userMountsRecon = getUserAddedMounts();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -14122,6 +14471,10 @@
       }
       // From user-added companions
       for (const item of userCompanionsRecon) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      // From user-added mounts
+      for (const item of userMountsRecon) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       // From data-correction overrides
@@ -14481,6 +14834,37 @@
             anyChange = true;
           }
         }
+        // --- User-added mounts (no resolved id field; matched by name) ---
+        // Mirrors the artifact branch. Won't Fix clears the mount name from
+        // every stable slot via clearMountFromStable.
+        if (status === "Fixed" || status === "Won't Fix") {
+          const mntList = getUserAddedMounts();
+          const mntIdx  = mntList.findIndex(x => x.__reportId === reportId);
+          if (mntIdx !== -1) {
+            const userMnt = mntList[mntIdx];
+            const canonicalExists = (typeof MOUNTS_DATA !== "undefined") &&
+              MOUNTS_DATA.some(m => m.name === userMnt.name);
+            if (status === "Fixed") {
+              if (canonicalExists) {
+                // Canonical entry is live; findMountByName now resolves to it.
+                // Drop the local copy.
+                toastItems.push(`"${userMnt.name}" is now in the site database — your build has been updated.`);
+                mntList.splice(mntIdx, 1);
+                saveUserAddedMounts(mntList);
+              } else {
+                // Approved but data JS not rebuilt yet — keep the local copy.
+                toastItems.push(`"${userMnt.name}" was approved but data hasn't refreshed yet — reload the page to update.`);
+              }
+            } else { // Won't Fix
+              clearMountFromStable(userMnt.name);
+              const noteStr = admin_notes ? ` (${admin_notes})` : "";
+              toastItems.push(`"${userMnt.name}" won't be added to the site${noteStr}.`);
+              mntList.splice(mntIdx, 1);
+              saveUserAddedMounts(mntList);
+            }
+            anyChange = true;
+          }
+        }
         // Active statuses (New, Confirmed, In Progress) or Fixed without
         // resolved_gear_id: keep local, no action needed.
       }
@@ -14516,6 +14900,7 @@
       const userGuildBoonsModal = getUserAddedGuildBoons();
       const userArtifactsModal = getUserAddedArtifacts();
       const userCompanionsModal = getUserAddedCompanions();
+      const userMountsModal = getUserAddedMounts();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -14543,6 +14928,9 @@
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const item of userCompanionsModal) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      for (const item of userMountsModal) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const key of Object.keys(overrides)) {
@@ -14729,6 +15117,25 @@
           kind: "item",
           name: item.name,
           slot: "Companion",
+          reportId: item.__reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: item.addedAt || null
+        };
+        if (isActive) pending.push(entry);
+        else resolved.push(entry);
+      }
+
+      // User-added mounts (reuse the "item" render shape)
+      for (const item of userMountsModal) {
+        if (!item.__reportId) continue;
+        const row = rowById[item.__reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        const entry = {
+          kind: "item",
+          name: item.name,
+          slot: "Mount",
           reportId: item.__reportId,
           status,
           adminNote: row ? row.admin_notes : null,
