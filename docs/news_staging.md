@@ -26,6 +26,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Gear: cleaned up the Bloodwoven set — removed four duplicate/broken entries (two exact-duplicate listings and two malformed copies of Bloodwoven Ink). Saved builds using the removed names auto-update in the builder. (found while checking Report #70)
 
 ### Features
+- **Toon Forge — empty gear slots are now usable.** A slot with no items yet (e.g. Cleric off-hand) wouldn't open at all, which also hid the "Add Missing Item" button. Empty slots now open their picker so you can add the gear yourself. (Report #80)
 - **Toon Forge — paragon powers now show up in the power picker.** A display bug was hiding every paragon-path-specific at-will, encounter, and daily for most classes (only Paladin was unaffected). Now the full power list is selectable — e.g. Devout Cleric jumps from 2/5/3 to 4/10/5 powers, and Barbarian, Bard, Fighter, Ranger, Warlock, Wizard, and Rogue all regained their hidden paragon powers too. (Report #79)
 
 ### Data Additions
