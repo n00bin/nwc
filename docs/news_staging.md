@@ -25,6 +25,9 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Gear: Arcane Conduit Insignia (Corrupt Power) — fixed its third stat from Power to Defense to match the in-game card; its Corrupt Power bonus (+5% Power, −7.5% Incoming Healing) was verified correct from an in-game screenshot. (Report #41)
 - Gear: cleaned up the Bloodwoven set — removed four duplicate/broken entries (two exact-duplicate listings and two malformed copies of Bloodwoven Ink). Saved builds using the removed names auto-update in the builder. (found while checking Report #70)
 
+### Features
+- **Toon Forge — paragon powers now show up in the power picker.** A display bug was hiding every paragon-path-specific at-will, encounter, and daily for most classes (only Paladin was unaffected). Now the full power list is selectable — e.g. Devout Cleric jumps from 2/5/3 to 4/10/5 powers, and Barbarian, Bard, Fighter, Ranger, Warlock, Wizard, and Rogue all regained their hidden paragon powers too. (Report #79)
+
 ### Data Additions
 - **Masterwork "+1" gear tiers added (IL 1800).** From in-game auction-house screenshots: Shroomwood Amulet +1, Shroomwood Sash +1, Scintillant Sash +1, and Scintillant Amulet +1 — the refined-rank versions of the existing IL 1700 pieces, completing the base/+1 set for all four. (Reports #66, #48)
 - **Gear database — screenshot intake backlog fully cleared.** Worked through the remaining gear card screenshots and added every genuinely-new item. Final additions this session: the Wizard Reinforced Dragonflight Assault/Raid set, Duergar Wizard Orb & Talisman, Weathered Bracers of the Successor (Ranger), the Wintermarked & Frostbound "Chilling Flow" weapons, the Wintermarked Skirmisher armor set, the Stormforged Orb, Huntsman Assault Cap, and more.
