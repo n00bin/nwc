@@ -3443,6 +3443,14 @@
           <span class="picker-add-missing-hint">Don't see your artifact? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
       }
+      const isCompanionPicker = _pickerState.dataType === "companion";
+      if (isCompanionPicker) {
+        html += `<button id="picker-add-missing-companion" class="picker-add-missing-btn" type="button">
+          <span style="font-size:1.1em;">＋</span>
+          <span>Add Missing Companion</span>
+          <span class="picker-add-missing-hint">Don't see your companion? Add it yourself — it'll show up in your build right away.</span>
+        </button>`;
+      }
       if (_pickerState.allowNone !== false) {
         html += `<div class="picker-item empty" data-pick-none="1">— None —</div>`;
       }
@@ -3529,6 +3537,13 @@
         addArtifactBtn.addEventListener("click", (e) => {
           e.stopPropagation();
           openAddMissingArtifactModal();
+        });
+      }
+      const addCompanionBtn = document.getElementById("picker-add-missing-companion");
+      if (addCompanionBtn) {
+        addCompanionBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openAddMissingCompanionModal();
         });
       }
       list.querySelectorAll("[data-pick-none]").forEach(el => {
@@ -5613,12 +5628,24 @@
     //  the new 5-slot stable replaces it.)
     function populateMounts() { /* no-op */ }
     function getCompanionList() {
-      if (typeof COMPANIONS_DATA === "undefined") return [];
-      return COMPANIONS_DATA.map(c => c.name).sort();
+      const canonical = (typeof COMPANIONS_DATA !== "undefined") ? COMPANIONS_DATA.map(c => c.name) : [];
+      const userNames = (typeof getUserAddedCompanions === "function") ? getUserAddedCompanions().map(c => c.name) : [];
+      const seen = new Set(canonical);
+      for (const n of userNames) if (!seen.has(n)) { seen.add(n); canonical.push(n); }
+      return canonical.sort();
     }
     function findCompanionPower(powerId) {
-      if (typeof COMPANION_POWERS_DATA === "undefined" || !powerId) return null;
-      return COMPANION_POWERS_DATA.find(p => p.id === powerId) || null;
+      if (!powerId) return null;
+      if (typeof COMPANION_POWERS_DATA !== "undefined") {
+        const hit = COMPANION_POWERS_DATA.find(p => p.id === powerId);
+        if (hit) return hit;
+      }
+      // Fall back to user-added power store (negative ids from _amcom flow).
+      if (typeof getUserAddedCompPowers === "function") {
+        const userPowers = getUserAddedCompPowers();
+        return userPowers.find(p => p.id === powerId) || null;
+      }
+      return null;
     }
     // Returns the slot types (array) a companion's power fits into.
     // E.g. a companion with power.slot = ["Defense"] fits "Defense" slots
@@ -7861,6 +7888,338 @@
       if (typeof closePicker === "function") closePicker();
     }
 
+    // =========================================================================
+    // Add Missing Companion flow (_amcom prefix)
+    // Two-store design: USER_COMP_POWER_KEY (powers) + USER_COMPANION_KEY
+    // (companions).  A user-added companion entry holds a powerRef that points
+    // to a negative-id power in the power store.  findCompanionPower() and
+    // findCompanionByName() both fall back to these stores so the engine and
+    // stat pipeline pick up user-added companions exactly like canonical ones.
+    // =========================================================================
+    const USER_COMPANION_KEY   = "nwcb_user_added_companions_v1";
+    const USER_COMP_POWER_KEY  = "nwcb_user_added_comp_powers_v1";
+
+    function getUserAddedCompanions() {
+      try {
+        const raw = localStorage.getItem(USER_COMPANION_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveUserAddedCompanions(list) {
+      try { localStorage.setItem(USER_COMPANION_KEY, JSON.stringify(list)); }
+      catch (e) { /* quota — ignore */ }
+    }
+    function getUserAddedCompPowers() {
+      try {
+        const raw = localStorage.getItem(USER_COMP_POWER_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveUserAddedCompPowers(list) {
+      try { localStorage.setItem(USER_COMP_POWER_KEY, JSON.stringify(list)); }
+      catch (e) { /* quota — ignore */ }
+    }
+    // addUserCompanion(comp, power) — assign negative ids, link powerRef, save both.
+    // Returns the saved companion object.
+    function addUserCompanion(comp, power) {
+      // 1. Assign a negative id to the power and save it.
+      const pwrList = getUserAddedCompPowers();
+      const pwrMin  = pwrList.reduce((m, x) => Math.min(m, x.id || 0), 0);
+      power.id = (pwrMin < 0 ? pwrMin : 0) - 1;
+      pwrList.push(power);
+      saveUserAddedCompPowers(pwrList);
+
+      // 2. Assign a negative id to the companion, wire powerRef, save.
+      const compList = getUserAddedCompanions();
+      const compMin  = compList.reduce((m, x) => Math.min(m, x.id || 0), 0);
+      comp.id          = (compMin < 0 ? compMin : 0) - 1;
+      comp.powerRef    = power.id;
+      comp.enhancementRef = null;
+      comp.__userAdded = true;
+      comp.addedAt     = new Date().toISOString();
+      compList.push(comp);
+      saveUserAddedCompanions(compList);
+      return comp;
+    }
+    // clearCompanionFromSlots(name) — remove companion from summoned + active slots.
+    // Used by reconciliation when a submission is declined or merged.
+    function clearCompanionFromSlots(name) {
+      if (!name) return;
+      if (state.summoned === name) state.summoned = null;
+      if (Array.isArray(state.activeComps)) {
+        for (let i = 0; i < state.activeComps.length; i++) {
+          if (state.activeComps[i] === name) state.activeComps[i] = null;
+        }
+      }
+    }
+
+    /* ===== Add Missing Companion modal (_amcom prefix) =====
+       Form fields:
+         • Companion name (required)
+         • "Stats entered at" rarity dropdown — sets power.item_level
+         • Power name (optional, defaults to "<name> Power")
+         • Power slot checkboxes: Offense / Defense / Utility (multi, ≥1 required)
+         • Combined rating (optional, defaults to 90% of item_level)
+         • 4 power-stat rows (stat dropdown + value) — the power.stats array
+         • Notes (optional)
+       Requires: companion name + at least one stat + at least one slot. */
+
+    function _amcomStatRows(count) {
+      let html = "";
+      for (let i = 0; i < count; i++) {
+        html += `
+          <div class="ami-stat-row">
+            <select class="amcom-s-name" data-row="${i}">
+              <option value="">— stat ${i + 1} —</option>
+              ${AMI_STAT_OPTIONS.map(s => `<option value="${s}">${s}</option>`).join("")}
+            </select>
+            <input type="number" class="amcom-s-value" data-row="${i}" placeholder="value" step="any">
+          </div>`;
+      }
+      return html;
+    }
+
+    function _amcomCollectStats() {
+      const out = [];
+      const names  = document.querySelectorAll("#amcom-overlay .amcom-s-name");
+      const values = document.querySelectorAll("#amcom-overlay .amcom-s-value");
+      names.forEach((sel, i) => {
+        const sName = sel.value;
+        const sVal  = parseFloat(values[i] ? values[i].value : "");
+        if (sName && !isNaN(sVal)) out.push({ stat: sName, value: sVal });
+      });
+      return out;
+    }
+
+    function ensureAddMissingCompanionDOM() {
+      if (document.getElementById("amcom-overlay")) return;
+      const overlay = document.createElement("div");
+      overlay.id = "amcom-overlay";
+      overlay.className = "ami-overlay";
+
+      const rarityOptions = Object.keys(COMPANION_RARITY_IL)
+        .map(r => `<option value="${r}"${r === "Mythic" ? " selected" : ""}>${r} (IL ${COMPANION_RARITY_IL[r]})</option>`)
+        .join("");
+
+      overlay.innerHTML = `
+        <div class="ami-panel">
+          <div class="ami-header">
+            <h3>Add Missing Companion</h3>
+            <button class="ami-close" id="amcom-close" type="button">×</button>
+          </div>
+          <div class="ami-body">
+            <div class="ami-row">
+              <label>Companion Name <span class="req">*</span></label>
+              <input type="text" id="amcom-name" placeholder="e.g. Dread Warrior" maxlength="120" required>
+            </div>
+            <div class="ami-row">
+              <label>Stats entered at rarity</label>
+              <select id="amcom-rarity">${rarityOptions}</select>
+            </div>
+            <div class="ami-row">
+              <label>Power Name (optional)</label>
+              <input type="text" id="amcom-power-name" placeholder="Defaults to &quot;&lt;companion name&gt; Power&quot;" maxlength="120">
+            </div>
+            <div class="ami-row">
+              <label>Power Slot <span class="req">*</span> (check all that apply)</label>
+              <div id="amcom-slots" style="display:flex;gap:1.2em;flex-wrap:wrap;margin-top:0.3em;">
+                <label style="font-weight:normal;"><input type="checkbox" class="amcom-slot" value="Offense"> Offense</label>
+                <label style="font-weight:normal;"><input type="checkbox" class="amcom-slot" value="Defense"> Defense</label>
+                <label style="font-weight:normal;"><input type="checkbox" class="amcom-slot" value="Utility"> Utility</label>
+              </div>
+            </div>
+            <div class="ami-row">
+              <label>Combined Rating (optional — leave blank to auto-calculate)</label>
+              <input type="number" id="amcom-cr" min="0" step="1" placeholder="e.g. 675">
+            </div>
+            <div class="ami-row">
+              <label>Power Stats <span class="req">*</span> (at least one required — enter the value you see in-game)</label>
+              ${_amcomStatRows(4)}
+            </div>
+            <div class="ami-row">
+              <label>Notes (optional — where you found it, anything else useful)</label>
+              <textarea id="amcom-notes" rows="2" placeholder="e.g. 'From the Ravenloft campaign store.'" maxlength="600"></textarea>
+            </div>
+          </div>
+          <div class="ami-footer">
+            <button class="ami-save-btn" id="amcom-save" type="button">Add to my build</button>
+            <div class="ami-msg" id="amcom-msg"></div>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target.id === "amcom-overlay") closeAddMissingCompanionModal();
+      });
+      document.getElementById("amcom-close").addEventListener("click", closeAddMissingCompanionModal);
+      document.getElementById("amcom-save").addEventListener("click", saveAddMissingCompanion);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("amcom-overlay").classList.contains("open")) {
+          closeAddMissingCompanionModal();
+        }
+      });
+    }
+
+    function openAddMissingCompanionModal() {
+      ensureAddMissingCompanionDOM();
+
+      // Reset all fields
+      document.getElementById("amcom-name").value = "";
+      document.getElementById("amcom-rarity").value = "Mythic";
+      document.getElementById("amcom-power-name").value = "";
+      document.getElementById("amcom-cr").value = "";
+      document.getElementById("amcom-notes").value = "";
+      document.querySelectorAll(".amcom-slot").forEach(cb => { cb.checked = false; });
+      document.querySelectorAll("#amcom-overlay .amcom-s-name").forEach(el => { el.value = ""; });
+      document.querySelectorAll("#amcom-overlay .amcom-s-value").forEach(el => { el.value = ""; });
+
+      const msg = document.getElementById("amcom-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+      const saveBtn = document.getElementById("amcom-save");
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      document.getElementById("amcom-overlay").classList.add("open");
+      setTimeout(() => document.getElementById("amcom-name").focus(), 50);
+    }
+
+    function closeAddMissingCompanionModal() {
+      const o = document.getElementById("amcom-overlay");
+      if (o) o.classList.remove("open");
+    }
+
+    async function saveAddMissingCompanion() {
+      const msg = document.getElementById("amcom-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+
+      const name      = document.getElementById("amcom-name").value.trim();
+      const rarity    = document.getElementById("amcom-rarity").value || "Mythic";
+      const powerName = document.getElementById("amcom-power-name").value.trim() || (name + " Power");
+      const crRaw     = document.getElementById("amcom-cr").value;
+      const notes     = document.getElementById("amcom-notes").value.trim();
+
+      if (name.length < 2) {
+        msg.textContent = "Companion name is required.";
+        msg.className = "ami-msg error";
+        return;
+      }
+
+      const slots = Array.from(document.querySelectorAll(".amcom-slot"))
+        .filter(cb => cb.checked).map(cb => cb.value);
+      if (slots.length === 0) {
+        msg.textContent = "Select at least one power slot (Offense, Defense, or Utility).";
+        msg.className = "ami-msg error";
+        return;
+      }
+
+      const stats = _amcomCollectStats();
+      if (stats.length === 0) {
+        msg.textContent = "Add at least one stat.";
+        msg.className = "ami-msg error";
+        return;
+      }
+
+      const itemLevel = (typeof COMPANION_RARITY_IL !== "undefined")
+        ? (COMPANION_RARITY_IL[rarity] || 750)
+        : 750;
+      const combinedRating = crRaw ? (parseInt(crRaw, 10) || Math.round(0.9 * itemLevel))
+                                   : Math.round(0.9 * itemLevel);
+
+      // Build the power and companion objects.
+      const power = {
+        slot: slots,
+        name: powerName,
+        item_level: itemLevel,
+        combinedRating,
+        stats,
+        notes: notes || "",
+        source: "User-added (pending review)"
+      };
+      const companion = {
+        name,
+        enhancementRef: null,
+        source: "User-added (pending review)",
+        notes: notes || ""
+      };
+
+      // 1. Save locally — unconditional.
+      const saved = addUserCompanion(companion, power);
+
+      // Resolve the picker callback before the await so it always fires.
+      const pickerOnPick = (_pickerState && _pickerState.dataType === "companion")
+        ? _pickerState.onPick
+        : null;
+
+      // 2. Submit a report (best-effort; never blocks the local save).
+      const saveBtn = document.getElementById("amcom-save");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Sending report…";
+
+      let reportId = null;
+      const reportLines = [];
+      reportLines.push("A player added this missing companion:");
+      reportLines.push("");
+      reportLines.push("Name: " + name);
+      reportLines.push("Stats entered at rarity: " + rarity + " (IL " + itemLevel + ")");
+      reportLines.push("Power name: " + powerName);
+      reportLines.push("Power slot(s): " + slots.join(", "));
+      reportLines.push("Combined rating: " + combinedRating);
+      if (stats.length) {
+        reportLines.push("");
+        reportLines.push("Power stats (at " + rarity + " rarity):");
+        for (const st of stats) reportLines.push("  • " + st.stat + ": " + st.value);
+      }
+      if (notes) {
+        reportLines.push("");
+        reportLines.push("Player notes:");
+        reportLines.push(notes);
+      }
+
+      if (window.supabase) {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        try {
+          const rpcRes = await sb.rpc("submit_missing_item_report", {
+            p_title: "Missing companion: " + name,
+            p_description: reportLines.join("\n"),
+            p_category: "Missing Companion",
+            p_image_url: ""
+          });
+          if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
+            reportId = rpcRes.data.report_id;
+          }
+        } catch (err) {
+          console.warn("AMCOM report send failed:", err);
+        }
+      }
+
+      // Stamp the report id so runReconciliation() can match it later.
+      if (reportId) {
+        saved.__reportId = reportId;
+        const compList = getUserAddedCompanions();
+        const idx = compList.findIndex(x => x.id === saved.id);
+        if (idx !== -1) { compList[idx] = saved; saveUserAddedCompanions(compList); }
+      }
+
+      // 3. Equip it (always runs regardless of report outcome).
+      if (pickerOnPick) pickerOnPick(saved);
+
+      // 4. Toast + clean up.
+      toast(reportId
+        ? "Added to your build! We'll review and add it to the site."
+        : "Added to your build — couldn't send report, please try again later.");
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      closeAddMissingCompanionModal();
+      if (typeof closePicker === "function") closePicker();
+    }
+
     /* ===== Class base ability scores =====
        Pulled from CLASSES_DATA (sourced from NW Hub character editor).
        Falls back to 10/10/10/10/10/10 if the class isn't found. */
@@ -8505,8 +8864,17 @@
       return out;
     }
     function findCompanionByName(name) {
-      if (!name || typeof COMPANIONS_DATA === "undefined") return null;
-      return COMPANIONS_DATA.find(c => c.name === name) || null;
+      if (!name) return null;
+      if (typeof COMPANIONS_DATA !== "undefined") {
+        const hit = COMPANIONS_DATA.find(c => c.name === name);
+        if (hit) return hit;
+      }
+      // Fall back to user-added companions (negative ids from _amcom flow).
+      if (typeof getUserAddedCompanions === "function") {
+        const userList = getUserAddedCompanions();
+        return userList.find(c => c.name === name) || null;
+      }
+      return null;
     }
 
     // ---- Summoned-buff display + party combat-modifier helpers --------
@@ -12515,10 +12883,16 @@
             openPicker({
               dataType: "companion",
               title: `Summoned companion · showing values at ${summRarity}`,
-              items: COMPANIONS_DATA.slice().sort((a,b) => {
-                if (!!a.summonedBuff !== !!b.summonedBuff) return a.summonedBuff ? -1 : 1;
-                return a.name.localeCompare(b.name);
-              }),
+              items: (() => {
+                const base = (typeof COMPANIONS_DATA !== "undefined") ? COMPANIONS_DATA.slice() : [];
+                const user = (typeof getUserAddedCompanions === "function") ? getUserAddedCompanions() : [];
+                const seen = new Set(base.map(c => c.name));
+                for (const c of user) if (!seen.has(c.name)) base.push(c);
+                return base.sort((a,b) => {
+                  if (!!a.summonedBuff !== !!b.summonedBuff) return a.summonedBuff ? -1 : 1;
+                  return a.name.localeCompare(b.name);
+                });
+              })(),
               render: (c) => renderSummonedCompanion(c, summRarity),
               onPick: (c) => {
                 state.summoned = c ? c.name : null;
@@ -12530,7 +12904,14 @@
             const i = +el.dataset.idx;
             const slotType = ACTIVE_SLOT_TYPES[i];
             if (typeof COMPANIONS_DATA === "undefined") return;
-            const items = COMPANIONS_DATA.filter(c => {
+            const baseComps = (() => {
+              const base = (typeof COMPANIONS_DATA !== "undefined") ? COMPANIONS_DATA.slice() : [];
+              const user = (typeof getUserAddedCompanions === "function") ? getUserAddedCompanions() : [];
+              const seen = new Set(base.map(c => c.name));
+              for (const c of user) if (!seen.has(c.name)) base.push(c);
+              return base;
+            })();
+            const items = baseComps.filter(c => {
               if (slotType === "Universal") return true;
               const p = findCompanionPower(c.powerRef);
               return p && Array.isArray(p.slot) && p.slot.includes(slotType);
@@ -13705,6 +14086,7 @@
       const userBuffsRecon = getUserAddedBuffs();
       const userGuildBoonsRecon = getUserAddedGuildBoons();
       const userArtifactsRecon = getUserAddedArtifacts();
+      const userCompanionsRecon = getUserAddedCompanions();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -13736,6 +14118,10 @@
       }
       // From user-added artifacts
       for (const item of userArtifactsRecon) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      // From user-added companions
+      for (const item of userCompanionsRecon) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       // From data-correction overrides
@@ -14056,6 +14442,45 @@
             anyChange = true;
           }
         }
+        // --- User-added companions (no resolved id field; matched by name) ---
+        // Mirrors the artifact branch. Won't Fix clears the companion from both
+        // the summoned slot and the activeComps array, and also drops the linked
+        // user power from the power store so no orphan powers accumulate.
+        if (status === "Fixed" || status === "Won't Fix") {
+          const compList = getUserAddedCompanions();
+          const compIdx  = compList.findIndex(x => x.__reportId === reportId);
+          if (compIdx !== -1) {
+            const userComp = compList[compIdx];
+            const canonicalExists = (typeof COMPANIONS_DATA !== "undefined") &&
+              COMPANIONS_DATA.some(c => c.name === userComp.name);
+            if (status === "Fixed") {
+              if (canonicalExists) {
+                // Canonical entry is live; findCompanionByName now resolves to it.
+                // Drop the local companion. Also clean up the orphaned user power.
+                const pwrList = getUserAddedCompPowers();
+                const pwrIdx  = pwrList.findIndex(p => p.id === userComp.powerRef);
+                if (pwrIdx !== -1) { pwrList.splice(pwrIdx, 1); saveUserAddedCompPowers(pwrList); }
+                toastItems.push(`"${userComp.name}" is now in the site database — your build has been updated.`);
+                compList.splice(compIdx, 1);
+                saveUserAddedCompanions(compList);
+              } else {
+                // Approved but data JS not rebuilt yet — keep the local copy.
+                toastItems.push(`"${userComp.name}" was approved but data hasn't refreshed yet — reload the page to update.`);
+              }
+            } else { // Won't Fix
+              clearCompanionFromSlots(userComp.name);
+              // Drop the linked user power too.
+              const pwrList = getUserAddedCompPowers();
+              const pwrIdx  = pwrList.findIndex(p => p.id === userComp.powerRef);
+              if (pwrIdx !== -1) { pwrList.splice(pwrIdx, 1); saveUserAddedCompPowers(pwrList); }
+              const noteStr = admin_notes ? ` (${admin_notes})` : "";
+              toastItems.push(`"${userComp.name}" won't be added to the site${noteStr}.`);
+              compList.splice(compIdx, 1);
+              saveUserAddedCompanions(compList);
+            }
+            anyChange = true;
+          }
+        }
         // Active statuses (New, Confirmed, In Progress) or Fixed without
         // resolved_gear_id: keep local, no action needed.
       }
@@ -14090,6 +14515,7 @@
       const userBuffsModal = getUserAddedBuffs();
       const userGuildBoonsModal = getUserAddedGuildBoons();
       const userArtifactsModal = getUserAddedArtifacts();
+      const userCompanionsModal = getUserAddedCompanions();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -14114,6 +14540,9 @@
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const item of userArtifactsModal) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      for (const item of userCompanionsModal) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const key of Object.keys(overrides)) {
@@ -14281,6 +14710,25 @@
           kind: "item",
           name: item.name,
           slot: "Artifact",
+          reportId: item.__reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: item.addedAt || null
+        };
+        if (isActive) pending.push(entry);
+        else resolved.push(entry);
+      }
+
+      // User-added companions (reuse the "item" render shape)
+      for (const item of userCompanionsModal) {
+        if (!item.__reportId) continue;
+        const row = rowById[item.__reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        const entry = {
+          kind: "item",
+          name: item.name,
+          slot: "Companion",
           reportId: item.__reportId,
           status,
           adminNote: row ? row.admin_notes : null,
