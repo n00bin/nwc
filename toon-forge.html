@@ -3411,6 +3411,14 @@
           <span class="picker-add-missing-hint">Don't see your overload? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
       }
+      const isInsigniaPicker = _pickerState.dataType === "insignia";
+      if (isInsigniaPicker) {
+        html += `<button id="picker-add-missing-insignia" class="picker-add-missing-btn" type="button">
+          <span style="font-size:1.1em;">＋</span>
+          <span>Add Missing Insignia</span>
+          <span class="picker-add-missing-hint">Don't see your insignia? Add it yourself — it'll show up in your build right away.</span>
+        </button>`;
+      }
       if (_pickerState.allowNone !== false) {
         html += `<div class="picker-item empty" data-pick-none="1">— None —</div>`;
       }
@@ -3469,6 +3477,13 @@
         addOverloadBtn.addEventListener("click", (e) => {
           e.stopPropagation();
           openAddMissingOverloadModal();
+        });
+      }
+      const addInsigniaBtn = document.getElementById("picker-add-missing-insignia");
+      if (addInsigniaBtn) {
+        addInsigniaBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openAddMissingInsigniaModal();
         });
       }
       list.querySelectorAll("[data-pick-none]").forEach(el => {
@@ -5396,8 +5411,15 @@
       return { name: p.name, meta, desc };
     }
     function findInsigniaByName(name) {
-      if (!name || typeof MOUNT_INSIGNIAS_DATA === "undefined") return null;
-      return MOUNT_INSIGNIAS_DATA.find(i => i.name === name) || null;
+      if (!name) return null;
+      if (typeof MOUNT_INSIGNIAS_DATA !== "undefined") {
+        const canonical = MOUNT_INSIGNIAS_DATA.find(i => i.name === name);
+        if (canonical) return canonical;
+      }
+      if (typeof getUserAddedInsignias === "function") {
+        return getUserAddedInsignias().find(i => i.name === name) || null;
+      }
+      return null;
     }
     function findBonusById(id) {
       if (typeof MOUNT_INSIGNIA_BONUSES_DATA === "undefined") return null;
@@ -5507,11 +5529,17 @@
     // mountSlot.allowed is an array like ["Regal"], ["*"], or ["Regal","Barbed"].
     // "*" means any type.
     function insigniaOptionsForSlot(allowed) {
-      if (typeof MOUNT_INSIGNIAS_DATA === "undefined") return [];
       const wildcard = (allowed || []).includes("*");
-      return MOUNT_INSIGNIAS_DATA
-        .filter(i => wildcard || (allowed || []).includes(i.category))
-        .sort((a,b) => a.name.localeCompare(b.name));
+      const canonical = (typeof MOUNT_INSIGNIAS_DATA !== "undefined")
+        ? MOUNT_INSIGNIAS_DATA.filter(i => wildcard || (allowed || []).includes(i.category))
+        : [];
+      const canonicalNames = new Set(canonical.map(i => i.name));
+      const userAdded = (typeof getUserAddedInsignias === "function")
+        ? getUserAddedInsignias().filter(i =>
+            (wildcard || (allowed || []).includes(i.category)) && !canonicalNames.has(i.name)
+          )
+        : [];
+      return canonical.concat(userAdded).sort((a, b) => a.name.localeCompare(b.name));
     }
     function getCollarList() {
       if (typeof MOUNT_COLLARS_DATA === "undefined") return [];
@@ -6608,6 +6636,289 @@
       saveBtn.disabled = false;
       saveBtn.textContent = "Add to my build";
       closeAddMissingOverloadModal();
+      if (typeof closePicker === "function") closePicker();
+    }
+
+    // =========================================================================
+    // Add Missing Insignia flow (_amins prefix)
+    // Storage mirrors the overload trio; modal collects name, category,
+    // item_level, combinedRating, and up to 4 stat rows each with a stat name,
+    // value, and rating/percent type — matching the MOUNT_INSIGNIAS_DATA shape.
+    // =========================================================================
+    const USER_INSIGNIA_KEY = "nwcb_user_added_insignias_v1";
+    function getUserAddedInsignias() {
+      try {
+        const raw = localStorage.getItem(USER_INSIGNIA_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveUserAddedInsignias(list) {
+      try { localStorage.setItem(USER_INSIGNIA_KEY, JSON.stringify(list)); }
+      catch (e) { /* quota — ignore */ }
+    }
+    function addUserInsignia(item) {
+      const list = getUserAddedInsignias();
+      const minId = list.reduce((m, x) => Math.min(m, x.id || 0), 0);
+      item.id = (minId < 0 ? minId : 0) - 1;
+      item.__userAdded = true;
+      item.addedAt = new Date().toISOString();
+      list.push(item);
+      saveUserAddedInsignias(list);
+      return item;
+    }
+    // Remove a user-added insignia by name from every insignia slot it occupies
+    // across all stable mounts.  Used by reconciliation on Won't Fix.
+    function clearInsigniaFromSlots(name) {
+      if (!name || !state.stable) return;
+      for (const slot of state.stable) {
+        if (!Array.isArray(slot.insignias)) continue;
+        for (let i = 0; i < slot.insignias.length; i++) {
+          if (slot.insignias[i] === name) slot.insignias[i] = null;
+        }
+      }
+    }
+
+    /* ===== Add Missing Insignia modal (_amins prefix) =====
+       Form: name, category dropdown, item level (default 500),
+       combined rating (default 400), up to 4 stat rows each with
+       a STAT dropdown + VALUE + rating/percent TYPE selector.
+       At least one stat and a category are required. */
+    const AMINS_STAT_OPTIONS = AMI_STAT_OPTIONS.slice();
+    const AMINS_CATEGORIES = ["Regal", "Barbed", "Crescent", "Illuminated", "Enlightened"];
+
+    function _aminsStatRows(count) {
+      let html = "";
+      for (let i = 0; i < count; i++) {
+        html += `
+          <div class="ami-stat-row" style="display:flex;gap:4px;align-items:center;">
+            <select class="amins-stat-name" data-row="${i}" style="flex:2;">
+              <option value="">— stat ${i + 1} —</option>
+              ${AMINS_STAT_OPTIONS.map(s => `<option value="${s}">${s}</option>`).join("")}
+            </select>
+            <input type="number" class="amins-stat-value" data-row="${i}" placeholder="value" step="any" style="flex:1;min-width:60px;">
+            <select class="amins-stat-type" data-row="${i}" style="flex:1;">
+              <option value="rating">rating</option>
+              <option value="percent">percent</option>
+            </select>
+          </div>`;
+      }
+      return html;
+    }
+
+    function ensureAddMissingInsigniaDOM() {
+      if (document.getElementById("amins-overlay")) return;
+      const overlay = document.createElement("div");
+      overlay.id = "amins-overlay";
+      overlay.className = "ami-overlay";
+
+      overlay.innerHTML = `
+        <div class="ami-panel">
+          <div class="ami-header">
+            <h3>Add Missing Insignia</h3>
+            <button class="ami-close" id="amins-close" type="button">×</button>
+          </div>
+          <div class="ami-body">
+            <div class="ami-row">
+              <label>Insignia Name <span class="req">*</span></label>
+              <input type="text" id="amins-name" placeholder="e.g. Assassin's Insignia" maxlength="120" required>
+            </div>
+            <div class="ami-row">
+              <label>Category <span class="req">*</span></label>
+              <select id="amins-category">
+                <option value="">— select category —</option>
+                ${AMINS_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join("")}
+              </select>
+            </div>
+            <div class="ami-row">
+              <label>Item Level (default 500)</label>
+              <input type="number" id="amins-il" min="0" step="1" placeholder="500">
+            </div>
+            <div class="ami-row">
+              <label>Combined Rating (default 400)</label>
+              <input type="number" id="amins-cr" min="0" step="1" placeholder="400">
+            </div>
+            <div class="ami-row">
+              <label>Stats — pick stat, enter value, choose rating or percent <span class="req">*</span></label>
+              ${_aminsStatRows(4)}
+            </div>
+            <div class="ami-row">
+              <label>Notes / where you got it (optional)</label>
+              <textarea id="amins-notes" rows="2" placeholder="e.g. 'Bought from Wondrous Bazaar.'" maxlength="600"></textarea>
+            </div>
+          </div>
+          <div class="ami-footer">
+            <button class="ami-save-btn" id="amins-save" type="button">Add to my build</button>
+            <div class="ami-msg" id="amins-msg"></div>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target.id === "amins-overlay") closeAddMissingInsigniaModal();
+      });
+      document.getElementById("amins-close").addEventListener("click", closeAddMissingInsigniaModal);
+      document.getElementById("amins-save").addEventListener("click", saveAddMissingInsignia);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("amins-overlay") &&
+            document.getElementById("amins-overlay").classList.contains("open")) {
+          closeAddMissingInsigniaModal();
+        }
+      });
+    }
+
+    function openAddMissingInsigniaModal() {
+      ensureAddMissingInsigniaDOM();
+
+      // Reset all fields to defaults
+      document.getElementById("amins-name").value = "";
+      document.getElementById("amins-category").value = "";
+      document.getElementById("amins-il").value = "";
+      document.getElementById("amins-cr").value = "";
+      document.getElementById("amins-notes").value = "";
+      document.querySelectorAll("#amins-overlay .amins-stat-name").forEach(el => el.value = "");
+      document.querySelectorAll("#amins-overlay .amins-stat-value").forEach(el => el.value = "");
+      document.querySelectorAll("#amins-overlay .amins-stat-type").forEach(el => el.value = "rating");
+
+      const msg = document.getElementById("amins-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+      const saveBtn = document.getElementById("amins-save");
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      document.getElementById("amins-overlay").classList.add("open");
+      setTimeout(() => document.getElementById("amins-name").focus(), 50);
+    }
+
+    function closeAddMissingInsigniaModal() {
+      const o = document.getElementById("amins-overlay");
+      if (o) o.classList.remove("open");
+    }
+
+    // Collect stats array [{stat, value, type}] from the amins stat rows.
+    function _aminsCollectStats() {
+      const out = [];
+      const names  = document.querySelectorAll("#amins-overlay .amins-stat-name");
+      const values = document.querySelectorAll("#amins-overlay .amins-stat-value");
+      const types  = document.querySelectorAll("#amins-overlay .amins-stat-type");
+      names.forEach((sel, i) => {
+        const sName = sel.value;
+        const sVal  = parseFloat(values[i] ? values[i].value : "");
+        const sType = types[i] ? types[i].value : "rating";
+        if (sName && !isNaN(sVal)) out.push({ stat: sName, value: sVal, type: sType });
+      });
+      return out;
+    }
+
+    async function saveAddMissingInsignia() {
+      const msg = document.getElementById("amins-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+
+      const name     = document.getElementById("amins-name").value.trim();
+      const category = document.getElementById("amins-category").value;
+      const ilRaw    = document.getElementById("amins-il").value;
+      const crRaw    = document.getElementById("amins-cr").value;
+      const il       = ilRaw ? (parseInt(ilRaw, 10) || 500) : 500;
+      const cr       = crRaw ? (parseInt(crRaw, 10) || 400) : 400;
+      const notes    = document.getElementById("amins-notes").value.trim();
+
+      if (name.length < 2) {
+        msg.textContent = "Insignia name is required."; msg.className = "ami-msg error"; return;
+      }
+      if (!category) {
+        msg.textContent = "Category is required."; msg.className = "ami-msg error"; return;
+      }
+
+      const stats = _aminsCollectStats();
+      if (!stats.length) {
+        msg.textContent = "Add at least one stat."; msg.className = "ami-msg error"; return;
+      }
+
+      // Build object matching MOUNT_INSIGNIAS_DATA shape.
+      const item = {
+        name,
+        category,
+        item_level: il,
+        combinedRating: cr,
+        statTemplate: "",
+        stats,
+        source: "User-added (pending review)",
+        notes: notes || "User-added — pending admin review."
+      };
+
+      // 1. Save locally — unconditional.
+      const saved = addUserInsignia(item);
+
+      // Resolve the picker callback before the await so it always fires.
+      const pickerOnPick = (_pickerState && _pickerState.dataType === "insignia")
+        ? _pickerState.onPick
+        : null;
+
+      // 2. Submit report (best-effort; never blocks local save).
+      const saveBtn = document.getElementById("amins-save");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Sending report…";
+
+      let reportId = null;
+      const reportLines = [];
+      reportLines.push("A player added this missing insignia:");
+      reportLines.push("");
+      reportLines.push("Name: " + name);
+      reportLines.push("Category: " + category);
+      reportLines.push("Item Level: " + il);
+      reportLines.push("Combined Rating: " + cr);
+      if (stats.length) {
+        reportLines.push("");
+        reportLines.push("Stats:");
+        for (const s of stats) {
+          reportLines.push("  • " + s.stat + ": +" + s.value + " (" + s.type + ")");
+        }
+      }
+      if (notes) {
+        reportLines.push("");
+        reportLines.push("Player notes:");
+        reportLines.push(notes);
+      }
+
+      if (window.supabase) {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        try {
+          const rpcRes = await sb.rpc("submit_missing_item_report", {
+            p_title: "Missing insignia: " + name,
+            p_description: reportLines.join("\n"),
+            p_category: "Missing Insignia",
+            p_image_url: ""
+          });
+          if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
+            reportId = rpcRes.data.report_id;
+          }
+        } catch (err) {
+          console.warn("AMINS report send failed:", err);
+        }
+      }
+
+      // Stamp the report id so runReconciliation() can match it later.
+      if (reportId) {
+        saved.__reportId = reportId;
+        const list = getUserAddedInsignias();
+        const idx = list.findIndex(x => x.id === saved.id);
+        if (idx !== -1) { list[idx] = saved; saveUserAddedInsignias(list); }
+      }
+
+      // 3. Equip it (always runs regardless of report outcome).
+      if (pickerOnPick) pickerOnPick(item);
+
+      // 4. Toast + clean up.
+      toast(reportId
+        ? "Added to your build! We'll review and add it to the site."
+        : "Added to your build — couldn't send report, please try again later.");
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      closeAddMissingInsigniaModal();
       if (typeof closePicker === "function") closePicker();
     }
 
@@ -12411,6 +12722,7 @@
       const userGear = getUserAddedGear();
       const userEnchants = getUserAddedEnchants();
       const userOverloads = getUserAddedOverloads();
+      const userInsignias = getUserAddedInsignias();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -12426,6 +12738,10 @@
       }
       // From user-added overloads
       for (const item of userOverloads) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      // From user-added insignias
+      for (const item of userInsignias) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       // From data-correction overrides
@@ -12618,6 +12934,38 @@
             anyChange = true;
           }
         }
+        // --- User-added insignias (no resolved id field; matched by name) ---
+        // Mirrors the enchant/overload branches.  Insignia reports carry no
+        // resolved_gear_id, so a "Fixed" insignia falls through all gear
+        // branches and is handled here.
+        if (status === "Fixed" || status === "Won't Fix") {
+          const insList = getUserAddedInsignias();
+          const insIdx = insList.findIndex(x => x.__reportId === reportId);
+          if (insIdx !== -1) {
+            const userIns = insList[insIdx];
+            const canonicalExists = (typeof MOUNT_INSIGNIAS_DATA !== "undefined") &&
+              MOUNT_INSIGNIAS_DATA.some(i => i.name === userIns.name);
+            if (status === "Fixed") {
+              if (canonicalExists) {
+                // Canonical entry is live; findInsigniaByName now resolves to it.
+                // Drop the local copy.
+                toastItems.push(`"${userIns.name}" is now in the site database — your build has been updated.`);
+                insList.splice(insIdx, 1);
+                saveUserAddedInsignias(insList);
+              } else {
+                // Approved but data JS not rebuilt yet — keep the local copy.
+                toastItems.push(`"${userIns.name}" was approved but data hasn't refreshed yet — reload the page to update.`);
+              }
+            } else { // Won't Fix
+              clearInsigniaFromSlots(userIns.name);
+              const noteStr = admin_notes ? ` (${admin_notes})` : "";
+              toastItems.push(`"${userIns.name}" won't be added to the site${noteStr}.`);
+              insList.splice(insIdx, 1);
+              saveUserAddedInsignias(insList);
+            }
+            anyChange = true;
+          }
+        }
         // Active statuses (New, Confirmed, In Progress) or Fixed without
         // resolved_gear_id: keep local, no action needed.
       }
@@ -12648,6 +12996,7 @@
       const userGear  = getUserAddedGear();
       const userEnchants = getUserAddedEnchants();
       const userOverloads = getUserAddedOverloads();
+      const userInsignias = getUserAddedInsignias();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -12660,6 +13009,9 @@
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const item of userOverloads) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      for (const item of userInsignias) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const key of Object.keys(overrides)) {
@@ -12751,6 +13103,25 @@
           kind: "item",
           name: item.name,
           slot: "Overload",
+          reportId: item.__reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: item.addedAt || null
+        };
+        if (isActive) pending.push(entry);
+        else resolved.push(entry);
+      }
+
+      // User-added insignias (reuse the "item" render shape)
+      for (const item of userInsignias) {
+        if (!item.__reportId) continue;
+        const row = rowById[item.__reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        const entry = {
+          kind: "item",
+          name: item.name,
+          slot: "Insignia",
           reportId: item.__reportId,
           status,
           adminNote: row ? row.admin_notes : null,
