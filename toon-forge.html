@@ -3419,6 +3419,14 @@
           <span class="picker-add-missing-hint">Don't see your insignia? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
       }
+      const isBuffPicker = _pickerState.dataType === "buff";
+      if (isBuffPicker) {
+        html += `<button id="picker-add-missing-buff" class="picker-add-missing-btn" type="button">
+          <span style="font-size:1.1em;">＋</span>
+          <span>Add Missing Buff</span>
+          <span class="picker-add-missing-hint">Don't see your buff? Add it yourself — it'll show up in your build right away.</span>
+        </button>`;
+      }
       if (_pickerState.allowNone !== false) {
         html += `<div class="picker-item empty" data-pick-none="1">— None —</div>`;
       }
@@ -3484,6 +3492,13 @@
         addInsigniaBtn.addEventListener("click", (e) => {
           e.stopPropagation();
           openAddMissingInsigniaModal();
+        });
+      }
+      const addBuffBtn = document.getElementById("picker-add-missing-buff");
+      if (addBuffBtn) {
+        addBuffBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openAddMissingBuffModal();
         });
       }
       list.querySelectorAll("[data-pick-none]").forEach(el => {
@@ -6922,6 +6937,295 @@
       if (typeof closePicker === "function") closePicker();
     }
 
+    // =========================================================================
+    // Add Missing Buff flow (_amb prefix)
+    // Storage mirrors the overload/insignia trios.  Buffs are NOT slot-based —
+    // state.buffs is a Set<buffName>.  The "clear" helper simply deletes the
+    // name from the Set (used by reconciliation on Won't Fix).
+    // =========================================================================
+    const USER_BUFF_KEY = "nwcb_user_added_buffs_v1";
+    function getUserAddedBuffs() {
+      try {
+        const raw = localStorage.getItem(USER_BUFF_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveUserAddedBuffs(list) {
+      try { localStorage.setItem(USER_BUFF_KEY, JSON.stringify(list)); }
+      catch (e) { /* quota — ignore */ }
+    }
+    function addUserBuff(item) {
+      const list = getUserAddedBuffs();
+      const minId = list.reduce((m, x) => Math.min(m, x.id || 0), 0);
+      item.id = (minId < 0 ? minId : 0) - 1;
+      item.__userAdded = true;
+      item.addedAt = new Date().toISOString();
+      list.push(item);
+      saveUserAddedBuffs(list);
+      return item;
+    }
+    // Remove a user-added buff by name from state.buffs (Set).
+    // Used by reconciliation when a submission is declined.
+    function clearBuffFromSet(name) {
+      if (!name || !state.buffs) return;
+      state.buffs.delete(name);
+    }
+
+    /* ===== Add Missing Buff modal (_amb prefix) =====
+       Form collects: name (required), category, exclusiveGroup (defaults to
+       the group currently being picked, stashed as _pickerState.buffGroup),
+       scope (self/party), duration (seconds), up to 3 rating-stat rows, up to
+       3 percent-stat rows, and optional notes.
+       At least one stat is required before the form can be saved. */
+    const AMB_STAT_OPTIONS = AMI_STAT_OPTIONS.slice();           // rating stats
+    const AMB_PCT_STAT_OPTIONS = AMI_STAT_OPTIONS.concat(["Dmg Bonus"]); // % stats
+
+    function _ambStatRows(prefix, count, optionList) {
+      let html = "";
+      for (let i = 0; i < count; i++) {
+        html += `
+          <div class="ami-stat-row">
+            <select class="${prefix}-name" data-row="${i}">
+              <option value="">— stat ${i + 1} —</option>
+              ${optionList.map(s => `<option value="${s}">${s}</option>`).join("")}
+            </select>
+            <input type="number" class="${prefix}-value" data-row="${i}" placeholder="value" step="any">
+          </div>`;
+      }
+      return html;
+    }
+
+    function ensureAddMissingBuffDOM() {
+      if (document.getElementById("amb-overlay")) return;
+      const overlay = document.createElement("div");
+      overlay.id = "amb-overlay";
+      overlay.className = "ami-overlay";
+
+      overlay.innerHTML = `
+        <div class="ami-panel">
+          <div class="ami-header">
+            <h3>Add Missing Buff</h3>
+            <button class="ami-close" id="amb-close" type="button">×</button>
+          </div>
+          <div class="ami-body">
+            <div class="ami-row">
+              <label>Buff Name <span class="req">*</span></label>
+              <input type="text" id="amb-name" placeholder="e.g. Squash Soup" maxlength="120" required>
+            </div>
+            <div class="ami-row">
+              <label>Category (e.g. Event Food, Elixir, Potion…)</label>
+              <input type="text" id="amb-category" placeholder="e.g. Event Food" maxlength="80">
+            </div>
+            <div class="ami-row">
+              <label>Exclusive Group (buffs in the same group can't stack)</label>
+              <input type="text" id="amb-exclusive-group" placeholder="e.g. Event Food" maxlength="80">
+            </div>
+            <div class="ami-row">
+              <label>Scope</label>
+              <select id="amb-scope">
+                <option value="self">Self</option>
+                <option value="party">Party</option>
+              </select>
+            </div>
+            <div class="ami-row">
+              <label>Duration (seconds, optional)</label>
+              <input type="number" id="amb-duration" min="0" step="1" placeholder="e.g. 3600">
+            </div>
+            <div class="ami-row">
+              <label>Rating stats (pick the stat, type the +value)</label>
+              ${_ambStatRows("amb-r", 3, AMB_STAT_OPTIONS)}
+            </div>
+            <div class="ami-row">
+              <label>Percent stats (e.g. +5% Dmg Bonus)</label>
+              ${_ambStatRows("amb-p", 3, AMB_PCT_STAT_OPTIONS)}
+            </div>
+            <div class="ami-row">
+              <label>Notes / where you got it (optional)</label>
+              <textarea id="amb-notes" rows="2" placeholder="e.g. 'Dropped during Protector's Jubilee.'" maxlength="600"></textarea>
+            </div>
+          </div>
+          <div class="ami-footer">
+            <button class="ami-save-btn" id="amb-save" type="button">Add to my build</button>
+            <div class="ami-msg" id="amb-msg"></div>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target.id === "amb-overlay") closeAddMissingBuffModal();
+      });
+      document.getElementById("amb-close").addEventListener("click", closeAddMissingBuffModal);
+      document.getElementById("amb-save").addEventListener("click", saveAddMissingBuff);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("amb-overlay").classList.contains("open")) {
+          closeAddMissingBuffModal();
+        }
+      });
+    }
+
+    function openAddMissingBuffModal() {
+      ensureAddMissingBuffDOM();
+
+      // Default exclusiveGroup / category to the group currently being picked
+      // (_pickerState.buffGroup is stashed in renderBuffs when openPicker is called).
+      const currentGroup = (_pickerState && _pickerState.buffGroup) ? _pickerState.buffGroup : "Other";
+
+      // Reset all fields
+      document.getElementById("amb-name").value = "";
+      document.getElementById("amb-category").value = currentGroup !== "Other" ? currentGroup : "";
+      document.getElementById("amb-exclusive-group").value = currentGroup;
+      document.getElementById("amb-scope").value = "self";
+      document.getElementById("amb-duration").value = "";
+      document.getElementById("amb-notes").value = "";
+      document.querySelectorAll("#amb-overlay select:not(#amb-scope)").forEach(el => el.value = "");
+      document.querySelectorAll("#amb-overlay input[type='number']").forEach(el => el.value = "");
+
+      const msg = document.getElementById("amb-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+      const saveBtn = document.getElementById("amb-save");
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      document.getElementById("amb-overlay").classList.add("open");
+      setTimeout(() => document.getElementById("amb-name").focus(), 50);
+    }
+
+    function closeAddMissingBuffModal() {
+      const o = document.getElementById("amb-overlay");
+      if (o) o.classList.remove("open");
+    }
+
+    // Collect {stat: value} from a paired set of .NAME / .VALUE inputs within amb-overlay.
+    function _ambCollectStats(nameClass, valueClass) {
+      const out = {};
+      const names = document.querySelectorAll("#amb-overlay ." + nameClass);
+      const values = document.querySelectorAll("#amb-overlay ." + valueClass);
+      names.forEach((sel, i) => {
+        const sName = sel.value;
+        const sVal = parseFloat(values[i] ? values[i].value : "");
+        if (sName && !isNaN(sVal)) out[sName] = sVal;
+      });
+      return out;
+    }
+
+    async function saveAddMissingBuff() {
+      const msg = document.getElementById("amb-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+
+      const name           = document.getElementById("amb-name").value.trim();
+      const category       = document.getElementById("amb-category").value.trim() || "Other";
+      const exclusiveGroup = document.getElementById("amb-exclusive-group").value.trim() || "Other";
+      const scope          = document.getElementById("amb-scope").value || "self";
+      const durRaw         = document.getElementById("amb-duration").value;
+      const duration_s     = durRaw ? (parseInt(durRaw, 10) || 0) : 0;
+      const notes          = document.getElementById("amb-notes").value.trim();
+
+      if (name.length < 2) { msg.textContent = "Buff name is required."; msg.className = "ami-msg error"; return; }
+
+      const ratingStats  = _ambCollectStats("amb-r-name", "amb-r-value");
+      const percentStats = _ambCollectStats("amb-p-name", "amb-p-value");
+
+      const anyStat = Object.keys(ratingStats).length > 0 || Object.keys(percentStats).length > 0;
+      if (!anyStat) { msg.textContent = "Add at least one stat."; msg.className = "ami-msg error"; return; }
+
+      // Build the buff object in the shape the engine expects.
+      const item = {
+        name,
+        category,
+        exclusiveGroup,
+        duration_s,
+        expiration: "on_death",
+        scope,
+        ratingStats,
+        percentStats,
+        abilityBonuses: {},
+        enemyType: "",
+        damagePct: 0,
+        source: "User-added (pending review)",
+        notes: notes || "User-added — pending admin review."
+      };
+
+      // 1. Save locally — unconditional.
+      const saved = addUserBuff(item);
+
+      // Resolve the picker callback before the await so it always fires.
+      const pickerOnPick = (_pickerState && _pickerState.dataType === "buff")
+        ? _pickerState.onPick
+        : null;
+
+      // 2. Submit a report (best-effort; never blocks the local save).
+      const saveBtn = document.getElementById("amb-save");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Sending report…";
+
+      let reportId = null;
+      const reportLines = [];
+      reportLines.push("A player added this missing buff:");
+      reportLines.push("");
+      reportLines.push("Name: " + name);
+      reportLines.push("Category: " + category);
+      reportLines.push("Exclusive Group: " + exclusiveGroup);
+      reportLines.push("Scope: " + scope);
+      if (duration_s) reportLines.push("Duration: " + duration_s + "s");
+      if (Object.keys(ratingStats).length) {
+        reportLines.push("");
+        reportLines.push("Rating stats:");
+        for (const k of Object.keys(ratingStats)) reportLines.push("  • " + k + ": +" + ratingStats[k]);
+      }
+      if (Object.keys(percentStats).length) {
+        reportLines.push("");
+        reportLines.push("Percent stats:");
+        for (const k of Object.keys(percentStats)) reportLines.push("  • " + k + ": +" + percentStats[k] + "%");
+      }
+      if (notes) {
+        reportLines.push("");
+        reportLines.push("Player notes:");
+        reportLines.push(notes);
+      }
+
+      if (window.supabase) {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        try {
+          const rpcRes = await sb.rpc("submit_missing_item_report", {
+            p_title: "Missing buff: " + name,
+            p_description: reportLines.join("\n"),
+            p_category: "Missing Buff",
+            p_image_url: ""
+          });
+          if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
+            reportId = rpcRes.data.report_id;
+          }
+        } catch (err) {
+          console.warn("AMB report send failed:", err);
+        }
+      }
+
+      // Stamp the report id so runReconciliation() can match it later.
+      if (reportId) {
+        saved.__reportId = reportId;
+        const list = getUserAddedBuffs();
+        const idx = list.findIndex(x => x.id === saved.id);
+        if (idx !== -1) { list[idx] = saved; saveUserAddedBuffs(list); }
+      }
+
+      // 3. Toggle it on (always runs regardless of report outcome).
+      if (pickerOnPick) pickerOnPick(item);
+
+      // 4. Toast + clean up.
+      toast(reportId
+        ? "Added to your build! We'll review and add it to the site."
+        : "Added to your build — couldn't send report, please try again later.");
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      closeAddMissingBuffModal();
+      if (typeof closePicker === "function") closePicker();
+    }
+
     /* ===== Class base ability scores =====
        Pulled from CLASSES_DATA (sourced from NW Hub character editor).
        Falls back to 10/10/10/10/10/10 if the class isn't found. */
@@ -8864,8 +9168,14 @@
        state.buffs is now a Set<buffName>. Pickers toggle buffs;
        grouped buffs (single exclusiveGroup) auto-clear others in group. */
     function findBuffByName(name) {
-      if (!name || typeof BUFFS_DATA === "undefined") return null;
-      return BUFFS_DATA.find(b => b.name === name) || null;
+      if (!name) return null;
+      if (typeof BUFFS_DATA !== "undefined") {
+        const canonical = BUFFS_DATA.find(b => b.name === name);
+        if (canonical) return canonical;
+      }
+      // Fall back to user-added buffs (stored locally before review).
+      const userBuffs = getUserAddedBuffs();
+      return userBuffs.find(b => b.name === name) || null;
     }
     // Belt Item, Battle Belt, Battle Horn, and Companion Bell all use
     // the single belt slot in-game — merge them under "Belt Item".
@@ -11004,9 +11314,15 @@
       el.querySelectorAll("[data-buff-group-pick]").forEach(row => {
         row.addEventListener("click", () => {
           const g = row.dataset.buffGroupPick;
-          const items = (groups[g] || []).slice().sort((a,b) => a.name.localeCompare(b.name));
+          // Merge user-added buffs for this group (dedup any whose name already
+          // matches a canonical entry so we don't show the same buff twice).
+          const canonicalNames = new Set((groups[g] || []).map(b => b.name));
+          const userGroupBuffs = getUserAddedBuffs().filter(b =>
+            displayGroupOf(b) === g && !canonicalNames.has(b.name));
+          const items = [...(groups[g] || []), ...userGroupBuffs].sort((a,b) => a.name.localeCompare(b.name));
           openPicker({
             dataType: "buff",
+            buffGroup: g,
             title: `${g} — pick one`,
             items,
             render: (b) => ({
@@ -12723,6 +13039,7 @@
       const userEnchants = getUserAddedEnchants();
       const userOverloads = getUserAddedOverloads();
       const userInsignias = getUserAddedInsignias();
+      const userBuffsRecon = getUserAddedBuffs();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -12742,6 +13059,10 @@
       }
       // From user-added insignias
       for (const item of userInsignias) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      // From user-added buffs
+      for (const item of userBuffsRecon) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       // From data-correction overrides
@@ -12966,6 +13287,37 @@
             anyChange = true;
           }
         }
+        // --- User-added buffs (no resolved id field; matched by name) ---
+        // Mirrors the enchant/overload/insignia branches.  Buff reports carry no
+        // resolved_gear_id.  Won't Fix removes the buff name from state.buffs (Set).
+        if (status === "Fixed" || status === "Won't Fix") {
+          const buffList = getUserAddedBuffs();
+          const buffIdx = buffList.findIndex(x => x.__reportId === reportId);
+          if (buffIdx !== -1) {
+            const userBuff = buffList[buffIdx];
+            const canonicalExists = (typeof BUFFS_DATA !== "undefined") &&
+              BUFFS_DATA.some(b => b.name === userBuff.name);
+            if (status === "Fixed") {
+              if (canonicalExists) {
+                // Canonical entry is live; findBuffByName now resolves to it.
+                // Drop the local copy.
+                toastItems.push(`"${userBuff.name}" is now in the site database — your build has been updated.`);
+                buffList.splice(buffIdx, 1);
+                saveUserAddedBuffs(buffList);
+              } else {
+                // Approved but data JS not rebuilt yet — keep the local copy.
+                toastItems.push(`"${userBuff.name}" was approved but data hasn't refreshed yet — reload the page to update.`);
+              }
+            } else { // Won't Fix
+              clearBuffFromSet(userBuff.name);
+              const noteStr = admin_notes ? ` (${admin_notes})` : "";
+              toastItems.push(`"${userBuff.name}" won't be added to the site${noteStr}.`);
+              buffList.splice(buffIdx, 1);
+              saveUserAddedBuffs(buffList);
+            }
+            anyChange = true;
+          }
+        }
         // Active statuses (New, Confirmed, In Progress) or Fixed without
         // resolved_gear_id: keep local, no action needed.
       }
@@ -12997,6 +13349,7 @@
       const userEnchants = getUserAddedEnchants();
       const userOverloads = getUserAddedOverloads();
       const userInsignias = getUserAddedInsignias();
+      const userBuffsModal = getUserAddedBuffs();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -13012,6 +13365,9 @@
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const item of userInsignias) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      for (const item of userBuffsModal) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const key of Object.keys(overrides)) {
@@ -13122,6 +13478,25 @@
           kind: "item",
           name: item.name,
           slot: "Insignia",
+          reportId: item.__reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: item.addedAt || null
+        };
+        if (isActive) pending.push(entry);
+        else resolved.push(entry);
+      }
+
+      // User-added buffs (reuse the "item" render shape)
+      for (const item of userBuffsModal) {
+        if (!item.__reportId) continue;
+        const row = rowById[item.__reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        const entry = {
+          kind: "item",
+          name: item.name,
+          slot: "Buff",
           reportId: item.__reportId,
           status,
           adminNote: row ? row.admin_notes : null,
