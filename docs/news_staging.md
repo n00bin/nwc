@@ -10,6 +10,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - **Toon Forge — "Add Missing" is now everywhere.** The "Add Missing" flow (add it yourself, it slots into your build immediately, files a report, and is tracked in My Contributions) now covers **Overloads, Insignias, Buffs, Guild Boons, Artifacts, Companions, and Mounts** — not just gear and enchantments. If anything's missing from a picker, you can add it on the spot. (Companions capture the companion + its active power; Mounts capture the insignia-slot layout.)
 
 ### Data Additions
+- **526 new gear pieces** added from a big in-game screenshot batch (read via the OCR/vision review pipeline, transcribe-only). Mostly Barbarian and all-class armor/weapon sets — Aboleth artifact weapons, Adamant (Assault/Duelist/Gladiator), Bladelord's, Astral Raider's, Bloodbrass/Bloodforged, and many more, each across its item-level tiers with equip bonuses. 32 duplicates were skipped; 17 hard-to-read cards were set aside for manual verification.
 - **43 new Wizard gear pieces** added from in-game screenshots: full Wizard armor sets for **Alliance**, **Elemental Alliance**, **Elven**, **Elemental Elven**, **Manticore** (Assault / Raid / Duelist / Executioner), and the **Elemental Drowcraft** cap. The Manticore pieces include their equip bonuses (Gladiator's Accuracy/Focus, Challenger's Might, Survivor's Parry).
 
 ### Bug Fixes
