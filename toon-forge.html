@@ -2883,6 +2883,10 @@
       compBolsterILContribution: 0,
       mountBolsterILContribution: 0,
       flankUptime: 0.70,  // % of hits with Combat Advantage active (0..1)
+      // Selected content zone for zone-gated bonuses. "" = General: bonuses
+      // tagged with a `zones` restriction (e.g. "+5% damage in Wildspace")
+      // are EXCLUDED, so situational damage never inflates the always-on number.
+      contentZone: "",
       boons: new Map(),  // key: "tier1:1" / "master:3" → { tier, boonId, points or ranks }
       // Order in which master boons were first ranked (by boonId).
       // Determines each boon's cost slot: slot N → N pts/rank to fully rank.
@@ -2993,6 +2997,7 @@
           guildBoonPicks: state.guildBoonPicks,
           buffs: [...state.buffs],
           partyContent: state.partyContent || "dungeon",
+          contentZone: state.contentZone || "",
           partyAllies: [...(state.partyAllies || [])],
           partyMountAllies: [...(state.partyMountAllies || [])],
           slottedClassFeaturePicks: [...(state.slottedClassFeaturePicks || [])],
@@ -10202,12 +10207,18 @@
         if ((r === "healer" || r === "heal") && (currentRoleKey === "healer" || currentRoleKey === "heal")) return true;
         return false;
       }
+      // Zone gate: bonuses tagged with `zones` only count when the build's
+      // selected content zone matches. Default "" (General) drops all
+      // zone-locked bonuses, so situational damage (e.g. "+5% in Wildspace")
+      // never inflates the always-on number.
+      const contentZone = s.contentZone || "";
       function ingestEquipBonuses(label, item) {
         if (!item || !Array.isArray(item.equipBonuses)) return;
         for (const eb of item.equipBonuses) {
           if (!eb || !eb.stat || eb.amount == null) continue;
           if (eb.scope && eb.scope !== "self") continue;  // party/enemy buffs handled elsewhere
           if (eb.role && !roleMatches(eb.role)) continue; // role-conditional set bonuses
+          if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate: General (no zone) drops zone-locked bonuses
           // Conditional bonuses (in-combat stacks, procs, group-only, etc.)
           // are pushed with conditional: true so the renderer can filter
           // them out for "standing around" view or include them at max
@@ -10532,6 +10543,7 @@
         for (const eb of (o.equipBonuses || [])) {
           if (!eb || !eb.stat || eb.amount == null) continue;
           if (eb.scope && eb.scope !== "self") continue;
+          if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate (General drops zone-locked)
           const channel = (eb.kind === "rating") ? "ratingStats" : "percentStats";
           // Zone or trigger context implies conditional. If neither, treat
           // it as always-on per the data's intent.
@@ -10680,7 +10692,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
