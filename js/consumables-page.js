@@ -130,8 +130,12 @@
       });
     }
     if (b.percentStats) {
+      var lvls = b.levels || [];
       Object.keys(b.percentStats).forEach(function (s) {
-        chips += '<span class="cnsm-chip ' + chipClass(s) + '">'
+        var isScale = lvls.some(function (lv) { return lv[s] != null; });
+        var cls = 'cnsm-chip ' + chipClass(s) + (isScale ? ' js-scale-chip' : '');
+        var dataAttr = isScale ? ' data-stat="' + escapeHtml(s) + '"' : '';
+        chips += '<span class="' + cls + '"' + dataAttr + '>'
               +  escapeHtml(formatPercent(b.percentStats[s])) + ' ' + escapeHtml(prettyStat(s))
               +  '</span>';
       });
@@ -150,6 +154,21 @@
     }
     if (chips) {
       html += '<div class="cnsm-chips">' + chips + '</div>';
+    }
+
+    // Upgrade-level picker for tiered belt items (e.g. Chain of Scales).
+    // The chip(s) marked js-scale-chip update live when a level is chosen.
+    if (Array.isArray(b.levels) && b.levels.length) {
+      var maxIdx = b.levels.length - 1;
+      var opts = '';
+      b.levels.forEach(function (lv, i) {
+        opts += '<option value="' + i + '"' + (i === maxIdx ? ' selected' : '') + '>'
+             +  escapeHtml(lv.name) + '</option>';
+      });
+      html += '<div class="cnsm-level-row" style="margin-top:8px;font-size:0.85em;">'
+           +  '<label>Upgrade level: '
+           +  '<select class="cnsm-level" data-bid="' + escapeHtml(String(b.id)) + '">' + opts + '</select>'
+           +  '</label></div>';
     }
 
     // Narrative note (only if it adds info beyond the chips)
@@ -246,5 +265,30 @@
   }
 
   searchInput.addEventListener('input', render);
+
+  // Live-update the scaling stat chip when an upgrade level is picked.
+  // Delegated on sectionsEl so it survives re-renders.
+  sectionsEl.addEventListener('change', function (e) {
+    var sel = e.target;
+    if (!sel || !sel.classList || !sel.classList.contains('cnsm-level')) return;
+    var bid = sel.getAttribute('data-bid');
+    var b = null;
+    for (var i = 0; i < BUFFS_DATA.length; i++) {
+      if (String(BUFFS_DATA[i].id) === bid) { b = BUFFS_DATA[i]; break; }
+    }
+    if (!b || !b.levels) return;
+    var lv = b.levels[parseInt(sel.value, 10)];
+    if (!lv) return;
+    var card = sel.closest('.cnsm-card');
+    if (!card) return;
+    var chipEls = card.querySelectorAll('.js-scale-chip');
+    for (var j = 0; j < chipEls.length; j++) {
+      var stat = chipEls[j].getAttribute('data-stat');
+      if (lv[stat] != null) {
+        chipEls[j].textContent = formatPercent(lv[stat]) + ' ' + prettyStat(stat);
+      }
+    }
+  });
+
   render();
 })();
