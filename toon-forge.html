@@ -13005,6 +13005,7 @@
             if (!Array.isArray(slot.insigniaTiers)) slot.insigniaTiers = [];
             slot.insigniaTiers[insIdx] = e.target.value;
           }
+          renderStable();   // refresh the slot's detail-popup tier attribute + dropdown
           rerenderAll();
         });
       });
