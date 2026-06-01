@@ -4104,6 +4104,16 @@
 
       let html = "";
 
+      // Insignias are stored at their base Mythic tier; the build scales them
+      // up for higher rarities (and the +20% preferred-slot bonus) on its own.
+      // Say so plainly here so a player doesn't enter a Celestial / slotted
+      // in-game number against the Mythic record (see report #94).
+      if (dataType === "insignia") {
+        html += `<div class="cc-tier-note" style="margin:0 0 0.6rem;padding:0.5rem 0.6rem;border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:4px;background:var(--elevated);font-size:0.8rem;color:var(--text-mute);line-height:1.4;">
+          These are the <strong>base Mythic</strong> values. Higher rarities &mdash; and the +20% preferred-slot bonus &mdash; scale up automatically in your build, so enter any correction as the <strong>Mythic</strong> number, not what your in-game Celestial insignia shows.
+        </div>`;
+      }
+
       for (const sec of sectionOrder) {
         const descs = sections[sec];
         const title = SECTION_TITLES[sec];
