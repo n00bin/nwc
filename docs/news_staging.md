@@ -7,6 +7,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ## Week of 2026-05-30
 
 ### Features
+- **Chain of Scales belt — upgrade-level picker.** The Chain of Scales (Belt Item) is now one entry with a dropdown for its 7 upgrade levels; pick your level and the Awareness value updates (1.2% base → 3% Empowered). On the Consumables page.
 - **Toon Forge — "Add Missing" is now everywhere.** The "Add Missing" flow (add it yourself, it slots into your build immediately, files a report, and is tracked in My Contributions) now covers **Overloads, Insignias, Buffs, Guild Boons, Artifacts, Companions, and Mounts** — not just gear and enchantments. If anything's missing from a picker, you can add it on the spot. (Companions capture the companion + its active power; Mounts capture the insignia-slot layout.)
 
 ### Data Additions
