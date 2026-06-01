@@ -1141,6 +1141,8 @@
 
   var plannerState = loadPlannerState();
   var plannerIdCounter = computeNextLoadoutId(plannerState.loadouts);
+  // Which loadouts have their "What can I build?" panel expanded (in-memory).
+  var feasOpen = {};
 
   function emptyInventory() {
     var inv = {};
@@ -1255,7 +1257,18 @@
     } else {
       html += '<span style="color:var(--text-muted);font-size:0.8rem;">All ' + MAX_BONUSES_PER_LOADOUT + ' slots filled</span>';
     }
-    html += '</div></div>';
+    html += '</div>'; // close bonuses row
+
+    // Per-loadout "What can I build?" toggle + panel
+    if (ld.desiredBonuses.length) {
+      var feasIsOpen = !!feasOpen[ld.id];
+      html += '<div style="margin-top:0.1rem;">';
+      html += '<button class="filter-select planner-feas-toggle" data-id="' + ld.id + '" style="cursor:pointer;border-color:#3fb950;color:#3fb950;">' + (feasIsOpen ? '▾' : '▸') + ' What can I build with my insignias?</button>';
+      if (feasIsOpen) html += renderLoadoutFeasibilityHTML(ld);
+      html += '</div>';
+    }
+
+    html += '</div>'; // close card
     return html;
   }
 
@@ -1587,72 +1600,63 @@
     return false;
   }
 
-  function renderInsigniaFeasibility() {
-    var withBonuses = [];
-    for (var i = 0; i < plannerState.loadouts.length; i++) {
-      if (plannerState.loadouts[i].desiredBonuses.length) withBonuses.push(plannerState.loadouts[i]);
+  // Inner panel showing one loadout's buildability. Shown inline on the
+  // loadout card when its "What can I build?" toggle is open.
+  function renderLoadoutFeasibilityHTML(ld) {
+    var panelStyle = 'margin-top:0.5rem;padding:0.6rem 0.75rem;border:1px solid #3fb950;border-radius:var(--radius-sm);background:var(--bg-elevated);';
+    if (!ld.desiredBonuses.length) {
+      return '<div style="' + panelStyle + 'color:var(--text-muted);font-size:0.85rem;">Add some bonuses above, then this shows which you can build with your insignias.</div>';
     }
-    if (!withBonuses.length) return "";
-
-    var html = '<div class="ranking-card" style="flex-direction:column;align-items:stretch;margin-bottom:1.25rem;border-color:#3fb950;border-width:2px;">';
-    html += '<div style="font-weight:700;font-size:1.05rem;color:#3fb950;margin-bottom:0.2rem;">What can I build right now?</div>';
     if (!inventoryHasAny()) {
-      html += '<div style="font-size:0.85rem;color:var(--text-muted);">Enter your insignia counts in <strong>My Insignias</strong> above to see which of your wanted bonuses you can build with what you own.</div></div>';
-      return html;
-    }
-    html += '<div style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem;">For each loadout, this shows which of your wanted bonuses you can run <strong>at the same time</strong> using only the insignias you own — no insignia doing double duty. (Loadouts are checked separately, since only one is active in-game at a time.)</div>';
-
-    for (var li = 0; li < withBonuses.length; li++) {
-      var ld = withBonuses[li];
-      var f = computeLoadoutFeasibility(ld);
-      html += '<div style="border-top:1px solid var(--border-default);padding-top:0.6rem;margin-top:0.5rem;">';
-      var allBuilt = f.builtCount === f.totalCount;
-      var badgeColor = allBuilt ? "#3fb950" : "#d29922";
-      html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.4rem;">';
-      html += '<span style="font-weight:600;color:var(--text-primary);">' + escapeHtml(ld.name) + '</span>';
-      html += '<span style="font-size:0.72rem;font-weight:700;color:#000;background:' + badgeColor + ';border-radius:var(--radius-sm);padding:0.1rem 0.45rem;">' + f.builtCount + ' of ' + f.totalCount + ' buildable</span>';
-      html += '</div>';
-
-      html += '<div style="display:flex;flex-direction:column;gap:0.3rem;">';
-      for (var ix = 0; ix < f.instances.length; ix++) {
-        var inst = f.instances[ix];
-        var ok = !!f.builtIdx[inst.idx];
-        var mark = ok ? '<span style="color:#3fb950;font-weight:700;">✓</span>' : '<span style="color:var(--stat-negative,#f85149);font-weight:700;">✗</span>';
-        html += '<div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;' + (ok ? '' : 'opacity:0.7;') + '">';
-        html += mark;
-        html += '<span style="font-weight:600;color:' + (ok ? 'var(--highlight)' : 'var(--text-secondary)') + ';">' + escapeHtml(inst.bonus.name) + '</span>';
-        var req2 = inst.bonus.requiredInsignias || [];
-        for (var rq = 0; rq < req2.length; rq++) html += renderInsigniaBadge(req2[rq]);
-        html += '</div>';
-      }
-      html += '</div>';
-
-      // Per-type usage line + shortfall to build everything.
-      html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.45rem;">Insignias to build all (you have / needed): ';
-      var parts = [];
-      for (var ti = 0; ti < INSIGNIA_TYPES.length; ti++) {
-        var ty2 = INSIGNIA_TYPES[ti];
-        var need = f.totalDemand[ty2] || 0;
-        if (!need) continue;
-        var own = f.inv[ty2] || 0;
-        var short = need > own;
-        parts.push('<span style="' + (short ? 'color:var(--stat-negative,#f85149);font-weight:600;' : '') + '">' + escapeHtml(ty2) + ' ' + own + '/' + need + '</span>');
-      }
-      html += parts.join(' &nbsp;·&nbsp; ') + '</div>';
-
-      if (f.anyShort) {
-        var shortParts = [];
-        for (var sti = 0; sti < INSIGNIA_TYPES.length; sti++) {
-          var sty = INSIGNIA_TYPES[sti];
-          if (f.shortfall[sty]) shortParts.push('+' + f.shortfall[sty] + ' ' + sty);
-        }
-        html += '<div style="font-size:0.78rem;color:#d29922;margin-top:0.2rem;">To build every bonus in this loadout you need: ' + shortParts.join(', ') + '.</div>';
-      } else if (allBuilt) {
-        html += '<div style="font-size:0.78rem;color:#3fb950;margin-top:0.2rem;">You own enough insignias to build every bonus in this loadout.</div>';
-      }
-      html += '</div>';
+      return '<div style="' + panelStyle + 'color:var(--text-muted);font-size:0.85rem;">Enter your insignia counts in <strong>My Insignias</strong> at the top to see which of this loadout\'s bonuses you can build.</div>';
     }
 
+    var f = computeLoadoutFeasibility(ld);
+    var allBuilt = f.builtCount === f.totalCount;
+    var badgeColor = allBuilt ? "#3fb950" : "#d29922";
+    var html = '<div style="' + panelStyle + '">';
+    html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.45rem;">';
+    html += '<span style="font-weight:700;color:#3fb950;font-size:0.95rem;">What you can build now</span>';
+    html += '<span style="font-size:0.72rem;font-weight:700;color:#000;background:' + badgeColor + ';border-radius:var(--radius-sm);padding:0.1rem 0.45rem;">' + f.builtCount + ' of ' + f.totalCount + ' at once</span>';
+    html += '</div>';
+    html += '<div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.4rem;">The most of this loadout\'s bonuses you can run at the same time with no insignia reused.</div>';
+
+    html += '<div style="display:flex;flex-direction:column;gap:0.3rem;">';
+    for (var ix = 0; ix < f.instances.length; ix++) {
+      var inst = f.instances[ix];
+      var ok = !!f.builtIdx[inst.idx];
+      var mark = ok ? '<span style="color:#3fb950;font-weight:700;">✓</span>' : '<span style="color:var(--stat-negative,#f85149);font-weight:700;">✗</span>';
+      html += '<div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;' + (ok ? '' : 'opacity:0.7;') + '">';
+      html += mark;
+      html += '<span style="font-weight:600;color:' + (ok ? 'var(--highlight)' : 'var(--text-secondary)') + ';">' + escapeHtml(inst.bonus.name) + '</span>';
+      var req2 = inst.bonus.requiredInsignias || [];
+      for (var rq = 0; rq < req2.length; rq++) html += renderInsigniaBadge(req2[rq]);
+      html += '</div>';
+    }
+    html += '</div>';
+
+    html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.45rem;">Insignias to build all (you have / needed): ';
+    var parts = [];
+    for (var ti = 0; ti < INSIGNIA_TYPES.length; ti++) {
+      var ty2 = INSIGNIA_TYPES[ti];
+      var need = f.totalDemand[ty2] || 0;
+      if (!need) continue;
+      var own = f.inv[ty2] || 0;
+      var short = need > own;
+      parts.push('<span style="' + (short ? 'color:var(--stat-negative,#f85149);font-weight:600;' : '') + '">' + escapeHtml(ty2) + ' ' + own + '/' + need + '</span>');
+    }
+    html += parts.join(' &nbsp;·&nbsp; ') + '</div>';
+
+    if (f.anyShort) {
+      var shortParts = [];
+      for (var sti = 0; sti < INSIGNIA_TYPES.length; sti++) {
+        var sty = INSIGNIA_TYPES[sti];
+        if (f.shortfall[sty]) shortParts.push('+' + f.shortfall[sty] + ' ' + sty);
+      }
+      html += '<div style="font-size:0.78rem;color:#d29922;margin-top:0.2rem;">To build every bonus in this loadout you need: ' + shortParts.join(', ') + '.</div>';
+    } else if (allBuilt) {
+      html += '<div style="font-size:0.78rem;color:#3fb950;margin-top:0.2rem;">You own enough insignias to build every bonus in this loadout.</div>';
+    }
     html += '</div>';
     return html;
   }
@@ -1662,7 +1666,7 @@
       plannerResults.innerHTML = "";
       return;
     }
-    plannerResults.innerHTML = renderExcludedMountsBar() + renderInsigniaFeasibility() + renderSharingSummary();
+    plannerResults.innerHTML = renderExcludedMountsBar() + renderSharingSummary();
   }
 
   function renderPlanner() {
@@ -1821,7 +1825,10 @@
     plannerEditor.addEventListener("click", function (e) {
       var t = e.target;
       if (!t || !t.dataset) return;
-      if (t.classList.contains("planner-open-bonus-picker")) {
+      if (t.classList.contains("planner-feas-toggle")) {
+        feasOpen[t.dataset.id] = !feasOpen[t.dataset.id];
+        renderPlannerEditor();
+      } else if (t.classList.contains("planner-open-bonus-picker")) {
         openBonusPicker(t.dataset.id);
       } else if (t.classList.contains("planner-delete")) {
         deletePlannerLoadout(t.dataset.id);
@@ -1866,7 +1873,9 @@
       var n = parseInt(t.value, 10);
       plannerState.insigniaInventory[type] = (isNaN(n) || n < 0) ? 0 : n;
       savePlannerState();
-      renderPlannerResults();
+      // Refresh any open per-loadout panels (inputs live in a separate
+      // container, so re-rendering the editor won't blur the field).
+      renderPlannerEditor();
     });
   }
 
