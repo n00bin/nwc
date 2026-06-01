@@ -1,16 +1,22 @@
 # Data Issues To Investigate
 
-## Toon Forge: artifact weapons not pickable (OPEN, 2026-05-31)
+## Toon Forge: artifact weapons in pickers — FIXED, residual data cleanup (2026-05-31)
 
-The gear picker matches `item.slot` exactly against GEAR_SLOTS (Head/Armor/Arms/
-Main Hand/Off Hand/Feet/Neck/Ring/Belt/Shirt/Pants). **455 gear items use slot
-"Artifact Equipment"** (the artifact-tier main/off-hand weapons — Aboleth, Piña
-Halat, Knot of the Bloodbound from Report #90, etc.) so they're in the DB but
-DON'T appear in any picker. Fix: include "Artifact Equipment" items in the Main
-Hand / Off Hand pickers, routing by weapon type (Greatsword/Orb/Bow/Claymore →
-Main Hand; Sword Knot/Talisman/Shield/Grimoire/Knife → Off Hand). Also stragglers
-with bad slots (`Physical, Weapon` ×8, `Epic Equipment` ×5, `Clothing: Jotunskar`
-×2, `Physical` ×1) need slot cleanup. Owner deferred 2026-05-31 ("leave it for now").
+FIXED (commit 0d18a66): the Main Hand / Off Hand pickers now include "Artifact
+Equipment" weapons via artifactHand() — routes by notes/weapon type (165 Off,
+149 Main), shows hand-unknown exotic weapons (128) in BOTH hand pickers.
+
+RESIDUAL data cleanup still open:
+- **~13 mis-slotted "armor" tagged Artifact Equipment** — Silverspruce Sash (Belt),
+  Company Raider's Cloak (Neck), Protege's Hood/Boots/Gloves (Head/Feet/Arms), etc.
+  These are intake slot errors; re-slot them to their real slots (then they'll be
+  pickable in the right slot AND drop out of the weapon pickers).
+- **128 exotic-named weapons show in BOTH Main+Off pickers** (hand unknown from
+  name). To resolve, add weapon-type→hand for the Chult/Aztec names (Khaltan,
+  Itztopilli, Temicamatl, Mekatl, Latt, Kenshar, Quauhololli, Cuauhchimalli, etc.)
+  or capture the hand from a screenshot per line.
+- Other bad slots needing cleanup: `Physical, Weapon` ×8, `Epic Equipment` ×5,
+  `Clothing: Jotunskar` ×2, `Physical` ×1.
 
 ## Pending Cleric add: Warden of the Last Rite (Report #78, Confirmed 2026-05-30)
 
