@@ -1,5 +1,17 @@
 # Data Issues To Investigate
 
+## Toon Forge: artifact weapons not pickable (OPEN, 2026-05-31)
+
+The gear picker matches `item.slot` exactly against GEAR_SLOTS (Head/Armor/Arms/
+Main Hand/Off Hand/Feet/Neck/Ring/Belt/Shirt/Pants). **455 gear items use slot
+"Artifact Equipment"** (the artifact-tier main/off-hand weapons — Aboleth, Piña
+Halat, Knot of the Bloodbound from Report #90, etc.) so they're in the DB but
+DON'T appear in any picker. Fix: include "Artifact Equipment" items in the Main
+Hand / Off Hand pickers, routing by weapon type (Greatsword/Orb/Bow/Claymore →
+Main Hand; Sword Knot/Talisman/Shield/Grimoire/Knife → Off Hand). Also stragglers
+with bad slots (`Physical, Weapon` ×8, `Epic Equipment` ×5, `Clothing: Jotunskar`
+×2, `Physical` ×1) need slot cleanup. Owner deferred 2026-05-31 ("leave it for now").
+
 ## Pending Cleric add: Warden of the Last Rite (Report #78, Confirmed 2026-05-30)
 
 Genuinely missing Cleric main-hand weapon. Player-form data (verify vs screenshot when
