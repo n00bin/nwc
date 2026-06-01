@@ -3726,6 +3726,12 @@
       if (!btn) return;
       e.stopPropagation();
       e.preventDefault();
+      // A slotted insignia's popup must render at the slot's tier, not the
+      // leftover _activeInsigniaTier from the last picker open. The button
+      // carries its slot tier in data-details-tier (kept fresh by renderStable).
+      if (btn.dataset.detailsType === "insignia" && btn.dataset.detailsTier) {
+        _activeInsigniaTier = btn.dataset.detailsTier;
+      }
       openDetailsByType(btn.dataset.detailsType, btn.dataset.detailsKey, {
         rarity:   btn.dataset.detailsRarity,
         summoned: btn.dataset.detailsSummoned === "1",
@@ -12968,13 +12974,6 @@
       wrap.querySelectorAll(".chip-info").forEach(el => {
         el.addEventListener("click", (e) => {
           e.stopPropagation();
-          // For a slotted insignia, render its detail popup at the slot's
-          // actual tier rather than the leftover _activeInsigniaTier from the
-          // last picker open — otherwise the popup shows stale values (e.g.
-          // Mythic) after the slot was switched to another tier (e.g. Celestial).
-          if (el.dataset.detailsType === "insignia" && el.dataset.detailsTier) {
-            _activeInsigniaTier = el.dataset.detailsTier;
-          }
           openDetailsByType(el.dataset.detailsType, el.dataset.detailsKey);
         });
       });
