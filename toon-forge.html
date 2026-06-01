@@ -5828,10 +5828,38 @@
     // C5 legacy duplicate cleanup runs once per page load (flag resets on reload).
     let _c5CleanupDone = false;
 
+    // Artifact-tier weapons are stored with slot "Artifact Equipment" but are
+    // worn in the Main Hand / Off Hand. Decide which hand from notes ("Off-Hand"
+    // / "Main Hand") or the weapon type in the name. Returns "Main Hand",
+    // "Off Hand", "both" (real weapon, hand unknown -> show in both pickers), or
+    // null (mis-slotted armor/accessory -> not a weapon, don't surface here).
+    const _ARTIFACT_ARMOR_RE = /sash|cloak|hood|gloves|boots|\brobe|\bcoat\b|sabatons|greaves|bracers|vambraces|gauntlets|\bhelm|\bbelt\b|cuirass|\bplate\b|scalemail|\bcap\b|sallet|barbute|armlets|gaiters|poleyns|couters|breastplate|chainmail|raiment|leathers|harness|vestment|tunic|cowl|coif|diadem|circlet|amulet|necklace|jackboots|shoes|crakows|cincture|girdle|\bring\b|\bband\b|pikes|kanzu|jubbah|turban|kollu|shroud/;
+    const _ARTIFACT_OFF_RE  = /\bknot\b|shield|grimoire|\btome\b|talisman|\bicon\b|stiletto|\blute\b|censer|\bblades\b|\baxes\b|\bknife\b|\bvial\b|quiver|\bcharm\b|\bsigil\b|\bemblem\b|\btotem\b|kalkan|chimalli/;
+    const _ARTIFACT_MAIN_RE = /greatsword|greataxe|broadsword|claymore|doomcleaver|longbow|\bbow\b|\borb\b|\bmace\b|rapier|dagger|pact blade|\bblade\b|\bsword\b|\baxe\b|warhammer|\bhammer\b|\bspear\b|\bwand\b|\bstaff\b|halberd|glaive|scepter|sickle|quauhololli|corpselayer|woundgiver|grimfang|eyeripper|confessor/;
+    function artifactHand(item) {
+      if (!item || item.slot !== "Artifact Equipment") return null;
+      const nt = (item.notes || "").toLowerCase();
+      if (/off[ -]?hand/.test(nt)) return "Off Hand";
+      if (/main[ -]?hand/.test(nt)) return "Main Hand";
+      const nm = (item.name || "").toLowerCase();
+      if (_ARTIFACT_ARMOR_RE.test(nm)) return null;   // mis-slotted non-weapon
+      if (_ARTIFACT_OFF_RE.test(nm))  return "Off Hand";
+      if (_ARTIFACT_MAIN_RE.test(nm)) return "Main Hand";
+      return "both";
+    }
+
     function gearOptionsForSlot(slotType, className) {
       if (typeof GEAR_DATA === "undefined") return [];
       const base = GEAR_DATA
-        .filter(item => item.slot === slotType)
+        .filter(item => {
+          if (item.slot === slotType) return true;
+          // Surface artifact-tier weapons in the matching hand's picker.
+          if ((slotType === "Main Hand" || slotType === "Off Hand") && item.slot === "Artifact Equipment") {
+            const h = artifactHand(item);
+            return h === slotType || h === "both";
+          }
+          return false;
+        })
         // allowedClasses: missing/null OR an empty array both mean "unbound —
         // any class can equip". A non-empty array restricts to those classes.
         // (Empty array must be treated as unbound to match the documented
