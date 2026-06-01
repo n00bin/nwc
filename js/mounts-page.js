@@ -759,6 +759,7 @@
   var plannerView      = document.getElementById("planner-view");
   var plannerControls  = document.getElementById("planner-controls");
   var plannerEditor    = document.getElementById("planner-editor");
+  var plannerInventory = document.getElementById("planner-inventory");
   var plannerResults   = document.getElementById("planner-results");
   var plannerAddBtn    = document.getElementById("planner-add-loadout");
   var plannerClearBtn  = document.getElementById("planner-clear");
@@ -1119,6 +1120,10 @@
   var PLANNER_STORAGE_KEY = "nwcb.loadouts.v1";
   var ROLE_OPTIONS = ["DPS", "Tank", "Healer"];
   var MAX_BONUSES_PER_LOADOUT = 5;
+  // The five insignia types every bonus is built from. Whether a bonus can be
+  // activated depends only on these types (the stats come from the individual
+  // insignias), so the "what can I build?" check only needs five counts.
+  var INSIGNIA_TYPES = ["Crescent", "Barbed", "Illuminated", "Enlightened", "Regal"];
 
   // How many copies of one bonus may run in a single loadout. A bonus stacks
   // up to its maxStacks (1 = doesn't stack); bonuses without a maxStacks field
@@ -1137,16 +1142,35 @@
   var plannerState = loadPlannerState();
   var plannerIdCounter = computeNextLoadoutId(plannerState.loadouts);
 
+  function emptyInventory() {
+    var inv = {};
+    for (var i = 0; i < INSIGNIA_TYPES.length; i++) inv[INSIGNIA_TYPES[i]] = 0;
+    return inv;
+  }
+
+  function normalizeInventory(raw) {
+    var inv = emptyInventory();
+    if (raw && typeof raw === "object") {
+      for (var i = 0; i < INSIGNIA_TYPES.length; i++) {
+        var t = INSIGNIA_TYPES[i];
+        var n = parseInt(raw[t], 10);
+        inv[t] = (isNaN(n) || n < 0) ? 0 : n;
+      }
+    }
+    return inv;
+  }
+
   function loadPlannerState() {
     try {
       var raw = localStorage.getItem(PLANNER_STORAGE_KEY);
-      if (!raw) return { loadouts: [], excludedMounts: [] };
+      if (!raw) return { loadouts: [], excludedMounts: [], insigniaInventory: emptyInventory() };
       var parsed = JSON.parse(raw);
-      if (!parsed || !Array.isArray(parsed.loadouts)) return { loadouts: [], excludedMounts: [] };
+      if (!parsed || !Array.isArray(parsed.loadouts)) return { loadouts: [], excludedMounts: [], insigniaInventory: emptyInventory() };
       if (!Array.isArray(parsed.excludedMounts)) parsed.excludedMounts = [];
+      parsed.insigniaInventory = normalizeInventory(parsed.insigniaInventory);
       return parsed;
     } catch (e) {
-      return { loadouts: [], excludedMounts: [] };
+      return { loadouts: [], excludedMounts: [], insigniaInventory: emptyInventory() };
     }
   }
 
@@ -1469,15 +1493,180 @@
     return html;
   }
 
+  // ===== "What can I build?" — insignia inventory feasibility =====
+
+  // Render the five inventory inputs. Rendered on its own (separate container)
+  // so typing a count never re-renders the inputs themselves (focus is kept).
+  function renderPlannerInventory() {
+    if (!plannerInventory) return;
+    var inv = plannerState.insigniaInventory || emptyInventory();
+    var html = '<div class="ranking-card" style="flex-direction:column;align-items:stretch;margin-bottom:1.25rem;">';
+    html += '<div style="font-weight:700;font-size:1rem;color:var(--accent,#58a6ff);margin-bottom:0.2rem;">My Insignias</div>';
+    html += '<div style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem;">Enter how many of each insignia type you own. You don\'t need to sort them — only the type matters for which bonuses can activate. The check below uses these counts.</div>';
+    html += '<div style="display:flex;flex-wrap:wrap;gap:0.75rem;">';
+    for (var i = 0; i < INSIGNIA_TYPES.length; i++) {
+      var t = INSIGNIA_TYPES[i];
+      html += '<label style="display:flex;align-items:center;gap:0.4rem;">';
+      html += renderInsigniaBadge(t);
+      html += '<input type="number" min="0" step="1" class="search-input planner-inv-input" data-type="' + t + '" value="' + (inv[t] || 0) + '" style="width:5rem;">';
+      html += '</label>';
+    }
+    html += '</div></div>';
+    plannerInventory.innerHTML = html;
+  }
+
+  // For one loadout: given the owned insignia counts, find the largest set of
+  // its wanted bonuses that can run at the same time with no insignia reused.
+  // Only one loadout is active in-game at a time, so each loadout is checked
+  // independently against the full inventory.
+  function computeLoadoutFeasibility(ld) {
+    var inv = plannerState.insigniaInventory || emptyInventory();
+    var instances = [];
+    for (var b = 0; b < ld.desiredBonuses.length; b++) {
+      var bonus = bonusMap[ld.desiredBonuses[b]];
+      if (!bonus) continue;
+      var demand = {};
+      var req = bonus.requiredInsignias || [];
+      for (var r = 0; r < req.length; r++) demand[req[r]] = (demand[req[r]] || 0) + 1;
+      instances.push({ idx: b, bonus: bonus, demand: demand });
+    }
+
+    // Total demand if you tried to build everything at once + the shortfall.
+    var totalDemand = emptyInventory();
+    for (var ii = 0; ii < instances.length; ii++) {
+      for (var ty in instances[ii].demand) totalDemand[ty] = (totalDemand[ty] || 0) + instances[ii].demand[ty];
+    }
+    var shortfall = {};
+    var anyShort = false;
+    for (var s = 0; s < INSIGNIA_TYPES.length; s++) {
+      var tt = INSIGNIA_TYPES[s];
+      var miss = (totalDemand[tt] || 0) - (inv[tt] || 0);
+      if (miss > 0) { shortfall[tt] = miss; anyShort = true; }
+    }
+
+    // Best subset: at most 5 instances → brute-force all 2^n combinations.
+    // Maximize count built; tie-break toward earlier (higher-priority) bonuses.
+    var n = instances.length;
+    var best = { mask: 0, count: 0, score: -1 };
+    for (var mask = 0; mask < (1 << n); mask++) {
+      var use = emptyInventory();
+      var ok = true, count = 0, score = 0;
+      for (var k = 0; k < n && ok; k++) {
+        if (!(mask & (1 << k))) continue;
+        count++;
+        score += (n - k); // earlier instances weigh more (priority order)
+        var dm = instances[k].demand;
+        for (var dty in dm) {
+          use[dty] = (use[dty] || 0) + dm[dty];
+          if (use[dty] > (inv[dty] || 0)) { ok = false; break; }
+        }
+      }
+      if (!ok) continue;
+      if (count > best.count || (count === best.count && score > best.score)) {
+        best = { mask: mask, count: count, score: score };
+      }
+    }
+    var builtIdx = {};
+    for (var k2 = 0; k2 < n; k2++) if (best.mask & (1 << k2)) builtIdx[instances[k2].idx] = true;
+
+    return {
+      instances: instances,
+      builtIdx: builtIdx,
+      builtCount: best.count,
+      totalCount: n,
+      totalDemand: totalDemand,
+      shortfall: shortfall,
+      anyShort: anyShort,
+      inv: inv
+    };
+  }
+
+  function inventoryHasAny() {
+    var inv = plannerState.insigniaInventory || emptyInventory();
+    for (var i = 0; i < INSIGNIA_TYPES.length; i++) if ((inv[INSIGNIA_TYPES[i]] || 0) > 0) return true;
+    return false;
+  }
+
+  function renderInsigniaFeasibility() {
+    var withBonuses = [];
+    for (var i = 0; i < plannerState.loadouts.length; i++) {
+      if (plannerState.loadouts[i].desiredBonuses.length) withBonuses.push(plannerState.loadouts[i]);
+    }
+    if (!withBonuses.length) return "";
+
+    var html = '<div class="ranking-card" style="flex-direction:column;align-items:stretch;margin-bottom:1.25rem;border-color:#3fb950;border-width:2px;">';
+    html += '<div style="font-weight:700;font-size:1.05rem;color:#3fb950;margin-bottom:0.2rem;">What can I build right now?</div>';
+    if (!inventoryHasAny()) {
+      html += '<div style="font-size:0.85rem;color:var(--text-muted);">Enter your insignia counts in <strong>My Insignias</strong> above to see which of your wanted bonuses you can build with what you own.</div></div>';
+      return html;
+    }
+    html += '<div style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem;">For each loadout, this shows which of your wanted bonuses you can run <strong>at the same time</strong> using only the insignias you own — no insignia doing double duty. (Loadouts are checked separately, since only one is active in-game at a time.)</div>';
+
+    for (var li = 0; li < withBonuses.length; li++) {
+      var ld = withBonuses[li];
+      var f = computeLoadoutFeasibility(ld);
+      html += '<div style="border-top:1px solid var(--border-default);padding-top:0.6rem;margin-top:0.5rem;">';
+      var allBuilt = f.builtCount === f.totalCount;
+      var badgeColor = allBuilt ? "#3fb950" : "#d29922";
+      html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.4rem;">';
+      html += '<span style="font-weight:600;color:var(--text-primary);">' + escapeHtml(ld.name) + '</span>';
+      html += '<span style="font-size:0.72rem;font-weight:700;color:#000;background:' + badgeColor + ';border-radius:var(--radius-sm);padding:0.1rem 0.45rem;">' + f.builtCount + ' of ' + f.totalCount + ' buildable</span>';
+      html += '</div>';
+
+      html += '<div style="display:flex;flex-direction:column;gap:0.3rem;">';
+      for (var ix = 0; ix < f.instances.length; ix++) {
+        var inst = f.instances[ix];
+        var ok = !!f.builtIdx[inst.idx];
+        var mark = ok ? '<span style="color:#3fb950;font-weight:700;">✓</span>' : '<span style="color:var(--stat-negative,#f85149);font-weight:700;">✗</span>';
+        html += '<div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;' + (ok ? '' : 'opacity:0.7;') + '">';
+        html += mark;
+        html += '<span style="font-weight:600;color:' + (ok ? 'var(--highlight)' : 'var(--text-secondary)') + ';">' + escapeHtml(inst.bonus.name) + '</span>';
+        var req2 = inst.bonus.requiredInsignias || [];
+        for (var rq = 0; rq < req2.length; rq++) html += renderInsigniaBadge(req2[rq]);
+        html += '</div>';
+      }
+      html += '</div>';
+
+      // Per-type usage line + shortfall to build everything.
+      html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.45rem;">Insignias to build all (you have / needed): ';
+      var parts = [];
+      for (var ti = 0; ti < INSIGNIA_TYPES.length; ti++) {
+        var ty2 = INSIGNIA_TYPES[ti];
+        var need = f.totalDemand[ty2] || 0;
+        if (!need) continue;
+        var own = f.inv[ty2] || 0;
+        var short = need > own;
+        parts.push('<span style="' + (short ? 'color:var(--stat-negative,#f85149);font-weight:600;' : '') + '">' + escapeHtml(ty2) + ' ' + own + '/' + need + '</span>');
+      }
+      html += parts.join(' &nbsp;·&nbsp; ') + '</div>';
+
+      if (f.anyShort) {
+        var shortParts = [];
+        for (var sti = 0; sti < INSIGNIA_TYPES.length; sti++) {
+          var sty = INSIGNIA_TYPES[sti];
+          if (f.shortfall[sty]) shortParts.push('+' + f.shortfall[sty] + ' ' + sty);
+        }
+        html += '<div style="font-size:0.78rem;color:#d29922;margin-top:0.2rem;">To build every bonus in this loadout you need: ' + shortParts.join(', ') + '.</div>';
+      } else if (allBuilt) {
+        html += '<div style="font-size:0.78rem;color:#3fb950;margin-top:0.2rem;">You own enough insignias to build every bonus in this loadout.</div>';
+      }
+      html += '</div>';
+    }
+
+    html += '</div>';
+    return html;
+  }
+
   function renderPlannerResults() {
     if (!plannerState.loadouts.length) {
       plannerResults.innerHTML = "";
       return;
     }
-    plannerResults.innerHTML = renderExcludedMountsBar() + renderSharingSummary();
+    plannerResults.innerHTML = renderExcludedMountsBar() + renderInsigniaFeasibility() + renderSharingSummary();
   }
 
   function renderPlanner() {
+    renderPlannerInventory();
     renderPlannerEditor();
     renderPlannerResults();
   }
@@ -1662,6 +1851,22 @@
       } else if (t.classList.contains("planner-clear-excluded")) {
         clearExcludedMounts();
       }
+    });
+  }
+
+  if (plannerInventory) {
+    // Typing a count updates only the feasibility readout, not the inputs
+    // themselves, so the field you're editing keeps focus.
+    plannerInventory.addEventListener("input", function (e) {
+      var t = e.target;
+      if (!t || !t.classList.contains("planner-inv-input")) return;
+      var type = t.dataset.type;
+      if (INSIGNIA_TYPES.indexOf(type) === -1) return;
+      if (!plannerState.insigniaInventory) plannerState.insigniaInventory = emptyInventory();
+      var n = parseInt(t.value, 10);
+      plannerState.insigniaInventory[type] = (isNaN(n) || n < 0) ? 0 : n;
+      savePlannerState();
+      renderPlannerResults();
     });
   }
 

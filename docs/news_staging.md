@@ -7,6 +7,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ## Week of 2026-05-30
 
 ### Features
+- **Stable Planner — "What can I build right now?"** Enter how many of each insignia type you own (just 5 numbers — Crescent / Barbed / Illuminated / Enlightened / Regal) and the planner instantly shows, for each loadout, which of your wanted bonuses you can run at the same time with no insignia doing double duty — plus exactly how many more of each type you're short for the rest. No more sorting your insignia pile by hand. Saves in your browser with the rest of your loadouts.
 - **Chain of Scales belt — upgrade-level picker.** The Chain of Scales (Belt Item) is now one entry with a dropdown for its 7 upgrade levels; pick your level and the Awareness value updates (1.2% base → 3% Empowered). On the Consumables page.
 - **Toon Forge — "Add Missing" is now everywhere.** The "Add Missing" flow (add it yourself, it slots into your build immediately, files a report, and is tracked in My Contributions) now covers **Overloads, Insignias, Buffs, Guild Boons, Artifacts, Companions, and Mounts** — not just gear and enchantments. If anything's missing from a picker, you can add it on the spot. (Companions capture the companion + its active power; Mounts capture the insignia-slot layout.)
 
