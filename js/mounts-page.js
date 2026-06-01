@@ -759,7 +759,6 @@
   var plannerView      = document.getElementById("planner-view");
   var plannerControls  = document.getElementById("planner-controls");
   var plannerEditor    = document.getElementById("planner-editor");
-  var plannerInventory = document.getElementById("planner-inventory");
   var plannerResults   = document.getElementById("planner-results");
   var plannerAddBtn    = document.getElementById("planner-add-loadout");
   var plannerClearBtn  = document.getElementById("planner-clear");
@@ -1165,14 +1164,21 @@
   function loadPlannerState() {
     try {
       var raw = localStorage.getItem(PLANNER_STORAGE_KEY);
-      if (!raw) return { loadouts: [], excludedMounts: [], insigniaInventory: emptyInventory() };
+      if (!raw) return { loadouts: [], excludedMounts: [] };
       var parsed = JSON.parse(raw);
-      if (!parsed || !Array.isArray(parsed.loadouts)) return { loadouts: [], excludedMounts: [], insigniaInventory: emptyInventory() };
+      if (!parsed || !Array.isArray(parsed.loadouts)) return { loadouts: [], excludedMounts: [] };
       if (!Array.isArray(parsed.excludedMounts)) parsed.excludedMounts = [];
-      parsed.insigniaInventory = normalizeInventory(parsed.insigniaInventory);
+      // Insignia inventory is per-loadout. Migrate an older single global
+      // inventory by seeding every loadout that doesn't have its own yet.
+      var legacyGlobal = parsed.insigniaInventory;
+      for (var i = 0; i < parsed.loadouts.length; i++) {
+        var ld = parsed.loadouts[i];
+        ld.insigniaInventory = normalizeInventory(ld.insigniaInventory || legacyGlobal);
+      }
+      delete parsed.insigniaInventory;
       return parsed;
     } catch (e) {
-      return { loadouts: [], excludedMounts: [], insigniaInventory: emptyInventory() };
+      return { loadouts: [], excludedMounts: [] };
     }
   }
 
@@ -1204,7 +1210,8 @@
       id: newLoadoutId(),
       name: "Loadout " + (plannerState.loadouts.length + 1),
       role: "DPS",
-      desiredBonuses: []
+      desiredBonuses: [],
+      insigniaInventory: emptyInventory()
     });
     savePlannerState();
     renderPlanner();
@@ -1259,14 +1266,19 @@
     }
     html += '</div>'; // close bonuses row
 
-    // Per-loadout "What can I build?" toggle + panel
+    // Per-loadout insignia inventory + "What can I build?" toggle/panel
+    html += '<div style="border-top:1px solid var(--border-default);padding-top:0.5rem;margin-top:0.1rem;">';
+    html += renderLoadoutInventoryHTML(ld);
     if (ld.desiredBonuses.length) {
       var feasIsOpen = !!feasOpen[ld.id];
-      html += '<div style="margin-top:0.1rem;">';
+      html += '<div style="margin-top:0.5rem;">';
       html += '<button class="filter-select planner-feas-toggle" data-id="' + ld.id + '" style="cursor:pointer;border-color:#3fb950;color:#3fb950;">' + (feasIsOpen ? '▾' : '▸') + ' What can I build with my insignias?</button>';
+      html += '<div class="planner-feas-panel" data-id="' + ld.id + '">';
       if (feasIsOpen) html += renderLoadoutFeasibilityHTML(ld);
       html += '</div>';
+      html += '</div>';
     }
+    html += '</div>';
 
     html += '</div>'; // close card
     return html;
@@ -1506,34 +1518,28 @@
     return html;
   }
 
-  // ===== "What can I build?" — insignia inventory feasibility =====
+  // ===== "What can I build?" — per-loadout insignia inventory =====
 
-  // Render the five inventory inputs. Rendered on its own (separate container)
-  // so typing a count never re-renders the inputs themselves (focus is kept).
-  function renderPlannerInventory() {
-    if (!plannerInventory) return;
-    var inv = plannerState.insigniaInventory || emptyInventory();
-    var html = '<div class="ranking-card" style="flex-direction:column;align-items:stretch;margin-bottom:1.25rem;">';
-    html += '<div style="font-weight:700;font-size:1rem;color:var(--accent,#58a6ff);margin-bottom:0.2rem;">My Insignias</div>';
-    html += '<div style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem;">Enter how many of each insignia type you own. You don\'t need to sort them — only the type matters for which bonuses can activate. The check below uses these counts.</div>';
-    html += '<div style="display:flex;flex-wrap:wrap;gap:0.75rem;">';
+  // Render one loadout's five insignia-count inputs (each loadout owns its set).
+  function renderLoadoutInventoryHTML(ld) {
+    var inv = ld.insigniaInventory || emptyInventory();
+    var html = '<div style="display:flex;flex-wrap:wrap;gap:0.6rem;align-items:center;margin-top:0.1rem;">';
+    html += '<span style="font-size:0.8rem;color:var(--text-secondary);font-weight:600;">My insignias for this loadout:</span>';
     for (var i = 0; i < INSIGNIA_TYPES.length; i++) {
       var t = INSIGNIA_TYPES[i];
-      html += '<label style="display:flex;align-items:center;gap:0.4rem;">';
+      html += '<label style="display:flex;align-items:center;gap:0.35rem;">';
       html += renderInsigniaBadge(t);
-      html += '<input type="number" min="0" step="1" class="search-input planner-inv-input" data-type="' + t + '" value="' + (inv[t] || 0) + '" style="width:5rem;">';
+      html += '<input type="number" min="0" step="1" class="search-input planner-inv-input" data-id="' + ld.id + '" data-type="' + t + '" value="' + (inv[t] || 0) + '" style="width:4.5rem;">';
       html += '</label>';
     }
-    html += '</div></div>';
-    plannerInventory.innerHTML = html;
+    html += '</div>';
+    return html;
   }
 
-  // For one loadout: given the owned insignia counts, find the largest set of
+  // For one loadout: given its owned insignia counts, find the largest set of
   // its wanted bonuses that can run at the same time with no insignia reused.
-  // Only one loadout is active in-game at a time, so each loadout is checked
-  // independently against the full inventory.
   function computeLoadoutFeasibility(ld) {
-    var inv = plannerState.insigniaInventory || emptyInventory();
+    var inv = ld.insigniaInventory || emptyInventory();
     var instances = [];
     for (var b = 0; b < ld.desiredBonuses.length; b++) {
       var bonus = bonusMap[ld.desiredBonuses[b]];
@@ -1594,8 +1600,8 @@
     };
   }
 
-  function inventoryHasAny() {
-    var inv = plannerState.insigniaInventory || emptyInventory();
+  function inventoryHasAny(inv) {
+    inv = inv || emptyInventory();
     for (var i = 0; i < INSIGNIA_TYPES.length; i++) if ((inv[INSIGNIA_TYPES[i]] || 0) > 0) return true;
     return false;
   }
@@ -1607,8 +1613,8 @@
     if (!ld.desiredBonuses.length) {
       return '<div style="' + panelStyle + 'color:var(--text-muted);font-size:0.85rem;">Add some bonuses above, then this shows which you can build with your insignias.</div>';
     }
-    if (!inventoryHasAny()) {
-      return '<div style="' + panelStyle + 'color:var(--text-muted);font-size:0.85rem;">Enter your insignia counts in <strong>My Insignias</strong> at the top to see which of this loadout\'s bonuses you can build.</div>';
+    if (!inventoryHasAny(ld.insigniaInventory)) {
+      return '<div style="' + panelStyle + 'color:var(--text-muted);font-size:0.85rem;">Enter this loadout\'s insignia counts above to see which of its bonuses you can build.</div>';
     }
 
     var f = computeLoadoutFeasibility(ld);
@@ -1670,7 +1676,6 @@
   }
 
   function renderPlanner() {
-    renderPlannerInventory();
     renderPlannerEditor();
     renderPlannerResults();
   }
@@ -1809,6 +1814,20 @@
         ld.name = t.value;
         savePlannerState();
         renderPlannerResults(); // name change affects "Also wanted by" labels
+      } else if (t.classList.contains("planner-inv-input")) {
+        var type = t.dataset.type;
+        if (INSIGNIA_TYPES.indexOf(type) === -1) return;
+        if (!ld.insigniaInventory) ld.insigniaInventory = emptyInventory();
+        var n = parseInt(t.value, 10);
+        ld.insigniaInventory[type] = (isNaN(n) || n < 0) ? 0 : n;
+        savePlannerState();
+        // Refresh only this loadout's feasibility panel so the count input
+        // being edited keeps focus.
+        if (feasOpen[ld.id]) {
+          var card = t.closest("[data-loadout-id]");
+          var panel = card ? card.querySelector(".planner-feas-panel") : null;
+          if (panel) panel.innerHTML = renderLoadoutFeasibilityHTML(ld);
+        }
       }
     });
     plannerEditor.addEventListener("change", function (e) {
@@ -1858,24 +1877,6 @@
       } else if (t.classList.contains("planner-clear-excluded")) {
         clearExcludedMounts();
       }
-    });
-  }
-
-  if (plannerInventory) {
-    // Typing a count updates only the feasibility readout, not the inputs
-    // themselves, so the field you're editing keeps focus.
-    plannerInventory.addEventListener("input", function (e) {
-      var t = e.target;
-      if (!t || !t.classList.contains("planner-inv-input")) return;
-      var type = t.dataset.type;
-      if (INSIGNIA_TYPES.indexOf(type) === -1) return;
-      if (!plannerState.insigniaInventory) plannerState.insigniaInventory = emptyInventory();
-      var n = parseInt(t.value, 10);
-      plannerState.insigniaInventory[type] = (isNaN(n) || n < 0) ? 0 : n;
-      savePlannerState();
-      // Refresh any open per-loadout panels (inputs live in a separate
-      // container, so re-rendering the editor won't blur the field).
-      renderPlannerEditor();
     });
   }
 
