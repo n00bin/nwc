@@ -12925,7 +12925,7 @@
               <div class="stable-ins comp-slot ${cur ? "filled" : ""}"
                 data-stable="insignia" data-idx="${i}" data-ins-idx="${idx}">
                 ${cur ? "💎 " + cur : "+ " + allowedLabel}
-                ${cur ? `<button class="chip-info" data-details-type="insignia" data-details-key="${_escAttr(cur)}" title="See insignia details">🔍</button>` : ""}
+                ${cur ? `<button class="chip-info" data-details-type="insignia" data-details-key="${_escAttr(cur)}" data-details-tier="${_escAttr(curTier)}" title="See insignia details">🔍</button>` : ""}
               </div>
               <select data-stable="ins-tier" data-idx="${i}" data-ins-idx="${idx}"
                       style="font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
@@ -12968,6 +12968,13 @@
       wrap.querySelectorAll(".chip-info").forEach(el => {
         el.addEventListener("click", (e) => {
           e.stopPropagation();
+          // For a slotted insignia, render its detail popup at the slot's
+          // actual tier rather than the leftover _activeInsigniaTier from the
+          // last picker open — otherwise the popup shows stale values (e.g.
+          // Mythic) after the slot was switched to another tier (e.g. Celestial).
+          if (el.dataset.detailsType === "insignia" && el.dataset.detailsTier) {
+            _activeInsigniaTier = el.dataset.detailsTier;
+          }
           openDetailsByType(el.dataset.detailsType, el.dataset.detailsKey);
         });
       });
