@@ -13625,8 +13625,23 @@
         // -------------------------------------------------------
         // DPS / TANK MODE: full damage formula
         // -------------------------------------------------------
-        // Party "enemy takes +X% damage" debuffs scale every hit.
-        const baseDmg = baseVal * (1 + pmods.dmgTaken);
+        // Damage-output layer: multiplicative damage-boost categories from
+        // the canonical formula (mekaniks.html). Always-on categories apply
+        // to every hit: (generic damage% + outgoing), base damage boost, and
+        // the damage-type boost (magical or physical, per paragon). Slot-
+        // specific boosts (at-will/encounter/daily) depend on which power is
+        // used, so they're tracked but not folded into this average.
+        const db = r.damageBoosts || { generic: 0, base: 0, magical: 0, physical: 0 };
+        let _dmgType = "magical";
+        try {
+          const _cls = (typeof CLASSES_DATA !== "undefined") ? CLASSES_DATA.find(c => c.name === state.class) : null;
+          const _par = _cls && (_cls.paragonPaths || []).find(p => p.name === state.paragon);
+          if (_par && _par.damageType) _dmgType = _par.damageType;
+        } catch (e) {}
+        const typeBoost = _dmgType === "physical" ? (db.physical || 0) : (db.magical || 0);
+        const dmgBoostMult = (1 + (db.generic || 0) / 100) * (1 + (db.base || 0) / 100) * (1 + typeBoost / 100);
+        // Party "enemy takes +X% damage" debuffs + your own damage boosts scale every hit.
+        const baseDmg = baseVal * (1 + pmods.dmgTaken) * dmgBoostMult;
         const powerMult     = 1 + power;
         const flankBonus    = 1 + Math.max(0, ca       - e.awareness);
         const critBonus     = 1 + Math.max(0, critSev  - e.critAvoid);

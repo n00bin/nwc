@@ -78,9 +78,63 @@
     return {
       totalItemLevel: character.totalItemLevel || 0,
       stats: stats,
+      // Damage-output layer (the multiplicative damage-boost buckets from the
+      // canonical mekaniks.html damage formula). These were previously dropped
+      // as TOON_FORGE_BONUS_STATS; now captured so the damage sim can apply
+      // them. Each bucket is additive-within, multiplicative-across (per the
+      // formula's "categories stack multiplicatively, within a category additive").
+      damageBoosts: {
+        generic: 0,   // ΣDamageBonuses% + OutgoingDamage% (always-on, every hit)
+        base: 0,      // Base Damage Boost
+        magical: 0,   // Magical Damage Boost (applies if power is magical)
+        physical: 0,  // Physical Damage Boost (applies if power is physical)
+        slot: { atwill: 0, encounter: 0, daily: 0, dot: 0, single: 0, melee: 0, ranged: 0 },
+        contributors: []
+      },
       warnings: [],
       buildScore: 0
     };
+  }
+
+  // ---------------------------------------------------------------
+  // Damage-output layer: route damage-boost "bonus stats" into buckets
+  // ---------------------------------------------------------------
+  // Maps every known damage-boost stat-name variant (spaced + camelCase)
+  // to a bucket on result.damageBoosts. Returns true if the name was a
+  // damage boost (so addRating/addPercent stop treating it as unknown).
+  var DAMAGE_BUCKET_MAP = {
+    // generic damage % + outgoing damage (one multiplicative category)
+    "Dmg Bonus": "generic", "Damage Bonus": "generic", "DmgBonus": "generic",
+    "Damage Vs Bosses": "generic", "DamageVsBosses": "generic", "Damage vs Bosses": "generic",
+    "Outgoing Damage": "generic", "OutgoingDamage": "generic",
+    // base damage boost
+    "Base Damage Boost": "base", "BaseDamageBoost": "base", "Base Damage Bonus": "base",
+    // damage-type boosts
+    "Magical Damage Boost": "magical", "MagicalDamageBoost": "magical", "Magical Damage": "magical",
+    "Physical Damage Boost": "physical", "PhysicalDamageBoost": "physical", "Physical Damage": "physical",
+    // power-slot-specific boosts (own multiplicative category each)
+    "At Will Dmg Bonus": "slot.atwill", "At-Will Dmg Bonus": "slot.atwill", "AtWillDmgBonus": "slot.atwill",
+    "Encounter Dmg Bonus": "slot.encounter", "EncounterDmgBonus": "slot.encounter",
+    "Daily Dmg Bonus": "slot.daily", "DailyDmgBonus": "slot.daily",
+    "DoT Dmg Bonus": "slot.dot", "DoTDmgBonus": "slot.dot",
+    "Single Target Dmg Bonus": "slot.single", "SingleTargetDmgBonus": "slot.single",
+    "Melee Dmg Bonus": "slot.melee", "MeleeDmgBonus": "slot.melee",
+    "Ranged Dmg Bonus": "slot.ranged", "RangedDmgBonus": "slot.ranged"
+  };
+
+  function routeDamageBoost(result, statName, amount, sourceLabel, conditional) {
+    var bucket = DAMAGE_BUCKET_MAP[statName];
+    if (!bucket || !result.damageBoosts) return false;
+    if (bucket.indexOf("slot.") === 0) {
+      result.damageBoosts.slot[bucket.slice(5)] += amount;
+    } else {
+      result.damageBoosts[bucket] += amount;
+    }
+    result.damageBoosts.contributors.push({
+      source: sourceLabel, stat: statName, amount: amount,
+      bucket: bucket, conditional: !!conditional
+    });
+    return true;
   }
 
   // ---------------------------------------------------------------
@@ -100,6 +154,8 @@
     if (STAT_NAME_ALIASES[statName]) statName = STAT_NAME_ALIASES[statName];
     var statResult = result.stats[statName];
     if (!statResult) {
+      // Damage-output layer: capture damage-boost stats into buckets.
+      if (routeDamageBoost(result, statName, amount, sourceLabel, conditional)) return;
       // Bonus stats that aren't core combat stats — silently ignore
       if (TOON_FORGE_BONUS_STATS.indexOf(statName) !== -1) return;
       // Unknown stat — skip, but record warning once
@@ -191,6 +247,8 @@
     if (STAT_NAME_ALIASES[statName]) statName = STAT_NAME_ALIASES[statName];
     var statResult = result.stats[statName];
     if (!statResult) {
+      // Damage-output layer: capture damage-boost stats into buckets.
+      if (routeDamageBoost(result, statName, amount, sourceLabel, conditional)) return;
       // Bonus stats that aren't core combat stats — silently ignore
       if (TOON_FORGE_BONUS_STATS.indexOf(statName) !== -1) return;
       var key = "unknown-stat:" + statName;
