@@ -9,11 +9,19 @@ name is absent from that map.
 ## Status
 - **279** mounts total (`../data/mounts.json`)
 - **255** have an icon
-- **24** still missing (below)
+- **207** of those are confirmed wiki-sourced (uniform art)
+- **48** keep an older non-wiki icon (no clean wiki match found; still display fine)
+- **24** still have no icon at all (below)
 
-On 2026-06-01, 103 icons were pulled from the Official Neverwinter Wiki (Fandom):
-77 from the [Collection/Mounts](https://neverwinter.fandom.com/wiki/Collection/Mounts)
-table and 26 from individual mount pages.
+On 2026-06-01 the entire mount set was run through the same wiki-sourcing process:
+- 103 previously-missing icons were added (77 from the
+  [Collection/Mounts](https://neverwinter.fandom.com/wiki/Collection/Mounts) table,
+  26 from individual mount pages).
+- A second pass re-pulled wiki art for every mount that has a wiki match (207 total),
+  standardizing the whole set. Most original hand-added icons were already the same
+  wiki art (byte-identical); 104 icons visibly changed.
+- The 48 non-wiki icons are those with no clean wiki page/icon match — they were left
+  as-is rather than guessing a wrong icon.
 
 ## Still missing (24)
 These have no usable icon on the Fandom wiki — either no page exists, or the page
