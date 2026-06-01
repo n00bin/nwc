@@ -31,3 +31,28 @@ _check_*.js
 # Python bytecode cache
 scripts/__pycache__/
 __pycache__/
+
+# ===== PAID FEATURE — do NOT commit/deploy to the public site =====
+# Toon Forge build optimizer + build artifacts. Backed up privately in
+# the n00bin/nwc-optimizer repo. These must never be published on the
+# free site. (The engine the optimizer scores against is public; the
+# optimizer logic and generated builds are the paid IP.)
+scripts/optimize_build.js
+scripts/best_build_oneshot.workflow.js
+scripts/regen_build_link.py
+scripts/build_warlock_dps_bis_link.py
+scripts/screenshot_build.js
+scripts/screenshot_build2.js
+scripts/diag_build.js
+scripts/dump_engine_stats.js
+scripts/dump_power_percent.js
+scripts/probe_engine_keys.js
+scripts/verify_bonuses.js
+scripts/verify_damage_layer.js
+scripts/verify_optimized.js
+scripts/gate_check.js
+scripts/final_readout.js
+docs/best_build_warlock_dps_bis.md
+docs/best_build_warlock_dps_bis.build.json
+docs/best_build_warlock_dps_bis.link.txt
+.build-screens/
