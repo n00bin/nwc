@@ -755,6 +755,18 @@
     }
     .gem-syn-pill.on  { color: #6ee7a8; border-color: rgba(110,231,168,0.45); background: rgba(110,231,168,0.08); }
     .gem-syn-pill.off { color: var(--text-dim); opacity: 0.8; }
+    /* Set-completion status: shown on each equipped piece of a multi-slot set. */
+    .set-syn-row {
+      margin-top: 0.35rem;
+      display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center;
+      font-size: 0.72rem;
+    }
+    .set-syn-pill {
+      padding: 0.12rem 0.4rem; border-radius: 999px;
+      border: 1px solid var(--border); white-space: nowrap;
+    }
+    .set-syn-pill.on  { color: #6ee7a8; border-color: rgba(110,231,168,0.55); background: rgba(110,231,168,0.12); font-weight: 600; }
+    .set-syn-pill.off { color: var(--text-dim); opacity: 0.85; }
     .gear-kit-chip.filled { border-style: solid; border-color: var(--gold); color: var(--gold); }
 
     /* Enchantment row — typed slot chips laid out side-by-side */
@@ -2274,6 +2286,11 @@
         <a href="#" id="contributions-link" onclick="openContributionsModal();return false;" style="margin-left:0.75em;color:var(--amber);font-size:0.85em;text-decoration:none;white-space:nowrap;">&#128203; Your submissions</a>
       </div>
     </div>
+    <div class="hero-actions" style="display:flex;gap:0.6rem;margin-top:1rem;flex-wrap:wrap;">
+      <button class="btn btn-secondary" id="open-builds">📁 My Builds</button>
+      <button class="btn btn-primary" id="share-build">🔗 Share link</button>
+      <button class="btn btn-ghost" id="clear-build" title="Reset every field back to a blank build">🗑️ Clear all</button>
+    </div>
   </div>
 
   <div class="steps" id="steps">
@@ -2611,13 +2628,6 @@
             </label>
             <input type="number" id="sim-mag" value="800">
           </div>
-          <div class="field">
-            <label>Damage type</label>
-            <select id="sim-type">
-              <option>Magical</option>
-              <option>Physical</option>
-            </select>
-          </div>
         </div>
 
         <div class="field" id="sim-flank-field">
@@ -2652,8 +2662,6 @@
 
       <div class="nav-buttons">
         <button class="btn btn-ghost" data-go="back">← Back</button>
-        <button class="btn btn-secondary" id="open-builds">📁 My Builds</button>
-        <button class="btn btn-primary" id="share-build">🔗 Share link</button>
       </div>
     </div>
 
@@ -4214,6 +4222,18 @@
                   </div>`;
                 }
               }
+              // Equip powers with no stored description (the child loop above
+              // skips undefined fields) would render name-only and look empty.
+              // Show a synthesized effect line — proc notes or "+amount% Stat" —
+              // e.g. the Depthweave Cap's "Combatant's Advantage".
+              if (field === "equipBonuses" && (entry.description === undefined || entry.description === "")) {
+                const _autoEff = equipBonusEffectText(entry);
+                if (_autoEff) {
+                  secHtml += `<div class="cc-row" style="align-items:flex-start;">
+                    <span class="cc-eb-desc cc-row-value" style="color:var(--text-mute);">${_esc(_autoEff)} <span style="font-size:0.72rem;opacity:.65;">(auto)</span></span>
+                  </div>`;
+                }
+              }
               secHtml += `</div>`;
             });
             continue;
@@ -4477,12 +4497,16 @@
             <span class="cc-eb-name cc-row-value" data-value="${_esc(eb.name || "")}">${_esc(eb.name || "(unnamed power)")}</span>
             <button class="cc-edit" data-edit="equipBonuses[${i}].name" data-kind="text" title="Edit power name">✎</button>
           </div>`;
-          if (eb.description !== undefined) {
-            html += `<div class="cc-row" data-row="equipBonuses[${i}].description" style="align-items:flex-start;">
-              <span class="cc-eb-desc cc-row-value" data-value="${_esc(eb.description || "")}">${_esc(eb.description || "(no description)")}</span>
-              <button class="cc-edit" data-edit="equipBonuses[${i}].description" data-kind="longtext" title="Edit power description">✎</button>
-            </div>`;
-          }
+          // Always show an effect line. When there's no stored description,
+          // synthesize one from proc notes / stat+amount so powers like the
+          // Depthweave Cap's "Combatant's Advantage" aren't shown effect-less.
+          // The edit field still starts from the real stored description.
+          const _ebShown = (eb.description !== undefined && eb.description !== "")
+            ? eb.description : equipBonusEffectText(eb);
+          html += `<div class="cc-row" data-row="equipBonuses[${i}].description" style="align-items:flex-start;">
+            <span class="cc-eb-desc cc-row-value" data-value="${_esc(eb.description || "")}">${_esc(_ebShown || "(no description)")}</span>
+            <button class="cc-edit" data-edit="equipBonuses[${i}].description" data-kind="longtext" title="Edit power description">✎</button>
+          </div>`;
           html += `</div>`;
         });
         html += `</div>`;
@@ -5081,6 +5105,25 @@
         ${lines.map(line => `<div class="gear-card-stat-line">${_escHTML(line)}</div>`).join("")}
       </div>`;
     }
+    // Human-readable effect text for one equip bonus. Priority: an explicit
+    // description → effectText → condition → a proc's player-facing notes →
+    // a synthesized "+amount% Stat" line (rating if kind:"rating"). Never uses
+    // the `notes` field — that's a developer comment, not player-facing.
+    // (Fixes equip powers like "Combatant's Advantage" on the Enchanted
+    //  Depthweave Cap, which carry stat/amount/proc but no description.)
+    function equipBonusEffectText(eb) {
+      if (!eb) return "";
+      if (eb.description) return eb.description;
+      if (eb.effectText) return eb.effectText;
+      if (eb.condition) return eb.condition;
+      if (eb.proc && eb.proc.notes) return eb.proc.notes;
+      if (eb.stat && eb.amount != null && eb.amount !== 0) {
+        const unit = (eb.kind === "rating") ? "" : "%";
+        return `+${eb.amount}${unit} ${eb.stat}`;
+      }
+      return "";
+    }
+
     function _equipBonusSection(equipBonuses, title) {
       if (!Array.isArray(equipBonuses) || equipBonuses.length === 0) return "";
       const bonusMap = new Map();
@@ -5096,7 +5139,7 @@
         const isConditional = entries.every(eb => eb.alwaysActive === false);
         const isAlwaysOn = entries.some(eb => eb.alwaysActive === true);
         const tag = isAlwaysOn ? "always on" : (isConditional ? "conditional" : "");
-        const txt = first.description || first.effectText || first.condition || "";
+        const txt = equipBonusEffectText(first);
         blocks.push(`
           <div class="gear-card-bonus ${isConditional ? "cond" : ""}">
             <div class="gear-card-bonus-name">🌟 ${_escHTML(name)}${tag ? `<span class="gear-card-bonus-tag">${tag}</span>` : ""}</div>
@@ -9361,6 +9404,13 @@
         const pos = Object.entries(sb.stats).filter(([, v]) => v > 0).map(([k, v]) => `+${v} ${k}`);
         effText = (sb.buff || "") + (pos.length ? ` — applies ${pos.join(", ")} to your party` : "");
         contributes = pos.length > 0;
+      } else if (sb.stat && sb.value != null) {
+        // simple {stat,value} shape (e.g. Fireblossom Zealot: +1000 Forte rating
+        // to the party). type/kind "rating" = flat rating, else percent.
+        const unit = (sb.type === "rating" || sb.kind === "rating") ? "" : "%";
+        const val = (typeof sb.value === "number") ? sb.value.toLocaleString() : sb.value;
+        effText = `+${val}${unit} ${sb.stat}` + (scope === "party" ? " to your party" : "");
+        contributes = (scope === "party" || scope === "self");
       } else {
         // self buffs, enemy rating/percent stat debuffs, Riotous Rothe:
         // genuine in-game effects we deliberately don't fold into YOUR
@@ -9377,6 +9427,62 @@
     // simulator only:
     //   • CA grants raise effective flank uptime (union, never >100%)
     //   • enemy "takes +X% damage" debuffs multiply your outgoing damage
+    // Parse a power magnitude that may be a number or a multi-hit string
+    // like "225x5" (225 per hit × 5 hits) → 1125.
+    function _parsePowerMag(m) {
+      if (typeof m === "number") return m;
+      if (typeof m === "string") {
+        const mm = m.match(/([\d.]+)\s*[x×]\s*(\d+)/i);
+        if (mm) return parseFloat(mm[1]) * parseInt(mm[2], 10);
+        const n = parseFloat(m);
+        return isNaN(n) ? 0 : n;
+      }
+      return 0;
+    }
+
+    // Your rotation's sustained magnitude-per-second, derived from the powers
+    // you've actually slotted (class + paragon power lists). Same raw-magnitude
+    // scale as mount combat powers, so it lets the combat-power burst be valued
+    // as a real % of your output (no hardcoded per-user guess). At-wills are the
+    // continuous filler (best slotted one); encounters/dailies are averaged over
+    // their cooldown (dailies use an assumed AP-gated interval). Returns 0 when
+    // no powers are slotted, so the caller can fall back to a generic estimate.
+    function rotationMagPerSec() {
+      if (typeof state === "undefined") return 0;
+      const cls = (typeof findClass === "function") ? findClass(state.class) : null;
+      const par = (typeof findParagon === "function") ? findParagon(state.class, state.paragon) : null;
+      const grp = function (type) {
+        return []
+          .concat((cls && cls.powers && cls.powers[type]) || [])
+          .concat((par && par.powers && par.powers[type]) || (par && par[type]) || []);
+      };
+      const findP = function (type, nm) {
+        return grp(type).find(function (p) { return p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)); });
+      };
+      let mps = 0, any = false;
+      let bestAW = 0;   // at-wills don't stack — use the strongest slotted one as filler
+      (state.slottedAtWills || []).forEach(function (nm) {
+        if (!nm) return; const p = findP("atWill", nm); if (!p) return;
+        const side = p.ranged || p;
+        const mag = _parsePowerMag(side.magnitude != null ? side.magnitude : p.magnitude);
+        const cast = side.castSeconds || p.castSeconds || 0;
+        if (mag > 0 && cast > 0) { bestAW = Math.max(bestAW, mag / cast); any = true; }
+      });
+      mps += bestAW;
+      (state.slottedEncounters || []).forEach(function (nm) {
+        if (!nm) return; const p = findP("encounter", nm); if (!p) return;
+        const mag = _parsePowerMag(p.magnitude), cd = p.cooldownSeconds || p.rechargeSeconds || 0;
+        if (mag > 0 && cd > 0) { mps += mag / cd; any = true; }
+      });
+      const DAILY_INTERVAL = 25;   // assumed AP-gated cadence between dailies
+      (state.slottedDailies || []).forEach(function (nm) {
+        if (!nm) return; const p = findP("daily", nm); if (!p) return;
+        const mag = _parsePowerMag(p.magnitude);
+        if (mag > 0) { mps += mag / DAILY_INTERVAL; any = true; }
+      });
+      return any ? mps : 0;
+    }
+
     // Returns { caUnion, caGrants[], dmgTaken, dmgSources[], info[] }.
     function getPartySummonedCombatMods() {
       const caGrants = [];     // {name, uptime 0..1}
@@ -9410,6 +9516,48 @@
         info.push({ name: "Succubus", text: "Doesn't stack with Spined Devil — using the stronger debuff." });
       } else if (spined) dmgSources.push(spined);
       else if (succubus) dmgSources.push(succubus);
+      // YOUR active mount combat power: its enemy "damage taken" debuff amps
+      // YOUR damage too (multiplies every hit). It's an on-use ability (~60s
+      // recharge), so weight it by uptime = assumed debuff duration / recharge.
+      // The data has no duration yet, so COMBAT_POWER_DEBUFF_SECONDS is an
+      // assumption to verify in-game. "Dmg Debuff" and "Enemy Dmg Taken" are
+      // the same effect — take the larger, never sum. (NOTE: the combat power's
+      // raw burst magnitude is a separate cooldown, not part of this per-hit
+      // sustained number, so it isn't counted here.)
+      if (typeof state !== "undefined" && state.activeCombatPower != null && typeof findCombatPowerById === "function") {
+        const _cp = findCombatPowerById(state.activeCombatPower);
+        if (_cp) {
+          let _pct = 0;
+          for (const eb of (_cp.equipBonuses || [])) {
+            if (eb && eb.scope === "enemy" && (eb.stat === "Enemy Dmg Taken" || eb.stat === "Dmg Debuff")) {
+              _pct = Math.max(_pct, eb.amount || 0);
+            }
+          }
+          if (_pct > 0) {
+            const COMBAT_POWER_DEBUFF_SECONDS = 10;   // on-use duration — confirmed 10s in-game by n00b
+            const _recharge = _cp.rechargeTimeSeconds || 60;
+            const _up = Math.max(0, Math.min(1, COMBAT_POWER_DEBUFF_SECONDS / _recharge));
+            dmgSources.push({ name: "Combat power: " + (_cp.name || ""), pct: (_pct / 100) * _up });
+          }
+          // Burst: the power's own hit (magnitude) fired every recharge. It
+          // shares your damage multipliers, so its share of your output ≈
+          // (magnitude / recharge) / your sustained rotation magnitude-per-sec.
+          // ROTATION_MAG_PER_SEC is an assumption (tunable; n00b calibrates) —
+          // it's the only unknown that lets burst be compared to a % debuff.
+          const _mag = _cp.magnitude || 0;
+          if (_mag > 0) {
+            // Derive your rotation throughput from your slotted powers; fall back
+            // to a generic estimate only when no powers are slotted yet.
+            const _rmps = (typeof rotationMagPerSec === "function" && rotationMagPerSec()) || 1500;
+            const _rc2 = _cp.rechargeTimeSeconds || 60;
+            // Guardrail: a single mount combat power shouldn't read as a huge
+            // slice of your DPS. Cap burst at 6% until calibrated against a real
+            // rotation + anchor (raw magnitudes can otherwise overstate it).
+            const _burst = Math.min(0.06, (_mag / _rc2) / _rmps);
+            dmgSources.push({ name: "Combat power burst: " + (_cp.name || ""), pct: _burst });
+          }
+        }
+      }
       // Union of CA-grant uptimes: 1 − ∏(1 − uptime).
       let miss = 1;
       for (const g of caGrants) miss *= (1 - g.uptime);
@@ -9521,6 +9669,76 @@
       return (t && t.item_level) || 500;
     }
 
+    // ===== Conditional-uptime model (TUNABLE config) =====
+    // Conditional DAMAGE bonuses are credited at less than 100% to reflect how
+    // often they're actually active. Profile: single-target boss, grouped,
+    // ranged. EDIT THESE to retune — they only affect the damage estimate
+    // (damage-bonus stats are not on the 13-stat panel, so calibration is safe).
+    const CONDITIONAL_UPTIME = {
+      self_ramp: 0.85, on_action: 0.85, range_gated: 0.85, positional: 0.80,
+      party_stacks: 0.80, high_threshold: 0.55, low_threshold: 0.15,
+      vs_enemy: 0.0, on_kill: 0.20, unspecified: 0.60,
+      proc: {
+        default_duration: 8, default_chance: 0.20,
+        // trigger events per second (rotation estimates; pFire saturates so
+        // exact values only matter for rare triggers like kill/daily)
+        trigger_rate: { crit: 2.0, hit: 2.0, encounter: 0.3, daily: 0.07, struck: 0.3, kill: 0.02, other: 0.3 }
+      }
+    };
+    function _ctNum(re, txt) { const m = txt.match(re); return m ? parseFloat(m[1] || m[2]) : null; }
+    function isDamageBonusStat(stat) { return !!stat && /Damage|Dmg|Boost/i.test(stat) && !/Healing/i.test(stat); }
+    // Returns the assumed in-combat uptime (0..1) for a DAMAGE-bonus equip bonus.
+    // 1.0 = effectively always-on. Mirrors scripts/measure taxonomy.
+    function conditionalDamageUptime(eb) {
+      const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
+      if (eb.zones && eb.zones.length) return 0;            // zone-gated (handled by zone gate)
+      // Structured proc model (e.g. "when you use a Daily, +X for 10s"): the
+      // trigger fires every time you use that power (no chance), so uptime is
+      // duration × how often that power comes up, capped at 1. Uses the data's
+      // procModel cadence instead of a generic "when you use" guess — a daily-
+      // gated 10s buff then reads ~daily-cadence uptime (≈0.7), not 0.85.
+      if (eb.procModel && eb.procModel.triggerRateKey) {
+        const PU = CONDITIONAL_UPTIME.proc;
+        const dur = (+eb.procModel.durationSeconds) || PU.default_duration;
+        const RK = { daily_power: "daily", daily: "daily", encounter_power: "encounter", encounter: "encounter",
+          at_will: "hit", at_will_power: "hit", on_hit: "hit", hit: "hit", on_crit: "crit", crit: "crit",
+          when_struck: "struck", struck: "struck", on_kill: "kill", kill: "kill" };
+        const rate = PU.trigger_rate[RK[eb.procModel.triggerRateKey]] || PU.trigger_rate.other;
+        return Math.max(0, Math.min(1, dur * rate));
+      }
+      if (/chance/.test(txt)) {                              // proc → duty-cycle model
+        const U = CONDITIONAL_UPTIME.proc;
+        const chance = (_ctNum(/(\d+(?:\.\d+)?)%\s*chance/, txt) ?? U.default_chance * 100) / 100;
+        const dur = _ctNum(/for\s+(\d+(?:\.\d+)?)\s*second/, txt) ?? U.default_duration;
+        const icd = _ctNum(/(\d+(?:\.\d+)?)\s*second\s*cool/, txt) || _ctNum(/once\s+(?:every|per)\s*(\d+(?:\.\d+)?)\s*s/, txt);
+        let rate = U.trigger_rate.other;
+        if (/critical/.test(txt)) rate = U.trigger_rate.crit;
+        else if (/at-will|when you hit|deal damage/.test(txt)) rate = U.trigger_rate.hit;
+        else if (/encounter/.test(txt)) rate = U.trigger_rate.encounter;
+        else if (/daily/.test(txt)) rate = U.trigger_rate.daily;
+        else if (/struck|when you are (?:hit|damaged)|receive damage/.test(txt)) rate = U.trigger_rate.struck;
+        else if (/kill/.test(txt)) rate = U.trigger_rate.kill;
+        const window = icd ? Math.max(icd, dur) : dur;
+        const pFire = 1 - Math.pow(1 - chance, Math.max(0.01, rate * window));
+        const duty = icd ? dur / Math.max(icd, dur) : 1;
+        return Math.max(0, Math.min(1, pFire * duty));
+      }
+      if (eb.perStack || /stack/.test(txt)) {
+        if (/teammate|party|\bally\b|nearby/.test(txt)) return CONDITIONAL_UPTIME.party_stacks;
+        if (/kill/.test(txt)) return CONDITIONAL_UPTIME.on_kill;
+        return CONDITIONAL_UPTIME.self_ramp;
+      }
+      if (/on kill|whenever you kill|defeat/.test(txt)) return CONDITIONAL_UPTIME.on_kill;
+      if (/\bagainst\b|\bvs\b|\d\+\s*enem/.test(txt)) return CONDITIONAL_UPTIME.vs_enemy;
+      if (/below|less than|under \d/.test(txt)) return CONDITIONAL_UPTIME.low_threshold;
+      if (/above|over \d|more than|full health|full stamina/.test(txt)) return CONDITIONAL_UPTIME.high_threshold;
+      if (/within \d|teammate|party member|\bally\b|nearby/.test(txt)) return CONDITIONAL_UPTIME.positional;
+      if (/\d+\s*(?:ft|feet|foot|')|further|closer|ranged damage/.test(txt)) return CONDITIONAL_UPTIME.range_gated;
+      if (/when you (?:use|activate|cast)|after you|whenever you (?:hit|crit|use|activate)/.test(txt)) return CONDITIONAL_UPTIME.on_action;
+      if (eb.alwaysActive === false) return CONDITIONAL_UPTIME.unspecified;
+      return 1.0;  // always-on
+    }
+
     function buildEngineCharacter(s) {
       // Resolve gear: state.gear is { "Head": "name string", ... };
       // engine wants { "Head": gearObject }.
@@ -9599,9 +9817,11 @@
 
       if (summonedComp && summonedComp.summonedBuff && summonedComp.summonedBuff.stat) {
         const sb = summonedComp.summonedBuff;
+        // value is a percent by default; type/kind "rating" = a flat rating buff
+        const channel = (sb.type === "rating" || sb.kind === "rating") ? "ratingStats" : "percentStats";
         buffs.push({
           source: "Summoned: " + summonedComp.name,
-          percentStats: { [sb.stat]: sb.value || 0 }
+          [channel]: { [sb.stat]: sb.value || 0 }
         });
       }
 
@@ -10129,6 +10349,25 @@
             conditional: isConditional,
             ratingStats, percentStats
           });
+          // Free-text "X to all of your ratings for Y seconds" bonuses (e.g.
+          // Cavalry's Alarm/Warning) carry no `stats`, so the line above adds
+          // nothing and the optimizer would pick them as do-nothings. Model
+          // them uptime-weighted: amount × (duration / ~60s mount-power recharge)
+          // spread to every rating stat. On a capped build this lands mostly on
+          // full stats (≈ wasted), so it correctly stops being an auto-pick.
+          if ((!bonus.stats || !bonus.stats.length) && bonus.effectText && typeof expandCR === "function") {
+            const _m = bonus.effectText.match(/(\d[\d,]*)\s+to all (?:of your )?ratings for (\d+)\s*second/i);
+            if (_m) {
+              const _amt = parseInt(_m[1].replace(/,/g, ""), 10);
+              const _dur = parseInt(_m[2], 10);
+              const _up = Math.max(0, Math.min(1, _dur / 60));   // ~60s mount combat power recharge
+              const _cr = expandCR(Math.round(_amt * _up * mult), 1);
+              if (_cr) buffs.push({
+                source: `${slotLabel} Insignia Bonus: ${bonus.name} (~${Math.round(_up * 100)}% uptime · all ratings)`,
+                ratingStats: _cr
+              });
+            }
+          }
         }
       }
 
@@ -10184,8 +10423,15 @@
       const setPieceCounts = {};
       function countSetPieces(item) {
         if (!item || !Array.isArray(item.equipBonuses)) return;
+        // Count each ITEM once per set name. An item can carry several Set
+        // entries for the same set (e.g. one per stat, or a marker + effect);
+        // counting entries made a single piece register as a full set and
+        // wrongly triggered set bonuses (Detector's Choker's 4 Unstable Drive
+        // entries read as a 4-pc set). One item = one piece.
+        const seenSets = {};
         for (const eb of item.equipBonuses) {
-          if (eb && eb.type === "Set" && eb.setName) {
+          if (eb && eb.type === "Set" && eb.setName && !seenSets[eb.setName]) {
+            seenSets[eb.setName] = true;
             setPieceCounts[eb.setName] = (setPieceCounts[eb.setName] || 0) + 1;
           }
         }
@@ -10219,6 +10465,11 @@
           if (eb.scope && eb.scope !== "self") continue;  // party/enemy buffs handled elsewhere
           if (eb.role && !roleMatches(eb.role)) continue; // role-conditional set bonuses
           if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate: General (no zone) drops zone-locked bonuses
+          // Conditional-uptime weighting: scale DAMAGE-bonus contributions by
+          // assumed in-combat uptime (proc duty-cycle / stack / threshold / etc.).
+          // Only damage-bonus stats (routed to damageBoosts, NOT the stat panel),
+          // so the calibrated 13-stat panel is unaffected.
+          const uptimeFactor = isDamageBonusStat(eb.stat) ? conditionalDamageUptime(eb) : 1;
           // Conditional bonuses (in-combat stacks, procs, group-only, etc.)
           // are pushed with conditional: true so the renderer can filter
           // them out for "standing around" view or include them at max
@@ -10253,7 +10504,7 @@
               buffs.push({
                 source: `${baseLabel} (full ${maxStacks} stacks)`,
                 conditional: true,
-                [channel]: { [eb.stat]: eb.amount * maxStacks }
+                [channel]: { [eb.stat]: eb.amount * maxStacks * uptimeFactor }
               });
             } else {
               // 1-stack always-on baseline + extra stacks conditional
@@ -10267,7 +10518,7 @@
                 buffs.push({
                   source: `${baseLabel} (full ${maxStacks} stacks)`,
                   conditional: true,
-                  [channel]: { [eb.stat]: eb.amount * extra }
+                  [channel]: { [eb.stat]: eb.amount * extra * uptimeFactor }
                 });
               }
             }
@@ -10275,7 +10526,7 @@
             buffs.push({
               source: baseLabel,
               conditional: isConditional,
-              [channel]: { [eb.stat]: eb.amount }
+              [channel]: { [eb.stat]: eb.amount * uptimeFactor }
             });
           }
           // type === "Modification" or anything else: skip (narrative)
@@ -10549,10 +10800,11 @@
           // it as always-on per the data's intent.
           const isCond = !!(eb.zones && eb.zones.length) || (eb.alwaysActive === false);
           const ctxTag = (eb.zones && eb.zones.length) ? ` (in ${eb.zones.join("/")})` : "";
+          const uptimeFactor = isDamageBonusStat(eb.stat) ? conditionalDamageUptime(eb) : 1;
           buffs.push({
             source: `Overload ${i + 1}: ${o.name}${ctxTag}`,
             conditional: isCond,
-            [channel]: { [eb.stat]: eb.amount }
+            [channel]: { [eb.stat]: eb.amount * uptimeFactor }
           });
         }
       }
@@ -11233,9 +11485,20 @@
       // ---- equip-bonus block (one card per UNIQUE bonus name; merge dupes) ----
       const bonusMap = new Map();
       for (const eb of (item.equipBonuses || [])) {
-        if (!eb || !eb.name) continue;
-        if (!bonusMap.has(eb.name)) bonusMap.set(eb.name, []);
-        bonusMap.get(eb.name).push(eb);
+        if (!eb) continue;
+        let key = eb.name;
+        if (!key) {
+          // Nameless equip bonus (just stat + amount, e.g. the Enchanted
+          // Depthweave Coat's +7.5% Combat Advantage). Synthesize a label so it
+          // actually shows on the card — these were being silently hidden.
+          if (eb.stat && eb.amount != null) {
+            const unit = (eb.kind === "rating") ? "" : "%";
+            const scopeTag = (eb.scope && eb.scope !== "self") ? ` (${eb.scope})` : "";
+            key = `+${eb.amount}${unit} ${eb.stat}${scopeTag}`;
+          } else continue;
+        }
+        if (!bonusMap.has(key)) bonusMap.set(key, []);
+        bonusMap.get(key).push(eb);
       }
       const bonusBlocks = [];
       for (const [name, entries] of bonusMap.entries()) {
@@ -11246,7 +11509,7 @@
         if (isAlwaysOn) tag = "always on";
         else if (isConditional) tag = "conditional";
         // The 'set' type sometimes has no description; that's fine
-        const txt = first.description || first.effectText || first.condition || "";
+        const txt = equipBonusEffectText(first);
         const role = first.role ? ` [${first.role}]` : "";
         const setBadge = (first.type === "Set" && first.setName)
           ? ` <span class="gear-card-bonus-tag">set ${escape(first.setName)} ${first.pieces || 2}pc</span>`
@@ -11315,8 +11578,47 @@
       return { name: item.name, meta, desc };
     }
 
+    // Set-completion status across all equipped gear + artifacts. Counts each
+    // equipped item once per set it belongs to (and the pieces that set needs)
+    // so we can show a green check on every piece of a COMPLETE set — matched
+    // weapons, a neck+waist set, multi-slot sets, etc.
+    function computeSetStatus() {
+      const have = {}, need = {};
+      const tally = function (item) {
+        if (!item || !Array.isArray(item.equipBonuses)) return;
+        const seen = {};
+        item.equipBonuses.forEach(function (eb) {
+          if (eb && eb.type === "Set" && eb.setName && !seen[eb.setName]) {
+            seen[eb.setName] = 1;
+            have[eb.setName] = (have[eb.setName] || 0) + 1;
+            need[eb.setName] = eb.pieces || 2;
+          }
+        });
+      };
+      (GEAR_SLOTS || []).forEach(function (s) { if (state.gear[s.label]) tally(findGearByName(state.gear[s.label], s.slot)); });
+      (ARTIFACT_SLOTS || []).forEach(function (slot) { if (state.artifacts[slot]) tally(findArtifactByName(state.artifacts[slot])); });
+      return { have: have, need: need };
+    }
+    // Set-status pill row for one equipped item ("" if it isn't part of a set).
+    function setStatusRow(item, status) {
+      if (!item || !Array.isArray(item.equipBonuses)) return "";
+      const seen = {}, pills = [];
+      item.equipBonuses.forEach(function (eb) {
+        if (!(eb && eb.type === "Set" && eb.setName) || seen[eb.setName]) return;
+        seen[eb.setName] = 1;
+        const have = status.have[eb.setName] || 0, need = status.need[eb.setName] || (eb.pieces || 2);
+        const done = have >= need, missing = need - have;
+        const tip = done ? (eb.setName + " set complete (" + have + "/" + need + ")")
+          : (eb.setName + " — " + missing + " more piece" + (missing === 1 ? "" : "s") + " to complete (" + have + "/" + need + ")");
+        pills.push('<span class="set-syn-pill ' + (done ? "on" : "off") + '" title="' + _escAttr(tip) + '">' +
+          (done ? "✅" : "◻") + " " + _escHTML(eb.setName) + " " + have + "/" + need + "</span>");
+      });
+      return pills.length ? ('<div class="set-syn-row">🛡 ' + pills.join("") + "</div>") : "";
+    }
+
     function renderGear() {
       const g = document.getElementById("gear-grid");
+      const setStatus = computeSetStatus();
       // Set of currently-slotted enchant names, for gem-synergy status on
       // equipped Frostsilver-style rings (computed once per render).
       const slottedEnchSet = new Set();
@@ -11371,6 +11673,7 @@
               ${gearInfo}
             </div>
             ${gemStatus}
+            ${filled ? setStatusRow(findGearByName(v, s.slot), setStatus) : ""}
             ${kitChip}
           </div>`;
       }).join("");
@@ -11596,9 +11899,20 @@
       // Equip bonuses (mostly empty for artifacts but handle structurally)
       const bonusMap = new Map();
       for (const eb of (item.equipBonuses || [])) {
-        if (!eb || !eb.name) continue;
-        if (!bonusMap.has(eb.name)) bonusMap.set(eb.name, []);
-        bonusMap.get(eb.name).push(eb);
+        if (!eb) continue;
+        let key = eb.name;
+        if (!key) {
+          // Nameless equip bonus (just stat + amount, e.g. the Enchanted
+          // Depthweave Coat's +7.5% Combat Advantage). Synthesize a label so it
+          // actually shows on the card — these were being silently hidden.
+          if (eb.stat && eb.amount != null) {
+            const unit = (eb.kind === "rating") ? "" : "%";
+            const scopeTag = (eb.scope && eb.scope !== "self") ? ` (${eb.scope})` : "";
+            key = `+${eb.amount}${unit} ${eb.stat}${scopeTag}`;
+          } else continue;
+        }
+        if (!bonusMap.has(key)) bonusMap.set(key, []);
+        bonusMap.get(key).push(eb);
       }
       const bonusBlocks = [];
       for (const [name, entries] of bonusMap.entries()) {
@@ -11608,7 +11922,7 @@
         let tag = "";
         if (isAlwaysOn) tag = "always on";
         else if (isConditional) tag = "conditional";
-        const txt = first.description || first.effectText || first.condition || "";
+        const txt = equipBonusEffectText(first);
         bonusBlocks.push(`
           <div class="gear-card-bonus ${isConditional ? "cond" : ""}">
             <div class="gear-card-bonus-name">🌟 ${escape(name)}${tag ? `<span class="gear-card-bonus-tag">${tag}</span>` : ""}</div>
@@ -11637,6 +11951,7 @@
     function renderArtifacts() {
       const g = document.getElementById("artifact-grid");
       const opts = artifactOptions(state.class);
+      const setStatus = computeSetStatus();
       // Names already picked in any slot — used to filter other slots'
       // pickers since you can't equip duplicate artifacts in-game.
       const pickedNames = new Set(
@@ -11660,6 +11975,7 @@
               ${chipLabel}
               ${artInfo}
             </div>
+            ${filled ? setStatusRow(findArtifactByName(v), setStatus) : ""}
           </div>`;
       }).join("");
       g.querySelectorAll("[data-art-pick]").forEach(el => {
@@ -13497,6 +13813,75 @@
       };
     }
 
+    // Power mix (TUNABLE): fraction of your damage that comes from each power
+    // slot, used to blend the slot-specific damage boosts (At-Will/Encounter/
+    // Daily) into the average hit. Encounter-heavy single-target rotation.
+    const POWER_MIX = { atwill: 0.35, encounter: 0.50, daily: 0.15, ranged: 1.0, melee: 0.0, single: 1.0, dot: 0.4 };
+    // ===== SINGLE SOURCE OF TRUTH for DPS expected damage =====
+    // Used by renderSim (display), the stat-priority advisor (+1% probes via the
+    // `ov` overrides), and the headless build optimizer — so all three share ONE
+    // formula and can never drift apart. Self-contained (reads the engine + enemy
+    // + state). `mag` = power magnitude; `ov` = optional {power, ca, critSev,
+    // critStrike, accuracy} decimals to override the engine-derived stat values.
+    function computeDpsExpectedDamage(mag, ov) {
+      const r = getEngineResult();
+      const TIL = r.totalItemLevel || 0;
+      const empty = { expected: 0, rows: [], pCrit: 0, effFlank: 0, pDeflect: 0, deflLoss: 0, deflCut: 0 };
+      if (TIL <= 0) return empty;
+      const roleMult = (typeof ROLE_MULT !== "undefined" && ROLE_MULT.dps) ? ROLE_MULT.dps : 1.20;
+      const baseVal = (mag / 100) * (TIL / 10) * roleMult;
+      const stat = n => ((r.stats[n] && r.stats[n].finalPct) || 0) / 100;
+      ov = ov || {};
+      const power      = ov.power      != null ? ov.power      : stat("Power");
+      const ca         = ov.ca         != null ? ov.ca         : stat("Combat Advantage");
+      const critSev    = ov.critSev    != null ? ov.critSev    : stat("Critical Severity");
+      const critStrike = ov.critStrike != null ? ov.critStrike : stat("Critical Strike");
+      const accuracy   = ov.accuracy   != null ? ov.accuracy   : stat("Accuracy");
+      const e = getEnemyStats();
+      const pmods = getPartySummonedCombatMods();
+      const sliderFlank = Math.max(0, Math.min(1, state.flankUptime || 0));
+      const effFlank = pmods.caUnion > 0 ? (1 - (1 - sliderFlank) * (1 - pmods.caUnion)) : sliderFlank;
+      const db = r.damageBoosts || { generic: 0, base: 0, magical: 0, physical: 0 };
+      let dmgType = "magical";
+      try {
+        const _cls = (typeof CLASSES_DATA !== "undefined") ? CLASSES_DATA.find(c => c.name === state.class) : null;
+        const _par = _cls && (_cls.paragonPaths || []).find(p => p.name === state.paragon);
+        if (_par && _par.damageType) dmgType = _par.damageType;
+      } catch (e2) {}
+      const typeBoost = dmgType === "physical" ? (db.physical || 0) : (db.magical || 0);
+      // Slot-specific boosts (At-Will/Encounter/Daily) blended by the power mix —
+      // e.g. a +5% Encounter boost counts for ~50% of your hits.
+      const sl = db.slot || {};
+      const slotPct = (POWER_MIX.atwill * (sl.atwill || 0)) + (POWER_MIX.encounter * (sl.encounter || 0)) + (POWER_MIX.daily * (sl.daily || 0))
+                    + (POWER_MIX.ranged * (sl.ranged || 0)) + (POWER_MIX.melee * (sl.melee || 0)) + (POWER_MIX.single * (sl.single || 0)) + (POWER_MIX.dot * (sl.dot || 0));
+      const boostMult = (1 + (db.generic || 0) / 100) * (1 + (db.base || 0) / 100) * (1 + typeBoost / 100) * (1 + slotPct / 100);
+      const baseDmg = baseVal * (1 + pmods.dmgTaken) * boostMult;
+      const powerMult = 1 + power;
+      const flankBonus = 1 + Math.max(0, ca - e.awareness);
+      const critBonus = 1 + Math.max(0, critSev - e.critAvoid);
+      const deflectDivide = 1 + Math.max(0, e.deflectSev - accuracy);
+      const defenseDivide = 1 + e.defense;
+      const hit = (f, c2) => { let x = baseDmg * powerMult; if (f) x *= flankBonus; if (c2) x *= critBonus; x /= defenseDivide; return x; };
+      const pCrit = Math.max(0, Math.min(1, critStrike));
+      const pDeflect = Math.max(0, Math.min(1, e.deflect));
+      const pBase = (1 - effFlank) * (1 - pCrit), pFlank = effFlank * (1 - pCrit),
+            pCritOnly = (1 - effFlank) * pCrit, pBoth = effFlank * pCrit;
+      const dBase = hit(false, false), dFlank = hit(true, false), dCrit = hit(false, true), dBoth = hit(true, true);
+      const cleanAvg = pBase * dBase + pFlank * dFlank + pCritOnly * dCrit + pBoth * dBoth;
+      // Deflect is an INDEPENDENT chance — a deflected hit can still crit/flank.
+      const deflectMult = 1 - pDeflect * (1 - 1 / deflectDivide);
+      return {
+        expected: cleanAvg * deflectMult,
+        pCrit, effFlank, pDeflect, deflLoss: 1 - deflectMult, deflCut: 1 - 1 / deflectDivide,
+        rows: [
+          { sc: "Normal — no crit, no Combat Advantage", icon: "⚔️", desc: "The hit did NOT critically strike and you were NOT flanking. Your plain baseline hit.", p: pBase, d: Math.round(dBase) },
+          { sc: "Combat Advantage, no crit",             icon: "🟢", desc: "You WERE flanking (Combat Advantage active) but the hit did NOT critically strike.",    p: pFlank, d: Math.round(dFlank) },
+          { sc: "Critical, no Combat Advantage",         icon: "🟠", desc: "The hit DID critically strike, but you were NOT flanking (no Combat Advantage).",       p: pCritOnly, d: Math.round(dCrit) },
+          { sc: "Critical + Combat Advantage",           icon: "💥", desc: "The hit critically struck WHILE flanking — both bonuses applied. Usually your most common big hit.", p: pBoth, d: Math.round(dBoth) },
+        ]
+      };
+    }
+
     function renderSim() {
       const magInput = document.getElementById("sim-mag");
       const body = document.getElementById("sim-body");
@@ -13569,7 +13954,7 @@
       //                / (1 + Defense)
       //                / (1 + DeflectSev) when you deflect
       // -------------------------------------------------------
-      let rows, expected;
+      let rows, expected, dpsNote = "";
       if (isTank) {
         const ENEMY_POWER     = 0.90;
         const ENEMY_CA        = 0.90;
@@ -13643,59 +14028,17 @@
         // the damage-type boost (magical or physical, per paragon). Slot-
         // specific boosts (at-will/encounter/daily) depend on which power is
         // used, so they're tracked but not folded into this average.
-        const db = r.damageBoosts || { generic: 0, base: 0, magical: 0, physical: 0 };
-        let _dmgType = "magical";
-        try {
-          const _cls = (typeof CLASSES_DATA !== "undefined") ? CLASSES_DATA.find(c => c.name === state.class) : null;
-          const _par = _cls && (_cls.paragonPaths || []).find(p => p.name === state.paragon);
-          if (_par && _par.damageType) _dmgType = _par.damageType;
-        } catch (e) {}
-        const typeBoost = _dmgType === "physical" ? (db.physical || 0) : (db.magical || 0);
-        const dmgBoostMult = (1 + (db.generic || 0) / 100) * (1 + (db.base || 0) / 100) * (1 + typeBoost / 100);
-        // Party "enemy takes +X% damage" debuffs + your own damage boosts scale every hit.
-        const baseDmg = baseVal * (1 + pmods.dmgTaken) * dmgBoostMult;
-        const powerMult     = 1 + power;
-        const flankBonus    = 1 + Math.max(0, ca       - e.awareness);
-        const critBonus     = 1 + Math.max(0, critSev  - e.critAvoid);
-        const deflectDivide = 1 + Math.max(0, e.deflectSev - accuracy);
-        const defenseDivide = 1 + e.defense;
-
-        const dmg = (flank, crit, defl) => {
-          let d = baseDmg * powerMult;
-          if (flank) d *= flankBonus;
-          if (crit)  d *= critBonus;
-          if (defl)  d /= deflectDivide;
-          d /= defenseDivide;
-          return Math.round(d);
-        };
-
-        const FLANK_UPTIME = effFlank;   // your slider unioned with ally CA grants
-        const pCrit    = Math.max(0, Math.min(1, critStrike));
-        const pDeflect = Math.max(0, Math.min(1, e.deflect));
-        const nonDefl  = 1 - pDeflect;
-        const pBase    = nonDefl * (1 - FLANK_UPTIME) * (1 - pCrit);
-        const pFlank   = nonDefl *      FLANK_UPTIME  * (1 - pCrit);
-        const pCritOnly= nonDefl * (1 - FLANK_UPTIME) *      pCrit;
-        const pBoth    = nonDefl *      FLANK_UPTIME  *      pCrit;
-        const pDefl    = pDeflect;
-
-        const dBase  = dmg(false, false, false);
-        const dFlank = dmg(true,  false, false);
-        const dCrit  = dmg(false, true,  false);
-        const dBoth  = dmg(true,  true,  false);
-        const dDefl  = dmg(false, false, true);
-
-        expected = Math.round(
-          pBase * dBase + pFlank * dFlank + pCritOnly * dCrit + pBoth * dBoth + pDefl * dDefl
-        );
-
-        rows = [
-          { sc: "Normal hit",  icon: "⚔️", desc: "You didn't crit and weren't flanking — a plain hit with no bonuses.",                            p: pBase,    d: dBase  },
-          { sc: "With CA",     icon: "🟢", desc: "You're flanking the enemy. Your Combat Advantage stat boosts this hit.",                          p: pFlank,   d: dFlank },
-          { sc: "Critical",    icon: "🟠", desc: "Lucky big hit — your Critical Severity boosts the damage. No CA bonus on this one.",              p: pCritOnly,d: dCrit  },
-          { sc: "Crit + CA",   icon: "💥", desc: "Best case — you crit while flanking. Both Critical Severity and Combat Advantage stack here.",   p: pBoth,    d: dBoth  },
-          { sc: "Deflected",   icon: "🛡️", desc: "Enemy deflected the hit. Their Deflect Severity reduces the damage you deal.",                   p: pDefl,    d: dDefl  },
-        ];
+        // SINGLE SOURCE OF TRUTH: all DPS damage flows through one function
+        // (also used by the stat advisor and the headless optimizer) so they
+        // can never drift apart.
+        const _dps = computeDpsExpectedDamage(mag);
+        expected = Math.round(_dps.expected);
+        rows = _dps.rows;
+        // Short, plain-English readout. The cards self-explain, so keep this brief.
+        dpsNote = `<div style="font-size:0.78rem;color:var(--text-muted);margin:0.35rem 0 0.2rem;line-height:1.55;">`
+          + `You crit about <strong style="color:var(--text)">${Math.round(_dps.pCrit * 100)}%</strong> of the time and have Combat Advantage <strong style="color:var(--text)">${Math.round(_dps.effFlank * 100)}%</strong> of the time — the cards below cover every case.`
+          + (_dps.pDeflect > 0 ? ` The enemy deflects about <strong style="color:var(--text)">${Math.round(_dps.pDeflect * 100)}%</strong> of your hits for a little less; that's already counted in the average.` : ``)
+          + `</div>`;
       }
 
       const fmtPct = (x) => (x * 100).toFixed(1) + "%";
@@ -13717,7 +14060,7 @@
         <div class="sim-hero">
           <div class="sim-hero-label">${heroLabel}</div>
           <div class="sim-hero-value">${expected.toLocaleString()}</div>
-        </div>${partyNote}` + rows.map(row => `
+        </div>${dpsNote}${partyNote}` + rows.map(row => `
         <div class="sim-card">
           <div class="sim-card-title">
             <span class="sim-card-icon">${row.icon}</span>${row.sc}
@@ -13766,29 +14109,11 @@
         const advisorBaseVal = (mag / 100) * (advisorTIL / 10) * roleMult * (1 + pmods.dmgTaken);
         const FLANK_UPTIME_ADV = effFlank;
 
-        // Damage-mode expected calc
+        // Damage-mode expected calc — routed through the single source of truth
+        // so the advisor matches the tool + optimizer exactly. The +1% probes
+        // pass overrides for the bumped stat.
         function expectedDmg(p, c, cs, cst, ac) {
-          const pm = 1 + p, fb = 1 + Math.max(0, c - e.awareness),
-                cb = 1 + Math.max(0, cs - e.critAvoid),
-                dd = 1 + Math.max(0, e.deflectSev - ac),
-                def = 1 + e.defense;
-          const calc = (fl, cr, df) => {
-            let d = advisorBaseVal * pm;
-            if (fl) d *= fb; if (cr) d *= cb;
-            if (df) d /= dd;
-            d /= def;
-            return d;
-          };
-          const pC = Math.max(0, Math.min(1, cst));
-          const pD = Math.max(0, Math.min(1, e.deflect));
-          const nD = 1 - pD;
-          return (
-            nD*(1-FLANK_UPTIME_ADV)*(1-pC)*calc(false,false,false) +
-            nD*FLANK_UPTIME_ADV*(1-pC)    *calc(true, false,false) +
-            nD*(1-FLANK_UPTIME_ADV)*pC    *calc(false,true, false) +
-            nD*FLANK_UPTIME_ADV*pC        *calc(true, true, false) +
-            pD                            *calc(false,false,true)
-          );
+          return computeDpsExpectedDamage(mag, { power: p, ca: c, critSev: cs, critStrike: cst, accuracy: ac }).expected;
         }
         // Heal-mode expected calc — no enemy stats, no flank, CritSev halved.
         function expectedHeal(p, oh, cs, cst) {
@@ -13994,7 +14319,11 @@
     // Write the current working build to localStorage. Returns true on
     // success. Kept separate from the debounced label so we can also flush
     // synchronously when the page is being hidden/closed (see pagehide below).
+    // Set true by "Clear all" so the pagehide/visibilitychange flush on the
+    // way to reload doesn't re-save the build we just wiped.
+    let _suppressAutosave = false;
     function persistAutosave() {
+      if (_suppressAutosave) return true;
       try {
         localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(serializeBuild()));
         return true;
@@ -14193,7 +14522,6 @@
     document.getElementById("f-name").addEventListener("input",     e => { state.name    = e.target.value; rerenderAll(); });
     // (f-mount listener removed — replaced by 5-slot stable picker, see renderStable.)
     document.getElementById("sim-mag").addEventListener("input",    () => renderSim());
-    document.getElementById("sim-type").addEventListener("change",  () => renderSim());
 
     // Flank uptime slider + presets
     const flankSlider = document.getElementById("sim-flank");
@@ -14439,6 +14767,20 @@
         () => toast("Link copied! Share it to load your build anywhere."),
         () => toast("Couldn't copy — copy this link yourself: " + url)
       );
+    });
+    // Clear all — resets every field to a blank build. Wipes the working
+    // draft autosave and strips any #b= share hash, then reloads so the page
+    // rebuilds from the `const state` defaults (same as a first-ever visit).
+    // Named saves (My Builds) and user-added items are kept untouched.
+    document.getElementById("clear-build").addEventListener("click", () => {
+      if (!confirm("Clear all fields and start a blank build?\n\nThis wipes your current working build. Saved builds (My Builds) are kept.")) return;
+      // Block any further autosave flush (debounced timer, pagehide,
+      // visibilitychange) so the wiped build can't be re-written before reload.
+      _suppressAutosave = true;
+      clearTimeout(saveTO);
+      try { localStorage.removeItem(AUTOSAVE_KEY); } catch (e) {}
+      // Reload with no hash so a shared-link build doesn't reload either.
+      window.location.href = window.location.pathname;
     });
     document.getElementById("open-builds").addEventListener("click", openBuildsModal);
     document.getElementById("builds-close").addEventListener("click", () => {
@@ -15375,6 +15717,21 @@
       }
     });
 
+</script>
+<!-- LOCAL-ONLY build optimizer. Loads ONLY when the tool is opened from
+     localhost / file:// — never on the live site. The optimizer is the
+     planned paid feature; js/optimizer-local.js is gitignored and not
+     deployed. This loader no-ops (and 404s harmlessly) anywhere else. -->
+<script>
+  (function () {
+    var h = location.hostname;
+    var local = h === 'localhost' || h === '127.0.0.1' || h === '' || location.protocol === 'file:';
+    if (!local) return;
+    var s = document.createElement('script');
+    s.src = 'js/optimizer-local.js';
+    s.onerror = function () { /* file absent (e.g. deployed) — ignore */ };
+    document.body.appendChild(s);
+  })();
 </script>
 </body>
 </html>
