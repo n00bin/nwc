@@ -2916,6 +2916,12 @@
       partyAllies: ["","","","",""],            // ally companion per slot, "" = empty
       partyMountAllies: ["","","","",""],       // ally mount equip power per slot, "" = empty
       partyVipRank3: false,                      // separate toggle for ally VIP +1% MaxHP party
+      // Party meta assumption: the whole party runs "Part of the Pack"
+      // companions (current group meta — Power stacks shared party-wide).
+      // ON (default): party-scope stacking companion procs count at full
+      // stacks, and the optimizer reserves a slot for a Pack companion.
+      // OFF: solo play — party-scope stacks count only your own (1 stack).
+      partyPackMeta: true,
       // (legacy — kept so older saves still load without losing data)
       partyBuffs: new Set(),
       simMag: 100,
@@ -3008,6 +3014,7 @@
           contentZone: state.contentZone || "",
           partyAllies: [...(state.partyAllies || [])],
           partyMountAllies: [...(state.partyMountAllies || [])],
+          partyPackMeta: state.partyPackMeta !== false,
           slottedClassFeaturePicks: [...(state.slottedClassFeaturePicks || [])],
           rangerStance: state.rangerStance || "ranged",
           bardActiveSong: state.bardActiveSong || "",
@@ -3046,6 +3053,8 @@
       state.partyContent = s.partyContent || "dungeon";
       state.partyAllies = Array.isArray(s.partyAllies) ? s.partyAllies.slice() : [];
       state.partyMountAllies = Array.isArray(s.partyMountAllies) ? s.partyMountAllies.slice() : [];
+      // Back-compat: saves from before the Pack-meta toggle default to ON.
+      state.partyPackMeta = s.partyPackMeta !== false;
       state.slottedClassFeaturePicks = Array.isArray(s.slottedClassFeaturePicks) ? s.slottedClassFeaturePicks.slice() : [];
       state.rangerStance = s.rangerStance || "ranged";
       state.bardActiveSong = s.bardActiveSong || "";
@@ -10611,13 +10620,20 @@
           const maxStacks = pe.maxStacks || 1;
           const procRating = {};
           const procPercent = {};
+          let labelStacks = 1;
           for (const eff of pe.statEffects) {
             if (!eff || !eff.stat) continue;
             if (eff.scope === "enemy") continue;
-            const alreadyBaseline = (power.stats || []).some(s =>
-              s.stat === eff.stat && Math.abs((s.value || 0) - (eff.value || 0)) < 0.05
+            // Party-scope stacking buffs (e.g. "Part of the Pack"): each
+            // stack comes from a party member running the companion. With
+            // the Pack-meta assumption ON (default — current group meta),
+            // count full stacks. OFF = solo: only your own stack counts.
+            const effStacks = (eff.scope === "party" && s.partyPackMeta === false) ? 1 : maxStacks;
+            labelStacks = Math.max(labelStacks, effStacks);
+            const alreadyBaseline = (power.stats || []).some(s2 =>
+              s2.stat === eff.stat && Math.abs((s2.value || 0) - (eff.value || 0)) < 0.05
             );
-            const extraStacks = alreadyBaseline ? Math.max(0, maxStacks - 1) : maxStacks;
+            const extraStacks = alreadyBaseline ? Math.max(0, effStacks - 1) : effStacks;
             if (extraStacks <= 0) continue;
             const amount = (eff.value || 0) * extraStacks * scale;
             if (eff.type === "percent") {
@@ -10627,7 +10643,7 @@
             }
           }
           if (Object.keys(procRating).length || Object.keys(procPercent).length) {
-            const stackTag = maxStacks > 1 ? ` (full ${maxStacks} stacks)` : "";
+            const stackTag = labelStacks > 1 ? ` (full ${labelStacks} stacks)` : "";
             const triggerTag = pe.trigger ? ` on ${pe.trigger}` : "";
             buffs.push({
               source: label + ` proc (${r})${stackTag}${triggerTag}`,
@@ -10944,7 +10960,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
@@ -13047,6 +13063,18 @@
                 <option value="trial"${content === "trial" ? " selected" : ""}>Trial (10)</option>
               </select>
             </div>
+          </div>
+          <div class="boon-row" style="cursor:default;">
+            <div class="boon-row-info">
+              <div class="boon-row-name">Party runs Part of the Pack</div>
+              <div class="boon-row-effect">Current group meta: everyone slots a Pack companion, so Pack stacks count at full strength (e.g. Raptor 5&times;4.5% Power). Turn off for solo play — only your own stack counts.</div>
+            </div>
+            <div class="boon-counter">
+              <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.8rem;cursor:pointer;">
+                <input type="checkbox" id="party-pack-meta-toggle"${state.partyPackMeta !== false ? " checked" : ""}>
+                <span>${state.partyPackMeta !== false ? "On" : "Off"}</span>
+              </label>
+            </div>
           </div>`;
         // Companion slot subsection
         const SCOPE_COLOR = { Party: "#4caf50", Self: "#42a5f5", "Enemy Debuff": "#ef5350", Mixed: "#ffb300" };
@@ -13162,6 +13190,14 @@
       if (partyContentEl) {
         partyContentEl.addEventListener("change", (e) => {
           state.partyContent = e.target.value;
+          renderBuffs(); rerenderAll();
+        });
+      }
+      // Pack-meta toggle (party-scope companion stacks at full vs solo)
+      const packMetaEl = el.querySelector("#party-pack-meta-toggle");
+      if (packMetaEl) {
+        packMetaEl.addEventListener("change", (e) => {
+          state.partyPackMeta = !!e.target.checked;
           renderBuffs(); rerenderAll();
         });
       }
