@@ -5890,6 +5890,26 @@
       if (Object.prototype.hasOwnProperty.call(GEAR_NAME_ALIASES, name)) {
         return findGearByName(GEAR_NAME_ALIASES[name], slotType);
       }
+      // Case-insensitive fallback: builds shared from hand-typed names
+      // (e.g. "Eye of the doomweaver" added via Add Missing on another
+      // machine) should still resolve to the canonical entry ("Eye of the
+      // Doomweaver"). Exact match above always wins; this only rescues
+      // would-be misses, so existing builds are unaffected. Without it a
+      // shared link can silently drop items to 0 IL / no stats (the
+      // "friend's TIL doesn't match" report, 2026-06-04).
+      const lowerName = String(name).trim().toLowerCase();
+      if (typeof GEAR_DATA !== "undefined") {
+        for (const item of GEAR_DATA) {
+          if ((item.name || "").toLowerCase() !== lowerName) continue;
+          if (slotType && item.slot !== slotType) continue;
+          return item;
+        }
+      }
+      for (const item of userGear) {
+        if ((item.name || "").toLowerCase() !== lowerName) continue;
+        if (slotType && item.slot !== slotType) continue;
+        return item;
+      }
       return null;
     }
     // C5 legacy duplicate cleanup runs once per page load (flag resets on reload).
