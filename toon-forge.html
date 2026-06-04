@@ -2830,6 +2830,12 @@
       abilBase:  { str:10, con:10, dex:10, int:10, wis:10, cha:10 },  // class base only
       raceChoices: [],  // user picks from choiceBonuses, e.g. ["CON","CHA"]
       gear: {},
+      // gear-slot label → the picked item's item level. Same-name gear can
+      // exist at several IL tiers (e.g. Eye of the Doomweaver 3400→5250);
+      // storing the picked tier makes a shared build load EXACTLY as the
+      // sharer built it. null/absent = unknown (legacy builds keep the old
+      // first-match behavior).
+      gearIL: {},
       kits: {},  // gear-slot label → kit name (reinforcement kit per gear piece)
       // Enchantments — 11 typed slots: 4 offense, 4 defense, 1 utility, 1 combat, 1 bonus
       enchants: {
@@ -2986,7 +2992,7 @@
           race: state.race, raceChoices: state.raceChoices,
           il: state.il, name: state.name,
           abil: state.abil, abilBase: state.abilBase, abilLevels: state.abilLevels,
-          gear: state.gear, kits: state.kits,
+          gear: state.gear, gearIL: { ...(state.gearIL || {}) }, kits: state.kits,
           artifacts: state.artifacts,
           enchants: state.enchants, overloads: state.overloads,
           summoned: state.summoned, summonedEnh: state.summonedEnh,
@@ -3055,6 +3061,8 @@
       state.partyMountAllies = Array.isArray(s.partyMountAllies) ? s.partyMountAllies.slice() : [];
       // Back-compat: saves from before the Pack-meta toggle default to ON.
       state.partyPackMeta = s.partyPackMeta !== false;
+      // Picked-tier map for same-name multi-IL gear; legacy saves have none.
+      state.gearIL = (s.gearIL && typeof s.gearIL === "object") ? { ...s.gearIL } : {};
       state.slottedClassFeaturePicks = Array.isArray(s.slottedClassFeaturePicks) ? s.slottedClassFeaturePicks.slice() : [];
       state.rangerStance = s.rangerStance || "ranged";
       state.bardActiveSong = s.bardActiveSong || "";
@@ -5865,8 +5873,25 @@
       "Bloodwoven Ink": "Bloodwoven Ink (Survivor's Gift)"
     };
 
-    function findGearByName(name, slotType) {
+    function findGearByName(name, slotType, il) {
       if (!name) return null;
+      // When an item level is supplied (state.gearIL — the tier the player
+      // actually picked), prefer the entry at exactly that tier so shared
+      // builds reproduce the sharer's numbers. Falls through to the normal
+      // name-only chain when no tier matches (e.g. data was re-tiered).
+      if (il != null && il !== "") {
+        const ilNum = Number(il);
+        const pools = [(typeof GEAR_DATA !== "undefined") ? GEAR_DATA : [],
+                       (typeof getUserAddedGear === "function") ? getUserAddedGear() : []];
+        const lowered = String(name).trim().toLowerCase();
+        for (const pool of pools) {
+          for (const item of pool) {
+            if ((item.item_level != null ? item.item_level : item.itemLevel) !== ilNum) continue;
+            if (slotType && item.slot !== slotType) continue;
+            if (item.name === name || (item.name || "").toLowerCase() === lowered) return item;
+          }
+        }
+      }
       // When a slot is supplied, disambiguate against it (same-name items
       // can exist across slots). When omitted, fall back to first-by-name —
       // used by the Details modal which only knows the name.
@@ -8798,7 +8823,7 @@
         for (const slotEntry of GEAR_SLOTS) {
           const itemName = state.gear[slotEntry.label];
           if (!itemName) continue;
-          const item = findGearByName(itemName, slotEntry.slot);
+          const item = findGearByName(itemName, slotEntry.slot, (state.gearIL || {})[slotEntry.label]);
           if (item) addAbilityBonus(bonus, item.abilityBonuses);
         }
       }
@@ -9041,7 +9066,7 @@
         for (const slotEntry of GEAR_SLOTS) {
           const itemName = state.gear[slotEntry.label];
           if (!itemName) continue;
-          const item = findGearByName(itemName, slotEntry.slot);
+          const item = findGearByName(itemName, slotEntry.slot, (state.gearIL || {})[slotEntry.label]);
           if (item && item.item_level) {
             cur += item.item_level;
             sources.push({ name: `${slotEntry.label}: ${item.name}`, il: item.item_level });
@@ -9776,7 +9801,7 @@
         for (const slotEntry of GEAR_SLOTS) {
           const itemName = s.gear[slotEntry.label];
           if (!itemName) continue;
-          const item = findGearByName(itemName, slotEntry.slot);
+          const item = findGearByName(itemName, slotEntry.slot, (state.gearIL || {})[slotEntry.label]);
           if (item) gear[slotEntry.label] = item;
         }
       }
@@ -10973,7 +10998,7 @@
     function getEngineResult() {
       const key = JSON.stringify({
         il: state.il, cls: state.class, par: state.paragon, race: state.race,
-        role: state.role, gear: state.gear, art: state.artifacts, abil: state.abil,
+        role: state.role, gear: state.gear, gil: state.gearIL, art: state.artifacts, abil: state.abil,
         sum: state.summoned, sumEnh: state.summonedEnh, sumEnch: state.summonedEnchant,
         sumG: state.summonedGear,
         ac: state.activeComps,
@@ -11636,7 +11661,7 @@
           }
         });
       };
-      (GEAR_SLOTS || []).forEach(function (s) { if (state.gear[s.label]) tally(findGearByName(state.gear[s.label], s.slot)); });
+      (GEAR_SLOTS || []).forEach(function (s) { if (state.gear[s.label]) tally(findGearByName(state.gear[s.label], s.slot, (state.gearIL || {})[s.label])); });
       (ARTIFACT_SLOTS || []).forEach(function (slot) { if (state.artifacts[slot]) tally(findArtifactByName(state.artifacts[slot])); });
       return { have: have, need: need };
     }
@@ -11696,7 +11721,7 @@
         // hard-slotted gem as active (matching enchant slotted) or inactive.
         let gemStatus = "";
         if (filled) {
-          const eqItem = findGearByName(v, s.slot);
+          const eqItem = findGearByName(v, s.slot, (state.gearIL || {})[s.label]);
           if (eqItem && Array.isArray(eqItem.gemSynergy) && eqItem.gemSynergy.length) {
             const pills = eqItem.gemSynergy.map(gx => {
               const on = slottedEnchSet.has(gx.enchant);
@@ -11714,7 +11739,7 @@
               ${gearInfo}
             </div>
             ${gemStatus}
-            ${filled ? setStatusRow(findGearByName(v, s.slot), setStatus) : ""}
+            ${filled ? setStatusRow(findGearByName(v, s.slot, (state.gearIL || {})[s.label]), setStatus) : ""}
             ${kitChip}
           </div>`;
       }).join("");
@@ -11735,6 +11760,10 @@
             render: renderGearItem,
             onPick: (item) => {
               state.gear[slotLabel] = item ? item.name : "";
+              // Remember WHICH tier was picked (same-name items exist at
+              // several ILs) so saves/share links reproduce it exactly.
+              if (!state.gearIL) state.gearIL = {};
+              state.gearIL[slotLabel] = item ? (item.item_level != null ? item.item_level : (item.itemLevel != null ? item.itemLevel : null)) : null;
               applyAutoTIL();
               recomputeAbilityTotals();
               renderAbilityGrid();

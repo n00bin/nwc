@@ -7,6 +7,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ## Week of 2026-06-04
 
 ### Bug Fixes
+- **Toon Forge — shared builds now load exactly as they were built.** Two fixes from a player-reported case where the same share link showed three different Item Levels (the sharer's tool, the loader's tool, and in-game all disagreed). First, item names in links are no longer capitalization-sensitive — a hand-typed "Eye of the doomweaver" now finds the real "Eye of the Doomweaver" instead of silently counting as an empty slot (that alone was 19,900 missing IL on the reported build). Second, when you pick a gear piece that exists at several item-level tiers, the tool now remembers **which tier you picked** and carries it inside the share link — so anyone loading your build sees your exact weapons, not the weakest version with the same name. Existing links keep working; re-pick and re-share to get the exact-tier treatment.
 - **Bard — Critical Tuning now counts as always-on.** The Bard class skill Critical Tuning (+10% Critical Severity after playing a song) was hidden behind the "Show conditional" toggle, so a Bard's stat sheet looked 10% short on Critical Severity. Since songs are the heart of every Bard rotation, the buff is effectively always up in combat — it now counts toward your stats by default, no toggle needed.
 
 ### Features
