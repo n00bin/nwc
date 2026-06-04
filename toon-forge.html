@@ -10068,14 +10068,19 @@
           // "play song in combat", Aspect of the Lone Wolf's Deflect
           // scaling with nearby enemies, etc.) — push as conditional so
           // they only show under "Show Conditional" in stat panel.
+          // Exception: features flagged assumeAlwaysOn in classes.json
+          // (e.g. Bard's Critical Tuning — technically a 20s song-triggered
+          // buff, but songs ARE the Bard rotation so combat uptime is
+          // ~100%) count as always-on and show without the toggle.
           const cPct = cf.percentStatsConditional || cf.conditionalPercentStats || null;
           const cRat = cf.ratingStatsConditional  || cf.conditionalRatingStats  || null;
           if (cPct || cRat) {
+            const alwaysOn = !!cf.assumeAlwaysOn;
             buffs.push({
-              source: `Class Feature: ${cf.name} (conditional)`,
+              source: `Class Feature: ${cf.name}` + (alwaysOn ? "" : " (conditional)"),
               percentStats: cPct || {},
               ratingStats:  cRat || {},
-              conditional: true
+              conditional: !alwaysOn
             });
           }
         }

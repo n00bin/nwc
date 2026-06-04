@@ -6,6 +6,9 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of 2026-06-04
 
+### Bug Fixes
+- **Bard — Critical Tuning now counts as always-on.** The Bard class skill Critical Tuning (+10% Critical Severity after playing a song) was hidden behind the "Show conditional" toggle, so a Bard's stat sheet looked 10% short on Critical Severity. Since songs are the heart of every Bard rotation, the buff is effectively always up in combat — it now counts toward your stats by default, no toggle needed.
+
 ### Features
 - **Toon Forge — "Party runs Part of the Pack" toggle.** New switch in the Party Buffs section (default **on**, matching the current group meta where everyone slots a Pack companion). With it on, party-wide stacking companion buffs count at full strength on your stat sheet — e.g. Raptor's Part of the Pack counts all 5 stacks (+22.5% Power) instead of just your own stack (+4.5%). Turn it off for solo play and the sheet drops back to your own stack only. Works for any current or future companion with a party-wide stacking buff, and your choice saves with the build/share link.
 
