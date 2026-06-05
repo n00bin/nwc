@@ -23,7 +23,7 @@ PARKED — same-name pairs that are NOT exact dups, need judgment/in-game check:
   STRUCTURE (one parsed/structured, one prose-only — possibly different
   bonus magnitudes too). Reconcile the bonus content, keep one entry each.
 
-## Six clothing variants from 2026-06-02 screenshots — RESOLVED 2026-06-05 (one verify left)
+## Six clothing variants from 2026-06-02 screenshots — RESOLVED 2026-06-05 (verifies done)
 
 Resolution of the section previously titled "Six clothing variants fully transcribed,
 awaiting slot confirmation":
@@ -44,15 +44,11 @@ awaiting slot confirmation":
   bonus is a percent, unlike the Glorious Undead family's flat +3,000 rating).
   Structured Set entries added to 467/497/499, which previously had none.
 
-STILL OPEN — in-game checks:
-- **id 6870 Defense 1,323**: the tooltip's first stat line was clipped by scrolling in
-  both captures; recovered at 6x as "+1,3?3 Defe…" and matches sibling id 467's
-  Defense 1,323. Verify the value in-game. Evidence kept in
-  `inbox/_needs_verify/Bloodwoven Brands - Warden's Defense_IL3150.png` and
-  `inbox/gear/accessories/Bloodwoven Brands — Warden's Defense_IL3150.png`.
-- **id 500 Accuracy 1,521 vs 1,524**: the 2026-06-05 transcription pass read 1,524
-  from its crop; the db (in-game verified 2026-05-17) says 1,521. The 2026-06-02
-  capture clips that line. One digit is an OCR misread — confirm while checking 6870.
+In-game checks — BOTH CONFIRMED by n00b 2026-06-05:
+- **id 6870 Defense 1,323**: confirmed (the line had been clipped by tooltip scrolling
+  in both captures; recovered at 6x and matched sibling id 467). Entry notes updated.
+- **id 500 Accuracy 1,521**: confirmed — the db value was right all along; the
+  2026-06-05 transcription pass's 1,524 was the OCR misread.
 
 KNOWN HAZARD (display-only, documented not fixed): the set name **"Enchanted
 Awareness" is used by two different in-game sets** — Glorious Undead Defence
