@@ -152,9 +152,9 @@
   <!-- View tabs -->
   <div class="controls-bar" style="gap:0.25rem;padding-bottom:0;">
     <button class="view-tab active" id="tab-lookup">Lookup</button>
-    <button class="view-tab" id="tab-combat">Combat Power Ranking</button>
-    <button class="view-tab" id="tab-stdps">DPS Combat Power Ranking</button>
-    <button class="view-tab" id="tab-equip">Support Equip Bonuses</button>
+    <button class="view-tab" id="tab-combat" title="Every mount combat power, ranked by overall strength">Combat Power Ranking</button>
+    <button class="view-tab" id="tab-stdps" title="Combat powers ranked for single-target DPS only (boss fights)">DPS Combat Power Ranking</button>
+    <button class="view-tab" id="tab-equip" title="Equip powers ranked for Tank and Healer builds">Support Equip Bonuses</button>
     <button class="view-tab" id="tab-collars">Collars</button>
     <button class="view-tab" id="tab-insignias">Insignias</button>
     <button class="view-tab" id="tab-planner">Stable Planner</button>
@@ -173,10 +173,10 @@
       <option value="">All Insignia Bonuses</option>
     </select>
     <label style="display:flex;align-items:center;gap:0.4rem;color:var(--text-secondary);font-size:0.85rem;cursor:pointer;white-space:nowrap;">
-      <input type="checkbox" id="toggle-preferred"> Preferred Slot
+      <input type="checkbox" id="toggle-preferred"> <span title="Only mounts with a preferred slot: the matching insignia type gets a +20% bonus there">Preferred Slot</span>
     </label>
     <label style="display:flex;align-items:center;gap:0.4rem;color:var(--text-secondary);font-size:0.85rem;cursor:pointer;white-space:nowrap;">
-      <input type="checkbox" id="toggle-4slot"> 4-Slot Only
+      <input type="checkbox" id="toggle-4slot"> <span title="Only mounts with four insignia slots (more room for stat bonuses)">4-Slot Only</span>
     </label>
   </div>
 

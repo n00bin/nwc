@@ -86,7 +86,7 @@
     </a>
     <a href="artifacts.html" class="landing-card" style="text-decoration:none; color:inherit;">
       <div class="card-title">Artifacts</div>
-      <div class="card-count">61 artifacts &amp; 18 sets</div>
+      <div class="card-count" id="artifact-count">Loading...</div>
     </a>
     <a href="consumables.html" class="landing-card" style="text-decoration:none; color:inherit;">
       <div class="card-title">Consumables</div>
@@ -106,7 +106,7 @@
     </a>
     <a href="patchnotes.html" class="landing-card" style="text-decoration:none; color:inherit;">
       <div class="card-title">NW Patch Notes</div>
-      <div class="card-count">439 patch notes since 2013</div>
+      <div class="card-count">Auto-updated daily from Arc Games</div>
     </a>
     <a href="reports.html" class="landing-card" style="text-decoration:none; color:inherit;">
       <div class="card-title">Reports</div>
@@ -135,6 +135,7 @@
   <script src="data/mounts.js"></script>
   <script src="data/companions.js"></script>
   <script src="data/buffs.js"></script>
+  <script src="data/artifacts.js"></script>
   <script src="js/preview-config.js"></script>
   <script src="js/shared.js"></script>
   <script src="data/news.js"></script>
@@ -143,6 +144,7 @@
     document.getElementById("mount-count").textContent = MOUNTS_DATA.length + " mounts";
     document.getElementById("companion-count").textContent = COMPANIONS_DATA.length + " companions";
     document.getElementById("buff-count").textContent = BUFFS_DATA.length + " buffs";
+    document.getElementById("artifact-count").textContent = ARTIFACTS_DATA.length + " artifacts & " + (new Set(ARTIFACTS_DATA.map(function (a) { return a.set; }).filter(Boolean))).size + " sets";
 
     // Tab switching
     var tabHome = document.getElementById("tab-home");
@@ -175,16 +177,19 @@
           var isCollapsed = i > 0;
           var colClass = isCollapsed ? " collapsed" : "";
           html += '<div class="news-entry">';
-          html += '<div class="news-date">' + n.date + '</div>';
+          // date / tags / title are escaped — a stray < in a hand-edited
+          // news entry shouldn't break the page. body is intentionally raw
+          // HTML (entries carry their own ul/li markup).
+          html += '<div class="news-date">' + escapeHtml(n.date) + '</div>';
           html += '<div class="news-title" data-news-idx="' + i + '">';
           html += '<span class="news-toggle' + colClass + '">&#9660;</span>';
           if (n.tags) {
             for (var t = 0; t < n.tags.length; t++) {
               var tagClass = n.tags[t] === "Feature" ? "news-tag-feature" : n.tags[t] === "Fix" ? "news-tag-fix" : "news-tag-data";
-              html += '<span class="news-tag ' + tagClass + '">' + n.tags[t] + '</span>';
+              html += '<span class="news-tag ' + tagClass + '">' + escapeHtml(n.tags[t]) + '</span>';
             }
           }
-          html += n.title + '</div>';
+          html += escapeHtml(n.title) + '</div>';
           html += '<div class="news-body' + colClass + '" data-news-body="' + i + '">' + n.body + '</div>';
           html += '</div>';
         }

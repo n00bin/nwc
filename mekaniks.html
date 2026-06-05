@@ -674,6 +674,16 @@
       });
     });
 
+    // Deep links: open the tab named in the URL hash (#view-damage,
+    // #damage, etc.) instead of always landing on Stats.
+    (function () {
+      var h = (location.hash || "").replace(/^#/, "").replace(/^view-/, "");
+      if (!h) return;
+      tabs.forEach(function (tab) {
+        if (tab.getAttribute("data-tab") === h) tab.click();
+      });
+    })();
+
     // Stats data and rendering
     var stats = [
       { section: "Offensive Stats" },

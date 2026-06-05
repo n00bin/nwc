@@ -264,9 +264,11 @@
       // Reply form (only if not resolved)
       if (!isResolved) {
         html += '<div class="reply-form" data-report-id="' + r.id + '">';
-        html += '<textarea class="reply-text" placeholder="Help with this report..." maxlength="1000"></textarea>';
+        html += '<textarea class="reply-text" placeholder="Add in-game evidence, corrected values, or steps to reproduce..." maxlength="1000"></textarea>';
         html += '<div class="reply-form-actions">';
-        html += '<input type="file" class="reply-image-input" accept="image/jpeg,image/png,image/gif,image/webp" style="font-size:0.78rem;max-width:200px;">';
+        html += '<label style="font-size:0.72rem;color:var(--text-muted);display:flex;flex-direction:column;gap:0.15rem;">Screenshot (optional, max 5MB)'
+          + '<input type="file" class="reply-image-input" accept="image/jpeg,image/png,image/gif,image/webp" style="font-size:0.78rem;max-width:200px;">'
+          + '</label>';
         html += '<button class="reply-submit-btn">Reply</button>';
         html += '</div>';
         html += '<div class="reply-msg-feedback"></div>';

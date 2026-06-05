@@ -115,12 +115,12 @@
       <thead><tr>
         <th data-sort="name">Name <span class="sort-arrow"></span></th>
         <th data-sort="prof">Profession <span class="sort-arrow"></span></th>
-        <th data-sort="proficiency">Prof. <span class="sort-arrow"></span></th>
+        <th data-sort="proficiency" title="Artisan's Proficiency stat (higher = better quality results)">Proficiency <span class="sort-arrow"></span></th>
         <th data-sort="focus">Focus <span class="sort-arrow"></span></th>
-        <th data-sort="commission">Comm% <span class="sort-arrow"></span></th>
-        <th data-sort="speed">Speed% <span class="sort-arrow"></span></th>
+        <th data-sort="commission" title="Commission discount/markup vs the standard rate">Commission <span class="sort-arrow"></span></th>
+        <th data-sort="speed" title="Crafting speed bonus vs the standard rate">Speed <span class="sort-arrow"></span></th>
         <th data-sort="skill">Skill <span class="sort-arrow"></span></th>
-        <th data-sort="skillPct">Skill% <span class="sort-arrow"></span></th>
+        <th data-sort="skillPct" title="Chance (%) that this artisan's special skill triggers on each craft">Skill Chance <span class="sort-arrow"></span></th>
       </tr></thead>
       <tbody id="artisan-tbody"></tbody>
     </table></div>
@@ -290,7 +290,7 @@
       mw23.forEach(function(r) { html += '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td>59%</td><td>73%</td><td>77%</td></tr>'; });
       html += '</table>';
       html += '<div class="section-div">Masterwork IV-V</div>';
-      html += '<div class="tip-block"><strong>Strategy:</strong> Normal results with Legendary/Mythic Forgehammer. "It\'s not going to be easy, quick, or cheap."</div>';
+      html += '<div class="tip-block"><strong>Strategy:</strong> Expect normal (non-high) results even with a Legendary/Mythic Forgehammer — masterwork is a long, expensive grind by design. Bring patience and a full wallet.</div>';
       html += '<table class="mw-table"><tr><th>Profession</th><th>MW IV Artisan</th><th>%</th><th>MW V Artisan</th><th>%</th></tr>';
       html += '<tr><td>Alchemy</td><td>Nayet Al-Abta</td><td>70%</td><td>Nayet Al-Abta</td><td>71%</td></tr>';
       html += '<tr><td>Armorsmithing</td><td>Dorfok Guggenston</td><td>69%</td><td>Mitra Lashgari</td><td>71%</td></tr>';
