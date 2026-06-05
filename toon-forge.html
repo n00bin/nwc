@@ -14069,6 +14069,96 @@
       };
     }
 
+    // ===== Role scorers (SINGLE SOURCE OF TRUTH, like computeDpsExpectedDamage) =====
+    // renderSim displays these; the optimizer scores builds through them.
+
+    // TANK: expected damage TAKEN from one boss hit (boss profile in comments
+    // below) + survivability score = how many average boss hits your Max HP
+    // absorbs (values mitigation AND HP pool — minimizing taken alone would
+    // ignore Maximum Hit Points entirely).
+    function computeTankExpectedTaken(mag) {
+      const r = getEngineResult();
+      const TIL = r.totalItemLevel || 0;
+      if (TIL <= 0) return { expected: 0, rows: [], pCritT: 0, pDeflT: 0 };
+      const roleMult = (typeof ROLE_MULT !== "undefined" && ROLE_MULT.tank) ? ROLE_MULT.tank : 1.0;
+      const baseVal = (mag / 100) * (TIL / 10) * roleMult;
+      const stat = n => ((r.stats[n] && r.stats[n].finalPct) || 0) / 100;
+      const awareness = stat("Awareness"), critAvoid = stat("Critical Avoidance"),
+            defense = stat("Defense"), deflect = stat("Deflect"), deflectSev = stat("Deflect Severity");
+      // Boss universal stats: 90% Power, 90% CA (always on tank), 90% CritSev,
+      // 50% crit chance, 0% Accuracy.
+      const ENEMY_POWER = 0.90, ENEMY_CA = 0.90, ENEMY_CRIT_SEV = 0.90, ENEMY_CRIT = 0.50;
+      const incoming = baseVal * (1 + ENEMY_POWER) * (1 + Math.max(0, ENEMY_CA - awareness));
+      const critMult = 1 + Math.max(0, ENEMY_CRIT_SEV - critAvoid);
+      const defenseDiv = 1 + defense;
+      const deflectDiv = 1 + deflectSev;
+      const taken = (crit, defl) => {
+        let d = incoming;
+        if (crit) d *= critMult;
+        d /= defenseDiv;
+        if (defl) d /= deflectDiv;
+        return d;
+      };
+      const pCritT = ENEMY_CRIT, pDeflT = Math.max(0, Math.min(1, deflect));
+      const dStandard = taken(false, false), dCrit = taken(true, false),
+            dDefl = taken(false, true), dCritDefl = taken(true, true);
+      const expected = (1 - pCritT) * (1 - pDeflT) * dStandard + pCritT * (1 - pDeflT) * dCrit
+                     + (1 - pCritT) * pDeflT * dDefl + pCritT * pDeflT * dCritDefl;
+      return { expected, pCritT, pDeflT,
+        rows: [
+          { sc: "Standard hit",   icon: "⚔️", desc: "Boss landed a normal hit on you. No crit, no deflect.",                              p: (1 - pCritT) * (1 - pDeflT), d: Math.round(dStandard) },
+          { sc: "Crit",           icon: "💥", desc: "Boss critically hit you — extra damage from boss Critical Severity.",                p: pCritT * (1 - pDeflT),       d: Math.round(dCrit) },
+          { sc: "Deflected",      icon: "🛡️", desc: "You deflected the hit, reducing the damage taken.",                                  p: (1 - pCritT) * pDeflT,       d: Math.round(dDefl) },
+          { sc: "Crit + Deflect", icon: "⚡", desc: "Boss critted but you deflected — softer than a full crit, but still extra damage.", p: pCritT * pDeflT,             d: Math.round(dCritDefl) },
+        ] };
+    }
+    function computeTankSurvivalScore(mag) {
+      // MITIGATION MULTIPLE: how many times smaller your expected taken hit
+      // is versus a defenseless character (Awareness / Crit Avoid / Defense /
+      // Deflect all zero) under the same boss profile. HP-independent ON
+      // PURPOSE: the engine has no Maximum Hit Points model yet — the
+      // "Maximum Hit Points" stat carries only flat item contributions
+      // (~20k), not the real multi-million pool (base/level/CON unmodeled).
+      // When a real MaxHP model lands, upgrade this to effective HP =
+      // maxHP × mitigation multiple.
+      const m = mag || 100;
+      const t = computeTankExpectedTaken(m);
+      const r = getEngineResult();
+      const TIL = r.totalItemLevel || 0;
+      const roleMult = (typeof ROLE_MULT !== "undefined" && ROLE_MULT.tank) ? ROLE_MULT.tank : 1.0;
+      const baseVal = (m / 100) * (TIL / 10) * roleMult;
+      const rawIncoming = baseVal * (1 + 0.90) * (1 + 0.90);          // boss Power + full CA, no Awareness
+      const rawExpected = 0.5 * rawIncoming + 0.5 * rawIncoming * (1 + 0.90);  // 50% crit, full boss CritSev, no defenses
+      return { score: t.expected > 0 ? rawExpected / t.expected : 0, taken: t.expected, rawExpected };
+    }
+
+    // HEALER: expected heal per cast.
+    //   Heal = base × (1 + Power) × (1 + Outgoing Healing) × (1 + Overall
+    //   Outgoing Healing) × (1 + CritSev/2 on crit — halved for heals).
+    //   OOH is the UNCAPPED off-panel multiplier (see mekaniks / OH-vs-OOH
+    //   docs) — the healer equivalent of the DPS uncapped damage bonuses.
+    function computeHealExpectedHeal(mag) {
+      const r = getEngineResult();
+      const TIL = r.totalItemLevel || 0;
+      if (TIL <= 0) return { expected: 0, rows: [], pCritH: 0 };
+      const roleMult = (typeof ROLE_MULT !== "undefined" && ROLE_MULT.heal) ? ROLE_MULT.heal : 1.0;
+      const baseVal = (mag / 100) * (TIL / 10) * roleMult;
+      const stat = n => ((r.stats[n] && r.stats[n].finalPct) || 0) / 100;
+      const power = stat("Power"), outgoing = stat("Outgoing Healing"),
+            ooh = stat("Overall Outgoing Healing"),
+            critSev = stat("Critical Severity"), critStrike = stat("Critical Strike");
+      const healMult = (1 + power) * (1 + outgoing) * (1 + ooh);
+      const critHealMult = (1 + critSev / 2);
+      const baseHeal = baseVal * healMult;
+      const critHeal = baseVal * healMult * critHealMult;
+      const pCritH = Math.max(0, Math.min(1, critStrike));
+      return { expected: (1 - pCritH) * baseHeal + pCritH * critHeal, pCritH,
+        rows: [
+          { sc: "Base heal", icon: "💚", desc: "Standard heal — no critical.",                                             p: 1 - pCritH, d: Math.round(baseHeal) },
+          { sc: "Crit heal", icon: "✨", desc: "Critical heal. Crit Severity is halved on heals, so the bonus is smaller.", p: pCritH,     d: Math.round(critHeal) },
+        ] };
+    }
+
     function renderSim() {
       const magInput = document.getElementById("sim-mag");
       const body = document.getElementById("sim-body");
@@ -14143,68 +14233,26 @@
       // -------------------------------------------------------
       let rows, expected, dpsNote = "";
       if (isTank) {
-        const ENEMY_POWER     = 0.90;
-        const ENEMY_CA        = 0.90;
-        const ENEMY_CRIT_SEV  = 0.90;
-        const ENEMY_CRIT      = 0.50;
-
-        const incoming = baseVal * (1 + ENEMY_POWER) * (1 + Math.max(0, ENEMY_CA - awareness));
-        const critMult   = 1 + Math.max(0, ENEMY_CRIT_SEV - critAvoid);
-        const defenseDiv = 1 + defense;
-        const deflectDiv = 1 + deflectSev;   // enemy Accuracy is 0%
-
-        const taken = (crit, defl) => {
-          let d = incoming;
-          if (crit) d *= critMult;
-          d /= defenseDiv;
-          if (defl) d /= deflectDiv;
-          return Math.round(d);
-        };
-
-        const dStandard = taken(false, false);
-        const dCrit     = taken(true,  false);
-        const dDefl     = taken(false, true);
-        const dCritDefl = taken(true,  true);
-
-        const pCritT = ENEMY_CRIT;             // 50% boss crit
-        const pDeflT = Math.max(0, Math.min(1, deflect));   // your deflect chance
-        const pStd   = (1 - pCritT) * (1 - pDeflT);
-        const pCo    = pCritT       * (1 - pDeflT);
-        const pDf    = (1 - pCritT) * pDeflT;
-        const pCD    = pCritT       * pDeflT;
-
-        expected = Math.round(pStd * dStandard + pCo * dCrit + pDf * dDefl + pCD * dCritDefl);
-
-        rows = [
-          { sc: "Standard hit",   icon: "⚔️", desc: "Boss landed a normal hit on you. No crit, no deflect.",                                p: pStd, d: dStandard },
-          { sc: "Crit",           icon: "💥", desc: "Boss critically hit you — extra damage from boss Critical Severity.",                  p: pCo,  d: dCrit     },
-          { sc: "Deflected",      icon: "🛡️", desc: "You deflected the hit, reducing the damage taken.",                                    p: pDf,  d: dDefl     },
-          { sc: "Crit + Deflect", icon: "⚡", desc: "Boss critted but you deflected — softer than a full crit, but still extra damage.",   p: pCD,  d: dCritDefl },
-        ];
+        // SINGLE SOURCE OF TRUTH: same function the optimizer scores with.
+        const _tank = computeTankExpectedTaken(mag);
+        expected = Math.round(_tank.expected);
+        rows = _tank.rows;
+        const _surv = computeTankSurvivalScore(mag);
+        if (_surv.score > 0) {
+          dpsNote = `<div style="font-size:0.78rem;color:var(--text-muted);margin:0.35rem 0 0.2rem;line-height:1.55;">`
+            + `Your defenses shrink the average boss hit to <strong style="color:var(--text)">1/${_surv.score.toFixed(2)}</strong> of what a defenseless character would take `
+            + `(a <strong style="color:var(--text)">×${_surv.score.toFixed(2)}</strong> mitigation multiple — this is the number a Tank optimization maximizes).`
+            + `</div>`;
+        }
       }
       // -------------------------------------------------------
-      // HEALER MODE: Heal = base × (1 + Power) × (1 + OH)
-      //              × (1 + CritSev/2) on crit  [crit sev is halved on heals]
-      // No flank, no enemy defense, no deflect (heals land on allies).
+      // HEALER MODE — SINGLE SOURCE OF TRUTH: computeHealExpectedHeal
+      // (now includes the uncapped Overall Outgoing Healing multiplier).
       // -------------------------------------------------------
       else if (isHealer) {
-        const healMult = (1 + power) * (1 + outgoing);
-        // Mekaniks: Critical Severity is HALVED for healing. So a +60%
-        // CritSev character gets +30% bonus on a crit-heal.
-        const critHealMult = (1 + critSev / 2);
-
-        const baseHeal = Math.round(baseVal * healMult);
-        const critHeal = Math.round(baseVal * healMult * critHealMult);
-
-        const pCritH = Math.max(0, Math.min(1, critStrike));
-        const pBaseH = 1 - pCritH;
-
-        expected = Math.round(pBaseH * baseHeal + pCritH * critHeal);
-
-        rows = [
-          { sc: "Base heal", icon: "💚", desc: "Standard heal — no critical.",                                                  p: pBaseH, d: baseHeal },
-          { sc: "Crit heal", icon: "✨", desc: "Critical heal. Crit Severity is halved on heals, so the bonus is smaller.",      p: pCritH, d: critHeal },
-        ];
+        const _heal = computeHealExpectedHeal(mag);
+        expected = Math.round(_heal.expected);
+        rows = _heal.rows;
       } else {
         // -------------------------------------------------------
         // DPS / TANK MODE: full damage formula
