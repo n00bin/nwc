@@ -33,8 +33,15 @@ Entries written by the parser carry `"parsedFrom": "description"`.
 | Batch | Date | Structured | Names covered |
 |---|---|---|---|
 | 1 | 2026-06-04 | **933 instances / 84 names** | Survivor's/Challenger's/Warden's/Gladiator's/Leader's/Death Defier's/Executioner's/Charged/Skirmisher's families, Hunter family (enemy-type + Undermountain), The Ol' Switcheroo, health-threshold Survivor's pairs, Heroic Tactics, Focused Rejuvenation, Skyhold Predator, Occult Advantage, more |
+| 2 | 2026-06-04 | **387 instances / 86 names** | Start-of-combat surges (Contender's, Call of the Undermountain), range/positional gates (Brute's Advantage, Sniper's Fury, Maiden's Blade), solo gates (Herald's), more resource/health thresholds (Charged Precision/Mastery, Unfaltered, Depleted, Champion's), per-player percent/MaxHP/MS (Leader's Dash/Vitality, Harmony pair w/ party-scope aura), Rising Power/Defense stacks, Butcher's Might/Guard, zone families (Chult, Wildspace split, themed maps split), class-resource (Divine Muse, Resourceful Forte), chance-procs incl. multi-stat (Sudden Intuition), Tactical Defense salvage, simple always-on catch-alls |
 
-Remaining: ~1,652 text-only instances (550 unique names), mostly low-frequency.
+Batch-2 conventions added: "X% in <zone> / Y% elsewhere" decomposes into
+Y% always-on + (X−Y)% zone-gated (exact in both contexts); mixed lines with
+an unmodelable proc + a flat always-on clause keep the prose and salvage
+the flat clause; over/greater thresholds = on, under/below = conditional.
+
+Remaining: **1,081 text-only instances (454 unique names)** + 293 instances
+skip-listed by pattern (heal/damage/AP/cooldown procs, random-stat effects).
 
 ## Skipped by design (no engine layer yet — do NOT structure as stats)
 - Encounter Reprieve (52): cooldown-reduction proc
