@@ -113,6 +113,20 @@ For proc effects that change with rarity, use `effectScaling` in procEffect:
 ```
 Placeholders `{key}` in the effect text get replaced with the value for the selected rarity.
 
+### Structured procEffect stats (statEffects)
+For procs whose effect is a stat buff, `procEffect.statEffects` carries structured entries:
+```json
+"statEffects": [{ "stat": "Maximum Hit Points", "value": 3000, "type": "flat", "scope": "self" }]
+```
+- `type`: `"percent"` (a % buff) | `"rating"` (a rating amount) | `"flat"` (a flat pool
+  amount, used for Maximum Hit Points). The engine routes `"flat"` and `"rating"`
+  identically (non-percent); `"flat"` is the convention for HP pools.
+- `scope`: `"self"` | `"party"` (party-wide stacks, e.g. Part of the Pack) | `"enemy"` (debuff — engine skips).
+- Trigger `"Passive"` + `chance: 100` + no duration/stacks + self scope = always-on:
+  the engine counts it in the BASE stat panel (not behind Show Conditional).
+- Known intentional outlier: Energon (power 201) gives +35,000 MaxHP at IL 750 —
+  game-verified, deliberately NOT on the MAX_HP scale. Don't normalize it.
+
 ---
 
 ## Mount Data Schema
