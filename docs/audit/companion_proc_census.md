@@ -38,11 +38,14 @@ Future: a content-zone/enemy-type sim setting could activate them.
   non-combat; correctly invisible to the optimizer forever.
 
 ## Needs in-game verification before structuring (do not guess)
-- [247] "Battiri's Wisdom" (+13.5% vs Bosses in text, `stats[]` empty) —
-  need its base-rarity value to store scale-correct stats.
-- [126] Repentant Cultist's Discipline (Daily +3.8% above 50% HP, doubled
-  vs Dragons; `stats[]` empty) — same.
-- [20] Celestial Lion (stacking radiant damage, no stated stack cap).
+- ~~[247] "Battiri's Wisdom"~~ RESOLVED 2026-06-04: n00b's AH-inspect
+  screenshots proved it was a duplicate of Batiri's Wisdom (164) captured
+  at Mythic — 8.25@IL550 × 900/550 = 13.5 exactly. Orphan deleted. Bonus:
+  empirically confirms linear IL scaling for companion values.
+- ~~[126] Repentant Cultist's Discipline~~ RESOLVED 2026-06-04: verified at
+  two rarities (1.5%@IL150 AH inspect + 3.8%@IL375 archive screenshot, same
+  linear curve); structured as a conditional Daily Damage statEffect.
+- [20] Celestial Lion (stacking radiant damage, no stated stack cap) — still open.
 
 ## UPDATE — proc-damage layer SHIPPED (2026-06-04, same day)
 The "~22 magnitude damage procs" above are now modeled. `PROC_DAMAGE`
