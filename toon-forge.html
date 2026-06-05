@@ -10724,12 +10724,22 @@
         // Regen because it's not in an active slot too.
         if (!isSummoned) {
           const percentStats = {};
+          const ratingStats = {};
           for (const st of (power.stats || [])) {
             if (!st || !st.stat) continue;
-            percentStats[st.stat] = (percentStats[st.stat] || 0) + (st.value || 0) * scale;
+            // Companion power stats are percent-valued EXCEPT Maximum Hit
+            // Points, which is a FLAT pool value (MAX_HP scaling table:
+            // 1,500 @ IL75 → 18,000 @ IL900). Routing it as percent was a
+            // latent bug: nothing consumed MaxHP percents until the HP
+            // model landed — then "+18,000%" HP exploded the pool.
+            if (st.stat === "MaximumHitPoints" || st.stat === "Maximum Hit Points") {
+              ratingStats[st.stat] = (ratingStats[st.stat] || 0) + (st.value || 0) * scale;
+            } else {
+              percentStats[st.stat] = (percentStats[st.stat] || 0) + (st.value || 0) * scale;
+            }
           }
-          if (Object.keys(percentStats).length) {
-            buffs.push({ source: label + " bonus (" + r + ")", percentStats });
+          if (Object.keys(percentStats).length || Object.keys(ratingStats).length) {
+            buffs.push({ source: label + " bonus (" + r + ")", percentStats, ratingStats });
           }
         }
         // Proc effect with structured stat data — push as conditional so
@@ -14113,23 +14123,16 @@
         ] };
     }
     function computeTankSurvivalScore(mag) {
-      // MITIGATION MULTIPLE: how many times smaller your expected taken hit
-      // is versus a defenseless character (Awareness / Crit Avoid / Defense /
-      // Deflect all zero) under the same boss profile. HP-independent ON
-      // PURPOSE: the engine has no Maximum Hit Points model yet — the
-      // "Maximum Hit Points" stat carries only flat item contributions
-      // (~20k), not the real multi-million pool (base/level/CON unmodeled).
-      // When a real MaxHP model lands, upgrade this to effective HP =
-      // maxHP × mitigation multiple.
+      // EFFECTIVE HP: how many average boss hits your Max HP absorbs.
+      // Max HP comes from the engine's HP model (mekaniks-verified:
+      // TIL×10 × (1 + role bonus) + item flats, × (1 + CON×0.5%) ×
+      // (1 + MaxHP%) — constants tunable in TOON_FORGE_HP_MODEL, pending a
+      // fresh in-game calibration screenshot). Values mitigation AND pool.
       const m = mag || 100;
       const t = computeTankExpectedTaken(m);
       const r = getEngineResult();
-      const TIL = r.totalItemLevel || 0;
-      const roleMult = (typeof ROLE_MULT !== "undefined" && ROLE_MULT.tank) ? ROLE_MULT.tank : 1.0;
-      const baseVal = (m / 100) * (TIL / 10) * roleMult;
-      const rawIncoming = baseVal * (1 + 0.90) * (1 + 0.90);          // boss Power + full CA, no Awareness
-      const rawExpected = 0.5 * rawIncoming + 0.5 * rawIncoming * (1 + 0.90);  // 50% crit, full boss CritSev, no defenses
-      return { score: t.expected > 0 ? rawExpected / t.expected : 0, taken: t.expected, rawExpected };
+      const maxHP = (r.stats["Maximum Hit Points"] && r.stats["Maximum Hit Points"].flat) || 0;
+      return { score: t.expected > 0 ? maxHP / t.expected : 0, taken: t.expected, maxHP };
     }
 
     // HEALER: expected heal per cast.
@@ -14240,8 +14243,9 @@
         const _surv = computeTankSurvivalScore(mag);
         if (_surv.score > 0) {
           dpsNote = `<div style="font-size:0.78rem;color:var(--text-muted);margin:0.35rem 0 0.2rem;line-height:1.55;">`
-            + `Your defenses shrink the average boss hit to <strong style="color:var(--text)">1/${_surv.score.toFixed(2)}</strong> of what a defenseless character would take `
-            + `(a <strong style="color:var(--text)">×${_surv.score.toFixed(2)}</strong> mitigation multiple — this is the number a Tank optimization maximizes).`
+            + `At <strong style="color:var(--text)">${Math.round(_surv.maxHP).toLocaleString()}</strong> Max HP you can absorb about `
+            + `<strong style="color:var(--text)">${_surv.score.toFixed(1)}</strong> average boss hits before dying (with no healing) — `
+            + `this "hits you can take" number is what a Tank optimization maximizes. Both mitigation and HP pool count.`
             + `</div>`;
         }
       }

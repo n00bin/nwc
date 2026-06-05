@@ -102,6 +102,13 @@
   // Maps every known damage-boost stat-name variant (spaced + camelCase)
   // to a bucket on result.damageBoosts. Returns true if the name was a
   // damage boost (so addRating/addPercent stop treating it as unknown).
+  // Max HP model constants (see the Maximum Hit Points branch in finalize).
+  var TOON_FORGE_HP_MODEL = {
+    perTIL: 10,                                  // base HP = TIL x 10
+    roleBonus: { dps: 0.0, tank: 0.20, heal: 0.10, healer: 0.10 },
+    conPerPoint: 0.005                           // +0.5% Max HP per CON point
+  };
+
   var DAMAGE_BUCKET_MAP = {
     // generic damage % + outgoing damage (one multiplicative category)
     "Dmg Bonus": "generic", "Damage Bonus": "generic", "DmgBonus": "generic",
@@ -508,7 +515,7 @@
     return null;  // unverified or no cap
   }
 
-  function finalize(result) {
+  function finalize(result, character) {
     var TIL = result.totalItemLevel || 0;
 
     for (var i = 0; i < TOON_FORGE_STATS.length; i++) {
@@ -521,6 +528,33 @@
       // a flat addition. percentTotal is a multiplier on top.
       // Engine surfaces both; UI computes final = (base + flat) × (1 + pct/100).
       if (def.kind === "flat") {
+        if (def.name === "Maximum Hit Points") {
+          // ===== Max HP model (mekaniks.html, in-game verified formula) =====
+          //   MaxHP = (TIL x 10 x (1 + role bonus) + flat item HP)
+          //           x (1 + CON x 0.5%) x (1 + MaxHP% sources)
+          // Sources: in-game TIL tooltip ("Your Total Item Level determines
+          // your base Maximum Hit Points"), mekaniks stat card ("(TIL x 10 +
+          // role bonus + item HP) x (1 + CON / 200)"; Tanks +20%, Healers
+          // +10%), CON card (x0.5% per point). All constants TUNABLE below;
+          // calibrate against a real character sheet (anchor on file: Erik,
+          // healer Paladin, TIL 126,775 / CON 14 -> 1,588,795 HP).
+          var HPM = TOON_FORGE_HP_MODEL;
+          var tilHP = (result.totalItemLevel || 0) * HPM.perTIL;
+          var roleKeyHP = String((character && character.role) || "dps").toLowerCase();
+          var roleBonusHP = HPM.roleBonus[roleKeyHP] != null ? HPM.roleBonus[roleKeyHP] : 0;
+          var abilHP = (character && character.abilityScores) || {};
+          var conHP = (abilHP.con != null ? abilHP.con : (abilHP.CON != null ? abilHP.CON : 10));
+          var itemFlatHP = (s.flat || 0) + s.ratingTotal;
+          var hpFinal = (tilHP * (1 + roleBonusHP) + itemFlatHP)
+                      * (1 + conHP * HPM.conPerPoint)
+                      * (1 + (s.percentTotal || 0) / 100);
+          s.hpModel = { base: tilHP, roleBonus: roleBonusHP, itemFlat: itemFlatHP, con: conHP, pct: s.percentTotal || 0 };
+          s.flat = hpFinal;
+          s.ratingContribPct = 0;
+          s.finalPct = 0;
+          s.capReached = false;
+          continue;
+        }
         s.flat = (s.flat || 0) + s.ratingTotal;
         s.ratingContribPct = 0;
         s.finalPct = 0;
@@ -594,7 +628,7 @@
     aggregatePercents(character, result);
     aggregateAbilityScores(character, result);
     applyForte(character, result);
-    finalize(result);
+    finalize(result, character);
     return result;
   }
 
