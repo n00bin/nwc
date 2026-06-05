@@ -8,6 +8,9 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of 2026-06-05 (since last publish)
 
+### Features
+- **Clearer everywhere — audit polish pass.** The home page's Artifacts card now shows live database counts (138 artifacts & 38 sets — the old hardcoded label said 61 & 18!). Mount ranking tabs and insignia filters explain themselves on hover. Profession table headers spell out Proficiency / Commission / Skill Chance. Links into Mekaniks now open the right tab. The one unverified campaign booster is clearly marked UNCONFIRMED. And on phones, Toon Forge now shows its "Experimental" explanation instead of hiding it behind a hover tooltip.
+
 ### Bug Fixes
 - **Toon Forge — Max HP was counting Constitution twice.** The engine applied CON's +0.5%-per-point HP bonus in two different places, so every Max HP figure ran about 7% high (at CON 14: ×1.07 applied twice). Found in the June 5 full-site audit; one of the two paths removed and verified with a before/after check. Max HP numbers across all builds are now slightly lower and correct.
 - **Friendlier error messages site-wide.** The patch notes page now tells you when it couldn't load (instead of showing a blank page), and the Reports page speaks plain English when something fails ("Couldn't update the status — check your connection and try again") instead of raw technical codes. Replying on one report no longer locks the reply box on every other report.
