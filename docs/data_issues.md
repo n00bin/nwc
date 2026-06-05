@@ -23,36 +23,47 @@ PARKED — same-name pairs that are NOT exact dups, need judgment/in-game check:
   STRUCTURE (one parsed/structured, one prose-only — possibly different
   bonus magnitudes too). Reconcile the bonus content, keep one entry each.
 
-## Six clothing variants fully transcribed, awaiting slot confirmation (OPEN, 2026-06-05)
+## Six clothing variants from 2026-06-02 screenshots — RESOLVED 2026-06-05 (one verify left)
 
-Collection-preview screenshots (2026-06-02 batch) captured the SECOND variant of six
-clothing pieces. Tooltips omit the slot ([[reference_nw_collection_slot_per_variant]]),
-so they are NOT in gear.json yet. Full transcriptions below are verified from crisp 1.3x
-crops; archived in `website/docs/calibration/inbox/_needs_verify/`. **Only the slot
-(Shirt vs Pants) needs an in-game check** — then they can be inserted as-is.
+Resolution of the section previously titled "Six clothing variants fully transcribed,
+awaiting slot confirmation":
 
-All five Marks: +1.5% Movement Speed, CR 2,340 (IL 2600 derived from CR=0.9×IL, matches
-the in-db Glorious Undead family), Requires Level 20. The in-db "Mark of the …" entries
-(ids 494–499, verified 2026-05-17) are the OTHER variants — different stats/bonuses,
-same display names. Do not overwrite them.
+- **The five Mark variants were ALREADY in gear.json** — ids 500 (Convert — Survivor's
+  Remedy, Shirt), 501 (Adept — Healing Tactics, Shirt), 502 (Fledgling — Healing
+  Tactics, Shirt), 504 (Recruit — Solitary Power, Shirt), 505 (Initiate — Solitary
+  Power, Pants), all noted "Verified in-game 2026-05-17". The earlier transcription
+  pass missed them (it checked the bare display names, which match ids 494–499, and
+  concluded the variants were absent). The 2026-06-02 screenshots re-confirm all five
+  stat-for-stat. No insertion was needed.
+- **Bloodwoven Brands — Warden's Defense ADDED as id 6870** (Pants — slot confirmed by
+  n00b 2026-06-05; IL 3150, CR 2,835).
+- Set-bonus text corrections applied from the same screenshots: Enchanted Forte 2pc
+  is **+3,000 Forte** (was +1,000 in ids 495/496/501/502); legacy `setBonus` strings
+  on 494/500 (+3,000 Awareness), 497/499 (+3,000 Accuracy, replacing a speculative
+  "+3% Combat Advantage" note), and 467 (**+2% Awareness** — the Dark Magic family
+  bonus is a percent, unlike the Glorious Undead family's flat +3,000 rating).
+  Structured Set entries added to 467/497/499, which previously had none.
 
-| Item | Stats | Equip bonus | Set (2pc) |
-|---|---|---|---|
-| Mark of the Convert | Accuracy 1,524 / Awareness 1,248 / Deflect 1,755 | Survivor's Remedy (Greater): 5% chance on taking damage to restore 8% Max HP (15s ICD) | Enchanted Awareness — Glorious Undead Defence Shirt+Pants: +3,000 Awareness |
-| Mark of the Adept | Critical Strike 1,404 / Control Resistance 1,170 / Outgoing Healing 1,248 | Healing Tactics: Stamina >75% → +7,275 Outgoing Healing | Enchanted Forte — Glorious Undead Healer Shirt+Pants: +3,000 Forte |
-| Mark of the Initiate | Critical Strike 1,872 / Critical Severity 1,404 / Deflect 1,755 | Solitary Power: vs one enemy gain 2.5% Power (divided by enemy count) | Enchanted Advantage — Glorious Undead Offence Shirt+Pants: +3,000 Accuracy |
-| Mark of the Recruit | Combat Advantage 936 / Critical Strike 1,872 / Defense 819 | Solitary Power (same text) | Enchanted Advantage: +3,000 Accuracy |
-| Mark of the Fledgling | Critical Strike 1,404 / Defense 819 / Forte 1,404 | Healing Tactics (same text) | Enchanted Forte: +3,000 Forte |
+STILL OPEN — in-game checks:
+- **id 6870 Defense 1,323**: the tooltip's first stat line was clipped by scrolling in
+  both captures; recovered at 6x as "+1,3?3 Defe…" and matches sibling id 467's
+  Defense 1,323. Verify the value in-game. Evidence kept in
+  `inbox/_needs_verify/Bloodwoven Brands - Warden's Defense_IL3150.png` and
+  `inbox/gear/accessories/Bloodwoven Brands — Warden's Defense_IL3150.png`.
+- **id 500 Accuracy 1,521 vs 1,524**: the 2026-06-05 transcription pass read 1,524
+  from its crop; the db (in-game verified 2026-05-17) says 1,521. The 2026-06-02
+  capture clips that line. One digit is an OCR misread — confirm while checking 6870.
 
-Sixth item — **Bloodwoven Brands (Warden's Defense)**, IL 3150 family, CR 2,835:
-Critical Avoidance 1,559 / Control Resistance 1,418 / +1.5% Action Point Gain.
-Equip: Warden's Defense — "Whenever you are damaged for more than 15% of your Maximum
-Hit Points in a single blow, you gain 5% Defense for 10 seconds." Set Enchanted
-Awareness (Dark Magic Defence Shirt+Pants): +2% Awareness. This is the variant id 467's
-note already predicted ("co-exists with Warden's Defense version"). TWO caveats: the
-tooltip was scrolled, so (a) a possible first stat line is occluded (sibling id 467 has
-Defense 1,323 in that position — verify), and (b) slot unknown (id 467 is the verified
-Shirt; per the per-variant rule we do not infer Pants by elimination).
+KNOWN HAZARD (display-only, documented not fixed): the set name **"Enchanted
+Awareness" is used by two different in-game sets** — Glorious Undead Defence
+Shirt+Pants (IL 2600, 2pc +3,000 Awareness; ids 494/500) and Dark Magic Defence
+Shirt+Pants (IL 3150, 2pc +2% Awareness; ids 467/6870). toon-forge.html
+`countSetPieces()` keys on `setName` alone, so equipping a Glorious Undead Shirt with
+the Dark Magic Pants (id 6870) shows a false "set complete" badge. No stat corruption:
+these Set entries carry description text only (no stat/amount), so the engine applies
+nothing. Proper fix: key set matching on setName + setPieces signature when
+`setPieces` is present — needs a sweep first to confirm partner pieces carry
+consistent `setPieces` arrays, else currently-working sets would silently break.
 
 ## Toon Forge: artifact weapons in pickers — FIXED, residual data cleanup (2026-05-31)
 
