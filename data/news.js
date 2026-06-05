@@ -1,6 +1,26 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "June 5, 2026",
+    title: "Damage Procs Now Count, Real Max HP & Role-True Sims",
+    tags: ["Feature", "Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li><strong>Toon Forge — companion damage procs now count.</strong> Companions whose real value is a damage proc (Xuna's poison, Black Scorpion's sting, Hank the Ranger's bleed, Elminster's lightning, Spined Devil's spines, and ~17 more) used to contribute nothing to the damage estimate — their procs were tooltip text only. The damage sim now models them properly: proc chance × how often the trigger happens in a real rotation (crit-based procs even scale with your actual crit chance) × the proc's magnitude at your companion's rarity. The damage readout shows the bonus and which companions provide it, and the numbers line up with community testing (a Mythic+ Xuna adds ~14%). Companion choices in the sim just got a lot more honest.</li>" +
+      "<li><strong>Toon Forge — gear damage procs now count too.</strong> Same treatment for gear: bonuses like Critical Force, Daily Burst, Explosive Force and Summon Myconid now feed the damage estimate at their real cadence (chance × trigger rate, respecting internal cooldowns). Magnitude-based procs scale with your build; flat-damage procs are counted at face value — which correctly shows them fading at endgame.</li>" +
+      "<li><strong>Toon Forge — Maximum Hit Points is now modeled for real.</strong> The Max HP number used to show only the flat HP printed on your items (~20k); now it computes the full in-game formula — base HP from your Total Item Level (×10), the role bonus (Tanks +20%, Healers +10%), Constitution (+0.5% per point), your items' flat HP, and percent-HP bonuses — landing in the realistic millions that match your character sheet. This also powers a new Tank readout: how many average boss hits you can absorb.</li>" +
+      "<li><strong>Toon Forge — role-true damage sim upgrades.</strong> The Healer sim now includes the uncapped <strong>Overall Outgoing Healing</strong> multiplier (bonuses worded \"Overall Outgoing Healing\" were previously shown on the stat sheet but not counted in the heal estimate). The Tank sim gained a plain-English <strong>mitigation multiple</strong> readout — how many times smaller the average boss hit is thanks to your defenses.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Toon Forge — always-on companion passives now count in your base stats.</strong> 16 companion bonus powers that are permanent passives in game (Stormrider's +3,000 Max HP, Skeletal Dog's +15,000 Max HP, Neverwinter Knight's boss damage, Xegut's Insight, and 12 more) were filed under the \"Show Conditional\" toggle, so the default stat panel quietly undercounted them. They now land in the base panel at full value — Tank Max HP scores in particular get more honest. Genuinely situational procs (stacking buffs, party-dependent effects like Part of the Pack) correctly stay behind the toggle. A related companion data bug — flat HP values counting as percent — was fixed along the way.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li><strong>The Slaughterhouse collection — all 24 armor pieces added.</strong> Full Head/Armor/Arms/Feet sets for six armor families from the Soul Collector Campaign Store, all at Item Level 4,050: Whispersilk (Warlock/Wizard), Gladebind (Warlock/Bard), Thistledown (Rogue/Cleric/Bard/Ranger), Oakenthorn (Paladin/Barbarian/Fighter), Ambersteel (Paladin/Cleric), and Ironblossom (Barbarian/Fighter). Every piece includes its exact stats and equip bonus text (Channeler's Focus, Critical Force, Fount of Healing, and more) — note that the same bonus name can roll different numbers on different families, and those per-item differences are captured.</li>" +
+      "</ul>"
+  },
+  {
     date: "June 4, 2026",
     title: "Massive Gear Audit, 1,300+ Bonuses Now Count & Pack Meta Toggle",
     tags: ["Feature", "Fix", "Data"],
