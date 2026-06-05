@@ -9793,6 +9793,56 @@
       return 1.0;  // always-on
     }
 
+    // ===== Companion proc-damage layer (TUNABLE config) =====
+    // Converts active companions' damage procs ("10% chance on hit to deal X
+    // magnitude") into expected bonus magnitude per player hit. Sources are
+    // the structured procEffect.procDamage fields in companion data
+    // (magnitude at base rarity — scaled by compRarityScale like stats — or
+    // magnitudeKey resolving through effectScaling per rarity).
+    // Approximation, documented: proc damage rides the same Power/Crit/CA
+    // multiplier chain as player hits (NW companion procs scale with player
+    // stats). Trigger rates mirror CONDITIONAL_UPTIME.proc's rotation model.
+    const PROC_DAMAGE = {
+      HIT_RATE: 2.0,   // player hits/sec (rotation estimate)
+      rates: { hit: 2.0, atwill: 1.4, encounter: 0.3, daily: 0.07, struck: 0.3 }
+      // crit / noncrit derive dynamically: HIT_RATE × pCrit / × (1 − pCrit)
+    };
+    function computeCompanionProcMagPerHit(pCrit) {
+      const out = { magPerHit: 0, contributors: [] };
+      if (typeof COMPANIONS_DATA === "undefined") return out;
+      const rarities = Array.isArray(state.activeCompRarities) ? state.activeCompRarities : [];
+      let magPerSec = 0;
+      for (let i = 0; i < (state.activeComps || []).length; i++) {
+        const nm = state.activeComps[i]; if (!nm) continue;
+        const c = findCompanionByName(nm); if (!c || c.powerRef == null) continue;
+        const pw = findCompanionPower(c.powerRef); if (!pw || !pw.procEffect) continue;
+        const pd = pw.procEffect.procDamage; if (!pd) continue;
+        const rarity = rarities[i] || state.companionRarity || "Mythic";
+        let mag = 0;
+        if (pd.magnitudeKey && pw.procEffect.effectScaling && pw.procEffect.effectScaling[pd.magnitudeKey]) {
+          const il = COMPANION_RARITY_IL[rarity] || 750;
+          mag = Number(pw.procEffect.effectScaling[pd.magnitudeKey][String(il)] || 0);
+        } else if (pd.magnitude != null) {
+          mag = pd.magnitude * compRarityScale(rarity, pw);
+        }
+        if (!(mag > 0)) continue;
+        const ch = (pw.procEffect.chance != null ? pw.procEffect.chance : 100) / 100;
+        const key = pd.triggerRateKey || "hit";
+        let rate;
+        const pc = Math.max(0, Math.min(1, pCrit || 0));
+        if (key === "crit") rate = PROC_DAMAGE.HIT_RATE * pc;
+        else if (key === "noncrit") rate = PROC_DAMAGE.HIT_RATE * (1 - pc);
+        else rate = (PROC_DAMAGE.rates[key] != null) ? PROC_DAMAGE.rates[key] : PROC_DAMAGE.rates.hit;
+        let procsPerSec = rate * ch;
+        if (pd.icdSeconds) procsPerSec = Math.min(procsPerSec, 1 / pd.icdSeconds);
+        const mps = procsPerSec * mag;
+        magPerSec += mps;
+        out.contributors.push({ source: nm + " — " + pw.name, magPerHit: mps / PROC_DAMAGE.HIT_RATE });
+      }
+      out.magPerHit = magPerSec / PROC_DAMAGE.HIT_RATE;
+      return out;
+    }
+
     function buildEngineCharacter(s) {
       // Resolve gear: state.gear is { "Head": "name string", ... };
       // engine wants { "Head": gearObject }.
@@ -13960,8 +14010,14 @@
       const cleanAvg = pBase * dBase + pFlank * dFlank + pCritOnly * dCrit + pBoth * dBoth;
       // Deflect is an INDEPENDENT chance — a deflected hit can still crit/flank.
       const deflectMult = 1 - pDeflect * (1 - 1 / deflectDivide);
+      // Companion proc-damage layer: expected bonus magnitude per hit from
+      // active companions' damage procs (Xuna, Black Scorpion, …), folded in
+      // multiplicatively — proc damage rides the same stat-multiplier chain.
+      const procs = computeCompanionProcMagPerHit(pCrit);
+      const procMult = 1 + procs.magPerHit / Math.max(1, mag);
       return {
-        expected: cleanAvg * deflectMult,
+        expected: cleanAvg * deflectMult * procMult,
+        procDamage: { pctOfHit: procs.magPerHit / Math.max(1, mag) * 100, contributors: procs.contributors },
         pCrit, effFlank, pDeflect, deflLoss: 1 - deflectMult, deflCut: 1 - 1 / deflectDivide,
         rows: [
           { sc: "Normal — no crit, no Combat Advantage", icon: "⚔️", desc: "The hit did NOT critically strike and you were NOT flanking. Your plain baseline hit.", p: pBase, d: Math.round(dBase) },
@@ -14125,9 +14181,13 @@
         expected = Math.round(_dps.expected);
         rows = _dps.rows;
         // Short, plain-English readout. The cards self-explain, so keep this brief.
+        const _pd = _dps.procDamage;
         dpsNote = `<div style="font-size:0.78rem;color:var(--text-muted);margin:0.35rem 0 0.2rem;line-height:1.55;">`
           + `You crit about <strong style="color:var(--text)">${Math.round(_dps.pCrit * 100)}%</strong> of the time and have Combat Advantage <strong style="color:var(--text)">${Math.round(_dps.effFlank * 100)}%</strong> of the time — the cards below cover every case.`
           + (_dps.pDeflect > 0 ? ` The enemy deflects about <strong style="color:var(--text)">${Math.round(_dps.pDeflect * 100)}%</strong> of your hits for a little less; that's already counted in the average.` : ``)
+          + ((_pd && _pd.pctOfHit > 0.05)
+            ? ` Your companions' damage procs add about <strong style="color:var(--text)">+${_pd.pctOfHit.toFixed(1)}%</strong> on top (${_pd.contributors.map(c => c.source.split(" — ")[0]).join(", ")}) — included in the number above.`
+            : ``)
           + `</div>`;
       }
 

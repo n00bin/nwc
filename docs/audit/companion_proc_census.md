@@ -43,3 +43,19 @@ Future: a content-zone/enemy-type sim setting could activate them.
 - [126] Repentant Cultist's Discipline (Daily +3.8% above 50% HP, doubled
   vs Dragons; `stats[]` empty) — same.
 - [20] Celestial Lion (stacking radiant damage, no stated stack cap).
+
+## UPDATE — proc-damage layer SHIPPED (2026-06-04, same day)
+The "~22 magnitude damage procs" above are now modeled. `PROC_DAMAGE`
+config + `computeCompanionProcMagPerHit()` in toon-forge.html convert
+structured `procEffect.procDamage` fields (added by
+`scripts/comp_proc_damage.py`) into expected bonus magnitude per player
+hit: trigger rate (crit/noncrit rates derive from the build's actual
+crit chance) × chance, capped by ICD, × magnitude (base-rarity values
+scale via compRarityScale; {mag} placeholders resolve through
+effectScaling per rarity). Folded multiplicatively into
+computeDpsExpectedDamage — sim, advisor, and optimizer all see it.
+Verified vs hand-calcs and community meta: Xuna +14.1%, Black Scorpion
++13.5%, Hank +10.1%, Elminster +9.0%, Spined Devil +4.5% on the BiS
+warlock. Still open: heal/control procs, [38] stack explosion, [231]
+chain bolt (~1%), and the ~430 skipped GEAR procs (same procDamage
+field design can extend to them).
