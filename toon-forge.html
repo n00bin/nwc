@@ -2289,6 +2289,7 @@
     <div class="hero-actions" style="display:flex;gap:0.6rem;margin-top:1rem;flex-wrap:wrap;">
       <button class="btn btn-secondary" id="open-builds">📁 My Builds</button>
       <button class="btn btn-primary" id="share-build">🔗 Share link</button>
+      <button class="btn btn-secondary" id="open-detailed-stats">⚙ Detailed Stats</button>
       <button class="btn btn-ghost" id="clear-build" title="Reset every field back to a blank build">🗑️ Clear all</button>
     </div>
   </div>
@@ -2682,9 +2683,6 @@
       <div class="quick-stats" id="quick-stats">
         <!-- generated -->
       </div>
-    </div>
-    <div>
-      <button class="btn btn-secondary" id="open-detailed-stats">⚙ Detailed Stats</button>
     </div>
   </div>
 
@@ -9389,8 +9387,10 @@
     // ===== Combined Rating distribution =====
     // CR is its own field on data entries (companion powers, mount equip
     // powers, mount collars, mount insignias). The value adds equally to
-    // each of the 12 core stats as RATING. Sources are listed in
-    // mekaniks.html "Combined Rating".
+    // each of the 15 core stats in CR_CORE_STATS below as RATING. Sources
+    // are listed in mekaniks.html "Combined Rating".
+    // (An older revision of this comment said "12 core stats" — stale; the
+    // list below is the in-game verified one. Audit 2026-06-05.)
     // 15 core stats Combined Rating distributes to. Forte was added earlier
     // (n00b's end-game Forte rating ~121k confirmed it). Control Bonus and
     // Control Resist added 2026-05-11 (n00b's in-game numbers: Control
