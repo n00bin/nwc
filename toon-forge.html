@@ -2250,6 +2250,7 @@
     .tf-navbar-join {
       color: var(--amber) !important;
     }
+  @media (hover: none) { .experimental-note-mobile { display: block !important; } }
   </style>
 </head>
 <body>
@@ -2277,7 +2278,8 @@
   <div class="hero">
     <span class="save-status" id="save-status">Auto-saved · just now</span>
     <h1>Toon Forge<span class="accent">— build your character, see what hits</span><span class="badge" title="Work-in-progress. Numbers may not be 100% accurate yet — help us improve by using the ✎ pencil to fix anything wrong.">Experimental</span></h1>
-    <p>A friendly character builder for Neverwinter. Pick your role, deck out your gear, and watch the build come together — no spreadsheet skills required.</p>
+    <p>A friendly character builder for Neverwinter. Pick your role, equip your gear, and watch the build come together — no spreadsheet skills required.</p>
+  <p class="experimental-note-mobile" style="display:none;font-size:0.78rem;color:var(--text-muted);">Experimental: numbers may not be 100% accurate yet — tap the ✎ pencil on any item to fix anything wrong.</p>
     <div class="hero-correction-callout" role="note">
       <span class="hcc-icon">✎</span>
       <div class="hcc-body">
@@ -2919,7 +2921,9 @@
       partyContent: "dungeon",                  // "dungeon" (5 slots) | "trial" (10 slots)
       partyAllies: ["","","","",""],            // ally companion per slot, "" = empty
       partyMountAllies: ["","","","",""],       // ally mount equip power per slot, "" = empty
-      partyVipRank3: false,                      // separate toggle for ally VIP +1% MaxHP party
+      // (removed) partyVipRank3 — was declared but never read, rendered, or
+      // serialized; the ally-VIP +1% MaxHP buff it described was never
+      // modeled. Re-add WITH engine wiring + UI + serializer if it returns.
       // Party meta assumption: the whole party runs "Part of the Pack"
       // companions (current group meta — Power stacks shared party-wide).
       // ON (default): party-scope stacking companion procs count at full
@@ -3038,6 +3042,11 @@
       if (!saved || !saved.s) return false;
       const s = saved.s;
       Object.assign(state, s);
+      // Restore Map and Set from arrays IMMEDIATELY — Object.assign just
+      // overwrote them with raw arrays, so any code below that calls
+      // state.boons.has()/state.buffs.has() would throw until repaired.
+      state.boons = new Map(s.boons || []);
+      state.buffs = new Set(s.buffs || []);
       // Migrate any renamed/merged gear in the saved loadout so the slot keeps
       // its item instead of silently going blank. Rewrites the stored name to
       // the current canonical name and tells the player what changed.
@@ -3058,9 +3067,6 @@
         // OLD name; keeping it can resolve the wrong tier under the new name.
         state.__gearRenamedSlots = _renamed.map(r => r.slot);
       }
-      // Restore Map and Set from arrays
-      state.boons = new Map(s.boons || []);
-      state.buffs = new Set(s.buffs || []);
       state.partyContent = s.partyContent || "dungeon";
       state.partyAllies = Array.isArray(s.partyAllies) ? s.partyAllies.slice() : [];
       state.partyMountAllies = Array.isArray(s.partyMountAllies) ? s.partyMountAllies.slice() : [];

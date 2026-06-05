@@ -59,8 +59,14 @@ def convert_file(source_name, output_name, var_name):
         print(f"  SKIP  {source_name} (not found)")
         return False
 
-    with open(source_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    # A syntax error in one source file must not abort the whole build —
+    # that used to leave a half-fresh, half-stale data/ directory.
+    try:
+        with open(source_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except json.JSONDecodeError as e:
+        print(f"  FAIL  {source_name}: invalid JSON ({e}) — output left unchanged")
+        return False
 
     header = build_header(source_name)
 

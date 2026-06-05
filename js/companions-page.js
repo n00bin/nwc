@@ -94,13 +94,19 @@
     // Count non-HP stats to determine scaling table
     var pctStats = realStats.filter(function (s) { return s.stat !== "Maximum Hit Points"; });
     var hasHP = realStats.length !== pctStats.length;
+    // Scale by TOTAL stat count (HP counts as a stat): 1 -> single,
+    // 2 -> double, 3+ -> triple. Previously a 3-stat power silently got
+    // the double scale because TRIPLE_STAT_SCALE was never selected.
+    var totalStats = pctStats.length + (hasHP ? 1 : 0);
     var scale;
     if (pctStats.length === 0) {
       scale = SINGLE_STAT_SCALE; // HP-only, won't be used for pct but need a fallback
-    } else if (pctStats.length === 1 && !hasHP) {
+    } else if (totalStats <= 1) {
       scale = SINGLE_STAT_SCALE;
-    } else {
+    } else if (totalStats === 2) {
       scale = DOUBLE_STAT_SCALE;
+    } else {
+      scale = TRIPLE_STAT_SCALE;
     }
     var scaledStats = [];
     for (var i = 0; i < realStats.length; i++) {
