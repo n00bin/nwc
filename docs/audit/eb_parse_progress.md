@@ -40,8 +40,14 @@ Y% always-on + (X−Y)% zone-gated (exact in both contexts); mixed lines with
 an unmodelable proc + a flat always-on clause keep the prose and salvage
 the flat clause; over/greater thresholds = on, under/below = conditional.
 
-Remaining: **1,081 text-only instances (454 unique names)** + 293 instances
-skip-listed by pattern (heal/damage/AP/cooldown procs, random-stat effects).
+Remaining after batch 2: 1,081 text-only instances (454 names).
+
+| 3 | 2026-06-04 | **~240 instances / 67 names** | Stat-first + number-first chance-proc phrasings (Sudden Defense/Intuition family, Blood Bargain, Assassin's Bloodbath, Circular Healing, Charged Rejuvenation), periodic self-buffs (Sudden Power), strike-stacks (Escalating Might, Rising Precision), missing-health scalers (Survivor's Reflexes/Rush), per-enemy w/ range (Death Defying Medic), single-target multi-stat (Overwhelming Offense), slot-damage trades (Tit for Tat), range gates to/from fix (Sniper's Advantage, Brute's Fury), state-gated Defense (Protector's/Dancer's Guard), zone Movement Speed (Navigators), Bloodletting MaxHP-for-damage trade, Tactical-family salvage |
+
+**Final remaining: 736 text-only instances (375 unique names)** — predominantly
+control/stealth/threat/utility effects and exotic one-offs — plus ~219
+skip-listed by pattern (heal/AP/cooldown/control procs awaiting engine
+layers; gear DAMAGE procs are now modeled separately via procDamage).
 
 ## UPDATE 2026-06-04: gear DAMAGE procs now modeled
 33 prose damage procs (Critical Force ×14, Explosive Force ×8, Summon
