@@ -3043,13 +3043,16 @@
           const oldName = state.gear[slot];
           if (oldName && Object.prototype.hasOwnProperty.call(GEAR_NAME_ALIASES, oldName)) {
             state.gear[slot] = GEAR_NAME_ALIASES[oldName];
-            _renamed.push({ from: oldName, to: GEAR_NAME_ALIASES[oldName] });
+            _renamed.push({ from: oldName, to: GEAR_NAME_ALIASES[oldName], slot: slot });
           }
         }
         if (_renamed.length && typeof toast === "function") {
           const r = _renamed[0];
           setTimeout(() => toast(`"${r.from}" was renamed to "${r.to}" — your build was updated.`), 600);
         }
+        // Stash for the gearIL repair below — the saved tier belonged to the
+        // OLD name; keeping it can resolve the wrong tier under the new name.
+        state.__gearRenamedSlots = _renamed.map(r => r.slot);
       }
       // Restore Map and Set from arrays
       state.boons = new Map(s.boons || []);
@@ -3061,6 +3064,12 @@
       state.partyPackMeta = s.partyPackMeta !== false;
       // Picked-tier map for same-name multi-IL gear; legacy saves have none.
       state.gearIL = (s.gearIL && typeof s.gearIL === "object") ? { ...s.gearIL } : {};
+      // Slots whose gear name was migrated above: drop the saved tier so the
+      // renamed item resolves name-only instead of failing the IL filter.
+      if (Array.isArray(state.__gearRenamedSlots)) {
+        for (const slot of state.__gearRenamedSlots) state.gearIL[slot] = null;
+        delete state.__gearRenamedSlots;
+      }
       state.slottedClassFeaturePicks = Array.isArray(s.slottedClassFeaturePicks) ? s.slottedClassFeaturePicks.slice() : [];
       state.rangerStance = s.rangerStance || "ranged";
       state.bardActiveSong = s.bardActiveSong || "";
@@ -3678,7 +3687,12 @@
        Type(dataType, itemKey, opts).
        ===================================================================== */
     const DETAILS_RESOLVERS = {
-      gear:                  (name, opts) => ({ item: findGearByName(name, opts && opts.slot), render: renderGearItem }),
+      gear:                  (name, opts) => {
+                               // Thread the picked tier through, or same-name
+                               // multi-IL items show the wrong tier's stats.
+                               const il = (opts && opts.il != null && opts.il !== "") ? Number(opts.il) : null;
+                               return { item: findGearByName(name, opts && opts.slot, il), render: renderGearItem };
+                             },
       artifact:              (name) => ({ item: findArtifactByName(name), render: renderArtifactItem }),
       enchant:               (name) => ({ item: findEnchantByName(name), render: renderEnchantPick }),
       overload:              (name) => ({ item: findOverloadByName(name), render: renderOverloadPick }),
@@ -3763,7 +3777,8 @@
       openDetailsByType(btn.dataset.detailsType, btn.dataset.detailsKey, {
         rarity:   btn.dataset.detailsRarity,
         summoned: btn.dataset.detailsSummoned === "1",
-        slot:     btn.dataset.detailsSlot
+        slot:     btn.dataset.detailsSlot,
+        il:       btn.dataset.detailsIl
       });
     }, true);  // capture phase: fires before chip's bubble-phase handler
 
@@ -11821,7 +11836,8 @@
                ${kitInfo}
              </div>`
           : "";
-        const gearInfo = filled ? `<button class="chip-info" data-details-type="gear" data-details-key="${_escAttr(v)}" data-details-slot="${_escAttr(s.slot)}" title="See gear details">\u{1F50D}</button>` : "";
+        const gearIlAttr = (state.gearIL && state.gearIL[s.label] != null) ? ` data-details-il="${_escAttr(String(state.gearIL[s.label]))}"` : "";
+        const gearInfo = filled ? `<button class="chip-info" data-details-type="gear" data-details-key="${_escAttr(v)}" data-details-slot="${_escAttr(s.slot)}"${gearIlAttr} title="See gear details">\u{1F50D}</button>` : "";
         // Gem-synergy status for an equipped Frostsilver-style ring: show each
         // hard-slotted gem as active (matching enchant slotted) or inactive.
         let gemStatus = "";
@@ -15276,6 +15292,10 @@
               // old user-added item equipped in that slot.
               if (state.gear[userItem.slot] === userItem.name) {
                 state.gear[userItem.slot] = canonical.name;
+                // Sync rule: every state.gear write must sync gearIL, or a
+                // stale tier resolves later. Use the canonical item's own IL.
+                if (!state.gearIL) state.gearIL = {};
+                state.gearIL[userItem.slot] = (canonical.item_level != null) ? canonical.item_level : null;
               }
               toastItems.push(`"${userItem.name}" is now in the site database — your build has been updated.`);
             } else {
@@ -15308,6 +15328,8 @@
             const userItem = userList[itemIdx];
             if (state.gear[userItem.slot] === userItem.name) {
               state.gear[userItem.slot] = "";
+              // Sync rule: clearing gear clears gearIL too.
+              if (state.gearIL) state.gearIL[userItem.slot] = null;
             }
             const noteStr = admin_notes ? ` (${admin_notes})` : "";
             toastItems.push(`"${userItem.name}" won't be added to the site${noteStr}.`);

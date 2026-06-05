@@ -345,7 +345,7 @@
       html += "</div>"; // close proc-block
 
       if (pw.notes) {
-        html += '<div class="effect-text">' + escapeHtml(cleanNotes(pw.notes)) + "</div>";
+        html += '<div class="effect-text">' + escapeHtml(cleanEnhancementNotes(pw.notes)) + "</div>";
       }
     } else {
       html += '<div class="detail-meta">No power data</div>';
@@ -377,7 +377,7 @@
       html += "</div>"; // close proc-block
 
       if (en.notes) {
-        html += '<div class="effect-text">' + escapeHtml(cleanNotes(en.notes)) + "</div>";
+        html += '<div class="effect-text">' + escapeHtml(cleanEnhancementNotes(en.notes)) + "</div>";
       }
     } else {
       html += '<div class="detail-meta">No enhancement data</div>';
@@ -386,7 +386,7 @@
     // ---- Notes ----
     if (companion.notes) {
       html += '<div class="section-header">Notes</div>';
-      html += '<div class="effect-text">' + escapeHtml(cleanNotes(companion.notes)) + "</div>";
+      html += '<div class="effect-text">' + escapeHtml(cleanEnhancementNotes(companion.notes)) + "</div>";
     }
 
     detailPanel.innerHTML = html;
@@ -611,10 +611,16 @@
   var enhancementView = document.getElementById("enhancement-view");
   var enhancementList = document.getElementById("enhancement-list");
 
-  // Build enhancement list dynamically from data
-  function cleanNotes(notes) {
+  // Build enhancement list dynamically from data.
+  // NOTE: this used to be named cleanNotes, silently shadowing the shared
+  // cleanNotes (shared.js) for every call in this file — losing its
+  // "Screenshot confirmed/reconciliation" prefix stripping. Renamed, and it
+  // now delegates to the shared cleaner first, then applies the richer
+  // companion-specific scrubbing (which was the live behavior already).
+  function cleanEnhancementNotes(notes) {
     if (!notes) return "";
-    var s = notes.replace(/^Screenshot intake[^:]*:\s*/i, "").replace(/^[A-Z][A-Za-z'\- ]+ enhancement\.\s*/i, "").replace(/\s*Conditional proc;.*$/i, "").replace(/\s*Value depends on summoned companion.*?(?=\.|$)\.?\s*/g, " ").replace(/\s*Debuff\s*[—\-]\s*reduces enemy stat\.?\s*/gi, "").replace(/\s*Heal effect\s*[—\-]\s*modeled as HP sustain\.?\s*/gi, "").replace(/\s*Permanent buff while summoned\s*\(not a proc\)\.?\s*/gi, "Permanent while summoned.").replace(/\s*Affects both.*$/gi, "").replace(/\s*\.?\s*Scaling:.*$/gi, "").replace(/\s*\.?\s*Standard magnitude scaling[^.]*\.?\s*/gi, "").replace(/\s*\.?\s*Magnitude scaling:.*$/gi, "").replace(/\s*\.?\s*(Per-stack value |Chance |Both values |Both |DR |Crit Severity |Stat values |Reflect )?[Ff]ollows\s+\d*\.?\d*x?\s*(single|standard|double|triple|the)[\s\w]*scaling\.?\s*/gi, "").replace(/\s*\([\w\s]+stat scaling\)\.?\s*/gi, "").replace(/\s*Also damage versus[\w\s']*\(single stat scaling\)\.?\s*/gi, "").replace(/\s*Com\s+\d+\.?\d*%?,\s*Unc\s+\d+[^.]*\./gi, "").replace(/\s*[Ff]ollows\s+\d+\.?\d*x\.?\s*/gi, "").replace(/\s*\+\d+\s*CR\.?\s*/gi, "").replace(/\s*IL\s+\d+\.?\s*/gi, "").replace(/\s*Standard magnitude\.?\s*/gi, "").replace(/\s*Magnitude\.?\s*/gi, "").replace(/\s*Fixed effect,?\s*only Combined Rating scales with rarity\.?\s*/gi, "").trim();
+    var base = (typeof cleanNotes === "function") ? cleanNotes(notes) : notes;
+    var s = base.replace(/^Screenshot intake[^:]*:\s*/i, "").replace(/^[A-Z][A-Za-z'\- ]+ enhancement\.\s*/i, "").replace(/\s*Conditional proc;.*$/i, "").replace(/\s*Value depends on summoned companion.*?(?=\.|$)\.?\s*/g, " ").replace(/\s*Debuff\s*[—\-]\s*reduces enemy stat\.?\s*/gi, "").replace(/\s*Heal effect\s*[—\-]\s*modeled as HP sustain\.?\s*/gi, "").replace(/\s*Permanent buff while summoned\s*\(not a proc\)\.?\s*/gi, "Permanent while summoned.").replace(/\s*Affects both.*$/gi, "").replace(/\s*\.?\s*Scaling:.*$/gi, "").replace(/\s*\.?\s*Standard magnitude scaling[^.]*\.?\s*/gi, "").replace(/\s*\.?\s*Magnitude scaling:.*$/gi, "").replace(/\s*\.?\s*(Per-stack value |Chance |Both values |Both |DR |Crit Severity |Stat values |Reflect )?[Ff]ollows\s+\d*\.?\d*x?\s*(single|standard|double|triple|the)[\s\w]*scaling\.?\s*/gi, "").replace(/\s*\([\w\s]+stat scaling\)\.?\s*/gi, "").replace(/\s*Also damage versus[\w\s']*\(single stat scaling\)\.?\s*/gi, "").replace(/\s*Com\s+\d+\.?\d*%?,\s*Unc\s+\d+[^.]*\./gi, "").replace(/\s*[Ff]ollows\s+\d+\.?\d*x\.?\s*/gi, "").replace(/\s*\+\d+\s*CR\.?\s*/gi, "").replace(/\s*IL\s+\d+\.?\s*/gi, "").replace(/\s*Standard magnitude\.?\s*/gi, "").replace(/\s*Magnitude\.?\s*/gi, "").replace(/\s*Fixed effect,?\s*only Combined Rating scales with rarity\.?\s*/gi, "").trim();
     return (typeof stripAuditTrail === "function") ? stripAuditTrail(s) : s;
   }
 
@@ -623,7 +629,7 @@
     for (var i = 0; i < COMPANION_ENHANCEMENTS_DATA.length; i++) {
       var en = COMPANION_ENHANCEMENTS_DATA[i];
       if (!enMap[en.name]) {
-        var desc = en.notes ? cleanNotes(en.notes) : (en.stat + " +" + en.value + "%");
+        var desc = en.notes ? cleanEnhancementNotes(en.notes) : (en.stat + " +" + en.value + "%");
         enMap[en.name] = { name: en.name, description: desc, companions: [] };
       }
     }
@@ -722,7 +728,7 @@
       if (notes.indexOf("2.3% - 5.3% damage") !== -1) { match = true; category = category || "Boss Damage"; }
 
       if (match) {
-        var desc = pw.notes ? cleanNotes(pw.notes) : "";
+        var desc = pw.notes ? cleanEnhancementNotes(pw.notes) : "";
         var realStats = (pw.stats || []).filter(function (s) { return s.stat !== "CombinedRating"; });
         // Scale stats to Celestial using ratio from current IL
         var curIL = pw.item_level || 75;
