@@ -1,5 +1,28 @@
 # Data Issues To Investigate
 
+## 2026-06-05 audit — data corruption batch RESOLVED + parked leftovers
+
+FIXED (gear.json, commits this date):
+- ids 5328–5331 Aegis of the Condemned: item_level was the rarity tier
+  (350/500/650/800); corrected to 3750/4100/4450/4800 via CR/0.9.
+- ids 340–344 Tempest Gaze Seal/Mark/Ink/Insignia/Crest: IL 1150 → 3150
+  (CR 2835 = 0.9×3150, matches sibling id 264).
+- id 480: combinedRating 4805 → 4095 (0.9×4550).
+- ids 5152, 5240: equipBonus setName 'Whisper of Power' → 'Impending Doom'
+  (set field already said Impending Doom; engine matches on setName).
+- Deleted 33 entries: 10 stub dups (5169–5178, empty equipBonuses + wrong
+  IL 3000, richer 4146-series kept) + 23 exact dups (identical on every
+  core field; metadata folded into the kept entry first).
+
+PARKED — same-name pairs that are NOT exact dups, need judgment/in-game check:
+- **Dragonflight Ward Necklace ids 2569 vs 5938**: same name/slot/IL but
+  2569 has Defense 529 (and a documented source), 5938 has Critical
+  Avoidance 529 (sourceless). One is wrong — verify in-game, delete the other.
+- **Starhide Skullcap 3221 vs 5914, Starhide Doublet 3222 vs 5915,
+  Runefrost Hunter's Coat 5494 vs 6208**: same item, equipBonuses differ in
+  STRUCTURE (one parsed/structured, one prose-only — possibly different
+  bonus magnitudes too). Reconcile the bonus content, keep one entry each.
+
 ## Six clothing variants fully transcribed, awaiting slot confirmation (OPEN, 2026-06-05)
 
 Collection-preview screenshots (2026-06-02 batch) captured the SECOND variant of six
