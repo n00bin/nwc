@@ -3026,7 +3026,11 @@
           slottedAtWills: [...(state.slottedAtWills || [])],
           slottedEncounters: [...(state.slottedEncounters || [])],
           slottedDailies: [...(state.slottedDailies || [])],
-          slottedFeats: [...(state.slottedFeats || [])]
+          slottedFeats: [...(state.slottedFeats || [])],
+          // Damage-sim settings — were silently dropped from saves/share
+          // links before (audit #25), reverting to defaults on load.
+          flankUptime: (typeof state.flankUptime === "number") ? state.flankUptime : 0.70,
+          simMag: (typeof state.simMag === "number") ? state.simMag : 100
         }
       };
     }
@@ -3070,6 +3074,11 @@
         for (const slot of state.__gearRenamedSlots) state.gearIL[slot] = null;
         delete state.__gearRenamedSlots;
       }
+      // Damage-sim settings: restore explicitly with defaults, so loading an
+      // old save (without these keys) resets them instead of inheriting
+      // whatever the current session had.
+      state.flankUptime = (typeof s.flankUptime === "number") ? s.flankUptime : 0.70;
+      state.simMag = (typeof s.simMag === "number") ? s.simMag : 100;
       state.slottedClassFeaturePicks = Array.isArray(s.slottedClassFeaturePicks) ? s.slottedClassFeaturePicks.slice() : [];
       state.rangerStance = s.rangerStance || "ranged";
       state.bardActiveSong = s.bardActiveSong || "";
@@ -3233,7 +3242,7 @@
         html += builds.slice().reverse().map((b, idx) => {
           const realIdx = builds.length - 1 - idx;   // reverse index
           return `<div class="picker-item" data-build-load="${realIdx}">
-            <div class="picker-item-name">${b.name || 'Untitled'}</div>
+            <div class="picker-item-name">${_escHTML(b.name || 'Untitled')}</div>
             <div class="picker-item-meta">${b.s.class || '?'}${b.s.paragon ? ' / ' + b.s.paragon : ''} · ${b.s.role || '?'} · saved ${fmt(b.savedAt)}</div>
             <div style="margin-top:0.4rem;display:flex;gap:0.4rem;">
               <button class="btn btn-ghost" data-build-load-btn="${realIdx}" type="button" style="font-size:0.78rem;">Load</button>
@@ -3561,7 +3570,7 @@
           ? `<button class="correction-pencil" data-correct="${i}" title="Fix anything wrong on this item for your build">✎</button>`
           : "";
         html += `<div class="picker-item" data-pick="${i}">
-          <div class="picker-item-name"><span>${r.name}</span>${pencilHTML}</div>
+          <div class="picker-item-name"><span>${_escHTML(r.name)}</span>${pencilHTML}</div>
           ${r.meta ? `<div class="picker-item-meta">${r.meta}</div>` : ""}
           ${r.desc ? `<div class="picker-item-desc">${r.desc}</div>` : ""}
         </div>`;

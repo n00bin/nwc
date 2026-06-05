@@ -14,7 +14,10 @@
   var votedIds = JSON.parse(localStorage.getItem("nwc_voted_reports") || "[]");
   var voterHash = generateVoterHash();
   var submitCooldown = false;
-  var replyCooldown = false;
+  // Per-report reply cooldown (timestamp until which replies are blocked).
+  // A single global flag used to block replying on report B for 15s after
+  // replying on report A.
+  var replyCooldownUntil = {};
   var adminMode = false;
   var adminPass = "";
 
@@ -50,32 +53,45 @@
   }
 
   // ---- Fetch reports ----
+  // Never rejects: several call sites fire-and-forget this, so an unexpected
+  // throw would otherwise become a silent unhandled rejection.
   async function fetchReports() {
-    var sortCol = filterSort.value === "most_voted" ? "upvotes" : "created_at";
+    try {
+      var sortCol = filterSort.value === "most_voted" ? "upvotes" : "created_at";
 
-    var results = await Promise.all([
-      sb.from("reports_public").select("*").order(sortCol, { ascending: false }),
-      sb.from("report_replies_public").select("*").order("created_at", { ascending: true })
-    ]);
+      var results = await Promise.all([
+        sb.from("reports_public").select("*").order(sortCol, { ascending: false }),
+        sb.from("report_replies_public").select("*").order("created_at", { ascending: true })
+      ]);
 
-    if (results[0].error) {
+      if (results[0].error) {
+        reportsList.innerHTML = '<div class="empty-state">Failed to load reports. Please try again later.</div>';
+        console.error("Supabase error:", results[0].error);
+        return;
+      }
+
+      allReports = results[0].data || [];
+
+      // Replies failing shouldn't blank the page — render reports without
+      // them, but leave a trace for debugging.
+      if (results[1].error) {
+        console.warn("Replies failed to load:", results[1].error);
+      }
+
+      // Group replies by report_id
+      allReplies = {};
+      var replyData = results[1].data || [];
+      for (var i = 0; i < replyData.length; i++) {
+        var rid = replyData[i].report_id;
+        if (!allReplies[rid]) allReplies[rid] = [];
+        allReplies[rid].push(replyData[i]);
+      }
+
+      renderReports();
+    } catch (e) {
       reportsList.innerHTML = '<div class="empty-state">Failed to load reports. Please try again later.</div>';
-      console.error("Supabase error:", results[0].error);
-      return;
+      console.error("Reports load error:", e);
     }
-
-    allReports = results[0].data || [];
-
-    // Group replies by report_id
-    allReplies = {};
-    var replyData = results[1].data || [];
-    for (var i = 0; i < replyData.length; i++) {
-      var rid = replyData[i].report_id;
-      if (!allReplies[rid]) allReplies[rid] = [];
-      allReplies[rid].push(replyData[i]);
-    }
-
-    renderReports();
   }
 
   // ---- Render reports ----
@@ -478,7 +494,7 @@
     });
 
     if (error) {
-      alert("Failed to update status. Check console for details.");
+      alert("Couldn't update the status — check your connection and try again.");
       console.error("Status update error:", error);
       select.disabled = false;
       return;
@@ -502,7 +518,8 @@
       adminToggle.textContent = "Admin";
       renderReports();
     } else {
-      alert("Failed: " + (data ? data.reason : "unknown error"));
+      console.warn("Admin action failed:", data && data.reason);
+      alert("Something went wrong — refresh the page and try again.");
       select.disabled = false;
     }
   });
@@ -528,7 +545,7 @@
     });
 
     if (error) {
-      alert("Failed to delete. Check console for details.");
+      alert("Couldn't delete the report — check your connection and try again.");
       console.error("Delete error:", error);
       btn.disabled = false;
       btn.textContent = "\u2715";
@@ -546,7 +563,8 @@
       adminToggle.textContent = "Admin";
       renderReports();
     } else {
-      alert("Failed: " + (data ? data.reason : "unknown error"));
+      console.warn("Admin action failed:", data && data.reason);
+      alert("Something went wrong — refresh the page and try again.");
       btn.disabled = false;
       btn.textContent = "\u2715";
     }
@@ -572,7 +590,7 @@
     });
 
     if (error) {
-      alert("Failed to save note. Check console.");
+      alert("Couldn't save the note — check your connection and try again.");
       console.error("Note error:", error);
       btn.disabled = false;
       btn.textContent = "Save Note";
@@ -595,7 +613,8 @@
       adminToggle.textContent = "Admin";
       renderReports();
     } else {
-      alert("Failed: " + (data ? data.reason : "unknown error"));
+      console.warn("Admin action failed:", data && data.reason);
+      alert("Something went wrong — refresh the page and try again.");
       btn.disabled = false;
       btn.textContent = "Save Note";
     }
@@ -618,7 +637,7 @@
     feedback.textContent = "";
     feedback.className = "reply-msg-feedback";
 
-    if (replyCooldown) {
+    if (replyCooldownUntil[reportId] && Date.now() < replyCooldownUntil[reportId]) {
       feedback.textContent = "Please wait before submitting another reply.";
       feedback.className = "reply-msg-feedback error";
       return;
@@ -678,18 +697,18 @@
       textarea.value = "";
       if (fileInput) fileInput.value = "";
 
-      replyCooldown = true;
+      replyCooldownUntil[reportId] = Date.now() + 15000;
       btn.disabled = true;
       btn.textContent = "Please wait...";
       setTimeout(function () {
-        replyCooldown = false;
         btn.disabled = false;
         btn.textContent = "Reply";
       }, 15000);
 
       fetchReports();
     } else {
-      feedback.textContent = "Failed: " + (data ? data.reason : "unknown error");
+      console.warn("Reply failed:", data && data.reason);
+      feedback.textContent = "Couldn't submit the reply — please try again.";
       feedback.className = "reply-msg-feedback error";
       btn.disabled = false;
       btn.textContent = "Reply";
@@ -712,7 +731,7 @@
     });
 
     if (error || !data || !data.success) {
-      alert("Failed to delete reply.");
+      alert("Couldn't delete the reply — check your connection and try again.");
       btn.disabled = false;
       return;
     }

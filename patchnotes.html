@@ -87,7 +87,20 @@
     var filterPlatform = document.getElementById("filter-platform");
     var filterYear = document.getElementById("filter-year");
 
-    // Load patch notes data
+    // Load patch notes data. Two independent paths (fetch for http(s),
+    // script tag for file://). If BOTH fail, show an error instead of
+    // leaving the page silently blank.
+    var loadAttempts = 0;
+    function loadFailed() {
+      loadAttempts++;
+      if (loadAttempts >= 2 && patchNotes.length === 0) {
+        var list = document.getElementById("pn-list");
+        if (list) {
+          list.innerHTML = '<div class="empty-state">Couldn’t load the patch notes — try refreshing the page.</div>';
+        }
+      }
+    }
+
     fetch("data/patch-notes.json")
       .then(function(r) { return r.json(); })
       .catch(function() {
@@ -98,6 +111,8 @@
         if (data) {
           patchNotes = data;
           init();
+        } else {
+          loadFailed();
         }
       });
 
@@ -108,9 +123,11 @@
       if (typeof PATCH_NOTES_DATA !== "undefined" && patchNotes.length === 0) {
         patchNotes = PATCH_NOTES_DATA;
         init();
+      } else if (patchNotes.length === 0) {
+        loadFailed();
       }
     };
-    script.onerror = function() {}; // ignore if not found
+    script.onerror = function() { loadFailed(); };
     document.head.appendChild(script);
 
     function init() {
