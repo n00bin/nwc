@@ -120,6 +120,13 @@
     "At Will Dmg Bonus": "slot.atwill", "At-Will Dmg Bonus": "slot.atwill", "AtWillDmgBonus": "slot.atwill",
     "Encounter Dmg Bonus": "slot.encounter", "EncounterDmgBonus": "slot.encounter",
     "Daily Dmg Bonus": "slot.daily", "DailyDmgBonus": "slot.daily",
+    // companion-power stat-name variants (e.g. Volcanic/Lava Galeb Duhr's
+    // "Encounter Damage"/"Daily Damage", Hunting Hawk's range-scaled at-will
+    // bonus — credited at its max value, which fits ranged endgame play).
+    // These were unrouted, so the companions scored as zero damage value.
+    "Encounter Damage": "slot.encounter", "EncounterDamage": "slot.encounter",
+    "Daily Damage": "slot.daily", "DailyDamage": "slot.daily",
+    "At Will Damage Range": "slot.atwill", "AtWillDamageRange": "slot.atwill",
     "DoT Dmg Bonus": "slot.dot", "DoTDmgBonus": "slot.dot",
     "Single Target Dmg Bonus": "slot.single", "SingleTargetDmgBonus": "slot.single",
     "Melee Dmg Bonus": "slot.melee", "MeleeDmgBonus": "slot.melee",
