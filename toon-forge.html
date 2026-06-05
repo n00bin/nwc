@@ -10762,6 +10762,16 @@
         const pe = !isSummoned && power.procEffect;
         if (pe && Array.isArray(pe.statEffects) && pe.statEffects.length) {
           const maxStacks = pe.maxStacks || 1;
+          // True always-on passives (trigger "Passive", 100% chance, no
+          // duration, no stacking, self scope) are permanent character-sheet
+          // stats in game — e.g. Stormrider's +3,000 Max HP — so they belong
+          // in the BASE panel, not behind the Show Conditional toggle.
+          // Party-scope stacks (Part of the Pack) stay conditional: they
+          // depend on group composition (pack-meta toggle handles stacks).
+          const alwaysOn = pe.trigger === "Passive" &&
+            (pe.chance == null || pe.chance >= 100) &&
+            !pe.durationSeconds && maxStacks <= 1 &&
+            pe.statEffects.every(e => !e || e.scope !== "party");
           const procRating = {};
           const procPercent = {};
           let labelStacks = 1;
@@ -10788,10 +10798,10 @@
           }
           if (Object.keys(procRating).length || Object.keys(procPercent).length) {
             const stackTag = labelStacks > 1 ? ` (full ${labelStacks} stacks)` : "";
-            const triggerTag = pe.trigger ? ` on ${pe.trigger}` : "";
+            const triggerTag = alwaysOn ? " passive" : (pe.trigger ? ` on ${pe.trigger}` : "");
             buffs.push({
-              source: label + ` proc (${r})${stackTag}${triggerTag}`,
-              conditional: true,
+              source: label + ` ${alwaysOn ? "" : "proc "}(${r})${stackTag}${triggerTag}`,
+              conditional: !alwaysOn,
               ratingStats: procRating,
               percentStats: procPercent
             });

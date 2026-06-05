@@ -69,3 +69,6 @@ docs/audit/_up/
 docs/audit/companions/
 *.pkl
 artifacts.txt
+
+# Premium feature (paid IP) — local only until launch; deploys to Vercel/private repo
+premium/
