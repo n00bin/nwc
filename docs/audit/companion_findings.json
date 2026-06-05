@@ -1,0 +1,702 @@
+{
+ "mismatches": [
+  {
+   "powerId": 34,
+   "powerName": "Werewolf's Presence",
+   "dbSlot": [
+    "Offense"
+   ],
+   "dbStats": [
+    {
+     "stat": "Incoming Healing",
+     "value": 1.3,
+     "type": "percent"
+    },
+    {
+     "stat": "Defense",
+     "value": 1.3,
+     "type": "percent"
+    }
+   ],
+   "dbCR": 250,
+   "dbIL": 250,
+   "srcs": [
+    "Screenshot 2026-03-26 11-30-43.png"
+   ],
+   "issues": [
+    "value defense @IL250: screenshot 1.5 vs DB 1.3"
+   ]
+  },
+  {
+   "powerId": 37,
+   "powerName": "Rimefire Golem's Presence",
+   "dbSlot": [
+    "Offense",
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Maximum Hit Points",
+     "value": 7500,
+     "type": "rating"
+    },
+    {
+     "stat": "Critical Severity",
+     "value": 1.9,
+     "type": "percent"
+    }
+   ],
+   "dbCR": 375,
+   "dbIL": 375,
+   "srcs": [
+    "Screenshot 2026-03-26 11-31-07.png"
+   ],
+   "issues": [
+    "slot: screenshots show ['Defense'], DB has ['Offense', 'Utility']"
+   ]
+  },
+  {
+   "powerId": 53,
+   "powerName": "Baby Polar Bear's Instincts",
+   "dbSlot": [
+    "Defense",
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Outgoing Healing",
+     "value": 3.8,
+     "type": "percent"
+    },
+    {
+     "stat": "Defense",
+     "value": 3.8,
+     "type": "percent"
+    }
+   ],
+   "dbCR": 750,
+   "dbIL": 750,
+   "srcs": [
+    "Screenshot 2026-03-26 12-04-56.png"
+   ],
+   "issues": [
+    "value outgoinghealing @IL750: screenshot 1.8 vs DB 3.8",
+    "value defense @IL750: screenshot 1.8 vs DB 3.8"
+   ]
+  },
+  {
+   "powerId": 61,
+   "powerName": "Baby Gorilla's Instincts",
+   "dbSlot": [
+    "Offense",
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Deflect",
+     "value": 3.8,
+     "type": "percent"
+    },
+    {
+     "stat": "Critical Severity",
+     "value": 3.8,
+     "type": "percent"
+    }
+   ],
+   "dbCR": 750,
+   "dbIL": 750,
+   "srcs": [
+    "Screenshot 2026-03-26 12-05-28.png"
+   ],
+   "issues": [
+    "slot: screenshots show ['Defense'], DB has ['Offense', 'Utility']"
+   ]
+  },
+  {
+   "powerId": 84,
+   "powerName": "Baby Boar's Instincts",
+   "dbSlot": [
+    "Offense"
+   ],
+   "dbStats": [
+    {
+     "stat": "Maximum Hit Points",
+     "value": 3000,
+     "type": "rating"
+    },
+    {
+     "stat": "Critical Severity",
+     "value": 0.75,
+     "type": "percent"
+    }
+   ],
+   "dbCR": 150,
+   "dbIL": 150,
+   "srcs": [
+    "Screenshot 2026-03-26 12-06-30.png",
+    "Screenshot 2026-03-26 12-06-51.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['CriticalSeverity', 'DeflectChance'] vs DB ['Critical Severity', 'Maximum Hit Points']"
+   ]
+  },
+  {
+   "powerId": 116,
+   "powerName": "Slyblade Kobold's Discipline",
+   "dbSlot": [
+    "Offense"
+   ],
+   "dbStats": [
+    {
+     "stat": "Encounter Damage Vs Disabled",
+     "value": 1.13,
+     "type": "percent"
+    }
+   ],
+   "dbCR": 150,
+   "dbIL": 150,
+   "srcs": [
+    "Screenshot 2026-03-26 12-08-51.png"
+   ],
+   "issues": [
+    "slot: screenshots show ['Defense'], DB has ['Offense']"
+   ]
+  },
+  {
+   "powerId": 126,
+   "powerName": "Repentant Cultist's Discipline",
+   "dbSlot": [
+    "Offense"
+   ],
+   "dbStats": [],
+   "dbCR": 375,
+   "dbIL": 375,
+   "srcs": [
+    "Screenshot 2026-03-26 12-09-34.png"
+   ],
+   "issues": [
+    "slot: screenshots show ['Defense'], DB has ['Offense']"
+   ]
+  },
+  {
+   "powerId": 123,
+   "powerName": "Sellsword's Discipline",
+   "dbSlot": [
+    "Offense",
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Accuracy",
+     "value": 0.75
+    },
+    {
+     "stat": "Awareness",
+     "value": 0.75
+    }
+   ],
+   "dbCR": 150,
+   "dbIL": 150,
+   "srcs": [
+    "Screenshot 2026-03-26 12-09-40.png"
+   ],
+   "issues": [
+    "slot: screenshots show ['Defense'], DB has ['Offense', 'Utility']"
+   ]
+  },
+  {
+   "powerId": 130,
+   "powerName": "Wild Hunter's Discipline",
+   "dbSlot": [
+    "Offense"
+   ],
+   "dbStats": [
+    {
+     "stat": "Combat Advantage",
+     "value": 1.13,
+     "type": "percent"
+    }
+   ],
+   "dbCR": 150,
+   "dbIL": 150,
+   "srcs": [
+    "Screenshot 2026-03-26 12-09-43.png"
+   ],
+   "issues": [
+    "slot: screenshots show ['Defense'], DB has ['Offense']"
+   ]
+  },
+  {
+   "powerId": 128,
+   "powerName": "Stormrider's Discipline",
+   "dbSlot": [
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Power",
+     "value": 0.75
+    }
+   ],
+   "dbCR": 150,
+   "dbIL": 150,
+   "srcs": [
+    "Screenshot 2026-03-26 12-09-50.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['MaximumHitPoints', 'Power'] vs DB ['Power']"
+   ]
+  },
+  {
+   "powerId": 139,
+   "powerName": "Aranea's Wisdom",
+   "dbSlot": [
+    "Offense"
+   ],
+   "dbStats": [],
+   "dbCR": 150,
+   "dbIL": 150,
+   "srcs": [
+    "Screenshot 2026-03-26 12-10-28.png"
+   ],
+   "issues": [
+    "slot: screenshots show ['Defense'], DB has ['Offense']"
+   ]
+  },
+  {
+   "powerId": 154,
+   "powerName": "Zhentarim Warlock's Wisdom",
+   "dbSlot": [
+    "Offense",
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Combat Advantage",
+     "value": 2.8
+    }
+   ],
+   "dbCR": 550,
+   "dbIL": 550,
+   "srcs": [
+    "Screenshot 2026-03-26 12-11-22.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['CombatAdvantage', 'MaximumHitPoints'] vs DB ['Combat Advantage']"
+   ]
+  },
+  {
+   "powerId": 162,
+   "powerName": "Ghost Paladin's Wisdom",
+   "dbSlot": [
+    "Offense",
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Critical Strike",
+     "value": 0.75
+    }
+   ],
+   "dbCR": 150,
+   "dbIL": 150,
+   "srcs": [
+    "Screenshot 2026-03-26 12-11-40.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['CriticalStrike', 'MaximumHitPoints'] vs DB ['Critical Strike']"
+   ]
+  },
+  {
+   "powerId": 158,
+   "powerName": "Mystagogue's Wisdom",
+   "dbSlot": [
+    "Offense"
+   ],
+   "dbStats": [
+    {
+     "stat": "Critical Severity",
+     "value": 2.8
+    },
+    {
+     "stat": "Combat Advantage",
+     "value": 2.8
+    }
+   ],
+   "dbCR": 550,
+   "dbIL": 550,
+   "srcs": [
+    "Screenshot 2026-03-26 12-11-48.png"
+   ],
+   "issues": [
+    "slot: screenshots show ['Defense'], DB has ['Offense']"
+   ]
+  },
+  {
+   "powerId": 165,
+   "powerName": "Moonshae Druid's Wisdom",
+   "dbSlot": [
+    "Defense",
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Critical Avoidance",
+     "value": 4.5
+    }
+   ],
+   "dbCR": 900,
+   "dbIL": 900,
+   "srcs": [
+    "Screenshot 2026-03-26 12-11-58.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['CriticalAvoidance', 'MaximumHitPoints'] vs DB ['Critical Avoidance']"
+   ]
+  },
+  {
+   "powerId": 170,
+   "powerName": "Cleric Disciple's Wisdom",
+   "dbSlot": [
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Incoming Healing",
+     "value": 0.75
+    },
+    {
+     "stat": "Power",
+     "value": 0.75
+    }
+   ],
+   "dbCR": 150,
+   "dbIL": 150,
+   "srcs": [
+    "Screenshot 2026-03-26 12-12-08.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['Power'] vs DB ['Incoming Healing', 'Power']"
+   ]
+  },
+  {
+   "powerId": 171,
+   "powerName": "Quickling's Wisdom",
+   "dbSlot": [
+    "Offense",
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Critical Strike",
+     "value": 1.8
+    },
+    {
+     "stat": "Outgoing Healing",
+     "value": 3.8
+    }
+   ],
+   "dbCR": 750,
+   "dbIL": 750,
+   "srcs": [
+    "Screenshot 2026-03-26 12-12-12.png"
+   ],
+   "issues": [
+    "value criticalstrike @IL750: screenshot 1.9 vs DB 1.8",
+    "value outgoinghealing @IL750: screenshot 1.8 vs DB 3.8"
+   ]
+  },
+  {
+   "powerId": 168,
+   "powerName": "Apprentice's Wisdom",
+   "dbSlot": [
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Incoming Healing",
+     "value": 0.37
+    }
+   ],
+   "dbCR": 75,
+   "dbIL": 75,
+   "srcs": [
+    "Screenshot 2026-03-26 12-12-21.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['IncomingHealingBonus', 'MaximumHitPoints'] vs DB ['Incoming Healing']"
+   ]
+  },
+  {
+   "powerId": 187,
+   "powerName": "Cryptic Insight",
+   "dbSlot": [
+    "Defense",
+    "Offense"
+   ],
+   "dbStats": [
+    {
+     "stat": "Critical Strike",
+     "value": 0.38,
+     "type": "percent"
+    },
+    {
+     "stat": "Critical Avoidance",
+     "value": 0.38,
+     "type": "percent"
+    }
+   ],
+   "dbCR": 75,
+   "dbIL": 75,
+   "srcs": [
+    "Screenshot 2026-03-26 12-13-06.png",
+    "Screenshot 2026-03-26 12-14-14.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['CombatAdvantage', 'Defense'] vs DB ['Critical Avoidance', 'Critical Strike']"
+   ]
+  },
+  {
+   "powerId": 186,
+   "powerName": "Crystal Golem's Presence",
+   "dbSlot": [
+    "Offense",
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Power",
+     "value": 1.9
+    }
+   ],
+   "dbCR": 375,
+   "dbIL": 375,
+   "srcs": [
+    "Screenshot 2026-03-26 12-13-16.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['MaximumHitPoints', 'Power'] vs DB ['Power']"
+   ]
+  },
+  {
+   "powerId": 195,
+   "powerName": "Delusional Insight",
+   "dbSlot": [
+    "Offense"
+   ],
+   "dbStats": [
+    {
+     "stat": "At Will Damage Vs Disabled",
+     "value": 5.63,
+     "type": "percent"
+    }
+   ],
+   "dbCR": 375,
+   "dbIL": 375,
+   "srcs": [
+    "Screenshot 2026-03-26 12-13-45.png"
+   ],
+   "issues": [
+    "slot: screenshots show ['Defense'], DB has ['Offense']"
+   ]
+  },
+  {
+   "powerId": 205,
+   "powerName": "Cambion's Insight",
+   "dbSlot": [
+    "Offense"
+   ],
+   "dbStats": [
+    {
+     "stat": "Critical Strike",
+     "value": 0.38,
+     "type": "percent"
+    },
+    {
+     "stat": "Critical Avoidance",
+     "value": 0.38,
+     "type": "percent"
+    }
+   ],
+   "dbCR": 75,
+   "dbIL": 75,
+   "srcs": [
+    "Screenshot 2026-03-26 12-14-27.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['Accuracy', 'CriticalSeverity'] vs DB ['Critical Avoidance', 'Critical Strike']"
+   ]
+  },
+  {
+   "powerId": 208,
+   "powerName": "Dragon's Insight",
+   "dbSlot": [
+    "Defense",
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Incoming Healing",
+     "value": 1.3
+    }
+   ],
+   "dbCR": 250,
+   "dbIL": 250,
+   "srcs": [
+    "Screenshot 2026-03-26 12-14-36.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['IncomingHealingBonus', 'MaximumHitPoints'] vs DB ['Incoming Healing']"
+   ]
+  },
+  {
+   "powerId": 210,
+   "powerName": "Deva Champion's Insight",
+   "dbSlot": [
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Critical Avoidance",
+     "value": 1.5
+    },
+    {
+     "stat": "Incoming Healing",
+     "value": 1.5
+    }
+   ],
+   "dbCR": 250,
+   "dbIL": 250,
+   "srcs": [
+    "Screenshot 2026-03-26 12-14-42.png"
+   ],
+   "issues": [
+    "value criticalavoidance @IL250: screenshot 1.3 vs DB 1.5",
+    "value incominghealing @IL250: screenshot 1.3 vs DB 1.5"
+   ]
+  },
+  {
+   "powerId": 213,
+   "powerName": "Dancing Blade's Insight",
+   "dbSlot": [
+    "Offense"
+   ],
+   "dbStats": [
+    {
+     "stat": "Critical Severity",
+     "value": 0.38,
+     "type": "percent"
+    },
+    {
+     "stat": "Combat Advantage",
+     "value": 0.38,
+     "type": "percent"
+    }
+   ],
+   "dbCR": 75,
+   "dbIL": 75,
+   "srcs": [
+    "Screenshot 2026-03-26 12-14-51.png"
+   ],
+   "issues": [
+    "slot: screenshots show ['Defense'], DB has ['Offense']"
+   ]
+  },
+  {
+   "powerId": 220,
+   "powerName": "Deceptive Insight",
+   "dbSlot": [
+    "Defense"
+   ],
+   "dbStats": [
+    {
+     "stat": "Defense",
+     "value": 3.8
+    },
+    {
+     "stat": "Forte",
+     "value": 3.8
+    }
+   ],
+   "dbCR": 750,
+   "dbIL": 750,
+   "srcs": [
+    "Screenshot 2026-03-26 12-15-14.png",
+    "Screenshot 2026-03-26 12-16-39.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['Awareness', 'Defense'] vs DB ['Defense', 'Forte']"
+   ]
+  },
+  {
+   "powerId": 222,
+   "powerName": "Skeleton Dog's Instincts",
+   "dbSlot": [
+    "Defense"
+   ],
+   "dbStats": [
+    {
+     "stat": "Critical Avoidance",
+     "value": 3.8
+    }
+   ],
+   "dbCR": 750,
+   "dbIL": 750,
+   "srcs": [
+    "Screenshot 2026-03-26 12-15-21.png",
+    "Screenshot 2026-03-26 12-16-32.png"
+   ],
+   "issues": [
+    "flat-stat names: screenshot ['CriticalAvoidance', 'MaximumHitPoints'] vs DB ['Critical Avoidance']"
+   ]
+  },
+  {
+   "powerId": 146,
+   "powerName": "Divine Answers",
+   "dbSlot": [
+    "Utility"
+   ],
+   "dbStats": [
+    {
+     "stat": "Forte",
+     "value": 3.8
+    },
+    {
+     "stat": "Outgoing Healing",
+     "value": 3.8
+    }
+   ],
+   "dbCR": 750,
+   "dbIL": 750,
+   "srcs": [
+    "Screenshot 2026-03-26 12-16-59.png"
+   ],
+   "issues": [
+    "value forte @IL750: screenshot 3.6 vs DB 3.8",
+    "value outgoinghealing @IL750: screenshot 1.8 vs DB 3.8"
+   ]
+  }
+ ],
+ "notFoundPowers": {
+  "Sardina's Grace": 1,
+  "Halfling Thief's Discipline": 1,
+  "Blacksmith's Discipline": 1,
+  "Dreadwarrior's Insight": 1,
+  "Mercenary's Discipline": 1,
+  "Aoth's Wisdom": 1,
+  "Gromphi's Confidence": 1,
+  "Fiendish Charmer's Distraction": 2,
+  "Xrgy's Insight": 1,
+  "Divine Insight": 1,
+  "Twitchspine's Resilience": 2
+ },
+ "notFoundEnh": {
+  "Countrace": 1,
+  "Counterstrike": 2,
+  "Weapon Breaker": 1,
+  "Keen Eyes": 1,
+  "Countertrace": 1,
+  "Weapon Briar": 3
+ },
+ "okPowers": 211
+}

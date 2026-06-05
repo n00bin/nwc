@@ -1,0 +1,147 @@
+[
+ {
+  "name": "Astral Raider's Gauntlets",
+  "class": "barbarian-gear",
+  "ids": [
+   727
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Scaled Furor' vs DB 'Scaled Disdain'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Astral Raider's Gauntlets_IL2200.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Disdain",
+    "description": "Grants up to 20% bonus Damage when your total item level is being scaled down. Currently: 0% Damage (100%). Disabled in Thay Arena PvP."
+   }
+  ]
+ },
+ {
+  "name": "Gauntlets of the Unyielding Bastion",
+  "class": "barbarian-gear",
+  "ids": [
+   378
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description has wrong values: screenshot shows '+7.5% Awareness for 10 seconds (20 second cooldown)' but DB description says '0.5% Awareness 10s (10s cd)' — Awareness magnitude is 7.5% not 0.5%, cooldown is 20s not 10s"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Gauntlets of the Unyielding Bastion_IL5000.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Reprisal Reflex",
+    "description": "On Crit hit on you: reflect 10% MaxHP + 0.5% Awareness 10s (10s cd)"
+   }
+  ]
+ },
+ {
+  "name": "Pulsar Breastplate",
+  "class": "barbarian-gear",
+  "ids": [
+   719
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Controlled Strike', DB stores 'Critical Strike'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pulsar Breastplate_IL2600.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Strike",
+    "description": "Gain 1% Control Bonus when you strike an enemy. Stacks 5 times. When you are struck, the stacks are consumed and you gain -1% Incoming Damage per stack consumed for 10 seconds. Stacks cannot be applied at the same time."
+   }
+  ]
+ },
+ {
+  "name": "Astral Raider's Gauntlets",
+  "class": "barbarian-gear",
+  "ids": [
+   727
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot 'Scaled Furor' vs DB 'Scaled Disdain'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Astral Raider's Gauntlets_IL2200.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Disdain",
+    "description": "Grants up to 20% bonus Damage when your total item level is being scaled down. Currently: 0% Damage (100%). Disabled in Thay Arena PvP."
+   }
+  ]
+ },
+ {
+  "name": "Gauntlets of the Unyielding Bastion",
+  "class": "barbarian-gear",
+  "ids": [
+   378
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus 'Reprisal Reflex': screenshot shows +7.5% Awareness, DB stores 0.5% Awareness",
+   "Equip bonus 'Reprisal Reflex': screenshot shows 20 second cooldown, DB stores 10s cd"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Gauntlets of the Unyielding Bastion_IL5000.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Reprisal Reflex",
+    "description": "On Crit hit on you: reflect 10% MaxHP + 0.5% Awareness 10s (10s cd)"
+   }
+  ]
+ },
+ {
+  "name": "Frostbound Hearthtunic",
+  "class": "paladin-gear",
+  "ids": [
+   5383
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus \"Battle Harmony\" description in DB is missing the first sentence shown in screenshot: \"You gain 3,350 Outgoing Healing.\" DB only stores the second sentence (\"While in The Reched Edge, teammates who are 25 or closer to you gain 1% Defense.\")"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Hearthtunic_IL4700 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Harmony",
+    "description": "While in The Reched Edge, teammates who are 25 or closer to you gain 1% Defense."
+   }
+  ]
+ },
+ {
+  "name": "Pulsar Breastplate",
+  "class": "barbarian-gear",
+  "ids": [
+   719
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Controlled Strike' vs DB 'Critical Strike'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pulsar Breastplate_IL2600.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Strike",
+    "description": "Gain 1% Control Bonus when you strike an enemy. Stacks 5 times. When you are struck, the stacks are consumed and you gain -1% Incoming Damage per stack consumed for 10 seconds. Stacks cannot be applied at the same time."
+   }
+  ]
+ },
+ {
+  "name": "Wintermarked Bulwark Cuirass",
+  "class": "barbarian-gear",
+  "ids": [
+   5350
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description: screenshot reads 'Deflect Severity by 11% and Forte by 7%' vs DB 'Deflect Severity by 15% and Forte by 7%' (both screenshots agree on 11%)"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wintermarked Bulwark Cuirass_IL5700 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Reactive Defense",
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Deflect Severity by 15% and Forte by 7% for 8 seconds. (15 second cooldown)"
+   }
+  ]
+ }
+]

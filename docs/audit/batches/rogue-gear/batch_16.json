@@ -1,0 +1,545 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Black Ice Mask_IL512.png",
+  "id": 3587,
+  "dbName": "Black Ice Mask",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Combat Advantage": 131,
+   "Critical Strike": 60,
+   "Defense": 384,
+   "Critical Avoidance": 60,
+   "Deflection": 60
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bregan D'aerthe Assassin's Hat_IL2000.png",
+  "id": 4007,
+  "dbName": "Bregan D'aerthe Assassin's Hat",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Critical Severity": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When Stamina is over 75%, Accuracy is increased by 7.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Company Assault Mask_IL588.png",
+  "id": 4599,
+  "dbName": "Company Assault Mask",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Company Raid Mask_IL588.png",
+  "id": 4595,
+  "dbName": "Company Raid Mask",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Crimson Scalebreaker's Rebel Shroud_IL1800 (2).png",
+  "id": 2818,
+  "dbName": "Crimson Scalebreaker's Rebel Shroud",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Accuracy": 1080,
+   "Defense": 810,
+   "Awareness": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Crimson Scalebreaker's Rebel Shroud_IL1800.png",
+  "id": 2818,
+  "dbName": "Crimson Scalebreaker's Rebel Shroud",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Accuracy": 1080,
+   "Defense": 810,
+   "Awareness": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Crone's Hood_IL1225 (2).png",
+  "id": 4062,
+  "dbName": "Crone's Hood",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Combat Advantage": 551,
+   "Defense": 919,
+   "Control Bonus": 368
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5000 for 10 seconds. (30 second cooldowns)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Crone's Hood_IL1225.png",
+  "id": 4062,
+  "dbName": "Crone's Hood",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Combat Advantage": 551,
+   "Defense": 919,
+   "Control Bonus": 368
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5000 for 10 seconds. (30 second cooldowns)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Demon Forged Hood_IL1215 (2).png",
+  "id": 4112,
+  "dbName": "Demon Forged Hood",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "10% chance to gain 5000 Power for 10s on CA damage. (30s CD)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Demon Forged Hood_IL1215.png",
+  "id": 4112,
+  "dbName": "Demon Forged Hood",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "10% chance to gain 5000 Power for 10s on CA damage. (30s CD)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Depthcured Cap_IL3000 (2).png",
+  "id": 2736,
+  "dbName": "Depthcured Cap",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Forte": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max 10 Stacks: 8% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Depthcured Cap_IL3000.png",
+  "id": 2736,
+  "dbName": "Depthcured Cap",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Forte": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max 10 Stacks: 8% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Devil Forged Hood_IL1215 (2).png",
+  "id": 4110,
+  "dbName": "Devil Forged Hood",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "10% chance to gain 5000 Power for 10s on CA damage. (30s CD)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Devil Forged Hood_IL1215.png",
+  "id": 4110,
+  "dbName": "Devil Forged Hood",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "10% chance to gain 5000 Power for 10s on CA damage. (30s CD)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Diadem of the Crimson Gale_IL4700 (2).png",
+  "id": 2717,
+  "dbName": "Diadem of the Crimson Gale",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Forte": 2855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Advantageous Strike",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your Powers, gain +3% Combat Advantage and +2.5% Power for 6 seconds (10 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Diadem of the Crimson Gale_IL4700.png",
+  "id": 2717,
+  "dbName": "Diadem of the Crimson Gale",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Forte": 2855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Advantageous Strike",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your Powers, gain +3% Combat Advantage and +2.5% Power for 6 seconds (10 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dinohide Assault Chinibili_IL784.png",
+  "id": 4442,
+  "dbName": "Dinohide Assault Chinibili",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 353,
+   "Critical Severity": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Accuracy. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dinohide Raid Chinibili_IL784.png",
+  "id": 4438,
+  "dbName": "Dinohide Raid Chinibili",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 235,
+   "Critical Strike": 353,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Accuracy. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Divine Raid Helm_IL1230 (2).png",
+  "id": 4098,
+  "dbName": "Divine Raid Helm",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Combat Advantage": 369,
+   "Critical Strike": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Might",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Power is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Divine Raid Helm_IL1230.png",
+  "id": 4098,
+  "dbName": "Divine Raid Helm",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Combat Advantage": 369,
+   "Critical Strike": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Might",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Power is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dragonflight Assault Mask_IL588.png",
+  "id": 4573,
+  "dbName": "Dragonflight Assault Mask",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dragonflight Raid Mask_IL588.png",
+  "id": 4568,
+  "dbName": "Dragonflight Raid Mask",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dragonhide Shroud_IL1900 (2).png",
+  "id": 4019,
+  "dbName": "Dragonhide Shroud",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1140,
+   "Critical Severity": 855,
+   "Defense": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Dragon Hunter's Might",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage against Dragons. When health is below 50%, Awareness is increased by 8,000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dragonhide Shroud_IL1900.png",
+  "id": 4019,
+  "dbName": "Dragonhide Shroud",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1140,
+   "Critical Severity": 855,
+   "Defense": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Dragon Hunter's Might",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage against Dragons. When health is below 50%, Awareness is increased by 8,000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Drowcraft Mask_IL567.png",
+  "id": 4375,
+  "dbName": "Drowcraft Mask",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Accuracy": 255,
+   "Critical Strike": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

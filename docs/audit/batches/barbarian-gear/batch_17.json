@@ -1,0 +1,491 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Dragonflight Assault Greaves_IL596.png",
+  "id": 6477,
+  "dbName": "Elemental Dragonflight Assault Greaves",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Accuracy": 268,
+   "Critical Severity": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Dragonflight Raid Greaves_IL596.png",
+  "id": 6480,
+  "dbName": "Elemental Dragonflight Raid Greaves",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Combat Advantage": 268,
+   "Critical Strike": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Elven Ward Greaves_IL575.png",
+  "id": 6484,
+  "dbName": "Elemental Elven Ward Greaves",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Accuracy": 259,
+   "Critical Strike": 172,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Lionsmane Duelist Greaves_IL574.png",
+  "id": 6488,
+  "dbName": "Elemental Lionsmane Duelist Greaves",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Accuracy": 185,
+   "Defense": 430,
+   "Deflect": 245
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Lionsmane Executioner Greaves_IL574.png",
+  "id": 6492,
+  "dbName": "Elemental Lionsmane Executioner Greaves",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Accuracy": 172,
+   "Critical Strike": 129,
+   "Critical Severity": 129,
+   "Defense": 430
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elven Ward Greaves_IL567.png",
+  "id": 6496,
+  "dbName": "Elven Ward Greaves",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Accuracy": 255,
+   "Critical Strike": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Bregan D'aerthe Mauler's Greaves_IL2050.png",
+  "id": 6503,
+  "dbName": "Enchanted Bregan D'aerthe Mauler's Greaves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 923,
+   "Critical Strike": 1538,
+   "Deflect Severity": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 25' or closer to your target, your Power is increased by 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Depthforged Greaves_IL3200.png",
+  "id": 233,
+  "dbName": "Enchanted Depthforged Greaves",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Awareness": 2400,
+   "Incoming Healing": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 3.75% Awareness and Deflect while at full health. These bonuses decrease relative to your missing health. Currently: 3.8% Awareness and 3.8% Deflect.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Depthforged Sabatons_IL3200.png",
+  "id": 6508,
+  "dbName": "Enchanted Depthforged Sabatons",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Combat Advantage": 2400,
+   "Critical Severity": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fiery Predator",
+    "stat": null,
+    "amount": null,
+    "description": "+4% Damage on fire-themed maps. +1% Damage on other maps.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Resolution Greaves_IL2050 (2).png",
+  "id": 6514,
+  "dbName": "Exalted Maiden's Resolution Greaves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Severity": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 5,000 Power and gain more role effectiveness when in the Temple of the Spider. DPS: +6% Base Damage Boost. Tank: -6% Incoming Damage. Healer: +6% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Resolution Greaves_IL2050.png",
+  "id": 6514,
+  "dbName": "Exalted Maiden's Resolution Greaves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Severity": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 5,000 Power and gain more role effectiveness when in the Temple of the Spider. DPS: +6% Base Damage Boost. Tank: -6% Incoming Damage. Healer: +6% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Ward Sabatons_IL2050 (2).png",
+  "id": 932,
+  "dbName": "Exalted Maiden's Ward Sabatons",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 1538,
+   "Awareness": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 5,000 Power and gain more role effectiveness when in the Temple of the Spider. DPS: +6% Base Damage Boost. Tank: -6% Incoming Damage. Healer: +6% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Ward Sabatons_IL2050.png",
+  "id": 932,
+  "dbName": "Exalted Maiden's Ward Sabatons",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 1538,
+   "Awareness": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 5,000 Power and gain more role effectiveness when in the Temple of the Spider. DPS: +6% Base Damage Boost. Tank: -6% Incoming Damage. Healer: +6% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Fiend Forged Greaves_IL1230.png",
+  "id": 6554,
+  "dbName": "Fiend Forged Greaves",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Combat Advantage": 369,
+   "Critical Strike": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Forest Guardian's Raid Greaves_IL1500.png",
+  "id": 6557,
+  "dbName": "Forest Guardian's Raid Greaves",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Combat Advantage": 450,
+   "Critical Strike": 675,
+   "Defense": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Mastery",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Combat Advantage is increased by 7500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Gild Greaves of Halaster's Successor_IL1010.png",
+  "id": 6566,
+  "dbName": "Gild Greaves of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Combat Advantage": 379,
+   "Defense": 758,
+   "Awareness": 379
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 25° or closer to your target, your Combat Advantage is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Gild Greaves of the Successor_IL990.png",
+  "id": 6567,
+  "dbName": "Gild Greaves of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Combat Advantage": 371,
+   "Defense": 742,
+   "Awareness": 371
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 25° or closer to your target, your Combat Advantage is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Greaves of the Bloodborne Reaper_IL5000.png",
+  "id": 6843,
+  "dbName": "Greaves of the Bloodborne Reaper",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Overwhelming Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, you gain +7.5% Critical Strike and +3.5% Movement Speed for 6 seconds. (16 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Greaves of the Crimson Scythe_IL4700.png",
+  "id": 6570,
+  "dbName": "Greaves of the Crimson Scythe",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Forte": 2855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Explosive Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, you gain +6% Critical Severity and +3.5% Movement Speed for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Greaves of the Iron Bulwark_IL4700.png",
+  "id": 227,
+  "dbName": "Greaves of the Iron Bulwark",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Awareness": 2538,
+   "Critical Avoidance": 4265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Immovable Bulwark",
+    "stat": null,
+    "amount": null,
+    "description": "Standing still > 1s: +2.5% Defense and +4% Deflect (until you move)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Greaves of the Spy's Guild_IL940.png",
+  "id": 6571,
+  "dbName": "Greaves of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Greaves of the Thayan Servitor_IL800.png",
+  "id": 6835,
+  "dbName": "Greaves of the Thayan Servitor",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 211,
+   "Critical Severity": 211,
+   "Defense": 600,
+   "Critical Avoidance": 88.8,
+   "Deflect": 88.8
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Greaves of the Unyielding Bastion_IL5000.png",
+  "id": 256,
+  "dbName": "Greaves of the Unyielding Bastion",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Defense": 2888,
+   "Critical Avoidance": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Deflective Agility",
+    "stat": null,
+    "amount": null,
+    "description": "On Deflect: +2.5% Defense and +2% Movement Speed for 10s (12s cd)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Infernal Forged Greaves_IL1200.png",
+  "id": 6610,
+  "dbName": "Infernal Forged Greaves",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Combat Advantage": 360,
+   "Critical Strike": 540,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\League's Assault Khuffs_IL588.png",
+  "id": 6620,
+  "dbName": "League's Assault Khuffs",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

@@ -1,0 +1,397 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Tempter of the Twilight's Gloves_IL1000.png",
+  "id": 3503,
+  "dbName": "Tempter of the Twilight's Gloves",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Strike": 375,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Encounter Perk",
+    "stat": "Encounter Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your Encounter Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\The Dark Maiden's Raid Wristguards_IL2000.png",
+  "id": 3293,
+  "dbName": "The Dark Maiden's Raid Wristguards",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Thief's Stolen Gloves_IL950.png",
+  "id": 1626,
+  "dbName": "Thief's Stolen Gloves",
+  "dbItemLevel": 950,
+  "dbRatingStats": {
+   "Accuracy": 428,
+   "Critical Severity": 285,
+   "Defense": 712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Golden Steal",
+    "stat": null,
+    "amount": null,
+    "description": "Your attacks have a chance to cause extra damage, but at a chance financial cost.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Ultraviolet Elven Sleeves_IL2900.png",
+  "id": 3203,
+  "dbName": "Ultraviolet Elven Sleeves",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Accuracy": 1088,
+   "Combat Advantage": 2175,
+   "Forte": 1088
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, your Critical Strike is increased by 1.5% every 2 seconds. Every 2 seconds you are in combat with 4 or more enemies, lose 1 stack. Max 5 stacks: 7.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Weathered Wood Wristguards_IL1300.png",
+  "id": 3352,
+  "dbName": "Weathered Wood Wristguards",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 390,
+   "Critical Severity": 585,
+   "Defense": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. Max 5 stacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Wintermarked Swiftguards_IL5700 (2).png",
+  "id": 5487,
+  "dbName": "Wintermarked Swiftguards",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Eagle's Mastery (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your Power, Critical Strike, and Critical Severity are increased by 0.6% for 10 seconds. Max 5 Stacks: 3% Power, Critical Strike, and Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Wintermarked Swiftguards_IL5700.png",
+  "id": 5487,
+  "dbName": "Wintermarked Swiftguards",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Eagle's Mastery (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your Power, Critical Strike, and Critical Severity are increased by 0.6% for 10 seconds. Max 5 Stacks: 3% Power, Critical Strike, and Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Wristguard of the Spy's Guild_IL940.png",
+  "id": 3482,
+  "dbName": "Wristguard of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Accuracy": 282,
+   "Critical Severity": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Aboleth Orb_IL350.png",
+  "id": 5515,
+  "dbName": "Aboleth Orb",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Aboleth Orb_IL500.png",
+  "id": 5516,
+  "dbName": "Aboleth Orb",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Aboleth Orb_IL650.png",
+  "id": 5517,
+  "dbName": "Aboleth Orb",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Aboleth Orb_IL800.png",
+  "id": 5518,
+  "dbName": "Aboleth Orb",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Aboleth Talisman_IL350.png",
+  "id": 5519,
+  "dbName": "Aboleth Talisman",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Aboleth Talisman_IL500.png",
+  "id": 5520,
+  "dbName": "Aboleth Talisman",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Aboleth Talisman_IL650.png",
+  "id": 5521,
+  "dbName": "Aboleth Talisman",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Aboleth Talisman_IL800.png",
+  "id": 5522,
+  "dbName": "Aboleth Talisman",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bonepicker_IL350.png",
+  "id": 5535,
+  "dbName": "Bonepicker",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bonepicker_IL500.png",
+  "id": 5536,
+  "dbName": "Bonepicker",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bonepicker_IL650.png",
+  "id": 5537,
+  "dbName": "Bonepicker",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bonepicker_IL800.png",
+  "id": 5538,
+  "dbName": "Bonepicker",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bonesnapper_IL350.png",
+  "id": 5539,
+  "dbName": "Bonesnapper",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bonesnapper_IL500.png",
+  "id": 5540,
+  "dbName": "Bonesnapper",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bonesnapper_IL650.png",
+  "id": 5541,
+  "dbName": "Bonesnapper",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bonesnapper_IL800.png",
+  "id": 5542,
+  "dbName": "Bonesnapper",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Brightsilver Talisman_IL350.png",
+  "id": 5543,
+  "dbName": "Brightsilver Talisman",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

@@ -1,0 +1,497 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Dragonflight Assault Wristguards_IL596.png",
+  "id": 3849,
+  "dbName": "Elemental Dragonflight Assault Wristguards",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Critical Strike": 268,
+   "Critical Severity": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Dragonflight Raid Wristguards_IL596.png",
+  "id": 3845,
+  "dbName": "Elemental Dragonflight Raid Wristguards",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Combat Advantage": 179,
+   "Critical Strike": 268,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Drowcraft Assault Wristguards_IL588.png",
+  "id": 3629,
+  "dbName": "Elemental Drowcraft Assault Wristguards",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "1 of Set: -10% Incoming Damage against Demon-type enemies. 2 of Set: Reduces amount of Madness inflicted by Maddening Aura. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "setName": "Drowcraft",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Drowcraft Raid Wristguards_IL588.png",
+  "id": 3625,
+  "dbName": "Elemental Drowcraft Raid Wristguards",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Defense": 441,
+   "Accuracy": 265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "1 of Set: -10% Incoming Damage against Demon-type enemies. 2 of Set: Reduces amount of Madness inflicted by Maddening Aura. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "setName": "Drowcraft",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Elven Assault Wristguards_IL575.png",
+  "id": 3668,
+  "dbName": "Elemental Elven Assault Wristguards",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Combat Advantage": 259,
+   "Critical Severity": 172,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Elven Raid Wristguards_IL575.png",
+  "id": 3665,
+  "dbName": "Elemental Elven Raid Wristguards",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Accuracy": 172,
+   "Critical Strike": 259,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Lionsmane Duelist Wristguards_IL574.png",
+  "id": 4847,
+  "dbName": "Elemental Lionsmane Duelist Wristguards",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Accuracy": 172,
+   "Critical Strike": 129,
+   "Defense": 430,
+   "Critical Avoidance": 129
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Lionsmane Executioner Wristguards_IL574.png",
+  "id": 4857,
+  "dbName": "Elemental Lionsmane Executioner Wristguards",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Critical Strike": 129,
+   "Critical Severity": 172,
+   "Defense": 430,
+   "Awareness": 129
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Enchanted Bregan D'aerthe Caster's Mitts_IL2050.png",
+  "id": 3269,
+  "dbName": "Enchanted Bregan D'aerthe Caster's Mitts",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Defense": 615,
+   "Deflect Severity": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Magnified Force",
+    "stat": null,
+    "amount": null,
+    "description": "You have a 20% chance to deal 300 additional magnitude damage to a single target when using ranged powers. This effect may only occur once every 20 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Enchanted Bregan D'aerthe Expert's Gloves_IL2050.png",
+  "id": 3273,
+  "dbName": "Enchanted Bregan D'aerthe Expert's Gloves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 1538,
+   "Outgoing Healing": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Medic's Regards",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you heal your target for more than 10% of your Maximum Hit Points in a single blow, you will immediately be reduced (max 5 targets within 15 ft), and will gain 5% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Enclave Medic's Armlets_IL1600.png",
+  "id": 3328,
+  "dbName": "Enclave Medic's Armlets",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Defense": 720,
+   "Deflect Severity": 720,
+   "Outgoing Healing": 960
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Ward",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Deflect Severity for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Maiden's Raid Wristguards_IL2050.png",
+  "id": 3285,
+  "dbName": "Exalted Maiden's Raid Wristguards",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Maiden's Rejuvenation Mitts_IL2050.png",
+  "id": 3289,
+  "dbName": "Exalted Maiden's Rejuvenation Mitts",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Defense": 1538,
+   "Outgoing Healing": 0
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Fiend Forged Braces_IL1230.png",
+  "id": 1403,
+  "dbName": "Fiend Forged Braces",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Strike": 461,
+   "Defense": 922,
+   "Deflection": 461
+  },
+  "dbPercentStats": {
+   "Damage against Demons, Devils, and Fiends": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Fiend Forged Wristguards_IL1230.png",
+  "id": 3416,
+  "dbName": "Fiend Forged Wristguards",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Accuracy": 369,
+   "Critical Severity": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Forest Guardian's Restoration Braces_IL1500.png",
+  "id": 3339,
+  "dbName": "Forest Guardian's Restoration Braces",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Defense": 1125,
+   "Deflection": 562,
+   "Outgoing Healing": 562
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Accuracy for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Gauntlets of the Lifebloom_IL4700.png",
+  "id": 3163,
+  "dbName": "Gauntlets of the Lifebloom",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Severity": 3807,
+   "Outgoing Healing": 3102
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Amplified Potential",
+    "stat": null,
+    "amount": null,
+    "description": "Your Performance/Soulweave maximum is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Infernal Forged Braces_IL1200.png",
+  "id": 1425,
+  "dbName": "Infernal Forged Braces",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Critical Strike": 450,
+   "Defense": 900,
+   "Deflection": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Infernal Forged Wristguards_IL1200.png",
+  "id": 3441,
+  "dbName": "Infernal Forged Wristguards",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Accuracy": 360,
+   "Critical Severity": 540,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lion Guard's Mystic Wristguards_IL1250.png",
+  "id": 3408,
+  "dbName": "Lion Guard's Mystic Wristguards",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Severity": 562,
+   "Defense": 938
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy. Lose a stack when you are struck. Max 20 stacks: 5000 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lion Guard's Raid Wristguards_IL1250.png",
+  "id": 3409,
+  "dbName": "Lion Guard's Raid Wristguards",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Critical Strike": 469,
+   "Defense": 938,
+   "Deflection": 469
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy. Lose a stack when you are struck. Max 20 stacks: 5000 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lionsmane Duelist Wristguards_IL560.png",
+  "id": 4853,
+  "dbName": "Lionsmane Duelist Wristguards",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Accuracy": 168,
+   "Critical Strike": 126,
+   "Defense": 420,
+   "Critical Avoidance": 126
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lionsmane Executioner Wristguards_IL560.png",
+  "id": 4859,
+  "dbName": "Lionsmane Executioner Wristguards",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Critical Strike": 126,
+   "Critical Severity": 168,
+   "Defense": 420,
+   "Awareness": 126
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lolthian Cuffs_IL2050.png",
+  "id": 3247,
+  "dbName": "Lolthian Cuffs",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 1538,
+   "Outgoing Healing": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lolthian Sleeves_IL2050.png",
+  "id": 3243,
+  "dbName": "Lolthian Sleeves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

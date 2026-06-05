@@ -1,0 +1,461 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Astral Raider's Coat_IL2200.png",
+  "id": 3234,
+  "dbName": "Astral Raider's Coat",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Critical Strike": 1320,
+   "Defense": 990,
+   "Critical Avoidance": 1980
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defying Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 2% Combat Advantage for each enemy you are engaged in battle within 100'. (Max of 10 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Barkhide_IL1000.png",
+  "id": 3514,
+  "dbName": "Barkhide",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Defense": 750,
+   "Awareness": 375,
+   "Critical Avoidance": 375
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defiance",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you will take 3% less damage for 10 seconds. Cooldown 30 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bismuth Jerkin_IL3350.png",
+  "id": 3181,
+  "dbName": "Bismuth Jerkin",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Critical Strike": 3015,
+   "Critical Severity": 3015
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Daily (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "Daily damage = next encounter +20% damage, +5% Combat Advantage. (30s cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bregan D'aerthe Caster's Robe_IL2000.png",
+  "id": 3276,
+  "dbName": "Bregan D'aerthe Caster's Robe",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 1500,
+   "Critical Severity": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shielded Force",
+    "stat": "Ranged Dmg Bonus",
+    "amount": 7.0,
+    "description": "When you have a Shield or Temp HP, your Ranged Powers do 7% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Crimson Scalebreaker's Raid Leathers_IL1800.png",
+  "id": 3314,
+  "dbName": "Crimson Scalebreaker's Raid Leathers",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Combat Advantage": 1080,
+   "Defense": 810,
+   "Awareness": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Crone's Robe_IL1225.png",
+  "id": 3361,
+  "dbName": "Crone's Robe",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Accuracy": 919,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Demon Forged Robe_IL1215.png",
+  "id": 3431,
+  "dbName": "Demon Forged Robe",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+7% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Depthweave Robe_IL3000.png",
+  "id": 3188,
+  "dbName": "Depthweave Robe",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Combat Advantage": 2250,
+   "Forte": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Strike and Critical Severity for 15 seconds. Max 5 stacks: 7.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Devil Forged Robe_IL1215.png",
+  "id": 3423,
+  "dbName": "Devil Forged Robe",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+7% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Divine Raid Robe_IL1230.png",
+  "id": 3399,
+  "dbName": "Divine Raid Robe",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Severity": 922,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Dragonhide Leathers_IL1900.png",
+  "id": 3300,
+  "dbName": "Dragonhide Leathers",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Severity": 1140,
+   "Defense": 855,
+   "Awareness": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Power",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Power and Accuracy for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Drowcraft Robes_IL567.png",
+  "id": 5586,
+  "dbName": "Drowcraft Robes",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Accuracy": 170,
+   "Combat Advantage": 255,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Dungeon Raider's Robe_IL940.png",
+  "id": 3495,
+  "dbName": "Dungeon Raider's Robe",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Severity": 705,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Dusk Assault Robes_IL1175.png",
+  "id": 5630,
+  "dbName": "Dusk Assault Robes",
+  "dbItemLevel": 1175,
+  "dbRatingStats": {
+   "Accuracy": 529,
+   "Critical Severity": 352,
+   "Defense": 881
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Dusk Raid Robes_IL1175.png",
+  "id": 5634,
+  "dbName": "Dusk Raid Robes",
+  "dbItemLevel": 1175,
+  "dbRatingStats": {
+   "Combat Advantage": 352,
+   "Critical Strike": 529,
+   "Defense": 881
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elemental Alliance Assault Robes_IL554.png",
+  "id": 6265,
+  "dbName": "Elemental Alliance Assault Robes",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 249,
+   "Critical Severity": 166,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elemental Alliance Raid Robes_IL554.png",
+  "id": 6269,
+  "dbName": "Elemental Alliance Raid Robes",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Combat Advantage": 166,
+   "Critical Strike": 249,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elemental Drowcraft Assault Robes_IL588.png",
+  "id": 5688,
+  "dbName": "Elemental Drowcraft Assault Robes",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elemental Drowcraft Raid Robes_IL588.png",
+  "id": 5692,
+  "dbName": "Elemental Drowcraft Raid Robes",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Strike": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elemental Elven Raid Robes_IL575.png",
+  "id": 6281,
+  "dbName": "Elemental Elven Raid Robes",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Accuracy": 259,
+   "Combat Advantage": 172,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elven Assault Robes_IL567.png",
+  "id": 6273,
+  "dbName": "Elven Assault Robes",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Critical Strike": 255,
+   "Critical Severity": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elven Raid Robes_IL567.png",
+  "id": 6277,
+  "dbName": "Elven Raid Robes",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Accuracy": 255,
+   "Combat Advantage": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Enchanted Bregan D'aerthe Caster's Robe_IL2050.png",
+  "id": 3268,
+  "dbName": "Enchanted Bregan D'aerthe Caster's Robe",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1538,
+   "Critical Strike": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shielded Force",
+    "stat": "Ranged Dmg Bonus",
+    "amount": 6.0,
+    "description": "When you have a Shield or Temp HP, your Ranged Powers do 6% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Eternal Tunic_IL1300.png",
+  "id": 5730,
+  "dbName": "Eternal Tunic",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 337,
+   "Critical Strike": 337,
+   "Defense": 975,
+   "Critical Avoidance": 296
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Exalted Maiden's Raid Coat_IL2050 (2).png",
+  "id": 3284,
+  "dbName": "Exalted Maiden's Raid Coat",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1518,
+   "Defense": 1518
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

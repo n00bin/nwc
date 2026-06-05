@@ -106,6 +106,10 @@
     // generic damage % + outgoing damage (one multiplicative category)
     "Dmg Bonus": "generic", "Damage Bonus": "generic", "DmgBonus": "generic",
     "Damage Vs Bosses": "generic", "DamageVsBosses": "generic", "Damage vs Bosses": "generic",
+    // "Damage Vs Strong" = more damage to strong enemies (bosses/elites) — same
+    // category as Vs Bosses for a boss-target sim. (Was unrouted, so companions
+    // like Minsc whose only damage stat is Damage Vs Strong scored as zero.)
+    "Damage Vs Strong": "generic", "DamageVsStrong": "generic", "Damage vs Strong": "generic",
     "Outgoing Damage": "generic", "OutgoingDamage": "generic",
     // base damage boost
     "Base Damage Boost": "base", "BaseDamageBoost": "base", "Base Damage Bonus": "base",

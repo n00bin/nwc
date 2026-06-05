@@ -1,0 +1,551 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Hood of the Scarlet Tempest_IL4700.png",
+  "id": 3160,
+  "dbName": "Hood of the Scarlet Tempest",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3807,
+   "Forte": 3490
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Assault",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, you gain +5% Power and +6.5% Critical Chance for 8 seconds (15 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Huntsman Assault Cap_IL672.png",
+  "id": 6247,
+  "dbName": "Huntsman Assault Cap",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Critical Strike": 302,
+   "Critical Severity": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Great Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Hunts in Chult.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Huntsman Raid Cap_IL672.png",
+  "id": 5907,
+  "dbName": "Huntsman Raid Cap",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 302,
+   "Combat Advantage": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Great Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Hunts in Chult.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Infernal Forged Cowl_IL1200.png",
+  "id": 3439,
+  "dbName": "Infernal Forged Cowl",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Combat Advantage": 360,
+   "Critical Strike": 540,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\League's Assault Turban_IL588.png",
+  "id": 5960,
+  "dbName": "League's Assault Turban",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\League's Elite Assault Turban_IL602.png",
+  "id": 5968,
+  "dbName": "League's Elite Assault Turban",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Critical Strike": 542,
+   "Critical Severity": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\League's Elite Raid Turban_IL602.png",
+  "id": 5972,
+  "dbName": "League's Elite Raid Turban",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 542,
+   "Combat Advantage": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\League's Raid Turban_IL588.png",
+  "id": 5964,
+  "dbName": "League's Raid Turban",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Lion Guard's Raid Cap_IL1250.png",
+  "id": 5975,
+  "dbName": "Lion Guard's Raid Cap",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Strike": 562,
+   "Defense": 938
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Might",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Power is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Lolthian Circlet_IL2050.png",
+  "id": 3241,
+  "dbName": "Lolthian Circlet",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1230,
+   "Defense": 923,
+   "Deflection": 1845
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 7300 Power for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Mage of the Maze's Hat_IL1000.png",
+  "id": 3500,
+  "dbName": "Mage of the Maze's Hat",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Combat Advantage": 375,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Defense increases by 5% for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manalord's Assault Petasos_IL770.png",
+  "id": 6035,
+  "dbName": "Manalord's Assault Petasos",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Critical Strike": 330,
+   "Critical Severity": 247,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Savagery",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 1500. When your health is below 50%, Critical Avoidance is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manalord's Raid Petasos_IL770.png",
+  "id": 6039,
+  "dbName": "Manalord's Raid Petasos",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Accuracy": 248,
+   "Combat Advantage": 329,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Savagery",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 1500. When your health is below 50%, Critical Avoidance is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manticore Assault Cap_IL756.png",
+  "id": 6287,
+  "dbName": "Manticore Assault Cap",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Critical Strike": 340,
+   "Critical Severity": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manticore Executioner Cap_IL756.png",
+  "id": 6296,
+  "dbName": "Manticore Executioner Cap",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Critical Strike": 227,
+   "Critical Severity": 170,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manticore Raid Cap_IL756.png",
+  "id": 6291,
+  "dbName": "Manticore Raid Cap",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 227,
+   "Critical Strike": 340,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Mastered Duergar Mercenary's Hood_IL1900.png",
+  "id": 3259,
+  "dbName": "Mastered Duergar Mercenary's Hood",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1538,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Pilgrim Assault Turban_IL644.png",
+  "id": 6044,
+  "dbName": "Pilgrim Assault Turban",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Critical Strike": 290,
+   "Critical Severity": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Chultan Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage in all of Chult.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Pilgrim Raid Turban_IL644.png",
+  "id": 6048,
+  "dbName": "Pilgrim Raid Turban",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Combat Advantage": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Chultan Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage in all of Chult.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Pioneer Assault Turban_IL616.png",
+  "id": 6075,
+  "dbName": "Pioneer Assault Turban",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Critical Strike": 277,
+   "Critical Severity": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Maximum Hit Points for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Pioneer Raid Turban_IL616.png",
+  "id": 6083,
+  "dbName": "Pioneer Raid Turban",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Critical Strike": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Maximum Hit Points for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Primal Assault Imaski_IL700.png",
+  "id": 6096,
+  "dbName": "Primal Assault Imaski",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Critical Strike": 315,
+   "Critical Severity": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% of your health back.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Primal Raid Imaski_IL700.png",
+  "id": 6086,
+  "dbName": "Primal Raid Imaski",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Accuracy": 210,
+   "Combat Advantage": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% of your health back.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Prismatic Fractal Cowl_IL3700.png",
+  "id": 3174,
+  "dbName": "Prismatic Fractal Cowl",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Forte": 2498
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Spiker (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "For every 3 seconds you are in combat, you gain 1.8% Critical Strike. Max Stacks: 5.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Pulsar Cap_IL2600.png",
+  "id": 3225,
+  "dbName": "Pulsar Cap",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Critical Strike": 1950,
+   "Critical Severity": 1170,
+   "Defense": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shielded Force",
+    "stat": "Ranged Dmg Bonus",
+    "amount": 7.0,
+    "description": "When you have a Shield or Temp HP, your Ranged Powers do 7% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

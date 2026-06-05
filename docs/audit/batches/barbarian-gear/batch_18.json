@@ -1,0 +1,531 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\League's Elite Assault Khuffs_IL602.png",
+  "id": 6624,
+  "dbName": "League's Elite Assault Khuffs",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 542,
+   "Critical Severity": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, your Movement Speed Movement Speed increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\League's Elite Raid Khuffs_IL602.png",
+  "id": 6628,
+  "dbName": "League's Elite Raid Khuffs",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Combat Advantage": 542,
+   "Critical Strike": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, your Movement Speed Movement Speed increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\League's Raid Khuffs_IL588.png",
+  "id": 6632,
+  "dbName": "League's Raid Khuffs",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Strike": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lion Guard's Ward Greaves_IL1250.png",
+  "id": 6645,
+  "dbName": "Lion Guard's Ward Greaves",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Combat Advantage": 469,
+   "Defense": 938,
+   "Awareness": 469
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 300 Power for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lionsmane Duelist Greaves_IL560.png",
+  "id": 6649,
+  "dbName": "Lionsmane Duelist Greaves",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Accuracy": 181,
+   "Defense": 420,
+   "Deflect": 239
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lionsmane Executioner Greaves_IL560.png",
+  "id": 6652,
+  "dbName": "Lionsmane Executioner Greaves",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Accuracy": 168,
+   "Critical Strike": 126,
+   "Critical Severity": 126,
+   "Defense": 420
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lolthian Greaves_IL2050.png",
+  "id": 6660,
+  "dbName": "Lolthian Greaves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1230,
+   "Defense": 923,
+   "Incoming Healing": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 650 Combat Advantage, to the max of 7800.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lolthian Sabatons_IL2050.png",
+  "id": 736,
+  "dbName": "Lolthian Sabatons",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 923,
+   "Defense": 923,
+   "Awareness": 1230
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Elegant Reply",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 30% chance to reflect 5% of the damage back to the attacker. This effect may only occur once every 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Mastered Duergar Mercenary's Goristro Striders_IL1900.png",
+  "id": 6667,
+  "dbName": "Mastered Duergar Mercenary's Goristro Striders",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 10,000. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pilgrim Assault Khuffs_IL644.png",
+  "id": 6689,
+  "dbName": "Pilgrim Assault Khuffs",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Critical Severity": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wanderer's Vigor",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, you regenerate 3% of your Maximum Hit Points, up to 3000, every 3 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pilgrim Raid Khuffs_IL644.png",
+  "id": 6692,
+  "dbName": "Pilgrim Raid Khuffs",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Combat Advantage": 290,
+   "Critical Strike": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wanderer's Vigor",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, you regenerate 3% of your Maximum Hit Points, up to 3000, every 3 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pioneer Assault Khuffs_IL616.png",
+  "id": 6700,
+  "dbName": "Pioneer Assault Khuffs",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Accuracy": 277,
+   "Critical Severity": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Dash",
+    "stat": null,
+    "amount": null,
+    "description": "Your Movement Speed increases by 1% for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pioneer Raid Khuffs_IL616.png",
+  "id": 6703,
+  "dbName": "Pioneer Raid Khuffs",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Critical Strike": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Dash",
+    "stat": null,
+    "amount": null,
+    "description": "Your Movement Speed increases by 1% for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Primal Assault Lapulapus_IL700.png",
+  "id": 6708,
+  "dbName": "Primal Assault Lapulapus",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 315,
+   "Critical Severity": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Primal Raid Lapulapus_IL700.png",
+  "id": 6712,
+  "dbName": "Primal Raid Lapulapus",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 315,
+   "Critical Strike": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 3
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pulsar Greaves_IL2600.png",
+  "id": 234,
+  "dbName": "Pulsar Greaves",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Defense": 780,
+   "Critical Avoidance": 1950,
+   "Deflection": 1170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "+7.5% Incoming Healing, -10000 Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Radiant Elven Sabatons_IL2800.png",
+  "id": 231,
+  "dbName": "Radiant Elven Sabatons",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Defense": 2100,
+   "Awareness": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spelljammer's Fortified Ally",
+    "stat": null,
+    "amount": null,
+    "description": "-2% Incoming Damage and 2.5% Incoming Healing in Wildspace. -1% Incoming Damage and 2.5% Incoming Healing in non-Wildspace.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Runefrost Bulwark Greaves_IL5400.png",
+  "id": 5357,
+  "dbName": "Runefrost Bulwark Greaves",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Awareness": 3240,
+   "Critical Avoidance": 4455
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 3.8% Awareness and Deflect while at full health. These bonuses decrease relative to your missing health.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Runefrost Ravager Greaves_IL5400.png",
+  "id": 6716,
+  "dbName": "Runefrost Ravager Greaves",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Combat Advantage": 3240,
+   "Critical Strike": 4860
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 25' or closer to your target, your Combat Advantage is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Starforged Greaves_IL2700.png",
+  "id": 6740,
+  "dbName": "Starforged Greaves",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Combat Advantage": 2025,
+   "Critical Strike": 2025
+  },
+  "dbPercentStats": {
+   "Damage in Wildspace": 5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Wildspace Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in Wildspace.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Starforged Sabatons_IL2700.png",
+  "id": 714,
+  "dbName": "Starforged Sabatons",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Awareness": 2025,
+   "Incoming Healing": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Defender Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Base Damage Boost when struck. Stacks 5 times. When you strike an enemy, the stacks are consumed and you gain -1% Incoming Damage per stack consumed for 10 seconds. Stacks cannot be applied at the same time.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\The Dark Maiden's Resolution Greaves_IL2000.png",
+  "id": 6759,
+  "dbName": "The Dark Maiden's Resolution Greaves",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Severity": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4,500 Power in the Underdark and gain more role effectiveness when in the Temple of the Spider. DPS: +5% Base Damage Boost. Tank: -5% Incoming Damage. Healer: +5% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\The Dark Maiden's Ward Sabatons_IL2000.png",
+  "id": 235,
+  "dbName": "The Dark Maiden's Ward Sabatons",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 1500,
+   "Awareness": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4,500 Power in the Underdark and gain more role effectiveness when in the Temple of the Spider. DPS: +5% Base Damage Boost. Tank: -5% Incoming Damage. Healer: +5% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Titansteel Assault Greaves_IL756.png",
+  "id": 6772,
+  "dbName": "Titansteel Assault Greaves",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 340,
+   "Critical Severity": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Titansteel Duelist Greaves_IL756.png",
+  "id": 6779,
+  "dbName": "Titansteel Duelist Greaves",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Defense": 567,
+   "Deflect": 323
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

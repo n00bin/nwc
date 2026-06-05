@@ -1,0 +1,434 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Mekatl_IL650.png",
+  "id": 6009,
+  "dbName": "Obsidian Mekatl",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Mekatl_IL800.png",
+  "id": 6010,
+  "dbName": "Obsidian Mekatl",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pioneer Jamibya_IL350 (2).png",
+  "id": 5647,
+  "dbName": "Pioneer Jamibya",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pioneer Jamibya_IL350.png",
+  "id": 5647,
+  "dbName": "Pioneer Jamibya",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pioneer Jamibya_IL500 (2).png",
+  "id": 5648,
+  "dbName": "Pioneer Jamibya",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pioneer Jamibya_IL500.png",
+  "id": 5648,
+  "dbName": "Pioneer Jamibya",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pioneer Jamibya_IL650 (2).png",
+  "id": 5649,
+  "dbName": "Pioneer Jamibya",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pioneer Jamibya_IL650.png",
+  "id": 5649,
+  "dbName": "Pioneer Jamibya",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pioneer Jamibya_IL800 (2).png",
+  "id": 5650,
+  "dbName": "Pioneer Jamibya",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pioneer Jamibya_IL800.png",
+  "id": 5650,
+  "dbName": "Pioneer Jamibya",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ancient Scalebreaker's Hide_IL1700.png",
+  "id": 4047,
+  "dbName": "Ancient Scalebreaker's Hide",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Severity": 1020,
+   "Defense": 765,
+   "Control Resistance": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal CA damage with your powers, 10% chance to increase one of Accuracy/CA/Critical Avoidance/Deflect Severity by 8% for 10s. (30s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ancient Scalebreaker's Raiment_IL1700.png",
+  "id": 3326,
+  "dbName": "Ancient Scalebreaker's Raiment",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 765,
+   "Defense": 765,
+   "Outgoing Healing": 1020
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Ruined Scalemail_IL690.png",
+  "id": 3473,
+  "dbName": "Apprentice's Ruined Scalemail",
+  "dbItemLevel": 690,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Runed Hide_IL965 (2).png",
+  "id": 4132,
+  "dbName": "Apprentice's Runed Hide",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Severity": 724,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Runed Hide_IL965 (3).png",
+  "id": 4132,
+  "dbName": "Apprentice's Runed Hide",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Severity": 724,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Runed Hide_IL965.png",
+  "id": 4132,
+  "dbName": "Apprentice's Runed Hide",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Severity": 724,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Runed Scalemail_IL965 (2).png",
+  "id": 1537,
+  "dbName": "Apprentice's Runed Scalemail",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Defense": 724,
+   "Deflection": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Runed Scalemail_IL965.png",
+  "id": 1537,
+  "dbName": "Apprentice's Runed Scalemail",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Defense": 724,
+   "Deflection": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Astral Raider's Leathers_IL2200.png",
+  "id": 3238,
+  "dbName": "Astral Raider's Leathers",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Critical Severity": 1320,
+   "Defense": 990,
+   "Deflection": 1980
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defying Medic",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Outgoing Healing for each enemy you are engaged in battle within 100'. (Max of 10 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Astral Raider's Vest_IL2200.png",
+  "id": 3982,
+  "dbName": "Astral Raider's Vest",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 990,
+   "Deflection": 1320,
+   "Incoming Healing": 990
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defying Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 2% Combat Advantage for each enemy you are engaged in battle within 100'. (Max of 10 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Banditlord's Assault Jerkin_IL770.png",
+  "id": 4183,
+  "dbName": "Banditlord's Assault Jerkin",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 329,
+   "Critical Strike": 248,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Balance",
+    "stat": null,
+    "amount": null,
+    "description": "When health is 50% or more, your Power is increased by 1500. When health is below 50%, Defense is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Banditlord's Raid Jerkin_IL770.png",
+  "id": 4177,
+  "dbName": "Banditlord's Raid Jerkin",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 329,
+   "Critical Strike": 248,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Balance",
+    "stat": null,
+    "amount": null,
+    "description": "When health is 50% or more, your Power is increased by 1500. When health is below 50%, Defense is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bismuth Mail_IL3350 (2).png",
+  "id": 2728,
+  "dbName": "Bismuth Mail",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Combat Advantage": 2010,
+   "Critical Severity": 3015
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Daily (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown). You gain 5% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bismuth Mail_IL3350.png",
+  "id": 2728,
+  "dbName": "Bismuth Mail",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Combat Advantage": 2010,
+   "Critical Severity": 3015
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Daily (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown). You gain 5% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Black Ice Armor_IL512 (2).png",
+  "id": 2081,
+  "dbName": "Black Ice Armor",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.9,
+   "Combat Advantage": 132,
+   "Defense": 384,
+   "Critical Avoidance": 132
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

@@ -1,0 +1,541 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Black Ice Greaves_IL512.png",
+  "id": 2079,
+  "dbName": "Black Ice Greaves",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.1,
+   "Combat Advantage": 131,
+   "Defense": 384,
+   "Critical Avoidance": 59.9,
+   "Deflection": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Bregan D'aerthe Mauler's Greaves_IL2000.png",
+  "id": 6365,
+  "dbName": "Bregan D'aerthe Mauler's Greaves",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 900,
+   "Critical Strike": 1500,
+   "Deflect Severity": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 25' or closer to your target, your Power is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Crimson Scalebreaker's Resolution Greaves_IL1800.png",
+  "id": 6407,
+  "dbName": "Crimson Scalebreaker's Resolution Greaves",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Accuracy": 1080,
+   "Defense": 810,
+   "Incoming Healing": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Footwork",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10 seconds. Max 5 Stacks: 5% Movement Speed and Recharge Speed",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Crone's Greaves_IL1225.png",
+  "id": 6411,
+  "dbName": "Crone's Greaves",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Combat Advantage": 368,
+   "Critical Strike": 551,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Might",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your Power is increased by 3000 for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Demon Forged Greaves_IL1215.png",
+  "id": 6414,
+  "dbName": "Demon Forged Greaves",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Depthforged Greaves_IL3000.png",
+  "id": 6418,
+  "dbName": "Depthforged Greaves",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Combat Advantage": 2250,
+   "Critical Severity": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fiery Predator",
+    "stat": null,
+    "amount": null,
+    "description": "+3.5% Damage on fire-themed maps. +1% Damage on other maps.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Depthforged Sabatons_IL3000.png",
+  "id": 604,
+  "dbName": "Depthforged Sabatons",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Awareness": 2250,
+   "Incoming Healing": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 3.25% Awareness and Deflect while at full health. These bonuses decrease relative to your missing health. Currently: 3.3% Awareness and 3.3% Deflect.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Devil Forged Greaves_IL1215.png",
+  "id": 6422,
+  "dbName": "Devil Forged Greaves",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Divine Raid Greaves_IL1230.png",
+  "id": 6426,
+  "dbName": "Divine Raid Greaves",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Combat Advantage": 369,
+   "Critical Strike": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 300 Power for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Dragonsteel Greaves_IL1900.png",
+  "id": 6443,
+  "dbName": "Dragonsteel Greaves",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1140,
+   "Defense": 855,
+   "Incoming Healing": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, gain 5,000 Defense. When in a party, gain 10,000 Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Dragonsteel Sabatons_IL1900.png",
+  "id": 946,
+  "dbName": "Dragonsteel Sabatons",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 855,
+   "Defense": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, gain 3,000 Critical Avoidance. When in a party, gain 10,000 Deflect.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Dungeon Raider's Greaves_IL940.png",
+  "id": 6456,
+  "dbName": "Dungeon Raider's Greaves",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Elemental Corrupted Black Ice Greaves_IL546.png",
+  "id": 2078,
+  "dbName": "Elemental Corrupted Black Ice Greaves",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Severity": 247,
+   "Critical Strike": 163,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Elemental Purified Black Ice Greaves_IL546.png",
+  "id": 2074,
+  "dbName": "Elemental Purified Black Ice Greaves",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Combat Advantage": 163,
+   "Critical Strike": 247,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Enchanted Bregan D'aerthe Mauler's Greaves_IL2050.png",
+  "id": 6503,
+  "dbName": "Enchanted Bregan D'aerthe Mauler's Greaves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 923,
+   "Critical Strike": 1538,
+   "Deflect Severity": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 25' or closer to your target, your Power is increased by 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Enchanted Depthforged Greaves_IL3200.png",
+  "id": 233,
+  "dbName": "Enchanted Depthforged Greaves",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Awareness": 2400,
+   "Incoming Healing": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 3.75% Awareness and Deflect while at full health. These bonuses decrease relative to your missing health. Currently: 3.8% Awareness and 3.8% Deflect.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Enchanted Depthforged Sabatons_IL3200.png",
+  "id": 6508,
+  "dbName": "Enchanted Depthforged Sabatons",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Combat Advantage": 2400,
+   "Critical Severity": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fiery Predator",
+    "stat": null,
+    "amount": null,
+    "description": "+4% Damage on fire-themed maps. +1% Damage on other maps.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Exalted Maiden's Resolution Greaves_IL2050 (2).png",
+  "id": 6514,
+  "dbName": "Exalted Maiden's Resolution Greaves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Severity": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 5,000 Power and gain more role effectiveness when in the Temple of the Spider. DPS: +6% Base Damage Boost. Tank: -6% Incoming Damage. Healer: +6% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Exalted Maiden's Resolution Greaves_IL2050.png",
+  "id": 6514,
+  "dbName": "Exalted Maiden's Resolution Greaves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Severity": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 5,000 Power and gain more role effectiveness when in the Temple of the Spider. DPS: +6% Base Damage Boost. Tank: -6% Incoming Damage. Healer: +6% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Exalted Maiden's Ward Sabatons_IL2050 (2).png",
+  "id": 932,
+  "dbName": "Exalted Maiden's Ward Sabatons",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 1538,
+   "Awareness": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 5,000 Power and gain more role effectiveness when in the Temple of the Spider. DPS: +6% Base Damage Boost. Tank: -6% Incoming Damage. Healer: +6% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Exalted Maiden's Ward Sabatons_IL2050.png",
+  "id": 932,
+  "dbName": "Exalted Maiden's Ward Sabatons",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 1538,
+   "Awareness": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 5,000 Power and gain more role effectiveness when in the Temple of the Spider. DPS: +6% Base Damage Boost. Tank: -6% Incoming Damage. Healer: +6% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Fiend Forged Greaves_IL1230.png",
+  "id": 6554,
+  "dbName": "Fiend Forged Greaves",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Combat Advantage": 369,
+   "Critical Strike": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Forest Guardian's Raid Greaves_IL1500.png",
+  "id": 6557,
+  "dbName": "Forest Guardian's Raid Greaves",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Combat Advantage": 450,
+   "Critical Strike": 675,
+   "Defense": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Mastery",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Combat Advantage is increased by 7500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Greaves of the Bloodborne Reaper_IL5000.png",
+  "id": 6843,
+  "dbName": "Greaves of the Bloodborne Reaper",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Overwhelming Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, you gain +7.5% Critical Strike and +3.5% Movement Speed for 6 seconds. (16 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Greaves of the Crimson Scythe_IL4700.png",
+  "id": 6570,
+  "dbName": "Greaves of the Crimson Scythe",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Forte": 2855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Explosive Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, you gain +6% Critical Severity and +3.5% Movement Speed for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

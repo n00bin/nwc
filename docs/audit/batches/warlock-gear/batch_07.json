@@ -1,0 +1,471 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Hellfire Engine Instruction Manual_IL800.png",
+  "id": 5871,
+  "dbName": "Hellfire Engine Instruction Manual",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 600,
+   "Critical Strike": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Assault Longcoat_IL546.png",
+  "id": 3692,
+  "dbName": "Alliance Assault Longcoat",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Strike": 164,
+   "Critical Severity": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Officer's Coat_IL1600.png",
+  "id": 3335,
+  "dbName": "Alliance Officer's Coat",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Critical Strike": 960,
+   "Defense": 720,
+   "Critical Avoidance": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Raid Longcoat_IL546.png",
+  "id": 3688,
+  "dbName": "Alliance Raid Longcoat",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Critical Strike": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ancient Scalebreaker's Leathers_IL1700.png",
+  "id": 3322,
+  "dbName": "Ancient Scalebreaker's Leathers",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 1020,
+   "Defense": 765,
+   "Awareness": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ancient Scalebreaker's Raiment_IL1700.png",
+  "id": 3326,
+  "dbName": "Ancient Scalebreaker's Raiment",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 765,
+   "Defense": 765,
+   "Outgoing Healing": 1020
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Ruined Robe_IL690.png",
+  "id": 3468,
+  "dbName": "Apprentice's Ruined Robe",
+  "dbItemLevel": 690,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Ruined Scalemail_IL690.png",
+  "id": 3473,
+  "dbName": "Apprentice's Ruined Scalemail",
+  "dbItemLevel": 690,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Runed Robe_IL965.png",
+  "id": 3462,
+  "dbName": "Apprentice's Runed Robe",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Severity": 724,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Runed Scalemail_IL965 (2).png",
+  "id": 1537,
+  "dbName": "Apprentice's Runed Scalemail",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Defense": 724,
+   "Deflection": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Runed Scalemail_IL965.png",
+  "id": 1537,
+  "dbName": "Apprentice's Runed Scalemail",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Defense": 724,
+   "Deflection": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Astral Raider's Coat_IL2200.png",
+  "id": 3234,
+  "dbName": "Astral Raider's Coat",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Critical Strike": 1320,
+   "Defense": 990,
+   "Critical Avoidance": 1980
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defying Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 2% Combat Advantage for each enemy you are engaged in battle within 100'. (Max of 10 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Astral Raider's Leathers_IL2200.png",
+  "id": 3238,
+  "dbName": "Astral Raider's Leathers",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Critical Severity": 1320,
+   "Defense": 990,
+   "Deflection": 1980
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defying Medic",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Outgoing Healing for each enemy you are engaged in battle within 100'. (Max of 10 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Barbed Robe of Halaster's Successor_IL1010.png",
+  "id": 3447,
+  "dbName": "Barbed Robe of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Critical Severity": 758,
+   "Defense": 758
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain .5% Defense, to the max of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Barbed Robe of the Successor_IL990.png",
+  "id": 3455,
+  "dbName": "Barbed Robe of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Critical Severity": 742,
+   "Defense": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain .5% Defense, to the max of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Barkhide_IL1000.png",
+  "id": 3514,
+  "dbName": "Barkhide",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Defense": 750,
+   "Awareness": 375,
+   "Critical Avoidance": 375
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defiance",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you will take 3% less damage for 10 seconds. Cooldown 30 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Bismuth Jerkin_IL3350.png",
+  "id": 3181,
+  "dbName": "Bismuth Jerkin",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Critical Strike": 3015,
+   "Critical Severity": 3015
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Daily (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "Daily damage = next encounter +20% damage, +5% Combat Advantage. (30s cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Breastplate of the Eternal Bloom_IL5000.png",
+  "id": 3155,
+  "dbName": "Breastplate of the Eternal Bloom",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Severity": 4050,
+   "Outgoing Healing": 3300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Guardian's Impact",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your targets for more than 15% of your Maximum Hit Points in a single action, you and your 2 closest allies within 25' gain +1.3% Defense and +2% Critical Avoidance for 10 seconds (10 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Bregan D'aerthe Caster's Robe_IL2000.png",
+  "id": 3276,
+  "dbName": "Bregan D'aerthe Caster's Robe",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 1500,
+   "Critical Severity": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shielded Force",
+    "stat": "Ranged Dmg Bonus",
+    "amount": 7.0,
+    "description": "When you have a Shield or Temp HP, your Ranged Powers do 7% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Bregan D'aerthe Expert's Cloth_IL2000.png",
+  "id": 3280,
+  "dbName": "Bregan D'aerthe Expert's Cloth",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Critical Severity": 900,
+   "Critical Avoidance": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Menacing Aura",
+    "stat": null,
+    "amount": null,
+    "description": "You gain an aura that decreases enemy Defense, Awareness, and Critical Avoidance by 3.5% for enemies standing within 10ft of you. Multiple of the same aura will not stack.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Company Assault Longcoat_IL588.png",
+  "id": 3885,
+  "dbName": "Company Assault Longcoat",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Company Raid Longcoat_IL588.png",
+  "id": 3868,
+  "dbName": "Company Raid Longcoat",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crimson Scalebreaker's Raid Leathers_IL1800.png",
+  "id": 3314,
+  "dbName": "Crimson Scalebreaker's Raid Leathers",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Combat Advantage": 1080,
+   "Defense": 810,
+   "Awareness": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crimson Scalebreaker's Rejuvenation Raiment_IL1800.png",
+  "id": 3318,
+  "dbName": "Crimson Scalebreaker's Rejuvenation Raiment",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Strike": 810,
+   "Defense": 810,
+   "Outgoing Healing": 1080
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crone's Robe_IL1225.png",
+  "id": 3361,
+  "dbName": "Crone's Robe",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Accuracy": 919,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

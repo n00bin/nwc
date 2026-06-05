@@ -1,0 +1,521 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Alliance Soldier's Cuirass_IL1600.png",
+  "id": 6320,
+  "dbName": "Alliance Soldier's Cuirass",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Critical Strike": 960,
+   "Defense": 720,
+   "Deflect": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Alliance Ward Breastplate_IL546.png",
+  "id": 2339,
+  "dbName": "Alliance Ward Breastplate",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Severity": 246,
+   "Defense": 410,
+   "Deflection": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Ancient Scalebreaker's Plate_IL1700.png",
+  "id": 6330,
+  "dbName": "Ancient Scalebreaker's Plate",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1020,
+   "Defense": 765,
+   "Critical Avoidance": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Apprentice's Runed Chainmail_IL965.png",
+  "id": 6334,
+  "dbName": "Apprentice's Runed Chainmail",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Severity": 724,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Astral Raider's Breastplate_IL2200.png",
+  "id": 726,
+  "dbName": "Astral Raider's Breastplate",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 990,
+   "Control Resistance": 990,
+   "Incoming Healing": 1320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Recharge Speed for each enemy you are engaged in battle within 100'. Max 10 Stacks: 10% Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Bregan D'aerthe Mauler's Plate_IL2000.png",
+  "id": 6367,
+  "dbName": "Bregan D'aerthe Mauler's Plate",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 1500,
+   "Critical Strike": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reckless Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal damage to an enemy gain a stack of Reckless Advantage, increasing your Combat Advantage by 2% but decreasing your Critical Avoidance by 1.5% for 5 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Chainmail of the Spy's Guild_IL940.png",
+  "id": 6396,
+  "dbName": "Chainmail of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Severity": 705,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Crimson Scalebreaker's Resolution Plate_IL1800.png",
+  "id": 6408,
+  "dbName": "Crimson Scalebreaker's Resolution Plate",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Strike": 1080,
+   "Defense": 810,
+   "Critical Avoidance": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Crone's Chainmail_IL1225.png",
+  "id": 6410,
+  "dbName": "Crone's Chainmail",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Accuracy": 919,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Cuirass of the Bloodborne Reaper_IL5000.png",
+  "id": 6830,
+  "dbName": "Cuirass of the Bloodborne Reaper",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Strike": 4050,
+   "Forte": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Vital Onslaught",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, your next three strikes from encounter powers will deal 15% more damage and heal you for 1% of your Max HP. This power expires when combat ends. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Cuirass of the Crimson Scythe_IL4700.png",
+  "id": 6831,
+  "dbName": "Cuirass of the Crimson Scythe",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Forte": 2855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle-Hardened Resolve",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Forte is increased by +1.8% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 6% Forte",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Cuirass of the Iron Bulwark_IL4700.png",
+  "id": 385,
+  "dbName": "Cuirass of the Iron Bulwark",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Awareness": 2538,
+   "Critical Avoidance": 4265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reactive Shielding",
+    "stat": null,
+    "amount": null,
+    "description": "On dmg > 15% MaxHP: 20' aura gives allies +1% Defense and +2.5% IH 8s (15s cd)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Demon Forged Chainmail_IL1215.png",
+  "id": 6832,
+  "dbName": "Demon Forged Chainmail",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Depthforged Cuirass_IL3000.png",
+  "id": 603,
+  "dbName": "Depthforged Cuirass",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Awareness": 2250,
+   "Critical Avoidance": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Boar's Determination",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 7.5% Awareness and 5% Stamina Regeneration for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Depthforged Plate_IL3000.png",
+  "id": 6419,
+  "dbName": "Depthforged Plate",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Combat Advantage": 2250,
+   "Forte": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Strike and Critical Severity for 15 seconds. Max 5 Stacks: 7.5% Critical Strike and Critical Severity",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Devil Forged Chainmail_IL1215.png",
+  "id": 6421,
+  "dbName": "Devil Forged Chainmail",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Divine Raid Armor_IL1230.png",
+  "id": 6425,
+  "dbName": "Divine Raid Armor",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Severity": 922,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Dragonsteel Plate_IL1900.png",
+  "id": 6444,
+  "dbName": "Dragonsteel Plate",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1140,
+   "Defense": 855,
+   "Deflect": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Power",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Power and Combat Advantage for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Dungeon Raider's Chainmail_IL940.png",
+  "id": 6455,
+  "dbName": "Dungeon Raider's Chainmail",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Severity": 705,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Elemental Corrupted Black Ice Armor_IL546.png",
+  "id": 2076,
+  "dbName": "Elemental Corrupted Black Ice Armor",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Combat Advantage": 205,
+   "Defense": 410,
+   "Awareness": 68.8,
+   "Deflection": 136
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Elemental Purified Black Ice Armor_IL546.png",
+  "id": 2072,
+  "dbName": "Elemental Purified Black Ice Armor",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 205,
+   "Critical Strike": 137,
+   "Defense": 410,
+   "Awareness": 68
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Enchanted Bregan D'aerthe Mauler's Plate_IL2050.png",
+  "id": 6505,
+  "dbName": "Enchanted Bregan D'aerthe Mauler's Plate",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1538,
+   "Critical Strike": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reckless Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal damage to an enemy gain a stack of Reckless Advantage, increasing your Combat Advantage by 3% but decreasing your Critical Avoidance by 1% for 5 seconds. (Max 6 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Enchanted Depthforged Cuirass_IL3200.png",
+  "id": 6506,
+  "dbName": "Enchanted Depthforged Cuirass",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Accuracy": 1200,
+   "Combat Advantage": 2400,
+   "Forte": 1200
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Accuracy and Combat Advantage for 15 seconds. Max 5 Stack: 7.5% Accuracy and Combat Advantage",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Eternal Plate Armor_IL1300.png",
+  "id": 2344,
+  "dbName": "Eternal Plate Armor",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 337,
+   "Critical Strike": 339,
+   "Defense": 975,
+   "Deflection": 294
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Exalted Maiden's Resolution Plate_IL2050.png",
+  "id": 6516,
+  "dbName": "Exalted Maiden's Resolution Plate",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

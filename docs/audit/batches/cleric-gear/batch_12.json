@@ -1,0 +1,545 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Helm of the Scarlet Arcanum_IL5000 (3).png",
+  "id": 2713,
+  "dbName": "Helm of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Steady Henson",
+    "stat": null,
+    "amount": null,
+    "description": "For every 8 seconds you are in combat, gain +1% Accuracy and +0.3% Recharge Speed. Max 7 Stacks: +7% Accuracy and +2.1% Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Helm of the Scarlet Arcanum_IL5000.png",
+  "id": 2713,
+  "dbName": "Helm of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Steady Henson",
+    "stat": null,
+    "amount": null,
+    "description": "For every 8 seconds you are in combat, gain +1% Accuracy and +0.3% Recharge Speed. Max 7 Stacks: +7% Accuracy and +2.1% Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Hood of the Spy's Guild_IL940 (2).png",
+  "id": 4138,
+  "dbName": "Hood of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Hood of the Spy's Guild_IL940.png",
+  "id": 4138,
+  "dbName": "Hood of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Infernal Forged Coif_IL1200.png",
+  "id": 1419,
+  "dbName": "Infernal Forged Coif",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Critical Strike": 630,
+   "Defense": 900,
+   "Critical Avoidance": 270
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Infernal Forged Hood_IL1200 (2).png",
+  "id": 4118,
+  "dbName": "Infernal Forged Hood",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Combat Advantage": 360,
+   "Critical Strike": 540,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "10% chance to gain 5000 Power for 10s on CA damage. (30s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Infernal Forged Hood_IL1200.png",
+  "id": 4118,
+  "dbName": "Infernal Forged Hood",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Combat Advantage": 360,
+   "Critical Strike": 540,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "10% chance to gain 5000 Power for 10s on CA damage. (30s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Lolthian Shroud_IL2050 (2).png",
+  "id": 3985,
+  "dbName": "Lolthian Shroud",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1230,
+   "Critical Severity": 923,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 7500 Power for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Lolthian Shroud_IL2050.png",
+  "id": 3985,
+  "dbName": "Lolthian Shroud",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1230,
+   "Critical Severity": 923,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 7500 Power for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Mastered Duergar Mercenary's Barbute_IL1900 (2).png",
+  "id": 2784,
+  "dbName": "Mastered Duergar Mercenary's Barbute",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1425,
+   "Critical Strike": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Mastered Duergar Mercenary's Barbute_IL1900.png",
+  "id": 2784,
+  "dbName": "Mastered Duergar Mercenary's Barbute",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1425,
+   "Critical Strike": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Mugger of the Maze's Hood_IL1000.png",
+  "id": 4154,
+  "dbName": "Mugger of the Maze's Hood",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Combat Advantage": 375,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Defense increases by 5% for 10 seconds. (30s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Prismatic Fractal Barbut_IL3700 (2).png",
+  "id": 3178,
+  "dbName": "Prismatic Fractal Barbut",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Critical Severity": 3330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Restoration (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "For every 3 seconds you are in combat, you gain 0.8% Outgoing Healing and Critical Strike. Max Stacks: 5.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Prismatic Fractal Barbut_IL3700 (3).png",
+  "id": 3178,
+  "dbName": "Prismatic Fractal Barbut",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Critical Severity": 3330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Restoration (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "For every 3 seconds you are in combat, you gain 0.8% Outgoing Healing and Critical Strike. Max Stacks: 5.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Prismatic Fractal Barbut_IL3700.png",
+  "id": 3178,
+  "dbName": "Prismatic Fractal Barbut",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Critical Severity": 3330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Restoration (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "For every 3 seconds you are in combat, you gain 0.8% Outgoing Healing and Critical Strike. Max Stacks: 5.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Protege's Crowned Coif_IL980.png",
+  "id": 1554,
+  "dbName": "Protege's Crowned Coif",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Critical Strike": 514,
+   "Defense": 735,
+   "Critical Avoidance": 221
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Pulsar Hat_IL2600 (2).png",
+  "id": 3977,
+  "dbName": "Pulsar Hat",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Critical Strike": 1950,
+   "Critical Severity": 1170,
+   "Defense": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Grace",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Forte increases by 7.5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Pulsar Hat_IL2600.png",
+  "id": 3977,
+  "dbName": "Pulsar Hat",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Critical Strike": 1950,
+   "Critical Severity": 1170,
+   "Defense": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Grace",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Forte increases by 7.5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Radiant Elven Cap_IL2800 (2).png",
+  "id": 3969,
+  "dbName": "Radiant Elven Cap",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Combat Advantage": 2100,
+   "Critical Severity": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spelljammer's Grace",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat in Wildspace, you gain 0.85% Forte. Max Stacks: 7 (10 in Wildspace).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Radiant Elven Cap_IL2800.png",
+  "id": 3969,
+  "dbName": "Radiant Elven Cap",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Combat Advantage": 2100,
+   "Critical Severity": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spelljammer's Grace",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat in Wildspace, you gain 0.85% Forte. Max Stacks: 7 (10 in Wildspace).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Runefrost Lifeward Helm_IL5400.png",
+  "id": 5352,
+  "dbName": "Runefrost Lifeward Helm",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Severity": 4860,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Channeler's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.4% Outgoing Healing and 0.4% Power. Max 10 Stacks: 4% Outgoing Healing and 4% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Starhide Cap_IL2700.png",
+  "id": 3973,
+  "dbName": "Starhide Cap",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Severity": 2025,
+   "Forte": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maximized Opportunity",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Combat Advantage is increased by 7%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Stealer of the Star's Hood_IL1000.png",
+  "id": 4147,
+  "dbName": "Stealer of the Star's Hood",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Strike": 525,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 1% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\The Dark Maiden's Assault Shroud_IL2000.png",
+  "id": 4015,
+  "dbName": "The Dark Maiden's Assault Shroud",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 1% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Trapper of the Twilight's Hood_IL1000.png",
+  "id": 4146,
+  "dbName": "Trapper of the Twilight's Hood",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Critical Severity": 450,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5% for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

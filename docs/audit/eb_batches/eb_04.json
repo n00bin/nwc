@@ -1,0 +1,146 @@
+[
+ {
+  "name": "Cuirass of the Scarlet Arcanum",
+  "class": "bard-gear",
+  "ids": [
+   2712
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Focused Burst' vs DB 'Focused Frenzy' (all three screenshots agree on 'Focused Burst')"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuirass of the Scarlet Arcanum_IL5000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage."
+   }
+  ]
+ },
+ {
+  "name": "Hauberk of the Crimson Gale",
+  "class": "bard-gear",
+  "ids": [
+   2716
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Lethal Focus equip bonus: screenshot reads '+3% Power and +4% Accuracy for 7 seconds' vs DB '+3% Hit Points and +4% Accuracy for 7 seconds'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Hauberk of the Crimson Gale_IL4700 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Lethal Focus",
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, you gain +3% Hit Points and +4% Accuracy for 7 seconds (5 second cooldown)."
+   }
+  ]
+ },
+ {
+  "name": "Dungeon Raider's Hide",
+  "class": "bard-gear",
+  "ids": [
+   4143
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description in DB is abbreviated ('When damaged for more than 10% of Max HP in a single blow, gain 5% Defense for 10s') vs full in-game text ('Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds') — functional match, flagged for completeness only"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dungeon Raider's Hide_IL940 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "description": "When damaged for more than 10% of Max HP in a single blow, gain 5% Defense for 10s."
+   }
+  ]
+ },
+ {
+  "name": "Ultraviolet Elven Vest",
+  "class": "bard-gear",
+  "ids": [
+   3966
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus cooldown: screenshot shows '30 second cooldown', DB description says '10 second cooldown'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ultraviolet Elven Vest_IL2900.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Daily",
+    "description": "When you use a Daily power, your next encounter power will deal 20% more damage. (10 second cooldown). Additionally, when Focused Daily triggers, you gain 2.5% Critical Severity for 10s."
+   }
+  ]
+ },
+ {
+  "name": "Wintermarked Lifeward Cuirass",
+  "class": "cleric-gear",
+  "ids": [
+   5346
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus max-stack text: screenshot shows '+5.5% Power and +3.5% Critical Severity', DB description says '+5.5% Power and +5.5% Critical Severity'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Wintermarked Lifeward Cuirass_IL5700.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Unbroken Strength",
+    "description": "For each second you are at maximum health, gain +0.55% Power and +0.55% Critical Severity. Each second at less than maximum health, you lose 3 stacks. Max 10 Stacks: +5.5% Power and +5.5% Critical Severity."
+   }
+  ]
+ },
+ {
+  "name": "Forest Guardian's Raid Coif",
+  "class": "bard-gear",
+  "ids": [
+   4054
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus Fey Hunter description: screenshot '+5% Damage in all of Sharandar.' vs DB '+3% Damage in all of Sharandar.'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Forest Guardian's Raid Coif_IL1500 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Fey Hunter",
+    "description": "+3% Damage in all of Sharandar."
+   }
+  ]
+ },
+ {
+  "name": "Helm of the Scarlet Arcanum",
+  "class": "bard-gear",
+  "ids": [
+   2713
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot 'Steady Precision' vs DB 'Steady Henson'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Helm of the Scarlet Arcanum_IL5000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Steady Henson",
+    "description": "For every 8 seconds you are in combat, gain +1% Accuracy and +0.3% Recharge Speed. Max 7 Stacks: +7% Accuracy and +2.1% Recharge Speed."
+   }
+  ]
+ },
+ {
+  "name": "Helm of the Scarlet Arcanum",
+  "class": "bard-gear",
+  "ids": [
+   2713
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Steady Precision', DB has 'Steady Henson'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Helm of the Scarlet Arcanum_IL5000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Steady Henson",
+    "description": "For every 8 seconds you are in combat, gain +1% Accuracy and +0.3% Recharge Speed. Max 7 Stacks: +7% Accuracy and +2.1% Recharge Speed."
+   }
+  ]
+ }
+]

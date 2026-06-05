@@ -1,0 +1,489 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elemental Alliance Raid Armlets_IL554.png",
+  "id": 6270,
+  "dbName": "Elemental Alliance Raid Armlets",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 249,
+   "Critical Strike": 166,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elemental Drowcraft Assault Armlets_IL588.png",
+  "id": 5686,
+  "dbName": "Elemental Drowcraft Assault Armlets",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elemental Drowcraft Raid Armlets_IL588.png",
+  "id": 5690,
+  "dbName": "Elemental Drowcraft Raid Armlets",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elemental Elven Assault Armlets_IL575.png",
+  "id": 6285,
+  "dbName": "Elemental Elven Assault Armlets",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Combat Advantage": 259,
+   "Critical Severity": 172,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elemental Elven Raid Armlets_IL575.png",
+  "id": 6282,
+  "dbName": "Elemental Elven Raid Armlets",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Combat Advantage": 259,
+   "Critical Strike": 172,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elven Assault Armlets_IL567.png",
+  "id": 6274,
+  "dbName": "Elven Assault Armlets",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Combat Advantage": 255,
+   "Critical Severity": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elven Raid Armlets_IL567.png",
+  "id": 6278,
+  "dbName": "Elven Raid Armlets",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Combat Advantage": 255,
+   "Critical Strike": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Enchanted Bregan D'aerthe Caster's Mitts_IL2050.png",
+  "id": 3269,
+  "dbName": "Enchanted Bregan D'aerthe Caster's Mitts",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Defense": 615,
+   "Deflect Severity": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Magnified Force",
+    "stat": null,
+    "amount": null,
+    "description": "You have a 20% chance to deal 300 additional magnitude damage to a single target when using ranged powers. This effect may only occur once every 20 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Exalted Maiden's Raid Wristguards_IL2050.png",
+  "id": 3285,
+  "dbName": "Exalted Maiden's Raid Wristguards",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Feathered Assault Isongos_IL784.png",
+  "id": 5800,
+  "dbName": "Feathered Assault Isongos",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 353,
+   "Critical Severity": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Feathered Raid Isongos_IL784.png",
+  "id": 5801,
+  "dbName": "Feathered Raid Isongos",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 353,
+   "Critical Strike": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Fiend Forged Wristguards_IL1230.png",
+  "id": 3416,
+  "dbName": "Fiend Forged Wristguards",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Accuracy": 369,
+   "Critical Severity": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Gloves of the Thayan Zealot_IL800.png",
+  "id": 5838,
+  "dbName": "Gloves of the Thayan Zealot",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 211,
+   "Critical Severity": 211,
+   "Defense": 600,
+   "Critical Avoidance": 88.8,
+   "Deflection": 88.8
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Huntsman Assault Armlets_IL672.png",
+  "id": 5898,
+  "dbName": "Huntsman Assault Armlets",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Critical Strike": 202,
+   "Critical Severity": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Huntsman Raid Armlets_IL672.png",
+  "id": 5905,
+  "dbName": "Huntsman Raid Armlets",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Strike": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Infernal Forged Wristguards_IL1200.png",
+  "id": 3441,
+  "dbName": "Infernal Forged Wristguards",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Accuracy": 360,
+   "Critical Severity": 540,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Jeweled Gloves of Halaster's Successor_IL1010.png",
+  "id": 5949,
+  "dbName": "Jeweled Gloves of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Accuracy": 303,
+   "Critical Severity": 455,
+   "Defense": 758
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Jeweled Gloves of the Successor_IL990.png",
+  "id": 5950,
+  "dbName": "Jeweled Gloves of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Accuracy": 297,
+   "Critical Severity": 446,
+   "Defense": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\League's Assault Kollu_IL588.png",
+  "id": 5959,
+  "dbName": "League's Assault Kollu",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 176,
+   "Critical Severity": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\League's Elite Assault Kollu_IL602.png",
+  "id": 5967,
+  "dbName": "League's Elite Assault Kollu",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Critical Strike": 361,
+   "Critical Severity": 542,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 15 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\League's Elite Raid Kollu_IL602.png",
+  "id": 5971,
+  "dbName": "League's Elite Raid Kollu",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Combat Advantage": 361,
+   "Critical Strike": 542,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 15 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\League's Raid Kollu_IL588.png",
+  "id": 5963,
+  "dbName": "League's Raid Kollu",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Lion Guard's Raid Armlets_IL1250.png",
+  "id": 5973,
+  "dbName": "Lion Guard's Raid Armlets",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Severity": 562,
+   "Defense": 938
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Max 20 Stacks: 5000 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Lolthian Sleeves_IL2050.png",
+  "id": 3243,
+  "dbName": "Lolthian Sleeves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Mage of the Maze's Gloves_IL1000.png",
+  "id": 3509,
+  "dbName": "Mage of the Maze's Gloves",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Strike": 375,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Bulwark's Shield",
+    "stat": null,
+    "amount": null,
+    "description": "You take 3% less damage from Ranged attacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

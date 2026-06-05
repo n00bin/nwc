@@ -1,0 +1,492 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Veinlit Earthshard Guard_IL3800.png",
+  "id": 5442,
+  "dbName": "Veinlit Earthshard Guard",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Defense": 1596,
+   "Deflect": 2138,
+   "Deflect Severity": 2138
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Precision Tactics",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Critical Avoidance is increased by 10,625.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Stand (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Awareness",
+    "setName": "Freezing Stand",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Alliance Assault Ring_IL546.png",
+  "id": 2330,
+  "dbName": "Alliance Assault Ring",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Combat Advantage": 2948,
+   "Critical Strike": 1966
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Alliance Ward Ring_IL546.png",
+  "id": 2335,
+  "dbName": "Alliance Ward Ring",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Severity": 1966,
+   "Critical Avoidance": 2948
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Amber Dwarven Ring_IL1500.png",
+  "id": 2387,
+  "dbName": "Amber Dwarven Ring",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Accuracy": 3375,
+   "Awareness": 1125
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 75 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Apothecary's Dragonflight Ring_IL1600.png",
+  "id": 2375,
+  "dbName": "Apothecary's Dragonflight Ring",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Critical Strike": 3600,
+   "Outgoing Healing": 1200
+  },
+  "dbPercentStats": {
+   "Movement Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Running Apothecary",
+    "stat": null,
+    "amount": null,
+    "description": "Your Critical Strike and Forte is increased by 3,000 when you are moving.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Arcanist's Dragonflight Ring_IL1500.png",
+  "id": 2377,
+  "dbName": "Arcanist's Dragonflight Ring",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Combat Advantage": 3375
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Tit for Tat",
+    "stat": null,
+    "amount": null,
+    "description": "Your At-Will and Encounter Powers do 3% more damage, but your Daily Powers do 30% less damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Beaded Assault Ring_IL784.png",
+  "id": 2417,
+  "dbName": "Beaded Assault Ring",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Critical Strike": 588,
+   "Critical Severity": 1764
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Critical Strike is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Coldsilver Band of Faith_IL5700.png",
+  "id": 5319,
+  "dbName": "Coldsilver Band of Faith",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 10260,
+   "Power": 5985
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Deity's Gift",
+    "stat": null,
+    "amount": null,
+    "description": "Your current Hit Points increases your Power, up to a max of 6.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Coldsilver Circlet of Protection_IL5700.png",
+  "id": 5320,
+  "dbName": "Coldsilver Circlet of Protection",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Defense": 5985,
+   "Deflect": 12825
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Manticore's Mane Bite",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, the next enemy that attacks you takes damage equal to 50% of your max health (30 second cooldown). PvP this damage is reduced to 10% of your max health. +3% Defense.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Coldsilver Coil of Wrath_IL5700.png",
+  "id": 5321,
+  "dbName": "Coldsilver Coil of Wrath",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 10260,
+   "Critical Severity": 10260
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Accumulating Precision",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, gain 1.25% Accuracy. Max amount: 7.5% at 6 stacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Coldsilver Halo of Mending_IL5700.png",
+  "id": 5322,
+  "dbName": "Coldsilver Halo of Mending",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Severity": 10260,
+   "Forte": 7895
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Circular Healing",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are healed in combat, gain 6% Outgoing Healing for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Coldsilver Hoop of Tenacity_IL5700.png",
+  "id": 5323,
+  "dbName": "Coldsilver Hoop of Tenacity",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Awareness": 6840,
+   "Critical Avoidance": 9405
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Charging Bull",
+    "stat": null,
+    "amount": null,
+    "description": "When you have been running for 1 second you generate threat around you every second you continue running. +3.5% Forte.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Coldsilver Loop of the Arcane_IL5700.png",
+  "id": 5324,
+  "dbName": "Coldsilver Loop of the Arcane",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Combat Advantage": 6840,
+   "Critical Strike": 10260
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Dashing Ranger",
+    "stat": null,
+    "amount": null,
+    "description": "Accuracy is increased by 5%. Critical Strike is increased by 5.5% when you go on the offensive (buff lasting 4 seconds).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Coldsilver Ring of Initiative_IL5700.png",
+  "id": 5325,
+  "dbName": "Coldsilver Ring of Initiative",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Accuracy": 11115,
+   "Combat Advantage": 6840
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "You gain 5% Combat Advantage. When in combat with 2 or more enemies, you also gain 2.5% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Commander's Dragonflight Ring_IL1600.png",
+  "id": 2372,
+  "dbName": "Commander's Dragonflight Ring",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Awareness": 3600,
+   "Deflection": 1200
+  },
+  "dbPercentStats": {
+   "Movement Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Expert's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Your Deflect is increased by 5% when you are moving.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Darklake Ward Ring +1_IL1800.png",
+  "id": 6255,
+  "dbName": "Darklake Ward Ring +1",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Avoidance": 4050,
+   "Deflection": 1350
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charging Bull",
+    "stat": null,
+    "amount": null,
+    "description": "When you have been running for 1 second, you generate threat around you every second as long as you continue running.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Darklake Ward Ring_IL1700.png",
+  "id": 4023,
+  "dbName": "Darklake Ward Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Avoidance": 3825,
+   "Deflection": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charging Bull",
+    "stat": null,
+    "amount": null,
+    "description": "When you have been running for 1 second, you generate threat around you every second as long as you continue running.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Deathsilver Ring of Submission_IL4900.png",
+  "id": 312,
+  "dbName": "Deathsilver Ring of Submission",
+  "dbItemLevel": 4900,
+  "dbRatingStats": {
+   "Accuracy": 9555,
+   "Combat Advantage": 5880
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Spiker",
+    "stat": null,
+    "amount": null,
+    "description": "Per 5s in combat: +1.1% CritStrike. Max 6 stacks (6.6%)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Diamond Dwarven Ring_IL1500.png",
+  "id": 2390,
+  "dbName": "Diamond Dwarven Ring",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Combat Advantage": 3375,
+   "Awareness": 1125
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 75 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dragonflight Assault Ring_IL588.png",
+  "id": 2583,
+  "dbName": "Dragonflight Assault Ring",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 441,
+   "Critical Severity": 1323
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dragonflight Raid Ring_IL588.png",
+  "id": 2581,
+  "dbName": "Dragonflight Raid Ring",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 441,
+   "Critical Strike": 1323
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dragonflight Restoration Ring_IL588.png",
+  "id": 2577,
+  "dbName": "Dragonflight Restoration Ring",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 1323,
+   "Combat Advantage": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dragonflight Ward Ring_IL588.png",
+  "id": 2571,
+  "dbName": "Dragonflight Ward Ring",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Avoidance": 1323,
+   "Deflection": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Drowcraft Assault Ring_IL567.png",
+  "id": 2136,
+  "dbName": "Drowcraft Assault Ring",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Critical Strike": 425,
+   "Critical Severity": 1276
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Drowcraft Raid Ring_IL567.png",
+  "id": 2137,
+  "dbName": "Drowcraft Raid Ring",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Accuracy": 425,
+   "Critical Strike": 1276
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

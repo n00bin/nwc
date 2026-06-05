@@ -1,0 +1,475 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Scalemail of the Spy's Guild_IL940.png",
+  "id": 3485,
+  "dbName": "Scalemail of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Defense": 705,
+   "Deflection": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Seer of the Star's Robes_IL1000.png",
+  "id": 3505,
+  "dbName": "Seer of the Star's Robes",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Strike": 375,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Power for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Starweave Robe_IL2700.png",
+  "id": 3218,
+  "dbName": "Starweave Robe",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Strike": 2025,
+   "Critical Severity": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Daily",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Tempter of the Twilight's Robes_IL1000.png",
+  "id": 3506,
+  "dbName": "Tempter of the Twilight's Robes",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Severity": 750,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Tenacity",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Critical Severity for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\The Dark Maiden's Raid Coat_IL2000.png",
+  "id": 3292,
+  "dbName": "The Dark Maiden's Raid Coat",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 5% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\The Dark Maiden's Rejuvenation Raiment_IL2000.png",
+  "id": 3296,
+  "dbName": "The Dark Maiden's Rejuvenation Raiment",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1200,
+   "Defense": 900,
+   "Outgoing Healing": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 5% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ultraviolet Elven Coat_IL2900.png",
+  "id": 3202,
+  "dbName": "Ultraviolet Elven Coat",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Critical Strike": 2175,
+   "Forte": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Daily",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, your next encounter power will deal 20% more damage. (10 second cooldown) Additionally, when Focused Daily triggers, you gain 2.5% Critical Severity for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ultraviolet Elven Leathers_IL2900.png",
+  "id": 3206,
+  "dbName": "Ultraviolet Elven Leathers",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Forte": 2175,
+   "Outgoing Healing": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Medic's Respite",
+    "stat": null,
+    "amount": null,
+    "description": "Healing an ally with an Encounter power also heals you for 80,000 and grants Allies within 25' +1.5% Awareness and Incoming Healing for 5s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Umbral Assault Longcoat_IL728.png",
+  "id": 3856,
+  "dbName": "Umbral Assault Longcoat",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Critical Strike": 328,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Umbral Duelist Longcoat_IL728.png",
+  "id": 3897,
+  "dbName": "Umbral Duelist Longcoat",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Combat Advantage": 164,
+   "Defense": 546,
+   "Awareness": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Umbral Executioner Longcoat_IL728.png",
+  "id": 3898,
+  "dbName": "Umbral Executioner Longcoat",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Critical Strike": 218,
+   "Defense": 546,
+   "Critical Avoidance": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Vestments of the Scarlet Tempest_IL4700.png",
+  "id": 3159,
+  "dbName": "Vestments of the Scarlet Tempest",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 4653,
+   "Critical Severity": 3807
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Vital Equilibrium",
+    "stat": null,
+    "amount": null,
+    "description": "While your health is above 50%, gain +5% Power. When your health is below 50%, your Incoming Healing is increased by +7%. Disabled in Thay Arena PvP.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Weathered Wood Robe_IL1300.png",
+  "id": 3349,
+  "dbName": "Weathered Wood Robe",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 975,
+   "Defense": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Weathered Wood Scalemail_IL1300.png",
+  "id": 3348,
+  "dbName": "Weathered Wood Scalemail",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Defense": 975,
+   "Forte": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wintermarked Hunter's Coat_IL5700.png",
+  "id": 5486,
+  "dbName": "Wintermarked Hunter's Coat",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Combat Advantage": 3420,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Daily (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, for the next 30 seconds your next Encounter Power deals +20% more damage. You gain 5% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Assault Pigaches_IL546.png",
+  "id": 3694,
+  "dbName": "Alliance Assault Pigaches",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Strike": 164,
+   "Critical Severity": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Officer's Poulaines_IL1600.png",
+  "id": 3333,
+  "dbName": "Alliance Officer's Poulaines",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Defense": 720,
+   "Deflection": 960,
+   "Control Resistance": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Critical Strike for each enemy you are engaged in battle within. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Raid Pigaches_IL546.png",
+  "id": 3690,
+  "dbName": "Alliance Raid Pigaches",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Critical Strike": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ancient Scalebreaker's Crakows_IL1700.png",
+  "id": 3324,
+  "dbName": "Ancient Scalebreaker's Crakows",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Defense": 765,
+   "Awareness": 1020,
+   "Critical Avoidance": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Footwork",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10 seconds. Max 5 stacks: 5% Movement Speed and Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ancient Scalebreaker's Poulaines_IL1700.png",
+  "id": 3327,
+  "dbName": "Ancient Scalebreaker's Poulaines",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Defense": 765,
+   "Critical Avoidance": 765,
+   "Control Bonus": 1020
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Footwork",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10 seconds. Max 5 stacks: 5% Movement Speed and Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Ruined Cuisses_IL690.png",
+  "id": 3471,
+  "dbName": "Apprentice's Ruined Cuisses",
+  "dbItemLevel": 690,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Ruined Shoes_IL690.png",
+  "id": 3472,
+  "dbName": "Apprentice's Ruined Shoes",
+  "dbItemLevel": 690,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Runed Cuisses_IL965 (2).png",
+  "id": 1535,
+  "dbName": "Apprentice's Runed Cuisses",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Strike": 362,
+   "Defense": 724,
+   "Critical Avoidance": 362
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Runed Cuisses_IL965.png",
+  "id": 1535,
+  "dbName": "Apprentice's Runed Cuisses",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Strike": 362,
+   "Defense": 724,
+   "Critical Avoidance": 362
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Runed Shoes_IL965.png",
+  "id": 3460,
+  "dbName": "Apprentice's Runed Shoes",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Combat Advantage": 290,
+   "Critical Strike": 434,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

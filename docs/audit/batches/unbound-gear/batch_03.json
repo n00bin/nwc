@@ -1,0 +1,508 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bonespurs_IL672.png",
+  "id": 1906,
+  "dbName": "Bonespurs",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 202,
+   "Critical Severity": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Tenacity",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Critical Severity for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Boots of Drafting_IL651.png",
+  "id": 1942,
+  "dbName": "Boots of Drafting",
+  "dbItemLevel": 651,
+  "dbRatingStats": {
+   "Combat Advantage": 278,
+   "Defense": 488,
+   "Deflection": 210
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Drafting",
+    "stat": null,
+    "amount": null,
+    "description": "When you run by an ally, your Movement Speed is increased by 3% for 5 seconds. This effect can stack up to 3 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Boots of the Alpha_IL672.png",
+  "id": 1905,
+  "dbName": "Boots of the Alpha",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 302,
+   "Critical Strike": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal Rush",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you summon a dinosaur to fight for you for 15 seconds. (45 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Boots of the Willed_IL672.png",
+  "id": 1856,
+  "dbName": "Boots of the Willed",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Severity": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "At-Will Perk",
+    "stat": "At Will Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your At-Will Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Deathstriders_IL672.png",
+  "id": 1855,
+  "dbName": "Deathstriders",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Severity": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Might",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are full, your Power is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Destroyed Boots of the Deformed_IL672.png",
+  "id": 1857,
+  "dbName": "Destroyed Boots of the Deformed",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Strike": 151,
+   "Critical Severity": 151,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Victim's Belief",
+    "stat": null,
+    "amount": null,
+    "description": "When you are hit at 25% health or lower, your Incoming Damage is decreased by 10%, but your Base Damage boost is decreased by 10%. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Earthtreaders_IL672.png",
+  "id": 1858,
+  "dbName": "Earthtreaders",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 202,
+   "Defense": 504,
+   "Critical Avoidance": 302
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Blessed Land",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, an area of land near you will be blessed for 30 seconds. While standing in this area, gain 5% Base Damage Boost and -5% Incoming Damage. (This power does not stack.)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Enduring Boots_IL651.png",
+  "id": 1941,
+  "dbName": "Enduring Boots",
+  "dbItemLevel": 651,
+  "dbRatingStats": {
+   "Accuracy": 342,
+   "Combat Advantage": 146,
+   "Defense": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Fury",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your damage is increased by 3%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Spiteful Heels_IL672.png",
+  "id": 1907,
+  "dbName": "Spiteful Heels",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Critical Strike": 302,
+   "Defense": 504,
+   "Deflection": 202
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 5% Critical Strike for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Wintermarked Marcher Poleyns_IL5700.png",
+  "id": 6240,
+  "dbName": "Wintermarked Marcher Poleyns",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Combat Advantage": 3420,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Breaker",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.8% Critical Strike. Max 5 Stacks: 9% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Batiri Shaman Mask_IL672.png",
+  "id": 1900,
+  "dbName": "Batiri Shaman Mask",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 190,
+   "Combat Advantage": 188,
+   "Defense": 504,
+   "Awareness": 126
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Phantom",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you will summon a Phantom Batiri that will fight for you for 1 minute. (3 minute cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Black Draconic Guise_IL630.png",
+  "id": 5264,
+  "dbName": "Black Draconic Guise",
+  "dbItemLevel": 630,
+  "dbRatingStats": {
+   "Critical Strike": 472,
+   "Critical Avoidance": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bloodlord's Visage_IL630.png",
+  "id": 5266,
+  "dbName": "Bloodlord's Visage",
+  "dbItemLevel": 630,
+  "dbRatingStats": {
+   "Critical Strike": 284,
+   "Defense": 472,
+   "Critical Avoidance": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Blue Draconic Guise_IL630.png",
+  "id": 5269,
+  "dbName": "Blue Draconic Guise",
+  "dbItemLevel": 630,
+  "dbRatingStats": {
+   "Accuracy": 472,
+   "Defense": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Brynnyr's Demise_IL630.png",
+  "id": 5291,
+  "dbName": "Brynnyr's Demise",
+  "dbItemLevel": 630,
+  "dbRatingStats": {
+   "Accuracy": 111,
+   "Combat Advantage": 82,
+   "Critical Strike": 57,
+   "Critical Severity": 143,
+   "Critical Avoidance": 129
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Crown of the Monkey King_IL672.png",
+  "id": 1852,
+  "dbName": "Crown of the Monkey King",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 252,
+   "Defense": 504,
+   "Critical Avoidance": 252
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Critical Strike for each enemy you have engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dawnhide Mask_IL672.png",
+  "id": 1901,
+  "dbName": "Dawnhide Mask",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 252,
+   "Defense": 504,
+   "Deflection": 252
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Tenacity",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Severity. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dragon Loyalist's Visage_IL630.png",
+  "id": 6250,
+  "dbName": "Dragon Loyalist's Visage",
+  "dbItemLevel": 630,
+  "dbRatingStats": {
+   "Combat Advantage": 284,
+   "Critical Severity": 189,
+   "Defense": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Equip",
+    "stat": null,
+    "amount": null,
+    "description": "When you have a draconic companion summoned, you gain a bonus effect. (Bonus varies by companion.)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Elemental Elven Ward Armet_IL575.png",
+  "id": 2284,
+  "dbName": "Elemental Elven Ward Armet",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Combat Advantage": 259,
+   "Defense": 431,
+   "Deflection": 172
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Fancy Wraps_IL651.png",
+  "id": 1944,
+  "dbName": "Fancy Wraps",
+  "dbItemLevel": 651,
+  "dbRatingStats": {
+   "Accuracy": 162,
+   "Combat Advantage": 162,
+   "Critical Strike": 164,
+   "Defense": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Charge",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to gain 25 Action Points. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Gravemaster's Blinder_IL672.png",
+  "id": 1896,
+  "dbName": "Gravemaster's Blinder",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Critical Strike": 188,
+   "Defense": 504,
+   "Critical Avoidance": 190,
+   "Deflection": 126
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Wraith",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, there is a chance you will summon a Wraith that will fight for you for 1 minute.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Hunter's Keffiyeh_IL672.png",
+  "id": 1902,
+  "dbName": "Hunter's Keffiyeh",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 504,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Trophy Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill a Hunt, your Power increases by 10% for 15 minutes. This power will expire when you leave Chult.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Jarl's Gaze_IL672.png",
+  "id": 2061,
+  "dbName": "Jarl's Gaze",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 504,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 175 Power for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Mane of the Manticore_IL672.png",
+  "id": 1848,
+  "dbName": "Mane of the Manticore",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 252,
+   "Defense": 504,
+   "Deflection": 252
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Manticore's Mane Bite",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, the next enemy that attacks you takes damage equal to 50% of your max health (30 second cooldown). In PvP this damage is reduced to 10% of your max health.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Mask of the Voodoo Witch_IL672.png",
+  "id": 1952,
+  "dbName": "Mask of the Voodoo Witch",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Defense": 504,
+   "Critical Avoidance": 252,
+   "Deflection": 252
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Voodoo Curse",
+    "stat": null,
+    "amount": null,
+    "description": "If you use a daily power and your target is a minion, there is a chance it will instantly die.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

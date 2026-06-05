@@ -1,0 +1,432 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Trailblazer's Raid Hood_IL603.png",
+  "id": 2920,
+  "dbName": "Trailblazer's Raid Hood",
+  "dbItemLevel": 603,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Strike": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Trapper of the Twilight's Hood_IL1000.png",
+  "id": 4146,
+  "dbName": "Trapper of the Twilight's Hood",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Critical Severity": 450,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5% for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Ultraviolet Elven Hat_IL2900.png",
+  "id": 2750,
+  "dbName": "Ultraviolet Elven Hat",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Combat Advantage": 2175,
+   "Critical Strike": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max Stacks: 10.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Umbral Duelist Hood_IL728.png",
+  "id": 3123,
+  "dbName": "Umbral Duelist Hood",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Critical Severity": 164,
+   "Defense": 546,
+   "Deflection": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Umbral Executioner Hood_IL728.png",
+  "id": 3119,
+  "dbName": "Umbral Executioner Hood",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Critical Strike": 218,
+   "Critical Severity": 164,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Vivified Trailblazer's Assault Hood_IL645.png",
+  "id": 2918,
+  "dbName": "Vivified Trailblazer's Assault Hood",
+  "dbItemLevel": 645,
+  "dbRatingStats": {
+   "Accuracy": 189,
+   "Critical Severity": 284,
+   "Defense": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Weathered Wood Hood_IL1300.png",
+  "id": 4058,
+  "dbName": "Weathered Wood Hood",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 585,
+   "Defense": 975,
+   "Control Bonus": 390
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Woodlord's Assault Hood_IL770.png",
+  "id": 6182,
+  "dbName": "Woodlord's Assault Hood",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 329,
+   "Critical Severity": 248,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Savagery",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 1500. When your health is below 50%, Critical Avoidance is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Woodlord's Raid Hood_IL770.png",
+  "id": 6186,
+  "dbName": "Woodlord's Raid Hood",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 247,
+   "Critical Strike": 330,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Savagery",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 1500. When your health is below 50%, Critical Avoidance is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Aboleth Longbow · IL 350_IL350.png",
+  "id": 2898,
+  "dbName": "Aboleth Longbow · IL 350",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Aboleth Longbow · IL 500_IL500.png",
+  "id": 2899,
+  "dbName": "Aboleth Longbow · IL 500",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Aboleth Longbow · IL 650_IL650.png",
+  "id": 2900,
+  "dbName": "Aboleth Longbow · IL 650",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Aboleth Longbow · IL 800_IL800.png",
+  "id": 2901,
+  "dbName": "Aboleth Longbow · IL 800",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Antique Bow of the Vale_IL1700.png",
+  "id": 2810,
+  "dbName": "Antique Bow of the Vale",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1275,
+   "Critical Severity": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Vale (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set — Adventurer's Might: When you use an encounter power, you have a 10% chance to increase a Boost based on your role by 4% for 10 seconds. DPS: Recharge Speed; Tank: Stamina Regeneration; Healer: Action Point Gain.",
+    "setName": "Vale",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Bismuth Flex Bow_IL3400.png",
+  "id": 2718,
+  "dbName": "Bismuth Flex Bow",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Combat Advantage": 2040,
+   "Critical Strike": 3060
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Prismatic Defier of Dread (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in The Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 5s in combat, you will gain a stack of Prismatic Force. Each stack of Prismatic Force grants: General +0.15% Power, DPS +0.15% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Blaspheme Knives_IL1900.png",
+  "id": 2783,
+  "dbName": "Blaspheme Knives",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1995,
+   "Critical Avoidance": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Blaspheme (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Gain 70 Power, Defense, or Outgoing Healing (depending on role) for 15s when you dodge, block, sprint, or shadow slip (30s CD). When dealing Combat Advantage damage, 10% chance to gain 3% Base Damage Boost / -5% Incoming Damage / 3% Overall Outgoing Healing for 15s (30s CD).",
+    "setName": "Blaspheme",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Blaspheme Longbow_IL1900.png",
+  "id": 2782,
+  "dbName": "Blaspheme Longbow",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Critical Severity": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Blaspheme (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Gain 70 Power, Defense, or Outgoing Healing (depending on role) for 15s when you dodge, block, sprint, or shadow slip (30s CD). When dealing Combat Advantage damage, 10% chance to gain 3% Base Damage Boost / -5% Incoming Damage / 3% Overall Outgoing Healing for 15s (30s CD).",
+    "setName": "Blaspheme",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Bloodbrass Bow_IL2750.png",
+  "id": 2722,
+  "dbName": "Bloodbrass Bow",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Critical Severity": 2475,
+   "Forte": 1856
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skyhold Arms (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in The Pirates' Skyhold, your Movement Speed is increased by 17%. Every 5s in combat, you will gain a stack of Freebooter's Will (max 10 stacks). Each stack grants: General +0.25% Power, DPS +0.15% Critical Severity, Healer +0.3% Overall Outgoing Healing, Tank +3% Awareness.",
+    "setName": "Skyhold Arms",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Brightsilver Longbow · IL 350_IL350.png",
+  "id": 3052,
+  "dbName": "Brightsilver Longbow · IL 350",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Brightsilver Longbow · IL 500_IL500.png",
+  "id": 3053,
+  "dbName": "Brightsilver Longbow · IL 500",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Brightsilver Longbow · IL 650_IL650.png",
+  "id": 3054,
+  "dbName": "Brightsilver Longbow · IL 650",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Brightsilver Longbow · IL 800_IL800.png",
+  "id": 3055,
+  "dbName": "Brightsilver Longbow · IL 800",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Bronzewood Tlahuitolli · IL 350_IL350.png",
+  "id": 3036,
+  "dbName": "Bronzewood Tlahuitolli · IL 350",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Bronzewood Tlahuitolli · IL 500_IL500.png",
+  "id": 3037,
+  "dbName": "Bronzewood Tlahuitolli · IL 500",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Bronzewood Tlahuitolli · IL 650_IL650.png",
+  "id": 3038,
+  "dbName": "Bronzewood Tlahuitolli · IL 650",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

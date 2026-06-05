@@ -1,0 +1,477 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Assault Wristguards_IL546.png",
+  "id": 3693,
+  "dbName": "Alliance Assault Wristguards",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Strike": 164,
+   "Critical Severity": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Officer's Sleeves_IL1600.png",
+  "id": 3332,
+  "dbName": "Alliance Officer's Sleeves",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Critical Severity": 960,
+   "Defense": 720,
+   "Incoming Healing": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Ward",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Deflect Severity for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Raid Wristguards_IL546.png",
+  "id": 3689,
+  "dbName": "Alliance Raid Wristguards",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Critical Strike": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ancient Scalebreaker's Cuffs_IL1700.png",
+  "id": 3323,
+  "dbName": "Ancient Scalebreaker's Cuffs",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Severity": 1020,
+   "Defense": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "stat": null,
+    "amount": null,
+    "description": "When you have no teammates within 30' of you, your Stamina Regeneration and Control Resistance is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ancient Scalebreaker's Sleeves_IL1700.png",
+  "id": 5137,
+  "dbName": "Ancient Scalebreaker's Sleeves",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1020,
+   "Defense": 765,
+   "Forte": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Ruined Braces_IL690.png",
+  "id": 3467,
+  "dbName": "Apprentice's Ruined Braces",
+  "dbItemLevel": 690,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Ruined Wristguard_IL690.png",
+  "id": 3466,
+  "dbName": "Apprentice's Ruined Wristguard",
+  "dbItemLevel": 690,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Runed Braces_IL965 (2).png",
+  "id": 1539,
+  "dbName": "Apprentice's Runed Braces",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Strike": 362,
+   "Defense": 724,
+   "Deflection": 362
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Runed Braces_IL965.png",
+  "id": 1539,
+  "dbName": "Apprentice's Runed Braces",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Strike": 362,
+   "Defense": 724,
+   "Deflection": 362
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Runed Wristguard_IL965.png",
+  "id": 3458,
+  "dbName": "Apprentice's Runed Wristguard",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Critical Severity": 414,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Astral Raider's Armlets_IL2200.png",
+  "id": 3239,
+  "dbName": "Astral Raider's Armlets",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 990,
+   "Deflect Severity": 990,
+   "Outgoing Healing": 1320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Furor",
+    "stat": null,
+    "amount": null,
+    "description": "Grants up to 20% bonus Damage when your total item level is being scaled down.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Astral Raider's Sleeves_IL2200.png",
+  "id": 3235,
+  "dbName": "Astral Raider's Sleeves",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Critical Severity": 1320,
+   "Defense": 990,
+   "Incoming Healing": 1980
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Furor",
+    "stat": null,
+    "amount": null,
+    "description": "Grants up to 20% bonus Damage when your total item level is being scaled down.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Bindings of the Scarlet Tempest_IL4700.png",
+  "id": 3158,
+  "dbName": "Bindings of the Scarlet Tempest",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Critical Severity": 3807
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sanguine Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your targets for more than 15% of your Maximum Hit Points in a single blow, you gain +3.5% Critical Chance and +3.5% Critical Severity for 5 seconds. Additionally, you are healed for 5% of your health (7 second cooldown). Disabled in Thay Arena PvP.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Bracers of the Infernal Tempest_IL5000.png",
+  "id": 3150,
+  "dbName": "Bracers of the Infernal Tempest",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Strike": 4050,
+   "Forte": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Flow",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with any Power, gain +4.5% Critical Strike and +1.5% Recharge Speed for 6 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Braces of the Spy's Guild_IL940.png",
+  "id": 1583,
+  "dbName": "Braces of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 352,
+   "Defense": 705,
+   "Deflection": 352
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Bregan D'aerthe Caster's Mitts_IL2000.png",
+  "id": 3277,
+  "dbName": "Bregan D'aerthe Caster's Mitts",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Defense": 600,
+   "Deflect Severity": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Magnified Force",
+    "stat": null,
+    "amount": null,
+    "description": "You have a 10% chance to deal 250 additional magnitude damage to a single target when using ranged attacks. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Bregan D'aerthe Expert's Gloves_IL2000.png",
+  "id": 3281,
+  "dbName": "Bregan D'aerthe Expert's Gloves",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 1500,
+   "Outgoing Healing": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Medic's Regards",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you heal your target for more than 10% of your Maximum Hit Points in a single blow, you will immediately be reduced (max 5 targets within 15 ft), and will gain 3% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Charmed Gloves of Halaster's Successor_IL1010.png",
+  "id": 3449,
+  "dbName": "Charmed Gloves of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Critical Strike": 379,
+   "Defense": 758,
+   "Deflection": 379
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Charmed Gloves of the Successor_IL990.png",
+  "id": 3456,
+  "dbName": "Charmed Gloves of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Critical Strike": 371,
+   "Defense": 742,
+   "Deflection": 379
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Company Assault Wristguards_IL588.png",
+  "id": 3873,
+  "dbName": "Company Assault Wristguards",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Company Raid Wristguards_IL588.png",
+  "id": 3889,
+  "dbName": "Company Raid Wristguards",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crash Guards_IL950.png",
+  "id": 3510,
+  "dbName": "Crash Guards",
+  "dbItemLevel": 950,
+  "dbRatingStats": {
+   "Critical Strike": 285,
+   "Critical Severity": 428,
+   "Defense": 712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crimson Scalebreaker's Raid Sleeves_IL1800.png",
+  "id": 3315,
+  "dbName": "Crimson Scalebreaker's Raid Sleeves",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Strike": 1080,
+   "Defense": 810,
+   "Forte": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "stat": null,
+    "amount": null,
+    "description": "When you have no teammates within 30' of you, your Stamina Regeneration and Control Resistance is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crimson Scalebreaker's Rejuvenation Cuffs_IL1800.png",
+  "id": 3319,
+  "dbName": "Crimson Scalebreaker's Rejuvenation Cuffs",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Severity": 1080,
+   "Defense": 810,
+   "Forte": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "stat": null,
+    "amount": null,
+    "description": "When you have no teammates within 30' of you, your Stamina Regeneration and Control Resistance is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crone's Braces_IL1225.png",
+  "id": 3360,
+  "dbName": "Crone's Braces",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Defense": 919,
+   "Deflection": 459,
+   "Outgoing Healing": 459
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 45 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

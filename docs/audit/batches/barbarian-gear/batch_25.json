@@ -1,0 +1,113 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Stronghold Sword Knot_IL300.png",
+  "id": 6747,
+  "dbName": "Stronghold Sword Knot",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Stronghold Sword Knot_IL500.png",
+  "id": 6748,
+  "dbName": "Stronghold Sword Knot",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\The Weaver's Knot_IL2050.png",
+  "id": 6770,
+  "dbName": "The Weaver's Knot",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Deflect Severity": 1538,
+   "Forte": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Beholder Slayer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Voidtouched Axe Knot_IL3000.png",
+  "id": 6807,
+  "dbName": "Voidtouched Axe Knot",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Deflect Severity": 2250,
+   "Forte": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wintermarked War Totem_IL5800.png",
+  "id": 6811,
+  "dbName": "Wintermarked War Totem",
+  "dbItemLevel": 5800,
+  "dbRatingStats": {
+   "Combat Advantage": 2320,
+   "Critical Strike": 3480,
+   "Defense": 2030
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Xaryxian Axe Knot_IL2750.png",
+  "id": 6824,
+  "dbName": "Xaryxian Axe Knot",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Deflect Severity": 2062,
+   "Forte": 2062
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ }
+]

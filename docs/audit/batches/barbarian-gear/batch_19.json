@@ -1,0 +1,518 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Titansteel Gladiator Greaves_IL756.png",
+  "id": 6782,
+  "dbName": "Titansteel Gladiator Greaves",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 227,
+   "Critical Strike": 170,
+   "Critical Severity": 170,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Titansteel Raid Greaves_IL756.png",
+  "id": 6786,
+  "dbName": "Titansteel Raid Greaves",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Critical Strike": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Ultraviolet Elven Greaves_IL2900.png",
+  "id": 688,
+  "dbName": "Ultraviolet Elven Greaves",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Defense": 2175,
+   "Awareness": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain up to 5% Critical Avoidance and -2.5% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Weathered Wood Greaves_IL1300.png",
+  "id": 6813,
+  "dbName": "Weathered Wood Greaves",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 390,
+   "Critical Strike": 585,
+   "Defense": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wintermarked Bulwark Greaves_IL5700.png",
+  "id": 5349,
+  "dbName": "Wintermarked Bulwark Greaves",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Defense": 2992,
+   "Critical Avoidance": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4.5% Awareness and 4% Deflect while at full health. These bonuses decrease relative to your missing health.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wintermarked Ravager Greaves_IL5700.png",
+  "id": 6817,
+  "dbName": "Wintermarked Ravager Greaves",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Accuracy": 3705,
+   "Combat Advantage": 2280,
+   "Forte": 2565
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Overwhelming Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, you gain +7.5% Critical Strike and +3.5% Movement Speed for 6 seconds. (16 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Adamant Duelist Sallet_IL728.png",
+  "id": 6313,
+  "dbName": "Adamant Duelist Sallet",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Critical Strike": 218,
+   "Defense": 546,
+   "Awareness": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Adamant Gladiator Sallet_IL728.png",
+  "id": 6317,
+  "dbName": "Adamant Gladiator Sallet",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 218,
+   "Critical Strike": 164,
+   "Defense": 546,
+   "Deflect": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Alliance Soldier's Helmet_IL1600.png",
+  "id": 6322,
+  "dbName": "Alliance Soldier's Helmet",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Accuracy": 960,
+   "Defense": 720,
+   "Deflect": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Accuracy is increased by 7.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Alliance Ward Sallet_IL546.png",
+  "id": 6325,
+  "dbName": "Alliance Ward Sallet",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 246,
+   "Critical Strike": 164,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Ancient Scalebreaker's Barbute_IL1700.png",
+  "id": 6328,
+  "dbName": "Ancient Scalebreaker's Barbute",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Severity": 1020,
+   "Defense": 765,
+   "Deflect Severity": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Ancient Scalebreaker's Helm_IL1700.png",
+  "id": 1108,
+  "dbName": "Ancient Scalebreaker's Helm",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Defense": 765,
+   "Critical Avoidance": 765,
+   "Incoming Healing": 1020
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Apprentice's Runed Sallet_IL965.png",
+  "id": 6336,
+  "dbName": "Apprentice's Runed Sallet",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Combat Advantage": 290,
+   "Critical Strike": 434,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Astral Raider's Armet_IL2200.png",
+  "id": 725,
+  "dbName": "Astral Raider's Armet",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Accuracy": 990,
+   "Deflection": 990,
+   "Deflect Severity": 1320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Incoming Healing, -7500 Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Black Ice Helm_IL512.png",
+  "id": 6827,
+  "dbName": "Black Ice Helm",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.1,
+   "Combat Advantage": 131,
+   "Defense": 384,
+   "Awareness": 131,
+   "Critical Avoidance": 59.9
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bladelord's Assault Helm_IL770.png",
+  "id": 6340,
+  "dbName": "Bladelord's Assault Helm",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Critical Strike": 248,
+   "Critical Severity": 329,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Savagery",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 1500. When your health is below 50%, Critical Avoidance is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bladelord's Raid Helm_IL770.png",
+  "id": 6344,
+  "dbName": "Bladelord's Raid Helm",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 247,
+   "Critical Strike": 330,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Savagery",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 1500. When your health is below 50%, Critical Avoidance is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bregan D'aerthe Mauler's Mask_IL2000.png",
+  "id": 6366,
+  "dbName": "Bregan D'aerthe Mauler's Mask",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 1500,
+   "Combat Advantage": 900,
+   "Awareness": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Action",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your AP Gain is increased by 20% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bronzewood Assault Kofia_IL784.png",
+  "id": 6370,
+  "dbName": "Bronzewood Assault Kofia",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Accuracy": 353,
+   "Critical Severity": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bronzewood Raid Kofia_IL784.png",
+  "id": 6378,
+  "dbName": "Bronzewood Raid Kofia",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 235,
+   "Critical Strike": 353,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Company Assault Sallet_IL588.png",
+  "id": 6399,
+  "dbName": "Company Assault Sallet",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Company Raid Sallet_IL588.png",
+  "id": 6403,
+  "dbName": "Company Raid Sallet",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Crimson Scalebreaker's Resolution Barbute_IL1800.png",
+  "id": 6406,
+  "dbName": "Crimson Scalebreaker's Resolution Barbute",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Severity": 1080,
+   "Defense": 810,
+   "Deflect Severity": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Crone's Sallet_IL1225.png",
+  "id": 6828,
+  "dbName": "Crone's Sallet",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Combat Advantage": 368,
+   "Defense": 919,
+   "Control Resist": 551
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5000 for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Crown of the Iron Bulwark_IL4700.png",
+  "id": 384,
+  "dbName": "Crown of the Iron Bulwark",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Defense": 2221,
+   "Awareness": 3102
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shared Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "On encounter use: 40% chance for self + lowest-HP ally in 25' to gain +5% Forte and +3.5% Defense 8s (15s cd)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

@@ -1,0 +1,487 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Radiant Elven Hood_IL2800.png",
+  "id": 3209,
+  "dbName": "Radiant Elven Hood",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Combat Advantage": 2100,
+   "Critical Severity": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spelljammer's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Every 3s in combat, +0.65% Combat Advantage. Max 7 stacks (10 in Wildspace).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Reinforced Dragonflight Assault Cap_IL1400.png",
+  "id": 6225,
+  "dbName": "Reinforced Dragonflight Assault Cap",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Critical Strike": 630,
+   "Critical Severity": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Reinforced Dragonflight Raid Cap_IL1400.png",
+  "id": 6298,
+  "dbName": "Reinforced Dragonflight Raid Cap",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Accuracy": 630,
+   "Combat Advantage": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Runefrost Hunter Hood_IL5400 (2).png",
+  "id": 5492,
+  "dbName": "Runefrost Hunter Hood",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Power": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Devastation",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.4% Power. Max 5 Stacks: 7% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Runefrost Hunter Hood_IL5400 (3).png",
+  "id": 5492,
+  "dbName": "Runefrost Hunter Hood",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Power": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Devastation",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.4% Power. Max 5 Stacks: 7% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Runefrost Hunter Hood_IL5400 (4).png",
+  "id": 5492,
+  "dbName": "Runefrost Hunter Hood",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Power": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Devastation",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.4% Power. Max 5 Stacks: 7% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Runefrost Hunter Hood_IL5400.png",
+  "id": 5492,
+  "dbName": "Runefrost Hunter Hood",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Power": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Devastation",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.4% Power. Max 5 Stacks: 7% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Seer of the Star's Hat_IL1000.png",
+  "id": 3499,
+  "dbName": "Seer of the Star's Hat",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Strike": 375,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 1% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Starweave Hood_IL2700.png",
+  "id": 3217,
+  "dbName": "Starweave Hood",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Severity": 2025,
+   "Forte": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maximized Opportunity",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Combat Advantage is increased by 7%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Tempter of the Twilight's Hat_IL1000.png",
+  "id": 3498,
+  "dbName": "Tempter of the Twilight's Hat",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Critical Severity": 450,
+   "Defense": 300,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5% for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\The Dark Maiden's Raid Mask_IL2000.png",
+  "id": 3291,
+  "dbName": "The Dark Maiden's Raid Mask",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 900,
+   "Critical Severity": 1200,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 1% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Ultraviolet Elven Cap_IL2900.png",
+  "id": 3201,
+  "dbName": "Ultraviolet Elven Cap",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Combat Advantage": 2175,
+   "Critical Severity": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Every 3 seconds in combat, +1% Combat Advantage. Max 10 stacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Weathered Wood Cowl_IL1300.png",
+  "id": 3345,
+  "dbName": "Weathered Wood Cowl",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 390,
+   "Defense": 975,
+   "Control Bonus": 585
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Wintermarked Hunter Hood_IL5700 (2).png",
+  "id": 5484,
+  "dbName": "Wintermarked Hunter Hood",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Breaker",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.8% Critical Strike. Max 5 Stacks: 9% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Wintermarked Hunter Hood_IL5700.png",
+  "id": 5484,
+  "dbName": "Wintermarked Hunter Hood",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Breaker",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.8% Critical Strike. Max 5 Stacks: 9% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Aboleth Orb_IL350.png",
+  "id": 5515,
+  "dbName": "Aboleth Orb",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Aboleth Orb_IL500.png",
+  "id": 5516,
+  "dbName": "Aboleth Orb",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Aboleth Orb_IL650.png",
+  "id": 5517,
+  "dbName": "Aboleth Orb",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Aboleth Orb_IL800.png",
+  "id": 5518,
+  "dbName": "Aboleth Orb",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Abyss-Touched Orb of the Thayan Zealot_IL3300 (2).png",
+  "id": 5573,
+  "dbName": "Abyss-Touched Orb of the Thayan Zealot",
+  "dbItemLevel": 3300,
+  "dbRatingStats": {
+   "Critical Strike": 3267,
+   "Critical Severity": 2673
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Umbral Stride",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Abyss-Touched Orb of the Thayan Zealot_IL3300.png",
+  "id": 5573,
+  "dbName": "Abyss-Touched Orb of the Thayan Zealot",
+  "dbItemLevel": 3300,
+  "dbRatingStats": {
+   "Critical Strike": 3267,
+   "Critical Severity": 2673
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Umbral Stride",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Antique Orb of the Vale_IL1700 (2).png",
+  "id": 5547,
+  "dbName": "Antique Orb of the Vale",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 1275,
+   "Critical Strike": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Vale (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set — Adventurer's Might: When you use an encounter power, you have a 10% chance to increase a Boost based on your role by 4% for 10 seconds. DPS: Recharge Speed; Tank: Stamina Regeneration; Healer: Action Point Gain.",
+    "setName": "Vale",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Antique Orb of the Vale_IL1700.png",
+  "id": 5547,
+  "dbName": "Antique Orb of the Vale",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 1275,
+   "Critical Strike": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Vale (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set — Adventurer's Might: When you use an encounter power, you have a 10% chance to increase a Boost based on your role by 4% for 10 seconds. DPS: Recharge Speed; Tank: Stamina Regeneration; Healer: Action Point Gain.",
+    "setName": "Vale",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bismuth Mind Orb_IL3400 (2).png",
+  "id": 5636,
+  "dbName": "Bismuth Mind Orb",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Damage": 100,
+   "Critical Strike": 3060,
+   "Critical Severity": 3060
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bismuth Mind Orb_IL3400.png",
+  "id": 5636,
+  "dbName": "Bismuth Mind Orb",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Damage": 100,
+   "Critical Strike": 3060,
+   "Critical Severity": 3060
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ }
+]

@@ -1,0 +1,737 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Halo of Mending_IL4700.png",
+  "id": 5425,
+  "dbName": "Snowbound Halo of Mending",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Severity": 8460,
+   "Forte": 6345
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Overwhelming Support",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, gain 13,150 Outgoing Healing. This bonus is divided by the total number of enemies you are in combat with.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Hoop of Tenacity_IL4700 (2).png",
+  "id": 5426,
+  "dbName": "Snowbound Hoop of Tenacity",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Awareness": 5640,
+   "Deflect Severity": 10575
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "+13,550 Defense. -4,175 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Hoop of Tenacity_IL4700.png",
+  "id": 5426,
+  "dbName": "Snowbound Hoop of Tenacity",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Awareness": 5640,
+   "Deflect Severity": 10575
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "+13,550 Defense. -4,175 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Loop of the Arcane_IL4700 (2).png",
+  "id": 5427,
+  "dbName": "Snowbound Loop of the Arcane",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 5640,
+   "Critical Strike": 8460
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Overwhelming Offense",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, gain 3,188 Power, Combat Advantage, Critical Strike, and Critical Severity. This bonus is divided by the total number of enemies you are in combat with.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Loop of the Arcane_IL4700.png",
+  "id": 5427,
+  "dbName": "Snowbound Loop of the Arcane",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 5640,
+   "Critical Strike": 8460
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Overwhelming Offense",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, gain 3,188 Power, Combat Advantage, Critical Strike, and Critical Severity. This bonus is divided by the total number of enemies you are in combat with.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Ring of Initiative_IL4700 (2).png",
+  "id": 5428,
+  "dbName": "Snowbound Ring of Initiative",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Accuracy": 9165,
+   "Combat Advantage": 5640
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Explosive Volley",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you damage an enemy with your Powers, you have a 10% chance to deal 100 magnitude damage in a 20 radius around your target. (5 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Ring of Initiative_IL4700.png",
+  "id": 5428,
+  "dbName": "Snowbound Ring of Initiative",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Accuracy": 9165,
+   "Combat Advantage": 5640
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Explosive Volley",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you damage an enemy with your Powers, you have a 10% chance to deal 100 magnitude damage in a 20 radius around your target. (5 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Aetherwrap_IL4600 (2).png",
+  "id": 5360,
+  "dbName": "Cracked Aetherwrap",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Combat Advantage": 2208,
+   "Critical Strike": 2484,
+   "Critical Severity": 2484
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Momentum",
+    "stat": null,
+    "amount": null,
+    "description": "Hitting an enemy grants a buff every 2 seconds that increases your Critical Severity by 3% for 8 seconds. Max 3 stacks: 9% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Advantage (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Combat Advantage",
+    "setName": "Freezing Advantage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Aetherwrap_IL4600 (3).png",
+  "id": 5360,
+  "dbName": "Cracked Aetherwrap",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Combat Advantage": 2208,
+   "Critical Strike": 2484,
+   "Critical Severity": 2484
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Momentum",
+    "stat": null,
+    "amount": null,
+    "description": "Hitting an enemy grants a buff every 2 seconds that increases your Critical Severity by 3% for 8 seconds. Max 3 stacks: 9% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Advantage (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Combat Advantage",
+    "setName": "Freezing Advantage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Aetherwrap_IL4600 (4).png",
+  "id": 5360,
+  "dbName": "Cracked Aetherwrap",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Combat Advantage": 2208,
+   "Critical Strike": 2484,
+   "Critical Severity": 2484
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Momentum",
+    "stat": null,
+    "amount": null,
+    "description": "Hitting an enemy grants a buff every 2 seconds that increases your Critical Severity by 3% for 8 seconds. Max 3 stacks: 9% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Advantage (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Combat Advantage",
+    "setName": "Freezing Advantage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Aetherwrap_IL4600.png",
+  "id": 5360,
+  "dbName": "Cracked Aetherwrap",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Combat Advantage": 2208,
+   "Critical Strike": 2484,
+   "Critical Severity": 2484
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Momentum",
+    "stat": null,
+    "amount": null,
+    "description": "Hitting an enemy grants a buff every 2 seconds that increases your Critical Severity by 3% for 8 seconds. Max 3 stacks: 9% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Advantage (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Combat Advantage",
+    "setName": "Freezing Advantage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Lifebraid Vestment_IL4600 (2).png",
+  "id": 5363,
+  "dbName": "Cracked Lifebraid Vestment",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Critical Strike": 1312,
+   "Forte": 1863,
+   "Outgoing Healing": 1656
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Graceful Harmony",
+    "stat": null,
+    "amount": null,
+    "description": "Increase Outgoing Healing for each player in your team. When your teammates are 20 or closer to you, their Forte is increased by 1%.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Energy (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Critical Strike",
+    "setName": "Freezing Energy",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Lifebraid Vestment_IL4600 (3).png",
+  "id": 5363,
+  "dbName": "Cracked Lifebraid Vestment",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Critical Strike": 1312,
+   "Forte": 1863,
+   "Outgoing Healing": 1656
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Graceful Harmony",
+    "stat": null,
+    "amount": null,
+    "description": "Increase Outgoing Healing for each player in your team. When your teammates are 20 or closer to you, their Forte is increased by 1%.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Energy (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Critical Strike",
+    "setName": "Freezing Energy",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Lifebraid Vestment_IL4600 (4).png",
+  "id": 5363,
+  "dbName": "Cracked Lifebraid Vestment",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Critical Strike": 1312,
+   "Forte": 1863,
+   "Outgoing Healing": 1656
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Graceful Harmony",
+    "stat": null,
+    "amount": null,
+    "description": "Increase Outgoing Healing for each player in your team. When your teammates are 20 or closer to you, their Forte is increased by 1%.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Energy (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Critical Strike",
+    "setName": "Freezing Energy",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Lifebraid Vestment_IL4600.png",
+  "id": 5363,
+  "dbName": "Cracked Lifebraid Vestment",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Critical Strike": 1312,
+   "Forte": 1863,
+   "Outgoing Healing": 1656
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Graceful Harmony",
+    "stat": null,
+    "amount": null,
+    "description": "Increase Outgoing Healing for each player in your team. When your teammates are 20 or closer to you, their Forte is increased by 1%.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Energy (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Critical Strike",
+    "setName": "Freezing Energy",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Stormbind Tunic_IL4600 (2).png",
+  "id": 5365,
+  "dbName": "Cracked Stormbind Tunic",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Accuracy": 2691,
+   "Combat Advantage": 1656,
+   "Critical Strike": 5312
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Bloodletting",
+    "stat": null,
+    "amount": null,
+    "description": "Strike with your Powers, you have a 10% chance to reduce your Maximum Hit Points by 10% and gain 5.5% Damage for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Grasp (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Accuracy",
+    "setName": "Freezing Grasp",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Stormbind Tunic_IL4600 (3).png",
+  "id": 5365,
+  "dbName": "Cracked Stormbind Tunic",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Accuracy": 2691,
+   "Combat Advantage": 1656,
+   "Critical Strike": 5312
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Bloodletting",
+    "stat": null,
+    "amount": null,
+    "description": "Strike with your Powers, you have a 10% chance to reduce your Maximum Hit Points by 10% and gain 5.5% Damage for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Grasp (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Accuracy",
+    "setName": "Freezing Grasp",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Stormbind Tunic_IL4600 (4).png",
+  "id": 5365,
+  "dbName": "Cracked Stormbind Tunic",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Accuracy": 2691,
+   "Combat Advantage": 1656,
+   "Critical Strike": 5312
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Bloodletting",
+    "stat": null,
+    "amount": null,
+    "description": "Strike with your Powers, you have a 10% chance to reduce your Maximum Hit Points by 10% and gain 5.5% Damage for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Grasp (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Accuracy",
+    "setName": "Freezing Grasp",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Stormbind Tunic_IL4600.png",
+  "id": 5365,
+  "dbName": "Cracked Stormbind Tunic",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Accuracy": 2691,
+   "Combat Advantage": 1656,
+   "Critical Strike": 5312
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Bloodletting",
+    "stat": null,
+    "amount": null,
+    "description": "Strike with your Powers, you have a 10% chance to reduce your Maximum Hit Points by 10% and gain 5.5% Damage for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Grasp (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Accuracy",
+    "setName": "Freezing Grasp",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Deep-Riven Aetherwrap_IL4850 (2).png",
+  "id": 5367,
+  "dbName": "Deep-Riven Aetherwrap",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Critical Strike": 3492,
+   "Critical Severity": 6365
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Awareness",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 2 or more enemies, your Critical Strike is increased by 9.5%. When you are in combat with 1 or less enemies, the buff is removed.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Advantage (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Combat Advantage",
+    "setName": "Freezing Advantage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Deep-Riven Aetherwrap_IL4850.png",
+  "id": 5367,
+  "dbName": "Deep-Riven Aetherwrap",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Critical Strike": 3492,
+   "Critical Severity": 6365
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Awareness",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 2 or more enemies, your Critical Strike is increased by 9.5%. When you are in combat with 1 or less enemies, the buff is removed.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Advantage (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Combat Advantage",
+    "setName": "Freezing Advantage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Deep-Riven Lifebraid Vestment_IL4850 (2).png",
+  "id": 5370,
+  "dbName": "Deep-Riven Lifebraid Vestment",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Critical Strike": 2182,
+   "Power": 1275,
+   "Forte": 2619
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Gift",
+    "stat": null,
+    "amount": null,
+    "description": "Your current Hit Points increases your Outgoing Healing, up to a maximum of 7% & Power up to 2%. Currently: 7% Outgoing Healing and 2% Power.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Energy (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Critical Strike",
+    "setName": "Freezing Energy",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Deep-Riven Lifebraid Vestment_IL4850.png",
+  "id": 5370,
+  "dbName": "Deep-Riven Lifebraid Vestment",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Critical Strike": 2182,
+   "Power": 1275,
+   "Forte": 2619
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Gift",
+    "stat": null,
+    "amount": null,
+    "description": "Your current Hit Points increases your Outgoing Healing, up to a maximum of 7% & Power up to 2%. Currently: 7% Outgoing Healing and 2% Power.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Energy (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Critical Strike",
+    "setName": "Freezing Energy",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Deep-Riven Stormbind Tunic_IL4850 (2).png",
+  "id": 5372,
+  "dbName": "Deep-Riven Stormbind Tunic",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Accuracy": 2364,
+   "Combat Advantage": 1455,
+   "Critical Strike": 3492
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Reckless Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal damage to an enemy gain a stack of Reckless Advantage, increasing your Combat Advantage by 1.6% but decreasing your Critical Avoidance by 1.6% for 5 seconds. Max 5 stacks: +8% Combat Advantage and -8% Critical Avoidance.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Grasp (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Accuracy",
+    "setName": "Freezing Grasp",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Deep-Riven Stormbind Tunic_IL4850.png",
+  "id": 5372,
+  "dbName": "Deep-Riven Stormbind Tunic",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Accuracy": 2364,
+   "Combat Advantage": 1455,
+   "Critical Strike": 3492
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Reckless Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal damage to an enemy gain a stack of Reckless Advantage, increasing your Combat Advantage by 1.6% but decreasing your Critical Avoidance by 1.6% for 5 seconds. Max 5 stacks: +8% Combat Advantage and -8% Critical Avoidance.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Grasp (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Accuracy",
+    "setName": "Freezing Grasp",
+    "pieces": 2
+   }
+  ]
+ }
+]

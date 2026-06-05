@@ -1,0 +1,523 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Radiant Elven Cackrows_IL2800.png",
+  "id": 3213,
+  "dbName": "Radiant Elven Cackrows",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Forte": 2100,
+   "Outgoing Healing": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Galactic Muse",
+    "stat": null,
+    "amount": null,
+    "description": "Performance/Soulweave regenerates 10% faster in Wildspace. In non-Wildspace, the regen bonus is 5%. Gain 2.5% Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Radiant Elven Slippers_IL2800.png",
+  "id": 3212,
+  "dbName": "Radiant Elven Slippers",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Critical Strike": 2100,
+   "Critical Severity": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wildspace Precision",
+    "stat": null,
+    "amount": null,
+    "description": "+7.5% Critical Strike in Wildspace. +3% Critical Strike in non-Wildspace.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Reinforced Dragonflight Assault Pigaches_IL1400.png",
+  "id": 3714,
+  "dbName": "Reinforced Dragonflight Assault Pigaches",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Critical Severity": 630,
+   "Defense": 1050,
+   "Outgoing Healing": 420
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "2 of Set: +5,000 Maximum Hit Points, +1,000 Power. 3 of Set: +5,000 Maximum Hit Points, +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Reinforced Dragonflight Raid Pigaches_IL1400.png",
+  "id": 3710,
+  "dbName": "Reinforced Dragonflight Raid Pigaches",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Accuracy": 630,
+   "Combat Advantage": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "2 of Set: +5,000 Maximum Hit Points, +1,000 Power. 3 of Set: +5,000 Maximum Hit Points, +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Pilgrim Poleyns_IL5400 (2).png",
+  "id": 5497,
+  "dbName": "Runefrost Pilgrim Poleyns",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Outgoing Healing": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Miracle Crit",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you critically heal a teammate with a single-target heal, the target and up to 4 nearby teammates receive 3% Combat Advantage and Critical Avoidance for 4 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Pilgrim Poleyns_IL5400 (3).png",
+  "id": 5497,
+  "dbName": "Runefrost Pilgrim Poleyns",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Outgoing Healing": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Miracle Crit",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you critically heal a teammate with a single-target heal, the target and up to 4 nearby teammates receive 3% Combat Advantage and Critical Avoidance for 4 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Pilgrim Poleyns_IL5400.png",
+  "id": 5497,
+  "dbName": "Runefrost Pilgrim Poleyns",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Outgoing Healing": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Miracle Crit",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you critically heal a teammate with a single-target heal, the target and up to 4 nearby teammates receive 3% Combat Advantage and Critical Avoidance for 4 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Trail Boots_IL5400 (2).png",
+  "id": 5493,
+  "dbName": "Runefrost Trail Boots",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Accuracy": 5265,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Defiant Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1.5% Combat Advantage for each enemy you are engaged in battle within 100'. Max 6 Stacks: 9% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Trail Boots_IL5400 (3).png",
+  "id": 5493,
+  "dbName": "Runefrost Trail Boots",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Accuracy": 5265,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Defiant Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1.5% Combat Advantage for each enemy you are engaged in battle within 100'. Max 6 Stacks: 9% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Trail Boots_IL5400 (4).png",
+  "id": 5493,
+  "dbName": "Runefrost Trail Boots",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Accuracy": 5265,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Defiant Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1.5% Combat Advantage for each enemy you are engaged in battle within 100'. Max 6 Stacks: 9% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Trail Boots_IL5400.png",
+  "id": 5493,
+  "dbName": "Runefrost Trail Boots",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Accuracy": 5265,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Defiant Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1.5% Combat Advantage for each enemy you are engaged in battle within 100'. Max 6 Stacks: 9% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Sabatons of the Eternal Bloom_IL5000 (2).png",
+  "id": 3153,
+  "dbName": "Sabatons of the Eternal Bloom",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Severity": 4050,
+   "Outgoing Healing": 3300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Harmonizing Radiance",
+    "stat": null,
+    "amount": null,
+    "description": "When you use an Encounter power, you have a 30% chance to pulse Harmonizing Light, granting yourself and the two closest friendly players within 20' +1% Power and +1.5% Critical Strike for 6 seconds. Re-applying the effect will refresh its duration.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Sabatons of the Eternal Bloom_IL5000.png",
+  "id": 3153,
+  "dbName": "Sabatons of the Eternal Bloom",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Severity": 4050,
+   "Outgoing Healing": 3300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Harmonizing Radiance",
+    "stat": null,
+    "amount": null,
+    "description": "When you use an Encounter power, you have a 30% chance to pulse Harmonizing Light, granting yourself and the two closest friendly players within 20' +1% Power and +1.5% Critical Strike for 6 seconds. Re-applying the effect will refresh its duration.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Seer of the Star's Gaiters_IL1000.png",
+  "id": 3502,
+  "dbName": "Seer of the Star's Gaiters",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Strike": 375,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Shoes of the Spy's Guild_IL940.png",
+  "id": 3489,
+  "dbName": "Shoes of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Starhide Cackrows_IL2700.png",
+  "id": 3224,
+  "dbName": "Starhide Cackrows",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Strike": 2025,
+   "Forte": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Muse",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity/Performance/Soulweave regenerates 20% faster.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Starweave Slippers_IL2700.png",
+  "id": 3220,
+  "dbName": "Starweave Slippers",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Combat Advantage": 2025,
+   "Critical Strike": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wildspace Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in Wildspace.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Tempter of the Twilight's Gaiters_IL1000.png",
+  "id": 3501,
+  "dbName": "Tempter of the Twilight's Gaiters",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 300,
+   "Critical Severity": 450,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 2.5% Movement Speed for each enemy you are engaged in battle. (Max of 12%)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\The Dark Maiden's Raid Longboots_IL2000.png",
+  "id": 3294,
+  "dbName": "The Dark Maiden's Raid Longboots",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1200,
+   "Critical Severity": 900,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4,500 Power in the Underdark and gain more role effectiveness when in the Temple of the Spider. DPS +5% Base Damage Boost, Tank -5% Incoming Damage, Healer +5% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\The Dark Maiden's Rejuvenation Steps_IL2000.png",
+  "id": 3298,
+  "dbName": "The Dark Maiden's Rejuvenation Steps",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 900,
+   "Deflect Severity": 900,
+   "Forte": 1200
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4,500 Power in the Underdark and gain more role effectiveness when in the Temple of the Spider. DPS +5% Base Damage Boost, Tank -5% Incoming Damage, Healer +5% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Treads of the Infernal Tempest_IL5000.png",
+  "id": 3149,
+  "dbName": "Treads of the Infernal Tempest",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Combat Advantage": 2400,
+   "Forte": 2025
+  },
+  "dbPercentStats": {
+   "Accuracy": 2.925
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Surge of Dominance",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you use a Daily power, your Combat Advantage and Movement Speed increase by +15% for 3 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ultraviolet Elven Boots_IL2900.png",
+  "id": 3208,
+  "dbName": "Ultraviolet Elven Boots",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Forte": 2175,
+   "Outgoing Healing": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Galactic Muse",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity/Performance/Soulweave regenerates 20% faster while in Wildspace. In non-Wildspace, the regen bonus is 10%. Gain 2.5% Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ultraviolet Elven Poulaines_IL2900.png",
+  "id": 3204,
+  "dbName": "Ultraviolet Elven Poulaines",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Critical Strike": 2175,
+   "Critical Severity": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wildspace Predator",
+    "stat": null,
+    "amount": null,
+    "description": "+7% Damage in Wildspace. +3% Damage in non-Wildspace.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Umbral Assault Pigaches_IL728.png",
+  "id": 3858,
+  "dbName": "Umbral Assault Pigaches",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Critical Strike": 328,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Umbral Duelist Pigaches_IL728.png",
+  "id": 3862,
+  "dbName": "Umbral Duelist Pigaches",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Combat Advantage": 164,
+   "Critical Strike": 164,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

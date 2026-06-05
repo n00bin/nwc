@@ -1,0 +1,474 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Reinforced Dragonflight Raid Gloves_IL1400.png",
+  "id": 4432,
+  "dbName": "Reinforced Dragonflight Raid Gloves",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Combat Advantage": 420,
+   "Critical Strike": 630,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Runefrost Mender's Bracers_IL5400.png",
+  "id": 5499,
+  "dbName": "Runefrost Mender's Bracers",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Severity": 4860,
+   "Outgoing Healing": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spiritual Inspiration",
+    "stat": null,
+    "amount": null,
+    "description": "Your Performance/Soulweave maximum increases by 20%. Gain 3.5% Forte.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Starhide Armband_IL2700.png",
+  "id": 3975,
+  "dbName": "Starhide Armband",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Accuracy": 2025,
+   "Combat Advantage": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 10 Action Points. Can only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Stealer of the Star's Braces_IL1000.png",
+  "id": 4152,
+  "dbName": "Stealer of the Star's Braces",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Strike": 750,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "At-Will Perk",
+    "stat": "At Will Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your At-Will Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Dark Maiden's Assault Gloves_IL2000 (2).png",
+  "id": 4017,
+  "dbName": "The Dark Maiden's Assault Gloves",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Dark Maiden's Assault Gloves_IL2000.png",
+  "id": 4017,
+  "dbName": "The Dark Maiden's Assault Gloves",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Dark Maiden's Rejuvenation Mitts_IL2000.png",
+  "id": 3297,
+  "dbName": "The Dark Maiden's Rejuvenation Mitts",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Outgoing Healing": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Trapper of the Twilight's Braces_IL1000.png",
+  "id": 4149,
+  "dbName": "Trapper of the Twilight's Braces",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Strike": 375,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Encounter Perk",
+    "stat": "Encounter Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your Encounter Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ultraviolet Elven Wristguards_IL2900.png",
+  "id": 3967,
+  "dbName": "Ultraviolet Elven Wristguards",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Accuracy": 1088,
+   "Combat Advantage": 2175,
+   "Forte": 1088
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, your Critical Strike is increased by 1.5% every 2 seconds. Max 5 stacks: 7.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Umbral Assault Gloves_IL728.png",
+  "id": 4585,
+  "dbName": "Umbral Assault Gloves",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 328,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Umbral Duelist Gloves_IL728.png",
+  "id": 4591,
+  "dbName": "Umbral Duelist Gloves",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Critical Strike": 164,
+   "Defense": 546,
+   "Critical Avoidance": 164,
+   "Deflection": 218
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Umbral Executioner Gloves_IL728.png",
+  "id": 4594,
+  "dbName": "Umbral Executioner Gloves",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Critical Strike": 218,
+   "Critical Severity": 164,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Vambraces of the Crimson Gale_IL4700.png",
+  "id": 2715,
+  "dbName": "Vambraces of the Crimson Gale",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3807,
+   "Forte": 3490
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Precision Against Odds",
+    "stat": null,
+    "amount": null,
+    "description": "Each enemy you are in combat with increases your Critical Strike by 1.8%. Max 5 targets: 9% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Vambraces of the Eternal Bloom_IL5000.png",
+  "id": 3154,
+  "dbName": "Vambraces of the Eternal Bloom",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Strike": 4050,
+   "Outgoing Healing": 3300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Harmonized Momentum",
+    "stat": null,
+    "amount": null,
+    "description": "Your Performance/Soulweave maximum is increased by 15%. While moving, your closest 4 nearby allies gain +0.8% Awareness. The effect is removed after standing still for 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Weathered Wood Bracers_IL1300.png",
+  "id": 4060,
+  "dbName": "Weathered Wood Bracers",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 390,
+   "Critical Severity": 585,
+   "Defense": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Weathered Wood Braces_IL1300.png",
+  "id": 3353,
+  "dbName": "Weathered Wood Braces",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Defense": 975,
+   "Deflection": 488,
+   "Outgoing Healing": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. Max 5 stacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bloodbrass Lute_IL2750.png",
+  "id": 4876,
+  "dbName": "Bloodbrass Lute",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Accuracy": 2681,
+   "Combat Advantage": 1650
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skyhold Arms (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in The Pirates' Skyhold, your Movement Speed is increased by 17%. Every 5s in combat, you will gain a stack of Freebooter's Will (max 10 stacks). Each stack grants: General +0.25% Power, DPS +0.15% Critical Severity, Healer +0.3% Overall Outgoing Healing, Tank +3% Awareness.",
+    "setName": "Skyhold Arms",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dirgeblade_IL3400.png",
+  "id": 5642,
+  "dbName": "Dirgeblade",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Accuracy": 3315,
+   "Critical Strike": 3060
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Obsidian Mekatl_IL400.png",
+  "id": 5770,
+  "dbName": "Exalted Obsidian Mekatl",
+  "dbItemLevel": 400,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "Combat Advantage": 300,
+   "Critical Strike": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Obsidian Mekatl_IL550.png",
+  "id": 5771,
+  "dbName": "Exalted Obsidian Mekatl",
+  "dbItemLevel": 550,
+  "dbRatingStats": {
+   "Accuracy": 206,
+   "Combat Advantage": 412,
+   "Critical Strike": 206
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Obsidian Mekatl_IL700.png",
+  "id": 5772,
+  "dbName": "Exalted Obsidian Mekatl",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Accuracy": 262,
+   "Combat Advantage": 525,
+   "Critical Strike": 262
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Obsidian Mekatl_IL850.png",
+  "id": 5773,
+  "dbName": "Exalted Obsidian Mekatl",
+  "dbItemLevel": 850,
+  "dbRatingStats": {
+   "Accuracy": 319,
+   "Combat Advantage": 638,
+   "Critical Strike": 319
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Mekatl_IL350.png",
+  "id": 6007,
+  "dbName": "Obsidian Mekatl",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Mekatl_IL500.png",
+  "id": 6008,
+  "dbName": "Obsidian Mekatl",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 376,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Mekatl_IL650 (2).png",
+  "id": 6009,
+  "dbName": "Obsidian Mekatl",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

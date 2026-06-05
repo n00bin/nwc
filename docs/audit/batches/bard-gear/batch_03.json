@@ -1,0 +1,487 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dungeon Raider's Bracers_IL940.png",
+  "id": 4144,
+  "dbName": "Dungeon Raider's Bracers",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Accuracy": 282,
+   "Critical Severity": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dungeon Raider's Braces_IL940.png",
+  "id": 3497,
+  "dbName": "Dungeon Raider's Braces",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 352,
+   "Defense": 705,
+   "Deflection": 352
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dusk Assault Gloves_IL1175.png",
+  "id": 4373,
+  "dbName": "Dusk Assault Gloves",
+  "dbItemLevel": 1175,
+  "dbRatingStats": {
+   "Critical Strike": 529,
+   "Critical Severity": 352,
+   "Defense": 881
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 5000,
+    "description": "2 of Set: +5,000 Max HP, +1% Power, +1% Defense. Wanderer's Vigor: not in party, regenerate 2000 HP every 3s.",
+    "setName": "Dusk",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dusk Raid Gloves_IL1175.png",
+  "id": 4369,
+  "dbName": "Dusk Raid Gloves",
+  "dbItemLevel": 1175,
+  "dbRatingStats": {
+   "Combat Advantage": 352,
+   "Critical Strike": 529,
+   "Defense": 881
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 5000,
+    "description": "2 of Set: +5,000 Max HP, +1% Power, +1% Defense. Wanderer's Vigor: when not in a party, regenerate 2000 HP every 3s. 4 of Set: On Stronghold map, you and allies gain +5 Movement Speed.",
+    "setName": "Dusk",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Elemental Dragonflight Assault Gloves_IL596.png",
+  "id": 4582,
+  "dbName": "Elemental Dragonflight Assault Gloves",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Critical Strike": 268,
+   "Critical Severity": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Elemental Dragonflight Raid Gloves_IL596.png",
+  "id": 4578,
+  "dbName": "Elemental Dragonflight Raid Gloves",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Combat Advantage": 179,
+   "Critical Strike": 268,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Elemental Drowcraft Assault Gloves_IL588.png",
+  "id": 4385,
+  "dbName": "Elemental Drowcraft Assault Gloves",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Elemental Drowcraft Raid Gloves_IL588.png",
+  "id": 4381,
+  "dbName": "Elemental Drowcraft Raid Gloves",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Strike": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Elemental Lionsmane Duelist Gloves_IL574.png",
+  "id": 4554,
+  "dbName": "Elemental Lionsmane Duelist Gloves",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Critical Strike": 129,
+   "Defense": 430,
+   "Critical Avoidance": 129,
+   "Deflection": 172
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Elemental Lionsmane Executioner Gloves_IL574.png",
+  "id": 4562,
+  "dbName": "Elemental Lionsmane Executioner Gloves",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Combat Advantage": 129,
+   "Critical Strike": 172,
+   "Critical Severity": 129,
+   "Defense": 430
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enchanted Bregan D'aerthe Assassin's Band_IL2050 (2).png",
+  "id": 2790,
+  "dbName": "Enchanted Bregan D'aerthe Assassin's Band",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1558,
+   "Critical Strike": 615,
+   "Awareness": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Torrent",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 400 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Stacks 20 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enchanted Bregan D'aerthe Assassin's Band_IL2050.png",
+  "id": 2790,
+  "dbName": "Enchanted Bregan D'aerthe Assassin's Band",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1558,
+   "Critical Strike": 615,
+   "Awareness": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Torrent",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 400 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Stacks 20 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enchanted Bregan D'aerthe Expert's Gloves_IL2050.png",
+  "id": 3273,
+  "dbName": "Enchanted Bregan D'aerthe Expert's Gloves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 1538,
+   "Outgoing Healing": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Medic's Regards",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you heal your target for more than 10% of your Maximum Hit Points in a single blow, you will immediately be reduced (max 5 targets within 15 ft), and will gain 5% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enchanted Depthcured Wristguards_IL3200 (2).png",
+  "id": 2735,
+  "dbName": "Enchanted Depthcured Wristguards",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Critical Strike": 2400,
+   "Critical Severity": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Strike is increased by 1.5% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 7.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enchanted Depthcured Wristguards_IL3200.png",
+  "id": 2735,
+  "dbName": "Enchanted Depthcured Wristguards",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Critical Strike": 2400,
+   "Critical Severity": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Strike is increased by 1.5% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 7.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enclave Medic's Armlets_IL1600.png",
+  "id": 3328,
+  "dbName": "Enclave Medic's Armlets",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Defense": 720,
+   "Deflect Severity": 720,
+   "Outgoing Healing": 960
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Ward",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Deflect Severity for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enclave Scout's Wristguards_IL1600 (2).png",
+  "id": 4050,
+  "dbName": "Enclave Scout's Wristguards",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Combat Advantage": 960,
+   "Defense": 720,
+   "Control Resistance": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Ward",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Deflect Severity for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enclave Scout's Wristguards_IL1600.png",
+  "id": 4050,
+  "dbName": "Enclave Scout's Wristguards",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Combat Advantage": 960,
+   "Defense": 720,
+   "Control Resistance": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Ward",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Deflect Severity for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Eternal Gloves_IL1300 (2).png",
+  "id": 3697,
+  "dbName": "Eternal Gloves",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 337,
+   "Critical Strike": 337,
+   "Defense": 975,
+   "Critical Avoidance": 296
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Eternal Gloves_IL1300.png",
+  "id": 3697,
+  "dbName": "Eternal Gloves",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 337,
+   "Critical Strike": 337,
+   "Defense": 975,
+   "Critical Avoidance": 296
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Eternal Greaves_IL1300.png",
+  "id": 5207,
+  "dbName": "Eternal Greaves",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 339,
+   "Critical Strike": 339,
+   "Defense": 975,
+   "Deflection": 296
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Maiden's Assault Gloves_IL2050 (2).png",
+  "id": 2798,
+  "dbName": "Exalted Maiden's Assault Gloves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Maiden's Assault Gloves_IL2050 (3).png",
+  "id": 2798,
+  "dbName": "Exalted Maiden's Assault Gloves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Maiden's Assault Gloves_IL2050 (4).png",
+  "id": 2798,
+  "dbName": "Exalted Maiden's Assault Gloves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Maiden's Assault Gloves_IL2050.png",
+  "id": 2798,
+  "dbName": "Exalted Maiden's Assault Gloves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

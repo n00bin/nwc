@@ -1,0 +1,316 @@
+[
+ {
+  "id": 233,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Depthforged Greaves_IL3200.png",
+  "dbName": "Enchanted Depthforged Greaves",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Awareness": 2400,
+   "Incoming Healing": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 3.75% Awareness and Deflect while at full health. These bonuses decrease relative to your missing health. Currently: 3.8% Awareness and 3.8% Deflect.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 725,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Astral Raider's Armet_IL2200.png",
+  "dbName": "Astral Raider's Armet",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Accuracy": 990,
+   "Deflection": 990,
+   "Deflect Severity": 1320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Incoming Healing, -7500 Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 208,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Ward Helm_IL2050.png",
+  "dbName": "Exalted Maiden's Ward Helm",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 1518,
+   "Incoming Healing": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Word",
+    "stat": null,
+    "amount": null,
+    "description": "Slightly increased threat generation.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 209,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pulsar Armet_IL2600.png",
+  "dbName": "Pulsar Armet",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Accuracy": 1170,
+   "Defense": 950,
+   "Awareness": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 2% Stamina Regeneration for 10 seconds. Max 5 Stacks: 10% Stamina Regeneration.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 6333,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Antique Greataxe of the Vale_IL1700.png",
+  "dbName": "Antique Greataxe of the Vale",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 1275,
+   "Critical Strike": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6636,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bismuth Great Sword_IL3400.png",
+  "dbName": "Bismuth Great Sword",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Combat Advantage": 2040,
+   "Critical Strike": 3060
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 6796,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Blaspheme Greataxe_IL1900.png",
+  "dbName": "Blaspheme Greataxe",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 855,
+   "Combat Advantage": 570,
+   "Critical Strike": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6413,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Crystal Greatsword_IL3100.png",
+  "dbName": "Crystal Greatsword",
+  "dbItemLevel": 3100,
+  "dbRatingStats": {
+   "Combat Advantage": 1860,
+   "Critical Strike": 2790
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 6454,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Duergar Mercenary's Steel Hammer_IL1900.png",
+  "dbName": "Duergar Mercenary's Steel Hammer",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6459,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Durgarn Thord Halberd_IL1850.png",
+  "dbName": "Durgarn Thord Halberd",
+  "dbItemLevel": 1850,
+  "dbRatingStats": {
+   "Combat Advantage": 1388,
+   "Critical Strike": 1388
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6501,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Encased Magma Greataxe_IL2700.png",
+  "dbName": "Encased Magma Greataxe",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Strike": 1012,
+   "Defense": 1012,
+   "Forte": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Living Magma",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 6560,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Fortified Greataxe of the Vale_IL1800.png",
+  "dbName": "Fortified Greataxe of the Vale",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Accuracy": 1350,
+   "Critical Strike": 1350
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6569,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Grand Alliance Greatsword_IL1700.png",
+  "dbName": "Grand Alliance Greatsword",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 1275,
+   "Combat Advantage": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6573,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Hammerstone Greathammer_IL352.png",
+  "dbName": "Hammerstone Greathammer",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 79,
+   "Combat Advantage": 185,
+   "Critical Strike": 185,
+   "Deflect": 79
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6681,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Mirage Greatsword_IL350.png",
+  "dbName": "Mirage Greatsword",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6842,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Stronghold Claymore_IL300.png",
+  "dbName": "Stronghold Claymore",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6744,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Stronghold Claymore_IL400.png",
+  "dbName": "Stronghold Claymore",
+  "dbItemLevel": 400,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "Combat Advantage": 300,
+   "Critical Strike": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6745,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Stronghold Claymore_IL500.png",
+  "dbName": "Stronghold Claymore",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6750,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Sunset Greataxe_IL350.png",
+  "dbName": "Sunset Greataxe",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6332,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Antique Axe Knot of the Vale_IL1700.png",
+  "dbName": "Antique Axe Knot of the Vale",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 1275,
+   "Incoming Healing": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

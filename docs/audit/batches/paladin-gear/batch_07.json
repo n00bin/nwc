@@ -1,0 +1,494 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Plate of the Unyielding Bastion_IL5000.png",
+  "id": 379,
+  "dbName": "Plate of the Unyielding Bastion",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Awareness": 2700,
+   "Critical Avoidance": 4538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Retaliatory Shockwave",
+    "stat": null,
+    "amount": null,
+    "description": "On hit > 15% MaxHP: 60 mag shockwave + 3.5% Awareness 7s (12s cd)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Primal Restoration Ibhantshi_IL700.png",
+  "id": 1758,
+  "dbName": "Primal Restoration Ibhantshi",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Accuracy": 210,
+   "Critical Strike": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Defense for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Primal Ward Ibhantshi_IL700.png",
+  "id": 1754,
+  "dbName": "Primal Ward Ibhantshi",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 315,
+   "Critical Strike": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Defense for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Protege's Chained Robe_IL980.png",
+  "id": 1550,
+  "dbName": "Protege's Chained Robe",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Defense": 735,
+   "Deflection": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pulsar Breastplate_IL2600.png",
+  "id": 719,
+  "dbName": "Pulsar Breastplate",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Awareness": 1950,
+   "Forte": 780,
+   "Incoming Healing": 1170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Strike",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Control Bonus when you strike an enemy. Stacks 5 times. When you are struck, the stacks are consumed and you gain -1% Incoming Damage per stack consumed for 10 seconds. Stacks cannot be applied at the same time.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Radiant Elven Cuirass_IL2800.png",
+  "id": 694,
+  "dbName": "Radiant Elven Cuirass",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Defense": 2100,
+   "Critical Avoidance": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spelljammer's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Upon taking critical damage in Wildspace, you have a 25% chance to gain -5% Incoming Damage for 5s. In non-Wildspace, gain -2.5% Incoming Damage for 5s. (10s cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Runefrost Bulwark Cuirass_IL5400.png",
+  "id": 5358,
+  "dbName": "Runefrost Bulwark Cuirass",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Avoidance": 4455,
+   "Deflect": 6075
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Upon taking critical damage in The Reghed Edge, you have a 25% chance to gain -5% Incoming Damage for 5s. In non-The Reghed Edge, gain -2.5% Incoming Damage for 5s. (10s cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Runefrost Lifeward Cuirass_IL5400.png",
+  "id": 5354,
+  "dbName": "Runefrost Lifeward Cuirass",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Harmony",
+    "stat": null,
+    "amount": null,
+    "description": "You gain 1.5% Outgoing Healing for each player in your team. When your teammates are 20' or closer to you, their Critical Strike is increased by 2%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rusted Oathkeeper's Restoration Cuirass_IL420.png",
+  "id": 2068,
+  "dbName": "Rusted Oathkeeper's Restoration Cuirass",
+  "dbItemLevel": 420,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rusted Oathkeeper's Ward Cuirass_IL420.png",
+  "id": 2064,
+  "dbName": "Rusted Oathkeeper's Ward Cuirass",
+  "dbItemLevel": 420,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Scalemail of the Spy's Guild_IL940.png",
+  "id": 3485,
+  "dbName": "Scalemail of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Defense": 705,
+   "Deflection": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Starforged Cuirass_IL2700.png",
+  "id": 215,
+  "dbName": "Starforged Cuirass",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Defense": 2025,
+   "Awareness": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Rothe's Intimidation",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged, you explode with fury, dealing 5,517 damage to enemies within 15', and generating additional threat. (10s cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\The Dark Maiden's Ward Cuirass_IL2000.png",
+  "id": 938,
+  "dbName": "The Dark Maiden's Ward Cuirass",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 900,
+   "Awareness": 1200,
+   "Critical Avoidance": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 5% more damage to enemies that are facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Gladiator Cuirass_IL756.png",
+  "id": 2479,
+  "dbName": "Titansteel Gladiator Cuirass",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 227,
+   "Defense": 567,
+   "Awareness": 170,
+   "Deflection": 170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Medic Cuirass_IL756.png",
+  "id": 2487,
+  "dbName": "Titansteel Medic Cuirass",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 170,
+   "Critical Strike": 227,
+   "Defense": 567,
+   "Awareness": 170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Restoration Cuirass_IL756.png",
+  "id": 2483,
+  "dbName": "Titansteel Restoration Cuirass",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 227,
+   "Combat Advantage": 340,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Ward Cuirass_IL756.png",
+  "id": 2475,
+  "dbName": "Titansteel Ward Cuirass",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Defense": 567,
+   "Awareness": 227
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Ultraviolet Elven Breastplate_IL2900.png",
+  "id": 686,
+  "dbName": "Ultraviolet Elven Breastplate",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Defense": 2175,
+   "Critical Avoidance": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Rothe's Intimidation",
+    "stat": null,
+    "amount": null,
+    "description": "Upon taking critical damage, you have a 25% chance to explode with fury, dealing damage and additional threat to enemies within 15'. You also gain -2.5% Incoming Damage for 5s. (10s cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Vivified Oathkeeper's Ward Cuirass_IL645.png",
+  "id": 2006,
+  "dbName": "Vivified Oathkeeper's Ward Cuirass",
+  "dbItemLevel": 645,
+  "dbRatingStats": {
+   "Combat Advantage": 284,
+   "Defense": 472,
+   "Deflection": 189
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Wintermarked Bulwark Cuirass_IL5700 (2).png",
+  "id": 5350,
+  "dbName": "Wintermarked Bulwark Cuirass",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Awareness": 3420,
+   "Critical Avoidance": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reactive Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Deflect Severity by 15% and Forte by 7% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Wintermarked Bulwark Cuirass_IL5700.png",
+  "id": 5350,
+  "dbName": "Wintermarked Bulwark Cuirass",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Awareness": 3420,
+   "Critical Avoidance": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reactive Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Deflect Severity by 15% and Forte by 7% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Wintermarked Lifeward Cuirass_IL5700.png",
+  "id": 5346,
+  "dbName": "Wintermarked Lifeward Cuirass",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Power": 2992,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Unbroken Strength",
+    "stat": null,
+    "amount": null,
+    "description": "For each second you are at maximum health, gain +0.55% Power and +0.55% Critical Severity. Each second at less than maximum health, you lose 3 stacks. Max 10 Stacks: +5.5% Power and +5.5% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostforged Belt of the Companion_IL2850 (2).png",
+  "id": 5392,
+  "dbName": "Frostforged Belt of the Companion",
+  "dbItemLevel": 2850,
+  "dbRatingStats": {
+   "Awareness": 1710,
+   "Critical Avoidance": 2355
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostforged Belt of the Companion_IL2850.png",
+  "id": 5392,
+  "dbName": "Frostforged Belt of the Companion",
+  "dbItemLevel": 2850,
+  "dbRatingStats": {
+   "Awareness": 1710,
+   "Critical Avoidance": 2355
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostforged Girdle of the Companion_IL2850 (2).png",
+  "id": 5393,
+  "dbName": "Frostforged Girdle of the Companion",
+  "dbItemLevel": 2850,
+  "dbRatingStats": {
+   "Defense": 1494,
+   "Deflect": 3206
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

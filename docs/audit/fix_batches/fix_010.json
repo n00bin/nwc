@@ -1,0 +1,526 @@
+[
+ {
+  "id": 5362,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Earthshard Guard_IL4600 (2).png",
+  "dbName": "Cracked Earthshard Guard",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Power": 1449,
+   "Defense": 4140,
+   "Incoming Healing": 2484
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Defiance",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, you take 3% less damage.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Stand (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Awareness",
+    "setName": "Freezing Stand",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5364,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Stonevein Harness_IL4600 (2).png",
+  "dbName": "Cracked Stonevein Harness",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Awareness": 1656,
+   "Defense": 1036,
+   "Deflect Severity": 5105,
+   "Critical Avoidance": 3616
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivors Healing Aura",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or lower you gain 5% Incoming Healing for 6 seconds. Teammates who are 25 or closer to you gain 5% Incoming Healing for 6 seconds. Cooldown: 17s.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Fortitude (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Defense",
+    "setName": "Freezing Fortitude",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5375,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frost-Riven Earthshard Guard_IL4850 (2).png",
+  "dbName": "Frost-Riven Earthshard Guard",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Power": 1528,
+   "Defense": 6365,
+   "Incoming Healing": 2619
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Defiance",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, you take 4.5% less damage.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Stand (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Awareness",
+    "setName": "Freezing Stand",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5419,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Runemarked Stonevein Harness_IL3800 (2).png",
+  "dbName": "Runemarked Stonevein Harness",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Awareness": 1368,
+   "Deflect Severity": 2508,
+   "Critical Avoidance": 2565
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Depleted Attention",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is under 25%, your Awareness is increased by 10,625.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Fortitude (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Defense",
+    "setName": "Freezing Fortitude",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5440,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Veinlit Dawnshard Raiment_IL3800 (2).png",
+  "dbName": "Veinlit Dawnshard Raiment",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Critical Strike": 2736,
+   "Power": 997,
+   "Forte": 1782
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Forte",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Forte is increased by 2,125 every 2 seconds. Every 2 seconds you are in combat with 1 or less enemies, lose 1 stack. Max 5 stacks: 10,625 Forte.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Touch (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Power",
+    "setName": "Freezing Touch",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5441,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Veinlit Dawnshard Raiment_IL4350 (2).png",
+  "dbName": "Veinlit Dawnshard Raiment",
+  "dbItemLevel": 4350,
+  "dbRatingStats": {
+   "Critical Strike": 2349,
+   "Critical Severity": 2349,
+   "Forte": 2349
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Forte",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 1 enemy, your Forte is increased by 0.9% every 2 seconds. Every 2 seconds you are in combat with 3 or more enemies, lose 1 stack. Max 5 stacks: 4.5% Forte.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Touch (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Power",
+    "setName": "Freezing Touch",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5402,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostsilver Circlet of Protection_IL6000 (2).png",
+  "dbName": "Frostsilver Circlet of Protection",
+  "dbItemLevel": 6000,
+  "dbRatingStats": {
+   "Defense": 6300,
+   "Deflect Severity": 13500
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Manticore's Mane Bite",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, the next enemy that attacks you takes damage equal to 50% of your max health (30 second cooldown). In PvP this damage is reduced to 10% of your max health. +4.5% Defense.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5404,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostsilver Halo of Mending_IL6000 (2).png",
+  "dbName": "Frostsilver Halo of Mending",
+  "dbItemLevel": 6000,
+  "dbRatingStats": {
+   "Critical Strike": 10800,
+   "Forte": 6300
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Circular Healing",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are healed in combat, gain 8% Outgoing Healing for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5407,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostsilver Ring of Initiative_IL6000.png",
+  "dbName": "Frostsilver Ring of Initiative",
+  "dbItemLevel": 6000,
+  "dbRatingStats": {
+   "Accuracy": 11700,
+   "Combat Advantage": 7200
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Vanguard's Assurance",
+    "stat": null,
+    "amount": null,
+    "description": "You gain 6% Combat Advantage. When in combat with 2 or more enemies, you also gain 3.25% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5408,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rimetouched Band of Faith_IL5400 (2).png",
+  "dbName": "Rimetouched Band of Faith",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Power": 15670,
+   "Critical Strike": 9720
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Graceful Harmony",
+    "stat": null,
+    "amount": null,
+    "description": "You gain 1.2% Outgoing Healing for each player in your team. When your teammates are 25 or closer to you, their Forte is increased by 1.25%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5409,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rimetouched Circlet of Protection_IL5400 (2).png",
+  "dbName": "Rimetouched Circlet of Protection",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Defense": 5940,
+   "Deflection": 12150
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Fortitude",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is above 75%, your Defense is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5410,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rimetouched Coil of Wrath_IL5400.png",
+  "dbName": "Rimetouched Coil of Wrath",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 9720,
+   "Critical Severity": 9720
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Blessing (Cesser)",
+    "stat": null,
+    "amount": null,
+    "description": "Your current Hit Points increases your Forte, up to a max of 4%. Currently: 4% Forte.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5411,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rimetouched Halo of Mending_IL5400 (2).png",
+  "dbName": "Rimetouched Halo of Mending",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 9720,
+   "Forte": 7290
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Circular Healing",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are healed in combat, gain 8% Outgoing Healing for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5414,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rimetouched Ring of Initiative_IL5400 (2).png",
+  "dbName": "Rimetouched Ring of Initiative",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Accuracy": 10800,
+   "Combat Advantage": 6480
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Brave Warden",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 25 or closer to your target, your Power is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5422,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Band of Faith_IL4700 (2).png",
+  "dbName": "Snowbound Band of Faith",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Power": 6935,
+   "Critical Strike": 8460
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Inner Strength",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Power is increased by 14,475.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5423,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Circlet of Protection_IL4700 (2).png",
+  "dbName": "Snowbound Circlet of Protection",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Defense": 6935,
+   "Deflect": 10575
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Avoidance",
+    "stat": null,
+    "amount": null,
+    "description": "Gain up to 14,475 Awareness based on your missing health. The max bonus is achieved at 25% or less health. Currently: 0 Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5424,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Coil of Wrath_IL4700 (2).png",
+  "dbName": "Snowbound Coil of Wrath",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 8460,
+   "Critical Severity": 8460
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Assassin's Growth",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you critically strike an enemy with your Powers, you gain 14,475 Critical Severity for 10s. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5425,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Halo of Mending_IL4700 (2).png",
+  "dbName": "Snowbound Halo of Mending",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Severity": 8460,
+   "Forte": 6345
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Overwhelming Support",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, gain 13,150 Outgoing Healing. This bonus is divided by the total number of enemies you are in combat with.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5428,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Ring of Initiative_IL4700 (2).png",
+  "dbName": "Snowbound Ring of Initiative",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Accuracy": 9165,
+   "Combat Advantage": 5640
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Explosive Volley",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you damage an enemy with your Powers, you have a 10% chance to deal 100 magnitude damage in a 20 radius around your target. (5 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5363,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Lifebraid Vestment_IL4600 (2).png",
+  "dbName": "Cracked Lifebraid Vestment",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Critical Strike": 1312,
+   "Forte": 1863,
+   "Outgoing Healing": 1656
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Graceful Harmony",
+    "stat": null,
+    "amount": null,
+    "description": "Increase Outgoing Healing for each player in your team. When your teammates are 20 or closer to you, their Forte is increased by 1%.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Energy (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Critical Strike",
+    "setName": "Freezing Energy",
+    "pieces": 2
+   }
+  ]
+ }
+]

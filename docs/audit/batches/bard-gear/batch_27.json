@@ -1,0 +1,478 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Rapier_IL350.png",
+  "id": 5118,
+  "dbName": "Obsidian Rapier",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "CombatAdvantage": 262,
+   "CriticalStrike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Rapier_IL500.png",
+  "id": 5120,
+  "dbName": "Obsidian Rapier",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "CombatAdvantage": 375,
+   "CriticalStrike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Rapier_IL650.png",
+  "id": 5121,
+  "dbName": "Obsidian Rapier",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "CombatAdvantage": 488,
+   "CriticalStrike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Rapier_IL800.png",
+  "id": 5122,
+  "dbName": "Obsidian Rapier",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 500,
+   "CombatAdvantage": 600,
+   "CriticalStrike": 500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Perfect Nail of Lolth_IL2475.png",
+  "id": 4626,
+  "dbName": "Perfect Nail of Lolth",
+  "dbItemLevel": 2475,
+  "dbRatingStats": {
+   "Combat Advantage": 1856,
+   "Critical Strike": 1856
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.25
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: Your Base Damage Boost and Overall Outgoing Healing increase. Stamina empty: -7.5% Incoming Damage. Start of combat: +1% Critical Strike and Critical Severity. Every 5s in combat: these increase by 1% (Max 5%).",
+    "setName": "Demonweb Empowerment",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Primal Rapier_IL350.png",
+  "id": 4922,
+  "dbName": "Primal Rapier",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 131,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Primal Rapier_IL500.png",
+  "id": 4923,
+  "dbName": "Primal Rapier",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 188,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Primal Rapier_IL650.png",
+  "id": 4924,
+  "dbName": "Primal Rapier",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 244,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Primal Rapier_IL800.png",
+  "id": 4925,
+  "dbName": "Primal Rapier",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 300,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Runefrost Verseblade_IL5500.png",
+  "id": 6203,
+  "dbName": "Runefrost Verseblade",
+  "dbItemLevel": 5500,
+  "dbRatingStats": {
+   "Accuracy": 3575,
+   "Critical Strike": 3300,
+   "Power": 1925
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shadesinger's Rapier_IL500.png",
+  "id": 5101,
+  "dbName": "Shadesinger's Rapier",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "CombatAdvantage": 375,
+   "CriticalStrike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shadesinger's Rapier_IL650.png",
+  "id": 5102,
+  "dbName": "Shadesinger's Rapier",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "CombatAdvantage": 488,
+   "CriticalStrike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shadesinger's Rapier_IL800.png",
+  "id": 5103,
+  "dbName": "Shadesinger's Rapier",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 500,
+   "CombatAdvantage": 600,
+   "CriticalStrike": 500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Skinstripper_IL350.png",
+  "id": 4674,
+  "dbName": "Skinstripper",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: Start of combat: BDB, OOH, Damage Resistance +1%. Every 5s in combat: +1%. Doubled by Trophy Hunter buff. (Max 10%)",
+    "setName": "Tyrant",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Stormforged Lute_IL2000.png",
+  "id": 4889,
+  "dbName": "Stormforged Lute",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Awareness": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Stormforged (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in the Underdark, gain 2% Base Damage Boost / -2% Incoming Damage / 2% Overall Outgoing Healing depending on role. When you dodge, block, sprint, or shadow slip, gain 1.5% role bonus for 15s (30s CD). When dealing Combat Advantage damage, 10% chance to gain 3% role bonus for 15s (30s CD).",
+    "setName": "Stormforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Stormforged Point_IL2000.png",
+  "id": 4888,
+  "dbName": "Stormforged Point",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Damage": 200,
+   "Combat Advantage": 1500,
+   "Critical Strike": 600,
+   "Forte": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Stormforged (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in the Underdark, gain 2% Base Damage Boost / -2% Incoming Damage / 2% Overall Outgoing Healing depending on role. When you dodge, block, sprint, or shadow slip, gain 1.5% role bonus for 15s (30s CD). When dealing Combat Advantage damage, 10% chance to gain 3% role bonus for 15s (30s CD).",
+    "setName": "Stormforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Stronghold Rapier_IL300.png",
+  "id": 4662,
+  "dbName": "Stronghold Rapier",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Stronghold Unity",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Sunset Rapiera_IL800.png",
+  "id": 4917,
+  "dbName": "Sunset Rapiera",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Sunset Rapier_IL350.png",
+  "id": 4808,
+  "dbName": "Sunset Rapier",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 5,
+    "description": "2 of Set: Base Damage Boost and OOH +5%. In Bonvia during nightfall, BDB/Damage Resistance/OOH/Movement Speed +10%.",
+    "setName": "Sun Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Legion Guard's Barbed Rapier_IL1000.png",
+  "id": 4906,
+  "dbName": "The Legion Guard's Barbed Rapier",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 750,
+   "Critical Severity": 750
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Devil's Legion (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You and nearby allies are granted: +500 Power, +1,000 Combat Advantage, +1,000 Defense, +1,000 Critical Avoidance. This effect can stack up to 5 times when allies are equipped with a full set of Legion Guard's weapons.",
+    "setName": "Devil's Legion",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Legion Guard's Barbed Rapier_IL600.png",
+  "id": 4639,
+  "dbName": "The Legion Guard's Barbed Rapier",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 450,
+   "Critical Severity": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 1500,
+    "description": "2 of Set: You and nearby allies: +1500 Power, +1500 Combat Advantage, +1500 Defense, +1500 Critical Avoidance. Stacks up to 5 times when allies are equipped with full Legion Guard's weapons.",
+    "setName": "Devil's Legion",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Legion Guard's Barbed Rapier_IL800.png",
+  "id": 4905,
+  "dbName": "The Legion Guard's Barbed Rapier",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 600,
+   "Critical Severity": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Devil's Legion (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You and nearby allies are granted: +500 Power, +1,000 Combat Advantage, +1,000 Defense, +1,000 Critical Avoidance. This effect can stack up to 5 times when allies are equipped with a full set of Legion Guard's weapons.",
+    "setName": "Devil's Legion",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Weaver's Rapier_IL2050.png",
+  "id": 4886,
+  "dbName": "The Weaver's Rapier",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Damage": 250,
+   "Critical Strike": 1538,
+   "Forte": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Beholder Slayer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Deal or heal up to 5% additional damage based on the difference in hit point percentage between the player and the target. Role bonus to you and nearby allies: DPS +1% Base Damage Boost, Tank -2% Incoming Damage, Healer +2% Overall Outgoing Healing. May stack up to 5 times when allies are equipped with a set of similar weapons. When in the Underdark, your Damage is increased by 5%.",
+    "setName": "Beholder Slayer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Titansteel Rapier_IL350.png",
+  "id": 4644,
+  "dbName": "Titansteel Rapier",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Titansteel Rapier_IL500.png",
+  "id": 5131,
+  "dbName": "Titansteel Rapier",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ }
+]

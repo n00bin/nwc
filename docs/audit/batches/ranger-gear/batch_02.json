@@ -1,0 +1,482 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dragonflight Assault Bracers_IL588.png",
+  "id": 3106,
+  "dbName": "Dragonflight Assault Bracers",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dragonflight Raid Bracers_IL588.png",
+  "id": 3102,
+  "dbName": "Dragonflight Raid Bracers",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dragonhide Band_IL1900 (2).png",
+  "id": 2806,
+  "dbName": "Dragonhide Band",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Defense": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged At-Will",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you activate a Daily power, increase the damage dealt by your at-will attacks by 15% for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dragonhide Band_IL1900.png",
+  "id": 2806,
+  "dbName": "Dragonhide Band",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Defense": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged At-Will",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you activate a Daily power, increase the damage dealt by your at-will attacks by 15% for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dungeon Raider's Bracers_IL940 (2).png",
+  "id": 4144,
+  "dbName": "Dungeon Raider's Bracers",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Accuracy": 282,
+   "Critical Severity": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dungeon Raider's Bracers_IL940.png",
+  "id": 4144,
+  "dbName": "Dungeon Raider's Bracers",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Accuracy": 282,
+   "Critical Severity": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dusk Assault Bracers_IL1175.png",
+  "id": 2976,
+  "dbName": "Dusk Assault Bracers",
+  "dbItemLevel": 1175,
+  "dbRatingStats": {
+   "Accuracy": 529,
+   "Critical Severity": 352,
+   "Defense": 881
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dusk Raid Bracers_IL1175.png",
+  "id": 2972,
+  "dbName": "Dusk Raid Bracers",
+  "dbItemLevel": 1175,
+  "dbRatingStats": {
+   "Accuracy": 529,
+   "Combat Advantage": 352,
+   "Defense": 881
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Elemental Dragonflight Assault Bracers_IL596.png",
+  "id": 3114,
+  "dbName": "Elemental Dragonflight Assault Bracers",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Accuracy": 268,
+   "Critical Severity": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Elemental Dragonflight Raid Bracers_IL596.png",
+  "id": 3110,
+  "dbName": "Elemental Dragonflight Raid Bracers",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Accuracy": 268,
+   "Combat Advantage": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Elemental Lionsmane Duelist Bracers_IL574.png",
+  "id": 5696,
+  "dbName": "Elemental Lionsmane Duelist Bracers",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Accuracy": 129,
+   "Critical Severity": 129,
+   "Defense": 430,
+   "Deflection": 172
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Elemental Lionsmane Executioner Bracers_IL574.png",
+  "id": 5700,
+  "dbName": "Elemental Lionsmane Executioner Bracers",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Combat Advantage": 172,
+   "Critical Strike": 129,
+   "Defense": 430,
+   "Critical Avoidance": 129
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Enchanted Bregan D'aerthe Assassin's Band_IL2050 (2).png",
+  "id": 2790,
+  "dbName": "Enchanted Bregan D'aerthe Assassin's Band",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1558,
+   "Critical Strike": 615,
+   "Awareness": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Torrent",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 400 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Stacks 20 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Enchanted Bregan D'aerthe Assassin's Band_IL2050.png",
+  "id": 2790,
+  "dbName": "Enchanted Bregan D'aerthe Assassin's Band",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1558,
+   "Critical Strike": 615,
+   "Awareness": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Torrent",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 400 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Stacks 20 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Enchanted Depthcured Wristguards_IL3200 (2).png",
+  "id": 2735,
+  "dbName": "Enchanted Depthcured Wristguards",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Critical Strike": 2400,
+   "Critical Severity": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Strike is increased by 1.5% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 7.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Enchanted Depthcured Wristguards_IL3200.png",
+  "id": 2735,
+  "dbName": "Enchanted Depthcured Wristguards",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Critical Strike": 2400,
+   "Critical Severity": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Strike is increased by 1.5% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 7.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Enclave Scout's Wristguards_IL1600 (2).png",
+  "id": 4050,
+  "dbName": "Enclave Scout's Wristguards",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Combat Advantage": 960,
+   "Defense": 720,
+   "Control Resistance": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Ward",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Deflect Severity for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Enclave Scout's Wristguards_IL1600.png",
+  "id": 4050,
+  "dbName": "Enclave Scout's Wristguards",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Combat Advantage": 960,
+   "Defense": 720,
+   "Control Resistance": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Ward",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Deflect Severity for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Eternal Bracers_IL1300.png",
+  "id": 3010,
+  "dbName": "Eternal Bracers",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 337,
+   "Critical Severity": 339,
+   "Defense": 975,
+   "Deflection": 294
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Exalted Maiden's Assault Gloves_IL2050 (2).png",
+  "id": 2798,
+  "dbName": "Exalted Maiden's Assault Gloves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Exalted Maiden's Assault Gloves_IL2050 (3).png",
+  "id": 2798,
+  "dbName": "Exalted Maiden's Assault Gloves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Exalted Maiden's Assault Gloves_IL2050 (4).png",
+  "id": 2798,
+  "dbName": "Exalted Maiden's Assault Gloves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Exalted Maiden's Assault Gloves_IL2050.png",
+  "id": 2798,
+  "dbName": "Exalted Maiden's Assault Gloves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Fiend Forged Bracers_IL1230 (2).png",
+  "id": 4108,
+  "dbName": "Fiend Forged Bracers",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Accuracy": 369,
+   "Critical Severity": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Fiend Forged Bracers_IL1230.png",
+  "id": 4108,
+  "dbName": "Fiend Forged Bracers",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Accuracy": 369,
+   "Critical Severity": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

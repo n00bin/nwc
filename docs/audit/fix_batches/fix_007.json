@@ -1,0 +1,380 @@
+[
+ {
+  "id": 2750,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ultraviolet Elven Hat_IL2900.png",
+  "dbName": "Ultraviolet Elven Hat",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Combat Advantage": 2175,
+   "Critical Strike": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max Stacks: 10.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4618,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bismuth Rapier_IL3400.png",
+  "dbName": "Bismuth Rapier",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Critical Strike": 3060,
+   "Forte": 2295
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in Pirates' Skyhold or Dread Sanctum, Movement Speed +12%. Each Prismatic Force stack (max 10): General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% OOH, Tank +0.4% Awareness.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 4619,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crystal Rapier_IL3100.png",
+  "dbName": "Crystal Rapier",
+  "dbItemLevel": 3100,
+  "dbRatingStats": {
+   "Critical Strike": 2790,
+   "Forte": 2292
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in Pirates' Skyhold or Dread Sanctum, Movement Speed +12%. Each Prismatic Force stack (max 10): General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% OOH, Tank +0.4% Awareness.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 4644,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Titansteel Rapier_IL350.png",
+  "dbName": "Titansteel Rapier",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5131,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Titansteel Rapier_IL500.png",
+  "dbName": "Titansteel Rapier",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5132,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Titansteel Rapier_IL650.png",
+  "dbName": "Titansteel Rapier",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5133,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Titansteel Rapier_IL800.png",
+  "dbName": "Titansteel Rapier",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 500,
+   "Combat Advantage": 600,
+   "Critical Strike": 500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5108,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Hammerstone Lute_IL352.png",
+  "dbName": "Hammerstone Lute",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "CombatAdvantage": 385,
+   "CriticalSeverity": 79.2,
+   "CriticalAvoidance": 79.2,
+   "Deflection": 185
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5104,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shadesinger's Lute_IL350.png",
+  "dbName": "Shadesinger's Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "CombatAdvantage": 262,
+   "CriticalStrike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5106,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shadesinger's Lute_IL650.png",
+  "dbName": "Shadesinger's Lute",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "CombatAdvantage": 488,
+   "CriticalStrike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5107,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shadesinger's Lute_IL800.png",
+  "dbName": "Shadesinger's Lute",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 500,
+   "CombatAdvantage": 600,
+   "CriticalStrike": 500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 4620,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crystal Lute_IL3100.png",
+  "dbName": "Crystal Lute",
+  "dbItemLevel": 3100,
+  "dbRatingStats": {
+   "Accuracy": 3022,
+   "Combat Advantage": 1860
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in Pirates' Skyhold or Dread Sanctum, Movement Speed +12%. Each Prismatic Force stack (max 10): General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% OOH, Tank +0.4% Awareness.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5105,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shadesinger's Lute_IL500.png",
+  "dbName": "Shadesinger's Lute",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "CombatAdvantage": 375,
+   "CriticalStrike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 4670,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Vistani Lute_IL350.png",
+  "dbName": "Vistani Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Defense",
+    "amount": 500,
+    "description": "2 of Set: +500 Defense, +5% Movement Speed.",
+    "setName": "Vistani",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 4625,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Xaryxian Lute_IL2750.png",
+  "dbName": "Xaryxian Lute",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Accuracy": 2062,
+   "Forte": 2062
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Overall Outgoing Healing",
+    "amount": 5,
+    "description": "2 of Set: +5% Overall Outgoing Healing, -5% Incoming Damage. In Wildspace, Movement Speed +12%. Each Darklight stack: DPS +0.6% BDB, Tank -0.6% Incoming Damage, Healer +0.6% OOH. Max 10 stacks. Doubled in Wildspace.",
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5346,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Wintermarked Lifeward Cuirass_IL5700.png",
+  "dbName": "Wintermarked Lifeward Cuirass",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Power": 2992,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Unbroken Strength",
+    "stat": null,
+    "amount": null,
+    "description": "For each second you are at maximum health, gain +0.55% Power and +0.55% Critical Severity. Each second at less than maximum health, you lose 3 stacks. Max 10 Stacks: +5.5% Power and +5.5% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5345,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Wintermarked Lifeward Greaves_IL5700.png",
+  "dbName": "Wintermarked Lifeward Greaves",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Severity": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shared Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "Healing an ally has a 40% chance to grant you and your nearest ally +3% Critical Strike and +3.5% Critical Severity for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5344,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Wintermarked Lifeward Helm_IL5700.png",
+  "dbName": "Wintermarked Lifeward Helm",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Severity": 5130,
+   "Outgoing Healing": 5420
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renewed Spirit",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity regenerates 25% faster.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2080,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Black Ice Gauntlets_IL512.png",
+  "dbName": "Black Ice Gauntlets",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.1,
+   "Combat Advantage": 132,
+   "Defense": 384,
+   "Awareness": 59.9,
+   "Critical Avoidance": 132
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2344,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Eternal Plate Armor_IL1300.png",
+  "dbName": "Eternal Plate Armor",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 337,
+   "Critical Strike": 339,
+   "Defense": 975,
+   "Deflection": 294
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

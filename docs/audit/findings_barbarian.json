@@ -1,0 +1,336 @@
+{
+ "class": "barbarian-gear",
+ "batches": 25,
+ "batchesOk": 25,
+ "audited": 608,
+ "mismatchCount": 53,
+ "mismatches": [
+  {
+   "name": "Astral Raider's Gauntlets",
+   "issues": [
+    "Equip bonus name: screenshot reads 'Scaled Furor', DB stores 'Scaled Disdain'"
+   ]
+  },
+  {
+   "name": "Enchanted Depthforged Gauntlets (IL3200.png)",
+   "issues": [
+    "Screenshot shows Critical Strike: 2400 and Critical Severity: 2400 — DB stores Defense: 2400 and Awareness: 2400",
+    "Screenshot equip bonus is 'Enveloped Precision' (Critical Strike stacking proc) — DB stores 'Sudden Intuition' (Awareness/Deflect Severity proc on CA damage received)",
+    "This screenshot captures a different variant of the item than the DB record (id 219) represents; the DB record matches only the (2).png screenshot"
+   ]
+  },
+  {
+   "name": "Gauntlets of the Unyielding Bastion",
+   "issues": [
+    "DB equip bonus description reads '0.5% Awareness' — screenshot reads '+7.5% Awareness for 10 seconds'"
+   ]
+  },
+  {
+   "name": "Wintermarked Bulwark Vambraces_IL5700",
+   "issues": [
+    "Stat name wrong: DB stores 'Critical Strike': 4703 but screenshot shows 'Critical Avoidance': 4,703"
+   ]
+  },
+  {
+   "name": "Fey Sword Knot IL350",
+   "issues": [
+    "Missing equip bonus in DB: 'Artifact Stat Increase: Unlocks at Epic Rarity' is visible in screenshot but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Fey Sword Knot IL500",
+   "issues": [
+    "Missing equip bonus in DB: 'Artifact Stat Increase: Unlocks at Epic Rarity' is visible in screenshot (both IL500 screenshots) but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Headsman's Sword Knot IL500",
+   "issues": [
+    "Missing equip bonus in DB: 'Artifact Stat Increase: Unlocks at Epic Rarity' is visible in screenshot but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Hellfire Engine Serpentine Belt IL600",
+   "issues": [
+    "Missing equip bonus in DB: 'Artifact Stat Increase: Unlocks at Epic Rarity' is visible in screenshot but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Hellfire Engine Serpentine Belt IL800",
+   "issues": [
+    "Missing equip bonus in DB: 'Artifact Stat Increase: Unlocks at Epic Rarity' is visible in screenshot but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Exalted Maiden's Ward Cuirass",
+   "issues": [
+    "Equip bonus description mismatch: screenshot reads 'You do 6% more damage to enemies that are facing you.' DB stores 'You do 6% more damage to enemies that are not facing you.' The word 'not' in the DB is incorrect — the condition is inverted."
+   ]
+  },
+  {
+   "name": "Pulsar Breastplate",
+   "issues": [
+    "Equip bonus name: screenshot shows 'Controlled Strike', DB stores 'Critical Strike'"
+   ]
+  },
+  {
+   "name": "Wintermarked Bulwark Cuirass",
+   "issues": [
+    "Equip bonus 'Reactive Defense': screenshot shows 'Deflect Severity by 11%', DB stores 'Deflect Severity by 15%' (both screenshots confirm 11%)"
+   ]
+  },
+  {
+   "name": "Starforged Cuirass",
+   "issues": [
+    "Equip bonus 'Rothe's Intimidation': DB description includes '5,517 damage' but the screenshot tooltip does not display a numeric damage value — the figure cannot be confirmed or denied from this image"
+   ]
+  },
+  {
+   "name": "Astral Raider's Greaves",
+   "issues": [
+    "Awareness and Critical Avoidance values are swapped: screenshot shows Awareness 1320 and Critical Avoidance 990, DB has Awareness 990 and Critical Avoidance 1320"
+   ]
+  },
+  {
+   "name": "Dragonflight Assault Greaves",
+   "issues": [
+    "Screenshot shows 'Set Dragonflight (0/4)' set membership; DB has no equip bonuses and no set reference"
+   ]
+  },
+  {
+   "name": "Dragonflight Raid Greaves",
+   "issues": [
+    "Screenshot shows 'Set Dragonflight (0/4)' set membership; DB has no equip bonuses and no set reference"
+   ]
+  },
+  {
+   "name": "Dragonsteel Sabatons",
+   "issues": [
+    "Screenshot shows three rating stats: Critical Strike 855, Defense 855, Awareness 1140; DB is missing Awareness 1140"
+   ]
+  },
+  {
+   "name": "Primal Raid Lapulapus",
+   "issues": [
+    "dbPercentStats contains spurious 'Action Point Gain: 3' — this is the equip bonus proc effect text, not a standalone percent stat line displayed on the tooltip; no separate percent stat appears in the screenshot"
+   ]
+  },
+  {
+   "name": "Radiant Elven Sabatons",
+   "issues": [
+    "Equip bonus Spelljammer's Fortified Ally: screenshot shows '5% Incoming Healing in Wildspace' but DB stores '2.5% Incoming Healing in Wildspace' (the non-Wildspace value of 2.5% is correct in both)"
+   ]
+  },
+  {
+   "name": "Astral Raider's Armet",
+   "issues": [
+    "Second stat: screenshot shows Defense 990, DB stores Deflection (Deflect) 990 — wrong stat name"
+   ]
+  },
+  {
+   "name": "Exalted Maiden's Ward Helm",
+   "issues": [
+    "Defense: screenshot 1,538 vs DB 1,518"
+   ]
+  },
+  {
+   "name": "Pulsar Armet",
+   "issues": [
+    "Defense: screenshot 1,950 vs DB 950"
+   ]
+  },
+  {
+   "name": "Antique Greataxe of the Vale",
+   "issues": [
+    "Set tag missing in DB: screenshot shows 'Set Vale (0/2)' but DB has no setName/pieces entry"
+   ]
+  },
+  {
+   "name": "Bismuth Great Sword",
+   "issues": [
+    "Damage: screenshot shows +100, DB stores 50",
+    "Set name mismatch: screenshot shows 'Set Prismatic Defier of Dread (0/2)', DB stores setName 'Defier of Dread'"
+   ]
+  },
+  {
+   "name": "Blaspheme Greataxe",
+   "issues": [
+    "Damage stat missing in DB: screenshot shows +100 Damage",
+    "Set tag missing in DB: screenshot shows 'Set Blaspheme (0/2)' but DB has no setName/pieces entry"
+   ]
+  },
+  {
+   "name": "Crystal Greatsword",
+   "issues": [
+    "Damage stat missing in DB: screenshot shows +100 Damage"
+   ]
+  },
+  {
+   "name": "Duergar Mercenary's Steel Hammer",
+   "issues": [
+    "Damage stat missing in DB: screenshot shows +200 Damage",
+    "Set tag missing in DB: screenshot shows 'Set Duergar Weapon Set (0/2)' but DB has no setName/pieces entry"
+   ]
+  },
+  {
+   "name": "Durgarn Thord Halberd",
+   "issues": [
+    "Set bonus missing in DB: screenshot shows Set Scalebreaker's Wrath (0/2) but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Encased Magma Greataxe",
+   "issues": [
+    "Damage: screenshot 175 vs DB 250"
+   ]
+  },
+  {
+   "name": "Fortified Greataxe of the Vale",
+   "issues": [
+    "Set bonus missing in DB: screenshot shows Set Fortified Vale (0/2) but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Grand Alliance Greatsword",
+   "issues": [
+    "Set bonus missing in DB: screenshot shows Set Grand Alliance (0/2) but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Hammerstone Greathammer",
+   "issues": [
+    "Accuracy: screenshot 79.2 vs DB 79",
+    "Deflect: screenshot 79.2 vs DB 79"
+   ]
+  },
+  {
+   "name": "Mirage Greatsword",
+   "issues": [
+    "Set bonus missing in DB: screenshot shows Set Mirage (0/2) but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Stronghold Claymore (IL300)",
+   "issues": [
+    "Set bonus missing in DB: screenshot shows Set Stronghold Unity (0/2) but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Stronghold Claymore (IL400)",
+   "issues": [
+    "Set bonus missing in DB: screenshot shows Set Stronghold Unity (0/2) but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Stronghold Claymore (IL500)",
+   "issues": [
+    "Set bonus missing in DB: screenshot shows Set Stronghold Unity (0/2) but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Sunset Greataxe",
+   "issues": [
+    "Set bonus missing in DB: screenshot shows Set Sun (0/2) but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Antique Axe Knot of the Vale",
+   "issues": [
+    "Set bonus missing in DB: screenshot shows Set Vale (0/2) but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Bismuth Charm",
+   "issues": [
+    "Damage 100 present in screenshot but missing from dbRatingStats",
+    "Set name: screenshot shows 'Prismatic Defier of Dread' vs DB 'Defier of Dread'"
+   ]
+  },
+  {
+   "name": "Crystal Charm_IL3100",
+   "issues": [
+    "Screenshot shows +100 Damage flat stat — not present in dbRatingStats or dbPercentStats"
+   ]
+  },
+  {
+   "name": "Duergar Mercenary's Steel Sword Knot_IL1900",
+   "issues": [
+    "Screenshot shows Set Duergar Weapon Set (0/2) — no equip bonus / set entry in DB"
+   ]
+  },
+  {
+   "name": "Durgarn Thord Axe Knot_IL1850",
+   "issues": [
+    "Screenshot shows Set Scalebreaker's Wrath (0/2) — no equip bonus / set entry in DB"
+   ]
+  },
+  {
+   "name": "Exalted Primal Mecatica_IL350",
+   "issues": [
+    "Screenshot shows Set Primal (0/2) — DB equip bonus has Artifact Stat Increase entry but no setName / set entry for Primal"
+   ]
+  },
+  {
+   "name": "Exalted Primal Mecatica_IL500",
+   "issues": [
+    "Screenshot shows Set Primal (0/2) — DB equip bonus has Artifact Stat Increase entry but no setName / set entry for Primal"
+   ]
+  },
+  {
+   "name": "Exalted Primal Mecatica_IL650",
+   "issues": [
+    "Screenshot shows Artifact Stat Increase: Unlocks at Epic Rarity and Set Primal (0/2) — DB equip bonuses array is empty (missing both entries)"
+   ]
+  },
+  {
+   "name": "Grand Alliance Sword Knot_IL1700",
+   "issues": [
+    "Screenshot shows Set Grand Alliance (0/2) — no equip bonus / set entry in DB"
+   ]
+  },
+  {
+   "name": "Hammerstone Sword Knot_IL352",
+   "issues": [
+    "Accuracy: screenshot 79.2 vs DB 79",
+    "Deflect: screenshot 79.2 vs DB 79"
+   ]
+  },
+  {
+   "name": "Mirage Sword Knot_IL350",
+   "issues": [
+    "Screenshot shows Artifact Stat Increase: Unlocks at Epic Rarity and Set Mirage (0/2) — DB equip bonuses array is empty (missing both entries)"
+   ]
+  },
+  {
+   "name": "Mirage Sword Knot_IL500",
+   "issues": [
+    "Screenshot shows Artifact Stat Increase: Unlocks at Epic Rarity and Set Mirage (0/2) — DB equip bonuses array is empty (missing both entries)"
+   ]
+  },
+  {
+   "name": "Mirage Sword Knot_IL650",
+   "issues": [
+    "Screenshot shows Set Mirage (0/2) — DB equip bonuses array is empty (missing set entry)"
+   ]
+  },
+  {
+   "name": "Starcore Axe Knot_IL2500",
+   "issues": [
+    "Screenshot shows Set Dark Matter (0/2) — DB equip bonuses array is empty (missing set entry)"
+   ]
+  },
+  {
+   "name": "Stronghold Sword Knot (IL300)",
+   "issues": [
+    "Set membership missing in DB: screenshot shows 'Set Stronghold Unity (0/2)' but dbEquipBonuses is empty"
+   ]
+  },
+  {
+   "name": "Stronghold Sword Knot (IL500)",
+   "issues": [
+    "Set membership missing in DB: screenshot shows 'Set Stronghold Unity (0/2)' but dbEquipBonuses is empty"
+   ]
+  }
+ ],
+ "unreadable": []
+}

@@ -1,0 +1,542 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Encased Magma Khanjar_IL2700.png",
+  "id": 3953,
+  "dbName": "Encased Magma Khanjar",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Strike": 1012,
+   "Defense": 1012,
+   "Forte": 2025
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 0.875
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 7.5,
+    "description": "2 of Set: Gain 7.5% Power while at full health. Decreases relative to missing health. Role bonus: DPS +2.5% Combat Advantage, Tank +2.5% Defense, Healer +2.5% Outgoing Healing. Does not stack. On fire-themed maps, role bonus is doubled and Movement Speed is increased 10%.",
+    "setName": "Living Magma",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Exalted Fleshtearer_IL350.png",
+  "id": 4224,
+  "dbName": "Exalted Fleshtearer",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: At start of combat, BDB and OOH +1% per enemy faced. If facing only 1 enemy, BDB and OOH +3% for 1 minute. Refreshes on kill.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Exalted Primal Omihuictli_IL350.png",
+  "id": 4208,
+  "dbName": "Exalted Primal Omihuictli",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 10,
+    "description": "2 of Set: Primal Recipuyo. If hit/healed for more than 10% of Max HP in a single blow, BDB and OOH +10% for 10s.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Exalted Skinstealer_IL350.png",
+  "id": 4192,
+  "dbName": "Exalted Skinstealer",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost, OOH, and Damage Resistance are increased by 1%. Every 5s in combat, these increase by 1%. Doubled by a Trophy Hunter buff. (Max 10%)",
+    "setName": "Tyrant",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Fey Dagger_IL350.png",
+  "id": 4312,
+  "dbName": "Fey Dagger",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 3,
+    "description": "2 of Set: Fey-Touched. Encounter power triggers Fey-Touched for 10s: restores 10% AP, BDB +3%, OOH +6%. (30s CD)",
+    "setName": "Fey",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Fleshtearer_IL350.png",
+  "id": 4216,
+  "dbName": "Fleshtearer",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: At start of combat, BDB and OOH +1% per enemy faced (max for 10s). If facing only 1 enemy, BDB and OOH +3% for 1 minute. Refreshes on kill.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Golden Dragon's Whisper_IL300.png",
+  "id": 4427,
+  "dbName": "Golden Dragon's Whisper",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Combat Advantage": 150,
+   "Critical Strike": 150,
+   "Critical Severity": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Critical Strike",
+    "amount": 0,
+    "description": "2 of Set: Golden Dragon Dagger + Golden Dragon Stiletto. Modification slot for class feature enhancement.",
+    "setName": "Golden Dragon",
+    "pieces": 2
+   },
+   {
+    "name": "Disheartening Strike Damage",
+    "stat": null,
+    "amount": null,
+    "description": "Increase the damage done by Disheartening Strike by 10%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Grand Alliance Dagger_IL1700.png",
+  "id": 4040,
+  "dbName": "Grand Alliance Dagger",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Severity": 1275,
+   "Critical Avoidance": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 3,
+    "description": "2 of Set: Brute's Expertise. When 20' or closer, a role stat and Forte +3%: DPS Power, Tank Awareness, Healer Outgoing Healing.",
+    "setName": "Grand Alliance",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Hammerstone Mace_IL352 (2).png",
+  "id": 4352,
+  "dbName": "Hammerstone Mace",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Combat Advantage": 185,
+   "Critical Severity": 79,
+   "Critical Avoidance": 79,
+   "Deflection": 185
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Hammerstone Mace_IL352.png",
+  "id": 4352,
+  "dbName": "Hammerstone Mace",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Combat Advantage": 185,
+   "Critical Severity": 79,
+   "Critical Avoidance": 79,
+   "Deflection": 185
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Hellfire Engine Tow Hook_IL600.png",
+  "id": 4090,
+  "dbName": "Hellfire Engine Tow Hook",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 450,
+   "Critical Severity": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 1500,
+    "description": "2 of Set: Hellfire Engine weapon set — bonus TBD from in-game popup.",
+    "setName": "Hellfire Engine Remains",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Howling Dagger_IL300.png",
+  "id": 4387,
+  "dbName": "Howling Dagger",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 30,
+    "description": "2 of Set: Dodge/block/sprint/shadow slip increases Movement Speed by 30% for 2s. (10s CD)",
+    "setName": "Howling Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Lifeforged Dagger_IL350.png",
+  "id": 4320,
+  "dbName": "Lifeforged Dagger",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Defense",
+    "amount": 5,
+    "description": "2 of Set: Encounter power triggers Fortified: Defense +5%, 10% of Defense added to Power for 10s. (30s CD)",
+    "setName": "Lifeforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Meteoric Iron Dagger_IL2450.png",
+  "id": 3964,
+  "dbName": "Meteoric Iron Dagger",
+  "dbItemLevel": 2450,
+  "dbRatingStats": {
+   "Critical Strike": 1838,
+   "Forte": 1838
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 3,
+    "description": "2 of Set: Deal or heal up to 3% additional damage based on HP difference. Role: DPS +2% Base Damage Boost, Tank -4% Incoming Damage, Healer +4% Overall Outgoing Healing. Doubled in Wildspace, +10% Movement Speed.",
+    "setName": "Meteoric Fury",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Mirage Dagger_IL350.png",
+  "id": 4304,
+  "dbName": "Mirage Dagger",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 3,
+    "description": "2 of Set: When you use an encounter power, you become a Master of Illusion for 10s. Summons an illusion to attack enemies, does 3% more damage (+10% vs enemies with Shields/Temp HP). 30s CD.",
+    "setName": "Mirage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Nightpiercer Dagger of the Thayan Zealot_IL3300.png",
+  "id": 3922,
+  "dbName": "Nightpiercer Dagger of the Thayan Zealot",
+  "dbItemLevel": 3300,
+  "dbRatingStats": {
+   "Critical Strike": 2673,
+   "Critical Severity": 3267
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 10,
+    "description": "2 of Set: While in Thay, Movement Speed +10%. Every 3s in combat, gain Umbral Stride stack: General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% Outgoing Healing, Tank +0.4% Awareness. Max 10 stacks.",
+    "setName": "Umbral Stride",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Oathkeeper of the Blessed Blade_IL650.png",
+  "id": 4066,
+  "dbName": "Oathkeeper of the Blessed Blade",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 488,
+   "Critical Severity": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 3,
+    "description": "2 of Set: Sure Edge of the Blessed Blade. When you use an encounter power, your weapons become Blessed: +3% Power/Accuracy/CA + random buff (Blessed Guidance: +5% Critical Strike, Blessed Insight: +7.5% Action Point gain) for 10s. (30s CD)",
+    "setName": "Blessed Blade",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Obsidian Omihuictli_IL350.png",
+  "id": 4446,
+  "dbName": "Obsidian Omihuictli",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% Base Damage Boost, +2% Overall Outgoing Healing, -2% Incoming Damage. Stacks up to 5 times when allies have similar weapons.",
+    "setName": "Masterwork III Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Perfect Barb of Loth_IL2475.png",
+  "id": 5164,
+  "dbName": "Perfect Barb of Loth",
+  "dbItemLevel": 2475,
+  "dbRatingStats": {
+   "Damage": 125,
+   "Critical Strike": 1856,
+   "Critical Severity": 1856
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Demonweb Empowerment (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Base Damage Boost and Overall Outgoing Healing are increased by 14%. Incoming damage is reduced by up to 7.5% when your Stamina is empty. At the start of Combat, Critical Strike and Critical Severity increase by 1%; for every 3s in combat these increase by 1% more (max +5%).",
+    "setName": "Demonweb Empowerment",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Perfect Edge of Lolth_IL2475.png",
+  "id": 3989,
+  "dbName": "Perfect Edge of Lolth",
+  "dbItemLevel": 2475,
+  "dbRatingStats": {
+   "Combat Advantage": 1856,
+   "Critical Strike": 1856
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.25
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 10,
+    "description": "2 of Set: +10% Movement Speed in the Demonweb. Bonus combat synergy with Lolthian gear.",
+    "setName": "Demonweb Empowerment",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Primal Omihuictli_IL350.png",
+  "id": 4200,
+  "dbName": "Primal Omihuictli",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 10,
+    "description": "2 of Set: Primal Recipuyo. If you are hit or healed for more than 10% of your Maximum HP in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10s.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Shadewalker's Dagger_IL350.png",
+  "id": 4336,
+  "dbName": "Shadewalker's Dagger",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 500,
+    "description": "2 of Set: A set of relic weapons from Module 10. Restore through Royal Allies campaign.",
+    "setName": "Weapons of the Shadewalker",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Skinstealer_IL350.png",
+  "id": 4184,
+  "dbName": "Skinstealer",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost, OOH, and Damage Resistance are increased by 1%. Every 5s in combat, these increase by 1%. Doubled by a Trophy Hunter buff. (Max 10%)",
+    "setName": "Tyrant",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Stronghold Dagger_IL300.png",
+  "id": 4544,
+  "dbName": "Stronghold Dagger",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Stronghold Unity",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Sunset Dagger_IL350.png",
+  "id": 4160,
+  "dbName": "Sunset Dagger",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 5,
+    "description": "2 of Set: Base Damage Boost and Overall Outgoing Healing +5%. In Bonvia during nightfall, Damage Resistance and Movement Speed +5%. In Bonvia during nightfall, Base Damage Boost/Damage Resistance/OOH/Movement Speed +10%.",
+    "setName": "Sun Set",
+    "pieces": 2
+   }
+  ]
+ }
+]

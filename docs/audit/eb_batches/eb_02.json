@@ -1,0 +1,146 @@
+[
+ {
+  "name": "Bregan D'aerthe Expert's Gloves",
+  "class": "bard-gear",
+  "ids": [
+   3281
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description (Medic's Regards) is garbled in DB: DB says 'you will immediately be reduced (max 5 targets within 15 ft), and will gain 3% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds' but screenshot shows 'your threat will immediately be reduced (max 5 targets within 15 ft), and will gain 3% Incoming Healing, Outgoing Healing for 10 seconds' — DB text has 'generate less threat' incorrectly placed inside the buff list and is missing clarity on what is reduced"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bregan D'aerthe Expert's Gloves_IL2000.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Medic's Regards",
+    "description": "Whenever you heal your target for more than 10% of your Maximum Hit Points in a single blow, you will immediately be reduced (max 5 targets within 15 ft), and will gain 3% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds. (20 second cooldown)"
+   }
+  ]
+ },
+ {
+  "name": "Enchanted Bregan D'aerthe Expert's Gloves",
+  "class": "bard-gear",
+  "ids": [
+   3273
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description wrong: screenshot reads 'Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, your threat will immediately be reduced (max 5 targets within 15 ft), and will gain 5% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds.' DB reads 'Whenever you heal your target for more than 10% of your Maximum Hit Points in a single blow, you will immediately be reduced (max 5 targets within 15 ft), and will gain 5% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds.'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enchanted Bregan D'aerthe Expert's Gloves_IL2050.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Medic's Regards",
+    "description": "Whenever you heal your target for more than 10% of your Maximum Hit Points in a single blow, you will immediately be reduced (max 5 targets within 15 ft), and will gain 5% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds. (20 second cooldown)"
+   }
+  ]
+ },
+ {
+  "name": "Mugger of the Maze's Braces",
+  "class": "bard-gear",
+  "ids": [
+   4156
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus 'Bulwark's Shield': screenshot reads '3% less damage from Ranged attacks' but DB stores '5% less damage from Ranged attacks'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mugger of the Maze's Braces_IL1000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Bulwark's Shield",
+    "description": "You take 5% less damage from Ranged attacks."
+   }
+  ]
+ },
+ {
+  "name": "Radiant Elven Armband",
+  "class": "bard-gear",
+  "ids": [
+   3971
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus 'Challenger's Presence' stack-loss condition: screenshot reads 'Every 2 seconds you are in combat with 4 or more enemies, lose 1 stack' but DB stores 'Every 2s in combat with 1 or fewer enemies, lose 1 stack'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Radiant Elven Armband_IL2800 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Presence",
+    "description": "When in combat with only 1 enemy, every 2 seconds you gain 875 Power and 0.5% Critical Strike. Max 5 stacks: 4,375 Power and 2.5% Critical Strike."
+   }
+  ]
+ },
+ {
+  "name": "Cuirass of the Lifebloom",
+  "class": "bard-gear",
+  "ids": [
+   3162
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus Radiant Empowerment: screenshot says +5.5% Power, DB says +3.5% Power"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuirass of the Lifebloom_IL4700.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Radiant Empowerment",
+    "description": "When you damage or heal your targets for more than 15% of your Maximum Hit Points in a single action, you and your 2 closest allies within 25' gain +3.5% Power for 5 seconds (5 second cooldown)."
+   }
+  ]
+ },
+ {
+  "name": "Cuirass of the Scarlet Arcanum",
+  "class": "bard-gear",
+  "ids": [
+   2712
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Focused Burst', DB stores 'Focused Frenzy' (confirmed across all 3 screenshots: IL5000.png, IL5000 (2).png, IL5000 (3).png)"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuirass of the Scarlet Arcanum_IL5000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage."
+   }
+  ]
+ },
+ {
+  "name": "Hauberk of the Crimson Gale",
+  "class": "bard-gear",
+  "ids": [
+   2716
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus 'Lethal Focus': screenshot reads '+3% Power and +4% Accuracy', DB description stores '+3% Hit Points and +4% Accuracy' — 'Power' vs 'Hit Points' discrepancy confirmed across both screenshots"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Hauberk of the Crimson Gale_IL4700 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Lethal Focus",
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, you gain +3% Hit Points and +4% Accuracy for 7 seconds (5 second cooldown)."
+   }
+  ]
+ },
+ {
+  "name": "Dragonhide Crakows",
+  "class": "bard-gear",
+  "ids": [
+   3306
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description mismatch: screenshot shows 'gain 5,000 Forte' (solo) and 'gain 10,000 Critical Strike' (party); DB description says 'gain 10,000 Forte' (solo) and 'gain 10,000 Critical Strike' (party)"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dragonhide Crakows_IL1900.png",
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "description": "When not in a party, gain 10,000 Forte. When in a party, gain 10,000 Critical Strike."
+   }
+  ]
+ }
+]

@@ -1,0 +1,402 @@
+[
+ {
+  "id": 3679,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Alliance Raid Cowl_IL554.png",
+  "dbName": "Elemental Alliance Raid Cowl",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 166,
+   "Combat Advantage": 249,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3847,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Dragonflight Assault Cowl_IL596.png",
+  "dbName": "Elemental Dragonflight Assault Cowl",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Combat Advantage": 179,
+   "Critical Severity": 268,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3623,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Drowcraft Raid Cowl_IL588.png",
+  "dbName": "Elemental Drowcraft Raid Cowl",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "1 of Set: -10% Incoming Damage against Demon-type enemies. 2 of Set: Reduces amount of Madness inflicted by Maddening Aura. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "setName": "Drowcraft",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "id": 3283,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Maiden's Raid Mask_IL2050 (2).png",
+  "dbName": "Exalted Maiden's Raid Mask",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 923,
+   "Critical Severity": 1210,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3241,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lolthian Circlet_IL2050.png",
+  "dbName": "Lolthian Circlet",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1230,
+   "Defense": 923,
+   "Deflection": 1845
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 7300 Power for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3772,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Executioner Cowl_IL756.png",
+  "dbName": "Manticore Executioner Cowl",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Critical Strike": 227,
+   "Critical Severity": 170,
+   "Awareness": 170,
+   "Defense": 547
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3259,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mastered Duergar Mercenary's Hood_IL1900.png",
+  "dbName": "Mastered Duergar Mercenary's Hood",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1538,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5149,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Protege's Charmed Hat_IL980.png",
+  "dbName": "Protege's Charmed Hat",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Combat Advantage": 294,
+   "Critical Strike": 441,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3209,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Radiant Elven Hood_IL2800.png",
+  "dbName": "Radiant Elven Hood",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Combat Advantage": 2100,
+   "Critical Severity": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spelljammer's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Every 3s in combat, +0.65% Combat Advantage. Max 7 stacks (10 in Wildspace).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3498,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Tempter of the Twilight's Hat_IL1000.png",
+  "dbName": "Tempter of the Twilight's Hat",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Critical Severity": 450,
+   "Defense": 300,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5% for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5484,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wintermarked Hunter Hood_IL5700 (2).png",
+  "dbName": "Wintermarked Hunter Hood",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Breaker",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.8% Critical Strike. Max 5 Stacks: 9% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3166,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Bismuth Tome_IL3400.png",
+  "dbName": "Bismuth Tome",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Accuracy": 3315,
+   "Combat Advantage": 2040
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in the Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 3s in combat, gain a stack of Prismatic Force. Each stack grants role-based bonuses: General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness. Max 10 stacks.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5152,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Codex of Eternal Chains_IL3400.png",
+  "dbName": "Codex of Eternal Chains",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Critical Strike": 3060,
+   "Critical Severity": 1060
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Critical Severity",
+    "amount": 2.5,
+    "description": "Same 2pc set bonus as Omen of Doom partner. Accumulate 18 Charges → Unleashed grants role-based damage/healing boost.",
+    "setName": "Impending Doom",
+    "pieces": 2
+   },
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 2.5,
+    "description": null,
+    "setName": "Impending Doom",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5153,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Codex of Eternal Chains_IL3750.png",
+  "dbName": "Codex of Eternal Chains",
+  "dbItemLevel": 3750,
+  "dbRatingStats": {
+   "Critical Strike": 3375,
+   "Critical Severity": 3375
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Impending Doom (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Accumulate 13 Charges to consume them and become Unleashed. Charged by: 1 charge per Daily power (10s CD), 1 charge per Encounter power, 1 charge per 9s in combat. Unleashed grants: DPS +5% Base Damage Boost, Heal +3% Outgoing Healing. Charges and Unleashed last 15s and are refreshable. Leaving combat removes all Charges.",
+    "setName": "Impending Doom",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5154,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Codex of Eternal Chains_IL4100.png",
+  "dbName": "Codex of Eternal Chains",
+  "dbItemLevel": 4100,
+  "dbRatingStats": {
+   "Critical Strike": 3690,
+   "Critical Severity": 3690
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Impending Doom (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Accumulate 13 Charges to consume them and become Unleashed. Charged by: 1 charge per Daily power (10s CD), 1 charge per Encounter power, 1 charge per 9s in combat. Unleashed grants: DPS +5% Base Damage Boost, Heal +3% Outgoing Healing. Charges and Unleashed last 15s and are refreshable. Leaving combat removes all Charges.",
+    "setName": "Impending Doom",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 3145,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Codex of Eternal Chains_IL4800.png",
+  "dbName": "Codex of Eternal Chains",
+  "dbItemLevel": 4800,
+  "dbRatingStats": {
+   "Accuracy": 3120,
+   "Critical Strike": 2880
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Critical Severity",
+    "amount": 2.5,
+    "description": "Same 2pc set bonus as Omen of Doom partner. Accumulate 18 Charges → Unleashed grants role-based damage/healing boost.",
+    "setName": "Impending Doom",
+    "pieces": 2
+   },
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 2.5,
+    "description": null,
+    "setName": "Impending Doom",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 3168,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crystal Tome_IL3100.png",
+  "dbName": "Crystal Tome",
+  "dbItemLevel": 3100,
+  "dbRatingStats": {
+   "Accuracy": 3022,
+   "Combat Advantage": 1860
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in the Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 3s in combat, gain a stack of Prismatic Force. Each stack grants role-based bonuses: General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness. Max 10 stacks.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 3706,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dragon Bone Grimoire_IL800.png",
+  "dbName": "Dragon Bone Grimoire",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 350,
+   "Critical Strike": 422,
+   "Critical Avoidance": 427
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3252,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Duergar Mercenary's Steel Book_IL1900.png",
+  "dbName": "Duergar Mercenary's Steel Book",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Defense": 1423
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": null,
+    "setName": "Duergar Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 3597,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elk Tribe Noble's Grimoire_IL399.png",
+  "dbName": "Elk Tribe Noble's Grimoire",
+  "dbItemLevel": 399,
+  "dbRatingStats": {
+   "Accuracy": 98,
+   "Combat Advantage": 202,
+   "Critical Strike": 202,
+   "Critical Avoidance": 98
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

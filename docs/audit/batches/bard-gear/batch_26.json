@@ -1,0 +1,550 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Earthen Rapier_IL300.png",
+  "id": 4734,
+  "dbName": "Earthen Rapier",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Incoming Damage",
+    "amount": -5,
+    "description": "2 of Set: Stand still 3s — Incoming Damage -5%. Stacks 3 times. Removed on move.",
+    "setName": "Earthen Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ebonfang Rapier of the Thayan Zealot_IL3300.png",
+  "id": 4615,
+  "dbName": "Ebonfang Rapier of the Thayan Zealot",
+  "dbItemLevel": 3300,
+  "dbRatingStats": {
+   "Critical Strike": 3267,
+   "Forte": 2005
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 10,
+    "description": "2 of Set: While in Thay, Movement Speed +10%. Every 3s in combat, gain Umbral Stride stack: General +0.25% Power, DPS +0.5% Critical Severity, Healer +0.3% Overall Outgoing Healing, Tank +0.4% Awareness. Max 10 stacks.",
+    "setName": "Umbral Stride",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Echo of the Forsaken_IL3800.png",
+  "id": 4613,
+  "dbName": "Echo of the Forsaken",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Combat Advantage": 2508,
+   "Forte": 2308
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 0.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 10,
+    "description": "2 of Set: While in Thay, Movement Speed +10%. 10% chance on encounter power to gain 5% Critical Severity for 6s.",
+    "setName": "Abyssal Prowess",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Encased Magma Saber_IL2700.png",
+  "id": 4622,
+  "dbName": "Encased Magma Saber",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Strike": 1012,
+   "Defense": 1012,
+   "Forte": 2025
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.75
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 7.5,
+    "description": "2 of Set: Gain 7.5% Power while at full health. Decreases relative to missing health. Role bonus: DPS +2.5% CA, Tank +2.5% Defense, Healer +2.5% OH. Fire maps double role bonus + 10% Movement Speed.",
+    "setName": "Living Magma",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Earbleeder_IL350.png",
+  "id": 4943,
+  "dbName": "Exalted Earbleeder",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Earbleeder_IL500.png",
+  "id": 4944,
+  "dbName": "Exalted Earbleeder",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Earbleeder_IL650.png",
+  "id": 4945,
+  "dbName": "Exalted Earbleeder",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Earbleeder_IL800.png",
+  "id": 4946,
+  "dbName": "Exalted Earbleeder",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Pioneer Jamibya_IL350 (2).png",
+  "id": 4714,
+  "dbName": "Exalted Pioneer Jamibya",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 200,
+    "description": "2 of Set: Increased stat per party member: Party 1 = +200 Power; Party 2-5 progressively adds Defense/Accuracy/CS/CritSev.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Pioneer Jamibya_IL350.png",
+  "id": 4714,
+  "dbName": "Exalted Pioneer Jamibya",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 200,
+    "description": "2 of Set: Increased stat per party member: Party 1 = +200 Power; Party 2-5 progressively adds Defense/Accuracy/CS/CritSev.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Primal Rapier_IL350.png",
+  "id": 4933,
+  "dbName": "Exalted Primal Rapier",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Primal Rapier_IL500.png",
+  "id": 4932,
+  "dbName": "Exalted Primal Rapier",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Primal Rapier_IL800.png",
+  "id": 4930,
+  "dbName": "Exalted Primal Rapier",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Skinstripper_IL350.png",
+  "id": 4682,
+  "dbName": "Exalted Skinstripper",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: Start of combat: BDB, OOH, Damage Resistance +1%. Every 5s in combat: +1%. Doubled by Trophy Hunter buff. (Max 10%)",
+    "setName": "Tyrant",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Fey Rapier_IL350.png",
+  "id": 4776,
+  "dbName": "Fey Rapier",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 3,
+    "description": "2 of Set: Fey-Touched on encounter power: 10% AP + 3% BDB + 6% OOH for 10s. (30s CD)",
+    "setName": "Fey",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Fleshtaker_IL350.png",
+  "id": 4698,
+  "dbName": "Fleshtaker",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: Start of combat: BDB and OOH +1% per enemy faced. If facing only 1 enemy, BDB and OOH +3% for 1 minute.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Frostbound Skirmisher's Saber_IL4800.png",
+  "id": 5839,
+  "dbName": "Frostbound Skirmisher's Saber",
+  "dbItemLevel": 4800,
+  "dbRatingStats": {
+   "Accuracy": 4680,
+   "Critical Strike": 4320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Hellfire Engine Jimmy Hook_IL600.png",
+  "id": 4910,
+  "dbName": "Hellfire Engine Jimmy Hook",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 450,
+   "Critical Severity": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Hellfire Engine Remains (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Stamina Regeneration is increased by 15% and your Movement Speed is increased by 15% for 10 seconds. When you kill an enemy, this buff will refresh. When you leave combat, this buff will expire.",
+    "setName": "Hellfire Engine Remains",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Honed Tip of the Blessed Blade_IL650.png",
+  "id": 4634,
+  "dbName": "Honed Tip of the Blessed Blade",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 488,
+   "Critical Severity": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 3,
+    "description": "2 of Set: Sure Edge of the Blessed Blade. Encounter power triggers Blessed: +3% Power/Accuracy/CA + random buff (Blessed Guidance +5% CritStrike or Blessed Insight +7.5% AP gain) for 10s. (30s CD)",
+    "setName": "Blessed Blade",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Honed Tip of the Blessed Blade_IL900.png",
+  "id": 4894,
+  "dbName": "Honed Tip of the Blessed Blade",
+  "dbItemLevel": 900,
+  "dbRatingStats": {
+   "Accuracy": 675,
+   "Critical Severity": 675
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Blessed Blade (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: When you use an encounter power, your weapons become Blessed, increasing your Power, Accuracy, and Combat Advantage by 3% and granting buffs for 10 seconds: Blessed Guidance (+5% Critical Strike), Blessed Might (+7.5% Action Point gain). Your weapons can only be Blessed once every 30 seconds.",
+    "setName": "Blessed Blade",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Howling Rapier_IL300.png",
+  "id": 4726,
+  "dbName": "Howling Rapier",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 30,
+    "description": "2 of Set: Dodge/block/sprint/shadow slip Movement Speed +30% for 2s. (10s CD)",
+    "setName": "Howling Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Hymn of the Forsaken_IL4000.png",
+  "id": 4612,
+  "dbName": "Hymn of the Forsaken",
+  "dbItemLevel": 4000,
+  "dbRatingStats": {
+   "Critical Severity": 3960,
+   "Forte": 2640
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 14,
+    "description": "2 of Set: While in Thay, Movement Speed +14%, Forte +3%. Whenever you use an encounter power, 15% chance to gain 10% Critical Severity for 6s.",
+    "setName": "Abyssal Prowess (Greater)",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Lifeforged Rapier_IL350.png",
+  "id": 4784,
+  "dbName": "Lifeforged Rapier",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Defense",
+    "amount": 5,
+    "description": "2 of Set: Encounter triggers Fortified: Defense +5%, 10% of Defense added to Power for 10s. (30s CD)",
+    "setName": "Lifeforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Meteoric Iron Sabre_IL2450.png",
+  "id": 4883,
+  "dbName": "Meteoric Iron Sabre",
+  "dbItemLevel": 2450,
+  "dbRatingStats": {
+   "Critical Strike": 1838,
+   "Forte": 1838
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Meteoric Fury (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Deal or heal up to 5% additional damage based on the difference in hit point percentage between the player and the target. Role bonus: DPS +2% Base Damage Boost, Tank -4% Incoming Damage, Healer +6% Overall Outgoing Healing. Does not stack. When in Wildspace, role bonus is doubled and Movement Speed is increased by 10%.",
+    "setName": "Meteoric Fury",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mirage Rapier_IL350.png",
+  "id": 4768,
+  "dbName": "Mirage Rapier",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 3,
+    "description": "2 of Set: Encounter triggers Master of Illusion (10s): illusion attacks enemies, +3% damage. (30s CD)",
+    "setName": "Mirage",
+    "pieces": 2
+   }
+  ]
+ }
+]

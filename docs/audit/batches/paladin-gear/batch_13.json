@@ -1,0 +1,544 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elemental Purified Black Ice Helm_IL546.png",
+  "id": 2071,
+  "dbName": "Elemental Purified Black Ice Helm",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 247,
+   "Combat Advantage": 163,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elven Restoration Armet_IL567.png",
+  "id": 2304,
+  "dbName": "Elven Restoration Armet",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Accuracy": 255,
+   "Critical Strike": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elven Ward Armet_IL567.png",
+  "id": 2311,
+  "dbName": "Elven Ward Armet",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Combat Advantage": 255,
+   "Defense": 425,
+   "Deflection": 170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Enchanted Depthforged Armet_IL3200.png",
+  "id": 203,
+  "dbName": "Enchanted Depthforged Armet",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Defense": 2400,
+   "Critical Avoidance": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.4% Stamina Regeneration and 0.8% Awareness. Max 10 Stacks: 4% Stamina Regeneration and 8% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Enchanted Depthforged Helm_IL3200.png",
+  "id": 593,
+  "dbName": "Enchanted Depthforged Helm",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Forte": 2400,
+   "Outgoing Healing": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Channeler's Focus",
+    "stat": "Outgoing Healing",
+    "amount": 0.5,
+    "description": "For every 5 seconds you are in combat, you gain 0.5% Outgoing Healing and 0.5% Power. Max 10 Stacks: 5% Outgoing Healing and 5% Power.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Channeler's Focus",
+    "stat": "Power",
+    "amount": 0.5,
+    "description": "For every 5 seconds you are in combat, you gain 0.5% Outgoing Healing and 0.5% Power. Max 10 Stacks: 5% Outgoing Healing and 5% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Eternal Helm_IL1300.png",
+  "id": 2345,
+  "dbName": "Eternal Helm",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 337,
+   "Combat Advantage": 337,
+   "Defense": 975,
+   "Critical Avoidance": 296
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Exalted Maiden's Ward Helm_IL2050.png",
+  "id": 208,
+  "dbName": "Exalted Maiden's Ward Helm",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 1518,
+   "Incoming Healing": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Word",
+    "stat": null,
+    "amount": null,
+    "description": "Slightly increased threat generation.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Fiend Forged Coif_IL1230.png",
+  "id": 1395,
+  "dbName": "Fiend Forged Coif",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Strike": 646,
+   "Defense": 922,
+   "Critical Avoidance": 277
+  },
+  "dbPercentStats": {
+   "Damage against Demons, Devils, and Fiends": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Hearthhood_IL4700 (2).png",
+  "id": 5382,
+  "dbName": "Frostbound Hearthhood",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3384,
+   "Critical Severity": 3384
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Novice's Mercy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.008 Outgoing Healing and Forte. Max 5 Stacks: 5.04% Outgoing Healing and Forte.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Hearthhood_IL4700.png",
+  "id": 5382,
+  "dbName": "Frostbound Hearthhood",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3384,
+   "Critical Severity": 3384
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Novice's Mercy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.008 Outgoing Healing and Forte. Max 5 Stacks: 5.04% Outgoing Healing and Forte.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Stonehelm_IL4700.png",
+  "id": 5387,
+  "dbName": "Frostbound Stonehelm",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Defense": 1974,
+   "Critical Avoidance": 5102,
+   "Deflect Severity": 2115
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sentinel Reflexes",
+    "stat": null,
+    "amount": null,
+    "description": "When you use an encounter power, you have a 30% chance to gain 5.6% Awareness for 6 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Warhood_IL4700 (2).png",
+  "id": 5390,
+  "dbName": "Frostbound Warhood",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Power": 1974,
+   "Critical Severity": 3384,
+   "Critical Avoidance": 1551
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Surging Empathy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1,320 Critical Severity and Accuracy. Max 5 stacks: 6,600 Critical Severity and Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Warhood_IL4700.png",
+  "id": 5390,
+  "dbName": "Frostbound Warhood",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Power": 1974,
+   "Critical Severity": 3384,
+   "Critical Avoidance": 1551
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Surging Empathy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1,320 Critical Severity and Accuracy. Max 5 stacks: 6,600 Critical Severity and Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Hammerstone Helmet_IL352.png",
+  "id": 2083,
+  "dbName": "Hammerstone Helmet",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 39.6,
+   "Critical Severity": 39.6,
+   "Defense": 264,
+   "Critical Avoidance": 92.4,
+   "Deflection": 92.4
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Helm of the Unyielding Bastion_IL5000.png",
+  "id": 380,
+  "dbName": "Helm of the Unyielding Bastion",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Awareness": 3300,
+   "Critical Avoidance": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Acumen",
+    "stat": null,
+    "amount": null,
+    "description": "Per 5s in combat: +0.4% Awareness, +0.5% Crit Avoid. Max 10 stacks (4%/5%)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Huntsman Restoration Armet_IL672.png",
+  "id": 1765,
+  "dbName": "Huntsman Restoration Armet",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 302,
+   "Critical Strike": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {
+   "Damage against Hunts in Chult": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Great Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Hunts in Chult.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Huntsman Ward Armet_IL672.png",
+  "id": 1761,
+  "dbName": "Huntsman Ward Armet",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {
+   "Damage against Hunts in Chult": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Great Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Hunts in Chult.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Infernal Forged Coif_IL1200.png",
+  "id": 1419,
+  "dbName": "Infernal Forged Coif",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Critical Strike": 630,
+   "Defense": 900,
+   "Critical Avoidance": 270
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Elite Restoration Taj_IL602.png",
+  "id": 1797,
+  "dbName": "League's Elite Restoration Taj",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 542,
+   "Critical Strike": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Elite Ward Taj_IL602.png",
+  "id": 1793,
+  "dbName": "League's Elite Ward Taj",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Combat Advantage": 361,
+   "Defense": 452,
+   "Awareness": 542
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Restoration Taj_IL588.png",
+  "id": 1792,
+  "dbName": "League's Restoration Taj",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Critical Strike": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Ward Taj_IL588.png",
+  "id": 1785,
+  "dbName": "League's Ward Taj",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Defense": 529,
+   "Awareness": 265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Mastered Duergar Mercenary's Goristro Horn_IL1900.png",
+  "id": 890,
+  "dbName": "Mastered Duergar Mercenary's Goristro Horn",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Defense": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pilgrim Restoration Taj_IL644.png",
+  "id": 1779,
+  "dbName": "Pilgrim Restoration Taj",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Combat Advantage": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {
+   "Damage in all of Chult": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Chultan Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage in all of Chult.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pilgrim Ward Taj_IL644.png",
+  "id": 1777,
+  "dbName": "Pilgrim Ward Taj",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Combat Advantage": 193,
+   "Defense": 483,
+   "Awareness": 290
+  },
+  "dbPercentStats": {
+   "Damage in all of Chult": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Chultan Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage in all of Chult.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ }
+]

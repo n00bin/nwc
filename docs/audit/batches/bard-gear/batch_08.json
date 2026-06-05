@@ -1,0 +1,540 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Black Ice Armor_IL512 (3).png",
+  "id": 2081,
+  "dbName": "Black Ice Armor",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.9,
+   "Combat Advantage": 132,
+   "Defense": 384,
+   "Critical Avoidance": 132
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Black Ice Armor_IL512.png",
+  "id": 2081,
+  "dbName": "Black Ice Armor",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.9,
+   "Combat Advantage": 132,
+   "Defense": 384,
+   "Critical Avoidance": 132
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Breastplate of the Eternal Bloom_IL5000.png",
+  "id": 3155,
+  "dbName": "Breastplate of the Eternal Bloom",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Severity": 4050,
+   "Outgoing Healing": 3300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Guardian's Impact",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your targets for more than 15% of your Maximum Hit Points in a single action, you and your 2 closest allies within 25' gain +1.3% Defense and +2% Critical Avoidance for 10 seconds (10 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bregan D'aerthe Assassin's Leathers_IL2000 (2).png",
+  "id": 4008,
+  "dbName": "Bregan D'aerthe Assassin's Leathers",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 1500,
+   "Combat Advantage": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Liquid Luck",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Critical Strike for each player in your team. When moving, gain 5% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bregan D'aerthe Assassin's Leathers_IL2000.png",
+  "id": 4008,
+  "dbName": "Bregan D'aerthe Assassin's Leathers",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 1500,
+   "Combat Advantage": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Liquid Luck",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Critical Strike for each player in your team. When moving, gain 5% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bregan D'aerthe Expert's Cloth_IL2000.png",
+  "id": 3280,
+  "dbName": "Bregan D'aerthe Expert's Cloth",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Critical Severity": 900,
+   "Critical Avoidance": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Menacing Aura",
+    "stat": null,
+    "amount": null,
+    "description": "You gain an aura that decreases enemy Defense, Awareness, and Critical Avoidance by 3.5% for enemies standing within 10ft of you. Multiple of the same aura will not stack.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Company Assault Vest_IL588.png",
+  "id": 4600,
+  "dbName": "Company Assault Vest",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Company Raid Vest_IL588.png",
+  "id": 4596,
+  "dbName": "Company Raid Vest",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crimson Scalebreaker's Rebel Hide_IL1800 (2).png",
+  "id": 4043,
+  "dbName": "Crimson Scalebreaker's Rebel Hide",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Severity": 1080,
+   "Defense": 810,
+   "Control Resistance": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crimson Scalebreaker's Rebel Hide_IL1800.png",
+  "id": 4043,
+  "dbName": "Crimson Scalebreaker's Rebel Hide",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Severity": 1080,
+   "Defense": 810,
+   "Control Resistance": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crimson Scalebreaker's Rejuvenation Raiment_IL1800.png",
+  "id": 3318,
+  "dbName": "Crimson Scalebreaker's Rejuvenation Raiment",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Strike": 810,
+   "Defense": 810,
+   "Outgoing Healing": 1080
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crone's Hide_IL1225 (2).png",
+  "id": 4063,
+  "dbName": "Crone's Hide",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Accuracy": 919,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. (5s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crone's Hide_IL1225.png",
+  "id": 4063,
+  "dbName": "Crone's Hide",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Accuracy": 919,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. (5s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crone's Scalemail_IL1225.png",
+  "id": 3358,
+  "dbName": "Crone's Scalemail",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Defense": 919,
+   "Forte": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuirass of the Lifebloom_IL4700.png",
+  "id": 3162,
+  "dbName": "Cuirass of the Lifebloom",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 4653,
+   "Forte": 3807
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Radiant Empowerment",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your targets for more than 15% of your Maximum Hit Points in a single action, you and your 2 closest allies within 25' gain +3.5% Power for 5 seconds (5 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuirass of the Scarlet Arcanum_IL5000 (2).png",
+  "id": 2712,
+  "dbName": "Cuirass of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuirass of the Scarlet Arcanum_IL5000 (3).png",
+  "id": 2712,
+  "dbName": "Cuirass of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuirass of the Scarlet Arcanum_IL5000.png",
+  "id": 2712,
+  "dbName": "Cuirass of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Demon Forged Hide_IL1215 (2).png",
+  "id": 4116,
+  "dbName": "Demon Forged Hide",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Demon Forged Hide_IL1215.png",
+  "id": 4116,
+  "dbName": "Demon Forged Hide",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Demon Forged Scalemail_IL1215.png",
+  "id": 1415,
+  "dbName": "Demon Forged Scalemail",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Defense": 911,
+   "Deflection": 911
+  },
+  "dbPercentStats": {
+   "Damage against Devils": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Depthcured Doublet_IL3000.png",
+  "id": 3192,
+  "dbName": "Depthcured Doublet",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Critical Severity": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Might",
+    "stat": null,
+    "amount": null,
+    "description": "Damage or heal target >10% Max HP = +1.5% Critical Strike and Critical Severity for 15s. Max 5 stacks: 7.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Depthcured Jerkin_IL3000 (2).png",
+  "id": 2738,
+  "dbName": "Depthcured Jerkin",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Combat Advantage": 2250,
+   "Forte": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Strike and Critical Severity for 15 seconds. Max 5 Stacks: 7.5% Critical Strike and Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Depthcured Jerkin_IL3000.png",
+  "id": 2738,
+  "dbName": "Depthcured Jerkin",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Combat Advantage": 2250,
+   "Forte": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Strike and Critical Severity for 15 seconds. Max 5 Stacks: 7.5% Critical Strike and Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Devil Forged Hide_IL1215 (2).png",
+  "id": 4114,
+  "dbName": "Devil Forged Hide",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

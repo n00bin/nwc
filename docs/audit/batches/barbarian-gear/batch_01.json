@@ -1,0 +1,540 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Adamant Assault Vambraces_IL728.png",
+  "id": 6311,
+  "dbName": "Adamant Assault Vambraces",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Critical Strike": 328,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Adamant Duelist Vambraces_IL728.png",
+  "id": 6315,
+  "dbName": "Adamant Duelist Vambraces",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Critical Severity": 164,
+   "Defense": 546,
+   "Awareness": 164,
+   "Deflect": 218
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Adamant Gladiator Vambraces_IL728.png",
+  "id": 6319,
+  "dbName": "Adamant Gladiator Vambraces",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Critical Strike": 164,
+   "Defense": 546,
+   "Critical Avoidance": 218
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Alliance Soldier's Gauntlets_IL1600.png",
+  "id": 6321,
+  "dbName": "Alliance Soldier's Gauntlets",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Defense": 720,
+   "Awareness": 720,
+   "Control Bonus": 960
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Ward",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Deflect Severity for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Alliance Ward Vambraces_IL546.png",
+  "id": 6327,
+  "dbName": "Alliance Ward Vambraces",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Combat Advantage": 246,
+   "Critical Strike": 164,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Ancient Scalebreaker's Vambraces_IL1700.png",
+  "id": 6331,
+  "dbName": "Ancient Scalebreaker's Vambraces",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 1020,
+   "Defense": 765,
+   "Forte": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "stat": null,
+    "amount": null,
+    "description": "When you have no teammates within 30' of you, your Stamina Regeneration and Control Resistance is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Apprentice's Runed Vambraces_IL965.png",
+  "id": 6337,
+  "dbName": "Apprentice's Runed Vambraces",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Strike": 507,
+   "Defense": 724,
+   "Critical Avoidance": 217
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Astral Raider's Gauntlets_IL2200.png",
+  "id": 727,
+  "dbName": "Astral Raider's Gauntlets",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 990,
+   "Critical Avoidance": 1320,
+   "Control Resistance": 990
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Disdain",
+    "stat": null,
+    "amount": null,
+    "description": "Grants up to 20% bonus Damage when your total item level is being scaled down. Currently: 0% Damage (100%). Disabled in Thay Arena PvP.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bladelord's Assault Gauntlets_IL770 (2).png",
+  "id": 6339,
+  "dbName": "Bladelord's Assault Gauntlets",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Accuracy": 330,
+   "Critical Severity": 247,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 1500. When your health is below 50%, Deflect is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bladelord's Assault Gauntlets_IL770.png",
+  "id": 6339,
+  "dbName": "Bladelord's Assault Gauntlets",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Accuracy": 330,
+   "Critical Severity": 247,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 1500. When your health is below 50%, Deflect is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bladelord's Raid Gauntlets_IL770.png",
+  "id": 6343,
+  "dbName": "Bladelord's Raid Gauntlets",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 247,
+   "Critical Strike": 330,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 1500. When your health is below 50%, Deflect is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bound Vambraces of Halaster's Successor_IL1010.png",
+  "id": 6722,
+  "dbName": "Bound Vambraces of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Accuracy": 379,
+   "Defense": 758,
+   "Deflect": 379
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bound Vambraces of the Successor_IL990.png",
+  "id": 6363,
+  "dbName": "Bound Vambraces of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Accuracy": 371,
+   "Defense": 742,
+   "Deflect": 371
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bregan D'aerthe Mauler's Gauntlets_IL2000.png",
+  "id": 6364,
+  "dbName": "Bregan D'aerthe Mauler's Gauntlets",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Severity": 1500,
+   "Incoming Healing": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Precision",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 375 Accuracy for 10 seconds when you strike an enemy, lose a stack when you are struck. Stacks 20 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bronzewood Assault Bangili_IL784.png",
+  "id": 6368,
+  "dbName": "Bronzewood Assault Bangili",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Critical Strike": 353,
+   "Critical Severity": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bronzewood Raid Bangili_IL784.png",
+  "id": 6376,
+  "dbName": "Bronzewood Raid Bangili",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 353,
+   "Critical Strike": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Company Assault Vambraces_IL588.png",
+  "id": 6401,
+  "dbName": "Company Assault Vambraces",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Severity": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Company Raid Vambraces_IL588.png",
+  "id": 6405,
+  "dbName": "Company Raid Vambraces",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Crimson Scalebreaker's Resolution Vambraces_IL1800.png",
+  "id": 6409,
+  "dbName": "Crimson Scalebreaker's Resolution Vambraces",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Combat Advantage": 1080,
+   "Defense": 810,
+   "Forte": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "stat": null,
+    "amount": null,
+    "description": "When you have no teammates within 30' of you, your Stamina Regeneration and Control Resistance is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Crone's Vambraces_IL1225.png",
+  "id": 6829,
+  "dbName": "Crone's Vambraces",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Critical Strike": 551,
+   "Defense": 919,
+   "Critical Avoidance": 368
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 45 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Demon Forged Vambraces_IL1215.png",
+  "id": 6416,
+  "dbName": "Demon Forged Vambraces",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 547,
+   "Defense": 911,
+   "Critical Avoidance": 364
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Depthforged Guards_IL3000.png",
+  "id": 602,
+  "dbName": "Depthforged Guards",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Defense": 2250,
+   "Awareness": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sudden Intuition",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Awareness and Deflect Severity by 6.5% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Depthforged Vambraces_IL3000.png",
+  "id": 6420,
+  "dbName": "Depthforged Vambraces",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Critical Severity": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Strike is increased by 1.3% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 6.5% Critical Strike",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Devil Forged Vambraces_IL1215.png",
+  "id": 6424,
+  "dbName": "Devil Forged Vambraces",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 547,
+   "Defense": 911,
+   "Critical Avoidance": 364
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Divine Raid Vambraces_IL1230.png",
+  "id": 6427,
+  "dbName": "Divine Raid Vambraces",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Strike": 554,
+   "Defense": 922,
+   "Critical Avoidance": 369
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Max 20 Stacks: 5000 Power",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

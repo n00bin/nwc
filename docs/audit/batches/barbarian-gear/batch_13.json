@@ -1,0 +1,459 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Company Assault Scalemail_IL588.png",
+  "id": 6400,
+  "dbName": "Company Assault Scalemail",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Company Raid Scalemail_IL588.png",
+  "id": 6404,
+  "dbName": "Company Raid Scalemail",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Crimson Scalebreaker's Resolution Plate_IL1800.png",
+  "id": 6408,
+  "dbName": "Crimson Scalebreaker's Resolution Plate",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Strike": 1080,
+   "Defense": 810,
+   "Critical Avoidance": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Crone's Chainmail_IL1225.png",
+  "id": 6410,
+  "dbName": "Crone's Chainmail",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Accuracy": 919,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Cuirass of the Bloodborne Reaper_IL5000.png",
+  "id": 6830,
+  "dbName": "Cuirass of the Bloodborne Reaper",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Strike": 4050,
+   "Forte": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Vital Onslaught",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, your next three strikes from encounter powers will deal 15% more damage and heal you for 1% of your Max HP. This power expires when combat ends. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Cuirass of the Crimson Scythe_IL4700.png",
+  "id": 6831,
+  "dbName": "Cuirass of the Crimson Scythe",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Forte": 2855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle-Hardened Resolve",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Forte is increased by +1.8% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 6% Forte",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Cuirass of the Iron Bulwark_IL4700.png",
+  "id": 385,
+  "dbName": "Cuirass of the Iron Bulwark",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Awareness": 2538,
+   "Critical Avoidance": 4265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reactive Shielding",
+    "stat": null,
+    "amount": null,
+    "description": "On dmg > 15% MaxHP: 20' aura gives allies +1% Defense and +2.5% IH 8s (15s cd)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Demon Forged Chainmail_IL1215.png",
+  "id": 6832,
+  "dbName": "Demon Forged Chainmail",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Depthforged Cuirass_IL3000.png",
+  "id": 603,
+  "dbName": "Depthforged Cuirass",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Awareness": 2250,
+   "Critical Avoidance": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Boar's Determination",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 7.5% Awareness and 5% Stamina Regeneration for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Depthforged Plate_IL3000.png",
+  "id": 6419,
+  "dbName": "Depthforged Plate",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Combat Advantage": 2250,
+   "Forte": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Strike and Critical Severity for 15 seconds. Max 5 Stacks: 7.5% Critical Strike and Critical Severity",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Devil Forged Chainmail_IL1215.png",
+  "id": 6421,
+  "dbName": "Devil Forged Chainmail",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Divine Raid Armor_IL1230.png",
+  "id": 6425,
+  "dbName": "Divine Raid Armor",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Severity": 922,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dragonflight Assault Scalemail_IL588.png",
+  "id": 6437,
+  "dbName": "Dragonflight Assault Scalemail",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dragonflight Raid Scalemail_IL588.png",
+  "id": 6440,
+  "dbName": "Dragonflight Raid Scalemail",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dragonsteel Plate_IL1900.png",
+  "id": 6444,
+  "dbName": "Dragonsteel Plate",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1140,
+   "Defense": 855,
+   "Deflect": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Power",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Power and Combat Advantage for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dungeon Raider's Chainmail_IL940.png",
+  "id": 6455,
+  "dbName": "Dungeon Raider's Chainmail",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Severity": 705,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Edged Breastplate of Halaster's Successor_IL1010.png",
+  "id": 6470,
+  "dbName": "Edged Breastplate of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Critical Severity": 758,
+   "Defense": 758
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain .5% Defense, to the max of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Edged Breastplate of the Successor_IL990.png",
+  "id": 6471,
+  "dbName": "Edged Breastplate of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Critical Severity": 742,
+   "Defense": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain .5% Defense, to the max of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Alliance Ward Scalemail_IL554.png",
+  "id": 6474,
+  "dbName": "Elemental Alliance Ward Scalemail",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 249,
+   "Combat Advantage": 166,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Dragonflight Assault Scalemail_IL596.png",
+  "id": 6479,
+  "dbName": "Elemental Dragonflight Assault Scalemail",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Critical Strike": 268,
+   "Critical Severity": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Dragonflight Raid Scalemail_IL596.png",
+  "id": 6482,
+  "dbName": "Elemental Dragonflight Raid Scalemail",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Accuracy": 268,
+   "Combat Advantage": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Elven Ward Scalemail_IL575.png",
+  "id": 6486,
+  "dbName": "Elemental Elven Ward Scalemail",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Combat Advantage": 172,
+   "Critical Strike": 259,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Lionsmane Duelist Scalemail_IL574.png",
+  "id": 6490,
+  "dbName": "Elemental Lionsmane Duelist Scalemail",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Defense": 430,
+   "Awareness": 114,
+   "Deflect": 317
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Lionsmane Executioner Scalemail_IL574.png",
+  "id": 6494,
+  "dbName": "Elemental Lionsmane Executioner Scalemail",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Combat Advantage": 172,
+   "Critical Strike": 129,
+   "Critical Severity": 129,
+   "Defense": 430
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elven Ward Scalemail_IL567.png",
+  "id": 6498,
+  "dbName": "Elven Ward Scalemail",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Critical Strike": 255,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

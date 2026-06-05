@@ -1,0 +1,368 @@
+[
+ {
+  "id": 1945,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Armor of Quick Recovery_IL651.png",
+  "dbName": "Armor of Quick Recovery",
+  "dbItemLevel": 651,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Critical Strike": 354,
+   "Defense": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Encounter Reprieve",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5317,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Chitters's Fangs_IL672.png",
+  "dbName": "Chitters's Fangs",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 126,
+   "Critical Strike": 188,
+   "Defense": 504,
+   "Critical Avoidance": 190
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 1846,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Stalkwrapped Armor_IL672.png",
+  "dbName": "Stalkwrapped Armor",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Defense": 504,
+   "Critical Avoidance": 302,
+   "Deflection": 202
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Victim's Resistance",
+    "stat": null,
+    "amount": null,
+    "description": "When you are hit at 25% health or lower, your Critical Avoidance increases 15% for 5 seconds. If you have less than 3000 Critical Avoidance, you will gain 2000 for 5 seconds instead. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 1845,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Vined Deathdelayer_IL672.png",
+  "dbName": "Vined Deathdelayer",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Defense": 504,
+   "Critical Avoidance": 504,
+   "Deflection": 202
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Victim's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "When you are hit at 25% health or lower, your Deflect increases 15% for 5 seconds. If you have less than 10000 Deflect, you will gain 7500 for 5 seconds instead. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 1906,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bonespurs_IL672.png",
+  "dbName": "Bonespurs",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 202,
+   "Critical Severity": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Tenacity",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Critical Severity for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 1855,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Deathstriders_IL672.png",
+  "dbName": "Deathstriders",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Severity": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Might",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are full, your Power is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5264,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Black Draconic Guise_IL630.png",
+  "dbName": "Black Draconic Guise",
+  "dbItemLevel": 630,
+  "dbRatingStats": {
+   "Critical Strike": 472,
+   "Critical Avoidance": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6241,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Wintermarked Skirmisher Barbute_IL5700.png",
+  "dbName": "Wintermarked Skirmisher Barbute",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Accuracy": 3705,
+   "Combat Advantage": 2280,
+   "Forte": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Steady Precision",
+    "stat": null,
+    "amount": null,
+    "description": "For every 8 seconds you are in combat, gain +1% Accuracy and +0.3% Recharge Speed. Max 7 Stacks: +7% Accuracy and +2.1% Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2288,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Elemental Elven Ward Necklace_IL575.png",
+  "dbName": "Elemental Elven Ward Necklace",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Combat Advantage": 345,
+   "Critical Avoidance": 345
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2358,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Lostmauth's Hoard Necklace_IL600.png",
+  "dbName": "Lostmauth's Hoard Necklace",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Combat Advantage": 300,
+   "Critical Strike": 300,
+   "Critical Severity": 301
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5322,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Coldsilver Halo of Mending_IL5700.png",
+  "dbName": "Coldsilver Halo of Mending",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Severity": 10260,
+   "Forte": 7895
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Circular Healing",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are healed in combat, gain 6% Outgoing Healing for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5405,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Frostsilver Hoop of Tenacity_IL6000 (2).png",
+  "dbName": "Frostsilver Hoop of Tenacity",
+  "dbItemLevel": 6000,
+  "dbRatingStats": {
+   "Awareness": 7200,
+   "Critical Avoidance": 9900
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5,
+   "Forte": 5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Charging Bull",
+    "stat": null,
+    "amount": null,
+    "description": "When you have been running for 1 seconds you generate threat around you every second as long as you continue running. +3% Forte.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 1817,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\League's Elite Ward Ring_IL602.png",
+  "dbName": "League's Elite Ward Ring",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Critical Avoidance": 1354,
+   "Defense": 452,
+   "Deflection": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 1934,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ring of the Shadowstalker +5_IL714.png",
+  "dbName": "Ring of the Shadowstalker +5",
+  "dbItemLevel": 714,
+  "dbRatingStats": {
+   "Combat Advantage": 516,
+   "Critical Severity": 1607
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Fury",
+    "stat": null,
+    "amount": null,
+    "description": "Your Powers deal 3% more damage when you are 25' or closer to your target.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2615,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Rosegold Assault Ring_IL728.png",
+  "dbName": "Rosegold Assault Ring",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 546,
+   "Critical Severity": 1638
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Critical Strike is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 1842,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Cincture of Atropal Essence_IL350.png",
+  "dbName": "Cincture of Atropal Essence",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 175,
+   "Critical Severity": 175,
+   "Critical Avoidance": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2109,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Demogorgon's Girdle of Might_IL300.png",
+  "dbName": "Demogorgon's Girdle of Might",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Critical Strike": 225,
+   "Deflection": 225
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3693,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Assault Wristguards_IL546.png",
+  "dbName": "Alliance Assault Wristguards",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Strike": 164,
+   "Critical Severity": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3689,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Raid Wristguards_IL546.png",
+  "dbName": "Alliance Raid Wristguards",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Critical Strike": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3323,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ancient Scalebreaker's Cuffs_IL1700.png",
+  "dbName": "Ancient Scalebreaker's Cuffs",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Severity": 1020,
+   "Defense": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "stat": null,
+    "amount": null,
+    "description": "When you have no teammates within 30' of you, your Stamina Regeneration and Control Resistance is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

@@ -1,0 +1,538 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Reinforced Dragonflight Assault Mask_IL1400.png",
+  "id": 4434,
+  "dbName": "Reinforced Dragonflight Assault Mask",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Accuracy": 630,
+   "Critical Severity": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Reinforced Dragonflight Raid Mask_IL1400.png",
+  "id": 4430,
+  "dbName": "Reinforced Dragonflight Raid Mask",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Combat Advantage": 420,
+   "Critical Strike": 630,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Runefrost Skirmisher Barbute_IL5400.png",
+  "id": 6211,
+  "dbName": "Runefrost Skirmisher Barbute",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Power": 2835,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Strategist's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.7% Combat Advantage. Max 10 Stacks: 7% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Starhide Cap_IL2700.png",
+  "id": 3973,
+  "dbName": "Starhide Cap",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Severity": 2025,
+   "Forte": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maximized Opportunity",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Combat Advantage is increased by 7%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Stealer of the Star's Hood_IL1000.png",
+  "id": 4147,
+  "dbName": "Stealer of the Star's Hood",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Strike": 525,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 1% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\The Dark Maiden's Assault Shroud_IL2000.png",
+  "id": 4015,
+  "dbName": "The Dark Maiden's Assault Shroud",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 1% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Trapper of the Twilight's Hood_IL1000.png",
+  "id": 4146,
+  "dbName": "Trapper of the Twilight's Hood",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Critical Severity": 450,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5% for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Ultraviolet Elven Hat_IL2900.png",
+  "id": 2750,
+  "dbName": "Ultraviolet Elven Hat",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Combat Advantage": 2175,
+   "Critical Strike": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max Stacks: 10.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Umbral Duelist Mask_IL728.png",
+  "id": 4589,
+  "dbName": "Umbral Duelist Mask",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Critical Strike": 164,
+   "Defense": 546,
+   "Awareness": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Accuracy. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Umbral Executioner Mask_IL728.png",
+  "id": 4587,
+  "dbName": "Umbral Executioner Mask",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Critical Strike": 164,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Accuracy. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Weathered Wood Hood_IL1300.png",
+  "id": 4058,
+  "dbName": "Weathered Wood Hood",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 585,
+   "Defense": 975,
+   "Control Bonus": 390
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Aboleth Dagger_IL350.png",
+  "id": 4328,
+  "dbName": "Aboleth Dagger",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Outgoing Damage",
+    "amount": 4,
+    "description": "2 of Set: Encounter power triggers Far-Influenced: Outgoing Damage +4% + random buff (Relentless +2500 CritStrike, Tainted Attack DoT, Impeding Thought death explosion) for 10s. (30s CD)",
+    "setName": "Aboleth",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bismuth Dagger_IL3400.png",
+  "id": 3927,
+  "dbName": "Bismuth Dagger",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Critical Strike": 3060,
+   "Critical Severity": 3060,
+   "Combat Advantage": 3060
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in the Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 3s in combat, gain a stack of Prismatic Force. Each stack: General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness. Max 10 stacks.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Blaspheme Cleaver_IL1900.png",
+  "id": 3997,
+  "dbName": "Blaspheme Cleaver",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 570,
+   "Critical Strike": 1425,
+   "Critical Severity": 855
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 0.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 7500,
+    "description": "2 of Set: Gain 7500 Power/Defense/Outgoing Healing depending on role for 15s when you dodge/block/sprint/shadow slip (30s CD). When dealing CA damage, 10% chance to gain 5% Base Damage Boost/-5% Incoming Damage/5% OOH for 15s (30s CD).",
+    "setName": "Blaspheme",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bloodbrass Dagger_IL2750.png",
+  "id": 3935,
+  "dbName": "Bloodbrass Dagger",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Critical Strike": 2475,
+   "Critical Severity": 2475
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in the Pirates' Skyhold, your Movement Speed is increased by 12%. Every 3s in combat, gain a stack of Freebooter's Will. Each stack: General +0.20% Power, DPS +0.35% Critical Severity, Healer +0.3% Overall Outgoing Healing, Tank +0.3% Awareness. Max 10 stacks.",
+    "setName": "Skyhold Arms",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Burning Dagger_IL300.png",
+  "id": 4403,
+  "dbName": "Burning Dagger",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Action Points",
+    "amount": 25,
+    "description": "2 of Set: When using a daily power, 25% chance to immediately restore your AP.",
+    "setName": "Burning Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Celestial Point of Praise_IL650.png",
+  "id": 4074,
+  "dbName": "Celestial Point of Praise",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 488,
+   "Critical Severity": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Base Damage Boost",
+    "amount": 7.5,
+    "description": "2 of Set: Use encounter/daily during combat to gain Divine Charge stacks (15s each). 5 stacks consume and grant Divine Fury for 30s: +7.5% Base Damage Boost, +7.5% Overall Outgoing Healing. Refreshable.",
+    "setName": "Celestial",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Crystal Dagger_IL3100.png",
+  "id": 3929,
+  "dbName": "Crystal Dagger",
+  "dbItemLevel": 3100,
+  "dbRatingStats": {
+   "Critical Strike": 2790,
+   "Critical Severity": 2790
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in the Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 3s in combat, gain a stack of Prismatic Force. Each stack: General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness. Max 10 stacks.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dagger of Elemental Fire_IL300.png",
+  "id": 4423,
+  "dbName": "Dagger of Elemental Fire",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Combat Advantage": 150,
+   "Critical Strike": 150,
+   "Critical Severity": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Critical Strike",
+    "amount": 0,
+    "description": "2 of Set: Dagger of Elemental Fire + Elemental Fire Stiletto. Augments artifact properties.",
+    "setName": "Dagger of Elemental Fire",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dragon Bone Whirl_IL800.png",
+  "id": 4428,
+  "dbName": "Dragon Bone Whirl",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 422,
+   "Critical Strike": 422,
+   "Critical Avoidance": 355
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Drowned Dagger_IL300.png",
+  "id": 4411,
+  "dbName": "Drowned Dagger",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Heal Self",
+    "amount": 50,
+    "description": "2 of Set: When struck, Heal for 50% of Max HP over next 30s. (30s CD) Disabled in Thay Arena PvP.",
+    "setName": "Drowned Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Duergar Mercenary's Steel Dagger_IL1900.png",
+  "id": 3991,
+  "dbName": "Duergar Mercenary's Steel Dagger",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies are granted the following: +2% Base Damage Boost, +2% Overall Outgoing Healing, -2% Incoming Damage. This effect may stack up to 5 times when allies are equipped with a set of similar weapons.",
+    "setName": "Duergar Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Durgarn Thord Dagger_IL1850.png",
+  "id": 4034,
+  "dbName": "Durgarn Thord Dagger",
+  "dbItemLevel": 1850,
+  "dbRatingStats": {
+   "Critical Strike": 1388,
+   "Critical Severity": 1388
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Recharge Speed",
+    "amount": 1,
+    "description": "2 of Set: Use encounter/daily during combat to gain Scalebreaker's Wrath stacks. Each stack 20s: DPS +1% Recharge Speed and Action Point Gain, Tank +1% Stamina Regen and Action Point Gain, Healer +1% Movement Speed and Action Point Gain. 6 stacks empower 30s: DPS +7.5% BDB, Tank -7.5% Incoming Damage, Healer +7.5% OOH.",
+    "setName": "Scalebreaker's Wrath",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Earthen Dagger_IL300.png",
+  "id": 4395,
+  "dbName": "Earthen Dagger",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Incoming Damage",
+    "amount": -5,
+    "description": "2 of Set: Stand still for 3s — Incoming Damage -5%. Stacks 3 times. Removed on move.",
+    "setName": "Earthen Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Elk Tribe Noble's Poniard_IL399.png",
+  "id": 4353,
+  "dbName": "Elk Tribe Noble's Poniard",
+  "dbItemLevel": 399,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Strike": 202,
+   "Critical Severity": 98,
+   "Critical Avoidance": 98
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

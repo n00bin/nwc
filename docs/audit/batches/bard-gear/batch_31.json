@@ -1,0 +1,329 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Twisted Cords_IL500.png",
+  "id": 5116,
+  "dbName": "Twisted Cords",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "CombatAdvantage": 375,
+   "CriticalStrike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Twisted Cords_IL600.png",
+  "id": 5117,
+  "dbName": "Twisted Cords",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 225,
+   "CombatAdvantage": 450,
+   "CriticalStrike": 225
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Vistani Lute_IL350.png",
+  "id": 4670,
+  "dbName": "Vistani Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Defense",
+    "amount": 500,
+    "description": "2 of Set: +500 Defense, +5% Movement Speed.",
+    "setName": "Vistani",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Wintermarked Frostlute_IL5800.png",
+  "id": 6238,
+  "dbName": "Wintermarked Frostlute",
+  "dbItemLevel": 5800,
+  "dbRatingStats": {
+   "Critical Strike": 3480,
+   "Power": 2030,
+   "Forte": 2610
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Wootz Lute_IL350.png",
+  "id": 4722,
+  "dbName": "Wootz Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 2000,
+    "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds.",
+    "setName": "Chultan",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Xaryxian Lute_IL2750.png",
+  "id": 4625,
+  "dbName": "Xaryxian Lute",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Accuracy": 2062,
+   "Forte": 2062
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Overall Outgoing Healing",
+    "amount": 5,
+    "description": "2 of Set: +5% Overall Outgoing Healing, -5% Incoming Damage. In Wildspace, Movement Speed +12%. Each Darklight stack: DPS +0.6% BDB, Tank -0.6% Incoming Damage, Healer +0.6% OOH. Max 10 stacks. Doubled in Wildspace.",
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Darklake Ward Ring_IL1700.png",
+  "id": 4023,
+  "dbName": "Darklake Ward Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Avoidance": 3825,
+   "Deflection": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charging Bull",
+    "stat": null,
+    "amount": null,
+    "description": "When you have been running for 1 second, you generate threat around you every second as long as you continue running.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Scintillant Restoration Ring_IL1700.png",
+  "id": 4024,
+  "dbName": "Scintillant Restoration Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1275,
+   "Outgoing Healing": 3825
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Gift",
+    "stat": null,
+    "amount": null,
+    "description": "Your current Hit Points increases your Outgoing Healing, up to a maximum of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shroomwood Raid Ring_IL1700.png",
+  "id": 4025,
+  "dbName": "Shroomwood Raid Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 1275,
+   "Critical Strike": 3825
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Severity for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Darklake Sash_IL1700.png",
+  "id": 4032,
+  "dbName": "Darklake Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Avoidance": 1698,
+   "Deflection": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Scintillant Sash +1_IL1800.png",
+  "id": 6253,
+  "dbName": "Scintillant Sash +1",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Accuracy": 899,
+   "Combat Advantage": 899,
+   "Critical Strike": 902
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Scintillant Sash_IL1700.png",
+  "id": 4030,
+  "dbName": "Scintillant Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 849,
+   "Combat Advantage": 849,
+   "Critical Strike": 852
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shroomwood Sash +1_IL1800.png",
+  "id": 6252,
+  "dbName": "Shroomwood Sash +1",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Combat Advantage": 899,
+   "Critical Strike": 902,
+   "Critical Severity": 899
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shroomwood Sash_IL1700 (2).png",
+  "id": 4029,
+  "dbName": "Shroomwood Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 849,
+   "Critical Strike": 852,
+   "Critical Severity": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shroomwood Sash_IL1700.png",
+  "id": 4029,
+  "dbName": "Shroomwood Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 849,
+   "Critical Strike": 852,
+   "Critical Severity": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Spiked Sash_IL1700.png",
+  "id": 4031,
+  "dbName": "Spiked Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1701,
+   "Outgoing Healing": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ }
+]

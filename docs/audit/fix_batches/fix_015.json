@@ -1,0 +1,335 @@
+[
+ {
+  "id": 3458,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Apprentice's Runed Wristguard_IL965.png",
+  "dbName": "Apprentice's Runed Wristguard",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Critical Severity": 414,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3235,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Astral Raider's Sleeves_IL2200.png",
+  "dbName": "Astral Raider's Sleeves",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Critical Severity": 1320,
+   "Defense": 990,
+   "Incoming Healing": 1980
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Furor",
+    "stat": null,
+    "amount": null,
+    "description": "Grants up to 20% bonus Damage when your total item level is being scaled down.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3873,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Company Assault Wristguards_IL588.png",
+  "dbName": "Company Assault Wristguards",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3721,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dinohide Assault Shabas_IL784.png",
+  "dbName": "Dinohide Assault Shabas",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 353,
+   "Critical Severity": 215,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3841,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dragonflight Assault Wristguards_IL588.png",
+  "dbName": "Dragonflight Assault Wristguards",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3837,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dragonflight Raid Wristguards_IL588.png",
+  "dbName": "Dragonflight Raid Wristguards",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3685,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Alliance Assault Wristguards_IL554.png",
+  "dbName": "Elemental Alliance Assault Wristguards",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 249,
+   "Critical Severity": 166,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3681,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Alliance Raid Wristguards_IL554.png",
+  "dbName": "Elemental Alliance Raid Wristguards",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 166,
+   "Combat Advantage": 249,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3408,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lion Guard's Mystic Wristguards_IL1250.png",
+  "dbName": "Lion Guard's Mystic Wristguards",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Severity": 562,
+   "Defense": 938
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy. Lose a stack when you are struck. Max 20 stacks: 5000 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3409,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lion Guard's Raid Wristguards_IL1250.png",
+  "dbName": "Lion Guard's Raid Wristguards",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Critical Strike": 469,
+   "Defense": 938,
+   "Deflection": 469
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy. Lose a stack when you are struck. Max 20 stacks: 5000 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3770,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Assault Wristguards_IL756.png",
+  "dbName": "Manticore Assault Wristguards",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Critical Strike": 340,
+   "Critical Severity": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3778,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Duelist Wristguards_IL756.png",
+  "dbName": "Manticore Duelist Wristguards",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 227,
+   "Combat Advantage": 170,
+   "Critical Strike": 170,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3774,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Executioner Wristguards_IL756.png",
+  "dbName": "Manticore Executioner Wristguards",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Critical Strike": 227,
+   "Critical Severity": 170,
+   "Awareness": 170,
+   "Defense": 547
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3861,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Umbral Duelist Wristguards_IL728.png",
+  "dbName": "Umbral Duelist Wristguards",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Combat Advantage": 164,
+   "Critical Strike": 164,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5487,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wintermarked Swiftguards_IL5700 (2).png",
+  "dbName": "Wintermarked Swiftguards",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Eagle's Mastery (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your Power, Critical Strike, and Critical Severity are increased by 0.6% for 10 seconds. Max 5 Stacks: 3% Power, Critical Strike, and Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3692,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Assault Longcoat_IL546.png",
+  "dbName": "Alliance Assault Longcoat",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Strike": 164,
+   "Critical Severity": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3688,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Raid Longcoat_IL546.png",
+  "dbName": "Alliance Raid Longcoat",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Critical Strike": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3234,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Astral Raider's Coat_IL2200.png",
+  "dbName": "Astral Raider's Coat",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Critical Strike": 1320,
+   "Defense": 990,
+   "Critical Avoidance": 1980
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defying Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 2% Combat Advantage for each enemy you are engaged in battle within 100'. (Max of 10 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3868,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Company Raid Longcoat_IL588.png",
+  "dbName": "Company Raid Longcoat",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3431,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Demon Forged Robe_IL1215.png",
+  "dbName": "Demon Forged Robe",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+7% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

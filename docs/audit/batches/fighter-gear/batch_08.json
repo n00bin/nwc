@@ -1,0 +1,484 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Infernal Forged Sallet_IL1200.png",
+  "id": 6611,
+  "dbName": "Infernal Forged Sallet",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Combat Advantage": 360,
+   "Critical Strike": 540,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Lolthian Barbute_IL2050.png",
+  "id": 6659,
+  "dbName": "Lolthian Barbute",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 923,
+   "Critical Severity": 1230,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 7500 Power for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Mastered Duergar Mercenary's Goristro Horn_IL1900.png",
+  "id": 890,
+  "dbName": "Mastered Duergar Mercenary's Goristro Horn",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Defense": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Mastered Duergar Mercenary's Halfhelm_IL1900.png",
+  "id": 6669,
+  "dbName": "Mastered Duergar Mercenary's Halfhelm",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Critical Strike": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Protege's Visor Helm_IL980.png",
+  "id": 6715,
+  "dbName": "Protege's Visor Helm",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Combat Advantage": 294,
+   "Critical Strike": 441,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Pulsar Armet_IL2600.png",
+  "id": 209,
+  "dbName": "Pulsar Armet",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Accuracy": 1170,
+   "Defense": 950,
+   "Awareness": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 2% Stamina Regeneration for 10 seconds. Max 5 Stacks: 10% Stamina Regeneration.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Radiant Elven Helm_IL2800.png",
+  "id": 693,
+  "dbName": "Radiant Elven Helm",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Awareness": 2100,
+   "Incoming Healing": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.5% Stamina Regeneration and 0.35% Awareness. Max Stacks: 7 (10 in Wildspace).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Runefrost Bulwark Helm_IL5400.png",
+  "id": 5356,
+  "dbName": "Runefrost Bulwark Helm",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Defense": 2835,
+   "Awareness": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, gain 0.4% Stamina Regeneration and 0.8% Awareness. Max 10 Stacks: 4% Stamina Regeneration and 8% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Runefrost Ravager Helm_IL5400.png",
+  "id": 6717,
+  "dbName": "Runefrost Ravager Helm",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Combat Advantage": 3240,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Strategist's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.7% Combat Advantage. Max 10 Stacks: 7% Combat Advantage",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Sallet of the Spy's Guild_IL940.png",
+  "id": 6721,
+  "dbName": "Sallet of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Starforged Barbute_IL2700.png",
+  "id": 6739,
+  "dbName": "Starforged Barbute",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Severity": 2025,
+   "Forte": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maximized Opportunity",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with one enemy, your Combat Advantage is increased by 7%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Starforged Helm_IL2700.png",
+  "id": 712,
+  "dbName": "Starforged Helm",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Defense": 2025,
+   "Critical Avoidance": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Boar's Determination",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 7.5% Awareness and 5% Stamina Regeneration for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\The Dark Maiden's Resolution Barbute_IL2000.png",
+  "id": 6758,
+  "dbName": "The Dark Maiden's Resolution Barbute",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 900,
+   "Critical Severity": 1200,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 1% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\The Dark Maiden's Ward Helm_IL2000.png",
+  "id": 937,
+  "dbName": "The Dark Maiden's Ward Helm",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 1500,
+   "Incoming Healing": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Word",
+    "stat": null,
+    "amount": null,
+    "description": "Slightly increased threat generation.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Ultraviolet Elven Armet_IL2900.png",
+  "id": 213,
+  "dbName": "Ultraviolet Elven Armet",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Awareness": 2175,
+   "Incoming Healing": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.4% Stamina Regeneration and 0.8% Awareness. Max 10 Stacks: 4% Stamina Regeneration and 8% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Weathered Wood Sallet_IL1300.png",
+  "id": 6814,
+  "dbName": "Weathered Wood Sallet",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 390,
+   "Defense": 975,
+   "Control Resist": 585
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmishers Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Wintermarked Bulwark Helm_IL5700.png",
+  "id": 5348,
+  "dbName": "Wintermarked Bulwark Helm",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Awareness": 3420,
+   "Critical Avoidance": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Acumen",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, gain +0.4% Awareness and +0.5% Critical Avoidance. You lose all stacks if you leave combat. Max 10 Stacks: 4% Awareness and 5% Critical Avoidance.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Wintermarked Ravager Helm_IL5700.png",
+  "id": 6818,
+  "dbName": "Wintermarked Ravager Helm",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Combat Advantage": 3420,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Balanced Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "+7% Combat Advantage when your health is above 60%. +6% Critical Strike when your health is below 60%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Golden Dragon Swordmaster_IL300.png",
+  "id": 2351,
+  "dbName": "Golden Dragon Swordmaster",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Combat Advantage": 150,
+   "Critical Severity": 150,
+   "Critical Avoidance": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Equip",
+    "stat": null,
+    "amount": null,
+    "description": "Increase the damage done by Reave by 10%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Hammerstone Warhammer_IL352.png",
+  "id": 2087,
+  "dbName": "Hammerstone Warhammer",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 79.2,
+   "Critical Severity": 79.2,
+   "Critical Avoidance": 185,
+   "Deflection": 185
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Vanguard of the Golden Dragon_IL300.png",
+  "id": 2352,
+  "dbName": "Vanguard of the Golden Dragon",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Combat Advantage": 150,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Equip",
+    "stat": null,
+    "amount": null,
+    "description": "Increase the damage done by Threatening Rush by 10%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Dragon Bone Shield_IL800.png",
+  "id": 2361,
+  "dbName": "Dragon Bone Shield",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Awareness": 350,
+   "Critical Avoidance": 427,
+   "Deflection": 422
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Elk Tribe Noble's Roundshield_IL399.png",
+  "id": 2089,
+  "dbName": "Elk Tribe Noble's Roundshield",
+  "dbItemLevel": 399,
+  "dbRatingStats": {
+   "Accuracy": 118,
+   "Critical Avoidance": 236,
+   "Deflection": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Hammerstone Shield_IL352.png",
+  "id": 2088,
+  "dbName": "Hammerstone Shield",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 79.2,
+   "Critical Severity": 79.2,
+   "Critical Avoidance": 185,
+   "Deflection": 185
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

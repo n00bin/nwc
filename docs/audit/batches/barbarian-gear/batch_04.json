@@ -1,0 +1,424 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\The Dark Maiden's Ward Guards_IL2000.png",
+  "id": 939,
+  "dbName": "The Dark Maiden's Ward Guards",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 900,
+   "Deflect Severity": 900,
+   "Forte": 1200
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Titansteel Assault Vambraces_IL756.png",
+  "id": 6729,
+  "dbName": "Titansteel Assault Vambraces",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Critical Strike": 340,
+   "Critical Severity": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Titansteel Duelist Vambraces_IL756.png",
+  "id": 6781,
+  "dbName": "Titansteel Duelist Vambraces",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Critical Severity": 170,
+   "Defense": 567,
+   "Awareness": 170,
+   "Deflect": 227
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Titansteel Gladiator Vambraces_IL756.png",
+  "id": 6785,
+  "dbName": "Titansteel Gladiator Vambraces",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Critical Strike": 170,
+   "Defense": 567,
+   "Critical Avoidance": 227
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Titansteel Raid Vambraces_IL756.png",
+  "id": 6789,
+  "dbName": "Titansteel Raid Vambraces",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Critical Strike": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Ultraviolet Elven Gauntlets_IL2900.png",
+  "id": 687,
+  "dbName": "Ultraviolet Elven Gauntlets",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Awareness": 2175,
+   "Critical Avoidance": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sudden Intuition",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Awareness and Deflect Severity by 7.5% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Vambraces of the Iron Bulwark_IL4700.png",
+  "id": 204,
+  "dbName": "Vambraces of the Iron Bulwark",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Awareness": 2538,
+   "Critical Avoidance": 4265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Insight",
+    "stat": null,
+    "amount": null,
+    "description": "Per 6s in combat: +0.4% Awareness, +0.1% Power to allies in 20'. Max 8 (3.2% / 0.8% per ally)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Vambraces of the Spy's Guild_IL940.png",
+  "id": 6797,
+  "dbName": "Vambraces of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 423,
+   "Defense": 705,
+   "Critical Avoidance": 282
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Weathered Wood Vambraces_IL1300.png",
+  "id": 6815,
+  "dbName": "Weathered Wood Vambraces",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Critical Strike": 585,
+   "Defense": 975,
+   "Critical Avoidance": 390
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wintermarked Bulwark Vambraces_IL5700.png",
+  "id": 5351,
+  "dbName": "Wintermarked Bulwark Vambraces",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Defense": 2992,
+   "Critical Strike": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reptilial Reflex",
+    "stat": null,
+    "amount": null,
+    "description": "On Critical Strike against you, reflect 10% of your Maximum Hit Points as damage and gain +7.5% Awareness for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wintermarked Ravager Vambraces_IL5700.png",
+  "id": 6819,
+  "dbName": "Wintermarked Ravager Vambraces",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 3848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Consuming Rage",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Severity is increased by 1.8% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 9% Critical Severity",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Aboleth Greatsword_IL350.png",
+  "id": 6301,
+  "dbName": "Aboleth Greatsword",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Aboleth Greatsword_IL500.png",
+  "id": 6302,
+  "dbName": "Aboleth Greatsword",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Aboleth Greatsword_IL650.png",
+  "id": 6303,
+  "dbName": "Aboleth Greatsword",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Aboleth Greatsword_IL800.png",
+  "id": 6304,
+  "dbName": "Aboleth Greatsword",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Aboleth Sword Knot_IL350.png",
+  "id": 6305,
+  "dbName": "Aboleth Sword Knot",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Aboleth Sword Knot_IL500.png",
+  "id": 6306,
+  "dbName": "Aboleth Sword Knot",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Aboleth Sword Knot_IL650.png",
+  "id": 6307,
+  "dbName": "Aboleth Sword Knot",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Aboleth Sword Knot_IL800.png",
+  "id": 6308,
+  "dbName": "Aboleth Sword Knot",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bloodcatcher_IL350.png",
+  "id": 6349,
+  "dbName": "Bloodcatcher",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bloodcatcher_IL500.png",
+  "id": 6350,
+  "dbName": "Bloodcatcher",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bloodcatcher_IL650.png",
+  "id": 6351,
+  "dbName": "Bloodcatcher",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bloodcatcher_IL800.png",
+  "id": 6352,
+  "dbName": "Bloodcatcher",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bloodspiller_IL350.png",
+  "id": 6356,
+  "dbName": "Bloodspiller",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bloodspiller_IL500.png",
+  "id": 6357,
+  "dbName": "Bloodspiller",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

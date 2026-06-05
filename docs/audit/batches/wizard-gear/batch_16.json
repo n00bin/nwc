@@ -1,0 +1,538 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Exalted Maiden's Raid Coat_IL2050.png",
+  "id": 3284,
+  "dbName": "Exalted Maiden's Raid Coat",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1518,
+   "Defense": 1518
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Fiend Forged Robe_IL1230.png",
+  "id": 3415,
+  "dbName": "Fiend Forged Robe",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Severity": 922,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Forest Guardian's Raid Coat_IL1500.png",
+  "id": 3343,
+  "dbName": "Forest Guardian's Raid Coat",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Defense": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Awareness",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Awareness for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Fured Kiuno of the Bear_IL672.png",
+  "id": 5837,
+  "dbName": "Fured Kiuno of the Bear",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 302,
+   "Critical Strike": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Swordsman's Perk",
+    "stat": "Melee Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your Melee Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Gurdunn's Defense_IL950.png",
+  "id": 3518,
+  "dbName": "Gurdunn's Defense",
+  "dbItemLevel": 950,
+  "dbRatingStats": {
+   "Accuracy": 356,
+   "Critical Severity": 356,
+   "Defense": 712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcharoo",
+    "stat": null,
+    "amount": null,
+    "description": "+1500 Power, -2500 Defense.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Hammerstone Robes_IL352.png",
+  "id": 5853,
+  "dbName": "Hammerstone Robes",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 92.4,
+   "Combat Advantage": 92.4,
+   "Defense": 264,
+   "Awareness": 39.6,
+   "Deflection": 39.6
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Huntsman Assault Robes_IL672.png",
+  "id": 5903,
+  "dbName": "Huntsman Assault Robes",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 302,
+   "Critical Severity": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Defense is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Huntsman Raid Robes_IL672.png",
+  "id": 5911,
+  "dbName": "Huntsman Raid Robes",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Strike": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Defense is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Infernal Forged Robe_IL1200.png",
+  "id": 3435,
+  "dbName": "Infernal Forged Robe",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Critical Severity": 900,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\League's Assault Jubbah_IL588.png",
+  "id": 5958,
+  "dbName": "League's Assault Jubbah",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\League's Elite Assault Jubbah_IL602.png",
+  "id": 5966,
+  "dbName": "League's Elite Assault Jubbah",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 542,
+   "Critical Severity": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 15 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\League's Elite Raid Jubbah_IL602.png",
+  "id": 5970,
+  "dbName": "League's Elite Raid Jubbah",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Combat Advantage": 361,
+   "Critical Strike": 542,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 15 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\League's Raid Jubbah_IL588.png",
+  "id": 5962,
+  "dbName": "League's Raid Jubbah",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Lion Guard's Raid Robe_IL1250.png",
+  "id": 5978,
+  "dbName": "Lion Guard's Raid Robe",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Critical Severity": 938,
+   "Defense": 938
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Lolthian Leathers_IL2050.png",
+  "id": 3242,
+  "dbName": "Lolthian Leathers",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Severity": 1230,
+   "Defense": 923,
+   "Awareness": 1845
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are full, your Critical Severity is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Mage of the Maze's Robes_IL1000.png",
+  "id": 3504,
+  "dbName": "Mage of the Maze's Robes",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 3% of your health back.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manalord's Assault Coat_IL770.png",
+  "id": 6034,
+  "dbName": "Manalord's Assault Coat",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Critical Strike": 330,
+   "Critical Severity": 247,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Balance",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Power is increased by 1500. When your health is below 50%, Defense is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manalord's Raid Coat_IL770.png",
+  "id": 6038,
+  "dbName": "Manalord's Raid Coat",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 247,
+   "Critical Strike": 330,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Balance",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Power is increased by 1500. When your health is below 50%, Defense is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manticore Assault Robes_IL756.png",
+  "id": 6288,
+  "dbName": "Manticore Assault Robes",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Critical Strike": 340,
+   "Critical Severity": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manticore Executioner Robes_IL630.png",
+  "id": 6297,
+  "dbName": "Manticore Executioner Robes",
+  "dbItemLevel": 630,
+  "dbRatingStats": {
+   "Combat Advantage": 189,
+   "Critical Strike": 142,
+   "Critical Severity": 142,
+   "Defense": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manticore Raid Robes_IL756.png",
+  "id": 6292,
+  "dbName": "Manticore Raid Robes",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Critical Strike": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Mantled Robe of Halaster's Successor_IL1010.png",
+  "id": 6248,
+  "dbName": "Mantled Robe of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Critical Severity": 758,
+   "Defense": 758
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain .5% Defense, to the max of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Mantled Robe of the Successor_IL990.png",
+  "id": 6049,
+  "dbName": "Mantled Robe of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Critical Severity": 742,
+   "Defense": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain .5% Defense, to the max of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Mastered Duergar Mercenary's Jerkin_IL1900.png",
+  "id": 3260,
+  "dbName": "Mastered Duergar Mercenary's Jerkin",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Action",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Action Point Gain is increased by 7.5%. When your health is below 50%, Stamina Regeneration is increased by 15%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Pilgrim Assault Jubbah_IL644.png",
+  "id": 6042,
+  "dbName": "Pilgrim Assault Jubbah",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Critical Severity": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 100 Defense for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

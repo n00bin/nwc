@@ -1,0 +1,540 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Primal Assault Butisi_IL700.png",
+  "id": 4255,
+  "dbName": "Primal Assault Butisi",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 315,
+   "Critical Severity": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Primal Raid Butisi_IL700.png",
+  "id": 4251,
+  "dbName": "Primal Raid Butisi",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Accuracy": 315,
+   "Combat Advantage": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Prismatic Luminstep Greaves_IL3700 (2).png",
+  "id": 15,
+  "dbName": "Prismatic Luminstep Greaves",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Forte": 2498
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Precision (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased. +5% while outside of the Pirates' Skyhold or the Dread Sanctum. +10% while inside of the Pirates' Skyhold or the Dread Sanctum.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Prismatic Luminstep Greaves_IL3700 (3).png",
+  "id": 15,
+  "dbName": "Prismatic Luminstep Greaves",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Forte": 2498
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Precision (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased. +5% while outside of the Pirates' Skyhold or the Dread Sanctum. +10% while inside of the Pirates' Skyhold or the Dread Sanctum.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Prismatic Luminstep Greaves_IL3700.png",
+  "id": 15,
+  "dbName": "Prismatic Luminstep Greaves",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Forte": 2498
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Precision (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased. +5% while outside of the Pirates' Skyhold or the Dread Sanctum. +10% while inside of the Pirates' Skyhold or the Dread Sanctum.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Protege's Trimmed Gaiters_IL980.png",
+  "id": 1552,
+  "dbName": "Protege's Trimmed Gaiters",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Critical Strike": 368,
+   "Defense": 735,
+   "Critical Avoidance": 368
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pulsar Boots_IL2600.png",
+  "id": 3229,
+  "dbName": "Pulsar Boots",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Critical Strike": 1170,
+   "Critical Severity": 1950,
+   "Outgoing Healing": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Self Sacrifice",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Outgoing Healing, -5% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pulsar Half-Boots_IL2600 (2).png",
+  "id": 3980,
+  "dbName": "Pulsar Half-Boots",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Accuracy": 780,
+   "Combat Advantage": 1170,
+   "Critical Severity": 1950
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tenacious Luck",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Critical Strike is increased by 7%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pulsar Half-Boots_IL2600.png",
+  "id": 3980,
+  "dbName": "Pulsar Half-Boots",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Accuracy": 780,
+   "Combat Advantage": 1170,
+   "Critical Severity": 1950
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tenacious Luck",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Critical Strike is increased by 7%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Radiant Elven Boots_IL2800 (2).png",
+  "id": 3972,
+  "dbName": "Radiant Elven Boots",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Critical Strike": 2100,
+   "Critical Severity": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wildspace Precision",
+    "stat": null,
+    "amount": null,
+    "description": "+7.5% Critical Strike in Wildspace. +3% Critical Strike in non-Wildspace.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Radiant Elven Boots_IL2800.png",
+  "id": 3972,
+  "dbName": "Radiant Elven Boots",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Critical Strike": 2100,
+   "Critical Severity": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wildspace Precision",
+    "stat": null,
+    "amount": null,
+    "description": "+7.5% Critical Strike in Wildspace. +3% Critical Strike in non-Wildspace.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Radiant Elven Cackrows_IL2800.png",
+  "id": 3213,
+  "dbName": "Radiant Elven Cackrows",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Forte": 2100,
+   "Outgoing Healing": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Galactic Muse",
+    "stat": null,
+    "amount": null,
+    "description": "Performance/Soulweave regenerates 10% faster in Wildspace. In non-Wildspace, the regen bonus is 5%. Gain 2.5% Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Reinforced Dragonflight Assault Boots_IL1400.png",
+  "id": 4437,
+  "dbName": "Reinforced Dragonflight Assault Boots",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Combat Advantage": 630,
+   "Critical Severity": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Reinforced Dragonflight Raid Boots_IL1400.png",
+  "id": 4433,
+  "dbName": "Reinforced Dragonflight Raid Boots",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Accuracy": 630,
+   "Combat Advantage": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Runefrost Pilgrim Poleyns_IL5400 (2).png",
+  "id": 5497,
+  "dbName": "Runefrost Pilgrim Poleyns",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Outgoing Healing": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Miracle Crit",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you critically heal a teammate with a single-target heal, the target and up to 4 nearby teammates receive 3% Combat Advantage and Critical Avoidance for 4 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Runefrost Pilgrim Poleyns_IL5400 (3).png",
+  "id": 5497,
+  "dbName": "Runefrost Pilgrim Poleyns",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Outgoing Healing": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Miracle Crit",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you critically heal a teammate with a single-target heal, the target and up to 4 nearby teammates receive 3% Combat Advantage and Critical Avoidance for 4 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Runefrost Pilgrim Poleyns_IL5400.png",
+  "id": 5497,
+  "dbName": "Runefrost Pilgrim Poleyns",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Outgoing Healing": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Miracle Crit",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you critically heal a teammate with a single-target heal, the target and up to 4 nearby teammates receive 3% Combat Advantage and Critical Avoidance for 4 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Sabatons of the Eternal Bloom_IL5000 (2).png",
+  "id": 3153,
+  "dbName": "Sabatons of the Eternal Bloom",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Severity": 4050,
+   "Outgoing Healing": 3300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Harmonizing Radiance",
+    "stat": null,
+    "amount": null,
+    "description": "When you use an Encounter power, you have a 30% chance to pulse Harmonizing Light, granting yourself and the two closest friendly players within 20' +1% Power and +1.5% Critical Strike for 6 seconds. Re-applying the effect will refresh its duration.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Sabatons of the Eternal Bloom_IL5000.png",
+  "id": 3153,
+  "dbName": "Sabatons of the Eternal Bloom",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Severity": 4050,
+   "Outgoing Healing": 3300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Harmonizing Radiance",
+    "stat": null,
+    "amount": null,
+    "description": "When you use an Encounter power, you have a 30% chance to pulse Harmonizing Light, granting yourself and the two closest friendly players within 20' +1% Power and +1.5% Critical Strike for 6 seconds. Re-applying the effect will refresh its duration.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Starhide Boots_IL2700.png",
+  "id": 3976,
+  "dbName": "Starhide Boots",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Combat Advantage": 2025,
+   "Critical Strike": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wildspace Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in Wildspace.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Starhide Cackrows_IL2700.png",
+  "id": 3224,
+  "dbName": "Starhide Cackrows",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Strike": 2025,
+   "Forte": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Muse",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity/Performance/Soulweave regenerates 20% faster.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Dark Maiden's Assault Gaiters_IL2000 (2).png",
+  "id": 4018,
+  "dbName": "The Dark Maiden's Assault Gaiters",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 1200,
+   "Critical Severity": 900,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4,500 Power in the Underdark. DPS +5% Base Damage Boost, Tank -5% Incoming Damage, Healer +5% Overall Outgoing Healing in Temple of the Spider.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Dark Maiden's Assault Gaiters_IL2000.png",
+  "id": 4018,
+  "dbName": "The Dark Maiden's Assault Gaiters",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 1200,
+   "Critical Severity": 900,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4,500 Power in the Underdark. DPS +5% Base Damage Boost, Tank -5% Incoming Damage, Healer +5% Overall Outgoing Healing in Temple of the Spider.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Dark Maiden's Rejuvenation Steps_IL2000.png",
+  "id": 3298,
+  "dbName": "The Dark Maiden's Rejuvenation Steps",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 900,
+   "Deflect Severity": 900,
+   "Forte": 1200
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4,500 Power in the Underdark and gain more role effectiveness when in the Temple of the Spider. DPS +5% Base Damage Boost, Tank -5% Incoming Damage, Healer +5% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Trapper of the Twilight's Boots_IL1000.png",
+  "id": 4148,
+  "dbName": "Trapper of the Twilight's Boots",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 450,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 2.5% Movement Speed for each enemy you are engaged in battle, to the max of 12%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

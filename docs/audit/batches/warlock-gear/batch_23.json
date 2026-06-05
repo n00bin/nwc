@@ -1,0 +1,554 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Aboleth Pact Blade_IL800.png",
+  "id": 140,
+  "dbName": "Aboleth Pact Blade",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Critical Strike": 300,
+   "Combat Advantage": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Dmg Bonus",
+    "amount": 4,
+    "description": null,
+    "setName": "Aboleth",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Antique Pactblade of the Vale_IL1700.png",
+  "id": 3309,
+  "dbName": "Antique Pactblade of the Vale",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 1275,
+   "Critical Severity": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "2 of Set (Adventurer's Might): When you use an encounter power, you have a 10% chance to receive a Boost based on your role by 4% for 10 seconds. DPS Recharge Speed, Tank Stamina Regeneration, Healer Action Point Gain.",
+    "setName": "Vale",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Bismuth Pactblade_IL3400.png",
+  "id": 3165,
+  "dbName": "Bismuth Pactblade",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Critical Severity": 3060,
+   "Forte": 2295
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in the Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 3s in combat, gain a stack of Prismatic Force. Each stack grants role-based bonuses: General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness. Max 10 stacks.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Blaspheme Pactblade_IL1900.png",
+  "id": 144,
+  "dbName": "Blaspheme Pactblade",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Damage": 100,
+   "Accuracy": 570,
+   "Critical Severity": 855,
+   "Combat Advantage": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Role boost on dodge/block/sprint/shadow slip",
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Blaspheme",
+    "pieces": 2
+   },
+   {
+    "name": "Role boost on Combat Advantage hit",
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Blaspheme",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Bloodbrass Pactblade_IL2750.png",
+  "id": 3169,
+  "dbName": "Bloodbrass Pactblade",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Critical Severity": 2475,
+   "Forte": 1856
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in the Pirates' Skyhold, your Movement Speed is increased by 12%. Every 3s in combat, gain a stack of Freebooter's Will. Each stack grants role-based bonuses: General +0.4% Power, DPS +0.55% Critical Severity, Healer +0.3% Overall Outgoing Healing, Tank +0.3% Awareness. Max 10 stacks.",
+    "setName": "Skyhold Arms",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Burning Pact Blade_IL600.png",
+  "id": 146,
+  "dbName": "Burning Pact Blade",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 225,
+   "Critical Strike": 225,
+   "Combat Advantage": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "AP Restore on Daily",
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Burning Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Celestial Lancet of Honor_IL1400.png",
+  "id": 148,
+  "dbName": "Celestial Lancet of Honor",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Accuracy": 1050,
+   "Critical Severity": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Charge / Divine Fury",
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Celestial",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Corpselayer_IL350.png",
+  "id": 3538,
+  "dbName": "Corpselayer",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "Module 13 set bonus.",
+    "setName": "Tyrant",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crystal Pactblade_IL3100.png",
+  "id": 3167,
+  "dbName": "Crystal Pactblade",
+  "dbItemLevel": 3100,
+  "dbRatingStats": {
+   "Critical Severity": 2790,
+   "Forte": 2092
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in the Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 3s in combat, gain a stack of Prismatic Force. Each stack grants role-based bonuses: General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness. Max 10 stacks.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Cursebearer's Fang_IL3800.png",
+  "id": 3148,
+  "dbName": "Cursebearer's Fang",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Accuracy": 3334,
+   "Critical Severity": 3762,
+   "Damage": 50
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 0.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 10,
+    "description": null,
+    "setName": "Soulpiercer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Cursebearer's Maw_IL4000.png",
+  "id": 3146,
+  "dbName": "Cursebearer's Maw",
+  "dbItemLevel": 4000,
+  "dbRatingStats": {
+   "Accuracy": 3510,
+   "Critical Severity": 3960,
+   "Damage": 100
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in Thay, your Movement Speed is increased by 12% and your Damage is increased by 2%. Your Powers deal 2.5% more damage when you are 25' or further away from your target.",
+    "setName": "Soulpiercer (Greater)",
+    "pieces": 2
+   },
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": null,
+    "setName": "Soulpiercer (Greater)",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Deathbringer_IL350.png",
+  "id": 4992,
+  "dbName": "Deathbringer",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "CombatAdvantage": 262,
+   "CriticalStrike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Deathbringer_IL500.png",
+  "id": 4994,
+  "dbName": "Deathbringer",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "CombatAdvantage": 375,
+   "CriticalStrike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Deathbringer_IL650.png",
+  "id": 4995,
+  "dbName": "Deathbringer",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "CombatAdvantage": 488,
+   "CriticalStrike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Deathbringer_IL800.png",
+  "id": 4996,
+  "dbName": "Deathbringer",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "CombatAdvantage": 600,
+   "CriticalStrike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dragon Bone Pact Blade_IL800.png",
+  "id": 3705,
+  "dbName": "Dragon Bone Pact Blade",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 350,
+   "Critical Strike": 422,
+   "Critical Avoidance": 427
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Drowned Pact Blade_IL600.png",
+  "id": 154,
+  "dbName": "Drowned Pact Blade",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 225,
+   "Critical Strike": 225,
+   "Combat Advantage": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Self-Heal on being struck",
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Drowned Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Duergar Mercenary's Steel Pactblade_IL1900.png",
+  "id": 155,
+  "dbName": "Duergar Mercenary's Steel Pactblade",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Damage": 200,
+   "Critical Strike": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Duergar Weapon Set (aura, stacking)",
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Duergar Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Durgarn Thord Pactblade_IL1850.png",
+  "id": 3307,
+  "dbName": "Durgarn Thord Pactblade",
+  "dbItemLevel": 1850,
+  "dbRatingStats": {
+   "Critical Severity": 1388,
+   "Forte": 1388
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "2 of Set: When you use an encounter or daily power during combat, you gain a stack of Scalebreaker's for 20 seconds. Each stack of Scalebreaker's grants you bonuses depending on your role. DPS +1% Recharge Speed and Action Point Gain, Tank +1% Stamina Regeneration and Action Point Gain, Healer +1% Movement Speed and Action Point Gain. Once you reach 6 stacks of Scalebreaker's, they are consumed and you are empowered with Scalebreaker's Wrath for 30 seconds, granting the following: DPS +7.5% Base Damage Boost, Tank -7.5% Incoming Damage, Healer +7.5% Overall Outgoing Healing. May only have 1 active at a time and the duration is refreshed each time you reach 6 stacks of Scalebreaker's.",
+    "setName": "Scalebreaker's Wrath",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Earthen Pact Blade_IL600.png",
+  "id": 158,
+  "dbName": "Earthen Pact Blade",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 225,
+   "Critical Strike": 225,
+   "Combat Advantage": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Earthen Heart (stand still → stacks)",
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Earthen Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elk Tribe Noble's Pact Blade_IL399.png",
+  "id": 3598,
+  "dbName": "Elk Tribe Noble's Pact Blade",
+  "dbItemLevel": 399,
+  "dbRatingStats": {
+   "Accuracy": 98,
+   "Combat Advantage": 202,
+   "Critical Strike": 202,
+   "Critical Avoidance": 98
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Deathbringer_IL350.png",
+  "id": 5000,
+  "dbName": "Exalted Deathbringer",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "CombatAdvantage": 262,
+   "CriticalStrike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Deathbringer_IL500.png",
+  "id": 5002,
+  "dbName": "Exalted Deathbringer",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "CombatAdvantage": 375,
+   "CriticalStrike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Deathbringer_IL650.png",
+  "id": 5003,
+  "dbName": "Exalted Deathbringer",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "CombatAdvantage": 488,
+   "CriticalStrike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Deathbringer_IL800.png",
+  "id": 162,
+  "dbName": "Exalted Deathbringer",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Critical Strike": 300,
+   "Combat Advantage": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2-piece)",
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ }
+]

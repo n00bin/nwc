@@ -1,0 +1,511 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pioneer Restoration Taj_IL616.png",
+  "id": 1773,
+  "dbName": "Pioneer Restoration Taj",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Accuracy": 185,
+   "Combat Advantage": 277,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Maximum Hit Points for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pioneer Ward Taj_IL616.png",
+  "id": 1772,
+  "dbName": "Pioneer Ward Taj",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Critical Strike": 277,
+   "Defense": 462,
+   "Deflection": 185
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Maximum Hit Points for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Primal Restoration Umqhele_IL700.png",
+  "id": 1757,
+  "dbName": "Primal Restoration Umqhele",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 210,
+   "Critical Strike": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 3% of your health back.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Primal Ward Umqhele_IL700.png",
+  "id": 1753,
+  "dbName": "Primal Ward Umqhele",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 315,
+   "Critical Severity": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 3% of your health back.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Protege's Crowned Coif_IL980.png",
+  "id": 1554,
+  "dbName": "Protege's Crowned Coif",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Critical Strike": 514,
+   "Defense": 735,
+   "Critical Avoidance": 221
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pulsar Armet_IL2600.png",
+  "id": 209,
+  "dbName": "Pulsar Armet",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Accuracy": 1170,
+   "Defense": 950,
+   "Awareness": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 2% Stamina Regeneration for 10 seconds. Max 5 Stacks: 10% Stamina Regeneration.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Radiant Elven Helm_IL2800.png",
+  "id": 693,
+  "dbName": "Radiant Elven Helm",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Awareness": 2100,
+   "Incoming Healing": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.5% Stamina Regeneration and 0.35% Awareness. Max Stacks: 7 (10 in Wildspace).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Runefrost Bulwark Helm_IL5400.png",
+  "id": 5356,
+  "dbName": "Runefrost Bulwark Helm",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Defense": 2835,
+   "Awareness": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, gain 0.4% Stamina Regeneration and 0.8% Awareness. Max 10 Stacks: 4% Stamina Regeneration and 8% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Runefrost Lifeward Helm_IL5400.png",
+  "id": 5352,
+  "dbName": "Runefrost Lifeward Helm",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Severity": 4860,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Channeler's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.4% Outgoing Healing and 0.4% Power. Max 10 Stacks: 4% Outgoing Healing and 4% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rusted Oathkeeper's Ward Armet_IL420.png",
+  "id": 2059,
+  "dbName": "Rusted Oathkeeper's Ward Armet",
+  "dbItemLevel": 420,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Starforged Helm_IL2700.png",
+  "id": 712,
+  "dbName": "Starforged Helm",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Defense": 2025,
+   "Critical Avoidance": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Boar's Determination",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 7.5% Awareness and 5% Stamina Regeneration for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\The Dark Maiden's Ward Helm_IL2000.png",
+  "id": 937,
+  "dbName": "The Dark Maiden's Ward Helm",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 1500,
+   "Incoming Healing": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Word",
+    "stat": null,
+    "amount": null,
+    "description": "Slightly increased threat generation.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Gladiator Armet_IL756.png",
+  "id": 2480,
+  "dbName": "Titansteel Gladiator Armet",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Defense": 567,
+   "Awareness": 170,
+   "Deflection": 227
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Medic Armet_IL756.png",
+  "id": 2486,
+  "dbName": "Titansteel Medic Armet",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 227,
+   "Combat Advantage": 170,
+   "Defense": 567,
+   "Awareness": 170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Restoration Armet_IL756.png",
+  "id": 2478,
+  "dbName": "Titansteel Restoration Armet",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 340,
+   "Critical Strike": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Ward Armet_IL756.png",
+  "id": 2474,
+  "dbName": "Titansteel Ward Armet",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Defense": 567,
+   "Deflection": 227
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Ultraviolet Elven Armet_IL2900.png",
+  "id": 213,
+  "dbName": "Ultraviolet Elven Armet",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Awareness": 2175,
+   "Incoming Healing": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.4% Stamina Regeneration and 0.8% Awareness. Max 10 Stacks: 4% Stamina Regeneration and 8% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Vivified Oathkeeper's Ward Armet_IL645.png",
+  "id": 2005,
+  "dbName": "Vivified Oathkeeper's Ward Armet",
+  "dbItemLevel": 645,
+  "dbRatingStats": {
+   "Combat Advantage": 284,
+   "Defense": 472,
+   "Awareness": 189
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Wintermarked Bulwark Helm_IL5700.png",
+  "id": 5348,
+  "dbName": "Wintermarked Bulwark Helm",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Awareness": 3420,
+   "Critical Avoidance": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Acumen",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, gain +0.4% Awareness and +0.5% Critical Avoidance. You lose all stacks if you leave combat. Max 10 Stacks: 4% Awareness and 5% Critical Avoidance.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Wintermarked Lifeward Helm_IL5700.png",
+  "id": 5344,
+  "dbName": "Wintermarked Lifeward Helm",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Severity": 5130,
+   "Outgoing Healing": 5420
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renewed Spirit",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity regenerates 25% faster.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Aboleth Mace · IL 350_IL350.png",
+  "id": 1964,
+  "dbName": "Aboleth Mace · IL 350",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 262,
+   "Critical Strike": 131,
+   "Deflection": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Aboleth Mace · IL 500_IL500.png",
+  "id": 1965,
+  "dbName": "Aboleth Mace · IL 500",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Strike": 188,
+   "Deflection": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Aboleth Mace · IL 650_IL650.png",
+  "id": 1966,
+  "dbName": "Aboleth Mace · IL 650",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Combat Advantage": 488,
+   "Critical Strike": 244,
+   "Deflection": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Aboleth Mace · IL 800_IL800.png",
+  "id": 1967,
+  "dbName": "Aboleth Mace · IL 800",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 600,
+   "Critical Strike": 300,
+   "Deflection": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Bronzewood Quauhololli · IL 350_IL350.png",
+  "id": 2418,
+  "dbName": "Bronzewood Quauhololli · IL 350",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 262,
+   "Critical Strike": 131,
+   "Deflection": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

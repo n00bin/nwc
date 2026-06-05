@@ -1,0 +1,488 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Hood of the Eternal Bloom_IL5000.png",
+  "id": 3156,
+  "dbName": "Hood of the Eternal Bloom",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Strike": 4050,
+   "Outgoing Healing": 3300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renewed Spirit",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity regenerates 25% faster.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Hood of the Lifebloom_IL4700.png",
+  "id": 3161,
+  "dbName": "Hood of the Lifebloom",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Forte": 3490,
+   "Outgoing Healing": 2538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Flowing Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "After moving, your Performance/Soulweave regenerates 20% faster. You lose this benefit if you stand still for at least 4 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Hood of the Scarlet Tempest_IL4700.png",
+  "id": 3160,
+  "dbName": "Hood of the Scarlet Tempest",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3807,
+   "Forte": 3490
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Assault",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, you gain +5% Power and +6.5% Critical Chance for 8 seconds (15 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Infernal Forged Coif_IL1200.png",
+  "id": 1419,
+  "dbName": "Infernal Forged Coif",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Critical Strike": 630,
+   "Defense": 900,
+   "Critical Avoidance": 270
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Infernal Forged Cowl_IL1200.png",
+  "id": 3439,
+  "dbName": "Infernal Forged Cowl",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Combat Advantage": 360,
+   "Critical Strike": 540,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lion Guard's Mystic Cowl_IL1250.png",
+  "id": 3402,
+  "dbName": "Lion Guard's Mystic Cowl",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Critical Strike": 656,
+   "Defense": 938,
+   "Critical Avoidance": 281
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Might",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Power is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lion Guard's Raid Cowl_IL1250.png",
+  "id": 3403,
+  "dbName": "Lion Guard's Raid Cowl",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Strike": 562,
+   "Defense": 938
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Might",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Power is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lionsmane Duelist Cowl_IL560.png",
+  "id": 4851,
+  "dbName": "Lionsmane Duelist Cowl",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Combat Advantage": 126,
+   "Critical Strike": 126,
+   "Defense": 420,
+   "Critical Avoidance": 168
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lionsmane Executioner Cowl_IL560.png",
+  "id": 4861,
+  "dbName": "Lionsmane Executioner Cowl",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Combat Advantage": 126,
+   "Critical Strike": 126,
+   "Critical Severity": 168,
+   "Defense": 420
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lolthian Circlet_IL2050.png",
+  "id": 3241,
+  "dbName": "Lolthian Circlet",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1230,
+   "Defense": 923,
+   "Deflection": 1845
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 7300 Power for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lolthian Coif_IL2050.png",
+  "id": 3245,
+  "dbName": "Lolthian Coif",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1210,
+   "Defense": 923,
+   "Incoming Healing": 1845
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 7300 Power for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mage of the Maze's Hat_IL1000.png",
+  "id": 3500,
+  "dbName": "Mage of the Maze's Hat",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Combat Advantage": 375,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Defense increases by 5% for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Assault Cowl_IL756.png",
+  "id": 3768,
+  "dbName": "Manticore Assault Cowl",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Critical Strike": 340,
+   "Critical Severity": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Duelist Cowl_IL756.png",
+  "id": 3776,
+  "dbName": "Manticore Duelist Cowl",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 227,
+   "Combat Advantage": 170,
+   "Critical Strike": 170,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Executioner Cowl_IL756.png",
+  "id": 3772,
+  "dbName": "Manticore Executioner Cowl",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Critical Strike": 227,
+   "Critical Severity": 170,
+   "Awareness": 170,
+   "Defense": 547
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Raid Cowl_IL756.png",
+  "id": 3764,
+  "dbName": "Manticore Raid Cowl",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 227,
+   "Critical Strike": 340,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mastered Duergar Mercenary's Helm_IL1900.png",
+  "id": 3263,
+  "dbName": "Mastered Duergar Mercenary's Helm",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Outgoing Healing": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mastered Duergar Mercenary's Hood_IL1900.png",
+  "id": 3259,
+  "dbName": "Mastered Duergar Mercenary's Hood",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1538,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mystic Cowl of Halaster's Successor_IL1010.png",
+  "id": 3442,
+  "dbName": "Mystic Cowl of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Critical Strike": 530,
+   "Defense": 758,
+   "Critical Avoidance": 227
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Strike increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mystic Cowl of the Successor_IL990.png",
+  "id": 3451,
+  "dbName": "Mystic Cowl of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Critical Strike": 520,
+   "Defense": 742,
+   "Critical Avoidance": 223
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Strike increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Prismatic Fractal Cowl_IL3700.png",
+  "id": 3174,
+  "dbName": "Prismatic Fractal Cowl",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Forte": 2498
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Spiker (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "For every 3 seconds you are in combat, you gain 1.8% Critical Strike. Max Stacks: 5.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Protege's Charmed Hat_IL980.png",
+  "id": 5149,
+  "dbName": "Protege's Charmed Hat",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Combat Advantage": 294,
+   "Critical Strike": 441,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Protege's Crowned Coif_IL980.png",
+  "id": 1554,
+  "dbName": "Protege's Crowned Coif",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Critical Strike": 514,
+   "Defense": 735,
+   "Critical Avoidance": 221
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pulsar Cap_IL2600.png",
+  "id": 3225,
+  "dbName": "Pulsar Cap",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Critical Strike": 1950,
+   "Critical Severity": 1170,
+   "Defense": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shielded Force",
+    "stat": "Ranged Dmg Bonus",
+    "amount": 7.0,
+    "description": "When you have a Shield or Temp HP, your Ranged Powers do 7% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Radiant Elven Hood_IL2800.png",
+  "id": 3209,
+  "dbName": "Radiant Elven Hood",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Combat Advantage": 2100,
+   "Critical Severity": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spelljammer's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Every 3s in combat, +0.65% Combat Advantage. Max 7 stacks (10 in Wildspace).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

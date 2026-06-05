@@ -1,0 +1,531 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Lionsmane Duelist Gaiters_IL560.png",
+  "id": 5983,
+  "dbName": "Lionsmane Duelist Gaiters",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Accuracy": 210,
+   "Defense": 420,
+   "Deflection": 210
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Lionsmane Executioner Gaiters_IL560.png",
+  "id": 5987,
+  "dbName": "Lionsmane Executioner Gaiters",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Accuracy": 168,
+   "Combat Advantage": 126,
+   "Critical Severity": 126,
+   "Defense": 420
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Lolthian Pikes_IL2050 (2).png",
+  "id": 3988,
+  "dbName": "Lolthian Pikes",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1230,
+   "Defense": 923,
+   "Critical Avoidance": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 650 Combat Advantage, to the max of 7800.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Lolthian Pikes_IL2050.png",
+  "id": 3988,
+  "dbName": "Lolthian Pikes",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1230,
+   "Defense": 923,
+   "Critical Avoidance": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 650 Combat Advantage, to the max of 7800.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Luminstep Greaves_IL3350 (2).png",
+  "id": 2726,
+  "dbName": "Luminstep Greaves",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Accuracy": 1633,
+   "Combat Advantage": 2010,
+   "Forte": 1131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Precision (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased. +5% while outside of the Pirates' Skyhold or the Dread Sanctum. +10% while inside of the Pirates' Skyhold or the Dread Sanctum.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Luminstep Greaves_IL3350 (3).png",
+  "id": 2726,
+  "dbName": "Luminstep Greaves",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Accuracy": 1633,
+   "Combat Advantage": 2010,
+   "Forte": 1131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Precision (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased. +5% while outside of the Pirates' Skyhold or the Dread Sanctum. +10% while inside of the Pirates' Skyhold or the Dread Sanctum.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Luminstep Greaves_IL3350.png",
+  "id": 2726,
+  "dbName": "Luminstep Greaves",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Accuracy": 1633,
+   "Combat Advantage": 2010,
+   "Forte": 1131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Precision (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased. +5% while outside of the Pirates' Skyhold or the Dread Sanctum. +10% while inside of the Pirates' Skyhold or the Dread Sanctum.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Manticore Assault Gaiters_IL756.png",
+  "id": 3067,
+  "dbName": "Manticore Assault Gaiters",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Critical Strike": 227,
+   "Defense": 113
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Manticore Duelist Gaiters_IL756.png",
+  "id": 3075,
+  "dbName": "Manticore Duelist Gaiters",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 284,
+   "Defense": 567,
+   "Deflection": 284
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Manticore Executioner Gaiters_IL756.png",
+  "id": 3071,
+  "dbName": "Manticore Executioner Gaiters",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Critical Strike": 227,
+   "Critical Severity": 170,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Manticore Raid Gaiters_IL756.png",
+  "id": 3063,
+  "dbName": "Manticore Raid Gaiters",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Critical Strike": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Mastered Duergar Mercenary's Trodders_IL1900 (2).png",
+  "id": 2787,
+  "dbName": "Mastered Duergar Mercenary's Trodders",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 10,000. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Mastered Duergar Mercenary's Trodders_IL1900.png",
+  "id": 2787,
+  "dbName": "Mastered Duergar Mercenary's Trodders",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 10,000. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Mugger of the Maze's Boots_IL1000 (2).png",
+  "id": 4157,
+  "dbName": "Mugger of the Maze's Boots",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 750,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Critical Strike for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Mugger of the Maze's Boots_IL1000.png",
+  "id": 4157,
+  "dbName": "Mugger of the Maze's Boots",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 750,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Critical Strike for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pilgrim Assault Hidhas_IL644.png",
+  "id": 2849,
+  "dbName": "Pilgrim Assault Hidhas",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Critical Strike": 193,
+   "Critical Severity": 290,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wanderer's Vigor",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, you regenerate 3% of your Maximum Hit Points, up to 3000, every 3 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pilgrim Raid Hidhas_IL644.png",
+  "id": 2845,
+  "dbName": "Pilgrim Raid Hidhas",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Combat Advantage": 193,
+   "Critical Strike": 290,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wanderer's Vigor",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, you regenerate 3% of your Maximum Hit Points, up to 3000, every 3 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pioneer Assault Hidhas_IL616.png",
+  "id": 2841,
+  "dbName": "Pioneer Assault Hidhas",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Critical Strike": 185,
+   "Critical Severity": 277,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Dash",
+    "stat": null,
+    "amount": null,
+    "description": "Your Movement Speed increases by 1% for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pioneer Raid Hidhas_IL616.png",
+  "id": 6078,
+  "dbName": "Pioneer Raid Hidhas",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Critical Strike": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Dash",
+    "stat": null,
+    "amount": null,
+    "description": "Your Movement Speed increases by 1% for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Primal Assault Chamas_IL700.png",
+  "id": 6094,
+  "dbName": "Primal Assault Chamas",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Critical Strike": 315,
+   "Critical Severity": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Primal Raid Chamas_IL700.png",
+  "id": 6084,
+  "dbName": "Primal Raid Chamas",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Accuracy": 210,
+   "Critical Strike": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Prismatic Luminstep Greaves_IL3700 (2).png",
+  "id": 15,
+  "dbName": "Prismatic Luminstep Greaves",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Forte": 2498
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Precision (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased. +5% while outside of the Pirates' Skyhold or the Dread Sanctum. +10% while inside of the Pirates' Skyhold or the Dread Sanctum.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Prismatic Luminstep Greaves_IL3700 (3).png",
+  "id": 15,
+  "dbName": "Prismatic Luminstep Greaves",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Forte": 2498
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Precision (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased. +5% while outside of the Pirates' Skyhold or the Dread Sanctum. +10% while inside of the Pirates' Skyhold or the Dread Sanctum.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Prismatic Luminstep Greaves_IL3700.png",
+  "id": 15,
+  "dbName": "Prismatic Luminstep Greaves",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Forte": 2498
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Precision (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased. +5% while outside of the Pirates' Skyhold or the Dread Sanctum. +10% while inside of the Pirates' Skyhold or the Dread Sanctum.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pulsar Half-Boots_IL2600 (2).png",
+  "id": 3980,
+  "dbName": "Pulsar Half-Boots",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Accuracy": 780,
+   "Combat Advantage": 1170,
+   "Critical Severity": 1950
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tenacious Luck",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Critical Strike is increased by 7%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

@@ -1,0 +1,513 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Bregan D'aerthe Assassin's Leathers_IL2000.png",
+  "id": 4008,
+  "dbName": "Bregan D'aerthe Assassin's Leathers",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 1500,
+   "Combat Advantage": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Liquid Luck",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Critical Strike for each player in your team. When moving, gain 5% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Buckled Boots of Halaster's Successor_IL1010.png",
+  "id": 5292,
+  "dbName": "Buckled Boots of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Combat Advantage": 303,
+   "Critical Strike": 455,
+   "Defense": 758
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Buckled Boots of the Successor_IL990.png",
+  "id": 5293,
+  "dbName": "Buckled Boots of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Combat Advantage": 297,
+   "Critical Strike": 446,
+   "Defense": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Company Assault Coat_IL588.png",
+  "id": 3134,
+  "dbName": "Company Assault Coat",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Company Duelist Coat_IL560.png",
+  "id": 5616,
+  "dbName": "Company Duelist Coat",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Accuracy": 126,
+   "Defense": 420,
+   "Awareness": 168,
+   "Deflection": 126
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Company Raid Coat_IL588.png",
+  "id": 3128,
+  "dbName": "Company Raid Coat",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 176,
+   "Combat Advantage": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Crimson Scalebreaker's Rebel Hide_IL1800 (2).png",
+  "id": 4043,
+  "dbName": "Crimson Scalebreaker's Rebel Hide",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Severity": 1080,
+   "Defense": 810,
+   "Control Resistance": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Crimson Scalebreaker's Rebel Hide_IL1800.png",
+  "id": 4043,
+  "dbName": "Crimson Scalebreaker's Rebel Hide",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Severity": 1080,
+   "Defense": 810,
+   "Control Resistance": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Crone's Hide_IL1225 (2).png",
+  "id": 4063,
+  "dbName": "Crone's Hide",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Accuracy": 919,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. (5s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Crone's Hide_IL1225.png",
+  "id": 4063,
+  "dbName": "Crone's Hide",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Accuracy": 919,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. (5s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Cuirass of the Scarlet Arcanum_IL5000 (2).png",
+  "id": 2712,
+  "dbName": "Cuirass of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Cuirass of the Scarlet Arcanum_IL5000 (3).png",
+  "id": 2712,
+  "dbName": "Cuirass of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Cuirass of the Scarlet Arcanum_IL5000.png",
+  "id": 2712,
+  "dbName": "Cuirass of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Demon Forged Hide_IL1215 (2).png",
+  "id": 4116,
+  "dbName": "Demon Forged Hide",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Demon Forged Hide_IL1215.png",
+  "id": 4116,
+  "dbName": "Demon Forged Hide",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Depthcured Jerkin_IL3000 (2).png",
+  "id": 2738,
+  "dbName": "Depthcured Jerkin",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Combat Advantage": 2250,
+   "Forte": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Strike and Critical Severity for 15 seconds. Max 5 Stacks: 7.5% Critical Strike and Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Depthcured Jerkin_IL3000.png",
+  "id": 2738,
+  "dbName": "Depthcured Jerkin",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Combat Advantage": 2250,
+   "Forte": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Strike and Critical Severity for 15 seconds. Max 5 Stacks: 7.5% Critical Strike and Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Devil Forged Hide_IL1215 (2).png",
+  "id": 4114,
+  "dbName": "Devil Forged Hide",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Devil Forged Hide_IL1215.png",
+  "id": 4114,
+  "dbName": "Devil Forged Hide",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Divine Raid Surcoat_IL1230 (2).png",
+  "id": 4099,
+  "dbName": "Divine Raid Surcoat",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Severity": 922,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to restore 5% of your Maximum Hit Points. (5s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Divine Raid Surcoat_IL1230.png",
+  "id": 4099,
+  "dbName": "Divine Raid Surcoat",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Severity": 922,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to restore 5% of your Maximum Hit Points. (5s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dragonflight Assault Coat_IL588.png",
+  "id": 3104,
+  "dbName": "Dragonflight Assault Coat",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dragonflight Raid Coat_IL588.png",
+  "id": 3101,
+  "dbName": "Dragonflight Raid Coat",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dragonhide Jacket_IL1900 (2).png",
+  "id": 4020,
+  "dbName": "Dragonhide Jacket",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Severity": 1140,
+   "Defense": 855,
+   "Control Bonus": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Power",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Power and Critical Strike for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dragonhide Jacket_IL1900.png",
+  "id": 4020,
+  "dbName": "Dragonhide Jacket",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Severity": 1140,
+   "Defense": 855,
+   "Control Bonus": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Power",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Power and Critical Strike for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

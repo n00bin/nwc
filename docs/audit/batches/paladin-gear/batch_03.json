@@ -1,0 +1,560 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Restoration Tahadus_IL588.png",
+  "id": 1790,
+  "dbName": "League's Restoration Tahadus",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 176,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Ward Tahadus_IL588.png",
+  "id": 1787,
+  "dbName": "League's Ward Tahadus",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Severity": 265,
+   "Defense": 441,
+   "Awareness": 176
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pilgrim Restoration Tahadus_IL644.png",
+  "id": 1783,
+  "dbName": "Pilgrim Restoration Tahadus",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Combat Advantage": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 100 Power for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pilgrim Ward Tahadus_IL644.png",
+  "id": 1781,
+  "dbName": "Pilgrim Ward Tahadus",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Critical Severity": 290,
+   "Defense": 483,
+   "Awareness": 193
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 100 Power for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pioneer Restoration Tahadus_IL616.png",
+  "id": 1775,
+  "dbName": "Pioneer Restoration Tahadus",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Accuracy": 185,
+   "Combat Advantage": 277,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pioneer Ward Tahadus_IL616.png",
+  "id": 1770,
+  "dbName": "Pioneer Ward Tahadus",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Defense": 462,
+   "Deflection": 185
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Primal Restoration Ibhendis_IL700.png",
+  "id": 1759,
+  "dbName": "Primal Restoration Ibhendis",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 315,
+   "Critical Strike": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Power for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Primal Ward Ibhendis_IL700.png",
+  "id": 1755,
+  "dbName": "Primal Ward Ibhendis",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 315,
+   "Defense": 525,
+   "Deflection": 210
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Power for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Protege's Trimmed Gloves_IL980.png",
+  "id": 1556,
+  "dbName": "Protege's Trimmed Gloves",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Critical Strike": 368,
+   "Defense": 735,
+   "Deflection": 368
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pulsar Gauntlets_IL2600.png",
+  "id": 720,
+  "dbName": "Pulsar Gauntlets",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Awareness": 780,
+   "Critical Avoidance": 1170,
+   "Incoming Healing": 1950
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Recharge Speed for each enemy you are engaged in battle within 100'. Max 10 Stacks: 10% Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Radiant Elven Guards_IL2800.png",
+  "id": 695,
+  "dbName": "Radiant Elven Guards",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Awareness": 2100,
+   "Critical Avoidance": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Alacrity",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, your Recharge Speed is increased by 0.6% every 2 seconds. Every 2 seconds you are in combat with 4 or more enemies, lose 1 stack. Max 5 stacks: 3% Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Runefrost Bulwark Vambraces_IL5400.png",
+  "id": 5359,
+  "dbName": "Runefrost Bulwark Vambraces",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Defense": 2835,
+   "Deflect Severity": 6075
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sudden Intuition",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Awareness and Deflect Severity by 7.5% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Runefrost Lifeward Vambraces_IL5400.png",
+  "id": 5355,
+  "dbName": "Runefrost Lifeward Vambraces",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Critical Severity": 4860
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Greater Adaptive Strength",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity maximum increases by 15%. Gain 3.5% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rusted Oathkeeper's Restoration Couters_IL420.png",
+  "id": 2070,
+  "dbName": "Rusted Oathkeeper's Restoration Couters",
+  "dbItemLevel": 420,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rusted Oathkeeper's Ward Couters_IL420.png",
+  "id": 2065,
+  "dbName": "Rusted Oathkeeper's Ward Couters",
+  "dbItemLevel": 420,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Starforged Guards_IL2700.png",
+  "id": 713,
+  "dbName": "Starforged Guards",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Accuracy": 2025,
+   "Awareness": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sudden Intuition",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Awareness and Deflect Severity by 7% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\The Dark Maiden's Ward Guards_IL2000.png",
+  "id": 939,
+  "dbName": "The Dark Maiden's Ward Guards",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 900,
+   "Deflect Severity": 900,
+   "Forte": 1200
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Gladiator Couters_IL756.png",
+  "id": 2484,
+  "dbName": "Titansteel Gladiator Couters",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 170,
+   "Defense": 567,
+   "Critical Avoidance": 170,
+   "Deflection": 227
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Medic Couters_IL756.png",
+  "id": 2488,
+  "dbName": "Titansteel Medic Couters",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 227,
+   "Combat Advantage": 170,
+   "Defense": 567,
+   "Awareness": 170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Restoration Couters_IL756.png",
+  "id": 2482,
+  "dbName": "Titansteel Restoration Couters",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 227,
+   "Critical Strike": 340,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Ward Couters_IL756.png",
+  "id": 2476,
+  "dbName": "Titansteel Ward Couters",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 227,
+   "Defense": 567,
+   "Awareness": 340
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Ultraviolet Elven Gauntlets_IL2900.png",
+  "id": 687,
+  "dbName": "Ultraviolet Elven Gauntlets",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Awareness": 2175,
+   "Critical Avoidance": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sudden Intuition",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Awareness and Deflect Severity by 7.5% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Vambraces of the Iron Bulwark_IL4700.png",
+  "id": 204,
+  "dbName": "Vambraces of the Iron Bulwark",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Awareness": 2538,
+   "Critical Avoidance": 4265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Insight",
+    "stat": null,
+    "amount": null,
+    "description": "Per 6s in combat: +0.4% Awareness, +0.1% Power to allies in 20'. Max 8 (3.2% / 0.8% per ally)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Vivified Oathkeeper's Ward Couters_IL645.png",
+  "id": 2007,
+  "dbName": "Vivified Oathkeeper's Ward Couters",
+  "dbItemLevel": 645,
+  "dbRatingStats": {
+   "Critical Strike": 189,
+   "Defense": 472,
+   "Awareness": 284
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Wintermarked Bulwark Vambraces_IL5700.png",
+  "id": 5351,
+  "dbName": "Wintermarked Bulwark Vambraces",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Defense": 2992,
+   "Critical Strike": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reptilial Reflex",
+    "stat": null,
+    "amount": null,
+    "description": "On Critical Strike against you, reflect 10% of your Maximum Hit Points as damage and gain +7.5% Awareness for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

@@ -1,0 +1,509 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Titansteel Rapier_IL650.png",
+  "id": 5132,
+  "dbName": "Titansteel Rapier",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Titansteel Rapier_IL800.png",
+  "id": 5133,
+  "dbName": "Titansteel Rapier",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 500,
+   "Combat Advantage": 600,
+   "Critical Strike": 500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Vistani Rapiera_IL800.png",
+  "id": 4921,
+  "dbName": "Vistani Rapiera",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 600,
+   "Critical Strike": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Vistani (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +500 Defense, +5% Movement Speed.",
+    "setName": "Vistani",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Vistani Rapier_IL350.png",
+  "id": 4918,
+  "dbName": "Vistani Rapier",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 262,
+   "Critical Strike": 262
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Vistani (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +500 Defense, +5% Movement Speed.",
+    "setName": "Vistani",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Vistani Rapier_IL500.png",
+  "id": 4919,
+  "dbName": "Vistani Rapier",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Strike": 375
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Vistani (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +500 Defense, +5% Movement Speed.",
+    "setName": "Vistani",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Vistani Rapier_IL650.png",
+  "id": 4920,
+  "dbName": "Vistani Rapier",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 488,
+   "Critical Strike": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Vistani (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +500 Defense, +5% Movement Speed.",
+    "setName": "Vistani",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Voidtouched Rapier_IL3000.png",
+  "id": 4881,
+  "dbName": "Voidtouched Rapier",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Damage": 275,
+   "Critical Strike": 2250,
+   "Forte": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Peer Into the Void (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Gain 3% Overall Outgoing Healing and -5% Incoming Damage. When in Wildspace, Movement Speed is increased by 12%. Every 2s in combat with a single opponent, you gain a stack of Darklight. Every 2s in combat with 4 or more opponents, you lose a stack.",
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Wintermarked Skaldblade_IL5800.png",
+  "id": 6239,
+  "dbName": "Wintermarked Skaldblade",
+  "dbItemLevel": 5800,
+  "dbRatingStats": {
+   "Damage": 100,
+   "Accuracy": 3770,
+   "Critical Strike": 3480,
+   "Power": 2030
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Wootz Jambiya_IL350 (2).png",
+  "id": 4296,
+  "dbName": "Wootz Jambiya",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 500,
+    "description": "2 of Set: Enhances the wielder's strength when entering combat. (Tomb of Annihilation, Module 12)",
+    "setName": "Chultan",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Wootz Jambiya_IL350.png",
+  "id": 4296,
+  "dbName": "Wootz Jambiya",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 500,
+    "description": "2 of Set: Enhances the wielder's strength when entering combat. (Tomb of Annihilation, Module 12)",
+    "setName": "Chultan",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Xaryxian Rapier_IL2750.png",
+  "id": 4879,
+  "dbName": "Xaryxian Rapier",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Damage": 250,
+   "Critical Strike": 2062,
+   "Forte": 2062
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Peer Into the Void (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Gain 3% Overall Outgoing Healing and -5% Incoming Damage. When in Wildspace, Movement Speed is increased by 12%. Every 2s in combat with a single opponent, you gain a stack of Darklight. Every 2s in combat with 4 or more opponents, you lose a stack.",
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Blaspheme Lute_IL1900.png",
+  "id": 4891,
+  "dbName": "Blaspheme Lute",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Awareness": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Blaspheme (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Gain 70 Power, Defense, or Outgoing Healing (depending on role) for 15s when you dodge, block, sprint, or shadow slip (30s CD). When dealing Combat Advantage damage, 10% chance to gain 3% Base Damage Boost / -5% Incoming Damage / 3% Overall Outgoing Healing for 15s (30s CD).",
+    "setName": "Blaspheme",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Hammerstone Lute_IL352.png",
+  "id": 5108,
+  "dbName": "Hammerstone Lute",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "CombatAdvantage": 385,
+   "CriticalSeverity": 79.2,
+   "CriticalAvoidance": 79.2,
+   "Deflection": 185
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Meteoric Iron Lute_IL2450.png",
+  "id": 4882,
+  "dbName": "Meteoric Iron Lute",
+  "dbItemLevel": 2450,
+  "dbRatingStats": {
+   "Forte": 1838,
+   "Outgoing Healing": 1838
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Meteoric Fury (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Deal or heal up to 5% additional damage based on the difference in hit point percentage between the player and the target. Role bonus: DPS +2% Base Damage Boost, Tank -4% Incoming Damage, Healer +6% Overall Outgoing Healing. Does not stack. When in Wildspace, role bonus is doubled and Movement Speed is increased by 10%.",
+    "setName": "Meteoric Fury",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Perfect Song of Lolth_IL2475.png",
+  "id": 4884,
+  "dbName": "Perfect Song of Lolth",
+  "dbItemLevel": 2475,
+  "dbRatingStats": {
+   "Critical Strike": 1856,
+   "Critical Severity": 1856
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Demonweb Empowerment (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Base Damage Boost and Overall Outgoing Healing are increased by 14%. Incoming damage is reduced by up to 7.5% when your Stamina is empty. At the start of Combat, Critical Strike and Critical Severity increase by 1%; for every 3s in combat these increase by 1% more (max +5%).",
+    "setName": "Demonweb Empowerment",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shadesinger's Lute_IL350.png",
+  "id": 5104,
+  "dbName": "Shadesinger's Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "CombatAdvantage": 262,
+   "CriticalStrike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shadesinger's Lute_IL650.png",
+  "id": 5106,
+  "dbName": "Shadesinger's Lute",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "CombatAdvantage": 488,
+   "CriticalStrike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shadesinger's Lute_IL800.png",
+  "id": 5107,
+  "dbName": "Shadesinger's Lute",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 500,
+   "CombatAdvantage": 600,
+   "CriticalStrike": 500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Weaver's Lute_IL2050.png",
+  "id": 4887,
+  "dbName": "The Weaver's Lute",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1538,
+   "Combat Advantage": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Beholder Slayer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Deal or heal up to 5% additional damage based on the difference in hit point percentage between the player and the target. Role bonus to you and nearby allies: DPS +1% Base Damage Boost, Tank -2% Incoming Damage, Healer +2% Overall Outgoing Healing. May stack up to 5 times when allies are equipped with a set of similar weapons. When in the Underdark, your Damage is increased by 5%.",
+    "setName": "Beholder Slayer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Voidtouched Lute_IL3000.png",
+  "id": 4880,
+  "dbName": "Voidtouched Lute",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Accuracy": 2250,
+   "Combat Advantage": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Peer Into the Void (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Gain 3% Overall Outgoing Healing and -5% Incoming Damage. When in Wildspace, Movement Speed is increased by 12%. Every 2s in combat with a single opponent, you gain a stack of Darklight. Every 2s in combat with 4 or more opponents, you lose a stack.",
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Goristroskin Soulbead Amulet_IL1700.png",
+  "id": 4027,
+  "dbName": "Goristroskin Soulbead Amulet",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Avoidance": 852,
+   "Deflection": 849,
+   "Deflect Severity": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Scintillant Amulet +1_IL1800.png",
+  "id": 6254,
+  "dbName": "Scintillant Amulet +1",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Combat Advantage": 899,
+   "Critical Strike": 902,
+   "Critical Severity": 899
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Scintillant Amulet_IL1700.png",
+  "id": 4033,
+  "dbName": "Scintillant Amulet",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 849,
+   "Critical Strike": 852,
+   "Critical Severity": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Spiked Amulet_IL1700 (2).png",
+  "id": 4028,
+  "dbName": "Spiked Amulet",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 849,
+   "Combat Advantage": 849,
+   "Critical Strike": 852
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Spiked Amulet_IL1700 (3).png",
+  "id": 4028,
+  "dbName": "Spiked Amulet",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 849,
+   "Combat Advantage": 849,
+   "Critical Strike": 852
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ }
+]

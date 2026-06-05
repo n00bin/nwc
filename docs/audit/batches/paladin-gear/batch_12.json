@@ -1,0 +1,471 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Gladiator Armet_IL728.png",
+  "id": 2596,
+  "dbName": "Adamant Gladiator Armet",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Defense": 346,
+   "Awareness": 164,
+   "Deflection": 218
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Medic Armet_IL728.png",
+  "id": 2600,
+  "dbName": "Adamant Medic Armet",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Combat Advantage": 164,
+   "Defense": 346,
+   "Awareness": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Alliance Restoration Armet_IL546.png",
+  "id": 2333,
+  "dbName": "Alliance Restoration Armet",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 223,
+   "Critical Strike": 187,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Alliance Ward Armet_IL546.png",
+  "id": 2337,
+  "dbName": "Alliance Ward Armet",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Severity": 164,
+   "Defense": 410,
+   "Awareness": 246
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Ancient Scalebreaker's Helm_IL1700.png",
+  "id": 1108,
+  "dbName": "Ancient Scalebreaker's Helm",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Defense": 765,
+   "Critical Avoidance": 765,
+   "Incoming Healing": 1020
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Apprentice's Ruined Coif_IL690.png",
+  "id": 3469,
+  "dbName": "Apprentice's Ruined Coif",
+  "dbItemLevel": 690,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Apprentice's Runed Coif_IL965.png",
+  "id": 1541,
+  "dbName": "Apprentice's Runed Coif",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Strike": 507,
+   "Defense": 724,
+   "Critical Avoidance": 217
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Astral Raider's Armet_IL2200.png",
+  "id": 725,
+  "dbName": "Astral Raider's Armet",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Accuracy": 990,
+   "Deflection": 990,
+   "Deflect Severity": 1320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Incoming Healing, -7500 Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Black Ice Helmet_IL512.png",
+  "id": 2082,
+  "dbName": "Black Ice Helmet",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.1,
+   "Critical Severity": 131,
+   "Defense": 384,
+   "Critical Avoidance": 59.9,
+   "Deflection": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Bronzewood Restoration Umqhele_IL784.png",
+  "id": 2410,
+  "dbName": "Bronzewood Restoration Umqhele",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Accuracy": 353,
+   "Critical Strike": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Bronzewood Ward Umqhele_IL784.png",
+  "id": 2406,
+  "dbName": "Bronzewood Ward Umqhele",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 353,
+   "Defense": 588,
+   "Awareness": 235
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Coif of the Spy's Guild_IL940.png",
+  "id": 1585,
+  "dbName": "Coif of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 494,
+   "Defense": 705,
+   "Critical Avoidance": 212
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Company Restoration Armet_IL588.png",
+  "id": 2632,
+  "dbName": "Company Restoration Armet",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Critical Strike": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Company Ward Armet_IL588.png",
+  "id": 2628,
+  "dbName": "Company Ward Armet",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Defense": 441,
+   "Deflection": 176
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Crone's Coif_IL1225.png",
+  "id": 3354,
+  "dbName": "Crone's Coif",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Critical Strike": 643,
+   "Defense": 919,
+   "Incoming Healing": 276
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5000 for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Crown of the Iron Bulwark_IL4700.png",
+  "id": 384,
+  "dbName": "Crown of the Iron Bulwark",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Defense": 2221,
+   "Awareness": 3102
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shared Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "On encounter use: 40% chance for self + lowest-HP ally in 25' to gain +5% Forte and +3.5% Defense 8s (15s cd)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Demon Forged Coif_IL1215.png",
+  "id": 1413,
+  "dbName": "Demon Forged Coif",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 638,
+   "Defense": 911,
+   "Critical Avoidance": 273
+  },
+  "dbPercentStats": {
+   "Damage against Devils": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Depthforged Helm_IL3000.png",
+  "id": 605,
+  "dbName": "Depthforged Helm",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Defense": 2250,
+   "Critical Avoidance": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.4% Stamina Regeneration and 0.6% Awareness. Max 10 Stacks: 4% Stamina Regeneration and 6% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Devil Forged Coif_IL1215.png",
+  "id": 1401,
+  "dbName": "Devil Forged Coif",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 638,
+   "Defense": 911,
+   "Critical Avoidance": 273
+  },
+  "dbPercentStats": {
+   "Damage against Demons": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Dragonflight Ward Armet_IL588.png",
+  "id": 2565,
+  "dbName": "Dragonflight Ward Armet",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Defense": 441,
+   "Awareness": 265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Dungeon Raider's Coif_IL940.png",
+  "id": 1589,
+  "dbName": "Dungeon Raider's Coif",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 494,
+   "Defense": 705,
+   "Critical Avoidance": 212
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elemental Alliance Restoration Armet_IL554.png",
+  "id": 2319,
+  "dbName": "Elemental Alliance Restoration Armet",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 249,
+   "Critical Strike": 166,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elemental Alliance Ward Armet_IL554.png",
+  "id": 2312,
+  "dbName": "Elemental Alliance Ward Armet",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Critical Severity": 166,
+   "Defense": 416,
+   "Awareness": 249
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elemental Corrupted Black Ice Helm_IL546.png",
+  "id": 2075,
+  "dbName": "Elemental Corrupted Black Ice Helm",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 247,
+   "Critical Severity": 163,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elemental Elven Restoration Armet_IL575.png",
+  "id": 2291,
+  "dbName": "Elemental Elven Restoration Armet",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Accuracy": 259,
+   "Critical Severity": 172,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

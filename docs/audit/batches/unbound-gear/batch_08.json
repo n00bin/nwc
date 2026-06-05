@@ -1,0 +1,473 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ivory Dwarven Ring_IL1500.png",
+  "id": 2388,
+  "dbName": "Ivory Dwarven Ring",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Deflection": 3375,
+   "Outgoing Healing": 1125
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 75 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Knight's Dragonflight Ring_IL1500.png",
+  "id": 2379,
+  "dbName": "Knight's Dragonflight Ring",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Defense": 1125,
+   "Incoming Healing": 3375
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Defense Preparation",
+    "stat": null,
+    "amount": null,
+    "description": "When you stand still for 6 seconds, your Defense and Movement Speed is increased by 10% for 6 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\League's Assault Ring_IL588.png",
+  "id": 1812,
+  "dbName": "League's Assault Ring",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 441,
+   "Critical Severity": 1323
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Tenacity",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 5 Critical Severity for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\League's Elite Assault Ring_IL602.png",
+  "id": 1816,
+  "dbName": "League's Elite Assault Ring",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Critical Strike": 452,
+   "Critical Severity": 1354
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Tenacity",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Critical Severity for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\League's Elite Raid Ring_IL602.png",
+  "id": 1819,
+  "dbName": "League's Elite Raid Ring",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 452,
+   "Critical Strike": 1354
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Critical Strike for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\League's Elite Restoration Ring_IL602.png",
+  "id": 1818,
+  "dbName": "League's Elite Restoration Ring",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 1354,
+   "Combat Advantage": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Accuracy for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\League's Elite Ward Ring_IL602.png",
+  "id": 1817,
+  "dbName": "League's Elite Ward Ring",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Critical Avoidance": 1354,
+   "Defense": 452,
+   "Deflection": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\League's Raid Ring_IL588.png",
+  "id": 1813,
+  "dbName": "League's Raid Ring",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 441,
+   "Critical Strike": 1323
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 5 Critical Strike for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\League's Restoration Ring_IL588.png",
+  "id": 1814,
+  "dbName": "League's Restoration Ring",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 1323,
+   "Combat Advantage": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 5 Accuracy for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\League's Ward Ring_IL588.png",
+  "id": 1815,
+  "dbName": "League's Ward Ring",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Avoidance": 1323,
+   "Deflection": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 5 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Lichstone Ward Ring_IL784.png",
+  "id": 2412,
+  "dbName": "Lichstone Ward Ring",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Critical Avoidance": 1764,
+   "Deflection": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Deflect is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Lionsmane Duelist Ring_IL588.png",
+  "id": 2558,
+  "dbName": "Lionsmane Duelist Ring",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 1323,
+   "Deflection": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Lionsmane Executioner Ring_IL588.png",
+  "id": 2563,
+  "dbName": "Lionsmane Executioner Ring",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 441,
+   "Combat Advantage": 1323
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Lionsmane Medic Ring_IL588.png",
+  "id": 2561,
+  "dbName": "Lionsmane Medic Ring",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 441,
+   "Critical Strike": 1323
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Medic's Dragonflight Ring_IL1500.png",
+  "id": 2381,
+  "dbName": "Medic's Dragonflight Ring",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Critical Strike": 1125,
+   "Outgoing Healing": 3375
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Control Preparation",
+    "stat": null,
+    "amount": null,
+    "description": "When you stand still for 6 seconds, your Control Bonus is increased by 10% and your Critical Severity is increased by 5% for 6 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Mercenary's Dragonflight Ring_IL1500.png",
+  "id": 2376,
+  "dbName": "Mercenary's Dragonflight Ring",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Combat Advantage": 3375
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Gutsy Mercenary",
+    "stat": null,
+    "amount": null,
+    "description": "Your Combat Advantage and Power is increased by 3,000 when you are moving.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ostorian Ring of Blod_IL588.png",
+  "id": 2062,
+  "dbName": "Ostorian Ring of Blod",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Awareness": 882,
+   "Critical Avoidance": 882
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ostorian Ring of Dod_IL588.png",
+  "id": 2056,
+  "dbName": "Ostorian Ring of Dod",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 882,
+   "Critical Strike": 882
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ostorian Ring of Hellig_IL588.png",
+  "id": 2063,
+  "dbName": "Ostorian Ring of Hellig",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 882,
+   "Combat Advantage": 882
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ostorian Ring of Krig_IL588.png",
+  "id": 2055,
+  "dbName": "Ostorian Ring of Krig",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 882,
+   "Critical Strike": 882
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ostorian Ring of Skold_IL588.png",
+  "id": 2057,
+  "dbName": "Ostorian Ring of Skold",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 882,
+   "Defense": 882
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ostorian Ring of Stein_IL588.png",
+  "id": 2054,
+  "dbName": "Ostorian Ring of Stein",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Defense": 882,
+   "Deflection": 882
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Physician's Dragonflight Ring_IL1600.png",
+  "id": 2373,
+  "dbName": "Physician's Dragonflight Ring",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Critical Severity": 3600,
+   "Forte": 1200
+  },
+  "dbPercentStats": {
+   "Movement Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Expert's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Your Outgoing Healing is increased by 5% when you are moving.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Pioneer Assault Ring_IL616.png",
+  "id": 1821,
+  "dbName": "Pioneer Assault Ring",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Critical Strike": 462,
+   "Critical Severity": 1386
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Tenacity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Pioneer Raid Ring_IL616.png",
+  "id": 1820,
+  "dbName": "Pioneer Raid Ring",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Accuracy": 462,
+   "Critical Strike": 1386
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Strike increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ }
+]

@@ -1,0 +1,474 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dragonflight Assault Vambraces_IL588.png",
+  "id": 6657,
+  "dbName": "Dragonflight Assault Vambraces",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dragonflight Raid Vambraces_IL588.png",
+  "id": 6441,
+  "dbName": "Dragonflight Raid Vambraces",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dragonsteel Vambraces_IL1900.png",
+  "id": 6445,
+  "dbName": "Dragonsteel Vambraces",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Severity": 1425,
+   "Defense": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged At-Will",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you activate a Daily power, increase the damage dealt by your at-will attacks by 15% for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dungeon Raider's Vambraces_IL940.png",
+  "id": 6723,
+  "dbName": "Dungeon Raider's Vambraces",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 494,
+   "Defense": 705,
+   "Critical Avoidance": 212
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Alliance Ward Vambraces_IL554.png",
+  "id": 6475,
+  "dbName": "Elemental Alliance Ward Vambraces",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Combat Advantage": 249,
+   "Critical Strike": 166,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Dragonflight Assault Vambraces_IL596.png",
+  "id": 6478,
+  "dbName": "Elemental Dragonflight Assault Vambraces",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Combat Advantage": 268,
+   "Critical Severity": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Dragonflight Raid Vambraces_IL596.png",
+  "id": 6483,
+  "dbName": "Elemental Dragonflight Raid Vambraces",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Accuracy": 268,
+   "Combat Advantage": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Elven Ward Vambraces_IL575.png",
+  "id": 6487,
+  "dbName": "Elemental Elven Ward Vambraces",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Combat Advantage": 259,
+   "Critical Strike": 172,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Lionsmane Duelist Vambraces_IL574.png",
+  "id": 6491,
+  "dbName": "Elemental Lionsmane Duelist Vambraces",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Critical Severity": 129,
+   "Defense": 430,
+   "Awareness": 129,
+   "Deflect": 172
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Lionsmane Executioner Vambraces_IL574.png",
+  "id": 6495,
+  "dbName": "Elemental Lionsmane Executioner Vambraces",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Combat Advantage": 129,
+   "Critical Strike": 129,
+   "Defense": 430,
+   "Critical Avoidance": 172
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elven Ward Vambraces_IL567.png",
+  "id": 6499,
+  "dbName": "Elven Ward Vambraces",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Combat Advantage": 255,
+   "Critical Strike": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Bregan D'aerthe Mauler's Gauntlets_IL2050.png",
+  "id": 6502,
+  "dbName": "Enchanted Bregan D'aerthe Mauler's Gauntlets",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Severity": 1538,
+   "Incoming Healing": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Precision",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 400 Accuracy for 10 seconds when you strike an enemy, lose a stack when you are struck. Stacks 20 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Depthforged Gauntlets_IL3200 (2).png",
+  "id": 219,
+  "dbName": "Enchanted Depthforged Gauntlets",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Defense": 2400,
+   "Awareness": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sudden Intuition",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Awareness and Deflect Severity by 7.5% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Depthforged Gauntlets_IL3200.png",
+  "id": 219,
+  "dbName": "Enchanted Depthforged Gauntlets",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Defense": 2400,
+   "Awareness": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sudden Intuition",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Awareness and Deflect Severity by 7.5% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Resolution Vambraces_IL2050 (2).png",
+  "id": 6517,
+  "dbName": "Exalted Maiden's Resolution Vambraces",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1230,
+   "Critical Severity": 923,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Resolution Vambraces_IL2050.png",
+  "id": 6517,
+  "dbName": "Exalted Maiden's Resolution Vambraces",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1230,
+   "Critical Severity": 923,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Ward Guards_IL2050 (2).png",
+  "id": 931,
+  "dbName": "Exalted Maiden's Ward Guards",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 923,
+   "Deflect Severity": 923,
+   "Forte": 1230
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Ward Guards_IL2050.png",
+  "id": 931,
+  "dbName": "Exalted Maiden's Ward Guards",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 923,
+   "Deflect Severity": 923,
+   "Forte": 1230
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Fiend Forged Vambraces_IL1230.png",
+  "id": 6556,
+  "dbName": "Fiend Forged Vambraces",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Strike": 554,
+   "Defense": 922,
+   "Critical Avoidance": 369
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Forest Guardian's Raid Vambraces_IL1500.png",
+  "id": 6559,
+  "dbName": "Forest Guardian's Raid Vambraces",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Critical Strike": 675,
+   "Defense": 1125,
+   "Critical Avoidance": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Accuracy for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Gauntlets of the Bloodborne Reaper_IL5000.png",
+  "id": 6564,
+  "dbName": "Gauntlets of the Bloodborne Reaper",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Strike": 4050,
+   "Forte": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Surge of Lethality",
+    "stat": null,
+    "amount": null,
+    "description": "When you use an at-will power, you have a 1.5% chance to gain 9.5% Critical Severity for 5 seconds. This does not stack (5 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Gauntlets of the Crimson Scythe_IL4700.png",
+  "id": 6565,
+  "dbName": "Gauntlets of the Crimson Scythe",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3807,
+   "Forte": 3490
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Momentum",
+    "stat": null,
+    "amount": null,
+    "description": "When you use an at-will power, you have a 30% chance to gain +7% Critical Severity for 6 seconds. Re-applying the effect will refresh it's duration.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Gauntlets of the Unyielding Bastion_IL5000.png",
+  "id": 378,
+  "dbName": "Gauntlets of the Unyielding Bastion",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Defense": 2888,
+   "Critical Avoidance": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reprisal Reflex",
+    "stat": null,
+    "amount": null,
+    "description": "On Crit hit on you: reflect 10% MaxHP + 0.5% Awareness 10s (10s cd)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Gild Vambraces of Halaster's Successor_IL1010.png",
+  "id": 6726,
+  "dbName": "Gild Vambraces of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Critical Strike": 455,
+   "Defense": 758,
+   "Critical Avoidance": 303
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Gild Vambraces of the Successor_IL990.png",
+  "id": 6568,
+  "dbName": "Gild Vambraces of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Critical Strike": 446,
+   "Defense": 742,
+   "Critical Avoidance": 297
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

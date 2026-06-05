@@ -1,0 +1,520 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Fret Barbute of the Successor_IL990.png",
+  "id": 6562,
+  "dbName": "Fret Barbute of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Critical Strike": 297,
+   "Defense": 742,
+   "Critical Avoidance": 446
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Strike increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Hammerstone Helm_IL352.png",
+  "id": 6574,
+  "dbName": "Hammerstone Helm",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 40,
+   "Combat Advantage": 92,
+   "Critical Strike": 92,
+   "Defense": 264,
+   "Deflect": 40
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Helm of the Bloodborne Reaper_IL5000.png",
+  "id": 6592,
+  "dbName": "Helm of the Bloodborne Reaper",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Combat Advantage": 3300,
+   "Critical Severity": 4050
+  },
+  "dbPercentStats": {
+   "Combat Advantage": 7,
+   "Critical Strike": 6
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Balanced Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "+7% Combat Advantage when your health is above 60%. +6% Critical Strike when your health is below 60%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Helm of the Crimson Scythe_IL4700.png",
+  "id": 6593,
+  "dbName": "Helm of the Crimson Scythe",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Forte": 2855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Surge",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with any Power, gain +4.5% Combat Advantage and +3.5% Power for 8 seconds. (12 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Helm of the Thayan Servitor_IL800.png",
+  "id": 6836,
+  "dbName": "Helm of the Thayan Servitor",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 211,
+   "Critical Severity": 211,
+   "Defense": 600,
+   "Critical Avoidance": 88.8,
+   "Deflect": 88.8
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Helm of the Unyielding Bastion_IL5000.png",
+  "id": 380,
+  "dbName": "Helm of the Unyielding Bastion",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Awareness": 3300,
+   "Critical Avoidance": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Acumen",
+    "stat": null,
+    "amount": null,
+    "description": "Per 5s in combat: +0.4% Awareness, +0.5% Crit Avoid. Max 10 stacks (4%/5%)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Infernal Forged Sallet_IL1200.png",
+  "id": 6611,
+  "dbName": "Infernal Forged Sallet",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Combat Advantage": 360,
+   "Critical Strike": 540,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\League's Assault Baydah_IL588.png",
+  "id": 6619,
+  "dbName": "League's Assault Baydah",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 176,
+   "Critical Severity": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\League's Elite Assault Baydah_IL602.png",
+  "id": 6623,
+  "dbName": "League's Elite Assault Baydah",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Critical Strike": 361,
+   "Critical Severity": 542,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\League's Elite Raid Baydah_IL602.png",
+  "id": 6627,
+  "dbName": "League's Elite Raid Baydah",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 542,
+   "Critical Strike": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\League's Raid Baydah_IL588.png",
+  "id": 6631,
+  "dbName": "League's Raid Baydah",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Critical Strike": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lion Guard's Ward Sallet_IL1250.png",
+  "id": 6646,
+  "dbName": "Lion Guard's Ward Sallet",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Critical Strike": 375,
+   "Defense": 938,
+   "Critical Avoidance": 562
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Might",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Power is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lionsmane Duelist Sallet_IL560.png",
+  "id": 6650,
+  "dbName": "Lionsmane Duelist Sallet",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Accuracy": 126,
+   "Critical Strike": 168,
+   "Defense": 420,
+   "Awareness": 126
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lionsmane Executioner Sallet_IL560.png",
+  "id": 6653,
+  "dbName": "Lionsmane Executioner Sallet",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Combat Advantage": 168,
+   "Critical Strike": 126,
+   "Defense": 420,
+   "Deflect": 126
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lolthian Barbute_IL2050.png",
+  "id": 6659,
+  "dbName": "Lolthian Barbute",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 923,
+   "Critical Severity": 1230,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 7500 Power for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Mastered Duergar Mercenary's Goristro Horn_IL1900.png",
+  "id": 890,
+  "dbName": "Mastered Duergar Mercenary's Goristro Horn",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Defense": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Mastered Duergar Mercenary's Halfhelm_IL1900.png",
+  "id": 6669,
+  "dbName": "Mastered Duergar Mercenary's Halfhelm",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Critical Strike": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pilgrim Assault Baydah_IL644.png",
+  "id": 6688,
+  "dbName": "Pilgrim Assault Baydah",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Critical Strike": 193,
+   "Critical Severity": 290,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Chultan Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage in all of Chult.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pilgrim Raid Baydah_IL644.png",
+  "id": 6727,
+  "dbName": "Pilgrim Raid Baydah",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Critical Strike": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Chultan Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage in all of Chult.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pioneer Assault Baydah_IL616.png",
+  "id": 6699,
+  "dbName": "Pioneer Assault Baydah",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Critical Strike": 185,
+   "Critical Severity": 277,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Maximum Hit Points for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pioneer Raid Baydah_IL616.png",
+  "id": 6702,
+  "dbName": "Pioneer Raid Baydah",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Critical Strike": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Maximum Hit Points for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Primal Assault Kofia_IL700.png",
+  "id": 6707,
+  "dbName": "Primal Assault Kofia",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Critical Strike": 210,
+   "Critical Severity": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% of your health back.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Primal Raid Kofia_IL700.png",
+  "id": 6711,
+  "dbName": "Primal Raid Kofia",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Accuracy": 210,
+   "Critical Strike": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% of your health back.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Protege's Visor Helm_IL980.png",
+  "id": 6715,
+  "dbName": "Protege's Visor Helm",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Combat Advantage": 294,
+   "Critical Strike": 441,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pulsar Armet_IL2600.png",
+  "id": 209,
+  "dbName": "Pulsar Armet",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Accuracy": 1170,
+   "Defense": 950,
+   "Awareness": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 2% Stamina Regeneration for 10 seconds. Max 5 Stacks: 10% Stamina Regeneration.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

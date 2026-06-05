@@ -1,0 +1,148 @@
+[
+ {
+  "name": "Snowbound Circlet of Protection",
+  "class": "paladin-gear",
+  "ids": [
+   5423
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Defense: screenshot 4,935 vs DB 6,935",
+   "Equip bonus name: screenshot shows 'Survivor's Reflexes', DB stores 'Survivor's Avoidance'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Circlet of Protection_IL4700 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Avoidance",
+    "description": "Gain up to 14,475 Awareness based on your missing health. The max bonus is achieved at 25% or less health. Currently: 0 Awareness."
+   }
+  ]
+ },
+ {
+  "name": "Snowbound Coil of Wrath",
+  "class": "paladin-gear",
+  "ids": [
+   5424
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Assassin's Bloodbath', DB stores 'Assassin's Growth'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Coil of Wrath_IL4700 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Assassin's Growth",
+    "description": "Whenever you critically strike an enemy with your Powers, you gain 14,475 Critical Severity for 10s. (15 second cooldown)"
+   }
+  ]
+ },
+ {
+  "name": "Snowbound Ring of Initiative",
+  "class": "paladin-gear",
+  "ids": [
+   5428
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Explosive Force', DB stores 'Explosive Volley'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Ring of Initiative_IL4700 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Explosive Volley",
+    "description": "Whenever you damage an enemy with your Powers, you have a 10% chance to deal 100 magnitude damage in a 20 radius around your target. (5 second cooldown)"
+   }
+  ]
+ },
+ {
+  "name": "Ancient Scalebreaker's Gloves",
+  "class": "bard-gear",
+  "ids": [
+   4048
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus distance: screenshot says 'no teammates within 30\\' of you' but DB description says 'within 10\\' of you'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ancient Scalebreaker's Gloves_IL1700.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "description": "When you have teammates within 10' of you, your Stamina Regeneration and Control Resistance is increased by 5%."
+   }
+  ]
+ },
+ {
+  "name": "Astral Raider's Wristguards",
+  "class": "bard-gear",
+  "ids": [
+   3983
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Scaled Furor' but DB stores 'Scaled Power'",
+   "Equip bonus damage cap: screenshot shows 'up to 20% bonus Damage' but DB stores 'up to 70% bonus Damage'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Astral Raider's Wristguards_IL2200.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Power",
+    "description": "Grants up to 70% bonus Damage when your total item level is being scaled down. Disabled in Thay Arena PvP."
+   }
+  ]
+ },
+ {
+  "name": "Cuirass of the Scarlet Arcanum",
+  "class": "bard-gear",
+  "ids": [
+   2712
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: DB has 'Focused Frenzy', screenshot reads 'Focused Burst' (confirmed across all three screenshots for this item)"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuirass of the Scarlet Arcanum_IL5000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage."
+   }
+  ]
+ },
+ {
+  "name": "Hauberk of the Crimson Gale",
+  "class": "bard-gear",
+  "ids": [
+   2716
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus 'Lethal Focus': screenshot says '+3% Power and +4% Accuracy' vs DB '+3% Hit Points and +4% Accuracy'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Hauberk of the Crimson Gale_IL4700 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Lethal Focus",
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, you gain +3% Hit Points and +4% Accuracy for 7 seconds (5 second cooldown)."
+   }
+  ]
+ },
+ {
+  "name": "Depthcured Cap",
+  "class": "bard-gear",
+  "ids": [
+   2736
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description: screenshot shows 'gain 0.8% Combat Advantage' per 5 seconds vs DB '1% Combat Advantage'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Depthcured Cap_IL3000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max 10 Stacks: 8% Combat Advantage."
+   }
+  ]
+ }
+]

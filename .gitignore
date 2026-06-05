@@ -27,6 +27,7 @@ package.json
 package-lock.json
 _test_*.js
 _check_*.js
+scripts/_*.js
 
 # Python bytecode cache
 scripts/__pycache__/
@@ -38,6 +39,7 @@ __pycache__/
 # free site. (The engine the optimizer scores against is public; the
 # optimizer logic and generated builds are the paid IP.)
 scripts/optimize_build.js
+js/optimizer-local.js
 scripts/best_build_oneshot.workflow.js
 scripts/regen_build_link.py
 scripts/build_warlock_dps_bis_link.py
@@ -56,3 +58,14 @@ docs/best_build_warlock_dps_bis.md
 docs/best_build_warlock_dps_bis.build.json
 docs/best_build_warlock_dps_bis.link.txt
 .build-screens/
+
+# local-only test launcher (conditional-uptime preview)
+_uptime_test.html
+scripts/_*.py
+scripts/_*.txt
+
+# vision-audit image archives (multi-GB) — local only, never push
+docs/audit/_up/
+docs/audit/companions/
+*.pkl
+artifacts.txt

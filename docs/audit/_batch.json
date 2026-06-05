@@ -1,0 +1,100 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\Adamant Duelist Sallet_IL728.png",
+  "dbName": "Adamant Duelist Sallet",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Critical Strike": 218,
+   "Defense": 546,
+   "Awareness": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\Adamant Gladiator Sallet_IL728.png",
+  "dbName": "Adamant Gladiator Sallet",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 218,
+   "Critical Strike": 164,
+   "Defense": 546,
+   "Deflect": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\Alliance Soldier's Helmet_IL1600.png",
+  "dbName": "Alliance Soldier's Helmet",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Accuracy": 960,
+   "Defense": 720,
+   "Deflect": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Accuracy is increased by 7.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\Alliance Ward Sallet_IL546.png",
+  "dbName": "Alliance Ward Sallet",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 246,
+   "Critical Strike": 164,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\Ancient Scalebreaker's Barbute_IL1700.png",
+  "dbName": "Ancient Scalebreaker's Barbute",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Severity": 1020,
+   "Defense": 765,
+   "Deflect Severity": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

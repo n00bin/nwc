@@ -1,0 +1,546 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ultraviolet Elven Coif_IL2900.png",
+  "id": 3205,
+  "dbName": "Ultraviolet Elven Coif",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Critical Strike": 2175,
+   "Outgoing Healing": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Channeler's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Every 3s in combat: +0.5% Outgoing Healing and 0.5% Power. Max 10 stacks: 5% each.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ultraviolet Elven Hat_IL2900.png",
+  "id": 2750,
+  "dbName": "Ultraviolet Elven Hat",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Combat Advantage": 2175,
+   "Critical Strike": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max Stacks: 10.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Umbral Duelist Mask_IL728.png",
+  "id": 4589,
+  "dbName": "Umbral Duelist Mask",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Critical Strike": 164,
+   "Defense": 546,
+   "Awareness": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Accuracy. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Umbral Executioner Mask_IL728.png",
+  "id": 4587,
+  "dbName": "Umbral Executioner Mask",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Critical Strike": 164,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Accuracy. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Weathered Wood Coif_IL1300.png",
+  "id": 3344,
+  "dbName": "Weathered Wood Coif",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Critical Strike": 682,
+   "Defense": 975,
+   "Incoming Healing": 292
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Weathered Wood Hood_IL1300.png",
+  "id": 4058,
+  "dbName": "Weathered Wood Hood",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 585,
+   "Defense": 975,
+   "Control Bonus": 390
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Wintermarked Mender Barbute_IL5700 (2).png",
+  "id": 5488,
+  "dbName": "Wintermarked Mender Barbute",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Instinct",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is above 90%, your Outgoing Healing is increased by 9%. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Wintermarked Mender Barbute_IL5700 (3).png",
+  "id": 5488,
+  "dbName": "Wintermarked Mender Barbute",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Instinct",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is above 90%, your Outgoing Healing is increased by 9%. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Wintermarked Mender Barbute_IL5700.png",
+  "id": 5488,
+  "dbName": "Wintermarked Mender Barbute",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Instinct",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is above 90%, your Outgoing Healing is increased by 9%. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Aboleth Rapier_IL350.png",
+  "id": 4792,
+  "dbName": "Aboleth Rapier",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Outgoing Damage",
+    "amount": 4,
+    "description": "2 of Set: Encounter triggers Far-Influenced: Outgoing Damage +4% + random buff for 10s. (30s CD)",
+    "setName": "Aboleth",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bismuth Rapier_IL3400.png",
+  "id": 4618,
+  "dbName": "Bismuth Rapier",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Critical Strike": 3060,
+   "Forte": 2295
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in Pirates' Skyhold or Dread Sanctum, Movement Speed +12%. Each Prismatic Force stack (max 10): General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% OOH, Tank +0.4% Awareness.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Blaspheme Point_IL1900.png",
+  "id": 4890,
+  "dbName": "Blaspheme Point",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Damage": 100,
+   "Combat Advantage": 1425,
+   "Critical Strike": 570,
+   "Critical Severity": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Blaspheme (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Gain 70 Power, Defense, or Outgoing Healing (depending on role) for 15s when you dodge, block, sprint, or shadow slip (30s CD). When dealing Combat Advantage damage, 10% chance to gain 3% Base Damage Boost / -5% Incoming Damage / 3% Overall Outgoing Healing for 15s (30s CD).",
+    "setName": "Blaspheme",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bloodbrass Rapier_IL2750.png",
+  "id": 4621,
+  "dbName": "Bloodbrass Rapier",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Critical Strike": 2475,
+   "Forte": 1856
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: In Pirates' Skyhold, Movement Speed +12%. Each Freebooter's Will stack (max 10): General +0.25% Power, DPS +0.35% Critical Severity, Healer +0.3% Overall Outgoing Healing, Tank +0.3% Awareness.",
+    "setName": "Skyhold Arms",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Burning Rapier_IL300.png",
+  "id": 4742,
+  "dbName": "Burning Rapier",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Action Points",
+    "amount": 25,
+    "description": "2 of Set: Daily power 25% chance to immediately restore AP.",
+    "setName": "Burning Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Celestial Point of Melody_IL1150.png",
+  "id": 4900,
+  "dbName": "Celestial Point of Melody",
+  "dbItemLevel": 1150,
+  "dbRatingStats": {
+   "Accuracy": 862,
+   "Critical Severity": 862
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Celestial (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: When you use an encounter or daily power during combat, you gain a stack of Divine Charge for 15 seconds. Once you reach 5 stacks of Divine Charge, they are consumed and you are empowered with Divine Fury for 30 seconds, granting +5% Base Damage Boost and +7.5% Overall Outgoing Healing. You may only have 1 stack of Divine Fury at a time.",
+    "setName": "Celestial",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Celestial Point of Melody_IL650.png",
+  "id": 4637,
+  "dbName": "Celestial Point of Melody",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 488,
+   "Critical Severity": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Base Damage Boost",
+    "amount": 7.5,
+    "description": "2 of Set: Use encounter/daily during combat to gain Divine Charge stacks (15s each). 5 stacks consume and grant Divine Fury for 30s: +7.5% Base Damage Boost, +7.5% Overall Outgoing Healing.",
+    "setName": "Celestial",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Celestial Point of Melody_IL900.png",
+  "id": 4899,
+  "dbName": "Celestial Point of Melody",
+  "dbItemLevel": 900,
+  "dbRatingStats": {
+   "Accuracy": 675,
+   "Critical Severity": 675
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Celestial (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: When you use an encounter or daily power during combat, you gain a stack of Divine Charge for 15 seconds. Once you reach 5 stacks of Divine Charge, they are consumed and you are empowered with Divine Fury for 30 seconds, granting +5% Base Damage Boost and +7.5% Overall Outgoing Healing. You may only have 1 stack of Divine Fury at a time.",
+    "setName": "Celestial",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crystal Rapier_IL3100.png",
+  "id": 4619,
+  "dbName": "Crystal Rapier",
+  "dbItemLevel": 3100,
+  "dbRatingStats": {
+   "Critical Strike": 2790,
+   "Forte": 2292
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in Pirates' Skyhold or Dread Sanctum, Movement Speed +12%. Each Prismatic Force stack (max 10): General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% OOH, Tank +0.4% Awareness.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Drowned Rapier_IL300.png",
+  "id": 4750,
+  "dbName": "Drowned Rapier",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Heal Self",
+    "amount": 50,
+    "description": "2 of Set: When struck, Heal for 50% of Max HP over 30s. (30s CD)",
+    "setName": "Drowned Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Duergar Mercenary's Steel Lute_IL1900.png",
+  "id": 4885,
+  "dbName": "Duergar Mercenary's Steel Lute",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Severity": 1425,
+   "Awareness": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Duergar Weapon Set (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You and nearby allies are granted +2% Base Damage Boost, +2% Overall Outgoing Healing, +2% Incoming Damage reduction. May stack up to 5 times when allies are equipped with a set of similar weapons.",
+    "setName": "Duergar Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Durgarn Thord Point_IL1850.png",
+  "id": 4628,
+  "dbName": "Durgarn Thord Point",
+  "dbItemLevel": 1850,
+  "dbRatingStats": {
+   "Critical Strike": 1388,
+   "Forte": 1388
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Recharge Speed",
+    "amount": 1,
+    "description": "2 of Set: Use encounter/daily during combat to gain Scalebreaker's Wrath stacks. Each stack 20s: role-based bonus. 6 stacks empower for 30s.",
+    "setName": "Scalebreaker's Wrath",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Earbleeder_IL350.png",
+  "id": 4939,
+  "dbName": "Earbleeder",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Earbleeder_IL500.png",
+  "id": 4940,
+  "dbName": "Earbleeder",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Earbleeder_IL650.png",
+  "id": 4941,
+  "dbName": "Earbleeder",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Earbleeder_IL800.png",
+  "id": 4942,
+  "dbName": "Earbleeder",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ }
+]

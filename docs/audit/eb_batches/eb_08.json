@@ -1,0 +1,148 @@
+[
+ {
+  "name": "Forest Guardian's Raid Coif",
+  "class": "bard-gear",
+  "ids": [
+   4054
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus Fey Hunter description: screenshot shows '+5% Damage in all of Sharandar.' vs DB '+3% Damage in all of Sharandar.'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Forest Guardian's Raid Coif_IL1500 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Fey Hunter",
+    "description": "+3% Damage in all of Sharandar."
+   }
+  ]
+ },
+ {
+  "name": "Helm of the Scarlet Arcanum",
+  "class": "bard-gear",
+  "ids": [
+   2713
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Steady Precision' vs DB 'Steady Henson'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Helm of the Scarlet Arcanum_IL5000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Steady Henson",
+    "description": "For every 8 seconds you are in combat, gain +1% Accuracy and +0.3% Recharge Speed. Max 7 Stacks: +7% Accuracy and +2.1% Recharge Speed."
+   }
+  ]
+ },
+ {
+  "name": "Helm of the Scarlet Arcanum",
+  "class": "bard-gear",
+  "ids": [
+   2713
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Steady Precision', DB stores 'Steady Henson'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Helm of the Scarlet Arcanum_IL5000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Steady Henson",
+    "description": "For every 8 seconds you are in combat, gain +1% Accuracy and +0.3% Recharge Speed. Max 7 Stacks: +7% Accuracy and +2.1% Recharge Speed."
+   }
+  ]
+ },
+ {
+  "name": "Ancient Scalebreaker's Gloves",
+  "class": "bard-gear",
+  "ids": [
+   4048
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description: DB says 'When you have teammates within 10’ of you' — screenshot says 'When you have no teammates within 30’ of you' (missing 'no'; distance 10’ in DB vs 30’ in screenshot)"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ancient Scalebreaker's Gloves_IL1700.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "description": "When you have teammates within 10' of you, your Stamina Regeneration and Control Resistance is increased by 5%."
+   }
+  ]
+ },
+ {
+  "name": "Astral Raider's Wristguards",
+  "class": "bard-gear",
+  "ids": [
+   3983
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus name: DB 'Scaled Power' vs screenshot 'Scaled Furor'",
+   "Equip bonus description: DB says 'up to 70% bonus Damage' vs screenshot 'up to 20% bonus Damage'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Astral Raider's Wristguards_IL2200.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Power",
+    "description": "Grants up to 70% bonus Damage when your total item level is being scaled down. Disabled in Thay Arena PvP."
+   }
+  ]
+ },
+ {
+  "name": "Banded Bracers of the Successor",
+  "class": "bard-gear",
+  "ids": [
+   4128
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description wording: DB stores '(60s CD)' but both screenshots show '(60 second cooldown)'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Banded Bracers of the Successor_IL990 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60s CD)"
+   }
+  ]
+ },
+ {
+  "name": "Crimson Scalebreaker's Rebel Gloves",
+  "class": "bard-gear",
+  "ids": [
+   2816
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Missing stat: both screenshots show +810 Forte, DB has no Forte entry (DB only has Critical Strike 1080 and Defense 810)",
+   "Equip bonus description: DB says 'When you have teammates within 30’ of you' — screenshots say 'When you have no teammates within 30’ of you' (missing 'no')"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crimson Scalebreaker's Rebel Gloves_IL1800 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "description": "When you have teammates within 30' of you, your Stamina Regeneration and Control Resistance is increased by 5%."
+   }
+  ]
+ },
+ {
+  "name": "Gauntlets of the Scarlet Arcanum",
+  "class": "bard-gear",
+  "ids": [
+   3931
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus 'Devastating Precision' description: DB says 'your enemy suffers +4% Critical Severity' but all three screenshots read '-4% Critical Severity' (enemy suffers a debuff/penalty, not a buff)"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Gauntlets of the Scarlet Arcanum_IL5000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Devastating Precision",
+    "description": "When you damage your target for more than 20% of your Maximum Hit Points in a single blow, your enemy suffers +4% Critical Severity, while you gain +8% Critical Severity for 8 seconds (10 second cooldown)."
+   }
+  ]
+ }
+]

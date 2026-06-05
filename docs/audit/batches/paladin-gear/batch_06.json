@@ -1,0 +1,542 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elemental Elven Ward Cuirass_IL575.png",
+  "id": 2285,
+  "dbName": "Elemental Elven Ward Cuirass",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Critical Severity": 259,
+   "Defense": 431,
+   "Awareness": 172
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elemental Purified Black Ice Armor_IL546.png",
+  "id": 2072,
+  "dbName": "Elemental Purified Black Ice Armor",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 205,
+   "Critical Strike": 137,
+   "Defense": 410,
+   "Awareness": 68
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elven Restoration Cuirass_IL567.png",
+  "id": 2305,
+  "dbName": "Elven Restoration Cuirass",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Accuracy": 170,
+   "Combat Advantage": 255,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elven Ward Cuirass_IL567.png",
+  "id": 2310,
+  "dbName": "Elven Ward Cuirass",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Critical Severity": 255,
+   "Defense": 425,
+   "Awareness": 170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Eternal Plate Armor_IL1300.png",
+  "id": 2344,
+  "dbName": "Eternal Plate Armor",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 337,
+   "Critical Strike": 339,
+   "Defense": 975,
+   "Deflection": 294
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Exalted Maiden's Ward Cuirass_IL2050.png",
+  "id": 930,
+  "dbName": "Exalted Maiden's Ward Cuirass",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 923,
+   "Awareness": 1230,
+   "Critical Avoidance": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Fiend Forged Scalemail_IL1230.png",
+  "id": 1399,
+  "dbName": "Fiend Forged Scalemail",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Defense": 922,
+   "Deflection": 922
+  },
+  "dbPercentStats": {
+   "Damage against Demons, Devils, and Fiends": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Hearthtunic_IL4700 (2).png",
+  "id": 5383,
+  "dbName": "Frostbound Hearthtunic",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3384,
+   "Defense": 987,
+   "Outgoing Healing": 2256
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Harmony",
+    "stat": null,
+    "amount": null,
+    "description": "While in The Reched Edge, teammates who are 25 or closer to you gain 1% Defense.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Hearthtunic_IL4700.png",
+  "id": 5383,
+  "dbName": "Frostbound Hearthtunic",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3384,
+   "Defense": 987,
+   "Outgoing Healing": 2256
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Harmony",
+    "stat": null,
+    "amount": null,
+    "description": "While in The Reched Edge, teammates who are 25 or closer to you gain 1% Defense.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Stonecoat_IL4700 (2).png",
+  "id": 5386,
+  "dbName": "Frostbound Stonecoat",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Forte": 2538,
+   "Control Bonus": 1410,
+   "Incoming Healing": 3384
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Blitz Rush",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 3,350 Awareness, and an additional 2.5% Recharge Speed in The Reched Edge.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Stonecoat_IL4700.png",
+  "id": 5386,
+  "dbName": "Frostbound Stonecoat",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Forte": 2538,
+   "Control Bonus": 1410,
+   "Incoming Healing": 3384
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Blitz Rush",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 3,350 Awareness, and an additional 2.5% Recharge Speed in The Reched Edge.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Warcoat_IL4700 (2).png",
+  "id": 5389,
+  "dbName": "Frostbound Warcoat",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 2256,
+   "Critical Strike": 3384,
+   "Defense": 987
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battleforged Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 3,350 Combat Advantage, and an additional 2.5% Power in The Reched Edge.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Warcoat_IL4700.png",
+  "id": 5389,
+  "dbName": "Frostbound Warcoat",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 2256,
+   "Critical Strike": 3384,
+   "Defense": 987
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battleforged Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 3,350 Combat Advantage, and an additional 2.5% Power in The Reched Edge.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Hammerstone Breastplate_IL352.png",
+  "id": 2084,
+  "dbName": "Hammerstone Breastplate",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 39.6,
+   "Critical Severity": 39.6,
+   "Defense": 264,
+   "Critical Avoidance": 92.4,
+   "Deflection": 92.4
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Huntsman Restoration Cuirass_IL672.png",
+  "id": 1766,
+  "dbName": "Huntsman Restoration Cuirass",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 202,
+   "Critical Strike": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Defense is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Huntsman Ward Cuirass_IL672.png",
+  "id": 1762,
+  "dbName": "Huntsman Ward Cuirass",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Defense": 504,
+   "Awareness": 202,
+   "Deflection": 302
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Defense is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Infernal Forged Scalemail_IL1200.png",
+  "id": 1421,
+  "dbName": "Infernal Forged Scalemail",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Defense": 900,
+   "Deflection": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Elite Restoration Charayneh_IL602.png",
+  "id": 1800,
+  "dbName": "League's Elite Restoration Charayneh",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 361,
+   "Critical Strike": 542,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 15 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Elite Ward Charayneh_IL602.png",
+  "id": 1794,
+  "dbName": "League's Elite Ward Charayneh",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Defense": 452,
+   "Awareness": 361,
+   "Deflection": 542
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 15 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Restoration Charayneh_IL588.png",
+  "id": 1791,
+  "dbName": "League's Restoration Charayneh",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Ward Charayneh_IL588.png",
+  "id": 1786,
+  "dbName": "League's Ward Charayneh",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Defense": 441,
+   "Awareness": 176,
+   "Deflection": 265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pilgrim Restoration Charayneh_IL644.png",
+  "id": 1778,
+  "dbName": "Pilgrim Restoration Charayneh",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 193,
+   "Critical Strike": 290,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 100 Defense for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pilgrim Ward Charayneh_IL644.png",
+  "id": 1782,
+  "dbName": "Pilgrim Ward Charayneh",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Defense": 483,
+   "Awareness": 193,
+   "Deflection": 290
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 100 Defense for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pioneer Restoration Charayneh_IL616.png",
+  "id": 1774,
+  "dbName": "Pioneer Restoration Charayneh",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Accuracy": 185,
+   "Combat Advantage": 277,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pioneer Ward Charayneh_IL616.png",
+  "id": 1771,
+  "dbName": "Pioneer Ward Charayneh",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Critical Severity": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ }
+]

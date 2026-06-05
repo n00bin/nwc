@@ -1,0 +1,414 @@
+[
+ {
+  "id": 3966,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ultraviolet Elven Vest_IL2900.png",
+  "dbName": "Ultraviolet Elven Vest",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Critical Strike": 2175,
+   "Forte": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Daily",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, your next encounter power will deal 20% more damage. (10 second cooldown). Additionally, when Focused Daily triggers, you gain 2.5% Critical Severity for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4133,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Runed Gaiters_IL965 (2).png",
+  "dbName": "Apprentice's Runed Gaiters",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Combat Advantage": 290,
+   "Critical Strike": 434,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 230 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2949,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Black Ice Boots_IL512 (2).png",
+  "dbName": "Black Ice Boots",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Combat Advantage": 132,
+   "Critical Strike": 59.9,
+   "Awareness": 132,
+   "Defense": 132
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2961,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Boots of the Thayan Servitor_IL800 (2).png",
+  "dbName": "Boots of the Thayan Servitor",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 88.8,
+   "Combat Advantage": 211,
+   "Critical Strike": 211,
+   "Defense": 600,
+   "Critical Avoidance": 88.8
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3282,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bregan D'aerthe Expert's Shoes_IL2000.png",
+  "dbName": "Bregan D'aerthe Expert's Shoes",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 900,
+   "Defense": 600,
+   "Control Resistance": 1800
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defying Medic",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Outgoing Healing for each enemy you are engaged in battle within 100'. (Max of 10 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4598,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Company Raid Boots_IL588.png",
+  "dbName": "Company Raid Boots",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3191,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Depthcured Cackrows_IL3000.png",
+  "dbName": "Depthcured Cackrows",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Outgoing Healing": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fiery Muse",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity/Performance/Soulweave regenerates 12% faster while on fire-themed maps. On other maps the regen bonus is 6%. Gain 4% Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3306,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dragonhide Crakows_IL1900.png",
+  "dbName": "Dragonhide Crakows",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Defense": 855,
+   "Awareness": 1140,
+   "Control Resistance": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, gain 10,000 Forte. When in a party, gain 10,000 Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4022,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dragonhide Pikes_IL1900 (2).png",
+  "dbName": "Dragonhide Pikes",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1140,
+   "Defense": 855,
+   "Critical Avoidance": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, gain 3,000 Defense. When in a party, gain 10,000 Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 1591,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dungeon Raider's Cuisses_IL940.png",
+  "dbName": "Dungeon Raider's Cuisses",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 352,
+   "Defense": 705,
+   "Awareness": 352
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2791,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enchanted Bregan D'aerthe Assassin's Longboots_IL2050 (2).png",
+  "dbName": "Enchanted Bregan D'aerthe Assassin's Longboots",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 923,
+   "Critical Severity": 1518,
+   "Defense": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Expertise",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 20' or closer to your target, your Critical Strike is increased by 7.5%. When you are 20' or further away from your target, your Forte is increased by 7.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3274,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enchanted Bregan D'aerthe Expert's Shoes_IL2050.png",
+  "dbName": "Enchanted Bregan D'aerthe Expert's Shoes",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Defense": 923,
+   "Control Resistance": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defying Medic",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 2000 Outgoing Healing for each enemy you are engaged in battle within 100'. (Max of 10 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3924,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Greaves of the Scarlet Arcanum_IL5000.png",
+  "dbName": "Greaves of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Combat Advantage": 3300,
+   "Critical Severity": 4050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Momentum's Edge",
+    "stat": null,
+    "amount": null,
+    "description": "While moving, gain +0.5% Power and +0.6% Combat Advantage. If you stand still for more than 3 seconds, you lose all stacks. Max 5 Stacks: +2.5% Power and +3% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3248,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Lolthian Cackrows_IL2050.png",
+  "dbName": "Lolthian Cackrows",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 923,
+   "Awareness": 1210,
+   "Control Resistance": 923,
+   "Critical Strike": 1845
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "Trades stat positions; specific behavior varies by build.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3266,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mastered Duergar Mercenary's Boots_IL1900.png",
+  "dbName": "Mastered Duergar Mercenary's Boots",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Avoidance": 1425,
+   "Outgoing Healing": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 10,000. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2787,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mastered Duergar Mercenary's Trodders_IL1900 (2).png",
+  "dbName": "Mastered Duergar Mercenary's Trodders",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 10,000. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3972,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Radiant Elven Boots_IL2800 (2).png",
+  "dbName": "Radiant Elven Boots",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Critical Strike": 2100,
+   "Critical Severity": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wildspace Precision",
+    "stat": null,
+    "amount": null,
+    "description": "+7.5% Critical Strike in Wildspace. +3% Critical Strike in non-Wildspace.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4437,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Reinforced Dragonflight Assault Boots_IL1400.png",
+  "dbName": "Reinforced Dragonflight Assault Boots",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Combat Advantage": 630,
+   "Critical Severity": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 4433,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Reinforced Dragonflight Raid Boots_IL1400.png",
+  "dbName": "Reinforced Dragonflight Raid Boots",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Accuracy": 630,
+   "Combat Advantage": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 4148,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Trapper of the Twilight's Boots_IL1000.png",
+  "dbName": "Trapper of the Twilight's Boots",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 450,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 2.5% Movement Speed for each enemy you are engaged in battle, to the max of 12%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

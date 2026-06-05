@@ -1,0 +1,387 @@
+[
+ {
+  "id": 4156,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mugger of the Maze's Braces_IL1000 (2).png",
+  "dbName": "Mugger of the Maze's Braces",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Strike": 375,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Bulwark's Shield",
+    "stat": null,
+    "amount": null,
+    "description": "You take 5% less damage from Ranged attacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Prismatic Crystalflex Bracers_IL3700 (2).png",
+  "dbName": "Prismatic Crystalflex Bracers",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Combat Advantage": 2220,
+   "Critical Strike": 3330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Rage (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Severity is increased by 1.8% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 9% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3971,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Radiant Elven Armband_IL2800 (2).png",
+  "dbName": "Radiant Elven Armband",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Accuracy": 1050,
+   "Combat Advantage": 2100,
+   "Forte": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Presence",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, every 2 seconds you gain 875 Power and 0.5% Critical Strike. Max 5 stacks: 4,375 Power and 2.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 6007,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Mekatl_IL350.png",
+  "dbName": "Obsidian Mekatl",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6008,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Mekatl_IL500.png",
+  "dbName": "Obsidian Mekatl",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 376,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6009,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Mekatl_IL650 (2).png",
+  "dbName": "Obsidian Mekatl",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6010,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Obsidian Mekatl_IL800.png",
+  "dbName": "Obsidian Mekatl",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3238,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Astral Raider's Leathers_IL2200.png",
+  "dbName": "Astral Raider's Leathers",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Critical Severity": 1320,
+   "Defense": 990,
+   "Deflection": 1980
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defying Medic",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Outgoing Healing for each enemy you are engaged in battle within 100'. (Max of 10 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4183,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Banditlord's Assault Jerkin_IL770.png",
+  "dbName": "Banditlord's Assault Jerkin",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 329,
+   "Critical Strike": 248,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Balance",
+    "stat": null,
+    "amount": null,
+    "description": "When health is 50% or more, your Power is increased by 1500. When health is below 50%, Defense is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2081,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Black Ice Armor_IL512 (2).png",
+  "dbName": "Black Ice Armor",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.9,
+   "Combat Advantage": 132,
+   "Defense": 384,
+   "Critical Avoidance": 132
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3162,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuirass of the Lifebloom_IL4700.png",
+  "dbName": "Cuirass of the Lifebloom",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 4653,
+   "Forte": 3807
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Radiant Empowerment",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your targets for more than 15% of your Maximum Hit Points in a single action, you and your 2 closest allies within 25' gain +3.5% Power for 5 seconds (5 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2712,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuirass of the Scarlet Arcanum_IL5000 (2).png",
+  "dbName": "Cuirass of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4143,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dungeon Raider's Hide_IL940 (2).png",
+  "dbName": "Dungeon Raider's Hide",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Severity": 705,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "When damaged for more than 10% of Max HP in a single blow, gain 5% Defense for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2789,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enchanted Bregan D'aerthe Assassin's Leathers_IL2050.png",
+  "dbName": "Enchanted Bregan D'aerthe Assassin's Leathers",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1518,
+   "Combat Advantage": 1518
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Liquid Luck",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1.5% Critical Strike for each player in your team. When moving, gain 8% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2797,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Maiden's Assault Hide_IL2050 (2).png",
+  "dbName": "Exalted Maiden's Assault Hide",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1250,
+   "Critical Severity": 923,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2716,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Hauberk of the Crimson Gale_IL4700 (2).png",
+  "dbName": "Hauberk of the Crimson Gale",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3807,
+   "Forte": 3490
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Lethal Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, you gain +3% Hit Points and +4% Accuracy for 7 seconds (5 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3246,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Lolthian Raiment_IL2050.png",
+  "dbName": "Lolthian Raiment",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Severity": 1210,
+   "Defense": 923,
+   "Incoming Healing": 1845
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, gain 10,000 Forte. When in a party, gain 10,000 Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4253,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Primal Assault Mederebiya_IL700.png",
+  "dbName": "Primal Assault Mederebiya",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 315,
+   "Critical Strike": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Damage/heal for more than 15% of Max HP, gain 1% Defense for 10s. Max 5 stacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4435,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Reinforced Dragonflight Assault Vest_IL1400.png",
+  "dbName": "Reinforced Dragonflight Assault Vest",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Accuracy": 630,
+   "Critical Severity": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 2959,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Tunic of the Thayan Servitor_IL800 (2).png",
+  "dbName": "Tunic of the Thayan Servitor",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 97.2,
+   "Combat Advantage": 203,
+   "Critical Strike": 203,
+   "Defense": 600,
+   "Critical Avoidance": 97.2
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

@@ -1,0 +1,449 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Durgarn Thord Halberd_IL1850.png",
+  "id": 6459,
+  "dbName": "Durgarn Thord Halberd",
+  "dbItemLevel": 1850,
+  "dbRatingStats": {
+   "Combat Advantage": 1388,
+   "Critical Strike": 1388
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elk Tribe Noble's Great Axe_IL399.png",
+  "id": 6833,
+  "dbName": "Elk Tribe Noble's Great Axe",
+  "dbItemLevel": 399,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Strike": 202,
+   "Critical Avoidance": 97.6,
+   "Deflect": 97.6
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Encased Magma Greataxe_IL2700.png",
+  "id": 6501,
+  "dbName": "Encased Magma Greataxe",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Strike": 1012,
+   "Defense": 1012,
+   "Forte": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Living Magma",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Fortified Greataxe of the Vale_IL1800.png",
+  "id": 6560,
+  "dbName": "Fortified Greataxe of the Vale",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Accuracy": 1350,
+   "Critical Strike": 1350
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Frostbound Greatblade_IL4800.png",
+  "id": 6810,
+  "dbName": "Frostbound Greatblade",
+  "dbItemLevel": 4800,
+  "dbRatingStats": {
+   "Critical Strike": 4320,
+   "Critical Severity": 4320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Grand Alliance Greatsword_IL1700.png",
+  "id": 6569,
+  "dbName": "Grand Alliance Greatsword",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 1275,
+   "Combat Advantage": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Hammerstone Greathammer_IL352.png",
+  "id": 6573,
+  "dbName": "Hammerstone Greathammer",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 79,
+   "Combat Advantage": 185,
+   "Critical Strike": 185,
+   "Deflect": 79
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Meteoric Iron Cutlass_IL2450.png",
+  "id": 6671,
+  "dbName": "Meteoric Iron Cutlass",
+  "dbItemLevel": 2450,
+  "dbRatingStats": {
+   "Critical Strike": 1838,
+   "Forte": 1838
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Meteoric Fury",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Mirage Greatsword_IL350.png",
+  "id": 6681,
+  "dbName": "Mirage Greatsword",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Perfect Fang of Lolth_IL2475.png",
+  "id": 6687,
+  "dbName": "Perfect Fang of Lolth",
+  "dbItemLevel": 2475,
+  "dbRatingStats": {
+   "Damage": 250,
+   "Critical Strike": 1856,
+   "Critical Severity": 1856
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Demonweb Empowerment",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Runefrost Warcleaver_IL5500.png",
+  "id": 6720,
+  "dbName": "Runefrost Warcleaver",
+  "dbItemLevel": 5500,
+  "dbRatingStats": {
+   "Damage": 50,
+   "Critical Strike": 3300,
+   "Critical Severity": 3300,
+   "Deflect": 4125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Solarium Falchion +1_IL2700.png",
+  "id": 6826,
+  "dbName": "Solarium Falchion +1",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Damage": 250,
+   "Combat Advantage": 2025,
+   "Critical Strike": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Dark Matter",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Solarium Falchion_IL2500.png",
+  "id": 6736,
+  "dbName": "Solarium Falchion",
+  "dbItemLevel": 2500,
+  "dbRatingStats": {
+   "Combat Advantage": 1875,
+   "Critical Strike": 1875
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Dark Matter",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Stormforged Greataxe_IL2000.png",
+  "id": 6680,
+  "dbName": "Stormforged Greataxe",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Damage": 200,
+   "Accuracy": 900,
+   "Combat Advantage": 600,
+   "Critical Strike": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Stormforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Stronghold Claymore_IL300.png",
+  "id": 6842,
+  "dbName": "Stronghold Claymore",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Stronghold Claymore_IL400.png",
+  "id": 6744,
+  "dbName": "Stronghold Claymore",
+  "dbItemLevel": 400,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "Combat Advantage": 300,
+   "Critical Strike": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Stronghold Claymore_IL500.png",
+  "id": 6745,
+  "dbName": "Stronghold Claymore",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Sunset Greataxe_IL350.png",
+  "id": 6750,
+  "dbName": "Sunset Greataxe",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\The Weaver's Scythe_IL2050.png",
+  "id": 6771,
+  "dbName": "The Weaver's Scythe",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Damage": 250,
+   "Combat Advantage": 1538,
+   "Critical Strike": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Beholder Slayer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Voidedge Greataxe of the Thayan Zealot_IL3300.png",
+  "id": 6806,
+  "dbName": "Voidedge Greataxe of the Thayan Zealot",
+  "dbItemLevel": 3300,
+  "dbRatingStats": {
+   "Combat Advantage": 1782,
+   "Critical Strike": 3267
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Umbral Stride",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Voidtouched Greatsword_IL3000.png",
+  "id": 6808,
+  "dbName": "Voidtouched Greatsword",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Damage": 275,
+   "Combat Advantage": 2250,
+   "Critical Strike": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wintermarked Worldrender_IL5800.png",
+  "id": 6812,
+  "dbName": "Wintermarked Worldrender",
+  "dbItemLevel": 5800,
+  "dbRatingStats": {
+   "Damage": 100,
+   "Critical Strike": 3480,
+   "Critical Severity": 3480,
+   "Deflect": 4350
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Xaryxian Greatsword_IL2750.png",
+  "id": 6825,
+  "dbName": "Xaryxian Greatsword",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Damage": 250,
+   "Combat Advantage": 2062,
+   "Critical Strike": 2062
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Antique Axe Knot of the Vale_IL1700.png",
+  "id": 6332,
+  "dbName": "Antique Axe Knot of the Vale",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 1275,
+   "Incoming Healing": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bismuth Charm_IL3400.png",
+  "id": 6635,
+  "dbName": "Bismuth Charm",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Deflect Severity": 3825,
+   "Forte": 2295
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ }
+]

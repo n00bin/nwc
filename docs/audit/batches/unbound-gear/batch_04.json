@@ -1,0 +1,385 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Rex Corona_IL672.png",
+  "id": 1897,
+  "dbName": "Rex Corona",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 504,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Power. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Wintermarked Skirmisher Barbute_IL5700.png",
+  "id": 6241,
+  "dbName": "Wintermarked Skirmisher Barbute",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Accuracy": 3705,
+   "Combat Advantage": 2280,
+   "Forte": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Steady Precision",
+    "stat": null,
+    "amount": null,
+    "description": "For every 8 seconds you are in combat, gain +1% Accuracy and +0.3% Recharge Speed. Max 7 Stacks: +7% Accuracy and +2.1% Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Elk Tribe Noble's Mace_IL399.png",
+  "id": 2090,
+  "dbName": "Elk Tribe Noble's Mace",
+  "dbItemLevel": 399,
+  "dbRatingStats": {
+   "Accuracy": 118,
+   "Critical Avoidance": 236,
+   "Deflection": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Veinlit Stormbind Tunic_IL3800.png",
+  "id": 5327,
+  "dbName": "Veinlit Stormbind Tunic",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Accuracy": 1862,
+   "Combat Advantage": 1140,
+   "Critical Strike": 2736,
+   "Action Point Gain": 1.5
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Freezing Grasp (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Accuracy",
+    "setName": "Freezing Grasp",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Alliance Assault Necklace_IL546.png",
+  "id": 2329,
+  "dbName": "Alliance Assault Necklace",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 491,
+   "Combat Advantage": 328
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Alliance Ward Necklace_IL546.png",
+  "id": 2336,
+  "dbName": "Alliance Ward Necklace",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 328,
+   "Critical Avoidance": 491
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bronzewood Amulet · IL 350_IL350.png",
+  "id": 2462,
+  "dbName": "Bronzewood Amulet · IL 350",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bronzewood Amulet_IL500 (2).png",
+  "id": 5506,
+  "dbName": "Bronzewood Amulet",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 250,
+   "Combat Advantage": 250,
+   "Critical Strike": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bronzewood Amulet_IL500.png",
+  "id": 5506,
+  "dbName": "Bronzewood Amulet",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 250,
+   "Combat Advantage": 250,
+   "Critical Strike": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bronzewood Amulet_IL650 (2).png",
+  "id": 5507,
+  "dbName": "Bronzewood Amulet",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 325,
+   "Combat Advantage": 325,
+   "Critical Strike": 326
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bronzewood Amulet_IL650.png",
+  "id": 5507,
+  "dbName": "Bronzewood Amulet",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 325,
+   "Combat Advantage": 325,
+   "Critical Strike": 326
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bronzewood Amulet_IL800.png",
+  "id": 5508,
+  "dbName": "Bronzewood Amulet",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 400,
+   "Combat Advantage": 400,
+   "Critical Strike": 401
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Duelist Cloak · IL 500_IL500.png",
+  "id": 2686,
+  "dbName": "Company Duelist Cloak · IL 500",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Combat Advantage": 250,
+   "Critical Avoidance": 250,
+   "Deflection": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dragonflight Raid Necklace_IL588.png",
+  "id": 2579,
+  "dbName": "Dragonflight Raid Necklace",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 353,
+   "Combat Advantage": 529
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dragonflight Restoration Necklace_IL588.png",
+  "id": 2576,
+  "dbName": "Dragonflight Restoration Necklace",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 529,
+   "Combat Advantage": 353
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dragonflight Ward Necklace_IL588.png",
+  "id": 2569,
+  "dbName": "Dragonflight Ward Necklace",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 353,
+   "Defense": 529
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Electrum Duelist Necklace_IL728.png",
+  "id": 2609,
+  "dbName": "Electrum Duelist Necklace",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 614,
+   "Awareness": 478
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Electrum Executioner Necklace_IL728.png",
+  "id": 2610,
+  "dbName": "Electrum Executioner Necklace",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 478,
+   "Critical Strike": 614
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Electrum Gladiator Necklace_IL728.png",
+  "id": 2612,
+  "dbName": "Electrum Gladiator Necklace",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Critical Avoidance": 614,
+   "Deflection": 478
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Electrum Medic Necklace_IL728.png",
+  "id": 2611,
+  "dbName": "Electrum Medic Necklace",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 479,
+   "Combat Advantage": 613
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Electrum Raid Necklace_IL728.png",
+  "id": 2606,
+  "dbName": "Electrum Raid Necklace",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 613,
+   "Critical Strike": 479
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Electrum Ward Necklace_IL728.png",
+  "id": 2604,
+  "dbName": "Electrum Ward Necklace",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 478,
+   "Critical Avoidance": 614
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Elemental Alliance Assault Necklace_IL554.png",
+  "id": 2323,
+  "dbName": "Elemental Alliance Assault Necklace",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 499,
+   "Combat Advantage": 332
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Elemental Alliance Ward Necklace_IL554.png",
+  "id": 2316,
+  "dbName": "Elemental Alliance Ward Necklace",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 332,
+   "Critical Avoidance": 499
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Elemental Elven Assault Necklace_IL575.png",
+  "id": 2295,
+  "dbName": "Elemental Elven Assault Necklace",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Accuracy": 345,
+   "Combat Advantage": 518
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

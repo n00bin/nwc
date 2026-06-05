@@ -1,0 +1,515 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mirage Lute_IL350.png",
+  "id": 4769,
+  "dbName": "Mirage Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 3,
+    "description": "2 of Set: Encounter triggers Master of Illusion (10s): illusion attacks enemies, +3% damage. (30s CD)",
+    "setName": "Mirage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Note of the Forsaken_IL3800.png",
+  "id": 4614,
+  "dbName": "Note of the Forsaken",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Accuracy": 3134,
+   "Combat Advantage": 2508,
+   "Forte": 2308
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 10,
+    "description": "2 of Set: While in Thay, Movement Speed +10%. 10% chance on encounter power to gain 5% Critical Severity for 6s.",
+    "setName": "Abyssal Prowess",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pioneer Lute_IL350.png",
+  "id": 4710,
+  "dbName": "Pioneer Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 200,
+    "description": "2 of Set: Increased stat per party member: Party 1 = +200 Power; Party 2-5 progressively adds Defense/Accuracy/CS/CritSev.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Primal Mekatl_IL350.png",
+  "id": 4690,
+  "dbName": "Primal Mekatl",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 10,
+    "description": "2 of Set: Primal Recipuyo. If hit/healed for more than 10% of Max HP in a single blow, BDB and OOH +10% for 10s.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pure Note of the Blessed Blade_IL1150.png",
+  "id": 4897,
+  "dbName": "Pure Note of the Blessed Blade",
+  "dbItemLevel": 1150,
+  "dbRatingStats": {
+   "Combat Advantage": 862,
+   "Critical Strike": 862
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Blessed Blade (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: When you use an encounter power, your weapons become Blessed, increasing your Power, Accuracy, and Combat Advantage by 3% and granting buffs for 10 seconds: Blessed Guidance (+5% Critical Strike), Blessed Might (+7.5% Action Point gain). Your weapons can only be Blessed once every 30 seconds.",
+    "setName": "Blessed Blade",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pure Note of the Blessed Blade_IL1400.png",
+  "id": 4898,
+  "dbName": "Pure Note of the Blessed Blade",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Combat Advantage": 1050,
+   "Critical Strike": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Blessed Blade (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: When you use an encounter power, your weapons become Blessed, increasing your Power, Accuracy, and Combat Advantage by 3% and granting buffs for 10 seconds: Blessed Guidance (+5% Critical Strike), Blessed Might (+7.5% Action Point gain). Your weapons can only be Blessed once every 30 seconds.",
+    "setName": "Blessed Blade",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pure Note of the Blessed Blade_IL650.png",
+  "id": 4636,
+  "dbName": "Pure Note of the Blessed Blade",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Combat Advantage": 488,
+   "Critical Strike": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 3,
+    "description": "2 of Set: Sure Edge of the Blessed Blade. Encounter triggers Blessed: +3% Power/Accuracy/CA + random buff (Blessed Guidance: +5% Critical Strike, Blessed Insight: +7.5% Action Point gain) for 10s. (30s CD)",
+    "setName": "Blessed Blade",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pure Note of the Blessed Blade_IL900.png",
+  "id": 4896,
+  "dbName": "Pure Note of the Blessed Blade",
+  "dbItemLevel": 900,
+  "dbRatingStats": {
+   "Combat Advantage": 675,
+   "Critical Strike": 675
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Blessed Blade (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: When you use an encounter power, your weapons become Blessed, increasing your Power, Accuracy, and Combat Advantage by 3% and granting buffs for 10 seconds: Blessed Guidance (+5% Critical Strike), Blessed Might (+7.5% Action Point gain). Your weapons can only be Blessed once every 30 seconds.",
+    "setName": "Blessed Blade",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Runefrost Skald's Lute_IL5500.png",
+  "id": 6206,
+  "dbName": "Runefrost Skald's Lute",
+  "dbItemLevel": 5500,
+  "dbRatingStats": {
+   "Critical Strike": 4950,
+   "Forte": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Shadesinger's Lute_IL500.png",
+  "id": 5105,
+  "dbName": "Shadesinger's Lute",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "CombatAdvantage": 375,
+   "CriticalStrike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Soulsilencer_IL350.png",
+  "id": 4678,
+  "dbName": "Soulsilencer",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: Start of combat: BDB, OOH, Damage Resistance +1%. Every 5s in combat: +1%. Doubled by Trophy Hunter buff. (Max 10%)",
+    "setName": "Tyrant",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Strings of the Forsaken_IL3400.png",
+  "id": 4872,
+  "dbName": "Strings of the Forsaken",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Critical Severity": 3060,
+   "Forte": 2295
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Impending Doom (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Accumulate 13 Charges to consume them and become Unleashed. Charged by: 1 charge per Daily power (10s CD), 1 charge per Encounter power, 1 charge per 9s in combat. Unleashed grants: DPS +5% Base Damage Boost, Heal +3% Outgoing Healing. Charges and Unleashed last 15s and are refreshable. Leaving combat removes all Charges.",
+    "setName": "Impending Doom",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Strings of the Forsaken_IL4100.png",
+  "id": 4873,
+  "dbName": "Strings of the Forsaken",
+  "dbItemLevel": 4100,
+  "dbRatingStats": {
+   "Critical Severity": 3690,
+   "Forte": 2768
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Impending Doom (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Accumulate 13 Charges to consume them and become Unleashed. Charged by: 1 charge per Daily power (10s CD), 1 charge per Encounter power, 1 charge per 9s in combat. Unleashed grants: DPS +5% Base Damage Boost, Heal +3% Outgoing Healing. Charges and Unleashed last 15s and are refreshable. Leaving combat removes all Charges.",
+    "setName": "Impending Doom",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Strings of the Forsaken_IL4800.png",
+  "id": 4874,
+  "dbName": "Strings of the Forsaken",
+  "dbItemLevel": 4800,
+  "dbRatingStats": {
+   "Power": 1680,
+   "Critical Severity": 2880,
+   "Forte": 2160
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Impending Doom (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Accumulate 13 Charges to consume them and become Unleashed. Charged by: 1 charge per Daily power (10s CD), 1 charge per Encounter power, 1 charge per 9s in combat. Unleashed grants: DPS +5% Base Damage Boost, Heal +3% Outgoing Healing. Charges and Unleashed last 15s and are refreshable. Leaving combat removes all Charges.",
+    "setName": "Impending Doom",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Stronghold Lute_IL300.png",
+  "id": 4663,
+  "dbName": "Stronghold Lute",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Stronghold Unity",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Sunset Lute_IL350.png",
+  "id": 4809,
+  "dbName": "Sunset Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 5,
+    "description": "2 of Set: Base Damage Boost and OOH +5%. In Bonvia during nightfall, BDB/Damage Resistance/OOH/Movement Speed +10%.",
+    "setName": "Sun Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Legion Guard's Twisted Lute_IL1000.png",
+  "id": 4909,
+  "dbName": "The Legion Guard's Twisted Lute",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 750,
+   "Critical Strike": 750
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Devil's Legion (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You and nearby allies are granted: +500 Power, +1,000 Combat Advantage, +1,000 Defense, +1,000 Critical Avoidance. This effect can stack up to 5 times when allies are equipped with a full set of Legion Guard's weapons.",
+    "setName": "Devil's Legion",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Legion Guard's Twisted Lute_IL600.png",
+  "id": 4907,
+  "dbName": "The Legion Guard's Twisted Lute",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Combat Advantage": 450,
+   "Critical Strike": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Devil's Legion (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You and nearby allies are granted: +500 Power, +1,000 Combat Advantage, +1,000 Defense, +1,000 Critical Avoidance. This effect can stack up to 5 times when allies are equipped with a full set of Legion Guard's weapons.",
+    "setName": "Devil's Legion",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\The Legion Guard's Twisted Lute_IL800.png",
+  "id": 4908,
+  "dbName": "The Legion Guard's Twisted Lute",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 600,
+   "Critical Strike": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Devil's Legion (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You and nearby allies are granted: +500 Power, +1,000 Combat Advantage, +1,000 Defense, +1,000 Critical Avoidance. This effect can stack up to 5 times when allies are equipped with a full set of Legion Guard's weapons.",
+    "setName": "Devil's Legion",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Titansteel Lute_IL350.png",
+  "id": 4645,
+  "dbName": "Titansteel Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Titansteel Lute_IL500.png",
+  "id": 5136,
+  "dbName": "Titansteel Lute",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Titansteel Lute_IL650.png",
+  "id": 5135,
+  "dbName": "Titansteel Lute",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Titansteel Lute_IL800.png",
+  "id": 5134,
+  "dbName": "Titansteel Lute",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Twisted Cords_IL300.png",
+  "id": 5114,
+  "dbName": "Twisted Cords",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "CombatAdvantage": 225,
+   "CriticalStrike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Twisted Cords_IL400.png",
+  "id": 5115,
+  "dbName": "Twisted Cords",
+  "dbItemLevel": 400,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "CombatAdvantage": 300,
+   "CriticalStrike": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

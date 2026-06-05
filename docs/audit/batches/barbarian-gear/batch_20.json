@@ -1,0 +1,492 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Demon Forged Sallet_IL1215.png",
+  "id": 6415,
+  "dbName": "Demon Forged Sallet",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Depthforged Barbute_IL3000.png",
+  "id": 6417,
+  "dbName": "Depthforged Barbute",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Forte": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you're in combat, you gain 0.8% Combat Advantage. Max 10 Stacks: 8% Combat Advantage",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Depthforged Helm_IL3000.png",
+  "id": 605,
+  "dbName": "Depthforged Helm",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Defense": 2250,
+   "Critical Avoidance": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.4% Stamina Regeneration and 0.6% Awareness. Max 10 Stacks: 4% Stamina Regeneration and 6% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Devil Forged Sallet_IL1215.png",
+  "id": 6423,
+  "dbName": "Devil Forged Sallet",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dragonflight Assault Sallet_IL588.png",
+  "id": 6436,
+  "dbName": "Dragonflight Assault Sallet",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 176,
+   "Critical Severity": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dragonflight Raid Sallet_IL588.png",
+  "id": 6439,
+  "dbName": "Dragonflight Raid Sallet",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Critical Strike": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dragonsteel Barbute_IL1900.png",
+  "id": 6442,
+  "dbName": "Dragonsteel Barbute",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 855,
+   "Critical Severity": 1140,
+   "Defense": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Dragon Hunter's Might",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage against Dragons. When your health is below 50%, your Awareness is increased by 8,000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dungeon Raider's Sallet_IL940.png",
+  "id": 6457,
+  "dbName": "Dungeon Raider's Sallet",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Edged Barbute of Halaster's Successor_IL1010.png",
+  "id": 6468,
+  "dbName": "Edged Barbute of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Combat Advantage": 303,
+   "Critical Strike": 455,
+   "Defense": 758
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Strike increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Edged Barbute of the Successor_IL990.png",
+  "id": 6469,
+  "dbName": "Edged Barbute of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Combat Advantage": 297,
+   "Critical Strike": 446,
+   "Defense": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Strike increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Alliance Ward Sallet_IL554.png",
+  "id": 6473,
+  "dbName": "Elemental Alliance Ward Sallet",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 249,
+   "Critical Strike": 166,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Dragonflight Assault Sallet_IL596.png",
+  "id": 6476,
+  "dbName": "Elemental Dragonflight Assault Sallet",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Critical Strike": 179,
+   "Critical Severity": 268,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Dragonflight Raid Sallet_IL596.png",
+  "id": 6481,
+  "dbName": "Elemental Dragonflight Raid Sallet",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Accuracy": 268,
+   "Critical Strike": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Elven Ward Sallet_IL575.png",
+  "id": 6485,
+  "dbName": "Elemental Elven Ward Sallet",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Accuracy": 259,
+   "Combat Advantage": 172,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Lionsmane Duelist Sallet_IL574.png",
+  "id": 6489,
+  "dbName": "Elemental Lionsmane Duelist Sallet",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Accuracy": 129,
+   "Critical Strike": 172,
+   "Defense": 430,
+   "Awareness": 129
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elemental Lionsmane Executioner Sallet_IL574.png",
+  "id": 6493,
+  "dbName": "Elemental Lionsmane Executioner Sallet",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Combat Advantage": 172,
+   "Critical Strike": 129,
+   "Defense": 430,
+   "Deflect": 129
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elven Ward Sallet_IL567.png",
+  "id": 6497,
+  "dbName": "Elven Ward Sallet",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Accuracy": 255,
+   "Combat Advantage": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Bregan D'aerthe Mauler's Mask_IL2050.png",
+  "id": 6504,
+  "dbName": "Enchanted Bregan D'aerthe Mauler's Mask",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1538,
+   "Combat Advantage": 923,
+   "Awareness": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Action",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your AP Gain is increased by 25% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Depthforged Armet_IL3200.png",
+  "id": 203,
+  "dbName": "Enchanted Depthforged Armet",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Defense": 2400,
+   "Critical Avoidance": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.4% Stamina Regeneration and 0.8% Awareness. Max 10 Stacks: 4% Stamina Regeneration and 8% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Depthforged Helmet_IL3200.png",
+  "id": 6507,
+  "dbName": "Enchanted Depthforged Helmet",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Critical Strike": 2400,
+   "Forte": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max Stacks: 10.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Resolution Barbute_IL2050.png",
+  "id": 6515,
+  "dbName": "Exalted Maiden's Resolution Barbute",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 923,
+   "Critical Severity": 1230,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Ward Helm_IL2050.png",
+  "id": 208,
+  "dbName": "Exalted Maiden's Ward Helm",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 1518,
+   "Incoming Healing": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Word",
+    "stat": null,
+    "amount": null,
+    "description": "Slightly increased threat generation.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Fiend Forged Sallet_IL1230.png",
+  "id": 6555,
+  "dbName": "Fiend Forged Sallet",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Combat Advantage": 369,
+   "Critical Strike": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Forest Guardian's Raid Sallet_IL1500.png",
+  "id": 6558,
+  "dbName": "Forest Guardian's Raid Sallet",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Combat Advantage": 450,
+   "Defense": 1125,
+   "Control Resist": 675
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fey Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in all of Sharandar.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Fret Barbute of Halaster's Successor_IL1010.png",
+  "id": 6561,
+  "dbName": "Fret Barbute of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Critical Strike": 303,
+   "Defense": 758,
+   "Critical Avoidance": 455
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Strike increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

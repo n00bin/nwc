@@ -1,0 +1,418 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Eyepiercer_IL650.png",
+  "id": 5460,
+  "dbName": "Eyepiercer",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Eyepiercer_IL800.png",
+  "id": 5461,
+  "dbName": "Eyepiercer",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Fortified Bow of the Vale_IL1800.png",
+  "id": 2812,
+  "dbName": "Fortified Bow of the Vale",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Strike": 1350,
+   "Critical Severity": 1350
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fortified Vale (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set — Adventurer's Might: +5% role primary (DPS Power / Tank Defense / Healer Outgoing Healing). When you use an encounter power, 15% chance to increase a role-based Boost by 7.5% for 10s (DPS Recharge Speed / Tank Stamina Regen / Healer Action Point Gain).",
+    "setName": "Fortified Vale",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Golden Dragon's Stormwarden_IL300.png",
+  "id": 3013,
+  "dbName": "Golden Dragon's Stormwarden",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Combat Advantage": 150,
+   "Critical Strike": 150,
+   "Critical Severity": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Equip",
+    "stat": null,
+    "amount": null,
+    "description": "Increase damage done by Electric Shot and Clear the Ground by 10%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Grand Alliance Bow_IL1700 (2).png",
+  "id": 2814,
+  "dbName": "Grand Alliance Bow",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1275,
+   "Deflection": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Grand Alliance (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set — Brute's Expertise: When you are 25 feet or closer to your target, a stat dependent on your role and Forte is increased by 3% (DPS Power / Tank Awareness / Healer Outgoing Healing).",
+    "setName": "Grand Alliance",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Grand Alliance Bow_IL1700.png",
+  "id": 2814,
+  "dbName": "Grand Alliance Bow",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1275,
+   "Deflection": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Grand Alliance (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set — Brute's Expertise: When you are 25 feet or closer to your target, a stat dependent on your role and Forte is increased by 3% (DPS Power / Tank Awareness / Healer Outgoing Healing).",
+    "setName": "Grand Alliance",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Hammerstone Bow_IL352.png",
+  "id": 2954,
+  "dbName": "Hammerstone Bow",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Combat Advantage": 185,
+   "Critical Strike": 79.2,
+   "Critical Severity": 185,
+   "Deflection": 79.2
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Howling Longbow_IL500.png",
+  "id": 5452,
+  "dbName": "Howling Longbow",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Longbow of Elemental Fire_IL300.png",
+  "id": 3017,
+  "dbName": "Longbow of Elemental Fire",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Combat Advantage": 150,
+   "Critical Strike": 150,
+   "Critical Severity": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pathfinder of the Golden Dragon_IL300.png",
+  "id": 3014,
+  "dbName": "Pathfinder of the Golden Dragon",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "Combat Advantage": 150,
+   "Critical Avoidance": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Equip",
+    "stat": null,
+    "amount": null,
+    "description": "Increase damage done by Hunter's Teamwork and Careful Attack by 10%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Perfect Reach of Lolth_IL2475.png",
+  "id": 2774,
+  "dbName": "Perfect Reach of Lolth",
+  "dbItemLevel": 2475,
+  "dbRatingStats": {
+   "Damage": 125,
+   "Accuracy": 1856,
+   "Critical Strike": 1856
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Demonweb Empowerment (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Base Damage Boost and Overall Outgoing Healing are increased by 14%. Incoming damage is reduced by up to 7.5% when your Stamina is empty. At the start of Combat, Critical Strike and Critical Severity increase by 1%; for every 3s in combat these increase by 1% more (max +5%).",
+    "setName": "Demonweb Empowerment",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Phantom Fang_IL4000.png",
+  "id": 2705,
+  "dbName": "Phantom Fang",
+  "dbItemLevel": 4000,
+  "dbRatingStats": {
+   "Critical Strike": 3960,
+   "Critical Severity": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Crimson Clarity (Greater)",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pioneer Alqaws_IL350.png",
+  "id": 5464,
+  "dbName": "Pioneer Alqaws",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Primal Tlahuitolli_IL500.png",
+  "id": 5468,
+  "dbName": "Primal Tlahuitolli",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Primal Tlahuitolli_IL650.png",
+  "id": 5469,
+  "dbName": "Primal Tlahuitolli",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Primal Tlahuitolli_IL800.png",
+  "id": 5470,
+  "dbName": "Primal Tlahuitolli",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Runefrost Longbow_IL5500.png",
+  "id": 6205,
+  "dbName": "Runefrost Longbow",
+  "dbItemLevel": 5500,
+  "dbRatingStats": {
+   "Accuracy": 3575,
+   "Combat Advantage": 2200,
+   "Critical Strike": 3300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Stormforged Knives_IL2000.png",
+  "id": 2781,
+  "dbName": "Stormforged Knives",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 2100,
+   "Critical Avoidance": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Stormforged (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in the Underdark, gain 2% Base Damage Boost / -2% Incoming Damage / 2% Overall Outgoing Healing depending on role. When you dodge, block, sprint, or shadow slip, gain 1.5% role bonus for 15s (30s CD). When dealing Combat Advantage damage, 10% chance to gain 3% role bonus for 15s (30s CD).",
+    "setName": "Stormforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Stormforged Longbow_IL2000.png",
+  "id": 2780,
+  "dbName": "Stormforged Longbow",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Critical Severity": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Stormforged (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in the Underdark, gain 2% Base Damage Boost / -2% Incoming Damage / 2% Overall Outgoing Healing depending on role. When you dodge, block, sprint, or shadow slip, gain 1.5% role bonus for 15s (30s CD). When dealing Combat Advantage damage, 10% chance to gain 3% role bonus for 15s (30s CD).",
+    "setName": "Stormforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\The Weaver's Longbow_IL2050.png",
+  "id": 2778,
+  "dbName": "The Weaver's Longbow",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Damage": 125,
+   "Critical Severity": 1538,
+   "Forte": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Beholder Slayer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Deal or heal up to 5% additional damage based on the difference in hit point percentage between the player and the target. Role bonus to you and nearby allies: DPS +1% Base Damage Boost, Tank -2% Incoming Damage, Healer +2% Overall Outgoing Healing. May stack up to 5 times when allies are equipped with a set of similar weapons. When in the Underdark, your Damage is increased by 5%.",
+    "setName": "Beholder Slayer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Titansteel Tabars_IL800.png",
+  "id": 5455,
+  "dbName": "Titansteel Tabars",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Trailblazer's Axes_IL500.png",
+  "id": 5451,
+  "dbName": "Trailblazer's Axes",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Twined Brands of the Blessed Blade_IL1150 (2).png",
+  "id": 5458,
+  "dbName": "Twined Brands of the Blessed Blade",
+  "dbItemLevel": 1150,
+  "dbRatingStats": {
+   "Combat Advantage": 862,
+   "Critical Strike": 862
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Twined Brands of the Blessed Blade_IL1150.png",
+  "id": 5458,
+  "dbName": "Twined Brands of the Blessed Blade",
+  "dbItemLevel": 1150,
+  "dbRatingStats": {
+   "Combat Advantage": 862,
+   "Critical Strike": 862
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Twined Brands of the Blessed Blade_IL900.png",
+  "id": 5457,
+  "dbName": "Twined Brands of the Blessed Blade",
+  "dbItemLevel": 900,
+  "dbRatingStats": {
+   "Combat Advantage": 675,
+   "Critical Strike": 675
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

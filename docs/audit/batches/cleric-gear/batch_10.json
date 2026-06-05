@@ -1,0 +1,585 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Weathered Wood Gaiters_IL1300.png",
+  "id": 4061,
+  "dbName": "Weathered Wood Gaiters",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 390,
+   "Critical Strike": 585,
+   "Defense": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Wintermarked Lifeward Greaves_IL5700.png",
+  "id": 5345,
+  "dbName": "Wintermarked Lifeward Greaves",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Severity": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shared Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "Healing an ally has a 40% chance to grant you and your nearest ally +3% Critical Strike and +3.5% Critical Severity for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Ancient Scalebreaker's Shroud_IL1700.png",
+  "id": 4046,
+  "dbName": "Ancient Scalebreaker's Shroud",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 1020,
+   "Defense": 765,
+   "Awareness": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Apprentice's Ruined Coif_IL690.png",
+  "id": 3469,
+  "dbName": "Apprentice's Ruined Coif",
+  "dbItemLevel": 690,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Apprentice's Runed Coif_IL965.png",
+  "id": 1541,
+  "dbName": "Apprentice's Runed Coif",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Strike": 507,
+   "Defense": 724,
+   "Critical Avoidance": 217
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Apprentice's Runed Hood_IL965 (2).png",
+  "id": 4130,
+  "dbName": "Apprentice's Runed Hood",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Combat Advantage": 290,
+   "Critical Strike": 434,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Apprentice's Runed Hood_IL965.png",
+  "id": 4130,
+  "dbName": "Apprentice's Runed Hood",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Combat Advantage": 290,
+   "Critical Strike": 434,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Astral Raider's Hat_IL2200.png",
+  "id": 2766,
+  "dbName": "Astral Raider's Hat",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Critical Strike": 1320,
+   "Defense": 990,
+   "Incoming Healing": 990
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reckless Brutality",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal damage to an enemy, you gain a stack of Reckless Brutality, increasing your Power by 2000 but increasing your damage taken by 2% for 5 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Bregan D'aerthe Assassin's Hat_IL2000.png",
+  "id": 4007,
+  "dbName": "Bregan D'aerthe Assassin's Hat",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Critical Severity": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When Stamina is over 75%, Accuracy is increased by 7.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Coif of the Spy's Guild_IL940.png",
+  "id": 1585,
+  "dbName": "Coif of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 494,
+   "Defense": 705,
+   "Critical Avoidance": 212
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Crimson Scalebreaker's Rebel Shroud_IL1800 (2).png",
+  "id": 2818,
+  "dbName": "Crimson Scalebreaker's Rebel Shroud",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Accuracy": 1080,
+   "Defense": 810,
+   "Awareness": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Crimson Scalebreaker's Rebel Shroud_IL1800.png",
+  "id": 2818,
+  "dbName": "Crimson Scalebreaker's Rebel Shroud",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Accuracy": 1080,
+   "Defense": 810,
+   "Awareness": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Crone's Coif_IL1225.png",
+  "id": 3354,
+  "dbName": "Crone's Coif",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Critical Strike": 643,
+   "Defense": 919,
+   "Incoming Healing": 276
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5000 for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Crone's Hood_IL1225 (2).png",
+  "id": 4062,
+  "dbName": "Crone's Hood",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Combat Advantage": 551,
+   "Defense": 919,
+   "Control Bonus": 368
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5000 for 10 seconds. (30 second cooldowns)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Crone's Hood_IL1225.png",
+  "id": 4062,
+  "dbName": "Crone's Hood",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Combat Advantage": 551,
+   "Defense": 919,
+   "Control Bonus": 368
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5000 for 10 seconds. (30 second cooldowns)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Demon Forged Coif_IL1215.png",
+  "id": 1413,
+  "dbName": "Demon Forged Coif",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 638,
+   "Defense": 911,
+   "Critical Avoidance": 273
+  },
+  "dbPercentStats": {
+   "Damage against Devils": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Demon Forged Hood_IL1215 (2).png",
+  "id": 4112,
+  "dbName": "Demon Forged Hood",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "10% chance to gain 5000 Power for 10s on CA damage. (30s CD)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Demon Forged Hood_IL1215.png",
+  "id": 4112,
+  "dbName": "Demon Forged Hood",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "10% chance to gain 5000 Power for 10s on CA damage. (30s CD)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Depthcured Cap_IL3000 (2).png",
+  "id": 2736,
+  "dbName": "Depthcured Cap",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Forte": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max 10 Stacks: 8% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Depthcured Cap_IL3000.png",
+  "id": 2736,
+  "dbName": "Depthcured Cap",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Forte": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max 10 Stacks: 8% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Devil Forged Coif_IL1215.png",
+  "id": 1401,
+  "dbName": "Devil Forged Coif",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 638,
+   "Defense": 911,
+   "Critical Avoidance": 273
+  },
+  "dbPercentStats": {
+   "Damage against Demons": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Devil Forged Hood_IL1215 (2).png",
+  "id": 4110,
+  "dbName": "Devil Forged Hood",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "10% chance to gain 5000 Power for 10s on CA damage. (30s CD)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Devil Forged Hood_IL1215.png",
+  "id": 4110,
+  "dbName": "Devil Forged Hood",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "10% chance to gain 5000 Power for 10s on CA damage. (30s CD)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Diadem of the Crimson Gale_IL4700 (2).png",
+  "id": 2717,
+  "dbName": "Diadem of the Crimson Gale",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Forte": 2855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Advantageous Strike",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your Powers, gain +3% Combat Advantage and +2.5% Power for 6 seconds (10 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Diadem of the Crimson Gale_IL4700.png",
+  "id": 2717,
+  "dbName": "Diadem of the Crimson Gale",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Forte": 2855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Advantageous Strike",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your Powers, gain +3% Combat Advantage and +2.5% Power for 6 seconds (10 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

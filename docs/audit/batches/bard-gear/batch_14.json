@@ -1,0 +1,576 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Boots of the Thayan Servitor_IL800.png",
+  "id": 2961,
+  "dbName": "Boots of the Thayan Servitor",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 88.8,
+   "Combat Advantage": 211,
+   "Critical Strike": 211,
+   "Defense": 600,
+   "Critical Avoidance": 88.8
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bregan D'aerthe Assassin's Longboots_IL2000.png",
+  "id": 4010,
+  "dbName": "Bregan D'aerthe Assassin's Longboots",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 900,
+   "Critical Severity": 1500,
+   "Defense": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Expertise",
+    "stat": null,
+    "amount": null,
+    "description": "When 20' or closer to target, Critical Severity +5%. When 20'+ away, Forte +5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bregan D'aerthe Expert's Shoes_IL2000.png",
+  "id": 3282,
+  "dbName": "Bregan D'aerthe Expert's Shoes",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 900,
+   "Defense": 600,
+   "Control Resistance": 1800
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defying Medic",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Outgoing Healing for each enemy you are engaged in battle within 100'. (Max of 10 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Company Assault Boots_IL588.png",
+  "id": 4602,
+  "dbName": "Company Assault Boots",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Company Raid Boots_IL588.png",
+  "id": 4598,
+  "dbName": "Company Raid Boots",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crimson Scalebreaker's Rebel Pikes_IL1800 (2).png",
+  "id": 2817,
+  "dbName": "Crimson Scalebreaker's Rebel Pikes",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Combat Advantage": 1080,
+   "Defense": 810,
+   "Critical Avoidance": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Footwork",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10 seconds. Max 5 Stacks: 5% Movement Speed and Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crimson Scalebreaker's Rebel Pikes_IL1800.png",
+  "id": 2817,
+  "dbName": "Crimson Scalebreaker's Rebel Pikes",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Combat Advantage": 1080,
+   "Defense": 810,
+   "Critical Avoidance": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Footwork",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10 seconds. Max 5 Stacks: 5% Movement Speed and Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crimson Scalebreaker's Rejuvenation Crakows_IL1800.png",
+  "id": 3320,
+  "dbName": "Crimson Scalebreaker's Rejuvenation Crakows",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Defense": 810,
+   "Awareness": 1080,
+   "Forte": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Footwork",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10 seconds. Max 5 stacks: 5% Movement Speed and Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crone's Cuisses_IL1225.png",
+  "id": 3356,
+  "dbName": "Crone's Cuisses",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Critical Strike": 459,
+   "Defense": 919,
+   "Critical Avoidance": 459
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Might",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your Power is increased by 3000 for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crone's Gaiters_IL1225 (2).png",
+  "id": 4065,
+  "dbName": "Crone's Gaiters",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Combat Advantage": 368,
+   "Critical Strike": 551,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Might",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your Power is increased by 3000 for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crone's Gaiters_IL1225 (3).png",
+  "id": 4065,
+  "dbName": "Crone's Gaiters",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Combat Advantage": 368,
+   "Critical Strike": 551,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Might",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your Power is increased by 3000 for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crone's Gaiters_IL1225.png",
+  "id": 4065,
+  "dbName": "Crone's Gaiters",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Combat Advantage": 368,
+   "Critical Strike": 551,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Might",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your Power is increased by 3000 for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuisses of the Spy's Guild_IL940.png",
+  "id": 1587,
+  "dbName": "Cuisses of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 352,
+   "Defense": 705,
+   "Critical Avoidance": 352
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Demon Forged Cuisses_IL1215.png",
+  "id": 1411,
+  "dbName": "Demon Forged Cuisses",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 456,
+   "Defense": 911,
+   "Critical Avoidance": 456
+  },
+  "dbPercentStats": {
+   "Damage against Devils": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Demon Forged Gaiters_IL1215 (2).png",
+  "id": 4113,
+  "dbName": "Demon Forged Gaiters",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 200 Power. Max 24 Stacks: 4800 Power.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Demon Forged Gaiters_IL1215.png",
+  "id": 4113,
+  "dbName": "Demon Forged Gaiters",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 200 Power. Max 24 Stacks: 4800 Power.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Depthcured Boots_IL3000 (2).png",
+  "id": 2737,
+  "dbName": "Depthcured Boots",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Combat Advantage": 2250,
+   "Critical Severity": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fiery Predator",
+    "stat": null,
+    "amount": null,
+    "description": "+3.5% Damage on fire-themed maps. +1% Damage on other maps.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Depthcured Boots_IL3000.png",
+  "id": 2737,
+  "dbName": "Depthcured Boots",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Combat Advantage": 2250,
+   "Critical Severity": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fiery Predator",
+    "stat": null,
+    "amount": null,
+    "description": "+3.5% Damage on fire-themed maps. +1% Damage on other maps.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Depthcured Cackrows_IL3000.png",
+  "id": 3191,
+  "dbName": "Depthcured Cackrows",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Outgoing Healing": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fiery Muse",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity/Performance/Soulweave regenerates 12% faster while on fire-themed maps. On other maps the regen bonus is 6%. Gain 4% Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Devil Forged Cuisses_IL1215.png",
+  "id": 1405,
+  "dbName": "Devil Forged Cuisses",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 456,
+   "Defense": 911,
+   "Critical Avoidance": 456
+  },
+  "dbPercentStats": {
+   "Damage against Demons": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Devil Forged Gaiters_IL1215 (2).png",
+  "id": 4115,
+  "dbName": "Devil Forged Gaiters",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 200 Power. Max 24 Stacks: 4800 Power.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Devil Forged Gaiters_IL1215.png",
+  "id": 4115,
+  "dbName": "Devil Forged Gaiters",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 200 Power. Max 24 Stacks: 4800 Power.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dinohide Assault Butisi_IL784.png",
+  "id": 4445,
+  "dbName": "Dinohide Assault Butisi",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Critical Strike": 353,
+   "Critical Severity": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Critical Strike. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dinohide Raid Butisi_IL784.png",
+  "id": 4441,
+  "dbName": "Dinohide Raid Butisi",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 353,
+   "Critical Strike": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Critical Strike. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Divine Raid Cuisses_IL1230 (2).png",
+  "id": 4101,
+  "dbName": "Divine Raid Cuisses",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Combat Advantage": 369,
+   "Critical Strike": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 300 Power for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

@@ -1,0 +1,393 @@
+[
+ {
+  "id": 6061,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Primal Itztopilli_IL800.png",
+  "dbName": "Primal Itztopilli",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2855,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\League's Assault Josan_IL588.png",
+  "dbName": "League's Assault Josan",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Severity": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2865,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\League's Elite Assault Josan_IL602.png",
+  "dbName": "League's Elite Assault Josan",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Combat Advantage": 361,
+   "Critical Severity": 342,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 15 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 6187,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Woodlord's Raid Jerkin_IL770.png",
+  "dbName": "Woodlord's Raid Jerkin",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 329,
+   "Critical Severity": 248,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Balance",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Power is increased by 1500. When your health is below 50%, Defense is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2863,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\League's Elite Assault Hidhas_IL602.png",
+  "dbName": "League's Elite Assault Hidhas",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Critical Strike": 361,
+   "Critical Severity": 342,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3067,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Manticore Assault Gaiters_IL756.png",
+  "dbName": "Manticore Assault Gaiters",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Critical Strike": 227,
+   "Defense": 113
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3118,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Umbral Assault Gaiters_IL728.png",
+  "dbName": "Umbral Assault Gaiters",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 328,
+   "Critical Strike": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2947,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Black Ice Hood_IL512.png",
+  "dbName": "Black Ice Hood",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Combat Advantage": 131,
+   "Critical Strike": 59.9,
+   "Defense": 384,
+   "Awareness": 59.1
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3131,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Company Assault Hood_IL588.png",
+  "dbName": "Company Assault Hood",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Strike": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2970,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dusk Raid Hood_IL1175.png",
+  "dbName": "Dusk Raid Hood",
+  "dbItemLevel": 1175,
+  "dbRatingStats": {
+   "Combat Advantage": 352,
+   "Critical Severity": 529,
+   "Defense": 881
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3064,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Manticore Assault Hood_IL756.png",
+  "dbName": "Manticore Assault Hood",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Critical Severity": 227,
+   "Defense": 113
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3072,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Manticore Duelist Hood_IL756.png",
+  "dbName": "Manticore Duelist Hood",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 227,
+   "Critical Severity": 170,
+   "Defense": 170,
+   "Deflection": 170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2718,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Bismuth Flex Bow_IL3400.png",
+  "dbName": "Bismuth Flex Bow",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Combat Advantage": 2040,
+   "Critical Strike": 3060
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Prismatic Defier of Dread (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in The Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 5s in combat, you will gain a stack of Prismatic Force. Each stack of Prismatic Force grants: General +0.15% Power, DPS +0.15% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 2705,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Phantom Fang_IL4000.png",
+  "dbName": "Phantom Fang",
+  "dbItemLevel": 4000,
+  "dbRatingStats": {
+   "Critical Strike": 3960,
+   "Critical Severity": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Crimson Clarity (Greater)",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 6205,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Runefrost Longbow_IL5500.png",
+  "dbName": "Runefrost Longbow",
+  "dbItemLevel": 5500,
+  "dbRatingStats": {
+   "Accuracy": 3575,
+   "Combat Advantage": 2200,
+   "Critical Strike": 3300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 2781,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Stormforged Knives_IL2000.png",
+  "dbName": "Stormforged Knives",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 2100,
+   "Critical Avoidance": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Stormforged (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in the Underdark, gain 2% Base Damage Boost / -2% Incoming Damage / 2% Overall Outgoing Healing depending on role. When you dodge, block, sprint, or shadow slip, gain 1.5% role bonus for 15s (30s CD). When dealing Combat Advantage damage, 10% chance to gain 3% role bonus for 15s (30s CD).",
+    "setName": "Stormforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 2780,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Stormforged Longbow_IL2000.png",
+  "dbName": "Stormforged Longbow",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Critical Severity": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Stormforged (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in the Underdark, gain 2% Base Damage Boost / -2% Incoming Damage / 2% Overall Outgoing Healing depending on role. When you dodge, block, sprint, or shadow slip, gain 1.5% role bonus for 15s (30s CD). When dealing Combat Advantage damage, 10% chance to gain 3% role bonus for 15s (30s CD).",
+    "setName": "Stormforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5455,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Titansteel Tabars_IL800.png",
+  "dbName": "Titansteel Tabars",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2719,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Bismuth Knife_IL3400.png",
+  "dbName": "Bismuth Knife",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Combat Advantage": 2040,
+   "Critical Strike": 3060
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Prismatic Defier of Dread (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in The Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 5s in combat, you will gain a stack of Prismatic Force. Each stack of Prismatic Force grants: General +0.15% Power, DPS +0.15% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 2721,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Crystal Knife_IL3100.png",
+  "dbName": "Crystal Knife",
+  "dbItemLevel": 3100,
+  "dbRatingStats": {
+   "Combat Advantage": 1860,
+   "Critical Strike": 2790
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Prismatic Defier of Dread (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in The Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 5s in combat, you will gain a stack of Prismatic Force. Each stack of Prismatic Force grants: General +0.15% Power, DPS +0.15% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ }
+]

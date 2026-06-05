@@ -1,0 +1,133 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Samite Duelist Sash_IL728.png",
+  "id": 2627,
+  "dbName": "Samite Duelist Sash",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Critical Strike": 479,
+   "Awareness": 613
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Samite Executioner Sash_IL728.png",
+  "id": 2626,
+  "dbName": "Samite Executioner Sash",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 613,
+   "Critical Strike": 479
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Samite Gladiator Sash_IL728.png",
+  "id": 2624,
+  "dbName": "Samite Gladiator Sash",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 478,
+   "Critical Avoidance": 614
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Samite Medic Sash_IL728.png",
+  "id": 2625,
+  "dbName": "Samite Medic Sash",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 614,
+   "Combat Advantage": 478
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Samite Raid Sash_IL728.png",
+  "id": 2618,
+  "dbName": "Samite Raid Sash",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 613,
+   "Critical Strike": 479
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Samite Restoration Sash_IL728.png",
+  "id": 2619,
+  "dbName": "Samite Restoration Sash",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 478,
+   "Critical Strike": 614
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Samite Ward Sash_IL728.png",
+  "id": 2620,
+  "dbName": "Samite Ward Sash",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 478,
+   "Critical Avoidance": 614
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Skull Lord Sash_IL350.png",
+  "id": 1890,
+  "dbName": "Skull Lord Sash",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 175,
+   "Critical Strike": 175,
+   "Critical Severity": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Sphene Sash_IL500.png",
+  "id": 6222,
+  "dbName": "Sphene Sash",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 250,
+   "Combat Advantage": 250,
+   "Critical Strike": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 500,
+    "description": "2 of Set: Encounter triggers Alacrity — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks.",
+    "setName": "Masterwork II Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Wrap of the Serpent_IL350.png",
+  "id": 1889,
+  "dbName": "Wrap of the Serpent",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Critical Avoidance": 350,
+   "Deflection": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

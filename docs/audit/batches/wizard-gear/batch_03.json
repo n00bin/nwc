@@ -1,0 +1,518 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manalord's Assault Bracers_IL770.png",
+  "id": 6033,
+  "dbName": "Manalord's Assault Bracers",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Critical Strike": 248,
+   "Critical Severity": 329,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 1500. When your health is below 50%, Deflection is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manalord's Raid Bracers_IL770.png",
+  "id": 6037,
+  "dbName": "Manalord's Raid Bracers",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 247,
+   "Critical Strike": 330,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 1500. When your health is below 50%, Deflection is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manticore Assault Armlets_IL756.png",
+  "id": 6289,
+  "dbName": "Manticore Assault Armlets",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Critical Severity": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Manticore Raid Armlets_IL756.png",
+  "id": 6293,
+  "dbName": "Manticore Raid Armlets",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Critical Strike": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Mastered Duergar Mercenary's Gloves_IL1900.png",
+  "id": 3261,
+  "dbName": "Mastered Duergar Mercenary's Gloves",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Critical Strike": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Savagery",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 10,000. When your health is below 50%, Critical Avoidance is increased by 10,000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Moldy Apprentice Braces_IL950.png",
+  "id": 3512,
+  "dbName": "Moldy Apprentice Braces",
+  "dbItemLevel": 950,
+  "dbRatingStats": {
+   "Accuracy": 428,
+   "Defense": 712,
+   "Awareness": 285
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcharoo",
+    "stat": null,
+    "amount": null,
+    "description": "+1500 Critical Severity, -2500 Defense.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Pilgrim Assault Kollu_IL644.png",
+  "id": 6043,
+  "dbName": "Pilgrim Assault Kollu",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Critical Strike": 193,
+   "Critical Severity": 290,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 100 Power for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Pilgrim Raid Kollu_IL644.png",
+  "id": 6047,
+  "dbName": "Pilgrim Raid Kollu",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Combat Advantage": 193,
+   "Critical Strike": 290,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 100 Power for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Pioneer Assault Kollu_IL616.png",
+  "id": 6073,
+  "dbName": "Pioneer Assault Kollu",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Critical Strike": 185,
+   "Critical Severity": 277,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Pioneer Raid Kollu_IL616.png",
+  "id": 6081,
+  "dbName": "Pioneer Raid Kollu",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Critical Strike": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Primal Assault Isongos_IL700.png",
+  "id": 6097,
+  "dbName": "Primal Assault Isongos",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Critical Strike": 210,
+   "Critical Severity": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Power for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Primal Raid Isongos_IL700.png",
+  "id": 6087,
+  "dbName": "Primal Raid Isongos",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 210,
+   "Critical Strike": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Power for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Prismatic Crystalweave Armlets_IL3700.png",
+  "id": 3172,
+  "dbName": "Prismatic Crystalweave Armlets",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Critical Severity": 3330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Rage (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Severity is increased by 1.8% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 9% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Pulsar Sleeves_IL2600.png",
+  "id": 3227,
+  "dbName": "Pulsar Sleeves",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Accuracy": 1950,
+   "Combat Advantage": 1170,
+   "Critical Severity": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Torrent",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 400 Power for 10 seconds when you strike an enemy. Lose a stack when you are struck. Stacks 50 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Quark's Rock Gauntlets_IL950.png",
+  "id": 3517,
+  "dbName": "Quark's Rock Gauntlets",
+  "dbItemLevel": 950,
+  "dbRatingStats": {
+   "Defense": 712,
+   "Critical Avoidance": 285,
+   "Deflection": 428
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Radiant Elven Sleeves_IL2800.png",
+  "id": 3211,
+  "dbName": "Radiant Elven Sleeves",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Accuracy": 1050,
+   "Combat Advantage": 2100,
+   "Forte": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Presence",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, every 2s you gain 875 Power and 0.5% Critical Strike. Every 2s in combat with 4+ enemies, lose 1 stack. Max 5 stacks: 4,375 Power and 2.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Reinforced Dragonflight Assault Armlets_IL1400.png",
+  "id": 6227,
+  "dbName": "Reinforced Dragonflight Assault Armlets",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Critical Strike": 420,
+   "Critical Severity": 630,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Reinforced Dragonflight Raid Armlets_IL1400.png",
+  "id": 6229,
+  "dbName": "Reinforced Dragonflight Raid Armlets",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Combat Advantage": 420,
+   "Critical Strike": 630,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Runefrost Swift Armguards_IL5400 (2).png",
+  "id": 5495,
+  "dbName": "Runefrost Swift Armguards",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Accuracy": 5265,
+   "Power": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Flow",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critical Strike with any Power, gain +4.5% Critical Strike and +1.5% Recharge Speed for 6 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Runefrost Swift Armguards_IL5400 (3).png",
+  "id": 5495,
+  "dbName": "Runefrost Swift Armguards",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Accuracy": 5265,
+   "Power": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Flow",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critical Strike with any Power, gain +4.5% Critical Strike and +1.5% Recharge Speed for 6 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Runefrost Swift Armguards_IL5400 (4).png",
+  "id": 5495,
+  "dbName": "Runefrost Swift Armguards",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Accuracy": 5265,
+   "Power": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Flow",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critical Strike with any Power, gain +4.5% Critical Strike and +1.5% Recharge Speed for 6 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Runefrost Swift Armguards_IL5400.png",
+  "id": 5495,
+  "dbName": "Runefrost Swift Armguards",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Accuracy": 5265,
+   "Power": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Flow",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critical Strike with any Power, gain +4.5% Critical Strike and +1.5% Recharge Speed for 6 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Seer of the Star's Gloves_IL1000.png",
+  "id": 3508,
+  "dbName": "Seer of the Star's Gloves",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Strike": 750,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "At-Will Perk",
+    "stat": "At Will Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your At-Will Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Slimy Bracers of the Kuo-Toa_IL1000.png",
+  "id": 3516,
+  "dbName": "Slimy Bracers of the Kuo-Toa",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 450,
+   "Defense": 750,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sniper's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 50' or further away from your target, your Combat Advantage is increased by 1,500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Starweave Sleeves_IL2700.png",
+  "id": 3219,
+  "dbName": "Starweave Sleeves",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Accuracy": 2025,
+   "Combat Advantage": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 10 Action Points. Can only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

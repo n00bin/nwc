@@ -1,0 +1,513 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ultraviolet Elven Leathers_IL2900.png",
+  "id": 3206,
+  "dbName": "Ultraviolet Elven Leathers",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Forte": 2175,
+   "Outgoing Healing": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Medic's Respite",
+    "stat": null,
+    "amount": null,
+    "description": "Healing an ally with an Encounter power also heals you for 80,000 and grants Allies within 25' +1.5% Awareness and Incoming Healing for 5s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ultraviolet Elven Vest_IL2900.png",
+  "id": 3966,
+  "dbName": "Ultraviolet Elven Vest",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Critical Strike": 2175,
+   "Forte": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Daily",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, your next encounter power will deal 20% more damage. (10 second cooldown). Additionally, when Focused Daily triggers, you gain 2.5% Critical Severity for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Umbral Assault Vest_IL728.png",
+  "id": 4584,
+  "dbName": "Umbral Assault Vest",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Critical Strike": 328,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, Power +1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Umbral Duelist Vest_IL728.png",
+  "id": 4590,
+  "dbName": "Umbral Duelist Vest",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Combat Advantage": 164,
+   "Defense": 546,
+   "Awareness": 218
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, Power +1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Umbral Executioner Vest_IL728.png",
+  "id": 4588,
+  "dbName": "Umbral Executioner Vest",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Critical Strike": 218,
+   "Critical Avoidance": 164,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, Power +1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Weathered Wood Hide_IL1300.png",
+  "id": 4059,
+  "dbName": "Weathered Wood Hide",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 975,
+   "Defense": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Weathered Wood Scalemail_IL1300.png",
+  "id": 3348,
+  "dbName": "Weathered Wood Scalemail",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Defense": 975,
+   "Forte": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ancient Scalebreaker's Pikes_IL1700.png",
+  "id": 4049,
+  "dbName": "Ancient Scalebreaker's Pikes",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 1020,
+   "Defense": 765,
+   "Critical Avoidance": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Footwork",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10s. Max 5 Stacks: 5% Movement Speed and Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ancient Scalebreaker's Poulaines_IL1700.png",
+  "id": 3327,
+  "dbName": "Ancient Scalebreaker's Poulaines",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Defense": 765,
+   "Critical Avoidance": 765,
+   "Control Bonus": 1020
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Footwork",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10 seconds. Max 5 stacks: 5% Movement Speed and Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Ruined Cuisses_IL690.png",
+  "id": 3471,
+  "dbName": "Apprentice's Ruined Cuisses",
+  "dbItemLevel": 690,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Runed Cuisses_IL965 (2).png",
+  "id": 1535,
+  "dbName": "Apprentice's Runed Cuisses",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Strike": 362,
+   "Defense": 724,
+   "Critical Avoidance": 362
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Runed Cuisses_IL965.png",
+  "id": 1535,
+  "dbName": "Apprentice's Runed Cuisses",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Strike": 362,
+   "Defense": 724,
+   "Critical Avoidance": 362
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Runed Gaiters_IL965 (2).png",
+  "id": 4133,
+  "dbName": "Apprentice's Runed Gaiters",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Combat Advantage": 290,
+   "Critical Strike": 434,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 230 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Runed Gaiters_IL965.png",
+  "id": 4133,
+  "dbName": "Apprentice's Runed Gaiters",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Combat Advantage": 290,
+   "Critical Strike": 434,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 230 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Astral Raider's Jackboots_IL2200 (2).png",
+  "id": 2769,
+  "dbName": "Astral Raider's Jackboots",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 990,
+   "Awareness": 1320,
+   "Critical Avoidance": 990
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Disdain",
+    "stat": null,
+    "amount": null,
+    "description": "Grants up to -9% Incoming Damage when your total item level is being scaled down. Currently: -0% Incoming Damage. Disabled in Thay Arena PvP.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Astral Raider's Jackboots_IL2200.png",
+  "id": 2769,
+  "dbName": "Astral Raider's Jackboots",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 990,
+   "Awareness": 1320,
+   "Critical Avoidance": 990
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Disdain",
+    "stat": null,
+    "amount": null,
+    "description": "Grants up to -9% Incoming Damage when your total item level is being scaled down. Currently: -0% Incoming Damage. Disabled in Thay Arena PvP.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Banded Boots of Halaster's Successor_IL1010 (2).png",
+  "id": 4125,
+  "dbName": "Banded Boots of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Combat Advantage": 303,
+   "Critical Strike": 455,
+   "Defense": 758
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 25' or closer to your target, your Combat Advantage is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Banded Boots of Halaster's Successor_IL1010.png",
+  "id": 4125,
+  "dbName": "Banded Boots of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Combat Advantage": 303,
+   "Critical Strike": 455,
+   "Defense": 758
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 25' or closer to your target, your Combat Advantage is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Banded Boots of the Successor_IL990.png",
+  "id": 4129,
+  "dbName": "Banded Boots of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Combat Advantage": 297,
+   "Critical Strike": 446,
+   "Defense": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 25' or closer to your target, your Combat Advantage is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Banditlord's Assault Boots_IL770.png",
+  "id": 4182,
+  "dbName": "Banditlord's Assault Boots",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Accuracy": 329,
+   "Combat Advantage": 248,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When health is 50% or more, your Accuracy is increased by 1500. When health is below 50%, Movement Speed is increased by 10%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Banditlord's Raid Boots_IL770.png",
+  "id": 4179,
+  "dbName": "Banditlord's Raid Boots",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Accuracy": 330,
+   "Combat Advantage": 247,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When health is 50% or more, your Accuracy is increased by 1500. When health is below 50%, Movement Speed is increased by 10%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Black Ice Boots_IL512 (2).png",
+  "id": 2949,
+  "dbName": "Black Ice Boots",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Combat Advantage": 132,
+   "Critical Strike": 59.9,
+   "Awareness": 132,
+   "Defense": 132
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Black Ice Boots_IL512.png",
+  "id": 2949,
+  "dbName": "Black Ice Boots",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Combat Advantage": 132,
+   "Critical Strike": 59.9,
+   "Awareness": 132,
+   "Defense": 132
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Boots of the Lifebloom_IL4700.png",
+  "id": 3164,
+  "dbName": "Boots of the Lifebloom",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3807,
+   "Outgoing Healing": 3102
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Restorative Discipline",
+    "stat": null,
+    "amount": null,
+    "description": "For every 3 seconds you are in combat, gain +0.4% Outgoing Healing and +0.2% Recharge Speed. Max 8 Stacks: +3.2% Outgoing Healing and +1.6% Recharge Speed. Each step sows vitality, leaving faint traces of flourishing life behind.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Boots of the Thayan Servitor_IL800 (2).png",
+  "id": 2961,
+  "dbName": "Boots of the Thayan Servitor",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 88.8,
+   "Combat Advantage": 211,
+   "Critical Strike": 211,
+   "Defense": 600,
+   "Critical Avoidance": 88.8
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

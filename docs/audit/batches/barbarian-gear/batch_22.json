@@ -1,0 +1,504 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Radiant Elven Helm_IL2800.png",
+  "id": 693,
+  "dbName": "Radiant Elven Helm",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Awareness": 2100,
+   "Incoming Healing": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.5% Stamina Regeneration and 0.35% Awareness. Max Stacks: 7 (10 in Wildspace).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Runefrost Bulwark Helm_IL5400.png",
+  "id": 5356,
+  "dbName": "Runefrost Bulwark Helm",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Defense": 2835,
+   "Awareness": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, gain 0.4% Stamina Regeneration and 0.8% Awareness. Max 10 Stacks: 4% Stamina Regeneration and 8% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Runefrost Ravager Helm_IL5400.png",
+  "id": 6717,
+  "dbName": "Runefrost Ravager Helm",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Combat Advantage": 3240,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Strategist's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.7% Combat Advantage. Max 10 Stacks: 7% Combat Advantage",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Sallet of the Spy's Guild_IL940.png",
+  "id": 6721,
+  "dbName": "Sallet of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Starforged Barbute_IL2700.png",
+  "id": 6739,
+  "dbName": "Starforged Barbute",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Severity": 2025,
+   "Forte": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maximized Opportunity",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with one enemy, your Combat Advantage is increased by 7%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Starforged Helm_IL2700.png",
+  "id": 712,
+  "dbName": "Starforged Helm",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Defense": 2025,
+   "Critical Avoidance": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Boar's Determination",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 7.5% Awareness and 5% Stamina Regeneration for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\The Dark Maiden's Resolution Barbute_IL2000.png",
+  "id": 6758,
+  "dbName": "The Dark Maiden's Resolution Barbute",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 900,
+   "Critical Severity": 1200,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 1% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\The Dark Maiden's Ward Helm_IL2000.png",
+  "id": 937,
+  "dbName": "The Dark Maiden's Ward Helm",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 1500,
+   "Incoming Healing": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Word",
+    "stat": null,
+    "amount": null,
+    "description": "Slightly increased threat generation.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Titansteel Assault Sallet_IL756.png",
+  "id": 6773,
+  "dbName": "Titansteel Assault Sallet",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 340,
+   "Critical Severity": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Titansteel Duelist Sallet_IL756.png",
+  "id": 6608,
+  "dbName": "Titansteel Duelist Sallet",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 170,
+   "Critical Strike": 227,
+   "Defense": 567,
+   "Awareness": 170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Titansteel Gladiator Sallet_IL756.png",
+  "id": 6783,
+  "dbName": "Titansteel Gladiator Sallet",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 227,
+   "Critical Strike": 170,
+   "Defense": 567,
+   "Deflect": 170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Titansteel Raid Sallet_IL756.png",
+  "id": 6787,
+  "dbName": "Titansteel Raid Sallet",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 227,
+   "Critical Strike": 340,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Ultraviolet Elven Armet_IL2900.png",
+  "id": 213,
+  "dbName": "Ultraviolet Elven Armet",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Awareness": 2175,
+   "Incoming Healing": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.4% Stamina Regeneration and 0.8% Awareness. Max 10 Stacks: 4% Stamina Regeneration and 8% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Weathered Wood Sallet_IL1300.png",
+  "id": 6814,
+  "dbName": "Weathered Wood Sallet",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 390,
+   "Defense": 975,
+   "Control Resist": 585
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmishers Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wintermarked Bulwark Helm_IL5700.png",
+  "id": 5348,
+  "dbName": "Wintermarked Bulwark Helm",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Awareness": 3420,
+   "Critical Avoidance": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Acumen",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, gain +0.4% Awareness and +0.5% Critical Avoidance. You lose all stacks if you leave combat. Max 10 Stacks: 4% Awareness and 5% Critical Avoidance.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wintermarked Ravager Helm_IL5700.png",
+  "id": 6818,
+  "dbName": "Wintermarked Ravager Helm",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Combat Advantage": 3420,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Balanced Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "+7% Combat Advantage when your health is above 60%. +6% Critical Strike when your health is below 60%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Antique Greataxe of the Vale_IL1700.png",
+  "id": 6333,
+  "dbName": "Antique Greataxe of the Vale",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 1275,
+   "Critical Strike": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bismuth Great Sword_IL3400.png",
+  "id": 6636,
+  "dbName": "Bismuth Great Sword",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Combat Advantage": 2040,
+   "Critical Strike": 3060
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Blaspheme Greataxe_IL1900.png",
+  "id": 6796,
+  "dbName": "Blaspheme Greataxe",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 855,
+   "Combat Advantage": 570,
+   "Critical Strike": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bloodbrass Greatsword_IL2750.png",
+  "id": 6348,
+  "dbName": "Bloodbrass Greatsword",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Combat Advantage": 1650,
+   "Critical Strike": 2475
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Skyhold Arms",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bloodforged Dirge_IL3800.png",
+  "id": 6353,
+  "dbName": "Bloodforged Dirge",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Damage": 50,
+   "Combat Advantage": 2508,
+   "Critical Strike": 3078
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Ghastly Eruption",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bloodforged Requiem_IL4000.png",
+  "id": 6355,
+  "dbName": "Bloodforged Requiem",
+  "dbItemLevel": 4000,
+  "dbRatingStats": {
+   "Damage": 100,
+   "Combat Advantage": 2640,
+   "Critical Strike": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Ghastly Eruption (Greater)",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Crystal Greatsword_IL3100.png",
+  "id": 6413,
+  "dbName": "Crystal Greatsword",
+  "dbItemLevel": 3100,
+  "dbRatingStats": {
+   "Combat Advantage": 1860,
+   "Critical Strike": 2790
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dragon Bone Halberd_IL800.png",
+  "id": 6434,
+  "dbName": "Dragon Bone Halberd",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 350,
+   "Critical Strike": 427,
+   "Critical Severity": 422
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Duergar Mercenary's Steel Hammer_IL1900.png",
+  "id": 6454,
+  "dbName": "Duergar Mercenary's Steel Hammer",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

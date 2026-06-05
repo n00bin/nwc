@@ -1,0 +1,146 @@
+[
+ {
+  "name": "Mugger of the Maze's Braces",
+  "class": "bard-gear",
+  "ids": [
+   4156
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus percentage wrong: DB says '5% less damage from Ranged attacks', screenshot says '3% less damage from Ranged attacks'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mugger of the Maze's Braces_IL1000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Bulwark's Shield",
+    "description": "You take 5% less damage from Ranged attacks."
+   }
+  ]
+ },
+ {
+  "name": "Cuirass of the Scarlet Arcanum",
+  "class": "bard-gear",
+  "ids": [
+   2712
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name mismatch: DB stores 'Focused Frenzy', screenshot shows 'Focused Burst'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuirass of the Scarlet Arcanum_IL5000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage."
+   }
+  ]
+ },
+ {
+  "name": "Cuirass of the Scarlet Arcanum",
+  "class": "bard-gear",
+  "ids": [
+   2712
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Focused Burst', DB stores 'Focused Frenzy'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Cuirass of the Scarlet Arcanum_IL5000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage."
+   }
+  ]
+ },
+ {
+  "name": "Hauberk of the Crimson Gale",
+  "class": "bard-gear",
+  "ids": [
+   2716
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus 'Lethal Focus' text: screenshot reads '+3% Power and +4% Accuracy' but DB stores '+3% Hit Points and +4% Accuracy' — both screenshots agree the game text says Power, not Hit Points"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Hauberk of the Crimson Gale_IL4700 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Lethal Focus",
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, you gain +3% Hit Points and +4% Accuracy for 7 seconds (5 second cooldown)."
+   }
+  ]
+ },
+ {
+  "name": "Ultraviolet Elven Vest",
+  "class": "bard-gear",
+  "ids": [
+   3966
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus cooldown mismatch: screenshot reads '(30 second cooldown)' but DB description states '(10 second cooldown)'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ultraviolet Elven Vest_IL2900.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Daily",
+    "description": "When you use a Daily power, your next encounter power will deal 20% more damage. (10 second cooldown). Additionally, when Focused Daily triggers, you gain 2.5% Critical Severity for 10s."
+   }
+  ]
+ },
+ {
+  "name": "Apprentice's Runed Gaiters",
+  "class": "bard-gear",
+  "ids": [
+   4133
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus value mismatch: screenshot reads 'Gain 250 Combat Advantage for each enemy you are engaged in battle with' but DB description states 'Gain 230 Combat Advantage'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Runed Gaiters_IL965 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "description": "Gain 230 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)"
+   }
+  ]
+ },
+ {
+  "name": "Apprentice's Runed Gaiters",
+  "class": "bard-gear",
+  "ids": [
+   4133
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus 'Death Defier's Advantage': screenshot reads 'Gain 250 Combat Advantage for each enemy' vs DB description '230 Combat Advantage'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Apprentice's Runed Gaiters_IL965 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "description": "Gain 230 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)"
+   }
+  ]
+ },
+ {
+  "name": "Dragonhide Pikes",
+  "class": "bard-gear",
+  "ids": [
+   4022
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus 'This or That': screenshot says 'gain 5,000 Defense' (when not in a party); DB description says 'gain 3,000 Defense'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dragonhide Pikes_IL1900 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "description": "When not in a party, gain 3,000 Defense. When in a party, gain 10,000 Accuracy."
+   }
+  ]
+ }
+]

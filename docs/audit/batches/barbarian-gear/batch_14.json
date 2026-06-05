@@ -1,0 +1,526 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Bregan D'aerthe Mauler's Plate_IL2050.png",
+  "id": 6505,
+  "dbName": "Enchanted Bregan D'aerthe Mauler's Plate",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1538,
+   "Critical Strike": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reckless Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal damage to an enemy gain a stack of Reckless Advantage, increasing your Combat Advantage by 3% but decreasing your Critical Avoidance by 1% for 5 seconds. (Max 6 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Depthforged Cuirass_IL3200.png",
+  "id": 6506,
+  "dbName": "Enchanted Depthforged Cuirass",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Accuracy": 1200,
+   "Combat Advantage": 2400,
+   "Forte": 1200
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Accuracy and Combat Advantage for 15 seconds. Max 5 Stack: 7.5% Accuracy and Combat Advantage",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Resolution Plate_IL2050.png",
+  "id": 6516,
+  "dbName": "Exalted Maiden's Resolution Plate",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Ward Cuirass_IL2050.png",
+  "id": 930,
+  "dbName": "Exalted Maiden's Ward Cuirass",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 923,
+   "Awareness": 1230,
+   "Critical Avoidance": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Fiend Forged Chainmail_IL1230.png",
+  "id": 6553,
+  "dbName": "Fiend Forged Chainmail",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Severity": 922,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Forest Guardian's Raid Scalemail_IL1500.png",
+  "id": 6724,
+  "dbName": "Forest Guardian's Raid Scalemail",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Defense": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Awareness",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Awareness for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Fret Breastplate of Halaster's Successor_IL1010.png",
+  "id": 6725,
+  "dbName": "Fret Breastplate of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Critical Severity": 379,
+   "Defense": 1136
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain .5% Defense, to the max of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Fret Breastplate of the Successor_IL990.png",
+  "id": 6563,
+  "dbName": "Fret Breastplate of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Critical Severity": 371,
+   "Defense": 1114
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain .5% Defense, to the max of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Hammerstone Scale_IL352.png",
+  "id": 6575,
+  "dbName": "Hammerstone Scale",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 40,
+   "Combat Advantage": 92,
+   "Critical Strike": 92,
+   "Defense": 264,
+   "Deflect": 40
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Infernal Forged Chainmail_IL1200.png",
+  "id": 6609,
+  "dbName": "Infernal Forged Chainmail",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Critical Severity": 900,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\League's Assault Korazin_IL588.png",
+  "id": 6621,
+  "dbName": "League's Assault Korazin",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\League's Elite Assault Korazin_IL602.png",
+  "id": 6625,
+  "dbName": "League's Elite Assault Korazin",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Critical Strike": 542,
+   "Critical Severity": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 15 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\League's Elite Raid Korazin_IL602.png",
+  "id": 6629,
+  "dbName": "League's Elite Raid Korazin",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Combat Advantage": 361,
+   "Critical Strike": 542,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 15 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\League's Raid Korazin_IL588.png",
+  "id": 6633,
+  "dbName": "League's Raid Korazin",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Defense for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lion Guard's Ward Scalemail_IL1250.png",
+  "id": 6647,
+  "dbName": "Lion Guard's Ward Scalemail",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Critical Severity": 469,
+   "Defense": 1406
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lionsmane Duelist Scalemail_IL560.png",
+  "id": 6837,
+  "dbName": "Lionsmane Duelist Scalemail",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Defense": 420,
+   "Awareness": 111,
+   "Deflect": 309
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lionsmane Executioner Scalemail_IL560.png",
+  "id": 6654,
+  "dbName": "Lionsmane Executioner Scalemail",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Combat Advantage": 168,
+   "Critical Strike": 126,
+   "Critical Severity": 126,
+   "Defense": 420
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Lolthian Plate_IL2050.png",
+  "id": 6661,
+  "dbName": "Lolthian Plate",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1230,
+   "Defense": 923,
+   "Deflect": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are full, your Critical Severity is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Mastered Duergar Mercenary's Goristro Hide_IL1900.png",
+  "id": 6666,
+  "dbName": "Mastered Duergar Mercenary's Goristro Hide",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1425,
+   "Defense": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Action",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Action Point Gain is increased by 7.5%. When your health is below 50%, Stamina Regeneration is increased by 15%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pilgrim Assault Korazin_IL644.png",
+  "id": 6690,
+  "dbName": "Pilgrim Assault Korazin",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Critical Strike": 290,
+   "Critical Severity": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 100 Defense for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pilgrim Raid Korazin_IL644.png",
+  "id": 6693,
+  "dbName": "Pilgrim Raid Korazin",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Combat Advantage": 193,
+   "Critical Strike": 290,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 100 Defense for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pioneer Assault Korazin_IL616.png",
+  "id": 6701,
+  "dbName": "Pioneer Assault Korazin",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Critical Strike": 277,
+   "Critical Severity": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pioneer Raid Korazin_IL616.png",
+  "id": 6704,
+  "dbName": "Pioneer Raid Korazin",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Critical Strike": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Plate of the Unyielding Bastion_IL5000.png",
+  "id": 379,
+  "dbName": "Plate of the Unyielding Bastion",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Awareness": 2700,
+   "Critical Avoidance": 4538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Retaliatory Shockwave",
+    "stat": null,
+    "amount": null,
+    "description": "On hit > 15% MaxHP: 60 mag shockwave + 3.5% Awareness 7s (12s cd)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Primal Assault Kanzu_IL700.png",
+  "id": 6839,
+  "dbName": "Primal Assault Kanzu",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Critical Strike": 315,
+   "Critical Severity": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Defense for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

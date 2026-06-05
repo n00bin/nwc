@@ -1,0 +1,475 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Gladiator Couters_IL728.png",
+  "id": 2602,
+  "dbName": "Adamant Gladiator Couters",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Defense": 346,
+   "Critical Avoidance": 164,
+   "Deflection": 218
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Medic Couters_IL728.png",
+  "id": 2598,
+  "dbName": "Adamant Medic Couters",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Combat Advantage": 164,
+   "Defense": 346,
+   "Awareness": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Restoration Couters_IL728.png",
+  "id": 2594,
+  "dbName": "Adamant Restoration Couters",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Critical Strike": 328,
+   "Defense": 346
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Alliance Restoration Couters_IL546.png",
+  "id": 2327,
+  "dbName": "Alliance Restoration Couters",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Critical Strike": 166,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Alliance Ward Couters_IL546.png",
+  "id": 2340,
+  "dbName": "Alliance Ward Couters",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Defense": 410,
+   "Awareness": 246,
+   "Deflection": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Apprentice's Ruined Braces_IL690.png",
+  "id": 3467,
+  "dbName": "Apprentice's Ruined Braces",
+  "dbItemLevel": 690,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Apprentice's Runed Braces_IL965 (2).png",
+  "id": 1539,
+  "dbName": "Apprentice's Runed Braces",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Strike": 362,
+   "Defense": 724,
+   "Deflection": 362
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Apprentice's Runed Braces_IL965.png",
+  "id": 1539,
+  "dbName": "Apprentice's Runed Braces",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Strike": 362,
+   "Defense": 724,
+   "Deflection": 362
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Astral Raider's Gauntlets_IL2200.png",
+  "id": 727,
+  "dbName": "Astral Raider's Gauntlets",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 990,
+   "Critical Avoidance": 1320,
+   "Control Resistance": 990
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Disdain",
+    "stat": null,
+    "amount": null,
+    "description": "Grants up to 20% bonus Damage when your total item level is being scaled down. Currently: 0% Damage (100%). Disabled in Thay Arena PvP.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Black Ice Gauntlets_IL512.png",
+  "id": 2080,
+  "dbName": "Black Ice Gauntlets",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.1,
+   "Combat Advantage": 132,
+   "Defense": 384,
+   "Awareness": 59.9,
+   "Critical Avoidance": 132
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Braces of the Spy's Guild_IL940.png",
+  "id": 1583,
+  "dbName": "Braces of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 352,
+   "Defense": 705,
+   "Deflection": 352
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Bronzewood Restoration Ibhendis_IL784.png",
+  "id": 2414,
+  "dbName": "Bronzewood Restoration Ibhendis",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Accuracy": 235,
+   "Critical Strike": 353,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Bronzewood Ward Ibhendis_IL784.png",
+  "id": 2408,
+  "dbName": "Bronzewood Ward Ibhendis",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Awareness": 235,
+   "Critical Strike": 353,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Company Gladiator Couters_IL560.png",
+  "id": 5619,
+  "dbName": "Company Gladiator Couters",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Accuracy": 126,
+   "Defense": 420,
+   "Critical Avoidance": 126,
+   "Deflection": 168
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Company Medic Couters_IL560.png",
+  "id": 5620,
+  "dbName": "Company Medic Couters",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Accuracy": 168,
+   "Combat Advantage": 126,
+   "Defense": 420,
+   "Awareness": 126
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Company Restoration Couters_IL588.png",
+  "id": 2634,
+  "dbName": "Company Restoration Couters",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 176,
+   "Combat Advantage": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Company Ward Couters_IL588.png",
+  "id": 2630,
+  "dbName": "Company Ward Couters",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Severity": 176,
+   "Defense": 441,
+   "Deflection": 265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Crone's Braces_IL1225.png",
+  "id": 3360,
+  "dbName": "Crone's Braces",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Defense": 919,
+   "Deflection": 459,
+   "Outgoing Healing": 459
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 45 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Demon Forged Braces_IL1215.png",
+  "id": 1417,
+  "dbName": "Demon Forged Braces",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 456,
+   "Defense": 911,
+   "Deflection": 456
+  },
+  "dbPercentStats": {
+   "Damage against Devils": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Depthforged Guards_IL3000.png",
+  "id": 602,
+  "dbName": "Depthforged Guards",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Defense": 2250,
+   "Awareness": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sudden Intuition",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Awareness and Deflect Severity by 6.5% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Devil Forged Braces_IL1215.png",
+  "id": 1409,
+  "dbName": "Devil Forged Braces",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 456,
+   "Defense": 911,
+   "Deflection": 456
+  },
+  "dbPercentStats": {
+   "Damage against Demons": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Dungeon Raider's Braces_IL940.png",
+  "id": 3497,
+  "dbName": "Dungeon Raider's Braces",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 352,
+   "Defense": 705,
+   "Deflection": 352
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elemental Alliance Restoration Couters_IL554.png",
+  "id": 2317,
+  "dbName": "Elemental Alliance Restoration Couters",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 166,
+   "Critical Strike": 249,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elemental Alliance Ward Couters_IL554.png",
+  "id": 2314,
+  "dbName": "Elemental Alliance Ward Couters",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Combat Advantage": 249,
+   "Defense": 416,
+   "Deflection": 166
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elemental Corrupted Black Ice Gauntlets_IL546.png",
+  "id": 2077,
+  "dbName": "Elemental Corrupted Black Ice Gauntlets",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Strike": 205,
+   "Defense": 410,
+   "Critical Avoidance": 68.8,
+   "Deflection": 136
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

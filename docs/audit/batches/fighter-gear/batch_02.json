@@ -1,0 +1,530 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Fiend Forged Vambraces_IL1230.png",
+  "id": 6556,
+  "dbName": "Fiend Forged Vambraces",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Strike": 554,
+   "Defense": 922,
+   "Critical Avoidance": 369
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Forest Guardian's Raid Vambraces_IL1500.png",
+  "id": 6559,
+  "dbName": "Forest Guardian's Raid Vambraces",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Critical Strike": 675,
+   "Defense": 1125,
+   "Critical Avoidance": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Accuracy for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Gauntlets of the Bloodborne Reaper_IL5000.png",
+  "id": 6564,
+  "dbName": "Gauntlets of the Bloodborne Reaper",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Strike": 4050,
+   "Forte": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Surge of Lethality",
+    "stat": null,
+    "amount": null,
+    "description": "When you use an at-will power, you have a 1.5% chance to gain 9.5% Critical Severity for 5 seconds. This does not stack (5 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Gauntlets of the Crimson Scythe_IL4700.png",
+  "id": 6565,
+  "dbName": "Gauntlets of the Crimson Scythe",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3807,
+   "Forte": 3490
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Momentum",
+    "stat": null,
+    "amount": null,
+    "description": "When you use an at-will power, you have a 30% chance to gain +7% Critical Severity for 6 seconds. Re-applying the effect will refresh it's duration.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Gauntlets of the Unyielding Bastion_IL5000.png",
+  "id": 378,
+  "dbName": "Gauntlets of the Unyielding Bastion",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Defense": 2888,
+   "Critical Avoidance": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reprisal Reflex",
+    "stat": null,
+    "amount": null,
+    "description": "On Crit hit on you: reflect 10% MaxHP + 0.5% Awareness 10s (10s cd)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Hammerstone Gauntlets_IL352.png",
+  "id": 2085,
+  "dbName": "Hammerstone Gauntlets",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 39.6,
+   "Critical Severity": 39.6,
+   "Defense": 264,
+   "Critical Avoidance": 92.4,
+   "Deflection": 92.4
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Infernal Forged Vambraces_IL1200.png",
+  "id": 6612,
+  "dbName": "Infernal Forged Vambraces",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Critical Strike": 540,
+   "Defense": 900,
+   "Critical Avoidance": 360
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Lolthian Vambraces_IL2050.png",
+  "id": 6662,
+  "dbName": "Lolthian Vambraces",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Severity": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Mastered Duergar Mercenary's Guards_IL1900.png",
+  "id": 6668,
+  "dbName": "Mastered Duergar Mercenary's Guards",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Savagery",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 10,000. When your health is below 50%, Critical Avoidance is increased by 10,000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Protege's Polished Vambraces_IL980.png",
+  "id": 6714,
+  "dbName": "Protege's Polished Vambraces",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Critical Strike": 441,
+   "Defense": 735,
+   "Critical Avoidance": 294
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Pulsar Gauntlets_IL2600.png",
+  "id": 720,
+  "dbName": "Pulsar Gauntlets",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Awareness": 780,
+   "Critical Avoidance": 1170,
+   "Incoming Healing": 1950
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Recharge Speed for each enemy you are engaged in battle within 100'. Max 10 Stacks: 10% Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Radiant Elven Guards_IL2800.png",
+  "id": 695,
+  "dbName": "Radiant Elven Guards",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Awareness": 2100,
+   "Critical Avoidance": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Alacrity",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, your Recharge Speed is increased by 0.6% every 2 seconds. Every 2 seconds you are in combat with 4 or more enemies, lose 1 stack. Max 5 stacks: 3% Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Runefrost Bulwark Vambraces_IL5400.png",
+  "id": 5359,
+  "dbName": "Runefrost Bulwark Vambraces",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Defense": 2835,
+   "Deflect Severity": 6075
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sudden Intuition",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Awareness and Deflect Severity by 7.5% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Runefrost Ravager Vambraces_IL5400.png",
+  "id": 6718,
+  "dbName": "Runefrost Ravager Vambraces",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Untamed Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5% Critical Severity for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Starforged Guards_IL2700.png",
+  "id": 713,
+  "dbName": "Starforged Guards",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Accuracy": 2025,
+   "Awareness": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sudden Intuition",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Awareness and Deflect Severity by 7% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Starforged Vambraces_IL2700.png",
+  "id": 6742,
+  "dbName": "Starforged Vambraces",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Accuracy": 2025,
+   "Combat Advantage": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 15 Action Points. Can only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\The Dark Maiden's Resolution Vambraces_IL2000.png",
+  "id": 6761,
+  "dbName": "The Dark Maiden's Resolution Vambraces",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 1200,
+   "Critical Severity": 900,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\The Dark Maiden's Ward Guards_IL2000.png",
+  "id": 939,
+  "dbName": "The Dark Maiden's Ward Guards",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 900,
+   "Deflect Severity": 900,
+   "Forte": 1200
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Ultraviolet Elven Gauntlets_IL2900.png",
+  "id": 687,
+  "dbName": "Ultraviolet Elven Gauntlets",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Awareness": 2175,
+   "Critical Avoidance": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sudden Intuition",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Awareness and Deflect Severity by 7.5% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Vambraces of the Iron Bulwark_IL4700.png",
+  "id": 204,
+  "dbName": "Vambraces of the Iron Bulwark",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Awareness": 2538,
+   "Critical Avoidance": 4265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Insight",
+    "stat": null,
+    "amount": null,
+    "description": "Per 6s in combat: +0.4% Awareness, +0.1% Power to allies in 20'. Max 8 (3.2% / 0.8% per ally)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Vambraces of the Spy's Guild_IL940.png",
+  "id": 6797,
+  "dbName": "Vambraces of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 423,
+   "Defense": 705,
+   "Critical Avoidance": 282
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Weathered Wood Vambraces_IL1300.png",
+  "id": 6815,
+  "dbName": "Weathered Wood Vambraces",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Critical Strike": 585,
+   "Defense": 975,
+   "Critical Avoidance": 390
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Wintermarked Bulwark Vambraces_IL5700.png",
+  "id": 5351,
+  "dbName": "Wintermarked Bulwark Vambraces",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Defense": 2992,
+   "Critical Strike": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reptilial Reflex",
+    "stat": null,
+    "amount": null,
+    "description": "On Critical Strike against you, reflect 10% of your Maximum Hit Points as damage and gain +7.5% Awareness for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Wintermarked Ravager Vambraces_IL5700.png",
+  "id": 6819,
+  "dbName": "Wintermarked Ravager Vambraces",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 3848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Consuming Rage",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Severity is increased by 1.8% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 9% Critical Severity",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Alliance Assault Breastplate_IL546.png",
+  "id": 2326,
+  "dbName": "Alliance Assault Breastplate",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Combat Advantage": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

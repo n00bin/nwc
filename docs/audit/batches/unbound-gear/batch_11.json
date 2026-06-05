@@ -1,0 +1,482 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dragonflight Shirt of Repentance_IL1500.png",
+  "id": 2405,
+  "dbName": "Dragonflight Shirt of Repentance",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Combat Advantage": 1125,
+   "Deflection": 1125,
+   "Stamina Regeneration": 1.5
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Fury",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Power is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Frost-Riven Stonevein Straps_IL4850 (2).png",
+  "id": 5377,
+  "dbName": "Frost-Riven Stonevein Straps",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Awareness": 1746,
+   "Critical Avoidance": 3201,
+   "Deflect Severity": 3274
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Surging Fortification",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.35% Defense and 0.4% Awareness. Max 10 Stacks: 3.5% Defense and 4% Awareness.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Fortitude (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Defense",
+    "setName": "Freezing Fortitude",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Frost-Riven Stonevein Straps_IL4850.png",
+  "id": 5377,
+  "dbName": "Frost-Riven Stonevein Straps",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Awareness": 1746,
+   "Critical Avoidance": 3201,
+   "Deflect Severity": 3274
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Surging Fortification",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.35% Defense and 0.4% Awareness. Max 10 Stacks: 3.5% Defense and 4% Awareness.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Fortitude (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Defense",
+    "setName": "Freezing Fortitude",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Shirt of the Chultan Merchant_IL672.png",
+  "id": 1892,
+  "dbName": "Shirt of the Chultan Merchant",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Critical Strike": 504,
+   "Critical Avoidance": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 150 Accuracy for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Upper Primal Paints_IL700.png",
+  "id": 1832,
+  "dbName": "Upper Primal Paints",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Critical Strike": 699,
+   "Defense": 351
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Daily Perk",
+    "stat": "Daily Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your Daily Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Alliance Assault Belt_IL546.png",
+  "id": 2331,
+  "dbName": "Alliance Assault Belt",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 328,
+   "Critical Strike": 491
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Alliance Ward Belt_IL546.png",
+  "id": 2334,
+  "dbName": "Alliance Ward Belt",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Avoidance": 328,
+   "Deflection": 491
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Beaded Sash · IL 350_IL350.png",
+  "id": 2446,
+  "dbName": "Beaded Sash · IL 350",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Beaded Sash_IL500 (2).png",
+  "id": 5503,
+  "dbName": "Beaded Sash",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 250,
+   "Combat Advantage": 250,
+   "Critical Strike": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Beaded Sash_IL500.png",
+  "id": 5503,
+  "dbName": "Beaded Sash",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 250,
+   "Combat Advantage": 250,
+   "Critical Strike": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Beaded Sash_IL650 (2).png",
+  "id": 5504,
+  "dbName": "Beaded Sash",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 325,
+   "Combat Advantage": 325,
+   "Critical Strike": 326
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Beaded Sash_IL650.png",
+  "id": 5504,
+  "dbName": "Beaded Sash",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 325,
+   "Combat Advantage": 325,
+   "Critical Strike": 326
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Beaded Sash_IL800 (2).png",
+  "id": 5505,
+  "dbName": "Beaded Sash",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 400,
+   "Combat Advantage": 400,
+   "Critical Strike": 401
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Beaded Sash_IL800.png",
+  "id": 5505,
+  "dbName": "Beaded Sash",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 400,
+   "Combat Advantage": 400,
+   "Critical Strike": 401
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bronzewood Sash_IL500 (2).png",
+  "id": 5509,
+  "dbName": "Bronzewood Sash",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Combat Advantage": 250,
+   "Critical Strike": 250,
+   "Critical Severity": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter power triggers Alacrity stack — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bronzewood Sash_IL500.png",
+  "id": 5509,
+  "dbName": "Bronzewood Sash",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Combat Advantage": 250,
+   "Critical Strike": 250,
+   "Critical Severity": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter power triggers Alacrity stack — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bronzewood Sash_IL650 (2).png",
+  "id": 5510,
+  "dbName": "Bronzewood Sash",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Combat Advantage": 325,
+   "Critical Strike": 326,
+   "Critical Severity": 325
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter power triggers Alacrity stack — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bronzewood Sash_IL650.png",
+  "id": 5510,
+  "dbName": "Bronzewood Sash",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Combat Advantage": 325,
+   "Critical Strike": 326,
+   "Critical Severity": 325
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter power triggers Alacrity stack — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Cincture of Atropal Essence_IL350.png",
+  "id": 1842,
+  "dbName": "Cincture of Atropal Essence",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 175,
+   "Critical Severity": 175,
+   "Critical Avoidance": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Assault Belt_IL300.png",
+  "id": 5500,
+  "dbName": "Company Assault Belt",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Combat Advantage": 150,
+   "Critical Strike": 150,
+   "Critical Severity": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Assault Belt_IL500.png",
+  "id": 5501,
+  "dbName": "Company Assault Belt",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Combat Advantage": 250,
+   "Critical Strike": 250,
+   "Critical Severity": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Demogorgon's Girdle of Might_IL300.png",
+  "id": 2109,
+  "dbName": "Demogorgon's Girdle of Might",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Critical Strike": 225,
+   "Deflection": 225
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dragonflight Raid Belt_IL588.png",
+  "id": 2580,
+  "dbName": "Dragonflight Raid Belt",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 529,
+   "Critical Strike": 353
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dragonflight Restoration Belt_IL588.png",
+  "id": 2578,
+  "dbName": "Dragonflight Restoration Belt",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 353,
+   "Critical Strike": 529
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Dragonflight Ward Belt_IL588.png",
+  "id": 2570,
+  "dbName": "Dragonflight Ward Belt",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 353,
+   "Critical Avoidance": 529
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

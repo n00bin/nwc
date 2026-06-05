@@ -1,0 +1,523 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Primal Temicamatl_IL800.png",
+  "id": 4991,
+  "dbName": "Exalted Primal Temicamatl",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "CombatAdvantage": 600,
+   "CriticalStrike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Fortified Book of the Vale_IL1800.png",
+  "id": 3312,
+  "dbName": "Fortified Book of the Vale",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Combat Advantage": 1350,
+   "Critical Severity": 1350
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": null,
+    "setName": "Fortified Vale",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Frostbound Spellbook_IL4800 (2).png",
+  "id": 5482,
+  "dbName": "Frostbound Spellbook",
+  "dbItemLevel": 4800,
+  "dbRatingStats": {
+   "Critical Strike": 4320,
+   "Critical Severity": 4320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Frostbound Spellbook_IL4800.png",
+  "id": 5482,
+  "dbName": "Frostbound Spellbook",
+  "dbItemLevel": 4800,
+  "dbRatingStats": {
+   "Critical Strike": 4320,
+   "Critical Severity": 4320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Golden Dragon Grimoire_IL300.png",
+  "id": 3703,
+  "dbName": "Golden Dragon Grimoire",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "Combat Advantage": 150,
+   "Critical Avoidance": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Hammerstone Grimoire_IL352.png",
+  "id": 3596,
+  "dbName": "Hammerstone Grimoire",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Combat Advantage": 185,
+   "Critical Strike": 185,
+   "Awareness": 80,
+   "Critical Avoidance": 80
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Meteoric Iron Tome_IL2450.png",
+  "id": 3199,
+  "dbName": "Meteoric Iron Tome",
+  "dbItemLevel": 2450,
+  "dbRatingStats": {
+   "Forte": 1838,
+   "Outgoing Healing": 1838
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Deal or heal up to 9% additional damage based on the difference in hit point percentage between the player and the target. DPS +2% Base Damage Boost, Tank -4% Incoming Damage, Healer +4% Overall Outgoing Healing. Does not stack. When in Wildspace, the above bonuses are doubled, and your Movement Speed is increased by 15%.",
+    "setName": "Meteoric Fury",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Perfect Book of Lolth_IL2475.png",
+  "id": 3250,
+  "dbName": "Perfect Book of Lolth",
+  "dbItemLevel": 2475,
+  "dbRatingStats": {
+   "Combat Advantage": 1856,
+   "Critical Severity": 1856
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": null,
+    "setName": "Demonweb Empowerment",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pioneer Jarimwiri_IL350.png",
+  "id": 5016,
+  "dbName": "Pioneer Jarimwiri",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "CombatAdvantage": 262,
+   "CriticalStrike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pioneer Jarimwiri_IL500.png",
+  "id": 5015,
+  "dbName": "Pioneer Jarimwiri",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "CombatAdvantage": 375,
+   "CriticalStrike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pioneer Jarimwiri_IL650.png",
+  "id": 5014,
+  "dbName": "Pioneer Jarimwiri",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "CombatAdvantage": 488,
+   "CriticalStrike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pioneer Jarimwiri_IL800.png",
+  "id": 5013,
+  "dbName": "Pioneer Jarimwiri",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "CombatAdvantage": 600,
+   "CriticalStrike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Temicamatl_IL350.png",
+  "id": 4983,
+  "dbName": "Primal Temicamatl",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "CombatAdvantage": 262,
+   "CriticalStrike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Temicamatl_IL500.png",
+  "id": 4982,
+  "dbName": "Primal Temicamatl",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "CombatAdvantage": 375,
+   "CriticalStrike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Temicamatl_IL650.png",
+  "id": 4981,
+  "dbName": "Primal Temicamatl",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "CombatAdvantage": 488,
+   "CriticalStrike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Temicamatl_IL800.png",
+  "id": 4980,
+  "dbName": "Primal Temicamatl",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "CombatAdvantage": 600,
+   "CriticalStrike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Hexbook_IL5500 (2).png",
+  "id": 5480,
+  "dbName": "Runefrost Hexbook",
+  "dbItemLevel": 5500,
+  "dbRatingStats": {
+   "Critical Strike": 4950,
+   "Critical Severity": 4950
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Hexbook_IL5500 (3).png",
+  "id": 5480,
+  "dbName": "Runefrost Hexbook",
+  "dbItemLevel": 5500,
+  "dbRatingStats": {
+   "Critical Strike": 4950,
+   "Critical Severity": 4950
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Hexbook_IL5500.png",
+  "id": 5480,
+  "dbName": "Runefrost Hexbook",
+  "dbItemLevel": 5500,
+  "dbRatingStats": {
+   "Critical Strike": 4950,
+   "Critical Severity": 4950
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Starcore Tome +1_IL2700.png",
+  "id": 3195,
+  "dbName": "Starcore Tome +1",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Combat Advantage": 2025,
+   "Critical Strike": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Deal or heal up to 5.5% additional damage based on the difference in hit point percentage between the player and the target. DPS +3% Base Damage Boost, Tank -6% Incoming Damage, Healer +4% Overall Outgoing Healing. Does not stack. When in Wildspace, the above bonuses are doubled, and your Movement Speed is increased by 10%.",
+    "setName": "Dark Matter",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Starcore Tome_IL2500.png",
+  "id": 3194,
+  "dbName": "Starcore Tome",
+  "dbItemLevel": 2500,
+  "dbRatingStats": {
+   "Combat Advantage": 1875,
+   "Critical Strike": 1875
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Deal or heal up to 5.5% additional damage based on the difference in hit point percentage between the player and the target. DPS +3% Base Damage Boost, Tank -6% Incoming Damage, Healer +4% Overall Outgoing Healing. Does not stack. When in Wildspace, the above bonuses are doubled, and your Movement Speed is increased by 10%.",
+    "setName": "Dark Matter",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Stormforged Tome_IL2000.png",
+  "id": 3256,
+  "dbName": "Stormforged Tome",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 900,
+   "Critical Severity": 1500,
+   "Critical Avoidance": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": null,
+    "setName": "Stormforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\The Weaver's Tome_IL2050.png",
+  "id": 3254,
+  "dbName": "The Weaver's Tome",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1538,
+   "Combat Advantage": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": null,
+    "setName": "Beholder Slayer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Voidtouched Tome_IL3000.png",
+  "id": 3198,
+  "dbName": "Voidtouched Tome",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Accuracy": 2250,
+   "Combat Advantage": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Overall Outgoing Healing",
+    "amount": 1,
+    "description": "2 of Set: +1% Overall Outgoing Healing and -5% Incoming Damage. When in Wildspace, your Movement Speed is increased by 12%. Every 2s in combat with a single opponent, gain a stack of Darklight. Every 2s in combat with 4+ opponents, lose a stack. Based on your role, each stack of Darklight grants: DPS +0.6% Base Damage Boost, Tank -0.6% Incoming Damage, Healer +0.6% Overall Outgoing Healing. Max 10 stacks. Stack bonuses doubled in Wildspace.",
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wintermarked Grimoire of Rime_IL5800.png",
+  "id": 5478,
+  "dbName": "Wintermarked Grimoire of Rime",
+  "dbItemLevel": 5800,
+  "dbRatingStats": {
+   "Accuracy": 3770,
+   "Critical Strike": 3480,
+   "Critical Severity": 3480
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ }
+]

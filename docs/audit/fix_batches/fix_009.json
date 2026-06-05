@@ -1,0 +1,443 @@
+[
+ {
+  "id": 2601,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Gladiator Poleyns_IL728.png",
+  "dbName": "Adamant Gladiator Poleyns",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Defense": 346,
+   "Critical Avoidance": 164,
+   "Deflection": 218
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2603,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Medic Poleyns_IL728.png",
+  "dbName": "Adamant Medic Poleyns",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 312,
+   "Combat Advantage": 234,
+   "Defense": 346
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2595,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Restoration Poleyns_IL728.png",
+  "dbName": "Adamant Restoration Poleyns",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 218,
+   "Critical Strike": 328,
+   "Defense": 346
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5381,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Hearthboots_IL4700 (2).png",
+  "dbName": "Frostbound Hearthboots",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Forte": 1172
+  },
+  "dbPercentStats": {
+   "Movement Speed": 3.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Relentless Reserves",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 2% faster Stamina/Deflect/Soulweave regeneration for 15 seconds. Max 5 Stack: 10% faster Stamina/Performance/Soulweave regeneration.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5388,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Warboots_IL4700 (2).png",
+  "dbName": "Frostbound Warboots",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Accuracy": 1055,
+   "Awareness": 1880
+  },
+  "dbPercentStats": {
+   "Movement Speed": 3.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Sharpened Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased: +5.5% while outside of The Reched Edge, +7% while inside of The Reched Edge.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 1798,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Elite Restoration Diralsaaqs_IL602 (2).png",
+  "dbName": "League's Elite Restoration Diralsaaqs",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Combat Advantage": 361,
+   "Critical Strike": 342,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2596,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Gladiator Armet_IL728.png",
+  "dbName": "Adamant Gladiator Armet",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Defense": 346,
+   "Awareness": 164,
+   "Deflection": 218
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2600,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Medic Armet_IL728.png",
+  "dbName": "Adamant Medic Armet",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Combat Advantage": 164,
+   "Defense": 346,
+   "Awareness": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2406,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Bronzewood Ward Umqhele_IL784.png",
+  "dbName": "Bronzewood Ward Umqhele",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 353,
+   "Defense": 588,
+   "Awareness": 235
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5382,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Hearthhood_IL4700 (2).png",
+  "dbName": "Frostbound Hearthhood",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3384,
+   "Critical Severity": 3384
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Novice's Mercy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.008 Outgoing Healing and Forte. Max 5 Stacks: 5.04% Outgoing Healing and Forte.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5387,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Stonehelm_IL4700.png",
+  "dbName": "Frostbound Stonehelm",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Defense": 1974,
+   "Critical Avoidance": 5102,
+   "Deflect Severity": 2115
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sentinel Reflexes",
+    "stat": null,
+    "amount": null,
+    "description": "When you use an encounter power, you have a 30% chance to gain 5.6% Awareness for 6 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5390,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Warhood_IL4700 (2).png",
+  "dbName": "Frostbound Warhood",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Power": 1974,
+   "Critical Severity": 3384,
+   "Critical Avoidance": 1551
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Surging Empathy",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1,320 Critical Severity and Accuracy. Max 5 stacks: 6,600 Critical Severity and Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 1785,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Ward Taj_IL588.png",
+  "dbName": "League's Ward Taj",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Defense": 529,
+   "Awareness": 265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 1757,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Primal Restoration Umqhele_IL700.png",
+  "dbName": "Primal Restoration Umqhele",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 210,
+   "Critical Strike": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 3% of your health back.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 1753,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Primal Ward Umqhele_IL700.png",
+  "dbName": "Primal Ward Umqhele",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 315,
+   "Critical Severity": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 3% of your health back.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 2419,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Bronzewood Quauhololli · IL 500_IL500.png",
+  "dbName": "Bronzewood Quauhololli · IL 500",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Strike": 188,
+   "Deflection": 187
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2360,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Dragon Bone Mace_IL800.png",
+  "dbName": "Dragon Bone Mace",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 350,
+   "Combat Advantage": 422,
+   "Critical Strike": 422
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2004,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Oathkeeper's Shield · IL 800_IL800.png",
+  "dbName": "Oathkeeper's Shield · IL 800",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 600,
+   "Critical Strike": 300,
+   "Deflection": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5340,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Runefrost Oath Shield_IL5500.png",
+  "dbName": "Runefrost Oath Shield",
+  "dbItemLevel": 5500,
+  "dbRatingStats": {
+   "Awareness": 1300,
+   "Forte": 3713
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Chilling Flow (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks.",
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5361,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Cracked Dawnshard Raiment_IL4600 (2).png",
+  "dbName": "Cracked Dawnshard Raiment",
+  "dbItemLevel": 4600,
+  "dbRatingStats": {
+   "Critical Strike": 2484,
+   "Critical Severity": 2484,
+   "Forte": 2484
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Occult Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "+9% Critical Severity. -5% Defense.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Touch (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Power",
+    "setName": "Freezing Touch",
+    "pieces": 2
+   }
+  ]
+ }
+]

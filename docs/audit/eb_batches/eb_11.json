@@ -1,0 +1,100 @@
+[
+ {
+  "name": "Mage of the Maze's Robes",
+  "class": "warlock-gear",
+  "ids": [
+   3504
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus Butcher's Remedy heal percent: screenshot says 1% vs DB description says 3%"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mage of the Maze's Robes_IL1000.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 3% of your health back."
+   }
+  ]
+ },
+ {
+  "name": "Primal Assault Shabas",
+  "class": "warlock-gear",
+  "ids": [
+   5032
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "dbEquipBonuses is empty but screenshot shows Equip: Butcher's Might (When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Power for 10 seconds. Max stack 5)"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Assault Shabas_IL700.png",
+  "dbEquipBonuses": []
+ },
+ {
+  "name": "Primal Raid Shabas",
+  "class": "warlock-gear",
+  "ids": [
+   5026
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "dbEquipBonuses is empty but screenshot shows Equip: Butcher's Might (When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Power for 10 seconds. Max stack 5)"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Raid Shabas_IL700.png",
+  "dbEquipBonuses": []
+ },
+ {
+  "name": "Dragonhide Crakows",
+  "class": "bard-gear",
+  "ids": [
+   3306
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description mismatch: DB says 'gain 10,000 Forte' when not in a party; screenshot shows 'gain 5,000 Forte'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dragonhide Crakows_IL1900.png",
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "description": "When not in a party, gain 10,000 Forte. When in a party, gain 10,000 Critical Strike."
+   }
+  ]
+ },
+ {
+  "name": "Dragonhide Poulaines",
+  "class": "warlock-gear",
+  "ids": [
+   3302
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description mismatch: DB says 'gain 3,000 Defense' when not in a party; screenshot shows 'gain 5,000 Defense'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dragonhide Poulaines_IL1900.png",
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "description": "When not in a party, gain 3,000 Defense. When in a party, gain 10,000 Critical Severity."
+   }
+  ]
+ },
+ {
+  "name": "Ultraviolet Elven Coat",
+  "class": "warlock-gear",
+  "ids": [
+   3202
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description mismatch: screenshot reads 'When you use a Daily power, your next encounter power will deal 20% more damage.' but DB stores 'When you deal damage with a Daily power, your next encounter power will deal 20% more damage.'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ultraviolet Elven Coat_IL2900.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Daily",
+    "description": "When you use a Daily power, your next encounter power will deal 20% more damage. (10 second cooldown) Additionally, when Focused Daily triggers, you gain 2.5% Critical Severity for 10s."
+   }
+  ]
+ }
+]

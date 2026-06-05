@@ -1,0 +1,418 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Umbral Assault Bracers_IL728.png",
+  "id": 3117,
+  "dbName": "Umbral Assault Bracers",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Critical Strike": 328,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Umbral Duelist Bracers_IL728.png",
+  "id": 3121,
+  "dbName": "Umbral Duelist Bracers",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Critical Severity": 164,
+   "Defense": 218,
+   "Deflection": 218
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Umbral Executioner Bracers_IL728.png",
+  "id": 3125,
+  "dbName": "Umbral Executioner Bracers",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 218,
+   "Critical Strike": 164,
+   "Defense": 546,
+   "Critical Avoidance": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Vambraces of the Crimson Gale_IL4700.png",
+  "id": 2715,
+  "dbName": "Vambraces of the Crimson Gale",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3807,
+   "Forte": 3490
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Precision Against Odds",
+    "stat": null,
+    "amount": null,
+    "description": "Each enemy you are in combat with increases your Critical Strike by 1.8%. Max 5 targets: 9% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Vivified Trailblazer's Assault Bracers_IL645.png",
+  "id": 2922,
+  "dbName": "Vivified Trailblazer's Assault Bracers",
+  "dbItemLevel": 645,
+  "dbRatingStats": {
+   "Accuracy": 189,
+   "Critical Severity": 284,
+   "Defense": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Weathered Bracers of Halaster's Successor_IL1010.png",
+  "id": 6234,
+  "dbName": "Weathered Bracers of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Accuracy": 303,
+   "Critical Severity": 455,
+   "Defense": 758
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Weathered Bracers of the Successor_IL990 (2).png",
+  "id": 6235,
+  "dbName": "Weathered Bracers of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Accuracy": 297,
+   "Critical Severity": 446,
+   "Defense": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Weathered Bracers of the Successor_IL990.png",
+  "id": 6235,
+  "dbName": "Weathered Bracers of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Accuracy": 297,
+   "Critical Severity": 446,
+   "Defense": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Weathered Wood Bracers_IL1300.png",
+  "id": 4060,
+  "dbName": "Weathered Wood Bracers",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 390,
+   "Critical Severity": 585,
+   "Defense": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Woodlord's Assault Bracers_IL770.png",
+  "id": 6181,
+  "dbName": "Woodlord's Assault Bracers",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 329,
+   "Critical Severity": 248,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 1500. When your health is below 50%, Deflection is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Woodlord's Raid Bracers_IL770.png",
+  "id": 6185,
+  "dbName": "Woodlord's Raid Bracers",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 247,
+   "Critical Strike": 330,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 1500. When your health is below 50%, Deflection is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Drowned Axes_IL300.png",
+  "id": 5596,
+  "dbName": "Drowned Axes",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Drowned Axes_IL400.png",
+  "id": 5597,
+  "dbName": "Drowned Axes",
+  "dbItemLevel": 400,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "Combat Advantage": 300,
+   "Critical Strike": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Drowned Axes_IL500.png",
+  "id": 5598,
+  "dbName": "Drowned Axes",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Drowned Axes_IL600.png",
+  "id": 5599,
+  "dbName": "Drowned Axes",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 225,
+   "Combat Advantage": 450,
+   "Critical Strike": 225
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Drowned Longbow_IL300.png",
+  "id": 5612,
+  "dbName": "Drowned Longbow",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Drowned Longbow_IL400.png",
+  "id": 5613,
+  "dbName": "Drowned Longbow",
+  "dbItemLevel": 400,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "Combat Advantage": 300,
+   "Critical Strike": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Drowned Longbow_IL500.png",
+  "id": 5614,
+  "dbName": "Drowned Longbow",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Drowned Longbow_IL600.png",
+  "id": 5615,
+  "dbName": "Drowned Longbow",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 225,
+   "Combat Advantage": 450,
+   "Critical Strike": 225
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Earthen Axes_IL300.png",
+  "id": 5660,
+  "dbName": "Earthen Axes",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Earthen Axes_IL500.png",
+  "id": 5661,
+  "dbName": "Earthen Axes",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Earthen Axes_IL600.png",
+  "id": 5662,
+  "dbName": "Earthen Axes",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 225,
+   "Combat Advantage": 450,
+   "Critical Strike": 225
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Earthen Longbow_IL300.png",
+  "id": 5675,
+  "dbName": "Earthen Longbow",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Earthen Longbow_IL400.png",
+  "id": 5676,
+  "dbName": "Earthen Longbow",
+  "dbItemLevel": 400,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "Combat Advantage": 300,
+   "Critical Strike": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Earthen Longbow_IL500.png",
+  "id": 5677,
+  "dbName": "Earthen Longbow",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

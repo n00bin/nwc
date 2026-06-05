@@ -1,0 +1,465 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Protege's Hood_IL980 (2).png",
+  "id": 5165,
+  "dbName": "Protege's Hood",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Combat Advantage": 294,
+   "Critical Strike": 441,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Protege's Hood_IL980.png",
+  "id": 5165,
+  "dbName": "Protege's Hood",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Combat Advantage": 294,
+   "Critical Strike": 441,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Protege's Weathered Gloves_IL980 (2).png",
+  "id": 5168,
+  "dbName": "Protege's Weathered Gloves",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Accuracy": 294,
+   "Critical Severity": 441,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Protege's Weathered Gloves_IL980.png",
+  "id": 5168,
+  "dbName": "Protege's Weathered Gloves",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Accuracy": 294,
+   "Critical Severity": 441,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Ancient Scalebreaker's Hide_IL1700.png",
+  "id": 4047,
+  "dbName": "Ancient Scalebreaker's Hide",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Severity": 1020,
+   "Defense": 765,
+   "Control Resistance": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal CA damage with your powers, 10% chance to increase one of Accuracy/CA/Critical Avoidance/Deflect Severity by 8% for 10s. (30s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Apprentice's Runed Hide_IL965 (2).png",
+  "id": 4132,
+  "dbName": "Apprentice's Runed Hide",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Severity": 724,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Apprentice's Runed Hide_IL965 (3).png",
+  "id": 4132,
+  "dbName": "Apprentice's Runed Hide",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Severity": 724,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Apprentice's Runed Hide_IL965.png",
+  "id": 4132,
+  "dbName": "Apprentice's Runed Hide",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Severity": 724,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Astral Raider's Vest_IL2200.png",
+  "id": 3982,
+  "dbName": "Astral Raider's Vest",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 990,
+   "Deflection": 1320,
+   "Incoming Healing": 990
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defying Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 2% Combat Advantage for each enemy you are engaged in battle within 100'. (Max of 10 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Banditlord's Assault Jerkin_IL770.png",
+  "id": 4183,
+  "dbName": "Banditlord's Assault Jerkin",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 329,
+   "Critical Strike": 248,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Balance",
+    "stat": null,
+    "amount": null,
+    "description": "When health is 50% or more, your Power is increased by 1500. When health is below 50%, Defense is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Banditlord's Raid Jerkin_IL770.png",
+  "id": 4177,
+  "dbName": "Banditlord's Raid Jerkin",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 329,
+   "Critical Strike": 248,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Balance",
+    "stat": null,
+    "amount": null,
+    "description": "When health is 50% or more, your Power is increased by 1500. When health is below 50%, Defense is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bismuth Mail_IL3350 (2).png",
+  "id": 2728,
+  "dbName": "Bismuth Mail",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Combat Advantage": 2010,
+   "Critical Severity": 3015
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Daily (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown). You gain 5% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bismuth Mail_IL3350.png",
+  "id": 2728,
+  "dbName": "Bismuth Mail",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Combat Advantage": 2010,
+   "Critical Severity": 3015
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Daily (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown). You gain 5% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Black Ice Armor_IL512 (2).png",
+  "id": 2081,
+  "dbName": "Black Ice Armor",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.9,
+   "Combat Advantage": 132,
+   "Defense": 384,
+   "Critical Avoidance": 132
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Black Ice Armor_IL512 (3).png",
+  "id": 2081,
+  "dbName": "Black Ice Armor",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.9,
+   "Combat Advantage": 132,
+   "Defense": 384,
+   "Critical Avoidance": 132
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Black Ice Armor_IL512.png",
+  "id": 2081,
+  "dbName": "Black Ice Armor",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.9,
+   "Combat Advantage": 132,
+   "Defense": 384,
+   "Critical Avoidance": 132
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bregan D'aerthe Assassin's Leathers_IL2000 (2).png",
+  "id": 4008,
+  "dbName": "Bregan D'aerthe Assassin's Leathers",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 1500,
+   "Combat Advantage": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Liquid Luck",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Critical Strike for each player in your team. When moving, gain 5% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bregan D'aerthe Assassin's Leathers_IL2000.png",
+  "id": 4008,
+  "dbName": "Bregan D'aerthe Assassin's Leathers",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 1500,
+   "Combat Advantage": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Liquid Luck",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Critical Strike for each player in your team. When moving, gain 5% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Company Assault Vest_IL588.png",
+  "id": 4600,
+  "dbName": "Company Assault Vest",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Company Raid Vest_IL588.png",
+  "id": 4596,
+  "dbName": "Company Raid Vest",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Crimson Scalebreaker's Rebel Hide_IL1800 (2).png",
+  "id": 4043,
+  "dbName": "Crimson Scalebreaker's Rebel Hide",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Severity": 1080,
+   "Defense": 810,
+   "Control Resistance": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Crimson Scalebreaker's Rebel Hide_IL1800.png",
+  "id": 4043,
+  "dbName": "Crimson Scalebreaker's Rebel Hide",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Severity": 1080,
+   "Defense": 810,
+   "Control Resistance": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Crone's Hide_IL1225 (2).png",
+  "id": 4063,
+  "dbName": "Crone's Hide",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Accuracy": 919,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. (5s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Crone's Hide_IL1225.png",
+  "id": 4063,
+  "dbName": "Crone's Hide",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Accuracy": 919,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 10% chance to restore 5% of your Maximum Hit Points. (5s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Cuirass of the Scarlet Arcanum_IL5000 (2).png",
+  "id": 2712,
+  "dbName": "Cuirass of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Frenzy",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, for the next 30 seconds your next Encounter Power deals +75% more Damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

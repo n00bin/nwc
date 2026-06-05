@@ -1,0 +1,595 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Devil Forged Hide_IL1215.png",
+  "id": 4114,
+  "dbName": "Devil Forged Hide",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Devil Forged Scalemail_IL1215.png",
+  "id": 1407,
+  "dbName": "Devil Forged Scalemail",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Defense": 911,
+   "Deflection": 911
+  },
+  "dbPercentStats": {
+   "Damage against Demons": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Divine Raid Robe_IL1230.png",
+  "id": 3399,
+  "dbName": "Divine Raid Robe",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Severity": 922,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to restore 5% of your Maximum Hit Points. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Dragonhide Jacket_IL1900 (2).png",
+  "id": 4020,
+  "dbName": "Dragonhide Jacket",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Severity": 1140,
+   "Defense": 855,
+   "Control Bonus": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Power",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Power and Critical Strike for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Dragonhide Jacket_IL1900.png",
+  "id": 4020,
+  "dbName": "Dragonhide Jacket",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Severity": 1140,
+   "Defense": 855,
+   "Control Bonus": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Power",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Power and Critical Strike for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Dungeon Raider's Hide_IL940 (2).png",
+  "id": 4143,
+  "dbName": "Dungeon Raider's Hide",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Severity": 705,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "When damaged for more than 10% of Max HP in a single blow, gain 5% Defense for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Dungeon Raider's Hide_IL940.png",
+  "id": 4143,
+  "dbName": "Dungeon Raider's Hide",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Severity": 705,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "When damaged for more than 10% of Max HP in a single blow, gain 5% Defense for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Dungeon Raider's Scalemail_IL940.png",
+  "id": 1593,
+  "dbName": "Dungeon Raider's Scalemail",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Defense": 705,
+   "Deflection": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Enchanted Bregan D'aerthe Assassin's Leathers_IL2050.png",
+  "id": 2789,
+  "dbName": "Enchanted Bregan D'aerthe Assassin's Leathers",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1518,
+   "Combat Advantage": 1518
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Liquid Luck",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1.5% Critical Strike for each player in your team. When moving, gain 8% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Enchanted Depthcured Vest_IL3200 (2).png",
+  "id": 2734,
+  "dbName": "Enchanted Depthcured Vest",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Accuracy": 1200,
+   "Combat Advantage": 2400,
+   "Forte": 1200
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Advantage",
+    "stat": "Accuracy",
+    "amount": 1.5,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Accuracy and Combat Advantage for 15 seconds. (Max stack 5).",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Ruthless Advantage",
+    "stat": "Combat Advantage",
+    "amount": 1.5,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Accuracy and Combat Advantage for 15 seconds. (Max stack 5).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Enchanted Depthcured Vest_IL3200.png",
+  "id": 2734,
+  "dbName": "Enchanted Depthcured Vest",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Accuracy": 1200,
+   "Combat Advantage": 2400,
+   "Forte": 1200
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Advantage",
+    "stat": "Accuracy",
+    "amount": 1.5,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Accuracy and Combat Advantage for 15 seconds. (Max stack 5).",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Ruthless Advantage",
+    "stat": "Combat Advantage",
+    "amount": 1.5,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Accuracy and Combat Advantage for 15 seconds. (Max stack 5).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Enclave Scout's Vest_IL1600 (2).png",
+  "id": 4051,
+  "dbName": "Enclave Scout's Vest",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Defense": 720,
+   "Deflection": 960,
+   "Incoming Healing": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Enclave Scout's Vest_IL1600.png",
+  "id": 4051,
+  "dbName": "Enclave Scout's Vest",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Defense": 720,
+   "Deflection": 960,
+   "Incoming Healing": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Exalted Maiden's Assault Hide_IL2050 (2).png",
+  "id": 2797,
+  "dbName": "Exalted Maiden's Assault Hide",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1250,
+   "Critical Severity": 923,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Exalted Maiden's Assault Hide_IL2050.png",
+  "id": 2797,
+  "dbName": "Exalted Maiden's Assault Hide",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1250,
+   "Critical Severity": 923,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Fiend Forged Hide_IL1230 (2).png",
+  "id": 4107,
+  "dbName": "Fiend Forged Hide",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Severity": 922,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Fiend Forged Hide_IL1230.png",
+  "id": 4107,
+  "dbName": "Fiend Forged Hide",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Severity": 922,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Fiend Forged Scalemail_IL1230.png",
+  "id": 1399,
+  "dbName": "Fiend Forged Scalemail",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Defense": 922,
+   "Deflection": 922
+  },
+  "dbPercentStats": {
+   "Damage against Demons, Devils, and Fiends": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Forest Guardian's Raid Leathers_IL1500 (2).png",
+  "id": 4055,
+  "dbName": "Forest Guardian's Raid Leathers",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Defense": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Awareness",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Awareness for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Forest Guardian's Raid Leathers_IL1500.png",
+  "id": 4055,
+  "dbName": "Forest Guardian's Raid Leathers",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Defense": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Awareness",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Awareness for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Hauberk of the Crimson Gale_IL4700 (2).png",
+  "id": 2716,
+  "dbName": "Hauberk of the Crimson Gale",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3807,
+   "Forte": 3490
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Lethal Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, you gain +3% Hit Points and +4% Accuracy for 7 seconds (5 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Hauberk of the Crimson Gale_IL4700.png",
+  "id": 2716,
+  "dbName": "Hauberk of the Crimson Gale",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3807,
+   "Forte": 3490
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Lethal Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, you gain +3% Hit Points and +4% Accuracy for 7 seconds (5 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Hide of the Spy's Guild_IL940 (2).png",
+  "id": 4140,
+  "dbName": "Hide of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Severity": 705,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "When damaged for more than 10% of Max HP in a single blow, gain 5% Defense for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Hide of the Spy's Guild_IL940.png",
+  "id": 4140,
+  "dbName": "Hide of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Severity": 705,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "When damaged for more than 10% of Max HP in a single blow, gain 5% Defense for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Infernal Forged Hide_IL1200 (2).png",
+  "id": 4119,
+  "dbName": "Infernal Forged Hide",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Critical Severity": 900,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

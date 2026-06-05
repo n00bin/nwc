@@ -1,0 +1,427 @@
+[
+ {
+  "id": 3346,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Weathered Wood Cuisses_IL1300.png",
+  "dbName": "Weathered Wood Cuisses",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Critical Strike": 488,
+   "Defense": 975,
+   "Critical Avoidance": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 3 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5489,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Wintermarked Pilgrim Poleyns_IL5700 (2).png",
+  "dbName": "Wintermarked Pilgrim Poleyns",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Severity": 5130,
+   "Outgoing Healing": 5420
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Relentless Reserves",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 2% faster Divinity/Performance/Soulweave regeneration for 15 seconds. Max 5 Stack: 10% faster Divinity/Performance/Soulweave regeneration. Gain 6% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3587,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Black Ice Mask_IL512 (2).png",
+  "dbName": "Black Ice Mask",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Combat Advantage": 131,
+   "Critical Strike": 60,
+   "Defense": 384,
+   "Critical Avoidance": 60,
+   "Deflection": 60
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 4062,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crone's Hood_IL1225 (2).png",
+  "dbName": "Crone's Hood",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Combat Advantage": 551,
+   "Defense": 919,
+   "Control Bonus": 368
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5000 for 10 seconds. (30 second cooldowns)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2736,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Depthcured Cap_IL3000 (2).png",
+  "dbName": "Depthcured Cap",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Forte": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max 10 Stacks: 8% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3190,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Depthcured Skullcap_IL3000.png",
+  "dbName": "Depthcured Skullcap",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Forte": 2250,
+   "Outgoing Healing": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Channeler's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Every 3 seconds in combat, +0.4% Outgoing Healing and 0.4% Power. Max 10 stacks: 4% Outgoing Healing and 4% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2717,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Diadem of the Crimson Gale_IL4700 (2).png",
+  "dbName": "Diadem of the Crimson Gale",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Forte": 2855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Advantageous Strike",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your Powers, gain +3% Combat Advantage and +2.5% Power for 6 seconds (10 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2788,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enchanted Bregan D'aerthe Assassin's Hat_IL2050 (2).png",
+  "dbName": "Enchanted Bregan D'aerthe Assassin's Hat",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Critical Severity": 1518
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Accuracy is increased by 10%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2796,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Maiden's Assault Shroud_IL2050 (2).png",
+  "dbName": "Exalted Maiden's Assault Shroud",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1518,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3287,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Maiden's Rejuvenation Hood_IL2050 (2).png",
+  "dbName": "Exalted Maiden's Rejuvenation Hood",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Defense": 1518
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Muse",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity/Performance/Soulweave regenerates 20% faster.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4054,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Forest Guardian's Raid Coif_IL1500 (2).png",
+  "dbName": "Forest Guardian's Raid Coif",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Combat Advantage": 675,
+   "Defense": 1125,
+   "Control Bonus": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fey Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+3% Damage in all of Sharandar.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2729,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Fractal Barbut_IL3350 (2).png",
+  "dbName": "Fractal Barbut",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Critical Strike": 3015,
+   "Forte": 2265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Spiker (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.8% Critical Strike. Max Stacks: 5.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2713,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Helm of the Scarlet Arcanum_IL5000 (2).png",
+  "dbName": "Helm of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Accuracy": 3218,
+   "Combat Advantage": 1980,
+   "Forte": 2228
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Steady Henson",
+    "stat": null,
+    "amount": null,
+    "description": "For every 8 seconds you are in combat, gain +1% Accuracy and +0.3% Recharge Speed. Max 7 Stacks: +7% Accuracy and +2.1% Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3245,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Lolthian Coif_IL2050.png",
+  "dbName": "Lolthian Coif",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1210,
+   "Defense": 923,
+   "Incoming Healing": 1845
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 7300 Power for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4503,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Manticore Assault Mask_IL756.png",
+  "dbName": "Manticore Assault Mask",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Critical Severity": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Accuracy. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4508,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Manticore Duelist Mask_IL756.png",
+  "dbName": "Manticore Duelist Mask",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 227,
+   "Critical Strike": 170,
+   "Defense": 547,
+   "Awareness": 170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Accuracy. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2784,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mastered Duergar Mercenary's Barbute_IL1900 (2).png",
+  "dbName": "Mastered Duergar Mercenary's Barbute",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1425,
+   "Critical Strike": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4268,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pioneer Assault Keffiyeh_IL616.png",
+  "dbName": "Pioneer Assault Keffiyeh",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Critical Severity": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Maximum HP per team player.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3178,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Prismatic Fractal Barbut_IL3700 (2).png",
+  "dbName": "Prismatic Fractal Barbut",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Critical Severity": 3330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Restoration (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "For every 3 seconds you are in combat, you gain 0.8% Outgoing Healing and Critical Strike. Max Stacks: 5.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4147,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Stealer of the Star's Hood_IL1000.png",
+  "dbName": "Stealer of the Star's Hood",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Strike": 525,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 1% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

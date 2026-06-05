@@ -1,0 +1,375 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Drowcraft Restoration Ring_IL567.png",
+  "id": 2138,
+  "dbName": "Drowcraft Restoration Ring",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Accuracy": 1276,
+   "Combat Advantage": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Elemental Alliance Assault Ring_IL554.png",
+  "id": 2324,
+  "dbName": "Elemental Alliance Assault Ring",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Combat Advantage": 2992,
+   "Critical Strike": 1994
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Elemental Alliance Ward Ring_IL554.png",
+  "id": 2321,
+  "dbName": "Elemental Alliance Ward Ring",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Critical Severity": 1994,
+   "Critical Avoidance": 2992
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Elemental Elven Assault Ring_IL575.png",
+  "id": 2296,
+  "dbName": "Elemental Elven Assault Ring",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Accuracy": 431,
+   "Critical Strike": 1294
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Elven Assault Ring_IL567.png",
+  "id": 2299,
+  "dbName": "Elven Assault Ring",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Accuracy": 425,
+   "Critical Strike": 1276
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Elven Ward Ring_IL567.png",
+  "id": 2302,
+  "dbName": "Elven Ward Ring",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Critical Avoidance": 1276,
+   "Deflection": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Emerald Dwarven Ring_IL1500.png",
+  "id": 2389,
+  "dbName": "Emerald Dwarven Ring",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Combat Advantage": 3375,
+   "Critical Strike": 1125
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 75 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Frostsilver Hoop of Tenacity_IL6000 (2).png",
+  "id": 5405,
+  "dbName": "Frostsilver Hoop of Tenacity",
+  "dbItemLevel": 6000,
+  "dbRatingStats": {
+   "Awareness": 7200,
+   "Critical Avoidance": 9900
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5,
+   "Forte": 5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Charging Bull",
+    "stat": null,
+    "amount": null,
+    "description": "When you have been running for 1 seconds you generate threat around you every second as long as you continue running. +3% Forte.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Frostsilver Hoop of Tenacity_IL6000.png",
+  "id": 5405,
+  "dbName": "Frostsilver Hoop of Tenacity",
+  "dbItemLevel": 6000,
+  "dbRatingStats": {
+   "Awareness": 7200,
+   "Critical Avoidance": 9900
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5,
+   "Forte": 5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Charging Bull",
+    "stat": null,
+    "amount": null,
+    "description": "When you have been running for 1 seconds you generate threat around you every second as long as you continue running. +3% Forte.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Gladiator's Dragonflight Ring_IL1600.png",
+  "id": 2374,
+  "dbName": "Gladiator's Dragonflight Ring",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Accuracy": 3600,
+   "Combat Advantage": 1200
+  },
+  "dbPercentStats": {
+   "Movement Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Enduring Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Your current Hit Points increases your Critical Severity, up to a maximum of 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Greater Ostorian Ring of Blod_IL609.png",
+  "id": 2058,
+  "dbName": "Greater Ostorian Ring of Blod",
+  "dbItemLevel": 609,
+  "dbRatingStats": {
+   "Awareness": 914,
+   "Critical Avoidance": 914
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Greater Ostorian Ring of Dod_IL609.png",
+  "id": 2050,
+  "dbName": "Greater Ostorian Ring of Dod",
+  "dbItemLevel": 609,
+  "dbRatingStats": {
+   "Combat Advantage": 914,
+   "Critical Strike": 914
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Greater Ostorian Ring of Hellig_IL609.png",
+  "id": 2053,
+  "dbName": "Greater Ostorian Ring of Hellig",
+  "dbItemLevel": 609,
+  "dbRatingStats": {
+   "Accuracy": 914,
+   "Combat Advantage": 914
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Greater Ostorian Ring of Krig_IL609.png",
+  "id": 2051,
+  "dbName": "Greater Ostorian Ring of Krig",
+  "dbItemLevel": 609,
+  "dbRatingStats": {
+   "Accuracy": 914,
+   "Critical Strike": 914
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Greater Ostorian Ring of Skold_IL609.png",
+  "id": 2049,
+  "dbName": "Greater Ostorian Ring of Skold",
+  "dbItemLevel": 609,
+  "dbRatingStats": {
+   "Accuracy": 914,
+   "Defense": 914
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Greater Ostorian Ring of Stein_IL609.png",
+  "id": 2052,
+  "dbName": "Greater Ostorian Ring of Stein",
+  "dbItemLevel": 609,
+  "dbRatingStats": {
+   "Defense": 914,
+   "Deflection": 914
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Guild Assault Ring_IL525.png",
+  "id": 2646,
+  "dbName": "Guild Assault Ring",
+  "dbItemLevel": 525,
+  "dbRatingStats": {
+   "Critical Strike": 1890,
+   "Critical Severity": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Guild Duelist Ring_IL525.png",
+  "id": 5855,
+  "dbName": "Guild Duelist Ring",
+  "dbItemLevel": 525,
+  "dbRatingStats": {
+   "Combat Advantage": 2835,
+   "Deflection": 1890
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Guild Executioner Ring_IL525.png",
+  "id": 5856,
+  "dbName": "Guild Executioner Ring",
+  "dbItemLevel": 525,
+  "dbRatingStats": {
+   "Accuracy": 1890,
+   "Combat Advantage": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Guild Gladiator Ring_IL525.png",
+  "id": 5857,
+  "dbName": "Guild Gladiator Ring",
+  "dbItemLevel": 525,
+  "dbRatingStats": {
+   "Awareness": 1890,
+   "Critical Avoidance": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Guild Medic Ring_IL525.png",
+  "id": 5858,
+  "dbName": "Guild Medic Ring",
+  "dbItemLevel": 525,
+  "dbRatingStats": {
+   "Accuracy": 1890,
+   "Critical Strike": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Guild Raid Ring_IL525.png",
+  "id": 2643,
+  "dbName": "Guild Raid Ring",
+  "dbItemLevel": 525,
+  "dbRatingStats": {
+   "Accuracy": 1890,
+   "Critical Strike": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Huntsman Assault Ring_IL672.png",
+  "id": 1824,
+  "dbName": "Huntsman Assault Ring",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Critical Strike": 504,
+   "Critical Severity": 1512
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Tenacity",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Critical Severity is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Huntsman Raid Ring_IL672.png",
+  "id": 1825,
+  "dbName": "Huntsman Raid Ring",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 504,
+   "Critical Strike": 1512
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Critical Strike is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Huntsman Ward Ring_IL672.png",
+  "id": 1827,
+  "dbName": "Huntsman Ward Ring",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Critical Avoidance": 1512,
+   "Deflection": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Deflect is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

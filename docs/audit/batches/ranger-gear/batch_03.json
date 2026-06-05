@@ -1,0 +1,523 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Forest Guardian's Raid Braces_IL1500.png",
+  "id": 4056,
+  "dbName": "Forest Guardian's Raid Braces",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Accuracy": 450,
+   "Critical Severity": 675,
+   "Defense": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Accuracy for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Gauntlets of the Scarlet Arcanum_IL5000 (2).png",
+  "id": 3931,
+  "dbName": "Gauntlets of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Combat Advantage": 3300,
+   "Critical Severity": 4050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Devastating Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 20% of your Maximum Hit Points in a single blow, your enemy suffers +4% Critical Severity, while you gain +8% Critical Severity for 8 seconds (10 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Gauntlets of the Scarlet Arcanum_IL5000 (3).png",
+  "id": 3931,
+  "dbName": "Gauntlets of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Combat Advantage": 3300,
+   "Critical Severity": 4050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Devastating Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 20% of your Maximum Hit Points in a single blow, your enemy suffers +4% Critical Severity, while you gain +8% Critical Severity for 8 seconds (10 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Gauntlets of the Scarlet Arcanum_IL5000.png",
+  "id": 3931,
+  "dbName": "Gauntlets of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Combat Advantage": 3300,
+   "Critical Severity": 4050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Devastating Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 20% of your Maximum Hit Points in a single blow, your enemy suffers +4% Critical Severity, while you gain +8% Critical Severity for 8 seconds (10 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Huntsman Assault Bracers_IL672.png",
+  "id": 5899,
+  "dbName": "Huntsman Assault Bracers",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 302,
+   "Critical Severity": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Huntsman Raid Bracers_IL672.png",
+  "id": 5906,
+  "dbName": "Huntsman Raid Bracers",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 302,
+   "Combat Advantage": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Infernal Forged Bracers_IL1200.png",
+  "id": 4120,
+  "dbName": "Infernal Forged Bracers",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Accuracy": 360,
+   "Critical Severity": 540,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you Deflect, gain 1000 Power for 10s. Max 5 Stacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\League's Assault Bazubands_IL588.png",
+  "id": 2854,
+  "dbName": "League's Assault Bazubands",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\League's Elite Assault Bazubands_IL602.png",
+  "id": 2864,
+  "dbName": "League's Elite Assault Bazubands",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 542,
+   "Critical Severity": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 15 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\League's Elite Raid Bazubands_IL602.png",
+  "id": 2860,
+  "dbName": "League's Elite Raid Bazubands",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 542,
+   "Combat Advantage": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 15 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\League's Raid Bazubands_IL588.png",
+  "id": 2852,
+  "dbName": "League's Raid Bazubands",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Leather Assault Gwanitis_IL784.png",
+  "id": 3034,
+  "dbName": "Leather Assault Gwanitis",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Critical Strike": 353,
+   "Critical Severity": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Leather Raid Gwanitis_IL784.png",
+  "id": 3030,
+  "dbName": "Leather Raid Gwanitis",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 353,
+   "Critical Strike": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Lion Guard's Raid Bracers_IL1250 (2).png",
+  "id": 5974,
+  "dbName": "Lion Guard's Raid Bracers",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Severity": 562,
+   "Defense": 938
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Max 20 Stacks: 5000 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Lion Guard's Raid Bracers_IL1250.png",
+  "id": 5974,
+  "dbName": "Lion Guard's Raid Bracers",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Severity": 562,
+   "Defense": 938
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Max 20 Stacks: 5000 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Lion Guard's Raid Gloves_IL1250.png",
+  "id": 4104,
+  "dbName": "Lion Guard's Raid Gloves",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Strike": 562,
+   "Defense": 938
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy, lose a stack when struck. Max 20 Stacks: 5000 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Lionsmane Duelist Bracers_IL560.png",
+  "id": 5981,
+  "dbName": "Lionsmane Duelist Bracers",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Accuracy": 126,
+   "Critical Severity": 126,
+   "Defense": 420,
+   "Deflection": 168
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Lionsmane Executioner Bracers_IL560.png",
+  "id": 5985,
+  "dbName": "Lionsmane Executioner Bracers",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Combat Advantage": 168,
+   "Critical Strike": 126,
+   "Defense": 420,
+   "Critical Avoidance": 126
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Lolthian Band_IL2050 (2).png",
+  "id": 3987,
+  "dbName": "Lolthian Band",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Lolthian Band_IL2050.png",
+  "id": 3987,
+  "dbName": "Lolthian Band",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Manticore Assault Bracers_IL784.png",
+  "id": 3068,
+  "dbName": "Manticore Assault Bracers",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Critical Strike": 353,
+   "Critical Severity": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Manticore Duelist Bracers_IL756.png",
+  "id": 3074,
+  "dbName": "Manticore Duelist Bracers",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 170,
+   "Critical Severity": 170,
+   "Defense": 227,
+   "Deflection": 227
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Manticore Executioner Bracers_IL756.png",
+  "id": 3070,
+  "dbName": "Manticore Executioner Bracers",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 227,
+   "Critical Strike": 170,
+   "Defense": 567,
+   "Critical Avoidance": 170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Manticore Raid Bracers_IL756.png",
+  "id": 3062,
+  "dbName": "Manticore Raid Bracers",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Critical Strike": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Mastered Duergar Mercenary's Punchers_IL1900 (2).png",
+  "id": 2786,
+  "dbName": "Mastered Duergar Mercenary's Punchers",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1425,
+   "Critical Strike": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Savagery",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 10,000. When your health is below 50%, Critical Avoidance is increased by 10,000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

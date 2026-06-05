@@ -1,0 +1,543 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\The Legion Guard's Twisted Blade_IL600.png",
+  "id": 4086,
+  "dbName": "The Legion Guard's Twisted Blade",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Combat Advantage": 450,
+   "Critical Strike": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 1500,
+    "description": "2 of Set: You and nearby allies are granted: +1500 Power, +1500 Combat Advantage, +1500 Defense, +1500 Critical Avoidance. Stacks up to 5 times when allies are equipped with full Legion Guard's weapons.",
+    "setName": "Devil's Legion",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\The Weaver's Dagger_IL2050.png",
+  "id": 3994,
+  "dbName": "The Weaver's Dagger",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1538,
+   "Forte": 1538
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.25
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 5,
+    "description": "2 of Set: Deal or heal up to 5% additional damage based on HP percentage difference. Role: DPS +1% Base Damage Boost, Tank -2% Incoming Damage, Healer +2% Overall Outgoing Healing. Stacks up to 5 times with similarly-equipped allies. In Underdark, Damage increased 5%.",
+    "setName": "Beholder Slayer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Twisted Misericorde_IL300.png",
+  "id": 4363,
+  "dbName": "Twisted Misericorde",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Defense",
+    "amount": 160,
+    "description": "2 of Set: Paranoia — +160 Defense per stack when struck (max 24, min 1). Bloodlust — +160 Power per stack when striking (max 24, min 1).",
+    "setName": "Duality",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Vistani Stiletto_IL350.png",
+  "id": 4173,
+  "dbName": "Vistani Stiletto",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 262,
+   "Critical Strike": 262
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Defense",
+    "amount": 500,
+    "description": "2 of Set: +500 Defense, +5% Movement Speed.",
+    "setName": "Vistani",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Vistani Stiletto_IL800.png",
+  "id": 5180,
+  "dbName": "Vistani Stiletto",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 600,
+   "Critical Strike": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Vistani (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +500 Defense, +5% Movement Speed.",
+    "setName": "Vistani",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Voidtouched Sickle_IL3000.png",
+  "id": 3961,
+  "dbName": "Voidtouched Sickle",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Accuracy": 2250,
+   "Forte": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Overall Outgoing Healing",
+    "amount": 5,
+    "description": "2 of Set: Gain 5% Overall Outgoing Healing and -5% Incoming Damage. In Wildspace, Movement Speed +12%. Every 2s in combat with a single opponent, gain stack of Darklight. Every 2s with 4+ opponents, lose 1 stack. Each Darklight stack: DPS +0.6% Base Damage Boost, Tank -0.6% Incoming Damage, Healer +0.6% Overall Outgoing Healing. Max 10 stacks. Bonuses doubled in Wildspace.",
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Withering Stiletto of the Thayan Zealot_IL3300.png",
+  "id": 3921,
+  "dbName": "Withering Stiletto of the Thayan Zealot",
+  "dbItemLevel": 3300,
+  "dbRatingStats": {
+   "Accuracy": 3539,
+   "Forte": 2005
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 10,
+    "description": "2 of Set: While in Thay, Movement Speed +10%. Every 3s in combat, gain Umbral Stride stack: General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% Outgoing Healing, Tank +0.4% Awareness. Max 10 stacks.",
+    "setName": "Umbral Stride",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Wootz Sakin_IL350.png",
+  "id": 4300,
+  "dbName": "Wootz Sakin",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 2000,
+    "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds.",
+    "setName": "Chultan",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Xaryxian Sickle_IL2750.png",
+  "id": 3959,
+  "dbName": "Xaryxian Sickle",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Accuracy": 2062,
+   "Forte": 2062
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Overall Outgoing Healing",
+    "amount": 5,
+    "description": "2 of Set: Gain 5% Overall Outgoing Healing and -5% Incoming Damage. In Wildspace, Movement Speed +12%. Every 2s in combat with a single opponent, gain stack of Darklight. Every 2s with 4+ opponents, lose 1 stack. Each Darklight stack: DPS +0.6% Base Damage Boost, Tank -0.6% Incoming Damage, Healer +0.6% Overall Outgoing Healing. Max 10 stacks. Bonuses doubled in Wildspace.",
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Darklake Ward Ring_IL1700.png",
+  "id": 4023,
+  "dbName": "Darklake Ward Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Avoidance": 3825,
+   "Deflection": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charging Bull",
+    "stat": null,
+    "amount": null,
+    "description": "When you have been running for 1 second, you generate threat around you every second as long as you continue running.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Scintillant Restoration Ring_IL1700.png",
+  "id": 4024,
+  "dbName": "Scintillant Restoration Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1275,
+   "Outgoing Healing": 3825
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Gift",
+    "stat": null,
+    "amount": null,
+    "description": "Your current Hit Points increases your Outgoing Healing, up to a maximum of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Shroomwood Raid Ring_IL1700.png",
+  "id": 4025,
+  "dbName": "Shroomwood Raid Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 1275,
+   "Critical Strike": 3825
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Severity for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Beaded Sash_IL350 (2).png",
+  "id": 4469,
+  "dbName": "Beaded Sash",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Beaded Sash_IL350.png",
+  "id": 4469,
+  "dbName": "Beaded Sash",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bronzewood Sash_IL350 (2).png",
+  "id": 4462,
+  "dbName": "Bronzewood Sash",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 175,
+   "Critical Strike": 175,
+   "Critical Severity": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter power triggers Alacrity stack — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bronzewood Sash_IL350 (3).png",
+  "id": 4462,
+  "dbName": "Bronzewood Sash",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 175,
+   "Critical Strike": 175,
+   "Critical Severity": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter power triggers Alacrity stack — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bronzewood Sash_IL350.png",
+  "id": 4462,
+  "dbName": "Bronzewood Sash",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 175,
+   "Critical Strike": 175,
+   "Critical Severity": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter power triggers Alacrity stack — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Darklake Sash_IL1700.png",
+  "id": 4032,
+  "dbName": "Darklake Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Avoidance": 1698,
+   "Deflection": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Rubellite Sash_IL350 (2).png",
+  "id": 4540,
+  "dbName": "Rubellite Sash",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 500,
+    "description": "2 of Set: Encounter triggers Alacrity — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks.",
+    "setName": "Masterwork II Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Rubellite Sash_IL350 (3).png",
+  "id": 4540,
+  "dbName": "Rubellite Sash",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 500,
+    "description": "2 of Set: Encounter triggers Alacrity — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks.",
+    "setName": "Masterwork II Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Rubellite Sash_IL350.png",
+  "id": 4540,
+  "dbName": "Rubellite Sash",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 500,
+    "description": "2 of Set: Encounter triggers Alacrity — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks.",
+    "setName": "Masterwork II Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Scintillant Sash +1_IL1800.png",
+  "id": 6253,
+  "dbName": "Scintillant Sash +1",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Accuracy": 899,
+   "Combat Advantage": 899,
+   "Critical Strike": 902
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Scintillant Sash_IL1700.png",
+  "id": 4030,
+  "dbName": "Scintillant Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 849,
+   "Combat Advantage": 849,
+   "Critical Strike": 852
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Shroomwood Sash +1_IL1800.png",
+  "id": 6252,
+  "dbName": "Shroomwood Sash +1",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Combat Advantage": 899,
+   "Critical Strike": 902,
+   "Critical Severity": 899
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Shroomwood Sash_IL1700 (2).png",
+  "id": 4029,
+  "dbName": "Shroomwood Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 849,
+   "Critical Strike": 852,
+   "Critical Severity": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ }
+]

@@ -1,0 +1,321 @@
+[
+ {
+  "id": 5165,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Protege's Hood_IL980 (2).png",
+  "dbName": "Protege's Hood",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Combat Advantage": 294,
+   "Critical Strike": 441,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5214,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Lionsmane Duelist Vest_IL560.png",
+  "dbName": "Lionsmane Duelist Vest",
+  "dbItemLevel": 560,
+  "dbRatingStats": {
+   "Accuracy": 126,
+   "Combat Advantage": 126,
+   "Defense": 420,
+   "Awareness": 148
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5167,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Protege's Layered Leathers_IL980 (2).png",
+  "dbName": "Protege's Layered Leathers",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Critical Severity": 735,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3591,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Hammerstone Mask_IL352 (2).png",
+  "dbName": "Hammerstone Mask",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Combat Advantage": 92,
+   "Critical Severity": 40,
+   "Defense": 264,
+   "Critical Avoidance": 92,
+   "Deflection": 40
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3927,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bismuth Dagger_IL3400.png",
+  "dbName": "Bismuth Dagger",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Critical Strike": 3060,
+   "Critical Severity": 3060,
+   "Combat Advantage": 3060
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in the Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 3s in combat, gain a stack of Prismatic Force. Each stack: General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness. Max 10 stacks.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 4353,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Elk Tribe Noble's Poniard_IL399.png",
+  "dbName": "Elk Tribe Noble's Poniard",
+  "dbItemLevel": 399,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Strike": 202,
+   "Critical Severity": 98,
+   "Critical Avoidance": 98
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 4352,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Hammerstone Mace_IL352 (2).png",
+  "dbName": "Hammerstone Mace",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Combat Advantage": 185,
+   "Critical Severity": 79,
+   "Critical Avoidance": 79,
+   "Deflection": 185
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 4160,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Sunset Dagger_IL350.png",
+  "dbName": "Sunset Dagger",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 5,
+    "description": "2 of Set: Base Damage Boost and Overall Outgoing Healing +5%. In Bonvia during nightfall, Damage Resistance and Movement Speed +5%. In Bonvia during nightfall, Base Damage Boost/Damage Resistance/OOH/Movement Speed +10%.",
+    "setName": "Sun Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 3934,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Crystal Dirk_IL3100.png",
+  "dbName": "Crystal Dirk",
+  "dbItemLevel": 3100,
+  "dbRatingStats": {
+   "Accuracy": 3022,
+   "Forte": 2790
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in the Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 3s in combat, gain a stack of Prismatic Force. Each stack: General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness. Max 10 stacks.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 3996,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Stormforged Knife_IL2000.png",
+  "dbName": "Stormforged Knife",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 1500,
+   "Deflection": 1500
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: Gain 2% Base Damage Boost, -2% Incoming Damage, or 2% Overall Outgoing Healing depending on role, while in the Underdark. Additionally, gain 7.5% Base Damage Boost, -7.5% Incoming Damage, or 7.5% Overall Outgoing Healing for 15s when you dodge/block/sprint/shadow slip (30s CD).",
+    "setName": "Stormforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 4165,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Sunset Stiletto_IL350.png",
+  "dbName": "Sunset Stiletto",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 5,
+    "description": "2 of Set: Base Damage Boost and OOH +5%. In Bonvia during nightfall, BDB/Damage Resistance/OOH/Movement Speed +10%.",
+    "setName": "Sun Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5309,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Cambist's Gauntlets_IL630.png",
+  "dbName": "Cambist's Gauntlets",
+  "dbItemLevel": 630,
+  "dbRatingStats": {
+   "Critical Strike": 189,
+   "Critical Severity": 284,
+   "Defense": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 1851,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Fearbringers_IL672.png",
+  "dbName": "Fearbringers",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Defense": 504,
+   "Critical Avoidance": 302
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tit for Tat",
+    "stat": null,
+    "amount": null,
+    "description": "Your At-Will and Encounter Powers do 30% more damage, but your Daily Powers do 30% less damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5623,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Raider Cloak_IL400 (2).png",
+  "dbName": "Company Raider Cloak",
+  "dbItemLevel": 400,
+  "dbRatingStats": {
+   "Accuracy": 200,
+   "Combat Advantage": 200,
+   "Critical Severity": 200
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5624,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Raider Cloak_IL500 (2).png",
+  "dbName": "Company Raider Cloak",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 250,
+   "Combat Advantage": 250,
+   "Critical Severity": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5625,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Raider Cloak_IL600 (2).png",
+  "dbName": "Company Raider Cloak",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 301,
+   "Combat Advantage": 300,
+   "Critical Severity": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 4868,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Raider's Cloak_IL300 (2).png",
+  "dbName": "Company Raider's Cloak",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "Combat Advantage": 150,
+   "Critical Severity": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 4845,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Silverspruce Sash_IL500 (2).png",
+  "dbName": "Silverspruce Sash",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Critical Avoidance": 500,
+   "Deflection": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 4844,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Silverspruce Sash_IL650 (2).png",
+  "dbName": "Silverspruce Sash",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Critical Avoidance": 649,
+   "Deflection": 325
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 4843,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Silverspruce Sash_IL800 (2).png",
+  "dbName": "Silverspruce Sash",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Critical Avoidance": 799,
+   "Deflection": 400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

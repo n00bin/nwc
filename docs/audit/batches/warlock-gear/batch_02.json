@@ -1,0 +1,531 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crystalweave Armlets_IL3350.png",
+  "id": 3180,
+  "dbName": "Crystalweave Armlets",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Accuracy": 1633,
+   "Combat Advantage": 2010,
+   "Forte": 1131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Rage (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3+ enemies, Critical Severity +1.8% every 2s. Max 5 stacks: 9% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Cursed Gloves of Halaster's Successor_IL1010.png",
+  "id": 3448,
+  "dbName": "Cursed Gloves of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Accuracy": 303,
+   "Critical Severity": 455,
+   "Defense": 758
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Cursed Gloves of the Successor_IL990.png",
+  "id": 3457,
+  "dbName": "Cursed Gloves of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Accuracy": 297,
+   "Critical Severity": 446,
+   "Defense": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Curselord's Assault Bracers_IL770.png",
+  "id": 5576,
+  "dbName": "Curselord's Assault Bracers",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Critical Strike": 330,
+   "Critical Severity": 247,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 1500. When your health is below 50%, Deflect is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Curselord's Raid Bracers_IL770.png",
+  "id": 5579,
+  "dbName": "Curselord's Raid Bracers",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 329,
+   "Critical Strike": 248,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 1500. When your health is below 50%, Deflect is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Curtunk's Furry Sleeves_IL1000 (2).png",
+  "id": 3511,
+  "dbName": "Curtunk's Furry Sleeves",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Defense": 750,
+   "Critical Avoidance": 300,
+   "Deflection": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Defense and Deflect is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Curtunk's Furry Sleeves_IL1000.png",
+  "id": 3511,
+  "dbName": "Curtunk's Furry Sleeves",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Defense": 750,
+   "Critical Avoidance": 300,
+   "Deflection": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Defense and Deflect is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Demon Forged Braces_IL1215.png",
+  "id": 1417,
+  "dbName": "Demon Forged Braces",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 456,
+   "Defense": 911,
+   "Deflection": 456
+  },
+  "dbPercentStats": {
+   "Damage against Devils": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Demon Forged Wristguards_IL1215.png",
+  "id": 3432,
+  "dbName": "Demon Forged Wristguards",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Accuracy": 364,
+   "Critical Severity": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Depthweave Sleeves_IL3000.png",
+  "id": 3189,
+  "dbName": "Depthweave Sleeves",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Critical Severity": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Strike is increased by 1.3% every 2 seconds. Max 5 stacks: 6.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Devil Forged Braces_IL1215.png",
+  "id": 1409,
+  "dbName": "Devil Forged Braces",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 456,
+   "Defense": 911,
+   "Deflection": 456
+  },
+  "dbPercentStats": {
+   "Damage against Demons": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Devil Forged Wristguards_IL1215.png",
+  "id": 3424,
+  "dbName": "Devil Forged Wristguards",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Accuracy": 364,
+   "Critical Severity": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dinohide Assault Shabas_IL784.png",
+  "id": 3721,
+  "dbName": "Dinohide Assault Shabas",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 353,
+   "Critical Severity": 215,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dinohide Raid Shabas_IL784.png",
+  "id": 3717,
+  "dbName": "Dinohide Raid Shabas",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 235,
+   "Critical Strike": 353,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Divine Raid Armlets_IL1230.png",
+  "id": 3401,
+  "dbName": "Divine Raid Armlets",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Accuracy": 369,
+   "Critical Severity": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy. Lose a stack when you are struck. Max 20 stacks: 5000 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Divine Restoration Braces_IL1230.png",
+  "id": 3400,
+  "dbName": "Divine Restoration Braces",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Strike": 461,
+   "Defense": 922,
+   "Deflection": 461
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy. Lose a stack when you are struck. Max 20 stacks: 5000 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dragonflight Assault Wristguards_IL588.png",
+  "id": 3841,
+  "dbName": "Dragonflight Assault Wristguards",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dragonflight Raid Wristguards_IL588.png",
+  "id": 3837,
+  "dbName": "Dragonflight Raid Wristguards",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dragonhide Cuffs_IL1900.png",
+  "id": 3305,
+  "dbName": "Dragonhide Cuffs",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Defense": 1425,
+   "Outgoing Healing": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Resistance Rune",
+    "stat": null,
+    "amount": null,
+    "description": "You gain 5% Defense while Controlled.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dragonhide Sleeves_IL1900.png",
+  "id": 3301,
+  "dbName": "Dragonhide Sleeves",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Defense": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged At-Will",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you activate a Daily power, increase the damage dealt by your at-will attacks by 15% for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Drowcraft Wristguards_IL567.png",
+  "id": 3621,
+  "dbName": "Drowcraft Wristguards",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Accuracy": 255,
+   "Critical Severity": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "1 of Set: -10% Incoming Damage against Demon-type enemies. 2 of Set: Reduces amount of Madness inflicted by Maddening Aura. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "setName": "Drowcraft",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dungeon Raider's Braces_IL940.png",
+  "id": 3497,
+  "dbName": "Dungeon Raider's Braces",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 352,
+   "Defense": 705,
+   "Deflection": 352
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dungeon Raider's Wristguard_IL940.png",
+  "id": 3496,
+  "dbName": "Dungeon Raider's Wristguard",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Accuracy": 282,
+   "Critical Severity": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Alliance Assault Wristguards_IL554.png",
+  "id": 3685,
+  "dbName": "Elemental Alliance Assault Wristguards",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 249,
+   "Critical Severity": 166,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Alliance Raid Wristguards_IL554.png",
+  "id": 3681,
+  "dbName": "Elemental Alliance Raid Wristguards",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 166,
+   "Combat Advantage": 249,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

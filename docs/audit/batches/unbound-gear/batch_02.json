@@ -1,0 +1,432 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Sphene Amulet_IL350.png",
+  "id": 4520,
+  "dbName": "Sphene Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 500,
+    "description": "2 of Set: Encounter triggers Alacrity stack — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks.",
+    "setName": "Masterwork II Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Armor of Quick Recovery_IL651.png",
+  "id": 1945,
+  "dbName": "Armor of Quick Recovery",
+  "dbItemLevel": 651,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Critical Strike": 354,
+   "Defense": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Encounter Reprieve",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bulwark of the Zulkirate_IL4050.png",
+  "id": 72,
+  "dbName": "Bulwark of the Zulkirate",
+  "dbItemLevel": 4050,
+  "dbRatingStats": {
+   "Critical Avoidance": 3007,
+   "Deflect Severity": 4101,
+   "Control Bonus": 3341
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Might (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1% Critical Strike and Critical Severity for 15 seconds. Max Stacks: 5 — 6% Critical Strike and Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Chest of the Fallen Reign_IL672.png",
+  "id": 1844,
+  "dbName": "Chest of the Fallen Reign",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Strike": 151,
+   "Critical Severity": 151,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death's Endowment",
+    "stat": null,
+    "amount": null,
+    "description": "When you slay your target with an attack's damage that is more than 25% of your Maximum Hit Points, an endowment from the dead will appear near you. When picked up by you or an ally, the endowment will increase a random stat by 1000 for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Chitters's Fangs_IL672.png",
+  "id": 5317,
+  "dbName": "Chitters's Fangs",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 126,
+   "Critical Strike": 188,
+   "Defense": 504,
+   "Critical Avoidance": 190
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Deep-Riven Titanweave Harness_IL4850.png",
+  "id": 6844,
+  "dbName": "Deep-Riven Titanweave Harness",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Accuracy": 2364,
+   "Combat Advantage": 2328,
+   "Critical Severity": 2182
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Critical",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single action, you gain 1.4% Critical Strike and 0.7% Power for 15 seconds. Max 5 stacks: 7% Critical Strike and 3.5% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Gravemaster's Habit_IL672.png",
+  "id": 1893,
+  "dbName": "Gravemaster's Habit",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Critical Strike": 302,
+   "Defense": 504,
+   "Critical Avoidance": 202
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Historian's Regalia_IL672.png",
+  "id": 2060,
+  "dbName": "Historian's Regalia",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 202,
+   "Critical Strike": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Equip",
+    "stat": null,
+    "amount": null,
+    "description": "When digging for Ostorian Relics there is a 25% chance you will obtain an additional relic.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Martyr's Plackart_IL672.png",
+  "id": 1895,
+  "dbName": "Martyr's Plackart",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 302,
+   "Combat Advantage": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Defense. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Morlanth's Shroud_IL630 (2).png",
+  "id": 4816,
+  "dbName": "Morlanth's Shroud",
+  "dbItemLevel": 630,
+  "dbRatingStats": {
+   "Accuracy": 284,
+   "Combat Advantage": 189,
+   "Defense": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Morlanth's Shroud_IL630.png",
+  "id": 4816,
+  "dbName": "Morlanth's Shroud",
+  "dbItemLevel": 630,
+  "dbRatingStats": {
+   "Accuracy": 284,
+   "Combat Advantage": 189,
+   "Defense": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Rex Amiculum_IL672.png",
+  "id": 1894,
+  "dbName": "Rex Amiculum",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 302,
+   "Critical Strike": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Might",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your Power is increased by 1500 for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Stalkwrapped Armor_IL672.png",
+  "id": 1846,
+  "dbName": "Stalkwrapped Armor",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Defense": 504,
+   "Critical Avoidance": 302,
+   "Deflection": 202
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Victim's Resistance",
+    "stat": null,
+    "amount": null,
+    "description": "When you are hit at 25% health or lower, your Critical Avoidance increases 15% for 5 seconds. If you have less than 3000 Critical Avoidance, you will gain 2000 for 5 seconds instead. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Vined Deathdelayer_IL672.png",
+  "id": 1845,
+  "dbName": "Vined Deathdelayer",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Defense": 504,
+   "Critical Avoidance": 504,
+   "Deflection": 202
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Victim's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "When you are hit at 25% health or lower, your Deflect increases 15% for 5 seconds. If you have less than 10000 Deflect, you will gain 7500 for 5 seconds instead. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Wintermarked Skirmisher's Breastplate_IL5700.png",
+  "id": 6243,
+  "dbName": "Wintermarked Skirmisher's Breastplate",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Accuracy": 3705,
+   "Combat Advantage": 2280,
+   "Forte": 2565
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.8% Combat Advantage. Max 10 Stacks: 8% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Molten Belt of the Companion_IL2200.png",
+  "id": 6020,
+  "dbName": "Molten Belt of the Companion",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Awareness": 1650,
+   "Critical Avoidance": 1650
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Molten Girdle of the Companion_IL2200.png",
+  "id": 6021,
+  "dbName": "Molten Girdle of the Companion",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 1650,
+   "Deflection": 1650
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Molten Grimoire of the Companion_IL2200.png",
+  "id": 6022,
+  "dbName": "Molten Grimoire of the Companion",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Accuracy": 825,
+   "Defense": 825,
+   "Forte": 1650
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Molten Icon of the Companion_IL2200.png",
+  "id": 6023,
+  "dbName": "Molten Icon of the Companion",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Forte": 1650,
+   "Outgoing Healing": 1650
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Molten Necklace of the Companion_IL2200.png",
+  "id": 6024,
+  "dbName": "Molten Necklace of the Companion",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Critical Strike": 1650,
+   "Outgoing Healing": 1650
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Molten Ring of the Companion_IL2200.png",
+  "id": 6025,
+  "dbName": "Molten Ring of the Companion",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Critical Strike": 1650,
+   "Critical Severity": 1650
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Molten Sword Knot of the Companion_IL2200.png",
+  "id": 6026,
+  "dbName": "Molten Sword Knot of the Companion",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Accuracy": 825,
+   "Combat Advantage": 1650,
+   "Forte": 825
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Molten Talisman of the Companion_IL2200.png",
+  "id": 6027,
+  "dbName": "Molten Talisman of the Companion",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Combat Advantage": 1650,
+   "Critical Severity": 1650
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Molten Tome of the Companion_IL2200.png",
+  "id": 6028,
+  "dbName": "Molten Tome of the Companion",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Combat Advantage": 825,
+   "Critical Severity": 825,
+   "Forte": 1650
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\True Ice Necklace of the Companion_IL3000.png",
+  "id": 5433,
+  "dbName": "True Ice Necklace of the Companion",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 1890,
+   "Outgoing Healing": 2340
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

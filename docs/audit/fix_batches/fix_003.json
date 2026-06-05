@@ -1,0 +1,383 @@
+[
+ {
+  "id": 6635,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bismuth Charm_IL3400.png",
+  "dbName": "Bismuth Charm",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Deflect Severity": 3825,
+   "Forte": 2295
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 6747,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Stronghold Sword Knot_IL300.png",
+  "dbName": "Stronghold Sword Knot",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6748,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Stronghold Sword Knot_IL500.png",
+  "dbName": "Stronghold Sword Knot",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 4048,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ancient Scalebreaker's Gloves_IL1700.png",
+  "dbName": "Ancient Scalebreaker's Gloves",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1020,
+   "Defense": 765,
+   "Forte": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "stat": null,
+    "amount": null,
+    "description": "When you have teammates within 10' of you, your Stamina Regeneration and Control Resistance is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3239,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Astral Raider's Armlets_IL2200.png",
+  "dbName": "Astral Raider's Armlets",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 990,
+   "Deflect Severity": 990,
+   "Outgoing Healing": 1320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Furor",
+    "stat": null,
+    "amount": null,
+    "description": "Grants up to 20% bonus Damage when your total item level is being scaled down.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3983,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Astral Raider's Wristguards_IL2200.png",
+  "dbName": "Astral Raider's Wristguards",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Combat Advantage": 1320,
+   "Defense": 990,
+   "Control Resistance": 990
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Power",
+    "stat": null,
+    "amount": null,
+    "description": "Grants up to 70% bonus Damage when your total item level is being scaled down. Disabled in Thay Arena PvP.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4128,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Banded Bracers of the Successor_IL990 (2).png",
+  "dbName": "Banded Bracers of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Accuracy": 297,
+   "Critical Severity": 446,
+   "Defense": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Call of the Undermountain",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, you will call forth creatures of Undermountain, summoning them to help you and increasing your Power by 5% for 15 seconds. (60s CD)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3281,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bregan D'aerthe Expert's Gloves_IL2000.png",
+  "dbName": "Bregan D'aerthe Expert's Gloves",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 1500,
+   "Outgoing Healing": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Medic's Regards",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you heal your target for more than 10% of your Maximum Hit Points in a single blow, you will immediately be reduced (max 5 targets within 15 ft), and will gain 3% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4597,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Company Raid Gloves_IL588.png",
+  "dbName": "Company Raid Gloves",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2816,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crimson Scalebreaker's Rebel Gloves_IL1800 (2).png",
+  "dbName": "Crimson Scalebreaker's Rebel Gloves",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Strike": 1080,
+   "Defense": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "stat": null,
+    "amount": null,
+    "description": "When you have teammates within 30' of you, your Stamina Regeneration and Control Resistance is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2806,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dragonhide Band_IL1900 (2).png",
+  "dbName": "Dragonhide Band",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Defense": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged At-Will",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you activate a Daily power, increase the damage dealt by your at-will attacks by 15% for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 4377,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Drowcraft Gloves_IL567.png",
+  "dbName": "Drowcraft Gloves",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Combat Advantage": 255,
+   "Critical Severity": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2790,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enchanted Bregan D'aerthe Assassin's Band_IL2050 (2).png",
+  "dbName": "Enchanted Bregan D'aerthe Assassin's Band",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1558,
+   "Critical Strike": 615,
+   "Awareness": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Torrent",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 400 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Stacks 20 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3273,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Enchanted Bregan D'aerthe Expert's Gloves_IL2050.png",
+  "dbName": "Enchanted Bregan D'aerthe Expert's Gloves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 1538,
+   "Outgoing Healing": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Medic's Regards",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you heal your target for more than 10% of your Maximum Hit Points in a single blow, you will immediately be reduced (max 5 targets within 15 ft), and will gain 5% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5207,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Eternal Greaves_IL1300.png",
+  "dbName": "Eternal Greaves",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 339,
+   "Critical Strike": 339,
+   "Defense": 975,
+   "Deflection": 296
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2798,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Maiden's Assault Gloves_IL2050 (2).png",
+  "dbName": "Exalted Maiden's Assault Gloves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Defense": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 15% chance to deal 175 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3931,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Gauntlets of the Scarlet Arcanum_IL5000 (2).png",
+  "dbName": "Gauntlets of the Scarlet Arcanum",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Combat Advantage": 3300,
+   "Critical Severity": 4050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Devastating Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 20% of your Maximum Hit Points in a single blow, your enemy suffers +4% Critical Severity, while you gain +8% Critical Severity for 8 seconds (10 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3601,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Gloves of the Thayan Servitor_IL800 (2).png",
+  "dbName": "Gloves of the Thayan Servitor",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 89,
+   "Critical Strike": 211,
+   "Defense": 600,
+   "Critical Avoidance": 211,
+   "Deflection": 89
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 4104,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Lion Guard's Raid Gloves_IL1250.png",
+  "dbName": "Lion Guard's Raid Gloves",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Strike": 562,
+   "Defense": 938
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy, lose a stack when struck. Max 20 Stacks: 5000 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2786,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mastered Duergar Mercenary's Punchers_IL1900 (2).png",
+  "dbName": "Mastered Duergar Mercenary's Punchers",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1425,
+   "Critical Strike": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Savagery",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 10,000. When your health is below 50%, Critical Avoidance is increased by 10,000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

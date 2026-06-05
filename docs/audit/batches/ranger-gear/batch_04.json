@@ -1,0 +1,521 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Mastered Duergar Mercenary's Punchers_IL1900.png",
+  "id": 2786,
+  "dbName": "Mastered Duergar Mercenary's Punchers",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1425,
+   "Critical Strike": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Savagery",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 10,000. When your health is below 50%, Critical Avoidance is increased by 10,000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Mugger of the Maze's Braces_IL1000 (2).png",
+  "id": 4156,
+  "dbName": "Mugger of the Maze's Braces",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Strike": 375,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Bulwark's Shield",
+    "stat": null,
+    "amount": null,
+    "description": "You take 5% less damage from Ranged attacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Mugger of the Maze's Braces_IL1000.png",
+  "id": 4156,
+  "dbName": "Mugger of the Maze's Braces",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Strike": 375,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Bulwark's Shield",
+    "stat": null,
+    "amount": null,
+    "description": "You take 5% less damage from Ranged attacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pilgrim Assault Bazubands_IL644.png",
+  "id": 2848,
+  "dbName": "Pilgrim Assault Bazubands",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Critical Severity": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 100 Power for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pilgrim Raid Bazubands_IL644.png",
+  "id": 2846,
+  "dbName": "Pilgrim Raid Bazubands",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Combat Advantage": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 100 Power for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pioneer Assault Bazubands_IL616.png",
+  "id": 2840,
+  "dbName": "Pioneer Assault Bazubands",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Accuracy": 277,
+   "Critical Severity": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pioneer Raid Bazubands_IL616.png",
+  "id": 6076,
+  "dbName": "Pioneer Raid Bazubands",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Critical Strike": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Primal Assault Gwanitis_IL700.png",
+  "id": 6095,
+  "dbName": "Primal Assault Gwanitis",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 210,
+   "Critical Severity": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Power for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Primal Raid Gwanitis_IL700.png",
+  "id": 6085,
+  "dbName": "Primal Raid Gwanitis",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 210,
+   "Critical Strike": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Power for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Prismatic Crystalflex Bracers_IL3700 (2).png",
+  "id": 2,
+  "dbName": "Prismatic Crystalflex Bracers",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Combat Advantage": 2220,
+   "Critical Strike": 3330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Rage (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Severity is increased by 1.8% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 9% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Prismatic Crystalflex Bracers_IL3700 (3).png",
+  "id": 2,
+  "dbName": "Prismatic Crystalflex Bracers",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Combat Advantage": 2220,
+   "Critical Strike": 3330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Rage (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Severity is increased by 1.8% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 9% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Prismatic Crystalflex Bracers_IL3700.png",
+  "id": 2,
+  "dbName": "Prismatic Crystalflex Bracers",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Combat Advantage": 2220,
+   "Critical Strike": 3330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Rage (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Severity is increased by 1.8% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 9% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pulsar Wristguards_IL2600 (2).png",
+  "id": 3979,
+  "dbName": "Pulsar Wristguards",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Accuracy": 1950,
+   "Combat Advantage": 1170,
+   "Critical Severity": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Torrent",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 400 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Stacks 20 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pulsar Wristguards_IL2600.png",
+  "id": 3979,
+  "dbName": "Pulsar Wristguards",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Accuracy": 1950,
+   "Combat Advantage": 1170,
+   "Critical Severity": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Torrent",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 400 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Stacks 20 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Radiant Elven Armband_IL2800 (2).png",
+  "id": 3971,
+  "dbName": "Radiant Elven Armband",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Accuracy": 1050,
+   "Combat Advantage": 2100,
+   "Forte": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Presence",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, every 2 seconds you gain 875 Power and 0.5% Critical Strike. Max 5 stacks: 4,375 Power and 2.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Radiant Elven Armband_IL2800.png",
+  "id": 3971,
+  "dbName": "Radiant Elven Armband",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Accuracy": 1050,
+   "Combat Advantage": 2100,
+   "Forte": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Presence",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, every 2 seconds you gain 875 Power and 0.5% Critical Strike. Max 5 stacks: 4,375 Power and 2.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Reinforced Dragonflight Raid Bracers_IL1400.png",
+  "id": 3022,
+  "dbName": "Reinforced Dragonflight Raid Bracers",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Accuracy": 630,
+   "Combat Advantage": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Starhide Armband_IL2700.png",
+  "id": 3975,
+  "dbName": "Starhide Armband",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Accuracy": 2025,
+   "Combat Advantage": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 10 Action Points. Can only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Stealer of the Star's Braces_IL1000.png",
+  "id": 4152,
+  "dbName": "Stealer of the Star's Braces",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Strike": 750,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "At-Will Perk",
+    "stat": "At Will Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your At-Will Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\The Dark Maiden's Assault Gloves_IL2000 (2).png",
+  "id": 4017,
+  "dbName": "The Dark Maiden's Assault Gloves",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\The Dark Maiden's Assault Gloves_IL2000.png",
+  "id": 4017,
+  "dbName": "The Dark Maiden's Assault Gloves",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Trailblazer's Assault Bracers_IL603.png",
+  "id": 2928,
+  "dbName": "Trailblazer's Assault Bracers",
+  "dbItemLevel": 603,
+  "dbRatingStats": {
+   "Accuracy": 176,
+   "Critical Severity": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Trailblazer's Raid Bracers_IL603.png",
+  "id": 2924,
+  "dbName": "Trailblazer's Raid Bracers",
+  "dbItemLevel": 603,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Strike": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Trapper of the Twilight's Braces_IL1000.png",
+  "id": 4149,
+  "dbName": "Trapper of the Twilight's Braces",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Strike": 375,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Encounter Perk",
+    "stat": "Encounter Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your Encounter Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Ultraviolet Elven Wristguards_IL2900.png",
+  "id": 3967,
+  "dbName": "Ultraviolet Elven Wristguards",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Accuracy": 1088,
+   "Combat Advantage": 2175,
+   "Forte": 1088
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, your Critical Strike is increased by 1.5% every 2 seconds. Max 5 stacks: 7.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

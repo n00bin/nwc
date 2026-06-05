@@ -1,0 +1,563 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Polished Amber Dwarven Ring_IL2500.png",
+  "id": 2382,
+  "dbName": "Polished Amber Dwarven Ring",
+  "dbItemLevel": 2500,
+  "dbRatingStats": {
+   "Critical Strike": 7500
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "+7,825 Outgoing Healing / -2,600 Defense",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Polished Diamond Dwarven Ring_IL2500.png",
+  "id": 2383,
+  "dbName": "Polished Diamond Dwarven Ring",
+  "dbItemLevel": 2500,
+  "dbRatingStats": {
+   "Awareness": 7500
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "+7,825 Defense / -2,600 Power",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Polished Emerald Dwarven Ring_IL2500.png",
+  "id": 2384,
+  "dbName": "Polished Emerald Dwarven Ring",
+  "dbItemLevel": 2500,
+  "dbRatingStats": {
+   "Critical Strike": 7500
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Sniper's Fury",
+    "stat": null,
+    "amount": null,
+    "description": "Your Powers deal 2% more damage when you are 50' or further away from your target.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Polished Ivory Dwarven Ring_IL2500.png",
+  "id": 2385,
+  "dbName": "Polished Ivory Dwarven Ring",
+  "dbItemLevel": 2500,
+  "dbRatingStats": {
+   "Critical Severity": 7500
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Sniper's Fury",
+    "stat": null,
+    "amount": null,
+    "description": "Your Powers deal 2% more damage when you are 50' or further away from your target.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Polished Ruby Dwarven Ring_IL2500.png",
+  "id": 2386,
+  "dbName": "Polished Ruby Dwarven Ring",
+  "dbItemLevel": 2500,
+  "dbRatingStats": {
+   "Critical Severity": 7500
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Fury",
+    "stat": null,
+    "amount": null,
+    "description": "Your Powers deal 1.5% more damage when you are 25' or closer to your target.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Polished Sapphire Dwarven Ring_IL2500.png",
+  "id": 2391,
+  "dbName": "Polished Sapphire Dwarven Ring",
+  "dbItemLevel": 2500,
+  "dbRatingStats": {
+   "Combat Advantage": 7500
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Fury",
+    "stat": null,
+    "amount": null,
+    "description": "Your Powers deal 1.5% more damage when you are 25' or closer to your target.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Primal Assault Ring_IL700.png",
+  "id": 1831,
+  "dbName": "Primal Assault Ring",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Critical Strike": 525,
+   "Critical Severity": 1575
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 1% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Primal Raid Ring_IL700.png",
+  "id": 1830,
+  "dbName": "Primal Raid Ring",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Accuracy": 525,
+   "Critical Strike": 1575
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 1% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Primal Restoration Ring_IL700.png",
+  "id": 1829,
+  "dbName": "Primal Restoration Ring",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Critical Strike": 525,
+   "Awareness": 1575
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 1% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Primal Ward Ring_IL700.png",
+  "id": 1828,
+  "dbName": "Primal Ward Ring",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Critical Avoidance": 1575,
+   "Deflection": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 1% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Primal (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: If you are hit or healed for more than 10% of your Maximum Hit Points in a single blow, your Base Damage Boost and Overall Outgoing Healing are increased by 10% for 10 seconds.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Prophet's Dragonflight Ring_IL1500.png",
+  "id": 2380,
+  "dbName": "Prophet's Dragonflight Ring",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Critical Avoidance": 1125,
+   "Deflection": 3375
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Medic's Expertise",
+    "stat": null,
+    "amount": null,
+    "description": "Your Incoming Healing and Critical Avoidance is increased by 3,000 when you are moving.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ring of Defensive Action_IL651.png",
+  "id": 1939,
+  "dbName": "Ring of Defensive Action",
+  "dbItemLevel": 651,
+  "dbRatingStats": {
+   "Accuracy": 2930,
+   "Defense": 2930
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Daily Defiance",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, gain -3% Incoming Damage for 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ring of Offensive Action_IL651.png",
+  "id": 1940,
+  "dbName": "Ring of Offensive Action",
+  "dbItemLevel": 651,
+  "dbRatingStats": {
+   "Accuracy": 2930,
+   "Combat Advantage": 2930
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Daily Edge",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, your Damage is increased by 3% for 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ring of Rising Defense +3_IL588.png",
+  "id": 2196,
+  "dbName": "Ring of Rising Defense +3",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Deflection": 1764
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Rising Defense",
+    "stat": null,
+    "amount": null,
+    "description": "When hit by a foe you gain 95 Defense for 4 seconds. This effect can stack a maximum of 10 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ring of Rising Precision +2_IL575.png",
+  "id": 2202,
+  "dbName": "Ring of Rising Precision +2",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Accuracy": 862,
+   "Critical Severity": 862
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Rising Precision",
+    "stat": null,
+    "amount": null,
+    "description": "On hitting a foe you gain 75 Crit for 4 seconds. This effect can stack a maximum of 10 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ring of the Battledancer +1_IL588.png",
+  "id": 1884,
+  "dbName": "Ring of the Battledancer +1",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 1764
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Dancer's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Your Defense is increased by 500 when you are moving.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ring of the Battledancer +4_IL672.png",
+  "id": 1887,
+  "dbName": "Ring of the Battledancer +4",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Critical Strike": 2016
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Dancer's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Your Defense is increased by 800 when you are moving.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ring of the Battledancer +5_IL714.png",
+  "id": 1888,
+  "dbName": "Ring of the Battledancer +5",
+  "dbItemLevel": 714,
+  "dbRatingStats": {
+   "Critical Strike": 2142
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Dancer's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Your Defense is increased by 1,000 when you are moving.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ring of the Curse Bringer_IL672.png",
+  "id": 1904,
+  "dbName": "Ring of the Curse Bringer",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 504,
+   "Critical Strike": 1512
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Cursed Strike",
+    "stat": null,
+    "amount": null,
+    "description": "Your attacks have a chance to inflict Partial Paralysis. Targets under the effect of partial paralysis may be periodically stunned for a short duration. Does not apply to PvP targets.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ring of the Shadowstalker +3_IL616.png",
+  "id": 1936,
+  "dbName": "Ring of the Shadowstalker +3",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 462,
+   "Critical Severity": 1386
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Fury",
+    "stat": null,
+    "amount": null,
+    "description": "Your Powers deal 1.5% more damage when you are 25' or closer to your target.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ring of the Shadowstalker +4_IL672.png",
+  "id": 1935,
+  "dbName": "Ring of the Shadowstalker +4",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 504,
+   "Critical Severity": 1512
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Fury",
+    "stat": null,
+    "amount": null,
+    "description": "Your Powers deal 2% more damage when you are 25' or closer to your target.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Ring of the Shadowstalker +5_IL714.png",
+  "id": 1934,
+  "dbName": "Ring of the Shadowstalker +5",
+  "dbItemLevel": 714,
+  "dbRatingStats": {
+   "Combat Advantage": 516,
+   "Critical Severity": 1607
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Fury",
+    "stat": null,
+    "amount": null,
+    "description": "Your Powers deal 3% more damage when you are 25' or closer to your target.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Rosegold Assault Ring_IL728.png",
+  "id": 2615,
+  "dbName": "Rosegold Assault Ring",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 546,
+   "Critical Severity": 1638
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Critical Strike is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Rosegold Duelist Ring_IL728.png",
+  "id": 2621,
+  "dbName": "Rosegold Duelist Ring",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 1638,
+   "Deflection": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Resistance",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Critical Avoidance is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Rosegold Executioner Ring_IL728.png",
+  "id": 2622,
+  "dbName": "Rosegold Executioner Ring",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 546,
+   "Combat Advantage": 1638
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Deflect is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

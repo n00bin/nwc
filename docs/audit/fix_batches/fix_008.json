@@ -1,0 +1,362 @@
+[
+ {
+  "id": 2079,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Black Ice Greaves_IL512.png",
+  "dbName": "Black Ice Greaves",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.1,
+   "Combat Advantage": 131,
+   "Defense": 384,
+   "Critical Avoidance": 59.9,
+   "Deflection": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2078,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Elemental Corrupted Black Ice Greaves_IL546.png",
+  "dbName": "Elemental Corrupted Black Ice Greaves",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Severity": 247,
+   "Critical Strike": 163,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2086,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Hammerstone Greaves_IL352.png",
+  "dbName": "Hammerstone Greaves",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 39.6,
+   "Critical Severity": 39.6,
+   "Defense": 264,
+   "Critical Avoidance": 92.4,
+   "Deflection": 92.4
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2602,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Gladiator Couters_IL728.png",
+  "dbName": "Adamant Gladiator Couters",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Defense": 346,
+   "Critical Avoidance": 164,
+   "Deflection": 218
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2598,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Medic Couters_IL728.png",
+  "dbName": "Adamant Medic Couters",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Combat Advantage": 164,
+   "Defense": 346,
+   "Awareness": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2594,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Restoration Couters_IL728.png",
+  "dbName": "Adamant Restoration Couters",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Critical Strike": 328,
+   "Defense": 346
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2327,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Alliance Restoration Couters_IL546.png",
+  "dbName": "Alliance Restoration Couters",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Critical Strike": 166,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5380,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Hearthbinders_IL4700 (2).png",
+  "dbName": "Frostbound Hearthbinders",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 4210,
+   "Outgoing Healing": 2820
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Medic's Grace",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.315 Critical Severity and 0.5% Outgoing Healing. Max Stacks 5: 6.575% Critical Severity and 2.5% Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5384,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Stone Armguards_IL4700 (2).png",
+  "dbName": "Frostbound Stone Armguards",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Defense": 2448,
+   "Critical Avoidance": 1878
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Aegis",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 5 or more enemies, your Deflect is increased by 1,510 every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 7,550 Deflect.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 1790,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Restoration Tahadus_IL588.png",
+  "dbName": "League's Restoration Tahadus",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 176,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Power for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5240,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Aegis of the Condemned_IL3400.png",
+  "dbName": "Aegis of the Condemned",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Awareness": 2040,
+   "Outgoing Healing": 2040
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Impending Doom (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Accumulate 13 Charges to consume them and become Unleashed. Charged by: 1 charge per Daily power (10s CD), 1 charge per Encounter power, 1 charge per 9s in combat. Unleashed grants: DPS +5% Base Damage Boost, Heal +3% Outgoing Healing. Charges and Unleashed last 15s and are refreshable. Leaving combat removes all Charges.",
+    "setName": "Impending Doom",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 2597,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Gladiator Cuirass_IL728.png",
+  "dbName": "Adamant Gladiator Cuirass",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 218,
+   "Defense": 346,
+   "Awareness": 164,
+   "Deflection": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2599,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Medic Cuirass_IL728.png",
+  "dbName": "Adamant Medic Cuirass",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Critical Strike": 328,
+   "Defense": 346,
+   "Awareness": 164
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2593,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Adamant Restoration Cuirass_IL728.png",
+  "dbName": "Adamant Restoration Cuirass",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Combat Advantage": 328,
+   "Defense": 346
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2313,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Elemental Alliance Ward Cuirass_IL554.png",
+  "dbName": "Elemental Alliance Ward Cuirass",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Combat Advantage": 249,
+   "Critical Strike": 166,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5383,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Hearthtunic_IL4700 (2).png",
+  "dbName": "Frostbound Hearthtunic",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3384,
+   "Defense": 987,
+   "Outgoing Healing": 2256
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Harmony",
+    "stat": null,
+    "amount": null,
+    "description": "While in The Reched Edge, teammates who are 25 or closer to you gain 1% Defense.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5392,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostforged Belt of the Companion_IL2850 (2).png",
+  "dbName": "Frostforged Belt of the Companion",
+  "dbItemLevel": 2850,
+  "dbRatingStats": {
+   "Awareness": 1710,
+   "Critical Avoidance": 2355
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5393,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostforged Girdle of the Companion_IL2850 (2).png",
+  "dbName": "Frostforged Girdle of the Companion",
+  "dbItemLevel": 2850,
+  "dbRatingStats": {
+   "Defense": 1494,
+   "Deflect": 3206
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5399,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostforged Talisman of the Companion_IL2850.png",
+  "dbName": "Frostforged Talisman of the Companion",
+  "dbItemLevel": 2850,
+  "dbRatingStats": {
+   "Combat Advantage": 1710,
+   "Critical Severity": 1368
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5436,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\True Ice Talisman of the Companion_IL3000 (2).png",
+  "dbName": "True Ice Talisman of the Companion",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Combat Advantage": 1800,
+   "Critical Severity": 1440
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

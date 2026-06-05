@@ -1,0 +1,530 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Black Ice Helmet_IL512.png",
+  "id": 2082,
+  "dbName": "Black Ice Helmet",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Accuracy": 59.1,
+   "Critical Severity": 131,
+   "Defense": 384,
+   "Critical Avoidance": 59.9,
+   "Deflection": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Bregan D'aerthe Mauler's Mask_IL2000.png",
+  "id": 6366,
+  "dbName": "Bregan D'aerthe Mauler's Mask",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 1500,
+   "Combat Advantage": 900,
+   "Awareness": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Action",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your AP Gain is increased by 20% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Crimson Scalebreaker's Resolution Barbute_IL1800.png",
+  "id": 6406,
+  "dbName": "Crimson Scalebreaker's Resolution Barbute",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Severity": 1080,
+   "Defense": 810,
+   "Deflect Severity": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Crone's Sallet_IL1225.png",
+  "id": 6828,
+  "dbName": "Crone's Sallet",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Combat Advantage": 368,
+   "Defense": 919,
+   "Control Resist": 551
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5000 for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Crown of the Iron Bulwark_IL4700.png",
+  "id": 384,
+  "dbName": "Crown of the Iron Bulwark",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Defense": 2221,
+   "Awareness": 3102
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shared Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "On encounter use: 40% chance for self + lowest-HP ally in 25' to gain +5% Forte and +3.5% Defense 8s (15s cd)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Demon Forged Sallet_IL1215.png",
+  "id": 6415,
+  "dbName": "Demon Forged Sallet",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Depthforged Barbute_IL3000.png",
+  "id": 6417,
+  "dbName": "Depthforged Barbute",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Forte": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you're in combat, you gain 0.8% Combat Advantage. Max 10 Stacks: 8% Combat Advantage",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Depthforged Helm_IL3000.png",
+  "id": 605,
+  "dbName": "Depthforged Helm",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Defense": 2250,
+   "Critical Avoidance": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.4% Stamina Regeneration and 0.6% Awareness. Max 10 Stacks: 4% Stamina Regeneration and 6% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Devil Forged Sallet_IL1215.png",
+  "id": 6423,
+  "dbName": "Devil Forged Sallet",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Dragonsteel Barbute_IL1900.png",
+  "id": 6442,
+  "dbName": "Dragonsteel Barbute",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 855,
+   "Critical Severity": 1140,
+   "Defense": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Dragon Hunter's Might",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage against Dragons. When your health is below 50%, your Awareness is increased by 8,000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Dungeon Raider's Sallet_IL940.png",
+  "id": 6457,
+  "dbName": "Dungeon Raider's Sallet",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Elemental Corrupted Black Ice Helm_IL546.png",
+  "id": 2075,
+  "dbName": "Elemental Corrupted Black Ice Helm",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 247,
+   "Critical Severity": 163,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Elemental Purified Black Ice Helm_IL546.png",
+  "id": 2071,
+  "dbName": "Elemental Purified Black Ice Helm",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 247,
+   "Combat Advantage": 163,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Enchanted Bregan D'aerthe Mauler's Mask_IL2050.png",
+  "id": 6504,
+  "dbName": "Enchanted Bregan D'aerthe Mauler's Mask",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1538,
+   "Combat Advantage": 923,
+   "Awareness": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Action",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your AP Gain is increased by 25% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Enchanted Depthforged Armet_IL3200.png",
+  "id": 203,
+  "dbName": "Enchanted Depthforged Armet",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Defense": 2400,
+   "Critical Avoidance": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Stamina",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.4% Stamina Regeneration and 0.8% Awareness. Max 10 Stacks: 4% Stamina Regeneration and 8% Awareness.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Enchanted Depthforged Helmet_IL3200.png",
+  "id": 6507,
+  "dbName": "Enchanted Depthforged Helmet",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Critical Strike": 2400,
+   "Forte": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max Stacks: 10.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Eternal Helm_IL1300.png",
+  "id": 2345,
+  "dbName": "Eternal Helm",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 337,
+   "Combat Advantage": 337,
+   "Defense": 975,
+   "Critical Avoidance": 296
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Exalted Maiden's Resolution Barbute_IL2050.png",
+  "id": 6515,
+  "dbName": "Exalted Maiden's Resolution Barbute",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 923,
+   "Critical Severity": 1230,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Exalted Maiden's Ward Helm_IL2050.png",
+  "id": 208,
+  "dbName": "Exalted Maiden's Ward Helm",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 1518,
+   "Incoming Healing": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Word",
+    "stat": null,
+    "amount": null,
+    "description": "Slightly increased threat generation.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Fiend Forged Sallet_IL1230.png",
+  "id": 6555,
+  "dbName": "Fiend Forged Sallet",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Combat Advantage": 369,
+   "Critical Strike": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Forest Guardian's Raid Sallet_IL1500.png",
+  "id": 6558,
+  "dbName": "Forest Guardian's Raid Sallet",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Combat Advantage": 450,
+   "Defense": 1125,
+   "Control Resist": 675
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fey Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in all of Sharandar.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Hammerstone Helmet_IL352.png",
+  "id": 2083,
+  "dbName": "Hammerstone Helmet",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 39.6,
+   "Critical Severity": 39.6,
+   "Defense": 264,
+   "Critical Avoidance": 92.4,
+   "Deflection": 92.4
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Helm of the Bloodborne Reaper_IL5000.png",
+  "id": 6592,
+  "dbName": "Helm of the Bloodborne Reaper",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Combat Advantage": 3300,
+   "Critical Severity": 4050
+  },
+  "dbPercentStats": {
+   "Combat Advantage": 7,
+   "Critical Strike": 6
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Balanced Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "+7% Combat Advantage when your health is above 60%. +6% Critical Strike when your health is below 60%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Helm of the Crimson Scythe_IL4700.png",
+  "id": 6593,
+  "dbName": "Helm of the Crimson Scythe",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Forte": 2855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Surge",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with any Power, gain +4.5% Combat Advantage and +3.5% Power for 8 seconds. (12 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Helm of the Unyielding Bastion_IL5000.png",
+  "id": 380,
+  "dbName": "Helm of the Unyielding Bastion",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Awareness": 3300,
+   "Critical Avoidance": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Acumen",
+    "stat": null,
+    "amount": null,
+    "description": "Per 5s in combat: +0.4% Awareness, +0.5% Crit Avoid. Max 10 stacks (4%/5%)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

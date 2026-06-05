@@ -1,0 +1,413 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Ultraviolet Elven Hat_IL2900.png",
+  "id": 2750,
+  "dbName": "Ultraviolet Elven Hat",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Combat Advantage": 2175,
+   "Critical Strike": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max Stacks: 10.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Weathered Wood Hood_IL1300.png",
+  "id": 4058,
+  "dbName": "Weathered Wood Hood",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 585,
+   "Defense": 975,
+   "Control Bonus": 390
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Wintermarked Lifeward Helm_IL5700.png",
+  "id": 5344,
+  "dbName": "Wintermarked Lifeward Helm",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Severity": 5130,
+   "Outgoing Healing": 5420
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renewed Spirit",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity regenerates 25% faster.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Goristroskin Soulbead Amulet_IL1700.png",
+  "id": 4027,
+  "dbName": "Goristroskin Soulbead Amulet",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Avoidance": 852,
+   "Deflection": 849,
+   "Deflect Severity": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Scintillant Amulet +1_IL1800.png",
+  "id": 6254,
+  "dbName": "Scintillant Amulet +1",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Combat Advantage": 899,
+   "Critical Strike": 902,
+   "Critical Severity": 899
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Scintillant Amulet_IL1700.png",
+  "id": 4033,
+  "dbName": "Scintillant Amulet",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 849,
+   "Critical Strike": 852,
+   "Critical Severity": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Spiked Amulet_IL1700 (2).png",
+  "id": 4028,
+  "dbName": "Spiked Amulet",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 849,
+   "Combat Advantage": 849,
+   "Critical Strike": 852
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Spiked Amulet_IL1700 (3).png",
+  "id": 4028,
+  "dbName": "Spiked Amulet",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 849,
+   "Combat Advantage": 849,
+   "Critical Strike": 852
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Spiked Amulet_IL1700.png",
+  "id": 4028,
+  "dbName": "Spiked Amulet",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 849,
+   "Combat Advantage": 849,
+   "Critical Strike": 852
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Darklake Ward Ring_IL1700.png",
+  "id": 4023,
+  "dbName": "Darklake Ward Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Avoidance": 3825,
+   "Deflection": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charging Bull",
+    "stat": null,
+    "amount": null,
+    "description": "When you have been running for 1 second, you generate threat around you every second as long as you continue running.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Scintillant Restoration Ring_IL1700.png",
+  "id": 4024,
+  "dbName": "Scintillant Restoration Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1275,
+   "Outgoing Healing": 3825
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Gift",
+    "stat": null,
+    "amount": null,
+    "description": "Your current Hit Points increases your Outgoing Healing, up to a maximum of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Shroomwood Raid Ring_IL1700.png",
+  "id": 4025,
+  "dbName": "Shroomwood Raid Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 1275,
+   "Critical Strike": 3825
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Severity for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Darklake Sash_IL1700.png",
+  "id": 4032,
+  "dbName": "Darklake Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Avoidance": 1698,
+   "Deflection": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Scintillant Sash +1_IL1800.png",
+  "id": 6253,
+  "dbName": "Scintillant Sash +1",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Accuracy": 899,
+   "Combat Advantage": 899,
+   "Critical Strike": 902
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Scintillant Sash_IL1700.png",
+  "id": 4030,
+  "dbName": "Scintillant Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 849,
+   "Combat Advantage": 849,
+   "Critical Strike": 852
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Shroomwood Sash +1_IL1800.png",
+  "id": 6252,
+  "dbName": "Shroomwood Sash +1",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Combat Advantage": 899,
+   "Critical Strike": 902,
+   "Critical Severity": 899
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Shroomwood Sash_IL1700 (2).png",
+  "id": 4029,
+  "dbName": "Shroomwood Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 849,
+   "Critical Strike": 852,
+   "Critical Severity": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Shroomwood Sash_IL1700.png",
+  "id": 4029,
+  "dbName": "Shroomwood Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 849,
+   "Critical Strike": 852,
+   "Critical Severity": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Spiked Sash_IL1700.png",
+  "id": 4031,
+  "dbName": "Spiked Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1701,
+   "Outgoing Healing": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ }
+]

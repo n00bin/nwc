@@ -1,0 +1,496 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dungeon Raider's Coif_IL940.png",
+  "id": 1589,
+  "dbName": "Dungeon Raider's Coif",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 494,
+   "Defense": 705,
+   "Critical Avoidance": 212
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dungeon Raider's Cowl_IL940.png",
+  "id": 3491,
+  "dbName": "Dungeon Raider's Cowl",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dusk Raid Cowl_IL1175.png",
+  "id": 3611,
+  "dbName": "Dusk Raid Cowl",
+  "dbItemLevel": 1175,
+  "dbRatingStats": {
+   "Combat Advantage": 352,
+   "Critical Strike": 529,
+   "Defense": 881
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "1 of Set: Wanderer's Vigor — when not in a party, regenerate 2000 HP every 3s. 2 of Set: When in a party, +5,000 Max HP, +1% Power, +1% Defense. 3 of Set: When on the Stronghold map, you and your allies gain 5 Movement Speed (no effect in Stronghold Siege).",
+    "setName": "Dusk",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Alliance Assault Cowl_IL554.png",
+  "id": 3683,
+  "dbName": "Elemental Alliance Assault Cowl",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 249,
+   "Critical Severity": 166,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Alliance Raid Cowl_IL554.png",
+  "id": 3679,
+  "dbName": "Elemental Alliance Raid Cowl",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 166,
+   "Combat Advantage": 249,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Dragonflight Assault Cowl_IL596.png",
+  "id": 3847,
+  "dbName": "Elemental Dragonflight Assault Cowl",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Combat Advantage": 179,
+   "Critical Severity": 268,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Dragonflight Raid Cowl_IL596.png",
+  "id": 3843,
+  "dbName": "Elemental Dragonflight Raid Cowl",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Combat Advantage": 179,
+   "Critical Strike": 268,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Drowcraft Assault Cowl_IL588.png",
+  "id": 3626,
+  "dbName": "Elemental Drowcraft Assault Cowl",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "1 of Set: -10% Incoming Damage against Demon-type enemies. 2 of Set: Reduces amount of Madness inflicted by Maddening Aura. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "setName": "Drowcraft",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Drowcraft Raid Cowl_IL588.png",
+  "id": 3623,
+  "dbName": "Elemental Drowcraft Raid Cowl",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "1 of Set: -10% Incoming Damage against Demon-type enemies. 2 of Set: Reduces amount of Madness inflicted by Maddening Aura. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "setName": "Drowcraft",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Elven Assault Cowl_IL575.png",
+  "id": 3670,
+  "dbName": "Elemental Elven Assault Cowl",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Combat Advantage": 259,
+   "Critical Severity": 172,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Elven Raid Cowl_IL575.png",
+  "id": 3663,
+  "dbName": "Elemental Elven Raid Cowl",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Accuracy": 259,
+   "Combat Advantage": 172,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Lionsmane Duelist Cowl_IL574.png",
+  "id": 4849,
+  "dbName": "Elemental Lionsmane Duelist Cowl",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Combat Advantage": 129,
+   "Critical Strike": 129,
+   "Defense": 430,
+   "Critical Avoidance": 172
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Lionsmane Executioner Cowl_IL574.png",
+  "id": 4855,
+  "dbName": "Elemental Lionsmane Executioner Cowl",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Combat Advantage": 129,
+   "Critical Strike": 129,
+   "Critical Severity": 172,
+   "Defense": 430
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Enchanted Bregan D'aerthe Caster's Hood_IL2050.png",
+  "id": 3267,
+  "dbName": "Enchanted Bregan D'aerthe Caster's Hood",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1538,
+   "Critical Strike": 923,
+   "Incoming Healing": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Frenzy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, your Power is increased by 2% and Movement Speed increased by 1.5% for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Enchanted Bregan D'aerthe Expert's Coif_IL2050.png",
+  "id": 3271,
+  "dbName": "Enchanted Bregan D'aerthe Expert's Coif",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Deflect Severity": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Mystic Inspiration",
+    "stat": null,
+    "amount": null,
+    "description": "Your Performance/Soulweave/Soul Spark maximum increases by 25%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Enclave Medic's Coif_IL1600.png",
+  "id": 3330,
+  "dbName": "Enclave Medic's Coif",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Critical Strike": 960,
+   "Defense": 720,
+   "Deflect Severity": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Accuracy is increased by 7.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Maiden's Raid Mask_IL2050 (2).png",
+  "id": 3283,
+  "dbName": "Exalted Maiden's Raid Mask",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 923,
+   "Critical Severity": 1210,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Maiden's Raid Mask_IL2050.png",
+  "id": 3283,
+  "dbName": "Exalted Maiden's Raid Mask",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 923,
+   "Critical Severity": 1210,
+   "Defense": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Maiden's Rejuvenation Hood_IL2050 (2).png",
+  "id": 3287,
+  "dbName": "Exalted Maiden's Rejuvenation Hood",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Defense": 1518
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Muse",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity/Performance/Soulweave regenerates 20% faster.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Maiden's Rejuvenation Hood_IL2050.png",
+  "id": 3287,
+  "dbName": "Exalted Maiden's Rejuvenation Hood",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1518,
+   "Defense": 1518
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Muse",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity/Performance/Soulweave regenerates 20% faster.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Fiend Forged Coif_IL1230.png",
+  "id": 1395,
+  "dbName": "Fiend Forged Coif",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Strike": 646,
+   "Defense": 922,
+   "Critical Avoidance": 277
+  },
+  "dbPercentStats": {
+   "Damage against Demons, Devils, and Fiends": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Fiend Forged Cowl_IL1230.png",
+  "id": 3411,
+  "dbName": "Fiend Forged Cowl",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Combat Advantage": 369,
+   "Critical Strike": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Forest Guardian's Raid Crown_IL1500.png",
+  "id": 3340,
+  "dbName": "Forest Guardian's Raid Crown",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Accuracy": 675,
+   "Combat Advantage": 450,
+   "Defense": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fey Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in all of Sharandar.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Forest Guardian's Restoration Crown_IL1500.png",
+  "id": 3336,
+  "dbName": "Forest Guardian's Restoration Crown",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Critical Strike": 788,
+   "Defense": 1125,
+   "Incoming Healing": 338
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fey Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in all of Sharandar.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Fractal Cowl_IL3350.png",
+  "id": 3182,
+  "dbName": "Fractal Cowl",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Critical Strike": 3015,
+   "Forte": 2261
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Spiker (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "Every 3s in combat: +1.8% Critical Strike. Max 5 stacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

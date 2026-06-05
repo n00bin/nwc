@@ -1,0 +1,551 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Restoration Diralsaaqs_IL588.png",
+  "id": 1789,
+  "dbName": "League's Restoration Diralsaaqs",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\League's Ward Diralsaaqs_IL588.png",
+  "id": 1788,
+  "dbName": "League's Ward Diralsaaqs",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Defense": 441,
+   "Deflection": 265,
+   "Combat Advantage": 176
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Lolthian Sabatons_IL2050.png",
+  "id": 736,
+  "dbName": "Lolthian Sabatons",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 923,
+   "Defense": 923,
+   "Awareness": 1230
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Elegant Reply",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 30% chance to reflect 5% of the damage back to the attacker. This effect may only occur once every 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pilgrim Restoration Diralsaaqs_IL644.png",
+  "id": 1784,
+  "dbName": "Pilgrim Restoration Diralsaaqs",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Combat Advantage": 193,
+   "Critical Strike": 290,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wanderer's Vigor",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, you regenerate 3% of your Maximum Hit Points, up to 3000, every 3 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pilgrim Ward Diralsaaqs_IL644.png",
+  "id": 1780,
+  "dbName": "Pilgrim Ward Diralsaaqs",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Defense": 483,
+   "Deflection": 193
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wanderer's Vigor",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, you regenerate 3% of your Maximum Hit Points, up to 3000, every 3 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pilgrim (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost and Overall Outgoing Healing are increased by 1% for every enemy you faced when starting combat, to a max of 10% for 10s. If facing only one enemy at start, the bonus is +5% for 1 minute. When you kill an enemy, this buff will refresh.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pioneer Restoration Diralsaaqs_IL616.png",
+  "id": 1776,
+  "dbName": "Pioneer Restoration Diralsaaqs",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Accuracy": 185,
+   "Combat Advantage": 277,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Dash",
+    "stat": null,
+    "amount": null,
+    "description": "Your Movement Speed increases by 1% for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pioneer Ward Diralsaaqs_IL616.png",
+  "id": 1769,
+  "dbName": "Pioneer Ward Diralsaaqs",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Defense": 462,
+   "Deflection": 185
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Dash",
+    "stat": null,
+    "amount": null,
+    "description": "Your Movement Speed increases by 1% for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Pioneer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You gain an increased stat for each party member. Party of 1: +200 Power. 2: +400 Power+Defense. 3: +400 Power+Defense+Accuracy. 4: +800 Power+Defense+Accuracy+Critical Strike. 5: +800 Power+Defense+Accuracy+Critical Strike+Critical Severity.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Primal Restoration Isikhumbas_IL700.png",
+  "id": 6092,
+  "dbName": "Primal Restoration Isikhumbas",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 210,
+   "Critical Strike": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Primal Ward Isikhumbas_IL700.png",
+  "id": 6093,
+  "dbName": "Primal Ward Isikhumbas",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Combat Advantage": 315,
+   "Defense": 525,
+   "Deflection": 210
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 3% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Protege's Trimmed Gaiters_IL980.png",
+  "id": 1552,
+  "dbName": "Protege's Trimmed Gaiters",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Critical Strike": 368,
+   "Defense": 735,
+   "Critical Avoidance": 368
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Pulsar Greaves_IL2600.png",
+  "id": 234,
+  "dbName": "Pulsar Greaves",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Defense": 780,
+   "Critical Avoidance": 1950,
+   "Deflection": 1170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "+7.5% Incoming Healing, -10000 Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Radiant Elven Sabatons_IL2800.png",
+  "id": 231,
+  "dbName": "Radiant Elven Sabatons",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Defense": 2100,
+   "Awareness": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spelljammer's Fortified Ally",
+    "stat": null,
+    "amount": null,
+    "description": "-2% Incoming Damage and 2.5% Incoming Healing in Wildspace. -1% Incoming Damage and 2.5% Incoming Healing in non-Wildspace.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Runefrost Bulwark Greaves_IL5400.png",
+  "id": 5357,
+  "dbName": "Runefrost Bulwark Greaves",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Awareness": 3240,
+   "Critical Avoidance": 4455
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 3.8% Awareness and Deflect while at full health. These bonuses decrease relative to your missing health.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Runefrost Lifeward Greaves_IL5400.png",
+  "id": 5353,
+  "dbName": "Runefrost Lifeward Greaves",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Power": 2835,
+   "Outgoing Healing": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Healer's Influence (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "Healing an ally also heals you for 80,000 and grants you and close Allies 3% Defense for 3s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rusted Oathkeeper's Restoration Poleyns_IL420.png",
+  "id": 2069,
+  "dbName": "Rusted Oathkeeper's Restoration Poleyns",
+  "dbItemLevel": 420,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rusted Oathkeeper's Ward Poleyns_IL420.png",
+  "id": 2066,
+  "dbName": "Rusted Oathkeeper's Ward Poleyns",
+  "dbItemLevel": 420,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Starforged Sabatons_IL2700.png",
+  "id": 714,
+  "dbName": "Starforged Sabatons",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Awareness": 2025,
+   "Incoming Healing": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Defender Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Base Damage Boost when struck. Stacks 5 times. When you strike an enemy, the stacks are consumed and you gain -1% Incoming Damage per stack consumed for 10 seconds. Stacks cannot be applied at the same time.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\The Dark Maiden's Ward Sabatons_IL2000.png",
+  "id": 235,
+  "dbName": "The Dark Maiden's Ward Sabatons",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 1500,
+   "Awareness": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4,500 Power in the Underdark and gain more role effectiveness when in the Temple of the Spider. DPS: +5% Base Damage Boost. Tank: -5% Incoming Damage. Healer: +5% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Gladiator Poleyns_IL756.png",
+  "id": 2485,
+  "dbName": "Titansteel Gladiator Poleyns",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Defense": 567,
+   "Awareness": 340,
+   "Deflection": 227
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Medic Poleyns_IL756.png",
+  "id": 2493,
+  "dbName": "Titansteel Medic Poleyns",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 324,
+   "Combat Advantage": 243,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Restoration Poleyns_IL756.png",
+  "id": 2481,
+  "dbName": "Titansteel Restoration Poleyns",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 227,
+   "Critical Strike": 340,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Titansteel Ward Poleyns_IL756.png",
+  "id": 2477,
+  "dbName": "Titansteel Ward Poleyns",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Defense": 567,
+   "Awareness": 340,
+   "Deflection": 227
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Ultraviolet Elven Greaves_IL2900.png",
+  "id": 688,
+  "dbName": "Ultraviolet Elven Greaves",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Defense": 2175,
+   "Awareness": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain up to 5% Critical Avoidance and -2.5% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Wintermarked Bulwark Greaves_IL5700.png",
+  "id": 5349,
+  "dbName": "Wintermarked Bulwark Greaves",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Defense": 2992,
+   "Critical Avoidance": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4.5% Awareness and 4% Deflect while at full health. These bonuses decrease relative to your missing health.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Wintermarked Lifeward Greaves_IL5700.png",
+  "id": 5345,
+  "dbName": "Wintermarked Lifeward Greaves",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Severity": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shared Vitality",
+    "stat": null,
+    "amount": null,
+    "description": "Healing an ally has a 40% chance to grant you and your nearest ally +3% Critical Strike and +3.5% Critical Severity for 10 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

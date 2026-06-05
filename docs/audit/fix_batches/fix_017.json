@@ -1,0 +1,359 @@
+[
+ {
+  "id": 5026,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Raid Shabas_IL700.png",
+  "dbName": "Primal Raid Shabas",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "CombatAdvantage": 315,
+   "CriticalStrike": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3202,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ultraviolet Elven Coat_IL2900.png",
+  "dbName": "Ultraviolet Elven Coat",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Critical Strike": 2175,
+   "Forte": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Daily",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, your next encounter power will deal 20% more damage. (10 second cooldown) Additionally, when Focused Daily triggers, you gain 2.5% Critical Severity for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3694,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Assault Pigaches_IL546.png",
+  "dbName": "Alliance Assault Pigaches",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Strike": 164,
+   "Critical Severity": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3452,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Charmed Boots of the Successor_IL990.png",
+  "dbName": "Charmed Boots of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Critical Strike": 371,
+   "Defense": 742,
+   "Critical Avoidance": 379
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sniper's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 50' or further away from your target, your Combat Advantage is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3870,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Company Raid Pigaches_IL588.png",
+  "dbName": "Company Raid Pigaches",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3722,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dinohide Assault Viatus_IL784.png",
+  "dbName": "Dinohide Assault Viatus",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Critical Strike": 353,
+   "Critical Severity": 215,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3302,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dragonhide Poulaines_IL1900.png",
+  "dbName": "Dragonhide Poulaines",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1140,
+   "Critical Strike": 855,
+   "Defense": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, gain 3,000 Defense. When in a party, gain 10,000 Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3622,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Drowcraft Pigaches_IL567.png",
+  "dbName": "Drowcraft Pigaches",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Combat Advantage": 255,
+   "Critical Severity": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "1 of Set: -10% Incoming Damage against Demon-type enemies. 2 of Set: Reduces amount of Madness inflicted by Maddening Aura. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "setName": "Drowcraft",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "id": 3846,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Dragonflight Raid Pigaches_IL596.png",
+  "dbName": "Elemental Dragonflight Raid Pigaches",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Accuracy": 179,
+   "Combat Advantage": 268,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3624,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Drowcraft Raid Pigaches_IL588.png",
+  "dbName": "Elemental Drowcraft Raid Pigaches",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "1 of Set: -10% Incoming Damage against Demon-type enemies. 2 of Set: Reduces amount of Madness inflicted by Maddening Aura. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "setName": "Drowcraft",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "id": 3669,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Elven Assault Pigaches_IL575.png",
+  "dbName": "Elemental Elven Assault Pigaches",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Combat Advantage": 259,
+   "Critical Severity": 172,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3244,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lolthian Poulaines_IL2050.png",
+  "dbName": "Lolthian Poulaines",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1230,
+   "Critical Strike": 923,
+   "Defense": 1845
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 650 Combat Advantage, to the max of 7800.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3775,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Executioner Pigaches_IL756.png",
+  "dbName": "Manticore Executioner Pigaches",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Critical Strike": 227,
+   "Critical Severity": 170,
+   "Awareness": 170,
+   "Defense": 547
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3262,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mastered Duergar Mercenary's Crakows_IL1900.png",
+  "dbName": "Mastered Duergar Mercenary's Crakows",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 10,000. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5485,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wintermarked Trail Boots_IL5700 (2).png",
+  "dbName": "Wintermarked Trail Boots",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Accuracy": 5335,
+   "Combat Advantage": 2736,
+   "Forte": 2308
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Reserves",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power within 20 seconds will deal 20% more damage. (30 second cooldown) You gain 5% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3691,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Alliance Assault Cowl_IL546.png",
+  "dbName": "Alliance Assault Cowl",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Critical Strike": 164,
+   "Critical Severity": 246,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3321,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ancient Scalebreaker's Hood_IL1700.png",
+  "dbName": "Ancient Scalebreaker's Hood",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 765,
+   "Critical Strike": 1020,
+   "Defense": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3535,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Curselord's Raid Ushanka_IL770.png",
+  "dbName": "Curselord's Raid Ushanka",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 247,
+   "Critical Strike": 330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Savagery",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 1500. When your health is below 50%, Critical Avoidance is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3186,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Depthweave Hood_IL3000.png",
+  "dbName": "Depthweave Hood",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Combat Advantage": 2250,
+   "Critical Strike": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Every 3 seconds in combat, +0.8% Combat Advantage. Max 10 stacks: 8% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3683,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Alliance Assault Cowl_IL554.png",
+  "dbName": "Elemental Alliance Assault Cowl",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 249,
+   "Critical Severity": 166,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

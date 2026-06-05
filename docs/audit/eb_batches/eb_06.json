@@ -1,0 +1,149 @@
+[
+ {
+  "name": "Wintermarked Lifeward Cuirass",
+  "class": "cleric-gear",
+  "ids": [
+   5346
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description: screenshot reads '+0.55% Power and +0.35% Critical Severity' per stack vs DB '+0.55% Power and +0.55% Critical Severity'",
+   "Equip bonus description: screenshot reads 'Max 10 Stacks: +5.5% Power and +3.5% Critical Severity' vs DB '+5.5% Power and +5.5% Critical Severity'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Wintermarked Lifeward Cuirass_IL5700.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Unbroken Strength",
+    "description": "For each second you are at maximum health, gain +0.55% Power and +0.55% Critical Severity. Each second at less than maximum health, you lose 3 stacks. Max 10 Stacks: +5.5% Power and +5.5% Critical Severity."
+   }
+  ]
+ },
+ {
+  "name": "Enchanted Depthforged Greaves",
+  "class": "barbarian-gear",
+  "ids": [
+   233
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description says '3.75% Awareness and Deflect' but screenshot shows '3.8% Awareness and Deflect while at full health'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Enchanted Depthforged Greaves_IL3200.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "description": "Gain 3.75% Awareness and Deflect while at full health. These bonuses decrease relative to your missing health. Currently: 3.8% Awareness and 3.8% Deflect."
+   }
+  ]
+ },
+ {
+  "name": "Frostbound Hearthhood",
+  "class": "paladin-gear",
+  "ids": [
+   5382
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description stores '1.008' and '5.04%' as if percent values, but screenshot clearly shows integer ratings: '1,008 Outgoing Healing and Forte' and 'Max 5 Stacks: 5,041 Outgoing Healing and Forte' — these are rating values, not percent"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Hearthhood_IL4700 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Novice's Mercy",
+    "description": "For every 5 seconds you are in combat, you gain 1.008 Outgoing Healing and Forte. Max 5 Stacks: 5.04% Outgoing Healing and Forte."
+   }
+  ]
+ },
+ {
+  "name": "Frostbound Warhood",
+  "class": "paladin-gear",
+  "ids": [
+   5390
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: DB stores 'Surging Empathy' but screenshot shows 'Surging Precision'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostbound Warhood_IL4700 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Surging Empathy",
+    "description": "For every 5 seconds you are in combat, you gain 1,320 Critical Severity and Accuracy. Max 5 stacks: 6,600 Critical Severity and Accuracy."
+   }
+  ]
+ },
+ {
+  "name": "Frostsilver Ring of Initiative",
+  "class": "paladin-gear",
+  "ids": [
+   5407
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Maiden's Advantage', DB stores 'Vanguard's Assurance'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frostsilver Ring of Initiative_IL6000.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Vanguard's Assurance",
+    "description": "You gain 6% Combat Advantage. When in combat with 2 or more enemies, you also gain 3.25% Power."
+   }
+  ]
+ },
+ {
+  "name": "Rimetouched Coil of Wrath",
+  "class": "paladin-gear",
+  "ids": [
+   5410
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Divine Blessing (Lesser)', DB stores 'Divine Blessing (Cesser)' (typo in DB)"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rimetouched Coil of Wrath_IL5400.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Blessing (Cesser)",
+    "description": "Your current Hit Points increases your Forte, up to a max of 4%. Currently: 4% Forte."
+   }
+  ]
+ },
+ {
+  "name": "Rimetouched Ring of Initiative",
+  "class": "paladin-gear",
+  "ids": [
+   5414
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Accuracy: screenshot 10,530 vs DB 10,800",
+   "Equip bonus name: screenshot shows 'Brute's Might', DB stores 'Brave Warden'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Rimetouched Ring of Initiative_IL5400 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Brave Warden",
+    "description": "When you are 25 or closer to your target, your Power is increased by 5%."
+   }
+  ]
+ },
+ {
+  "name": "Snowbound Band of Faith",
+  "class": "paladin-gear",
+  "ids": [
+   5422
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Power: screenshot 4,935 vs DB 6,935",
+   "Equip bonus name: screenshot shows 'Heroic Tactics', DB stores 'Inner Strength'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Snowbound Band of Faith_IL4700 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Inner Strength",
+    "description": "When your Stamina is over 75%, your Power is increased by 14,475."
+   }
+  ]
+ }
+]

@@ -1,0 +1,445 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Vistani Greataxe_IL650.png",
+  "id": 6800,
+  "dbName": "Vistani Greataxe",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 488,
+   "Critical Strike": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Vistani Greataxe_IL800.png",
+  "id": 6801,
+  "dbName": "Vistani Greataxe",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 600,
+   "Critical Strike": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Vistani Sword Knot_IL350.png",
+  "id": 6802,
+  "dbName": "Vistani Sword Knot",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 262,
+   "Critical Strike": 262
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Vistani Sword Knot_IL500.png",
+  "id": 6803,
+  "dbName": "Vistani Sword Knot",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Strike": 375
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Vistani Sword Knot_IL650.png",
+  "id": 6804,
+  "dbName": "Vistani Sword Knot",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 488,
+   "Critical Strike": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Vistani Sword Knot_IL800.png",
+  "id": 6805,
+  "dbName": "Vistani Sword Knot",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 600,
+   "Critical Strike": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wootz Matraqa_IL350.png",
+  "id": 6820,
+  "dbName": "Wootz Matraqa",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wootz Matraqa_IL500.png",
+  "id": 6821,
+  "dbName": "Wootz Matraqa",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wootz Matraqa_IL650.png",
+  "id": 6822,
+  "dbName": "Wootz Matraqa",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Wootz Matraqa_IL800.png",
+  "id": 6823,
+  "dbName": "Wootz Matraqa",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Adamant Assault Scalemail_IL728.png",
+  "id": 6310,
+  "dbName": "Adamant Assault Scalemail",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 328,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Adamant Duelist Scalemail_IL728.png",
+  "id": 6314,
+  "dbName": "Adamant Duelist Scalemail",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Defense": 546,
+   "Awareness": 144,
+   "Deflect": 402
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Adamant Gladiator Scalemail_IL728.png",
+  "id": 6318,
+  "dbName": "Adamant Gladiator Scalemail",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 218,
+   "Critical Strike": 164,
+   "Critical Severity": 164,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Alliance Soldier's Cuirass_IL1600.png",
+  "id": 6320,
+  "dbName": "Alliance Soldier's Cuirass",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Critical Strike": 960,
+   "Defense": 720,
+   "Deflect": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Alliance Ward Scalemail_IL546.png",
+  "id": 6326,
+  "dbName": "Alliance Ward Scalemail",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 246,
+   "Combat Advantage": 164,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Ancient Scalebreaker's Plate_IL1700.png",
+  "id": 6330,
+  "dbName": "Ancient Scalebreaker's Plate",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1020,
+   "Defense": 765,
+   "Critical Avoidance": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Versatility",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to increase one of the following stats by 8% for 10 seconds: Accuracy, Combat Advantage, Critical Avoidance, or Deflect Severity. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Apprentice's Runed Chainmail_IL965.png",
+  "id": 6334,
+  "dbName": "Apprentice's Runed Chainmail",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Critical Severity": 724,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Astral Raider's Breastplate_IL2200.png",
+  "id": 726,
+  "dbName": "Astral Raider's Breastplate",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 990,
+   "Control Resistance": 990,
+   "Incoming Healing": 1320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Recharge Speed for each enemy you are engaged in battle within 100'. Max 10 Stacks: 10% Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bladelord's Assault Breastplate_IL770 (2).png",
+  "id": 6338,
+  "dbName": "Bladelord's Assault Breastplate",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Critical Strike": 330,
+   "Critical Severity": 247,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Balance",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Power is increased by 1500. When your health is below 50%, Defense is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bladelord's Assault Breastplate_IL770.png",
+  "id": 6338,
+  "dbName": "Bladelord's Assault Breastplate",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Critical Strike": 330,
+   "Critical Severity": 247,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Balance",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Power is increased by 1500. When your health is below 50%, Defense is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bladelord's Raid Breastplate_IL770.png",
+  "id": 6342,
+  "dbName": "Bladelord's Raid Breastplate",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 329,
+   "Critical Strike": 248,
+   "Defense": 578
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Balance",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Power is increased by 1500. When your health is below 50%, Defense is increased by 2000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bregan D'aerthe Mauler's Plate_IL2000.png",
+  "id": 6367,
+  "dbName": "Bregan D'aerthe Mauler's Plate",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 1500,
+   "Critical Strike": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reckless Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal damage to an enemy gain a stack of Reckless Advantage, increasing your Combat Advantage by 2% but decreasing your Critical Avoidance by 1.5% for 5 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bronzewood Assault Kanzu_IL784.png",
+  "id": 6369,
+  "dbName": "Bronzewood Assault Kanzu",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Accuracy": 353,
+   "Critical Severity": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bronzewood Raid Kanzu_IL784.png",
+  "id": 6377,
+  "dbName": "Bronzewood Raid Kanzu",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 235,
+   "Critical Strike": 353,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Power is increased by 1500.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Chainmail of the Spy's Guild_IL940.png",
+  "id": 6396,
+  "dbName": "Chainmail of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Severity": 705,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

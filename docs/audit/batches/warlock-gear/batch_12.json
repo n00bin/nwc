@@ -1,0 +1,459 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Assault Barakoa_IL700.png",
+  "id": 5028,
+  "dbName": "Primal Assault Barakoa",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Accuracy": 315,
+   "CriticalSeverity": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Assault Kiuno_IL700.png",
+  "id": 5033,
+  "dbName": "Primal Assault Kiuno",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "CombatAdvantage": 315,
+   "CriticalSeverity": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Assault Shabas_IL700.png",
+  "id": 5032,
+  "dbName": "Primal Assault Shabas",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "CriticalStrike": 315,
+   "CriticalSeverity": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Assault Viatus_IL700.png",
+  "id": 5031,
+  "dbName": "Primal Assault Viatus",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "CombatAdvantage": 315,
+   "CriticalSeverity": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Raid Barakoa_IL700.png",
+  "id": 5024,
+  "dbName": "Primal Raid Barakoa",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "CombatAdvantage": 210,
+   "CriticalStrike": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Raid Kiuno_IL700.png",
+  "id": 5025,
+  "dbName": "Primal Raid Kiuno",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "Accuracy": 210,
+   "CombatAdvantage": 315,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Raid Shabas_IL700.png",
+  "id": 5026,
+  "dbName": "Primal Raid Shabas",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "CombatAdvantage": 315,
+   "CriticalStrike": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Raid Viatus_IL700.png",
+  "id": 5027,
+  "dbName": "Primal Raid Viatus",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "CombatAdvantage": 315,
+   "CriticalStrike": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Prismatic Bismuth Jerkin_IL3700.png",
+  "id": 3173,
+  "dbName": "Prismatic Bismuth Jerkin",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Accuracy": 1804,
+   "Combat Advantage": 2220,
+   "Forte": 1249
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Daily (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. You gain 5% Combat Advantage. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Protege's Chained Robe_IL980.png",
+  "id": 1550,
+  "dbName": "Protege's Chained Robe",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Defense": 735,
+   "Deflection": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Protege's Mantled Robes_IL980.png",
+  "id": 5150,
+  "dbName": "Protege's Mantled Robes",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Critical Severity": 735,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pulsar Coat_IL2600.png",
+  "id": 3226,
+  "dbName": "Pulsar Coat",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Combat Advantage": 1950,
+   "Critical Strike": 1170,
+   "Forte": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Strike and Critical Severity for 15 seconds. Max 5 stacks: 7.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pulsar Leathers_IL2600.png",
+  "id": 3231,
+  "dbName": "Pulsar Leathers",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Critical Strike": 1950,
+   "Forte": 780,
+   "Outgoing Healing": 1170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Gift",
+    "stat": null,
+    "amount": null,
+    "description": "Your current Hit Points increases your Outgoing Healing by a max of 6%. Currently: 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Radiant Elven Doublet_IL2800.png",
+  "id": 3215,
+  "dbName": "Radiant Elven Doublet",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Forte": 2100,
+   "Outgoing Healing": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Gift",
+    "stat": null,
+    "amount": null,
+    "description": "Your current Hit Points increases your Outgoing Healing by a max of 6%, and your Power up to a max of 4,375. Currently: 6% Outgoing Healing and 4,375 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Radiant Elven Robe_IL2800.png",
+  "id": 3210,
+  "dbName": "Radiant Elven Robe",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Critical Strike": 2100,
+   "Forte": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shielded Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you have a Shield or Temp HP in Wildspace, gain 7.5% Critical Strike and 7.5% Critical Severity. In non-Wildspace, these bonuses are reduced to 3.8% Critical Strike and 3.8% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Reinforced Dragonflight Assault Longcoat_IL1400.png",
+  "id": 3712,
+  "dbName": "Reinforced Dragonflight Assault Longcoat",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Critical Strike": 630,
+   "Critical Severity": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "2 of Set: +5,000 Maximum Hit Points, +1,000 Power. 3 of Set: +5,000 Maximum Hit Points, +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Reinforced Dragonflight Raid Longcoat_IL1400.png",
+  "id": 3708,
+  "dbName": "Reinforced Dragonflight Raid Longcoat",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Accuracy": 630,
+   "Combat Advantage": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "2 of Set: +5,000 Maximum Hit Points, +1,000 Power. 3 of Set: +5,000 Maximum Hit Points, +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Robes of the Infernal Tempest_IL5000.png",
+  "id": 3151,
+  "dbName": "Robes of the Infernal Tempest",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Combat Advantage": 3300,
+   "Critical Severity": 4050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Perfect Form",
+    "stat": null,
+    "amount": null,
+    "description": "While your health is at Maximum, you gain a stack of Immaculate State per second. When not at Maximum health, you lose all stacks at once. Each stack grants +1.2% Combat Advantage. Maximum stacks: 5 (+6% Combat Advantage).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Robes of the Spy's Guild_IL940.png",
+  "id": 3484,
+  "dbName": "Robes of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Severity": 705,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Hunter's Coat_IL5400 (2).png",
+  "id": 5494,
+  "dbName": "Runefrost Hunter's Coat",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Severity": 4860,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Reserves",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown) Additionally, when Battle Reserves triggers, you gain 5% Combat Advantage for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Hunter's Coat_IL5400 (3).png",
+  "id": 5494,
+  "dbName": "Runefrost Hunter's Coat",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Severity": 4860,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Reserves",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown) Additionally, when Battle Reserves triggers, you gain 5% Combat Advantage for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Hunter's Coat_IL5400.png",
+  "id": 5494,
+  "dbName": "Runefrost Hunter's Coat",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Severity": 4860,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Battle Reserves",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown) Additionally, when Battle Reserves triggers, you gain 5% Combat Advantage for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Mender's Breastplate_IL5400 (2).png",
+  "id": 5498,
+  "dbName": "Runefrost Mender's Breastplate",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Critical Severity": 4860
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Healer's Influence (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "Healing an ally also heals you for 80,000 and grants you and close Allies 3% Defense for 3s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Mender's Breastplate_IL5400 (3).png",
+  "id": 5498,
+  "dbName": "Runefrost Mender's Breastplate",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Critical Severity": 4860
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Healer's Influence (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "Healing an ally also heals you for 80,000 and grants you and close Allies 3% Defense for 3s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Mender's Breastplate_IL5400.png",
+  "id": 5498,
+  "dbName": "Runefrost Mender's Breastplate",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Critical Severity": 4860
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Healer's Influence (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "Healing an ally also heals you for 80,000 and grants you and close Allies 3% Defense for 3s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

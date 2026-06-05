@@ -1,0 +1,537 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Exalted Maiden's Ward Cuirass_IL2050.png",
+  "id": 930,
+  "dbName": "Exalted Maiden's Ward Cuirass",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 923,
+   "Awareness": 1230,
+   "Critical Avoidance": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Fiend Forged Chainmail_IL1230.png",
+  "id": 6553,
+  "dbName": "Fiend Forged Chainmail",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Severity": 922,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Forest Guardian's Raid Scalemail_IL1500.png",
+  "id": 6724,
+  "dbName": "Forest Guardian's Raid Scalemail",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Defense": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Awareness",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Awareness for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Hammerstone Breastplate_IL352.png",
+  "id": 2084,
+  "dbName": "Hammerstone Breastplate",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 39.6,
+   "Critical Severity": 39.6,
+   "Defense": 264,
+   "Critical Avoidance": 92.4,
+   "Deflection": 92.4
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Infernal Forged Chainmail_IL1200.png",
+  "id": 6609,
+  "dbName": "Infernal Forged Chainmail",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Critical Severity": 900,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Lolthian Plate_IL2050.png",
+  "id": 6661,
+  "dbName": "Lolthian Plate",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Accuracy": 1230,
+   "Defense": 923,
+   "Deflect": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are full, your Critical Severity is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Mastered Duergar Mercenary's Goristro Hide_IL1900.png",
+  "id": 6666,
+  "dbName": "Mastered Duergar Mercenary's Goristro Hide",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1425,
+   "Defense": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Action",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Action Point Gain is increased by 7.5%. When your health is below 50%, Stamina Regeneration is increased by 15%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Plate of the Unyielding Bastion_IL5000.png",
+  "id": 379,
+  "dbName": "Plate of the Unyielding Bastion",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Awareness": 2700,
+   "Critical Avoidance": 4538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Retaliatory Shockwave",
+    "stat": null,
+    "amount": null,
+    "description": "On hit > 15% MaxHP: 60 mag shockwave + 3.5% Awareness 7s (12s cd)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Protege's Polished Platemail_IL980.png",
+  "id": 6713,
+  "dbName": "Protege's Polished Platemail",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Critical Severity": 735,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Pulsar Breastplate_IL2600.png",
+  "id": 719,
+  "dbName": "Pulsar Breastplate",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Awareness": 1950,
+   "Forte": 780,
+   "Incoming Healing": 1170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Strike",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Control Bonus when you strike an enemy. Stacks 5 times. When you are struck, the stacks are consumed and you gain -1% Incoming Damage per stack consumed for 10 seconds. Stacks cannot be applied at the same time.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Radiant Elven Cuirass_IL2800.png",
+  "id": 694,
+  "dbName": "Radiant Elven Cuirass",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Defense": 2100,
+   "Critical Avoidance": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spelljammer's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Upon taking critical damage in Wildspace, you have a 25% chance to gain -5% Incoming Damage for 5s. In non-Wildspace, gain -2.5% Incoming Damage for 5s. (10s cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Runefrost Bulwark Cuirass_IL5400.png",
+  "id": 5358,
+  "dbName": "Runefrost Bulwark Cuirass",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Avoidance": 4455,
+   "Deflect": 6075
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Upon taking critical damage in The Reghed Edge, you have a 25% chance to gain -5% Incoming Damage for 5s. In non-The Reghed Edge, gain -2.5% Incoming Damage for 5s. (10s cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Runefrost Ravager Cuirass_IL5400.png",
+  "id": 6840,
+  "dbName": "Runefrost Ravager Cuirass",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Power": 2835,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Daily Reserves",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown) Additionally, when Daily Reserves triggers, you gain 7% Forte for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Starforged Cuirass_IL2700.png",
+  "id": 215,
+  "dbName": "Starforged Cuirass",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Defense": 2025,
+   "Awareness": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Rothe's Intimidation",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged, you explode with fury, dealing 5,517 damage to enemies within 15', and generating additional threat. (10s cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Starforged Plate_IL2700.png",
+  "id": 6741,
+  "dbName": "Starforged Plate",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Strike": 2025,
+   "Critical Severity": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Daily",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\The Dark Maiden's Resolution Plate_IL2000.png",
+  "id": 6760,
+  "dbName": "The Dark Maiden's Resolution Plate",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 5% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\The Dark Maiden's Ward Cuirass_IL2000.png",
+  "id": 938,
+  "dbName": "The Dark Maiden's Ward Cuirass",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 900,
+   "Awareness": 1200,
+   "Critical Avoidance": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 5% more damage to enemies that are facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Ultraviolet Elven Breastplate_IL2900.png",
+  "id": 686,
+  "dbName": "Ultraviolet Elven Breastplate",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Defense": 2175,
+   "Critical Avoidance": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Rothe's Intimidation",
+    "stat": null,
+    "amount": null,
+    "description": "Upon taking critical damage, you have a 25% chance to explode with fury, dealing damage and additional threat to enemies within 15'. You also gain -2.5% Incoming Damage for 5s. (10s cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Wintermarked Bulwark Cuirass_IL5700 (2).png",
+  "id": 5350,
+  "dbName": "Wintermarked Bulwark Cuirass",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Awareness": 3420,
+   "Critical Avoidance": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reactive Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Deflect Severity by 15% and Forte by 7% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Wintermarked Bulwark Cuirass_IL5700.png",
+  "id": 5350,
+  "dbName": "Wintermarked Bulwark Cuirass",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Awareness": 3420,
+   "Critical Avoidance": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Reactive Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are struck by Combat Advantage damage, you have a 20% chance to increase your Deflect Severity by 15% and Forte by 7% for 8 seconds. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Wintermarked Ravager Cuirass_IL5700.png",
+  "id": 6816,
+  "dbName": "Wintermarked Ravager Cuirass",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 3848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain +0.8% Accuracy and +0.6% Combat Advantage for 15 seconds. Max 5 Stack: +4% Accuracy and +3% Combat Advantage",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Alliance Soldier's Sabatons_IL1600.png",
+  "id": 6323,
+  "dbName": "Alliance Soldier's Sabatons",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Critical Severity": 720,
+   "Defense": 720,
+   "Incoming Healing": 960
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Critical Strike for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Ancient Scalebreaker's Greaves_IL1700.png",
+  "id": 6329,
+  "dbName": "Ancient Scalebreaker's Greaves",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 1020,
+   "Defense": 765,
+   "Incoming Healing": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Footwork",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10 seconds. Max 5 Stacks: 5% Movement Speed and Recharge Speed",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Apprentice's Runed Greaves_IL965.png",
+  "id": 6335,
+  "dbName": "Apprentice's Runed Greaves",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Combat Advantage": 290,
+   "Critical Strike": 434,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Astral Raider's Greaves_IL2200.png",
+  "id": 728,
+  "dbName": "Astral Raider's Greaves",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 990,
+   "Awareness": 990,
+   "Critical Avoidance": 1320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Disdain",
+    "stat": null,
+    "amount": null,
+    "description": "Grants up to -20% Incoming Damage when your total item level is being scaled down. Currently: -0% Incoming Damage. Disabled in Thay Arena PvP.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

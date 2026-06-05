@@ -1,0 +1,386 @@
+[
+ {
+  "id": 5367,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Deep-Riven Aetherwrap_IL4850 (2).png",
+  "dbName": "Deep-Riven Aetherwrap",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Critical Strike": 3492,
+   "Critical Severity": 6365
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Awareness",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 2 or more enemies, your Critical Strike is increased by 9.5%. When you are in combat with 1 or less enemies, the buff is removed.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Advantage (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Combat Advantage",
+    "setName": "Freezing Advantage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5370,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Deep-Riven Lifebraid Vestment_IL4850 (2).png",
+  "dbName": "Deep-Riven Lifebraid Vestment",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Critical Strike": 2182,
+   "Power": 1275,
+   "Forte": 2619
+  },
+  "dbPercentStats": {
+   "Stamina Regeneration": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Gift",
+    "stat": null,
+    "amount": null,
+    "description": "Your current Hit Points increases your Outgoing Healing, up to a maximum of 7% & Power up to 2%. Currently: 7% Outgoing Healing and 2% Power.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Energy (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Critical Strike",
+    "setName": "Freezing Energy",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5373,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Frost-Riven Aetherwrap_IL4850 (2).png",
+  "dbName": "Frost-Riven Aetherwrap",
+  "dbItemLevel": 4850,
+  "dbRatingStats": {
+   "Combat Advantage": 2328,
+   "Critical Strike": 3492,
+   "Critical Severity": 2619
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Momentum",
+    "stat": null,
+    "amount": null,
+    "description": "When moving in combat gain a buff every 2 seconds that increase your Critical Severity by 3.3% for 7 seconds. Max 3 stacks: 10% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Advantage (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Combat Advantage",
+    "setName": "Freezing Advantage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5438,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Veinlit Aetherwrap_IL3800 (2).png",
+  "dbName": "Veinlit Aetherwrap",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Critical Strike": 2736,
+   "Critical Severity": 5420
+  },
+  "dbPercentStats": {
+   "Action Point Gain": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Rush",
+    "stat": null,
+    "amount": null,
+    "description": "Your Critical Severity as your health decreases to a maximum of 5%. Currently: 0%.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Advantage (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Combat Advantage",
+    "setName": "Freezing Advantage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5439,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Veinlit Aetherwrap_IL4350 (2).png",
+  "dbName": "Veinlit Aetherwrap",
+  "dbItemLevel": 4350,
+  "dbRatingStats": {
+   "Combat Advantage": 2088,
+   "Critical Strike": 2349,
+   "Critical Severity": 2349
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Encounter Reprieve",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Advantage (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Combat Advantage",
+    "setName": "Freezing Advantage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 5448,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Veinlit Stormbind Tunic_IL4350 (2).png",
+  "dbName": "Veinlit Stormbind Tunic",
+  "dbItemLevel": 4350,
+  "dbRatingStats": {
+   "Accuracy": 2545,
+   "Combat Advantage": 1566,
+   "Critical Strike": 3132
+  },
+  "dbPercentStats": {
+   "Recharge Speed": 1.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Critical Strike is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Freezing Grasp (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: +4% Accuracy",
+    "setName": "Freezing Grasp",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "id": 2948,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Black Ice Bracers_IL512.png",
+  "dbName": "Black Ice Bracers",
+  "dbItemLevel": 512,
+  "dbRatingStats": {
+   "Combat Advantage": 132,
+   "Critical Severity": 59.9,
+   "Defense": 384,
+   "Critical Avoidance": 132,
+   "Deflection": 59.9
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3010,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Eternal Bracers_IL1300.png",
+  "dbName": "Eternal Bracers",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 337,
+   "Critical Severity": 339,
+   "Defense": 975,
+   "Deflection": 294
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3022,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Reinforced Dragonflight Raid Bracers_IL1400.png",
+  "dbName": "Reinforced Dragonflight Raid Bracers",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Accuracy": 630,
+   "Combat Advantage": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2928,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Trailblazer's Assault Bracers_IL603.png",
+  "dbName": "Trailblazer's Assault Bracers",
+  "dbItemLevel": 603,
+  "dbRatingStats": {
+   "Accuracy": 176,
+   "Critical Severity": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 2924,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Trailblazer's Raid Bracers_IL603.png",
+  "dbName": "Trailblazer's Raid Bracers",
+  "dbItemLevel": 603,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Strike": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3121,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Umbral Duelist Bracers_IL728.png",
+  "dbName": "Umbral Duelist Bracers",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 164,
+   "Critical Severity": 164,
+   "Defense": 218,
+   "Deflection": 218
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 2707,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Phantom's Bite_IL3800.png",
+  "dbName": "Phantom's Bite",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Critical Strike": 3762,
+   "Critical Severity": 3078
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6050,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pioneer Kenshar_IL350.png",
+  "dbName": "Pioneer Kenshar",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6051,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pioneer Kenshar_IL500.png",
+  "dbName": "Pioneer Kenshar",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 376,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6052,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pioneer Kenshar_IL650.png",
+  "dbName": "Pioneer Kenshar",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6053,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Pioneer Kenshar_IL800.png",
+  "dbName": "Pioneer Kenshar",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6058,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Primal Itztopilli_IL350.png",
+  "dbName": "Primal Itztopilli",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6059,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Primal Itztopilli_IL500.png",
+  "dbName": "Primal Itztopilli",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 376,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 6060,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Primal Itztopilli_IL650.png",
+  "dbName": "Primal Itztopilli",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

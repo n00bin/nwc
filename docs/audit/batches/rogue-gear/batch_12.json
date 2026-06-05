@@ -1,0 +1,514 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Devil Forged Gaiters_IL1215.png",
+  "id": 4115,
+  "dbName": "Devil Forged Gaiters",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 200 Power. Max 24 Stacks: 4800 Power.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dinohide Assault Butisi_IL784.png",
+  "id": 4445,
+  "dbName": "Dinohide Assault Butisi",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Critical Strike": 353,
+   "Critical Severity": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Critical Strike. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dinohide Raid Butisi_IL784.png",
+  "id": 4441,
+  "dbName": "Dinohide Raid Butisi",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Combat Advantage": 353,
+   "Critical Strike": 235,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Critical Strike. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Divine Raid Cuisses_IL1230 (2).png",
+  "id": 4101,
+  "dbName": "Divine Raid Cuisses",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Combat Advantage": 369,
+   "Critical Strike": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 300 Power for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Divine Raid Cuisses_IL1230.png",
+  "id": 4101,
+  "dbName": "Divine Raid Cuisses",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Combat Advantage": 369,
+   "Critical Strike": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 300 Power for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dragonflight Assault Boots_IL588.png",
+  "id": 4575,
+  "dbName": "Dragonflight Assault Boots",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dragonflight Raid Boots_IL588.png",
+  "id": 4571,
+  "dbName": "Dragonflight Raid Boots",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dragonhide Pikes_IL1900 (2).png",
+  "id": 4022,
+  "dbName": "Dragonhide Pikes",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1140,
+   "Defense": 855,
+   "Critical Avoidance": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, gain 3,000 Defense. When in a party, gain 10,000 Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dragonhide Pikes_IL1900.png",
+  "id": 4022,
+  "dbName": "Dragonhide Pikes",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1140,
+   "Defense": 855,
+   "Critical Avoidance": 855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, gain 3,000 Defense. When in a party, gain 10,000 Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Drowcraft Boots_IL567.png",
+  "id": 4378,
+  "dbName": "Drowcraft Boots",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Critical Strike": 255,
+   "Critical Severity": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dungeon Raider's Gaiters_IL940 (2).png",
+  "id": 4145,
+  "dbName": "Dungeon Raider's Gaiters",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dungeon Raider's Gaiters_IL940.png",
+  "id": 4145,
+  "dbName": "Dungeon Raider's Gaiters",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dusk Assault Boots_IL1175.png",
+  "id": 4374,
+  "dbName": "Dusk Assault Boots",
+  "dbItemLevel": 1175,
+  "dbRatingStats": {
+   "Combat Advantage": 529,
+   "Critical Severity": 352,
+   "Defense": 881
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 5000,
+    "description": "2 of Set: +5,000 Max HP, +1% Power, +1% Defense. Wanderer's Vigor: not in party, regenerate 2000 HP every 3s.",
+    "setName": "Dusk",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dusk Raid Boots_IL1175.png",
+  "id": 4370,
+  "dbName": "Dusk Raid Boots",
+  "dbItemLevel": 1175,
+  "dbRatingStats": {
+   "Accuracy": 529,
+   "Combat Advantage": 352,
+   "Defense": 881
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 5000,
+    "description": "2 of Set: +5,000 Max HP, +1% Power, +1% Defense. Wanderer's Vigor: when not in a party, regenerate 2000 HP every 3s. 4 of Set: On Stronghold map, you and allies gain +5 Movement Speed.",
+    "setName": "Dusk",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Elemental Dragonflight Assault Boots_IL596.png",
+  "id": 4583,
+  "dbName": "Elemental Dragonflight Assault Boots",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Combat Advantage": 268,
+   "Critical Severity": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Elemental Dragonflight Raid Boots_IL596.png",
+  "id": 4579,
+  "dbName": "Elemental Dragonflight Raid Boots",
+  "dbItemLevel": 596,
+  "dbRatingStats": {
+   "Combat Advantage": 268,
+   "Critical Strike": 179,
+   "Defense": 447
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Elemental Drowcraft Assault Boots_IL588.png",
+  "id": 4386,
+  "dbName": "Elemental Drowcraft Assault Boots",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Elemental Drowcraft Raid Boots_IL588.png",
+  "id": 4382,
+  "dbName": "Elemental Drowcraft Raid Boots",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 176,
+   "Critical Strike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Elemental Lionsmane Duelist Boots_IL574.png",
+  "id": 4555,
+  "dbName": "Elemental Lionsmane Duelist Boots",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Accuracy": 185,
+   "Defense": 430,
+   "Deflection": 245
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Elemental Lionsmane Executioner Boots_IL574.png",
+  "id": 4567,
+  "dbName": "Elemental Lionsmane Executioner Boots",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Combat Advantage": 129,
+   "Critical Strike": 172,
+   "Defense": 430,
+   "Deflection": 129
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Enchanted Bregan D'aerthe Assassin's Longboots_IL2050 (2).png",
+  "id": 2791,
+  "dbName": "Enchanted Bregan D'aerthe Assassin's Longboots",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 923,
+   "Critical Severity": 1518,
+   "Defense": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Expertise",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 20' or closer to your target, your Critical Strike is increased by 7.5%. When you are 20' or further away from your target, your Forte is increased by 7.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Enchanted Bregan D'aerthe Assassin's Longboots_IL2050.png",
+  "id": 2791,
+  "dbName": "Enchanted Bregan D'aerthe Assassin's Longboots",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 923,
+   "Critical Severity": 1518,
+   "Defense": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Expertise",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 20' or closer to your target, your Critical Strike is increased by 7.5%. When you are 20' or further away from your target, your Forte is increased by 7.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Enchanted Depthcured Boots_IL3200 (2).png",
+  "id": 2733,
+  "dbName": "Enchanted Depthcured Boots",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Combat Advantage": 2400,
+   "Critical Severity": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fiery Predator",
+    "stat": null,
+    "amount": null,
+    "description": "+4% Damage on fire-themed maps. +1% Damage on other maps.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Enchanted Depthcured Boots_IL3200.png",
+  "id": 2733,
+  "dbName": "Enchanted Depthcured Boots",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Combat Advantage": 2400,
+   "Critical Severity": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fiery Predator",
+    "stat": null,
+    "amount": null,
+    "description": "+4% Damage on fire-themed maps. +1% Damage on other maps.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Enclave Scout's Boots_IL1600 (2).png",
+  "id": 4052,
+  "dbName": "Enclave Scout's Boots",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Defense": 720,
+   "Awareness": 960,
+   "Critical Avoidance": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Critical Strike for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

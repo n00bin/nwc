@@ -1,0 +1,474 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Drowcraft Assault Longcoat_IL588.png",
+  "id": 3627,
+  "dbName": "Elemental Drowcraft Assault Longcoat",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "1 of Set: -10% Incoming Damage against Demon-type enemies. 2 of Set: Reduces amount of Madness inflicted by Maddening Aura. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "setName": "Drowcraft",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Drowcraft Raid Longcoat_IL588.png",
+  "id": 3628,
+  "dbName": "Elemental Drowcraft Raid Longcoat",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Strike": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "1 of Set: -10% Incoming Damage against Demon-type enemies. 2 of Set: Reduces amount of Madness inflicted by Maddening Aura. 3 of Set: -30% Incoming Damage against Paranoid Delusions.",
+    "setName": "Drowcraft",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Elven Assault Longcoat_IL575.png",
+  "id": 3667,
+  "dbName": "Elemental Elven Assault Longcoat",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Combat Advantage": 259,
+   "Critical Severity": 172,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Elven Raid Longcoat_IL575.png",
+  "id": 3664,
+  "dbName": "Elemental Elven Raid Longcoat",
+  "dbItemLevel": 575,
+  "dbRatingStats": {
+   "Accuracy": 172,
+   "Critical Strike": 259,
+   "Defense": 431
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Lionsmane Duelist Longcoat_IL574.png",
+  "id": 4848,
+  "dbName": "Elemental Lionsmane Duelist Longcoat",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Accuracy": 172,
+   "Combat Advantage": 129,
+   "Defense": 430,
+   "Awareness": 129
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Lionsmane Executioner Longcoat_IL574.png",
+  "id": 4856,
+  "dbName": "Elemental Lionsmane Executioner Longcoat",
+  "dbItemLevel": 574,
+  "dbRatingStats": {
+   "Combat Advantage": 129,
+   "Critical Strike": 172,
+   "Critical Severity": 172,
+   "Defense": 430
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Enchanted Bregan D'aerthe Caster's Robe_IL2050.png",
+  "id": 3268,
+  "dbName": "Enchanted Bregan D'aerthe Caster's Robe",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1538,
+   "Critical Strike": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shielded Force",
+    "stat": "Ranged Dmg Bonus",
+    "amount": 6.0,
+    "description": "When you have a Shield or Temp HP, your Ranged Powers do 6% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Enchanted Bregan D'aerthe Expert's Cloth_IL2050.png",
+  "id": 3272,
+  "dbName": "Enchanted Bregan D'aerthe Expert's Cloth",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Critical Severity": 923,
+   "Critical Avoidance": 615
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Menacing Aura",
+    "stat": null,
+    "amount": null,
+    "description": "You gain an aura that decreases enemy Defense, Awareness, and Critical Avoidance by 5% for enemies standing within 10ft of you. Multiple of the same aura will not stack.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Enchanted Depthcured Leathers_IL3200.png",
+  "id": 6299,
+  "dbName": "Enchanted Depthcured Leathers",
+  "dbItemLevel": 3200,
+  "dbRatingStats": {
+   "Critical Strike": 2400,
+   "Critical Severity": 2400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Ruthless Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Strike and Critical Severity for 15 seconds. Max 5 Stacks: 7.5% Critical Strike and Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Enclave Medic's Leathers_IL1600.png",
+  "id": 3331,
+  "dbName": "Enclave Medic's Leathers",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Critical Severity": 960,
+   "Defense": 720,
+   "Deflection": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Maiden's Raid Coat_IL2050 (2).png",
+  "id": 3284,
+  "dbName": "Exalted Maiden's Raid Coat",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1518,
+   "Defense": 1518
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Maiden's Raid Coat_IL2050.png",
+  "id": 3284,
+  "dbName": "Exalted Maiden's Raid Coat",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1518,
+   "Defense": 1518
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Maiden's Rejuvenation Raiment_IL2050.png",
+  "id": 3288,
+  "dbName": "Exalted Maiden's Rejuvenation Raiment",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1230,
+   "Defense": 923,
+   "Outgoing Healing": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Fiend Forged Robe_IL1230.png",
+  "id": 3415,
+  "dbName": "Fiend Forged Robe",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Critical Severity": 922,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Fiend Forged Scalemail_IL1230.png",
+  "id": 1399,
+  "dbName": "Fiend Forged Scalemail",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Defense": 922,
+   "Deflection": 922
+  },
+  "dbPercentStats": {
+   "Damage against Demons, Devils, and Fiends": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Fiend Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons, Devils, and Fiends",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Forest Guardian's Raid Coat_IL1500.png",
+  "id": 3343,
+  "dbName": "Forest Guardian's Raid Coat",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Accuracy": 1125,
+   "Defense": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Awareness",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Awareness for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Forest Guardian's Restoration Leathers_IL1500.png",
+  "id": 3338,
+  "dbName": "Forest Guardian's Restoration Leathers",
+  "dbItemLevel": 1500,
+  "dbRatingStats": {
+   "Defense": 1125,
+   "Forte": 1125
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Awareness",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Awareness for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Glistening Scales_IL950.png",
+  "id": 3513,
+  "dbName": "Glistening Scales",
+  "dbItemLevel": 950,
+  "dbRatingStats": {
+   "Combat Advantage": 356,
+   "Defense": 712,
+   "Deflection": 356
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Victim's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "When you are hit at 25% health or lower, your Deflect increases 15% for 5 seconds. If you have less than 30000 Deflect, you will gain 7500 for 5 seconds instead. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Gurdunn's Defense_IL950.png",
+  "id": 3518,
+  "dbName": "Gurdunn's Defense",
+  "dbItemLevel": 950,
+  "dbRatingStats": {
+   "Accuracy": 356,
+   "Critical Severity": 356,
+   "Defense": 712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcharoo",
+    "stat": null,
+    "amount": null,
+    "description": "+1500 Power, -2500 Defense.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Huntsman Assault Cowl_IL672.png",
+  "id": 5036,
+  "dbName": "Huntsman Assault Cowl",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 302,
+   "CriticalSeverity": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Huntsman Assault Longcoat_IL672.png",
+  "id": 5037,
+  "dbName": "Huntsman Assault Longcoat",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "CriticalStrike": 302,
+   "CriticalSeverity": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Huntsman Assault Pigaches_IL672.png",
+  "id": 5043,
+  "dbName": "Huntsman Assault Pigaches",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "CombatAdvantage": 202,
+   "CriticalSeverity": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Huntsman Assault Wristguards_IL672.png",
+  "id": 5038,
+  "dbName": "Huntsman Assault Wristguards",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "CriticalStrike": 302,
+   "CriticalSeverity": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Huntsman Raid Cowl_IL672.png",
+  "id": 5030,
+  "dbName": "Huntsman Raid Cowl",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "CombatAdvantage": 202,
+   "CriticalStrike": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Huntsman Raid Longcoat_IL672.png",
+  "id": 5029,
+  "dbName": "Huntsman Raid Longcoat",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 202,
+   "CombatAdvantage": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

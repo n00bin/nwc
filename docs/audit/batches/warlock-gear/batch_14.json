@@ -1,0 +1,554 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Astral Raider's Poulaines_IL2200.png",
+  "id": 3236,
+  "dbName": "Astral Raider's Poulaines",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Defense": 990,
+   "Deflection": 1320,
+   "Control Resistance": 990
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Disdain",
+    "stat": null,
+    "amount": null,
+    "description": "Grants up to -20% Incoming Damage when your total item level is being scaled down.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Boots of the Lifebloom_IL4700.png",
+  "id": 3164,
+  "dbName": "Boots of the Lifebloom",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3807,
+   "Outgoing Healing": 3102
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Restorative Discipline",
+    "stat": null,
+    "amount": null,
+    "description": "For every 3 seconds you are in combat, gain +0.4% Outgoing Healing and +0.2% Recharge Speed. Max 8 Stacks: +3.2% Outgoing Healing and +1.6% Recharge Speed. Each step sows vitality, leaving faint traces of flourishing life behind.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Boots of the Scarlet Tempest_IL4700.png",
+  "id": 3157,
+  "dbName": "Boots of the Scarlet Tempest",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Forte": 2855
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Frenzied Onslaught",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, gain +3% Movement Speed and +7% Critical Severity for 5 seconds (8 second cooldown).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Bregan D'aerthe Caster's Crakows_IL2000.png",
+  "id": 3278,
+  "dbName": "Bregan D'aerthe Caster's Crakows",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 1500,
+   "Critical Severity": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Force",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Critical Severity is increased by 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Bregan D'aerthe Expert's Shoes_IL2000.png",
+  "id": 3282,
+  "dbName": "Bregan D'aerthe Expert's Shoes",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 900,
+   "Defense": 600,
+   "Control Resistance": 1800
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defying Medic",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1500 Outgoing Healing for each enemy you are engaged in battle within 100'. (Max of 10 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Charmed Boots of Halaster's Successor_IL1010.png",
+  "id": 3444,
+  "dbName": "Charmed Boots of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Critical Strike": 379,
+   "Defense": 758,
+   "Critical Avoidance": 379
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sniper's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 50' or further away from your target, your Combat Advantage is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Charmed Boots of the Successor_IL990.png",
+  "id": 3452,
+  "dbName": "Charmed Boots of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Critical Strike": 371,
+   "Defense": 742,
+   "Critical Avoidance": 379
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sniper's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 50' or further away from your target, your Combat Advantage is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Company Assault Pigaches_IL588.png",
+  "id": 3886,
+  "dbName": "Company Assault Pigaches",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Critical Strike": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Company Raid Pigaches_IL588.png",
+  "id": 3870,
+  "dbName": "Company Raid Pigaches",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crimson Scalebreaker's Raid Poulaines_IL1800.png",
+  "id": 3316,
+  "dbName": "Crimson Scalebreaker's Raid Poulaines",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Defense": 810,
+   "Critical Avoidance": 810,
+   "Control Bonus": 1080
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Footwork",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10 seconds. Max 5 stacks: 5% Movement Speed and Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crimson Scalebreaker's Rejuvenation Crakows_IL1800.png",
+  "id": 3320,
+  "dbName": "Crimson Scalebreaker's Rejuvenation Crakows",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Defense": 810,
+   "Awareness": 1080,
+   "Forte": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Renegade's Footwork",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10 seconds. Max 5 stacks: 5% Movement Speed and Recharge Speed.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crone's Cuisses_IL1225.png",
+  "id": 3356,
+  "dbName": "Crone's Cuisses",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Critical Strike": 459,
+   "Defense": 919,
+   "Critical Avoidance": 459
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Might",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your Power is increased by 3000 for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Crone's Shoes_IL1225.png",
+  "id": 3357,
+  "dbName": "Crone's Shoes",
+  "dbItemLevel": 1225,
+  "dbRatingStats": {
+   "Combat Advantage": 368,
+   "Critical Strike": 551,
+   "Defense": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Might",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your Power is increased by 3000 for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Cuisses of the Spy's Guild_IL940.png",
+  "id": 1587,
+  "dbName": "Cuisses of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Critical Strike": 352,
+   "Defense": 705,
+   "Critical Avoidance": 352
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Cursed Boots of Halaster's Successor_IL1010.png",
+  "id": 3445,
+  "dbName": "Cursed Boots of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Combat Advantage": 303,
+   "Critical Strike": 455,
+   "Defense": 758
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sniper's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 50' or further away from your target, your Combat Advantage is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Cursed Boots of the Successor_IL990.png",
+  "id": 3453,
+  "dbName": "Cursed Boots of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Combat Advantage": 297,
+   "Critical Strike": 446,
+   "Defense": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sniper's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 50' or further away from your target, your Combat Advantage is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Curselord's Assault Pigaches_IL770.png",
+  "id": 3537,
+  "dbName": "Curselord's Assault Pigaches",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 329,
+   "Critical Severity": 248
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 1500. When your health is below 50%, Movement Speed is increased by 10%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Curselord's Raid Pigaches_IL770.png",
+  "id": 3536,
+  "dbName": "Curselord's Raid Pigaches",
+  "dbItemLevel": 770,
+  "dbRatingStats": {
+   "Combat Advantage": 329,
+   "Critical Strike": 248
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Accuracy is increased by 1500. When your health is below 50%, Movement Speed is increased by 10%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Demon Forged Cuisses_IL1215.png",
+  "id": 1411,
+  "dbName": "Demon Forged Cuisses",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 456,
+   "Defense": 911,
+   "Critical Avoidance": 456
+  },
+  "dbPercentStats": {
+   "Damage against Devils": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Demon Forged Shoes_IL1215.png",
+  "id": 3429,
+  "dbName": "Demon Forged Shoes",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Depthcured Cackrows_IL3000.png",
+  "id": 3191,
+  "dbName": "Depthcured Cackrows",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Outgoing Healing": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fiery Muse",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity/Performance/Soulweave regenerates 12% faster while on fire-themed maps. On other maps the regen bonus is 6%. Gain 4% Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Depthweave Slippers_IL3000.png",
+  "id": 3187,
+  "dbName": "Depthweave Slippers",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Combat Advantage": 2250,
+   "Critical Severity": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fiery Predator",
+    "stat": null,
+    "amount": null,
+    "description": "+3.5% Damage on fire-themed maps. +1% Damage on other maps.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Devil Forged Cuisses_IL1215.png",
+  "id": 1405,
+  "dbName": "Devil Forged Cuisses",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Strike": 456,
+   "Defense": 911,
+   "Critical Avoidance": 456
+  },
+  "dbPercentStats": {
+   "Damage against Demons": 1
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Devil Forged Shoes_IL1215.png",
+  "id": 3421,
+  "dbName": "Devil Forged Shoes",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Combat Advantage": 364,
+   "Critical Strike": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+7% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Dinohide Assault Viatus_IL784.png",
+  "id": 3722,
+  "dbName": "Dinohide Assault Viatus",
+  "dbItemLevel": 784,
+  "dbRatingStats": {
+   "Critical Strike": 353,
+   "Critical Severity": 215,
+   "Defense": 588
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

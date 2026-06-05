@@ -1,0 +1,496 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Alliance Assault Armlets_IL546.png",
+  "id": 6258,
+  "dbName": "Alliance Assault Armlets",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Combat Advantage": 246,
+   "Critical Severity": 164,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Alliance Officer's Sleeves_IL1600.png",
+  "id": 3332,
+  "dbName": "Alliance Officer's Sleeves",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Critical Severity": 960,
+   "Defense": 720,
+   "Incoming Healing": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Ward",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 500 Deflect Severity for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Alliance Raid Armlets_IL546.png",
+  "id": 6262,
+  "dbName": "Alliance Raid Armlets",
+  "dbItemLevel": 546,
+  "dbRatingStats": {
+   "Accuracy": 246,
+   "Critical Strike": 164,
+   "Defense": 410
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Ancient Scalebreaker's Cuffs_IL1700.png",
+  "id": 3323,
+  "dbName": "Ancient Scalebreaker's Cuffs",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Severity": 1020,
+   "Defense": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "stat": null,
+    "amount": null,
+    "description": "When you have no teammates within 30' of you, your Stamina Regeneration and Control Resistance is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Apprentice's Ruined Wristguard_IL690.png",
+  "id": 3466,
+  "dbName": "Apprentice's Ruined Wristguard",
+  "dbItemLevel": 690,
+  "dbRatingStats": {},
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Apprentice's Runed Wristguard_IL965.png",
+  "id": 3458,
+  "dbName": "Apprentice's Runed Wristguard",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Critical Severity": 414,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Astral Raider's Sleeves_IL2200.png",
+  "id": 3235,
+  "dbName": "Astral Raider's Sleeves",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Critical Severity": 1320,
+   "Defense": 990,
+   "Incoming Healing": 1980
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Furor",
+    "stat": null,
+    "amount": null,
+    "description": "Grants up to 20% bonus Damage when your total item level is being scaled down.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bindings of the Scarlet Tempest_IL4700.png",
+  "id": 3158,
+  "dbName": "Bindings of the Scarlet Tempest",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Combat Advantage": 3102,
+   "Critical Severity": 3807
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sanguine Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your targets for more than 15% of your Maximum Hit Points in a single blow, you gain +3.5% Critical Chance and +3.5% Critical Severity for 5 seconds. Additionally, you are healed for 5% of your health (7 second cooldown). Disabled in Thay Arena PvP.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bracers of the Infernal Tempest_IL5000.png",
+  "id": 3150,
+  "dbName": "Bracers of the Infernal Tempest",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Strike": 4050,
+   "Forte": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Flow",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with any Power, gain +4.5% Critical Strike and +1.5% Recharge Speed for 6 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Bregan D'aerthe Caster's Mitts_IL2000.png",
+  "id": 3277,
+  "dbName": "Bregan D'aerthe Caster's Mitts",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Defense": 600,
+   "Deflect Severity": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Magnified Force",
+    "stat": null,
+    "amount": null,
+    "description": "You have a 10% chance to deal 250 additional magnitude damage to a single target when using ranged attacks. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Crash Guards_IL950.png",
+  "id": 3510,
+  "dbName": "Crash Guards",
+  "dbItemLevel": 950,
+  "dbRatingStats": {
+   "Critical Strike": 285,
+   "Critical Severity": 428,
+   "Defense": 712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Crimson Scalebreaker's Raid Sleeves_IL1800.png",
+  "id": 3315,
+  "dbName": "Crimson Scalebreaker's Raid Sleeves",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Critical Strike": 1080,
+   "Defense": 810,
+   "Forte": 810
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "stat": null,
+    "amount": null,
+    "description": "When you have no teammates within 30' of you, your Stamina Regeneration and Control Resistance is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Crystalweave Armlets_IL3350.png",
+  "id": 3180,
+  "dbName": "Crystalweave Armlets",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Accuracy": 1633,
+   "Combat Advantage": 2010,
+   "Forte": 1131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Rage (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3+ enemies, Critical Severity +1.8% every 2s. Max 5 stacks: 9% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Curtunk's Furry Sleeves_IL1000 (2).png",
+  "id": 3511,
+  "dbName": "Curtunk's Furry Sleeves",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Defense": 750,
+   "Critical Avoidance": 300,
+   "Deflection": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Defense and Deflect is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Curtunk's Furry Sleeves_IL1000.png",
+  "id": 3511,
+  "dbName": "Curtunk's Furry Sleeves",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Defense": 750,
+   "Critical Avoidance": 300,
+   "Deflection": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Defense and Deflect is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Demon Forged Wristguards_IL1215.png",
+  "id": 3432,
+  "dbName": "Demon Forged Wristguards",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Accuracy": 364,
+   "Critical Severity": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Devils",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Depthweave Sleeves_IL3000.png",
+  "id": 3189,
+  "dbName": "Depthweave Sleeves",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Critical Severity": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Enveloped Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with 3 or more enemies, your Critical Strike is increased by 1.3% every 2 seconds. Max 5 stacks: 6.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Devil Forged Wristguards_IL1215.png",
+  "id": 3424,
+  "dbName": "Devil Forged Wristguards",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Accuracy": 364,
+   "Critical Severity": 547,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+1% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Divine Raid Armlets_IL1230.png",
+  "id": 3401,
+  "dbName": "Divine Raid Armlets",
+  "dbItemLevel": 1230,
+  "dbRatingStats": {
+   "Accuracy": 369,
+   "Critical Severity": 554,
+   "Defense": 922
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for 10 seconds when you strike an enemy. Lose a stack when you are struck. Max 20 stacks: 5000 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Dragonhide Sleeves_IL1900.png",
+  "id": 3301,
+  "dbName": "Dragonhide Sleeves",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Defense": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged At-Will",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you activate a Daily power, increase the damage dealt by your at-will attacks by 15% for 10 seconds. (20 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Drowcraft Armlets_IL567.png",
+  "id": 5584,
+  "dbName": "Drowcraft Armlets",
+  "dbItemLevel": 567,
+  "dbRatingStats": {
+   "Accuracy": 255,
+   "Critical Severity": 170,
+   "Defense": 425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Dungeon Raider's Wristguard_IL940.png",
+  "id": 3496,
+  "dbName": "Dungeon Raider's Wristguard",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Accuracy": 282,
+   "Critical Severity": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Dusk Assault Armlets_IL1175.png",
+  "id": 5628,
+  "dbName": "Dusk Assault Armlets",
+  "dbItemLevel": 1175,
+  "dbRatingStats": {
+   "Critical Strike": 352,
+   "Critical Severity": 529,
+   "Defense": 881
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Dusk Raid Armlets_IL1175.png",
+  "id": 5632,
+  "dbName": "Dusk Raid Armlets",
+  "dbItemLevel": 1175,
+  "dbRatingStats": {
+   "Combat Advantage": 352,
+   "Critical Strike": 529,
+   "Defense": 881
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\wizard-gear\\Elemental Alliance Assault Armlets_IL554.png",
+  "id": 6266,
+  "dbName": "Elemental Alliance Assault Armlets",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Combat Advantage": 249,
+   "Critical Severity": 166,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

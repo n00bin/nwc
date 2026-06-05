@@ -1,0 +1,543 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Spiked Amulet_IL1700.png",
+  "id": 4028,
+  "dbName": "Spiked Amulet",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 849,
+   "Combat Advantage": 849,
+   "Critical Strike": 852
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Aboleth Lute_IL350.png",
+  "id": 4793,
+  "dbName": "Aboleth Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Outgoing Damage",
+    "amount": 4,
+    "description": "2 of Set: Encounter triggers Far-Influenced: Outgoing Damage +4% + random buff for 10s. (30s CD)",
+    "setName": "Aboleth",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Bismuth Lute_IL3400.png",
+  "id": 4875,
+  "dbName": "Bismuth Lute",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Damage": 100,
+   "Accuracy": 3315,
+   "Combat Advantage": 2040
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Prismatic Defier of Dread (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: While in The Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%. Every 5s in combat, you will gain a stack of Prismatic Force. Each stack of Prismatic Force grants: General +0.15% Power, DPS +0.15% Critical Severity, Healer +0.4% Overall Outgoing Healing, Tank +0.4% Awareness.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Burning Lute_IL300.png",
+  "id": 4743,
+  "dbName": "Burning Lute",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Action Points",
+    "amount": 25,
+    "description": "2 of Set: Daily power 25% chance to immediately restore AP.",
+    "setName": "Burning Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Celestial Lute of Song_IL1400.png",
+  "id": 4902,
+  "dbName": "Celestial Lute of Song",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Combat Advantage": 1050,
+   "Critical Strike": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Celestial (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: When you use an encounter or daily power during combat, you gain a stack of Divine Charge for 15 seconds. Once you reach 5 stacks of Divine Charge, they are consumed and you are empowered with Divine Fury for 30 seconds, granting +5% Base Damage Boost and +7.5% Overall Outgoing Healing. You may only have 1 stack of Divine Fury at a time.",
+    "setName": "Celestial",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Celestial Lute of Song_IL650.png",
+  "id": 4904,
+  "dbName": "Celestial Lute of Song",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Combat Advantage": 488,
+   "Critical Strike": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Celestial (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: When you use an encounter or daily power during combat, you gain a stack of Divine Charge for 15 seconds. Once you reach 5 stacks of Divine Charge, they are consumed and you are empowered with Divine Fury for 30 seconds, granting +5% Base Damage Boost and +7.5% Overall Outgoing Healing. You may only have 1 stack of Divine Fury at a time.",
+    "setName": "Celestial",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Celestial Lute of Song_IL900.png",
+  "id": 4903,
+  "dbName": "Celestial Lute of Song",
+  "dbItemLevel": 900,
+  "dbRatingStats": {
+   "Combat Advantage": 675,
+   "Critical Strike": 675
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Celestial (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: When you use an encounter or daily power during combat, you gain a stack of Divine Charge for 15 seconds. Once you reach 5 stacks of Divine Charge, they are consumed and you are empowered with Divine Fury for 30 seconds, granting +5% Base Damage Boost and +7.5% Overall Outgoing Healing. You may only have 1 stack of Divine Fury at a time.",
+    "setName": "Celestial",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Crystal Lute_IL3100.png",
+  "id": 4620,
+  "dbName": "Crystal Lute",
+  "dbItemLevel": 3100,
+  "dbRatingStats": {
+   "Accuracy": 3022,
+   "Combat Advantage": 1860
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 12,
+    "description": "2 of Set: While in Pirates' Skyhold or Dread Sanctum, Movement Speed +12%. Each Prismatic Force stack (max 10): General +0.35% Power, DPS +0.5% Critical Severity, Healer +0.4% OOH, Tank +0.4% Awareness.",
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Dirge-Touched Lute of the Thayan Zealot_IL3300.png",
+  "id": 4616,
+  "dbName": "Dirge-Touched Lute of the Thayan Zealot",
+  "dbItemLevel": 3300,
+  "dbRatingStats": {
+   "Accuracy": 2896,
+   "Combat Advantage": 2178
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 10,
+    "description": "2 of Set: While in Thay, Movement Speed +10%. Every 3s in combat, gain Umbral Stride stack: General +0.25% Power, DPS +0.5% Critical Severity, Healer +0.3% Overall Outgoing Healing, Tank +0.4% Awareness. Max 10 stacks.",
+    "setName": "Umbral Stride",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Drowned Lute_IL300.png",
+  "id": 4751,
+  "dbName": "Drowned Lute",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Heal Self",
+    "amount": 50,
+    "description": "2 of Set: When struck, Heal for 50% of Max HP over 30s. (30s CD)",
+    "setName": "Drowned Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Durgarn Thord Lute_IL1850.png",
+  "id": 4629,
+  "dbName": "Durgarn Thord Lute",
+  "dbItemLevel": 1850,
+  "dbRatingStats": {
+   "Accuracy": 1388,
+   "Combat Advantage": 1388
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Recharge Speed",
+    "amount": 1,
+    "description": "2 of Set: Use encounter/daily during combat to gain Scalebreaker's Wrath stacks. Each stack 20s: role-based bonus. 6 stacks empower for 30s.",
+    "setName": "Scalebreaker's Wrath",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Earthen Lute_IL300.png",
+  "id": 4735,
+  "dbName": "Earthen Lute",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Incoming Damage",
+    "amount": -5,
+    "description": "2 of Set: Stand still 3s — Incoming Damage -5%. Stacks 3 times. Removed on move.",
+    "setName": "Earthen Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Echo of the Damned_IL4000.png",
+  "id": 4611,
+  "dbName": "Echo of the Damned",
+  "dbItemLevel": 4000,
+  "dbRatingStats": {
+   "Accuracy": 3510,
+   "Combat Advantage": 2640
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 14,
+    "description": "2 of Set: While in Thay, Movement Speed +14%, Forte +3%. Whenever you use an encounter power, 15% chance to gain 10% Critical Severity for 6s.",
+    "setName": "Abyssal Prowess (Greater)",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Elk Tribe Noble's Lute_IL399.png",
+  "id": 4766,
+  "dbName": "Elk Tribe Noble's Lute",
+  "dbItemLevel": 399,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Strike": 202,
+   "Critical Severity": 98,
+   "Critical Avoidance": 98
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Stat",
+    "amount": 0,
+    "description": "2 of Set: Elk Tribe weapon set bonus from Icewind Pass.",
+    "setName": "Weapons of the Elk Tribe Chiefs",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Encased Magma Lute_IL2700.png",
+  "id": 4,
+  "dbName": "Encased Magma Lute",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Severity": 2025,
+   "Outgoing Healing": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Living Magma (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Gain 7.5% Power while at full health (decreases relative to missing health). Role bonus: DPS +2.5% Combat Advantage, Tank +2.5% Defense, Healer +2.5% Outgoing Healing. Does not stack. On a Fire-themed map, role bonus is doubled and Movement Speed is increased by 10%.",
+    "setName": "Living Magma",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Pioneer Lute_IL350.png",
+  "id": 4718,
+  "dbName": "Exalted Pioneer Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 200,
+    "description": "2 of Set: Increased stat per party member: Party 1 = +200 Power; Party 2-5 progressively adds Defense/Accuracy/CS/CritSev.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Primal Mekatl_IL350.png",
+  "id": 4694,
+  "dbName": "Exalted Primal Mekatl",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 10,
+    "description": "2 of Set: Primal Recipuyo. If hit/healed for more than 10% of Max HP in a single blow, BDB and OOH +10% for 10s.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Exalted Soulsilencer_IL350.png",
+  "id": 4686,
+  "dbName": "Exalted Soulsilencer",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: Start of combat: BDB, OOH, Damage Resistance +1%. Every 5s in combat: +1%. Doubled by Trophy Hunter buff. (Max 10%)",
+    "setName": "Tyrant",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Fey Lute_IL350.png",
+  "id": 4777,
+  "dbName": "Fey Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 3,
+    "description": "2 of Set: Fey-Touched on encounter power: 10% AP + 3% BDB + 6% OOH for 10s. (30s CD)",
+    "setName": "Fey",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Frostbound Travel Lute_IL4800.png",
+  "id": 5840,
+  "dbName": "Frostbound Travel Lute",
+  "dbItemLevel": 4800,
+  "dbRatingStats": {
+   "Critical Strike": 4320,
+   "Forte": 3240
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Hellfire Engine Noise Maker_IL1200.png",
+  "id": 4913,
+  "dbName": "Hellfire Engine Noise Maker",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Combat Advantage": 900,
+   "Critical Strike": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Hellfire Engine Remains (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Stamina Regeneration is increased by 15% and your Movement Speed is increased by 15% for 10 seconds. When you kill an enemy, this buff will refresh. When you leave combat, this buff will expire.",
+    "setName": "Hellfire Engine Remains",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Hellfire Engine Noise Maker_IL600.png",
+  "id": 4915,
+  "dbName": "Hellfire Engine Noise Maker",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Combat Advantage": 450,
+   "Critical Strike": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Hellfire Engine Remains (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Stamina Regeneration is increased by 15% and your Movement Speed is increased by 15% for 10 seconds. When you kill an enemy, this buff will refresh. When you leave combat, this buff will expire.",
+    "setName": "Hellfire Engine Remains",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Hellfire Engine Noise Maker_IL800.png",
+  "id": 4914,
+  "dbName": "Hellfire Engine Noise Maker",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 600,
+   "Critical Strike": 600
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Hellfire Engine Remains (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: At the start of combat, your Stamina Regeneration is increased by 15% and your Movement Speed is increased by 15% for 10 seconds. When you kill an enemy, this buff will refresh. When you leave combat, this buff will expire.",
+    "setName": "Hellfire Engine Remains",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Howling Lute_IL300.png",
+  "id": 4727,
+  "dbName": "Howling Lute",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 30,
+    "description": "2 of Set: Dodge/block/sprint/shadow slip Movement Speed +30% for 2s. (10s CD)",
+    "setName": "Howling Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Lifeforged Lute_IL350.png",
+  "id": 4785,
+  "dbName": "Lifeforged Lute",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Defense",
+    "amount": 5,
+    "description": "2 of Set: Encounter triggers Fortified: Defense +5%, 10% of Defense added to Power for 10s. (30s CD)",
+    "setName": "Lifeforged",
+    "pieces": 2
+   }
+  ]
+ }
+]

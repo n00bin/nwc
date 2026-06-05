@@ -1,0 +1,146 @@
+[
+ {
+  "name": "Astral Raider's Gauntlets",
+  "class": "barbarian-gear",
+  "ids": [
+   727
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot reads 'Scaled Furor', DB stores 'Scaled Disdain'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Astral Raider's Gauntlets_IL2200.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Disdain",
+    "description": "Grants up to 20% bonus Damage when your total item level is being scaled down. Currently: 0% Damage (100%). Disabled in Thay Arena PvP."
+   }
+  ]
+ },
+ {
+  "name": "Gauntlets of the Unyielding Bastion",
+  "class": "barbarian-gear",
+  "ids": [
+   378
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "DB equip bonus description reads '0.5% Awareness' — screenshot reads '+7.5% Awareness for 10 seconds'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Gauntlets of the Unyielding Bastion_IL5000.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Reprisal Reflex",
+    "description": "On Crit hit on you: reflect 10% MaxHP + 0.5% Awareness 10s (10s cd)"
+   }
+  ]
+ },
+ {
+  "name": "Exalted Maiden's Ward Cuirass",
+  "class": "barbarian-gear",
+  "ids": [
+   930
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description mismatch: screenshot reads 'You do 6% more damage to enemies that are facing you.' DB stores 'You do 6% more damage to enemies that are not facing you.' The word 'not' in the DB is incorrect — the condition is inverted."
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Maiden's Ward Cuirass_IL2050.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "description": "You do 6% more damage to enemies that are facing you. This bonus doubles in the Underdark."
+   }
+  ]
+ },
+ {
+  "name": "Pulsar Breastplate",
+  "class": "barbarian-gear",
+  "ids": [
+   719
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Controlled Strike', DB stores 'Critical Strike'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Pulsar Breastplate_IL2600.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Strike",
+    "description": "Gain 1% Control Bonus when you strike an enemy. Stacks 5 times. When you are struck, the stacks are consumed and you gain -1% Incoming Damage per stack consumed for 10 seconds. Stacks cannot be applied at the same time."
+   }
+  ]
+ },
+ {
+  "name": "Starforged Cuirass",
+  "class": "barbarian-gear",
+  "ids": [
+   215
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus 'Rothe's Intimidation': DB description includes '5,517 damage' but the screenshot tooltip does not display a numeric damage value — the figure cannot be confirmed or denied from this image"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Starforged Cuirass_IL2700.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Rothe's Intimidation",
+    "description": "Whenever you are damaged, you explode with fury, dealing 5,517 damage to enemies within 15', and generating additional threat. (10s cooldown)"
+   }
+  ]
+ },
+ {
+  "name": "Ancient Scalebreaker's Gloves",
+  "class": "bard-gear",
+  "ids": [
+   4048
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description distance mismatch: screenshot says 'When you have no teammates within 30\\' of you' but DB says 'When you have teammates within 10\\' of you' (wrong distance AND wrong condition — 'no teammates' vs 'have teammates')"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Ancient Scalebreaker's Gloves_IL1700.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Herald's Cunning",
+    "description": "When you have teammates within 10' of you, your Stamina Regeneration and Control Resistance is increased by 5%."
+   }
+  ]
+ },
+ {
+  "name": "Astral Raider's Armlets",
+  "class": "bard-gear",
+  "ids": [
+   3239
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus description in DB is missing 'Disabled in Thay Arena PvP.' clause visible in screenshot"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Astral Raider's Armlets_IL2200.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Furor",
+    "description": "Grants up to 20% bonus Damage when your total item level is being scaled down."
+   }
+  ]
+ },
+ {
+  "name": "Astral Raider's Wristguards",
+  "class": "bard-gear",
+  "ids": [
+   3983
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Scaled Furor' but DB stores 'Scaled Power'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Astral Raider's Wristguards_IL2200.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Scaled Power",
+    "description": "Grants up to 70% bonus Damage when your total item level is being scaled down. Disabled in Thay Arena PvP."
+   }
+  ]
+ }
+]

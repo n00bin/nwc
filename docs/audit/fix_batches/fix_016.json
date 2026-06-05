@@ -1,0 +1,315 @@
+[
+ {
+  "id": 3423,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Devil Forged Robe_IL1215.png",
+  "dbName": "Devil Forged Robe",
+  "dbItemLevel": 1215,
+  "dbRatingStats": {
+   "Critical Severity": 911,
+   "Defense": 911
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   },
+   {
+    "name": "Devil Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+7% Damage against Demons",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3680,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Elemental Alliance Raid Longcoat_IL554.png",
+  "dbName": "Elemental Alliance Raid Longcoat",
+  "dbItemLevel": 554,
+  "dbRatingStats": {
+   "Accuracy": 166,
+   "Combat Advantage": 249,
+   "Defense": 416
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3268,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Enchanted Bregan D'aerthe Caster's Robe_IL2050.png",
+  "dbName": "Enchanted Bregan D'aerthe Caster's Robe",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1538,
+   "Critical Strike": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shielded Force",
+    "stat": "Ranged Dmg Bonus",
+    "amount": 6.0,
+    "description": "When you have a Shield or Temp HP, your Ranged Powers do 6% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3284,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Exalted Maiden's Raid Coat_IL2050 (2).png",
+  "dbName": "Exalted Maiden's Raid Coat",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1518,
+   "Defense": 1518
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 6% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 5036,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Huntsman Assault Cowl_IL672.png",
+  "dbName": "Huntsman Assault Cowl",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 302,
+   "CriticalSeverity": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5030,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Huntsman Raid Cowl_IL672.png",
+  "dbName": "Huntsman Raid Cowl",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "CombatAdvantage": 202,
+   "CriticalStrike": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5061,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\League's Assault Barakeh_IL588.png",
+  "dbName": "League's Assault Barakeh",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "CriticalSeverity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5058,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\League's Assault Crackows_IL588.png",
+  "dbName": "League's Assault Crackows",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "CombatAdvantage": 176,
+   "CriticalSeverity": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5067,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\League's Elite Assault Barakeh_IL602.png",
+  "dbName": "League's Elite Assault Barakeh",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 542,
+   "CriticalSeverity": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5068,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\League's Elite Assault Crackows_IL602.png",
+  "dbName": "League's Elite Assault Crackows",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "CombatAdvantage": 361,
+   "CriticalSeverity": 542,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5063,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\League's Elite Raid Barakeh_IL602.png",
+  "dbName": "League's Elite Raid Barakeh",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "CombatAdvantage": 361,
+   "CriticalStrike": 180,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5066,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\League's Elite Raid Crackows_IL602.png",
+  "dbName": "League's Elite Raid Crackows",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 542,
+   "CombatAdvantage": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5055,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\League's Raid Barakeh_IL588.png",
+  "dbName": "League's Raid Barakeh",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "CombatAdvantage": 176,
+   "CriticalStrike": 265,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5062,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\League's Raid Crackows_IL588.png",
+  "dbName": "League's Raid Crackows",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "CombatAdvantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 3242,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lolthian Leathers_IL2050.png",
+  "dbName": "Lolthian Leathers",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Severity": 1230,
+   "Defense": 923,
+   "Awareness": 1845
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are full, your Critical Severity is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3504,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mage of the Maze's Robes_IL1000.png",
+  "dbName": "Mage of the Maze's Robes",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 3% of your health back.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "id": 3773,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Executioner Longcoat_IL756.png",
+  "dbName": "Manticore Executioner Longcoat",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Critical Strike": 227,
+   "Critical Severity": 170,
+   "Awareness": 170,
+   "Defense": 547
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5049,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pilgrim Assault Barakeh_IL644.png",
+  "dbName": "Pilgrim Assault Barakeh",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "CriticalSeverity": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5047,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pilgrim Raid Barakeh_IL644.png",
+  "dbName": "Pilgrim Raid Barakeh",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "CombatAdvantage": 193,
+   "CriticalStrike": 290,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "id": 5032,
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Primal Assault Shabas_IL700.png",
+  "dbName": "Primal Assault Shabas",
+  "dbItemLevel": 700,
+  "dbRatingStats": {
+   "CriticalStrike": 315,
+   "CriticalSeverity": 210,
+   "Defense": 525
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

@@ -1,0 +1,430 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Starweave Sleeves_IL2700.png",
+  "id": 3219,
+  "dbName": "Starweave Sleeves",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Accuracy": 2025,
+   "Combat Advantage": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 10 Action Points. Can only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Tempter of the Twilight's Gloves_IL1000.png",
+  "id": 3503,
+  "dbName": "Tempter of the Twilight's Gloves",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Strike": 375,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Encounter Perk",
+    "stat": "Encounter Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your Encounter Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\The Dark Maiden's Raid Wristguards_IL2000.png",
+  "id": 3293,
+  "dbName": "The Dark Maiden's Raid Wristguards",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\The Dark Maiden's Rejuvenation Mitts_IL2000.png",
+  "id": 3297,
+  "dbName": "The Dark Maiden's Rejuvenation Mitts",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Outgoing Healing": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. (15 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Thief's Stolen Gloves_IL950.png",
+  "id": 1626,
+  "dbName": "Thief's Stolen Gloves",
+  "dbItemLevel": 950,
+  "dbRatingStats": {
+   "Accuracy": 428,
+   "Critical Severity": 285,
+   "Defense": 712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Golden Steal",
+    "stat": null,
+    "amount": null,
+    "description": "Your attacks have a chance to cause extra damage, but at a chance financial cost.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ultraviolet Elven Sleeves_IL2900.png",
+  "id": 3203,
+  "dbName": "Ultraviolet Elven Sleeves",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Accuracy": 1088,
+   "Combat Advantage": 2175,
+   "Forte": 1088
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, your Critical Strike is increased by 1.5% every 2 seconds. Every 2 seconds you are in combat with 4 or more enemies, lose 1 stack. Max 5 stacks: 7.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Umbral Assault Wristguards_IL728.png",
+  "id": 3857,
+  "dbName": "Umbral Assault Wristguards",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Critical Strike": 328,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Umbral Duelist Wristguards_IL728.png",
+  "id": 3861,
+  "dbName": "Umbral Duelist Wristguards",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Combat Advantage": 164,
+   "Critical Strike": 164,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Umbral Executioner Wristguards_IL728.png",
+  "id": 3865,
+  "dbName": "Umbral Executioner Wristguards",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Critical Strike": 164,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Vambraces of the Eternal Bloom_IL5000.png",
+  "id": 3154,
+  "dbName": "Vambraces of the Eternal Bloom",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Critical Strike": 4050,
+   "Outgoing Healing": 3300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Harmonized Momentum",
+    "stat": null,
+    "amount": null,
+    "description": "Your Performance/Soulweave maximum is increased by 15%. While moving, your closest 4 nearby allies gain +0.8% Awareness. The effect is removed after standing still for 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Weathered Wood Braces_IL1300.png",
+  "id": 3353,
+  "dbName": "Weathered Wood Braces",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Defense": 975,
+   "Deflection": 488,
+   "Outgoing Healing": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. Max 5 stacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Weathered Wood Wristguards_IL1300.png",
+  "id": 3352,
+  "dbName": "Weathered Wood Wristguards",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 390,
+   "Critical Severity": 585,
+   "Defense": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. Max 5 stacks.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wintermarked Swiftguards_IL5700 (2).png",
+  "id": 5487,
+  "dbName": "Wintermarked Swiftguards",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Eagle's Mastery (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your Power, Critical Strike, and Critical Severity are increased by 0.6% for 10 seconds. Max 5 Stacks: 3% Power, Critical Strike, and Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wintermarked Swiftguards_IL5700.png",
+  "id": 5487,
+  "dbName": "Wintermarked Swiftguards",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Eagle's Mastery (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your Power, Critical Strike, and Critical Severity are increased by 0.6% for 10 seconds. Max 5 Stacks: 3% Power, Critical Strike, and Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wristguard of the Spy's Guild_IL940.png",
+  "id": 3482,
+  "dbName": "Wristguard of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Accuracy": 282,
+   "Critical Severity": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Power for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Aboleth Grimoire_IL350.png",
+  "id": 5511,
+  "dbName": "Aboleth Grimoire",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Aboleth Grimoire_IL500.png",
+  "id": 5512,
+  "dbName": "Aboleth Grimoire",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Aboleth Grimoire_IL650.png",
+  "id": 5513,
+  "dbName": "Aboleth Grimoire",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Aboleth Grimoire_IL800.png",
+  "id": 5514,
+  "dbName": "Aboleth Grimoire",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Combat Advantage": 600,
+   "Critical Strike": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Burning Grimoire_IL300.png",
+  "id": 5523,
+  "dbName": "Burning Grimoire",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Burning Grimoire_IL400.png",
+  "id": 5524,
+  "dbName": "Burning Grimoire",
+  "dbItemLevel": 400,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "Combat Advantage": 300,
+   "Critical Strike": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Burning Grimoire_IL500.png",
+  "id": 5525,
+  "dbName": "Burning Grimoire",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Burning Grimoire_IL600.png",
+  "id": 5526,
+  "dbName": "Burning Grimoire",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 225,
+   "Combat Advantage": 450,
+   "Critical Strike": 225
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Celestial Words of Hope_IL1150.png",
+  "id": 5555,
+  "dbName": "Celestial Words of Hope",
+  "dbItemLevel": 1150,
+  "dbRatingStats": {
+   "Combat Advantage": 862,
+   "Critical Strike": 862
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Celestial Words of Hope_IL1400.png",
+  "id": 5556,
+  "dbName": "Celestial Words of Hope",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Combat Advantage": 1050,
+   "Critical Strike": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

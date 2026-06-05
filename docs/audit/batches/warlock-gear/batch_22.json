@@ -1,0 +1,522 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Radiant Elven Skullcap_IL2800.png",
+  "id": 3216,
+  "dbName": "Radiant Elven Skullcap",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Critical Strike": 2100,
+   "Outgoing Healing": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wildspace Gladiator",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5s in combat, gain 1% Critical Strike. Max 7 stacks (13 in Wildspace).",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Reinforced Dragonflight Assault Cowl_IL1400.png",
+  "id": 3711,
+  "dbName": "Reinforced Dragonflight Assault Cowl",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Critical Strike": 630,
+   "Defense": 1050,
+   "Incoming Healing": 420
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "2 of Set: +5,000 Maximum Hit Points, +1,000 Power. 3 of Set: +5,000 Maximum Hit Points, +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Reinforced Dragonflight Raid Cowl_IL1400.png",
+  "id": 3707,
+  "dbName": "Reinforced Dragonflight Raid Cowl",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Combat Advantage": 420,
+   "Critical Strike": 630,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "2 of Set: +5,000 Maximum Hit Points, +1,000 Power. 3 of Set: +5,000 Maximum Hit Points, +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 4
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Hunter Hood_IL5400 (2).png",
+  "id": 5492,
+  "dbName": "Runefrost Hunter Hood",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Power": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Devastation",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.4% Power. Max 5 Stacks: 7% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Hunter Hood_IL5400 (3).png",
+  "id": 5492,
+  "dbName": "Runefrost Hunter Hood",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Power": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Devastation",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.4% Power. Max 5 Stacks: 7% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Hunter Hood_IL5400 (4).png",
+  "id": 5492,
+  "dbName": "Runefrost Hunter Hood",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Power": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Devastation",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.4% Power. Max 5 Stacks: 7% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Hunter Hood_IL5400.png",
+  "id": 5492,
+  "dbName": "Runefrost Hunter Hood",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Power": 2835
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Devastation",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.4% Power. Max 5 Stacks: 7% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Mender Barbute_IL5400 (2).png",
+  "id": 5496,
+  "dbName": "Runefrost Mender Barbute",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Power": 2835,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Arcane Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.35% Outgoing Healing and 0.35% Power. Max 10 Stacks: 3.5% Outgoing Healing and 3.5% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Mender Barbute_IL5400 (3).png",
+  "id": 5496,
+  "dbName": "Runefrost Mender Barbute",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Power": 2835,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Arcane Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.35% Outgoing Healing and 0.35% Power. Max 10 Stacks: 3.5% Outgoing Healing and 3.5% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Runefrost Mender Barbute_IL5400.png",
+  "id": 5496,
+  "dbName": "Runefrost Mender Barbute",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Power": 2835,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Arcane Focus",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 0.35% Outgoing Healing and 0.35% Power. Max 10 Stacks: 3.5% Outgoing Healing and 3.5% Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Seer of the Star's Hat_IL1000.png",
+  "id": 3499,
+  "dbName": "Seer of the Star's Hat",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 375,
+   "Critical Strike": 375,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 1% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Starweave Hood_IL2700.png",
+  "id": 3217,
+  "dbName": "Starweave Hood",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Severity": 2025,
+   "Forte": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maximized Opportunity",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only one enemy, your Combat Advantage is increased by 7%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Tempter of the Twilight's Hat_IL1000.png",
+  "id": 3498,
+  "dbName": "Tempter of the Twilight's Hat",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Accuracy": 300,
+   "Critical Severity": 450,
+   "Defense": 300,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Power increases by 5% for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\The Dark Maiden's Raid Mask_IL2000.png",
+  "id": 3291,
+  "dbName": "The Dark Maiden's Raid Mask",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 900,
+   "Critical Severity": 1200,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, you gain 1% Action Points.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\The Dark Maiden's Rejuvenation Hood_IL2000.png",
+  "id": 3295,
+  "dbName": "The Dark Maiden's Rejuvenation Hood",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Divine Muse",
+    "stat": null,
+    "amount": null,
+    "description": "Your Divinity/Performance/Soulweave regenerates 10% faster.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Ultraviolet Elven Coif_IL2900.png",
+  "id": 3205,
+  "dbName": "Ultraviolet Elven Coif",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Critical Strike": 2175,
+   "Outgoing Healing": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Channeler's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Every 3s in combat: +0.5% Outgoing Healing and 0.5% Power. Max 10 stacks: 5% each.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Umbral Duelist Cowl_IL728.png",
+  "id": 3859,
+  "dbName": "Umbral Duelist Cowl",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Accuracy": 218,
+   "Combat Advantage": 164,
+   "Critical Strike": 164,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Umbral Executioner Cowl_IL728.png",
+  "id": 3863,
+  "dbName": "Umbral Executioner Cowl",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Critical Strike": 164,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Weathered Wood Coif_IL1300.png",
+  "id": 3344,
+  "dbName": "Weathered Wood Coif",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Critical Strike": 682,
+   "Defense": 975,
+   "Incoming Healing": 292
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Weathered Wood Cowl_IL1300.png",
+  "id": 3345,
+  "dbName": "Weathered Wood Cowl",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 390,
+   "Defense": 975,
+   "Control Bonus": 585
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Skirmisher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to gain 5000 Power for 10 seconds. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wintermarked Hunter Hood_IL5700 (2).png",
+  "id": 5484,
+  "dbName": "Wintermarked Hunter Hood",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Breaker",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.8% Critical Strike. Max 5 Stacks: 9% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wintermarked Hunter Hood_IL5700.png",
+  "id": 5484,
+  "dbName": "Wintermarked Hunter Hood",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Forte": 5848
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Breaker",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 1.8% Critical Strike. Max 5 Stacks: 9% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wintermarked Mender Barbute_IL5700 (2).png",
+  "id": 5488,
+  "dbName": "Wintermarked Mender Barbute",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Instinct",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is above 90%, your Outgoing Healing is increased by 9%. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wintermarked Mender Barbute_IL5700 (3).png",
+  "id": 5488,
+  "dbName": "Wintermarked Mender Barbute",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Instinct",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is above 90%, your Outgoing Healing is increased by 9%. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Wintermarked Mender Barbute_IL5700.png",
+  "id": 5488,
+  "dbName": "Wintermarked Mender Barbute",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Critical Strike": 5130,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Instinct",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is above 90%, your Outgoing Healing is increased by 9%. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

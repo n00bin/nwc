@@ -1,0 +1,155 @@
+[
+ {
+  "name": "Radiant Elven Boots",
+  "class": "bard-gear",
+  "ids": [
+   3972
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus 'Wildspace Precision' non-Wildspace value: screenshot shows +5% Critical Strike in non-Wildspace, DB description says +3% Critical Strike in non-Wildspace"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Radiant Elven Boots_IL2800 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Wildspace Precision",
+    "description": "+7.5% Critical Strike in Wildspace. +3% Critical Strike in non-Wildspace."
+   }
+  ]
+ },
+ {
+  "name": "Depthcured Cap",
+  "class": "bard-gear",
+  "ids": [
+   2736
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus (Combatant's Advantage) per-stack value: screenshot shows 0.8% Combat Advantage per 5s, DB description says 1% Combat Advantage per 5s"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Depthcured Cap_IL3000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Combatant's Advantage",
+    "description": "For every 5 seconds you are in combat, you gain 1% Combat Advantage. Max 10 Stacks: 8% Combat Advantage."
+   }
+  ]
+ },
+ {
+  "name": "Helm of the Scarlet Arcanum",
+  "class": "bard-gear",
+  "ids": [
+   2713
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Equip bonus name: screenshot shows 'Steady Precision' vs DB 'Steady Henson' (all 3 screenshots agree on 'Steady Precision')"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Helm of the Scarlet Arcanum_IL5000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Steady Henson",
+    "description": "For every 8 seconds you are in combat, gain +1% Accuracy and +0.3% Recharge Speed. Max 7 Stacks: +7% Accuracy and +2.1% Recharge Speed."
+   }
+  ]
+ },
+ {
+  "name": "Fearbringers (IL672)",
+  "class": "unbound-gear",
+  "ids": [
+   1851
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Equip bonus percentage wrong: DB description says 'your At-Will and Encounter Powers do 30% more damage' but screenshot reads '3% more damage'. The Daily penalty (30% less) is correct."
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Fearbringers_IL672.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Tit for Tat",
+    "description": "Your At-Will and Encounter Powers do 30% more damage, but your Daily Powers do 30% less damage."
+   }
+  ]
+ },
+ {
+  "name": "Veinlit Stormbind Tunic",
+  "class": "paladin-gear",
+  "ids": [
+   5448
+  ],
+  "category": "WRONG equip-bonus name",
+  "issues": [
+   "Accuracy: screenshot 1852 vs DB 1862",
+   "Equip bonus name: screenshot shows 'Precision Tactics' (When your Stamina is over 75%, your Critical Strike is increased by 10,625) vs DB 'Freezing Grasp (2/2)' (+4% Accuracy set bonus)"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\paladin-gear\\Veinlit Stormbind Tunic_IL4350 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Precision",
+    "description": "When your Stamina is over 75%, your Critical Strike is increased by 5%."
+   }
+  ]
+ },
+ {
+  "name": "Frostsilver Hoop of Tenacity",
+  "class": "unbound-gear",
+  "ids": [
+   5405
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "Charging Bull equip bonus description: DB says '+3% Forte' but screenshot shows '+5% Forte'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Frostsilver Hoop of Tenacity_IL6000 (2).png",
+  "dbEquipBonuses": [
+   {
+    "name": "Charging Bull",
+    "description": "When you have been running for 1 seconds you generate threat around you every second as long as you continue running. +3% Forte."
+   }
+  ]
+ },
+ {
+  "name": "Demon Forged Robe",
+  "class": "warlock-gear",
+  "ids": [
+   3431
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "equip bonus Devil Hunter: DB description says '+7% Damage against Devils' but screenshot shows '+1% Damage against Devils'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Demon Forged Robe_IL1215.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "description": "Gain 1000 Defense for each player in your team."
+   },
+   {
+    "name": "Devil Hunter",
+    "description": "+7% Damage against Devils"
+   }
+  ]
+ },
+ {
+  "name": "Devil Forged Robe",
+  "class": "warlock-gear",
+  "ids": [
+   3423
+  ],
+  "category": "WRONG equip-bonus text/condition",
+  "issues": [
+   "equip bonus Devil Hunter: DB description says '+7% Damage against Demons' but screenshot shows '+1% Damage against Demons'"
+  ],
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Devil Forged Robe_IL1215.png",
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "description": "Gain 1000 Defense for each player in your team."
+   },
+   {
+    "name": "Devil Hunter",
+    "description": "+7% Damage against Demons"
+   }
+  ]
+ }
+]

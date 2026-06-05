@@ -1,0 +1,551 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Infernal Forged Gaiters_IL1200.png",
+  "id": 4121,
+  "dbName": "Infernal Forged Gaiters",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Combat Advantage": 360,
+   "Critical Strike": 540,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 200 Power. Max 24 Stacks: 4800 Power.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\League's Assault Soqs_IL588.png",
+  "id": 4287,
+  "dbName": "League's Assault Soqs",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Combat Advantage": 265,
+   "Critical Severity": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "When damaged for more than 15% of Max HP, Movement Speed +5% for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\League's Elite Assault Soqs_IL602.png",
+  "id": 4295,
+  "dbName": "League's Elite Assault Soqs",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Combat Advantage": 542,
+   "Critical Severity": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "When damaged for more than 10% of Max HP in a single blow, Movement Speed +5% for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\League's Elite Raid Soqs_IL602.png",
+  "id": 4291,
+  "dbName": "League's Elite Raid Soqs",
+  "dbItemLevel": 602,
+  "dbRatingStats": {
+   "Accuracy": 542,
+   "Combat Advantage": 361,
+   "Defense": 452
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "When damaged for more than 10% of Max HP in a single blow, Movement Speed +5% for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\League's Raid Soqs_IL588.png",
+  "id": 4283,
+  "dbName": "League's Raid Soqs",
+  "dbItemLevel": 588,
+  "dbRatingStats": {
+   "Accuracy": 265,
+   "Combat Advantage": 176,
+   "Defense": 441
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Haste",
+    "stat": null,
+    "amount": null,
+    "description": "When damaged for more than 15% of Max HP in a single blow, Movement Speed +5% for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Lion Guard's Raid Boots_IL1250.png",
+  "id": 4105,
+  "dbName": "Lion Guard's Raid Boots",
+  "dbItemLevel": 1250,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Strike": 562,
+   "Defense": 938
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 300 Power for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Lolthian Cackrows_IL2050.png",
+  "id": 3248,
+  "dbName": "Lolthian Cackrows",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Defense": 923,
+   "Awareness": 1210,
+   "Control Resistance": 923,
+   "Critical Strike": 1845
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "Trades stat positions; specific behavior varies by build.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Lolthian Pikes_IL2050 (2).png",
+  "id": 3988,
+  "dbName": "Lolthian Pikes",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1230,
+   "Defense": 923,
+   "Critical Avoidance": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 650 Combat Advantage, to the max of 7800.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Lolthian Pikes_IL2050.png",
+  "id": 3988,
+  "dbName": "Lolthian Pikes",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1230,
+   "Defense": 923,
+   "Critical Avoidance": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 650 Combat Advantage, to the max of 7800.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Luminstep Greaves_IL3350 (2).png",
+  "id": 2726,
+  "dbName": "Luminstep Greaves",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Accuracy": 1633,
+   "Combat Advantage": 2010,
+   "Forte": 1131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Precision (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased. +5% while outside of the Pirates' Skyhold or the Dread Sanctum. +10% while inside of the Pirates' Skyhold or the Dread Sanctum.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Luminstep Greaves_IL3350 (3).png",
+  "id": 2726,
+  "dbName": "Luminstep Greaves",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Accuracy": 1633,
+   "Combat Advantage": 2010,
+   "Forte": 1131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Precision (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased. +5% while outside of the Pirates' Skyhold or the Dread Sanctum. +10% while inside of the Pirates' Skyhold or the Dread Sanctum.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Luminstep Greaves_IL3350.png",
+  "id": 2726,
+  "dbName": "Luminstep Greaves",
+  "dbItemLevel": 3350,
+  "dbRatingStats": {
+   "Accuracy": 1633,
+   "Combat Advantage": 2010,
+   "Forte": 1131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Discharged Precision (Lesser)",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are less than 80%, your Accuracy is increased. +5% while outside of the Pirates' Skyhold or the Dread Sanctum. +10% while inside of the Pirates' Skyhold or the Dread Sanctum.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Manticore Assault Boots_IL756.png",
+  "id": 4506,
+  "dbName": "Manticore Assault Boots",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Critical Strike": 340,
+   "Critical Severity": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Critical Strike. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Manticore Duelist Boots_IL756.png",
+  "id": 4511,
+  "dbName": "Manticore Duelist Boots",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Defense": 567,
+   "Deflection": 323
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Critical Strike. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Manticore Executioner Boots_IL756.png",
+  "id": 4507,
+  "dbName": "Manticore Executioner Boots",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Critical Strike": 227,
+   "Deflection": 170,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Critical Strike. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Manticore Raid Boots_IL756.png",
+  "id": 4499,
+  "dbName": "Manticore Raid Boots",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 340,
+   "Critical Strike": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Every 5s in combat, gain 100 Critical Strike. After 2 minutes, ability no longer active.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mastered Duergar Mercenary's Boots_IL1900.png",
+  "id": 3266,
+  "dbName": "Mastered Duergar Mercenary's Boots",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Avoidance": 1425,
+   "Outgoing Healing": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Strike is increased by 10,000. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mastered Duergar Mercenary's Trodders_IL1900 (2).png",
+  "id": 2787,
+  "dbName": "Mastered Duergar Mercenary's Trodders",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 10,000. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mastered Duergar Mercenary's Trodders_IL1900.png",
+  "id": 2787,
+  "dbName": "Mastered Duergar Mercenary's Trodders",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 10,000. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mugger of the Maze's Boots_IL1000 (2).png",
+  "id": 4157,
+  "dbName": "Mugger of the Maze's Boots",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 750,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Critical Strike for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Mugger of the Maze's Boots_IL1000.png",
+  "id": 4157,
+  "dbName": "Mugger of the Maze's Boots",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 750,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 200 Critical Strike for each enemy you are engaged in battle. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pilgrim Assault Soqs_IL644.png",
+  "id": 4279,
+  "dbName": "Pilgrim Assault Soqs",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Combat Advantage": 290,
+   "Critical Severity": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wanderer's Vigor",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, regenerate 3% of Max HP (up to 3000) every 3s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pilgrim Raid Soqs_IL644.png",
+  "id": 4275,
+  "dbName": "Pilgrim Raid Soqs",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "Combat Advantage": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Wanderer's Vigor",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, regenerate 3% of Max HP (up to 3000) every 3s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pioneer Assault Soqs_IL616.png",
+  "id": 4271,
+  "dbName": "Pioneer Assault Soqs",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Critical Severity": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Dash",
+    "stat": null,
+    "amount": null,
+    "description": "Movement Speed +1% per team player.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\bard-gear\\Pioneer Raid Soqs_IL616.png",
+  "id": 4263,
+  "dbName": "Pioneer Raid Soqs",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Combat Advantage": 277,
+   "Critical Strike": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Dash",
+    "stat": null,
+    "amount": null,
+    "description": "Your Movement Speed increases by 1% for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

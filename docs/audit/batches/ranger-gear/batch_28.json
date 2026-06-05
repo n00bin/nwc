@@ -1,0 +1,498 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Dragon Bone Blades_IL800.png",
+  "id": 3019,
+  "dbName": "Dragon Bone Blades",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Combat Advantage": 422,
+   "Critical Strike": 427,
+   "Critical Severity": 350
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Duergar Mercenary's Steel Picks_IL1900.png",
+  "id": 2777,
+  "dbName": "Duergar Mercenary's Steel Picks",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Damage": 100,
+   "Critical Strike": 1425,
+   "Defense": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Duergar Weapon Set (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: You and nearby allies are granted +2% Base Damage Boost, +2% Overall Outgoing Healing, +2% Incoming Damage reduction. May stack up to 5 times when allies are equipped with a set of similar weapons.",
+    "setName": "Duergar Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Elemental Fire Axes_IL300.png",
+  "id": 3016,
+  "dbName": "Elemental Fire Axes",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Combat Advantage": 150,
+   "Critical Avoidance": 150,
+   "Deflection": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Elk Tribe Noble's Seax_IL399.png",
+  "id": 2956,
+  "dbName": "Elk Tribe Noble's Seax",
+  "dbItemLevel": 399,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Strike": 97.6,
+   "Critical Severity": 202,
+   "Critical Avoidance": 97.6
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Fortified Knives of the Vale_IL1800.png",
+  "id": 2813,
+  "dbName": "Fortified Knives of the Vale",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Accuracy": 1350,
+   "Critical Avoidance": 1350
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Fortified Vale (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set — Adventurer's Might: +5% role primary (DPS Power / Tank Defense / Healer Outgoing Healing). When you use an encounter power, 15% chance to increase a role-based Boost by 7.5% for 10s (DPS Recharge Speed / Tank Stamina Regen / Healer Action Point Gain).",
+    "setName": "Fortified Vale",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Golden Dragon Blades_IL300.png",
+  "id": 3015,
+  "dbName": "Golden Dragon Blades",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Combat Advantage": 150,
+   "Critical Avoidance": 150,
+   "Deflection": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Grand Alliance Knives_IL1700.png",
+  "id": 2815,
+  "dbName": "Grand Alliance Knives",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 1275,
+   "Combat Advantage": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Grand Alliance (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set — Brute's Expertise: When you are 25 feet or closer to your target, a stat dependent on your role and Forte is increased by 3% (DPS Power / Tank Awareness / Healer Outgoing Healing).",
+    "setName": "Grand Alliance",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Hammerstone Hatchets_IL352.png",
+  "id": 2955,
+  "dbName": "Hammerstone Hatchets",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Combat Advantage": 185,
+   "Critical Strike": 79.2,
+   "Critical Severity": 185,
+   "Deflection": 79.2
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Meteoric Iron Knives_IL2450.png",
+  "id": 2748,
+  "dbName": "Meteoric Iron Knives",
+  "dbItemLevel": 2450,
+  "dbRatingStats": {
+   "Accuracy": 919,
+   "Combat Advantage": 1838,
+   "Forte": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Meteoric Fury (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Deal or heal up to 5% additional damage based on the difference in hit point percentage between the player and the target. Role bonus: DPS +2% Base Damage Boost, Tank -4% Incoming Damage, Healer +6% Overall Outgoing Healing. Does not stack. When in Wildspace, role bonus is doubled and Movement Speed is increased by 10%.",
+    "setName": "Meteoric Fury",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Perfect Blades of Lolth_IL2475.png",
+  "id": 2775,
+  "dbName": "Perfect Blades of Lolth",
+  "dbItemLevel": 2475,
+  "dbRatingStats": {
+   "Damage": 125,
+   "Accuracy": 1856,
+   "Critical Severity": 1856
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Demonweb Empowerment (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Base Damage Boost and Overall Outgoing Healing are increased by 14%. Incoming damage is reduced by up to 7.5% when your Stamina is empty. At the start of Combat, Critical Strike and Critical Severity increase by 1%; for every 3s in combat these increase by 1% more (max +5%).",
+    "setName": "Demonweb Empowerment",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Phantom's Mark_IL4000.png",
+  "id": 2704,
+  "dbName": "Phantom's Mark",
+  "dbItemLevel": 4000,
+  "dbRatingStats": {
+   "Combat Advantage": 2640,
+   "Awareness": 2160
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Crimson Clarity (Greater)",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Runefrost Hand Axe_IL5500.png",
+  "id": 6204,
+  "dbName": "Runefrost Hand Axe",
+  "dbItemLevel": 5500,
+  "dbRatingStats": {
+   "Accuracy": 5363,
+   "Combat Advantage": 3300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Starcore Knives_IL2500.png",
+  "id": 2740,
+  "dbName": "Starcore Knives",
+  "dbItemLevel": 2500,
+  "dbRatingStats": {
+   "Combat Advantage": 1875,
+   "Critical Strike": 1875
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Dark Matter (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Deal or heal up to 5.5% additional damage based on the difference in hit point percentage between the player and the target. Role bonus: DPS +1% Base Damage Boost, Tank -4% Incoming Damage, Healer +6% Overall Outgoing Healing. Does not stack. When in Wildspace, role bonus is doubled and Movement Speed is increased by 10%.",
+    "setName": "Dark Matter",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\The Weaver's Knives_IL2050.png",
+  "id": 2779,
+  "dbName": "The Weaver's Knives",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Damage": 125,
+   "Combat Advantage": 1538,
+   "Critical Strike": 1538
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Beholder Slayer (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Deal or heal up to 5% additional damage based on the difference in hit point percentage between the player and the target. Role bonus to you and nearby allies: DPS +1% Base Damage Boost, Tank -2% Incoming Damage, Healer +2% Overall Outgoing Healing. May stack up to 5 times when allies are equipped with a set of similar weapons. When in the Underdark, your Damage is increased by 5%.",
+    "setName": "Beholder Slayer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Voidtouched Knives_IL3000.png",
+  "id": 2746,
+  "dbName": "Voidtouched Knives",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Combat Advantage": 2250,
+   "Critical Strike": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Peer Into the Void (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Gain 3% Overall Outgoing Healing and -5% Incoming Damage. When in Wildspace, Movement Speed is increased by 12%. Every 2s in combat with a single opponent, you gain a stack of Darklight. Every 2s in combat with 4 or more opponents, you lose a stack.",
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Xaryxian Knives_IL2750.png",
+  "id": 2744,
+  "dbName": "Xaryxian Knives",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Combat Advantage": 2062,
+   "Critical Strike": 2062
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Peer Into the Void (2/2)",
+    "stat": null,
+    "amount": null,
+    "description": "2 of Set: Gain 3% Overall Outgoing Healing and -5% Incoming Damage. When in Wildspace, Movement Speed is increased by 12%. Every 2s in combat with a single opponent, you gain a stack of Darklight. Every 2s in combat with 4 or more opponents, you lose a stack.",
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Darklake Ward Ring_IL1700.png",
+  "id": 4023,
+  "dbName": "Darklake Ward Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Avoidance": 3825,
+   "Deflection": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charging Bull",
+    "stat": null,
+    "amount": null,
+    "description": "When you have been running for 1 second, you generate threat around you every second as long as you continue running.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Scintillant Restoration Ring_IL1700.png",
+  "id": 4024,
+  "dbName": "Scintillant Restoration Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1275,
+   "Outgoing Healing": 3825
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Gift",
+    "stat": null,
+    "amount": null,
+    "description": "Your current Hit Points increases your Outgoing Healing, up to a maximum of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Shroomwood Raid Ring_IL1700.png",
+  "id": 4025,
+  "dbName": "Shroomwood Raid Ring",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 1275,
+   "Critical Strike": 3825
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Severity for 10 seconds. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Darklake Sash_IL1700.png",
+  "id": 4032,
+  "dbName": "Darklake Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Avoidance": 1698,
+   "Deflection": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Scintillant Sash +1_IL1800.png",
+  "id": 6253,
+  "dbName": "Scintillant Sash +1",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Accuracy": 899,
+   "Combat Advantage": 899,
+   "Critical Strike": 902
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Scintillant Sash_IL1700.png",
+  "id": 4030,
+  "dbName": "Scintillant Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Accuracy": 849,
+   "Combat Advantage": 849,
+   "Critical Strike": 852
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Shroomwood Sash +1_IL1800.png",
+  "id": 6252,
+  "dbName": "Shroomwood Sash +1",
+  "dbItemLevel": 1800,
+  "dbRatingStats": {
+   "Combat Advantage": 899,
+   "Critical Strike": 902,
+   "Critical Severity": 899
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Shroomwood Sash_IL1700 (2).png",
+  "id": 4029,
+  "dbName": "Shroomwood Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 849,
+   "Critical Strike": 852,
+   "Critical Severity": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\ranger-gear\\Shroomwood Sash_IL1700.png",
+  "id": 4029,
+  "dbName": "Shroomwood Sash",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Combat Advantage": 849,
+   "Critical Strike": 852,
+   "Critical Severity": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ }
+]

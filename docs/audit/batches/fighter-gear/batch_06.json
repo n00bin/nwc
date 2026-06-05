@@ -1,0 +1,535 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Greaves of the Iron Bulwark_IL4700.png",
+  "id": 227,
+  "dbName": "Greaves of the Iron Bulwark",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Awareness": 2538,
+   "Critical Avoidance": 4265
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Immovable Bulwark",
+    "stat": null,
+    "amount": null,
+    "description": "Standing still > 1s: +2.5% Defense and +4% Deflect (until you move)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Greaves of the Spy's Guild_IL940.png",
+  "id": 6571,
+  "dbName": "Greaves of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Combat Advantage": 282,
+   "Critical Strike": 423,
+   "Defense": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Death Defier's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Greaves of the Unyielding Bastion_IL5000.png",
+  "id": 256,
+  "dbName": "Greaves of the Unyielding Bastion",
+  "dbItemLevel": 5000,
+  "dbRatingStats": {
+   "Defense": 2888,
+   "Critical Avoidance": 3712
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Deflective Agility",
+    "stat": null,
+    "amount": null,
+    "description": "On Deflect: +2.5% Defense and +2% Movement Speed for 10s (12s cd)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Hammerstone Greaves_IL352.png",
+  "id": 2086,
+  "dbName": "Hammerstone Greaves",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 39.6,
+   "Critical Severity": 39.6,
+   "Defense": 264,
+   "Critical Avoidance": 92.4,
+   "Deflection": 92.4
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Infernal Forged Greaves_IL1200.png",
+  "id": 6610,
+  "dbName": "Infernal Forged Greaves",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Combat Advantage": 360,
+   "Critical Strike": 540,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Lolthian Greaves_IL2050.png",
+  "id": 6660,
+  "dbName": "Lolthian Greaves",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Combat Advantage": 1230,
+   "Defense": 923,
+   "Incoming Healing": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 650 Combat Advantage, to the max of 7800.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Lolthian Sabatons_IL2050.png",
+  "id": 736,
+  "dbName": "Lolthian Sabatons",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 923,
+   "Defense": 923,
+   "Awareness": 1230
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Elegant Reply",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, you have a 30% chance to reflect 5% of the damage back to the attacker. This effect may only occur once every 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Mastered Duergar Mercenary's Goristro Striders_IL1900.png",
+  "id": 6667,
+  "dbName": "Mastered Duergar Mercenary's Goristro Striders",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Accuracy": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Finesse",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Critical Severity is increased by 10,000. When your health is below 50%, Movement Speed is increased by 20%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Pulsar Greaves_IL2600.png",
+  "id": 234,
+  "dbName": "Pulsar Greaves",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Defense": 780,
+   "Critical Avoidance": 1950,
+   "Deflection": 1170
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "+7.5% Incoming Healing, -10000 Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Radiant Elven Sabatons_IL2800.png",
+  "id": 231,
+  "dbName": "Radiant Elven Sabatons",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Defense": 2100,
+   "Awareness": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spelljammer's Fortified Ally",
+    "stat": null,
+    "amount": null,
+    "description": "-2% Incoming Damage and 2.5% Incoming Healing in Wildspace. -1% Incoming Damage and 2.5% Incoming Healing in non-Wildspace.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Runefrost Bulwark Greaves_IL5400.png",
+  "id": 5357,
+  "dbName": "Runefrost Bulwark Greaves",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Awareness": 3240,
+   "Critical Avoidance": 4455
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 3.8% Awareness and Deflect while at full health. These bonuses decrease relative to your missing health.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Runefrost Ravager Greaves_IL5400.png",
+  "id": 6716,
+  "dbName": "Runefrost Ravager Greaves",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Combat Advantage": 3240,
+   "Critical Strike": 4860
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Brute's Advantage",
+    "stat": null,
+    "amount": null,
+    "description": "When you are 25' or closer to your target, your Combat Advantage is increased by 5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Starforged Greaves_IL2700.png",
+  "id": 6740,
+  "dbName": "Starforged Greaves",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Combat Advantage": 2025,
+   "Critical Strike": 2025
+  },
+  "dbPercentStats": {
+   "Damage in Wildspace": 5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": "Wildspace Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in Wildspace.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Starforged Sabatons_IL2700.png",
+  "id": 714,
+  "dbName": "Starforged Sabatons",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Awareness": 2025,
+   "Incoming Healing": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Defender Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1% Base Damage Boost when struck. Stacks 5 times. When you strike an enemy, the stacks are consumed and you gain -1% Incoming Damage per stack consumed for 10 seconds. Stacks cannot be applied at the same time.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\The Dark Maiden's Resolution Greaves_IL2000.png",
+  "id": 6759,
+  "dbName": "The Dark Maiden's Resolution Greaves",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Severity": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4,500 Power in the Underdark and gain more role effectiveness when in the Temple of the Spider. DPS: +5% Base Damage Boost. Tank: -5% Incoming Damage. Healer: +5% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\The Dark Maiden's Ward Sabatons_IL2000.png",
+  "id": 235,
+  "dbName": "The Dark Maiden's Ward Sabatons",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Defense": 1500,
+   "Awareness": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Spider's Bane",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4,500 Power in the Underdark and gain more role effectiveness when in the Temple of the Spider. DPS: +5% Base Damage Boost. Tank: -5% Incoming Damage. Healer: +5% Overall Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Ultraviolet Elven Greaves_IL2900.png",
+  "id": 688,
+  "dbName": "Ultraviolet Elven Greaves",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Defense": 2175,
+   "Awareness": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain up to 5% Critical Avoidance and -2.5% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Weathered Wood Greaves_IL1300.png",
+  "id": 6813,
+  "dbName": "Weathered Wood Greaves",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Combat Advantage": 390,
+   "Critical Strike": 585,
+   "Defense": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Might",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain 200 Power. Max 24 Stacks: 4800 Power",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Wintermarked Bulwark Greaves_IL5700.png",
+  "id": 5349,
+  "dbName": "Wintermarked Bulwark Greaves",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Defense": 2992,
+   "Critical Avoidance": 4703
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Critical Resilience",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 4.5% Awareness and 4% Deflect while at full health. These bonuses decrease relative to your missing health.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Wintermarked Ravager Greaves_IL5700.png",
+  "id": 6817,
+  "dbName": "Wintermarked Ravager Greaves",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Accuracy": 3705,
+   "Combat Advantage": 2280,
+   "Forte": 2565
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Overwhelming Strike",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, you gain +7.5% Critical Strike and +3.5% Movement Speed for 6 seconds. (16 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Alliance Soldier's Helmet_IL1600.png",
+  "id": 6322,
+  "dbName": "Alliance Soldier's Helmet",
+  "dbItemLevel": 1600,
+  "dbRatingStats": {
+   "Accuracy": 960,
+   "Defense": 720,
+   "Deflect": 720
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When your Stamina is over 75%, your Accuracy is increased by 7.5%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Ancient Scalebreaker's Barbute_IL1700.png",
+  "id": 6328,
+  "dbName": "Ancient Scalebreaker's Barbute",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Severity": 1020,
+   "Defense": 765,
+   "Deflect Severity": 765
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Ancient Scalebreaker's Helm_IL1700.png",
+  "id": 1108,
+  "dbName": "Ancient Scalebreaker's Helm",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Defense": 765,
+   "Critical Avoidance": 765,
+   "Incoming Healing": 1020
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Executioner's Ferocity",
+    "stat": null,
+    "amount": null,
+    "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Apprentice's Runed Sallet_IL965.png",
+  "id": 6336,
+  "dbName": "Apprentice's Runed Sallet",
+  "dbItemLevel": 965,
+  "dbRatingStats": {
+   "Combat Advantage": 290,
+   "Critical Strike": 434,
+   "Defense": 724
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Undermountain Hunter",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Damage in the Undermountain",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\fighter-gear\\Astral Raider's Armet_IL2200.png",
+  "id": 725,
+  "dbName": "Astral Raider's Armet",
+  "dbItemLevel": 2200,
+  "dbRatingStats": {
+   "Accuracy": 990,
+   "Deflection": 990,
+   "Deflect Severity": 1320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "The Ol' Switcheroo",
+    "stat": null,
+    "amount": null,
+    "description": "+5% Incoming Healing, -7500 Accuracy.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]

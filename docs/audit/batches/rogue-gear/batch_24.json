@@ -1,0 +1,548 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Encased Magma Jambiya_IL2700.png",
+  "id": 3954,
+  "dbName": "Encased Magma Jambiya",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Accuracy": 1012,
+   "Combat Advantage": 2025,
+   "Forte": 1012
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 0.875
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 7.5,
+    "description": "2 of Set: Gain 7.5% Power while at full health. Decreases relative to missing health. Role bonus: DPS +2.5% Combat Advantage, Tank +2.5% Defense, Healer +2.5% Outgoing Healing. Does not stack. On fire-themed maps, role bonus is doubled and Movement Speed is increased 10%.",
+    "setName": "Living Magma",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Exalted Fleshskewer_IL350.png",
+  "id": 4228,
+  "dbName": "Exalted Fleshskewer",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: At start of combat, BDB and OOH +1% per enemy faced. If facing only 1 enemy, BDB and OOH +3% for 1 minute. Refreshes on kill.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Exalted Pioneer Sakin_IL350.png",
+  "id": 4244,
+  "dbName": "Exalted Pioneer Sakin",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 200,
+    "description": "2 of Set: Increased stat per party member.",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Exalted Primal Itecpayo_IL350.png",
+  "id": 4212,
+  "dbName": "Exalted Primal Itecpayo",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 10,
+    "description": "2 of Set: Primal Recipuyo. If hit/healed for more than 10% of Max HP in a single blow, BDB and OOH +10% for 10s.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Exalted Skinpeeler_IL350.png",
+  "id": 4196,
+  "dbName": "Exalted Skinpeeler",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: At the start of combat, your Base Damage Boost, OOH, and Damage Resistance are increased by 1%. Every 5s in combat, these increase by 1%. Doubled by a Trophy Hunter buff. (Max 10%)",
+    "setName": "Tyrant",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Fey Stiletto_IL350.png",
+  "id": 4316,
+  "dbName": "Fey Stiletto",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 3,
+    "description": "2 of Set: Fey-Touched. Encounter power triggers Fey-Touched for 10s: restores 10% AP, BDB +3%, OOH +6%. (30s CD)",
+    "setName": "Fey",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Fleshskewer_IL350.png",
+  "id": 4220,
+  "dbName": "Fleshskewer",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 1,
+    "description": "2 of Set: At start of combat, BDB and OOH +1% per enemy faced. If facing only 1 enemy, BDB and OOH +3% for 1 minute. Refreshes on kill.",
+    "setName": "Pilgrim",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Golden Dragon Stiletto_IL300.png",
+  "id": 4425,
+  "dbName": "Golden Dragon Stiletto",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Combat Advantage": 150,
+   "Critical Strike": 150,
+   "Critical Severity": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Critical Strike",
+    "amount": 0,
+    "description": "2 of Set: Any Golden Dragon Dagger + Golden Dragon Stiletto. Modification slot for class feature enhancement.",
+    "setName": "Golden Dragon",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Grand Alliance Stiletto_IL1700.png",
+  "id": 4041,
+  "dbName": "Grand Alliance Stiletto",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Strike": 1275,
+   "Deflect Severity": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 3,
+    "description": "2 of Set: Brute's Expertise. When 20' or closer, a role stat and Forte +3%: DPS Power, Tank Awareness, Healer Outgoing Healing.",
+    "setName": "Grand Alliance",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Hellfire Engine Oil Stick_IL600 (2).png",
+  "id": 3386,
+  "dbName": "Hellfire Engine Oil Stick",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 450,
+   "Critical Severity": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "2 of Set: At the start of combat, your Stamina Regeneration will be increased by 15% and your Movement Speed by 15% for 10 seconds. When you kill an enemy, this buff will refresh. When you leave combat, this buff will expire.",
+    "setName": "Hellfire Engine Remains",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Hellfire Engine Oil Stick_IL600.png",
+  "id": 3386,
+  "dbName": "Hellfire Engine Oil Stick",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 450,
+   "Critical Severity": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 0,
+    "description": "2 of Set: At the start of combat, your Stamina Regeneration will be increased by 15% and your Movement Speed by 15% for 10 seconds. When you kill an enemy, this buff will refresh. When you leave combat, this buff will expire.",
+    "setName": "Hellfire Engine Remains",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Howling Stiletto_IL300.png",
+  "id": 4391,
+  "dbName": "Howling Stiletto",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 30,
+    "description": "2 of Set: Dodge/block/sprint/shadow slip increases Movement Speed by 30% for 2s. (10s CD)",
+    "setName": "Howling Heart",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Lifeforged Stiletto_IL350.png",
+  "id": 4324,
+  "dbName": "Lifeforged Stiletto",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Defense",
+    "amount": 5,
+    "description": "2 of Set: Encounter power triggers Fortified: Defense +5%, 10% of Defense added to Power for 10s. (30s CD)",
+    "setName": "Lifeforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Meteoric Iron Blade_IL2450.png",
+  "id": 3963,
+  "dbName": "Meteoric Iron Blade",
+  "dbItemLevel": 2450,
+  "dbRatingStats": {
+   "Accuracy": 919,
+   "Combat Advantage": 1838,
+   "Forte": 919
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 3,
+    "description": "2 of Set: Deal or heal up to 3% additional damage based on HP difference. Role: DPS +2% Base Damage Boost, Tank -4% Incoming Damage, Healer +4% Overall Outgoing Healing. Doubled in Wildspace, +10% Movement Speed.",
+    "setName": "Meteoric Fury",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Mirage Stiletto_IL350.png",
+  "id": 4308,
+  "dbName": "Mirage Stiletto",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 3,
+    "description": "2 of Set: When you use an encounter power, you become a Master of Illusion for 10s. Summons an illusion to attack enemies, does 3% more damage (+10% vs enemies with Shields/Temp HP). 30s CD.",
+    "setName": "Mirage",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Pioneer Sakin_IL350.png",
+  "id": 4236,
+  "dbName": "Pioneer Sakin",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 200,
+    "description": "2 of Set: Pioneer Jambiya + Pioneer Sakin. Increased stat per party member (1=+200 Power; 2=+400 P/Def; 3=+600 P/Def/Acc; 4=+800 P/Def/Acc/CS; 5=+1000 P/Def/Acc/CS/CritSev).",
+    "setName": "Pioneer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Primal Itecpayo_IL350.png",
+  "id": 4204,
+  "dbName": "Primal Itecpayo",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 10,
+    "description": "2 of Set: Primal Recipuyo. If hit/healed for more than 10% of Max HP in a single blow, BDB and OOH +10% for 10s.",
+    "setName": "Primal",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Shadepiercer's Cull_IL4000.png",
+  "id": 3917,
+  "dbName": "Shadepiercer's Cull",
+  "dbItemLevel": 4000,
+  "dbRatingStats": {
+   "Critical Severity": 3960,
+   "Defense": 2700
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 14,
+    "description": "2 of Set: While in Thay, your Movement Speed is increased by 14% and your Damage is increased by 2.5%. Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to deal an additional 4% of the following stats by 4.2% for 10 seconds: Accuracy, Combat Advantage. (10 second cooldown)",
+    "setName": "Essence Reap (Greater)",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Shadepiercer's Fang_IL3800.png",
+  "id": 3919,
+  "dbName": "Shadepiercer's Fang",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Critical Severity": 3762,
+   "Defense": 2565
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 10,
+    "description": "2 of Set: While in Thay, your Movement Speed is increased by 10%. Whenever you deal Combat Advantage damage with your powers, you have one of the following stats by 4.2% for 10 seconds: Accuracy, Combat Advantage. (15 second cooldown)",
+    "setName": "Essence Reap",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Shadewalker's Stiletto_IL350.png",
+  "id": 4340,
+  "dbName": "Shadewalker's Stiletto",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Incoming Damage",
+    "amount": -10,
+    "description": "2 of Set: Dodge/block/sprint/shadow slip triggers Overcharge: Defense — Incoming Damage -10% and Movement Speed +5% for 10s. Encounter power triggers Overcharge: Attack — Outgoing Damage +10% and heals 15% of health over 10s. (30s CD)",
+    "setName": "Weapons of the Shadewalker",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Starcore Stiletto_IL2500.png",
+  "id": 3955,
+  "dbName": "Starcore Stiletto",
+  "dbItemLevel": 2500,
+  "dbRatingStats": {
+   "Combat Advantage": 1875,
+   "Forte": 1875
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 5.5,
+    "description": "2 of Set: Deal or heal up to 5.5% additional damage based on the difference in HP between you and your target. Role bonus: DPS +1% Base Damage Boost, Tank +5% Incoming Damage, Healer +6% Overall Outgoing Healing. Does not stack. When in Wildspace, role bonus is doubled and Movement Speed is increased 10%.",
+    "setName": "Dark Matter",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Stormforged Knife_IL2000.png",
+  "id": 3996,
+  "dbName": "Stormforged Knife",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Accuracy": 1500,
+   "Deflection": 1500
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: Gain 2% Base Damage Boost, -2% Incoming Damage, or 2% Overall Outgoing Healing depending on role, while in the Underdark. Additionally, gain 7.5% Base Damage Boost, -7.5% Incoming Damage, or 7.5% Overall Outgoing Healing for 15s when you dodge/block/sprint/shadow slip (30s CD).",
+    "setName": "Stormforged",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Stronghold Stiletto_IL300.png",
+  "id": 4548,
+  "dbName": "Stronghold Stiletto",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with similar Stronghold weapons.",
+    "setName": "Stronghold Unity",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Sunset Stiletto_IL350.png",
+  "id": 4165,
+  "dbName": "Sunset Stiletto",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 5,
+    "description": "2 of Set: Base Damage Boost and OOH +5%. In Bonvia during nightfall, BDB/Damage Resistance/OOH/Movement Speed +10%.",
+    "setName": "Sun Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Sure Edge of the Blessed Blade_IL650.png",
+  "id": 4070,
+  "dbName": "Sure Edge of the Blessed Blade",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Combat Advantage": 488,
+   "Critical Strike": 488
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 3,
+    "description": "2 of Set: Sure Edge of the Blessed Blade. When you use an encounter power, your weapons become Blessed: +3% Power/Accuracy/CA + random buff (Blessed Guidance: +5% Critical Strike, Blessed Insight: +7.5% Action Point gain) for 10s. (30s CD)",
+    "setName": "Blessed Blade",
+    "pieces": 2
+   }
+  ]
+ }
+]

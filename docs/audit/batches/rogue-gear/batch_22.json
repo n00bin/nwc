@@ -1,0 +1,554 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\The Legion Guard's Barbed Blade_IL600.png",
+  "id": 4082,
+  "dbName": "The Legion Guard's Barbed Blade",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 450,
+   "Critical Severity": 450
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 1500,
+    "description": "2 of Set: You and nearby allies are granted: +1500 Power, +1500 Combat Advantage, +1500 Defense, +1500 Critical Avoidance. Stacks up to 5 times when allies are equipped with full Legion Guard's weapons.",
+    "setName": "Devil's Legion",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\The Weaver's Knife_IL2050.png",
+  "id": 3993,
+  "dbName": "The Weaver's Knife",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Strike": 1538,
+   "Critical Severity": 1538
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.25
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 5,
+    "description": "2 of Set: Deal or heal up to 5% additional damage based on HP percentage difference. Role: DPS +1% Base Damage Boost, Tank -2% Incoming Damage, Healer +2% Overall Outgoing Healing. Stacks up to 5 times with similarly-equipped allies. In Underdark, Damage increased 5%.",
+    "setName": "Beholder Slayer",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Titansteel Dagger_IL350.png",
+  "id": 4488,
+  "dbName": "Titansteel Dagger",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Damage Bonus",
+    "amount": 2,
+    "description": "2 of Set: You and nearby allies: +2% BDB, +2% OOH, -2% Incoming Damage. Stacks up to 5x with allies in Stronghold weapons.",
+    "setName": "Masterwork II Weapon Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Twisted Makhaira_IL300 (2).png",
+  "id": 4359,
+  "dbName": "Twisted Makhaira",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Defense",
+    "amount": 160,
+    "description": "2 of Set: Paranoia — +160 Defense per stack when struck (max 24, min 1). Bloodlust — +160 Power per stack when striking (max 24, min 1).",
+    "setName": "Duality",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Twisted Makhaira_IL300.png",
+  "id": 4359,
+  "dbName": "Twisted Makhaira",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 112,
+   "Combat Advantage": 225,
+   "Critical Strike": 112
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Defense",
+    "amount": 160,
+    "description": "2 of Set: Paranoia — +160 Defense per stack when struck (max 24, min 1). Bloodlust — +160 Power per stack when striking (max 24, min 1).",
+    "setName": "Duality",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Venomshade Knife_IL3800.png",
+  "id": 3920,
+  "dbName": "Venomshade Knife",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Combat Advantage": 2052,
+   "Critical Strike": 3762
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 0.5
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 10,
+    "description": "2 of Set: While in Thay, your Movement Speed is increased by 10%. Whenever you deal Combat Advantage damage with your powers, you have one of the following stats by 4.2% for 10 seconds: Accuracy, Combat Advantage. (15 second cooldown)",
+    "setName": "Essence Reap",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Venomshade Talon_IL4000.png",
+  "id": 3918,
+  "dbName": "Venomshade Talon",
+  "dbItemLevel": 4000,
+  "dbRatingStats": {
+   "Combat Advantage": 2160,
+   "Critical Strike": 3960
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 1.0
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Movement Speed",
+    "amount": 14,
+    "description": "2 of Set: While in Thay, your Movement Speed is increased by 14% and your Damage is increased by 2.5%. Whenever you deal Combat Advantage damage with your powers, you have a 10% chance to deal an additional 4% of the following stats by 4.2% for 10 seconds: Accuracy, Combat Advantage. (10 second cooldown)",
+    "setName": "Essence Reap (Greater)",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Vistani Dagger_IL350.png",
+  "id": 4169,
+  "dbName": "Vistani Dagger",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 262,
+   "Critical Strike": 262
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Defense",
+    "amount": 500,
+    "description": "2 of Set: +500 Defense, +5% Movement Speed.",
+    "setName": "Vistani",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Voidtouched Scythe_IL3000.png",
+  "id": 3962,
+  "dbName": "Voidtouched Scythe",
+  "dbItemLevel": 3000,
+  "dbRatingStats": {
+   "Critical Strike": 2250,
+   "Critical Severity": 2250
+  },
+  "dbPercentStats": {
+   "Damage Bonus": 2.75
+  },
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Overall Outgoing Healing",
+    "amount": 5,
+    "description": "2 of Set: Gain 5% Overall Outgoing Healing and -5% Incoming Damage. In Wildspace, Movement Speed +12%. Every 2s in combat with a single opponent, gain stack of Darklight. Every 2s with 4+ opponents, lose 1 stack. Each Darklight stack: DPS +0.6% Base Damage Boost, Tank -0.6% Incoming Damage, Healer +0.6% Overall Outgoing Healing. Max 10 stacks. Bonuses doubled in Wildspace.",
+    "setName": "Peer Into the Void",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Wootz Jambiya_IL350 (2).png",
+  "id": 4296,
+  "dbName": "Wootz Jambiya",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 500,
+    "description": "2 of Set: Enhances the wielder's strength when entering combat. (Tomb of Annihilation, Module 12)",
+    "setName": "Chultan",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Wootz Jambiya_IL350.png",
+  "id": 4296,
+  "dbName": "Wootz Jambiya",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Power",
+    "amount": 500,
+    "description": "2 of Set: Enhances the wielder's strength when entering combat. (Tomb of Annihilation, Module 12)",
+    "setName": "Chultan",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Beaded Amulet_IL350 (2).png",
+  "id": 4472,
+  "dbName": "Beaded Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 175,
+   "Critical Strike": 175,
+   "Critical Severity": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Beaded Amulet_IL350 (3).png",
+  "id": 4472,
+  "dbName": "Beaded Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 175,
+   "Critical Strike": 175,
+   "Critical Severity": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Beaded Amulet_IL350.png",
+  "id": 4472,
+  "dbName": "Beaded Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 175,
+   "Critical Strike": 175,
+   "Critical Severity": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bronzewood Amulet_IL350 (2).png",
+  "id": 4484,
+  "dbName": "Bronzewood Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Bronzewood Amulet_IL350.png",
+  "id": 4484,
+  "dbName": "Bronzewood Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Fanged Beaded Amulet_IL350 (2).png",
+  "id": 4480,
+  "dbName": "Fanged Beaded Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Fanged Beaded Amulet_IL350 (3).png",
+  "id": 4480,
+  "dbName": "Fanged Beaded Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Fanged Beaded Amulet_IL350.png",
+  "id": 4480,
+  "dbName": "Fanged Beaded Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Combat Advantage": 175,
+   "Critical Strike": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Goristroskin Soulbead Amulet_IL1700.png",
+  "id": 4027,
+  "dbName": "Goristroskin Soulbead Amulet",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Avoidance": 852,
+   "Deflection": 849,
+   "Deflect Severity": 849
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 2.5,
+    "description": "2 of Set: When you use an encounter power, gain a stack of Speedy Anointing, granting 2.5% Accuracy and 25% Recharge Speed for 5 seconds. Stacks up to 3 times.",
+    "setName": "Masterwork of Menzoberranzan Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Lichstone Amulet_IL350 (2).png",
+  "id": 4476,
+  "dbName": "Lichstone Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Critical Avoidance": 175,
+   "Deflection": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Lichstone Amulet_IL350 (3).png",
+  "id": 4476,
+  "dbName": "Lichstone Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Critical Avoidance": 175,
+   "Deflection": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Lichstone Amulet_IL350.png",
+  "id": 4476,
+  "dbName": "Lichstone Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 175,
+   "Critical Avoidance": 175,
+   "Deflection": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 1,
+    "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks.",
+    "setName": "Masterwork III Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Rubellite Amulet_IL350 (2).png",
+  "id": 4524,
+  "dbName": "Rubellite Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 175,
+   "Critical Strike": 175,
+   "Critical Severity": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 500,
+    "description": "2 of Set: Encounter triggers Alacrity — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks.",
+    "setName": "Masterwork II Equipment Set",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Rubellite Amulet_IL350.png",
+  "id": 4524,
+  "dbName": "Rubellite Amulet",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Combat Advantage": 175,
+   "Critical Strike": 175,
+   "Critical Severity": 175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Accuracy",
+    "amount": 500,
+    "description": "2 of Set: Encounter triggers Alacrity — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks.",
+    "setName": "Masterwork II Equipment Set",
+    "pieces": 2
+   }
+  ]
+ }
+]

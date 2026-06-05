@@ -1,0 +1,400 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Bracers of Defense_IL630.png",
+  "id": 1933,
+  "dbName": "Bracers of Defense",
+  "dbItemLevel": 630,
+  "dbRatingStats": {
+   "Defense": 472,
+   "Critical Avoidance": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Cambist's Gauntlets_IL630.png",
+  "id": 5309,
+  "dbName": "Cambist's Gauntlets",
+  "dbItemLevel": 630,
+  "dbRatingStats": {
+   "Critical Strike": 189,
+   "Critical Severity": 284,
+   "Defense": 472
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Eyestalk Wrappers_IL672.png",
+  "id": 1854,
+  "dbName": "Eyestalk Wrappers",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Critical Strike": 202,
+   "Critical Severity": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Sniper's Perk",
+    "stat": "Ranged Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your Ranged Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Fearbringers_IL672.png",
+  "id": 1851,
+  "dbName": "Fearbringers",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Defense": 504,
+   "Critical Avoidance": 302
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tit for Tat",
+    "stat": null,
+    "amount": null,
+    "description": "Your At-Will and Encounter Powers do 30% more damage, but your Daily Powers do 30% less damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Gigantopithecus's Vise_IL672.png",
+  "id": 1849,
+  "dbName": "Gigantopithecus's Vise",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Defense": 504,
+   "Critical Avoidance": 302,
+   "Deflection": 202
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Protector's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When you have a Shield or Temp HP, your Critical Strike is increased by 1000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Hullsnapper_IL672.png",
+  "id": 1898,
+  "dbName": "Hullsnapper",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 302,
+   "Defense": 504,
+   "Deflection": 202
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your Defense is increased by 1500 for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Jawripper's Gloves_IL672.png",
+  "id": 1850,
+  "dbName": "Jawripper's Gloves",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Combat Advantage": 302,
+   "Critical Strike": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Encounter Perk",
+    "stat": "Encounter Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your Encounter Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Poisonous Gauntlets_IL651.png",
+  "id": 1943,
+  "dbName": "Poisonous Gauntlets",
+  "dbItemLevel": 651,
+  "dbRatingStats": {
+   "Critical Severity": 269,
+   "Defense": 488,
+   "Critical Avoidance": 220
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Poisonous Strike",
+    "stat": null,
+    "amount": null,
+    "description": "Your powers have a 3% chance to Poison their target.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Royalsilk Mousquetaires_IL672.png",
+  "id": 1899,
+  "dbName": "Royalsilk Mousquetaires",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Accuracy": 302,
+   "Critical Strike": 202,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Accuracy",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 10 Accuracy for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Wintermarked Skirmisher Bracers_IL5700.png",
+  "id": 6242,
+  "dbName": "Wintermarked Skirmisher Bracers",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Combat Advantage": 3420,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Relentless Reserves",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 2% faster Divinity/Performance/Soulweave regeneration for 15 seconds. Max 5 Stack: 10% faster Divinity/Performance/Soulweave regeneration. Gain 6% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Zephyr Armguards_IL672.png",
+  "id": 1903,
+  "dbName": "Zephyr Armguards",
+  "dbItemLevel": 672,
+  "dbRatingStats": {
+   "Critical Strike": 202,
+   "Critical Severity": 302,
+   "Defense": 504
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Contender's Focus",
+    "stat": null,
+    "amount": null,
+    "description": "At the start of combat, your Critical Strike is increased by 1500 for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Raider Cloak_IL400 (2).png",
+  "id": 5623,
+  "dbName": "Company Raider Cloak",
+  "dbItemLevel": 400,
+  "dbRatingStats": {
+   "Accuracy": 200,
+   "Combat Advantage": 200,
+   "Critical Severity": 200
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Raider Cloak_IL400.png",
+  "id": 5623,
+  "dbName": "Company Raider Cloak",
+  "dbItemLevel": 400,
+  "dbRatingStats": {
+   "Accuracy": 200,
+   "Combat Advantage": 200,
+   "Critical Severity": 200
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Raider Cloak_IL500 (2).png",
+  "id": 5624,
+  "dbName": "Company Raider Cloak",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 250,
+   "Combat Advantage": 250,
+   "Critical Severity": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Raider Cloak_IL500.png",
+  "id": 5624,
+  "dbName": "Company Raider Cloak",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 250,
+   "Combat Advantage": 250,
+   "Critical Severity": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Raider Cloak_IL600 (2).png",
+  "id": 5625,
+  "dbName": "Company Raider Cloak",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 301,
+   "Combat Advantage": 300,
+   "Critical Severity": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Raider Cloak_IL600.png",
+  "id": 5625,
+  "dbName": "Company Raider Cloak",
+  "dbItemLevel": 600,
+  "dbRatingStats": {
+   "Accuracy": 301,
+   "Combat Advantage": 300,
+   "Critical Severity": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Raider's Cloak_IL300 (2).png",
+  "id": 4868,
+  "dbName": "Company Raider's Cloak",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "Combat Advantage": 150,
+   "Critical Severity": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Company Raider's Cloak_IL300.png",
+  "id": 4868,
+  "dbName": "Company Raider's Cloak",
+  "dbItemLevel": 300,
+  "dbRatingStats": {
+   "Accuracy": 150,
+   "Combat Advantage": 150,
+   "Critical Severity": 150
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Silverspruce Sash_IL500 (2).png",
+  "id": 4845,
+  "dbName": "Silverspruce Sash",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Critical Avoidance": 500,
+   "Deflection": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Silverspruce Sash_IL500.png",
+  "id": 4845,
+  "dbName": "Silverspruce Sash",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Critical Avoidance": 500,
+   "Deflection": 250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Silverspruce Sash_IL650 (2).png",
+  "id": 4844,
+  "dbName": "Silverspruce Sash",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Critical Avoidance": 649,
+   "Deflection": 325
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Silverspruce Sash_IL650.png",
+  "id": 4844,
+  "dbName": "Silverspruce Sash",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Critical Avoidance": 649,
+   "Deflection": 325
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Silverspruce Sash_IL800 (2).png",
+  "id": 4843,
+  "dbName": "Silverspruce Sash",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Critical Avoidance": 799,
+   "Deflection": 400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\unbound-gear\\Silverspruce Sash_IL800.png",
+  "id": 4843,
+  "dbName": "Silverspruce Sash",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Critical Avoidance": 799,
+   "Deflection": 400
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

@@ -1,0 +1,474 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Pulsar Wristguards_IL2600.png",
+  "id": 3979,
+  "dbName": "Pulsar Wristguards",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Accuracy": 1950,
+   "Combat Advantage": 1170,
+   "Critical Severity": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Escalating Torrent",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 400 Power for 10 seconds when you strike an enemy, lose a stack when you are struck. Stacks 20 times.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Radiant Elven Armband_IL2800 (2).png",
+  "id": 3971,
+  "dbName": "Radiant Elven Armband",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Accuracy": 1050,
+   "Combat Advantage": 2100,
+   "Forte": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Presence",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, every 2 seconds you gain 875 Power and 0.5% Critical Strike. Max 5 stacks: 4,375 Power and 2.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Radiant Elven Armband_IL2800.png",
+  "id": 3971,
+  "dbName": "Radiant Elven Armband",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Accuracy": 1050,
+   "Combat Advantage": 2100,
+   "Forte": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Presence",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, every 2 seconds you gain 875 Power and 0.5% Critical Strike. Max 5 stacks: 4,375 Power and 2.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Reinforced Dragonflight Assault Gloves_IL1400.png",
+  "id": 4436,
+  "dbName": "Reinforced Dragonflight Assault Gloves",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Critical Strike": 630,
+   "Critical Severity": 420,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Reinforced Dragonflight Raid Gloves_IL1400.png",
+  "id": 4432,
+  "dbName": "Reinforced Dragonflight Raid Gloves",
+  "dbItemLevel": 1400,
+  "dbRatingStats": {
+   "Combat Advantage": 420,
+   "Critical Strike": 630,
+   "Defense": 1050
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": "Max HP",
+    "amount": 3000,
+    "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +1,000 Power.",
+    "setName": "Dragonflight",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Runefrost Skirmisher Bracers_IL5400.png",
+  "id": 6212,
+  "dbName": "Runefrost Skirmisher Bracers",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 70 Action Points. Can only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Starhide Armband_IL2700.png",
+  "id": 3975,
+  "dbName": "Starhide Armband",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Accuracy": 2025,
+   "Combat Advantage": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Zeal",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 10 Action Points. Can only occur once every 5 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Stealer of the Star's Braces_IL1000.png",
+  "id": 4152,
+  "dbName": "Stealer of the Star's Braces",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Strike": 750,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "At-Will Perk",
+    "stat": "At Will Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your At-Will Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\The Dark Maiden's Assault Gloves_IL2000 (2).png",
+  "id": 4017,
+  "dbName": "The Dark Maiden's Assault Gloves",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\The Dark Maiden's Assault Gloves_IL2000.png",
+  "id": 4017,
+  "dbName": "The Dark Maiden's Assault Gloves",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1500,
+   "Defense": 1500
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Force",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Critically Strike with your Powers, you have a 10% chance to deal 150 magnitude damage around you. This effect may only occur once every 15 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Trapper of the Twilight's Braces_IL1000.png",
+  "id": 4149,
+  "dbName": "Trapper of the Twilight's Braces",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Strike": 375,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Encounter Perk",
+    "stat": "Encounter Dmg Bonus",
+    "amount": 3.0,
+    "description": "Your Encounter Powers do 3% more damage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Ultraviolet Elven Wristguards_IL2900.png",
+  "id": 3967,
+  "dbName": "Ultraviolet Elven Wristguards",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Accuracy": 1088,
+   "Combat Advantage": 2175,
+   "Forte": 1088
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Challenger's Precision",
+    "stat": null,
+    "amount": null,
+    "description": "When in combat with only 1 enemy, your Critical Strike is increased by 1.5% every 2 seconds. Max 5 stacks: 7.5% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Umbral Assault Gloves_IL728.png",
+  "id": 4585,
+  "dbName": "Umbral Assault Gloves",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 328,
+   "Critical Severity": 218,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Umbral Duelist Gloves_IL728.png",
+  "id": 4591,
+  "dbName": "Umbral Duelist Gloves",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Critical Strike": 164,
+   "Defense": 546,
+   "Critical Avoidance": 164,
+   "Deflection": 218
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Umbral Executioner Gloves_IL728.png",
+  "id": 4594,
+  "dbName": "Umbral Executioner Gloves",
+  "dbItemLevel": 728,
+  "dbRatingStats": {
+   "Combat Advantage": 164,
+   "Critical Strike": 218,
+   "Critical Severity": 164,
+   "Defense": 546
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Parry",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 25 Deflect for each percent of health you are missing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Vambraces of the Crimson Gale_IL4700.png",
+  "id": 2715,
+  "dbName": "Vambraces of the Crimson Gale",
+  "dbItemLevel": 4700,
+  "dbRatingStats": {
+   "Critical Strike": 3807,
+   "Forte": 3490
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Precision Against Odds",
+    "stat": null,
+    "amount": null,
+    "description": "Each enemy you are in combat with increases your Critical Strike by 1.8%. Max 5 targets: 9% Critical Strike.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Weathered Wood Bracers_IL1300.png",
+  "id": 4060,
+  "dbName": "Weathered Wood Bracers",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 390,
+   "Critical Severity": 585,
+   "Defense": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Might",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you Deflect an attack, gain 1000 Power for 10 seconds. (Max 5 stacks)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dread Confessor_IL3400.png",
+  "id": 5654,
+  "dbName": "Dread Confessor",
+  "dbItemLevel": 3400,
+  "dbRatingStats": {
+   "Accuracy": 3315,
+   "Combat Advantage": 2040
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dread Confessor_IL3750.png",
+  "id": 5655,
+  "dbName": "Dread Confessor",
+  "dbItemLevel": 3750,
+  "dbRatingStats": {
+   "Accuracy": 3656,
+   "Combat Advantage": 2250
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dread Confessor_IL4100.png",
+  "id": 5656,
+  "dbName": "Dread Confessor",
+  "dbItemLevel": 4100,
+  "dbRatingStats": {
+   "Accuracy": 3997,
+   "Combat Advantage": 2460
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dread Confessor_IL4450.png",
+  "id": 5657,
+  "dbName": "Dread Confessor",
+  "dbItemLevel": 4450,
+  "dbRatingStats": {
+   "Accuracy": 4339,
+   "Combat Advantage": 2670
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dread Confessor_IL4800.png",
+  "id": 5658,
+  "dbName": "Dread Confessor",
+  "dbItemLevel": 4800,
+  "dbRatingStats": {
+   "Accuracy": 3120,
+   "Combat Advantage": 1920,
+   "Power": 1680
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Dread Confessor_IL5250.png",
+  "id": 5659,
+  "dbName": "Dread Confessor",
+  "dbItemLevel": 5250,
+  "dbRatingStats": {
+   "Accuracy": 3412,
+   "Combat Advantage": 2100,
+   "Power": 1837
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Protege's Buckled Boots_IL980 (2).png",
+  "id": 5166,
+  "dbName": "Protege's Buckled Boots",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Combat Advantage": 294,
+   "Critical Strike": 441,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\rogue-gear\\Protege's Buckled Boots_IL980.png",
+  "id": 5166,
+  "dbName": "Protege's Buckled Boots",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Combat Advantage": 294,
+   "Critical Strike": 441,
+   "Defense": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

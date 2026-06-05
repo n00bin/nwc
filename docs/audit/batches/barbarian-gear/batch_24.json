@@ -1,0 +1,430 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Blaspheme Axe Knot_IL1900.png",
+  "id": 6346,
+  "dbName": "Blaspheme Axe Knot",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 855,
+   "Incoming Healing": 1995
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bloodbrass Charm_IL2750.png",
+  "id": 6347,
+  "dbName": "Bloodbrass Charm",
+  "dbItemLevel": 2750,
+  "dbRatingStats": {
+   "Deflect Severity": 3094,
+   "Forte": 1856
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Skyhold Arms",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bloodforged Insignia_IL3800.png",
+  "id": 6354,
+  "dbName": "Bloodforged Insignia",
+  "dbItemLevel": 3800,
+  "dbRatingStats": {
+   "Critical Severity": 3762,
+   "Deflect": 2565
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Ghastly Eruption",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Bloodthirsty Insignia_IL4000.png",
+  "id": 6360,
+  "dbName": "Bloodthirsty Insignia",
+  "dbItemLevel": 4000,
+  "dbRatingStats": {
+   "Critical Severity": 3960,
+   "Deflect": 2700
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Ghastly Eruption (Greater)",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Crystal Charm_IL3100.png",
+  "id": 6412,
+  "dbName": "Crystal Charm",
+  "dbItemLevel": 3100,
+  "dbRatingStats": {
+   "Deflect Severity": 3488,
+   "Forte": 2092
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Prismatic Defier of Dread",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Dragon Bone Sword Knot_IL800.png",
+  "id": 6435,
+  "dbName": "Dragon Bone Sword Knot",
+  "dbItemLevel": 800,
+  "dbRatingStats": {
+   "Accuracy": 350,
+   "Combat Advantage": 422,
+   "Critical Strike": 427
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Duergar Mercenary's Steel Sword Knot_IL1900.png",
+  "id": 6790,
+  "dbName": "Duergar Mercenary's Steel Sword Knot",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1425,
+   "Defense": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Durgarn Thord Axe Knot_IL1850.png",
+  "id": 6458,
+  "dbName": "Durgarn Thord Axe Knot",
+  "dbItemLevel": 1850,
+  "dbRatingStats": {
+   "Deflect Severity": 1388,
+   "Forte": 1388
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Elk Tribe Noble's Sword Knot_IL399.png",
+  "id": 6834,
+  "dbName": "Elk Tribe Noble's Sword Knot",
+  "dbItemLevel": 399,
+  "dbRatingStats": {
+   "Combat Advantage": 202,
+   "Critical Strike": 202,
+   "Critical Avoidance": 97.6,
+   "Deflect": 97.6
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Encased Magma Axe Knot_IL2700.png",
+  "id": 6500,
+  "dbName": "Encased Magma Axe Knot",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Defense": 2025,
+   "Awareness": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Living Magma",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Primal Mecatica_IL350.png",
+  "id": 6530,
+  "dbName": "Exalted Primal Mecatica",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Artifact Stat Increase",
+    "stat": null,
+    "amount": null,
+    "description": "Unlocks at Epic Rarity",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Primal Mecatica_IL500.png",
+  "id": 6531,
+  "dbName": "Exalted Primal Mecatica",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Artifact Stat Increase",
+    "stat": null,
+    "amount": null,
+    "description": "Unlocks at Epic Rarity",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Exalted Primal Mecatica_IL650.png",
+  "id": 6532,
+  "dbName": "Exalted Primal Mecatica",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Frostbound Carved Totem_IL4800.png",
+  "id": 6809,
+  "dbName": "Frostbound Carved Totem",
+  "dbItemLevel": 4800,
+  "dbRatingStats": {
+   "Combat Advantage": 2880,
+   "Critical Strike": 4320
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Grand Alliance Sword Knot_IL1700.png",
+  "id": 6594,
+  "dbName": "Grand Alliance Sword Knot",
+  "dbItemLevel": 1700,
+  "dbRatingStats": {
+   "Critical Severity": 1275,
+   "Deflect Severity": 1275
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Hammerstone Sword Knot_IL352.png",
+  "id": 6576,
+  "dbName": "Hammerstone Sword Knot",
+  "dbItemLevel": 352,
+  "dbRatingStats": {
+   "Accuracy": 79,
+   "Combat Advantage": 185,
+   "Critical Strike": 185,
+   "Deflect": 79
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Meteoric Iron Axe Knot_IL2450.png",
+  "id": 6670,
+  "dbName": "Meteoric Iron Axe Knot",
+  "dbItemLevel": 2450,
+  "dbRatingStats": {
+   "Defense": 1838,
+   "Awareness": 1838
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Meteoric Fury",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Mirage Sword Knot_IL350.png",
+  "id": 6675,
+  "dbName": "Mirage Sword Knot",
+  "dbItemLevel": 350,
+  "dbRatingStats": {
+   "Accuracy": 131,
+   "Combat Advantage": 262,
+   "Critical Strike": 131
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Mirage Sword Knot_IL500.png",
+  "id": 6676,
+  "dbName": "Mirage Sword Knot",
+  "dbItemLevel": 500,
+  "dbRatingStats": {
+   "Accuracy": 188,
+   "Combat Advantage": 375,
+   "Critical Strike": 188
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Mirage Sword Knot_IL650.png",
+  "id": 6677,
+  "dbName": "Mirage Sword Knot",
+  "dbItemLevel": 650,
+  "dbRatingStats": {
+   "Accuracy": 244,
+   "Combat Advantage": 488,
+   "Critical Strike": 244
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Perfect Charm of Lolth_IL2475.png",
+  "id": 6686,
+  "dbName": "Perfect Charm of Lolth",
+  "dbItemLevel": 2475,
+  "dbRatingStats": {
+   "Combat Advantage": 1856,
+   "Critical Severity": 1856
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Demonweb Empowerment",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Runefrost War Charm_IL5500.png",
+  "id": 6719,
+  "dbName": "Runefrost War Charm",
+  "dbItemLevel": 5500,
+  "dbRatingStats": {
+   "Combat Advantage": 3300,
+   "Critical Strike": 4950
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Chilling Flow",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Soulbound Sword Knot of the Thayan Zealot_IL3300.png",
+  "id": 6509,
+  "dbName": "Soulbound Sword Knot of the Thayan Zealot",
+  "dbItemLevel": 3300,
+  "dbRatingStats": {
+   "Deflect Severity": 4084,
+   "Forte": 2005
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Umbral Stride",
+    "pieces": 2
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Starcore Axe Knot_IL2500.png",
+  "id": 6737,
+  "dbName": "Starcore Axe Knot",
+  "dbItemLevel": 2500,
+  "dbRatingStats": {
+   "Awareness": 1875,
+   "Forte": 1875
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\barbarian-gear\\Stormforged Axe Knot_IL2000.png",
+  "id": 6743,
+  "dbName": "Stormforged Axe Knot",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Combat Advantage": 900,
+   "Incoming Healing": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": null,
+    "stat": null,
+    "amount": null,
+    "description": null,
+    "setName": "Stormforged",
+    "pieces": 2
+   }
+  ]
+ }
+]

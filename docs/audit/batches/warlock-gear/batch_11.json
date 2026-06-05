@@ -1,0 +1,380 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Lolthian Raiment_IL2050.png",
+  "id": 3246,
+  "dbName": "Lolthian Raiment",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Severity": 1210,
+   "Defense": 923,
+   "Incoming Healing": 1845
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "This or That",
+    "stat": null,
+    "amount": null,
+    "description": "When not in a party, gain 10,000 Forte. When in a party, gain 10,000 Outgoing Healing.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mage of the Maze's Robes_IL1000.png",
+  "id": 3504,
+  "dbName": "Mage of the Maze's Robes",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Awareness": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 3% of your health back.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Assault Longcoat_IL756.png",
+  "id": 3769,
+  "dbName": "Manticore Assault Longcoat",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Critical Strike": 340,
+   "Critical Severity": 227,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Executioner Longcoat_IL756.png",
+  "id": 3773,
+  "dbName": "Manticore Executioner Longcoat",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 170,
+   "Critical Strike": 227,
+   "Critical Severity": 170,
+   "Awareness": 170,
+   "Defense": 547
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Raid Longcoat_IL756 (2).png",
+  "id": 3765,
+  "dbName": "Manticore Raid Longcoat",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 227,
+   "Critical Strike": 340,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Manticore Raid Longcoat_IL756.png",
+  "id": 3765,
+  "dbName": "Manticore Raid Longcoat",
+  "dbItemLevel": 756,
+  "dbRatingStats": {
+   "Combat Advantage": 227,
+   "Critical Strike": 340,
+   "Defense": 567
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mastered Duergar Mercenary's Jerkin_IL1900.png",
+  "id": 3260,
+  "dbName": "Mastered Duergar Mercenary's Jerkin",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Combat Advantage": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Action",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Action Point Gain is increased by 7.5%. When your health is below 50%, Stamina Regeneration is increased by 15%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mastered Duergar Mercenary's Raiment_IL1900.png",
+  "id": 3264,
+  "dbName": "Mastered Duergar Mercenary's Raiment",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Forte": 1425,
+   "Incoming Healing": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Action",
+    "stat": null,
+    "amount": null,
+    "description": "When your health is 50% or more, your Action Point Gain is increased by 7.5%. When your health is below 50%, Stamina Regeneration is increased by 15%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mystic Robes of Halaster's Successor_IL1010.png",
+  "id": 3446,
+  "dbName": "Mystic Robes of Halaster's Successor",
+  "dbItemLevel": 1010,
+  "dbRatingStats": {
+   "Defense": 758,
+   "Deflection": 758
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain .5% Defense, to the max of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Mystic Robes of the Successor_IL990.png",
+  "id": 3454,
+  "dbName": "Mystic Robes of the Successor",
+  "dbItemLevel": 990,
+  "dbRatingStats": {
+   "Defense": 742,
+   "Deflection": 742
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Gladiator's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "For every 5 seconds you are in combat, you gain .5% Defense, to the max of 6%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pilgrim Assault Barakeh_IL644.png",
+  "id": 5049,
+  "dbName": "Pilgrim Assault Barakeh",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "CriticalSeverity": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pilgrim Assault Crackows_IL644.png",
+  "id": 5054,
+  "dbName": "Pilgrim Assault Crackows",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "CombatAdvantage": 193,
+   "CriticalSeverity": 290,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pilgrim Assault Manteel_IL644.png",
+  "id": 5048,
+  "dbName": "Pilgrim Assault Manteel",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "CriticalStrike": 290,
+   "CriticalSeverity": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pilgrim Assault Sevars_IL644.png",
+  "id": 5053,
+  "dbName": "Pilgrim Assault Sevars",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "CriticalStrike": 290,
+   "CriticalSeverity": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pilgrim Raid Barakeh_IL644.png",
+  "id": 5047,
+  "dbName": "Pilgrim Raid Barakeh",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "CombatAdvantage": 193,
+   "CriticalStrike": 290,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pilgrim Raid Crackows_IL644.png",
+  "id": 5050,
+  "dbName": "Pilgrim Raid Crackows",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "CombatAdvantage": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pilgrim Raid Manteel_IL644.png",
+  "id": 5052,
+  "dbName": "Pilgrim Raid Manteel",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "Accuracy": 290,
+   "CombatAdvantage": 193,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pilgrim Raid Sevars_IL644.png",
+  "id": 5051,
+  "dbName": "Pilgrim Raid Sevars",
+  "dbItemLevel": 644,
+  "dbRatingStats": {
+   "CombatAdvantage": 193,
+   "CriticalStrike": 290,
+   "Defense": 483
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pioneer Assault Barakeh_IL616.png",
+  "id": 5044,
+  "dbName": "Pioneer Assault Barakeh",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "Accuracy": 277,
+   "CriticalSeverity": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pioneer Assault Crackows_IL616.png",
+  "id": 5046,
+  "dbName": "Pioneer Assault Crackows",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "CombatAdvantage": 185,
+   "CriticalSeverity": 277,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pioneer Assault Manteel_IL616.png",
+  "id": 5045,
+  "dbName": "Pioneer Assault Manteel",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "CriticalStrike": 277,
+   "CriticalSeverity": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pioneer Raid Barakeh_IL616.png",
+  "id": 5042,
+  "dbName": "Pioneer Raid Barakeh",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "CombatAdvantage": 277,
+   "CriticalStrike": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pioneer Raid Crackows_IL616.png",
+  "id": 5039,
+  "dbName": "Pioneer Raid Crackows",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "CombatAdvantage": 277,
+   "CriticalStrike": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pioneer Raid Manteel_IL616.png",
+  "id": 5041,
+  "dbName": "Pioneer Raid Manteel",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "CombatAdvantage": 277,
+   "CriticalStrike": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\warlock-gear\\Pioneer Raid Sevars_IL616.png",
+  "id": 5040,
+  "dbName": "Pioneer Raid Sevars",
+  "dbItemLevel": 616,
+  "dbRatingStats": {
+   "CombatAdvantage": 277,
+   "CriticalStrike": 185,
+   "Defense": 462
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": []
+ }
+]

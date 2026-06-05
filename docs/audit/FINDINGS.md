@@ -1,0 +1,892 @@
+# Gear audit — complete findings (screenshot vs DB)
+
+**869 mismatches** across ~5,633 audited gear items (~15%). Generated 2026-06-03.
+
+Categories below. Full structured data: `findings_all.json`.
+
+## WRONG/SWAPPED stat name — 128
+- **Astral Raider's Greaves** [barbarian-gear]: Awareness and Critical Avoidance values are swapped: screenshot shows Awareness 1320 and Critical Avoidance 990, DB has Awareness 990 and Critical Avoidance 1320
+- **Astral Raider's Armet** [barbarian-gear]: Second stat: screenshot shows Defense 990, DB stores Deflection (Deflect) 990 — wrong stat name
+- **Eternal Greaves** [bard-gear]: Combat Advantage 337 in screenshot vs Accuracy 339 in DB / Critical Strike 337 in screenshot vs Critical Strike 339 in DB (value differs by 2) / Critical Avoidance 296 in screenshot vs Deflection 296 in DB (wrong stat name in DB)
+- **Lion Guard's Raid Gloves** [bard-gear]: Screenshot shows Critical Severity 562. DB has Critical Strike 562. Stat name mismatch: should be Critical Severity, not Critical Strike.
+- **Mastered Duergar Mercenary's Punchers** [bard-gear]: Second rating stat: DB stores Critical Strike 1,425 but screenshot shows Critical Severity 1,425 (not Critical Strike)
+- **Prismatic Crystalflex Bracers** [bard-gear]: Second rating stat: DB stores Critical Strike 3,330 but all three screenshots show Critical Severity 3,330 (not Critical Strike)
+- **Banditlord's Assault Jerkin (IL770)** [bard-gear]: Stat name mismatch: screenshot shows Critical Severity 248, DB has Critical Strike 248
+- **Black Ice Armor (IL512)** [bard-gear]: Accuracy: screenshot 59.1 vs DB 59.9 / Combat Advantage: screenshot 131 vs DB 132 / Critical Avoidance: screenshot 59.9 vs DB 132 / Deflection 131 shown in screenshot but missing from DB entirely
+- **Black Ice Armor (Black Ice Armor_IL512 (3).png — Plate/Paladin/Fighter variant)** [bard-gear]: Combat Advantage: screenshot 131 vs DB 132 / Critical Avoidance: screenshot 59.9 vs DB 132 / Deflection (=Deflect) value 131 visible in screenshot but missing from DB ratingStats
+- **Primal Assault Mederebiya** [bard-gear]: Stat name mismatch: screenshot shows +210 Critical Severity, DB stores Critical Strike: 210
+- **Tunic of the Thayan Servitor (IL800 (2).png)** [bard-gear]: Screenshot shows: Accuracy 203, Critical Strike 97.2, Critical Severity 203, Defense 600, Critical Avoidance 97.2 — DB stores: Accuracy 97.2, Combat Advantage 203, Critical Strike 203, Defense 600, Critical Avoidance 97.2 (Accuracy and Critical Strike values swapped; Combat Advantage 203 in DB not visible in screenshot; Critical Severity 203 in screenshot not in DB)
+- **Boots of the Thayan Servitor** [bard-gear]: Stat 1: screenshot shows Accuracy 210, DB has Accuracy 88.8 / Stat 2: screenshot shows Critical Strike 87.6, DB has Combat Advantage 211 / Stat 3: screenshot shows Critical Severity 210, DB has Critical Strike 211 / DB Critical Avoidance 88.8 matches screenshot Critical Avoidance 88.8
+- **Boots of the Thayan Servitor** [bard-gear]: Accuracy: screenshot 211 vs DB 88.8 / DB has 'Combat Advantage: 211' — stat not present in screenshot; screenshot has 'Critical Severity: 211' which is absent from DB / DB has 'Critical Strike: 211' — stat not present in screenshot (screenshot shows Critical Severity, not Critical Strike) / Deflect (shown as 'Deflection' in-game): screenshot 88.8 — completely missing from DB
+- **Company Raid Boots** [bard-gear]: Combat Advantage: screenshot 265 vs DB 176 / Critical Strike: screenshot 176 vs DB 265 (values appear swapped between Combat Advantage and Critical Strike)
+- **Enchanted Bregan D'aerthe Expert's Shoes** [bard-gear]: Critical Strike: screenshot shows 923; DB has 1538 / Critical Severity 1,538 visible in screenshot but missing from DB (DB has 'Defense': 923 instead) / Defense: screenshot shows no Defense stat; DB has 'Defense': 923
+- **Mastered Duergar Mercenary's Boots** [bard-gear]: Equip bonus 'Survivor's Finesse' description: DB says 'your Critical Strike is increased by 10,000' but screenshot reads 'your Critical Severity is increased by 10,000'
+- **Mastered Duergar Mercenary's Trodders** [bard-gear]: dbRatingStats has Critical Strike: 1425 and Critical Severity: 1425, but both screenshots show Combat Advantage: 1,425 and Critical Strike: 1,425 — Critical Severity is not present; Combat Advantage is missing from DB
+- **Enchanted Bregan D'aerthe Assassin's Hat** [bard-gear]: Critical Strike: screenshot 1538 vs DB 1518 / Critical Severity: screenshot 1538 vs DB 1518
+- **Mastered Duergar Mercenary's Barbute** [bard-gear]: Stat name wrong: DB stores 'Critical Strike' 1,425 but screenshot shows 'Critical Severity' 1,425
+- **Pioneer Assault Keffiyeh** [bard-gear]: Stat name mismatch: DB has 'Combat Advantage: 277' but screenshot shows 'Accuracy: 277'
+- **Prismatic Fractal Barbut** [bard-gear]: Wrong stats entirely: screenshot shows Accuracy 1804, Combat Advantage 2220, Forte 1249 — DB has Critical Strike 3330, Critical Severity 3330 / Wrong equip bonus: screenshot shows 'Critical Spiker (Greater): For every 5 seconds in combat, gain 1% Critical Strike. Max Stacks: 5' — DB has 'Gladiator's Restoration (Greater): For every 3 seconds in combat, gain 0.8% Outgoing Healing and Critical Strike. Max Stacks: 5'
+- **Ultraviolet Elven Hat** [bard-gear]: Critical Strike: screenshot shows +2,175 Critical Severity (not Critical Strike) — DB key should be Critical Severity, not Critical Strike
+- **Xaryxian Lute (IL2750)** [bard-gear]: Second stat: screenshot shows Combat Advantage 2062, DB stores Forte 2062 — wrong stat name in DB
+- **Mastered Duergar Mercenary's Punchers** [bard-gear]: DB stores 'Critical Strike: 1425' but screenshot shows '+1,425 Critical Severity' — stat name should be Critical Severity, not Critical Strike
+- **Prismatic Crystalflex Bracers** [bard-gear]: DB stores 'Critical Strike: 3330' but screenshot shows '+3,330 Critical Severity' — stat name should be Critical Severity, not Critical Strike
+- **Dungeon Raider's Cuisses** [bard-gear]: Stat 1: screenshot shows Critical Strike 352, DB stores Combat Advantage 352 (wrong stat name) / Stat 3: screenshot shows Critical Avoidance 352, DB stores Awareness 352 (wrong stat name) / Combat Advantage is not present on this item in-game; it is not in the screenshot at all
+- **Mastered Duergar Mercenary's Trodders** [bard-gear]: DB has Critical Strike 1425 and Critical Severity 1425; screenshot shows Combat Advantage 1425 and Critical Strike 1425 — Critical Severity should be Combat Advantage
+- **Enchanted Bregan D'aerthe Assassin's Hat** [bard-gear]: Critical Strike: screenshot 1538 vs DB 1518 / Critical Severity: screenshot 1538 vs DB 1518
+- **Mastered Duergar Mercenary's Barbute** [bard-gear]: Second stat: screenshot shows Critical Severity 1,425, DB has Critical Strike 1,425
+- **Prismatic Fractal Barbut** [bard-gear]: Stats entirely wrong in DB — screenshot shows Accuracy 1,804 / Combat Advantage 2,220 / Forte 1,249; DB has Critical Strike 3,330 / Critical Severity 3,330 / Equip bonus name and text wrong — screenshot shows 'Critical Spiker (Greater)': For every 5 seconds you are in combat, you gain 1.8% Critical Strike. Max Stacks: 5; DB has 'Gladiator's Restoration (Greater)': For every 3 seconds you are in combat, you gain 0.8% Outgoing Healing and Critical Strike. Max Stacks: 5
+- **Ultraviolet Elven Hat** [bard-gear]: Second stat: screenshot shows Critical Severity 2175, DB stores Critical Strike 2175
+- **Enchanted Depthforged Gauntlets (plain filename, id=219)** [barbarian-gear]: Screenshot shows Critical Strike 2,400 and Critical Severity 2,400 with Equip 'Enveloped Precision' (1.5% Critical Strike per 2 seconds) — this is a Vambraces-type item, not a Guards-type item. DB id=219 stores Defense 2,400 / Awareness 2,400 with 'Sudden Intuition'. The plain-filename screenshot appears to be a distinct item ('Enchanted Depthforged Vambraces') that has no DB record, assigned to the wrong DB id. All three stats and the equip bonus are mismatched against the stored record.
+- **Wintermarked Bulwark Vambraces** [barbarian-gear]: Stat key 'Critical Strike: 4703' in DB is wrong — screenshot shows 'Critical Avoidance: 4703' (not Critical Strike) / Equip bonus name stored as 'Reptilial Reflex' but screenshot reads 'Reprisal Reflex'
+- **Eternal Plate Armor** [fighter-gear]: Critical Strike 339 in DB but screenshot shows Critical Avoidance 339 (wrong stat name stored)
+- **Astral Raider's Greaves** [barbarian-gear]: Awareness: screenshot 1320 vs DB 990 / Critical Avoidance: screenshot 990 vs DB 1320 (the two values are swapped in the DB)
+- **Elemental Corrupted Black Ice Greaves** [fighter-gear]: Accuracy: screenshot 247 — DB has no Accuracy, has Critical Severity 247 instead / Critical Severity: screenshot 163 — DB has Critical Strike 163 instead (wrong stat name for that value) / Critical Strike: DB has 163 but screenshot shows no Critical Strike stat
+- **Hammerstone Greaves** [fighter-gear]: Critical Severity 39.6 in DB: screenshot shows Critical Strike 39.6 / Critical Avoidance 92.4 in DB: screenshot shows Combat Advantage 92.4
+- **Elemental Alliance Ward Cuirass** [paladin-gear]: DB has Combat Advantage 249 but screenshot shows Deflection 249 / DB has Critical Strike 166 but screenshot shows Critical Severity 166 / Defense value matches (416) but stat set is entirely wrong in DB
+- **Eternal Plate Armor** [fighter-gear]: "Critical Strike": 339 in DB should be "Critical Avoidance": 339 — screenshot shows +339 Critical Avoidance, not Critical Strike
+- **Elemental Corrupted Black Ice Greaves** [fighter-gear]: Critical Severity: screenshot shows Accuracy 247, not Critical Severity 247 / Critical Strike: screenshot shows Critical Severity 163, not Critical Strike 163
+- **Hammerstone Greaves** [fighter-gear]: Critical Severity 39.6 in DB: screenshot shows Critical Strike 39.6 / Critical Avoidance 92.4 in DB: screenshot shows Combat Advantage 92.4
+- **Astral Raider's Armet** [barbarian-gear]: Second rating stat: screenshot shows Defense 990, DB stores Deflection 990 — wrong stat name
+- **Bronzewood Ward Umqhele** [paladin-gear]: Third rating stat: screenshot shows Deflection 235, DB stores Awareness 235 — wrong stat name
+- **Cracked Earthshard Guard** [paladin-gear]: Stat name wrong in DB: DB stores 'Defense: 4140' but screenshot shows '+4,140 Deflect' (Deflect is not Defense)
+- **Cracked Stonevein Harness** [paladin-gear]: DB has 'Defense: 1036' — this stat does not appear in any screenshot; likely phantom entry / DB has 'Critical Avoidance: 3616' but screenshot shows '+3,036 Critical Avoidance' (screenshots 1 and 3, both consistent) / DB has 'Deflect Severity: 5105' but screenshot shows '+3,105 Deflect Severity' (screenshots 1 and 3, both consistent)
+- **Frost-Riven Earthshard Guard** [paladin-gear]: DB has 'Defense: 6365' but both screenshots show '+4,365 Deflect' — wrong stat name (Defense vs Deflect) and wrong value (6365 vs 4365)
+- **Runemarked Stonevein Harness (id 5419, IL3800)** [paladin-gear]: Critical Avoidance and Deflect Severity values are swapped in DB: screenshot shows Critical Avoidance 2,508 and Deflect Severity 2,565, but DB has Deflect Severity 2508 and Critical Avoidance 2565 (confirmed across both screenshots _IL3800.png and _IL3800 (2).png)
+- **Frostsilver Halo of Mending** [paladin-gear]: Critical Strike in DB should be Critical Severity: screenshot shows +10,800 Critical Severity, DB stores Critical Strike 10,800 / Forte: screenshot 8,100 vs DB 6,300
+- **Rimetouched Halo of Mending** [paladin-gear]: Critical Strike in DB should be Critical Severity: screenshot shows +9,720 Critical Severity, DB stores Critical Strike 9,720 / Equip bonus Circular Healing: screenshot says 'gain 5% Outgoing Healing', DB stores '8% Outgoing Healing'
+- **Black Ice Bracers** [ranger-gear]: DB has Critical Severity 59.9 — screenshot shows no Critical Severity; screenshot shows Critical Strike 132 which is absent from DB / DB has Critical Avoidance 132 — screenshot shows Critical Avoidance 59.9 (value wrong in DB)
+- **Eternal Bracers** [ranger-gear]: Critical Severity: screenshot 337 vs DB 339 / fourth stat is Critical Avoidance 296 in screenshot, DB has Deflection 294
+- **Lion Guard's Raid Gloves** [bard-gear]: Critical Strike 562 in DB should be Critical Severity 562 — screenshot clearly shows '+562 Critical Severity', not Critical Strike
+- **Mastered Duergar Mercenary's Punchers** [bard-gear]: Second stat is Critical Severity 1425 in screenshot, DB stores Critical Strike 1425
+- **Mastered Duergar Mercenary's Punchers** [bard-gear]: Second rating stat: screenshot shows +1,425 Critical Severity but DB stores Critical Strike: 1425 — wrong stat name
+- **Prismatic Crystalflex Bracers** [bard-gear]: Second rating stat: all three screenshots show +3,330 Critical Severity but DB stores Critical Strike: 3330 — wrong stat name
+- **Woodlord's Raid Jerkin** [ranger-gear]: Second stat: screenshot shows Critical Strike 248, DB has Critical Severity 248
+- **Manticore Assault Gaiters** [ranger-gear]: Critical Strike 227 in DB should be Critical Severity 227 (screenshot shows +227 Critical Severity, not Critical Strike) / Defense: screenshot 567 vs DB 113
+- **Mastered Duergar Mercenary's Trodders** [bard-gear]: DB has Critical Strike 1425 + Critical Severity 1425; screenshot shows Combat Advantage 1425 + Critical Strike 1425 (Critical Severity is not a stat on this item; Combat Advantage is present but missing from DB)
+- **Umbral Assault Gaiters** [ranger-gear]: Stat name mismatch: screenshot shows +218 Critical Severity, DB stores Critical Strike 218
+- **Company Assault Hood** [ranger-gear]: Critical Severity 176 in screenshot vs Critical Strike 176 in DB
+- **Dusk Raid Hood** [ranger-gear]: Critical Severity 529 in DB but screenshot shows Critical Strike 529 (stat name wrong: should be Critical Strike, not Critical Severity)
+- **Enchanted Bregan D'aerthe Assassin's Hat** [bard-gear]: Critical Strike: screenshot 1538 vs DB 1518 / Critical Severity: screenshot 1538 vs DB 1518
+- **Mastered Duergar Mercenary's Barbute** [bard-gear]: Second stat: screenshot shows Critical Severity 1425, DB stores Critical Strike 1425
+- **Prismatic Fractal Barbut** [bard-gear]: All stats wrong: screenshot shows Accuracy 1804, Combat Advantage 2220, Forte 1249 — DB has Critical Strike 3330, Critical Severity 3330 / Equip bonus wrong: screenshot shows 'Critical Spiker (Greater)' (gain 1.8% Critical Strike per 5s in combat, max 5 stacks) — DB has 'Gladiator's Restoration (Greater)'
+- **Bismuth Flex Bow** [ranger-gear]: Combat Advantage 2040 in DB not present in screenshot / Critical Strike 3060 in DB not present in screenshot / screenshot shows Critical Severity 3060 (missing from DB) / screenshot shows Forte 2295 (missing from DB)
+- **Company Raid Gloves** [bard-gear]: 1st stat: screenshot shows Accuracy 176, DB stores Combat Advantage 176 — stat name mismatch
+- **Eternal Greaves** [bard-gear]: DB stores Accuracy 339 and Deflection 296 as two of the four stats, but screenshot shows Combat Advantage 337 and Critical Avoidance 296 in those positions — different stat names and slightly different values (337 vs 339 for the first stat) / DB has Critical Strike 339 confirmed, but screenshot shows Critical Strike 337
+- **Gloves of the Thayan Servitor** [bard-gear]: DB stores Combat Advantage 89, Critical Strike 211, Defense 600, Critical Avoidance 211, Deflection 89 — neither screenshot matches this: screenshot (2) shows Accuracy 210, Critical Strike ~87.6, Critical Severity 210, Defense 600, Critical Avoidance ~88.8; screenshot (1) shows Combat Advantage 211, Critical Severity 211, Defense 600, Critical Avoidance ~88.8, Deflection ~88.8. DB has Critical Strike 211 and Critical Avoidance 211 where screenshots show values of ~88-89 for those slots, and 211 where DB shows 89
+- **Lion Guard's Raid Gloves** [bard-gear]: Stat name wrong: DB stores Critical Strike 562, screenshot shows Critical Severity 562
+- **Mastered Duergar Mercenary's Punchers** [bard-gear]: Stat name wrong: DB stores Critical Strike 1425, screenshot shows Critical Severity 1425
+- **Prismatic Crystalflex Bracers** [bard-gear]: Stat name wrong: DB stores Critical Strike 3330, screenshot shows Critical Severity 3330
+- **Banditlord's Assault Jerkin** [bard-gear]: Stat name wrong: DB stores 'Critical Strike' 248, but screenshot shows 'Critical Severity' 248
+- **Primal Assault Mederebiya** [bard-gear]: Stat name mismatch: DB has Critical Strike 210 but screenshot shows Critical Severity 210
+- **Black Ice Boots** [bard-gear]: Screenshot (2) — Rogue/Bard view: Accuracy 132 present in screenshot, DB stores Combat Advantage 132 (no Accuracy) / Screenshot (2) — Critical Severity 59.9 in screenshot, DB stores Critical Strike 59.9 / Screenshot (2) — Defense 384 in screenshot, DB stores Defense 132 / Screenshot (2) — Awareness 59.9 in screenshot, DB stores Awareness 132 / Screenshot (no suffix) — Wizard view shows Accuracy 73.7, Combat Advantage 163, Defense 384, Critical Avoidance 147 — completely different from DB values (Combat Advantage 132, Critical Strike 59.9, Awareness 132, Defense 132)
+- **Boots of the Thayan Servitor** [bard-gear]: Screenshot (2) — Rogue/Bard view: Accuracy 210 vs DB Accuracy 88.8 / Screenshot (2) — Critical Strike 87.6 present; DB stores Critical Strike 211 (and lists it as a DB stat) / Screenshot (2) — Critical Severity 210 in screenshot; DB stores Combat Advantage 211 instead (no Critical Severity) / Screenshot (2) — Critical Avoidance 88.8 matches DB / Screenshot (no suffix) — Wizard view: Accuracy 211, Critical Severity 211, Defense 600, Critical Avoidance 88.8, Deflection 88.8 — no Combat Advantage shown; DB stores Combat Advantage 211 and Critical Strike 211
+- **Mastered Duergar Mercenary's Trodders** [bard-gear]: DB has stats Critical Strike: 1425 and Critical Severity: 1425, but both screenshots show +1,425 Combat Advantage and +1,425 Critical Strike — Critical Severity is not present; Combat Advantage is missing from DB
+- **Black Ice Mask** [bard-gear]: Deflection: screenshot 131, DB 60 / Awareness: screenshot ~60 (59.9), missing from DB entirely / Critical Avoidance: DB has 60, not shown in screenshot — may be replaced by Awareness
+- **Enchanted Bregan D'aerthe Assassin's Hat** [bard-gear]: Critical Strike: screenshot 1538 vs DB 1518 / Critical Severity: screenshot 1538 vs DB 1518
+- **Hammerstone Mask** [rogue-gear]: DB stores integer values (Combat Advantage 92, Critical Severity 40, Critical Avoidance 92, Deflection 40) but both screenshots show decimal values that differ: screenshot (2) shows CA 91.9 / Crit Sev 39.1 / CA-avoid 91.9 / Deflect 39.6; screenshot (original) shows CA 92.4 / Crit Sev 39.6 / CA-avoid 92.4 / Deflect 39.6. Defense 264 is stable and matches. The non-Defense stats appear to be character-state-dependent (slight additive contributions visible), so true base values cannot be confirmed from these shots — flag for re-capture on a character with zero gear in those stat categories.
+- **Mastered Duergar Mercenary's Barbute** [bard-gear]: Second stat: screenshot shows Critical Severity 1425, DB stores Critical Strike 1425
+- **Prismatic Fractal Barbut** [bard-gear]: All rating stats wrong: screenshot shows Accuracy 1804 / Combat Advantage 2220 / Forte 1249; DB stores Critical Strike 3330 / Critical Severity 3330 / Equip bonus wrong: screenshot shows 'Critical Spiker (Greater)' (gain 1.8% Critical Strike per 5s in combat, Max Stacks 5); DB stores 'Gladiator's Restoration (Greater)' (gain 0.8% Outgoing Healing and Critical Strike per 3s, Max Stacks 5)
+- **Ultraviolet Elven Hat** [bard-gear]: Stat name mismatch: screenshot shows Critical Severity 2,175 but DB stores Critical Strike 2,175
+- **Bismuth Dagger** [rogue-gear]: Combat Advantage 3,060 present in DB but not shown in screenshot; screenshot shows only Critical Strike 3,060 and Critical Severity 3,060
+- **Vined Deathdelayer** [unbound-gear]: Deflection 202 present in DB but not shown in screenshot (only Defense 504 and Critical Avoidance 504 visible — possible DB fabrication or stat not rendering) / Equip bonus threshold: screenshot reads 'less than 30000 Deflect' vs DB '10000 Deflect'
+- **Bonespurs** [unbound-gear]: Critical Severity: screenshot shows Critical Strike 302, DB stores Critical Severity 302 — wrong stat name in DB
+- **Deathstriders** [unbound-gear]: Critical Severity: screenshot shows Critical Strike 302, DB stores Critical Severity 302 — wrong stat name in DB
+- **Black Draconic Guise** [unbound-gear]: Critical Strike: screenshot shows Defense 472 (no Critical Strike present), DB stores Critical Strike 472 — wrong stat name in DB; correct stat is Defense 472
+- **Lostmauth's Hoard Necklace** [unbound-gear]: Critical Strike: screenshot 301 vs DB 300 / Critical Severity: screenshot 300 vs DB 301
+- **League's Elite Ward Ring** [unbound-gear]: DB has three rating stats (Critical Avoidance 1354, Defense 452, Deflection 452); screenshot shows only two: Critical Avoidance 1354 and Deflection 452 — Defense 452 is not present in the screenshot
+- **Rosegold Assault Ring** [unbound-gear]: Primary stat: screenshot shows +546 Critical Strike, DB stores Accuracy 546 — wrong stat name
+- **Alliance Assault Wristguards** [warlock-gear]: Critical Strike and Critical Severity values are swapped in DB: screenshot shows Critical Strike 246 / Critical Severity 164, DB stores Critical Strike 164 / Critical Severity 246
+- **Alliance Raid Wristguards** [warlock-gear]: Screenshot shows Combat Advantage 246 / Critical Strike 164; DB stores Combat Advantage 176 / Critical Strike 265 — both values are wrong and appear to be swapped with the wrong numbers entirely
+- **Company Assault Wristguards** [warlock-gear]: Screenshot shows Combat Advantage 265 and Critical Severity 176; DB stores Combat Advantage 176 and Critical Strike 265 — both the values and the second stat name differ (Critical Severity in screenshot vs Critical Strike in DB)
+- **Elemental Alliance Assault Wristguards** [warlock-gear]: Stat name mismatch: DB stores 'Accuracy' 249 but screenshot shows Critical Strike 249
+- **Elemental Alliance Raid Wristguards** [warlock-gear]: Stat name mismatch: DB stores 'Accuracy' 166 but screenshot shows Critical Strike 166
+- **Lion Guard's Mystic Wristguards** [warlock-gear]: DB has Accuracy 375, Critical Severity 562 but screenshot shows Critical Strike 469, Deflection 469 / Stats appear swapped with Lion Guard's Raid Wristguards
+- **Lion Guard's Raid Wristguards** [warlock-gear]: DB has Critical Strike 469, Deflection 469 but screenshot shows Accuracy 375, Critical Severity 562 / Stats appear swapped with Lion Guard's Mystic Wristguards
+- **Manticore Assault Wristguards** [warlock-gear]: Stat name wrong: DB stores 'Critical Strike: 340' but screenshot shows 'Combat Advantage: 340' (first stat is Combat Advantage, not Critical Strike) / Missing equip bonus in DB: screenshot shows 'Survivor's Parry — Gain 25 Deflect for each percent of health you are missing' but dbEquipBonuses is empty
+- **Manticore Duelist Wristguards** [warlock-gear]: Stat name wrong: DB stores 'Combat Advantage: 170' but screenshot shows 'Critical Avoidance: 170' (fourth stat is Critical Avoidance, not Combat Advantage) / Missing equip bonus in DB: screenshot shows 'Survivor's Parry — Gain 25 Deflect for each percent of health you are missing' but dbEquipBonuses is empty
+- **Manticore Executioner Wristguards** [warlock-gear]: Critical Strike value wrong: DB 227, screenshot 170 / Critical Severity value wrong: DB 170, screenshot 227 / Defense value wrong: DB 547, screenshot 567 / DB has 'Combat Advantage: 170' but that stat does not appear in screenshot (screenshot has CritStrike, CritSev, Defense, Awareness only — no Combat Advantage) / Missing equip bonus in DB: screenshot shows 'Survivor's Parry — Gain 25 Deflect for each percent of health you are missing' but dbEquipBonuses is empty
+- **Umbral Duelist Wristguards (IL728)** [warlock-gear]: Combat Advantage 164 in DB, but screenshot shows Critical Avoidance 164 — stat name wrong in DB / Equip bonus 'Survivor's Parry' visible in screenshot (Gain 25 Deflect for each percent of health you are missing) is absent from DB (dbEquipBonuses is empty)
+- **Alliance Assault Longcoat** [warlock-gear]: Stat name wrong: DB has 'Critical Strike 164' but screenshot shows 'Accuracy 246' — wrong stat name AND wrong value / Stat value wrong: DB has 'Critical Severity 246' but screenshot shows 'Critical Severity 164' — value is swapped / Stat missing from DB: 'Accuracy' is not present; DB has 'Critical Strike' in its place
+- **Alliance Raid Longcoat** [warlock-gear]: Stat name wrong: DB has 'Critical Strike 246' but screenshot shows 'Combat Advantage 164' — wrong stat name AND wrong value / Stat value wrong: DB has 'Accuracy 164' but screenshot shows 'Accuracy 246' — value is wrong / Stat missing from DB: 'Combat Advantage 164' is not present; DB has 'Critical Strike 246' in its place
+- **Company Raid Longcoat** [warlock-gear]: Stat name wrong: DB has 'Combat Advantage 176' but screenshot shows 'Critical Strike 265' — wrong stat name AND wrong value / Stat value wrong: DB has 'Accuracy 265' but screenshot shows 'Accuracy 176' — value is wrong
+- **Elemental Alliance Raid Longcoat** [warlock-gear]: Accuracy and Combat Advantage values are swapped: screenshot shows Accuracy 249 and Combat Advantage 166, but DB stores Accuracy: 166 and Combat Advantage: 249
+- **Enchanted Bregan D'aerthe Caster's Robe** [warlock-gear]: Second stat: screenshot shows +1,538 Critical Severity, DB has Critical Strike 1538 / Shielded Force equip bonus amount: screenshot says 8% more damage, DB has 6.0
+- **Alliance Assault Pigaches** [warlock-gear]: Stat name mismatch: screenshot shows Accuracy 246, DB stores Critical Severity: 246 / Stat name mismatch: screenshot shows Critical Severity 164, DB stores Critical Strike: 164
+- **Dinohide Assault Viatus** [warlock-gear]: Critical Severity: screenshot 235 vs DB 215 / DB missing equip bonus Gladiator's Focus — screenshot shows: For every 5 seconds in combat gain 100 Critical Strike; disabled after 2 minutes in combat
+- **Drowcraft Pigaches** [warlock-gear]: Critical Severity 170 in DB should be Critical Strike 170 (screenshot shows +255 Combat Advantage, +170 Critical Strike, +425 Defense)
+- **Elemental Dragonflight Raid Pigaches** [warlock-gear]: Accuracy and Combat Advantage values are swapped: DB has Accuracy 179 / Combat Advantage 268; screenshot shows Accuracy 268 / Combat Advantage 179
+- **Elemental Drowcraft Raid Pigaches** [warlock-gear]: Critical Severity 176 in DB should be Critical Strike 176 (screenshot shows +265 Combat Advantage, +176 Critical Strike, +441 Defense)
+- **Elemental Elven Assault Pigaches** [warlock-gear]: Combat Advantage 259 in DB should be Critical Strike 259 (screenshot shows +259 Critical Strike, +172 Critical Severity, +431 Defense)
+- **Enchanted Bregan D'aerthe Expert's Shoes** [bard-gear]: Critical Strike 1538 in DB should be Critical Severity 1538 (screenshot shows Critical Severity, not Critical Strike, as the 1538 stat) / Defense 923 in DB should be Critical Strike 923 (screenshot shows +923 Critical Strike, +1,538 Critical Severity, +615 Control Resistance — no Defense)
+- **Manticore Executioner Pigaches** [warlock-gear]: Critical Strike: screenshot 170 vs DB 227 / Critical Severity: screenshot 227 vs DB 170 / Defense: screenshot 567 vs DB 547 / Awareness 170 in DB but not shown in screenshot / Missing equip bonus in DB: screenshot shows 'Equip: Gladiator's Focus — For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.'
+- **Mastered Duergar Mercenary's Boots** [bard-gear]: Equip bonus Survivor's Finesse: DB says 'Critical Strike is increased by 10,000' but screenshot shows 'Critical Severity is increased by 10,000'
+- **Alliance Assault Cowl** [warlock-gear]: Critical Strike and Critical Severity values are swapped: screenshot shows Critical Strike 246 / Critical Severity 164, DB stores Critical Strike 164 / Critical Severity 246
+- **Ancient Scalebreaker's Hood** [warlock-gear]: Stat name wrong: screenshot shows Critical Severity 1,020, DB stores it as Critical Strike 1,020
+- **Elemental Alliance Assault Cowl** [warlock-gear]: Accuracy: screenshot shows Critical Strike +249, DB stores Accuracy +249 (wrong stat name in DB — screenshot shows Critical Strike, not Accuracy)
+- **Elemental Alliance Raid Cowl** [warlock-gear]: Combat Advantage: screenshot shows Critical Strike +249, DB stores Combat Advantage +249 (wrong stat name — screenshot shows Critical Strike, not Combat Advantage)
+- **Elemental Dragonflight Assault Cowl** [warlock-gear]: DB has Combat Advantage +179 and Critical Severity +268; screenshot shows Accuracy +268 and Critical Severity +179 (stat names swapped and wrong: Accuracy not Combat Advantage is the 268-value stat; the 179-value stat is Critical Severity not Combat Advantage)
+- **Elemental Drowcraft Raid Cowl** [warlock-gear]: Critical Severity: screenshot shows Critical Strike +176, DB stores Critical Severity +176 (wrong stat name — screenshot shows Critical Strike)
+- **Manticore Executioner Cowl** [warlock-gear]: Critical Strike: screenshot 170 vs DB 227 / Critical Severity: screenshot 227 vs DB 170 / Defense: screenshot 567 vs DB 547 / DB has Awareness 170 not present in screenshot / Missing equip bonus in DB: equip Gladiator's Accuracy (For every 5 seconds in combat gain 100 Accuracy; stops after 2 minutes)
+- **Hellfire Engine Oil Stick (IL1200) — image file '(2)'** [?]: Screenshot shows Combat Advantage 900 + Critical Strike 900 (and 'Requires Class: Rogue'), but DB stores Accuracy 900 + Critical Severity 900 — wrong screenshot captured (Rogue version instead of Warlock version); stat names and values do not match DB
+- **Wintermarked Twin Shardblades_IL5800** [?]: Missing Critical Severity 3480 in DB (screenshot shows +3,480 Critical Severity; DB only lists Damage, Accuracy, Critical Strike)
+- **Codex of Eternal Chains (IL4800)** [warlock-gear]: Critical Severity 2,880 visible in screenshot but missing from dbRatingStats entirely (DB only has Accuracy 3120 and Critical Strike 2880)
+- **Enchanted Bregan D'aerthe Caster's Robe** [warlock-gear]: Second stat: screenshot shows Critical Severity 1538 vs DB Critical Strike 1538 / Shielded Force equip bonus: screenshot '8% more damage' vs DB '6% more damage'
+- **Mastered Duergar Mercenary's Crakows** [warlock-gear]: Critical Severity in DB should be Critical Strike: screenshot shows '+1,425 Critical Strike', DB stores 'Critical Severity': 1425
+- **Ancient Scalebreaker's Hood** [warlock-gear]: Stat identity mismatch: screenshot shows +1,020 Critical Severity, DB has Critical Strike 1020 — the 1020-value stat is Critical Severity, not Critical Strike
+
+## WRONG / missing stat value — 228
+- **Exalted Maiden's Ward Helm** [barbarian-gear]: Defense: screenshot 1,538 vs DB 1,518
+- **Pulsar Armet** [barbarian-gear]: Defense: screenshot 1,950 vs DB 950
+- **Encased Magma Greataxe** [barbarian-gear]: Damage: screenshot 175 vs DB 250
+- **Hammerstone Greathammer** [barbarian-gear]: Accuracy: screenshot 79.2 vs DB 79 / Deflect: screenshot 79.2 vs DB 79
+- **Hammerstone Sword Knot_IL352** [?]: Accuracy: screenshot 79.2 vs DB 79 / Deflect: screenshot 79.2 vs DB 79
+- **Crimson Scalebreaker's Rebel Gloves** [bard-gear]: Missing stat: screenshot shows +810 Forte but DB has no Forte entry (DB only has Critical Strike 1080 and Defense 810)
+- **Dragonhide Band** [bard-gear]: Defense: screenshot 1425 vs DB 855 (both IL1900 screenshots confirm +1,425 Defense)
+- **Enchanted Bregan D'aerthe Assassin's Band** [bard-gear]: Accuracy: screenshot 1,538 vs DB 1,558 / Critical Strike: screenshot 923 vs DB 615
+- **Obsidian Mekatl (IL500)** [bard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Lolthian Raiment** [bard-gear]: Critical Severity: screenshot 1230 vs DB 1210 / stat 'Incoming Healing: 1845' in DB not present in screenshot; screenshot shows Deflection +923 instead
+- **Bregan D'aerthe Expert's Shoes** [bard-gear]: DB has 'Defense: 600' — stat not present in screenshot / Critical Severity: screenshot 1500 — missing from DB entirely / Control Resistance: screenshot 600 vs DB 1800
+- **Depthcured Cackrows** [bard-gear]: Equip bonus 'Fiery Muse': Outgoing Healing percentage — screenshot reads 3% vs DB 4%
+- **Dungeon Raider's Cuisses** [bard-gear]: Critical Strike 352 in screenshot vs DB 'Combat Advantage': 352 / Critical Avoidance 352 in screenshot vs DB 'Awareness': 352 / Defense 705 matches
+- **Exalted Maiden's Assault Shroud** [bard-gear]: Accuracy: screenshot 1,538 vs DB 1,518
+- **Exalted Maiden's Rejuvenation Hood** [bard-gear]: Critical Strike: screenshot 1,538 vs DB 1,518 / Defense: screenshot 1,538 vs DB 1,518
+- **Forest Guardian's Raid Coif** [bard-gear]: Equip bonus 'Fey Hunter': screenshot shows '+5% Damage in all of Sharandar' vs DB '+3% Damage in all of Sharandar'
+- **Fractal Barbut** [bard-gear]: Forte: screenshot 2,261 vs DB 2,265
+- **Lolthian Coif** [bard-gear]: Critical Strike: screenshot 1,230 vs DB 1,210
+- **Manticore Assault Mask** [bard-gear]: Defense: screenshot 567 vs DB 504
+- **Manticore Duelist Mask** [bard-gear]: Defense: screenshot 567 vs DB 547
+- **Stealer of the Star's Hood** [bard-gear]: Critical Strike: screenshot 375 vs DB 525
+- **Primal Rapier IL350** [?]: Combat Advantage: screenshot 262 vs DB 131
+- **Primal Rapier IL500** [?]: Combat Advantage: screenshot 375 vs DB 188
+- **Primal Rapier IL650** [?]: Combat Advantage: screenshot 488 vs DB 244
+- **Primal Rapier IL800** [?]: Combat Advantage: screenshot 600 vs DB 300
+- **Shadesinger's Rapier IL800** [?]: Accuracy: screenshot 300 vs DB 500 / Critical Strike: screenshot 300 vs DB 500
+- **Titansteel Rapier (IL800)** [bard-gear]: Accuracy: screenshot 300 vs DB 500 / Critical Strike: screenshot 300 vs DB 500
+- **Hammerstone Lute (IL352)** [bard-gear]: Combat Advantage: screenshot 185 vs DB 385
+- **Shadesinger's Lute (IL800)** [bard-gear]: Accuracy: screenshot 300 vs DB 500 / Critical Strike: screenshot 300 vs DB 500
+- **Note of the Forsaken IL3800** [?]: Accuracy: screenshot 3,334 vs DB 3,134 / Forte: DB has 2,308 but stat not shown in screenshot (only Accuracy and Combat Advantage visible)
+- **Vistani Lute (IL350)** [bard-gear]: Accuracy: screenshot 262 vs DB 131 / Critical Strike: screenshot 262 vs DB 131
+- **Crimson Scalebreaker's Rebel Gloves** [bard-gear]: Missing stat in DB: screenshot shows Forte +810 (three stats: Critical Strike 1080, Defense 810, Forte 810); DB only stores Critical Strike 1080 and Defense 810
+- **Dragonhide Band** [bard-gear]: Defense: screenshot 1,425 vs DB 855
+- **Enchanted Bregan D'aerthe Assassin's Band** [bard-gear]: Accuracy: screenshot 1,538 vs DB 1,558 / Critical Strike: screenshot 923 vs DB 615
+- **Exalted Maiden's Assault Gloves** [bard-gear]: Critical Strike: screenshot 1,538 vs DB 1,518
+- **Enchanted Bregan D'aerthe Assassin's Leathers** [bard-gear]: Accuracy: screenshot 1538 vs DB 1518 / Combat Advantage: screenshot 1538 vs DB 1518
+- **Exalted Maiden's Assault Hide** [bard-gear]: Critical Strike: screenshot 1230 vs DB 1250
+- **Dragonhide Pikes** [bard-gear]: Equip bonus 'This or That': screenshot shows 'gain 5,000 Defense' vs DB 'gain 3,000 Defense'
+- **Enchanted Bregan D'aerthe Assassin's Longboots** [bard-gear]: Critical Severity: screenshot shows 1,538 vs DB 1,518
+- **Trapper of the Twilight's Boots** [bard-gear]: Critical Severity: screenshot 300 vs DB 375
+- **Wintermarked Lifeward Greaves** [cleric-gear]: Forte: screenshot +3,848 vs DB 5,848
+- **Crone's Hood** [bard-gear]: Equip bonus Executioner's Might: screenshot says '(30 second cooldown)' (singular) vs DB '(30 second cooldowns)' (plural)
+- **Depthcured Cap** [bard-gear]: Equip bonus Combatant's Advantage: screenshot says 'gain 0.8% Combat Advantage' per stack vs DB 'gain 1% Combat Advantage' per stack
+- **Diadem of the Crimson Gale** [bard-gear]: Equip bonus Advantageous Strike: screenshot says 'for 8 seconds' vs DB 'for 6 seconds'
+- **Exalted Maiden's Assault Shroud** [bard-gear]: Accuracy: screenshot 1538 vs DB 1518
+- **Fractal Barbut** [bard-gear]: Forte: screenshot 2261 vs DB 2265
+- **Black Ice Gauntlets** [fighter-gear]: Accuracy: screenshot 59.9 vs DB 59.1
+- **Black Ice Greaves** [fighter-gear]: Accuracy: screenshot 131 vs DB 59.1 / Critical Strike: screenshot 59.1 — DB has no Critical Strike, has Combat Advantage 131 instead / Awareness: screenshot 131 — DB has Deflection 131 instead (different stat name, not an alias) / Combat Advantage: DB has 131 but screenshot shows no Combat Advantage stat
+- **Exalted Maiden's Ward Helm** [barbarian-gear]: Defense: screenshot 1,538 vs DB 1,518
+- **Pulsar Armet** [barbarian-gear]: Defense: screenshot 1,950 vs DB 950
+- **Adamant Gladiator Couters** [paladin-gear]: Stat name wrong: DB has 'Combat Advantage: 164' but screenshot shows 'Accuracy: 164' / Defense: screenshot 546 vs DB 346
+- **Adamant Medic Couters** [paladin-gear]: Defense: screenshot 546 vs DB 346
+- **Adamant Restoration Couters** [paladin-gear]: Defense: screenshot 546 vs DB 346
+- **Alliance Restoration Couters** [paladin-gear]: Critical Strike: screenshot 246 vs DB 166
+- **Black Ice Gauntlets** [fighter-gear]: Accuracy: screenshot 59.9 vs DB 59.1
+- **Frostbound Hearthbinders** [paladin-gear]: Critical Strike: both screenshots show 4,230 vs DB 4,210
+- **Frostbound Stone Armguards** [paladin-gear]: Defense: both screenshots show 2,468 vs DB 2,448 / Critical Avoidance: both screenshots show 3,878 vs DB 1,878
+- **League's Restoration Tahadus** [paladin-gear]: Accuracy: screenshot 265 vs DB 176
+- **Adamant Gladiator Cuirass (IL728)** [paladin-gear]: Defense: screenshot 546 vs DB 346
+- **Adamant Medic Cuirass** [paladin-gear]: Accuracy: screenshot 164 vs DB 218 / Critical Strike: screenshot 218 vs DB 328 / Defense: screenshot 546 vs DB 346
+- **Adamant Restoration Cuirass** [paladin-gear]: Defense: screenshot 546 vs DB 346
+- **Frostforged Belt of the Companion** [paladin-gear]: Critical Avoidance: screenshot 2,351 vs DB 2,355 (both screenshots agree on 2,351)
+- **Frostforged Girdle of the Companion** [paladin-gear]: Defense: screenshot 1,496 vs DB 1,494
+- **Frostforged Girdle of the Companion** [paladin-gear]: Defense: screenshot 1,496 vs DB 1494
+- **Frostforged Talisman of the Companion** [paladin-gear]: Critical Severity: screenshot 2,565 vs DB 1,368
+- **True Ice Talisman of the Companion** [paladin-gear]: Critical Severity: screenshot 2700 vs DB 1440
+- **Adamant Gladiator Poleyns** [paladin-gear]: Defense: screenshot 546 vs DB 346 / Critical Avoidance 164 in DB not shown in screenshot; screenshot shows Awareness 164 instead / missing Awareness 164 in DB
+- **Adamant Medic Poleyns** [paladin-gear]: Defense: screenshot 546 vs DB 346
+- **Adamant Restoration Poleyns** [paladin-gear]: Defense: screenshot 546 vs DB 346
+- **Astral Raider's Greaves** [barbarian-gear]: Awareness: screenshot 1320 vs DB 990
+- **Frostbound Hearthboots** [paladin-gear]: Forte: screenshot 3172 vs DB 1172
+- **Frostbound Warboots** [paladin-gear]: Accuracy: screenshot 3055 vs DB 1055
+- **League's Elite Restoration Diralsaaqs** [paladin-gear]: Critical Strike: screenshot 542 vs DB 342
+- **Adamant Gladiator Armet** [paladin-gear]: Defense: screenshot 546 vs DB 346
+- **Adamant Medic Armet** [paladin-gear]: Defense: screenshot 546 vs DB 346
+- **Exalted Maiden's Ward Helm** [barbarian-gear]: Defense: screenshot 1538 vs DB 1518
+- **Frostbound Stonehelm** [paladin-gear]: Critical Avoidance: screenshot 3102 vs DB 5102
+- **League's Ward Taj** [paladin-gear]: Defense: screenshot 441 vs DB 529
+- **Primal Restoration Umqhele** [paladin-gear]: Equip Butcher's Remedy: screenshot reads 'you gain 1% of your health back' vs DB '3% of your health back'
+- **Primal Ward Umqhele** [paladin-gear]: Equip Butcher's Remedy: screenshot reads 'you gain 1% of your health back' vs DB '3% of your health back'
+- **Pulsar Armet** [barbarian-gear]: Defense: screenshot 1,950 vs DB 950
+- **Wintermarked Lifeward Helm** [cleric-gear]: Outgoing Healing: screenshot 3,420 vs DB 5,420
+- **Bronzewood Quauhololli · IL 500** [paladin-gear]: Deflection: screenshot 188 vs DB 187
+- **Dragon Bone Mace** [paladin-gear]: Critical Strike: screenshot 427 vs DB 422
+- **Runefrost Oath Shield** [paladin-gear]: Awareness: screenshot 3300 vs DB 1300
+- **Veinlit Dawnshard Raiment (id 5440, IL3800)** [paladin-gear]: Forte: screenshot shows 1,282 vs DB 1782 (confirmed across both screenshots _IL3800.png and _IL3800 (2).png)
+- **Frostsilver Circlet of Protection (id 5402, IL6000)** [paladin-gear]: Second stat is Deflect (Deflection in-game), not Deflect Severity: screenshot shows '+13,500 Deflection' vs DB field 'Deflect Severity: 13500'. Should be stored as Deflect: 13500. Confirmed across both screenshots _IL6000.png and _IL6000 (2).png.
+- **Rimetouched Band of Faith** [paladin-gear]: Power: screenshot 5,670 vs DB 15,670
+- **Rimetouched Circlet of Protection** [paladin-gear]: Defense: screenshot 5,670 vs DB 5,940
+- **Snowbound Halo of Mending** [paladin-gear]: Forte: screenshot 8,445 vs DB 6,345
+- **Cracked Lifebraid Vestment** [paladin-gear]: Critical Strike: screenshots (3) and base show 3,312 vs DB 1,312 (apparent DB typo — leading digit missing)
+- **Deep-Riven Aetherwrap** [paladin-gear]: Critical Severity: both screenshots show 4,365 vs DB 6,365
+- **Deep-Riven Lifebraid Vestment** [paladin-gear]: Power: both screenshots show 1,273 vs DB 1,275
+- **Frost-Riven Aetherwrap (IL4850)** [paladin-gear]: Critical Strike: screenshots show 2,619 vs DB 3,492
+- **Veinlit Aetherwrap (IL3800)** [paladin-gear]: Critical Severity: screenshots show 3,420 vs DB 5,420
+- **Crimson Scalebreaker's Rebel Gloves** [bard-gear]: DB is missing Forte; screenshot shows +810 Forte as a third stat (Critical Strike 1080, Defense 810, Forte 810)
+- **Dragonhide Band** [bard-gear]: Defense: screenshot 1425 vs DB 855
+- **Enchanted Bregan D'aerthe Assassin's Band** [bard-gear]: Accuracy: screenshot 1538 vs DB 1558 / Critical Strike: screenshot 923 vs DB 615
+- **Exalted Maiden's Assault Gloves** [bard-gear]: Critical Strike: screenshot 1538 vs DB 1518
+- **Umbral Duelist Bracers (IL728)** [ranger-gear]: Defense: screenshot +546 vs DB 218
+- **Pioneer Kenshar (IL500)** [ranger-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Primal Itztopilli (IL500)** [ranger-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Sunset Axes IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Sunset Longbow IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Vistani Axes IL500** [?]: Accuracy: screenshot 375 vs DB 376 / Critical Strike: screenshot 375 vs DB 376
+- **Vistani Longbow_IL500** [?]: Accuracy: screenshot 375 vs DB 376 / Critical Strike: screenshot 375 vs DB 376
+- **Winged Bow of the Blessed Blade_IL1150 (2)** [?]: Accuracy: screenshot 862 vs DB 863 / Critical Severity: screenshot 862 vs DB 863
+- **Winged Bow of the Blessed Blade_IL1150** [?]: Accuracy: screenshot 862 vs DB 863 / Critical Severity: screenshot 862 vs DB 863
+- **Woundgiver_IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Enchanted Bregan D'aerthe Assassin's Leathers** [bard-gear]: Accuracy: screenshot 1,538 vs DB 1,518 / Combat Advantage: screenshot 1,538 vs DB 1,518
+- **Exalted Maiden's Assault Hide** [bard-gear]: Critical Strike: screenshot 1,230 vs DB 1,250
+- **League's Assault Josan** [ranger-gear]: Combat Advantage: screenshot 265 vs DB 302 / Critical Severity: screenshot 176 vs DB 202 / Defense: screenshot 441 vs DB 504
+- **League's Elite Assault Josan** [ranger-gear]: Combat Advantage: screenshot 542 vs DB 361 / Critical Severity: screenshot 361 vs DB 342
+- **Greaves of the Scarlet Arcanum** [bard-gear]: Equip bonus (Momentum's Edge) standstill timer: screenshot shows 'more than 5 seconds' vs DB '3 seconds'
+- **League's Elite Assault Hidhas** [ranger-gear]: Critical Severity: screenshot 542 vs DB 342
+- **Trapper of the Twilight's Boots** [bard-gear]: Critical Severity: screenshot 300 vs DB 375
+- **Black Ice Hood** [ranger-gear]: Missing stat in DB: Deflection 131 visible in screenshot but absent from dbRatingStats
+- **Diadem of the Crimson Gale** [bard-gear]: Equip bonus Advantageous Strike: screenshot shows 'for 8 seconds' vs DB 'for 6 seconds'
+- **Exalted Maiden's Assault Shroud** [bard-gear]: Accuracy: screenshot 1538 vs DB 1518
+- **Fractal Barbut** [bard-gear]: Forte: screenshot 2261 vs DB 2265
+- **Manticore Assault Hood** [ranger-gear]: Defense: screenshot +567 vs DB 113
+- **Manticore Duelist Hood** [ranger-gear]: Defense: screenshot 567 vs DB 170
+- **Stealer of the Star's Hood** [bard-gear]: Critical Strike: screenshot 375 vs DB 525
+- **Phantom Fang (IL4000)** [ranger-gear]: Damage: screenshot 100 vs DB 125
+- **Titansteel Tabars (IL800)** [ranger-gear]: Critical Strike: screenshot 300 vs DB 150
+- **Dragonhide Band** [bard-gear]: Defense: screenshot 1425 vs DB 855
+- **Enchanted Bregan D'aerthe Assassin's Band** [bard-gear]: Accuracy: screenshot 1538 vs DB 1558 / Critical Strike: screenshot 923 vs DB 615
+- **Exalted Maiden's Assault Gloves** [bard-gear]: Critical Strike: screenshot 1,538 vs DB 1,518 (all four screenshots agree on 1,538)
+- **Enchanted Bregan D'aerthe Assassin's Leathers** [bard-gear]: Accuracy: screenshot 1,538 vs DB 1,518 / Combat Advantage: screenshot 1,538 vs DB 1,518
+- **Exalted Maiden's Assault Hide** [bard-gear]: Critical Strike: screenshot 1,230 vs DB 1,250 (both screenshots agree on 1,230)
+- **Lionsmane Duelist Vest** [rogue-gear]: Awareness: screenshot 168 vs DB 148
+- **Enchanted Bregan D'aerthe Assassin's Longboots** [bard-gear]: Critical Severity: screenshot 1,538 vs DB 1518
+- **Greaves of the Scarlet Arcanum (IL5000)** [bard-gear]: Equip bonus Momentum's Edge: screenshot says 'stand still for more than 5 seconds' vs DB '3 seconds'
+- **Exalted Maiden's Assault Shroud** [bard-gear]: Accuracy: screenshot 1538 vs DB 1518
+- **Fractal Barbut** [bard-gear]: Forte: screenshot 2,261 vs DB 2,265 (all 3 screenshots agree on 2,261)
+- **Manticore Duelist Mask** [bard-gear]: Defense: screenshot 567 vs DB 547
+- **Stealer of the Star's Hood** [bard-gear]: Critical Strike: screenshot 375 vs DB 525
+- **Elk Tribe Noble's Poniard** [rogue-gear]: Critical Severity: screenshot 97.6 vs DB 98 / Critical Avoidance: screenshot 97.6 vs DB 98
+- **Hammerstone Mace** [rogue-gear]: Critical Severity: screenshot 79.2 vs DB 79 / Critical Avoidance: screenshot 79.2 vs DB 79 (confirmed by both screenshots _IL352.png and _IL352 (2).png)
+- **Crystal Dirk** [rogue-gear]: Forte: screenshot 2092 vs DB 2790
+- **Armor of Quick Recovery** [unbound-gear]: Critical Strike: screenshot 244 vs DB 354
+- **Stalkwrapped Armor** [unbound-gear]: Equip bonus threshold: screenshot reads 'less than 30000 Critical Avoidance' vs DB '3000 Critical Avoidance'
+- **Wintermarked Skirmisher Barbute** [unbound-gear]: Forte: screenshot 2565 vs DB 5130
+- **Elemental Elven Ward Necklace** [unbound-gear]: Critical Avoidance: screenshot 518 vs DB 345
+- **Coldsilver Halo of Mending** [unbound-gear]: Forte: screenshot +7,695 vs DB 7895
+- **Ring of the Shadowstalker +5** [unbound-gear]: Combat Advantage: screenshot 536 vs DB 516
+- **Ancient Scalebreaker's Cuffs** [warlock-gear]: Missing stat in DB: screenshot shows +765 Forte but DB has no Forte entry (DB only has Critical Severity 1020 and Defense 765)
+- **Dinohide Assault Shabas** [warlock-gear]: Critical Severity: screenshot 235 vs DB 215 / Missing equip bonus in DB: Survivor's Parry — Gain 25 Deflect for each percent of health you are missing
+- **Astral Raider's Coat** [warlock-gear]: Critical Avoidance: screenshot 990 vs DB 1980
+- **Astral Raider's Leathers** [bard-gear]: Deflection: screenshot 990 vs DB 1980
+- **Lolthian Leathers** [warlock-gear]: Awareness: screenshot 923 vs DB 1845
+- **Lolthian Raiment** [bard-gear]: Critical Severity: screenshot 1230 vs DB 1210 / Third stat is Deflection 923 in screenshot, not Incoming Healing 1845 as in DB / Equip bonus solo Forte value: screenshot says 5,000 vs DB says 10,000
+- **Manticore Executioner Longcoat** [warlock-gear]: Defense: screenshot 567 vs DB 547 / Fourth stat is Critical Avoidance 170 in screenshot, DB stores it as Awareness 170 (these are distinct NW stats)
+- **Ultraviolet Elven Coat** [warlock-gear]: Equip bonus cooldown: screenshot shows '(30 second cooldown)' vs DB '(10 second cooldown)'
+- **Charmed Boots of the Successor** [warlock-gear]: Critical Avoidance: screenshot 371 vs DB 379
+- **Company Raid Pigaches** [warlock-gear]: Accuracy: screenshot 176 vs DB 265 / DB has Combat Advantage: 176 — screenshot shows Critical Strike: 265 (no Combat Advantage stat present)
+- **Lolthian Cackrows** [bard-gear]: Awareness: screenshot 1,230 vs DB 1,210
+- **Lolthian Poulaines** [warlock-gear]: Defense: screenshot 923 vs DB 1,845
+- **Wintermarked Pilgrim Poleyns** [bard-gear]: Outgoing Healing: screenshot 3,420 vs DB 5,420 (both screenshots for id 5489 agree on 3,420)
+- **Wintermarked Trail Boots** [warlock-gear]: Accuracy: screenshot 3,335 vs DB 5,335 (both screenshots for id 5485 agree on 3,335)
+- **Curselord's Raid Ushanka** [warlock-gear]: Missing stat in DB: Defense 578 visible in screenshot but absent from dbRatingStats
+- **Depthcured Skullcap** [bard-gear]: Equip bonus trigger interval: screenshot reads 'every 5 seconds' vs DB 'Every 3 seconds'
+- **Depthweave Hood** [warlock-gear]: Second stat: screenshot shows Forte 2250, DB has Combat Advantage 2250 / Equip bonus trigger interval: screenshot reads 'every 5 seconds' vs DB 'Every 3 seconds'
+- **Lolthian Circlet** [warlock-gear]: Deflection: screenshot 923 vs DB 1845
+- **Lolthian Coif** [bard-gear]: Critical Strike: screenshot 1230 vs DB 1210
+- **Mastered Duergar Mercenary's Hood** [warlock-gear]: Accuracy: screenshot 1425 vs DB 1538
+- **Radiant Elven Hood** [warlock-gear]: Equip bonus Spelljammer's Advantage value: screenshot +0.85% Combat Advantage per 3s vs DB +0.65%
+- **Tempter of the Twilight's Hat** [warlock-gear]: Defense: screenshot 450 vs DB 300
+- **Wintermarked Hunter Hood** [warlock-gear]: Forte: screenshot 3,848 vs DB 5,848
+- **Stormforged Pactblade_IL2000** [?]: Combat Advantage: screenshot 1500 vs DB 500
+- **Codex of Eternal Chains (IL3400)** [warlock-gear]: Critical Severity: screenshot 3,060 vs DB 1,060 / Set name: screenshot shows 'Whisper of Power' vs DB 'Impending Doom'
+- **Dragon Bone Grimoire (IL800)** [warlock-gear]: Combat Advantage: screenshot 422 vs DB 350 / Critical Strike: screenshot 350 vs DB 422 (values are transposed in DB)
+- **Duergar Mercenary's Steel Book (IL1900)** [warlock-gear]: Defense: screenshot 1425 vs DB 1423
+- **Elk Tribe Noble's Grimoire (IL399)** [warlock-gear]: Accuracy: screenshot 97.6 vs DB 98 / Critical Avoidance: screenshot 97.6 vs DB 98
+- **Hammerstone Grimoire (IL 352)** [warlock-gear]: Awareness: screenshot 79.2 vs DB 80 / Critical Avoidance: screenshot 79.2 vs DB 80
+- **Ancient Scalebreaker's Cuffs** [warlock-gear]: Missing stat in DB: Forte 765 (visible in screenshot as third stat +765 Forte)
+- **Apprentice's Runed Wristguard** [warlock-gear]: Critical Severity: screenshot 434 vs DB 414
+- **Astral Raider's Sleeves** [warlock-gear]: Incoming Healing: screenshot 990 vs DB 1980
+- **Wintermarked Swiftguards (IL5700)** [warlock-gear]: Forte: screenshot 3,848 vs DB 5,848 (confirmed across both screenshots of this item)
+- **Lifeforged Orb (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Lifeforged Talisman (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Manaseeker's Orb (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Manaseeker's Talisman (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Mirage Orb (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Mirage Talisman (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Obsidian Miztonhiyo IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Pioneer Fanous IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Pioneer Talasam IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Primal Miztonhiyo IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Primal Quiilpia IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Sunset Orb (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Sunset Talisman (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Teak Talasam IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Teak Tamima IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Twisted Skulls IL300** [?]: Combat Advantage: screenshot 225 vs DB 224
+- **Twisted Skulls IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Twisted Talisman IL300** [?]: Combat Advantage: screenshot 225 vs DB 224
+- **Twisted Talisman (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Vistani Orb (IL500)** [wizard-gear]: Accuracy: screenshot 375 vs DB 376 / Critical Strike: screenshot 375 vs DB 376
+- **Vistani Talisman (IL500)** [wizard-gear]: Accuracy: screenshot 375 vs DB 376 / Critical Strike: screenshot 375 vs DB 376
+- **Astral Raider's Coat** [warlock-gear]: Critical Avoidance: screenshot 990 vs DB 1980
+- **Demon Forged Robe** [warlock-gear]: Devil Hunter equip bonus: screenshot '+1% Damage against Devils' vs DB '+7% Damage against Devils'
+- **Devil Forged Robe** [warlock-gear]: Devil Hunter equip bonus: screenshot '+1% Damage against Demons' vs DB '+7% Damage against Demons'
+- **Exalted Maiden's Raid Coat** [warlock-gear]: Combat Advantage: screenshot 1538 vs DB 1518 / Defense: screenshot 1538 vs DB 1518
+- **Lolthian Leathers** [warlock-gear]: Awareness: screenshot 923 vs DB 1845
+- **Wintermarked Trail Boots (IL5700 (2))** [warlock-gear]: Accuracy: screenshot shows 3,335 vs DB 5,335
+- **Wintermarked Trail Boots (IL5700)** [warlock-gear]: Accuracy: screenshot shows 3,335 vs DB 5,335
+- **Exalted Maiden's Raid Mask** [warlock-gear]: Critical Severity: screenshot shows 1,230 vs DB 1210 (both screenshots, IL2050 and IL2050 (2), confirm 1,230)
+- **Tempter of the Twilight's Hat** [warlock-gear]: Defense: screenshot 450 vs DB 300
+- **Wintermarked Hunter Hood** [warlock-gear]: Forte: screenshot 3848 vs DB 5848
+- **Howling Orb · IL 300** [wizard-gear]: Combat Advantage: screenshot 225 vs DB 224
+- **Howling Orb · IL 500** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Lifeforged Orb (IL 500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Mirage Orb (IL 500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Teak Tamima (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Twisted Skulls (IL300)** [wizard-gear]: Combat Advantage: screenshot 225 vs DB 224
+- **Twisted Skulls (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Vistani Orb (IL500)** [wizard-gear]: Accuracy: screenshot 375 vs DB 376 / Critical Strike: screenshot 375 vs DB 376
+- **Howling Talisman · IL 300** [wizard-gear]: Combat Advantage: screenshot 225 vs DB 224
+- **Howling Talisman · IL 500** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Lifeforged Talisman (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Mirage Talisman (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Pioneer Talasam (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Primal Quiilpia (IL500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376
+- **Sunset Talisman IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Twisted Talisman IL300** [?]: Combat Advantage: screenshot 225 vs DB 224
+- **Twisted Talisman IL500** [?]: Combat Advantage: screenshot 375 vs DB 376
+- **Vistani Talisman IL500** [?]: Accuracy: screenshot 375 vs DB 376 / Critical Strike: screenshot 375 vs DB 376
+
+## WRONG equip-bonus text/condition — 57
+- **Gauntlets of the Unyielding Bastion** [barbarian-gear]: DB equip bonus description reads '0.5% Awareness' — screenshot reads '+7.5% Awareness for 10 seconds'
+- **Exalted Maiden's Ward Cuirass** [barbarian-gear]: Equip bonus description mismatch: screenshot reads 'You do 6% more damage to enemies that are facing you.' DB stores 'You do 6% more damage to enemies that are not facing you.' The word 'not' in the DB is incorrect — the condition is inverted.
+- **Starforged Cuirass** [barbarian-gear]: Equip bonus 'Rothe's Intimidation': DB description includes '5,517 damage' but the screenshot tooltip does not display a numeric damage value — the figure cannot be confirmed or denied from this image
+- **Ancient Scalebreaker's Gloves** [bard-gear]: Equip bonus description distance mismatch: screenshot says 'When you have no teammates within 30\' of you' but DB says 'When you have teammates within 10\' of you' (wrong distance AND wrong condition — 'no teammates' vs 'have teammates')
+- **Astral Raider's Armlets** [bard-gear]: Equip bonus description in DB is missing 'Disabled in Thay Arena PvP.' clause visible in screenshot
+- **Bregan D'aerthe Expert's Gloves** [bard-gear]: Equip bonus description (Medic's Regards) is garbled in DB: DB says 'you will immediately be reduced (max 5 targets within 15 ft), and will gain 3% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds' but screenshot shows 'your threat will immediately be reduced (max 5 targets within 15 ft), and will gain 3% Incoming Healing, Outgoing Healing for 10 seconds' — DB text has 'generate less threat' incorrectly placed inside the buff list and is missing clarity on what is reduced
+- **Enchanted Bregan D'aerthe Expert's Gloves** [bard-gear]: Equip bonus description wrong: screenshot reads 'Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, your threat will immediately be reduced (max 5 targets within 15 ft), and will gain 5% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds.' DB reads 'Whenever you heal your target for more than 10% of your Maximum Hit Points in a single blow, you will immediately be reduced (max 5 targets within 15 ft), and will gain 5% Incoming Healing, Outgoing Healing, and generate less threat for 10 seconds.'
+- **Mugger of the Maze's Braces** [bard-gear]: Equip bonus 'Bulwark's Shield': screenshot reads '3% less damage from Ranged attacks' but DB stores '5% less damage from Ranged attacks'
+- **Radiant Elven Armband** [bard-gear]: Equip bonus 'Challenger's Presence' stack-loss condition: screenshot reads 'Every 2 seconds you are in combat with 4 or more enemies, lose 1 stack' but DB stores 'Every 2s in combat with 1 or fewer enemies, lose 1 stack'
+- **Cuirass of the Lifebloom** [bard-gear]: Equip bonus Radiant Empowerment: screenshot says +5.5% Power, DB says +3.5% Power
+- **Hauberk of the Crimson Gale** [bard-gear]: Equip bonus 'Lethal Focus': screenshot reads '+3% Power and +4% Accuracy', DB description stores '+3% Hit Points and +4% Accuracy' — 'Power' vs 'Hit Points' discrepancy confirmed across both screenshots
+- **Dragonhide Crakows** [bard-gear]: Equip bonus description mismatch: screenshot shows 'gain 5,000 Forte' (solo) and 'gain 10,000 Critical Strike' (party); DB description says 'gain 10,000 Forte' (solo) and 'gain 10,000 Critical Strike' (party)
+- **Dragonhide Pikes** [bard-gear]: Equip bonus description mismatch: screenshot shows 'gain 5,000 Defense' (solo); DB description says 'gain 3,000 Defense' (solo). Party bonus (10,000 Accuracy) matches.
+- **Lolthian Cackrows** [bard-gear]: Awareness: screenshot 1,230 vs DB 1,210 / Equip bonus 'The Ol' Switcheroo' actual effect is '+5% Critical Strike, -7500 Combat Advantage' (screenshot) — DB stores only a placeholder description; the +5% Critical Strike percent stat is absent from dbPercentStats
+- **Weathered Wood Cuisses** [bard-gear]: Equip bonus description: DB says 'For every 3 seconds you are in combat, you gain 200 Power.' Screenshot shows 'For every 5 seconds you are in combat, you gain 200 Power.'
+- **Depthcured Cap** [bard-gear]: Equip bonus description mismatch: DB says 'gain 1% Combat Advantage' per 5 seconds in combat; both screenshots show '0.8% Combat Advantage' per 5 seconds
+- **Diadem of the Crimson Gale** [bard-gear]: Equip bonus duration mismatch: DB description says 'for 6 seconds'; both screenshots show 'for 8 seconds'
+- **Gauntlets of the Scarlet Arcanum** [bard-gear]: Equip bonus description error: screenshot reads 'your enemy suffers -4% Critical Severity' (debuff), DB stores '+4% Critical Severity' (wrong sign — implies buff to enemy)
+- **Hauberk of the Crimson Gale** [bard-gear]: Lethal Focus equip bonus: screenshot reads '+3% Power and +4% Accuracy for 7 seconds' vs DB '+3% Hit Points and +4% Accuracy for 7 seconds'
+- **Dungeon Raider's Hide** [bard-gear]: Equip bonus description in DB is abbreviated ('When damaged for more than 10% of Max HP in a single blow, gain 5% Defense for 10s') vs full in-game text ('Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds') — functional match, flagged for completeness only
+- **Ultraviolet Elven Vest** [bard-gear]: Equip bonus cooldown: screenshot shows '30 second cooldown', DB description says '10 second cooldown'
+- **Wintermarked Lifeward Cuirass** [cleric-gear]: Equip bonus max-stack text: screenshot shows '+5.5% Power and +3.5% Critical Severity', DB description says '+5.5% Power and +5.5% Critical Severity'
+- **Forest Guardian's Raid Coif** [bard-gear]: Equip bonus Fey Hunter description: screenshot '+5% Damage in all of Sharandar.' vs DB '+3% Damage in all of Sharandar.'
+- **Gauntlets of the Unyielding Bastion** [barbarian-gear]: Equip bonus description has wrong values: screenshot shows '+7.5% Awareness for 10 seconds (20 second cooldown)' but DB description says '0.5% Awareness 10s (10s cd)' — Awareness magnitude is 7.5% not 0.5%, cooldown is 20s not 10s
+- **Gauntlets of the Unyielding Bastion** [barbarian-gear]: Equip bonus 'Reprisal Reflex': screenshot shows +7.5% Awareness, DB stores 0.5% Awareness / Equip bonus 'Reprisal Reflex': screenshot shows 20 second cooldown, DB stores 10s cd
+- **Frostbound Hearthtunic** [paladin-gear]: Equip bonus "Battle Harmony" description in DB is missing the first sentence shown in screenshot: "You gain 3,350 Outgoing Healing." DB only stores the second sentence ("While in The Reched Edge, teammates who are 25 or closer to you gain 1% Defense.")
+- **Wintermarked Bulwark Cuirass** [barbarian-gear]: Equip bonus description: screenshot reads 'Deflect Severity by 11% and Forte by 7%' vs DB 'Deflect Severity by 15% and Forte by 7%' (both screenshots agree on 11%)
+- **Wintermarked Lifeward Cuirass** [cleric-gear]: Equip bonus description: screenshot reads '+0.55% Power and +0.35% Critical Severity' per stack vs DB '+0.55% Power and +0.55% Critical Severity' / Equip bonus description: screenshot reads 'Max 10 Stacks: +5.5% Power and +3.5% Critical Severity' vs DB '+5.5% Power and +5.5% Critical Severity'
+- **Enchanted Depthforged Greaves** [barbarian-gear]: Equip bonus description says '3.75% Awareness and Deflect' but screenshot shows '3.8% Awareness and Deflect while at full health'
+- **Frostbound Hearthhood** [paladin-gear]: Equip bonus description stores '1.008' and '5.04%' as if percent values, but screenshot clearly shows integer ratings: '1,008 Outgoing Healing and Forte' and 'Max 5 Stacks: 5,041 Outgoing Healing and Forte' — these are rating values, not percent
+- **Ancient Scalebreaker's Gloves** [bard-gear]: Equip bonus distance: screenshot says 'no teammates within 30\' of you' but DB description says 'within 10\' of you'
+- **Hauberk of the Crimson Gale** [bard-gear]: Equip bonus 'Lethal Focus': screenshot says '+3% Power and +4% Accuracy' vs DB '+3% Hit Points and +4% Accuracy'
+- **Depthcured Cap** [bard-gear]: Equip bonus description: screenshot shows 'gain 0.8% Combat Advantage' per 5 seconds vs DB '1% Combat Advantage'
+- **Forest Guardian's Raid Coif** [bard-gear]: Equip bonus Fey Hunter description: screenshot shows '+5% Damage in all of Sharandar.' vs DB '+3% Damage in all of Sharandar.'
+- **Ancient Scalebreaker's Gloves** [bard-gear]: Equip bonus description: DB says 'When you have teammates within 10’ of you' — screenshot says 'When you have no teammates within 30’ of you' (missing 'no'; distance 10’ in DB vs 30’ in screenshot)
+- **Astral Raider's Wristguards** [bard-gear]: Equip bonus name: DB 'Scaled Power' vs screenshot 'Scaled Furor' / Equip bonus description: DB says 'up to 70% bonus Damage' vs screenshot 'up to 20% bonus Damage'
+- **Banded Bracers of the Successor** [bard-gear]: Equip bonus description wording: DB stores '(60s CD)' but both screenshots show '(60 second cooldown)'
+- **Crimson Scalebreaker's Rebel Gloves** [bard-gear]: Missing stat: both screenshots show +810 Forte, DB has no Forte entry (DB only has Critical Strike 1080 and Defense 810) / Equip bonus description: DB says 'When you have teammates within 30’ of you' — screenshots say 'When you have no teammates within 30’ of you' (missing 'no')
+- **Gauntlets of the Scarlet Arcanum** [bard-gear]: Equip bonus 'Devastating Precision' description: DB says 'your enemy suffers +4% Critical Severity' but all three screenshots read '-4% Critical Severity' (enemy suffers a debuff/penalty, not a buff)
+- **Mugger of the Maze's Braces** [bard-gear]: Equip bonus percentage wrong: DB says '5% less damage from Ranged attacks', screenshot says '3% less damage from Ranged attacks'
+- **Hauberk of the Crimson Gale** [bard-gear]: Equip bonus 'Lethal Focus' text: screenshot reads '+3% Power and +4% Accuracy' but DB stores '+3% Hit Points and +4% Accuracy' — both screenshots agree the game text says Power, not Hit Points
+- **Ultraviolet Elven Vest** [bard-gear]: Equip bonus cooldown mismatch: screenshot reads '(30 second cooldown)' but DB description states '(10 second cooldown)'
+- **Apprentice's Runed Gaiters** [bard-gear]: Equip bonus value mismatch: screenshot reads 'Gain 250 Combat Advantage for each enemy you are engaged in battle with' but DB description states 'Gain 230 Combat Advantage'
+- **Apprentice's Runed Gaiters** [bard-gear]: Equip bonus 'Death Defier's Advantage': screenshot reads 'Gain 250 Combat Advantage for each enemy' vs DB description '230 Combat Advantage'
+- **Dragonhide Pikes** [bard-gear]: Equip bonus 'This or That': screenshot says 'gain 5,000 Defense' (when not in a party); DB description says 'gain 3,000 Defense'
+- **Radiant Elven Boots** [bard-gear]: Equip bonus 'Wildspace Precision' non-Wildspace value: screenshot shows +5% Critical Strike in non-Wildspace, DB description says +3% Critical Strike in non-Wildspace
+- **Depthcured Cap** [bard-gear]: Equip bonus (Combatant's Advantage) per-stack value: screenshot shows 0.8% Combat Advantage per 5s, DB description says 1% Combat Advantage per 5s
+- **Fearbringers (IL672)** [unbound-gear]: Equip bonus percentage wrong: DB description says 'your At-Will and Encounter Powers do 30% more damage' but screenshot reads '3% more damage'. The Daily penalty (30% less) is correct.
+- **Frostsilver Hoop of Tenacity** [unbound-gear]: Charging Bull equip bonus description: DB says '+3% Forte' but screenshot shows '+5% Forte'
+- **Demon Forged Robe** [warlock-gear]: equip bonus Devil Hunter: DB description says '+7% Damage against Devils' but screenshot shows '+1% Damage against Devils'
+- **Devil Forged Robe** [warlock-gear]: equip bonus Devil Hunter: DB description says '+7% Damage against Demons' but screenshot shows '+1% Damage against Demons'
+- **Mage of the Maze's Robes** [warlock-gear]: Equip bonus Butcher's Remedy heal percent: screenshot says 1% vs DB description says 3%
+- **Primal Assault Shabas** [warlock-gear]: dbEquipBonuses is empty but screenshot shows Equip: Butcher's Might (When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Power for 10 seconds. Max stack 5)
+- **Primal Raid Shabas** [warlock-gear]: dbEquipBonuses is empty but screenshot shows Equip: Butcher's Might (When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Power for 10 seconds. Max stack 5)
+- **Dragonhide Crakows** [bard-gear]: Equip bonus description mismatch: DB says 'gain 10,000 Forte' when not in a party; screenshot shows 'gain 5,000 Forte'
+- **Dragonhide Poulaines** [warlock-gear]: Equip bonus description mismatch: DB says 'gain 3,000 Defense' when not in a party; screenshot shows 'gain 5,000 Defense'
+- **Ultraviolet Elven Coat** [warlock-gear]: Equip bonus description mismatch: screenshot reads 'When you use a Daily power, your next encounter power will deal 20% more damage.' but DB stores 'When you deal damage with a Daily power, your next encounter power will deal 20% more damage.'
+
+## WRONG equip-bonus name — 29
+- **Astral Raider's Gauntlets** [barbarian-gear]: Equip bonus name: screenshot reads 'Scaled Furor', DB stores 'Scaled Disdain'
+- **Pulsar Breastplate** [barbarian-gear]: Equip bonus name: screenshot shows 'Controlled Strike', DB stores 'Critical Strike'
+- **Astral Raider's Wristguards** [bard-gear]: Equip bonus name: screenshot shows 'Scaled Furor' but DB stores 'Scaled Power'
+- **Cuirass of the Scarlet Arcanum** [bard-gear]: Equip bonus name: screenshot shows 'Focused Burst', DB stores 'Focused Frenzy' (confirmed across all 3 screenshots: IL5000.png, IL5000 (2).png, IL5000 (3).png)
+- **Helm of the Scarlet Arcanum** [bard-gear]: Equip bonus name: DB stores 'Steady Henson' but all three screenshots show 'Steady Precision'
+- **Astral Raider's Wristguards** [bard-gear]: Equip bonus name: screenshot shows 'Scaled Furor', DB stores 'Scaled Power' / Equip bonus effect: screenshot shows 'up to 20% bonus Damage', DB stores 'up to 70% bonus Damage'
+- **Cuirass of the Scarlet Arcanum** [bard-gear]: Equip bonus name: screenshot shows 'Focused Burst' vs DB 'Focused Frenzy' (all three screenshots agree on 'Focused Burst')
+- **Helm of the Scarlet Arcanum** [bard-gear]: Equip bonus name: screenshot 'Steady Precision' vs DB 'Steady Henson'
+- **Helm of the Scarlet Arcanum** [bard-gear]: Equip bonus name: screenshot shows 'Steady Precision', DB has 'Steady Henson'
+- **Astral Raider's Gauntlets** [barbarian-gear]: Equip bonus name: screenshot shows 'Scaled Furor' vs DB 'Scaled Disdain'
+- **Pulsar Breastplate** [barbarian-gear]: Equip bonus name: screenshot shows 'Controlled Strike', DB stores 'Critical Strike'
+- **Astral Raider's Gauntlets** [barbarian-gear]: Equip bonus name: screenshot 'Scaled Furor' vs DB 'Scaled Disdain'
+- **Pulsar Breastplate** [barbarian-gear]: Equip bonus name: screenshot shows 'Controlled Strike' vs DB 'Critical Strike'
+- **Frostbound Warhood** [paladin-gear]: Equip bonus name: DB stores 'Surging Empathy' but screenshot shows 'Surging Precision'
+- **Frostsilver Ring of Initiative** [paladin-gear]: Equip bonus name: screenshot shows 'Maiden's Advantage', DB stores 'Vanguard's Assurance'
+- **Rimetouched Coil of Wrath** [paladin-gear]: Equip bonus name: screenshot shows 'Divine Blessing (Lesser)', DB stores 'Divine Blessing (Cesser)' (typo in DB)
+- **Rimetouched Ring of Initiative** [paladin-gear]: Accuracy: screenshot 10,530 vs DB 10,800 / Equip bonus name: screenshot shows 'Brute's Might', DB stores 'Brave Warden'
+- **Snowbound Band of Faith** [paladin-gear]: Power: screenshot 4,935 vs DB 6,935 / Equip bonus name: screenshot shows 'Heroic Tactics', DB stores 'Inner Strength'
+- **Snowbound Circlet of Protection** [paladin-gear]: Defense: screenshot 4,935 vs DB 6,935 / Equip bonus name: screenshot shows 'Survivor's Reflexes', DB stores 'Survivor's Avoidance'
+- **Snowbound Coil of Wrath** [paladin-gear]: Equip bonus name: screenshot shows 'Assassin's Bloodbath', DB stores 'Assassin's Growth'
+- **Snowbound Ring of Initiative** [paladin-gear]: Equip bonus name: screenshot shows 'Explosive Force', DB stores 'Explosive Volley'
+- **Astral Raider's Wristguards** [bard-gear]: Equip bonus name: screenshot shows 'Scaled Furor' but DB stores 'Scaled Power' / Equip bonus damage cap: screenshot shows 'up to 20% bonus Damage' but DB stores 'up to 70% bonus Damage'
+- **Cuirass of the Scarlet Arcanum** [bard-gear]: Equip bonus name: DB has 'Focused Frenzy', screenshot reads 'Focused Burst' (confirmed across all three screenshots for this item)
+- **Helm of the Scarlet Arcanum** [bard-gear]: Equip bonus name: screenshot shows 'Steady Precision' vs DB 'Steady Henson'
+- **Helm of the Scarlet Arcanum** [bard-gear]: Equip bonus name: screenshot shows 'Steady Precision', DB stores 'Steady Henson'
+- **Cuirass of the Scarlet Arcanum** [bard-gear]: Equip bonus name mismatch: DB stores 'Focused Frenzy', screenshot shows 'Focused Burst'
+- **Cuirass of the Scarlet Arcanum** [bard-gear]: Equip bonus name: screenshot shows 'Focused Burst', DB stores 'Focused Frenzy'
+- **Helm of the Scarlet Arcanum** [bard-gear]: Equip bonus name: screenshot shows 'Steady Precision' vs DB 'Steady Henson' (all 3 screenshots agree on 'Steady Precision')
+- **Veinlit Stormbind Tunic** [paladin-gear]: Accuracy: screenshot 1852 vs DB 1862 / Equip bonus name: screenshot shows 'Precision Tactics' (When your Stamina is over 75%, your Critical Strike is increased by 10,625) vs DB 'Freezing Grasp (2/2)' (+4% Accuracy set bonus)
+
+## missing SET tag — 150
+- **Dragonflight Assault Greaves** [barbarian-gear]: Screenshot shows 'Set Dragonflight (0/4)' set membership; DB has no equip bonuses and no set reference
+- **Dragonflight Raid Greaves** [barbarian-gear]: Screenshot shows 'Set Dragonflight (0/4)' set membership; DB has no equip bonuses and no set reference
+- **Antique Greataxe of the Vale** [barbarian-gear]: Set tag missing in DB: screenshot shows 'Set Vale (0/2)' but DB has no setName/pieces entry
+- **Bismuth Great Sword** [barbarian-gear]: Damage: screenshot shows +100, DB stores 50 / Set name mismatch: screenshot shows 'Set Prismatic Defier of Dread (0/2)', DB stores setName 'Defier of Dread'
+- **Blaspheme Greataxe** [barbarian-gear]: Damage stat missing in DB: screenshot shows +100 Damage / Set tag missing in DB: screenshot shows 'Set Blaspheme (0/2)' but DB has no setName/pieces entry
+- **Duergar Mercenary's Steel Hammer** [barbarian-gear]: Damage stat missing in DB: screenshot shows +200 Damage / Set tag missing in DB: screenshot shows 'Set Duergar Weapon Set (0/2)' but DB has no setName/pieces entry
+- **Durgarn Thord Halberd** [barbarian-gear]: Set bonus missing in DB: screenshot shows Set Scalebreaker's Wrath (0/2) but dbEquipBonuses is empty
+- **Fortified Greataxe of the Vale** [barbarian-gear]: Set bonus missing in DB: screenshot shows Set Fortified Vale (0/2) but dbEquipBonuses is empty
+- **Grand Alliance Greatsword** [barbarian-gear]: Set bonus missing in DB: screenshot shows Set Grand Alliance (0/2) but dbEquipBonuses is empty
+- **Mirage Greatsword** [barbarian-gear]: Set bonus missing in DB: screenshot shows Set Mirage (0/2) but dbEquipBonuses is empty
+- **Stronghold Claymore (IL300)** [barbarian-gear]: Set bonus missing in DB: screenshot shows Set Stronghold Unity (0/2) but dbEquipBonuses is empty
+- **Stronghold Claymore (IL400)** [barbarian-gear]: Set bonus missing in DB: screenshot shows Set Stronghold Unity (0/2) but dbEquipBonuses is empty
+- **Stronghold Claymore (IL500)** [barbarian-gear]: Set bonus missing in DB: screenshot shows Set Stronghold Unity (0/2) but dbEquipBonuses is empty
+- **Sunset Greataxe** [barbarian-gear]: Set bonus missing in DB: screenshot shows Set Sun (0/2) but dbEquipBonuses is empty
+- **Antique Axe Knot of the Vale** [barbarian-gear]: Set bonus missing in DB: screenshot shows Set Vale (0/2) but dbEquipBonuses is empty
+- **Bismuth Charm** [barbarian-gear]: Damage 100 present in screenshot but missing from dbRatingStats / Set name: screenshot shows 'Prismatic Defier of Dread' vs DB 'Defier of Dread'
+- **Duergar Mercenary's Steel Sword Knot_IL1900** [?]: Screenshot shows Set Duergar Weapon Set (0/2) — no equip bonus / set entry in DB
+- **Durgarn Thord Axe Knot_IL1850** [?]: Screenshot shows Set Scalebreaker's Wrath (0/2) — no equip bonus / set entry in DB
+- **Grand Alliance Sword Knot_IL1700** [?]: Screenshot shows Set Grand Alliance (0/2) — no equip bonus / set entry in DB
+- **Mirage Sword Knot_IL650** [?]: Screenshot shows Set Mirage (0/2) — DB equip bonuses array is empty (missing set entry)
+- **Starcore Axe Knot_IL2500** [?]: Screenshot shows Set Dark Matter (0/2) — DB equip bonuses array is empty (missing set entry)
+- **Stronghold Sword Knot (IL300)** [barbarian-gear]: Set membership missing in DB: screenshot shows 'Set Stronghold Unity (0/2)' but dbEquipBonuses is empty
+- **Stronghold Sword Knot (IL500)** [barbarian-gear]: Set membership missing in DB: screenshot shows 'Set Stronghold Unity (0/2)' but dbEquipBonuses is empty
+- **Drowcraft Gloves** [bard-gear]: Missing set membership in DB: screenshot shows 'Set Drowcraft (0/4)' but dbEquipBonuses is empty — no set record stored
+- **Obsidian Rapier IL350** [?]: Missing equip bonus in DB: screenshot shows 'Set Masterwork III Weapon Set (0/2)' but dbEquipBonuses is empty
+- **Obsidian Rapier IL500** [?]: Missing equip bonus in DB: screenshot shows 'Set Masterwork III Weapon Set (0/2)' but dbEquipBonuses is empty
+- **Obsidian Rapier IL650** [?]: Missing equip bonus in DB: screenshot shows 'Set Masterwork III Weapon Set (0/2)' but dbEquipBonuses is empty
+- **Obsidian Rapier IL800** [?]: Accuracy: screenshot 300 vs DB 500 / Critical Strike: screenshot 300 vs DB 500 / Missing equip bonus in DB: screenshot shows 'Set Masterwork III Weapon Set (0/2)' but dbEquipBonuses is empty
+- **Shadesinger's Lute IL500** [?]: DB dbEquipBonuses is empty but screenshot shows Set Weapons of the Shadesinger (0/2) — set bonus entirely missing from DB
+- **Strings of the Forsaken IL3400** [?]: Set name: screenshot shows 'Whisper of Power (0/2)' vs DB setName 'Impending Doom'
+- **Sunset Lute IL350** [?]: Set name: screenshot shows 'Set Sun (0/2)' vs DB setName 'Sun Set'
+- **Twisted Cords IL300** [?]: DB dbEquipBonuses is empty but screenshot shows Set Duality (0/2) — set bonus entirely missing from DB
+- **Twisted Cords IL400** [?]: DB dbEquipBonuses is empty but screenshot shows Set Duality (0/2) — set bonus entirely missing from DB
+- **Aegis of the Condemned (IL3400)** [paladin-gear]: DB equip bonus name is 'Impending Doom (2/2)' with a DPS/Heal set-bonus description, but screenshot shows 'Set Whisper of Power (0/2)' — wrong set name and description stored in DB
+- **Oathkeeper's Shield · IL 800** [paladin-gear]: Missing set bonus in DB: screenshot shows 'Set Weapons of the Oathkeeper (0/2)' but dbEquipBonuses is empty
+- **Cracked Dawnshard Raiment** [paladin-gear]: Critical Strike: screenshot 3312 vs DB 2484 / Power: screenshot shows +1208, missing from DB entirely / Forte: screenshot 1552 vs DB 2484 / Critical Severity: DB has 2484 but stat not visible in screenshot / Action Point Gain 1.5% in DB but screenshot shows Stamina Regeneration 1.5% instead / Equip bonus 'Rested Healing' (Outgoing Healing +7.5% when Stamina >75%) in screenshot does not match DB 'Occult Advantage' (+9% Critical Severity, -5% Defense) / Freezing Touch set bonus in DB not confirmed in screenshot (set text not visible)
+- **Reinforced Dragonflight Raid Bracers** [ranger-gear]: Screenshot shows 'Set Dragonflight (0/4)' set membership text but dbEquipBonuses is empty — set bonus entry missing from DB
+- **Trailblazer's Assault Bracers** [ranger-gear]: Screenshot shows 'Set Relic (0/4)' set membership text but dbEquipBonuses is empty — set bonus entry missing from DB
+- **Trailblazer's Raid Bracers** [ranger-gear]: Screenshot shows 'Set Relic (0/4)' set membership text but dbEquipBonuses is empty — set bonus entry missing from DB
+- **Reinforced Dragonflight Assault Vest** [bard-gear]: Set piece count mismatch: screenshot shows 'Set Dragonflight (0/4)' indicating a 4-piece set, but DB records pieces: 2
+- **Reinforced Dragonflight Assault Boots** [bard-gear]: Screenshot shows 'Set Dragonflight (0/4)' — 4-piece set in-game, but DB equip bonus description references only '2 of Set' and '3 of Set' bonuses with pieces=2; set size discrepancy (4-piece set, not tracked beyond 3)
+- **Reinforced Dragonflight Raid Boots** [bard-gear]: Screenshot shows 'Set Dragonflight (0/4)' — 4-piece set in-game, but DB equip bonus description references only '2 of Set' and '3 of Set' bonuses with pieces=2; set size discrepancy (4-piece set, not tracked beyond 3)
+- **Sunset Dagger** [rogue-gear]: Set name: screenshot shows 'Sun' (displayed as 'Set Sun (0/2)') vs DB setName 'Sun Set'
+- **Sunset Stiletto** [rogue-gear]: Critical Strike: screenshot shows 131, DB has 188 / Set name: screenshot shows 'Set Sun (0/2)', DB stores setName 'Sun Set' — possible truncation in-game but worth verifying
+- **Company Raider Cloak (IL400, id 5623)** [unbound-gear]: Missing set membership: screenshot shows 'Set Company (0/2)' but dbEquipBonuses is empty and no setName is recorded anywhere for this item.
+- **Company Raider Cloak (IL500, id 5624)** [unbound-gear]: Missing set membership: screenshot shows 'Set Company (0/2)' but dbEquipBonuses is empty and no setName is recorded.
+- **Company Raider Cloak (IL600, id 5625)** [unbound-gear]: Missing set membership: screenshot shows 'Set Company (0/2)' but dbEquipBonuses is empty and no setName is recorded.
+- **Company Raider's Cloak (IL300, id 4868)** [unbound-gear]: Missing set membership: screenshot shows 'Set Company (0/2)' but dbEquipBonuses is empty and no setName is recorded.
+- **Silverspruce Sash (IL500, id 4845)** [unbound-gear]: Missing set membership: screenshot shows 'Set Masterwork II Equipment Set (0/2)' but dbEquipBonuses is empty and no setName is recorded.
+- **Silverspruce Sash (IL650, id 4844)** [unbound-gear]: Missing set membership: screenshot shows 'Set Masterwork II Equipment Set (0/2)' but dbEquipBonuses is empty and no setName is recorded.
+- **Silverspruce Sash (IL800, id 4843)** [unbound-gear]: Missing set membership: screenshot shows 'Set Masterwork II Equipment Set (0/2)' but dbEquipBonuses is empty and no setName is recorded.
+- **Cincture of Atropal Essence (IL350)** [unbound-gear]: Screenshot shows 'Set of the Soulmonger (0/3)' membership; dbEquipBonuses is empty — set bonus entry missing from DB
+- **Company Assault Belt (IL300)** [?]: Screenshot shows 'Set Company (0/2)' membership; dbEquipBonuses is empty — set bonus entry missing from DB
+- **Company Assault Belt (IL500)** [?]: Screenshot shows 'Set Company (0/2)' membership; dbEquipBonuses is empty — set bonus entry missing from DB
+- **Demogorgon's Girdle of Might (IL300)** [unbound-gear]: Screenshot shows "Set Demon Lords' Immortality (0/3)" membership; dbEquipBonuses is empty — set bonus entry missing from DB
+- **Dragonflight Assault Wristguards** [warlock-gear]: Missing set membership in DB: screenshot shows 'Set Dragonflight (0/4)'; dbEquipBonuses is empty with no set entry
+- **Dragonflight Raid Wristguards** [warlock-gear]: Missing set membership in DB: screenshot shows 'Set Dragonflight (0/4)'; dbEquipBonuses is empty with no set entry
+- **Reinforced Dragonflight Assault Armlets** [wizard-gear]: Set membership 'Dragonflight (0/4)' shown in screenshot but DB equip bonuses array is empty — set name and piece count not recorded
+- **Reinforced Dragonflight Raid Armlets** [wizard-gear]: Set membership 'Dragonflight (0/4)' shown in screenshot but DB equip bonuses array is empty — set name and piece count not recorded
+- **Reinforced Dragonflight Assault Shoes** [wizard-gear]: Missing set membership in DB: screenshot shows 'Set Dragonflight (0/4)' but dbEquipBonuses is empty with no setName entry
+- **Reinforced Dragonflight Raid Shoes** [wizard-gear]: Missing set membership in DB: screenshot shows 'Set Dragonflight (0/4)' but dbEquipBonuses is empty with no setName entry
+- **Bonesnapper (IL350)** [wizard-gear]: Screenshot shows 'Set Pilgrim (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Bonesnapper (IL500)** [wizard-gear]: Screenshot shows 'Set Pilgrim (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Bonesnapper (IL650)** [wizard-gear]: Screenshot shows 'Set Pilgrim (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Bonesnapper (IL800)** [wizard-gear]: Screenshot shows 'Set Pilgrim (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Burning Orb (IL300)** [wizard-gear]: Screenshot shows 'Set Burning Heart (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Burning Orb (IL400)** [wizard-gear]: Screenshot shows 'Set Burning Heart (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Burning Orb (IL500)** [wizard-gear]: Screenshot shows 'Set Burning Heart (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Burning Orb (IL600)** [wizard-gear]: Screenshot shows 'Set Burning Heart (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Celestial Beacon of Light (IL650)** [wizard-gear]: Screenshot shows 'Set Celestial (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Celestial Beacon of Light (IL900)** [wizard-gear]: Screenshot shows 'Set Celestial (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Celestial Beacon of Light (IL1150)** [wizard-gear]: Screenshot shows 'Set Celestial (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Celestial Beacon of Light (IL1400)** [wizard-gear]: Screenshot shows 'Set Celestial (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Crystal Orb of the Blessed Blade (IL650)** [wizard-gear]: Screenshot shows 'Set Blessed Blade (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Crystal Orb of the Blessed Blade (IL900)** [wizard-gear]: Screenshot shows 'Set Blessed Blade (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Crystal Orb of the Blessed Blade (IL1150)** [wizard-gear]: Screenshot shows 'Set Blessed Blade (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Crystal Orb of the Blessed Blade (IL1400)** [wizard-gear]: Screenshot shows 'Set Blessed Blade (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Drowned Orb (IL300)** [wizard-gear]: Screenshot shows 'Set Drowned Heart (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Drowned Orb (IL400)** [wizard-gear]: Screenshot shows 'Set Drowned Heart (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Drowned Orb (IL500)** [wizard-gear]: Screenshot shows 'Set Drowned Heart (0/2)' but dbEquipBonuses is empty — set membership missing from DB
+- **Drowned Orb (IL600)** [wizard-gear]: Set 'Drowned Heart (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Durgarn Thord Orb (IL1850)** [wizard-gear]: Set 'Scalebreaker's Wrath (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Earthen Orb (IL300)** [wizard-gear]: Set 'Earthen Heart (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Earthen Orb (IL400)** [wizard-gear]: Set 'Earthen Heart (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Earthen Orb (IL500)** [wizard-gear]: Set 'Earthen Heart (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Earthen Orb (IL600)** [wizard-gear]: Set 'Earthen Heart (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Bonesnapper (IL350)** [wizard-gear]: Set 'Pilgrim (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Bonesnapper (IL500)** [wizard-gear]: Set 'Pilgrim (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Bonesnapper (IL650)** [wizard-gear]: Set 'Pilgrim (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Bonesnapper (IL800)** [wizard-gear]: Set 'Pilgrim (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Hexbringer (IL350)** [wizard-gear]: Set 'Tyrant (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Hexbringer (IL500)** [wizard-gear]: Set 'Tyrant (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Hexbringer (IL650)** [wizard-gear]: Set 'Tyrant (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Hexbringer (IL800)** [wizard-gear]: Set 'Tyrant (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Obsidian Miztonhiyo (IL400)** [wizard-gear]: Set 'Masterwork III Weapon Set (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Obsidian Miztonhiyo (IL550)** [wizard-gear]: Set 'Masterwork III Weapon Set (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Obsidian Miztonhiyo (IL700)** [wizard-gear]: Set 'Masterwork III Weapon Set (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Pioneer Fanous (IL350)** [wizard-gear]: Set 'Pioneer (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Pioneer Fanous (IL500)** [wizard-gear]: Set 'Pioneer (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Pioneer Fanous (IL650)** [wizard-gear]: Set 'Pioneer (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Pioneer Fanous (IL800)** [wizard-gear]: Set 'Pioneer (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Exalted Primal Miztonhiyo (IL350)** [wizard-gear]: Set 'Primal (0/2)' visible in screenshot but dbEquipBonuses is empty — missing set entry
+- **Obsidian Miztonhiyo (IL 350)** [wizard-gear]: Missing set in DB: screenshot shows Set Masterwork III Weapon Set (0/2), dbEquipBonuses is empty
+- **Obsidian Miztonhiyo (IL 500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376 / Missing set in DB: screenshot shows Set Masterwork III Weapon Set (0/2), dbEquipBonuses is empty
+- **Obsidian Miztonhiyo (IL 650)** [wizard-gear]: Missing set in DB: screenshot shows Set Masterwork III Weapon Set (0/2), dbEquipBonuses is empty
+- **Obsidian Miztonhiyo (IL 800)** [wizard-gear]: Missing set in DB: screenshot shows Set Masterwork III Weapon Set (0/2), dbEquipBonuses is empty
+- **Pioneer Fanous (IL 650)** [wizard-gear]: Missing set in DB: screenshot shows Set Pioneer (0/2), dbEquipBonuses is empty
+- **Pioneer Fanous (IL 800)** [wizard-gear]: Missing set in DB: screenshot shows Set Pioneer (0/2), dbEquipBonuses is empty
+- **Primal Miztonhiyo (IL 350)** [wizard-gear]: Missing set in DB: screenshot shows Set Primal (0/2), dbEquipBonuses is empty
+- **Primal Miztonhiyo (IL 500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376 / Missing set in DB: screenshot shows Set Primal (0/2), dbEquipBonuses is empty
+- **Primal Miztonhiyo (IL 650)** [wizard-gear]: Missing set in DB: screenshot shows Set Primal (0/2), dbEquipBonuses is empty
+- **Primal Miztonhiyo (IL 800)** [wizard-gear]: Missing set in DB: screenshot shows Set Primal (0/2), dbEquipBonuses is empty
+- **Sunset Orb (IL 350)** [wizard-gear]: Missing set in DB: screenshot shows Set Sun (0/2), dbEquipBonuses is empty
+- **Sunset Orb (IL 500)** [wizard-gear]: Combat Advantage: screenshot 375 vs DB 376 / Missing set in DB: screenshot shows Set Sun (0/2), dbEquipBonuses is empty
+- **Sunset Orb (IL 650)** [wizard-gear]: Missing set in DB: screenshot shows Set Sun (0/2), dbEquipBonuses is empty
+- **Bonepicker IL350** [?]: Set 'Pilgrim' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Bonepicker IL500** [?]: Set 'Pilgrim' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Bonepicker IL650** [?]: Set 'Pilgrim' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Bonepicker IL800** [?]: Set 'Pilgrim' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Brightsilver Talisman IL350** [?]: Set 'Masterwork II Weapon Set' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Brightsilver Talisman IL500** [?]: Set 'Masterwork II Weapon Set' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Burning Talisman IL300** [?]: Set 'Burning Heart' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Burning Talisman IL400** [?]: Set 'Burning Heart' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Burning Talisman IL500** [?]: Set 'Burning Heart' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Burning Talisman IL600** [?]: Set 'Burning Heart' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Celestial Charm of Triumph IL650** [?]: Set 'Celestial' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Celestial Charm of Triumph IL900** [?]: Set 'Celestial' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Celestial Charm of Triumph IL1150** [?]: Set 'Celestial' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Drowned Talisman IL300** [?]: Set 'Drowned Heart' (0/2) visible in screenshot but dbEquipBonuses is empty — set membership missing from DB
+- **Durgarn Thord Talisman_IL1850** [?]: Set membership missing from DB: screenshot shows 'Set Scalebreaker's Wrath (0/2)' but dbEquipBonuses is empty (no setName recorded)
+- **Teak Talasam IL500** [?]: Combat Advantage: screenshot 375 vs DB 376 / missing set name 'Chultan' (0/2) in DB equip bonuses
+- **Primal Quiilpia IL800** [?]: missing set name 'Primal' (0/2) in DB equip bonuses
+- **Sunset Talisman IL350** [?]: missing set name 'Sun' (0/2) in DB equip bonuses
+- **Sunset Talisman IL650** [?]: missing set name 'Sun' (0/2) in DB equip bonuses
+- **Sunset Talisman IL800** [?]: missing set name 'Sun' (0/2) in DB equip bonuses
+- **Teak Talasam IL350** [?]: missing set name 'Chultan' (0/2) in DB equip bonuses
+- **Teak Talasam IL650** [?]: missing set name 'Chultan' (0/2) in DB equip bonuses
+- **Teak Talasam IL800** [?]: missing set name 'Chultan' (0/2) in DB equip bonuses
+- **The Legion Guard's Ever-seeing Eye IL600** [?]: missing set name 'Devil's Legion' (0/2) in DB equip bonuses
+- **The Legion Guard's Ever-seeing Eye IL800** [?]: missing set name 'Devil's Legion' (0/2) in DB equip bonuses
+- **The Legion Guard's Ever-seeing Eye IL1000** [?]: missing set name 'Devil's Legion' (0/2) in DB equip bonuses
+- **The Legion Guard's Ever-seeing Eye IL1200** [?]: missing set name 'Devil's Legion' (0/2) in DB equip bonuses
+- **Twisted Talisman IL300** [?]: missing set name 'Duality' (0/2) in DB equip bonuses
+- **Twisted Talisman IL400** [?]: missing set name 'Duality' (0/2) in DB equip bonuses
+- **Twisted Talisman IL500** [?]: missing set name 'Duality' (0/2) in DB equip bonuses
+- **Twisted Talisman IL600** [?]: missing set name 'Duality' (0/2) in DB equip bonuses
+- **Vistani Talisman IL350** [?]: missing set name 'Vistani' (0/2) in DB equip bonuses
+- **Vistani Talisman IL500** [?]: missing set name 'Vistani' (0/2) in DB equip bonuses
+- **Vistani Talisman IL650** [?]: missing set name 'Vistani' (0/2) in DB equip bonuses
+- **Vistani Talisman IL800** [?]: missing set name 'Vistani' (0/2) in DB equip bonuses
+
+## missing flat Damage on weapon — 40
+- **Crystal Greatsword** [barbarian-gear]: Damage stat missing in DB: screenshot shows +100 Damage
+- **Crystal Charm_IL3100** [?]: Screenshot shows +100 Damage flat stat — not present in dbRatingStats or dbPercentStats
+- **Bismuth Rapier** [bard-gear]: Flat +100 Damage stat stored in dbPercentStats as Damage Bonus: 1.0 — screenshot shows it as a rating stat line identical to Blaspheme Point's dbRatingStats Damage: 100; should be ratingStats["Damage"]: 100, not percentStats["Damage Bonus"]: 1.0
+- **Crystal Rapier** [bard-gear]: Forte: screenshot 2,092 vs DB 2,292 / Flat +100 Damage stat stored in dbPercentStats as Damage Bonus: 1.0 — screenshot shows it as a rating stat line; should be ratingStats["Damage"]: 100, not percentStats["Damage Bonus"]: 1.0
+- **Perfect Nail of Lolth IL2475** [?]: Missing Damage rating stat in DB: screenshot shows +250 Damage, not present in dbRatingStats
+- **Runefrost Verseblade IL5500** [?]: Missing Damage rating stat in DB: screenshot shows +50 Damage, not present in dbRatingStats
+- **Crystal Lute (IL3100)** [bard-gear]: +100 Damage shown as flat rating stat in screenshot (same display type as other rating stats), but DB stores it under dbPercentStats as "Damage Bonus": 1.0 (a percent) — should be stored in dbRatingStats as "Damage": 100, matching the Bismuth Lute schema pattern
+- **Phantom's Bite (IL3800)** [ranger-gear]: Screenshot shows '+50 Damage' stat line not present in dbRatingStats
+- **Runefrost Longbow (IL5500)** [ranger-gear]: Damage +50 visible in screenshot but missing from DB
+- **Stormforged Knives (IL2000)** [ranger-gear]: Damage +100 visible in screenshot but missing from DB
+- **Stormforged Longbow (IL2000)** [ranger-gear]: Damage +100 visible in screenshot but missing from DB / Accuracy +600 visible in screenshot but missing from DB
+- **Bismuth Knife** [ranger-gear]: Missing Damage 100 in DB (screenshot shows +100 Damage as first stat)
+- **Crystal Knife** [ranger-gear]: Missing Damage 100 in DB (screenshot shows +100 Damage as first stat)
+- **Protege's Hood** [rogue-gear]: Missing equip bonus in DB: 'Undermountain Hunter' — +5% Damage in the Undermountain (visible in both screenshots)
+- **Protege's Layered Leathers** [rogue-gear]: Equip bonus missing from DB entirely — screenshot shows 'Equip: Warden’s Defense: Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.' DB has dbEquipBonuses: []
+- **Stormforged Knife** [rogue-gear]: Screenshot shows '+100 Damage' displayed as a blue rating-style stat alongside Accuracy and Deflection; DB stores this as dbPercentStats Damage Bonus: 1.0 (a percent stat). If the in-game value is a flat damage rating of 100 rather than 1% Damage Bonus, it is miscategorized — verify whether this is a flat rating or a percent stat
+- **Cambist's Gauntlets (IL630)** [unbound-gear]: Missing equip bonus in DB: 'Golden Steal — Your attacks have a chance to cause extra damage, but at a financial cost.' Screenshot shows this as an Equip: entry; dbEquipBonuses is empty.
+- **Chitters's Fangs** [unbound-gear]: Missing equip bonus in DB: 'Fanged Vice' — When you use an encounter power, the next enemy that attacks you takes damage equal to 5% of your max health (10 second cooldown)
+- **Huntsman Assault Cowl** [warlock-gear]: Missing equip bonus in DB: Equip 'Great Hunter' — +1% Damage against Hunts in Chult
+- **Huntsman Raid Cowl** [warlock-gear]: Missing equip bonus in DB: Equip 'Great Hunter' — +1% Damage against Hunts in Chult
+- **League's Assault Barakeh** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Warden’s Defense — Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds'
+- **League's Assault Crackows** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Warden’s Haste — Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds'
+- **League's Elite Assault Barakeh** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Warden’s Defense — Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds'
+- **League's Elite Assault Crackows** [warlock-gear]: Screenshot shows only +361 Combat Advantage and +452 Defense; no Critical Severity line visible — DB has CriticalSeverity: 542 (needs re-verification) / Missing equip bonus in DB: screenshot shows 'Equip: Warden’s Haste — Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds'
+- **League's Elite Raid Barakeh** [warlock-gear]: CriticalStrike: screenshot 542 vs DB 180 / Missing equip bonus in DB: screenshot shows 'Equip: Warden’s Defense — Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds'
+- **League's Elite Raid Crackows** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Warden’s Haste — Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds'
+- **League's Raid Barakeh** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Warden’s Defense — Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds'
+- **League's Raid Crackows** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Warden’s Haste — Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, your Movement Speed increases by 5% for 10 seconds'
+- **Pilgrim Assault Barakeh** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Chultan Hunter (+1% Damage in all of Chult)
+- **Pilgrim Raid Barakeh** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Chultan Hunter (+1% Damage in all of Chult)
+- **Protege's Charmed Hat** [warlock-gear]: Missing equip bonus in DB: equip Undermountain Hunter +5% Damage in the Undermountain
+- **Soulbinder of the Golden Dragon_IL300** [?]: Missing equip bonus in DB: screenshot shows 'Equip: Increase the damage done by Essence Defiler by 10%' but dbEquipBonuses is empty
+- **Bismuth Tome (IL3400)** [warlock-gear]: Screenshot shows '+100 Damage' as a flat rating stat — this is absent from dbRatingStats entirely / dbPercentStats stores 'Damage Bonus: 1.0' (percent) but the screenshot shows a flat +100 Damage rating, not a percent bonus — the stat type/category is wrong
+- **Crystal Tome (IL3100)** [warlock-gear]: Screenshot shows '+100 Damage' as a flat rating stat — this is absent from dbRatingStats entirely / dbPercentStats stores 'Damage Bonus: 1.0' (percent) but the screenshot shows a flat +100 Damage rating, not a percent bonus — the stat type/category is wrong
+- **Nether Convergence (IL4000)** [wizard-gear]: Missing stat in DB: +100 Damage (shown as a flat rating line on the tooltip, not captured in dbRatingStats or dbEquipBonuses)
+- **The Weaver's Orb IL2050** [?]: Missing stat in DB: Damage 250 (shown in screenshot as +250 Damage)
+- **Voidtouched Orb (IL3000)** [wizard-gear]: Missing Damage stat in DB: screenshot shows +275 Damage (confirmed in both duplicate screenshots)
+- **Xaryxian Orb (IL2750)** [wizard-gear]: Missing Damage stat in DB: screenshot shows +250 Damage (confirmed in both duplicate screenshots)
+- **Runefrost Spellorb (IL 5500)** [wizard-gear]: Missing stat in DB: screenshot shows +50 Damage (rating stat alongside Accuracy/CA/CritSeverity), not present in dbRatingStats or dbPercentStats
+- **Voidtouched Orb (IL3000)** [wizard-gear]: Missing stat in DB: Damage 275 shown in screenshot, absent from dbRatingStats
+
+## missing "Artifact Stat Increase" — 10
+- **Fey Sword Knot IL350** [?]: Missing equip bonus in DB: 'Artifact Stat Increase: Unlocks at Epic Rarity' is visible in screenshot but dbEquipBonuses is empty
+- **Fey Sword Knot IL500** [?]: Missing equip bonus in DB: 'Artifact Stat Increase: Unlocks at Epic Rarity' is visible in screenshot (both IL500 screenshots) but dbEquipBonuses is empty
+- **Headsman's Sword Knot IL500** [?]: Missing equip bonus in DB: 'Artifact Stat Increase: Unlocks at Epic Rarity' is visible in screenshot but dbEquipBonuses is empty
+- **Hellfire Engine Serpentine Belt IL600** [?]: Missing equip bonus in DB: 'Artifact Stat Increase: Unlocks at Epic Rarity' is visible in screenshot but dbEquipBonuses is empty
+- **Hellfire Engine Serpentine Belt IL800** [?]: Missing equip bonus in DB: 'Artifact Stat Increase: Unlocks at Epic Rarity' is visible in screenshot but dbEquipBonuses is empty
+- **Exalted Primal Mecatica_IL350** [?]: Screenshot shows Set Primal (0/2) — DB equip bonus has Artifact Stat Increase entry but no setName / set entry for Primal
+- **Exalted Primal Mecatica_IL500** [?]: Screenshot shows Set Primal (0/2) — DB equip bonus has Artifact Stat Increase entry but no setName / set entry for Primal
+- **Exalted Primal Mecatica_IL650** [?]: Screenshot shows Artifact Stat Increase: Unlocks at Epic Rarity and Set Primal (0/2) — DB equip bonuses array is empty (missing both entries)
+- **Mirage Sword Knot_IL350** [?]: Screenshot shows Artifact Stat Increase: Unlocks at Epic Rarity and Set Mirage (0/2) — DB equip bonuses array is empty (missing both entries)
+- **Mirage Sword Knot_IL500** [?]: Screenshot shows Artifact Stat Increase: Unlocks at Epic Rarity and Set Mirage (0/2) — DB equip bonuses array is empty (missing both entries)
+
+## VARIANT mismatch (one DB id, multiple class versions) — 32
+- **Enchanted Depthforged Gauntlets (IL3200.png)** [barbarian-gear]: Screenshot shows Critical Strike: 2400 and Critical Severity: 2400 — DB stores Defense: 2400 and Awareness: 2400 / Screenshot equip bonus is 'Enveloped Precision' (Critical Strike stacking proc) — DB stores 'Sudden Intuition' (Awareness/Deflect Severity proc on CA damage received) / This screenshot captures a different variant of the item than the DB record (id 219) represents; the DB record matches only the (2).png screenshot
+- **Black Ice Gloves** [bard-gear]: Two screenshots map to the same DB id (3589) but show different class variants with entirely different stat sets. Screenshot _IL512(2) (Bard/Rogue): +~59 Accuracy, +131 Critical Severity, +384 Defense, +~60 Critical Avoidance, +131 Deflection — DB has Combat Advantage 60 (not Critical Severity) and no Critical Severity at all. Screenshot _IL512 (Wizard): +~60 Critical Strike, +132 Critical Severity, +384 Defense, +132 Awareness, +~60 Deflection — DB has Accuracy 60 and Combat Advantage 60, neither of which appears in the Wizard screenshot. DB stat set does not match either screenshot variant.
+- **Eternal Gloves (IL1300.png, no suffix)** [bard-gear]: Screenshot stats do not match DB: screenshot shows Accuracy 339 / Combat Advantage 337 / Defense 975 / Awareness 294; DB has Accuracy 337 / Critical Strike 337 / Defense 975 / Critical Avoidance 296 — screenshot may be mislabeled or captures a different rarity variant
+- **Gloves of the Thayan Servitor** [bard-gear]: Screenshot (IL800.png, class Barbarian) shows: Combat Advantage 211, Critical Severity 211, Defense 600, Critical Avoidance ~88.8, Deflection 211. DB has: Combat Advantage 89, Critical Strike 211 (not Critical Severity), Critical Avoidance 211, Deflection 89. Combat Advantage value: screenshot 211 vs DB 89. Deflection value: screenshot 211 vs DB 89. Critical Avoidance value: screenshot ~88.8 vs DB 211. DB has Critical Strike 211 but screenshot shows Critical Severity 211 (no Critical Strike present). / Screenshot (IL800 (2).png, class Bard/Rogue) shows: Accuracy 210, Critical Strike ~87.6, Critical Severity 210, Defense 600, Critical Avoidance ~88.8. DB has no Accuracy stat and no Critical Severity stat at this item. Values for Critical Strike (~87.6 vs DB 211), Critical Avoidance (~88.8 vs DB 211) also do not match. These two screenshots show conflicting stats suggesting possible variant items under the same DB id.
+- **Black Ice Armor (Black Ice Armor_IL512.png — Scale/Barbarian variant)** [bard-gear]: This screenshot shows a different class variant (Scale, Barbarian) with entirely different stats than the shared id 2081 DB entry / Screenshot stats: Accuracy 132, Critical Severity 59.9, Defense 384, Critical Avoidance 59.9, Deflection 132 / DB stats: Accuracy 59.9, Combat Advantage 132, Defense 384, Critical Avoidance 132 / Combat Advantage not present in screenshot; Critical Severity 59.9 in screenshot not in DB; Accuracy: screenshot 132 vs DB 59.9; Critical Avoidance: screenshot 59.9 vs DB 132; Deflection 132 in screenshot missing from DB
+- **Eternal Leather Armor** [bard-gear]: Accuracy: screenshot (_IL1300.png, Bard variant) shows 337, DB has 294 / Critical Avoidance: screenshot (_IL1300.png, Bard variant) shows 296, DB has 339 — note: the (2) screenshot matches DB; the two screenshots show different stat distributions, suggesting a class-variant conflict or wrong screenshot was captured
+- **Astral Raider's Jackboots** [bard-gear]: Equip bonus 'Scaled Disdain': screenshot (both copies) shows 'Grants up to -20% Incoming Damage', DB has -9% / Second screenshot (Warlock/Bard variant) shows stat Incoming Healing 1320 in place of DB Awareness 1320 — possible class-variant stat difference or wrong stat name stored
+- **Black Ice Boots** [bard-gear]: First screenshot (Bard/Rogue): shows Accuracy 132, Critical Severity 59.9, Defense 384, Awareness 132, Critical Avoidance 59.9 — DB has Combat Advantage 132, Critical Strike 59.9, Awareness 132, Defense 132 (Defense value and two stat names differ; DB missing Critical Avoidance, has wrong Defense value) / Second screenshot (Wizard): shows Accuracy 73.7, Combat Advantage 163, Defense 384, Critical Avoidance 147 — entirely different from DB; likely a different class variant captured in the same image pair
+- **Eternal Boots** [bard-gear]: Eternal Boots_IL1300.png (Bard/Rogue variant): second stat is Critical Severity 337, DB stores Combat Advantage 337 / Eternal Boots_IL1300 (3).png (Warlock variant): Accuracy reads 294, DB stores 337 — different class stat distribution / Eternal Boots_IL1300 (4).png (Paladin/Fighter variant): shows Combat Advantage 355, Critical Avoidance 616, no Accuracy — entirely different stat spread from DB
+- **Eternal Helmet** [bard-gear]: Screenshot _IL1300 (2) shows stats: Combat Advantage 337, Critical Strike 337, Defense 975, Critical Avoidance 296 — DB has Accuracy 294, Combat Advantage 337, Defense 975, Critical Avoidance 339 (Critical Strike vs Accuracy mismatch; Critical Avoidance 296 vs DB 339) / Screenshot _IL1300 shows stats: Combat Advantage 337, Critical Severity 339, Defense 975, Deflection 294 — DB has Accuracy 294, Combat Advantage 337, Defense 975, Critical Avoidance 339 (Critical Severity and Deflection in screenshot vs Accuracy and Critical Avoidance in DB; values also differ). Two screenshots appear to show different class-variant items captured under one DB entry.
+- **Astral Raider's Jackboots** [bard-gear]: Equip bonus (Scaled Disdain): both screenshots say 'Grants up to -20% Incoming Damage' but DB stores -9% / Second screenshot (plain filename, Warlock/Bard class variant) shows Defense 990 / Awareness 990 / Incoming Healing 1320 — DB stores Defense 990 / Awareness 1320 / Critical Avoidance 990; this appears to be a different class variant captured under the same DB entry
+- **Enchanted Depthforged Gauntlets** [barbarian-gear]: Screenshot 'Enchanted Depthforged Gauntlets_IL3200.png' (non-(2)) shows +2,400 Critical Strike and +2,400 Critical Severity with equip bonus 'Enveloped Precision' (combat with 3+ enemies → Critical Strike +1.5% every 2s, max 5 stacks: 7.5% Critical Strike). DB stores Defense 2400 and Awareness 2400 with equip bonus 'Sudden Intuition'. The (2) screenshot correctly matches the DB. The plain .png is a different variant or misidentified item — its stats and equip bonus are entirely different from the DB record.
+- **Veinlit Earthshard Guard (id 5443, IL4350) — screenshot _IL4350 (3).png** [?]: Screenshot shows a completely different item variant: Defense 1,827 / Deflect 2,447 / Deflect Severity 2,447 with equip 'Survivor's Critical Avoidance' (10% chance on hit to gain 6% Critical Avoidance for 5s, 10s cooldown). DB has Defense 1370 / Deflect 3915 / Deflect Severity 2936 with equip 'Challenger's Resilience'. This screenshot does not match id 5443 — appears to be an unregistered variant or wrong file association.
+- **Veinlit Stonevein Straps (id 5447, IL4350) — screenshot _IL4350 (3).png** [?]: Screenshot shows a completely different item variant: Awareness 2,088 / Deflect 2,447 / Deflect Severity 2,447 with equip 'Garden's Defense' (gain 4% Defense for 10s when damaged for more than 15% max HP in a single blow). DB has Awareness 1566 / Critical Avoidance 2871 / Deflect Severity 2936 with equip 'Survivor's Forte'. This screenshot does not match id 5447 — appears to be an unregistered variant or wrong file association.
+- **Veinlit Titanweave Harness (id 5450, IL4350) — screenshots _IL4350 (3).png and _IL4350.png** [?]: Both screenshots show a completely different item variant: Accuracy 2,121 / Combat Advantage 2,088 / Critical Severity 1,958 with equip 'Critical Charge' (on Critically Strike with a Power, 10% chance to gain 25 Action Points; max once per 5s). DB has Combat Advantage 2088 / Critical Strike 2349 / Power 1370 with equip 'Precise Severity'. These two screenshots do not match id 5450 — appear to be an unregistered variant or wrong file associations.
+- **Cracked Stormbind Tunic** [paladin-gear]: Critical Strike: Bloodletting-variant screenshots show 3,312 vs DB 5,312 / Bloodletting equip bonus damage gain: screenshots show 3.5% Damage vs DB 5.5% Damage
+- **Veinlit Aetherwrap (IL4350)** [paladin-gear]: Screenshots (3) and (5) show a different item variant: stats are +3,132 Critical Strike / +3,915 Critical Severity / +1.5% Action Point Gain with equip bonus 'Sprinter's Advantage' (buff on movement: +2.5% Critical Strike and +3.5% Combat Advantage for 3s, 10s cooldown) — no flat Combat Advantage stat, no Recharge Speed percent; DB records Encounter Reprieve variant with Combat Advantage 2,088 / Critical Strike 2,349 / Critical Severity 2,349 / Recharge Speed 1.5%
+- **Veinlit Lifebraid Vestment (IL4350)** [paladin-gear]: Screenshot (3) shows a different item variant: stats are +1,958 Critical Strike / +1,142 Power / +2,349 Forte / +1.5% Stamina Regeneration with equip bonus 'Charged Rejuvenation' (when healed in combat, gain 4.5% Recharge Speed for 10s, 30s cooldown) — DB records Indefatigable Advantage variant with Critical Strike 3,132 / Outgoing Healing 1,566 / Forte 1,762 / Action Point Gain 1.5%
+- **Veinlit Stormbind Tunic (IL4350)** [paladin-gear]: Base screenshot (no suffix) shows a different item variant: stats are +2,121 Accuracy / +1,305 Combat Advantage / +3,132 Critical Strike / +1.5% Action Point Gain with equip bonus 'Pinstand Tactics' (Critical Strike increased by 4.5% when Stamina over 75%) — DB records Charged Precision variant with Accuracy 2,545 / Combat Advantage 1,566 / Critical Strike 3,132 / Recharge Speed 1.5% and Critical Strike increased by 5%
+- **Black Ice Gloves** [bard-gear]: Bard/Rogue screenshot (2): 2nd stat is Critical Severity ~131, but DB stores Combat Advantage 60 — stat name mismatch and value mismatch / Bard/Rogue screenshot (2): 1st stat Accuracy reads ~59.1 (DB stores 60), Critical Avoidance reads ~59.9 (DB stores 132 — value mismatch), Deflection reads ~131 (DB stores 132) / Wizard screenshot: stats are Critical Strike ~59.9, Critical Severity ~132, Defense 384, Awareness ~132, Deflection ~59.9 — entirely different stat set from DB; DB entry does not match either class variant cleanly
+- **Black Ice Armor** [bard-gear]: DB Accuracy: 59.9 vs screenshot 59.1 (screenshots (2) and (3), Leather/Bard-Rogue variant) / DB Combat Advantage: 132 vs screenshot 131 (screenshots (2) and (3)) / DB Critical Avoidance: 132 vs screenshot 59.9 (screenshots (2) and (3)) / DB is missing Deflection stat: screenshot shows +131 Deflection (screenshots (2) and (3)) / Plain screenshot shows a different class variant (Scale, Barbarian) with stats Accuracy 132, Critical Severity 59.9, Defense 384, Critical Avoidance 59.9, Deflection 132 — does not match the DB rogue entry at all; may be a separate item mis-filed
+- **Eternal Leather Armor (IL1300.png — Bard/Rogue variant screenshot)** [bard-gear]: Accuracy: screenshot 337 vs DB 294 / Critical Avoidance: screenshot 296 vs DB 339 — note the (2) screenshot (Warlock class) does match DB; these appear to be two different class-variant tooltips captured under the same item ID
+- **Hammerstone Tunic (IL352 (2).png — Rogue-class variant screenshot)** [rogue-gear]: Critical Avoidance: screenshot ~39.6 vs DB 92 — the (2) screenshot shows a Rogue-class variant where CritAvoid≈40 and CombatAdvantage≈92; the IL352.png screenshot (Warlock class) shows CritAvoid≈92 matching DB; two class variants captured under one ID with conflicting stat distributions
+- **Astral Raider's Jackboots** [bard-gear]: Screenshot IL2200 (no suffix) shows Awareness 990 and an 'Incoming Healing' stat with no Critical Avoidance — differs from DB (Defense 990, Awareness 1320, Critical Avoidance 990). The (2) screenshot matches DB exactly; the no-suffix screenshot appears to be a different class variant (Warlock/Bard tooltip). Flag for user to confirm which class the DB entry targets.
+- **Eternal Boots (IL1300 screenshot 3 — Warlock variant)** [bard-gear]: Accuracy: screenshot 294 vs DB 337 (class-specific variant; Warlock version shows lower Accuracy value)
+- **Eternal Boots (IL1300 screenshot 4 — Paladin/Fighter variant)** [bard-gear]: Combat Advantage: screenshot 355 vs DB 337 / Critical Avoidance: screenshot 616 vs DB 296 / Accuracy: absent in screenshot but DB stores 337 (class variant has no Accuracy stat)
+- **Eternal Boots (IL1300 base screenshot — Bard/Rogue variant)** [bard-gear]: DB stores Combat Advantage 337; screenshot shows Critical Severity 337 instead (no Combat Advantage visible — class variant swaps stat)
+- **Hammerstone Boots (IL352 screenshot 2 — Rogue variant)** [rogue-gear]: Combat Advantage: screenshot 91.9 vs DB 92.4 / Critical Severity: screenshot 39.1 vs DB 92.4 (also stat is in wrong position — screenshot shows it as the smaller value) / Screenshot shows Critical Avoidance 91.9 — not present in DB at all / DB stores Critical Strike 39.6 — not shown in screenshot (class variant swaps stats)
+- **Hammerstone Boots (IL352 base screenshot — Wizard variant)** [rogue-gear]: DB stores Critical Strike 39.6; screenshot shows Accuracy 92.4 and Awareness 39.6 instead — completely different stats for Wizard class variant / DB stores Critical Severity 92.4; not present in Wizard screenshot / Combat Advantage: screenshot 92.4 matches DB 92.4 (this stat agrees)
+- **Eternal Helmet** [bard-gear]: DB stats (Accuracy 294, Combat Advantage 337, Defense 975, Critical Avoidance 339) do not match either screenshot. Screenshot (2) shows: Combat Advantage 337, Critical Strike 337, Defense 975, Critical Avoidance 296. Screenshot (non-2) shows: Combat Advantage 337, Critical Severity 339, Defense 975, Deflection 294. The two screenshots differ from each other and from the DB — the item may have class-variant tooltips (Warlock vs Bard/Rogue). No screenshot shows Accuracy or Critical Avoidance 339 as stored in DB.
+- **Hood of the Thayan Servitor** [bard-gear]: DB stats (Accuracy 88.8, Combat Advantage 211, Critical Strike 211, Defense 600, Critical Avoidance 88.8) match only the Ranger-class screenshot. The Bard/Rogue-class screenshot (IL800 (2)) shows a completely different stat distribution: Accuracy 210, Critical Strike 87.6, Critical Severity 210, Defense 600, Critical Avoidance 88.8 — no Combat Advantage, and first two stats have different names and values. The Warlock-class screenshot shows: Combat Advantage 88.8, Critical Strike 211, Critical Avoidance 211, Defense 600, Deflection 88.8 — no Accuracy, no separate CA 211 slot. DB only captures one class variant; the per-class stat variation is not modeled.
+- **Hellfire Engine Oil Stick (image: Hellfire Engine Oil Stick_IL600 (2).png)** [rogue-gear]: Screenshot shows Combat Advantage 450 and Critical Strike 450; DB (id 3386) has Accuracy 450 and Critical Severity 450 / This second screenshot (same DB id 3386) captures a different stat layout than both the DB and the companion screenshot — possible wrong screenshot filed or a class-variant tooltip
+
+## other / needs review — 195
+- **Wintermarked Bulwark Vambraces_IL5700** [?]: Stat name wrong: DB stores 'Critical Strike': 4703 but screenshot shows 'Critical Avoidance': 4,703
+- **Wintermarked Bulwark Cuirass** [barbarian-gear]: Equip bonus 'Reactive Defense': screenshot shows 'Deflect Severity by 11%', DB stores 'Deflect Severity by 15%' (both screenshots confirm 11%)
+- **Dragonsteel Sabatons** [barbarian-gear]: Screenshot shows three rating stats: Critical Strike 855, Defense 855, Awareness 1140; DB is missing Awareness 1140
+- **Primal Raid Lapulapus** [barbarian-gear]: dbPercentStats contains spurious 'Action Point Gain: 3' — this is the equip bonus proc effect text, not a standalone percent stat line displayed on the tooltip; no separate percent stat appears in the screenshot
+- **Radiant Elven Sabatons** [barbarian-gear]: Equip bonus Spelljammer's Fortified Ally: screenshot shows '5% Incoming Healing in Wildspace' but DB stores '2.5% Incoming Healing in Wildspace' (the non-Wildspace value of 2.5% is correct in both)
+- **Company Raid Gloves** [bard-gear]: Second stat: screenshot shows +176 Accuracy but DB stores Combat Advantage 176
+- **Exalted Maiden's Rejuvenation Mitts** [bard-gear]: Screenshot shows Defense 1538 and Outgoing Healing 1538 — no Critical Strike visible. DB has Critical Strike 1538 (should be absent) and Outgoing Healing 0 (should be 1538).
+- **The Dark Maiden's Rejuvenation Mitts (IL2000)** [bard-gear]: DB has Critical Strike 1500 but screenshot shows Defense 1500 (no Critical Strike line present); Outgoing Healing 1500 matches
+- **Exalted Maiden's Assault Hide** [bard-gear]: Critical Strike: both screenshots show 1,230, DB has 1,250
+- **Manticore Duelist Vest** [bard-gear]: Deflection: DB has Deflect 227, screenshot shows Awareness +227 (Deflection stat is absent; Awareness is the stat shown)
+- **Apprentice's Runed Gaiters** [bard-gear]: Equip bonus 'Death Defier's Advantage': screenshot shows 'Gain 250 Combat Advantage for each enemy', DB has 230
+- **Banditlord's Assault Boots** [bard-gear]: Stat 1: screenshot shows Combat Advantage 329, DB has Accuracy 329 / Stat 2: screenshot shows Critical Severity 248, DB has Combat Advantage 248
+- **Elemental Dragonflight Raid Boots** [bard-gear]: Accuracy 268 in screenshot but DB has 'Combat Advantage': 268 / Combat Advantage 179 in screenshot but DB has 'Critical Strike': 179
+- **Enchanted Bregan D'aerthe Assassin's Longboots** [bard-gear]: Critical Severity: screenshot shows 1,538; DB has 1518
+- **Fiend Forged Cuisses** [bard-gear]: Gladiator's Might equip bonus: screenshot says 'For every 5 seconds you are in combat' — DB stores 'For every 3 seconds you are in combat'
+- **Greaves of the Scarlet Arcanum** [bard-gear]: Momentum's Edge equip bonus: screenshot says 'stand still for more than 5 seconds' — DB stores 'more than 3 seconds'
+- **Trapper of the Twilight's Boots** [bard-gear]: Critical Severity: screenshot shows 300, DB has 375
+- **Astral Raider's Coif** [bard-gear]: DB has Outgoing Healing: 1980 as a 4th rating stat, but the screenshot shows only 3 stats (Critical Strike: 1320, Defense: 990, Deflect Severity: 990) — no Outgoing Healing visible
+- **Black Ice Mask** [bard-gear]: Screenshot _IL512 (2).png shows Awareness (~59.1) in place of Critical Avoidance. DB stores Critical Avoidance: 60. The two screenshots are from different class perspectives (one Warlock shows Critical Avoidance, one Bard shows Awareness). Verify whether this item awards a different stat to each class or the DB stat name is wrong for one class.
+- **Crone's Hood** [bard-gear]: Equip bonus text typo: DB has '(30 second cooldowns)' (plural); both screenshots show '(30 second cooldown)' (singular)
+- **Elemental Dragonflight Raid Mask** [bard-gear]: Stat label mismatch on 179-value stat: screenshot shows Combat Advantage 179, DB stores Accuracy 179
+- **Hymn of the Forsaken (IL4000)** [bard-gear]: Screenshot shows +2,640 Combat Advantage and +2,430 Forte; DB stores Critical Severity: 3960 and Forte: 2640 — wrong primary stat (Critical Severity vs Combat Advantage) and wrong values for both stats
+- **Stormforged Point IL2000** [?]: Forte: DB has Forte 600 but screenshot shows Critical Severity 900 (different stat name and different value)
+- **Elk Tribe Noble's Lute (IL399)** [bard-gear]: Critical Severity: screenshot shows 97.6, DB stores 98 / Critical Avoidance: screenshot shows 97.6, DB stores 98
+- **Ancient Scalebreaker's Gloves** [bard-gear]: Equip bonus Herald's Cunning: screenshot says 'within 30’ of you' but DB stores 'within 10’ of you'
+- **Apprentice's Runed Gaiters** [bard-gear]: Equip bonus (Death Defier's Advantage): screenshot says 'Gain 250 Combat Advantage' but DB stores 230 — both screenshots (IL965 and IL965 (2)) confirm 250
+- **Fiend Forged Cuisses** [bard-gear]: Equip bonus 'Gladiator's Might': DB says 'every 3 seconds' but screenshot shows 'every 5 seconds'
+- **Greaves of the Scarlet Arcanum** [bard-gear]: Equip bonus 'Momentum's Edge': DB says 'more than 3 seconds' but screenshot shows 'more than 5 seconds'
+- **Radiant Elven Boots** [bard-gear]: Equip bonus 'Wildspace Precision': screenshot reads '+5% Critical Strike in non-Wildspace' but DB stores '+3% Critical Strike in non-Wildspace'
+- **Stealer of the Star's Hood** [bard-gear]: Critical Strike: screenshot shows 375, DB has 525
+- **Wintermarked Lifeward Helm** [cleric-gear]: Outgoing Healing: screenshot shows 3420, DB stores 5420
+- **Wintermarked Bulwark Cuirass** [barbarian-gear]: Equip Reactive Defense: screenshot shows Deflect Severity 11%, DB stores 15%
+- **Dragonsteel Sabatons** [barbarian-gear]: Awareness 1,140 present in screenshot but missing from DB (DB has only Critical Strike 855 and Defense 855)
+- **Radiant Elven Sabatons** [barbarian-gear]: Equip bonus Spelljammer's Fortified Ally: DB has '2.5% Incoming Healing in Wildspace', screenshot shows '5% Incoming Healing in Wildspace'
+- **Astral Raider's Armet** [barbarian-gear]: Deflection 990 in DB: screenshot shows Defense 990
+- **Eternal Helm** [fighter-gear]: Accuracy: DB stores 337 but screenshot shows no Accuracy stat; screenshot shows Critical Severity: 337 instead (DB omits Critical Severity entirely)
+- **Bronzewood Ward Ibhendis** [paladin-gear]: Stat name wrong: DB has 'Awareness: 235' but screenshot shows 'Combat Advantage: 235' / Stat name wrong: DB has 'Critical Strike: 353' but screenshot shows 'Awareness: 353'
+- **Wintermarked Bulwark Vambraces** [barbarian-gear]: stat name wrong: screenshot shows Critical Avoidance 4703, DB stores it as Critical Strike 4703
+- **Bronzewood Restoration Ibhantshi** [paladin-gear]: DB has Combat Advantage 235 but screenshot shows Accuracy 235 / DB has Critical Strike 353 but screenshot shows Combat Advantage 353
+- **Infernal Forged Scalemail** [bard-gear]: DB has a second equip bonus "Fiend Hunter" (+1% Damage against Demons, Devils, and Fiends) and a dbPercentStat "Damage against Demons, Devils, and Fiends": 1 — neither appears in the screenshot tooltip, which shows only Leader's Guard; Infernal Forged Scalemail (IL 1200) may not have the Fiend Hunter bonus (contrast with Fiend Forged Scalemail IL 1230 which does)
+- **Black Ice Greaves** [fighter-gear]: stat labeled Combat Advantage 131 in DB is Accuracy 131 in screenshot / stat labeled Deflection 131 in DB is Awareness 131 in screenshot / stat labeled Accuracy 59.1 in DB is Critical Strike 59.1 in screenshot / no Deflection stat visible in screenshot; DB has Deflection 131 which appears to be a misassigned stat name
+- **Dragonsteel Sabatons** [barbarian-gear]: missing Awareness 1140 in DB (screenshot shows +1,140 Awareness)
+- **Dungeon Raider's Cuisses** [bard-gear]: Combat Advantage: screenshot shows Critical Strike 352, not Combat Advantage 352 / Awareness: screenshot shows Critical Avoidance 352, not Awareness 352
+- **Fiend Forged Cuisses** [bard-gear]: Gladiator's Might equip bonus: DB says 'every 3 seconds' but screenshot reads 'every 5 seconds'
+- **League's Ward Diralsaaqs** [paladin-gear]: Accuracy: screenshot 265, DB has no Accuracy stat (has Combat Advantage 176 instead) / Deflection: screenshot 176, DB 265 / DB Combat Advantage 176 does not appear in screenshot; screenshot has Accuracy 265 in that position
+- **Radiant Elven Sabatons** [barbarian-gear]: Equip bonus (Spelljammer's Fortified Ally): Wildspace Incoming Healing is 5% in screenshot, DB stores 2.5%
+- **Titansteel Gladiator Poleyns** [paladin-gear]: Awareness: screenshot 170, DB 340
+- **Wintermarked Lifeward Greaves** [cleric-gear]: Forte: screenshot 3848, DB 5848
+- **Eternal Helm** [fighter-gear]: Accuracy 337 in DB but screenshot shows Combat Advantage +337 (no Accuracy stat present)
+- **Huntsman Ward Armet** [paladin-gear]: Missing Awareness 302 in DB; screenshot shows Combat Advantage +202, Defense +504, Awareness +302 — DB has no Awareness entry
+- **Pilgrim Restoration Taj** [paladin-gear]: DB has Combat Advantage 193 but screenshot shows Critical Strike +193 (no Combat Advantage stat present)
+- **Deep-Riven Dawnshard Raiment** [paladin-gear]: DB has 'Power: 1275' but both screenshots clearly show '+1,273 Power'
+- **Deep-Riven Earthshard Guard** [paladin-gear]: DB is missing 'Deflect: 2728' — both screenshots show '+2,728 Deflect' as a third stat alongside Defense 2037 and Deflect Severity 2728
+- **Rimetouched Hoop of Tenacity** [paladin-gear]: Percent stat: DB stores 'Stamina Regeneration 1.5%', screenshot shows '+1.5% Recharge Speed' / Equip bonus Warden's Defiance: DB says 'more than 19% of your Maximum Hit Points', screenshot says 'more than 10%'
+- **Manticore Duelist Bracers** [ranger-gear]: Defense: screenshot shows 567, DB stores 227
+- **Black Ice Armor_IL512** [?]: Deflection 59.9 visible in screenshot but missing from DB dbRatingStats
+- **Buckled Boots of Halaster's Successor** [ranger-gear]: DB dbEquipBonuses is empty but screenshot shows equip bonus 'Sniper's Advantage': When you are 50' or further away from your target, your Combat Advantage is increased by 5%.
+- **Buckled Boots of the Successor** [ranger-gear]: DB dbEquipBonuses is empty but screenshot shows equip bonus 'Sniper's Advantage': When you are 50' or further away from your target, your Combat Advantage is increased by 5%.
+- **Pilgrim Raid Josan** [ranger-gear]: Stat 1: screenshot shows Accuracy 290, DB has Combat Advantage 290 / Stat 2: screenshot shows Combat Advantage 193, DB has Critical Severity 193 / Critical Severity does not appear in screenshot; Accuracy appears instead
+- **Prestige Duelist Coat** [ranger-gear]: Stat 'Critical Severity 176' in DB does not appear in screenshot; screenshot shows Awareness 132 instead / Stat 'Deflection' value: screenshot shows 176, DB has 132 / DB is missing Awareness 132 (shown in screenshot) / DB Critical Severity 176 is not present in screenshot
+- **Apprentice's Runed Gaiters** [bard-gear]: Equip bonus 'Death Defier's Advantage': screenshot shows 250 Combat Advantage per enemy, DB stores 230
+- **Black Ice Boots** [bard-gear]: Defense: screenshot shows 384, DB stores 132
+- **Company Raid Gaiters** [ranger-gear]: First stat: screenshot shows Accuracy 176, DB has Critical Strike 176
+- **Dragonhide Pikes** [bard-gear]: Equip bonus 'This or That': screenshot shows 'gain 5,000 Defense' when not in a party, DB stores 'gain 3,000 Defense'
+- **Enchanted Bregan D'aerthe Assassin's Longboots** [bard-gear]: Critical Severity: screenshot shows 1,538, DB stores 1,518
+- **Leather Assault Chamas** [ranger-gear]: First stat is Combat Advantage 353 in screenshot, but DB stores it as Critical Strike 353
+- **Radiant Elven Boots** [bard-gear]: Equip bonus 'Wildspace Precision' non-Wildspace value: screenshot shows +5% Critical Strike in non-Wildspace, DB stores +3% Critical Strike in non-Wildspace
+- **Dragonflight Assault Hood** [ranger-gear]: Accuracy 265 in screenshot vs Combat Advantage 265 in DB
+- **Reinforced Dragonflight Assault Hood** [ranger-gear]: Second stat: screenshot shows Critical Severity 420, DB stores Combat Advantage 420
+- **Blaspheme Longbow** [ranger-gear]: Accuracy 570 shown in screenshot but missing from DB
+- **Protege's Buckled Boots (IL980)** [rogue-gear]: Missing equip bonus in DB: 'Death Defier's Advantage — Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)'. Both screenshots confirm this bonus is present; DB stores dbEquipBonuses: [].
+- **Protege's Weathered Gloves** [rogue-gear]: Missing equip bonus in DB: 'Leader's Might' — Gain 250 Power for each player in your team (visible in both screenshots)
+- **Manticore Duelist Vest** [bard-gear]: Stat mismatch: DB has Deflect(ion) 227 but screenshot shows Awareness 227
+- **Banditlord's Assault Boots** [bard-gear]: Stat 1: screenshot shows Combat Advantage 329, DB stores Accuracy 329 / Stat 2: screenshot shows Critical Severity 248, DB stores Combat Advantage 248
+- **Company Raid Boots** [bard-gear]: Combat Advantage: screenshot shows 265, DB stores 176 / Critical Strike: screenshot shows 176, DB stores 265
+- **Elemental Dragonflight Raid Boots** [bard-gear]: Second rating stat: screenshot shows Combat Advantage 179; DB stores Critical Strike 179
+- **Trapper of the Twilight's Boots** [bard-gear]: Critical Severity: screenshot 300, DB 375
+- **Black Ice Mask** [bard-gear]: Deflection: screenshot shows 131, DB has 60
+- **Elemental Dragonflight Raid Mask** [bard-gear]: Accuracy 179 in DB should be Combat Advantage 179 (screenshot shows +179 Combat Advantage as the lower stat, not Accuracy)
+- **Pioneer Assault Keffiyeh** [bard-gear]: First stat: screenshot shows Accuracy 277, DB stores Combat Advantage 277
+- **The Weaver's Dagger** [rogue-gear]: Screenshot shows '+125 Damage' as a flat rating stat (no % sign); DB stores this in dbPercentStats as 'Damage Bonus: 1.25' (percent). Stat is either miscategorized (should be a flat rating of 125, not a percent of 1.25) or the in-game display is misleading — confirm whether this is a flat damage value or a 1.25% bonus.
+- **Royalsilk Mousquetaires (IL672)** [unbound-gear]: Missing equip bonus in DB: screenshot shows a second Equip entry '+10% increase drop rate of Spider Silk' that is absent from dbEquipBonuses (only Survivor's Accuracy is stored).
+- **Morlanth's Shroud** [unbound-gear]: Missing equip bonus in DB (dbEquipBonuses is []): screenshot shows 'When you have less than 10% health and you kill an enemy, you gain 25% of your health back'
+- **Bloodlord's Visage** [unbound-gear]: Critical Avoidance: screenshot shows 189, DB stores 472 / Missing equip bonus in DB — screenshot shows: 'When you kill an enemy, you gain 100 Power for 1 minute. (Max 25 Stacks)'
+- **Brynnyr's Demise** [unbound-gear]: Missing equip bonus in DB — screenshot shows conditional effect: '+2000 Power if your Defense is higher than your Power; +2000 Defense if your Power is higher than your Defense'
+- **Dragonflight Ward Necklace** [unbound-gear]: Second stat: screenshot shows Critical Avoidance 529, DB has Defense 529
+- **League's Assault Ring** [unbound-gear]: Minor stat mismatch: DB stores Accuracy 441, screenshot shows Critical Strike 441
+- **Primal Ward Ring** [unbound-gear]: Defense: screenshot shows +1,575 Defense as the larger stat, DB stores Critical Avoidance 1575 — these are different stats; screenshot shows Defense not Critical Avoidance
+- **Rotsteel Band of Withering (image: Rotsteel Band of Withering_IL4650 (2).png)** [unbound-gear]: Screenshot shows a completely different item: 'Rotsteel Coil of Blight' (Combat Advantage 5580, Critical Strike 8370, Action Point Gain 1.5%, equip Survivor's Tenacity). Image file is mislabeled — it does not show Rotsteel Band of Withering.
+- **Bloodstained Shirt** [unbound-gear]: dbEquipBonuses is empty but screenshot shows an equip bonus: 'Gain 25 Power for each percent of health you are missing.' — bonus is missing from DB entirely.
+- **Dragonflight Shirt of Charming** [unbound-gear]: Equip bonus Charged Fury: screenshot states Power is increased by 5000 when Stamina is over 75%; DB stores 3000.
+- **Dragonflight Shirt of Cunning** [unbound-gear]: Equip bonus Charged Fury: screenshot states Power is increased by 5000 when Stamina is over 75%; DB stores 3000.
+- **Ancient Scalebreaker's Sleeves** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Herald's Cunning — When you have no teammates within 30 of you, your Stamina Regeneration and Control Resistance is increased by 5%' but DB has no equip bonuses recorded
+- **Apprentice's Runed Wristguard** [warlock-gear]: Critical Severity: screenshot shows 434, DB stores 414
+- **Astral Raider's Sleeves** [warlock-gear]: Incoming Healing: screenshot shows 990, DB stores 1980
+- **Charmed Gloves of the Successor** [warlock-gear]: Deflection: screenshot shows 371, DB stores 379
+- **Dinohide Raid Shabas** [warlock-gear]: Missing equip bonus in DB: Survivor's Parry — Gain 25 Deflect for each percent of health you are missing
+- **Elemental Drowcraft Assault Wristguards** [warlock-gear]: Combat Advantage 265 in DB but screenshot shows Accuracy 265
+- **Elemental Elven Raid Wristguards** [warlock-gear]: Accuracy 172 in DB but screenshot shows Combat Advantage 172
+- **Enchanted Bregan D'aerthe Expert's Gloves** [bard-gear]: Equip bonus trigger wrong: DB says 'whenever you heal your target for more than 10% of your Maximum Hit Points' but screenshot reads 'whenever you are damaged for more than 10% of your Maximum Hit Points'
+- **Exalted Maiden's Rejuvenation Mitts** [bard-gear]: DB has Critical Strike 1538 — stat not present in screenshot / DB stores Outgoing Healing as 0 but screenshot shows +1,538 Outgoing Healing / Correct stats are Defense 1538 + Outgoing Healing 1538 (no Critical Strike)
+- **Protege's Charmed Gloves** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Leader's Might — Gain 250 Power for each player in your team' but dbEquipBonuses is empty
+- **The Dark Maiden's Rejuvenation Mitts (IL2000)** [bard-gear]: Critical Strike: screenshot shows Defense 1500, DB stores Critical Strike 1500 — stat name wrong in DB; should be Defense
+- **Umbral Assault Wristguards (IL728)** [warlock-gear]: Critical Strike 328 in DB, but screenshot shows Combat Advantage 328 — stat name wrong in DB / Equip bonus 'Survivor's Parry' visible in screenshot (Gain 25 Deflect for each percent of health you are missing) is absent from DB (dbEquipBonuses is empty)
+- **Umbral Executioner Wristguards (IL728)** [warlock-gear]: Combat Advantage 164 in DB, but screenshot shows Awareness 164 — stat name wrong in DB / Equip bonus 'Survivor's Parry' visible in screenshot (Gain 25 Deflect for each percent of health you are missing) is absent from DB (dbEquipBonuses is empty)
+- **Wintermarked Swiftguards (IL5700)** [warlock-gear]: Forte: screenshot shows 3,848, DB stores 5,848 — value wrong in DB (both screenshots agree on 3,848)
+- **Cuirass of the Lifebloom** [bard-gear]: dbRatingStats has 'Forte: 3807' but screenshot shows '+3,807 Critical Severity' — stat name is wrong in DB (should be Critical Severity, not Forte)
+- **Dinohide Assault Kiuno** [warlock-gear]: DB has empty dbEquipBonuses but screenshot shows Equip: Challenger's Might — 'When in combat with only one enemy, your Power is increased by 1500' — missing from DB
+- **Dinohide Raid Kiuno** [warlock-gear]: DB has empty dbEquipBonuses but screenshot shows Equip: Challenger's Might — 'When in combat with only one enemy, your Power is increased by 1500' — missing from DB
+- **Elemental Elven Assault Longcoat** [warlock-gear]: Combat Advantage: screenshot shows +259 Critical Strike, not Combat Advantage — DB key should be Critical Strike 259, not Combat Advantage 259
+- **Elemental Lionsmane Executioner Longcoat** [warlock-gear]: Critical Severity: screenshot shows 129, DB has 172
+- **Huntsman Assault Longcoat** [warlock-gear]: Missing equip bonus in DB: Equip 'Challenger's Guard' — When in combat with only one enemy, your Defense is increased by 1000
+- **Huntsman Assault Pigaches** [warlock-gear]: Missing equip bonus in DB: Equip 'Executioner's Haste' — When you kill an enemy, your Movement Speed increases by 1% for 10 seconds (Max stack 5)
+- **Huntsman Assault Wristguards** [warlock-gear]: Missing equip bonus in DB: Equip 'Challenger's Might' — When in combat with only one enemy, your Power is increased by 1000
+- **Huntsman Raid Longcoat** [warlock-gear]: Missing equip bonus in DB: Equip 'Challenger's Guard' — When in combat with only one enemy, your Defense is increased by 1000
+- **Huntsman Raid Pigaches** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Executioner’s Haste — When you kill an enemy, your Movement Speed increases by 1% for 10 seconds (Max stack 5)'
+- **Huntsman Raid Wristguards** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Challenger’s Might — When in combat with only one enemy, your Power is increased by 1000'
+- **League's Assault Manteel** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Survivor’s Guard — Gain 10 Defense for each percent of health you are missing'
+- **League's Assault Sevars** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Survivor’s Might — Gain 10 Power for each percent of health you are missing'
+- **League's Elite Assault Manteel** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Survivor’s Guard — Gain 15 Defense for each percent of health you are missing'
+- **League's Elite Assault Sevars** [warlock-gear]: Missing equip bonuses in DB: screenshot shows both 'Equip: Survivor’s Might — Gain 15 Power for each percent of health you are missing' and 'Equip: Champion’s Might — When your health is greater than 85%, your Power is increased by 500'
+- **League's Elite Raid Manteel** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Survivor’s Guard — Gain 15 Defense for each percent of health you are missing'
+- **League's Elite Raid Sevars** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Survivor’s Might — Gain 15 Power for each percent of health you are missing'
+- **League's Raid Manteel** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Survivor’s Guard — Gain 10 Defense for each percent of health you are missing'
+- **League's Raid Sevars** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Survivor’s Might — Gain 10 Power for each percent of health you are missing'
+- **Manticore Assault Longcoat** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Challenger's Might (When in combat with only one enemy, your Power is increased by 1500)
+- **Manticore Raid Longcoat** [warlock-gear]: Missing equip bonus in DB: both screenshots show Equip: Challenger's Might (When in combat with only one enemy, your Power is increased by 1500)
+- **Pilgrim Assault Crackows** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Wanderer's Vigor (When not in a party, you regenerate 3% of your Maximum Hit Points, up to 3000, every 3 seconds)
+- **Pilgrim Assault Manteel** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Death Defier's Guard (Gain 100 Defense for each enemy you are engaged in battle with, max of 15 targets)
+- **Pilgrim Assault Sevars** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Death Defier's Might (Gain 100 Power for each enemy you are engaged in battle with, max of 15 targets)
+- **Pilgrim Raid Crackows** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Wanderer's Vigor (When not in a party, you regenerate 3% of your Maximum Hit Points, up to 3000, every 3 seconds)
+- **Pilgrim Raid Manteel** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Death Defier's Guard (Gain 100 Defense for each enemy you are engaged in battle with, max of 15 targets)
+- **Pilgrim Raid Sevars** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Death Defier's Might (Gain 100 Power for each enemy you are engaged in battle with, max of 15 targets)
+- **Pioneer Assault Barakeh** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Leader's Vitality (Gain 1000 Maximum Hit Points for each player in your team)
+- **Pioneer Assault Crackows** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Leader's Dash (Your Movement Speed increases by 1% for each player in your team)
+- **Pioneer Assault Manteel** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Leader's Guard (Gain 200 Defense for each player in your team)
+- **Pioneer Raid Barakeh** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Leader's Vitality (Gain 1000 Maximum Hit Points for each player in your team)
+- **Pioneer Raid Crackows** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Leader's Dash (Your Movement Speed increases by 1% for each player in your team)
+- **Pioneer Raid Manteel** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Leader's Guard (Gain 200 Defense for each player in your team)
+- **Pioneer Raid Sevars** [warlock-gear]: Missing equip bonus in DB: screenshot shows Equip: Leader's Might (Gain 100 Power for each player in your team)
+- **Primal Assault Barakoa** [warlock-gear]: dbEquipBonuses is empty but screenshot shows Equip: Butcher's Remedy (When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% of your health back)
+- **Primal Assault Kiuno** [warlock-gear]: dbEquipBonuses is empty but screenshot shows Equip: Butcher's Guard (When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Defense for 10 seconds. Max stack 5)
+- **Primal Assault Viatus** [warlock-gear]: dbEquipBonuses is empty but screenshot shows Equip: Executioner's Zeal (When you kill an enemy, you gain 3% Action Points)
+- **Primal Raid Barakoa** [warlock-gear]: dbEquipBonuses is empty but screenshot shows Equip: Butcher's Remedy (When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% of your health back)
+- **Primal Raid Kiuno** [warlock-gear]: dbEquipBonuses is empty but screenshot shows Equip: Butcher's Guard (When you damage or heal your target for more than 15% of your Maximum Hit Points in a single blow, you gain 1% Defense for 10 seconds. Max stack 5)
+- **Primal Raid Viatus** [warlock-gear]: dbEquipBonuses is empty but screenshot shows Equip: Executioner's Zeal (When you kill an enemy, you gain 3% Action Points)
+- **Protege's Mantled Robes** [warlock-gear]: dbEquipBonuses is empty but screenshot shows Equip: Warden's Defense (Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds)
+- **Umbral Assault Longcoat** [warlock-gear]: Missing equip bonus in DB: 'Equip: Challenger's Might — When in combat with only one enemy, your Power is increased by 1500.'
+- **Umbral Duelist Longcoat** [warlock-gear]: Missing equip bonus in DB: 'Equip: Challenger's Might — When in combat with only one enemy, your Power is increased by 1500.'
+- **Umbral Executioner Longcoat** [warlock-gear]: Missing equip bonus in DB: 'Equip: Challenger's Might — When in combat with only one enemy, your Power is increased by 1500.'
+- **Bregan D'aerthe Expert's Shoes** [bard-gear]: DB has Defense: 600 — not present in screenshot / DB has Control Resistance: 1800 — screenshot shows Control Resistance: 600 / DB missing Critical Severity: 1,500 — present in screenshot
+- **Curselord's Assault Pigaches** [warlock-gear]: DB missing Defense: 578 — present in screenshot
+- **Curselord's Raid Pigaches** [warlock-gear]: DB missing Defense: 578 — present in screenshot
+- **Devil Forged Shoes** [warlock-gear]: Equip bonus Devil Hunter: screenshot shows +1% Damage against Demons, DB stores +7% Damage against Demons
+- **Dinohide Raid Viatus** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Gladiator's Focus — For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.'
+- **Dragonflight Raid Pigaches** [warlock-gear]: Critical Strike 265 in DB should be Accuracy 265 (screenshot shows +265 Accuracy, +176 Combat Advantage, +441 Defense — no Critical Strike)
+- **Dungeon Raider's Cuisses** [bard-gear]: Combat Advantage 352 in DB should be Critical Strike 352 (screenshot shows +352 Critical Strike) / Awareness 352 in DB should be Critical Avoidance 352 (screenshot shows +352 Critical Avoidance)
+- **Elemental Alliance Raid Pigaches** [warlock-gear]: Combat Advantage 249 in DB should be Critical Strike 249 (screenshot shows +166 Accuracy, +249 Critical Strike, +416 Defense)
+- **Fiend Forged Cuisses** [bard-gear]: Equip bonus Gladiator's Might: DB says 'every 3 seconds' but screenshot shows 'every 5 seconds'
+- **Fiend Forged Shoes** [warlock-gear]: Equip bonus Gladiator's Might: DB says 'every 3 seconds' but screenshot shows 'every 5 seconds'
+- **Manticore Assault Pigaches** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Gladiator's Focus — For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.'
+- **Manticore Duelist Pigaches** [warlock-gear]: DB stats (Accuracy 227, Combat Advantage 170, Critical Strike 170, Defense 567) do not match screenshot (Combat Advantage 284, Defense 567, Awareness 284 — no Accuracy or Critical Strike present) / Missing equip bonus in DB: screenshot shows 'Equip: Gladiator's Focus — For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.'
+- **Manticore Raid Pigaches** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Gladiator's Focus — For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.'
+- **Protege's Layered Boots** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Death Defier's Advantage — Gain 250 Combat Advantage for each enemy you are engaged in battle with. (Max of 15 targets)'
+- **Treads of the Infernal Tempest** [warlock-gear]: Accuracy 2,925 is stored in dbPercentStats (as 2.925) but screenshot shows it as a rating stat (+2,925 Accuracy); should be in dbRatingStats as 2925
+- **Umbral Assault Pigaches** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Gladiator's Focus' — For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.
+- **Umbral Duelist Pigaches** [warlock-gear]: Stats completely wrong: screenshot shows Combat Advantage +273, Defense +546, Awareness +273; DB has Accuracy 218, Combat Advantage 164, Critical Strike 164, Defense 546 / DB is missing Awareness 273 / DB has Accuracy 218 not visible in screenshot / DB has Critical Strike 164 not visible in screenshot / Missing equip bonus in DB: screenshot shows 'Gladiator's Focus' — For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.
+- **Umbral Executioner Pigaches** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Gladiator's Focus — For every 5 seconds you are in combat, you gain 100 Critical Strike. If you stay in combat for longer than 2 minutes, this ability will no longer be active.'
+- **Astral Raider's Coif** [bard-gear]: DB has Outgoing Healing: 1,980 as a fourth rating stat, but screenshot shows only three stats (Critical Strike 1,320 / Defense 990 / Deflect Severity 990) with no Outgoing Healing visible; tooltip appears complete and uncut
+- **Crimson Scalebreaker's Raid Hood** [warlock-gear]: Second stat: screenshot shows Critical Severity 1080, DB has Combat Advantage 1080
+- **Dinohide Assault Barakoa** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Gladiator's Accuracy — For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.' DB has no equip bonuses.
+- **Dinohide Raid Barakoa** [warlock-gear]: Missing equip bonus in DB: screenshot shows 'Equip: Gladiator's Accuracy — For every 5 seconds you are in combat, you gain 100 Accuracy. If you stay in combat for longer than 2 minutes, this ability will no longer be active.' DB has no equip bonuses.
+- **Dragonflight Assault Cowl** [warlock-gear]: First stat: screenshot shows Accuracy 265, DB has Critical Strike 265
+- **Exalted Maiden's Raid Mask** [warlock-gear]: Critical Severity: screenshot shows +1,230, DB stores +1,210 (confirmed by both screenshots of this item)
+- **Fractal Cowl** [warlock-gear]: Equip bonus cooldown timer: screenshot reads 'every 5 seconds', DB stores 'Every 3s'
+- **Manticore Assault Cowl** [warlock-gear]: DB has Critical Strike 340 but screenshot shows Combat Advantage 340 (no Critical Strike present) / Missing equip bonus in DB: equip Gladiator's Accuracy (For every 5 seconds in combat gain 100 Accuracy; stops after 2 minutes)
+- **Manticore Duelist Cowl** [warlock-gear]: DB has Accuracy 227 but screenshot shows Critical Avoidance 227 (no Accuracy present) / Missing equip bonus in DB: equip Gladiator's Accuracy (For every 5 seconds in combat gain 100 Accuracy; stops after 2 minutes)
+- **Manticore Raid Cowl** [warlock-gear]: Missing equip bonus in DB: equip Gladiator's Accuracy (For every 5 seconds in combat gain 100 Accuracy; stops after 2 minutes)
+- **Umbral Duelist Cowl** [warlock-gear]: Stat shown as 'Critical Avoidance' (+218) in screenshot but stored as 'Accuracy' in DB — name equivalence not in the listed mapping; value 218 matches / Missing equip bonus in DB: 'Gladiator's Accuracy' (proc: every 5s gain 100 Accuracy; expires after 2 minutes in combat)
+- **Umbral Executioner Cowl** [warlock-gear]: Missing equip bonus in DB: 'Gladiator's Accuracy' (proc: every 5s gain 100 Accuracy; expires after 2 minutes in combat)
+- **Elk Tribe Noble's Pact Blade (IL399)** [warlock-gear]: Accuracy: screenshot shows 97.6, DB stores 98 (rounded) / Critical Avoidance: screenshot shows 97.6, DB stores 98 (rounded)
+- **Golden Dragon's Hellbringer (IL300)** [warlock-gear]: DB dbEquipBonuses is empty ([]), but screenshot shows equip bonus: "Equip: Increase the damage done by Hellish Rebuke by 10%"
+- **Hammerstone Pact Blade (IL352)** [warlock-gear]: Awareness: screenshot shows 79.2, DB stores 80 / Critical Avoidance: screenshot shows 79.2, DB stores 80
+- **Solarium Orb +1 (IL2700)** [wizard-gear]: Screenshot shows +250 Damage as a stat line above Critical Strike — this stat is absent from dbRatingStats and dbEquipBonuses in the DB
+- **Devil Forged Shoes** [warlock-gear]: Devil Hunter equip bonus: screenshot shows '+1% Damage against Demons', DB stores '+7% Damage against Demons'
+- **Dragonhide Poulaines** [warlock-gear]: This or That equip bonus: screenshot shows 'gain 5,000 Defense' when not in a party, DB stores '3,000 Defense'
+- **Fiend Forged Shoes** [warlock-gear]: Gladiator's Might equip bonus: screenshot says 'For every 5 seconds you are in combat, you gain 200 Power' but DB stores '3 seconds'
+- **Lolthian Poulaines** [warlock-gear]: Defense: screenshot shows +923, DB stores 1845
+- **Treads of the Infernal Tempest** [warlock-gear]: Accuracy is stored in dbPercentStats as 2.925 (percent), but screenshot shows it as a rating stat: +2,925 Accuracy — should be in dbRatingStats as 2925
+- **Astral Raider's Cap** [warlock-gear]: Control Resistance: screenshot shows 990, DB has 1980
+- **Crimson Scalebreaker's Raid Hood** [warlock-gear]: Stat identity mismatch: screenshot shows +1,080 Critical Severity, DB has Combat Advantage 1080 — the 1080-value stat is Critical Severity, not Combat Advantage
+- **Depthweave Hood** [warlock-gear]: Wrong stat set: DB has Combat Advantage 2250 + Critical Strike 2250, screenshot shows Critical Strike 2250 + Forte 2250 (no Combat Advantage) / Equip bonus interval mismatch: DB says 'Every 3 seconds in combat', screenshot reads 'For every 5 seconds you are in combat'
+- **Fractal Cowl** [warlock-gear]: Equip bonus interval mismatch: DB says 'Every 3s in combat', screenshot reads 'For every 5 seconds you are in combat'
+- **Lolthian Circlet** [warlock-gear]: Deflect (Deflection): screenshot shows 923, DB has 1845 / Equip bonus power amount: screenshot shows 7500 Power, DB has 7300 Power
+- **Mastered Duergar Mercenary's Hood** [warlock-gear]: Accuracy: screenshot shows 1425, DB has 1538

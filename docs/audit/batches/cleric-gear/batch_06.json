@@ -1,0 +1,539 @@
+[
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Infernal Forged Hide_IL1200.png",
+  "id": 4119,
+  "dbName": "Infernal Forged Hide",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Critical Severity": 900,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Infernal Forged Scalemail_IL1200.png",
+  "id": 1421,
+  "dbName": "Infernal Forged Scalemail",
+  "dbItemLevel": 1200,
+  "dbRatingStats": {
+   "Defense": 900,
+   "Deflection": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Lolthian Jacket_IL2050 (2).png",
+  "id": 3986,
+  "dbName": "Lolthian Jacket",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Severity": 1230,
+   "Defense": 923,
+   "Control Bonus": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are full, your Critical Severity is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Lolthian Jacket_IL2050.png",
+  "id": 3986,
+  "dbName": "Lolthian Jacket",
+  "dbItemLevel": 2050,
+  "dbRatingStats": {
+   "Critical Severity": 1230,
+   "Defense": 923,
+   "Control Bonus": 923
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Charged Focus",
+    "stat": null,
+    "amount": null,
+    "description": "When Action Points are full, your Critical Severity is increased by 5000.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Mastered Duergar Mercenary's Harness_IL1900 (2).png",
+  "id": 4000,
+  "dbName": "Mastered Duergar Mercenary's Harness",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Action",
+    "stat": null,
+    "amount": null,
+    "description": "When health is 50% or more, your Action Point Gain is increased by 7.5%. When health is below 50%, Stamina Regeneration is increased by 15%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Mastered Duergar Mercenary's Harness_IL1900.png",
+  "id": 4000,
+  "dbName": "Mastered Duergar Mercenary's Harness",
+  "dbItemLevel": 1900,
+  "dbRatingStats": {
+   "Critical Strike": 1425,
+   "Critical Severity": 1425
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Survivor's Action",
+    "stat": null,
+    "amount": null,
+    "description": "When health is 50% or more, your Action Point Gain is increased by 7.5%. When health is below 50%, Stamina Regeneration is increased by 15%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Mugger of the Maze's Hides_IL1000 (2).png",
+  "id": 4155,
+  "dbName": "Mugger of the Maze's Hides",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Max HP in a single blow, you gain 1% of your health back.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Mugger of the Maze's Hides_IL1000.png",
+  "id": 4155,
+  "dbName": "Mugger of the Maze's Hides",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Combat Advantage": 375,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Remedy",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Max HP in a single blow, you gain 1% of your health back.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Prismatic Bismuth Mail_IL3700 (2).png",
+  "id": 2724,
+  "dbName": "Prismatic Bismuth Mail",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Critical Severity": 3330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Daily (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown). You gain 5% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Prismatic Bismuth Mail_IL3700 (3).png",
+  "id": 2724,
+  "dbName": "Prismatic Bismuth Mail",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Critical Severity": 3330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Daily (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown). You gain 5% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Prismatic Bismuth Mail_IL3700.png",
+  "id": 2724,
+  "dbName": "Prismatic Bismuth Mail",
+  "dbItemLevel": 3700,
+  "dbRatingStats": {
+   "Critical Strike": 3330,
+   "Critical Severity": 3330
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Tactical Daily (Greater)",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown). You gain 5% Combat Advantage.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Protege's Chained Robe_IL980.png",
+  "id": 1550,
+  "dbName": "Protege's Chained Robe",
+  "dbItemLevel": 980,
+  "dbRatingStats": {
+   "Defense": 735,
+   "Deflection": 735
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Pulsar Vest_IL2600 (2).png",
+  "id": 3978,
+  "dbName": "Pulsar Vest",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Combat Advantage": 1950,
+   "Critical Strike": 1170,
+   "Forte": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Defender Strike",
+    "stat": null,
+    "amount": null,
+    "description": "Gain -1% Incoming Damage when you strike an enemy. Stacks 5 times. When you are struck, the stacks are consumed and you gain 1% Base Damage Boost per stack consumed for 10 seconds. Stacks cannot be applied at the same time.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Pulsar Vest_IL2600.png",
+  "id": 3978,
+  "dbName": "Pulsar Vest",
+  "dbItemLevel": 2600,
+  "dbRatingStats": {
+   "Combat Advantage": 1950,
+   "Critical Strike": 1170,
+   "Forte": 780
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Defender Strike",
+    "stat": null,
+    "amount": null,
+    "description": "Gain -1% Incoming Damage when you strike an enemy. Stacks 5 times. When you are struck, the stacks are consumed and you gain 1% Base Damage Boost per stack consumed for 10 seconds. Stacks cannot be applied at the same time.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Radiant Elven Jerkin_IL2800 (2).png",
+  "id": 3970,
+  "dbName": "Radiant Elven Jerkin",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Critical Strike": 2100,
+   "Forte": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shielded Strength",
+    "stat": null,
+    "amount": null,
+    "description": "When you have a Shield or Temp HP in Wildspace, gain 5% Damage and 2.5% Critical Severity. In non-Wildspace, the Damage bonus is reduced to 2%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Radiant Elven Jerkin_IL2800.png",
+  "id": 3970,
+  "dbName": "Radiant Elven Jerkin",
+  "dbItemLevel": 2800,
+  "dbRatingStats": {
+   "Critical Strike": 2100,
+   "Forte": 2100
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Shielded Strength",
+    "stat": null,
+    "amount": null,
+    "description": "When you have a Shield or Temp HP in Wildspace, gain 5% Damage and 2.5% Critical Severity. In non-Wildspace, the Damage bonus is reduced to 2%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Runefrost Lifeward Cuirass_IL5400.png",
+  "id": 5354,
+  "dbName": "Runefrost Lifeward Cuirass",
+  "dbItemLevel": 5400,
+  "dbRatingStats": {
+   "Critical Strike": 4860,
+   "Forte": 3645
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Critical Harmony",
+    "stat": null,
+    "amount": null,
+    "description": "You gain 1.5% Outgoing Healing for each player in your team. When your teammates are 20' or closer to you, their Critical Strike is increased by 2%.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Scalemail of the Spy's Guild_IL940.png",
+  "id": 3485,
+  "dbName": "Scalemail of the Spy's Guild",
+  "dbItemLevel": 940,
+  "dbRatingStats": {
+   "Defense": 705,
+   "Deflection": 705
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Warden's Defense",
+    "stat": null,
+    "amount": null,
+    "description": "Whenever you are damaged for more than 10% of your Maximum Hit Points in a single blow, you gain 5% Defense for 10 seconds.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Starhide Jerkin_IL2700.png",
+  "id": 3974,
+  "dbName": "Starhide Jerkin",
+  "dbItemLevel": 2700,
+  "dbRatingStats": {
+   "Critical Strike": 2025,
+   "Critical Severity": 2025
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Daily",
+    "stat": null,
+    "amount": null,
+    "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Stealer of the Star's Hides_IL1000.png",
+  "id": 4153,
+  "dbName": "Stealer of the Star's Hides",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Strike": 375,
+   "Critical Severity": 375,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Might",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Max HP in a single blow, you gain 1% Power for 10s. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\The Dark Maiden's Assault Hide_IL2000.png",
+  "id": 4016,
+  "dbName": "The Dark Maiden's Assault Hide",
+  "dbItemLevel": 2000,
+  "dbRatingStats": {
+   "Critical Strike": 1200,
+   "Critical Severity": 900,
+   "Defense": 900
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Maiden's Blade",
+    "stat": null,
+    "amount": null,
+    "description": "You do 5% more damage to enemies that are not facing you. This bonus doubles in the Underdark.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Trapper of the Twilight's Hides_IL1000.png",
+  "id": 4150,
+  "dbName": "Trapper of the Twilight's Hides",
+  "dbItemLevel": 1000,
+  "dbRatingStats": {
+   "Critical Severity": 750,
+   "Defense": 450,
+   "Critical Avoidance": 300
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Butcher's Tenacity",
+    "stat": null,
+    "amount": null,
+    "description": "When you damage or heal your target for more than 15% of your Max HP in a single blow, you gain 1% Critical Severity for 10s. (Max stack 5)",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Ultraviolet Elven Vest_IL2900.png",
+  "id": 3966,
+  "dbName": "Ultraviolet Elven Vest",
+  "dbItemLevel": 2900,
+  "dbRatingStats": {
+   "Critical Strike": 2175,
+   "Forte": 2175
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Focused Daily",
+    "stat": null,
+    "amount": null,
+    "description": "When you use a Daily power, your next encounter power will deal 20% more damage. (10 second cooldown). Additionally, when Focused Daily triggers, you gain 2.5% Critical Severity for 10s.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Weathered Wood Hide_IL1300.png",
+  "id": 4059,
+  "dbName": "Weathered Wood Hide",
+  "dbItemLevel": 1300,
+  "dbRatingStats": {
+   "Accuracy": 975,
+   "Defense": 975
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Leader's Guard",
+    "stat": null,
+    "amount": null,
+    "description": "Gain 1000 Defense for each player in your team.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ },
+ {
+  "image": "G:\\ai_projects\\nwcb\\website\\docs\\audit\\_up\\cleric-gear\\Wintermarked Lifeward Cuirass_IL5700.png",
+  "id": 5346,
+  "dbName": "Wintermarked Lifeward Cuirass",
+  "dbItemLevel": 5700,
+  "dbRatingStats": {
+   "Power": 2992,
+   "Critical Severity": 5130
+  },
+  "dbPercentStats": {},
+  "dbEquipBonuses": [
+   {
+    "name": "Unbroken Strength",
+    "stat": null,
+    "amount": null,
+    "description": "For each second you are at maximum health, gain +0.55% Power and +0.55% Critical Severity. Each second at less than maximum health, you lose 3 stacks. Max 10 Stacks: +5.5% Power and +5.5% Critical Severity.",
+    "setName": null,
+    "pieces": null
+   }
+  ]
+ }
+]
