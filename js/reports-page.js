@@ -111,7 +111,7 @@
     }
 
     // Sort active: status priority (New > Confirmed > In Progress), then by upvotes
-    var statusOrder = { "In Progress": 0, "New": 1, "Confirmed": 2 };
+    var statusOrder = { "New": 0, "Confirmed": 1, "In Progress": 2 };
     active.sort(function (a, b) {
       var sa = statusOrder[a.status] !== undefined ? statusOrder[a.status] : 9;
       var sb2 = statusOrder[b.status] !== undefined ? statusOrder[b.status] : 9;
@@ -377,8 +377,11 @@
     var id = parseInt(btn.getAttribute("data-id"), 10);
     if (votedIds.indexOf(id) !== -1) return;
 
-    // Disable button while processing
+    // Lock the button while processing. The "voted" class is the actual
+    // re-entry guard (checked above); disabled adds visual + keyboard
+    // hardening while the RPC is in flight.
     btn.classList.add("voted");
+    btn.disabled = true;
 
     var { data, error } = await sb.rpc("upvote_report", {
       report_id: id,
@@ -387,6 +390,7 @@
 
     if (error) {
       btn.classList.remove("voted");
+      btn.disabled = false;
       console.error("Vote error:", error);
       return;
     }
@@ -410,6 +414,7 @@
       renderReports();
     } else {
       btn.classList.remove("voted");
+      btn.disabled = false;
     }
   });
 
@@ -506,6 +511,10 @@
   reportsList.addEventListener("click", async function (e) {
     var btn = e.target.closest(".delete-btn");
     if (!btn || !adminMode) return;
+    // Reply delete buttons also carry .delete-btn for styling — they have
+    // their own handler below. Without this guard, this handler fired too
+    // (data-id missing -> NaN) and sent a junk delete_report RPC.
+    if (btn.classList.contains("reply-delete-btn")) return;
 
     var id = parseInt(btn.getAttribute("data-id"), 10);
     if (!confirm("Delete this report? This cannot be undone.")) return;
