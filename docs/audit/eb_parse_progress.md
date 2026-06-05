@@ -43,6 +43,17 @@ the flat clause; over/greater thresholds = on, under/below = conditional.
 Remaining: **1,081 text-only instances (454 unique names)** + 293 instances
 skip-listed by pattern (heal/damage/AP/cooldown procs, random-stat effects).
 
+## UPDATE 2026-06-04: gear DAMAGE procs now modeled
+33 prose damage procs (Critical Force ×14, Explosive Force ×8, Summon
+Myconid ×6, Daily Burst ×2, Power at Any Cost, Rothe's Intimidation,
+Daily Explosion) carry structured `procDamage` fields
+(scripts/gear_proc_damage.py) consumed by the proc-damage layer
+(computeGearProcDamagePerHit in toon-forge.html). Magnitude procs ride
+the player multiplier chain (Snowbound Ring's Explosive Force = +10.0%
+verified); flatDamage procs (tooltip captures) add flat post-multiplier
+damage (+0.57% for Smoldering Loop at endgame — honestly small).
+Conjure Orb skipped (ambiguous summon uptime).
+
 ## Skipped by design (no engine layer yet — do NOT structure as stats)
 - Encounter Reprieve (52): cooldown-reduction proc
 - Critical Charge (45): flat Action Point grant proc
