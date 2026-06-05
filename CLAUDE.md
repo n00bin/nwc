@@ -17,45 +17,63 @@ A static website (GitHub Pages) for Neverwinter (PS5) players. It's a reference 
 
 ## Site Structure
 
-### Pages (10)
+### Pages (14 public)
 | File | Purpose |
 |------|---------|
-| `index.html` | Home page with collapsible news feed |
+| `index.html` | Home page with collapsible news feed + live data counts |
 | `companions.html` | Companion database (Lookup, Summoned Buffs, Enhancements, Damage tabs) |
-| `mounts.html` | Mount database (Lookup, Ranking, Insignia Calculator) |
+| `mounts.html` | Mount database (Lookup, Rankings, Collars, Insignias, Stable Planner) |
 | `artifacts.html` | Artifact reference with icons |
 | `consumables.html` | Buffs/consumables with duration filters |
-| `mekaniks.html` | Game mechanics and stat explanations |
-| `professions.html` | Crafting/profession guide |
+| `mekaniks.html` | Game mechanics and stat explanations (hash deep-links to tabs) |
+| `professions.html` | Crafting/profession guide (artisan table, masterwork) |
 | `campaign-boosters.html` | Companions and items that boost campaign currencies |
 | `patchnotes.html` | Auto-updated patch notes from Arc Games API |
 | `reports.html` | Community bug reports (Supabase backend) |
+| `toon-forge.html` | Character builder + stat engine (the site's biggest app; deliberately NOT in the navbar — reached via Creators & Tools) |
+| `creators-tools.html` | Directory of community creators + site tools (Toon Forge entry point) |
+| `insignia-priority.html` | Insignia priority reference |
+| `preview.html` | Mod preview content (gear, comps, screenshots) |
+
+Local-only (gitignored, not deployed): `_uptime_test.html`.
+`prototypes/toon-forge.html` is a redirect stub to the root page.
 
 ### JavaScript
 | File | Purpose |
 |------|---------|
-| `js/shared.js` | Nav, footer, utility functions (renderNav, buildLookup, escapeHtml, etc.) |
-| `js/companions-page.js` | Companion rendering, rarity scaling, proc effect scaling |
-| `js/mounts-page.js` | Mount rendering, insignia calculator, ranking |
+| `js/shared.js` | Nav, footer, utility functions (renderNav, buildLookup, escapeHtml, cleanNotes, etc.) |
+| `js/companions-page.js` | Companion rendering, rarity scaling (single/double/triple tables), proc effect scaling |
+| `js/mounts-page.js` | Mount rendering, insignia calculator, rankings, stable planner |
 | `js/artifacts-page.js` | Artifact data and rendering (data embedded in file) |
 | `js/consumables-page.js` | Consumables filtering and rendering |
 | `js/reports-page.js` | Supabase integration for reports, voting, admin, replies |
+| `js/data-corrections.js` | Override layer for user-submitted data corrections |
+| `js/preview-config.js` | Preview page configuration |
+| `js/optimizer-local.js` | Build optimizer — **gitignored, paid IP, never deploy** |
+| `toon-forge-engine.js` | Toon Forge stat engine (root level; public) |
+| `toon-forge-stats.js` | Stat catalog: names, caps, aliases (root level; single source of truth) |
 
 ### Data Pipeline
-Source JSON lives in `../data/` (parent repo). Build pipeline:
+Source JSON lives in `../data/` (parent repo, 33 files). Build pipeline:
 ```
 ../data/*.json  →  build-data.py  →  data/*.js (browser globals)
 ```
 
-Key source files:
-- `mounts.json`, `mount_combat_powers.json`, `mount_equip_powers.json`
-- `mount_insignia_bonuses.json`, `mount_insignias.json`
-- `companions.json`, `companion_powers.json`, `companion_enhancements.json`
-- `buffs.json`
+build-data.py converts 22 files. Key source files:
+- `gear.json` (largest — 6,300+ entries), `enchants.json`, `artifacts.json`, `kits.json`, `overloads.json`
+- `mounts.json`, `mount_combat_powers.json`, `mount_equip_powers.json`,
+  `mount_insignia_bonuses.json`, `mount_insignias.json`, `mount_collars.json`
+- `companions.json`, `companion_powers.json`, `companion_enhancements.json`, `companion_gear.json`
+- `buffs.json`, `classes.json`, `races.json`, `campaign_boons.json`, `guild_boons.json`, `general_feats.json`
+- (source JSON not covered by build-data.py is engine/optimizer-side data)
 
 **Always run `python3 build-data.py` after editing source JSON.**
+A bad JSON file FAILs loudly and is skipped; the rest still build.
 
-The `data/news.js` and `data/patch-notes-var.js` are edited directly (not built from source JSON).
+Hand-edited `data/*.js` (NOT built from source JSON — edit directly):
+- `news.js`, `patch-notes-var.js` (+ CI-written `patch-notes.json`)
+- hand-curated lookup maps: `artisans.js`, `companion-images.js`,
+  `consumable-images.js`, `enhancement-images.js`, `mount-images.js`
 
 ---
 
