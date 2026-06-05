@@ -10109,11 +10109,9 @@
         for (const eff of ep.partyEffects) {
           if (!eff || !eff.stat) continue;
           const channel = (eff.type === "rating") ? ratingStats : percentStats;
-          // Decision 8: party ally equip powers always evaluated at Mythic rarity in v1.
-          // Mythic factor is 1.0 — mathematically a no-op, but makes scope cut explicit.
-          const _partyRarityFactor = mountRarityFactor("Mythic");
-          channel[eff.stat] = (channel[eff.stat] || 0) +
-            Math.min((eff.amount || 0) * _partyRarityFactor, (eff.amount || 0) * 1.3124);
+          // Decision 8: party ally equip powers are always evaluated at Mythic
+          // rarity (factor 1.0), so the stored amount is used as-is.
+          channel[eff.stat] = (channel[eff.stat] || 0) + (eff.amount || 0);
         }
         buffs.push({
           source: `Party Mount Buff: Ally's ${epName}`,
@@ -11048,10 +11046,7 @@
       { label: "Shirt",     slot: "Shirt"     },
       { label: "Pants",     slot: "Pants"     },
     ];
-    const GEAR_OPTIONS = ["— None —", "Mythic Vivified ★", "Legendary Voninblod", "Epic Mountain of Flame", "Epic Lionheart"];
     const ARTIFACT_SLOTS = ["Primary","Secondary 1","Secondary 2","Secondary 3"];
-    const ARTIFACT_OPTIONS = ["— None —", "Lantern of Revelation", "Sigil of the Devoted", "Black Ice Beholder", "Tarokka Deck", "Shard of Orcus"];
-    const COMPANIONS = ["Phasespider","Lysaera","Soradiel","Tutor","Festive Tiger","Coldlight Walker","Celeste","Harper Bard","Riotous Rothé"];
     /* ===== Boon helpers (read from CAMPAIGN_BOONS_DATA) =====
        boonKey is "tier1:<id>" / "tier2:<id>" / ... / "master:<id>". */
     const TIER_KEYS = ["tier1","tier2","tier3","tier4","tier5"];
