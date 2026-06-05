@@ -1,5 +1,36 @@
 # Data Issues To Investigate
 
+## Six clothing variants fully transcribed, awaiting slot confirmation (OPEN, 2026-06-05)
+
+Collection-preview screenshots (2026-06-02 batch) captured the SECOND variant of six
+clothing pieces. Tooltips omit the slot ([[reference_nw_collection_slot_per_variant]]),
+so they are NOT in gear.json yet. Full transcriptions below are verified from crisp 1.3x
+crops; archived in `website/docs/calibration/inbox/_needs_verify/`. **Only the slot
+(Shirt vs Pants) needs an in-game check** — then they can be inserted as-is.
+
+All five Marks: +1.5% Movement Speed, CR 2,340 (IL 2600 derived from CR=0.9×IL, matches
+the in-db Glorious Undead family), Requires Level 20. The in-db "Mark of the …" entries
+(ids 494–499, verified 2026-05-17) are the OTHER variants — different stats/bonuses,
+same display names. Do not overwrite them.
+
+| Item | Stats | Equip bonus | Set (2pc) |
+|---|---|---|---|
+| Mark of the Convert | Accuracy 1,524 / Awareness 1,248 / Deflect 1,755 | Survivor's Remedy (Greater): 5% chance on taking damage to restore 8% Max HP (15s ICD) | Enchanted Awareness — Glorious Undead Defence Shirt+Pants: +3,000 Awareness |
+| Mark of the Adept | Critical Strike 1,404 / Control Resistance 1,170 / Outgoing Healing 1,248 | Healing Tactics: Stamina >75% → +7,275 Outgoing Healing | Enchanted Forte — Glorious Undead Healer Shirt+Pants: +3,000 Forte |
+| Mark of the Initiate | Critical Strike 1,872 / Critical Severity 1,404 / Deflect 1,755 | Solitary Power: vs one enemy gain 2.5% Power (divided by enemy count) | Enchanted Advantage — Glorious Undead Offence Shirt+Pants: +3,000 Accuracy |
+| Mark of the Recruit | Combat Advantage 936 / Critical Strike 1,872 / Defense 819 | Solitary Power (same text) | Enchanted Advantage: +3,000 Accuracy |
+| Mark of the Fledgling | Critical Strike 1,404 / Defense 819 / Forte 1,404 | Healing Tactics (same text) | Enchanted Forte: +3,000 Forte |
+
+Sixth item — **Bloodwoven Brands (Warden's Defense)**, IL 3150 family, CR 2,835:
+Critical Avoidance 1,559 / Control Resistance 1,418 / +1.5% Action Point Gain.
+Equip: Warden's Defense — "Whenever you are damaged for more than 15% of your Maximum
+Hit Points in a single blow, you gain 5% Defense for 10 seconds." Set Enchanted
+Awareness (Dark Magic Defence Shirt+Pants): +2% Awareness. This is the variant id 467's
+note already predicted ("co-exists with Warden's Defense version"). TWO caveats: the
+tooltip was scrolled, so (a) a possible first stat line is occluded (sibling id 467 has
+Defense 1,323 in that position — verify), and (b) slot unknown (id 467 is the verified
+Shirt; per the per-variant rule we do not infer Pants by elimination).
+
 ## Toon Forge: artifact weapons in pickers — FIXED, residual data cleanup (2026-05-31)
 
 FIXED (commit 0d18a66): the Main Hand / Off Hand pickers now include "Artifact
