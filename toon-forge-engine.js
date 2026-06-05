@@ -418,8 +418,11 @@
   var ABILITY_CONVERSIONS = {
     STR: [{stat: "Stamina Regeneration", rate: 0.5},
           {stat: "Physical Damage",      rate: 0.25}],
-    CON: [{stat: "Maximum Hit Points",   rate: 0.5},
-          {stat: "Action Point Gain",    rate: 0.25}],
+    // CON's +0.5%/point Maximum Hit Points is deliberately NOT listed here:
+    // the Max HP model in finalize() already applies it via HPM.conPerPoint.
+    // Having it in both places double-counted CON (×1.07 twice at CON 14 —
+    // ~7% HP overshoot; found in the 2026-06-05 audit).
+    CON: [{stat: "Action Point Gain",    rate: 0.25}],
     DEX: [{stat: "Critical Severity",    rate: 0.5},
           {stat: "Movement Speed",       rate: 0.25}],
     INT: [{stat: "Control Bonus",        rate: 0.5},
