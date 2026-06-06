@@ -154,6 +154,18 @@ real set names need screenshots. Also: each shirt/pants line is a 2-piece set (H
 Straps=Shirt; likely Raiment/Guard/Vestment/Tunic/Aetherwrap pair up similarly) — verify
 slots per line. And Veinlit Stonevein Straps (5447) stats are still UNVERIFIED.
 
+UPDATE 2026-06-06: the Lifebraid/Stormbind/Aetherwrap lines DON'T use distinct
+shirt/pants names — they reuse the SAME display name in both slots with a different
+bonus variant (like Bloodwoven). Added the missing Cracked-tier **Pants** variants from
+n00b's collection screenshots (slot confirmed via grid tiles): ids 6872 (Cracked
+Lifebraid Vestment — Survivor's Gift), 6873 (Cracked Stormbind Tunic — Reckless
+Advantage), 6874 (Cracked Aetherwrap — Challenger's Awareness), all IL 4,600. Their
+tooltips show NO set block, so they were deliberately NOT linked to the shirts'
+"Freezing …" sets — verify pairing in-game before linking. STILL MISSING: the Pants
+variants of the other tiers (Veinlit / Runemarked / Deep-Riven / Frost-Riven) for these
+three lines — need screenshots. The new `set: ""` on the pants is intentional (the
+"Winterworn Harness" placeholder was not propagated).
+
 ## Bloodwoven set — slot-conflict pairs need screenshots (OPEN, 2026-05-29)
 
 Cleaned up 2026-05-29: deleted exact-dup em-dash entries (468, 470) and two malformed
