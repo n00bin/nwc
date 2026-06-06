@@ -1,5 +1,38 @@
 # Data Issues To Investigate
 
+## Jotunskar clothing family — leftovers from 2026-06-06 pants verification
+
+Context: n00b's 4 collection screenshots (Deep-Riven pants) triggered a family-wide
+review. FIXED same day: 4 Deep-Riven pants slots (3 were "Shirt", 1 was "Armor"),
+Lifebraid Power 1275→1273, top-level set fields ("Winterworn Harness" is the
+collection tab, not a set; real sets are Freezing Energy/Grasp/Advantage/Touch/
+Stand/Fortitude/Rage, 2pc, shirt+pants pairs), structured parses for the 4 pants
+bonuses, and removal of bogus Freezing set markers from ALL sub-4850 tiers
+(archived tooltips show the set line exists only on Deep-Riven/Frost-Riven 4850).
+
+STILL OPEN:
+- **id 5327 Veinlit Stormbind Tunic (IL 3800)**: slot is the literal string
+  "Clothing: Jotunskar" (invalid — never matches a picker slot) and the entry has
+  no Equip bonus. Veinlit Stormbind 4350 (id 5448, Charged Precision) is Shirt;
+  5327's variant/slot needs an in-game tooltip before assigning. Until then it's
+  invisible in Toon Forge slot pickers.
+- **Freezing set 2pc bonus texts** are carried on markers ("2 of Set: +4% X") but
+  none of the pairs apply a structured stat — if/when both 4850 pieces of a pair
+  are confirmed, decide which piece carries the structured set-bonus entry
+  (role-conditional set pattern).
+
+## Set field vs Set marker drift — global backlog (found 2026-06-06)
+
+A scan for entries whose top-level `set`/`setSize` disagrees with their own
+equipBonuses `type:"Set"` marker found a large pre-existing backlog (hundreds),
+mostly `setSize: null` where the marker says `pieces: 2` (Pioneer/Primal/Pilgrim
+families, Prismatic Defier, Mark of the Initiate/Novice/Recruit, …) plus a few
+name/size conflicts (Vistani Pendant/Raiments: set "Vistani"/3 vs marker /2).
+Top-level set/setSize is display/filter only (badge + advanced search); the
+engine counts pieces via markers, so math is unaffected. Worth a mechanical
+backfill pass someday — but verify each family's marker is itself trustworthy
+first (the Jotunskar case above shows markers can be intake copy-paste errors).
+
 ## Mount power capture anchors — Celestial fixed, 7 lower-IL entries to confirm (2026-06-06)
 
 n00b verified in-game: a standard mount power shows **IL 3000 at Mythic and
