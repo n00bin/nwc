@@ -22,6 +22,12 @@ STILL OPEN:
   are confirmed, decide which piece carries the structured set-bonus entry
   (role-conditional set pattern).
 
+VERIFIED CORRECT (2026-06-06 tooltips, no changes needed):
+- id 5420 Runemarked Stormbind Tunic (Shirt, IL 3800) — full tooltip match:
+  stats, Lethal Tactics (+10,625 Critical Severity @ Stamina>75%), source, no
+  set. Confirms the shirt-row position in the Reghed Edge collection grid and
+  the Lethal(shirt/CritSev) ↔ Precision(pants/CS) Tactics mirror pair.
+
 ## Set field vs Set marker drift — global backlog (found 2026-06-06)
 
 A scan for entries whose top-level `set`/`setSize` disagrees with their own
