@@ -70,6 +70,24 @@ build-data.py converts 22 files. Key source files:
 **Always run `python3 build-data.py` after editing source JSON.**
 A bad JSON file FAILs loudly and is skipped; the rest still build.
 
+### Google Sheets editing window (added 2026-06-06)
+The JSON stays the source of truth; a Google Sheet is the friendly editing
+surface. Round-trip:
+```
+scripts/sheet_export.py  → docs/sheets/nwcb_database.xlsx (16 item tabs)
+   → n00b uploads to Google Sheets, edits cells
+   → File → Download → .xlsx
+scripts/sheet_import.py <file> [--apply]  → validated diffs into ../data/*.json
+   → build-data.py → commit
+```
+- Import is DIFF-BASED: only cells that differ from current JSON are parsed
+  (lists = comma-separated, stat maps = "Stat: value" lines, "[JSON]"
+  columns = nested structures). Malformed cells are rejected individually
+  with reasons; the rest still apply. New rows = new items (id assigned);
+  missing rows never delete.
+- Engine config (classes, role_weights, proc profiles, boons, owned
+  profiles) is deliberately NOT in the sheet.
+
 Hand-edited `data/*.js` (NOT built from source JSON — edit directly):
 - `news.js`, `patch-notes-var.js` (+ CI-written `patch-notes.json`)
 - hand-curated lookup maps: `artisans.js`, `companion-images.js`,

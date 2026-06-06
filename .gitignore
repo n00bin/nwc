@@ -72,3 +72,8 @@ artifacts.txt
 
 # Premium feature (paid IP) — local only until launch; deploys to Vercel/private repo
 premium/
+# local-only login-flow test page (reusable after Vercel deploy — edit API const)
+premium-test.html
+
+# Sheets editing-window exports (regenerable binaries)
+docs/sheets/
