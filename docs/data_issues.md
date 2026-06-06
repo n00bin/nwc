@@ -61,6 +61,24 @@ BOTH were correct in the db (archived in `inbox/companions/`):
   LOW-suspicion — special mechanics likely explain them too. Verify
   opportunistically, not urgently.
 
+## Flayed Legion siblings — incomplete entries (spotted while fixing Report #87, 2026-06-06)
+
+Report #87 fixed the Harness (id 288: added missing Combat Advantage 1,968 +
+`allowedClasses: ["Barbarian"]`, both player-verified). Its three set siblings in
+`../data/gear.json` share the same gaps but have NO player verification yet — do not
+guess; fix during a Barbarian-gear screenshot pass:
+
+- **id 286 Sabatons of the Flayed Legion** (Feet, IL 4100): only ONE stat
+  (Accuracy 1,997) against CR 3,690 — almost certainly missing 1–2 stats.
+  No `allowedClasses`.
+- **id 287 Vambraces of the Flayed Legion** (Arms, IL 4100): stats plausible
+  (CA 2,460 + Power 2,152) but no `allowedClasses`.
+- **id 289 Mask of the Flayed Legion** (Head, IL 4100): 3 stats present but no
+  `allowedClasses`.
+
+All four slots are class-specific, so missing `allowedClasses` means these show in
+every class's picker. Likely all Barbarian (matching the Harness), but unverified.
+
 ## Six clothing variants from 2026-06-02 screenshots — RESOLVED 2026-06-05 (verifies done)
 
 Resolution of the section previously titled "Six clothing variants fully transcribed,
