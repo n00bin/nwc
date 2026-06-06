@@ -142,8 +142,17 @@ For procs whose effect is a stat buff, `procEffect.statEffects` carries structur
 - `scope`: `"self"` | `"party"` (party-wide stacks, e.g. Part of the Pack) | `"enemy"` (debuff — engine skips).
 - Trigger `"Passive"` + `chance: 100` + no duration/stacks + self scope = always-on:
   the engine counts it in the BASE stat panel (not behind Show Conditional).
-- Known intentional outlier: Energon (power 201) gives +35,000 MaxHP at IL 750 —
-  game-verified, deliberately NOT on the MAX_HP scale. Don't normalize it.
+- Known intentional outliers (all game-verified — do NOT normalize):
+  - Energon (power 201): +35,000 MaxHP at IL 750 — deliberately off the MAX_HP scale.
+  - Raptor's Instincts (power 49): 4.5% Power at IL 900 — it's a PER-STACK
+    party power (Part of the Pack, max 5 stacks), not a single-stat power;
+    the 9.0 single-stat scale never applied. Verified 2026-06-05.
+  - Bobby's Vigor (power 89): +12,000 MaxHP + 4.5% Defense at IL 750 — off
+    both the MAX_HP scale (15,000) and the double-stat scale (3.75).
+    Verified 2026-06-05.
+  - Lesson from verifying the first two flagged "off-scale" powers: special
+    mechanics (stacking, party scope, hybrid HP+%) explain most scale
+    deviations — check the tooltip's mechanics before assuming a data error.
 
 ---
 
