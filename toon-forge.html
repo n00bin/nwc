@@ -5599,10 +5599,11 @@
       // detail card can render any combat power regardless of whether the owning
       // mount is currently slotted.
       // Decision 11: read rarity from state.activeCombatPowerRarity, not per-slot mountRarity.
-      const _cpRarityFactor = mountRarityFactor(state.activeCombatPowerRarity || "Mythic");
+      const _cpAnchorFactor = mountPowerAnchorFactor(p);
+      const _cpRarityFactor = mountRarityFactor(state.activeCombatPowerRarity || "Mythic") / _cpAnchorFactor;
       const _cpBolsterFactor = mountPowerBolsterFactor(state.mountBolster);
       function _scaleCombat(stored) {
-        return Math.min((stored || 0) * _cpBolsterFactor * _cpRarityFactor, (stored || 0) * 1.3124);
+        return Math.min((stored || 0) * _cpBolsterFactor * _cpRarityFactor, (stored || 0) * (1.3124 / _cpAnchorFactor));
       }
       const cdr = p.rechargeTimeSeconds ? `${p.rechargeTimeSeconds}s recharge` : "";
       const mag = p.magnitude ? `magnitude ${Math.round(_scaleCombat(p.magnitude))}` : "";
@@ -9223,9 +9224,11 @@
       // Active mount powers
       cur = 0; sources = [];
       const ep = findEquipPowerById(state.activeEquipPower);
-      if (ep && ep.item_level) { cur += ep.item_level; sources.push({ name: `Equip Power: ${ep.name}`, il: ep.item_level }); }
+      const epIL = mountPowerILFor(ep, state.activeEquipPowerRarity);
+      if (epIL) { cur += epIL; sources.push({ name: `Equip Power: ${ep.name}`, il: epIL }); }
       const cp = findCombatPowerById(state.activeCombatPower);
-      if (cp && cp.item_level) { cur += cp.item_level; sources.push({ name: `Combat Power: ${cp.name}`, il: cp.item_level }); }
+      const cpIL = mountPowerILFor(cp, state.activeCombatPowerRarity);
+      if (cpIL) { cur += cpIL; sources.push({ name: `Combat Power: ${cp.name}`, il: cpIL }); }
       add("Active mount powers", cur, sources);
       // Summoned companion rarity IL — line REMOVED 2026-05-12.
       // Earlier (2026-05-11) we added a separate "Summoned companion: 900"
@@ -9286,9 +9289,9 @@
     function computeActiveMountIL() {
       let sum = 0;
       const ep = findEquipPowerById(state.activeEquipPower);
-      if (ep && ep.item_level) sum += ep.item_level;
+      if (ep) sum += mountPowerILFor(ep, state.activeEquipPowerRarity);
       const cp = findCombatPowerById(state.activeCombatPower);
-      if (cp && cp.item_level) sum += cp.item_level;
+      if (cp) sum += mountPowerILFor(cp, state.activeCombatPowerRarity);
       return sum;
     }
     // Mount bolster scaling factor for equip/combat power displayed and
@@ -9321,6 +9324,27 @@
     };
     function mountRarityFactor(rarity) {
       return MOUNT_RARITY_MULTIPLIERS[rarity] || 1.0;
+    }
+    // Capture-anchor handling: most mount-power values are stored at MYTHIC
+    // capture ("Mythic preferred" convention), but some entries were captured
+    // at Celestial (anchorRarity: "Celestial" in the data — their stored
+    // stats/CR/magnitudes/IL are Celestial-scale, e.g. Pack Tactics 2953 =
+    // 2250 x 1.3124). Applied scaling must DIVIDE by the anchor's factor or
+    // Celestial-anchored powers double-scale when Celestial is selected.
+    function mountPowerAnchorFactor(p) {
+      return mountRarityFactor((p && p.anchorRarity) || "Mythic");
+    }
+    // Mount power ITEM LEVEL scales with the mount's rarity too. Verified
+    // anchors (n00b in-game, 2026-06-06): a standard power shows IL 3000 at
+    // Mythic and IL 3937 at Celestial — combat and equip alike. Other tiers
+    // are unverified and treated as the stored value until captured.
+    const MOUNT_POWER_IL_RATIO = { "Mythic": 1.0, "Celestial": 3937 / 3000 };
+    function mountPowerILFor(p, selectedRarity) {
+      if (!p || !p.item_level) return 0;
+      const anchor = MOUNT_POWER_IL_RATIO[(p.anchorRarity) || "Mythic"];
+      const sel = MOUNT_POWER_IL_RATIO[selectedRarity || "Mythic"];
+      if (anchor == null || sel == null) return p.item_level;
+      return Math.round(p.item_level * (sel / anchor));
     }
     // Base IL every NW character has just for existing (level 20 floor).
     // Documented 2026-05-12 by n00b's community-doc dump: "you start the
@@ -9614,7 +9638,7 @@
           let _pct = 0;
           for (const eb of (_cp.equipBonuses || [])) {
             if (eb && eb.scope === "enemy" && (eb.stat === "Enemy Dmg Taken" || eb.stat === "Dmg Debuff")) {
-              _pct = Math.max(_pct, eb.amount || 0);
+              _pct = Math.max(_pct, (eb.amount || 0) / mountPowerAnchorFactor(_cp));
             }
           }
           if (_pct > 0) {
@@ -10110,8 +10134,8 @@
           if (!eff || !eff.stat) continue;
           const channel = (eff.type === "rating") ? ratingStats : percentStats;
           // Decision 8: party ally equip powers are always evaluated at Mythic
-          // rarity (factor 1.0), so the stored amount is used as-is.
-          channel[eff.stat] = (channel[eff.stat] || 0) + (eff.amount || 0);
+          // rarity — divide Celestial-anchored entries down to baseline.
+          channel[eff.stat] = (channel[eff.stat] || 0) + (eff.amount || 0) / mountPowerAnchorFactor(ep);
         }
         buffs.push({
           source: `Party Mount Buff: Ally's ${epName}`,
@@ -10284,19 +10308,20 @@
         if (ep) {
           // Rarity scaling (Decision 3 / R-only row): rarity YES, bolster NO.
           // Decision 11: read rarity from state.activeEquipPowerRarity, not per-slot mountRarity.
-          const _rarityFactor = mountRarityFactor(s.activeEquipPowerRarity || "Mythic");
+          const _epAnchorFactor = mountPowerAnchorFactor(ep);
+          const _rarityFactor = mountRarityFactor(s.activeEquipPowerRarity || "Mythic") / _epAnchorFactor;
           const ratingStats = {};
           const percentStats = {};
           for (const st of (ep.stats || [])) {
             const tgt = st.type === "percent" ? percentStats : ratingStats;
-            const _scaledValue = Math.min((st.value || 0) * _rarityFactor, (st.value || 0) * 1.3124);
+            const _scaledValue = Math.min((st.value || 0) * _rarityFactor, (st.value || 0) * (1.3124 / _epAnchorFactor));
             tgt[st.stat] = (tgt[st.stat] || 0) + _scaledValue;
           }
           buffs.push({
             source: "Mount Equip Power: " + ep.name,
             ratingStats, percentStats
           });
-          const _scaledCR = Math.min((ep.combinedRating || 0) * _rarityFactor, (ep.combinedRating || 0) * 1.3124);
+          const _scaledCR = Math.min((ep.combinedRating || 0) * _rarityFactor, (ep.combinedRating || 0) * (1.3124 / _epAnchorFactor));
           const cr = expandCR(_scaledCR, 1);
           if (cr) {
             buffs.push({
@@ -10331,7 +10356,7 @@
           // Decision 10 / R-only row: amount scales with rarity, not bolster.
           if (ep.equipEffect && ep.equipEffect.stat) {
             const ef = ep.equipEffect;
-            const _scaledAmount = Math.min((ef.amount || 0) * _rarityFactor, (ef.amount || 0) * 1.3124);
+            const _scaledAmount = Math.min((ef.amount || 0) * _rarityFactor, (ef.amount || 0) * (1.3124 / _epAnchorFactor));
             const entry = {
               source: `Mount Equip Proc: ${ep.name} (on ${ef.trigger || "trigger"})`,
               conditional: true
@@ -10357,7 +10382,7 @@
             const sbPercent = {};
             for (const [rawKey, perStack] of Object.entries(sb.perStack)) {
               const stat = _normalizeMountProcStat(rawKey);
-              const _scaledPerStack = Math.min((perStack || 0) * _rarityFactor, (perStack || 0) * 1.3124);
+              const _scaledPerStack = Math.min((perStack || 0) * _rarityFactor, (perStack || 0) * (1.3124 / _epAnchorFactor));
               const total = _scaledPerStack * stacks;
               if (perStack > 100) sbRating[stat] = total;
               else                sbPercent[stat] = total;

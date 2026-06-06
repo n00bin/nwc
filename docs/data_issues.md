@@ -1,5 +1,28 @@
 # Data Issues To Investigate
 
+## Mount power capture anchors — Celestial fixed, 7 lower-IL entries to confirm (2026-06-06)
+
+n00b verified in-game: a standard mount power shows **IL 3000 at Mythic and
+IL 3937 at Celestial** (combat and equip alike; 3937/3000 = the Celestial stat
+multiplier). FIXED same day: the 11 powers captured at Celestial (IL 3937 —
+Pack Tactics, Reactive Agility, The High Ground, Unstoppable Force, Vigilance;
+Relentless Hunter, Rain of Shards, Frozen Stamp, Grand Inspiration, Ground
+Slam, Stabby Stabs) now carry `anchorRarity: "Celestial"`, and toon-forge
+scales every application (stats, CR, procs, party effects, damage debuff,
+display) by selected÷anchor — previously they double-scaled at Celestial and
+TIL ignored mount-power rarity entirely.
+
+STILL TO CONFIRM (likely Legendary captures — IL 2000 = 3000×2/3 — but the
+2250s match no known tier ratio):
+- equip 37 Rapid Accuracy (IL 2000); combat 38 Dragonbone Whirl, 40 Frozen
+  Retribution, 48 Giant Toad Tongue Lash, 53 Vortex (IL 2000)
+- combat 74 Call of the Cosmos, 79 Radical Radiance (IL **2250** — odd; maybe
+  a different base IL family or an Epic-ish capture)
+Need: one in-game screenshot of any of these at a known rarity to set their
+`anchorRarity` (until then they're treated as Mythic-anchored, status quo).
+Also unverified: power IL at Legendary/Epic/etc. for the TIL ratio table
+(`MOUNT_POWER_IL_RATIO` only has Mythic + Celestial).
+
 ## 2026-06-05 audit — data corruption batch RESOLVED + parked leftovers
 
 FIXED (gear.json, commits this date):
