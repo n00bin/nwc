@@ -5161,7 +5161,10 @@
       if (eb.description) return eb.description;
       if (eb.effectText) return eb.effectText;
       if (eb.condition) return eb.condition;
-      if (eb.proc && eb.proc.notes) return eb.proc.notes;
+      if (eb.proc && eb.proc.notes) {
+        const _procNote = cleanNote(eb.proc.notes);
+        if (_procNote) return _procNote;
+      }
       if (eb.stat && eb.amount != null && eb.amount !== 0) {
         const unit = (eb.kind === "rating") ? "" : "%";
         return `+${eb.amount}${unit} ${eb.stat}`;
@@ -5362,13 +5365,14 @@
       // unified them into universal "Equipment" slots — any companion gear
       // fits any of the 3 slots. Drop the "orig. Neck/Waist/Ring" suffix.
       const meta = [il, cr, tier].filter(Boolean).join(" · ");
+      const _cgNotes = cleanNote(item.notes);
       const desc = [
         _statSection(item, "Stats"),
         _equipBonusSection(item.equipBonuses, "Equip Bonuses"),
-        item.notes
+        _cgNotes
           ? `<div class="gear-card-section">
                <div class="gear-card-section-title">Notes</div>
-               <div class="gear-card-set-text">${_escHTML(item.notes)}</div>
+               <div class="gear-card-set-text">${_escHTML(_cgNotes)}</div>
              </div>`
           : ""
       ].filter(Boolean).join("");
@@ -5395,10 +5399,11 @@
              <div class="gear-card-stat-line">+${v}${isPct ? "%" : ""} ${_escHTML(e.stat)}</div>
            </div>`
         : "";
-      const notes = e.notes
+      const _eNotes = cleanNote(e.notes);
+      const notes = _eNotes
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Notes</div>
-             <div class="gear-card-set-text">${_escHTML(e.notes)}</div>
+             <div class="gear-card-set-text">${_escHTML(_eNotes)}</div>
            </div>`
         : "";
       return { name: e.name, meta, desc: [stat, notes].filter(Boolean).join("") };
@@ -5443,10 +5448,11 @@
              <div class="gear-card-stat-line">+${scaledCR.toLocaleString()} to all stats (at ${tier})</div>
            </div>`
         : "";
-      const notesBlock = power && power.notes
+      const _pwNotes = cleanNote(power && power.notes);
+      const notesBlock = _pwNotes
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Notes</div>
-             <div class="gear-card-set-text">${_escHTML(power.notes)}</div>
+             <div class="gear-card-set-text">${_escHTML(_pwNotes)}</div>
            </div>`
         : "";
       const desc = [statBlock, procBlock, crBlock, notesBlock].filter(Boolean).join("");
@@ -5628,10 +5634,11 @@
              ${bonusBlocks}
            </div>`
         : "";
-      const notesBlock = p.notes
+      const _cpNotes = cleanNote(p.notes);
+      const notesBlock = _cpNotes
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Notes</div>
-             <div class="gear-card-set-text">${_escHTML(p.notes)}</div>
+             <div class="gear-card-set-text">${_escHTML(_cpNotes)}</div>
            </div>`
         : "";
       const desc = [bonusBlock, notesBlock].filter(Boolean).join("");
@@ -5664,10 +5671,11 @@
              <div class="gear-card-stat-line">+${dispCR.toLocaleString()} to all stats</div>
            </div>`
         : "";
-      const notesBlock = p.notes
+      const _epNotes = cleanNote(p.notes);
+      const notesBlock = _epNotes
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Notes</div>
-             <div class="gear-card-set-text">${_escHTML(p.notes)}</div>
+             <div class="gear-card-set-text">${_escHTML(_epNotes)}</div>
            </div>`
         : "";
       const desc = [statBlock, crBlock, notesBlock].filter(Boolean).join("");
@@ -11148,7 +11156,7 @@
       for (const [k,v] of Object.entries(b.percentStats || {})) parts.push(`+${v}% ${k}`);
       for (const [k,v] of Object.entries(b.abilityBonuses || {})) parts.push(`+${v} ${k}`);
       if (b.damagePct) parts.push(`+${b.damagePct}% dmg vs ${b.enemyType || "?"}`);
-      return parts.join(", ") || (b.notes || "").slice(0, 120);
+      return parts.join(", ") || cleanNote(b.notes).slice(0, 120);
     }
 
     /* ===== Build Score (engine-driven + completion bonus) =====
@@ -11776,10 +11784,11 @@
         : "";
 
       // ---- notes ----
-      const notesBlock = item.notes
+      const _gNotes = cleanNote(item.notes);
+      const notesBlock = _gNotes
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Notes</div>
-             <div class="gear-card-set-text">${escape(item.notes)}</div>
+             <div class="gear-card-set-text">${escape(_gNotes)}</div>
            </div>`
         : "";
 
@@ -13031,7 +13040,7 @@
           if (side.range) metaBits.push("range " + side.range);
           const meta = metaBits.length ? '<span style="color:var(--text-dim);font-weight:400;font-size:0.78rem;"> — ' + e(metaBits.join(" · ")) + '</span>' : "";
           const descBits = [];
-          if (side.notes) descBits.push(side.notes);
+          { const _sn = cleanNote(side.notes); if (_sn) descBits.push(_sn); }
           if (side.addedEffect) descBits.push("Effect: " + side.addedEffect);
           const desc = descBits.length
             ? '<div style="color:var(--text-dim);font-size:0.78rem;font-weight:400;margin-top:0.1rem;">' + e(descBits.join(" — ")) + '</div>'
@@ -13059,7 +13068,7 @@
       if (typeof p.magnitude !== "undefined") metaParts.push("mag " + p.magnitude);
       if (typeof p.enhancedMagnitude === "number") metaParts.push("enh " + p.enhancedMagnitude);
       const descBits = [];
-      if (p.notes) descBits.push(p.notes);
+      { const _pn = cleanNote(p.notes); if (_pn) descBits.push(_pn); }
       if (p.addedEffect) descBits.push("Effect: " + p.addedEffect);
       if (p.secondaryEffect) descBits.push("Secondary: " + p.secondaryEffect);
       return { name: e(p.name), meta: e(metaParts.join(" · ")), desc: e(descBits.join(" — ")) };
@@ -13092,7 +13101,7 @@
           if (side.range) metaBits.push("range " + side.range);
           const meta = metaBits.length ? '<span style="color:var(--text-dim);font-weight:400;font-size:0.78rem;"> — ' + e(metaBits.join(" · ")) + '</span>' : "";
           const descBits = [];
-          if (side.notes) descBits.push(side.notes);
+          { const _sn = cleanNote(side.notes); if (_sn) descBits.push(_sn); }
           if (side.addedEffect) descBits.push("Effect: " + side.addedEffect);
           const desc = descBits.length
             ? '<div style="color:var(--text-dim);font-size:0.78rem;font-weight:400;margin-top:0.1rem;">' + e(descBits.join(" — ")) + '</div>'
@@ -13123,7 +13132,7 @@
       if (typeof p.soulweaveCost === "number") metaParts.push(p.soulweaveCost + " soulweave");
       if (typeof p.performanceCost === "number") metaParts.push(p.performanceCost + " performance");
       const descBits = [];
-      if (p.notes) descBits.push(p.notes);
+      { const _pn = cleanNote(p.notes); if (_pn) descBits.push(_pn); }
       if (p.addedEffect) descBits.push("Effect: " + p.addedEffect);
       return { name: e(p.name), meta: e(metaParts.join(" · ")), desc: e(descBits.join(" — ")) };
     }
@@ -13145,8 +13154,15 @@
     function cleanNote(raw) {
       if (!raw) return "";
       return String(raw)
-        .replace(/\s*Screenshot\s+intake\s+\d{4}-\d{2}-\d{2}\.?/gi, "")
-        .replace(/\s*Screenshot\s+capture\s+\d{4}-\d{2}-\d{2}\.?/gi, "")
+        // Preserve the descriptive remainder of "Screenshot confirmed (Mount
+        // Preview): <real description>"-style notes before the blanket
+        // sentence sweep below would eat the whole first sentence.
+        .replace(/^Screenshot (?:intake|confirmed|reconciliation) \((?:Mount Preview|Inspect Companion)(?:, scrolled)?\)[.:]\s*/i, "")
+        // Blanket sweep: drop any sentence that mentions screenshots —
+        // intake / verification workflow chatter is internal provenance
+        // and never user-facing.
+        .replace(/(?:^|\s)[^.!?]*screenshots?\b[^.!?]*(?:[.!?]+|$)/gi, " ")
+        .replace(/\s+/g, " ")
         .trim();
     }
 
@@ -13167,7 +13183,7 @@
       if (p.paragon) metaParts.push("paragon");
       if (typeof p.healMagnitude !== "undefined") metaParts.push("heal mag " + p.healMagnitude);
       const descBits = [];
-      if (p.notes) descBits.push(p.notes);
+      { const _pn = cleanNote(p.notes); if (_pn) descBits.push(_pn); }
       if (p.addedEffect) descBits.push("Effect: " + p.addedEffect);
       return { name: e(p.name), meta: e(metaParts.join(" · ")), desc: e(descBits.join(" — ")) };
     }
@@ -13442,7 +13458,8 @@
                 `${e.amount > 0 ? "+" : ""}${e.amount}${e.type === "percent" ? "%" : ""} ${e.stat}`
               ).join(", ") || "(no structured party stats)";
               const dup = taken.has(ep.name) ? " · already in another slot" : "";
-              const note = ep.notes ? ep.notes.split(".")[0] + "." : "";
+              const _allyNote = cleanNote(ep.notes);
+              const note = _allyNote ? _allyNote.split(".")[0] + "." : "";
               return {
                 name: ep.name + dup,
                 meta: `Party buff: ${eff}`,

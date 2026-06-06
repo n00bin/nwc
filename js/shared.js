@@ -88,7 +88,12 @@ var AUDIT_TRAIL_PATTERNS = [
   /\s*Source from NW Hub.*?\.(?:\s|$)/gi,
   /\s*Power data confirmed by n00b.*?\.(?:\s|$)/gi,
   /\s*confirmed by n00b \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
-  /\s*\(Mythic-\d+%-bolster baseline\)/gi
+  /\s*\(Mythic-\d+%-bolster baseline\)/gi,
+  // Blanket sweep: any remaining sentence that mentions screenshots
+  // (intake / verification workflow chatter) is internal provenance and
+  // never user-facing. Runs after cleanNotes' leading-marker rewrites, so
+  // "Tooltip: <description>" conversions are preserved.
+  /(?:^|\s)[^.!?]*screenshots?\b[^.!?]*(?:[.!?]+|$)/gi
 ];
 
 function stripAuditTrail(str) {

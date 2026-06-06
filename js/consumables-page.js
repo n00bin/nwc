@@ -101,6 +101,10 @@
     return notes
       .replace(/\|\s*normalized:.*$/i, '')
       .replace(/normalized:.*$/i, '')
+      // Drop any sentence mentioning screenshots — intake/verification
+      // workflow chatter is internal, never user-facing.
+      .replace(/(?:^|\s)[^.!?]*screenshots?\b[^.!?]*(?:[.!?]+|$)/gi, ' ')
+      .replace(/\s+/g, ' ')
       .trim();
   }
 
@@ -172,8 +176,9 @@
     }
 
     // Narrative note (only if it adds info beyond the chips)
-    if (shouldShowNotes(b.notes)) {
-      html += '<div class="cnsm-note">' + escapeHtml(cleanCardNote(b.notes)) + '</div>';
+    var cardNote = cleanCardNote(b.notes || '');
+    if (cardNote && shouldShowNotes(cardNote)) {
+      html += '<div class="cnsm-note">' + escapeHtml(cardNote) + '</div>';
     }
 
     // Status pills
