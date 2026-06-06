@@ -11,11 +11,12 @@ bonuses, and removal of bogus Freezing set markers from ALL sub-4850 tiers
 (archived tooltips show the set line exists only on Deep-Riven/Frost-Riven 4850).
 
 STILL OPEN:
-- **id 5327 Veinlit Stormbind Tunic (IL 3800)**: slot is the literal string
-  "Clothing: Jotunskar" (invalid — never matches a picker slot) and the entry has
-  no Equip bonus. Veinlit Stormbind 4350 (id 5448, Charged Precision) is Shirt;
-  5327's variant/slot needs an in-game tooltip before assigning. Until then it's
-  invisible in Toon Forge slot pickers.
+- ~~id 5327 Veinlit Stormbind Tunic (IL 3800)~~ FIXED 2026-06-06: n00b's Reghed
+  Edge collection tooltip confirmed Pants, Accuracy 1852 (was 1862 — and 1852 =
+  0.4875×3800, the same ratio as Deep-Riven Stormbind's Accuracy at 4850),
+  Precision Tactics equip bonus (+10,625 Critical Strike while Stamina > 75%),
+  source The Biting Cold Heroic Encounters, and no set line (another sub-4850
+  no-set data point).
 - **Freezing set 2pc bonus texts** are carried on markers ("2 of Set: +4% X") but
   none of the pairs apply a structured stat — if/when both 4850 pieces of a pair
   are confirmed, decide which piece carries the structured set-bonus entry
