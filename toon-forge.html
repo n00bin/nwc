@@ -6043,8 +6043,27 @@
       const userAdded = getUserAddedGear()
         .filter(item => item.slot === slotType)
         .filter(item => !className || !item.allowedClasses || item.allowedClasses.length === 0 || item.allowedClasses.indexOf(className) !== -1);
-      return base.concat(userAdded)
+      const result = base.concat(userAdded)
         .sort((a, b) => (b.item_level || 0) - (a.item_level || 0) || a.name.localeCompare(b.name));
+
+      // Quality labels for artifact weapons: modern artifact equipment
+      // refines through exactly six qualities (Uncommon → Rare → Epic →
+      // Legendary → Mythic → Celestial), so a complete 6-tier family is
+      // labeled top-down from Celestial. Partial families (older gear with
+      // shorter ladders, or tiers we haven't captured) are left unlabeled
+      // rather than guessed — an explicit item.quality in data always wins.
+      const QUALITY_LADDER = ["Celestial", "Mythic", "Legendary", "Epic", "Rare", "Uncommon"];
+      const famByName = {};
+      result.forEach(it => {
+        if (it.slot === "Artifact Equipment") (famByName[it.name] = famByName[it.name] || []).push(it);
+      });
+      Object.values(famByName).forEach(group => {
+        if (group.length !== QUALITY_LADDER.length) return;
+        group.slice()
+          .sort((a, b) => (b.item_level || 0) - (a.item_level || 0))
+          .forEach((it, i) => { if (!it.quality) it._quality = QUALITY_LADDER[i]; });
+      });
+      return result;
     }
 
     /* ===== User-added gear (locally) =====
@@ -11700,7 +11719,10 @@
         ? "🛡 " + item.set + (item.setSize ? " (" + item.setSize + "pc)" : "")
         : "";
       const tier = item.tier || "";
-      const meta = [il, cr, tier, setMeta].filter(Boolean).join(" · ");
+      // Refinement quality (artifact weapons): explicit data field wins,
+      // else the ladder label derived in gearOptionsForSlot.
+      const quality = item.quality || item._quality || "";
+      const meta = [il, cr, quality && "✦ " + quality, tier, setMeta].filter(Boolean).join(" · ");
 
       // ---- stat block ----
       const ratingParts = item.ratingStats
