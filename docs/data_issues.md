@@ -15,13 +15,28 @@ FIXED (gear.json, commits this date):
   core field; metadata folded into the kept entry first).
 
 PARKED — same-name pairs that are NOT exact dups, need judgment/in-game check:
-- **Dragonflight Ward Necklace ids 2569 vs 5938**: same name/slot/IL but
-  2569 has Defense 529 (and a documented source), 5938 has Critical
-  Avoidance 529 (sourceless). One is wrong — verify in-game, delete the other.
+- ~~Dragonflight Ward Necklace ids 2569 vs 5938~~ **RESOLVED 2026-06-05**:
+  in-game tooltip (archived: `gear/accessories/Dragonflight Ward Necklace_IL588.png`)
+  shows +353 Combat Advantage / +529 **Critical Avoidance** — the sourceless
+  id 5938 had the right stats. Kept the documented id 2569 with its stat
+  corrected (Defense → Critical Avoidance) and deleted 5938.
 - **Starhide Skullcap 3221 vs 5914, Starhide Doublet 3222 vs 5915,
   Runefrost Hunter's Coat 5494 vs 6208**: same item, equipBonuses differ in
   STRUCTURE (one parsed/structured, one prose-only — possibly different
   bonus magnitudes too). Reconcile the bonus content, keep one entry each.
+
+Companion-power "suspicious scaling" cluster — first two verified 2026-06-05,
+BOTH were correct in the db (archived in `inbox/companions/`):
+- **Raptor's Instincts (id 49)**: 4.5% Power at IL 900 confirmed — it's a
+  per-stack party power (Part of the Pack, ×5 stacks), so the single-stat
+  scale (9.0) never applied. Notes updated; do not normalize.
+- **Bobby's Vigor (id 89)**: +12,000 Max HP / +4.5% Defense at IL 750
+  confirmed — deliberately off both scales (Energon-class outlier). Notes
+  updated; do not normalize.
+- Lesson: the remaining ~exp/2 cluster members (Blink Dog id 39, Moonshae
+  Druid id 165, Skeleton Dog id 222, Cunning Hunter id 237, etc.) are now
+  LOW-suspicion — special mechanics likely explain them too. Verify
+  opportunistically, not urgently.
 
 ## Six clothing variants from 2026-06-02 screenshots — RESOLVED 2026-06-05 (verifies done)
 
