@@ -5607,7 +5607,7 @@
       }
       const cdr = p.rechargeTimeSeconds ? `${p.rechargeTimeSeconds}s recharge` : "";
       const mag = p.magnitude ? `magnitude ${Math.round(_scaleCombat(p.magnitude))}` : "";
-      const meta = [`IL ${p.item_level || "?"}`, mag, cdr].filter(Boolean).join(" · ");
+      const meta = [`IL ${mountPowerILFor(p, state.activeCombatPowerRarity) || p.item_level || "?"}`, mag, cdr].filter(Boolean).join(" · ");
       // Combat powers' equipBonuses are buff/debuff effects rather than
       // gear-style structured stats. Scaled for tooltip display (Decision 9).
       const bonusBlocks = (p.equipBonuses || []).map(b => {
@@ -5638,21 +5638,30 @@
       return { name: p.name, meta, desc };
     }
     function renderEquipPower(p) {
-      const il = p.item_level ? "IL " + p.item_level : "";
-      const cr = p.combinedRating ? "CR " + p.combinedRating : "";
+      // Display at the user's selected rarity (anchor-aware): IL via the
+      // verified rarity table, stats/CR by selected÷anchor factor — matches
+      // exactly what the engine will apply. Not bolster-scaled (equip powers
+      // scale with rarity only, Decision 3).
+      const _eqAnchor = mountPowerAnchorFactor(p);
+      const _eqFactor = mountRarityFactor(state.activeEquipPowerRarity || "Mythic") / _eqAnchor;
+      const _eqScale = (v) => Math.min((v || 0) * _eqFactor, (v || 0) * (1.3124 / _eqAnchor));
+      const dispIL = mountPowerILFor(p, state.activeEquipPowerRarity);
+      const dispCR = Math.round(_eqScale(p.combinedRating));
+      const il = dispIL ? "IL " + dispIL : (p.item_level ? "IL " + p.item_level : "");
+      const cr = dispCR ? "CR " + dispCR : "";
       const meta = [il, cr].filter(Boolean).join(" · ");
-      // Stats list — intrinsic to the power, not bolster-scaled.
       const synth = { ratingStats: {}, percentStats: {} };
       for (const s of (p.stats || [])) {
         if (!s || !s.stat) continue;
-        if (s.type === "percent") synth.percentStats[s.stat] = (synth.percentStats[s.stat] || 0) + (s.value || 0);
-        else synth.ratingStats[s.stat] = (synth.ratingStats[s.stat] || 0) + (s.value || 0);
+        const v = s.type === "percent" ? Math.round(_eqScale(s.value) * 10) / 10 : Math.round(_eqScale(s.value));
+        if (s.type === "percent") synth.percentStats[s.stat] = (synth.percentStats[s.stat] || 0) + v;
+        else synth.ratingStats[s.stat] = (synth.ratingStats[s.stat] || 0) + v;
       }
       const statBlock = _statSection(synth, "Aura Stats");
       const crBlock = p.combinedRating
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Combined Rating</div>
-             <div class="gear-card-stat-line">+${(p.combinedRating || 0).toLocaleString()} to all stats</div>
+             <div class="gear-card-stat-line">+${dispCR.toLocaleString()} to all stats</div>
            </div>`
         : "";
       const notesBlock = p.notes
