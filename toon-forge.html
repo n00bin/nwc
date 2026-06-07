@@ -11924,7 +11924,11 @@
       // ---- meta line (above the desc block) ----
       const il = item.item_level ? "IL " + item.item_level : "";
       const cr = item.combinedRating ? "CR " + item.combinedRating : "";
-      const setMeta = item.set
+      // 🛡 only for REAL sets (structured entries or registry hit) — the
+      // legacy `set` field is a collection tag on thousands of non-set items.
+      const isRealSet = item.set && ((item.equipBonuses || []).some(e => e && e.type === "Set") ||
+        (typeof legacySetNames === "function" && legacySetNames().has(item.set)));
+      const setMeta = isRealSet
         ? "🛡 " + item.set + (item.setSize ? " (" + item.setSize + "pc)" : "")
         : "";
       const tier = item.tier || "";
@@ -12063,8 +12067,29 @@
     // equipped item once per set it belongs to (and the pieces that set needs)
     // so we can show a green check on every piece of a COMPLETE set — matched
     // weapons, a neck+waist set, multi-slot sets, etc.
+    // Registry of REAL legacy set names: the top-level `set` field doubles
+    // as a collection/family tag on thousands of non-set items ("Rings: The
+    // Reched Edge", "Frostforged Warplate"), so a name only counts as a real
+    // set when at least one piece anywhere carries actual setBonus text
+    // (e.g. Marilith Strike — the Mask itself has no text but its partners
+    // do, so all three pieces count).
+    let _legacySetNames = null;
+    function legacySetNames() {
+      if (_legacySetNames) return _legacySetNames;
+      _legacySetNames = new Set();
+      const scan = function (pool) {
+        (pool || []).forEach(function (it) {
+          if (it && it.set && it.setBonus) _legacySetNames.add(it.set);
+        });
+      };
+      scan(typeof GEAR_DATA !== "undefined" ? GEAR_DATA : []);
+      scan(typeof ARTIFACTS_DATA !== "undefined" ? ARTIFACTS_DATA : []);
+      scan(typeof getUserAddedGear === "function" ? getUserAddedGear() : []);
+      return _legacySetNames;
+    }
     function computeSetStatus() {
       const have = {}, need = {};
+      const realLegacy = legacySetNames();
       const tally = function (item) {
         if (!item) return;
         const seen = {};
@@ -12075,10 +12100,8 @@
             need[eb.setName] = eb.pieces || 2;
           }
         });
-        // Legacy pieces (e.g. Marilith Strike) record their set only as
-        // top-level set/setSize fields — count those too so the set pill
-        // works for both data generations.
-        if (item.set && !seen[item.set]) {
+        // Legacy pieces: count via the real-set registry above.
+        if (item.set && realLegacy.has(item.set) && !seen[item.set]) {
           have[item.set] = (have[item.set] || 0) + 1;
           if (item.setSize) need[item.set] = item.setSize;
           else if (!need[item.set]) need[item.set] = 2;
@@ -12105,9 +12128,10 @@
       (item.equipBonuses || []).forEach(function (eb) {
         if (eb && eb.type === "Set" && eb.setName) addPill(eb.setName, eb.pieces);
       });
-      // Legacy top-level set fields (no structured Set entries) get the
-      // same pill — e.g. Jewel/Sash of the Marilith + Marilith Mask.
-      if (item.set) addPill(item.set, item.setSize);
+      // Legacy top-level set fields get the same pill — only for names in
+      // the real-set registry (the `set` field doubles as a collection tag
+      // on thousands of non-set items).
+      if (item.set && legacySetNames().has(item.set)) addPill(item.set, item.setSize);
       return pills.length ? ('<div class="set-syn-row">🛡 ' + pills.join("") + "</div>") : "";
     }
 
