@@ -14715,7 +14715,13 @@
       const accuracy   = ov.accuracy   != null ? ov.accuracy   : stat("Accuracy");
       const e = getEnemyStats();
       const pmods = getPartySummonedCombatMods();
-      const sliderFlank = Math.max(0, Math.min(1, state.flankUptime || 0));
+      // ov.flank lets a caller score at an ASSUMED Combat Advantage uptime
+      // without touching the user's display slider — the optimizer passes a
+      // high value so it pursues the CA cap (the endgame group scenario)
+      // like every other offensive stat. On-screen sim still uses the slider.
+      const sliderFlank = (ov.flank != null)
+        ? Math.max(0, Math.min(1, ov.flank))
+        : Math.max(0, Math.min(1, state.flankUptime || 0));
       const effFlank = pmods.caUnion > 0 ? (1 - (1 - sliderFlank) * (1 - pmods.caUnion)) : sliderFlank;
       const db = r.damageBoosts || { generic: 0, base: 0, magical: 0, physical: 0 };
       let dmgType = "magical";
