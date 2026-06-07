@@ -77,3 +77,6 @@ premium-test.html
 
 # Sheets editing-window exports (regenerable binaries)
 docs/sheets/
+
+# local headless-chrome install for smoke tests (npx @puppeteer/browsers)
+chrome-headless-shell/

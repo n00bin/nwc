@@ -10078,20 +10078,22 @@
       const buffs = [];
 
       // Artifact Modifications — the player-set stat dial on artifact
-      // weapons (currently mod slot 2 on the Off Hand). A flat rating in
-      // the chosen stat, clamped to that stat's in-game max; Health is a
-      // flat Max HP pool (rides the same flat channel as item HP).
+      // weapons (mod slot 1 on the Main Hand, mod slot 2 on the Off Hand).
+      // Each menu entry is either a flat rating (clamped to its in-game
+      // max; Health is a flat Max HP pool riding the same flat channel as
+      // item HP) or — mod 1 only — a percent dial (AP Gain / Recharge
+      // Speed / Stamina Regen) that feeds percentStats instead.
       if (s.artifactMods && typeof ARTIFACT_MOD_STATS !== "undefined") {
         for (const modSlot in s.artifactMods) {
           const m = s.artifactMods[modSlot];
           if (!m || !m.stat || !(m.value > 0)) continue;
           const hostSlot = modSlot.replace(/ \d+$/, "");      // "Off Hand 2" -> "Off Hand"
           if (!gear[hostSlot]) continue;                       // no weapon, no mod
-          const def = ARTIFACT_MOD_STATS.find(x => x.stat === m.stat);
+          const def = artModDef(modSlot, m.stat);
           const val = Math.max(0, Math.min(+m.value || 0, def ? def.max : Infinity));
           if (val > 0) buffs.push({
             source: "Artifact Mod (" + modSlot + ")",
-            ratingStats: { [m.stat]: val }
+            [def && def.percent ? "percentStats" : "ratingStats"]: { [m.stat]: val }
           });
         }
       }
@@ -11151,9 +11153,10 @@
     // Order matches the visual layout (column-major, 6 rows × 2 columns).
     // CSS uses grid-auto-flow:column so items fill top-to-bottom in
     // column 1 first, then column 2.
-    // Artifact Modification stat menu — owner-verified in-game maxes
-    // (2026-06-07). The player picks one stat and enters the rating their
+    // Artifact Modification stat menus — owner-verified in-game maxes
+    // (2026-06-07). The player picks one stat and enters the value their
     // weapon's modification currently grants (0 .. max).
+    // Mod 2 (Off Hand): all flat ratings.
     const ARTIFACT_MOD_STATS = [
       { stat: "Accuracy",           max: 5800 },
       { stat: "Awareness",          max: 3600 },
@@ -11166,6 +11169,25 @@
       { stat: "Deflect Severity",   max: 6800 },
       { stat: "Defense",            max: 3200 },
     ];
+    // Mod 1 (Main Hand): mixed menu — three percent dials (percent: true,
+    // engine routes them to percentStats) + five flat ratings.
+    const ARTIFACT_MOD1_STATS = [
+      { stat: "Action Point Gain",    max: 2.5, percent: true },
+      { stat: "Recharge Speed",       max: 2.5, percent: true },
+      { stat: "Stamina Regeneration", max: 5,   percent: true },
+      { stat: "Control Bonus",        max: 1200 },
+      { stat: "Control Resist",       max: 1200 },
+      { stat: "Incoming Healing",     max: 1400 },
+      { stat: "Forte",                max: 1100 },
+      { stat: "Critical Severity",    max: 1400 },
+    ];
+    // Menu + entry lookup by mod-slot key ("Main Hand 1" / "Off Hand 2").
+    function artModMenu(modSlot) {
+      return / 1$/.test(modSlot) ? ARTIFACT_MOD1_STATS : ARTIFACT_MOD_STATS;
+    }
+    function artModDef(modSlot, statName) {
+      return artModMenu(modSlot).find(x => x.stat === statName);
+    }
     const GEAR_SLOTS = [
       // Column 1 (combat / armor)
       { label: "Head",      slot: "Head"      },
@@ -12079,36 +12101,43 @@
             ${filled ? setStatusRow(findGearByName(v, s.slot, (state.gearIL || {})[s.label]), setStatus) : ""}
             ${kitChip}
             ${(() => {
-              // Artifact Modification 2 — Off Hand only: stat picker + value
-              // entry (0..stat max). Engine adds it as a flat rating.
-              if (s.label !== "Off Hand" || !filled) return "";
-              const am = (state.artifactMods || {})["Off Hand 2"] || { stat: "", value: 0 };
-              const def = ARTIFACT_MOD_STATS.find(x => x.stat === am.stat);
-              const opts = ARTIFACT_MOD_STATS.map(x =>
-                `<option value="${_escAttr(x.stat)}"${am.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)}</option>`).join("");
+              // Artifact Modifications — Main Hand mod 1, Off Hand mod 2:
+              // stat picker + value entry (0..stat max). Mod-1 percent
+              // dials (AP Gain / Recharge / Stamina Regen) take decimals;
+              // everything else is a flat rating.
+              const modSlot = s.label === "Main Hand" ? "Main Hand 1"
+                            : s.label === "Off Hand"  ? "Off Hand 2" : null;
+              if (!modSlot || !filled) return "";
+              const modNum = modSlot.slice(-1);
+              const am = (state.artifactMods || {})[modSlot] || { stat: "", value: 0 };
+              const def = artModDef(modSlot, am.stat);
+              const opts = artModMenu(modSlot).map(x =>
+                `<option value="${_escAttr(x.stat)}"${am.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)}${x.percent ? " %" : ""}</option>`).join("");
+              const maxLabel = def ? (def.percent ? `max ${def.max}%` : `max ${def.max.toLocaleString()}`) : "";
               return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
-                  title="Artifact Modification 2 — pick the stat your weapon's second modification grants and enter its current value">
-                <span style="opacity:.8;">⚙ Art Mod 2:</span>
-                <select class="picker-collar-filter" data-amod-stat="Off Hand 2">
+                  title="Artifact Modification ${modNum} — pick the stat your weapon's ${modNum === "1" ? "first" : "second"} modification grants and enter its current value">
+                <span style="opacity:.8;">⚙ Art Mod ${modNum}:</span>
+                <select class="picker-collar-filter" data-amod-stat="${modSlot}">
                   <option value="">— none —</option>${opts}
                 </select>
-                <input type="number" data-amod-val="Off Hand 2" min="0" max="${def ? def.max : 99999}" step="50"
+                <input type="number" data-amod-val="${modSlot}" min="0" max="${def ? def.max : 99999}" step="${def && def.percent ? 0.1 : 50}"
                   value="${am.value || 0}" style="width:5.5em;" ${am.stat ? "" : "disabled"}>
-                ${def ? `<span style="opacity:.55;">max ${def.max.toLocaleString()}</span>` : ""}
+                ${maxLabel ? `<span style="opacity:.55;">${maxLabel}</span>` : ""}
               </div>`;
             })()}
           </div>`;
       }).join("");
-      // Artifact Modification controls (Off Hand mod 2): stat change
-      // re-renders (enables the value box, shows the max); value change
-      // clamps to the stat's in-game max and feeds the engine.
+      // Artifact Modification controls (Main Hand mod 1 / Off Hand mod 2):
+      // stat change re-renders (enables the value box, shows the max);
+      // value change clamps to the stat's in-game max and feeds the
+      // engine. Percent dials keep one decimal; ratings round to whole.
       g.querySelectorAll("[data-amod-stat]").forEach(el => {
         el.addEventListener("change", () => {
           const key = el.dataset.amodStat;
           if (!state.artifactMods) state.artifactMods = {};
           const cur = state.artifactMods[key] || { stat: "", value: 0 };
           cur.stat = el.value;
-          const def = ARTIFACT_MOD_STATS.find(x => x.stat === cur.stat);
+          const def = artModDef(key, cur.stat);
           if (!cur.stat) cur.value = 0;
           else if (def && cur.value > def.max) cur.value = def.max;
           state.artifactMods[key] = cur;
@@ -12120,11 +12149,13 @@
           const key = el.dataset.amodVal;
           if (!state.artifactMods) state.artifactMods = {};
           const cur = state.artifactMods[key] || { stat: "", value: 0 };
-          const def = ARTIFACT_MOD_STATS.find(x => x.stat === cur.stat);
-          let v = Math.max(0, Math.round(+el.value || 0));
+          const def = artModDef(key, cur.stat);
+          const isPct = !!(def && def.percent);
+          let v = Math.max(0, +el.value || 0);
+          v = isPct ? Math.round(v * 10) / 10 : Math.round(v);
           if (def && v > def.max) {
             v = def.max;
-            toast(`${cur.stat} modification caps at ${def.max.toLocaleString()}`);
+            toast(`${cur.stat} modification caps at ${isPct ? def.max + "%" : def.max.toLocaleString()}`);
           }
           cur.value = v;
           el.value = v;
