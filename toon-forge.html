@@ -9558,14 +9558,17 @@
       const compBase  = COMP_BOLSTER_BASE_IL[summonedR] || COMP_BOLSTER_BASE_IL.Mythic;
       const compBolsterIL  = Math.round(compBase  * cb);
       if (compBolsterIL > 0)  parts.push({ label: `Comp bolster IL (${summonedR} × ${Math.round(cb*100)}%)`, value: compBolsterIL });
-      // Mount Bolster IL line removed 2026-05-12: NW's in-game "Mount
-      // Bolster IL Contribution" is the sum of active_equip.IL +
-      // active_combat.IL, NOT a separate rarity × bolster% computation.
-      // That sum is already accounted for in the "Active mount powers"
-      // line (computeGearArtifactILBreakdown). The old base×bolster%
-      // formula was double-counting; n00b verified by empirical test
-      // (removing a stable mount drops TIL by exactly insignia+collar
-      // values, no additional mount-itself contribution).
+      // Mount BOLSTER IL contribution (mount COLLECTION) — re-added
+      // 2026-06-07 after n00b found it missing. Parallels the companion
+      // line: base[rarity] × mountBolster%. Indexed by the active mount
+      // power rarity (the only mount rarity in state). The 2026-05-12
+      // removal was wrong — its test only changed a stable mount, never
+      // the collection bolster, so it never saw this bucket.
+      const mb = (state.mountBolster == null ? 100 : +state.mountBolster) / 100;
+      const mountR = state.activeCombatPowerRarity || state.activeEquipPowerRarity || "Mythic";
+      const mountBase = MOUNT_BOLSTER_CONTRIB_IL[mountR] || MOUNT_BOLSTER_CONTRIB_IL.Mythic;
+      const mountBolsterIL = Math.round(mountBase * mb);
+      if (mountBolsterIL > 0)  parts.push({ label: `Mount bolster IL (${mountR} × ${Math.round(mb*100)}%)`, value: mountBolsterIL });
       const total = parts.reduce((a, p) => a + p.value, 0);
       return { total, parts };
     }
@@ -9971,6 +9974,22 @@
       "Legendary": 2200,
       "Mythic":    3000,   // Obikin guide
       "Celestial": 5850    // n00b in-game test 2026-05-10
+    };
+    // Mount BOLSTER-ONLY IL contribution (the "Mount Item Level Contribution"
+    // bucket from your mount COLLECTION) — SEPARATE from the active mount's
+    // equip/combat power IL. The line was wrongly removed 2026-05-12 (that
+    // test only pulled a STABLE mount, never changed the collection bolster).
+    // Celestial anchored to n00b's "Del" Warlock 2026-06-07: tool 145,936 +
+    // 1,800 = in-game 147,735 at 125% bolster -> base 1,440. Other tiers
+    // scaled by the companion table's shape (estimate; verify per rarity).
+    const MOUNT_BOLSTER_CONTRIB_IL = {
+      "Common":    65,
+      "Uncommon":  130,
+      "Rare":      220,
+      "Epic":      328,
+      "Legendary": 480,
+      "Mythic":    720,
+      "Celestial": 1440   // anchored to in-game (Del, 2026-06-07)
     };
 
     // Insignia tier scaling. Mythic is the baseline (multiplier 1.0)
