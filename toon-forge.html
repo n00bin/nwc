@@ -3480,6 +3480,11 @@
     const PICKER_FILTERS = {
       mount_collar: [
         { field: "collarSlot", allLabel: "All types" },
+        // Collar SHAPE — collars come in insignia-like shapes (Barbed,
+        // Crescent, Regal, Sturdy) that only live in the name; `get`
+        // derives the value (supported by the filter engine below).
+        { field: "_shape", allLabel: "All shapes",
+          get: (it) => { const m = /(Barbed|Crescent|Regal|Sturdy|Illuminated|Enlightened)/.exec(it.name || ""); return m ? m[1] : null; } },
         // Show the collar's rank (Roman numeral, read from the name e.g.
         // "... Collar III") rather than the raw item level. Falls back to the IL.
         { field: "item_level", allLabel: "All levels", numeric: true,
@@ -3504,7 +3509,8 @@
       const items = _pickerState.items.filter(it => {
         for (const pf of pickerFilters) {
           const sel = filterVals[pf.field];
-          if (sel && String(it[pf.field]) !== sel) return false;
+          const val = pf.get ? pf.get(it) : it[pf.field];   // derived or raw field
+          if (sel && String(val) !== sel) return false;
         }
         if (!f) return true;
         const r = _pickerState.render(it);
@@ -3529,7 +3535,7 @@
       if (pickerFilters.length) {
         const selects = [];
         for (const pf of pickerFilters) {
-          const vals = Array.from(new Set(_pickerState.items.map(it => it[pf.field]).filter(v => v != null)));
+          const vals = Array.from(new Set(_pickerState.items.map(it => pf.get ? pf.get(it) : it[pf.field]).filter(v => v != null)));
           if (vals.length < 2) continue; // nothing to filter on (e.g. a single-category slot)
           vals.sort(pf.numeric ? (a, b) => a - b : (a, b) => String(a).localeCompare(String(b)));
           const cur = filterVals[pf.field] || "";
