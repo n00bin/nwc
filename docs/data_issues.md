@@ -1,5 +1,36 @@
 # Data Issues To Investigate
 
+## Crystalline / Prismatic Crystalline Armor (Dread Sanctum) — cross-class audit needed
+
+Context: n00b flagged the Prismatic Luminstep Greaves reading wrong (2026-06-07).
+Root cause: the 2026-05-13 warlock collection captures have tooltips MISALIGNED
+with their filenames (tooltip lags one hover behind while paging the collection).
+Decoding the whole warlock batch verified/fixed the Warlock+Bard healer pieces
+(greaves restored + verified, Fractal Barbut stats, Bismuth Mail CritSev) — see
+commits b211ec5 (data) / 69ef609 (site).
+
+STILL OPEN (same decode treatment needed for the OTHER class folders — bard/
+cleric/ranger/rogue inbox captures may carry the proof):
+- **IL3350 healer feet missing**: "Luminstep Greaves — Ruthless Resources"
+  (Warlock/Bard, Dread Sanctum Advanced) almost certainly exists (every other
+  Wl/Bard healer piece has a 3350 sibling; expected stats Forte 2,261 /
+  OH 2,010 by the ×1.105 tier ratio) but NO tooltip captured — do not add
+  without a screenshot.
+- **Suspect Ro/Cl/Ba/Ra-side entries** (same name, conflicting stats/bonuses):
+  - id 2 Prismatic Crystalflex Bracers (CA 2220+CritSev 3330, Enveloped Rage)
+    vs 3350 sibling id 2727/3942 (CritStrike+CritSev 3015, Enveloped Rage) —
+    stat-line mismatch across tiers, plus 2727/3942 are exact-name dups.
+  - id 3940 Prismatic Fractal Barbut (Acc/CA/Forte, Critical Spiker) — same
+    Jerkin-stat-line contamination the Wl/Bard Barbut had.
+  - id 3937 Prismatic Bismuth Mail (CritStrike/CritSev 3530, Tactical Daily) —
+    3530 is the OCR-suspect value twice; id 2724 same name (3330/3330).
+  - id 3944 Fractal Barbut 3350 (Forte 3265?!) — 3265 matches no known pattern.
+  - id 3941 Bismuth Mail 3350 (CA 2010+CritSev 3015, Tactical Daily) vs id 3184
+    (CritStrike+CritSev 3015, Healer's Influence) — bonus/stat conflict.
+- Cross-tier stat lines genuinely SWAP for some pieces (3350 Armlets =
+  Acc/CA/Forte but 3700 Armlets = CritStrike/CritSev; Jerkin swaps the other
+  way) — verified on warlock side; don't "normalize" tiers to match each other.
+
 ## Jotunskar clothing family — leftovers from 2026-06-06 pants verification
 
 Context: n00b's 4 collection screenshots (Deep-Riven pants) triggered a family-wide
