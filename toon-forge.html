@@ -12066,15 +12066,23 @@
     function computeSetStatus() {
       const have = {}, need = {};
       const tally = function (item) {
-        if (!item || !Array.isArray(item.equipBonuses)) return;
+        if (!item) return;
         const seen = {};
-        item.equipBonuses.forEach(function (eb) {
+        (item.equipBonuses || []).forEach(function (eb) {
           if (eb && eb.type === "Set" && eb.setName && !seen[eb.setName]) {
             seen[eb.setName] = 1;
             have[eb.setName] = (have[eb.setName] || 0) + 1;
             need[eb.setName] = eb.pieces || 2;
           }
         });
+        // Legacy pieces (e.g. Marilith Strike) record their set only as
+        // top-level set/setSize fields — count those too so the set pill
+        // works for both data generations.
+        if (item.set && !seen[item.set]) {
+          have[item.set] = (have[item.set] || 0) + 1;
+          if (item.setSize) need[item.set] = item.setSize;
+          else if (!need[item.set]) need[item.set] = 2;
+        }
       };
       (GEAR_SLOTS || []).forEach(function (s) { if (state.gear[s.label]) tally(findGearByName(state.gear[s.label], s.slot, (state.gearIL || {})[s.label])); });
       (ARTIFACT_SLOTS || []).forEach(function (slot) { if (state.artifacts[slot]) tally(findArtifactByName(state.artifacts[slot])); });
@@ -12082,18 +12090,24 @@
     }
     // Set-status pill row for one equipped item ("" if it isn't part of a set).
     function setStatusRow(item, status) {
-      if (!item || !Array.isArray(item.equipBonuses)) return "";
+      if (!item) return "";
       const seen = {}, pills = [];
-      item.equipBonuses.forEach(function (eb) {
-        if (!(eb && eb.type === "Set" && eb.setName) || seen[eb.setName]) return;
-        seen[eb.setName] = 1;
-        const have = status.have[eb.setName] || 0, need = status.need[eb.setName] || (eb.pieces || 2);
+      const addPill = function (setName, pieces) {
+        if (!setName || seen[setName]) return;
+        seen[setName] = 1;
+        const have = status.have[setName] || 0, need = status.need[setName] || (pieces || 2);
         const done = have >= need, missing = need - have;
-        const tip = done ? (eb.setName + " set complete (" + have + "/" + need + ")")
-          : (eb.setName + " — " + missing + " more piece" + (missing === 1 ? "" : "s") + " to complete (" + have + "/" + need + ")");
+        const tip = done ? (setName + " set complete (" + have + "/" + need + ")")
+          : (setName + " — " + missing + " more piece" + (missing === 1 ? "" : "s") + " to complete (" + have + "/" + need + ")");
         pills.push('<span class="set-syn-pill ' + (done ? "on" : "off") + '" title="' + _escAttr(tip) + '">' +
-          (done ? "✅" : "◻") + " " + _escHTML(eb.setName) + " " + have + "/" + need + "</span>");
+          (done ? "✅" : "◻") + " " + _escHTML(setName) + " " + have + "/" + need + "</span>");
+      };
+      (item.equipBonuses || []).forEach(function (eb) {
+        if (eb && eb.type === "Set" && eb.setName) addPill(eb.setName, eb.pieces);
       });
+      // Legacy top-level set fields (no structured Set entries) get the
+      // same pill — e.g. Jewel/Sash of the Marilith + Marilith Mask.
+      if (item.set) addPill(item.set, item.setSize);
       return pills.length ? ('<div class="set-syn-row">🛡 ' + pills.join("") + "</div>") : "";
     }
 
