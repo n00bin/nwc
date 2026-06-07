@@ -11535,8 +11535,12 @@
 
     function quickStats() {
       const r = getEngineResult();
-      const role = state.role || "dps";
-      const names = ROLE_QUICK_STATS[role];
+      // window.__tfStatFocus: optional role override for the footer strip —
+      // set by the local optimizer when a tank/heal build optimizes for
+      // DAMAGE (solo/campaign objective), so the footer shows the DPS
+      // stat lineup being chased. Cleared when the role goal is picked.
+      const role = (window.__tfStatFocus || state.role) || "dps";
+      const names = ROLE_QUICK_STATS[role] || ROLE_QUICK_STATS[state.role || "dps"];
       return names.map(name => {
         const s = r.stats[name];
         const def = (typeof TOON_FORGE_STAT_BY_NAME !== "undefined") ? TOON_FORGE_STAT_BY_NAME[name] : null;
