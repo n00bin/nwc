@@ -11762,15 +11762,31 @@
       if (!item._tiers) return renderGearItemSingle(item);
       const sel = Math.min(item._selIdx || 0, item._tiers.length - 1);
       const r = renderGearItemSingle(item._tiers[sel]);
-      r.meta = `${item._tiers.length} upgrade tiers · ` + r.meta;
+      // Same-name entries at the SAME item level aren't an upgrade ladder —
+      // they're different VERSIONS (e.g. the DPS / Tank / Healer variants of
+      // one armor piece, distinguished by their equip bonus). Label those by
+      // bonus so the options aren't three identical "IL 3700" rows.
+      const ilCounts = {};
+      item._tiers.forEach(t => { const k = t.item_level || 0; ilCounts[k] = (ilCounts[k] || 0) + 1; });
+      const isVariants = Object.values(ilCounts).some(c => c > 1);
+      const variantTag = (t) => {
+        const eb = (t.equipBonuses || []).map(e => e && (e.name || e.stat)).filter(Boolean)[0];
+        return eb ? String(eb).slice(0, 28) : (t.combinedRating ? "CR " + t.combinedRating : "");
+      };
+      r.meta = `${item._tiers.length} ${isVariants ? "versions" : "upgrade tiers"} · ` + r.meta;
       const opts = item._tiers.map((t, i) => {
         const q = t.quality || t._quality;
-        const label = "IL " + (t.item_level || "?") +
-          (q ? " — " + q : (t.combinedRating ? " — CR " + t.combinedRating : ""));
+        let label = "IL " + (t.item_level || "?");
+        if (isVariants) {
+          const v = variantTag(t);
+          label += v ? " — " + v : "";
+        } else {
+          label += q ? " — " + q : (t.combinedRating ? " — CR " + t.combinedRating : "");
+        }
         return `<option value="${i}"${i === sel ? " selected" : ""}>${_escHTML(label)}</option>`;
       }).join("");
       r.desc = `<div style="margin:0.3rem 0 0.45rem;">
-          <label style="font-size:0.78rem;opacity:0.8;margin-right:0.4rem;">Upgrade tier:</label>
+          <label style="font-size:0.78rem;opacity:0.8;margin-right:0.4rem;">${isVariants ? "Version:" : "Upgrade tier:"}</label>
           <select class="picker-collar-filter gear-tier-sel" data-tier-sel>${opts}</select>
         </div>` + (r.desc || "");
       return r;
