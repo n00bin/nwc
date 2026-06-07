@@ -11807,9 +11807,11 @@
         : "";
       const tier = item.tier || "";
       // Refinement quality (artifact weapons): explicit data field wins,
-      // else the ladder label derived in gearOptionsForSlot.
+      // else the ladder label derived in gearOptionsForSlot. When known it
+      // REPLACES the CR readout (rarity is what players recognize); CR only
+      // shows when no rarity label exists.
       const quality = item.quality || item._quality || "";
-      const meta = [il, cr, quality && "✦ " + quality, tier, setMeta].filter(Boolean).join(" · ");
+      const meta = [il, quality ? "✦ " + quality : cr, tier, setMeta].filter(Boolean).join(" · ");
 
       // ---- stat block ----
       const ratingParts = item.ratingStats
