@@ -9,6 +9,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ## Week of 2026-06-05 (since last publish)
 
 ### Features
+- **Toon Forge — Detailed Stats can now hide party buffs.** The Detailed Stats panel has a new "Hide party buffs" checkbox next to "Hide buffs". Turn it on to strip out everything your party gives you — allies' summoned-companion buffs and ally mount auras — so the panel shows only what your own character provides. Each stat's value, rating/bonus breakdown, and Sources list all recompute as if you were running solo. It works independently of the existing "Hide buffs" (consumables) and "Show in-combat bonuses" toggles, and your choice sticks while the page is open.
 - **Clearer everywhere — audit polish pass.** The home page's Artifacts card now shows live database counts (138 artifacts & 38 sets — the old hardcoded label said 61 & 18!). Mount ranking tabs and insignia filters explain themselves on hover. Profession table headers spell out Proficiency / Commission / Skill Chance. Links into Mekaniks now open the right tab. The one unverified campaign booster is clearly marked UNCONFIRMED. And on phones, Toon Forge now shows its "Experimental" explanation instead of hiding it behind a hover tooltip.
 
 ### Data Additions

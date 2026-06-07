@@ -2772,6 +2772,10 @@
             <input type="checkbox" id="dstats-hide-buffs">
             Hide buffs
           </label>
+          <label class="dstats-hide-buffs" id="dstats-hide-party-buffs-label" title="Hide stats granted by your party (allies' summoned companions and ally mount auras) so the panel shows only what your own character provides.">
+            <input type="checkbox" id="dstats-hide-party-buffs">
+            Hide party buffs
+          </label>
           <label class="dstats-hide-buffs" id="dstats-show-cond-label" title="Some bonuses only activate in combat, at low health, after a hit, or with teammates nearby. Turn this on to see your stats at full power with everything active. Leave it off to see your normal out-of-combat stats.">
             <input type="checkbox" id="dstats-show-cond">
             Show in-combat bonuses
@@ -11607,6 +11611,14 @@
     function isConsumableBuffContributor(c) {
       return /^Buff:\s*Buff:\s*/.test(String(c && c.source || ""));
     }
+    // Party-buff contributors come from allies' summoned companions and ally
+    // mount auras. The engine prepends "Buff: " to every buffs[] entry, so
+    // their sources read "Buff: Party Buff: Ally's X" / "Buff: Party Mount
+    // Buff: Ally's X". This regex picks out ONLY those for the "Hide party
+    // buffs" toggle.
+    function isPartyBuffContributor(c) {
+      return /^Buff:\s*Party (Buff|Mount Buff):\s*/.test(String(c && c.source || ""));
+    }
     // Replays the engine's rating-to-% math so the renderer can show
     // a recomputed contribution when consumable buffs are filtered out.
     function ratingToPercentLocal(rating, TIL, cap) {
@@ -11623,6 +11635,7 @@
     function formatStatRow(def, s, ctx) {
       const TIL = (ctx && ctx.totalItemLevel) || 0;
       const hideBuffs = !!(ctx && ctx.hideBuffs);
+      const hidePartyBuffs = !!(ctx && ctx.hidePartyBuffs);
       const showConditional = !!(ctx && ctx.showConditional);
       const isFlat = def.kind === "flat";
       let valueLabel, detailLabel, barWidth, barUncapped = false;
@@ -11703,6 +11716,17 @@
         if (buffRating || buffPercent) rebase(buffRating, buffPercent);
       }
 
+      if (hidePartyBuffs) {
+        const allContribs = s.contributors || [];
+        const pbRating = allContribs
+          .filter(c => isPartyBuffContributor(c) && c.type === "rating" && (showConditional || !c.conditional))
+          .reduce((sum, c) => sum + (c.amount || 0), 0);
+        const pbPercent = allContribs
+          .filter(c => isPartyBuffContributor(c) && c.type === "percent" && (showConditional || !c.conditional))
+          .reduce((sum, c) => sum + (c.amount || 0), 0);
+        if (pbRating || pbPercent) rebase(pbRating, pbPercent);
+      }
+
       // Snapshot OH's filtered finalPct on ctx so the OOH row (rendered
       // later in this iteration) can roll it in to match NW's display.
       if (def.name === "Outgoing Healing" && ctx) {
@@ -11765,9 +11789,11 @@
       }
       // Filter the contributor list:
       // - "Hide buffs" ON → drop consumable-buff entries
+      // - "Hide party buffs" ON → drop ally party-buff entries
       // - "Show conditional" OFF (default) → drop conditional entries
       const allContribsFiltered = (s.contributors || [])
         .filter(c => !hideBuffs || !isConsumableBuffContributor(c))
+        .filter(c => !hidePartyBuffs || !isPartyBuffContributor(c))
         .filter(c => showConditional || !c.conditional);
       const allRating = allContribsFiltered.filter(c => c.type === "rating");
       const directContribs = allRating
@@ -11819,6 +11845,7 @@
     // Toggle state for the Detailed Stats modal — persists across opens
     // within the session so the user doesn't have to re-tick every time.
     let _dstatsHideBuffs = false;
+    let _dstatsHidePartyBuffs = false;
     let _dstatsShowConditional = false;
 
     function openDetailedStats() {
@@ -11828,6 +11855,10 @@
       if (cb) cb.checked = _dstatsHideBuffs;
       const lbl = document.getElementById("dstats-hide-buffs-label");
       if (lbl) lbl.classList.toggle("on", _dstatsHideBuffs);
+      const cbParty = document.getElementById("dstats-hide-party-buffs");
+      if (cbParty) cbParty.checked = _dstatsHidePartyBuffs;
+      const lblParty = document.getElementById("dstats-hide-party-buffs-label");
+      if (lblParty) lblParty.classList.toggle("on", _dstatsHidePartyBuffs);
       const cbCond = document.getElementById("dstats-show-cond");
       if (cbCond) cbCond.checked = _dstatsShowConditional;
       const lblCond = document.getElementById("dstats-show-cond-label");
@@ -11929,6 +11960,7 @@
       const ctx = {
         totalItemLevel: r.totalItemLevel,
         hideBuffs: _dstatsHideBuffs,
+        hidePartyBuffs: _dstatsHidePartyBuffs,
         showConditional: _dstatsShowConditional,
         allStats: r.stats
       };
@@ -15624,6 +15656,12 @@
       _dstatsHideBuffs = !!e.target.checked;
       const lbl = document.getElementById("dstats-hide-buffs-label");
       if (lbl) lbl.classList.toggle("on", _dstatsHideBuffs);
+      openDetailedStats();  // re-render the modal body with the new flag
+    });
+    document.getElementById("dstats-hide-party-buffs").addEventListener("change", (e) => {
+      _dstatsHidePartyBuffs = !!e.target.checked;
+      const lbl = document.getElementById("dstats-hide-party-buffs-label");
+      if (lbl) lbl.classList.toggle("on", _dstatsHidePartyBuffs);
       openDetailedStats();  // re-render the modal body with the new flag
     });
     document.getElementById("dstats-show-cond").addEventListener("change", (e) => {
