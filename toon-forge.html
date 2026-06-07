@@ -11954,9 +11954,16 @@
         : "";
 
       // ---- equip-bonus block (one card per UNIQUE bonus name; merge dupes) ----
+      // Sets that have a full tooltip-text entry: their structured stat
+      // entries are engine-feed duplicates of what the text already says —
+      // hide those from the card so the set reads once, like in game.
+      const describedSets = new Set((item.equipBonuses || [])
+        .filter(e => e && e.type === "Set" && e.setName && e.description)
+        .map(e => e.setName));
       const bonusMap = new Map();
       for (const eb of (item.equipBonuses || [])) {
         if (!eb) continue;
+        if (eb.type === "Set" && eb.setName && !eb.description && describedSets.has(eb.setName)) continue;
         let key = eb.name;
         if (!key) {
           // Nameless equip bonus (just stat + amount, e.g. the Enchanted
