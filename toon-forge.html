@@ -1439,6 +1439,9 @@
       font-size: 0.78rem;
       line-height: 1.45;
       margin-top: 0.1rem;
+      /* Honor line breaks stored in bonus text — multi-line set bonuses
+         (e.g. Impending Doom's charge list) read like the in-game tooltip. */
+      white-space: pre-line;
     }
     .gear-card-set {
       margin-top: 0.3rem;
@@ -3090,6 +3093,13 @@
           state.artifactMods["Off Hand 1"] = mh1;
         }
         delete state.artifactMods["Main Hand 1"];
+      }
+      // Mod 1 grants a fixed value per stat — snap any stored value (from
+      // the brief free-entry version) to the real one.
+      const oh1 = state.artifactMods["Off Hand 1"];
+      if (oh1 && oh1.stat) {
+        const d1 = artModDef("Off Hand 1", oh1.stat);
+        oh1.value = d1 ? d1.max : 0;
       }
       // Slots whose gear name was migrated above: drop the saved tier so the
       // renamed item resolves name-only instead of failing the IL filter.
@@ -11197,8 +11207,9 @@
       { stat: "Deflect Severity",   max: 6800 },
       { stat: "Defense",            max: 3200 },
     ];
-    // Off Hand mod 1: mixed menu — three percent dials (percent: true,
-    // engine routes them to percentStats) + five flat ratings.
+    // Off Hand mod 1: FIXED-value menu — each stat grants exactly `max`
+    // when selected (no upgrade range, so the UI is a picker only).
+    // percent: true entries route to percentStats; the rest are ratings.
     const ARTIFACT_MOD1_STATS = [
       { stat: "Action Point Gain",    max: 2.5, percent: true },
       { stat: "Recharge Speed",       max: 2.5, percent: true },
@@ -12139,29 +12150,38 @@
             ${kitChip}
             ${(() => {
               if (!filled) return "";
-              // Off Hand — Artifact Modifications 1 + 2: stat picker +
-              // value entry (0..stat max). Mod-1 percent dials (AP Gain /
-              // Recharge / Stamina Regen) take decimals; everything else
-              // is a flat rating.
+              // Off Hand — Artifact Modifications 1 + 2, side by side on
+              // one compact row (wraps on narrow screens). Mod 1 grants a
+              // FIXED value per stat (shown in the option label), so it's
+              // a picker only — no value box. Mod 2 is player-upgraded:
+              // stat picker + value entry (0..stat max).
               if (s.label === "Off Hand") {
-                return ["Off Hand 1", "Off Hand 2"].map(modSlot => {
-                  const modNum = modSlot.slice(-1);
-                  const am = (state.artifactMods || {})[modSlot] || { stat: "", value: 0 };
-                  const def = artModDef(modSlot, am.stat);
-                  const opts = artModMenu(modSlot).map(x =>
-                    `<option value="${_escAttr(x.stat)}"${am.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)}${x.percent ? " %" : ""}</option>`).join("");
-                  const maxLabel = def ? (def.percent ? `max ${def.max}%` : `max ${def.max.toLocaleString()}`) : "";
-                  return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
-                      title="Artifact Modification ${modNum} — pick the stat your off-hand's ${modNum === "1" ? "first" : "second"} modification grants and enter its current value">
-                    <span style="opacity:.8;">⚙ Art Mod ${modNum}:</span>
-                    <select class="picker-collar-filter" data-amod-stat="${modSlot}">
-                      <option value="">— none —</option>${opts}
+                const fmtFixed = x => x.percent ? `+${x.max}%` : `+${x.max.toLocaleString()}`;
+                const am1 = (state.artifactMods || {})["Off Hand 1"] || { stat: "", value: 0 };
+                const opts1 = artModMenu("Off Hand 1").map(x =>
+                  `<option value="${_escAttr(x.stat)}"${am1.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)} ${fmtFixed(x)}</option>`).join("");
+                const am2 = (state.artifactMods || {})["Off Hand 2"] || { stat: "", value: 0 };
+                const def2 = artModDef("Off Hand 2", am2.stat);
+                const opts2 = artModMenu("Off Hand 2").map(x =>
+                  `<option value="${_escAttr(x.stat)}"${am2.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)}</option>`).join("");
+                return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap;">
+                  <span style="display:inline-flex;align-items:center;gap:0.3rem;"
+                      title="Artifact Modification 1 — pick the stat your off-hand's first modification grants; its value is fixed in game">
+                    <span style="opacity:.8;">⚙ Mod 1:</span>
+                    <select class="picker-collar-filter" data-amod-stat="Off Hand 1" style="max-width:11em;">
+                      <option value="">— none —</option>${opts1}
                     </select>
-                    <input type="number" data-amod-val="${modSlot}" min="0" max="${def ? def.max : 99999}" step="${def && def.percent ? 0.1 : 50}"
-                      value="${am.value || 0}" style="width:5.5em;" ${am.stat ? "" : "disabled"}>
-                    ${maxLabel ? `<span style="opacity:.55;">${maxLabel}</span>` : ""}
-                  </div>`;
-                }).join("");
+                  </span>
+                  <span style="display:inline-flex;align-items:center;gap:0.3rem;"
+                      title="Artifact Modification 2 — pick the stat your off-hand's second modification grants and enter its current value${def2 ? " (max " + def2.max.toLocaleString() + ")" : ""}">
+                    <span style="opacity:.8;">⚙ Mod 2:</span>
+                    <select class="picker-collar-filter" data-amod-stat="Off Hand 2" style="max-width:9em;">
+                      <option value="">— none —</option>${opts2}
+                    </select>
+                    <input type="number" data-amod-val="Off Hand 2" min="0" max="${def2 ? def2.max : 99999}" step="50"
+                      value="${am2.value || 0}" style="width:5em;" ${am2.stat ? "" : "disabled"} title="${def2 ? "Current value (max " + def2.max.toLocaleString() + ")" : ""}">
+                  </span>
+                </div>`;
               }
               // Main Hand — Enhanced-power modification (in-game "Artifact
               // Modification Management": one active pick, +10% damage or
@@ -12202,10 +12222,10 @@
           renderGear(); rerenderAll();
         });
       });
-      // Off Hand stat modification controls (mods 1 + 2): stat change
-      // re-renders (enables the value box, shows the max); value change
-      // clamps to the stat's in-game max and feeds the engine. Percent
-      // dials keep one decimal; ratings round to whole.
+      // Off Hand stat modification controls: mod 1 grants a FIXED value —
+      // picking the stat stores it directly. Mod 2 is player-upgraded —
+      // stat change re-renders (enables the value box); value change
+      // clamps to the stat's in-game max and feeds the engine.
       g.querySelectorAll("[data-amod-stat]").forEach(el => {
         el.addEventListener("change", () => {
           const key = el.dataset.amodStat;
@@ -12214,6 +12234,7 @@
           cur.stat = el.value;
           const def = artModDef(key, cur.stat);
           if (!cur.stat) cur.value = 0;
+          else if (/ 1$/.test(key)) cur.value = def ? def.max : 0;   // fixed-value mod
           else if (def && cur.value > def.max) cur.value = def.max;
           state.artifactMods[key] = cur;
           renderGear(); rerenderAll();
