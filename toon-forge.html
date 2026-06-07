@@ -2836,6 +2836,9 @@
       // sharer built it. null/absent = unknown (legacy builds keep the old
       // first-match behavior).
       gearIL: {},
+      // Artifact Modifications — player-set stat dials on artifact weapons,
+      // keyed by mod slot (currently "Off Hand 2"): { stat, value }.
+      artifactMods: {},
       kits: {},  // gear-slot label → kit name (reinforcement kit per gear piece)
       // Enchantments — 11 typed slots: 4 offense, 4 defense, 1 utility, 1 combat, 1 bonus
       enchants: {
@@ -2995,6 +2998,7 @@
           il: state.il, name: state.name,
           abil: state.abil, abilBase: state.abilBase, abilLevels: state.abilLevels,
           gear: state.gear, gearIL: { ...(state.gearIL || {}) }, kits: state.kits,
+          artifactMods: { ...(state.artifactMods || {}) },
           artifacts: state.artifacts,
           enchants: state.enchants, overloads: state.overloads,
           summoned: state.summoned, summonedEnh: state.summonedEnh,
@@ -3074,6 +3078,8 @@
       state.partyPackMeta = s.partyPackMeta !== false;
       // Picked-tier map for same-name multi-IL gear; legacy saves have none.
       state.gearIL = (s.gearIL && typeof s.gearIL === "object") ? { ...s.gearIL } : {};
+      // Artifact Modifications; legacy saves have none.
+      state.artifactMods = (s.artifactMods && typeof s.artifactMods === "object") ? { ...s.artifactMods } : {};
       // Slots whose gear name was migrated above: drop the saved tier so the
       // renamed item resolves name-only instead of failing the IL filter.
       if (Array.isArray(state.__gearRenamedSlots)) {
@@ -10071,6 +10077,25 @@
       // enhancement runes (1 summoned + 5 active).
       const buffs = [];
 
+      // Artifact Modifications — the player-set stat dial on artifact
+      // weapons (currently mod slot 2 on the Off Hand). A flat rating in
+      // the chosen stat, clamped to that stat's in-game max; Health is a
+      // flat Max HP pool (rides the same flat channel as item HP).
+      if (s.artifactMods && typeof ARTIFACT_MOD_STATS !== "undefined") {
+        for (const modSlot in s.artifactMods) {
+          const m = s.artifactMods[modSlot];
+          if (!m || !m.stat || !(m.value > 0)) continue;
+          const hostSlot = modSlot.replace(/ \d+$/, "");      // "Off Hand 2" -> "Off Hand"
+          if (!gear[hostSlot]) continue;                       // no weapon, no mod
+          const def = ARTIFACT_MOD_STATS.find(x => x.stat === m.stat);
+          const val = Math.max(0, Math.min(+m.value || 0, def ? def.max : Infinity));
+          if (val > 0) buffs.push({
+            source: "Artifact Mod (" + modSlot + ")",
+            ratingStats: { [m.stat]: val }
+          });
+        }
+      }
+
       const summonedComp = (typeof COMPANIONS_DATA !== "undefined" && s.summoned)
         ? COMPANIONS_DATA.find(c => c.name === s.summoned)
         : null;
@@ -11126,6 +11151,21 @@
     // Order matches the visual layout (column-major, 6 rows × 2 columns).
     // CSS uses grid-auto-flow:column so items fill top-to-bottom in
     // column 1 first, then column 2.
+    // Artifact Modification stat menu — owner-verified in-game maxes
+    // (2026-06-07). The player picks one stat and enters the rating their
+    // weapon's modification currently grants (0 .. max).
+    const ARTIFACT_MOD_STATS = [
+      { stat: "Accuracy",           max: 5800 },
+      { stat: "Awareness",          max: 3600 },
+      { stat: "Critical Strike",    max: 5400 },
+      { stat: "Critical Avoidance", max: 5000 },
+      { stat: "Deflect",            max: 6800 },
+      { stat: "Power",              max: 3200 },
+      { stat: "Maximum Hit Points", max: 24200 },
+      { stat: "Combat Advantage",   max: 3600 },
+      { stat: "Deflect Severity",   max: 6800 },
+      { stat: "Defense",            max: 3200 },
+    ];
     const GEAR_SLOTS = [
       // Column 1 (combat / armor)
       { label: "Head",      slot: "Head"      },
@@ -11224,7 +11264,7 @@
     function getEngineResult() {
       const key = JSON.stringify({
         il: state.il, cls: state.class, par: state.paragon, race: state.race,
-        role: state.role, gear: state.gear, gil: state.gearIL, art: state.artifacts, abil: state.abil,
+        role: state.role, gear: state.gear, gil: state.gearIL, amods: state.artifactMods, art: state.artifacts, abil: state.abil,
         sum: state.summoned, sumEnh: state.summonedEnh, sumEnch: state.summonedEnchant,
         sumG: state.summonedGear,
         ac: state.activeComps,
@@ -12038,8 +12078,60 @@
             ${gemStatus}
             ${filled ? setStatusRow(findGearByName(v, s.slot, (state.gearIL || {})[s.label]), setStatus) : ""}
             ${kitChip}
+            ${(() => {
+              // Artifact Modification 2 — Off Hand only: stat picker + value
+              // entry (0..stat max). Engine adds it as a flat rating.
+              if (s.label !== "Off Hand" || !filled) return "";
+              const am = (state.artifactMods || {})["Off Hand 2"] || { stat: "", value: 0 };
+              const def = ARTIFACT_MOD_STATS.find(x => x.stat === am.stat);
+              const opts = ARTIFACT_MOD_STATS.map(x =>
+                `<option value="${_escAttr(x.stat)}"${am.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)}</option>`).join("");
+              return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
+                  title="Artifact Modification 2 — pick the stat your weapon's second modification grants and enter its current value">
+                <span style="opacity:.8;">⚙ Art Mod 2:</span>
+                <select class="picker-collar-filter" data-amod-stat="Off Hand 2">
+                  <option value="">— none —</option>${opts}
+                </select>
+                <input type="number" data-amod-val="Off Hand 2" min="0" max="${def ? def.max : 99999}" step="50"
+                  value="${am.value || 0}" style="width:5.5em;" ${am.stat ? "" : "disabled"}>
+                ${def ? `<span style="opacity:.55;">max ${def.max.toLocaleString()}</span>` : ""}
+              </div>`;
+            })()}
           </div>`;
       }).join("");
+      // Artifact Modification controls (Off Hand mod 2): stat change
+      // re-renders (enables the value box, shows the max); value change
+      // clamps to the stat's in-game max and feeds the engine.
+      g.querySelectorAll("[data-amod-stat]").forEach(el => {
+        el.addEventListener("change", () => {
+          const key = el.dataset.amodStat;
+          if (!state.artifactMods) state.artifactMods = {};
+          const cur = state.artifactMods[key] || { stat: "", value: 0 };
+          cur.stat = el.value;
+          const def = ARTIFACT_MOD_STATS.find(x => x.stat === cur.stat);
+          if (!cur.stat) cur.value = 0;
+          else if (def && cur.value > def.max) cur.value = def.max;
+          state.artifactMods[key] = cur;
+          renderGear(); rerenderAll();
+        });
+      });
+      g.querySelectorAll("[data-amod-val]").forEach(el => {
+        el.addEventListener("change", () => {
+          const key = el.dataset.amodVal;
+          if (!state.artifactMods) state.artifactMods = {};
+          const cur = state.artifactMods[key] || { stat: "", value: 0 };
+          const def = ARTIFACT_MOD_STATS.find(x => x.stat === cur.stat);
+          let v = Math.max(0, Math.round(+el.value || 0));
+          if (def && v > def.max) {
+            v = def.max;
+            toast(`${cur.stat} modification caps at ${def.max.toLocaleString()}`);
+          }
+          cur.value = v;
+          el.value = v;
+          state.artifactMods[key] = cur;
+          rerenderAll();
+        });
+      });
       g.querySelectorAll("[data-gear-pick]").forEach(el => {
         if (el.classList.contains("disabled")) return;
         el.addEventListener("click", () => {
