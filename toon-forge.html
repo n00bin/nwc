@@ -11196,29 +11196,29 @@
     // per mod slot and enters the value it currently grants (0 .. max).
     // Off Hand mod 2: all flat ratings.
     const ARTIFACT_MOD_STATS = [
-      { stat: "Accuracy",           max: 5800 },
-      { stat: "Awareness",          max: 3600 },
-      { stat: "Critical Strike",    max: 5400 },
-      { stat: "Critical Avoidance", max: 5000 },
-      { stat: "Deflect",            max: 6800 },
-      { stat: "Power",              max: 3200 },
-      { stat: "Maximum Hit Points", max: 24200 },
-      { stat: "Combat Advantage",   max: 3600 },
-      { stat: "Deflect Severity",   max: 6800 },
-      { stat: "Defense",            max: 3200 },
+      { stat: "Accuracy",           max: 5800,  short: "Accuracy" },
+      { stat: "Awareness",          max: 3600,  short: "Awareness" },
+      { stat: "Critical Strike",    max: 5400,  short: "Crit Strike" },
+      { stat: "Critical Avoidance", max: 5000,  short: "Crit Avoid" },
+      { stat: "Deflect",            max: 6800,  short: "Deflect" },
+      { stat: "Power",              max: 3200,  short: "Power" },
+      { stat: "Maximum Hit Points", max: 24200, short: "Max HP" },
+      { stat: "Combat Advantage",   max: 3600,  short: "Combat Adv" },
+      { stat: "Deflect Severity",   max: 6800,  short: "Defl Severity" },
+      { stat: "Defense",            max: 3200,  short: "Defense" },
     ];
     // Off Hand mod 1: FIXED-value menu — each stat grants exactly `max`
     // when selected (no upgrade range, so the UI is a picker only).
     // percent: true entries route to percentStats; the rest are ratings.
     const ARTIFACT_MOD1_STATS = [
-      { stat: "Action Point Gain",    max: 2.5, percent: true },
-      { stat: "Recharge Speed",       max: 2.5, percent: true },
-      { stat: "Stamina Regeneration", max: 5,   percent: true },
-      { stat: "Control Bonus",        max: 1200 },
-      { stat: "Control Resist",       max: 1200 },
-      { stat: "Incoming Healing",     max: 1400 },
-      { stat: "Forte",                max: 1100 },
-      { stat: "Critical Severity",    max: 1400 },
+      { stat: "Action Point Gain",    max: 2.5, percent: true, short: "AP Gain" },
+      { stat: "Recharge Speed",       max: 2.5, percent: true, short: "Recharge" },
+      { stat: "Stamina Regeneration", max: 5,   percent: true, short: "Stam Regen" },
+      { stat: "Control Bonus",        max: 1200, short: "Ctrl Bonus" },
+      { stat: "Control Resist",       max: 1200, short: "Ctrl Resist" },
+      { stat: "Incoming Healing",     max: 1400, short: "Inc Healing" },
+      { stat: "Forte",                max: 1100, short: "Forte" },
+      { stat: "Critical Severity",    max: 1400, short: "Crit Sev" },
     ];
     // Menu + entry lookup by mod-slot key ("Off Hand 1" / "Off Hand 2").
     function artModMenu(modSlot) {
@@ -12166,27 +12166,27 @@
                 const fmtFixed = x => x.percent ? `+${x.max}%` : `+${x.max.toLocaleString()}`;
                 const am1 = (state.artifactMods || {})["Off Hand 1"] || { stat: "", value: 0 };
                 const opts1 = artModMenu("Off Hand 1").map(x =>
-                  `<option value="${_escAttr(x.stat)}"${am1.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)} ${fmtFixed(x)}</option>`).join("");
+                  `<option value="${_escAttr(x.stat)}"${am1.stat === x.stat ? " selected" : ""} title="${_escAttr(x.stat)}">${_escHTML(x.short || x.stat)} ${fmtFixed(x)}</option>`).join("");
                 const am2 = (state.artifactMods || {})["Off Hand 2"] || { stat: "", value: 0 };
                 const def2 = artModDef("Off Hand 2", am2.stat);
                 const opts2 = artModMenu("Off Hand 2").map(x =>
-                  `<option value="${_escAttr(x.stat)}"${am2.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)}</option>`).join("");
+                  `<option value="${_escAttr(x.stat)}"${am2.stat === x.stat ? " selected" : ""} title="${_escAttr(x.stat)}">${_escHTML(x.short || x.stat)}</option>`).join("");
                 return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap;">
                   <span style="display:inline-flex;align-items:center;gap:0.3rem;"
                       title="Artifact Modification 1 — pick the stat your off-hand's first modification grants; its value is fixed in game">
                     <span style="opacity:.8;">⚙ Mod 1:</span>
-                    <select class="picker-collar-filter" data-amod-stat="Off Hand 1" style="max-width:11em;">
+                    <select class="picker-collar-filter" data-amod-stat="Off Hand 1" style="max-width:9.5em;">
                       <option value="">— none —</option>${opts1}
                     </select>
                   </span>
                   <span style="display:inline-flex;align-items:center;gap:0.3rem;"
                       title="Artifact Modification 2 — pick the stat your off-hand's second modification grants and enter its current value${def2 ? " (max " + def2.max.toLocaleString() + ")" : ""}">
                     <span style="opacity:.8;">⚙ Mod 2:</span>
-                    <select class="picker-collar-filter" data-amod-stat="Off Hand 2" style="max-width:9em;">
+                    <select class="picker-collar-filter" data-amod-stat="Off Hand 2" style="max-width:7.5em;">
                       <option value="">— none —</option>${opts2}
                     </select>
                     <input type="number" data-amod-val="Off Hand 2" min="0" max="${def2 ? def2.max : 99999}" step="50"
-                      value="${am2.value || 0}" style="width:5em;" ${am2.stat ? "" : "disabled"} title="${def2 ? "Current value (max " + def2.max.toLocaleString() + ")" : ""}">
+                      value="${am2.value || 0}" style="width:4.5em;" ${am2.stat ? "" : "disabled"} title="${def2 ? "Current value (max " + def2.max.toLocaleString() + ")" : ""}">
                   </span>
                 </div>`;
               }
