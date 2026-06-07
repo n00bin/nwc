@@ -3065,6 +3065,17 @@
             state.gear[slot] = GEAR_NAME_ALIASES[oldName];
             _renamed.push({ from: oldName, to: GEAR_NAME_ALIASES[oldName], slot: slot });
           }
+          // Class-aware variant splits: the old name still EXISTS but is the
+          // wrong variant for this build's class (e.g. "Prismatic Luminstep
+          // Greaves" on a Warlock means the Ruthless Resources healer entry,
+          // not the Rogue/Cleric/Bard/Ranger DPS one the plain name now is).
+          const byClass = typeof GEAR_NAME_ALIASES_BY_CLASS !== "undefined" &&
+            state.gear[slot] && GEAR_NAME_ALIASES_BY_CLASS[state.gear[slot]];
+          const classTo = byClass && byClass[state.class];
+          if (classTo) {
+            _renamed.push({ from: state.gear[slot], to: classTo, slot: slot });
+            state.gear[slot] = classTo;
+          }
         }
         if (_renamed.length && typeof toast === "function") {
           const r = _renamed[0];
@@ -5995,6 +6006,22 @@
       "Bloodwoven Symbols — Graceful Harmony": "Bloodwoven Symbols (Graceful Harmony)",
       "Bloodwoven Sigils — Charged At-Will": "Bloodwoven Sigils (Charged At-Will)",
       "Bloodwoven Ink": "Bloodwoven Ink (Survivor's Gift)"
+    };
+
+    // Class-aware aliases — variant splits where the OLD name still exists
+    // for other classes, so the plain alias map above can't fire (the name
+    // resolves, just to the wrong variant for this class). Keyed old name →
+    // { className: new canonical name }. Classes not listed keep the plain
+    // entry (their legal variant).
+    const GEAR_NAME_ALIASES_BY_CLASS = {
+      // Healer-variant split 2026-06-07: the Warlock/Bard Ruthless Resources
+      // greaves were renamed "— Ruthless Resources"; the plain name remains
+      // the Rogue/Cleric/Bard/Ranger DPS entry. A Warlock can only ever mean
+      // the healer one. (Bard is left on the DPS entry — both are legal and
+      // that matches how the shared name resolved before the split.)
+      "Prismatic Luminstep Greaves": {
+        "Warlock": "Prismatic Luminstep Greaves — Ruthless Resources"
+      }
     };
 
     function findGearByName(name, slotType, il) {
