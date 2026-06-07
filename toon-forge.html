@@ -6186,6 +6186,14 @@
       // Legendary. Applies to weapon slots only; same-IL entries are bonus
       // VARIANTS, never a ladder; an explicit item.quality in data wins.
       const QUALITY_LADDER_UP = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
+      // Known full IL ladders: when a family's captured tiers are a SUBSET
+      // of one (e.g. only 3400+4800 captured), label by the IL's position in
+      // the ladder — bottom-anchored consecutive labeling would otherwise
+      // mislabel gap families (player-reported: a 4800 Omen of Doom showing
+      // "Rare" because the middle tiers weren't captured yet).
+      const KNOWN_IL_LADDERS = [
+        [3400, 3750, 4100, 4450, 4800, 5250]   // Soul Collector artifact weapons
+      ];
       const famByName = {};
       result.forEach(it => {
         if (it.slot === "Artifact Equipment" || it.slot === "Main Hand" || it.slot === "Off Hand")
@@ -6197,9 +6205,15 @@
         const hasSet = group.some(it => it.set ||
           (it.equipBonuses || []).some(e => e && e.type === "Set"));
         if (!hasSet) return;
+        const ladder = KNOWN_IL_LADDERS.find(L => group.every(it => L.indexOf(it.item_level) !== -1));
         group.slice()
           .sort((a, b) => (a.item_level || 0) - (b.item_level || 0))
-          .forEach((it, i) => { if (!it.quality) it._quality = QUALITY_LADDER_UP[i]; });
+          .forEach((it, i) => {
+            if (it.quality) return;
+            it._quality = ladder
+              ? QUALITY_LADDER_UP[ladder.indexOf(it.item_level)]
+              : QUALITY_LADDER_UP[i];
+          });
       });
       return result;
     }
