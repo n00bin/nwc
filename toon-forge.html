@@ -11998,22 +11998,24 @@
             ${txt ? `<div class="gear-card-bonus-desc">${escape(txt)}</div>` : ""}
           </div>`);
       }
+      // ---- legacy raw set text (top-level `setBonus` field, no structured
+      //      Set equipBonuses) — render in the SAME 🌟 style as structured
+      //      sets so every set bonus on the site looks identical ----
+      if (item.setBonus && !(item.equipBonuses || []).some(e => e && e.type === "Set")) {
+        const pcs = item.setSize || 2;
+        bonusBlocks.push(`
+          <div class="gear-card-bonus">
+            <div class="gear-card-bonus-name">🌟 ${escape(item.set || "Set")} (${pcs}pc)<span class="gear-card-bonus-tag">set ${escape(item.set || "")} ${pcs}pc</span></div>
+            <div class="gear-card-bonus-desc">${escape(item.setBonus)}</div>
+          </div>`);
+      }
       const bonusBlock = bonusBlocks.length
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Equip / Set Bonuses</div>
              ${bonusBlocks.join("")}
            </div>`
         : "";
-
-      // ---- raw set tooltip text (separate from the structured set
-      //      bonuses captured above; covers sets where only setBonus
-      //      narrative text is in data, no equipBonus entries) ----
-      const setBlock = (item.setBonus && !item.equipBonuses?.some(e => e && e.type === "Set"))
-        ? `<div class="gear-card-section">
-             <div class="gear-card-section-title">Set: ${escape(item.set || "")}</div>
-             <div class="gear-card-set-text">${escape(item.setBonus)}</div>
-           </div>`
-        : "";
+      const setBlock = "";
 
       // ---- class restriction note ----
       const classNote = Array.isArray(item.allowedClasses) && item.allowedClasses.length > 0 && item.allowedClasses.length < 9
