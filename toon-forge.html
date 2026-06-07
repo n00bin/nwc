@@ -9767,7 +9767,12 @@
       (state.slottedEncounters || []).forEach(function (nm) {
         if (!nm) return; const p = findP("encounter", nm); if (!p) return;
         const mag = _parsePowerMag(p.magnitude), cd = p.cooldownSeconds || p.rechargeSeconds || 0;
-        if (mag > 0 && cd > 0) { mps += (mag / cd) * enhFor(p, nm); any = true; }
+        // Data guard: sub-2s "cooldowns" on encounters are almost certainly
+        // capture errors (e.g. Paladin Smite stored as 0.5s) — without a
+        // floor they make one power read as the entire rotation. Floor at
+        // 6s until the suspect entries are verified in game.
+        const cdEff = cd > 0 ? Math.max(cd, 6) : 0;
+        if (mag > 0 && cdEff > 0) { mps += (mag / cdEff) * enhFor(p, nm); any = true; }
       });
       const DAILY_INTERVAL = 25;   // assumed AP-gated cadence between dailies
       (state.slottedDailies || []).forEach(function (nm) {
