@@ -3785,7 +3785,7 @@
       },
       buff:                  (name) => {
         const f = (typeof findBuffByName === "function") ? findBuffByName(name) : null;
-        return { item: f, render: (b) => ({ name: b.name, meta: b.duration_s ? `${b.duration_s}s` : "", desc: (typeof describeBuff === "function") ? describeBuff(b) : "" }) };
+        return { item: f, render: (b) => (typeof renderBuffPick === "function") ? renderBuffPick(b) : { name: b.name, meta: "", desc: "" } };
       }
     };
     // Companion render needs the slot's rarity context; handled inline below.
@@ -5554,14 +5554,42 @@
       return { name: c.name, meta, desc };
     }
     function renderMount(m) {
+      // Card-style sections, same language as the gear cards.
       const slots = (m.insigniaSlots || []).map(s =>
         (s.allowed || []).join("/").replace("*", "Universal") +
         (s.preferred ? ` ★ ${s.preferred}` : "")
       );
+      const bonus = (m.bonusRef && typeof findBonusById === "function") ? findBonusById(m.bonusRef) : null;
+      const combat = (m.combatRef && typeof findCombatPowerById === "function") ? findCombatPowerById(m.combatRef) : null;
+      const equip = (m.equipRef && typeof findEquipPowerById === "function") ? findEquipPowerById(m.equipRef) : null;
+      const slotBlock = slots.length
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Insignia Slots</div>
+             ${slots.map(s => `<div class="gear-card-stat-line">${_escHTML(s)}</div>`).join("")}
+           </div>`
+        : "";
+      const powerLines = [];
+      if (combat) powerLines.push(`Combat: ${combat.name}`);
+      if (equip) powerLines.push(`Equip: ${equip.name}`);
+      const powerBlock = powerLines.length
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Mount Powers</div>
+             ${powerLines.map(l => `<div class="gear-card-stat-line">${_escHTML(l)}</div>`).join("")}
+           </div>`
+        : "";
+      const bonusBlock = bonus
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Insignia Bonus</div>
+             <div class="gear-card-bonus">
+               <div class="gear-card-bonus-name">🌟 ${_escHTML(bonus.name || "")}</div>
+               ${bonus.description ? `<div class="gear-card-bonus-desc">${_escHTML(bonus.description)}</div>` : ""}
+             </div>
+           </div>`
+        : "";
       return {
         name: m.name,
-        meta: `${slots.length} insignia slot${slots.length === 1 ? "" : "s"}`,
-        desc: slots.length ? "Slots: " + slots.join(" · ") : ""
+        meta: `${slots.length} insignia slot${slots.length === 1 ? "" : "s"}` + (bonus && bonus.name ? ` · 🛡 ${bonus.name}` : ""),
+        desc: [slotBlock, powerBlock, bonusBlock].filter(Boolean).join("")
       };
     }
     function renderCollar(c) {
@@ -11322,6 +11350,33 @@
       if (b.damagePct) parts.push(`+${b.damagePct}% dmg vs ${b.enemyType || "?"}`);
       return parts.join(", ") || cleanNote(b.notes).slice(0, 120);
     }
+    // Card-style buff renderer (picker rows + details popup) — same
+    // section language as the gear cards.
+    function renderBuffPick(b) {
+      const lines = [];
+      for (const [k, v] of Object.entries(b.ratingStats || {})) lines.push(`+${v} ${k}`);
+      for (const [k, v] of Object.entries(b.percentStats || {})) lines.push(`+${v}% ${k}`);
+      for (const [k, v] of Object.entries(b.abilityBonuses || {})) lines.push(`+${v} ${k}`);
+      if (b.damagePct) lines.push(`+${b.damagePct}% damage vs ${b.enemyType || "?"}`);
+      const statBlock = lines.length
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Stats</div>
+             ${lines.map(l => `<div class="gear-card-stat-line">${_escHTML(l)}</div>`).join("")}
+           </div>`
+        : "";
+      const note = cleanNote(b.notes);
+      const noteBlock = note
+        ? `<div class="gear-card-section">
+             <div class="gear-card-section-title">Effect</div>
+             <div class="gear-card-set-text" style="white-space:pre-line;">${_escHTML(note)}</div>
+           </div>`
+        : "";
+      return {
+        name: b.name,
+        meta: [b.group || b.exclusiveGroup || "", b.duration_s ? `${b.duration_s}s` : ""].filter(Boolean).join(" · "),
+        desc: [statBlock, noteBlock].filter(Boolean).join("")
+      };
+    }
 
     /* ===== Build Score (engine-driven + completion bonus) =====
        Score = completion (up to 50) + engine stat coverage (up to 50).
@@ -12380,30 +12435,33 @@
     // Description tailored to which slot it's going into (Universal varies by slot).
     function renderEnchantPickFor(slotType) {
       return function(e) {
-        let desc = "";
+        // Card-style sections, same language as the gear cards.
+        let statLines = [], statTitle = "Stats";
         if (e.universal && (slotType === "offense" || slotType === "defense" || slotType === "utility")) {
-          const stats = Object.entries(e.universal[slotType] || {})
-            .map(([s,v]) => `+${v} ${s}`).join(", ");
-          desc = `In ${slotType} slot: ${stats}`;
+          statLines = Object.entries(e.universal[slotType] || {}).map(([s, v]) => `+${v} ${s}`);
+          statTitle = `In ${slotType.charAt(0).toUpperCase() + slotType.slice(1)} Slot`;
         } else {
-          const r = e.ratingStats || {};
-          const p = e.percentStats || {};
-          const parts = [];
-          for (const [k,v] of Object.entries(r)) parts.push(`+${v} ${k}`);
-          for (const [k,v] of Object.entries(p)) parts.push(`+${v}% ${k}`);
-          desc = parts.join(", ");
+          for (const [k, v] of Object.entries(e.ratingStats || {})) statLines.push(`+${v} ${k}`);
+          for (const [k, v] of Object.entries(e.percentStats || {})) statLines.push(`+${v}% ${k}`);
         }
-        // The enchant's full effect text (proc mechanics, shields, notes —
-        // e.g. Divine Aegis' stacking shield) was being dropped; the stat
-        // line alone only "captures the main point". Render it like the
-        // gear cards' bonus text, line breaks honored.
-        if (e.description) {
-          desc += `<div class="gear-card-bonus-desc" style="white-space:pre-line;margin-top:0.25rem;">${_escHTML(e.description)}</div>`;
-        }
+        const statBlock = statLines.length
+          ? `<div class="gear-card-section">
+               <div class="gear-card-section-title">${_escHTML(statTitle)}</div>
+               ${statLines.map(l => `<div class="gear-card-stat-line">${_escHTML(l)}</div>`).join("")}
+             </div>`
+          : "";
+        // Full effect text (proc mechanics, shields — e.g. Divine Aegis'
+        // stacking shield) — was being dropped entirely before.
+        const effectBlock = e.description
+          ? `<div class="gear-card-section">
+               <div class="gear-card-section-title">Effect</div>
+               <div class="gear-card-set-text" style="white-space:pre-line;">${_escHTML(e.description)}</div>
+             </div>`
+          : "";
         return {
           name: e.name,
           meta: `IL ${e.item_level || "?"} · ${e.slotType}`,
-          desc
+          desc: [statBlock, effectBlock].filter(Boolean).join("")
         };
       };
     }
@@ -12689,9 +12747,14 @@
       const isPct = b.statType === "percent";
       const flat = b.statType === "flat";
       const v = b.amount;
-      const desc = flat
+      const line = flat
         ? `${v > 0 ? "+" : ""}${v} ${b.stat}`
         : `${v > 0 ? "+" : ""}${v}${isPct ? "%" : ""} ${b.stat}`;
+      // Card-style section, same language as the gear cards.
+      const desc = `<div class="gear-card-section">
+          <div class="gear-card-section-title">Stats</div>
+          <div class="gear-card-stat-line">${_escHTML(line)}</div>
+        </div>`;
       return { name: b.name, meta: `IL ${b.item_level || "?"}`, desc };
     }
     function renderGuildBoons() {
@@ -13806,11 +13869,7 @@
             buffGroup: g,
             title: `${g} — pick one`,
             items,
-            render: (b) => ({
-              name: b.name,
-              meta: b.duration_s ? `${b.duration_s}s` : "",
-              desc: describeBuff(b)
-            }),
+            render: renderBuffPick,
             onPick: (b) => {
               // Clear any existing buff from this group (covers merged Belt Item + Battle Belt)
               for (const other of [...state.buffs]) {
