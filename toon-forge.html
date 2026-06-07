@@ -11844,8 +11844,11 @@
 
     // Toggle state for the Detailed Stats modal — persists across opens
     // within the session so the user doesn't have to re-tick every time.
-    let _dstatsHideBuffs = false;
-    let _dstatsHidePartyBuffs = false;
+    // Default to a clean baseline: consumable buffs hidden, party buffs
+    // hidden, and in-combat (conditional) bonuses hidden — so the panel
+    // opens matching the in-game standing-around, unbuffed stat tooltip.
+    let _dstatsHideBuffs = true;
+    let _dstatsHidePartyBuffs = true;
     let _dstatsShowConditional = false;
 
     function openDetailedStats() {
