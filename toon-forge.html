@@ -698,7 +698,9 @@
       cursor: help;
     }
     .quick-stats-tag.has-buffs { color: var(--amber); }
-    .quick-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.4rem; }
+    /* auto-fit: roles show different tile counts (tank runs 6 with
+       Deflect + Deflect Severity paired, like CritStrike + CritSev) */
+    .quick-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 0.4rem; }
     .quick-stat { text-align: center; padding: 0.3rem; }
     .quick-stat .label {
       font-size: 0.66rem;
@@ -11517,7 +11519,7 @@
     // in-game guidance (n00b 2026-05-10).
     const ROLE_QUICK_STATS = {
       dps:  ["Power", "Combat Advantage", "Critical Severity", "Critical Strike", "Accuracy"],
-      tank: ["Awareness", "Defense", "Critical Avoidance", "Maximum Hit Points", "Deflect"],
+      tank: ["Awareness", "Defense", "Critical Avoidance", "Maximum Hit Points", "Deflect", "Deflect Severity"],
       heal: ["Power", "Outgoing Healing", "Critical Strike", "Critical Severity", "Forte"]
     };
 
@@ -11527,6 +11529,7 @@
       "Critical Strike":    "Crit Strike",
       "Critical Severity":  "Crit Sev",
       "Critical Avoidance": "Crit Avoid",
+      "Deflect Severity":   "Deflect Sev",
       "Outgoing Healing":   "Out. Healing",
       "Maximum Hit Points": "Max HP",
       "Recharge Speed":     "Recharge",
