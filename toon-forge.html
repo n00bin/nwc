@@ -1155,7 +1155,10 @@
     }
     /* Correction modal: a focused form to suggest a data fix. */
     .correction-overlay {
-      display: none; position: fixed; inset: 0; z-index: 700;
+      /* top-most modal layer — must also cover the local optimizer's
+         overlay (z 99999) so 🔍 details opened from its result cards
+         render on top */
+      display: none; position: fixed; inset: 0; z-index: 100001;
       background: rgba(0,0,0,0.66);
       align-items: center; justify-content: center;
       padding: 4vh 1rem; overflow-y: auto;
@@ -3783,6 +3786,9 @@
                                return { item: findGearByName(name, opts && opts.slot, il), render: renderGearItem };
                              },
       artifact:              (name) => ({ item: findArtifactByName(name), render: renderArtifactItem }),
+      // Companions: same card the summon picker shows, at the build's rarity.
+      companion:             (name) => ({ item: (typeof findCompanionByName === "function") ? findCompanionByName(name) : null,
+                                          render: (c) => renderSummonedCompanion(c, state.summonedRarity || state.companionRarity || "Mythic") }),
       enchant:               (name) => ({ item: findEnchantByName(name), render: renderEnchantPick }),
       overload:              (name) => ({ item: findOverloadByName(name), render: renderOverloadPick }),
       kit:                   (name) => ({ item: findKitByName(name), render: renderKitPick }),
