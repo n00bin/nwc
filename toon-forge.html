@@ -12166,28 +12166,27 @@
                 const fmtFixed = x => x.percent ? `+${x.max}%` : `+${x.max.toLocaleString()}`;
                 const am1 = (state.artifactMods || {})["Off Hand 1"] || { stat: "", value: 0 };
                 const opts1 = artModMenu("Off Hand 1").map(x =>
-                  `<option value="${_escAttr(x.stat)}"${am1.stat === x.stat ? " selected" : ""} title="${_escAttr(x.stat)}">${_escHTML(x.short || x.stat)} ${fmtFixed(x)}</option>`).join("");
+                  `<option value="${_escAttr(x.stat)}"${am1.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)} ${fmtFixed(x)}</option>`).join("");
                 const am2 = (state.artifactMods || {})["Off Hand 2"] || { stat: "", value: 0 };
                 const def2 = artModDef("Off Hand 2", am2.stat);
                 const opts2 = artModMenu("Off Hand 2").map(x =>
-                  `<option value="${_escAttr(x.stat)}"${am2.stat === x.stat ? " selected" : ""} title="${_escAttr(x.stat)}">${_escHTML(x.short || x.stat)}</option>`).join("");
-                return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap;">
-                  <span style="display:inline-flex;align-items:center;gap:0.3rem;"
-                      title="Artifact Modification 1 — pick the stat your off-hand's first modification grants; its value is fixed in game">
-                    <span style="opacity:.8;">⚙ Mod 1:</span>
-                    <select class="picker-collar-filter" data-amod-stat="Off Hand 1" style="max-width:9.5em;">
-                      <option value="">— none —</option>${opts1}
-                    </select>
-                  </span>
-                  <span style="display:inline-flex;align-items:center;gap:0.3rem;"
-                      title="Artifact Modification 2 — pick the stat your off-hand's second modification grants and enter its current value${def2 ? " (max " + def2.max.toLocaleString() + ")" : ""}">
-                    <span style="opacity:.8;">⚙ Mod 2:</span>
-                    <select class="picker-collar-filter" data-amod-stat="Off Hand 2" style="max-width:7.5em;">
-                      <option value="">— none —</option>${opts2}
-                    </select>
-                    <input type="number" data-amod-val="Off Hand 2" min="0" max="${def2 ? def2.max : 99999}" step="50"
-                      value="${am2.value || 0}" style="width:4.5em;" ${am2.stat ? "" : "disabled"} title="${def2 ? "Current value (max " + def2.max.toLocaleString() + ")" : ""}">
-                  </span>
+                  `<option value="${_escAttr(x.stat)}"${am2.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)}</option>`).join("");
+                return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
+                    title="Artifact Modification 1 — pick the stat your off-hand's first modification grants; its value is fixed in game">
+                  <span style="opacity:.8;">⚙ Art Mod 1:</span>
+                  <select class="picker-collar-filter" data-amod-stat="Off Hand 1">
+                    <option value="">— none —</option>${opts1}
+                  </select>
+                </div>
+                <div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
+                    title="Artifact Modification 2 — pick the stat your off-hand's second modification grants and enter its current value">
+                  <span style="opacity:.8;">⚙ Art Mod 2:</span>
+                  <select class="picker-collar-filter" data-amod-stat="Off Hand 2">
+                    <option value="">— none —</option>${opts2}
+                  </select>
+                  <input type="number" data-amod-val="Off Hand 2" min="0" max="${def2 ? def2.max : 99999}" step="50"
+                    value="${am2.value || 0}" style="width:5.5em;" ${am2.stat ? "" : "disabled"}>
+                  ${def2 ? `<span style="opacity:.55;">max ${def2.max.toLocaleString()}</span>` : ""}
                 </div>`;
               }
               // Main Hand — Enhanced-power modification (in-game "Artifact
