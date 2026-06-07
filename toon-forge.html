@@ -3591,9 +3591,32 @@
           });
         });
       }
+      // Tier dropdowns on grouped gear rows (groupGearTiers): changing the
+      // select switches which tier the row shows AND which tier a click
+      // equips; interacting with the select must not pick the row itself.
+      const bindTierSels = (root) => {
+        root.querySelectorAll(".gear-tier-sel").forEach(sel => {
+          const row = sel.closest("[data-pick]");
+          if (!row) return;
+          sel.addEventListener("click", e => e.stopPropagation());
+          sel.addEventListener("change", e => {
+            e.stopPropagation();
+            const it = items[+row.dataset.pick];
+            if (!it || !it._tiers) return;
+            it._selIdx = +sel.value;
+            const r = _pickerState.render(it);
+            const metaEl = row.querySelector(".picker-item-meta");
+            if (metaEl) metaEl.innerHTML = r.meta;
+            const descEl = row.querySelector(".picker-item-desc");
+            if (descEl) { descEl.innerHTML = r.desc; bindTierSels(descEl); }
+          });
+        });
+      };
+      bindTierSels(list);
       list.querySelectorAll("[data-pick]").forEach(el => {
         el.addEventListener("click", (e) => {
           if (e.target.classList.contains("correction-pencil")) return; // pencil click handled below
+          if (e.target.closest && e.target.closest(".gear-tier-sel")) return; // tier dropdown, not a pick
           const it = items[+el.dataset.pick];
           const stateBefore = _pickerState;
           _pickerState.onPick(it);
@@ -11705,7 +11728,55 @@
        Cards include: stat block, every equipBonus (with description
        text and an always-on vs conditional tag), and the set-bonus
        text if any. */
+    // Collapse same-name multi-tier gear into ONE picker row with a tier
+    // dropdown (Report #33 — e.g. Doomcleaver's six refinement qualities).
+    // PICKER-ONLY: gearOptionsForSlot still returns every tier (the
+    // optimizer, TIL math and share links keep working on real entries).
+    // The representative is a shallow clone; _tiers/_selIdx are
+    // non-enumerable so JSON.stringify (corrections flow) never sees them.
+    function groupGearTiers(items) {
+      const groups = new Map();
+      for (const it of items) {
+        const key = it.name + "" + (it.slot || "");
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(it);
+      }
+      const out = [], seen = new Set();
+      for (const it of items) {
+        const key = it.name + "" + (it.slot || "");
+        if (seen.has(key)) continue;
+        seen.add(key);
+        const g = groups.get(key);
+        if (g.length < 2) { out.push(it); continue; }
+        const rep = Object.assign({}, g[0]);   // items arrive IL-desc → top tier
+        Object.defineProperty(rep, "_tiers", { value: g, writable: true });
+        Object.defineProperty(rep, "_selIdx", { value: 0, writable: true });
+        out.push(rep);
+      }
+      return out;
+    }
+
     function renderGearItem(item) {
+      // Grouped multi-tier row: render the SELECTED tier's card plus a tier
+      // dropdown. Single-tier items render exactly as before.
+      if (!item._tiers) return renderGearItemSingle(item);
+      const sel = Math.min(item._selIdx || 0, item._tiers.length - 1);
+      const r = renderGearItemSingle(item._tiers[sel]);
+      r.meta = `${item._tiers.length} upgrade tiers · ` + r.meta;
+      const opts = item._tiers.map((t, i) => {
+        const q = t.quality || t._quality;
+        const label = "IL " + (t.item_level || "?") +
+          (q ? " — " + q : (t.combinedRating ? " — CR " + t.combinedRating : ""));
+        return `<option value="${i}"${i === sel ? " selected" : ""}>${_escHTML(label)}</option>`;
+      }).join("");
+      r.desc = `<div style="margin:0.3rem 0 0.45rem;">
+          <label style="font-size:0.78rem;opacity:0.8;margin-right:0.4rem;">Upgrade tier:</label>
+          <select class="picker-collar-filter gear-tier-sel" data-tier-sel>${opts}</select>
+        </div>` + (r.desc || "");
+      return r;
+    }
+
+    function renderGearItemSingle(item) {
       const escape = (str) => String(str || "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -11945,7 +12016,7 @@
           const slotLabel = el.dataset.gearPick;
           const slotData = GEAR_SLOTS.find(x => x.label === slotLabel);
           if (!slotData) return;
-          const items = gearOptionsForSlot(slotData.slot, state.class);
+          const items = groupGearTiers(gearOptionsForSlot(slotData.slot, state.class));
           openPicker({
             dataType: "gear",
             slot: slotData.slot,
@@ -11955,6 +12026,8 @@
             items,
             render: renderGearItem,
             onPick: (item) => {
+              // Grouped row → equip the tier chosen in its dropdown.
+              if (item && item._tiers) item = item._tiers[Math.min(item._selIdx || 0, item._tiers.length - 1)];
               state.gear[slotLabel] = item ? item.name : "";
               // Remember WHICH tier was picked (same-name items exist at
               // several ILs) so saves/share links reproduce it exactly.
