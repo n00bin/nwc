@@ -3080,6 +3080,17 @@
       state.gearIL = (s.gearIL && typeof s.gearIL === "object") ? { ...s.gearIL } : {};
       // Artifact Modifications; legacy saves have none.
       state.artifactMods = (s.artifactMods && typeof s.artifactMods === "object") ? { ...s.artifactMods } : {};
+      // Back-compat (2026-06-07): the utility stat mod briefly shipped on
+      // the Main Hand before being corrected to Off Hand mod 1. Stat-shaped
+      // "Main Hand 1" entries migrate there; the Main Hand key now holds
+      // the Enhanced-power pick ({ power }), which passes through untouched.
+      const mh1 = state.artifactMods["Main Hand 1"];
+      if (mh1 && mh1.stat) {
+        if (!state.artifactMods["Off Hand 1"] || !state.artifactMods["Off Hand 1"].stat) {
+          state.artifactMods["Off Hand 1"] = mh1;
+        }
+        delete state.artifactMods["Main Hand 1"];
+      }
       // Slots whose gear name was migrated above: drop the saved tier so the
       // renamed item resolves name-only instead of failing the IL filter.
       if (Array.isArray(state.__gearRenamedSlots)) {
@@ -9644,6 +9655,19 @@
       const findP = function (type, nm) {
         return grp(type).find(function (p) { return p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)); });
       };
+      // Main Hand Enhanced-power modification: +X% damage to ONE specific
+      // power. Only clean full-power damage mods apply here; component
+      // mods (e.g. Enhanced Dark Spiral = the per-stack bonus inside Dark
+      // Helix) and healing mods are recorded but not auto-counted.
+      const mhPick = state.artifactMods && state.artifactMods["Main Hand 1"] && state.artifactMods["Main Hand 1"].power;
+      const mhMod = mhPick && typeof mainHandModMenu === "function"
+        ? mainHandModMenu(state.class).find(function (x) { return x.name === mhPick; })
+        : null;
+      const enhBoost = (mhMod && mhMod.kind === "damage" && !mhMod.component) ? 1 + (mhMod.percent || 0) / 100 : 1;
+      const enhTarget = enhBoost > 1 ? mhMod.boostsPower : null;
+      const enhFor = function (p, nm) {
+        return (enhTarget && (p.name === enhTarget || nm === enhTarget || (p.ranged && p.ranged.name === enhTarget))) ? enhBoost : 1;
+      };
       let mps = 0, any = false;
       let bestAW = 0;   // at-wills don't stack — use the strongest slotted one as filler
       (state.slottedAtWills || []).forEach(function (nm) {
@@ -9651,13 +9675,13 @@
         const side = p.ranged || p;
         const mag = _parsePowerMag(side.magnitude != null ? side.magnitude : p.magnitude);
         const cast = side.castSeconds || p.castSeconds || 0;
-        if (mag > 0 && cast > 0) { bestAW = Math.max(bestAW, mag / cast); any = true; }
+        if (mag > 0 && cast > 0) { bestAW = Math.max(bestAW, (mag / cast) * enhFor(p, nm)); any = true; }
       });
       mps += bestAW;
       (state.slottedEncounters || []).forEach(function (nm) {
         if (!nm) return; const p = findP("encounter", nm); if (!p) return;
         const mag = _parsePowerMag(p.magnitude), cd = p.cooldownSeconds || p.rechargeSeconds || 0;
-        if (mag > 0 && cd > 0) { mps += mag / cd; any = true; }
+        if (mag > 0 && cd > 0) { mps += (mag / cd) * enhFor(p, nm); any = true; }
       });
       const DAILY_INTERVAL = 25;   // assumed AP-gated cadence between dailies
       (state.slottedDailies || []).forEach(function (nm) {
@@ -10077,12 +10101,14 @@
       // enhancement runes (1 summoned + 5 active).
       const buffs = [];
 
-      // Artifact Modifications — the player-set stat dial on artifact
-      // weapons (mod slot 1 on the Main Hand, mod slot 2 on the Off Hand).
-      // Each menu entry is either a flat rating (clamped to its in-game
-      // max; Health is a flat Max HP pool riding the same flat channel as
-      // item HP) or — mod 1 only — a percent dial (AP Gain / Recharge
-      // Speed / Stamina Regen) that feeds percentStats instead.
+      // Artifact Modifications — the player-set stat dials on the OFF
+      // HAND (mod slots 1 and 2). Each menu entry is either a flat rating
+      // (clamped to its in-game max; Health is a flat Max HP pool riding
+      // the same flat channel as item HP) or — mod 1 only — a percent
+      // dial (AP Gain / Recharge Speed / Stamina Regen) that feeds
+      // percentStats instead. The Main Hand's Enhanced-power modification
+      // (artifactMods["Main Hand 1"] = { power }) has no .stat, so the
+      // guard below skips it here — it's damage-sim-side, not stat-panel.
       if (s.artifactMods && typeof ARTIFACT_MOD_STATS !== "undefined") {
         for (const modSlot in s.artifactMods) {
           const m = s.artifactMods[modSlot];
@@ -11154,9 +11180,11 @@
     // CSS uses grid-auto-flow:column so items fill top-to-bottom in
     // column 1 first, then column 2.
     // Artifact Modification stat menus — owner-verified in-game maxes
-    // (2026-06-07). The player picks one stat and enters the value their
-    // weapon's modification currently grants (0 .. max).
-    // Mod 2 (Off Hand): all flat ratings.
+    // (2026-06-07). BOTH stat mods live on the OFF HAND (the Main Hand
+    // carries the Enhanced-power modification instead — see the
+    // class-level artifactModifications data). The player picks one stat
+    // per mod slot and enters the value it currently grants (0 .. max).
+    // Off Hand mod 2: all flat ratings.
     const ARTIFACT_MOD_STATS = [
       { stat: "Accuracy",           max: 5800 },
       { stat: "Awareness",          max: 3600 },
@@ -11169,7 +11197,7 @@
       { stat: "Deflect Severity",   max: 6800 },
       { stat: "Defense",            max: 3200 },
     ];
-    // Mod 1 (Main Hand): mixed menu — three percent dials (percent: true,
+    // Off Hand mod 1: mixed menu — three percent dials (percent: true,
     // engine routes them to percentStats) + five flat ratings.
     const ARTIFACT_MOD1_STATS = [
       { stat: "Action Point Gain",    max: 2.5, percent: true },
@@ -11181,12 +11209,21 @@
       { stat: "Forte",                max: 1100 },
       { stat: "Critical Severity",    max: 1400 },
     ];
-    // Menu + entry lookup by mod-slot key ("Main Hand 1" / "Off Hand 2").
+    // Menu + entry lookup by mod-slot key ("Off Hand 1" / "Off Hand 2").
     function artModMenu(modSlot) {
       return / 1$/.test(modSlot) ? ARTIFACT_MOD1_STATS : ARTIFACT_MOD_STATS;
     }
     function artModDef(modSlot, statName) {
       return artModMenu(modSlot).find(x => x.stat === statName);
+    }
+    // Main Hand Enhanced-power modification menu — per-class list captured
+    // from the in-game "Artifact Modification Management" screen (one
+    // modification active at a time, +10% damage/healing to one power).
+    // Only classes with verified screenshots carry the data; others show
+    // no control rather than a fabricated menu.
+    function mainHandModMenu(className) {
+      const cls = findClass(className);
+      return (cls && Array.isArray(cls.artifactModifications)) ? cls.artifactModifications : [];
     }
     const GEAR_SLOTS = [
       // Column 1 (combat / armor)
@@ -12101,36 +12138,74 @@
             ${filled ? setStatusRow(findGearByName(v, s.slot, (state.gearIL || {})[s.label]), setStatus) : ""}
             ${kitChip}
             ${(() => {
-              // Artifact Modifications — Main Hand mod 1, Off Hand mod 2:
-              // stat picker + value entry (0..stat max). Mod-1 percent
-              // dials (AP Gain / Recharge / Stamina Regen) take decimals;
-              // everything else is a flat rating.
-              const modSlot = s.label === "Main Hand" ? "Main Hand 1"
-                            : s.label === "Off Hand"  ? "Off Hand 2" : null;
-              if (!modSlot || !filled) return "";
-              const modNum = modSlot.slice(-1);
-              const am = (state.artifactMods || {})[modSlot] || { stat: "", value: 0 };
-              const def = artModDef(modSlot, am.stat);
-              const opts = artModMenu(modSlot).map(x =>
-                `<option value="${_escAttr(x.stat)}"${am.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)}${x.percent ? " %" : ""}</option>`).join("");
-              const maxLabel = def ? (def.percent ? `max ${def.max}%` : `max ${def.max.toLocaleString()}`) : "";
-              return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
-                  title="Artifact Modification ${modNum} — pick the stat your weapon's ${modNum === "1" ? "first" : "second"} modification grants and enter its current value">
-                <span style="opacity:.8;">⚙ Art Mod ${modNum}:</span>
-                <select class="picker-collar-filter" data-amod-stat="${modSlot}">
-                  <option value="">— none —</option>${opts}
-                </select>
-                <input type="number" data-amod-val="${modSlot}" min="0" max="${def ? def.max : 99999}" step="${def && def.percent ? 0.1 : 50}"
-                  value="${am.value || 0}" style="width:5.5em;" ${am.stat ? "" : "disabled"}>
-                ${maxLabel ? `<span style="opacity:.55;">${maxLabel}</span>` : ""}
-              </div>`;
+              if (!filled) return "";
+              // Off Hand — Artifact Modifications 1 + 2: stat picker +
+              // value entry (0..stat max). Mod-1 percent dials (AP Gain /
+              // Recharge / Stamina Regen) take decimals; everything else
+              // is a flat rating.
+              if (s.label === "Off Hand") {
+                return ["Off Hand 1", "Off Hand 2"].map(modSlot => {
+                  const modNum = modSlot.slice(-1);
+                  const am = (state.artifactMods || {})[modSlot] || { stat: "", value: 0 };
+                  const def = artModDef(modSlot, am.stat);
+                  const opts = artModMenu(modSlot).map(x =>
+                    `<option value="${_escAttr(x.stat)}"${am.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)}${x.percent ? " %" : ""}</option>`).join("");
+                  const maxLabel = def ? (def.percent ? `max ${def.max}%` : `max ${def.max.toLocaleString()}`) : "";
+                  return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
+                      title="Artifact Modification ${modNum} — pick the stat your off-hand's ${modNum === "1" ? "first" : "second"} modification grants and enter its current value">
+                    <span style="opacity:.8;">⚙ Art Mod ${modNum}:</span>
+                    <select class="picker-collar-filter" data-amod-stat="${modSlot}">
+                      <option value="">— none —</option>${opts}
+                    </select>
+                    <input type="number" data-amod-val="${modSlot}" min="0" max="${def ? def.max : 99999}" step="${def && def.percent ? 0.1 : 50}"
+                      value="${am.value || 0}" style="width:5.5em;" ${am.stat ? "" : "disabled"}>
+                    ${maxLabel ? `<span style="opacity:.55;">${maxLabel}</span>` : ""}
+                  </div>`;
+                }).join("");
+              }
+              // Main Hand — Enhanced-power modification (in-game "Artifact
+              // Modification Management": one active pick, +10% damage or
+              // healing to one power). Menu is per-class data; classes
+              // without verified screenshots show no control.
+              if (s.label === "Main Hand") {
+                const menu = mainHandModMenu(state.class);
+                if (!menu.length) return "";
+                const am = (state.artifactMods || {})["Main Hand 1"] || { power: "" };
+                const cur = menu.find(x => x.name === am.power);
+                const opts = menu.map(x =>
+                  `<option value="${_escAttr(x.name)}"${am.power === x.name ? " selected" : ""} title="${_escAttr(x.description)}">${_escHTML(x.name)}</option>`).join("");
+                const simNote = cur
+                  ? (cur.kind === "damage" && !cur.component
+                      ? `+${cur.percent}% ${_escHTML(cur.boostsPower)} dmg (counted in sim when slotted)`
+                      : `${_escHTML(cur.description)} — not auto-counted in the damage sim`)
+                  : "";
+                return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
+                    title="Artifact Modification — your main hand's active Enhanced power (one at a time in game). Damage picks boost that power in the damage sim when it's slotted; component/healing picks are recorded but not simmed.">
+                  <span style="opacity:.8;">⚙ Art Mod:</span>
+                  <select class="picker-collar-filter" data-amod-power="Main Hand 1">
+                    <option value="">— none —</option>${opts}
+                  </select>
+                  ${simNote ? `<span style="opacity:.55;">${simNote}</span>` : ""}
+                </div>`;
+              }
+              return "";
             })()}
           </div>`;
       }).join("");
-      // Artifact Modification controls (Main Hand mod 1 / Off Hand mod 2):
-      // stat change re-renders (enables the value box, shows the max);
-      // value change clamps to the stat's in-game max and feeds the
-      // engine. Percent dials keep one decimal; ratings round to whole.
+      // Main Hand Enhanced-power modification: store the pick; the damage
+      // sim applies it when the boosted power is slotted.
+      g.querySelectorAll("[data-amod-power]").forEach(el => {
+        el.addEventListener("change", () => {
+          if (!state.artifactMods) state.artifactMods = {};
+          if (el.value) state.artifactMods[el.dataset.amodPower] = { power: el.value };
+          else delete state.artifactMods[el.dataset.amodPower];
+          renderGear(); rerenderAll();
+        });
+      });
+      // Off Hand stat modification controls (mods 1 + 2): stat change
+      // re-renders (enables the value box, shows the max); value change
+      // clamps to the stat's in-game max and feeds the engine. Percent
+      // dials keep one decimal; ratings round to whole.
       g.querySelectorAll("[data-amod-stat]").forEach(el => {
         el.addEventListener("change", () => {
           const key = el.dataset.amodStat;
