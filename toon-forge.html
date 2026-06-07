@@ -6075,16 +6075,28 @@
       // labeled top-down from Celestial. Partial families (older gear with
       // shorter ladders, or tiers we haven't captured) are left unlabeled
       // rather than guessed — an explicit item.quality in data always wins.
-      const QUALITY_LADDER = ["Celestial", "Mythic", "Legendary", "Epic", "Rare", "Uncommon"];
+      // Owner-verified rule (2026-06-07): every SET weapon's refinement
+      // ladder starts at green Uncommon, so quality labels are anchored at
+      // the BOTTOM and count up — Uncommon → Rare → Epic → Legendary →
+      // Mythic → Celestial. A complete 6-tier family tops at Celestial
+      // (Doomcleaver, Eye of the Doomweaver); a 4-tier family tops at
+      // Legendary. Applies to weapon slots only; same-IL entries are bonus
+      // VARIANTS, never a ladder; an explicit item.quality in data wins.
+      const QUALITY_LADDER_UP = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
       const famByName = {};
       result.forEach(it => {
-        if (it.slot === "Artifact Equipment") (famByName[it.name] = famByName[it.name] || []).push(it);
+        if (it.slot === "Artifact Equipment" || it.slot === "Main Hand" || it.slot === "Off Hand")
+          (famByName[it.name] = famByName[it.name] || []).push(it);
       });
       Object.values(famByName).forEach(group => {
-        if (group.length !== QUALITY_LADDER.length) return;
+        if (group.length < 2 || group.length > QUALITY_LADDER_UP.length) return;
+        if (new Set(group.map(it => it.item_level || 0)).size !== group.length) return;
+        const hasSet = group.some(it => it.set ||
+          (it.equipBonuses || []).some(e => e && e.type === "Set"));
+        if (!hasSet) return;
         group.slice()
-          .sort((a, b) => (b.item_level || 0) - (a.item_level || 0))
-          .forEach((it, i) => { if (!it.quality) it._quality = QUALITY_LADDER[i]; });
+          .sort((a, b) => (a.item_level || 0) - (b.item_level || 0))
+          .forEach((it, i) => { if (!it.quality) it._quality = QUALITY_LADDER_UP[i]; });
       });
       return result;
     }
