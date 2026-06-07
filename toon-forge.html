@@ -12514,6 +12514,9 @@
               renderAbilityGrid();
               renderGear();
               renderGearWarnings();
+              // A Neck/Waist change can complete or break a Neck+Waist+Artifact
+              // set — refresh the artifact cards' set pills too.
+              if (typeof renderArtifacts === "function") renderArtifacts();
               rerenderAll();
               toast(item ? `Equipped ${item.name} (${slotLabel})` : `Cleared ${slotLabel}`);
             }
@@ -12842,6 +12845,9 @@
               recomputeAbilityTotals();
               renderAbilityGrid();
               renderArtifacts();
+              // Artifacts can complete a Neck+Waist+Artifact set (e.g.
+              // Malignant Energy) — re-render gear so its set pills update too.
+              renderGear();
               rerenderAll();
               toast(item ? `Slotted ${item.name} (${slot})` : `Cleared ${slot}`);
             }
