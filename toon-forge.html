@@ -3077,9 +3077,16 @@
             state.gear[slot] = classTo;
           }
         }
-        if (_renamed.length && typeof toast === "function") {
-          const r = _renamed[0];
-          setTimeout(() => toast(`"${r.from}" was renamed to "${r.to}" — your build was updated.`), 600);
+        if (_renamed.length) {
+          // Build-changed notices must be READABLE — the quick 1.8s toast
+          // vanished before anyone could read it. Sticky toast with a ×,
+          // listing every migrated slot.
+          const lines = _renamed.map(r => `${r.slot}: "${r.from}" → "${r.to}"`).join("\n");
+          const msg = `Your saved build was updated to current item names:\n${lines}`;
+          setTimeout(() => {
+            if (typeof toastSticky === "function") toastSticky(msg, 20000);
+            else if (typeof toast === "function") toast(msg);
+          }, 600);
         }
         // Stash for the gearIL repair below — the saved tier belonged to the
         // OLD name; keeping it can resolve the wrong tier under the new name.
@@ -15194,6 +15201,7 @@
       t.innerHTML = "";
       const span = document.createElement("span");
       span.textContent = msg;
+      span.style.whiteSpace = "pre-line";   // multi-line notices (build migrations)
       const btn = document.createElement("button");
       btn.textContent = "×";
       btn.setAttribute("aria-label", "Dismiss");
