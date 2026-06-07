@@ -12393,6 +12393,13 @@
           for (const [k,v] of Object.entries(p)) parts.push(`+${v}% ${k}`);
           desc = parts.join(", ");
         }
+        // The enchant's full effect text (proc mechanics, shields, notes —
+        // e.g. Divine Aegis' stacking shield) was being dropped; the stat
+        // line alone only "captures the main point". Render it like the
+        // gear cards' bonus text, line breaks honored.
+        if (e.description) {
+          desc += `<div class="gear-card-bonus-desc" style="white-space:pre-line;margin-top:0.25rem;">${_escHTML(e.description)}</div>`;
+        }
         return {
           name: e.name,
           meta: `IL ${e.item_level || "?"} · ${e.slotType}`,
@@ -12499,7 +12506,13 @@
       const cr = item.combinedRating ? "CR " + item.combinedRating : "";
       const type = item.type ? item.type : "";
       const cd = item.cooldown ? item.cooldown + "s CD" : "";
-      const meta = [il, cr, type, cd].filter(Boolean).join(" · ");
+      // 🛡 set tag, same rules as gear cards (real sets only — registry-gated)
+      const isRealSet = item.set && ((item.equipBonuses || []).some(e => e && e.type === "Set") ||
+        (typeof legacySetNames === "function" && legacySetNames().has(item.set)));
+      const setMeta = isRealSet
+        ? "🛡 " + item.set + (item.setSize ? " (" + item.setSize + "pc)" : "")
+        : "";
+      const meta = [il, cr, type, cd, setMeta].filter(Boolean).join(" · ");
 
       // Stats
       const ratingParts = item.ratingStats
@@ -12563,9 +12576,19 @@
             ${txt ? `<div class="gear-card-bonus-desc">${escape(txt)}</div>` : ""}
           </div>`);
       }
+      // Legacy raw set text — same 🌟 style as the gear cards, so artifact
+      // set pieces (e.g. Marilith Mask's Marilith Strike) read identically.
+      if (item.set && item.setBonus && !(item.equipBonuses || []).some(e => e && e.type === "Set")) {
+        const pcs = item.setSize || 2;
+        bonusBlocks.push(`
+          <div class="gear-card-bonus">
+            <div class="gear-card-bonus-name">🌟 ${escape(item.set)} (${pcs}pc)<span class="gear-card-bonus-tag">set ${escape(item.set)} ${pcs}pc</span></div>
+            <div class="gear-card-bonus-desc">${escape(item.setBonus)}</div>
+          </div>`);
+      }
       const bonusBlock = bonusBlocks.length
         ? `<div class="gear-card-section">
-             <div class="gear-card-section-title">Equip Bonuses</div>
+             <div class="gear-card-section-title">Equip / Set Bonuses</div>
              ${bonusBlocks.join("")}
            </div>`
         : "";
