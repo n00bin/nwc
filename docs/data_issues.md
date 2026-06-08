@@ -1,5 +1,58 @@
 # Data Issues To Investigate
 
+## Set-bonus data problems found 2026-06-08 (during set-bonus structuring pass)
+The set-bonus parse pass (`scripts/eb_setbonus_curated.py`) structured 4 clean
+Freezing sets but found these needing in-game verification before they can be
+modeled — they were deliberately LEFT as free-text:
+- **setName COLLISION — "Enchanted Advantage" & "Enchanted Awareness".** Two
+  different in-game sets share each name: the **Mark of the X** line (Recruit/
+  Initiate/Novice/Convert) grants flat ratings (+3,000 Accuracy / +3,000
+  Awareness), while the **Bloodwoven X** line (Sigils/Signs/Runes) grants
+  percentages (+2% Combat Advantage / +2% Awareness). One setName can't hold two
+  different stat/value pairs without a mixed pair wrongly triggering the bonus.
+  FIX NEEDED: confirm the real in-game set names and split them (e.g. Mark line
+  vs Bloodwoven line get distinct setName) before structuring.
+- **Freezing Touch / Freezing Stand / Freezing Rage** — both the Deep-Riven AND
+  Frost-Riven pieces are slotted as **Pants** in the data, so the 2-pc set can
+  never complete (can't wear two pants). In the 4 working Freezing sets the
+  Frost-Riven piece is the Shirt; these 3 likely have the Frost-Riven piece
+  mis-slotted as Pants. VERIFY each Frost-Riven piece's real slot in-game
+  (don't infer — tooltip omits slot). Affected: Frost-Riven Dawnshard Raiment
+  (5374->Touch), Frost-Riven Earthshard Guard (5375->Stand), Frost-Riven
+  Titanweave Harness (5379->Rage).
+- **Enchanted Forte / Enchanted Healing** — only Shirt pieces exist in the data
+  (Mark of the Adept/Fledgling = Forte; Bloodwoven Symbols = Healing). The
+  partner Pants piece is missing, so the set can't complete. Add the partner
+  piece (from a collection screenshot) to enable.
+- **Whisper of Power (+5,200 Power, 2-pc)** — sits on the Soul Collector weapons
+  (Oathbreaker's Malevolence MH / Aegis of the Condemned OH) that ALSO carry the
+  structured **Impending Doom** weapon set, and the two names were swapped on
+  some tiers (see news 2026-06-05). Verify in-game whether these weapons grant
+  BOTH set bonuses or whether Whisper of Power replaced Impending Doom at lower
+  tiers, before structuring the +5,200 Power.
+
+## Warlock Soul Spark — base mechanic FIXED 2026-06-08; per-power values still to verify
+
+n00b corrected the base Soul Spark mechanic in-game (classes.json fixed): every At-Will/
+Encounter/Daily hit generates 1 spark, pool caps at **30**, **+0.5% damage/spark** base
+(Wrathful Souls doubles to **1.0%** → up to **+30%** at cap). Prior data wrongly said
+"+1%/spark, max 10". Wrathful Souls note updated; warlock-hellbringer.html build doc rewritten
+(spark generation is universal → at-wills are now damage picks, No Pity No Mercy devalued,
+"Soul Scorch spam" reframed as a burst-timing variant since dumping sacrifices the +30% passive).
+
+STILL OPEN — the **per-power bonus spark values** in classes.json may be stale relics of the
+wrong model and need in-game verification now that base = 1/hit:
+- Dark Helix "+2 Soul Sparks +1 per Dark Spiral consumed"
+- Eldritch Blast enhanced "+1 Soul Spark"
+- Hellish Rebuke "+1 Soul Spark, +1 per DoT hit"
+- No Pity, No Mercy "3 Soul Sparks on each initial hit"
+- Dark One's Blessing "6 Soul Sparks"; Dark Prayers "puppet hit → 1 spark"
+Are these ADD to the base 1/hit, or REPLACE it? Verify before leaning on any of them.
+
+Soul Scorch FIXED 2026-06-08 (n00b in-game): costs 6 (min) up to 18 (max) sparks — NOT all 30;
+50 mag/spark spent → 300 (at 6) to **900** (at 18, was wrongly 800); DoT 150→450 over 6s within 12';
+and it does **NOT apply Curse** (prior data had an erroneous "Curse" in the effect — removed).
+
 ## Crystalline / Prismatic Crystalline Armor (Dread Sanctum) — cross-class audit needed
 
 Context: n00b flagged the Prismatic Luminstep Greaves reading wrong (2026-06-07).
