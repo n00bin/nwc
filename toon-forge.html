@@ -10997,6 +10997,12 @@
           if (eb.scope && eb.scope !== "self") continue;  // party/enemy buffs handled elsewhere
           if (eb.role && !roleMatches(eb.role)) continue; // role-conditional set bonuses
           if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate: General (no zone) drops zone-locked bonuses
+          // Multi-enemy gate: "Enveloped"-type bonuses need 3+ enemies, so they
+          // are DOWN against a single boss (the default sim target). Excluded
+          // from the stat TOTAL here (the conditional flag is display-only and
+          // wouldn't remove the value). A future AoE scenario toggle can set
+          // s.aoeScenario to include them.
+          if (eb.requiresMultiEnemy && !s.aoeScenario) continue;
           // Conditional-uptime weighting: scale DAMAGE-bonus contributions by
           // assumed in-combat uptime (proc duty-cycle / stack / threshold / etc.).
           // Only damage-bonus stats (routed to damageBoosts, NOT the stat panel),
