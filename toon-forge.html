@@ -9804,6 +9804,89 @@
       return any ? mps : 0;
     }
 
+    // ===== Sequence-proc damage layer =====
+    // Gear bonuses worded "when you use a Daily, your next Encounter does +X%
+    // more damage" are SEQUENCE-conditional (power A enables a boost on power
+    // B's next cast) — the conditional-uptime model can't see them, so they
+    // were uncounted. This converts each into an EFFECTIVE generic damage %:
+    //   effPct = X% × (boosted casts' share of total rotation throughput)
+    // i.e. a +60% on one encounter every 25s is worth only that encounter's
+    // slice of your damage, not a flat +60%. Self-normalizing via the same
+    // rotation cadence rotationMagPerSec() uses. Needs slotted powers; with an
+    // empty hotbar it returns 0 (powers drive damage — consistent with the
+    // rest of the model). Reaches the optimizer for free: it folds into
+    // computeDpsExpectedDamage, the single scoring source.
+    const SEQ_PROC = { dailyIntervalSec: 25, perBonusCapPct: 12 };
+    function computeSequenceProcBoost() {
+      const out = { pct: 0, contributors: [] };
+      if (typeof state === "undefined" || !state.gear) return out;
+      const rotMag = (typeof rotationMagPerSec === "function") ? rotationMagPerSec() : 0;
+      if (!(rotMag > 0)) return out;                       // no rotation → can't weight honestly
+      const cls = (typeof findClass === "function") ? findClass(state.class) : null;
+      const par = (typeof findParagon === "function") ? findParagon(state.class, state.paragon) : null;
+      const grp = function (t) {
+        return [].concat((cls && cls.powers && cls.powers[t]) || []).concat((par && par.powers && par.powers[t]) || (par && par[t]) || []);
+      };
+      const findP = function (t, nm) { return grp(t).find(function (p) { return p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)); }); };
+      const norm = function (w) { w = String(w || "").toLowerCase().replace(/[\s-]/g, ""); return w === "atwill" ? "atWill" : w; };
+      const slotKeyFor = function (type) { return type === "atWill" ? "slottedAtWills" : type === "encounter" ? "slottedEncounters" : "slottedDailies"; };
+      const bestSlottedMag = function (type) {
+        let best = 0;
+        (state[slotKeyFor(type)] || []).forEach(function (nm) {
+          if (!nm) return; const p = findP(type, nm); if (!p) return;
+          const s = p.ranged || p; const m = _parsePowerMag(s.magnitude != null ? s.magnitude : p.magnitude);
+          if (m > best) best = m;
+        });
+        return best;
+      };
+      const encounterRate = function () {
+        let r = 0;
+        (state.slottedEncounters || []).forEach(function (nm) {
+          if (!nm) return; const p = findP("encounter", nm); if (!p) return;
+          const cd = Math.max(p.cooldownSeconds || p.rechargeSeconds || 0, 6); if (cd > 0) r += 1 / cd;
+        });
+        return r;
+      };
+      const triggerRateOf = function (type) {
+        if (type === "daily") return 1 / SEQ_PROC.dailyIntervalSec;
+        if (type === "encounter") return encounterRate();
+        return 0;   // at-will trigger: treat as ~continuous, not modeled here
+      };
+      // "when you [use/deal damage with/activate] a Daily/Encounter, your next
+      // [N] Encounter/At-Will [will] deal +X% [more] damage" (+ optional cooldown)
+      const RE = /when(?:ever)? you (?:use|deal damage with|activate|cast)[^.]*?\b(daily|encounter)\b[^.]*?your next (\d+ )?(encounter|at-?will|daily)[^.]*?(?:deal|do)\w*\s*\+?(\d+(?:\.\d+)?)%\s*(?:more )?damage/i;
+      const seen = new Set();
+      for (const label in state.gear) {
+        const nm = state.gear[label]; if (!nm) continue;
+        const slotType = label === "Waist" ? "Belt" : label.replace(/ \d+$/, "");
+        const item = findGearByName(nm, slotType, (state.gearIL || {})[label]);
+        if (!item) continue;
+        for (const eb of (item.equipBonuses || [])) {
+          const d = eb.description || eb.effect || "";
+          const m = RE.exec(d); if (!m) continue;
+          const triggerType = m[1].toLowerCase();
+          const count = m[2] ? parseInt(m[2], 10) : 1;
+          const boostType = norm(m[3]);
+          const pct = parseFloat(m[4]);
+          const key = nm + "|" + (eb.name || "") + "|" + pct;
+          if (seen.has(key)) continue; seen.add(key);
+          let trig = triggerRateOf(triggerType);
+          const cdM = d.match(/(\d+(?:\.\d+)?)\s*second\s*cool/i);
+          if (cdM) trig = Math.min(trig, 1 / parseFloat(cdM[1]));
+          const bestMag = bestSlottedMag(boostType);
+          if (!(trig > 0) || !(bestMag > 0)) continue;
+          const addMagPerSec = trig * count * bestMag * (pct / 100);
+          let effPct = addMagPerSec / rotMag * 100;
+          if (effPct > SEQ_PROC.perBonusCapPct) effPct = SEQ_PROC.perBonusCapPct;   // guardrail
+          out.pct += effPct;
+          out.contributors.push({ source: nm + " — " + (eb.name || "sequence proc"),
+            effPct: Math.round(effPct * 10) / 10, raw: pct, on: boostType });
+        }
+      }
+      out.pct = Math.round(out.pct * 100) / 100;
+      return out;
+    }
+
     // Returns { caUnion, caGrants[], dmgTaken, dmgSources[], info[] }.
     function getPartySummonedCombatMods() {
       const caGrants = [];     // {name, uptime 0..1}
@@ -14736,7 +14819,11 @@
       const sl = db.slot || {};
       const slotPct = (POWER_MIX.atwill * (sl.atwill || 0)) + (POWER_MIX.encounter * (sl.encounter || 0)) + (POWER_MIX.daily * (sl.daily || 0))
                     + (POWER_MIX.ranged * (sl.ranged || 0)) + (POWER_MIX.melee * (sl.melee || 0)) + (POWER_MIX.single * (sl.single || 0)) + (POWER_MIX.dot * (sl.dot || 0));
-      const boostMult = (1 + (db.generic || 0) / 100) * (1 + (db.base || 0) / 100) * (1 + typeBoost / 100) * (1 + slotPct / 100);
+      // Sequence-proc layer ("use Daily -> next Encounter +X% damage"),
+      // weighted to an effective generic % by rotation share. Multiplies like
+      // any other generic damage source.
+      const seqProc = (typeof computeSequenceProcBoost === "function") ? computeSequenceProcBoost() : { pct: 0, contributors: [] };
+      const boostMult = (1 + (db.generic || 0) / 100) * (1 + (db.base || 0) / 100) * (1 + typeBoost / 100) * (1 + slotPct / 100) * (1 + seqProc.pct / 100);
       const baseDmg = baseVal * (1 + pmods.dmgTaken) * boostMult;
       const powerMult = 1 + power;
       const flankBonus = 1 + Math.max(0, ca - e.awareness);
@@ -14767,6 +14854,7 @@
       return {
         expected: baseExpected * procMult + gearProcs.flatPerHit,
         procDamage: { pctOfHit: procPct, contributors: procs.contributors.concat(gearProcs.contributors) },
+        seqProc: seqProc,
         pCrit, effFlank, pDeflect, deflLoss: 1 - deflectMult, deflCut: 1 - 1 / deflectDivide,
         rows: [
           { sc: "Normal — no crit, no Combat Advantage", icon: "⚔️", desc: "The hit did NOT critically strike and you were NOT flanking. Your plain baseline hit.", p: pBase, d: Math.round(dBase) },
@@ -14978,6 +15066,9 @@
           + (_dps.pDeflect > 0 ? ` The enemy deflects about <strong style="color:var(--text)">${Math.round(_dps.pDeflect * 100)}%</strong> of your hits for a little less; that's already counted in the average.` : ``)
           + ((_pd && _pd.pctOfHit > 0.05)
             ? ` Your companions' damage procs add about <strong style="color:var(--text)">+${_pd.pctOfHit.toFixed(1)}%</strong> on top (${_pd.contributors.map(c => c.source.split(" — ")[0]).join(", ")}) — included in the number above.`
+            : ``)
+          + ((_dps.seqProc && _dps.seqProc.pct > 0.05)
+            ? ` "Use a Daily → next power deals more damage" bonuses (${_dps.seqProc.contributors.map(c => c.source.split(" — ")[0]).join(", ")}) add about <strong style="color:var(--text)">+${_dps.seqProc.pct.toFixed(1)}%</strong> effective (weighted by how often the boosted cast lands) — included above.`
             : ``)
           + `</div>`;
       }
