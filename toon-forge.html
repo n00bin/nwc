@@ -11005,9 +11005,11 @@
           if (eb.requiresMultiEnemy && !s.aoeScenario) continue;
           // Conditional-uptime weighting: scale DAMAGE-bonus contributions by
           // assumed in-combat uptime (proc duty-cycle / stack / threshold / etc.).
-          // Only damage-bonus stats (routed to damageBoosts, NOT the stat panel),
-          // so the calibrated 13-stat panel is unaffected.
-          const uptimeFactor = isDamageBonusStat(eb.stat) ? conditionalDamageUptime(eb) : 1;
+          // Damage-bonus stats route to damageBoosts; proc STAT-grants
+          // (uptimeWeighted:true, e.g. "on crit gain 4.5% Critical Strike for
+          // 6s") are weighted the same way and counted at amount × uptime —
+          // the honest sustained average, instead of full value or zero.
+          const uptimeFactor = (isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1;
           // Conditional bonuses (in-combat stacks, procs, group-only, etc.)
           // are pushed with conditional: true so the renderer can filter
           // them out for "standing around" view or include them at max
@@ -11061,9 +11063,12 @@
               }
             }
           } else if (eb.type === "Equip" || eb.type === "Set") {
+            // Proc stat-grants: the weighted value IS the sustained average,
+            // so surface it in the BASE panel (conditional:false) with an
+            // uptime tag — not hidden behind the conditional toggle.
             buffs.push({
-              source: baseLabel,
-              conditional: isConditional,
+              source: baseLabel + (eb.uptimeWeighted ? ` (proc ~${Math.round(uptimeFactor * 100)}% uptime)` : ``),
+              conditional: eb.uptimeWeighted ? false : isConditional,
               [channel]: { [eb.stat]: eb.amount * uptimeFactor }
             });
           }
