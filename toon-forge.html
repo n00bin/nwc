@@ -2810,6 +2810,10 @@
   </div>
 
   <!-- Engine + reference data (Phase 3 wiring) -->
+  <!-- Auto-update "Refresh now" banner (deploy stamps ?v= + writes version.json).
+       Toon Forge doesn't load js/shared.js, so this standalone file gives it the
+       same one-tap update toast the rest of the site has. -->
+  <script src="js/update-banner.js"></script>
   <script src="data/classes.js"></script>
   <script src="data/races.js"></script>
   <script src="data/gear.js"></script>
