@@ -80,8 +80,15 @@ def convert_file(source_name, output_name, var_name):
     else:
         js_content = header + f"const {var_name} = {json.dumps(data, indent=2)};\n"
 
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(js_content)
+    # A failed WRITE (disk full, file locked, permissions) must not abort the
+    # whole build either — and must be loud, or the output file could sit
+    # there truncated while the build claims success.
+    try:
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(js_content)
+    except OSError as e:
+        print(f"  FAIL  {source_name}: write error ({e}) — data/{output_name} may be incomplete, re-run after fixing")
+        return False
 
     print(f"  OK    {source_name} -> data/{output_name}")
     return True
@@ -159,8 +166,12 @@ def build_preview_data():
         f"// Drop image files into the matching folder, then re-run build-data.py.\n\n"
         f"window.PREVIEW_DATA = {json.dumps(payload, indent=2)};\n"
     )
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(js)
+    try:
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(js)
+    except OSError as e:
+        print(f"  FAIL  images/preview/: write error ({e}) — data/preview.js may be incomplete, re-run after fixing")
+        return False
 
     total = sum(len(v) for v in gear.values()) + len(companions) + len(mounts) + len(other)
     print(f"  OK    images/preview/ -> data/preview.js ({total} images)")

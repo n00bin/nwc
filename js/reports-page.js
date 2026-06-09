@@ -14,9 +14,9 @@
   var votedIds = JSON.parse(localStorage.getItem("nwc_voted_reports") || "[]");
   var voterHash = generateVoterHash();
   var submitCooldown = false;
-  // Per-report reply cooldown (timestamp until which replies are blocked).
-  // A single global flag used to block replying on report B for 15s after
-  // replying on report A.
+  // Per-report reply cooldown — a map of report id -> timestamp until which
+  // replying on THAT report is blocked (15s after each reply). Cooldowns are
+  // independent per report; replying on report A never locks report B.
   var replyCooldownUntil = {};
   var adminMode = false;
   var adminPass = "";
@@ -65,7 +65,7 @@
       ]);
 
       if (results[0].error) {
-        reportsList.innerHTML = '<div class="empty-state">Failed to load reports. Please try again later.</div>';
+        reportsList.innerHTML = '<div class="empty-state">Couldn\'t load reports — check your connection and try refreshing.</div>';
         console.error("Supabase error:", results[0].error);
         return;
       }
@@ -89,7 +89,7 @@
 
       renderReports();
     } catch (e) {
-      reportsList.innerHTML = '<div class="empty-state">Failed to load reports. Please try again later.</div>';
+      reportsList.innerHTML = '<div class="empty-state">Couldn\'t load reports — check your connection and try refreshing.</div>';
       console.error("Reports load error:", e);
     }
   }
@@ -334,7 +334,7 @@
         .from("report-images")
         .upload(fileName, imageFile);
       if (uploadError) {
-        formMsg.textContent = "Image upload failed: " + uploadError.message;
+        formMsg.textContent = "Couldn't upload your screenshot — try a smaller image or check your connection.";
         formMsg.className = "form-msg error";
         submitBtn.disabled = false;
         submitBtn.textContent = "Submit Report";
@@ -668,7 +668,7 @@
       var fileName = Date.now() + "_reply_" + imageFile.name.replace(/[^a-zA-Z0-9._-]/g, "");
       var uploadResult = await sb.storage.from("report-images").upload(fileName, imageFile);
       if (uploadResult.error) {
-        feedback.textContent = "Image upload failed: " + uploadResult.error.message;
+        feedback.textContent = "Couldn't upload your screenshot — try a smaller image or check your connection.";
         feedback.className = "reply-msg-feedback error";
         btn.disabled = false;
         btn.textContent = "Reply";

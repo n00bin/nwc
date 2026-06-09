@@ -2709,7 +2709,7 @@
       </div>
     </div>
     <div class="quick-stats-wrap">
-      <div class="quick-stats-tag" id="quick-stats-tag" title="">Buff state</div>
+      <div class="quick-stats-tag" id="quick-stats-tag" title="">no buffs active</div>
       <div class="quick-stats" id="quick-stats">
         <!-- generated -->
       </div>
@@ -2796,7 +2796,7 @@
             <input type="checkbox" id="dstats-hide-party-buffs">
             Hide party buffs
           </label>
-          <label class="dstats-hide-buffs" id="dstats-show-cond-label" title="Some bonuses only activate in combat, at low health, after a hit, or with teammates nearby. Leave this ON (default) to see your normal out-of-combat stats; turn it OFF to see your stats at full power with everything active.">
+          <label class="dstats-hide-buffs" id="dstats-show-cond-label" title="Checked (default): in-combat bonuses are hidden — stats match your in-game out-of-combat tooltip. Uncheck to add combat-only procs and stacks to the totals.">
             <input type="checkbox" id="dstats-show-cond" checked>
             Hide in-combat bonuses
           </label>
@@ -11396,7 +11396,7 @@
           // it as always-on per the data's intent.
           const isCond = !!(eb.zones && eb.zones.length) || (eb.alwaysActive === false);
           const ctxTag = (eb.zones && eb.zones.length) ? ` (in ${eb.zones.join("/")})` : "";
-          const uptimeFactor = isDamageBonusStat(eb.stat) ? conditionalDamageUptime(eb) : 1;
+          const uptimeFactor = (isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1;
           buffs.push({
             source: `Overload ${i + 1}: ${o.name}${ctxTag}`,
             conditional: isCond,
