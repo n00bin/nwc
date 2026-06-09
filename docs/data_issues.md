@@ -332,7 +332,16 @@ Crest (445) is Pants — leave them unless a screenshot says otherwise.
 
 Player report flagged the following gear as missing from the site:
 
-- **Slaughterhouse Cindersilk gear** — likely a Mod 32+ clothing set
+- **Slaughterhouse Cindersilk set** — Mod 32+ caster body-**Armor** set (NOT a
+  clothing set — the earlier "clothing" guess was wrong). **Report #105**
+  (2026-06-06) submitted one piece, **Cindersilk Robes**: Armor, Warlock/Wizard,
+  IL 4600, CR 4140 (= 0.9 x IL, fits the body-armor pattern), Accuracy +3319 /
+  Combat Advantage +2484. Slot is confirmed by the class restriction (Shirt/Pants
+  are never class-locked, so a 2-class "Robes" must be body Armor). STILL MISSING
+  from the submission before it can be added: the **equip bonus** (every caster
+  armor has one), the **set name**, and possibly a 3rd stat (its 2-stat budget
+  ~1.26 x IL is light vs siblings at ~1.5-1.86 x IL). AWAITING an in-game tooltip
+  screenshot from n00b (status: open, do NOT add partial/guessed data).
 - **Ritualistic Necklace & Strap** — accessory pieces
 - **Mod 33 gear** — new equipment from the latest module
 
