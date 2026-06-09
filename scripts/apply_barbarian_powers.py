@@ -171,14 +171,16 @@ b["paragonFeats"][PARAGON] = [
         {"name": "Steel Slam", "modifies": "Avalanche of Steel", "magnitude": 200, "hits": 3, "durationSeconds": 12,
          "description": "Whenever you use Avalanche of Steel, create a circle of unstable ground upon landing, dealing physical damage over time (magnitude 200 x3 over 12s). Added Effect: Slow (3s)."},
         {"name": "Unstoppable Spin", "modifies": "Spinning Strike", "battlerageDamageBonusPercent": 50, "battlerageDurationBonusSeconds": 6,
-         "description": "Whenever you use Spinning Strike, if you have less than 50 Rage, set your Rage to 50. Battlerage then activates automatically, its duration is increased by 6 seconds, and the damage bonus is increased to 50%. Does not stack with or activate Rampage."},
+         "description": "Whenever you use Spinning Strike, if you have less than 50 Rage, set your Rage to 50. Battlerage then activates automatically, its duration is increased by 6 seconds, and the damage bonus is increased to 50%. Does not stack with or activate Rampage.",
+         "notes": "Its +6s duration extension is likely gated the same way as Rampage's +8s (the ~8.7s attacking Rage drain ends Battlerage regardless) - net +50% for ~8.7s. Not separately tested as of 2026-06-09."},
     ]},
     {"tier": 5, "choices": [
         {"name": "Relentless Battlerage", "rageGenMultiplier": 2,
          "description": "You build twice as much Rage from At-Will powers, Encounter powers, taking damage, and defeating enemies."},
         {"name": "Escalating Rage", "stacksForRampage": 5, "rampageDurationSeconds": 20,
-         "battlerageExtendSeconds": 8, "battlerageDamageBonusPercent": 25,
-         "description": "Whenever you deal critical damage, gain a stack of Escalating Rage. At 5 stacks, gain Rampage for 20s. Rampage extends the duration of Battlerage by 8s and increases the damage bonus by +25%. You may not build Escalating Rage while under the effect of Battlerage."},
+         "battlerageExtendSeconds": 8, "battlerageExtendEffectiveWhileAttacking": False, "battlerageDamageBonusPercent": 25,
+         "description": "Whenever you deal critical damage, gain a stack of Escalating Rage. At 5 stacks, gain Rampage for 20s. Rampage extends the duration of Battlerage by 8s and increases the damage bonus by +25%. You may not build Escalating Rage while under the effect of Battlerage.",
+         "notes": "Verified n00b 2026-06-09: Rampage's +8s does NOT lengthen the Battlerage window while attacking - the ~8.7s Rage drain still ends it. Net effect is +50% damage (vs +25%) for the SAME ~8.7s window, not a longer one."},
     ]},
 ]
 changes.append("ADD paragonFeats.Blademaster (T1-T5, 10 feats)")
