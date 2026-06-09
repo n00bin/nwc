@@ -1,5 +1,32 @@
 # Data Issues To Investigate
 
+## Elk Tribe / Hammerstone phantom set — RESOLVED 2026-06-09 (audit blocker #2 follow-up)
+Archived collection screenshots (docs/audit/_up/) proved "Weapons of the Elk
+Tribe Chiefs" is a **collection tab, not an in-game set**: four Elk tooltips
+(Lute, Poniard, Dirk + stored rogue Poniard values) show NO set line, while the
+Hellfire Tow Hook tooltip in the same UI format DOES show its set line. Fixes:
+- Removed the false Set equipBonus from ids 4766/4767 (Bard Lute/Poniard).
+- Cleared `set` on all 16 tagged entries — including **4 Hammerstone weapons
+  (ids 2087, 2088, 2954, 2955) that were wrongly tagged with the Elk set**.
+- Corrected rounded stats 98 -> 97.6 (Critical Severity / Critical Avoidance)
+  on ids 4354, 4766, 4767 — matches the Dirk/Lute/Poniard tooltips and the
+  values already stored on ids 4353 / 6833 / 6834.
+
+## Hellfire Engine Remains set bonus — still unverified (2026-06-09)
+The set is REAL: the archived Tow Hook IL600 tooltip shows "Set Hellfire Engine
+Remains (0/2)" — and its base stats match our data (450 Accuracy / 450 Crit Sev
+/ 540 CR). But the collection tooltip does not display the set-bonus text, so
+the bonus value remains unverified (the fabricated +1,500 Power was stripped
+2026-06-09). **Action:** equip both pieces in-game (or open the expanded set
+popup) and capture the 2-of-set bonus text.
+
+## Elk Tribe Grimoire / Pact Blade duplicate pairs (found 2026-06-09)
+ids 3597/4824 ("Elk Tribe Noble's Grimoire") and 3598/4825 ("Elk Tribe Noble's
+Pact Blade") are same-name duplicate pairs with conflicting Accuracy (98 vs 97).
+Archive screenshots exist to resolve them: docs/audit/_up/warlock-gear/
+"Elk Tribe Noble's Grimoire_IL399.png" and "Elk Tribe Noble's Pact Blade_IL399.png".
+**Action:** read the tooltips, keep the matching entry, delete the other.
+
 ## Set-bonus data problems found 2026-06-08 (during set-bonus structuring pass)
 The set-bonus parse pass (`scripts/eb_setbonus_curated.py`) structured 4 clean
 Freezing sets but found these needing in-game verification before they can be
@@ -380,7 +407,9 @@ That equip power entry in `mount_equip_powers.json` is missing `item_level`,
 mount inspector and to be included in any future optimizer calculations.
 
 **Blocked on:** in-game verification. Someone needs to open Balgora's tooltip in-game
-and read the equip power values directly.
+and read the equip power values directly. (Checked the screenshot archives
+2026-06-09 — docs/audit/_up/ is gear-only; no Balgora capture exists. Still
+needs a fresh in-game screenshot.)
 
 **Action:** Backfill `item_level`, `combinedRating`, and `stats` for equip power ID 56
 in `G:/ai_projects/nwcb/data/mount_equip_powers.json`, then re-run `build-data.py`.
