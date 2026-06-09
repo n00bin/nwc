@@ -2296,11 +2296,22 @@
         <a href="#" id="contributions-link" onclick="openContributionsModal();return false;" style="margin-left:0.75em;color:var(--amber);font-size:0.85em;text-decoration:none;white-space:nowrap;">&#128203; Your submissions</a>
       </div>
     </div>
-    <div class="hero-actions" style="display:flex;gap:0.6rem;margin-top:1rem;flex-wrap:wrap;">
-      <button class="btn btn-secondary" id="open-builds">📁 My Builds</button>
-      <button class="btn btn-primary" id="share-build">🔗 Share link</button>
-      <button class="btn btn-secondary" id="open-detailed-stats">⚙ Detailed Stats</button>
-      <button class="btn btn-ghost" id="clear-build" title="Reset every field back to a blank build">🗑️ Clear all</button>
+    <div class="hero-actions" style="display:flex;gap:0.6rem;margin-top:1rem;align-items:stretch;justify-content:center;flex-wrap:wrap;">
+      <!-- Free build tools (Detailed Stats, My Builds, Share link, Clear all) -->
+      <div class="ha-group" style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;padding:0.2rem 0.55rem;border:1px solid rgba(170,180,205,0.32);border-radius:9px;background:rgba(255,255,255,0.03);">
+        <button class="btn btn-secondary" id="open-detailed-stats">⚙ Detailed Stats</button>
+        <button class="btn btn-secondary" id="open-builds">📁 My Builds</button>
+        <button class="btn btn-primary" id="share-build">🔗 Share link</button>
+        <button class="btn btn-ghost" id="clear-build" title="Reset every field back to a blank build">🗑️ Clear all</button>
+      </div>
+      <!-- Premium (paid) group — revealed only when running locally; the optimizer
+           and Featured Builds buttons are injected into the slots below. Hidden on
+           the live site (paid features not launched yet). -->
+      <div id="tf-featured-group" style="display:none;align-items:center;gap:0.4rem;padding:0.2rem 0.55rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
+        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
+        <span id="featured-optimizer-slot" style="display:contents;"></span>
+        <span id="featured-builds-slot" style="display:contents;"></span>
+      </div>
     </div>
   </div>
 
@@ -2785,9 +2796,9 @@
             <input type="checkbox" id="dstats-hide-party-buffs">
             Hide party buffs
           </label>
-          <label class="dstats-hide-buffs" id="dstats-show-cond-label" title="Some bonuses only activate in combat, at low health, after a hit, or with teammates nearby. Turn this on to see your stats at full power with everything active. Leave it off to see your normal out-of-combat stats.">
-            <input type="checkbox" id="dstats-show-cond">
-            Show in-combat bonuses
+          <label class="dstats-hide-buffs" id="dstats-show-cond-label" title="Some bonuses only activate in combat, at low health, after a hit, or with teammates nearby. Leave this ON (default) to see your normal out-of-combat stats; turn it OFF to see your stats at full power with everything active.">
+            <input type="checkbox" id="dstats-show-cond" checked>
+            Hide in-combat bonuses
           </label>
           <button class="dstats-close" id="dstats-close">✕ Close</button>
         </div>
@@ -10679,7 +10690,7 @@
           // === Mount equip-power triggered procs ===
           // Applied at full theoretical max value (perStack × maxStacks for
           // stackingBuff). Conditional (triggered, not always-on), so gated
-          // by the "Show in-combat bonuses" toggle. Matches companion-power
+          // by the "Hide in-combat bonuses" toggle. Matches companion-power
           // proc pattern above.
           //
           // Rating-vs-percent routing for stackingBuff perStack values:
@@ -11987,9 +11998,9 @@
       const lblParty = document.getElementById("dstats-hide-party-buffs-label");
       if (lblParty) lblParty.classList.toggle("on", _dstatsHidePartyBuffs);
       const cbCond = document.getElementById("dstats-show-cond");
-      if (cbCond) cbCond.checked = _dstatsShowConditional;
+      if (cbCond) cbCond.checked = !_dstatsShowConditional;   // checkbox = "Hide in-combat bonuses" (checked = hidden)
       const lblCond = document.getElementById("dstats-show-cond-label");
-      if (lblCond) lblCond.classList.toggle("on", _dstatsShowConditional);
+      if (lblCond) lblCond.classList.toggle("on", !_dstatsShowConditional);
       let html = "";
 
       // Warnings block — filter out "unknown-stat:..." entries; those
@@ -15826,9 +15837,9 @@
       openDetailedStats();  // re-render the modal body with the new flag
     });
     document.getElementById("dstats-show-cond").addEventListener("change", (e) => {
-      _dstatsShowConditional = !!e.target.checked;
+      _dstatsShowConditional = !e.target.checked;   // checked = HIDE in-combat bonuses
       const lbl = document.getElementById("dstats-show-cond-label");
-      if (lbl) lbl.classList.toggle("on", _dstatsShowConditional);
+      if (lbl) lbl.classList.toggle("on", e.target.checked);
       openDetailedStats();
     });
     document.addEventListener("keydown", (e) => {
@@ -16812,6 +16823,25 @@
     s.src = 'js/optimizer-local.js';
     s.onerror = function () { /* file absent (e.g. deployed) — ignore */ };
     document.body.appendChild(s);
+    // Reveal the local-only Featured group (paid features — gitignored, not deployed).
+    var grp = document.getElementById('tf-featured-group');
+    if (grp) grp.style.display = 'flex';
+    // Featured Builds button (the Build Library). The optimizer injects its own
+    // button into #featured-optimizer-slot from js/optimizer-local.js.
+    var slot = document.getElementById('featured-builds-slot');
+    if (slot && !slot.querySelector('a')) {
+      var a = document.createElement('a');
+      a.className = 'btn';
+      a.href = 'premium/builds/';
+      a.textContent = '⭐ Featured Builds';
+      a.title = 'Featured Build Library (local only — not launched yet)';
+      a.style.textDecoration = 'none';
+      // Gold outline to match the ✨ Premium box (distinct from Share's filled amber).
+      a.style.background = 'rgba(212,160,23,0.12)';
+      a.style.color = 'var(--amber)';
+      a.style.borderColor = 'var(--amber)';
+      slot.appendChild(a);
+    }
   })();
 </script>
 </body>
