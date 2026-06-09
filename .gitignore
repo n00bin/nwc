@@ -21,6 +21,9 @@ images/companions/check_*
 images/companions/powernames/
 images/companions/unique/
 
+# Cache-busting build stamp (generated in CI by scripts/stamp_cache_version.py)
+version.json
+
 # Local dev tooling (puppeteer for headless render checks)
 node_modules/
 package.json
