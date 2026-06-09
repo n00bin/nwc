@@ -20,12 +20,12 @@ modeled — they were deliberately LEFT as free-text:
   logically forced). Full set bonus (+4% Awareness / +4% Power) structured on the
   Shirt; the Deep-Riven Pants partner (5369 / 5368) demoted to a marker so the
   bonus counts once. Shipped in commit 50c1f37.
-- **Freezing Rage — STILL OPEN.** Frost-Riven Titanweave Harness (5379) is still
-  slotted as **Pants** alongside its Deep-Riven partner (6844, a verified Pants),
-  so the 2-pc set can't complete (can't wear two pants). It carries the "Corrupt
-  Power" bonus, which is verified elsewhere as a Shirt bonus — so 5379 is almost
-  certainly the mis-slotted Shirt. Fix the same way as Stand/Touch once confirmed
-  (ideally with a screenshot; tooltip omits slot, so don't infer blindly).
+- **Freezing Rage — RESOLVED 2026-06-09.** Frost-Riven Titanweave Harness (5379)
+  corrected Pants->Shirt; +4% Critical Severity structured on the Shirt, and the
+  Deep-Riven partner (6844, verified Pants) demoted to a marker. Evidence: Corrupt
+  Power (on 5379) is a verified Shirt bonus, Ruthless Critical (on 6844) a Pants
+  bonus, plus the Deep-Riven=Pants/Frost-Riven=Shirt family rule. **All 3 flagged
+  Freezing sets (Stand / Touch / Rage) are now fixed.** Shipped in commit 941f0c2.
 - **Enchanted Forte / Enchanted Healing** — only Shirt pieces exist in the data
   (Mark of the Adept/Fledgling = Forte; Bloodwoven Symbols = Healing). The
   partner Pants piece is missing, so the set can't complete. Add the partner
