@@ -20,12 +20,14 @@ the bonus value remains unverified (the fabricated +1,500 Power was stripped
 2026-06-09). **Action:** equip both pieces in-game (or open the expanded set
 popup) and capture the 2-of-set bonus text.
 
-## Elk Tribe Grimoire / Pact Blade duplicate pairs (found 2026-06-09)
+## Elk Tribe Grimoire / Pact Blade duplicate pairs — RESOLVED 2026-06-09
 ids 3597/4824 ("Elk Tribe Noble's Grimoire") and 3598/4825 ("Elk Tribe Noble's
-Pact Blade") are same-name duplicate pairs with conflicting Accuracy (98 vs 97).
-Archive screenshots exist to resolve them: docs/audit/_up/warlock-gear/
-"Elk Tribe Noble's Grimoire_IL399.png" and "Elk Tribe Noble's Pact Blade_IL399.png".
-**Action:** read the tooltips, keep the matching entry, delete the other.
+Pact Blade") were same-name duplicate pairs with conflicting Accuracy (98 vs 97)
+— and the 4824/4825 copies also carried a wrong item_level (199 vs the real 399).
+Archive tooltips (docs/audit/_up/warlock-gear/) settled it: real values are
+**IL 399, Accuracy 97.6 / CA 202 / Crit Strike 202 / Crit Avoidance 97.6, CR 359**.
+Kept 3597/3598 (correct IL/slots) with stats exact-matched to 97.6; deleted
+4824/4825 (bad re-intake). No external references to the deleted ids existed.
 
 ## Set-bonus data problems found 2026-06-08 (during set-bonus structuring pass)
 The set-bonus parse pass (`scripts/eb_setbonus_curated.py`) structured 4 clean
