@@ -2653,6 +2653,15 @@
           </div>
         </div>
 
+        <div class="field" id="sim-zone-field">
+          <label>Content zone
+            <span class="hint-icon" data-tip="Where are you running? Some gear gives extra damage only in a specific zone (e.g. &quot;+5% Damage in Thay&quot;). Pick your zone to count that bonus; leave on General for the everywhere value only.">?</span>
+          </label>
+          <select id="content-zone-select" style="width:100%;padding:0.5rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:6px;">
+            <option value="">General (anywhere)</option>
+          </select>
+        </div>
+
         <p class="hint" style="margin-top:0.8rem;">💡 <strong>Chance</strong> = how likely each outcome is on a single hit. All the cards below add up to 100% — every hit has to land in exactly one.</p>
         <div class="sim-cards" id="sim-body"></div>
       </div>
@@ -3139,6 +3148,8 @@
       // whatever the current session had.
       state.flankUptime = (typeof s.flankUptime === "number") ? s.flankUptime : 0.70;
       state.simMag = (typeof s.simMag === "number") ? s.simMag : 100;
+      state.contentZone = (typeof s.contentZone === "string") ? s.contentZone : "";
+      { const _zs = document.getElementById("content-zone-select"); if (_zs) _zs.value = state.contentZone; }
       state.slottedClassFeaturePicks = Array.isArray(s.slottedClassFeaturePicks) ? s.slottedClassFeaturePicks.slice() : [];
       state.rangerStance = s.rangerStance || "ranged";
       state.bardActiveSong = s.bardActiveSong || "";
@@ -10111,7 +10122,7 @@
     // 1.0 = effectively always-on. Mirrors scripts/measure taxonomy.
     function conditionalDamageUptime(eb) {
       const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
-      if (eb.zones && eb.zones.length) return 0;            // zone-gated (handled by zone gate)
+      if (eb.zones && eb.zones.length) return 1;            // zone-gated: the zone gate already confirmed we're in-zone, so it's fully active (full uptime) here — NOT 0, which would zero out the bonus
       // Structured proc model (e.g. "when you use a Daily, +X for 10s"): the
       // trigger fires every time you use that power (no chance), so uptime is
       // duration × how often that power comes up, capped at 1. Uses the data's
@@ -15583,6 +15594,20 @@
     document.querySelectorAll("[data-flank-preset]").forEach(btn => {
       btn.addEventListener("click", () => setFlank(+btn.dataset.flankPreset));
     });
+
+    // Content zone selector — lights up zone-gated gear bonuses (e.g. "+5% Damage
+    // in Thay"). Options are derived from the gear data so new zones appear
+    // automatically; the engine already gates on state.contentZone.
+    const zoneSelect = document.getElementById("content-zone-select");
+    if (zoneSelect) {
+      const zoneSet = new Set();
+      (typeof GEAR_DATA !== "undefined" ? GEAR_DATA : []).forEach(it =>
+        (it.equipBonuses || []).forEach(eb => { if (eb && Array.isArray(eb.zones)) eb.zones.forEach(z => zoneSet.add(z)); }));
+      zoneSelect.innerHTML = ['<option value="">General (anywhere)</option>']
+        .concat([...zoneSet].sort().map(z => `<option value="${z}">${z}</option>`)).join("");
+      zoneSelect.value = state.contentZone || "";
+      zoneSelect.addEventListener("change", e => { state.contentZone = e.target.value; rerenderAll(); });
+    }
 
     // Bolster sliders are now visual indicators only — values are auto-
     // computed from the comp/mount collection inputs below them. Each
