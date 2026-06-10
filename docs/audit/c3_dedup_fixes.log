@@ -1,0 +1,71 @@
+DELETE 3938 (Prismatic Crystalflex Bracers, IL 3700) — keeper 2
+DELETE 3937 (Prismatic Bismuth Mail, IL 3700) — keeper 2724
+DELETE 3944 (Fractal Barbut, IL 3350) — keeper 2729
+DELETE 3197 (Xaryxian Pactblade, IL 2750) — keeper 199
+ported set 'Astral Raider's Armor' from 3981 -> 2766
+DELETE 3981 (Astral Raider's Hat, IL 2200) — keeper 2766
+DELETE 3253 (The Weaver's Pactblade, IL 2050) — keeper 195
+DELETE 3251 (Duergar Mercenary's Steel Pactblade, IL 1900) — keeper 155
+ported set 'Menzoberranzan Masterwork Gear' from 3999 -> 2784
+DELETE 3999 (Mastered Duergar Mercenary's Barbute, IL 1900) — keeper 2784
+ported set 'Crimson Scalebreaker's Rebel' from 4044 -> 2816
+DELETE 4044 (Crimson Scalebreaker's Rebel Gloves, IL 1800) — keeper 2816
+ported set 'Crimson Scalebreaker's Rebel' from 4045 -> 2817
+DELETE 4045 (Crimson Scalebreaker's Rebel Pikes, IL 1800) — keeper 2817
+ported set 'Crimson Scalebreaker's Rebel' from 4042 -> 2818
+DELETE 4042 (Crimson Scalebreaker's Rebel Shroud, IL 1800) — keeper 2818
+DELETE 2445 (Fanged Sash · IL 800, IL 800) — keeper 5806
+DELETE 2444 (Fanged Sash · IL 650, IL 650) — keeper 5805
+DELETE 5271 (Brightsilver Longbow, IL 500) — keeper 3053
+DELETE 2449 (Beaded Sash · IL 800, IL 800) — keeper 5505
+DELETE 2465 (Bronzewood Amulet · IL 800, IL 800) — keeper 5508
+DELETE 2436 (Bronzewood Sash · IL 650, IL 650) — keeper 5510
+DELETE 2448 (Beaded Sash · IL 650, IL 650) — keeper 5504
+DELETE 2435 (Bronzewood Sash · IL 500, IL 500) — keeper 5509
+DELETE 2447 (Beaded Sash · IL 500, IL 500) — keeper 5503
+DELETE 2463 (Bronzewood Amulet · IL 500, IL 500) — keeper 5506
+DELETE 2523 (Sphene Sash · IL 500, IL 500) — keeper 6222
+DELETE 2434 (Bronzewood Sash · IL 350, IL 350) — keeper 4462
+DELETE 2446 (Beaded Sash · IL 350, IL 350) — keeper 4469
+DELETE 2450 (Beaded Amulet · IL 350, IL 350) — keeper 4472
+DELETE 2454 (Lichstone Amulet · IL 350, IL 350) — keeper 4476
+DELETE 2458 (Fanged Beaded Amulet · IL 350, IL 350) — keeper 4480
+DELETE 2462 (Bronzewood Amulet · IL 350, IL 350) — keeper 4484
+DELETE 2502 (Silverspruce Amulet · IL 350, IL 350) — keeper 4516
+DELETE 2506 (Sphene Amulet · IL 350, IL 350) — keeper 4520
+DELETE 2510 (Rubellite Amulet · IL 350, IL 350) — keeper 4524
+DELETE 2521 (Silverspruce Belt · IL 350, IL 350) — keeper 4532
+DELETE 2522 (Sphene Sash · IL 350, IL 350) — keeper 4536
+DELETE 2526 (Rubellite Sash · IL 350, IL 350) — keeper 4540
+DELETE 3942 (Crystalflex Bracers, IL 3350) — keeper 2727
+UPDATE 3240 (Astral Raider's Jackboots): ratingStats = {'Defense': 990, 'Awareness': 990, 'Incoming Healing': 1320}
+UPDATE 3255 (Stormforged Pactblade): += {'Damage': 200}
+DELETE 191 (Stormforged Pactblade, IL 2000) — keeper 3255
+UPDATE 4420 (Eternal Gloves): ratingStats = {'Accuracy': 339, 'Combat Advantage': 337, 'Defense': 975, 'Awareness': 294}
+UPDATE 3599 (Hood of the Thayan Servitor): patched decimals {'Combat Advantage': 88.8, 'Deflect': 88.8}
+UPDATE 3600 (Tunic of the Thayan Servitor): ratingStats = {'Accuracy': 97.2, 'Combat Advantage': 203, 'Critical Strike': 203, 'Defense': 600, 'Critical Avoidance': 97.2}
+UPDATE 3601 (Gloves of the Thayan Servitor): ratingStats = {'Combat Advantage': 211, 'Critical Severity': 211, 'Defense': 600, 'Critical Avoidance': 88.8, 'Deflect': 88.8}
+UPDATE 3592 (Hammerstone Tunic): patched decimals {'Combat Advantage': 92.4, 'Critical Severity': 39.6, 'Critical Avoidance': 92.4, 'Deflect': 39.6}
+UPDATE 5507 (Bronzewood Amulet IL650): IL800-stat bug -> 325/325/326
+DELETE 2464 (Bronzewood Amulet IL650 dup)
+
+SKIPPED: pair: CLASS-VARIANT GUARD — keep 2 ('Bard', 'Cleric', 'Ranger', 'Rogue') vs del 3176 ('Bard', 'Warlock') — deferred
+SKIPPED: pair: CLASS-VARIANT GUARD — keep 2724 ('Bard', 'Cleric', 'Ranger', 'Rogue') vs del 3177 ('Bard', 'Warlock') — deferred
+SKIPPED: pair: CLASS-VARIANT GUARD — keep 3940 ('Bard', 'Cleric', 'Ranger', 'Rogue') vs del 3178 ('Bard', 'Warlock') — deferred
+SKIPPED: pair: CLASS-VARIANT GUARD — keep 2729 ('Bard', 'Cleric', 'Ranger', 'Rogue') vs del 3183 ('Bard', 'Warlock') — deferred
+SKIPPED: pair: CLASS-VARIANT GUARD — keep 3941 ('Bard', 'Cleric', 'Ranger', 'Rogue') vs del 3184 ('Bard', 'Warlock') — deferred
+SKIPPED: pair: CLASS-VARIANT GUARD — keep 4419 ('Bard', 'Rogue') vs del 2342 ('Ranger',) — deferred
+SKIPPED: pair: CLASS-VARIANT GUARD — keep 4419 ('Bard', 'Rogue') vs del 3698 ('Warlock',) — deferred
+SKIPPED: pair: CLASS-VARIANT GUARD — keep 4422 ('Bard', 'Rogue') vs del 3695 ('Warlock',) — deferred
+SKIPPED: pair: CLASS-VARIANT GUARD — keep 4421 ('Bard', 'Rogue') vs del 3696 ('Warlock',) — deferred
+SKIPPED: pair: CLASS-VARIANT GUARD — keep 1626 () vs del 3515 ('Warlock', 'Wizard') — deferred
+SKIPPED: pair: CLASS-VARIANT GUARD — keep 3592 ('Warlock',) vs del 4349 ('Rogue',) — deferred
+SKIPPED: pair: CLASS-VARIANT GUARD — keep 2727 ('Bard', 'Cleric', 'Ranger', 'Rogue') vs del 3185 ('Bard', 'Warlock') — deferred
+SKIPPED: update: CLASS-VARIANT GUARD — keep 3240 ('Bard', 'Warlock') vs del 2769 ('Bard', 'Cleric', 'Ranger', 'Rogue') — deferred
+SKIPPED: update: CLASS-VARIANT GUARD — keep 3240 ('Bard', 'Warlock') vs del 3984 ('Bard', 'Cleric', 'Ranger', 'Rogue') — deferred
+SKIPPED: update: CLASS-VARIANT GUARD — keep 4420 ('Bard', 'Rogue') vs del 3697 ('Warlock',) — deferred
+SKIPPED: update: CLASS-VARIANT GUARD — keep 3599 ('Warlock',) vs del 2958 ('Ranger',) — deferred
+SKIPPED: update: CLASS-VARIANT GUARD — keep 3599 ('Warlock',) vs del 4355 ('Bard', 'Rogue') — deferred
+SKIPPED: update: CLASS-VARIANT GUARD — keep 3600 ('Warlock',) vs del 2959 ('Ranger',) — deferred
+SKIPPED: update: CLASS-VARIANT GUARD — keep 3600 ('Warlock',) vs del 4356 ('Bard', 'Rogue') — deferred
+SKIPPED: update: CLASS-VARIANT GUARD — keep 3601 ('Warlock',) vs del 4357 ('Bard', 'Rogue') — deferred

@@ -1,10 +1,10 @@
 # Optimizer Data Screen (OPT-G3 Tier A)
 
-Generated 2026-06-10 — 6369 gear entries screened.
+Generated 2026-06-10 — 6332 gear entries screened.
 
-**Flags:** 160 CRITICAL · 298 WARN · 104 INFO · 1398 entries missing `source` (provenance backlog)
+**Flags:** 160 CRITICAL · 241 WARN · 104 INFO · 1374 entries missing `source` (provenance backlog)
 
-Per check: {'C1-inflated': 97, 'C2-rating-absurd': 127, 'C1-deflated': 30, 'C2-percent-high': 16, 'C2-rating-off-family': 129, 'C3-dup-conflict': 59, 'C4-phantom-set': 104}
+Per check: {'C1-inflated': 97, 'C2-rating-absurd': 127, 'C1-deflated': 30, 'C2-percent-high': 16, 'C2-rating-off-family': 129, 'C3-dup-conflict': 2, 'C4-phantom-set': 104}
 
 | Sev | Check | id | Item | Slot | IL | Why |
 |---|---|---|---|---|---|---|
@@ -408,64 +408,7 @@ Per check: {'C1-inflated': 97, 'C2-rating-absurd': 127, 'C1-deflated': 30, 'C2-p
 | WARN | C2-rating-off-family | 4301 | Wootz Sakin (IL 500) | Off Hand | 500 | rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0 |
 | WARN | C2-rating-off-family | 4723 | Wootz Lute (IL 500) | Off Hand | 500 | rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0 |
 | WARN | C3-dup-conflict | 465 | Aegis of the Condemned · IL 4800 | Off Hand | 4800 | 2 copies (ids [465, 5331]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2 | Prismatic Crystalflex Bracers | Arms | 3700 | 3 copies (ids [2, 3176, 3938]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2724 | Prismatic Bismuth Mail | Armor | 3700 | 3 copies (ids [2724, 3177, 3937]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 3178 | Prismatic Fractal Barbut | Head | 3700 | 2 copies (ids [3178, 3940]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2727 | Crystalflex Bracers | Arms | 3350 | 3 copies (ids [2727, 3185, 3942]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2729 | Fractal Barbut | Head | 3350 | 3 copies (ids [2729, 3183, 3944]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 3184 | Bismuth Mail | Armor | 3350 | 2 copies (ids [3184, 3941]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 199 | Xaryxian Pactblade | Main Hand | 2750 | 2 copies (ids [199, 3197]) with DIFFERENT stats/bonuses |
 | WARN | C3-dup-conflict | 252 | Cosmic Band of Deflection | Ring | 2400 | 2 copies (ids [252, 775]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2766 | Astral Raider's Hat | Head | 2200 | 2 copies (ids [2766, 3981]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2769 | Astral Raider's Jackboots | Feet | 2200 | 3 copies (ids [2769, 3240, 3984]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 195 | The Weaver's Pactblade | Main Hand | 2050 | 2 copies (ids [195, 3253]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 191 | Stormforged Pactblade | Main Hand | 2000 | 2 copies (ids [191, 3255]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 155 | Duergar Mercenary's Steel Pactblade | Main Hand | 1900 | 2 copies (ids [155, 3251]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2784 | Mastered Duergar Mercenary's Barbute | Head | 1900 | 2 copies (ids [2784, 3999]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2816 | Crimson Scalebreaker's Rebel Gloves | Arms | 1800 | 2 copies (ids [2816, 4044]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2817 | Crimson Scalebreaker's Rebel Pikes | Feet | 1800 | 2 copies (ids [2817, 4045]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2818 | Crimson Scalebreaker's Rebel Shroud | Head | 1800 | 2 copies (ids [2818, 4042]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2342 | Eternal Boots | Feet | 1300 | 3 copies (ids [2342, 3698, 4419]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 3695 | Eternal Helmet | Head | 1300 | 2 copies (ids [3695, 4422]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 3696 | Eternal Leather Armor | Armor | 1300 | 2 copies (ids [3696, 4421]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 3697 | Eternal Gloves | Arms | 1300 | 2 copies (ids [3697, 4420]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 1626 | Thief's Stolen Gloves | Arms | 950 | 2 copies (ids [1626, 3515]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2445 | Fanged Sash · IL 800 | Belt | 800 | 2 copies (ids [2445, 5806]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2449 | Beaded Sash · IL 800 | Belt | 800 | 2 copies (ids [2449, 5505]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2465 | Bronzewood Amulet · IL 800 | Neck | 800 | 2 copies (ids [2465, 5508]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2958 | Hood of the Thayan Servitor | Head | 800 | 3 copies (ids [2958, 3599, 4355]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2959 | Tunic of the Thayan Servitor | Armor | 800 | 3 copies (ids [2959, 3600, 4356]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2961 | Boots of the Thayan Servitor | Feet | 800 | 3 copies (ids [2961, 3602, 4358]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 3601 | Gloves of the Thayan Servitor | Arms | 800 | 2 copies (ids [3601, 4357]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2436 | Bronzewood Sash · IL 650 | Belt | 650 | 2 copies (ids [2436, 5510]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2444 | Fanged Sash · IL 650 | Belt | 650 | 2 copies (ids [2444, 5805]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2448 | Beaded Sash · IL 650 | Belt | 650 | 2 copies (ids [2448, 5504]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2464 | Bronzewood Amulet · IL 650 | Neck | 650 | 2 copies (ids [2464, 5507]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2081 | Black Ice Armor | Armor | 512 | 3 copies (ids [2081, 3588, 4345]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2949 | Black Ice Boots | Feet | 512 | 3 copies (ids [2949, 3590, 4347]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 3587 | Black Ice Mask | Head | 512 | 2 copies (ids [3587, 4344]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 3589 | Black Ice Gloves | Arms | 512 | 2 copies (ids [3589, 4346]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2435 | Bronzewood Sash · IL 500 | Belt | 500 | 2 copies (ids [2435, 5509]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2447 | Beaded Sash · IL 500 | Belt | 500 | 2 copies (ids [2447, 5503]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2463 | Bronzewood Amulet · IL 500 | Neck | 500 | 2 copies (ids [2463, 5506]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2523 | Sphene Sash · IL 500 | Belt | 500 | 2 copies (ids [2523, 6222]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 3053 | Brightsilver Longbow · IL 500 | Main Hand | 500 | 2 copies (ids [3053, 5271]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2952 | Hammerstone Gloves | Arms | 352 | 3 copies (ids [2952, 3593, 4350]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2953 | Hammerstone Boots | Feet | 352 | 3 copies (ids [2953, 3594, 4351]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 3591 | Hammerstone Mask | Head | 352 | 2 copies (ids [3591, 4348]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 3592 | Hammerstone Tunic | Armor | 352 | 2 copies (ids [3592, 4349]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2434 | Bronzewood Sash · IL 350 | Belt | 350 | 2 copies (ids [2434, 4462]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2446 | Beaded Sash · IL 350 | Belt | 350 | 2 copies (ids [2446, 4469]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2450 | Beaded Amulet · IL 350 | Neck | 350 | 2 copies (ids [2450, 4472]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2454 | Lichstone Amulet · IL 350 | Neck | 350 | 2 copies (ids [2454, 4476]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2458 | Fanged Beaded Amulet · IL 350 | Neck | 350 | 2 copies (ids [2458, 4480]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2462 | Bronzewood Amulet · IL 350 | Neck | 350 | 2 copies (ids [2462, 4484]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2502 | Silverspruce Amulet · IL 350 | Neck | 350 | 2 copies (ids [2502, 4516]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2506 | Sphene Amulet · IL 350 | Neck | 350 | 2 copies (ids [2506, 4520]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2510 | Rubellite Amulet · IL 350 | Neck | 350 | 2 copies (ids [2510, 4524]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2521 | Silverspruce Belt · IL 350 | Belt | 350 | 2 copies (ids [2521, 4532]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2522 | Sphene Sash · IL 350 | Belt | 350 | 2 copies (ids [2522, 4536]) with DIFFERENT stats/bonuses |
-| WARN | C3-dup-conflict | 2526 | Rubellite Sash · IL 350 | Belt | 350 | 2 copies (ids [2526, 4540]) with DIFFERENT stats/bonuses |
 | INFO | C4-phantom-set | 5319 | Coldsilver Band of Faith | Ring | 5700 | set 'Rings: The Reched Edge' needs 11 pieces but exists in only 1 distinct slot(s) — incompletable? |
 | INFO | C4-phantom-set | 5380 | Frostbound Hearthbinders | Arms | 4700 | set 'Winterworn Harness' needs 6 pieces but exists in only 4 distinct slot(s) — incompletable? |
 | INFO | C4-phantom-set | 10 | The Spine of Dominion | Ring | 4150 | set 'Rings: Shackles of Divinity' needs 8 pieces but exists in only 1 distinct slot(s) — incompletable? |
