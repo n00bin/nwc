@@ -9927,6 +9927,9 @@
       let spined = null, succubus = null;   // Succubus doesn't stack w/ Spined Devil
       for (const name of (state.partyAllies || [])) {
         if (!name || seen.has(name)) continue;
+        // Same single-benefit rule as the stat sheet: your own summoned
+        // companion's buff already applies — an ally copy doesn't stack.
+        if (name === state.summoned) continue;
         seen.add(name);
         const c = findCompanionByName(name);
         const sb = c && c.summonedBuff;
@@ -10451,6 +10454,11 @@
       for (const compName of (s.partyAllies || [])) {
         if (!compName) continue;
         if (_seenPartyBuffs.has(compName)) continue;  // dedupe (engine-side safety; UI also blocks)
+        // In-game you only benefit from a given companion's party buff ONCE —
+        // if it's YOUR summoned companion, its buff already applies via the
+        // summoned mechanic above (player-verified: Tutor summoned + Tutor
+        // ally slot does NOT stack to 10% CA). Skip the ally copy.
+        if (compName === s.summoned) continue;
         _seenPartyBuffs.add(compName);
         const comp = findCompanionByName(compName);
         const sb = comp && comp.summonedBuff;
@@ -14068,7 +14076,12 @@
           }
           for (let i = 0; i < slotCount; i++) {
             const picked = state.partyAllies[i] || "";
-            const desc = picked ? effSummary[picked] : "click to pick an ally companion";
+            // Old share links can carry the summoned companion in an ally
+            // slot; the engine skips it (single-benefit rule) — say so.
+            const desc = !picked ? "click to pick an ally companion"
+              : (picked === state.summoned
+                ? `⚠ Not counted — ${picked} is your summoned companion, so its buff already applies. Pick a different ally.`
+                : effSummary[picked]);
             const chipLabel = picked ? `👥 ${picked}` : "+ Pick ally";
             html += `<div class="boon-row ${picked ? "has-pts" : ""}" data-party-slot-pick="${i}" style="cursor:pointer;">
               <div class="boon-row-info">
@@ -14235,7 +14248,8 @@
               // summoned buff matters when this companion is on an ALLY;
               // active-slot bonus / proc / CR need it in YOUR slot.
               const d = summonedBuffDisplay(c);
-              const dup = taken.has(c.name) ? " · already in another slot" : "";
+              const dup = taken.has(c.name) ? " · already in another slot"
+                : (c.name === state.summoned ? " · already your summoned companion" : "");
               return {
                 name: c.name + dup,
                 meta: `[${d.scopeLabel}] ${d.effText}`,
@@ -14248,6 +14262,9 @@
                 state.partyAllies[slot] = "";
               } else if (taken.has(c.name)) {
                 toast(`${c.name} is already in another slot.`);
+                return;
+              } else if (c.name === state.summoned) {
+                toast(`${c.name} is your summoned companion — its buff already applies; you can't benefit twice.`);
                 return;
               } else {
                 state.partyAllies[slot] = c.name;
