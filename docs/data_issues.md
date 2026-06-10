@@ -23,6 +23,19 @@ fabricated +1,500 Power) and ids 3386–3393 (were stat "Damage Bonus"/0
 placeholders) now all carry stat Stamina Regeneration / amount 15 like their
 verified siblings.
 
+## Ultraviolet Elven Cap 3s/5s conflict — RESOLVED 2026-06-09
+The archived Cap tooltip (docs/audit/_up/wizard-gear/, IL 2,900) settled the
+duplicate pair's conflicting proc cadence: **"For every 5 seconds you are in
+combat, you gain 1% Combat Advantage. Max Stacks: 10"** (bonus name
+Combatant's Advantage; stats 2,175/2,175, CR 2,610 — all match). Kept id 6220
+(correct 5s wording + structured engine-scored stacker); deleted id 3201
+(wrong "every 3 seconds" text, description-only). The tooltip also shows NO
+set line → **"Ultraviolet Armor" was a third phantom collection-tab set** —
+cleared from all 12 tagged entries (zero Set-type ebs referenced it).
+NOTE: the Perfect Mark of Lolth set-popup interval question (3s vs 5s) is
+SEPARATE and still open — that one is about the Demonweb set bonus text,
+which collection tooltips don't display.
+
 ## Audit pile-1 sweep — RESOLVED 2026-06-09 (duplicate pairs + phantom sets)
 All verified against archived tooltips (docs/audit/_up/warlock-gear/):
 - **Blaspheme Pactblade:** tooltip matches id 144 exactly (Damage 100 /
