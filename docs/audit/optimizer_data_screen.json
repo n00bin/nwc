@@ -1,0 +1,5079 @@
+{
+ "generated": "2026-06-10",
+ "entries_screened": 6369,
+ "counts": {
+  "CRITICAL": 160,
+  "WARN": 298,
+  "INFO": 104
+ },
+ "by_check": {
+  "C1-inflated": 97,
+  "C2-rating-absurd": 127,
+  "C1-deflated": 30,
+  "C2-percent-high": 16,
+  "C2-rating-off-family": 129,
+  "C3-dup-conflict": 59,
+  "C4-phantom-set": 104
+ },
+ "no_source_count": 1398,
+ "flags": [
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 258,
+   "name": "Wrathful Waistband",
+   "slot": "Belt",
+   "il": 1400,
+   "reason": "rating budget 4.04x IL vs slot median 2.40x (+68%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 589,
+   "name": "Captain's Girdle",
+   "slot": "Belt",
+   "il": 1400,
+   "reason": "rating budget 6.10x IL vs slot median 2.40x (+154%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 590,
+   "name": "Captain's Pendant",
+   "slot": "Neck",
+   "il": 1400,
+   "reason": "rating budget 5.83x IL vs slot median 2.40x (+143%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 1939,
+   "name": "Ring of Defensive Action",
+   "slot": "Ring",
+   "il": 651,
+   "reason": "rating budget 9.00x IL vs slot median 3.80x (+137%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 1940,
+   "name": "Ring of Offensive Action",
+   "slot": "Ring",
+   "il": 651,
+   "reason": "rating budget 9.00x IL vs slot median 3.80x (+137%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2149,
+   "name": "Ring of Impenetrability +5",
+   "slot": "Ring",
+   "il": 609,
+   "reason": "rating budget 6.80x IL vs slot median 3.80x (+79%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2150,
+   "name": "Ring of Impenetrability +4",
+   "slot": "Ring",
+   "il": 596,
+   "reason": "rating budget 6.80x IL vs slot median 3.80x (+79%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2151,
+   "name": "Ring of Impenetrability +3",
+   "slot": "Ring",
+   "il": 588,
+   "reason": "rating budget 6.80x IL vs slot median 3.80x (+79%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2152,
+   "name": "Ring of Impenetrability +2",
+   "slot": "Ring",
+   "il": 575,
+   "reason": "rating budget 6.80x IL vs slot median 3.80x (+79%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2153,
+   "name": "Ring of Impenetrability +1",
+   "slot": "Ring",
+   "il": 567,
+   "reason": "rating budget 6.80x IL vs slot median 3.80x (+79%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2321,
+   "name": "Elemental Alliance Ward Ring",
+   "slot": "Ring",
+   "il": 554,
+   "reason": "rating budget 9.40x IL vs slot median 3.80x (+147%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2324,
+   "name": "Elemental Alliance Assault Ring",
+   "slot": "Ring",
+   "il": 554,
+   "reason": "rating budget 9.40x IL vs slot median 3.80x (+147%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2330,
+   "name": "Alliance Assault Ring",
+   "slot": "Ring",
+   "il": 546,
+   "reason": "rating budget 9.40x IL vs slot median 3.80x (+147%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2335,
+   "name": "Alliance Ward Ring",
+   "slot": "Ring",
+   "il": 546,
+   "reason": "rating budget 9.40x IL vs slot median 3.80x (+147%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2637,
+   "name": "Guild Ward Ring",
+   "slot": "Ring",
+   "il": 525,
+   "reason": "rating budget 9.40x IL vs slot median 3.80x (+147%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2640,
+   "name": "Guild Restoration Ring",
+   "slot": "Ring",
+   "il": 525,
+   "reason": "rating budget 9.40x IL vs slot median 3.80x (+147%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2643,
+   "name": "Guild Raid Ring",
+   "slot": "Ring",
+   "il": 525,
+   "reason": "rating budget 9.40x IL vs slot median 3.80x (+147%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2646,
+   "name": "Guild Assault Ring",
+   "slot": "Ring",
+   "il": 525,
+   "reason": "rating budget 9.40x IL vs slot median 3.80x (+147%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 5855,
+   "name": "Guild Duelist Ring",
+   "slot": "Ring",
+   "il": 525,
+   "reason": "rating budget 9.40x IL vs slot median 3.80x (+147%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 5856,
+   "name": "Guild Executioner Ring",
+   "slot": "Ring",
+   "il": 525,
+   "reason": "rating budget 9.40x IL vs slot median 3.80x (+147%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 5857,
+   "name": "Guild Gladiator Ring",
+   "slot": "Ring",
+   "il": 525,
+   "reason": "rating budget 9.40x IL vs slot median 3.80x (+147%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 5858,
+   "name": "Guild Medic Ring",
+   "slot": "Ring",
+   "il": 525,
+   "reason": "rating budget 9.40x IL vs slot median 3.80x (+147%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 2121,
+   "name": "Drowcraft Armet",
+   "slot": "Head",
+   "il": 510,
+   "reason": "rating budget 3.67x IL vs slot median 2.40x (+53%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 261,
+   "name": "Scintillating Diamond Buckle",
+   "slot": "Belt",
+   "il": 350,
+   "reason": "rating budget 3.77x IL vs slot median 2.40x (+57%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 1314,
+   "name": "Twinkle of the Stars",
+   "slot": "Belt",
+   "il": 350,
+   "reason": "rating budget 3.77x IL vs slot median 2.40x (+57%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 241,
+   "name": "Iridescent Diamond Pendant",
+   "slot": "Neck",
+   "il": 350,
+   "reason": "rating budget 3.77x IL vs slot median 2.40x (+57%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 1313,
+   "name": "Starshard Choker",
+   "slot": "Neck",
+   "il": 350,
+   "reason": "rating budget 3.77x IL vs slot median 2.40x (+57%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 4818,
+   "name": "Hammerstone Mask",
+   "slot": "Head",
+   "il": 152,
+   "reason": "rating budget 5.55x IL vs slot median 2.40x (+131%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 4823,
+   "name": "Hammerstone Grimoire",
+   "slot": "Off Hand",
+   "il": 152,
+   "reason": "rating budget 5.56x IL vs slot median 2.40x (+132%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 4820,
+   "name": "Hammerstone Gloves",
+   "slot": "Arms",
+   "il": 152,
+   "reason": "rating budget 5.55x IL vs slot median 2.40x (+131%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 4821,
+   "name": "Hammerstone Boots",
+   "slot": "Feet",
+   "il": 152,
+   "reason": "rating budget 5.55x IL vs slot median 2.40x (+131%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 4819,
+   "name": "Hammerstone Tunic",
+   "slot": "Armor",
+   "il": 152,
+   "reason": "rating budget 5.55x IL vs slot median 2.40x (+131%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C1-inflated",
+   "id": 4822,
+   "name": "Hammerstone Pact Blade",
+   "slot": "Main Hand",
+   "il": 152,
+   "reason": "rating budget 5.56x IL vs slot median 2.40x (+132%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 564,
+   "name": "Cerebral Warden Sigils",
+   "slot": "Pants",
+   "il": 2600,
+   "reason": "rating bonus 'Enervated Parry (Greater)' grants 13475 on an IL 2600 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 576,
+   "name": "Oceans' Warden Sigils",
+   "slot": "Pants",
+   "il": 2350,
+   "reason": "rating bonus 'Enervated Parry (Greater)' grants 10275 on an IL 2350 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 906,
+   "name": "Abyss Striker's Mauler Wristguards",
+   "slot": "Arms",
+   "il": 2000,
+   "reason": "rating bonus 'Skirmisher's Ferocity' grants 10000 on an IL 2000 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 890,
+   "name": "Mastered Duergar Mercenary's Goristro Horn",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 892,
+   "name": "Mastered Duergar Mercenary's Gauntlets",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 892,
+   "name": "Mastered Duergar Mercenary's Gauntlets",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 893,
+   "name": "Mastered Duergar Mercenary's Plate Sabatons",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 894,
+   "name": "Mastered Duergar Mercenary's Coif",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 896,
+   "name": "Mastered Duergar Mercenary's Bracers",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 896,
+   "name": "Mastered Duergar Mercenary's Bracers",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 897,
+   "name": "Mastered Duergar Mercenary's Restoration Sabatons",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2784,
+   "name": "Mastered Duergar Mercenary's Barbute",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2786,
+   "name": "Mastered Duergar Mercenary's Punchers",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2786,
+   "name": "Mastered Duergar Mercenary's Punchers",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2787,
+   "name": "Mastered Duergar Mercenary's Trodders",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3259,
+   "name": "Mastered Duergar Mercenary's Hood",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3261,
+   "name": "Mastered Duergar Mercenary's Gloves",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3261,
+   "name": "Mastered Duergar Mercenary's Gloves",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3262,
+   "name": "Mastered Duergar Mercenary's Crakows",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3263,
+   "name": "Mastered Duergar Mercenary's Helm",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3265,
+   "name": "Mastered Duergar Mercenary's Armlets",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3265,
+   "name": "Mastered Duergar Mercenary's Armlets",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3266,
+   "name": "Mastered Duergar Mercenary's Boots",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4001,
+   "name": "Mastered Duergar Mercenary's Punchers",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4001,
+   "name": "Mastered Duergar Mercenary's Punchers",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4002,
+   "name": "Mastered Duergar Mercenary's Trodders",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6667,
+   "name": "Mastered Duergar Mercenary's Goristro Striders",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6668,
+   "name": "Mastered Duergar Mercenary's Guards",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6668,
+   "name": "Mastered Duergar Mercenary's Guards",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6669,
+   "name": "Mastered Duergar Mercenary's Halfhelm",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1218,
+   "name": "Serene Boots of the Dragon Hunter",
+   "slot": "Feet",
+   "il": 1850,
+   "reason": "rating bonus 'Champion's Might' grants 7500 on an IL 1850 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 770,
+   "name": "Shimmering Flarefiber Pants",
+   "slot": "Pants",
+   "il": 1800,
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1800 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 772,
+   "name": "Luminous Flarefiber Pants",
+   "slot": "Pants",
+   "il": 1800,
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1800 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 773,
+   "name": "Illuminated Flarefiber Pants",
+   "slot": "Pants",
+   "il": 1800,
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1800 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 981,
+   "name": "Faern Elendar Spy's Ring",
+   "slot": "Ring",
+   "il": 1800,
+   "reason": "rating bonus 'Challenger's Precision' grants 8000 on an IL 1800 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 983,
+   "name": "Faerûn Elendar Zealot's Ring",
+   "slot": "Ring",
+   "il": 1800,
+   "reason": "rating bonus 'Zealot's Ferocity' grants 8000 on an IL 1800 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 753,
+   "name": "Shimmering Starwoven Shirt",
+   "slot": "Shirt",
+   "il": 1700,
+   "reason": "rating bonus 'Charged Fury' grants 7500 on an IL 1700 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 755,
+   "name": "Luminous Starwoven Shirt",
+   "slot": "Shirt",
+   "il": 1700,
+   "reason": "rating bonus 'Charged Fury' grants 7500 on an IL 1700 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 756,
+   "name": "Illuminated Starwoven Shirt",
+   "slot": "Shirt",
+   "il": 1700,
+   "reason": "rating bonus 'Charged Fury' grants 7500 on an IL 1700 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 757,
+   "name": "Brilliant Starwoven Shirt",
+   "slot": "Shirt",
+   "il": 1700,
+   "reason": "rating bonus 'Charged Fury' grants 7500 on an IL 1700 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3337,
+   "name": "Forest Guardian's Restoration Cuisses",
+   "slot": "Feet",
+   "il": 1500,
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1500 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3341,
+   "name": "Forest Guardian's Raid Shoes",
+   "slot": "Feet",
+   "il": 1500,
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1500 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4057,
+   "name": "Forest Guardian's Raid Cuisses",
+   "slot": "Feet",
+   "il": 1500,
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1500 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6557,
+   "name": "Forest Guardian's Raid Greaves",
+   "slot": "Feet",
+   "il": 1500,
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1500 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1454,
+   "name": "Greaves of the Lightguard",
+   "slot": "Feet",
+   "il": 1250,
+   "reason": "rating bonus 'Champion's Might' grants 7500 on an IL 1250 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1446,
+   "name": "Crown of the Pit Fiend",
+   "slot": "Head",
+   "il": 1240,
+   "reason": "rating bonus 'Martyr's Might' grants 15000 on an IL 1240 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1459,
+   "name": "Ethereal Bracers of the Past",
+   "slot": "Arms",
+   "il": 1240,
+   "reason": "rating bonus 'Past Regards' grants 5000 on an IL 1240 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1379,
+   "name": "Divine Ward Sallet",
+   "slot": "Head",
+   "il": 1230,
+   "reason": "rating bonus 'Charged Might' grants 5000 on an IL 1230 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1380,
+   "name": "Divine Mystic Helm",
+   "slot": "Head",
+   "il": 1230,
+   "reason": "rating bonus 'Charged Might' grants 5000 on an IL 1230 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1395,
+   "name": "Fiend Forged Coif",
+   "slot": "Head",
+   "il": 1230,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1230 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1396,
+   "name": "Fiend Forged Helm",
+   "slot": "Head",
+   "il": 1230,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1230 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1450,
+   "name": "Greaves of the Fallen Angel",
+   "slot": "Feet",
+   "il": 1230,
+   "reason": "rating bonus 'Brute's Might' grants 5000 on an IL 1230 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3394,
+   "name": "Divine Restoration Helm",
+   "slot": "Head",
+   "il": 1230,
+   "reason": "rating bonus 'Charged Might' grants 5000 on an IL 1230 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3395,
+   "name": "Divine Raid Hood",
+   "slot": "Head",
+   "il": 1230,
+   "reason": "rating bonus 'Charged Might' grants 5000 on an IL 1230 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3411,
+   "name": "Fiend Forged Cowl",
+   "slot": "Head",
+   "il": 1230,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1230 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4098,
+   "name": "Divine Raid Helm",
+   "slot": "Head",
+   "il": 1230,
+   "reason": "rating bonus 'Charged Might' grants 5000 on an IL 1230 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4106,
+   "name": "Fiend Forged Hood",
+   "slot": "Head",
+   "il": 1230,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1230 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6555,
+   "name": "Fiend Forged Sallet",
+   "slot": "Head",
+   "il": 1230,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1230 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1499,
+   "name": "Brailiel's Planar Bindings",
+   "slot": "Arms",
+   "il": 1225,
+   "reason": "rating bonus 'Call of the Nine Hells' grants 5000 on an IL 1225 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1511,
+   "name": "Mighty Storm Slippers",
+   "slot": "Feet",
+   "il": 1225,
+   "reason": "rating bonus 'Charged Might' grants 5000 on an IL 1225 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1516,
+   "name": "Fancy Duelist Mask of Cormyr",
+   "slot": "Head",
+   "il": 1225,
+   "reason": "rating bonus 'Challenger's Might' grants 5000 on an IL 1225 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1400,
+   "name": "Devil Forged Helm",
+   "slot": "Head",
+   "il": 1215,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1401,
+   "name": "Devil Forged Coif",
+   "slot": "Head",
+   "il": 1215,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1412,
+   "name": "Demon Forged Helm",
+   "slot": "Head",
+   "il": 1215,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1413,
+   "name": "Demon Forged Coif",
+   "slot": "Head",
+   "il": 1215,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3418,
+   "name": "Devil Forged Cowl",
+   "slot": "Head",
+   "il": 1215,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3426,
+   "name": "Demon Forged Cowl",
+   "slot": "Head",
+   "il": 1215,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4110,
+   "name": "Devil Forged Hood",
+   "slot": "Head",
+   "il": 1215,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4112,
+   "name": "Demon Forged Hood",
+   "slot": "Head",
+   "il": 1215,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6415,
+   "name": "Demon Forged Sallet",
+   "slot": "Head",
+   "il": 1215,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6423,
+   "name": "Devil Forged Sallet",
+   "slot": "Head",
+   "il": 1215,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1419,
+   "name": "Infernal Forged Coif",
+   "slot": "Head",
+   "il": 1200,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1200 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 1424,
+   "name": "Infernal Forged Helm",
+   "slot": "Head",
+   "il": 1200,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1200 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3439,
+   "name": "Infernal Forged Cowl",
+   "slot": "Head",
+   "il": 1200,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1200 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4118,
+   "name": "Infernal Forged Hood",
+   "slot": "Head",
+   "il": 1200,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1200 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6611,
+   "name": "Infernal Forged Sallet",
+   "slot": "Head",
+   "il": 1200,
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1200 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4367,
+   "name": "Dusk Raid Mask",
+   "slot": "Head",
+   "il": 1175,
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4368,
+   "name": "Dusk Raid Vest",
+   "slot": "Armor",
+   "il": 1175,
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4369,
+   "name": "Dusk Raid Gloves",
+   "slot": "Arms",
+   "il": 1175,
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4370,
+   "name": "Dusk Raid Boots",
+   "slot": "Feet",
+   "il": 1175,
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4371,
+   "name": "Dusk Assault Mask",
+   "slot": "Head",
+   "il": 1175,
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4372,
+   "name": "Dusk Assault Vest",
+   "slot": "Armor",
+   "il": 1175,
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4373,
+   "name": "Dusk Assault Gloves",
+   "slot": "Arms",
+   "il": 1175,
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4374,
+   "name": "Dusk Assault Boots",
+   "slot": "Feet",
+   "il": 1175,
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2169,
+   "name": "Ring of Brutality +5",
+   "slot": "Ring",
+   "il": 609,
+   "reason": "rating bonus 'Brutality' grants 4000 on an IL 609 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2223,
+   "name": "Ring of Sudden Deflect +5",
+   "slot": "Ring",
+   "il": 609,
+   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 609 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2228,
+   "name": "Ring of Sudden Defense +5",
+   "slot": "Ring",
+   "il": 609,
+   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 609 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2233,
+   "name": "Ring of Sudden Precision +5",
+   "slot": "Ring",
+   "il": 609,
+   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 609 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2238,
+   "name": "Ring of Sudden Lifesteal +5",
+   "slot": "Ring",
+   "il": 609,
+   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 609 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2170,
+   "name": "Ring of Brutality +4",
+   "slot": "Ring",
+   "il": 596,
+   "reason": "rating bonus 'Brutality' grants 4000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2222,
+   "name": "Ring of Sudden Deflect +4",
+   "slot": "Ring",
+   "il": 596,
+   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2227,
+   "name": "Ring of Sudden Defense +4",
+   "slot": "Ring",
+   "il": 596,
+   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2232,
+   "name": "Ring of Sudden Precision +4",
+   "slot": "Ring",
+   "il": 596,
+   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2237,
+   "name": "Ring of Sudden Lifesteal +4",
+   "slot": "Ring",
+   "il": 596,
+   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4576,
+   "name": "Elemental Dragonflight Raid Mask",
+   "slot": "Head",
+   "il": 596,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4577,
+   "name": "Elemental Dragonflight Raid Vest",
+   "slot": "Armor",
+   "il": 596,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4578,
+   "name": "Elemental Dragonflight Raid Gloves",
+   "slot": "Arms",
+   "il": 596,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4579,
+   "name": "Elemental Dragonflight Raid Boots",
+   "slot": "Feet",
+   "il": 596,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4580,
+   "name": "Elemental Dragonflight Assault Mask",
+   "slot": "Head",
+   "il": 596,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4581,
+   "name": "Elemental Dragonflight Assault Vest",
+   "slot": "Armor",
+   "il": 596,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4582,
+   "name": "Elemental Dragonflight Assault Gloves",
+   "slot": "Arms",
+   "il": 596,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4583,
+   "name": "Elemental Dragonflight Assault Boots",
+   "slot": "Feet",
+   "il": 596,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2171,
+   "name": "Ring of Brutality +3",
+   "slot": "Ring",
+   "il": 588,
+   "reason": "rating bonus 'Brutality' grants 4000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2221,
+   "name": "Ring of Sudden Deflect +3",
+   "slot": "Ring",
+   "il": 588,
+   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2226,
+   "name": "Ring of Sudden Defense +3",
+   "slot": "Ring",
+   "il": 588,
+   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2231,
+   "name": "Ring of Sudden Precision +3",
+   "slot": "Ring",
+   "il": 588,
+   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2236,
+   "name": "Ring of Sudden Lifesteal +3",
+   "slot": "Ring",
+   "il": 588,
+   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4568,
+   "name": "Dragonflight Raid Mask",
+   "slot": "Head",
+   "il": 588,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4569,
+   "name": "Dragonflight Raid Vest",
+   "slot": "Armor",
+   "il": 588,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4570,
+   "name": "Dragonflight Raid Gloves",
+   "slot": "Arms",
+   "il": 588,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4571,
+   "name": "Dragonflight Raid Boots",
+   "slot": "Feet",
+   "il": 588,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4572,
+   "name": "Dragonflight Assault Vest",
+   "slot": "Armor",
+   "il": 588,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4573,
+   "name": "Dragonflight Assault Mask",
+   "slot": "Head",
+   "il": 588,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4574,
+   "name": "Dragonflight Assault Gloves",
+   "slot": "Arms",
+   "il": 588,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4575,
+   "name": "Dragonflight Assault Boots",
+   "slot": "Feet",
+   "il": 588,
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2172,
+   "name": "Ring of Brutality +2",
+   "slot": "Ring",
+   "il": 575,
+   "reason": "rating bonus 'Brutality' grants 4000 on an IL 575 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2220,
+   "name": "Ring of Sudden Deflect +2",
+   "slot": "Ring",
+   "il": 575,
+   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 575 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2225,
+   "name": "Ring of Sudden Defense +2",
+   "slot": "Ring",
+   "il": 575,
+   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 575 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2230,
+   "name": "Ring of Sudden Precision +2",
+   "slot": "Ring",
+   "il": 575,
+   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 575 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2235,
+   "name": "Ring of Sudden Lifesteal +2",
+   "slot": "Ring",
+   "il": 575,
+   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 575 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2173,
+   "name": "Ring of Brutality +1",
+   "slot": "Ring",
+   "il": 567,
+   "reason": "rating bonus 'Brutality' grants 4000 on an IL 567 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2219,
+   "name": "Ring of Sudden Deflect +1",
+   "slot": "Ring",
+   "il": 567,
+   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 567 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2224,
+   "name": "Ring of Sudden Defense +1",
+   "slot": "Ring",
+   "il": 567,
+   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 567 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2229,
+   "name": "Ring of Sudden Precision +1",
+   "slot": "Ring",
+   "il": 567,
+   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 567 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2234,
+   "name": "Ring of Sudden Lifesteal +1",
+   "slot": "Ring",
+   "il": 567,
+   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 567 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4300,
+   "name": "Wootz Sakin",
+   "slot": "Off Hand",
+   "il": 350,
+   "reason": "rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4722,
+   "name": "Wootz Lute",
+   "slot": "Off Hand",
+   "il": 350,
+   "reason": "rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 5381,
+   "name": "Frostbound Hearthboots",
+   "slot": "Feet",
+   "il": 4700,
+   "reason": "rating budget 1.57x IL vs slot median 2.40x (-34%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 5385,
+   "name": "Frostbound Stoneboots",
+   "slot": "Feet",
+   "il": 4700,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 286,
+   "name": "Sabatons of the Flayed Legion",
+   "slot": "Feet",
+   "il": 4100,
+   "reason": "rating budget 1.39x IL vs slot median 2.40x (-42%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 290,
+   "name": "Shrouds of the Ashen Chant",
+   "slot": "Feet",
+   "il": 4100,
+   "reason": "rating budget 1.58x IL vs slot median 2.40x (-34%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 294,
+   "name": "Greaves of the Red Bastion",
+   "slot": "Feet",
+   "il": 4100,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 108,
+   "name": "The Thorned Edict",
+   "slot": "Ring",
+   "il": 3450,
+   "reason": "rating budget 2.11x IL vs slot median 3.80x (-44%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 3905,
+   "name": "Scream Seeker (IL 3400)",
+   "slot": "Main Hand",
+   "il": 3400,
+   "reason": "rating budget 1.52x IL vs slot median 2.40x (-37%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 621,
+   "name": "Smoldering Ring",
+   "slot": "Ring",
+   "il": 2350,
+   "reason": "rating budget 1.55x IL vs slot median 3.80x (-59%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 2361,
+   "name": "Dragon Bone Shield",
+   "slot": "Off Hand",
+   "il": 800,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 3019,
+   "name": "Dragon Bone Blades",
+   "slot": "Off Hand",
+   "il": 800,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 4673,
+   "name": "Vistani Lute (IL 800)",
+   "slot": "Off Hand",
+   "il": 800,
+   "reason": "rating budget 1.65x IL vs slot median 2.40x (-31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 5583,
+   "name": "Dragon Bone Talisman",
+   "slot": "Off Hand",
+   "il": 800,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 6435,
+   "name": "Dragon Bone Sword Knot",
+   "slot": "Off Hand",
+   "il": 800,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 2360,
+   "name": "Dragon Bone Mace",
+   "slot": "Main Hand",
+   "il": 800,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 3018,
+   "name": "Dragon Bone Longbow",
+   "slot": "Main Hand",
+   "il": 800,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 5582,
+   "name": "Dragon Bone Orb",
+   "slot": "Main Hand",
+   "il": 800,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 6434,
+   "name": "Dragon Bone Halberd",
+   "slot": "Main Hand",
+   "il": 800,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 3536,
+   "name": "Curselord's Raid Pigaches",
+   "slot": "Feet",
+   "il": 770,
+   "reason": "rating budget 1.65x IL vs slot median 2.40x (-31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 3537,
+   "name": "Curselord's Assault Pigaches",
+   "slot": "Feet",
+   "il": 770,
+   "reason": "rating budget 1.65x IL vs slot median 2.40x (-31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 4672,
+   "name": "Vistani Lute (IL 650)",
+   "slot": "Off Hand",
+   "il": 650,
+   "reason": "rating budget 1.65x IL vs slot median 2.40x (-31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 5215,
+   "name": "Lionsmane Duelist Mask",
+   "slot": "Head",
+   "il": 560,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 5219,
+   "name": "Lionsmane Executioner Mask",
+   "slot": "Head",
+   "il": 560,
+   "reason": "rating budget 1.57x IL vs slot median 2.40x (-34%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 5213,
+   "name": "Lionsmane Duelist Gloves",
+   "slot": "Arms",
+   "il": 560,
+   "reason": "rating budget 1.46x IL vs slot median 2.40x (-39%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 5217,
+   "name": "Lionsmane Executioner Gloves",
+   "slot": "Arms",
+   "il": 560,
+   "reason": "rating budget 1.57x IL vs slot median 2.40x (-34%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 5212,
+   "name": "Lionsmane Duelist Boots",
+   "slot": "Feet",
+   "il": 560,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 5216,
+   "name": "Lionsmane Executioner Boots",
+   "slot": "Feet",
+   "il": 560,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 5214,
+   "name": "Lionsmane Duelist Vest",
+   "slot": "Armor",
+   "il": 560,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 5218,
+   "name": "Lionsmane Executioner Vest",
+   "slot": "Armor",
+   "il": 560,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 4671,
+   "name": "Vistani Lute (IL 500)",
+   "slot": "Off Hand",
+   "il": 500,
+   "reason": "rating budget 1.65x IL vs slot median 2.40x (-31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 2110,
+   "name": "Shard of Orcus' Wand",
+   "slot": "Main Hand",
+   "il": 250,
+   "reason": "rating budget 1.24x IL vs slot median 2.40x (-48%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 51,
+   "name": "Cuirass of the Black Flame",
+   "slot": "Armor",
+   "il": 4300,
+   "reason": "rating budget 3.18x IL vs slot median 2.40x (+33%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 53,
+   "name": "Bulwark of the Eternal Zulkirate",
+   "slot": "Armor",
+   "il": 4300,
+   "reason": "rating budget 3.30x IL vs slot median 2.40x (+37%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 72,
+   "name": "Bulwark of the Zulkirate",
+   "slot": "Armor",
+   "il": 4050,
+   "reason": "rating budget 3.48x IL vs slot median 2.40x (+45%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 538,
+   "name": "Dreadbreaker Band",
+   "slot": "Ring",
+   "il": 3500,
+   "reason": "rating budget 5.27x IL vs slot median 3.80x (+39%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1810,
+   "name": "Aegis of the Condemned · Ascendant",
+   "slot": "Off Hand",
+   "il": 3400,
+   "reason": "rating budget 3.25x IL vs slot median 2.40x (+35%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1811,
+   "name": "Aegis of the Condemned · Maximum",
+   "slot": "Off Hand",
+   "il": 3400,
+   "reason": "rating budget 3.55x IL vs slot median 2.40x (+48%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 543,
+   "name": "Dreadwalker Band",
+   "slot": "Ring",
+   "il": 3150,
+   "reason": "rating budget 5.53x IL vs slot median 3.80x (+45%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 544,
+   "name": "Dreadwalker Loop",
+   "slot": "Ring",
+   "il": 3150,
+   "reason": "rating budget 5.53x IL vs slot median 3.80x (+45%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5437,
+   "name": "True Ice Tome of the Companion",
+   "slot": "Companion Equipment",
+   "il": 3000,
+   "reason": "rating budget 3.33x IL vs slot median 2.40x (+39%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5400,
+   "name": "Frostforged Tome of the Companion",
+   "slot": "Companion Equipment",
+   "il": 2850,
+   "reason": "rating budget 3.33x IL vs slot median 2.40x (+39%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 3237,
+   "name": "Astral Raider's Coif",
+   "slot": "Head",
+   "il": 2200,
+   "reason": "rating budget 3.30x IL vs slot median 2.40x (+38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 950,
+   "name": "Dragonsteel Spikes",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating budget 3.30x IL vs slot median 2.40x (+38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 238,
+   "name": "Wrathful Strangler",
+   "slot": "Neck",
+   "il": 1400,
+   "reason": "rating budget 3.58x IL vs slot median 2.40x (+49%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1793,
+   "name": "League's Elite Ward Taj",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1797,
+   "name": "League's Elite Restoration Taj",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2858,
+   "name": "League's Elite Raid Tarak",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2862,
+   "name": "League's Elite Assault Tarak",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4288,
+   "name": "League's Elite Raid Keffiyeh",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4292,
+   "name": "League's Elite Assault Keffiyeh",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5968,
+   "name": "League's Elite Assault Turban",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5972,
+   "name": "League's Elite Raid Turban",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6623,
+   "name": "League's Elite Assault Baydah",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6627,
+   "name": "League's Elite Raid Baydah",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1795,
+   "name": "League's Elite Ward Tahadus",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1799,
+   "name": "League's Elite Restoration Tahadus",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2860,
+   "name": "League's Elite Raid Bazubands",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2864,
+   "name": "League's Elite Assault Bazubands",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4290,
+   "name": "League's Elite Raid Qafaz",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4294,
+   "name": "League's Elite Assault Qafaz",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5967,
+   "name": "League's Elite Assault Kollu",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5971,
+   "name": "League's Elite Raid Kollu",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6626,
+   "name": "League's Elite Assault Panahs",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6630,
+   "name": "League's Elite Raid Panahs",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1796,
+   "name": "League's Elite Ward Diralsaaqs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1798,
+   "name": "League's Elite Restoration Diralsaaqs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2861,
+   "name": "League's Elite Raid Hidhas",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2863,
+   "name": "League's Elite Assault Hidhas",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4291,
+   "name": "League's Elite Raid Soqs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4295,
+   "name": "League's Elite Assault Soqs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5965,
+   "name": "League's Elite Assault Charuqs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5969,
+   "name": "League's Elite Raid Charuqs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6624,
+   "name": "League's Elite Assault Khuffs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6628,
+   "name": "League's Elite Raid Khuffs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1794,
+   "name": "League's Elite Ward Charayneh",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1800,
+   "name": "League's Elite Restoration Charayneh",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2859,
+   "name": "League's Elite Raid Josan",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2865,
+   "name": "League's Elite Assault Josan",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4289,
+   "name": "League's Elite Raid Khaftan",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4293,
+   "name": "League's Elite Assault Khaftan",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5063,
+   "name": "League's Elite Raid Barakeh",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5064,
+   "name": "League's Elite Raid Manteel",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5065,
+   "name": "League's Elite Raid Sevars",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5066,
+   "name": "League's Elite Raid Crackows",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5067,
+   "name": "League's Elite Assault Barakeh",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5068,
+   "name": "League's Elite Assault Crackows",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5069,
+   "name": "League's Elite Assault Sevars",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5070,
+   "name": "League's Elite Assault Manteel",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5966,
+   "name": "League's Elite Assault Jubbah",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5970,
+   "name": "League's Elite Raid Jubbah",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6625,
+   "name": "League's Elite Assault Korazin",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6629,
+   "name": "League's Elite Raid Korazin",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5197,
+   "name": "League's Elite Raid Khaltan",
+   "slot": "Artifact Equipment",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5198,
+   "name": "League's Elite Assault Khaltan",
+   "slot": "Artifact Equipment",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2126,
+   "name": "Elemental Drowcraft Restoration Cuirass",
+   "slot": "Armor",
+   "il": 529,
+   "reason": "rating budget 3.17x IL vs slot median 2.40x (+32%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4414,
+   "name": "Drowned Dagger (IL 600)",
+   "slot": "Main Hand",
+   "il": 600,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4418,
+   "name": "Drowned Stiletto (IL 600)",
+   "slot": "Off Hand",
+   "il": 600,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4756,
+   "name": "Drowned Rapier (IL 600)",
+   "slot": "Main Hand",
+   "il": 600,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4757,
+   "name": "Drowned Lute (IL 600)",
+   "slot": "Off Hand",
+   "il": 600,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4413,
+   "name": "Drowned Dagger (IL 500)",
+   "slot": "Main Hand",
+   "il": 500,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4417,
+   "name": "Drowned Stiletto (IL 500)",
+   "slot": "Off Hand",
+   "il": 500,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4754,
+   "name": "Drowned Rapier (IL 500)",
+   "slot": "Main Hand",
+   "il": 500,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4755,
+   "name": "Drowned Lute (IL 500)",
+   "slot": "Off Hand",
+   "il": 500,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4412,
+   "name": "Drowned Dagger (IL 400)",
+   "slot": "Main Hand",
+   "il": 400,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4416,
+   "name": "Drowned Stiletto (IL 400)",
+   "slot": "Off Hand",
+   "il": 400,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4752,
+   "name": "Drowned Rapier (IL 400)",
+   "slot": "Main Hand",
+   "il": 400,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4753,
+   "name": "Drowned Lute (IL 400)",
+   "slot": "Off Hand",
+   "il": 400,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4411,
+   "name": "Drowned Dagger",
+   "slot": "Main Hand",
+   "il": 300,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4415,
+   "name": "Drowned Stiletto",
+   "slot": "Off Hand",
+   "il": 300,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4750,
+   "name": "Drowned Rapier",
+   "slot": "Main Hand",
+   "il": 300,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4751,
+   "name": "Drowned Lute",
+   "slot": "Off Hand",
+   "il": 300,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 750,
+   "name": "Blackened Void Pants",
+   "slot": "Pants",
+   "il": 2000,
+   "reason": "rating bonus 'Depleted Advantage' = 6250 vs family median 1005 for Combat Advantage @ IL~2000"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 659,
+   "name": "Basalt Imbued Pants",
+   "slot": "Pants",
+   "il": 1900,
+   "reason": "rating bonus 'Charged Bulwark' = 4600 vs family median 1000 for Defense @ IL~1000"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3997,
+   "name": "Blaspheme Cleaver",
+   "slot": "Main Hand",
+   "il": 1900,
+   "reason": "rating bonus 'Power' = 7500 vs family median 1000 for Power @ IL~1000"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3998,
+   "name": "Blaspheme Knife",
+   "slot": "Off Hand",
+   "il": 1900,
+   "reason": "rating bonus 'Power' = 7500 vs family median 1000 for Power @ IL~1000"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1008,
+   "name": "Menzoberranzan Ring of Assault",
+   "slot": "Ring",
+   "il": 1600,
+   "reason": "rating bonus 'Sudden Power' = 5500 vs family median 1000 for Power @ IL~1000"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1635,
+   "name": "Hard Rock Kickers",
+   "slot": "Feet",
+   "il": 950,
+   "reason": "rating bonus 'Contender's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1645,
+   "name": "Leafy Disguise of the Wanted",
+   "slot": "Head",
+   "il": 950,
+   "reason": "rating bonus 'The Ol' Switcheroo' = 1300 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3518,
+   "name": "Gurdunn's Defense",
+   "slot": "Armor",
+   "il": 950,
+   "reason": "rating bonus 'The Ol' Switcharoo' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4083,
+   "name": "The Legion Guard's Barbed Blade (IL 800)",
+   "slot": "Main Hand",
+   "il": 800,
+   "reason": "rating bonus 'Power' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4087,
+   "name": "The Legion Guard's Twisted Blade (IL 800)",
+   "slot": "Off Hand",
+   "il": 800,
+   "reason": "rating bonus 'Power' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4299,
+   "name": "Wootz Jambiya (IL 800)",
+   "slot": "Main Hand",
+   "il": 800,
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4303,
+   "name": "Wootz Sakin (IL 800)",
+   "slot": "Off Hand",
+   "il": 800,
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4725,
+   "name": "Wootz Lute (IL 800)",
+   "slot": "Off Hand",
+   "il": 800,
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2407,
+   "name": "Bronzewood Ward Ibhantshi",
+   "slot": "Armor",
+   "il": 784,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2412,
+   "name": "Lichstone Ward Ring",
+   "slot": "Ring",
+   "il": 784,
+   "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2415,
+   "name": "Bronzewood Restoration Ibhantshi",
+   "slot": "Armor",
+   "il": 784,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2417,
+   "name": "Beaded Assault Ring",
+   "slot": "Ring",
+   "il": 784,
+   "reason": "rating bonus 'Challenger's Focus' = 1000 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3029,
+   "name": "Leather Raid Kafe",
+   "slot": "Armor",
+   "il": 784,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3035,
+   "name": "Leather Assault Kafe",
+   "slot": "Armor",
+   "il": 784,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4439,
+   "name": "Dinohide Raid Mederebiya",
+   "slot": "Armor",
+   "il": 784,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4443,
+   "name": "Dinohide Assault Mederebiya",
+   "slot": "Armor",
+   "il": 784,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6218,
+   "name": "Silk Assault Ngubo",
+   "slot": "Armor",
+   "il": 784,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6219,
+   "name": "Silk Raid Ngubo",
+   "slot": "Armor",
+   "il": 784,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6369,
+   "name": "Bronzewood Assault Kanzu",
+   "slot": "Armor",
+   "il": 784,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6377,
+   "name": "Bronzewood Raid Kanzu",
+   "slot": "Armor",
+   "il": 784,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1241,
+   "name": "Oathlord's Ward Barbute",
+   "slot": "Head",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1242,
+   "name": "Oathlord's Ward Cuirass",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1242,
+   "name": "Oathlord's Ward Cuirass",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1243,
+   "name": "Oathlord's Ward Gauntlets",
+   "slot": "Arms",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1245,
+   "name": "Oathlord's Restoration Barbute",
+   "slot": "Head",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1247,
+   "name": "Oathlord's Restoration Gauntlets",
+   "slot": "Arms",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1248,
+   "name": "Oathlord's Restoration Cuirass",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1248,
+   "name": "Oathlord's Restoration Cuirass",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3535,
+   "name": "Curselord's Raid Ushanka",
+   "slot": "Head",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4176,
+   "name": "Banditlord's Raid Hat",
+   "slot": "Head",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4177,
+   "name": "Banditlord's Raid Jerkin",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4177,
+   "name": "Banditlord's Raid Jerkin",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4178,
+   "name": "Banditlord's Raid Bracers",
+   "slot": "Arms",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4180,
+   "name": "Banditlord's Assault Hat",
+   "slot": "Head",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4181,
+   "name": "Banditlord's Assault Bracers",
+   "slot": "Arms",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4183,
+   "name": "Banditlord's Assault Jerkin",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4183,
+   "name": "Banditlord's Assault Jerkin",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 5576,
+   "name": "Curselord's Assault Bracers",
+   "slot": "Arms",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 5577,
+   "name": "Curselord's Assault Longcoat",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 5577,
+   "name": "Curselord's Assault Longcoat",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 5578,
+   "name": "Curselord's Assault Ushanka",
+   "slot": "Head",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 5579,
+   "name": "Curselord's Raid Bracers",
+   "slot": "Arms",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 5580,
+   "name": "Curselord's Raid Longcoat",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 5580,
+   "name": "Curselord's Raid Longcoat",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6033,
+   "name": "Manalord's Assault Bracers",
+   "slot": "Arms",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6034,
+   "name": "Manalord's Assault Coat",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6034,
+   "name": "Manalord's Assault Coat",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6035,
+   "name": "Manalord's Assault Petasos",
+   "slot": "Head",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6037,
+   "name": "Manalord's Raid Bracers",
+   "slot": "Arms",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6038,
+   "name": "Manalord's Raid Coat",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6038,
+   "name": "Manalord's Raid Coat",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6039,
+   "name": "Manalord's Raid Petasos",
+   "slot": "Head",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6181,
+   "name": "Woodlord's Assault Bracers",
+   "slot": "Arms",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6182,
+   "name": "Woodlord's Assault Hood",
+   "slot": "Head",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6183,
+   "name": "Woodlord's Assault Jerkin",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6183,
+   "name": "Woodlord's Assault Jerkin",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6185,
+   "name": "Woodlord's Raid Bracers",
+   "slot": "Arms",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6186,
+   "name": "Woodlord's Raid Hood",
+   "slot": "Head",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6187,
+   "name": "Woodlord's Raid Jerkin",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6187,
+   "name": "Woodlord's Raid Jerkin",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6338,
+   "name": "Bladelord's Assault Breastplate",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6338,
+   "name": "Bladelord's Assault Breastplate",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6339,
+   "name": "Bladelord's Assault Gauntlets",
+   "slot": "Arms",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6340,
+   "name": "Bladelord's Assault Helm",
+   "slot": "Head",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6342,
+   "name": "Bladelord's Raid Breastplate",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6342,
+   "name": "Bladelord's Raid Breastplate",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6343,
+   "name": "Bladelord's Raid Gauntlets",
+   "slot": "Arms",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6344,
+   "name": "Bladelord's Raid Helm",
+   "slot": "Head",
+   "il": 770,
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1269,
+   "name": "Knotted Garbs",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Contender's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2475,
+   "name": "Titansteel Ward Cuirass",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2479,
+   "name": "Titansteel Gladiator Cuirass",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2483,
+   "name": "Titansteel Restoration Cuirass",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2487,
+   "name": "Titansteel Medic Cuirass",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2489,
+   "name": "Rubellite Assault Ring",
+   "slot": "Ring",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Focus' = 1000 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2492,
+   "name": "Silverspruce Ward Ring",
+   "slot": "Ring",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3061,
+   "name": "Manticore Raid Coat",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3065,
+   "name": "Manticore Executioner Coat",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3069,
+   "name": "Manticore Assault Coat",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3073,
+   "name": "Manticore Duelist Coat",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4497,
+   "name": "Manticore Raid Vest",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4501,
+   "name": "Manticore Executioner Vest",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4504,
+   "name": "Manticore Assault Vest",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4509,
+   "name": "Manticore Duelist Vest",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6288,
+   "name": "Manticore Assault Robes",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6292,
+   "name": "Manticore Raid Robes",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6774,
+   "name": "Titansteel Assault Scalemail",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6780,
+   "name": "Titansteel Duelist Scalemail",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6784,
+   "name": "Titansteel Gladiator Scalemail",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6788,
+   "name": "Titansteel Raid Scalemail",
+   "slot": "Armor",
+   "il": 756,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2593,
+   "name": "Adamant Restoration Cuirass",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2597,
+   "name": "Adamant Gladiator Cuirass",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2599,
+   "name": "Adamant Medic Cuirass",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2608,
+   "name": "Rosegold Ward Ring",
+   "slot": "Ring",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2615,
+   "name": "Rosegold Assault Ring",
+   "slot": "Ring",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Focus' = 1000 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2616,
+   "name": "Rosegold Gladiator Ring",
+   "slot": "Ring",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2622,
+   "name": "Rosegold Executioner Ring",
+   "slot": "Ring",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3116,
+   "name": "Umbral Assault Coat",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3120,
+   "name": "Umbral Executioner Coat",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 3122,
+   "name": "Umbral Duelist Coat",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4584,
+   "name": "Umbral Assault Vest",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4588,
+   "name": "Umbral Executioner Vest",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4590,
+   "name": "Umbral Duelist Vest",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6310,
+   "name": "Adamant Assault Scalemail",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6314,
+   "name": "Adamant Duelist Scalemail",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 6318,
+   "name": "Adamant Gladiator Scalemail",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1825,
+   "name": "Huntsman Raid Ring",
+   "slot": "Ring",
+   "il": 672,
+   "reason": "rating bonus 'Challenger's Focus' = 1000 vs family median 100 for Critical Strike @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1827,
+   "name": "Huntsman Ward Ring",
+   "slot": "Ring",
+   "il": 672,
+   "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 1894,
+   "name": "Rex Amiculum",
+   "slot": "Armor",
+   "il": 672,
+   "reason": "rating bonus 'Contender's Might' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4298,
+   "name": "Wootz Jambiya (IL 650)",
+   "slot": "Main Hand",
+   "il": 650,
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4302,
+   "name": "Wootz Sakin (IL 650)",
+   "slot": "Off Hand",
+   "il": 650,
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4724,
+   "name": "Wootz Lute (IL 650)",
+   "slot": "Off Hand",
+   "il": 650,
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2105,
+   "name": "Brynnyr's Demise",
+   "slot": "Head",
+   "il": 610,
+   "reason": "rating bonus 'Power/Defense Boost' = 2000 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2105,
+   "name": "Brynnyr's Demise",
+   "slot": "Head",
+   "il": 610,
+   "reason": "rating bonus 'Power/Defense Boost' = 2000 vs family median 200 for Defense @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2189,
+   "name": "Ring of Rising Deflect +5",
+   "slot": "Ring",
+   "il": 609,
+   "reason": "rating bonus 'Rising Agility' = 135 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4082,
+   "name": "The Legion Guard's Barbed Blade",
+   "slot": "Main Hand",
+   "il": 600,
+   "reason": "rating bonus 'Power' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4086,
+   "name": "The Legion Guard's Twisted Blade",
+   "slot": "Off Hand",
+   "il": 600,
+   "reason": "rating bonus 'Power' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4639,
+   "name": "The Legion Guard's Barbed Rapier",
+   "slot": "Main Hand",
+   "il": 600,
+   "reason": "rating bonus 'Power' = 1500 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2190,
+   "name": "Ring of Rising Deflect +4",
+   "slot": "Ring",
+   "il": 596,
+   "reason": "rating bonus 'Rising Agility' = 115 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2191,
+   "name": "Ring of Rising Deflect +3",
+   "slot": "Ring",
+   "il": 588,
+   "reason": "rating bonus 'Rising Agility' = 95 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2192,
+   "name": "Ring of Rising Deflect +2",
+   "slot": "Ring",
+   "il": 575,
+   "reason": "rating bonus 'Rising Agility' = 75 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 2193,
+   "name": "Ring of Rising Deflect +1",
+   "slot": "Ring",
+   "il": 567,
+   "reason": "rating bonus 'Rising Agility' = 55 vs family median 25 for Deflect @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4297,
+   "name": "Wootz Jambiya (IL 500)",
+   "slot": "Main Hand",
+   "il": 500,
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4301,
+   "name": "Wootz Sakin (IL 500)",
+   "slot": "Off Hand",
+   "il": 500,
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-rating-off-family",
+   "id": 4723,
+   "name": "Wootz Lute (IL 500)",
+   "slot": "Off Hand",
+   "il": 500,
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 465,
+   "name": "Aegis of the Condemned · IL 4800",
+   "slot": "Off Hand",
+   "il": 4800,
+   "reason": "2 copies (ids [465, 5331]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2,
+   "name": "Prismatic Crystalflex Bracers",
+   "slot": "Arms",
+   "il": 3700,
+   "reason": "3 copies (ids [2, 3176, 3938]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2724,
+   "name": "Prismatic Bismuth Mail",
+   "slot": "Armor",
+   "il": 3700,
+   "reason": "3 copies (ids [2724, 3177, 3937]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 3178,
+   "name": "Prismatic Fractal Barbut",
+   "slot": "Head",
+   "il": 3700,
+   "reason": "2 copies (ids [3178, 3940]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2727,
+   "name": "Crystalflex Bracers",
+   "slot": "Arms",
+   "il": 3350,
+   "reason": "3 copies (ids [2727, 3185, 3942]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2729,
+   "name": "Fractal Barbut",
+   "slot": "Head",
+   "il": 3350,
+   "reason": "3 copies (ids [2729, 3183, 3944]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 3184,
+   "name": "Bismuth Mail",
+   "slot": "Armor",
+   "il": 3350,
+   "reason": "2 copies (ids [3184, 3941]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 199,
+   "name": "Xaryxian Pactblade",
+   "slot": "Main Hand",
+   "il": 2750,
+   "reason": "2 copies (ids [199, 3197]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 252,
+   "name": "Cosmic Band of Deflection",
+   "slot": "Ring",
+   "il": 2400,
+   "reason": "2 copies (ids [252, 775]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2766,
+   "name": "Astral Raider's Hat",
+   "slot": "Head",
+   "il": 2200,
+   "reason": "2 copies (ids [2766, 3981]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2769,
+   "name": "Astral Raider's Jackboots",
+   "slot": "Feet",
+   "il": 2200,
+   "reason": "3 copies (ids [2769, 3240, 3984]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 195,
+   "name": "The Weaver's Pactblade",
+   "slot": "Main Hand",
+   "il": 2050,
+   "reason": "2 copies (ids [195, 3253]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 191,
+   "name": "Stormforged Pactblade",
+   "slot": "Main Hand",
+   "il": 2000,
+   "reason": "2 copies (ids [191, 3255]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 155,
+   "name": "Duergar Mercenary's Steel Pactblade",
+   "slot": "Main Hand",
+   "il": 1900,
+   "reason": "2 copies (ids [155, 3251]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2784,
+   "name": "Mastered Duergar Mercenary's Barbute",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "2 copies (ids [2784, 3999]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2816,
+   "name": "Crimson Scalebreaker's Rebel Gloves",
+   "slot": "Arms",
+   "il": 1800,
+   "reason": "2 copies (ids [2816, 4044]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2817,
+   "name": "Crimson Scalebreaker's Rebel Pikes",
+   "slot": "Feet",
+   "il": 1800,
+   "reason": "2 copies (ids [2817, 4045]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2818,
+   "name": "Crimson Scalebreaker's Rebel Shroud",
+   "slot": "Head",
+   "il": 1800,
+   "reason": "2 copies (ids [2818, 4042]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2342,
+   "name": "Eternal Boots",
+   "slot": "Feet",
+   "il": 1300,
+   "reason": "3 copies (ids [2342, 3698, 4419]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 3695,
+   "name": "Eternal Helmet",
+   "slot": "Head",
+   "il": 1300,
+   "reason": "2 copies (ids [3695, 4422]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 3696,
+   "name": "Eternal Leather Armor",
+   "slot": "Armor",
+   "il": 1300,
+   "reason": "2 copies (ids [3696, 4421]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 3697,
+   "name": "Eternal Gloves",
+   "slot": "Arms",
+   "il": 1300,
+   "reason": "2 copies (ids [3697, 4420]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 1626,
+   "name": "Thief's Stolen Gloves",
+   "slot": "Arms",
+   "il": 950,
+   "reason": "2 copies (ids [1626, 3515]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2445,
+   "name": "Fanged Sash · IL 800",
+   "slot": "Belt",
+   "il": 800,
+   "reason": "2 copies (ids [2445, 5806]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2449,
+   "name": "Beaded Sash · IL 800",
+   "slot": "Belt",
+   "il": 800,
+   "reason": "2 copies (ids [2449, 5505]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2465,
+   "name": "Bronzewood Amulet · IL 800",
+   "slot": "Neck",
+   "il": 800,
+   "reason": "2 copies (ids [2465, 5508]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2958,
+   "name": "Hood of the Thayan Servitor",
+   "slot": "Head",
+   "il": 800,
+   "reason": "3 copies (ids [2958, 3599, 4355]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2959,
+   "name": "Tunic of the Thayan Servitor",
+   "slot": "Armor",
+   "il": 800,
+   "reason": "3 copies (ids [2959, 3600, 4356]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2961,
+   "name": "Boots of the Thayan Servitor",
+   "slot": "Feet",
+   "il": 800,
+   "reason": "3 copies (ids [2961, 3602, 4358]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 3601,
+   "name": "Gloves of the Thayan Servitor",
+   "slot": "Arms",
+   "il": 800,
+   "reason": "2 copies (ids [3601, 4357]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2436,
+   "name": "Bronzewood Sash · IL 650",
+   "slot": "Belt",
+   "il": 650,
+   "reason": "2 copies (ids [2436, 5510]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2444,
+   "name": "Fanged Sash · IL 650",
+   "slot": "Belt",
+   "il": 650,
+   "reason": "2 copies (ids [2444, 5805]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2448,
+   "name": "Beaded Sash · IL 650",
+   "slot": "Belt",
+   "il": 650,
+   "reason": "2 copies (ids [2448, 5504]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2464,
+   "name": "Bronzewood Amulet · IL 650",
+   "slot": "Neck",
+   "il": 650,
+   "reason": "2 copies (ids [2464, 5507]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2081,
+   "name": "Black Ice Armor",
+   "slot": "Armor",
+   "il": 512,
+   "reason": "3 copies (ids [2081, 3588, 4345]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2949,
+   "name": "Black Ice Boots",
+   "slot": "Feet",
+   "il": 512,
+   "reason": "3 copies (ids [2949, 3590, 4347]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 3587,
+   "name": "Black Ice Mask",
+   "slot": "Head",
+   "il": 512,
+   "reason": "2 copies (ids [3587, 4344]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 3589,
+   "name": "Black Ice Gloves",
+   "slot": "Arms",
+   "il": 512,
+   "reason": "2 copies (ids [3589, 4346]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2435,
+   "name": "Bronzewood Sash · IL 500",
+   "slot": "Belt",
+   "il": 500,
+   "reason": "2 copies (ids [2435, 5509]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2447,
+   "name": "Beaded Sash · IL 500",
+   "slot": "Belt",
+   "il": 500,
+   "reason": "2 copies (ids [2447, 5503]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2463,
+   "name": "Bronzewood Amulet · IL 500",
+   "slot": "Neck",
+   "il": 500,
+   "reason": "2 copies (ids [2463, 5506]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2523,
+   "name": "Sphene Sash · IL 500",
+   "slot": "Belt",
+   "il": 500,
+   "reason": "2 copies (ids [2523, 6222]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 3053,
+   "name": "Brightsilver Longbow · IL 500",
+   "slot": "Main Hand",
+   "il": 500,
+   "reason": "2 copies (ids [3053, 5271]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2952,
+   "name": "Hammerstone Gloves",
+   "slot": "Arms",
+   "il": 352,
+   "reason": "3 copies (ids [2952, 3593, 4350]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2953,
+   "name": "Hammerstone Boots",
+   "slot": "Feet",
+   "il": 352,
+   "reason": "3 copies (ids [2953, 3594, 4351]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 3591,
+   "name": "Hammerstone Mask",
+   "slot": "Head",
+   "il": 352,
+   "reason": "2 copies (ids [3591, 4348]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 3592,
+   "name": "Hammerstone Tunic",
+   "slot": "Armor",
+   "il": 352,
+   "reason": "2 copies (ids [3592, 4349]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2434,
+   "name": "Bronzewood Sash · IL 350",
+   "slot": "Belt",
+   "il": 350,
+   "reason": "2 copies (ids [2434, 4462]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2446,
+   "name": "Beaded Sash · IL 350",
+   "slot": "Belt",
+   "il": 350,
+   "reason": "2 copies (ids [2446, 4469]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2450,
+   "name": "Beaded Amulet · IL 350",
+   "slot": "Neck",
+   "il": 350,
+   "reason": "2 copies (ids [2450, 4472]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2454,
+   "name": "Lichstone Amulet · IL 350",
+   "slot": "Neck",
+   "il": 350,
+   "reason": "2 copies (ids [2454, 4476]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2458,
+   "name": "Fanged Beaded Amulet · IL 350",
+   "slot": "Neck",
+   "il": 350,
+   "reason": "2 copies (ids [2458, 4480]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2462,
+   "name": "Bronzewood Amulet · IL 350",
+   "slot": "Neck",
+   "il": 350,
+   "reason": "2 copies (ids [2462, 4484]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2502,
+   "name": "Silverspruce Amulet · IL 350",
+   "slot": "Neck",
+   "il": 350,
+   "reason": "2 copies (ids [2502, 4516]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2506,
+   "name": "Sphene Amulet · IL 350",
+   "slot": "Neck",
+   "il": 350,
+   "reason": "2 copies (ids [2506, 4520]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2510,
+   "name": "Rubellite Amulet · IL 350",
+   "slot": "Neck",
+   "il": 350,
+   "reason": "2 copies (ids [2510, 4524]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2521,
+   "name": "Silverspruce Belt · IL 350",
+   "slot": "Belt",
+   "il": 350,
+   "reason": "2 copies (ids [2521, 4532]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2522,
+   "name": "Sphene Sash · IL 350",
+   "slot": "Belt",
+   "il": 350,
+   "reason": "2 copies (ids [2522, 4536]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "WARN",
+   "check": "C3-dup-conflict",
+   "id": 2526,
+   "name": "Rubellite Sash · IL 350",
+   "slot": "Belt",
+   "il": 350,
+   "reason": "2 copies (ids [2526, 4540]) with DIFFERENT stats/bonuses"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5319,
+   "name": "Coldsilver Band of Faith",
+   "slot": "Ring",
+   "il": 5700,
+   "reason": "set 'Rings: The Reched Edge' needs 11 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5380,
+   "name": "Frostbound Hearthbinders",
+   "slot": "Arms",
+   "il": 4700,
+   "reason": "set 'Winterworn Harness' needs 6 pieces but exists in only 4 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 10,
+   "name": "The Spine of Dominion",
+   "slot": "Ring",
+   "il": 4150,
+   "reason": "set 'Rings: Shackles of Divinity' needs 8 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 115,
+   "name": "Belt of the Forsaken",
+   "slot": "Belt",
+   "il": 4050,
+   "reason": "set 'Focused Radiance' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 118,
+   "name": "Nightpiercer Bindings",
+   "slot": "Belt",
+   "il": 4050,
+   "reason": "set 'Finish the Job' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 242,
+   "name": "Ritualistic Necklace",
+   "slot": "Neck",
+   "il": 4050,
+   "reason": "set 'Malignant Energy' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 263,
+   "name": "Girdle of the Crimson Oath",
+   "slot": "Belt",
+   "il": 4050,
+   "reason": "set 'Crimson Retaliation' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5326,
+   "name": "Veinlit Earthhard Guard",
+   "slot": "Clothing: Jotunskar",
+   "il": 3800,
+   "reason": "set 'Clothing: Jotunskar' needs 11 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 244,
+   "name": "Dreadbreaker Hoop",
+   "slot": "Ring",
+   "il": 3500,
+   "reason": "set 'Rings: The Dread Sanctum' needs 4 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 108,
+   "name": "The Thorned Edict",
+   "slot": "Ring",
+   "il": 3450,
+   "reason": "set 'Tyrators' needs 8 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 676,
+   "name": "Locket of the Caldera",
+   "slot": "Neck",
+   "il": 3200,
+   "reason": "set 'Volcanic Jewels' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 237,
+   "name": "Choker of Searing Magma",
+   "slot": "Neck",
+   "il": 2800,
+   "reason": "set 'Magmatic Efficiency' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 548,
+   "name": "Bloodbrass Hoop",
+   "slot": "Ring",
+   "il": 2800,
+   "reason": "set 'Rings: Pirates' Skyhold Region' needs 4 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 495,
+   "name": "Mark of the Adept",
+   "slot": "Shirt",
+   "il": 2600,
+   "reason": "set 'Enchanted Forte' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 867,
+   "name": "Sash of Shooting Stars",
+   "slot": "Belt",
+   "il": 2600,
+   "reason": "set 'Astral Dash' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5077,
+   "name": "Pulsar Coil",
+   "slot": "Armor",
+   "il": 2600,
+   "reason": "set 'Gladiator's Focus' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 863,
+   "name": "Detector's Choker",
+   "slot": "Neck",
+   "il": 2500,
+   "reason": "set 'Unstable Drive' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 869,
+   "name": "Belt of Blinding Radiance",
+   "slot": "Belt",
+   "il": 2300,
+   "reason": "set 'Rune of Replenishment' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 249,
+   "name": "Malachite Abyssal Loop",
+   "slot": "Ring",
+   "il": 2250,
+   "reason": "set 'Abyssal Fury' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 858,
+   "name": "Draining Talisman",
+   "slot": "Neck",
+   "il": 2250,
+   "reason": "set 'Astral Absorption' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 951,
+   "name": "Jewel of the Marilith",
+   "slot": "Neck",
+   "il": 2050,
+   "reason": "set 'Marilith Strike' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 955,
+   "name": "Hypnotizing Pendant",
+   "slot": "Neck",
+   "il": 2050,
+   "reason": "set 'Ruthless Domination' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 990,
+   "name": "Lolthian Vengeance",
+   "slot": "Ring",
+   "il": 2050,
+   "reason": "set 'Lolthian Might' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 239,
+   "name": "Netherese Engineer's Pendant",
+   "slot": "Neck",
+   "il": 2000,
+   "reason": "set 'Rune of the Underdark' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 953,
+   "name": "House Baenre Brooch",
+   "slot": "Neck",
+   "il": 2000,
+   "reason": "set 'Dashing Action' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 957,
+   "name": "Sanity Preservation Choker",
+   "slot": "Neck",
+   "il": 2000,
+   "reason": "set 'Attuned Eye of Odran' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5089,
+   "name": "Bregan D'aerthe Expert's Coil",
+   "slot": "Armor",
+   "il": 2000,
+   "reason": "set 'Mystic Inspiration' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 246,
+   "name": "Eilistraee's Enduring",
+   "slot": "Ring",
+   "il": 1850,
+   "reason": "set 'The Dark Maiden' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 236,
+   "name": "Tiamat's Golden Necklace",
+   "slot": "Neck",
+   "il": 1800,
+   "reason": "set 'Tiamat's Prized Possessions' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 959,
+   "name": "Assassin's Choker",
+   "slot": "Neck",
+   "il": 1800,
+   "reason": "set 'Assassin's Luck' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 961,
+   "name": "Tentacle Eye",
+   "slot": "Neck",
+   "il": 1800,
+   "reason": "set 'Tentacle Rod' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 172,
+   "name": "Grand Alliance Pactblade",
+   "slot": "Main Hand",
+   "il": 1700,
+   "reason": "set 'Brute's Expertise' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 4023,
+   "name": "Darklake Ward Ring",
+   "slot": "Ring",
+   "il": 1700,
+   "reason": "set 'Rings of the Demonweb Pits' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5137,
+   "name": "Ancient Scalebreaker's Sleeves",
+   "slot": "Arms",
+   "il": 1700,
+   "reason": "set 'Scalebreaker's Gear' needs 11 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1175,
+   "name": "Dragonmind Clasp",
+   "slot": "Belt",
+   "il": 1600,
+   "reason": "set 'Insightful Alacrity' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1177,
+   "name": "Dragonhide Sash",
+   "slot": "Belt",
+   "il": 1600,
+   "reason": "set 'Aggressive Alacrity' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1179,
+   "name": "Dragonscale Neckguard",
+   "slot": "Neck",
+   "il": 1600,
+   "reason": "set 'Vanguard's Alacrity' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1181,
+   "name": "Dragonsoul Brooch",
+   "slot": "Neck",
+   "il": 1600,
+   "reason": "set 'Celestial Alacrity' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 240,
+   "name": "Mythallar Shard",
+   "slot": "Neck",
+   "il": 1500,
+   "reason": "set 'Mythallar' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 238,
+   "name": "Wrathful Strangler",
+   "slot": "Neck",
+   "il": 1400,
+   "reason": "set 'Wrathful Bindings' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 589,
+   "name": "Captain's Girdle",
+   "slot": "Belt",
+   "il": 1400,
+   "reason": "set 'Bloodgold Gear' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1474,
+   "name": "Upper Pact Brands of the Blaze-bond",
+   "slot": "Pants",
+   "il": 1325,
+   "reason": "set 'Avernus Campaign Leveling Conduits' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1339,
+   "name": "Band of Air",
+   "slot": "Ring",
+   "il": 1300,
+   "reason": "set 'Queen's Empowerment' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 3695,
+   "name": "Eternal Helmet",
+   "slot": "Head",
+   "il": 1300,
+   "reason": "set 'Eternal Armor Set' needs 5 pieces but exists in only 4 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 177,
+   "name": "Lionheart Pact Blade",
+   "slot": "Main Hand",
+   "il": 1200,
+   "reason": "set 'Lionheart' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 141,
+   "name": "Alabaster Pact Blade",
+   "slot": "Main Hand",
+   "il": 1000,
+   "reason": "set 'Alabaster' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 147,
+   "name": "Burnished Pact Blade",
+   "slot": "Main Hand",
+   "il": 1000,
+   "reason": "set 'Burnished' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 171,
+   "name": "Golden Pact Blade of the Watcher",
+   "slot": "Main Hand",
+   "il": 1000,
+   "reason": "set 'Watcher' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 182,
+   "name": "Mountaineer Pact Blade",
+   "slot": "Main Hand",
+   "il": 1000,
+   "reason": "set 'Mountaineer' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1550,
+   "name": "Protege's Chained Robe",
+   "slot": "Armor",
+   "il": 980,
+   "reason": "set 'Protege Set' needs 9 pieces but exists in only 8 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 4917,
+   "name": "Sunset Rapiera",
+   "slot": "Main Hand",
+   "il": 800,
+   "reason": "set 'Set Sun' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 4951,
+   "name": "Curseford's Raid Ushanka",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "set 'Survivor's Savagery' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 4952,
+   "name": "Curseford's Raid Longcoat",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "set 'Warden's Balance' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 4953,
+   "name": "Curseford's Raid Bracers",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "set 'Survivor's Finesse' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 4954,
+   "name": "Curseford's Raid Pigaches",
+   "slot": "Armor",
+   "il": 770,
+   "reason": "set 'Survivor's Stride' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 4584,
+   "name": "Umbral Assault Vest",
+   "slot": "Armor",
+   "il": 728,
+   "reason": "set 'Umbral Assault' needs 4 pieces but exists in only 3 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5024,
+   "name": "Primal Raid Barakoa",
+   "slot": "Armor",
+   "il": 700,
+   "reason": "set 'Chultan Remedy' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5025,
+   "name": "Primal Raid Kiuno",
+   "slot": "Armor",
+   "il": 700,
+   "reason": "set 'Chultan Guard' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5026,
+   "name": "Primal Raid Shabas",
+   "slot": "Armor",
+   "il": 700,
+   "reason": "set 'Butcher's Might' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5027,
+   "name": "Primal Raid Viatus",
+   "slot": "Armor",
+   "il": 700,
+   "reason": "set 'Executioner's Zeal' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5029,
+   "name": "Huntsman Raid Longcoat",
+   "slot": "Armor",
+   "il": 672,
+   "reason": "set 'Challenger's Guard' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5030,
+   "name": "Huntsman Raid Cowl",
+   "slot": "Armor",
+   "il": 672,
+   "reason": "set 'Great Hunter' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5034,
+   "name": "Huntsman Raid Wristguards",
+   "slot": "Armor",
+   "il": 672,
+   "reason": "set 'Challenger's Might' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5035,
+   "name": "Huntsman Raid Pigaches",
+   "slot": "Armor",
+   "il": 672,
+   "reason": "set 'Executioner's Haste' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5317,
+   "name": "Chitters's Fangs",
+   "slot": "Armor",
+   "il": 672,
+   "reason": "set 'Hunts of Omu' needs 18 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5047,
+   "name": "Pilgrim Raid Barakeh",
+   "slot": "Armor",
+   "il": 644,
+   "reason": "set 'Chultan Hunter' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5048,
+   "name": "Pilgrim Assault Manteel",
+   "slot": "Armor",
+   "il": 644,
+   "reason": "set 'Death Defier's Guard' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5050,
+   "name": "Pilgrim Raid Crackows",
+   "slot": "Armor",
+   "il": 644,
+   "reason": "set 'Wanderer's Vigor' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5051,
+   "name": "Pilgrim Raid Sevars",
+   "slot": "Armor",
+   "il": 644,
+   "reason": "set 'Death Defier's Might' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5264,
+   "name": "Black Draconic Guise",
+   "slot": "Head",
+   "il": 630,
+   "reason": "set 'Artifacts and Gear in Tyranny of Dragons' needs 5 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5266,
+   "name": "Bloodlord's Visage",
+   "slot": "Head",
+   "il": 630,
+   "reason": "set 'Demonic Artifacts and Gear' needs 6 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5267,
+   "name": "Bloodstained Shirt",
+   "slot": "Shirt",
+   "il": 630,
+   "reason": "set 'Artifacts and Gear in Elemental Evil' needs 13 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 3543,
+   "name": "Pioneer Assault Sevars",
+   "slot": "Arms",
+   "il": 616,
+   "reason": "set 'Pioneer Armor' needs 4 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5039,
+   "name": "Pioneer Raid Crackows",
+   "slot": "Armor",
+   "il": 616,
+   "reason": "set 'Leader's Dash' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5040,
+   "name": "Pioneer Raid Sevars",
+   "slot": "Armor",
+   "il": 616,
+   "reason": "set 'Leader's Might' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5041,
+   "name": "Pioneer Raid Manteel",
+   "slot": "Armor",
+   "il": 616,
+   "reason": "set 'Leader's Guard' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5042,
+   "name": "Pioneer Raid Barakeh",
+   "slot": "Armor",
+   "il": 616,
+   "reason": "set 'Leader's Vitality' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 2049,
+   "name": "Greater Ostorian Ring of Skold",
+   "slot": "Ring",
+   "il": 609,
+   "reason": "set 'Storm King's Thunder Curiosities' needs 8 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 2358,
+   "name": "Lostmauth's Hoard Necklace",
+   "slot": "Neck",
+   "il": 600,
+   "reason": "set 'Lostmauth's Hoard' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5055,
+   "name": "League's Raid Barakeh",
+   "slot": "Armor",
+   "il": 588,
+   "reason": "set 'Warden's Defense' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5056,
+   "name": "League's Raid Manteel",
+   "slot": "Armor",
+   "il": 588,
+   "reason": "set 'Survivor's Guard' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5057,
+   "name": "League's Raid Sevars",
+   "slot": "Armor",
+   "il": 588,
+   "reason": "set 'Survivor's Might' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5058,
+   "name": "League's Assault Crackows",
+   "slot": "Armor",
+   "il": 588,
+   "reason": "set 'Warden's Haste' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1437,
+   "name": "Chains of Glory",
+   "slot": "Neck",
+   "il": 550,
+   "reason": "set 'Glorious Light' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1439,
+   "name": "The Engine Master's Mantle",
+   "slot": "Neck",
+   "il": 550,
+   "reason": "set 'Dark Remnants' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1597,
+   "name": "Wyvern's Eye Necklace",
+   "slot": "Neck",
+   "il": 550,
+   "reason": "set 'Armaments of the Wyvern' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1598,
+   "name": "Electric Collar",
+   "slot": "Neck",
+   "il": 550,
+   "reason": "set 'Armaments of Constructed Demise' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1599,
+   "name": "Jhesyra's Tattered Mantle",
+   "slot": "Neck",
+   "il": 550,
+   "reason": "set 'Apprentice's Spoils' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1600,
+   "name": "Woven Vine",
+   "slot": "Neck",
+   "il": 550,
+   "reason": "set 'Enchanted Thumb' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1601,
+   "name": "Reflective Collar",
+   "slot": "Neck",
+   "il": 550,
+   "reason": "set 'Reflective Armaments' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1607,
+   "name": "Necklace of the Mad Mage",
+   "slot": "Neck",
+   "il": 550,
+   "reason": "set 'Mad Dash' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 2094,
+   "name": "Greater Belt of Black Ice",
+   "slot": "Belt",
+   "il": 501,
+   "reason": "set 'Black Ice set' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 241,
+   "name": "Iridescent Diamond Pendant",
+   "slot": "Neck",
+   "il": 350,
+   "reason": "set 'Diamond' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1313,
+   "name": "Starshard Choker",
+   "slot": "Neck",
+   "il": 350,
+   "reason": "set 'Star' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1842,
+   "name": "Cincture of Atropal Essence",
+   "slot": "Belt",
+   "il": 350,
+   "reason": "set 'Soulmonger' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1889,
+   "name": "Wrap of the Serpent",
+   "slot": "Belt",
+   "il": 350,
+   "reason": "set 'Skin of the Serpent' needs 3 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1890,
+   "name": "Skull Lord Sash",
+   "slot": "Belt",
+   "il": 350,
+   "reason": "set 'Skull Lord' needs 3 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 5181,
+   "name": "Primal Omihuiclli",
+   "slot": "Main Hand",
+   "il": 350,
+   "reason": "set 'Primal Weapons' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 6577,
+   "name": "Headsman's Greataxe",
+   "slot": "Artifact Equipment",
+   "il": 350,
+   "reason": "set 'Weapons of the Headsman' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 9,
+   "name": "Apocalypse Choker",
+   "slot": "Neck",
+   "il": 0,
+   "reason": "set 'Apocalypse' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1249,
+   "name": "Barovian Lavaliere",
+   "slot": "Neck",
+   "il": 0,
+   "reason": "set 'Ravenloft' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1253,
+   "name": "Carcanet of the Dead",
+   "slot": "Neck",
+   "il": 0,
+   "reason": "set 'Dead' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 1254,
+   "name": "Blood Raven Pendant",
+   "slot": "Neck",
+   "il": 0,
+   "reason": "set 'Blood Raven' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  },
+  {
+   "sev": "INFO",
+   "check": "C4-phantom-set",
+   "id": 2046,
+   "name": "Horn of Valhalla",
+   "slot": "Neck",
+   "il": 0,
+   "reason": "set 'Valhalla's Rebuke' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  }
+ ]
+}
