@@ -1,5 +1,36 @@
 # Data Issues To Investigate
 
+## Companion enhancement multi-stat fix (2026-06-10) — Enduring Precision value needs in-game check
+Player report (relayed by n00b): companion enhancements that do multiple
+things only apply one. Confirmed — the enhancement schema carried a single
+stat/value pair, so the three dual-player-stat enhancements fed only their
+first stat to Toon Forge:
+- **Unflinching Will** (Bobby) — Deflect + **Deflect Severity** 4.5% (DeflectSev was missing)
+- **Impactful Maneuvers** (Minotaur) — Power + **Forte** 4.5% (Forte was missing)
+- **Exploit Weakness** (Blaspheme Assassin) — Critical Strike + **Critical Severity** 4.5% (CritSev was missing)
+
+Fixed via a `stats[]` array on those three entries in
+`../data/companion_enhancements.json` (legacy `stat`/`value` stays as a
+mirror of `stats[0]` for back-compat; `enhToBuff` + `renderEnhancement` in
+toon-forge.html and both companions-page.js render paths read the array).
+Player+companion dual enhancements (Counteract, Fortification, Anticipation,
+Deflecting Shards, Precision, the Enduring family) are CORRECT as
+single-stat — the second effect buffs the companion itself, which has no
+player stat-panel impact. Also fixed: **Reinvigorate** (id 1) was missing
+`type: "percent"`, so the engine routed it as 9 RATING Outgoing Healing
+(~nothing) instead of 9%.
+
+**Still open — needs in-game verification:**
+- **Enduring Precision (id 6) stores player value 6, but its own tooltip
+  note says "increases your Critical Strike by 4% and companion's by up to
+  6%".** The rest of the Enduring family stores the player-side value
+  (Alacrity/Craft/Guard all store 4), yet Enduring Senses was in-game
+  verified at 6%/6% at IL 900. Either the stored 6 overstates player Crit
+  Strike by 2pp, or the "4%" tooltip text scales to 6% at IL 900 (like
+  Senses did) and the note records base text. No tooltip capture in the
+  archives (filename sweep 2026-06-10). Needs an IL-900 Hank the Ranger
+  tooltip or before/after stat-panel check.
+
 ## Del's gear sweep round 2 (2026-06-10) — Swiftguards + rings fixed; Soul Collector weapon sets still messy
 Player report #2 (Del's owner): Wintermarked Swiftguards' Eagle's Mastery
 (Lesser) not counting. Fixed (3 structured entries at 0.6%/stack, max 5,

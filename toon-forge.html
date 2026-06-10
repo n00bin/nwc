@@ -5513,14 +5513,23 @@
       return COMPANION_ENHANCEMENTS_DATA.slice().sort((a,b) => a.name.localeCompare(b.name));
     }
     function renderEnhancement(e) {
-      const isPct = e.type === "percent";
-      const v = e.value || 0;
       const il = e.item_level ? "IL " + e.item_level : "";
       const meta = [il, e.type ? e.type + " enhancement" : ""].filter(Boolean).join(" · ");
-      const stat = e.stat
+      // Multi-stat enhancements carry stats[]; legacy stat/value = stats[0].
+      const effects = (Array.isArray(e.stats) && e.stats.length)
+        ? e.stats
+        : (e.stat ? [{ stat: e.stat, value: e.value, type: e.type }] : []);
+      const statLines = effects
+        .filter(fx => fx && fx.stat)
+        .map(fx => {
+          const isPct = (fx.type || e.type) === "percent";
+          return `<div class="gear-card-stat-line">+${fx.value || 0}${isPct ? "%" : ""} ${_escHTML(fx.stat)}</div>`;
+        })
+        .join("");
+      const stat = statLines
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Effect</div>
-             <div class="gear-card-stat-line">+${v}${isPct ? "%" : ""} ${_escHTML(e.stat)}</div>
+             ${statLines}
            </div>`
         : "";
       const _eNotes = cleanNote(e.notes);
@@ -10434,15 +10443,25 @@
       // Skip enemy-scope enhancements (debuffs like Slowed Reactions lower
       // the ENEMY's stat, not the player's — they should NOT add to your
       // own stat panel even though the data carries a stat/value pair).
+      // Multi-stat enhancements (Unflinching Will, Impactful Maneuvers,
+      // Exploit Weakness) carry a stats[] array with ALL player-facing
+      // stats; legacy stat/value mirrors stats[0]. Per-entry type wins
+      // over the top-level type when present.
       function enhToBuff(label, name) {
         if (!name) return;
         const e = findEnhancementByName(name);
-        if (!e || !e.stat) return;
+        if (!e) return;
         if (e.scope === "enemy") return;
-        const v = (e.value || 0);
+        const effects = (Array.isArray(e.stats) && e.stats.length)
+          ? e.stats
+          : (e.stat ? [{ stat: e.stat, value: e.value, type: e.type }] : []);
         const entry = { source: label + ": " + e.name };
-        if (e.type === "percent") entry.percentStats = { [e.stat]: v };
-        else                      entry.ratingStats  = { [e.stat]: v };
+        for (const fx of effects) {
+          if (!fx || !fx.stat) continue;
+          const channel = ((fx.type || e.type) === "percent") ? "percentStats" : "ratingStats";
+          (entry[channel] = entry[channel] || {})[fx.stat] = (fx.value || 0);
+        }
+        if (!entry.percentStats && !entry.ratingStats) return;
         buffs.push(entry);
       }
       enhToBuff("Enhancement (summoned)", s.summonedEnh);

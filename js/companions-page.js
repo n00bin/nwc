@@ -375,11 +375,16 @@
       }
       html += "</div>";
 
-      // Single stat display
-      html += '<div class="stat-row">';
-      html += '<span class="stat-name">' + escapeHtml(en.stat) + "</span>";
-      html += renderStatValue(en.value, en.type);
-      html += "</div>";
+      // Stat display — multi-stat enhancements carry stats[]; legacy
+      // stat/value mirrors stats[0]
+      var enStats = (en.stats && en.stats.length) ? en.stats : [{ stat: en.stat, value: en.value, type: en.type }];
+      for (var esi = 0; esi < enStats.length; esi++) {
+        if (!enStats[esi] || !enStats[esi].stat) continue;
+        html += '<div class="stat-row">';
+        html += '<span class="stat-name">' + escapeHtml(enStats[esi].stat) + "</span>";
+        html += renderStatValue(enStats[esi].value, enStats[esi].type || en.type);
+        html += "</div>";
+      }
       html += "</div>"; // close proc-block
 
       if (en.notes) {
@@ -635,7 +640,9 @@
     for (var i = 0; i < COMPANION_ENHANCEMENTS_DATA.length; i++) {
       var en = COMPANION_ENHANCEMENTS_DATA[i];
       if (!enMap[en.name]) {
-        var desc = en.notes ? cleanEnhancementNotes(en.notes) : (en.stat + " +" + en.value + "%");
+        var enListStats = (en.stats && en.stats.length) ? en.stats : [{ stat: en.stat, value: en.value }];
+        var statDesc = enListStats.map(function (s) { return s.stat + " +" + s.value + "%"; }).join(", ");
+        var desc = en.notes ? cleanEnhancementNotes(en.notes) : statDesc;
         enMap[en.name] = { name: en.name, description: desc, companions: [] };
       }
     }
