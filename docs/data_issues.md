@@ -1,5 +1,21 @@
 # Data Issues To Investigate
 
+## Combat-stacking equip bonuses structured (2026-06-10) — 3 contradictory tooltips still open
+Player report (Del's owner): Wintermarked Hunter Hood's "Critical Breaker"
+(9% Critical Strike at 5 stacks) wasn't counted by Toon Forge — the equip
+bonus was description-only. Sweep found 65 same-shape "in combat stacking"
+bonuses still unstructured; 62 were structured via
+`scripts/eb_parse_combat_stacking.py` (per-stack amount + maxStacks,
+`kind: rating` for flat values, `requiresMultiEnemy` for 3+-enemy gates,
+zone gate for Spelljammer's Grace). **3 skipped — their tooltips contradict
+themselves; need in-game re-capture before structuring:**
+- **Crown of the Unyielding Will** — "gain 2.4% Incoming Healing ... Max
+  Stacks: 5 — 2.4%" (max equals one stack?)
+- **Crown of the Supreme Will** — "gain 1.6% ... Max Stacks: 5 — 9%"
+  (1.6 × 5 = 8, not 9)
+- **Cuirass of the Crimson Scythe** — "Forte +1.8% every 2s ... Max 5
+  stacks: 6%" (1.8 × 5 = 9, not 6)
+
 ## Elk Tribe / Hammerstone phantom set — RESOLVED 2026-06-09 (audit blocker #2 follow-up)
 Archived collection screenshots (docs/audit/_up/) proved "Weapons of the Elk
 Tribe Chiefs" is a **collection tab, not an in-game set**: four Elk tooltips

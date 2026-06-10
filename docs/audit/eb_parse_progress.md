@@ -71,3 +71,17 @@ Conjure Orb skipped (ambiguous summon uptime).
 ## Pre-existing unknown-stat warnings (not from this work)
 `Damage`, `Stamina Regen` (from non-gear data files), `Incoming Damage`
 (above). Candidates for STAT_NAME_ALIASES or future layers.
+
+## 2026-06-10: combat-stacking sweep (player-reported)
+Del's owner reported Wintermarked Hunter Hood's Critical Breaker not
+counting. Sweep found 65 description-only "in combat stacking" bonuses;
+62 structured via scripts/eb_parse_combat_stacking.py (explicit patch
+table, not regex). Conventions as before: per-stack `amount` +
+`perStack`/`maxStacks`, `kind: "rating"` for flat values,
+`requiresMultiEnemy` for 3+-enemy gates, "only 1 enemy" stacks counted
+with a single-target note (Wrathborn precedent), `zones: ["Wildspace"]`
+for Spelljammer's Grace, Wildspace-raised stack caps stored at BASE cap
+with a note (Radiant Elven Helm/Cower). 4 new stat "Incoming Damage"
+entries join the 36 pre-existing ones awaiting the survivability layer.
+3 skipped on contradictory tooltips (see data_issues.md 2026-06-10):
+Unyielding/Supreme Will crowns, Cuirass of the Crimson Scythe.
