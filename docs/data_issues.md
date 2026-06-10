@@ -12,13 +12,52 @@ Hellfire Tow Hook tooltip in the same UI format DOES show its set line. Fixes:
   on ids 4354, 4766, 4767 — matches the Dirk/Lute/Poniard tooltips and the
   values already stored on ids 4353 / 6833 / 6834.
 
-## Hellfire Engine Remains set bonus — still unverified (2026-06-09)
-The set is REAL: the archived Tow Hook IL600 tooltip shows "Set Hellfire Engine
-Remains (0/2)" — and its base stats match our data (450 Accuracy / 450 Crit Sev
-/ 540 CR). But the collection tooltip does not display the set-bonus text, so
-the bonus value remains unverified (the fabricated +1,500 Power was stripped
-2026-06-09). **Action:** equip both pieces in-game (or open the expanded set
-popup) and capture the 2-of-set bonus text.
+## Hellfire Engine Remains set bonus — RESOLVED 2026-06-09 (same day)
+The set is REAL (Tow Hook IL600 tooltip shows "Set Hellfire Engine Remains
+(0/2)", base stats verified 450/450/540). The bonus text was then found on the
+set's own higher-tier siblings: ids 4091–4097 carry the verified structured
+bonus (Stamina Regeneration +15% + Movement Speed +15% for 10s at combat
+start; refreshes on kill), and id 3386's intake description holds the same
+text. Structured it across the whole set: id 4090 (was the stripped
+fabricated +1,500 Power) and ids 3386–3393 (were stat "Damage Bonus"/0
+placeholders) now all carry stat Stamina Regeneration / amount 15 like their
+verified siblings.
+
+## Audit pile-1 sweep — RESOLVED 2026-06-09 (duplicate pairs + phantom sets)
+All verified against archived tooltips (docs/audit/_up/warlock-gear/):
+- **Blaspheme Pactblade:** tooltip matches id 144 exactly (Damage 100 /
+  Accuracy 570 / CA 1,425 / Crit Sev 855 / CR 1,710). Deleted stub id 3257
+  (carried a stray percentStats "Damage Bonus" 1.0 not on the tooltip).
+- **Perfect Mark of Lolth:** tooltip matches id 186 (Damage 250 / CA 1,856 /
+  Crit Strike 1,856 / CR 2,228). Deleted stub id 3249. NOTE — open question:
+  the deleted stub's set-bonus text said the crit stack ticks "every 3
+  seconds" while id 186's structured proc says every 5s (collection tooltip
+  doesn't show set text). Same class of conflict as Ultraviolet Elven Cap —
+  verify the Demonweb Empowerment popup in-game.
+- **Exalted Maiden's Raid Wristguards:** true duplicate — deleted id 3285,
+  kept id 6249 (identical stats, richer notes).
+- **Starhide Skullcap / Doublet:** deleted re-intake dupes 5914/5915, kept
+  3221/3222 (3221 carries the engine-scored structured per-enemy bonus).
+- **"Cosmic Corsair's Armor" phantom set:** Starhide Cackrows tooltip shows
+  NO set line → collection tab, not a set. Cleared from all 12
+  Starweave/Starhide entries (no Set-type ebs existed — display-only tag).
+- **Runefrost Hunter's Coat:** tooltip verified (4,860 Crit Sev / 3,645 Forte
+  / CR 4,860, Battle Reserves, NO set line). Deleted dupe id 6208, kept 5494.
+- **"Frostforged Warplate" phantom set:** Hunter's Coat AND Hunter Hood
+  tooltips both show no set line → cleared from all 36 Wintermarked/Runefrost
+  entries (zero Set-type ebs referenced it — display-only tag).
+- **Greaves of the Crimson March id 37 (−20 Maximum Hit Points):** resolved
+  by analysis, no change — engine treats equip-bonus amounts as PERCENT by
+  default (toon-forge.html ingestion), so −20 already reads −20% Max HP.
+- **Cindersilk id 6876:** added `set: ""` for schema consistency.
+
+## Flayed Legion — classes + missing stat still unverified (2026-06-09)
+ids 286 (Sabatons), 287 (Vambraces), 289 (Mask) have no `allowedClasses` —
+sibling 288 (Harness) is player-verified Barbarian-only (Report #87), so these
+are PROBABLY Barbarian too, but no archive screenshots exist (checked
+2026-06-09) and we don't guess restrictions. Also id 286 carries a single
+rating stat (Accuracy 1,997) vs CR 3,690 — likely missing 1–2 stats.
+**Action:** in-game tooltips for the three pieces (classes + full stat block).
 
 ## Elk Tribe Grimoire / Pact Blade duplicate pairs — RESOLVED 2026-06-09
 ids 3597/4824 ("Elk Tribe Noble's Grimoire") and 3598/4825 ("Elk Tribe Noble's
