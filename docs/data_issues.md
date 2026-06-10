@@ -1,5 +1,36 @@
 # Data Issues To Investigate
 
+## Del's gear sweep round 2 (2026-06-10) — Swiftguards + rings fixed; Soul Collector weapon sets still messy
+Player report #2 (Del's owner): Wintermarked Swiftguards' Eagle's Mastery
+(Lesser) not counting. Fixed (3 structured entries at 0.6%/stack, max 5,
+mirroring the Greater sibling on Treads of the Arch-Thrall). Full audit of
+Del's equipped 12 found two more:
+- **Maiden's Advantage was description-only on 3 rings** — Frostsilver Ring
+  of Initiative IL 6000 (6% CA + 3.25% Power w/ 2+ enemies), Coldsilver Ring
+  of Initiative IL 5700 and Eilistraee's Beauty IL 1850 (5% / 2.5%). All
+  split per the Bloodlit Veil two-entry convention. The flat CA halves are
+  significant always-on stats that were silently missing.
+- **Omen of Doom IL 4800 carried set 'Whisper of Power' while its partner
+  Codex of Eternal Chains IL 4800 carried 'Impending Doom'** → the 2pc never
+  completed; Del got NO weapon set bonus. Archived IL 3400 tooltip proves
+  Whisper of Power (+7,700 Critical Severity at that tier) belongs to the
+  3400 tier; cross-class tags say 3750+ tiers are Impending Doom. Retagged
+  Omen 4800 to Impending Doom as a MARKER piece (Codex carries the
+  structured 2pc: 2.5% Critical Severity + 2.5% Power), dropping the
+  fabricated "+5,200 Power" text.
+
+**Still open on this family (part of the ~29 dup-name set-conflict pile):**
+- Some Impending Doom pairs carry the structured 2.5/2.5 on BOTH pieces
+  (Scream Seeker + Dread Confessor 4100–5250 → engine counts 5%/5%), others
+  on one piece (Bard 4800, now Warlock 4800 → 2.5%/2.5%). Same in-game set,
+  two different modeled values — needs one convention.
+- The 2.5% CritSev + 2.5% Power model itself is unsourced; the only
+  authoritative text (Codex 3750) says Unleashed grants DPS +5% Base Damage
+  Boost / Heal +3% OH, and charge counts disagree (13 vs 18) between tiers.
+- ASK: screenshot of Del's IL 4800 Omen/Codex tooltip (set line + 2pc text)
+  would settle set name, charge count, and Unleashed magnitudes at endgame
+  tier in one shot.
+
 ## Combat-stacking equip bonuses structured (2026-06-10) — 3 contradictory tooltips still open
 Player report (Del's owner): Wintermarked Hunter Hood's "Critical Breaker"
 (9% Critical Strike at 5 stacks) wasn't counted by Toon Forge — the equip
