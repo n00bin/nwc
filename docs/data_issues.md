@@ -20,16 +20,21 @@ player stat-panel impact. Also fixed: **Reinvigorate** (id 1) was missing
 `type: "percent"`, so the engine routed it as 9 RATING Outgoing Healing
 (~nothing) instead of 9%.
 
-**Still open — needs in-game verification:**
-- **Enduring Precision (id 6) stores player value 6, but its own tooltip
-  note says "increases your Critical Strike by 4% and companion's by up to
-  6%".** The rest of the Enduring family stores the player-side value
-  (Alacrity/Craft/Guard all store 4), yet Enduring Senses was in-game
-  verified at 6%/6% at IL 900. Either the stored 6 overstates player Crit
-  Strike by 2pp, or the "4%" tooltip text scales to 6% at IL 900 (like
-  Senses did) and the note records base text. No tooltip capture in the
-  archives (filename sweep 2026-06-10). Needs an IL-900 Hank the Ranger
-  tooltip or before/after stat-panel check.
+- ~~Enduring Precision (id 6) stores player value 6 vs tooltip note "4%"~~
+  **RESOLVED 2026-06-10: n00b verified in-game — player gets 6% Critical
+  Strike at IL 900.** The stored value was right; the tooltip's "4%" is
+  base-quality text that scales with rune quality (same pattern as Enduring
+  Senses, verified 6%/6% on 2026-05-12). Note text corrected to 6%.
+
+**Still open — needs in-game verification (derived from the above):**
+- **Enduring Alacrity (id 21), Enduring Craft (id 24), Enduring Guard
+  (id 25) all store player value 4 at item_level 900** — taken from the
+  same "your X by 4%" tooltip base text that just proved to mean 6% at
+  IL 900 for Precision. Both verified Enduring runes (Senses, Precision)
+  came out 6% at IL 900, so these three are probably under-stored by 2pp.
+  Check: summon Diana (Movement Speed), Captain Elaina Sartell (Forte), or
+  Eric the Cavalier (Defense) with the rune at IL 900 and read the player
+  stat panel delta. Don't change without verification.
 
 ## Del's gear sweep round 2 (2026-06-10) — Swiftguards + rings fixed; Soul Collector weapon sets still messy
 Player report #2 (Del's owner): Wintermarked Swiftguards' Eagle's Mastery
