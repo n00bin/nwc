@@ -48,6 +48,7 @@ same-day; numbers below re-counted from live data, not carried forward).
 | Share links / saved builds | Implemented | `serializeBuild`/`applyBuild`; incl. `gearIL`, sim settings (`flankUptime`, `simMag`), `contentZone`, `artifactMods` |
 | Resource & heal proc engine layers | Missing | see §Missing-1 |
 | Optimizer (engine-scored, role objectives) | Implemented (local-only) | `js/optimizer-local.js` — gitignored, paid IP, never deployed; button lives in the local-only "Premium" hero group |
+| Conditional-uptime weighting — ALL bonuses (OPT-G1, 2026-06-10) | Implemented | `conditionalDamageUptime` applies to every gear/overload equip bonus (stat grants included, no longer damage-buckets-only) and to non-passive companion proc stat-grants (duty-cycle from structured trigger/chance/duration/cooldownSeconds; party-scope Pack stacks exempt). Kill switch `CONDITIONAL_UPTIME.apply_to_stat_grants=false`; per-bonus pin `uptimeOverride` (0..1, NaN-guarded) on gear equip bonuses and companion `procEffect`. Lines credited <100% show `~X% uptime`. 11 gear.json pins shipped (6 Charged Rejuvenation @0.90, 5 Living Magma @0.55) |
 
 ---
 
@@ -110,6 +111,12 @@ same-day; numbers below re-counted from live data, not carried forward).
 - **Note-4:** `conditionalDamageUptime` returns 1 for zone-tagged bonuses — the
   zone gate upstream already confirmed in-zone, so they are always-on there.
   (Was 0 until 2026-06-09, which silently zeroed every zone delta.)
+- **Note-5 (OPT-G1 landmines, 2026-06-10):** the `vs_enemy: 0.0` family matches
+  `/\bagainst\b|\bvs\b/` in bonus text — broad on purpose, but a non-enemy use
+  of "against" in an effectText would zero a legitimate bonus. Escape hatch:
+  set `uptimeOverride` on that bonus. Also: `alwaysActive` must NEVER double as
+  an uptime override — it drives the stack-split ingestion (permanent baseline
+  + conditional extras); `uptimeOverride` is the only sanctioned pin.
 - Engine consumes canonical short stat names (`Deflect`, `Control Resist`);
   legacy long forms still alias via `STAT_NAME_ALIASES` for old saved builds.
 - Energon (power 201) +35,000 MaxHP is game-verified and intentionally off the

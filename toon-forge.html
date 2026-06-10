@@ -10130,6 +10130,11 @@
     // ranged. EDIT THESE to retune — they only affect the damage estimate
     // (damage-bonus stats are not on the 13-stat panel, so calibration is safe).
     const CONDITIONAL_UPTIME = {
+      // Master switch (OPT-G1, 2026-06-10): apply uptime weighting to ALL
+      // conditional equip bonuses — stat grants included — not only
+      // damage-bucket stats. Set false to restore the legacy damage-only
+      // behavior in one place (instant kill switch, no other code change).
+      apply_to_stat_grants: true,
       self_ramp: 0.85, on_action: 0.85, range_gated: 0.85, positional: 0.80,
       party_stacks: 0.80, high_threshold: 0.55, low_threshold: 0.15,
       vs_enemy: 0.0, on_kill: 0.20, unspecified: 0.60,
@@ -10137,14 +10142,28 @@
         default_duration: 8, default_chance: 0.20,
         // trigger events per second (rotation estimates; pFire saturates so
         // exact values only matter for rare triggers like kill/daily)
-        trigger_rate: { crit: 2.0, hit: 2.0, encounter: 0.3, daily: 0.07, struck: 0.3, kill: 0.02, other: 0.3 }
+        trigger_rate: { crit: 2.0, hit: 2.0, encounter: 0.3, daily: 0.07, struck: 0.3, kill: 0.02, combat_start: 0.017, other: 0.3 }
       }
     };
     function _ctNum(re, txt) { const m = txt.match(re); return m ? parseFloat(m[1] || m[2]) : null; }
     function isDamageBonusStat(stat) { return !!stat && /Damage|Dmg|Boost/i.test(stat) && !/Healing/i.test(stat); }
-    // Returns the assumed in-combat uptime (0..1) for a DAMAGE-bonus equip bonus.
+    // Returns the assumed in-combat uptime (0..1) for a conditional equip
+    // bonus — damage-bucket stats AND stat grants alike (OPT-G1).
     // 1.0 = effectively always-on. Mirrors scripts/measure taxonomy.
     function conditionalDamageUptime(eb) {
+      // Explicit per-bonus data pin: `uptimeOverride: 1` = "always-on, trust
+      // me" (the escape hatch when the text heuristics misread a bonus);
+      // any 0..1 value forces exactly that uptime. Checked FIRST so data
+      // always wins over classification. NOTE: deliberately a NEW field —
+      // alwaysActive already has load-bearing semantics in the stack-split
+      // ingestion (permanent baseline + conditional extra stacks) and must
+      // not double as an uptime override.
+      if (eb && eb.uptimeOverride != null) {
+        const ov = +eb.uptimeOverride;
+        if (!isNaN(ov)) return Math.max(0, Math.min(1, ov));
+        // Malformed override (non-numeric) falls through to classification
+        // rather than silently corrupting stats with NaN.
+      }
       const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
       if (eb.zones && eb.zones.length) return 1;            // zone-gated: the zone gate already confirmed we're in-zone, so it's fully active (full uptime) here — NOT 0, which would zero out the bonus
       // Structured proc model (e.g. "when you use a Daily, +X for 10s"): the
@@ -11043,13 +11062,16 @@
           // wouldn't remove the value). A future AoE scenario toggle can set
           // s.aoeScenario to include them.
           if (eb.requiresMultiEnemy && !s.aoeScenario) continue;
-          // Conditional-uptime weighting: scale DAMAGE-bonus contributions by
+          // Conditional-uptime weighting: scale conditional contributions by
           // assumed in-combat uptime (proc duty-cycle / stack / threshold / etc.).
-          // Damage-bonus stats route to damageBoosts; proc STAT-grants
-          // (uptimeWeighted:true, e.g. "on crit gain 4.5% Critical Strike for
-          // 6s") are weighted the same way and counted at amount × uptime —
-          // the honest sustained average, instead of full value or zero.
-          const uptimeFactor = (isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1;
+          // As of OPT-G1 (2026-06-10) this applies to ALL bonuses — stat
+          // grants included, not just damage-bucket stats — so "+2000 Power
+          // while above 80% HP" counts at its honest sustained average
+          // instead of reading like a permanent Power stick. Flat always-on
+          // bonuses are untouched (conditionalDamageUptime returns 1.0).
+          // Kill switch: CONDITIONAL_UPTIME.apply_to_stat_grants = false.
+          // Per-bonus escape hatch: uptimeOverride (data field, 0..1).
+          const uptimeFactor = (CONDITIONAL_UPTIME.apply_to_stat_grants || isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1;
           // Conditional bonuses (in-combat stacks, procs, group-only, etc.)
           // are pushed with conditional: true so the renderer can filter
           // them out for "standing around" view or include them at max
@@ -11082,7 +11104,7 @@
             if (isConditional) {
               // Purely conditional - full stack value at proc
               buffs.push({
-                source: `${baseLabel} (full ${maxStacks} stacks)`,
+                source: `${baseLabel} (full ${maxStacks} stacks${uptimeFactor < 1 ? `, ~${Math.round(uptimeFactor * 100)}% uptime` : ``})`,
                 conditional: true,
                 [channel]: { [eb.stat]: eb.amount * maxStacks * uptimeFactor }
               });
@@ -11096,7 +11118,7 @@
               const extra = maxStacks - 1;
               if (extra > 0) {
                 buffs.push({
-                  source: `${baseLabel} (full ${maxStacks} stacks)`,
+                  source: `${baseLabel} (full ${maxStacks} stacks${uptimeFactor < 1 ? `, ~${Math.round(uptimeFactor * 100)}% uptime` : ``})`,
                   conditional: true,
                   [channel]: { [eb.stat]: eb.amount * extra * uptimeFactor }
                 });
@@ -11107,7 +11129,9 @@
             // so surface it in the BASE panel (conditional:false) with an
             // uptime tag — not hidden behind the conditional toggle.
             buffs.push({
-              source: baseLabel + (eb.uptimeWeighted ? ` (proc ~${Math.round(uptimeFactor * 100)}% uptime)` : ``),
+              // Any line credited below 100% shows its uptime, so a smaller
+              // number on the panel is always explained in place.
+              source: baseLabel + (uptimeFactor < 1 ? ` (${eb.uptimeWeighted ? 'proc ' : ''}~${Math.round(uptimeFactor * 100)}% uptime)` : ``),
               conditional: eb.uptimeWeighted ? false : isConditional,
               [channel]: { [eb.stat]: eb.amount * uptimeFactor }
             });
@@ -11212,9 +11236,57 @@
             (pe.chance == null || pe.chance >= 100) &&
             !pe.durationSeconds && maxStacks <= 1 &&
             pe.statEffects.every(e => !e || e.scope !== "party");
+          // OPT-G1 (critic round 1, BLOCKER 1): non-passive companion proc
+          // stat grants are duty-cycle weighted with the SAME proc model as
+          // gear bonuses — otherwise a "+9% Crit Sev on encounter use"
+          // companion proc counts at full value while the identical gear
+          // bonus counts at ~0.6, and the optimizer drifts companion-heavy.
+          // Party-scope effects (Part of the Pack) are exempt: their stacks
+          // are group-composition driven (partyPackMeta toggle), not a
+          // duty cycle. Tunables: CONDITIONAL_UPTIME.proc.
+          const procU = alwaysOn ? 1 : (function () {
+            // Per-power escape hatch, mirroring gear's uptimeOverride.
+            if (pe.uptimeOverride != null) {
+              const ov = +pe.uptimeOverride;
+              if (!isNaN(ov)) return Math.max(0, Math.min(1, ov));
+            }
+            const U = CONDITIONAL_UPTIME.proc;
+            const t = String(pe.trigger || '').toLowerCase();
+            let rate = U.trigger_rate.other;
+            if (/crit/.test(t)) rate = U.trigger_rate.crit;
+            else if (/encounter/.test(t)) rate = U.trigger_rate.encounter;
+            else if (/daily/.test(t)) rate = U.trigger_rate.daily;
+            // "receiv" catches "Hit (received)" / "Damage received" — an
+            // INCOMING-hit trigger must not fall through to the outgoing
+            // /hit/ branch below (2.0/s vs 0.3/s — critic round 2).
+            else if (/struck|taking damage|receive damage|damaged|receiv/.test(t)) rate = U.trigger_rate.struck;
+            else if (/kill|defeat/.test(t)) rate = U.trigger_rate.kill;
+            else if (/combat start|entering combat/.test(t)) rate = U.trigger_rate.combat_start;
+            else if (/hit|at.?will|deal damage/.test(t)) rate = U.trigger_rate.hit;
+            const dur = (+pe.durationSeconds) || U.default_duration;
+            const icd = (+pe.cooldownSeconds) || 0;   // internal cooldown caps the duty cycle
+            const chance = (pe.chance != null ? +pe.chance : 100) / 100;
+            let base;
+            if (chance >= 1) {
+              // Guaranteed trigger: duration × cadence, cadence capped by ICD.
+              const effRate = icd ? Math.min(rate, 1 / Math.max(icd, dur)) : rate;
+              base = Math.max(0, Math.min(1, dur * effRate));
+            } else {
+              const window = icd ? Math.max(icd, dur) : dur;
+              const pFire = 1 - Math.pow(1 - Math.max(0, chance), Math.max(0.01, rate * window));
+              const duty = icd ? dur / Math.max(icd, dur) : 1;
+              base = Math.max(0, Math.min(1, pFire * duty));
+            }
+            // Condition gates riding on the trigger text (e.g. Water Archon's
+            // "Attacking full HP target"): a boss is only at full HP for the
+            // opening moments, so apply the same threshold discount gear uses.
+            if (/full h(?:p|ealth)|full-h(?:p|ealth)/.test(t)) base *= CONDITIONAL_UPTIME.high_threshold;
+            return base;
+          })();
           const procRating = {};
           const procPercent = {};
           let labelStacks = 1;
+          let weightedAny = false;
           for (const eff of pe.statEffects) {
             if (!eff || !eff.stat) continue;
             if (eff.scope === "enemy") continue;
@@ -11229,7 +11301,9 @@
             );
             const extraStacks = alreadyBaseline ? Math.max(0, effStacks - 1) : effStacks;
             if (extraStacks <= 0) continue;
-            const amount = (eff.value || 0) * extraStacks * scale;
+            const factor = (eff.scope === "party") ? 1 : procU;
+            if (factor < 1) weightedAny = true;
+            const amount = (eff.value || 0) * extraStacks * scale * factor;
             if (eff.type === "percent") {
               procPercent[eff.stat] = (procPercent[eff.stat] || 0) + amount;
             } else {
@@ -11239,8 +11313,9 @@
           if (Object.keys(procRating).length || Object.keys(procPercent).length) {
             const stackTag = labelStacks > 1 ? ` (full ${labelStacks} stacks)` : "";
             const triggerTag = alwaysOn ? " passive" : (pe.trigger ? ` on ${pe.trigger}` : "");
+            const uptimeTag = weightedAny ? ` ~${Math.round(procU * 100)}% uptime` : "";
             buffs.push({
-              source: label + ` ${alwaysOn ? "" : "proc "}(${r})${stackTag}${triggerTag}`,
+              source: label + ` ${alwaysOn ? "" : "proc "}(${r})${stackTag}${triggerTag}${uptimeTag}`,
               conditional: !alwaysOn,
               ratingStats: procRating,
               percentStats: procPercent
@@ -11410,7 +11485,8 @@
           // it as always-on per the data's intent.
           const isCond = !!(eb.zones && eb.zones.length) || (eb.alwaysActive === false);
           const ctxTag = (eb.zones && eb.zones.length) ? ` (in ${eb.zones.join("/")})` : "";
-          const uptimeFactor = (isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1;
+          // OPT-G1: same universal uptime weighting as gear ingestion above.
+          const uptimeFactor = (CONDITIONAL_UPTIME.apply_to_stat_grants || isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1;
           buffs.push({
             source: `Overload ${i + 1}: ${o.name}${ctxTag}`,
             conditional: isCond,
