@@ -2312,6 +2312,18 @@
         <span id="featured-optimizer-slot" style="display:contents;"></span>
         <span id="featured-builds-slot" style="display:contents;"></span>
       </div>
+      <!-- Premium teaser (LIVE site): shown until the optimizer launches. Hidden
+           on localhost by the loader at the bottom of this file, which reveals the
+           real #tf-featured-group instead. When the optimizer ships, replace this
+           box with the real gated "Optimize" button. -->
+      <div id="tf-premium-soon" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.3rem;padding:0.25rem 0.7rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
+        <span style="font-size:0.58rem;font-weight:800;letter-spacing:0.09em;color:#0c0e14;background:var(--amber);padding:0.12rem 0.5rem;border-radius:999px;text-transform:uppercase;">Coming&nbsp;Soon</span>
+        <div style="display:flex;align-items:center;gap:0.4rem;">
+          <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
+          <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Coming soon for channel members" style="opacity:0.92;" onclick="var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';">🚀 Optimize My Build</button>
+        </div>
+        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-muted);max-width:240px;text-align:center;line-height:1.4;">The AI build optimizer is launching soon as a channel-membership perk. 🔔 Stay tuned!</span>
+      </div>
     </div>
   </div>
 
@@ -16817,6 +16829,9 @@
     var h = location.hostname;
     var local = h === 'localhost' || h === '127.0.0.1' || h === '' || location.protocol === 'file:';
     if (!local) return;
+    // Local dev shows the REAL optimizer button, so hide the live "Coming Soon" teaser.
+    var soon = document.getElementById('tf-premium-soon');
+    if (soon) soon.style.display = 'none';
     var s = document.createElement('script');
     s.src = 'js/optimizer-local.js';
     s.onerror = function () { /* file absent (e.g. deployed) — ignore */ };
