@@ -24,12 +24,23 @@ Del's equipped 12 found two more:
   (Scream Seeker + Dread Confessor 4100–5250 → engine counts 5%/5%), others
   on one piece (Bard 4800, now Warlock 4800 → 2.5%/2.5%). Same in-game set,
   two different modeled values — needs one convention.
-- The 2.5% CritSev + 2.5% Power model itself is unsourced; the only
-  authoritative text (Codex 3750) says Unleashed grants DPS +5% Base Damage
-  Boost / Heal +3% OH, and charge counts disagree (13 vs 18) between tiers.
-- ASK: screenshot of Del's IL 4800 Omen/Codex tooltip (set line + 2pc text)
-  would settle set name, charge count, and Unleashed magnitudes at endgame
-  tier in one shot.
+- ~~The 2.5% model / ASK for a 4800 tooltip~~ **RESOLVED 2026-06-10 (same
+  day):** the archived captures already held the answer — the one-hover-
+  behind batch had the 4,800 Omen Details under the il4450_details filename
+  (now also archived as `_up/warlock-gear/Omen of Doom_IL4800_details.png`).
+  Verified at 4,800: BOTH weapons carry Accuracy 3,120 / Crit Strike 2,880 /
+  **Critical Severity 2,880** / CR 4,320 (Omen was missing its CritSev —
+  player-reported as "crit sev rating off"); the 2pc = 10 Charges →
+  Unleashed (DPS +4.5% Base Damage Boost / Heal +4.5% OH, 20s, refreshable)
+  PLUS flat **+7.5% Critical Severity** + 2.5% Power (the 2.5% CritSev in
+  the model was wrong). Omen's phantom "Damage Bonus 1%" dropped (tooltip
+  line is "+100 Damage" weapon damage, unmodeled). Charge cadence varies by
+  tier (4,450: 13 charges/7s/+4%/15s — keep tier texts distinct if ever
+  structuring mid-tiers).
+- Sibling classes (Rogue Scream Seeker/Dread Confessor, Bard, Wizard,
+  Ranger, Barbarian, Paladin pairs) still carry the old 2.5/2.5 guess and
+  possibly the same missing-third-stat problem — audit against their own
+  collection captures before copying the Warlock numbers.
 
 ## Combat-stacking equip bonuses structured (2026-06-10) — 3 contradictory tooltips still open
 Player report (Del's owner): Wintermarked Hunter Hood's "Critical Breaker"
