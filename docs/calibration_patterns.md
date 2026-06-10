@@ -19,6 +19,31 @@ Inside the band = calibrated. Don't chase.
 
 ---
 
+## Pattern: TIL gap that exactly equals one breakdown line — suspect a STALE BUILD ENTRY before touching constants
+
+**Symptom**: Total Item Level off by a suspiciously clean amount (e.g. exactly
+1,800) that happens to match a whole breakdown line or a sum of slot upgrades.
+**Cause**: The tool build lags the in-game character on one or more slots
+(player upgraded in-game, never updated the build — or vice versa). If you
+"fix" it by anchoring a model constant to close the residual, the constant
+absorbs the stale-entry error and detonates later when the player corrects
+the entry. This is exactly how the phantom Mount Bolster TIL line (1,440
+Celestial base) was born on 2026-06-07 and exposed on 2026-06-10: the anchor
+build's Feet (4,300 vs in-game 5,700) and companion ring (2,600 vs 3,000)
+were stale — 1,800 on the nose.
+**Fix / protocol**: Before anchoring ANY constant against a player build:
+(1) replicate `computeTILBreakdown()` line-by-line against the decoded share
+link; (2) diff every slot against fresh in-game screenshots or an owner
+walkthrough; (3) if a residual matches a clean sum of plausible slot upgrades,
+assume stale entry first; (4) prefer anchors confirmed on TWO independent
+characters — the May-12 Paladin/Ranger pair correctly showed mount-collection
+bolster grants 0 TIL, and a single contaminated anchor overrode them.
+**Verified**: 2026-06-10 via Del Warlock old+new share links — both anchor-day
+numbers (147,736 tool / 147,735 in-game) reproduce exactly under the
+stale-entry model; post-fix the build reads 148,036 vs in-game 148,037.
+
+---
+
 ## Pattern: Rotsteel Ring of Spores — Critical Severity (not Critical Strike)
 
 **Symptom**: Crit Strike rating ~8,000 over OR Crit Severity ~8,000 short, with

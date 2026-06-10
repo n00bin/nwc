@@ -9584,17 +9584,10 @@
       const compBase  = COMP_BOLSTER_BASE_IL[summonedR] || COMP_BOLSTER_BASE_IL.Mythic;
       const compBolsterIL  = Math.round(compBase  * cb);
       if (compBolsterIL > 0)  parts.push({ label: `Comp bolster IL (${summonedR} × ${Math.round(cb*100)}%)`, value: compBolsterIL });
-      // Mount BOLSTER IL contribution (mount COLLECTION) — re-added
-      // 2026-06-07 after n00b found it missing. Parallels the companion
-      // line: base[rarity] × mountBolster%. Indexed by the active mount
-      // power rarity (the only mount rarity in state). The 2026-05-12
-      // removal was wrong — its test only changed a stable mount, never
-      // the collection bolster, so it never saw this bucket.
-      const mb = (state.mountBolster == null ? 100 : +state.mountBolster) / 100;
-      const mountR = state.activeCombatPowerRarity || state.activeEquipPowerRarity || "Mythic";
-      const mountBase = MOUNT_BOLSTER_CONTRIB_IL[mountR] || MOUNT_BOLSTER_CONTRIB_IL.Mythic;
-      const mountBolsterIL = Math.round(mountBase * mb);
-      if (mountBolsterIL > 0)  parts.push({ label: `Mount bolster IL (${mountR} × ${Math.round(mb*100)}%)`, value: mountBolsterIL });
+      // NO mount-bolster TIL line: mount COLLECTION bolster grants 0 Total
+      // Item Level (companion collection bolster does grant TIL — the
+      // asymmetry is real). See the history note where
+      // MOUNT_BOLSTER_CONTRIB_IL used to live (~line 10087) before re-adding.
       const total = parts.reduce((a, p) => a + p.value, 0);
       return { total, parts };
     }
@@ -10084,22 +10077,23 @@
       "Mythic":    3000,   // Obikin guide
       "Celestial": 5850    // n00b in-game test 2026-05-10
     };
-    // Mount BOLSTER-ONLY IL contribution (the "Mount Item Level Contribution"
-    // bucket from your mount COLLECTION) — SEPARATE from the active mount's
-    // equip/combat power IL. The line was wrongly removed 2026-05-12 (that
-    // test only pulled a STABLE mount, never changed the collection bolster).
-    // Celestial anchored to n00b's "Del" Warlock 2026-06-07: tool 145,936 +
-    // 1,800 = in-game 147,735 at 125% bolster -> base 1,440. Other tiers
-    // scaled by the companion table's shape (estimate; verify per rarity).
-    const MOUNT_BOLSTER_CONTRIB_IL = {
-      "Common":    65,
-      "Uncommon":  130,
-      "Rare":      220,
-      "Epic":      328,
-      "Legendary": 480,
-      "Mythic":    720,
-      "Celestial": 1440   // anchored to in-game (Del, 2026-06-07)
-    };
+    // Mount COLLECTION bolster grants NO Total Item Level — unlike the
+    // companion collection bolster (COMP_BOLSTER_BASE_IL above), which does.
+    // History (this line has flip-flopped twice; read before re-adding):
+    //   2026-05-12 removed — Paladin calibrated to ±1 IL and Ranger to ±151
+    //     with NO mount-bolster line. That was the correct signal.
+    //   2026-06-07 re-added (base 1,440 Celestial) anchored to the "Del"
+    //     Warlock — but that anchor was CONTAMINATED: Del's tool build was
+    //     stale vs in-game by exactly 1,800 (Feet still Treads of the
+    //     Arch-Thrall 4,300 vs in-game Wintermarked Trail Boots 5,700 =
+    //     1,400; comp ring still Thayan 2,600 vs True Ice 3,000 = 400).
+    //     The 1,440×125% line papered over that hole.
+    //   2026-06-10 removed again — Del's owner corrected the two stale
+    //     entries, re-exposing a +1,799 gap (1,800 − the known 1-IL anchor
+    //     rounding). Both anchor-day numbers reproduce exactly under this
+    //     model, and it re-agrees with the May-12 Paladin/Ranger matches.
+    // If a future test suggests re-adding: first diff the tool build against
+    // in-game slot-by-slot — a residual gap is usually a stale build entry.
 
     // Insignia tier scaling. Mythic is the baseline (multiplier 1.0)
     // matching the data file's stored values. Other tiers use the table

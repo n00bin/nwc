@@ -33,7 +33,7 @@ same-day; numbers below re-counted from live data, not carried forward).
 | Companion gear | Implemented | routed via `buffs[]` (`compGearToBuff`) — see §Note-1 landmine |
 | Companion bolster (IL × bolster%) | Implemented | verified formula; companion gear/enchant do NOT affect it |
 | Mounts: combat power (125% bolster anchor) | Implemented | magnitudes stored at 125%; engine scales `(1+b/100)/2.25`; `anchorRarity` for Celestial captures |
-| Mounts: equip powers, insignias, insignia bonuses, collars | Implemented | `../data/mount_*.json`; 5-mount loadout rules; mount powers count TIL at rarity IL (Celestial 3,937 vs Mythic 3,000); Mount Bolster IL contribution restored 2026-06-07 |
+| Mounts: equip powers, insignias, insignia bonuses, collars | Implemented | `../data/mount_*.json`; 5-mount loadout rules; mount powers count TIL at rarity IL (Celestial 3,937 vs Mythic 3,000); mount-collection bolster grants NO TIL (2026-06-07 re-add reverted 2026-06-10 — anchor build was stale; see history note in toon-forge.html) |
 | Combined Rating distribution (15 stats) | Implemented | `CR_CORE_STATS` in `toon-forge.html` — in-game verified incl. Forte/Control Bonus/Control Resist |
 | Stat caps / rating formula / Forte distribution | Implemented | `toon-forge-stats.js` (caps), `toon-forge-engine.js` (rating→%, Forte 50/25/25) |
 | Ability scores (per-point conversions) | Implemented | `ABILITY_CONVERSIONS`; CON→HP lives ONLY in the HP model (double-count fixed 2026-06-05) |
