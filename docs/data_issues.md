@@ -26,15 +26,12 @@ player stat-panel impact. Also fixed: **Reinvigorate** (id 1) was missing
   base-quality text that scales with rune quality (same pattern as Enduring
   Senses, verified 6%/6% on 2026-05-12). Note text corrected to 6%.
 
-**Still open — needs in-game verification (derived from the above):**
-- **Enduring Alacrity (id 21), Enduring Craft (id 24), Enduring Guard
-  (id 25) all store player value 4 at item_level 900** — taken from the
-  same "your X by 4%" tooltip base text that just proved to mean 6% at
-  IL 900 for Precision. Both verified Enduring runes (Senses, Precision)
-  came out 6% at IL 900, so these three are probably under-stored by 2pp.
-  Check: summon Diana (Movement Speed), Captain Elaina Sartell (Forte), or
-  Eric the Cavalier (Defense) with the rune at IL 900 and read the player
-  stat panel delta. Don't change without verification.
+- ~~Enduring Alacrity/Craft/Guard store player value 4 (from the same "4%"
+  base tooltip text)~~ **RESOLVED 2026-06-10 (same day): n00b verified all
+  three in-game at 6%.** Values updated 4 → 6 (Movement Speed / Forte /
+  Defense). The whole Enduring family (Senses, Precision, Alacrity, Craft,
+  Guard) is now in-game verified at 6% player-side at IL 900 — tooltips
+  show base-quality text; always store the IL-900 value.
 
 ## Del's gear sweep round 2 (2026-06-10) — Swiftguards + rings fixed; Soul Collector weapon sets still messy
 Player report #2 (Del's owner): Wintermarked Swiftguards' Eagle's Mastery
