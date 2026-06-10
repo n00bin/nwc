@@ -115,6 +115,7 @@ same-day; numbers below re-counted from live data, not carried forward).
 - Energon (power 201) +35,000 MaxHP is game-verified and intentionally off the
   MAX_HP scale — do not normalize.
 - Open data verifications that affect scoring quality live in
-  `docs/data_issues.md` (Balgora equip power id 56, Hellfire Engine Remains
-  set bonus, Ultraviolet Elven Cap 3s/5s conflict, set-suffix clusters,
-  clothing-variant slots).
+  `docs/data_issues.md` (Demonweb Empowerment stack interval 3s/5s, Flayed
+  Legion classes + missing stat, Enchanted Advantage/Awareness real set
+  names, set-suffix clusters, clothing-variant slots). Balgora id 56,
+  Hellfire Remains, and Ultraviolet Cap were all RESOLVED 2026-06-09.

@@ -413,16 +413,14 @@ Crest (445) is Pants — leave them unless a screenshot says otherwise.
 
 Player report flagged the following gear as missing from the site:
 
-- **Slaughterhouse Cindersilk set** — Mod 32+ caster body-**Armor** set (NOT a
-  clothing set — the earlier "clothing" guess was wrong). **Report #105**
-  (2026-06-06) submitted one piece, **Cindersilk Robes**: Armor, Warlock/Wizard,
-  IL 4600, CR 4140 (= 0.9 x IL, fits the body-armor pattern), Accuracy +3319 /
-  Combat Advantage +2484. Slot is confirmed by the class restriction (Shirt/Pants
-  are never class-locked, so a 2-class "Robes" must be body Armor). STILL MISSING
-  from the submission before it can be added: the **equip bonus** (every caster
-  armor has one), the **set name**, and possibly a 3rd stat (its 2-stat budget
-  ~1.26 x IL is light vs siblings at ~1.5-1.86 x IL). AWAITING an in-game tooltip
-  screenshot from n00b (status: open, do NOT add partial/guessed data).
+- **Slaughterhouse Cindersilk set** — Cindersilk Robes RESOLVED 2026-06-09:
+  added as gear id 6876 from n00b's in-game tooltip (Report #105 → Fixed).
+  Armor, Warlock/Wizard, IL 4,600, CR 4,140, Accuracy +3,319 / Combat
+  Advantage +2,484, equip bonus **Ruthless Might** (1.2%/stack Crit Strike +
+  Crit Sev, max 5 = 6%), drops from The Slaughterhouse. The tooltip shows
+  only 2 stats and NO set block — the 2-stat budget is real, and no set is
+  modeled. Other Cindersilk pieces (Hood/Sleeves/Boots etc.) still missing —
+  need tooltips as they drop.
 - **Ritualistic Necklace & Strap** — accessory pieces
 - **Mod 33 gear** — new equipment from the latest module
 
@@ -453,20 +451,18 @@ Fighter variant.
 the submitted stat values directly — they came from a correction
 form on the wrong item, so they should be treated as unverified hints.
 
-## B2 — Mount Equip Power ID 56 "Seeing Red" Missing Stats (2026-05-22)
+## B2 — Mount Equip Power ID 56 "Seeing Red" — RESOLVED 2026-06-09
 
-Mount 271 (Balgora) references equip power ID 56 ("Seeing Red") via `equipRef: 56`.
-That equip power entry in `mount_equip_powers.json` is missing `item_level`,
-`combinedRating`, and `stats` — the fields needed for it to display correctly in the
-mount inspector and to be included in any future optimizer calculations.
-
-**Blocked on:** in-game verification. Someone needs to open Balgora's tooltip in-game
-and read the equip power values directly. (Checked the screenshot archives
-2026-06-09 — docs/audit/_up/ is gear-only; no Balgora capture exists. Still
-needs a fresh in-game screenshot.)
-
-**Action:** Backfill `item_level`, `combinedRating`, and `stats` for equip power ID 56
-in `G:/ai_projects/nwcb/data/mount_equip_powers.json`, then re-run `build-data.py`.
+n00b captured Balgora's Mount Preview in-game (2026-06-09): Seeing Red at
+IL 3,718 shows 12,396 Accuracy proc (40% on encounter, 8s, 15s ICD) and
++3,347 CR. Those values scale EXACTLY to the Celestial anchor (IL 3,937 →
+13,125 Accuracy / 3,544 CR — integer-perfect, and identical template to The
+High Ground id 51, which stores 5.0-per-IL vs Seeing Red's 3.333-per-IL).
+Backfilled id 56 with item_level 3937 / anchorRarity Celestial /
+combinedRating 3544 / cooldownSeconds 15. The same screenshot confirmed
+Hell's Impact (combat power id 87) was a Celestial capture — its entry now
+carries item_level 3937 / anchorRarity Celestial too (930/143/13.9% at 3,718
+= exact 3,937/3,718 scaling of the stored 984/151/14.8%).
 
 ---
 
