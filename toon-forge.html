@@ -10917,6 +10917,39 @@
         if (!bonusInstances[bonus.name]) bonusInstances[bonus.name] = [];
         bonusInstances[bonus.name].push({ slotIdx: stIdx, bonus });
       }
+
+      // ===== exclusiveWith resolution (in-game: greater overwrites lesser) =====
+      // Mutually exclusive bonus pairs never stack in-game — the greater
+      // member's tooltip reads "This effect overwrites <lesser>" and the
+      // lesser's "does not stack with <greater>" (Cavalry's Alarm 3000 >
+      // Warning 2000, Warlord's Motivation 12% > Inspiration 8%, Artificer's
+      // Enticement 3s > Persuasion 2s, Knight's Condemnation 7.5% > Rebuke 5%).
+      // The data's `exclusiveWith` field was display-only (mounts page text),
+      // so slotting both members credited both — the optimizer double-dipped
+      // Alarm + Warning for value that doesn't exist in-game. Resolve before
+      // applying: the loser's instances contribute nothing (a zero-stat note
+      // entry below keeps the stat breakdown honest about why).
+      const exclusivityLoser = {};   // loser bonusName -> winner bonusName
+      for (const bonusName in bonusInstances) {
+        if (!Object.prototype.hasOwnProperty.call(bonusInstances, bonusName)) continue;
+        const b = bonusInstances[bonusName][0].bonus;
+        const rivalName = b.exclusiveWith;
+        if (!rivalName || !bonusInstances[rivalName]) continue;
+        if (exclusivityLoser[bonusName] || exclusivityLoser[rivalName]) continue; // pair already resolved
+        const rival = bonusInstances[rivalName][0].bonus;
+        const overwrites = function (x) { return /overwrites/i.test(String(x.effectText || "")); };
+        // Fallback if a future pair drops the "overwrites" wording: the
+        // member with the larger first number in its effect text wins.
+        const firstNum = function (x) {
+          const m = String(x.effectText || "").match(/(\d[\d,]*(?:\.\d+)?)/);
+          return m ? parseFloat(m[1].replace(/,/g, "")) : 0;
+        };
+        let loserName = rivalName, winnerName = bonusName;
+        if (overwrites(rival) && !overwrites(b)) { winnerName = rivalName; loserName = bonusName; }
+        else if (overwrites(rival) === overwrites(b) && firstNum(rival) > firstNum(b)) { winnerName = rivalName; loserName = bonusName; }
+        exclusivityLoser[loserName] = winnerName;
+      }
+
       const DIMINISHING_MULTIPLIERS = [1, 0.5, 0.25];
       for (const bonusName in bonusInstances) {
         if (!Object.prototype.hasOwnProperty.call(bonusInstances, bonusName)) continue;
@@ -10939,6 +10972,17 @@
         // the in-game stat panel out of combat.
         const isConditional = !bonus.standingActive
           && !!(bonus.condition && String(bonus.condition).trim());
+        // Overwritten by its exclusiveWith partner — contributes nothing.
+        // Push a zero-stat note so the breakdown explains the dead slot
+        // instead of silently dropping the line.
+        if (exclusivityLoser[bonusName]) {
+          buffs.push({
+            source: `Mount ${insts[0].slotIdx + 1} Insignia Bonus: ${bonusName} (no effect — overwritten by ${exclusivityLoser[bonusName]})`,
+            conditional: isConditional,
+            ratingStats: {}, percentStats: {}
+          });
+          continue;
+        }
         for (let i = 0; i < n; i++) {
           const mult = (mode === "linear") ? 1 : (DIMINISHING_MULTIPLIERS[i] || 0);
           if (mult === 0) break;
