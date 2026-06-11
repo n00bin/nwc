@@ -1,5 +1,22 @@
 const PATCH_NOTES_DATA = [
   {
+    "id": "11581560",
+    "title": "Patch Notes for 06/10/2026",
+    "language": {
+      "id": "en"
+    },
+    "summary": "Check out all the exciting changes coming to Neverwinter in our latest patch notes!",
+    "tags": [
+      "nw-launcher",
+      "nw-patch-notes",
+      "nw-news",
+      "neverwinter",
+      "patch-notes",
+      "nw-xbox",
+      "nw-playstation"
+    ]
+  },
+  {
     "id": "11581479",
     "title": "Patch Notes for 06/04/2026",
     "language": {
