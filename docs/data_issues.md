@@ -1,5 +1,19 @@
 # Data Issues To Investigate
 
+## Boon unlock gates + budget corrected from NW Hub screenshot (2026-06-11)
+Re-reading the May-8 NW Hub captures (prompted by n00b's "you should have
+screenshots") surfaced `Screenshot 2026-05-08 084358.png`: the Hub's boon
+panel header reads **"0 / 130 Boon Points"** (we had 132, no recorded
+source) and the tier rows show the real unlock gates — **Tier 2 at 10 pts,
+Tier 3 at 20, Tier 4 at 30, "Advanced" (our Tier 5) at 45** (we had
+20/40/60/80). Obikin89 independently confirms the 45. Both fixed in
+`../data/campaign_boons.json` (provenance notes inline). STILL OPEN: the
+**Master gate** — the Hub shows no lock on the Master row; Obikin
+(mod-20-era) says master ranks unlock at 10/30/60 total spent; we keep the
+conservative 100 until an in-game boon-screen capture settles it. A full
+OCR sweep of the 6.8k-image archive for in-game boon screens is logged at
+`scripts/_boon_scan_hits.txt`.
+
 ## Master boon triggers (2026-06-11) — Deathly Rage wording needs an in-game tooltip screenshot
 n00b reports the LIVE Deathly Rage tooltip triggers on kill **or on losing
 ~50% health in one hit** — wiki (Module 23), NW Hub, and Obikin89 all still
