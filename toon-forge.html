@@ -10222,6 +10222,31 @@
       return 1.0;  // always-on
     }
 
+    // Master campaign boons: assumed in-combat uptime from the boon's
+    // trigger + duration — the same proc duty-cycle model as conditional
+    // equip bonuses. Master boon tooltips say "Chance on X" with no %, so
+    // the default proc chance applies. "Chance on kill" is ~nothing on a
+    // single-target boss; heal-triggered boons ("chance on heal for ≥10%
+    // of the target's health") never fire unless the build actually heals.
+    function masterBoonUptime(mb, healerBuild) {
+      const U = CONDITIONAL_UPTIME.proc;
+      const trig = String(mb.trigger || "").toLowerCase();
+      const dur = (+mb.duration) || U.default_duration;
+      let rate = U.trigger_rate.other;
+      let gate = 1;
+      if (/kill/.test(trig)) rate = U.trigger_rate.kill;
+      else if (/encounter/.test(trig)) rate = U.trigger_rate.encounter;
+      else if (/at.?will/.test(trig)) rate = U.trigger_rate.hit;
+      else if (/daily/.test(trig)) rate = U.trigger_rate.daily;
+      if (/on heal|you heal/.test(trig)) {
+        if (!healerBuild) return 0;
+        rate = U.trigger_rate.other;
+      }
+      if (/below\s*\d+%|health is below/.test(trig)) gate = CONDITIONAL_UPTIME.low_threshold;
+      const pFire = 1 - Math.pow(1 - U.default_chance, Math.max(0.01, rate * dur));
+      return Math.max(0, Math.min(1, pFire * gate));
+    }
+
     // ===== Companion proc-damage layer (TUNABLE config) =====
     // Converts active companions' damage procs ("10% chance on hit to deal X
     // magnitude") into expected bonus magnitude per player hit. Sources are
@@ -10357,13 +10382,22 @@
         }
       }
       // Resolve boons: state.boons is a Map<"tier1:id"/"master:id", {tier, boonId, points|ranks}>
-      // Engine wants: { tier1: [{boon, points}], ..., master: [{boon, ranks}] }
+      // Engine wants: { tier1: [{boon, points}], ..., master: [{boon, ranks, uptime}] }
+      // Heal-trigger master boons only proc on builds that actually heal —
+      // judge by the paragon's native role (paragon-first, role card fallback).
+      let isHealerBuild = String(s.role || "").toLowerCase() === "heal";
+      try {
+        const _pd = findParagon(s.class, s.paragon);
+        const _pr = (_pd && _pd.roles && _pd.roles[0]) ? String(_pd.roles[0]).toLowerCase() : "";
+        if (_pr) isHealerBuild = (_pr === "heal");
+      } catch (e) { /* keep role-card answer */ }
       const campaignBoons = { tier1: [], tier2: [], tier3: [], tier4: [], tier5: [], master: [] };
       for (const [key, v] of s.boons) {
         const boon = findBoonByKey(key);
         if (!boon) continue;
         if (v.tier === "master") {
-          campaignBoons.master.push({ boon, ranks: v.ranks || 0 });
+          campaignBoons.master.push({ boon, ranks: v.ranks || 0,
+            uptime: masterBoonUptime(boon, isHealerBuild) });
         } else {
           campaignBoons[v.tier].push({ boon, points: v.points || 0 });
         }

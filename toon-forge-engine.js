@@ -346,6 +346,10 @@
         var entry = tier[bi];
         if (!entry || !entry.boon) continue;
         var b = entry.boon;
+        // Enemy-family boons (Cultist/Fiend/Dinosaur/Undead damage+resist)
+        // only work against that one family — ~0 uptime in the general boss
+        // sim, same policy as vs-enemy-type equip bonuses. No stat credit.
+        if (b.enemyFamily) continue;
         var pts = Math.min(entry.points || 0, b.maxPoints || 0);
         if (pts <= 0 || !b.stat || !b.perPoint) continue;
         addPercent(result, b.stat, pts * b.perPoint,
@@ -357,9 +361,15 @@
     //
     // Master boons are ALL proc-based ("chance on kill / chance on heal /
     // chance on hit / chance on encounter use") with a short buff
-    // duration. They should NEVER apply to the always-on stat panel.
-    // Engine flags every master boon contribution as conditional so the
-    // Detailed Stats panel only shows them under "Show Conditional".
+    // duration. They should NEVER apply to the always-on stat panel, and
+    // they must not SCORE at full value either — the buff is only up part
+    // of the fight. Each entry may carry `uptime` (0..1, computed by the
+    // caller from the boon's trigger + duration via the conditional-uptime
+    // model); amounts are scaled by it so the optimizer values these
+    // honestly (a "chance on kill" buff is worth ~nothing on a boss).
+    // Contributions stay conditional-flagged so the Detailed Stats panel
+    // only shows them under "Show Conditional". Entries without an uptime
+    // field (standalone engine tests) keep the legacy full-value behavior.
     var master = cb.master || [];
     for (var mi = 0; mi < master.length; mi++) {
       var mentry = master[mi];
@@ -367,14 +377,22 @@
       var mboon = mentry.boon;
       var ranks = Math.min(mentry.ranks || 0, mboon.maxRanks || 0);
       if (ranks <= 0) continue;
+      var up = 1;
+      if (mentry.uptime != null) {
+        up = +mentry.uptime;
+        if (isNaN(up)) up = 1;
+        up = Math.max(0, Math.min(1, up));
+      }
+      if (up <= 0) continue;  // never procs in this sim profile — no credit
+      var upTag = (up < 1) ? " (~" + Math.round(up * 100) + "% uptime)" : "";
       var effects = mboon.perRankEffects || [];
       for (var ei = 0; ei < effects.length; ei++) {
         var eff = effects[ei];
         if (!eff || eff.type !== "percent") continue;
         // Skip enemy-scoped effects (e.g. Blood Lust R1 -1% target Def)
         if (eff.scope === "enemy") continue;
-        addPercent(result, eff.stat, ranks * eff.amount,
-          "Boon: Master/" + mboon.name + " R" + ranks,
+        addPercent(result, eff.stat, ranks * eff.amount * up,
+          "Boon: Master/" + mboon.name + " R" + ranks + upTag,
           /*conditional*/ true);
       }
     }

@@ -1,5 +1,22 @@
 # Data Issues To Investigate
 
+## Master boon triggers (2026-06-11) — Deathly Rage wording needs an in-game tooltip screenshot
+n00b reports the LIVE Deathly Rage tooltip triggers on kill **or on losing
+~50% health in one hit** — wiki (Module 23), NW Hub, and Obikin89 all still
+say "chance on kill" only. The alternate trigger barely moves the modeled
+uptime (both are rare on a boss), but the tooltip wording should be captured
+in-game to settle it. `triggerNote` recorded on the boon in
+`../data/campaign_boons.json`. While verifying, two related notes:
+- Obikin89's claim "you can only pick 1 master boon" (and "2 tier-5 boons,
+  unlock at 45 points") is mod-20-era text; the NW Hub simulator (current,
+  May 2026 screenshots in `docs/calibration/_misc-archive/`) ranks multiple
+  master boons with the escalating cost schedule our data models. If an
+  in-game boon-screen screenshot ever shows a pick limit, revisit
+  `rules.master` in campaign_boons.json.
+- Potion boons (Lingering Medicine/Fortification/Power) gain a proc at max
+  rank per Obikin (HoT / +MaxHP / +Power for 30s after drinking a potion) —
+  unmodeled, `optimizerRelevant: false`, low priority.
+
 ## Companion enhancement multi-stat fix (2026-06-10) — Enduring Precision value needs in-game check
 Player report (relayed by n00b): companion enhancements that do multiple
 things only apply one. Confirmed — the enhancement schema carried a single
