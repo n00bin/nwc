@@ -952,3 +952,11 @@ From Report #19:
   Executioner Gloves/Boots/Vest) should get the same stat-value spot-check.
 - Frostbound boots: Movement Speed contribution to combinedRating inconsistent
   between Hearthboots (1,058) and Stoneboots (1,410) at same 3% — check convention.
+
+## C2 audit side-catches (2026-06-12)
+- Curselord's Raid Longcoat: tooltip's Power condition reads "health 90% or more"
+  (Assault variant reads 50%) — verify our stored condition text per variant.
+- Brynnyr's Demise: capture filename/tooltip says IL 630; our entry says 610.
+- Forged family (Fiend/Devil/Demon/Infernal Coif/Cowl/Hood/Sallet): Skirmisher's
+  Might confirmed 5,000 Power (10% on CA damage, 10s, 30s CD) on all 16 tooltips.
+

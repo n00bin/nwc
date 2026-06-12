@@ -42,3 +42,10 @@ One tooltip capture each settles whether the stat budget is real:
 14. **Sabatons of the Flayed Legion / Shrouds of the Ashen Chant / Greaves of the Red Bastion (IL 4100)** — DEFLATED; already in data_issues as missing-stat suspects
 15. **Ring of Impenetrability +1..+5** — structure is sane (flat 1,701-1,827 x2 + unstructured invuln proc) but the flat values are community-unverifiable
 16. **Shard of Orcus' Wand** — community sources say IL 150; our entry says IL 250. Verify which.
+
+## C2 leftovers needing SET-PANEL captures or name checks (added 2026-06-12)
+17. **Blaspheme Cleaver + Knife (IL 1900)** — the 7,500 Power/Defense/OOH role-proc set bonus lives in the right-side set panel, cropped in every capture. One set-panel shot verifies it.
+18. **Dusk Raid/Assault set (IL 638)** — 5,000 Max HP 2-pc bonus; set panel cropped in all captures.
+19. **The Legion Guard's weapons** — amount corrected to the sourced 1,000; one set-panel capture confirms it in-game.
+20. **"Cerebral/Oceans' Warden Sigils" + "Abyss Striker's Mauler Wristguards"** — ZERO community trace under these names; researcher suspects name drift (e.g. "Abyss CONQUEROR's" exists in Mod-26 patch notes). Check in-game names; 'Enervated Parry'/'Skirmisher's Ferocity' amounts unverifiable until then.
+
