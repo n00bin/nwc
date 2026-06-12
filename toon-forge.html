@@ -2958,6 +2958,11 @@
       // 1st boon ranked = 1 pt/rank, 2nd = 2 pt/rank, ..., 8th = 8 pt/rank.
       masterOrder: [],
       guildBoonPicks: { Offense: null, Defense: null, Utility: null },  // 1 pick per category
+      // Guild boon-structure rank (1-10). Stored boon amounts are RANK-10
+      // values; every guild boon's stat + Combined Rating scale linearly
+      // with this (wiki-verified: 300 stat / 1,200 HP / 80 CR per rank).
+      // One shared rank — players pick their guild's typical structure rank.
+      guildBoonRank: 10,
       // Set<buffName>; grouped buffs auto-deconflict.
       // Defaults are applied for buffs every player has passively (Campfire
       // is everywhere; VIP is permanent for paying players). Invocation
@@ -3069,6 +3074,7 @@
           boons: [...state.boons],
           masterOrder: state.masterOrder,
           guildBoonPicks: state.guildBoonPicks,
+          guildBoonRank: state.guildBoonRank,
           buffs: [...state.buffs],
           partyContent: state.partyContent || "dungeon",
           contentZone: state.contentZone || "",
@@ -3099,6 +3105,9 @@
       // state.boons.has()/state.buffs.has() would throw until repaired.
       state.boons = new Map(s.boons || []);
       state.buffs = new Set(s.buffs || []);
+      // Builds saved before guild boon-structure ranks existed: default to
+      // max rank (the stored amounts' anchor), don't inherit the prior view.
+      if (s.guildBoonRank == null) state.guildBoonRank = 10;
       // Migrate any renamed/merged gear in the saved loadout so the slot keeps
       // its item instead of silently going blank. Rewrites the stored name to
       // the current canonical name and tells the player what changed.
@@ -9391,6 +9400,9 @@
       // contribute to TIL (matches in-game for both Paladin and Ranger
       // builds within ~1%).
       cur = 0; sources = [];
+      // NOTE: IL stays at the flat per-boon 1,000 regardless of structure
+      // rank — owner scoped rank scaling to "amount + Combined Rating"
+      // (2026-06-11); whether the game scales the IL too is unverified.
       if (state.guildBoonPicks) {
         for (const cat of ["Offense", "Defense", "Utility"]) {
           const name = state.guildBoonPicks[cat];
@@ -10603,26 +10615,33 @@
 
       // Guild boons — 1 pick per category (Offense / Defense / Utility).
       // Each active guild boon contributes:
-      //   1) Its specific stat bonus (e.g., +3000 Crit Sev rating)
-      //   2) Its combinedRating distributed to all 13 core stats
-      //      (each Celestial-tier guild boon: CR 800)
+      //   1) Its specific stat bonus, SCALED by the guild's boon-structure
+      //      rank (state.guildBoonRank, 1-10; 300 stat / 1,200 HP per rank)
+      //   2) Its Combined Rating (80 per structure rank) distributed to all
+      //      core stats
       // The CR distribution was previously dropped — verified by n00b
       // 2026-05-11. Only the active 3 picks contribute, NOT the full
-      // unlocked roster.
+      // unlocked roster. Effect-type boons (Enhance Overload, potion/QoL
+      // utilities) carry no stat line but their CR still counts.
+      const gbRank = guildBoonRank();
+      const gbTag = gbRank < 10 ? ` (structure rank ${gbRank})` : "";
       for (const cat of ["Offense", "Defense", "Utility"]) {
         const name = (s.guildBoonPicks || {})[cat];
         if (!name) continue;
         const b = findGuildBoon(cat, name);
-        if (!b || !b.stat) continue;
-        const entry = { source: `Guild ${cat}: ${b.name}` };
-        if (b.statType === "percent") entry.percentStats = { [b.stat]: b.amount || 0 };
-        else                          entry.ratingStats  = { [b.stat]: b.amount || 0 };
-        buffs.push(entry);
-        if (b.combinedRating) {
-          const cr = expandCR(b.combinedRating, 1);
+        if (!b) continue;
+        const scaled = guildBoonAtRank(b, gbRank);
+        if (b.stat && b.statType !== "effect" && scaled.amount) {
+          const entry = { source: `Guild ${cat}: ${b.name}${gbTag}` };
+          if (b.statType === "percent") entry.percentStats = { [b.stat]: scaled.amount };
+          else                          entry.ratingStats  = { [b.stat]: scaled.amount };
+          buffs.push(entry);
+        }
+        if (scaled.combinedRating) {
+          const cr = expandCR(scaled.combinedRating, 1);
           if (cr) {
             buffs.push({
-              source: `Guild ${cat} CR: ${b.name}`,
+              source: `Guild ${cat} CR: ${b.name}${gbTag}`,
               ratingStats: cr
             });
           }
@@ -11804,7 +11823,7 @@
         // Decision 11: active-power rarity must invalidate cache on change
         aepr: state.activeEquipPowerRarity, acpr: state.activeCombatPowerRarity,
         ench: state.enchants, ovr: state.overloads, kits: state.kits,
-        gld: state.guildBoonPicks,
+        gld: state.guildBoonPicks, gbr: state.guildBoonRank,
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
@@ -13192,24 +13211,63 @@
       }
       return null;
     }
+    // Guild boon structures rank 1-10; the data's `amount`/`combinedRating`
+    // are RANK-10 values (wiki-verified: 300 stat / 1,200 HP / 80 Combined
+    // Rating per structure rank, linear; utility effects span
+    // minAmount→maxAmount across the ranks).
+    function guildBoonRank() {
+      const r = +(state.guildBoonRank != null ? state.guildBoonRank : 10);
+      return Math.max(1, Math.min(10, isNaN(r) ? 10 : r));
+    }
+    function guildBoonAtRank(b, rank) {
+      if (!b) return { amount: 0, combinedRating: 0 };
+      const max = +b.maxRank || 10;
+      const r = Math.max(1, Math.min(max, +rank || max));
+      let amount;
+      if (b.perRank && b.perRank.amount != null) amount = +b.perRank.amount * r;
+      else if (b.minAmount != null && b.maxAmount != null && max > 1)
+        amount = +b.minAmount + (+b.maxAmount - +b.minAmount) * (r - 1) / (max - 1);
+      else amount = (+b.amount || 0) * r / max;   // linear from the rank-10 value
+      const crPer = (b.perRank && b.perRank.combinedRating != null)
+        ? +b.perRank.combinedRating
+        : (+b.combinedRating || 0) / max;
+      return { amount: amount, combinedRating: crPer * r };
+    }
     function renderGuildBoonPick(b) {
+      const rank = guildBoonRank();
+      const scaled = guildBoonAtRank(b, rank);
       const isPct = b.statType === "percent";
-      const flat = b.statType === "flat";
-      const v = b.amount;
-      const line = flat
-        ? `${v > 0 ? "+" : ""}${v} ${b.stat}`
-        : `${v > 0 ? "+" : ""}${v}${isPct ? "%" : ""} ${b.stat}`;
+      const isEffect = !b.stat || b.statType === "effect";
+      const v = Math.round(scaled.amount * 10) / 10;
+      const line = isEffect
+        ? (b.notes || "Effect boon — no stat line")
+        : `${v > 0 ? "+" : ""}${v.toLocaleString()}${isPct ? "%" : ""} ${b.stat}`;
+      const crLine = `+${Math.round(scaled.combinedRating).toLocaleString()} Combined Rating`;
       // Card-style section, same language as the gear cards.
       const desc = `<div class="gear-card-section">
-          <div class="gear-card-section-title">Stats</div>
+          <div class="gear-card-section-title">Stats (structure rank ${rank})</div>
           <div class="gear-card-stat-line">${_escHTML(line)}</div>
+          <div class="gear-card-stat-line">${_escHTML(crLine)}</div>
         </div>`;
       return { name: b.name, meta: `IL ${b.item_level || "?"}`, desc };
     }
     function renderGuildBoons() {
       const wrap = document.getElementById("guild-boon-list");
       if (!wrap) return;
-      let html = "";
+      // Structure-rank picker: one shared rank (the guild's typical boon
+      // structure rank) scales every pick's stat and Combined Rating.
+      const curRank = guildBoonRank();
+      let rankOpts = "";
+      for (let r = 1; r <= 10; r++) {
+        rankOpts += `<option value="${r}"${r === curRank ? " selected" : ""}>Rank ${r}</option>`;
+      }
+      let html = `<div class="boon-row has-pts">
+          <div class="boon-row-info">
+            <div class="boon-row-name">Boon structure rank</div>
+            <div class="boon-row-effect">Your guild's structure rank scales every guild boon: 300 stat (1,200 HP) and 80 Combined Rating per rank. Don't know it? Most established guilds run rank 10.</div>
+          </div>
+          <div class="boon-counter"><select id="guild-boon-rank" style="background:var(--panel2,#1b2030);color:inherit;border:1px solid var(--border,#2c3550);border-radius:6px;padding:4px 6px;font-family:inherit;">${rankOpts}</select></div>
+        </div>`;
       for (const cat of ["Offense", "Defense", "Utility"]) {
         const list = getGuildBoonsByCategory(cat);
         const picked = state.guildBoonPicks[cat];
@@ -13225,6 +13283,13 @@
         </div>`;
       }
       wrap.innerHTML = html;
+      const rankSel = wrap.querySelector("#guild-boon-rank");
+      if (rankSel) {
+        rankSel.addEventListener("change", () => {
+          state.guildBoonRank = Math.max(1, Math.min(10, +rankSel.value || 10));
+          renderGuildBoons(); rerenderAll();
+        });
+      }
       wrap.querySelectorAll("[data-guild-cat]").forEach(el => {
         el.addEventListener("click", () => {
           const cat = el.dataset.guildCat;
