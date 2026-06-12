@@ -9400,15 +9400,17 @@
       // contribute to TIL (matches in-game for both Paladin and Ranger
       // builds within ~1%).
       cur = 0; sources = [];
-      // NOTE: IL stays at the flat per-boon 1,000 regardless of structure
-      // rank — owner scoped rank scaling to "amount + Combined Rating"
-      // (2026-06-11); whether the game scales the IL too is unverified.
+      // IL scales with structure rank (100/rank) — player-verified, report
+      // #110/#111: a rank-9 Accuracy Bonus reads IL 900 in-game.
       if (state.guildBoonPicks) {
+        const _gbr = guildBoonRank();
         for (const cat of ["Offense", "Defense", "Utility"]) {
           const name = state.guildBoonPicks[cat];
           if (!name) continue;
           const b = findGuildBoon(cat, name);
-          if (b && b.item_level) { cur += b.item_level; sources.push({ name: `${cat}: ${b.name}`, il: b.item_level }); }
+          if (!b) continue;
+          const il = Math.round(guildBoonAtRank(b, _gbr).itemLevel);
+          if (il) { cur += il; sources.push({ name: `${cat}: ${b.name}${_gbr < 10 ? ` (rank ${_gbr})` : ""}`, il: il }); }
         }
       }
       add("Guild boons", cur, sources);
@@ -13220,7 +13222,7 @@
       return Math.max(1, Math.min(10, isNaN(r) ? 10 : r));
     }
     function guildBoonAtRank(b, rank) {
-      if (!b) return { amount: 0, combinedRating: 0 };
+      if (!b) return { amount: 0, combinedRating: 0, itemLevel: 0 };
       const max = +b.maxRank || 10;
       const r = Math.max(1, Math.min(max, +rank || max));
       let amount;
@@ -13231,7 +13233,12 @@
       const crPer = (b.perRank && b.perRank.combinedRating != null)
         ? +b.perRank.combinedRating
         : (+b.combinedRating || 0) / max;
-      return { amount: amount, combinedRating: crPer * r };
+      // IL scales 100/rank too — player-verified (report #110/#111: rank-9
+      // Accuracy Bonus reads 2,700 stat / IL 900 in-game).
+      const ilPer = (b.perRank && b.perRank.itemLevel != null)
+        ? +b.perRank.itemLevel
+        : (+b.item_level || 0) / max;
+      return { amount: amount, combinedRating: crPer * r, itemLevel: ilPer * r };
     }
     function renderGuildBoonPick(b) {
       const rank = guildBoonRank();
@@ -13249,7 +13256,7 @@
           <div class="gear-card-stat-line">${_escHTML(line)}</div>
           <div class="gear-card-stat-line">${_escHTML(crLine)}</div>
         </div>`;
-      return { name: b.name, meta: `IL ${b.item_level || "?"}`, desc };
+      return { name: b.name, meta: `IL ${Math.round(scaled.itemLevel) || b.item_level || "?"}`, desc };
     }
     function renderGuildBoons() {
       const wrap = document.getElementById("guild-boon-list");
@@ -13264,7 +13271,7 @@
       let html = `<div class="boon-row has-pts">
           <div class="boon-row-info">
             <div class="boon-row-name">Boon structure rank</div>
-            <div class="boon-row-effect">Your guild's structure rank scales every guild boon: 300 stat (1,200 HP) and 80 Combined Rating per rank. Don't know it? Most established guilds run rank 10.</div>
+            <div class="boon-row-effect">Your guild's structure rank scales every guild boon: 300 stat (1,200 HP), 80 Combined Rating, and 100 item level per rank. Don't know it? Most established guilds run rank 10.</div>
           </div>
           <div class="boon-counter"><select id="guild-boon-rank" style="background:var(--panel2,#1b2030);color:inherit;border:1px solid var(--border,#2c3550);border-radius:6px;padding:4px 6px;font-family:inherit;">${rankOpts}</select></div>
         </div>`;
