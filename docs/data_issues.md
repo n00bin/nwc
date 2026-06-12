@@ -1,5 +1,20 @@
 # Data Issues To Investigate
 
+## Race traits structured (2026-06-11) — 3 leftovers need an in-game look
+Player report (relayed by n00b): Gith's +5% Combat Advantage wasn't counted.
+Audit found 10 of 15 races had description-only traits with no structured
+stats — all now wired (see news staging). Remaining opens:
+- **Gith "Decentralized Mind"** — Control Resist amount unknown; the wiki
+  instead lists "Gith Endurance" (+5% stamina regen) as the second trait,
+  so the current in-game Gith trait list/names need a look.
+- **Half-Orc "Furious Assault"** — our old text said "on first hit of an
+  encounter power"; wiki says unconditional +5% Critical Severity (used
+  that). Worth an in-game tooltip glance to confirm the rework wording.
+- Unmodeled by design: Dwarf Stand Your Ground (knock resist, PvP-bugged),
+  Half-Orc Swift Charge (move-speed proc), Tiefling Infernal Wrath
+  (defensive proc — awaiting survivability layer), Wood Elf Wild Step
+  (slow resist), Drow/Menzo Darkfire/Faerie Fire (enemy debuff encounter).
+
 ## Boon unlock gates + budget corrected from NW Hub screenshot (2026-06-11)
 Re-reading the May-8 NW Hub captures (prompted by n00b's "you should have
 screenshots") surfaced `Screenshot 2026-05-08 084358.png`: the Hub's boon

@@ -327,13 +327,18 @@
         "Companion Gear: " + (citem.name || cslot) + " (%)");
     }
 
-    // 4. Race traits' percentStats
+    // 4. Race traits' percentStats (+ratingStats). A trait may carry
+    //    `conditional: true` (e.g. Aasimar's Healing Hands party aura,
+    //    Tiefling's Bloodhunt execute window) — propagated so the panel
+    //    can gate it behind "Show Conditional".
     var race = character.race;
     if (race && race.traits) {
       for (var t = 0; t < race.traits.length; t++) {
         var trait = race.traits[t];
         ingestPercentStats(result, trait.percentStats,
-          "Race: " + race.name + " / " + trait.name);
+          "Race: " + race.name + " / " + trait.name, !!trait.conditional);
+        ingestRatingStats(result, trait.ratingStats,
+          "Race: " + race.name + " / " + trait.name, !!trait.conditional);
       }
     }
 
