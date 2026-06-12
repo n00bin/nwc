@@ -1,10 +1,10 @@
 # Optimizer Data Screen (OPT-G3 Tier A)
 
-Generated 2026-06-11 — 6332 gear entries screened.
+Generated 2026-06-12 — 6332 gear entries screened.
 
-**Flags:** 113 CRITICAL · 175 WARN · 104 INFO · 1374 entries missing `source` (provenance backlog)
+**Flags:** 113 CRITICAL · 175 WARN · 1 INFO · 1374 entries missing `source` (provenance backlog)
 
-Per check: {'C1-inflated': 47, 'C2-rating-absurd': 80, 'C1-deflated': 30, 'C2-rating-off-family': 129, 'C3-dup-conflict': 2, 'C4-phantom-set': 104}
+Per check: {'C1-inflated': 47, 'C2-rating-absurd': 80, 'C1-deflated': 30, 'C2-rating-off-family': 129, 'C3-dup-conflict': 2, 'C4-inert-set-tags': 1}
 
 | Sev | Check | id | Item | Slot | IL | Why |
 |---|---|---|---|---|---|---|
@@ -296,107 +296,4 @@ Per check: {'C1-inflated': 47, 'C2-rating-absurd': 80, 'C1-deflated': 30, 'C2-ra
 | WARN | C2-rating-off-family | 4723 | Wootz Lute (IL 500) | Off Hand | 500 | rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0 |
 | WARN | C3-dup-conflict | 465 | Aegis of the Condemned · IL 4800 | Off Hand | 4800 | 2 copies (ids [465, 5331]) with DIFFERENT stats/bonuses |
 | WARN | C3-dup-conflict | 252 | Cosmic Band of Deflection | Ring | 2400 | 2 copies (ids [252, 775]) with DIFFERENT stats/bonuses |
-| INFO | C4-phantom-set | 5319 | Coldsilver Band of Faith | Ring | 5700 | set 'Rings: The Reched Edge' needs 11 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5380 | Frostbound Hearthbinders | Arms | 4700 | set 'Winterworn Harness' needs 6 pieces but exists in only 4 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 10 | The Spine of Dominion | Ring | 4150 | set 'Rings: Shackles of Divinity' needs 8 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 115 | Belt of the Forsaken | Belt | 4050 | set 'Focused Radiance' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 118 | Nightpiercer Bindings | Belt | 4050 | set 'Finish the Job' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 242 | Ritualistic Necklace | Neck | 4050 | set 'Malignant Energy' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 263 | Girdle of the Crimson Oath | Belt | 4050 | set 'Crimson Retaliation' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5326 | Veinlit Earthhard Guard | Clothing: Jotunskar | 3800 | set 'Clothing: Jotunskar' needs 11 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 244 | Dreadbreaker Hoop | Ring | 3500 | set 'Rings: The Dread Sanctum' needs 4 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 108 | The Thorned Edict | Ring | 3450 | set 'Tyrators' needs 8 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 676 | Locket of the Caldera | Neck | 3200 | set 'Volcanic Jewels' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 237 | Choker of Searing Magma | Neck | 2800 | set 'Magmatic Efficiency' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 548 | Bloodbrass Hoop | Ring | 2800 | set 'Rings: Pirates' Skyhold Region' needs 4 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 495 | Mark of the Adept | Shirt | 2600 | set 'Enchanted Forte' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 867 | Sash of Shooting Stars | Belt | 2600 | set 'Astral Dash' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5077 | Pulsar Coil | Armor | 2600 | set 'Gladiator's Focus' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 863 | Detector's Choker | Neck | 2500 | set 'Unstable Drive' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 869 | Belt of Blinding Radiance | Belt | 2300 | set 'Rune of Replenishment' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 249 | Malachite Abyssal Loop | Ring | 2250 | set 'Abyssal Fury' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 858 | Draining Talisman | Neck | 2250 | set 'Astral Absorption' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 951 | Jewel of the Marilith | Neck | 2050 | set 'Marilith Strike' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 955 | Hypnotizing Pendant | Neck | 2050 | set 'Ruthless Domination' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 990 | Lolthian Vengeance | Ring | 2050 | set 'Lolthian Might' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 239 | Netherese Engineer's Pendant | Neck | 2000 | set 'Rune of the Underdark' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 953 | House Baenre Brooch | Neck | 2000 | set 'Dashing Action' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 957 | Sanity Preservation Choker | Neck | 2000 | set 'Attuned Eye of Odran' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5089 | Bregan D'aerthe Expert's Coil | Armor | 2000 | set 'Mystic Inspiration' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 246 | Eilistraee's Enduring | Ring | 1850 | set 'The Dark Maiden' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 236 | Tiamat's Golden Necklace | Neck | 1800 | set 'Tiamat's Prized Possessions' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 959 | Assassin's Choker | Neck | 1800 | set 'Assassin's Luck' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 961 | Tentacle Eye | Neck | 1800 | set 'Tentacle Rod' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 172 | Grand Alliance Pactblade | Main Hand | 1700 | set 'Brute's Expertise' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 4023 | Darklake Ward Ring | Ring | 1700 | set 'Rings of the Demonweb Pits' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5137 | Ancient Scalebreaker's Sleeves | Arms | 1700 | set 'Scalebreaker's Gear' needs 11 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1175 | Dragonmind Clasp | Belt | 1600 | set 'Insightful Alacrity' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1177 | Dragonhide Sash | Belt | 1600 | set 'Aggressive Alacrity' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1179 | Dragonscale Neckguard | Neck | 1600 | set 'Vanguard's Alacrity' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1181 | Dragonsoul Brooch | Neck | 1600 | set 'Celestial Alacrity' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 240 | Mythallar Shard | Neck | 1500 | set 'Mythallar' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 238 | Wrathful Strangler | Neck | 1400 | set 'Wrathful Bindings' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 589 | Captain's Girdle | Belt | 1400 | set 'Bloodgold Gear' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1474 | Upper Pact Brands of the Blaze-bond | Pants | 1325 | set 'Avernus Campaign Leveling Conduits' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1339 | Band of Air | Ring | 1300 | set 'Queen's Empowerment' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 3695 | Eternal Helmet | Head | 1300 | set 'Eternal Armor Set' needs 5 pieces but exists in only 4 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 177 | Lionheart Pact Blade | Main Hand | 1200 | set 'Lionheart' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 141 | Alabaster Pact Blade | Main Hand | 1000 | set 'Alabaster' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 147 | Burnished Pact Blade | Main Hand | 1000 | set 'Burnished' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 171 | Golden Pact Blade of the Watcher | Main Hand | 1000 | set 'Watcher' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 182 | Mountaineer Pact Blade | Main Hand | 1000 | set 'Mountaineer' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1550 | Protege's Chained Robe | Armor | 980 | set 'Protege Set' needs 9 pieces but exists in only 8 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 4917 | Sunset Rapiera | Main Hand | 800 | set 'Set Sun' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 4951 | Curseford's Raid Ushanka | Armor | 770 | set 'Survivor's Savagery' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 4952 | Curseford's Raid Longcoat | Armor | 770 | set 'Warden's Balance' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 4953 | Curseford's Raid Bracers | Armor | 770 | set 'Survivor's Finesse' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 4954 | Curseford's Raid Pigaches | Armor | 770 | set 'Survivor's Stride' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 4584 | Umbral Assault Vest | Armor | 728 | set 'Umbral Assault' needs 4 pieces but exists in only 3 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5024 | Primal Raid Barakoa | Armor | 700 | set 'Chultan Remedy' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5025 | Primal Raid Kiuno | Armor | 700 | set 'Chultan Guard' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5026 | Primal Raid Shabas | Armor | 700 | set 'Butcher's Might' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5027 | Primal Raid Viatus | Armor | 700 | set 'Executioner's Zeal' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5029 | Huntsman Raid Longcoat | Armor | 672 | set 'Challenger's Guard' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5030 | Huntsman Raid Cowl | Armor | 672 | set 'Great Hunter' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5034 | Huntsman Raid Wristguards | Armor | 672 | set 'Challenger's Might' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5035 | Huntsman Raid Pigaches | Armor | 672 | set 'Executioner's Haste' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5317 | Chitters's Fangs | Armor | 672 | set 'Hunts of Omu' needs 18 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5047 | Pilgrim Raid Barakeh | Armor | 644 | set 'Chultan Hunter' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5048 | Pilgrim Assault Manteel | Armor | 644 | set 'Death Defier's Guard' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5050 | Pilgrim Raid Crackows | Armor | 644 | set 'Wanderer's Vigor' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5051 | Pilgrim Raid Sevars | Armor | 644 | set 'Death Defier's Might' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5264 | Black Draconic Guise | Head | 630 | set 'Artifacts and Gear in Tyranny of Dragons' needs 5 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5266 | Bloodlord's Visage | Head | 630 | set 'Demonic Artifacts and Gear' needs 6 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5267 | Bloodstained Shirt | Shirt | 630 | set 'Artifacts and Gear in Elemental Evil' needs 13 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 3543 | Pioneer Assault Sevars | Arms | 616 | set 'Pioneer Armor' needs 4 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5039 | Pioneer Raid Crackows | Armor | 616 | set 'Leader's Dash' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5040 | Pioneer Raid Sevars | Armor | 616 | set 'Leader's Might' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5041 | Pioneer Raid Manteel | Armor | 616 | set 'Leader's Guard' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5042 | Pioneer Raid Barakeh | Armor | 616 | set 'Leader's Vitality' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 2049 | Greater Ostorian Ring of Skold | Ring | 609 | set 'Storm King's Thunder Curiosities' needs 8 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 2358 | Lostmauth's Hoard Necklace | Neck | 600 | set 'Lostmauth's Hoard' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5055 | League's Raid Barakeh | Armor | 588 | set 'Warden's Defense' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5056 | League's Raid Manteel | Armor | 588 | set 'Survivor's Guard' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5057 | League's Raid Sevars | Armor | 588 | set 'Survivor's Might' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5058 | League's Assault Crackows | Armor | 588 | set 'Warden's Haste' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1437 | Chains of Glory | Neck | 550 | set 'Glorious Light' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1439 | The Engine Master's Mantle | Neck | 550 | set 'Dark Remnants' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1597 | Wyvern's Eye Necklace | Neck | 550 | set 'Armaments of the Wyvern' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1598 | Electric Collar | Neck | 550 | set 'Armaments of Constructed Demise' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1599 | Jhesyra's Tattered Mantle | Neck | 550 | set 'Apprentice's Spoils' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1600 | Woven Vine | Neck | 550 | set 'Enchanted Thumb' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1601 | Reflective Collar | Neck | 550 | set 'Reflective Armaments' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1607 | Necklace of the Mad Mage | Neck | 550 | set 'Mad Dash' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 2094 | Greater Belt of Black Ice | Belt | 501 | set 'Black Ice set' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 241 | Iridescent Diamond Pendant | Neck | 350 | set 'Diamond' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1313 | Starshard Choker | Neck | 350 | set 'Star' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1842 | Cincture of Atropal Essence | Belt | 350 | set 'Soulmonger' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1889 | Wrap of the Serpent | Belt | 350 | set 'Skin of the Serpent' needs 3 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1890 | Skull Lord Sash | Belt | 350 | set 'Skull Lord' needs 3 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 5181 | Primal Omihuiclli | Main Hand | 350 | set 'Primal Weapons' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 6577 | Headsman's Greataxe | Artifact Equipment | 350 | set 'Weapons of the Headsman' needs 2 pieces but exists in only 1 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 9 | Apocalypse Choker | Neck | 0 | set 'Apocalypse' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1249 | Barovian Lavaliere | Neck | 0 | set 'Ravenloft' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1253 | Carcanet of the Dead | Neck | 0 | set 'Dead' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 1254 | Blood Raven Pendant | Neck | 0 | set 'Blood Raven' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
-| INFO | C4-phantom-set | 2046 | Horn of Valhalla | Neck | 0 | set 'Valhalla's Rebuke' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable? |
+| INFO | C4-inert-set-tags | None | (70 sets) | - | None | 70 incompletable set tags with NO modeled bonus — scoring-inert; strip opportunistically on capture evidence |
