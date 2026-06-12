@@ -2958,11 +2958,13 @@
       // 1st boon ranked = 1 pt/rank, 2nd = 2 pt/rank, ..., 8th = 8 pt/rank.
       masterOrder: [],
       guildBoonPicks: { Offense: null, Defense: null, Utility: null },  // 1 pick per category
-      // Guild boon-structure rank (1-10). Stored boon amounts are RANK-10
-      // values; every guild boon's stat + Combined Rating scale linearly
-      // with this (wiki-verified: 300 stat / 1,200 HP / 80 CR per rank).
-      // One shared rank — players pick their guild's typical structure rank.
-      guildBoonRank: 10,
+      // Guild boon-structure ranks (1-10), one PER CATEGORY — Offense,
+      // Defense and Utility boons come from three different stronghold
+      // structures that can sit at three different levels. Stored boon
+      // amounts are RANK-10 values; each pick's stat + Combined Rating +
+      // item level scale linearly with its category's rank
+      // (300 stat / 1,200 HP, 80 CR, 100 IL per rank — player-verified).
+      guildBoonRanks: { Offense: 10, Defense: 10, Utility: 10 },
       // Set<buffName>; grouped buffs auto-deconflict.
       // Defaults are applied for buffs every player has passively (Campfire
       // is everywhere; VIP is permanent for paying players). Invocation
@@ -3074,7 +3076,7 @@
           boons: [...state.boons],
           masterOrder: state.masterOrder,
           guildBoonPicks: state.guildBoonPicks,
-          guildBoonRank: state.guildBoonRank,
+          guildBoonRanks: state.guildBoonRanks,
           buffs: [...state.buffs],
           partyContent: state.partyContent || "dungeon",
           contentZone: state.contentZone || "",
@@ -3105,9 +3107,13 @@
       // state.boons.has()/state.buffs.has() would throw until repaired.
       state.boons = new Map(s.boons || []);
       state.buffs = new Set(s.buffs || []);
-      // Builds saved before guild boon-structure ranks existed: default to
-      // max rank (the stored amounts' anchor), don't inherit the prior view.
-      if (s.guildBoonRank == null) state.guildBoonRank = 10;
+      // Builds saved before guild boon-structure ranks existed default to
+      // max rank (the stored amounts' anchor); builds from the brief
+      // single-rank era migrate that one rank to all three categories.
+      if (s.guildBoonRanks == null) {
+        const _r = (s.guildBoonRank != null) ? Math.max(1, Math.min(10, +s.guildBoonRank || 10)) : 10;
+        state.guildBoonRanks = { Offense: _r, Defense: _r, Utility: _r };
+      }
       // Migrate any renamed/merged gear in the saved loadout so the slot keeps
       // its item instead of silently going blank. Rewrites the stored name to
       // the current canonical name and tells the player what changed.
@@ -9401,14 +9407,15 @@
       // builds within ~1%).
       cur = 0; sources = [];
       // IL scales with structure rank (100/rank) — player-verified, report
-      // #110/#111: a rank-9 Accuracy Bonus reads IL 900 in-game.
+      // #110/#111: a rank-9 Accuracy Bonus reads IL 900 in-game. Each
+      // category structure has its own rank.
       if (state.guildBoonPicks) {
-        const _gbr = guildBoonRank();
         for (const cat of ["Offense", "Defense", "Utility"]) {
           const name = state.guildBoonPicks[cat];
           if (!name) continue;
           const b = findGuildBoon(cat, name);
           if (!b) continue;
+          const _gbr = guildBoonRankFor(cat);
           const il = Math.round(guildBoonAtRank(b, _gbr).itemLevel);
           if (il) { cur += il; sources.push({ name: `${cat}: ${b.name}${_gbr < 10 ? ` (rank ${_gbr})` : ""}`, il: il }); }
         }
@@ -10624,14 +10631,15 @@
       // The CR distribution was previously dropped — verified by n00b
       // 2026-05-11. Only the active 3 picks contribute, NOT the full
       // unlocked roster. Effect-type boons (Enhance Overload, potion/QoL
-      // utilities) carry no stat line but their CR still counts.
-      const gbRank = guildBoonRank();
-      const gbTag = gbRank < 10 ? ` (structure rank ${gbRank})` : "";
+      // utilities) carry no stat line but their CR still counts. Each
+      // category structure has its OWN rank.
       for (const cat of ["Offense", "Defense", "Utility"]) {
         const name = (s.guildBoonPicks || {})[cat];
         if (!name) continue;
         const b = findGuildBoon(cat, name);
         if (!b) continue;
+        const gbRank = guildBoonRankFor(cat);
+        const gbTag = gbRank < 10 ? ` (structure rank ${gbRank})` : "";
         const scaled = guildBoonAtRank(b, gbRank);
         if (b.stat && b.statType !== "effect" && scaled.amount) {
           const entry = { source: `Guild ${cat}: ${b.name}${gbTag}` };
@@ -11825,7 +11833,7 @@
         // Decision 11: active-power rarity must invalidate cache on change
         aepr: state.activeEquipPowerRarity, acpr: state.activeCombatPowerRarity,
         ench: state.enchants, ovr: state.overloads, kits: state.kits,
-        gld: state.guildBoonPicks, gbr: state.guildBoonRank,
+        gld: state.guildBoonPicks, gbr: state.guildBoonRanks,
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
@@ -13216,10 +13224,25 @@
     // Guild boon structures rank 1-10; the data's `amount`/`combinedRating`
     // are RANK-10 values (wiki-verified: 300 stat / 1,200 HP / 80 Combined
     // Rating per structure rank, linear; utility effects span
-    // minAmount→maxAmount across the ranks).
-    function guildBoonRank() {
-      const r = +(state.guildBoonRank != null ? state.guildBoonRank : 10);
+    // minAmount→maxAmount across the ranks). Each CATEGORY (Offense /
+    // Defense / Utility) is its own stronghold structure with its own rank.
+    function guildBoonRankFor(cat) {
+      const m = state.guildBoonRanks || {};
+      let r = m[cat];
+      if (r == null) r = (state.guildBoonRank != null) ? state.guildBoonRank : 10;  // legacy single-rank state
+      r = +r;
       return Math.max(1, Math.min(10, isNaN(r) ? 10 : r));
+    }
+    // Which category a boon belongs to (for rank lookup from a bare boon).
+    function guildBoonCategoryOf(b) {
+      if (!b) return null;
+      if (b.category) return b.category;  // user-added boons carry it
+      if (typeof GUILD_BOONS_DATA !== "undefined") {
+        for (const cat of ["Offense", "Defense", "Utility"]) {
+          if ((GUILD_BOONS_DATA[cat] || []).some(x => x.name === b.name)) return cat;
+        }
+      }
+      return null;
     }
     function guildBoonAtRank(b, rank) {
       if (!b) return { amount: 0, combinedRating: 0, itemLevel: 0 };
@@ -13241,7 +13264,7 @@
       return { amount: amount, combinedRating: crPer * r, itemLevel: ilPer * r };
     }
     function renderGuildBoonPick(b) {
-      const rank = guildBoonRank();
+      const rank = guildBoonRankFor(guildBoonCategoryOf(b) || "Offense");
       const scaled = guildBoonAtRank(b, rank);
       const isPct = b.statType === "percent";
       const isEffect = !b.stat || b.statType === "effect";
@@ -13261,42 +13284,41 @@
     function renderGuildBoons() {
       const wrap = document.getElementById("guild-boon-list");
       if (!wrap) return;
-      // Structure-rank picker: one shared rank (the guild's typical boon
-      // structure rank) scales every pick's stat and Combined Rating.
-      const curRank = guildBoonRank();
-      let rankOpts = "";
-      for (let r = 1; r <= 10; r++) {
-        rankOpts += `<option value="${r}"${r === curRank ? " selected" : ""}>Rank ${r}</option>`;
-      }
-      let html = `<div class="boon-row has-pts">
-          <div class="boon-row-info">
-            <div class="boon-row-name">Boon structure rank</div>
-            <div class="boon-row-effect">Your guild's structure rank scales every guild boon: 300 stat (1,200 HP), 80 Combined Rating, and 100 item level per rank. Don't know it? Most established guilds run rank 10.</div>
-          </div>
-          <div class="boon-counter"><select id="guild-boon-rank" style="background:var(--panel2,#1b2030);color:inherit;border:1px solid var(--border,#2c3550);border-radius:6px;padding:4px 6px;font-family:inherit;">${rankOpts}</select></div>
-        </div>`;
+      // Each category (Offense / Defense / Utility) is its own stronghold
+      // structure with its OWN rank — three independent rank pickers.
+      let html = `<div style="font-size:0.78rem;color:var(--text-dim);margin:0 0 6px;">Each boon scales with its structure's rank: 300 stat (1,200 HP), 80 Combined Rating, and 100 item level per rank. Set each structure's rank below — established guilds usually run rank 10.</div>`;
       for (const cat of ["Offense", "Defense", "Utility"]) {
         const list = getGuildBoonsByCategory(cat);
         const picked = state.guildBoonPicks[cat];
         const b = picked ? findGuildBoon(cat, picked) : null;
         const display = b ? renderGuildBoonPick(b).desc : "no pick yet";
         const info = b ? ` <button class="chip-info" data-details-type="guild_boon" data-details-key="${_escAttr(b.name)}" title="See guild boon details">\u{1F50D}</button>` : "";
+        const curRank = guildBoonRankFor(cat);
+        let rankOpts = "";
+        for (let r = 1; r <= 10; r++) {
+          rankOpts += `<option value="${r}"${r === curRank ? " selected" : ""}>Rank ${r}</option>`;
+        }
         html += `<div class="boon-row ${b ? "has-pts" : ""}" style="cursor:pointer;" data-guild-cat="${cat}">
           <div class="boon-row-info">
             <div class="boon-row-name">${cat} — ${b ? b.name : "(none)"}${info}</div>
             <div class="boon-row-effect">${display} · ${list.length} options</div>
           </div>
-          <div class="boon-counter"><span style="font-size:0.78rem;color:var(--text-dim);">click to pick</span></div>
+          <div class="boon-counter" style="display:flex;flex-direction:column;gap:4px;align-items:flex-end;">
+            <select class="guild-boon-rank" data-rank-cat="${cat}" title="${cat} structure rank — scales this boon's stat, Combined Rating and item level" style="background:var(--panel2,#1b2030);color:inherit;border:1px solid var(--border,#2c3550);border-radius:6px;padding:3px 5px;font-family:inherit;font-size:0.78rem;">${rankOpts}</select>
+            <span style="font-size:0.78rem;color:var(--text-dim);">click to pick</span>
+          </div>
         </div>`;
       }
       wrap.innerHTML = html;
-      const rankSel = wrap.querySelector("#guild-boon-rank");
-      if (rankSel) {
-        rankSel.addEventListener("change", () => {
-          state.guildBoonRank = Math.max(1, Math.min(10, +rankSel.value || 10));
+      wrap.querySelectorAll(".guild-boon-rank").forEach(sel => {
+        sel.addEventListener("click", (e) => e.stopPropagation());  // row click opens the picker
+        sel.addEventListener("change", (e) => {
+          e.stopPropagation();
+          if (!state.guildBoonRanks) state.guildBoonRanks = { Offense: 10, Defense: 10, Utility: 10 };
+          state.guildBoonRanks[sel.dataset.rankCat] = Math.max(1, Math.min(10, +sel.value || 10));
           renderGuildBoons(); rerenderAll();
         });
-      }
+      });
       wrap.querySelectorAll("[data-guild-cat]").forEach(el => {
         el.addEventListener("click", () => {
           const cat = el.dataset.guildCat;
