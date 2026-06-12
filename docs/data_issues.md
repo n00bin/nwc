@@ -14,13 +14,19 @@ conservative 100 until an in-game boon-screen capture settles it. A full
 OCR sweep of the 6.8k-image archive for in-game boon screens is logged at
 `scripts/_boon_scan_hits.txt`.
 
-## Master boon triggers (2026-06-11) — Deathly Rage wording needs an in-game tooltip screenshot
-n00b reports the LIVE Deathly Rage tooltip triggers on kill **or on losing
-~50% health in one hit** — wiki (Module 23), NW Hub, and Obikin89 all still
-say "chance on kill" only. The alternate trigger barely moves the modeled
-uptime (both are rare on a boss), but the tooltip wording should be captured
-in-game to settle it. `triggerNote` recorded on the boon in
-`../data/campaign_boons.json`. While verifying, two related notes:
+## Master boon triggers (2026-06-11) — Deathly Rage RESOLVED, other 7 chances open
+~~Deathly Rage wording needs an in-game tooltip screenshot~~ **RESOLVED
+2026-06-11: n00b read the live tooltip in-game — "On kill, or when taking
+more than 50% of your Maximum Hit Points in a single blow, 30% chance to do
+the following for 10s."** Two corrections vs every external source (wiki
+Module-23, NW Hub, Obikin89 all say just "chance on kill"): the second
+trigger path, and an explicit **30% proc chance**. Data updated
+(`trigger`/`chance` fields); `masterBoonUptime` now reads the per-boon
+`chance` and models the big-hit path (+1 qualifying blow per ~50s) —
+Deathly Rage credits ~13% uptime (was ~4% under kill-only/20% assumptions).
+STILL OPEN: the other 7 master boons' proc chances — Hub omits them, engine
+assumes 20% until each tooltip is read in-game (same quick read-aloud
+works). While verifying, two related notes:
 - Obikin89's claim "you can only pick 1 master boon" (and "2 tier-5 boons,
   unlock at 45 points") is mod-20-era text; the NW Hub simulator (current,
   May 2026 screenshots in `docs/calibration/_misc-archive/`) ranks multiple

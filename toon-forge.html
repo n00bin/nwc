@@ -10232,18 +10232,28 @@
       const U = CONDITIONAL_UPTIME.proc;
       const trig = String(mb.trigger || "").toLowerCase();
       const dur = (+mb.duration) || U.default_duration;
+      // In-game tooltips carry an explicit proc chance (Deathly Rage: 30%,
+      // owner-verified 2026-06-11) that NW Hub omits — use the data's
+      // `chance` field when present, default otherwise.
+      const chance = (mb.chance != null && !isNaN(+mb.chance))
+        ? Math.max(0, Math.min(1, +mb.chance / 100))
+        : U.default_chance;
       let rate = U.trigger_rate.other;
       let gate = 1;
       if (/kill/.test(trig)) rate = U.trigger_rate.kill;
       else if (/encounter/.test(trig)) rate = U.trigger_rate.encounter;
       else if (/at.?will/.test(trig)) rate = U.trigger_rate.hit;
       else if (/daily/.test(trig)) rate = U.trigger_rate.daily;
+      // "...or when taking more than 50% of your Maximum Hit Points in a
+      // single blow" (Deathly Rage): a second, rare trigger path on top of
+      // kills — model one qualifying blow every ~50s of boss play.
+      if (/single blow|taking more than/.test(trig)) rate += 0.02;
       if (/on heal|you heal/.test(trig)) {
         if (!healerBuild) return 0;
         rate = U.trigger_rate.other;
       }
       if (/below\s*\d+%|health is below/.test(trig)) gate = CONDITIONAL_UPTIME.low_threshold;
-      const pFire = 1 - Math.pow(1 - U.default_chance, Math.max(0.01, rate * dur));
+      const pFire = 1 - Math.pow(1 - chance, Math.max(0.01, rate * dur));
       return Math.max(0, Math.min(1, pFire * gate));
     }
 
