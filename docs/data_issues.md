@@ -623,6 +623,35 @@ collection tabs (or tooltips from a Fighter character) — at minimum the
 Impending Doom MH + OH at one verified tier; ideally the full 6-tier
 ladders. Same ask for the Cleric off-hand, the missing Warden of the
 Last Rite tiers, and Omen of Doom's middle tiers (3750/4100/4450).
+Filed as a public report on the reports board 2026-06-12 so it's
+tracked until the screenshots can be captured (n00b's Fighter was
+unavailable at the time — other toon mid-dungeon).
+
+## Cracked Earthshard Guard — two variants merged into one — RESOLVED 2026-06-12
+
+Player-flagged (relayed by n00b): the Charged Defiance ("take 3% less
+damage") Cracked Earthshard Guard was filed as Pants but is a Shirt.
+Archive originals (`_trash/originals/Cracked Earthshard Guard*.png`,
+2026-05-25 batch) showed the in-game truth: there are TWO IL 4600
+Jotunskar (Master) variants with this name, and entry id 5362 had
+merged them — Combatant's Advantage variant's stats with the Charged
+Defiance variant's bonus, slotted Pants.
+
+Fix (tooltip-verified at 2x upscale):
+- id 5362 → the true **Charged Defiance Shirt**: Power 1,449 /
+  Deflect 4,140 / Incoming Healing 2,484 / +1.5% Recharge Speed.
+  Template is byte-identical in ratios to the player-verified
+  Frost-Riven Earthshard Guard Shirt (id 5375), which carries the SAME
+  bonus at 4.5% — the 4850-tier scaling of Cracked's 3%.
+- new id 6877 → the **Combatant's Advantage Pants**: Defense 1,932 /
+  Deflect 2,588 / Deflect Severity 2,588 / +1.5% Stamina Regeneration.
+  Defense+Deflect+Deflect Severity is the established Pants template.
+
+Pattern note: this is the same per-bonus-variant slot rule as Reports
+#64/#106/#107 — and a new twist: a dual-variant name can get its two
+tooltips MERGED into one entry at intake. When a slot complaint comes
+in, check whether the archive holds two different tooltips under the
+same name before assuming a simple slot flip.
 
 ## B2 — Mount Equip Power ID 56 "Seeing Red" — RESOLVED 2026-06-09
 
