@@ -1,0 +1,29 @@
+{
+  "comment": "Evidence-verified anomaly-screen suppressions (OPT-G3 Tier B). A flag matching {check, name_prefix} is counted as 'verified' instead of raising. Every entry must cite its evidence.",
+  "entries": [
+    {
+      "check": "C1-inflated",
+      "name_prefix": "League's Elite",
+      "reason": "Tooltip-verified 2026-06-11 (4 archive captures: Assault Korazin/Ring, Raid Korazin, Ward Taj) — every DB value matches in-game exactly; the uniform +31% budget is real premium design. Note: Fandom wiki documents an older IL-430 line under the same name; our IL-602 captures are authoritative for the current console game.",
+      "date": "2026-06-11"
+    },
+    {
+      "check": "C2-rating-absurd",
+      "name_prefix": "Mastered Duergar Mercenary's",
+      "reason": "Tooltip-verified 2026-06-11 (5 captures covering all 3 bonus names: Survivor's Strike/Savagery/Finesse) — the 10,000-rating grants are real HP-threshold-conditional design, faithfully stored (alwaysActive:false; OPT-G1 threshold weighting applies).",
+      "date": "2026-06-11"
+    },
+    {
+      "check": "C2-rating-absurd",
+      "name_prefix": "Ring of Sudden",
+      "reason": "Wiki-verified 2026-06-11 (per-tier Fandom pages + Arc forum history): 4,000 flat for 2/4/6/8/10s every 30s in combat is the real Mod-9 Underdark Ring design (only the Mod-11 companion exploit was nerfed). uptimeOverride=duration/30 applied to all 20 bonuses so the engine credits true ~7-33% uptime.",
+      "date": "2026-06-11"
+    },
+    {
+      "check": "C2-percent-high",
+      "name_prefix": "Drowned",
+      "reason": "Tooltip + DB-description verified 2026-06-11: 'Heal Self 50' is the Drowned Heart 2-pc set proc (when struck, heal 50% Max HP over 30s, 30s CD). Legit values; 'Heal Self' is not an engine-scored stat so it cannot inflate builds. Full HoT remodel deferred to the resource/heal proc layer (toon_coverage Missing-1).",
+      "date": "2026-06-11"
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 # Optimizer Data Screen (OPT-G3 Tier A)
 
-Generated 2026-06-10 — 6332 gear entries screened.
+Generated 2026-06-11 — 6332 gear entries screened.
 
-**Flags:** 160 CRITICAL · 241 WARN · 104 INFO · 1374 entries missing `source` (provenance backlog)
+**Flags:** 113 CRITICAL · 175 WARN · 104 INFO · 1374 entries missing `source` (provenance backlog)
 
-Per check: {'C1-inflated': 97, 'C2-rating-absurd': 127, 'C1-deflated': 30, 'C2-percent-high': 16, 'C2-rating-off-family': 129, 'C3-dup-conflict': 2, 'C4-phantom-set': 104}
+Per check: {'C1-inflated': 47, 'C2-rating-absurd': 80, 'C1-deflated': 30, 'C2-rating-off-family': 129, 'C3-dup-conflict': 2, 'C4-phantom-set': 104}
 
 | Sev | Check | id | Item | Slot | IL | Why |
 |---|---|---|---|---|---|---|
@@ -44,33 +44,6 @@ Per check: {'C1-inflated': 97, 'C2-rating-absurd': 127, 'C1-deflated': 30, 'C2-p
 | CRITICAL | C2-rating-absurd | 564 | Cerebral Warden Sigils | Pants | 2600 | rating bonus 'Enervated Parry (Greater)' grants 13475 on an IL 2600 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 576 | Oceans' Warden Sigils | Pants | 2350 | rating bonus 'Enervated Parry (Greater)' grants 10275 on an IL 2350 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 906 | Abyss Striker's Mauler Wristguards | Arms | 2000 | rating bonus 'Skirmisher's Ferocity' grants 10000 on an IL 2000 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 890 | Mastered Duergar Mercenary's Goristro Horn | Head | 1900 | rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 892 | Mastered Duergar Mercenary's Gauntlets | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 892 | Mastered Duergar Mercenary's Gauntlets | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 893 | Mastered Duergar Mercenary's Plate Sabatons | Feet | 1900 | rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 894 | Mastered Duergar Mercenary's Coif | Head | 1900 | rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 896 | Mastered Duergar Mercenary's Bracers | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 896 | Mastered Duergar Mercenary's Bracers | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 897 | Mastered Duergar Mercenary's Restoration Sabatons | Feet | 1900 | rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2784 | Mastered Duergar Mercenary's Barbute | Head | 1900 | rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2786 | Mastered Duergar Mercenary's Punchers | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2786 | Mastered Duergar Mercenary's Punchers | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2787 | Mastered Duergar Mercenary's Trodders | Feet | 1900 | rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 3259 | Mastered Duergar Mercenary's Hood | Head | 1900 | rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 3261 | Mastered Duergar Mercenary's Gloves | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 3261 | Mastered Duergar Mercenary's Gloves | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 3262 | Mastered Duergar Mercenary's Crakows | Feet | 1900 | rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 3263 | Mastered Duergar Mercenary's Helm | Head | 1900 | rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 3265 | Mastered Duergar Mercenary's Armlets | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 3265 | Mastered Duergar Mercenary's Armlets | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 3266 | Mastered Duergar Mercenary's Boots | Feet | 1900 | rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 4001 | Mastered Duergar Mercenary's Punchers | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 4001 | Mastered Duergar Mercenary's Punchers | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 4002 | Mastered Duergar Mercenary's Trodders | Feet | 1900 | rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 6667 | Mastered Duergar Mercenary's Goristro Striders | Feet | 1900 | rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 6668 | Mastered Duergar Mercenary's Guards | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 6668 | Mastered Duergar Mercenary's Guards | Arms | 1900 | rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 6669 | Mastered Duergar Mercenary's Halfhelm | Head | 1900 | rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 1218 | Serene Boots of the Dragon Hunter | Feet | 1850 | rating bonus 'Champion's Might' grants 7500 on an IL 1850 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 770 | Shimmering Flarefiber Pants | Pants | 1800 | rating bonus 'Charged Mastery' grants 7500 on an IL 1800 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 772 | Luminous Flarefiber Pants | Pants | 1800 | rating bonus 'Charged Mastery' grants 7500 on an IL 1800 item (> 4x IL) |
@@ -126,15 +99,7 @@ Per check: {'C1-inflated': 97, 'C2-rating-absurd': 127, 'C1-deflated': 30, 'C2-p
 | CRITICAL | C2-rating-absurd | 4373 | Dusk Assault Gloves | Arms | 1175 | rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4374 | Dusk Assault Boots | Feet | 1175 | rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 2169 | Ring of Brutality +5 | Ring | 609 | rating bonus 'Brutality' grants 4000 on an IL 609 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2223 | Ring of Sudden Deflect +5 | Ring | 609 | rating bonus 'Sudden Deflect' grants 4000 on an IL 609 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2228 | Ring of Sudden Defense +5 | Ring | 609 | rating bonus 'Sudden Defense' grants 4000 on an IL 609 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2233 | Ring of Sudden Precision +5 | Ring | 609 | rating bonus 'Sudden Precision' grants 4000 on an IL 609 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2238 | Ring of Sudden Lifesteal +5 | Ring | 609 | rating bonus 'Sudden Resistance' grants 4000 on an IL 609 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 2170 | Ring of Brutality +4 | Ring | 596 | rating bonus 'Brutality' grants 4000 on an IL 596 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2222 | Ring of Sudden Deflect +4 | Ring | 596 | rating bonus 'Sudden Deflect' grants 4000 on an IL 596 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2227 | Ring of Sudden Defense +4 | Ring | 596 | rating bonus 'Sudden Defense' grants 4000 on an IL 596 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2232 | Ring of Sudden Precision +4 | Ring | 596 | rating bonus 'Sudden Precision' grants 4000 on an IL 596 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2237 | Ring of Sudden Lifesteal +4 | Ring | 596 | rating bonus 'Sudden Resistance' grants 4000 on an IL 596 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4576 | Elemental Dragonflight Raid Mask | Head | 596 | rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4577 | Elemental Dragonflight Raid Vest | Armor | 596 | rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4578 | Elemental Dragonflight Raid Gloves | Arms | 596 | rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL) |
@@ -144,10 +109,6 @@ Per check: {'C1-inflated': 97, 'C2-rating-absurd': 127, 'C1-deflated': 30, 'C2-p
 | CRITICAL | C2-rating-absurd | 4582 | Elemental Dragonflight Assault Gloves | Arms | 596 | rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4583 | Elemental Dragonflight Assault Boots | Feet | 596 | rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 2171 | Ring of Brutality +3 | Ring | 588 | rating bonus 'Brutality' grants 4000 on an IL 588 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2221 | Ring of Sudden Deflect +3 | Ring | 588 | rating bonus 'Sudden Deflect' grants 4000 on an IL 588 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2226 | Ring of Sudden Defense +3 | Ring | 588 | rating bonus 'Sudden Defense' grants 4000 on an IL 588 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2231 | Ring of Sudden Precision +3 | Ring | 588 | rating bonus 'Sudden Precision' grants 4000 on an IL 588 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2236 | Ring of Sudden Lifesteal +3 | Ring | 588 | rating bonus 'Sudden Resistance' grants 4000 on an IL 588 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4568 | Dragonflight Raid Mask | Head | 588 | rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4569 | Dragonflight Raid Vest | Armor | 588 | rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4570 | Dragonflight Raid Gloves | Arms | 588 | rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL) |
@@ -157,15 +118,7 @@ Per check: {'C1-inflated': 97, 'C2-rating-absurd': 127, 'C1-deflated': 30, 'C2-p
 | CRITICAL | C2-rating-absurd | 4574 | Dragonflight Assault Gloves | Arms | 588 | rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4575 | Dragonflight Assault Boots | Feet | 588 | rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 2172 | Ring of Brutality +2 | Ring | 575 | rating bonus 'Brutality' grants 4000 on an IL 575 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2220 | Ring of Sudden Deflect +2 | Ring | 575 | rating bonus 'Sudden Deflect' grants 4000 on an IL 575 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2225 | Ring of Sudden Defense +2 | Ring | 575 | rating bonus 'Sudden Defense' grants 4000 on an IL 575 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2230 | Ring of Sudden Precision +2 | Ring | 575 | rating bonus 'Sudden Precision' grants 4000 on an IL 575 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2235 | Ring of Sudden Lifesteal +2 | Ring | 575 | rating bonus 'Sudden Resistance' grants 4000 on an IL 575 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 2173 | Ring of Brutality +1 | Ring | 567 | rating bonus 'Brutality' grants 4000 on an IL 567 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2219 | Ring of Sudden Deflect +1 | Ring | 567 | rating bonus 'Sudden Deflect' grants 4000 on an IL 567 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2224 | Ring of Sudden Defense +1 | Ring | 567 | rating bonus 'Sudden Defense' grants 4000 on an IL 567 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2229 | Ring of Sudden Precision +1 | Ring | 567 | rating bonus 'Sudden Precision' grants 4000 on an IL 567 item (> 4x IL) |
-| CRITICAL | C2-rating-absurd | 2234 | Ring of Sudden Lifesteal +1 | Ring | 567 | rating bonus 'Sudden Resistance' grants 4000 on an IL 567 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4300 | Wootz Sakin | Off Hand | 350 | rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4722 | Wootz Lute | Off Hand | 350 | rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL) |
 | WARN | C1-deflated | 5381 | Frostbound Hearthboots | Feet | 4700 | rating budget 1.57x IL vs slot median 2.40x (-34%) |
@@ -211,73 +164,7 @@ Per check: {'C1-inflated': 97, 'C2-rating-absurd': 127, 'C1-deflated': 30, 'C2-p
 | WARN | C1-inflated | 3237 | Astral Raider's Coif | Head | 2200 | rating budget 3.30x IL vs slot median 2.40x (+38%) |
 | WARN | C1-inflated | 950 | Dragonsteel Spikes | Feet | 1900 | rating budget 3.30x IL vs slot median 2.40x (+38%) |
 | WARN | C1-inflated | 238 | Wrathful Strangler | Neck | 1400 | rating budget 3.58x IL vs slot median 2.40x (+49%) |
-| WARN | C1-inflated | 1793 | League's Elite Ward Taj | Head | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 1797 | League's Elite Restoration Taj | Head | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 2858 | League's Elite Raid Tarak | Head | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 2862 | League's Elite Assault Tarak | Head | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 4288 | League's Elite Raid Keffiyeh | Head | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 4292 | League's Elite Assault Keffiyeh | Head | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5968 | League's Elite Assault Turban | Head | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5972 | League's Elite Raid Turban | Head | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 6623 | League's Elite Assault Baydah | Head | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 6627 | League's Elite Raid Baydah | Head | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 1795 | League's Elite Ward Tahadus | Arms | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 1799 | League's Elite Restoration Tahadus | Arms | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 2860 | League's Elite Raid Bazubands | Arms | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 2864 | League's Elite Assault Bazubands | Arms | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 4290 | League's Elite Raid Qafaz | Arms | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 4294 | League's Elite Assault Qafaz | Arms | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5967 | League's Elite Assault Kollu | Arms | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5971 | League's Elite Raid Kollu | Arms | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 6626 | League's Elite Assault Panahs | Arms | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 6630 | League's Elite Raid Panahs | Arms | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 1796 | League's Elite Ward Diralsaaqs | Feet | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 1798 | League's Elite Restoration Diralsaaqs | Feet | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 2861 | League's Elite Raid Hidhas | Feet | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 2863 | League's Elite Assault Hidhas | Feet | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 4291 | League's Elite Raid Soqs | Feet | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 4295 | League's Elite Assault Soqs | Feet | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5965 | League's Elite Assault Charuqs | Feet | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5969 | League's Elite Raid Charuqs | Feet | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 6624 | League's Elite Assault Khuffs | Feet | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 6628 | League's Elite Raid Khuffs | Feet | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 1794 | League's Elite Ward Charayneh | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 1800 | League's Elite Restoration Charayneh | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 2859 | League's Elite Raid Josan | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 2865 | League's Elite Assault Josan | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 4289 | League's Elite Raid Khaftan | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 4293 | League's Elite Assault Khaftan | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5063 | League's Elite Raid Barakeh | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5064 | League's Elite Raid Manteel | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5065 | League's Elite Raid Sevars | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5066 | League's Elite Raid Crackows | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5067 | League's Elite Assault Barakeh | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5068 | League's Elite Assault Crackows | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5069 | League's Elite Assault Sevars | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5070 | League's Elite Assault Manteel | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5966 | League's Elite Assault Jubbah | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5970 | League's Elite Raid Jubbah | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 6625 | League's Elite Assault Korazin | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 6629 | League's Elite Raid Korazin | Armor | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5197 | League's Elite Raid Khaltan | Artifact Equipment | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
-| WARN | C1-inflated | 5198 | League's Elite Assault Khaltan | Artifact Equipment | 602 | rating budget 3.15x IL vs slot median 2.40x (+31%) |
 | WARN | C1-inflated | 2126 | Elemental Drowcraft Restoration Cuirass | Armor | 529 | rating budget 3.17x IL vs slot median 2.40x (+32%) |
-| WARN | C2-percent-high | 4414 | Drowned Dagger (IL 600) | Main Hand | 600 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4418 | Drowned Stiletto (IL 600) | Off Hand | 600 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4756 | Drowned Rapier (IL 600) | Main Hand | 600 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4757 | Drowned Lute (IL 600) | Off Hand | 600 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4413 | Drowned Dagger (IL 500) | Main Hand | 500 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4417 | Drowned Stiletto (IL 500) | Off Hand | 500 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4754 | Drowned Rapier (IL 500) | Main Hand | 500 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4755 | Drowned Lute (IL 500) | Off Hand | 500 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4412 | Drowned Dagger (IL 400) | Main Hand | 400 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4416 | Drowned Stiletto (IL 400) | Off Hand | 400 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4752 | Drowned Rapier (IL 400) | Main Hand | 400 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4753 | Drowned Lute (IL 400) | Off Hand | 400 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4411 | Drowned Dagger | Main Hand | 300 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4415 | Drowned Stiletto | Off Hand | 300 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4750 | Drowned Rapier | Main Hand | 300 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
-| WARN | C2-percent-high | 4751 | Drowned Lute | Off Hand | 300 | combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip |
 | WARN | C2-rating-off-family | 750 | Blackened Void Pants | Pants | 2000 | rating bonus 'Depleted Advantage' = 6250 vs family median 1005 for Combat Advantage @ IL~2000 |
 | WARN | C2-rating-off-family | 659 | Basalt Imbued Pants | Pants | 1900 | rating bonus 'Charged Bulwark' = 4600 vs family median 1000 for Defense @ IL~1000 |
 | WARN | C2-rating-off-family | 3997 | Blaspheme Cleaver | Main Hand | 1900 | rating bonus 'Power' = 7500 vs family median 1000 for Power @ IL~1000 |

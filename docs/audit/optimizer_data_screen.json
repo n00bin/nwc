@@ -1,20 +1,20 @@
 {
- "generated": "2026-06-10",
+ "generated": "2026-06-11",
  "entries_screened": 6332,
  "counts": {
-  "CRITICAL": 160,
-  "WARN": 241,
+  "CRITICAL": 113,
+  "WARN": 175,
   "INFO": 104
  },
  "by_check": {
-  "C1-inflated": 97,
-  "C2-rating-absurd": 127,
+  "C1-inflated": 47,
+  "C2-rating-absurd": 80,
   "C1-deflated": 30,
-  "C2-percent-high": 16,
   "C2-rating-off-family": 129,
   "C3-dup-conflict": 2,
   "C4-phantom-set": 104
  },
+ "verified_suppressed": 113,
  "no_source_count": 1374,
  "flags": [
   {
@@ -340,249 +340,6 @@
    "slot": "Arms",
    "il": 2000,
    "reason": "rating bonus 'Skirmisher's Ferocity' grants 10000 on an IL 2000 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 890,
-   "name": "Mastered Duergar Mercenary's Goristro Horn",
-   "slot": "Head",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 892,
-   "name": "Mastered Duergar Mercenary's Gauntlets",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 892,
-   "name": "Mastered Duergar Mercenary's Gauntlets",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 893,
-   "name": "Mastered Duergar Mercenary's Plate Sabatons",
-   "slot": "Feet",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 894,
-   "name": "Mastered Duergar Mercenary's Coif",
-   "slot": "Head",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 896,
-   "name": "Mastered Duergar Mercenary's Bracers",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 896,
-   "name": "Mastered Duergar Mercenary's Bracers",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 897,
-   "name": "Mastered Duergar Mercenary's Restoration Sabatons",
-   "slot": "Feet",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2784,
-   "name": "Mastered Duergar Mercenary's Barbute",
-   "slot": "Head",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2786,
-   "name": "Mastered Duergar Mercenary's Punchers",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2786,
-   "name": "Mastered Duergar Mercenary's Punchers",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2787,
-   "name": "Mastered Duergar Mercenary's Trodders",
-   "slot": "Feet",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 3259,
-   "name": "Mastered Duergar Mercenary's Hood",
-   "slot": "Head",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 3261,
-   "name": "Mastered Duergar Mercenary's Gloves",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 3261,
-   "name": "Mastered Duergar Mercenary's Gloves",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 3262,
-   "name": "Mastered Duergar Mercenary's Crakows",
-   "slot": "Feet",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 3263,
-   "name": "Mastered Duergar Mercenary's Helm",
-   "slot": "Head",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 3265,
-   "name": "Mastered Duergar Mercenary's Armlets",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 3265,
-   "name": "Mastered Duergar Mercenary's Armlets",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 3266,
-   "name": "Mastered Duergar Mercenary's Boots",
-   "slot": "Feet",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 4001,
-   "name": "Mastered Duergar Mercenary's Punchers",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 4001,
-   "name": "Mastered Duergar Mercenary's Punchers",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 4002,
-   "name": "Mastered Duergar Mercenary's Trodders",
-   "slot": "Feet",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 6667,
-   "name": "Mastered Duergar Mercenary's Goristro Striders",
-   "slot": "Feet",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 6668,
-   "name": "Mastered Duergar Mercenary's Guards",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 6668,
-   "name": "Mastered Duergar Mercenary's Guards",
-   "slot": "Arms",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 6669,
-   "name": "Mastered Duergar Mercenary's Halfhelm",
-   "slot": "Head",
-   "il": 1900,
-   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
   },
   {
    "sev": "CRITICAL",
@@ -1082,83 +839,11 @@
   {
    "sev": "CRITICAL",
    "check": "C2-rating-absurd",
-   "id": 2223,
-   "name": "Ring of Sudden Deflect +5",
-   "slot": "Ring",
-   "il": 609,
-   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 609 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2228,
-   "name": "Ring of Sudden Defense +5",
-   "slot": "Ring",
-   "il": 609,
-   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 609 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2233,
-   "name": "Ring of Sudden Precision +5",
-   "slot": "Ring",
-   "il": 609,
-   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 609 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2238,
-   "name": "Ring of Sudden Lifesteal +5",
-   "slot": "Ring",
-   "il": 609,
-   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 609 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
    "id": 2170,
    "name": "Ring of Brutality +4",
    "slot": "Ring",
    "il": 596,
    "reason": "rating bonus 'Brutality' grants 4000 on an IL 596 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2222,
-   "name": "Ring of Sudden Deflect +4",
-   "slot": "Ring",
-   "il": 596,
-   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 596 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2227,
-   "name": "Ring of Sudden Defense +4",
-   "slot": "Ring",
-   "il": 596,
-   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 596 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2232,
-   "name": "Ring of Sudden Precision +4",
-   "slot": "Ring",
-   "il": 596,
-   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 596 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2237,
-   "name": "Ring of Sudden Lifesteal +4",
-   "slot": "Ring",
-   "il": 596,
-   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 596 item (> 4x IL)"
   },
   {
    "sev": "CRITICAL",
@@ -1244,42 +929,6 @@
   {
    "sev": "CRITICAL",
    "check": "C2-rating-absurd",
-   "id": 2221,
-   "name": "Ring of Sudden Deflect +3",
-   "slot": "Ring",
-   "il": 588,
-   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 588 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2226,
-   "name": "Ring of Sudden Defense +3",
-   "slot": "Ring",
-   "il": 588,
-   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 588 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2231,
-   "name": "Ring of Sudden Precision +3",
-   "slot": "Ring",
-   "il": 588,
-   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 588 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2236,
-   "name": "Ring of Sudden Lifesteal +3",
-   "slot": "Ring",
-   "il": 588,
-   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 588 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
    "id": 4568,
    "name": "Dragonflight Raid Mask",
    "slot": "Head",
@@ -1361,83 +1010,11 @@
   {
    "sev": "CRITICAL",
    "check": "C2-rating-absurd",
-   "id": 2220,
-   "name": "Ring of Sudden Deflect +2",
-   "slot": "Ring",
-   "il": 575,
-   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 575 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2225,
-   "name": "Ring of Sudden Defense +2",
-   "slot": "Ring",
-   "il": 575,
-   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 575 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2230,
-   "name": "Ring of Sudden Precision +2",
-   "slot": "Ring",
-   "il": 575,
-   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 575 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2235,
-   "name": "Ring of Sudden Lifesteal +2",
-   "slot": "Ring",
-   "il": 575,
-   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 575 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
    "id": 2173,
    "name": "Ring of Brutality +1",
    "slot": "Ring",
    "il": 567,
    "reason": "rating bonus 'Brutality' grants 4000 on an IL 567 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2219,
-   "name": "Ring of Sudden Deflect +1",
-   "slot": "Ring",
-   "il": 567,
-   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 567 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2224,
-   "name": "Ring of Sudden Defense +1",
-   "slot": "Ring",
-   "il": 567,
-   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 567 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2229,
-   "name": "Ring of Sudden Precision +1",
-   "slot": "Ring",
-   "il": 567,
-   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 567 item (> 4x IL)"
-  },
-  {
-   "sev": "CRITICAL",
-   "check": "C2-rating-absurd",
-   "id": 2234,
-   "name": "Ring of Sudden Lifesteal +1",
-   "slot": "Ring",
-   "il": 567,
-   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 567 item (> 4x IL)"
   },
   {
    "sev": "CRITICAL",
@@ -1847,605 +1424,11 @@
   {
    "sev": "WARN",
    "check": "C1-inflated",
-   "id": 1793,
-   "name": "League's Elite Ward Taj",
-   "slot": "Head",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 1797,
-   "name": "League's Elite Restoration Taj",
-   "slot": "Head",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 2858,
-   "name": "League's Elite Raid Tarak",
-   "slot": "Head",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 2862,
-   "name": "League's Elite Assault Tarak",
-   "slot": "Head",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 4288,
-   "name": "League's Elite Raid Keffiyeh",
-   "slot": "Head",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 4292,
-   "name": "League's Elite Assault Keffiyeh",
-   "slot": "Head",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5968,
-   "name": "League's Elite Assault Turban",
-   "slot": "Head",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5972,
-   "name": "League's Elite Raid Turban",
-   "slot": "Head",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 6623,
-   "name": "League's Elite Assault Baydah",
-   "slot": "Head",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 6627,
-   "name": "League's Elite Raid Baydah",
-   "slot": "Head",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 1795,
-   "name": "League's Elite Ward Tahadus",
-   "slot": "Arms",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 1799,
-   "name": "League's Elite Restoration Tahadus",
-   "slot": "Arms",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 2860,
-   "name": "League's Elite Raid Bazubands",
-   "slot": "Arms",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 2864,
-   "name": "League's Elite Assault Bazubands",
-   "slot": "Arms",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 4290,
-   "name": "League's Elite Raid Qafaz",
-   "slot": "Arms",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 4294,
-   "name": "League's Elite Assault Qafaz",
-   "slot": "Arms",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5967,
-   "name": "League's Elite Assault Kollu",
-   "slot": "Arms",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5971,
-   "name": "League's Elite Raid Kollu",
-   "slot": "Arms",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 6626,
-   "name": "League's Elite Assault Panahs",
-   "slot": "Arms",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 6630,
-   "name": "League's Elite Raid Panahs",
-   "slot": "Arms",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 1796,
-   "name": "League's Elite Ward Diralsaaqs",
-   "slot": "Feet",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 1798,
-   "name": "League's Elite Restoration Diralsaaqs",
-   "slot": "Feet",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 2861,
-   "name": "League's Elite Raid Hidhas",
-   "slot": "Feet",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 2863,
-   "name": "League's Elite Assault Hidhas",
-   "slot": "Feet",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 4291,
-   "name": "League's Elite Raid Soqs",
-   "slot": "Feet",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 4295,
-   "name": "League's Elite Assault Soqs",
-   "slot": "Feet",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5965,
-   "name": "League's Elite Assault Charuqs",
-   "slot": "Feet",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5969,
-   "name": "League's Elite Raid Charuqs",
-   "slot": "Feet",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 6624,
-   "name": "League's Elite Assault Khuffs",
-   "slot": "Feet",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 6628,
-   "name": "League's Elite Raid Khuffs",
-   "slot": "Feet",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 1794,
-   "name": "League's Elite Ward Charayneh",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 1800,
-   "name": "League's Elite Restoration Charayneh",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 2859,
-   "name": "League's Elite Raid Josan",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 2865,
-   "name": "League's Elite Assault Josan",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 4289,
-   "name": "League's Elite Raid Khaftan",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 4293,
-   "name": "League's Elite Assault Khaftan",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5063,
-   "name": "League's Elite Raid Barakeh",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5064,
-   "name": "League's Elite Raid Manteel",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5065,
-   "name": "League's Elite Raid Sevars",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5066,
-   "name": "League's Elite Raid Crackows",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5067,
-   "name": "League's Elite Assault Barakeh",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5068,
-   "name": "League's Elite Assault Crackows",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5069,
-   "name": "League's Elite Assault Sevars",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5070,
-   "name": "League's Elite Assault Manteel",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5966,
-   "name": "League's Elite Assault Jubbah",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5970,
-   "name": "League's Elite Raid Jubbah",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 6625,
-   "name": "League's Elite Assault Korazin",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 6629,
-   "name": "League's Elite Raid Korazin",
-   "slot": "Armor",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5197,
-   "name": "League's Elite Raid Khaltan",
-   "slot": "Artifact Equipment",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
-   "id": 5198,
-   "name": "League's Elite Assault Khaltan",
-   "slot": "Artifact Equipment",
-   "il": 602,
-   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C1-inflated",
    "id": 2126,
    "name": "Elemental Drowcraft Restoration Cuirass",
    "slot": "Armor",
    "il": 529,
    "reason": "rating budget 3.17x IL vs slot median 2.40x (+32%)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4414,
-   "name": "Drowned Dagger (IL 600)",
-   "slot": "Main Hand",
-   "il": 600,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4418,
-   "name": "Drowned Stiletto (IL 600)",
-   "slot": "Off Hand",
-   "il": 600,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4756,
-   "name": "Drowned Rapier (IL 600)",
-   "slot": "Main Hand",
-   "il": 600,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4757,
-   "name": "Drowned Lute (IL 600)",
-   "slot": "Off Hand",
-   "il": 600,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4413,
-   "name": "Drowned Dagger (IL 500)",
-   "slot": "Main Hand",
-   "il": 500,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4417,
-   "name": "Drowned Stiletto (IL 500)",
-   "slot": "Off Hand",
-   "il": 500,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4754,
-   "name": "Drowned Rapier (IL 500)",
-   "slot": "Main Hand",
-   "il": 500,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4755,
-   "name": "Drowned Lute (IL 500)",
-   "slot": "Off Hand",
-   "il": 500,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4412,
-   "name": "Drowned Dagger (IL 400)",
-   "slot": "Main Hand",
-   "il": 400,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4416,
-   "name": "Drowned Stiletto (IL 400)",
-   "slot": "Off Hand",
-   "il": 400,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4752,
-   "name": "Drowned Rapier (IL 400)",
-   "slot": "Main Hand",
-   "il": 400,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4753,
-   "name": "Drowned Lute (IL 400)",
-   "slot": "Off Hand",
-   "il": 400,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4411,
-   "name": "Drowned Dagger",
-   "slot": "Main Hand",
-   "il": 300,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4415,
-   "name": "Drowned Stiletto",
-   "slot": "Off Hand",
-   "il": 300,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4750,
-   "name": "Drowned Rapier",
-   "slot": "Main Hand",
-   "il": 300,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-percent-high",
-   "id": 4751,
-   "name": "Drowned Lute",
-   "slot": "Off Hand",
-   "il": 300,
-   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
   },
   {
    "sev": "WARN",
@@ -4561,6 +3544,1025 @@
    "slot": "Neck",
    "il": 0,
    "reason": "set 'Valhalla's Rebuke' needs 3 pieces but exists in only 2 distinct slot(s) — incompletable?"
+  }
+ ],
+ "verified": [
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1793,
+   "name": "League's Elite Ward Taj",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1797,
+   "name": "League's Elite Restoration Taj",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2858,
+   "name": "League's Elite Raid Tarak",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2862,
+   "name": "League's Elite Assault Tarak",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4288,
+   "name": "League's Elite Raid Keffiyeh",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4292,
+   "name": "League's Elite Assault Keffiyeh",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5968,
+   "name": "League's Elite Assault Turban",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5972,
+   "name": "League's Elite Raid Turban",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6623,
+   "name": "League's Elite Assault Baydah",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6627,
+   "name": "League's Elite Raid Baydah",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1795,
+   "name": "League's Elite Ward Tahadus",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1799,
+   "name": "League's Elite Restoration Tahadus",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2860,
+   "name": "League's Elite Raid Bazubands",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2864,
+   "name": "League's Elite Assault Bazubands",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4290,
+   "name": "League's Elite Raid Qafaz",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4294,
+   "name": "League's Elite Assault Qafaz",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5967,
+   "name": "League's Elite Assault Kollu",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5971,
+   "name": "League's Elite Raid Kollu",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6626,
+   "name": "League's Elite Assault Panahs",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6630,
+   "name": "League's Elite Raid Panahs",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1796,
+   "name": "League's Elite Ward Diralsaaqs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1798,
+   "name": "League's Elite Restoration Diralsaaqs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2861,
+   "name": "League's Elite Raid Hidhas",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2863,
+   "name": "League's Elite Assault Hidhas",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4291,
+   "name": "League's Elite Raid Soqs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4295,
+   "name": "League's Elite Assault Soqs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5965,
+   "name": "League's Elite Assault Charuqs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5969,
+   "name": "League's Elite Raid Charuqs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6624,
+   "name": "League's Elite Assault Khuffs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6628,
+   "name": "League's Elite Raid Khuffs",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1794,
+   "name": "League's Elite Ward Charayneh",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 1800,
+   "name": "League's Elite Restoration Charayneh",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2859,
+   "name": "League's Elite Raid Josan",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 2865,
+   "name": "League's Elite Assault Josan",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4289,
+   "name": "League's Elite Raid Khaftan",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 4293,
+   "name": "League's Elite Assault Khaftan",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5063,
+   "name": "League's Elite Raid Barakeh",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5064,
+   "name": "League's Elite Raid Manteel",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5065,
+   "name": "League's Elite Raid Sevars",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5066,
+   "name": "League's Elite Raid Crackows",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5067,
+   "name": "League's Elite Assault Barakeh",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5068,
+   "name": "League's Elite Assault Crackows",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5069,
+   "name": "League's Elite Assault Sevars",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5070,
+   "name": "League's Elite Assault Manteel",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5966,
+   "name": "League's Elite Assault Jubbah",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5970,
+   "name": "League's Elite Raid Jubbah",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6625,
+   "name": "League's Elite Assault Korazin",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 6629,
+   "name": "League's Elite Raid Korazin",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5197,
+   "name": "League's Elite Raid Khaltan",
+   "slot": "Artifact Equipment",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 5198,
+   "name": "League's Elite Assault Khaltan",
+   "slot": "Artifact Equipment",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 890,
+   "name": "Mastered Duergar Mercenary's Goristro Horn",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 892,
+   "name": "Mastered Duergar Mercenary's Gauntlets",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 892,
+   "name": "Mastered Duergar Mercenary's Gauntlets",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 893,
+   "name": "Mastered Duergar Mercenary's Plate Sabatons",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 894,
+   "name": "Mastered Duergar Mercenary's Coif",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 896,
+   "name": "Mastered Duergar Mercenary's Bracers",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 896,
+   "name": "Mastered Duergar Mercenary's Bracers",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 897,
+   "name": "Mastered Duergar Mercenary's Restoration Sabatons",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2219,
+   "name": "Ring of Sudden Deflect +1",
+   "slot": "Ring",
+   "il": 567,
+   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 567 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2220,
+   "name": "Ring of Sudden Deflect +2",
+   "slot": "Ring",
+   "il": 575,
+   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 575 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2221,
+   "name": "Ring of Sudden Deflect +3",
+   "slot": "Ring",
+   "il": 588,
+   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2222,
+   "name": "Ring of Sudden Deflect +4",
+   "slot": "Ring",
+   "il": 596,
+   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2223,
+   "name": "Ring of Sudden Deflect +5",
+   "slot": "Ring",
+   "il": 609,
+   "reason": "rating bonus 'Sudden Deflect' grants 4000 on an IL 609 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2224,
+   "name": "Ring of Sudden Defense +1",
+   "slot": "Ring",
+   "il": 567,
+   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 567 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2225,
+   "name": "Ring of Sudden Defense +2",
+   "slot": "Ring",
+   "il": 575,
+   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 575 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2226,
+   "name": "Ring of Sudden Defense +3",
+   "slot": "Ring",
+   "il": 588,
+   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2227,
+   "name": "Ring of Sudden Defense +4",
+   "slot": "Ring",
+   "il": 596,
+   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2228,
+   "name": "Ring of Sudden Defense +5",
+   "slot": "Ring",
+   "il": 609,
+   "reason": "rating bonus 'Sudden Defense' grants 4000 on an IL 609 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2229,
+   "name": "Ring of Sudden Precision +1",
+   "slot": "Ring",
+   "il": 567,
+   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 567 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2230,
+   "name": "Ring of Sudden Precision +2",
+   "slot": "Ring",
+   "il": 575,
+   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 575 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2231,
+   "name": "Ring of Sudden Precision +3",
+   "slot": "Ring",
+   "il": 588,
+   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2232,
+   "name": "Ring of Sudden Precision +4",
+   "slot": "Ring",
+   "il": 596,
+   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2233,
+   "name": "Ring of Sudden Precision +5",
+   "slot": "Ring",
+   "il": 609,
+   "reason": "rating bonus 'Sudden Precision' grants 4000 on an IL 609 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2234,
+   "name": "Ring of Sudden Lifesteal +1",
+   "slot": "Ring",
+   "il": 567,
+   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 567 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2235,
+   "name": "Ring of Sudden Lifesteal +2",
+   "slot": "Ring",
+   "il": 575,
+   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 575 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2236,
+   "name": "Ring of Sudden Lifesteal +3",
+   "slot": "Ring",
+   "il": 588,
+   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 588 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2237,
+   "name": "Ring of Sudden Lifesteal +4",
+   "slot": "Ring",
+   "il": 596,
+   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 596 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2238,
+   "name": "Ring of Sudden Lifesteal +5",
+   "slot": "Ring",
+   "il": 609,
+   "reason": "rating bonus 'Sudden Resistance' grants 4000 on an IL 609 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2784,
+   "name": "Mastered Duergar Mercenary's Barbute",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2786,
+   "name": "Mastered Duergar Mercenary's Punchers",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2786,
+   "name": "Mastered Duergar Mercenary's Punchers",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 2787,
+   "name": "Mastered Duergar Mercenary's Trodders",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3259,
+   "name": "Mastered Duergar Mercenary's Hood",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3261,
+   "name": "Mastered Duergar Mercenary's Gloves",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3261,
+   "name": "Mastered Duergar Mercenary's Gloves",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3262,
+   "name": "Mastered Duergar Mercenary's Crakows",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3263,
+   "name": "Mastered Duergar Mercenary's Helm",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3265,
+   "name": "Mastered Duergar Mercenary's Armlets",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3265,
+   "name": "Mastered Duergar Mercenary's Armlets",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 3266,
+   "name": "Mastered Duergar Mercenary's Boots",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4001,
+   "name": "Mastered Duergar Mercenary's Punchers",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4001,
+   "name": "Mastered Duergar Mercenary's Punchers",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 4002,
+   "name": "Mastered Duergar Mercenary's Trodders",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4411,
+   "name": "Drowned Dagger",
+   "slot": "Main Hand",
+   "il": 300,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4412,
+   "name": "Drowned Dagger (IL 400)",
+   "slot": "Main Hand",
+   "il": 400,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4413,
+   "name": "Drowned Dagger (IL 500)",
+   "slot": "Main Hand",
+   "il": 500,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4414,
+   "name": "Drowned Dagger (IL 600)",
+   "slot": "Main Hand",
+   "il": 600,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4415,
+   "name": "Drowned Stiletto",
+   "slot": "Off Hand",
+   "il": 300,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4416,
+   "name": "Drowned Stiletto (IL 400)",
+   "slot": "Off Hand",
+   "il": 400,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4417,
+   "name": "Drowned Stiletto (IL 500)",
+   "slot": "Off Hand",
+   "il": 500,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4418,
+   "name": "Drowned Stiletto (IL 600)",
+   "slot": "Off Hand",
+   "il": 600,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4750,
+   "name": "Drowned Rapier",
+   "slot": "Main Hand",
+   "il": 300,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4751,
+   "name": "Drowned Lute",
+   "slot": "Off Hand",
+   "il": 300,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4752,
+   "name": "Drowned Rapier (IL 400)",
+   "slot": "Main Hand",
+   "il": 400,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4753,
+   "name": "Drowned Lute (IL 400)",
+   "slot": "Off Hand",
+   "il": 400,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4754,
+   "name": "Drowned Rapier (IL 500)",
+   "slot": "Main Hand",
+   "il": 500,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4755,
+   "name": "Drowned Lute (IL 500)",
+   "slot": "Off Hand",
+   "il": 500,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4756,
+   "name": "Drowned Rapier (IL 600)",
+   "slot": "Main Hand",
+   "il": 600,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "WARN",
+   "check": "C2-percent-high",
+   "id": 4757,
+   "name": "Drowned Lute (IL 600)",
+   "slot": "Off Hand",
+   "il": 600,
+   "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6667,
+   "name": "Mastered Duergar Mercenary's Goristro Striders",
+   "slot": "Feet",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6668,
+   "name": "Mastered Duergar Mercenary's Guards",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6668,
+   "name": "Mastered Duergar Mercenary's Guards",
+   "slot": "Arms",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Savagery' grants 10000 on an IL 1900 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 6669,
+   "name": "Mastered Duergar Mercenary's Halfhelm",
+   "slot": "Head",
+   "il": 1900,
+   "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
   }
  ]
 }
