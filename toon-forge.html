@@ -2312,17 +2312,18 @@
         <span id="featured-optimizer-slot" style="display:contents;"></span>
         <span id="featured-builds-slot" style="display:contents;"></span>
       </div>
-      <!-- Premium teaser (LIVE site): shown until the optimizer launches. Hidden
-           on localhost by the loader at the bottom of this file, which reveals the
-           real #tf-featured-group instead. When the optimizer ships, replace this
-           box with the real gated "Optimize" button. -->
+      <!-- Premium gate (LIVE site): the real members-only Optimize entry.
+           Clicking it runs the unlock bootstrap at the bottom of this file —
+           members get the gated optimizer fetched + injected; everyone else
+           goes through Discord sign-in. Hidden on localhost by the local
+           loader, which loads the real file directly. -->
       <div id="tf-premium-soon" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.3rem;padding:0.25rem 0.7rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
-        <span style="font-size:0.58rem;font-weight:800;letter-spacing:0.09em;color:#0c0e14;background:var(--amber);padding:0.12rem 0.5rem;border-radius:999px;text-transform:uppercase;">Coming&nbsp;Soon</span>
+        <span style="font-size:0.58rem;font-weight:800;letter-spacing:0.09em;color:#0c0e14;background:var(--amber);padding:0.12rem 0.5rem;border-radius:999px;text-transform:uppercase;">Members&nbsp;Only</span>
         <div style="display:flex;align-items:center;gap:0.4rem;">
           <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
-          <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Coming soon for Legendary Noob members" style="opacity:0.92;" onclick="var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';">🚀 Optimize My Build</button>
+          <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Legendary Noob members — click to sign in with Discord and unlock" style="opacity:0.92;" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">🚀 Optimize My Build</button>
         </div>
-        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-muted);max-width:240px;text-align:center;line-height:1.4;">Launching soon for <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization with an AI review of every run — 30 runs a month. 🔔 Stay tuned!</span>
+        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-muted);max-width:240px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization with an AI review of every run — 30 runs a month. Click the button to sign in with Discord.</span>
       </div>
     </div>
   </div>
@@ -17149,6 +17150,82 @@
       a.style.borderColor = 'var(--amber)';
       slot.appendChild(a);
     }
+  })();
+</script>
+<!-- LIVE-SITE premium unlock (Legendary Noob members). The gated optimizer
+     never ships in this repo — members fetch it from the premium backend with
+     their membership token and the page injects it. Non-members clicking the
+     Optimize button are sent through Discord sign-in; the backend redirects
+     back here with #pt=<token> (member) or #pt_denied=<reason>. Local dev
+     never runs this — the local loader above already loaded the real file. -->
+<script>
+  (function () {
+    var h = location.hostname;
+    var local = h === 'localhost' || h === '127.0.0.1' || h === '' || location.protocol === 'file:';
+    if (local) return;
+    var API = 'https://premium-tau-three.vercel.app';
+    window.PREMIUM_API_BASE = API;  // the injected optimizer reads this
+    var KEY = 'nwcb_premium_token';
+    var JOIN = 'https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join';
+    var INVITE = 'https://discord.gg/vraCFxvdW3';
+
+    function note(html) {
+      var n = document.getElementById('optimize-soon-note');
+      if (n) { n.style.display = 'block'; n.innerHTML = html; }
+    }
+
+    // Capture a fresh token (or a denial) delivered via the URL hash after login.
+    var hash = location.hash || '';
+    var m = hash.match(/[#&]pt=([^&]+)/);
+    if (m) {
+      try { localStorage.setItem(KEY, m[1]); } catch (e) {}
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+    var d = hash.match(/[#&]pt_denied=([^&]+)/);
+    if (d) {
+      history.replaceState(null, '', location.pathname + location.search);
+      note('🔒 ' + decodeURIComponent(d[1]) +
+        '<br><a href="' + JOIN + '" target="_blank" rel="noopener" style="color:var(--amber);">Join Legendary Noob</a>' +
+        ' · <a href="' + INVITE + '" target="_blank" rel="noopener" style="color:var(--amber);">our Discord</a>' +
+        ' — link YouTube in Discord Settings &rarr; Connections, then click Optimize again.');
+    }
+
+    function inject(js) {
+      var s = document.createElement('script');
+      s.textContent = js;
+      document.body.appendChild(s);
+      var soon = document.getElementById('tf-premium-soon');
+      if (soon) soon.style.display = 'none';
+      var grp = document.getElementById('tf-featured-group');
+      if (grp) grp.style.display = 'flex';
+    }
+
+    function login() {
+      location.href = API + '/api/auth_login?return=' +
+        encodeURIComponent(location.href.split('#')[0]);
+    }
+
+    function unlock(viaClick) {
+      var token = null;
+      try { token = localStorage.getItem(KEY); } catch (e) {}
+      if (!token) { if (viaClick) login(); return; }
+      fetch(API + '/api/optimizer_js', { headers: { 'Authorization': 'Bearer ' + token } })
+        .then(function (r) {
+          if (r.ok) return r.text().then(inject);
+          if (r.status === 401) {  // expired/cancelled — clear and re-login on click
+            try { localStorage.removeItem(KEY); } catch (e) {}
+            if (viaClick) login();
+          } else {
+            note('⚠️ The optimizer service hit a snag (' + r.status + ') — try again in a moment.');
+          }
+        })
+        .catch(function () {
+          note('⚠️ Could not reach the membership server — try again in a moment.');
+        });
+    }
+
+    window.nwcbPremiumGo = function () { unlock(true); };
+    unlock(false);  // returning members unlock silently on page load
   })();
 </script>
 </body>
