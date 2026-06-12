@@ -570,29 +570,59 @@ Player report flagged the following gear as missing from the site:
 Need to: source screenshots (in-game tooltips or NW Hub references),
 extract stats, add to `gear.json` with proper slot/set/IL data.
 
-## Missing Gear — Doomcleaver (Reports #36–#40, 2026-05-26)
+## Missing Gear — Doomcleaver (Reports #36–#40, 2026-05-26) — RESOLVED 2026-06-12
 
 Player tried to use the data-correction form on Elk Tribe Noble's Mace
 to flag a missing weapon called **Doomcleaver** (didn't find it in our
 database, so they used the closest weapon-shaped entry as a vehicle).
 
-Suspected stats from the corrections submitted:
-- Name: **Doomcleaver**
-- Slot: Main Hand
-- Item Level: 4450
-- Set: **Impending Doom** (Mod 33)
-- Combined Rating: 4005
-- Accuracy: 0 (i.e. likely a Tank/Healer-stat distribution — Defense / Crit Avoidance / Awareness)
+RESOLVED: Doomcleaver turned out to be the **Barbarian** variant (the
+"Barbarian or Fighter?" question is answered — see the next section for
+the Fighter side). Ingested from n00b's barbarian collection captures
+(`docs/audit/_up/barbarian-gear/Doomcleaver_IL*.png`, batch_06) as a
+complete 6-tier family: IL 3400 (Whisper of Power tier) + IL 3750–5250
+(Impending Doom, gear ids 6429–6433). Its off-hand partner **Knot of
+the Bloodbound** is also complete (6 tiers). The player's guessed stats
+were close but the real distribution is Crit Strike / Crit Severity /
+Deflect + 50 weapon damage.
 
-Set context: Impending Doom main-hand weapons we already have are
-Oathbreaker's Malevolence, Grimfang, Omen of Doom, Scream Seeker,
-Dirgeblade — Doomcleaver is the missing 6th, likely the Barbarian or
-Fighter variant.
+## Fighter weapons missing — including the Mod 33 / Soul Collector set (2026-06-12)
 
-**Action:** Source an in-game screenshot of Doomcleaver tooltip
-(stats + equip bonus) and add as a new gear.json entry. Don't apply
-the submitted stat values directly — they came from a correction
-form on the wrong item, so they should be treated as unverified hints.
+Follow-up to the Doomcleaver investigation: the **Impending Doom**
+artifact weapon set (Soul Collector zone mechanic — the "Mod 33 gear"
+flagged in Report #33) now covers 8 of 9 classes. **Fighter has no
+entries at all** — no main hand, no shield, at any tier.
+
+Coverage by class (MH + OH unless noted):
+- Barbarian: Doomcleaver + Knot of the Bloodbound — complete
+- Bard: Dirgeblade + Strings of the Forsaken — complete
+- Cleric: **MH only** (Warden of the Last Rite, single IL 4800 entry;
+  no off-hand, no other tiers)
+- Paladin: Oathbreaker's Malevolence + Aegis of the Condemned — complete
+- Ranger: Grimfang + Harrowed Messengers — complete
+- Rogue: Scream Seeker + Dread Confessor — complete
+- Warlock: Omen of Doom (only IL 3400 + 4800 tiers) + Codex of Eternal
+  Chains
+- Wizard: Eye of the Doomweaver + Remnant of the Shattered Veil — complete
+- **Fighter: nothing**
+
+The gap is much wider than one set: **gear.json has only 7 Fighter
+weapon entries total, topping out at IL 800** (Dragon Bone Shield).
+Cleric has exactly 1. Every other class has 264–371 weapon entries.
+A Fighter or Cleric in Toon Forge effectively has no endgame weapon
+options.
+
+Archives swept 2026-06-12 (calibration inbox incl. `_trash/originals`,
+audit `_up`/`batches`): the only Fighter weapon captures are the 6
+ancient ones already in the DB. The Broadsword/Kite Shield captures in
+`_trash` are Paladin collection tabs, not Fighter. Community wikis
+don't list the new Fighter weapon names yet (fandom wiki is pre-Mod-32).
+
+**Action (needs n00b):** in-game screenshots of the Fighter weapon
+collection tabs (or tooltips from a Fighter character) — at minimum the
+Impending Doom MH + OH at one verified tier; ideally the full 6-tier
+ladders. Same ask for the Cleric off-hand, the missing Warden of the
+Last Rite tiers, and Omen of Doom's middle tiers (3750/4100/4450).
 
 ## B2 — Mount Equip Power ID 56 "Seeing Red" — RESOLVED 2026-06-09
 
