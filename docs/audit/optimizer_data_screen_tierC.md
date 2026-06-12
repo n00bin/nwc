@@ -29,3 +29,16 @@
 7. **Masterwork II/III "Alacrity" set bonus text** — every capture had the set
    at 0/2 so the bonus text never rendered. One capture with 2 pieces equipped
    verifies the stored description.
+
+## C1 budget suspects with no archive capture and no community trace (added 2026-06-12)
+The researcher found ZERO community documentation for these — suspicious in itself.
+One tooltip capture each settles whether the stat budget is real:
+8. **Captain's Girdle + Captain's Pendant (IL 1400)** — inflated +143-154%
+9. **Wrathful Waistband + Wrathful Strangler (IL 1400)** — inflated +49-68%
+10. **Dragonsteel Spikes (IL 1900)** — inflated +38%
+11. **Cuirass of the Black Flame + Bulwark of the Eternal Zulkirate (IL 4300)** — inflated +33-37% (plausible raid premium, unproven)
+12. **Aegis of the Condemned — Ascendant / — Maximum (IL 3400)** — inflated +35-48%
+13. **The Thorned Edict (IL 3450), Scream Seeker (IL 3400), Smoldering Ring (IL 2350)** — DEFLATED (missing-stat suspects)
+14. **Sabatons of the Flayed Legion / Shrouds of the Ashen Chant / Greaves of the Red Bastion (IL 4100)** — DEFLATED; already in data_issues as missing-stat suspects
+15. **Ring of Impenetrability +1..+5** — structure is sane (flat 1,701-1,827 x2 + unstructured invuln proc) but the flat values are community-unverifiable
+16. **Shard of Orcus' Wand** — community sources say IL 150; our entry says IL 250. Verify which.

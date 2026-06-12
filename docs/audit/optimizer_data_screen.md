@@ -2,45 +2,20 @@
 
 Generated 2026-06-12 — 6332 gear entries screened.
 
-**Flags:** 113 CRITICAL · 175 WARN · 1 INFO · 1374 entries missing `source` (provenance backlog)
+**Flags:** 88 CRITICAL · 143 WARN · 1 INFO · 1374 entries missing `source` (provenance backlog)
 
-Per check: {'C1-inflated': 47, 'C2-rating-absurd': 80, 'C1-deflated': 30, 'C2-rating-off-family': 129, 'C3-dup-conflict': 2, 'C4-inert-set-tags': 1}
+Per check: {'C1-inflated': 14, 'C2-rating-absurd': 80, 'C1-deflated': 6, 'C2-rating-off-family': 129, 'C3-dup-conflict': 2, 'C4-inert-set-tags': 1}
 
 | Sev | Check | id | Item | Slot | IL | Why |
 |---|---|---|---|---|---|---|
 | CRITICAL | C1-inflated | 258 | Wrathful Waistband | Belt | 1400 | rating budget 4.04x IL vs slot median 2.40x (+68%) |
 | CRITICAL | C1-inflated | 589 | Captain's Girdle | Belt | 1400 | rating budget 6.10x IL vs slot median 2.40x (+154%) |
 | CRITICAL | C1-inflated | 590 | Captain's Pendant | Neck | 1400 | rating budget 5.83x IL vs slot median 2.40x (+143%) |
-| CRITICAL | C1-inflated | 1939 | Ring of Defensive Action | Ring | 651 | rating budget 9.00x IL vs slot median 3.80x (+137%) |
-| CRITICAL | C1-inflated | 1940 | Ring of Offensive Action | Ring | 651 | rating budget 9.00x IL vs slot median 3.80x (+137%) |
 | CRITICAL | C1-inflated | 2149 | Ring of Impenetrability +5 | Ring | 609 | rating budget 6.80x IL vs slot median 3.80x (+79%) |
 | CRITICAL | C1-inflated | 2150 | Ring of Impenetrability +4 | Ring | 596 | rating budget 6.80x IL vs slot median 3.80x (+79%) |
 | CRITICAL | C1-inflated | 2151 | Ring of Impenetrability +3 | Ring | 588 | rating budget 6.80x IL vs slot median 3.80x (+79%) |
 | CRITICAL | C1-inflated | 2152 | Ring of Impenetrability +2 | Ring | 575 | rating budget 6.80x IL vs slot median 3.80x (+79%) |
 | CRITICAL | C1-inflated | 2153 | Ring of Impenetrability +1 | Ring | 567 | rating budget 6.80x IL vs slot median 3.80x (+79%) |
-| CRITICAL | C1-inflated | 2321 | Elemental Alliance Ward Ring | Ring | 554 | rating budget 9.40x IL vs slot median 3.80x (+147%) |
-| CRITICAL | C1-inflated | 2324 | Elemental Alliance Assault Ring | Ring | 554 | rating budget 9.40x IL vs slot median 3.80x (+147%) |
-| CRITICAL | C1-inflated | 2330 | Alliance Assault Ring | Ring | 546 | rating budget 9.40x IL vs slot median 3.80x (+147%) |
-| CRITICAL | C1-inflated | 2335 | Alliance Ward Ring | Ring | 546 | rating budget 9.40x IL vs slot median 3.80x (+147%) |
-| CRITICAL | C1-inflated | 2637 | Guild Ward Ring | Ring | 525 | rating budget 9.40x IL vs slot median 3.80x (+147%) |
-| CRITICAL | C1-inflated | 2640 | Guild Restoration Ring | Ring | 525 | rating budget 9.40x IL vs slot median 3.80x (+147%) |
-| CRITICAL | C1-inflated | 2643 | Guild Raid Ring | Ring | 525 | rating budget 9.40x IL vs slot median 3.80x (+147%) |
-| CRITICAL | C1-inflated | 2646 | Guild Assault Ring | Ring | 525 | rating budget 9.40x IL vs slot median 3.80x (+147%) |
-| CRITICAL | C1-inflated | 5855 | Guild Duelist Ring | Ring | 525 | rating budget 9.40x IL vs slot median 3.80x (+147%) |
-| CRITICAL | C1-inflated | 5856 | Guild Executioner Ring | Ring | 525 | rating budget 9.40x IL vs slot median 3.80x (+147%) |
-| CRITICAL | C1-inflated | 5857 | Guild Gladiator Ring | Ring | 525 | rating budget 9.40x IL vs slot median 3.80x (+147%) |
-| CRITICAL | C1-inflated | 5858 | Guild Medic Ring | Ring | 525 | rating budget 9.40x IL vs slot median 3.80x (+147%) |
-| CRITICAL | C1-inflated | 2121 | Drowcraft Armet | Head | 510 | rating budget 3.67x IL vs slot median 2.40x (+53%) |
-| CRITICAL | C1-inflated | 261 | Scintillating Diamond Buckle | Belt | 350 | rating budget 3.77x IL vs slot median 2.40x (+57%) |
-| CRITICAL | C1-inflated | 1314 | Twinkle of the Stars | Belt | 350 | rating budget 3.77x IL vs slot median 2.40x (+57%) |
-| CRITICAL | C1-inflated | 241 | Iridescent Diamond Pendant | Neck | 350 | rating budget 3.77x IL vs slot median 2.40x (+57%) |
-| CRITICAL | C1-inflated | 1313 | Starshard Choker | Neck | 350 | rating budget 3.77x IL vs slot median 2.40x (+57%) |
-| CRITICAL | C1-inflated | 4818 | Hammerstone Mask | Head | 152 | rating budget 5.55x IL vs slot median 2.40x (+131%) |
-| CRITICAL | C1-inflated | 4823 | Hammerstone Grimoire | Off Hand | 152 | rating budget 5.56x IL vs slot median 2.40x (+132%) |
-| CRITICAL | C1-inflated | 4820 | Hammerstone Gloves | Arms | 152 | rating budget 5.55x IL vs slot median 2.40x (+131%) |
-| CRITICAL | C1-inflated | 4821 | Hammerstone Boots | Feet | 152 | rating budget 5.55x IL vs slot median 2.40x (+131%) |
-| CRITICAL | C1-inflated | 4819 | Hammerstone Tunic | Armor | 152 | rating budget 5.55x IL vs slot median 2.40x (+131%) |
-| CRITICAL | C1-inflated | 4822 | Hammerstone Pact Blade | Main Hand | 152 | rating budget 5.56x IL vs slot median 2.40x (+132%) |
 | CRITICAL | C2-rating-absurd | 564 | Cerebral Warden Sigils | Pants | 2600 | rating bonus 'Enervated Parry (Greater)' grants 13475 on an IL 2600 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 576 | Oceans' Warden Sigils | Pants | 2350 | rating bonus 'Enervated Parry (Greater)' grants 10275 on an IL 2350 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 906 | Abyss Striker's Mauler Wristguards | Arms | 2000 | rating bonus 'Skirmisher's Ferocity' grants 10000 on an IL 2000 item (> 4x IL) |
@@ -121,50 +96,18 @@ Per check: {'C1-inflated': 47, 'C2-rating-absurd': 80, 'C1-deflated': 30, 'C2-ra
 | CRITICAL | C2-rating-absurd | 2173 | Ring of Brutality +1 | Ring | 567 | rating bonus 'Brutality' grants 4000 on an IL 567 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4300 | Wootz Sakin | Off Hand | 350 | rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4722 | Wootz Lute | Off Hand | 350 | rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL) |
-| WARN | C1-deflated | 5381 | Frostbound Hearthboots | Feet | 4700 | rating budget 1.57x IL vs slot median 2.40x (-34%) |
-| WARN | C1-deflated | 5385 | Frostbound Stoneboots | Feet | 4700 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
 | WARN | C1-deflated | 286 | Sabatons of the Flayed Legion | Feet | 4100 | rating budget 1.39x IL vs slot median 2.40x (-42%) |
 | WARN | C1-deflated | 290 | Shrouds of the Ashen Chant | Feet | 4100 | rating budget 1.58x IL vs slot median 2.40x (-34%) |
 | WARN | C1-deflated | 294 | Greaves of the Red Bastion | Feet | 4100 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
 | WARN | C1-deflated | 108 | The Thorned Edict | Ring | 3450 | rating budget 2.11x IL vs slot median 3.80x (-44%) |
 | WARN | C1-deflated | 3905 | Scream Seeker (IL 3400) | Main Hand | 3400 | rating budget 1.52x IL vs slot median 2.40x (-37%) |
 | WARN | C1-deflated | 621 | Smoldering Ring | Ring | 2350 | rating budget 1.55x IL vs slot median 3.80x (-59%) |
-| WARN | C1-deflated | 2361 | Dragon Bone Shield | Off Hand | 800 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 3019 | Dragon Bone Blades | Off Hand | 800 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 4673 | Vistani Lute (IL 800) | Off Hand | 800 | rating budget 1.65x IL vs slot median 2.40x (-31%) |
-| WARN | C1-deflated | 5583 | Dragon Bone Talisman | Off Hand | 800 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 6435 | Dragon Bone Sword Knot | Off Hand | 800 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 2360 | Dragon Bone Mace | Main Hand | 800 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 3018 | Dragon Bone Longbow | Main Hand | 800 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 5582 | Dragon Bone Orb | Main Hand | 800 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 6434 | Dragon Bone Halberd | Main Hand | 800 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 3536 | Curselord's Raid Pigaches | Feet | 770 | rating budget 1.65x IL vs slot median 2.40x (-31%) |
-| WARN | C1-deflated | 3537 | Curselord's Assault Pigaches | Feet | 770 | rating budget 1.65x IL vs slot median 2.40x (-31%) |
-| WARN | C1-deflated | 4672 | Vistani Lute (IL 650) | Off Hand | 650 | rating budget 1.65x IL vs slot median 2.40x (-31%) |
-| WARN | C1-deflated | 5215 | Lionsmane Duelist Mask | Head | 560 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 5219 | Lionsmane Executioner Mask | Head | 560 | rating budget 1.57x IL vs slot median 2.40x (-34%) |
-| WARN | C1-deflated | 5213 | Lionsmane Duelist Gloves | Arms | 560 | rating budget 1.46x IL vs slot median 2.40x (-39%) |
-| WARN | C1-deflated | 5217 | Lionsmane Executioner Gloves | Arms | 560 | rating budget 1.57x IL vs slot median 2.40x (-34%) |
-| WARN | C1-deflated | 5212 | Lionsmane Duelist Boots | Feet | 560 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 5216 | Lionsmane Executioner Boots | Feet | 560 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 5214 | Lionsmane Duelist Vest | Armor | 560 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 5218 | Lionsmane Executioner Vest | Armor | 560 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
-| WARN | C1-deflated | 4671 | Vistani Lute (IL 500) | Off Hand | 500 | rating budget 1.65x IL vs slot median 2.40x (-31%) |
-| WARN | C1-deflated | 2110 | Shard of Orcus' Wand | Main Hand | 250 | rating budget 1.24x IL vs slot median 2.40x (-48%) |
 | WARN | C1-inflated | 51 | Cuirass of the Black Flame | Armor | 4300 | rating budget 3.18x IL vs slot median 2.40x (+33%) |
 | WARN | C1-inflated | 53 | Bulwark of the Eternal Zulkirate | Armor | 4300 | rating budget 3.30x IL vs slot median 2.40x (+37%) |
-| WARN | C1-inflated | 72 | Bulwark of the Zulkirate | Armor | 4050 | rating budget 3.48x IL vs slot median 2.40x (+45%) |
-| WARN | C1-inflated | 538 | Dreadbreaker Band | Ring | 3500 | rating budget 5.27x IL vs slot median 3.80x (+39%) |
 | WARN | C1-inflated | 1810 | Aegis of the Condemned · Ascendant | Off Hand | 3400 | rating budget 3.25x IL vs slot median 2.40x (+35%) |
 | WARN | C1-inflated | 1811 | Aegis of the Condemned · Maximum | Off Hand | 3400 | rating budget 3.55x IL vs slot median 2.40x (+48%) |
-| WARN | C1-inflated | 543 | Dreadwalker Band | Ring | 3150 | rating budget 5.53x IL vs slot median 3.80x (+45%) |
-| WARN | C1-inflated | 544 | Dreadwalker Loop | Ring | 3150 | rating budget 5.53x IL vs slot median 3.80x (+45%) |
-| WARN | C1-inflated | 5437 | True Ice Tome of the Companion | Companion Equipment | 3000 | rating budget 3.33x IL vs slot median 2.40x (+39%) |
-| WARN | C1-inflated | 5400 | Frostforged Tome of the Companion | Companion Equipment | 2850 | rating budget 3.33x IL vs slot median 2.40x (+39%) |
-| WARN | C1-inflated | 3237 | Astral Raider's Coif | Head | 2200 | rating budget 3.30x IL vs slot median 2.40x (+38%) |
 | WARN | C1-inflated | 950 | Dragonsteel Spikes | Feet | 1900 | rating budget 3.30x IL vs slot median 2.40x (+38%) |
 | WARN | C1-inflated | 238 | Wrathful Strangler | Neck | 1400 | rating budget 3.58x IL vs slot median 2.40x (+49%) |
-| WARN | C1-inflated | 2126 | Elemental Drowcraft Restoration Cuirass | Armor | 529 | rating budget 3.17x IL vs slot median 2.40x (+32%) |
 | WARN | C2-rating-off-family | 750 | Blackened Void Pants | Pants | 2000 | rating bonus 'Depleted Advantage' = 6250 vs family median 1005 for Combat Advantage @ IL~2000 |
 | WARN | C2-rating-off-family | 659 | Basalt Imbued Pants | Pants | 1900 | rating bonus 'Charged Bulwark' = 4600 vs family median 1000 for Defense @ IL~1000 |
 | WARN | C2-rating-off-family | 3997 | Blaspheme Cleaver | Main Hand | 1900 | rating bonus 'Power' = 7500 vs family median 1000 for Power @ IL~1000 |

@@ -942,3 +942,13 @@ From Report #19:
 - **Cactus the Hedgehog** — Equip: Vigilance (Awareness + Stamina Regen). Combat: Stabby Stabs (shield + defense + reflect). Slots: Regal/Barbed/Uni/Uni(Illuminated).
 
 ## Date: 2026-03-28
+
+## C1 audit enrichment TODOs (2026-06-12)
+- Ring of Defensive Action / Ring of Offensive Action: tooltips carry Daily-use procs
+  (Daily Defiance: -3% Incoming Damage 5s / Daily Edge: +3% Damage 5s) absent from DB.
+- Astral Raider's Coif: Healer's Sacrifice proc (+5% Overall Outgoing Healing,
+  -30% Incoming Healing) absent from DB (negative-effect modeling needed).
+- Lionsmane IL560: 4 of 8 pieces value-checked by tooltip; remaining 4 (Duelist Vest,
+  Executioner Gloves/Boots/Vest) should get the same stat-value spot-check.
+- Frostbound boots: Movement Speed contribution to combinedRating inconsistent
+  between Hearthboots (1,058) and Stoneboots (1,410) at same 3% — check convention.
