@@ -964,10 +964,10 @@ Forte → Critical Avoidance (value 9%, type percent). This is a shared enhancem
 so the fix applies to all 5 companions that grant it: Kavatos Stormeye, Rath Modar, Golden Goat,
 Catti-brie, Etrien.
 
-### Fighter gear intake (2026-06-12) — Report #112
-- Added **503 Fighter gear entries** from 582 in-game collection screenshots (ids 6878–7380). Fighter weapons went from 7 → 297 (MH 132, OH 133, Artifact 32), plus 213 armor pieces. Includes the Impending Doom set MH+shield (Ironfang / Bulwark of Ruin) at every tier IL 3750–5250. Full method in `docs/audit/fighter_intake_summary.md`.
-- **Still open (set bonus pending capture):** Umbral Convergence, Umbral Convergence (Greater), Weapons of the Shieldbearer — items exist and count stats; only the 2-piece set bonus is missing (new sets, no existing DB member to copy from).
-- **Still open (Report #112 Cleric part):** Cleric off-hand + missing Warden of the Last Rite tiers — no Cleric screenshots provided yet.
+### Fighter gear intake (2026-06-12) — Report #112 CLOSED (Fixed 2026-06-13)
+- Added **503 Fighter gear entries** from 582 in-game collection screenshots (ids 6878–7380). Fighter weapons went from 7 → 297 (MH 132, OH 133, Artifact 32), plus 213 armor pieces. Includes the Impending Doom set MH+shield (Ironfang / Bulwark of Ruin) at every tier IL 3750–5250. Full method in `docs/audit/fighter_intake_summary.md`. Report #112 marked Fixed per n00b.
+- **Open follow-up — set bonus pending capture:** Umbral Convergence, Umbral Convergence (Greater), Weapons of the Shieldbearer — items exist and count stats; only the 2-piece set bonus is missing (new sets, no existing DB member to copy from).
+- **Open follow-up — Cleric weapons (was the secondary half of #112, now tracked standalone):** Cleric off-hand + missing Warden of the Last Rite tiers + Omen of Doom middle tiers (3750/4100/4450). No Cleric screenshots provided yet — needs a Cleric collection sweep (same pipeline as the Fighter intake).
 - Minor: Dragon Bone Trident (IL 800) has no Combined Rating line on its tooltip; stored null (display-only field).
 
 ### Missing Companion Data
