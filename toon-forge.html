@@ -2321,7 +2321,7 @@
         <span style="font-size:0.58rem;font-weight:800;letter-spacing:0.09em;color:#0c0e14;background:var(--amber);padding:0.12rem 0.5rem;border-radius:999px;text-transform:uppercase;">Members&nbsp;Only</span>
         <div style="display:flex;align-items:center;gap:0.4rem;">
           <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
-          <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Legendary Noob members — click to sign in with Discord and unlock" style="opacity:0.92;" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">🚀 Optimize My Build</button>
+          <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Coming soon — the optimizer isn't available yet" style="opacity:0.92;" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">🚀 Optimize My Build</button>
         </div>
         <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-muted);max-width:240px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization with an AI review of every run — 30 runs a month. Click the button to sign in with Discord.</span>
       </div>
@@ -17152,80 +17152,31 @@
     }
   })();
 </script>
-<!-- LIVE-SITE premium unlock (Legendary Noob members). The gated optimizer
-     never ships in this repo — members fetch it from the premium backend with
-     their membership token and the page injects it. Non-members clicking the
-     Optimize button are sent through Discord sign-in; the backend redirects
-     back here with #pt=<token> (member) or #pt_denied=<reason>. Local dev
-     never runs this — the local loader above already loaded the real file. -->
+<!-- LIVE-SITE premium unlock — DISABLED until launch (held off 2026-06-13).
+     The members-only optimizer is NOT ready, so the live site must not deliver
+     it to ANYONE — members included. This block used to read a membership
+     token, fetch the gated script from the premium backend, and inject it
+     (silently on page load AND on button click). That bootstrap is
+     intentionally removed: no token read, no fetch, no inject. Clicking
+     "Optimize My Build" now only shows a "coming soon" note. Local dev is
+     unaffected — the local loader above still loads js/optimizer-local.js.
+     TO RE-ENABLE AT LAUNCH: restore the unlock bootstrap from git history
+     (commit a41790c) AND set OPTIMIZER_ENABLED=1 on the premium backend. -->
 <script>
   (function () {
     var h = location.hostname;
     var local = h === 'localhost' || h === '127.0.0.1' || h === '' || location.protocol === 'file:';
-    if (local) return;
-    var API = 'https://premium-tau-three.vercel.app';
-    window.PREMIUM_API_BASE = API;  // the injected optimizer reads this
-    var KEY = 'nwcb_premium_token';
-    var JOIN = 'https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join';
-    var INVITE = 'https://discord.gg/vraCFxvdW3';
-
-    function note(html) {
+    if (local) return;  // local dev loads the real optimizer directly (loader above)
+    // Not launched yet: the button only explains it's coming. No unlock path.
+    window.nwcbPremiumGo = function () {
       var n = document.getElementById('optimize-soon-note');
-      if (n) { n.style.display = 'block'; n.innerHTML = html; }
-    }
-
-    // Capture a fresh token (or a denial) delivered via the URL hash after login.
-    var hash = location.hash || '';
-    var m = hash.match(/[#&]pt=([^&]+)/);
-    if (m) {
-      try { localStorage.setItem(KEY, m[1]); } catch (e) {}
-      history.replaceState(null, '', location.pathname + location.search);
-    }
-    var d = hash.match(/[#&]pt_denied=([^&]+)/);
-    if (d) {
-      history.replaceState(null, '', location.pathname + location.search);
-      note('🔒 ' + decodeURIComponent(d[1]) +
-        '<br><a href="' + JOIN + '" target="_blank" rel="noopener" style="color:var(--amber);">Join Legendary Noob</a>' +
-        ' · <a href="' + INVITE + '" target="_blank" rel="noopener" style="color:var(--amber);">our Discord</a>' +
-        ' — link YouTube in Discord Settings &rarr; Connections, then click Optimize again.');
-    }
-
-    function inject(js) {
-      var s = document.createElement('script');
-      s.textContent = js;
-      document.body.appendChild(s);
-      var soon = document.getElementById('tf-premium-soon');
-      if (soon) soon.style.display = 'none';
-      var grp = document.getElementById('tf-featured-group');
-      if (grp) grp.style.display = 'flex';
-    }
-
-    function login() {
-      location.href = API + '/api/auth_login?return=' +
-        encodeURIComponent(location.href.split('#')[0]);
-    }
-
-    function unlock(viaClick) {
-      var token = null;
-      try { token = localStorage.getItem(KEY); } catch (e) {}
-      if (!token) { if (viaClick) login(); return; }
-      fetch(API + '/api/optimizer_js', { headers: { 'Authorization': 'Bearer ' + token } })
-        .then(function (r) {
-          if (r.ok) return r.text().then(inject);
-          if (r.status === 401) {  // expired/cancelled — clear and re-login on click
-            try { localStorage.removeItem(KEY); } catch (e) {}
-            if (viaClick) login();
-          } else {
-            note('⚠️ The optimizer service hit a snag (' + r.status + ') — try again in a moment.');
-          }
-        })
-        .catch(function () {
-          note('⚠️ Could not reach the membership server — try again in a moment.');
-        });
-    }
-
-    window.nwcbPremiumGo = function () { unlock(true); };
-    unlock(false);  // returning members unlock silently on page load
+      if (n) {
+        n.style.display = 'block';
+        n.innerHTML = '🛠️ The Build Optimizer is still in development and isn\'t available yet — ' +
+          'check back soon! Follow <a href="https://www.youtube.com/@N00binHard" target="_blank" ' +
+          'rel="noopener" style="color:var(--amber);font-weight:700;">The N00bin Network</a> for the launch.';
+      }
+    };
   })();
 </script>
 </body>
