@@ -70,16 +70,22 @@ them in (companions.json + companion_powers.json).
 | Blacksmith's Discipline | Utility | 250 | proc: 10% reflect 1.3% dmg taken (≤50k); 4-hit → reflect 3× | Slowed Reactions | Anvil, Hammer, Improved Anvil |
 | Dreadwarrior's Insight | Utility | 750 | proc: 10% on dmg taken → enrage, +15% threat 10s | Slowed Reactions | Siphon Strike, Slice of Dread, Warrior's Thirst |
 | Mercenary's Discipline | Offense, Utility | 900 | +4.5% Power, +4.5% Combat Advantage | Precision | Deft Strike, Sly Brutality, Sly Flourish |
-| Aoth's Wisdom | Offense, Utility | 750 | +3.8% Accuracy, +3.8% Combat Advantage | Keen Eyes | Aoth Fezim: Emerald Darts, Lunge, Lurch |
+| ~~Aoth's Wisdom~~ ✅ ADDED 2026-06-12 | Offense, Utility | 750 | +3.8% Accuracy, +3.8% Combat Advantage | Keen Eyes | Aoth Fezim: Emerald Darts, Lunge, Lurch |
 | Divine Insight | Defense | 250 | +5,000 Maximum Hit Points, +1.3% Critical Avoidance | Redemption | Cleaving Spear, Judgement, Spear of Light, Take A Knee |
 | Twitchspine's Resilience | Defense | 750 | proc: 25% on dmg taken → +4% Awareness & +4% Crit Avoidance 7s (10s cd) | Enduring Guard | Bonebreaker, Frenzied Resilience, Spinal Slam |
 
 Also surfaced: enhancement **Keen Eyes** (on Aoth's companion) is not in `companion_enhancements.json` —
 likely a missing enhancement too.
+✅ **RESOLVED 2026-06-12:** the source screenshot (`companions/_up/c140.png`) was located and re-read.
+Companion identified as **Aoth Fezim & Brightwing** (Wings and Cauldrons Lockbox, May 2025 — official
+announcement names it; too new for the wiki). Added: companion id 266, power **Aoth's Wisdom** id 257
+(Offense+Utility, IL 750, +3.8% Accuracy / +3.8% Combat Advantage / +750 CR), enhancement **Keen Eyes**
+id 30 (player Critical Severity + companion Critical Strike, max **9.6%** — tooltip-verified, genuinely
+above the usual 9% cap).
 
 ### Enhancement names not found (6) — likely vision typos / possibly missing
 `Weapon Briar`/`Weapon Breaker` (likely "Weapon Break"), `Counterstrike`/`Countertrace`/`Countrace`
-(likely "Counteract"), `Keen Eyes`. Low priority.
+(likely "Counteract"), ~~`Keen Eyes`~~ (✅ real missing enhancement — added 2026-06-12, id 30). Low priority.
 
 ## Notes
 - 19 power names were fuzzy-matched past obvious OCR typos (e.g. `Rustimonster's`→`Rustmonster's`,
