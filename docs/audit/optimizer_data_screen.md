@@ -1,16 +1,16 @@
 # Optimizer Data Screen (OPT-G3 Tier A)
 
-Generated 2026-06-12 — 6332 gear entries screened.
+Generated 2026-06-13 — 6836 gear entries screened.
 
-**Flags:** 36 CRITICAL · 23 WARN · 1 INFO · 1374 entries missing `source` (provenance backlog)
+**Flags:** 38 CRITICAL · 20 WARN · 1 INFO · 1658 entries missing `source` (provenance backlog)
 
-Per check: {'C1-inflated': 14, 'C2-rating-absurd': 28, 'C1-deflated': 6, 'C2-rating-off-family': 9, 'C3-dup-conflict': 2, 'C4-inert-set-tags': 1}
+Per check: {'C1-inflated': 14, 'C2-rating-absurd': 30, 'C1-deflated': 6, 'C2-rating-off-family': 6, 'C3-dup-conflict': 2, 'C4-inert-set-tags': 1}
 
 | Sev | Check | id | Item | Slot | IL | Why |
 |---|---|---|---|---|---|---|
 | CRITICAL | C1-inflated | 258 | Wrathful Waistband | Belt | 1400 | rating budget 4.04x IL vs slot median 2.40x (+68%) |
-| CRITICAL | C1-inflated | 589 | Captain's Girdle | Belt | 1400 | rating budget 6.10x IL vs slot median 2.40x (+154%) |
-| CRITICAL | C1-inflated | 590 | Captain's Pendant | Neck | 1400 | rating budget 5.83x IL vs slot median 2.40x (+143%) |
+| CRITICAL | C1-inflated | 589 | Captain's Girdle | Belt | 1400 | rating budget 4.82x IL vs slot median 2.40x (+101%) |
+| CRITICAL | C1-inflated | 590 | Captain's Pendant | Neck | 1400 | rating budget 4.54x IL vs slot median 2.40x (+89%) |
 | CRITICAL | C1-inflated | 2149 | Ring of Impenetrability +5 | Ring | 609 | rating budget 6.80x IL vs slot median 3.80x (+79%) |
 | CRITICAL | C1-inflated | 2150 | Ring of Impenetrability +4 | Ring | 596 | rating budget 6.80x IL vs slot median 3.80x (+79%) |
 | CRITICAL | C1-inflated | 2151 | Ring of Impenetrability +3 | Ring | 588 | rating budget 6.80x IL vs slot median 3.80x (+79%) |
@@ -44,6 +44,8 @@ Per check: {'C1-inflated': 14, 'C2-rating-absurd': 28, 'C1-deflated': 6, 'C2-rat
 | CRITICAL | C2-rating-absurd | 1424 | Infernal Forged Helm | Head | 1200 | rating bonus 'Skirmisher's Might' grants 5000 on an IL 1200 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4300 | Wootz Sakin | Off Hand | 350 | rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL) |
 | CRITICAL | C2-rating-absurd | 4722 | Wootz Lute | Off Hand | 350 | rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL) |
+| CRITICAL | C2-rating-absurd | 7120 | Wootz Bulta | Main Hand | 350 | rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL) |
+| CRITICAL | C2-rating-absurd | 7124 | Wootz Januwiyah | Off Hand | 350 | rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL) |
 | WARN | C1-deflated | 286 | Sabatons of the Flayed Legion | Feet | 4100 | rating budget 1.39x IL vs slot median 2.40x (-42%) |
 | WARN | C1-deflated | 290 | Shrouds of the Ashen Chant | Feet | 4100 | rating budget 1.58x IL vs slot median 2.40x (-34%) |
 | WARN | C1-deflated | 294 | Greaves of the Red Bastion | Feet | 4100 | rating budget 1.50x IL vs slot median 2.40x (-38%) |
@@ -61,10 +63,7 @@ Per check: {'C1-inflated': 14, 'C2-rating-absurd': 28, 'C1-deflated': 6, 'C2-rat
 | WARN | C2-rating-off-family | 3997 | Blaspheme Cleaver | Main Hand | 1900 | rating bonus 'Power' = 7500 vs family median 1000 for Power @ IL~1000 |
 | WARN | C2-rating-off-family | 3998 | Blaspheme Knife | Off Hand | 1900 | rating bonus 'Power' = 7500 vs family median 1000 for Power @ IL~1000 |
 | WARN | C2-rating-off-family | 1008 | Menzoberranzan Ring of Assault | Ring | 1600 | rating bonus 'Sudden Power' = 5500 vs family median 1000 for Power @ IL~1000 |
-| WARN | C2-rating-off-family | 1635 | Hard Rock Kickers | Feet | 950 | rating bonus 'Contender's Might' = 1500 vs family median 250 for Power @ IL~0 |
 | WARN | C2-rating-off-family | 1645 | Leafy Disguise of the Wanted | Head | 950 | rating bonus 'The Ol' Switcheroo' = 1300 vs family median 100 for Critical Strike @ IL~0 |
-| WARN | C2-rating-off-family | 3035 | Leather Assault Kafe | Armor | 784 | rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0 |
-| WARN | C2-rating-off-family | 1269 | Knotted Garbs | Armor | 756 | rating bonus 'Contender's Might' = 1500 vs family median 250 for Power @ IL~0 |
 | WARN | C3-dup-conflict | 465 | Aegis of the Condemned · IL 4800 | Off Hand | 4800 | 2 copies (ids [465, 5331]) with DIFFERENT stats/bonuses |
 | WARN | C3-dup-conflict | 252 | Cosmic Band of Deflection | Ring | 2400 | 2 copies (ids [252, 775]) with DIFFERENT stats/bonuses |
 | INFO | C4-inert-set-tags | None | (70 sets) | - | None | 70 incompletable set tags with NO modeled bonus — scoring-inert; strip opportunistically on capture evidence |

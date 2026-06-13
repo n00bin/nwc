@@ -11382,7 +11382,7 @@
           // Party-scope effects (Part of the Pack) are exempt: their stacks
           // are group-composition driven (partyPackMeta toggle), not a
           // duty cycle. Tunables: CONDITIONAL_UPTIME.proc.
-          const procU = alwaysOn ? 1 : (function () {
+          const procU = (alwaysOn || !CONDITIONAL_UPTIME.apply_to_stat_grants) ? 1 : (function () {
             // Per-power escape hatch, mirroring gear's uptimeOverride.
             if (pe.uptimeOverride != null) {
               const ov = +pe.uptimeOverride;

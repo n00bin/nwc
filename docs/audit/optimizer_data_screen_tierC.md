@@ -49,3 +49,9 @@ One tooltip capture each settles whether the stat budget is real:
 19. **The Legion Guard's weapons** — amount corrected to the sourced 1,000; one set-panel capture confirms it in-game.
 20. **"Cerebral/Oceans' Warden Sigils" + "Abyss Striker's Mauler Wristguards"** — ZERO community trace under these names; researcher suspects name drift (e.g. "Abyss CONQUEROR's" exists in Mod-26 patch notes). Check in-game names; 'Enervated Parry'/'Skirmisher's Ferocity' amounts unverifiable until then.
 
+## Full site audit (2026-06-13) — tooltip-dependent items
+21. **Captain's Girdle + Pendant (589/590, IL 1400)** — combinedRating already fixed to the 0.9×IL convention (1260); but the ratingStats look inflated (Critical Strike 3060 == the old combinedRating — likely entered twice). Verify the real stat block.
+22. **Aegis of the Condemned cluster (465/480/482/484/5328/5329/5330/5331 + 1807–1811)** — a duplicate tangle: 5328/5329 carry Critical Strike where the 2-stat series uses Outgoing Healing; 5331 is an incomplete ghost of 465; 465 (IL 4800) has IL-3400 stats copied unscaled. One tooltip per real tier settles which entries are canonical so the ghosts can be deleted.
+23. **Wrathful Waistband (258) + Wrathful Strangler (238, IL 1400)** — ratingStats inflated vs the IL-1400 belt/neck norm, AND combinedRating (1060) sits below the 0.9×IL convention — both anomalous. Verify.
+24. **~26 conditional-proc items scored at FULL value** — no uptimeOverride/procModel on big procs: Warden Sigils (Enervated Parry 10–13k), Abyss Striker Wristguards (10k), Flarefiber/Starwoven pants/shirts (7500 @ Stamina>75%), Faern Elendar rings (8000), Mod-28 Infernal/Forged/Divine helms/boots/bracers (5000 Power). Each needs a real uptime estimate before it stops over-ranking; batch-set uptimeOverride after verifying conditions.
+

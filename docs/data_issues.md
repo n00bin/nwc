@@ -971,7 +971,7 @@ Catti-brie, Etrien.
 - Minor: Dragon Bone Trident (IL 800) has no Combined Rating line on its tooltip; stored null (display-only field).
 
 ### Missing Companion Data
-- **Aoth Fezim & Brightwing** (2026-06-12) — Added from companion-audit screenshot c140. Power: Aoth's Wisdom (id 257, Offense+Utility, IL 750, +3.8% Accuracy / +3.8% Combat Advantage). Enhancement: Keen Eyes (id 30, player Crit Severity + companion Crit Strike, max 9.6% — tooltip-verified above the usual 9%). Source: Wings and Cauldrons Lockbox (May 2025); display name from official announcement — confirm in-game '&' vs 'and'.
+- **Aoth Fezim & Brightwing** (2026-06-12) — Added from companion-audit screenshot c140. Power: Aoth's Wisdom (id 260 — reassigned 2026-06-13 from a colliding id 257 that it shared with Orc Wolf's Instincts, which silently 10x-undercredited Aoth; found by the full site audit. Offense+Utility, IL 750, +3.8% Accuracy / +3.8% Combat Advantage). Enhancement: Keen Eyes (id 30, player Crit Severity + companion Crit Strike, max 9.6% — tooltip-verified above the usual 9%). Source: Wings and Cauldrons Lockbox (May 2025); display name from official announcement — confirm in-game '&' vs 'and'.
 - **Little White** — New companion added. Has Phasespider's Instincts (Utility, 3 stats). Enhancement ref not set.
 - **Celeste** — New power created (Celeste's Wisdom, ID 259). Verify proc heal scaling matches in-game.
 - **Apprentice Healer** — Fixed from IL 75 to IL 150. Has Max HP + Incoming Healing (uses flat HP scaling table).

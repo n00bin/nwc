@@ -78,7 +78,8 @@ Also surfaced: enhancement **Keen Eyes** (on Aoth's companion) is not in `compan
 likely a missing enhancement too.
 ✅ **RESOLVED 2026-06-12:** the source screenshot (`companions/_up/c140.png`) was located and re-read.
 Companion identified as **Aoth Fezim & Brightwing** (Wings and Cauldrons Lockbox, May 2025 — official
-announcement names it; too new for the wiki). Added: companion id 266, power **Aoth's Wisdom** id 257
+announcement names it; too new for the wiki). Added: companion id 266, power **Aoth's Wisdom** id 260
+(reassigned from a colliding id 257 on 2026-06-13 — see data_issues.md; it had silently shared id 257 with Orc Wolf's Instincts)
 (Offense+Utility, IL 750, +3.8% Accuracy / +3.8% Combat Advantage / +750 CR), enhancement **Keen Eyes**
 id 30 (player Critical Severity + companion Critical Strike, max **9.6%** — tooltip-verified, genuinely
 above the usual 9% cap).

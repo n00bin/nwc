@@ -1,21 +1,21 @@
 {
- "generated": "2026-06-12",
- "entries_screened": 6332,
+ "generated": "2026-06-13",
+ "entries_screened": 6836,
  "counts": {
-  "CRITICAL": 36,
-  "WARN": 23,
+  "CRITICAL": 38,
+  "WARN": 20,
   "INFO": 1
  },
  "by_check": {
   "C1-inflated": 14,
-  "C2-rating-absurd": 28,
+  "C2-rating-absurd": 30,
   "C1-deflated": 6,
-  "C2-rating-off-family": 9,
+  "C2-rating-off-family": 6,
   "C3-dup-conflict": 2,
   "C4-inert-set-tags": 1
  },
- "verified_suppressed": 303,
- "no_source_count": 1374,
+ "verified_suppressed": 249,
+ "no_source_count": 1658,
  "flags": [
   {
    "sev": "CRITICAL",
@@ -33,7 +33,7 @@
    "name": "Captain's Girdle",
    "slot": "Belt",
    "il": 1400,
-   "reason": "rating budget 6.10x IL vs slot median 2.40x (+154%)"
+   "reason": "rating budget 4.82x IL vs slot median 2.40x (+101%)"
   },
   {
    "sev": "CRITICAL",
@@ -42,7 +42,7 @@
    "name": "Captain's Pendant",
    "slot": "Neck",
    "il": 1400,
-   "reason": "rating budget 5.83x IL vs slot median 2.40x (+143%)"
+   "reason": "rating budget 4.54x IL vs slot median 2.40x (+89%)"
   },
   {
    "sev": "CRITICAL",
@@ -342,6 +342,24 @@
    "reason": "rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL)"
   },
   {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 7120,
+   "name": "Wootz Bulta",
+   "slot": "Main Hand",
+   "il": 350,
+   "reason": "rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL)"
+  },
+  {
+   "sev": "CRITICAL",
+   "check": "C2-rating-absurd",
+   "id": 7124,
+   "name": "Wootz Januwiyah",
+   "slot": "Off Hand",
+   "il": 350,
+   "reason": "rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL)"
+  },
+  {
    "sev": "WARN",
    "check": "C1-deflated",
    "id": 286,
@@ -497,38 +515,11 @@
   {
    "sev": "WARN",
    "check": "C2-rating-off-family",
-   "id": 1635,
-   "name": "Hard Rock Kickers",
-   "slot": "Feet",
-   "il": 950,
-   "reason": "rating bonus 'Contender's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
    "id": 1645,
    "name": "Leafy Disguise of the Wanted",
    "slot": "Head",
    "il": 950,
    "reason": "rating bonus 'The Ol' Switcheroo' = 1300 vs family median 100 for Critical Strike @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 3035,
-   "name": "Leather Assault Kafe",
-   "slot": "Armor",
-   "il": 784,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 1269,
-   "name": "Knotted Garbs",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Contender's Might' = 1500 vs family median 250 for Power @ IL~0"
   },
   {
    "sev": "WARN",
@@ -672,6 +663,24 @@
    "check": "C1-inflated",
    "id": 6627,
    "name": "League's Elite Raid Baydah",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 7112,
+   "name": "League's Elite Ward Kulah Khud",
+   "slot": "Head",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 7116,
+   "name": "League's Elite Raid Kulah Khud",
    "slot": "Head",
    "il": 602,
    "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
@@ -843,6 +852,24 @@
    "check": "C1-inflated",
    "id": 6630,
    "name": "League's Elite Raid Panahs",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 7114,
+   "name": "League's Elite Ward Dastanas",
+   "slot": "Arms",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 7118,
+   "name": "League's Elite Raid Dastanas",
    "slot": "Arms",
    "il": 602,
    "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
@@ -1120,6 +1147,24 @@
   {
    "sev": "WARN",
    "check": "C1-inflated",
+   "id": 7115,
+   "name": "League's Elite Ward Chakmeh",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 7117,
+   "name": "League's Elite Raid Chakmeh",
+   "slot": "Feet",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
    "id": 72,
    "name": "Bulwark of the Zulkirate",
    "slot": "Armor",
@@ -1308,6 +1353,24 @@
   },
   {
    "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 7113,
+   "name": "League's Elite Ward Jawshan",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-inflated",
+   "id": 7119,
+   "name": "League's Elite Raid Jawshan",
+   "slot": "Armor",
+   "il": 602,
+   "reason": "rating budget 3.15x IL vs slot median 2.40x (+31%)"
+  },
+  {
+   "sev": "WARN",
    "check": "C1-deflated",
    "id": 2110,
    "name": "Shard of Orcus' Wand",
@@ -1356,6 +1419,15 @@
    "check": "C1-deflated",
    "id": 6434,
    "name": "Dragon Bone Halberd",
+   "slot": "Main Hand",
+   "il": 800,
+   "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
+  },
+  {
+   "sev": "WARN",
+   "check": "C1-deflated",
+   "id": 7265,
+   "name": "Dragon Bone Trident",
    "slot": "Main Hand",
    "il": 800,
    "reason": "rating budget 1.50x IL vs slot median 2.40x (-38%)"
@@ -1520,15 +1592,6 @@
    "name": "Oathlord's Ward Cuirass",
    "slot": "Armor",
    "il": 770,
-   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 1242,
-   "name": "Oathlord's Ward Cuirass",
-   "slot": "Armor",
-   "il": 770,
    "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
   },
   {
@@ -1557,15 +1620,6 @@
    "slot": "Arms",
    "il": 770,
    "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 1248,
-   "name": "Oathlord's Restoration Cuirass",
-   "slot": "Armor",
-   "il": 770,
-   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
   },
   {
    "sev": "WARN",
@@ -1629,24 +1683,6 @@
    "slot": "Ring",
    "il": 672,
    "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 1894,
-   "name": "Rex Amiculum",
-   "slot": "Armor",
-   "il": 672,
-   "reason": "rating bonus 'Contender's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 2105,
-   "name": "Brynnyr's Demise",
-   "slot": "Head",
-   "il": 610,
-   "reason": "rating bonus 'Power/Defense Boost' = 2000 vs family median 250 for Power @ IL~0"
   },
   {
    "sev": "WARN",
@@ -1930,15 +1966,6 @@
   {
    "sev": "WARN",
    "check": "C2-rating-off-family",
-   "id": 2407,
-   "name": "Bronzewood Ward Ibhantshi",
-   "slot": "Armor",
-   "il": 784,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
    "id": 2412,
    "name": "Lichstone Ward Ring",
    "slot": "Ring",
@@ -1948,56 +1975,11 @@
   {
    "sev": "WARN",
    "check": "C2-rating-off-family",
-   "id": 2415,
-   "name": "Bronzewood Restoration Ibhantshi",
-   "slot": "Armor",
-   "il": 784,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
    "id": 2417,
    "name": "Beaded Assault Ring",
    "slot": "Ring",
    "il": 784,
    "reason": "rating bonus 'Challenger's Focus' = 1000 vs family median 100 for Critical Strike @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 2475,
-   "name": "Titansteel Ward Cuirass",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 2479,
-   "name": "Titansteel Gladiator Cuirass",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 2483,
-   "name": "Titansteel Restoration Cuirass",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 2487,
-   "name": "Titansteel Medic Cuirass",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
   },
   {
    "sev": "WARN",
@@ -2016,33 +1998,6 @@
    "slot": "Ring",
    "il": 756,
    "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 2593,
-   "name": "Adamant Restoration Cuirass",
-   "slot": "Armor",
-   "il": 728,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 2597,
-   "name": "Adamant Gladiator Cuirass",
-   "slot": "Armor",
-   "il": 728,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 2599,
-   "name": "Adamant Medic Cuirass",
-   "slot": "Armor",
-   "il": 728,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
   },
   {
    "sev": "WARN",
@@ -2115,78 +2070,6 @@
    "slot": "Feet",
    "il": 1900,
    "reason": "rating bonus 'Survivor's Finesse' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 3029,
-   "name": "Leather Raid Kafe",
-   "slot": "Armor",
-   "il": 784,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 3061,
-   "name": "Manticore Raid Coat",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 3065,
-   "name": "Manticore Executioner Coat",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 3069,
-   "name": "Manticore Assault Coat",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 3073,
-   "name": "Manticore Duelist Coat",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 3116,
-   "name": "Umbral Assault Coat",
-   "slot": "Armor",
-   "il": 728,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 3120,
-   "name": "Umbral Executioner Coat",
-   "slot": "Armor",
-   "il": 728,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 3122,
-   "name": "Umbral Duelist Coat",
-   "slot": "Armor",
-   "il": 728,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
   },
   {
    "sev": "CRITICAL",
@@ -2335,15 +2218,6 @@
   {
    "sev": "WARN",
    "check": "C2-rating-off-family",
-   "id": 3518,
-   "name": "Gurdunn's Defense",
-   "slot": "Armor",
-   "il": 950,
-   "reason": "rating bonus 'The Ol' Switcharoo' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
    "id": 3535,
    "name": "Curselord's Raid Ushanka",
    "slot": "Head",
@@ -2447,15 +2321,6 @@
    "name": "Banditlord's Raid Jerkin",
    "slot": "Armor",
    "il": 770,
-   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4177,
-   "name": "Banditlord's Raid Jerkin",
-   "slot": "Armor",
-   "il": 770,
    "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
   },
   {
@@ -2492,70 +2357,7 @@
    "name": "Banditlord's Assault Jerkin",
    "slot": "Armor",
    "il": 770,
-   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4183,
-   "name": "Banditlord's Assault Jerkin",
-   "slot": "Armor",
-   "il": 770,
    "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4297,
-   "name": "Wootz Jambiya (IL 500)",
-   "slot": "Main Hand",
-   "il": 500,
-   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4298,
-   "name": "Wootz Jambiya (IL 650)",
-   "slot": "Main Hand",
-   "il": 650,
-   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4299,
-   "name": "Wootz Jambiya (IL 800)",
-   "slot": "Main Hand",
-   "il": 800,
-   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4301,
-   "name": "Wootz Sakin (IL 500)",
-   "slot": "Off Hand",
-   "il": 500,
-   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4302,
-   "name": "Wootz Sakin (IL 650)",
-   "slot": "Off Hand",
-   "il": 650,
-   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4303,
-   "name": "Wootz Sakin (IL 800)",
-   "slot": "Off Hand",
-   "il": 800,
-   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
   },
   {
    "sev": "WARN",
@@ -2628,114 +2430,6 @@
    "slot": "Off Hand",
    "il": 600,
    "reason": "combat percent bonus 'Heal Self' = 50% single-instance (> 30%) — verify vs tooltip"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4439,
-   "name": "Dinohide Raid Mederebiya",
-   "slot": "Armor",
-   "il": 784,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4443,
-   "name": "Dinohide Assault Mederebiya",
-   "slot": "Armor",
-   "il": 784,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4497,
-   "name": "Manticore Raid Vest",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4501,
-   "name": "Manticore Executioner Vest",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4504,
-   "name": "Manticore Assault Vest",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4509,
-   "name": "Manticore Duelist Vest",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4584,
-   "name": "Umbral Assault Vest",
-   "slot": "Armor",
-   "il": 728,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4588,
-   "name": "Umbral Executioner Vest",
-   "slot": "Armor",
-   "il": 728,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4590,
-   "name": "Umbral Duelist Vest",
-   "slot": "Armor",
-   "il": 728,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4723,
-   "name": "Wootz Lute (IL 500)",
-   "slot": "Off Hand",
-   "il": 500,
-   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4724,
-   "name": "Wootz Lute (IL 650)",
-   "slot": "Off Hand",
-   "il": 650,
-   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 4725,
-   "name": "Wootz Lute (IL 800)",
-   "slot": "Off Hand",
-   "il": 800,
-   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0"
   },
   {
    "sev": "WARN",
@@ -2825,15 +2519,6 @@
    "name": "Curselord's Assault Longcoat",
    "slot": "Armor",
    "il": 770,
-   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 5577,
-   "name": "Curselord's Assault Longcoat",
-   "slot": "Armor",
-   "il": 770,
    "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
   },
   {
@@ -2861,15 +2546,6 @@
    "name": "Curselord's Raid Longcoat",
    "slot": "Armor",
    "il": 770,
-   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 5580,
-   "name": "Curselord's Raid Longcoat",
-   "slot": "Armor",
-   "il": 770,
    "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
   },
   {
@@ -2880,15 +2556,6 @@
    "slot": "Arms",
    "il": 770,
    "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6034,
-   "name": "Manalord's Assault Coat",
-   "slot": "Armor",
-   "il": 770,
-   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
   },
   {
    "sev": "WARN",
@@ -2916,15 +2583,6 @@
    "slot": "Arms",
    "il": 770,
    "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6038,
-   "name": "Manalord's Raid Coat",
-   "slot": "Armor",
-   "il": 770,
-   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
   },
   {
    "sev": "WARN",
@@ -2969,15 +2627,6 @@
    "name": "Woodlord's Assault Jerkin",
    "slot": "Armor",
    "il": 770,
-   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6183,
-   "name": "Woodlord's Assault Jerkin",
-   "slot": "Armor",
-   "il": 770,
    "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
   },
   {
@@ -3005,88 +2654,7 @@
    "name": "Woodlord's Raid Jerkin",
    "slot": "Armor",
    "il": 770,
-   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6187,
-   "name": "Woodlord's Raid Jerkin",
-   "slot": "Armor",
-   "il": 770,
    "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6218,
-   "name": "Silk Assault Ngubo",
-   "slot": "Armor",
-   "il": 784,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6219,
-   "name": "Silk Raid Ngubo",
-   "slot": "Armor",
-   "il": 784,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6288,
-   "name": "Manticore Assault Robes",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6292,
-   "name": "Manticore Raid Robes",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6310,
-   "name": "Adamant Assault Scalemail",
-   "slot": "Armor",
-   "il": 728,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6314,
-   "name": "Adamant Duelist Scalemail",
-   "slot": "Armor",
-   "il": 728,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6318,
-   "name": "Adamant Gladiator Scalemail",
-   "slot": "Armor",
-   "il": 728,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6338,
-   "name": "Bladelord's Assault Breastplate",
-   "slot": "Armor",
-   "il": 770,
-   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
   },
   {
    "sev": "WARN",
@@ -3122,15 +2690,6 @@
    "name": "Bladelord's Raid Breastplate",
    "slot": "Armor",
    "il": 770,
-   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6342,
-   "name": "Bladelord's Raid Breastplate",
-   "slot": "Armor",
-   "il": 770,
    "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0"
   },
   {
@@ -3150,24 +2709,6 @@
    "slot": "Head",
    "il": 770,
    "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6369,
-   "name": "Bronzewood Assault Kanzu",
-   "slot": "Armor",
-   "il": 784,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6377,
-   "name": "Bronzewood Raid Kanzu",
-   "slot": "Armor",
-   "il": 784,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
   },
   {
    "sev": "CRITICAL",
@@ -3249,42 +2790,6 @@
    "slot": "Head",
    "il": 1900,
    "reason": "rating bonus 'Survivor's Strike' grants 10000 on an IL 1900 item (> 4x IL)"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6774,
-   "name": "Titansteel Assault Scalemail",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6780,
-   "name": "Titansteel Duelist Scalemail",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6784,
-   "name": "Titansteel Gladiator Scalemail",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
-  },
-  {
-   "sev": "WARN",
-   "check": "C2-rating-off-family",
-   "id": 6788,
-   "name": "Titansteel Raid Scalemail",
-   "slot": "Armor",
-   "il": 756,
-   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0"
   }
  ]
 }
