@@ -39,6 +39,10 @@ from existing DB members instead).
   #112 also asked for the Cleric off-hand and missing Warden of the Last Rite
   tiers — no Cleric screenshots were provided, still outstanding.
 
-Raw screenshots + 2×-upscaled crops + per-frame extraction JSONL are local-only
-(`docs/audit/fighter_intake/`, gitignored); originals archived under
-OneDrive `…/Screenshots/New folder/_processed_fighter_2026-06-12/`.
+**Archiving:** each screenshot was cropped to a tight native tooltip image,
+renamed `<Item>_IL<level>.png`, and filed into the standard gear archive
+`docs/calibration/inbox/gear/fighter-gear/<slot>/` (slot dirs: main-hand,
+off-hand, artifacts, heads, chest, arms, feet, neck) — 511 item crops + 64
+set-detail crops, gitignored/local-only. Working files (2×-upscaled crops,
+extraction JSONL, scripts) live in `docs/audit/fighter_intake/` (gitignored).
+Raw full-screen originals were deleted after the per-item crops were archived.
