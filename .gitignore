@@ -71,6 +71,7 @@ scripts/_*.json
 # vision-audit image archives (multi-GB) — local only, never push
 docs/audit/_up/
 docs/audit/companions/
+docs/audit/fighter_intake/
 *.pkl
 artifacts.txt
 

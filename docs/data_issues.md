@@ -964,6 +964,12 @@ Forte → Critical Avoidance (value 9%, type percent). This is a shared enhancem
 so the fix applies to all 5 companions that grant it: Kavatos Stormeye, Rath Modar, Golden Goat,
 Catti-brie, Etrien.
 
+### Fighter gear intake (2026-06-12) — Report #112
+- Added **503 Fighter gear entries** from 582 in-game collection screenshots (ids 6878–7380). Fighter weapons went from 7 → 297 (MH 132, OH 133, Artifact 32), plus 213 armor pieces. Includes the Impending Doom set MH+shield (Ironfang / Bulwark of Ruin) at every tier IL 3750–5250. Full method in `docs/audit/fighter_intake_summary.md`.
+- **Still open (set bonus pending capture):** Umbral Convergence, Umbral Convergence (Greater), Weapons of the Shieldbearer — items exist and count stats; only the 2-piece set bonus is missing (new sets, no existing DB member to copy from).
+- **Still open (Report #112 Cleric part):** Cleric off-hand + missing Warden of the Last Rite tiers — no Cleric screenshots provided yet.
+- Minor: Dragon Bone Trident (IL 800) has no Combined Rating line on its tooltip; stored null (display-only field).
+
 ### Missing Companion Data
 - **Aoth Fezim & Brightwing** (2026-06-12) — Added from companion-audit screenshot c140. Power: Aoth's Wisdom (id 257, Offense+Utility, IL 750, +3.8% Accuracy / +3.8% Combat Advantage). Enhancement: Keen Eyes (id 30, player Crit Severity + companion Crit Strike, max 9.6% — tooltip-verified above the usual 9%). Source: Wings and Cauldrons Lockbox (May 2025); display name from official announcement — confirm in-game '&' vs 'and'.
 - **Little White** — New companion added. Has Phasespider's Instincts (Utility, 3 stats). Enhancement ref not set.
