@@ -2319,11 +2319,12 @@
            loader, which loads the real file directly. -->
       <div id="tf-premium-soon" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.3rem;padding:0.25rem 0.7rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
         <span style="font-size:0.58rem;font-weight:800;letter-spacing:0.09em;color:#0c0e14;background:var(--amber);padding:0.12rem 0.5rem;border-radius:999px;text-transform:uppercase;">Members&nbsp;Only</span>
-        <div style="display:flex;align-items:center;gap:0.4rem;">
+        <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;justify-content:center;">
           <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
           <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Coming soon — the optimizer isn't available yet" style="opacity:0.92;" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">🚀 Optimize My Build</button>
+          <button class="btn" type="button" id="verdict-soon-btn" title="Coming soon — the Forgemaster's AI build verdict isn't available yet" style="opacity:0.92;background:rgba(212,160,23,0.12);color:var(--amber);border:1px solid var(--amber);" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">⚒ Forgemaster's Verdict</button>
         </div>
-        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-muted);max-width:240px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization with an AI review of every run. Still in development — not available yet, coming soon.</span>
+        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-muted);max-width:280px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization, plus the Forgemaster's AI verdict that reviews any build and coaches how to play it. Still in development — not available yet, coming soon.</span>
       </div>
     </div>
   </div>
@@ -17172,7 +17173,8 @@
       var n = document.getElementById('optimize-soon-note');
       if (n) {
         n.style.display = 'block';
-        n.innerHTML = '🛠️ The Build Optimizer is still in development and isn\'t available yet — ' +
+        n.innerHTML = '🛠️ The premium build tools — the Optimizer and the Forgemaster\'s AI verdict — ' +
+          'are still in development and aren\'t available yet — ' +
           'check back soon! Follow <a href="https://www.youtube.com/@N00binHard" target="_blank" ' +
           'rel="noopener" style="color:var(--amber);font-weight:700;">The N00bin Network</a> for the launch.';
       }
