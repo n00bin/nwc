@@ -955,6 +955,15 @@ Powers that scale but don't follow standard single/double stat tables.
 - **Fire Eye** — Removed as duplicate of Blue Fire Eye.
 - **Phasespider** — Was assigned wrong power (Phasespider's Instincts = Little White's power). Fixed to Phasespider's Presence.
 
+### Open: Master of Craft enhancement text conflict (found 2026-06-12)
+Audit screenshot `docs/audit/companions/_up/c141.png` (Rath Modar inspect) shows enhancement
+"Master of Craft" (IL 900) as "increase your **critical avoidance** by up to 9% and your companion's
+critical avoidance by up to 9%" — but `companion_enhancements.json` id 3 stores Master of Craft as
+**Forte** 9% (not n00b-verified; likely wiki/NW Hub sourced). Either the DB stat is wrong, or the game
+has two same-named enhancement variants. Needs an in-game check (e.g. hover Master of Craft on any
+companion that grants it) before changing data. Do NOT blind-fix — the Forte version may be correct
+on other companions.
+
 ### Missing Companion Data
 - **Aoth Fezim & Brightwing** (2026-06-12) — Added from companion-audit screenshot c140. Power: Aoth's Wisdom (id 257, Offense+Utility, IL 750, +3.8% Accuracy / +3.8% Combat Advantage). Enhancement: Keen Eyes (id 30, player Crit Severity + companion Crit Strike, max 9.6% — tooltip-verified above the usual 9%). Source: Wings and Cauldrons Lockbox (May 2025); display name from official announcement — confirm in-game '&' vs 'and'.
 - **Little White** — New companion added. Has Phasespider's Instincts (Utility, 3 stats). Enhancement ref not set.
