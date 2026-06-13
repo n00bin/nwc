@@ -17153,30 +17153,52 @@
     }
   })();
 </script>
-<!-- LIVE-SITE premium unlock — DISABLED until launch (held off 2026-06-13).
-     The members-only optimizer is NOT ready, so the live site must not deliver
-     it to ANYONE — members included. This block used to read a membership
-     token, fetch the gated script from the premium backend, and inject it
-     (silently on page load AND on button click). That bootstrap is
-     intentionally removed: no token read, no fetch, no inject. Clicking
-     "Optimize My Build" now only shows a "coming soon" note. Local dev is
-     unaffected — the local loader above still loads js/optimizer-local.js.
-     TO RE-ENABLE AT LAUNCH: restore the unlock bootstrap from git history
-     (commit a41790c) AND set OPTIMIZER_ENABLED=1 on the premium backend. -->
+<!-- LIVE-SITE premium gate — optimizer DELIVERY still disabled until launch
+     (held off 2026-06-13). The members-only optimizer is NOT ready, so the
+     live site must not fetch/inject it for ANYONE — members included. What
+     this block DOES do: read the membership token (localStorage
+     'nwcb_premium_token', captured from a #pt=... sign-in redirect) purely to
+     decide WHICH note to show on click — a membership sales pitch for
+     non-members, and a "you're in, it's almost ready" note for Legendary
+     members. NO optimizer fetch, NO inject, NO Discord login trigger yet.
+     Local dev is unaffected (the loader above loads js/optimizer-local.js).
+     TO RE-ENABLE DELIVERY AT LAUNCH: restore the full unlock bootstrap from
+     git history (commit a41790c) AND set OPTIMIZER_ENABLED=1 on the backend. -->
 <script>
   (function () {
     var h = location.hostname;
     var local = h === 'localhost' || h === '127.0.0.1' || h === '' || location.protocol === 'file:';
     if (local) return;  // local dev loads the real optimizer directly (loader above)
-    // Not launched yet: the button only explains it's coming. No unlock path.
+    var KEY = 'nwcb_premium_token';
+    // Capture a membership token handed back via the post-sign-in redirect
+    // (#pt=<token>). Dormant until the sign-in flow is wired at launch, but
+    // harmless now — it lets a verified member be recognised the moment it is.
+    try {
+      var m = location.hash.match(/[#&]pt=([^&]+)/);
+      if (m) {
+        localStorage.setItem(KEY, decodeURIComponent(m[1]));
+        history.replaceState(null, '', location.pathname + location.search);
+      }
+    } catch (e) {}
+    function isMember() { try { return !!localStorage.getItem(KEY); } catch (e) { return false; } }
+    // Both premium buttons call this. We only ever show a note — the
+    // (unfinished) optimizer is never delivered, member or not.
     window.nwcbPremiumGo = function () {
       var n = document.getElementById('optimize-soon-note');
-      if (n) {
-        n.style.display = 'block';
-        n.innerHTML = '🛠️ The premium build tools — the Optimizer and the Forgemaster\'s AI verdict — ' +
-          'are still in development and aren\'t available yet — ' +
-          'check back soon! Follow <a href="https://www.youtube.com/@N00binHard" target="_blank" ' +
-          'rel="noopener" style="color:var(--amber);font-weight:700;">The N00bin Network</a> for the launch.';
+      if (!n) return;
+      n.style.display = 'block';
+      if (isMember()) {
+        // Legendary member: feature isn't built yet.
+        n.innerHTML = '✅ Thanks for being a <strong style="color:var(--amber);">Legendary Noob</strong>! ' +
+          'The Optimizer and the Forgemaster\'s AI verdict are still in development and aren\'t available ' +
+          'yet — they\'ll unlock right here the moment they launch. Hang tight!';
+      } else {
+        // Non-member: sell the membership.
+        n.innerHTML = '⚒ One-click build optimization and the Forgemaster\'s AI verdict are a ' +
+          '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" ' +
+          'rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> ' +
+          'perk ($9.99/mo): the optimizer rebuilds your gear &amp; boons for your role, and the AI reviews any ' +
+          'build and coaches how to play it. Join now and you\'ll be ready the day it launches.';
       }
     };
   })();
