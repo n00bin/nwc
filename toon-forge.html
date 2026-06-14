@@ -2308,7 +2308,7 @@
     <span class="save-status" id="save-status">Auto-saved · just now</span>
     <h1>Toon Forge<span class="accent">— build your character, see what hits</span><span class="badge" title="Work-in-progress. Numbers may not be 100% accurate yet — help us improve by using the ✎ pencil to fix anything wrong.">Experimental</span></h1>
     <p>A friendly character builder for Neverwinter. Pick your role, equip your gear, and watch the build come together — no spreadsheet skills required.</p>
-  <p class="experimental-note-mobile" style="display:none;font-size:0.78rem;color:var(--text-muted);">Experimental: numbers may not be 100% accurate yet — tap the ✎ pencil on any item to fix anything wrong.</p>
+  <p class="experimental-note-mobile" style="display:none;font-size:0.78rem;color:var(--text-mute);">Experimental: numbers may not be 100% accurate yet — tap the ✎ pencil on any item to fix anything wrong.</p>
     <div class="hero-correction-callout" role="note">
       <span class="hcc-icon">✎</span>
       <div class="hcc-body">
@@ -2345,7 +2345,7 @@
           <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Coming soon — the optimizer isn't available yet" style="opacity:0.92;" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">🚀 Optimize My Build</button>
           <button class="btn" type="button" id="verdict-soon-btn" title="Coming soon — the Forgemaster's AI build verdict isn't available yet" style="opacity:0.92;background:rgba(212,160,23,0.12);color:var(--amber);border:1px solid var(--amber);" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">⚒ Forgemaster's Verdict</button>
         </div>
-        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-muted);max-width:280px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization, plus the Forgemaster's AI verdict that reviews any build and coaches how to play it. Still in development — not available yet, coming soon.</span>
+        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-mute);max-width:280px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization, plus the Forgemaster's AI verdict that reviews any build and coaches how to play it. Still in development — not available yet, coming soon.</span>
       </div>
     </div>
   </div>
@@ -2480,7 +2480,7 @@
 
       <div class="panel">
         <h2>Overloads</h2>
-        <p class="hint">Two slots, each adds a flat percent bonus. You can't equip the same overload in both slots — once you pick it, it disappears from the second slot's picker.</p>
+        <p class="hint">Two slots, each adds a flat percent bonus. You can't equip the same overload in both slots — once you pick it for one, it won't appear as a choice for the other.</p>
         <div class="slot-grid" id="overload-grid"></div>
       </div>
 
@@ -2594,7 +2594,7 @@
           <div class="active-power-col" style="display:flex;flex-direction:column;gap:0.2rem;">
             <div class="comp-loadout-chip" id="active-combat-chip">+ Active Combat Power</div>
             <div style="display:flex;align-items:center;gap:0.3rem;">
-              <label style="font-size:0.7rem;color:var(--text-muted);white-space:nowrap;">Combat rarity:</label>
+              <label style="font-size:0.7rem;color:var(--text-mute);white-space:nowrap;">Combat rarity:</label>
               <select id="active-combat-power-rarity"
                       title="Rarity of the mount whose Combat Power you are using. Scales the combat-power detail card values only — does NOT change the stat bar."
                       style="font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
@@ -2611,7 +2611,7 @@
           <div class="active-power-col" style="display:flex;flex-direction:column;gap:0.2rem;">
             <div class="comp-loadout-chip" id="active-equip-chip">+ Active Equip Power</div>
             <div style="display:flex;align-items:center;gap:0.3rem;">
-              <label style="font-size:0.7rem;color:var(--text-muted);white-space:nowrap;">Equip rarity:</label>
+              <label style="font-size:0.7rem;color:var(--text-mute);white-space:nowrap;">Equip rarity:</label>
               <select id="active-equip-power-rarity"
                       title="Rarity of the mount whose Equip Power you are using. Scales the stat bar immediately — works even if that mount is not in any stable slot. Note: the browse picker still shows Mythic-baseline numbers; only the stat bar reflects this rarity."
                       style="font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
@@ -2692,9 +2692,7 @@
           <label>Content zone
             <span class="hint-icon" data-tip="Where are you running? Some gear gives extra damage only in a specific zone (e.g. &quot;+5% Damage in Thay&quot;). Pick your zone to count that bonus; leave on General for the everywhere value only.">?</span>
           </label>
-          <select id="content-zone-select" style="width:100%;padding:0.5rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:6px;">
-            <option value="">General (anywhere)</option>
-          </select>
+          <button type="button" id="content-zone-btn" class="field-picker-btn">General (anywhere)</button>
         </div>
 
         <p class="hint" style="margin-top:0.8rem;">💡 <strong>Chance</strong> = how likely each outcome is on a single hit. All the cards below add up to 100% — every hit has to land in exactly one.</p>
@@ -3208,7 +3206,7 @@
       state.flankUptime = (typeof s.flankUptime === "number") ? s.flankUptime : 0.70;
       state.simMag = (typeof s.simMag === "number") ? s.simMag : 100;
       state.contentZone = (typeof s.contentZone === "string") ? s.contentZone : "";
-      { const _zs = document.getElementById("content-zone-select"); if (_zs) _zs.value = state.contentZone; }
+      updateContentZoneButton();
       state.slottedClassFeaturePicks = Array.isArray(s.slottedClassFeaturePicks) ? s.slottedClassFeaturePicks.slice() : [];
       state.rangerStance = s.rangerStance || "ranged";
       state.bardActiveSong = s.bardActiveSong || "";
@@ -3578,6 +3576,37 @@
           updateRaceButton();
           recomputeAbilityTotals();
           renderAbilityGrid();
+          rerenderAll();
+        }
+      });
+    }
+    /* Content-zone field is a custom searchable picker (matches Race/Paragon).
+       Zones are derived from gear equip bonuses that only apply in a zone;
+       "General (anywhere)" is the explicit default (empty contentZone). */
+    function updateContentZoneButton() {
+      const btn = document.getElementById("content-zone-btn");
+      if (!btn) return;
+      btn.textContent = state.contentZone || "General (anywhere)";
+      btn.classList.toggle("filled", !!state.contentZone);
+    }
+    function openContentZonePicker() {
+      const zoneSet = new Set();
+      (typeof GEAR_DATA !== "undefined" ? GEAR_DATA : []).forEach(it =>
+        (it.equipBonuses || []).forEach(eb => { if (eb && Array.isArray(eb.zones)) eb.zones.forEach(z => zoneSet.add(z)); }));
+      const items = [{ name: "General (anywhere)", zone: "" }]
+        .concat([...zoneSet].sort().map(z => ({ name: z, zone: z })));
+      openPicker({
+        title: "Content zone",
+        items,
+        allowNone: false,   // "General (anywhere)" is the explicit no-zone option
+        render: (it) => ({
+          name: it.name,
+          meta: it.zone ? "Counts gear bonuses that only work in this zone" : "Everywhere value only",
+          desc: ""
+        }),
+        onPick: (it) => {
+          state.contentZone = it ? it.zone : "";
+          updateContentZoneButton();
           rerenderAll();
         }
       });
@@ -13802,28 +13831,28 @@
       // → dailies → mechanics → class features, mirroring the in-game
       // Powers tab row order.
       if (pickable.length) {
-        out.push('<div class="field" style="margin-top:0.8rem;"><label>Class Features <span style="color:var(--text-dim);font-weight:400;">(pick up to 2)</span></label>');
-        out.push('<div style="display:flex;gap:0.5rem;flex-wrap:wrap;">');
+        // Slot+chip pattern (matches At-Wills / Encounters / Feats): each
+        // slot opens the shared openPicker modal, which shows every
+        // feature's description as subtext before you pick. The feature
+        // already slotted in the other slot is filtered out at open time.
+        const cfSlots = picks.slice();
+        while (cfSlots.length < 2) cfSlots.push("");
+        out.push('<div class="field" style="margin-top:0.8rem;"><label>Class Features <span style="color:var(--text-dim);font-weight:400;">(pick up to 2 · click to pick)</span></label>');
+        out.push('<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:0.5rem;">');
         for (let i = 0; i < 2; i++) {
-          const current = picks[i] || "";
-          out.push('<select data-cf-slot="' + i + '" style="flex:1;min-width:200px;">');
-          out.push('<option value="">— empty —</option>');
-          for (const f of pickable) {
-            // Don't allow the same feature in both slots.
-            if (picks[1 - i] && picks[1 - i] === f.name) continue;
-            const sel = (current === f.name) ? ' selected' : '';
-            out.push('<option value="' + escAttr(f.name) + '"' + sel + '>' + escHtml(f.name) + '</option>');
-          }
-          out.push('</select>');
+          const name = cfSlots[i] || "";
+          const filled = !!name;
+          const label = filled ? "✦ " + escHtml(name) : "+ Pick class feature";
+          out.push(
+            '<div class="slot ' + (filled ? "filled" : "") + '">' +
+              '<div class="slot-label">Slot ' + (i + 1) + '</div>' +
+              '<div class="gear-pick-chip' + (filled ? " filled" : "") + '" data-cf-pick="' + i + '" title="' + (filled ? escAttr(name) : 'Click to pick a class feature') + '">' +
+                label +
+              '</div>' +
+            '</div>'
+          );
         }
-        out.push('</div>');
-        // Description box for the picks
-        const descLines = picks.filter(Boolean).map(name => {
-          const f = pickable.find(x => x.name === name);
-          return f ? ('<div style="margin-top:0.4rem;font-size:0.78rem;color:var(--text-dim);"><strong>' + escHtml(f.name) + ':</strong> ' + escHtml(f.description || "") + '</div>') : '';
-        }).join('');
-        if (descLines) out.push(descLines);
-        out.push('</div>');
+        out.push('</div></div>');
       }
 
       // --- Paragon Feats (5 slot cards + modal picker) ---
@@ -13917,24 +13946,21 @@
 
       // --- Bard active song picker ---
       if (state.class === "Bard") {
-        const songsList = (paragonDef.powers && Array.isArray(paragonDef.powers.songs)) ? paragonDef.powers.songs : [];
-        // Stat-contributing songs are the three with a flat damage bonus.
-        // Other songs still appear in the list as "no stat panel impact"
-        // so the user can see all options.
-        const STAT_BONUS = {
-          "Steel March":     "+2% Damage Bonus (physical)",
-          "Tailwind Mambo":  "+2% Damage Bonus (projectile)",
-          "Blaze Flamenco":  "+2% Damage Bonus (magical)"
-        };
-        out.push('<div class="field" style="margin-top:0.8rem;"><label>Active Song <span style="color:var(--text-dim);font-weight:400;">(only damage-bonus songs change the stat panel)</span></label>');
-        out.push('<select id="bard-song-picker">');
-        out.push('<option value="">— no song active —</option>');
-        for (const sng of songsList) {
-          const sel = (state.bardActiveSong === sng.name) ? ' selected' : '';
-          const tag = STAT_BONUS[sng.name] ? ' · ' + STAT_BONUS[sng.name] : '';
-          out.push('<option value="' + escAttr(sng.name) + '"' + sel + '>' + escHtml(sng.name + tag) + '</option>');
-        }
-        out.push('</select></div>');
+        // Single-pick chip → shared openPicker modal (renderBardSongItem
+        // shows each song's stat bonus + description). Only the three
+        // damage-bonus songs change the stat panel.
+        const name = state.bardActiveSong || "";
+        const filled = !!name;
+        const label = filled ? "♪ " + escHtml(name) : "+ Pick active song";
+        out.push('<div class="field" style="margin-top:0.8rem;"><label>Active Song <span style="color:var(--text-dim);font-weight:400;">(only damage-bonus songs change the stat panel · click to pick)</span></label>');
+        out.push(
+          '<div class="slot ' + (filled ? "filled" : "") + '" style="max-width:280px;">' +
+            '<div class="gear-pick-chip' + (filled ? " filled" : "") + '" data-bard-song-pick="1" title="' + (filled ? escAttr(name) : 'Click to pick an active song') + '">' +
+              label +
+            '</div>' +
+          '</div>'
+        );
+        out.push('</div>');
       }
 
       // --- Warlock Hellbringer Soul Sparks slider ---
@@ -14045,18 +14071,28 @@
         });
       });
 
-      body.querySelectorAll('select[data-cf-slot]').forEach(sel => {
-        sel.addEventListener('change', e => {
-          const idx = parseInt(e.target.dataset.cfSlot, 10);
-          const val = e.target.value;
-          const arr = (state.slottedClassFeaturePicks || []).slice();
-          // Ensure length 2
-          while (arr.length < 2) arr.push("");
-          arr[idx] = val;
-          // Strip empty trailing entries so storage stays clean
-          state.slottedClassFeaturePicks = arr.filter(Boolean);
-          renderClassLoadout();   // refresh — picks affect the OTHER slot's options
-          rerenderAll();
+      body.querySelectorAll('[data-cf-pick]').forEach(el => {
+        el.addEventListener('click', () => {
+          const idx = parseInt(el.dataset.cfPick, 10);
+          // Hide the feature already in the OTHER slot so the same one
+          // can't be slotted twice.
+          const other = (state.slottedClassFeaturePicks || [])[1 - idx] || "";
+          const items = pickable.filter(f => !other || f.name !== other);
+          openPicker({
+            title: "Class Feature — slot " + (idx + 1),
+            items,
+            render: renderFeatItem,
+            allowNone: true,
+            onPick: (item) => {
+              const arr = (state.slottedClassFeaturePicks || []).slice();
+              while (arr.length < 2) arr.push("");
+              arr[idx] = item ? item.name : "";
+              // Strip empty trailing entries so storage stays clean
+              state.slottedClassFeaturePicks = arr.filter(Boolean);
+              renderClassLoadout();   // refresh — picks affect the OTHER slot's options
+              rerenderAll();
+            }
+          });
         });
       });
       body.querySelectorAll('button[data-stance]').forEach(btn => {
@@ -14066,13 +14102,22 @@
           rerenderAll();
         });
       });
-      const songPicker = body.querySelector('#bard-song-picker');
-      if (songPicker) {
-        songPicker.addEventListener('change', e => {
-          state.bardActiveSong = e.target.value;
-          rerenderAll();
+      body.querySelectorAll('[data-bard-song-pick]').forEach(el => {
+        el.addEventListener('click', () => {
+          const songsList = (paragonDef.powers && Array.isArray(paragonDef.powers.songs)) ? paragonDef.powers.songs : [];
+          openPicker({
+            title: "Active Song",
+            items: songsList,
+            render: renderBardSongItem,
+            allowNone: true,
+            onPick: (item) => {
+              state.bardActiveSong = item ? item.name : "";
+              renderClassLoadout();
+              rerenderAll();
+            }
+          });
         });
-      }
+      });
       const sparksSlider = body.querySelector('#warlock-sparks-slider');
       if (sparksSlider) {
         sparksSlider.addEventListener('input', e => {
@@ -14230,6 +14275,21 @@
       const e = (v) => escHtml(v);
       const desc = cleanNote(f.description || "") || cleanNote(f.notes || "");
       return { name: e(f.name), meta: "", desc: e(desc) };
+    }
+
+    // Bard active-song picker formatter. Only the three damage-bonus songs
+    // change the stat panel; the rest still appear so every option is visible.
+    const BARD_SONG_STAT_BONUS = {
+      "Steel March":    "+2% Damage Bonus (physical)",
+      "Tailwind Mambo": "+2% Damage Bonus (projectile)",
+      "Blaze Flamenco": "+2% Damage Bonus (magical)"
+    };
+    function renderBardSongItem(sng) {
+      if (!sng) return { name: "", meta: "", desc: "" };
+      const e = (v) => escHtml(v);
+      const bonus = BARD_SONG_STAT_BONUS[sng.name] || "No stat panel impact";
+      const desc = cleanNote(sng.description || "") || cleanNote(sng.notes || "");
+      return { name: e(sng.name), meta: e(bonus), desc: e(desc) };
     }
 
     // cleanNote is defined inside renderClassLoadout's scope; mirror a
@@ -15456,7 +15516,7 @@
         rows = _tank.rows;
         const _surv = computeTankSurvivalScore(mag);
         if (_surv.score > 0) {
-          dpsNote = `<div style="font-size:0.78rem;color:var(--text-muted);margin:0.35rem 0 0.2rem;line-height:1.55;">`
+          dpsNote = `<div style="font-size:0.78rem;color:var(--text-mute);margin:0.35rem 0 0.2rem;line-height:1.55;">`
             + `At <strong style="color:var(--text)">${Math.round(_surv.maxHP).toLocaleString()}</strong> Max HP you can absorb about `
             + `<strong style="color:var(--text)">${_surv.score.toFixed(1)}</strong> average boss hits before dying (with no healing) — `
             + `this "hits you can take" number is what a Tank optimization maximizes. Both mitigation and HP pool count.`
@@ -15489,7 +15549,7 @@
         rows = _dps.rows;
         // Short, plain-English readout. The cards self-explain, so keep this brief.
         const _pd = _dps.procDamage;
-        dpsNote = `<div style="font-size:0.78rem;color:var(--text-muted);margin:0.35rem 0 0.2rem;line-height:1.55;">`
+        dpsNote = `<div style="font-size:0.78rem;color:var(--text-mute);margin:0.35rem 0 0.2rem;line-height:1.55;">`
           + `You crit about <strong style="color:var(--text)">${Math.round(_dps.pCrit * 100)}%</strong> of the time and have Combat Advantage <strong style="color:var(--text)">${Math.round(_dps.effFlank * 100)}%</strong> of the time — the cards below cover every case.`
           + (_dps.pDeflect > 0 ? ` The enemy deflects about <strong style="color:var(--text)">${Math.round(_dps.pDeflect * 100)}%</strong> of your hits for a little less; that's already counted in the average.` : ``)
           + ((_pd && _pd.pctOfHit > 0.05)
@@ -15741,7 +15801,7 @@
       const artFilled = Object.values(state.artifacts).filter(v => v && v !== "— None —").length;
       lines.push(`<strong>Artifacts:</strong> ${artFilled} / 4 slotted`);
       if (state.summoned) lines.push(`<strong>Summoned companion:</strong> ${state.summoned}`);
-      lines.push(`<strong>Active companions:</strong> ${state.activeComps.filter(c=>c).length} / 4`);
+      lines.push(`<strong>Active companions:</strong> ${state.activeComps.filter(c=>c).length} / 5`);
       const mountedCount = state.stable.filter(s => s.mount).length;
       if (mountedCount) lines.push(`<strong>Stable mounts:</strong> ${mountedCount} / 5`);
       lines.push(`<strong>Boons enabled:</strong> ${state.boons.size}`);
@@ -15985,15 +16045,10 @@
     // Content zone selector — lights up zone-gated gear bonuses (e.g. "+5% Damage
     // in Thay"). Options are derived from the gear data so new zones appear
     // automatically; the engine already gates on state.contentZone.
-    const zoneSelect = document.getElementById("content-zone-select");
-    if (zoneSelect) {
-      const zoneSet = new Set();
-      (typeof GEAR_DATA !== "undefined" ? GEAR_DATA : []).forEach(it =>
-        (it.equipBonuses || []).forEach(eb => { if (eb && Array.isArray(eb.zones)) eb.zones.forEach(z => zoneSet.add(z)); }));
-      zoneSelect.innerHTML = ['<option value="">General (anywhere)</option>']
-        .concat([...zoneSet].sort().map(z => `<option value="${z}">${z}</option>`)).join("");
-      zoneSelect.value = state.contentZone || "";
-      zoneSelect.addEventListener("change", e => { state.contentZone = e.target.value; rerenderAll(); });
+    const zoneBtn = document.getElementById("content-zone-btn");
+    if (zoneBtn) {
+      zoneBtn.addEventListener("click", () => openContentZonePicker());
+      updateContentZoneButton();
     }
 
     // Bolster sliders are now visual indicators only — values are auto-
