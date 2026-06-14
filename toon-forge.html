@@ -259,6 +259,27 @@
       font-family: inherit;
     }
     .field input:focus, .field select:focus { outline: none; border-color: var(--amber); }
+    /* Trigger button that opens a searchable picker (e.g. Race). Styled to
+       match .field select so it sits cleanly next to the native dropdowns. */
+    .field-picker-btn {
+      width: 100%;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 0.6rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .field-picker-btn::after { content: "▾"; color: var(--text-dim); font-size: 0.8rem; }
+    .field-picker-btn:hover { border-color: var(--amber); }
+    .field-picker-btn.filled { color: var(--text); }
     .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
     .row-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem; }
@@ -2397,22 +2418,11 @@
             <label>Paragon Path
               <span class="hint-icon" data-tip="Sets which stats Forte boosts for you">?</span>
             </label>
-            <select id="f-paragon">
-              <option value="">— Pick a path —</option>
-              <option>Arcanist (DPS)</option>
-              <option>Thaumaturge (DPS)</option>
-            </select>
+            <button type="button" id="f-paragon-btn" class="field-picker-btn">— Pick a path —</button>
           </div>
           <div class="field">
             <label>Race</label>
-            <select id="f-race">
-              <option value="">— Pick a race —</option>
-              <option>Tiefling — +2 INT, +2 CHA</option>
-              <option>Half-Elf</option>
-              <option>Dragonborn</option>
-              <option>Wood Elf</option>
-              <option>Drow</option>
-            </select>
+            <button type="button" id="f-race-btn" class="field-picker-btn">— Pick a race —</button>
           </div>
         </div>
 
@@ -2930,9 +2940,14 @@
       //   activeCompRarities[0..4]  → the 5 active comp slots
       // companionRarity remains as a default/bulk-set value (and a fallback
       // for older saves that didn't track per-slot rarity).
-      companionRarity: "Mythic",
-      summonedRarity: "Mythic",
-      activeCompRarities: ["Mythic", "Mythic", "Mythic", "Mythic", "Mythic"],
+      // Default to Celestial (the max tier): the audience is endgame and runs
+      // fully-upgraded companions, so Mythic systematically under-credited every
+      // companion by ~20% (Celestial IL 900 vs Mythic 750) in both the sim and
+      // the optimizer. Lower it per slot (or via the "Set ALL" control) if your
+      // companions aren't maxed.
+      companionRarity: "Celestial",
+      summonedRarity: "Celestial",
+      activeCompRarities: ["Celestial", "Celestial", "Celestial", "Celestial", "Celestial"],
       // Companion collection by tier — counts how many companions you own
       // at each rarity. NW takes the top 10 by quality and sums each one's
       // per-tier bolster % into the total companion bolster (capped at 120).
@@ -3215,7 +3230,7 @@
       while (_ft.length < 5) _ft.push("");
       state.slottedFeats = _ft;
       // Re-render every section
-      populateParagons(state.class || null);
+      updateParagonButton();
       recomputeAbilityTotals();
       renderAbilityGrid();
       renderGear();
@@ -3229,18 +3244,18 @@
       renderStable();
       // Sync visible inputs that are direct DOM
       const setVal = (id, v) => { const el = document.getElementById(id); if (el && v != null) el.value = v; };
-      setVal("f-paragon", state.paragon);
-      setVal("f-race", state.race);
+      updateParagonButton();
+      updateRaceButton();
       setVal("f-il", state.il);
       setVal("f-name", state.name);
       // Bolster sliders
       if (state.companionBolster == null) state.companionBolster = 100;
       if (state.mountBolster     == null) state.mountBolster     = 100;
-      if (state.companionRarity  == null) state.companionRarity  = "Mythic";
+      if (state.companionRarity  == null) state.companionRarity  = "Celestial";
       if (state.insigniaRarity   == null) state.insigniaRarity   = "Mythic";
       // Per-slot rarities — fall back to the legacy single-tier value
       // (companionRarity) so saves from before per-slot still work.
-      const fallback = state.companionRarity || "Mythic";
+      const fallback = state.companionRarity || "Celestial";
       if (state.summonedRarity   == null) state.summonedRarity   = fallback;
       if (!Array.isArray(state.activeCompRarities) || state.activeCompRarities.length !== 5) {
         state.activeCompRarities = [fallback, fallback, fallback, fallback, fallback];
@@ -3461,24 +3476,50 @@
 
     /* ===== Dynamic dropdown population =====
        Replaces the hardcoded options in the HTML with real data. */
-    function populateParagons(className) {
-      const sel = document.getElementById("f-paragon");
-      if (!sel) return;
-      const cls = findClass(className);
-      sel.innerHTML = '<option value="">— Pick a path —</option>';
-      if (!cls) return;
-      cls.paragonPaths.forEach(p => {
-        const opt = document.createElement("option");
-        opt.value = p.name;
-        const roles = (p.roles || []).join(" / ");
-        opt.textContent = p.name + (roles ? " (" + roles + ")" : "");
-        sel.appendChild(opt);
+    /* The Paragon Path field is a custom searchable picker (openParagonPicker),
+       not a native <select>. This keeps the trigger button's label in sync with
+       the chosen path. Available paths depend on the chosen class. */
+    function updateParagonButton() {
+      const btn = document.getElementById("f-paragon-btn");
+      if (!btn) return;
+      btn.textContent = state.paragon || "— Pick a path —";
+      btn.classList.toggle("filled", !!state.paragon);
+    }
+    /* Paragon picker: one clean row per path — name on top, role and the stats
+       its Forte boosts as muted subtext. Reuses the shared openPicker UI. */
+    function openParagonPicker() {
+      const cls = findClass(state.class);
+      if (!cls) { toast("Pick a class first."); return; }
+      const items = (cls.paragonPaths || []).slice();
+      openPicker({
+        title: `${cls.name} — pick a paragon path`,
+        items,
+        render: (p) => {
+          const roles = (p.roles || []).join(" / ");
+          const ps = p.percentStats || {};
+          const forte = Object.keys(ps).map(k => `${k} ${ps[k]}%`).join(", ");
+          return {
+            name: p.name,
+            meta: roles,
+            desc: forte ? `Forte boosts: ${forte}` : ""
+          };
+        },
+        onPick: (p) => {
+          state.paragon = p ? p.name : "";
+          // Switching paragon invalidates feature picks (different
+          // slottedClassFeatures lists per paragon), the active song
+          // (Songblade ≠ Minstrel songs), and any paragon-specific
+          // at-wills/encounters the user had slotted.
+          state.slottedClassFeaturePicks = [];
+          state.bardActiveSong = "";
+          state.slottedAtWills = ["", ""];
+          state.slottedEncounters = ["", "", ""];
+          state.slottedDailies = ["", ""];
+          state.slottedFeats = ["", "", "", "", ""];
+          updateParagonButton();
+          rerenderAll();
+        }
       });
-      // If state.paragon is already set (e.g. via applyBuild loading a
-      // saved build), keep it. The class-change handler explicitly clears
-      // state.paragon before calling this, so populating the dropdown
-      // doesn't need to reset.
-      sel.value = state.paragon || "";
     }
     // Render an ability-score bonus entry. Array stat means "choose one of"
     // (not "all of these"). Length 6 = any ability score.
@@ -3508,16 +3549,37 @@
       }
       return parts.join(", ");
     }
-    function populateRaces() {
-      const sel = document.getElementById("f-race");
-      if (!sel || typeof RACES_DATA === "undefined") return;
-      sel.innerHTML = '<option value="">— Pick a race —</option>';
-      RACES_DATA.slice().sort((a,b) => a.name.localeCompare(b.name)).forEach(r => {
-        const opt = document.createElement("option");
-        opt.value = r.name;
-        const bonuses = describeRaceBonuses(r);
-        opt.textContent = r.name + (bonuses ? " — " + bonuses : "") + (r.premium ? " [Premium]" : "");
-        sel.appendChild(opt);
+    /* The Race field is a custom searchable picker (openRacePicker), not a
+       native <select>. This keeps the trigger button's label in sync with
+       the chosen race; the full bonus breakdown lives in the ability table. */
+    function updateRaceButton() {
+      const btn = document.getElementById("f-race-btn");
+      if (!btn) return;
+      const r = findRace(state.race);
+      btn.textContent = r ? r.name : "— Pick a race —";
+      btn.classList.toggle("filled", !!r);
+    }
+    /* Race picker: one clean row per race — name on top, ability bonuses as a
+       muted subtext line. Reuses the shared openPicker UI. */
+    function openRacePicker() {
+      if (typeof RACES_DATA === "undefined") return;
+      const items = RACES_DATA.slice().sort((a, b) => a.name.localeCompare(b.name));
+      openPicker({
+        title: "Pick a race",
+        items,
+        render: (r) => ({
+          name: r.name,
+          meta: describeRaceBonuses(r) || "",
+          desc: ""
+        }),
+        onPick: (r) => {
+          state.race = r ? r.name : "";
+          state.raceChoices = [];   // reset picks when race changes
+          updateRaceButton();
+          recomputeAbilityTotals();
+          renderAbilityGrid();
+          rerenderAll();
+        }
       });
     }
     /* ===== Generic searchable picker =====
@@ -14889,7 +14951,21 @@
         }))
       ];
       const RARITY_OPTS = ["Common","Uncommon","Rare","Epic","Legendary","Mythic","Celestial"];
-      let html = "";
+      // Bulk "set ALL companions to <tier>" control — one click instead of
+      // touching six per-slot dropdowns. Defaults to the current tier when all
+      // slots already match, else to the legacy single-tier companionRarity.
+      const _allR = [state.summonedRarity || state.companionRarity || "Celestial",
+                     ...((state.activeCompRarities && state.activeCompRarities.length === 5)
+                         ? state.activeCompRarities
+                         : ["Celestial", "Celestial", "Celestial", "Celestial", "Celestial"])];
+      const _bulkVal = _allR.every(x => x === _allR[0]) ? _allR[0] : (state.companionRarity || "Celestial");
+      let html = `<div class="comp-row-active" style="display:flex;gap:0.4rem;align-items:center;margin-bottom:0.45rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);">
+          <div style="flex:1;font-size:0.78rem;color:var(--text-dim);">Set <b>all</b> companions to:</div>
+          <select id="comp-rarity-all" title="Apply one rarity tier to the summoned companion and all 5 active slots at once"
+                  style="font-size:0.78rem;padding:0.3rem 0.4rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
+            ${RARITY_OPTS.map(t => `<option value="${t}"${t === _bulkVal ? " selected" : ""}>${t}</option>`).join("")}
+          </select>
+        </div>`;
       for (const r of rows) {
         const filled = !!r.value;
         const text = filled
@@ -14921,6 +14997,19 @@
       }
       wrap.innerHTML = html;
 
+      // Bulk rarity: apply the chosen tier to the summoned + all 5 active slots
+      // in one click, then re-render so every per-slot dropdown + the engine
+      // pick up the change.
+      const _allSel = wrap.querySelector("#comp-rarity-all");
+      if (_allSel) _allSel.addEventListener("change", e => {
+        const v = e.target.value;
+        state.companionRarity = v;
+        state.summonedRarity = v;
+        state.activeCompRarities = [v, v, v, v, v];
+        renderCompanions();
+        rerenderAll();
+      });
+
       // Per-slot rarity dropdowns: update the matching state field on change.
       wrap.querySelectorAll("select[data-rarity-row]").forEach(sel => {
         sel.addEventListener("change", e => {
@@ -14930,7 +15019,7 @@
           } else {
             const i = +sel.dataset.idx;
             if (!Array.isArray(state.activeCompRarities)) {
-              state.activeCompRarities = ["Mythic","Mythic","Mythic","Mythic","Mythic"];
+              state.activeCompRarities = ["Celestial","Celestial","Celestial","Celestial","Celestial"];
             }
             state.activeCompRarities[i] = v;
           }
@@ -15828,7 +15917,7 @@
         state.slottedEncounters = ["", "", ""];
         state.slottedDailies = ["", ""];
         state.slottedFeats = ["", "", "", "", ""];
-        populateParagons(state.class);
+        updateParagonButton();
         applyClassBaseScores(state.class);
         renderGear();
         renderArtifacts();
@@ -15852,27 +15941,8 @@
       });
     });
     // Form fields
-    document.getElementById("f-paragon").addEventListener("change", e => {
-      state.paragon = e.target.value;
-      // Switching paragon invalidates feature picks (different
-      // slottedClassFeatures lists per paragon), the active song
-      // (Songblade ≠ Minstrel songs), and any paragon-specific
-      // at-wills/encounters the user had slotted.
-      state.slottedClassFeaturePicks = [];
-      state.bardActiveSong = "";
-      state.slottedAtWills = ["", ""];
-      state.slottedEncounters = ["", "", ""];
-      state.slottedDailies = ["", ""];
-      state.slottedFeats = ["", "", "", "", ""];
-      rerenderAll();
-    });
-    document.getElementById("f-race").addEventListener("change",    e => {
-      state.race = e.target.value;
-      state.raceChoices = [];   // reset picks when race changes
-      recomputeAbilityTotals();
-      renderAbilityGrid();
-      rerenderAll();
-    });
+    document.getElementById("f-paragon-btn").addEventListener("click", () => openParagonPicker());
+    document.getElementById("f-race-btn").addEventListener("click", () => openRacePicker());
     // The IL field is now a derived display — auto-recomputed inside
     // rerenderAll(). Allow the user to peek/copy but don't let their
     // edit drive recomputation, since the next state change would
@@ -16185,8 +16255,8 @@
     });
 
     /* ===== Initial render ===== */
-    populateRaces();
-    populateParagons(null);   // empty until a class is picked
+    updateRaceButton();
+    updateParagonButton();   // empty until a class is picked
     recomputeAbilityTotals();
     renderAbilityGrid();
     renderGear();
