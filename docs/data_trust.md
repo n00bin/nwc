@@ -28,8 +28,8 @@ The website's data lives in the JSON files in `../data/` (the source of truth). 
 | power 64 | Hunting Hawk's Presence | companion_powers | FIXED→CONFIRMED (CR 230→75; stat 0.75 confirms base IL 75) | scaling math | 2026.03.17a | 2026-06-15 |
 | power 82 | Wardog's Instincts | companion_powers | FIXED→CONFIRMED (CR 230→75; stats 0.38 confirm base IL 75) | scaling math | 2026.03.17a | 2026-06-15 |
 | power 223 | Air Archon's Insight | companion_powers | FIXED→CONFIRMED (CR 230→75; stat 0.75 confirms base IL 75) | scaling math | 2026.03.17a | 2026-06-15 |
-| power 60 | War Boar's Instincts | companion_powers | FIXED (CR 230→75 — invalid rating value); verified as a PROC, not a stat buff | scaling math + screenshot 2026-06-15 125559 | 2026.03.17a | 2026-06-15 |
-| power 261 | War Drummer's Discipline (Cyclops War Drummer) | companion_powers | NEW/FIXED — pet was showing Crimson Crystal Golem's power; now correct (+4.5% Incoming Healing, +18,000 Max HP, IL 900) | screenshot 2026-06-15 125618 | 2026.03.17a | 2026-06-15 |
+| power 60 | War Boar's Instincts | companion_powers | FIXED (CR 230→75 — invalid rating value); verified as a PROC, not a stat buff | scaling math + War Boar_IL550_verified.png | 2026.03.17a | 2026-06-15 |
+| power 261 | War Drummer's Discipline (Cyclops War Drummer) | companion_powers | NEW/FIXED — pet was showing Crimson Crystal Golem's power; now correct (+4.5% Incoming Healing, +18,000 Max HP, IL 900) | Cyclops War Drummer_IL900_verified.png | 2026.03.17a | 2026-06-15 |
 
 ### Pending — needs in-game screenshots before they can be fixed/trusted
 
