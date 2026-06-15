@@ -30,15 +30,22 @@ The website's data lives in the JSON files in `../data/` (the source of truth). 
 | power 223 | Air Archon's Insight | companion_powers | FIXED→CONFIRMED (CR 230→75; stat 0.75 confirms base IL 75) | scaling math | 2026.03.17a | 2026-06-15 |
 | power 60 | War Boar's Instincts | companion_powers | FIXED (CR 230→75 — invalid rating value); verified as a PROC, not a stat buff | scaling math + War Boar_IL550_verified.png | 2026.03.17a | 2026-06-15 |
 | power 261 | War Drummer's Discipline (Cyclops War Drummer) | companion_powers | NEW/FIXED — pet was showing Crimson Crystal Golem's power; now correct (+4.5% Incoming Healing, +18,000 Max HP, IL 900) | Cyclops War Drummer_IL900_verified.png | 2026.03.17a | 2026-06-15 |
+| power 262 | Celestial Lion's Presence (Stalwart Golden Lion) | companion_powers | NEW/FIXED — was sharing Kingfisher's Wisdom; now correct (Utility, +900 CR, proc +9% radiant dmg, IL 900) | Stalwart Golden Lion_IL900_verified.png | 2026.03.17a | 2026-06-15 |
+| power 263 | Dungeon Master's Wisdom (Portobello DaVinci) | companion_powers | NEW/FIXED — was sharing Elite Intern's Wisdom; now correct (Utility, +900 CR, +2.4 all attributes, IL 900) | Portobello DaVinci_IL900_verified.png | 2026.03.17a | 2026-06-15 |
+| power 264 | Dreadwarrior's Insight (Dread Warrior) | companion_powers | NEW/FIXED — was sharing Proud Pink Yeti's Presence; now correct (Utility, +750 CR, proc +15% threat, IL 750) | Dread Warrior_IL750_verified.png | 2026.03.17a | 2026-06-15 |
+| power 252 | Fire Eye's Insight (Blue Fire Eye) | companion_powers | CONFIRMED — Blue Fire Eye already owns it (+6.6% dmg vs Kabal's minions, IL 900); Archmage's Apprentice now the suspect | Blue Fire Eye_IL900_verified.png | 2026.03.17a | 2026-06-15 |
+| power 92 | Vampire's Kiss (Vampire Bride) | companion_powers | CONFIRMED — legit shared with Vampire (proc: 30% on Encounter → 3.8% Max HP, IL 375) | Vampire Bride_IL375_verified.png | 2026.03.17a | 2026-06-15 |
+| power 226 | Divine Answers (Linu La'neral) | companion_powers | CONFIRMED (Forte 3.8 + Outgoing Healing 3.8, IL 750 — exact match) | Linu La'neral_IL750_verified.png | 2026.03.17a | 2026-06-15 |
+| power 83 | Wolf's Instincts | companion_powers | CONFIRMED (Critical Severity 0.75 single-stat = 9% at Celestial; stale "stats at 0" note fixed) | Wolf_IL900_verified.png | 2026.03.17a | 2026-06-15 |
+| power 86 | Damaran Shepherd's Instincts | companion_powers | CONFIRMED (Crit Strike + Crit Avoidance 0.38 at IL 75; stale note fixed) | Damaran Shepherd_IL75_verified.png | 2026.03.17a | 2026-06-15 |
 
 ### Pending — needs in-game screenshots before they can be fixed/trusted
 
 From the 2026-06-15 companion sweep, these are wrong or unverifiable but have no usable screenshot in the archive:
 
-- **4 companions still show the wrong power** (powers point to another pet's entry): Stalwart Golden Lion (250), Portobello DaVinci (251), Blue Fire Eye (252), Dread Warrior (254). Need a screenshot of each pet's power card. ✅ Cyclops War Drummer (253) FIXED 2026-06-15.
-- **Linu La'neral** (power 226 Divine Answers) — values unconfirmed.
+- ✅ **Wrong-power pets RESOLVED 2026-06-15** (screenshots provided): Stalwart Golden Lion → Celestial Lion's Presence (262), Portobello DaVinci → Dungeon Master's Wisdom (263), Dread Warrior → Dreadwarrior's Insight (264), Cyclops War Drummer → War Drummer's Discipline (261). Blue Fire Eye, Wolf, Damaran Shepherd, Linu La'neral, Vampire Bride all verified correct as-is.
+- **Still needs a power-card screenshot** (shared-power suspects, see integrity scan): Archmage's Apprentice (shares power 252), Demonic Servant (248), Mini Apparatus of Gond (249).
 - **Baby Boar** (power 84) — two archive screenshots 21s apart genuinely disagree on the first stat: **c075 shows Deflect Chance**, **c081 shows Maximum Hit Points** (both +0.75% Critical Severity, IL 150, Offense). Our data has Max HP. Needs an in-game check — or confirm whether two "Baby Boar" variants exist.
-- **Wolf** (power 83) and **Damaran Shepherd** (power 86) — power stats stored as 0 (placeholders, per their notes). Need power-card screenshots to fill in.
 - _Done 2026-06-15 (no screenshot needed): fixed garbled em-dash ("â€"" → "—") in 4 companion notes (companions 83/86, powers 10/88)._
 - **War Boar's Instincts** (power 60) — screenshot-verified 2026-06-15: it's a PROC, not a stat buff (15% on At-Will hit → 82.5-magnitude aggravated wound over 4s at IL 550, once/sec). Combined Rating fix confirmed. Still TODO: model the proc-damage scaling across rarities (82.5 @ Legendary sits below the standard magnitude curve, so it needs a 2nd rarity data point before it can feed the damage layer).
 - **Cold Iron Warrior's Discipline** (power 119) — Combined Rating is 0 (only one like it). Verify whether that's intentional or a gap.
@@ -50,14 +57,14 @@ Note: the old March-2026 automated audit flagged 28 companion "mismatches"; re-r
 Full scan of all companion `powerRef`/`enhancementRef` + shared-power + CR/IL:
 
 - ✅ **No broken references** — every companion resolves to a real power and enhancement.
-- **Shared-power suspects** (one power used by 2 companions — the Cyclops War Drummer bug class). The name-matching companion is the rightful owner; the other likely needs its own power (screenshot to confirm + fill):
-  - power 250 Kingfisher's Wisdom → owner **Kingfisher Intern**; Stalwart Golden Lion likely wrong.
-  - power 251 Elite Intern's Wisdom → owner **Elite Intern**; Portobello DaVinci likely wrong.
-  - power 254 Proud Pink Yeti's Presence → owner **Proud Pink Yeti**; Dread Warrior likely wrong.
-  - power 252 Fire Eye's Insight → Blue Fire Eye vs Archmage's Apprentice (which owns it?).
-  - power 92 Vampire's Kiss → Vampire vs Vampire Bride (could be legit — both vampires; verify).
-  - power 248 Highborn Status → Mercenary vs Demonic Servant (verify).
-  - power 249 Divine Judgement → Soradiel (documented owner) vs Mini Apparatus of Gond (verify).
+- **Shared-power suspects** (one power used by 2 companions — the Cyclops War Drummer bug class):
+  - ✅ power 250 Kingfisher's Wisdom — RESOLVED: Stalwart Golden Lion got its own power (Celestial Lion's Presence, 262); Kingfisher Intern keeps 250.
+  - ✅ power 251 Elite Intern's Wisdom — RESOLVED: Portobello DaVinci got Dungeon Master's Wisdom (263); Elite Intern keeps 251.
+  - ✅ power 254 Proud Pink Yeti's Presence — RESOLVED: Dread Warrior got Dreadwarrior's Insight (264); Proud Pink Yeti keeps 254.
+  - ⚠️ power 252 Fire Eye's Insight — Blue Fire Eye OWNS it (verified); **Archmage's Apprentice** is the wrong sharer (needs its own power-card screenshot).
+  - ✅ power 92 Vampire's Kiss — CONFIRMED legit: Vampire Bride verified has it; shared with Vampire by design (both vampires).
+  - ⚠️ power 248 Highborn Status — Mercenary vs **Demonic Servant** (still need a screenshot).
+  - ⚠️ power 249 Divine Judgement — Soradiel (documented owner) vs **Mini Apparatus of Gond** (still need a screenshot).
 - **CR ≠ IL remaining**: power 119 Cold Iron Warrior (CR 0) and power 174 Spiteful Hex (CR 900 vs IL 750 — left by the proc-verification batch; n00b confirmed Lysaera is Mythic/750, so CR likely should be 750 — coordinate with that batch before changing).
 
 ## Gear set-bonus text (2026-06-15 steward sweep)
