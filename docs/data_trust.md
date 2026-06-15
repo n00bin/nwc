@@ -47,13 +47,18 @@ The website's data lives in the JSON files in `../data/` (the source of truth). 
 | power 168 | Apprentice's Wisdom (Apprentice Healer) | companion_powers | CONFIRMED (Incoming Healing 0.37 + 1,500 Max HP + 75 CR, IL 75 — exact match; Max HP correctly in Passive procEffect) | Apprentice Healer_IL75_verified.png | 2026.03.17a | 2026-06-15 |
 | power 265 | Mercenary's Discipline (Mercenary) | companion_powers | NEW/FIXED — Mercenary was sharing Demonic Servant's Highborn Status; now correct (Offense/Utility, +4.5% Power, +4.5% Combat Advantage, +900 CR, IL 900). Base anchor 900; lowest rarity unconfirmed | Mercenary_IL900_verified.png | 2026.03.17a | 2026-06-15 |
 | power 169 | Wayward Wisdom (Wayward Wizard + Halfling Wayward Wizard) | companion_powers | FIXED — Archmage's Apprentice (263) was renamed in-game to Halfling Wayward Wizard and wrongly shared Fire Eye's Insight; repointed to Wayward Wisdom. Power 169 repurposed from fabricated "Wayward Wizard's Wisdom" (Defense+CritSev) → real Wayward Wisdom (Utility, IL 150, +150 CR, proc −7% move speed). Both Wayward Wizards share it (per n00b) | Halfling Wayward Wizard_IL150_verified.png | 2026.03.17a | 2026-06-15 |
+| power 256 | Snow Worries (Riotous Rothe) | companion_powers | CONFIRMED — n00b in-game-confirmed 2026-05-04 (Incoming Healing single-stat, Defense+Utility, 9% at Celestial). Value trusted; no screenshot on file | n00b in-game 2026-05-04 | 2026.03.17a | 2026-06-15 |
 
 ### Pending — needs in-game screenshots before they can be fixed/trusted
 
 From the 2026-06-15 companion sweep, these are wrong or unverifiable but have no usable screenshot in the archive:
 
 - ✅ **Wrong-power pets RESOLVED 2026-06-15** (screenshots provided): Stalwart Golden Lion → Celestial Lion's Presence (262), Portobello DaVinci → Dungeon Master's Wisdom (263), Dread Warrior → Dreadwarrior's Insight (264), Cyclops War Drummer → War Drummer's Discipline (261). Blue Fire Eye, Wolf, Damaran Shepherd, Linu La'neral, Vampire Bride all verified correct as-is.
-- **Still needs a power-card screenshot** — LAST ONE: Mini Apparatus of Gond (shares Soradiel's power 249).
+- **Still needs an in-game power-card screenshot** (archive swept 2026-06-15 — not present; all NW-Hub/web-sourced or shared-power suspects):
+  - **Mini Apparatus of Gond** (249) — shares Soradiel's Divine Judgement; need its own card to confirm ownership.
+  - **Harper Bard** (255, Bard's Discipline) — sourced from NW Hub tooltip, not in-game-verified.
+  - **Armored Orc Wolf** (257, Orc Wolf's Instincts) — sourced from NW Hub tooltip, not in-game-verified.
+  - ✅ Riotous Rothe (256, Snow Worries) — already n00b-confirmed in-game 2026-05-04, no shot needed.
 - ✅ **Baby Boar** (power 84) RESOLVED 2026-06-15 (n00b in-game): correct stats are **Deflect + Critical Severity** (c075 was the right archive shot; c081 wrong). Was wrongly Maximum Hit Points; fixed.
 - ✅ **Cold Iron Warrior's Discipline** (power 119) RESOLVED 2026-06-15 (screenshot): Combined Rating was wrongly 0 → fixed to 75 (tracks base IL 75). Damage vs Fey 1.13 confirmed (scales to 2.3% at IL 150).
 - _Done 2026-06-15 (no screenshot needed): fixed garbled em-dash ("â€"" → "—") in 4 companion notes (companions 83/86, powers 10/88)._
