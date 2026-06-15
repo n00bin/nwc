@@ -207,13 +207,17 @@ All verified against archived tooltips (docs/audit/_up/warlock-gear/):
   default (toon-forge.html ingestion), so −20 already reads −20% Max HP.
 - **Cindersilk id 6876:** added `set: ""` for schema consistency.
 
-## Flayed Legion — classes + missing stat still unverified (2026-06-09)
-ids 286 (Sabatons), 287 (Vambraces), 289 (Mask) have no `allowedClasses` —
-sibling 288 (Harness) is player-verified Barbarian-only (Report #87), so these
-are PROBABLY Barbarian too, but no archive screenshots exist (checked
-2026-06-09) and we don't guess restrictions. Also id 286 carries a single
-rating stat (Accuracy 1,997) vs CR 3,690 — likely missing 1–2 stats.
-**Action:** in-game tooltips for the three pieces (classes + full stat block).
+## Flayed Legion — classes RESOLVED 2026-06-14 (Report #113); one missing stat OPEN
+id 288 (Harness) is now player-confirmed usable by **Paladin** (Report #113),
+which falsifies the old "Barbarian-only" read from Report #87 — that tag just
+reflected the first reporter's class. Cleared to `allowedClasses: []` (all
+classes), matching its three siblings 286/287/289 which were already
+unrestricted. So the whole Flayed Legion sub-set is all-classes (shared Spider
+Seal vendor gear); the earlier "siblings are PROBABLY Barbarian too" guess is
+withdrawn — leave them unrestricted.
+STILL OPEN: id 286 (Sabatons, Feet, IL 4100) carries a single rating stat
+(Accuracy 1,997) vs CR 3,690 — likely missing 1–2 stats. **Action:** in-game
+tooltip for the Sabatons' full stat block.
 
 ## Elk Tribe Grimoire / Pact Blade duplicate pairs — RESOLVED 2026-06-09
 ids 3597/4824 ("Elk Tribe Noble's Grimoire") and 3598/4825 ("Elk Tribe Noble's
@@ -250,10 +254,13 @@ modeled — they were deliberately LEFT as free-text:
   Power (on 5379) is a verified Shirt bonus, Ruthless Critical (on 6844) a Pants
   bonus, plus the Deep-Riven=Pants/Frost-Riven=Shirt family rule. **All 3 flagged
   Freezing sets (Stand / Touch / Rage) are now fixed.** Shipped in commit 941f0c2.
-- **Enchanted Forte / Enchanted Healing** — only Shirt pieces exist in the data
-  (Mark of the Adept/Fledgling = Forte; Bloodwoven Symbols = Healing). The
-  partner Pants piece is missing, so the set can't complete. Add the partner
-  piece (from a collection screenshot) to enable.
+- **Enchanted Forte — RESOLVED 2026-06-14 (Report #114).** The set's two
+  "Mark of the Adept" variants were both wrongly slotted Shirt. Report #114
+  (in-game) confirmed the Challenger's Forte variant (id 495) is the **Pants**;
+  corrected Shirt->Pants. The set now has Shirt (id 501, Healing Tactics) +
+  Pants (id 495, Challenger's Forte) and can complete. **Enchanted Healing**
+  (Bloodwoven Symbols line) STILL OPEN — only a Shirt exists; its partner Pants
+  piece is still missing. Add it from a collection screenshot to enable.
 - **Whisper of Power (+5,200 Power, 2-pc)** — sits on the Soul Collector weapons
   (Oathbreaker's Malevolence MH / Aegis of the Condemned OH) that ALSO carry the
   structured **Impending Doom** weapon set, and the two names were swapped on
