@@ -29,7 +29,7 @@ The website's data lives in the JSON files in `../data/` (the source of truth). 
 | power 82 | Wardog's Instincts | companion_powers | FIXED→CONFIRMED (CR 230→75; stats 0.38 confirm base IL 75) | scaling math | 2026.03.17a | 2026-06-15 |
 | power 223 | Air Archon's Insight | companion_powers | FIXED→CONFIRMED (CR 230→75; stat 0.75 confirms base IL 75) | scaling math | 2026.03.17a | 2026-06-15 |
 | power 60 | War Boar's Instincts | companion_powers | FIXED (CR 230→75 — invalid rating value); verified as a PROC, not a stat buff | scaling math + War Boar_IL550_verified.png | 2026.03.17a | 2026-06-15 |
-| power 261 | War Drummer's Discipline (Cyclops War Drummer) | companion_powers | NEW/FIXED — pet was showing Crimson Crystal Golem's power; now correct (+4.5% Incoming Healing, +18,000 Max HP, IL 900) | Cyclops War Drummer_IL900_verified.png | 2026.03.17a | 2026-06-15 |
+| power 261 | War Drummer's Discipline (Cyclops War Drummer) | companion_powers | NEW/FIXED — was showing Crimson Crystal Golem's power; now correct. Base rarity Epic confirmed: re-anchored IL 900→375 (+1.88% Incoming Healing, +7,500 Max HP, +375 CR at Epic; 4.5%/18,000/900 at Celestial) | Cyclops War Drummer_IL900_verified.png | 2026.03.17a | 2026-06-15 |
 | power 262 | Celestial Lion's Presence (Stalwart Golden Lion) | companion_powers | NEW/FIXED — was sharing Kingfisher's Wisdom; now correct (Utility, +900 CR, proc +9% radiant dmg, IL 900) | Stalwart Golden Lion_IL900_verified.png | 2026.03.17a | 2026-06-15 |
 | power 263 | Dungeon Master's Wisdom (Portobello DaVinci) | companion_powers | NEW/FIXED — was sharing Elite Intern's Wisdom; now correct (Utility, +900 CR, +2.4 all attributes, IL 900) | Portobello DaVinci_IL900_verified.png | 2026.03.17a | 2026-06-15 |
 | power 264 | Dreadwarrior's Insight (Dread Warrior) | companion_powers | NEW/FIXED — was sharing Proud Pink Yeti's Presence; now correct (Utility, +750 CR, proc +15% threat, IL 750) | Dread Warrior_IL750_verified.png | 2026.03.17a | 2026-06-15 |
@@ -38,6 +38,9 @@ The website's data lives in the JSON files in `../data/` (the source of truth). 
 | power 226 | Divine Answers (Linu La'neral) | companion_powers | CONFIRMED (Forte 3.8 + Outgoing Healing 3.8, IL 750 — exact match) | Linu La'neral_IL750_verified.png | 2026.03.17a | 2026-06-15 |
 | power 83 | Wolf's Instincts | companion_powers | CONFIRMED (Critical Severity 0.75 single-stat = 9% at Celestial; stale "stats at 0" note fixed) | Wolf_IL900_verified.png | 2026.03.17a | 2026-06-15 |
 | power 86 | Damaran Shepherd's Instincts | companion_powers | CONFIRMED (Crit Strike + Crit Avoidance 0.38 at IL 75; stale note fixed) | Damaran Shepherd_IL75_verified.png | 2026.03.17a | 2026-06-15 |
+| power 84 | Baby Boar's Instincts | companion_powers | FIXED→CONFIRMED — was Maximum Hit Points; correct stats are Deflect + Critical Severity (0.75 each, IL 150). Resolves the c075/c081 conflict (c075 was right) | n00b in-game 2026-06-15 | 2026.03.17a | 2026-06-15 |
+| power 106 | Mageslayer's Assault (Mage Slayer) | companion_powers | CONFIRMED — campaign-utility (Portal Stone drops + 5.6% dmg vs Kabal/Cyrion/Nostura minions); fixed "Gyrion"→"Cyrion" typo | Mage Slayer_IL375_verified.png | 2026.03.17a | 2026-06-15 |
+| power 153 | Cantankerous Mage's Wisdom | companion_powers | CONFIRMED (Accuracy 0.75 + Defense 0.75, IL 150 — exact match) | Cantankerous Mage_IL150_verified.png | 2026.03.17a | 2026-06-15 |
 
 ### Pending — needs in-game screenshots before they can be fixed/trusted
 
@@ -45,7 +48,8 @@ From the 2026-06-15 companion sweep, these are wrong or unverifiable but have no
 
 - ✅ **Wrong-power pets RESOLVED 2026-06-15** (screenshots provided): Stalwart Golden Lion → Celestial Lion's Presence (262), Portobello DaVinci → Dungeon Master's Wisdom (263), Dread Warrior → Dreadwarrior's Insight (264), Cyclops War Drummer → War Drummer's Discipline (261). Blue Fire Eye, Wolf, Damaran Shepherd, Linu La'neral, Vampire Bride all verified correct as-is.
 - **Still needs a power-card screenshot** (shared-power suspects, see integrity scan): Archmage's Apprentice (shares power 252), Demonic Servant (248), Mini Apparatus of Gond (249).
-- **Baby Boar** (power 84) — two archive screenshots 21s apart genuinely disagree on the first stat: **c075 shows Deflect Chance**, **c081 shows Maximum Hit Points** (both +0.75% Critical Severity, IL 150, Offense). Our data has Max HP. Needs an in-game check — or confirm whether two "Baby Boar" variants exist.
+- ✅ **Baby Boar** (power 84) RESOLVED 2026-06-15 (n00b in-game): correct stats are **Deflect + Critical Severity** (c075 was the right archive shot; c081 wrong). Was wrongly Maximum Hit Points; fixed.
+- **Cold Iron Warrior's Discipline** (power 119) — our `combinedRating: 0` is the SLOT-BONUS / player-power's "+Combined Rating" value (not the enhancement). Needs the power-card screenshot to confirm whether it's genuinely 0 or a gap.
 - _Done 2026-06-15 (no screenshot needed): fixed garbled em-dash ("â€"" → "—") in 4 companion notes (companions 83/86, powers 10/88)._
 - **War Boar's Instincts** (power 60) — screenshot-verified 2026-06-15: it's a PROC, not a stat buff (15% on At-Will hit → 82.5-magnitude aggravated wound over 4s at IL 550, once/sec). Combined Rating fix confirmed. Still TODO: model the proc-damage scaling across rarities (82.5 @ Legendary sits below the standard magnitude curve, so it needs a 2nd rarity data point before it can feed the damage layer).
 - **Cold Iron Warrior's Discipline** (power 119) — Combined Rating is 0 (only one like it). Verify whether that's intentional or a gap.
