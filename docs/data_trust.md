@@ -25,6 +25,10 @@ The website's data lives in the JSON files in `../data/` (the source of truth). 
 | power 53 | Baby Polar Bear's Instincts (companion renamed Polar Bear Cub) | companion_powers | FIXED→CONFIRMED (base rarity 750→375 Epic; stats 3.8→1.9; CR 750→375) | c048.png | 2026.03.17a | 2026-06-15 |
 | power 171 | Quickling's Wisdom | companion_powers | FIXED→CONFIRMED (Critical Strike 1.8→3.8) | c176.png | 2026.03.17a | 2026-06-15 |
 | power 210 | Deva Champion's Insight | companion_powers | FIXED→CONFIRMED (both stats 1.5→1.3) | c222.png | 2026.03.17a | 2026-06-15 |
+| power 64 | Hunting Hawk's Presence | companion_powers | FIXED→CONFIRMED (CR 230→75; stat 0.75 confirms base IL 75) | scaling math | 2026.03.17a | 2026-06-15 |
+| power 82 | Wardog's Instincts | companion_powers | FIXED→CONFIRMED (CR 230→75; stats 0.38 confirm base IL 75) | scaling math | 2026.03.17a | 2026-06-15 |
+| power 223 | Air Archon's Insight | companion_powers | FIXED→CONFIRMED (CR 230→75; stat 0.75 confirms base IL 75) | scaling math | 2026.03.17a | 2026-06-15 |
+| power 60 | War Boar's Instincts | companion_powers | FIXED (CR 230→75 — invalid rating value; stats still missing, see pending) | scaling math | 2026.03.17a | 2026-06-15 |
 
 ### Pending — needs in-game screenshots before they can be fixed/trusted
 
@@ -33,6 +37,8 @@ From the 2026-06-15 companion sweep, these are wrong or unverifiable but have no
 - **5 companions show the wrong power entirely** (powers point to another pet's entry): Stalwart Golden Lion (250), Portobello DaVinci (251), Blue Fire Eye (252), Cyclops War Drummer (253), Dread Warrior (254). Need a screenshot of each pet's power card.
 - **Linu La'neral** (power 226 Divine Answers) — values unconfirmed.
 - **Baby Boar** (power 84) — two archive screenshots disagree on the first stat.
+- **War Boar's Instincts** (power 60) — no stats stored at all; shows a blank buff. Rating fixed, but the actual stat(s) need a power-card screenshot.
+- **Cold Iron Warrior's Discipline** (power 119) — Combined Rating is 0 (only one like it). Verify whether that's intentional or a gap.
 
 Note: the old March-2026 automated audit flagged 28 companion "mismatches"; re-reading at full resolution found most were misreads (a "3" read as "1"/"5") or already-correct schema. Always re-read the screenshot at zoom before trusting an automated flag.
 
