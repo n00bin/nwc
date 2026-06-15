@@ -45,6 +45,21 @@ From the 2026-06-15 companion sweep, these are wrong or unverifiable but have no
 
 Note: the old March-2026 automated audit flagged 28 companion "mismatches"; re-reading at full resolution found most were misreads (a "3" read as "1"/"5") or already-correct schema. Always re-read the screenshot at zoom before trusting an automated flag.
 
+### Companion integrity scan (2026-06-15) — structurally clean
+
+Full scan of all companion `powerRef`/`enhancementRef` + shared-power + CR/IL:
+
+- ✅ **No broken references** — every companion resolves to a real power and enhancement.
+- **Shared-power suspects** (one power used by 2 companions — the Cyclops War Drummer bug class). The name-matching companion is the rightful owner; the other likely needs its own power (screenshot to confirm + fill):
+  - power 250 Kingfisher's Wisdom → owner **Kingfisher Intern**; Stalwart Golden Lion likely wrong.
+  - power 251 Elite Intern's Wisdom → owner **Elite Intern**; Portobello DaVinci likely wrong.
+  - power 254 Proud Pink Yeti's Presence → owner **Proud Pink Yeti**; Dread Warrior likely wrong.
+  - power 252 Fire Eye's Insight → Blue Fire Eye vs Archmage's Apprentice (which owns it?).
+  - power 92 Vampire's Kiss → Vampire vs Vampire Bride (could be legit — both vampires; verify).
+  - power 248 Highborn Status → Mercenary vs Demonic Servant (verify).
+  - power 249 Divine Judgement → Soradiel (documented owner) vs Mini Apparatus of Gond (verify).
+- **CR ≠ IL remaining**: power 119 Cold Iron Warrior (CR 0) and power 174 Spiteful Hex (CR 900 vs IL 750 — left by the proc-verification batch; n00b confirmed Lysaera is Mythic/750, so CR likely should be 750 — coordinate with that batch before changing).
+
 ## Gear set-bonus text (2026-06-15 steward sweep)
 
 36 sets had their full set-bonus text verified against `docs/calibration/inbox/_set_details/` screenshots and written to `gear.json` (`parsedFrom:"screenshot"`). Set bonuses are set-wide, so one verified text covers every member. Verified texts are stored in `docs/audit/set_bonus_verified.json`.
