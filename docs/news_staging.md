@@ -22,3 +22,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Toon Forge: fixed several bits of muted helper text (including the DPS note under the damage sim) that were using an undefined color and rendering in the wrong shade.
 - Harness of the Flayed Legion was only showing for Barbarians — it's now available to every class, including Paladins (Report #113).
 - Mark of the Adept (Challenger's Forte) was listed as a Shirt but is actually the Pants. Fixed, so the Enchanted Forte set now completes correctly (Report #114).
+- Companions: the "Baby Polar Bear" is now correctly named **Polar Bear Cub**, and its starting rarity was fixed (it was stored as Mythic-only) — so its power now shows correct values at Epic and Legendary too, not just Mythic.
+- Companions: **Quickling's Wisdom** now shows the correct **+3.8% Critical Strike** (was wrongly listed as 1.8%).
+- Companions: **Deva Champion's Insight** now shows the correct **+1.3% / +1.3%** (was wrongly listed as 1.5%). All three were verified against in-game screenshots by the new data-checking team.
+- Companions: **Cyclops War Drummer** was showing a *different pet's* power (the Crimson Crystal Golem's). It now correctly shows its own — **War Drummer's Discipline** (+4.5% Incoming Healing, +18,000 Max HP). And an invalid rating value was fixed on War Boar, Hunting Hawk, Wardog, and Air Archon companion powers.

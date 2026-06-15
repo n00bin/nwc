@@ -28,16 +28,17 @@ The website's data lives in the JSON files in `../data/` (the source of truth). 
 | power 64 | Hunting Hawk's Presence | companion_powers | FIXED→CONFIRMED (CR 230→75; stat 0.75 confirms base IL 75) | scaling math | 2026.03.17a | 2026-06-15 |
 | power 82 | Wardog's Instincts | companion_powers | FIXED→CONFIRMED (CR 230→75; stats 0.38 confirm base IL 75) | scaling math | 2026.03.17a | 2026-06-15 |
 | power 223 | Air Archon's Insight | companion_powers | FIXED→CONFIRMED (CR 230→75; stat 0.75 confirms base IL 75) | scaling math | 2026.03.17a | 2026-06-15 |
-| power 60 | War Boar's Instincts | companion_powers | FIXED (CR 230→75 — invalid rating value; stats still missing, see pending) | scaling math | 2026.03.17a | 2026-06-15 |
+| power 60 | War Boar's Instincts | companion_powers | FIXED (CR 230→75 — invalid rating value); verified as a PROC, not a stat buff | scaling math + screenshot 2026-06-15 125559 | 2026.03.17a | 2026-06-15 |
+| power 261 | War Drummer's Discipline (Cyclops War Drummer) | companion_powers | NEW/FIXED — pet was showing Crimson Crystal Golem's power; now correct (+4.5% Incoming Healing, +18,000 Max HP, IL 900) | screenshot 2026-06-15 125618 | 2026.03.17a | 2026-06-15 |
 
 ### Pending — needs in-game screenshots before they can be fixed/trusted
 
 From the 2026-06-15 companion sweep, these are wrong or unverifiable but have no usable screenshot in the archive:
 
-- **5 companions show the wrong power entirely** (powers point to another pet's entry): Stalwart Golden Lion (250), Portobello DaVinci (251), Blue Fire Eye (252), Cyclops War Drummer (253), Dread Warrior (254). Need a screenshot of each pet's power card.
+- **4 companions still show the wrong power** (powers point to another pet's entry): Stalwart Golden Lion (250), Portobello DaVinci (251), Blue Fire Eye (252), Dread Warrior (254). Need a screenshot of each pet's power card. ✅ Cyclops War Drummer (253) FIXED 2026-06-15.
 - **Linu La'neral** (power 226 Divine Answers) — values unconfirmed.
 - **Baby Boar** (power 84) — two archive screenshots disagree on the first stat.
-- **War Boar's Instincts** (power 60) — no stats stored at all; shows a blank buff. Rating fixed, but the actual stat(s) need a power-card screenshot.
+- **War Boar's Instincts** (power 60) — screenshot-verified 2026-06-15: it's a PROC, not a stat buff (15% on At-Will hit → 82.5-magnitude aggravated wound over 4s at IL 550, once/sec). Combined Rating fix confirmed. Still TODO: model the proc-damage scaling across rarities (82.5 @ Legendary sits below the standard magnitude curve, so it needs a 2nd rarity data point before it can feed the damage layer).
 - **Cold Iron Warrior's Discipline** (power 119) — Combined Rating is 0 (only one like it). Verify whether that's intentional or a gap.
 
 Note: the old March-2026 automated audit flagged 28 companion "mismatches"; re-reading at full resolution found most were misreads (a "3" read as "1"/"5") or already-correct schema. Always re-read the screenshot at zoom before trusting an automated flag.
