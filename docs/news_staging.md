@@ -16,3 +16,5 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ### Bug Fixes
 - Toon Forge: the build summary now correctly reads "Active companions: X / 5" (was "/ 4").
 - Toon Forge: fixed several bits of muted helper text (including the DPS note under the damage sim) that were using an undefined color and rendering in the wrong shade.
+- Harness of the Flayed Legion was only showing for Barbarians — it's now available to every class, including Paladins (Report #113).
+- Mark of the Adept (Challenger's Forte) was listed as a Shirt but is actually the Pants. Fixed, so the Enchanted Forte set now completes correctly (Report #114).
