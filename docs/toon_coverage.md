@@ -67,6 +67,14 @@ same-day; numbers below re-counted from live data, not carried forward).
 - **Required:** continue parse batches; each structured bonus immediately counts
   in stats/optimizer (no engine change needed for plain stat bonuses). Do NOT
   structure sequence-proc texts (§Note-2).
+- **Update 2026-06-15:** re-census (all instances incl. Set) = **3,238 of 5,233
+  structured (61%)**; ~1,679 description-only, of which **744 are heal/resource
+  (blocked on Missing-1, not data work)** and ~515 DPS-relevant skew low-IL. The
+  endgame (IL>=4000) offensive long-tail is now CLEARED: 37 instances / 31 names
+  structured via `scripts/eb_parse_endgame_offense.py` (see
+  `docs/audit/eb_parse_progress.md` 2026-06-15). Remaining DPS-relevant work is
+  the lower-IL tail; the bigger lever now is optimizer search quality
+  (multi-start + armor set-completion), not data vision.
 
 ### Partial-2: Max HP calibration
 - **Location:** `toon-forge-engine.js` finalize() HP branch; constants `TOON_FORGE_HP_MODEL`.

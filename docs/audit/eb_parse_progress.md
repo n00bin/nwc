@@ -85,3 +85,32 @@ with a note (Radiant Elven Helm/Cower). 4 new stat "Incoming Damage"
 entries join the 36 pre-existing ones awaiting the survivability layer.
 3 skipped on contradictory tooltips (see data_issues.md 2026-06-10):
 Unyielding/Supreme Will crowns, Cuirass of the Crimson Scythe.
+
+## 2026-06-15: endgame offense long-tail (IL >= 4000)
+Fresh census (denominator = all equipBonus instances incl. Set):
+**3,186 → 3,238 structured of 5,233** (61%); ~1,679 still description-only of
+which **744 are heal/resource (engine-layer-blocked, NOT data work)** and ~515
+DPS-relevant skew low-IL. Parser `scripts/eb_parse_endgame_offense.py` (explicit
+per-name table, not regex) structured the **37 instances / 31 names** that were
+still text-only at IL>=4000 and genuinely offensive:
+- always-on HP-scalers (Daily's Gift +8.5% Power, Deity's Gift, Enduring
+  Critical/Advantage, Survivor's Tenacity)
+- single-enemy gates (Unseelie Might, Tenacious Luck — `cond`, Challenger's
+  precedent)
+- combat/movement/per-enemy ramps (Combatant's/Critical Spiker, Escalating
+  Might 250 rating, Critical Momentum, Kinetic Precision, Momentum's Edge,
+  Defiant Advantage, Precision Against Odds, Perfect Form, Unbroken Strength)
+- trigger buffs (Critical Daily G/L, Critical Flow/Surge, Sharpened Instincts,
+  Precise Severity, Focused Assault, Sprinter's Advantage, Executioner's
+  Accuracy/Ferocity, Sanguine Strike, Dashing Ranger 3 tiers, Harmonizing
+  Radiance — party scope)
+- zone split (Battleforged Might: 3,350 CA always + 2.5% Power in The Reched Edge)
+
+Skipped on purpose (other layers / off-role): sequence-procs (Battle/Daily
+Reserves, Focused Burst, gear "Malignant Energy"), damage procs (Critical Force,
+Power at Any Cost, Explosive Force), reflects (Manticore's Mane Bite, Pact of
+Vengence), positional either/or (Brute's Expertise), heal-trigger (Shared
+Vitality), defensive (Combatant's Advantage net -CA), survival proc (Past
+Regards). Lower-IL siblings of the structured names + ~93 other IL>=4000
+free-text names (mostly heal/defensive/exotic) remain for future batches.
+Spot-verified: Frostsilver Band of Faith, Loop of the Arcane, Frostbound Warcoat.
