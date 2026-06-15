@@ -46,13 +46,14 @@ The website's data lives in the JSON files in `../data/` (the source of truth). 
 | power 248 | Highborn Status (Demonic Servant) | companion_powers | CONFIRMED — Demonic Servant correctly owns it (Forte 1.9 + Accuracy 1.9, IL 375, +10% Menzoberranzan currency, exact match); Mercenary is now the suspect | Demonic Servant_IL375_verified.png | 2026.03.17a | 2026-06-15 |
 | power 168 | Apprentice's Wisdom (Apprentice Healer) | companion_powers | CONFIRMED (Incoming Healing 0.37 + 1,500 Max HP + 75 CR, IL 75 — exact match; Max HP correctly in Passive procEffect) | Apprentice Healer_IL75_verified.png | 2026.03.17a | 2026-06-15 |
 | power 265 | Mercenary's Discipline (Mercenary) | companion_powers | NEW/FIXED — Mercenary was sharing Demonic Servant's Highborn Status; now correct (Offense/Utility, +4.5% Power, +4.5% Combat Advantage, +900 CR, IL 900). Base anchor 900; lowest rarity unconfirmed | Mercenary_IL900_verified.png | 2026.03.17a | 2026-06-15 |
+| power 169 | Wayward Wisdom (Wayward Wizard + Halfling Wayward Wizard) | companion_powers | FIXED — Archmage's Apprentice (263) was renamed in-game to Halfling Wayward Wizard and wrongly shared Fire Eye's Insight; repointed to Wayward Wisdom. Power 169 repurposed from fabricated "Wayward Wizard's Wisdom" (Defense+CritSev) → real Wayward Wisdom (Utility, IL 150, +150 CR, proc −7% move speed). Both Wayward Wizards share it (per n00b) | Halfling Wayward Wizard_IL150_verified.png | 2026.03.17a | 2026-06-15 |
 
 ### Pending — needs in-game screenshots before they can be fixed/trusted
 
 From the 2026-06-15 companion sweep, these are wrong or unverifiable but have no usable screenshot in the archive:
 
 - ✅ **Wrong-power pets RESOLVED 2026-06-15** (screenshots provided): Stalwart Golden Lion → Celestial Lion's Presence (262), Portobello DaVinci → Dungeon Master's Wisdom (263), Dread Warrior → Dreadwarrior's Insight (264), Cyclops War Drummer → War Drummer's Discipline (261). Blue Fire Eye, Wolf, Damaran Shepherd, Linu La'neral, Vampire Bride all verified correct as-is.
-- **Still needs a power-card screenshot** (shared-power suspects, see integrity scan): Archmage's Apprentice (shares power 252), Mini Apparatus of Gond (shares 249).
+- **Still needs a power-card screenshot** — LAST ONE: Mini Apparatus of Gond (shares Soradiel's power 249).
 - ✅ **Baby Boar** (power 84) RESOLVED 2026-06-15 (n00b in-game): correct stats are **Deflect + Critical Severity** (c075 was the right archive shot; c081 wrong). Was wrongly Maximum Hit Points; fixed.
 - ✅ **Cold Iron Warrior's Discipline** (power 119) RESOLVED 2026-06-15 (screenshot): Combined Rating was wrongly 0 → fixed to 75 (tracks base IL 75). Damage vs Fey 1.13 confirmed (scales to 2.3% at IL 150).
 - _Done 2026-06-15 (no screenshot needed): fixed garbled em-dash ("â€"" → "—") in 4 companion notes (companions 83/86, powers 10/88)._
@@ -69,7 +70,7 @@ Full scan of all companion `powerRef`/`enhancementRef` + shared-power + CR/IL:
   - ✅ power 250 Kingfisher's Wisdom — RESOLVED: Stalwart Golden Lion got its own power (Celestial Lion's Presence, 262); Kingfisher Intern keeps 250.
   - ✅ power 251 Elite Intern's Wisdom — RESOLVED: Portobello DaVinci got Dungeon Master's Wisdom (263); Elite Intern keeps 251.
   - ✅ power 254 Proud Pink Yeti's Presence — RESOLVED: Dread Warrior got Dreadwarrior's Insight (264); Proud Pink Yeti keeps 254.
-  - ⚠️ power 252 Fire Eye's Insight — Blue Fire Eye OWNS it (verified); **Archmage's Apprentice** is the wrong sharer (needs its own power-card screenshot).
+  - ✅ power 252 Fire Eye's Insight — RESOLVED: Blue Fire Eye owns it; Archmage's Apprentice (renamed Halfling Wayward Wizard in-game) repointed to its real power Wayward Wisdom (169).
   - ✅ power 92 Vampire's Kiss — CONFIRMED legit: Vampire Bride verified has it; shared with Vampire by design (both vampires).
   - ✅ power 248 Highborn Status — RESOLVED: Demonic Servant owns it; Mercenary got its own power (Mercenary's Discipline, 265).
   - ⚠️ power 249 Divine Judgement — Soradiel (documented owner) vs **Mini Apparatus of Gond** (still need a screenshot).
