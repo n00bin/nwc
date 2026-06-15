@@ -37,7 +37,9 @@ From the 2026-06-15 companion sweep, these are wrong or unverifiable but have no
 
 - **4 companions still show the wrong power** (powers point to another pet's entry): Stalwart Golden Lion (250), Portobello DaVinci (251), Blue Fire Eye (252), Dread Warrior (254). Need a screenshot of each pet's power card. ✅ Cyclops War Drummer (253) FIXED 2026-06-15.
 - **Linu La'neral** (power 226 Divine Answers) — values unconfirmed.
-- **Baby Boar** (power 84) — two archive screenshots disagree on the first stat.
+- **Baby Boar** (power 84) — two archive screenshots 21s apart genuinely disagree on the first stat: **c075 shows Deflect Chance**, **c081 shows Maximum Hit Points** (both +0.75% Critical Severity, IL 150, Offense). Our data has Max HP. Needs an in-game check — or confirm whether two "Baby Boar" variants exist.
+- **Wolf** (power 83) and **Damaran Shepherd** (power 86) — power stats stored as 0 (placeholders, per their notes). Need power-card screenshots to fill in.
+- _Done 2026-06-15 (no screenshot needed): fixed garbled em-dash ("â€"" → "—") in 4 companion notes (companions 83/86, powers 10/88)._
 - **War Boar's Instincts** (power 60) — screenshot-verified 2026-06-15: it's a PROC, not a stat buff (15% on At-Will hit → 82.5-magnitude aggravated wound over 4s at IL 550, once/sec). Combined Rating fix confirmed. Still TODO: model the proc-damage scaling across rarities (82.5 @ Legendary sits below the standard magnitude curve, so it needs a 2nd rarity data point before it can feed the damage layer).
 - **Cold Iron Warrior's Discipline** (power 119) — Combined Rating is 0 (only one like it). Verify whether that's intentional or a gap.
 
