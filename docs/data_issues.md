@@ -1,5 +1,22 @@
 # Data Issues To Investigate
 
+## Set-bonus text backfill — 3 gaps found (2026-06-15)
+During the set-bonus text pass (gear cards now show the full tooltip text
+instead of a bare stat), three items need a look:
+- **Malignant Energy & Crimson Retaliation are 3-piece artifact sets**, but
+  gear.json has only 2 gear members each (neck + waist). The artifact piece
+  (Sealing Parchment / Crimson Calamity) lives in artifacts.json and isn't
+  modeled as a set member, so the set reads 2/3 and can't complete in the
+  optimizer. `setSize` bumped to 3 and the real "3 of Set" text is now shown,
+  but the artifact-as-set-member still needs modeling.
+- **Black Ice** — in-game tooltip reads "3 of Set" (Cloak of Black Ice /
+  Greater Belt of Black Ice / Black Ice Beholder), but our data tags 4 members
+  under "Black Ice" and there are several Black Ice sets. Member mapping is
+  ambiguous; skipped the text write pending disambiguation.
+- **Pact Blade of Elemental Fire** — its 2-of-Set tooltip shows "Equip: 0
+  Critical Strike / 0 Critical Avoidance" (degenerate zeros). Needs a cleaner
+  capture, or it genuinely has no meaningful set bonus; skipped.
+
 ## Race traits structured (2026-06-11) — 3 leftovers need an in-game look
 Player report (relayed by n00b): Gith's +5% Combat Advantage wasn't counted.
 Audit found 10 of 15 races had description-only traits with no structured
