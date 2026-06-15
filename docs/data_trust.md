@@ -44,6 +44,7 @@ The website's data lives in the JSON files in `../data/` (the source of truth). 
 | power 228 | Coldlight Walker's Gaze (Coldlight Walker) | companion_powers | CONFIRMED — IL 750 base (Crit Strike + Crit Severity 3.8) scales to 4.5/4.5 at Celestial, matches screenshot. Base anchor 750 assumed (lowest rarity unverified) | Coldlight Walker_IL900_verified.png | 2026.03.17a | 2026-06-15 |
 | power 119 | Cold Iron Warrior's Discipline | companion_powers | FIXED→CONFIRMED — CR 0→75 (was wrongly 0; CR tracks IL); Damage vs Fey 1.13@IL75 confirmed (→2.3% at IL 150); removed +0% placeholder proc | Cold Iron Warrior_IL150_verified.png | 2026.03.17a | 2026-06-15 |
 | power 248 | Highborn Status (Demonic Servant) | companion_powers | CONFIRMED — Demonic Servant correctly owns it (Forte 1.9 + Accuracy 1.9, IL 375, +10% Menzoberranzan currency, exact match); Mercenary is now the suspect | Demonic Servant_IL375_verified.png | 2026.03.17a | 2026-06-15 |
+| power 168 | Apprentice's Wisdom (Apprentice Healer) | companion_powers | CONFIRMED (Incoming Healing 0.37 + 1,500 Max HP + 75 CR, IL 75 — exact match; Max HP correctly in Passive procEffect) | Apprentice Healer_IL75_verified.png | 2026.03.17a | 2026-06-15 |
 
 ### Pending — needs in-game screenshots before they can be fixed/trusted
 
