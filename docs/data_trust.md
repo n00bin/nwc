@@ -43,6 +43,74 @@ From the 2026-06-15 companion sweep, these are wrong or unverifiable but have no
 
 Note: the old March-2026 automated audit flagged 28 companion "mismatches"; re-reading at full resolution found most were misreads (a "3" read as "1"/"5") or already-correct schema. Always re-read the screenshot at zoom before trusting an automated flag.
 
+## Gear set-bonus text (2026-06-15 steward sweep)
+
+36 sets had their full set-bonus text verified against `docs/calibration/inbox/_set_details/` screenshots and written to `gear.json` (`parsedFrom:"screenshot"`). Set bonuses are set-wide, so one verified text covers every member. Verified texts are stored in `docs/audit/set_bonus_verified.json`.
+
+| set | pieces | status | source screenshot |
+|-----|--------|--------|-------------------|
+| Pioneer | 2 | CONFIRMED (resolved conflict → party-scaling) | Pioneer_set_details.png |
+| Pilgrim | 2 | CONFIRMED (resolved conflict) | Pilgrim_set_details.png |
+| Company | 2 | CONFIRMED (was blank; +500 Power) | Company_set_details.png |
+| Drowcraft | 4 | FIXED→CONFIRMED (3-of-Set −30%→−50%) | Drowcraft_set_details.png |
+| Drowcraft Undergarb | 2 | CONFIRMED (was blank) | Drowcraft Undergarb_set_details.png |
+| Black Ice | 3 | CONFIRMED (was 3-vs-4 ambiguous → 3pc) | Black Ice set_set_details.png |
+| Aboleth | 2 | CONFIRMED | Aboleth_set_details.png |
+| Tyrant | 2 | CONFIRMED | Tyrant_set_details.png |
+| Mirage | 2 | CONFIRMED | Mirage_set_details.png |
+| Sun | 2 | CONFIRMED | Sun_set_details.png |
+| Vistani | 2 | FIXED→CONFIRMED (+500 Movement Speed→+500 Defense) | Vistani_set_details.png |
+| Drowned Heart | 2 | CONFIRMED | Drowned Heart_set_details.png |
+| Earthen Heart | 2 | CONFIRMED | Earthen Heart_set_details.png |
+| Howling Heart | 2 | CONFIRMED | Howling Heart_set_details.png |
+| Duality | 2 | CONFIRMED | Duality_set_details.png |
+| Stormforged | 2 | CONFIRMED | Stormforged_set_details.png |
+| Scalebreaker's Wrath | 2 | CONFIRMED | Scalebreaker's Wrath_set_details.png |
+| Fortified Vale | 2 | CONFIRMED | Fortified Vale_set_details.png |
+| Vale | 2 | CONFIRMED | Vale_set_details.png |
+| Grand Alliance | 2 | CONFIRMED | Grand Alliance_set_details.png |
+| Beholder Slayer | 2 | CONFIRMED | Beholder Slayer_set_details.png |
+| Celestial | 2 | CONFIRMED (uniform across IL tiers) | Celestial_set_details.png |
+| Blessed Blade | 2 | CONFIRMED (uniform across IL tiers) | Blessed Blade_set_details.png |
+| Dusk | 4 | CONFIRMED (identical IL1058/1175) | Dusk_set_details.png |
+| Masterwork II Weapon Set | 2 | CONFIRMED (Stronghold party buff) | Masterwork Il Weapon Set_set_details.png |
+| Masterwork III Equipment Set | 2 | CONFIRMED (Alacrity 1%/5%) | Masterwork III Equipment Set_set_details.png |
+| Masterwork of Menzoberranzan Equipment Set | 2 | FIXED→CONFIRMED (Speedy Anointing→Speedy Alacrity) | Masterwork of Menzoberranzan Equipment Set_set_details (2).png |
+| Umbral Stride | 2 | CONFIRMED (IL3300; IL3900 unverified) | Umbral Stride_set_details (2).png |
+| Prismatic Defier of Dread | 2 | CONFIRMED (uniform IL3100/3400) | Prismatic Defier of Dread_set_details.png |
+| Peer Into the Void | 2 | CONFIRMED (uniform IL2750/3000) | Peer Into the Void_set_details (3).png |
+| Skyhold Arms | 2 | CONFIRMED | Skyhold Arms_set_details (3).png |
+| Dark Matter | 2 | CONFIRMED (uniform IL2500/2700) | Dark Matter_set_details (3).png |
+| Demonweb Empowerment | 2 | CONFIRMED | Demonweb Empowerment_set_details.png |
+| Meteoric Fury | 2 | CONFIRMED (3% — not 5/9%, those were Impending Doom mod-slot) | Meteoric Fury_set_details (2).png |
+| Dragonflight | 4 | FIXED→CONFIRMED per-tier (IL≤596 +2,000HP/+500Pwr; IL1400 +5,000HP/+3,000Pwr — high tier was +1,000Pwr) | Dragonflight_set_details.png |
+
+### Confirmed: NO set bonus (zero-placeholder in-game — do not add text)
+- **Golden Dragon** (all weapon variants) and **Pact Blade of Elemental Fire** display "Equip: 0 [stat]" placeholders in-game — genuinely no functional 2pc set bonus.
+
+### UNVERIFIABLE — need a new in-game capture (panel open, Item Level visible)
+- **Blood Bargain**, **Infused Defense** — no `_set_details` screenshot at all.
+- **Pioneer Raid/Assault**, **Pilgrim Raid/Assault** — separate 4pc sets; their headers were not in any capture (all captures showed the base 2pc set).
+- Untaptured tiers: **Impending Doom** IL 3400 & 4550; **Whisper of Power** IL 3750; **Umbral Stride** IL 3900.
+- **Enchanted Advantage/Awareness** lower tiers (IL2600/3000) and **Enchanted Healing** IL3000 (only IL3150 captured: Healing +2% OH, Awareness +2% Awareness).
+- **Prestige** 4-of-Set (panel truncated; 2/3-of-Set = +1% Power / +10% DR while Controlled). **Vistani** IL650. **Lionsmane** 2-of-Set value (collection view showed "0 Max HP" — unreliable; 3-of-Set +1% Power confirmed).
+
+### DEFERRED — complex, need a careful per-item/per-tier pass (not guessed)
+- **Impending Doom** — the Unleashed bonus scales by IL (DPS/Heal +3%→+5%, duration 15s→20s at IL4800) AND the charge count is item-pair-driven (10 for Doomcleaver/Omen/Oathbreaker; 13 for Grimfang/Dirgeblade), not IL. The trailing "+N stat" lines are artifact mod-slot bonuses, not the set bonus.
+- **Whisper of Power** — per-weapon flat stat grant (+5,200 Power / +7,700 Critical Strike / +7,200 Forte by item, IL3400).
+- **Devil's Legion** — "+1000" tier confirmed but no IL visible in captures, so the 600/800/1000/1200 tiers can't be mapped.
+
+### Integrity issues found (set-matching bugs — separate from the text backfill, not yet fixed)
+- **Company "PvE" vs "PVE"** (ids 3127-3134) — capitalization split; the 4pc Company armor set never matches.
+- **Pioneer Assault Sevars** (id 3543) — `set:"Pioneer Armor"` (set of one); should be "Pioneer Assault".
+- **Vistani Pendant/Raiments** (ids 1250-1251) — `setSize:3` contradicts `pieces:2`; `item_level:0`.
+- **Lionsmane Armor** (ids 5212-5219) — `set:"Lionsmane Armor"` but their equipBonus `setName:"Lionsmane"`; never matches.
+- **Masterwork II Equipment** (25) vs **Masterwork II Equipment Set** (68) — parallel duplicate sets that can't combine.
+- **"Sun Set"** set name has no in-game header (everything reads "Set Sun") — likely a spurious duplicate of "Sun".
+- Minor: "Vistani Rapiera"/"Obsidian Omihuiclli" name typos; Titansteel Tabars slot (Main vs Off Hand); Manticore "Masterwork Armor II / Ranger Stronghold Set II" composite set string.
+
+---
+
 ## Known intentional outliers (CONFIRMED by design — never re-flag)
 
 These look "off-scale" but are verified correct per `website/CLAUDE.md`. The Steward treats them as CONFIRMED and never proposes "normalizing" them.

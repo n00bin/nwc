@@ -1,69 +1,20 @@
 # Set-bonus text coverage — worklist
 
-_Updated 2026-06-15. Done: Tier-1 propagation (191 members/82 sets), Tier-3a
-screenshot transcription (9 sets), Tier-2 canonicalisation (16 sets: 12
-wording-only + 3 junk-noise + Blaspheme bad-read 70->7500)._
+_Updated 2026-06-15 after the /steward screenshot sweep. 36 sets verified &
+written from in-game tooltips this pass (see docs/data_trust.md → 'Gear
+set-bonus text' for the full per-set status, the no-bonus confirmations,
+the deferred-complex sets, and the set-matching integrity bugs found)._
 
 ## State
-- **107 sets** fully described (every member shows one bonus text). DONE.
-- **44 sets** still conflict — real value differences (tier-scaling /
-  bad read / complex meta set). These need the in-game tooltip; DON'T guess.
-- **22 sets** no prose but have a screenshot — transcribe (Tier 3a).
-- **156 sets** no prose, need a NEW capture (Tier 3b).
+- **139 sets** fully described (every member shows one verified text). DONE.
+- **13 sets** still multi-text — these are the DEFERRED-COMPLEX +
+  per-tier + needs-capture sets itemised in docs/data_trust.md (Impending Doom,
+  Whisper of Power, Devil's Legion, Enchanted trio, Blood Bargain, Infused
+  Defense, Dragonflight per-tier-OK, Sun Set/Prestige/Golden Dragon).
+- **177 sets** have no text and need a NEW in-game capture (below).
 
-## Tier 2 — conflict sets needing a screenshot to canonicalise (by IL)
-
-These have members carrying DIFFERENT real values (different IL tiers, or one
-is a bad read). Capture the set tooltip at each tier and Claude will split/fix.
-
-| IL | Pcs | Set | Why flagged |
-|---:|----:|-----|-------------|
-| 5250 | 94 | Impending Doom | 7 real values |
-| 4000 | 4 | Blood Bargain | 2 real values |
-| 3900 | 18 | Umbral Stride | 4 real values |
-| 3750 | 31 | Whisper of Power | 5 real values |
-| 3400 | 34 | Prismatic Defier of Dread | 4 real values |
-| 3150 | 20 | Enchanted Advantage | 3 real values |
-| 3150 | 6 | Enchanted Healing | 2 real values |
-| 3150 | 5 | Enchanted Awareness | 3 real values |
-| 3000 | 28 | Peer Into the Void | 9 real values |
-| 2750 | 17 | Skyhold Arms | 6 real values |
-| 2700 | 32 | Dark Matter | 5 real values |
-| 2475 | 17 | Demonweb Empowerment | 4 real values |
-| 2450 | 14 | Meteoric Fury | 3 real values |
-| 2400 | 16 | Infused Defense | 2 real values |
-| 2050 | 16 | Beholder Slayer | 2 real values |
-| 2000 | 14 | Stormforged | 4 real values |
-| 1850 | 17 | Scalebreaker's Wrath | 5 real values |
-| 1800 | 15 | Fortified Vale | 4 real values |
-| 1800 | 12 | Masterwork of Menzoberranzan Equipment Set | 2 real values |
-| 1700 | 16 | Vale | 3 real values |
-| 1700 | 14 | Grand Alliance | 3 real values |
-| 1400 | 69 | Celestial | 3 real values |
-| 1400 | 62 | Blessed Blade | 3 real values |
-| 1400 | 111 | Dragonflight | 2 real values |
-| 1200 | 65 | Devil's Legion | 4 real values |
-| 1175 | 41 | Dusk | 3 real values |
-| 1175 | 4 | Dusk Armor (Assault) | 2 real values |
-| 800 | 85 | Aboleth | 2 real values |
-| 800 | 111 | Tyrant | 2 real values |
-| 800 | 111 | Pilgrim | 3 real values |
-| 800 | 65 | Mirage | 3 real values |
-| 800 | 142 | Pioneer | 5 real values |
-| 800 | 41 | Sun | 2 real values |
-| 800 | 67 | Vistani | 3 real values |
-| 800 | 78 | Masterwork III Equipment Set | 2 real values |
-| 800 | 70 | Masterwork II Weapon Set | 2 real values |
-| 800 | 24 | Sun Set | 2 real values |
-| 600 | 85 | Drowned Heart | 2 real values |
-| 600 | 84 | Earthen Heart | 2 real values |
-| 600 | 66 | Howling Heart | 2 real values |
-| 600 | 65 | Duality | 4 real values |
-| 588 | 13 | Prestige | 2 real values |
-| 567 | 2 | Drowcraft Undergarb | 2 real values |
-| 300 | 13 | Golden Dragon | no real bonus (needs capture) |
-
-## Tier 3b — no prose, need a NEW screenshot (by IL)
+## Need a NEW screenshot — capture the set tooltip (panel open, Item Level visible)
+Drop as docs/calibration/inbox/_set_details/<Set>_set_details.png. Highest IL first.
 
 | IL | Pcs | Set | Screenshot this item |
 |---:|----:|-----|----------------------|
@@ -178,6 +129,8 @@ is a bad read). Capture the set tooltip at each tier and Claude will split/fix.
 | 728 | 4 | Umbral Duelist | Umbral Duelist Mask |
 | 700 | 4 | Primal Raid | Primal Raid Chinibili |
 | 700 | 4 | Primal Assault | Primal Assault Chinibili |
+| 700 | 2 | Chultan Remedy | Primal Raid Barakoa |
+| 700 | 1 | Chultan Guard | Primal Raid Kiuno |
 | 700 | 3 | Butcher's Might | Primal Raid Shabas |
 | 700 | 2 | Executioner's Zeal | Primal Raid Viatus |
 | 672 | 12 | Huntsman | Huntsman Ward Armet |
@@ -188,10 +141,17 @@ is a bad read). Capture the set tooltip at each tier and Claude will split/fix.
 | 672 | 2 | Challenger's Might | Huntsman Raid Wristguards |
 | 672 | 2 | Executioner's Haste | Huntsman Raid Pigaches |
 | 645 | 12 | Trailblazer's Relic | Vivified Trailblazer's Assault Hood |
+| 644 | 4 | Pilgrim Raid | Pilgrim Raid Keffiyeh |
+| 644 | 4 | Pilgrim Assault | Pilgrim Assault Keffiyeh |
+| 644 | 2 | Chultan Hunter | Pilgrim Raid Barakeh |
 | 644 | 2 | Death Defier's Guard | Pilgrim Assault Manteel |
 | 644 | 2 | Wanderer's Vigor | Pilgrim Raid Crackows |
 | 644 | 2 | Death Defier's Might | Pilgrim Raid Sevars |
+| 644 | 8 | Chultan Accessories | Pilgrim Assault Khaltan |
 | 630 | 2 | Demonic Artifacts and Gear | Bloodlord's Visage |
+| 616 | 1 | Pioneer Armor | Pioneer Assault Sevars |
+| 616 | 4 | Pioneer Raid | Pioneer Raid Soqs |
+| 616 | 4 | Pioneer Assault | Pioneer Assault Keffiyeh |
 | 616 | 2 | Leader's Dash | Pioneer Raid Crackows |
 | 616 | 1 | Leader's Might | Pioneer Raid Sevars |
 | 616 | 2 | Leader's Guard | Pioneer Raid Manteel |
@@ -204,11 +164,22 @@ is a bad read). Capture the set tooltip at each tier and Claude will split/fix.
 | 602 | 4 | Survivor's Might | League's Elite Raid Sevars |
 | 602 | 4 | Warden's Haste | League's Elite Raid Crackows |
 | 588 | 12 | League | League's Ward Taj |
+| 588 | 8 | Company PvE Armor | Company Raid Hood |
+| 588 | 8 | Company PVE Armor | Company Raid Cowl |
 | 588 | 4 | League's Raid | League's Raid Keffiyeh |
 | 588 | 4 | League's Assault | League's Assault Keffiyeh |
+| 588 | 4 | Elemental Drowcraft Raid | Elemental Drowcraft Raid Mask |
+| 588 | 4 | Elemental Drowcraft Assault | Elemental Drowcraft Assault Mask |
+| 588 | 4 | Company Raid | Company Raid Mask |
+| 588 | 4 | Company Assault | Company Assault Mask |
 | 575 | 14 | Elemental Infusion | Elemental Elven Ward Armet |
 | 575 | 15 | Elemental Elven Armor | Elemental Elven Raid Cowl |
+| 574 | 4 | Elemental Lionsmane Duelist | Elemental Lionsmane Duelist Mask |
+| 574 | 4 | Elemental Lionsmane Executioner | Elemental Lionsmane Executioner Mask |
+| 574 | 64 | Lionsmane | Elemental Lionsmane Duelist Pigaches |
 | 567 | 17 | Elven Armor | Elven Ward Armet |
+| 567 | 4 | Drowcraft Armor | Drowcraft Mask |
+| 560 | 8 | Lionsmane Armor | Lionsmane Duelist Boots |
 | 554 | 30 | Elemental Alliance Armor | Elemental Alliance Ward Armet |
 | 550 | 2 | Armaments of the Wyvern | Wyvern's Eye Necklace |
 | 550 | 2 | Armaments of Constructed Demise | Electric Collar |
@@ -222,29 +193,5 @@ is a bad read). Capture the set tooltip at each tier and Claude will split/fix.
 | 352 | 26 | Hammerstone Armor | Hammerstone Helmet |
 | 350 | 2 | Diamond | Iridescent Diamond Pendant |
 | 350 | 2 | Star | Starshard Choker |
+| 300 | 2 | Pact Blade of Elemental Fire | Pact Blade of Elemental Fire |
 | 4 | 2 | Weapons of the Bear Tribe | Bear Tribe Blade |
-
-## Tier 3a — screenshot exists, transcribe (remaining)
-
-- [ ] IL700 · 2pc · **Chultan Remedy**
-- [ ] IL700 · 1pc · **Chultan Guard**
-- [ ] IL644 · 4pc · **Pilgrim Raid**
-- [ ] IL644 · 4pc · **Pilgrim Assault**
-- [ ] IL644 · 2pc · **Chultan Hunter**
-- [ ] IL644 · 8pc · **Chultan Accessories**
-- [ ] IL616 · 1pc · **Pioneer Armor**
-- [ ] IL616 · 4pc · **Pioneer Raid**
-- [ ] IL616 · 4pc · **Pioneer Assault**
-- [ ] IL588 · 8pc · **Company PvE Armor**
-- [ ] IL588 · 8pc · **Company PVE Armor**
-- [ ] IL588 · 4pc · **Elemental Drowcraft Raid**
-- [ ] IL588 · 4pc · **Elemental Drowcraft Assault**
-- [ ] IL588 · 4pc · **Company Raid**
-- [ ] IL588 · 4pc · **Company Assault**
-- [ ] IL574 · 4pc · **Elemental Lionsmane Duelist**
-- [ ] IL574 · 4pc · **Elemental Lionsmane Executioner**
-- [ ] IL574 · 64pc · **Lionsmane**
-- [ ] IL567 · 4pc · **Drowcraft Armor**
-- [ ] IL560 · 8pc · **Lionsmane Armor**
-- [ ] IL512 · 4pc · **Black Ice**
-- [ ] IL300 · 2pc · **Pact Blade of Elemental Fire**
