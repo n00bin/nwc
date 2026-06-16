@@ -1062,11 +1062,15 @@ From Report #19:
   Might confirmed 5,000 Power (10% on CA damage, 10s, 30s CD) on all 16 tooltips.
 
 ## Accessory equip-bonus sweep side-catches (2026-06-15)
-- **Elemental Alliance Ward Ring (id 2321) / Elemental Alliance Assault Ring (id 2324),
-  IL554**: in-game tooltip shows oversized primary stats (+1,994 / +2,992) and a
-  Combined Rating of only **222**, where every IL554 accessory sibling carries
-  CR ~499. Our entries store CR 222 with no stat block. NEEDS in-game re-verification
-  (data error vs unusual item) before any fix — do NOT guess values.
+- ~~**Elemental Alliance Ward Ring (id 2321) / Elemental Alliance Assault Ring (id 2324),
+  IL554**: oversized stats (+1,994 / +2,992) with CR 222 — possible data error.~~
+  **RESOLVED 2026-06-15 (FALSE ALARM):** verified against
+  `docs/audit/_up/unbound-gear/Elemental Alliance {Ward,Assault} Ring_IL554.png` —
+  data matches the in-game tooltip EXACTLY (Ward: Critical Severity 1994 + Critical
+  Avoidance 2992; Assault: Combat Advantage 2992 + Critical Strike 1994; both CR 222,
+  Temple of the Spider [Master]). The stats live in `ratingStats`, not `stats`; the
+  original flag came from querying the wrong field name. These are real legacy values
+  for these rings — do NOT "normalize" them. Now screenshot-confirmed correct.
 - Pattern confirmed: the entire low-IL (<IL1500) accessory tail (necks/rings/amulets/
   cloaks) is stat-only by design — only 13 carry a per-item equip bonus (the
   Survivor's missing-health ring family + Daily-power rings + Challenger's Might).
