@@ -60,7 +60,25 @@ Real low-IL gaps. Bonus can vary by slot/variant, so each needs reading its piec
 - Primal Ward  (5 items) — rep: Executioner's Zeal (kill -> 3% AP)
 - Protege Set  (5 items) — rep: Death Defier's Advantage (250 CA/enemy max15)
 
+## Accessories (Neck / Ring / Waist / Shirt / Pants) — SWEPT 2026-06-15
+
+The entire low-IL (<IL1500) accessory tail was read individually (not by family
+rep), since accessory bonuses vary per item. 103 accessory "gaps" resolved:
+
+- **13 HAVE a per-item equip bonus** (written, parsedFrom:screenshot):
+  Survivor's missing-health ring procs (Tenacity/Accuracy/Focus/Might/Avoidance,
+  League + Bloodstained Shirt + Pants of Chultan Merchant), Daily Defiance /
+  Daily Edge / Daily Perk rings, Cursed Strike, Challenger's Might.
+- **90 confirmed NO equip bonus (by design)** — stat-sticks only. Includes:
+  all Dragonflight necks/rings, Elemental Elven/Alliance necks+rings, Drowcraft
+  rings, Alliance necks+rings, Guild Ward/Restoration/Assault/Raid + Duelist/
+  Executioner/Gladiator/Medic rings+necks, Electrum/Bronzewood/Beaded/Lichstone/
+  Silverspruce/Sphene/Rubellite amulets, Company cloaks, Mantle of Atropal,
+  Ostorian/Lionsmane necks, Horn/Cloak of Valhalla, IL756 Masterwork rings.
+
+Accessory equip-bonus backfill is COMPLETE — no readable accessory gaps remain.
+
 ## Not yet classified
 
-~158 smaller families (1-3 items each, ~180 items) below the top 48 are not yet
-classified — same era, expected mostly blank; classify in a later pass if needed.
+~158 smaller ARMOR families (1-3 items each, ~180 items) below the top 48 are not
+yet classified — same era, expected mostly blank; classify in a later pass if needed.

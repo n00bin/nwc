@@ -151,6 +151,29 @@ Full scan of all companion `powerRef`/`enhancementRef` + shared-power + CR/IL:
 - **"Sun Set"** set name has no in-game header (everything reads "Set Sun") — likely a spurious duplicate of "Sun".
 - Minor: "Vistani Rapiera"/"Obsidian Omihuiclli" name typos; Titansteel Tabars slot (Main vs Off Hand); Manticore "Masterwork Armor II / Ranger Stronghold Set II" composite set string.
 
+## Gear per-item EQUIP bonuses (2026-06-15 backfill)
+
+Distinct from set-bonus text above: an item's own `Equip:` line. 306 items now
+carry a screenshot-sourced Equip bonus (`parsedFrom:"screenshot"`), backfilled
+top-to-bottom across all armor tiers, clothing, and accessories from the existing
+`docs/calibration/inbox/` archive. Per-item bonuses are read individually (NOT
+propagated), since they vary by slot/variant.
+
+**Accessory tail — fully swept.** 103 low-IL (<IL1500) neck/ring/amulet/cloak
+"gaps" resolved: **13 CONFIRMED have a bonus** (Survivor's missing-health ring
+family — Tenacity/Accuracy/Focus/Might/Avoidance; Daily Defiance/Edge/Perk rings;
+Cursed Strike; Challenger's Might), **90 CONFIRMED blank by design** (stat-sticks:
+Dragonflight/Elemental/Drowcraft/Alliance/Guild rings+necks, all low-IL amulets,
+Company cloaks, Valhalla necks). No readable accessory equip-bonus gaps remain.
+
+**Blank-by-design (armor)** is catalogued in `docs/audit/equip_bonus_blank_families.md`
+— 35 families (~621 items) confirmed to predate the per-item equip-bonus feature.
+
+**Flagged for in-game re-verification (NOT fixed — do not guess):**
+- Elemental Alliance Ward Ring (id 2321) / Assault Ring (id 2324), IL554 — oversized
+  tooltip stats (+1,994/+2,992) with Combined Rating 222 (siblings ~499). Logged in
+  `docs/data_issues.md`.
+
 ---
 
 ## Known intentional outliers (CONFIRMED by design — never re-flag)

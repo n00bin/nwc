@@ -1043,8 +1043,10 @@ From Report #19:
 ## Date: 2026-03-28
 
 ## C1 audit enrichment TODOs (2026-06-12)
-- Ring of Defensive Action / Ring of Offensive Action: tooltips carry Daily-use procs
-  (Daily Defiance: -3% Incoming Damage 5s / Daily Edge: +3% Damage 5s) absent from DB.
+- ~~Ring of Defensive Action / Ring of Offensive Action: tooltips carry Daily-use procs
+  (Daily Defiance: -3% Incoming Damage 5s / Daily Edge: +3% Damage 5s) absent from DB.~~
+  RESOLVED 2026-06-15 — both added as structured Equip bonuses (ids 1939/1940), plus
+  Daily Perk (id 1832, description-only).
 - Astral Raider's Coif: Healer's Sacrifice proc (+5% Overall Outgoing Healing,
   -30% Incoming Healing) absent from DB (negative-effect modeling needed).
 - Lionsmane IL560: 4 of 8 pieces value-checked by tooltip; remaining 4 (Duelist Vest,
@@ -1058,4 +1060,15 @@ From Report #19:
 - Brynnyr's Demise: capture filename/tooltip says IL 630; our entry says 610.
 - Forged family (Fiend/Devil/Demon/Infernal Coif/Cowl/Hood/Sallet): Skirmisher's
   Might confirmed 5,000 Power (10% on CA damage, 10s, 30s CD) on all 16 tooltips.
+
+## Accessory equip-bonus sweep side-catches (2026-06-15)
+- **Elemental Alliance Ward Ring (id 2321) / Elemental Alliance Assault Ring (id 2324),
+  IL554**: in-game tooltip shows oversized primary stats (+1,994 / +2,992) and a
+  Combined Rating of only **222**, where every IL554 accessory sibling carries
+  CR ~499. Our entries store CR 222 with no stat block. NEEDS in-game re-verification
+  (data error vs unusual item) before any fix — do NOT guess values.
+- Pattern confirmed: the entire low-IL (<IL1500) accessory tail (necks/rings/amulets/
+  cloaks) is stat-only by design — only 13 carry a per-item equip bonus (the
+  Survivor's missing-health ring family + Daily-power rings + Challenger's Might).
+  Logged in docs/audit/equip_bonus_blank_families.md so these stop reading as gaps.
 
