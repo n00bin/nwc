@@ -50,6 +50,8 @@ The website's data lives in the JSON files in `../data/` (the source of truth). 
 | power 256 | Snow Worries (Riotous Rothe) | companion_powers | CONFIRMED — Incoming Healing single-stat (Defense+Utility), +9% at Celestial. n00b-confirmed 2026-05-04 AND archive card c071 (IL 900) matches | c071.png + n00b 2026-05-04 | 2026.03.17a | 2026-06-15 |
 | power 257 | Orc Wolf's Instincts (Armored Orc Wolf) | companion_powers | CONFIRMED via OCR-found archive card c070 (+3.8% Accuracy, +3.8% Critical Strike @ IL 750 = our 0.38@IL75 scaled). The NW-Hub value was actually correct | c070.png | 2026.03.17a | 2026-06-15 |
 | power 255 | Bard's Discipline (Harper Bard) | companion_powers | CONFIRMED via OCR-found archive card c118 (+7,500 Max HP, +1.9% Awareness @ IL 375 = our 1500 HP / 0.38 @ IL75 scaled). The NW-Hub value was actually correct | c118.png | 2026.03.17a | 2026-06-15 |
+| power 10 | Hell Hound's Senses | companion_powers | FIXED — was rendering blank (no stats/effect); added procEffect text (+10% Family Crest / Chaotic Writing drops in Vallenhas, zone-conditional). Campaign utility, not optimizer-relevant | DB-scan 2026-06-15 | 2026.03.17a | 2026-06-15 |
+| power 174 | Spiteful Hex (Lysaera) | companion_powers | FIXED — Combined Rating 900→750 to match item level 750 (n00b confirmed Lysaera is Mythic). Batch's proc structure unchanged | DB-scan + n00b | 2026.03.17a | 2026-06-15 |
 
 ### Pending — needs in-game screenshots before they can be fixed/trusted
 
@@ -81,7 +83,7 @@ Full scan of all companion `powerRef`/`enhancementRef` + shared-power + CR/IL:
   - ✅ power 92 Vampire's Kiss — CONFIRMED legit: Vampire Bride verified has it; shared with Vampire by design (both vampires).
   - ✅ power 248 Highborn Status — RESOLVED: Demonic Servant owns it; Mercenary got its own power (Mercenary's Discipline, 265).
   - ⚠️ power 249 Divine Judgement — Soradiel (documented owner) vs **Mini Apparatus of Gond** (still need a screenshot).
-- **CR ≠ IL remaining**: power 119 Cold Iron Warrior (CR 0) and power 174 Spiteful Hex (CR 900 vs IL 750 — left by the proc-verification batch; n00b confirmed Lysaera is Mythic/750, so CR likely should be 750 — coordinate with that batch before changing).
+- ✅ **CR ≠ IL: RESOLVED** — power 119 Cold Iron Warrior (0→75) and power 174 Spiteful Hex (900→750) both fixed 2026-06-15. A full DB scan confirms no companion-power CR≠IL mismatches remain.
 
 ## Gear set-bonus text (2026-06-15 steward sweep)
 
