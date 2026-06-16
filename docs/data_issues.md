@@ -1,5 +1,17 @@
 # Data Issues To Investigate
 
+## Mounts needing equip/combat powers — 17 from complete-DB pass (2026-06-16)
+The 57-mount complete-DB add (Rainer pocket-wiki) left these without full power
+data: the sheet leaves equip/combat blank for them, so only quality + insignia
+slots were captured (refs are placeholder `0`; they still render fine). Source
+from the NW wiki or in-game screenshots to finish:
+Boar; Butterfly Wings (needs combat); Champion's Armored Bulette (needs equip);
+Fancy Gorgon; Gold-Lined Apparatus of Kwalish; Grey Horse; Mottled Rage Drake;
+Neverwinter Siegebreaker's Charger; New Year's Boar; Ochre Bulette; Purple Guard
+Drake; Rainbow Starry Panther; Red Giant Beetle; Regal Armored Griffon; Soot
+Tribal Lion; Striped Rage Drake; Suratuk's Darkfish Fey Wolf.
+(Mossy Flail Snail + Teal Armored Axe Beak were completed via Rainer's combat-power tab; refs 93/94.)
+
 ## Companion augment tagging + Mythic-vs-Celestial caveat (2026-06-16)
 Added a structured `augment: true/false` field to companions.json (33 tagged
 augment), sourced from two community sheets — Aragon's "augment companion
