@@ -1222,17 +1222,41 @@ classes were fixed in gear.json:
   capture in archive; n00b aware. (Also still derived, not screenshot: Doomcleaver + Knot of
   the Bloodbound IL4100, parsedFrom "derived".) The bonus appears only on the "If Equipped"
   tab (= set_details captures); plain "Details"-tab item tooltips show only stats + "Set (0/2)".
-- **WARNING — Impending Doom wrong-data signature ELSEWHERE (found 2026-06-16, NOT yet fixed).**
-  A scan for the same wrong "Heal +Outgoing Healing" signature that was on Ironfang/Bulwark
-  flags more items. Some may be GENUINELY Healer-role weapons (the decoded model says some pairs
-  legitimately add Heal +OH), so these are SUSPECT, not confirmed wrong — do NOT guess-fix; they
-  need If-Equipped captures or the dup-name reconciliation pass. Flagged:
-  - **Aegis of the Condemned** (ids 5328-5331, 206) + dup-name "— IL ####" variants (484/482/480/465)
-  - **Oathbreaker's Malevolence** (id 205) + dup-name variants (483/485/481/466)
-  - **Codex of Eternal Chains** (5153/5154/3145; 3145 also carries the "one-hover-behind" note)
-  - **Omen of Doom** (3144)
-  - **Strings of the Forsaken** dup-name group (4872/4873/4874)
-  - **Grimfang** / **Harrowed Messengers** dup-name "— IL ####" variants (2693-2697 / 2699-2703)
-  The canonical un-suffixed Doomcleaver/Knot/Grimfang/Harrowed/Dread Confessor/Scream Seeker/Eye/
-  Remnant/Dirgeblade/Strings entries scan clean. The dup-name "— IL ####" entries are likely the
-  known ~29 dup-name set-conflict leftovers carrying stale data.
+- **Impending Doom — FULL SET RECONCILED 2026-06-16** from the archive's master captures
+  (43 `Impending Doom_set_details` + 8 `Whisper of Power_set_details`, read by 5 vision-extractor
+  agents + self-verification). Each capture's header names its weapon pair, so every pair's real
+  structure is now known. **Verified master model** (BDB / Tank / Heal all scale 3/3.5/4/4.5/5%
+  by CR 3375/3690/4005/4320/4725 — invariant across every pair):
+
+  | Pair | Class | Charges | Unleashed roles | Per-weapon extras |
+  |---|---|---|---|---|
+  | Doomcleaver + Knot | Barb | 10 | DPS + Tank | Power + Crit Severity |
+  | Eye of the Doomweaver + Remnant of the Shattered Veil | Wizard | 10 | DPS only | Power + Crit Severity |
+  | Dread Confessor + Scream Seeker | — | 10 | DPS only | Accuracy + Power |
+  | Ironfang + Bulwark of Ruin | Fighter | 10 | DPS + Tank | Power + Combat Advantage |
+  | Grimfang + Harrowed Messengers | Ranger | 13 | DPS only | Crit Strike + Accuracy |
+  | Omen of Doom + Codex of Eternal Chains | Warlock | 10 | DPS + Heal | Crit Severity + Power |
+  | Dirgeblade + Strings of the Forsaken | Bard | 13 | DPS + Heal | Power + Crit Strike |
+  | Oathbreaker's Malevolence + Aegis of the Condemned | Paladin | 10 | **Tank + Heal (no DPS)** | Forte + Defense |
+
+  At CR3375 the per-weapon extra is a FLAT rating (Power 5,200 / Crit Strike 7,700 / Crit Severity
+  7,700 / Forte 7,200), turning to % at higher tiers; the secondary extra appears from CR4005 up.
+  **40 items rewritten** to this model — Omen/Codex (Warlock), Dirgeblade/Strings (Bard),
+  Oathbreaker/Aegis (Paladin), and the Grimfang/Harrowed dup-name "— IL ####" variants (which
+  had carried wrong Heal data; their canonical un-suffixed entries were already correct). Two
+  Paladin IL4550 dup tiers (ids 480/481, CR4065/4095) and one Warlock CR3690 tier (Codex 5154)
+  were tier-matched/pattern-filled where no exact capture exists — marked `parsedFrom:"derived"`
+  with an explanatory `note`. Pure-DPS pairs verified to carry NO Heal line (0 Heal leaks after fix).
+- **STILL NEEDS A NEW CAPTURE (genuine gaps):**
+  - **Warden of the Last Rite (Cleric)** Impending Doom IL4800 — 0 captures anywhere in the archive.
+  - **Bard Whisper of Power** (Dirgeblade + Strings of the Forsaken) — the 8 WoP captures cover only
+    Barb/Ranger/Paladin/Wizard pairs. Dirgeblade (4606/5642) and Strings (4872) WoP entries were the
+    "+10% Movement Speed" mislabel; **neutralized to `parsedFrom:"pending"`** (false movement claim
+    removed) until a Dirgeblade/Strings WoP If-Equipped capture gives the real flat stat.
+- **Flagged IL3400 strays (left unchanged, low priority):** Codex 5152 and Aegis 5240 — IL3400
+  (CR3060 = Whisper-of-Power tier) items mistagged `set:"Impending Doom"` but blank; likely retag-to-WoP
+  or dedupe candidates. Their pairs' WoP: Aegis = +7,200 Forte (verified), Codex = +5,200 Power (per
+  Omen 5155, not yet capture-verified for the Warlock pair).
+- **Dup-name "— IL ####" cleanup still pending** (separate from values): the Aegis/Oathbreaker/Grimfang/
+  Harrowed "— IL ####" entries now hold CORRECT bonuses but remain DUPLICATE items (part of the known
+  ~29 dup-name set-conflicts) — to be merged/removed in the dedup pass.

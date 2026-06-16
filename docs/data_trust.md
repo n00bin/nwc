@@ -207,6 +207,32 @@ Condemned, Oathbreaker's Malevolence, Codex of Eternal Chains, Omen of Doom, Str
 Forsaken, and dup-name Grimfang/Harrowed variants) — see `docs/data_issues.md` "Impending Doom
 wrong-data signature ELSEWHERE". Some may be genuinely Healer-role; need captures.
 
+## Impending Doom full-set reconciliation — verified 2026-06-16 (archive master captures)
+
+Source: 43 `Impending Doom_set_details` + 8 `Whisper of Power_set_details` captures in
+`calibration/inbox/_set_details/`, read by 5 parallel vision-extractor agents and cross-checked
+(Paladin pair self-verified). Each capture header names its weapon pair, giving an authoritative
+per-pair model (charges, role split, BDB ladder, extras). See `data_issues.md` "Endgame weapon
+sets" for the full table.
+
+FIXED→CONFIRMED (40 gear items rewritten to the verified model):
+- **Oathbreaker's Malevolence + Aegis of the Condemned** (Paladin) — Tank+Heal, **no DPS**, 10 charges,
+  Forte+Defense extras. ids 205/206/465/466/480/481/482/483/484/485/5328/5329/5330/5331.
+- **Omen of Doom + Codex of Eternal Chains** (Warlock) — DPS+Heal, 10 charges, Crit Severity+Power.
+  ids 3144/3145/5153/5154. (Codex 5154 CR3690 extras pattern-inferred — `derived`.)
+- **Dirgeblade + Strings of the Forsaken** (Bard) — DPS+Heal, 13 charges, Power+Crit Strike.
+  ids 4603/4604/4605/4607/4608/4609/4610/4873/4874.
+- **Grimfang + Harrowed Messengers dup-name variants** — corrected from wrong Heal to verified
+  pure-DPS, 13 charges, Crit Strike+Accuracy. ids 2693-2697 / 2699-2703 (canonical entries were
+  already correct).
+- Paladin IL4550 dup tiers (480/481, CR4065/4095) tier-matched to the +4% band — `derived`.
+
+CONFIRMED-CORRECT (no change needed — captures matched existing data): Doomcleaver+Knot,
+Eye of the Doomweaver+Remnant, Dread Confessor+Scream Seeker, Ironfang+Bulwark.
+
+UNVERIFIABLE (need a new capture): Warden of the Last Rite (Cleric) Impending Doom; Bard
+Whisper of Power (Dirgeblade/Strings — neutralized the Movement-Speed mislabel to `pending`).
+
 ---
 
 ## Known intentional outliers (CONFIRMED by design — never re-flag)
