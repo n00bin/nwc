@@ -1,5 +1,23 @@
 # Data Issues To Investigate
 
+## Companion augment tagging + Mythic-vs-Celestial caveat (2026-06-16)
+Added a structured `augment: true/false` field to companions.json (33 tagged
+augment), sourced from two community sheets — Aragon's "augment companion
+bonuses" tab and Rainer's pocket-wiki augment-stats tab. Needed so the
+Companion Enchantment can pick its mode (+% Companion Damage for non-augment
+summons vs +flat to each Augment Bonus Stat for augment summons).
+
+**CAVEAT (flagged by n00b):** the augment companion *shared-stat values* on
+both sheets are at **Mythic** rarity. **Celestial** is the current top tier and
+scales higher. So when we later model each augment's actual shared-stat
+contribution, do NOT use the sheet numbers as-is — get/scale to Celestial.
+Likewise the Celestial Companion enchant's "+9,000 to each Augment Companion
+Bonus Stat" adds *on top of* whatever the companion already shares.
+
+**Augments on the sheets we don't carry as companions** (missing-item gap):
+Gelatinous Cube, Joy Dancer of Lliira, Juvenile Jade Dragonnel, Star of Simril,
+Winter Fox, Ioun Stone of the Feywild, Panda.
+
 ## Set-bonus text backfill — 3 gaps found (2026-06-15)
 During the set-bonus text pass (gear cards now show the full tooltip text
 instead of a bare stat), three items need a look:
