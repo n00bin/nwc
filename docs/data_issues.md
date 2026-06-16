@@ -1133,11 +1133,14 @@ classes were fixed in gear.json:
   LEFT ALONE — they already complete via the legacy `set`-field path.
 
 ### Still need game knowledge (NOT auto-fixed)
-- **Reinforced Dragonflight:** structured pieces are split between setName
-  `Dragonflight` (8 — would wrongly merge with the base Dragonflight set) and
-  `Reinforced Dragonflight` (1); legacy Ward/Restoration pieces say "2 of Set" while
-  the structured ones say 4pc. Need: is Reinforced Dragonflight its own set, and how
-  many pieces?
-- **Generic `Relic` setName** (Vivified Oathkeeper's Ward Armet id 2005, etc.) —
-  needs the true set name (Oathkeeper's Relic?).
-- **Barovian Lord's Armor (id 1241)** — ambiguous 2pc vs 4pc.
+- ~~**Reinforced Dragonflight:** setName split.~~ **RESOLVED 2026-06-16** — tooltip
+  `docs/audit/_up/.../Reinforced Dragonflight Raid Mask_IL1400.png` reads "Set
+  Dragonflight (0/4)": setName is `Dragonflight`, 4pc. Fixed the 1 outlier +
+  converted 8 legacy pieces to structured `Dragonflight` 4pc. (setName `Dragonflight`
+  is used only by reinforced pieces — base Dragonflight is blank — so no cross-merge.)
+- ~~**Generic `Relic` setName.**~~ **RESOLVED 2026-06-16 (NOT a bug)** — tooltip
+  `docs/audit/_up/paladin-gear/Vivified Oathkeeper's Ward Armet_IL645.png` reads
+  "Set Relic (0/4)": `Relic` IS the real in-game set name, 4pc. Converted 15 legacy
+  Oathkeeper relic pieces to structured `Relic` 4pc so the set completes.
+- **Barovian Lord's Armor (id 1241)** — STILL OPEN: ambiguous 2pc vs 4pc, and no
+  Barovian tooltip exists in the archive. Needs a fresh in-game capture.
