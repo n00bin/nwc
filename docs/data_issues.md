@@ -1169,3 +1169,23 @@ classes were fixed in gear.json:
   reward is "+20 Power" on completion (id 1241). Normalized the 7 inconsistent Set
   entries to 4pc + folded in the legacy piece. Lesson: search by piece name, not
   just set name — the captures existed all along.
+
+## Endgame weapon sets (2026-06-16)
+- **Whisper of Power** — COMPLETE. All 8 missing items filled from set_details
+  (paired artifact weapons; +5,200 Power / +7,700 Critical Strike / +7,200 Forte
+  per pair). FLAG: the "+10% Movement Speed in Thay" 2-of-Set entries on
+  Dirgeblade / Dread Confessor / Ironfang / Bulwark of Ruin / Scream Seeker are
+  almost certainly MISLABELS — no set_details capture ever shows a movement bonus;
+  WoP's 2pc is always a flat stat. Those pairs need set_details captures to correct.
+- **Impending Doom** — 28 of 32 orphans filled from 43 set_details. Decoded model:
+  paired weapons, charge count per pair (13 Grimfang/Harrowed & Dirgeblade, 10
+  Eye/Remnant, Doomcleaver/Knot, Oathbreaker/Aegis), Unleashed DPS Base Damage
+  Boost scaling +3/3.5/4/4.5/5% by IL (CR 3375/3690/4005/4320/4725), Doomcleaver/
+  Knot add Tank -Incoming Damage, Oathbreaker/Dirgeblade add Heal +Outgoing
+  Healing, plus per-weapon extra stat lines (which also scale by IL). STILL NEED a
+  capture: **Dread Confessor IL3750, Warden of the Last Rite IL4800, Doomcleaver +
+  Knot of the Bloodbound IL4100** (no CR-3690 Doomcleaver set_details exists).
+  The pre-existing Impending Doom entries are inconsistent (mixed structured/legacy/
+  empty) and would benefit from a reconciliation pass.
+- **Umbral Convergence** (+Greater) — 4 weapons IL3800/4000 have item tooltips but
+  NO set_details capture; the 2pc bonus text is unknown. Needs a set_details grab.
