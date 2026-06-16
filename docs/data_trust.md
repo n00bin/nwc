@@ -181,6 +181,32 @@ Company cloaks, Valhalla necks). No readable accessory equip-bonus gaps remain.
   tooltip stats (+1,994/+2,992) with Combined Rating 222 (siblings ~499). Logged in
   `docs/data_issues.md`.
 
+## Fighter endgame weapon sets — verified 2026-06-16 (n00b If-Equipped captures)
+
+24 in-game captures from n00b (archived under `calibration/inbox/_set_details/` and
+`.../gear/fighter-gear/{main-hand,off-hand}/`). All three sets written parsedFrom "screenshot".
+
+- **Umbral Convergence** 2pc — IL3800 Advanced (ids 6898 Tombwarden's Guard / 6899 Dreadwatch
+  Halberd) and IL4000 Greater (6896 Tombwarden's Bastion / 6897 Dread Sentinel). In-Thay Movement
+  Speed +10%/+12%; IL4000 also +3% Forte; shared Daily proc (pull within 25ft, +5% Deflect
+  Severity, enemy -2.5% Accuracy 6s, 30s CD). Source: `Umbral Convergence_IL3800_set_details.png`,
+  `Umbral Convergence Greater_IL4000_set_details.png`.
+- **Whisper of Power** 2pc — Ironfang (6884) + Bulwark of Ruin (6890), IL3400 = **+5,200 Power**
+  (FIXED: was mislabeled "+10% Movement Speed in Thay"). Source:
+  `Whisper of Power Ironfang+Bulwark_IL3400_set_details.png`.
+- **Impending Doom** 2pc — Ironfang (6885-6889) + Bulwark of Ruin (6891-6895), IL3750-5250.
+  FIXED→CONFIRMED: pre-existing data was a different pair's bonus (Heal +Outgoing Healing, no tier
+  scaling, from a mis-named 2026-06-10 capture). Correct = DPS Base Damage Boost +3/3.5/4/4.5/5%,
+  Tank -Incoming Damage matching, extras Power (flat 5,200 -> +5% -> +6%) + Combat Advantage
+  (+3.5% -> +6%). Sources: `Impending Doom Ironfang+Bulwark_IL{3750,4100,4450,4800,5250}_set_details.png`.
+
+Item-stat (Details-tab) captures for all three weapons at every tier also archived (`*_collection.png`).
+
+FLAGGED (NOT verified, NOT fixed): broader Impending Doom "Heal +OH" suspect list (Aegis of the
+Condemned, Oathbreaker's Malevolence, Codex of Eternal Chains, Omen of Doom, Strings of the
+Forsaken, and dup-name Grimfang/Harrowed variants) — see `docs/data_issues.md` "Impending Doom
+wrong-data signature ELSEWHERE". Some may be genuinely Healer-role; need captures.
+
 ---
 
 ## Known intentional outliers (CONFIRMED by design — never re-flag)

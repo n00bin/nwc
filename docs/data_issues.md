@@ -1183,34 +1183,56 @@ classes were fixed in gear.json:
   just set name — the captures existed all along.
 
 ## Endgame weapon sets (2026-06-16)
-- **Whisper of Power** — COMPLETE. All 8 missing items filled from set_details
-  (paired artifact weapons; +5,200 Power / +7,700 Critical Strike / +7,200 Forte
-  per pair). The "+10% Movement Speed in Thay" mislabels: **Dread Confessor +
-  Scream Seeker RESOLVED 2026-06-16** (n00b captures → the pair's WoP 2pc is
-  **+7,700 Accuracy**, not movement). STILL pending captures: **Dirgeblade (Bard)**,
-  **Ironfang + Bulwark of Ruin (Fighter)** — their "+10% Movement Speed" entries
-  are almost certainly mislabels (no capture ever shows a movement bonus; WoP 2pc
-  is always a flat stat) but need an If-Equipped capture to get the real flat stat.
-- **Impending Doom** — **31 of 32** filled. Dread Confessor IL3750 RESOLVED 2026-06-16
-  from n00b captures (also corrected the whole Dread Confessor + Scream Seeker line:
-  pair=Scream Seeker, 10 charges not 18, BDB +3/3.5/4/4.5/5%, extras Accuracy/Power).
-  ONLY REMAINING: **Warden of the Last Rite IL4800 (Cleric)** — no capture in archive;
-  n00b aware, capture pending. (Earlier: 28 from set_details + Doomcleaver/
-  Knot IL4100 derived from the uniform IL-scaling + Doomcleaver==Eye extras). NOTE:
-  the archive HAS "Details"-tab item tooltips for Doomcleaver IL4100, Dread Confessor
-  IL3750, Dirgeblade, Ironfang, Scream Seeker, and the Umbral weapons — but those
-  show only stats + "Set (0/2)" membership, NOT the bonus text. The bonus appears
-  only on the "If Equipped" tab (= the set_details captures). The 2 still open
-  (**Dread Confessor IL3750**, **Warden of the Last Rite IL4800**) need an
-  If-Equipped/set_details grab, not a plain item tooltip. Decoded model:
-  paired weapons, charge count per pair (13 Grimfang/Harrowed & Dirgeblade, 10
-  Eye/Remnant, Doomcleaver/Knot, Oathbreaker/Aegis), Unleashed DPS Base Damage
-  Boost scaling +3/3.5/4/4.5/5% by IL (CR 3375/3690/4005/4320/4725), Doomcleaver/
-  Knot add Tank -Incoming Damage, Oathbreaker/Dirgeblade add Heal +Outgoing
-  Healing, plus per-weapon extra stat lines (which also scale by IL). STILL NEED a
-  capture: **Dread Confessor IL3750, Warden of the Last Rite IL4800, Doomcleaver +
-  Knot of the Bloodbound IL4100** (no CR-3690 Doomcleaver set_details exists).
-  The pre-existing Impending Doom entries are inconsistent (mixed structured/legacy/
-  empty) and would benefit from a reconciliation pass.
-- **Umbral Convergence** (+Greater) — 4 weapons IL3800/4000 have item tooltips but
-  NO set_details capture; the 2pc bonus text is unknown. Needs a set_details grab.
+- **Whisper of Power** — COMPLETE for every captured pair. Paired artifact weapons; the
+  WoP 2pc is always a flat stat (+5,200 Power / +7,700 Critical Strike / +7,200 Forte /
+  +7,700 Accuracy per pair). RESOLVED from n00b captures: Dread Confessor + Scream Seeker
+  = **+7,700 Accuracy**; **Ironfang + Bulwark of Ruin (Fighter) = +5,200 Power** (2026-06-16,
+  If-Equipped capture confirmed the "+10% Movement Speed in Thay" entry was a mislabel).
+  STILL pending capture: **Dirgeblade (Bard)** "+10% Movement Speed" mislabel.
+- **Umbral Convergence** (Fighter, 2pc MH+OH) — **RESOLVED 2026-06-16** from n00b
+  If-Equipped captures (both tiers). Tier-scaled, Thay-zone-conditional:
+  - IL3800 "Advanced" (Dreadwatch Halberd + Tombwarden's Guard): in Thay +10% Movement
+    Speed; on Daily power, pull enemies within 25ft, +5% Deflect Severity, enemy Accuracy
+    -2.5% for 6s (30s CD).
+  - IL4000 "Greater" (Dread Sentinel + Tombwarden's Bastion): in Thay +12% Movement Speed
+    **and +3% Forte**; same Daily proc.
+  Written text-only (Movement Speed + zone-conditional Forte + low-uptime proc are not clean
+  always-on scoreables). Distinct setNames ("Umbral Convergence" vs "...(Greater)") keep the
+  two tiers from cross-completing.
+- **Impending Doom — Ironfang + Bulwark of Ruin (Fighter) RESOLVED & CORRECTED 2026-06-16**
+  from n00b If-Equipped captures at ALL 5 tiers. The pre-existing entries for this pair were
+  WRONG: they carried a *different* pair's bonus (Heal +Outgoing Healing role split, +7.5%
+  Crit Sev / +2.5% Power extras, identical at every tier = no scaling), traceable to a
+  mis-named "one-hover-behind" capture (2026-06-10). Correct values (now one Base Damage
+  Boost EB per tier, matching the verified Doomcleaver reference structure):
+
+  | IL / CR | DPS Base Dmg Boost | Tank Incoming Dmg | extras |
+  |---|---|---|---|
+  | 3750 / 3375 | +3% | -3% | +5,200 Power (flat) |
+  | 4100 / 3690 | +3.5% | -3.5% | +5% Power |
+  | 4450 / 4005 | +4% | -4% | +5% Power, +3.5% Combat Advantage |
+  | 4800 / 4320 | +4.5% | -4.5% | +5% Power, +3.5% Combat Advantage |
+  | 5250 / 4725 | +5% | -5% | +6% Power, +6% Combat Advantage |
+
+  (Full verbatim also has per-tier charge cadence — 1 charge per 9s/7s/5s in combat — and a
+  15s -> 20s Unleashed duration; condensed to the Doomcleaver entry format. Captures archived
+  as `_set_details/Impending Doom Ironfang+Bulwark_IL####_set_details.png` and the WoP one as
+  `Whisper of Power Ironfang+Bulwark_IL3400_set_details.png`.)
+  ONLY REMAINING Impending Doom orphan: **Warden of the Last Rite IL4800 (Cleric)** — no
+  capture in archive; n00b aware. (Also still derived, not screenshot: Doomcleaver + Knot of
+  the Bloodbound IL4100, parsedFrom "derived".) The bonus appears only on the "If Equipped"
+  tab (= set_details captures); plain "Details"-tab item tooltips show only stats + "Set (0/2)".
+- **WARNING — Impending Doom wrong-data signature ELSEWHERE (found 2026-06-16, NOT yet fixed).**
+  A scan for the same wrong "Heal +Outgoing Healing" signature that was on Ironfang/Bulwark
+  flags more items. Some may be GENUINELY Healer-role weapons (the decoded model says some pairs
+  legitimately add Heal +OH), so these are SUSPECT, not confirmed wrong — do NOT guess-fix; they
+  need If-Equipped captures or the dup-name reconciliation pass. Flagged:
+  - **Aegis of the Condemned** (ids 5328-5331, 206) + dup-name "— IL ####" variants (484/482/480/465)
+  - **Oathbreaker's Malevolence** (id 205) + dup-name variants (483/485/481/466)
+  - **Codex of Eternal Chains** (5153/5154/3145; 3145 also carries the "one-hover-behind" note)
+  - **Omen of Doom** (3144)
+  - **Strings of the Forsaken** dup-name group (4872/4873/4874)
+  - **Grimfang** / **Harrowed Messengers** dup-name "— IL ####" variants (2693-2697 / 2699-2703)
+  The canonical un-suffixed Doomcleaver/Knot/Grimfang/Harrowed/Dread Confessor/Scream Seeker/Eye/
+  Remnant/Dirgeblade/Strings entries scan clean. The dup-name "— IL ####" entries are likely the
+  known ~29 dup-name set-conflict leftovers carrying stale data.
