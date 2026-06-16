@@ -1116,3 +1116,28 @@ session — coordinate before adding the two companions; the mount is clear to a
     critical strike and severity for 15 seconds. Value scales with summoned pet's item
     level. Maximum 4.5%."
   - Power **Continental Craving** (IL 750, Offense): +3.8% Critical Strike, +3.8% Power, +750 CR.
+
+## Set-completion fixes (2026-06-16)
+The Toon Forge builder counts set pieces by the equipBonus `setName` (or, for
+fully-legacy items, the `set` field via the legacy registry). Two real break
+classes were fixed in gear.json:
+- **Name splits (105 refs renamed):** `Masterwork II Equipment` -> `Masterwork II
+  Equipment Set`; `Sun Set`/`Set Sun` -> `Sun`; `Company PVE Armor` -> `Company PvE
+  Armor` (case); `Black Ice set` -> `Black Ice`. These were two keys for one set.
+- **Legacy pieces not counting (38 converted):** pieces with only a legacy
+  `setBonus` (and a `set` != the family's structured `setName`) were converted to
+  structured Set entries (parsedFrom:"legacy-merge") so they count toward
+  completion (Astral Absorption/Dash, Twisted, Lostmauth's Hoard, The Dark Maiden,
+  Lolthian Might, Dwarven Resilience, the Alacrity sets, etc.).
+- Fully-legacy sets (Infused, Abyssal Fury, Prestige, Warborn, Frostborn, ...) were
+  LEFT ALONE — they already complete via the legacy `set`-field path.
+
+### Still need game knowledge (NOT auto-fixed)
+- **Reinforced Dragonflight:** structured pieces are split between setName
+  `Dragonflight` (8 — would wrongly merge with the base Dragonflight set) and
+  `Reinforced Dragonflight` (1); legacy Ward/Restoration pieces say "2 of Set" while
+  the structured ones say 4pc. Need: is Reinforced Dragonflight its own set, and how
+  many pieces?
+- **Generic `Relic` setName** (Vivified Oathkeeper's Ward Armet id 2005, etc.) —
+  needs the true set name (Oathkeeper's Relic?).
+- **Barovian Lord's Armor (id 1241)** — ambiguous 2pc vs 4pc.
