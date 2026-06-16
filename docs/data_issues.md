@@ -1177,7 +1177,14 @@ classes were fixed in gear.json:
   Dirgeblade / Dread Confessor / Ironfang / Bulwark of Ruin / Scream Seeker are
   almost certainly MISLABELS — no set_details capture ever shows a movement bonus;
   WoP's 2pc is always a flat stat. Those pairs need set_details captures to correct.
-- **Impending Doom** — 28 of 32 orphans filled from 43 set_details. Decoded model:
+- **Impending Doom** — 30 of 32 orphans filled (28 from set_details + Doomcleaver/
+  Knot IL4100 derived from the uniform IL-scaling + Doomcleaver==Eye extras). NOTE:
+  the archive HAS "Details"-tab item tooltips for Doomcleaver IL4100, Dread Confessor
+  IL3750, Dirgeblade, Ironfang, Scream Seeker, and the Umbral weapons — but those
+  show only stats + "Set (0/2)" membership, NOT the bonus text. The bonus appears
+  only on the "If Equipped" tab (= the set_details captures). The 2 still open
+  (**Dread Confessor IL3750**, **Warden of the Last Rite IL4800**) need an
+  If-Equipped/set_details grab, not a plain item tooltip. Decoded model:
   paired weapons, charge count per pair (13 Grimfang/Harrowed & Dirgeblade, 10
   Eye/Remnant, Doomcleaver/Knot, Oathbreaker/Aegis), Unleashed DPS Base Damage
   Boost scaling +3/3.5/4/4.5/5% by IL (CR 3375/3690/4005/4320/4725), Doomcleaver/
