@@ -1085,3 +1085,28 @@ convenient — the scoring stats are solid and need no change:
 - **Leader's "per player in your team"** maxStacks stored as 4 (a full party is you
   + 4); in-game cap not shown on tooltip — verify if it counts self (would be 5).
 
+
+## Missing companions/mounts found in _misc-archive cleanup (2026-06-15)
+While clearing the local `_misc-archive` junk folder, 3 in-game tooltips turned up
+for entities NOT in our databases. Tooltips preserved under
+`docs/calibration/inbox/mounts/` and `.../companions/`. Add when convenient
+(companions.json / companion_powers.json are being touched by a concurrent
+session — coordinate before adding the two companions; the mount is clear to add).
+
+- **Olive the Octopus** (MOUNT) — not in mounts.json.
+  - Equip Power **Mystic Aura** (IL 3,000): "+2,250 Power and Accuracy to you and your
+    party members within 80'. Multiple of the same Aura do not stack. +2,700 Combined Rating."
+  - Combat Power **Tidal Wave** (60s recharge): summons "Ollie the Octie", three expanding
+    tidal waves. Wave Magnitude 300; Knockback; enemies take +12.8% damage for 10s;
+    you & nearby allies deal +12.8% damage for 10s.
+- **Sir Waddlelot** (COMPANION) — not in companions.json.
+  - Enhancement **Enduring Guard**: "While your companion is summoned and not downed,
+    increases your Defense and your companion's Defense. Value scales with summoned
+    companion's item level. Maximum 6%."
+  - Power **Relentless Waddle** (IL 750, Offense/Defense): "Whenever you run, … increasing
+    you and your summoned companions' Critical Severity by +7.5% for 7 seconds." +750 CR.
+- **Wormungandr** (COMPANION) — not in companions.json.
+  - Enhancement **Exploit Weakness**: "Chance on hit to increase your and your companion's
+    critical strike and severity for 15 seconds. Value scales with summoned pet's item
+    level. Maximum 4.5%."
+  - Power **Continental Craving** (IL 750, Offense): +3.8% Critical Strike, +3.8% Power, +750 CR.
