@@ -58,8 +58,7 @@ The website's data lives in the JSON files in `../data/` (the source of truth). 
 From the 2026-06-15 companion sweep, these are wrong or unverifiable but have no usable screenshot in the archive:
 
 - ✅ **Wrong-power pets RESOLVED 2026-06-15** (screenshots provided): Stalwart Golden Lion → Celestial Lion's Presence (262), Portobello DaVinci → Dungeon Master's Wisdom (263), Dread Warrior → Dreadwarrior's Insight (264), Cyclops War Drummer → War Drummer's Discipline (261). Blue Fire Eye, Wolf, Damaran Shepherd, Linu La'neral, Vampire Bride all verified correct as-is.
-- **Still needs an in-game power-card screenshot — just ONE left** (after the OCR archive sweep, 2026-06-15 — see method below):
-  - **Mini Apparatus of Gond** (249) — DB has it sharing Soradiel's Divine Judgement, but the 3 captured Divine Judgement cards (c249/c259/c260) are all paladins; Mini Apparatus is a Gond *construct*, so its real power is unknown. Needs its own card.
+- ⏸️ **PARKED — Mini Apparatus of Gond** (249): n00b does **not own** this companion, so it can't be verified yet (verify when acquired). DB has it sharing Soradiel's Divine Judgement, but it's a Gond *construct* — the 3 captured Divine Judgement cards (c249/c259/c260) are all paladins, so its real power is unknown and likely wrong. This is the only un-verified companion power; everything else is confirmed.
   - ✅ Harper Bard (255), Armored Orc Wolf (257), Riotous Rothe (256) — all CONFIRMED from OCR-found archive cards (c118 / c070 / c071); the NW-Hub-sourced values turned out correct.
 
 _OCR archive-sweep method (2026-06-15): ran pytesseract over all 267 cards in `docs/audit/companions/_up/` searching for companion/power names; 7 candidate hits, read at zoom to confirm. This is how to "check the screenshots" when there's no filename index — don't conclude "not in archive" from a text/manifest search alone._
@@ -82,7 +81,7 @@ Full scan of all companion `powerRef`/`enhancementRef` + shared-power + CR/IL:
   - ✅ power 252 Fire Eye's Insight — RESOLVED: Blue Fire Eye owns it; Archmage's Apprentice (renamed Halfling Wayward Wizard in-game) repointed to its real power Wayward Wisdom (169).
   - ✅ power 92 Vampire's Kiss — CONFIRMED legit: Vampire Bride verified has it; shared with Vampire by design (both vampires).
   - ✅ power 248 Highborn Status — RESOLVED: Demonic Servant owns it; Mercenary got its own power (Mercenary's Discipline, 265).
-  - ⚠️ power 249 Divine Judgement — Soradiel (documented owner) vs **Mini Apparatus of Gond** (still need a screenshot).
+  - ⏸️ power 249 Divine Judgement — Soradiel (documented owner); **Mini Apparatus of Gond** PARKED (n00b doesn't own the companion — verify when acquired).
 - ✅ **CR ≠ IL: RESOLVED** — power 119 Cold Iron Warrior (0→75) and power 174 Spiteful Hex (900→750) both fixed 2026-06-15. A full DB scan confirms no companion-power CR≠IL mismatches remain.
 
 ## Gear set-bonus text (2026-06-15 steward sweep)
