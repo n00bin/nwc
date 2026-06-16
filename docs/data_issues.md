@@ -1142,5 +1142,12 @@ classes were fixed in gear.json:
   `docs/audit/_up/paladin-gear/Vivified Oathkeeper's Ward Armet_IL645.png` reads
   "Set Relic (0/4)": `Relic` IS the real in-game set name, 4pc. Converted 15 legacy
   Oathkeeper relic pieces to structured `Relic` 4pc so the set completes.
-- **Barovian Lord's Armor (id 1241)** — STILL OPEN: ambiguous 2pc vs 4pc, and no
-  Barovian tooltip exists in the archive. Needs a fresh in-game capture.
+- ~~**Barovian Lord's Armor (id 1241)** — ambiguous 2pc vs 4pc.~~ **RESOLVED
+  2026-06-16** — screenshots were filed under the class-specific piece names
+  (Banditlord's / Curselord's / Oathlord's / Shieldlord's = the Ravenloft "lord's"
+  armor, source "Barovia – Seals Store"). Tooltips (`docs/audit/_up/...`) show only
+  the per-piece dual-HP-threshold equip bonuses (all 32 already structured) — there
+  is NO N-of-Set stat bonus. "Barovian Lord's Armor" is a COLLECTION; its only set
+  reward is "+20 Power" on completion (id 1241). Normalized the 7 inconsistent Set
+  entries to 4pc + folded in the legacy piece. Lesson: search by piece name, not
+  just set name — the captures existed all along.
