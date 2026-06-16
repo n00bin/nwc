@@ -1072,3 +1072,16 @@ From Report #19:
   Survivor's missing-health ring family + Daily-power rings + Challenger's Might).
   Logged in docs/audit/equip_bonus_blank_families.md so these stop reading as gaps.
 
+## Armor equip-bonus sweep — reconstructed-from-truncated tooltips (2026-06-15)
+Stat names + values were read clearly; only trailing sentence fragments were
+clipped at the screenshot's right edge, so the verbatim DESCRIPTION wording was
+reconstructed (standard NW dual-branch format). Re-capture for exact wording when
+convenient — the scoring stats are solid and need no change:
+- **Shieldlord's Raid/Ward** set (ids 7000-7007): Survivor's Savagery / Warden's
+  Balance / Survivor's Finesse / Survivor's Strike — dual 50%-HP-threshold ratings.
+- **Pioneer Ward** Leader's Dash pieces (ids 7088, 7095, 7093, 7094 etc.): the
+  per-player value was clipped; filled from verified Pioneer Assault siblings
+  (Leader's Dash 1% / Guard 200 / Might 200 / Vitality 1000 per team-member).
+- **Leader's "per player in your team"** maxStacks stored as 4 (a full party is you
+  + 4); in-game cap not shown on tooltip — verify if it counts self (would be 5).
+

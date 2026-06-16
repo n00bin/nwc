@@ -43,8 +43,9 @@ These are NOT gaps. Exclude from equip-bonus gap sweeps.
 - Umbral Set  (16 items)
 - Warborn  (12 items)
 
-## HAS a per-item equip bonus — still to backfill — 13 families, ~96 items
-Real low-IL gaps. Bonus can vary by slot/variant, so each needs reading its pieces.
+## HAS a per-item equip bonus — DONE (13 families) — written 2026-06-15
+Real low-IL gaps, all read per-piece and written (102 weapon pieces in these
+families stay blank by design — weapons carry set bonuses, not equip lines).
 
 - Antiquities of Undermountain  (16 items) — rep: Executioner's Might (kill -> +5% Power 10s)
 - Bronzewood Ward  (5 items) — rep: Gladiator's Accuracy
@@ -78,7 +79,29 @@ rep), since accessory bonuses vary per item. 103 accessory "gaps" resolved:
 
 Accessory equip-bonus backfill is COMPLETE — no readable accessory gaps remain.
 
-## Not yet classified
+## Armor (Head / Armor / Arms / Feet) — FULL SWEEP COMPLETE 2026-06-15
 
-~158 smaller ARMOR families (1-3 items each, ~180 items) below the top 48 are not
-yet classified — same era, expected mostly blank; classify in a later pass if needed.
+Every armor piece outside the 35 blank-by-design families that had a screenshot
+was read individually. Result across the full low/mid-IL armor tail (IL≤1400):
+
+- **~208 armor pieces HAVE a per-item equip bonus** (written, parsedFrom:screenshot).
+  Big families: Shieldlord's & Adamant & Titansteel & Bronzewood (Gladiator's
+  Accuracy/Focus stacks, Survivor's Parry, Challenger's Might, the dual-HP-threshold
+  Savagery/Balance/Finesse/Strike); League's & League's Elite (Survivor's Might/
+  Guard, Warden's Defense/Haste); Pioneer (Leader's Vitality/Dash/Guard/Might);
+  Huntsman, Crone's, Divine, Halaster's Successor / Successor, Primal/Pilgrim/Lion
+  Guard armors, plus many one-off uniques.
+- **~95 armor pieces confirmed NO equip bonus (by design)**: Elemental Dragonflight/
+  Drowcraft, Company (all roles), Elemental Alliance/Elven, Frostborn, Thayan
+  Servitor/Zealot, Manticore, Reinforced Dragonflight, Eternal Cap/Slippers/Tunic,
+  Draconic Guises, unrestored relics (Apprentice's Ruined, Rusted Oathkeeper's).
+
+**Total items with a screenshot-verified equip bonus (all slots): 514.**
+No readable armor or accessory equip-bonus gaps remain. The only outstanding
+work is items with NO screenshot at all (see capture list below).
+
+## Still need a NEW in-game capture (no screenshot exists)
+- ~292 armor pieces + ~882 weapons have no archived tooltip — cannot verify
+  without a capture. Most are expected blank (old set gear), but unconfirmed.
+- Specific flagged: **Lion Guard's Ward Cuirass** (id 1387) — family has bonuses
+  but this piece has no screenshot.

@@ -152,11 +152,19 @@ Full scan of all companion `powerRef`/`enhancementRef` + shared-power + CR/IL:
 
 ## Gear per-item EQUIP bonuses (2026-06-15 backfill)
 
-Distinct from set-bonus text above: an item's own `Equip:` line. 306 items now
+Distinct from set-bonus text above: an item's own `Equip:` line. **514 items** now
 carry a screenshot-sourced Equip bonus (`parsedFrom:"screenshot"`), backfilled
 top-to-bottom across all armor tiers, clothing, and accessories from the existing
 `docs/calibration/inbox/` archive. Per-item bonuses are read individually (NOT
 propagated), since they vary by slot/variant.
+
+**Armor tail — FULL SWEEP COMPLETE.** Every armor piece (Head/Armor/Arms/Feet)
+outside the 35 blank-by-design families that had a screenshot was read: **~208
+CONFIRMED have a bonus** (Shieldlord's/Adamant/Titansteel/Bronzewood Gladiator &
+dual-HP-threshold lines, League's/League's Elite, Pioneer Leader's, Huntsman,
+Crone's, Divine, Successor, Primal/Pilgrim/Lion Guard), **~95 CONFIRMED blank**.
+102 weapon pieces in bonus-bearing families stay blank by design (set bonus only).
+No readable armor/accessory equip-bonus gaps remain.
 
 **Accessory tail — fully swept.** 103 low-IL (<IL1500) neck/ring/amulet/cloak
 "gaps" resolved: **13 CONFIRMED have a bonus** (Survivor's missing-health ring
