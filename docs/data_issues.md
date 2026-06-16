@@ -1185,11 +1185,17 @@ classes were fixed in gear.json:
 ## Endgame weapon sets (2026-06-16)
 - **Whisper of Power** — COMPLETE. All 8 missing items filled from set_details
   (paired artifact weapons; +5,200 Power / +7,700 Critical Strike / +7,200 Forte
-  per pair). FLAG: the "+10% Movement Speed in Thay" 2-of-Set entries on
-  Dirgeblade / Dread Confessor / Ironfang / Bulwark of Ruin / Scream Seeker are
-  almost certainly MISLABELS — no set_details capture ever shows a movement bonus;
-  WoP's 2pc is always a flat stat. Those pairs need set_details captures to correct.
-- **Impending Doom** — 30 of 32 orphans filled (28 from set_details + Doomcleaver/
+  per pair). The "+10% Movement Speed in Thay" mislabels: **Dread Confessor +
+  Scream Seeker RESOLVED 2026-06-16** (n00b captures → the pair's WoP 2pc is
+  **+7,700 Accuracy**, not movement). STILL pending captures: **Dirgeblade (Bard)**,
+  **Ironfang + Bulwark of Ruin (Fighter)** — their "+10% Movement Speed" entries
+  are almost certainly mislabels (no capture ever shows a movement bonus; WoP 2pc
+  is always a flat stat) but need an If-Equipped capture to get the real flat stat.
+- **Impending Doom** — **31 of 32** filled. Dread Confessor IL3750 RESOLVED 2026-06-16
+  from n00b captures (also corrected the whole Dread Confessor + Scream Seeker line:
+  pair=Scream Seeker, 10 charges not 18, BDB +3/3.5/4/4.5/5%, extras Accuracy/Power).
+  ONLY REMAINING: **Warden of the Last Rite IL4800 (Cleric)** — no capture in archive;
+  n00b aware, capture pending. (Earlier: 28 from set_details + Doomcleaver/
   Knot IL4100 derived from the uniform IL-scaling + Doomcleaver==Eye extras). NOTE:
   the archive HAS "Details"-tab item tooltips for Doomcleaver IL4100, Dread Confessor
   IL3750, Dirgeblade, Ironfang, Scream Seeker, and the Umbral weapons — but those
