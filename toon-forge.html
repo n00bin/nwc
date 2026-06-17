@@ -2983,6 +2983,10 @@
       // item level scale linearly with its category's rank
       // (300 stat / 1,200 HP, 80 CR, 100 IL per rank — player-verified).
       guildBoonRanks: { Offense: 10, Defense: 10, Utility: 10 },
+      // Per-enchant-slot rarity/rank, keyed by slot label ("Offense 1", "Defense 2",
+      // "Utility", "Combat", "Bonus"). Missing/empty = Celestial (top), so a fresh
+      // build is unchanged. Players set a lower rank for enchants they haven't upgraded.
+      enchantRarity: {},
       // Set<buffName>; grouped buffs auto-deconflict.
       // Defaults are applied for buffs every player has passively (Campfire
       // is everywhere; VIP is permanent for paying players). Invocation
@@ -3095,6 +3099,7 @@
           masterOrder: state.masterOrder,
           guildBoonPicks: state.guildBoonPicks,
           guildBoonRanks: state.guildBoonRanks,
+          enchantRarity: state.enchantRarity,
           buffs: [...state.buffs],
           partyContent: state.partyContent || "dungeon",
           contentZone: state.contentZone || "",
@@ -3132,6 +3137,8 @@
         const _r = (s.guildBoonRank != null) ? Math.max(1, Math.min(10, +s.guildBoonRank || 10)) : 10;
         state.guildBoonRanks = { Offense: _r, Defense: _r, Utility: _r };
       }
+      // Builds saved before per-enchant rank existed default to Celestial (top).
+      if (s.enchantRarity == null) state.enchantRarity = {};
       // Migrate any renamed/merged gear in the saved loadout so the slot keeps
       // its item instead of silently going blank. Rewrites the stored name to
       // the current canonical name and tells the player what changed.
@@ -3944,7 +3951,7 @@
       // Companions: same card the summon picker shows, at the build's rarity.
       companion:             (name) => ({ item: (typeof findCompanionByName === "function") ? findCompanionByName(name) : null,
                                           render: (c) => renderSummonedCompanion(c, state.summonedRarity || state.companionRarity || "Mythic") }),
-      enchant:               (name) => ({ item: findEnchantByName(name), render: renderEnchantPick }),
+      enchant:               (name, opts) => ({ item: enchantAtRank(findEnchantByName(name), (opts && opts.slot && state.enchantRarity) ? state.enchantRarity[opts.slot] : null), render: renderEnchantPick }),
       overload:              (name) => ({ item: findOverloadByName(name), render: renderOverloadPick }),
       kit:                   (name) => ({ item: findKitByName(name), render: renderKitPick }),
       mount:                 (name) => ({ item: findMountByName(name), render: renderMount }),
@@ -5465,6 +5472,23 @@
       const userEnch = (typeof getUserAddedEnchants === "function") ? getUserAddedEnchants() : [];
       return userEnch.find(e => e.name === name) || null;
     }
+    // Return a copy of an enchant scaled to a given rank (linear tier/6, matching
+    // the engine + the Enchantments-page ladders). Celestial / unknown = unchanged.
+    function enchantAtRank(e, rank) {
+      const T = { Uncommon: 1, Rare: 2, Epic: 3, Legendary: 4, Mythic: 5, Celestial: 6 };
+      const t = T[rank];
+      if (!e || !t || t === 6) return e;
+      const f = t / 6;
+      const sc = (m) => { const o = {}; for (const k in (m || {})) o[k] = (typeof m[k] === "number") ? Math.round(m[k] * f) : m[k]; return o; };
+      const out = Object.assign({}, e);
+      if (e.universal) { out.universal = {}; for (const slot in e.universal) out.universal[slot] = sc(e.universal[slot]); }
+      if (e.ratingStats)  out.ratingStats  = sc(e.ratingStats);
+      if (e.percentStats) out.percentStats = sc(e.percentStats);
+      if (typeof e.item_level === "number")     out.item_level     = Math.round(e.item_level * f);
+      if (typeof e.combinedRating === "number") out.combinedRating = Math.round(e.combinedRating * f);
+      out._rank = rank;
+      return out;
+    }
     function getEnchantList() {
       if (typeof ENCHANTS_DATA === "undefined") return [];
       return ENCHANTS_DATA.slice().sort((a,b) => (b.item_level||0)-(a.item_level||0) || a.name.localeCompare(b.name));
@@ -5491,7 +5515,8 @@
       const il = e.item_level ? "IL " + e.item_level : "";
       const cr = e.combinedRating ? "CR " + e.combinedRating : "";
       const slotType = e.slotType ? e.slotType + " slot" : "";
-      const meta = [il, cr, slotType].filter(Boolean).join(" · ");
+      const rankTag = (e._rank && e._rank !== "Celestial") ? `Rank: ${e._rank}` : "";
+      const meta = [rankTag, il, cr, slotType].filter(Boolean).join(" · ");
 
       // Universal enchants morph per slotted family — show all three
       let universalBlock = "";
@@ -9470,13 +9495,20 @@
       cur = 0; sources = [];
       if (state.enchants) {
         const ench = state.enchants;
-        const list = [
-          ...(ench.offense || []), ...(ench.defense || []),
-          ench.utility, ench.combat, ench.bonus
-        ];
-        for (const name of list) {
+        const ER = { Uncommon: 1, Rare: 2, Epic: 3, Legendary: 4, Mythic: 5, Celestial: 6 };
+        const slots = [];
+        (ench.offense || []).forEach((n, i) => slots.push([n, `Offense ${i + 1}`]));
+        (ench.defense || []).forEach((n, i) => slots.push([n, `Defense ${i + 1}`]));
+        slots.push([ench.utility, "Utility"], [ench.combat, "Combat"], [ench.bonus, "Bonus"]);
+        for (const [name, slotLabel] of slots) {
           const e = findEnchantByName(name);
-          if (e && e.item_level) { cur += e.item_level; sources.push({ name: e.name, il: e.item_level }); }
+          if (e && e.item_level) {
+            const r = state.enchantRarity && state.enchantRarity[slotLabel];
+            const t = ER[r];
+            const f = (t && t < 6) ? t / 6 : 1;
+            const il = Math.round(e.item_level * f);
+            if (il) { cur += il; sources.push({ name: e.name + (f < 1 ? ` (${r})` : ""), il: il }); }
+          }
         }
       }
       add("Enchantments", cur, sources);
@@ -11701,13 +11733,32 @@
       // Enchantments — 11 typed slots. Universal enchants in
       // offense/defense/utility slots use their respective sub-effect.
       // Combat/Bonus enchants use their direct percentStats/ratingStats.
+      // Per-slot enchant RANK. Players upgrade enchants over time, so each slot
+      // can hold a lower rarity. Scaling is linear by tier (gemstone
+      // x6-from-Rank-1) and matches the `rarities` ladders on the Enchantments
+      // page. Default (no pick) = Celestial = factor 1, so existing builds are
+      // unchanged. Rank is stored per slotLabel in s.enchantRarity.
+      const ENCH_RANK_T = { Uncommon: 1, Rare: 2, Epic: 3, Legendary: 4, Mythic: 5, Celestial: 6 };
+      function enchRankFactor(slotLabel) {
+        const er = (s && s.enchantRarity) || (typeof state !== "undefined" && state.enchantRarity) || null;
+        const r = er && er[slotLabel];
+        const t = ENCH_RANK_T[r];
+        return (t && t < 6) ? t / 6 : 1;
+      }
+      function scaleStatMap(m, f) {
+        if (f === 1 || !m) return m || {};
+        const out = {};
+        for (const k in m) out[k] = (typeof m[k] === "number") ? Math.round(m[k] * f) : m[k];
+        return out;
+      }
       function pushEnchant(slotType, slotLabel, name) {
         if (!name) return;
         const e = findEnchantByName(name);
         if (!e) return;
+        const f = enchRankFactor(slotLabel);
         const entry = { source: `Enchant ${slotLabel}: ${e.name}` };
         if (e.universal && (slotType === "offense" || slotType === "defense" || slotType === "utility")) {
-          entry.ratingStats = e.universal[slotType] || {};
+          entry.ratingStats = scaleStatMap(e.universal[slotType] || {}, f);
         } else if (slotType === "combat") {
           // Combat enchants (e.g. Celestial Swift Synergy R) describe their
           // effect as "Your attacks grant you a stack of Preparation..."
@@ -11722,24 +11773,24 @@
           // surface them at full-stack value. So push percentStats as
           // a CONDITIONAL contributor instead of skipping it. The
           // always-on ratingStats stay on the main entry.
-          entry.ratingStats = e.ratingStats || {};
+          entry.ratingStats = scaleStatMap(e.ratingStats || {}, f);
           if (e.percentStats && Object.keys(e.percentStats).length) {
             buffs.push({
               source: `Enchant ${slotLabel}: ${e.name} (at full stacks)`,
               conditional: true,
-              percentStats: e.percentStats
+              percentStats: scaleStatMap(e.percentStats, f)
             });
           }
         } else {
-          entry.ratingStats = e.ratingStats || {};
-          entry.percentStats = e.percentStats || {};
+          entry.ratingStats = scaleStatMap(e.ratingStats || {}, f);
+          entry.percentStats = scaleStatMap(e.percentStats || {}, f);
         }
         buffs.push(entry);
         // Enchants with a combinedRating contribute that CR to all 13 core
         // stats (verified vs in-game stat panel 2026-05-10). Universal enchants
         // at Celestial are 1620 CR; Combat/Bonus slots are 0 CR in current data.
         if (e.combinedRating) {
-          const cr = expandCR(e.combinedRating, 1);
+          const cr = expandCR(Math.round(e.combinedRating * f), 1);
           if (cr) {
             buffs.push({
               source: `Enchant ${slotLabel} CR: ${e.name}`,
@@ -12007,7 +12058,7 @@
         // Decision 11: active-power rarity must invalidate cache on change
         aepr: state.activeEquipPowerRarity, acpr: state.activeCombatPowerRarity,
         ench: state.enchants, ovr: state.overloads, kits: state.kits,
-        gld: state.guildBoonPicks, gbr: state.guildBoonRanks,
+        gld: state.guildBoonPicks, gbr: state.guildBoonRanks, enr: state.enchantRarity,
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
@@ -13121,12 +13172,22 @@
       const oth = document.getElementById("ench-other-grid");
       if (!off) return;
 
+      const ENCH_RANKS = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
       function chip(slotType, name, idx) {
         const filled = !!name;
-        const info = filled ? `<button class="chip-info" data-details-type="enchant" data-details-key="${_escAttr(name)}" title="See enchant details">\u{1F50D}</button>` : "";
+        const slotLabel = slotType[0].toUpperCase() + slotType.slice(1) + (idx !== undefined ? ` ${idx + 1}` : "");
+        const info = filled ? `<button class="chip-info" data-details-type="enchant" data-details-key="${_escAttr(name)}" data-details-slot="${_escAttr(slotLabel)}" title="See enchant details">\u{1F50D}</button>` : "";
+        let rankSel = "";
+        if (filled) {
+          const cur = (state.enchantRarity && state.enchantRarity[slotLabel]) || "Celestial";
+          rankSel = `<select class="ench-rank-select" data-ench-rank-slot="${_escAttr(slotLabel)}" title="The rank you own (lower = not fully upgraded)" style="font-size:0.68rem;margin-top:0.2rem;width:100%;background:var(--bg-elev,#222);color:var(--text-secondary);border:1px solid var(--border);border-radius:4px;cursor:pointer;">`
+            + ENCH_RANKS.map(r => `<option value="${r}"${r === cur ? " selected" : ""}>${r}</option>`).join("")
+            + `</select>`;
+        }
         return `<div class="ench-chip ${filled?"filled":""}" data-ench-type="${slotType}"${idx!==undefined?` data-ench-idx="${idx}"`:""}>
           <div class="ench-chip-label">${slotType[0].toUpperCase()+slotType.slice(1)}${idx!==undefined?` ${idx+1}`:""}</div>
           <div class="ench-chip-name">${filled ? name : "+ pick"}${info}</div>
+          ${rankSel}
         </div>`;
       }
 
@@ -13158,6 +13219,20 @@
                 renderEnchantments(); renderGear(); rerenderAll();
               }
             });
+          });
+        });
+      });
+      // Per-slot enchant RANK dropdowns. Changing rank recomputes the build at
+      // that tier; the click is stopped so it doesn't also open the pick dialog.
+      [off, def, oth].forEach(grid => {
+        grid.querySelectorAll(".ench-rank-select").forEach(sel => {
+          sel.addEventListener("click", e => e.stopPropagation());
+          sel.addEventListener("change", () => {
+            const slot = sel.dataset.enchRankSlot;
+            if (!state.enchantRarity) state.enchantRarity = {};
+            if (sel.value === "Celestial") delete state.enchantRarity[slot];
+            else state.enchantRarity[slot] = sel.value;
+            rerenderAll();
           });
         });
       });
