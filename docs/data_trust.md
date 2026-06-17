@@ -247,6 +247,15 @@ remaining gap (n00b deferred 2026-06-16).
 
 ---
 
+## Enchants (enchants.json) — screenshot-verified gemstones
+
+2026-06-16: added two 3-stat-per-slot Universal gemstone enchants at Celestial, transcribed from in-game Uncommon (IL 300) tooltips and scaled ×6 (IL 300→1,800, Combined Rating 270→1,620 — the standard gemstone scaling).
+
+| id | name | status | source screenshot | notes |
+|----|------|--------|-------------------|-------|
+| 41 | Celestial Sugilite | CONFIRMED | inbox/enchants/uncommon-sugilite_il300_celestial-source.png | Off: CA 864 / Crit Strike 1296 / Crit Sev 1296 · Def: Defense 756 / Awareness 864 / Deflect Sev 1620 · Util: Ctrl Bonus 1080 / Ctrl Resist 1080 / Out Healing 864 |
+| 42 | Celestial Obsidian | CONFIRMED | inbox/enchants/uncommon-obsidian_il300_celestial-source.png | Off: Power 756 / Accuracy 1404 / Crit Sev 1296 · Def: Crit Avoid 1188 / Deflect 1620 / Deflect Sev 1620 · Util: Forte 972 / Ctrl Bonus 1080 / Inc Healing 1296 |
+
 ## Artifacts (artifacts.json) — DO NOT bulk-source stats from sheet1
 
 2026-06-16: tried updating all artifact stats to "Mythic" values from the cached `sheet1__Artifacts.csv` (community sheet) — n00b reviewed the result and the IL/CR/stats all looked wrong, so it was **reverted**. Lesson: **sheet1's artifact stat columns are NOT reliable** for our display (and its `CombinedRating` column ~85,000 is junk). Artifact stats must come from in-game screenshots, not this sheet. The page's "Stats at Mythic" label vs. the stored low-rank values is a known open question — resolve with screenshots, not the sheet.
