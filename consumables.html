@@ -21,14 +21,7 @@
       margin-bottom: 1.25rem;
     }
 
-    /* Search bar */
-    .cnsm-search-bar {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-bottom: 1.5rem;
-    }
-    .cnsm-count { font-size: 0.85rem; color: var(--text-muted); flex-shrink: 0; }
+    .cnsm-count { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; }
 
     /* Buff slot rules box */
     .cnsm-rules {
@@ -256,17 +249,17 @@
 <body>
   <nav class="navbar"></nav>
 
+  <!-- Filters / Search (standard site controls bar) -->
+  <div class="controls-bar">
+    <input type="text" class="search-input" id="cnsm-search" placeholder="Search consumables...">
+    <select class="filter-select" id="cnsm-cat">
+      <option value="">All Categories</option>
+    </select>
+  </div>
+
   <div class="cnsm-page">
     <h2>Consumables &amp; Buffs</h2>
     <p class="cnsm-intro">Items that apply self-buffs to your character. Categories below marked <span class="cnsm-excl-badge">Only one active at a time</span> are exclusive within themselves but stack with other categories. See <a href="mekaniks.html#view-stacking" target="_blank" style="color:var(--amber);">Mekaniks → Stacking</a> for how buffs combine with diminishing returns from other sources.</p>
-
-    <div class="cnsm-search-bar">
-      <input type="text" class="search-input" id="cnsm-search" placeholder="Search consumables...">
-      <select class="filter-select" id="cnsm-cat">
-        <option value="">All Categories</option>
-      </select>
-      <span class="cnsm-count" id="cnsm-count"></span>
-    </div>
 
     <div class="cnsm-rules">
       <div class="cnsm-rules-title">⚠ Buff Slot Rules</div>
@@ -280,6 +273,7 @@
       <p class="small">Scrolls, Belt Items, and Other buffs stack independently — you can have many of those active at once.</p>
     </div>
 
+    <div class="cnsm-count" id="cnsm-count"></div>
     <div id="cnsm-sections"></div>
   </div>
 
