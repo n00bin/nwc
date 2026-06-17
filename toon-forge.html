@@ -87,6 +87,20 @@
       margin-top: 0.6rem;
     }
     .save-status.saved { color: var(--pos); }
+    /* Local-only "this is a local preview" badge — revealed by the localhost
+       loader at the bottom of the file; stays display:none on the live site. */
+    .local-preview-badge {
+      display: inline-block;
+      background: rgba(56,189,248,0.12);
+      color: #7dd3fc;
+      border: 1px solid rgba(56,189,248,0.45);
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
 
     /* ===== Step strip ===== */
     .steps {
@@ -2305,6 +2319,7 @@
   </nav>
 
   <div class="hero">
+    <span class="local-preview-badge" id="local-preview-badge" style="display:none;">🔧 Local Preview · showcasing functionality &amp; features coming soon</span>
     <span class="save-status" id="save-status">Auto-saved · just now</span>
     <h1>Toon Forge<span class="accent">— build your character, see what hits</span><span class="badge" title="Work-in-progress. Numbers may not be 100% accurate yet — help us improve by using the ✎ pencil to fix anything wrong.">Experimental</span></h1>
     <p>A friendly character builder for Neverwinter. Pick your role, equip your gear, and watch the build come together — no spreadsheet skills required.</p>
@@ -2674,25 +2689,12 @@
             </label>
             <input type="number" id="sim-mag" value="800">
           </div>
-        </div>
-
-        <div class="field" id="sim-flank-field">
-          <label>Combat Advantage chance
-            <span class="hint-icon" data-tip="What % of your hits land with Combat Advantage (CA) active — typically when flanking or when a tank/teammate creates CA for you. In a group with a tank, ~95%. Solo, usually ~5%. Affects how much your CA stat actually matters.">?</span>
-            <span style="float:right;color:var(--amber);font-weight:600;" id="sim-flank-display">70%</span>
-          </label>
-          <div style="display:flex;gap:0.4rem;align-items:center;">
-            <button class="btn btn-ghost" type="button" data-flank-preset="0.05" style="font-size:0.75rem;padding:0.3rem 0.55rem;">Solo (5%)</button>
-            <input type="range" id="sim-flank" min="0" max="100" value="70" style="flex:1;">
-            <button class="btn btn-ghost" type="button" data-flank-preset="0.95" style="font-size:0.75rem;padding:0.3rem 0.55rem;">Group (95%)</button>
+          <div class="field" id="sim-zone-field">
+            <label>Content zone
+              <span class="hint-icon" data-tip="Where are you running? Some gear gives extra damage only in a specific zone (e.g. &quot;+5% Damage in Thay&quot;). Pick your zone to count that bonus; leave on General for the everywhere value only.">?</span>
+            </label>
+            <button type="button" id="content-zone-btn" class="field-picker-btn">General (anywhere)</button>
           </div>
-        </div>
-
-        <div class="field" id="sim-zone-field">
-          <label>Content zone
-            <span class="hint-icon" data-tip="Where are you running? Some gear gives extra damage only in a specific zone (e.g. &quot;+5% Damage in Thay&quot;). Pick your zone to count that bonus; leave on General for the everywhere value only.">?</span>
-          </label>
-          <button type="button" id="content-zone-btn" class="field-picker-btn">General (anywhere)</button>
         </div>
 
         <p class="hint" style="margin-top:0.8rem;">💡 <strong>Chance</strong> = how likely each outcome is on a single hit. All the cards below add up to 100% — every hit has to land in exactly one.</p>
@@ -2859,6 +2861,7 @@
   <script src="data/buffs.js"></script>
   <script src="toon-forge-stats.js"></script>
   <script src="toon-forge-engine.js"></script>
+  <script src="toon-forge-rotation-profiles.js"></script>
   <!-- Supabase + data-corrections plumbing — lets users submit ✎ fixes -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="js/data-corrections.js"></script>
@@ -2962,7 +2965,7 @@
       // and we don't yet have the canonical formula, so they're inputs.
       compBolsterILContribution: 0,
       mountBolsterILContribution: 0,
-      flankUptime: 0.70,  // % of hits with Combat Advantage active (0..1)
+      flankUptime: 1.0,  // fixed 100% Combat Advantage uptime (endgame group standard; slider removed)
       // Selected content zone for zone-gated bonuses. "" = General: bonuses
       // tagged with a `zones` restriction (e.g. "+5% damage in Wildspace")
       // are EXCLUDED, so situational damage never inflates the always-on number.
@@ -3108,7 +3111,7 @@
           slottedFeats: [...(state.slottedFeats || [])],
           // Damage-sim settings — were silently dropped from saves/share
           // links before (audit #25), reverting to defaults on load.
-          flankUptime: (typeof state.flankUptime === "number") ? state.flankUptime : 0.70,
+          flankUptime: 1.0,
           simMag: (typeof state.simMag === "number") ? state.simMag : 100
         }
       };
@@ -3203,7 +3206,7 @@
       // Damage-sim settings: restore explicitly with defaults, so loading an
       // old save (without these keys) resets them instead of inheriting
       // whatever the current session had.
-      state.flankUptime = (typeof s.flankUptime === "number") ? s.flankUptime : 0.70;
+      state.flankUptime = 1.0;  // fixed 100% CA uptime; ignore any saved slider value
       state.simMag = (typeof s.simMag === "number") ? s.simMag : 100;
       state.contentZone = (typeof s.contentZone === "string") ? s.contentZone : "";
       updateContentZoneButton();
@@ -5399,7 +5402,7 @@
       }
       if (eb.stat && eb.amount != null && eb.amount !== 0) {
         const unit = (eb.kind === "rating") ? "" : "%";
-        return `+${eb.amount}${unit} ${eb.stat}`;
+        return `${eb.amount > 0 ? "+" : ""}${eb.amount}${unit} ${eb.stat}`;
       }
       return "";
     }
@@ -5415,11 +5418,13 @@
       if (!bonusMap.size) return "";
       const blocks = [];
       for (const [name, entries] of bonusMap.entries()) {
-        const first = entries[0];
         const isConditional = entries.every(eb => eb.alwaysActive === false);
         const isAlwaysOn = entries.some(eb => eb.alwaysActive === true);
         const tag = isAlwaysOn ? "always on" : (isConditional ? "conditional" : "");
-        const txt = equipBonusEffectText(first);
+        // Show ALL stats of a multi-stat bonus (e.g. Bloodletting = −20% HP + 9% Dmg),
+        // deduped so a shared description isn't repeated. Was only entries[0], which
+        // silently hid the second stat.
+        const txt = [...new Set(entries.map(equipBonusEffectText).filter(Boolean))].join(", ");
         blocks.push(`
           <div class="gear-card-bonus ${isConditional ? "cond" : ""}">
             <div class="gear-card-bonus-name">🌟 ${_escHTML(name)}${tag ? `<span class="gear-card-bonus-tag">${tag}</span>` : ""}</div>
@@ -9897,6 +9902,25 @@
       return 0;
     }
 
+    // Resolve a power's representative magnitude from whichever field holds it:
+    // direct `magnitude`, Ranger `ranged.magnitude`, per-paragon
+    // `magnitudeByParagon`, a ranged/melee split (`rangedMagnitude`/
+    // `meleeMagnitude`), or a `minMagnitude`/`maxMagnitude` range — for which we
+    // use the fight-average MIDPOINT (e.g. Killing Flames scales 650→975 with the
+    // target's missing HP, averaging ~812 over a 100%→0% fight). Reads ONLY values
+    // already in classes.json; never invents one.
+    function _powerMag(p, paragon) {
+      if (!p) return 0;
+      if (p.magnitude != null) { const m = _parsePowerMag(p.magnitude); if (m > 0) return m; }
+      if (p.ranged && p.ranged.magnitude != null) { const m = _parsePowerMag(p.ranged.magnitude); if (m > 0) return m; }
+      if (p.magnitudeByParagon && paragon && p.magnitudeByParagon[paragon] != null) return _parsePowerMag(p.magnitudeByParagon[paragon]);
+      if (p.rangedMagnitude != null || p.meleeMagnitude != null) return _parsePowerMag(p.rangedMagnitude != null ? p.rangedMagnitude : p.meleeMagnitude);
+      if (p.minMagnitude != null && p.maxMagnitude != null) return (_parsePowerMag(p.minMagnitude) + _parsePowerMag(p.maxMagnitude)) / 2;
+      if (p.maxMagnitude != null) return _parsePowerMag(p.maxMagnitude);
+      if (p.minMagnitude != null) return _parsePowerMag(p.minMagnitude);
+      return 0;
+    }
+
     // Your rotation's sustained magnitude-per-second, derived from the powers
     // you've actually slotted (class + paragon power lists). Same raw-magnitude
     // scale as mount combat powers, so it lets the combat-power burst be valued
@@ -9930,30 +9954,46 @@
         return (enhTarget && (p.name === enhTarget || nm === enhTarget || (p.ranged && p.ranged.name === enhTarget))) ? enhBoost : 1;
       };
       let mps = 0, any = false;
+      // Cast-frequency stats from the live engine result (the optimizer recomputes
+      // it per candidate, so recharge/AP-granting GEAR raises throughput too):
+      // Recharge Speed shrinks encounter cooldowns; Action Point Gain speeds the
+      // daily cadence.
+      var _er = (typeof getEngineResult === "function") ? getEngineResult() : null;
+      var _rsi = ((_er && _er.stats && _er.stats["Recharge Speed"] && _er.stats["Recharge Speed"].finalPct) || 0) / 100;
+      var _apg = ((_er && _er.stats && _er.stats["Action Point Gain"] && _er.stats["Action Point Gain"].finalPct) || 0) / 100;
       let bestAW = 0;   // at-wills don't stack — use the strongest slotted one as filler
       (state.slottedAtWills || []).forEach(function (nm) {
         if (!nm) return; const p = findP("atWill", nm); if (!p) return;
         const side = p.ranged || p;
-        const mag = _parsePowerMag(side.magnitude != null ? side.magnitude : p.magnitude);
+        const mag = _powerMag(p, state.paragon);
         const cast = side.castSeconds || p.castSeconds || 0;
         if (mag > 0 && cast > 0) { bestAW = Math.max(bestAW, (mag / cast) * enhFor(p, nm)); any = true; }
       });
       mps += bestAW;
       (state.slottedEncounters || []).forEach(function (nm) {
         if (!nm) return; const p = findP("encounter", nm); if (!p) return;
-        const mag = _parsePowerMag(p.magnitude), cd = p.cooldownSeconds || p.rechargeSeconds || 0;
+        const mag = _powerMag(p, state.paragon), cd = p.cooldownSeconds || p.rechargeSeconds || 0;
         // Data guard: sub-2s "cooldowns" on encounters are almost certainly
         // capture errors (e.g. Paladin Smite stored as 0.5s) — without a
-        // floor they make one power read as the entire rotation. Floor at
-        // 6s until the suspect entries are verified in game.
-        const cdEff = cd > 0 ? Math.max(cd, 6) : 0;
+        // floor they make one power read as the entire rotation. Floor the BASE
+        // cd at 6s, THEN apply Recharge Speed (mekaniks.html:709 documented
+        // formula: effective recharge = base / (1 + Recharge Speed %)).
+        const cdBase = cd > 0 ? Math.max(cd, 6) : 0;
+        const cdEff = cdBase > 0 ? cdBase / (1 + _rsi) : 0;
         if (mag > 0 && cdEff > 0) { mps += (mag / cdEff) * enhFor(p, nm); any = true; }
       });
-      const DAILY_INTERVAL = 25;   // assumed AP-gated cadence between dailies
+      // Dailies are AP-gated: interval = AP cost / AP-generation rate. Base rate
+      // ~40 AP/s (a 1000-AP daily ≈ 25s, the old flat default) scaled by Action
+      // Point Gain, so AP Gain shortens the cadence and cheap dailies (e.g. Hunter
+      // Disruptive Shot, 250 AP) fire far more often. actionPointCost is per-power
+      // in classes.json; fall back to a full 1000-AP bar when absent.
+      const AP_PER_SEC = 40;
       (state.slottedDailies || []).forEach(function (nm) {
         if (!nm) return; const p = findP("daily", nm); if (!p) return;
-        const mag = _parsePowerMag(p.magnitude);
-        if (mag > 0) { mps += mag / DAILY_INTERVAL; any = true; }
+        const mag = _powerMag(p, state.paragon);
+        const apCost = (+p.actionPointCost > 0) ? +p.actionPointCost : 1000;
+        const interval = apCost / (AP_PER_SEC * (1 + _apg));
+        if (mag > 0 && interval > 0) { mps += mag / interval; any = true; }
       });
       return any ? mps : 0;
     }
@@ -11330,12 +11370,19 @@
             : `${label} bonus: ${eb.name || eb.stat}`;
           if (isStacked) {
             const maxStacks = eb.maxStacks;
+            // Per-enemy stackers ("+X per nearby enemy, max N") scale with enemy
+            // count. The DPS benchmark is a single-target boss (1 enemy), so they
+            // credit 1 stack — NOT the max-N trash-pack value. Time/hit stackers
+            // ramp up over a boss fight and keep their full maxStacks.
+            const enemyScaled = /\b(each|per)\s+enem/i.test((eb.description || "") + " " + (eb.condition || ""));
+            const effStacks = enemyScaled ? 1 : maxStacks;
+            const stackLabel = enemyScaled ? "1 enemy (single-target boss)" : `full ${maxStacks} stacks`;
             if (isConditional) {
               // Purely conditional - full stack value at proc
               buffs.push({
-                source: `${baseLabel} (full ${maxStacks} stacks${uptimeFactor < 1 ? `, ~${Math.round(uptimeFactor * 100)}% uptime` : ``})`,
+                source: `${baseLabel} (${stackLabel}${uptimeFactor < 1 ? `, ~${Math.round(uptimeFactor * 100)}% uptime` : ``})`,
                 conditional: true,
-                [channel]: { [eb.stat]: eb.amount * maxStacks * uptimeFactor }
+                [channel]: { [eb.stat]: eb.amount * effStacks * uptimeFactor }
               });
             } else {
               // 1-stack always-on baseline + extra stacks conditional
@@ -11344,10 +11391,10 @@
                 conditional: false,
                 [channel]: { [eb.stat]: eb.amount }
               });
-              const extra = maxStacks - 1;
+              const extra = effStacks - 1;
               if (extra > 0) {
                 buffs.push({
-                  source: `${baseLabel} (full ${maxStacks} stacks${uptimeFactor < 1 ? `, ~${Math.round(uptimeFactor * 100)}% uptime` : ``})`,
+                  source: `${baseLabel} (${stackLabel}${uptimeFactor < 1 ? `, ~${Math.round(uptimeFactor * 100)}% uptime` : ``})`,
                   conditional: true,
                   [channel]: { [eb.stat]: eb.amount * extra * uptimeFactor }
                 });
@@ -12596,7 +12643,7 @@
           if (eb.stat && eb.amount != null) {
             const unit = (eb.kind === "rating") ? "" : "%";
             const scopeTag = (eb.scope && eb.scope !== "self") ? ` (${eb.scope})` : "";
-            key = `+${eb.amount}${unit} ${eb.stat}${scopeTag}`;
+            key = `${eb.amount > 0 ? "+" : ""}${eb.amount}${unit} ${eb.stat}${scopeTag}`;
           } else continue;
         }
         if (!bonusMap.has(key)) bonusMap.set(key, []);
@@ -12611,7 +12658,7 @@
         if (isAlwaysOn) tag = "always on";
         else if (isConditional) tag = "conditional";
         // The 'set' type sometimes has no description; that's fine
-        const txt = equipBonusEffectText(first);
+        const txt = [...new Set(entries.map(equipBonusEffectText).filter(Boolean))].join(", ");
         const role = first.role ? ` [${first.role}]` : "";
         const setBadge = (first.type === "Set" && first.setName)
           ? ` <span class="gear-card-bonus-tag">set ${escape(first.setName)} ${first.pieces || 2}pc</span>`
@@ -13181,7 +13228,7 @@
           if (eb.stat && eb.amount != null) {
             const unit = (eb.kind === "rating") ? "" : "%";
             const scopeTag = (eb.scope && eb.scope !== "self") ? ` (${eb.scope})` : "";
-            key = `+${eb.amount}${unit} ${eb.stat}${scopeTag}`;
+            key = `${eb.amount > 0 ? "+" : ""}${eb.amount}${unit} ${eb.stat}${scopeTag}`;
           } else continue;
         }
         if (!bonusMap.has(key)) bonusMap.set(key, []);
@@ -13195,7 +13242,7 @@
         let tag = "";
         if (isAlwaysOn) tag = "always on";
         else if (isConditional) tag = "conditional";
-        const txt = equipBonusEffectText(first);
+        const txt = [...new Set(entries.map(equipBonusEffectText).filter(Boolean))].join(", ");
         bonusBlocks.push(`
           <div class="gear-card-bonus ${isConditional ? "cond" : ""}">
             <div class="gear-card-bonus-name">🌟 ${escape(name)}${tag ? `<span class="gear-card-bonus-tag">${tag}</span>` : ""}</div>
@@ -13489,7 +13536,7 @@
             : `next slot would be <strong>${slotNum}</strong>`;
           const effSummary = (b.perRankEffects || [])
             .filter(e => e.type === "percent" && e.scope !== "enemy")
-            .map(e => `+${e.amount}% ${e.stat}/rank`)
+            .map(e => `${e.amount > 0 ? "+" : ""}${e.amount}% ${e.stat}/rank`)
             .join(", ") || "specials";
           html += `<div class="boon-row ${isActive ? "has-pts" : ""}">
             <div class="boon-row-info">
@@ -15232,7 +15279,7 @@
                       / (1 + enemyDeflectSev% − Accuracy%)         if deflected
                       / (1 + enemyDefense%)
        Default target = test dummy (all enemy stats 0).
-       Default flank uptime = 70%; crit chance = your CritStrike % cap.
+       Flank uptime = 100% (fixed); crit chance = your CritStrike % cap.
     */
     const ROLE_MULT = { dps: 1.20, heal: 1.10, tank: 1.00 };
 
@@ -15262,8 +15309,18 @@
 
     // Power mix (TUNABLE): fraction of your damage that comes from each power
     // slot, used to blend the slot-specific damage boosts (At-Will/Encounter/
-    // Daily) into the average hit. Encounter-heavy single-target rotation.
-    const POWER_MIX = { atwill: 0.35, encounter: 0.50, daily: 0.15, ranged: 1.0, melee: 0.0, single: 1.0, dot: 0.4 };
+    // Daily) into the average hit. DEFAULT is encounter-heavy single-target;
+    // getPowerMix() overrides per-paragon from toon-forge-rotation-profiles.js
+    // so at-will-dominant classes (Ranger/Hunter) weight At-Will damage bonuses
+    // correctly instead of every class being treated as encounter-heavy.
+    const DEFAULT_POWER_MIX = { atwill: 0.28, encounter: 0.57, daily: 0.15, ranged: 1.0, melee: 0.0, single: 1.0, dot: 0.4 };
+    function getPowerMix() {
+      try {
+        const prof = (typeof TF_ROTATION_PROFILES !== "undefined") && TF_ROTATION_PROFILES[state.class + "/" + state.paragon];
+        if (prof && prof.mix) return Object.assign({}, DEFAULT_POWER_MIX, prof.mix);
+      } catch (e) {}
+      return DEFAULT_POWER_MIX;
+    }
     // ===== SINGLE SOURCE OF TRUTH for DPS expected damage =====
     // Used by renderSim (display), the stat-priority advisor (+1% probes via the
     // `ov` overrides), and the headless build optimizer — so all three share ONE
@@ -15276,6 +15333,7 @@
       const empty = { expected: 0, rows: [], pCrit: 0, effFlank: 0, pDeflect: 0, deflLoss: 0, deflCut: 0 };
       if (TIL <= 0) return empty;
       const roleMult = (typeof ROLE_MULT !== "undefined" && ROLE_MULT.dps) ? ROLE_MULT.dps : 1.20;
+      const POWER_MIX = getPowerMix();   // per-paragon slot emphasis (was a shared constant)
       const baseVal = (mag / 100) * (TIL / 10) * roleMult;
       const stat = n => ((r.stats[n] && r.stats[n].finalPct) || 0) / 100;
       ov = ov || {};
@@ -15474,9 +15532,6 @@
       const sliderFlank = Math.max(0, Math.min(1, state.flankUptime || 0));
       const effFlank = pmods.caUnion > 0 ? (1 - (1 - sliderFlank) * (1 - pmods.caUnion)) : sliderFlank;
 
-      // Hide the flank slider in healer mode — heals don't have flank.
-      const flankField = document.getElementById("sim-flank-field");
-      if (flankField) flankField.style.display = isHealer ? "none" : "";
 
       // Update the panel title/hint for the current mode.
       const titleEl = document.getElementById("sim-title");
@@ -15552,9 +15607,6 @@
         dpsNote = `<div style="font-size:0.78rem;color:var(--text-mute);margin:0.35rem 0 0.2rem;line-height:1.55;">`
           + `You crit about <strong style="color:var(--text)">${Math.round(_dps.pCrit * 100)}%</strong> of the time and have Combat Advantage <strong style="color:var(--text)">${Math.round(_dps.effFlank * 100)}%</strong> of the time — the cards below cover every case.`
           + (_dps.pDeflect > 0 ? ` The enemy deflects about <strong style="color:var(--text)">${Math.round(_dps.pDeflect * 100)}%</strong> of your hits for a little less; that's already counted in the average.` : ``)
-          + ((_pd && _pd.pctOfHit > 0.05)
-            ? ` Your companions' damage procs add about <strong style="color:var(--text)">+${_pd.pctOfHit.toFixed(1)}%</strong> on top (${_pd.contributors.map(c => c.source.split(" — ")[0]).join(", ")}) — included in the number above.`
-            : ``)
           + ((_dps.seqProc && _dps.seqProc.pct > 0.05)
             ? ` "Use a Daily → next power deals more damage" bonuses (${_dps.seqProc.contributors.map(c => c.source.split(" — ")[0]).join(", ")}) add about <strong style="color:var(--text)">+${_dps.seqProc.pct.toFixed(1)}%</strong> effective (weighted by how often the boosted cast lands) — included above.`
             : ``)
@@ -16025,22 +16077,9 @@
     // (f-mount listener removed — replaced by 5-slot stable picker, see renderStable.)
     document.getElementById("sim-mag").addEventListener("input",    () => renderSim());
 
-    // Flank uptime slider + presets
-    const flankSlider = document.getElementById("sim-flank");
-    const flankDisplay = document.getElementById("sim-flank-display");
-    function setFlank(value01) {
-      const v = Math.max(0, Math.min(1, value01));
-      state.flankUptime = v;
-      if (flankSlider) flankSlider.value = Math.round(v * 100);
-      if (flankDisplay) flankDisplay.textContent = Math.round(v * 100) + "%";
-      renderSim();
-    }
-    if (flankSlider) {
-      flankSlider.addEventListener("input", e => setFlank(+e.target.value / 100));
-    }
-    document.querySelectorAll("[data-flank-preset]").forEach(btn => {
-      btn.addEventListener("click", () => setFlank(+btn.dataset.flankPreset));
-    });
+    // Flank uptime is fixed at 100% (endgame group standard) — the slider was
+    // removed. state.flankUptime stays 1.0 and both the sim and the optimizer
+    // assume constant Combat Advantage.
 
     // Content zone selector — lights up zone-gated gear bonuses (e.g. "+5% Damage
     // in Thay"). Options are derived from the gear data so new zones appear
@@ -16059,7 +16098,7 @@
     // Companion collection inputs (7 by tier) — drives the companion
     // bolster slider via NW's "top 10 by quality" formula.
     function syncCompBolsterFromCollection() {
-      const pct = compBolsterFromCollection(state.compCollection);
+      const pct = (window.__nwcbBolster && window.__nwcbBolster.comp != null) ? window.__nwcbBolster.comp : compBolsterFromCollection(state.compCollection);
       state.companionBolster = pct;
       const slider = document.getElementById("comp-bolster");
       const display = document.getElementById("comp-bolster-display");
@@ -16092,7 +16131,7 @@
 
     // Mount collection inputs (7 by tier) — drives the mount bolster slider.
     function syncMountBolsterFromCollection() {
-      const pct = mountBolsterFromCollection(state.mountCollection);
+      const pct = (window.__nwcbBolster && window.__nwcbBolster.mount != null) ? window.__nwcbBolster.mount : mountBolsterFromCollection(state.mountCollection);
       state.mountBolster = pct;
       const slider = document.getElementById("mount-bolster");
       const display = document.getElementById("mount-bolster-display");
@@ -17260,6 +17299,10 @@
     // Reveal the local-only Featured group (paid features — gitignored, not deployed).
     var grp = document.getElementById('tf-featured-group');
     if (grp) grp.style.display = 'flex';
+    // Reveal the "Local Preview" badge so the video clearly signals this is a
+    // local build showcasing upcoming features (never shown on the live site).
+    var lpb = document.getElementById('local-preview-badge');
+    if (lpb) lpb.style.display = 'inline-block';
     // Featured Builds button (the Build Library). The optimizer injects its own
     // button into #featured-optimizer-slot from js/optimizer-local.js.
     var slot = document.getElementById('featured-builds-slot');
