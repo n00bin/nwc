@@ -438,12 +438,6 @@
       html += '</div>';
     }
 
-    // ---- Notes ----
-    if (companion.notes) {
-      html += '<div class="section-header">Notes</div>';
-      html += '<div class="effect-text">' + escapeHtml(cleanEnhancementNotes(companion.notes)) + "</div>";
-    }
-
     detailPanel.innerHTML = html;
   }
 
@@ -601,10 +595,18 @@
     var comp = COMPANIONS_DATA[si];
     if (!comp.summonedBuff) continue;
     var sb = comp.summonedBuff;
-    var sbStats = [];
-    if (sb.stat) sbStats.push(sb.stat);
-    if (sb.stats) for (var sbk in sb.stats) sbStats.push(sbk);
-    if (sb.effects) for (var sbe = 0; sbe < sb.effects.length; sbe++) { if (sb.effects[sbe].stat) sbStats.push(sb.effects[sbe].stat); }
+    var sbStats = [];           // stat names (for the Stat filter)
+    var sbStatChips = [];       // {stat, value, type} for display chips
+    var sbSeen = {};
+    function addSbStat(name, value, type) {
+      if (!name || sbSeen[name]) return;
+      sbSeen[name] = true;
+      sbStats.push(name);
+      sbStatChips.push({ stat: name, value: (value === undefined ? null : value), type: type || "percent" });
+    }
+    if (sb.effects) for (var sbe = 0; sbe < sb.effects.length; sbe++) { addSbStat(sb.effects[sbe].stat, sb.effects[sbe].amount, sb.effects[sbe].type); }
+    if (sb.stats) for (var sbk in sb.stats) addSbStat(sbk, sb.stats[sbk], "percent");
+    if (sb.stat) addSbStat(sb.stat, sb.value, sb.type);
     for (var sbi = 0; sbi < sbStats.length; sbi++) summonedStatSet[sbStats[sbi]] = true;
     summonedData.push({
       companionName: comp.name,
@@ -615,7 +617,8 @@
       damageBoost: sb.damageBoost || null,
       condition: sb.condition || null,
       uptime: sb.uptime || null,
-      stats: sbStats
+      stats: sbStats,
+      statChips: sbStatChips
     });
   }
   populateFilter(filterSummonedStat, Object.keys(summonedStatSet).sort(), "All Stats");
@@ -680,20 +683,23 @@
         if (sumImg) {
           html += '<img loading="lazy" class="companion-icon" src="images/companions/' + sumImg + '" alt="">';
         }
-        html += '<span>' + escapeHtml(s.companionName) + '</span>';
-        html += '<span style="margin-left:auto;font-size:0.7rem;font-weight:600;padding:0.1rem 0.45rem;border-radius:4px;border:1px solid ' + meta.color + ';color:' + meta.color + ';">' + escapeHtml(meta.chip) + '</span>';
-        html += '</div>';
-        html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(s.buff) + '</div>';
+        html += '<span>' + escapeHtml(s.companionName) + '</span></div>';
 
-        // Meta chips row: range, uptime, damage boost
+        // Damage-style stat chips: affected stats (with values), range, uptime
         var chips = "";
-        if (s.range) chips += summonedChip("Range " + s.range + "'", "var(--text-muted)");
-        if (s.uptime) chips += summonedChip("Uptime " + (typeof s.uptime === "number" ? s.uptime + "%" : s.uptime), "#42a5f5");
-        if (s.damageBoost) chips += summonedChip("+" + s.damageBoost + "% dmg", "#ffb300");
-        if (chips) html += '<div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.4rem;">' + chips + '</div>';
+        for (var ci = 0; ci < s.statChips.length; ci++) {
+          var sc = s.statChips[ci];
+          var label = sc.value == null ? sc.stat
+            : sc.stat + ": " + (sc.type === "percent" ? "+" + sc.value + "%" : "+" + sc.value);
+          chips += statChip(label);
+        }
+        if (s.range) chips += statChip("Range: " + s.range + "'");
+        if (s.uptime) chips += statChip("Uptime: " + (typeof s.uptime === "number" ? s.uptime + "%" : s.uptime));
+        if (chips) html += '<div style="margin-top:0.3rem;">' + chips + '</div>';
 
+        html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(s.buff) + '</div>';
         if (s.condition) {
-          html += '<div style="font-size:0.78rem;color:var(--highlight);margin-top:0.3rem;">Condition: ' + escapeHtml(s.condition) + '</div>';
+          html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.25rem;">Condition: ' + escapeHtml(s.condition) + '</div>';
         }
         html += '</div>';
       }
@@ -701,8 +707,9 @@
     summonedList.innerHTML = html;
   }
 
-  function summonedChip(text, color) {
-    return '<span style="font-size:0.72rem;padding:0.1rem 0.45rem;border-radius:4px;background:var(--bg-elevated);border:1px solid var(--border-default);color:' + color + ';">' + escapeHtml(text) + '</span>';
+  // Shared Damage-style stat chip used by all three companion tabs
+  function statChip(text) {
+    return '<span style="display:inline-block;background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--radius-sm);padding:0.15rem 0.5rem;margin:0.15rem 0.25rem 0.15rem 0;font-size:0.82rem;font-weight:600;color:var(--stat-positive);">' + escapeHtml(text) + '</span>';
   }
 
   // ---- Enhancement Ranking View ----
@@ -799,23 +806,22 @@
       var e = rows[i];
       var enImg = window.ENHANCEMENT_IMAGES && window.ENHANCEMENT_IMAGES[e.name];
       html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
-      html += '<div style="display:flex;align-items:center;gap:0.5rem;">';
+      html += '<div style="display:flex;align-items:center;gap:0.5rem;font-weight:600;">';
       if (enImg) {
         html += '<img loading="lazy" class="enhancement-icon" src="images/enhancements/' + enImg + '" alt="">';
       }
-      html += '<span style="font-weight:600;">' + escapeHtml(e.name) + '</span>';
+      html += '<span>' + escapeHtml(e.name) + '</span></div>';
       if (e.companions.length > 0) {
-        html += '<span style="margin-left:auto;font-size:0.72rem;color:var(--text-muted);">' + e.companions.length + ' companion' + (e.companions.length === 1 ? '' : 's') + '</span>';
+        html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.2rem;">Used by ' + e.companions.length + ' companion' + (e.companions.length === 1 ? '' : 's') + '</div>';
       }
-      html += '</div>';
-      // stat chips
+      // stat chips (Damage style)
       var chips = "";
       for (var c2 = 0; c2 < e.stats.length; c2++) {
         var s = e.stats[c2];
         if (!s.stat) continue;
-        chips += summonedChip(s.stat + " +" + s.value + "%", "#42a5f5");
+        chips += statChip(s.stat + ": +" + s.value + "%");
       }
-      if (chips) html += '<div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.4rem;">' + chips + '</div>';
+      if (chips) html += '<div style="margin-top:0.3rem;">' + chips + '</div>';
       if (e.description) {
         html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(e.description) + '</div>';
       }
@@ -960,11 +966,11 @@
               var st = d2.stats[si];
               var statLabel = st.stat.replace(/([A-Z])/g, ' $1').trim();
               var val = st.type === 'percent' ? st.value + '%' : st.value;
-              html += '<span style="display:inline-block;background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--radius-sm);padding:0.15rem 0.5rem;margin:0.15rem 0.25rem 0.15rem 0;font-size:0.82rem;font-weight:600;color:var(--stat-positive);">' + escapeHtml(statLabel) + ': ' + val + '</span>';
+              html += statChip(statLabel + ': ' + val);
             }
           }
           if (d2.celMag) {
-            html += '<span style="display:inline-block;background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--radius-sm);padding:0.15rem 0.5rem;margin:0.15rem 0.25rem 0.15rem 0;font-size:0.82rem;font-weight:600;color:var(--stat-positive);">Magnitude: ' + d2.celMag + '</span>';
+            html += statChip('Magnitude: ' + d2.celMag);
           }
           html += '</div>';
         }
