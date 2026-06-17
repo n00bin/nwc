@@ -251,19 +251,30 @@
       }
       return L;
     }
+    // In-game rarity colors (Uncommon→Celestial). Celestial = the standout top tier.
+    var RARITY_COLOR = { Uncommon: "#3ecf5a", Rare: "#3a9bff", Epic: "#b765ff", Legendary: "#ffaa33", Mythic: "#ff5b5b", Celestial: "#3fe0e0" };
     function card(e) {
-      var h = '<div class="art-card"><div class="art-card-header"><span class="art-card-name">' + escapeHtml(e.displayName || e.name) + '</span><span class="toggle-arrow">&#9654;</span></div>';
+      var ls = lines(e);
+      var h = '<div class="art-card"><div class="art-card-header"><span class="art-card-name">' + escapeHtml(e.displayName || e.name) + '</span>';
+      h += '<span><span style="font-size:0.68rem;padding:0.12rem 0.55rem;border-radius:10px;background:rgba(63,224,224,0.12);color:' + RARITY_COLOR.Celestial + ';border:1px solid rgba(63,224,224,0.35);">' + escapeHtml(e.slotType === "companion" ? "Companion" : e.slotType) + '</span> <span class="toggle-arrow">&#9654;</span></span></div>';
       h += '<div class="art-card-body">';
-      if (e.description) h += '<div class="art-effect">' + escapeHtml(e.description) + '</div>';
-      h += '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:0.4rem;"><tr><th style="padding:0.25rem 0.5rem;"></th>';
-      TIERS.forEach(function (t) { var top = t === "Celestial"; h += '<th style="padding:0.25rem 0.5rem;text-align:right;color:' + (top ? 'var(--accent)' : 'var(--text-muted)') + ';font-weight:' + (top ? '700' : '500') + ';">' + t + '</th>'; });
-      h += '</tr>';
-      lines(e).forEach(function (ln) {
-        h += '<tr><td style="padding:0.25rem 0.5rem;color:var(--text-primary);">' + escapeHtml(ln.label) + '</td>';
-        ln.vals.forEach(function (v, i) { var top = TIERS[i] === "Celestial"; h += '<td style="padding:0.25rem 0.5rem;text-align:right;color:' + (top ? 'var(--accent)' : 'var(--text-secondary)') + ';">' + fmt(v, ln.pct) + '</td>'; });
+      if (e.description) h += '<div class="art-effect" style="margin-bottom:0.5rem;">' + escapeHtml(e.description) + '</div>';
+      h += '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:0.82rem;">';
+      h += '<thead><tr><th style="text-align:left;padding:0.35rem 0.6rem;color:var(--text-muted);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.04em;">Stat</th>';
+      TIERS.forEach(function (t) {
+        var top = t === "Celestial";
+        h += '<th style="padding:0.35rem 0.6rem;text-align:right;white-space:nowrap;color:' + RARITY_COLOR[t] + ';font-weight:' + (top ? '800' : '600') + ';font-size:' + (top ? '0.82rem' : '0.72rem') + ';' + (top ? 'border-bottom:2px solid ' + RARITY_COLOR.Celestial + ';' : '') + '">' + t + '</th>';
+      });
+      h += '</tr></thead><tbody>';
+      ls.forEach(function (ln) {
+        h += '<tr><td style="padding:0.3rem 0.6rem;color:var(--text-primary);font-weight:500;white-space:nowrap;">' + escapeHtml(ln.label) + '</td>';
+        ln.vals.forEach(function (v, i) {
+          var top = TIERS[i] === "Celestial";
+          h += '<td style="padding:0.3rem 0.6rem;text-align:right;white-space:nowrap;' + (top ? 'background:rgba(63,224,224,0.09);color:' + RARITY_COLOR.Celestial + ';font-weight:700;font-size:0.88rem;' : 'color:var(--text-muted);font-weight:400;') + '">' + fmt(v, ln.pct) + '</td>';
+        });
         h += '</tr>';
       });
-      return h + '</table></div></div></div>';
+      return h + '</tbody></table></div></div></div>';
     }
     var GROUPS = [
       { key: "Universal", label: "Universal &mdash; Gemstones (offense / defense / utility)" },
