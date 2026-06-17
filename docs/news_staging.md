@@ -20,6 +20,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Artifacts page: the stat display is cleaned up into tidy chips (matching the rest of the site) instead of the old two-column layout.
 - Mounts page: the **Combat Power Ranking** is redesigned to match the rest of the site (clean cards with a green damage chip) and is now **ordered by the damage each power's buff/debuff provides** — so the strongest party-damage contributors (the +16% enemy-damage-taken debuffs) sit at the top.
 - Mounts page: the **DPS Combat Power Ranking** is redesigned the same way and now **sorts by hardest-hitting** (total magnitude), with a chip showing each power's magnitude and whether it's **Physical or Magical** (so you know which of your damage bonuses it scales with). A new **Top General / Top Magical / Top Physical** filter splits the list by damage type. (Also corrected Giant Toad Tongue Lash, which was overstated at 3,938 — it's a lower-tier ~2,000-magnitude power.)
+- Mounts page: the **Support Equip Bonuses** ranking got the matching card redesign, with each aura's stat values shown as chips (e.g. Combat Advantage / Awareness +2,953).
 
 ### Data Additions
 - Mounts: added **Olive the Octopus** — Equip power Mystic Aura (+2,250 Power & Accuracy to your party) and Combat power Tidal Wave (knockback + a party damage boost / enemy damage-taken debuff). Its insignia slots still need an in-game capture to finish.

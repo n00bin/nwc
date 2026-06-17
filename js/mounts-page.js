@@ -698,13 +698,15 @@
   stdpsData.sort(function (a, b) { return (b.magnitude || 0) - (a.magnitude || 0); });
   for (var sdi = 0; sdi < stdpsData.length; sdi++) stdpsData[sdi].rank = sdi + 1;
 
+  // stats = party aura stat values, shown as chips; proc-style entries keep
+  // their effect text only. Order is the curated support ranking (kept as-is).
   var equipData = [
-    { rank: 1, power: "Pack Tactics", effect: "+2,953 Combat Advantage and Awareness to you and party members within 80'", mounts: ["Ebon Riding Lizard"] },
-    { rank: 2, power: "Mystic Aura", effect: "+2,953 Power and Accuracy to you and party members within 80'", mounts: ["Myconid Bulette"] },
-    { rank: 3, power: "Runic Aura", effect: "+2,953 Power and Defense to you and party members within 80'", mounts: ["Runeclad Manticore", "Manticore", "Royal Winter Sled", "Snowclad Manticore"] },
-    { rank: 4, power: "Avian Aura", effect: "Forte and Power to you and party members", mounts: ["Dragon Chicken"] },
-    { rank: 5, power: "Providence", effect: "When you or a party member are struck, chance to heal for 6% of Max HP. You gain Radiant Weapon (+2% additional radiant damage per stack, up to 8 stacks)", mounts: ["Brain Stealer Dragon", "Swift Golden Lion"] },
-    { rank: 6, power: "Ferocity", effect: "When you or a party member are struck, chance to gain Ferocity (+1.6% additional damage per stack, up to 3 stacks for 10s)", mounts: ["Turmish Lion"] },
+    { power: "Pack Tactics", stats: [{ stat: "Combat Advantage", value: 2953 }, { stat: "Awareness", value: 2953 }], effect: "To you and party members within 80'.", mounts: ["Ebon Riding Lizard"] },
+    { power: "Mystic Aura", stats: [{ stat: "Power", value: 2953 }, { stat: "Accuracy", value: 2953 }], effect: "To you and party members within 80'.", mounts: ["Myconid Bulette"] },
+    { power: "Runic Aura", stats: [{ stat: "Power", value: 2953 }, { stat: "Defense", value: 2953 }], effect: "To you and party members within 80'.", mounts: ["Runeclad Manticore", "Manticore", "Royal Winter Sled", "Snowclad Manticore"] },
+    { power: "Avian Aura", effect: "Forte and Power to you and party members.", mounts: ["Dragon Chicken"] },
+    { power: "Providence", effect: "When you or a party member are struck, chance to heal for 6% of Max HP. You gain Radiant Weapon (+2% additional radiant damage per stack, up to 8 stacks).", mounts: ["Brain Stealer Dragon", "Swift Golden Lion"] },
+    { power: "Ferocity", effect: "When you or a party member are struck, chance to gain Ferocity (+1.6% additional damage per stack, up to 3 stacks for 10s).", mounts: ["Turmish Lion"] },
   ];
 
   // Shared green stat chip, matching the companions/consumables/artifacts style
@@ -731,11 +733,13 @@
       html += '<div style="display:flex;align-items:center;gap:0.5rem;font-weight:600;">';
       html += '<span style="color:var(--highlight);">#' + n + '</span>';
       html += '<span>' + escapeHtml(d.power) + '</span></div>';
-      // Chips: combat = damage-contribution %; DPS = magnitude + damage type
+      // Chips: combat = damage-contribution %; DPS = magnitude + damage type;
+      // support equip = the aura's stat values
       var chips = "";
       if (d.dmgPct != null) chips += statChip('+' + d.dmgPct + '% ' + (d.dmgKind || 'damage'));
       if (d.magnitude != null) chips += statChip(d.magnitude.toLocaleString() + ' magnitude');
       if (d.dmgType) chips += dmgTypeChip(d.dmgType);
+      if (d.stats) for (var sj = 0; sj < d.stats.length; sj++) chips += statChip(d.stats[sj].stat + ': +' + d.stats[sj].value.toLocaleString());
       if (chips) html += '<div style="margin-top:0.3rem;">' + chips + '</div>';
       if (d.mounts) {
         html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.25rem;">' + d.mounts.map(function (m) { return escapeHtml(m); }).join(', ') + '</div>';
