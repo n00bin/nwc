@@ -4,6 +4,7 @@
 
 (function () {
   var searchInput = document.getElementById('cnsm-search');
+  var catSelect   = document.getElementById('cnsm-cat');
   var sectionsEl  = document.getElementById('cnsm-sections');
   var countEl     = document.getElementById('cnsm-count');
 
@@ -20,6 +21,17 @@
     { key: 'Belt Item',       exclusive: false },
     { key: 'Other',           exclusive: false }
   ];
+
+  // Populate the category filter in section order, then any extra categories.
+  (function buildCategoryFilter() {
+    var present = {};
+    BUFFS_DATA.forEach(function (b) { present[b.category || 'Other'] = true; });
+    var ordered = SECTIONS.map(function (s) { return s.key; }).filter(function (k) { return present[k]; });
+    Object.keys(present).forEach(function (k) { if (ordered.indexOf(k) === -1) ordered.push(k); });
+    var opts = '<option value="">All Categories</option>';
+    ordered.forEach(function (k) { opts += '<option value="' + escapeHtml(k) + '">' + escapeHtml(k) + '</option>'; });
+    catSelect.innerHTML = opts;
+  })();
 
   var STAT_CHIP_CLASSES = {
     'Power':              'cnsm-chip-power',
@@ -205,16 +217,18 @@
 
   function render() {
     var query = (searchInput.value || '').trim().toLowerCase();
+    var catFilter = catSelect.value;
     var groups = {};
     SECTIONS.forEach(function (s) { groups[s.key] = []; });
 
     var totalShown = 0;
     BUFFS_DATA.forEach(function (b) {
+      var cat = b.category || 'Other';
+      if (catFilter && cat !== catFilter) return;
       if (query) {
         var hay = (b.name + ' ' + (b.category || '') + ' ' + (b.notes || '') + ' ' + (b.source || '')).toLowerCase();
         if (hay.indexOf(query) === -1) return;
       }
-      var cat = b.category || 'Other';
       if (!groups.hasOwnProperty(cat)) groups[cat] = [];
       groups[cat].push(b);
       totalShown += 1;
@@ -270,6 +284,7 @@
   }
 
   searchInput.addEventListener('input', render);
+  catSelect.addEventListener('change', render);
 
   // Live-update the scaling stat chip when an upgrade level is picked.
   // Delegated on sectionsEl so it survives re-renders.

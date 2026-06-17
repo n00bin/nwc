@@ -247,6 +247,21 @@ remaining gap (n00b deferred 2026-06-16).
 
 ---
 
+## Consumables (buffs.json) — community-guide entries needing in-game verification
+
+Added/fixed 2026-06-16 by cross-referencing the cached `sheet2__Consumables_and_belt_Items.csv` (Aragon's Mod 24 guide) against our data.
+
+| id | name | system | status | notes |
+|----|------|--------|--------|-------|
+| 11 | Wild Storm Elixir | buffs | name CONFIRMED | Renamed from typo "Wild Strom Elixer"; stat values (+2,000 Critical Strike, +5% Critical Severity) already matched the guide — corrected the misleading "+2200 Crit & Accuracy" note |
+| 137 | Honeyed Bread | buffs | UNVERIFIED | +20,000 Max HP, +4,000 Defense (Stronghold food) — from community guide; needs in-game screenshot |
+| 138 | Ratatouille | buffs | UNVERIFIED | +20,000 Max HP, +4,000 Accuracy (Stronghold food) — from community guide; needs in-game screenshot |
+| 139 | Owlbear Figurine | buffs | UNVERIFIED | 1,000 Magnitude damage proc, 60s cooldown (Battle Belt) — from community guide; needs in-game screenshot |
+
+Note: "Empowered Chain of Scales" from the guide is NOT a separate item — it's the top tier (+3% Awareness) of our existing tiered "Chain of Scales" (id 93).
+
+---
+
 ## Known intentional outliers (CONFIRMED by design — never re-flag)
 
 These look "off-scale" but are verified correct per `website/CLAUDE.md`. The Steward treats them as CONFIRMED and never proposes "normalizing" them.
