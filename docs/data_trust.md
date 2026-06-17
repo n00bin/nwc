@@ -258,6 +258,22 @@ remaining gap (n00b deferred 2026-06-16).
 | 43 | Celestial Netherite | CONFIRMED | inbox/enchants/celestial-netherite_il300-source.png | uniform 3-stat (all 1080). Off: Power/Accuracy/Combat Advantage · Def: Defense/Deflect/Deflect Sev · Util: Forte/Ctrl Resist/Out Healing |
 | 44 | Celestial Skullite | CONFIRMED | inbox/enchants/celestial-skullite_il300-source.png | uniform 3-stat (all 1080). Off: Power/Accuracy/Crit Strike · Def: Defense/Crit Avoidance/Deflect · Util: Forte/Ctrl Resist/Inc Healing |
 
+## Mounts (mount_*.json) — verification pass 2026-06-16 (vs cached sheet1 mount tabs)
+
+| file | result |
+|------|--------|
+| **mount_insignia_bonuses** (43) | ✅ VERIFIED — all 32 sheet bonuses matched; 0 required-insignia mismatches, 0 missing |
+| **mount_insignias** (49) | ✅ VERIFIED — every Mythic Combined Rating matches the sheet; Celestial already derived via `tierScaling` (×1.5) |
+| **mounts** (337) | ✅ 0 missing (all 278 sheet mounts present + 59 more). 268 "insignia-bonus" diffs are NOT errors (sheet lists *compatible* bonuses; our `bonusRef` is the mount's own, informational). Sheet typos where OUR data is right: Uni "Celectial Luck", Griffon "Oppotunism", Giant Space Hamster "Hamstphere". |
+| **mount_collars** (75) | linear rank scaling I–V consistent; not in sheets; **NO Celestial tier** (owner-confirmed) |
+| **mount_equip_powers** (56) | stored at Mythic, most match sheet |
+
+**Needs in-game tooltips (NOT auto-fixed — sheet is community-sourced; our values may be the verified ones):**
+- Equip power values disputed: **Stalwart** 30000 vs 18000, **Deadly Decay** & **Dash of Life** 15000 vs 9000 (Max HP, ~1.67×); **Pack Tactics** & **Unstoppable Force** 2953 vs 2250; **Rapid Accuracy** 3000 vs 4500.
+- Mount→power name diffs (real, not typos): **Heavy Giant Spider / Apparatus of Gond / Glorious Whirlwind** (ours Heroic Soul vs sheet Dominant Force), **Yellow Butterfly Swarm** (Dawn vs Dash of Life), **Tenser's Floating Disk** (Rejuvenating Favor vs Tenser's Transformation), **Legendary Recon Balloon** & **Volcanic Flail Snail** (combat-power name variants).
+
+**Celestial PARKED** — equip/combat powers are at Mythic; no reliable Mythic→Celestial multiplier (companions ×1.2 vs insignias ×1.5). Need a Celestial-rarity mount equip+combat tooltip to lock the factor. No such screenshot exists in any archive. See [[project-mount-celestial-pending]].
+
 ## Overloads (overloads.json) — screenshot-verified, conditional
 
 2026-06-16: added 26 Overload enchants from in-game tooltips (`inbox/enchants/overload-*.png`). All modeled CONDITIONALLY so they never inflate a general build:
