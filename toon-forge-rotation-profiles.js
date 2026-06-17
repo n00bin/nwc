@@ -13,7 +13,7 @@
 //   atwill/encounter/daily = damage-split emphasis; melee/ranged/single/dot =
 //   damage-tag emphasis for slot-tagged gear bonuses.
 //
-// NOTE: Cleric uses "Prophet of Doom" to match current data — the real NW power
+// NOTE: Cleric uses "Prophecy of Doom" to match current data — the real NW power
 // is "Prophecy of Doom"; classes.json has a typo to fix (then update here).
 
 var TF_ROTATION_PROFILES = {
@@ -35,7 +35,7 @@ var TF_ROTATION_PROFILES = {
     emphasis: "encounter", confidence: "high",
     mix: { atwill: 0.25, encounter: 0.60, daily: 0.15, melee: 0.0, ranged: 1.0 },
     atWills: ["Lance of Faith", "Conflagrate"],
-    encounters: ["Forgemaster's Flame", "Daunting Light", "Prophet of Doom"],
+    encounters: ["Forgemaster's Flame", "Daunting Light", "Prophecy of Doom"],
     dailies: ["Celestial Prominence", "Hammer of Fate"]
   },
   "Fighter/Dreadnought": {
