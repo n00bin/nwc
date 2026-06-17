@@ -230,8 +230,12 @@ FIXED→CONFIRMED (40 gear items rewritten to the verified model):
 CONFIRMED-CORRECT (no change needed — captures matched existing data): Doomcleaver+Knot,
 Eye of the Doomweaver+Remnant, Dread Confessor+Scream Seeker, Ironfang+Bulwark.
 
-UNVERIFIABLE (need a new capture): Warden of the Last Rite (Cleric) Impending Doom; Bard
-Whisper of Power (Dirgeblade/Strings — neutralized the Movement-Speed mislabel to `pending`).
+Bard Whisper of Power — RESOLVED 2026-06-16 (n00b Dirgeblade IL3400 capture): Dirgeblade +
+Strings of the Forsaken = +5,200 Power (ids 4606/5642/4872). Source:
+`Whisper of Power Dirgeblade+Strings_IL3400_set_details.png`.
+
+UNVERIFIABLE (need a new capture): Warden of the Last Rite (Cleric) Impending Doom — only
+remaining gap (n00b deferred 2026-06-16).
 
 ---
 

@@ -1247,12 +1247,14 @@ classes were fixed in gear.json:
   Paladin IL4550 dup tiers (ids 480/481, CR4065/4095) and one Warlock CR3690 tier (Codex 5154)
   were tier-matched/pattern-filled where no exact capture exists — marked `parsedFrom:"derived"`
   with an explanatory `note`. Pure-DPS pairs verified to carry NO Heal line (0 Heal leaks after fix).
-- **STILL NEEDS A NEW CAPTURE (genuine gaps):**
+- **Bard Whisper of Power — RESOLVED 2026-06-16** from n00b's Dirgeblade IL3400 capture:
+  Dirgeblade + Strings of the Forsaken = **+5,200 Power** (same as the Barb/Wizard/Fighter pairs).
+  Fixed ids 4606/5642 (Dirgeblade) + 4872 (Strings), replacing the old "+10% Movement Speed" mislabel.
+  (The WoP 2-of-set line shows on the Details tab inline, unlike Impending Doom which needs "If Equipped".)
+- **STILL NEEDS A NEW CAPTURE (only remaining gap):**
   - **Warden of the Last Rite (Cleric)** Impending Doom IL4800 — 0 captures anywhere in the archive.
-  - **Bard Whisper of Power** (Dirgeblade + Strings of the Forsaken) — the 8 WoP captures cover only
-    Barb/Ranger/Paladin/Wizard pairs. Dirgeblade (4606/5642) and Strings (4872) WoP entries were the
-    "+10% Movement Speed" mislabel; **neutralized to `parsedFrom:"pending"`** (false movement claim
-    removed) until a Dirgeblade/Strings WoP If-Equipped capture gives the real flat stat.
+    Deferred by n00b 2026-06-16 (still has much Cleric to capture). One "If Equipped" shot at any tier
+    unlocks the Cleric pair's model (ladder fills the rest).
 - **Flagged IL3400 strays (left unchanged, low priority):** Codex 5152 and Aegis 5240 — IL3400
   (CR3060 = Whisper-of-Power tier) items mistagged `set:"Impending Doom"` but blank; likely retag-to-WoP
   or dedupe candidates. Their pairs' WoP: Aegis = +7,200 Forte (verified), Codex = +5,200 Power (per
