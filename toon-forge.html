@@ -2911,6 +2911,7 @@
       },
       overloads: [null, null],  // 2 overload slots
       artifacts: {},
+      artifactIL: {},   // per-artifact-slot item level (rarity the player owns); empty = top tier
       summoned: null,
       activeComps: [null, null, null, null, null],   // 5 typed slots: Off / Def / Uni / Uni / Util
       summonedEnh: null,                             // enhancement (rune) on summoned companion
@@ -3077,6 +3078,7 @@
           gear: state.gear, gearIL: { ...(state.gearIL || {}) }, kits: state.kits,
           artifactMods: { ...(state.artifactMods || {}) },
           artifacts: state.artifacts,
+          artifactIL: { ...(state.artifactIL || {}) },
           enchants: state.enchants, overloads: state.overloads,
           summoned: state.summoned, summonedEnh: state.summonedEnh,
           summonedEnchant: state.summonedEnchant,
@@ -3139,6 +3141,8 @@
       }
       // Builds saved before per-enchant rank existed default to Celestial (top).
       if (s.enchantRarity == null) state.enchantRarity = {};
+      // Builds saved before per-artifact rarity existed default to top tier.
+      state.artifactIL = (s.artifactIL && typeof s.artifactIL === "object") ? { ...s.artifactIL } : {};
       // Migrate any renamed/merged gear in the saved loadout so the slot keeps
       // its item instead of silently going blank. Rewrites the stored name to
       // the current canonical name and tells the player what changed.
@@ -3947,7 +3951,7 @@
                                const il = (opts && opts.il != null && opts.il !== "") ? Number(opts.il) : null;
                                return { item: findGearByName(name, opts && opts.slot, il), render: renderGearItem };
                              },
-      artifact:              (name) => ({ item: findArtifactByName(name), render: renderArtifactItem }),
+      artifact:              (name, opts) => ({ item: findArtifactByName(name, opts && opts.il), render: renderArtifactItem }),
       // Companions: same card the summon picker shows, at the build's rarity.
       companion:             (name) => ({ item: (typeof findCompanionByName === "function") ? findCompanionByName(name) : null,
                                           render: (c) => renderSummonedCompanion(c, state.summonedRarity || state.companionRarity || "Mythic") }),
@@ -9246,10 +9250,10 @@
         }
       }
       // Artifacts (primary + secondary)
-      const primary = findArtifactByName(state.artifacts["Primary"]);
+      const primary = findArtifactByName(state.artifacts["Primary"], (state.artifactIL || {})["Primary"]);
       if (primary) addAbilityBonus(bonus, primary.abilityBonuses);
       for (let i = 1; i <= 3; i++) {
-        const a = findArtifactByName(state.artifacts["Secondary " + i]);
+        const a = findArtifactByName(state.artifacts["Secondary " + i], (state.artifactIL || {})["Secondary " + i]);
         if (a) addAbilityBonus(bonus, a.abilityBonuses);
       }
       // Active buffs — Campfire is the classic example (+1 to all abilities).
@@ -9495,10 +9499,10 @@
       // Equipped artifacts
       cur = 0; sources = [];
       if (state.artifacts) {
-        const primary = findArtifactByName(state.artifacts["Primary"]);
+        const primary = findArtifactByName(state.artifacts["Primary"], (state.artifactIL || {})["Primary"]);
         if (primary && primary.item_level) { cur += primary.item_level; sources.push({ name: `Primary: ${primary.name}`, il: primary.item_level }); }
         for (let i = 1; i <= 3; i++) {
-          const a = findArtifactByName(state.artifacts["Secondary " + i]);
+          const a = findArtifactByName(state.artifacts["Secondary " + i], (state.artifactIL || {})["Secondary " + i]);
           if (a && a.item_level) { cur += a.item_level; sources.push({ name: `Secondary ${i}: ${a.name}`, il: a.item_level }); }
         }
       }
@@ -9807,8 +9811,23 @@
         </div>`;
     }
 
-    function findArtifactByName(name) {
+    function findArtifactByName(name, il) {
       if (!name) return null;
+      // Artifact rarities are stored as separate rows (same name, different item
+      // level + stats), like gear/weapons. When the player's owned tier (il) is
+      // given, return that exact row; otherwise fall back to first-by-name.
+      if (il != null && il !== "") {
+        const ilNum = Number(il);
+        const lowered = String(name).trim().toLowerCase();
+        const pools = [(typeof ARTIFACTS_DATA !== "undefined") ? ARTIFACTS_DATA : [],
+                       (typeof getUserAddedArtifacts === "function") ? getUserAddedArtifacts() : []];
+        for (const pool of pools) {
+          for (const a of pool) {
+            if ((a.item_level != null ? a.item_level : a.itemLevel) !== ilNum) continue;
+            if (a.name === name || (a.name || "").toLowerCase() === lowered) return a;
+          }
+        }
+      }
       if (typeof ARTIFACTS_DATA !== "undefined") {
         for (const a of ARTIFACTS_DATA) {
           if (a.name === name) return a;
@@ -10616,10 +10635,11 @@
       // Resolve artifacts: state.artifacts is { "Primary": "name", "Secondary 1": "name", ... }
       const artifacts = { primary: null, secondary: [] };
       if (s.artifacts) {
-        const primary = findArtifactByName(s.artifacts["Primary"]);
+        const _aIL = s.artifactIL || {};
+        const primary = findArtifactByName(s.artifacts["Primary"], _aIL["Primary"]);
         if (primary) artifacts.primary = primary;
         for (let i = 1; i <= 3; i++) {
-          const sa = findArtifactByName(s.artifacts["Secondary " + i]);
+          const sa = findArtifactByName(s.artifacts["Secondary " + i], _aIL["Secondary " + i]);
           if (sa) artifacts.secondary.push(sa);
         }
       }
@@ -13413,13 +13433,14 @@
         const v = state.artifacts[slot] || "";
         const filled = !!v;
         const noItems = opts.length === 0;
+        const aIL = filled ? (state.artifactIL || {})[slot] : null;
         const chipLabel = filled
-          ? "💎 " + v
+          ? "💎 " + v + (aIL ? ` · IL ${Number(aIL).toLocaleString()}` : "")
           : (noItems ? "(no artifacts available)" : "+ Pick artifact");
         const chipClasses = ["gear-pick-chip"];
         if (filled) chipClasses.push("filled");
         if (noItems) chipClasses.push("disabled");
-        const artInfo = filled ? `<button class="chip-info" data-details-type="artifact" data-details-key="${_escAttr(v)}" title="See artifact details">\u{1F50D}</button>` : "";
+        const artInfo = filled ? `<button class="chip-info" data-details-type="artifact" data-details-key="${_escAttr(v)}"${aIL ? ` data-details-il="${aIL}"` : ""} title="See artifact details">\u{1F50D}</button>` : "";
         return `
           <div class="slot ${filled ? "filled" : ""}">
             <div class="slot-label">${slot}</div>
@@ -13427,7 +13448,7 @@
               ${chipLabel}
               ${artInfo}
             </div>
-            ${filled ? setStatusRow(findArtifactByName(v), setStatus) : ""}
+            ${filled ? setStatusRow(findArtifactByName(v, aIL), setStatus) : ""}
           </div>`;
       }).join("");
       g.querySelectorAll("[data-art-pick]").forEach(el => {
@@ -13449,6 +13470,11 @@
             className: state.class,
             onPick: (item) => {
               state.artifacts[slot] = item ? item.name : "";
+              if (!state.artifactIL) state.artifactIL = {};
+              // Store the picked rarity's item level (artifact rarities are
+              // separate rows); empty slot clears it.
+              if (item) state.artifactIL[slot] = (item.item_level != null ? item.item_level : null);
+              else delete state.artifactIL[slot];
               applyAutoTIL();
               recomputeAbilityTotals();
               renderAbilityGrid();
