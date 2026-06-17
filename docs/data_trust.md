@@ -255,6 +255,8 @@ remaining gap (n00b deferred 2026-06-16).
 |----|------|--------|-------------------|-------|
 | 41 | Celestial Sugilite | CONFIRMED | inbox/enchants/uncommon-sugilite_il300_celestial-source.png | Off: CA 864 / Crit Strike 1296 / Crit Sev 1296 · Def: Defense 756 / Awareness 864 / Deflect Sev 1620 · Util: Ctrl Bonus 1080 / Ctrl Resist 1080 / Out Healing 864 |
 | 42 | Celestial Obsidian | CONFIRMED | inbox/enchants/uncommon-obsidian_il300_celestial-source.png | Off: Power 756 / Accuracy 1404 / Crit Sev 1296 · Def: Crit Avoid 1188 / Deflect 1620 / Deflect Sev 1620 · Util: Forte 972 / Ctrl Bonus 1080 / Inc Healing 1296 |
+| 43 | Celestial Netherite | CONFIRMED | inbox/enchants/celestial-netherite_il300-source.png | uniform 3-stat (all 1080). Off: Power/Accuracy/Combat Advantage · Def: Defense/Deflect/Deflect Sev · Util: Forte/Ctrl Resist/Out Healing |
+| 44 | Celestial Skullite | CONFIRMED | inbox/enchants/celestial-skullite_il300-source.png | uniform 3-stat (all 1080). Off: Power/Accuracy/Crit Strike · Def: Defense/Crit Avoidance/Deflect · Util: Forte/Ctrl Resist/Inc Healing |
 
 ## Artifacts (artifacts.json) — DO NOT bulk-source stats from sheet1
 
