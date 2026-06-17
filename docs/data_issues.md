@@ -1266,8 +1266,9 @@ classes were fixed in gear.json:
 ## Hidden-bonus render audit (2026-06-16)
 
 A site-wide scan replicating the gear-card render-visibility logic found **35 items** that had
-an `equipBonuses` array but rendered NO bonus block (the bonus was silently hidden). **18 fixed**
-(text already existed somewhere); **17 still need a capture** (Lionsmane set bonus). Three causes:
+an `equipBonuses` array but rendered NO bonus block (the bonus was silently hidden). **ALL 35 now
+RESOLVED** — 18 from text that already existed, plus 17 Lionsmane from archive captures (below).
+Re-running the scan after the fixes returns **0 hidden items.** Three causes for the 18:
 
 1. **Marker Set EB shadowing the legacy `setBonus` field** — a structured `{type:"Set", setName,
    pieces}` marker (no description) suppressed the legacy `setBonus`-field render path, so the full
@@ -1290,7 +1291,14 @@ The data workaround above adds names, but a small code fix — render descriptio
 back to a generic label or the set name) — would prevent recurrence. Deferred because toon-forge.html
 had concurrent uncommitted edits.
 
-**STILL MISSING — Lionsmane 4-piece set bonus (17 items):** ids 5214 + 7330-7345 (Lionsmane Duelist
-Vest and the Lionsmane Gladiator/Executioner armor). The Lionsmane set-bonus text is in the data
-**nowhere** (0 sources), so these render no bonus. Needs an in-game "If Equipped" capture of any
-Lionsmane 4-pc piece to source the text.
+**Lionsmane 4-piece set bonus — RESOLVED 2026-06-16.** Lesson: my first pass declared this "missing"
+from a *data*-side check (0 sources in gear.json), but the **screenshots existed all along** — 22
+`Lionsmane_set_details` captures in `calibration/inbox/_set_details/` that had never been extracted.
+n00b pushed to re-check the archive ("double check screenshots here"); reading 6 of them (Duelist/
+Gladiator/Medic variants, Barb + Paladin, IL560 + IL574) showed a uniform, set-wide bonus:
+> **2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power.**
+Written to **all 72 Lionsmane armor pieces** (18 each Head/Armor/Arms/Feet). The "0 Maximum Hit
+Points" is the verbatim degenerate in-game value (old stat-squished set) — confirmed across all
+captures, do NOT "fix" the 0. (Same degenerate `Equip: 0` pattern flagged for Golden Dragon.)
+
+**Net result: every set/equip bonus in the gear database now renders — 0 silently-hidden items remain.**
