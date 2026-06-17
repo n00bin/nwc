@@ -28,6 +28,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Companions: each companion's **active Skills** (the abilities they use in combat) are now listed in the Lookup detail panel — 746 skills across 209 companions, so you can see exactly what a pet does when summoned (e.g. Soradiel's Blade of Light).
 - Consumables: added **Honeyed Bread** and **Ratatouille** (Stronghold food: +20,000 Max HP + a stat) and the **Owlbear Figurine** belt item (1,000-magnitude damage proc). Values are from a community guide and flagged for in-game verification.
 - Toon Forge: added four Universal gemstone enchantments — **Celestial Sugilite**, **Celestial Obsidian**, **Celestial Netherite**, and **Celestial Skullite** — at their Celestial values (transcribed from in-game tooltips). They give different stats depending on whether they're slotted in an Offense, Defense, or Utility slot.
+- Toon Forge: catalogued **26 campaign/enemy Overload enchantments** (Reghed, Thay/Doomvault, Pirate's Skyhold, Dread Vault, and Wildspace zones, plus Undead / Fiend / Astral Elf wards and slayers). They're zone- or enemy-conditional, so they appear in the overload picker but only count when you're actually in that zone or fighting that enemy type.
 - Campaign Boosters: added **Frost Visage** — a Biting Cold campaign gadget (+15% campaign currency drop rate; Use: +55% Movement Speed for 15s in The Reghed Edge, 30s recharge).
 
 ### Bug Fixes

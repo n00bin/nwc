@@ -258,6 +258,14 @@ remaining gap (n00b deferred 2026-06-16).
 | 43 | Celestial Netherite | CONFIRMED | inbox/enchants/celestial-netherite_il300-source.png | uniform 3-stat (all 1080). Off: Power/Accuracy/Combat Advantage · Def: Defense/Deflect/Deflect Sev · Util: Forte/Ctrl Resist/Out Healing |
 | 44 | Celestial Skullite | CONFIRMED | inbox/enchants/celestial-skullite_il300-source.png | uniform 3-stat (all 1080). Off: Power/Accuracy/Crit Strike · Def: Defense/Crit Avoidance/Deflect · Util: Forte/Ctrl Resist/Inc Healing |
 
+## Overloads (overloads.json) — screenshot-verified, conditional
+
+2026-06-16: added 26 Overload enchants from in-game tooltips (`inbox/enchants/overload-*.png`). All modeled CONDITIONALLY so they never inflate a general build:
+- **Enemy-type** (Undead, Fiend = Demons/Devils/Fiends, Astral Elf): `enemyType` + `damagePct` (slayers) or `percentStats.Incoming Damage` (wards).
+- **Zone** (The Reghed Edge, Doomvault, Thay, Pirate's Skyhold, Dread Vault, Wildspace, +Trial/Jotunskar/Soul Harvest Trial): `equipBonuses` with `zones[]` — Dmg Bonus / Incoming Damage / Outgoing Healing / Incoming Healing.
+- **Natives** = multi-zone, multi-effect (the +2% Accuracy leg is in notes/effectText, not structured, to avoid percent-vs-rating ambiguity). **Pirates' Skyhold Tracker** = 3% lifesteal (no clean engine stat — catalogued via notes).
+- Skipped 2 already present: Astral Elf Slayer, Wildspace Slayer.
+
 ## Artifacts (artifacts.json) — DO NOT bulk-source stats from sheet1
 
 2026-06-16: tried updating all artifact stats to "Mythic" values from the cached `sheet1__Artifacts.csv` (community sheet) — n00b reviewed the result and the IL/CR/stats all looked wrong, so it was **reverted**. Lesson: **sheet1's artifact stat columns are NOT reliable** for our display (and its `CombinedRating` column ~85,000 is junk). Artifact stats must come from in-game screenshots, not this sheet. The page's "Stats at Mythic" label vs. the stored low-rank values is a known open question — resolve with screenshots, not the sheet.
