@@ -218,42 +218,6 @@ themselves; need in-game re-capture before structuring:**
 - **Cuirass of the Crimson Scythe** — "Forte +1.8% every 2s ... Max 5
   stacks: 6%" (1.8 × 5 = 9, not 6)
 
-## Elk Tribe / Hammerstone phantom set — RESOLVED 2026-06-09 (audit blocker #2 follow-up)
-Archived collection screenshots (docs/audit/_up/) proved "Weapons of the Elk
-Tribe Chiefs" is a **collection tab, not an in-game set**: four Elk tooltips
-(Lute, Poniard, Dirk + stored rogue Poniard values) show NO set line, while the
-Hellfire Tow Hook tooltip in the same UI format DOES show its set line. Fixes:
-- Removed the false Set equipBonus from ids 4766/4767 (Bard Lute/Poniard).
-- Cleared `set` on all 16 tagged entries — including **4 Hammerstone weapons
-  (ids 2087, 2088, 2954, 2955) that were wrongly tagged with the Elk set**.
-- Corrected rounded stats 98 -> 97.6 (Critical Severity / Critical Avoidance)
-  on ids 4354, 4766, 4767 — matches the Dirk/Lute/Poniard tooltips and the
-  values already stored on ids 4353 / 6833 / 6834.
-
-## Hellfire Engine Remains set bonus — RESOLVED 2026-06-09 (same day)
-The set is REAL (Tow Hook IL600 tooltip shows "Set Hellfire Engine Remains
-(0/2)", base stats verified 450/450/540). The bonus text was then found on the
-set's own higher-tier siblings: ids 4091–4097 carry the verified structured
-bonus (Stamina Regeneration +15% + Movement Speed +15% for 10s at combat
-start; refreshes on kill), and id 3386's intake description holds the same
-text. Structured it across the whole set: id 4090 (was the stripped
-fabricated +1,500 Power) and ids 3386–3393 (were stat "Damage Bonus"/0
-placeholders) now all carry stat Stamina Regeneration / amount 15 like their
-verified siblings.
-
-## Ultraviolet Elven Cap 3s/5s conflict — RESOLVED 2026-06-09
-The archived Cap tooltip (docs/audit/_up/wizard-gear/, IL 2,900) settled the
-duplicate pair's conflicting proc cadence: **"For every 5 seconds you are in
-combat, you gain 1% Combat Advantage. Max Stacks: 10"** (bonus name
-Combatant's Advantage; stats 2,175/2,175, CR 2,610 — all match). Kept id 6220
-(correct 5s wording + structured engine-scored stacker); deleted id 3201
-(wrong "every 3 seconds" text, description-only). The tooltip also shows NO
-set line → **"Ultraviolet Armor" was a third phantom collection-tab set** —
-cleared from all 12 tagged entries (zero Set-type ebs referenced it).
-NOTE: the Perfect Mark of Lolth set-popup interval question (3s vs 5s) is
-SEPARATE and still open — that one is about the Demonweb set bonus text,
-which collection tooltips don't display.
-
 ## Audit pile-1 sweep — RESOLVED 2026-06-09 (duplicate pairs + phantom sets)
 All verified against archived tooltips (docs/audit/_up/warlock-gear/):
 - **Blaspheme Pactblade:** tooltip matches id 144 exactly (Damage 100 /
@@ -293,15 +257,6 @@ withdrawn — leave them unrestricted.
 STILL OPEN: id 286 (Sabatons, Feet, IL 4100) carries a single rating stat
 (Accuracy 1,997) vs CR 3,690 — likely missing 1–2 stats. **Action:** in-game
 tooltip for the Sabatons' full stat block.
-
-## Elk Tribe Grimoire / Pact Blade duplicate pairs — RESOLVED 2026-06-09
-ids 3597/4824 ("Elk Tribe Noble's Grimoire") and 3598/4825 ("Elk Tribe Noble's
-Pact Blade") were same-name duplicate pairs with conflicting Accuracy (98 vs 97)
-— and the 4824/4825 copies also carried a wrong item_level (199 vs the real 399).
-Archive tooltips (docs/audit/_up/warlock-gear/) settled it: real values are
-**IL 399, Accuracy 97.6 / CA 202 / Crit Strike 202 / Crit Avoidance 97.6, CR 359**.
-Kept 3597/3598 (correct IL/slots) with stats exact-matched to 97.6; deleted
-4824/4825 (bad re-intake). No external references to the deleted ids existed.
 
 ## Set-bonus data problems found 2026-06-08 (during set-bonus structuring pass)
 The set-bonus parse pass (`scripts/eb_setbonus_curated.py`) structured 4 clean
@@ -615,25 +570,6 @@ may both be real or one may be a slot error. Need in-game shots to decide:
 Also: Bloodwoven uses two naming styles — "(Bonus)" parens (415-424) and "- Bonus"
 em-dash (467-472). Pick one convention during a future set audit.
 
-## Arcane Conduit Insignia — Corrupt Power (Report #41, RESOLVED 2026-05-29)
-
-RESOLVED via in-game screenshot of the Corrupt Power variant (Screenshot 2026-05-29
-160558; cropped to `gear/unbound-gear/shirt/Arcane Conduit Insignia Corrupt Power_IL3800.png`).
-Tooltip confirms the equip bonus IS **+5% Power, -7.5% Incoming Healing** (player's
-"+11,250" was the game's flat display of 5% Power). #41 closed Won't Fix.
-Separate bug fixed while verifying: id 451's third rating stat was **Power 1197**, in-game
-it's **Defense 1197** — corrected.
-
-SLOTS CONFIRMED (n00b, 2026-05-29): the two Insignia variants are in DIFFERENT slots —
-Challenger's Awareness = **Pants** (id 448), Corrupt Power = **Shirt** (id 451). Both are
-correct in the data. Sigil variants likewise: Explosive Defense = **Shirt** (id 447, was
-wrongly Pants, fixed Report #64), Survivor's Avoidance = **Pants** (id 442). All four
-verified by in-game screenshots. **Lesson: slot is per bonus-variant, NOT per piece-name** — do not
-infer a piece's slot from another variant with the same name. (An earlier "consistency"
-edit that flipped 448 to Shirt was reverted.) By the same logic the Critical Momentum
-Crests (388/452, Shirt) are NOT assumed wrong just because the Combatant's Advantage
-Crest (445) is Pants — leave them unless a screenshot says otherwise.
-
 ## Missing Gear Sets — flagged by community (Report #33, 2026-05-26)
 
 Player report flagged the following gear as missing from the site:
@@ -651,22 +587,6 @@ Player report flagged the following gear as missing from the site:
 
 Need to: source screenshots (in-game tooltips or NW Hub references),
 extract stats, add to `gear.json` with proper slot/set/IL data.
-
-## Missing Gear — Doomcleaver (Reports #36–#40, 2026-05-26) — RESOLVED 2026-06-12
-
-Player tried to use the data-correction form on Elk Tribe Noble's Mace
-to flag a missing weapon called **Doomcleaver** (didn't find it in our
-database, so they used the closest weapon-shaped entry as a vehicle).
-
-RESOLVED: Doomcleaver turned out to be the **Barbarian** variant (the
-"Barbarian or Fighter?" question is answered — see the next section for
-the Fighter side). Ingested from n00b's barbarian collection captures
-(`docs/audit/_up/barbarian-gear/Doomcleaver_IL*.png`, batch_06) as a
-complete 6-tier family: IL 3400 (Whisper of Power tier) + IL 3750–5250
-(Impending Doom, gear ids 6429–6433). Its off-hand partner **Knot of
-the Bloodbound** is also complete (6 tiers). The player's guessed stats
-were close but the real distribution is Crit Strike / Crit Severity /
-Deflect + 50 weapon damage.
 
 ## Fighter weapons missing — including the Mod 33 / Soul Collector set (2026-06-12)
 
@@ -708,47 +628,6 @@ Last Rite tiers, and Omen of Doom's middle tiers (3750/4100/4450).
 Filed as a public report on the reports board 2026-06-12 so it's
 tracked until the screenshots can be captured (n00b's Fighter was
 unavailable at the time — other toon mid-dungeon).
-
-## Cracked Earthshard Guard — two variants merged into one — RESOLVED 2026-06-12
-
-Player-flagged (relayed by n00b): the Charged Defiance ("take 3% less
-damage") Cracked Earthshard Guard was filed as Pants but is a Shirt.
-Archive originals (`_trash/originals/Cracked Earthshard Guard*.png`,
-2026-05-25 batch) showed the in-game truth: there are TWO IL 4600
-Jotunskar (Master) variants with this name, and entry id 5362 had
-merged them — Combatant's Advantage variant's stats with the Charged
-Defiance variant's bonus, slotted Pants.
-
-Fix (tooltip-verified at 2x upscale):
-- id 5362 → the true **Charged Defiance Shirt**: Power 1,449 /
-  Deflect 4,140 / Incoming Healing 2,484 / +1.5% Recharge Speed.
-  Template is byte-identical in ratios to the player-verified
-  Frost-Riven Earthshard Guard Shirt (id 5375), which carries the SAME
-  bonus at 4.5% — the 4850-tier scaling of Cracked's 3%.
-- new id 6877 → the **Combatant's Advantage Pants**: Defense 1,932 /
-  Deflect 2,588 / Deflect Severity 2,588 / +1.5% Stamina Regeneration.
-  Defense+Deflect+Deflect Severity is the established Pants template.
-
-Pattern note: this is the same per-bonus-variant slot rule as Reports
-#64/#106/#107 — and a new twist: a dual-variant name can get its two
-tooltips MERGED into one entry at intake. When a slot complaint comes
-in, check whether the archive holds two different tooltips under the
-same name before assuming a simple slot flip.
-
-## B2 — Mount Equip Power ID 56 "Seeing Red" — RESOLVED 2026-06-09
-
-n00b captured Balgora's Mount Preview in-game (2026-06-09): Seeing Red at
-IL 3,718 shows 12,396 Accuracy proc (40% on encounter, 8s, 15s ICD) and
-+3,347 CR. Those values scale EXACTLY to the Celestial anchor (IL 3,937 →
-13,125 Accuracy / 3,544 CR — integer-perfect, and identical template to The
-High Ground id 51, which stores 5.0-per-IL vs Seeing Red's 3.333-per-IL).
-Backfilled id 56 with item_level 3937 / anchorRarity Celestial /
-combinedRating 3544 / cooldownSeconds 15. The same screenshot confirmed
-Hell's Impact (combat power id 87) was a Celestial capture — its entry now
-carries item_level 3937 / anchorRarity Celestial too (930/143/13.9% at 3,718
-= exact 3,937/3,718 scaling of the stored 984/151/14.8%).
-
----
 
 ## Avernus Campaign Leveling Conduits — Set Name Best-Guess (2026-05-17)
 
@@ -1330,3 +1209,130 @@ Points" is the verbatim degenerate in-game value (old stat-squished set) — con
 captures, do NOT "fix" the 0. (Same degenerate `Equip: 0` pattern flagged for Golden Dragon.)
 
 **Net result: every set/equip bonus in the gear database now renders — 0 silently-hidden items remain.**
+
+---
+
+# Archived — Resolved (kept for record)
+
+Fully-resolved entries, moved out of the live list on 2026-06-17 to keep the focus on open work. Detail is also preserved in git history.
+
+## Elk Tribe / Hammerstone phantom set — RESOLVED 2026-06-09 (audit blocker #2 follow-up)
+Archived collection screenshots (docs/audit/_up/) proved "Weapons of the Elk
+Tribe Chiefs" is a **collection tab, not an in-game set**: four Elk tooltips
+(Lute, Poniard, Dirk + stored rogue Poniard values) show NO set line, while the
+Hellfire Tow Hook tooltip in the same UI format DOES show its set line. Fixes:
+- Removed the false Set equipBonus from ids 4766/4767 (Bard Lute/Poniard).
+- Cleared `set` on all 16 tagged entries — including **4 Hammerstone weapons
+  (ids 2087, 2088, 2954, 2955) that were wrongly tagged with the Elk set**.
+- Corrected rounded stats 98 -> 97.6 (Critical Severity / Critical Avoidance)
+  on ids 4354, 4766, 4767 — matches the Dirk/Lute/Poniard tooltips and the
+  values already stored on ids 4353 / 6833 / 6834.
+
+## Hellfire Engine Remains set bonus — RESOLVED 2026-06-09 (same day)
+The set is REAL (Tow Hook IL600 tooltip shows "Set Hellfire Engine Remains
+(0/2)", base stats verified 450/450/540). The bonus text was then found on the
+set's own higher-tier siblings: ids 4091–4097 carry the verified structured
+bonus (Stamina Regeneration +15% + Movement Speed +15% for 10s at combat
+start; refreshes on kill), and id 3386's intake description holds the same
+text. Structured it across the whole set: id 4090 (was the stripped
+fabricated +1,500 Power) and ids 3386–3393 (were stat "Damage Bonus"/0
+placeholders) now all carry stat Stamina Regeneration / amount 15 like their
+verified siblings.
+
+## Ultraviolet Elven Cap 3s/5s conflict — RESOLVED 2026-06-09
+The archived Cap tooltip (docs/audit/_up/wizard-gear/, IL 2,900) settled the
+duplicate pair's conflicting proc cadence: **"For every 5 seconds you are in
+combat, you gain 1% Combat Advantage. Max Stacks: 10"** (bonus name
+Combatant's Advantage; stats 2,175/2,175, CR 2,610 — all match). Kept id 6220
+(correct 5s wording + structured engine-scored stacker); deleted id 3201
+(wrong "every 3 seconds" text, description-only). The tooltip also shows NO
+set line → **"Ultraviolet Armor" was a third phantom collection-tab set** —
+cleared from all 12 tagged entries (zero Set-type ebs referenced it).
+NOTE: the Perfect Mark of Lolth set-popup interval question (3s vs 5s) is
+SEPARATE and still open — that one is about the Demonweb set bonus text,
+which collection tooltips don't display.
+
+## Elk Tribe Grimoire / Pact Blade duplicate pairs — RESOLVED 2026-06-09
+ids 3597/4824 ("Elk Tribe Noble's Grimoire") and 3598/4825 ("Elk Tribe Noble's
+Pact Blade") were same-name duplicate pairs with conflicting Accuracy (98 vs 97)
+— and the 4824/4825 copies also carried a wrong item_level (199 vs the real 399).
+Archive tooltips (docs/audit/_up/warlock-gear/) settled it: real values are
+**IL 399, Accuracy 97.6 / CA 202 / Crit Strike 202 / Crit Avoidance 97.6, CR 359**.
+Kept 3597/3598 (correct IL/slots) with stats exact-matched to 97.6; deleted
+4824/4825 (bad re-intake). No external references to the deleted ids existed.
+
+## Arcane Conduit Insignia — Corrupt Power (Report #41, RESOLVED 2026-05-29)
+
+RESOLVED via in-game screenshot of the Corrupt Power variant (Screenshot 2026-05-29
+160558; cropped to `gear/unbound-gear/shirt/Arcane Conduit Insignia Corrupt Power_IL3800.png`).
+Tooltip confirms the equip bonus IS **+5% Power, -7.5% Incoming Healing** (player's
+"+11,250" was the game's flat display of 5% Power). #41 closed Won't Fix.
+Separate bug fixed while verifying: id 451's third rating stat was **Power 1197**, in-game
+it's **Defense 1197** — corrected.
+
+SLOTS CONFIRMED (n00b, 2026-05-29): the two Insignia variants are in DIFFERENT slots —
+Challenger's Awareness = **Pants** (id 448), Corrupt Power = **Shirt** (id 451). Both are
+correct in the data. Sigil variants likewise: Explosive Defense = **Shirt** (id 447, was
+wrongly Pants, fixed Report #64), Survivor's Avoidance = **Pants** (id 442). All four
+verified by in-game screenshots. **Lesson: slot is per bonus-variant, NOT per piece-name** — do not
+infer a piece's slot from another variant with the same name. (An earlier "consistency"
+edit that flipped 448 to Shirt was reverted.) By the same logic the Critical Momentum
+Crests (388/452, Shirt) are NOT assumed wrong just because the Combatant's Advantage
+Crest (445) is Pants — leave them unless a screenshot says otherwise.
+
+## Missing Gear — Doomcleaver (Reports #36–#40, 2026-05-26) — RESOLVED 2026-06-12
+
+Player tried to use the data-correction form on Elk Tribe Noble's Mace
+to flag a missing weapon called **Doomcleaver** (didn't find it in our
+database, so they used the closest weapon-shaped entry as a vehicle).
+
+RESOLVED: Doomcleaver turned out to be the **Barbarian** variant (the
+"Barbarian or Fighter?" question is answered — see the next section for
+the Fighter side). Ingested from n00b's barbarian collection captures
+(`docs/audit/_up/barbarian-gear/Doomcleaver_IL*.png`, batch_06) as a
+complete 6-tier family: IL 3400 (Whisper of Power tier) + IL 3750–5250
+(Impending Doom, gear ids 6429–6433). Its off-hand partner **Knot of
+the Bloodbound** is also complete (6 tiers). The player's guessed stats
+were close but the real distribution is Crit Strike / Crit Severity /
+Deflect + 50 weapon damage.
+
+## Cracked Earthshard Guard — two variants merged into one — RESOLVED 2026-06-12
+
+Player-flagged (relayed by n00b): the Charged Defiance ("take 3% less
+damage") Cracked Earthshard Guard was filed as Pants but is a Shirt.
+Archive originals (`_trash/originals/Cracked Earthshard Guard*.png`,
+2026-05-25 batch) showed the in-game truth: there are TWO IL 4600
+Jotunskar (Master) variants with this name, and entry id 5362 had
+merged them — Combatant's Advantage variant's stats with the Charged
+Defiance variant's bonus, slotted Pants.
+
+Fix (tooltip-verified at 2x upscale):
+- id 5362 → the true **Charged Defiance Shirt**: Power 1,449 /
+  Deflect 4,140 / Incoming Healing 2,484 / +1.5% Recharge Speed.
+  Template is byte-identical in ratios to the player-verified
+  Frost-Riven Earthshard Guard Shirt (id 5375), which carries the SAME
+  bonus at 4.5% — the 4850-tier scaling of Cracked's 3%.
+- new id 6877 → the **Combatant's Advantage Pants**: Defense 1,932 /
+  Deflect 2,588 / Deflect Severity 2,588 / +1.5% Stamina Regeneration.
+  Defense+Deflect+Deflect Severity is the established Pants template.
+
+Pattern note: this is the same per-bonus-variant slot rule as Reports
+#64/#106/#107 — and a new twist: a dual-variant name can get its two
+tooltips MERGED into one entry at intake. When a slot complaint comes
+in, check whether the archive holds two different tooltips under the
+same name before assuming a simple slot flip.
+
+## B2 — Mount Equip Power ID 56 "Seeing Red" — RESOLVED 2026-06-09
+
+n00b captured Balgora's Mount Preview in-game (2026-06-09): Seeing Red at
+IL 3,718 shows 12,396 Accuracy proc (40% on encounter, 8s, 15s ICD) and
++3,347 CR. Those values scale EXACTLY to the Celestial anchor (IL 3,937 →
+13,125 Accuracy / 3,544 CR — integer-perfect, and identical template to The
+High Ground id 51, which stores 5.0-per-IL vs Seeing Red's 3.333-per-IL).
+Backfilled id 56 with item_level 3937 / anchorRarity Celestial /
+combinedRating 3544 / cooldownSeconds 15. The same screenshot confirmed
+Hell's Impact (combat power id 87) was a Celestial capture — its entry now
+carries item_level 3937 / anchorRarity Celestial too (930/143/13.9% at 3,718
+= exact 3,937/3,718 scaling of the stored 984/151/14.8%).
+
+---
