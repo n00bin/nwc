@@ -122,6 +122,7 @@
   // ---- DOM refs ----
   var searchInput       = document.getElementById("search");
   var filterSlot        = document.getElementById("filter-slot");
+  var filterRarity      = document.getElementById("filter-rarity");
   var filterEnhancement = document.getElementById("filter-enhancement");
   var filterStat        = document.getElementById("filter-stat");
   var listContainer     = document.getElementById("companion-list");
@@ -148,6 +149,25 @@
   }
   var slotList = Object.keys(allSlots).sort();
   populateFilter(filterSlot, slotList, "All Slot Types");
+
+  // Base rarity: each companion's power item_level maps to its lowest (base) rarity
+  function baseRarityName(c) {
+    var pw = powerMap[c.powerRef];
+    if (!pw) return null;
+    for (var r = 0; r < RARITIES.length; r++) {
+      if (RARITIES[r].il === pw.item_level) return RARITIES[r].name;
+    }
+    return null;
+  }
+  var presentRarities = {};
+  for (var ri = 0; ri < COMPANIONS_DATA.length; ri++) {
+    var rn = baseRarityName(COMPANIONS_DATA[ri]);
+    if (rn) presentRarities[rn] = true;
+  }
+  // Order by the rarity ladder (Common→Celestial), not alphabetically
+  var rarityOptions = RARITIES.filter(function (r) { return presentRarities[r.name]; })
+    .map(function (r) { return r.name; });
+  populateFilter(filterRarity, rarityOptions, "All Rarities");
 
   // Stats: collect from power stats + power procEffect.statEffects
   var allStats = {};
@@ -179,6 +199,7 @@
   function getFilteredCompanions() {
     var query        = searchInput.value.trim().toLowerCase();
     var slotVal      = filterSlot.value;
+    var rarityVal    = filterRarity.value;
     var enhanceVal   = filterEnhancement.value;
     var statVal      = filterStat.value;
     currentQuery = query;
@@ -196,6 +217,11 @@
       // Slot type filter (contains logic — powers can have multiple slots)
       if (slotVal) {
         if (!pw || !pw.slot || pw.slot.indexOf(slotVal) === -1) return false;
+      }
+
+      // Base rarity filter (lowest tier the companion is available at)
+      if (rarityVal) {
+        if (baseRarityName(c) !== rarityVal) return false;
       }
 
       // Enhancement filter
@@ -529,6 +555,7 @@
 
   searchInput.addEventListener("input", onFilterChange);
   filterSlot.addEventListener("change", onFilterChange);
+  filterRarity.addEventListener("change", onFilterChange);
   filterEnhancement.addEventListener("change", onFilterChange);
   filterStat.addEventListener("change", onFilterChange);
 
