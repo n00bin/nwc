@@ -546,6 +546,8 @@
   var filterSummonedStat = document.getElementById("filter-summoned-stat");
   var enhancementControls = document.getElementById("enhancement-controls");
   var enhancementSearch = document.getElementById("enhancement-search");
+  var filterEnhancementStat = document.getElementById("filter-enhancement-stat");
+  var sortEnhancement = document.getElementById("sort-enhancement");
 
   // Build summoned data from summonedBuff field
   var summonedData = [];
@@ -682,9 +684,9 @@
       var en = COMPANION_ENHANCEMENTS_DATA[i];
       if (!enMap[en.name]) {
         var enListStats = (en.stats && en.stats.length) ? en.stats : [{ stat: en.stat, value: en.value }];
-        var statDesc = enListStats.map(function (s) { return s.stat + " +" + s.value + "%"; }).join(", ");
-        var desc = en.notes ? cleanEnhancementNotes(en.notes) : statDesc;
-        enMap[en.name] = { name: en.name, description: desc, companions: [] };
+        // notes carry the proc/conditional context; stat values are shown as chips
+        var desc = en.notes ? cleanEnhancementNotes(en.notes) : "";
+        enMap[en.name] = { name: en.name, description: desc, stats: enListStats, companions: [] };
       }
     }
     // Map companions to their enhancements
@@ -709,26 +711,71 @@
 
   var enhancementListData = buildEnhancementList();
 
+  // Populate the enhancement stat filter from the stats each enhancement grants
+  var enhStatSet = {};
+  for (var ei = 0; ei < enhancementListData.length; ei++) {
+    var est = enhancementListData[ei].stats;
+    for (var esi = 0; esi < est.length; esi++) { if (est[esi].stat) enhStatSet[est[esi].stat] = true; }
+  }
+  populateFilter(filterEnhancementStat, Object.keys(enhStatSet).sort(), "All Stats");
+
   function renderEnhancementView() {
     var query = enhancementSearch.value.trim().toLowerCase();
-    var html = "";
-    for (var i = 0; i < enhancementListData.length; i++) {
-      var e = enhancementListData[i];
-      if (query && (e.name + " " + e.description + " " + e.companions.join(" ")).toLowerCase().indexOf(query) === -1) continue;
+    var statFilter = filterEnhancementStat.value;
+    var sortMode = sortEnhancement.value;
+
+    var rows = enhancementListData.filter(function (e) {
+      if (statFilter) {
+        var has = false;
+        for (var k = 0; k < e.stats.length; k++) { if (e.stats[k].stat === statFilter) { has = true; break; } }
+        if (!has) return false;
+      }
+      if (query) {
+        var statText = e.stats.map(function (s) { return s.stat; }).join(" ");
+        if ((e.name + " " + e.description + " " + statText + " " + e.companions.join(" ")).toLowerCase().indexOf(query) === -1) return false;
+      }
+      return true;
+    });
+
+    if (sortMode === "companions") {
+      rows.sort(function (a, b) { return b.companions.length - a.companions.length || a.name.localeCompare(b.name); });
+    } else {
+      rows.sort(function (a, b) { return a.name.localeCompare(b.name); });
+    }
+
+    if (rows.length === 0) {
+      enhancementList.innerHTML = '<div class="empty-state">No enhancements match your filters</div>';
+      return;
+    }
+
+    var html = '<div style="color:var(--text-muted);font-size:0.85rem;margin-bottom:0.75rem;">' +
+      rows.length + ' of ' + enhancementListData.length + ' enhancements</div>';
+    for (var i = 0; i < rows.length; i++) {
+      var e = rows[i];
       var enImg = window.ENHANCEMENT_IMAGES && window.ENHANCEMENT_IMAGES[e.name];
       html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
       html += '<div style="display:flex;align-items:center;gap:0.5rem;">';
       if (enImg) {
         html += '<img loading="lazy" class="enhancement-icon" src="images/enhancements/' + enImg + '" alt="">';
       }
-      html += '<div>';
-      html += '<span style="color:var(--highlight);font-weight:700;margin-right:0.5rem;">#' + e.num + '</span>';
       html += '<span style="font-weight:600;">' + escapeHtml(e.name) + '</span>';
-      html += '</div>';
-      html += '</div>';
-      html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(e.description) + '</div>';
       if (e.companions.length > 0) {
-        html += '<div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Companions: ' + e.companions.map(function(c) { return escapeHtml(c); }).join(', ') + '</div>';
+        html += '<span style="margin-left:auto;font-size:0.72rem;color:var(--text-muted);">' + e.companions.length + ' companion' + (e.companions.length === 1 ? '' : 's') + '</span>';
+      }
+      html += '</div>';
+      // stat chips
+      var chips = "";
+      for (var c2 = 0; c2 < e.stats.length; c2++) {
+        var s = e.stats[c2];
+        if (!s.stat) continue;
+        chips += summonedChip(s.stat + " +" + s.value + "%", "#42a5f5");
+      }
+      if (chips) html += '<div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.4rem;">' + chips + '</div>';
+      if (e.description) {
+        html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(e.description) + '</div>';
+      }
+      if (e.companions.length > 0) {
+        html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.35rem;">Companions: ' + e.companions.map(function (cc) { return escapeHtml(cc); }).join(', ') + '</div>';
       }
       html += '</div>';
     }
@@ -838,12 +885,19 @@
       categories[d.category].push(d);
     }
 
-    var html = "";
-    var num = 1;
+    var totalMatched = 0;
+    for (var tc in categories) totalMatched += categories[tc].length;
+    if (totalMatched === 0) {
+      damageList.innerHTML = '<div class="empty-state">No damage companions match your filters</div>';
+      return;
+    }
+
+    var html = '<div style="color:var(--text-muted);font-size:0.85rem;margin-bottom:0.75rem;">' +
+      totalMatched + ' of ' + damageData.length + ' damage companions</div>';
     for (var oi = 0; oi < order.length; oi++) {
       var cat = order[oi];
       if (!categories[cat]) continue;
-      html += '<div style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--highlight);padding:0.75rem 0 0.4rem;margin-bottom:0.5rem;border-bottom:1px solid var(--border-default);">' + cat + '</div>';
+      html += '<div class="summoned-group-header">' + escapeHtml(cat) + ' <span style="color:var(--text-muted);font-weight:600;">(' + categories[cat].length + ')</span></div>';
       for (var j = 0; j < categories[cat].length; j++) {
         var d2 = categories[cat][j];
         var compImg = window.COMPANION_IMAGES && window.COMPANION_IMAGES[d2.name];
@@ -852,7 +906,7 @@
         if (compImg) {
           html += '<img loading="lazy" class="companion-icon" src="images/companions/' + compImg + '" alt="">';
         }
-        html += '<span><span style="color:var(--highlight);margin-right:0.5rem;">#' + num + '</span>' + escapeHtml(d2.name) + '</span></div>';
+        html += '<span>' + escapeHtml(d2.name) + '</span></div>';
         html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.2rem;">' + escapeHtml(d2.powerName) + '</div>';
         if ((d2.stats && d2.stats.length > 0) || d2.celMag) {
           html += '<div style="margin-top:0.3rem;">';
@@ -871,11 +925,9 @@
         }
         html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(d2.description) + '</div>';
         html += '</div>';
-        num++;
       }
     }
 
-    if (!html) html = '<div class="empty-state">No damage companions match your search</div>';
     damageList.innerHTML = html;
   }
 
@@ -918,6 +970,8 @@
   filterSummonedScope.addEventListener("change", renderSummonedView);
   filterSummonedStat.addEventListener("change", renderSummonedView);
   enhancementSearch.addEventListener("input", renderEnhancementView);
+  filterEnhancementStat.addEventListener("change", renderEnhancementView);
+  sortEnhancement.addEventListener("change", renderEnhancementView);
   damageSearch.addEventListener("input", renderDamageView);
   filterDamageCat.addEventListener("change", renderDamageView);
 
