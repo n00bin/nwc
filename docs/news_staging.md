@@ -18,6 +18,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Companions page: the **Damage Companions** tab gained per-category counts and a cleaner, consistent layout, and the **Lookup** tab has a new Base Rarity filter so you can list all Common / Mythic / Celestial / etc. companions at once.
 - Consumables page: new **Category filter** — narrow the list to just Elixirs, Potions, Event/Stronghold Food, Scrolls, Belt Items, or Other.
 - Artifacts page: the stat display is cleaned up into tidy chips (matching the rest of the site) instead of the old two-column layout.
+- Mounts page: the **Combat Power Ranking** is redesigned to match the rest of the site (clean cards with a green damage chip) and is now **ordered by the damage each power's buff/debuff provides** — so the strongest party-damage contributors (the +16% enemy-damage-taken debuffs) sit at the top.
 
 ### Data Additions
 - Mounts: added **Olive the Octopus** — Equip power Mystic Aura (+2,250 Power & Accuracy to your party) and Combat power Tidal Wave (knockback + a party damage boost / enemy damage-taken debuff). Its insignia slots still need an in-game capture to finish.
@@ -30,6 +31,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Toon Forge: added four Universal gemstone enchantments — **Celestial Sugilite**, **Celestial Obsidian**, **Celestial Netherite**, and **Celestial Skullite** — at their Celestial values (transcribed from in-game tooltips). They give different stats depending on whether they're slotted in an Offense, Defense, or Utility slot.
 - Toon Forge: catalogued **26 campaign/enemy Overload enchantments** (Reghed, Thay/Doomvault, Pirate's Skyhold, Dread Vault, and Wildspace zones, plus Undead / Fiend / Astral Elf wards and slayers). They're zone- or enemy-conditional, so they appear in the overload picker but only count when you're actually in that zone or fighting that enemy type.
 - Campaign Boosters: added **Frost Visage** — a Biting Cold campaign gadget (+15% campaign currency drop rate; Use: +55% Movement Speed for 15s in The Reghed Edge, 30s recharge).
+- Toon Forge — **every DPS power's magnitude verified** against in-game tooltips across all 8 damage classes (~200 powers): 11 corrected (Warlock Tyrannical Curse, Rogue Assassinate, several Ranger powers, Wizard Conduit of Ice, Bard Contre…) and the Cleric's *Prophet of Doom* fixed to its real name *Prophecy of Doom*. Plus a new **buff-value layer** — powers that boost your damage instead of hitting directly (the Rogue's Lurker's Assault +40%, Warlock's Tyrannical Curse, Cleric's Prophecy of Doom, Bard's Lore) now count in the sim's numbers, weighted by how long you keep them up.
 
 ### Bug Fixes
 - Toon Forge: the build summary now correctly reads "Active companions: X / 5" (was "/ 4").

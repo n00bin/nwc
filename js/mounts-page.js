@@ -658,23 +658,29 @@
   var stdpsView   = document.getElementById("stdps-view");
   var equipView   = document.getElementById("equip-view");
 
+  // dmgPct = the power's headline DAMAGE-amplification % from its buff/debuff
+  // (enemy damage-taken debuff, party/self damage buff, or offensive stat debuff).
+  // dmgKind labels the chip; the list is sorted by dmgPct descending below.
   var combatData = [
-    { rank: 1, power: "Perilous Polymorph Potion", effect: "-7.5% to enemy Defense and Critical Avoidance", mounts: ["Hag's Enchanted Cauldron"] },
-    { rank: 2, power: "Grand Inspiration", effect: "1,000 magnitude damage, all allies gain +15% damage or damage resist or healing depending on role", mounts: ["Pegasus"] },
-    { rank: 3, power: "Mighty Dragon's Roar", effect: "-15% to target's Critical Avoidance and outgoing damage, +15% damage to caster and +15% Crit Strike + Accuracy", mounts: ["Red Dragon"] },
-    { rank: 4, power: "Necrotic Roar", effect: "+16% incoming damage received by targets, reduces their Accuracy by 16%", mounts: ["Glorious Undead Lion"] },
-    { rank: 5, power: "Ethereal Vortex", effect: "+16% incoming damage received by targets, reduces their outgoing damage by 16%", mounts: ["Twice-Pale Alder"] },
-    { rank: 6, power: "Phantasmic Wake", effect: "+16% incoming damage received by targets, reduces their Critical Strike by 16%", mounts: ["Phantom Panther"] },
-    { rank: 7, power: "Bat Swarm", effect: "+15% incoming damage received by target, -15% outgoing damage and Critical Chance", mounts: ["Swarm"] },
-    { rank: 8, power: "Eclipsed Armament", effect: "600 magnitude damage, +15% incoming damage received and -15% outgoing damage to targets", mounts: ["Eclipse Lion", "Neo Eclipse Lion"] },
-    { rank: 9, power: "Mythic Tyrannosaurus Rex'em", effect: "6s Root to controllable targets, +15% incoming damage received, minion consume", mounts: ["King of Spines"] },
-    { rank: 10, power: "Psionic Blast", effect: "+15% incoming damage received to targets", mounts: ["Brain Stealer Dragon"] },
-    { rank: 11, power: "Hot Streak", effect: "+15% incoming damage received to targets within magma pools", mounts: ["Bestial Fire Archon"] },
-    { rank: 12, power: "Meteoric Impact", effect: "750 magnitude damage, 20 magnitude DoT for 10s, +11% damage taken by targets", mounts: ["Legendary Barlgura", "Barlgura"] },
-    { rank: 13, power: "Marvelous Balloon Bombardment", effect: "800 magnitude, +7.5% damage taken by targets. Treasure increases a random stat by 1.5% for 10s", mounts: ["Marvelous Reconnaissance Balloons", "Legendary Reconnaissance Balloons"] },
-    { rank: 14, power: "Cauldron Gasses", effect: "115 magnitude DoT for 10s, all allies gain +15% Accuracy + Combat Advantage", mounts: ["Hag's Cooking Cauldron"] },
-    { rank: 15, power: "Frozen Retribution", effect: "+15% damage buff to caster. Target is 13% slowed, -15% Deflect, -15% damage, -13% Crit Chance", mounts: ["Frost Salamander", "Rimefire Salamander"] },
+    { power: "Perilous Polymorph Potion", dmgPct: 7.5, dmgKind: "enemy -Def/-CritAvoid", effect: "-7.5% to enemy Defense and Critical Avoidance", mounts: ["Hag's Enchanted Cauldron"] },
+    { power: "Grand Inspiration", dmgPct: 15, dmgKind: "party dmg", effect: "1,000 magnitude damage, all allies gain +15% damage or damage resist or healing depending on role", mounts: ["Pegasus"] },
+    { power: "Mighty Dragon's Roar", dmgPct: 15, dmgKind: "self dmg", effect: "-15% to target's Critical Avoidance and outgoing damage, +15% damage to caster and +15% Crit Strike + Accuracy", mounts: ["Red Dragon"] },
+    { power: "Necrotic Roar", dmgPct: 16, dmgKind: "enemy dmg taken", effect: "+16% incoming damage received by targets, reduces their Accuracy by 16%", mounts: ["Glorious Undead Lion"] },
+    { power: "Ethereal Vortex", dmgPct: 16, dmgKind: "enemy dmg taken", effect: "+16% incoming damage received by targets, reduces their outgoing damage by 16%", mounts: ["Twice-Pale Alder"] },
+    { power: "Phantasmic Wake", dmgPct: 16, dmgKind: "enemy dmg taken", effect: "+16% incoming damage received by targets, reduces their Critical Strike by 16%", mounts: ["Phantom Panther"] },
+    { power: "Bat Swarm", dmgPct: 15, dmgKind: "enemy dmg taken", effect: "+15% incoming damage received by target, -15% outgoing damage and Critical Chance", mounts: ["Swarm"] },
+    { power: "Eclipsed Armament", dmgPct: 15, dmgKind: "enemy dmg taken", effect: "600 magnitude damage, +15% incoming damage received and -15% outgoing damage to targets", mounts: ["Eclipse Lion", "Neo Eclipse Lion"] },
+    { power: "Mythic Tyrannosaurus Rex'em", dmgPct: 15, dmgKind: "enemy dmg taken", effect: "6s Root to controllable targets, +15% incoming damage received, minion consume", mounts: ["King of Spines"] },
+    { power: "Psionic Blast", dmgPct: 15, dmgKind: "enemy dmg taken", effect: "+15% incoming damage received to targets", mounts: ["Brain Stealer Dragon"] },
+    { power: "Hot Streak", dmgPct: 15, dmgKind: "enemy dmg taken (in magma)", effect: "+15% incoming damage received to targets within magma pools", mounts: ["Bestial Fire Archon"] },
+    { power: "Cauldron Gasses", dmgPct: 15, dmgKind: "party Acc/CA", effect: "115 magnitude DoT for 10s, all allies gain +15% Accuracy + Combat Advantage", mounts: ["Hag's Cooking Cauldron"] },
+    { power: "Frozen Retribution", dmgPct: 15, dmgKind: "self dmg", effect: "+15% damage buff to caster. Target is 13% slowed, -15% Deflect, -15% damage, -13% Crit Chance", mounts: ["Frost Salamander", "Rimefire Salamander"] },
+    { power: "Meteoric Impact", dmgPct: 11, dmgKind: "enemy dmg taken", effect: "750 magnitude damage, 20 magnitude DoT for 10s, +11% damage taken by targets", mounts: ["Legendary Barlgura", "Barlgura"] },
+    { power: "Marvelous Balloon Bombardment", dmgPct: 7.5, dmgKind: "enemy dmg taken", effect: "800 magnitude, +7.5% damage taken by targets. Treasure increases a random stat by 1.5% for 10s", mounts: ["Marvelous Reconnaissance Balloons", "Legendary Reconnaissance Balloons"] },
   ];
+  // Sort by damage contribution (desc) and assign rank from the result.
+  combatData.sort(function (a, b) { return (b.dmgPct || 0) - (a.dmgPct || 0); });
+  for (var cdi = 0; cdi < combatData.length; cdi++) combatData[cdi].rank = cdi + 1;
 
   var stdpsData = [
     { rank: 1, power: "Infernal Pounce", effect: "Physical 3,938 + 394 magnitude damage against control immune enemies", mounts: ["Demonic Gravehound"] },
@@ -695,6 +701,11 @@
     { rank: 6, power: "Ferocity", effect: "When you or a party member are struck, chance to gain Ferocity (+1.6% additional damage per stack, up to 3 stacks for 10s)", mounts: ["Turmish Lion"] },
   ];
 
+  // Shared green stat chip, matching the companions/consumables/artifacts style
+  function statChip(text) {
+    return '<span style="display:inline-block;background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--radius-sm);padding:0.15rem 0.5rem;margin:0.15rem 0.25rem 0.15rem 0;font-size:0.82rem;font-weight:600;color:var(--stat-positive);">' + escapeHtml(text) + '</span>';
+  }
+
   function renderCombatRanking(data, container, query) {
     query = (query || "").toLowerCase();
     var html = "";
@@ -702,11 +713,15 @@
       var d = data[i];
       if (query && (d.power + " " + d.effect + " " + (d.mounts || []).join(" ")).toLowerCase().indexOf(query) === -1) continue;
       html += '<div class="ranking-card" style="flex-direction:column;align-items:stretch;">';
-      html += '<div style="font-weight:600;">';
-      if (d.rank) html += '<span style="color:var(--highlight);margin-right:0.5rem;">#' + d.rank + '</span>';
-      html += escapeHtml(d.power) + '</div>';
+      html += '<div style="display:flex;align-items:center;gap:0.5rem;font-weight:600;">';
+      if (d.rank) html += '<span style="color:var(--highlight);">#' + d.rank + '</span>';
+      html += '<span>' + escapeHtml(d.power) + '</span></div>';
+      // Damage-contribution chip (combat ranking) — the buff/debuff this list is sorted by
+      if (d.dmgPct != null) {
+        html += '<div style="margin-top:0.3rem;">' + statChip('+' + d.dmgPct + '% ' + (d.dmgKind || 'damage')) + '</div>';
+      }
       if (d.mounts) {
-        html += '<div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">' + d.mounts.map(function(m) { return escapeHtml(m); }).join(', ') + '</div>';
+        html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.25rem;">' + d.mounts.map(function (m) { return escapeHtml(m); }).join(', ') + '</div>';
       }
       html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(d.effect) + '</div>';
       html += '</div>';
