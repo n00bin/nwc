@@ -92,6 +92,10 @@ Hand-edited `data/*.js` (NOT built from source JSON — edit directly):
 - `news.js`, `patch-notes-var.js` (+ CI-written `patch-notes.json`)
 - hand-curated lookup maps: `artisans.js`, `companion-images.js`,
   `consumable-images.js`, `enhancement-images.js`, `mount-images.js`
+- `companion-skills.js` — companion active-skill reference text (the
+  `COMPANION_SKILLS` map, keyed by LOWERCASE companion name) shown in the
+  Companions Lookup detail panel. Regenerate from
+  `docs/reference/sheets/sheet1__Companion_Skills.csv`.
 
 ---
 

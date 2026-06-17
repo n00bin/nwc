@@ -420,6 +420,24 @@
       html += '<div class="detail-meta">No enhancement data</div>';
     }
 
+    // ---- Active Skills (reference text from the community skills sheet) ----
+    var compSkills = window.COMPANION_SKILLS && window.COMPANION_SKILLS[companion.name.toLowerCase()];
+    if (compSkills && compSkills.length) {
+      html += '<div class="section-header">Skills</div>';
+      html += '<div class="proc-block">';
+      for (var ski = 0; ski < compSkills.length; ski++) {
+        var sk = compSkills[ski];
+        var brd = ski < compSkills.length - 1 ? 'border-bottom:1px solid var(--border-default);' : '';
+        html += '<div style="padding:0.4rem 0;' + brd + '">';
+        html += '<div class="detail-name" style="font-size:0.9rem;">' + escapeHtml(sk.name) + '</div>';
+        if (sk.text) {
+          html += '<div style="font-size:0.84rem;color:var(--text-secondary);margin-top:0.15rem;line-height:1.4;">' + escapeHtml(sk.text) + '</div>';
+        }
+        html += '</div>';
+      }
+      html += '</div>';
+    }
+
     // ---- Notes ----
     if (companion.notes) {
       html += '<div class="section-header">Notes</div>';
