@@ -85,3 +85,6 @@ docs/sheets/
 
 # local headless-chrome install for smoke tests (npx @puppeteer/browsers)
 chrome-headless-shell/
+
+# Cached external reference sheets (community data) — keep local, do not republish; README is tracked
+docs/reference/sheets/*.csv
