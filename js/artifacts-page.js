@@ -221,6 +221,66 @@
   // ============================================================
   // TAB SWITCHING
   // ============================================================
+  // Enchantments tab — every enchant across all 6 rarities (the `rarities`
+  // ladder lives in the data; companion enchant uses its own `rarityLadder`).
+  function renderEnchants() {
+    var data = (typeof ENCHANTS_DATA !== "undefined") ? ENCHANTS_DATA : [];
+    var TIERS = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
+    function cap(x) { return x.charAt(0).toUpperCase() + x.slice(1); }
+    function fmt(v, pct) { return (v == null) ? "&mdash;" : (pct ? ("+" + v + "%") : ("+" + Number(v).toLocaleString())); }
+    function lines(e) {
+      var L = [];
+      if (e.slotType === "companion" && e.rarityLadder) {
+        L.push({ label: "Companion Damage", pct: true, vals: TIERS.map(function (t) { return e.rarityLadder[t] ? e.rarityLadder[t].companionDamagePct : null; }) });
+        L.push({ label: "Augment Bonus (each stat)", pct: false, vals: TIERS.map(function (t) { return e.rarityLadder[t] ? e.rarityLadder[t].augmentBonusPerStat : null; }) });
+        return L;
+      }
+      var rar = e.rarities || {};
+      if (e.slotType === "Universal") {
+        ["offense", "defense", "utility"].forEach(function (slot) {
+          var cel = ((rar.Celestial || {}).universal || e.universal || {})[slot] || {};
+          Object.keys(cel).forEach(function (stat) {
+            L.push({ label: cap(slot) + ": " + stat, pct: false, vals: TIERS.map(function (t) { return (((rar[t] || {}).universal || {})[slot] || {})[stat]; }) });
+          });
+        });
+      } else {
+        var celp = (rar.Celestial || {}).percentStats || e.percentStats || {};
+        Object.keys(celp).forEach(function (stat) {
+          L.push({ label: stat, pct: true, vals: TIERS.map(function (t) { return ((rar[t] || {}).percentStats || {})[stat]; }) });
+        });
+      }
+      return L;
+    }
+    function card(e) {
+      var h = '<div class="art-card"><div class="art-card-header"><span class="art-card-name">' + escapeHtml(e.displayName || e.name) + '</span><span class="toggle-arrow">&#9654;</span></div>';
+      h += '<div class="art-card-body">';
+      if (e.description) h += '<div class="art-effect">' + escapeHtml(e.description) + '</div>';
+      h += '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:0.4rem;"><tr><th style="padding:0.25rem 0.5rem;"></th>';
+      TIERS.forEach(function (t) { var top = t === "Celestial"; h += '<th style="padding:0.25rem 0.5rem;text-align:right;color:' + (top ? 'var(--accent)' : 'var(--text-muted)') + ';font-weight:' + (top ? '700' : '500') + ';">' + t + '</th>'; });
+      h += '</tr>';
+      lines(e).forEach(function (ln) {
+        h += '<tr><td style="padding:0.25rem 0.5rem;color:var(--text-primary);">' + escapeHtml(ln.label) + '</td>';
+        ln.vals.forEach(function (v, i) { var top = TIERS[i] === "Celestial"; h += '<td style="padding:0.25rem 0.5rem;text-align:right;color:' + (top ? 'var(--accent)' : 'var(--text-secondary)') + ';">' + fmt(v, ln.pct) + '</td>'; });
+        h += '</tr>';
+      });
+      return h + '</table></div></div></div>';
+    }
+    var GROUPS = [
+      { key: "Universal", label: "Universal &mdash; Gemstones (offense / defense / utility)" },
+      { key: "Combat", label: "Combat &mdash; Weapon / Armor" },
+      { key: "Bonus", label: "Bonus Slot" },
+      { key: "companion", label: "Companion" }
+    ];
+    var html = '<div style="color:var(--text-secondary);font-size:0.88rem;margin:0.5rem 0 1rem;">Every enchantment across all 6 rarities (Uncommon &rarr; Celestial). You upgrade these over time, so a lower rank gives smaller numbers than the top Celestial tier &mdash; set the rank you own per slot in the Toon Forge build tool.</div>';
+    GROUPS.forEach(function (g) {
+      var list = data.filter(function (e) { return e.slotType === g.key; });
+      if (!list.length) return;
+      html += '<h2 style="font-size:1.05rem;margin:1.2rem 0 0.5rem;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:0.3rem;">' + g.label + ' <span style="color:var(--text-muted);font-weight:400;font-size:0.85rem;">(' + list.length + ')</span></h2>';
+      list.forEach(function (e) { html += card(e); });
+    });
+    document.getElementById("enchants-list").innerHTML = html;
+  }
+
   var tabs = document.querySelectorAll(".view-tab");
   tabs.forEach(function (tab) {
     tab.addEventListener("click", function () {
@@ -231,6 +291,7 @@
       allControls.style.display = tab.getAttribute("data-tab") === "all" ? "" : "none";
 
       if (tab.getAttribute("data-tab") === "ranking") renderRanking(groupRanking, "ranking-list");
+      if (tab.getAttribute("data-tab") === "enchants") renderEnchants();
       if (tab.getAttribute("data-tab") === "sets") renderSets();
     });
   });
