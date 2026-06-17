@@ -240,7 +240,7 @@
         ["offense", "defense", "utility"].forEach(function (slot) {
           var cel = ((rar.Celestial || {}).universal || e.universal || {})[slot] || {};
           Object.keys(cel).forEach(function (stat) {
-            L.push({ label: cap(slot) + ": " + stat, pct: false, vals: TIERS.map(function (t) { return (((rar[t] || {}).universal || {})[slot] || {})[stat]; }) });
+            L.push({ group: cap(slot), label: stat, pct: false, vals: TIERS.map(function (t) { return (((rar[t] || {}).universal || {})[slot] || {})[stat]; }) });
           });
         });
       } else {
@@ -266,8 +266,13 @@
         h += '<th style="padding:0.35rem 0.6rem;text-align:right;white-space:nowrap;color:' + RARITY_COLOR[t] + ';font-weight:' + (top ? '800' : '600') + ';font-size:' + (top ? '0.82rem' : '0.72rem') + ';' + (top ? 'border-bottom:2px solid ' + RARITY_COLOR.Celestial + ';' : '') + '">' + t + '</th>';
       });
       h += '</tr></thead><tbody>';
+      var lastGroup = null;
       ls.forEach(function (ln) {
-        h += '<tr><td style="padding:0.3rem 0.6rem;color:var(--text-primary);font-weight:500;white-space:nowrap;">' + escapeHtml(ln.label) + '</td>';
+        if (ln.group && ln.group !== lastGroup) {
+          lastGroup = ln.group;
+          h += '<tr><td colspan="' + (TIERS.length + 1) + '" style="padding:0.6rem 0.6rem 0.2rem;color:var(--accent);font-weight:700;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;border-top:1px solid var(--border);">In ' + escapeHtml(ln.group) + ' Slot</td></tr>';
+        }
+        h += '<tr><td style="padding:0.3rem 0.6rem 0.3rem ' + (ln.group ? '1.2rem' : '0.6rem') + ';color:var(--text-primary);font-weight:500;white-space:nowrap;">' + escapeHtml(ln.label) + '</td>';
         ln.vals.forEach(function (v, i) {
           var top = TIERS[i] === "Celestial";
           h += '<td style="padding:0.3rem 0.6rem;text-align:right;white-space:nowrap;' + (top ? 'background:rgba(63,224,224,0.09);color:' + RARITY_COLOR.Celestial + ';font-weight:700;font-size:0.88rem;' : 'color:var(--text-muted);font-weight:400;') + '">' + fmt(v, ln.pct) + '</td>';
