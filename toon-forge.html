@@ -5472,6 +5472,17 @@
       const userEnch = (typeof getUserAddedEnchants === "function") ? getUserAddedEnchants() : [];
       return userEnch.find(e => e.name === name) || null;
     }
+    // In-game, an enchant's NAME carries its rarity as the first word
+    // ("Celestial Garnet", "Mythic Garnet", ...). Our data stores the top
+    // ("Celestial ...") name; relabel the leading rarity word to the chosen rank
+    // so a downgraded enchant reads like the in-game item. Display only — the
+    // stored/canonical name (and detail lookups) stay "Celestial ...".
+    const _ENCH_RARITY_WORDS = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
+    function enchDisplayName(name, rank) {
+      if (!name || !rank || rank === "Celestial") return name;
+      for (const w of _ENCH_RARITY_WORDS) { if (name.indexOf(w + " ") === 0) return rank + name.slice(w.length); }
+      return name;
+    }
     // Return a copy of an enchant scaled to a given rank (linear tier/6, matching
     // the engine + the Enchantments-page ladders). Celestial / unknown = unchanged.
     function enchantAtRank(e, rank) {
@@ -5517,6 +5528,7 @@
       const slotType = e.slotType ? e.slotType + " slot" : "";
       const rankTag = (e._rank && e._rank !== "Celestial") ? `Rank: ${e._rank}` : "";
       const meta = [rankTag, il, cr, slotType].filter(Boolean).join(" · ");
+      const dispName = enchDisplayName(e.name, e._rank);
 
       // Universal enchants morph per slotted family — show all three
       let universalBlock = "";
@@ -5556,7 +5568,7 @@
         _equipBonusSection(e.equipBonuses, "Equip Bonuses"),
         description
       ].filter(Boolean).join("");
-      return { name: e.name, meta, desc };
+      return { name: dispName, meta, desc };
     }
     function findOverloadByName(name) {
       if (!name) return null;
@@ -13178,15 +13190,16 @@
         const slotLabel = slotType[0].toUpperCase() + slotType.slice(1) + (idx !== undefined ? ` ${idx + 1}` : "");
         const info = filled ? `<button class="chip-info" data-details-type="enchant" data-details-key="${_escAttr(name)}" data-details-slot="${_escAttr(slotLabel)}" title="See enchant details">\u{1F50D}</button>` : "";
         let rankSel = "";
+        const cur = (state.enchantRarity && state.enchantRarity[slotLabel]) || "Celestial";
         if (filled) {
-          const cur = (state.enchantRarity && state.enchantRarity[slotLabel]) || "Celestial";
           rankSel = `<select class="ench-rank-select" data-ench-rank-slot="${_escAttr(slotLabel)}" title="The rank you own (lower = not fully upgraded)" style="font-size:0.68rem;margin-top:0.2rem;width:100%;background:var(--bg-elev,#222);color:var(--text-secondary);border:1px solid var(--border);border-radius:4px;cursor:pointer;">`
             + ENCH_RANKS.map(r => `<option value="${r}"${r === cur ? " selected" : ""}>${r}</option>`).join("")
             + `</select>`;
         }
+        const shownName = filled ? enchDisplayName(name, cur) : "+ pick";
         return `<div class="ench-chip ${filled?"filled":""}" data-ench-type="${slotType}"${idx!==undefined?` data-ench-idx="${idx}"`:""}>
           <div class="ench-chip-label">${slotType[0].toUpperCase()+slotType.slice(1)}${idx!==undefined?` ${idx+1}`:""}</div>
-          <div class="ench-chip-name">${filled ? name : "+ pick"}${info}</div>
+          <div class="ench-chip-name">${shownName}${info}</div>
           ${rankSel}
         </div>`;
       }
