@@ -42,7 +42,7 @@ __pycache__/
 # free site. (The engine the optimizer scores against is public; the
 # optimizer logic and generated builds are the paid IP.)
 scripts/optimize_build.js
-js/optimizer-local.js
+js/optimizer-local.js*
 scripts/best_build_oneshot.workflow.js
 scripts/regen_build_link.py
 scripts/build_warlock_dps_bis_link.py

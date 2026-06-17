@@ -1,5 +1,33 @@
 # Data Issues To Investigate
 
+## Artifact + enchantment RANK/TIER selector — feature + data capture (2026-06-16)
+n00b direction, prompted by reports #123–128 (Arma-Egg-On). Players run lower
+ranks of artifacts (and enchantments), but the site only stores/shows the top
+rank (Mythic for artifacts), so a player's lower-rank numbers read as "wrong."
+They aren't — we just don't model the lower tiers yet.
+
+**Plan:** give artifacts and enchantments a rank/drop-rarity selector like
+weapons already have (mirror the `state.gearIL` / `findGearByName` tier pattern
+so share-links carry the chosen rank). Two parts:
+1. **DATA** — capture each artifact's per-rank stat block (and enchant per-rank),
+   not just Mythic. n00b to provide lower-tier screenshots. Arma-Egg-On is the
+   first case: reports list a lower tier at a uniform **~94.2%** of our Mythic
+   (IL 2450/2600, CR 1960/2080, CritSev 2205/2340, Accuracy 2389/2535,
+   CA 1470/1560, cooldown 70/60). Do NOT write these until the rank is verified.
+2. **UI/ENGINE** — rank selector on `artifacts.html` and the Toon Forge
+   artifact/enchant pickers; engine resolves the chosen rank's stats.
+
+Reports #123–128 set to **Confirmed** (awaiting lower-tier capture). Note the
+enchant side already has partial rank scaling (gemstone ×6-from-Rank-1).
+
+## #120 Tempest Gaze Seal — slot/stat verify pending screenshots (2026-06-16)
+We store `Tempest Gaze Seal (Precision Tactics)` (gear.json **id 409**) as a
+**Shirt, Forte 1201**. Report #120 says **Pants, Forte 1701**. The slot fix is
+well-supported (the set already has a *Charged Fury* shirt → id 409 must be the
+*pants*; Precision Tactics fingerprints to Pants in our Jotunskar model), but
+n00b will confirm the slot + the Forte value from an in-game screenshot before
+we overwrite the intake. Report set to **Confirmed**.
+
 ## Mounts needing equip/combat powers — 17 from complete-DB pass (2026-06-16)
 The 57-mount complete-DB add (Rainer pocket-wiki) left these without full power
 data: the sheet leaves equip/combat blank for them, so only quality + insignia
