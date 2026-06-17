@@ -1262,3 +1262,35 @@ classes were fixed in gear.json:
 - **Dup-name "— IL ####" cleanup still pending** (separate from values): the Aegis/Oathbreaker/Grimfang/
   Harrowed "— IL ####" entries now hold CORRECT bonuses but remain DUPLICATE items (part of the known
   ~29 dup-name set-conflicts) — to be merged/removed in the dedup pass.
+
+## Hidden-bonus render audit (2026-06-16)
+
+A site-wide scan replicating the gear-card render-visibility logic found **35 items** that had
+an `equipBonuses` array but rendered NO bonus block (the bonus was silently hidden). **18 fixed**
+(text already existed somewhere); **17 still need a capture** (Lionsmane set bonus). Three causes:
+
+1. **Marker Set EB shadowing the legacy `setBonus` field** — a structured `{type:"Set", setName,
+   pieces}` marker (no description) suppressed the legacy `setBonus`-field render path, so the full
+   text already sitting in `setBonus` never showed. Fixed by copying `setBonus` into the marker's
+   `description` + a `name`: Cincture of Atropal Essence (Soulmonger), Demogorgon's Girdle of Might
+   (Demon Lords' Immortality), Lostmauth's Hoard Necklace, Phantom's Mark/Fang + Deadshot's Mark/
+   Phantom's Bite (Crimson Clarity / Greater).
+2. **Marker with no own text** — copied the set bonus from a described sibling: Trailblazer's
+   Raid/Assault Bracers (Relic, from id 2005), Drowcraft Gloves (from id 2121).
+3. **Description present but no `name`** — the renderer keys a bonus card on `eb.name` (or a name
+   synthesized from `stat`+`amount`); an EB with ONLY a `description` falls through and is hidden.
+   Added names: Starcore Tome / +1 (Dark Matter), Meteoric Iron Tome/Pactblade (Meteoric Fury),
+   Morlanth's Shroud + Brynnyr's Demise (Equip → name "Equip Bonus"). Also retagged the 2 IL3400
+   strays to Whisper of Power (Aegis 5240 = +7,200 Forte verified; Codex 5152 = +5,200 Power from
+   the Omen partner, not yet capture-verified).
+
+**RENDER-CODE GAP (recommended fix, NOT yet done):** the `toon-forge.html` gear-card renderer
+(~line 12619) hides any equipBonus that has a `description` but no `name` and no `stat`+`amount`.
+The data workaround above adds names, but a small code fix — render description-only bonuses (fall
+back to a generic label or the set name) — would prevent recurrence. Deferred because toon-forge.html
+had concurrent uncommitted edits.
+
+**STILL MISSING — Lionsmane 4-piece set bonus (17 items):** ids 5214 + 7330-7345 (Lionsmane Duelist
+Vest and the Lionsmane Gladiator/Executioner armor). The Lionsmane set-bonus text is in the data
+**nowhere** (0 sources), so these render no bonus. Needs an in-game "If Equipped" capture of any
+Lionsmane 4-pc piece to source the text.
