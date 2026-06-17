@@ -13424,6 +13424,14 @@
       const g = document.getElementById("artifact-grid");
       const opts = artifactOptions(state.class);
       const setStatus = computeSetStatus();
+      // Artifact rarities are separate item-level rows. Group rows per name so
+      // the picker shows ONE entry per artifact and the equipped chip offers
+      // rarity pills (like companions) to switch tier.
+      const rowsByName = {};
+      opts.forEach(a => { (rowsByName[a.name] = rowsByName[a.name] || []).push(a); });
+      Object.keys(rowsByName).forEach(n => rowsByName[n].sort((a, b) => (b.item_level || 0) - (a.item_level || 0)));
+      const pickerOpts = Object.keys(rowsByName).map(n => rowsByName[n][0])
+        .sort((a, b) => (b.item_level || 0) - (a.item_level || 0) || a.name.localeCompare(b.name));
       // Names already picked in any slot — used to filter other slots'
       // pickers since you can't equip duplicate artifacts in-game.
       const pickedNames = new Set(
@@ -13432,15 +13440,26 @@
       g.innerHTML = ARTIFACT_SLOTS.map(slot => {
         const v = state.artifacts[slot] || "";
         const filled = !!v;
-        const noItems = opts.length === 0;
-        const aIL = filled ? (state.artifactIL || {})[slot] : null;
+        const noItems = pickerOpts.length === 0;
+        const rows = filled ? (rowsByName[v] || []) : [];
+        let aIL = filled ? (state.artifactIL || {})[slot] : null;
+        if (filled && aIL == null && rows[0]) aIL = rows[0].item_level;   // default to top tier
         const chipLabel = filled
-          ? "💎 " + v + (aIL ? ` · IL ${Number(aIL).toLocaleString()}` : "")
+          ? "💎 " + v
           : (noItems ? "(no artifacts available)" : "+ Pick artifact");
         const chipClasses = ["gear-pick-chip"];
         if (filled) chipClasses.push("filled");
         if (noItems) chipClasses.push("disabled");
         const artInfo = filled ? `<button class="chip-info" data-details-type="artifact" data-details-key="${_escAttr(v)}"${aIL ? ` data-details-il="${aIL}"` : ""} title="See artifact details">\u{1F50D}</button>` : "";
+        // Rarity pills — one per available item-level row, only when >1 exists.
+        let pills = "";
+        if (filled && rows.length > 1) {
+          pills = `<div class="art-rarity-pills" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px;">` +
+            rows.map(r => {
+              const sel = Number(aIL) === Number(r.item_level);
+              return `<button class="art-rarity-pill" data-art-rarity="${slot}" data-art-il="${r.item_level}" title="Show this rarity's stats" style="font-size:0.68rem;padding:2px 8px;border-radius:10px;cursor:pointer;border:1px solid ${sel ? "var(--accent)" : "var(--border)"};background:${sel ? "var(--accent)" : "transparent"};color:${sel ? "#fff" : "var(--text-secondary)"};">IL ${Number(r.item_level).toLocaleString()}</button>`;
+            }).join("") + `</div>`;
+        }
         return `
           <div class="slot ${filled ? "filled" : ""}">
             <div class="slot-label">${slot}</div>
@@ -13448,6 +13467,7 @@
               ${chipLabel}
               ${artInfo}
             </div>
+            ${pills}
             ${filled ? setStatusRow(findArtifactByName(v, aIL), setStatus) : ""}
           </div>`;
       }).join("");
@@ -13461,7 +13481,7 @@
           const others = new Set(
             ARTIFACT_SLOTS.map(s => state.artifacts[s]).filter(Boolean).filter(n => n !== current)
           );
-          const allowed = opts.filter(item => !others.has(item.name));
+          const allowed = pickerOpts.filter(item => !others.has(item.name));
           openPicker({
             dataType: "artifact",
             title: `${slot} — ${allowed.length} artifacts available`,
@@ -13486,6 +13506,20 @@
               toast(item ? `Slotted ${item.name} (${slot})` : `Cleared ${slot}`);
             }
           });
+        });
+      });
+      // Rarity pills — switch the equipped artifact's tier (its item-level row).
+      g.querySelectorAll("[data-art-rarity]").forEach(el => {
+        el.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const slot = el.dataset.artRarity;
+          if (!state.artifactIL) state.artifactIL = {};
+          state.artifactIL[slot] = Number(el.dataset.artIl);
+          applyAutoTIL();
+          recomputeAbilityTotals();
+          renderArtifacts();
+          renderGear();
+          rerenderAll();
         });
       });
     }
