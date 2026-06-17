@@ -96,4 +96,31 @@ var TF_ROTATION_PROFILES = {
   }
 };
 
+// Damage buffs/debuffs a slotted power provides WHILE ACTIVE. These powers have
+// no hit "magnitude" (so they score 0 on their own) but multiply the rest of your
+// rotation. The engine (slottedBuffMultiplier in toon-forge.html) credits each at
+// pct × uptime, uptime = duration / (the power's cooldown or AP-gated cadence).
+//   scope "self"   = +% of YOUR damage dealt
+//   scope "target" = +% damage the TARGET takes (same effect vs a single-target boss)
+//   appliesTo (optional) = only boosts that power slot (weighted by the rotation mix)
+// Values from in-game tooltips (docs/audit/power_magnitude_verification.md).
+var TF_POWER_BUFFS = {
+  "Lurker's Assault":   { pct: 40, durationSeconds: 10, scope: "self" },
+  "Determination":      { pct: 40, durationSeconds: 10, scope: "self" },
+  "Inspiration":        { pct: 25, durationSeconds: 12, scope: "self" },
+  "Arcane Empowerment": { pct: 20, durationSeconds: 10, scope: "self", appliesTo: "encounter" },
+  "Throw Caution":      { pct: 10, durationSeconds: 5,  scope: "self" },
+  "Battle Fury":        { pct: 10, durationSeconds: 10, scope: "self" },
+  "Heavy Slash":        { pct: 5,  durationSeconds: 12, scope: "self" },
+  "Relentless Slash":   { pct: 5,  durationSeconds: 12, scope: "self" },
+  "Prophecy of Doom":   { pct: 30, durationSeconds: 10, scope: "target" },
+  "Lore":               { pct: 20, durationSeconds: 10, scope: "target" },
+  "Tyrannical Curse":   { pct: 15, durationSeconds: 20, scope: "target" },
+  "Wicked Reminder":    { pct: 10, durationSeconds: 10, scope: "target" },
+  "Commanding Shot":    { pct: 10, durationSeconds: 10, scope: "target" },
+  "Commander's Strike": { pct: 10, durationSeconds: 10, scope: "target" },
+  "Break the Spirit":   { pct: 10, durationSeconds: 10, scope: "target" },
+  "Adamantine Strike":  { pct: 5,  durationSeconds: 10, scope: "target" }
+};
+
 if (typeof module !== "undefined" && module.exports) module.exports = TF_ROTATION_PROFILES;

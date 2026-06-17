@@ -9998,6 +9998,40 @@
       return any ? mps : 0;
     }
 
+    // Buff-value layer: slotted powers whose effect is a damage buff/debuff
+    // (Lurker's Assault +40%, Tyrannical Curse +15% taken, etc.) have no hit
+    // magnitude — rotationMagPerSec scores them 0 — but they multiply the rest of
+    // your damage. Credit each at pct × uptime (× rotation slot-share for
+    // appliesTo buffs), summed into one multiplier. Data: TF_POWER_BUFFS.
+    function slottedBuffMultiplier() {
+      if (typeof state === "undefined" || typeof TF_POWER_BUFFS === "undefined") return 1;
+      const cls = (typeof findClass === "function") ? findClass(state.class) : null;
+      const par = (typeof findParagon === "function") ? findParagon(state.class, state.paragon) : null;
+      const grp = function (t) { return [].concat((cls && cls.powers && cls.powers[t]) || [], (par && par.powers && par.powers[t]) || (par && par[t]) || []); };
+      const findPB = function (t, nm) { return grp(t).find(function (p) { return p && (p.name === nm || (p.ranged && p.ranged.name === nm)); }); };
+      const er = (typeof getEngineResult === "function") ? getEngineResult() : null;
+      const rsi = ((er && er.stats && er.stats["Recharge Speed"] && er.stats["Recharge Speed"].finalPct) || 0) / 100;
+      const apg = ((er && er.stats && er.stats["Action Point Gain"] && er.stats["Action Point Gain"].finalPct) || 0) / 100;
+      const mix = (typeof getPowerMix === "function") ? getPowerMix() : null;
+      const AP_PER_SEC = 40;
+      let pct = 0;
+      [["atWill", state.slottedAtWills], ["encounter", state.slottedEncounters], ["daily", state.slottedDailies]].forEach(function (gs) {
+        (gs[1] || []).forEach(function (nm) {
+          if (!nm) return;
+          const b = TF_POWER_BUFFS[nm]; if (!b || !b.pct) return;
+          const p = findPB(gs[0], nm); if (!p) return;
+          let uptime;
+          if (gs[0] === "daily") { const ap = (+p.actionPointCost > 0) ? +p.actionPointCost : 1000; const iv = ap / (AP_PER_SEC * (1 + apg)); uptime = iv > 0 ? Math.min(1, (b.durationSeconds || 0) / iv) : 1; }
+          else if (gs[0] === "encounter") { const cd = p.cooldownSeconds || p.rechargeSeconds || 0; const cdEff = cd > 0 ? Math.max(cd, 6) / (1 + rsi) : 0; uptime = cdEff > 0 ? Math.min(1, (b.durationSeconds || 0) / cdEff) : 1; }
+          else uptime = 1;
+          let eff = (b.pct || 0) * uptime;
+          if (b.appliesTo && mix && mix[b.appliesTo] != null) eff *= mix[b.appliesTo];
+          pct += eff;
+        });
+      });
+      return 1 + pct / 100;
+    }
+
     // ===== Sequence-proc damage layer =====
     // Gear bonuses worded "when you use a Daily, your next Encounter does +X%
     // more damage" are SEQUENCE-conditional (power A enables a boost on power
@@ -15370,7 +15404,10 @@
       // any other generic damage source.
       const seqProc = (typeof computeSequenceProcBoost === "function") ? computeSequenceProcBoost() : { pct: 0, contributors: [] };
       const boostMult = (1 + (db.generic || 0) / 100) * (1 + (db.base || 0) / 100) * (1 + typeBoost / 100) * (1 + slotPct / 100) * (1 + seqProc.pct / 100);
-      const baseDmg = baseVal * (1 + pmods.dmgTaken) * boostMult;
+      // Buff-value layer: damage buffs/debuffs on slotted powers multiply the rest
+      // of the rotation, credited at uptime (slottedBuffMultiplier / TF_POWER_BUFFS).
+      const buffMult = (typeof slottedBuffMultiplier === "function") ? slottedBuffMultiplier() : 1;
+      const baseDmg = baseVal * (1 + pmods.dmgTaken) * boostMult * buffMult;
       const powerMult = 1 + power;
       const flankBonus = 1 + Math.max(0, ca - e.awareness);
       const critBonus = 1 + Math.max(0, critSev - e.critAvoid);
