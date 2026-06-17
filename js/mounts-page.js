@@ -682,15 +682,21 @@
   combatData.sort(function (a, b) { return (b.dmgPct || 0) - (a.dmgPct || 0); });
   for (var cdi = 0; cdi < combatData.length; cdi++) combatData[cdi].rank = cdi + 1;
 
+  // magnitude = total damage per use (direct + DoT + vs-boss bonus, since this is
+  // a single-target/boss ranking). dmgType (Physical/Magical) = which of your
+  // damage-type bonuses it scales with. Sorted by magnitude (hardest-hitting) below.
   var stdpsData = [
-    { rank: 1, power: "Infernal Pounce", effect: "Physical 3,938 + 394 magnitude damage against control immune enemies", mounts: ["Demonic Gravehound"] },
-    { rank: 2, power: "Grubshank SMAAASH", effect: "Magical 2,362 + 2,264 DoT for 5s", mounts: ["Grubshank the Burdened"] },
-    { rank: 3, power: "Hell on Faer\u00fbn", effect: "Magical 1,969 + 2,264 DoT for 5s", mounts: ["Legendary Hellfire Engine"] },
-    { rank: 4, power: "Tunnel Vision", effect: "Magical 3,938 magnitude damage", mounts: ["Maltese Tiger", "Giant Crab", "Heavy Worg", "Leopard of Chult", "Armored Bear", "Polar Bear", "Hell Hound", "Wolf of the Wild Hunt", "Hellfire Engine", "Epic Giant Toad", "Cavalry Tyrannosaur", "Aberrant Fey Wolf", "Aberrant Drake", "Savage Polar Bear", "Owlbear", "Bulette", "Panther", "Moonbear", "Crag Cat", "Turmish Lion", "and many more"] },
-    { rank: 5, power: "Giant Toad Tongue Lash", effect: "Magical 3,938 magnitude damage", mounts: ["Legendary Giant Toad"] },
-    { rank: 6, power: "Golden Touch", effect: "Magical 3,938 magnitude damage", mounts: ["Golden Warhorse"] },
-    { rank: 7, power: "Bigby's Crushing Hand", effect: "Physical 3,347 + 591 magnitude damage against control immune enemies", mounts: ["Bigby's Hand"] },
+    { power: "Grubshank SMAAASH", magnitude: 4626, dmgType: "Magical", effect: "Magical \u2014 2,362 direct + 2,264 DoT over 5s", mounts: ["Grubshank the Burdened"] },
+    { power: "Infernal Pounce", magnitude: 4332, dmgType: "Physical", effect: "Physical \u2014 3,938 base + 394 vs control-immune (boss) targets", mounts: ["Demonic Gravehound"] },
+    { power: "Hell on Faer\u00fbn", magnitude: 4233, dmgType: "Magical", effect: "Magical \u2014 1,969 direct + 2,264 DoT over 5s", mounts: ["Legendary Hellfire Engine"] },
+    { power: "Tunnel Vision", magnitude: 3938, dmgType: "Magical", effect: "Magical \u2014 3,938 magnitude", mounts: ["Maltese Tiger", "Giant Crab", "Heavy Worg", "Leopard of Chult", "Armored Bear", "Polar Bear", "Hell Hound", "Wolf of the Wild Hunt", "Hellfire Engine", "Epic Giant Toad", "Cavalry Tyrannosaur", "Aberrant Fey Wolf", "Aberrant Drake", "Savage Polar Bear", "Owlbear", "Bulette", "Panther", "Moonbear", "Crag Cat", "Turmish Lion", "and many more"] },
+    { power: "Golden Touch", magnitude: 3938, dmgType: "Magical", effect: "Magical \u2014 3,938 magnitude", mounts: ["Golden Warhorse"] },
+    { power: "Bigby's Crushing Hand", magnitude: 3938, dmgType: "Physical", effect: "Physical \u2014 3,347 base + 591 vs control-immune (boss) targets", mounts: ["Bigby's Hand"] },
+    { power: "Giant Toad Tongue Lash", magnitude: 2000, dmgType: "Magical", effect: "Magical \u2014 ~2,000 magnitude (Legendary-tier mount; lower base than Celestial-capable powers)", mounts: ["Legendary Giant Toad"] },
   ];
+  // Sort hardest-hitting first, then re-rank.
+  stdpsData.sort(function (a, b) { return (b.magnitude || 0) - (a.magnitude || 0); });
+  for (var sdi = 0; sdi < stdpsData.length; sdi++) stdpsData[sdi].rank = sdi + 1;
 
   var equipData = [
     { rank: 1, power: "Pack Tactics", effect: "+2,953 Combat Advantage and Awareness to you and party members within 80'", mounts: ["Ebon Riding Lizard"] },
@@ -706,27 +712,38 @@
     return '<span style="display:inline-block;background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:var(--radius-sm);padding:0.15rem 0.5rem;margin:0.15rem 0.25rem 0.15rem 0;font-size:0.82rem;font-weight:600;color:var(--stat-positive);">' + escapeHtml(text) + '</span>';
   }
 
-  function renderCombatRanking(data, container, query) {
+  // Physical/Magical damage-type chip — names which of your damage bonuses it scales with
+  function dmgTypeChip(type) {
+    var color = type === "Physical" ? "#ff8a4c" : "#b18cff";
+    return '<span title="Scales with your ' + escapeHtml(type) + ' Damage bonus" style="display:inline-block;border:1px solid ' + color + ';color:' + color + ';border-radius:var(--radius-sm);padding:0.15rem 0.5rem;margin:0.15rem 0.25rem 0.15rem 0;font-size:0.82rem;font-weight:600;">' + escapeHtml(type) + '</span>';
+  }
+
+  function renderCombatRanking(data, container, query, typeFilter) {
     query = (query || "").toLowerCase();
     var html = "";
+    var n = 0; // running rank within the currently shown (filtered) list
     for (var i = 0; i < data.length; i++) {
       var d = data[i];
+      if (typeFilter && d.dmgType !== typeFilter) continue;
       if (query && (d.power + " " + d.effect + " " + (d.mounts || []).join(" ")).toLowerCase().indexOf(query) === -1) continue;
+      n++;
       html += '<div class="ranking-card" style="flex-direction:column;align-items:stretch;">';
       html += '<div style="display:flex;align-items:center;gap:0.5rem;font-weight:600;">';
-      if (d.rank) html += '<span style="color:var(--highlight);">#' + d.rank + '</span>';
+      html += '<span style="color:var(--highlight);">#' + n + '</span>';
       html += '<span>' + escapeHtml(d.power) + '</span></div>';
-      // Damage-contribution chip (combat ranking) — the buff/debuff this list is sorted by
-      if (d.dmgPct != null) {
-        html += '<div style="margin-top:0.3rem;">' + statChip('+' + d.dmgPct + '% ' + (d.dmgKind || 'damage')) + '</div>';
-      }
+      // Chips: combat = damage-contribution %; DPS = magnitude + damage type
+      var chips = "";
+      if (d.dmgPct != null) chips += statChip('+' + d.dmgPct + '% ' + (d.dmgKind || 'damage'));
+      if (d.magnitude != null) chips += statChip(d.magnitude.toLocaleString() + ' magnitude');
+      if (d.dmgType) chips += dmgTypeChip(d.dmgType);
+      if (chips) html += '<div style="margin-top:0.3rem;">' + chips + '</div>';
       if (d.mounts) {
         html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.25rem;">' + d.mounts.map(function (m) { return escapeHtml(m); }).join(', ') + '</div>';
       }
       html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(d.effect) + '</div>';
       html += '</div>';
     }
-    document.getElementById(container).innerHTML = html || '<div class="empty-state">No results match your search</div>';
+    document.getElementById(container).innerHTML = html || '<div class="empty-state">No results match your filters</div>';
   }
 
   function renderSimpleList(data, container) {
@@ -751,6 +768,10 @@
   var combatSearchInput = document.getElementById("combat-search");
   var stdpsControls = document.getElementById("stdps-controls");
   var stdpsSearchInput = document.getElementById("stdps-search");
+  var filterStdpsType = document.getElementById("filter-stdps-type");
+  function renderStdps() {
+    renderCombatRanking(stdpsData, "stdps-list", stdpsSearchInput.value, filterStdpsType.value);
+  }
   var equipControls = document.getElementById("equip-controls");
   var equipSearchInput = document.getElementById("equip-search");
 
@@ -816,7 +837,7 @@
     tabStdps.classList.add("active");
     stdpsView.style.display = "";
     stdpsControls.style.display = "";
-    renderCombatRanking(stdpsData, "stdps-list");
+    renderStdps();
   });
   tabEquip.addEventListener("click", function () {
     switchMountTab("equip");
@@ -829,9 +850,8 @@
   combatSearchInput.addEventListener("input", function () {
     renderCombatRanking(combatData, "combat-list", combatSearchInput.value);
   });
-  stdpsSearchInput.addEventListener("input", function () {
-    renderCombatRanking(stdpsData, "stdps-list", stdpsSearchInput.value);
-  });
+  stdpsSearchInput.addEventListener("input", renderStdps);
+  filterStdpsType.addEventListener("change", renderStdps);
   equipSearchInput.addEventListener("input", function () {
     renderCombatRanking(equipData, "equip-list", equipSearchInput.value);
   });

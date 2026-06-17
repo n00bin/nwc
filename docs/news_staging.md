@@ -19,6 +19,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Consumables page: new **Category filter** — narrow the list to just Elixirs, Potions, Event/Stronghold Food, Scrolls, Belt Items, or Other.
 - Artifacts page: the stat display is cleaned up into tidy chips (matching the rest of the site) instead of the old two-column layout.
 - Mounts page: the **Combat Power Ranking** is redesigned to match the rest of the site (clean cards with a green damage chip) and is now **ordered by the damage each power's buff/debuff provides** — so the strongest party-damage contributors (the +16% enemy-damage-taken debuffs) sit at the top.
+- Mounts page: the **DPS Combat Power Ranking** is redesigned the same way and now **sorts by hardest-hitting** (total magnitude), with a chip showing each power's magnitude and whether it's **Physical or Magical** (so you know which of your damage bonuses it scales with). A new **Top General / Top Magical / Top Physical** filter splits the list by damage type. (Also corrected Giant Toad Tongue Lash, which was overstated at 3,938 — it's a lower-tier ~2,000-magnitude power.)
 
 ### Data Additions
 - Mounts: added **Olive the Octopus** — Equip power Mystic Aura (+2,250 Power & Accuracy to your party) and Combat power Tidal Wave (knockback + a party damage boost / enemy damage-taken debuff). Its insignia slots still need an in-game capture to finish.
@@ -32,6 +33,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Toon Forge: catalogued **26 campaign/enemy Overload enchantments** (Reghed, Thay/Doomvault, Pirate's Skyhold, Dread Vault, and Wildspace zones, plus Undead / Fiend / Astral Elf wards and slayers). They're zone- or enemy-conditional, so they appear in the overload picker but only count when you're actually in that zone or fighting that enemy type.
 - Campaign Boosters: added **Frost Visage** — a Biting Cold campaign gadget (+15% campaign currency drop rate; Use: +55% Movement Speed for 15s in The Reghed Edge, 30s recharge).
 - Toon Forge — **every DPS power's magnitude verified** against in-game tooltips across all 8 damage classes (~200 powers): 11 corrected (Warlock Tyrannical Curse, Rogue Assassinate, several Ranger powers, Wizard Conduit of Ice, Bard Contre…) and the Cleric's *Prophet of Doom* fixed to its real name *Prophecy of Doom*. Plus a new **buff-value layer** — powers that boost your damage instead of hitting directly (the Rogue's Lurker's Assault +40%, Warlock's Tyrannical Curse, Cleric's Prophecy of Doom, Bard's Lore) now count in the sim's numbers, weighted by how long you keep them up.
+- Gear: added four community-reported missing endgame items — **Nightpact Coif** (Rogue head), **Cindersilk Armguards** and **Cindersilk Shoes** (Warlock/Wizard arms & feet, with their Escalating Might / Discharged Force equip bonuses), and the all-class **Runemarked Titanwave Harness** (shirt). Submitted through the Reports form (#116–119) and flagged for in-game verification.
 
 ### Bug Fixes
 - Toon Forge: the build summary now correctly reads "Active companions: X / 5" (was "/ 4").
