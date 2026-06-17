@@ -84,6 +84,12 @@ Full scan of all companion `powerRef`/`enhancementRef` + shared-power + CR/IL:
   - ⏸️ power 249 Divine Judgement — Soradiel (documented owner); **Mini Apparatus of Gond** PARKED (n00b doesn't own the companion — verify when acquired).
 - ✅ **CR ≠ IL: RESOLVED** — power 119 Cold Iron Warrior (0→75) and power 174 Spiteful Hex (900→750) both fixed 2026-06-15. A full DB scan confirms no companion-power CR≠IL mismatches remain.
 
+### Base-rarity re-anchoring + sheet reconciliation (2026-06-16)
+
+Cross-checked all companion powers against the cached reference sheet (`docs/reference/sheets/sheet1__Companions_Equip_Bonuses.csv`, per-rarity Common→Mythic). **109 powers independently confirmed.** Then **re-anchored 23 pets** stored at too-high a base rarity (which hid lower-tier buttons) to their true lowest tier — each verified against n00b's in-game card (authoritative for both lowest tier and values), sheet confirming the scaling: Wailer, Dragonborn's Brawler, Golden Deep Crow, Blink Dog, Yeth Hound, Yeti, Baby Gorilla, Myconid, Neverember Guard, Minstrel, Goat, Makos, Boney, Windsoul Genasi, Dancing Shield, Radiant, Moonshae Druid, Cat, Slime, Golden Goat, Skeleton Dog, Jagged Blade, Hollyphant. Several value errors fixed too (Blink Dog 1.8, Windsoul Genasi 1.8, Dancing Shield 1.5-high, Goat's missing Max HP, Gromph 1.8→3.8). Energon left as the off-scale outlier; Allosaurus already correct.
+
+- ⏳ **3 MISSING companions** (in n00b's collection + the sheet, absent from our DB): **Lightfoot Thief** (Halfling Thief's Discipline — Offense, Crit Strike + Crit Severity), **Blacksmith** (Blacksmith's Discipline — Utility, reflect-damage proc), **Vanguard of the Citadel** (Divine Insight — Defense, Max HP + Crit Avoidance). Per-rarity values available from the sheet + cards c116/c119/c215. Need to be ADDED as new companion + power entries.
+
 ## Gear set-bonus text (2026-06-15 steward sweep)
 
 36 sets had their full set-bonus text verified against `docs/calibration/inbox/_set_details/` screenshots and written to `gear.json` (`parsedFrom:"screenshot"`). Set bonuses are set-wide, so one verified text covers every member. Verified texts are stored in `docs/audit/set_bonus_verified.json`.
