@@ -182,14 +182,8 @@
       font-family: var(--font-mono, monospace);
     }
 
-    /* Stats block */
-    .art-stats-block {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-sm);
-      padding: 0.7rem 0.85rem;
-      margin: 0.55rem 0;
-    }
+    /* Stats block — green chips, matching the rest of the site */
+    .art-stats-block { margin: 0.6rem 0; }
     .art-stats-title {
       font-size: 0.72rem;
       font-weight: 700;
@@ -198,27 +192,20 @@
       color: var(--highlight);
       margin-bottom: 0.5rem;
     }
-    .art-stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.3rem 1rem;
-    }
-    @media (max-width: 540px) {
-      .art-stats-grid { grid-template-columns: 1fr; }
-    }
-    .art-stat-row {
+    .art-stats-chips {
       display: flex;
-      justify-content: space-between;
-      padding: 0.2rem 0;
-      font-size: 0.85rem;
-      border-bottom: 1px dashed rgba(255,255,255,0.05);
+      flex-wrap: wrap;
+      gap: 0.35rem;
     }
-    .art-stat-row:last-child { border-bottom: none; }
-    .art-stat-name { color: var(--text-secondary); }
-    .art-stat-value {
-      color: var(--stat-positive, #58a6ff);
+    .art-stat-chip {
+      display: inline-block;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      padding: 0.15rem 0.5rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      font-family: var(--font-mono, monospace);
+      color: var(--stat-positive, #58a6ff);
     }
   </style>
 </head>

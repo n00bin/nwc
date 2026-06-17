@@ -17,6 +17,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Companions page: the **Enhancements** tab now shows each enhancement's exact stat bonuses as chips, with a new Stat filter and a sort toggle (by name, or by how many companions use it).
 - Companions page: the **Damage Companions** tab gained per-category counts and a cleaner, consistent layout, and the **Lookup** tab has a new Base Rarity filter so you can list all Common / Mythic / Celestial / etc. companions at once.
 - Consumables page: new **Category filter** — narrow the list to just Elixirs, Potions, Event/Stronghold Food, Scrolls, Belt Items, or Other.
+- Artifacts page: the stat display is cleaned up into tidy chips (matching the rest of the site) instead of the old two-column layout.
 
 ### Data Additions
 - Mounts: added **Olive the Octopus** — Equip power Mystic Aura (+2,250 Power & Accuracy to your party) and Combat power Tidal Wave (knockback + a party damage boost / enemy damage-taken debuff). Its insignia slots still need an in-game capture to finish.
@@ -31,6 +32,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ### Bug Fixes
 - Toon Forge: the build summary now correctly reads "Active companions: X / 5" (was "/ 4").
 - Consumables: fixed the **Wild Storm Elixir** — its name was misspelled ("Wild Strom Elixer") and its note wrongly said "Crit & Accuracy"; it's now correctly shown as +2,000 Critical Strike and +5% Critical Severity.
+- Artifacts: every artifact now shows its real **Mythic (max) stats** — they were previously stored at a low rank but labeled "at Mythic," so e.g. a 5,000 stat was showing as a few hundred. 109 artifacts corrected; combined rating now matches the listed stats.
 - Toon Forge: gear **equip bonuses with multiple stats** now show every stat (not just the first), **negative bonuses** display their minus sign, and **"+X per nearby enemy"** bonuses correctly count single-target against a boss instead of the full trash-pack value.
 - Toon Forge: fixed several bits of muted helper text (including the DPS note under the damage sim) that were using an undefined color and rendering in the wrong shade.
 - Harness of the Flayed Legion was only showing for Barbarians — it's now available to every class, including Paladins (Report #113).

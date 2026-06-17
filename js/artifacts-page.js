@@ -140,25 +140,27 @@
         if (a.combinedRating)  html += '<span class="art-il-pill"><span class="art-il-label">Combined Rating</span><span class="art-il-value">' + a.combinedRating.toLocaleString() + '</span></span>';
         html += '</div>';
       }
-      // Stats: prefer ratingStats dict (new schema), fall back to stats list (old schema)
+      // Stats at Mythic — rating stats + any percent stats (Stamina Regen, Gold
+      // Bonus), shown as green chips matching the rest of the site.
       var statEntries = [];
       if (a.ratingStats && typeof a.ratingStats === 'object') {
-        statEntries = Object.entries(a.ratingStats);
+        statEntries = Object.entries(a.ratingStats).map(function (e) { return [e[0], e[1], false]; });
       } else if (a.stats && a.stats.length > 0) {
-        statEntries = a.stats.map(function(s){ return [s.stat, s.value]; });
+        statEntries = a.stats.map(function (s) { return [s.stat, s.value, false]; });
+      }
+      if (a.percentStats && typeof a.percentStats === 'object') {
+        Object.entries(a.percentStats).forEach(function (e) { statEntries.push([e[0], e[1], true]); });
       }
       if (statEntries.length > 0) {
         html += '<div class="art-stats-block">';
         html += '<div class="art-stats-title">Stats at Mythic</div>';
-        html += '<div class="art-stats-grid">';
+        html += '<div class="art-stats-chips">';
         for (var si = 0; si < statEntries.length; si++) {
           var statName = statEntries[si][0];
           var statVal  = statEntries[si][1];
-          var isPct = statName === 'Stamina Regen' || statName === 'StaminaRegen';
-          html += '<div class="art-stat-row">';
-          html += '<span class="art-stat-name">' + escapeHtml(prettyArtifactStat(statName)) + '</span>';
-          html += '<span class="art-stat-value">' + (isPct ? statVal + '%' : '+' + statVal.toLocaleString()) + '</span>';
-          html += '</div>';
+          var isPct    = statEntries[si][2] || statName === 'Stamina Regen' || statName === 'StaminaRegen';
+          var valStr   = isPct ? ('+' + statVal + '%') : ('+' + statVal.toLocaleString());
+          html += '<span class="art-stat-chip">' + escapeHtml(prettyArtifactStat(statName)) + ': ' + valStr + '</span>';
         }
         html += '</div></div>';
       }

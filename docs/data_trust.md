@@ -247,6 +247,18 @@ remaining gap (n00b deferred 2026-06-16).
 
 ---
 
+## Artifacts (artifacts.json) — Mythic stat values from community sheet
+
+2026-06-16: all artifact stats were stored at low/base rank but the page labeled them "Stats at Mythic." Updated **109 artifacts** to their true Mythic per-stat values from the cached `sheet1__Artifacts.csv` (community sheet), and recomputed `combinedRating` as the stat sum. `item_level` was already correct (it matched the sheet's ItemLevel column — artifact IL is fixed per artifact, only stats scale with rank).
+
+| scope | status | notes |
+|-------|--------|-------|
+| 109 matched artifacts | COMMUNITY-SOURCED (unverified) | Mythic stats from sheet1; most total 15,000 combined rating |
+| 38 of those 109 | NEEDS IN-GAME SPOT-CHECK | non-15,000 totals — all 5 Dragon's Marks + all 4 Storyteller's Journals at 20,000; Tiamat's Orb / Token of Chromatic Storm / Eye of the Giant at 25,000; banner-type artifacts at 10,000 (they trade a 3rd stat for a party buff). Family consistency suggests these are real, but confirm a few against in-game tooltips. |
+| 29 artifacts not in sheet | UNCHANGED | remain at prior (low-rank) values — need their own source/screenshot to promote to Mythic |
+
+The sheet's `CombinedRating` column (~85,000 flat) is BOGUS — ignored (same junk seen in the companion-gear sheet). Buff/debuff power text was NOT changed in this pass (tracked separately).
+
 ## Consumables (buffs.json) — community-guide entries needing in-game verification
 
 Added/fixed 2026-06-16 by cross-referencing the cached `sheet2__Consumables_and_belt_Items.csv` (Aragon's Mod 24 guide) against our data.
