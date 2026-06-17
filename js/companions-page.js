@@ -542,15 +542,23 @@
   var summonedList = document.getElementById("summoned-list");
   var summonedCount = document.getElementById("summoned-count");
   var summonedSearch = document.getElementById("summoned-search");
+  var filterSummonedScope = document.getElementById("filter-summoned-scope");
+  var filterSummonedStat = document.getElementById("filter-summoned-stat");
   var enhancementControls = document.getElementById("enhancement-controls");
   var enhancementSearch = document.getElementById("enhancement-search");
 
   // Build summoned data from summonedBuff field
   var summonedData = [];
+  var summonedStatSet = {};
   for (var si = 0; si < COMPANIONS_DATA.length; si++) {
     var comp = COMPANIONS_DATA[si];
     if (!comp.summonedBuff) continue;
     var sb = comp.summonedBuff;
+    var sbStats = [];
+    if (sb.stat) sbStats.push(sb.stat);
+    if (sb.stats) for (var sbk in sb.stats) sbStats.push(sbk);
+    if (sb.effects) for (var sbe = 0; sbe < sb.effects.length; sbe++) { if (sb.effects[sbe].stat) sbStats.push(sb.effects[sbe].stat); }
+    for (var sbi = 0; sbi < sbStats.length; sbi++) summonedStatSet[sbStats[sbi]] = true;
     summonedData.push({
       companionName: comp.name,
       companionId: comp.id,
@@ -559,24 +567,33 @@
       range: sb.range || null,
       damageBoost: sb.damageBoost || null,
       condition: sb.condition || null,
-      uptime: sb.uptime || null
+      uptime: sb.uptime || null,
+      stats: sbStats
     });
   }
+  populateFilter(filterSummonedStat, Object.keys(summonedStatSet).sort(), "All Stats");
+
+  var SUMMONED_SCOPE_META = {
+    party: { label: "Party Buffs", color: "#4caf50", chip: "Party" },
+    self: { label: "Self Buffs", color: "#42a5f5", chip: "Self" },
+    enemy: { label: "Enemy Debuffs", color: "#ef5350", chip: "Enemy Debuff" },
+    mixed: { label: "Mixed", color: "#ffb300", chip: "Mixed" }
+  };
+  var SUMMONED_SCOPE_ORDER = ["party", "self", "enemy", "mixed"];
 
   function renderSummonedView() {
     var query = summonedSearch.value.trim().toLowerCase();
-    var filtered = summonedData.filter(function (s) {
-      if (query && (s.companionName + " " + s.buff).toLowerCase().indexOf(query) === -1) return false;
-      return true;
-    });
+    var scopeFilter = filterSummonedScope.value;
+    var statFilter = filterSummonedStat.value;
 
-    // Sort: party scope first, then by scope
-    filtered.sort(function (a, b) {
-      if (a.scope !== b.scope) {
-        var order = { party: 0, self: 1, enemy: 2, mixed: 3 };
-        return (order[a.scope] || 9) - (order[b.scope] || 9);
+    var filtered = summonedData.filter(function (s) {
+      if (scopeFilter && s.scope !== scopeFilter) return false;
+      if (statFilter && s.stats.indexOf(statFilter) === -1) return false;
+      if (query) {
+        var hay = (s.companionName + " " + s.buff + " " + s.stats.join(" ")).toLowerCase();
+        if (hay.indexOf(query) === -1) return false;
       }
-      return a.companionName < b.companionName ? -1 : 1;
+      return true;
     });
 
     summonedCount.textContent = filtered.length + " of " + summonedData.length + " companions with summoned buffs";
@@ -586,35 +603,59 @@
       return;
     }
 
-    var html = "";
-    for (var i = 0; i < filtered.length; i++) {
-      var s = filtered[i];
+    // Bucket by scope, then render a group header per non-empty bucket.
+    var buckets = {};
+    for (var b = 0; b < filtered.length; b++) {
+      var sc = filtered[b].scope;
+      if (!buckets[sc]) buckets[sc] = [];
+      buckets[sc].push(filtered[b]);
+    }
 
-      var sumImg = window.COMPANION_IMAGES && window.COMPANION_IMAGES[s.companionName];
-      html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
-      html += '<div style="display:flex;align-items:center;gap:0.5rem;font-weight:600;">';
-      if (sumImg) {
-        html += '<img loading="lazy" class="companion-icon" src="images/companions/' + sumImg + '" alt="">';
+    // Order: known scopes first (party/self/enemy/mixed), then any stragglers.
+    var scopeKeys = SUMMONED_SCOPE_ORDER.filter(function (k) { return buckets[k]; });
+    for (var sk in buckets) { if (scopeKeys.indexOf(sk) === -1) scopeKeys.push(sk); }
+
+    var html = "";
+    for (var g = 0; g < scopeKeys.length; g++) {
+      var key = scopeKeys[g];
+      var group = buckets[key];
+      var meta = SUMMONED_SCOPE_META[key] || { label: key, color: "var(--text-muted)", chip: key };
+      group.sort(function (a, b) { return a.companionName < b.companionName ? -1 : 1; });
+
+      html += '<div class="summoned-group-header" style="color:' + meta.color + ';">' +
+        escapeHtml(meta.label) + ' <span style="color:var(--text-muted);font-weight:600;">(' + group.length + ')</span></div>';
+
+      for (var i = 0; i < group.length; i++) {
+        var s = group[i];
+        var sumImg = window.COMPANION_IMAGES && window.COMPANION_IMAGES[s.companionName];
+        html += '<div class="summoned-card" style="flex-direction:column;align-items:stretch;">';
+        html += '<div style="display:flex;align-items:center;gap:0.5rem;font-weight:600;">';
+        if (sumImg) {
+          html += '<img loading="lazy" class="companion-icon" src="images/companions/' + sumImg + '" alt="">';
+        }
+        html += '<span>' + escapeHtml(s.companionName) + '</span>';
+        html += '<span style="margin-left:auto;font-size:0.7rem;font-weight:600;padding:0.1rem 0.45rem;border-radius:4px;border:1px solid ' + meta.color + ';color:' + meta.color + ';">' + escapeHtml(meta.chip) + '</span>';
+        html += '</div>';
+        html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(s.buff) + '</div>';
+
+        // Meta chips row: range, uptime, damage boost
+        var chips = "";
+        if (s.range) chips += summonedChip("Range " + s.range + "'", "var(--text-muted)");
+        if (s.uptime) chips += summonedChip("Uptime " + (typeof s.uptime === "number" ? s.uptime + "%" : s.uptime), "#42a5f5");
+        if (s.damageBoost) chips += summonedChip("+" + s.damageBoost + "% dmg", "#ffb300");
+        if (chips) html += '<div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.4rem;">' + chips + '</div>';
+
+        if (s.condition) {
+          html += '<div style="font-size:0.78rem;color:var(--highlight);margin-top:0.3rem;">Condition: ' + escapeHtml(s.condition) + '</div>';
+        }
+        html += '</div>';
       }
-      html += '<span><span style="color:var(--highlight);margin-right:0.5rem;">#' + (i + 1) + '</span>' + escapeHtml(s.companionName) + '</span>';
-      var scopeMeta = {
-        party: { label: "Party", color: "#4caf50" },
-        self: { label: "Self", color: "#42a5f5" },
-        enemy: { label: "Enemy Debuff", color: "#ef5350" },
-        mixed: { label: "Mixed", color: "#ffb300" }
-      }[s.scope] || { label: s.scope, color: "var(--text-muted)" };
-      html += '<span style="margin-left:auto;font-size:0.7rem;font-weight:600;padding:0.1rem 0.45rem;border-radius:4px;border:1px solid ' + scopeMeta.color + ';color:' + scopeMeta.color + ';">' + escapeHtml(scopeMeta.label) + '</span>';
-      html += '</div>';
-      html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(s.buff) + '</div>';
-      if (s.range) {
-        html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Range: ' + s.range + "'</div>";
-      }
-      if (s.condition) {
-        html += '<div style="font-size:0.78rem;color:var(--highlight);margin-top:0.2rem;">Condition: ' + escapeHtml(s.condition) + '</div>';
-      }
-      html += '</div>';
     }
     summonedList.innerHTML = html;
+  }
+
+  function summonedChip(text, color) {
+    return '<span style="font-size:0.72rem;padding:0.1rem 0.45rem;border-radius:4px;background:var(--bg-elevated);border:1px solid var(--border-default);color:' + color + ';">' + escapeHtml(text) + '</span>';
   }
 
   // ---- Enhancement Ranking View ----
@@ -874,6 +915,8 @@
   });
 
   summonedSearch.addEventListener("input", renderSummonedView);
+  filterSummonedScope.addEventListener("change", renderSummonedView);
+  filterSummonedStat.addEventListener("change", renderSummonedView);
   enhancementSearch.addEventListener("input", renderEnhancementView);
   damageSearch.addEventListener("input", renderDamageView);
   filterDamageCat.addEventListener("change", renderDamageView);

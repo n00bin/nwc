@@ -47,6 +47,16 @@
   <!-- Filters (summoned view) -->
   <div class="controls-bar" id="summoned-controls" style="display:none;">
     <input type="text" class="search-input" id="summoned-search" placeholder="Search summoned buffs...">
+    <select class="filter-select" id="filter-summoned-scope">
+      <option value="">All Scopes</option>
+      <option value="party">Party Buffs</option>
+      <option value="self">Self Buffs</option>
+      <option value="enemy">Enemy Debuffs</option>
+      <option value="mixed">Mixed</option>
+    </select>
+    <select class="filter-select" id="filter-summoned-stat">
+      <option value="">All Stats</option>
+    </select>
   </div>
 
   <div class="controls-bar" id="enhancement-controls" style="display:none;">
