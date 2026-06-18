@@ -10395,7 +10395,7 @@
       // damage-bucket stats. Set false to restore the legacy damage-only
       // behavior in one place (instant kill switch, no other code change).
       apply_to_stat_grants: true,
-      self_ramp: 0.85, on_action: 0.85, range_gated: 0.85, positional: 0.80,
+      self_ramp: 1.0, on_action: 0.85, range_gated: 0.85, positional: 0.80,
       party_stacks: 0.80, high_threshold: 0.55, low_threshold: 0.15,
       vs_enemy: 0.0, on_kill: 0.20, unspecified: 0.60,
       proc: {
@@ -10460,7 +10460,9 @@
       if (eb.perStack || /stack/.test(txt)) {
         if (/teammate|party|\bally\b|nearby/.test(txt)) return CONDITIONAL_UPTIME.party_stacks;
         if (/kill/.test(txt)) return CONDITIONAL_UPTIME.on_kill;
-        return CONDITIONAL_UPTIME.self_ramp;
+        return CONDITIONAL_UPTIME.self_ramp;   // self-maintained stacks (e.g. Eagle's Mastery):
+                                               // a DPS keeps these at max in sustained combat,
+                                               // so show the full max-stack value (n00b 2026-06-18).
       }
       if (/on kill|whenever you kill|defeat/.test(txt)) return CONDITIONAL_UPTIME.on_kill;
       if (/\bagainst\b|\bvs\b|\d\+\s*enem/.test(txt)) return CONDITIONAL_UPTIME.vs_enemy;
