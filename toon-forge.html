@@ -3386,8 +3386,9 @@
           return `<div class="picker-item" data-build-load="${realIdx}">
             <div class="picker-item-name">${_escHTML(b.name || 'Untitled')}</div>
             <div class="picker-item-meta">${b.s.class || '?'}${b.s.paragon ? ' / ' + b.s.paragon : ''} · ${b.s.role || '?'} · saved ${fmt(b.savedAt)}</div>
-            <div style="margin-top:0.4rem;display:flex;gap:0.4rem;">
+            <div style="margin-top:0.4rem;display:flex;gap:0.4rem;flex-wrap:wrap;">
               <button class="btn btn-ghost" data-build-load-btn="${realIdx}" type="button" style="font-size:0.78rem;">Load</button>
+              <button class="btn btn-ghost" data-build-overwrite="${realIdx}" type="button" style="font-size:0.78rem;color:var(--amber);" title="Save your current build over this one">💾 Save over</button>
               <button class="btn btn-ghost" data-build-share="${realIdx}" type="button" style="font-size:0.78rem;">Copy link</button>
               <button class="btn btn-ghost" data-build-delete="${realIdx}" type="button" style="font-size:0.78rem;color:var(--neg);">Delete</button>
             </div>
@@ -3401,11 +3402,18 @@
         const name = (document.getElementById("build-save-name").value || "").trim() || "Unnamed Build";
         const built = serializeBuild(name);
         const list = getBuildsList();
-        list.push(built);
-        // Cap at 20 saved builds (oldest dropped)
-        while (list.length > 20) list.shift();
+        // Overwrite an existing build of the same name instead of duplicating it.
+        const existingIdx = list.findIndex(b => (b.name || "").trim().toLowerCase() === name.toLowerCase());
+        if (existingIdx !== -1) {
+          if (!confirm(`A build named "${name}" already exists. Overwrite it with the current build?`)) return;
+          list[existingIdx] = built;
+          toast(`Updated "${name}"`);
+        } else {
+          list.push(built);
+          while (list.length > 20) list.shift();   // cap at 20 (oldest dropped)
+          toast(`Saved "${name}"`);
+        }
         saveBuildsList(list);
-        toast(`Saved "${name}"`);
         openBuildsModal();   // refresh
       });
       // Load (whole row)
@@ -3437,6 +3445,21 @@
           const json = JSON.stringify(saved);
           const url = location.origin + location.pathname + "#b=" + b64encode(json);
           navigator.clipboard.writeText(url).then(() => toast("Link copied!"));
+        });
+      });
+      // Save current build OVER this saved one (keeps its name).
+      wrap.querySelectorAll("[data-build-overwrite]").forEach(btn => {
+        btn.addEventListener("click", (ev) => {
+          ev.stopPropagation();
+          const idx = +btn.dataset.buildOverwrite;
+          const list = getBuildsList();
+          const old = list[idx];
+          if (!old) return;
+          if (!confirm(`Save your current build over "${old.name || 'this build'}"? This replaces it.`)) return;
+          list[idx] = serializeBuild(old.name);   // keep the saved build's name
+          saveBuildsList(list);
+          toast(`Updated "${old.name}"`);
+          openBuildsModal();
         });
       });
       // Delete
