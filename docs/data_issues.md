@@ -1,5 +1,25 @@
 # Data Issues To Investigate
 
+## Insignia bonuses with empty stats:[] — 9 conditional ones still unstructured (2026-06-18)
+Audit found 11 insignia bonuses in mount_insignia_bonuses.json with `stats: []`
+whose effectText DOES grant stats, so the engine applies ZERO from them. The 2
+ALWAYS-ON ones were fixed (Ice Cold Aggression #42, Ice Cold Resolve #43 — now
+structured + standingActive). The other 9 are combat-CONDITIONAL (so they don't
+affect the standing panel, only the Show-Conditional view, where they still apply
+nothing). Structure these with their per-trigger stats when convenient:
+- #1 Master's Cruelty (+5000 Crit Sev, stamina <25% or >75%)
+- #9 Master's Precision (+5000 Crit, stamina 25-75%)
+- #13 Accursed's Resolve (+3500 Power & Deflect, while debuffed)
+- #29 Berserker's Rage (+2500 Crit @ AP>80%, +2500 CA @ AP<20%)
+- #30 Magistrate's Patience (+2500 Crit Avoid on taking a crit)
+- #32 Victim's Preservation (on taking >35% MaxHP hit)
+- #35 Combatant's Maneuver (+2500 CA on control)
+- #36 Protector's Camaraderie (+300 Crit Sev & Defense on companion attack)
+- #39 Slayer's Bloodlust (+1000 Crit on kill, max 5)
+ALSO: Ice Cold #42/#43 multi-instance stacking is approximate (engine diminishing
+[1,0.5,0.25] gives 2-inst Power ~3000 vs in-game 3500). Exact would need explicit
+per-instance-count values + an engine change. Single-instance is exact.
+
 ## Artifact + enchantment RANK/TIER selector — feature + data capture (2026-06-16)
 n00b direction, prompted by reports #123–128 (Arma-Egg-On). Players run lower
 ranks of artifacts (and enchantments), but the site only stores/shows the top
