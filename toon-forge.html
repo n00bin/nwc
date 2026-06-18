@@ -11312,6 +11312,23 @@
           });
           continue;
         }
+        // Explicit per-instance-count totals (e.g. Ice Cold Aggression's
+        // 2000/3500/4500 Power don't follow a clean multiplier). instanceStats[k]
+        // is the CUMULATIVE stat list when k+1 instances are active; apply the
+        // row for n active instances directly.
+        if (Array.isArray(bonus.instanceStats) && bonus.instanceStats.length) {
+          const idx = Math.min(n, bonus.instanceStats.length) - 1;
+          const ratingStats = {}, percentStats = {};
+          for (const st of (bonus.instanceStats[idx] || [])) {
+            const tgt = st.type === "percent" ? percentStats : ratingStats;
+            tgt[st.stat] = (tgt[st.stat] || 0) + (st.value || 0);
+          }
+          buffs.push({
+            source: `Mount ${insts[0].slotIdx + 1} Insignia Bonus: ${bonus.name}` + (n > 1 ? ` (${n} instances)` : ""),
+            conditional: isConditional, ratingStats, percentStats
+          });
+          continue;
+        }
         for (let i = 0; i < n; i++) {
           const mult = (mode === "linear") ? 1 : (DIMINISHING_MULTIPLIERS[i] || 0);
           if (mult === 0) break;
