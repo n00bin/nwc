@@ -13311,6 +13311,23 @@
        (power / debuff / cooldown) — that's the field n00b couldn't see
        from the old <select> dropdown. */
     function renderArtifactItem(item) {
+      // Grouped multi-rarity artifact: render the SELECTED tier's card plus a
+      // tier dropdown (same .gear-tier-sel the gear picker uses). Single = before.
+      if (!item._tiers) return renderArtifactItemSingle(item);
+      const sel = Math.min(item._selIdx || 0, item._tiers.length - 1);
+      const r = renderArtifactItemSingle(item._tiers[sel]);
+      r.meta = `${item._tiers.length} rarities · ` + r.meta;
+      const tierOpts = item._tiers.map((t, i) => {
+        const label = "IL " + (t.item_level || "?") + (t.combinedRating ? " — CR " + t.combinedRating : "");
+        return `<option value="${i}"${i === sel ? " selected" : ""}>${_escHTML(label)}</option>`;
+      }).join("");
+      r.desc = `<div style="margin:0.3rem 0 0.45rem;">
+          <label style="font-size:0.78rem;opacity:0.8;margin-right:0.4rem;">Rarity:</label>
+          <select class="picker-collar-filter gear-tier-sel" data-tier-sel>${tierOpts}</select>
+        </div>` + (r.desc || "");
+      return r;
+    }
+    function renderArtifactItemSingle(item) {
       const escape = (str) => String(str || "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -13424,14 +13441,10 @@
       const g = document.getElementById("artifact-grid");
       const opts = artifactOptions(state.class);
       const setStatus = computeSetStatus();
-      // Artifact rarities are separate item-level rows. Group rows per name so
-      // the picker shows ONE entry per artifact and the equipped chip offers
-      // rarity pills (like companions) to switch tier.
-      const rowsByName = {};
-      opts.forEach(a => { (rowsByName[a.name] = rowsByName[a.name] || []).push(a); });
-      Object.keys(rowsByName).forEach(n => rowsByName[n].sort((a, b) => (b.item_level || 0) - (a.item_level || 0)));
-      const pickerOpts = Object.keys(rowsByName).map(n => rowsByName[n][0])
-        .sort((a, b) => (b.item_level || 0) - (a.item_level || 0) || a.name.localeCompare(b.name));
+      // Collapse same-name artifact rarities into ONE picker entry with a tier
+      // dropdown (exactly like weapons/gear). artifactOptions still returns every
+      // row, so TIL math / share links keep working on real entries.
+      const pickerOpts = groupGearTiers(opts);
       // Names already picked in any slot — used to filter other slots'
       // pickers since you can't equip duplicate artifacts in-game.
       const pickedNames = new Set(
@@ -13441,25 +13454,14 @@
         const v = state.artifacts[slot] || "";
         const filled = !!v;
         const noItems = pickerOpts.length === 0;
-        const rows = filled ? (rowsByName[v] || []) : [];
-        let aIL = filled ? (state.artifactIL || {})[slot] : null;
-        if (filled && aIL == null && rows[0]) aIL = rows[0].item_level;   // default to top tier
+        const aIL = filled ? (state.artifactIL || {})[slot] : null;
         const chipLabel = filled
-          ? "💎 " + v
+          ? "💎 " + v + (aIL ? ` · IL ${Number(aIL).toLocaleString()}` : "")
           : (noItems ? "(no artifacts available)" : "+ Pick artifact");
         const chipClasses = ["gear-pick-chip"];
         if (filled) chipClasses.push("filled");
         if (noItems) chipClasses.push("disabled");
         const artInfo = filled ? `<button class="chip-info" data-details-type="artifact" data-details-key="${_escAttr(v)}"${aIL ? ` data-details-il="${aIL}"` : ""} title="See artifact details">\u{1F50D}</button>` : "";
-        // Rarity pills — one per available item-level row, only when >1 exists.
-        let pills = "";
-        if (filled && rows.length > 1) {
-          pills = `<div class="art-rarity-pills" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px;">` +
-            rows.map(r => {
-              const sel = Number(aIL) === Number(r.item_level);
-              return `<button class="art-rarity-pill" data-art-rarity="${slot}" data-art-il="${r.item_level}" title="Show this rarity's stats" style="font-size:0.68rem;padding:2px 8px;border-radius:10px;cursor:pointer;border:1px solid ${sel ? "var(--accent)" : "var(--border)"};background:${sel ? "var(--accent)" : "transparent"};color:${sel ? "#fff" : "var(--text-secondary)"};">IL ${Number(r.item_level).toLocaleString()}</button>`;
-            }).join("") + `</div>`;
-        }
         return `
           <div class="slot ${filled ? "filled" : ""}">
             <div class="slot-label">${slot}</div>
@@ -13467,7 +13469,6 @@
               ${chipLabel}
               ${artInfo}
             </div>
-            ${pills}
             ${filled ? setStatusRow(findArtifactByName(v, aIL), setStatus) : ""}
           </div>`;
       }).join("");
@@ -13489,6 +13490,8 @@
             render: renderArtifactItem,
             className: state.class,
             onPick: (item) => {
+              // Grouped multi-tier entry: equip the tier picked in the dropdown.
+              if (item && item._tiers) item = item._tiers[Math.min(item._selIdx || 0, item._tiers.length - 1)];
               state.artifacts[slot] = item ? item.name : "";
               if (!state.artifactIL) state.artifactIL = {};
               // Store the picked rarity's item level (artifact rarities are
@@ -13506,20 +13509,6 @@
               toast(item ? `Slotted ${item.name} (${slot})` : `Cleared ${slot}`);
             }
           });
-        });
-      });
-      // Rarity pills — switch the equipped artifact's tier (its item-level row).
-      g.querySelectorAll("[data-art-rarity]").forEach(el => {
-        el.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const slot = el.dataset.artRarity;
-          if (!state.artifactIL) state.artifactIL = {};
-          state.artifactIL[slot] = Number(el.dataset.artIl);
-          applyAutoTIL();
-          recomputeAbilityTotals();
-          renderArtifacts();
-          renderGear();
-          rerenderAll();
         });
       });
     }
