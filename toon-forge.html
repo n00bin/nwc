@@ -10748,11 +10748,18 @@
       // (handled later via pushCompanionPower for the summoned slot).
       if (summonedComp) {
         const summonBase = COMP_BOLSTER_BASE_IL[compRarityForBase] || COMP_BOLSTER_BASE_IL.Mythic;
-        const baseIL = summonBase * compBolster;
+        // The summoned companion converts ~85% of its (bolstered) item level to
+        // Combined Rating across all stats — applied ONCE here. The full
+        // bolstered IL still counts toward TIL; only this stat/CR slice takes
+        // the 0.85. n00b in-game 2026-06-18: base companion (no gear) = 3,366 =
+        // 3,960 bolstered IL x 0.85. The old code applied the FULL 3,960 here
+        // AND re-added an 85%-of-rarity-IL slice in pushCompanionPower (765),
+        // double-counting by 1,359.
+        const baseIL = summonBase * compBolster * 0.85;
         const cr = expandCR(baseIL, 1);
         if (cr) {
           buffs.push({
-            source: "Summoned base IL: " + summonedComp.name + " (" + compRarityForBase + ", " + Math.round(compBolster * 100) + "% bolster)",
+            source: "Summoned base IL CR: " + summonedComp.name + " (" + compRarityForBase + ", " + Math.round(compBolster * 100) + "% bolster x 85%)",
             ratingStats: cr
           });
         }
@@ -11583,8 +11590,10 @@
         //   - Active: power.combinedRating × rarity scale (data field)
         let crValue;
         if (isSummoned) {
-          const summonedIL = COMPANION_RARITY_IL[r] || 750;
-          crValue = Math.round(summonedIL * 0.85);
+          // The summoned companion's 85%-of-IL Combined Rating is applied ONCE
+          // via the "Summoned base IL CR" line (on the bolstered base IL).
+          // Adding it again here double-counted by 1,359 (n00b in-game 2026-06-18).
+          crValue = 0;
         } else {
           crValue = (power.combinedRating || 0) * scale;
         }
