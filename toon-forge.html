@@ -10780,6 +10780,10 @@
         const e = findEnhancementByName(name);
         if (!e) return;
         if (e.scope === "enemy") return;
+        // Proc enhancements (e.g. Perfect Vision: "chance on hit ... for 15s")
+        // are OFF when standing — exclude from the base stat panel, matching how
+        // conditional equip bonuses (alwaysActive:false) are dropped from standing.
+        if (e.conditional) return;
         const effects = (Array.isArray(e.stats) && e.stats.length)
           ? e.stats
           : (e.stat ? [{ stat: e.stat, value: e.value, type: e.type }] : []);
