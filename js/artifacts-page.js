@@ -253,33 +253,39 @@
     }
     // In-game rarity colors (Uncommon→Celestial). Celestial = the standout top tier.
     var RARITY_COLOR = { Uncommon: "#3ecf5a", Rare: "#3a9bff", Epic: "#b765ff", Legendary: "#ffaa33", Mythic: "#ff5b5b", Celestial: "#3fe0e0" };
+    // Stat rows for one rarity tier (by its index in TIERS), with slot-group headers.
+    function statRows(ls, ti) {
+      var h = '', lastGroup = null;
+      ls.forEach(function (ln) {
+        if (ln.group && ln.group !== lastGroup) {
+          lastGroup = ln.group;
+          h += '<div style="margin:0.55rem 0 0.2rem;color:var(--accent);font-weight:700;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;">In ' + escapeHtml(ln.group) + ' Slot</div>';
+        }
+        h += '<div style="display:flex;justify-content:space-between;padding:0.22rem 0;' + (ln.group ? 'padding-left:0.8rem;' : '') + '"><span style="color:var(--text-primary);">' + escapeHtml(ln.label) + '</span><span style="color:var(--text-secondary);font-weight:600;">' + fmt(ln.vals[ti], ln.pct) + '</span></div>';
+      });
+      return h || '<div style="color:var(--text-muted);font-size:0.82rem;">No stats at this rarity</div>';
+    }
+    // One enchant = rarity pills (like companions) + the selected rarity's stats.
     function card(e) {
       var ls = lines(e);
       var h = '<div class="art-card"><div class="art-card-header"><span class="art-card-name">' + escapeHtml(e.displayName || e.name) + '</span>';
       h += '<span><span style="font-size:0.68rem;padding:0.12rem 0.55rem;border-radius:10px;background:rgba(63,224,224,0.12);color:' + RARITY_COLOR.Celestial + ';border:1px solid rgba(63,224,224,0.35);">' + escapeHtml(e.slotType === "companion" ? "Companion" : e.slotType) + '</span> <span class="toggle-arrow">&#9654;</span></span></div>';
       h += '<div class="art-card-body">';
       if (e.description) h += '<div class="art-effect" style="margin-bottom:0.5rem;">' + escapeHtml(e.description) + '</div>';
-      h += '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:0.82rem;">';
-      h += '<thead><tr><th style="text-align:left;padding:0.35rem 0.6rem;color:var(--text-muted);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.04em;">Stat</th>';
+      // Rarity pills — default to Celestial (the top tier).
+      h += '<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.6rem;">';
       TIERS.forEach(function (t) {
-        var top = t === "Celestial";
-        h += '<th style="padding:0.35rem 0.6rem;text-align:right;white-space:nowrap;color:' + RARITY_COLOR[t] + ';font-weight:' + (top ? '800' : '600') + ';font-size:' + (top ? '0.82rem' : '0.72rem') + ';' + (top ? 'border-bottom:2px solid ' + RARITY_COLOR.Celestial + ';' : '') + '">' + t + '</th>';
+        var on = t === "Celestial";
+        h += '<button class="ench-pill" data-tier="' + t + '" style="font-size:0.72rem;padding:3px 11px;border-radius:12px;cursor:pointer;border:1px solid ' + RARITY_COLOR[t] + ';background:' + (on ? RARITY_COLOR[t] : "transparent") + ';color:' + (on ? "#0d1117" : RARITY_COLOR[t]) + ';font-weight:' + (on ? "700" : "500") + ';">' + t + '</button>';
       });
-      h += '</tr></thead><tbody>';
-      var lastGroup = null;
-      ls.forEach(function (ln) {
-        if (ln.group && ln.group !== lastGroup) {
-          lastGroup = ln.group;
-          h += '<tr><td colspan="' + (TIERS.length + 1) + '" style="padding:0.6rem 0.6rem 0.2rem;color:var(--accent);font-weight:700;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;border-top:1px solid var(--border);">In ' + escapeHtml(ln.group) + ' Slot</td></tr>';
-        }
-        h += '<tr><td style="padding:0.3rem 0.6rem 0.3rem ' + (ln.group ? '1.2rem' : '0.6rem') + ';color:var(--text-primary);font-weight:500;white-space:nowrap;">' + escapeHtml(ln.label) + '</td>';
-        ln.vals.forEach(function (v, i) {
-          var top = TIERS[i] === "Celestial";
-          h += '<td style="padding:0.3rem 0.6rem;text-align:right;white-space:nowrap;' + (top ? 'background:rgba(63,224,224,0.09);color:' + RARITY_COLOR.Celestial + ';font-weight:700;font-size:0.88rem;' : 'color:var(--text-muted);font-weight:400;') + '">' + fmt(v, ln.pct) + '</td>';
-        });
-        h += '</tr>';
+      h += '</div>';
+      // One stat block per rarity; only the selected (Celestial) shows.
+      h += '<div class="ench-stats">';
+      TIERS.forEach(function (t, ti) {
+        h += '<div data-tier-block="' + t + '"' + (t === "Celestial" ? '' : ' style="display:none;"') + '>' + statRows(ls, ti) + '</div>';
       });
-      return h + '</tbody></table></div></div></div>';
+      h += '</div>';
+      return h + '</div></div>';
     }
     var GROUPS = [
       { key: "Universal", label: "Universal &mdash; Gemstones (offense / defense / utility)" },
@@ -287,14 +293,36 @@
       { key: "Bonus", label: "Bonus Slot" },
       { key: "companion", label: "Companion" }
     ];
-    var html = '<div style="color:var(--text-secondary);font-size:0.88rem;margin:0.5rem 0 1rem;">Every enchantment across all 6 rarities (Uncommon &rarr; Celestial). You upgrade these over time, so a lower rank gives smaller numbers than the top Celestial tier &mdash; set the rank you own per slot in the Toon Forge build tool.</div>';
+    var html = '<div style="color:var(--text-secondary);font-size:0.88rem;margin:0.5rem 0 1rem;">Each enchantment shows one rarity at a time &mdash; click a rarity pill to see its stats (Uncommon &rarr; Celestial). You upgrade these over time, so a lower rarity gives smaller numbers than the top Celestial tier; set the rank you own per slot in the Toon Forge build tool.</div>';
     GROUPS.forEach(function (g) {
       var list = data.filter(function (e) { return e.slotType === g.key; });
       if (!list.length) return;
       html += '<h2 style="font-size:1.05rem;margin:1.2rem 0 0.5rem;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:0.3rem;">' + g.label + ' <span style="color:var(--text-muted);font-weight:400;font-size:0.85rem;">(' + list.length + ')</span></h2>';
       list.forEach(function (e) { html += card(e); });
     });
-    document.getElementById("enchants-list").innerHTML = html;
+    var listEl = document.getElementById("enchants-list");
+    listEl.innerHTML = html;
+    // Pill clicks switch which rarity's stats show (don't toggle the card).
+    if (!listEl._enchPillsBound) {
+      listEl._enchPillsBound = true;
+      listEl.addEventListener("click", function (ev) {
+        var pill = ev.target.closest && ev.target.closest(".ench-pill");
+        if (!pill) return;
+        ev.stopPropagation();
+        var cardEl = pill.closest(".art-card");
+        if (!cardEl) return;
+        var tier = pill.getAttribute("data-tier");
+        cardEl.querySelectorAll(".ench-pill").forEach(function (p) {
+          var t = p.getAttribute("data-tier"), on = t === tier;
+          p.style.background = on ? RARITY_COLOR[t] : "transparent";
+          p.style.color = on ? "#0d1117" : RARITY_COLOR[t];
+          p.style.fontWeight = on ? "700" : "500";
+        });
+        cardEl.querySelectorAll("[data-tier-block]").forEach(function (b) {
+          b.style.display = (b.getAttribute("data-tier-block") === tier) ? "" : "none";
+        });
+      });
+    }
   }
 
   var tabs = document.querySelectorAll(".view-tab");
