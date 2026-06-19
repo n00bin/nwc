@@ -2362,10 +2362,6 @@
         </div>
         <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-mute);max-width:280px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization, plus the Forgemaster's AI verdict that reviews any build and coaches how to play it. Still in development — not available yet, coming soon.</span>
       </div>
-      <details id="tf-readiness" style="flex:1 0 100%;margin-top:0.4rem;font-size:0.78rem;border:1px solid rgba(170,180,205,0.32);border-radius:9px;background:rgba(255,255,255,0.03);padding:0.35rem 0.7rem;text-align:left;">
-        <summary id="tf-readiness-summary" style="cursor:pointer;font-weight:700;color:var(--text-secondary);">Build readiness</summary>
-        <div id="tf-readiness-body" style="margin-top:0.4rem;line-height:1.5;"></div>
-      </details>
     </div>
   </div>
 
@@ -16227,31 +16223,33 @@
       return out;
     }
     window.nwcbReadiness = nwcbReadiness;
-    window.nwcbReadyToOptimize = function () { return nwcbReadiness().every(i => i.info || !i.req || i.ok); };
-
-    function renderReadinessPanel() {
-      const body = document.getElementById("tf-readiness-body");
-      if (!body) return;
-      const items = nwcbReadiness();
-      const reqs = items.filter(i => i.req);
-      const reqOk = reqs.filter(i => i.ok).length;
-      const warn = items.filter(i => !i.info && !i.ok).length;
-      const sum = document.getElementById("tf-readiness-summary");
-      if (sum) sum.textContent = (reqOk === reqs.length ? "✅" : "⚠️") + " Build readiness — "
-        + reqOk + "/" + reqs.length + " essentials set" + (warn ? "  ·  " + warn + " to check" : "  ·  ready to optimize");
-      const esc = (v) => String(v).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
-      body.innerHTML = items.map(i => {
-        const icon = i.info ? "ℹ️" : (i.ok ? "✓" : "⚠");
-        const col = i.info ? "var(--text-mute)" : (i.ok ? "var(--pos)" : "var(--amber)");
-        const showHint = i.hint && (i.info || !i.ok);
-        return '<div style="display:flex;gap:0.5rem;padding:0.12rem 0;align-items:baseline;">'
-          + '<span style="color:' + col + ';width:1.3em;flex:none;text-align:center;">' + icon + '</span>'
-          + '<span style="width:8.5em;flex:none;color:var(--text-secondary);">' + esc(i.label) + '</span>'
-          + '<span style="color:var(--text);">' + esc(i.value)
-          + (showHint ? ' <span style="color:var(--text-mute);">— ' + esc(i.hint) + '</span>' : '')
-          + '</span></div>';
-      }).join("");
+    // Missing = required/important inputs that are unset (info rows excluded).
+    function nwcbMissingInputs() { return nwcbReadiness().filter(i => !i.info && !i.ok); }
+    window.nwcbReadyToOptimize = function () { return nwcbMissingInputs().length === 0; };
+    // Click-time gate: returns true if ready; otherwise pops a toast listing
+    // exactly what to set and returns false. The local optimizer can call this,
+    // and the capture-phase interceptor below enforces it on the button click.
+    function nwcbCheckOptimizerReady() {
+      const missing = nwcbMissingInputs();
+      if (!missing.length) return true;
+      toastSticky("⚠ Can't optimize yet — set: " + missing.map(i => i.label).join(", ")
+        + ".  Fill these in, then click Optimize again.", 7000);
+      return false;
     }
+    window.nwcbCheckOptimizerReady = nwcbCheckOptimizerReady;
+    // The optimizer button is injected by js/optimizer-local.js into
+    // #featured-optimizer-slot, so a capture-phase listener on the slot runs
+    // BEFORE the optimizer's own handler — if the build isn't ready it shows
+    // the toast and stops the run. No edit to the gitignored file needed.
+    (function () {
+      const slot = document.getElementById("featured-optimizer-slot");
+      if (slot) slot.addEventListener("click", function (e) {
+        if (e.target.closest("button") && !nwcbCheckOptimizerReady()) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+    })();
 
     function rerenderAll() {
       // Recompute ability scores first — buff/state changes that affect
@@ -16267,7 +16265,6 @@
       renderScore();
       renderStepDoneStates();
       renderClassLoadout();
-      renderReadinessPanel();
       if (state.step === 6) { renderSim(); renderSummary(); }
       // If a picker is open, re-render its list too. This keeps the
       // displayed values in picker cards in sync with state changes
