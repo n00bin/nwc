@@ -12622,10 +12622,10 @@
       // including conditional; that's right for the engine but wrong for
       // a "standing around" display matching the in-game stat panel.
       const _hpAlwaysOnPct = (_hpStat.contributors || [])
-        .filter(c => c.type === "percent" && !c.conditional)
+        .filter(c => c.type === "percent" && !c.conditional && (!_dstatsHideBuffs || !isConsumableBuffContributor(c)))
         .reduce((sum, c) => sum + (c.amount || 0), 0);
       const _hpAlwaysOnFlat = (_hpStat.contributors || [])
-        .filter(c => c.type === "rating" && !c.conditional)
+        .filter(c => c.type === "rating" && !c.conditional && (!_dstatsHideBuffs || !isConsumableBuffContributor(c)))
         .reduce((sum, c) => sum + (c.amount || 0), 0);
       const _hdlBaseMaxHP = Math.round(_hdlTIL * 10 * _hdlHpRoleMult);
       // CON multiplier (+0.5% Max HP per CON point). The engine applies this in
@@ -12650,11 +12650,11 @@
       // Inline HP breakdown so calibration drift is visible. Lists each
       // always-on percent contributor and its value.
       const _hpContribLines = (_hpStat.contributors || [])
-        .filter(c => c.type === "percent" && !c.conditional)
+        .filter(c => c.type === "percent" && !c.conditional && (!_dstatsHideBuffs || !isConsumableBuffContributor(c)))
         .map(c => `  ${c.source}: +${c.amount.toFixed(2)}%`)
         .join("\n") || "  (none)";
       const _hpFlatContribLines = (_hpStat.contributors || [])
-        .filter(c => c.type === "rating" && !c.conditional)
+        .filter(c => c.type === "rating" && !c.conditional && (!_dstatsHideBuffs || !isConsumableBuffContributor(c)))
         .map(c => `  ${c.source}: +${c.amount.toLocaleString()}`)
         .join("\n") || "  (none)";
       const _hpDebugTitle = `Base = TIL ${_hdlTIL.toLocaleString()} × 10 × ${_hdlHpRoleMult.toFixed(2)} = ${_hdlBaseMaxHP.toLocaleString()}\n` +
