@@ -9292,20 +9292,6 @@
       return bonus;
     }
 
-    // Just the ability bonus from active CONSUMABLE buffs (e.g. Campfire
-    // +1 to all). Subtracted for the Detailed Stats "Hide buffs" view so
-    // Forte and ability-derived stats match an unbuffed (workshop) sheet.
-    function getBuffAbilityBonus() {
-      const bonus = { str:0, con:0, dex:0, int:0, wis:0, cha:0 };
-      if (state.buffs && typeof findBuffByName === "function") {
-        for (const buffName of state.buffs) {
-          const b = findBuffByName(buffName);
-          if (b) addAbilityBonus(bonus, b.abilityBonuses);
-        }
-      }
-      return bonus;
-    }
-
     // Race contribution to ability scores (fixed + chosen).
     function getRaceAbilityBonus() {
       const bonus = { str:0, con:0, dex:0, int:0, wis:0, cha:0 };
@@ -12173,20 +12159,6 @@
       return _engineResult;
     }
 
-    // Engine result with buff ABILITY bonuses removed from ability scores
-    // (e.g. Campfire's +1 CHA). The Detailed Stats "Hide buffs" view uses
-    // this so Forte and ability-derived stats reflect an unbuffed sheet --
-    // the per-stat renderer already strips buff STAT contributors; this
-    // strips the ability-score leak the renderer cannot see.
-    function getEngineResultNoBuffAbil() {
-      const buffAbil = getBuffAbilityBonus();
-      const ch = buildEngineCharacter(state);
-      const ab = {};
-      for (const k of ABIL_KEYS) ab[k] = Math.max(8, (state.abil[k] || 10) - (buffAbil[k] || 0));
-      ch.abilityScores = ab;
-      return TOON_FORGE_ENGINE.computeStats(ch);
-    }
-
     // Stats that matter most per role (mekaniks.html priorities).
     const ROLE_PRIORITY_STATS = {
       dps:  ["Power", "Combat Advantage", "Critical Severity", "Critical Strike", "Accuracy"],
@@ -12557,10 +12529,7 @@
     let _dstatsShowConditional = false;
 
     function openDetailedStats() {
-      // Under "Hide buffs", use the engine result computed WITHOUT buff
-      // ability bonuses so Forte / ability-derived stats are unbuffed too
-      // (the per-stat filter handles buff STAT contributors separately).
-      const r = _dstatsHideBuffs ? getEngineResultNoBuffAbil() : getEngineResult();
+      const r = getEngineResult();
       const body = document.getElementById("dstats-body");
       const cb = document.getElementById("dstats-hide-buffs");
       if (cb) cb.checked = _dstatsHideBuffs;
