@@ -2824,6 +2824,11 @@
             <input type="checkbox" id="dstats-show-cond" checked>
             Hide in-combat bonuses
           </label>
+          <label class="dstats-hide-buffs" id="dstats-health-label" title="Your current Health %. Health-threshold 'either/or' equip bonuses (e.g. +7% Combat Advantage above 60% HP / +6% Critical Strike below 60% HP) resolve to the matching half at this value." style="gap:0.45rem;">
+            ❤ Health
+            <input type="range" id="dstats-health" min="0" max="100" step="5" value="100" style="cursor:pointer;width:88px;vertical-align:middle;">
+            <span id="dstats-health-val" style="min-width:2.7em;text-align:right;color:var(--amber);font-variant-numeric:tabular-nums;">100%</span>
+          </label>
           <button class="dstats-close" id="dstats-close">✕ Close</button>
         </div>
       </div>
@@ -2967,6 +2972,7 @@
       compBolsterILContribution: 0,
       mountBolsterILContribution: 0,
       flankUptime: 1.0,  // fixed 100% Combat Advantage uptime (endgame group standard; slider removed)
+      currentHealthPct: 100,  // Current Health % slider — resolves health-threshold (either/or) equip bonuses
       // Selected content zone for zone-gated bonuses. "" = General: bonuses
       // tagged with a `zones` restriction (e.g. "+5% damage in Wildspace")
       // are EXCLUDED, so situational damage never inflates the always-on number.
@@ -3119,6 +3125,7 @@
           // Damage-sim settings — were silently dropped from saves/share
           // links before (audit #25), reverting to defaults on load.
           flankUptime: 1.0,
+          currentHealthPct: (typeof state.currentHealthPct === "number") ? state.currentHealthPct : 100,
           simMag: (typeof state.simMag === "number") ? state.simMag : 100
         }
       };
@@ -3218,6 +3225,7 @@
       // old save (without these keys) resets them instead of inheriting
       // whatever the current session had.
       state.flankUptime = 1.0;  // fixed 100% CA uptime; ignore any saved slider value
+      state.currentHealthPct = (typeof s.currentHealthPct === "number") ? s.currentHealthPct : 100;
       state.simMag = (typeof s.simMag === "number") ? s.simMag : 100;
       state.contentZone = (typeof s.contentZone === "string") ? s.contentZone : "";
       updateContentZoneButton();
@@ -11504,8 +11512,33 @@
       // zone-locked bonuses, so situational damage (e.g. "+5% in Wildspace")
       // never inflates the always-on number.
       const contentZone = s.contentZone || "";
+      // Health-threshold gating: either/or gear ("+X above N% HP / +Y below N% HP")
+      // is resolved by the Current Health % slider. Returns the item's health-gated
+      // bonus names + the parsed above/below thresholds.
+      function _healthGateInfo(item) {
+        let aboveN = null, belowN = null; const names = new Set();
+        for (const eb of (item.equipBonuses || [])) {
+          const d = String(eb && eb.description || "");
+          if (!/health/i.test(d)) continue;
+          if (eb.name) names.add(eb.name);
+          let m;
+          if (aboveN == null) {
+            m = d.match(/health(?:\s+is)?\s+(?:above|over)\s*(\d+)\s*%/i)
+             || d.match(/(\d+)\s*%\s*or\s*more/i) || d.match(/more than\s*(\d+)\s*%/i);
+            if (m) aboveN = parseFloat(m[1]);
+          }
+          if (belowN == null) {
+            m = d.match(/health(?:\s+is)?\s+(?:below|under)\s*(\d+)\s*%/i)
+             || d.match(/(\d+)\s*%\s*or\s*less/i) || d.match(/less than\s*(\d+)\s*%/i);
+            if (m) belowN = parseFloat(m[1]);
+          }
+        }
+        return { names, aboveN, belowN };
+      }
       function ingestEquipBonuses(label, item) {
         if (!item || !Array.isArray(item.equipBonuses)) return;
+        const _hg = _healthGateInfo(item);
+        const _hp = (state.currentHealthPct == null ? 100 : +state.currentHealthPct);
         for (const eb of item.equipBonuses) {
           if (!eb || !eb.stat || eb.amount == null) continue;
           if (eb.scope && eb.scope !== "self") continue;  // party/enemy buffs handled elsewhere
@@ -11526,13 +11559,24 @@
           // bonuses are untouched (conditionalDamageUptime returns 1.0).
           // Kill switch: CONDITIONAL_UPTIME.apply_to_stat_grants = false.
           // Per-bonus escape hatch: uptimeOverride (data field, 0..1).
-          const uptimeFactor = (CONDITIONAL_UPTIME.apply_to_stat_grants || isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1;
+          // Health-threshold gate (either/or gear): the Current Health % slider
+          // deterministically picks which half is active, overriding the uptime
+          // estimate. Skip the half that isn't active at the set health.
+          let _healthGated = false;
+          if (eb.name && _hg.names.has(eb.name) && (_hg.aboveN != null || _hg.belowN != null)) {
+            _healthGated = true;
+            const _active = (eb.alwaysActive !== false)
+              ? (_hg.aboveN == null ? true : _hp >= _hg.aboveN)
+              : (_hg.belowN != null && _hp < _hg.belowN);
+            if (!_active) continue;
+          }
+          const uptimeFactor = _healthGated ? 1 : ((CONDITIONAL_UPTIME.apply_to_stat_grants || isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1);
           // Conditional bonuses (in-combat stacks, procs, group-only, etc.)
           // are pushed with conditional: true so the renderer can filter
           // them out for "standing around" view or include them at max
           // value for "with conditionals" view. The renderer's Detailed
           // Stats panel has a checkbox to switch between the two modes.
-          const isConditional = (eb.alwaysActive === false);
+          const isConditional = _healthGated ? false : (eb.alwaysActive === false);
           // amount is percent by default; kind: "rating" means flat rating value
           const channel = (eb.kind === "rating") ? "ratingStats" : "percentStats";
           // perStack scaling — gear/sets with maxStacks > 1 that stack per
@@ -12171,7 +12215,7 @@
 
     function getEngineResult() {
       const key = JSON.stringify({
-        il: state.il, cls: state.class, par: state.paragon, race: state.race,
+        il: state.il, cls: state.class, par: state.paragon, race: state.race, hp: state.currentHealthPct,
         role: state.role, gear: state.gear, gil: state.gearIL, amods: state.artifactMods, art: state.artifacts, abil: state.abil,
         sum: state.summoned, sumEnh: state.summonedEnh, sumEnch: state.summonedEnchant,
         sumG: state.summonedGear,
@@ -12568,6 +12612,11 @@
       const body = document.getElementById("dstats-body");
       const cb = document.getElementById("dstats-hide-buffs");
       if (cb) cb.checked = _dstatsHideBuffs;
+      const _hpSlider = document.getElementById("dstats-health");
+      const _hpVal = document.getElementById("dstats-health-val");
+      const _hpNow = (state.currentHealthPct == null ? 100 : state.currentHealthPct);
+      if (_hpSlider) _hpSlider.value = _hpNow;
+      if (_hpVal) _hpVal.textContent = _hpNow + "%";
       const lbl = document.getElementById("dstats-hide-buffs-label");
       if (lbl) lbl.classList.toggle("on", _dstatsHideBuffs);
       const cbParty = document.getElementById("dstats-hide-party-buffs");
@@ -16577,6 +16626,21 @@
     document.getElementById("dstats-overlay").addEventListener("click", (e) => {
       if (e.target.id === "dstats-overlay") closeDetailedStats();
     });
+    {
+      const _hsl = document.getElementById("dstats-health");
+      if (_hsl) {
+        _hsl.addEventListener("input", (e) => {
+          const v = Math.max(0, Math.min(100, +e.target.value || 0));
+          const hv = document.getElementById("dstats-health-val");
+          if (hv) hv.textContent = v + "%";
+        });
+        _hsl.addEventListener("change", (e) => {
+          state.currentHealthPct = Math.max(0, Math.min(100, +e.target.value || 0));
+          if (typeof rerenderAll === "function") rerenderAll();  // health changes the engine result
+          openDetailedStats();  // re-render the modal with the recomputed stats
+        });
+      }
+    }
     document.getElementById("dstats-hide-buffs").addEventListener("change", (e) => {
       _dstatsHideBuffs = !!e.target.checked;
       const lbl = document.getElementById("dstats-hide-buffs-label");
