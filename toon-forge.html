@@ -12595,7 +12595,19 @@
         .reduce((sum, c) => sum + (c.amount || 0), 0);
       const _hdlBaseMaxHP = Math.round(_hdlTIL * 10 * _hdlHpRoleMult);
       const _hdlMaxHP = Math.round(_hdlBaseMaxHP * (1 + _hpAlwaysOnPct / 100) + _hpAlwaysOnFlat);
-      const _hdlDamage = Math.round((_hdlTIL / 10) * _hdlDamageRoleMult);
+      // Weapons carry a flat "+X Damage" base stat (e.g. Omen of Doom +100)
+      // the TIL-scaled formula above doesn't capture. Sum weaponDamage across
+      // equipped gear and add it so the Damage headline matches in-game.
+      let _gearWeaponDamage = 0;
+      if (typeof GEAR_SLOTS !== "undefined") {
+        for (const _se of GEAR_SLOTS) {
+          const _gnm = state.gear[_se.label];
+          if (!_gnm) continue;
+          const _gi = findGearByName(_gnm, _se.slot, (state.gearIL || {})[_se.label]);
+          if (_gi && _gi.weaponDamage) _gearWeaponDamage += (+_gi.weaponDamage || 0);
+        }
+      }
+      const _hdlDamage = Math.round((_hdlTIL / 10) * _hdlDamageRoleMult) + _gearWeaponDamage;
       // Inline HP breakdown so calibration drift is visible. Lists each
       // always-on percent contributor and its value.
       const _hpContribLines = (_hpStat.contributors || [])
