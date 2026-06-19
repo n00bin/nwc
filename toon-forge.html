@@ -12628,7 +12628,12 @@
         .filter(c => c.type === "rating" && !c.conditional)
         .reduce((sum, c) => sum + (c.amount || 0), 0);
       const _hdlBaseMaxHP = Math.round(_hdlTIL * 10 * _hdlHpRoleMult);
-      const _hdlMaxHP = Math.round(_hdlBaseMaxHP * (1 + _hpAlwaysOnPct / 100) + _hpAlwaysOnFlat);
+      // CON multiplier (+0.5% Max HP per CON point). The engine applies this in
+      // finalize(); the headline must too, or high-CON builds under-report HP.
+      // Matches engine: (TIL×10×role + flatItemHP) × (1+CON×0.5%) × (1+%MaxHP).
+      const _hpCON = (state.abil && state.abil.con) || 10;
+      const _hpConMult = 1 + _hpCON * 0.005;
+      const _hdlMaxHP = Math.round((_hdlBaseMaxHP + _hpAlwaysOnFlat) * _hpConMult * (1 + _hpAlwaysOnPct / 100));
       // Weapons carry a flat "+X Damage" base stat (e.g. Omen of Doom +100)
       // the TIL-scaled formula above doesn't capture. Sum weaponDamage across
       // equipped gear and add it so the Damage headline matches in-game.
@@ -12653,8 +12658,10 @@
         .map(c => `  ${c.source}: +${c.amount.toLocaleString()}`)
         .join("\n") || "  (none)";
       const _hpDebugTitle = `Base = TIL ${_hdlTIL.toLocaleString()} × 10 × ${_hdlHpRoleMult.toFixed(2)} = ${_hdlBaseMaxHP.toLocaleString()}\n` +
-        `Percent bonuses sum = +${_hpAlwaysOnPct.toFixed(2)}%\n` +
         `Flat HP from items = +${_hpAlwaysOnFlat.toLocaleString()}\n` +
+        `CON multiplier = ×${_hpConMult.toFixed(3)} (CON ${_hpCON} × 0.5%)\n` +
+        `Always-on percent bonuses = +${_hpAlwaysOnPct.toFixed(2)}%\n` +
+        `MaxHP = (Base + Flat) × CON × (1 + %) = ${_hdlMaxHP.toLocaleString()} HP\n` +
         `\nAlways-on percent contributors:\n${_hpContribLines}\n` +
         `\nAlways-on flat contributors:\n${_hpFlatContribLines}`;
       html += `<div class="dstats-section">
