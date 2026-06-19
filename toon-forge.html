@@ -4389,9 +4389,42 @@
     // Returns { html, rendered } where rendered is a Set of top-level
     // field names touched (so _ccRenderCard can skip them in the fallback
     // and _ccRenderMissingFieldsExpander can skip them too).
+    // Mount-power values are stored at the MYTHIC anchor; the engine scales
+    // them up with the selected rarity (and bolster for combat powers) for
+    // display. The correction form must show that SAME scaled value, or
+    // players keep filing base-vs-scaled "mismatches" (magnitude 1800 stored
+    // vs 2362 in-game at Celestial, etc). Mirrors _scaleCombat/_eqScale.
+    function _ccScaleMountPowerValue(item, dataType, field, value) {
+      if (value == null || value === "") return value;
+      const isCombat = dataType === "combat_power";
+      const isEquip  = dataType === "equip_power" || dataType === "party_mount_equip_power";
+      if (!isCombat && !isEquip) return value;
+      if (typeof mountRarityFactor !== "function" || typeof mountPowerAnchorFactor !== "function") return value;
+      const rarity = isCombat
+        ? (state.activeCombatPowerRarity || "Mythic")
+        : (state.activeEquipPowerRarity || "Mythic");
+      if (field === "item_level") {
+        const il = (typeof mountPowerILFor === "function") ? mountPowerILFor(item, rarity) : 0;
+        return il || value;
+      }
+      if (field === "magnitude" || field === "combinedRating") {
+        const n = Number(value);
+        if (!Number.isFinite(n)) return value;
+        const anchor = mountPowerAnchorFactor(item) || 1;
+        let factor = mountRarityFactor(rarity) / anchor;
+        if (isCombat && typeof mountPowerBolsterFactor === "function") {
+          factor = mountPowerBolsterFactor(state.mountBolster) * factor;
+        }
+        factor = Math.min(factor, 1.3124 / anchor);
+        return Math.round(n * factor);
+      }
+      return value;
+    }
+
     function _ccRenderDescriptor(item, dataType, descriptors) {
       // r() mirrors the one inside _ccRenderCard.
       const r = (label, value, field, kind) => {
+        value = _ccScaleMountPowerValue(item, dataType, field, value);
         const isNum = kind === "num";
         const valueClass = isNum ? "cc-row-value cc-row-value-num" : "cc-row-value";
         const display = value == null || value === ""
@@ -4727,6 +4760,7 @@
       // ---- Fallback path (Phase 1): hand-rendered + auto-scan ----------
       // Kept intact as safety net for any dataType not yet in FIELD_DESCRIPTORS.
       const r = (label, value, field, kind) => {
+        value = _ccScaleMountPowerValue(item, dataType, field, value);
         const isNum = kind === "num";
         const valueClass = isNum ? "cc-row-value cc-row-value-num" : "cc-row-value";
         const display = value == null || value === ""
