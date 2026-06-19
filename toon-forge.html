@@ -4415,7 +4415,7 @@
         if (isCombat && typeof mountPowerBolsterFactor === "function") {
           factor = mountPowerBolsterFactor(state.mountBolster) * factor;
         }
-        factor = Math.min(factor, 1.3124 / anchor);
+        factor = Math.min(factor, 1.3124444 / anchor);
         return Math.round(n * factor);
       }
       return value;
@@ -5981,7 +5981,7 @@
       const _cpRarityFactor = mountRarityFactor(state.activeCombatPowerRarity || "Mythic") / _cpAnchorFactor;
       const _cpBolsterFactor = mountPowerBolsterFactor(state.mountBolster);
       function _scaleCombat(stored) {
-        return Math.min((stored || 0) * _cpBolsterFactor * _cpRarityFactor, (stored || 0) * (1.3124 / _cpAnchorFactor));
+        return Math.min((stored || 0) * _cpBolsterFactor * _cpRarityFactor, (stored || 0) * (1.3124444 / _cpAnchorFactor));
       }
       const cdr = p.rechargeTimeSeconds ? `${p.rechargeTimeSeconds}s recharge` : "";
       const mag = p.magnitude ? `magnitude ${Math.round(_scaleCombat(p.magnitude))}` : "";
@@ -6023,7 +6023,7 @@
       // scale with rarity only, Decision 3).
       const _eqAnchor = mountPowerAnchorFactor(p);
       const _eqFactor = mountRarityFactor(state.activeEquipPowerRarity || "Mythic") / _eqAnchor;
-      const _eqScale = (v) => Math.min((v || 0) * _eqFactor, (v || 0) * (1.3124 / _eqAnchor));
+      const _eqScale = (v) => Math.min((v || 0) * _eqFactor, (v || 0) * (1.3124444 / _eqAnchor));
       const dispIL = mountPowerILFor(p, state.activeEquipPowerRarity);
       const dispCR = Math.round(_eqScale(p.combinedRating));
       const il = dispIL ? "IL " + dispIL : (p.item_level ? "IL " + p.item_level : "");
@@ -9775,7 +9775,7 @@
       return (1 + b / 100) / anchor;
     }
     // Per-slot mount rarity scaling multipliers. Stored values are at Mythic
-    // baseline (factor 1.0). Celestial cap (1.3124) matches Decision 4.
+    // baseline (factor 1.0). Celestial cap (1.3124444) matches Decision 4.
     const MOUNT_RARITY_MULTIPLIERS = {
       "Common":    0.00667,
       "Uncommon":  0.0667,
@@ -9783,7 +9783,7 @@
       "Epic":      0.4,
       "Legendary": 0.667,
       "Mythic":    1.0,
-      "Celestial": 1.3124
+      "Celestial": 1.3124444
     };
     function mountRarityFactor(rarity) {
       return MOUNT_RARITY_MULTIPLIERS[rarity] || 1.0;
@@ -9792,7 +9792,7 @@
     // capture ("Mythic preferred" convention), but some entries were captured
     // at Celestial (anchorRarity: "Celestial" in the data — their stored
     // stats/CR/magnitudes/IL are Celestial-scale, e.g. Pack Tactics 2953 =
-    // 2250 x 1.3124). Applied scaling must DIVIDE by the anchor's factor or
+    // 2250 x 1.3124444). Applied scaling must DIVIDE by the anchor's factor or
     // Celestial-anchored powers double-scale when Celestial is selected.
     function mountPowerAnchorFactor(p) {
       return mountRarityFactor((p && p.anchorRarity) || "Mythic");
@@ -11102,14 +11102,14 @@
           const percentStats = {};
           for (const st of (ep.stats || [])) {
             const tgt = st.type === "percent" ? percentStats : ratingStats;
-            const _scaledValue = Math.min((st.value || 0) * _rarityFactor, (st.value || 0) * (1.3124 / _epAnchorFactor));
+            const _scaledValue = Math.min((st.value || 0) * _rarityFactor, (st.value || 0) * (1.3124444 / _epAnchorFactor));
             tgt[st.stat] = (tgt[st.stat] || 0) + _scaledValue;
           }
           buffs.push({
             source: "Mount Equip Power: " + ep.name,
             ratingStats, percentStats
           });
-          const _scaledCR = Math.min((ep.combinedRating || 0) * _rarityFactor, (ep.combinedRating || 0) * (1.3124 / _epAnchorFactor));
+          const _scaledCR = Math.min((ep.combinedRating || 0) * _rarityFactor, (ep.combinedRating || 0) * (1.3124444 / _epAnchorFactor));
           const cr = expandCR(_scaledCR, 1);
           if (cr) {
             buffs.push({
@@ -11144,7 +11144,7 @@
           // Decision 10 / R-only row: amount scales with rarity, not bolster.
           if (ep.equipEffect && ep.equipEffect.stat) {
             const ef = ep.equipEffect;
-            const _scaledAmount = Math.min((ef.amount || 0) * _rarityFactor, (ef.amount || 0) * (1.3124 / _epAnchorFactor));
+            const _scaledAmount = Math.min((ef.amount || 0) * _rarityFactor, (ef.amount || 0) * (1.3124444 / _epAnchorFactor));
             const entry = {
               source: `Mount Equip Proc: ${ep.name} (on ${ef.trigger || "trigger"})`,
               conditional: true
@@ -11170,7 +11170,7 @@
             const sbPercent = {};
             for (const [rawKey, perStack] of Object.entries(sb.perStack)) {
               const stat = _normalizeMountProcStat(rawKey);
-              const _scaledPerStack = Math.min((perStack || 0) * _rarityFactor, (perStack || 0) * (1.3124 / _epAnchorFactor));
+              const _scaledPerStack = Math.min((perStack || 0) * _rarityFactor, (perStack || 0) * (1.3124444 / _epAnchorFactor));
               const total = _scaledPerStack * stacks;
               if (perStack > 100) sbRating[stat] = total;
               else                sbPercent[stat] = total;
