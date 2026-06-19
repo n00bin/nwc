@@ -14263,18 +14263,18 @@
       // because of your class, paragon, and selected race. Same card
       // grid pattern as Mechanics: name + tag + description.
       const generalEntries = [];
-      // Class-level passives (Weapon Mastery, Lucky Skirmisher, Demonic
-      // Vision, etc.) — these are class skills granted automatically.
-      if (classDefForLoadout && Array.isArray(classDefForLoadout.classFeatures)) {
-        for (const cf of classDefForLoadout.classFeatures) {
-          if (cf && cf.name) generalEntries.push({ feature: cf, kind: state.class + " skill" });
-        }
-      }
-      // Paragon-level passives (Warden's Skirmisher's Gambit, etc.).
-      if (paragonDef && Array.isArray(paragonDef.classFeatures)) {
-        for (const cf of paragonDef.classFeatures) {
-          if (cf && cf.name) generalEntries.push({ feature: cf, kind: state.paragon + " passive" });
-        }
+      // The in-game "General" lists the class's GENERAL FEATS (Dungeoneering,
+      // Persistent Rage, Marathon Runner, Raging Criticals, etc.), not class
+      // skills. Source class.feats; for classes whose general feats aren't in
+      // the data yet (empty feats), fall back to class skills so the panel
+      // isn't empty. Paragon class features are slottable and live in the
+      // class-feature picker, not here.
+      const _hasFeats = !!(classDefForLoadout && Array.isArray(classDefForLoadout.feats) && classDefForLoadout.feats.length);
+      const _genList = _hasFeats
+        ? classDefForLoadout.feats
+        : ((classDefForLoadout && Array.isArray(classDefForLoadout.classFeatures)) ? classDefForLoadout.classFeatures : []);
+      for (const ge of _genList) {
+        if (ge && ge.name) generalEntries.push({ feature: ge, kind: state.class + (_hasFeats ? " feat" : " skill") });
       }
       // Racial traits — pulled from races.json for the SELECTED race
       // only (so a Wood Elf Ranger sees Elven Accuracy + Wild Step but
