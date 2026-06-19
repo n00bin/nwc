@@ -1,5 +1,86 @@
 # Data Issues To Investigate
 
+## Mount combat-power valuation — engine ignores SELF stat-buffs; pick is defensible, left as-is + player workaround (2026-06-19)
+The builder's DPS sim (`toon-forge.html` ~10290-10321, the combat-power block of
+`computeDpsExpectedDamage`) credits a mount combat power via only TWO things:
+(1) its **enemy** "Dmg Taken / Dmg Debuff" (multiplies your damage), and
+(2) a raw **burst** = magnitude ÷ recharge (capped at 6%). It does **NOT** credit
+a combat power's **SELF stat-buffs** — e.g. "Base Damage Boost", or a self
+Critical Strike / Accuracy buff. So pure-buff combat powers are undervalued by the
+model.
+
+**Tested 2026-06-19 (dry-run harness, gitignored: `website/scripts/_combat_power_pick_test.js`).
+Verdict: the pick is DEFENSIBLE, not a bug.** A player asked why the builder keeps
+landing on **Wicked Lich** (id 84: 2,400 mag + **+15% self damage**) when bigger
+powers exist. The harness shows Wicked Lich genuinely beats the high-magnitude
+*no-buff* powers — e.g. Tunnel Vision (3,000 mag, no buff): **~5.2% vs ~3.3%** of
+your damage at a normal rotation. The +15% self buff outweighs the extra
+magnitude, so the big-number powers are actually **weaker**. Nothing is broken.
+
+**The real gap:** the model can't *explain* that pick (it scores Wicked Lich on
+burst, blind to the +15%), and — more importantly — it can't surface multi-stat
+**pure-buff** powers that might win on an under-capped build. Example:
+**Mighty Dragon's Roar** (id 80) grants +15% Base Damage Boost **+ 15% Crit Strike
++ 15% Accuracy** + enemy debuffs, at **magnitude 0** — that 0 is a *legitimate
+pure-buff power, NOT a data gap* (confirmed: its tooltip notes describe a buff, no
+damage hit). On a build below crit/accuracy cap, that could beat Wicked Lich, but
+the model credits it ~nothing.
+
+**Proper fix (deferred, not urgent):** route a combat power's SELF stat-buffs
+through the same **cap-aware** engine that values gear (a +15% Crit is worth a lot
+under cap, ~0 at cap), so multi-stat buff powers rank correctly. Bigger change —
+needs its own test pass. A naive "just add the +15% damage line" fix is INCOMPLETE
+(it still ignores the crit/accuracy on powers like Mighty Dragon's Roar) — the
+harness caught that before it shipped.
+
+**Player workaround in the meantime:** the active combat power is a **free manual
+pick** in Toon Forge (the ⚔ chip / picker). A player who doesn't want the builder's
+selection can simply set their own preferred power — it doesn't have to stay on the
+optimizer's choice.
+
+**Decision (n00b, 2026-06-19):** leave the engine/optimizer untouched — the current
+pick is sound — and revisit the cap-aware self-buff valuation when we choose to
+invest. Documented only.
+
+## Mount collection bolster not wired to mount-power scaling — DOCUMENTED, left as-is by n00b (2026-06-19)
+Two independent researchers (general web + NW-creators) confirmed mount collection
+bolster IS a real mechanic in-game, NOT cosmetic: it scales BOTH the mount's
+**combat power** (magnitude/damage) AND **equip power** (stats/CR) up the same
+curve, and those powered-up values feed TIL. It does **not** scale insignia
+bonuses. Sources: NWGuide (GitBook), Obikin89, Anjicat.
+
+**Current mechanic (per n00b, 2026-06-19): bolster maxes at 125% with 10
+Celestial mounts.** The researched sources are Mod-20-era and say 100% max with
+10 *Mythic* mounts — that's STALE (the rework added the Celestial tier on top and
+raised the ceiling to 125%). So the old "100% = ×2 base" numbers must NOT be
+wired as-is.
+
+**Builder state today (effectively inert for a maxed player — this is fine):**
+- Combat-power bolster scaling is display/tooltip only ("Decision 9",
+  `toon-forge.html` ~5982, `_scaleCombat = min(base×bolster×rarity, base×1.3124444)`).
+- Equip power is rarity-only, NOT bolster-scaled (`_eqScale`, ~6034).
+- Mount bolster contributes **0 TIL**.
+
+**Why leaving it is correct for n00b's build:** our mount-power data is captured
+from in-game tooltips, which already assume MAX bolster. So the stored values ARE
+the max-bolster ceiling. For a maxed player (10 Celestial = 125%) the displayed
+numbers are right and the slider correctly does nothing — there's nothing left to
+scale. This is why Providence (2,700 → 3,544) reconciles as pure rarity scaling
+with no extra bolster multiplier (see [[reference_nwcb_mount_power_scaling]]).
+
+**The real (unfixed) gap:** SUB-max-bolster players are over-counted — their mount
+powers should scale DOWN below 125%, and the builder never does that. Wiring it
+safely needs the CURRENT (125%/Celestial) bolster→power curve, which we do NOT
+have — the stale sources only give the 0%/100% endpoints. Do NOT guess a curve;
+it would risk the verified mount-power values. To revisit, either re-research the
+post-Celestial mechanic or get one in-game reading of a mount power at a known
+sub-max bolster to fit the curve. If we ever ship a partial fix, the safe rule is:
+treat stored data as the max-bolster ceiling and only ever scale DOWN, so a maxed
+build never moves.
+
+**Decision (n00b, 2026-06-19):** leave the engine/scaling untouched for now —
+it's accurate for maxed players (the majority of endgame users). Documented only.
+
 ## Insignia bonuses with empty stats:[] — 9 conditional ones still unstructured (2026-06-18)
 Audit found 11 insignia bonuses in mount_insignia_bonuses.json with `stats: []`
 whose effectText DOES grant stats, so the engine applies ZERO from them. The 2
