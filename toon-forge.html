@@ -16198,29 +16198,15 @@
     // Surfaces the build CONTEXT the optimizer scores against so nothing is
     // left unset. window.nwcbReadiness() / nwcbReadyToOptimize() let the local
     // optimizer gate its run on it.
+    // The optimizer auto-fills everything EXCEPT role / class / paragon, so
+    // those are the only inputs the user must set for it to run (per n00b).
     function nwcbReadiness() {
       const s = state;
-      const out = [];
-      out.push({ label: "Class",        req: true,  ok: !!s.class,   value: s.class   || "not set", hint: "Pick your class." });
-      out.push({ label: "Paragon path", req: true,  ok: !!s.paragon, value: s.paragon || "not set", hint: "Sets the whole stat priority." });
-      out.push({ label: "Role",         req: true,  ok: !!s.role,    value: s.role    || "not set", hint: "DPS / Tank / Healer — defines 'best'." });
-      out.push({ label: "Race",         req: false, ok: !!s.race,    value: s.race    || "not set", hint: "Racial traits feed your stats." });
-      const abilSet = s.abilBase && Object.values(s.abilBase).some(v => v !== 10);
-      out.push({ label: "Ability scores", req: false, ok: !!abilSet,
-        value: abilSet ? Object.entries(s.abil || {}).map(([k, v]) => k.toUpperCase() + " " + v).join(" ") : "all 10 (default)",
-        hint: "Enter your in-game ability scores." });
-      const boonCount = ((s.boons && s.boons.length) || 0) + ((s.guildBoonPicks && s.guildBoonPicks.length) || 0);
-      out.push({ label: "Boons", req: false, ok: boonCount > 0,
-        value: boonCount ? boonCount + " selected" : "none selected", hint: "Campaign + guild boons are a big stat chunk." });
-      out.push({ label: "Bolsters", info: true,
-        value: "Comp " + (s.companionBolster == null ? 100 : s.companionBolster) + "% → IL  ·  Mount " + (s.mountBolster == null ? 100 : s.mountBolster) + "% → power",
-        hint: "Set to your real collection %, not max." });
-      out.push({ label: "Rarities", info: true,
-        value: "comp " + (s.companionRarity || "?") + " · summoned " + (s.summonedRarity || "?") + " · insignia " + (s.insigniaRarity || "?") + " · mount-pwr " + (s.activeCombatPowerRarity || "?") });
-      out.push({ label: "Content zone", info: true, value: s.contentZone || "General (no zone bonuses)" });
-      out.push({ label: "Health %", info: true, value: (s.currentHealthPct == null ? 100 : s.currentHealthPct) + "% (health-gated gear)" });
-      out.push({ label: "Owned items", info: true, value: "the pool the optimizer picks from — make sure yours are marked" });
-      return out;
+      return [
+        { label: "Class",        ok: !!s.class,   value: s.class   || "not set" },
+        { label: "Paragon path", ok: !!s.paragon, value: s.paragon || "not set" },
+        { label: "Role",         ok: !!s.role,    value: s.role    || "not set" },
+      ];
     }
     window.nwcbReadiness = nwcbReadiness;
     // Missing = required/important inputs that are unset (info rows excluded).
