@@ -6,6 +6,54 @@ A log of community-suggested features, organized by where they came from. Separa
 
 ## Toon Forge — Roadmap signal
 
+### Crowd-sourced builds → "learning" optimizer (blind-spot flywheel)
+**Source:** Internal — n00b, 2026-06-20 · tracked as report #142
+
+> Idea: capture the builds people make (through the optimizer or by hand), compile them, understand why players chose what they did, and feed that back so the optimizer "learns" — turn it from a fixed engine into one that gets smarter from real usage.
+
+**Status:** Vision logged — NOT scheduled. This is a multi-phase program, not a single feature. No schema, no code yet.
+
+**Key design decision (do not skip):** do **NOT** make the optimizer imitate popular builds. Popular ≠ optimal — crowd data is biased by what players OWN, streamer copying, and fashion, and an imitation/black-box model would break the project's two core promises (deterministic output + "explain *why* every pick"). Instead use crowd builds as a **blind-spot detector**: when many players consistently slot something the optimizer would NOT pick (e.g. the Shroomwood/Scintellant rotation pieces or the Arbiter divinity slot from report #141), that flags a mechanic the engine hasn't been taught yet. The crowd tells us WHAT to model next; a human encodes it into the deterministic engine, which stays explainable. Same gap the manual slot-pin (#141) works around.
+
+**Two hard constraints:**
+- Captured data is the WHAT, never the WHY. Don't infer intent — treat "crowd diverges from optimizer" as a question to investigate, not an answer to copy. (Optional user "why" tags are a bonus, not the foundation.)
+- Capture MUST be opt-in + anonymized. This is a consent/privacy requirement, NOT a Neverwinter-ToS issue (build configs typed into our own tool are fine; the ToS guardrail is about gameplay/packet manipulation). The opt-in doubles as a feature: "share your build, see how you compare to the community."
+
+**Phased plan (each phase ships value on its own):**
+1. Opt-in "Share this build" → new Supabase `shared_builds` table (anonymized: class, role, slots, item names, total IL, optimizer-used flag). Reuses the existing share-link serialization + Supabase backend (same infra as reports / Add-Missing-Item).
+2. Community meta view — frequency stats per class/role/slot ("73% of DPS Warlocks run X"). The reward that drives opt-in.
+3. ⭐ **Blind-spot detector** — automated diff of frequent player picks vs optimizer picks → flagged for human review → encode the missing mechanic into the engine. The payoff; feeds the principled engine instead of replacing it.
+4. *(Later)* crowd frequency as a **tie-breaker** only inside the engine's near-equal "indifference band" — never overrides the math.
+5. *(Maybe never)* an actual ML model — only if data volume **and** a real outcome signal (parse/DPS) ever justify it. With a few hundred biased, unlabeled builds, literal ML would hurt, not help.
+
+The "learning" = phases 3–4 compounding into a flywheel (more builds → more blind spots found → smarter engine → better recs → more users → more builds), with a human in the loop so explainability survives.
+
+**Dependencies:** Supabase `shared_builds` table + opt-in UX; build serialization (exists); a diff/aggregation script for phase 3; for phase 5 only, an outcome signal that NW PS5 doesn't expose via API (would be self-reported / proxy such as total IL).
+
+---
+
+### Manual slot pin / lock — "optimize around this fixed piece"
+**Source:** YouTube comment by @darklord123210 (2 subs), 2026-06-20
+
+> "is there a function that will allow you to manually set a slot & you can have the optimizer work around that? ... if I know I need that shroomwood/scintelent to complete my rotation properly, I can plug it in & have the optimizer build around it ... it could be a good interim solution until those misc bonuses can be properly added into the formula.
+>
+> Edit: Arbiter came to mind for me. The piece that increases your divinity is MANDATORY. Maybe you can figure out a way to automatically slot in gear for specific classes. Or maybe make it a toggle, kinda like how you did the raptor."
+
+**Status:** ACCEPTED — on the to-do list. n00b locked **Option 1 (per-slot Pin/Lock)** on 2026-06-20; not yet built (no code this pass).
+
+**Why it's a clean add:** the optimizer already keeps each slot's incumbent unless it scores something *strictly* better (`js/optimizer-local.js:274`, `tryBest`; per-slot passes at `:970` and `:985`). A pin just means **skipping pinned slots** in those passes. Because the engine recomputes the whole character per candidate, every *other* slot auto-optimizes around the locked piece — set bonuses and stat caps included. This is the exact interim fix the commenter wants for misc set bonuses the scorer is still blind to (their Shroomwood/Scintellant rotation pieces, the Arbiter divinity piece).
+
+**Scope (Option 1 — chosen):**
+- Per-slot **lock** control in the Toon Forge builder (Raptor-style toggle / lock badge on the slot).
+- `state.pinned` (set of slot labels), serialized alongside `partyPackMeta` / `gearIL` (`:3116`, `:3195`, `:3197`) and carried in share links.
+- Optimizer skips pinned slots; each `SLOTS` entry (built from `:382`) needs a stable label to match the pinned set.
+- Pinning a weapon locks the Main Hand / Off Hand pair together (weapons optimize as a set, `:456`).
+- It's the inverse of the existing "✕ I don't have this" exclude control (`:2183`) and can reuse that result-panel plumbing.
+
+**Deferred sub-idea (Option 2 — the commenter's "auto-slot mandatory gear per class," e.g. the Arbiter divinity piece):** build later as a *suggested-locks* layer ON TOP of Option 1. It needs a per-class/role "mandatory piece" data table (upkeep + judgment calls), so it stays deferred — the manual pin covers the need generically in the meantime.
+
+---
+
 ### Extend "+ Add Missing Item" to artifacts, companions, mounts, etc.
 **Source:** Internal — n00b, 2026-05-26 (the day AMI shipped for gear)
 
