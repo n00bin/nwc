@@ -691,6 +691,19 @@ extract stats, add to `gear.json` with proper slot/set/IL data.
 
 ## Fighter weapons missing — including the Mod 33 / Soul Collector set (2026-06-12)
 
+**✅ RESOLVED 2026-06-19 (Mod 33 / Soul Collector set — Report #33 gear thread):**
+Fighter's Impending Doom weapons are now in `gear.json` *and* the generated
+`website/data/gear.js` — **Ironfang** (Main Hand) and **Bulwark of Ruin** (Off Hand),
+6 tiers each (IL 3400→5250), `allowedClasses: ["Fighter"]`. The set now covers
+**all 9 classes**; the 2026-06-12 triage below is superseded. Two data-quality
+follow-ups to verify against in-game tooltips (not blockers):
+- Set name flips by tier set-wide: `set:"Whisper of Power"` at IL 3400 vs
+  `set:"Impending Doom"` at 3750+ — may break 2-piece set detection on mixed-tier loadouts.
+- Ironfang swaps in **Deflect + a flat "Damage"** stat at IL 4450+ (and drops offense) —
+  possibly a Vanguard (tank) variant, or a bad extraction.
+
+_Original triage (2026-06-12 — superseded by the above):_
+
 Follow-up to the Doomcleaver investigation: the **Impending Doom**
 artifact weapon set (Soul Collector zone mechanic — the "Mod 33 gear"
 flagged in Report #33) now covers 8 of 9 classes. **Fighter has no

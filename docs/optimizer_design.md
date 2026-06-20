@@ -1,6 +1,6 @@
 # Toon Forge — "Best Build" Optimizer: Scope & Design
 
-**Status:** Design / not built. Drafted 2026-05-30 in response to Report #33.
+**Status:** Built & in QA — pre-launch (updated 2026-06-19). Drafted 2026-05-30 in response to Report #33; now implemented in `website/js/optimizer-local.js` (premium, served via `/api/optimizer_js`).
 **Owner:** NWCB-Dev. **Lives in:** `website/toon-forge.html` (Toon Forge), reusing the existing stat engine.
 
 ---

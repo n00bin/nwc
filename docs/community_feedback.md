@@ -44,6 +44,18 @@ Lower-priority types (probably skip unless requested): enchants, boons, buffs/co
 ### Weapon upgrade-level chooser
 **Source:** Toon Forge correction-editor submission, Report #33, 2026-05-26
 
+**Update 2026-06-19 — RESOLVED (all parts):** Report #33 was multi-part and every thread is
+done. The build **optimizer** it sparked is built + in QA (`optimizer_design.md`). The
+**missing gear** it flagged is resolved — Fighter's Soul Collector weapons (Ironfang +
+Bulwark of Ruin) are in, all 9 classes (see `data_issues.md`). And this **weapon
+upgrade-level chooser IS built**: the gear picker groups same-name items into one row with
+an **"Upgrade tier:"** dropdown (`renderGearItem` → `.gear-tier-sel`, ~line 12853) listing
+each IL tier with its quality/CR; selecting one sets `state.gearIL` and the stats scale to
+that tier. Main Hand / Off Hand use this like any gear; artifacts use the same selector
+labeled "rarities". (The original "base IL only" status note below is pre-build and
+superseded.) Minor polish only: tiers are labeled `IL N — <quality/CR>`, so literal
+Epic/Legendary/Mythic names show only where each tier carries a `quality` field.
+
 > "Upgrade Level for Main Hand and Off Hand/Grimoire needs to have a choice (Epic, Legendary, Mythic, etc.)."
 
 **Status:** Concrete UI request. Currently Main Hand and Off Hand items display at their base IL only; the request is to expose a rarity/upgrade-level selector similar to how companion powers already have one.
