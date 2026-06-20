@@ -89,6 +89,14 @@ var AUDIT_TRAIL_PATTERNS = [
   /\s*Power data confirmed by n00b.*?\.(?:\s|$)/gi,
   /\s*confirmed by n00b \d{4}-\d{2}-\d{2}.*?\.(?:\s|$)/gi,
   /\s*\(Mythic-\d+%-bolster baseline\)/gi,
+  // Internal screenshot-verification tags, e.g. "[SS-proc-verified c011 2026-06-14.]"
+  // or "[SS-verified c181 ...: removed phantom permanent ...]" — never user-facing.
+  /\s*\[[^\]]*verified[^\]]*\]/gi,
+  // Calibration reconciliation prose appended to a tooltip (value cross-checks,
+  // orphan-duplicate cleanup, community-report provenance) — internal, cut to end.
+  /\s*[\d.]+%?\s*vs Bosses @ IL[\s\S]*$/gi,
+  /\s*Orphan duplicate[\s\S]*$/gi,
+  /\s*Report #\d+\s*[—–-][\s\S]*$/gi,
   // Blanket sweep: any remaining sentence that mentions screenshots
   // (intake / verification workflow chatter) is internal provenance and
   // never user-facing. Runs after cleanNotes' leading-marker rewrites, so
