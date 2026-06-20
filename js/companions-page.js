@@ -611,6 +611,7 @@
     summonedData.push({
       companionName: comp.name,
       companionId: comp.id,
+      slot: (powerMap[comp.powerRef] && powerMap[comp.powerRef].slot) || null,
       buff: sb.buff,
       scope: sb.scope || "party",
       range: sb.range || null,
@@ -683,7 +684,9 @@
         if (sumImg) {
           html += '<img loading="lazy" class="companion-icon" src="images/companions/' + sumImg + '" alt="">';
         }
-        html += '<span>' + escapeHtml(s.companionName) + '</span></div>';
+        html += '<span>' + escapeHtml(s.companionName) + '</span>';
+        if (s.slot && s.slot.length) html += '<span style="display:inline-flex;gap:0.3rem;align-items:center;">' + renderSlotBadges(s.slot) + '</span>';
+        html += '</div>';
 
         // Damage-style stat chips: affected stats (with values), range, uptime
         var chips = "";
@@ -910,7 +913,7 @@
           var fixedMag = rawNotes.match(/(\d+\.?\d*)\s*magnitude/i);
           if (fixedMag && category === "Damage Proc") { celMag = fixedMag[1]; }
         }
-        result.push({ name: c.name, powerName: pw.name, category: category, description: desc, stats: realStats, il: pw.item_level || 0, celMag: celMag });
+        result.push({ name: c.name, powerName: pw.name, category: category, description: desc, stats: realStats, il: pw.item_level || 0, celMag: celMag, slot: pw.slot || null });
       }
     }
     result.sort(function (a, b) {
@@ -957,7 +960,9 @@
         if (compImg) {
           html += '<img loading="lazy" class="companion-icon" src="images/companions/' + compImg + '" alt="">';
         }
-        html += '<span>' + escapeHtml(d2.name) + '</span></div>';
+        html += '<span>' + escapeHtml(d2.name) + '</span>';
+        if (d2.slot && d2.slot.length) html += '<span style="display:inline-flex;gap:0.3rem;align-items:center;">' + renderSlotBadges(d2.slot) + '</span>';
+        html += '</div>';
         html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.2rem;">' + escapeHtml(d2.powerName) + '</div>';
         if ((d2.stats && d2.stats.length > 0) || d2.celMag) {
           html += '<div style="margin-top:0.3rem;">';
