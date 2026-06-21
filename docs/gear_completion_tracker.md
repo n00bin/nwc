@@ -5,8 +5,13 @@ stat engine + optimizer can see every gear effect. This is the accountability
 log for the hourly grounding loop. **Don't get sidetracked — finish this first,
 THEN move to optimizer search work (A1).**
 
-## STATUS 2026-06-21: clean OFFENSE parsing effectively COMPLETE
-139 offense bonuses structured across 4 batches (all IL tiers). The remaining
+## STATUS 2026-06-21: clean OFFENSE parsing COMPLETE
+163 offense bonuses structured across 5 batches (all IL tiers); batch-5
+integrity-checked (0 value-vs-prose mismatches). The ~20 still matching offense
+words are NOT cleanly structurable (defensive-trades like Reckless*, shield+zone,
+control combos, area-gated, reflects) — correctly left free-text.
+(Minor: "Daily Edge" carries "Dmg Bonus" on some items, "Base Damage Boost" on
+others — same uncapped-damage effect, both engine-valid.) The remaining
 `structurable_now` (~1,455) is NOT "more of the same" — bucketed it is:
 **1,219 set/collection** (needs set-crediting, separate lane) · **263 cooldown/
 heal/resource procs** (engine-blocked, need engine layers) · **41 seq/damage
@@ -58,3 +63,4 @@ batch-2 into their commit; data survived, but don't rely on that). Never rebuild
 | 2026-06-15 15:16 | 1304 | 811 | 0 / 0 | ALL-CLEAR CONFIRMED (2 flat hrs). Lane clear, but resume needs n00b authorization (absent ~8h). Standing the hourly loop DOWN to stop pinging an empty room — resume instantly on "go"/"auto". |
 | 2026-06-21 14:36 | 1494 | 931 | −46 (batch-3) / net +190 since 6/15 | Batch-3 IL2000-2999 offense: 46 instances / 23 names applied & verified (scripts/eb_parse_il2000_offense.py, committed website a0142a5). NET backlog up vs 6/15 — other sessions bulk-added ~236 more gear bonuses. ⚠️ gear.json NOT committed by me: a concurrent session has it dirty (uncommitted re-verify edits); batch-3 reproducible from script, will land via their commit. **LESSON: check `git diff` CONTENT before writing gear.json, not just the commit log — uncommitted writers don't show in `git log`.** |
 | 2026-06-21 ~15:00 | 1455 | 892 | −39 (batch-4) | Batch-4 IL<2000 offense core: 39 / 14 names (scripts/eb_parse_il_lt2000_offense.py). Concurrent session DONE — I now own gear; committed full chain (parent 5cecd35/396ae58, website 6c3cec3). **Clean offense parsing now effectively COMPLETE — see STATUS above. Residual = sets/engine-blocked/ambiguous, not parsing.** |
+| 2026-06-21 ~15:30 | 1432 | 878 | −24 (batch-5) | Batch-5 final clean-offense leftovers: 24 / 15 names (scripts/eb_parse_offense_final.py), integrity-verified 0 mismatches. **CLEAN OFFENSE PARSING DONE (163 total).** Residual backlog = sets / engine-blocked procs / defensive-ambiguous — not parsing. |
