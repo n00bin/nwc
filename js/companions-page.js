@@ -391,7 +391,8 @@
       html += "</div>"; // close proc-block
 
       if (pw.notes) {
-        html += '<div class="effect-text">' + escapeHtml(cleanEnhancementNotes(pw.notes)) + "</div>";
+        var _pnote = cleanEnhancementNotes(pw.notes);
+        if (_pnote) html += '<div class="effect-text">' + escapeHtml(_pnote) + "</div>";
       }
     } else {
       html += '<div class="detail-meta">No power data</div>';
@@ -428,7 +429,8 @@
       html += "</div>"; // close proc-block
 
       if (en.notes) {
-        html += '<div class="effect-text">' + escapeHtml(cleanEnhancementNotes(en.notes)) + "</div>";
+        var _enote = cleanEnhancementNotes(en.notes);
+        if (_enote) html += '<div class="effect-text">' + escapeHtml(_enote) + "</div>";
       }
     } else {
       html += '<div class="detail-meta">No enhancement data</div>';
@@ -750,7 +752,45 @@
   function cleanEnhancementNotes(notes) {
     if (!notes) return "";
     var base = (typeof cleanNotes === "function") ? cleanNotes(notes) : notes;
-    var s = base.replace(/^Screenshot intake[^:]*:\s*/i, "").replace(/^[A-Z][A-Za-z'\- ]+ enhancement\.\s*/i, "").replace(/^[A-Z][A-Za-z'\- ]+ (?:utility|offense|defense) power\.\s*/i, "").replace(/\s*Conditional proc;.*$/i, "").replace(/\s*Value depends on summoned companion.*?(?=\.|$)\.?\s*/g, " ").replace(/\s*Debuff\s*[—\-]\s*reduces enemy stat\.?\s*/gi, "").replace(/\s*Heal effect\s*[—\-]\s*modeled as HP sustain\.?\s*/gi, "").replace(/\s*Permanent buff while summoned\s*\(not a proc\)\.?\s*/gi, "Permanent while summoned.").replace(/\s*Affects both.*$/gi, "").replace(/\s+(?:[A-Za-z]+\s+)*[Ss]caling:[\s\S]*$/gi, "").replace(/\s*\.?\s*Standard magnitude scaling[^.]*\.?\s*/gi, "").replace(/\s*\.?\s*Magnitude scaling:.*$/gi, "").replace(/\s*\.?\s*(Per-stack value |Chance |Both values |Both |DR |Crit Severity |Stat values |Reflect )?[Ff]ollows\s+\d*\.?\d*x?\s*(single|standard|double|triple|the)[\s\w]*scaling\.?\s*/gi, "").replace(/\s*\([\w\s]+stat scaling\)\.?\s*/gi, "").replace(/\s*Also damage versus[\w\s']*\(single stat scaling\)\.?\s*/gi, "").replace(/\s*Com\s+\d+\.?\d*%?,\s*Unc\s+\d+[^.]*\./gi, "").replace(/\s*[Ff]ollows\s+\d+\.?\d*x\.?\s*/gi, "").replace(/\s*\+\d+\s*CR\.?\s*/gi, "").replace(/\s*IL\s+\d+\.?\s*/gi, "").replace(/\s*Standard magnitude\.?\s*/gi, "").replace(/\s+magnitude\b\.?/gi, "").replace(/\s*Fixed effect,?\s*only Combined Rating scales with rarity\.?\s*/gi, "").trim();
+    var s = base.replace(/^Screenshot intake[^:]*:\s*/i, "").replace(/^[A-Z][A-Za-z'\- ]+ enhancement\.\s*/i, "").replace(/^[A-Z][A-Za-z'\- ]+ (?:utility|offense|defense) power\.\s*/i, "").replace(/\s*Conditional proc;.*$/i, "").replace(/\s*Value depends on summoned companion.*?(?=\.|$)\.?\s*/g, " ").replace(/\s*Debuff\s*[—\-]\s*reduces enemy stat\.?\s*/gi, "").replace(/\s*Heal effect\s*[—\-]\s*modeled as HP sustain\.?\s*/gi, "").replace(/\s*Permanent buff while summoned\s*\(not a proc\)\.?\s*/gi, "Permanent while summoned.").replace(/\s*Affects both.*$/gi, "").replace(/\s+(?:[A-Za-z]+\s+)*[Ss]caling:[\s\S]*$/gi, "").replace(/\s*\.?\s*Standard magnitude scaling[^.]*\.?\s*/gi, "").replace(/\s*\.?\s*Magnitude scaling:.*$/gi, "").replace(/\s*\.?\s*(Per-stack value |Chance |Both values |Both |DR |Crit Severity |Stat values |Reflect )?[Ff]ollows\s+\d*\.?\d*x?\s*(single|standard|double|triple|the)[\s\w]*scaling\.?\s*/gi, "").replace(/\s*\([\w\s]+stat scaling\)\.?\s*/gi, "").replace(/\s*Also damage versus[\w\s']*\(single stat scaling\)\.?\s*/gi, "").replace(/\s*Com\s+\d+\.?\d*%?,\s*Unc\s+\d+[^.]*\./gi, "").replace(/\s*[Ff]ollows\s+\d+\.?\d*x\.?\s*/gi, "").replace(/\s*\+\d+\s*CR\.?\s*/gi, "").replace(/\s*IL\s+\d+\.?\s*/gi, "").replace(/\s*Standard magnitude\.?\s*/gi, "").replace(/\s+magnitude\b\.?/gi, "").replace(/\s*Fixed effect,?\s*only Combined Rating scales with rarity\.?\s*/gi, "")
+      // ---- Strip internal calibration / provenance prose that otherwise leaks
+      // onto the Lookup detail panel (re-anchor notes, source/verification
+      // stamps, "Do not normalize" outlier notes, loose date stamps, TODOs,
+      // mangled stat-restatements). The stat values are already shown in the
+      // stat table, so most of these collapse to empty; a few keep their real
+      // first sentence (e.g. Raptor's Pack text, Wind of Nature's heal). ----
+      .replace(/^[A-Z][\w'’.\- ]+? (?:slotted power|defense\/utility power|defense power|offense power|utility power)\.\s*/i, "")
+      .replace(/^[\w'’\- ]+? (?:Presence|Instincts|Wisdom|Discipline|Insight|Gait|Gaze|Grace|Senses|Confidence|Guidance)\.\s*/, "")
+      .replace(/\s*Tooltip base text reads[\s\S]*?rune quality\.?/i, "")
+      .replace(/\s*Re-anchored\b[\s\S]*$/i, "")
+      .replace(/\s*Was wrongly[\s\S]*$/i, "")
+      .replace(/\s*VERIFIED in-game[\s\S]*$/i, "")
+      .replace(/\s*Verified in-game[\s\S]*$/i, "")
+      .replace(/\s*Source:\s[\s\S]*$/i, "")
+      .replace(/\s*Source confirmed[\s\S]*$/i, "")
+      .replace(/\s*(?:Stats stored at base (?:Mythic|Celestial)|At (?:Mythic|Celestial)) ?\(\)[\s\S]*$/, "")
+      .replace(/\s*Base rarity\b[\s\S]*$/i, "")
+      .replace(/\s*Non-combat utility[\s\S]*$/i, "")
+      .replace(/\s*Added (?:procEffect )?\d{4}-\d{2}-\d{2}[\s\S]*$/i, "")
+      .replace(/\s*Anchored (?:Rare|Uncommon|Epic|Mythic|Celestial|Legendary|Common)\b[\s\S]*$/i, "")
+      .replace(/\s*n00b[- ]?(?:in-game-)?confirmed[\s\S]*$/i, "")
+      .replace(/\s*\bat base[\s\S]*$/i, "")
+      .replace(/\s*\w+ value may be[\s\S]*$/i, "")
+      .replace(/\s*Doubled effect vs Dragons[\s\S]*$/i, "")
+      .replace(/\s*Stat names? corrected[\s\S]*$/i, "")
+      .replace(/\s*Created to replace[\s\S]*$/i, "")
+      .replace(/\s*Same power name[\s\S]*$/i, "")
+      .replace(/\s*Shared by [A-Z][\s\S]*$/i, "")
+      .replace(/\s*\(Fresh pass[\s\S]*$/i, "")
+      .replace(/\s*Captured \d{4}-\d{2}-\d{2}[\s\S]*$/i, "")
+      .replace(/^\s*\+[\s\S]*\bmisread\b[\s\S]*$/i, "")
+      .replace(/\(\s*\)/g, "")
+      .replace(/([a-z0-9%\)])\.([A-Z])/g, "$1. $2")
+      .replace(/\s*,\s*,+/g, ",")
+      .replace(/\s+,/g, ",")
+      .replace(/[\s,;]+$/g, "")
+      .replace(/\s+\./g, ".")
+      .trim();
     return (typeof stripAuditTrail === "function") ? stripAuditTrail(s) : s;
   }
 
@@ -1000,7 +1040,7 @@
           }
           html += '</div>';
         }
-        html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(d2.description) + '</div>';
+        if (d2.description) html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(d2.description) + '</div>';
         html += '</div>';
       }
     }
