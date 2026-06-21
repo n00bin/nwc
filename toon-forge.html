@@ -16829,11 +16829,12 @@
             'Share your build anonymously and you help improve the optimizer everyone here uses — you included. We never sell it or use it to copy builds; it just tells us which game mechanics to teach the optimizer next. (Soon you&#39;ll also be able to see how your build compares to other players.)</p>' +
           '<div style="font-size:0.85rem;line-height:1.5;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:0.75rem 0.9rem;margin-bottom:0.9rem;">' +
             '<div style="color:var(--pos);font-weight:600;margin-bottom:0.25rem;">✓ Shared (anonymous)</div>' +
-            '<div style="color:var(--text-mute);">Your class, paragon, role, total item level, and the gear / enchants / artifacts / companions / mounts / boons in this build.</div>' +
+            '<div style="color:var(--text-mute);">Your class, paragon, role, total item level, and the gear / enchants / artifacts / companions / mounts / boons in this build — plus your powers, feats, and class features.</div>' +
             '<div style="color:var(--neg);font-weight:600;margin:0.55rem 0 0.25rem;">✗ Never shared</div>' +
             '<div style="color:var(--text-mute);">Your build&#39;s name, and anything that identifies you — no account, no email, no name. It is fully anonymous.</div>' +
           '</div>' +
-          (already ? '<p style="font-size:0.85rem;color:var(--pos);margin:0 0 0.9rem;line-height:1.5;">✓ You&#39;ve already shared this exact build from this device — no need to send it again. (If a different player makes the same build, theirs still counts.)</p>' : '') +
+          '<div style="font-size:0.8rem;color:var(--text-mute);margin:0 0 0.9rem;line-height:1.5;">Only anonymous totals are ever shown publicly (like &ldquo;68% of DPS Warlocks run X&rdquo;) — your own build is never displayed.</div>' +
+          (already ? '<p style="font-size:0.85rem;color:var(--pos);margin:0 0 0.9rem;line-height:1.5;">✓ You&#39;ve already shared this exact build from this device — no need to send it again.</p>' : '') +
           '<div style="display:flex;gap:0.5rem;justify-content:flex-end;">' +
             '<button class="btn ' + (already ? 'btn-primary' : 'btn-ghost') + '" id="share-community-cancel" type="button">' + (already ? 'Got it' : 'Cancel') + '</button>' +
             (already ? '' : '<button class="btn btn-primary" id="share-community-confirm" type="button">Share anonymously</button>') +
