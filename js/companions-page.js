@@ -108,12 +108,26 @@
     } else {
       scale = TRIPLE_STAT_SCALE;
     }
+    // Scale each stored (in-game-captured) value by the RATIO between the target
+    // rarity and the power's base rarity — do NOT substitute the raw table value.
+    // At the base rarity the ratio is 1, so the captured value is shown exactly;
+    // other rarities extrapolate proportionally. Since the scale tables are
+    // linear in item level, this matches the old table-substitution result for
+    // standard powers (whose stored value already equals the table), while
+    // hybrid / off-table powers (e.g. a 1-stat power that follows the double-stat
+    // curve, like Wind of Nature, plus the documented outliers Raptor's Instincts,
+    // Bobby's Vigor and Energon) no longer display a number that contradicts the
+    // stored data. Mirrors the ratio approach already used by the Damage tab.
+    var baseIL = pw.item_level || targetIL;
+    var pctRatio = scale[baseIL] ? scale[targetIL] / scale[baseIL] : 1;
+    var hpRatio = MAX_HP_SCALE[baseIL] ? MAX_HP_SCALE[targetIL] / MAX_HP_SCALE[baseIL] : 1;
     var scaledStats = [];
     for (var i = 0; i < realStats.length; i++) {
-      if (realStats[i].stat === "Maximum Hit Points") {
-        scaledStats.push({ stat: realStats[i].stat, value: MAX_HP_SCALE[targetIL], type: "flat" });
+      var st = realStats[i];
+      if (st.stat === "Maximum Hit Points") {
+        scaledStats.push({ stat: st.stat, value: Math.round((st.value || 0) * hpRatio), type: "flat" });
       } else {
-        scaledStats.push({ stat: realStats[i].stat, value: scale[targetIL], type: realStats[i].type || "percent" });
+        scaledStats.push({ stat: st.stat, value: Math.round((st.value || 0) * pctRatio * 100) / 100, type: st.type || "percent" });
       }
     }
     return { stats: scaledStats, combinedRating: targetIL };
