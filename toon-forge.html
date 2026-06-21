@@ -16749,28 +16749,45 @@
         p_optimizer_used: !!state.__optimizerUsed,  // optimizer sets this true when it runs (off by default)
         p_build:          built,
         p_client_token:   getAnonClientToken(),
-        p_app_version:    built.v || 1
+        p_app_version:    built.v || 1,
+        p_build_hash:     _buildHash()  // server de-dupes on (client_token, build_hash)
       };
     }
-    // Signature for local de-dupe: the build config minus its name and the
-    // savedAt timestamp (which lives outside `s`), so the same loadout matches.
-    function _sharedBuildSig() {
+    // Compact, stable hash of the build config (name + savedAt stripped) — the
+    // de-dupe key both locally and server-side. Two DIFFERENT players sharing the
+    // same build is fine and wanted (a popularity signal); only the SAME browser
+    // re-sending an identical build is suppressed (it would just bloat the table).
+    // The server enforces this with a unique (client_token, build_hash) index, so
+    // clearing localStorage can't sneak a duplicate past it.
+    function _cyrb53(str) {
+      let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+      for (let i = 0, ch; i < str.length; i++) {
+        ch = str.charCodeAt(i);
+        h1 = Math.imul(h1 ^ ch, 2654435761);
+        h2 = Math.imul(h2 ^ ch, 1597334677);
+      }
+      h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+      h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+      return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
+    }
+    function _buildHash() {
       try {
-        const s = serializeBuild("x").s;
-        s.name = "";
-        return b64encode(JSON.stringify(s)).slice(0, 48);
+        const s = serializeBuild("x").s;  // savedAt lives outside `s`, so it's excluded
+        s.name = "";                      // ...and the name is stripped
+        return _cyrb53(JSON.stringify(s));
       } catch (e) { return ""; }
     }
     function alreadySharedThisBuild() {
       try {
         const a = JSON.parse(localStorage.getItem(SHARED_BUILD_SIGS_KEY) || "[]");
-        return Array.isArray(a) && a.indexOf(_sharedBuildSig()) !== -1;
+        return Array.isArray(a) && a.indexOf(_buildHash()) !== -1;
       } catch (e) { return false; }
     }
     function markBuildShared() {
       try {
         const a = JSON.parse(localStorage.getItem(SHARED_BUILD_SIGS_KEY) || "[]");
-        a.push(_sharedBuildSig());
+        const h = _buildHash();
+        if (a.indexOf(h) === -1) a.push(h);
         while (a.length > 50) a.shift();
         localStorage.setItem(SHARED_BUILD_SIGS_KEY, JSON.stringify(a));
       } catch (e) {}
@@ -16816,18 +16833,18 @@
             '<div style="color:var(--neg);font-weight:600;margin:0.55rem 0 0.25rem;">✗ Never shared</div>' +
             '<div style="color:var(--text-mute);">Your build&#39;s name, and anything that identifies you — no account, no email, no name. It is fully anonymous.</div>' +
           '</div>' +
-          (already ? '<p style="font-size:0.82rem;color:var(--amber);margin:0 0 0.85rem;">You&#39;ve already shared this exact build — sharing again just adds another copy.</p>' : '') +
+          (already ? '<p style="font-size:0.85rem;color:var(--pos);margin:0 0 0.9rem;line-height:1.5;">✓ You&#39;ve already shared this exact build from this device — no need to send it again. (If a different player makes the same build, theirs still counts.)</p>' : '') +
           '<div style="display:flex;gap:0.5rem;justify-content:flex-end;">' +
-            '<button class="btn btn-ghost" id="share-community-cancel" type="button">Cancel</button>' +
-            '<button class="btn btn-primary" id="share-community-confirm" type="button">Share anonymously</button>' +
+            '<button class="btn ' + (already ? 'btn-primary' : 'btn-ghost') + '" id="share-community-cancel" type="button">' + (already ? 'Got it' : 'Cancel') + '</button>' +
+            (already ? '' : '<button class="btn btn-primary" id="share-community-confirm" type="button">Share anonymously</button>') +
           '</div>' +
         '</div>';
       document.body.appendChild(overlay);
       overlay.addEventListener("click", (e) => { if (e.target === overlay) overlay.remove(); });
       document.getElementById("share-community-cancel").addEventListener("click", () => overlay.remove());
-      document.getElementById("share-community-confirm").addEventListener("click", async () => {
-        const btn = document.getElementById("share-community-confirm");
-        btn.disabled = true; btn.textContent = "Sharing…";
+      const _confirmBtn = document.getElementById("share-community-confirm");
+      if (_confirmBtn) _confirmBtn.addEventListener("click", async () => {
+        _confirmBtn.disabled = true; _confirmBtn.textContent = "Sharing…";
         const ok = await submitSharedBuild();
         overlay.remove();
         toast(ok ? "Thanks — this helps make the optimizer smarter 🙌"

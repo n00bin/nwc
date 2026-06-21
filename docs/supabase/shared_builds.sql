@@ -4,11 +4,20 @@
 --
 -- Run this ONCE in the Supabase SQL editor (Dashboard → SQL → New query → Run).
 -- It creates the `shared_builds` table and the `submit_shared_build` RPC that
--- the Toon Forge "🌐 Share to community" button calls.
+-- the Toon Forge "🧠 Help improve the optimizer" button calls.
+--
+-- Safe to re-run: every statement is idempotent, so running the updated file
+-- again just adds anything new (e.g. the de-dupe constraint) without errors.
 --
 -- Privacy: there is NO account and NO PII. The build's user-entered name is
 -- stripped in the browser before submit. `client_token` is a random, anonymous
--- per-browser string used only to group repeat shares — it identifies no one.
+-- per-browser string used only to group/de-dupe a single browser's own shares —
+-- it identifies no one.
+--
+-- De-dupe rule: the SAME browser re-sending the SAME build is rejected (no
+-- bloat). The same build shared by a DIFFERENT player is allowed and wanted —
+-- that's the popularity signal. Enforced by the unique (client_token,
+-- build_hash) index below.
 -- ============================================================================
 
 -- 1) Table -------------------------------------------------------------------
@@ -22,11 +31,21 @@ create table if not exists public.shared_builds (
   optimizer_used boolean not null default false,
   app_version    integer,
   client_token   text,            -- anonymous, random; NOT identifying
+  build_hash     text,            -- stable hash of the build (name stripped); de-dupe key
   build          jsonb not null   -- full serialized build, name stripped client-side
 );
 
+-- For tables created by the earlier version of this file (no build_hash column):
+alter table public.shared_builds add column if not exists build_hash text;
+
 create index if not exists shared_builds_class_role_idx on public.shared_builds (class, role);
 create index if not exists shared_builds_created_idx     on public.shared_builds (created_at desc);
+
+-- De-dupe: one row per (browser, exact build). A different browser sharing the
+-- same build still inserts (different client_token) — that's the popularity
+-- signal we want.
+create unique index if not exists shared_builds_dedupe_uidx
+  on public.shared_builds (client_token, build_hash);
 
 -- 2) Lock the table down -----------------------------------------------------
 -- RLS on + no policies = the anon/public key cannot read or write the table
@@ -35,6 +54,12 @@ create index if not exists shared_builds_created_idx     on public.shared_builds
 alter table public.shared_builds enable row level security;
 
 -- 3) Insert RPC --------------------------------------------------------------
+-- Drop the earlier 8-arg version (this one adds p_build_hash) so there's no
+-- ambiguous overload left behind.
+drop function if exists public.submit_shared_build(
+  text, text, text, integer, boolean, jsonb, text, integer
+);
+
 create or replace function public.submit_shared_build(
   p_class          text,
   p_paragon        text,
@@ -43,7 +68,8 @@ create or replace function public.submit_shared_build(
   p_optimizer_used boolean,
   p_build          jsonb,
   p_client_token   text,
-  p_app_version    integer
+  p_app_version    integer,
+  p_build_hash     text
 ) returns jsonb
 language plpgsql
 security definer
@@ -61,7 +87,7 @@ begin
   end if;
 
   insert into public.shared_builds
-    (class, paragon, role, total_il, optimizer_used, app_version, client_token, build)
+    (class, paragon, role, total_il, optimizer_used, app_version, client_token, build_hash, build)
   values
     (left(coalesce(p_class,   ''), 40),
      left(coalesce(p_paragon, ''), 60),
@@ -70,16 +96,22 @@ begin
      coalesce(p_optimizer_used, false),
      coalesce(p_app_version, 1),
      left(coalesce(p_client_token, ''), 80),
+     left(coalesce(p_build_hash,   ''), 64),
      p_build)
+  -- Same browser + same build = no-op (no duplicate row).
+  on conflict (client_token, build_hash) do nothing
   returning id into new_id;
 
+  if new_id is null then
+    return jsonb_build_object('ok', true, 'duplicate', true);
+  end if;
   return jsonb_build_object('ok', true, 'id', new_id);
 end;
 $$;
 
 -- 4) Let the public (anon) and logged-in roles call ONLY the RPC -------------
 grant execute on function public.submit_shared_build(
-  text, text, text, integer, boolean, jsonb, text, integer
+  text, text, text, integer, boolean, jsonb, text, integer, text
 ) to anon, authenticated;
 
 -- ============================================================================
@@ -87,4 +119,8 @@ grant execute on function public.submit_shared_build(
 --   select count(*) from public.shared_builds;
 --   select class, role, total_il, optimizer_used, created_at
 --     from public.shared_builds order by created_at desc limit 20;
+--
+-- If you test-shared the same build twice under the OLD file (rows with a NULL
+-- build_hash), clear those test rows with:
+--   delete from public.shared_builds where build_hash is null;
 -- ============================================================================
