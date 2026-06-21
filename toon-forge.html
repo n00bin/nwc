@@ -2338,7 +2338,7 @@
         <button class="btn btn-secondary" id="open-detailed-stats">⚙ Detailed Stats</button>
         <button class="btn btn-secondary" id="open-builds">📁 My Builds</button>
         <button class="btn btn-primary" id="share-build">🔗 Share link</button>
-        <button class="btn btn-secondary" id="share-community" title="Contribute this build anonymously to the community dataset that helps train the optimizer">🌐 Share to community</button>
+        <button class="btn btn-secondary" id="share-community" title="Share your build anonymously to help improve the optimizer (opt-in)">🌐 Contribute build</button>
         <button class="btn btn-ghost" id="clear-build" title="Reset every field back to a blank build">🗑️ Clear all</button>
       </div>
       <!-- Premium (paid) group — revealed only when running locally; the optimizer
@@ -16716,7 +16716,7 @@
       );
     });
 
-    // ===== Phase 1: opt-in "Share to community" (anonymized build capture) =====
+    // ===== Phase 1: opt-in "Contribute build" (anonymized build capture) =====
     // Writes the build — game choices only, never the build's name or anything
     // that identifies the player — to the Supabase `shared_builds` table via the
     // submit_shared_build RPC. This is the data tap for the community-learning
@@ -16807,9 +16807,9 @@
       const already = alreadySharedThisBuild();
       overlay.innerHTML =
         '<div style="max-width:480px;width:100%;background:var(--elevated);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.5rem;box-shadow:0 12px 44px rgba(0,0,0,0.55);color:var(--text);">' +
-          '<h2 style="margin:0 0 0.6rem;font-size:1.15rem;">🌐 Share this build with the community</h2>' +
+          '<h2 style="margin:0 0 0.6rem;font-size:1.15rem;">🧠 Help make the optimizer smarter</h2>' +
           '<p style="margin:0 0 0.85rem;font-size:0.9rem;color:var(--text-mute);line-height:1.55;">' +
-            'Add your build to our anonymous community dataset. It helps us spot where players diverge from the optimizer, so we can make it smarter for everyone.</p>' +
+            'Share your build anonymously and you help improve the optimizer everyone here uses — you included. We never sell it or use it to copy builds; it just tells us which game mechanics to teach the optimizer next. (Soon you&#39;ll also be able to see how your build compares to other players.)</p>' +
           '<div style="font-size:0.85rem;line-height:1.5;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:0.75rem 0.9rem;margin-bottom:0.9rem;">' +
             '<div style="color:var(--pos);font-weight:600;margin-bottom:0.25rem;">✓ Shared (anonymous)</div>' +
             '<div style="color:var(--text-mute);">Your class, paragon, role, total item level, and the gear / enchants / artifacts / companions / mounts / boons in this build.</div>' +
@@ -16830,7 +16830,7 @@
         btn.disabled = true; btn.textContent = "Sharing…";
         const ok = await submitSharedBuild();
         overlay.remove();
-        toast(ok ? "Thanks! Your build is now part of the community data 🙌"
+        toast(ok ? "Thanks — this helps make the optimizer smarter 🙌"
                  : "Couldn't share right now — please try again in a bit.");
       });
     }
