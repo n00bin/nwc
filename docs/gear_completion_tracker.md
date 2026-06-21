@@ -5,6 +5,17 @@ stat engine + optimizer can see every gear effect. This is the accountability
 log for the hourly grounding loop. **Don't get sidetracked — finish this first,
 THEN move to optimizer search work (A1).**
 
+## STATUS 2026-06-21: clean OFFENSE parsing effectively COMPLETE
+139 offense bonuses structured across 4 batches (all IL tiers). The remaining
+`structurable_now` (~1,455) is NOT "more of the same" — bucketed it is:
+**1,219 set/collection** (needs set-crediting, separate lane) · **263 cooldown/
+heal/resource procs** (engine-blocked, need engine layers) · **41 seq/damage
+procs** (other layers) · **~90 ambiguous/defensive one-offs** · **~15 genuinely-
+clean offense leftovers** (e.g. Abyssal Accuracy). The optimizer-relevant vision
+(endgame offense) was done at batch-1; batches 2-4 were low-IL completeness.
+**Next real lever for better builds = A1 (optimizer multi-start + set-completion),
+NOT more parsing.**
+
 ## Metric
 - **`structurable_now`** = free-text bonuses that CAN be structured today → the
   real target. **Done = 0.**
@@ -46,3 +57,4 @@ batch-2 into their commit; data survived, but don't rely on that). Never rebuild
 | 2026-06-15 14:16 | 1304 | 811 | 0 / 0 | PLATEAU — every metric flat for 1hr (their bulk-add paused). Tentative all-clear; one more flat check confirms it's safe to resume. Awaiting n00b "go"/"auto". |
 | 2026-06-15 15:16 | 1304 | 811 | 0 / 0 | ALL-CLEAR CONFIRMED (2 flat hrs). Lane clear, but resume needs n00b authorization (absent ~8h). Standing the hourly loop DOWN to stop pinging an empty room — resume instantly on "go"/"auto". |
 | 2026-06-21 14:36 | 1494 | 931 | −46 (batch-3) / net +190 since 6/15 | Batch-3 IL2000-2999 offense: 46 instances / 23 names applied & verified (scripts/eb_parse_il2000_offense.py, committed website a0142a5). NET backlog up vs 6/15 — other sessions bulk-added ~236 more gear bonuses. ⚠️ gear.json NOT committed by me: a concurrent session has it dirty (uncommitted re-verify edits); batch-3 reproducible from script, will land via their commit. **LESSON: check `git diff` CONTENT before writing gear.json, not just the commit log — uncommitted writers don't show in `git log`.** |
+| 2026-06-21 ~15:00 | 1455 | 892 | −39 (batch-4) | Batch-4 IL<2000 offense core: 39 / 14 names (scripts/eb_parse_il_lt2000_offense.py). Concurrent session DONE — I now own gear; committed full chain (parent 5cecd35/396ae58, website 6c3cec3). **Clean offense parsing now effectively COMPLETE — see STATUS above. Residual = sets/engine-blocked/ambiguous, not parsing.** |
