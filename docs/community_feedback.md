@@ -11,7 +11,7 @@ A log of community-suggested features, organized by where they came from. Separa
 
 > Idea: capture the builds people make (through the optimizer or by hand), compile them, understand why players chose what they did, and feed that back so the optimizer "learns" — turn it from a fixed engine into one that gets smarter from real usage.
 
-**Status:** Vision logged — NOT scheduled. This is a multi-phase program, not a single feature. No schema, no code yet.
+**Status:** Phase 1 **BUILT** (2026-06-21) — opt-in "🌐 Share to community" button + consent modal + anonymized capture shipped in toon-forge.html. The backend SQL in `docs/supabase/shared_builds.sql` must be run once in Supabase (creates the `shared_builds` table + `submit_shared_build` RPC) before it goes live. Phases 2–5 still unscheduled.
 
 **Key design decision (do not skip):** do **NOT** make the optimizer imitate popular builds. Popular ≠ optimal — crowd data is biased by what players OWN, streamer copying, and fashion, and an imitation/black-box model would break the project's two core promises (deterministic output + "explain *why* every pick"). Instead use crowd builds as a **blind-spot detector**: when many players consistently slot something the optimizer would NOT pick (e.g. the Shroomwood/Scintellant rotation pieces or the Arbiter divinity slot from report #141), that flags a mechanic the engine hasn't been taught yet. The crowd tells us WHAT to model next; a human encodes it into the deterministic engine, which stays explainable. Same gap the manual slot-pin (#141) works around.
 
@@ -20,7 +20,7 @@ A log of community-suggested features, organized by where they came from. Separa
 - Capture MUST be opt-in + anonymized. This is a consent/privacy requirement, NOT a Neverwinter-ToS issue (build configs typed into our own tool are fine; the ToS guardrail is about gameplay/packet manipulation). The opt-in doubles as a feature: "share your build, see how you compare to the community."
 
 **Phased plan (each phase ships value on its own):**
-1. Opt-in "Share this build" → new Supabase `shared_builds` table (anonymized: class, role, slots, item names, total IL, optimizer-used flag). Reuses the existing share-link serialization + Supabase backend (same infra as reports / Add-Missing-Item).
+1. ✅ **BUILT (2026-06-21)** — Opt-in "Share this build" → new Supabase `shared_builds` table (anonymized: class, role, slots, item names, total IL, optimizer-used flag). Reuses the existing share-link serialization + Supabase backend (same infra as reports / Add-Missing-Item). Client = `🌐 Share to community` button + consent modal in toon-forge.html (`submitSharedBuild()` → `submit_shared_build` RPC); backend = `docs/supabase/shared_builds.sql` (run once in Supabase). Anonymization: the build's user-entered name is stripped before submit; an anonymous random `client_token` (localStorage) groups repeat shares without identifying anyone.
 2. Community meta view — frequency stats per class/role/slot ("73% of DPS Warlocks run X"). The reward that drives opt-in.
 3. ⭐ **Blind-spot detector** — automated diff of frequent player picks vs optimizer picks → flagged for human review → encode the missing mechanic into the engine. The payoff; feeds the principled engine instead of replacing it.
 4. *(Later)* crowd frequency as a **tie-breaker** only inside the engine's near-equal "indifference band" — never overrides the math.

@@ -2338,6 +2338,7 @@
         <button class="btn btn-secondary" id="open-detailed-stats">⚙ Detailed Stats</button>
         <button class="btn btn-secondary" id="open-builds">📁 My Builds</button>
         <button class="btn btn-primary" id="share-build">🔗 Share link</button>
+        <button class="btn btn-secondary" id="share-community" title="Contribute this build anonymously to the community dataset that helps train the optimizer">🌐 Share to community</button>
         <button class="btn btn-ghost" id="clear-build" title="Reset every field back to a blank build">🗑️ Clear all</button>
       </div>
       <!-- Premium (paid) group — revealed only when running locally; the optimizer
@@ -16714,6 +16715,129 @@
         () => toast("Couldn't copy — copy this link yourself: " + url)
       );
     });
+
+    // ===== Phase 1: opt-in "Share to community" (anonymized build capture) =====
+    // Writes the build — game choices only, never the build's name or anything
+    // that identifies the player — to the Supabase `shared_builds` table via the
+    // submit_shared_build RPC. This is the data tap for the community-learning
+    // optimizer roadmap (docs/community_feedback.md #142). Strictly opt-in:
+    // nothing leaves the browser unless the player confirms in the dialog.
+    const SHARED_BUILD_SIGS_KEY = "toon-forge:shared-build-sigs"; // local de-dupe
+    const ANON_CLIENT_TOKEN_KEY = "toon-forge:anon-client-token";
+
+    // Stable anonymous token so repeat shares from the same browser can be
+    // grouped server-side WITHOUT identifying anyone. Random, not PII.
+    function getAnonClientToken() {
+      let t = "";
+      try { t = localStorage.getItem(ANON_CLIENT_TOKEN_KEY) || ""; } catch (e) {}
+      if (!t) {
+        t = "a" + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
+        try { localStorage.setItem(ANON_CLIENT_TOKEN_KEY, t); } catch (e) {}
+      }
+      return t;
+    }
+    // Anonymize: full serialized build with the user-entered NAME stripped.
+    function buildAnonymizedSharePayload() {
+      const built = serializeBuild("Shared Build");
+      built.name = "";                 // never capture the build's display name
+      if (built.s) built.s.name = "";  // ...nor the inner copy
+      return {
+        p_class:          state.class || "",
+        p_paragon:        state.paragon || "",
+        p_role:           state.role || "",
+        p_total_il:       Number(state.il) || 0,
+        p_optimizer_used: !!state.__optimizerUsed,  // optimizer sets this true when it runs (off by default)
+        p_build:          built,
+        p_client_token:   getAnonClientToken(),
+        p_app_version:    built.v || 1
+      };
+    }
+    // Signature for local de-dupe: the build config minus its name and the
+    // savedAt timestamp (which lives outside `s`), so the same loadout matches.
+    function _sharedBuildSig() {
+      try {
+        const s = serializeBuild("x").s;
+        s.name = "";
+        return b64encode(JSON.stringify(s)).slice(0, 48);
+      } catch (e) { return ""; }
+    }
+    function alreadySharedThisBuild() {
+      try {
+        const a = JSON.parse(localStorage.getItem(SHARED_BUILD_SIGS_KEY) || "[]");
+        return Array.isArray(a) && a.indexOf(_sharedBuildSig()) !== -1;
+      } catch (e) { return false; }
+    }
+    function markBuildShared() {
+      try {
+        const a = JSON.parse(localStorage.getItem(SHARED_BUILD_SIGS_KEY) || "[]");
+        a.push(_sharedBuildSig());
+        while (a.length > 50) a.shift();
+        localStorage.setItem(SHARED_BUILD_SIGS_KEY, JSON.stringify(a));
+      } catch (e) {}
+    }
+    async function submitSharedBuild() {
+      if (!window.supabase) return false;
+      try {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        const res = await sb.rpc("submit_shared_build", buildAnonymizedSharePayload());
+        if (res.error || (res.data && res.data.ok === false)) {
+          console.warn("Share build failed:", res.error || res.data);
+          return false;
+        }
+        markBuildShared();
+        return true;
+      } catch (err) {
+        console.warn("Share build failed:", err);
+        return false;
+      }
+    }
+    function openShareCommunityModal() {
+      if (!state.class || !state.role) {
+        toast("Pick a class and role first, then share your build.");
+        return;
+      }
+      let overlay = document.getElementById("share-community-overlay");
+      if (overlay) overlay.remove();
+      overlay = document.createElement("div");
+      overlay.id = "share-community-overlay";
+      overlay.style.cssText = "position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.62);padding:1rem;";
+      const already = alreadySharedThisBuild();
+      overlay.innerHTML =
+        '<div style="max-width:480px;width:100%;background:var(--elevated);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.5rem;box-shadow:0 12px 44px rgba(0,0,0,0.55);color:var(--text);">' +
+          '<h2 style="margin:0 0 0.6rem;font-size:1.15rem;">🌐 Share this build with the community</h2>' +
+          '<p style="margin:0 0 0.85rem;font-size:0.9rem;color:var(--text-mute);line-height:1.55;">' +
+            'Add your build to our anonymous community dataset. It helps us spot where players diverge from the optimizer, so we can make it smarter for everyone.</p>' +
+          '<div style="font-size:0.85rem;line-height:1.5;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:0.75rem 0.9rem;margin-bottom:0.9rem;">' +
+            '<div style="color:var(--pos);font-weight:600;margin-bottom:0.25rem;">✓ Shared (anonymous)</div>' +
+            '<div style="color:var(--text-mute);">Your class, paragon, role, total item level, and the gear / enchants / artifacts / companions / mounts / boons in this build.</div>' +
+            '<div style="color:var(--neg);font-weight:600;margin:0.55rem 0 0.25rem;">✗ Never shared</div>' +
+            '<div style="color:var(--text-mute);">Your build&#39;s name, and anything that identifies you — no account, no email, no name. It is fully anonymous.</div>' +
+          '</div>' +
+          (already ? '<p style="font-size:0.82rem;color:var(--amber);margin:0 0 0.85rem;">You&#39;ve already shared this exact build — sharing again just adds another copy.</p>' : '') +
+          '<div style="display:flex;gap:0.5rem;justify-content:flex-end;">' +
+            '<button class="btn btn-ghost" id="share-community-cancel" type="button">Cancel</button>' +
+            '<button class="btn btn-primary" id="share-community-confirm" type="button">Share anonymously</button>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(overlay);
+      overlay.addEventListener("click", (e) => { if (e.target === overlay) overlay.remove(); });
+      document.getElementById("share-community-cancel").addEventListener("click", () => overlay.remove());
+      document.getElementById("share-community-confirm").addEventListener("click", async () => {
+        const btn = document.getElementById("share-community-confirm");
+        btn.disabled = true; btn.textContent = "Sharing…";
+        const ok = await submitSharedBuild();
+        overlay.remove();
+        toast(ok ? "Thanks! Your build is now part of the community data 🙌"
+                 : "Couldn't share right now — please try again in a bit.");
+      });
+    }
+    {
+      const _sc = document.getElementById("share-community");
+      if (_sc) _sc.addEventListener("click", openShareCommunityModal);
+    }
     // Clear all — resets every field to a blank build. Wipes the working
     // draft autosave and strips any #b= share hash, then reloads so the page
     // rebuilds from the `const state` defaults (same as a first-ever visit).
