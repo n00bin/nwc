@@ -2338,7 +2338,7 @@
         <button class="btn btn-secondary" id="open-detailed-stats">⚙ Detailed Stats</button>
         <button class="btn btn-secondary" id="open-builds">📁 My Builds</button>
         <button class="btn btn-primary" id="share-build">🔗 Share link</button>
-        <button class="btn btn-secondary" id="share-community" title="Share your build anonymously to help improve the optimizer (opt-in)">🌐 Contribute build</button>
+        <button class="btn btn-secondary" id="share-community" title="Share your build anonymously to help improve the optimizer (opt-in)">🧠 Help improve the optimizer</button>
         <button class="btn btn-ghost" id="clear-build" title="Reset every field back to a blank build">🗑️ Clear all</button>
       </div>
       <!-- Premium (paid) group — revealed only when running locally; the optimizer
@@ -16716,7 +16716,7 @@
       );
     });
 
-    // ===== Phase 1: opt-in "Contribute build" (anonymized build capture) =====
+    // ===== Phase 1: opt-in "Help improve the optimizer" (anonymized build capture) =====
     // Writes the build — game choices only, never the build's name or anything
     // that identifies the player — to the Supabase `shared_builds` table via the
     // submit_shared_build RPC. This is the data tap for the community-learning
