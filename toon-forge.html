@@ -2294,6 +2294,47 @@
       color: var(--amber) !important;
     }
   @media (hover: none) { .experimental-note-mobile { display: block !important; } }
+
+  /* ===== Community dropdown + Meta Tracker (Phase 2) ===== */
+  .tf-comm-wrap { position: relative; display: inline-block; }
+  .tf-comm-menu { position: absolute; top: calc(100% + 6px); left: 0; z-index: 1200; min-width: 240px; background: var(--elevated); border: 1px solid var(--border); border-radius: 9px; box-shadow: 0 12px 34px rgba(0,0,0,0.55); padding: 0.3rem; }
+  .tf-comm-menu.hidden { display: none; }
+  .tf-comm-item { display: flex; flex-direction: column; gap: 0.1rem; padding: 0.5rem 0.6rem; border-radius: 6px; cursor: pointer; text-align: left; background: transparent; border: none; width: 100%; font-family: inherit; }
+  .tf-comm-item:hover { background: var(--hover); }
+  .tf-comm-item .t { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+  .tf-comm-item .d { font-size: 0.72rem; color: var(--text-mute); }
+
+  .mt-overlay { position: fixed; inset: 0; z-index: 11000; display: flex; align-items: flex-start; justify-content: center; background: rgba(0,0,0,0.62); padding: 2.5rem 1rem; overflow-y: auto; }
+  .mt-card { max-width: 720px; width: 100%; background: var(--elevated); border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem 1.5rem 1.6rem; box-shadow: 0 14px 46px rgba(0,0,0,0.55); color: var(--text); }
+  .mt-head { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .mt-head h2 { margin: 0; font-size: 1.2rem; }
+  .mt-pill { font-size: 0.72rem; font-weight: 700; padding: 0.12rem 0.55rem; border-radius: 999px; background: rgba(240,136,62,0.16); color: var(--amber); border: 1px solid var(--amber); }
+  .mt-x { margin-left: auto; background: transparent; border: none; color: var(--text-mute); font-size: 1.5rem; line-height: 1; cursor: pointer; padding: 0 0.3rem; }
+  .mt-x:hover { color: var(--text); }
+  .mt-sub { color: var(--text-mute); font-size: 0.84rem; margin: 0.45rem 0 0.5rem; }
+  .mt-note { font-size: 0.78rem; color: var(--text-mute); background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 0.45rem 0.7rem; margin-bottom: 0.7rem; line-height: 1.5; }
+  .mt-tabs { display: flex; gap: 0.15rem; flex-wrap: wrap; border-bottom: 1px solid var(--border); margin-bottom: 0.9rem; }
+  .mt-tab { background: transparent; border: none; color: var(--text-mute); font-weight: 700; font-size: 0.8rem; padding: 0.45rem 0.65rem; cursor: pointer; border-bottom: 2px solid transparent; font-family: inherit; }
+  .mt-tab:hover { color: var(--text); }
+  .mt-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
+  .mt-panel { display: none; }
+  .mt-panel.active { display: block; }
+  .mt-cat-title { font-size: 0.96rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .mt-cat-title .n { color: var(--text-mute); font-weight: 600; font-size: 0.8rem; }
+  .mt-top { background: rgba(240,136,62,0.06); border: 1px solid rgba(240,136,62,0.28); border-radius: 8px; padding: 0.4rem 0.6rem; margin-bottom: 0.5rem; }
+  .mt-top-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--amber); margin: 0.1rem 0 0.3rem; }
+  .mt-slot-label { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--text); margin: 0.85rem 0 0.3rem; }
+  .mt-other-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--text-mute); margin: 0.65rem 0 0.25rem; }
+  .mt-row { display: flex; align-items: center; gap: 0.55rem; padding: 0.2rem 0.35rem; border-radius: 6px; }
+  .mt-row.you { background: rgba(63,185,80,0.10); }
+  .mt-rank { width: 20px; flex-shrink: 0; text-align: center; font-weight: 800; font-size: 0.8rem; color: var(--text-mute); }
+  .mt-nm { width: 200px; flex-shrink: 0; font-size: 0.86rem; display: flex; align-items: center; gap: 0.4rem; }
+  .mt-you-tag { font-size: 0.6rem; font-weight: 800; color: #000; background: var(--pos); padding: 0.04rem 0.32rem; border-radius: 4px; letter-spacing: 0.03em; }
+  .mt-track { flex: 1; height: 14px; background: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; }
+  .mt-fill { height: 100%; background: var(--amber); border-radius: 8px; }
+  .mt-pct { width: 40px; text-align: right; font-weight: 700; font-size: 0.83rem; }
+  .mt-empty { color: var(--text-mute); font-size: 0.9rem; padding: 1.2rem 0.2rem; text-align: center; line-height: 1.6; }
+  .mt-foot { margin-top: 1.3rem; font-size: 0.78rem; color: var(--text-mute); line-height: 1.5; border-top: 1px solid var(--border); padding-top: 0.8rem; }
   </style>
 </head>
 <body>
@@ -2338,7 +2379,13 @@
         <button class="btn btn-secondary" id="open-detailed-stats">⚙ Detailed Stats</button>
         <button class="btn btn-secondary" id="open-builds">📁 My Builds</button>
         <button class="btn btn-primary" id="share-build">🔗 Share link</button>
-        <button class="btn btn-secondary" id="share-community" title="Share your build anonymously to help improve the optimizer (opt-in)">🧠 Help improve the optimizer</button>
+        <span class="tf-comm-wrap">
+          <button class="btn btn-secondary" id="tf-community-btn" title="Contribute your build &amp; see the community meta (free, anonymous)">🌐 Community ▾</button>
+          <div class="tf-comm-menu hidden" id="tf-community-menu">
+            <button class="tf-comm-item" id="tf-comm-contribute" type="button"><span class="t">🧠 Help improve the optimizer</span><span class="d">Contribute your build — anonymous</span></button>
+            <button class="tf-comm-item" id="tf-comm-meta" type="button"><span class="t">📊 Community Meta</span><span class="d">See what players like you run</span></button>
+          </div>
+        </span>
         <button class="btn btn-ghost" id="clear-build" title="Reset every field back to a blank build">🗑️ Clear all</button>
       </div>
       <!-- Premium (paid) group — revealed only when running locally; the optimizer
@@ -16852,9 +16899,169 @@
                  : "Couldn't share right now — please try again in a bit.");
       });
     }
+    // ===== Community dropdown ("🌐 Community" → Contribute + Community Meta) =====
     {
-      const _sc = document.getElementById("share-community");
-      if (_sc) _sc.addEventListener("click", openShareCommunityModal);
+      const cbtn = document.getElementById("tf-community-btn");
+      const cmenu = document.getElementById("tf-community-menu");
+      if (cbtn && cmenu) {
+        cbtn.addEventListener("click", function (e) { e.stopPropagation(); cmenu.classList.toggle("hidden"); });
+        cmenu.addEventListener("click", function (e) { e.stopPropagation(); });
+        document.addEventListener("click", function () { cmenu.classList.add("hidden"); });
+      }
+      const cContribute = document.getElementById("tf-comm-contribute");
+      if (cContribute) cContribute.addEventListener("click", function () { if (cmenu) cmenu.classList.add("hidden"); openShareCommunityModal(); });
+      const cMeta = document.getElementById("tf-comm-meta");
+      if (cMeta) cMeta.addEventListener("click", function () { if (cmenu) cmenu.classList.add("hidden"); openMetaTracker(); });
+    }
+
+    // ===== Phase 2: Community Meta tracker =====
+    // Reads AGGREGATE counts (never raw builds) from the meta_counts RPC and
+    // renders per-paragon popularity. Tabs in builder order; top-N = slot count;
+    // "✓ YOU" marks the current build's picks. Recomputed live on every open.
+    const MT_TABS = [
+      { key: "race",         label: "Race",           cat: "race",         topN: 1 },
+      { key: "atwill",       label: "At-Wills",       cat: "atwill",       topN: 2 },
+      { key: "encounter",    label: "Encounters",     cat: "encounter",    topN: 3 },
+      { key: "daily",        label: "Dailies",        cat: "daily",        topN: 2 },
+      { key: "classfeature", label: "Class Features", cat: "classfeature", topN: 2 },
+      { key: "feat",         label: "Feats",          cat: "feat",         topN: 5 },
+      { key: "gear",         label: "Gear",           cat: "gear" },
+      { key: "comp",         label: "Companions",     cat: "companions" }
+    ];
+    function mtEsc(s) { s = (s == null ? "" : String(s)); return (typeof _escHTML === "function") ? _escHTML(s) : s; }
+    function mtYouSets() {
+      const set = (a) => new Set((Array.isArray(a) ? a : []).filter(Boolean));
+      return {
+        race: state.race ? new Set([state.race]) : new Set(),
+        atwill: set(state.slottedAtWills),
+        encounter: set(state.slottedEncounters),
+        daily: set(state.slottedDailies),
+        classfeature: set(state.slottedClassFeaturePicks),
+        feat: set(state.slottedFeats),
+        gear: state.gear || {},
+        summoned: state.summoned || "",
+        activeComps: Array.isArray(state.activeComps) ? state.activeComps : []
+      };
+    }
+    function mtBar(name, pct, rank, isYou) {
+      return '<div class="mt-row' + (isYou ? ' you' : '') + '">' +
+        '<div class="mt-rank">' + (rank != null ? rank : "·") + '</div>' +
+        '<div class="mt-nm">' + mtEsc(name) + (isYou ? ' <span class="mt-you-tag">✓ YOU</span>' : '') + '</div>' +
+        '<div class="mt-track"><div class="mt-fill" style="width:' + pct + '%"></div></div>' +
+        '<div class="mt-pct">' + pct + '%</div></div>';
+    }
+    function mtRenderPool(rows, total, topN, youSet) {
+      if (!rows || !rows.length) return '<div class="mt-empty">No data yet for this section.</div>';
+      rows = rows.slice().sort(function (a, b) { return b.cnt - a.cnt; });
+      let html = "", i = 0;
+      if (topN) {
+        html += '<div class="mt-top"><div class="mt-top-label">★ Top ' + topN + ' — what most players slot</div>';
+        for (; i < Math.min(topN, rows.length); i++) html += mtBar(rows[i].name, Math.round(rows[i].cnt / total * 100), i + 1, youSet.has(rows[i].name));
+        html += '</div>';
+        if (i < rows.length) html += '<div class="mt-other-label">Other (ranked)</div>';
+      }
+      for (; i < rows.length; i++) html += mtBar(rows[i].name, Math.round(rows[i].cnt / total * 100), i + 1, youSet.has(rows[i].name));
+      return html;
+    }
+    function mtPanelHtml(t, byCat, total, you) {
+      if (t.cat === "gear") {
+        const rows = byCat.gear || [];
+        if (!rows.length) return '<div class="mt-empty">No gear data yet.</div>';
+        const bySlot = {};
+        rows.forEach(function (r) { (bySlot[r.slot] = bySlot[r.slot] || []).push(r); });
+        let html = '<div class="mt-cat-title">Gear <span class="n">· per slot, top 3</span></div>';
+        Object.keys(bySlot).sort().forEach(function (slot) {
+          html += '<div class="mt-slot-label">' + mtEsc(slot) + '</div>';
+          bySlot[slot].slice().sort(function (a, b) { return b.cnt - a.cnt; }).slice(0, 3)
+            .forEach(function (r, i) { html += mtBar(r.name, Math.round(r.cnt / total * 100), i + 1, (you.gear[slot] === r.name)); });
+        });
+        return html;
+      }
+      if (t.cat === "companions") {
+        let html = '<div class="mt-cat-title">Companions <span class="n">· 1 summoned + 5 active (1 Off / 1 Def / 1 Util / 2 Universal)</span></div>';
+        const summoned = (byCat.summoned || []).slice().sort(function (a, b) { return b.cnt - a.cnt; }).slice(0, 5);
+        html += '<div class="mt-top"><div class="mt-top-label">★ Top 5 summoned</div>';
+        if (!summoned.length) html += '<div class="mt-empty">No data yet.</div>';
+        summoned.forEach(function (r, i) { html += mtBar(r.name, Math.round(r.cnt / total * 100), i + 1, (you.summoned === r.name)); });
+        html += '</div>';
+        const active = byCat.activecomp || [];
+        const buckets = { Offense: ["0"], Defense: ["1"], Utility: ["4"], Universal: ["2", "3"] };
+        ["Offense", "Defense", "Utility", "Universal"].forEach(function (type) {
+          const idxs = buckets[type];
+          const merged = {};
+          active.filter(function (r) { return idxs.indexOf(r.slot) !== -1; }).forEach(function (r) { merged[r.name] = (merged[r.name] || 0) + r.cnt; });
+          const list = Object.keys(merged).map(function (n) { return { name: n, cnt: merged[n] }; }).sort(function (a, b) { return b.cnt - a.cnt; }).slice(0, 5);
+          const yset = new Set(idxs.map(function (i) { return you.activeComps[+i]; }).filter(Boolean));
+          html += '<div class="mt-slot-label">Active — ' + type + (type === "Universal" ? " slots (×2)" : " slot (×1)") + ' · top 5</div>';
+          if (!list.length) { html += '<div class="mt-empty">No data yet.</div>'; return; }
+          list.forEach(function (r, i) { html += mtBar(r.name, Math.round(r.cnt / total * 100), i + 1, yset.has(r.name)); });
+        });
+        return html;
+      }
+      const nText = (t.cat === "race") ? "you pick 1" : (t.topN ? "you slot " + t.topN : "");
+      return '<div class="mt-cat-title">' + t.label + ' <span class="n">· ' + nText + '</span></div>' +
+        mtRenderPool(byCat[t.cat] || [], total, t.topN, you[t.cat] || new Set());
+    }
+    function renderMetaTracker(data, body) {
+      const total = data.total || 0;
+      if (data.insufficient) {
+        body.innerHTML = '<div class="mt-empty">Not enough shared builds yet for <b>' + mtEsc(state.role + " " + state.class + " " + state.paragon) +
+          '</b>.<br>Only <b>' + total + '</b> shared so far (need ' + (data.min || 5) + '+). Contribute yours via “Help improve the optimizer,” and check back as more roll in.</div>';
+        return;
+      }
+      const counts = Array.isArray(data.counts) ? data.counts : [];
+      const you = mtYouSets();
+      const byCat = {};
+      counts.forEach(function (c) { (byCat[c.cat] = byCat[c.cat] || []).push(c); });
+      let tabsHtml = '<p class="mt-sub">What other players run — matched to your build, from ' + total + ' shared builds.</p>' +
+        '<div class="mt-note">📌 Keyed to your paragon (' + mtEsc(state.paragon) + '). Powers, feats &amp; class features differ by paragon, so you see the meta for your build\'s path. Only anonymous totals are shown — never an individual build.</div>' +
+        '<div class="mt-tabs">';
+      let panelsHtml = "";
+      MT_TABS.forEach(function (t, idx) {
+        tabsHtml += '<button class="mt-tab' + (idx === 0 ? ' active' : '') + '" data-mt="' + t.key + '">' + t.label + '</button>';
+        panelsHtml += '<div class="mt-panel' + (idx === 0 ? ' active' : '') + '" id="mt-panel-' + t.key + '">' + mtPanelHtml(t, byCat, total, you) + '</div>';
+      });
+      tabsHtml += '</div>';
+      body.innerHTML = tabsHtml + panelsHtml +
+        '<div class="mt-foot">🔒 Live counts, recomputed each time you open this — your own shared build is included the moment you contribute it.</div>';
+      body.querySelectorAll(".mt-tab").forEach(function (tb) {
+        tb.addEventListener("click", function () {
+          body.querySelectorAll(".mt-tab").forEach(function (x) { x.classList.remove("active"); });
+          body.querySelectorAll(".mt-panel").forEach(function (x) { x.classList.remove("active"); });
+          tb.classList.add("active");
+          const p = document.getElementById("mt-panel-" + tb.dataset.mt);
+          if (p) p.classList.add("active");
+        });
+      });
+    }
+    function openMetaTracker() {
+      if (!state.class || !state.paragon || !state.role) {
+        toast("Pick a class, paragon, and role first to see the community meta.");
+        return;
+      }
+      let ov = document.getElementById("mt-overlay");
+      if (ov) ov.remove();
+      ov = document.createElement("div");
+      ov.id = "mt-overlay";
+      ov.className = "mt-overlay";
+      ov.innerHTML = '<div class="mt-card"><div class="mt-head"><h2>Community Meta</h2>' +
+        '<span class="mt-pill">' + mtEsc(state.role) + ' · ' + mtEsc(state.class) + ' · ' + mtEsc(state.paragon) + '</span>' +
+        '<button class="mt-x" id="mt-close" title="Close">×</button></div>' +
+        '<div id="mt-body"><div class="mt-empty">Loading the community meta…</div></div></div>';
+      document.body.appendChild(ov);
+      ov.addEventListener("click", function (e) { if (e.target === ov) ov.remove(); });
+      document.getElementById("mt-close").addEventListener("click", function () { ov.remove(); });
+      if (!window.supabase) { document.getElementById("mt-body").innerHTML = '<div class="mt-empty">Can\'t reach the community server right now — try again later.</div>'; return; }
+      const sb = window.supabase.createClient(
+        "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+        "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+      );
+      sb.rpc("meta_counts", { p_class: state.class, p_paragon: state.paragon, p_role: state.role }).then(function (res) {
+        const body = document.getElementById("mt-body");
+        if (!body) return;
+        if (res.error || !res.data) { body.innerHTML = '<div class="mt-empty">Couldn\'t load the meta right now — please try again in a bit.</div>'; return; }
+        renderMetaTracker(res.data, body);
+      });
     }
     // Clear all — resets every field to a blank build. Wipes the working
     // draft autosave and strips any #b= share hash, then reloads so the page
