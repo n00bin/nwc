@@ -5983,7 +5983,8 @@ const COMPANION_POWERS_DATA = [
   {
     "id": 269,
     "slot": [
-      "Offense"
+      "Offense",
+      "Utility"
     ],
     "name": "Wind of Nature",
     "item_level": 375,
@@ -5998,10 +5999,13 @@ const COMPANION_POWERS_DATA = [
     "procEffect": {
       "trigger": "Daily use",
       "chance": 50,
-      "effect": "Heal you for 12.5% of your Maximum Hit Points",
+      "effect": "Heal you for {heal}% of your Maximum Hit Points",
+      "effectScaling": {
+        "heal": { "75": 2.5, "150": 5.0, "250": 8.3, "375": 12.5, "550": 18.3, "750": 25.0, "900": 30.0 }
+      },
       "scope": "self",
       "durationSeconds": null
     },
-    "notes": "Verdant Elder offense power. +1.9% Power (~double-stat scale at IL375 - hybrid stat+heal) / +375 Combined Rating. 50% chance, on Daily use, to heal you for 12.5% of Maximum Hit Points. Captured 2026-06-19."
+    "notes": "Verdant Elder offense power. +1.9% Power (~double-stat scale at IL375 - hybrid stat+heal) / +375 Combined Rating. 50% chance, on Daily use, to heal you for 12.5% of Maximum Hit Points at Epic, scaling to 30% at Celestial. Captured 2026-06-19. Can be slotted in Offense or Utility."
   }
 ];
