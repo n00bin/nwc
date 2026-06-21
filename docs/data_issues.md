@@ -1450,3 +1450,29 @@ carries item_level 3937 / anchorRarity Celestial too (930/143/13.9% at 3,718
 = exact 3,937/3,718 scaling of the stored 984/151/14.8%).
 
 ---
+
+## 2026-06-21 — SYSTEMIC set-bonus double-count (engine, high severity)
+**Confirmed** by replicating toon-forge.html:11525-11692 crediting logic.
+The Set-bonus crediting loop runs per-equipped-item with **no dedup by
+setName/stat**, so when ≥2 equipped members carry the SAME stat-bearing
+`type:"Set"` entry, the bonus is credited once per member.
+
+Recent "propagate set bonus to all members" work (Lionsmane 4pc, Whisper of
+Power, Impending Doom reconcile, ~6/15–6/21) put stat-bearing entries on every
+member → systemic double/quad-count. The 2026-05-11 calibration predates it.
+
+- **59 sets** double-count (same stat on ≥2 equippable slots); **37 double an
+  UNCAPPED DAMAGE stat** (Base Damage Boost / Damage Bonus / Outgoing Damage).
+- **Worst: Dusk / Drowcraft / Dragonflight** (4pc armor) credit Damage Bonus **4×**.
+- **Impending Doom** (endgame BiS weapon): Grimfang+Harrowed → Base Damage Boost
+  **10** (should be 5) and Power/CritSev **missing**. Only Omen+Aegis is correct.
+
+**RECOMMENDED FIX = engine, not data.** Add a dedup in the Set crediting loop:
+credit each `(setName, stat)` set bonus ONCE (take the max amount across members,
+preserving its flags). One localized change fixes all 59 sets, is robust to the
+current "stats on every member" data, needs no mass data rewrite, and leaves
+correctly-authored sets (one-carrier+markers) unchanged. Requires live-tool
+verification (set-bonus stat shows once, not 2×/4×).
+Data-side alternative (59 sets → markers) is error-prone and breaks for pieces
+interchangeable across >2 slots (e.g. Impending Doom's stray Artifact-Equipment
+entries). Prefer the engine fix.

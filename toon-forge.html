@@ -11541,6 +11541,14 @@
       if (gear) for (const slotLabel in gear) countSetPieces(gear[slotLabel]);
       if (artifacts.primary) countSetPieces(artifacts.primary);
       for (const a of (artifacts.secondary || [])) countSetPieces(a);
+      // Set-bonus dedup (2026-06-21): the data carries the same set bonus on
+      // EVERY member (display propagation), but the crediting below runs
+      // per-equipped-item with no dedup — so a 2-pc/4-pc set credited its bonus
+      // 2x/4x (e.g. Impending Doom Base Damage Boost 10 instead of 5; Dusk/
+      // Drowcraft/Dragonflight 4pc Damage Bonus 4x). Credit each
+      // (setName, stat) ONCE across all equipped pieces. Correctly-authored
+      // one-carrier+marker sets are unaffected (only one piece has the stat).
+      const seenSetBonus = new Set();
 
       // Helper: ingest one item's equipBonuses for one source label.
       // alwaysActive (default true): if false, this bonus is conditional
@@ -11641,6 +11649,13 @@
           const labelKind = (eb.type === "Set") ? "set" : "bonus";
           const haveOK = (eb.type !== "Set") || ((setPieceCounts[eb.setName] || 0) >= (eb.pieces || 2));
           if (!haveOK) continue;
+          if (eb.type === "Set") {
+            // Dedup: credit this set's (setName, stat) bonus only once, no
+            // matter how many equipped members carry it (see seenSetBonus above).
+            const _setKey = eb.setName + "" + eb.stat;
+            if (seenSetBonus.has(_setKey)) continue;
+            seenSetBonus.add(_setKey);
+          }
           const setTag = (eb.type === "Set")
             ? ` (${(setPieceCounts[eb.setName] || 0)}-pc)` : "";
           const baseLabel = (eb.type === "Set")
