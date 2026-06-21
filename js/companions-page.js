@@ -564,6 +564,13 @@
     for (var j = 0; j < COMPANIONS_DATA.length; j++) {
       if (COMPANIONS_DATA[j].id === id) { companion = COMPANIONS_DATA[j]; break; }
     }
+    // Open each companion at its own base (captured/verified) rarity instead of
+    // carrying over the last tier the user clicked. The base value is the one
+    // taken from in-game; higher tiers are extrapolated. The rarity buttons
+    // still let the user scale up from there.
+    if (companion) {
+      selectedRarity = getBaseRarity(powerMap[companion.powerRef]).il;
+    }
     renderDetail(companion);
   });
 
