@@ -11552,6 +11552,9 @@
       // First: count set-piece occurrences across all equipped gear +
       // artifacts so we know which Set bonuses qualify.
       const setPieceCounts = {};
+      const setStatMax = {};   // (setName + stat) -> MAX amount across equipped members, so the
+                               // dedup below credits the best-tier value (mixed-IL MH+OH no longer
+                               // credits the lower-tier amount; audit fix 2026-06-22).
       function countSetPieces(item) {
         if (!item || !Array.isArray(item.equipBonuses)) return;
         // Count each ITEM once per set name. An item can carry several Set
@@ -11561,9 +11564,15 @@
         // entries read as a 4-pc set). One item = one piece.
         const seenSets = {};
         for (const eb of item.equipBonuses) {
-          if (eb && eb.type === "Set" && eb.setName && !seenSets[eb.setName]) {
-            seenSets[eb.setName] = true;
-            setPieceCounts[eb.setName] = (setPieceCounts[eb.setName] || 0) + 1;
+          if (eb && eb.type === "Set" && eb.setName) {
+            if (!seenSets[eb.setName]) {
+              seenSets[eb.setName] = true;
+              setPieceCounts[eb.setName] = (setPieceCounts[eb.setName] || 0) + 1;
+            }
+            if (eb.stat && typeof eb.amount === "number") {
+              const mk = eb.setName + "" + eb.stat;
+              if (setStatMax[mk] == null || eb.amount > setStatMax[mk]) setStatMax[mk] = eb.amount;
+            }
           }
         }
       }
@@ -11683,6 +11692,8 @@
             // matter how many equipped members carry it (see seenSetBonus above).
             const _setKey = eb.setName + "" + eb.stat;
             if (seenSetBonus.has(_setKey)) continue;
+            const _mx = setStatMax[_setKey];
+            if (_mx != null && eb.amount < _mx - 1e-9) continue;   // not the max instance — the max one credits
             seenSetBonus.add(_setKey);
           }
           const setTag = (eb.type === "Set")
