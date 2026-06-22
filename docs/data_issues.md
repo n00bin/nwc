@@ -1486,3 +1486,32 @@ unknown — needs an in-game tooltip. TODO: unify the Dmg Bonus / Damage Bonus
 alias on this set + set the real value. Movement Speed 12% is consistent.
 NOT backfilled (would be a guess). The 7 Freezing shirt+pants sets were checked
 and are CORRECT as-is (shirt=carrier, pants=marker → credits once).
+
+## 2026-06-22 — Audit follow-ups (verify in-game / deferred)
+From the post-session audit. The BLOCKERs (zone double-counts, within-item Equip
+dupes, procHeal dupes) and engine CONCERNs (set-dedup max, clothing-revert guard,
+tank mitigation UI) were FIXED. Remaining items need n00b verification or are low-priority:
+
+- **VERIFY — Crown of the Pit Fiend (ID 1446, IL1240):** conditional Power +15,000 is
+  3× the IL-1200-1325 peer norm (5,000; one outlier 7,500). From a description bulk-parse,
+  no screenshot. If real value is 5,000, DPS builds using it overcredit Power +10,000.
+- **VERIFY — Radiant Elven Hood (ID 3209, IL2800):** "Spelljammer's Advantage" stored
+  twice with conflicting parse values: 0.65%/stack (every 3s) AND 0.85%/stack (every 5s),
+  both always-on → 1.5%/stack credited. Two parse-pass versions; delete the outdated one
+  (screenshot pass = 0.85%/5s is likely current). NOT auto-fixed (value conflict, not a
+  clean dup).
+- **VERIFY — 25 Impending Doom "Artifact Equipment" items** (Dread Confessor, Grimfang,
+  Harrowed Messengers, Doomcleaver, Knot of the Bloodbound × 5 IL tiers): carry only Base
+  Damage Boost (no Power/CritSev from the 2pc backfill — slot legitimacy unverified). If
+  these are real Artifact-Equipment-slot Impending Doom pieces, backfill Power +2.5% /
+  CritSev +7.5%; if they're mis-slotted weapons, fix the slot. Harmless when a weapon is
+  co-equipped (dedup); the optimizer can encounter them standalone.
+- **DEAD DUP — IDs 2790 & 4005** "Enchanted Bregan D'aerthe Assassin's Band" (Arms, IL2050):
+  byte-identical items. findGearByName takes the first → one is unreachable. Keep 4005 (set
+  tag + screenshot provenance), delete 2790. Scoring-safe as-is; cleanup only.
+- **MINOR — null-stat Whisper of Power set bonuses (IDs 6428, 5836, 5846, AE IL3400):**
+  stat/amount null → engine skips them despite described values (+5,200 Power / +7,700
+  Crit Strike). Backfill the values.
+- **MINOR — procHeal scope default:** computeGearHealProcPerSec routes any procHeal without
+  scope:"self" to allyPerSec. A typo (e.g. "ally ") would silently mis-route. Add a
+  scope-value check to the gear intake checklist when ally-scope heal procs are first added.
