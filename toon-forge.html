@@ -10714,6 +10714,33 @@
     // returns expected heal/sec split into ally (healer throughput) and self
     // (survivability). Read-only on shared state — cannot perturb DPS. =====
     const HEAL_PROC = { CAST_RATE: 1.0, TANK_BOSS_HIT_RATE: 1.0 };   // healer casts/sec; boss hits/sec (rotation estimates)
+
+    // ===== Healer THROUGHPUT layer (sustained heal/fight, not per-cast) =====
+    // A healer's total healing = heal-per-cast × number-of-casts, and casts are
+    // gated by the class resource (Divinity / Performance / Soul Weave — all the
+    // engine's class-agnostic "Class Resource Max" pool + "Class Resource Regen"
+    // rate). The per-cast heal model is calibrated and untouched; this is a
+    // SEPARATE multiplier the healer scorer/optimizer applies on top, so Forte /
+    // resource-regen / pool gear get valued the way the game rewards them.
+    //   throughputFactor = [ (1 + maxBoost) + rho·(1 + regen) ] / (1 + rho)
+    //   maxBoost = (Class Resource Max − base)/base   (bigger pool → more casts)
+    //   regen    = Class Resource Regen finalPct/100  (faster regen → more casts, proportional)
+    //   rho      = regen-vs-pool weighting over a typical fight (CALIBRATION knob)
+    // Properties: equals exactly 1.0 at baseline (regen 0, pool = base) so it
+    // never disturbs the calibrated per-cast number; rho→∞ ⇒ regen-only,
+    // rho→0 ⇒ pool-only. Default rho=1 (pool counts for sustained — n00b
+    // 2026-06-22). rho is UNCALIBRATED — lock it to an in-game two-build test.
+    const HEAL_THROUGHPUT = { enabled: true, rho: 1.0, regenPoolBase: 1000 };
+    function healThroughputFactor() {
+      if (!HEAL_THROUGHPUT.enabled) return 1;
+      const r = getEngineResult();
+      const base = HEAL_THROUGHPUT.regenPoolBase || 1000;
+      const poolFlat = (r.stats["Class Resource Max"] && r.stats["Class Resource Max"].flat) || base;
+      const maxBoost = Math.max(0, (poolFlat - base) / base);
+      const regen = Math.max(0, ((r.stats["Class Resource Regen"] && r.stats["Class Resource Regen"].finalPct) || 0) / 100);
+      const rho = (HEAL_THROUGHPUT.rho != null) ? HEAL_THROUGHPUT.rho : 1.0;
+      return ((1 + maxBoost) + rho * (1 + regen)) / (1 + rho);
+    }
     function computeGearHealProcPerSec(pCrit) {
       const out = { allyPerSec: 0, selfPerSec: 0, contributors: [] };
       if (typeof GEAR_SLOTS === "undefined") return out;
@@ -16001,7 +16028,13 @@
         { sc: "Crit heal", icon: "✨", desc: "Critical heal. Crit Severity is halved on heals, so the bonus is smaller.", p: pCritH,     d: Math.round(critHeal) },
       ];
       if (procHealPerCast > 0) _rows.push({ sc: "Gear heal procs", icon: "🩹", desc: "Expected extra healing per cast from gear heal procs (ally-scope).", p: 1, d: Math.round(procHealPerCast) });
-      return { expected: baseExpected + procHealPerCast, pCritH, rows: _rows };
+      // Per-cast expected (calibrated — drives the sim display, unchanged) and a
+      // SUSTAINED throughput value = per-cast × cast-frequency (resource pool +
+      // regen). The optimizer scores on expectedThroughput so it values Forte /
+      // Class-Resource-Regen / pool; the sim still shows per-cast `expected`.
+      const expectedPerCast = baseExpected + procHealPerCast;
+      const tFactor = (typeof healThroughputFactor === "function") ? healThroughputFactor() : 1;
+      return { expected: expectedPerCast, expectedThroughput: expectedPerCast * tFactor, throughputFactor: tFactor, pCritH, rows: _rows };
     }
 
     function renderSim() {
