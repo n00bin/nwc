@@ -88,6 +88,7 @@
         base: 0,      // Base Damage Boost
         magical: 0,   // Magical Damage Boost (applies if power is magical)
         physical: 0,  // Physical Damage Boost (applies if power is physical)
+        incomingDamage: 0,  // Σ -% Incoming Damage (TANK-only; stored negative; reduces damage taken)
         slot: { atwill: 0, encounter: 0, daily: 0, dot: 0, single: 0, melee: 0, ranged: 0 },
         contributors: []
       },
@@ -123,6 +124,10 @@
     // damage-type boosts
     "Magical Damage Boost": "magical", "MagicalDamageBoost": "magical", "Magical Damage": "magical",
     "Physical Damage Boost": "physical", "PhysicalDamageBoost": "physical", "Physical Damage": "physical",
+    // incoming-damage reduction — TANK survivability. Stored as a negative %
+    // ("-5% Incoming Damage"). Routed here so it accumulates; read ONLY by the
+    // tank model (computeTankExpectedTaken). DPS/heal scorers never read it.
+    "Incoming Damage": "incomingDamage", "IncomingDamage": "incomingDamage",
     // power-slot-specific boosts (own multiplicative category each)
     "At Will Dmg Bonus": "slot.atwill", "At-Will Dmg Bonus": "slot.atwill", "AtWillDmgBonus": "slot.atwill",
     "Encounter Dmg Bonus": "slot.encounter", "EncounterDmgBonus": "slot.encounter",
