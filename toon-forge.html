@@ -10713,7 +10713,7 @@
     // type:"flat"|"percentMaxHP", scope:"ally"|"self" } on equipped gear and
     // returns expected heal/sec split into ally (healer throughput) and self
     // (survivability). Read-only on shared state — cannot perturb DPS. =====
-    const HEAL_PROC = { CAST_RATE: 1.0 };   // healer casts/sec (rotation estimate); per-cast = perSec / CAST_RATE
+    const HEAL_PROC = { CAST_RATE: 1.0, TANK_BOSS_HIT_RATE: 1.0 };   // healer casts/sec; boss hits/sec (rotation estimates)
     function computeGearHealProcPerSec(pCrit) {
       const out = { allyPerSec: 0, selfPerSec: 0, contributors: [] };
       if (typeof GEAR_SLOTS === "undefined") return out;
@@ -15941,7 +15941,15 @@
       const t = computeTankExpectedTaken(m);
       const r = getEngineResult();
       const maxHP = (r.stats["Maximum Hit Points"] && r.stats["Maximum Hit Points"].flat) || 0;
-      return { score: t.expected > 0 ? maxHP / t.expected : 0, taken: t.expected, maxHP };
+      // Sustain: self-heal procs (heal-proc layer, self-scope) offset incoming
+      // damage. Convert HP/sec → HP/hit at the boss hit rate, subtract from the
+      // per-hit damage taken; floored at 25% so sustain can't trivialize survival.
+      // TANK-only — DPS/heal scorers never call this.
+      const _pCritT = ((r.stats["Critical Strike"] && r.stats["Critical Strike"].finalPct) || 0) / 100;
+      const selfHealPerSec = (typeof computeGearHealProcPerSec === "function") ? (computeGearHealProcPerSec(_pCritT).selfPerSec || 0) : 0;
+      const healPerHit = selfHealPerSec / (HEAL_PROC.TANK_BOSS_HIT_RATE || 1);
+      const effTaken = Math.max(t.expected * 0.25, t.expected - healPerHit);
+      return { score: effTaken > 0 ? maxHP / effTaken : 0, taken: effTaken, rawTaken: t.expected, sustainPerHit: healPerHit, maxHP };
     }
 
     // HEALER: expected heal per cast.
