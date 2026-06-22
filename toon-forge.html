@@ -12887,28 +12887,35 @@
             + list.map(c => `  ${c.source}: +${(+c.amount).toFixed(2)}%${c.conditional ? " (conditional)" : ""}`).join("\n")
             + `</div></details>`;
         };
-        const _boostRow = (name, val, srcHtml, note) => `
+        const _boostRow = (name, val, srcHtml, note, inactive) => {
+          const v = +val || 0;
+          // inactive (off damage-type) shows "—", not a misleading "+X%"; negatives
+          // (Incoming Damage reduction) show "−X%", not "+−X%".
+          const valStr = inactive ? "—" : ((v >= 0 ? "+" : "") + v.toFixed(2) + "%");
+          return `
           <div class="dstat-row">
             <div class="dstat-head">
               <div class="dstat-name">${name}${note ? ` <span style="color:var(--text-mute);font-weight:normal;font-size:0.8rem;">${note}</span>` : ""}</div>
-              <div class="dstat-value">+${(+val || 0).toFixed(2)}%</div>
+              <div class="dstat-value"${inactive ? ' style="color:var(--text-mute);"' : ""}>${valStr}</div>
             </div>${srcHtml || ""}
           </div>`;
+        };
         const _slot = db.slot || {};
         const _slotTotal = Object.keys(_slot).reduce((a,k)=>a+(+_slot[k]||0),0);
         let _dmgHtml = `<div class="dstats-section">
           <div class="dstats-section-title">Damage Boosts</div>
-          <div style="font-size:0.8rem;color:var(--text-mute);margin:-0.2rem 0 0.5rem;line-height:1.5;">Multiplicative damage bonuses — each multiplies every hit. These are NOT on the in-game stat panel.</div>`;
+          <div style="font-size:0.8rem;color:var(--text-mute);margin:-0.2rem 0 0.5rem;line-height:1.5;">Multiplicative modifiers not shown on the in-game stat panel — damage dealt (every hit) and, for tanks, damage taken.</div>`;
         _dmgHtml += _boostRow("Base Damage Boost", db.base, _src(c => c.bucket === "base"));
         _dmgHtml += _boostRow("Damage Bonus / Outgoing Damage", db.generic, _src(c => c.bucket === "generic"));
         if (_dmgType === "physical") {
           _dmgHtml += _boostRow("Physical Damage", db.physical, _src(c => c.bucket === "physical"), "(your damage type · STR-fed)");
-          if ((db.magical || 0) > 0) _dmgHtml += _boostRow("Magical Damage", db.magical, _src(c => c.bucket === "magical"), "(not your type — no effect)");
+          if ((db.magical || 0) > 0) _dmgHtml += _boostRow("Magical Damage", db.magical, _src(c => c.bucket === "magical"), "(not your type — inactive)", true);
         } else {
           _dmgHtml += _boostRow("Magical Damage", db.magical, _src(c => c.bucket === "magical"), "(your damage type · INT-fed)");
-          if ((db.physical || 0) > 0) _dmgHtml += _boostRow("Physical Damage", db.physical, _src(c => c.bucket === "physical"), "(not your type — no effect)");
+          if ((db.physical || 0) > 0) _dmgHtml += _boostRow("Physical Damage", db.physical, _src(c => c.bucket === "physical"), "(not your type — inactive)", true);
         }
         if (_slotTotal > 0) _dmgHtml += _boostRow("Power-slot boosts (At-Will/Encounter/Daily)", _slotTotal, _src(c => (c.bucket||"").indexOf("slot.")===0), "(blended by your rotation)");
+        if (db.incomingDamage && db.incomingDamage !== 0) _dmgHtml += _boostRow("Incoming Damage (mitigation)", db.incomingDamage, _src(c => c.bucket === "incomingDamage"), "(tank — reduces damage taken)");
         _dmgHtml += `</div>`;
         html += _dmgHtml;
       }
