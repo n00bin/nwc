@@ -10707,6 +10707,35 @@
       return out;
     }
 
+    // ===== Gear HEAL-proc layer (Phase 2) — ISOLATED: healer/tank scorers ONLY,
+    // never read by computeDpsExpectedDamage. Mirrors the damage-proc layer:
+    // reads eb.procHeal = { triggerRateKey, chance, icdSeconds, amount,
+    // type:"flat"|"percentMaxHP", scope:"ally"|"self" } on equipped gear and
+    // returns expected heal/sec split into ally (healer throughput) and self
+    // (survivability). Read-only on shared state — cannot perturb DPS. =====
+    const HEAL_PROC = { CAST_RATE: 1.0 };   // healer casts/sec (rotation estimate); per-cast = perSec / CAST_RATE
+    function computeGearHealProcPerSec(pCrit) {
+      const out = { allyPerSec: 0, selfPerSec: 0, contributors: [] };
+      if (typeof GEAR_SLOTS === "undefined") return out;
+      const r = getEngineResult();
+      const maxHP = (r.stats["Maximum Hit Points"] && r.stats["Maximum Hit Points"].flat) || 0;
+      for (const slotEntry of GEAR_SLOTS) {
+        const itemName = state.gear[slotEntry.label]; if (!itemName) continue;
+        const item = findGearByName(itemName, slotEntry.slot, (state.gearIL || {})[slotEntry.label]);
+        if (!item || !Array.isArray(item.equipBonuses)) continue;
+        for (const eb of item.equipBonuses) {
+          const ph = eb && eb.procHeal; if (!ph) continue;
+          const pps = procRatePerSec(ph.triggerRateKey, ph.chance, ph.icdSeconds, pCrit);
+          const amt = (ph.type === "percentMaxHP") ? (maxHP * (ph.amount || 0) / 100) : (ph.amount || 0);
+          const hps = pps * amt;
+          if (!(hps > 0)) continue;
+          if (ph.scope === "self") { out.selfPerSec += hps; out.contributors.push({ source: item.name + " — " + (eb.name || "heal proc"), selfPerSec: hps }); }
+          else { out.allyPerSec += hps; out.contributors.push({ source: item.name + " — " + (eb.name || "heal proc"), allyPerSec: hps }); }
+        }
+      }
+      return out;
+    }
+
     function buildEngineCharacter(s) {
       // Resolve gear: state.gear is { "Head": "name string", ... };
       // engine wants { "Head": gearObject }.
@@ -15929,11 +15958,18 @@
       const baseHeal = baseVal * healMult;
       const critHeal = baseVal * healMult * critHealMult;
       const pCritH = Math.max(0, Math.min(1, critStrike));
-      return { expected: (1 - pCritH) * baseHeal + pCritH * critHeal, pCritH,
-        rows: [
-          { sc: "Base heal", icon: "💚", desc: "Standard heal — no critical.",                                             p: 1 - pCritH, d: Math.round(baseHeal) },
-          { sc: "Crit heal", icon: "✨", desc: "Critical heal. Crit Severity is halved on heals, so the bonus is smaller.", p: pCritH,     d: Math.round(critHeal) },
-        ] };
+      // Heal-proc layer (Phase 2, isolated & healer-only): ally-scope gear heal
+      // procs add to per-cast throughput. Self-scope is survivability (tracked,
+      // not added to the heal score). No-op until items carry eb.procHeal.
+      const _healProc = (typeof computeGearHealProcPerSec === "function") ? computeGearHealProcPerSec(pCritH) : { allyPerSec: 0 };
+      const procHealPerCast = (_healProc.allyPerSec || 0) / (HEAL_PROC.CAST_RATE || 1);
+      const baseExpected = (1 - pCritH) * baseHeal + pCritH * critHeal;
+      const _rows = [
+        { sc: "Base heal", icon: "💚", desc: "Standard heal — no critical.",                                             p: 1 - pCritH, d: Math.round(baseHeal) },
+        { sc: "Crit heal", icon: "✨", desc: "Critical heal. Crit Severity is halved on heals, so the bonus is smaller.", p: pCritH,     d: Math.round(critHeal) },
+      ];
+      if (procHealPerCast > 0) _rows.push({ sc: "Gear heal procs", icon: "🩹", desc: "Expected extra healing per cast from gear heal procs (ally-scope).", p: 1, d: Math.round(procHealPerCast) });
+      return { expected: baseExpected + procHealPerCast, pCritH, rows: _rows };
     }
 
     function renderSim() {
