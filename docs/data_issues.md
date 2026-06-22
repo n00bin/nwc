@@ -1,5 +1,60 @@
 # Data Issues To Investigate
 
+## Audit verify-items resolved from screenshots (2026-06-22)
+Four audit "verify in-game" gear items were checked against archived captures.
+
+- **Soulpiercer (Greater) 2pc — RESOLVED + FIXED.** Screenshot
+  `_set_details/Soulpiercer (Greater)_set_details.png` (corroborated by the
+  in-data set-sibling marker desc): "While in Thay, +12% Movement Speed and
+  +2% Damage." Data bugs fixed (`scripts/fix_soulpiercer_spelljammer.py`):
+  Voidcaller's Treatise carried a phantom `Dmg Bonus 2.5` on top of the real
+  `Dmg Bonus 2`; the two members used different stat strings (`Dmg Bonus` vs
+  `Damage Bonus`, both -> generic bucket) so the set-dedup credited them
+  separately (double-count); and neither stat was zone-gated. Now both members
+  = Movement Speed 12 + Damage Bonus 2, both `zones:["Thay"]`.
+- **Radiant Elven Hood / Spelljammer's Advantage — RESOLVED + FIXED.**
+  Screenshot `inbox/gear/warlock-gear/heads/Radiant Elven Hood_IL2800.png`:
+  "For every 5s in combat, +0.85% Combat Advantage. Max Stacks: 7 (10 in
+  Wildspace)." Data had two entries (old description-parsed 0.65%/3s + correct
+  screenshot-parsed 0.85%/5s) -> stacked to ~10.5% CA. Dropped the stale 0.65
+  entry; kept 0.85 / max 7. (Was the only same-item description-vs-screenshot
+  value conflict in the whole gear set.)
+- **Impending Doom "Artifact Equipment" entries — FALSE ALARM (no fix needed).**
+  The 25 AE-slotted Impending Doom entries are the intentional convention for
+  artifact-tier weapons: they store `slot:"Artifact Equipment"` but are routed
+  to Main Hand / Off Hand by `artifactHand()` (toon-forge.html ~L6433-6461).
+  Not a mis-slot.
+- **Impending Doom 2pc — I briefly broke this, then restored it.** LESSON:
+  the `_set_details` and evidence tooltips (Dread Confessor IL5250, Grimfang)
+  are **cut off at the panel boundary** — they show only the
+  "Unleashed: +X% Base Damage Boost" line. Reading just those, I wrongly
+  concluded the 2pc was BDB-only and removed +2.5% Power / +7.5% Critical
+  Severity. The full **Omen of Doom IL4800 _Details_** panel
+  (`docs/audit/_up/warlock-gear/Omen of Doom_IL4800_details.png`) shows the
+  complete 2pc: Unleashed (DPS +4.5% Base Damage Boost / **Heal +4.5% Outgoing
+  Healing**, 20s) **+ 7.5% Critical Severity + 2.5% Power** (matches the
+  2026-06-10 resolution above). Restored via
+  `scripts/restore_impending_doom_2pc.py` onto ALL 91 members (BDB tier-scaled
+  3.0..5.0; CritSev 7.5 / Power 2.5 flat). Rule reaffirmed: read the most
+  complete panel (full item Details), not a cropped set-summary, before
+  deleting verified stats.
+- **OPEN (engine enhancement): Impending Doom Unleashed — healer side missing.**
+  The Unleashed grant is role-split: **DPS = +4.5% Base Damage Boost, Healer =
+  +4.5% Outgoing Healing**. Only the Base Damage Boost is modeled, so healers
+  get nothing from Unleashed. Add a role-conditional Set entry (Outgoing
+  Healing, `role:"healer"`) per the Dark Matter pattern. Low urgency; not a
+  regression.
+- **Crown of the Pit Fiend (ID 1446, +15,000 Power) — RESOLVED, no fix needed.**
+  n00b's tooltip
+  (`docs/calibration/evidence/2026-06-22_crown-of-the-pit-fiend_IL1240_martyrs-might-below50hp-tooltip.png`):
+  *Equip: Martyr's Might — "When your health is below 50%, your Power is
+  increased by 15,000."* The data already stores this correctly: `stat:Power`,
+  `amount:15000`, `kind:"rating"`, `alwaysActive:false`, with a
+  "health is below 50%" description. The engine's health-gate parser keeps it
+  OFF at full health and only credits it when the Current Health % slider is
+  under 50 — so the high value is real and correctly gated, not always-on.
+
+
 ## Mount combat-power valuation — engine ignores SELF stat-buffs; pick is defensible, left as-is + player workaround (2026-06-19)
 The builder's DPS sim (`toon-forge.html` ~10290-10321, the combat-power block of
 `computeDpsExpectedDamage`) credits a mount combat power via only TWO things:
