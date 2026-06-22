@@ -1476,3 +1476,13 @@ verification (set-bonus stat shows once, not 2×/4×).
 Data-side alternative (59 sets → markers) is error-prone and breaks for pieces
 interchangeable across >2 slots (e.g. Impending Doom's stray Artifact-Equipment
 entries). Prefer the engine fix.
+
+## 2026-06-21 — Soulpiercer (Greater) 2pc damage bonus inconsistent (deferred)
+Members disagree on the generic damage bonus: Voidcaller's Treatise carries
+`Dmg Bonus 2.5` + `Dmg Bonus 2` (two lines); its partner carries the alias
+`Damage Bonus 2.0`. With the (setName,stat) dedup, "Dmg Bonus" and "Damage
+Bonus" are distinct keys → both credit. The true 2pc generic-damage value is
+unknown — needs an in-game tooltip. TODO: unify the Dmg Bonus / Damage Bonus
+alias on this set + set the real value. Movement Speed 12% is consistent.
+NOT backfilled (would be a guess). The 7 Freezing shirt+pants sets were checked
+and are CORRECT as-is (shirt=carrier, pants=marker → credits once).
