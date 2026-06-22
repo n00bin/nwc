@@ -12826,6 +12826,53 @@
         html += `</div>`;
       }
 
+      // Damage Boosts — these MULTIPLY your damage but are NOT on the in-game
+      // stat panel (they route to damageBoosts buckets, not result.stats). Shown
+      // here so Base Damage Boost + the INT/STR-fed magical/physical boost are
+      // visible and verifiable (matches the damage-sim formula's boostMult).
+      {
+        const db = r.damageBoosts || { generic:0, base:0, magical:0, physical:0, slot:{}, contributors:[] };
+        let _dmgType = "magical";
+        try {
+          const _c = (typeof CLASSES_DATA !== "undefined") ? CLASSES_DATA.find(c => c.name === state.class) : null;
+          const _p = _c && (_c.paragonPaths || []).find(p => p.name === state.paragon);
+          if (_p && _p.damageType) _dmgType = _p.damageType;
+        } catch (e) {}
+        const _contribs = db.contributors || [];
+        const _src = (pred) => {
+          const list = _contribs.filter(pred);
+          if (!list.length) return "";
+          return `<details class="dstat-sources" style="margin-top:0.3rem;"><summary>Sources</summary>`
+            + `<div class="dstat-sources-body" style="white-space:pre-wrap;font-size:0.82rem;line-height:1.4;">`
+            + list.map(c => `  ${c.source}: +${(+c.amount).toFixed(2)}%${c.conditional ? " (conditional)" : ""}`).join("\n")
+            + `</div></details>`;
+        };
+        const _boostRow = (name, val, srcHtml, note) => `
+          <div class="dstat-row">
+            <div class="dstat-head">
+              <div class="dstat-name">${name}${note ? ` <span style="color:var(--text-mute);font-weight:normal;font-size:0.8rem;">${note}</span>` : ""}</div>
+              <div class="dstat-value">+${(+val || 0).toFixed(2)}%</div>
+            </div>${srcHtml || ""}
+          </div>`;
+        const _slot = db.slot || {};
+        const _slotTotal = Object.keys(_slot).reduce((a,k)=>a+(+_slot[k]||0),0);
+        let _dmgHtml = `<div class="dstats-section">
+          <div class="dstats-section-title">Damage Boosts</div>
+          <div style="font-size:0.8rem;color:var(--text-mute);margin:-0.2rem 0 0.5rem;line-height:1.5;">Multiplicative damage bonuses — each multiplies every hit. These are NOT on the in-game stat panel.</div>`;
+        _dmgHtml += _boostRow("Base Damage Boost", db.base, _src(c => c.bucket === "base"));
+        _dmgHtml += _boostRow("Damage Bonus / Outgoing Damage", db.generic, _src(c => c.bucket === "generic"));
+        if (_dmgType === "physical") {
+          _dmgHtml += _boostRow("Physical Damage", db.physical, _src(c => c.bucket === "physical"), "(your damage type · STR-fed)");
+          if ((db.magical || 0) > 0) _dmgHtml += _boostRow("Magical Damage", db.magical, _src(c => c.bucket === "magical"), "(not your type — no effect)");
+        } else {
+          _dmgHtml += _boostRow("Magical Damage", db.magical, _src(c => c.bucket === "magical"), "(your damage type · INT-fed)");
+          if ((db.physical || 0) > 0) _dmgHtml += _boostRow("Physical Damage", db.physical, _src(c => c.bucket === "physical"), "(not your type — no effect)");
+        }
+        if (_slotTotal > 0) _dmgHtml += _boostRow("Power-slot boosts (At-Will/Encounter/Daily)", _slotTotal, _src(c => (c.bucket||"").indexOf("slot.")===0), "(blended by your rotation)");
+        _dmgHtml += `</div>`;
+        html += _dmgHtml;
+      }
+
       body.innerHTML = html;
       document.getElementById("dstats-overlay").classList.add("open");
     }
