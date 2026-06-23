@@ -17168,16 +17168,27 @@
     function renderMetaTracker(data, body) {
       const total = data.total || 0;
       if (data.insufficient) {
-        body.innerHTML = '<div class="mt-empty">Not enough shared builds yet for <b>' + mtEsc(state.role + " " + state.class + " " + state.paragon) +
-          '</b>.<br>Only <b>' + total + '</b> shared so far (need ' + (data.min || 5) + '+). Contribute yours via “Help improve the optimizer,” and check back as more roll in.</div>';
+        body.innerHTML = '<div class="mt-empty">No community meta yet for <b>' + mtEsc(state.role + " " + state.class) +
+          '</b>.<br>Only <b>' + total + '</b> ' + mtEsc(state.role + " " + state.class) + ' build' + (total === 1 ? '' : 's') +
+          ' shared so far (need ' + (data.min || 5) + '+). Contribute yours via “Help improve the optimizer,” and check back as more roll in.</div>';
         return;
       }
       const counts = Array.isArray(data.counts) ? data.counts : [];
       const you = mtYouSets();
       const byCat = {};
       counts.forEach(function (c) { (byCat[c.cat] = byCat[c.cat] || []).push(c); });
-      let tabsHtml = '<p class="mt-sub">What other players run — matched to your build, from ' + total + ' shared builds.</p>' +
-        '<div class="mt-note">📌 Keyed to your paragon (' + mtEsc(state.paragon) + '). Powers, feats &amp; class features differ by paragon, so you see the meta for your build\'s path. Only anonymous totals are shown — never an individual build.</div>' +
+      // Thin-data fallback: when this exact paragon doesn't have 5+ builds yet,
+      // the RPC widens to the whole class+role (every paragon) and reports
+      // scope:'class' so we can label it honestly instead of showing a dead end.
+      const broadened = (data.scope === "class");
+      const subLine = broadened
+        ? 'Not enough <b>' + mtEsc(state.paragon) + '</b> builds yet — showing all <b>' + mtEsc(state.role + " " + state.class) + '</b> builds (every paragon), from ' + total + ' shared.'
+        : 'What other players run — matched to your build, from ' + total + ' shared builds.';
+      const noteLine = broadened
+        ? '📌 Showing your whole class (all paragons), not just ' + mtEsc(state.paragon) + ', because there aren\'t 5+ ' + mtEsc(state.paragon) + ' builds yet. At-wills, encounters &amp; dailies are shared across a class\'s paragons, so this stays accurate; class features &amp; feats can vary by paragon. Only anonymous totals are shown — never an individual build. <b>Share your build</b> to help unlock the paragon-exact view.'
+        : '📌 Keyed to your paragon (' + mtEsc(state.paragon) + '). Powers, feats &amp; class features differ by paragon, so you see the meta for your build\'s path. Only anonymous totals are shown — never an individual build.';
+      let tabsHtml = '<p class="mt-sub">' + subLine + '</p>' +
+        '<div class="mt-note">' + noteLine + '</div>' +
         '<div class="mt-tabs">';
       let panelsHtml = "";
       MT_TABS.forEach(function (t, idx) {
