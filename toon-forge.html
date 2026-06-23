@@ -11509,18 +11509,32 @@
           // Free-text "X to all of your ratings for Y seconds" bonuses (e.g.
           // Cavalry's Alarm/Warning) carry no `stats`, so the line above adds
           // nothing and the optimizer would pick them as do-nothings. Model
-          // them uptime-weighted: amount × (duration / ~60s mount-power recharge)
-          // spread to every rating stat. On a capped build this lands mostly on
-          // full stats (≈ wasted), so it correctly stops being an auto-pick.
+          // them uptime-weighted: amount × (duration / practical mount-power
+          // cycle) spread to every rating stat. These only fire when you
+          // activate a Mount Combat Power, so they are CONDITIONAL
+          // (isConditional is true for these — they carry a `condition`): the
+          // standing-around base stat panel must NOT include them; they show
+          // only under "Show Conditional". (This matches the boon uptime
+          // model: scale the amount by uptime AND flag conditional.)
+          //
+          // Uptime: the buff window is `_dur`s and the EARLIEST recharge is
+          // ~60s, but you can't always fire the mount combat power exactly on
+          // that 60s floor — there's often a wait, though not a long one
+          // (n00b 2026-06-23). So model the PRACTICAL cycle at ~80s (pressed on
+          // cooldown but missing some windows): 20s/80s = 25%, between the
+          // theoretical 33% (every 60s) and a lazy 17% (every 120s). Tune
+          // _MOUNT_POWER_CYCLE to dial it.
           if ((!bonus.stats || !bonus.stats.length) && bonus.effectText && typeof expandCR === "function") {
             const _m = bonus.effectText.match(/(\d[\d,]*)\s+to all (?:of your )?ratings for (\d+)\s*second/i);
             if (_m) {
+              const _MOUNT_POWER_CYCLE = 80;   // practical seconds between mount-power uses in a real rotation
               const _amt = parseInt(_m[1].replace(/,/g, ""), 10);
               const _dur = parseInt(_m[2], 10);
-              const _up = Math.max(0, Math.min(1, _dur / 60));   // ~60s mount combat power recharge
+              const _up = Math.max(0, Math.min(1, _dur / _MOUNT_POWER_CYCLE));
               const _cr = expandCR(Math.round(_amt * _up * mult), 1);
               if (_cr) buffs.push({
                 source: `${slotLabel} Insignia Bonus: ${bonus.name} (~${Math.round(_up * 100)}% uptime · all ratings)`,
+                conditional: isConditional,
                 ratingStats: _cr
               });
             }
