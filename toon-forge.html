@@ -3060,15 +3060,15 @@
       // serialized; the ally-VIP +1% MaxHP buff it described was never
       // modeled. Re-add WITH engine wiring + UI + serializer if it returns.
       // Party meta assumption: the whole party runs "Part of the Pack"
-      // companions (current group meta — Power stacks shared party-wide).
-      // ON (default): party-scope stacking companion procs count at full
-      // stacks, and the optimizer reserves a slot for a Pack companion.
-      // OFF: solo play — party-scope stacks count only your own (1 stack).
-      partyPackMeta: true,
+      // companions (Power stacks shared party-wide).
+      // ON: party-scope stacking companion procs count at full stacks, and the
+      // optimizer reserves a slot for a Pack companion.
+      // OFF (default): party-scope stacks count only your own (1 stack).
+      partyPackMeta: false,
       // Group meta for group-stacked mount equip powers (Providence's Radiant
-      // Weapon). ON (default): the group all runs Providence so "from any
-      // source" holds it at the 8-stack cap. OFF: don't assume group stacking.
-      groupEquipStacks: true,
+      // Weapon). ON: the group all runs Providence so "from any source" holds
+      // it at the 8-stack cap. OFF (default): don't assume group stacking.
+      groupEquipStacks: false,
       // (legacy — kept so older saves still load without losing data)
       partyBuffs: new Set(),
       simMag: 100,
@@ -3244,9 +3244,10 @@
       state.partyContent = s.partyContent || "dungeon";
       state.partyAllies = Array.isArray(s.partyAllies) ? s.partyAllies.slice() : [];
       state.partyMountAllies = Array.isArray(s.partyMountAllies) ? s.partyMountAllies.slice() : [];
-      // Back-compat: saves from before the Pack-meta toggle default to ON.
-      state.partyPackMeta = s.partyPackMeta !== false;
-      state.groupEquipStacks = s.groupEquipStacks !== false;
+      // Both group-meta toggles default OFF: only ON if a save explicitly
+      // stored true (=== true), so new builds and old saves start OFF.
+      state.partyPackMeta = s.partyPackMeta === true;
+      state.groupEquipStacks = s.groupEquipStacks === true;
       // Picked-tier map for same-name multi-IL gear; legacy saves have none.
       state.gearIL = (s.gearIL && typeof s.gearIL === "object") ? { ...s.gearIL } : {};
       // Artifact Modifications; legacy saves have none.
