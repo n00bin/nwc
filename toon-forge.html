@@ -17102,15 +17102,14 @@
     // wanted data point); the only skip is an identical build this device has
     // already shared, because re-sending it is a server no-op. The first share
     // routes through the full consent dialog (informed consent); after that a
-    // tap shares directly.
-    let _commNudgeTimer = null;
+    // tap shares directly. The bar has NO auto-timeout — it stays until the
+    // player shares or dismisses it (×), so the prompt is never missed.
     function nudgeCommunityShare(kind) {
       if (!state.class || !state.role) return;   // nothing shareable yet
       if (!window.supabase) return;              // community server unreachable
       if (alreadySharedThisBuild()) return;      // identical build already sent — nothing new to add
       const prev = document.getElementById("comm-nudge");
       if (prev) prev.remove();
-      if (_commNudgeTimer) { clearTimeout(_commNudgeTimer); _commNudgeTimer = null; }
       const lead = (kind === "save")
         ? "Nice build — see how it stacks up against the community?"
         : "Add this to the Community Meta — see how you stack up?";
@@ -17126,7 +17125,6 @@
       const close = () => {
         const n = document.getElementById("comm-nudge");
         if (n) n.remove();
-        if (_commNudgeTimer) { clearTimeout(_commNudgeTimer); _commNudgeTimer = null; }
       };
       document.getElementById("comm-nudge-x").addEventListener("click", close);
       document.getElementById("comm-nudge-go").addEventListener("click", async () => {
@@ -17142,7 +17140,6 @@
         toast(ok ? "You're in the Community Meta! Open it any time to see how you stack up 📊"
                  : "Couldn't share right now — try again in a bit.");
       });
-      _commNudgeTimer = setTimeout(close, 9000);
     }
     // ===== Community dropdown ("🌐 Community" → Contribute + Community Meta) =====
     {
