@@ -11277,18 +11277,33 @@
           // the ally version and runs in a different loop. No double-count.
           if (ep.stackingBuff && ep.stackingBuff.perStack) {
             const sb = ep.stackingBuff;
-            const stacks = sb.maxStacks || 1;
+            // effectiveStacks: realistic sustained stacks when the theoretical
+            // maxStacks isn't achievable. Providence's Radiant Weapon caps at 8
+            // but gains only 1 stack / 10s while each lasts 12s, so you hold
+            // ~2-3 — never 8. Falls back to maxStacks when absent (e.g.
+            // Ferocity, which refreshes fast and genuinely sits at its 3 cap).
+            const stacks = sb.effectiveStacks || sb.maxStacks || 1;
             const sbRating = {};
             const sbPercent = {};
             for (const [rawKey, perStack] of Object.entries(sb.perStack)) {
               const stat = _normalizeMountProcStat(rawKey);
-              const _scaledPerStack = Math.min((perStack || 0) * _rarityFactor, (perStack || 0) * (1.3124444 / _epAnchorFactor));
+              // flatPerStack: per-stack value does NOT scale with rarity/bolster
+              // (Providence's 2% is identical at Mythic and Celestial IL 3,937,
+              // verified in-game 2026-06-23 — only its heal % and CR scale).
+              // Ferocity OMITS this flag, so its 1.6% still scales to 2.1% at
+              // Celestial exactly as before.
+              const _scaledPerStack = sb.flatPerStack
+                ? (perStack || 0)
+                : Math.min((perStack || 0) * _rarityFactor, (perStack || 0) * (1.3124444 / _epAnchorFactor));
               const total = _scaledPerStack * stacks;
               if (perStack > 100) sbRating[stat] = total;
               else                sbPercent[stat] = total;
             }
+            const _stackLabel = (sb.effectiveStacks && sb.maxStacks && sb.effectiveStacks < sb.maxStacks)
+              ? `${stacks} of ${sb.maxStacks} stacks (realistic uptime)`
+              : `full ${stacks} stacks`;
             buffs.push({
-              source: `Mount Equip Proc: ${ep.name} (full ${stacks} stacks on ${sb.trigger || "trigger"})`,
+              source: `Mount Equip Proc: ${ep.name} (${_stackLabel} on ${sb.trigger || "trigger"})`,
               conditional: true,
               ratingStats: sbRating,
               percentStats: sbPercent
