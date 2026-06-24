@@ -3470,6 +3470,7 @@
           toast(`Saved "${name}"`);
         }
         saveBuildsList(list);
+        nudgeCommunityShare("save");
         openBuildsModal();   // refresh
       });
       // Load (whole row)
@@ -3515,6 +3516,7 @@
           list[idx] = serializeBuild(old.name);   // keep the saved build's name
           saveBuildsList(list);
           toast(`Updated "${old.name}"`);
+          nudgeCommunityShare("save");
           openBuildsModal();
         });
       });
@@ -16953,6 +16955,7 @@
         () => toast("Link copied! Share it to load your build anywhere."),
         () => toast("Couldn't copy — copy this link yourself: " + url)
       );
+      nudgeCommunityShare("share");
     });
 
     // ===== Phase 1: opt-in "Help improve the optimizer" (anonymized build capture) =====
@@ -17090,6 +17093,56 @@
         toast(ok ? "Thanks — this helps make the optimizer smarter 🙌"
                  : "Couldn't share right now — please try again in a bit.");
       });
+    }
+    // ===== High-intent share nudge =====
+    // Fires the moment a player SAVES a build or COPIES a share link — the two
+    // points they've signalled "this build is good." Deliberately NON-blocking:
+    // a small dismissible bar, never a modal that interrupts what they're doing.
+    // It shows EVERY time on a new or tweaked build (each distinct build is a
+    // wanted data point); the only skip is an identical build this device has
+    // already shared, because re-sending it is a server no-op. The first share
+    // routes through the full consent dialog (informed consent); after that a
+    // tap shares directly.
+    let _commNudgeTimer = null;
+    function nudgeCommunityShare(kind) {
+      if (!state.class || !state.role) return;   // nothing shareable yet
+      if (!window.supabase) return;              // community server unreachable
+      if (alreadySharedThisBuild()) return;      // identical build already sent — nothing new to add
+      const prev = document.getElementById("comm-nudge");
+      if (prev) prev.remove();
+      if (_commNudgeTimer) { clearTimeout(_commNudgeTimer); _commNudgeTimer = null; }
+      const lead = (kind === "save")
+        ? "Nice build — add it to the Community Meta?"
+        : "Add this build to the Community Meta too?";
+      const el = document.createElement("div");
+      el.id = "comm-nudge";
+      el.style.cssText = "position:fixed;left:50%;bottom:1.1rem;transform:translateX(-50%);z-index:9000;max-width:min(92vw,470px);display:flex;align-items:center;gap:0.6rem;background:var(--elevated);border:1px solid var(--border);border-radius:10px;padding:0.65rem 0.8rem;box-shadow:0 10px 34px rgba(0,0,0,0.5);color:var(--text);font-size:0.88rem;";
+      el.innerHTML =
+        '<span style="flex:1;line-height:1.4;">🧠 ' + lead +
+          ' <span style="color:var(--text-mute);">Anonymous — helps everyone\'s optimizer.</span></span>' +
+        '<button class="btn btn-primary" id="comm-nudge-go" type="button" style="white-space:nowrap;">Share</button>' +
+        '<button id="comm-nudge-x" type="button" aria-label="Dismiss" title="Dismiss" style="background:none;border:none;color:var(--text-mute);font-size:1.2rem;line-height:1;cursor:pointer;padding:0 0.15rem;">&times;</button>';
+      document.body.appendChild(el);
+      const close = () => {
+        const n = document.getElementById("comm-nudge");
+        if (n) n.remove();
+        if (_commNudgeTimer) { clearTimeout(_commNudgeTimer); _commNudgeTimer = null; }
+      };
+      document.getElementById("comm-nudge-x").addEventListener("click", close);
+      document.getElementById("comm-nudge-go").addEventListener("click", async () => {
+        // First-ever share → full consent dialog. After they've consented once,
+        // a tweaked/new build shares in a single tap.
+        let consented = false;
+        try { consented = (JSON.parse(localStorage.getItem(SHARED_BUILD_SIGS_KEY) || "[]") || []).length > 0; } catch (e) {}
+        if (!consented) { close(); openShareCommunityModal(); return; }
+        const go = document.getElementById("comm-nudge-go");
+        if (go) { go.disabled = true; go.textContent = "Sharing…"; }
+        const ok = await submitSharedBuild();
+        close();
+        toast(ok ? "Added to the Community Meta — thanks! 🙌"
+                 : "Couldn't share right now — try again in a bit.");
+      });
+      _commNudgeTimer = setTimeout(close, 9000);
     }
     // ===== Community dropdown ("🌐 Community" → Contribute + Community Meta) =====
     {
