@@ -2380,10 +2380,10 @@
         <button class="btn btn-secondary" id="open-builds">📁 My Builds</button>
         <button class="btn btn-primary" id="share-build">🔗 Share link</button>
         <span class="tf-comm-wrap">
-          <button class="btn btn-secondary" id="tf-community-btn" title="Contribute your build &amp; see the community meta (free, anonymous)">🌐 Community ▾</button>
+          <button class="btn btn-secondary" id="tf-community-btn" title="See the community meta &amp; add your build — free, anonymous">🌐 Community ▾</button>
           <div class="tf-comm-menu hidden" id="tf-community-menu">
-            <button class="tf-comm-item" id="tf-comm-contribute" type="button"><span class="t">🧠 Help improve the optimizer</span><span class="d">Contribute your build — anonymous</span></button>
-            <button class="tf-comm-item" id="tf-comm-meta" type="button"><span class="t">📊 Community Meta</span><span class="d">See what players like you run</span></button>
+            <button class="tf-comm-item" id="tf-comm-meta" type="button"><span class="t">📊 Community Meta</span><span class="d">See what players like you run — and where your build lands</span></button>
+            <button class="tf-comm-item" id="tf-comm-contribute" type="button"><span class="t">➕ Add your build</span><span class="d">Anonymous — grows the meta you just saw</span></button>
           </div>
         </span>
         <button class="btn btn-ghost" id="clear-build" title="Reset every field back to a blank build">🗑️ Clear all</button>
@@ -17066,9 +17066,9 @@
       const already = alreadySharedThisBuild();
       overlay.innerHTML =
         '<div style="max-width:480px;width:100%;background:var(--elevated);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.5rem;box-shadow:0 12px 44px rgba(0,0,0,0.55);color:var(--text);">' +
-          '<h2 style="margin:0 0 0.6rem;font-size:1.15rem;">🧠 Help make the optimizer smarter</h2>' +
+          '<h2 style="margin:0 0 0.6rem;font-size:1.15rem;">📊 See how your build stacks up</h2>' +
           '<p style="margin:0 0 0.85rem;font-size:0.9rem;color:var(--text-mute);line-height:1.55;">' +
-            'Share your build anonymously and you help improve the optimizer everyone here uses — you included. We never sell it or use it to copy builds; it just tells us which game mechanics to teach the optimizer next. (Soon you&#39;ll also be able to see how your build compares to other players.)</p>' +
+            'Add your build to the <b style="color:var(--text);">Community Meta</b> and see how it stacks up against everyone else&#39;s — the gear, powers and companions players like you actually run. It&#39;s free for everyone, and the more builds shared, the sharper the picture gets. It also quietly helps make the optimizer smarter — but the meta is yours to use either way. We never sell it or use it to copy builds.</p>' +
           '<div style="font-size:0.85rem;line-height:1.5;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:0.75rem 0.9rem;margin-bottom:0.9rem;">' +
             '<div style="color:var(--pos);font-weight:600;margin-bottom:0.25rem;">✓ Shared (anonymous)</div>' +
             '<div style="color:var(--text-mute);">Your class, paragon, role, total item level, and the gear / enchants / artifacts / companions / mounts / boons in this build — plus your powers, feats, and class features.</div>' +
@@ -17090,7 +17090,7 @@
         _confirmBtn.disabled = true; _confirmBtn.textContent = "Sharing…";
         const ok = await submitSharedBuild();
         overlay.remove();
-        toast(ok ? "Thanks — this helps make the optimizer smarter 🙌"
+        toast(ok ? "You're in the Community Meta! Open it any time to see how you stack up 📊"
                  : "Couldn't share right now — please try again in a bit.");
       });
     }
@@ -17112,14 +17112,14 @@
       if (prev) prev.remove();
       if (_commNudgeTimer) { clearTimeout(_commNudgeTimer); _commNudgeTimer = null; }
       const lead = (kind === "save")
-        ? "Nice build — add it to the Community Meta?"
-        : "Add this build to the Community Meta too?";
+        ? "Nice build — see how it stacks up against the community?"
+        : "Add this to the Community Meta — see how you stack up?";
       const el = document.createElement("div");
       el.id = "comm-nudge";
       el.style.cssText = "position:fixed;left:50%;bottom:1.1rem;transform:translateX(-50%);z-index:9000;max-width:min(92vw,470px);display:flex;align-items:center;gap:0.6rem;background:var(--elevated);border:1px solid var(--border);border-radius:10px;padding:0.65rem 0.8rem;box-shadow:0 10px 34px rgba(0,0,0,0.5);color:var(--text);font-size:0.88rem;";
       el.innerHTML =
-        '<span style="flex:1;line-height:1.4;">🧠 ' + lead +
-          ' <span style="color:var(--text-mute);">Anonymous — helps everyone\'s optimizer.</span></span>' +
+        '<span style="flex:1;line-height:1.4;">📊 ' + lead +
+          ' <span style="color:var(--text-mute);">Free &amp; anonymous. Grows the meta everyone sees.</span></span>' +
         '<button class="btn btn-primary" id="comm-nudge-go" type="button" style="white-space:nowrap;">Share</button>' +
         '<button id="comm-nudge-x" type="button" aria-label="Dismiss" title="Dismiss" style="background:none;border:none;color:var(--text-mute);font-size:1.2rem;line-height:1;cursor:pointer;padding:0 0.15rem;">&times;</button>';
       document.body.appendChild(el);
@@ -17139,7 +17139,7 @@
         if (go) { go.disabled = true; go.textContent = "Sharing…"; }
         const ok = await submitSharedBuild();
         close();
-        toast(ok ? "Added to the Community Meta — thanks! 🙌"
+        toast(ok ? "You're in the Community Meta! Open it any time to see how you stack up 📊"
                  : "Couldn't share right now — try again in a bit.");
       });
       _commNudgeTimer = setTimeout(close, 9000);
