@@ -3065,6 +3065,10 @@
       // stacks, and the optimizer reserves a slot for a Pack companion.
       // OFF: solo play — party-scope stacks count only your own (1 stack).
       partyPackMeta: true,
+      // Group meta for group-stacked mount equip powers (Providence's Radiant
+      // Weapon). ON (default): the group all runs Providence so "from any
+      // source" holds it at the 8-stack cap. OFF: don't assume group stacking.
+      groupEquipStacks: true,
       // (legacy — kept so older saves still load without losing data)
       partyBuffs: new Set(),
       simMag: 100,
@@ -3162,6 +3166,7 @@
           partyAllies: [...(state.partyAllies || [])],
           partyMountAllies: [...(state.partyMountAllies || [])],
           partyPackMeta: state.partyPackMeta !== false,
+          groupEquipStacks: state.groupEquipStacks !== false,
           slottedClassFeaturePicks: [...(state.slottedClassFeaturePicks || [])],
           rangerStance: state.rangerStance || "ranged",
           bardActiveSong: state.bardActiveSong || "",
@@ -3241,6 +3246,7 @@
       state.partyMountAllies = Array.isArray(s.partyMountAllies) ? s.partyMountAllies.slice() : [];
       // Back-compat: saves from before the Pack-meta toggle default to ON.
       state.partyPackMeta = s.partyPackMeta !== false;
+      state.groupEquipStacks = s.groupEquipStacks !== false;
       // Picked-tier map for same-name multi-IL gear; legacy saves have none.
       state.gearIL = (s.gearIL && typeof s.gearIL === "object") ? { ...s.gearIL } : {};
       // Artifact Modifications; legacy saves have none.
@@ -11284,7 +11290,13 @@
             // but gains only 1 stack / 10s while each lasts 12s, so you hold
             // ~2-3 — never 8. Falls back to maxStacks when absent (e.g.
             // Ferocity, which refreshes fast and genuinely sits at its 3 cap).
-            const stacks = sb.effectiveStacks || sb.maxStacks || 1;
+            // groupGated buffs (Providence) read the "Group stacks ..." toggle:
+            // ON = effectiveStacks (the coordinated-group cap), OFF = soloStacks.
+            // Non-gated buffs (e.g. Ferocity) just use effectiveStacks/maxStacks.
+            const _maxEff = sb.effectiveStacks || sb.maxStacks || 1;
+            const stacks = sb.groupGated
+              ? (s.groupEquipStacks === false ? (sb.soloStacks || 1) : _maxEff)
+              : _maxEff;
             const sbRating = {};
             const sbPercent = {};
             for (const [rawKey, perStack] of Object.entries(sb.perStack)) {
@@ -11301,8 +11313,8 @@
               if (perStack > 100) sbRating[stat] = total;
               else                sbPercent[stat] = total;
             }
-            const _stackLabel = (sb.effectiveStacks && sb.maxStacks && sb.effectiveStacks < sb.maxStacks)
-              ? `${stacks} of ${sb.maxStacks} stacks (realistic uptime)`
+            const _stackLabel = (sb.maxStacks && stacks < sb.maxStacks)
+              ? `${stacks} of ${sb.maxStacks} stacks`
               : `full ${stacks} stacks`;
             buffs.push({
               source: `Mount Equip Proc: ${ep.name} (${_stackLabel} on ${sb.trigger || "trigger"})`,
@@ -12389,7 +12401,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
@@ -15044,6 +15056,18 @@
                 <span>${state.partyPackMeta !== false ? "On" : "Off"}</span>
               </label>
             </div>
+          </div>
+          <div class="boon-row" style="cursor:default;">
+            <div class="boon-row-info">
+              <div class="boon-row-name">Group stacks Providence</div>
+              <div class="boon-row-effect">Endgame group meta: everyone runs Providence (incl. the Celestial Swift Golden Lion), so its Radiant Weapon holds the full 8-stack cap (+16% damage). Turn off if your group isn't running it.</div>
+            </div>
+            <div class="boon-counter">
+              <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.8rem;cursor:pointer;">
+                <input type="checkbox" id="group-equip-stacks-toggle"${state.groupEquipStacks !== false ? " checked" : ""}>
+                <span>${state.groupEquipStacks !== false ? "On" : "Off"}</span>
+              </label>
+            </div>
           </div>`;
         // Companion slot subsection
         const SCOPE_COLOR = { Party: "#4caf50", Self: "#42a5f5", "Enemy Debuff": "#ef5350", Mixed: "#ffb300" };
@@ -15168,6 +15192,14 @@
       if (packMetaEl) {
         packMetaEl.addEventListener("change", (e) => {
           state.partyPackMeta = !!e.target.checked;
+          renderBuffs(); rerenderAll();
+        });
+      }
+      // Group-equip-stacks toggle (group-stacked mount equip procs, e.g. Providence)
+      const groupEquipEl = el.querySelector("#group-equip-stacks-toggle");
+      if (groupEquipEl) {
+        groupEquipEl.addEventListener("change", (e) => {
+          state.groupEquipStacks = !!e.target.checked;
           renderBuffs(); rerenderAll();
         });
       }
