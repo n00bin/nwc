@@ -57,18 +57,18 @@ The "learning" = phases 3–4 compounding into a flywheel (more builds → more 
 ### Extend "+ Add Missing Item" to artifacts, companions, mounts, etc.
 **Source:** Internal — n00b, 2026-05-26 (the day AMI shipped for gear)
 
-**Status:** Deferred. The Add Missing Item modal currently exists only on the gear picker. The reconciliation backbone (Supabase RPCs, `__reportId` linkage, "Your Submissions" modal, intake-script auto-linking) is generic — extending to other types is mostly schema-specific form work, not re-architect.
+**Status:** ✅ **DONE — every item type now has an "Add Missing …" flow (last one shipped 2026-06-23).** The generic reconciliation backbone (Supabase RPCs, `__reportId` linkage, "Your Submissions" modal, intake-script auto-linking) covers all 10 pickable types. Each has a schema-specific form on its picker that: saves the item to localStorage so it's usable in the build immediately, files a "Missing …" report to Supabase, and participates in reconciliation (swap → canonical on *Fixed*, drop on *Won't Fix*) exactly like gear.
 
-**Priority ranking (when this gets picked up):**
-1. **Artifacts** — simplest schema (name, IL, on-use power, equip power, stats); new ones each module. ~1-2 hr build.
-2. **Companions** — more fields (slot, rarity, summoned/active stats, enhancement). High community value. ~3-4 hr.
-3. **Mounts** — most complex (combat power, equip power, insignia slots). ~3-4 hr.
-4. **Insignias** — tied to mount set releases.
-5. **Mount Collars** — small catalog, rare additions.
+**Priority ranking (status):**
+1. **Artifacts** — ✅ Shipped 2026-05-30 (`0af6d18`). Schema: name, IL, CR, type, rating/percent stats, on-use power, cooldown, allowed classes.
+2. **Companions** — ✅ Shipped 2026-05-30 (`fc3bc73`).
+3. **Mounts** — ✅ Shipped 2026-05-30 (`90e1d41`).
+4. **Insignias** — ✅ Shipped 2026-05-30 (`b1f2671`).
+5. **Mount Collars** — ✅ **Shipped 2026-06-23.** Schema: name, category (collarSlot: Practical/Sturdy/Supportive/Unified/Wayfaring), IL, CR, percent/rating stats, effect text. Mirrors the insignia flow; report category "Missing Collar".
 
-Lower-priority types (probably skip unless requested): enchants, boons, buffs/consumables — small catalogs, change rarely.
+Also shipped, though they'd been tagged lower-priority: **enchants** (`a806ebc`, 2026-05-29), **overloads** (`128cdf2`, 2026-05-29), **buffs/consumables** (`166bf8a`, 2026-05-30), **guild boons** (`71c76f2`, 2026-05-30). Plus the original **gear** flow (2026-05-26).
 
-**Trigger to revisit:** when a community comment or report asks "can I add a missing X?" where X is one of the types above. Start with whatever was asked.
+**Trigger to revisit:** nothing left to build — all 10 types are covered. New game systems (a future slot type) would each need their own form, but the backbone is reusable.
 
 ### "Best Build" min/max optimizer
 **Source:** YouTube comment by @MarkLewis (27 subs), 2026-05-25
