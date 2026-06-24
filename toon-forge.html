@@ -3872,6 +3872,14 @@
           <span class="picker-add-missing-hint">Don't see your mount? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
       }
+      const isCollarPicker = _pickerState.dataType === "mount_collar";
+      if (isCollarPicker) {
+        html += `<button id="picker-add-missing-collar" class="picker-add-missing-btn" type="button">
+          <span style="font-size:1.1em;">＋</span>
+          <span>Add Missing Collar</span>
+          <span class="picker-add-missing-hint">Don't see your collar? Add it yourself — it'll show up in your build right away.</span>
+        </button>`;
+      }
       if (_pickerState.allowNone !== false) {
         html += `<div class="picker-item empty" data-pick-none="1">— None —</div>`;
       }
@@ -4004,6 +4012,13 @@
         addMountBtn.addEventListener("click", (e) => {
           e.stopPropagation();
           openAddMissingMountModal();
+        });
+      }
+      const addCollarBtn = document.getElementById("picker-add-missing-collar");
+      if (addCollarBtn) {
+        addCollarBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openAddMissingCollarModal();
         });
       }
       list.querySelectorAll("[data-pick-none]").forEach(el => {
@@ -6016,8 +6031,16 @@
       return null;
     }
     function findCollarByName(name) {
-      if (!name || typeof MOUNT_COLLARS_DATA === "undefined") return null;
-      return MOUNT_COLLARS_DATA.find(c => c.name === name) || null;
+      if (!name) return null;
+      if (typeof MOUNT_COLLARS_DATA !== "undefined") {
+        const canonical = MOUNT_COLLARS_DATA.find(c => c.name === name);
+        if (canonical) return canonical;
+      }
+      // Fall back to user-added collars (negative ids from the _amcol flow).
+      if (typeof getUserAddedCollars === "function") {
+        return getUserAddedCollars().find(c => c.name === name) || null;
+      }
+      return null;
     }
     function findCombatPowerById(id) {
       if (typeof MOUNT_COMBAT_POWERS_DATA === "undefined" || !id) return null;
@@ -6256,8 +6279,13 @@
       return canonical.concat(userAdded).sort((a, b) => a.name.localeCompare(b.name));
     }
     function getCollarList() {
-      if (typeof MOUNT_COLLARS_DATA === "undefined") return [];
-      return MOUNT_COLLARS_DATA.slice().sort((a,b) => a.name.localeCompare(b.name));
+      const canonical = (typeof MOUNT_COLLARS_DATA !== "undefined") ? MOUNT_COLLARS_DATA.slice() : [];
+      const canonicalNames = new Set(canonical.map(c => c.name));
+      // Merge user-added collars, deduped by name vs canonical.
+      const userAdded = (typeof getUserAddedCollars === "function")
+        ? getUserAddedCollars().filter(c => !canonicalNames.has(c.name))
+        : [];
+      return canonical.concat(userAdded).sort((a,b) => a.name.localeCompare(b.name));
     }
     function getMountList() {
       if (typeof MOUNTS_DATA === "undefined") return [];
@@ -7776,6 +7804,320 @@
       saveBtn.disabled = false;
       saveBtn.textContent = "Add to my build";
       closeAddMissingInsigniaModal();
+      if (typeof closePicker === "function") closePicker();
+    }
+
+    // =========================================================================
+    // Add Missing Mount Collar flow (_amcol prefix)
+    // Storage mirrors the insignia trio; modal collects name, category
+    // (collarSlot), item_level, combinedRating, effect text, and up to 3 stat
+    // rows each with a stat name, value, and rating/percent type — matching the
+    // MOUNT_COLLARS_DATA shape (ratingStats{} + percentStats{} maps +
+    // effectText). Collars are almost always a single percent bonus, so the
+    // stat type defaults to "percent".
+    // =========================================================================
+    const USER_COLLAR_KEY = "nwcb_user_added_collars_v1";
+    function getUserAddedCollars() {
+      try {
+        const raw = localStorage.getItem(USER_COLLAR_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveUserAddedCollars(list) {
+      try { localStorage.setItem(USER_COLLAR_KEY, JSON.stringify(list)); }
+      catch (e) { /* quota — ignore */ }
+    }
+    function addUserCollar(item) {
+      const list = getUserAddedCollars();
+      const minId = list.reduce((m, x) => Math.min(m, x.id || 0), 0);
+      item.id = (minId < 0 ? minId : 0) - 1;
+      item.__userAdded = true;
+      item.addedAt = new Date().toISOString();
+      list.push(item);
+      saveUserAddedCollars(list);
+      return item;
+    }
+    // Remove a user-added collar by name from every stable slot that holds it.
+    // state.stable[idx].collar uses "" as the empty convention (not null).
+    function clearCollarFromSlots(name) {
+      if (!name || !state.stable) return;
+      for (const slot of state.stable) {
+        if (slot.collar === name) slot.collar = "";
+      }
+    }
+
+    /* ===== Add Missing Mount Collar modal (_amcol prefix) =====
+       Form: name (required), category dropdown (collarSlot:
+       Practical/Sturdy/Supportive/Unified/Wayfaring), item level, combined
+       rating, effect text, and up to 3 stat rows each with a STAT dropdown +
+       VALUE + rating/percent TYPE selector (defaults to percent — collars are
+       percent-based). Requires a name, a category, and at least one stat OR
+       the effect text. */
+    // Collar-specific stat names (Glory/Gold/Dmg bonuses aren't in the combat
+    // stat list) followed by the standard combat/utility stats.
+    const AMCOL_EXTRA_STATS = [
+      "Glory Bonus", "Gold Bonus",
+      "At Will Dmg Bonus", "Encounter Dmg Bonus", "Daily Dmg Bonus"
+    ];
+    const AMCOL_STAT_OPTIONS = AMCOL_EXTRA_STATS.concat(
+      AMI_STAT_OPTIONS.filter(s => AMCOL_EXTRA_STATS.indexOf(s) === -1)
+    );
+    const AMCOL_CATEGORIES = ["Practical", "Sturdy", "Supportive", "Unified", "Wayfaring"];
+
+    function _amcolStatRows(count) {
+      let html = "";
+      for (let i = 0; i < count; i++) {
+        html += `
+          <div class="ami-stat-row" style="display:flex;gap:4px;align-items:center;">
+            <select class="amcol-stat-name" data-row="${i}" style="flex:2;">
+              <option value="">— stat ${i + 1} —</option>
+              ${AMCOL_STAT_OPTIONS.map(s => `<option value="${s}">${s}</option>`).join("")}
+            </select>
+            <input type="number" class="amcol-stat-value" data-row="${i}" placeholder="value" step="any" style="flex:1;min-width:60px;">
+            <select class="amcol-stat-type" data-row="${i}" style="flex:1;">
+              <option value="percent">percent</option>
+              <option value="rating">rating</option>
+            </select>
+          </div>`;
+      }
+      return html;
+    }
+
+    function ensureAddMissingCollarDOM() {
+      if (document.getElementById("amcol-overlay")) return;
+      const overlay = document.createElement("div");
+      overlay.id = "amcol-overlay";
+      overlay.className = "ami-overlay";
+
+      overlay.innerHTML = `
+        <div class="ami-panel">
+          <div class="ami-header">
+            <h3>Add Missing Mount Collar</h3>
+            <button class="ami-close" id="amcol-close" type="button">×</button>
+          </div>
+          <div class="ami-body">
+            <div class="ami-row">
+              <label>Collar Name <span class="req">*</span></label>
+              <input type="text" id="amcol-name" placeholder="e.g. Sturdy Barbed Collar V" maxlength="120" required>
+            </div>
+            <div class="ami-row">
+              <label>Category <span class="req">*</span></label>
+              <select id="amcol-category">
+                <option value="">— select category —</option>
+                ${AMCOL_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join("")}
+              </select>
+            </div>
+            <div class="ami-row">
+              <label>Item Level (default 500)</label>
+              <input type="number" id="amcol-il" min="0" step="1" placeholder="500">
+            </div>
+            <div class="ami-row">
+              <label>Combined Rating (default 500)</label>
+              <input type="number" id="amcol-cr" min="0" step="1" placeholder="500">
+            </div>
+            <div class="ami-row">
+              <label>Stats — pick stat, enter value, choose percent or rating</label>
+              ${_amcolStatRows(3)}
+            </div>
+            <div class="ami-row">
+              <label>Effect text (what the collar's tooltip says)</label>
+              <textarea id="amcol-effect" rows="2" placeholder="e.g. 'Critical Severity increased by 10%.'" maxlength="600"></textarea>
+            </div>
+            <div class="ami-row">
+              <label>Notes / where you got it (optional)</label>
+              <textarea id="amcol-notes" rows="2" placeholder="e.g. 'Bought from the Trade Bar store.'" maxlength="600"></textarea>
+            </div>
+          </div>
+          <div class="ami-footer">
+            <button class="ami-save-btn" id="amcol-save" type="button">Add to my build</button>
+            <div class="ami-msg" id="amcol-msg"></div>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target.id === "amcol-overlay") closeAddMissingCollarModal();
+      });
+      document.getElementById("amcol-close").addEventListener("click", closeAddMissingCollarModal);
+      document.getElementById("amcol-save").addEventListener("click", saveAddMissingCollar);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("amcol-overlay") &&
+            document.getElementById("amcol-overlay").classList.contains("open")) {
+          closeAddMissingCollarModal();
+        }
+      });
+    }
+
+    function openAddMissingCollarModal() {
+      ensureAddMissingCollarDOM();
+
+      // Reset all fields to defaults
+      document.getElementById("amcol-name").value = "";
+      document.getElementById("amcol-category").value = "";
+      document.getElementById("amcol-il").value = "";
+      document.getElementById("amcol-cr").value = "";
+      document.getElementById("amcol-effect").value = "";
+      document.getElementById("amcol-notes").value = "";
+      document.querySelectorAll("#amcol-overlay .amcol-stat-name").forEach(el => el.value = "");
+      document.querySelectorAll("#amcol-overlay .amcol-stat-value").forEach(el => el.value = "");
+      document.querySelectorAll("#amcol-overlay .amcol-stat-type").forEach(el => el.value = "percent");
+
+      const msg = document.getElementById("amcol-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+      const saveBtn = document.getElementById("amcol-save");
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      document.getElementById("amcol-overlay").classList.add("open");
+      setTimeout(() => document.getElementById("amcol-name").focus(), 50);
+    }
+
+    function closeAddMissingCollarModal() {
+      const o = document.getElementById("amcol-overlay");
+      if (o) o.classList.remove("open");
+    }
+
+    // Collect stats from the amcol rows into ratingStats{} + percentStats{}
+    // maps (the canonical MOUNT_COLLARS_DATA shape). Returns
+    // { ratingStats, percentStats, count }.
+    function _amcolCollectStats() {
+      const ratingStats = {};
+      const percentStats = {};
+      let count = 0;
+      const names  = document.querySelectorAll("#amcol-overlay .amcol-stat-name");
+      const values = document.querySelectorAll("#amcol-overlay .amcol-stat-value");
+      const types  = document.querySelectorAll("#amcol-overlay .amcol-stat-type");
+      names.forEach((sel, i) => {
+        const sName = sel.value;
+        const sVal  = parseFloat(values[i] ? values[i].value : "");
+        const sType = types[i] ? types[i].value : "percent";
+        if (sName && !isNaN(sVal)) {
+          if (sType === "rating") ratingStats[sName] = sVal;
+          else percentStats[sName] = sVal;
+          count++;
+        }
+      });
+      return { ratingStats, percentStats, count };
+    }
+
+    async function saveAddMissingCollar() {
+      const msg = document.getElementById("amcol-msg");
+      msg.textContent = ""; msg.className = "ami-msg";
+
+      const name     = document.getElementById("amcol-name").value.trim();
+      const category = document.getElementById("amcol-category").value;
+      const ilRaw    = document.getElementById("amcol-il").value;
+      const crRaw    = document.getElementById("amcol-cr").value;
+      const il       = ilRaw ? (parseInt(ilRaw, 10) || 500) : 500;
+      const cr       = crRaw ? (parseInt(crRaw, 10) || 500) : 500;
+      const effect   = document.getElementById("amcol-effect").value.trim();
+      const notes    = document.getElementById("amcol-notes").value.trim();
+
+      if (name.length < 2) {
+        msg.textContent = "Collar name is required."; msg.className = "ami-msg error"; return;
+      }
+      if (!category) {
+        msg.textContent = "Category is required."; msg.className = "ami-msg error"; return;
+      }
+
+      const { ratingStats, percentStats, count } = _amcolCollectStats();
+      if (!count && !effect) {
+        msg.textContent = "Add at least one stat or the effect text.";
+        msg.className = "ami-msg error"; return;
+      }
+
+      // Build object matching MOUNT_COLLARS_DATA shape.
+      const item = {
+        name,
+        collarSlot: category,
+        item_level: il,
+        combinedRating: cr,
+        ratingStats,
+        percentStats,
+        effectText: effect,
+        source: "User-added (pending review)",
+        notes: notes || "User-added — pending admin review."
+      };
+
+      // 1. Save locally — unconditional.
+      const saved = addUserCollar(item);
+
+      // Resolve the picker callback before the await so it always fires.
+      const pickerOnPick = (_pickerState && _pickerState.dataType === "mount_collar")
+        ? _pickerState.onPick
+        : null;
+
+      // 2. Submit report (best-effort; never blocks local save).
+      const saveBtn = document.getElementById("amcol-save");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Sending report…";
+
+      let reportId = null;
+      const reportLines = [];
+      reportLines.push("A player added this missing mount collar:");
+      reportLines.push("");
+      reportLines.push("Name: " + name);
+      reportLines.push("Category: " + category);
+      reportLines.push("Item Level: " + il);
+      reportLines.push("Combined Rating: " + cr);
+      const statLines = Object.keys(ratingStats).map(k => "  • " + k + ": +" + ratingStats[k] + " (rating)")
+        .concat(Object.keys(percentStats).map(k => "  • " + k + ": +" + percentStats[k] + "% (percent)"));
+      if (statLines.length) {
+        reportLines.push("");
+        reportLines.push("Stats:");
+        reportLines.push(...statLines);
+      }
+      if (effect) {
+        reportLines.push("");
+        reportLines.push("Effect text:");
+        reportLines.push(effect);
+      }
+      if (notes) {
+        reportLines.push("");
+        reportLines.push("Player notes:");
+        reportLines.push(notes);
+      }
+
+      if (window.supabase) {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        try {
+          const rpcRes = await sb.rpc("submit_missing_item_report", {
+            p_title: "Missing mount collar: " + name,
+            p_description: reportLines.join("\n"),
+            p_category: "Missing Collar",
+            p_image_url: ""
+          });
+          if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
+            reportId = rpcRes.data.report_id;
+          }
+        } catch (err) {
+          console.warn("AMCOL report send failed:", err);
+        }
+      }
+
+      // Stamp the report id so runReconciliation() can match it later.
+      if (reportId) {
+        saved.__reportId = reportId;
+        const list = getUserAddedCollars();
+        const idx = list.findIndex(x => x.id === saved.id);
+        if (idx !== -1) { list[idx] = saved; saveUserAddedCollars(list); }
+      }
+
+      // 3. Equip it (always runs regardless of report outcome).
+      if (pickerOnPick) pickerOnPick(item);
+
+      // 4. Toast + clean up.
+      toast(reportId
+        ? "Added to your build! We'll review and add it to the site."
+        : "Added to your build — couldn't send report, please try again later.");
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Add to my build";
+      closeAddMissingCollarModal();
       if (typeof closePicker === "function") closePicker();
     }
 
@@ -17493,6 +17835,7 @@
       const userArtifactsRecon = getUserAddedArtifacts();
       const userCompanionsRecon = getUserAddedCompanions();
       const userMountsRecon = getUserAddedMounts();
+      const userCollarsRecon = getUserAddedCollars();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -17532,6 +17875,10 @@
       }
       // From user-added mounts
       for (const item of userMountsRecon) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      // From user-added collars
+      for (const item of userCollarsRecon) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       // From data-correction overrides
@@ -17928,6 +18275,37 @@
             anyChange = true;
           }
         }
+        // --- User-added collars (no resolved id field; matched by name) ---
+        // Mirrors the insignia/mount branches. Won't Fix clears the collar
+        // name from every stable slot via clearCollarFromSlots.
+        if (status === "Fixed" || status === "Won't Fix") {
+          const colList = getUserAddedCollars();
+          const colIdx  = colList.findIndex(x => x.__reportId === reportId);
+          if (colIdx !== -1) {
+            const userCol = colList[colIdx];
+            const canonicalExists = (typeof MOUNT_COLLARS_DATA !== "undefined") &&
+              MOUNT_COLLARS_DATA.some(c => c.name === userCol.name);
+            if (status === "Fixed") {
+              if (canonicalExists) {
+                // Canonical entry is live; findCollarByName now resolves to it.
+                // Drop the local copy.
+                toastItems.push(`"${userCol.name}" is now in the site database — your build has been updated.`);
+                colList.splice(colIdx, 1);
+                saveUserAddedCollars(colList);
+              } else {
+                // Approved but data JS not rebuilt yet — keep the local copy.
+                toastItems.push(`"${userCol.name}" was approved but data hasn't refreshed yet — reload the page to update.`);
+              }
+            } else { // Won't Fix
+              clearCollarFromSlots(userCol.name);
+              const noteStr = admin_notes ? ` (${admin_notes})` : "";
+              toastItems.push(`"${userCol.name}" won't be added to the site${noteStr}.`);
+              colList.splice(colIdx, 1);
+              saveUserAddedCollars(colList);
+            }
+            anyChange = true;
+          }
+        }
         // Active statuses (New, Confirmed, In Progress) or Fixed without
         // resolved_gear_id: keep local, no action needed.
       }
@@ -17964,6 +18342,7 @@
       const userArtifactsModal = getUserAddedArtifacts();
       const userCompanionsModal = getUserAddedCompanions();
       const userMountsModal = getUserAddedMounts();
+      const userCollarsModal = getUserAddedCollars();
       const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
         ? NWCBDataCorrections.getAllOverrides()
         : {};
@@ -17994,6 +18373,9 @@
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const item of userMountsModal) {
+        if (item.__reportId) idSet.add(item.__reportId);
+      }
+      for (const item of userCollarsModal) {
         if (item.__reportId) idSet.add(item.__reportId);
       }
       for (const key of Object.keys(overrides)) {
@@ -18199,6 +18581,25 @@
           kind: "item",
           name: item.name,
           slot: "Mount",
+          reportId: item.__reportId,
+          status,
+          adminNote: row ? row.admin_notes : null,
+          submittedAt: item.addedAt || null
+        };
+        if (isActive) pending.push(entry);
+        else resolved.push(entry);
+      }
+
+      // User-added collars (reuse the "item" render shape)
+      for (const item of userCollarsModal) {
+        if (!item.__reportId) continue;
+        const row = rowById[item.__reportId];
+        const status = row ? row.status : "Pending";
+        const isActive = !row || ["New", "Confirmed", "In Progress"].includes(status);
+        const entry = {
+          kind: "item",
+          name: item.name,
+          slot: "Collar",
           reportId: item.__reportId,
           status,
           adminNote: row ? row.admin_notes : null,
