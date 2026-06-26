@@ -8,4 +8,22 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of 2026-06-23 (since last publish)
 
-_Nothing staged yet._
+### Features
+- **Toon Forge — "Assume support party" toggle.** New switch in the Party Buffs
+  section makes your build account for the support companions your allies bring
+  (Tutor, Flapjack, Portobello DaVinci, etc.). Off by default — matches the
+  Part-of-the-Pack and Providence group toggles. A **Fill standard set** button
+  loads the common support trio in one click, all editable, and you can slot any
+  party-buff companion you like. When off, the ally slots are dimmed and
+  contribute nothing.
+
+### Bug Fixes
+- **Detector's set (Unstable Drive) was double-counted.** The Detector's Choker
+  listed its "Unstable Scan" bonus twice in the data, so the engine applied
+  **14% Combat Advantage / Forte / Outgoing Healing instead of 7%**. Removed the
+  duplicate so the set now shows its true value. (This was also making the build
+  optimizer over-favor the set.)
+- **Removed a duplicate companion.** "Golden Bulette" and "Golden Bulette Pup"
+  were the same companion entered twice (once at Mythic 7.5% Outgoing Healing,
+  once at Celestial 9%). Merged into **Golden Bulette Pup** — choose Celestial
+  rarity for the 9% value.

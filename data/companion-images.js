@@ -104,7 +104,6 @@ window.COMPANION_IMAGES = {
   "Githyanki": "githyanki.webp",
   "Goat": "goat.webp",
   "Golden Deep Crow Egg": "golden-deep-crow-egg.webp",
-  "Golden Bulette": "golden-bulette.webp",
   "Golden Bulette Pup": "golden-bulette.webp",
   "Golden Cat": "golden-cat.webp",
   "Golden Goat": "golden-goat.webp",

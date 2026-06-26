@@ -325,6 +325,27 @@
       margin-bottom: 0.3rem;
       font-weight: 700;
     }
+    /* Slot-lock 🔒 toggle — pins a filled gear slot so the optimizer keeps
+       that exact item and builds the rest of the loadout around it. */
+    .gear-lock-btn {
+      float: right;
+      margin-top: -2px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      line-height: 1;
+      padding: 0 2px;
+      opacity: 0.4;
+      filter: grayscale(1);
+      transition: opacity 0.15s ease, filter 0.15s ease;
+    }
+    .gear-lock-btn:hover { opacity: 0.9; }
+    .gear-lock-btn.on { opacity: 1; filter: none; }
+    .slot.pinned {
+      border-color: rgba(240,136,62,0.7);
+      box-shadow: 0 0 0 1px rgba(240,136,62,0.35) inset;
+    }
     .slot select {
       width: 100%;
       background: var(--bg);
@@ -2528,7 +2549,7 @@
     <div class="step-panel" data-panel="3">
       <div class="panel">
         <h2>Equip your gear</h2>
-        <p class="hint">Click any slot. The pickers know which class wears what. Empty slots are just wasted Item Level.</p>
+        <p class="hint">Click any slot. The pickers know which class wears what. Empty slots are just wasted Item Level. <span style="color:var(--accent,#f0883e);">🔒 Tip:</span> click the lock on a filled slot to keep that exact piece — the optimizer will build the rest of your loadout around it.</p>
         <div id="gear-warnings"></div>
         <div class="slot-grid" id="gear-grid"></div>
       </div>
@@ -2929,6 +2950,10 @@
        ===================================================== */
     const state = {
       step: 1,
+      // Slot locks: gear-slot labels the optimizer must KEEP and build around
+      // (set via the 🔒 on a filled gear slot). Serialized as an array; carried
+      // in saves + share links. Weapons lock as a Main Hand + Off Hand pair.
+      pinned: new Set(),
       role: null,
       class: null,
       paragon: "", race: "", il: "", name: "",
@@ -3069,6 +3094,12 @@
       // Weapon). ON: the group all runs Providence so "from any source" holds
       // it at the 8-stack cap. OFF (default): don't assume group stacking.
       groupEquipStacks: false,
+      // Master switch for allies' support contributions — their summoned-comp
+      // buffs AND ally mount auras. OFF (default): your build and the optimizer
+      // assume NO party support, so the ally slots below are inert. ON: those
+      // buffs apply to both the stat panel and the optimizer. Matches the
+      // OFF-by-default pattern of the two group-meta toggles above.
+      assumeSupportParty: false,
       // (legacy — kept so older saves still load without losing data)
       partyBuffs: new Set(),
       simMag: 100,
@@ -3167,6 +3198,8 @@
           partyMountAllies: [...(state.partyMountAllies || [])],
           partyPackMeta: state.partyPackMeta !== false,
           groupEquipStacks: state.groupEquipStacks !== false,
+          assumeSupportParty: state.assumeSupportParty === true,
+          pinned: [...(state.pinned || [])],
           slottedClassFeaturePicks: [...(state.slottedClassFeaturePicks || [])],
           rangerStance: state.rangerStance || "ranged",
           bardActiveSong: state.bardActiveSong || "",
@@ -3192,6 +3225,7 @@
       // state.boons.has()/state.buffs.has() would throw until repaired.
       state.boons = new Map(s.boons || []);
       state.buffs = new Set(s.buffs || []);
+      state.pinned = new Set(s.pinned || []);   // slot locks (array -> Set)
       // Builds saved before guild boon-structure ranks existed default to
       // max rank (the stored amounts' anchor); builds from the brief
       // single-rank era migrate that one rank to all three categories.
@@ -3248,6 +3282,7 @@
       // stored true (=== true), so new builds and old saves start OFF.
       state.partyPackMeta = s.partyPackMeta === true;
       state.groupEquipStacks = s.groupEquipStacks === true;
+      state.assumeSupportParty = s.assumeSupportParty === true;
       // Picked-tier map for same-name multi-IL gear; legacy saves have none.
       state.gearIL = (s.gearIL && typeof s.gearIL === "object") ? { ...s.gearIL } : {};
       // Artifact Modifications; legacy saves have none.
@@ -10649,7 +10684,8 @@
       const info = [];         // {name, text} shown but not calculated
       const seen = new Set();
       let spined = null, succubus = null;   // Succubus doesn't stack w/ Spined Devil
-      for (const name of (state.partyAllies || [])) {
+      // Gated by the "Assume support party" master toggle (default OFF).
+      for (const name of (state.assumeSupportParty ? (state.partyAllies || []) : [])) {
         if (!name || seen.has(name)) continue;
         // Same single-benefit rule as the stat sheet: your own summoned
         // companion's buff already applies — an ally copy doesn't stack.
@@ -11318,8 +11354,10 @@
       // auto-applies via the summoned companion mechanic). Always-on
       // when slotted (the user is asserting the buff is active in
       // their party right now).
+      // Gated by the "Assume support party" master toggle (default OFF):
+      // when off, allies contribute nothing to your build or the optimizer.
       const _seenPartyBuffs = new Set();
-      for (const compName of (s.partyAllies || [])) {
+      for (const compName of (s.assumeSupportParty ? (s.partyAllies || []) : [])) {
         if (!compName) continue;
         if (_seenPartyBuffs.has(compName)) continue;  // dedupe (engine-side safety; UI also blocks)
         // In-game you only benefit from a given companion's party buff ONCE —
@@ -11363,7 +11401,7 @@
       // stats apply to you. Each ally slot picks one mount equip power.
       // Duplicates de-duped engine-side and via UI.
       const _seenPartyMounts = new Set();
-      for (const epName of (s.partyMountAllies || [])) {
+      for (const epName of (s.assumeSupportParty ? (s.partyMountAllies || []) : [])) {
         if (!epName) continue;
         if (_seenPartyMounts.has(epName)) continue;
         _seenPartyMounts.add(epName);
@@ -12744,7 +12782,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
@@ -13697,9 +13735,16 @@
             gemStatus = `<div class="gem-syn-row" title="These bonuses apply only while the matching gem enchant is slotted">💎 ${pills}</div>`;
           }
         }
+        // Slot-lock 🔒 — pin a filled gear slot so the optimizer keeps that
+        // exact item and builds the rest of the loadout around it (weapons
+        // lock together as a Main Hand + Off Hand pair).
+        const isPinned = !!(state.pinned && state.pinned.has(s.label));
+        const lockBtn = filled
+          ? `<button class="gear-lock-btn${isPinned ? " on" : ""}" data-gear-lock="${s.label}" title="${isPinned ? "Locked — the optimizer keeps this slot and builds around it. Click to unlock." : "Lock this slot so the optimizer keeps this exact item and builds around it"}">${isPinned ? "🔒" : "🔓"}</button>`
+          : "";
         return `
-          <div class="slot ${filled ? "filled" : ""}">
-            <div class="slot-label">${s.label}${noItems ? " — none yet" : ""}</div>
+          <div class="slot ${filled ? "filled" : ""}${isPinned ? " pinned" : ""}">
+            <div class="slot-label">${s.label}${noItems ? " — none yet" : ""}${lockBtn}</div>
             <div class="${chipClasses.join(" ")}" data-gear-pick="${s.label}" data-slot-type="${s.slot}" title="${filled ? v : "Click to pick an item"}">
               ${chipLabel}
               ${gearInfo}
@@ -13852,6 +13897,22 @@
               toast(item ? `Equipped ${item.name} (${slotLabel})` : `Cleared ${slotLabel}`);
             }
           });
+        });
+      });
+      g.querySelectorAll("[data-gear-lock]").forEach(el => {
+        el.addEventListener("click", (ev) => {
+          ev.stopPropagation();
+          const lbl = el.dataset.gearLock;
+          if (!(state.pinned instanceof Set)) state.pinned = new Set(state.pinned || []);
+          // Weapons lock together — the optimizer pairs Main Hand + Off Hand.
+          const labels = (lbl === "Main Hand" || lbl === "Off Hand") ? ["Main Hand", "Off Hand"] : [lbl];
+          const willPin = !state.pinned.has(lbl);
+          labels.forEach(L => { if (willPin) state.pinned.add(L); else state.pinned.delete(L); });
+          renderGear();
+          if (typeof persistAutosave === "function") persistAutosave();
+          toast(willPin
+            ? `🔒 Locked ${labels.length > 1 ? "weapons" : lbl} — the optimizer will build around ${labels.length > 1 ? "them" : "it"}`
+            : `🔓 Unlocked ${labels.length > 1 ? "weapons" : lbl}`);
         });
       });
       g.querySelectorAll("[data-gear-kit]").forEach(el => {
@@ -15390,6 +15451,18 @@
           </div>
           <div class="boon-row" style="cursor:default;">
             <div class="boon-row-info">
+              <div class="boon-row-name">Assume support party</div>
+              <div class="boon-row-effect">Apply your allies' support-companion buffs (and ally mount auras) to your build <strong>and the optimizer</strong>. Off by default &mdash; turn on when your group brings support comps. <button id="party-fill-standard" type="button" style="margin-left:0.3rem;font-size:0.7rem;padding:0.1rem 0.45rem;background:var(--elevated);color:var(--gold);border:1px solid var(--border);border-radius:4px;cursor:pointer;">Fill standard set</button></div>
+            </div>
+            <div class="boon-counter">
+              <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.8rem;cursor:pointer;">
+                <input type="checkbox" id="assume-support-party-toggle"${state.assumeSupportParty ? " checked" : ""}>
+                <span>${state.assumeSupportParty ? "On" : "Off"}</span>
+              </label>
+            </div>
+          </div>
+          <div class="boon-row" style="cursor:default;">
+            <div class="boon-row-info">
               <div class="boon-row-name">Party runs Part of the Pack</div>
               <div class="boon-row-effect">Current group meta: everyone slots a Pack companion, so Pack stacks count at full strength (e.g. Raptor 5&times;4.5% Power). Turn off for solo play — only your own stack counts.</div>
             </div>
@@ -15419,6 +15492,13 @@
           const col = SCOPE_COLOR[lbl] || "var(--text-dim)";
           return ` <span style="font-size:0.62rem;font-weight:600;padding:0 0.3rem;border-radius:3px;border:1px solid ${col};color:${col};vertical-align:middle;">${lbl}</span>`;
         };
+        // The ally slots below are gated by the "Assume support party" toggle.
+        // When off, dim them (still pickable, so you can set your party up first)
+        // — they contribute nothing to the build or optimizer until it's on.
+        html += `<div style="opacity:${state.assumeSupportParty ? 1 : 0.5};transition:opacity .15s;">`;
+        if (!state.assumeSupportParty) {
+          html += `<div style="font-size:0.72rem;color:var(--text-dim);margin:0.35rem 0 0.1rem;">Turn on <strong>Assume support party</strong> above to apply these to your build and optimizer.</div>`;
+        }
         if (partyBuffCompanions.length) {
           html += `<div style="margin-top:0.4rem;font-size:0.78rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;">Ally summoned companions</div>`;
           // Aggregate combat-only effects from the slotted allies (CA grants
@@ -15479,7 +15559,8 @@
           }
         }
 
-        html += `</div>`;
+        html += `</div>`;        // close the "Assume support party" dim-wrapper
+        html += `</div>`;        // close the boon-tier
       }
 
       el.innerHTML = html;
@@ -15544,6 +15625,39 @@
         groupEquipEl.addEventListener("change", (e) => {
           state.groupEquipStacks = !!e.target.checked;
           renderBuffs(); rerenderAll();
+        });
+      }
+      // Assume-support-party master toggle — gates every ally contribution
+      // (summoned-comp buffs, ally mount auras, and CA-grant/debuff combat mods)
+      // for both the stat panel and the optimizer. Default OFF.
+      const assumePartyEl = el.querySelector("#assume-support-party-toggle");
+      if (assumePartyEl) {
+        assumePartyEl.addEventListener("change", (e) => {
+          state.assumeSupportParty = !!e.target.checked;
+          renderBuffs(); rerenderAll();
+        });
+      }
+      // "Fill standard set" — load the canonical support comps (all editable
+      // afterward) into the first open ally slots and turn the toggle on.
+      const fillStdEl = el.querySelector("#party-fill-standard");
+      if (fillStdEl) {
+        fillStdEl.addEventListener("click", (ev) => {
+          ev.stopPropagation();
+          const STANDARD_SUPPORT = ["Tutor", "Flapjack", "Portobello DaVinci"];
+          if (!Array.isArray(state.partyAllies)) state.partyAllies = [];
+          let added = 0;
+          for (const nm of STANDARD_SUPPORT) {
+            if (!findCompanionByName(nm)) continue;          // not in data → skip
+            if (state.partyAllies.includes(nm)) continue;    // already slotted
+            if (nm === state.summoned) continue;             // your own summon — wouldn't stack
+            const open = state.partyAllies.findIndex(x => !x);
+            if (open === -1) { toast("All ally slots are full."); break; }
+            state.partyAllies[open] = nm;
+            added++;
+          }
+          state.assumeSupportParty = true;                   // filling implies you want it on
+          renderBuffs(); rerenderAll();
+          toast(added ? `Loaded standard support comps (${added}).` : "Standard comps already slotted — toggle is on.");
         });
       }
       // Per-slot ally mount equip power picker
