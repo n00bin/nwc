@@ -27,3 +27,9 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   were the same companion entered twice (once at Mythic 7.5% Outgoing Healing,
   once at Celestial 9%). Merged into **Golden Bulette Pup** — choose Celestial
   rarity for the 9% value.
+- **Bard weapons — Celestial Dirgeblade added + Impending Doom set fixed.** Added
+  the missing item-level 5,250 (Celestial) Dirgeblade, and corrected the Impending
+  Doom 2-piece set bonus on the Bard weapons (Dirgeblade + Strings of the Forsaken):
+  now **+5% Power and +7.5% Critical Strike** (was 2.5% Power / wrong crit stat).
+  Also fixed the item-level 3,400 Strings, which was mislabeled — at that tier the
+  set is **Whisper of Power**, not Impending Doom. (Report #151.)
