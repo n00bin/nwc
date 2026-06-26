@@ -33,3 +33,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   now **+5% Power and +7.5% Critical Strike** (was 2.5% Power / wrong crit stat).
   Also fixed the item-level 3,400 Strings, which was mislabeled — at that tier the
   set is **Whisper of Power**, not Impending Doom. (Report #151.)
+- **Impending Doom weapon sets — fixed per class (were all identical).** Every
+  class's Mod 27 weapon set had the same wrong bonus stamped on it. Re-read each
+  from in-game screenshots: each class now has its **own** correct set bonus —
+  e.g. **Ranger** = Crit Strike + Accuracy, **Barbarian/Fighter** = Power +
+  (Crit Severity / Combat Advantage) with a Tank mitigation, **Paladin** = Forte
+  + Defense (Tank/Heal), **Bard/Warlock** add a Heal bonus. 7 of 9 classes done
+  (76 weapon entries); Rogue and Cleric pending a couple more captures.
