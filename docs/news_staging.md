@@ -38,5 +38,6 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   from in-game screenshots: each class now has its **own** correct set bonus —
   e.g. **Ranger** = Crit Strike + Accuracy, **Barbarian/Fighter** = Power +
   (Crit Severity / Combat Advantage) with a Tank mitigation, **Paladin** = Forte
-  + Defense (Tank/Heal), **Bard/Warlock** add a Heal bonus. 7 of 9 classes done
-  (76 weapon entries); Rogue and Cleric pending a couple more captures.
+  + Defense (Tank/Heal), **Bard/Warlock** add a Heal bonus, **Rogue** = Accuracy
+  + Power. 8 of 9 classes done (89 weapon entries); only Cleric is left, pending
+  its captures.
