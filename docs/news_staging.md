@@ -18,6 +18,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   contribute nothing.
 
 ### Bug Fixes
+- **Cracked Dawnshard Raiment — fixed wrong stat & equip bonus (healer pants).**
+  This Jotunskar item-level 4,600 piece was showing a DPS profile by mistake
+  (Action Point Gain + an "Occult Advantage" +9% Critical Severity / −5% Defense
+  bonus). The real item is a **healer** piece — corrected to **1.5% Stamina
+  Regeneration** and a single **Rested Healing** bonus (*when your Stamina is over
+  75%, your Outgoing Healing is increased by 7.5%*). Verified against an in-game
+  screenshot. (Reports #155–#159.)
 - **Detector's set (Unstable Drive) was double-counted.** The Detector's Choker
   listed its "Unstable Scan" bonus twice in the data, so the engine applied
   **14% Combat Advantage / Forte / Outgoing Healing instead of 7%**. Removed the
