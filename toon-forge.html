@@ -5707,6 +5707,22 @@
       for (const [k,v] of Object.entries(p)) parts.push(`+${v}% ${k}`);
       return parts.join(", ");
     }
+    // Companion enchant: build the Effect text for the SELECTED rank from the
+    // per-rarity ladder (screenshot-verified per tier). enchantAtRank stamps
+    // e._rank; Celestial / no rank = the top ladder entry. Other enchants fall
+    // back to their static description unchanged.
+    function _compEnchDesc(e) {
+      if (!e) return "";
+      if (e.rarityLadder) {
+        const L = e.rarityLadder[e._rank || "Celestial"] || e.rarityLadder["Celestial"] || {};
+        if (L.companionDamagePct != null && L.augmentBonusPerStat != null) {
+          return "Equip: +" + L.companionDamagePct + "% Companion Damage OR +"
+            + (+L.augmentBonusPerStat).toLocaleString()
+            + " to each Augment Companion Bonus Stat. Usable in Companion enchantment slots.";
+        }
+      }
+      return e.description || "";
+    }
     function renderEnchantPick(e) {
       const il = e.item_level ? "IL " + e.item_level : "";
       const cr = e.combinedRating ? "CR " + e.combinedRating : "";
@@ -5740,10 +5756,11 @@
         }
       }
 
-      const description = e.description
+      const _effText = _compEnchDesc(e);
+      const description = _effText
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Effect</div>
-             <div class="gear-card-set-text">${_escHTML(e.description)}</div>
+             <div class="gear-card-set-text">${_escHTML(_effText)}</div>
            </div>`
         : "";
 
@@ -16103,8 +16120,32 @@
       const enchantChip = document.getElementById("comp-enchant-chip");
       if (enchantChip) {
         const v = state.summonedEnchant;
-        const info = v ? ` <button class="chip-info" data-details-type="enchant" data-details-key="${_escAttr(v)}" title="See enchant details">\u{1F50D}</button>` : "";
-        setChipContent(enchantChip, v ? "✨ " + v : "", "+ Enchantment", info);
+        if (v) {
+          // Companion enchants are stored once at Celestial; the slot picks the
+          // tier you own (Uncommon..Celestial), mirroring the regular enchant
+          // chips. Rank is kept in state.enchantRarity["Companion"].
+          const rk = (state.enchantRarity && state.enchantRarity["Companion"]) || "Celestial";
+          const ENCH_RANKS = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
+          const info = ` <button class="chip-info" data-details-type="enchant" data-details-key="${_escAttr(v)}" data-details-slot="Companion" title="See enchant details">\u{1F50D}</button>`;
+          const rankSel = `<select class="ench-rank-select" id="comp-enchant-rank" title="The rank you own (lower = not fully upgraded)" style="font-size:0.68rem;margin-top:0.2rem;width:100%;background:var(--bg-elev,#222);color:var(--text-secondary);border:1px solid var(--border);border-radius:4px;cursor:pointer;">`
+            + ENCH_RANKS.map(r => `<option value="${r}"${r === rk ? " selected" : ""}>${r}</option>`).join("") + `</select>`;
+          setChipContent(enchantChip, "✨ " + enchDisplayName(v, rk) + info + rankSel, "+ Enchantment", "");
+        } else {
+          setChipContent(enchantChip, "", "+ Enchantment", "");
+        }
+        // Wire the tier dropdown (recreated each render; click is stopped so it
+        // doesn't also open the pick dialog).
+        const compRankSel = document.getElementById("comp-enchant-rank");
+        if (compRankSel) {
+          compRankSel.addEventListener("click", ev => ev.stopPropagation());
+          compRankSel.addEventListener("mousedown", ev => ev.stopPropagation());
+          compRankSel.addEventListener("change", () => {
+            if (!state.enchantRarity) state.enchantRarity = {};
+            if (compRankSel.value === "Celestial") delete state.enchantRarity["Companion"];
+            else state.enchantRarity["Companion"] = compRankSel.value;
+            renderCompanions(); rerenderAll();
+          });
+        }
       }
       const enhChip = document.getElementById("comp-enh-chip");
       if (enhChip) {
