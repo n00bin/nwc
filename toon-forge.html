@@ -3836,18 +3836,6 @@
           on any item to fix it for your build.</span>
         </div>`;
       }
-      // Enchant tier picker: choose the rank you own; every enchant below
-      // previews at that tier and is picked at it (regular + companion slots).
-      if (_pickerState.dataType === "enchant") {
-        const TIERS = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
-        const curTier = _pickerState.enchTier || "Celestial";
-        html += `<div class="picker-collar-filters" style="align-items:center;gap:0.4rem;">
-          <span style="font-size:0.78rem;opacity:0.85;">Tier you own:</span>
-          <select class="picker-collar-filter" id="picker-ench-tier" aria-label="Enchant tier">
-            ${TIERS.map(t => `<option value="${t}"${t === curTier ? " selected" : ""}>${t}</option>`).join("")}
-          </select>
-        </div>`;
-      }
       if (pickerFilters.length) {
         const selects = [];
         for (const pf of pickerFilters) {
@@ -3875,6 +3863,19 @@
           <span>Add Missing Enchantment</span>
           <span class="picker-add-missing-hint">Don't see your enchantment? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
+      }
+      // Enchant tier picker (UNDER the Add-Missing banner): choose the rank you
+      // own; every enchant below previews + is picked at that tier. Guarded by
+      // dataType so it also shows in the companion-enchant picker (no banner).
+      if (_pickerState.dataType === "enchant") {
+        const TIERS = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
+        const curTier = _pickerState.enchTier || "Celestial";
+        html += `<div class="picker-collar-filters" style="align-items:center;gap:0.4rem;">
+          <span style="font-size:0.78rem;opacity:0.85;">Tier you own:</span>
+          <select class="picker-collar-filter" id="picker-ench-tier" aria-label="Enchant tier">
+            ${TIERS.map(t => `<option value="${t}"${t === curTier ? " selected" : ""}>${t}</option>`).join("")}
+          </select>
+        </div>`;
       }
       if (isOverloadPicker) {
         html += `<button id="picker-add-missing-overload" class="picker-add-missing-btn" type="button">
