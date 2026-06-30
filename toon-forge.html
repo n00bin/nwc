@@ -3805,6 +3805,11 @@
       // Selections persist on _pickerState.filterVals and combine with text search.
       const pickerFilters = PICKER_FILTERS[_pickerState.dataType] || [];
       const filterVals = _pickerState.filterVals || (_pickerState.filterVals = {});
+      // Enchant pickers can preview ANY tier: scale each enchant to the picker's
+      // selected tier (enchTier) before rendering. Celestial / non-enchant = as-is.
+      const _pickEnchScale = (it) =>
+        (_pickerState.dataType === "enchant" && _pickerState.enchTier && _pickerState.enchTier !== "Celestial")
+          ? enchantAtRank(it, _pickerState.enchTier) : it;
       const items = _pickerState.items.filter(it => {
         for (const pf of pickerFilters) {
           const sel = filterVals[pf.field];
@@ -3812,7 +3817,7 @@
           if (sel && String(val) !== sel) return false;
         }
         if (!f) return true;
-        const r = _pickerState.render(it);
+        const r = _pickerState.render(_pickEnchScale(it));
         return (r.name + " " + (r.meta || "") + " " + (r.desc || "")).toLowerCase().includes(f);
       });
       let html = "";
@@ -3829,6 +3834,18 @@
           <span class="picker-tip-icon">💡</span>
           <span>Something not matching in-game? Tap the <strong class="picker-tip-pencil">✎</strong>
           on any item to fix it for your build.</span>
+        </div>`;
+      }
+      // Enchant tier picker: choose the rank you own; every enchant below
+      // previews at that tier and is picked at it (regular + companion slots).
+      if (_pickerState.dataType === "enchant") {
+        const TIERS = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
+        const curTier = _pickerState.enchTier || "Celestial";
+        html += `<div class="picker-collar-filters" style="align-items:center;gap:0.4rem;">
+          <span style="font-size:0.78rem;opacity:0.85;">Tier you own:</span>
+          <select class="picker-collar-filter" id="picker-ench-tier" aria-label="Enchant tier">
+            ${TIERS.map(t => `<option value="${t}"${t === curTier ? " selected" : ""}>${t}</option>`).join("")}
+          </select>
         </div>`;
       }
       if (pickerFilters.length) {
@@ -3929,7 +3946,7 @@
         html += `<div class="picker-empty">No matches for "${f}"</div>`;
       }
       for (let i = 0; i < items.length; i++) {
-        const r = _pickerState.render(items[i]);
+        const r = _pickerState.render(_pickEnchScale(items[i]));
         const pencilHTML = showPencil
           ? `<button class="correction-pencil" data-correct="${i}" title="Fix anything wrong on this item for your build">✎</button>`
           : "";
@@ -3947,6 +3964,15 @@
             _pickerState.filterVals[e.target.dataset.pfField] = e.target.value;
             renderPickerList(searchEl ? searchEl.value : "");
           });
+        });
+      }
+      // Enchant tier dropdown: re-render the list previewing the chosen tier.
+      const enchTierSel = document.getElementById("picker-ench-tier");
+      if (enchTierSel) {
+        const _searchEl = document.getElementById("picker-search");
+        enchTierSel.addEventListener("change", e => {
+          _pickerState.enchTier = e.target.value;
+          renderPickerList(_searchEl ? _searchEl.value : "");
         });
       }
       // Tier dropdowns on grouped gear rows (groupGearTiers): changing the
@@ -3977,6 +4003,13 @@
           if (e.target.closest && e.target.closest(".gear-tier-sel")) return; // tier dropdown, not a pick
           const it = items[+el.dataset.pick];
           const stateBefore = _pickerState;
+          // Enchant pickers: stamp the chosen tier onto the slot's rank BEFORE
+          // onPick, so the re-render inside onPick shows the right tier.
+          if (_pickerState.dataType === "enchant" && _pickerState.enchantSlotLabel && it) {
+            if (!state.enchantRarity) state.enchantRarity = {};
+            if (!_pickerState.enchTier || _pickerState.enchTier === "Celestial") delete state.enchantRarity[_pickerState.enchantSlotLabel];
+            else state.enchantRarity[_pickerState.enchantSlotLabel] = _pickerState.enchTier;
+          }
           _pickerState.onPick(it);
           // If onPick chained to a new picker (e.g. 2-stage mount flow:
           // bonus → mount), _pickerState was replaced inside openPicker.
@@ -14089,9 +14122,12 @@
           el.addEventListener("click", () => {
             const t = el.dataset.enchType;
             const idx = el.dataset.enchIdx !== undefined ? +el.dataset.enchIdx : null;
+            const _slotLabel = t[0].toUpperCase() + t.slice(1) + (idx !== null ? ` ${idx + 1}` : "");
             openPicker({
               dataType: "enchant",
               enchantSlotType: t,
+              enchantSlotLabel: _slotLabel,
+              enchTier: (state.enchantRarity && state.enchantRarity[_slotLabel]) || "Celestial",
               title: `${t[0].toUpperCase()+t.slice(1)} enchantment` + (idx !== null ? ` (slot ${idx + 1})` : ""),
               items: enchantsForSlotType(t),
               render: renderEnchantPickFor(t),
@@ -17371,6 +17407,8 @@
         .sort((a,b) => (b.item_level||0)-(a.item_level||0) || a.name.localeCompare(b.name));
       openPicker({
         dataType: "enchant",
+        enchantSlotLabel: "Companion",
+        enchTier: (state.enchantRarity && state.enchantRarity["Companion"]) || "Celestial",
         title: "Companion enchantment",
         items,
         render: renderEnchantPick,
