@@ -5614,11 +5614,13 @@
         // Show ALL stats of a multi-stat bonus (e.g. Bloodletting = −20% HP + 9% Dmg),
         // deduped so a shared description isn't repeated. Was only entries[0], which
         // silently hid the second stat.
-        const txt = [...new Set(entries.map(equipBonusEffectText).filter(Boolean))].join(", ");
+        // Each distinct stat/effect on its OWN line (matches the in-game tooltip),
+        // deduped so a shared description isn't repeated.
+        const _effects = [...new Set(entries.map(equipBonusEffectText).filter(Boolean))];
         blocks.push(`
           <div class="gear-card-bonus ${isConditional ? "cond" : ""}">
             <div class="gear-card-bonus-name">🌟 ${_escHTML(name)}${tag ? `<span class="gear-card-bonus-tag">${tag}</span>` : ""}</div>
-            ${txt ? `<div class="gear-card-bonus-desc">${_escHTML(txt)}</div>` : ""}
+            ${_effects.map(t => `<div class="gear-card-bonus-desc">${_escHTML(t)}</div>`).join("")}
           </div>`);
       }
       return `<div class="gear-card-section">
@@ -10982,6 +10984,36 @@
       return 1.0;  // always-on
     }
 
+    // Race traits flagged `conditional: true` (Tiefling's Bloodhunt fires only
+    // vs targets below 50% HP; Aasimar's Healing Hands is a party aura) must be
+    // uptime-weighted the SAME way conditional gear/overload bonuses are — the
+    // engine otherwise ingests their full value as always-on. Without this the
+    // optimizer always picks Tiefling, because Bloodhunt's +5% execute-window
+    // damage reads as a permanent, uncapped +5% no other race can match.
+    // Reuses conditionalDamageUptime() so "below 50% HP" → low_threshold (0.15),
+    // matching exactly how an identical equip bonus is scored. Returns a CLONE
+    // (never mutates the shared RACES_DATA entry); always-on traits pass through
+    // untouched (only `conditional` traits are scaled).
+    function raceForEngine(race) {
+      if (!race || !Array.isArray(race.traits)) return race;
+      const scaleMap = function (m, f) {
+        if (!m) return m;
+        const out = {};
+        for (const k in m) { if (Object.prototype.hasOwnProperty.call(m, k)) out[k] = m[k] * f; }
+        return out;
+      };
+      const traits = race.traits.map(function (t) {
+        if (!t || !t.conditional) return t;
+        const f = conditionalDamageUptime(t);   // reads t.description / t.name
+        if (f === 1) return t;
+        const nt = Object.assign({}, t);
+        if (t.percentStats) nt.percentStats = scaleMap(t.percentStats, f);
+        if (t.ratingStats)  nt.ratingStats  = scaleMap(t.ratingStats, f);
+        return nt;
+      });
+      return Object.assign({}, race, { traits: traits });
+    }
+
     // Master campaign boons: assumed in-combat uptime from the boon's
     // trigger + duration — the same proc duty-cycle model as conditional
     // equip bonuses. Master boon tooltips say "Chance on X" with no %, so
@@ -12589,7 +12621,7 @@
         paragon:  s.paragon  || "",
         paragonDef: findParagon(s.class, s.paragon),
         role:     s.role     || "",
-        race:     findRace(s.race),
+        race:     raceForEngine(findRace(s.race)),
         abilityScores: s.abil,
         gear,
         artifacts,
