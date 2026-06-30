@@ -16,6 +16,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   loads the common support trio in one click, all editable, and you can slot any
   party-buff companion you like. When off, the ally slots are dimmed and
   contribute nothing.
+- **Mounts — combat powers now shown at Celestial (max tier) with a Mythic toggle.**
+  Mount combat-power values now display at **Celestial** by default — what an endgame
+  account actually sees — with a **Mythic ⇄ Celestial** toggle on each mount's detail.
+  Previously the page showed a fixed lower-tier number that never matched the game.
 
 ### Bug Fixes
 - **Cracked Dawnshard Raiment — fixed wrong stat & equip bonus (healer pants).**
@@ -25,6 +29,11 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Regeneration** and a single **Rested Healing** bonus (*when your Stamina is over
   75%, your Outgoing Healing is increased by 7.5%*). Verified against an in-game
   screenshot. (Reports #155–#159.)
+- **Mount combat-power values were stuck at lower rarities.** Six mounts had their
+  combat-power numbers captured at a lower tier (Dragonbone Golem, Frost Salamander,
+  Legendary Giant Toad, Legendary Carpet of Flying, Cosmos Stag, Radiant Rune Board)
+  and now scale correctly. **Ethereal Vortex** (Twice-Pale Alder) now reads **20.7%**
+  at Celestial instead of 16%. Verified against in-game screenshots. (Reports #160 & #161.)
 - **Detector's set (Unstable Drive) was double-counted.** The Detector's Choker
   listed its "Unstable Scan" bonus twice in the data, so the engine applied
   **14% Combat Advantage / Forte / Outgoing Healing instead of 7%**. Removed the

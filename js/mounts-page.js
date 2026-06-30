@@ -357,14 +357,59 @@
     listContainer.innerHTML = html;
   }
 
+  // ---- Mount combat-power rarity scaling ----
+  // Combat-power values are stored at a Mythic anchor (IL 3000); entries tagged
+  // anchorRarity:"Celestial" are stored at IL 3937. The page shows the Celestial
+  // (max-tier) value by default — every mount reaches Celestial — with a Mythic
+  // toggle. Combat powers scale uniformly: Celestial = ×1.3124444 (IL 3000 → 3937).
+  // Equip powers are intentionally NOT scaled here (their Max HP stats scale
+  // differently and are in an unresolved Mythic-vs-Celestial state).
+  var MOUNT_CP_RARITY_MULT = { "Mythic": 1.0, "Celestial": 1.3124444 };
+  var MOUNT_CP_IL_RATIO    = { "Mythic": 1.0, "Celestial": 3937 / 3000 };
+  var combatPowerTier = "Celestial";   // default display tier; toggle re-renders
+  var currentDetailMount = null;
+
+  function cpRoundAmt(x) {
+    var r = Math.round(x * 10) / 10;
+    return r === Math.round(r) ? Math.round(r) : r;
+  }
+  // Tier-scaled COPY of a combat power (never mutates the source data).
+  function scaleCombatPower(p, tier) {
+    if (!p) return p;
+    var anchor = p.anchorRarity || "Mythic";
+    var vmult = (MOUNT_CP_RARITY_MULT[tier] || 1) / (MOUNT_CP_RARITY_MULT[anchor] || 1);
+    var ilSel = MOUNT_CP_IL_RATIO[tier], ilAnc = MOUNT_CP_IL_RATIO[anchor];
+    var c = JSON.parse(JSON.stringify(p));
+    if (ilSel != null && ilAnc != null && c.item_level) c.item_level = Math.round(c.item_level * ilSel / ilAnc);
+    if (c.magnitude) c.magnitude = Math.round(c.magnitude * vmult);
+    (c.equipBonuses || []).forEach(function (eb) {
+      if (eb.amount != null) eb.amount = cpRoundAmt(eb.amount * vmult);
+      if (eb.roleMap) Object.keys(eb.roleMap).forEach(function (rk) {
+        if (eb.roleMap[rk] && eb.roleMap[rk].amount != null) eb.roleMap[rk].amount = cpRoundAmt(eb.roleMap[rk].amount * vmult);
+      });
+    });
+    return c;
+  }
+  function combatTierToggleHtml() {
+    var tiers = ["Mythic", "Celestial"], h = '<div class="detail-meta" style="margin-bottom:0.4rem;"><span>Tier:</span>';
+    for (var i = 0; i < tiers.length; i++) {
+      var on = tiers[i] === combatPowerTier;
+      h += '<span class="cp-tier-btn" data-tier="' + tiers[i] + '" style="cursor:pointer;padding:0.12rem 0.5rem;border-radius:var(--radius-sm);' +
+           (on ? 'background:var(--accent);color:#fff;font-weight:600;' : 'color:var(--text-muted);border:1px solid var(--border-default);') +
+           '">' + tiers[i] + '</span>';
+    }
+    return h + '</div>';
+  }
+
   // ---- Render detail ----
   function renderDetail(mount) {
     if (!mount) {
       detailPanel.innerHTML = '<div class="empty-state">Select a mount to view details</div>';
       return;
     }
+    currentDetailMount = mount;
 
-    var cp = combatMap[mount.combatRef];
+    var cp = scaleCombatPower(combatMap[mount.combatRef], combatPowerTier);
     var ep = equipMap[mount.equipRef];
     var compatibleBonuses = mountBonusCache[mount.id] || [];
     var bonusVal = filterBonus.value;
@@ -434,6 +479,7 @@
     // ---- Combat Power ----
     html += '<div class="section-header">Combat Power</div>';
     if (cp) {
+      html += combatTierToggleHtml();
       html += '<div class="proc-block">';
       html += '<div class="detail-name">' + escapeHtml(cp.name) + "</div>";
       html += '<div class="detail-meta">';
@@ -543,6 +589,15 @@
           arrow.style.transform = "";
           this.style.borderColor = "";
         }
+      });
+    }
+
+    // Wire the combat-power tier toggle (Mythic/Celestial) -> re-render this mount
+    var tierBtns = detailPanel.querySelectorAll(".cp-tier-btn");
+    for (var tb = 0; tb < tierBtns.length; tb++) {
+      tierBtns[tb].addEventListener("click", function () {
+        combatPowerTier = this.getAttribute("data-tier");
+        renderDetail(currentDetailMount);
       });
     }
   }

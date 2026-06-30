@@ -3009,8 +3009,14 @@
       activeEquipPower:  null,   // id from mount_equip_powers.json — drawn from stable mounts
       // Decision 11: per-active-power rarity (supersedes per-slot mountRarity).
       // Rarity applies to the active power itself, not the stable slot it came from.
+      // Combat powers default to Celestial (max tier) 2026-06-29: all mounts reach
+      // Celestial, the endgame audience runs them there, and combat powers scale
+      // uniformly (IL 3937, ×1.3124 over Mythic). EQUIP powers stay Mythic for now —
+      // their Max HP stats (Stalwart/Deadly Decay/Dawn of Life/etc.) scale ~1.667×,
+      // not 1.3124×, and are in an unresolved Mythic-vs-Celestial state. Flip equip
+      // to Celestial only after verifying the Max HP exception.
       activeEquipPowerRarity:   "Mythic",
-      activeCombatPowerRarity:  "Mythic",
+      activeCombatPowerRarity:  "Celestial",
       // Bolster percentages (0–120 for comp, 0–125 for mount). 100 = baseline,
       // i.e. data values apply as listed. See mekaniks.html "Bolster".
       companionBolster: 100,
@@ -3389,9 +3395,10 @@
         }
       }
       // Decision 11: active-power rarity replaces per-slot mountRarity.
-      // Default both fields to Mythic if missing (old saves pre-Decision 11).
+      // Combat defaults to Celestial; equip stays Mythic (Max HP equip powers scale
+      // differently — see the init-default note). Saves with an explicit value keep it.
       if (!state.activeEquipPowerRarity)  state.activeEquipPowerRarity  = "Mythic";
-      if (!state.activeCombatPowerRarity) state.activeCombatPowerRarity = "Mythic";
+      if (!state.activeCombatPowerRarity) state.activeCombatPowerRarity = "Celestial";
       // mountRarity was removed in Decision 11; delete it from any save that still carries it.
       (state.stable || []).forEach(slot => {
         if (slot) delete slot.mountRarity;
