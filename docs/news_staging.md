@@ -22,6 +22,20 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Previously the page showed a fixed lower-tier number that never matched the game.
 
 ### Bug Fixes
+- **Jotunskar Paladin gear — translated a German report, added a missing pants + fixed a slot.**
+  A player reported two pieces in German. Translated and resolved: added the missing
+  **Veinlit Lifebraid Vestment** (pants — *Charged Rejuvenation*: +4.5% Recharge Speed
+  when healed in combat), and corrected **Runemarked Dawnshard Raiment** from pants to
+  **shirt**. (The third, "Veinlit Dawnshard Raiment," was already in the database as the
+  pants.) Reports #162 & #163.
+- **Toon Forge — optimizer no longer always picks Tiefling.** A racial trait that
+  only works part of the time (Tiefling's **Bloodhunt**, *+5% damage to targets
+  below 50% HP*) was being counted as if it were on for the whole fight. That made
+  Tiefling look like a permanent +5% damage no other race could match, so the
+  optimizer chose it every time. Racial traits with a condition now use the same
+  uptime model gear already uses — Bloodhunt now counts as its real execute-window
+  value (~0.75%), so race is judged on its actual benefit. (Aasimar's party-aura
+  trait is likewise weighted; always-on racials are unchanged.)
 - **Cracked Dawnshard Raiment — fixed wrong stat & equip bonus (healer pants).**
   This Jotunskar item-level 4,600 piece was showing a DPS profile by mistake
   (Action Point Gain + an "Occult Advantage" +9% Critical Severity / −5% Defense
