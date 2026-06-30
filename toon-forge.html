@@ -14155,7 +14155,9 @@
             if (!state.enchantRarity) state.enchantRarity = {};
             if (sel.value === "Celestial") delete state.enchantRarity[slot];
             else state.enchantRarity[slot] = sel.value;
-            rerenderAll();
+            // re-render the chips so the NAME swaps (rerenderAll doesn't touch
+            // renderEnchantments), matching the companion chip's handler.
+            renderEnchantments(); rerenderAll();
           });
         });
       });
