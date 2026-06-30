@@ -14075,7 +14075,10 @@
              </div>`
           : "";
         return {
-          name: e.name,
+          // Swap the rarity word to the previewed rank (enchantAtRank stamps
+          // e._rank) so the picker shows "Mythic Citrine", not "Celestial
+          // Citrine", when a lower tier is selected.
+          name: enchDisplayName(e.name, e._rank),
           meta: `IL ${e.item_level || "?"} · ${e.slotType}`,
           desc: [statBlock, effectBlock].filter(Boolean).join("")
         };
