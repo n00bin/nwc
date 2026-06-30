@@ -22,6 +22,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Previously the page showed a fixed lower-tier number that never matched the game.
 
 ### Bug Fixes
+- **Warlock "Doom" weapons (Omen of Doom + Codex of Eternal Chains) — completed & corrected.**
+  All **6 upgrade ranks** (IL 3,400–5,250) are now in the database for **both** the main
+  hand and off hand, with accurate set bonuses. The always-on bonus is a flat **+7,700
+  Critical Severity** at the lowest ranks and converts to **percentages** higher up (up to
+  **+9% Critical Severity / +5% Power**), and the Unleashed charge bonus scales **+3% → +5%
+  Base Damage Boost**. The full Unleashed charge mechanic is now shown, and the item tier
+  (Artifact Equipment) — which was blank — is fixed. (Report #166.)
 - **Jotunskar Paladin gear — translated a German report, added a missing pants + fixed a slot.**
   A player reported two pieces in German. Translated and resolved: added the missing
   **Veinlit Lifebraid Vestment** (pants — *Charged Rejuvenation*: +4.5% Recharge Speed
