@@ -13556,7 +13556,11 @@
       const bonusMap = new Map();
       for (const eb of (item.equipBonuses || [])) {
         if (!eb) continue;
-        if (eb.type === "Set" && eb.setName && !eb.description && describedSets.has(eb.setName)) continue;
+        // Hide only NAMELESS engine-feed duplicates of a described set (e.g. a
+        // "+5% Power" stat entry that the set's text already states). NAMED
+        // always-on entries (e.g. Impending Doom's +7.5% Crit Sev / +2.5% Power,
+        // which are NOT in the Unleashed text) must still show as their own lines.
+        if (eb.type === "Set" && eb.setName && !eb.description && !eb.name && describedSets.has(eb.setName)) continue;
         let key = eb.name;
         if (!key) {
           // Nameless equip bonus (just stat + amount, e.g. the Enchanted
@@ -13579,8 +13583,9 @@
         let tag = "";
         if (isAlwaysOn) tag = "always on";
         else if (isConditional) tag = "conditional";
-        // The 'set' type sometimes has no description; that's fine
-        const txt = [...new Set(entries.map(equipBonusEffectText).filter(Boolean))].join(", ");
+        // The 'set' type sometimes has no description; that's fine.
+        // Each distinct effect on its OWN line (matches the in-game tooltip).
+        const _effects = [...new Set(entries.map(equipBonusEffectText).filter(Boolean))];
         const role = first.role ? ` [${first.role}]` : "";
         const setBadge = (first.type === "Set" && first.setName)
           ? ` <span class="gear-card-bonus-tag">set ${escape(first.setName)} ${first.pieces || 2}pc</span>`
@@ -13588,7 +13593,7 @@
         bonusBlocks.push(`
           <div class="gear-card-bonus ${isConditional ? "cond" : ""}">
             <div class="gear-card-bonus-name">🌟 ${escape(name)}${escape(role)}${tag ? `<span class="gear-card-bonus-tag">${tag}</span>` : ""}${setBadge}</div>
-            ${txt ? `<div class="gear-card-bonus-desc">${escape(txt)}</div>` : ""}
+            ${_effects.map(t => `<div class="gear-card-bonus-desc">${escape(t)}</div>`).join("")}
           </div>`);
       }
       // ---- legacy raw set text (top-level `setBonus` field, no structured
