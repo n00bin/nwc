@@ -20,6 +20,12 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Mount combat-power values now display at **Celestial** by default — what an endgame
   account actually sees — with a **Mythic ⇄ Celestial** toggle on each mount's detail.
   Previously the page showed a fixed lower-tier number that never matched the game.
+- **Enchantments — pick the tier you own.** Every enchantment is stored at its top
+  rank (Celestial); the enchantment picker now has a **"Tier you own"** dropdown
+  (Uncommon → Celestial). Set it to your rank and the name, item level, and stat
+  values all update to match — e.g. **Mythic Citrine**, **Mythic Companion**. Picking
+  an enchant adds it at that tier, and the quick dropdown on each slot stays in sync.
+  Works for both character and companion enchantments. (Reports #164 & #165.)
 
 ### Bug Fixes
 - **Warlock "Doom" weapons (Omen of Doom + Codex of Eternal Chains) — completed & corrected.**
