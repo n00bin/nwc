@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dungeon &amp; Campaign Currency Tracker — Neverwinter Compendium</title>
+  <meta name="description" content="Track dungeon and campaign currency per character against weekly caps and storage limits, and see which character to farm next.">
+  <meta property="og:title" content="Dungeon &amp; Campaign Currency Tracker — Neverwinter Compendium">
+  <meta property="og:description" content="Track dungeon and campaign currency per character against weekly caps and storage limits, and see which character to farm next.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+
+  <style>
+    body.dc-themed {
+      background: radial-gradient(ellipse at top, #1a1208 0%, #0a0705 55%, #050302 100%) fixed;
+      color: #e8d9b0;
+      font-family: var(--font-main);
+    }
+    .dc-page {
+      --gold:        #d4af37;
+      --gold-warm:   #c9a961;
+      --gold-bright: #e8c878;
+      --gold-faint:  rgba(212, 175, 55, 0.18);
+      --bone:        #f0e2bc;
+      --bone-soft:   rgba(232, 217, 176, 0.75);
+      --bone-faint:  rgba(232, 217, 176, 0.45);
+      --bone-dim:    rgba(232, 217, 176, 0.3);
+      --ink:         rgba(0, 0, 0, 0.45);
+      --ink-deep:    rgba(0, 0, 0, 0.5);
+      --crimson:     #c45a5a;
+      --capped:      #6cc36c;
+      --capped-glow: rgba(108, 195, 108, 0.5);
+
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    @keyframes dcFadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes dcGlow {
+      0%, 100% { text-shadow: 0 0 18px rgba(212, 175, 55, 0.25); }
+      50%      { text-shadow: 0 0 28px rgba(212, 175, 55, 0.55); }
+    }
+    .dc-fade-in { animation: dcFadeUp 0.4s ease-out; }
+
+    .dc-header { text-align: center; padding: 2rem 0 1rem; }
+    .dc-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: rgba(212, 175, 55, 0.55);
+      margin-bottom: 0.85rem;
+    }
+    .dc-header h1 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-bright);
+      margin: 0 0 0.6rem;
+      animation: dcGlow 4s ease-in-out infinite;
+    }
+    @media (min-width: 720px) { .dc-header h1 { font-size: 2.6rem; } }
+    .dc-header h1::before, .dc-header h1::after {
+      content: '✦';
+      color: rgba(212, 175, 55, 0.5);
+      margin: 0 0.6em;
+      font-size: 0.65em;
+      vertical-align: middle;
+    }
+    .dc-header p {
+      font-style: italic;
+      color: var(--bone-soft);
+      font-size: 0.95rem;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    .dc-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    @media (min-width: 720px) { .dc-stats { grid-template-columns: repeat(4, 1fr); } }
+    .dc-stat {
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.05), rgba(0,0,0,0));
+      border: 1px solid var(--gold-faint);
+      border-radius: 3px;
+      padding: 0.75rem 1rem;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.4) inset, 0 6px 18px rgba(0,0,0,0.4);
+      transition: border-color 0.2s;
+    }
+    .dc-stat.highlight { border-color: rgba(108, 195, 108, 0.5); }
+    .dc-stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--bone-soft);
+      margin-bottom: 0.35rem;
+    }
+    .dc-stat-value { font-family: var(--font-display); font-size: 1.7rem; color: var(--bone); }
+    .dc-stat.highlight .dc-stat-value { color: var(--capped); }
+
+    /* Weekly reset bar */
+    .dc-weekbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.9rem;
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.05), rgba(0,0,0,0));
+      border: 1px solid var(--gold-faint);
+      border-radius: 3px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      color: var(--bone-soft);
+    }
+    .dc-weekbar strong { color: var(--gold-warm); font-weight: 600; }
+    .dc-weekbar .dc-select, .dc-weekbar .dc-time {
+      padding: 0.35rem 0.5rem;
+      font-size: 0.85rem;
+    }
+    .dc-weeknote {
+      text-align: center;
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--bone-faint);
+      margin-bottom: 1.5rem;
+    }
+
+    .dc-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 960px) { .dc-grid { grid-template-columns: 1fr 1fr; } }
+
+    .dc-panel {
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.05), rgba(0,0,0,0));
+      border: 1px solid var(--gold-faint);
+      border-radius: 3px;
+      padding: 1.25rem;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.4) inset, 0 8px 30px rgba(0,0,0,0.5);
+    }
+    .dc-panel-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 0.06em;
+      color: var(--gold-bright);
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--gold-faint);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .dc-panel-title::before { content: '✦'; color: var(--gold-warm); font-size: 0.85em; }
+
+    .dc-input, .dc-select, .dc-time {
+      background: var(--ink);
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      border-radius: 2px;
+      color: var(--bone);
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+      padding: 0.55rem 0.8rem;
+      outline: none;
+      transition: all 0.2s;
+      min-width: 0;
+    }
+    .dc-input::placeholder { color: rgba(232, 217, 176, 0.35); font-style: italic; }
+    .dc-input:focus, .dc-select:focus, .dc-time:focus {
+      border-color: rgba(212, 175, 55, 0.6);
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.18);
+    }
+    .dc-select, .dc-time { cursor: pointer; }
+    .dc-select option { background: #1a1208; color: var(--bone); }
+    .dc-input[type=number]::-webkit-outer-spin-button,
+    .dc-input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .dc-input[type=number] { -moz-appearance: textfield; }
+
+    .dc-btn {
+      background: linear-gradient(180deg, #c9a961 0%, #8b6f2f 100%);
+      color: #1a1208;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 2px;
+      font-family: var(--font-display);
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0.55rem 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .dc-btn:hover:not(:disabled) {
+      background: linear-gradient(180deg, #d4b76a 0%, #9a7c34 100%);
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.4);
+    }
+    .dc-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .dc-btn-ghost {
+      background: transparent;
+      color: rgba(212, 175, 55, 0.65);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    .dc-btn-ghost:hover:not(:disabled) {
+      background: transparent;
+      color: var(--gold-bright);
+      border-color: rgba(212, 175, 55, 0.55);
+      box-shadow: none;
+    }
+
+    .dc-row { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+    .dc-add-char { margin: 0 0 1.1rem; flex-wrap: nowrap; }
+    .dc-add-char .dc-input { flex: 1; }
+
+    .dc-tip {
+      font-size: 0.92rem;
+      color: var(--bone-soft);
+      margin: 0 0 1.1rem;
+      padding-left: 1.1rem;
+      line-height: 1.5;
+    }
+    .dc-tip li { margin-bottom: 0.3rem; }
+    .dc-tip strong { color: var(--gold-warm); font-weight: 600; }
+    .dc-tip-lead { font-size: 1rem; color: var(--bone); font-style: italic; margin: 0 0 0.5rem; }
+
+    /* Character cards */
+    .dc-char {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--gold-faint);
+      border-radius: 2px;
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.85rem;
+      animation: dcFadeUp 0.35s ease-out;
+    }
+    .dc-char-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .dc-char-toggle {
+      flex: 1; min-width: 0;
+      display: flex; align-items: center; gap: 0.5rem;
+      background: none; border: none; cursor: pointer;
+      color: inherit;
+      padding: 0.15rem 0; text-align: left;
+    }
+    .dc-char-name { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.03em; color: var(--bone); }
+    .dc-char-summary { font-family: var(--font-main); font-size: 0.8rem; color: var(--bone-faint); font-style: italic; }
+    .dc-char-body { margin-top: 0.65rem; }
+    .dc-char-badge {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--capped);
+      border: 1px solid rgba(108, 195, 108, 0.4);
+      border-radius: 2px;
+      padding: 0.15rem 0.5rem;
+      background: rgba(108, 195, 108, 0.08);
+    }
+    .dc-char-actions { display: flex; gap: 0.55rem; align-items: center; font-size: 0.78rem; flex-wrap: wrap; }
+
+    .dc-link {
+      background: none; border: none; cursor: pointer;
+      color: rgba(180, 70, 70, 0.55);
+      font-family: var(--font-main);
+      font-size: 0.92rem;
+      font-style: italic;
+      padding: 0.15rem 0.3rem;
+      transition: color 0.2s;
+    }
+    .dc-link:hover { color: #d44a4a; }
+    .dc-link.confirm { color: var(--crimson); text-decoration: underline; }
+    .dc-link.cancel  { color: var(--bone-soft); text-decoration: underline; }
+    .dc-link.cancel:hover { color: var(--bone); }
+    .dc-link.muted { color: var(--bone-dim); }
+    .dc-link.muted:hover { color: var(--crimson); }
+
+    /* Collapsible dungeon/source sections inside a character card */
+    .dc-dungeon-group { margin-bottom: 0.5rem; }
+    .dc-dungeon-header {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: rgba(212, 175, 55, 0.06);
+      border: 1px solid var(--gold-faint);
+      border-radius: 2px;
+      padding-right: 0.55rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .dc-dungeon-header:hover { background: rgba(212, 175, 55, 0.12); border-color: rgba(212, 175, 55, 0.4); }
+    .dc-dungeon-toggle {
+      flex: 1; min-width: 0;
+      display: flex; align-items: center; gap: 0.5rem;
+      background: none; border: none; cursor: pointer;
+      color: var(--bone);
+      font-family: var(--font-display);
+      font-size: 0.92rem;
+      letter-spacing: 0.03em;
+      padding: 0.5rem 0.65rem;
+      text-align: left;
+    }
+    .dc-caret { color: var(--gold-warm); font-size: 0.75rem; width: 0.9rem; flex-shrink: 0; }
+    .dc-dungeon-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .dc-dungeon-meta { font-family: var(--font-main); font-size: 0.8rem; color: var(--bone-soft); flex-shrink: 0; }
+    .dc-dungeon-meta.done { color: var(--capped); }
+    .dc-dungeon-body { padding: 0.1rem 0.4rem 0.35rem; }
+
+    .dc-cur-row { padding: 0.55rem 0; border-top: 1px solid rgba(212, 175, 55, 0.08); }
+    .dc-cur-row:first-child { border-top: none; }
+    .dc-cur-row-head {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .dc-cur-row-name { font-size: 0.98rem; color: var(--bone); flex: 1; min-width: 0; }
+    .dc-cur-row-name .dc-dungeon-tag { color: var(--bone-faint); font-size: 0.82rem; font-style: italic; }
+    .dc-cur-row-right { display: inline-flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+    .dc-cur-row-amt { font-family: var(--font-display); font-size: 0.92rem; color: var(--bone-soft); white-space: nowrap; }
+    .dc-cur-row-amt.full { color: var(--capped); }
+    .dc-cur-x {
+      opacity: 0; background: none; border: none;
+      color: rgba(180, 70, 70, 0.55); cursor: pointer;
+      font-size: 1.05rem; line-height: 1; padding: 0 0.25rem;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .dc-cur-row:hover .dc-cur-x { opacity: 1; }
+    .dc-cur-x:hover { color: #d44a4a; }
+
+    .dc-bar-track { display: block; height: 6px; background: var(--ink-deep); border-radius: 999px; overflow: hidden; }
+    .dc-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #c9a961 0%, #8b6f2f 100%);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.35);
+      transition: width 0.4s ease;
+    }
+    .dc-bar-fill.full { background: linear-gradient(90deg, #6cc36c 0%, #3f8f3f 100%); box-shadow: 0 0 10px var(--capped-glow); }
+
+    /* Weekly / Held progress meters inside a currency row */
+    .dc-meter { margin: 0.35rem 0; }
+    .dc-meter-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.25rem; }
+    .dc-meter-label { font-size: 0.78rem; color: var(--bone-soft); text-transform: uppercase; letter-spacing: 0.06em; }
+    .dc-held-line { font-size: 0.9rem; color: var(--bone-soft); margin: 0.35rem 0; }
+    .dc-held-line strong { color: var(--bone); font-family: var(--font-display); }
+    .dc-muted-note { color: var(--bone-faint); font-style: italic; font-size: 0.82rem; }
+
+    .dc-cur-row-controls { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
+
+    /* Per-currency update log */
+    .dc-log { margin-top: 0.5rem; }
+    .dc-log-toggle {
+      background: none; border: none; cursor: pointer;
+      color: var(--bone-soft);
+      font-family: var(--font-display);
+      font-size: 0.8rem; letter-spacing: 0.05em;
+      padding: 0.2rem 0.1rem;
+    }
+    .dc-log-toggle:hover { color: var(--gold-bright); }
+    .dc-log-body { margin: 0.25rem 0 0.1rem; }
+    .dc-log-empty { font-size: 0.85rem; font-style: italic; color: var(--bone-faint); padding: 0.2rem 0.4rem; }
+    .dc-log-row {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.4rem;
+      border-top: 1px dashed rgba(212, 175, 55, 0.1);
+      font-size: 0.86rem;
+    }
+    .dc-log-row:first-child { border-top: none; }
+    .dc-log-when { flex: 0 0 auto; color: var(--bone-faint); min-width: 6.5rem; }
+    .dc-log-total { flex: 1; color: var(--bone); font-family: var(--font-display); }
+    .dc-log-delta { flex: 0 0 auto; font-family: var(--font-display); font-size: 0.82rem; }
+    .dc-log-delta.up { color: var(--capped); }
+    .dc-log-delta.down { color: var(--crimson); }
+    .dc-log-delta.start { color: var(--bone-faint); font-style: italic; }
+    .dc-log-entry-actions { flex: 0 0 auto; display: inline-flex; gap: 0.15rem; }
+    .dc-log-edit, .dc-log-del {
+      background: none; border: none; cursor: pointer;
+      font-size: 0.9rem; line-height: 1; padding: 0.1rem 0.3rem;
+      transition: color 0.2s;
+    }
+    .dc-log-edit { color: rgba(212, 175, 55, 0.6); }
+    .dc-log-edit:hover { color: var(--gold-bright); }
+    .dc-log-del { color: rgba(180, 70, 70, 0.6); }
+    .dc-log-del:hover { color: #d44a4a; }
+    .dc-earned-input { width: 7rem; padding: 0.4rem 0.55rem; font-size: 0.92rem; text-align: right; }
+    .dc-earned-input-label { font-size: 0.82rem; color: var(--bone-soft); }
+    .dc-log-btn {
+      background: transparent;
+      color: rgba(212, 175, 55, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 2px;
+      font-family: var(--font-display);
+      letter-spacing: 0.05em;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      padding: 0.4rem 0.6rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .dc-log-btn:hover { color: var(--gold-bright); border-color: rgba(212, 175, 55, 0.6); box-shadow: 0 0 10px rgba(212,175,55,0.2); }
+    .dc-log-btn.dc-log-primary { background: rgba(212, 175, 55, 0.12); color: var(--gold-bright); border-color: rgba(212, 175, 55, 0.5); }
+    .dc-log-btn.dc-log-primary:hover { background: rgba(212, 175, 55, 0.2); }
+
+    /* Add-currency row inside a character card */
+    .dc-add-cur {
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px dashed rgba(212, 175, 55, 0.18);
+    }
+    .dc-add-cur .dc-input { padding: 0.42rem 0.55rem; font-size: 0.88rem; }
+    .dc-add-cur .dc-di-name { flex: 1 1 8rem; }
+    .dc-add-cur .dc-di-dungeon { flex: 1 1 7rem; }
+    .dc-add-cur .dc-di-cap { flex: 1 1 6rem; text-align: right; }
+    .dc-add-cur .dc-di-earned { flex: 1 1 6rem; text-align: right; }
+    /* Dungeon locked to a known currency — visibly not editable */
+    .dc-input.dc-locked {
+      opacity: 0.75;
+      cursor: not-allowed;
+      background: rgba(0, 0, 0, 0.6);
+      border-style: dashed;
+      color: var(--bone-soft);
+    }
+    .dc-add-cur .dc-di-type { flex: 0 0 auto; padding: 0.42rem 0.4rem; font-size: 0.85rem; }
+    .dc-select.dc-locked, .dc-select:disabled { opacity: 0.7; cursor: not-allowed; border-style: dashed; }
+
+    /* Source-type badge on group headers — click to cycle the type */
+    .dc-src-badge {
+      flex: 0 0 auto;
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.14rem 0.45rem;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: filter 0.15s, box-shadow 0.15s;
+    }
+    .dc-src-badge:hover { filter: brightness(1.25); box-shadow: 0 0 8px rgba(0,0,0,0.35); }
+    .dc-src-edit {
+      flex: 0 0 auto;
+      background: none; border: none; cursor: pointer;
+      color: rgba(212, 175, 55, 0.55);
+      font-size: 0.85rem; line-height: 1; padding: 0 0.25rem;
+      transition: color 0.2s;
+    }
+    .dc-src-edit:hover { color: var(--gold-bright); }
+    .dc-src-badge.dc-src-dungeon  { color: var(--gold-warm); border-color: rgba(212, 175, 55, 0.4); background: rgba(212, 175, 55, 0.08); }
+    .dc-src-badge.dc-src-trial    { color: #c58cff; border-color: rgba(180, 108, 255, 0.45); background: rgba(180, 108, 255, 0.1); }
+    .dc-src-badge.dc-src-campaign { color: #7fbfff; border-color: rgba(74, 158, 255, 0.45); background: rgba(74, 158, 255, 0.1); }
+    .dc-src-badge.dc-src-event    { color: #57d1c0; border-color: rgba(87, 209, 192, 0.45); background: rgba(87, 209, 192, 0.1); }
+    .dc-src-badge.dc-src-other    { color: var(--bone-soft); border-color: rgba(232, 217, 176, 0.3); background: rgba(232, 217, 176, 0.06); }
+
+    .dc-inline-empty { color: var(--bone-soft); font-size: 0.95rem; font-style: italic; padding: 0.4rem 0 0.2rem; }
+
+    .dc-empty {
+      border: 1px dashed rgba(212, 175, 55, 0.2);
+      border-radius: 2px;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      color: var(--bone-soft);
+      font-size: 1rem;
+      font-style: italic;
+    }
+    .dc-empty.complete {
+      border-color: rgba(108, 195, 108, 0.35);
+      color: var(--capped);
+      font-style: normal;
+    }
+    .dc-empty.complete::before {
+      content: '⚜'; display: block; font-size: 2rem; margin-bottom: 0.5rem; color: var(--capped);
+    }
+
+    .dc-intro { font-size: 1rem; color: var(--bone-soft); line-height: 1.65; margin-bottom: 1rem; font-style: italic; }
+    .dc-intro strong { color: var(--gold-warm); font-weight: 600; font-style: normal; }
+
+    /* Cap-status (farming guide) blocks */
+    .dc-guide-cur {
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      border-radius: 2px;
+      padding: 0.85rem 0.95rem;
+      margin-bottom: 0.85rem;
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.04), rgba(0,0,0,0));
+      animation: dcFadeUp 0.35s ease-out;
+    }
+    .dc-guide-controls { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .dc-guide-controls .dc-input { flex: 1; }
+    .dc-guide-controls .dc-select { flex: 0 0 auto; }
+
+    .dc-guide-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .dc-guide-toggle {
+      flex: 1; min-width: 0;
+      display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;
+      background: none; border: none; cursor: pointer;
+      color: inherit;
+      padding: 0.2rem 0; text-align: left;
+    }
+    .dc-guide-toggle .dc-guide-summary { margin-left: auto; }
+    .dc-guide-body { margin-top: 0.5rem; }
+    .dc-guide-title { font-family: var(--font-display); font-size: 1.02rem; color: var(--bone); }
+    .dc-guide-title .dc-dungeon-tag { color: var(--bone-faint); font-size: 0.82rem; font-style: italic; }
+    /* Base rule so the source tag stays visible even outside .dc-guide-title */
+    .dc-dungeon-tag { color: var(--bone-faint); font-size: 0.82rem; font-style: italic; }
+    .dc-guide-summary { font-size: 0.82rem; color: var(--bone-soft); white-space: nowrap; }
+    .dc-guide-summary.done { color: var(--capped); }
+
+    .dc-guide-char { display: flex; align-items: center; gap: 0.7rem; padding: 0.4rem 0.45rem; border-radius: 2px; }
+    .dc-guide-char.recommend { background: rgba(212, 175, 55, 0.09); border: 1px solid rgba(212, 175, 55, 0.3); }
+    .dc-guide-char.capped { opacity: 0.6; }
+    .dc-guide-char-name { flex: 0 0 7rem; font-size: 0.95rem; color: var(--bone-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .dc-guide-char.recommend .dc-guide-char-name { color: var(--gold-bright); }
+    .dc-guide-char-bar { flex: 1; min-width: 0; }
+    .dc-guide-char-amt { flex: 0 0 auto; font-family: var(--font-display); font-size: 0.85rem; color: var(--bone-soft); white-space: nowrap; }
+    .dc-guide-char-amt.full { color: var(--capped); }
+    .dc-farm-flag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      margin-left: 0.4rem;
+    }
+
+    .dc-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      text-align: center;
+      color: var(--bone-soft);
+      font-size: 0.92rem;
+      font-style: italic;
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+    }
+    .dc-footer .dc-flourish { color: var(--gold-warm); margin: 0 0.5em; }
+    .dc-backup-bar { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.85rem; flex-wrap: wrap; }
+    .dc-btn-mini {
+      background: transparent;
+      color: rgba(212, 175, 55, 0.75);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 2px;
+      font-family: var(--font-display);
+      letter-spacing: 0.06em;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .dc-btn-mini:hover { color: var(--gold-bright); border-color: rgba(212, 175, 55, 0.6); box-shadow: 0 0 12px rgba(212, 175, 55, 0.2); }
+    .dc-backup-msg { margin-top: 0.55rem; min-height: 1.1rem; font-size: 0.92rem; font-style: italic; color: var(--gold-bright); transition: opacity 0.3s; }
+    .dc-backup-msg.error { color: var(--crimson); }
+    .dc-backup-msg.fade { opacity: 0; }
+  </style>
+</head>
+<body class="dc-themed">
+  <nav class="navbar"></nav>
+
+  <main class="dc-page">
+    <header class="dc-header dc-fade-in">
+      <div class="dc-eyebrow">⚜ NEVERWINTER ⚜</div>
+      <h1>Currency Tracker</h1>
+      <p>Log the currency each character earns from dungeons and campaigns, watch it against that character's weekly cap (and storage limit), and know exactly which character to farm on next.</p>
+    </header>
+
+    <section id="dc-stats" class="dc-stats dc-fade-in" style="display:none;">
+      <div class="dc-stat">
+        <div class="dc-stat-label">Characters</div>
+        <div class="dc-stat-value" id="dc-stat-chars">0</div>
+      </div>
+      <div class="dc-stat">
+        <div class="dc-stat-label">Currencies</div>
+        <div class="dc-stat-value" id="dc-stat-currencies">0</div>
+      </div>
+      <div class="dc-stat" id="dc-stat-capped-tile">
+        <div class="dc-stat-label">At cap</div>
+        <div class="dc-stat-value" id="dc-stat-capped">0</div>
+      </div>
+      <div class="dc-stat">
+        <div class="dc-stat-label">Still to farm</div>
+        <div class="dc-stat-value" id="dc-stat-remaining">0</div>
+      </div>
+    </section>
+
+    <div class="dc-weekbar dc-fade-in">
+      <span>Weekly reset:
+        <select id="dc-reset-day" class="dc-select"></select>
+        at
+        <input type="time" id="dc-reset-time" class="dc-time" value="00:00">
+        <strong>(your local time)</strong>
+      </span>
+      <span id="dc-last-reset"></span>
+      <button id="dc-reset-now" class="dc-btn-mini">↺ Reset week now</button>
+    </div>
+    <p class="dc-weeknote">
+      Neverwinter resets at one fixed server moment — that lands on a different local day/time depending on where you live, so set this to match your own reset.
+    </p>
+
+    <div class="dc-grid">
+      <section class="dc-panel dc-fade-in">
+        <div class="dc-panel-title">Your Roster</div>
+
+        <p class="dc-tip-lead">New to this? No stress — here's the gist:</p>
+        <ul class="dc-tip">
+          <li>Add a character, then the currencies they farm — where it drops, plus any <strong>weekly cap</strong> or <strong>storage limit</strong>.</li>
+          <li>Farmed some? Just hit <strong>↺ Update total</strong> and type your new in-game total — we do the math and count it toward your week.</li>
+          <li>Fat-fingered a number? It's all in the <strong>Log</strong> — pop in and fix or delete that entry.</li>
+          <li>Then <strong>Cap Status</strong> shows you who to farm next. That's it — go get that loot! ⚔</li>
+        </ul>
+
+        <div class="dc-row dc-add-char">
+          <input type="text" id="dc-new-char" class="dc-input" placeholder="Character name…" maxlength="40">
+          <button id="dc-add-char-btn" class="dc-btn">+ Add character</button>
+        </div>
+
+        <div id="dc-char-list"></div>
+        <div id="dc-roster-empty" class="dc-empty">No characters yet. Add your first hero to begin.</div>
+      </section>
+
+      <section class="dc-panel dc-fade-in">
+        <div class="dc-panel-title">Cap Status</div>
+
+        <div class="dc-guide-controls">
+          <input type="search" id="dc-guide-search" class="dc-input" placeholder="Search currency or source…" autocomplete="off">
+          <select id="dc-guide-filter" class="dc-select" title="Filter by source type"></select>
+        </div>
+
+        <div id="dc-guide-view">
+          <div id="dc-guide-intro" class="dc-intro" style="display:none;">
+            Your farm planner: each currency, lined up across your characters. The one glowing at the top has the most room left — <strong>farm there next</strong>. Got a ton? Search or filter to find it fast.
+          </div>
+          <div id="dc-guide-list"></div>
+          <div id="dc-guide-empty" class="dc-empty">Add characters and their currencies to see who to farm next.</div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="dc-footer">
+      <p><span class="dc-flourish">⚔</span> The N00bin Network · Your data is saved in this browser <span class="dc-flourish">⚔</span></p>
+
+      <div class="dc-backup-bar">
+        <button id="dc-export-btn" class="dc-btn-mini">⬇ Export backup</button>
+        <button id="dc-import-btn" class="dc-btn-mini">⬆ Import backup</button>
+        <input type="file" id="dc-import-file" accept=".json,application/json" style="display:none;">
+      </div>
+      <div id="dc-backup-msg" class="dc-backup-msg"></div>
+
+      <div id="dc-reset-area" style="margin-top:0.6rem;"></div>
+    </footer>
+  </main>
+
+  <!-- Populated from currencies already added across the roster -->
+  <datalist id="dc-currency-names"></datalist>
+  <datalist id="dc-dungeon-names"></datalist>
+
+  <script src="js/shared.js"></script>
+
+  <script>
+    /* ============================================================
+       Dungeon Currency Tracker — vanilla JS
+       Storage: localStorage (key: nw-dungeon-currency)
+       Data shape:
+         characters: [{ id, name, currencies: [{ id, dungeon, name, cap, earned }] }]
+         settings:   { resetDay: 0-6 (0=Sun), resetTime: "HH:MM" local, lastReset: ISO }
+       Currencies are tracked PER CHARACTER — each character earns and caps its
+       own currency independently (nothing is account-bound). The Cap Status
+       panel groups the same currency name across characters for farm planning.
+       Earned totals auto-zero when a new weekly reset boundary is crossed.
+       ============================================================ */
+
+    var STORAGE_KEY = 'nw-dungeon-currency';
+    var UI_KEY = 'nw-dungeon-currency-ui'; // collapse state etc. — kept out of the data file
+    var EPOCH = '1970-01-01T00:00:00.000Z'; // baseline timestamp (never counts as "this week")
+    var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    // Neverwinter's weekly reset — Thursday is a common default, but each player
+    // sets their own day + local time in the bar up top.
+    var DEFAULT_RESET_DAY = 4;
+    var DEFAULT_RESET_TIME = '00:00';
+    // A currency's source can be a dungeon, trial, campaign, event, or other.
+    var SOURCE_TYPES = ['Dungeon', 'Trial', 'Campaign', 'Event', 'Other'];
+    function normalizeSourceType(t) {
+      t = String(t || '').trim();
+      for (var i = 0; i < SOURCE_TYPES.length; i++) if (SOURCE_TYPES[i].toLowerCase() === t.toLowerCase()) return SOURCE_TYPES[i];
+      return 'Dungeon';
+    }
+    // Clickable badge shown on a source's group header; clicking cycles the type
+    // for every currency from that source. dkey = normalized source name.
+    function srcBadgeHtml(type, dkey) {
+      var t = normalizeSourceType(type);
+      return '<button type="button" class="dc-src-badge dc-src-' + t.toLowerCase() + '" data-action="cycle-source-type" data-dkey="' + escapeHtml(dkey || '') + '" title="Click to change type (cycles Dungeon → Trial → Campaign → Event → Other)">' + t + '</button>';
+    }
+
+    var state = {
+      characters: [],
+      settings: { resetDay: DEFAULT_RESET_DAY, resetTime: DEFAULT_RESET_TIME, lastReset: null }
+    };
+
+    // Per-(character, dungeon) collapse state, keyed "charId::dungeonKey".
+    var uiState = { collapsed: {} };
+    function loadUi() {
+      try {
+        var raw = localStorage.getItem(UI_KEY);
+        if (raw) { var p = JSON.parse(raw); if (p && typeof p === 'object') uiState = p; }
+      } catch (e) { /* ignore */ }
+      if (!uiState.collapsed) uiState.collapsed = {};
+    }
+    function saveUi() {
+      try { localStorage.setItem(UI_KEY, JSON.stringify(uiState)); } catch (e) { /* ignore */ }
+    }
+    function dungeonCollapseKey(charId, dungeon) {
+      return charId + '::' + normalizeKey(dungeon || '');
+    }
+
+    // Cap Status search + type filter (session-only, not persisted).
+    var guideSearch = '';
+    var guideFilter = 'all';
+
+    /* ---------- Helpers ---------- */
+    function newId(prefix) {
+      return prefix + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
+    }
+    function escapeHtml(s) {
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+    function toInt(v) {
+      var n = Math.floor(Number(v));
+      if (!isFinite(n) || n < 0) return 0;
+      return n;
+    }
+    function commafy(n) {
+      return String(toInt(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+    function normalizeKey(name) {
+      return String(name).toLowerCase().trim().replace(/\s+/g, ' ');
+    }
+    function findChar(id) {
+      for (var i = 0; i < state.characters.length; i++) if (state.characters[i].id === id) return state.characters[i];
+      return null;
+    }
+    function findCur(char, curId) {
+      if (!char) return null;
+      for (var i = 0; i < char.currencies.length; i++) if (char.currencies[i].id === curId) return char.currencies[i];
+      return null;
+    }
+    function normalizeCurrency(cur) {
+      var weeklyCap = (cur.weeklyCap != null) ? toInt(cur.weeklyCap) : toInt(cur.cap);
+      var history;
+      if (Array.isArray(cur.history)) {
+        history = cur.history.map(function (h) {
+          return { id: h.id || newId('h'), at: h.at || EPOCH, total: toInt(h.total) };
+        });
+      } else {
+        // Migrate older data: seed one baseline entry from the stored total (or
+        // legacy "earned"). A baseline never counts as this week's earnings.
+        var base = (cur.total != null) ? toInt(cur.total) : toInt(cur.earned);
+        history = [{ id: newId('h'), at: EPOCH, total: base }];
+      }
+      return {
+        id: cur.id || newId('cur'),
+        dungeon: String(cur.dungeon || ''),      // source NAME (a dungeon or campaign)
+        sourceType: normalizeSourceType(cur.sourceType), // Dungeon | Campaign | Other
+        name: String(cur.name || ''),
+        weeklyCap: weeklyCap,       // 0 = no weekly cap
+        totalCap: toInt(cur.totalCap), // 0 = unlimited storage
+        history: history,           // the update log — the source of truth
+        total: 0,                   // derived by recomputeCurrency()
+        weeklyEarned: 0             // derived by recomputeCurrency()
+      };
+    }
+    // Derived cap/farm state for a currency.
+    function curFlags(cur) {
+      var weeklyOn = cur.weeklyCap > 0;
+      var totalOn = cur.totalCap > 0;
+      var weeklyCapped = weeklyOn && cur.weeklyEarned >= cur.weeklyCap;
+      var totalCapped = totalOn && cur.total >= cur.totalCap;
+      return {
+        weeklyOn: weeklyOn,
+        totalOn: totalOn,
+        weeklyCapped: weeklyCapped,
+        totalCapped: totalCapped,
+        done: weeklyCapped || totalCapped, // can't/shouldn't farm this right now
+        weeklyRemaining: weeklyOn ? Math.max(0, cur.weeklyCap - cur.weeklyEarned) : null,
+        totalRemaining: totalOn ? Math.max(0, cur.totalCap - cur.total) : null
+      };
+    }
+
+    /* ---------- Weekly reset ---------- */
+    // Local datetime of the most recent occurrence of resetDay at resetTime.
+    function lastResetBoundary(resetDay, resetTime) {
+      var now = new Date();
+      var parts = String(resetTime || '00:00').split(':');
+      var hh = toInt(parts[0]);
+      var mm = toInt(parts[1]);
+      var d = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hh, mm, 0, 0);
+      var diff = (d.getDay() - resetDay + 7) % 7;
+      d.setDate(d.getDate() - diff);
+      // If that lands in the future (reset day is today but the time hasn't
+      // passed yet), step back a full week.
+      if (d.getTime() > now.getTime()) d.setDate(d.getDate() - 7);
+      return d;
+    }
+    function currentBoundary() {
+      return lastResetBoundary(state.settings.resetDay, state.settings.resetTime);
+    }
+    // The start of the "current week": the natural reset boundary, or a later
+    // manual reset if one was triggered.
+    function effectiveBoundaryMs() {
+      var b = currentBoundary().getTime();
+      if (state.settings.lastReset) {
+        var m = new Date(state.settings.lastReset).getTime();
+        if (!isNaN(m) && m > b) b = m;
+      }
+      return b;
+    }
+    // Derive a currency's held total + this-week earnings from its update log.
+    // total = the most recent entry; weeklyEarned = the sum of positive changes
+    // recorded on/after the current week's boundary. The first entry is a
+    // baseline (a starting stash), so it never counts as earnings.
+    function recomputeCurrency(cur) {
+      var hist = cur.history || [];
+      cur.total = hist.length ? toInt(hist[hist.length - 1].total) : 0;
+      var boundary = effectiveBoundaryMs();
+      var wk = 0;
+      for (var i = 1; i < hist.length; i++) {
+        var gain = toInt(hist[i].total) - toInt(hist[i - 1].total);
+        if (gain > 0) {
+          var t = new Date(hist[i].at).getTime();
+          if (isNaN(t) || t >= boundary) wk += gain;
+        }
+      }
+      cur.weeklyEarned = wk;
+    }
+    function recomputeAll() {
+      state.characters.forEach(function (c) { c.currencies.forEach(recomputeCurrency); });
+    }
+    function manualResetWeek() {
+      state.settings.lastReset = new Date().toISOString(); // anchor "this week" to now
+      recomputeAll();
+      save();
+      render();
+      showBackupMsg('This week reset — weekly earnings start from 0 (your log is kept).');
+    }
+
+    /* ---------- Storage ---------- */
+    function load() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        var parsed = JSON.parse(raw);
+        // v1 migration: currencies used to be a global array + per-char earned map.
+        var oldGlobal = Array.isArray(parsed.currencies) ? parsed.currencies : null;
+
+        state.characters = (parsed.characters || []).map(function (c) {
+          var currencies;
+          if (Array.isArray(c.currencies)) {
+            currencies = c.currencies.map(normalizeCurrency);
+          } else if (oldGlobal) {
+            var earnedMap = (c.earned && typeof c.earned === 'object') ? c.earned : {};
+            currencies = oldGlobal.map(function (gc) {
+              return normalizeCurrency({
+                dungeon: gc.dungeon, name: gc.name, cap: gc.cap,
+                earned: earnedMap[gc.id]
+              });
+            });
+          } else {
+            currencies = [];
+          }
+          return { id: c.id || newId('c'), name: String(c.name || ''), currencies: currencies };
+        });
+
+        var s = parsed.settings || {};
+        var resetDay = (typeof s.resetDay === 'number' && s.resetDay >= 0 && s.resetDay <= 6) ? s.resetDay : DEFAULT_RESET_DAY;
+        var resetTime = /^\d{1,2}:\d{2}$/.test(s.resetTime) ? s.resetTime : DEFAULT_RESET_TIME;
+        state.settings = { resetDay: resetDay, resetTime: resetTime, lastReset: s.lastReset || null };
+        recomputeAll(); // derive totals + this-week from each log
+      } catch (e) {
+        console.error('Load failed', e);
+      }
+    }
+    function save() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ characters: state.characters, settings: state.settings }));
+      } catch (e) { console.error('Save failed', e); }
+    }
+
+    /* ---------- Currency catalog (for dropdown + auto-fill) ---------- */
+    // Built from every currency already added anywhere in the roster:
+    //   normalizedName -> { name, dungeon, cap }
+    var CATALOG = {};
+    function rebuildCatalog() {
+      CATALOG = {};
+      state.characters.forEach(function (char) {
+        char.currencies.forEach(function (cur) {
+          var key = normalizeKey(cur.name);
+          if (!key) return;
+          var entry = CATALOG[key] || { name: cur.name.trim(), dungeon: '', sourceType: '', weeklyCap: 0, totalCap: 0 };
+          if (!entry.dungeon && cur.dungeon) entry.dungeon = cur.dungeon;       // first non-empty source
+          if (!entry.sourceType && cur.sourceType) entry.sourceType = cur.sourceType; // first source type
+          if (!entry.weeklyCap && cur.weeklyCap) entry.weeklyCap = cur.weeklyCap; // first non-zero weekly cap
+          if (!entry.totalCap && cur.totalCap) entry.totalCap = cur.totalCap;    // first non-zero total cap
+          CATALOG[key] = entry;
+        });
+      });
+    }
+    function catalogByName(name) {
+      var key = normalizeKey(name);
+      return key && CATALOG[key] ? CATALOG[key] : null;
+    }
+    function renderDatalists() {
+      rebuildCatalog();
+      var names = Object.keys(CATALOG).map(function (k) { return CATALOG[k].name; })
+        .sort(function (a, b) { return a.localeCompare(b); });
+      var dungeonSet = {};
+      state.characters.forEach(function (char) {
+        char.currencies.forEach(function (cur) { if (cur.dungeon) dungeonSet[cur.dungeon] = true; });
+      });
+      var dungeons = Object.keys(dungeonSet).sort(function (a, b) { return a.localeCompare(b); });
+      document.getElementById('dc-currency-names').innerHTML =
+        names.map(function (n) { return '<option value="' + escapeHtml(n) + '">'; }).join('');
+      document.getElementById('dc-dungeon-names').innerHTML =
+        dungeons.map(function (n) { return '<option value="' + escapeHtml(n) + '">'; }).join('');
+    }
+
+    /* ---------- Grouping for Cap Status ---------- */
+    function computeGroups() {
+      var map = {};
+      state.characters.forEach(function (char) {
+        char.currencies.forEach(function (cur) {
+          var key = normalizeKey(cur.name);
+          if (!key) return;
+          if (!map[key]) {
+            map[key] = { key: key, name: cur.name.trim(), dungeon: cur.dungeon || '', sourceType: cur.sourceType || 'Dungeon', rows: [] };
+          }
+          if (!map[key].dungeon && cur.dungeon) map[key].dungeon = cur.dungeon;
+          var f = curFlags(cur);
+          // Sort/priority metric = what you can still gain before the relevant
+          // cap: this week's room if weekly-capped, else room to the total limit.
+          var remaining = f.weeklyOn ? f.weeklyRemaining : (f.totalOn ? f.totalRemaining : 0);
+          map[key].rows.push({
+            charName: char.name,
+            weeklyOn: f.weeklyOn, totalOn: f.totalOn,
+            weeklyEarned: cur.weeklyEarned, weeklyCap: cur.weeklyCap,
+            total: cur.total, totalCap: cur.totalCap,
+            weeklyCapped: f.weeklyCapped, totalCapped: f.totalCapped,
+            done: f.done, remaining: remaining
+          });
+        });
+      });
+      var arr = Object.keys(map).map(function (k) { return map[k]; });
+      arr.sort(function (a, b) { return a.name.localeCompare(b.name); });
+      return arr;
+    }
+
+    /* ---------- Render ---------- */
+    function render() {
+      recomputeAll(); // keep derived totals fresh (e.g. after the week rolls over)
+      renderWeekbar();
+      renderRoster();
+      renderGuide();
+      renderStats();
+      renderResetArea();
+      renderDatalists();
+    }
+
+    function renderStats() {
+      var chars = state.characters.length;
+      var uniqueCur = {};
+      var cappedCombos = 0;
+      var remainingTotal = 0;
+      state.characters.forEach(function (char) {
+        char.currencies.forEach(function (cur) {
+          var key = normalizeKey(cur.name);
+          if (key) uniqueCur[key] = true;
+          var f = curFlags(cur);
+          if (f.done) cappedCombos++;
+          remainingTotal += f.weeklyOn ? f.weeklyRemaining : (f.totalOn ? f.totalRemaining : 0);
+        });
+      });
+      var currCount = Object.keys(uniqueCur).length;
+      document.getElementById('dc-stats').style.display = chars > 0 ? '' : 'none';
+      document.getElementById('dc-stat-chars').textContent = chars;
+      document.getElementById('dc-stat-currencies').textContent = currCount;
+      document.getElementById('dc-stat-capped').textContent = cappedCombos;
+      document.getElementById('dc-stat-remaining').textContent = commafy(remainingTotal);
+      document.getElementById('dc-stat-capped-tile').classList.toggle('highlight', cappedCombos > 0);
+    }
+
+    function renderWeekbar() {
+      var sel = document.getElementById('dc-reset-day');
+      var html = '';
+      for (var i = 0; i < DAYS.length; i++) {
+        html += '<option value="' + i + '"' + (i === state.settings.resetDay ? ' selected' : '') + '>' + DAYS[i] + '</option>';
+      }
+      sel.innerHTML = html;
+      document.getElementById('dc-reset-time').value = state.settings.resetTime || DEFAULT_RESET_TIME;
+
+      var lastEl = document.getElementById('dc-last-reset');
+      var d = new Date(effectiveBoundaryMs());
+      lastEl.textContent = isNaN(d.getTime()) ? ''
+        : '· This week since ' + d.toLocaleDateString([], { month: 'short', day: 'numeric' }) + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    // One progress line: label + amount/cap + bar. `full` colours it green.
+    function progressLine(label, amount, cap, full) {
+      var pct = cap > 0 ? Math.min(100, (amount / cap) * 100) : 0;
+      var h = '';
+      h += '<div class="dc-meter">';
+      h +=   '<div class="dc-meter-head">';
+      h +=     '<span class="dc-meter-label">' + label + '</span>';
+      h +=     '<span class="dc-cur-row-amt' + (full ? ' full' : '') + '">' + commafy(amount) + ' / ' + commafy(cap) + (full ? ' ✓' : '') + '</span>';
+      h +=   '</div>';
+      h +=   '<div class="dc-bar-track"><div class="dc-bar-fill' + (full ? ' full' : '') + '" style="width:' + pct + '%;"></div></div>';
+      h += '</div>';
+      return h;
+    }
+
+    function renderCurrencyRow(char, cur) {
+      var f = curFlags(cur);
+      var h = '';
+      h += '<div class="dc-cur-row">';
+
+      // Header: name + remove
+      h +=   '<div class="dc-cur-row-head">';
+      h +=     '<span class="dc-cur-row-name">' + escapeHtml(cur.name || '(unnamed)') + '</span>';
+      h +=     '<span class="dc-cur-row-right">';
+      h +=       '<button class="dc-cur-x" data-action="del-cur" data-char="' + char.id + '" data-cur="' + cur.id + '" title="Remove currency" aria-label="Remove currency">&times;</button>';
+      h +=     '</span>';
+      h +=   '</div>';
+
+      // Weekly meter (only if this currency has a weekly cap)
+      if (f.weeklyOn) {
+        h += progressLine('This week', cur.weeklyEarned, cur.weeklyCap, f.weeklyCapped);
+      }
+      // Held / total: a capped meter if there's a storage limit, else a plain line
+      if (f.totalOn) {
+        h += progressLine('Held', cur.total, cur.totalCap, f.totalCapped);
+      } else {
+        h += '<div class="dc-held-line">Held: <strong>' + commafy(cur.total) + '</strong> <span class="dc-muted-note">(no storage limit)</span></div>';
+      }
+
+      // Single capture method: Update total. Every update is recorded in the log
+      // below (where entries can be fixed or deleted); the increase since the
+      // previous total is counted as earned this week.
+      h += '<div class="dc-cur-row-controls">';
+      h += '<button class="dc-log-btn dc-log-primary" data-action="set-total" data-char="' + char.id + '" data-cur="' + cur.id + '" title="Enter your new in-game total — the increase counts as earned this week">↺ Update total</button>';
+      h += '</div>';
+
+      h += renderHistory(char, cur);
+
+      h += '</div>';
+      return h;
+    }
+
+    // The update log for a currency: a collapsible list of every total update,
+    // each fixable or deletable. Held total + this-week are derived from it.
+    function renderHistory(char, cur) {
+      var hist = cur.history || [];
+      var open = uiState.collapsed['log::' + cur.id] === false; // default collapsed
+      var h = '';
+      h += '<div class="dc-log">';
+      h += '<button class="dc-log-toggle" data-action="toggle-log" data-char="' + char.id + '" data-cur="' + cur.id + '">' + (open ? '▾' : '▸') + ' Log (' + hist.length + ')</button>';
+      h += '<div class="dc-log-body"' + (open ? '' : ' style="display:none;"') + '>';
+      if (!hist.length) {
+        h += '<div class="dc-log-empty">No updates yet.</div>';
+      } else {
+        for (var i = hist.length - 1; i >= 0; i--) {
+          var e = hist[i];
+          var curTot = toInt(e.total);
+          var deltaHtml;
+          if (i === 0) {
+            deltaHtml = '<span class="dc-log-delta start">start</span>';
+          } else {
+            var d = curTot - toInt(hist[i - 1].total);
+            if (d > 0) deltaHtml = '<span class="dc-log-delta up">+' + commafy(d) + '</span>';
+            else if (d < 0) deltaHtml = '<span class="dc-log-delta down">−' + commafy(-d) + '</span>';
+            else deltaHtml = '<span class="dc-log-delta">±0</span>';
+          }
+          var when = e.at ? new Date(e.at) : null;
+          var whenStr = (when && !isNaN(when.getTime()) && e.at !== EPOCH)
+            ? (when.toLocaleDateString([], { month: 'short', day: 'numeric' }) + ' ' + when.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }))
+            : 'initial';
+          h += '<div class="dc-log-row">';
+          h += '<span class="dc-log-when">' + whenStr + '</span>';
+          h += '<span class="dc-log-total">' + commafy(curTot) + '</span>';
+          h += deltaHtml;
+          h += '<span class="dc-log-entry-actions">';
+          h += '<button class="dc-log-edit" data-action="edit-log" data-char="' + char.id + '" data-cur="' + cur.id + '" data-entry="' + e.id + '" title="Fix this number">✎</button>';
+          h += '<button class="dc-log-del" data-action="del-log" data-char="' + char.id + '" data-cur="' + cur.id + '" data-entry="' + e.id + '" title="Delete this entry">&times;</button>';
+          h += '</span>';
+          h += '</div>';
+        }
+      }
+      h += '</div></div>';
+      return h;
+    }
+
+    function renderRoster() {
+      var listEl = document.getElementById('dc-char-list');
+      var emptyEl = document.getElementById('dc-roster-empty');
+      if (state.characters.length === 0) {
+        listEl.innerHTML = '';
+        emptyEl.style.display = '';
+        return;
+      }
+      emptyEl.style.display = 'none';
+
+      var html = '';
+      state.characters.forEach(function (char) {
+        var capped = char.currencies.length > 0 && char.currencies.every(function (cur) {
+          return curFlags(cur).done;
+        });
+        var charOpen = uiState.collapsed['char::' + char.id] === false; // default collapsed
+        var curN = char.currencies.length;
+        var cappedN = char.currencies.filter(function (c) { return curFlags(c).done; }).length;
+        var charSummary = curN === 0 ? 'no currencies yet'
+          : (curN + ' currenc' + (curN === 1 ? 'y' : 'ies') + (cappedN > 0 ? ' · ' + cappedN + ' at cap' : ''));
+
+        html += '<div class="dc-char" data-char-id="' + char.id + '">';
+        html +=   '<div class="dc-char-head">';
+        html +=     '<button type="button" class="dc-char-toggle" data-action="toggle-char" data-char="' + char.id + '" aria-expanded="' + charOpen + '">';
+        html +=       '<span class="dc-caret">' + (charOpen ? '▾' : '▸') + '</span>';
+        html +=       '<span class="dc-char-name">' + escapeHtml(char.name) + '</span>';
+        html +=       '<span class="dc-char-summary">' + charSummary + '</span>';
+        html +=     '</button>';
+        html +=     '<div class="dc-char-actions" data-char-actions="' + char.id + '">';
+        if (capped) html += '<span class="dc-char-badge">All capped ⚜</span>';
+        html +=       '<button class="dc-link" data-action="del-char" data-id="' + char.id + '">Remove</button>';
+        html +=     '</div>';
+        html +=   '</div>';
+
+        html +=   '<div class="dc-char-body"' + (charOpen ? '' : ' style="display:none;"') + '>';
+
+        if (char.currencies.length === 0) {
+          html += '<div class="dc-inline-empty">No currencies yet — add one below.</div>';
+        } else {
+          // Group this character's currencies by source (first-appearance order),
+          // each source a collapsible section.
+          var order = [];
+          var groups = {};
+          char.currencies.forEach(function (cur) {
+            var dkey = normalizeKey(cur.dungeon || '');
+            if (!groups[dkey]) { groups[dkey] = { label: (cur.dungeon || '(no source)'), sourceType: cur.sourceType || 'Dungeon', items: [] }; order.push(dkey); }
+            groups[dkey].items.push(cur);
+          });
+          order.forEach(function (dkey) {
+            var g = groups[dkey];
+            var collapsed = !!uiState.collapsed[char.id + '::' + dkey];
+            var cappedN = g.items.filter(function (c) { return curFlags(c).done; }).length;
+            var totalN = g.items.length;
+            var allCap = totalN > 0 && cappedN === totalN;
+            html += '<div class="dc-dungeon-group">';
+            html +=   '<div class="dc-dungeon-header">';
+            html +=     '<button type="button" class="dc-dungeon-toggle" data-action="toggle-dungeon" data-char="' + char.id + '" data-dkey="' + escapeHtml(dkey) + '" aria-expanded="' + (!collapsed) + '">';
+            html +=       '<span class="dc-caret">' + (collapsed ? '▸' : '▾') + '</span>';
+            html +=       '<span class="dc-dungeon-title">' + escapeHtml(g.label) + '</span>';
+            html +=       '<span class="dc-dungeon-meta' + (allCap ? ' done' : '') + '">' + cappedN + '/' + totalN + ' capped</span>';
+            html +=     '</button>';
+            html +=     srcBadgeHtml(g.sourceType, dkey);
+            html +=     '<button type="button" class="dc-src-edit" data-action="rename-source" data-dkey="' + escapeHtml(dkey) + '" title="Rename this source (dungeon/campaign name)">✎</button>';
+            html +=   '</div>';
+            html +=   '<div class="dc-dungeon-body"' + (collapsed ? ' style="display:none;"' : '') + '>';
+            g.items.forEach(function (cur) { html += renderCurrencyRow(char, cur); });
+            html +=   '</div>';
+            html += '</div>';
+          });
+        }
+
+        // Add-currency row for this character. Currency is a dropdown of
+        // currencies already added anywhere in the roster (type a new one to
+        // create it); picking a known currency auto-fills source, type + caps.
+        // Source is a dungeon or campaign; Weekly cap and Total limit are each
+        // optional (blank = none). "Have now" is the current total held.
+        var typeOpts = SOURCE_TYPES.map(function (t) { return '<option value="' + t + '">' + t + '</option>'; }).join('');
+        html += '<div class="dc-row dc-add-cur">';
+        html +=   '<input type="text" class="dc-input dc-di-name" data-cur-name="' + char.id + '" list="dc-currency-names" autocomplete="off" placeholder="Currency (pick or type new)…" maxlength="60">';
+        html +=   '<input type="text" class="dc-input dc-di-dungeon" data-cur-dungeon="' + char.id + '" list="dc-dungeon-names" autocomplete="off" placeholder="Source (dungeon or campaign)" maxlength="60">';
+        html +=   '<select class="dc-select dc-di-type" data-cur-type="' + char.id + '" title="Where this currency comes from">' + typeOpts + '</select>';
+        html +=   '<input type="number" class="dc-input dc-di-cap" data-cur-weekly="' + char.id + '" placeholder="Weekly cap" min="0" step="1" title="Weekly earning cap — leave blank if none">';
+        html +=   '<input type="number" class="dc-input dc-di-cap" data-cur-total="' + char.id + '" placeholder="Total limit" min="0" step="1" title="Total storage limit — leave blank if unlimited">';
+        html +=   '<input type="number" class="dc-input dc-di-earned" data-cur-have="' + char.id + '" placeholder="Have now" min="0" step="1" title="How much this character holds right now (total)">';
+        html +=   '<button class="dc-btn dc-btn-ghost" data-action="add-cur" data-id="' + char.id + '">+ Add</button>';
+        html += '</div>';
+
+        html +=   '</div>'; // end dc-char-body
+        html += '</div>';   // end dc-char
+      });
+      listEl.innerHTML = html;
+    }
+
+    function renderGuide() {
+      var listEl = document.getElementById('dc-guide-list');
+      var emptyEl = document.getElementById('dc-guide-empty');
+      var introEl = document.getElementById('dc-guide-intro');
+
+      var groups = computeGroups();
+
+      if (groups.length === 0) {
+        listEl.innerHTML = '';
+        emptyEl.classList.remove('complete');
+        emptyEl.textContent = 'Add characters and their currencies to see who to farm next.';
+        emptyEl.style.display = '';
+        introEl.style.display = 'none';
+        return;
+      }
+
+      // Flat list of currencies with a search box (name or source) + type filter,
+      // so a big roster stays manageable.
+      var q = (guideSearch || '').toLowerCase().trim();
+      var typeFilter = guideFilter || 'all';
+      var filtered = groups.filter(function (g) {
+        if (typeFilter !== 'all' && normalizeSourceType(g.sourceType) !== typeFilter) return false;
+        if (q && (((g.name || '') + ' ' + (g.dungeon || '')).toLowerCase().indexOf(q) === -1)) return false;
+        return true;
+      });
+      filtered.sort(function (a, b) { return a.name.localeCompare(b.name); });
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = '';
+        emptyEl.classList.remove('complete');
+        emptyEl.textContent = 'No currencies match your search or filter.';
+        emptyEl.style.display = '';
+        introEl.style.display = 'none';
+        return;
+      }
+      emptyEl.style.display = 'none';
+      introEl.style.display = '';
+
+      var html = '';
+      filtered.forEach(function (g) { html += renderGuideCurrency(g); });
+      listEl.innerHTML = html;
+    }
+
+    // One currency's cross-character farm block for the Cap Status panel.
+    function renderGuideCurrency(g) {
+      var rows = g.rows.slice();
+      rows.sort(function (a, b) {
+        if (a.done !== b.done) return a.done ? 1 : -1;
+        if (b.remaining !== a.remaining) return b.remaining - a.remaining;
+        return a.charName.localeCompare(b.charName);
+      });
+      var doneCount = rows.filter(function (r) { return r.done; }).length;
+      var allDone = doneCount === rows.length;
+      var recommendIdx = allDone ? -1 : 0;
+
+      var open = uiState.collapsed['guidecur::' + g.key] === false; // default collapsed
+      var h = '';
+      h += '<div class="dc-guide-cur">';
+      h +=   '<div class="dc-guide-head">';
+      h +=     '<button type="button" class="dc-guide-toggle" data-action="toggle-guide-cur" data-curkey="' + escapeHtml(g.key) + '" aria-expanded="' + open + '">';
+      h +=       '<span class="dc-caret">' + (open ? '▾' : '▸') + '</span>';
+      h +=       '<span class="dc-guide-title">' + escapeHtml(g.name || '(unnamed)') + '</span>';
+      h +=       (g.dungeon ? '<span class="dc-dungeon-tag">' + escapeHtml(g.dungeon) + '</span>' : '');
+      h +=       '<span class="dc-guide-summary' + (allDone ? ' done' : '') + '">' + doneCount + ' / ' + rows.length + ' capped</span>';
+      h +=     '</button>';
+      h +=     srcBadgeHtml(g.sourceType, normalizeKey(g.dungeon || ''));
+      h +=   '</div>';
+      h +=   '<div class="dc-guide-body"' + (open ? '' : ' style="display:none;"') + '>';
+      rows.forEach(function (r, i) {
+        var pct = r.weeklyOn ? Math.min(100, (r.weeklyEarned / r.weeklyCap) * 100)
+                : (r.totalOn ? Math.min(100, (r.total / r.totalCap) * 100) : 0);
+        var cls = 'dc-guide-char' + (r.done ? ' capped' : (i === recommendIdx ? ' recommend' : ''));
+        var amt;
+        if (r.done) {
+          amt = r.totalCapped && !r.weeklyCapped ? 'storage full ✓'
+              : (r.weeklyCapped && !r.totalCapped ? 'weekly cap ✓' : 'capped ✓');
+        } else {
+          amt = r.weeklyOn ? commafy(r.remaining) + ' left this week'
+              : (r.totalOn ? commafy(r.remaining) + ' to limit' : 'no cap');
+        }
+        h += '<div class="' + cls + '">';
+        h +=   '<span class="dc-guide-char-name">' + escapeHtml(r.charName) +
+                 (i === recommendIdx ? '<span class="dc-farm-flag">farm next</span>' : '') + '</span>';
+        h +=   '<span class="dc-guide-char-bar"><span class="dc-bar-track"><span class="dc-bar-fill' + (r.done ? ' full' : '') + '" style="width:' + pct + '%;"></span></span></span>';
+        h +=   '<span class="dc-guide-char-amt' + (r.done ? ' full' : '') + '">' + amt + '</span>';
+        h += '</div>';
+      });
+      h +=   '</div>'; // end dc-guide-body
+      h += '</div>';   // end dc-guide-cur
+      return h;
+    }
+
+    function renderResetArea() {
+      var el = document.getElementById('dc-reset-area');
+      if (state.characters.length === 0) { el.innerHTML = ''; return; }
+      el.innerHTML = '<button class="dc-link muted" id="dc-clear-btn">clear all data</button>';
+      document.getElementById('dc-clear-btn').addEventListener('click', confirmClear);
+    }
+    function confirmClear() {
+      var el = document.getElementById('dc-reset-area');
+      el.innerHTML =
+        '<span style="color:rgba(232, 217, 176, 0.75);font-size:0.85rem;font-style:italic;">Erase all characters and currencies? </span>' +
+        '<button class="dc-link confirm" id="dc-clear-yes">yes, erase</button>' +
+        '<span style="color:rgba(232, 217, 176, 0.3);"> · </span>' +
+        '<button class="dc-link cancel" id="dc-clear-no">cancel</button>';
+      document.getElementById('dc-clear-yes').addEventListener('click', function () {
+        state.characters = []; save(); render();
+      });
+      document.getElementById('dc-clear-no').addEventListener('click', renderResetArea);
+    }
+
+    /* ---------- Actions ---------- */
+    function addCharacter() {
+      var input = document.getElementById('dc-new-char');
+      var name = input.value.trim();
+      if (!name) return;
+      var id = newId('c');
+      state.characters.push({ id: id, name: name, currencies: [] });
+      uiState.collapsed['char::' + id] = false; // expand the new character so you can add to it
+      saveUi();
+      input.value = '';
+      save(); render();
+    }
+    function deleteCharacterPrompt(id) {
+      var actionsEl = document.querySelector('[data-char-actions="' + id + '"]');
+      if (!actionsEl) return;
+      actionsEl.innerHTML =
+        '<span style="color:rgba(232, 217, 176, 0.75);font-style:italic;">Sure? </span>' +
+        '<button class="dc-link confirm" data-action="del-char-yes" data-id="' + id + '">yes</button>' +
+        '<button class="dc-link cancel" data-action="del-char-no" data-id="' + id + '">no</button>';
+    }
+    function confirmDeleteCharacter(id) {
+      state.characters = state.characters.filter(function (c) { return c.id !== id; });
+      save(); render();
+    }
+
+    function addCurrency(charId) {
+      var char = findChar(charId);
+      if (!char) return;
+      var nameEl = document.querySelector('[data-cur-name="' + charId + '"]');
+      var dungeonEl = document.querySelector('[data-cur-dungeon="' + charId + '"]');
+      var typeEl = document.querySelector('[data-cur-type="' + charId + '"]');
+      var weeklyEl = document.querySelector('[data-cur-weekly="' + charId + '"]');
+      var totalEl = document.querySelector('[data-cur-total="' + charId + '"]');
+      var haveEl = document.querySelector('[data-cur-have="' + charId + '"]');
+      if (!nameEl) return;
+      var name = nameEl.value.trim();
+      if (!name) { nameEl.focus(); return; }
+      // Guarantee source + type + caps come from the chosen currency even if the
+      // on-screen auto-fill didn't run: fall back to the catalog for blanks.
+      var known = catalogByName(name);
+      var dungeon = (dungeonEl && dungeonEl.value.trim()) ? dungeonEl.value.trim() : (known ? known.dungeon : '');
+      var sourceType = normalizeSourceType(typeEl ? typeEl.value : '');
+      if (known && known.sourceType) sourceType = normalizeSourceType(known.sourceType);
+      var weeklyCap = weeklyEl ? toInt(weeklyEl.value) : 0;
+      if (!weeklyCap && known && known.weeklyCap) weeklyCap = known.weeklyCap;
+      var totalCap = totalEl ? toInt(totalEl.value) : 0;
+      if (!totalCap && known && known.totalCap) totalCap = known.totalCap;
+      var have = haveEl ? toInt(haveEl.value) : 0;
+      var cur = {
+        id: newId('cur'),
+        dungeon: dungeon,
+        sourceType: sourceType,
+        name: name,
+        weeklyCap: weeklyCap,
+        totalCap: totalCap,
+        // Seed the log with a baseline "start" entry = what they hold now. A
+        // baseline never counts as this week's earnings.
+        history: [{ id: newId('h'), at: new Date().toISOString(), total: have }],
+        total: 0,
+        weeklyEarned: 0
+      };
+      recomputeCurrency(cur);
+      char.currencies.push(cur);
+      // Keep the character and this source expanded, so the new currency shows.
+      uiState.collapsed['char::' + charId] = false;
+      uiState.collapsed[dungeonCollapseKey(charId, dungeon)] = false;
+      saveUi();
+      save(); render();
+      var again = document.querySelector('[data-cur-name="' + charId + '"]');
+      if (again) again.focus();
+    }
+    function deleteCurrency(charId, curId) {
+      var char = findChar(charId);
+      if (!char) return;
+      char.currencies = char.currencies.filter(function (c) { return c.id !== curId; });
+      save(); render();
+    }
+    // Cycle a source's type to the next option, across EVERY currency from that
+    // source (a source's type is the same everywhere). dkey = normalized name.
+    function cycleSourceType(dkey) {
+      var current = null;
+      state.characters.forEach(function (c) {
+        c.currencies.forEach(function (cur) {
+          if (current === null && normalizeKey(cur.dungeon || '') === dkey) current = cur.sourceType;
+        });
+      });
+      if (current === null) return;
+      var next = SOURCE_TYPES[(SOURCE_TYPES.indexOf(normalizeSourceType(current)) + 1) % SOURCE_TYPES.length];
+      state.characters.forEach(function (c) {
+        c.currencies.forEach(function (cur) {
+          if (normalizeKey(cur.dungeon || '') === dkey) cur.sourceType = next;
+        });
+      });
+      save(); render();
+    }
+    // Rename a source across EVERY currency from it (a source's name is shared).
+    function renameSource(dkey) {
+      var current = '';
+      state.characters.forEach(function (c) {
+        c.currencies.forEach(function (cur) {
+          if (!current && normalizeKey(cur.dungeon || '') === dkey) current = cur.dungeon;
+        });
+      });
+      var raw = window.prompt('Rename this source (the dungeon / campaign / trial name):', current);
+      if (raw === null) return;
+      var name = raw.trim();
+      state.characters.forEach(function (c) {
+        c.currencies.forEach(function (cur) {
+          if (normalizeKey(cur.dungeon || '') === dkey) cur.dungeon = name;
+        });
+      });
+      save(); render();
+    }
+    // The one capture method: record your new in-game total. This appends a log
+    // entry; the increase vs. the previous total is credited to this week, a
+    // decrease (spending) just lowers the held total. Totals are derived from
+    // the log, so this stays correct even after entries are fixed or deleted.
+    function updateTotal(charId, curId) {
+      var char = findChar(charId);
+      var cur = findCur(char, curId);
+      if (!char || !cur) return;
+      var raw = window.prompt(
+        "What is " + char.name + "'s current TOTAL " + (cur.name || 'currency') + " now?\n" +
+        "(The tracker has " + commafy(cur.total) + " — the increase counts as earned this week.)",
+        String(cur.total)
+      );
+      if (raw === null) return;
+      cur.history.push({ id: newId('h'), at: new Date().toISOString(), total: toInt(raw) });
+      recomputeCurrency(cur);
+      save(); render();
+    }
+    // Fix a fat-fingered log entry: change its recorded total; everything
+    // recomputes from the corrected log.
+    function editHistoryEntry(charId, curId, entryId) {
+      var cur = findCur(findChar(charId), curId);
+      if (!cur) return;
+      var e = null;
+      for (var i = 0; i < cur.history.length; i++) { if (cur.history[i].id === entryId) { e = cur.history[i]; break; } }
+      if (!e) return;
+      var raw = window.prompt('Fix this log entry — what should the total have been?', String(e.total));
+      if (raw === null) return;
+      e.total = toInt(raw);
+      recomputeCurrency(cur);
+      save(); render();
+    }
+    // Delete a log entry (e.g. a mistaken update); totals recompute.
+    function deleteHistoryEntry(charId, curId, entryId) {
+      var cur = findCur(findChar(charId), curId);
+      if (!cur) return;
+      cur.history = cur.history.filter(function (h) { return h.id !== entryId; });
+      recomputeCurrency(cur);
+      save(); render();
+    }
+
+    /* ---------- Events ---------- */
+    document.getElementById('dc-add-char-btn').addEventListener('click', addCharacter);
+    document.getElementById('dc-new-char').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') addCharacter();
+    });
+    // Cap Status search + filter
+    (function () {
+      var sel = document.getElementById('dc-guide-filter');
+      var opts = '<option value="all">All types</option>';
+      SOURCE_TYPES.forEach(function (t) { opts += '<option value="' + t + '">' + t + '</option>'; });
+      sel.innerHTML = opts;
+      sel.addEventListener('change', function (e) { guideFilter = e.target.value; renderGuide(); });
+      document.getElementById('dc-guide-search').addEventListener('input', function (e) { guideSearch = e.target.value; renderGuide(); });
+    })();
+
+    document.getElementById('dc-reset-now').addEventListener('click', manualResetWeek);
+    document.getElementById('dc-reset-day').addEventListener('change', function (e) {
+      var v = parseInt(e.target.value, 10);
+      if (isNaN(v)) return;
+      state.settings.resetDay = v;
+      save(); render(); // render() recomputes this-week against the new boundary
+    });
+    document.getElementById('dc-reset-time').addEventListener('change', function (e) {
+      var t = e.target.value;
+      if (!/^\d{1,2}:\d{2}$/.test(t)) return;
+      state.settings.resetTime = t;
+      save(); render();
+    });
+
+    document.body.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-action]');
+      if (!btn) return;
+      if (btn.tagName === 'SELECT' || btn.tagName === 'INPUT') return;
+      var action = btn.getAttribute('data-action');
+      var id = btn.getAttribute('data-id');
+      var charId = btn.getAttribute('data-char');
+      var curId = btn.getAttribute('data-cur');
+
+      if (action === 'del-char') deleteCharacterPrompt(id);
+      else if (action === 'del-char-yes') confirmDeleteCharacter(id);
+      else if (action === 'del-char-no') render();
+      else if (action === 'add-cur') addCurrency(id);
+      else if (action === 'del-cur') deleteCurrency(charId, curId);
+      else if (action === 'set-total') updateTotal(charId, curId);
+      else if (action === 'edit-log') editHistoryEntry(charId, curId, btn.getAttribute('data-entry'));
+      else if (action === 'del-log') deleteHistoryEntry(charId, curId, btn.getAttribute('data-entry'));
+      else if (action === 'toggle-log') {
+        // Toggle the log open/closed in place (no full re-render).
+        var lkey = 'log::' + curId;
+        var nowCollapsed = (uiState.collapsed[lkey] === false); // currently open → collapse
+        uiState.collapsed[lkey] = nowCollapsed;
+        saveUi();
+        var body = btn.nextElementSibling;
+        if (body) body.style.display = nowCollapsed ? 'none' : '';
+        btn.textContent = (nowCollapsed ? '▸' : '▾') + btn.textContent.slice(1);
+      }
+      else if (action === 'toggle-dungeon' || action === 'toggle-guide') {
+        // Toggle in place (no full re-render) so any half-typed add-currency
+        // fields elsewhere aren't wiped. Roster groups key on the character;
+        // Cap Status groups are cross-character (guide:: namespace).
+        var dkey = btn.getAttribute('data-dkey');
+        var key = (action === 'toggle-guide') ? ('guide::' + dkey) : (charId + '::' + dkey);
+        var nowCollapsed = !uiState.collapsed[key];
+        uiState.collapsed[key] = nowCollapsed;
+        saveUi();
+        var header = btn.closest('.dc-dungeon-header');
+        var body = header ? header.nextElementSibling : null;
+        if (body) body.style.display = nowCollapsed ? 'none' : '';
+        var caret = btn.querySelector('.dc-caret');
+        if (caret) caret.textContent = nowCollapsed ? '▸' : '▾';
+        btn.setAttribute('aria-expanded', String(!nowCollapsed));
+      }
+      else if (action === 'cycle-source-type') cycleSourceType(btn.getAttribute('data-dkey'));
+      else if (action === 'rename-source') renameSource(btn.getAttribute('data-dkey'));
+      else if (action === 'toggle-char' || action === 'toggle-guide-cur') {
+        // These default to COLLAPSED (open only when explicitly === false).
+        var ckey = (action === 'toggle-char') ? ('char::' + charId) : ('guidecur::' + btn.getAttribute('data-curkey'));
+        var newOpen = !(uiState.collapsed[ckey] === false);
+        uiState.collapsed[ckey] = newOpen ? false : true;
+        saveUi();
+        var head = btn.closest(action === 'toggle-char' ? '.dc-char-head' : '.dc-guide-head');
+        var body = head ? head.nextElementSibling : null;
+        if (body) body.style.display = newOpen ? '' : 'none';
+        var caret = btn.querySelector('.dc-caret');
+        if (caret) caret.textContent = newOpen ? '▾' : '▸';
+        btn.setAttribute('aria-expanded', String(newOpen));
+      }
+    });
+
+    // Enter inside a card's add-currency inputs adds the currency.
+    document.body.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter') return;
+      var el = e.target;
+      var addFrom = el.getAttribute('data-cur-name') || el.getAttribute('data-cur-dungeon') ||
+                    el.getAttribute('data-cur-type') || el.getAttribute('data-cur-weekly') ||
+                    el.getAttribute('data-cur-total') || el.getAttribute('data-cur-have');
+      if (addFrom) addCurrency(addFrom);
+    });
+
+    // The currency drives its source. When a KNOWN currency is chosen, its
+    // source name + type are auto-filled AND locked so a currency can't be
+    // accidentally attributed to the wrong place; its caps are filled too.
+    // Only a brand-new currency leaves the source editable, so that's the one
+    // place you say where a currency comes from. Fires on 'input' (typing /
+    // clicking a datalist suggestion) and 'change' (browser insurance).
+    function syncCurrencyRow(e) {
+      var el = e.target;
+      if (!el || !el.getAttribute) return;
+      var charId = el.getAttribute('data-cur-name');
+      if (!charId) return;
+      var dEl = document.querySelector('[data-cur-dungeon="' + charId + '"]');
+      var typeEl = document.querySelector('[data-cur-type="' + charId + '"]');
+      var wEl = document.querySelector('[data-cur-weekly="' + charId + '"]');
+      var tEl = document.querySelector('[data-cur-total="' + charId + '"]');
+      var cat = catalogByName(el.value);
+      if (cat) {
+        // Source name + type are LOCKED to a known currency (can't be mis-assigned).
+        if (dEl) {
+          dEl.value = cat.dungeon;
+          dEl.readOnly = true;
+          dEl.classList.add('dc-locked');
+          dEl.title = 'Source is set by the currency "' + cat.name + '"';
+          dEl.placeholder = '';
+        }
+        if (typeEl) {
+          typeEl.value = normalizeSourceType(cat.sourceType);
+          typeEl.disabled = true;
+          typeEl.classList.add('dc-locked');
+        }
+        // Caps auto-fill from the currency but stay editable, so a genuine
+        // correction is always possible. Blank = that cap doesn't apply.
+        if (wEl) wEl.value = cat.weeklyCap ? cat.weeklyCap : '';
+        if (tEl) tEl.value = cat.totalCap ? cat.totalCap : '';
+      } else {
+        if (dEl) {
+          if (dEl.readOnly) dEl.value = ''; // was locked to a known currency — clear the stale source
+          dEl.readOnly = false;
+          dEl.classList.remove('dc-locked');
+          dEl.title = '';
+          dEl.placeholder = 'Source (dungeon or campaign)';
+        }
+        if (typeEl) { typeEl.disabled = false; typeEl.classList.remove('dc-locked'); }
+      }
+    }
+    document.body.addEventListener('input', syncCurrencyRow);
+    document.body.addEventListener('change', syncCurrencyRow);
+
+    /* ---------- Backup / Restore ---------- */
+    function showBackupMsg(text, isError) {
+      var el = document.getElementById('dc-backup-msg');
+      el.textContent = text;
+      el.classList.toggle('error', !!isError);
+      el.classList.remove('fade');
+      clearTimeout(el._fadeTimer);
+      el._fadeTimer = setTimeout(function () { el.classList.add('fade'); }, 5000);
+    }
+    function exportBackup() {
+      if (state.characters.length === 0) {
+        showBackupMsg('Nothing to back up yet.', true);
+        return;
+      }
+      var payload = {
+        app: 'nw-dungeon-currency',
+        version: 3,
+        exportedAt: new Date().toISOString(),
+        characters: state.characters,
+        settings: state.settings
+      };
+      var json = JSON.stringify(payload, null, 2);
+      var blob = new Blob([json], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      var date = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = 'nw-dungeon-currency-' + date + '.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      showBackupMsg('Backup downloaded. Save it somewhere safe!');
+    }
+    function importBackup(file) {
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        try {
+          var data = JSON.parse(e.target.result);
+          if (!Array.isArray(data.characters)) throw new Error('File is not a Dungeon Currency Tracker backup.');
+          if (state.characters.length > 0) {
+            var ok = confirm('Importing will REPLACE your current data with the backup file.\n\nContinue?');
+            if (!ok) { showBackupMsg('Import cancelled.'); return; }
+          }
+          // Stage into storage so load()'s normalization + migration handles it.
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            characters: data.characters,
+            currencies: data.currencies, // may exist in a v1 backup; load() migrates it
+            settings: data.settings || { resetDay: DEFAULT_RESET_DAY, resetTime: DEFAULT_RESET_TIME, lastReset: null }
+          }));
+          load(); // recomputes derived totals from each log
+          save();
+          render();
+          showBackupMsg('Restored ' + state.characters.length + ' character(s) from backup.');
+        } catch (err) {
+          showBackupMsg('Import failed: ' + err.message, true);
+        }
+      };
+      reader.onerror = function () { showBackupMsg('Could not read file.', true); };
+      reader.readAsText(file);
+    }
+    document.getElementById('dc-export-btn').addEventListener('click', exportBackup);
+    document.getElementById('dc-import-btn').addEventListener('click', function () {
+      document.getElementById('dc-import-file').click();
+    });
+    document.getElementById('dc-import-file').addEventListener('change', function (e) {
+      var file = e.target.files && e.target.files[0];
+      importBackup(file);
+      e.target.value = '';
+    });
+
+    /* ---------- Init ---------- */
+    load();   // recomputes derived totals from each log
+    loadUi();
+    render();
+
+    if (typeof renderNav === 'function') {
+      try { renderNav(''); } catch (e) {}
+    }
+  </script>
+</body>
+</html>
