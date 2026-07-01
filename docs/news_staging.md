@@ -28,6 +28,16 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Works for both character and companion enchantments. (Reports #164 & #165.)
 
 ### Bug Fixes
+- **Toon Forge — healer math now matches the game's own Overall Outgoing Healing rule.**
+  The in-game tooltip defines the Overall Outgoing Healing boost as your Outgoing
+  Healing stat **plus** any other healing modifiers — one combined bonus (e.g.
+  105.3% + 6% = +111.3%, verified against an in-game Oathkeeper panel). The heal
+  simulator was applying them as two separate multipliers instead, which slightly
+  inflated per-cast heals and made the optimizer over-value "Overall Outgoing
+  Healing" gear/set bonuses (they looked ~2× as good as they really are at
+  endgame). Healing now uses the game's additive rule, so healer optimizer picks
+  shift a little toward Power and Critical Severity — matching what actually
+  heals harder in game.
 - **Stable Planner — mounts with preferred slots are now recommended first.**
   The planner's help text always promised that ★ mounts (preferred slot filled
   with its preferred type = +20% item level & stats on that insignia) are listed

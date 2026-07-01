@@ -16645,10 +16645,13 @@
     }
 
     // HEALER: expected heal per cast.
-    //   Heal = base × (1 + Power) × (1 + Outgoing Healing) × (1 + Overall
-    //   Outgoing Healing) × (1 + CritSev/2 on crit — halved for heals).
-    //   OOH is the UNCAPPED off-panel multiplier (see mekaniks / OH-vs-OOH
-    //   docs) — the healer equivalent of the DPS uncapped damage bonuses.
+    //   Heal = base × (1 + Power) × (1 + Outgoing Healing + Overall Outgoing
+    //   Healing) × (1 + CritSev/2 on crit — halved for heals).
+    //   The in-game "Overall Outgoing Healing" boost is defined by its own
+    //   tooltip as "your Outgoing Healing stat plus any other modifiers" —
+    //   ONE additive pool applied once (Erik's Oathkeeper panel 2026-05-11:
+    //   105.3% OH + 6% Dark Matter = +111.3% total). The standalone-OOH part
+    //   stays uncapped past OH's 120 cap; it is NOT a second multiplier.
     function computeHealExpectedHeal(mag) {
       const r = getEngineResult();
       const TIL = r.totalItemLevel || 0;
@@ -16659,7 +16662,7 @@
       const power = stat("Power"), outgoing = stat("Outgoing Healing"),
             ooh = stat("Overall Outgoing Healing"),
             critSev = stat("Critical Severity"), critStrike = stat("Critical Strike");
-      const healMult = (1 + power) * (1 + outgoing) * (1 + ooh);
+      const healMult = (1 + power) * (1 + outgoing + ooh);
       const critHealMult = (1 + critSev / 2);
       const baseHeal = baseVal * healMult;
       const critHeal = baseVal * healMult * critHealMult;
