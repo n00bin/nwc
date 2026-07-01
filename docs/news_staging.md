@@ -31,13 +31,17 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - **Stable Planner — mounts with preferred slots are now recommended first.**
   The planner's help text always promised that ★ mounts (preferred slot filled
   with its preferred type = +20% item level & stats on that insignia) are listed
-  first — but for every 3-insignia bonus the sorting actually buried them below
-  all the plain 3-slot mounts, so the ★ pick never appeared. Preferred-slot
-  mounts now genuinely come first (e.g. **Gladiator's Guile** now recommends
-  **Snowtusk ★** instead of a starless 3-slot mount). Also, if the only mount
-  that can activate a bonus's preferred slot is one you've excluded, the plan
-  now says so — instead of silently recommending a lesser pick — and hovering
-  the ★ explains what it means.
+  first — but two different sorting rules could bury them. For every 3-insignia
+  bonus, plain 3-slot mounts outranked the ★ mounts, so the ★ pick never
+  appeared (e.g. **Gladiator's Guile** now recommends **Snowtusk ★** instead of
+  a starless 3-slot mount). And when a mount was already recommended for a
+  bonus in another loadout, "reuse that mount" outranked ★ too — e.g. with
+  bonuses in two loadouts, **Tactician's Precision** recommended a starless
+  Bestial Fire Archon over **Snowtusk ★**. Preferred-slot mounts now genuinely
+  come first; reusing a mount across loadouts only breaks ties between equally
+  starred picks. Also, if the only mount that can activate a bonus's preferred
+  slot is one you've excluded, the plan now says so — instead of silently
+  recommending a lesser pick — and hovering the ★ explains what it means.
   All **6 upgrade ranks** (IL 3,400–5,250) are now in the database for **both** the main
   hand and off hand, with accurate set bonuses. The always-on bonus is a flat **+7,700
   Critical Severity** at the lowest ranks and converts to **percentages** higher up (up to

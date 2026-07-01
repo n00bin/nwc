@@ -1553,23 +1553,35 @@
           if (bonusActivatesPreferred(xm, r.bonus)) excludedPrefNames.push(xm.name);
         }
       }
-      var crossUsed = [];   // already picked for a bonus in a different loadout — preferred (saves a mount)
-      var fresh = [];       // never picked
-      var conflicting = []; // already picked for a different bonus in a loadout that also wants this one — last resort
+      // Group each candidate: 'cross' = already picked for a bonus in a
+      // different loadout (reusing it saves owning a mount), 'fresh' = never
+      // picked, 'conflict' = already picked for a different bonus in a
+      // loadout that also wants this one — last resort.
+      var nonConflict = [];
+      var conflicting = [];
       for (var ci = 0; ci < candidates.length; ci++) {
-        var deployed = mountLoadoutUsage[candidates[ci].mount.id];
-        if (!deployed) { fresh.push(candidates[ci]); continue; }
+        var cnd = candidates[ci];
+        var deployed = mountLoadoutUsage[cnd.mount.id];
+        if (!deployed) { cnd.group = "fresh"; nonConflict.push(cnd); continue; }
         var conflict = false;
         for (var lid in wantedLoadouts) {
           if (deployed[lid]) { conflict = true; break; }
         }
-        if (conflict) conflicting.push(candidates[ci]);
-        else crossUsed.push(candidates[ci]);
+        if (conflict) { cnd.group = "conflict"; conflicting.push(cnd); }
+        else { cnd.group = "cross"; nonConflict.push(cnd); }
       }
-      var ordered = crossUsed.concat(fresh).concat(conflicting);
+      // A preferred-slot (★) mount outranks cross-loadout reuse: +20% IL &
+      // stats beats saving one stable slot. Reuse only breaks ties between
+      // equally-starred mounts. Stable sort keeps getCandidateMounts order
+      // (exact slot count, then name) within ties; conflicts stay last.
+      nonConflict.sort(function (a, b) {
+        if (a.preferred !== b.preferred) return a.preferred ? -1 : 1;
+        var aCross = a.group === "cross" ? 0 : 1;
+        var bCross = b.group === "cross" ? 0 : 1;
+        return aCross - bCross;
+      });
+      var ordered = nonConflict.concat(conflicting);
       var recommended = ordered.slice(0, minMounts);
-      var forcedReuseStart = crossUsed.length + fresh.length;
-      var sharedReuseEnd = Math.min(crossUsed.length, recommended.length);
       for (var ui = 0; ui < recommended.length; ui++) {
         var rmid = recommended[ui].mount.id;
         if (!mountLoadoutUsage[rmid]) mountLoadoutUsage[rmid] = {};
@@ -1614,8 +1626,8 @@
         for (var rec = 0; rec < recommended.length; rec++) {
           var cand = recommended[rec];
           var prefStr = cand.preferred ? ' <span title="Preferred slot active with this bonus: that insignia gets +20% item level &amp; stats" style="color:var(--highlight);">&#9733;</span>' : '';
-          var isForced = rec >= forcedReuseStart;
-          var isShared = rec < sharedReuseEnd;
+          var isForced = cand.group === "conflict";
+          var isShared = cand.group === "cross";
           var borderColor = isForced ? '#d29922' : (isShared ? '#3fb950' : 'var(--accent,#58a6ff)');
           var pickTitle = '';
           if (isForced) pickTitle = ' title="Already picked for another bonus in a loadout that also wants this one — not enough distinct mounts available."';
