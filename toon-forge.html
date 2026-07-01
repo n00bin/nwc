@@ -14600,9 +14600,13 @@
           const slotLabel = isActive
             ? `<strong style="color:var(--gold)">slot ${slotNum}</strong>`
             : `next slot would be <strong>${slotNum}</strong>`;
+          // Progressive ranks: rank k unlocks effect k; "/rank" only when the
+          // in-game wording says the amount scales with ranks purchased.
           const effSummary = (b.perRankEffects || [])
             .filter(e => e.type === "percent" && e.scope !== "enemy")
-            .map(e => `${e.amount > 0 ? "+" : ""}${e.amount}% ${e.stat}/rank`)
+            .map(e => (e.unlockRank ? `R${e.unlockRank}: ` : "")
+              + `${e.amount > 0 ? "+" : ""}${e.amount}% ${e.stat}`
+              + (e.scalesPerRank || !e.unlockRank ? "/rank" : ""))
             .join(", ") || "specials";
           html += `<div class="boon-row ${isActive ? "has-pts" : ""}">
             <div class="boon-row-info">

@@ -401,7 +401,18 @@
         if (!eff || eff.type !== "percent") continue;
         // Skip enemy-scoped effects (e.g. Blood Lust R1 -1% target Def)
         if (eff.scope === "enemy") continue;
-        addPercent(result, eff.stat, ranks * eff.amount * up,
+        // PROGRESSIVE RANKS (owner-verified 2026-07-01): rank k unlocks
+        // effect k — ranks below an effect's unlockRank grant nothing, and
+        // an unlocked effect applies ONCE at its listed amount unless its
+        // in-game wording says "per rank" (scalesPerRank), in which case it
+        // scales with total ranks. Entries without unlockRank keep the
+        // legacy every-effect-times-ranks behavior (standalone tests).
+        var mult = ranks;
+        if (eff.unlockRank != null) {
+          if (ranks < eff.unlockRank) continue;
+          mult = eff.scalesPerRank ? ranks : 1;
+        }
+        addPercent(result, eff.stat, mult * eff.amount * up,
           "Boon: Master/" + mboon.name + " R" + ranks + upTag,
           /*conditional*/ true);
       }

@@ -28,6 +28,17 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Works for both character and companion enchantments. (Reports #164 & #165.)
 
 ### Bug Fixes
+- **Toon Forge — Master boons now unlock one effect per rank (and the boon
+  point cap is 132).** Master campaign boons were modeled as if every listed
+  effect stacked with every rank — Deathly Rage at rank 3 counted as +6%
+  Combat Advantage / +6% Power / +6% Critical Severity. In game each rank
+  unlocks the NEXT effect (rank 1: +2% Combat Advantage, rank 2: adds +2%
+  Power, rank 3: adds +2% Critical Severity), so the tool was over-valuing
+  some masters by up to 3×. The boons panel now shows which rank unlocks each
+  effect, the engine scores them correctly, and the optimizer prices master
+  ranks honestly. The total boon-point budget also moved from 130 to **132**,
+  matching the current campaign list — so builds with all campaigns done no
+  longer show as over the cap.
 - **Toon Forge — campaign boons: over-cap warning + smarter optimizer handling.**
   The boons panel now flags in red when you've allocated more points than the
   maximum we have on record (130), instead of silently accepting any number —
