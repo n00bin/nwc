@@ -1410,11 +1410,14 @@
     }
     var bonusSize = (bonus.requiredInsignias || []).length;
     candidates.sort(function (a, b) {
-      // Prefer mounts with exactly the bonus's slot count (fewer wasted slots = fewer extra insignias)
+      // Preferred-slot activation first: +20% IL & stats on that insignia at
+      // no extra cost — universal slots may stay empty, so a bigger mount
+      // never needs extra insignias for a smaller bonus.
+      if (a.preferred !== b.preferred) return a.preferred ? -1 : 1;
+      // Then exact slot count, keeping larger mounts free for bigger bonuses.
       var aExact = a.slotCount === bonusSize ? 0 : 1;
       var bExact = b.slotCount === bonusSize ? 0 : 1;
       if (aExact !== bExact) return aExact - bExact;
-      if (a.preferred !== b.preferred) return a.preferred ? -1 : 1;
       return (a.mount.name || "").localeCompare(b.mount.name || "");
     });
     return candidates;
@@ -1530,6 +1533,26 @@
       for (var pli = 0; pli < r.stats.perLoadout.length; pli++) {
         wantedLoadouts[r.stats.perLoadout[pli].id] = true;
       }
+      // Excluded mounts that could host this bonus — and whether any would
+      // activate a preferred slot. Used to explain "where did my ★ mount go?"
+      // instead of silently recommending a lesser pick.
+      var excludedHostNames = [];
+      var excludedPrefNames = [];
+      var excludedIds = plannerState.excludedMounts || [];
+      if (excludedIds.length) {
+        for (var xi = 0; xi < MOUNTS_DATA.length; xi++) {
+          var xm = MOUNTS_DATA[xi];
+          if (excludedIds.indexOf(xm.id) === -1) continue;
+          var xcomp = mountBonusCache[xm.id] || [];
+          var xhosts = false;
+          for (var xc = 0; xc < xcomp.length; xc++) {
+            if (xcomp[xc].id === r.bonus.id) { xhosts = true; break; }
+          }
+          if (!xhosts) continue;
+          excludedHostNames.push(xm.name);
+          if (bonusActivatesPreferred(xm, r.bonus)) excludedPrefNames.push(xm.name);
+        }
+      }
       var crossUsed = [];   // already picked for a bonus in a different loadout — preferred (saves a mount)
       var fresh = [];       // never picked
       var conflicting = []; // already picked for a different bonus in a loadout that also wants this one — last resort
@@ -1578,7 +1601,11 @@
       html += ' &nbsp;·&nbsp; ' + r.stats.totalInstances + ' instance' + (r.stats.totalInstances === 1 ? '' : 's') + ', need ' + minMounts + ' distinct mount' + (minMounts === 1 ? '' : 's') + '.</div>';
 
       if (!recommended.length) {
-        html += '<div style="color:var(--stat-negative,#f85149);font-size:0.85rem;">No mount in the database can host this bonus.</div>';
+        if (excludedHostNames.length) {
+          html += '<div style="color:var(--stat-negative,#f85149);font-size:0.85rem;">Every mount that can host this bonus is excluded (' + escapeHtml(excludedHostNames.join(', ')) + '). Restore one above to get a recommendation.</div>';
+        } else {
+          html += '<div style="color:var(--stat-negative,#f85149);font-size:0.85rem;">No mount in the database can host this bonus.</div>';
+        }
       } else if (candidates.length < r.stats.maxPerLoadout) {
         html += '<div style="color:var(--stat-negative,#f85149);font-size:0.85rem;">Only ' + candidates.length + ' mount' + (candidates.length === 1 ? '' : 's') + ' can host this bonus, but you need ' + r.stats.maxPerLoadout + ' distinct mounts in a single loadout.</div>';
       } else {
@@ -1586,7 +1613,7 @@
         html += '<div style="display:flex;flex-wrap:wrap;gap:0.4rem;">';
         for (var rec = 0; rec < recommended.length; rec++) {
           var cand = recommended[rec];
-          var prefStr = cand.preferred ? ' ★' : '';
+          var prefStr = cand.preferred ? ' <span title="Preferred slot active with this bonus: that insignia gets +20% item level &amp; stats" style="color:var(--highlight);">&#9733;</span>' : '';
           var isForced = rec >= forcedReuseStart;
           var isShared = rec < sharedReuseEnd;
           var borderColor = isForced ? '#d29922' : (isShared ? '#3fb950' : 'var(--accent,#58a6ff)');
@@ -1605,6 +1632,16 @@
           html += '</span>';
         }
         html += '</div>';
+        // If nothing recommended activates a preferred slot but an excluded
+        // mount would, say so — otherwise the ★ mount just silently vanishes.
+        var anyPrefPick = false;
+        for (var pp = 0; pp < recommended.length; pp++) {
+          if (recommended[pp].preferred) { anyPrefPick = true; break; }
+        }
+        if (!anyPrefPick && excludedPrefNames.length) {
+          var manyPref = excludedPrefNames.length > 1;
+          html += '<div style="font-size:0.78rem;color:#d29922;margin-top:0.35rem;"><span style="color:var(--highlight);">&#9733;</span> ' + escapeHtml(excludedPrefNames.join(', ')) + ' would host this bonus with ' + (manyPref ? 'their' : 'its') + ' preferred slot active (+20% IL &amp; stats), but ' + (manyPref ? 'they are' : 'it is') + ' excluded above.</div>';
+        }
       }
       html += '</div>';
     }
