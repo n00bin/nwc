@@ -28,6 +28,16 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Works for both character and companion enchantments. (Reports #164 & #165.)
 
 ### Bug Fixes
+- **Toon Forge — campaign boons: over-cap warning + smarter optimizer handling.**
+  The boons panel now flags in red when you've allocated more points than the
+  maximum we have on record (130), instead of silently accepting any number —
+  if a new campaign raised the in-game cap, report it and we'll update the data.
+  Behind the scenes the build optimizer also stopped two bad boon habits: it no
+  longer trims points off builds that have more than the recorded cap (your
+  points are never removed), and the ~100 "filler" points it spends climbing to
+  the Master tier now go into stats that fit your role — a healer gets Max HP
+  and healing stats instead of leftovers like Gold Gain or single-enemy-family
+  boons.
 - **Toon Forge — healer math now matches the game's own Overall Outgoing Healing rule.**
   The in-game tooltip defines the Overall Outgoing Healing boost as your Outgoing
   Healing stat **plus** any other healing modifiers — one combined bonus (e.g.

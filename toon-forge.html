@@ -14545,8 +14545,11 @@
       const budget = (typeof CAMPAIGN_BOONS_DATA !== "undefined") ? CAMPAIGN_BOONS_DATA.budget : 120;
       const spent = totalBoonPoints();
 
+      const overBudget = spent > budget;
       let html = `<div class="boon-budget">
-        <span><strong>${spent}</strong> / ${budget}</span> pts spent
+        <span><strong${overBudget ? ' style="color:var(--stat-negative,#f85149);"' : ''}>${spent}</strong> / ${budget}</span> pts spent${overBudget
+          ? ' <span style="color:var(--stat-negative,#f85149);font-size:0.85em;" title="More points than the maximum our data knows about. If a new campaign raised the in-game cap, please report it so we can update the data.">over the known cap</span>'
+          : ''}
       </div>`;
 
       // Tier 1-5
