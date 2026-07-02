@@ -647,6 +647,74 @@ build('insignias', mInsignias, {
   }
 });
 
+/* Enchantments — per-rarity ladder is stored verbatim (no derived scaling). */
+var enchantsData = loadJSON('enchants.json');
+(function assertEnchants() {
+  var m = {}; enchantsData.forEach(function (x) { m[x.id] = x; });
+  function eq(l, g, w) { if (String(g) !== String(w)) throw new Error('ENCHANT REGRESSION ' + l + ': got ' + g + ' want ' + w); }
+  eq('Cobalt Celestial offense', m[1].rarities.Celestial.universal.offense['Critical Severity'], 2700);
+  eq('Cobalt Uncommon offense', m[1].rarities.Uncommon.universal.offense['Critical Severity'], 450);
+  eq('Cursed Burn Celestial Dmg Bonus', m[27].rarities.Celestial.percentStats['Dmg Bonus'], 12);
+  console.log('Enchant assertions passed.');
+})();
+build('enchants', enchantsData, {
+  breadcrumb: 'Enchantments', backHref: 'toon-forge.html', backLabel: 'Use in Toon Forge',
+  render: function (e, name) {
+    var parts = [], usedTT = false;
+    var RANK = ['Uncommon', 'Rare', 'Epic', 'Legendary', 'Mythic', 'Celestial'];
+    function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+    function cleanDesc(s) {
+      if (!s) return '';
+      s = String(s).split(/\n+\s*Note\s*:/i)[0];               // drop trailing internal "Note:" annotation
+      for (var i = 0; i < AUDIT_TRAIL_PATTERNS.length; i++) s = s.replace(AUDIT_TRAIL_PATTERNS[i], '');
+      return s.trim();
+    }
+    var effText = cleanDesc(e.description);
+    function tierStats(t) {
+      var out = [];
+      if (t.universal) {
+        ['offense', 'defense', 'utility'].forEach(function (slot) {
+          var mp = t.universal[slot]; if (!mp) return;
+          Object.keys(mp).forEach(function (k) { if (mp[k] != null) out.push({ label: cap(slot) + ': ' + statName(k), value: mp[k], type: 'rating' }); });
+        });
+      }
+      if (t.ratingStats) Object.keys(t.ratingStats).forEach(function (k) { if (t.ratingStats[k] != null && t.ratingStats[k] !== 0) out.push({ label: statName(k), value: t.ratingStats[k], type: 'rating' }); });
+      if (t.percentStats) Object.keys(t.percentStats).forEach(function (k) { if (t.percentStats[k] != null && t.percentStats[k] !== 0) out.push({ label: statName(k), value: t.percentStats[k], type: 'percent' }); });
+      return out;
+    }
+    if (effText) parts.push('<div class="item-sec"><h2>Effect</h2><div class="item-effect">' + esc(effText).replace(/\n+/g, '<br>') + '</div></div>');
+    var tierNames = e.rarities ? RANK.filter(function (r) { return e.rarities[r]; }) : [];
+    if (tierNames.length) {
+      var cols = tierStats(e.rarities[tierNames[tierNames.length - 1]]).map(function (s) { return s.label; });
+      var head = '<tr><th>Quality</th><th>IL</th>' + cols.map(function (c) { return '<th>' + esc(c) + '</th>'; }).join('') + '<th>Combined Rating</th></tr>';
+      var rows = tierNames.map(function (rn) {
+        var t = e.rarities[rn];
+        var byLabel = {}; tierStats(t).forEach(function (s) { byLabel[s.label] = s; });
+        var cells = cols.map(function (c) { var s = byLabel[c]; return '<td>' + (s ? renderStatValue(s.value, s.type) : '—') + '</td>'; }).join('');
+        return '<tr><td>' + rn + '</td><td>' + fmt(t.item_level) + '</td>' + cells + '<td>' + fmt(t.combinedRating) + '</td></tr>';
+      }).join('');
+      parts.push('<div class="item-sec"><h2>Stats by Quality</h2><div style="overflow-x:auto"><table class="tt"><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div></div>');
+      usedTT = true;
+    } else {
+      var st = tierStats(e);
+      if (st.length) parts.push('<div class="item-sec"><h2>Stats</h2>' + st.map(function (s) { return statRow(s.label, renderStatValue(s.value, s.type)); }).join('') + '</div>');
+    }
+    var eb = equipBlock(e.equipBonuses); if (eb) parts.push(eb);
+    var meta = [];
+    if (e.slotType) meta.push('Slot: ' + esc(e.slotType));
+    if (Array.isArray(e.appliesTo) && e.appliesTo.length) meta.push('Applies to: ' + e.appliesTo.map(esc).join(', '));
+    if (e.companionEnchant) meta.push('Companion enchantment');
+    var en = showText(e.notes); if (en) meta.push(esc(en));
+    if (meta.length) parts.push('<div class="item-sec"><h2>Details</h2><div class="item-effect">' + meta.join(' · ') + '</div></div>');
+    return {
+      title: name + ' — Neverwinter Enchantment — Compendium',
+      desc: 'Neverwinter enchantment ' + name + (e.slotType ? ' (' + e.slotType + ' slot)' : '') + (effText ? ': ' + effText.replace(/\s+/g, ' ').slice(0, 110) : '') + '.',
+      sub: e.slotType ? '<span class="item-badge">' + esc(e.slotType) + '</span>' : '',
+      body: (usedTT ? TT_STYLE : '') + parts.join('')
+    };
+  }
+});
+
 /* ---------- db root index ---------- */
 (function () {
   var links = Object.keys(urls).map(function (t) { return '<li><a href="db/' + t + '/index.html">' + esc(t) + '</a> (' + (urls[t].length - 1) + ')</li>'; }).join('');
