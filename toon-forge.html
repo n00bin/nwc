@@ -14600,11 +14600,12 @@
           const slotLabel = isActive
             ? `<strong style="color:var(--gold)">slot ${slotNum}</strong>`
             : `next slot would be <strong>${slotNum}</strong>`;
-          // Progressive ranks: rank k unlocks effect k; "/rank" only when the
-          // in-game wording says the amount scales with ranks purchased.
+          // Two master models: "stacking" boons list every effect as /rank
+          // (all active from rank 1); "progressive" boons prefix the rank
+          // that unlocks each flat effect (R2: +2% Power).
           const effSummary = (b.perRankEffects || [])
             .filter(e => e.type === "percent" && e.scope !== "enemy")
-            .map(e => (e.unlockRank ? `R${e.unlockRank}: ` : "")
+            .map(e => (e.unlockRank > 1 ? `R${e.unlockRank}: ` : "")
               + `${e.amount > 0 ? "+" : ""}${e.amount}% ${e.stat}`
               + (e.scalesPerRank || !e.unlockRank ? "/rank" : ""))
             .join(", ") || "specials";

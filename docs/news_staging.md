@@ -28,15 +28,19 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Works for both character and companion enchantments. (Reports #164 & #165.)
 
 ### Bug Fixes
-- **Toon Forge — Master boons now unlock one effect per rank (and the boon
-  point cap is 132).** Master campaign boons were modeled as if every listed
-  effect stacked with every rank — Deathly Rage at rank 3 counted as +6%
-  Combat Advantage / +6% Power / +6% Critical Severity. In game each rank
-  unlocks the NEXT effect (rank 1: +2% Combat Advantage, rank 2: adds +2%
-  Power, rank 3: adds +2% Critical Severity), so the tool was over-valuing
-  some masters by up to 3×. The boons panel now shows which rank unlocks each
-  effect, the engine scores them correctly, and the optimizer prices master
-  ranks honestly. The total boon-point budget also moved from 130 to **132**,
+- **Toon Forge — Master boons split into their two real rank models (and the
+  boon point cap is 132).** Master campaign boons come in two kinds in game,
+  and the tool previously treated them all the same way. **Progressive**
+  masters (Deathly Rage, Death's Bulwark, Focused Retaliation) unlock one
+  effect per rank — rank 1: +2% Combat Advantage, rank 2: adds +2% Power,
+  rank 3: adds +2% Critical Severity — but were counted as if every effect
+  multiplied by every rank (+6%/+6%/+6% at rank 3), up to a 3× over-value.
+  **Stacking** masters (Blood Lust, Life Lessons, Enhanced Application,
+  Blessed Advantage, Blessed Resilience) really do grow all of their effects
+  with every rank, and still work that way. The boons panel now shows each
+  master the right way ("R2: +2% Power" vs "+2% Power/rank"), the engine
+  scores both models correctly, and the optimizer prices master ranks
+  honestly. The total boon-point budget also moved from 130 to **132**,
   matching the current campaign list — so builds with all campaigns done no
   longer show as over the cap.
 - **Toon Forge — campaign boons: over-cap warning + smarter optimizer handling.**
