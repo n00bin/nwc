@@ -94,13 +94,16 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   lost its "below 30% HP" requirement in the patch (it procs on any At-Will
   chance now), so it scores much higher. Total budget is **132**, matching
   the current campaign list.
-- **Data — five "sheet-only" endgame items verified against tooltips.**
-  Vambraces of the Bloodforged Edict, Aegis of the Bloodwrought Covenant,
-  Bloodwoven Symbols (Graceful Harmony), Nightflame Censer, and Demon Skull
-  all matched their in-game tooltips exactly — except one fix: the Vambraces'
-  Resourceful Healer bonus raises your class-resource **maximum** by 20% (we
-  had it as resource regen). Healer builds now credit that correctly as more
-  casts per fight.
+- **Data — seven "sheet-only" endgame items verified against tooltips, and a
+  missing set found.** Vambraces of the Bloodforged Edict, Aegis of the
+  Bloodwrought Covenant, Bloodwoven Symbols (Graceful Harmony), Nightflame
+  Censer, Demon Skull, and both Marilith pieces (Jewel + Sash) all matched
+  their in-game tooltips — with two real fixes: the Vambraces' Resourceful
+  Healer bonus raises your class-resource **maximum** by 20% (we had it as
+  resource regen), and the **Marilith Strike 3-piece set** (Jewel + Sash +
+  Marilith Mask: on a critical hit the enemy takes +1% damage for 5s,
+  stacking to 5) was missing from the database entirely — now modeled on all
+  three pieces.
 - **Toon Forge — campaign boons: over-cap warning + smarter optimizer handling.**
   The boons panel now flags in red when you've allocated more points than the
   maximum we have on record (130), instead of silently accepting any number —
