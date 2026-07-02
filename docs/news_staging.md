@@ -28,6 +28,28 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Works for both character and companion enchantments. (Reports #164 & #165.)
 
 ### Bug Fixes
+- **Toon Forge — Paladin healer and tank no longer blend together.** Paladin's
+  two paths were bleeding into each other everywhere: a **Justicar** (tank) was
+  offered Oathkeeper healing powers (Cure Wounds, Lay on Hands, Divine Shelter…)
+  in the At-Will/Encounter/Daily pickers, and the Mechanics panel showed **both**
+  paths' mechanics at once (both Fortes, Hand of Divinity next to Divine
+  Champion). Every power list is now scoped to your selected paragon path — a
+  Justicar sees only tank powers and mechanics, an Oathkeeper only healer ones.
+  Also verified from the in-game Powers screens that **Channel Divinity is the
+  Oathkeeper's mechanic** (the Justicar's R1 mechanic is Divine Champion) and
+  split Sacred Weapon correctly per path.
+- **Toon Forge — Justicar was missing its shared class features.** The Justicar
+  class-feature picker only offered its 4 paragon-exclusive features. Added the
+  4 features it shares with Oathkeeper (**Aura of Protection, Blessed Wanderer,
+  Composure, Aura of Wrath**) — confirmed from the Justicar's own Powers screen,
+  where they appear (and Aura of Protection is Active).
+- **Toon Forge — Barbarian Blademaster rotation powers now score.** Duplicate
+  copies of Blademaster's powers (stored in two places in the data) meant the
+  rotation model read the stale copy with no cooldown, so Battle Fury, Roar,
+  Frenzy, Hidden Daggers and Axestorm contributed **zero** to rotation
+  throughput and the pickers listed them twice. The duplicates now collapse to
+  the correct copy, Sentinel no longer sees Blademaster-only powers, and each
+  Ranger path shows exactly one Forte.
 - **Toon Forge — healers now get credit for Recharge Speed.** The healing
   throughput model counted your class resource (Divinity/Soul Weave pool and
   regen) but ignored Recharge Speed entirely — two healer items differing only

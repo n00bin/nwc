@@ -10543,6 +10543,38 @@
       return 0;
     }
 
+    // Unified class+paragon power pool for one hotbar type ("atWill" /
+    // "encounter" / "daily" / "mechanic"). Two rules keep the two paragon
+    // paths from bleeding into each other:
+    //   1) Class-level entries tagged `paragon: "<Name>"` belong to ONE
+    //      path (Paladin stores both paragons' powers at class level, so
+    //      without this a Justicar tank is offered Oathkeeper healing
+    //      powers and both Fortes at once) — drop any entry tagged for a
+    //      different paragon than the selected one.
+    //   2) Same-name duplicates collapse to the LAST copy, so a
+    //      paragon-level entry beats a stale class-level one (Barbarian's
+    //      Blademaster powers exist in both lists and only the
+    //      paragon-level copies carry the cooldownSeconds the rotation
+    //      model reads).
+    // Used by the hotbar pickers, the Mechanics display, and every
+    // slotted-power lookup in the rotation/buff/sequence-proc layers.
+    function _paragonPowerPool(type) {
+      if (typeof state === "undefined") return [];
+      const cls = (typeof findClass === "function") ? findClass(state.class) : null;
+      const par = (typeof findParagon === "function") ? findParagon(state.class, state.paragon) : null;
+      const byName = new Map();
+      []
+        .concat((cls && cls.powers && Array.isArray(cls.powers[type])) ? cls.powers[type] : [])
+        .concat((par && par.powers && Array.isArray(par.powers[type])) ? par.powers[type] : [])
+        .concat((par && Array.isArray(par[type])) ? par[type] : [])
+        .forEach(function (p) {
+          if (!p || !p.name) return;
+          if (typeof p.paragon === "string" && par && p.paragon !== par.name) return;
+          byName.set(p.name, p);   // later (paragon-level) copy wins
+        });
+      return Array.from(byName.values());
+    }
+
     // Your rotation's sustained magnitude-per-second, derived from the powers
     // you've actually slotted (class + paragon power lists). Same raw-magnitude
     // scale as mount combat powers, so it lets the combat-power burst be valued
@@ -10552,15 +10584,8 @@
     // no powers are slotted, so the caller can fall back to a generic estimate.
     function rotationMagPerSec() {
       if (typeof state === "undefined") return 0;
-      const cls = (typeof findClass === "function") ? findClass(state.class) : null;
-      const par = (typeof findParagon === "function") ? findParagon(state.class, state.paragon) : null;
-      const grp = function (type) {
-        return []
-          .concat((cls && cls.powers && cls.powers[type]) || [])
-          .concat((par && par.powers && par.powers[type]) || (par && par[type]) || []);
-      };
       const findP = function (type, nm) {
-        return grp(type).find(function (p) { return p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)); });
+        return _paragonPowerPool(type).find(function (p) { return p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)); });
       };
       // Main Hand Enhanced-power modification: +X% damage to ONE specific
       // power. Only clean full-power damage mods apply here; component
@@ -10627,10 +10652,7 @@
     // appliesTo buffs), summed into one multiplier. Data: TF_POWER_BUFFS.
     function slottedBuffMultiplier() {
       if (typeof state === "undefined" || typeof TF_POWER_BUFFS === "undefined") return 1;
-      const cls = (typeof findClass === "function") ? findClass(state.class) : null;
-      const par = (typeof findParagon === "function") ? findParagon(state.class, state.paragon) : null;
-      const grp = function (t) { return [].concat((cls && cls.powers && cls.powers[t]) || [], (par && par.powers && par.powers[t]) || (par && par[t]) || []); };
-      const findPB = function (t, nm) { return grp(t).find(function (p) { return p && (p.name === nm || (p.ranged && p.ranged.name === nm)); }); };
+      const findPB = function (t, nm) { return _paragonPowerPool(t).find(function (p) { return p && (p.name === nm || (p.ranged && p.ranged.name === nm)); }); };
       const er = (typeof getEngineResult === "function") ? getEngineResult() : null;
       const rsi = ((er && er.stats && er.stats["Recharge Speed"] && er.stats["Recharge Speed"].finalPct) || 0) / 100;
       const apg = ((er && er.stats && er.stats["Action Point Gain"] && er.stats["Action Point Gain"].finalPct) || 0) / 100;
@@ -10672,12 +10694,7 @@
       if (typeof state === "undefined" || !state.gear) return out;
       const rotMag = (typeof rotationMagPerSec === "function") ? rotationMagPerSec() : 0;
       if (!(rotMag > 0)) return out;                       // no rotation → can't weight honestly
-      const cls = (typeof findClass === "function") ? findClass(state.class) : null;
-      const par = (typeof findParagon === "function") ? findParagon(state.class, state.paragon) : null;
-      const grp = function (t) {
-        return [].concat((cls && cls.powers && cls.powers[t]) || []).concat((par && par.powers && par.powers[t]) || (par && par[t]) || []);
-      };
-      const findP = function (t, nm) { return grp(t).find(function (p) { return p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)); }); };
+      const findP = function (t, nm) { return _paragonPowerPool(t).find(function (p) { return p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)); }); };
       const norm = function (w) { w = String(w || "").toLowerCase().replace(/[\s-]/g, ""); return w === "atwill" ? "atWill" : w; };
       const slotKeyFor = function (type) { return type === "atWill" ? "slottedAtWills" : type === "encounter" ? "slottedEncounters" : "slottedDailies"; };
       const bestSlottedMag = function (type) {
@@ -14710,10 +14727,12 @@
       const picks = (state.slottedClassFeaturePicks || []).slice();
 
       // --- At-Will hotbar slots (2) ---
-      // Pickable list = class.powers.atWill + paragon.powers.atWill.
+      // Pickable list = class.powers.atWill + paragon.powers.atWill,
+      // scoped by _paragonPowerPool so powers tagged for the OTHER
+      // paragon path never show (Paladin keeps both paragons' powers at
+      // class level — a Justicar must not be offered Cure Wounds).
       // Uses the same openPicker modal pattern as gear/companions so
-      // the UX feels consistent with the rest of Toon Forge. Display-
-      // only today; engine wiring lands with the damage simulator.
+      // the UX feels consistent with the rest of Toon Forge.
       //
       // Ranger special case: each at-will hotbar slot holds a PAIR
       // (ranged + melee side); stance-switching (R3) swaps which side
@@ -14723,10 +14742,7 @@
       // canonical identifier; display shows both names with the
       // active stance highlighted.
       const classDefForLoadout = findClass(state.class);
-      const atwillRaw = []
-        .concat(classDefForLoadout && classDefForLoadout.powers && Array.isArray(classDefForLoadout.powers.atWill) ? classDefForLoadout.powers.atWill : [])
-        .concat(Array.isArray(paragonDef.atWill) ? paragonDef.atWill : (paragonDef.powers && Array.isArray(paragonDef.powers.atWill) ? paragonDef.powers.atWill : []))
-        .filter(p => p && p.name);
+      const atwillRaw = _paragonPowerPool("atWill");
 
       // Build atwillPool: for Ranger we synthesize pair items; everyone
       // else gets the flat list. A "pair item" carries .ranged/.melee
@@ -14793,12 +14809,9 @@
       }
 
       // --- Encounter hotbar slots (3) ---
-      // Same structure as At-Wills: class.powers.encounter +
-      // paragon.powers.encounter, with Ranger ranged/melee pairing.
-      const encRaw = []
-        .concat(classDefForLoadout && classDefForLoadout.powers && Array.isArray(classDefForLoadout.powers.encounter) ? classDefForLoadout.powers.encounter : [])
-        .concat(Array.isArray(paragonDef.encounter) ? paragonDef.encounter : (paragonDef.powers && Array.isArray(paragonDef.powers.encounter) ? paragonDef.powers.encounter : []))
-        .filter(p => p && p.name);
+      // Same structure as At-Wills: class + paragon encounter powers,
+      // paragon-scoped, with Ranger ranged/melee pairing.
+      const encRaw = _paragonPowerPool("encounter");
 
       let encPool;
       if (state.class === "Ranger") {
@@ -14863,10 +14876,7 @@
       // encounters, Ranger dailies are not paired ranged/melee.
       // (Forest Ghost is stance-neutral, Seismic Shot is ranged-only,
       // Slasher's Mark is its own thing, etc.) Simple flat picker.
-      const dailyPool = []
-        .concat(classDefForLoadout && classDefForLoadout.powers && Array.isArray(classDefForLoadout.powers.daily) ? classDefForLoadout.powers.daily : [])
-        .concat(Array.isArray(paragonDef.daily) ? paragonDef.daily : (paragonDef.powers && Array.isArray(paragonDef.powers.daily) ? paragonDef.powers.daily : []))
-        .filter(p => p && p.name);
+      const dailyPool = _paragonPowerPool("daily");
 
       if (dailyPool.length) {
         const dlySlots = (state.slottedDailies || []).slice();
@@ -14892,12 +14902,9 @@
       // --- Mechanics (read-only display) ---
       // Mechanics aren't slotted in NW — they're class-fixed systems
       // (Forte, class resource, tactical dodge, paragon abilities).
-      // Display the full list with descriptions so users can see what
-      // their class brings to the table.
-      const mechanicRaw = []
-        .concat(classDefForLoadout && classDefForLoadout.powers && Array.isArray(classDefForLoadout.powers.mechanic) ? classDefForLoadout.powers.mechanic : [])
-        .concat(Array.isArray(paragonDef.mechanic) ? paragonDef.mechanic : (paragonDef.powers && Array.isArray(paragonDef.powers.mechanic) ? paragonDef.powers.mechanic : []))
-        .filter(p => p && p.name);
+      // Display the class-shared + selected-paragon list so a Justicar
+      // never shows Oathkeeper mechanics (and vice versa).
+      const mechanicRaw = _paragonPowerPool("mechanic");
 
       // (cleanNote is defined at module scope — used here to strip
       // "Screenshot intake YYYY-MM-DD." capture boilerplate.)
