@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://n00bin.github.io/nwc/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/mounts.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/companions.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/consumables.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/artifacts.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/mekaniks.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/campaign-boosters.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/professions.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/patchnotes.html</loc><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/reports.html</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/creators-tools.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/toon-forge.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/insignia-priority.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://n00bin.github.io/nwc/preview.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap><loc>https://n00bin.github.io/nwc/sitemap-pages.xml</loc></sitemap>
+  <sitemap><loc>https://n00bin.github.io/nwc/sitemap-artifacts.xml</loc></sitemap>
+  <sitemap><loc>https://n00bin.github.io/nwc/sitemap-consumables.xml</loc></sitemap>
+  <sitemap><loc>https://n00bin.github.io/nwc/sitemap-overloads.xml</loc></sitemap>
+  <sitemap><loc>https://n00bin.github.io/nwc/sitemap-collars.xml</loc></sitemap>
+  <sitemap><loc>https://n00bin.github.io/nwc/sitemap-kits.xml</loc></sitemap>
+  <sitemap><loc>https://n00bin.github.io/nwc/sitemap-companion-gear.xml</loc></sitemap>
+  <sitemap><loc>https://n00bin.github.io/nwc/sitemap-artisans.xml</loc></sitemap>
+  <sitemap><loc>https://n00bin.github.io/nwc/sitemap-gear.xml</loc></sitemap>
+</sitemapindex>
