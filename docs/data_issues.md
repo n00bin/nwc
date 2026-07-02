@@ -713,6 +713,16 @@ variants of the other tiers (Veinlit / Runemarked / Deep-Riven / Frost-Riven) fo
 three lines — need screenshots. The new `set: ""` on the pants is intentional (the
 "Winterworn Harness" placeholder was not propagated).
 
+UPDATE 2026-07-02: **Cracked Stonevein Harness** (id 5364) was a merged-variants entry
+(same failure mode as Cracked Earthshard Guard): it carried the Survivor's Avoidance
+variant's stats with the Survivors Healing Aura variant's bonus. n00b flagged it; the
+2026-05-25 archive tooltips confirm TWO variants. Split applied: id 5364 = Pants,
+Survivor's Avoidance (up to 8% Critical Avoidance — stat template matches Deep-Riven
+Harness id 5371, same bonus at 10%); new id 7395 = Shirt, Survivors Healing Aura
+(Awareness 1,656 / Critical Avoidance 3,036 / Deflect Severity 3,105 — template matches
+Veinlit Stonevein Straps id 5447; the Arcane Conduit line also puts Survivors Healing
+Aura on the Shirt). Also corrected the Aura's cooldown 17s → 15s (tooltip-verified).
+
 ## Bloodwoven set — slot-conflict pairs need screenshots (OPEN, 2026-05-29)
 
 Cleaned up 2026-05-29: deleted exact-dup em-dash entries (468, 470) and two malformed
