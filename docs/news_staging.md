@@ -28,6 +28,11 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Works for both character and companion enchantments. (Reports #164 & #165.)
 
 ### Bug Fixes
+- **Two player reports handled: new Dragon Hunter arms + a shirt slot fix.**
+  Added **Sharp Reachers of the Dragon Hunter** (Arms, IL 1,850, +6% Power at
+  25'+ range) from a player submission, and corrected **Ruthless Dwarven Body
+  Pattern** to the Shirt slot — the Body/Limb Pattern family convention made
+  the mis-slot obvious once a player flagged it. (Reports #170 & #171.)
 - **Toon Forge — Paladin healer and tank no longer blend together.** Paladin's
   two paths were bleeding into each other everywhere: a **Justicar** (tank) was
   offered Oathkeeper healing powers (Cure Wounds, Lay on Hands, Divine Shelter…)
