@@ -156,9 +156,33 @@ function writePage(type, file, html) {
 const ARTIFACT_TYPE = { debuff: 'Group Debuff', personal: 'Personal Buff', tank: 'Tank', utility: 'Utility', damage: 'Damage' };
 const urls = {}; // type -> [ {loc} ]
 
+// Shared styling for the searchable database index pages.
+const DB_IDX_STYLE = '<style>' +
+  '.db-tools{display:flex;align-items:center;gap:0.75rem;margin:0 0 1rem;flex-wrap:wrap}' +
+  '#dbq{flex:1 1 220px;padding:0.5rem 0.75rem;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);color:var(--highlight);font-size:0.95rem}' +
+  '#dbq:focus{outline:none;border-color:var(--accent)}' +
+  '#dbcount{color:var(--text-muted);font-size:0.82rem;white-space:nowrap}' +
+  '.db-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0.5rem}' +
+  '.db-card{display:flex;flex-direction:column;padding:0.5rem 0.7rem;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);text-decoration:none;transition:border-color .15s,background .15s}' +
+  '.db-card:hover{border-color:var(--accent);background:var(--bg-elevated)}' +
+  '.db-card-name{color:var(--accent);font-weight:600;font-size:0.9rem;line-height:1.3}' +
+  '.db-card-meta{color:var(--text-muted);font-size:0.76rem;margin-top:0.15rem}' +
+  '</style>';
+// A short secondary label for an index card, derived from common item fields.
+function autoMeta(it) {
+  if (!it || typeof it !== 'object') return '';
+  var bits = [];
+  var slot = it.slot || it.slotType || it.collarSlot || it.category || it.prof;
+  if (slot && typeof slot === 'string') bits.push(slot.replace(/,/g, ' / '));
+  else if (Array.isArray(it.roles) && it.roles.length) bits.push(it.roles.join(' / '));
+  if (it.item_level) bits.push('IL ' + fmt(it.item_level));
+  else if (it.tier && typeof it.tier === 'string') bits.push(it.tier);
+  return bits.join(' · ');
+}
+
 function build(type, items, opts) {
   urls[type] = [];
-  var idxRows = [];
+  var entries = [];
   items.forEach(function (it, i) {
     var name = it.name || it.displayName || ('Item ' + i);
     var idPart = (it.id != null ? it.id : ('a' + i));
@@ -171,14 +195,22 @@ function build(type, items, opts) {
     });
     writePage(type, file, html);
     urls[type].push(ROOT + 'db/' + type + '/' + file);
-    idxRows.push('<li><a href="db/' + type + '/' + file + '">' + esc(name) + '</a></li>');
+    entries.push({ name: name, file: file, meta: built.indexMeta != null ? built.indexMeta : autoMeta(it) });
   });
-  // per-type index page
-  var idxBody = '<div class="item-sec"><h2>' + esc(opts.breadcrumb) + ' (' + items.length + ')</h2><ul class="item-list">' + idxRows.join('') + '</ul></div>';
+  // per-type index page — searchable, responsive card grid (sorted A–Z)
+  entries.sort(function (a, b) { var x = a.name.toLowerCase(), y = b.name.toLowerCase(); return x < y ? -1 : x > y ? 1 : 0; });
+  var cards = entries.map(function (e) {
+    return '<a class="db-card" href="db/' + type + '/' + e.file + '" data-n="' + esc((e.name + ' ' + (e.meta || '')).toLowerCase()) + '">' +
+      '<span class="db-card-name">' + esc(e.name) + '</span>' + (e.meta ? '<span class="db-card-meta">' + esc(e.meta) + '</span>' : '') + '</a>';
+  }).join('');
+  var idxBody = DB_IDX_STYLE +
+    '<div class="db-tools"><input id="dbq" type="search" placeholder="Filter ' + items.length + ' ' + esc(opts.breadcrumb.toLowerCase()) + '…" autocomplete="off" aria-label="Filter ' + esc(opts.breadcrumb) + '"><span id="dbcount"></span></div>' +
+    '<div id="dbgrid" class="db-grid">' + cards + '</div>' +
+    '<script>(function(){var q=document.getElementById("dbq"),g=document.getElementById("dbgrid"),c=document.getElementById("dbcount"),k=g.children,total=k.length,tmr;function upd(){var t=q.value.trim().toLowerCase(),n=0,i;for(i=0;i<k.length;i++){var m=!t||k[i].getAttribute("data-n").indexOf(t)>-1;k[i].style.display=m?"":"none";if(m)n++;}c.textContent=t?(n+" of "+total+" shown"):(total+" total");}q.addEventListener("input",function(){clearTimeout(tmr);tmr=setTimeout(upd,80);});upd();})();</script>';
   var idxHtml = page({
     type: type, file: 'index.html',
     title: opts.breadcrumb + ' — Neverwinter Compendium',
-    desc: 'Every Neverwinter ' + opts.breadcrumb.toLowerCase() + ' — ' + items.length + ' entries with stats and effects.',
+    desc: 'Browse every Neverwinter ' + opts.breadcrumb.toLowerCase() + ' — ' + items.length + ' searchable entries with stats and effects.',
     h1: opts.breadcrumb, sub: items.length + ' entries', bodyHtml: idxBody,
     backHref: opts.backHref, backLabel: opts.backLabel, breadcrumb: opts.breadcrumb
   });
@@ -845,9 +877,11 @@ build('races', racesData, {
 
 /* ---------- db root index ---------- */
 (function () {
-  var links = Object.keys(urls).map(function (t) { return '<li><a href="db/' + t + '/index.html">' + esc(t) + '</a> (' + (urls[t].length - 1) + ')</li>'; }).join('');
-  var body = '<div class="item-sec"><h2>Item Databases</h2><ul class="item-list">' + links + '</ul></div>';
-  var html = page({ type: '', file: 'index.html', title: 'Item Database — Neverwinter Compendium', desc: 'Browse every Neverwinter item — artifacts, consumables, gear, and more.', h1: 'Item Database', sub: '', bodyHtml: body, backHref: 'index.html', backLabel: 'Home', breadcrumb: 'Home' });
+  var TYPE_LABELS = { 'companion-gear': 'Companion Gear', 'campaign-boons': 'Campaign Boons', 'guild-boons': 'Guild Boons' };
+  function typeLabel(t) { return TYPE_LABELS[t] || t.charAt(0).toUpperCase() + t.slice(1); }
+  var cards = Object.keys(urls).sort().map(function (t) { return '<a class="db-card" href="db/' + t + '/index.html"><span class="db-card-name">' + esc(typeLabel(t)) + '</span><span class="db-card-meta">' + (urls[t].length - 1) + ' entries</span></a>'; }).join('');
+  var body = DB_IDX_STYLE + '<div class="db-grid">' + cards + '</div>';
+  var html = page({ type: '', file: 'index.html', title: 'Item Database — Neverwinter Compendium', desc: 'Browse every Neverwinter item database — artifacts, gear, companions, mounts, enchantments, insignias, and more.', h1: 'Item Database', sub: Object.keys(urls).length + ' databases', bodyHtml: body, backHref: 'index.html', backLabel: 'Home', breadcrumb: 'Home' });
   // fix: db root page lives at /db/index.html, its own canonical
   html = html.replace(ROOT + 'db//index.html', ROOT + 'db/index.html');
   fs.mkdirSync(path.join(WEB, 'db'), { recursive: true });
