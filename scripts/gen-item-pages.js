@@ -715,6 +715,134 @@ build('enchants', enchantsData, {
   }
 });
 
+/* ==========================================================================
+   PHASE 4 — reference sets: campaign boons, guild boons, classes, races.
+   Mostly verbatim stored data (no derived scaling). Provenance in notes
+   fields is filtered with showText(); descriptions are authored game text.
+   ========================================================================== */
+function kvRows(obj) {
+  if (!obj) return '';
+  if (Array.isArray(obj)) return obj.map(function (b) { return statRow(b.stat || b.name || '', '<span class="stat-value">' + esc(b.amount != null ? b.amount : b.value) + '</span>'); }).join('');
+  return Object.keys(obj).map(function (k) { return statRow(k, '<span class="stat-value">' + esc(obj[k]) + '</span>'); }).join('');
+}
+
+/* Campaign boons (the shared endgame boons live under .master) */
+var campaignBoons = (loadJSON('campaign_boons.json').master || []);
+/* Guild boons: flatten the Offense/Defense/Utility buckets, assign unique ids */
+var guildRaw = loadJSON('guild_boons.json');
+var guildBoons = [];
+['Offense', 'Defense', 'Utility'].forEach(function (cat) { (guildRaw[cat] || []).forEach(function (gb) { gb = Object.assign({}, gb); gb.category = cat; guildBoons.push(gb); }); });
+guildBoons.forEach(function (gb, i) { gb.id = i + 1; });
+/* Classes / races are name-keyed — give them sequential ids for clean slugs */
+var classesData = loadJSON('classes.json').map(function (c, i) { c = Object.assign({}, c); c.id = i + 1; return c; });
+var racesData = loadJSON('races.json').map(function (r, i) { r = Object.assign({}, r); r.id = i + 1; return r; });
+
+(function assertPhase4() {
+  function eq(l, g, w) { if (String(g) !== String(w)) throw new Error('PHASE4 REGRESSION ' + l + ': got ' + g + ' want ' + w); }
+  eq('Deathly Rage boon', campaignBoons[0].perRankEffects[0].amount, 2);
+  eq('Guild Power Bonus', guildBoons[0].amount, 3000);
+  if (!classesData.find(function (c) { return c.name === 'Barbarian'; })) throw new Error('PHASE4: Barbarian class missing');
+  if (!racesData.find(function (r) { return r.name === 'Aasimar'; })) throw new Error('PHASE4: Aasimar race missing');
+  console.log('Phase 4 assertions passed.');
+})();
+
+build('campaign-boons', campaignBoons, {
+  breadcrumb: 'Campaign Boons', backHref: 'toon-forge.html', backLabel: 'Use in Toon Forge',
+  render: function (b, name) {
+    var parts = [];
+    var eff = (b.perRankEffects || []).map(function (pe) {
+      return statRow(statName(pe.stat) + ' (per rank' + (pe.unlockRank ? ', unlocks at rank ' + pe.unlockRank : '') + ')', renderStatValue(pe.amount, pe.type));
+    }).join('');
+    if (eff) parts.push('<div class="item-sec"><h2>Per-Rank Effects</h2>' + eff + '</div>');
+    var meta = [];
+    if (b.trigger) meta.push('Trigger: ' + esc(b.trigger));
+    if (b.chance != null) meta.push('Chance: ' + b.chance + '%');
+    if (b.duration != null) meta.push('Duration: ' + b.duration + 's');
+    if (b.maxRanks != null) meta.push('Max ranks: ' + b.maxRanks);
+    if (b.totalCost != null) meta.push('Cost: ' + b.totalCost + ' boon points');
+    var bn = showText(b.notes); if (bn) meta.push(esc(bn));
+    if (meta.length) parts.push('<div class="item-sec"><h2>Details</h2><div class="item-effect">' + meta.join(' · ') + '</div></div>');
+    return {
+      title: name + ' — Neverwinter Campaign Boon — Compendium',
+      desc: 'Neverwinter campaign boon ' + name + (b.trigger ? ': ' + String(b.trigger).replace(/\s+/g, ' ').slice(0, 100) : '') + '.',
+      body: parts.join('')
+    };
+  }
+});
+
+build('guild-boons', guildBoons, {
+  breadcrumb: 'Guild Boons', backHref: 'toon-forge.html', backLabel: 'Use in Toon Forge',
+  render: function (gb, name) {
+    var parts = [];
+    if (gb.stat) parts.push('<div class="item-sec"><h2>Bonus at Max Rank</h2>' + statRow(statName(gb.stat), renderStatValue(gb.amount, gb.statType === 'percent' ? 'percent' : 'rating')) + (gb.maxRank ? '<div class="item-effect" style="margin-top:0.3rem">Rank ' + gb.maxRank + (gb.item_level ? ' &middot; Item Level ' + fmt(gb.item_level) : '') + (gb.combinedRating ? ' &middot; Combined Rating ' + fmt(gb.combinedRating) : '') + '</div>' : '') + '</div>');
+    var meta = [];
+    if (gb.perRank) { var pr = gb.perRank, bits = []; if (pr.amount != null) bits.push('+' + fmt(pr.amount) + ' ' + statName(gb.stat)); if (pr.itemLevel != null) bits.push('+' + pr.itemLevel + ' IL'); if (pr.combinedRating != null) bits.push('+' + pr.combinedRating + ' CR'); if (bits.length) meta.push('Per rank: ' + bits.join(', ')); }
+    meta.push('Category: ' + esc(gb.category));
+    if (gb.minAmount != null && gb.maxAmount != null) meta.push('Range: ' + fmt(gb.minAmount) + '–' + fmt(gb.maxAmount));
+    var gn = showText(gb.notes); if (gn) meta.push(esc(gn));
+    parts.push('<div class="item-sec"><h2>Details</h2><div class="item-effect">' + meta.join(' · ') + '</div></div>');
+    return {
+      title: name + ' — Neverwinter Guild Boon — Compendium',
+      desc: 'Neverwinter guild stronghold boon ' + name + ' (' + gb.category + ')' + (gb.stat ? ': ' + statName(gb.stat) + ' +' + fmt(gb.amount) + ' at rank ' + gb.maxRank : '') + '.',
+      sub: '<span class="item-badge">' + esc(gb.category) + '</span>',
+      body: parts.join('')
+    };
+  }
+});
+
+build('classes', classesData, {
+  breadcrumb: 'Classes', backHref: 'toon-forge.html', backLabel: 'Use in Toon Forge',
+  render: function (c, name) {
+    var parts = [];
+    if (c.baseAbilityScores) { var abs = {}; Object.keys(c.baseAbilityScores).forEach(function (k) { abs[k.length <= 3 ? k.toUpperCase() : k] = c.baseAbilityScores[k]; }); parts.push('<div class="item-sec"><h2>Base Ability Scores</h2>' + kvRows(abs) + '</div>'); }
+    if (Array.isArray(c.paragonPaths) && c.paragonPaths.length) {
+      var pp = c.paragonPaths.map(function (p) {
+        var h = '<div style="margin-bottom:0.7rem"><strong>' + esc(p.name) + '</strong>' + (Array.isArray(p.roles) ? ' <span style="color:var(--text-muted);font-size:0.8rem">(' + p.roles.map(esc).join(', ') + (p.damageType ? ', ' + esc(p.damageType) : '') + ')</span>' : '');
+        if (p.percentStats) h += statsRows(p.percentStats, 'percent');
+        if (Array.isArray(p.slottedClassFeatures)) h += p.slottedClassFeatures.map(function (f) { return '<div class="item-effect" style="margin-top:0.25rem"><strong>' + esc(f.name || '') + '</strong>' + (f.description ? ' &mdash; ' + esc(f.description) : '') + '</div>'; }).join('');
+        return h + '</div>';
+      }).join('');
+      parts.push('<div class="item-sec"><h2>Paragon Paths</h2>' + pp + '</div>');
+    }
+    var meta = [];
+    if (Array.isArray(c.classFeatures) && c.classFeatures.length) meta.push('Class features: ' + c.classFeatures.map(function (f) { return esc(typeof f === 'string' ? f : (f.name || '')); }).filter(Boolean).join(', '));
+    if (meta.length) parts.push('<div class="item-sec"><h2>Details</h2><div class="item-effect">' + meta.join(' · ') + '</div></div>');
+    return {
+      title: name + ' — Neverwinter Class — Compendium',
+      desc: 'Neverwinter ' + name + ' class' + (Array.isArray(c.roles) ? ' (' + c.roles.join('/') + ')' : '') + ' — paragon paths, ability scores, and class features.',
+      sub: Array.isArray(c.roles) ? c.roles.map(function (r) { return '<span class="item-badge">' + esc(r) + '</span>'; }).join('') : '',
+      body: parts.join('')
+    };
+  }
+});
+
+build('races', racesData, {
+  breadcrumb: 'Races', backHref: 'toon-forge.html', backLabel: 'Use in Toon Forge',
+  render: function (r, name) {
+    var parts = [];
+    var fixed = (r.fixedBonuses || []).map(function (b) { return statRow(b.stat, renderStatValue(b.amount, 'rating')); }).join('');
+    var choice = (r.choiceBonuses || []);
+    if (fixed || choice.length) {
+      var ch = choice.length ? '<div class="item-effect" style="margin-top:0.3rem">Choose one: ' + choice.map(function (b) { return esc(b.stat) + ' +' + b.amount; }).join(' or ') + '</div>' : '';
+      parts.push('<div class="item-sec"><h2>Ability Score Bonuses</h2>' + fixed + ch + '</div>');
+    }
+    if (Array.isArray(r.traits) && r.traits.length) {
+      var tr = r.traits.map(function (t) {
+        var h = '<div style="margin-bottom:0.5rem"><strong>' + esc(t.name || '') + '</strong>' + (t.description ? '<div class="item-effect">' + esc(t.description) + '</div>' : '');
+        if (t.percentStats) h += statsRows(t.percentStats, 'percent');
+        return h + '</div>';
+      }).join('');
+      parts.push('<div class="item-sec"><h2>Racial Traits</h2>' + tr + '</div>');
+    }
+    return {
+      title: name + ' — Neverwinter Race — Compendium',
+      desc: 'Neverwinter ' + name + ' race' + (r.premium ? ' (premium)' : '') + ' — ability score bonuses and racial traits.',
+      sub: r.premium ? '<span class="item-badge">Premium</span>' : '',
+      body: parts.join('')
+    };
+  }
+});
+
 /* ---------- db root index ---------- */
 (function () {
   var links = Object.keys(urls).map(function (t) { return '<li><a href="db/' + t + '/index.html">' + esc(t) + '</a> (' + (urls[t].length - 1) + ')</li>'; }).join('');
