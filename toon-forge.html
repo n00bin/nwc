@@ -5625,7 +5625,7 @@
         if (_procNote) return _procNote;
       }
       if (eb.stat && eb.amount != null && eb.amount !== 0) {
-        const unit = (eb.kind === "rating") ? "" : "%";
+        const unit = (eb.kind === "rating" || eb.kind === "flat") ? "" : "%";
         return `${eb.amount > 0 ? "+" : ""}${eb.amount}${unit} ${eb.stat}`;
       }
       return "";
@@ -10491,7 +10491,7 @@
       } else if (sb.stat && sb.value != null) {
         // simple {stat,value} shape (e.g. Fireblossom Zealot: +1000 Forte rating
         // to the party). type/kind "rating" = flat rating, else percent.
-        const unit = (sb.type === "rating" || sb.kind === "rating") ? "" : "%";
+        const unit = (sb.type === "rating" || sb.kind === "rating" || sb.type === "flat" || sb.kind === "flat") ? "" : "%";
         const val = (typeof sb.value === "number") ? sb.value.toLocaleString() : sb.value;
         effText = `+${val}${unit} ${sb.stat}` + (scope === "party" ? " to your party" : "");
         contributes = (scope === "party" || scope === "self");
@@ -11351,8 +11351,9 @@
 
       if (summonedComp && summonedComp.summonedBuff && summonedComp.summonedBuff.stat) {
         const sb = summonedComp.summonedBuff;
-        // value is a percent by default; type/kind "rating" = a flat rating buff
-        const channel = (sb.type === "rating" || sb.kind === "rating") ? "ratingStats" : "percentStats";
+        // value is a percent by default; type/kind "rating" or "flat" (pool
+        // amounts, e.g. Max HP) both ride the non-percent channel
+        const channel = (sb.type === "rating" || sb.kind === "rating" || sb.type === "flat" || sb.kind === "flat") ? "ratingStats" : "percentStats";
         buffs.push({
           source: "Summoned: " + summonedComp.name,
           [channel]: { [sb.stat]: sb.value || 0 }
@@ -12212,8 +12213,12 @@
           // value for "with conditionals" view. The renderer's Detailed
           // Stats panel has a checkbox to switch between the two modes.
           const isConditional = _healthGated ? false : (eb.alwaysActive === false);
-          // amount is percent by default; kind: "rating" means flat rating value
-          const channel = (eb.kind === "rating") ? "ratingStats" : "percentStats";
+          // amount is percent by default; kind "rating" = rating points and
+          // kind "flat" = a flat pool amount (Max HP convention) — BOTH ride
+          // the non-percent channel. (Routing "flat" to percentStats turned
+          // Garb of the Ascended's +15,000 HP into +9,000% HP → 194M-HP
+          // tank builds, found 2026-07-01.)
+          const channel = (eb.kind === "rating" || eb.kind === "flat") ? "ratingStats" : "percentStats";
           // perStack scaling — gear/sets with maxStacks > 1 that stack per
           // party member, per kill, per crit, etc. Two variants:
           //   alwaysActive: true  → 1-stack baseline always-on, extra
@@ -12651,7 +12656,7 @@
           if (!eb || !eb.stat || eb.amount == null) continue;
           if (eb.scope && eb.scope !== "self") continue;
           if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate (General drops zone-locked)
-          const channel = (eb.kind === "rating") ? "ratingStats" : "percentStats";
+          const channel = (eb.kind === "rating" || eb.kind === "flat") ? "ratingStats" : "percentStats";
           // Zone or trigger context implies conditional. If neither, treat
           // it as always-on per the data's intent.
           const isCond = !!(eb.zones && eb.zones.length) || (eb.alwaysActive === false);
@@ -13618,7 +13623,7 @@
           // Depthweave Coat's +7.5% Combat Advantage). Synthesize a label so it
           // actually shows on the card — these were being silently hidden.
           if (eb.stat && eb.amount != null) {
-            const unit = (eb.kind === "rating") ? "" : "%";
+            const unit = (eb.kind === "rating" || eb.kind === "flat") ? "" : "%";
             const scopeTag = (eb.scope && eb.scope !== "self") ? ` (${eb.scope})` : "";
             key = `${eb.amount > 0 ? "+" : ""}${eb.amount}${unit} ${eb.stat}${scopeTag}`;
           } else continue;
@@ -14277,7 +14282,7 @@
           // Depthweave Coat's +7.5% Combat Advantage). Synthesize a label so it
           // actually shows on the card — these were being silently hidden.
           if (eb.stat && eb.amount != null) {
-            const unit = (eb.kind === "rating") ? "" : "%";
+            const unit = (eb.kind === "rating" || eb.kind === "flat") ? "" : "%";
             const scopeTag = (eb.scope && eb.scope !== "self") ? ` (${eb.scope})` : "";
             key = `${eb.amount > 0 ? "+" : ""}${eb.amount}${unit} ${eb.stat}${scopeTag}`;
           } else continue;

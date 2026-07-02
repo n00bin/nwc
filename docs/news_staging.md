@@ -28,7 +28,17 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Works for both character and companion enchantments. (Reports #164 & #165.)
 
 ### Bug Fixes
-- **Toon Forge — Master boons split into their two real rank models (and the
+- **Toon Forge — flat Max HP gear bonuses were being read as percentages.**
+  Six items whose equip bonus grants flat Maximum Hit Points (Garb of the
+  Ascended's +15,000, and five Pioneer helmets' +1,000) were ingested as
+  +15,000% / +1,000% Max HP. On the stat panel this only showed if you
+  equipped one, but the build optimizer's new tank scoring found it
+  immediately — recommending Garb of the Ascended on every tank and reporting
+  194 million hit points. Flat pool amounts now ride the same channel as
+  ratings everywhere (engine scoring and item cards), and the tank optimizer
+  was re-validated end-to-end for the first time: it now assembles a real
+  mitigation build (Defense/Deflect Severity capped, −35% incoming damage,
+  ~2.9M effective HP) instead of chasing the phantom hit points.
   boon point cap is 132).** Master campaign boons come in two kinds in game,
   and the tool previously treated them all the same way. **Progressive**
   masters (Deathly Rage, Death's Bulwark, Focused Retaliation) unlock one
