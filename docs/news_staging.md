@@ -59,6 +59,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   and the optimizer. Also hardened the stat engine against proc-chance typos
   (a bad "chance %" in data can no longer poison a stat with NaN) and fixed a
   stale-cache case when changing an artifact's owned tier on shared builds.
+- **Toon Forge — flat Max HP gear bonuses were being read as percentages.**
   Six items whose equip bonus grants flat Maximum Hit Points (Garb of the
   Ascended's +15,000, and five Pioneer helmets' +1,000) were ingested as
   +15,000% / +1,000% Max HP. On the stat panel this only showed if you
@@ -69,20 +70,28 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   was re-validated end-to-end for the first time: it now assembles a real
   mitigation build (Defense/Deflect Severity capped, −35% incoming damage,
   ~2.9M effective HP) instead of chasing the phantom hit points.
-  boon point cap is 132).** Master campaign boons come in two kinds in game,
-  and the tool previously treated them all the same way. **Progressive**
-  masters (Deathly Rage, Death's Bulwark, Focused Retaliation) unlock one
-  effect per rank — rank 1: +2% Combat Advantage, rank 2: adds +2% Power,
-  rank 3: adds +2% Critical Severity — but were counted as if every effect
-  multiplied by every rank (+6%/+6%/+6% at rank 3), up to a 3× over-value.
-  **Stacking** masters (Blood Lust, Life Lessons, Enhanced Application,
-  Blessed Advantage, Blessed Resilience) really do grow all of their effects
-  with every rank, and still work that way. The boons panel now shows each
-  master the right way ("R2: +2% Power" vs "+2% Power/rank"), the engine
-  scores both models correctly, and the optimizer prices master ranks
-  honestly. The total boon-point budget also moved from 130 to **132**,
-  matching the current campaign list — so builds with all campaigns done no
-  longer show as over the cap.
+- **Toon Forge — Master boons corrected against live in-game tooltips (and the
+  boon point cap is 132).** Three master-boon tooltips (Deathly Rage, Death's
+  Bulwark, Blessed Advantage) settled how these actually work: each rank
+  UNLOCKS its own effect (rank 1: Combat Advantage, rank 2: Power, rank 3:
+  Critical Severity), and every unlocked effect then grows with your total
+  ranks — so a rank-3 master gives all three at full strength, but a rank-1
+  master gives only its first effect. The engine and optimizer now model
+  exactly that. Also corrected from the same screenshots: **Blessed
+  Advantage** procs at **10%** (not 20%) and its rank-3 grants **5% Recharge
+  Speed per rank** (we had 2%); **Death's Bulwark** shares Deathly Rage's
+  30% chance and dual trigger; **master ranks unlock at 10/30/60 total
+  points spent** (not 100 — you can start ranking masters far earlier);
+  **Advanced-tier boons cost 2 points each**, which the spent counter now
+  counts correctly; and the total budget is **132**, matching the current
+  campaign list.
+- **Data — five "sheet-only" endgame items verified against tooltips.**
+  Vambraces of the Bloodforged Edict, Aegis of the Bloodwrought Covenant,
+  Bloodwoven Symbols (Graceful Harmony), Nightflame Censer, and Demon Skull
+  all matched their in-game tooltips exactly — except one fix: the Vambraces'
+  Resourceful Healer bonus raises your class-resource **maximum** by 20% (we
+  had it as resource regen). Healer builds now credit that correctly as more
+  casts per fight.
 - **Toon Forge — campaign boons: over-cap warning + smarter optimizer handling.**
   The boons panel now flags in red when you've allocated more points than the
   maximum we have on record (130), instead of silently accepting any number —
