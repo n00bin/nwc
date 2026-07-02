@@ -328,6 +328,324 @@ build('gear', loadJSON('gear.json'), {
   }
 });
 
+/* ==========================================================================
+   PHASE 2 — companions, mounts, mount insignias.
+   Ports the EXACT rarity-scaling + ref-resolution math from
+   js/companions-page.js and js/mounts-page.js so the static pages match the
+   live tools 1:1. Regression assertions below ABORT the run if any ported
+   number drifts (no silently-wrong stats can ship).
+   ========================================================================== */
+
+/* faithful port of shared.js renderStatValue */
+function renderStatValue(value, type) {
+  if (value == null) return '—';
+  var isPercent = type === 'percent' || (typeof value === 'number' && Math.abs(value) < 100 && String(value).includes('.'));
+  var prefix = value > 0 ? '+' : '';
+  var cls = value > 0 ? 'stat-positive' : value < 0 ? 'stat-negative' : 'stat-neutral';
+  var val = isPercent ? (prefix + value + '%') : (prefix + fmt(value));
+  return '<span class="stat-value ' + cls + '">' + esc(val) + '</span>';
+}
+function statRow(name, valueHtml) { return '<div class="stat-row"><span class="stat-name">' + esc(name) + '</span>' + valueHtml + '</div>'; }
+function statsTable(stats) {
+  if (!stats || !stats.length) return '';
+  return stats.map(function (s) { return statRow(statName(s.stat), renderStatValue(s.value, s.type)); }).join('');
+}
+function buildLookup(arr) { var m = {}; arr.forEach(function (x) { if (x && x.id != null) m[x.id] = x; }); return m; }
+const TT_STYLE = '<style>.tt{width:100%;border-collapse:collapse;font-size:0.9rem}.tt th,.tt td{text-align:left;padding:0.25rem 0.6rem;border-bottom:1px solid var(--border-default);white-space:nowrap}.tt th{color:var(--highlight);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.04em}.tt tr:last-child td{border-bottom:none}.tt td:first-child{color:var(--text-secondary)}</style>';
+
+/* ---- companion rarity scaling (verbatim from companions-page.js) ---- */
+const RARITIES = [
+  { name: 'Common', il: 75 }, { name: 'Uncommon', il: 150 }, { name: 'Rare', il: 250 },
+  { name: 'Epic', il: 375 }, { name: 'Legendary', il: 550 }, { name: 'Mythic', il: 750 }, { name: 'Celestial', il: 900 }
+];
+const SINGLE_STAT_SCALE = { 75: 0.75, 150: 1.50, 250: 2.50, 375: 3.75, 550: 5.50, 750: 7.50, 900: 9.00 };
+const DOUBLE_STAT_SCALE = { 75: 0.38, 150: 0.75, 250: 1.25, 375: 1.88, 550: 2.75, 750: 3.75, 900: 4.50 };
+const TRIPLE_STAT_SCALE = { 75: 0.25, 150: 0.50, 250: 0.83, 375: 1.25, 550: 1.83, 750: 2.50, 900: 3.00 };
+const MAX_HP_SCALE = { 75: 1500, 150: 3000, 250: 5000, 375: 7500, 550: 11000, 750: 15000, 900: 18000 };
+const SCALABLE_POWER_IDS = {};
+[156, 54, 147, 234, 170, 228, 232, 113, 210, 87, 99, 194, 226, 161, 120, 77, 242, 70, 128, 26, 168, 174, 104, 248].forEach(function (id) { SCALABLE_POWER_IDS[id] = true; });
+function isScalablePower(pw) {
+  if (!pw || !pw.slot) return false;
+  if (SCALABLE_POWER_IDS[pw.id]) return true;
+  var hasOffDef = pw.slot.some(function (s) { return s === 'Offense' || s === 'Defense'; });
+  if (!hasOffDef) return false;
+  var realStats = (pw.stats || []).filter(function (s) { return s.stat !== 'CombinedRating'; });
+  return realStats.length === 1 || realStats.length === 2;
+}
+function scaleStats(pw, targetIL) {
+  if (!isScalablePower(pw)) return null;
+  var realStats = pw.stats.filter(function (s) { return s.stat !== 'CombinedRating'; });
+  var pctStats = realStats.filter(function (s) { return s.stat !== 'Maximum Hit Points'; });
+  var hasHP = realStats.length !== pctStats.length;
+  var totalStats = pctStats.length + (hasHP ? 1 : 0);
+  var scale;
+  if (pctStats.length === 0) scale = SINGLE_STAT_SCALE;
+  else if (totalStats <= 1) scale = SINGLE_STAT_SCALE;
+  else if (totalStats === 2) scale = DOUBLE_STAT_SCALE;
+  else scale = TRIPLE_STAT_SCALE;
+  var baseIL = pw.item_level || targetIL;
+  var pctRatio = scale[baseIL] ? scale[targetIL] / scale[baseIL] : 1;
+  var hpRatio = MAX_HP_SCALE[baseIL] ? MAX_HP_SCALE[targetIL] / MAX_HP_SCALE[baseIL] : 1;
+  var out = [];
+  for (var i = 0; i < realStats.length; i++) {
+    var st = realStats[i];
+    if (st.stat === 'Maximum Hit Points') out.push({ stat: st.stat, value: Math.round((st.value || 0) * hpRatio), type: 'flat' });
+    else out.push({ stat: st.stat, value: Math.round((st.value || 0) * pctRatio * 100) / 100, type: st.type || 'percent' });
+  }
+  return { stats: out, combinedRating: targetIL };
+}
+function getRarityByIL(il) {
+  var best = RARITIES[0];
+  for (var i = 0; i < RARITIES.length; i++) { if (RARITIES[i].il === il) return RARITIES[i]; if (RARITIES[i].il <= il) best = RARITIES[i]; }
+  return best;
+}
+function getAvailableRarities(baseIL) { var b = getRarityByIL(baseIL); return RARITIES.filter(function (r) { return r.il >= b.il; }); }
+
+/* proc-effect rendering (faithful port of companions-page.js renderProcEffect) */
+function renderProc(proc, il) {
+  var parts = [];
+  if (proc.trigger) parts.push('<div class="item-effect"><span class="stat-name">Trigger:</span> ' + esc(proc.trigger) + '</div>');
+  var chance = proc.chance;
+  if (proc.chanceScaling && il != null) { var cv = proc.chanceScaling[String(il)]; if (cv != null) chance = cv; }
+  if (chance != null) parts.push('<div class="item-effect"><span class="stat-name">Chance:</span> ' + chance + '%</div>');
+  if (proc.effect) {
+    var t = proc.effect;
+    if (proc.effectScaling && il) { var k = String(il); for (var key in proc.effectScaling) { var v = proc.effectScaling[key][k]; if (v != null) t = t.replace('{' + key + '}', v); } }
+    t = t.replace(/\{[^}]+\}/g, '?');
+    parts.push('<div class="item-effect"><span class="stat-name">Effect:</span> ' + esc(t) + '</div>');
+  }
+  if (proc.statEffects && proc.statEffects.length) {
+    for (var i = 0; i < proc.statEffects.length; i++) { var se = proc.statEffects[i]; var scope = se.scope ? ' (' + se.scope + ')' : ''; parts.push(statRow(statName(se.stat) + scope, renderStatValue(se.value, se.type))); }
+  }
+  if (proc.durationSeconds) parts.push('<div class="item-effect"><span class="stat-name">Duration:</span> ' + proc.durationSeconds + 's</div>');
+  if (proc.cooldown) parts.push('<div class="item-effect"><span class="stat-name">Cooldown:</span> ' + esc(String(proc.cooldown)) + '</div>');
+  else if (proc.cooldownSeconds) parts.push('<div class="item-effect"><span class="stat-name">Cooldown:</span> ' + proc.cooldownSeconds + 's</div>');
+  if (proc.maxStacks) parts.push('<div class="item-effect"><span class="stat-name">Max stacks:</span> ' + proc.maxStacks + '</div>');
+  return parts.join('');
+}
+
+/* ---- mount combat-power scaling (verbatim from mounts-page.js) ---- */
+const MOUNT_CP_RARITY_MULT = { Mythic: 1.0, Celestial: 1.3124444 };
+const MOUNT_CP_IL_RATIO = { Mythic: 1.0, Celestial: 3937 / 3000 };
+function cpRoundAmt(x) { var r = Math.round(x * 10) / 10; return r === Math.round(r) ? Math.round(r) : r; }
+function scaleCombatPower(p, tier) {
+  if (!p) return p;
+  var anchor = p.anchorRarity || 'Mythic';
+  var vmult = (MOUNT_CP_RARITY_MULT[tier] || 1) / (MOUNT_CP_RARITY_MULT[anchor] || 1);
+  var ilSel = MOUNT_CP_IL_RATIO[tier], ilAnc = MOUNT_CP_IL_RATIO[anchor];
+  var c = JSON.parse(JSON.stringify(p));
+  if (ilSel != null && ilAnc != null && c.item_level) c.item_level = Math.round(c.item_level * ilSel / ilAnc);
+  if (c.magnitude) c.magnitude = Math.round(c.magnitude * vmult);
+  (c.equipBonuses || []).forEach(function (eb) {
+    if (eb.amount != null) eb.amount = cpRoundAmt(eb.amount * vmult);
+    if (eb.roleMap) Object.keys(eb.roleMap).forEach(function (rk) { if (eb.roleMap[rk] && eb.roleMap[rk].amount != null) eb.roleMap[rk].amount = cpRoundAmt(eb.roleMap[rk].amount * vmult); });
+  });
+  return c;
+}
+/* insignia slot matcher (verbatim from mounts-page.js) */
+function slotAccepts(allowed, req) { for (var i = 0; i < allowed.length; i++) { if (allowed[i] === '*' || allowed[i] === req) return true; } return false; }
+function slotIsUniversal(slot) { return slot.allowed.indexOf('*') !== -1; }
+function allFixedSlotsFilled(slots, used) { for (var f = 0; f < slots.length; f++) { if (!used[f] && !slotIsUniversal(slots[f])) return false; } return true; }
+function canAssign(slots, req, rIdx, used) {
+  if (rIdx >= req.length) return allFixedSlotsFilled(slots, used);
+  for (var s = 0; s < slots.length; s++) { if (used[s]) continue; if (slotAccepts(slots[s].allowed, req[rIdx])) { used[s] = true; if (canAssign(slots, req, rIdx + 1, used)) return true; used[s] = false; } }
+  return false;
+}
+function getCompatibleBonuses(mount, bonuses) {
+  var slots = mount.insigniaSlots; if (!slots || !slots.length) return [];
+  var out = [];
+  for (var i = 0; i < bonuses.length; i++) { var b = bonuses[i]; var req = b.requiredInsignias; if (!req) continue; if (req.length > slots.length) continue; var used = []; for (var u = 0; u < slots.length; u++) used.push(false); if (canAssign(slots, req, 0, used)) out.push(b); }
+  return out;
+}
+/* insignia tier scaling (verbatim from data/mount-insignias.js) */
+const MOUNT_INSIGNIAS_TIER_SCALING = { Uncommon: { item_level: 25, multiplier: 0.05 }, Rare: { item_level: 50, multiplier: 0.1 }, Epic: { item_level: 100, multiplier: 0.2 }, Legendary: { item_level: 200, multiplier: 0.4 }, Mythic: { item_level: 500, multiplier: 1 }, Celestial: { item_level: 750, multiplier: 1.5 } };
+const INSIGNIA_TIER_ORDER = ['Uncommon', 'Rare', 'Epic', 'Legendary', 'Mythic', 'Celestial'];
+
+/* ---- Phase 2 data + lookups ---- */
+var cPowers = loadJSON('companion_powers.json');
+var cEnh = loadJSON('companion_enhancements.json');
+var mCombat = loadJSON('mount_combat_powers.json');
+var mEquip = loadJSON('mount_equip_powers.json');
+var mBonuses = loadJSON('mount_insignia_bonuses.json');
+var mInsignias = loadJSGlobal('data/mount-insignias.js', 'MOUNT_INSIGNIAS_DATA');
+var cPowerMap = buildLookup(cPowers);
+var cEnhMap = buildLookup(cEnh);
+var mCombatMap = buildLookup(mCombat);
+var mEquipMap = buildLookup(mEquip);
+var mBonusMap = buildLookup(mBonuses);
+var mInsigniaMap = buildLookup(mInsignias);
+var COMPANION_SKILLS = {};
+try { COMPANION_SKILLS = loadJSGlobal('data/companion-skills.js', 'COMPANION_SKILLS') || {}; } catch (e) { COMPANION_SKILLS = {}; }
+
+/* ---- regression assertions (abort on drift) ---- */
+(function assertPhase2() {
+  function eq(label, got, want) { if (String(got) !== String(want)) throw new Error('PHASE2 REGRESSION ' + label + ': got ' + got + ' want ' + want); }
+  var storm = cPowerMap[3];                                   // Storm Eyes: 2 stats (double scale), base IL 750, 3.8 each
+  eq('StormEyes@750(base)', scaleStats(storm, 750).stats[0].value, 3.8);
+  eq('StormEyes@900(double)', scaleStats(storm, 900).stats[0].value, 4.56);   // 3.8 * (4.50/3.75)
+  var ev = scaleCombatPower(mCombatMap[1], 'Celestial');      // Ethereal Vortex, Mythic-anchored
+  eq('EtherealVortex mag Celestial', ev.magnitude, 1050);     // 800 * 1.3124444
+  eq('EtherealVortex debuff Celestial', ev.equipBonuses[0].amount, 20.7);      // 15.8 * 1.3124444
+  var evM = scaleCombatPower(mCombatMap[1], 'Mythic');
+  eq('EtherealVortex mag Mythic', evM.magnitude, 800);
+  eq('EtherealVortex debuff Mythic', evM.equipBonuses[0].amount, 15.8);
+  eq('Regal Aggression Celestial', Math.round(mInsigniaMap[1].stats[0].value * 1.5), 1125); // 750 * 1.5
+  eq('Regal Aggression Uncommon', Math.round(mInsigniaMap[1].stats[0].value * 0.05), 38);   // 750 * 0.05 -> 37.5 -> 38
+  console.log('Phase 2 regression assertions passed.');
+})();
+
+/* Companions */
+build('companions', loadJSON('companions.json'), {
+  breadcrumb: 'Companions', backHref: 'companions.html', backLabel: 'View in the full Companions database',
+  render: function (c, name) {
+    var parts = [], usedTT = false;
+    var pw = c.powerRef != null ? cPowerMap[c.powerRef] : null;
+    var enh = c.enhancementRef != null ? cEnhMap[c.enhancementRef] : null;
+    if (pw) {
+      var slotBadges = (pw.slot || []).map(function (s) { return '<span class="item-badge">' + esc(s) + '</span>'; }).join('');
+      var pbody = slotBadges ? '<div style="margin-bottom:0.4rem">' + slotBadges + '</div>' : '';
+      var realStats = (pw.stats || []).filter(function (s) { return s.stat !== 'CombinedRating'; });
+      if (isScalablePower(pw)) {
+        var avail = getAvailableRarities(pw.item_level);
+        var statNames = realStats.map(function (s) { return statName(s.stat); });
+        var head = '<tr><th>Quality</th><th>IL</th>' + statNames.map(function (n) { return '<th>' + esc(n) + '</th>'; }).join('') + '</tr>';
+        var rows = avail.map(function (r) {
+          var sc = scaleStats(pw, r.il);
+          var cells = sc.stats.map(function (st) { return '<td>' + renderStatValue(st.value, st.type) + '</td>'; }).join('');
+          return '<tr><td>' + esc(r.name) + '</td><td>' + r.il + '</td>' + cells + '</tr>';
+        }).join('');
+        pbody += '<div style="overflow-x:auto"><table class="tt"><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div>';
+        usedTT = true;
+      } else if (realStats.length) {
+        var base = getRarityByIL(pw.item_level);
+        pbody += '<div style="margin-bottom:0.3rem;color:var(--text-muted);font-size:0.8rem">At ' + esc(base.name) + ' (IL ' + fmt(pw.item_level) + ')</div>' + statsTable(realStats);
+      }
+      if (pw.procEffect) {
+        var topIL = isScalablePower(pw) ? getAvailableRarities(pw.item_level).slice(-1)[0].il : (pw.item_level || 900);
+        var pr = renderProc(pw.procEffect, topIL);
+        if (pr) pbody += '<div style="margin-top:0.5rem">' + pr + '</div>';
+      }
+      var pnote = showText(pw.notes);
+      if (pnote) pbody += '<div class="item-effect" style="margin-top:0.4rem">' + esc(pnote) + '</div>';
+      parts.push('<div class="item-sec"><h2>Summoned Power' + (pw.name ? ' — ' + esc(pw.name) : '') + '</h2>' + pbody + '</div>');
+    }
+    if (enh) {
+      parts.push('<div class="item-sec"><h2>Enhancement — ' + esc(enh.name) + '</h2>' + statRow(statName(enh.stat), renderStatValue(enh.value, enh.type)) + '<div class="item-effect" style="margin-top:0.3rem">Item Level ' + fmt(enh.item_level) + '</div></div>');
+    }
+    var skills = COMPANION_SKILLS[String(name).toLowerCase()];
+    if (Array.isArray(skills) && skills.length) {
+      var sk = skills.map(function (s) { return '<div style="margin-bottom:0.4rem"><strong>' + esc(s.name) + '</strong>' + (s.text ? '<div class="item-effect">' + esc(s.text) + '</div>' : '') + '</div>'; }).join('');
+      parts.push('<div class="item-sec"><h2>Active Skills</h2>' + sk + '</div>');
+    }
+    var meta = [];
+    if (c.augment) meta.push('Augment companion' + (Array.isArray(c.augmentShares) && c.augmentShares.length ? ' — shares your ' + c.augmentShares.map(esc).join(', ') : ''));
+    var cs = showText(c.source); if (cs) meta.push('Source: ' + esc(cs));
+    var cn = showText(c.notes); if (cn) meta.push(esc(cn));
+    if (meta.length) parts.push('<div class="item-sec"><h2>Details</h2><div class="item-effect">' + meta.join(' · ') + '</div></div>');
+    return {
+      title: name + ' — Neverwinter Companion — Compendium',
+      desc: 'Neverwinter companion ' + name + (pw && pw.name ? ': ' + pw.name + ' summoned buff' : '') + (c.augment ? ' (augment)' : '') + (enh ? ', ' + enh.name + ' enhancement' : '') + '.',
+      sub: c.augment ? '<span class="item-badge">Augment</span>' : '',
+      body: (usedTT ? TT_STYLE : '') + parts.join('')
+    };
+  }
+});
+
+/* Mounts */
+build('mounts', loadJSON('mounts.json'), {
+  breadcrumb: 'Mounts', backHref: 'mounts.html', backLabel: 'View in the full Mounts database',
+  render: function (m, name) {
+    var parts = [], usedTT = false;
+    var cp = m.combatRef != null ? mCombatMap[m.combatRef] : null;
+    var ep = m.equipRef != null ? mEquipMap[m.equipRef] : null;
+    var bonus = m.bonusRef ? mBonusMap[m.bonusRef] : null;
+    if (Array.isArray(m.insigniaSlots) && m.insigniaSlots.length) {
+      var slotTxt = m.insigniaSlots.map(function (s, i) {
+        var types = s.allowed.map(function (a) { return a === '*' ? 'Universal' : a; }).join(' / ');
+        return 'Slot ' + (i + 1) + ': ' + esc(types) + (s.preferred ? ' <span style="color:var(--highlight)">★ preferred ' + esc(String(s.preferred)) + '</span>' : '');
+      }).join(' · ');
+      parts.push('<div class="item-sec"><h2>Insignia Slots</h2><div class="item-effect">' + slotTxt + '</div></div>');
+    }
+    if (cp) {
+      var cM = scaleCombatPower(cp, 'Mythic'), cC = scaleCombatPower(cp, 'Celestial');
+      var rows = '';
+      if (cM.magnitude || cC.magnitude) rows += '<tr><td>Total Magnitude</td><td>' + fmt(cM.magnitude) + '</td><td>' + fmt(cC.magnitude) + '</td></tr>';
+      var ebM = cM.equipBonuses || [], ebC = cC.equipBonuses || [];
+      for (var i = 0; i < ebC.length; i++) {
+        var bc = ebC[i], bm = ebM[i] || {};
+        if (bc.roleMap) {
+          ['DPS', 'Tank', 'Heal'].forEach(function (rk) {
+            var rc = bc.roleMap[rk]; if (!rc) return;
+            var rm = (bm.roleMap && bm.roleMap[rk]) || {};
+            rows += '<tr><td>' + esc(rk + ': ' + rc.stat) + '</td><td>' + (rm.amount != null ? rm.amount + '%' : '—') + '</td><td>' + (rc.amount != null ? rc.amount + '%' : '—') + '</td></tr>';
+          });
+        } else {
+          var label = bc.stat + (bc.scope ? ' (' + bc.scope + ')' : '');
+          rows += '<tr><td>' + esc(label) + '</td><td>' + (bm.amount != null ? bm.amount + '%' : '—') + '</td><td>' + (bc.amount != null ? bc.amount + '%' : '—') + '</td></tr>';
+        }
+      }
+      var recharge = cp.rechargeTimeSeconds != null ? '<div class="item-effect" style="margin-bottom:0.4rem">Recharge ' + cp.rechargeTimeSeconds + 's</div>' : '';
+      var tbl = rows ? '<div style="overflow-x:auto"><table class="tt"><thead><tr><th>Effect</th><th>Mythic</th><th>Celestial</th></tr></thead><tbody>' + rows + '</tbody></table></div>' : '';
+      var cnote = showText(cp.notes);
+      parts.push('<div class="item-sec"><h2>Combat Power — ' + esc(cp.name) + '</h2>' + recharge + tbl + (cnote ? '<div class="item-effect" style="margin-top:0.4rem">' + esc(cnote) + '</div>' : '') + '</div>');
+      if (rows) usedTT = true;
+    }
+    if (ep) {
+      var enote = showText(ep.notes);
+      parts.push('<div class="item-sec"><h2>Equip Power — ' + esc(ep.name) + '</h2>' + statsTable(ep.stats) + '<div class="item-effect" style="margin-top:0.3rem">Item Level ' + fmt(ep.item_level) + ' · Combined Rating ' + fmt(ep.combinedRating) + '</div>' + (enote ? '<div class="item-effect" style="margin-top:0.3rem">' + esc(enote) + '</div>' : '') + '</div>');
+    }
+    if (bonus) {
+      var bmeta = [];
+      if (Array.isArray(bonus.requiredInsignias) && bonus.requiredInsignias.length) bmeta.push('Requires: ' + bonus.requiredInsignias.map(esc).join(' + '));
+      if (bonus.maxStacks) bmeta.push('Stacks up to ' + bonus.maxStacks + 'x');
+      parts.push('<div class="item-sec"><h2>Insignia Set Bonus — ' + esc(bonus.name) + '</h2>' + statsTable(bonus.stats) + (bmeta.length ? '<div class="item-effect" style="margin-top:0.3rem">' + bmeta.join(' · ') + '</div>' : '') + (bonus.effectText ? '<div class="item-effect" style="margin-top:0.3rem">' + esc(bonus.effectText) + '</div>' : '') + '</div>');
+    }
+    var compat = getCompatibleBonuses(m, mBonuses);
+    if (compat.length) {
+      var cl = compat.map(function (b) {
+        var req = Array.isArray(b.requiredInsignias) ? ' <span style="color:var(--text-muted);font-size:0.8rem">(' + b.requiredInsignias.map(esc).join(' + ') + ')</span>' : '';
+        return '<li>' + esc(b.name) + req + '</li>';
+      }).join('');
+      parts.push('<div class="item-sec"><h2>Compatible Insignia Bonuses (' + compat.length + ')</h2><ul class="item-list">' + cl + '</ul></div>');
+    }
+    var meta = [];
+    var ms = showText(m.source); if (ms) meta.push('Source: ' + esc(ms));
+    var mn = showText(m.notes); if (mn) meta.push(esc(mn));
+    if (meta.length) parts.push('<div class="item-sec"><h2>Details</h2><div class="item-effect">' + meta.join(' · ') + '</div></div>');
+    return {
+      title: name + ' — Neverwinter Mount — Compendium',
+      desc: 'Neverwinter mount ' + name + (cp && cp.name ? ': ' + cp.name + ' combat power' : '') + (ep && ep.name ? ', ' + ep.name + ' equip power' : '') + '.',
+      body: (usedTT ? TT_STYLE : '') + parts.join('')
+    };
+  }
+});
+
+/* Mount insignias */
+build('insignias', mInsignias, {
+  breadcrumb: 'Mount Insignias', backHref: 'mounts.html#insignias', backLabel: 'View in the Mounts database',
+  render: function (ins, name) {
+    var stats = ins.stats || [];
+    var statNames = stats.map(function (s) { return statName(s.stat); });
+    var head = '<tr><th>Quality</th><th>IL</th>' + statNames.map(function (n) { return '<th>' + esc(n) + '</th>'; }).join('') + '<th>Combined Rating</th></tr>';
+    var rows = INSIGNIA_TIER_ORDER.map(function (tier) {
+      var sc = MOUNT_INSIGNIAS_TIER_SCALING[tier];
+      var cells = stats.map(function (st) {
+        if (st.type === 'percent') { var pv = Math.round(st.value * sc.multiplier * 10) / 10; return '<td>' + (pv >= 0 ? '+' : '') + pv + '%</td>'; }
+        var rv = Math.round(st.value * sc.multiplier); return '<td>' + (rv >= 0 ? '+' : '') + fmt(rv) + '</td>';
+      }).join('');
+      var cr = Math.round((ins.combinedRating || 0) * sc.multiplier);
+      return '<tr><td>' + tier + '</td><td>' + sc.item_level + '</td>' + cells + '<td>' + fmt(cr) + '</td></tr>';
+    }).join('');
+    var tbl = '<div style="overflow-x:auto"><table class="tt"><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div>';
+    return {
+      title: name + ' — Neverwinter Mount Insignia — Compendium',
+      desc: 'Neverwinter ' + esc(ins.category) + ' insignia ' + name + ' (' + ins.statTemplate + ' template) — stats at every quality from Uncommon to Celestial.',
+      sub: '<span class="item-badge">' + esc(ins.category) + '</span>',
+      body: TT_STYLE + '<div class="item-sec"><h2>Stats by Quality</h2>' + tbl + '</div><div class="item-sec"><h2>Details</h2><div class="item-effect">Slot type: ' + esc(ins.category) + ' · Stat template: ' + esc(ins.statTemplate) + '</div></div>'
+    };
+  }
+});
+
 /* ---------- db root index ---------- */
 (function () {
   var links = Object.keys(urls).map(function (t) { return '<li><a href="db/' + t + '/index.html">' + esc(t) + '</a> (' + (urls[t].length - 1) + ')</li>'; }).join('');
