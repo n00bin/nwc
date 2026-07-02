@@ -11233,7 +11233,11 @@
       const r = getEngineResult();
       const base = HEAL_THROUGHPUT.regenPoolBase || 1000;
       const poolFlat = (r.stats["Class Resource Max"] && r.stats["Class Resource Max"].flat) || base;
-      const maxBoost = Math.max(0, (poolFlat - base) / base);
+      // Percent-of-pool bonuses ("Your Divinity/Performance/Soulweave maximum
+      // increases by 20%" — Resourceful Healer, verified 2026-07-02) arrive on
+      // the percent channel; fold them into the pool boost.
+      const poolPct = (r.stats["Class Resource Max"] && r.stats["Class Resource Max"].percentTotal) || 0;
+      const maxBoost = Math.max(0, (poolFlat - base) / base) + Math.max(0, poolPct / 100);
       const regen = Math.max(0, ((r.stats["Class Resource Regen"] && r.stats["Class Resource Regen"].finalPct) || 0) / 100);
       const rho = (HEAL_THROUGHPUT.rho != null) ? HEAL_THROUGHPUT.rho : 1.0;
       // Cast cadence: Recharge Speed shortens heal-encounter cooldowns the
@@ -12818,11 +12822,15 @@
     }
     function totalBoonPoints() {
       let total = 0;
-      for (const [, v] of state.boons) {
+      for (const [key, v] of state.boons) {
         if (v.tier === "master") {
           total += masterPointsSpent(v.boonId, v.ranks || 0);
         } else {
-          total += (v.points || 0);   // tier 1-5: 1 point per allocated point
+          // tier 1-5: points × the boon's cost per point (Advanced/Tier-5
+          // boons cost 2 per point — in-game icon badge, verified 2026-07-02;
+          // counting them at 1 under-reported every build's real spend).
+          const b = findBoonByKey(key);
+          total += (v.points || 0) * ((b && b.costPerPoint) || 1);
         }
       }
       return total;
@@ -14723,7 +14731,13 @@
       // down (after Mechanics). Hoisted here so the picker logic and
       // its wireup share the same `picks` / `pickable` references.
       const slotted = Array.isArray(paragonDef.slottedClassFeatures) ? paragonDef.slottedClassFeatures : [];
-      const pickable = slotted.filter(f => !f.classShared);
+      // Pickable = real entries only. Name-only cross-reference stubs
+      // (no description, no stats — e.g. Ranger Hunter's "see Warden"
+      // placeholders) stay hidden until they're filled from captures.
+      // Do NOT key on classShared: shared features ARE slottable
+      // in-game on both paragons (Soulweaver's Dust to Dust / Shadow
+      // Walk carry real stats and were wrongly unpickable).
+      const pickable = slotted.filter(f => f && (f.description || f.percentStats || f.ratingStats || f.percentStatsConditional));
       const picks = (state.slottedClassFeaturePicks || []).slice();
 
       // --- At-Will hotbar slots (2) ---

@@ -43,6 +43,12 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   4 features it shares with Oathkeeper (**Aura of Protection, Blessed Wanderer,
   Composure, Aura of Wrath**) — confirmed from the Justicar's own Powers screen,
   where they appear (and Aura of Protection is Active).
+- **Toon Forge — Soulweaver's shared class features were unpickable.** The
+  class-feature picker was hiding the 4 features Soulweaver shares with
+  Hellbringer (**Flames of Empowerment, Dark One's Blessing, Dust to Dust,
+  Shadow Walk** — the last two carry real stats), so a Soulweaver could only
+  ever slot its 4 path-exclusive features. All 8 now show, matching the
+  in-game Class Feature row.
 - **Toon Forge — Barbarian Blademaster rotation powers now score.** Duplicate
   copies of Blademaster's powers (stored in two places in the data) meant the
   rotation model read the stale copy with no cooldown, so Battle Fury, Roar,
