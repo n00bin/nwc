@@ -1,6 +1,16 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "July 1, 2026",
+    title: "New Dungeon Currency Tracker + a Friendlier Feel Site-Wide",
+    tags: ["Feature"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li>New tool — the <strong>Dungeon Currency Tracker</strong> (find it under <strong>Creators &amp; Tools</strong>). Log the currency each character earns from dungeons, trials, and campaigns, and it tracks every one against its <strong>weekly cap</strong> and <strong>storage limit</strong> so you can see at a glance <strong>who to farm next</strong>. Just hit <em>Update total</em> and type your new in-game total — it does the math and banks the difference as this week's earnings. Every update is saved in a per-currency log you can fix or delete, characters and sources collapse to keep things tidy, and it all saves to your browser with export/import backup.</li>" +
+      "<li>The whole site got a <strong>friendlier once-over</strong> — warmer intros, welcomes, and empty-state messages across the database and reference pages, so it reads a bit more like a helpful friend and a bit less like a manual.</li>" +
+      "</ul>"
+  },
+  {
     date: "June 23, 2026",
     title: "Providence & Cavalry Mount Fixes, Group-Stacking Toggles & Add-Missing Collar",
     tags: ["Feature", "Fix"],
