@@ -14,6 +14,7 @@ const vm = require('vm');
 const WEB = path.resolve(__dirname, '..');          // .../website
 const SRC = path.resolve(WEB, '..', 'data');        // parent repo /data (JSON source of truth)
 const ROOT = 'https://n00bin.github.io/nwc/';
+const BUILD_DATE = new Date().toISOString().slice(0, 10);   // sitemap <lastmod> stamp for this build
 const OGIMG = ROOT + 'og-image.png';
 
 /* ---------- ported helpers (kept faithful to js/shared.js) ---------- */
@@ -661,7 +662,7 @@ build('insignias', mInsignias, {
 const MAIN_PAGES = ['', 'mounts.html', 'companions.html', 'consumables.html', 'artifacts.html', 'mekaniks.html', 'campaign-boosters.html', 'professions.html', 'patchnotes.html', 'reports.html', 'creators-tools.html', 'toon-forge.html', 'insignia-priority.html', 'preview.html', 'dungeon-currency.html', 'db/index.html'];
 function urlset(locs) {
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    locs.map(function (u) { return '  <url><loc>' + u + '</loc></url>'; }).join('\n') + '\n</urlset>\n';
+    locs.map(function (u) { return '  <url><loc>' + u + '</loc><lastmod>' + BUILD_DATE + '</lastmod></url>'; }).join('\n') + '\n</urlset>\n';
 }
 fs.writeFileSync(path.join(WEB, 'sitemap-pages.xml'), urlset(MAIN_PAGES.map(function (p) { return ROOT + p; })));
 var childSitemaps = ['sitemap-pages.xml'];
@@ -671,7 +672,7 @@ Object.keys(urls).forEach(function (t) {
   childSitemaps.push(f);
 });
 var idx = '<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-  childSitemaps.map(function (f) { return '  <sitemap><loc>' + ROOT + f + '</loc></sitemap>'; }).join('\n') + '\n</sitemapindex>\n';
+  childSitemaps.map(function (f) { return '  <sitemap><loc>' + ROOT + f + '</loc><lastmod>' + BUILD_DATE + '</lastmod></sitemap>'; }).join('\n') + '\n</sitemapindex>\n';
 fs.writeFileSync(path.join(WEB, 'sitemap.xml'), idx);
 
 var total = Object.keys(urls).reduce(function (n, t) { return n + urls[t].length; }, 0);

@@ -44,6 +44,7 @@ function renderNav(activePage) {
   footer.innerHTML = '<a href="https://www.youtube.com/@N00binHard" target="_blank" rel="noopener" style="color:#ff0000;text-decoration:none;margin-right:1rem;">&#9654; The N00bin Network</a>' +
     '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:#f0883e;text-decoration:none;">Join on YouTube</a>' +
     '<div style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-secondary);">Want to collaborate or contribute data? Reach out: <a href="mailto:n00binhard@gmail.com" style="color:var(--accent);text-decoration:none;">n00binhard@gmail.com</a></div>' +
+    '<div style="margin-top:0.6rem;"><a href="db/" style="color:var(--accent);text-decoration:none;">Browse the full item database &rarr;</a> <span style="color:var(--text-secondary);">&mdash; every companion, mount, gear piece, artifact &amp; more</span></div>' +
     '<div style="margin-top:0.5rem;">Neverwinter Compendium &copy; N00bin ' + new Date().getFullYear() + '</div>';
   document.body.appendChild(footer);
 }
