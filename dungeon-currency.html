@@ -8,6 +8,14 @@
   <meta property="og:title" content="Dungeon &amp; Campaign Currency Tracker — Neverwinter Compendium">
   <meta property="og:description" content="Track dungeon and campaign currency per character against weekly caps and storage limits, and see which character to farm next.">
   <meta property="og:type" content="website">
+  <link rel="canonical" href="https://n00bin.github.io/nwc/dungeon-currency.html">
+  <meta property="og:url" content="https://n00bin.github.io/nwc/dungeon-currency.html">
+  <meta property="og:image" content="https://n00bin.github.io/nwc/og-image.png">
+  <meta property="og:site_name" content="Neverwinter Compendium">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dungeon &amp; Campaign Currency Tracker — Neverwinter Compendium">
+  <meta name="twitter:description" content="Track dungeon and campaign currency per character against weekly caps and storage limits, and see which character to farm next.">
+  <meta name="twitter:image" content="https://n00bin.github.io/nwc/og-image.png">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -140,6 +148,7 @@
     @media (min-width: 960px) { .dc-grid { grid-template-columns: 1fr 1fr; } }
 
     .dc-panel {
+      min-width: 0; /* let the grid track shrink so children wrap instead of overflowing on mobile */
       background: linear-gradient(180deg, rgba(212, 175, 55, 0.05), rgba(0,0,0,0));
       border: 1px solid var(--gold-faint);
       border-radius: 3px;
@@ -560,7 +569,89 @@
     .dc-backup-msg { margin-top: 0.55rem; min-height: 1.1rem; font-size: 0.92rem; font-style: italic; color: var(--gold-bright); transition: opacity 0.3s; }
     .dc-backup-msg.error { color: var(--crimson); }
     .dc-backup-msg.fade { opacity: 0; }
+
+    /* Touch devices: reveal hover-only controls (no hover on touch) and enlarge
+       the small icon buttons into thumb-friendly tap targets. */
+    @media (pointer: coarse) {
+      .dc-cur-x { opacity: 0.6; }
+      .dc-cur-x, .dc-src-edit, .dc-log-edit, .dc-log-del {
+        min-width: 2.1rem; min-height: 2.1rem;
+        display: inline-flex; align-items: center; justify-content: center;
+        padding: 0.3rem;
+      }
+      .dc-src-badge { padding: 0.32rem 0.6rem; }
+      .dc-log-toggle { padding: 0.5rem 0.25rem; }
+    }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://n00bin.github.io/nwc/#website",
+        "url": "https://n00bin.github.io/nwc/",
+        "name": "Neverwinter Compendium",
+        "publisher": {
+          "@id": "https://n00bin.github.io/nwc/#org"
+        },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://n00bin.github.io/nwc/#org",
+        "name": "The N00bin Network",
+        "url": "https://n00bin.github.io/nwc/",
+        "logo": "https://n00bin.github.io/nwc/og-image.png"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://n00bin.github.io/nwc/dungeon-currency.html#webpage",
+        "url": "https://n00bin.github.io/nwc/dungeon-currency.html",
+        "name": "Dungeon & Campaign Currency Tracker — Neverwinter Compendium",
+        "description": "Track dungeon and campaign currency per character against weekly caps and storage limits, and see which character to farm next.",
+        "isPartOf": {
+          "@id": "https://n00bin.github.io/nwc/#website"
+        },
+        "inLanguage": "en",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web browser",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "isAccessibleForFree": true,
+        "image": "https://n00bin.github.io/nwc/og-image.png",
+        "publisher": {
+          "@id": "https://n00bin.github.io/nwc/#org"
+        },
+        "breadcrumb": {
+          "@id": "https://n00bin.github.io/nwc/dungeon-currency.html#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://n00bin.github.io/nwc/dungeon-currency.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://n00bin.github.io/nwc/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Dungeon Currency Tracker",
+            "item": "https://n00bin.github.io/nwc/dungeon-currency.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="dc-themed">
   <nav class="navbar"></nav>

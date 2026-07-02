@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#2a1a08"/>
+      <stop offset="100%" stop-color="#0a0705"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e8c878"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#8b6f2f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d4af37" stop-opacity="0.5"/>
+      <stop offset="60%" stop-color="#d4af37" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#bg)" stroke="#d4af37" stroke-width="1.5" stroke-opacity="0.55"/>
+  <circle cx="32" cy="36" r="22" fill="url(#glow)"/>
+
+  <!-- coin stack (bottom to top) -->
+  <ellipse cx="32" cy="49" rx="15" ry="5" fill="#7a5f28"/>
+  <rect x="17" y="44" width="30" height="5" fill="#8b6f2f"/>
+  <ellipse cx="32" cy="44" rx="15" ry="5" fill="url(#gold)" stroke="#f0e2bc" stroke-width="0.6" stroke-opacity="0.55"/>
+  <rect x="17" y="37" width="30" height="5" fill="#8b6f2f"/>
+  <ellipse cx="32" cy="37" rx="15" ry="5" fill="url(#gold)" stroke="#f0e2bc" stroke-width="0.6" stroke-opacity="0.6"/>
+  <rect x="17" y="30" width="30" height="5" fill="#a5842f"/>
+  <ellipse cx="32" cy="30" rx="15" ry="5" fill="url(#gold)" stroke="#f0e2bc" stroke-width="0.75" stroke-opacity="0.8"/>
+
+  <!-- mark on the top coin -->
+  <path d="M 32 26.8 L 33 29 L 36 30 L 33 31 L 32 33.2 L 31 31 L 28 30 L 31 29 Z" fill="#f0e2bc" opacity="0.85"/>
+
+  <!-- sparkle accent -->
+  <path d="M 49 15 L 49.7 18.3 L 53 19 L 49.7 19.7 L 49 23 L 48.3 19.7 L 45 19 L 48.3 18.3 Z"
+        fill="#e8c878" opacity="0.75"/>
+</svg>
