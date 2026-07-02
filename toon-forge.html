@@ -11002,7 +11002,10 @@
       }
       if (/chance/.test(txt)) {                              // proc → duty-cycle model
         const U = CONDITIONAL_UPTIME.proc;
-        const chance = (_ctNum(/(\d+(?:\.\d+)?)%\s*chance/, txt) ?? U.default_chance * 100) / 100;
+        // Clamp to 0..1: a >100% parse (data typo / regex catching the wrong
+        // number) would make (1-chance) negative and Math.pow return NaN,
+        // which Math.min/Math.max do NOT catch — it would poison the stat.
+        const chance = Math.max(0, Math.min(1, (_ctNum(/(\d+(?:\.\d+)?)%\s*chance/, txt) ?? U.default_chance * 100) / 100));
         const dur = _ctNum(/for\s+(\d+(?:\.\d+)?)\s*second/, txt) ?? U.default_duration;
         const icd = _ctNum(/(\d+(?:\.\d+)?)\s*second\s*cool/, txt) || _ctNum(/once\s+(?:every|per)\s*(\d+(?:\.\d+)?)\s*s/, txt);
         let rate = U.trigger_rate.other;
@@ -11207,7 +11210,7 @@
     // never disturbs the calibrated per-cast number; rho→∞ ⇒ regen-only,
     // rho→0 ⇒ pool-only. Default rho=1 (pool counts for sustained — n00b
     // 2026-06-22). rho is UNCALIBRATED — lock it to an in-game two-build test.
-    const HEAL_THROUGHPUT = { enabled: true, rho: 1.0, regenPoolBase: 1000 };
+    const HEAL_THROUGHPUT = { enabled: true, rho: 1.0, regenPoolBase: 1000, rechargeWeight: 0.5 };
     function healThroughputFactor() {
       if (!HEAL_THROUGHPUT.enabled) return 1;
       const r = getEngineResult();
@@ -11216,7 +11219,16 @@
       const maxBoost = Math.max(0, (poolFlat - base) / base);
       const regen = Math.max(0, ((r.stats["Class Resource Regen"] && r.stats["Class Resource Regen"].finalPct) || 0) / 100);
       const rho = (HEAL_THROUGHPUT.rho != null) ? HEAL_THROUGHPUT.rho : 1.0;
-      return ((1 + maxBoost) + rho * (1 + regen)) / (1 + rho);
+      // Cast cadence: Recharge Speed shortens heal-encounter cooldowns the
+      // same way it feeds the DPS rotation model — before 2026-07-01 it
+      // contributed NOTHING to the heal score (audit finding: two healer
+      // items differing only in Recharge Speed scored a flat tie).
+      // rechargeWeight is UNCALIBRATED (like rho): 0.5 = heals are half
+      // cooldown-bound, half resource/GCD-bound. Lock via an in-game
+      // two-build test when convenient.
+      const recharge = Math.max(0, ((r.stats["Recharge Speed"] && r.stats["Recharge Speed"].finalPct) || 0) / 100);
+      const castRate = 1 + ((HEAL_THROUGHPUT.rechargeWeight != null) ? HEAL_THROUGHPUT.rechargeWeight : 0.5) * recharge;
+      return castRate * ((1 + maxBoost) + rho * (1 + regen)) / (1 + rho);
     }
     function computeGearHealProcPerSec(pCrit) {
       const out = { allyPerSec: 0, selfPerSec: 0, contributors: [] };
@@ -12874,6 +12886,7 @@
         aepr: state.activeEquipPowerRarity, acpr: state.activeCombatPowerRarity,
         ench: state.enchants, ovr: state.overloads, kits: state.kits,
         gld: state.guildBoonPicks, gbr: state.guildBoonRanks, enr: state.enchantRarity,
+        aIL: state.artifactIL,
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,

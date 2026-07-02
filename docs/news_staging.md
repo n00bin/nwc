@@ -28,7 +28,15 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Works for both character and companion enchantments. (Reports #164 & #165.)
 
 ### Bug Fixes
-- **Toon Forge — flat Max HP gear bonuses were being read as percentages.**
+- **Toon Forge — healers now get credit for Recharge Speed.** The healing
+  throughput model counted your class resource (Divinity/Soul Weave pool and
+  regen) but ignored Recharge Speed entirely — two healer items differing only
+  in Recharge Speed scored a flat tie, even though shorter encounter cooldowns
+  mean more heals per fight. Recharge Speed now raises healing throughput
+  (weighted at half, since heals are also resource-limited), in the simulator
+  and the optimizer. Also hardened the stat engine against proc-chance typos
+  (a bad "chance %" in data can no longer poison a stat with NaN) and fixed a
+  stale-cache case when changing an artifact's owned tier on shared builds.
   Six items whose equip bonus grants flat Maximum Hit Points (Garb of the
   Ascended's +15,000, and five Pioneer helmets' +1,000) were ingested as
   +15,000% / +1,000% Max HP. On the stat panel this only showed if you
