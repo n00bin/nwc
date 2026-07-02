@@ -88,9 +88,12 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   Speed per rank** (we had 2%); **Death's Bulwark** shares Deathly Rage's
   30% chance and dual trigger; **master ranks unlock at 10/30/60 total
   points spent** (not 100 — you can start ranking masters far earlier);
-  **Advanced-tier boons cost 2 points each**, which the spent counter now
-  counts correctly; and the total budget is **132**, matching the current
-  campaign list.
+  and per the patch notes, **each additional Master OR Advanced boon you
+  own costs 1 more point per rank than the last** — the spent counter and
+  optimizer now price both tiers with that escalation. **Life Lessons** also
+  lost its "below 30% HP" requirement in the patch (it procs on any At-Will
+  chance now), so it scores much higher. Total budget is **132**, matching
+  the current campaign list.
 - **Data — five "sheet-only" endgame items verified against tooltips.**
   Vambraces of the Bloodforged Edict, Aegis of the Bloodwrought Covenant,
   Bloodwoven Symbols (Graceful Harmony), Nightflame Censer, and Demon Skull
