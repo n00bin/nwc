@@ -1,17 +1,20 @@
 # Data Issues To Investigate
 
-## Rime Temper Celestial values are ESTIMATES — n00b flagged Incoming Damage wrong (OPEN, 2026-07-02)
-Celestial Rime Temper (enchants.json id 40): only Mythic was screenshot-verified
-(2026-03-17: +14% Max HP, +11% Incoming Damage Reduction). The stored Celestial
-values (+16% HP / -13% IDR) are linear estimates and n00b reports the Incoming
-Damage one is wrong in game. Need the in-game Celestial tooltip to correct
-`percentStats`, `equipBonuses` amounts, the `rarities.Celestial` row, and the
-description text (which bakes in the +16%/+13% wording). Also re-check the
-non-verified ladder rows (Uncommon→Legendary) while at it — they're estimates
-too. FIXED on the code side 2026-07-02: enchantAtRank + the engine's
-pushEnchant now use the per-rank `rarities` ladder instead of ×rank/6 linear
-scaling, Mythic HP corrected 13→14, and the always-on Equip lines
-(alwaysActive:true) now count in the BASE stat panel instead of hiding behind
+## Rime Temper — Celestial RESOLVED 2026-07-03; Uncommon–Legendary rows still estimates
+n00b flagged the Celestial Incoming Damage as wrong (2026-07-02) — confirmed: only
+Mythic had been screenshot-verified (2026-03-17: +14% HP / +11% IDR / 4% debuff);
+the Celestial values were linear estimates. n00b's PS5 tooltip (2026-07-03, archived
+at `docs/calibration/inbox/enchants/Celestial Rime Temper (R)_IL7000_celestial-verified.png`)
+verifies Celestial: **+15% Max HP, +12% Incoming Damage Reduction, 4.5% per-stack
+debuff** — all applied to enchants.json id 40 (name also corrected to the in-game
+"Celestial Rime Temper (R)"; findEnchantByName has an (R)-suffix back-compat alias so
+old saves/share links still resolve). NW Hub + Arc's Mod 32 preview independently
+corroborate 15/12; the Mythic→Celestial step is +1 (progression compresses at the
+top, so the linear ladder is provably wrong shape). STILL OPEN: Uncommon–Legendary
+ladder rows are unverified estimates — grab tooltips if a low-rank copy ever comes up.
+FIXED on the code side 2026-07-02: enchantAtRank + the engine's pushEnchant now use
+the per-rank `rarities` ladder instead of ×rank/6 linear scaling, and the always-on
+Equip lines (alwaysActive:true) count in the BASE stat panel instead of hiding behind
 Show Conditional.
 
 ## Audit verify-items resolved from screenshots (2026-06-22)

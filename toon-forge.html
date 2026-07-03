@@ -5768,6 +5768,12 @@
       if (typeof ENCHANTS_DATA !== "undefined") {
         const hit = ENCHANTS_DATA.find(e => e.name === name);
         if (hit) return hit;
+        // Back-compat for "(R)" suffix renames (e.g. Celestial Rime Temper
+        // -> Celestial Rime Temper (R), 2026-07-03): old saves and share
+        // links carry the suffix-less name — match ignoring the suffix.
+        const alt = / \(R\)$/.test(name) ? name.replace(/ \(R\)$/, "") : name + " (R)";
+        const hitAlt = ENCHANTS_DATA.find(e => e.name === alt);
+        if (hitAlt) return hitAlt;
       }
       const userEnch = (typeof getUserAddedEnchants === "function") ? getUserAddedEnchants() : [];
       return userEnch.find(e => e.name === name) || null;

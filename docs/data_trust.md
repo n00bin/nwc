@@ -257,6 +257,7 @@ remaining gap (n00b deferred 2026-06-16).
 | 42 | Celestial Obsidian | CONFIRMED | inbox/enchants/uncommon-obsidian_il300_celestial-source.png | Off: Power 756 / Accuracy 1404 / Crit Sev 1296 · Def: Crit Avoid 1188 / Deflect 1620 / Deflect Sev 1620 · Util: Forte 972 / Ctrl Bonus 1080 / Inc Healing 1296 |
 | 43 | Celestial Netherite | CONFIRMED | inbox/enchants/celestial-netherite_il300-source.png | uniform 3-stat (all 1080). Off: Power/Accuracy/Combat Advantage · Def: Defense/Deflect/Deflect Sev · Util: Forte/Ctrl Resist/Out Healing |
 | 44 | Celestial Skullite | CONFIRMED | inbox/enchants/celestial-skullite_il300-source.png | uniform 3-stat (all 1080). Off: Power/Accuracy/Crit Strike · Def: Defense/Crit Avoidance/Deflect · Util: Forte/Ctrl Resist/Inc Healing |
+| 40 | Celestial Rime Temper (R) | FIXED→CONFIRMED (Celestial: HP 16→15, IDR -13→-12, debuff 4→4.5%/stack; name +\" (R)\") | inbox/enchants/Celestial Rime Temper (R)_IL7000_celestial-verified.png | n00b's PS5 tooltip 2026-07-03; Mythic (14/-11/4%) separately verified 2026-03-17. Uncommon–Legendary rows remain estimates. NW Hub + Arc Mod-32 preview independently corroborate 15/12 |
 
 ## Mounts (mount_*.json) — verification pass 2026-06-16 (vs cached sheet1 mount tabs)
 
