@@ -80,7 +80,8 @@ const TOON_FORGE_BONUS_STATS = [
   "magnitude",        // damage-formula side; not a stat percentage
   "Physical Damage",  // damage-formula side (Phase 4); not a stat panel entry
   "Magical Damage",   // damage-formula side (Phase 4)
-  "Max HP Percent",   // boon/buff effect, not a separate stat panel entry
+  // "Max HP Percent" moved OUT of this silenced list 2026-07-03: it now
+  // aliases to Maximum Hit Points (percent channel) in STAT_NAME_ALIASES.
   "Encounter Dmg Bonus", // class/feat data; not a core stat
   "Dmg Bonus",        // generic damage-bonus tag from artifact data
   "Damage Bonus",     // alias of the above
@@ -164,6 +165,11 @@ const STAT_NAME_ALIASES = {
   "MaximumHitPoints":   "Maximum Hit Points",
   "MaxHP":              "Maximum Hit Points",
   "Max HP":             "Maximum Hit Points",
+  // HP-percent bonuses (Rime Temper +15%, gear Bloodletting downsides)
+  // ride the percent channel of Maximum Hit Points — the Max HP model
+  // multiplies by (1 + percentTotal). Was a silenced dead-end name until
+  // 2026-07-03 (found calibrating n00b's tank: HP read 10.6% low).
+  "Max HP Percent":     "Maximum Hit Points",
   "ActionPointGain":    "Action Point Gain",
   "RechargeSpeed":      "Recharge Speed",
   "MovementSpeed":      "Movement Speed",
