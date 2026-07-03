@@ -3860,11 +3860,13 @@
     const PICKER_FILTERS = {
       mount_collar: [
         { field: "collarSlot", allLabel: "All types" },
-        // Collar SHAPE — collars come in insignia-like shapes (Barbed,
-        // Crescent, Regal, Sturdy) that only live in the name; `get`
-        // derives the value (supported by the filter engine below).
+        // Collar SHAPE — collars are named "<SlotType> <Shape> Collar <Rank>"
+        // (e.g. "Sturdy Barbed Collar I": slot type Sturdy, shape Barbed).
+        // Parse the shape POSITIONALLY as the second word — a bare
+        // alternation matched "Sturdy" (a slot type, not a shape) first,
+        // which hid every Sturdy-family collar from its real shape filter.
         { field: "_shape", allLabel: "All shapes",
-          get: (it) => { const m = /(Barbed|Crescent|Regal|Sturdy|Illuminated|Enlightened)/.exec(it.name || ""); return m ? m[1] : null; } },
+          get: (it) => { const m = /^\w+\s+(Barbed|Crescent|Regal|Illuminated|Enlightened)\s+Collar/i.exec(it.name || ""); return m ? m[1] : null; } },
         // Show the collar's rank (Roman numeral, read from the name e.g.
         // "... Collar III") rather than the raw item level. Falls back to the IL.
         { field: "item_level", allLabel: "All levels", numeric: true,
