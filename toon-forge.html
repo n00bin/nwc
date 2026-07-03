@@ -10672,7 +10672,7 @@
       // power. Only clean full-power damage mods apply here; component
       // mods (e.g. Enhanced Dark Spiral = the per-stack bonus inside Dark
       // Helix) and healing mods are recorded but not auto-counted.
-      const mhPick = state.artifactMods && state.artifactMods["Main Hand 1"] && state.artifactMods["Main Hand 1"].power;
+      const mhPick = weaponHasArtMods("Main Hand") && state.artifactMods && state.artifactMods["Main Hand 1"] && state.artifactMods["Main Hand 1"].power;
       const mhMod = mhPick && typeof mainHandModMenu === "function"
         ? mainHandModMenu(state.class).find(function (x) { return x.name === mhPick; })
         : null;
@@ -11447,6 +11447,7 @@
           if (!m || !m.stat || !(m.value > 0)) continue;
           const hostSlot = modSlot.replace(/ \d+$/, "");      // "Off Hand 2" -> "Off Hand"
           if (!gear[hostSlot]) continue;                       // no weapon, no mod
+          if (!weaponHasArtMods(hostSlot, s)) continue;        // plain weapon — no mod slots in game
           const def = artModDef(modSlot, m.stat);
           const val = Math.max(0, Math.min(+m.value || 0, def ? def.max : Infinity));
           if (val > 0) buffs.push({
@@ -12854,6 +12855,17 @@
       const cls = findClass(className);
       return (cls && Array.isArray(cls.artifactModifications)) ? cls.artifactModifications : [];
     }
+    // Whether the weapon equipped in a slot has Artifact Modification
+    // slots in game. Plain zone-drop weapons (e.g. the Jotunskar
+    // Chilling Flow family) are tagged artifactWeapon:false in gear
+    // data; untagged weapons keep the mod controls (default true).
+    function weaponHasArtMods(slotLabel, st) {
+      const s = st || state;
+      const nm = s && s.gear && s.gear[slotLabel];
+      if (!nm) return false;
+      const it = (typeof findGearByName === "function") ? findGearByName(nm, slotLabel, (s.gearIL || {})[slotLabel]) : null;
+      return !(it && it.artifactWeapon === false);
+    }
     const GEAR_SLOTS = [
       // Column 1 (combat / armor)
       { label: "Head",      slot: "Head"      },
@@ -13989,6 +14001,9 @@
             ${kitChip}
             ${(() => {
               if (!filled) return "";
+              // Plain weapons (artifactWeapon:false, e.g. Wintermarked /
+              // Runefrost) have no Artifact Modification slots in game.
+              if ((s.label === "Off Hand" || s.label === "Main Hand") && !weaponHasArtMods(s.label)) return "";
               // Off Hand — Artifact Modifications 1 + 2, side by side on
               // one compact row (wraps on narrow screens). Mod 1 grants a
               // FIXED value per stat (shown in the option label), so it's
