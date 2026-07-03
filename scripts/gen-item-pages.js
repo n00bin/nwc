@@ -443,7 +443,7 @@ function getRarityByIL(il) {
 function getAvailableRarities(baseIL) { var b = getRarityByIL(baseIL); return RARITIES.filter(function (r) { return r.il >= b.il; }); }
 
 /* proc-effect rendering (faithful port of companions-page.js renderProcEffect) */
-function renderProc(proc, il) {
+function renderProc(proc, il, baseIL) {
   var parts = [];
   if (proc.trigger) parts.push('<div class="item-effect"><span class="stat-name">Trigger:</span> ' + esc(proc.trigger) + '</div>');
   var chance = proc.chance;
@@ -456,7 +456,17 @@ function renderProc(proc, il) {
     parts.push('<div class="item-effect"><span class="stat-name">Effect:</span> ' + esc(t) + '</div>');
   }
   if (proc.statEffects && proc.statEffects.length) {
-    for (var i = 0; i < proc.statEffects.length; i++) { var se = proc.statEffects[i]; var scope = se.scope ? ' (' + se.scope + ')' : ''; parts.push(statRow(statName(se.stat) + scope, renderStatValue(se.value, se.type))); }
+    // values are stored at the power's BASE rarity IL — scale to the shown
+    // rarity like companions-page.js does (linear IL ratio, engine model)
+    for (var i = 0; i < proc.statEffects.length; i++) {
+      var se = proc.statEffects[i]; var scope = se.scope ? ' (' + se.scope + ')' : '';
+      var sv = se.value;
+      if (typeof sv === 'number' && il && baseIL && il !== baseIL) {
+        sv = sv * il / baseIL;
+        sv = (se.type === 'percent') ? Math.round(sv * 100) / 100 : Math.round(sv);
+      }
+      parts.push(statRow(statName(se.stat) + scope, renderStatValue(sv, se.type)));
+    }
   }
   if (proc.durationSeconds) parts.push('<div class="item-effect"><span class="stat-name">Duration:</span> ' + proc.durationSeconds + 's</div>');
   if (proc.cooldown) parts.push('<div class="item-effect"><span class="stat-name">Cooldown:</span> ' + esc(String(proc.cooldown)) + '</div>');
@@ -562,9 +572,13 @@ build('companions', loadJSON('companions.json'), {
         pbody += '<div style="margin-bottom:0.3rem;color:var(--text-muted);font-size:0.8rem">At ' + esc(base.name) + ' (IL ' + fmt(pw.item_level) + ')</div>' + statsTable(realStats);
       }
       if (pw.procEffect) {
-        var topIL = isScalablePower(pw) ? getAvailableRarities(pw.item_level).slice(-1)[0].il : (pw.item_level || 900);
-        var pr = renderProc(pw.procEffect, topIL);
-        if (pr) pbody += '<div style="margin-top:0.5rem">' + pr + '</div>';
+        // procs with a per-rarity ladder (effectScaling) render at the top
+        // rarity too — e.g. Rath's Patience is stored at base Mythic (2%)
+        // but reads 2.4% at Celestial in game
+        var topIL = (isScalablePower(pw) || pw.procEffect.effectScaling) ? getAvailableRarities(pw.item_level).slice(-1)[0].il : (pw.item_level || 900);
+        var pr = renderProc(pw.procEffect, topIL, pw.item_level);
+        var prLabel = (topIL !== pw.item_level) ? '<div style="color:var(--text-muted);font-size:0.8rem">At ' + esc(getRarityByIL(topIL).name) + ' (IL ' + fmt(topIL) + ')</div>' : '';
+        if (pr) pbody += '<div style="margin-top:0.5rem">' + prLabel + pr + '</div>';
       }
       var pnote = showText(pw.notes);
       if (pnote) pbody += '<div class="item-effect" style="margin-top:0.4rem">' + esc(pnote) + '</div>';

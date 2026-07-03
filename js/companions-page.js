@@ -380,7 +380,7 @@
 
       // Proc effect
       if (pw.procEffect) {
-        html += renderProcEffect(pw.procEffect, activeIL);
+        html += renderProcEffect(pw.procEffect, activeIL, pw.item_level);
       }
 
       // Zone conditional indicator
@@ -458,7 +458,7 @@
   }
 
   // ---- Render proc effect ----
-  function renderProcEffect(proc, il) {
+  function renderProcEffect(proc, il, baseIL) {
     var html = '<div class="proc-block">';
     html += '<div class="proc-label">Proc Effect</div>';
 
@@ -490,14 +490,22 @@
       html += "<div><span class=\"stat-name\">Effect:</span> " + escapeHtml(effectText) + "</div>";
     }
 
-    // Stat effects within proc
+    // Stat effects within proc — values are stored at the power's BASE
+    // rarity IL; scale linearly to the selected rarity (same IL-ratio
+    // model the Toon Forge engine uses), e.g. Rath's Patience 2%/stack
+    // at Mythic 750 → 2.4%/stack at Celestial 900.
     if (proc.statEffects && proc.statEffects.length > 0) {
       for (var i = 0; i < proc.statEffects.length; i++) {
         var se = proc.statEffects[i];
         var scope = se.scope ? " (" + se.scope + ")" : "";
+        var sv = se.value;
+        if (typeof sv === "number" && il && baseIL && il !== baseIL) {
+          sv = sv * il / baseIL;
+          sv = (se.type === "percent") ? Math.round(sv * 100) / 100 : Math.round(sv);
+        }
         html += '<div class="stat-row">';
         html += '<span class="stat-name">' + escapeHtml(se.stat) + escapeHtml(scope) + "</span>";
-        html += renderStatValue(se.value, se.type);
+        html += renderStatValue(sv, se.type);
         html += "</div>";
       }
     }
