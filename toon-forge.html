@@ -5789,6 +5789,20 @@
       const T = { Uncommon: 1, Rare: 2, Epic: 3, Legendary: 4, Mythic: 5, Celestial: 6 };
       const t = T[rank];
       if (!e || !t || t === 6) return e;
+      // Per-rank rarities ladder (from enchants.json) wins over the linear
+      // estimate — some enchants' real progressions aren't ×rank/6 (e.g.
+      // Rime Temper's Incoming Damage: -2/-4/-7/-9/-11/-13, not -13×t/6).
+      const R = e.rarities && e.rarities[rank];
+      if (R) {
+        const out = Object.assign({}, e);
+        if (R.universal)                          out.universal      = R.universal;
+        if (R.ratingStats)                        out.ratingStats    = R.ratingStats;
+        if (R.percentStats)                       out.percentStats   = R.percentStats;
+        if (typeof R.item_level === "number")     out.item_level     = R.item_level;
+        if (typeof R.combinedRating === "number") out.combinedRating = R.combinedRating;
+        out._rank = rank;
+        return out;
+      }
       const f = t / 6;
       const sc = (m) => { const o = {}; for (const k in (m || {})) o[k] = (typeof m[k] === "number") ? Math.round(m[k] * f) : m[k]; return o; };
       const out = Object.assign({}, e);
@@ -12683,9 +12697,20 @@
       }
       function pushEnchant(slotType, slotLabel, name) {
         if (!name) return;
-        const e = findEnchantByName(name);
+        let e = findEnchantByName(name);
         if (!e) return;
-        const f = enchRankFactor(slotLabel);
+        let f = enchRankFactor(slotLabel);
+        // Prefer the per-rank rarities ladder over the linear factor — some
+        // progressions aren't ×rank/6 (e.g. Rime Temper's Incoming Damage).
+        // enchantAtRank resolves ladder values, so no further scaling needed.
+        if (f !== 1) {
+          const er = (s && s.enchantRarity) || (typeof state !== "undefined" && state.enchantRarity) || null;
+          const rank = er && er[slotLabel];
+          if (rank && e.rarities && e.rarities[rank] && typeof enchantAtRank === "function") {
+            e = enchantAtRank(e, rank);
+            f = 1;
+          }
+        }
         const entry = { source: `Enchant ${slotLabel}: ${e.name}` };
         if (e.universal && (slotType === "offense" || slotType === "defense" || slotType === "utility")) {
           entry.ratingStats = scaleStatMap(e.universal[slotType] || {}, f);
@@ -12705,11 +12730,24 @@
           // always-on ratingStats stay on the main entry.
           entry.ratingStats = scaleStatMap(e.ratingStats || {}, f);
           if (e.percentStats && Object.keys(e.percentStats).length) {
-            buffs.push({
-              source: `Enchant ${slotLabel}: ${e.name} (at full stacks)`,
-              conditional: true,
-              percentStats: scaleStatMap(e.percentStats, f)
+            // Split always-on "Equip:" lines (equipBonuses alwaysActive,
+            // e.g. Rime Temper's Max HP / Incoming Damage — unconditional
+            // in game) from stack-built effects (Swift Synergy) — only
+            // the latter stay behind Show Conditional.
+            const alwaysOn = {};
+            (e.equipBonuses || []).forEach(eb => {
+              if (eb && eb.alwaysActive && eb.scope === "self" && eb.stat) alwaysOn[eb.stat] = true;
             });
+            const base = {}, cond = {};
+            for (const k in e.percentStats) (alwaysOn[k] ? base : cond)[k] = e.percentStats[k];
+            if (Object.keys(base).length) entry.percentStats = scaleStatMap(base, f);
+            if (Object.keys(cond).length) {
+              buffs.push({
+                source: `Enchant ${slotLabel}: ${e.name} (at full stacks)`,
+                conditional: true,
+                percentStats: scaleStatMap(cond, f)
+              });
+            }
           }
         } else {
           entry.ratingStats = scaleStatMap(e.ratingStats || {}, f);

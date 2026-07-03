@@ -1,5 +1,19 @@
 # Data Issues To Investigate
 
+## Rime Temper Celestial values are ESTIMATES — n00b flagged Incoming Damage wrong (OPEN, 2026-07-02)
+Celestial Rime Temper (enchants.json id 40): only Mythic was screenshot-verified
+(2026-03-17: +14% Max HP, +11% Incoming Damage Reduction). The stored Celestial
+values (+16% HP / -13% IDR) are linear estimates and n00b reports the Incoming
+Damage one is wrong in game. Need the in-game Celestial tooltip to correct
+`percentStats`, `equipBonuses` amounts, the `rarities.Celestial` row, and the
+description text (which bakes in the +16%/+13% wording). Also re-check the
+non-verified ladder rows (Uncommon→Legendary) while at it — they're estimates
+too. FIXED on the code side 2026-07-02: enchantAtRank + the engine's
+pushEnchant now use the per-rank `rarities` ladder instead of ×rank/6 linear
+scaling, Mythic HP corrected 13→14, and the always-on Equip lines
+(alwaysActive:true) now count in the BASE stat panel instead of hiding behind
+Show Conditional.
+
 ## Audit verify-items resolved from screenshots (2026-06-22)
 Four audit "verify in-game" gear items were checked against archived captures.
 

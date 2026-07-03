@@ -90,10 +90,18 @@ function equipBlock(list) {
   var rows = list.map(function (b) {
     var head = esc(b.name || (b.type === 'Set' ? 'Set bonus' : 'Equip bonus'));
     var dt = showText(b.description);
+    if (!dt && b.stat != null && typeof b.amount === 'number') {
+      // structured-only entries (no prose) — synthesize from stat/amount.
+      // Percent is the default; kind:"rating"/"flat" marks plain numbers.
+      var isPct = b.isPercent === true || !b.kind;
+      dt = (b.stacking && b.stacking.notes) ? b.stacking.notes
+        : (b.amount > 0 ? '+' : '') + (isPct ? b.amount + '%' : fmt(b.amount)) + ' ' + statName(b.stat);
+    }
+    if (!dt && !b.name) return '';       // nothing meaningful to show
     var desc = dt ? '<div class="item-effect">' + esc(dt) + '</div>' : '';
     return '<div style="margin-bottom:0.5rem"><strong>' + head + '</strong>' + desc + '</div>';
   }).join('');
-  return '<div class="item-sec"><h2>Bonuses</h2>' + rows + '</div>';
+  return rows ? '<div class="item-sec"><h2>Bonuses</h2>' + rows + '</div>' : '';
 }
 
 /* ---------- page template ---------- */
