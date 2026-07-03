@@ -6054,7 +6054,21 @@
         }
       }
       const statBlock = _statSection(synth, "Active-Slot Bonus (at " + tier + ")");
-      const procText = power && power.procEffect && (power.procEffect.effect || power.procEffect.description);
+      let procText = power && power.procEffect && (power.procEffect.effect || power.procEffect.description);
+      if (procText && power.procEffect.effectScaling) {
+        // Interpolate {placeholders} at the selected tier's IL (e.g.
+        // Rath's Patience: "Defense by {def}%" → 2 at Mythic 750, 2.4 at
+        // Celestial 900). Nearest rung at/below when the exact IL isn't
+        // in the ladder, so no raw "{def}" ever reaches the card.
+        const es = power.procEffect.effectScaling;
+        for (const k in es) {
+          const rungs = Object.keys(es[k]).map(Number).sort((a, b) => a - b);
+          let pick = rungs[0];
+          for (const r of rungs) if (r <= tierIL) pick = r;
+          const v = es[k][String(tierIL)] != null ? es[k][String(tierIL)] : es[k][String(pick)];
+          if (v != null) procText = procText.split("{" + k + "}").join(v);
+        }
+      }
       const procBlock = procText
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Proc${power.procEffect.chance ? " (" + power.procEffect.chance + "% chance, " + (power.procEffect.trigger || "trigger") + ")" : ""}</div>
