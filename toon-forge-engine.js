@@ -571,15 +571,21 @@
       // Engine surfaces both; UI computes final = (base + flat) × (1 + pct/100).
       if (def.kind === "flat") {
         if (def.name === "Maximum Hit Points") {
-          // ===== Max HP model (mekaniks.html, in-game verified formula) =====
+          // ===== Max HP model — calibrated EXACTLY 2026-07-03 =====
           //   MaxHP = (TIL x 10 x (1 + role bonus) + flat item HP)
-          //           x (1 + CON x 0.5%) x (1 + MaxHP% sources)
-          // Sources: in-game TIL tooltip ("Your Total Item Level determines
-          // your base Maximum Hit Points"), mekaniks stat card ("(TIL x 10 +
-          // role bonus + item HP) x (1 + CON / 200)"; Tanks +20%, Healers
-          // +10%), CON card (x0.5% per point). All constants TUNABLE below;
-          // calibrate against a real character sheet (anchor on file: Erik,
-          // healer Paladin, TIL 126,775 / CON 14 -> 1,588,795 HP).
+          //           x (1 + CON x 0.5% + non-enchant MaxHP% sources)
+          //           x (1 + enchant MaxHP% sources)
+          // Structure PROVEN by controlled in-game A/B on n00b's tank
+          // (four measurements, all reproduce within rounding):
+          //   - unslot Celestial insignia: -20,586 HP and TIL -750 -> flats
+          //     and TIL-base share one multiplier chain; marginal == average.
+          //   - eat Prime Rib (+20,000 flat): +30,498 = 20,000 x 1.52489
+          //     EXACTLY -> pins the total multiplier.
+          //   - unslot Rime Temper (+15% enchant): drop only fits when the
+          //     enchant % is a SEPARATE multiplier (and its full item level,
+          //     7,000, leaves TIL) — additive-with-others misses by ~45k.
+          //   - CON is ADDITIVE with the other HP percents (1 + CON*0.005
+          //     + pct), NOT a separate multiplier.
           var HPM = TOON_FORGE_HP_MODEL;
           var tilHP = (result.totalItemLevel || 0) * HPM.perTIL;
           var roleKeyHP = String((character && character.role) || "dps").toLowerCase();
@@ -587,10 +593,18 @@
           var abilHP = (character && character.abilityScores) || {};
           var conHP = (abilHP.con != null ? abilHP.con : (abilHP.CON != null ? abilHP.CON : 10));
           var itemFlatHP = (s.flat || 0) + s.ratingTotal;
+          // Enchant-sourced HP% multiplies separately (in-game verified);
+          // identify it by contributor source label.
+          var pctEnchHP = 0;
+          for (var ci = 0; ci < s.contributors.length; ci++) {
+            var cb = s.contributors[ci];
+            if (cb && cb.type === "percent" && /^(?:Buff: )?Enchant /.test(cb.source || "")) pctEnchHP += (cb.amount || 0);
+          }
+          var pctOtherHP = (s.percentTotal || 0) - pctEnchHP;
           var hpFinal = (tilHP * (1 + roleBonusHP) + itemFlatHP)
-                      * (1 + conHP * HPM.conPerPoint)
-                      * (1 + (s.percentTotal || 0) / 100);
-          s.hpModel = { base: tilHP, roleBonus: roleBonusHP, itemFlat: itemFlatHP, con: conHP, pct: s.percentTotal || 0 };
+                      * (1 + conHP * HPM.conPerPoint + pctOtherHP / 100)
+                      * (1 + pctEnchHP / 100);
+          s.hpModel = { base: tilHP, roleBonus: roleBonusHP, itemFlat: itemFlatHP, con: conHP, pct: s.percentTotal || 0, pctEnch: pctEnchHP, pctOther: pctOtherHP };
           s.flat = hpFinal;
           s.ratingContribPct = 0;
           s.finalPct = 0;

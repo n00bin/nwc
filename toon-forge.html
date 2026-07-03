@@ -11996,6 +11996,10 @@
         const mountSchema = (mountForSlot && Array.isArray(mountForSlot.insigniaSlots))
           ? mountForSlot.insigniaSlots
           : [];
+        // NOTE (2026-07-03 HP calibration): duplicate identical insignias on
+        // one mount DO all count in game — n00b's Mount 2 runs two Illuminated
+        // of Fortitude (one preferred) and the exact-fit HP solve only closes
+        // with both included. Don't add a dedupe rule here.
         for (let iIdx = 0; iIdx < (slot.insignias || []).length; iIdx++) {
           const insName = slot.insignias[iIdx];
           if (!insName) continue;
