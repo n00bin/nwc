@@ -571,21 +571,25 @@
       // Engine surfaces both; UI computes final = (base + flat) × (1 + pct/100).
       if (def.kind === "flat") {
         if (def.name === "Maximum Hit Points") {
-          // ===== Max HP model — calibrated EXACTLY 2026-07-03 =====
+          // ===== Max HP model — SOLVED EXACTLY 2026-07-04 =====
           //   MaxHP = (TIL x 10 x (1 + role bonus) + flat item HP)
-          //           x (1 + CON x 0.5% + non-enchant MaxHP% sources)
-          //           x (1 + enchant MaxHP% sources)
-          // Structure PROVEN by controlled in-game A/B on n00b's tank
-          // (four measurements, all reproduce within rounding):
-          //   - unslot Celestial insignia: -20,586 HP and TIL -750 -> flats
-          //     and TIL-base share one multiplier chain; marginal == average.
-          //   - eat Prime Rib (+20,000 flat): +30,498 = 20,000 x 1.52489
-          //     EXACTLY -> pins the total multiplier.
-          //   - unslot Rime Temper (+15% enchant): drop only fits when the
-          //     enchant % is a SEPARATE multiplier (and its full item level,
-          //     7,000, leaves TIL) — additive-with-others misses by ~45k.
-          //   - CON is ADDITIVE with the other HP percents (1 + CON*0.005
-          //     + pct), NOT a separate multiplier.
+          //           x (1 + CON x 0.5% + insignia-bonus/VIP/other MaxHP%)   [base bucket]
+          //           x (1 + campaign-boon + overload MaxHP%)                [boon bucket]
+          //           x (1 + enchant MaxHP%)                                 [enchant bucket]
+          // THREE multiplicative buckets. Proven by a nine-state controlled
+          // in-game calibration on n00b's tank (2026-07-03/04) — every state
+          // reproduces to single-digit HP:
+          //   - Prime Rib +20,000 flat -> +31,964 = 20,000 x 1.275 x 1.09 x 1.15 EXACT
+          //   - Bulwark boon decrement -> 27,457 = 1% x base-bucket(1.275) x 1.15 EXACT
+          //     (tooltips are TRUE; the old "1.275% per bulwark" was bucket math)
+          //   - Bulwark of Brimstone overload (tooltip 5%) -> +6.375% apparent
+          //     = 5% x 1.275 base bucket EXACT
+          //   - campfire +1 CON -> 11,611 = 0.5% x 1.09 x 1.15 x X EXACT
+          //     (CON sits in the base bucket and is amplified by the others)
+          //   - Guardian's Spirit instance-2 -> 92,078 = 4% x 1.09 x 1.15 x X EXACT
+          //     (insignia bonuses sit in the base bucket, at ladder value)
+          //   - Rime Temper unslot -> enchant bucket x1.15 + its full listed
+          //     item level (7,000) leaves TIL
           var HPM = TOON_FORGE_HP_MODEL;
           var tilHP = (result.totalItemLevel || 0) * HPM.perTIL;
           var roleKeyHP = String((character && character.role) || "dps").toLowerCase();
@@ -593,18 +597,23 @@
           var abilHP = (character && character.abilityScores) || {};
           var conHP = (abilHP.con != null ? abilHP.con : (abilHP.CON != null ? abilHP.CON : 10));
           var itemFlatHP = (s.flat || 0) + s.ratingTotal;
-          // Enchant-sourced HP% multiplies separately (in-game verified);
-          // identify it by contributor source label.
-          var pctEnchHP = 0;
+          // Split percent contributors into the three buckets by source label.
+          // Unmeasured source kinds (gear equip %HP, companion %HP) default to
+          // the BASE bucket — the conservative choice pending their own A/B.
+          var pctEnchHP = 0, pctBoonOvHP = 0, pctBaseHP = 0;
           for (var ci = 0; ci < s.contributors.length; ci++) {
             var cb = s.contributors[ci];
-            if (cb && cb.type === "percent" && /^(?:Buff: )?Enchant /.test(cb.source || "")) pctEnchHP += (cb.amount || 0);
+            if (!cb || cb.type !== "percent") continue;
+            var src = cb.source || "";
+            if (/^(?:Buff: )?Enchant /.test(src)) pctEnchHP += (cb.amount || 0);
+            else if (/^Boon: /.test(src) || /^(?:Buff: )?Overload /.test(src)) pctBoonOvHP += (cb.amount || 0);
+            else pctBaseHP += (cb.amount || 0);
           }
-          var pctOtherHP = (s.percentTotal || 0) - pctEnchHP;
           var hpFinal = (tilHP * (1 + roleBonusHP) + itemFlatHP)
-                      * (1 + conHP * HPM.conPerPoint + pctOtherHP / 100)
+                      * (1 + conHP * HPM.conPerPoint + pctBaseHP / 100)
+                      * (1 + pctBoonOvHP / 100)
                       * (1 + pctEnchHP / 100);
-          s.hpModel = { base: tilHP, roleBonus: roleBonusHP, itemFlat: itemFlatHP, con: conHP, pct: s.percentTotal || 0, pctEnch: pctEnchHP, pctOther: pctOtherHP };
+          s.hpModel = { base: tilHP, roleBonus: roleBonusHP, itemFlat: itemFlatHP, con: conHP, pct: s.percentTotal || 0, pctBase: pctBaseHP, pctBoonOv: pctBoonOvHP, pctEnch: pctEnchHP };
           s.flat = hpFinal;
           s.ratingContribPct = 0;
           s.finalPct = 0;
