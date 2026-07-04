@@ -4668,7 +4668,7 @@
         ? (state.activeCombatPowerRarity || "Mythic")
         : (state.activeEquipPowerRarity || "Mythic");
       if (field === "item_level") {
-        const il = (typeof mountPowerILFor === "function") ? mountPowerILFor(item, rarity) : 0;
+        const il = (typeof mountPowerILFor === "function") ? Math.round(mountPowerILFor(item, rarity)) : 0;
         return il || value;
       }
       if (field === "magnitude" || field === "combinedRating") {
@@ -6310,7 +6310,7 @@
       }
       const cdr = p.rechargeTimeSeconds ? `${p.rechargeTimeSeconds}s recharge` : "";
       const mag = p.magnitude ? `magnitude ${Math.round(_scaleCombat(p.magnitude))}` : "";
-      const meta = [`IL ${mountPowerILFor(p, state.activeCombatPowerRarity) || p.item_level || "?"}`, mag, cdr].filter(Boolean).join(" · ");
+      const meta = [`IL ${Math.round(mountPowerILFor(p, state.activeCombatPowerRarity)) || p.item_level || "?"}`, mag, cdr].filter(Boolean).join(" · ");
       // Combat powers' equipBonuses are buff/debuff effects rather than
       // gear-style structured stats. Scaled for tooltip display (Decision 9).
       const bonusBlocks = (p.equipBonuses || []).map(b => {
@@ -6349,7 +6349,7 @@
       const _eqAnchor = mountPowerAnchorFactor(p);
       const _eqFactor = mountRarityFactor(state.activeEquipPowerRarity || "Mythic") / _eqAnchor;
       const _eqScale = (v) => Math.min((v || 0) * _eqFactor, (v || 0) * (1.3124444 / _eqAnchor));
-      const dispIL = mountPowerILFor(p, state.activeEquipPowerRarity);
+      const dispIL = Math.round(mountPowerILFor(p, state.activeEquipPowerRarity));
       const dispCR = Math.round(_eqScale(p.combinedRating));
       const il = dispIL ? "IL " + dispIL : (p.item_level ? "IL " + p.item_level : "");
       const cr = dispCR ? "CR " + dispCR : "";
@@ -10445,13 +10445,18 @@
     // anchors (n00b in-game, 2026-06-06): a standard power shows IL 3000 at
     // Mythic and IL 3937 at Celestial — combat and equip alike. Other tiers
     // are unverified and treated as the stored value until captured.
-    const MOUNT_POWER_IL_RATIO = { "Mythic": 1.0, "Celestial": 3937 / 3000 };
+    // True ratio is ×1.3125 (3000 → 3937.5); the in-game tooltip DISPLAYS
+    // the rounded 3937. Keep the exact ratio and DON'T round per power —
+    // the game sums the fractional halves and rounds the total (found via
+    // n00b's tank: two Celestial powers = 7,875 IL in game, but rounding
+    // each to 3,937 first lost 1 TIL — the famous lone item level).
+    const MOUNT_POWER_IL_RATIO = { "Mythic": 1.0, "Celestial": 1.3125 };
     function mountPowerILFor(p, selectedRarity) {
       if (!p || !p.item_level) return 0;
       const anchor = MOUNT_POWER_IL_RATIO[(p.anchorRarity) || "Mythic"];
       const sel = MOUNT_POWER_IL_RATIO[selectedRarity || "Mythic"];
       if (anchor == null || sel == null) return p.item_level;
-      return Math.round(p.item_level * (sel / anchor));
+      return p.item_level * (sel / anchor);   // fractional — total is rounded once
     }
     // Base IL every NW character has just for existing (level 20 floor).
     // Documented 2026-05-12 by n00b's community-doc dump: "you start the
@@ -10477,7 +10482,9 @@
       // Item Level (companion collection bolster does grant TIL — the
       // asymmetry is real). See the history note where
       // MOUNT_BOLSTER_CONTRIB_IL used to live (~line 10087) before re-adding.
-      const total = parts.reduce((a, p) => a + p.value, 0);
+      // Mount-power parts can be fractional (3,937.5 at Celestial) — the
+      // game rounds the TOTAL, not each part (keeps the +1 the halves add).
+      const total = Math.round(parts.reduce((a, p) => a + p.value, 0));
       return { total, parts };
     }
     function computeTILFromBuild() {
