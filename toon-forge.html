@@ -15410,7 +15410,15 @@
           const bonus = bonusBits.length
             ? '<div class="loadout-card-bonus">' + escHtml(bonusBits.join(", ")) + '</div>'
             : '';
-          const desc = cleanNote(cf.description || cf.notes || "");
+          let desc = cleanNote(cf.description || cf.notes || "");
+          // Drop descriptions that merely restate the stat chip ("Adds
+          // 2.5% Awareness." under a "+2.5% Awareness" chip reads as a
+          // repeat — n00b 2026-07-04). Longer text with real mechanics
+          // (procs, conditions) is kept.
+          if (bonusBits.length && desc && desc.length <= 80) {
+            const statNames = Object.keys(cf.percentStats || {}).concat(Object.keys(cf.ratingStats || {}));
+            if (statNames.length && statNames.every(n => desc.toLowerCase().includes(n.toLowerCase()))) desc = "";
+          }
           out.push(
             '<div class="loadout-card">' +
               '<div class="loadout-card-title">' + escHtml(cf.name) + '<span class="loadout-card-tag">' + escHtml(ge.kind) + '</span></div>' +
