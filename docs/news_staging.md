@@ -9,8 +9,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ## Week of 2026-07-02 (since last publish)
 
 ### Features
+- The Community Meta in Toon Forge no longer dead-ends while the meta is collecting builds: if your build type doesn't have 5 shared builds yet (or you haven't picked a class yet), the popup now shows the live collection progress for every build type (class · paragon · role) — how many anonymous builds each one has and how many more it needs to unlock (5 each, the privacy floor) — with your own build type pinned first and a one-tap "Add your build" button. There's also a standalone shareable version at `community-meta.html` (linked from the popup) that auto-refreshes every minute. Counts only — never an individual build.
 
 ### Data Additions
+- Celestial Dragonnel — the new Lliira's Night event mount is in the mount database: Crescent + Regal + Universal insignia slots, Rejuvenating Favor combat power (heal-over-time for 20% of your Max HP at Mythic, 22.5%+ as it ranks up) and the Quick Action equip power (Daily Power use refunds a chunk of your Action Points; +3,544 Combined Rating at Celestial). Its insignia-bonus tab is still to be captured.
 
 ### Bug Fixes
 - The Maximum Hit Points formula is now EXACT — solved via a nine-state controlled in-game calibration on a real endgame tank (unslotting one thing at a time and reading the game's own numbers). The discovery: HP percent bonuses live in THREE separate multiplying groups — (1) Constitution + insignia bonuses + VIP, (2) campaign boons + overloads, (3) enchantments — and because the groups compound, a "5%" overload like Bulwark of Brimstone is really worth ~6.4 points on a developed tank. Every in-game tooltip turned out to be honest once the structure was right. The tool now reproduces all nine measured configurations to within a single hit point (worst error 0.0001%). Also verified along the way: preferred insignia slots boost stats and item level by 20%, enchantments carry their full item level into TIL, Guardian's Spirit's exact 8/12/15% ladder, VIP's +1% per party member, and Prime Rib's +20,000 HP.
