@@ -282,6 +282,7 @@ All 8 reproducible states match within 1–2 HP (worst 0.0001%). Verified per-so
 | Insignias | flat values ×1.5 Celestial; preferred slot ×1.2 on stats AND IL (750→900) | TIL-verified |
 | Duplicate insignias on one mount | DO stack (both count) | Snowtusk A/B — earlier dedup theory disproven |
 | Power boons ×4 | 1.0% each (tooltip TRUE) | stat-panel A/B 39.2→35.2% |
+| Blessed Resilience R3 proc | +6% Max HP (2%/rank ×3, tooltip TRUE), boon bucket | live proc A/B 2026-07-04: healed/standing ratio 1.055045 == (1.09+0.06)/1.09 to 6 decimals — first live proc verification; also proves master boons sit in the boon bucket |
 
 Session artifacts: build-state screenshots in `docs/calibration/inbox/boons/` +
 `evidence/2026-07-04_*`; session baseline in `docs/audit/_tank_baseline_2026-07-03.json`.
