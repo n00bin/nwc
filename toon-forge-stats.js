@@ -15,11 +15,14 @@
 
 const TOON_FORGE_STATS = [
   // === Offensive ===
+  // Order matches the in-game character sheet's Main Stats block
+  // (n00b 2026-07-04): Power, Accuracy, Combat Advantage, Crit Strike,
+  // Crit Severity. Display iterates this array — keep it sheet-ordered.
   { name: "Power",             cap: 120, kind: "rating", category: "Offensive" },
+  { name: "Accuracy",          cap: 90,  kind: "rating", category: "Offensive" },
+  { name: "Combat Advantage",  cap: 120, kind: "rating", category: "Offensive" },
   { name: "Critical Strike",   cap: 90,  kind: "rating", category: "Offensive" },
   { name: "Critical Severity", cap: 120, kind: "rating", category: "Offensive" },
-  { name: "Combat Advantage",  cap: 120, kind: "rating", category: "Offensive" },
-  { name: "Accuracy",          cap: 90,  kind: "rating", category: "Offensive" },
 
   // === Defensive ===
   { name: "Defense",           cap: 120, kind: "rating", category: "Defensive" },
