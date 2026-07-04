@@ -3036,9 +3036,12 @@
   <script src="data/campaign-boons.js"></script>
   <script src="data/guild-boons.js"></script>
   <script src="data/buffs.js"></script>
-  <script src="toon-forge-stats.js"></script>
-  <script src="toon-forge-engine.js"></script>
-  <script src="toon-forge-rotation-profiles.js"></script>
+  <!-- ?v= cache-buster: bump when the stat catalog or engine changes so CDN
+       edges / browser caches can't serve a stale formula under the new UI
+       (bit n00b 2026-07-04: an edge kept an old engine for 30+ minutes). -->
+  <script src="toon-forge-stats.js?v=20260704a"></script>
+  <script src="toon-forge-engine.js?v=20260704a"></script>
+  <script src="toon-forge-rotation-profiles.js?v=20260704a"></script>
   <!-- Supabase + data-corrections plumbing — lets users submit ✎ fixes -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="js/data-corrections.js"></script>
