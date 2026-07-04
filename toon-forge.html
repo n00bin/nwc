@@ -13562,12 +13562,26 @@
         .filter(c => c.type === "rating" && !c.conditional && (!_dstatsHideBuffs || !isConsumableBuffContributor(c)))
         .reduce((sum, c) => sum + (c.amount || 0), 0);
       const _hdlBaseMaxHP = Math.round(_hdlTIL * 10 * _hdlHpRoleMult);
-      // CON multiplier (+0.5% Max HP per CON point). The engine applies this in
-      // finalize(); the headline must too, or high-CON builds under-report HP.
-      // Matches engine: (TIL×10×role + flatItemHP) × (1+CON×0.5%) × (1+%MaxHP).
+      // THREE-BUCKET composition — must mirror the engine's finalize()
+      // (in-game proven 2026-07-04, nine-state calibration):
+      //   (Base + Flat) × (1 + CON×0.5% + base-bucket %)   [insignia bonuses, VIP, misc]
+      //                 × (1 + boon/overload %)             [campaign boons + overloads]
+      //                 × (1 + enchant %)                   [combat enchant HP]
+      // The panel's filters (always-on only / hide-buffs) apply per bucket.
       const _hpCON = (state.abil && state.abil.con) || 10;
-      const _hpConMult = 1 + _hpCON * 0.005;
-      const _hdlMaxHP = Math.round((_hdlBaseMaxHP + _hpAlwaysOnFlat) * _hpConMult * (1 + _hpAlwaysOnPct / 100));
+      const _hpFiltered = (_hpStat.contributors || [])
+        .filter(c => c.type === "percent" && !c.conditional && (!_dstatsHideBuffs || !isConsumableBuffContributor(c)));
+      let _hpPctEnch = 0, _hpPctBoonOv = 0, _hpPctBase = 0;
+      for (const c of _hpFiltered) {
+        const src = c.source || "";
+        if (/^(?:Buff: )?Enchant /.test(src)) _hpPctEnch += (c.amount || 0);
+        else if (/^Boon: /.test(src) || /^(?:Buff: )?Overload /.test(src)) _hpPctBoonOv += (c.amount || 0);
+        else _hpPctBase += (c.amount || 0);
+      }
+      const _hdlMaxHP = Math.round((_hdlBaseMaxHP + _hpAlwaysOnFlat)
+        * (1 + _hpCON * 0.005 + _hpPctBase / 100)
+        * (1 + _hpPctBoonOv / 100)
+        * (1 + _hpPctEnch / 100));
       // Weapons carry a flat "+X Damage" base stat (e.g. Omen of Doom +100)
       // the TIL-scaled formula above doesn't capture. Sum weaponDamage across
       // equipped gear and add it so the Damage headline matches in-game.
@@ -13593,9 +13607,10 @@
         .join("\n") || "  (none)";
       const _hpDebugTitle = `Base = TIL ${_hdlTIL.toLocaleString()} × 10 × ${_hdlHpRoleMult.toFixed(2)} = ${_hdlBaseMaxHP.toLocaleString()}\n` +
         `Flat HP from items = +${_hpAlwaysOnFlat.toLocaleString()}\n` +
-        `CON multiplier = ×${_hpConMult.toFixed(3)} (CON ${_hpCON} × 0.5%)\n` +
-        `Always-on percent bonuses = +${_hpAlwaysOnPct.toFixed(2)}%\n` +
-        `MaxHP = (Base + Flat) × CON × (1 + %) = ${_hdlMaxHP.toLocaleString()} HP\n` +
+        `Bucket 1 = 1 + CON ${_hpCON} × 0.5% + ${_hpPctBase.toFixed(2)}% (insignia bonuses / VIP / misc)\n` +
+        `Bucket 2 = 1 + ${_hpPctBoonOv.toFixed(2)}% (campaign boons + overloads)\n` +
+        `Bucket 3 = 1 + ${_hpPctEnch.toFixed(2)}% (enchants)\n` +
+        `MaxHP = (Base + Flat) × B1 × B2 × B3 = ${_hdlMaxHP.toLocaleString()} HP\n` +
         `\nAlways-on percent contributors:\n${_hpContribLines}\n` +
         `\nAlways-on flat contributors:\n${_hpFlatContribLines}`;
       html += `<div class="dstats-section">
