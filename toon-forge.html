@@ -12398,13 +12398,27 @@
               : (_hg.belowN != null && _hp < _hg.belowN);
             if (!_active) continue;
           }
-          const uptimeFactor = _healthGated ? 1 : ((CONDITIONAL_UPTIME.apply_to_stat_grants || isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1);
+          // GRADED resource bonuses ("gain up to X% based on your health",
+          // "while at full health … decreases relative to missing health",
+          // "whenever your stamina gauge is full"): the amount scales with
+          // the CURRENT resource, so the at-rest character sheet shows the
+          // FULL value (proven by n00b's defensive-panel calibration
+          // 2026-07-04: game CritAvoid included the pants' 8% and the
+          // cuirass' 7.5% while standing). Health-graded ones follow the
+          // Current Health slider; stamina-graded are full at rest.
+          const _gradedTxt = ((eb.description || "") + " " + (eb.effectText || "")).toLowerCase();
+          const _graded = /based on your health|decreases? (as|relative to) (your )?(remaining|missing)|whenever your stamina gauge is full|while at full health/.test(_gradedTxt);
+          const _gradedFactor = _graded
+            ? (/health/.test(_gradedTxt) && !/stamina gauge/.test(_gradedTxt) ? Math.max(0, Math.min(1, _hp / 100)) : 1)
+            : 1;
+          const uptimeFactor = _graded ? _gradedFactor
+            : (_healthGated ? 1 : ((CONDITIONAL_UPTIME.apply_to_stat_grants || isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1));
           // Conditional bonuses (in-combat stacks, procs, group-only, etc.)
           // are pushed with conditional: true so the renderer can filter
           // them out for "standing around" view or include them at max
           // value for "with conditionals" view. The renderer's Detailed
           // Stats panel has a checkbox to switch between the two modes.
-          const isConditional = _healthGated ? false : (eb.alwaysActive === false);
+          const isConditional = (_graded || _healthGated) ? false : (eb.alwaysActive === false);
           // amount is percent by default; kind "rating" = rating points and
           // kind "flat" = a flat pool amount (Max HP convention) — BOTH ride
           // the non-percent channel. (Routing "flat" to percentStats turned
