@@ -13250,7 +13250,15 @@
     // get the single "Buff: " prefix. So this regex picks out ONLY the
     // consumable-buff contributors for the "Hide buffs" toggle.
     function isConsumableBuffContributor(c) {
-      return /^Buff:\s*Buff:\s*/.test(String(c && c.source || ""));
+      const m = /^Buff:\s*Buff:\s*(.+)$/.exec(String(c && c.source || ""));
+      if (!m) return false;
+      // Permanent perks (expiration:"permanent" in buffs.json — e.g. The
+      // Power of VIP) are part of the STANDING baseline: in game they're
+      // always on, so the "Hide buffs" view must keep them or it shows a
+      // state that can't exist (n00b 2026-07-04: his unbuffed sheet HP
+      // includes VIP). Only expirable consumables get stripped.
+      const b = (typeof findBuffByName === "function") ? findBuffByName(m[1].trim()) : null;
+      return !(b && b.expiration === "permanent");
     }
     // Party-buff contributors come from allies' summoned companions and ally
     // mount auras. The engine prepends "Buff: " to every buffs[] entry, so
