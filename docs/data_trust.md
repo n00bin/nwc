@@ -362,7 +362,7 @@ Erik (Paladin Justicar tank, TIL 147,787). All five defensive RATINGS now match 
 | Crimson Crystal Horse slot 3 | build-side | n/a | Build had Crescent of Courage; game has Crescent of Balance — user build fix, not data. Defense rating exact after fix. |
 | Quick Action (Celestial Dragonnel preview) | mount_equip_powers | CONFIRMED | Celestial 7.9% AP / CR 3,544 / IL 3,937 = Mythic 6.0% × 1.3125 — first confirmation the Celestial ratio applies to equip-power STAT values, not just IL. |
 
-Still open after this pass: Action Point Gain −2.9% (game 10.2 vs tool 7.3) and Defense percent-side ≈ −2 (ratings exact; percent channel differs — candidate: how the in-game at-rest sheet counts slotted aura-type class features). Pack Tactics 2,953 note ("verify when convenient") is now cross-validated by the CA rating matching ±1.
+RESOLVED SAME DAY: Action Point Gain — the build was missing the Call of Power advanced boon pick (3 pts = +3%; data already modeled it); tool 10.25 vs game display 10.2. Defense percent — Coldsilver Circlet's narrative '+3% Defense' rider extracted (tool 104.0 vs game 104.2; last 0.2 = display rounding, accepted). Aura of Protection verified 4% and counted at rest by both game and tool. 61 companion powers normalized to canonical rungs + engine table-ratio scaling (Bruenor's Bulwark 4.50 at Celestial, was 4.56). Pack Tactics 2,953 cross-validated by the CA rating matching ±1. FULL SHEET NOW MIRRORED: all ratings ±1, all percents ±0.2.
 
 ---
 
