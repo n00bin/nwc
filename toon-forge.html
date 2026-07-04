@@ -13614,11 +13614,18 @@
       // Guardian's Spirit, etc.). Engine's percentTotal sums everything
       // including conditional; that's right for the engine but wrong for
       // a "standing around" display matching the in-game stat panel.
+      // Conditional contributors (uptime-weighted procs like Blessed
+      // Resilience) join the pool when "Hide in-combat bonuses" is
+      // unchecked — mirroring the footer's expected-value blend. Found
+      // 2026-07-04: the unhidden panel read 2,998,605 vs footer 3,043,336
+      // because conditionals were stripped here regardless of the toggle.
+      const _hpKeep = c => (_dstatsShowConditional || !c.conditional)
+        && (!_dstatsHideBuffs || !isConsumableBuffContributor(c));
       const _hpAlwaysOnPct = (_hpStat.contributors || [])
-        .filter(c => c.type === "percent" && !c.conditional && (!_dstatsHideBuffs || !isConsumableBuffContributor(c)))
+        .filter(c => c.type === "percent" && _hpKeep(c))
         .reduce((sum, c) => sum + (c.amount || 0), 0);
       const _hpAlwaysOnFlat = (_hpStat.contributors || [])
-        .filter(c => c.type === "rating" && !c.conditional && (!_dstatsHideBuffs || !isConsumableBuffContributor(c)))
+        .filter(c => c.type === "rating" && _hpKeep(c))
         .reduce((sum, c) => sum + (c.amount || 0), 0);
       const _hdlBaseMaxHP = Math.round(_hdlTIL * 10 * _hdlHpRoleMult);
       // THREE-BUCKET composition — must mirror the engine's finalize()
@@ -13629,7 +13636,7 @@
       // The panel's filters (always-on only / hide-buffs) apply per bucket.
       const _hpCON = (state.abil && state.abil.con) || 10;
       const _hpFiltered = (_hpStat.contributors || [])
-        .filter(c => c.type === "percent" && !c.conditional && (!_dstatsHideBuffs || !isConsumableBuffContributor(c)));
+        .filter(c => c.type === "percent" && _hpKeep(c));
       let _hpPctEnch = 0, _hpPctBoonOv = 0, _hpPctBase = 0;
       for (const c of _hpFiltered) {
         const src = c.source || "";
