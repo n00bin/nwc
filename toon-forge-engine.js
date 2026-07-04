@@ -171,7 +171,14 @@
   // Race fixed bonuses (ability scores) are NOT rating contributions —
   // they're handled separately by ability-score scaling.
 
-  function addRating(result, statName, amount, sourceLabel, conditional) {
+  // `uptime` (0..1, optional): when a proc's amount has been pre-scaled by
+  // its expected uptime, the contributor records that factor so displays
+  // can recover the full when-active value (amount / uptime). Totals keep
+  // the scaled amount — the expected-value blend is for the engine score
+  // and optimizer ONLY; any player-facing view showing conditionals must
+  // show the real proc-active number (owner ruling 2026-07-04: views
+  // mirror the game, averages are optimizer internals).
+  function addRating(result, statName, amount, sourceLabel, conditional, uptime) {
     // Canonicalize camelCase / abbreviated stat names so source data
     // doesn't get silently dropped into unknown-stat warnings.
     if (STAT_NAME_ALIASES[statName]) statName = STAT_NAME_ALIASES[statName];
@@ -189,19 +196,21 @@
       return;
     }
     statResult.ratingTotal += amount;
-    statResult.contributors.push({
+    var contrib = {
       source: sourceLabel,
       amount: amount,
       type: "rating",
       conditional: !!conditional
-    });
+    };
+    if (uptime != null && uptime > 0 && uptime < 1) contrib.uptime = uptime;
+    statResult.contributors.push(contrib);
   }
 
-  function ingestRatingStats(result, ratingStats, sourceLabel, conditional) {
+  function ingestRatingStats(result, ratingStats, sourceLabel, conditional, uptime) {
     if (!ratingStats) return;
     for (var statName in ratingStats) {
       if (!Object.prototype.hasOwnProperty.call(ratingStats, statName)) continue;
-      addRating(result, statName, ratingStats[statName], sourceLabel, conditional);
+      addRating(result, statName, ratingStats[statName], sourceLabel, conditional, uptime);
     }
   }
 
@@ -260,7 +269,7 @@
   //
   // Adds into result.stats[stat].percentTotal.
 
-  function addPercent(result, statName, amount, sourceLabel, conditional) {
+  function addPercent(result, statName, amount, sourceLabel, conditional, uptime) {
     // Route Class Resource Regen aliases to the canonical name
     if (CLASS_RESOURCE_REGEN_ALIASES.indexOf(statName) !== -1) {
       statName = "Class Resource Regen";
@@ -281,19 +290,21 @@
       return;
     }
     statResult.percentTotal += amount;
-    statResult.contributors.push({
+    var contrib = {
       source: sourceLabel,
       amount: amount,
       type: "percent",
       conditional: !!conditional
-    });
+    };
+    if (uptime != null && uptime > 0 && uptime < 1) contrib.uptime = uptime;
+    statResult.contributors.push(contrib);
   }
 
-  function ingestPercentStats(result, percentStats, sourceLabel, conditional) {
+  function ingestPercentStats(result, percentStats, sourceLabel, conditional, uptime) {
     if (!percentStats) return;
     for (var statName in percentStats) {
       if (!Object.prototype.hasOwnProperty.call(percentStats, statName)) continue;
-      addPercent(result, statName, percentStats[statName], sourceLabel, conditional);
+      addPercent(result, statName, percentStats[statName], sourceLabel, conditional, uptime);
     }
   }
 
@@ -414,7 +425,7 @@
         }
         addPercent(result, eff.stat, mult * eff.amount * up,
           "Boon: Master/" + mboon.name + " R" + ranks + upTag,
-          /*conditional*/ true);
+          /*conditional*/ true, /*uptime*/ up);
       }
     }
 
@@ -435,8 +446,8 @@
       if (!buff) continue;
       var label = "Buff: " + (buff.source || buff.name || "?");
       var isConditional = !!buff.conditional;
-      ingestPercentStats(result, buff.percentStats, label, isConditional);
-      ingestRatingStats(result, buff.ratingStats, label, isConditional);
+      ingestPercentStats(result, buff.percentStats, label, isConditional, buff.uptime);
+      ingestRatingStats(result, buff.ratingStats, label, isConditional, buff.uptime);
     }
 
     return result;

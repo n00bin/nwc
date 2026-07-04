@@ -12260,6 +12260,7 @@
               if (_cr) buffs.push({
                 source: `${slotLabel} Insignia Bonus: ${bonus.name} (~${Math.round(_up * 100)}% uptime · all ratings)`,
                 conditional: isConditional,
+                uptime: _up < 1 ? _up : undefined,
                 ratingStats: _cr
               });
             }
@@ -12499,6 +12500,7 @@
               buffs.push({
                 source: `${baseLabel} (${stackLabel}${uptimeFactor < 1 ? `, ~${Math.round(uptimeFactor * 100)}% uptime` : ``})`,
                 conditional: true,
+                uptime: uptimeFactor < 1 ? uptimeFactor : undefined,
                 [channel]: { [eb.stat]: eb.amount * effStacks * uptimeFactor }
               });
             } else {
@@ -12513,6 +12515,7 @@
                 buffs.push({
                   source: `${baseLabel} (${stackLabel}${uptimeFactor < 1 ? `, ~${Math.round(uptimeFactor * 100)}% uptime` : ``})`,
                   conditional: true,
+                  uptime: uptimeFactor < 1 ? uptimeFactor : undefined,
                   [channel]: { [eb.stat]: eb.amount * extra * uptimeFactor }
                 });
               }
@@ -12526,6 +12529,7 @@
               // number on the panel is always explained in place.
               source: baseLabel + (uptimeFactor < 1 ? ` (${eb.uptimeWeighted ? 'proc ' : ''}~${Math.round(uptimeFactor * 100)}% uptime)` : ``),
               conditional: eb.uptimeWeighted ? false : isConditional,
+              uptime: uptimeFactor < 1 ? uptimeFactor : undefined,
               [channel]: { [eb.stat]: eb.amount * uptimeFactor }
             });
           }
@@ -12685,6 +12689,7 @@
           const procPercent = {};
           let labelStacks = 1;
           let weightedAny = false;
+          let _procHasFullPart = false;   // party-scope stats mixed in at full value
           for (const eff of pe.statEffects) {
             if (!eff || !eff.stat) continue;
             if (eff.scope === "enemy") continue;
@@ -12700,7 +12705,7 @@
             const extraStacks = alreadyBaseline ? Math.max(0, effStacks - 1) : effStacks;
             if (extraStacks <= 0) continue;
             const factor = (eff.scope === "party") ? 1 : procU;
-            if (factor < 1) weightedAny = true;
+            if (factor < 1) weightedAny = true; else if ((eff.value || 0) > 0) _procHasFullPart = true;
             const amount = (eff.value || 0) * extraStacks * scale * factor;
             if (eff.type === "percent") {
               procPercent[eff.stat] = (procPercent[eff.stat] || 0) + amount;
@@ -12715,6 +12720,9 @@
             buffs.push({
               source: label + ` ${alwaysOn ? "" : "proc "}(${r})${stackTag}${triggerTag}${uptimeTag}`,
               conditional: !alwaysOn,
+              // Only recoverable to a full when-active value if EVERY stat in
+              // this entry was uptime-scaled (party-scope parts are full already).
+              uptime: weightedAny && !_procHasFullPart && procU < 1 ? procU : undefined,
               ratingStats: procRating,
               percentStats: procPercent
             });
@@ -12931,6 +12939,7 @@
           buffs.push({
             source: `Overload ${i + 1}: ${o.name}${ctxTag}`,
             conditional: isCond,
+            uptime: uptimeFactor < 1 ? uptimeFactor : undefined,
             [channel]: { [eb.stat]: eb.amount * uptimeFactor }
           });
         }
@@ -13403,6 +13412,20 @@
           .filter(c => c.conditional && c.type === "percent")
           .reduce((sum, c) => sum + (c.amount || 0), 0);
         if (condRating || condPercent) rebase(condRating, condPercent);
+      } else {
+        // "Show in-combat" ON = the sheet with procs ACTIVE (owner ruling
+        // 2026-07-04: every view is a real screenshot-able state; the
+        // uptime-weighted average is optimizer/engine internals only —
+        // showing it read as broken: BR's 6% Max HP appeared as ~1.6%).
+        // Engine totals carry the weighted amounts; lift every
+        // uptime-tagged conditional to its full when-active value.
+        const liftRating = (s.contributors || [])
+          .filter(c => c.conditional && c.uptime && c.type === "rating")
+          .reduce((sum, c) => sum + ((c.amount || 0) / c.uptime - (c.amount || 0)), 0);
+        const liftPercent = (s.contributors || [])
+          .filter(c => c.conditional && c.uptime && c.type === "percent")
+          .reduce((sum, c) => sum + ((c.amount || 0) / c.uptime - (c.amount || 0)), 0);
+        if (liftRating || liftPercent) rebase(-liftRating, -liftPercent);
       }
 
       if (hideBuffs) {
@@ -13494,7 +13517,12 @@
       const allContribsFiltered = (s.contributors || [])
         .filter(c => !hideBuffs || !isConsumableBuffContributor(c))
         .filter(c => !hidePartyBuffs || !isPartyBuffContributor(c))
-        .filter(c => showConditional || !c.conditional);
+        .filter(c => showConditional || !c.conditional)
+        // Conditionals shown = procs active: list the full when-active
+        // value (the label's "~N% uptime" tag still explains the cadence).
+        .map(c => (showConditional && c.conditional && c.uptime)
+          ? Object.assign({}, c, { amount: (c.amount || 0) / c.uptime })
+          : c);
       const allRating = allContribsFiltered.filter(c => c.type === "rating");
       const directContribs = allRating
         .filter(c => !isCRSource(c.source))
@@ -13621,12 +13649,16 @@
       // because conditionals were stripped here regardless of the toggle.
       const _hpKeep = c => (_dstatsShowConditional || !c.conditional)
         && (!_dstatsHideBuffs || !isConsumableBuffContributor(c));
+      // Conditionals shown = procs ACTIVE: uptime-tagged amounts are lifted
+      // back to their full when-active value (amount / uptime). The blend
+      // stays engine/optimizer-side only (owner ruling 2026-07-04).
+      const _hpFullVal = c => (c.conditional && c.uptime ? (c.amount || 0) / c.uptime : (c.amount || 0));
       const _hpAlwaysOnPct = (_hpStat.contributors || [])
         .filter(c => c.type === "percent" && _hpKeep(c))
-        .reduce((sum, c) => sum + (c.amount || 0), 0);
+        .reduce((sum, c) => sum + _hpFullVal(c), 0);
       const _hpAlwaysOnFlat = (_hpStat.contributors || [])
         .filter(c => c.type === "rating" && _hpKeep(c))
-        .reduce((sum, c) => sum + (c.amount || 0), 0);
+        .reduce((sum, c) => sum + _hpFullVal(c), 0);
       const _hdlBaseMaxHP = Math.round(_hdlTIL * 10 * _hdlHpRoleMult);
       // THREE-BUCKET composition — must mirror the engine's finalize()
       // (in-game proven 2026-07-04, nine-state calibration):
@@ -13640,9 +13672,9 @@
       let _hpPctEnch = 0, _hpPctBoonOv = 0, _hpPctBase = 0;
       for (const c of _hpFiltered) {
         const src = c.source || "";
-        if (/^(?:Buff: )?Enchant /.test(src)) _hpPctEnch += (c.amount || 0);
-        else if (/^Boon: /.test(src) || /^(?:Buff: )?Overload /.test(src)) _hpPctBoonOv += (c.amount || 0);
-        else _hpPctBase += (c.amount || 0);
+        if (/^(?:Buff: )?Enchant /.test(src)) _hpPctEnch += _hpFullVal(c);
+        else if (/^Boon: /.test(src) || /^(?:Buff: )?Overload /.test(src)) _hpPctBoonOv += _hpFullVal(c);
+        else _hpPctBase += _hpFullVal(c);
       }
       const _hdlMaxHP = Math.round((_hdlBaseMaxHP + _hpAlwaysOnFlat)
         * (1 + _hpCON * 0.005 + _hpPctBase / 100)
