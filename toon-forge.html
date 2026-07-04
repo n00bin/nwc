@@ -15378,13 +15378,24 @@
       }
       // Racial traits — pulled from races.json for the SELECTED race
       // only (so a Wood Elf Ranger sees Elven Accuracy + Wild Step but
-      // not Drow's Faerie Fire). general_feats.json is no longer used
-      // here since the canonical source for racial traits is races.json.
+      // not Drow's Faerie Fire). Racial entries in general_feats.json are
+      // NOT used here since the canonical source for racial traits is races.json.
       if (state.race && typeof RACES_DATA !== "undefined" && Array.isArray(RACES_DATA)) {
         const raceDef = RACES_DATA.find(r => r.name === state.race);
         const traits = raceDef ? (raceDef.traits || raceDef.racialTraits || []) : [];
         for (const tr of traits) {
           if (tr && tr.name) generalEntries.push({ feature: tr, kind: state.race + " racial" });
+        }
+      }
+      // Universal account Skills (general_feats.json type:"skill") — the
+      // in-game General row lists these for EVERY character regardless of
+      // class/race (e.g. Vengeful Blades). Found missing when n00b's
+      // Soulweaver had no Vengeful Blades card (2026-07-04).
+      if (typeof GENERAL_FEATS_DATA !== "undefined" && Array.isArray(GENERAL_FEATS_DATA)) {
+        for (const gf of GENERAL_FEATS_DATA) {
+          if (gf && gf.name && gf.type === "skill" && gf.universal) {
+            generalEntries.push({ feature: gf, kind: "account skill" });
+          }
         }
       }
 
