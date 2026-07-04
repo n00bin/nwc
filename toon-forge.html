@@ -11253,8 +11253,13 @@
       // single blow" (Deathly Rage): a second, rare trigger path on top of
       // kills — model one qualifying blow every ~50s of boss play.
       if (/single blow|taking more than/.test(trig)) rate += 0.02;
-      if (/on heal|you heal/.test(trig)) {
-        if (!healerBuild) return 0;
+      if (/on heal|you heal|are healed/.test(trig)) {
+        // Heal-GIVEN-only triggers need the build to actually heal. But
+        // "…or are healed" triggers (Blessed Resilience) also fire on
+        // RECEIVING heals — tanks are the most-healed role in group
+        // content, so they keep the generic rate instead of scoring 0
+        // (n00b 2026-07-04: BR vanished entirely from his tank's list).
+        if (!healerBuild && !/are healed/.test(trig)) return 0;
         rate = U.trigger_rate.other;
       }
       if (/below\s*\d+%|health is below/.test(trig)) gate = CONDITIONAL_UPTIME.low_threshold;
