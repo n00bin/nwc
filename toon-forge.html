@@ -6076,7 +6076,9 @@
       if (power) {
         for (const st of (power.stats || [])) {
           if (st && st.stat) {
-            synth.percentStats[st.stat] = (synth.percentStats[st.stat] || 0) + _round2((st.value || 0) * scale);
+            // Same per-stat table-ratio scaling as the engine (see
+            // compStatRarityScale) so the card shows the exact rung.
+            synth.percentStats[st.stat] = (synth.percentStats[st.stat] || 0) + _round2((st.value || 0) * compStatRarityScale(tier, power, st.stat));
           }
         }
       }
@@ -11051,6 +11053,36 @@
       return targetIL / baseIL;
     }
 
+    // Canonical companion-power percent ladders (game-verified; the same
+    // tables companions-page.js renders from). Stat values in the data are
+    // the game's DISPLAYED numbers, which round the true per-IL rate
+    // (double-stat true value at IL 750 is 3.75 but consoles show "3.8").
+    // Linear IL scaling propagates that rounding (3.8 × 900/750 = 4.56 vs
+    // the game's real 4.50 at Celestial — n00b caught it on Bruenor's
+    // Bulwark, 2026-07-04). Scaling by TABLE RATIO instead pins standard
+    // powers to the exact rung at every rarity while keeping verified
+    // off-scale powers (Energon, Bobby's Vigor…) proportional.
+    const COMP_PCT_SINGLE = {75:0.75,150:1.5,250:2.5,375:3.75,550:5.5,750:7.5,900:9.0};
+    const COMP_PCT_DOUBLE = {75:0.38,150:0.75,250:1.25,375:1.88,550:2.75,750:3.75,900:4.5};
+    const COMP_MAX_HP     = {75:1500,150:3000,250:5000,375:7500,550:11000,750:15000,900:18000};
+
+    function compStatRarityScale(targetRarity, basePower, statName) {
+      const targetIL = COMPANION_RARITY_IL[targetRarity] || COMPANION_RARITY_IL.Mythic;
+      const baseIL = (basePower && basePower.item_level) || targetIL;
+      if (baseIL <= 0) return 1;
+      const isHP = statName === "MaximumHitPoints" || statName === "Maximum Hit Points";
+      let table = null;
+      if (isHP) {
+        table = COMP_MAX_HP;
+      } else {
+        const n = ((basePower && basePower.stats) || []).filter(st =>
+          st && st.stat && st.stat !== "MaximumHitPoints" && st.stat !== "Maximum Hit Points").length;
+        table = n === 1 ? COMP_PCT_SINGLE : (n === 2 ? COMP_PCT_DOUBLE : null);
+      }
+      if (table && table[baseIL] && table[targetIL]) return table[targetIL] / table[baseIL];
+      return targetIL / baseIL;
+    }
+
     // Bolster IL contribution to TIL — verified from in-game character
     // sheet readings. Formula:
     //   contribution = base_IL × (bolster_pct / 100)
@@ -12559,10 +12591,13 @@
             // 1,500 @ IL75 → 18,000 @ IL900). Routing it as percent was a
             // latent bug: nothing consumed MaxHP percents until the HP
             // model landed — then "+18,000%" HP exploded the pool.
+            // Per-stat table-ratio scaling (NOT linear IL ratio) so bases
+            // stored at rounded ladder rungs land on the exact rung.
+            const stScale = compStatRarityScale(r, power, st.stat);
             if (st.stat === "MaximumHitPoints" || st.stat === "Maximum Hit Points") {
-              ratingStats[st.stat] = (ratingStats[st.stat] || 0) + (st.value || 0) * scale;
+              ratingStats[st.stat] = (ratingStats[st.stat] || 0) + (st.value || 0) * stScale;
             } else {
-              percentStats[st.stat] = (percentStats[st.stat] || 0) + (st.value || 0) * scale;
+              percentStats[st.stat] = (percentStats[st.stat] || 0) + (st.value || 0) * stScale;
             }
           }
           if (Object.keys(percentStats).length || Object.keys(ratingStats).length) {

@@ -347,4 +347,23 @@ These look "off-scale" but are verified correct per `website/CLAUDE.md`. The Ste
 
 ---
 
+## Tank defensive-stat calibration — CLOSED 2026-07-04
+
+Erik (Paladin Justicar tank, TIL 147,787). All five defensive RATINGS now match the PS5 sheet within ±1. Verified via fresh tooltips (archived in `docs/calibration/inbox/`):
+
+| item | system | status | notes |
+|------|--------|--------|-------|
+| Wrath of Kossuth | artifacts | CONFIRMED (was wrong) | Tooltip: +1,650 CritAvoid / +2,250 Deflection / +2,250 Deflect Severity / +1,700 CR at IL 2,000. Stored 1,500s were unverified — fixed. Explained CritAvoid −150 / Deflect −750 / DeflectSev −750 gaps exactly. |
+| Sealing Parchment | artifacts | CONFIRMED | 1,365 Def / 1,560 CA / 1,560 Awareness / +15% Stamina Regen / 2,600 CR. The 15% was stored as rating 15 — moved to percent channel. |
+| Crimson Calamity | artifacts | CONFIRMED | 1,365 Def / 2,925 DeflectSev / 1,560 CA / +15% Stamina Regen / 2,600 CR. Same percent-channel fix. |
+| Ritualistic Necklace | gear | CONFIRMED | 1,215 CA / 2,126 Def / 1,671 CritAvoid / 3,645 CR + jewel line "Major Stamina Regeneration Jewel +1 = +2.2%" (kits.json had 1.5 — fixed). Tooltip also shows +3 STR / +3 CON. |
+| Abyss Conquerer's Provoker Cuirass | gear | CONFIRMED | 1,538 CA / 1,538 Awareness / 1,845 CR; Provoker's Stance text matches restored 3-effect structure; kit +3,520 Max HP confirmed. |
+| Major Stamina Regeneration Jewel +1 | kits | CONFIRMED (was wrong) | 2.2% per jewel (was 1.5% unverified). Stamina Regeneration panel: at-rest 53.6% now EXACT. |
+| Crimson Crystal Horse slot 3 | build-side | n/a | Build had Crescent of Courage; game has Crescent of Balance — user build fix, not data. Defense rating exact after fix. |
+| Quick Action (Celestial Dragonnel preview) | mount_equip_powers | CONFIRMED | Celestial 7.9% AP / CR 3,544 / IL 3,937 = Mythic 6.0% × 1.3125 — first confirmation the Celestial ratio applies to equip-power STAT values, not just IL. |
+
+Still open after this pass: Action Point Gain −2.9% (game 10.2 vs tool 7.3) and Defense percent-side ≈ −2 (ratings exact; percent channel differs — candidate: how the in-game at-rest sheet counts slotted aura-type class features). Pack Tactics 2,953 note ("verify when convenient") is now cross-validated by the CA rating matching ±1.
+
+---
+
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._
