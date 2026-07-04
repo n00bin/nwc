@@ -13063,30 +13063,20 @@
     function masterPointsSpent(boonId, ranks) {
       return masterPerRankCost(boonId) * (ranks || 0);
     }
-    // Advanced (Tier-5) boons use the same escalating rule as Masters: the
-    // Nth owned Advanced boon costs N points per allocated point (patch
-    // notes: "1 more point per rank for each additional boon you already
-    // own"). Purchase order can't be recovered from a saved build, so we
-    // count with the cost-minimal convention: largest allocations take the
-    // low multipliers (ties broken by boon id for determinism).
-    function tier5CostMultipliers() {
-      const owned = [];
-      for (const [, v] of state.boons) {
-        if (v.tier === "tier5" && (v.points || 0) > 0) owned.push(v);
-      }
-      owned.sort((a, b) => (b.points - a.points) || (a.boonId - b.boonId));
-      const m = new Map();
-      owned.forEach((v, i) => m.set(v.boonId, i + 1));
-      return m;
-    }
+    // Advanced (Tier-5) boons count FLAT (1 point per point) in the game's
+    // "Total Spent" ledger — verified against n00b's live tree 2026-07-04:
+    // 2 maxed + 1 at 3/4 (11 raw points), spent 104 / builder 114, and the
+    // −10 gap is exactly the escalating multipliers (4×1+4×2+3×3 = 21) we
+    // were charging vs the game's flat 11. The in-game 2/3 cost badges on
+    // advanced boons advertise something other than ledger cost (masters
+    // DO escalate — 1/2/3 per rank fits the same tree, and an unowned 4th
+    // master previews 4/rank). If a future patch makes the ledger actually
+    // escalate, revisit; until then mirror the game.
     function totalBoonPoints() {
       let total = 0;
-      const t5 = tier5CostMultipliers();
       for (const [key, v] of state.boons) {
         if (v.tier === "master") {
           total += masterPointsSpent(v.boonId, v.ranks || 0);
-        } else if (v.tier === "tier5") {
-          total += (v.points || 0) * (t5.get(v.boonId) || 1);
         } else {
           const b = findBoonByKey(key);
           total += (v.points || 0) * ((b && b.costPerPoint) || 1);
