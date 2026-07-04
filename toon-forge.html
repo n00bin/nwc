@@ -2508,7 +2508,6 @@
           <div class="tf-comm-menu hidden" id="tf-community-menu">
             <button class="tf-comm-item" id="tf-comm-meta" type="button"><span class="t">📊 Community Meta</span><span class="d">See what players like you run — and where your build lands</span></button>
             <button class="tf-comm-item" id="tf-comm-contribute" type="button"><span class="t">➕ Add your build</span><span class="d">Anonymous — grows the meta you just saw</span></button>
-            <button class="tf-comm-item" id="tf-comm-progress" type="button"><span class="t">📈 Collection progress</span><span class="d">How close each build type is to unlocking the meta</span></button>
           </div>
         </span>
         <button class="btn btn-ghost" id="clear-build" title="Reset every field back to a blank build">🗑️ Clear all</button>
@@ -18021,8 +18020,6 @@
       if (cContribute) cContribute.addEventListener("click", function () { if (cmenu) cmenu.classList.add("hidden"); openShareCommunityModal(); });
       const cMeta = document.getElementById("tf-comm-meta");
       if (cMeta) cMeta.addEventListener("click", function () { if (cmenu) cmenu.classList.add("hidden"); openMetaTracker(); });
-      const cProgress = document.getElementById("tf-comm-progress");
-      if (cProgress) cProgress.addEventListener("click", function () { if (cmenu) cmenu.classList.add("hidden"); window.open("community-meta.html", "_blank", "noopener"); });
     }
 
     // ===== Phase 2: Community Meta tracker =====
