@@ -259,6 +259,37 @@ remaining gap (n00b deferred 2026-06-16).
 | 44 | Celestial Skullite | CONFIRMED | inbox/enchants/celestial-skullite_il300-source.png | uniform 3-stat (all 1080). Off: Power/Accuracy/Crit Strike · Def: Defense/Crit Avoidance/Deflect · Util: Forte/Ctrl Resist/Inc Healing |
 | 40 | Celestial Rime Temper (R) | FIXED→CONFIRMED (Celestial: HP 16→15, IDR -13→-12, debuff 4→4.5%/stack; name +\" (R)\") | inbox/enchants/Celestial Rime Temper (R)_IL7000_celestial-verified.png | n00b's PS5 tooltip 2026-07-03; Mythic (14/-11/4%) separately verified 2026-03-17. Uncommon–Legendary rows remain estimates. NW Hub + Arc Mod-32 preview independently corroborate 15/12 |
 
+## Max HP formula — SOLVED EXACTLY via nine-state in-game calibration (2026-07-03/04)
+
+Controlled A/B protocol on n00b's tank Paladin (Erik, TIL 147,487): one change per step,
+HP+TIL read each time, re-slot + confirm-return between steps. Result (commit 9c7e9ba):
+
+`MaxHP = (TIL×10×role + item flat HP) × (1 + CON×0.5% + insignia-bonus% + VIP%) × (1 + boon% + overload%) × (1 + enchant%)`
+
+All 8 reproducible states match within 1–2 HP (worst 0.0001%). Verified per-source facts
+(all CONFIRMED, screenshot/measurement evidence in `docs/calibration/evidence/2026-07-04_*`):
+
+| fact | measured value | note |
+|------|----------------|------|
+| Base HP | TIL×10, tank ×1.2, healer ×1.1 | game's own HP tooltip states it verbatim |
+| CON | +0.5%/point, base bucket | campfire +1-CON A/B exact (11,611 HP) |
+| Guardian's Spirit | 8/12/15% ladder, base bucket | live bonus text + instance-2 A/B exact (92,078) |
+| VIP (rank 3+) | +1% Max HP per VIP party member (max 5) | "The Power of VIP" buff; solo = 1% |
+| Bulwark boons ×4 | 0.2%/rank each (tooltip TRUE), boon bucket | decrement A/B = 27,457 = 1%×base×enchant |
+| Bulwark of Brimstone (overload) | 5% (tooltip TRUE), boon bucket | the "+6.375% phantom" = 5%×1.275 base |
+| Rime Temper | +15% Celestial, own enchant bucket; IL 7,000 rides TIL | unslot A/B exact |
+| Prime Rib | +20,000 flat HP (+4,000 Power) | eat A/B = +31,964 = 20,000×full chain, exact |
+| Insignias | flat values ×1.5 Celestial; preferred slot ×1.2 on stats AND IL (750→900) | TIL-verified |
+| Duplicate insignias on one mount | DO stack (both count) | Snowtusk A/B — earlier dedup theory disproven |
+| Power boons ×4 | 1.0% each (tooltip TRUE) | stat-panel A/B 39.2→35.2% |
+
+Session artifacts: build-state screenshots in `docs/calibration/inbox/boons/` +
+`evidence/2026-07-04_*`; session baseline in `docs/audit/_tank_baseline_2026-07-03.json`.
+n00b's LIVE build vs his shared link (input drift found during calibration): Snowtusk
+slot 2 = Enlightened of **Brutality** (not Fortitude), abilities are 1 lower across the
+board (entered while campfired; CON 29 not 30), overloads include **Bulwark of Brimstone**,
+boon spend is 104+1 pts (not 132), guild boons Power/Awareness/Movement confirmed active.
+
 ## Mounts (mount_*.json) — verification pass 2026-06-16 (vs cached sheet1 mount tabs)
 
 | file | result |
