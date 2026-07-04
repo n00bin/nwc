@@ -2367,6 +2367,28 @@
   .mt-fill { height: 100%; background: var(--amber); border-radius: 8px; }
   .mt-pct { width: 40px; text-align: right; font-weight: 700; font-size: 0.83rem; }
   .mt-empty { color: var(--text-mute); font-size: 0.9rem; padding: 1.2rem 0.2rem; text-align: center; line-height: 1.6; }
+  /* Collection-progress fallback (shown inside the meta modal until a segment unlocks) */
+  .mt-prog-hero { text-align: center; margin: 0.9rem 0 0.15rem; }
+  .mt-prog-hero .big { font-size: 2.3rem; font-weight: 800; color: var(--amber); line-height: 1; }
+  .mt-prog-hero .cap { font-size: 0.72rem; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.25rem; }
+  .mt-prog-sub { text-align: center; font-size: 0.84rem; color: var(--text-mute); margin: 0.4rem 0 0.9rem; }
+  .mt-prog-sub b { color: var(--text); }
+  .mt-prog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+  .mt-prog-seg { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 9px; padding: 9px 11px; position: relative; }
+  .mt-prog-seg .nm { font-weight: 700; font-size: 0.8rem; padding-right: 2.4rem; }
+  .mt-prog-seg .nm .par { color: var(--text-mute); font-weight: 400; }
+  .mt-prog-seg .ct { position: absolute; top: 9px; right: 11px; color: var(--text-mute); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+  .mt-prog-bar { height: 7px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; margin: 8px 0 5px; }
+  .mt-prog-bar > i { display: block; height: 100%; background: var(--amber); }
+  .mt-prog-seg.ready { border-color: rgba(63,185,80,0.45); }
+  .mt-prog-seg.ready .mt-prog-bar > i { background: var(--pos); }
+  .mt-prog-seg.ready .mt-prog-need { color: var(--pos); font-weight: 600; }
+  .mt-prog-seg.zero { opacity: 0.55; }
+  .mt-prog-seg.you { border-color: var(--amber); box-shadow: 0 0 0 1px rgba(240,136,62,0.35); }
+  .mt-prog-need { font-size: 0.7rem; color: var(--text-mute); }
+  .mt-prog-cta { text-align: center; margin: 1rem 0 0.1rem; }
+  .mt-prog-cta .lnk { display: block; margin-top: 0.5rem; font-size: 0.78rem; color: var(--amber); }
+  .mt-prog-cta .lnk:visited { color: var(--amber); }
   .mt-foot { margin-top: 1.3rem; font-size: 0.78rem; color: var(--text-mute); line-height: 1.5; border-top: 1px solid var(--border); padding-top: 0.8rem; }
   </style>
   <script type="application/ld+json">
@@ -18091,12 +18113,93 @@
       return '<div class="mt-cat-title">' + t.label + ' <span class="n">· ' + nText + '</span></div>' +
         mtRenderPool(byCat[t.cat] || [], total, t.topN, you[t.cat] || new Set());
     }
+    // Collection-progress fallback: shown inside the meta modal whenever the
+    // meta itself can't display yet (segment below the 5-build floor, or no
+    // build type picked). Same data as community-meta.html — the public
+    // counts-only meta_progress RPC; never an individual build.
+    function renderMetaProgress(body, headlineHtml) {
+      const THRESH = 5;
+      const CLS_COL = { Barbarian: "#d9534f", Bard: "#c77dff", Cleric: "#f0d060", Fighter: "#c0c5cc",
+        Paladin: "#f2a93b", Ranger: "#4caf50", Rogue: "#9aa0a8", Warlock: "#9b59ff", Wizard: "#4aa3ff" };
+      const ROLE_LBL = { dps: "DPS", tank: "TANK", heal: "HEALER" };
+      const rk = function (r) { r = String(r || "").toLowerCase(); return r === "healer" ? "heal" : r; };
+      body.innerHTML = '<div class="mt-empty">Loading collection progress…</div>';
+      fetch("https://ynrfmmccarrpqjdrpvqn.supabase.co/rest/v1/rpc/meta_progress", {
+        method: "POST",
+        headers: {
+          apikey: "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw",
+          Authorization: "Bearer sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw",
+          "Content-Type": "application/json"
+        },
+        body: "{}"
+      }).then(function (r) { return r.json(); }).then(function (data) {
+        if (!data || data.ok !== true) throw new Error("bad response");
+        const counts = {};
+        (data.segments || []).forEach(function (s) {
+          const k = (s.class || "?") + "|" + (s.paragon || "?") + "|" + rk(s.role);
+          counts[k] = (counts[k] || 0) + (s.n || 0);
+        });
+        const keys = new Set();
+        (typeof CLASSES_DATA !== "undefined" ? CLASSES_DATA : []).forEach(function (c) {
+          (c.paragonPaths || []).forEach(function (p) {
+            (p.roles || []).forEach(function (r) { keys.add(c.name + "|" + p.name + "|" + rk(r)); });
+          });
+        });
+        Object.keys(counts).forEach(function (k) { keys.add(k); });
+        const youKey = (state.class && state.paragon && state.role)
+          ? state.class + "|" + state.paragon + "|" + rk(state.role) : null;
+        const rows = Array.from(keys).map(function (k) {
+          const p = k.split("|");
+          return { key: k, cls: p[0], par: p[1], role: p[2] || "", n: counts[k] || 0 };
+        });
+        // Player's own build type pins to the front; the rest rank by count.
+        rows.sort(function (a, b) {
+          if (a.key === youKey) return -1;
+          if (b.key === youKey) return 1;
+          return b.n - a.n || a.cls.localeCompare(b.cls) || a.par.localeCompare(b.par);
+        });
+        const ready = rows.filter(function (r) { return r.n >= THRESH; }).length;
+        let h = (headlineHtml ? '<div class="mt-note">' + headlineHtml + '</div>' : '');
+        h += '<div class="mt-prog-hero"><div class="big">' + (data.total || 0).toLocaleString() +
+          '</div><div class="cap">builds shared by the community</div></div>';
+        h += '<div class="mt-prog-sub"><b>' + ready + '</b> of <b>' + rows.length +
+          '</b> build types ready · a build type unlocks at ' + THRESH +
+          ' shared builds, so no single player\'s build can be picked out.</div>';
+        h += '<div class="mt-prog-grid">' + rows.map(function (r) {
+          const isReady = r.n >= THRESH, isYou = r.key === youKey;
+          const pct = Math.min(100, Math.round(r.n / THRESH * 100));
+          const col = CLS_COL[r.cls] || "var(--text-mute)";
+          return '<div class="mt-prog-seg' + (isReady ? ' ready' : '') + (r.n === 0 ? ' zero' : '') + (isYou ? ' you' : '') + '">' +
+            '<span class="ct">' + r.n + ' / ' + THRESH + '</span>' +
+            '<div class="nm" style="color:' + col + '">' + mtEsc(r.cls) +
+              ' <span class="par">' + mtEsc(r.par) + ' · ' + mtEsc(ROLE_LBL[r.role] || r.role.toUpperCase()) + '</span>' +
+              (isYou ? ' <span class="mt-you-tag">YOU</span>' : '') + '</div>' +
+            '<div class="mt-prog-bar"><i style="width:' + pct + '%"></i></div>' +
+            '<div class="mt-prog-need">' + (isReady ? '✓ ready to show' : (r.n === 0 ? 'no builds yet' : 'needs ' + (THRESH - r.n) + ' more')) + '</div>' +
+          '</div>';
+        }).join('') + '</div>';
+        h += '<div class="mt-prog-cta"><button class="btn btn-primary" id="mt-prog-share" type="button">➕ Add your build</button>' +
+          '<a class="lnk" href="community-meta.html" target="_blank" rel="noopener">Open the full progress page ↗</a></div>';
+        h += '<div class="mt-foot">🔒 100% anonymous — no names, no accounts. We count build types, never individual builds.</div>';
+        body.innerHTML = h;
+        const shareBtn = document.getElementById("mt-prog-share");
+        if (shareBtn) shareBtn.addEventListener("click", function () {
+          const ov = document.getElementById("mt-overlay");
+          if (ov) ov.remove();
+          openShareCommunityModal();
+        });
+      }).catch(function () {
+        body.innerHTML = '<div class="mt-empty">Couldn\'t load collection progress right now — please try again in a bit.</div>';
+      });
+    }
     function renderMetaTracker(data, body) {
       const total = data.total || 0;
       if (data.insufficient) {
-        body.innerHTML = '<div class="mt-empty">No community meta yet for <b>' + mtEsc(state.role + " " + state.class) +
-          '</b>.<br>Only <b>' + total + '</b> ' + mtEsc(state.role + " " + state.class) + ' build' + (total === 1 ? '' : 's') +
-          ' shared so far (need ' + (data.min || 5) + '+). Contribute yours via “Help improve the optimizer,” and check back as more roll in.</div>';
+        renderMetaProgress(body,
+          'No community meta yet for <b>' + mtEsc(state.role + " " + state.class) + '</b> — ' +
+          (total === 0 ? 'no builds shared yet'
+            : 'only <b>' + total + '</b> build' + (total === 1 ? '' : 's') + ' shared so far') +
+          ' (need ' + (data.min || 5) + '+). Here\'s where the whole collection stands:');
         return;
       }
       const counts = Array.isArray(data.counts) ? data.counts : [];
@@ -18135,22 +18238,26 @@
       });
     }
     function openMetaTracker() {
-      if (!state.class || !state.paragon || !state.role) {
-        toast("Pick a class, paragon, and role first to see the community meta.");
-        return;
-      }
+      const hasBuildType = !!(state.class && state.paragon && state.role);
       let ov = document.getElementById("mt-overlay");
       if (ov) ov.remove();
       ov = document.createElement("div");
       ov.id = "mt-overlay";
       ov.className = "mt-overlay";
       ov.innerHTML = '<div class="mt-card"><div class="mt-head"><h2>Community Meta</h2>' +
-        '<span class="mt-pill">' + mtEsc(state.role) + ' · ' + mtEsc(state.class) + ' · ' + mtEsc(state.paragon) + '</span>' +
+        '<span class="mt-pill">' + (hasBuildType ? mtEsc(state.role) + ' · ' + mtEsc(state.class) + ' · ' + mtEsc(state.paragon) : 'Collection progress') + '</span>' +
         '<button class="mt-x" id="mt-close" title="Close">×</button></div>' +
         '<div id="mt-body"><div class="mt-empty">Loading the community meta…</div></div></div>';
       document.body.appendChild(ov);
       ov.addEventListener("click", function (e) { if (e.target === ov) ov.remove(); });
       document.getElementById("mt-close").addEventListener("click", function () { ov.remove(); });
+      if (!hasBuildType) {
+        // No build type picked yet — nothing to match a meta to, so show how
+        // close every build type is to unlocking instead of a dead-end toast.
+        renderMetaProgress(document.getElementById("mt-body"),
+          '<b>Pick a class, paragon and role</b> to see the meta matched to your build type. Meanwhile, here\'s how close each one is to unlocking:');
+        return;
+      }
       if (!window.supabase) { document.getElementById("mt-body").innerHTML = '<div class="mt-empty">Can\'t reach the community server right now — try again later.</div>'; return; }
       const sb = window.supabase.createClient(
         "https://ynrfmmccarrpqjdrpvqn.supabase.co",
