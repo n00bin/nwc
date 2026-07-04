@@ -13611,7 +13611,12 @@
           const _gnm = state.gear[_se.label];
           if (!_gnm) continue;
           const _gi = findGearByName(_gnm, _se.slot, (state.gearIL || {})[_se.label]);
-          if (_gi && _gi.weaponDamage) _gearWeaponDamage += (+_gi.weaponDamage || 0);
+          // Weapon base damage lives in TWO data conventions: `weaponDamage`
+          // (33 items) or ratingStats.Damage (110 items, e.g. Wintermarked
+          // Frostmaul's +100). Seven items carry BOTH with the same value —
+          // take either-or, never the sum (n00b 2026-07-04: sheet 14,879 vs
+          // tool 14,779 — the Frostmaul's ratingStats-only +100 was missed).
+          if (_gi) _gearWeaponDamage += (+_gi.weaponDamage || 0) || (+((_gi.ratingStats || {}).Damage) || 0);
         }
       }
       const _hdlDamage = Math.round((_hdlTIL / 10) * _hdlDamageRoleMult) + _gearWeaponDamage;
