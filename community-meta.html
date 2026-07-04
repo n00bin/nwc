@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Meta Progress — Neverwinter Compendium</title>
+  <meta name="description" content="Live progress toward the Toon Forge Community Meta — how many anonymous builds each class, paragon and role has, and how many more are needed to unlock it.">
+  <meta property="og:title" content="Community Meta Progress — Neverwinter Compendium">
+  <meta property="og:description" content="Live progress toward the Toon Forge Community Meta — how many anonymous builds each class, paragon and role has, and how many more are needed to unlock it.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://n00bin.github.io/nwc/community-meta.html">
+  <meta property="og:url" content="https://n00bin.github.io/nwc/community-meta.html">
+  <meta property="og:image" content="https://n00bin.github.io/nwc/og-image.png">
+  <meta property="og:site_name" content="Neverwinter Compendium">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Community Meta Progress — Neverwinter Compendium">
+  <meta name="twitter:description" content="Live progress toward the Toon Forge Community Meta — how many anonymous builds each build type has, and how many more are needed.">
+  <meta name="twitter:image" content="https://n00bin.github.io/nwc/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .cm-container { max-width: 960px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+
+    .cm-hero { text-align: center; padding: 1.6rem 1rem 0.2rem; }
+    .cm-hero .big { font-size: 64px; font-weight: 800; line-height: 1; color: var(--accent); }
+    .cm-hero .cap { font-size: 0.95rem; color: var(--text-secondary); margin-top: 0.5rem;
+      letter-spacing: 0.4px; text-transform: uppercase; }
+    .cm-sub { text-align: center; font-size: 1.05rem; margin: 0.6rem 0 0.4rem; }
+    .cm-sub b { color: var(--highlight); }
+    .cm-status { text-align: center; color: var(--text-muted); font-size: 0.8rem; min-height: 1.2em; margin-bottom: 1.2rem; }
+    .cm-status.err { color: var(--stat-negative); }
+
+    .cm-explain { background: var(--bg-surface); border: 1px solid var(--border-default);
+      border-radius: 10px; padding: 0.9rem 1.1rem; margin: 0 auto 1.4rem; max-width: 720px;
+      font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+    .cm-explain b { color: var(--text-primary); }
+    .cm-cta { text-align: center; margin: 0 0 1.6rem; }
+    .cm-cta a { display: inline-block; background: var(--accent); color: #0d1117; font-weight: 700;
+      padding: 0.55rem 1.2rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem; }
+    .cm-cta a:hover { background: var(--accent-hover); }
+    .cm-cta .sub { display: block; color: var(--text-muted); font-size: 0.78rem; margin-top: 0.45rem; }
+
+    .cm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+    .cm-seg { background: var(--bg-surface); border: 1px solid var(--border-default);
+      border-radius: 12px; padding: 14px 16px; position: relative; }
+    .cm-seg .nm { font-weight: 700; font-size: 0.95rem; }
+    .cm-seg .nm .par { color: var(--text-secondary); font-weight: 400; }
+    .cm-seg .ct { position: absolute; top: 14px; right: 16px; color: var(--text-secondary);
+      font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+    .cm-bar { height: 9px; background: var(--bg-elevated); border-radius: 999px; overflow: hidden; margin: 11px 0 7px; }
+    .cm-bar > i { display: block; height: 100%; background: var(--accent); transition: width 0.4s; }
+    .cm-seg.ready { border-color: rgba(63, 185, 80, 0.45); }
+    .cm-seg.ready .cm-bar > i { background: var(--stat-positive); }
+    .cm-need { font-size: 0.78rem; color: var(--text-secondary); }
+    .cm-seg.ready .cm-need { color: var(--stat-positive); font-weight: 600; }
+    .cm-seg.zero { opacity: 0.55; }
+    .cm-seg.zero .cm-bar > i { background: var(--border-default); }
+
+    .cm-privacy { text-align: center; color: var(--text-secondary); font-size: 0.85rem;
+      margin: 2rem auto 0; max-width: 640px; line-height: 1.65;
+      border-top: 1px solid var(--border-default); padding-top: 1.2rem; }
+    .cm-privacy b { color: var(--text-primary); }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <div class="cm-container">
+    <h2 style="text-align:center;margin-bottom:0.2rem;">Community Meta — Progress Tracker</h2>
+
+    <div class="cm-hero"><div class="big" id="cm-total">—</div><div class="cap">builds shared by the community</div></div>
+    <div class="cm-sub" id="cm-sub">Loading…</div>
+    <div class="cm-status" id="cm-status"></div>
+
+    <div class="cm-explain">
+      The <b>Community Meta</b> (inside <a href="toon-forge.html">Toon Forge</a>) shows what players
+      actually run — the powers, feats, gear and companions behind real builds. A build type unlocks
+      once it has <b>5 shared builds</b>: below that, we show nothing, so no single player's build can
+      ever be picked out. This page tracks how close each class · paragon · role is to unlocking.
+    </div>
+
+    <div class="cm-cta">
+      <a href="toon-forge.html">➕ Add your build in Toon Forge</a>
+      <span class="sub">Open Toon Forge → 🌐 Community → Add your build. Free and 100% anonymous.</span>
+    </div>
+
+    <div class="cm-grid" id="cm-grid"></div>
+
+    <div class="cm-privacy">🔒 <b>100% anonymous</b> — no names, no accounts.<br>
+      We count build types, never individual builds.</div>
+  </div>
+
+  <script src="js/shared.js"></script>
+  <script src="data/classes.js"></script>
+  <script>
+    renderNav("");
+
+    const SUPA = "https://ynrfmmccarrpqjdrpvqn.supabase.co";
+    const ANON = "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw";
+    const THRESH = 5;          // Community Meta display floor (matches meta_counts)
+    const POLL_MS = 60000;
+
+    const CLASS_COLOR = {
+      Barbarian: "#d9534f", Bard: "#c77dff", Cleric: "#f0d060", Fighter: "#c0c5cc",
+      Paladin: "#f2a93b", Ranger: "#4caf50", Rogue: "#9aa0a8", Warlock: "#9b59ff", Wizard: "#4aa3ff"
+    };
+    const ROLE_LABEL = { dps: "DPS", tank: "TANK", heal: "HEALER" };
+    // Shared builds store role lowercase; fold any healer spelling onto "heal".
+    const roleKey = r => { const k = String(r || "").toLowerCase(); return k === "healer" ? "heal" : k; };
+
+    // Every build type (class · paragon · role) straight from the class data,
+    // so the grid always shows the full universe — including types at zero.
+    const CATALOG = [];
+    (typeof CLASSES_DATA !== "undefined" ? CLASSES_DATA : []).forEach(c => {
+      (c.paragonPaths || []).forEach(p => {
+        (p.roles || []).forEach(r => CATALOG.push({ cls: c.name, par: p.name, role: roleKey(r) }));
+      });
+    });
+
+    const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+    const fmt = n => Number(n || 0).toLocaleString();
+    function ago(iso) {
+      if (!iso) return "";
+      const t = new Date(String(iso).replace(" ", "T"));
+      let s = Math.floor((Date.now() - t.getTime()) / 1000);
+      if (!isFinite(s)) return "";
+      if (s < 0) s = 0;
+      if (s < 60) return "moments ago";
+      const m = Math.floor(s / 60); if (m < 60) return m + "m ago";
+      const h = Math.floor(m / 60); if (h < 24) return h + "h ago";
+      return Math.floor(h / 24) + "d ago";
+    }
+
+    function render(data) {
+      const counts = {};
+      (data.segments || []).forEach(s => {
+        const k = (s.class || "?") + "|" + (s.paragon || "?") + "|" + roleKey(s.role);
+        counts[k] = (counts[k] || 0) + (s.n || 0);
+      });
+
+      // Full universe = the catalog plus anything unexpected in the data.
+      const keys = new Set(CATALOG.map(s => s.cls + "|" + s.par + "|" + s.role));
+      Object.keys(counts).forEach(k => keys.add(k));
+      const rows = Array.from(keys).map(k => {
+        const p = k.split("|");
+        return { cls: p[0], par: p[1], role: p[2] || "", n: counts[k] || 0 };
+      });
+      rows.sort((a, b) => b.n - a.n || a.cls.localeCompare(b.cls) || a.par.localeCompare(b.par));
+
+      const ready = rows.filter(r => r.n >= THRESH).length;
+      const started = rows.filter(r => r.n > 0).length;
+
+      document.getElementById("cm-total").textContent = fmt(data.total);
+      document.getElementById("cm-sub").innerHTML =
+        "<b>" + ready + "</b> of <b>" + rows.length + "</b> build types ready for the Community Meta " +
+        '<span style="color:var(--text-muted);">· ' + started + " started · " + THRESH + " needed each</span>";
+
+      document.getElementById("cm-grid").innerHTML = rows.map(r => {
+        const isReady = r.n >= THRESH, pct = Math.min(100, Math.round(r.n / THRESH * 100));
+        const col = CLASS_COLOR[r.cls] || "var(--text-secondary)";
+        return '<div class="cm-seg' + (isReady ? " ready" : "") + (r.n === 0 ? " zero" : "") + '">' +
+          '<span class="ct">' + r.n + " / " + THRESH + "</span>" +
+          '<div class="nm" style="color:' + col + '">' + esc(r.cls) +
+            ' <span class="par">' + esc(r.par) + " · " + esc(ROLE_LABEL[r.role] || r.role.toUpperCase()) + "</span></div>" +
+          '<div class="cm-bar"><i style="width:' + pct + '%"></i></div>' +
+          '<div class="cm-need">' + (isReady ? "✓ ready to show" : (r.n === 0 ? "no builds yet" : "needs " + (THRESH - r.n) + " more")) + "</div>" +
+        "</div>";
+      }).join("");
+
+      const st = document.getElementById("cm-status");
+      st.classList.remove("err");
+      st.textContent = (data.latest ? "Latest build shared " + ago(data.latest) + " · " : "") +
+        "updated " + new Date().toLocaleTimeString();
+    }
+
+    async function refresh() {
+      try {
+        const r = await fetch(SUPA + "/rest/v1/rpc/meta_progress", {
+          method: "POST",
+          headers: { apikey: ANON, Authorization: "Bearer " + ANON, "Content-Type": "application/json" },
+          body: "{}"
+        });
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        const data = await r.json();
+        if (!data || data.ok !== true) throw new Error("bad response");
+        render(data);
+      } catch (e) {
+        const st = document.getElementById("cm-status");
+        st.classList.add("err");
+        st.textContent = "⚠ Can't reach the community server right now — retrying…";
+      }
+    }
+
+    refresh();
+    setInterval(refresh, POLL_MS);
+  </script>
+</body>
+</html>
