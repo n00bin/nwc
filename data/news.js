@@ -1,6 +1,30 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "July 5, 2026",
+    title: "The Builder Now Mirrors Your Character Sheet — Exactly (+ Celestial Dragonnel)",
+    tags: ["Feature", "Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Toon Forge now reproduces the in-game character sheet exactly.</strong> We spent the week calibrating against two live endgame characters — a tank and a healer — unslotting one thing at a time and checking every number against the PS5 sheet. The result: <strong>every rating and every percentage now matches the game</strong>, from Power and Max HP down to Stamina Regeneration and Overall Outgoing Healing. Along the way we uncovered game rules nobody's tooltip tells you (see below) and fixed every data error the comparison exposed.</li>" +
+      "<li><strong>Your buffs are worth more than their tooltips say.</strong> Max HP bonuses multiply in three separate groups (ability/insignia/VIP &#215; boons/overloads &#215; enchantments), so on a developed tank a \"5%\" overload is really worth ~6.4%, and a \"+20,000 HP\" food buff lands at ~32,000 real HP. The builder models this compounding exactly — watch your HP react as you toggle things.</li>" +
+      "<li><strong>Running two copies of the same insignia bonus? Check it.</strong> Live testing proved <strong>Cautious Devotion</strong> gives its full 5 stacks (2,500 Forte + 5% Outgoing Healing) from a single copy — <strong>a duplicate copy adds nothing</strong> — while <strong>Mender's Covenant</strong> duplicates work at half strength. The builder now models both correctly, so it can tell you when a second copy is wasted.</li>" +
+      "<li><strong>Warlocks: Soul Sparks stack to 30, not 10</strong> — that's up to +30% damage at cap. Found while restoring the complete in-game text to all 13 Warlock mechanics (the Soulweave/Lifespark healing chain, Soul Scorch, Soul Puppet, Curse and both paragons' Forte now show their full tooltips, and Soul Scorch's max magnitude is 900).</li>" +
+      "<li><strong>The boon point counter now matches the game.</strong> Advanced (Tier 5) boons are charged 1 point per point in the game's ledger; the builder was over-charging them with escalating multipliers, so a tree the game prices at 104 showed 114. Master boons keep their real escalating cost (1/2/3/4 per rank in pick order).</li>" +
+      "<li><strong>Detailed Stats' \"in-combat bonuses\" view now shows procs at full strength</strong> — the numbers you'd actually screenshot in game while the effect is up (a 6% Max HP proc shows as 6%, not a probability-weighted sliver). Every view in the panel is now a real, reachable game state.</li>" +
+      "<li><strong>Smaller fixes:</strong> the collar picker no longer hides the Sturdy family (they were mistaken for a shape); Artifact Modification pickers no longer appear on Wintermarked/Runefrost weapons (they have no mod slots in game); enchantment ranks use their real per-quality values instead of a linear estimate (Rime Temper's numbers were off at several ranks and are now screenshot-verified, always-on, and correctly named); companion proc values now scale with the quality you select everywhere they appear; and item database pages no longer show empty \"Equip bonus\" headings (~800 pages).</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li><strong>Celestial Dragonnel</strong> — the Lliira's Night event mount is in the mount database: Crescent + Regal + Universal insignia slots, the Rejuvenating Favor combat power (heal-over-time for a chunk of your Max HP) and the Quick Action equip power (Daily Power use refunds Action Points). Its slot layout supports Knight's Rebuke and Wanderer's Fortune.</li>" +
+      "<li><strong>Item corrections from live tooltip verification:</strong> <strong>Wrath of Kossuth</strong>'s stats were understated — real values are 1,650 Critical Avoidance / 2,250 Deflection / 2,250 Deflect Severity; the <strong>Major Stamina Regeneration Jewel +1</strong> gives 2.2% (we had 1.5%); the +15% Stamina Regeneration on <strong>Sealing Parchment</strong> and <strong>Crimson Calamity</strong> now counts properly; <strong>Cracked Stonevein Harness</strong> had the Shirt variant's bonus on the Pants piece (both variants now exist correctly); and <strong>61 companion powers</strong> were storing rounded display values that drifted when scaled — all normalized to the exact quality ladder, so companions like Bruenor Battlehammer show the game's true numbers at every quality.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li><strong>Community Meta now shows collection progress</strong> instead of dead-ending while builds are still being gathered: the popup lists every build type with how many anonymous shared builds it has and how many more it needs to unlock (5 each — the privacy floor), your own build type pinned first, with a one-tap \"Add your build\" button. There's also a standalone auto-refreshing page at <strong>community-meta.html</strong>. Counts only — never an individual build.</li>" +
+      "</ul>"
+  },
+  {
     date: "July 2, 2026",
     title: "Boons Rebuilt From Live Tooltips, Healer & Tank Optimizer Overhaul + Paragon Cleanup",
     tags: ["Feature", "Fix", "Data"],
