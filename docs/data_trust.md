@@ -366,4 +366,20 @@ RESOLVED SAME DAY: Action Point Gain — the build was missing the Call of Power
 
 ---
 
+## Healer (Lia, Warlock Soulweaver) TIL/HP floor — logged 2026-07-04
+
+Anchors: Damage EXACT (15,450 = TIL-damage + Omen of Doom +100). TIL: tool 139,543 vs game
+139,542 (+1); HP at-rest: tool 1,745,147 vs game 1,745,135 (+12 — entirely the TIL+1 through
+the x10 x1.1 heal pool plus rounding). EVERY input atom verified: all 12 gear ILs
+(screenshots), all 4 artifact ILs (in-game reads: Scepter/Mask 1,500, Censer/Skull 2,600),
+comp gear x3, kit names all "+1", categories structurally Erik-validated. Remaining +1 is
+attributed to the game's internal integer rounding of the two Celestial mount-power ILs
+(true 3,937.5 each; game displays 3,937) — Erik's pair sums to 7,875 in-game, Lia's evidently
+7,874. UNFALSIFIED ALTERNATIVE: kit-family IL variation (Major Power / Crit Severity Armor
+Kit +1 never IL-verified; jewels + HP kits = 44 via Erik). Check a spare kit tooltip's Item
+Level line if one ever surfaces. Build-side note: Lia's ability inputs were campfire-inflated
+(+1 all); corrected to at-rest values during this session.
+
+---
+
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._
