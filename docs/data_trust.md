@@ -398,7 +398,7 @@ Proven via tooltips + in-game A/B probes:
 | Dawnshard Raiment Power 1,273 (was 1,275). | data fixed |
 | CSev overcap proven visible: game rating contribution capped at 60% (overcap rating invisible in %). | noted |
 
-STILL OPEN (percent-channel, healing model session): OH % tool −3.3 vs game (and OOH follows OH exactly), CS % −0.7, Forte % −1.0. Prime suspect: Soul Manipulation's unquantified "increases the effectiveness of healing spells" + one small Forte percent source. TIL +1 floor also logged above.
+RESOLVED SAME NIGHT: OH gap = Dawnshard's Rested Healing uptime-averaged instead of full-at-rest (stamina thresholds now graded-full); Forte gap = Graceful Harmony's +1.5% Forte aura includes YOURSELF; Soul Manipulation carries no hidden static. After fixes: Forte 66.2 / OH 93.6 / OOH 102.6 / CritSev 106.5 — ALL EXACT vs live sheet. REMAINING: twin −0.4 on CS and Awareness percents (the two Forte-share stats — share base slightly off or twin missing atoms; next session probe), boon-pick −1 (game 121 vs build 120), TIL +1 floor logged above. Lingering Medicine = potion-only (documented, no stats).
 
 ---
 
