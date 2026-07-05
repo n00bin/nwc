@@ -398,7 +398,7 @@ Proven via tooltips + in-game A/B probes:
 | Dawnshard Raiment Power 1,273 (was 1,275). | data fixed |
 | CSev overcap proven visible: game rating contribution capped at 60% (overcap rating invisible in %). | noted |
 
-RESOLVED SAME NIGHT: OH gap = Dawnshard's Rested Healing uptime-averaged instead of full-at-rest (stamina thresholds now graded-full); Forte gap = Graceful Harmony's +1.5% Forte aura includes YOURSELF; Soul Manipulation carries no hidden static. After fixes: Forte 66.2 / OH 93.6 / OOH 102.6 / CritSev 106.5 — ALL EXACT vs live sheet. REMAINING: twin −0.4 on CS and Awareness percents (the two Forte-share stats — share base slightly off or twin missing atoms; next session probe), boon-pick −1 (game 121 vs build 120), TIL +1 floor logged above. Lingering Medicine = potion-only (documented, no stats).
+RESOLVED SAME NIGHT: OH gap = Dawnshard's Rested Healing uptime-averaged instead of full-at-rest (stamina thresholds now graded-full); Forte gap = Graceful Harmony's +1.5% Forte aura includes YOURSELF; Soul Manipulation carries no hidden static. After fixes: Forte 66.2 / OH 93.6 / OOH 102.6 / CritSev 106.5 — ALL EXACT vs live sheet. TWIN −0.4 RESOLVED 2026-07-05 (day session): the game ROUNDS each Forte-distribution share to a whole percent (8-state probe proof on Lia; Erik regression: his last +0.2 Defense residual was 50%-share 25.77→26). Along the way: Mender's Covenant diminishing model confirmed at n=1 (single-copy probe, ratings exact); boons proven NOT suppressed during loadout edits (Power% test). BOTH CHARACTERS NOW EXACT ON EVERY STAT, rating and percent. Remaining cosmetics: boon-pick −1 (cost quirk on one of Lia's unique boons), TIL +1 floor. Lingering Medicine = potion-only (documented).
 
 ---
 
