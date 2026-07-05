@@ -382,4 +382,24 @@ Level line if one ever surfaces. Build-side note: Lia's ability inputs were camp
 
 ---
 
+## Healer (Lia) stat calibration — 2026-07-05 session
+
+All ratings now EXACT (±3 floor): Power 156,244 / Acc / CA / CS / CSev 154,046 / Forte 138,285 / OH / IncH.
+Proven via tooltips + in-game A/B probes:
+
+| finding | status |
+|---------|--------|
+| Head item was WRONG ITEM in build: live = Wintermarked Mender Barbute (CS 5,130 + CSev 5,130 + Survivor's Instinct >90%hp +9% OH), build said Hunter Hood (CS+Forte). Same-name-family trap. | build fixed |
+| Cautious Devotion: FULL 5 stacks standing (2,500 Forte + 5% OH) with >=1 instance; duplicate adds NOTHING (both-break A/B). | data fixed (cumulative instanceStats) |
+| Mender's Covenant: 1,500 + 750 diminishing per stat, all 8 stats — defensive block matched exactly. | model CONFIRMED |
+| Preferred insignia slots: two probes, each −1,350 stat −720 CR −900 TIL. | CONFIRMED |
+| Divine Aegis +9% OOH is static (game OOH = OH + 9) — was hidden behind conditional. | data fixed (alwaysActive) |
+| Boon-cost: masters escalate (her 4th cost 4/rank, next previews 5) — re-confirms Erik model. Her tool counter 120 vs game 121: 1 pt of picks missing in build transcription. | open (minor) |
+| Dawnshard Raiment Power 1,273 (was 1,275). | data fixed |
+| CSev overcap proven visible: game rating contribution capped at 60% (overcap rating invisible in %). | noted |
+
+STILL OPEN (percent-channel, healing model session): OH % tool −3.3 vs game (and OOH follows OH exactly), CS % −0.7, Forte % −1.0. Prime suspect: Soul Manipulation's unquantified "increases the effectiveness of healing spells" + one small Forte percent source. TIL +1 floor also logged above.
+
+---
+
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._
