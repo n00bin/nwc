@@ -5,7 +5,11 @@ Erik (tank) and Lia (healer): every rating exact; every percent exact EXCEPT the
 twin −0.4 on Lia's Crit Strike and Awareness totals (the two Soulweaver Forte-share
 stats). Trust ledger has full session records.
 
-## Target 1: the twin −0.4 (CS + Awareness percents)
+## Target 1: the twin −0.4 (CS + Awareness percents) — SOLVED 2026-07-05
+Game rounds each Forte-distribution share to a whole percent (engine fixed, both
+characters now exact on every stat). Probe design below kept for the record.
+
+### (original plan)
 Facts established:
 - Share model `25% of Forte total` fits all three probe states within reading noise,
   but a CONSTANT +0.4 residual sits on both stats in every state.
