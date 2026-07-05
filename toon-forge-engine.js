@@ -536,7 +536,13 @@
     for (var statName in dist) {
       if (!Object.prototype.hasOwnProperty.call(dist, statName)) continue;
       var pctOfForte = dist[statName];
-      var portion = totalForte * pctOfForte / 100;
+      // The game ROUNDS each distributed share to a whole percent.
+      // Proven 2026-07-05 across 8 probe states on Lia (Soulweaver,
+      // share 25% of Forte 66.2 = 16.55 → game grants 17; every probe
+      // that pushed Forte below the 16.5 boundary stepped the fed stats
+      // by exactly 1.0) and it retro-explains Erik's last Defense
+      // residual (50% of 51.535 = 25.77 → game 26, the +0.2 gap).
+      var portion = Math.round(totalForte * pctOfForte / 100);
 
       // Route Class Resource Regen aliases (e.g. "Performance Regen")
       var routedName = statName;
@@ -545,7 +551,7 @@
       }
 
       addPercent(result, routedName, portion,
-        "Forte: " + paragon.name + " (" + pctOfForte + "% of Forte)");
+        "Forte: " + paragon.name + " (" + pctOfForte + "% of Forte, rounded)");
     }
 
     return result;
