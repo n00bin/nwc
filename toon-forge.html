@@ -12440,7 +12440,11 @@
           // cuirass' 7.5% while standing). Health-graded ones follow the
           // Current Health slider; stamina-graded are full at rest.
           const _gradedTxt = ((eb.description || "") + " " + (eb.effectText || "")).toLowerCase();
-          const _graded = /based on your health|decreases? (as|relative to) (your )?(remaining|missing)|whenever your stamina gauge is full|while at full health/.test(_gradedTxt);
+          // "stamina is over/above N%" thresholds count FULL at rest (stamina
+          // is always full standing) — Dawnshard's Rested Healing was being
+          // uptime-averaged to ~55% and read 4.95 instead of 9 (found closing
+          // Lia's OH gap 2026-07-05: with it full, OH percents 51.5 = game 51.54).
+          const _graded = /based on your health|decreases? (as|relative to) (your )?(remaining|missing)|whenever your stamina gauge is full|while at full health|stamina is (over|above)/.test(_gradedTxt);
           const _gradedFactor = _graded
             ? (/health/.test(_gradedTxt) && !/stamina gauge/.test(_gradedTxt) ? Math.max(0, Math.min(1, _hp / 100)) : 1)
             : 1;
