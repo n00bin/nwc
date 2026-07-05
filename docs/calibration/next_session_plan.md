@@ -27,9 +27,14 @@ Probe design (needs ~5 min in game, read PERCENTS each time):
    ΔForte rating = 2×1,125 + 2×600 CR = 3,450 → expect ΔCS% = Δforte_total × share.
    With clean 0.1-precision readings at a 3.4k swing, share resolves to ±0.01.
 
-## Target 2: leftover boon point (game 121 vs build 120)
-Agent diff of the tree screenshot may already close this — check ledger/session
-notes. If not: boon-for-boon walk like Erik's.
+## Target 2: leftover boon point (game 121 vs build 120) — NARROWED 2026-07-05
+Screenshot diff: ALL allocations match the build (masters/advanced/tiers), and HP
+exactness independently validates the tier-1 points. Master escalation math can only
+produce 22/24/26/28 for her ranks — never 23 — so the +1 is a COST quirk on one of
+Lia's boons Erik lacked: tier1 Critical Strike, Lingering Medicine, Dino Power,
+Necrotic Mastery, or Blessed Touch. In game: hover each and read "Incrementing this
+boon will cost N points per rank" — one of them isn't 1 (or has a 2-cost first rank).
+Pure counter cosmetics — zero stat impact.
 
 ## Target 3 (backlog, non-blocking)
 - Erik: Recharge Speed % never walked (tool expects CHA-fed + gear riders).
