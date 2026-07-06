@@ -531,9 +531,9 @@ try { COMPANION_SKILLS = loadJSGlobal('data/companion-skills.js', 'COMPANION_SKI
 /* ---- regression assertions (abort on drift) ---- */
 (function assertPhase2() {
   function eq(label, got, want) { if (String(got) !== String(want)) throw new Error('PHASE2 REGRESSION ' + label + ': got ' + got + ' want ' + want); }
-  var storm = cPowerMap[3];                                   // Storm Eyes: 2 stats (double scale), base IL 750, 3.8 each
-  eq('StormEyes@750(base)', scaleStats(storm, 750).stats[0].value, 3.8);
-  eq('StormEyes@900(double)', scaleStats(storm, 900).stats[0].value, 4.56);   // 3.8 * (4.50/3.75)
+  var storm = cPowerMap[3];                                   // Storm Eyes: 2 stats (double scale), base IL 750, 3.75 each (normalized to canonical rung 2026-07-04)
+  eq('StormEyes@750(base)', scaleStats(storm, 750).stats[0].value, 3.75);
+  eq('StormEyes@900(double)', scaleStats(storm, 900).stats[0].value, 4.5);    // 3.75 * (4.50/3.75)
   var ev = scaleCombatPower(mCombatMap[1], 'Celestial');      // Ethereal Vortex, Mythic-anchored
   eq('EtherealVortex mag Celestial', ev.magnitude, 1050);     // 800 * 1.3124444
   eq('EtherealVortex debuff Celestial', ev.equipBonuses[0].amount, 20.7);      // 15.8 * 1.3124444
