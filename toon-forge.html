@@ -2839,7 +2839,7 @@
 
       <div class="panel">
         <h2>Optional buffs</h2>
-        <p class="hint">Things you eat, drink, or pop before a fight. One per category. Free always-on buffs are at the bottom — uncheck any you don't have.</p>
+        <p class="hint">Things you eat, drink, or pop before a fight. One per category. Free always-on buffs (Campfire, VIP, Invocation) are at the bottom — check the ones your character actually has.</p>
         <div class="toggle-list" id="buff-list"></div>
       </div>
 
@@ -3180,10 +3180,10 @@
       // build is unchanged. Players set a lower rank for enchants they haven't upgraded.
       enchantRarity: {},
       // Set<buffName>; grouped buffs auto-deconflict.
-      // Defaults are applied for buffs every player has passively (Campfire
-      // is everywhere; VIP is permanent for paying players). Invocation
-      // Blessing requires daily invocation, so we don't pre-check it.
-      buffs: new Set(["Campfire", "VIP Rank 3 Bonus"]),
+      // No buffs are pre-checked (n00b's call 2026-07-05): a fresh build
+      // starts with zero buffs so the panel shows only what the character
+      // itself provides. Players tick Campfire / VIP / Invocation themselves.
+      buffs: new Set(),
       // Party buffs from companions an ALLY has summoned (e.g. Flapjack
       // +5% CA, Drizzt +3% Damage Bonus). Distinct from the user's own
       // summoned companion. NW allows 5 allies in a dungeon, 10 in a
