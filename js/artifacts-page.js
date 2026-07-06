@@ -107,11 +107,86 @@
   };
   function prettyArtifactStat(key) { return STAT_LABELS[key] || key; }
 
+  // --- Rank grouping: same-name rows are rarity ranks of ONE artifact (e.g.
+  // Arma-Egg-On at IL 2150 / 2450 / 2600). Group them into a single card with
+  // a rank dropdown — same idea as the Toon Forge picker's rarity selector.
+  // Rows are sorted top-rank first; the top rank is the default view.
+  var artGroups = (function () {
+    var byName = {}, order = [];
+    artifacts.forEach(function (a) {
+      if (!byName[a.name]) { byName[a.name] = []; order.push(a.name); }
+      byName[a.name].push(a);
+    });
+    return order.map(function (n) {
+      var rows = byName[n].slice().sort(function (x, y) { return (y.item_level || 0) - (x.item_level || 0); });
+      return { name: n, rows: rows };
+    });
+  })();
+  var artRankSel = {};   // artifact name -> selected rank index (0 = top rank)
+
+  function artCardBody(a, groupRows, selIdx) {
+    var grouped = groupRows.length > 1;
+    var html = "";
+    if (a.image) {
+      html += '<img loading="lazy" class="art-icon" src="' + escapeHtml(a.image) + '" alt="' + escapeHtml(a.name) + '">';
+    }
+    html += '<div class="art-effect">' + escapeHtml(a.power) + '</div>';
+    if (grouped) {
+      html += '<div class="art-info-row"><span class="art-info-label">Rank</span><span class="art-info-value">' +
+        '<select class="filter-select art-rank-sel" data-art-name="' + escapeHtml(a.name) + '" style="padding:0.15rem 0.5rem;font-size:0.85rem;">' +
+        groupRows.map(function (t, i) {
+          return '<option value="' + i + '"' + (i === selIdx ? ' selected' : '') + '>IL ' +
+            (t.item_level || 0).toLocaleString() + (i === 0 ? ' (max rank)' : '') + '</option>';
+        }).join('') + '</select></span></div>';
+    }
+    if (a.item_level || a.combinedRating) {
+      html += '<div class="art-il-row">';
+      if (a.item_level)      html += '<span class="art-il-pill"><span class="art-il-label">Item Level</span><span class="art-il-value">' + a.item_level.toLocaleString() + '</span></span>';
+      if (a.combinedRating)  html += '<span class="art-il-pill"><span class="art-il-label">Combined Rating</span><span class="art-il-value">' + a.combinedRating.toLocaleString() + '</span></span>';
+      html += '</div>';
+    }
+    // Stats — rating stats + any percent stats (Stamina Regen, Gold Bonus),
+    // shown as green chips matching the rest of the site. Single-row artifacts
+    // are stored at their max (Mythic) rank; grouped cards show the selected rank.
+    var statEntries = [];
+    if (a.ratingStats && typeof a.ratingStats === 'object') {
+      statEntries = Object.entries(a.ratingStats).map(function (e) { return [e[0], e[1], false]; });
+    } else if (a.stats && a.stats.length > 0) {
+      statEntries = a.stats.map(function (s) { return [s.stat, s.value, false]; });
+    }
+    if (a.percentStats && typeof a.percentStats === 'object') {
+      Object.entries(a.percentStats).forEach(function (e) { statEntries.push([e[0], e[1], true]); });
+    }
+    if (statEntries.length > 0) {
+      html += '<div class="art-stats-block">';
+      html += '<div class="art-stats-title">' + (grouped ? 'Stats at this rank' : 'Stats at Mythic') + '</div>';
+      html += '<div class="art-stats-chips">';
+      for (var si = 0; si < statEntries.length; si++) {
+        var statName = statEntries[si][0];
+        var statVal  = statEntries[si][1];
+        var isPct    = statEntries[si][2] || statName === 'Stamina Regen' || statName === 'StaminaRegen';
+        var valStr   = isPct ? ('+' + statVal + '%') : ('+' + statVal.toLocaleString());
+        html += '<span class="art-stat-chip">' + escapeHtml(prettyArtifactStat(statName)) + ': ' + valStr + '</span>';
+      }
+      html += '</div></div>';
+    }
+    if (a.debuff && a.debuff !== "None") {
+      html += '<div class="art-info-row"><span class="art-info-label">Buff/Debuff</span><span class="art-info-value">' + escapeHtml(a.debuff) + '</span></div>';
+    }
+    html += '<div class="art-info-row"><span class="art-info-label">Cooldown</span><span class="art-info-value">' + a.cooldown + 's</span></div>';
+    if (a.set && a.set !== "None") {
+      html += '<div class="art-info-row"><span class="art-info-label">Set</span><span class="art-info-value">' + escapeHtml(a.set) + '</span></div>';
+    }
+    html += '<div class="art-info-row"><span class="art-info-label">Source</span><span class="art-info-value">' + escapeHtml(a.source) + '</span></div>';
+    return html;
+  }
+
   function renderAllArtifacts() {
     var query = searchInput.value.trim().toLowerCase();
     var typeVal = filterType.value;
 
-    var filtered = artifacts.filter(function (a) {
+    var filtered = artGroups.filter(function (g) {
+      var a = g.rows[0];
       if (query && (a.name + " " + a.power + " " + a.set).toLowerCase().indexOf(query) === -1) return false;
       if (typeVal && a.type !== typeVal) return false;
       return true;
@@ -119,8 +194,10 @@
 
     var html = "";
     for (var i = 0; i < filtered.length; i++) {
-      var a = filtered[i];
-      html += '<div class="art-card" data-idx="' + i + '">';
+      var g = filtered[i];
+      var sel = Math.min(artRankSel[g.name] || 0, g.rows.length - 1);
+      var a = g.rows[sel];
+      html += '<div class="art-card">';
       html += '<div class="art-card-header">';
       html += '<span class="art-card-name">';
       if (a.image) {
@@ -130,51 +207,29 @@
       html += '<span><span class="' + (typeBadgeClass[a.type] || '') + '" style="font-size:0.78rem;">' + (typeLabels[a.type] || a.type) + '</span> <span class="toggle-arrow">&#9654;</span></span>';
       html += '</div>';
       html += '<div class="art-card-body">';
-      if (a.image) {
-        html += '<img loading="lazy" class="art-icon" src="' + escapeHtml(a.image) + '" alt="' + escapeHtml(a.name) + '">';
-      }
-      html += '<div class="art-effect">' + escapeHtml(a.power) + '</div>';
-      if (a.item_level || a.combinedRating) {
-        html += '<div class="art-il-row">';
-        if (a.item_level)      html += '<span class="art-il-pill"><span class="art-il-label">Item Level</span><span class="art-il-value">' + a.item_level.toLocaleString() + '</span></span>';
-        if (a.combinedRating)  html += '<span class="art-il-pill"><span class="art-il-label">Combined Rating</span><span class="art-il-value">' + a.combinedRating.toLocaleString() + '</span></span>';
-        html += '</div>';
-      }
-      // Stats at Mythic — rating stats + any percent stats (Stamina Regen, Gold
-      // Bonus), shown as green chips matching the rest of the site.
-      var statEntries = [];
-      if (a.ratingStats && typeof a.ratingStats === 'object') {
-        statEntries = Object.entries(a.ratingStats).map(function (e) { return [e[0], e[1], false]; });
-      } else if (a.stats && a.stats.length > 0) {
-        statEntries = a.stats.map(function (s) { return [s.stat, s.value, false]; });
-      }
-      if (a.percentStats && typeof a.percentStats === 'object') {
-        Object.entries(a.percentStats).forEach(function (e) { statEntries.push([e[0], e[1], true]); });
-      }
-      if (statEntries.length > 0) {
-        html += '<div class="art-stats-block">';
-        html += '<div class="art-stats-title">Stats at Mythic</div>';
-        html += '<div class="art-stats-chips">';
-        for (var si = 0; si < statEntries.length; si++) {
-          var statName = statEntries[si][0];
-          var statVal  = statEntries[si][1];
-          var isPct    = statEntries[si][2] || statName === 'Stamina Regen' || statName === 'StaminaRegen';
-          var valStr   = isPct ? ('+' + statVal + '%') : ('+' + statVal.toLocaleString());
-          html += '<span class="art-stat-chip">' + escapeHtml(prettyArtifactStat(statName)) + ': ' + valStr + '</span>';
-        }
-        html += '</div></div>';
-      }
-      if (a.debuff && a.debuff !== "None") {
-        html += '<div class="art-info-row"><span class="art-info-label">Buff/Debuff</span><span class="art-info-value">' + escapeHtml(a.debuff) + '</span></div>';
-      }
-      html += '<div class="art-info-row"><span class="art-info-label">Cooldown</span><span class="art-info-value">' + a.cooldown + 's</span></div>';
-      if (a.set && a.set !== "None") {
-        html += '<div class="art-info-row"><span class="art-info-label">Set</span><span class="art-info-value">' + escapeHtml(a.set) + '</span></div>';
-      }
-      html += '<div class="art-info-row"><span class="art-info-label">Source</span><span class="art-info-value">' + escapeHtml(a.source) + '</span></div>';
+      html += artCardBody(a, g.rows, sel);
       html += '</div></div>';
     }
     document.getElementById("all-list").innerHTML = html || '<div class="empty-state">No artifacts match your filters</div>';
+  }
+
+  // Rank dropdown: swap the card body to the chosen rank in place (the card
+  // stays open — the container's click handler ignores select interactions).
+  function bindRankSelects(container) {
+    container.addEventListener("change", function (e) {
+      var sel = e.target.closest(".art-rank-sel");
+      if (!sel) return;
+      var name = sel.getAttribute("data-art-name");
+      var group = null;
+      for (var i = 0; i < artGroups.length; i++) {
+        if (artGroups[i].name === name) { group = artGroups[i]; break; }
+      }
+      if (!group) return;
+      var idx = Math.min(parseInt(sel.value, 10) || 0, group.rows.length - 1);
+      artRankSel[name] = idx;
+      var body = sel.closest(".art-card-body");
+      if (body) body.innerHTML = artCardBody(group.rows[idx], group.rows, idx);
+    });
   }
 
   function findArtifactImage(name) {
@@ -345,9 +400,11 @@
   // ============================================================
   document.querySelectorAll(".art-container").forEach(function (container) {
     container.addEventListener("click", function (e) {
+      if (e.target.closest("select")) return;   // rank dropdown, not a toggle
       var card = e.target.closest(".art-card");
       if (card) card.classList.toggle("open");
     });
+    bindRankSelects(container);
   });
 
   searchInput.addEventListener("input", renderAllArtifacts);
