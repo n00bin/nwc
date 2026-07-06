@@ -1,5 +1,25 @@
 # Data Issues To Investigate
 
+## Bard Dirgeblade (Impending Doom MH) — CRs one rung ahead (found 2026-07-06)
+Spotted during the Oathbreaker #172–#176 fix (canonical Impending Doom ladder =
+3750/4100/4450/4800/5250, CR always 0.9×IL): the Bard MH entries violate it —
+id 4608 "Dirgeblade (IL 4100)" has CR 4005 (the 4450 rung's CR), id 4609
+"(IL 4450)" has CR 4320, id 4610 "(IL 4800)" has CR 4725. Either each CR was
+read from the next rung's tooltip, or each entry is really the next rung
+mislabeled (then stats are shifted too). id 7387 "(IL 5250)" is correct.
+TODO: check 4608–4610's ratingStats against the 0.x ladders to decide which,
+then fix. Off-hand partner (Strings of the Forsaken 4603/4604/4605/4873/4874)
+CRs are all clean.
+
+Also spotted (same sweep): the Paladin OH "Aegis of the Condemned" has
+same-name same-IL duplicate pairs that DISAGREE on stats — at 3750/4100 the
+"— IL" entries (484/482) say Awareness+Outgoing Healing while the plain-name
+entries (5328/5329) say Awareness+Critical Strike; at 4800 the plain 5331 has
+2 stats (CS+OH) vs 465's 3 (CS+Aw+OH, matching the 5250 layout). One of each
+pair is wrong; needs a tooltip per rung. Plus legacy IL-3400 quality-rung
+entries (486/487, 1801–1811, 5240) that predate the per-IL convention —
+candidates for a merge/cleanup pass.
+
 ## Chilling Flow per-stack values are TIER-DEPENDENT — Frostbound tier unverified (2026-07-06)
 n00b's Cleric collection tooltips (archived in `docs/calibration/inbox/gear/cleric-gear/main-hand/`)
 revealed the Chilling Flow 2pc per-stack bonuses differ by weapon tier:
