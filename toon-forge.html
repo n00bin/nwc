@@ -1223,6 +1223,25 @@
       color: var(--bg);
       transform: scale(1.08);
     }
+    /* Remove-✕ on picker rows the player added themselves (__userAdded).
+       Lets a mistaken "Add Missing ..." entry be deleted — localStorage
+       only, never touches site data. */
+    .user-remove-x {
+      background: rgba(248, 81, 73, 0.12);
+      border: 1px solid var(--stat-negative, #f85149);
+      color: var(--stat-negative, #f85149);
+      border-radius: 5px;
+      padding: 0.1rem 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.12s, color 0.12s, transform 0.08s;
+    }
+    .user-remove-x:hover {
+      background: var(--stat-negative, #f85149);
+      color: var(--bg);
+      transform: scale(1.08);
+    }
     /* Correction modal: a focused form to suggest a data fix. */
     .correction-overlay {
       /* top-most modal layer — must also cover the local optimizer's
@@ -3905,6 +3924,55 @@
         { field: "category", allLabel: "All types" }
       ]
     };
+    // Per-dataType registry for user-added item stores: how to load/save the
+    // localStorage list and how to clear a removed item out of the current
+    // build state. Powers the remove-✕ on __userAdded picker rows — players
+    // previously had NO way to delete an item they added by mistake (a stuck
+    // player filed three data-correction reports trying, #179–#181).
+    const USER_STORES = {
+      gear: {
+        get: () => getUserAddedGear(), save: l => saveUserAddedGear(l),
+        clear: it => {
+          if (!state.gear) return;
+          for (const s in state.gear) {
+            if (state.gear[s] === it.name) {
+              state.gear[s] = "";
+              // Sync rule: clearing gear clears gearIL too.
+              if (state.gearIL) state.gearIL[s] = null;
+            }
+          }
+        }
+      },
+      enchant:      { get: () => getUserAddedEnchants(),   save: l => saveUserAddedEnchants(l),   clear: it => clearEnchantFromSlots(it.name) },
+      overload:     { get: () => getUserAddedOverloads(),  save: l => saveUserAddedOverloads(l),  clear: it => clearOverloadFromSlots(it.name) },
+      insignia:     { get: () => getUserAddedInsignias(),  save: l => saveUserAddedInsignias(l),  clear: it => clearInsigniaFromSlots(it.name) },
+      mount_collar: { get: () => getUserAddedCollars(),    save: l => saveUserAddedCollars(l),    clear: it => clearCollarFromSlots(it.name) },
+      buff:         { get: () => getUserAddedBuffs(),      save: l => saveUserAddedBuffs(l),      clear: it => clearBuffFromSet(it.name) },
+      guild_boon:   { get: () => getUserAddedGuildBoons(), save: l => saveUserAddedGuildBoons(l),
+                      clear: it => { const p = state.guildBoonPicks || {}; for (const cat in p) if (p[cat] === it.name) p[cat] = null; } },
+      artifact:     { get: () => getUserAddedArtifacts(),  save: l => saveUserAddedArtifacts(l),  clear: it => clearArtifactFromSlots(it.name) },
+      mount:        { get: () => getUserAddedMounts(),     save: l => saveUserAddedMounts(l),     clear: it => clearMountFromStable(it.name) },
+      companion:    { get: () => getUserAddedCompanions(), save: l => saveUserAddedCompanions(l),
+                      clear: it => clearCompanionFromSlots(it.name),
+                      // Also drop the linked user-added summon power record.
+                      extra: it => {
+                        if (typeof it.powerRef === "number" && it.powerRef < 0) {
+                          saveUserAddedCompPowers(getUserAddedCompPowers().filter(p => p.id !== it.powerRef));
+                        }
+                      } }
+    };
+    function removeUserAddedItem(dataType, item) {
+      const store = USER_STORES[dataType];
+      if (!store || !item || !item.__userAdded) return false;
+      const list = store.get();
+      const idx = list.findIndex(x => x.id === item.id && x.name === item.name);
+      if (idx === -1) return false;
+      list.splice(idx, 1);
+      store.save(list);
+      if (store.clear) store.clear(item);
+      if (store.extra) store.extra(item);
+      return true;
+    }
     function renderPickerList(filter) {
       if (!_pickerState) return;
       const list = document.getElementById("picker-list");
@@ -4059,8 +4127,11 @@
         const pencilHTML = showPencil
           ? `<button class="correction-pencil" data-correct="${i}" title="Fix anything wrong on this item for your build">✎</button>`
           : "";
+        const removeHTML = (items[i].__userAdded && USER_STORES[_pickerState.dataType])
+          ? `<button class="user-remove-x" data-remove-user="${i}" title="Remove this item you added — only affects your browser">✕</button>`
+          : "";
         html += `<div class="picker-item" data-pick="${i}">
-          <div class="picker-item-name"><span>${_escHTML(r.name)}</span>${pencilHTML}</div>
+          <div class="picker-item-name"><span>${_escHTML(r.name)}</span>${pencilHTML}${removeHTML}</div>
           ${r.meta ? `<div class="picker-item-meta">${r.meta}</div>` : ""}
           ${r.desc ? `<div class="picker-item-desc">${r.desc}</div>` : ""}
         </div>`;
@@ -4109,6 +4180,7 @@
       list.querySelectorAll("[data-pick]").forEach(el => {
         el.addEventListener("click", (e) => {
           if (e.target.classList.contains("correction-pencil")) return; // pencil click handled below
+          if (e.target.classList.contains("user-remove-x")) return;     // remove-✕ handled below
           if (e.target.closest && e.target.closest(".gear-tier-sel")) return; // tier dropdown, not a pick
           const it = items[+el.dataset.pick];
           const stateBefore = _pickerState;
@@ -4135,6 +4207,23 @@
           });
         });
       }
+      // Remove-✕ on user-added rows: delete the entry from its localStorage
+      // store, clear it out of the build state, and re-render the list.
+      list.querySelectorAll("[data-remove-user]").forEach(el => {
+        el.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const it = items[+el.dataset.removeUser];
+          if (!it || !it.__userAdded) return;
+          if (!window.confirm('Remove "' + it.name + '" from your added items?\nThis only affects your browser — nothing on the site is changed.')) return;
+          if (removeUserAddedItem(_pickerState.dataType, it)) {
+            const pi = _pickerState.items.indexOf(it);
+            if (pi !== -1) _pickerState.items.splice(pi, 1);
+            if (typeof rerenderAll === "function") rerenderAll();
+            const searchEl = document.getElementById("picker-search");
+            renderPickerList(searchEl ? searchEl.value : "");
+          }
+        });
+      });
       const addBtn = document.getElementById("picker-add-missing");
       if (addBtn) {
         addBtn.addEventListener("click", (e) => {
