@@ -1,5 +1,13 @@
 # Data Issues To Investigate
 
+## Chilling Flow per-stack values are TIER-DEPENDENT — Frostbound tier unverified (2026-07-06)
+n00b's Cleric collection tooltips (archived in `docs/calibration/inbox/gear/cleric-gear/main-hand/`)
+revealed the Chilling Flow 2pc per-stack bonuses differ by weapon tier:
+- **Wintermarked (IL 5800, Jotunskar Master): 0.4% Power / 0.6% Crit Sev / 0.5% OOH / 0.5% Awareness** — verified (Rimecrook set details).
+- **Runefrost (IL 5500, Jotunskar Advanced): 0.35% Power / 0.5% Crit Sev / 0.4% OOH / 0.4% Awareness** — verified (Lightstaff set details). All 16 Runefrost weapons corrected 2026-07-06 (they had carried the Master text since the May intake propagated a Master details panel across tiers).
+- **Frostbound (IL 4800, 14 items): UNKNOWN** — descriptions now say "per-stack values at this tier unverified". Deltas between tiers are not uniform (0.05/0.1/0.1/0.1), so no extrapolation. NEEDED: one Frostbound weapon's set details tooltip (any class).
+Also unverified at non-Master tiers: the "Max 10 stacks" line (kept; May provenance) — confirm when the Frostbound tooltip is captured.
+
 ## Rime Temper — Celestial RESOLVED 2026-07-03; Uncommon–Legendary rows still estimates
 n00b flagged the Celestial Incoming Damage as wrong (2026-07-02) — confirmed: only
 Mythic had been screenshot-verified (2026-03-17: +14% HP / +11% IDR / 4% debuff);
