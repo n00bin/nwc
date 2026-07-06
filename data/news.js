@@ -1,6 +1,29 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "July 6, 2026",
+    title: "Report Day: 18 Community Reports Closed + Artifact Ranks + a Remove Button",
+    tags: ["Feature", "Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li><strong>Artifacts page: rank selector.</strong> Artifacts we have at multiple ranks now show as a <strong>single card with a Rank dropdown</strong> — pick your rank and the stats, item level, combined rating, and cooldown all update in place. <strong>Arma-Egg-On</strong> is the first (IL 2,150 / 2,450 / 2,600), and it confirmed a fun rule: the Egg's cooldown improves as you rank it up — 90s &#8594; 70s &#8594; 60s at max. The Toon Forge picker already worked this way; now the reference page matches. (Reports #182&#8211;#187.)</li>" +
+      "<li><strong>Toon Forge: you can now remove items you added yourself.</strong> Anything added through an \"Add Missing &#8230;\" button shows a red <strong>&#10005;</strong> next to it in the picker — tap it to delete the entry from your browser (with a confirmation first). Works in every picker: gear, enchantments, artifacts, companions, mounts, collars, insignias, overloads, buffs, and guild boons — and if the item was equipped in your build, the slot clears too. Until now there was no way to undo a mistaken add. (Reports #179&#8211;#181.)</li>" +
+      "<li><strong>Toon Forge: new builds start with zero buffs.</strong> Campfire and VIP Rank 3 are no longer pre-checked on a fresh or cleared build — the Detailed Stats panel shows only what your character itself provides until you tick the buffs you actually run. Saved builds and share links are unaffected (they keep the buffs they were made with).</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Frostbound armor set unlocked for all classes.</strong> A Wizard reported the Frostbound Warhood as \"missing\" — it was in the database all along, but wrongly marked Paladin-only, so it never appeared for anyone else. The in-game tooltips have no class requirement (it's Biting Cold campaign-store armor), so all <strong>12 Frostbound Winterworn Harness pieces</strong> now show for every class. (Report #178.)</li>" +
+      "<li><strong>Graveveil \"Switcheroo\" rings: the Defense is a penalty, not a bonus.</strong> A player's tooltip showed the Band of Unlife's \"The Ol' Switcheroo\" bonus trades Defense away: <strong>+11,325 Outgoing Healing, &#8722;3,775 Defense</strong>. Our data — and the Toon Forge engine — had been crediting that Defense as a gain. Both Switcheroo rings are fixed; the Power version (Loop of Mourning) had the same dropped minus. (Report #177.)</li>" +
+      "<li><strong>Oathbreaker's Malevolence (Paladin) tier ladder repaired.</strong> A player's tooltip revealed our \"IL 4550\" version was really the <strong>IL 4450 tier</strong> with wrong numbers — no 4550 tier exists anywhere in the Impending Doom family (every class runs 3750 / 4100 / 4450 / 4800 / 5250). The 4450 tier now shows the player's exact values, and the same reports exposed impossible Outgoing Healing numbers on the 4800 and 5250 versions (now on the correct stat ladder). Saved builds using the old \"4550\" entries migrate automatically. (Reports #172&#8211;#176.)</li>" +
+      "<li><strong>Chilling Flow set text corrected on all 15 Runefrost weapons.</strong> In-game tooltips revealed the per-stack bonuses are <strong>different per weapon tier</strong>: the Runefrost (Advanced) tier grants 0.35% Power / 0.5% Crit Severity / 0.4% Overall Outgoing Healing / 0.4% Awareness per stack — our pages had been showing the Wintermarked (Master) tier's higher numbers on every tier. Frostbound-tier values are marked unverified until someone captures that tooltip.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li><strong>Cleric endgame weapons went from 2 to 6.</strong> Added the <strong>Runefrost Lightstaff</strong> (Main Hand, IL 5,500 — report #133, first family-verified against the Runefrost stat ladder, then confirmed exact by in-game tooltips), the <strong>Runefrost Devotion Emblem</strong> (Off Hand, IL 5,500 — report #134), and the Master-tier pair <strong>Wintermarked Rimecrook</strong> + <strong>Wintermarked Sanctum Emblem</strong> (IL 5,800) from the same collection screenshots. All Chilling Flow set, Jotunskar.</li>" +
+      "<li><strong>Arma-Egg-On: the IL 2,150 rank added</strong> from player reports — all six reported values matched the linear rank scale exactly, so the report queue's last mystery turned out to be a rank difference, not a data bug. (Reports #182&#8211;#187.)</li>" +
+      "</ul>"
+  },
+  {
     date: "July 5, 2026",
     title: "The Builder Now Mirrors Your Character Sheet — Exactly (+ Celestial Dragonnel)",
     tags: ["Feature", "Fix", "Data"],
