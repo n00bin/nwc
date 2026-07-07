@@ -15486,14 +15486,16 @@
           if (tr && tr.name) generalEntries.push({ feature: tr, kind: state.race + " racial" });
         }
       }
-      // Universal account Skills (general_feats.json type:"skill") — the
-      // in-game General row lists these for EVERY character regardless of
-      // class/race (e.g. Vengeful Blades). Found missing when n00b's
-      // Soulweaver had no Vengeful Blades card (2026-07-04).
+      // General-row Skills (general_feats.json type:"skill"). `universal:
+      // true` entries show for every character; `class`-tagged entries only
+      // for that class — the in-game General row mixes both (Vengeful Blades
+      // is a Warlock level-10 skill; it leaked onto every class while marked
+      // universal, caught on n00b's Bard 2026-07-06).
       if (typeof GENERAL_FEATS_DATA !== "undefined" && Array.isArray(GENERAL_FEATS_DATA)) {
         for (const gf of GENERAL_FEATS_DATA) {
-          if (gf && gf.name && gf.type === "skill" && gf.universal) {
-            generalEntries.push({ feature: gf, kind: "account skill" });
+          if (!gf || !gf.name || gf.type !== "skill") continue;
+          if (gf.universal || gf.class === state.class) {
+            generalEntries.push({ feature: gf, kind: gf.universal ? "account skill" : gf.class + " skill" });
           }
         }
       }
