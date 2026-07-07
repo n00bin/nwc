@@ -458,4 +458,34 @@ Steward sweep (pre-launch optimizer trust campaign). Screenshots:
 
 ---
 
+## Wave 2 — Artifacts + Master Boons — verified 2026-07-07
+
+Steward sweep Wave 2 (pre-launch optimizer trust campaign). Screenshots: `docs/calibration/inbox/artifacts/` (7 files) + `docs/calibration/inbox/boons/` (10 files).
+
+**Scaling model established:** single-row artifacts are stored at Mythic; the 7 Uncommon-rank tooltips validate the stored values under an exact uniform **×6.0** factor (IL 100→600, per-stat 75→450, CR 85→510, MaxHP 300→1,800 — 0.00% deviation on every field). This anchor makes the whole rank ladder computable.
+
+| id | name | system | status | source screenshot | data version | date verified |
+|----|------|--------|--------|-------------------|--------------|---------------|
+| artifact 4 | Charm of the Serpent | artifacts | CONFIRMED (stats/CR/set via ×6 model). Cone debuff: JSON's 16% corroborated by a second internal source; vision's "+2%" read is the likely error — re-capture that tooltip line to close it. Cooldown: pending fix (see systemic note) | Charm of the Serpent.png | 2026.03.17a | 2026-07-07 |
+| artifact 57 | Skull Lord Staff | artifacts | CONFIRMED stats/CR/set (×6) — EXCEPT Gold Bonus: stored as rating 450, but it's a percent stat everywhere else in the codebase and the tooltip reads "+3% Gold Bonus" (pending fix; Mythic % needs its own capture before a structured value is written) | Skull Lord Staff.png | 2026.03.17a | 2026-07-07 |
+| artifact 17 | Decanter of Atropal Essence | artifacts | CONFIRMED (stats/CR/Use text via ×6 model; set-bonus text not in frame) | Decanter of Atropal Essence.png | 2026.03.17a | 2026-07-07 |
+| artifact 53 | Fragmented Key of Stars | artifacts | CONFIRMED (stats/CR/Use text; no set — JSON agrees) | Fragmented Key of Stars.png | 2026.03.17a | 2026-07-07 |
+| artifact 93 | Rod of Imperial Restraint | artifacts | CONFIRMED (stats/CR/Use text/set) | Rod of Imperial Restraint.png | 2026.03.17a | 2026-07-07 |
+| artifact 33 | Lostmauth's Horn of Blasting | artifacts | CONFIRMED (stats/CR/Use text/set) | Lostmauth's Horn of Blasting.png | 2026.03.17a | 2026-07-07 |
+| artifact 12 | Tiamat's Orb of Majesty | artifacts | CONFIRMED — **intentional outlier, do not "fix"**: 5 named stats (vs siblings' 3) with a LOWER Combined Rating (450 Mythic / 75 Uncommon vs siblings' 510/85). JSON and screenshot independently agree on this shape; the game trades one CR line for two extra stats | Tiamat's Orb of Majesty.png | 2026.03.17a | 2026-07-07 |
+| boons master 1, 2, 3, 4, 6, 7, 8 | Deathly Rage, Death's Bulwark, Blood Lust, Focused Retaliation, Enhanced Application, Blessed Advantage, Blessed Resilience | campaign_boons | CONFIRMED — every trigger, chance (30/30/10/20/5/10/10), duration, and per-rank effect (type + value) matches the tooltips exactly. Per-boon `totalCost` is a documented convention, NOT per-boon fact (real captured costs 4/4/4/5/5 reflect acquisition order, which is unknowable — no numeric change needed, label as convention) | 2026-07-02_master-boon_*.png (7 tooltips + rank-gates panel) | 2026.03.17a | 2026-07-07 |
+| boons master 5 | Life Lessons | campaign_boons | UNVERIFIABLE — the one master boon with no screenshot; `chance` field missing in JSON (engine assumes 20%). Needs 1 tooltip capture | none — needs capture | 2026.03.17a | 2026-07-07 |
+| boons rules | Master rank gates | campaign_boons | CONFIRMED — [10, 30, 60] matches the in-game gate panel exactly | 2026-07-02_master-boon_rank-gates-10-30-60_panel.png | 2026.03.17a | 2026-07-07 |
+| gear 7401 vs artifact 95 | Demon Skull (duplicate pair) | gear/artifacts | INTEGRITY — the 2026-07-07 gear.json restore duplicated an entry that already exists, tooltip-verified 2026-07-02, as artifacts.json id 95. Code-path check proves gear 7401 is DEAD DATA (no picker/engine reads gear slot "Artifact"; weapon pickers use "Artifact Equipment" only). artifacts 95 = canonical. Pending removal of gear 7401. Residual: the two records' debuff texts disagree (5% vs 3% damage-taken/Accuracy) — needs a Demon Skull capture regardless | n/a (code-path + cross-file check) | 2026.03.17a | 2026-07-07 |
+
+### Systemic findings — artifacts.json (Wave 2 audit)
+- **`cooldown` is a placeholder on ~136/140 entries**: `website/scripts/extract_artifacts.py` defaults to 60 when unspecified; all 7 tooltips this wave read **180s recharge**. The 7 verified ids are pending fix to 180; every other entry's cooldown should be treated as unverified until captured.
+- **130/140 entries have no verification provenance** (no notes). Structured and scoreable, but unproven — per the standing rule (community-sheet import was reverted), artifact values only count once screenshot-verified. This wave verified 7; tank calibration previously verified 3 (ids 107, 129, 138) + ids 95-97, 100, 108, 139, 140.
+- **ids 58 (Memories Redeemed), 87 (Champion's Battle Horn), 91 (Crown of the Undead)**: zero structured stats despite real described buffs — CR 0 means the optimizer can never pick them. Need captures to confirm whether a passive stat line exists in-game.
+- Placeholders: id 113 (Globe of the Third Eye — "Effect details unknown"), id 119 (Mystic Bolt — "value TBD"), 5 entries with "? (needs verification)" sources.
+- Minor: ids 107/129 top-level `set:"None"` despite carrying real Set markers (display-only drift); id 32 (Aurora's Whole Realms Catalogue) shares the Gold Bonus rating-vs-percent mistyping with id 57.
+- campaign_boons.json minors: "Saquire's Training" typo (should be Squire's); `scope` missing on 2 ambiguous master-boon effects (Life Lessons R3 heal-from-damage, Enhanced Application R3 damage-reduction — both should read self); guild_boons id 18 schema quirk documented (modeled:false, no action).
+
+---
+
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._

@@ -1,4 +1,4 @@
-# Screenshot Capture Checklist — updated 2026-07-07
+# Screenshot Capture Checklist — updated 2026-07-07 (evening, post-Wave-2)
 
 One page to keep open while playing. Ordered by value — #1 can change what the
 optimizer recommends; everything below it fixes or confirms display data.
@@ -49,6 +49,28 @@ but it was never verified and is currently absent from the database.
 ## 7. Chilling Flow — Frostbound tier (IL 4800)
 Any Frostbound weapon's set-details panel; per-stack values for this tier are
 unverified.
+
+## 8. From the Wave 2 sweep (artifacts + boons)
+- **Life Lessons master boon tooltip** — the ONE master boon never captured;
+  its trigger chance is unknown (engine guesses 20%).
+- **Charm of the Serpent** — close-up of the Use-effect line (settles a 16%
+  vs 2% damage-taken reading).
+- **Skull Lord Staff at Mythic** — the Gold Bonus % at max rank (stored value
+  is mistyped and unverified).
+- **Aurora's Whole Realms Catalogue** — same Gold Bonus issue, any rank helps.
+- **Demon Skull** — full tooltip (two database records disagree 5% vs 3% on
+  its debuff; also files the missing evidence image).
+- **Any artifact tooltips at all** — the recharge time on ~136 of 140
+  artifacts is an unverified default (60s in data; the 7 checked all read
+  180s in-game). Every artifact tooltip you shoot fixes its cooldown +
+  provenance. Especially wanted: Memories (Redeemed), Champion's Battle
+  Horn, Crown of the Undead (stored with NO stats at all), Globe of the
+  Third Eye, Mystic Bolt.
+- **Enhanced Application + Blessed Resilience boon tooltips, re-framed** —
+  the first captures cut off the point-cost footer.
+- **Erik's Boons tab (Masters view)** — the intended allocation screenshot
+  actually captured the Buffs overlay; the real Boons-tab shot is still
+  needed.
 
 ## Backlog (when bored, not urgent)
 - **177 gear sets with no set-bonus text** — the full IL-sorted list lives in
