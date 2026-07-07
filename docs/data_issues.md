@@ -1,5 +1,18 @@
 # Data Issues To Investigate
 
+## Trainer's Restoration — does it stack across mounts? (flagged by n00b 2026-07-07)
+The optimizer's healer result put insignia bonus id 18 (Trainer's Restoration:
+3,500 IH + 3,500 OH at full AP, modeled at 35% uptime) on THREE stable mounts,
+which is only right if equipped copies stack linearly. No stackingMode field
+exists on id 18, and the engine credits duplicates additively by default.
+Precedent for doubt: Cautious Devotion (id 15) was PROVEN 2026-07-05 to get
+its stacks from the CONDITION, not from equipped copies. IN-GAME TEST (n00b,
+PS5): at full AP, read the character sheet's INCOMING Healing rating (NOT
+Outgoing — his build is OH-rating-capped, which would mask the signal) with
+1 → 2 → 3 Trainer's mounts equipped; ~+3,500 per copy = linear confirmed,
+flat = copies don't stack → set stackingMode/maxStacks 1 on id 18 and the
+optimizer will spread bonuses instead. Update this entry with the verdict.
+
 ## e50971a rewrite dropped structured equip-bonus entries from ~82 items (found 2026-07-06)
 n00b reported Gauntlets of the Wrathborn not crediting their +4% Combat
 Advantage in Toon Forge. Root cause: the 2026-05-11 gear.json rewrite
@@ -27,6 +40,22 @@ collar list for heal-stat collars missing from mount_collars.json — this is a
 data-supply gap, not an optimizer bug. Also: all 75 entries carry a uniform
 `"owned": false` field that no code reads — stale import artifact, candidate
 for removal in a schema cleanup.
+
+## Bard Dirgeblade CR ladder — RESOLVED 2026-07-07 (false alarm)
+Steward sweep re-checked all 6 tiers against archived screenshots
+(`Dirgeblade_IL{3400,3750,4100,4450,4800,5250}.png`): current CRs are
+3060/3375/3690/4005/4320/4725 — **exactly 0.9×IL at every tier**, and every
+value matches its screenshot. The "one rung ahead" read was a misdiagnosis;
+no fix needed. Original entry kept below for history.
+
+## Aegis of the Condemned duplicate pairs — RESOLVED 2026-07-07 (fixed same day)
+The suspicion below was correct. Vision-extractor confirms Aegis's stat pair is
+Awareness + Outgoing Healing at every tier (Critical Strike never appears below
+IL4800). The "— IL" canonical entries (484, 482, 5330, 465, 206) are correct;
+the plain-name duplicates (5328, 5329, 5331) are wrong and need their stat
+identity corrected. See `data_trust.md` gear rows (2026-07-07) for exact per-id
+fixes. Original entry kept below for history.
+IDs 5328/5329/5331/484 were corrected the same day per the trust-ledger rows above (stat identity, values, and the Forte percent-to-flat-rating fix all landed in the 2026-07-07 gear trust sweep).
 
 ## Bard Dirgeblade (Impending Doom MH) — CRs one rung ahead (found 2026-07-06)
 Spotted during the Oathbreaker #172–#176 fix (canonical Impending Doom ladder =

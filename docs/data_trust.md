@@ -149,14 +149,14 @@ Cross-checked all companion powers against the cached reference sheet (`docs/ref
 - **Whisper of Power** — per-weapon flat stat grant (+5,200 Power / +7,700 Critical Strike / +7,200 Forte by item, IL3400).
 - **Devil's Legion** — "+1000" tier confirmed but no IL visible in captures, so the 600/800/1000/1200 tiers can't be mapped.
 
-### Integrity issues found (set-matching bugs — separate from the text backfill, not yet fixed)
-- **Company "PvE" vs "PVE"** (ids 3127-3134) — capitalization split; the 4pc Company armor set never matches.
-- **Pioneer Assault Sevars** (id 3543) — `set:"Pioneer Armor"` (set of one); should be "Pioneer Assault".
-- **Vistani Pendant/Raiments** (ids 1250-1251) — `setSize:3` contradicts `pieces:2`; `item_level:0`.
-- **Lionsmane Armor** (ids 5212-5219) — `set:"Lionsmane Armor"` but their equipBonus `setName:"Lionsmane"`; never matches.
-- **Masterwork II Equipment** (25) vs **Masterwork II Equipment Set** (68) — parallel duplicate sets that can't combine.
-- **"Sun Set"** set name has no in-game header (everything reads "Set Sun") — likely a spurious duplicate of "Sun".
-- Minor: "Vistani Rapiera"/"Obsidian Omihuiclli" name typos; Titansteel Tabars slot (Main vs Off Hand); Manticore "Masterwork Armor II / Ranger Stronghold Set II" composite set string.
+### Integrity issues found (set-matching bugs) — 5 of 6 RESOLVED 2026-07-07
+- ✅ **Pioneer Assault Sevars** (id 3543) — RESOLVED: `set` now reads "Pioneer Assault", `setSize:4`.
+- ✅ **Vistani Pendant/Raiments** (ids 1250-1251) — `setSize` contradiction RESOLVED (now `2`, matches `pieces:2`). `item_level:0` residual is a SEPARATE bug that remains OPEN (needs a real IL value).
+- ✅ **Lionsmane Armor** (ids 5212-5219 and the wider Lionsmane family) — RESOLVED: all members now use `set:"Lionsmane"` consistently, matching the equipBonus `setName`.
+- ✅ **Masterwork II Equipment (25) vs Masterwork II Equipment Set (68)** — RESOLVED: only "Masterwork II Equipment Set" remains; the parallel duplicate is gone.
+- ✅ **"Sun Set"** — RESOLVED: only "Sun" exists now; the spurious duplicate is gone.
+- ❌ **Company "PvE" vs "PVE" (ids 3127-3134) — STILL OPEN, and worse than first logged.** The capitalization split itself is fixed (all read "Company PvE Armor" consistently now), but the 2026-07-07 sweep found the deeper bug: the full 24-item family (ids 2628-2635 + 3127-3134 + siblings) has **zero** `type:"Set"` equip bonuses anywhere, so the 4pc bonus can never register regardless of naming. Needs 1 in-game screenshot to establish whether a real 4pc bonus even exists before writing one.
+- Minor (unchanged, still open): "Vistani Rapiera"/"Obsidian Omihuiclli" name typos; Titansteel Tabars slot (Main vs Off Hand); Manticore "Masterwork Armor II / Ranger Stronghold Set II" composite set string.
 
 ## Gear per-item EQUIP bonuses (2026-06-15 backfill)
 
@@ -399,6 +399,56 @@ Proven via tooltips + in-game A/B probes:
 | CSev overcap proven visible: game rating contribution capped at 60% (overcap rating invisible in %). | noted |
 
 RESOLVED SAME NIGHT: OH gap = Dawnshard's Rested Healing uptime-averaged instead of full-at-rest (stamina thresholds now graded-full); Forte gap = Graceful Harmony's +1.5% Forte aura includes YOURSELF; Soul Manipulation carries no hidden static. After fixes: Forte 66.2 / OH 93.6 / OOH 102.6 / CritSev 106.5 — ALL EXACT vs live sheet. TWIN −0.4 RESOLVED 2026-07-05 (day session): the game ROUNDS each Forte-distribution share to a whole percent (8-state probe proof on Lia; Erik regression: his last +0.2 Defense residual was 50%-share 25.77→26). Along the way: Mender's Covenant diminishing model confirmed at n=1 (single-copy probe, ratings exact); boons proven NOT suppressed during loadout edits (Power% test). BOTH CHARACTERS NOW EXACT ON EVERY STAT, rating and percent. Remaining cosmetics: boon-pick −1 (cost quirk on one of Lia's unique boons), TIL +1 floor. Lingering Medicine = potion-only (documented).
+
+---
+
+## Paladin/Bard Impending Doom + Whisper of Power weapons — verified 2026-07-07 (gear.json Wave 1 sweep)
+
+Steward sweep (pre-launch optimizer trust campaign). Screenshots:
+`docs/calibration/inbox/gear/bard-gear/artifacts/Dirgeblade_IL{3400,3750,4100,4450,4800,5250}.png`,
+`docs/calibration/inbox/_set_details/Dirgeblade {Whisper of Power_IL3400, Impending Doom_IL3750...IL5250}_set_details.png`,
+`docs/calibration/inbox/gear/paladin-gear/artifacts/Aegis of the Condemned_IL3400.png`,
+`docs/calibration/inbox/_trash/originals/Aegis Of The Condemned.png` + `(2)`–`(11).png` (SHA-256-unique, two scroll positions per tier, IL3750–5250).
+
+| id | name | system | status | source screenshot | data version | date verified |
+|----|------|--------|--------|-------------------|--------------|---------------|
+| gear 5642 | Dirgeblade (IL 3400) | gear | CONFIRMED (Acc3315/CS3060/CR3060; Whisper of Power 2pc +5,200 Power flat) | Dirgeblade_IL3400.png + Dirgeblade Whisper of Power_IL3400_set_details.png | 2026.03.17a | 2026-07-07 |
+| gear 4606 | Dirgeblade (IL 3400, description mirror) | gear | CONFIRMED (same evidence as 5642) | Dirgeblade_IL3400.png | 2026.03.17a | 2026-07-07 |
+| gear 4607 | Dirgeblade (IL 3750) | gear | CONFIRMED — base stats only (Acc3656/CS3375/CR3375 match; the 2pc Unleashed %/duration panel was cut off in the capture — stored 3%/3% and duration text are inferred, not screenshot-proven; see UNVERIFIABLE list below) | Dirgeblade_IL3750.png | 2026.03.17a | 2026-07-07 |
+| gear 4608 | Dirgeblade (IL 4100) | gear | FIXED 2026-07-07 (was MISMATCH: base stats Acc3997/CS3690/CR3690 + Unleashed 3.5%/3.5% CONFIRMED; stored duration/CD text ("...5s-in-combat...~20s") is wrong — screenshot shows 1-per-7s combat, 15s duration) | Dirgeblade_IL4100.png + Dirgeblade Impending Doom_IL4100_set_details.png | 2026.03.17a | 2026-07-07 |
+| gear 4609 | Dirgeblade (IL 4450) | gear | FIXED 2026-07-07 (was MISMATCH: base stats + 4%/4% + equip +5% Power/+3.7% CS CONFIRMED; stored duration/CD text wrong — screenshot shows 7s combat, 15s duration, not "~20s") | Dirgeblade_IL4450.png + Dirgeblade Impending Doom_IL4450_set_details.png | 2026.03.17a | 2026-07-07 |
+| gear 4610 | Dirgeblade (IL 4800) | gear | CONFIRMED (4.5%/4.5%, 5s combat/20s duration, +5% Power/+3.7% CS — full match) | Dirgeblade_IL4800.png + Dirgeblade Impending Doom_IL4800_set_details.png | 2026.03.17a | 2026-07-07 |
+| gear 7387 | Dirgeblade (IL 5250) | gear | CONFIRMED (5%/5%, 5s/20s, +6% Power/+7.5% CS — full match) | Dirgeblade_IL5250.png + Dirgeblade Impending Doom_IL5250_set_details.png | 2026.03.17a | 2026-07-07 |
+| gear 486 | Aegis of the Condemned (IL 3400) | gear | CONFIRMED (Awareness2040/OH2040/CR3060, no Unleashed at this tier) | Aegis of the Condemned_IL3400.png | 2026.03.17a | 2026-07-07 |
+| gear 1802 | Aegis of the Condemned (IL 3,400, dup) | gear | CONFIRMED (same evidence as 486) | Aegis of the Condemned_IL3400.png | 2026.03.17a | 2026-07-07 |
+| gear 5240 | Aegis of the Condemned (IL3400, plain name) | gear | CONFIRMED (same evidence as 486) | Aegis of the Condemned_IL3400.png | 2026.03.17a | 2026-07-07 |
+| gear 484 | Aegis of the Condemned (IL 3750) | gear | FIXED 2026-07-07 (was MISMATCH: base Awareness2250/OH2250/CR3375 + Unleashed 3%/3% CONFIRMED; Forte is wrongly stored as a 7% percent — screenshot shows a flat +7,200 rating; duration/CD text wrong, should read 1-per-9s combat/15s, not "~20s") | Aegis Of The Condemned (2)–(11).png [IL3750 scroll position] | 2026.03.17a | 2026-07-07 |
+| gear 482 | Aegis of the Condemned (IL 4100) | gear | FIXED 2026-07-07 (was MISMATCH: base Awareness2460/OH2460/CR3690 + Forte +7% + Unleashed 3.5%/3.5% CONFIRMED; duration/CD text wrong, should read 7s combat/15s not "~20s") | Aegis Of The Condemned (2)–(11).png [IL4100 scroll position] | 2026.03.17a | 2026-07-07 |
+| gear 5330 | Aegis of the Condemned (IL 4450) | gear | FIXED 2026-07-07 (was MISMATCH: base Awareness2670/OH2670/CR4005 + Forte7%/Defense2.5%/Unleashed4%/4% CONFIRMED; duration/CD text wrong, should read 7s/15s not "~20s") | Aegis Of The Condemned (2)–(11).png [IL4450 scroll position] | 2026.03.17a | 2026-07-07 |
+| gear 465 | Aegis of the Condemned (IL 4800) | gear | FIXED 2026-07-07 (was MISMATCH: base CS2880/Awareness1920/OH1920/CR4320 + Forte7%/Defense2.5%/Unleashed4.5%/4.5%/5s/20s all CONFIRMED correct; equipBonuses[0] is a stale unstructured placeholder stub ("Set Impending Doom (0/2)...-1%/-1%...+x% Forte") duplicating/contradicting the real structured entries below it — delete) | Aegis Of The Condemned (2)–(11).png [IL4800 scroll position] | 2026.03.17a | 2026-07-07 |
+| gear 206 | Aegis of the Condemned (IL 5250) | gear | CONFIRMED (CS3150/Awareness2100/OH2100/CR4725, Forte8%/Defense5%, Unleashed5%/5%/5s/20s — full clean match) | Aegis Of The Condemned (2)–(11).png [IL5250 scroll position] | 2026.03.17a | 2026-07-07 |
+| gear 5328 | Aegis of the Condemned (IL3750, dup) | gear | FIXED 2026-07-07 (was MISMATCH: stat identity wrong: stored "Critical Strike 2250" should be "Outgoing Healing 2250" to match sibling 484; Forte 7%→flat 7,200; same duration-text bug as 484) | same evidence as 484 | 2026.03.17a | 2026-07-07 |
+| gear 5329 | Aegis of the Condemned (IL4100, dup) | gear | FIXED 2026-07-07 (was MISMATCH: stat identity AND value wrong: stored "Critical Strike 2490" should be "Outgoing Healing 2460" to match sibling 482) | same evidence as 482 | 2026.03.17a | 2026-07-07 |
+| gear 5331 | Aegis of the Condemned (IL4800, dup) | gear | FIXED 2026-07-07 (was MISMATCH: missing Awareness 1920 entirely; screenshot + sibling 465 both show the 3-stat CS/Awareness/OH layout) | same evidence as 465 | 2026.03.17a | 2026-07-07 |
+| gear 1807–1811 | Aegis of the Condemned · Epic/Legendary/Mythic/Ascendant/Maximum (legacy quality-rung dupes) | gear | INTEGRITY (pending fix — item_level stuck at 3400 on all 5 despite carrying IL3750/4100/4450/4800/5250-tier stats respectively; equipBonuses mislabel them "Whisper of Power (2/2)" though their numbers belong to Impending Doom tiers; redundant with the clean canonical entries above — needs a merge-or-relabel decision) | indirect (matches canonical IL tiers' evidence) | 2026.03.17a | 2026-07-07 |
+| gear 487 | Oathbreaker's Malevolence (IL 3400) | gear | CONFIRMED (Power1785/Defense1785/CR3060; Whisper of Power 2pc "+7,200 Forte" clean, no Unleashed) | Aegis of the Condemned_IL3400.png (paired weapon panel) | 2026.03.17a | 2026-07-07 |
+| gear 1801 | Oathbreaker's Malevolence (IL 3,400, dup) | gear | FIXED 2026-07-07 (was MISMATCH: ratingStats match 487; but the top-level `setBonus` string has IL4450-tier Unleashed text (Tank-4%/Heal+4%, 7s/15s) grafted onto it — this tier has no Unleashed mechanic at all; should read "+7,200 Forte" like 487) | same evidence as 487 | 2026.03.17a | 2026-07-07 |
+| gear 466 | Oathbreaker's Malevolence (IL 4800) | gear | CONFIRMED (full match) | Aegis Of The Condemned (2)–(11).png [IL4800 scroll, Oathbreaker panel] | 2026.03.17a | 2026-07-07 |
+| gear 205 | Oathbreaker's Malevolence (IL 5250) | gear | CONFIRMED (full match) | Aegis Of The Condemned (2)–(11).png [IL5250 scroll, Oathbreaker panel] | 2026.03.17a | 2026-07-07 |
+| gear 481 | Oathbreaker's Malevolence (IL 4450) | gear | FIXED 2026-07-07 (was MISMATCH — SEVERE: entire equipBonuses block (Base Damage Boost 4% / Power 2.5% / Critical Severity 7.5%) is byte-identical to the Warlock Omen of Doom (id 7390) / Codex of Eternal Chains (id 7391) DPS block; Paladin has no such DPS line — should be Forte 7% / Defense 2.5% / Unleashed Tank-4%/Heal+4%, 10 charges, 7s combat, 15s duration, matching sibling Aegis 5330) | Aegis Of The Condemned (2)–(11).png [IL4450 scroll, Oathbreaker panel] | 2026.03.17a | 2026-07-07 |
+| gear 1805 | Oathbreaker's Malevolence · Mythic (legacy rung) | gear | INTEGRITY (pending fix — item_level stuck at 3400; Power2520/Defense2520 belongs to a later Impending Doom tier; same merge/cleanup decision as Aegis 1807-1811) | indirect | 2026.03.17a | 2026-07-07 |
+| gear 1806 | Oathbreaker's Malevolence · Ascendant (legacy rung) | gear | UNVERIFIABLE (item_level stuck at 3400; missing Power stat entirely; Defense 2937 doesn't fit the ~1837 expected for this rung — no screenshot exists to confirm the true value; do not guess) | none — needs capture | 2026.03.17a | 2026-07-07 |
+| gear 72 | Bulwark of the Zulkirate | gear | FIXED 2026-07-07 (was INTEGRITY: missing `perStack:true`/`maxStacks:5` present on sibling id 53 "Bulwark of the Eternal Zulkirate"; engine currently credits only 1% Critical Strike/Severity instead of the tooltip's 5-stack ladder) | sibling schema (id 53) + in-data description text | 2026.03.17a | 2026-07-07 |
+| gear 441 | Arcane Conduit Seal — Pressured Muse (formerly "Demon Skull") | gear | INTEGRITY — BLOCKER (id 441 was deleted from "Demon Skull" and the id recycled to this unrelated Soul Harvest pants item; any old build/share-link referencing id 441 for Demon Skull's proc now silently resolves to the wrong item; needs a new id + re-add for Demon Skull, or a documented migration note) | n/a (integrity finding, not a stat mismatch) | 2026.03.17a | 2026-07-07 |
+| gear 200 | Ebon Crusader's Aegis | gear | UNVERIFIABLE (Blood Bargain 2pc set bonus text entirely absent; a pre-e50971a baseline had "+12% Movement Speed / +3% Forte while in Thay" but it was never screenshot-confirmed — capture needed before restoring) | none | 2026.03.17a | 2026-07-07 |
+| gear 201 | Oathbreaker's Judgment | gear | UNVERIFIABLE (same Blood Bargain 2pc gap as 200) | none | 2026.03.17a | 2026-07-07 |
+
+### Integrity (structural, not per-screenshot) — gear.json Wave 1 sweep 2026-07-07
+- **Company PvE Armor family (24 items: ids 2628–2635 `set:null` + ids 3127–3134/3867–3889 `set:"Company PvE Armor"`)** — no member carries a `type:"Set"` equip bonus, so the 4pc can never register in toon-forge's `countSetPieces()`. Needs 1 screenshot before writing anything.
+- **16 one-member set families** (ids 141, 147, 171, 172, 177, 182, 1889, 1890, 5025, 5040, 5077, 5089, 5137, 5179, 7381, 7396) — each `set` value only matches itself; either the partner piece is genuinely missing from our data or the name has drifted. Needs per-family check, not a blind rename.
+- **6 set:null orphan exact-duplicates** (ids 2769, 2786, 2787, 2790, 2791, 2806) — byte-identical to their correctly-set twins (3984, 4001, 4002, 4005, 4006, 4021 respectively). Safe to delete (true duplicates).
+- **e50971a worklist** (82 items, `docs/audit/_e50971a_dropped_structured.json`) — 2026-07-07 classification: 19 RESTORED (no action), 10 PARTIAL with concrete recoverable values (ids 39, 42, 52, 57, 61, 62, 71, 74, 210, 218, 297), 49 MISSING (7 total-loss needing fresh screenshots: 237, 238, 240, 257, 258, 261, 262), 2 SUSPECT-do-not-restore (205/206 — current data verified correct, old baseline value wrong), 1 BLOCKER (id 441, above).
+- Minor nits (auditor pass, not independently re-verified): ids 1591 vs 3492 (tracked dup), 5247 vs 7150 (Lifeforged Shield schema divergence), 4184 (stray Damage Bonus stat on Skinstealer), 5237/5238/5244/5253 (Aboleth Shield degenerate-zero fields vs the 71xx set), id 233 (redundant description entry).
 
 ---
 
