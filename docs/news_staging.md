@@ -10,6 +10,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Data Additions
 - Bard: added the missing Songblade at-will **Staccato** to the Toon Forge power list (multi-hit melee, physical). Magnitude/cast/hit-count pending in-game tooltip verification.
+- Bard: the Main Hand **artifact modification** menu is now in Toon Forge — all six Enhanced-power mods (Reprise, Fleche, Con Elemento, Staccato, Phantasmal Concerto +10% damage; Arpeggio +10% healing). Provided by n00b.
 
 ### Bug Fixes
 - Healer builds: the "What would this heal for?" panel now credits master boons that heal for a % of Max HP (Blessed Advantage's HoT, Death's Bulwark's temp HP) — they previously counted for nothing. "Chance on kill" boons are now weighted realistically for healers, who rarely land killing blows. (Engine-side; also drives major healer pick improvements in the optimizer — optimizer notes tracked privately with n00b.)
