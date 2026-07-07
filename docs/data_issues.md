@@ -1,5 +1,33 @@
 # Data Issues To Investigate
 
+## e50971a rewrite dropped structured equip-bonus entries from ~82 items (found 2026-07-06)
+n00b reported Gauntlets of the Wrathborn not crediting their +4% Combat
+Advantage in Toon Forge. Root cause: the 2026-05-11 gear.json rewrite
+(`e50971a`, parent repo) collapsed many structured `{stat, amount}` equip-bonus
+entries into description-only text the engine can't apply. The March baseline
+(`420454c`, "MB validated 1:1 against in-game stats") had them structured.
+Wrathborn fixed 2026-07-06; a diff of baseline-vs-today (stat names normalized)
+leaves **82 items** whose old structured pairs are still missing — worklist
+with the original entries at `docs/audit/_e50971a_dropped_structured.json`.
+NOT a blind-restore list: some old values look wrong (Accuracy -10000,
+Forte 7200 on Oathbreaker's Malevolence — an item whose stats were corrected
+via reports #173–#176), and June's eb_parse sweeps deliberately re-shaped
+others (perStack, kind:"rating"). Each needs a tooltip or an eb_parse-decision
+check before restoring. Good /steward sweep candidate.
+
+## Healer collars: only 3 of 75 collar identities score for heal output (found 2026-07-06)
+Surfaced by the healer-optimizer audit on n00b's Soulweaver: the collar picker
+correctly leaves 2 of 5 stable slots empty for a healer because the data pool
+can only supply 3 distinct heal-relevant collars — "Supportive Regal Collar"
+(Outgoing Healing), "Wayfaring Barbed Collar" (Crit Sev), and "Unified Regal
+Collar" (Incoming Healing — self-survival, and since the 2026-07-06 regex fix
+it no longer counts as heal OUTPUT, so the effective pool is 2–3). Zero collars
+carry the heal free-tail stats (Defense/Awareness). TODO: sweep the in-game
+collar list for heal-stat collars missing from mount_collars.json — this is a
+data-supply gap, not an optimizer bug. Also: all 75 entries carry a uniform
+`"owned": false` field that no code reads — stale import artifact, candidate
+for removal in a schema cleanup.
+
 ## Bard Dirgeblade (Impending Doom MH) — CRs one rung ahead (found 2026-07-06)
 Spotted during the Oathbreaker #172–#176 fix (canonical Impending Doom ladder =
 3750/4100/4450/4800/5250, CR always 0.9×IL): the Bard MH entries violate it —

@@ -1,0 +1,2706 @@
+{
+ "meta": {
+  "created": "2026-07-06",
+  "baseline": "420454c (MB validated 1:1 in-game, 2026-03-20)",
+  "droppedBy": "e50971a (2026-05-11 gear.json rewrite)",
+  "note": "Structured (stat,amount) pairs present at 420454c but absent from current gear.json after normalizing stat names. NOT a blind-restore list: verify each against tooltip/eb_parse decisions — some old values look wrong (Accuracy -10000, Forte 7200) and some were deliberately re-shaped (perStack, kind:rating). Wrathborn id 16 fixed 2026-07-06 as the proven pattern."
+ },
+ "items": [
+  {
+   "id": 0,
+   "name": "Voidcaller's Treatise",
+   "missingPairs": [
+    [
+     "dmgbonus",
+     2.0
+    ],
+    [
+     "dmgbonus",
+     2.5
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "stat": "DmgBonus",
+     "amount": 2.5,
+     "setName": "Soulpiercer (Greater)",
+     "pieces": 2
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "stat": "DmgBonus",
+     "amount": 2,
+     "setName": "Soulpiercer (Greater)",
+     "pieces": 2
+    }
+   ],
+   "currentDescriptions": [
+    "",
+    "",
+    "2 of Set: While in Thay, your Movement Speed is increased by 12% and your Damage is increased by 2%. Your Powers deal 2.5% more damage when you are 25' or further away from your target."
+   ]
+  },
+  {
+   "id": 10,
+   "name": "The Spine of Dominion",
+   "missingPairs": [
+    [
+     "criticalstrike",
+     7.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalStrike",
+     "amount": 7,
+     "name": "Enduring Critical"
+    }
+   ],
+   "currentDescriptions": [
+    "Your current Hit Points increases your Critical Severity, up to a maximum of 7%."
+   ]
+  },
+  {
+   "id": 18,
+   "name": "Treads of the Arch-Thrall",
+   "missingPairs": [
+    [
+     "criticalseverity",
+     5.0
+    ],
+    [
+     "criticalstrike",
+     5.0
+    ],
+    [
+     "power",
+     5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Power",
+     "amount": 5,
+     "name": "Eagle's Mastery (Greater)"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalStrike",
+     "amount": 5,
+     "name": "Eagle's Mastery (Greater)"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalSeverity",
+     "amount": 5,
+     "name": "Eagle's Mastery (Greater)"
+    }
+   ],
+   "currentDescriptions": [
+    "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your Power, Critical Strike, and Critical Severity are increased by 1.0% for 10 seconds. Max Stacks: 5 — 5% Power, Critical Strike, and Critical Severity.",
+    "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your Power, Critical Strike, and Critical Severity are increased by 1.0% for 10 seconds. Max Stacks: 5 — 5% Power, Critical Strike, and Critical Severity.",
+    "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your Power, Critical Strike, and Critical Severity are increased by 1.0% for 10 seconds. Max Stacks: 5 — 5% Power, Critical Strike, and Critical Severity."
+   ]
+  },
+  {
+   "id": 20,
+   "name": "Enchanted Depthweave Coat",
+   "missingPairs": [
+    [
+     "accuracy",
+     7.5
+    ],
+    [
+     "combatadvantage",
+     7.5
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Combat Advantage",
+     "amount": 7.5
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Accuracy",
+     "amount": 7.5
+    }
+   ],
+   "currentDescriptions": [
+    "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Accuracy and Combat Advantage for 15 seconds. Max 5 stacks: 7.5% Accuracy and Combat Advantage. Conditional (combat proc), off when standing.",
+    "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Accuracy and Combat Advantage for 15 seconds. Max 5 stacks: 7.5% Accuracy and Combat Advantage. Conditional (combat proc), off when standing."
+   ]
+  },
+  {
+   "id": 25,
+   "name": "Vambraces of the Bloodforged Edict",
+   "missingPairs": [
+    [
+     "divinityregen",
+     20.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "DivinityRegen",
+     "amount": 20,
+     "name": "Resourceful Healer (Ascendant)"
+    }
+   ],
+   "currentDescriptions": [
+    "Your Divinity/Performance/Soulweave maximum increases by 20%. Gain 5% Outgoing Healing.",
+    ""
+   ]
+  },
+  {
+   "id": 36,
+   "name": "Sabatons of the Deathless Faith",
+   "missingPairs": [
+    [
+     "defense",
+     3.5
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Defense",
+     "amount": 3.5,
+     "name": "Healer's Influence (Ascendant)"
+    }
+   ],
+   "currentDescriptions": [
+    "Healing an ally with an Encounter power heals you for 80,000 and grants the allies close to you 3.5% Defense for 5 seconds."
+   ]
+  },
+  {
+   "id": 39,
+   "name": "Cuirass of Endless Butchery",
+   "missingPairs": [
+    [
+     "incomingdamage",
+     -4.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "IncomingDamage",
+     "amount": -4,
+     "name": "Divine Blessing (Ascendant)"
+    }
+   ],
+   "currentDescriptions": [
+    "Your current Hit Points decreases your Incoming Damage, up to a max of 4%. Your maximum Hit Points are increased by 5%."
+   ]
+  },
+  {
+   "id": 42,
+   "name": "Crown of the Everscourge",
+   "missingPairs": [
+    [
+     "rechargespeed",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "RechargeSpeed",
+     "amount": 3,
+     "name": "Enduring Advantage (Ascendant)"
+    }
+   ],
+   "currentDescriptions": [
+    "Your current Hit Points increases your Combat Advantage, up to a maximum of 7%. You gain 5% Recharge speed."
+   ]
+  },
+  {
+   "id": 43,
+   "name": "Visage of the Eternal Herald",
+   "missingPairs": [
+    [
+     "criticalstrike",
+     5.0
+    ],
+    [
+     "resourcemaxpercent",
+     50.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "ResourceMaxPercent",
+     "amount": 50,
+     "name": "Resources (Ascendant)"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalStrike",
+     "amount": 5,
+     "name": "Resources (Ascendant)"
+    }
+   ],
+   "currentDescriptions": [
+    "When you damage or heal your target for more than 10% of your Maximum Hit Points, you gain 3% faster Divinity/Performance/Soulweave regeneration for 15 seconds. Max Stacks: 5. You gain +5% Critical Strike."
+   ]
+  },
+  {
+   "id": 49,
+   "name": "Crown of the Unyielding Will",
+   "missingPairs": [
+    [
+     "incominghealing",
+     12.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "IncomingHealing",
+     "amount": 12,
+     "name": "Gladiator's Sustenance (Greater)"
+    }
+   ],
+   "currentDescriptions": [
+    "For every 10 seconds you are in combat, you gain 2.4% Incoming Healing. Max Stacks: 5 — 2.4% Incoming Healing."
+   ]
+  },
+  {
+   "id": 52,
+   "name": "Vestments of the Crimson Magister",
+   "missingPairs": [
+    [
+     "defense",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Defense",
+     "amount": 3,
+     "name": "Thayan Hunter (Greater)"
+    }
+   ],
+   "currentDescriptions": [
+    "+3% Power and Defense in Thay. +2% Power and Defense outside of Thay.",
+    ""
+   ]
+  },
+  {
+   "id": 53,
+   "name": "Bulwark of the Eternal Zulkirate",
+   "missingPairs": [
+    [
+     "criticalseverity",
+     7.5
+    ],
+    [
+     "criticalstrike",
+     7.5
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalStrike",
+     "amount": 7.5,
+     "name": "Ruthless Might (Greater)"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalSeverity",
+     "amount": 7.5,
+     "name": "Ruthless Might (Greater)"
+    }
+   ],
+   "currentDescriptions": [
+    "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Strike and Critical Severity for 15 seconds. Max Stacks: 5 — 7.5% Critical Strike and Critical Severity.",
+    "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1.5% Critical Strike and Critical Severity for 15 seconds. Max Stacks: 5 — 7.5% Critical Strike and Critical Severity."
+   ]
+  },
+  {
+   "id": 55,
+   "name": "Bindings of the Death Pact",
+   "missingPairs": [
+    [
+     "dmgbonus",
+     0.9
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "DmgBonus",
+     "amount": 0.9,
+     "name": "Berserking Might (Greater)"
+    }
+   ],
+   "currentDescriptions": [
+    "Gain 0.9% Damage for 5 seconds to each enemy you're fighting around you. (Max of 10 targets)"
+   ]
+  },
+  {
+   "id": 57,
+   "name": "Greaves of the Unbroken Doctrine",
+   "missingPairs": [
+    [
+     "incominghealing",
+     13.0
+    ],
+    [
+     "movementspeed",
+     40.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "MovementSpeed",
+     "amount": 40,
+     "name": "Undying's Grasp (Greater)"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "IncomingHealing",
+     "amount": 13,
+     "name": "Undying's Grasp (Greater)"
+    }
+   ],
+   "currentDescriptions": [
+    "When hit at 30% HP or lower, gain 40% Incoming Healing for 8 seconds and 13% Movement Speed (15 second cooldown)."
+   ]
+  },
+  {
+   "id": 58,
+   "name": "Boots of the Endless March",
+   "missingPairs": [
+    [
+     "criticalseverity",
+     10.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalSeverity",
+     "amount": 10,
+     "name": "Abyssal Might (Greater)"
+    }
+   ],
+   "currentDescriptions": [
+    "On encounter use: 15% chance for +10% CritSev for 8s"
+   ]
+  },
+  {
+   "id": 60,
+   "name": "Sabatons of the Exalted Martyr",
+   "missingPairs": [
+    [
+     "defense",
+     2.1
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Defense",
+     "amount": 2.1,
+     "name": "Healer's Influence (Lesser)"
+    }
+   ],
+   "currentDescriptions": [
+    "Healing an ally with an Encounter also heals you for 80,000 and grants allies close to you 2.1% Defense for 5 seconds."
+   ]
+  },
+  {
+   "id": 61,
+   "name": "Greaves of the Iron Doctrine",
+   "missingPairs": [
+    [
+     "movementspeed",
+     30.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "MovementSpeed",
+     "amount": 30,
+     "name": "Undying's Grasp (Lesser)"
+    }
+   ],
+   "currentDescriptions": [
+    "When you are hit at 30% health or lower, you get 30% Movement Speed and 10% Incoming Healing for 8 seconds. (15 second cooldown)"
+   ]
+  },
+  {
+   "id": 62,
+   "name": "Vambraces of the Tyrant's Grip",
+   "missingPairs": [
+    [
+     "defense",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Defense",
+     "amount": 3,
+     "name": "Warden's Versatility (Lesser)"
+    }
+   ],
+   "currentDescriptions": [
+    "When your health is 50% or more, your Defense is increased by 4%. When your health is below 50%, Power is increased by 5%.",
+    ""
+   ]
+  },
+  {
+   "id": 65,
+   "name": "Cuirass of the Crimson Reckoning",
+   "missingPairs": [
+    [
+     "controlresist",
+     3.5
+    ],
+    [
+     "incomingdamage",
+     -1.8
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "ControlResist",
+     "amount": 3.5,
+     "name": "Enduring Resilience (Lesser)"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "IncomingDamage",
+     "amount": -1.8,
+     "name": "Enduring Resilience (Lesser)"
+    }
+   ],
+   "currentDescriptions": [
+    "Gain up to 3.3% Control Resistance and -1.8% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health."
+   ]
+  },
+  {
+   "id": 66,
+   "name": "Vambrace of the Bloodbound Cleric",
+   "missingPairs": [
+    [
+     "criticalstrike",
+     2.5
+    ],
+    [
+     "outgoinghealing",
+     2.5
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "OutgoingHealing",
+     "amount": 2.5,
+     "name": "Gladiator's Restoration (Lesser)"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalStrike",
+     "amount": 2.5,
+     "name": "Gladiator's Restoration (Lesser)"
+    }
+   ],
+   "currentDescriptions": [
+    "For every 5 seconds you are in combat, you gain 0.5% Outgoing Healing and Critical Strike. Max Stacks: 5.",
+    "For every 5 seconds you are in combat, you gain 0.5% Outgoing Healing and Critical Strike. Max Stacks: 5."
+   ]
+  },
+  {
+   "id": 67,
+   "name": "Treads of the Arcane Thrall",
+   "missingPairs": [
+    [
+     "criticalseverity",
+     3.0
+    ],
+    [
+     "criticalstrike",
+     3.0
+    ],
+    [
+     "power",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Power",
+     "amount": 3,
+     "name": "Eagle's Mastery (Lesser)"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalStrike",
+     "amount": 3,
+     "name": "Eagle's Mastery (Lesser)"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalSeverity",
+     "amount": 3,
+     "name": "Eagle's Mastery (Lesser)"
+    }
+   ],
+   "currentDescriptions": [
+    "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your Power, Critical Strike, and Critical Severity are increased by 0.6% for 10 seconds. Max Stacks: 5 — 3% Power, Critical Strike, and Critical Severity.",
+    "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your Power, Critical Strike, and Critical Severity are increased by 0.6% for 10 seconds. Max Stacks: 5 — 3% Power, Critical Strike, and Critical Severity.",
+    "When you damage your target for more than 15% of your Maximum Hit Points in a single blow, your Power, Critical Strike, and Critical Severity are increased by 0.6% for 10 seconds. Max Stacks: 5 — 3% Power, Critical Strike, and Critical Severity."
+   ]
+  },
+  {
+   "id": 71,
+   "name": "Robes of the Crimson Order",
+   "missingPairs": [
+    [
+     "defense",
+     2.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Defense",
+     "amount": 2,
+     "name": "Thayan Hunter (Lesser)"
+    }
+   ],
+   "currentDescriptions": [
+    "+2% Power and Defense in Thay. +1% Power and Defense outside of Thay.",
+    ""
+   ]
+  },
+  {
+   "id": 72,
+   "name": "Bulwark of the Zulkirate",
+   "missingPairs": [
+    [
+     "criticalseverity",
+     6.0
+    ],
+    [
+     "criticalstrike",
+     6.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalSeverity",
+     "amount": 6,
+     "name": "Ruthless Might (Lesser)"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalStrike",
+     "amount": 6,
+     "name": "Ruthless Might (Lesser)"
+    }
+   ],
+   "currentDescriptions": [
+    "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 1% Critical Strike and Critical Severity for 15 seconds. Max Stacks: 5 — 6% Critical Strike and Critical Severity.",
+    ""
+   ]
+  },
+  {
+   "id": 74,
+   "name": "Hood of the Obedient",
+   "missingPairs": [
+    [
+     "movementspeed",
+     10.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "MovementSpeed",
+     "amount": 10,
+     "name": "Survivor's Grace (Lesser)"
+    }
+   ],
+   "currentDescriptions": [
+    "When your health is above 90%, your Outgoing Healing is increased by 6%. When your health is below 50%, Movement Speed is increased by 10%."
+   ]
+  },
+  {
+   "id": 76,
+   "name": "Crown of the Supreme Will",
+   "missingPairs": [
+    [
+     "incominghealing",
+     9.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "IncomingHealing",
+     "amount": 9,
+     "name": "Gladiator's Sustenance (Lesser)"
+    }
+   ],
+   "currentDescriptions": [
+    "For every 10 seconds you are in combat, you gain 1.6% Incoming Healing. Max Stacks: 5 — 9% Incoming Healing."
+   ]
+  },
+  {
+   "id": 77,
+   "name": "Visage of the Undying Faith",
+   "missingPairs": [
+    [
+     "resourcemaxpercent",
+     20.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "ResourceMaxPercent",
+     "amount": 20,
+     "name": "Ruthless Resources (Lesser)"
+    }
+   ],
+   "currentDescriptions": [
+    "When you damage or heal your target for more than 10% of your Maximum Hit Points in a single blow, you gain 4% faster Divinity/Performance/Soulweave regeneration for 15 seconds. (Max stack 5)"
+   ]
+  },
+  {
+   "id": 78,
+   "name": "Mask of the Bloodletter",
+   "missingPairs": [
+    [
+     "encounterdmgbonus",
+     20.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "EncounterDmgBonus",
+     "amount": 20,
+     "name": "Tactical Daily (Lesser)",
+     "procModel": {
+      "trigger": "onDailyUse",
+      "duration_s": 0,
+      "maxStacks": 1,
+      "uptimeEstimate": 0.03,
+      "notes": "Triggers on Daily use, buffs ONE Encounter power by +20% then consumed. Very low uptime (~3%) — Dailies have long cooldowns and buff is single-use."
+     }
+    }
+   ],
+   "currentDescriptions": [
+    "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (10 second cooldown). You gain 3% Combat Advantage."
+   ]
+  },
+  {
+   "id": 81,
+   "name": "The Bladed Ascendant",
+   "missingPairs": [
+    [
+     "rechargespeed",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "RechargeSpeed",
+     "amount": 3,
+     "name": "Survivor's Haste"
+    }
+   ],
+   "currentDescriptions": [
+    "Your current Hit Points increases your Recharge Speed, up to a maximum of 3%."
+   ]
+  },
+  {
+   "id": 82,
+   "name": "The Sanguine Seal",
+   "missingPairs": [
+    [
+     "dmgbonus",
+     5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "DmgBonus",
+     "amount": 5,
+     "name": "Thayan Predator"
+    }
+   ],
+   "currentDescriptions": [
+    "+5% Damage in Thay. +2% Damage in non-Thay.",
+    ""
+   ]
+  },
+  {
+   "id": 83,
+   "name": "The Runebound Shackle",
+   "missingPairs": [
+    [
+     "dmgbonus",
+     5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "DmgBonus",
+     "amount": 5,
+     "name": "Thayan Predator"
+    }
+   ],
+   "currentDescriptions": [
+    "+5% Damage in Thay. +2% Damage in non-Thay.",
+    ""
+   ]
+  },
+  {
+   "id": 85,
+   "name": "The Crimson Inlay",
+   "missingPairs": [
+    [
+     "rechargespeed",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "RechargeSpeed",
+     "amount": 3,
+     "name": "Survivor's Haste"
+    }
+   ],
+   "currentDescriptions": [
+    "Your current Hit Points increases your Recharge Speed, up to a maximum of 3%."
+   ]
+  },
+  {
+   "id": 86,
+   "name": "The Triarch Sigil",
+   "missingPairs": [
+    [
+     "dmgbonus",
+     5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "DmgBonus",
+     "amount": 5,
+     "name": "Thayan Predator"
+    }
+   ],
+   "currentDescriptions": [
+    "+5% Damage in Thay. +2% Damage in non-Thay.",
+    ""
+   ]
+  },
+  {
+   "id": 111,
+   "name": "The Forgotten Relic",
+   "missingPairs": [
+    [
+     "incomingdamage",
+     -1.5
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "IncomingDamage",
+     "amount": -1.5,
+     "name": "Rock-Like Resilience"
+    }
+   ],
+   "currentDescriptions": [
+    "Gain -1.5% Incoming Damage."
+   ]
+  },
+  {
+   "id": 200,
+   "name": "Ebon Crusader's Aegis",
+   "missingPairs": [
+    [
+     "forte",
+     3.0
+    ],
+    [
+     "movementspeed",
+     12.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Blood Bargain (Greater)",
+     "pieces": 2,
+     "name": "Blood Bargain (Greater) - If Equipped",
+     "stat": "MovementSpeed",
+     "amount": 12,
+     "effectText": "While in Thay, your Movement Speed is increased by 12% and your Forte is increased by 3%.",
+     "assumption": "Condition is modeled as active for objective scoring unless you disable/edit this row."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Blood Bargain (Greater)",
+     "pieces": 2,
+     "name": "Blood Bargain (Greater) - If Equipped",
+     "stat": "Forte",
+     "amount": 3,
+     "effectText": "While in Thay, your Movement Speed is increased by 12% and your Forte is increased by 3%.",
+     "assumption": "Condition is modeled as active for objective scoring unless you disable/edit this row."
+    }
+   ],
+   "currentDescriptions": [
+    "Whenever you are struck by a Critical Strike, you have a 10% chance to increase your Critical Avoidance by 10% and gain 5% Power for 10 seconds.",
+    ""
+   ]
+  },
+  {
+   "id": 201,
+   "name": "Oathbreaker's Judgment",
+   "missingPairs": [
+    [
+     "forte",
+     3.0
+    ],
+    [
+     "movementspeed",
+     12.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Blood Bargain (Greater)",
+     "pieces": 2,
+     "name": "Blood Bargain (Greater) - If Equipped",
+     "stat": "MovementSpeed",
+     "amount": 12,
+     "effectText": "While in Thay, your Movement Speed is increased by 12% and your Forte is increased by 3%.",
+     "assumption": "Condition is modeled as active for objective scoring unless you disable/edit this row."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Blood Bargain (Greater)",
+     "pieces": 2,
+     "name": "Blood Bargain (Greater) - If Equipped",
+     "stat": "Forte",
+     "amount": 3,
+     "effectText": "While in Thay, your Movement Speed is increased by 12% and your Forte is increased by 3%.",
+     "assumption": "Condition is modeled as active for objective scoring unless you disable/edit this row."
+    }
+   ],
+   "currentDescriptions": [
+    "Whenever you are struck by a Critical Strike, you have a 10% chance to increase your Critical Avoidance by 10% and gain 5% Power for 10 seconds.",
+    ""
+   ]
+  },
+  {
+   "id": 205,
+   "name": "Oathbreaker's Malevolence",
+   "missingPairs": [
+    [
+     "forte",
+     7200.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Impending Doom",
+     "pieces": 2,
+     "name": "Impending Doom",
+     "stat": "Forte",
+     "amount": 7200,
+     "statType": "rating",
+     "effectText": "2 of Set: +7,200 Forte."
+    }
+   ],
+   "currentDescriptions": [
+    "",
+    "",
+    "Unleashed: accumulate 10 charges (per Encounter/Daily/5s-in-combat) to gain for ~20s — Tank: -5% Incoming Damage; Heal: +5% Outgoing Healing. (Engine applies the DPS Base Damage Boost where present; Tank/Heal variants + charge uptime are role-conditional and documented only.)"
+   ]
+  },
+  {
+   "id": 206,
+   "name": "Aegis of the Condemned",
+   "missingPairs": [
+    [
+     "forte",
+     7200.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Impending Doom",
+     "pieces": 2,
+     "name": "Impending Doom",
+     "stat": "Forte",
+     "amount": 7200,
+     "statType": "rating",
+     "effectText": "2 of Set: +7,200 Forte."
+    }
+   ],
+   "currentDescriptions": [
+    "",
+    "",
+    "Unleashed: accumulate 10 charges (per Encounter/Daily/5s-in-combat) to gain for ~20s — Tank: -5% Incoming Damage; Heal: +5% Outgoing Healing. (Engine applies the DPS Base Damage Boost where present; Tank/Heal variants + charge uptime are role-conditional and documented only.)"
+   ]
+  },
+  {
+   "id": 210,
+   "name": "Rain-Catcher",
+   "missingPairs": [
+    [
+     "criticalstrike",
+     7500.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Battlefield Tranquility",
+     "stat": "CriticalStrike",
+     "amount": 7500,
+     "statType": "rating",
+     "procModel": {
+      "uptimeOverride": 0.5
+     },
+     "effectText": "When your health is above 50%, your Outgoing Healing is increased by 7,500. When your health is below 50%, your Critical Strike is increased by 7,500.",
+     "assumption": "Expected-value model assumes a neutral 50/50 split between above-50% and below-50% health states."
+    }
+   ],
+   "currentDescriptions": [
+    "When your health is above 50%, your Outgoing Healing is increased by 7,500. When your health is below 50%, your Critical Strike is increased by 7,500."
+   ]
+  },
+  {
+   "id": 212,
+   "name": "The Dark Maiden's Restoration Cover",
+   "missingPairs": [
+    [
+     "divinityregen",
+     10.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Divine Muse",
+     "stat": "DivinityRegen",
+     "amount": 10,
+     "effectText": "Your Divinity/Performance/Soulweave regenerates 10% faster."
+    }
+   ],
+   "currentDescriptions": [
+    "Your Divinity/Performance/Soulweave regenerates 10% faster."
+   ]
+  },
+  {
+   "id": 214,
+   "name": "Raindrop Raiment",
+   "missingPairs": [
+    [
+     "forte",
+     1.0
+    ],
+    [
+     "outgoinghealing",
+     5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Graceful Harmony",
+     "stat": "OutgoingHealing",
+     "amount": 5,
+     "effectText": "You gain 1% Outgoing Healing for each player in your team. When your teammates are 20' or closer to you, their Forte is increased by 1%.",
+     "assumption": "Expected-value model assumes a full 5-player team for self outgoing-healing contribution."
+    },
+    {
+     "type": "Equip",
+     "scope": "party",
+     "name": "Graceful Harmony",
+     "stat": "Forte",
+     "amount": 1,
+     "effectText": "You gain 1% Outgoing Healing for each player in your team. When your teammates are 20' or closer to you, their Forte is increased by 1%.",
+     "modeled": false,
+     "notes": "Party-only forte aura is preserved as metadata and not included in self-objective scoring."
+    }
+   ],
+   "currentDescriptions": [
+    "You gain 1% Outgoing Healing for each player on your team. When your teammates are 20' or closer to you, their Forte is increased by 1%."
+   ]
+  },
+  {
+   "id": 216,
+   "name": "Vambraces of the Eternal Sigil",
+   "missingPairs": [
+    [
+     "divinityregen",
+     2.5
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Radiant Guidance",
+     "stat": "DivinityRegen",
+     "amount": 2.5,
+     "procModel": {
+      "triggerRatePerMinute": 10,
+      "procChance": 1,
+      "maxStacks": 8
+     },
+     "effectText": "For every 6 seconds you are in combat, you gain +2.5% faster Divinity regeneration. Your closest two allies within 20' also gain +0.2% Critical Strike per stack. Max 8 stacks: 20% Divinity regeneration and 1.6% Critical Strike for each affected ally.",
+     "assumption": "Modeled as deterministic in-combat stack gain every 6 seconds up to 8 stacks."
+    }
+   ],
+   "currentDescriptions": [
+    "Per 6s in combat: +2.5% Divinity regen + 0.2% CritStrike to nearest 2 allies. Max 8 stacks (20%/1.6%)",
+    "For every 6 seconds you are in combat, you gain +2.5% faster Divinity regeneration. Your closest two allies within 20' also gain +0.2% Critical Strike per stack. Max 8 Stacks: 20% Divinity regeneration and 1.6% Critical Strike for each affected ally"
+   ]
+  },
+  {
+   "id": 218,
+   "name": "Abyss Conquerer's Provoker Gloves",
+   "missingPairs": [
+    [
+     "awareness",
+     1.0
+    ],
+    [
+     "movementspeed",
+     -2.5
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Mighty Valor",
+     "stat": "Awareness",
+     "amount": 1,
+     "procModel": {
+      "triggerRatePerMinute": 60,
+      "procChance": 1,
+      "durationSeconds": 4,
+      "maxStacks": 10
+     },
+     "effectText": "When you strike an enemy, gain 1% Power and Awareness and lose 2.5% Movement Speed for 4 seconds. (Max stack 10)",
+     "assumption": "Expected-value model assumes sustained single-target strike cadence."
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Mighty Valor",
+     "stat": "MovementSpeed",
+     "amount": -2.5,
+     "procModel": {
+      "triggerRatePerMinute": 60,
+      "procChance": 1,
+      "durationSeconds": 4,
+      "maxStacks": 10
+     },
+     "effectText": "When you strike an enemy, gain 1% Power and Awareness and lose 2.5% Movement Speed for 4 seconds. (Max stack 10)",
+     "assumption": "Expected-value model assumes sustained single-target strike cadence."
+    }
+   ],
+   "currentDescriptions": [
+    "When you strike an enemy, gain 1% Power and Awareness and lose 2.5% Movement Speed for 4 seconds. (Max stack 10)"
+   ]
+  },
+  {
+   "id": 223,
+   "name": "Bismuth Mace",
+   "missingPairs": [
+    [
+     "movementspeed",
+     12.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Prismatic Defier of Dread",
+     "pieces": 2,
+     "name": "Prismatic Defier of Dread - Skyhold/Sanctum Movement",
+     "stat": "MovementSpeed",
+     "amount": 12,
+     "zones": [
+      "Pirates' Skyhold",
+      "Dread Sanctum"
+     ],
+     "effectText": "2 of Set: While in The Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%."
+    }
+   ],
+   "currentDescriptions": [
+    "2 of Set: While in The Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%.\n\nEvery 3s in combat, you will gain a stack of Prismatic Force.\n\nEach stack of Prismatic Force will grant the following bonuses:\nGeneral: +0.35% Power.\nDPS: +0.5% Critical Severity.\nHealer: +0.4% Overall Outgoing Healing.\nTank: +0.4% Awareness.\n\nMax 10 stacks."
+   ]
+  },
+  {
+   "id": 224,
+   "name": "Bismuth Long Shield",
+   "missingPairs": [
+    [
+     "movementspeed",
+     12.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Prismatic Defier of Dread",
+     "pieces": 2,
+     "name": "Prismatic Defier of Dread - Skyhold/Sanctum Movement",
+     "stat": "MovementSpeed",
+     "amount": 12,
+     "zones": [
+      "Pirates' Skyhold",
+      "Dread Sanctum"
+     ],
+     "effectText": "2 of Set: While in The Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%."
+    }
+   ],
+   "currentDescriptions": [
+    "2 of Set: While in The Pirates' Skyhold or Dread Sanctum, your Movement Speed is increased by 12%.\n\nEvery 3s in combat, you will gain a stack of Prismatic Force.\n\nEach stack of Prismatic Force will grant the following bonuses:\nGeneral: +0.35% Power.\nDPS: +0.5% Critical Severity.\nHealer: +0.4% Overall Outgoing Healing.\nTank: +0.4% Awareness.\n\nMax 10 stacks."
+   ]
+  },
+  {
+   "id": 228,
+   "name": "Sabatons of the Vital Sigil",
+   "missingPairs": [
+    [
+     "forte",
+     0.6
+    ],
+    [
+     "outgoinghealing",
+     0.5
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Sustained Vitality",
+     "stat": "OutgoingHealing",
+     "amount": 0.5,
+     "procModel": {
+      "triggerRatePerMinute": 12,
+      "procChance": 1,
+      "maxStacks": 6
+     },
+     "effectText": "For every 5 seconds you are in combat, gain +0.5% Outgoing Healing and +0.6% Forte. Max 6 stacks: 3% Outgoing Healing and 3.6% Forte.",
+     "assumption": "Modeled as deterministic in-combat stack gain every 5 seconds up to 6 stacks."
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Sustained Vitality",
+     "stat": "Forte",
+     "amount": 0.6,
+     "procModel": {
+      "triggerRatePerMinute": 12,
+      "procChance": 1,
+      "maxStacks": 6
+     },
+     "effectText": "For every 5 seconds you are in combat, gain +0.5% Outgoing Healing and +0.6% Forte. Max 6 stacks: 3% Outgoing Healing and 3.6% Forte.",
+     "assumption": "Modeled as deterministic in-combat stack gain every 5 seconds up to 6 stacks."
+    }
+   ],
+   "currentDescriptions": [
+    "Per 5s in combat: +0.5% OH and +0.6% Forte. Max 6 stacks (3% OH, 3.6% Forte)"
+   ]
+  },
+  {
+   "id": 229,
+   "name": "Abyss Conquerer's Provoker Crushers",
+   "missingPairs": [
+    [
+     "criticalseverity",
+     5.0
+    ],
+    [
+     "defense",
+     5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Brute's Tactics",
+     "stat": "Defense",
+     "amount": 5,
+     "procModel": {
+      "uptimeOverride": 0.5
+     },
+     "effectText": "When you are 20' or closer to your target, your Defense is increased by 5%. When you are 20' or further away from your target, your Critical Severity is increased by 5%.",
+     "assumption": "Expected-value model assumes a neutral 50/50 split between near-target and far-target states."
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Brute's Tactics",
+     "stat": "CriticalSeverity",
+     "amount": 5,
+     "procModel": {
+      "uptimeOverride": 0.5
+     },
+     "effectText": "When you are 20' or closer to your target, your Defense is increased by 5%. When you are 20' or further away from your target, your Critical Severity is increased by 5%.",
+     "assumption": "Expected-value model assumes a neutral 50/50 split between near-target and far-target states."
+    }
+   ],
+   "currentDescriptions": [
+    "When you are 20' or closer to your target, your Defense is increased by 5%. When you are 20' or further away from your target, your Critical Severity is increased by 5%."
+   ]
+  },
+  {
+   "id": 233,
+   "name": "Enchanted Depthforged Greaves",
+   "missingPairs": [
+    [
+     "awareness",
+     3.75
+    ],
+    [
+     "deflect",
+     3.75
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Survivor's Critical Resilience",
+     "stat": "Awareness",
+     "amount": 3.75,
+     "procModel": {
+      "uptimeOverride": 0.5
+     },
+     "effectText": "Gain 3.75% Awareness and Deflect while at full health. These bonuses decrease relative to your missing health.",
+     "assumption": "Expected-value model assumes a neutral mid-health baseline (50% of full-health bonus on average)."
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Survivor's Critical Resilience",
+     "stat": "Deflect",
+     "amount": 3.75,
+     "procModel": {
+      "uptimeOverride": 0.5
+     },
+     "effectText": "Gain 3.75% Awareness and Deflect while at full health. These bonuses decrease relative to your missing health.",
+     "assumption": "Expected-value model assumes a neutral mid-health baseline (50% of full-health bonus on average)."
+    }
+   ],
+   "currentDescriptions": [
+    "Gain 3.8% Awareness and Deflect while at full health. These bonuses decrease relative to your missing health.",
+    "Gain 3.8% Awareness and Deflect while at full health. These bonuses decrease relative to your missing health.",
+    ""
+   ]
+  },
+  {
+   "id": 235,
+   "name": "The Dark Maiden's Ward Sabatons",
+   "missingPairs": [
+    [
+     "basedamageboost",
+     5.0
+    ],
+    [
+     "incomingdamage",
+     -5.0
+    ],
+    [
+     "overalloutgoinghealing",
+     5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Spider's Bane",
+     "stat": "BaseDamageBoost",
+     "amount": 5,
+     "zones": [
+      "Temple of the Spider"
+     ],
+     "effectText": "DPS: +5% Base Damage Boost. Tank: -5% Incoming Damage. Healer: +5% Overall Outgoing Healing."
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Spider's Bane",
+     "stat": "IncomingDamage",
+     "amount": -5,
+     "zones": [
+      "Temple of the Spider"
+     ],
+     "effectText": "DPS: +5% Base Damage Boost. Tank: -5% Incoming Damage. Healer: +5% Overall Outgoing Healing."
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Spider's Bane",
+     "stat": "OverallOutgoingHealing",
+     "amount": 5,
+     "zones": [
+      "Temple of the Spider"
+     ],
+     "effectText": "DPS: +5% Base Damage Boost. Tank: -5% Incoming Damage. Healer: +5% Overall Outgoing Healing."
+    }
+   ],
+   "currentDescriptions": [
+    "Gain 4,500 Power in the Underdark and gain more role effectiveness when in the Temple of the Spider. DPS: +5% Base Damage Boost. Tank: -5% Incoming Damage. Healer: +5% Overall Outgoing Healing.",
+    "Gain 4,500 Power in the Underdark and gain more role effectiveness when in the Temple of the Spider. DPS: +5% Base Damage Boost. Tank: -5% Incoming Damage. Healer: +5% Overall Outgoing Healing."
+   ]
+  },
+  {
+   "id": 236,
+   "name": "Tiamat's Golden Necklace",
+   "missingPairs": [
+    [
+     "criticalavoidance",
+     8.0
+    ],
+    [
+     "incomingdamage",
+     -8.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Tiamat's Prized Possessions",
+     "pieces": 3,
+     "name": "Draconic Resilience",
+     "stat": "IncomingDamage",
+     "amount": -8,
+     "procModel": {
+      "uptimeOverride": 0.5,
+      "durationSeconds": 10,
+      "cooldownSeconds": 20
+     },
+     "effectText": "Reduce incoming damage by 8% and gain 8% Critical Avoidance for 10 seconds when your stamina drops below 15% (20 second cooldown).",
+     "assumption": "Expected-value model uses 50% uptime from 10s duration over 20s cooldown; exact stamina behavior can be tuned in procModel fields."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Tiamat's Prized Possessions",
+     "pieces": 3,
+     "name": "Draconic Resilience",
+     "stat": "CriticalAvoidance",
+     "amount": 8,
+     "procModel": {
+      "uptimeOverride": 0.5,
+      "durationSeconds": 10,
+      "cooldownSeconds": 20
+     },
+     "effectText": "Reduce incoming damage by 8% and gain 8% Critical Avoidance for 10 seconds when your stamina drops below 15% (20 second cooldown).",
+     "assumption": "Expected-value model uses 50% uptime from 10s duration over 20s cooldown; exact stamina behavior can be tuned in procModel fields."
+    }
+   ],
+   "currentDescriptions": [
+    "3 of Set: Draconic Resilience: Reduce incoming damage by 8% and gain 8% Critical Avoidance for 10 seconds when your stamina drops below 75% (20 second cooldown)."
+   ]
+  },
+  {
+   "id": 237,
+   "name": "Choker of Searing Magma",
+   "missingPairs": [
+    [
+     "defense",
+     2.0
+    ],
+    [
+     "forte",
+     2.0
+    ],
+    [
+     "power",
+     2.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Magmatic Efficiency",
+     "pieces": 3,
+     "name": "Magmatic Efficiency",
+     "stat": "Power",
+     "amount": 2,
+     "effectText": "3 of Set: Magmatic Efficiency +2% Power, +2% Forte, +2% Defense."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Magmatic Efficiency",
+     "pieces": 3,
+     "name": "Magmatic Efficiency",
+     "stat": "Forte",
+     "amount": 2,
+     "effectText": "3 of Set: Magmatic Efficiency +2% Power, +2% Forte, +2% Defense."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Magmatic Efficiency",
+     "pieces": 3,
+     "name": "Magmatic Efficiency",
+     "stat": "Defense",
+     "amount": 2,
+     "effectText": "3 of Set: Magmatic Efficiency +2% Power, +2% Forte, +2% Defense."
+    }
+   ],
+   "currentDescriptions": []
+  },
+  {
+   "id": 238,
+   "name": "Wrathful Strangler",
+   "missingPairs": [
+    [
+     "incomingdamage",
+     -5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Wrathful Bindings",
+     "pieces": 3,
+     "name": "Flames of Kossuth",
+     "stat": "IncomingDamage",
+     "amount": -5,
+     "procModel": {
+      "triggerRateKey": "daily_power",
+      "durationSeconds": 10
+     },
+     "effectText": "On using a daily power, this artifact scorches nearby targets with a burn lasting for 10 seconds, dealing 300 total magnitude damage and reducing their damage dealt by 5% for 10 seconds. This effect does not stack.",
+     "assumption": "Damage-reduction portion is modeled; 300 magnitude damage portion is pending objective-model mapping."
+    }
+   ],
+   "currentDescriptions": []
+  },
+  {
+   "id": 239,
+   "name": "Netherese Engineer's Pendant",
+   "missingPairs": [
+    [
+     "accuracy",
+     5.0
+    ],
+    [
+     "basedamageboost",
+     5.0
+    ],
+    [
+     "criticalstrike",
+     5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Rune of the Underdark",
+     "pieces": 3,
+     "name": "Rune of the Underdark",
+     "stat": "Accuracy",
+     "amount": 5,
+     "procModel": {
+      "triggerRateKey": "daily_power",
+      "durationSeconds": 6
+     },
+     "effectText": "When you use a Daily power, create a rune on the ground for 6 sec, empowering any ally who stands upon it with 5% Accuracy, 5% Critical Strike, and increases outgoing damage by 5%. Does not stack with other Runes of the Underdark.",
+     "assumption": "Modeled as self-benefit when standing in your own rune; uptime estimated from daily_power trigger rate and 6s duration."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Rune of the Underdark",
+     "pieces": 3,
+     "name": "Rune of the Underdark",
+     "stat": "CriticalStrike",
+     "amount": 5,
+     "procModel": {
+      "triggerRateKey": "daily_power",
+      "durationSeconds": 6
+     },
+     "effectText": "When you use a Daily power, create a rune on the ground for 6 sec, empowering any ally who stands upon it with 5% Accuracy, 5% Critical Strike, and increases outgoing damage by 5%. Does not stack with other Runes of the Underdark.",
+     "assumption": "Modeled as self-benefit when standing in your own rune; uptime estimated from daily_power trigger rate and 6s duration."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Rune of the Underdark",
+     "pieces": 3,
+     "name": "Rune of the Underdark",
+     "stat": "BaseDamageBoost",
+     "amount": 5,
+     "procModel": {
+      "triggerRateKey": "daily_power",
+      "durationSeconds": 6
+     },
+     "effectText": "When you use a Daily power, create a rune on the ground for 6 sec, empowering any ally who stands upon it with 5% Accuracy, 5% Critical Strike, and increases outgoing damage by 5%. Does not stack with other Runes of the Underdark.",
+     "assumption": "Modeled as self-benefit when standing in your own rune; uptime estimated from daily_power trigger rate and 6s duration."
+    }
+   ],
+   "currentDescriptions": [
+    "3 of Set: Rune of the Underdark — When you use a Daily power, create a rune on the ground for 6 sec, empowering any ally who stands upon it with 5% Accuracy, 5% Critical Strike, and increases outgoing damage by 5%. Does not stack with other Runes of the Underdark."
+   ]
+  },
+  {
+   "id": 240,
+   "name": "Mythallar Shard",
+   "missingPairs": [
+    [
+     "unmodeleddamageprocmagnitude",
+     100.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Mythallar",
+     "pieces": 3,
+     "name": "Raw Pressure",
+     "stat": "UnmodeledDamageProcMagnitude",
+     "amount": 100,
+     "procModel": {
+      "enabled": false
+     },
+     "effectText": "Do an additional hit for 100 magnitude damage when you deal Combat Advantage damage.",
+     "assumption": "Captured but not scored yet: magnitude-damage proc needs explicit conversion rules to optimizer objective units."
+    }
+   ],
+   "currentDescriptions": []
+  },
+  {
+   "id": 241,
+   "name": "Iridescent Diamond Pendant",
+   "missingPairs": [
+    [
+     "awareness",
+     5.0
+    ],
+    [
+     "incomingdamage",
+     -5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Diamond",
+     "pieces": 3,
+     "name": "Dashing Decoy",
+     "stat": "IncomingDamage",
+     "amount": -5,
+     "procModel": {
+      "uptimeOverride": 0.5
+     },
+     "effectText": "When you stand still for 3 seconds, you take 5% less damage, your Awareness is increased by 5%, and your threat generation is also increased.",
+     "assumption": "Stand-still condition is modeled with configurable expected uptime (default 50%)."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Diamond",
+     "pieces": 3,
+     "name": "Dashing Decoy",
+     "stat": "Awareness",
+     "amount": 5,
+     "procModel": {
+      "uptimeOverride": 0.5
+     },
+     "effectText": "When you stand still for 3 seconds, you take 5% less damage, your Awareness is increased by 5%, and your threat generation is also increased.",
+     "assumption": "Stand-still condition is modeled with configurable expected uptime (default 50%)."
+    }
+   ],
+   "currentDescriptions": []
+  },
+  {
+   "id": 242,
+   "name": "Ritualistic Necklace",
+   "missingPairs": [
+    [
+     "basedamageboost",
+     2.5
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Malignant Energy",
+     "pieces": 3,
+     "name": "Malignant Energy",
+     "stat": "BaseDamageBoost",
+     "amount": 2.5,
+     "procModel": {
+      "triggerRateKey": "daily_power",
+      "durationSeconds": 10
+     },
+     "effectText": "When you use a Daily power, you will take 2.5% less damage and will do 2.5% more damage to enemies for 10 seconds.",
+     "assumption": "Modeled as self-benefit with expected uptime derived from daily_power trigger cadence and 10s duration."
+    }
+   ],
+   "currentDescriptions": [
+    "",
+    "",
+    "3 of Set: When you use a Daily power, you will take 2.5% less damage and will do 2.5% more damage to enemies for 10 seconds."
+   ]
+  },
+  {
+   "id": 244,
+   "name": "Dreadbreaker Hoop",
+   "missingPairs": [
+    [
+     "forte",
+     7.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Divine Blessing (Greater)",
+     "stat": "Forte",
+     "amount": 7,
+     "effectText": "Your current Hit Points increases your Forte, up to a max of 7%.",
+     "assumption": "Modeled as max-value cap, matching current ring bonus modeling style."
+    }
+   ],
+   "currentDescriptions": [
+    "Your current Hit Points increases your Forte, up to a max of 7%. Currently: 7% Forte"
+   ]
+  },
+  {
+   "id": 245,
+   "name": "Diamond Drow Ring",
+   "missingPairs": [
+    [
+     "awareness",
+     5.0
+    ],
+    [
+     "awareness",
+     3000.0
+    ],
+    [
+     "staminaregeneration",
+     7.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Menzoberranzan Spider",
+     "stat": "Awareness",
+     "amount": 3000,
+     "statType": "rating",
+     "effectText": "Gain 3,000 Awareness. When you are in Menzoberranzan during a District Lockdown, gain 7% Stamina Regeneration and 5% Awareness."
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Menzoberranzan Spider",
+     "stat": "StaminaRegeneration",
+     "amount": 7,
+     "zones": [
+      "Menzoberranzan District Lockdown"
+     ],
+     "effectText": "When you are in Menzoberranzan during a District Lockdown, gain 7% Stamina Regeneration and 5% Awareness."
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Menzoberranzan Spider",
+     "stat": "Awareness",
+     "amount": 5,
+     "zones": [
+      "Menzoberranzan District Lockdown"
+     ],
+     "effectText": "When you are in Menzoberranzan during a District Lockdown, gain 7% Stamina Regeneration and 5% Awareness."
+    }
+   ],
+   "currentDescriptions": [
+    "Gain 3,000 Awareness. When you are in Menzoberranzan during a District Lockdown, gain 7% Stamina Regeneration and 5% Awareness."
+   ]
+  },
+  {
+   "id": 246,
+   "name": "Eilistraee's Enduring",
+   "missingPairs": [
+    [
+     "forte",
+     3000.0
+    ],
+    [
+     "unmodeleddamageprocmagnitude",
+     33.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "The Dark Maiden",
+     "pieces": 2,
+     "name": "The Dark Maiden (2/2)",
+     "stat": "Forte",
+     "amount": 3000,
+     "statType": "rating",
+     "effectText": "2 of Set: Gain 3,000 Forte. Your attacks have a 10% chance to deal an additional 33 magnitude damage around you."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "The Dark Maiden",
+     "pieces": 2,
+     "name": "The Dark Maiden (2/2)",
+     "stat": "UnmodeledDamageProcMagnitude",
+     "amount": 33,
+     "procModel": {
+      "enabled": false,
+      "procChance": 0.1
+     },
+     "effectText": "2 of Set: Your attacks have a 10% chance to deal an additional 33 magnitude damage around you.",
+     "assumption": "Captured but unscored until magnitude-to-objective conversion rules are defined."
+    }
+   ],
+   "currentDescriptions": [
+    "When you have a Shield or Temp HP, attacks against you have a 5% chance to reflect 50% of the damage back to the enemy, to 200 magnitude max damage.",
+    "2 of Set: 5,000 Forte. Your attacks have a 10% chance to deal an additional 33 magnitude damage around you."
+   ]
+  },
+  {
+   "id": 247,
+   "name": "Eilistraee's Tenacity",
+   "missingPairs": [
+    [
+     "forte",
+     3000.0
+    ],
+    [
+     "unmodeleddamageprocmagnitude",
+     33.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "The Dark Maiden",
+     "pieces": 2,
+     "name": "The Dark Maiden (2/2)",
+     "stat": "Forte",
+     "amount": 3000,
+     "statType": "rating",
+     "effectText": "2 of Set: Gain 3,000 Forte. Your attacks have a 10% chance to deal an additional 33 magnitude damage around you."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "The Dark Maiden",
+     "pieces": 2,
+     "name": "The Dark Maiden (2/2)",
+     "stat": "UnmodeledDamageProcMagnitude",
+     "amount": 33,
+     "procModel": {
+      "enabled": false,
+      "procChance": 0.1
+     },
+     "effectText": "2 of Set: Your attacks have a 10% chance to deal an additional 33 magnitude damage around you.",
+     "assumption": "Captured but unscored until magnitude-to-objective conversion rules are defined."
+    }
+   ],
+   "currentDescriptions": [
+    "You take 3% less damage from Ranged attacks.",
+    "2 of Set: 5,000 Forte. Your attacks have a 10% chance to deal an additional 33 magnitude damage around you."
+   ]
+  },
+  {
+   "id": 248,
+   "name": "Liquescent Band",
+   "missingPairs": [
+    [
+     "incomingdamage",
+     -2.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Survivor's Resilience",
+     "stat": "IncomingDamage",
+     "amount": -2,
+     "procModel": {
+      "uptimeOverride": 0.5
+     },
+     "effectText": "Gain up to -2% Incoming Damage based on your missing Health. The max bonus is achieved at 25% or less health.",
+     "assumption": "Expected-value model uses a neutral mid-health baseline (50% of max listed value) to avoid playstyle-specific assumptions."
+    }
+   ],
+   "currentDescriptions": [
+    "Gain up to ~2% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health. Currently: 0% Incoming Damage."
+   ]
+  },
+  {
+   "id": 255,
+   "name": "Dreadwalker Hoop",
+   "missingPairs": [
+    [
+     "forte",
+     7.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Divine Blessing (Greater)",
+     "stat": "Forte",
+     "amount": 7,
+     "effectText": "Your current Hit Points increases your Forte, up to a max of 7%.",
+     "assumption": "Modeled as max-value cap, matching current ring bonus modeling style."
+    }
+   ],
+   "currentDescriptions": [
+    "Your current Hit Points increases your Forte, up to a max of 7%. Currently: 7% Forte"
+   ]
+  },
+  {
+   "id": 257,
+   "name": "Girdle of Coagulated Magma",
+   "missingPairs": [
+    [
+     "defense",
+     2.0
+    ],
+    [
+     "forte",
+     2.0
+    ],
+    [
+     "power",
+     2.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Magmatic Efficiency",
+     "pieces": 3,
+     "name": "Magmatic Efficiency",
+     "stat": "Power",
+     "amount": 2,
+     "effectText": "3 of Set: Magmatic Efficiency +2% Power, +2% Forte, +2% Defense."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Magmatic Efficiency",
+     "pieces": 3,
+     "name": "Magmatic Efficiency",
+     "stat": "Forte",
+     "amount": 2,
+     "effectText": "3 of Set: Magmatic Efficiency +2% Power, +2% Forte, +2% Defense."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Magmatic Efficiency",
+     "pieces": 3,
+     "name": "Magmatic Efficiency",
+     "stat": "Defense",
+     "amount": 2,
+     "effectText": "3 of Set: Magmatic Efficiency +2% Power, +2% Forte, +2% Defense."
+    }
+   ],
+   "currentDescriptions": []
+  },
+  {
+   "id": 258,
+   "name": "Wrathful Waistband",
+   "missingPairs": [
+    [
+     "incomingdamage",
+     -5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Wrathful Bindings",
+     "pieces": 3,
+     "name": "Flames of Kossuth",
+     "stat": "IncomingDamage",
+     "amount": -5,
+     "procModel": {
+      "triggerRateKey": "daily_power",
+      "durationSeconds": 10
+     },
+     "effectText": "On using a daily power, this artifact scorches nearby targets with a burn lasting for 10 seconds, dealing 300 total magnitude damage and reducing their damage dealt by 5% for 10 seconds. This effect does not stack.",
+     "assumption": "Damage-reduction portion is modeled; 300 magnitude damage portion is pending objective-model mapping."
+    }
+   ],
+   "currentDescriptions": []
+  },
+  {
+   "id": 259,
+   "name": "Tiamat's Golden Sash",
+   "missingPairs": [
+    [
+     "criticalavoidance",
+     8.0
+    ],
+    [
+     "incomingdamage",
+     -8.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Tiamat's Prized Possessions",
+     "pieces": 3,
+     "name": "Draconic Resilience",
+     "stat": "IncomingDamage",
+     "amount": -8,
+     "procModel": {
+      "uptimeOverride": 0.5,
+      "durationSeconds": 10,
+      "cooldownSeconds": 20
+     },
+     "effectText": "Reduce incoming damage by 8% and gain 8% Critical Avoidance for 10 seconds when your stamina drops below 15% (20 second cooldown).",
+     "assumption": "Expected-value model uses 50% uptime from 10s duration over 20s cooldown; exact stamina behavior can be tuned in procModel fields."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Tiamat's Prized Possessions",
+     "pieces": 3,
+     "name": "Draconic Resilience",
+     "stat": "CriticalAvoidance",
+     "amount": 8,
+     "procModel": {
+      "uptimeOverride": 0.5,
+      "durationSeconds": 10,
+      "cooldownSeconds": 20
+     },
+     "effectText": "Reduce incoming damage by 8% and gain 8% Critical Avoidance for 10 seconds when your stamina drops below 15% (20 second cooldown).",
+     "assumption": "Expected-value model uses 50% uptime from 10s duration over 20s cooldown; exact stamina behavior can be tuned in procModel fields."
+    }
+   ],
+   "currentDescriptions": [
+    "3 of Set: Draconic Resilience: Reduce incoming damage by 8% and gain 8% Critical Avoidance for 10 seconds when your stamina drops below 75% (20 second cooldown)."
+   ]
+  },
+  {
+   "id": 260,
+   "name": "Netherese Engineer's Chain",
+   "missingPairs": [
+    [
+     "accuracy",
+     5.0
+    ],
+    [
+     "basedamageboost",
+     5.0
+    ],
+    [
+     "criticalstrike",
+     5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Rune of the Underdark",
+     "pieces": 3,
+     "name": "Rune of the Underdark",
+     "stat": "Accuracy",
+     "amount": 5,
+     "procModel": {
+      "triggerRateKey": "daily_power",
+      "durationSeconds": 6
+     },
+     "effectText": "When you use a Daily power, create a rune on the ground for 6 sec, empowering any ally who stands upon it with 5% Accuracy, 5% Critical Strike, and increases outgoing damage by 5%. Does not stack with other Runes of the Underdark.",
+     "assumption": "Modeled as self-benefit when standing in your own rune; uptime estimated from daily_power trigger rate and 6s duration."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Rune of the Underdark",
+     "pieces": 3,
+     "name": "Rune of the Underdark",
+     "stat": "CriticalStrike",
+     "amount": 5,
+     "procModel": {
+      "triggerRateKey": "daily_power",
+      "durationSeconds": 6
+     },
+     "effectText": "When you use a Daily power, create a rune on the ground for 6 sec, empowering any ally who stands upon it with 5% Accuracy, 5% Critical Strike, and increases outgoing damage by 5%. Does not stack with other Runes of the Underdark.",
+     "assumption": "Modeled as self-benefit when standing in your own rune; uptime estimated from daily_power trigger rate and 6s duration."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Rune of the Underdark",
+     "pieces": 3,
+     "name": "Rune of the Underdark",
+     "stat": "BaseDamageBoost",
+     "amount": 5,
+     "procModel": {
+      "triggerRateKey": "daily_power",
+      "durationSeconds": 6
+     },
+     "effectText": "When you use a Daily power, create a rune on the ground for 6 sec, empowering any ally who stands upon it with 5% Accuracy, 5% Critical Strike, and increases outgoing damage by 5%. Does not stack with other Runes of the Underdark.",
+     "assumption": "Modeled as self-benefit when standing in your own rune; uptime estimated from daily_power trigger rate and 6s duration."
+    }
+   ],
+   "currentDescriptions": [
+    "3 of Set: Rune of the Underdark — When you use a Daily power, create a rune on the ground for 6 sec, empowering any ally who stands upon it with 5% Accuracy, 5% Critical Strike, and increases outgoing damage by 5%. Does not stack with other Runes of the Underdark."
+   ]
+  },
+  {
+   "id": 261,
+   "name": "Scintillating Diamond Buckle",
+   "missingPairs": [
+    [
+     "awareness",
+     5.0
+    ],
+    [
+     "incomingdamage",
+     -5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Diamond",
+     "pieces": 3,
+     "name": "Dashing Decoy",
+     "stat": "IncomingDamage",
+     "amount": -5,
+     "procModel": {
+      "uptimeOverride": 0.5
+     },
+     "effectText": "When you stand still for 3 seconds, you take 5% less damage, your Awareness is increased by 5%, and your threat generation is also increased.",
+     "assumption": "Stand-still condition is modeled with configurable expected uptime (default 50%)."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Diamond",
+     "pieces": 3,
+     "name": "Dashing Decoy",
+     "stat": "Awareness",
+     "amount": 5,
+     "procModel": {
+      "uptimeOverride": 0.5
+     },
+     "effectText": "When you stand still for 3 seconds, you take 5% less damage, your Awareness is increased by 5%, and your threat generation is also increased.",
+     "assumption": "Stand-still condition is modeled with configurable expected uptime (default 50%)."
+    }
+   ],
+   "currentDescriptions": []
+  },
+  {
+   "id": 262,
+   "name": "Mythallar Piece",
+   "missingPairs": [
+    [
+     "unmodeleddamageprocmagnitude",
+     100.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Mythallar",
+     "pieces": 3,
+     "name": "Raw Pressure",
+     "stat": "UnmodeledDamageProcMagnitude",
+     "amount": 100,
+     "procModel": {
+      "enabled": false
+     },
+     "effectText": "Do an additional hit for 100 magnitude damage when you deal Combat Advantage damage.",
+     "assumption": "Captured but not scored yet: magnitude-damage proc needs explicit conversion rules to optimizer objective units."
+    }
+   ],
+   "currentDescriptions": []
+  },
+  {
+   "id": 266,
+   "name": "Lolth's Embrace: Rage, Upper",
+   "missingPairs": [
+    [
+     "actionpointgain",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Lolthblessed",
+     "pieces": 2,
+     "name": "Lolthblessed",
+     "stat": "ActionPointGain",
+     "amount": 3,
+     "effectText": "2 of Set: +3% AP Gain."
+    }
+   ],
+   "currentDescriptions": [
+    "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds.",
+    "2 of Set: +3% AP Gain"
+   ]
+  },
+  {
+   "id": 267,
+   "name": "Valiant Dwarven Body Pattern",
+   "missingPairs": [
+    [
+     "awareness",
+     1500.0
+    ],
+    [
+     "criticalseverity",
+     1500.0
+    ],
+    [
+     "power",
+     1500.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Dwarven Resilience",
+     "pieces": 2,
+     "name": "Dwarven Resilience",
+     "stat": "Power",
+     "amount": 1500,
+     "statType": "rating",
+     "effectText": "2 of Set: Gain +1500 Power, Critical Severity, Awareness."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Dwarven Resilience",
+     "pieces": 2,
+     "name": "Dwarven Resilience",
+     "stat": "CriticalSeverity",
+     "amount": 1500,
+     "statType": "rating",
+     "effectText": "2 of Set: Gain +1500 Power, Critical Severity, Awareness."
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Dwarven Resilience",
+     "pieces": 2,
+     "name": "Dwarven Resilience",
+     "stat": "Awareness",
+     "amount": 1500,
+     "statType": "rating",
+     "effectText": "2 of Set: Gain +1500 Power, Critical Severity, Awareness."
+    }
+   ],
+   "currentDescriptions": [
+    "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds.",
+    "2 of Set: +1500 Power, Critical Severity, Awareness."
+   ]
+  },
+  {
+   "id": 269,
+   "name": "Lolth's Embrace: Revenge, Upper",
+   "missingPairs": [
+    [
+     "actionpointgain",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Lolthblessed",
+     "pieces": 2,
+     "name": "Lolthblessed",
+     "stat": "ActionPointGain",
+     "amount": 3,
+     "effectText": "2 of Set: +3% AP Gain."
+    }
+   ],
+   "currentDescriptions": [
+    "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds.",
+    "2 of Set: +3% AP Gain"
+   ]
+  },
+  {
+   "id": 270,
+   "name": "Lolth's Embrace: Chaos, Upper",
+   "missingPairs": [
+    [
+     "actionpointgain",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Lolthblessed",
+     "pieces": 2,
+     "name": "Lolthblessed",
+     "stat": "ActionPointGain",
+     "amount": 3,
+     "effectText": "2 of Set: +3% AP Gain."
+    }
+   ],
+   "currentDescriptions": [
+    "Whenever you Critically Strike with your Powers, you have a 10% chance to reduce your Encounter Power cooldowns by 1 second. This effect may only occur once every 5 seconds.",
+    "2 of Set: +3% AP Gain"
+   ]
+  },
+  {
+   "id": 273,
+   "name": "Ember Plated Shirt",
+   "missingPairs": [
+    [
+     "defense",
+     2.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Infused Defense",
+     "pieces": 2,
+     "name": "Infused Defense",
+     "stat": "Defense",
+     "amount": 2,
+     "effectText": "2 of Set: +2% Defense."
+    }
+   ],
+   "currentDescriptions": [
+    "Whenever you are healed in combat, gain 5% Critical Avoidance for 10 seconds. (20 second cooldown)"
+   ]
+  },
+  {
+   "id": 275,
+   "name": "Ritualistic Strap",
+   "missingPairs": [
+    [
+     "basedamageboost",
+     2.5
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Malignant Energy",
+     "pieces": 3,
+     "name": "Malignant Energy",
+     "stat": "BaseDamageBoost",
+     "amount": 2.5,
+     "procModel": {
+      "triggerRateKey": "daily_power",
+      "durationSeconds": 10
+     },
+     "effectText": "When you use a Daily power, you will take 2.5% less damage and will do 2.5% more damage to enemies for 10 seconds.",
+     "assumption": "Modeled as self-benefit with expected uptime derived from daily_power trigger cadence and 10s duration."
+    }
+   ],
+   "currentDescriptions": [
+    "",
+    "",
+    "3 of Set: When you use a Daily power, you will take 2.5% less damage and will do 2.5% more damage to enemies for 10 seconds."
+   ]
+  },
+  {
+   "id": 279,
+   "name": "Lolth's Embrace: Revenge, Lower",
+   "missingPairs": [
+    [
+     "actionpointgain",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Lolthblessed",
+     "pieces": 2,
+     "name": "Lolthblessed",
+     "stat": "ActionPointGain",
+     "amount": 3,
+     "effectText": "2 of Set: +3% AP Gain."
+    }
+   ],
+   "currentDescriptions": [
+    "Whenever you deal Combat Advantage damage with your Powers, you have a 15% chance to gain 15 Action Points. This effect can only occur once every 3 seconds.",
+    "2 of Set: +3% AP Gain"
+   ]
+  },
+  {
+   "id": 280,
+   "name": "Lolth's Embrace: Rage, Lower",
+   "missingPairs": [
+    [
+     "actionpointgain",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Lolthblessed",
+     "pieces": 2,
+     "name": "Lolthblessed",
+     "stat": "ActionPointGain",
+     "amount": 3,
+     "effectText": "2 of Set: +3% AP Gain."
+    }
+   ],
+   "currentDescriptions": [
+    "Whenever you deal Combat Advantage damage with your Powers, you have a 15% chance to gain 15 Action Points. This effect can only occur once every 3 seconds.",
+    "2 of Set: +3% AP Gain"
+   ]
+  },
+  {
+   "id": 281,
+   "name": "Lolth's Embrace: Chaos, Lower",
+   "missingPairs": [
+    [
+     "actionpointgain",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Lolthblessed",
+     "pieces": 2,
+     "name": "Lolthblessed",
+     "stat": "ActionPointGain",
+     "amount": 3,
+     "effectText": "2 of Set: +3% AP Gain."
+    }
+   ],
+   "currentDescriptions": [
+    "Whenever you deal Combat Advantage damage with your Powers, you have a 15% chance to gain 15 Action Points. This effect can only occur once every 3 seconds.",
+    "2 of Set: +3% AP Gain"
+   ]
+  },
+  {
+   "id": 289,
+   "name": "Mask of the Flayed Legion",
+   "missingPairs": [
+    [
+     "criticalseverity",
+     2.5
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalSeverity",
+     "amount": 2.5,
+     "name": "Thayan Volatility (Thay Bonus)",
+     "zones": [
+      "Thay"
+     ]
+    }
+   ],
+   "currentDescriptions": [
+    "+6.5% Critical Severity in Thay. +4% Critical Severity outside of Thay.",
+    ""
+   ]
+  },
+  {
+   "id": 291,
+   "name": "Bracers of the Ashen Chant",
+   "missingPairs": [
+    [
+     "resourcemaxpercent",
+     15.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "ResourceMaxPercent",
+     "amount": 15,
+     "name": "Resourceful Healer",
+     "effectText": "Your Divinity/Performance/Soulweave maximum increases by 15%."
+    }
+   ],
+   "currentDescriptions": [
+    "Your Divinity/Performance/Soulweave maximum increases by 15%."
+   ]
+  },
+  {
+   "id": 297,
+   "name": "Visor of the Red Bastion",
+   "missingPairs": [
+    [
+     "awareness",
+     0.7
+    ],
+    [
+     "defense",
+     0.8
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Defense",
+     "amount": 0.8,
+     "name": "Thayan Sentinel (Thay Bonus)",
+     "zones": [
+      "Thay"
+     ]
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Awareness",
+     "amount": 0.7,
+     "name": "Thayan Sentinel (Thay Bonus)",
+     "zones": [
+      "Thay"
+     ]
+    }
+   ],
+   "currentDescriptions": [
+    "+2.7% Awareness in Thay. +1.5% Defense and +2% Awareness outside of Thay.",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": 298,
+   "name": "Aegis of the Bloodwrought Covenant",
+   "missingPairs": [
+    [
+     "criticalstrike",
+     5.0
+    ],
+    [
+     "outgoinghealing",
+     5.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "OutgoingHealing",
+     "amount": 5,
+     "name": "Gladiator's Restoration (Ascendant)",
+     "effectText": "For every 5 seconds in combat, +1% Outgoing Healing and Critical Strike. Max 5 stacks.",
+     "procModel": {
+      "uptimeOverride": 0.7
+     },
+     "assumption": "Average 3.5 stacks in extended combat."
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalStrike",
+     "amount": 5,
+     "name": "Gladiator's Restoration (Ascendant)",
+     "procModel": {
+      "uptimeOverride": 0.7
+     },
+     "assumption": "Average 3.5 stacks in extended combat."
+    }
+   ],
+   "currentDescriptions": [
+    "For every 5 seconds you are in combat, you gain 1% Outgoing Healing and Critical Strike. Max Stacks: 5 — 5% Outgoing Healing and Critical Strike. You gain +3% Forte.",
+    "For every 5 seconds you are in combat, you gain 1% Outgoing Healing and Critical Strike. Max Stacks: 5 — 5% Outgoing Healing and Critical Strike. You gain +3% Forte.",
+    "For every 5 seconds you are in combat, you gain 1% Outgoing Healing and Critical Strike. Max Stacks: 5 — 5% Outgoing Healing and Critical Strike. You gain +3% Forte."
+   ]
+  },
+  {
+   "id": 312,
+   "name": "Deathsilver Ring of Submission",
+   "missingPairs": [
+    [
+     "criticalstrike",
+     6.6
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "CriticalStrike",
+     "amount": 6.6,
+     "name": "Critical Spiker",
+     "description": "For every 5 seconds you are in combat, you gain 1.1% Critical Strike. Max amount: 6.6% at 6 stacks.",
+     "proc": {
+      "trigger": "inCombat",
+      "interval_s": 5,
+      "max_stacks": 6,
+      "duration_behavior": "stacksPersistWhileInCombat",
+      "notes": "Gain 1.1% Critical Strike every 5s while in combat, up to 6 stacks (6.6% max)."
+     }
+    }
+   ],
+   "currentDescriptions": [
+    "Per 5s in combat: +1.1% CritStrike. Max 6 stacks (6.6%)"
+   ]
+  },
+  {
+   "id": 441,
+   "name": "Demon Skull",
+   "missingPairs": [
+    [
+     "dmgbonus",
+     3.0
+    ]
+   ],
+   "originalEntries": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "name": "Three Imps",
+     "effectText": "Use: Summons Three Imps that swarm nearby enemies for several seconds. When they perish, they erupt in flames, each dealing 33,832 AoE damage to enemies, making them take 3% more damage from all sources and reducing their Accuracy by 3% for 10 seconds.",
+     "stat": "DmgBonus",
+     "amount": 3,
+     "procModel": {
+      "trigger": "active",
+      "cooldown_s": 60,
+      "duration_s": 10,
+      "maxStacks": 1
+     }
+    }
+   ],
+   "currentDescriptions": [
+    "Resource regen 10% faster when Stamina ≤ 50%"
+   ]
+  }
+ ]
+}
