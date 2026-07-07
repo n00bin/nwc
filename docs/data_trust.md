@@ -450,6 +450,8 @@ Steward sweep (pre-launch optimizer trust campaign). Screenshots:
 - **e50971a worklist** (82 items, `docs/audit/_e50971a_dropped_structured.json`) — 2026-07-07 classification: 19 RESTORED (no action), 10 PARTIAL with concrete recoverable values (ids 39, 42, 52, 57, 61, 62, 71, 74, 210, 218, 297), 49 MISSING (7 total-loss needing fresh screenshots: 237, 238, 240, 257, 258, 261, 262), 2 SUSPECT-do-not-restore (205/206 — current data verified correct, old baseline value wrong), 1 BLOCKER (id 441, above).
 - Minor nits (auditor pass, not independently re-verified): ids 1591 vs 3492 (tracked dup), 5247 vs 7150 (Lifeforged Shield schema divergence), 4184 (stray Damage Bonus stat on Skinstealer), 5237/5238/5244/5253 (Aboleth Shield degenerate-zero fields vs the 71xx set), id 233 (redundant description entry).
 
+**Follow-up fix (same day):** the shared `setBonus` template string on all 9 Aegis/Oathbreaker Impending Doom entries (ids 205, 206, 465, 466, 481, 482, 483, 484, 485) carried a wrong Encounter-power charge CD ("7s CD" — screenshots read **1s CD** at every legible tier) and tier-agnostic combat-rate/duration values. Corrected per tier from the same evidence set: IL3750 = 9s combat/15s; IL4100/4450 = 7s/15s; IL4800/5250 = 5s/20s. Display-text only (the engine doesn't consume these strings).
+
 ---
 
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._
