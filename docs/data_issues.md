@@ -1,5 +1,16 @@
 # Data Issues To Investigate
 
+## Celestial Companion enchant (id 37) scores ZERO in every build — engine wiring gap (found 2026-07-07)
+The only Companion-slot enchant's entire effect (+30%…+180% Companion Damage
+OR +1,500…+9,000 per Augment stat, all rungs screenshot-verified) lives in a
+`companionEnchant`/`rarityLadder` structure that no scoring code reads. The
+ingestion path (`toon-forge.html` ~12902) only pushes `ratingStats`/
+`percentStats`, which are permanently `{}` on this entry — so a slotted
+Companion enchant promises a large bonus in the UI and contributes exactly 0.
+Self-noted as TODO in the entry's own notes but never tracked. Fix is
+code-side: wire `companionDamagePct` into companion-damage scoring and the
+augment grant into the summoned augment's shared stats. (Steward Wave 3.)
+
 ## Trainer's Restoration — does it stack across mounts? (flagged by n00b 2026-07-07)
 The optimizer's healer result put insignia bonus id 18 (Trainer's Restoration:
 3,500 IH + 3,500 OH at full AP, modeled at 35% uptime) on THREE stable mounts,

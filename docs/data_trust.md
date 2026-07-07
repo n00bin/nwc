@@ -488,4 +488,29 @@ Steward sweep Wave 2 (pre-launch optimizer trust campaign). Screenshots: `docs/c
 
 ---
 
+## Wave 3 — Enchantments (+ overload corroboration) — verified 2026-07-07
+
+Steward sweep Wave 3. Screenshots: `docs/calibration/inbox/enchants/` (39 files: 11 enchants.json + 28 overloads.json).
+
+| id | name | system | status | source screenshot | data version | date verified |
+|----|------|--------|--------|-------------------|--------------|---------------|
+| enchant 41–44 | Celestial Sugilite / Obsidian / Netherite / Skullite — Uncommon rungs | enchants | CONFIRMED — all 40 data points (9 stats + CR × 4 gemstones) exact vs the IL300 Uncommon tooltips. Ladder proven = Celestial × (1..6)/6 exactly; with the Celestial tier already trusted (2026-06-16), both ends of the gemstone ladder are now screenshot-anchored | uncommon-obsidian/sugilite_il300_celestial-source.png, celestial-netherite/skullite_il300-source.png | 2026.03.17a | 2026-07-07 |
+| enchant 26 | Celestial Recharge Bonus — Epic/Legendary/Mythic rungs | enchants | CONFIRMED (3%/4%/5% — the former "linear estimate" is now screenshot-proven for these 3 rungs; Uncommon/Rare/Celestial rungs remain estimates) | enchant_recharge-bonus_{epic,legendary,mythic}_2026-06-16.png | 2026.03.17a | 2026-07-07 |
+| enchant 37 | Celestial Companion — Uncommon/Legendary/Mythic rungs | enchants | RE-CONFIRMED (30%/1,500 · 120%/6,000 · 150%/7,500 — matched the already-screenshot-tagged rungs). SEPARATE open item: the enchant's effect is not wired into engine scoring at all (contributes zero to any build) — tracked in data_issues.md as a code gap | enchant_companion-enchantment_{uncommon,legendary,mythic}_2026-06-16.png | 2026.03.17a | 2026-07-07 |
+| enchant 40 | Celestial Rime Temper (R) | enchants | RE-CONFIRMED (15% MaxHP / −12% Incoming Damage / proc 30%·−4.5%·8s·3 stacks — second independent read matches the 2026-07-03 verification) | Celestial Rime Temper (R)_IL7000_celestial-verified.png | 2026.03.17a | 2026-07-07 |
+| enchant 32 | Celestial Lightning Flash | enchants | MISMATCH (pending fix — stored Dmg Bonus 24 contradicts its own description "Increases Damage by 12%"; all 5 sibling damage enchants use ladder 2/4/6/8/10/12 matching their texts; git archaeology shows 24 present since the initial commit with no cited source and the ladder mechanically generated from it. 12 is almost certainly correct. No screenshot exists — capture wanted regardless) | none — needs capture | 2026.03.17a | 2026-07-07 |
+| overloads (24 entries) | Reghed / Doomvault-Thay / Red Harvest-Thay / Pirates' Skyhold / Dread Sanctum / Fiend / Astral Elf / Wildspace families | overloads | RE-CORROBORATED — 24 effect %/zone/target checks exact vs the 2026-06-16 verification. The two distinct "Thay" families are correctly separated (via `zones`: Doomvault vs Thay) — naming-prefix trap documented: never merge them | overload-*.png (28 files) | 2026.03.17a | 2026-07-07 |
+| overload 41, 42 | Reghed Native, Thay Native | overloads | MISMATCH (pending fix — the +2% Accuracy component of each combined tier exists only in effectText; no structured equipBonuses entry, engine silently drops it) | overload-reghed-native.png, overload-thay-native.png | 2026.03.17a | 2026-07-07 |
+| overload 40 | Thay Supremacy | overloads | MISMATCH (pending fix — the entire −5% Incoming Damage half is unstructured; only the +5% Dmg Bonus half has an equipBonuses entry) | overload-thay-supremacy.png | 2026.03.17a | 2026-07-07 |
+
+### Wave 3 audit findings (enchants.json, engine-checked)
+- **id 37 Celestial Companion — engine wiring gap (BLOCKER-class, code not data):** ratingStats/percentStats are empty; the real values live in `companionEnchant`/`rarityLadder` which nothing in the scoring pipeline reads. The only Companion-slot enchant thus contributes exactly 0 to every build. Tracked in data_issues.md 2026-07-07.
+- **10 Combat enchants missing `alwaysActive:true`** (ids 27, 29, 30, 31, 32, 33, 34, 35, 38, 39) — their static Equip % lines get classed as conditional and hidden from the default stat panel (display-only; engine totals unaffected). Same bug class deliberately fixed on ids 36/40; fix never propagated.
+- **7 `appliesTo` mislabels** (ids 30, 31, 33, 34, 36, 39, 40 tagged "Offense" despite tank/heal stat lines) — cosmetic, visible on the public db pages.
+- **id 39 Radiant Sanctuary** — the proc's +6% Incoming Healing half has no structured entry (its +5% Outgoing Damage half does).
+- Minors: ids 32/38 `rarities.Celestial` independently rounded (11 vs true 10.8 — public page disagrees with engine by 0.2); `ratingStats` vestigial ({}) on all 44; id 28 per-stack ambiguity (enemy-scope, engine-skipped); overloads schema has no bind/campaign/req-IL/combat-time fields at all (modeling decision, documented).
+- Negative findings: ids clean 1–44 no dups; all 43 rarity ladders 100% monotonic; CR = 0.9×IL exact across 150 gemstone ladder points; every stat name resolves through the engine's catalog/aliases — nothing silently dropped except the items flagged above.
+
+---
+
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._

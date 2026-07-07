@@ -72,6 +72,13 @@ unverified.
   actually captured the Buffs overlay; the real Boons-tab shot is still
   needed.
 
+## 9. From the Wave 3 sweep (enchantments)
+- **Celestial Lightning Flash tooltip** (any rank) — stored value says 24%
+  Damage Bonus, its own description and all 5 sibling enchants say 12%;
+  one tooltip settles it for good.
+- **Recharge Bonus at Uncommon, Rare, or Celestial** — Epic/Legendary/Mythic
+  are now proven; the outer rungs are still estimates (low priority).
+
 ## Backlog (when bored, not urgent)
 - **177 gear sets with no set-bonus text** — the full IL-sorted list lives in
   `docs/missing_set_bonuses.md`.
