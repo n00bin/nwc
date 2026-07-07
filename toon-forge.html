@@ -3404,7 +3404,8 @@
         }
         // Stash for the gearIL repair below — the saved tier belonged to the
         // OLD name; keeping it can resolve the wrong tier under the new name.
-        state.__gearRenamedSlots = _renamed.map(r => r.slot);
+        // The old name goes along so a tier encoded in it can be recovered.
+        state.__gearRenamedSlots = _renamed.map(r => ({ slot: r.slot, from: r.from }));
       }
       state.partyContent = s.partyContent || "dungeon";
       state.partyAllies = Array.isArray(s.partyAllies) ? s.partyAllies.slice() : [];
@@ -3436,10 +3437,17 @@
         const d1 = artModDef("Off Hand 1", oh1.stat);
         oh1.value = d1 ? d1.max : 0;
       }
-      // Slots whose gear name was migrated above: drop the saved tier so the
-      // renamed item resolves name-only instead of failing the IL filter.
+      // Slots whose gear name was migrated above: if the OLD name encoded a
+      // tier ("Dirgeblade (IL 4450)", "Aegis — IL 4550"), carry it into
+      // gearIL so the merged plain-name entry resolves at the sharer's tier;
+      // otherwise drop the saved tier so the renamed item resolves name-only
+      // instead of failing the IL filter.
       if (Array.isArray(state.__gearRenamedSlots)) {
-        for (const slot of state.__gearRenamedSlots) state.gearIL[slot] = null;
+        for (const r of state.__gearRenamedSlots) {
+          const slot = (r && typeof r === "object") ? r.slot : r;
+          const m = (r && r.from) ? String(r.from).match(/[(—–-]\s*IL\s*([\d,]+)\s*\)?/i) : null;
+          state.gearIL[slot] = m ? +m[1].replace(/,/g, "") : null;
+        }
         delete state.__gearRenamedSlots;
       }
       // Damage-sim settings: restore explicitly with defaults, so loading an
@@ -6715,7 +6723,19 @@
       // entry was relabeled to its true 4450 rung; the OH "4550" was a
       // wrong-tier duplicate of the existing 4450 entry and was removed.
       "Oathbreaker's Malevolence — IL 4550": "Oathbreaker's Malevolence — IL 4450",
-      "Aegis of the Condemned — IL 4550": "Aegis of the Condemned"
+      "Aegis of the Condemned — IL 4550": "Aegis of the Condemned",
+      // Bard Impending Doom pair, 2026-07-06: "(IL xxxx)"-suffixed entries
+      // merged into plain names so the picker groups all six ranks into one
+      // card with the tier dropdown (the Warlock Omen of Doom model). The
+      // gearIL repair below recovers the tier encoded in the old name.
+      "Dirgeblade (IL 3750)": "Dirgeblade",
+      "Dirgeblade (IL 4100)": "Dirgeblade",
+      "Dirgeblade (IL 4450)": "Dirgeblade",
+      "Dirgeblade (IL 4800)": "Dirgeblade",
+      "Dirgeblade (IL 5250)": "Dirgeblade",
+      "Strings of the Forsaken (IL 3750)": "Strings of the Forsaken",
+      "Strings of the Forsaken (IL 4450)": "Strings of the Forsaken",
+      "Strings of the Forsaken (IL 5250)": "Strings of the Forsaken"
     };
 
     // Class-aware aliases — variant splits where the OLD name still exists
