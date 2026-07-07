@@ -5793,6 +5793,9 @@
     }
     function _statSection(item, title) {
       const lines = [];
+      // Weapon bonus damage leads, matching the in-game tooltip (kept in
+      // sync with the gear-card stat blocks).
+      if (item.weaponDamage) lines.push(`+${(+item.weaponDamage).toLocaleString()} Damage`);
       if (item.ratingStats) {
         for (const [s, v] of Object.entries(item.ratingStats)) {
           if (v) lines.push(`+${(+v).toLocaleString()} ${s}`);
@@ -14051,13 +14054,19 @@
         : "";
       const tier = item.tier || "";
       // Refinement quality (artifact weapons): explicit data field wins,
-      // else the ladder label derived in gearOptionsForSlot. When known it
-      // REPLACES the CR readout (rarity is what players recognize); CR only
-      // shows when no rarity label exists.
+      // else the ladder label derived in gearOptionsForSlot. Shown alongside
+      // CR — the in-game tooltip lists "+X Combined Rating" on every rank,
+      // so hiding CR behind the rarity label read as "missing its CR"
+      // (n00b, Bard Impending Doom pair 2026-07-06).
       const quality = item.quality || item._quality || "";
-      const meta = [il, quality ? "✦ " + quality : cr, tier, setMeta].filter(Boolean).join(" · ");
+      const meta = [il, quality ? "✦ " + quality : "", cr, tier, setMeta].filter(Boolean).join(" · ");
 
       // ---- stat block ----
+      // Weapon bonus damage ("+50 Damage" at Legendary+ on Soul Collector
+      // weapons) leads the stat block like the in-game tooltip.
+      const damageParts = item.weaponDamage
+        ? [`+${(+item.weaponDamage).toLocaleString()} Damage`]
+        : [];
       const ratingParts = item.ratingStats
         ? Object.entries(item.ratingStats).map(([s, v]) => `+${v.toLocaleString()} ${s}`)
         : [];
@@ -14067,7 +14076,7 @@
       const abilityParts = (item.abilityBonuses && Object.keys(item.abilityBonuses).length)
         ? Object.entries(item.abilityBonuses).map(([s, v]) => `+${v} ${s}`)
         : [];
-      const statLines = [...ratingParts, ...percentParts, ...abilityParts];
+      const statLines = [...damageParts, ...ratingParts, ...percentParts, ...abilityParts];
       const statBlock = statLines.length
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Stats</div>
@@ -14719,7 +14728,11 @@
         : "";
       const meta = [il, cr, type, cd, setMeta].filter(Boolean).join(" · ");
 
-      // Stats
+      // Stats — weapon bonus damage leads, matching the in-game tooltip
+      // (kept in sync with renderGearItemSingle's stat block).
+      const damageParts = item.weaponDamage
+        ? [`+${(+item.weaponDamage).toLocaleString()} Damage`]
+        : [];
       const ratingParts = item.ratingStats
         ? Object.entries(item.ratingStats).map(([s, v]) => `+${v.toLocaleString()} ${s}`)
         : [];
@@ -14729,7 +14742,7 @@
       const abilityParts = (item.abilityBonuses && Object.keys(item.abilityBonuses).length)
         ? Object.entries(item.abilityBonuses).map(([s, v]) => `+${v} ${s}`)
         : [];
-      const statLines = [...ratingParts, ...percentParts, ...abilityParts];
+      const statLines = [...damageParts, ...ratingParts, ...percentParts, ...abilityParts];
       const statBlock = statLines.length
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Stats</div>
