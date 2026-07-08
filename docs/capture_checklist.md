@@ -134,9 +134,9 @@ comparison answers it for the whole file.
   it's really 6% or a game typo for 0.06%.
 
 ## 11. From the Wave 3 sweep (enchantments)
-- **Celestial Lightning Flash tooltip** (any rank) — stored value says 24%
-  Damage Bonus, its own description and all 5 sibling enchants say 12%;
-  one tooltip settles it for good.
+- ~~**Celestial Lightning Flash tooltip**~~ ✅ DONE 2026-07-08 — 12% confirmed
+  at Celestial; Accuracy/Crit Strike proven to be 3.6%/stack ×3 stacks
+  (structure refined); proof filed.
 - **Recharge Bonus at Uncommon, Rare, or Celestial** — Epic/Legendary/Mythic
   are now proven; the outer rungs are still estimates (low priority).
 
