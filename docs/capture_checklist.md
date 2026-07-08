@@ -59,6 +59,21 @@ crit-proc confirmed too. Proof filed.
   Eilistraee's rings (5,000 Forte?), Visage of the Undying Faith (stacking
   regen model).
 
+## 6b. Healer collar sweep (in-game collar list)
+The database can only supply 2–3 heal-relevant collars for a healer's five
+stable slots — likely a data-supply gap, not reality. Browse the collar
+vendor/collection list in-game and screenshot any pages showing collars with
+**Outgoing Healing, Incoming Healing, Defense, or Awareness** stats — anything
+missing from our 75 known collars gets added.
+
+## 6c. Name-collision pairs — real in-game names needed
+Seven database pairs share a name + item level but are genuinely different
+items (different bonuses/classes). Before renaming them, we need their REAL
+in-game names — screenshot each item's tooltip if you ever encounter them:
+Prismatic Crystalflex Bracers, Prismatic Bismuth Mail, Crystalflex Bracers,
+Fractal Barbut (plus the Skinstealer pair — its two rows disagree on a
+stacking proc).
+
 ## 7. Chilling Flow — Frostbound tier (IL 4800)
 Any Frostbound weapon's set-details panel; per-stack values for this tier are
 unverified.
