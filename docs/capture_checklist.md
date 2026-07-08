@@ -42,9 +42,19 @@ but it was never verified and is currently absent from the database.
 - **Vambraces of the Tyrant's Grip** — Defense: 4% or 3%?
 - **Greaves of the Unbroken Doctrine** — confirm 40% Incoming Healing / 13%
   Movement Speed (old records had it reversed).
-- **Demon Skull** (artifact, just restored to the database) — file the proof
-  image for its stats.
+- **Demon Skull** (artifact) — file the proof image for its stats (two old
+  records disagreed 5% vs 3% on its debuff).
 - **Astral Raider's Jackboots** — Scaled Disdain text (cosmetic tidy-up).
+- **Visage of the Eternal Herald** — old records and current text disagree on
+  whether its bonus is resource MAX or resource REGEN.
+- **Mask of the Bloodletter** — an old 20% Encounter-damage proc vanished from
+  its records entirely; tooltip settles whether it still exists.
+- **Iridescent Diamond Pendant** — 8th "total-loss" item: no bonus data
+  survives anywhere; only a tooltip can restore it.
+- Value-drift confirmations (one tooltip each, low priority): Cuirass of the
+  Crimson Reckoning (3.3%?), Ebon Crusader's Aegis set panel (Forte 8%?),
+  Eilistraee's rings (5,000 Forte?), Visage of the Undying Faith (stacking
+  regen model).
 
 ## 7. Chilling Flow — Frostbound tier (IL 4800)
 Any Frostbound weapon's set-details panel; per-stack values for this tier are

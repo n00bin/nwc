@@ -514,4 +514,16 @@ Steward sweep Wave 3. Screenshots: `docs/calibration/inbox/enchants/` (39 files:
 
 ---
 
+## Wave 4 — e50971a long tail (gear.json) — structured 2026-07-07
+
+The remaining MISSING bucket of the 82-item e50971a worklist: **35 items** got their dropped equip/set bonuses re-structured from their OWN in-data tooltip text (`parsedFrom:"description"` — corroborated, not screenshot-proven; treat as structured-but-unverified until captured). Re-classification against current data: 23 ids already RESTORED by earlier passes (incl. 10/242/275 whose stat names were legitimately corrected vs baseline), 11 PARTIAL done in Batch 5, 2 SUSPECT protected (205/206), 1 BLOCKER resolved (441).
+
+Highlights: Blood Bargain 2pc structured on ids 200/201 from in-data setBonus text (Thay-zoned +12% Movement Speed / +8% Forte — baseline said 3% Forte, drift flagged, capture still wanted); Prismatic Defier of Dread fully structured on ids 223/224 using the existing `roleEffects` convention (per-role per-stack values from verified siblings 143/150); Spider's Bane role trio on id 235 mirrored from verified siblings; Lolthblessed +3% AP Gain on all six Lolth's Embrace pieces; Dwarven Resilience/Tiamat's/Rune of the Underdark set bonuses; plus 15 single-item procs/bonuses.
+
+**Value-drift flags (description used, capture wanted):** id 65 (Control Resist 3.5→3.3), ids 200/201 (Forte 3→8), ids 239/260 (BaseDamageBoost→Outgoing Damage naming), ids 246/247 (Forte 3,000→5,000; their 33-magnitude damage proc left unstructured — no schema convention for proc damage).
+**Skipped + need tooltips:** id 43 (Visage of the Eternal Herald — resource-MAX vs REGEN mechanic conflict), id 78 (Mask of the Bloodletter — flagged proc gone without text trace), id 77 corrected Max→Regen from its own text (4%×5 stacking, flagged for confirmation).
+**New total-loss find:** id 241 (Iridescent Diamond Pendant) — `equipBonuses: []`, zero description text; joins the 7 known total-loss ids (237/238/240/257/258/261/262). All 8 need fresh captures.
+
+---
+
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._
