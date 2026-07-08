@@ -116,14 +116,10 @@ unverified.
   together with the Life Lessons tooltip (masters 4/5/8 at 3/3, 104 spent,
   rank gates re-confirmed).
 
-## 9. The one screenshot that settles 45 open clusters (Wave 6)
-Pick ANY class-universal older campaign item that two of your characters of
-DIFFERENT classes can loot/preview (good candidates: Antique Shield of the
-Vale, Black Ice Armor, Hammerstone Gloves, Eternal Boots) and screenshot the
-SAME item's tooltip on both characters. If the secondary stats differ by
-class, the database's 45 "conflicting duplicate" clusters are all legitimate
-per-class variants; if identical, they're intake errors we can merge. One
-comparison answers it for the whole file.
+## ~~9. The one screenshot that settles 45 open clusters~~ ✅ DONE 2026-07-08
+Answered: **per-class variants are real** (Hammerstone Mask vs Helmet proof —
+different names, different secondary stats, same slot/IL/CR). All 45 clusters
++ the 32 conservative skips keep every row. Proof filed.
 
 ## 10. From the Wave 5 sweep (companion gear + belts)
 - **Any Thayan or Molten companion-gear tooltip** — those two tiers (18 items)
