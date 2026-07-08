@@ -82,7 +82,15 @@ unverified.
   actually captured the Buffs overlay; the real Boons-tab shot is still
   needed.
 
-## 9. From the Wave 3 sweep (enchantments)
+## 9. From the Wave 5 sweep (companion gear + belts)
+- **Any Thayan or Molten companion-gear tooltip** — those two tiers (18 items)
+  have zero screenshots anywhere; the Frostforged/True Ice tiers are now fully
+  verified, so any lower-tier shot extends the pattern.
+- **Empowered Chain of Scales, zoomed on the Stamina Regeneration line** —
+  tooltip reads "6%" but every lower tier runs 0.02–0.05%; confirm whether
+  it's really 6% or a game typo for 0.06%.
+
+## 10. From the Wave 3 sweep (enchantments)
 - **Celestial Lightning Flash tooltip** (any rank) — stored value says 24%
   Damage Bonus, its own description and all 5 sibling enchants say 12%;
   one tooltip settles it for good.

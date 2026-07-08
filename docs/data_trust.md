@@ -526,4 +526,27 @@ Highlights: Blood Bargain 2pc structured on ids 200/201 from in-data setBonus te
 
 ---
 
+## Wave 5 — Companion gear + belt items — verified 2026-07-07
+
+Screenshots: `docs/calibration/inbox/companion-gear/` (18 files) + `docs/calibration/inbox/belt-items/` (7 files). Note the naming collision: the `belt-items` folder holds the **Chain of Scales consumable relic family (buffs.json id 93, category "Belt Item")**, NOT gear.json Belt-slot equipment.
+
+| id | name | system | status | source screenshot | data version | date verified |
+|----|------|--------|--------|-------------------|--------------|---------------|
+| companion_gear 19–27 | Frostforged Belt/Girdle/Grimoire/Icon/Necklace/Ring/Sword Knot/Talisman/Tome of the Companion (IL 2850, CR 2565) | companion_gear | CONFIRMED — all 9 pieces, every stat exact vs tooltips | Frostforged *_IL2850.png (9 files) | 2026.03.17a | 2026-07-07 |
+| companion_gear 28–36 | True Ice (same 9 pieces, IL 3000, CR 2700) | companion_gear | CONFIRMED — all 9 pieces, every stat exact vs tooltips | True Ice *_IL3000.png (9 files) | 2026.03.17a | 2026-07-07 |
+| companion_gear 19/28 vs 20/29 | Tome vs Grimoire stat-budget skew | companion_gear | CONFIRMED REAL — **intentional outlier, do not normalize**: Tome carries ~1.8× the Grimoire's stat sum at the identical Combined Rating; both items' screenshots match stored values exactly, so the skew is in-game itemization, not a data error | the 4 Tome/Grimoire files above | 2026.03.17a | 2026-07-07 |
+| companion_gear 1–18 | Thayan + Molten tiers (all 18) | companion_gear | UNVERIFIABLE — no screenshot exists anywhere in the archive for these two tiers; needs captures (Thayan ids 1-9 also have empty `source` fields) | none — needs capture | 2026.03.17a | 2026-07-07 |
+| buffs 93 | Chain of Scales (7-tier belt relic) | buffs | CONFIRMED (Awareness ladder 1.2/1.5/1.8/2.1/2.4/2.7/3.0 exact vs all 7 tooltips). Screenshots also supply the per-tier secondary choice-stat values never stored (pending backfill). FLAG: Empowered tier's Stamina Regeneration reads "6%" verbatim but breaks the 0.02→0.05% linear progression of tiers 1–6 — likely a game-tooltip typo for ~0.06%; report verbatim, needs re-capture/confirmation before the value is relied on | Chain of Scales.png … Empowered Chain of Scales.png (7 files) | 2026.03.17a | 2026-07-07 |
+
+### Wave 5 audit findings — gear.json Belt slot (207 entries) + companion_gear
+- **NEW SYSTEMIC: duplicate-intake epidemic on class-universal crafted accessories.** 47 duplicate clusters covering 117 of 207 belt entries (~69 redundant rows) — the same physical item was screenshot-intaken once per class folder across 3 intake generations (pre-05-15 / 2026-05-15 warlock + rogue batches / 2026-05-27 pipeline batch). Worse: several clusters DISAGREE — the newer screenshot-intake copies systematically dropped abilityBonuses (Silverspruce Sash 2518-2520 vs 4843-4845; Company Gladiator/Ward Belts), and a few have 1-point stat drift (Silverspruce Belt 3802/3803 vs 4534/4535; Company Assault Belt 3877 Charisma). Winners must be arbitrated against the original screenshots (they exist per class folder) — newer ≠ more correct here. **Project-wide: the same 3 intake-batch signatures touch ~947 gear.json entries — a dedicated dedup wave is recommended.**
+- **Barovian Cummerbund (1252) vs Cumberbund (1736)** — spelling-variant duplicate, identical stats; merge (keep 1252, correct spelling).
+- **Draining Sash (861 vs 862)** — same name + IL, genuinely different stat variants (defensive vs offensive); needs name disambiguation, not deletion.
+- **7 Belt items with item_level: 0** (ids 12, 1251, 1252, 1255, 1256, 1736, 2047 — Ravenloft/Valhalla families; 1251 already tracked, other 6 new) + 8 more Neck-slot items same bug. IL-range filters misplace them. Real ILs need verification (legacy tiers deviate from the 0.9 CR ratio — don't derive, capture).
+- Reference sheet `sheet1__Companion_Gear.csv`: CombinedRating column corrupt (all 382 rows = 90,000) — never bulk-import it; also documents ~382 lower-tier companion gear items (IL 405–1800) absent from our data (leveling-range completeness gap, low priority for an endgame optimizer).
+- Cosmetic: companion_gear slot-vocabulary drift across tiers (Neck vs Grimoire/Icon/Talisman — engine-safe, SEO pages show it); 2 screenshot filename typos; companions.html has no companion-gear browsing surface (SEO pages dead-end — site feature gap, not data).
+- Negative findings: companion_gear.json schema 100% consistent, no dups, no placeholders; empty equipBonuses correct-by-design (pure stat-sticks); belt subset has no PvE/PVE contamination, no encoding bugs, no id dups; the "Silverspruce mis-slot" note in data_issues.md is stale (already resolved).
+
+---
+
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._
