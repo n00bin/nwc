@@ -28,10 +28,9 @@ Full capture filed (…_set_details_full.png): 3%/3% confirmed, 9s/15s text
 corrected, and the equip line proven flat +5,200 Power (stored 5% was wrong —
 fixed). Dirgeblade ladder now proven end to end.
 
-## 4. Company PvE Armor — does a 4-piece bonus exist?
-Any Company Ward/Restoration/Raid piece's set panel. The whole 24-item family
-currently has no working set bonus in the database; one shot settles whether
-one exists at all.
+## ~~4. Company PvE Armor — does a 4-piece bonus exist?~~ ✅ DONE 2026-07-08
+It doesn't — the tooltip has no set section at all (Company Raid Mask proof
+filed). The family is intentionally blank; database was already correct.
 
 ## 5. Blood Bargain 2-piece (Ebon Crusader's Aegis / Oathbreaker's Judgment)
 Set-details panel. Old records claim "+12% Movement Speed / +3% Forte in Thay"
