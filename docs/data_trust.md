@@ -578,4 +578,19 @@ Full project-wide cluster map built and executed for the safe subset. Artifacts:
 
 ---
 
+## Wave 8 — final unswept files (buffs, kits, mount powers, collars) — 2026-07-08
+
+Integrity audit of the last five unswept source files (336 records; no screenshot archive exists for these — engine-consumption + cross-reference sweep). **Zero broken cross-file references** (all 339 mounts' combatRef/equipRef/bonusRef resolve); kits.json fully clean; consumable stat values almost all accurate vs the intake-source guide.
+
+**Fixed 2026-07-08 (bundle approved by n00b):**
+- mount_combat_powers ids 93/94/95 (Mossy Flail Snail, Spinning Axe Strike (Teal), Terrifying Roar): magnitude was stored at Legendary with no anchorRarity → engine read ~33% low at every rarity. Corrected to the Mythic anchor (1000/1000/800, values from each entry's own documented ladder) — same fix class as the 2026-06-29 sweep that caught ids 38/40/48/53/74.
+- mount_combat_powers id 87 (Hell's Impact): `rechargeTime` → `rechargeTimeSeconds` (only entry with the misnamed field; display + burst calc read the canonical name).
+- buffs: ids 40 "Honey Bread" + 42 "Rataoulle" deleted (typo-dups of 137 "Honeyed Bread"/138 "Ratatouille", identical stats+source; 98 → 96 entries). id 33 Squash Soup category Elixir → Event Food (was unfindable in its tab). id 69 Lightwine "Regeneration" → "Awareness" 312 (unrecognized stat scoring 0; successor id 70 already used Awareness). id 30 Grand Summer Feast Deflect 2.5 → 1.5 (intake-source guide value; every other stat matched it — flagged for in-game verify). 7 stale notes rewritten to match stored stats. ids 91/98/103 (Dragon scrolls + Siegebreaker horn): effects structured from their own notes per existing conventions (enemyType/damagePct like id 51; timed rating window like id 108).
+- mount_combat_powers id 32 (Rejuvenating Favor) note corrected: its 20% MaxHP heal is NOT modeled (was falsely claimed) — engine gap tracked in data_issues.md.
+
+**Still needs captures (on the checklist):** Effervescent Tidespan Potion's true stat ("Recovery" is unrecognized, contributes 0); Tenser's Floating Disk's real combat power (orphaned power id 69 self-identifies as its power while mounts 120/336 point at id 32 — one screenshot decides the swap); Predator's Grace CR/stats (breaks the file's 0.9×IL convention); Unified Crescent Collar CR ladder (breaks its family's 180-ladder); Grand Summer Feast Deflect confirm.
+**Code gaps tracked in data_issues.md:** self-scope mount combat-power bonuses never ingested + "Heal Bonus" stat unrecognized; exclusiveGroup:"None" buffs (Potion of Giant Strength, Potion of Speed) can never surface in any picker.
+
+---
+
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._

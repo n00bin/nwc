@@ -74,6 +74,21 @@ Prismatic Crystalflex Bracers, Prismatic Bismuth Mail, Crystalflex Bracers,
 Fractal Barbut (plus the Skinstealer pair — its two rows disagree on a
 stacking proc).
 
+## 6d. From the Wave 8 sweep (consumables + mount powers)
+- **Effervescent Tidespan Potion** tooltip — its stored stat says "Recovery",
+  a name that doesn't exist; the potion currently contributes 0.
+- **Tenser's Floating Disk** — open the mount and screenshot its combat
+  power. Our data links it to "Rejuvenating Favor" (another mount's heal),
+  but an orphaned power named for it ("Tenser's Transformation") exists;
+  one shot decides the swap.
+- **Predator's Grace** (mount equip power) tooltip — its stored Combined
+  Rating breaks the file-wide 0.9×IL rule; verify CR + the 3-stat kit.
+- **Unified Crescent Collar** (any rank) tooltip — its CR ladder (200-type)
+  breaks the Unified family's 180-ladder; likely a copy-paste from the
+  Practical template.
+- **Grand Summer Feast** tooltip — confirm Deflect is 1.5% (corrected from a
+  2.5% transcription; every other stat matched the source guide).
+
 ## 7. Chilling Flow — Frostbound tier (IL 4800)
 Any Frostbound weapon's set-details panel; per-stack values for this tier are
 unverified.

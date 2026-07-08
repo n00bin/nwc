@@ -1,5 +1,24 @@
 # Data Issues To Investigate
 
+## Mount combat-power self-buffs never scored + "Heal Bonus" stat unrecognized (found 2026-07-08)
+`buildEngineCharacter` only uses `state.activeCombatPower` for TIL and a
+narrow enemy-debuff path (scope==="enemy", stat in {Dmg Debuff, Enemy Dmg
+Taken}); self-scope combat-power equipBonuses are never ingested. Concrete
+casualty: Rejuvenating Favor (mount_combat_powers id 32, Golden Rage Drake)
+whose 20% MaxHP heal is stored as `stat:"Heal Bonus"` — a name the engine
+doesn't recognize anyway (not in TOON_FORGE_STATS/aliases/silenced list). Its
+note falsely claimed it was modeled; corrected 2026-07-08. Fix is code-side:
+route self-scope combat-power heal/stat bonuses into the heal-sim layer under
+a recognized stat name. (Wave 8 audit.)
+
+## exclusiveGroup "None" buffs can never surface in any picker (found 2026-07-08)
+The Toon Forge buff picker special-cases only "Diamond Blessing" out of the
+"None" group; every other None-group buff — Potion of Giant Strength (id 111,
+STR +3) and Potion of Speed (id 112, +20% Movement Speed) — carries real
+structured data but never renders in any picker, so it can't be toggled on.
+Low impact (legacy leveling items) but a genuine dead entry. Code-side fix in
+the picker's group handling. (Wave 8 audit.)
+
 ## Celestial Companion enchant (id 37) scores ZERO in every build — engine wiring gap (found 2026-07-07)
 The only Companion-slot enchant's entire effect (+30%…+180% Companion Damage
 OR +1,500…+9,000 per Augment stat, all rungs screenshot-verified) lives in a
