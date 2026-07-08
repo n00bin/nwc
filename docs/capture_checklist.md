@@ -94,8 +94,9 @@ Any Frostbound weapon's set-details panel; per-stack values for this tier are
 unverified.
 
 ## 8. From the Wave 2 sweep (artifacts + boons)
-- **Life Lessons master boon tooltip** — the ONE master boon never captured;
-  its trigger chance is unknown (engine guesses 20%).
+- ~~**Life Lessons master boon tooltip**~~ ✅ DONE 2026-07-08 — chance is 10%
+  (engine had guessed 20%), R3 heal corrected 15→10%/rank, durations 4s.
+  Same shot closed the Erik Boons-tab re-capture below.
 - **Charm of the Serpent** — close-up of the Use-effect line (settles a 16%
   vs 2% damage-taken reading).
 - **Skull Lord Staff at Mythic** — the Gold Bonus % at max rank (stored value
@@ -111,9 +112,9 @@ unverified.
   Third Eye, Mystic Bolt.
 - **Enhanced Application + Blessed Resilience boon tooltips, re-framed** —
   the first captures cut off the point-cost footer.
-- **Erik's Boons tab (Masters view)** — the intended allocation screenshot
-  actually captured the Buffs overlay; the real Boons-tab shot is still
-  needed.
+- ~~**Erik's Boons tab (Masters view)**~~ ✅ DONE 2026-07-08 — captured
+  together with the Life Lessons tooltip (masters 4/5/8 at 3/3, 104 spent,
+  rank gates re-confirmed).
 
 ## 9. The one screenshot that settles 45 open clusters (Wave 6)
 Pick ANY class-universal older campaign item that two of your characters of
