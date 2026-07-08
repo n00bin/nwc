@@ -22,13 +22,13 @@ note falsely claimed it was modeled; corrected 2026-07-08. Fix is code-side:
 route self-scope combat-power heal/stat bonuses into the heal-sim layer under
 a recognized stat name. (Wave 8 audit.)
 
-## exclusiveGroup "None" buffs can never surface in any picker (found 2026-07-08)
-The Toon Forge buff picker special-cases only "Diamond Blessing" out of the
-"None" group; every other None-group buff — Potion of Giant Strength (id 111,
-STR +3) and Potion of Speed (id 112, +20% Movement Speed) — carries real
-structured data but never renders in any picker, so it can't be toggled on.
-Low impact (legacy leveling items) but a genuine dead entry. Code-side fix in
-the picker's group handling. (Wave 8 audit.)
+## exclusiveGroup "None" buffs — RESOLVED 2026-07-08 (picker rule generalized)
+The Always-on toggle list now includes every None-group buff with real
+structured stats AND a 5-minute-plus duration (Diamond Blessing by rule
+instead of by name, plus Potion of Giant Strength, Potion of Speed, Minor
+Potion of Heroism). Stat-less None entries stay hidden (nothing to toggle);
+the 20s-burst Potion of Coalesced stays out of an "Always-on" section by
+design. (toon-forge.html ~16051.)
 
 ## Celestial Companion enchant (id 37) scores ZERO in every build — engine wiring gap (found 2026-07-07)
 The only Companion-slot enchant's entire effect (+30%…+180% Companion Damage

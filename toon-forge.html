@@ -16048,12 +16048,22 @@
         </div>`;
       }
 
-      // Default-on buffs from the "Other" group + Diamond Blessing (the
-      // only "None"-group entry that matters for the builder). All shown
-      // as toggles, defaults pre-checked.
+      // Default-on buffs from the "Other" group + every "None"-group buff
+      // that (a) carries real structured stats and (b) lasts 5+ minutes —
+      // i.e. behaves like a passive (Diamond Blessing, Potion of Giant
+      // Strength, Potion of Speed, Minor Potion of Heroism). Stat-less
+      // None entries (res scrolls, injury kits) would toggle nothing, and
+      // short bursts (Potion of Coalesced, 20s) don't belong in an
+      // "Always-on" section. All shown as toggles.
       const alwaysOnList = (groups["Other"] || []).slice();
-      const diamondBlessing = (groups["None"] || []).find(b => b.name === "Diamond Blessing");
-      const toggleList = [...alwaysOnList, ...(diamondBlessing ? [diamondBlessing] : [])]
+      const _hasStats = b =>
+        (b.ratingStats && Object.keys(b.ratingStats).length) ||
+        (b.percentStats && Object.keys(b.percentStats).length) ||
+        (b.abilityBonuses && Object.keys(b.abilityBonuses).length) ||
+        b.damagePct;
+      const noneToggles = (groups["None"] || []).filter(b =>
+        _hasStats(b) && (b.duration_s == null || b.duration_s >= 300));
+      const toggleList = [...alwaysOnList, ...noneToggles]
         .sort((a,b) => a.name.localeCompare(b.name));
       if (toggleList.length) {
         html += `<div class="boon-tier" style="margin-top:0.8rem;">
