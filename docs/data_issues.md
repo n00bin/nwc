@@ -1,17 +1,15 @@
 # Data Issues To Investigate
 
-## Umbral Stride + Dark Matter set payloads on 8 members each — double-count check needed (found 2026-07-08)
-The set-bonus convention is ONE member carries the structured stat payload
-(engine credits the set through it). Wave 9's file-wide verification found two
-pre-existing families where EVERY member carries the payload: Umbral Stride
-and Dark Matter (8 owners each). If the engine applies each equipped member's
-payload, wearing 2 pieces would double the set bonus. Counter-evidence: Erik's
-stat calibration is exact, suggesting either he doesn't wear these or the
-engine dedupes by setName. Code-auditor question: how does the ingestion loop
-treat multiple payload-carrying members of one set? Related: ids 47/48's
-Umbral Stride roleMap block has DPS/Tank/Healer roles visibly swapped
-(pre-existing; roleMap is display-only per the 2026-06-19 decision, but the
-display is wrong). (Wave 9.)
+## Umbral Stride/Dark Matter multi-payload — RESOLVED 2026-07-08 (engine dedupes; no bug)
+Wave 9 flagged two families carrying set payloads on all 8 members (vs the
+one-payload convention). Code check settles it: `buildEngineCharacter`'s
+ingestion keeps a `seenSetBonus` set keyed (setName, stat) — each set bonus
+applies ONCE no matter how many equipped members carry it (toon-forge.html
+~12497, 12622-12627). Multi-owner families are benign; the one-payload
+convention remains preferred for authoring clarity. This also explains why
+Erik's calibration stayed exact with both Impending Doom weapons carrying
+payloads. The related ids 47/48 roleMap Tank/Heal swap (display-only) was
+corrected same day per set-sibling id 373's sourced text.
 
 ## Mount combat-power self-buffs never scored + "Heal Bonus" stat unrecognized (found 2026-07-08)
 `buildEngineCharacter` only uses `state.activeCombatPower` for TIL and a
