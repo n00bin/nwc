@@ -32,9 +32,10 @@ fixed). Dirgeblade ladder now proven end to end.
 It doesn't — the tooltip has no set section at all (Company Raid Mask proof
 filed). The family is intentionally blank; database was already correct.
 
-## 5. Blood Bargain 2-piece (Ebon Crusader's Aegis / Oathbreaker's Judgment)
-Set-details panel. Old records claim "+12% Movement Speed / +3% Forte in Thay"
-but it was never verified and is currently absent from the database.
+## ~~5. Blood Bargain 2-piece~~ ✅ DONE 2026-07-08
+Confirmed +12% Movement Speed / +3% Forte in Thay — the old records' 3% was
+right; the 8% from the restored text was wrong and is corrected. Per-item
+crit-proc confirmed too. Proof filed.
 
 ## 6. Single-tooltip quick shots (one screenshot each)
 - **Enchanted Bregan D'aerthe Assassin's Longboots** — two database rows
