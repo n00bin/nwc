@@ -23,9 +23,10 @@ for future unconditional bonuses: break the combo by SWAPPING an insignia
 (slot stays filled) rather than unslotting — an unslotted insignia's own
 stats pollute the reading.
 
-## 3. Dirgeblade IL 3750 set details — scrolled to the BOTTOM
-The archived capture cuts off mid-panel; the Unleashed %/duration/equip line
-for this tier is the only Dirgeblade gap left.
+## ~~3. Dirgeblade IL 3750 set details~~ ✅ DONE 2026-07-08
+Full capture filed (…_set_details_full.png): 3%/3% confirmed, 9s/15s text
+corrected, and the equip line proven flat +5,200 Power (stored 5% was wrong —
+fixed). Dirgeblade ladder now proven end to end.
 
 ## 4. Company PvE Armor — does a 4-piece bonus exist?
 Any Company Ward/Restoration/Raid piece's set panel. The whole 24-item family
