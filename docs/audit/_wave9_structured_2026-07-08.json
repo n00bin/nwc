@@ -1,0 +1,3279 @@
+{
+ "generated": "2026-07-08",
+ "source_worklist": "_textonly_stat_lines_2026-07-08.json",
+ "items_structured": 63,
+ "items_skipped": 41,
+ "lines_structured": 63,
+ "lines_skipped": 229,
+ "changes": [
+  {
+   "id": 4846,
+   "name": "Elemental Lionsmane Duelist Pigaches",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Lionsmane",
+     "pieces": 3,
+     "stat": "Power",
+     "amount": 1,
+     "alwaysActive": true,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "SET FAMILY CARRIER for setName='Lionsmane'. 2pc clause ('Equip: 0 Maximum Hit Points') is a literal zero in the source text -- no-op, not separately modeled. 3pc clause (+1% Power) structured with pieces:3 (not 4) to match its own stated threshold."
+  },
+  {
+   "id": 2668,
+   "name": "Company Assault Belt · IL 300",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Company",
+     "pieces": 2,
+     "stat": "Power",
+     "amount": 500,
+     "kind": "rating",
+     "alwaysActive": true,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "SET FAMILY CARRIER for setName='Company'. "
+  },
+  {
+   "id": 5338,
+   "name": "Wintermarked Oath Shield",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "stat": "Movement Speed",
+     "amount": 12,
+     "zones": [
+      "The Biting Cold"
+     ],
+     "alwaysActive": true,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "stat": "Power",
+     "amount": 0.4,
+     "perStack": true,
+     "maxStacks": 10,
+     "alwaysActive": false,
+     "name": "Chilling Flow (2/2) -- General",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "stat": "Critical Severity",
+     "amount": 0.6,
+     "role": "dps",
+     "perStack": true,
+     "maxStacks": 10,
+     "alwaysActive": false,
+     "name": "Chilling Flow (2/2) -- DPS",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "stat": "Overall Outgoing Healing",
+     "amount": 0.5,
+     "role": "heal",
+     "perStack": true,
+     "maxStacks": 10,
+     "alwaysActive": false,
+     "name": "Chilling Flow (2/2) -- Healer",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "stat": "Awareness",
+     "amount": 0.5,
+     "role": "tank",
+     "perStack": true,
+     "maxStacks": 10,
+     "alwaysActive": false,
+     "name": "Chilling Flow (2/2) -- Tank",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "SET FAMILY CARRIER for setName='Chilling Flow'. Carrier is the IL5800 (Wintermarked) tier text -- the only numeric values available on the lowest-id member. Other Chilling Flow members (IL5500 Runefrost tier, lower numbers; also an unverified 'Frostbound' tier) are NOT touched, per one-payload rule."
+  },
+  {
+   "id": 359,
+   "name": "Mark of the Initiate (Unfaltered Finesse)",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "stat": "Accuracy",
+     "amount": 3000,
+     "kind": "rating",
+     "alwaysActive": true,
+     "name": "Enchanted Advantage",
+     "description": "2 of Set: +3,000 Accuracy",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "SET FAMILY CARRIER for setName='Enchanted Advantage'. Sibling 'Enchanted Advantage' members carry a DIFFERENT payload text (2%/3% Combat Advantage instead of flat Accuracy) -- a pre-existing generic-name collision in the source game data across unrelated actual sets. Per rule, only the lowest-id member's own text is used."
+  },
+  {
+   "id": 1241,
+   "name": "Oathlord's Ward Barbute",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Barovian Lord's Armor",
+     "pieces": 4,
+     "stat": "Power",
+     "amount": 20,
+     "kind": "rating",
+     "alwaysActive": true,
+     "name": "Barovian Lord's Armor (4/4)",
+     "description": "Completing this collection will give you an additional bonus of +20 Power",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "SET FAMILY CARRIER for setName=\"Barovian Lord's Armor\". "
+  },
+  {
+   "id": 415,
+   "name": "Bloodwoven Symbols (Medic's Haste)",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Enchanted Healing",
+     "pieces": 2,
+     "stat": "Outgoing Healing",
+     "amount": 2,
+     "alwaysActive": true,
+     "name": "Enchanted Healing",
+     "description": "2 of Set: +2% Outgoing Healing",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "SET FAMILY CARRIER for setName='Enchanted Healing'. "
+  },
+  {
+   "id": 467,
+   "name": "Bloodwoven Brands — Depleted Defiance",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Enchanted Awareness",
+     "pieces": 2,
+     "stat": "Awareness",
+     "amount": 2,
+     "alwaysActive": true,
+     "name": "Enchanted Awareness",
+     "description": "2 of Set: +2% Awareness",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "SET FAMILY CARRIER for setName='Enchanted Awareness'. "
+  },
+  {
+   "id": 495,
+   "name": "Mark of the Adept",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Set",
+     "scope": "self",
+     "setName": "Enchanted Forte",
+     "pieces": 2,
+     "stat": "Forte",
+     "amount": 3000,
+     "kind": "rating",
+     "alwaysActive": true,
+     "name": "Enchanted Forte",
+     "description": "2 of Set: +3,000 Forte",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "SET FAMILY CARRIER for setName='Enchanted Forte'. "
+  },
+  {
+   "id": 360,
+   "name": "Mark of the Novice (Unfaltered Finesse)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3,000 Accuracy"
+  },
+  {
+   "id": 361,
+   "name": "Mark of the Recruit (Unfaltered Finesse)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3,000 Accuracy"
+  },
+  {
+   "id": 417,
+   "name": "Bloodwoven Sigils (Reckless Advantage)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +2% Combat Advantage"
+  },
+  {
+   "id": 418,
+   "name": "Bloodwoven Signs (Occult Advantage)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +2% Combat Advantage"
+  },
+  {
+   "id": 419,
+   "name": "Bloodwoven Runes (Skirmisher's Zeal)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +2% Combat Advantage"
+  },
+  {
+   "id": 420,
+   "name": "Bloodwoven Signs (Critical Empowerment)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +2% Combat Advantage"
+  },
+  {
+   "id": 421,
+   "name": "Bloodwoven Runes (Challenger's Strength)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +2% Combat Advantage"
+  },
+  {
+   "id": 422,
+   "name": "Bloodwoven Sigils (Charged At-Will)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +2% Combat Advantage"
+  },
+  {
+   "id": 423,
+   "name": "Bloodwoven Ink (Butcher's Zeal)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Healing'; payload already carried by lowest-id member id=415 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +2% Outgoing Healing."
+  },
+  {
+   "id": 424,
+   "name": "Bloodwoven Symbols (Graceful Harmony)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Healing'; payload already carried by lowest-id member id=415 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +2% Outgoing Healing"
+  },
+  {
+   "id": 469,
+   "name": "Bloodwoven Runes — Challenger's Strength",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3% Combat Advantage (some variants grant +25 Action Points or +7% Combat Advantage)."
+  },
+  {
+   "id": 471,
+   "name": "Bloodwoven Ink (Survivor's Gift)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Healing'; payload already carried by lowest-id member id=415 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +2% Outgoing Healing."
+  },
+  {
+   "id": 472,
+   "name": "Bloodwoven Signs — Critical Empowerment",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3% Combat Advantage (some variants grant +25 Action Points or +7% Combat Advantage)."
+  },
+  {
+   "id": 474,
+   "name": "Runes of the Avowed — Challenger's Awareness",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Awareness'; payload already carried by lowest-id member id=467 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +1,000 Awareness."
+  },
+  {
+   "id": 475,
+   "name": "Runes of the Pledged — Challenger's Forte",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Healing'; payload already carried by lowest-id member id=415 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3% Outgoing Healing (lower-tier variants grant +2% Outgoing Healing)."
+  },
+  {
+   "id": 476,
+   "name": "Runes of the Covenant — Encounter Reprieve",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3% Combat Advantage (some variants grant +25 Action Points or +7% Combat Advantage)."
+  },
+  {
+   "id": 477,
+   "name": "Runes of the Oathbound — Encounter Reprieve",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3% Combat Advantage (some variants grant +25 Action Points or +7% Combat Advantage)."
+  },
+  {
+   "id": 478,
+   "name": "Runes of the Sworn — Challenger's Forte",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Healing'; payload already carried by lowest-id member id=415 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3% Outgoing Healing (lower-tier variants grant +2% Outgoing Healing)."
+  },
+  {
+   "id": 479,
+   "name": "Runes of the Promised — Encounter Reprieve",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3% Combat Advantage (some variants grant +25 Action Points or +7% Combat Advantage)."
+  },
+  {
+   "id": 494,
+   "name": "Mark of the Convert",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Awareness'; payload already carried by lowest-id member id=467 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3,000 Awareness"
+  },
+  {
+   "id": 496,
+   "name": "Mark of the Fledgling",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Forte'; payload already carried by lowest-id member id=495 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3,000 Forte"
+  },
+  {
+   "id": 497,
+   "name": "Mark of the Recruit",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3,000 Accuracy"
+  },
+  {
+   "id": 498,
+   "name": "Mark of the Novice",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3% Combat Advantage (some variants grant +25 Action Points or +7% Combat Advantage)."
+  },
+  {
+   "id": 499,
+   "name": "Mark of the Initiate",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3,000 Accuracy"
+  },
+  {
+   "id": 500,
+   "name": "Mark of the Convert — Survivor's Remedy",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Awareness'; payload already carried by lowest-id member id=467 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3,000 Awareness"
+  },
+  {
+   "id": 501,
+   "name": "Mark of the Adept — Healing Tactics",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Forte'; payload already carried by lowest-id member id=495 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3,000 Forte"
+  },
+  {
+   "id": 502,
+   "name": "Mark of the Fledgling — Healing Tactics",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Forte'; payload already carried by lowest-id member id=495 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3,000 Forte"
+  },
+  {
+   "id": 503,
+   "name": "Mark of the Novice — Solitary Power",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3,000 Accuracy"
+  },
+  {
+   "id": 504,
+   "name": "Mark of the Recruit — Solitary Power",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3,000 Accuracy"
+  },
+  {
+   "id": 505,
+   "name": "Mark of the Initiate — Solitary Power",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Advantage'; payload already carried by lowest-id member id=359 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +3,000 Accuracy"
+  },
+  {
+   "id": 1242,
+   "name": "Oathlord's Ward Cuirass",
+   "action": "skipped",
+   "reason": "Set-sibling of setName=\"Barovian Lord's Armor\"; payload already carried by lowest-id member id=1241 per one-payload rule. Text line left untouched.",
+   "line": "Completing this collection will give you an additional bonus of +20 Power"
+  },
+  {
+   "id": 1243,
+   "name": "Oathlord's Ward Gauntlets",
+   "action": "skipped",
+   "reason": "Set-sibling of setName=\"Barovian Lord's Armor\"; payload already carried by lowest-id member id=1241 per one-payload rule. Text line left untouched.",
+   "line": "Completing this collection will give you an additional bonus of +20 Power"
+  },
+  {
+   "id": 1244,
+   "name": "Oathlord's Ward Sabatons",
+   "action": "skipped",
+   "reason": "Set-sibling of setName=\"Barovian Lord's Armor\"; payload already carried by lowest-id member id=1241 per one-payload rule. Text line left untouched.",
+   "line": "Completing this collection will give you an additional bonus of +20 Power"
+  },
+  {
+   "id": 1245,
+   "name": "Oathlord's Restoration Barbute",
+   "action": "skipped",
+   "reason": "Set-sibling of setName=\"Barovian Lord's Armor\"; payload already carried by lowest-id member id=1241 per one-payload rule. Text line left untouched.",
+   "line": "Completing this collection will give you an additional bonus of +20 Power"
+  },
+  {
+   "id": 1246,
+   "name": "Oathlord's Restoration Sabatons",
+   "action": "skipped",
+   "reason": "Set-sibling of setName=\"Barovian Lord's Armor\"; payload already carried by lowest-id member id=1241 per one-payload rule. Text line left untouched.",
+   "line": "Completing this collection will give you an additional bonus of +20 Power"
+  },
+  {
+   "id": 1247,
+   "name": "Oathlord's Restoration Gauntlets",
+   "action": "skipped",
+   "reason": "Set-sibling of setName=\"Barovian Lord's Armor\"; payload already carried by lowest-id member id=1241 per one-payload rule. Text line left untouched.",
+   "line": "Completing this collection will give you an additional bonus of +20 Power"
+  },
+  {
+   "id": 1248,
+   "name": "Oathlord's Restoration Cuirass",
+   "action": "skipped",
+   "reason": "Set-sibling of setName=\"Barovian Lord's Armor\"; payload already carried by lowest-id member id=1241 per one-payload rule. Text line left untouched.",
+   "line": "Completing this collection will give you an additional bonus of +20 Power"
+  },
+  {
+   "id": 2669,
+   "name": "Company Assault Belt · IL 400",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2670,
+   "name": "Company Assault Belt · IL 500",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2671,
+   "name": "Company Assault Belt · IL 600",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2672,
+   "name": "Company Gladiator Belt · IL 300",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2673,
+   "name": "Company Gladiator Belt · IL 400",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2674,
+   "name": "Company Gladiator Belt · IL 500",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2675,
+   "name": "Company Gladiator Belt · IL 600",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2676,
+   "name": "Company Ward Belt · IL 300",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2677,
+   "name": "Company Ward Belt · IL 400",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2678,
+   "name": "Company Ward Belt · IL 500",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2679,
+   "name": "Company Ward Belt · IL 600",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2680,
+   "name": "Company Executioner Cloak · IL 300",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2681,
+   "name": "Company Executioner Cloak · IL 400",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2682,
+   "name": "Company Executioner Cloak · IL 500",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2683,
+   "name": "Company Executioner Cloak · IL 600",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2684,
+   "name": "Company Duelist Cloak · IL 300",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2685,
+   "name": "Company Duelist Cloak · IL 400",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2686,
+   "name": "Company Duelist Cloak · IL 500",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2687,
+   "name": "Company Duelist Cloak · IL 600",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 2688,
+   "name": "Company Raider's Cloak · IL 300",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3535,
+   "name": "Curselord's Raid Ushanka",
+   "action": "skipped",
+   "reason": "Set-sibling of setName=\"Barovian Lord's Armor\"; payload already carried by lowest-id member id=1241 per one-payload rule. Text line left untouched.",
+   "line": "Completing this collection will give you an additional bonus of +20 Power"
+  },
+  {
+   "id": 3536,
+   "name": "Curselord's Raid Pigaches",
+   "action": "skipped",
+   "reason": "Set-sibling of setName=\"Barovian Lord's Armor\"; payload already carried by lowest-id member id=1241 per one-payload rule. Text line left untouched.",
+   "line": "Completing this collection will give you an additional bonus of +20 Power"
+  },
+  {
+   "id": 3537,
+   "name": "Curselord's Assault Pigaches",
+   "action": "skipped",
+   "reason": "Set-sibling of setName=\"Barovian Lord's Armor\"; payload already carried by lowest-id member id=1241 per one-payload rule. Text line left untouched.",
+   "line": "Completing this collection will give you an additional bonus of +20 Power"
+  },
+  {
+   "id": 3875,
+   "name": "Company Assault Belt (Uncommon)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3876,
+   "name": "Company Assault Belt (Rare)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3877,
+   "name": "Company Assault Belt (Epic)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3882,
+   "name": "Company Raider's Cloak Uncommon",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3883,
+   "name": "Company Raider Cloak Rare",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3884,
+   "name": "Company Raider Cloak Epic",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3890,
+   "name": "Company Assault Belt (Rare)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3891,
+   "name": "Company Assault Belt (Legendary)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3892,
+   "name": "Company Gladiator Belt (Legendary)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3893,
+   "name": "Company Ward Belt (Rare)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3894,
+   "name": "Company Executioner Cloak (Uncommon)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3895,
+   "name": "Company Executioner Cloak (Legendary)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3896,
+   "name": "Company Raider Cloak (Legendary)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3901,
+   "name": "Company Duelist Cloak (Uncommon)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3902,
+   "name": "Company Duelist Cloak (Rare)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3903,
+   "name": "Company Duelist Cloak (Legendary)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 3904,
+   "name": "Company Raider Cloak (Rare)",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 4847,
+   "name": "Elemental Lionsmane Duelist Wristguards",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4848,
+   "name": "Elemental Lionsmane Duelist Longcoat",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4849,
+   "name": "Elemental Lionsmane Duelist Cowl",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4851,
+   "name": "Lionsmane Duelist Cowl",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4852,
+   "name": "Lionsmane Duelist Longcoat",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4853,
+   "name": "Lionsmane Duelist Wristguards",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4854,
+   "name": "Lionsmane Duelist Pigaches",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4855,
+   "name": "Elemental Lionsmane Executioner Cowl",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4856,
+   "name": "Elemental Lionsmane Executioner Longcoat",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4857,
+   "name": "Elemental Lionsmane Executioner Wristguards",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4858,
+   "name": "Lionsmane Executioner Pigaches",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4859,
+   "name": "Lionsmane Executioner Wristguards",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4860,
+   "name": "Lionsmane Executioner Longcoat",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4861,
+   "name": "Lionsmane Executioner Cowl",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4862,
+   "name": "Elemental Lionsmane Executioner Pigaches",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 4869,
+   "name": "Company Raider's Cloak",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 4870,
+   "name": "Company Raider's Cloak",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 4871,
+   "name": "Company Raider's Cloak",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 5212,
+   "name": "Lionsmane Duelist Boots",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5213,
+   "name": "Lionsmane Duelist Gloves",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5214,
+   "name": "Lionsmane Duelist Vest",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5215,
+   "name": "Lionsmane Duelist Mask",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5216,
+   "name": "Lionsmane Executioner Boots",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5217,
+   "name": "Lionsmane Executioner Gloves",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5218,
+   "name": "Lionsmane Executioner Vest",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5219,
+   "name": "Lionsmane Executioner Mask",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5339,
+   "name": "Wintermarked Frostmaul",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 5340,
+   "name": "Runefrost Oath Shield",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 5341,
+   "name": "Runefrost Dawnmace",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 5478,
+   "name": "Wintermarked Grimoire of Rime",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 5479,
+   "name": "Wintermarked Twin Shardblades",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 5480,
+   "name": "Runefrost Hexbook",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 5481,
+   "name": "Runefrost Hexknife",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 5623,
+   "name": "Company Raider Cloak",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 5624,
+   "name": "Company Raider Cloak",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 5625,
+   "name": "Company Raider Cloak",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Company'; payload already carried by lowest-id member id=2668 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +500 Power"
+  },
+  {
+   "id": 5694,
+   "name": "Wintermarked Sigil Talisman",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 5695,
+   "name": "Wintermarked Frostheart Orb",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 5696,
+   "name": "Elemental Lionsmane Duelist Bracers",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5697,
+   "name": "Elemental Lionsmane Duelist Coat",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5698,
+   "name": "Elemental Lionsmane Duelist Gaiters",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5699,
+   "name": "Elemental Lionsmane Duelist Hood",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5700,
+   "name": "Elemental Lionsmane Executioner Bracers",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5701,
+   "name": "Elemental Lionsmane Executioner Coat",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5702,
+   "name": "Elemental Lionsmane Executioner Gaiters",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5703,
+   "name": "Elemental Lionsmane Executioner Hood",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5981,
+   "name": "Lionsmane Duelist Bracers",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5982,
+   "name": "Lionsmane Duelist Coat",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5983,
+   "name": "Lionsmane Duelist Gaiters",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5984,
+   "name": "Lionsmane Duelist Hood",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5985,
+   "name": "Lionsmane Executioner Bracers",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5986,
+   "name": "Lionsmane Executioner Coat",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5987,
+   "name": "Lionsmane Executioner Gaiters",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 5988,
+   "name": "Lionsmane Executioner Hood",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6202,
+   "name": "Runefrost Spellorb",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6203,
+   "name": "Runefrost Verseblade",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6204,
+   "name": "Runefrost Hand Axe",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6205,
+   "name": "Runefrost Longbow",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6206,
+   "name": "Runefrost Skald's Lute",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6207,
+   "name": "Runefrost Arcane Charm",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6236,
+   "name": "Wintermarked Icewind Bow",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6237,
+   "name": "Wintermarked Trail Axe",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6238,
+   "name": "Wintermarked Frostlute",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6239,
+   "name": "Wintermarked Skaldblade",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6488,
+   "name": "Elemental Lionsmane Duelist Greaves",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6489,
+   "name": "Elemental Lionsmane Duelist Sallet",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6490,
+   "name": "Elemental Lionsmane Duelist Scalemail",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6491,
+   "name": "Elemental Lionsmane Duelist Vambraces",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6492,
+   "name": "Elemental Lionsmane Executioner Greaves",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6493,
+   "name": "Elemental Lionsmane Executioner Sallet",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6494,
+   "name": "Elemental Lionsmane Executioner Scalemail",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6495,
+   "name": "Elemental Lionsmane Executioner Vambraces",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6649,
+   "name": "Lionsmane Duelist Greaves",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6650,
+   "name": "Lionsmane Duelist Sallet",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6651,
+   "name": "Lionsmane Duelist Vambraces",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6652,
+   "name": "Lionsmane Executioner Greaves",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6653,
+   "name": "Lionsmane Executioner Sallet",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6654,
+   "name": "Lionsmane Executioner Scalemail",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6655,
+   "name": "Lionsmane Executioner Vambraces",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6719,
+   "name": "Runefrost War Charm",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6720,
+   "name": "Runefrost Warcleaver",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6811,
+   "name": "Wintermarked War Totem",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6812,
+   "name": "Wintermarked Worldrender",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6837,
+   "name": "Lionsmane Duelist Scalemail",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 6870,
+   "name": "Bloodwoven Brands — Warden's Defense",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Enchanted Awareness'; payload already carried by lowest-id member id=467 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: +2% Awareness"
+  },
+  {
+   "id": 6878,
+   "name": "Wintermarked Bastion Shield",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6879,
+   "name": "Wintermarked Oathblade",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6880,
+   "name": "Runefrost Tower Shield",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 6881,
+   "name": "Runefrost Vanguard Blade",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 7330,
+   "name": "Elemental Lionsmane Gladiator Helm",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7331,
+   "name": "Elemental Lionsmane Gladiator Breastplate",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7332,
+   "name": "Elemental Lionsmane Gladiator Gauntlets",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7333,
+   "name": "Elemental Lionsmane Gladiator Sabatons",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7334,
+   "name": "Lionsmane Gladiator Helm",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7335,
+   "name": "Lionsmane Gladiator Breastplate",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7336,
+   "name": "Lionsmane Gladiator Gauntlets",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7337,
+   "name": "Lionsmane Gladiator Sabatons",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7338,
+   "name": "Elemental Lionsmane Executioner Helm",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7339,
+   "name": "Elemental Lionsmane Executioner Breastplate",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7340,
+   "name": "Elemental Lionsmane Executioner Gauntlets",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7341,
+   "name": "Lionsmane Executioner Sabatons",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7342,
+   "name": "Lionsmane Executioner Gauntlets",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7343,
+   "name": "Lionsmane Executioner Breastplate",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7344,
+   "name": "Lionsmane Executioner Helm",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7345,
+   "name": "Elemental Lionsmane Executioner Sabatons",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Lionsmane'; payload already carried by lowest-id member id=4846 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+  },
+  {
+   "id": 7397,
+   "name": "Runefrost Lightstaff",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 7398,
+   "name": "Runefrost Devotion Emblem",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 7399,
+   "name": "Wintermarked Rimecrook",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 7400,
+   "name": "Wintermarked Sanctum Emblem",
+   "action": "skipped",
+   "reason": "Set-sibling of setName='Chilling Flow'; payload already carried by lowest-id member id=5338 per one-payload rule. Text line left untouched.",
+   "line": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+  },
+  {
+   "id": 2005,
+   "name": "Vivified Oathkeeper's Ward Armet",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2006,
+   "name": "Vivified Oathkeeper's Ward Cuirass",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2007,
+   "name": "Vivified Oathkeeper's Ward Couters",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2008,
+   "name": "Vivified Oathkeeper's Ward Poleyns",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2009,
+   "name": "Vivified Oathkeeper's Restoration Armet",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2010,
+   "name": "Vivified Oathkeeper's Restoration Cuirass",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2011,
+   "name": "Vivified Oathkeeper's Ward Coulters",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2012,
+   "name": "Oathkeeper's Ward Cuirass",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2013,
+   "name": "Oathkeeper's Ward Armet",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2014,
+   "name": "Vivified Oathkeeper's Restoration Poleyns",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2015,
+   "name": "Vivified Oathkeeper's Restoration Coulters",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2016,
+   "name": "Oathkeeper's Ward Coulters",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2017,
+   "name": "Oathkeeper's Ward Poleyns",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2018,
+   "name": "Oathkeeper's Restoration Armet",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2019,
+   "name": "Oathkeeper's Restoration Cuirass",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2020,
+   "name": "Oathkeeper's Restoration Coulters",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2021,
+   "name": "Oathkeeper's Restoration Poleyns",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2914,
+   "name": "Vivified Trailblazer's Raid Hood",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2915,
+   "name": "Vivified Trailblazer's Raid Coat",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2916,
+   "name": "Vivified Trailblazer's Raid Bracers",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2917,
+   "name": "Vivified Trailblazer's Raid Gaiters",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2924,
+   "name": "Trailblazer's Raid Bracers",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 2928,
+   "name": "Trailblazer's Assault Bracers",
+   "action": "skipped",
+   "reason": "Multi-clause tiered 'Relic' set text (1pc/2pc/3pc). 1pc clause references an uncataloged stat (Damage Resistance vs Giant-type enemies -- not in TOON_FORGE_STATS/aliases). 3pc clause mixes a stat grant with a proc trigger (drinking an Excavator's Potion) that can't be modeled as a static bonus. The remaining 2pc clause ('+5 Movement Speed' in Icewind Dale) has no '%' sign in the source text -- ambiguous whether this is 5 rating points or a dropped '%' -- cannot parse with full confidence. Entire family skipped; no structured payload added (setName literally shared across several distinct class-specific relic sets in the source data -- Oathkeeper's Relic, Trailblazer's Relic, etc.).",
+   "line": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+  },
+  {
+   "id": 226,
+   "name": "Feywood Shield +1",
+   "action": "skipped",
+   "reason": "Modification: line -- player-configurable artifact mod-slot (fixed via Modification UI), not a fixed item stat. Matches SKIP CLASS.",
+   "line": "Modification: +2,354 Critical Avoidance."
+  },
+  {
+   "id": 226,
+   "name": "Feywood Shield +1",
+   "action": "skipped",
+   "reason": "Modification: line -- player-configurable artifact mod-slot (fixed via Modification UI), not a fixed item stat. Matches SKIP CLASS.",
+   "line": "Modification: +5% Stamina Regeneration."
+  },
+  {
+   "id": 397,
+   "name": "Mystic Conduit Insignia",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Accuracy",
+     "amount": 2250,
+     "kind": "rating",
+     "perStack": true,
+     "maxStacks": 5,
+     "alwaysActive": false,
+     "requiresMultiEnemy": true,
+     "name": "Challenger's Accuracy",
+     "description": "When in combat with 3 or more enemies, your Accuracy is increased by 2,250 every 2 seconds. Every 2 seconds you are in combat with 1 or less enemies, lose 1 stack. Max 5 stacks: 11,250 Accuracy.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 284,
+   "name": "Bregan D'aerthe Soldier's Leggings",
+   "action": "skipped",
+   "reason": "Kill-triggered proc buff (30-minute duration, expires on leaving zone) -- not a static/zone/stacking pattern the engine models; no clean way to represent uptime without misrepresenting the item.",
+   "line": "Killing a Drider House Captain grants you 6% Combat Advantage for 30 minutes. This effect expires if you leave Menzoberranzan."
+  },
+  {
+   "id": 1055,
+   "name": "Bregan D'aerthe Scout's Leggings",
+   "action": "skipped",
+   "reason": "Kill-triggered proc buff (30-minute duration, expires on leaving zone) -- not a static/zone/stacking pattern the engine models; no clean way to represent uptime without misrepresenting the item.",
+   "line": "Killing a Drider House Captain grants you 6% Critical Severity for 30 minutes. This effect expires if you leave Menzoberranzan."
+  },
+  {
+   "id": 1058,
+   "name": "Bregan D'aerthe Physician's Leggings",
+   "action": "skipped",
+   "reason": "Kill-triggered proc buff (30-minute duration, expires on leaving zone) -- not a static/zone/stacking pattern the engine models; no clean way to represent uptime without misrepresenting the item.",
+   "line": "Killing a Drider House Captain grants you 6% Critical Strike for 30 minutes. This effect expires if you leave Menzoberranzan."
+  },
+  {
+   "id": 1060,
+   "name": "Bregan D'aerthe Mercenary's Leggings",
+   "action": "skipped",
+   "reason": "Kill-triggered proc buff (30-minute duration, expires on leaving zone) -- not a static/zone/stacking pattern the engine models; no clean way to represent uptime without misrepresenting the item.",
+   "line": "Killing a Drider House Captain grants you 6% Critical Avoidance for 30 minutes. This effect expires if you leave Menzoberranzan."
+  },
+  {
+   "id": 1062,
+   "name": "Bregan D'aerthe Officer's Leggings",
+   "action": "skipped",
+   "reason": "Kill-triggered proc buff (30-minute duration, expires on leaving zone) -- not a static/zone/stacking pattern the engine models; no clean way to represent uptime without misrepresenting the item.",
+   "line": "Killing a Drider House Captain grants you 6% Accuracy for 30 minutes. This effect expires if you leave Menzoberranzan."
+  },
+  {
+   "id": 309,
+   "name": "Bulwark of the Deathless Tyrant",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Awareness",
+     "amount": 9925,
+     "kind": "rating",
+     "alwaysActive": false,
+     "requiresMultiEnemy": true,
+     "name": "Overwhelming Parry",
+     "description": "When in combat with multiple enemies, gain 9,925 Awareness. This bonus is at full power when in combat with 7 or more enemies.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 310,
+   "name": "Helm of the Eternal Gaze",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Defense",
+     "amount": 9925,
+     "kind": "rating",
+     "alwaysActive": true,
+     "name": "Occult Defence",
+     "description": "You gain 9,925 Defence. And when in Thay you gain -1.2% Incoming Damage.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Incoming Damage",
+     "amount": -1.2,
+     "zones": [
+      "Thay"
+     ],
+     "name": "Occult Defence",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 373,
+   "name": "Doomward Bastion of the Thayan Zealot",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Power",
+     "amount": 0.25,
+     "perStack": true,
+     "maxStacks": 10,
+     "alwaysActive": false,
+     "name": "Umbral Stride (General)",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Critical Severity",
+     "amount": 0.15,
+     "role": "dps",
+     "perStack": true,
+     "maxStacks": 10,
+     "alwaysActive": false,
+     "name": "Umbral Stride (DPS)",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Overall Outgoing Healing",
+     "amount": 0.1,
+     "role": "heal",
+     "perStack": true,
+     "maxStacks": 10,
+     "alwaysActive": false,
+     "name": "Umbral Stride (Healer)",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Awareness",
+     "amount": 0.3,
+     "role": "tank",
+     "perStack": true,
+     "maxStacks": 10,
+     "alwaysActive": false,
+     "name": "Umbral Stride (Tank)",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 374,
+   "name": "Oathbreaker's Judgment of the Thayan Zealot",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Power",
+     "amount": 0.25,
+     "perStack": true,
+     "maxStacks": 10,
+     "alwaysActive": false,
+     "name": "Umbral Stride (General)",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Critical Severity",
+     "amount": 0.15,
+     "role": "dps",
+     "perStack": true,
+     "maxStacks": 10,
+     "alwaysActive": false,
+     "name": "Umbral Stride (DPS)",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Overall Outgoing Healing",
+     "amount": 0.1,
+     "role": "heal",
+     "perStack": true,
+     "maxStacks": 10,
+     "alwaysActive": false,
+     "name": "Umbral Stride (Healer)",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Awareness",
+     "amount": 0.3,
+     "role": "tank",
+     "perStack": true,
+     "maxStacks": 10,
+     "alwaysActive": false,
+     "name": "Umbral Stride (Tank)",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 382,
+   "name": "Breastplate of the Vital Sigil",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Defense",
+     "amount": 1,
+     "perStack": true,
+     "maxStacks": 5,
+     "alwaysActive": false,
+     "name": "Protective Embrace",
+     "description": "Heal ally grants them +1% Defense for 6s. Max 5 stacks (5%)",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 399,
+   "name": "Mystic Conduit Crest (Duelist)",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Combat Advantage",
+     "amount": 2250,
+     "kind": "rating",
+     "perStack": true,
+     "maxStacks": 5,
+     "alwaysActive": false,
+     "name": "Duelist's Strength",
+     "description": "When in combat with only 1 enemy, your Combat Advantage is increased by 2,250 every 2 seconds. Every 2 seconds you are in combat with 2 or more enemies, lose 1 stack. Max 5 stacks: 11,250 Combat Advantage.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 421,
+   "name": "Bloodwoven Runes (Challenger's Strength)",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Power",
+     "amount": 2330,
+     "kind": "rating",
+     "perStack": true,
+     "maxStacks": 5,
+     "alwaysActive": false,
+     "name": "Challenger's Strength",
+     "description": "When in combat with only 1 enemy, your Power is increased by 2,330 every 2 seconds. Every 2 seconds you are in combat with 4 or more enemies, lose 1 stack. Max 5 stacks: 11,650 Power.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 444,
+   "name": "Arcane Conduit Ink — Ruthless Critical",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Critical Strike",
+     "amount": 1.2,
+     "alwaysActive": false,
+     "perStack": true,
+     "maxStacks": 5,
+     "name": "Ruthless Critical",
+     "description": "On dmg/heal > 15% MaxHP: +1.2% CritStrike + 0.7% Power 15s. Max 5 (6%/3.5%)",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Power",
+     "amount": 0.7,
+     "alwaysActive": false,
+     "perStack": true,
+     "maxStacks": 5,
+     "name": "Ruthless Critical",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 445,
+   "name": "Arcane Conduit Crest — Combatant's Advantage",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Combat Advantage",
+     "amount": 1.2,
+     "alwaysActive": false,
+     "perStack": true,
+     "maxStacks": 5,
+     "name": "Combatant's Advantage",
+     "description": "Per 2s in combat: +1.2% CA, -1.7% Defense. Max 5 stacks",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Defense",
+     "amount": -1.7,
+     "alwaysActive": false,
+     "perStack": true,
+     "maxStacks": 5,
+     "name": "Combatant's Advantage",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 463,
+   "name": "Mystic Conduit Seal — Survivor's Forte",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Forte",
+     "amount": 8,
+     "alwaysActive": false,
+     "name": "Survivor's Forte",
+     "description": "Up to 8% Forte based on health %",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 512,
+   "name": "Prismatic Bismuth Plate — Healer's Influence",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Defense",
+     "amount": 3,
+     "alwaysActive": false,
+     "name": "Healer's Influence",
+     "description": "Healing an ally with an Encounter power also heals you for 80,000 and grants you and close Allies 3% Defense for 5s.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Flat self-heal ('heals you for N') portion not modeled -- no catalog stat for a flat heal amount. Party % portion structured."
+  },
+  {
+   "id": 520,
+   "name": "Bismuth Plate — Healer's Influence",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Defense",
+     "amount": 3,
+     "alwaysActive": false,
+     "name": "Healer's Influence",
+     "description": "Healing an ally with an Encounter power also heals you for 80,000 and grants you and close Allies 3% Defense for 5s.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Flat self-heal ('heals you for N') portion not modeled -- no catalog stat for a flat heal amount. Party % portion structured."
+  },
+  {
+   "id": 3177,
+   "name": "Prismatic Bismuth Mail",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Defense",
+     "amount": 3,
+     "alwaysActive": false,
+     "name": "Healer's Influence",
+     "description": "Healing an ally with an Encounter power also heals you for 80,000 and grants you and close Allies 3% Defense for 5s.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Flat self-heal ('heals you for N') portion not modeled -- no catalog stat for a flat heal amount. Party % portion structured."
+  },
+  {
+   "id": 3184,
+   "name": "Bismuth Mail",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Defense",
+     "amount": 3,
+     "alwaysActive": false,
+     "name": "Healer's Influence",
+     "description": "Encounter heal on ally also heals you 80,000 and grants you and close Allies 3% Defense for 5s.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Flat self-heal ('heals you for N') portion not modeled -- no catalog stat for a flat heal amount. Party % portion structured."
+  },
+  {
+   "id": 5353,
+   "name": "Runefrost Lifeward Greaves",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Defense",
+     "amount": 3,
+     "alwaysActive": false,
+     "name": "Healer's Influence",
+     "description": "Healing an ally also heals you for 80,000 and grants you and close Allies 3% Defense for 3s.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Flat self-heal ('heals you for N') portion not modeled -- no catalog stat for a flat heal amount. Party % portion structured."
+  },
+  {
+   "id": 5498,
+   "name": "Runefrost Mender's Breastplate",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Defense",
+     "amount": 3,
+     "alwaysActive": false,
+     "name": "Healer's Influence",
+     "description": "Healing an ally also heals you for 80,000 and grants you and close Allies 3% Defense for 3s.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Flat self-heal ('heals you for N') portion not modeled -- no catalog stat for a flat heal amount. Party % portion structured."
+  },
+  {
+   "id": 532,
+   "name": "Boghide Vest — Healer's Influence",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Defense",
+     "amount": 2.1,
+     "alwaysActive": false,
+     "name": "Healer's Influence",
+     "description": "Healing an ally with an Encounter also heals you for 80,000 and grants allies close to you 2.1% Defense for 5s.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Flat self-heal ('heals you for N') portion not modeled -- no catalog stat for a flat heal amount. Party % portion structured."
+  },
+  {
+   "id": 690,
+   "name": "Ultraviolet Elven Halfplate",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Awareness",
+     "amount": 1.5,
+     "alwaysActive": false,
+     "name": "Healer's Influence",
+     "description": "Healing an ally with an Encounter power also heals you for 80,000 and grants Allies within 25' 1.5% Awareness and Incoming Healing for 5s.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Incoming Healing",
+     "amount": 1.5,
+     "alwaysActive": false,
+     "name": "Healer's Influence",
+     "description": "Healing an ally with an Encounter power also heals you for 80,000 and grants Allies within 25' 1.5% Awareness and Incoming Healing for 5s.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Flat self-heal ('heals you for N') portion not modeled -- no catalog stat for a flat heal amount. Party % portion structured."
+  },
+  {
+   "id": 717,
+   "name": "Starforged Coat",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Awareness",
+     "amount": 1.5,
+     "alwaysActive": false,
+     "name": "Healer's Influence",
+     "description": "Healing an ally with an Encounter power also heals you for 75,000 and grants Allies within 25' 1.5% Awareness for 5s.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Flat self-heal ('heals you for N') portion not modeled -- no catalog stat for a flat heal amount. Party % portion structured."
+  },
+  {
+   "id": 3222,
+   "name": "Starhide Doublet",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Awareness",
+     "amount": 1.5,
+     "alwaysActive": false,
+     "name": "Healer's Influence",
+     "description": "Healing an ally with an Encounter power also heals you for 75,000 and grants Allies within 25' +1.5% Awareness for 5s.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Flat self-heal ('heals you for N') portion not modeled -- no catalog stat for a flat heal amount. Party % portion structured."
+  },
+  {
+   "id": 514,
+   "name": "Prismatic Luminstep Sabatons — Enduring Resilience",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Control Resist",
+     "amount": 5,
+     "alwaysActive": false,
+     "name": "Enduring Resilience",
+     "description": "Gain up to 5% Control Resistance and -2.5% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health. Currently: 0% Control Resistance and -0% Incoming Damage.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Incoming Damage",
+     "amount": -2.5,
+     "alwaysActive": false,
+     "name": "Enduring Resilience",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 525,
+   "name": "Luminstep Sabatons — Enduring Resilience",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Control Resist",
+     "amount": 5,
+     "alwaysActive": false,
+     "name": "Enduring Resilience",
+     "description": "Gain up to 5% Control Resistance and -2.5% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health. Currently: 0% Control Resistance and -0% Incoming Damage.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Incoming Damage",
+     "amount": -2.5,
+     "alwaysActive": false,
+     "name": "Enduring Resilience",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 534,
+   "name": "Mirestep Boots — Enduring Resilience",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Control Resist",
+     "amount": 3.5,
+     "alwaysActive": false,
+     "name": "Enduring Resilience",
+     "description": "Gain up to 3.5% Control Resistance and -1.8% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health. Currently: 0% Control Resistance and -0% Incoming Damage.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Incoming Damage",
+     "amount": -1.8,
+     "alwaysActive": false,
+     "name": "Enduring Resilience",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 548,
+   "name": "Bloodbrass Hoop",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Forte",
+     "amount": 4,
+     "alwaysActive": false,
+     "name": "Divine Blessing (Lesser)",
+     "description": "Your current Hit Points increases your Forte, up to a max of 4%. Currently: 4% Forte",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 709,
+   "name": "Cosmic Corsair's Cuirass",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Awareness",
+     "amount": 3350,
+     "kind": "rating",
+     "alwaysActive": true,
+     "name": "Awakening Rush",
+     "description": "Gain 3,350 Awareness, and an additional 2.5% Recharge Speed in Wildspace.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Recharge Speed",
+     "amount": 2.5,
+     "zones": [
+      "Wildspace"
+     ],
+     "name": "Awakening Rush",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 734,
+   "name": "Lolthian Cuirass",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Power",
+     "amount": 5000,
+     "alwaysActive": false,
+     "name": "This or That",
+     "description": "When not in a party, gain 5,000 Power. When in a party, gain 5,500 Deflect and Deflect Severity.",
+     "parsedFrom": "description",
+     "kind": "rating"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Deflect",
+     "amount": 5500,
+     "alwaysActive": false,
+     "name": "This or That",
+     "parsedFrom": "description",
+     "kind": "rating"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Deflect Severity",
+     "amount": 5500,
+     "alwaysActive": false,
+     "name": "This or That",
+     "parsedFrom": "description",
+     "kind": "rating"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 738,
+   "name": "Lolthian Vest",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Forte",
+     "amount": 5000,
+     "alwaysActive": false,
+     "name": "This or That",
+     "description": "When not in a party, gain 5,000 Forte. When in a party, gain 10,000 Outgoing Healing.",
+     "parsedFrom": "description",
+     "kind": "rating"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Outgoing Healing",
+     "amount": 10000,
+     "alwaysActive": false,
+     "name": "This or That",
+     "parsedFrom": "description",
+     "kind": "rating"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 950,
+   "name": "Dragonsteel Spikes",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Forte",
+     "amount": 3000,
+     "alwaysActive": false,
+     "name": "This or That",
+     "description": "When not in a party, gain 3,000 Forte. When in a party, gain 10,000 Outgoing Healing.",
+     "parsedFrom": "description",
+     "kind": "rating"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Outgoing Healing",
+     "amount": 10000,
+     "alwaysActive": false,
+     "name": "This or That",
+     "parsedFrom": "description",
+     "kind": "rating"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 1994,
+   "name": "Garb of the Ascended",
+   "action": "skipped",
+   "reason": "Already fully structured elsewhere on this same item using the uptimeOverride convention (Maximum Hit Points +15,000 @ uptimeOverride:0, Critical Strike +2,000 @ uptimeOverride:1 -- a more precise model than a flat alwaysActive:false pair). Adding this worklist line's own text as a second structured pair would double-count both stats. No action taken.",
+   "line": "When not in a party: +15,000 Maximum Hit Points. When in a party: +2000 Critical Strike."
+  },
+  {
+   "id": 913,
+   "name": "Abyss Striker's Healing Sollerets",
+   "action": "skipped",
+   "reason": "Text reads 'When in a party ... When in a party ...' (both clauses use the same condition, unlike every other 'This or That' item in this dataset which pairs 'not in a party' with 'in a party') -- looks like a datamine typo but cannot confirm which clause should be 'not in a party' without a screenshot. Skipped rather than guess.",
+   "line": "When in a party, gain 50,000 Maximum Hit Points. When in a party, gain 5500 Outgoing Healing and Forte."
+  },
+  {
+   "id": 3306,
+   "name": "Dragonhide Crakows",
+   "action": "skipped",
+   "reason": "Two equipBonus lines exist for this same 'This or That' ability with CONFLICTING party-branch values (10,000 vs 5,000 Critical Strike on the other line) -- likely a datamining duplication/typo. Cannot confidently determine the correct value; needs a screenshot re-verify.",
+   "line": "When not in a party, gain 5,000 Forte. When in a party, gain 10,000 Critical Strike."
+  },
+  {
+   "id": 3306,
+   "name": "Dragonhide Crakows",
+   "action": "skipped",
+   "reason": "Two equipBonus lines exist for this same 'This or That' ability with CONFLICTING party-branch values (5,000 vs 10,000 Critical Strike on the other line) -- likely a datamining duplication/typo. Cannot confidently determine the correct value; needs a screenshot re-verify.",
+   "line": "When not in a party, gain 5,000 Forte. When in a party, gain 5,000 Critical Strike."
+  },
+  {
+   "id": 4022,
+   "name": "Dragonhide Pikes",
+   "action": "skipped",
+   "reason": "Duplicate of the ebIndex-1 (type: Equip) line on this same item, identical text -- structuring both would double-credit the same conditional bonus. Structured once, on the Equip-type copy.",
+   "line": "When not in a party, gain 5,000 Defense. When in a party, gain 10,000 Accuracy."
+  },
+  {
+   "id": 4022,
+   "name": "Dragonhide Pikes",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Defense",
+     "amount": 5000,
+     "alwaysActive": false,
+     "name": "This or That",
+     "description": "When not in a party, gain 5,000 Defense. When in a party, gain 10,000 Accuracy.",
+     "parsedFrom": "description",
+     "kind": "rating"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Accuracy",
+     "amount": 10000,
+     "alwaysActive": false,
+     "name": "This or That",
+     "parsedFrom": "description",
+     "kind": "rating"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 6443,
+   "name": "Dragonsteel Greaves",
+   "action": "skipped",
+   "reason": "Duplicate of the ebIndex-1 (type: Equip) line on this same item, identical text -- structuring both would double-credit the same conditional bonus. Structured once, on the Equip-type copy.",
+   "line": "When not in a party, gain 5,000 Defense. When in a party, gain 10,000 Combat Advantage."
+  },
+  {
+   "id": 6443,
+   "name": "Dragonsteel Greaves",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Defense",
+     "amount": 5000,
+     "alwaysActive": false,
+     "name": "This or That",
+     "description": "When not in a party, gain 5,000 Defense. When in a party, gain 10,000 Combat Advantage.",
+     "parsedFrom": "description",
+     "kind": "rating"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Combat Advantage",
+     "amount": 10000,
+     "alwaysActive": false,
+     "name": "This or That",
+     "parsedFrom": "description",
+     "kind": "rating"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 776,
+   "name": "Cosmic Band of Deflection · IL 2600",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Incoming Damage",
+     "amount": -2,
+     "alwaysActive": false,
+     "name": "Survivor's Resilience",
+     "description": "Gain up to -2% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 777,
+   "name": "Cosmic Band of Deflection · IL 2800",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Incoming Damage",
+     "amount": -2,
+     "alwaysActive": false,
+     "name": "Survivor's Resilience",
+     "description": "Gain up to -2% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 790,
+   "name": "Endless Loop of Xaryxis · IL 2500",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Incoming Damage",
+     "amount": -3,
+     "zones": [
+      "Wildspace"
+     ],
+     "alwaysActive": false,
+     "name": "Survivor's Resilience",
+     "description": "Gain up to -3% Incoming Damage based on your missing health, while in Wildspace. Non-Wildspace max: -1.5% Incoming Damage. The max bonus is achieved at 25% or less health.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Non-Wildspace baseline (-1.5%) NOT separately structured: the engine has no 'outside zone X' gate, so adding both would double-count (-4.5%) while in Wildspace. Only the Wildspace value (the item's flagship number) is structured."
+  },
+  {
+   "id": 791,
+   "name": "Endless Loop of Xaryxis · IL 2700",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Incoming Damage",
+     "amount": -3,
+     "zones": [
+      "Wildspace"
+     ],
+     "alwaysActive": false,
+     "name": "Survivor's Resilience",
+     "description": "Gain up to -3% Incoming Damage based on your missing health, while in Wildspace. Non-Wildspace max: -1.5% Incoming Damage. The max bonus is achieved at 25% or less health.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Non-Wildspace baseline (-1.5%) NOT separately structured: the engine has no 'outside zone X' gate, so adding both would double-count (-4.5%) while in Wildspace. Only the Wildspace value (the item's flagship number) is structured."
+  },
+  {
+   "id": 792,
+   "name": "Endless Loop of Xaryxis · IL 2900",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Incoming Damage",
+     "amount": -3,
+     "zones": [
+      "Wildspace"
+     ],
+     "alwaysActive": false,
+     "name": "Survivor's Resilience",
+     "description": "Gain up to -3% Incoming Damage based on your missing health, while in Wildspace. Non-Wildspace max: -1.5% Incoming Damage. The max bonus is achieved at 25% or less health.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Non-Wildspace baseline (-1.5%) NOT separately structured: the engine has no 'outside zone X' gate, so adding both would double-count (-4.5%) while in Wildspace. Only the Wildspace value (the item's flagship number) is structured."
+  },
+  {
+   "id": 920,
+   "name": "Enchanted Bregan D'aerthe Priest's Gloves",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Critical Strike",
+     "amount": 2,
+     "alwaysActive": false,
+     "perStack": true,
+     "maxStacks": 5,
+     "name": "Healing Foci",
+     "description": "When casting a single target heal on a target, gain 2% Critical Strike (max stack 5) for 5 seconds. The target receives 2% Incoming Healing (max stack 5) for 3 seconds.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Incoming Healing",
+     "amount": 2,
+     "alwaysActive": false,
+     "perStack": true,
+     "maxStacks": 5,
+     "name": "Healing Foci",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 927,
+   "name": "Bregan D'aerthe Priest's Gloves",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Critical Strike",
+     "amount": 2,
+     "alwaysActive": false,
+     "perStack": true,
+     "maxStacks": 5,
+     "name": "Healing Foci",
+     "description": "When casting a single target heal on a target, gain 2% Critical Strike (max stack 5) for 3 seconds. The target receives 2% Incoming Healing (max stack 5) for 5 seconds.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "party",
+     "stat": "Incoming Healing",
+     "amount": 2,
+     "alwaysActive": false,
+     "perStack": true,
+     "maxStacks": 5,
+     "name": "Healing Foci",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 936,
+   "name": "Exalted Maiden's Restoration Stompers",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Power",
+     "amount": 5000,
+     "kind": "rating",
+     "alwaysActive": true,
+     "name": "Spider's Bane",
+     "description": "Gain 5,000 Power and gain more role effectiveness when in the Temple of the Spider. DPS: +6% Base Damage Boost. Tank: -6% Incoming Damage. Healer: +6% Overall Outgoing Healing.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Dmg Bonus",
+     "amount": 6,
+     "role": "dps",
+     "zones": [
+      "Temple of the Spider"
+     ],
+     "name": "Spider's Bane",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Incoming Damage",
+     "amount": -6,
+     "role": "tank",
+     "zones": [
+      "Temple of the Spider"
+     ],
+     "name": "Spider's Bane",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Overall Outgoing Healing",
+     "amount": 6,
+     "role": "heal",
+     "zones": [
+      "Temple of the Spider"
+     ],
+     "name": "Spider's Bane",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 940,
+   "name": "The Dark Maiden's Restoration Stompers",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Power",
+     "amount": 4500,
+     "kind": "rating",
+     "zones": [
+      "Underdark"
+     ],
+     "name": "Spider's Bane",
+     "description": "Gain 4,500 Power in the Underdark and gain more role effectiveness when in the Temple of the Spider. DPS: +5% Base Damage Boost. Tank: -5% Incoming Damage. Healer: +5% Overall Outgoing Healing.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Dmg Bonus",
+     "amount": 5,
+     "role": "dps",
+     "zones": [
+      "Temple of the Spider"
+     ],
+     "name": "Spider's Bane",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Incoming Damage",
+     "amount": -5,
+     "role": "tank",
+     "zones": [
+      "Temple of the Spider"
+     ],
+     "name": "Spider's Bane",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Overall Outgoing Healing",
+     "amount": 5,
+     "role": "heal",
+     "zones": [
+      "Temple of the Spider"
+     ],
+     "name": "Spider's Bane",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 945,
+   "name": "Dragonsteel Guards",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Defense",
+     "amount": 5,
+     "alwaysActive": false,
+     "name": "Resistance Rune",
+     "description": "You gain 5% Defense while Controlled.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 949,
+   "name": "Dragonsteel Mitts",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Defense",
+     "amount": 5,
+     "alwaysActive": false,
+     "name": "Resistance Rune",
+     "description": "You gain 5% Defense while Controlled.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 3305,
+   "name": "Dragonhide Cuffs",
+   "action": "skipped",
+   "reason": "Already fully structured under a different ability name ('Controlled Resilience') elsewhere on this same item, with identical values (Defense +5%, alwaysActive:false). Adding this worklist line's own text as a second structured entry would double-count the bonus. No action taken -- pre-existing entry already covers it.",
+   "line": "You gain 5% Defense while Controlled."
+  },
+  {
+   "id": 978,
+   "name": "Topaz Abyssal Loop",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Forte",
+     "amount": 8,
+     "alwaysActive": true,
+     "name": "Focused Action",
+     "description": "Gain 8% Forte. When Action Points are full, your Deflect and Deflect Severity is increased by 15%.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Deflect",
+     "amount": 15,
+     "alwaysActive": false,
+     "name": "Focused Action",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Deflect Severity",
+     "amount": 15,
+     "alwaysActive": false,
+     "name": "Focused Action",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 1050,
+   "name": "Regal Northdark Breeches",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Recharge Speed",
+     "amount": 5,
+     "alwaysActive": true,
+     "name": "Spider's Cunning",
+     "description": "+5% Recharge Speed, doubling in Menzoberranzan.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Recharge Speed",
+     "amount": 5,
+     "zones": [
+      "Menzoberranzan"
+     ],
+     "name": "Spider's Cunning",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 1051,
+   "name": "Defiant Northdark Breeches",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Stamina Regeneration",
+     "amount": 5,
+     "alwaysActive": true,
+     "name": "Spider's Cunning",
+     "description": "+5% Stamina Regeneration, doubling in Menzoberranzan.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Stamina Regeneration",
+     "amount": 5,
+     "zones": [
+      "Menzoberranzan"
+     ],
+     "name": "Spider's Cunning",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 1052,
+   "name": "Splendid Northdark Breeches",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Action Point Gain",
+     "amount": 5,
+     "alwaysActive": true,
+     "name": "Spider's Cunning",
+     "description": "+5% Action Point Gain, doubling in Menzoberranzan.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Action Point Gain",
+     "amount": 5,
+     "zones": [
+      "Menzoberranzan"
+     ],
+     "name": "Spider's Cunning",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 1054,
+   "name": "Striking Northdark Breeches",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Movement Speed",
+     "amount": 5,
+     "alwaysActive": true,
+     "name": "Spider's Cunning",
+     "description": "+5% Movement Speed, doubling in Menzoberranzan.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Movement Speed",
+     "amount": 5,
+     "zones": [
+      "Menzoberranzan"
+     ],
+     "name": "Spider's Cunning",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 1202,
+   "name": "Shabby Greaves of the Dragon Hunter",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Movement Speed",
+     "amount": 12,
+     "alwaysActive": false,
+     "name": "Death Defier's Haste",
+     "description": "Gain 2.5% Movement Speed for each enemy you are engaged in battle, to the max of 12%.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Per-enemy rate (2.5%) does not divide evenly into the stated cap (12% / 2.5% = 4.8) -- structured as a flat conditional max value (12%) rather than inventing a whole-number stack count."
+  },
+  {
+   "id": 1612,
+   "name": "Templar of the Twilight's Sabatons",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Movement Speed",
+     "amount": 12,
+     "alwaysActive": false,
+     "name": "Death Defier's Haste",
+     "description": "Gain 2.5% Movement Speed for each enemy you are engaged in battle, to the max of 12%.",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Per-enemy rate (2.5%) does not divide evenly into the stated cap (12% / 2.5% = 4.8) -- structured as a flat conditional max value (12%) rather than inventing a whole-number stack count."
+  },
+  {
+   "id": 1266,
+   "name": "Decaying Habit",
+   "action": "skipped",
+   "reason": "Two-phase time-ramping buff (rises for the first 60s in combat, then REVERSES to a loss at a different rate/cap after 60s) -- not a simple monotonic stacking pattern; no clean single perStack/maxStacks representation without misrepresenting combat-duration-dependent value.",
+   "line": "For the first minute you are in combat, you will gain 200 Power every 5 seconds. If you stay in combat for longer than one minute, you will lose 250 Power every 5 seconds, to a total loss of 2600 Power."
+  },
+  {
+   "id": 1517,
+   "name": "Infernal Offering Helm",
+   "action": "skipped",
+   "reason": "Two-phase time-ramping buff (rises for the first 60s in combat, then REVERSES to a loss at a different rate/cap after 60s) -- not a simple monotonic stacking pattern; no clean single perStack/maxStacks representation without misrepresenting combat-duration-dependent value.",
+   "line": "For the first minute you are in combat, you will gain 400 Power every 5 seconds. If you stay in combat for longer than one minute, you will lose 450 Power every 5 seconds, to a total loss of 4200 Power."
+  },
+  {
+   "id": 1630,
+   "name": "Haunted Hides of the Hall",
+   "action": "skipped",
+   "reason": "Two-phase time-ramping buff (rises for the first 60s in combat, then REVERSES to a loss at a different rate/cap after 60s) -- not a simple monotonic stacking pattern; no clean single perStack/maxStacks representation without misrepresenting combat-duration-dependent value.",
+   "line": "For the first minute you are in combat, you will gain 200 Power every 5 seconds. If you stay in combat for longer than one minute, you will lose 250 Power every 5 seconds, to a total loss of 2600 Power."
+  },
+  {
+   "id": 1274,
+   "name": "Shoes of Superstition",
+   "action": "skipped",
+   "reason": "Gameplay skill-check proc (must physically collect trinkets within 7s of combat start) -- outcome depends on player execution, not a deterministic status/zone/stack condition. Not modeled.",
+   "line": "At the start of combat, you will be surrounded by a ring of lucky trinkets for 7 seconds. If you pick up all the trinkets before they disappear, you will gain 1500 Power and Defense for 15 seconds. (30 second cooldown)"
+  },
+  {
+   "id": 1891,
+   "name": "Pants of the Chultan Merchant",
+   "action": "skipped",
+   "reason": "Per-percent-of-missing-health scaling (15 Critical Avoidance per 1% missing HP) with NO stated cap/max in the tooltip text -- no engine field for uncapped per-point-of-missing-health scaling on gear ('perPoint' exists for boons only, not gear). Assuming a specific missing-health%% to produce a fixed number would be inventing a value.",
+   "line": "Gain 15 Critical Avoidance for each percent of health you are missing."
+  },
+  {
+   "id": 3185,
+   "name": "Crystalflex Bracers",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Class Resource Max",
+     "amount": 20.0,
+     "name": "Resourceful Forte (Greater)",
+     "description": "+20% Divinity/Performance/Soulweave maximum. +3.5% Forte.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Forte",
+     "amount": 3.5,
+     "name": "Resourceful Forte (Greater)",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": "Matches existing structured 'Resourceful Forte (Greater)' entries elsewhere in gear.json (same ability, same values, different item copies)."
+  },
+  {
+   "id": 4004,
+   "name": "Enchanted Bregan D'aerthe Assassin's Leathers",
+   "action": "skipped",
+   "reason": "Source text itself is flagged '[pending re-verify -- small/dark capture]' (low-confidence OCR) and 'scales with team size' has no stated per-member increment. Cannot structure with confidence.",
+   "line": "[pending re-verify — small/dark capture] While moving, gain 8% Critical Severity (scales with team size)."
+  },
+  {
+   "id": 5291,
+   "name": "Brynnyr's Demise",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Power",
+     "amount": 2000,
+     "kind": "rating",
+     "alwaysActive": false,
+     "name": "Equip Bonus",
+     "description": "+2000 Power if your Defense is higher than your Power. +2000 Defense if your Power is higher than your Defense.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Defense",
+     "amount": 2000,
+     "kind": "rating",
+     "alwaysActive": false,
+     "name": "Equip Bonus",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 5355,
+   "name": "Runefrost Lifeward Vambraces",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Class Resource Max",
+     "amount": 15.0,
+     "name": "Greater Adaptive Strength",
+     "description": "Your Divinity maximum increases by 15%. Gain 3.5% Critical Severity.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Critical Severity",
+     "amount": 3.5,
+     "name": "Greater Adaptive Strength",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 6852,
+   "name": "Gladebind Vambraces",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Class Resource Max",
+     "amount": 15.0,
+     "name": "Spiritual Inspiration",
+     "description": "Your Performance/Soulweave maximum increases by 15%. Gain 3% Forte.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Forte",
+     "amount": 3.0,
+     "name": "Spiritual Inspiration",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 6859,
+   "name": "Oakenthorn Cuirass",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Recharge Speed",
+     "amount": 1,
+     "alwaysActive": false,
+     "perStack": true,
+     "maxStacks": 10,
+     "name": "Death Defier's Haste",
+     "description": "Gain 1% Recharge Speed for each enemy you are engaged in battle within 100'. Max 10 Stacks: 10% Recharge Speed",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": 6864,
+   "name": "Ambersteel Vambraces",
+   "action": "structured",
+   "entries_added": [
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Class Resource Max",
+     "amount": 15.0,
+     "name": "Divine Inspiration",
+     "description": "Your Divinity maximum increases by 15%. Gain 3% Forte.",
+     "parsedFrom": "description"
+    },
+    {
+     "type": "Equip",
+     "scope": "self",
+     "stat": "Forte",
+     "amount": 3.0,
+     "name": "Divine Inspiration",
+     "parsedFrom": "description"
+    }
+   ],
+   "note": ""
+  }
+ ]
+}

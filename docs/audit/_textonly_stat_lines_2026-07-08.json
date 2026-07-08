@@ -1,0 +1,5317 @@
+{
+ "generated": "2026-07-08",
+ "method": "text-only stat-line census after Wave 1-8 (see data_trust.md Wave 9)",
+ "items": 287,
+ "work": [
+  {
+   "id": 226,
+   "name": "Feywood Shield +1",
+   "item_level": 1500,
+   "set": "Masterwork VII Weapon Set",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Modification",
+     "description": "Modification: +2,354 Critical Avoidance."
+    },
+    {
+     "ebIndex": 1,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Modification",
+     "description": "Modification: +5% Stamina Regeneration."
+    }
+   ]
+  },
+  {
+   "id": 397,
+   "name": "Mystic Conduit Insignia",
+   "item_level": 3600,
+   "set": "Rings, Shackles of Divinity",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Challenger's Accuracy",
+     "description": "When in combat with 3 or more enemies, your Accuracy is increased by 2,250 every 2 seconds. Every 2 seconds you are in combat with 1 or less enemies, lose 1 stack. Max 5 stacks: 11,250 Accuracy."
+    }
+   ]
+  },
+  {
+   "id": 284,
+   "name": "Bregan D'aerthe Soldier's Leggings",
+   "item_level": 1600,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Menzoberranzan Executioner",
+     "description": "Killing a Drider House Captain grants you 6% Combat Advantage for 30 minutes. This effect expires if you leave Menzoberranzan."
+    }
+   ]
+  },
+  {
+   "id": 309,
+   "name": "Bulwark of the Deathless Tyrant",
+   "item_level": 3550,
+   "set": "Vanguard's Vow Armor",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Overwhelming Parry",
+     "description": "When in combat with multiple enemies, gain 9,925 Awareness. This bonus is at full power when in combat with 7 or more enemies."
+    }
+   ]
+  },
+  {
+   "id": 310,
+   "name": "Helm of the Eternal Gaze",
+   "item_level": 3550,
+   "set": "Vanguard's Vow Armor",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Occult Defence",
+     "description": "You gain 9,925 Defence. And when in Thay you gain -1.2% Incoming Damage."
+    }
+   ]
+  },
+  {
+   "id": 359,
+   "name": "Mark of the Initiate (Unfaltered Finesse)",
+   "item_level": 2600,
+   "set": "Enchanted Advantage",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage",
+     "description": "2 of Set: +3,000 Accuracy"
+    }
+   ]
+  },
+  {
+   "id": 360,
+   "name": "Mark of the Novice (Unfaltered Finesse)",
+   "item_level": 2600,
+   "set": "Enchanted Advantage",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage",
+     "description": "2 of Set: +3,000 Accuracy"
+    }
+   ]
+  },
+  {
+   "id": 361,
+   "name": "Mark of the Recruit (Unfaltered Finesse)",
+   "item_level": 2600,
+   "set": "Enchanted Advantage",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage",
+     "description": "2 of Set: +3,000 Accuracy"
+    }
+   ]
+  },
+  {
+   "id": 373,
+   "name": "Doomward Bastion of the Thayan Zealot",
+   "item_level": 3900,
+   "set": "Umbral Stride",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Umbral Stride",
+     "description": "Every 3s in combat, you will gain a stack of Umbral Stride. Each stack grants the following bonuses: General: +0.25% Power. DPS: +0.15% Critical Severity. Healer: +0.1% Overall Outgoing Healing. Tank: +0.3% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 374,
+   "name": "Oathbreaker's Judgment of the Thayan Zealot",
+   "item_level": 3900,
+   "set": "Umbral Stride",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Umbral Stride",
+     "description": "Every 3s in combat, you will gain a stack of Umbral Stride. Each stack grants the following bonuses: General: +0.25% Power. DPS: +0.15% Critical Severity. Healer: +0.1% Overall Outgoing Healing. Tank: +0.3% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 382,
+   "name": "Breastplate of the Vital Sigil",
+   "item_level": 4700,
+   "set": "Dread March Armor",
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Protective Embrace",
+     "description": "Heal ally grants them +1% Defense for 6s. Max 5 stacks (5%)"
+    }
+   ]
+  },
+  {
+   "id": 399,
+   "name": "Mystic Conduit Crest (Duelist)",
+   "item_level": 3600,
+   "set": "Rings, Shackles of Divinity",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Duelist's Strength",
+     "description": "When in combat with only 1 enemy, your Combat Advantage is increased by 2,250 every 2 seconds. Every 2 seconds you are in combat with 2 or more enemies, lose 1 stack. Max 5 stacks: 11,250 Combat Advantage."
+    }
+   ]
+  },
+  {
+   "id": 415,
+   "name": "Bloodwoven Symbols (Medic's Haste)",
+   "item_level": 3150,
+   "set": "Enchanted Healing",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Healing",
+     "pieces": 2,
+     "name": null,
+     "description": "2 of Set: +2% Outgoing Healing"
+    }
+   ]
+  },
+  {
+   "id": 417,
+   "name": "Bloodwoven Sigils (Reckless Advantage)",
+   "item_level": 3150,
+   "set": "Enchanted Advantage",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": null,
+     "description": "2 of Set: +2% Combat Advantage"
+    }
+   ]
+  },
+  {
+   "id": 418,
+   "name": "Bloodwoven Signs (Occult Advantage)",
+   "item_level": 3150,
+   "set": "Enchanted Advantage",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": null,
+     "description": "2 of Set: +2% Combat Advantage"
+    }
+   ]
+  },
+  {
+   "id": 419,
+   "name": "Bloodwoven Runes (Skirmisher's Zeal)",
+   "item_level": 3150,
+   "set": "Enchanted Advantage",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": null,
+     "description": "2 of Set: +2% Combat Advantage"
+    }
+   ]
+  },
+  {
+   "id": 420,
+   "name": "Bloodwoven Signs (Critical Empowerment)",
+   "item_level": 3150,
+   "set": "Enchanted Advantage",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": null,
+     "description": "2 of Set: +2% Combat Advantage"
+    }
+   ]
+  },
+  {
+   "id": 421,
+   "name": "Bloodwoven Runes (Challenger's Strength)",
+   "item_level": 3150,
+   "set": "Enchanted Advantage",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Challenger's Strength",
+     "description": "When in combat with only 1 enemy, your Power is increased by 2,330 every 2 seconds. Every 2 seconds you are in combat with 4 or more enemies, lose 1 stack. Max 5 stacks: 11,650 Power."
+    },
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": null,
+     "description": "2 of Set: +2% Combat Advantage"
+    }
+   ]
+  },
+  {
+   "id": 422,
+   "name": "Bloodwoven Sigils (Charged At-Will)",
+   "item_level": 3150,
+   "set": "Enchanted Advantage",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": null,
+     "description": "2 of Set: +2% Combat Advantage"
+    }
+   ]
+  },
+  {
+   "id": 423,
+   "name": "Bloodwoven Ink (Butcher's Zeal)",
+   "item_level": 3150,
+   "set": "Enchanted Healing",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Healing",
+     "pieces": 2,
+     "name": "Enchanted Healing (2/2)",
+     "description": "2 of Set: +2% Outgoing Healing."
+    }
+   ]
+  },
+  {
+   "id": 424,
+   "name": "Bloodwoven Symbols (Graceful Harmony)",
+   "item_level": 3150,
+   "set": "Enchanted Healing",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Enchanted Healing",
+     "pieces": 2,
+     "name": null,
+     "description": "2 of Set: +2% Outgoing Healing"
+    }
+   ]
+  },
+  {
+   "id": 444,
+   "name": "Arcane Conduit Ink — Ruthless Critical",
+   "item_level": 3800,
+   "set": "Soul Harvest",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Ruthless Critical",
+     "description": "On dmg/heal > 15% MaxHP: +1.2% CritStrike + 0.7% Power 15s. Max 5 (6%/3.5%)"
+    }
+   ]
+  },
+  {
+   "id": 445,
+   "name": "Arcane Conduit Crest — Combatant's Advantage",
+   "item_level": 3800,
+   "set": "Soul Harvest",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Combatant's Advantage",
+     "description": "Per 2s in combat: +1.2% CA, -1.7% Defense. Max 5 stacks"
+    }
+   ]
+  },
+  {
+   "id": 463,
+   "name": "Mystic Conduit Seal — Survivor's Forte",
+   "item_level": 3600,
+   "set": "Soul Harvest",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Survivor's Forte",
+     "description": "Up to 8% Forte based on health %"
+    }
+   ]
+  },
+  {
+   "id": 467,
+   "name": "Bloodwoven Brands — Depleted Defiance",
+   "item_level": 3150,
+   "set": "Enchanted Awareness",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Awareness",
+     "pieces": 2,
+     "name": "Enchanted Awareness",
+     "description": "2 of Set: +2% Awareness"
+    }
+   ]
+  },
+  {
+   "id": 469,
+   "name": "Bloodwoven Runes — Challenger's Strength",
+   "item_level": 3150,
+   "set": "Enchanted Advantage",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage (2/2)",
+     "description": "2 of Set: +3% Combat Advantage (some variants grant +25 Action Points or +7% Combat Advantage)."
+    }
+   ]
+  },
+  {
+   "id": 471,
+   "name": "Bloodwoven Ink (Survivor's Gift)",
+   "item_level": 3150,
+   "set": "Enchanted Healing",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Healing",
+     "pieces": 2,
+     "name": "Enchanted Healing (2/2)",
+     "description": "2 of Set: +2% Outgoing Healing."
+    }
+   ]
+  },
+  {
+   "id": 472,
+   "name": "Bloodwoven Signs — Critical Empowerment",
+   "item_level": 3150,
+   "set": "Enchanted Advantage",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage (2/2)",
+     "description": "2 of Set: +3% Combat Advantage (some variants grant +25 Action Points or +7% Combat Advantage)."
+    }
+   ]
+  },
+  {
+   "id": 474,
+   "name": "Runes of the Avowed — Challenger's Awareness",
+   "item_level": 3000,
+   "set": "Enchanted Awareness",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Awareness",
+     "pieces": 2,
+     "name": "Enchanted Awareness (2/2)",
+     "description": "2 of Set: +1,000 Awareness."
+    }
+   ]
+  },
+  {
+   "id": 475,
+   "name": "Runes of the Pledged — Challenger's Forte",
+   "item_level": 3000,
+   "set": "Enchanted Healing",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Healing",
+     "pieces": 2,
+     "name": "Enchanted Healing (2/2)",
+     "description": "2 of Set: +3% Outgoing Healing (lower-tier variants grant +2% Outgoing Healing)."
+    }
+   ]
+  },
+  {
+   "id": 476,
+   "name": "Runes of the Covenant — Encounter Reprieve",
+   "item_level": 3000,
+   "set": "Enchanted Advantage",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage (2/2)",
+     "description": "2 of Set: +3% Combat Advantage (some variants grant +25 Action Points or +7% Combat Advantage)."
+    }
+   ]
+  },
+  {
+   "id": 477,
+   "name": "Runes of the Oathbound — Encounter Reprieve",
+   "item_level": 3000,
+   "set": "Enchanted Advantage",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage (2/2)",
+     "description": "2 of Set: +3% Combat Advantage (some variants grant +25 Action Points or +7% Combat Advantage)."
+    }
+   ]
+  },
+  {
+   "id": 478,
+   "name": "Runes of the Sworn — Challenger's Forte",
+   "item_level": 3000,
+   "set": "Enchanted Healing",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Healing",
+     "pieces": 2,
+     "name": "Enchanted Healing (2/2)",
+     "description": "2 of Set: +3% Outgoing Healing (lower-tier variants grant +2% Outgoing Healing)."
+    }
+   ]
+  },
+  {
+   "id": 479,
+   "name": "Runes of the Promised — Encounter Reprieve",
+   "item_level": 3000,
+   "set": "Enchanted Advantage",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage (2/2)",
+     "description": "2 of Set: +3% Combat Advantage (some variants grant +25 Action Points or +7% Combat Advantage)."
+    }
+   ]
+  },
+  {
+   "id": 494,
+   "name": "Mark of the Convert",
+   "item_level": 2600,
+   "set": "Enchanted Awareness",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Awareness",
+     "pieces": 2,
+     "name": "Enchanted Awareness",
+     "description": "2 of Set: +3,000 Awareness"
+    }
+   ]
+  },
+  {
+   "id": 495,
+   "name": "Mark of the Adept",
+   "item_level": 2600,
+   "set": "Enchanted Forte",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Forte",
+     "pieces": 2,
+     "name": "Enchanted Forte",
+     "description": "2 of Set: +3,000 Forte"
+    }
+   ]
+  },
+  {
+   "id": 496,
+   "name": "Mark of the Fledgling",
+   "item_level": 2600,
+   "set": "Enchanted Forte",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Forte",
+     "pieces": 2,
+     "name": "Enchanted Forte",
+     "description": "2 of Set: +3,000 Forte"
+    }
+   ]
+  },
+  {
+   "id": 497,
+   "name": "Mark of the Recruit",
+   "item_level": 2600,
+   "set": "Enchanted Advantage",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage",
+     "description": "2 of Set: +3,000 Accuracy"
+    }
+   ]
+  },
+  {
+   "id": 498,
+   "name": "Mark of the Novice",
+   "item_level": 2600,
+   "set": "Enchanted Advantage",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage (2/2)",
+     "description": "2 of Set: +3% Combat Advantage (some variants grant +25 Action Points or +7% Combat Advantage)."
+    }
+   ]
+  },
+  {
+   "id": 499,
+   "name": "Mark of the Initiate",
+   "item_level": 2600,
+   "set": "Enchanted Advantage",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage",
+     "description": "2 of Set: +3,000 Accuracy"
+    }
+   ]
+  },
+  {
+   "id": 500,
+   "name": "Mark of the Convert — Survivor's Remedy",
+   "item_level": 2600,
+   "set": "Enchanted Awareness",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Awareness",
+     "pieces": 2,
+     "name": "Enchanted Awareness",
+     "description": "2 of Set: +3,000 Awareness"
+    }
+   ]
+  },
+  {
+   "id": 501,
+   "name": "Mark of the Adept — Healing Tactics",
+   "item_level": 2600,
+   "set": "Enchanted Forte",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Forte",
+     "pieces": 2,
+     "name": "Enchanted Forte",
+     "description": "2 of Set: +3,000 Forte"
+    }
+   ]
+  },
+  {
+   "id": 502,
+   "name": "Mark of the Fledgling — Healing Tactics",
+   "item_level": 2600,
+   "set": "Enchanted Forte",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Forte",
+     "pieces": 2,
+     "name": "Enchanted Forte",
+     "description": "2 of Set: +3,000 Forte"
+    }
+   ]
+  },
+  {
+   "id": 503,
+   "name": "Mark of the Novice — Solitary Power",
+   "item_level": 2600,
+   "set": "Enchanted Advantage",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage",
+     "description": "2 of Set: +3,000 Accuracy"
+    }
+   ]
+  },
+  {
+   "id": 504,
+   "name": "Mark of the Recruit — Solitary Power",
+   "item_level": 2600,
+   "set": "Enchanted Advantage",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage",
+     "description": "2 of Set: +3,000 Accuracy"
+    }
+   ]
+  },
+  {
+   "id": 505,
+   "name": "Mark of the Initiate — Solitary Power",
+   "item_level": 2600,
+   "set": "Enchanted Advantage",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Advantage",
+     "pieces": 2,
+     "name": "Enchanted Advantage",
+     "description": "2 of Set: +3,000 Accuracy"
+    }
+   ]
+  },
+  {
+   "id": 512,
+   "name": "Prismatic Bismuth Plate — Healer's Influence",
+   "item_level": 3700,
+   "set": "Prismatic Crystalline Armor",
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Healer's Influence (Greater)",
+     "description": "Healing an ally with an Encounter power also heals you for 80,000 and grants you and close Allies 3% Defense for 5s."
+    }
+   ]
+  },
+  {
+   "id": 514,
+   "name": "Prismatic Luminstep Sabatons — Enduring Resilience",
+   "item_level": 3700,
+   "set": "Prismatic Crystalline Armor",
+   "allowedClasses": [
+    "Paladin",
+    "Barbarian",
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Enduring Resilience (Greater)",
+     "description": "Gain up to 5% Control Resistance and -2.5% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health. Currently: 0% Control Resistance and -0% Incoming Damage."
+    }
+   ]
+  },
+  {
+   "id": 520,
+   "name": "Bismuth Plate — Healer's Influence",
+   "item_level": 3350,
+   "set": "Crystalline Armor",
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Healer's Influence (Greater)",
+     "description": "Healing an ally with an Encounter power also heals you for 80,000 and grants you and close Allies 3% Defense for 5s."
+    }
+   ]
+  },
+  {
+   "id": 525,
+   "name": "Luminstep Sabatons — Enduring Resilience",
+   "item_level": 3350,
+   "set": "Crystalline Armor",
+   "allowedClasses": [
+    "Paladin",
+    "Barbarian",
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Enduring Resilience (Greater)",
+     "description": "Gain up to 5% Control Resistance and -2.5% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health. Currently: 0% Control Resistance and -0% Incoming Damage."
+    }
+   ]
+  },
+  {
+   "id": 532,
+   "name": "Boghide Vest — Healer's Influence",
+   "item_level": 3000,
+   "set": "Swamp Dweller Armor",
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Healer's Influence (Lesser)",
+     "description": "Healing an ally with an Encounter also heals you for 80,000 and grants allies close to you 2.1% Defense for 5s."
+    }
+   ]
+  },
+  {
+   "id": 534,
+   "name": "Mirestep Boots — Enduring Resilience",
+   "item_level": 3000,
+   "set": "Swamp Dweller Armor",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Enduring Resilience (Lesser)",
+     "description": "Gain up to 3.5% Control Resistance and -1.8% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health. Currently: 0% Control Resistance and -0% Incoming Damage."
+    }
+   ]
+  },
+  {
+   "id": 548,
+   "name": "Bloodbrass Hoop",
+   "item_level": 2800,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Divine Blessing (Lesser)",
+     "description": "Your current Hit Points increases your Forte, up to a max of 4%. Currently: 4% Forte"
+    }
+   ]
+  },
+  {
+   "id": 690,
+   "name": "Ultraviolet Elven Halfplate",
+   "item_level": 2900,
+   "set": null,
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Medic's Respite",
+     "description": "Healing an ally with an Encounter power also heals you for 80,000 and grants Allies within 25' 1.5% Awareness and Incoming Healing for 5s."
+    }
+   ]
+  },
+  {
+   "id": 709,
+   "name": "Cosmic Corsair's Cuirass",
+   "item_level": 2400,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Awakening Rush",
+     "description": "Gain 3,350 Awareness, and an additional 2.5% Recharge Speed in Wildspace."
+    }
+   ]
+  },
+  {
+   "id": 717,
+   "name": "Starforged Coat",
+   "item_level": 2700,
+   "set": null,
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Medic's Respite",
+     "description": "Healing an ally with an Encounter power also heals you for 75,000 and grants Allies within 25' 1.5% Awareness for 5s."
+    }
+   ]
+  },
+  {
+   "id": 734,
+   "name": "Lolthian Cuirass",
+   "item_level": 2050,
+   "set": null,
+   "allowedClasses": [
+    "Paladin",
+    "Barbarian",
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "This or That",
+     "description": "When not in a party, gain 5,000 Power. When in a party, gain 5,500 Deflect and Deflect Severity."
+    }
+   ]
+  },
+  {
+   "id": 738,
+   "name": "Lolthian Vest",
+   "item_level": 2050,
+   "set": null,
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "This or That",
+     "description": "When not in a party, gain 5,000 Forte. When in a party, gain 10,000 Outgoing Healing."
+    }
+   ]
+  },
+  {
+   "id": 776,
+   "name": "Cosmic Band of Deflection · IL 2600",
+   "item_level": 2600,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Survivor's Resilience",
+     "description": "Gain up to -2% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health."
+    }
+   ]
+  },
+  {
+   "id": 777,
+   "name": "Cosmic Band of Deflection · IL 2800",
+   "item_level": 2800,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Survivor's Resilience",
+     "description": "Gain up to -2% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health."
+    }
+   ]
+  },
+  {
+   "id": 790,
+   "name": "Endless Loop of Xaryxis · IL 2500",
+   "item_level": 2500,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Survivor's Resilience",
+     "description": "Gain up to -3% Incoming Damage based on your missing health, while in Wildspace. Non-Wildspace max: -1.5% Incoming Damage. The max bonus is achieved at 25% or less health."
+    }
+   ]
+  },
+  {
+   "id": 791,
+   "name": "Endless Loop of Xaryxis · IL 2700",
+   "item_level": 2700,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Survivor's Resilience",
+     "description": "Gain up to -3% Incoming Damage based on your missing health, while in Wildspace. Non-Wildspace max: -1.5% Incoming Damage. The max bonus is achieved at 25% or less health."
+    }
+   ]
+  },
+  {
+   "id": 792,
+   "name": "Endless Loop of Xaryxis · IL 2900",
+   "item_level": 2900,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Survivor's Resilience",
+     "description": "Gain up to -3% Incoming Damage based on your missing health, while in Wildspace. Non-Wildspace max: -1.5% Incoming Damage. The max bonus is achieved at 25% or less health."
+    }
+   ]
+  },
+  {
+   "id": 913,
+   "name": "Abyss Striker's Healing Sollerets",
+   "item_level": 2000,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "This or That",
+     "description": "When in a party, gain 50,000 Maximum Hit Points. When in a party, gain 5500 Outgoing Healing and Forte."
+    }
+   ]
+  },
+  {
+   "id": 920,
+   "name": "Enchanted Bregan D'aerthe Priest's Gloves",
+   "item_level": 2050,
+   "set": null,
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Healing Foci",
+     "description": "When casting a single target heal on a target, gain 2% Critical Strike (max stack 5) for 5 seconds. The target receives 2% Incoming Healing (max stack 5) for 3 seconds."
+    }
+   ]
+  },
+  {
+   "id": 927,
+   "name": "Bregan D'aerthe Priest's Gloves",
+   "item_level": 2000,
+   "set": null,
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Healing Foci",
+     "description": "When casting a single target heal on a target, gain 2% Critical Strike (max stack 5) for 3 seconds. The target receives 2% Incoming Healing (max stack 5) for 5 seconds."
+    }
+   ]
+  },
+  {
+   "id": 936,
+   "name": "Exalted Maiden's Restoration Stompers",
+   "item_level": 2050,
+   "set": null,
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Spider's Bane",
+     "description": "Gain 5,000 Power and gain more role effectiveness when in the Temple of the Spider. DPS: +6% Base Damage Boost. Tank: -6% Incoming Damage. Healer: +6% Overall Outgoing Healing."
+    }
+   ]
+  },
+  {
+   "id": 940,
+   "name": "The Dark Maiden's Restoration Stompers",
+   "item_level": 2000,
+   "set": null,
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Spider's Bane",
+     "description": "Gain 4,500 Power in the Underdark and gain more role effectiveness when in the Temple of the Spider. DPS: +5% Base Damage Boost. Tank: -5% Incoming Damage. Healer: +5% Overall Outgoing Healing."
+    }
+   ]
+  },
+  {
+   "id": 945,
+   "name": "Dragonsteel Guards",
+   "item_level": 1900,
+   "set": "Dragonsteel Gear",
+   "allowedClasses": [
+    "Paladin",
+    "Barbarian",
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Resistance Rune",
+     "description": "You gain 5% Defense while Controlled."
+    }
+   ]
+  },
+  {
+   "id": 949,
+   "name": "Dragonsteel Mitts",
+   "item_level": 1900,
+   "set": "Dragonsteel Gear",
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Resistance Rune",
+     "description": "You gain 5% Defense while Controlled."
+    }
+   ]
+  },
+  {
+   "id": 950,
+   "name": "Dragonsteel Spikes",
+   "item_level": 1900,
+   "set": "Dragonsteel Gear",
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "This or That",
+     "description": "When not in a party, gain 3,000 Forte. When in a party, gain 10,000 Outgoing Healing."
+    }
+   ]
+  },
+  {
+   "id": 978,
+   "name": "Topaz Abyssal Loop",
+   "item_level": 2250,
+   "set": "Abyssal Fury",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Focused Action",
+     "description": "Gain 8% Forte. When Action Points are full, your Deflect and Deflect Severity is increased by 15%."
+    }
+   ]
+  },
+  {
+   "id": 1050,
+   "name": "Regal Northdark Breeches",
+   "item_level": 1550,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Spider's Cunning",
+     "description": "+5% Recharge Speed, doubling in Menzoberranzan."
+    }
+   ]
+  },
+  {
+   "id": 1051,
+   "name": "Defiant Northdark Breeches",
+   "item_level": 1550,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Spider's Cunning",
+     "description": "+5% Stamina Regeneration, doubling in Menzoberranzan."
+    }
+   ]
+  },
+  {
+   "id": 1052,
+   "name": "Splendid Northdark Breeches",
+   "item_level": 1550,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Spider's Cunning",
+     "description": "+5% Action Point Gain, doubling in Menzoberranzan."
+    }
+   ]
+  },
+  {
+   "id": 1054,
+   "name": "Striking Northdark Breeches",
+   "item_level": 1550,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Spider's Cunning",
+     "description": "+5% Movement Speed, doubling in Menzoberranzan."
+    }
+   ]
+  },
+  {
+   "id": 1055,
+   "name": "Bregan D'aerthe Scout's Leggings",
+   "item_level": 1600,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Menzoberranzan Executioner",
+     "description": "Killing a Drider House Captain grants you 6% Critical Severity for 30 minutes. This effect expires if you leave Menzoberranzan."
+    }
+   ]
+  },
+  {
+   "id": 1058,
+   "name": "Bregan D'aerthe Physician's Leggings",
+   "item_level": 1600,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Menzoberranzan Executioner",
+     "description": "Killing a Drider House Captain grants you 6% Critical Strike for 30 minutes. This effect expires if you leave Menzoberranzan."
+    }
+   ]
+  },
+  {
+   "id": 1060,
+   "name": "Bregan D'aerthe Mercenary's Leggings",
+   "item_level": 1600,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Menzoberranzan Executioner",
+     "description": "Killing a Drider House Captain grants you 6% Critical Avoidance for 30 minutes. This effect expires if you leave Menzoberranzan."
+    }
+   ]
+  },
+  {
+   "id": 1062,
+   "name": "Bregan D'aerthe Officer's Leggings",
+   "item_level": 1600,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Menzoberranzan Executioner",
+     "description": "Killing a Drider House Captain grants you 6% Accuracy for 30 minutes. This effect expires if you leave Menzoberranzan."
+    }
+   ]
+  },
+  {
+   "id": 1202,
+   "name": "Shabby Greaves of the Dragon Hunter",
+   "item_level": 1650,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Death Defier's Haste",
+     "description": "Gain 2.5% Movement Speed for each enemy you are engaged in battle, to the max of 12%."
+    }
+   ]
+  },
+  {
+   "id": 1241,
+   "name": "Oathlord's Ward Barbute",
+   "item_level": 770,
+   "set": "Barovian Lord's Armor",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Barovian Lord's Armor",
+     "pieces": 4,
+     "name": "Barovian Lord's Armor (4/4)",
+     "description": "Completing this collection will give you an additional bonus of +20 Power"
+    }
+   ]
+  },
+  {
+   "id": 1242,
+   "name": "Oathlord's Ward Cuirass",
+   "item_level": 770,
+   "set": "Barovian Lord's Armor",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Barovian Lord's Armor",
+     "pieces": 4,
+     "name": "Barovian Lord's Armor (4/4)",
+     "description": "Completing this collection will give you an additional bonus of +20 Power"
+    }
+   ]
+  },
+  {
+   "id": 1243,
+   "name": "Oathlord's Ward Gauntlets",
+   "item_level": 770,
+   "set": "Barovian Lord's Armor",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Barovian Lord's Armor",
+     "pieces": 4,
+     "name": "Barovian Lord's Armor (4/4)",
+     "description": "Completing this collection will give you an additional bonus of +20 Power"
+    }
+   ]
+  },
+  {
+   "id": 1244,
+   "name": "Oathlord's Ward Sabatons",
+   "item_level": 770,
+   "set": "Barovian Lord's Armor",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Barovian Lord's Armor",
+     "pieces": 4,
+     "name": "Barovian Lord's Armor (4/4)",
+     "description": "Completing this collection will give you an additional bonus of +20 Power"
+    }
+   ]
+  },
+  {
+   "id": 1245,
+   "name": "Oathlord's Restoration Barbute",
+   "item_level": 770,
+   "set": "Barovian Lord's Armor",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Barovian Lord's Armor",
+     "pieces": 4,
+     "name": "Barovian Lord's Armor (4/4)",
+     "description": "Completing this collection will give you an additional bonus of +20 Power"
+    }
+   ]
+  },
+  {
+   "id": 1246,
+   "name": "Oathlord's Restoration Sabatons",
+   "item_level": 770,
+   "set": "Barovian Lord's Armor",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Barovian Lord's Armor",
+     "pieces": 4,
+     "name": "Barovian Lord's Armor (4/4)",
+     "description": "Completing this collection will give you an additional bonus of +20 Power"
+    }
+   ]
+  },
+  {
+   "id": 1247,
+   "name": "Oathlord's Restoration Gauntlets",
+   "item_level": 770,
+   "set": "Barovian Lord's Armor",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Barovian Lord's Armor",
+     "pieces": 4,
+     "name": "Barovian Lord's Armor (4/4)",
+     "description": "Completing this collection will give you an additional bonus of +20 Power"
+    }
+   ]
+  },
+  {
+   "id": 1248,
+   "name": "Oathlord's Restoration Cuirass",
+   "item_level": 770,
+   "set": "Barovian Lord's Armor",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Barovian Lord's Armor",
+     "pieces": 4,
+     "name": "Barovian Lord's Armor (4/4)",
+     "description": "Completing this collection will give you an additional bonus of +20 Power"
+    }
+   ]
+  },
+  {
+   "id": 1266,
+   "name": "Decaying Habit",
+   "item_level": 756,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Berserker's Might",
+     "description": "For the first minute you are in combat, you will gain 200 Power every 5 seconds. If you stay in combat for longer than one minute, you will lose 250 Power every 5 seconds, to a total loss of 2600 Power."
+    }
+   ]
+  },
+  {
+   "id": 1274,
+   "name": "Shoes of Superstition",
+   "item_level": 756,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Superstition",
+     "description": "At the start of combat, you will be surrounded by a ring of lucky trinkets for 7 seconds. If you pick up all the trinkets before they disappear, you will gain 1500 Power and Defense for 15 seconds. (30 second cooldown)"
+    }
+   ]
+  },
+  {
+   "id": 1517,
+   "name": "Infernal Offering Helm",
+   "item_level": 1225,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Berserker's Might",
+     "description": "For the first minute you are in combat, you will gain 400 Power every 5 seconds. If you stay in combat for longer than one minute, you will lose 450 Power every 5 seconds, to a total loss of 4200 Power."
+    }
+   ]
+  },
+  {
+   "id": 1612,
+   "name": "Templar of the Twilight's Sabatons",
+   "item_level": 1000,
+   "set": null,
+   "allowedClasses": [
+    "Paladin",
+    "Fighter",
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Death Defier's Haste",
+     "description": "Gain 2.5% Movement Speed for each enemy you are engaged in battle, to the max of 12%."
+    }
+   ]
+  },
+  {
+   "id": 1630,
+   "name": "Haunted Hides of the Hall",
+   "item_level": 1000,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Berserker's Might",
+     "description": "For the first minute you are in combat, you will gain 200 Power every 5 seconds. If you stay in combat for longer than one minute, you will lose 250 Power every 5 seconds, to a total loss of 2600 Power."
+    }
+   ]
+  },
+  {
+   "id": 1891,
+   "name": "Pants of the Chultan Merchant",
+   "item_level": 672,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Survivor's Resistance",
+     "description": "Gain 15 Critical Avoidance for each percent of health you are missing."
+    }
+   ]
+  },
+  {
+   "id": 1994,
+   "name": "Garb of the Ascended",
+   "item_level": 610,
+   "set": null,
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Ascended Party Bonus",
+     "description": "When not in a party: +15,000 Maximum Hit Points. When in a party: +2000 Critical Strike."
+    }
+   ]
+  },
+  {
+   "id": 2005,
+   "name": "Vivified Oathkeeper's Ward Armet",
+   "item_level": 645,
+   "set": "Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2006,
+   "name": "Vivified Oathkeeper's Ward Cuirass",
+   "item_level": 645,
+   "set": "Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2007,
+   "name": "Vivified Oathkeeper's Ward Couters",
+   "item_level": 645,
+   "set": "Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2008,
+   "name": "Vivified Oathkeeper's Ward Poleyns",
+   "item_level": 588,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2009,
+   "name": "Vivified Oathkeeper's Restoration Armet",
+   "item_level": 588,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2010,
+   "name": "Vivified Oathkeeper's Restoration Cuirass",
+   "item_level": 588,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2011,
+   "name": "Vivified Oathkeeper's Ward Coulters",
+   "item_level": 588,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2012,
+   "name": "Oathkeeper's Ward Cuirass",
+   "item_level": 560,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2013,
+   "name": "Oathkeeper's Ward Armet",
+   "item_level": 560,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2014,
+   "name": "Vivified Oathkeeper's Restoration Poleyns",
+   "item_level": 588,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2015,
+   "name": "Vivified Oathkeeper's Restoration Coulters",
+   "item_level": 588,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2016,
+   "name": "Oathkeeper's Ward Coulters",
+   "item_level": 560,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2017,
+   "name": "Oathkeeper's Ward Poleyns",
+   "item_level": 560,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2018,
+   "name": "Oathkeeper's Restoration Armet",
+   "item_level": 560,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2019,
+   "name": "Oathkeeper's Restoration Cuirass",
+   "item_level": 560,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2020,
+   "name": "Oathkeeper's Restoration Coulters",
+   "item_level": 560,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2021,
+   "name": "Oathkeeper's Restoration Poleyns",
+   "item_level": 588,
+   "set": "Oathkeeper's Relic",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavator's Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2668,
+   "name": "Company Assault Belt · IL 300",
+   "item_level": 300,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2669,
+   "name": "Company Assault Belt · IL 400",
+   "item_level": 400,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2670,
+   "name": "Company Assault Belt · IL 500",
+   "item_level": 500,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2671,
+   "name": "Company Assault Belt · IL 600",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2672,
+   "name": "Company Gladiator Belt · IL 300",
+   "item_level": 300,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2673,
+   "name": "Company Gladiator Belt · IL 400",
+   "item_level": 400,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2674,
+   "name": "Company Gladiator Belt · IL 500",
+   "item_level": 500,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2675,
+   "name": "Company Gladiator Belt · IL 600",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2676,
+   "name": "Company Ward Belt · IL 300",
+   "item_level": 300,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2677,
+   "name": "Company Ward Belt · IL 400",
+   "item_level": 400,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2678,
+   "name": "Company Ward Belt · IL 500",
+   "item_level": 500,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2679,
+   "name": "Company Ward Belt · IL 600",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2680,
+   "name": "Company Executioner Cloak · IL 300",
+   "item_level": 300,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2681,
+   "name": "Company Executioner Cloak · IL 400",
+   "item_level": 400,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2682,
+   "name": "Company Executioner Cloak · IL 500",
+   "item_level": 500,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2683,
+   "name": "Company Executioner Cloak · IL 600",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2684,
+   "name": "Company Duelist Cloak · IL 300",
+   "item_level": 300,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2685,
+   "name": "Company Duelist Cloak · IL 400",
+   "item_level": 400,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2686,
+   "name": "Company Duelist Cloak · IL 500",
+   "item_level": 500,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2687,
+   "name": "Company Duelist Cloak · IL 600",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2688,
+   "name": "Company Raider's Cloak · IL 300",
+   "item_level": 300,
+   "set": "Company",
+   "allowedClasses": null,
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 2914,
+   "name": "Vivified Trailblazer's Raid Hood",
+   "item_level": 645,
+   "set": "Relic",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2915,
+   "name": "Vivified Trailblazer's Raid Coat",
+   "item_level": 645,
+   "set": "Relic",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2916,
+   "name": "Vivified Trailblazer's Raid Bracers",
+   "item_level": 645,
+   "set": "Relic",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2917,
+   "name": "Vivified Trailblazer's Raid Gaiters",
+   "item_level": 645,
+   "set": "Relic",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2924,
+   "name": "Trailblazer's Raid Bracers",
+   "item_level": 603,
+   "set": "Trailblazer's Relic",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 2928,
+   "name": "Trailblazer's Assault Bracers",
+   "item_level": 603,
+   "set": "Trailblazer's Relic",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Relic",
+     "pieces": 4,
+     "name": "Relic (4/4)",
+     "description": "1 of Set: +10% Damage Resistance against Giant type enemies. 2 of Set: When in Icewind Dale: +5 Movement Speed. 3 of Set: When in Icewind Dale: Drinking an Excavators Potion grants +10% Outgoing Damage."
+    }
+   ]
+  },
+  {
+   "id": 3177,
+   "name": "Prismatic Bismuth Mail",
+   "item_level": 3700,
+   "set": "Prismatic Crystalline Armor",
+   "allowedClasses": [
+    "Warlock",
+    "Bard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Healer's Influence (Greater)",
+     "description": "Healing an ally with an Encounter power also heals you for 80,000 and grants you and close Allies 3% Defense for 5s."
+    }
+   ]
+  },
+  {
+   "id": 3184,
+   "name": "Bismuth Mail",
+   "item_level": 3350,
+   "set": "Crystalline Armor",
+   "allowedClasses": [
+    "Warlock",
+    "Bard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Healer's Influence (Greater)",
+     "description": "Encounter heal on ally also heals you 80,000 and grants you and close Allies 3% Defense for 5s."
+    }
+   ]
+  },
+  {
+   "id": 3185,
+   "name": "Crystalflex Bracers",
+   "item_level": 3350,
+   "set": "Crystalline Armor",
+   "allowedClasses": [
+    "Warlock",
+    "Bard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Resourceful Forte (Greater)",
+     "description": "+20% Divinity/Performance/Soulweave maximum. +3.5% Forte."
+    }
+   ]
+  },
+  {
+   "id": 3222,
+   "name": "Starhide Doublet",
+   "item_level": 2700,
+   "set": "",
+   "allowedClasses": [
+    "Warlock",
+    "Bard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Medic's Respite",
+     "description": "Healing an ally with an Encounter power also heals you for 75,000 and grants Allies within 25' +1.5% Awareness for 5s."
+    }
+   ]
+  },
+  {
+   "id": 3305,
+   "name": "Dragonhide Cuffs",
+   "item_level": 1900,
+   "set": "Dragonsteel Gear",
+   "allowedClasses": [
+    "Warlock",
+    "Bard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "Resistance Rune",
+     "description": "You gain 5% Defense while Controlled."
+    }
+   ]
+  },
+  {
+   "id": 3306,
+   "name": "Dragonhide Crakows",
+   "item_level": 1900,
+   "set": "Dragonsteel Gear",
+   "allowedClasses": [
+    "Warlock",
+    "Bard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "This or That",
+     "description": "When not in a party, gain 5,000 Forte. When in a party, gain 10,000 Critical Strike."
+    },
+    {
+     "ebIndex": 1,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "This or That",
+     "description": "When not in a party, gain 5,000 Forte. When in a party, gain 5,000 Critical Strike."
+    }
+   ]
+  },
+  {
+   "id": 3535,
+   "name": "Curselord's Raid Ushanka",
+   "item_level": 770,
+   "set": "Barovian Lord's Armor",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Barovian Lord's Armor",
+     "pieces": 4,
+     "name": "Barovian Lord's Armor (4/4)",
+     "description": "Completing this collection will give you an additional bonus of +20 Power"
+    }
+   ]
+  },
+  {
+   "id": 3536,
+   "name": "Curselord's Raid Pigaches",
+   "item_level": 770,
+   "set": "Barovian Lord's Armor",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Barovian Lord's Armor",
+     "pieces": 4,
+     "name": "Barovian Lord's Armor (4/4)",
+     "description": "Completing this collection will give you an additional bonus of +20 Power"
+    }
+   ]
+  },
+  {
+   "id": 3537,
+   "name": "Curselord's Assault Pigaches",
+   "item_level": 770,
+   "set": "Barovian Lord's Armor",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Set",
+     "setName": "Barovian Lord's Armor",
+     "pieces": 4,
+     "name": "Barovian Lord's Armor (4/4)",
+     "description": "Completing this collection will give you an additional bonus of +20 Power"
+    }
+   ]
+  },
+  {
+   "id": 3875,
+   "name": "Company Assault Belt (Uncommon)",
+   "item_level": 300,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3876,
+   "name": "Company Assault Belt (Rare)",
+   "item_level": 500,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3877,
+   "name": "Company Assault Belt (Epic)",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3882,
+   "name": "Company Raider's Cloak Uncommon",
+   "item_level": 300,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3883,
+   "name": "Company Raider Cloak Rare",
+   "item_level": 500,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3884,
+   "name": "Company Raider Cloak Epic",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3890,
+   "name": "Company Assault Belt (Rare)",
+   "item_level": 400,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3891,
+   "name": "Company Assault Belt (Legendary)",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3892,
+   "name": "Company Gladiator Belt (Legendary)",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3893,
+   "name": "Company Ward Belt (Rare)",
+   "item_level": 400,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3894,
+   "name": "Company Executioner Cloak (Uncommon)",
+   "item_level": 300,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3895,
+   "name": "Company Executioner Cloak (Legendary)",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3896,
+   "name": "Company Raider Cloak (Legendary)",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3901,
+   "name": "Company Duelist Cloak (Uncommon)",
+   "item_level": 300,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3902,
+   "name": "Company Duelist Cloak (Rare)",
+   "item_level": 400,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3903,
+   "name": "Company Duelist Cloak (Legendary)",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 3904,
+   "name": "Company Raider Cloak (Rare)",
+   "item_level": 400,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 4004,
+   "name": "Enchanted Bregan D'aerthe Assassin's Leathers",
+   "item_level": 2050,
+   "set": "Enchanted Menzoberranzan Gear",
+   "allowedClasses": [
+    "Rogue",
+    "Cleric",
+    "Bard",
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 2,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Precise Teamwork",
+     "description": "[pending re-verify — small/dark capture] While moving, gain 8% Critical Severity (scales with team size)."
+    }
+   ]
+  },
+  {
+   "id": 4022,
+   "name": "Dragonhide Pikes",
+   "item_level": 1900,
+   "set": "Dragonsteel Gear",
+   "allowedClasses": [
+    "Rogue",
+    "Cleric",
+    "Bard",
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "This or That",
+     "description": "When not in a party, gain 5,000 Defense. When in a party, gain 10,000 Accuracy."
+    },
+    {
+     "ebIndex": 1,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "This or That",
+     "description": "When not in a party, gain 5,000 Defense. When in a party, gain 10,000 Accuracy."
+    }
+   ]
+  },
+  {
+   "id": 4846,
+   "name": "Elemental Lionsmane Duelist Pigaches",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4847,
+   "name": "Elemental Lionsmane Duelist Wristguards",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4848,
+   "name": "Elemental Lionsmane Duelist Longcoat",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4849,
+   "name": "Elemental Lionsmane Duelist Cowl",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4851,
+   "name": "Lionsmane Duelist Cowl",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4852,
+   "name": "Lionsmane Duelist Longcoat",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4853,
+   "name": "Lionsmane Duelist Wristguards",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4854,
+   "name": "Lionsmane Duelist Pigaches",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4855,
+   "name": "Elemental Lionsmane Executioner Cowl",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4856,
+   "name": "Elemental Lionsmane Executioner Longcoat",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4857,
+   "name": "Elemental Lionsmane Executioner Wristguards",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4858,
+   "name": "Lionsmane Executioner Pigaches",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4859,
+   "name": "Lionsmane Executioner Wristguards",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4860,
+   "name": "Lionsmane Executioner Longcoat",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4861,
+   "name": "Lionsmane Executioner Cowl",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4862,
+   "name": "Elemental Lionsmane Executioner Pigaches",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 4869,
+   "name": "Company Raider's Cloak",
+   "item_level": 400,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 4870,
+   "name": "Company Raider's Cloak",
+   "item_level": 500,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 4871,
+   "name": "Company Raider's Cloak",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 5212,
+   "name": "Lionsmane Duelist Boots",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Rogue"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5213,
+   "name": "Lionsmane Duelist Gloves",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Rogue"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5214,
+   "name": "Lionsmane Duelist Vest",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Rogue"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5215,
+   "name": "Lionsmane Duelist Mask",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Rogue"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5216,
+   "name": "Lionsmane Executioner Boots",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Rogue"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5217,
+   "name": "Lionsmane Executioner Gloves",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Rogue"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5218,
+   "name": "Lionsmane Executioner Vest",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Rogue"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5219,
+   "name": "Lionsmane Executioner Mask",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Rogue"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5291,
+   "name": "Brynnyr's Demise",
+   "item_level": 630,
+   "set": "Demonic Artifacts and Gear",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Equip Bonus",
+     "description": "+2000 Power if your Defense is higher than your Power. +2000 Defense if your Power is higher than your Defense."
+    }
+   ]
+  },
+  {
+   "id": 5338,
+   "name": "Wintermarked Oath Shield",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 5339,
+   "name": "Wintermarked Frostmaul",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 5340,
+   "name": "Runefrost Oath Shield",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 5341,
+   "name": "Runefrost Dawnmace",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Paladin"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 5353,
+   "name": "Runefrost Lifeward Greaves",
+   "item_level": 5400,
+   "set": "",
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Healer's Influence (Greater)",
+     "description": "Healing an ally also heals you for 80,000 and grants you and close Allies 3% Defense for 3s."
+    }
+   ]
+  },
+  {
+   "id": 5355,
+   "name": "Runefrost Lifeward Vambraces",
+   "item_level": 5400,
+   "set": "",
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Greater Adaptive Strength",
+     "description": "Your Divinity maximum increases by 15%. Gain 3.5% Critical Severity."
+    }
+   ]
+  },
+  {
+   "id": 5478,
+   "name": "Wintermarked Grimoire of Rime",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 5479,
+   "name": "Wintermarked Twin Shardblades",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 5480,
+   "name": "Runefrost Hexbook",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 5481,
+   "name": "Runefrost Hexknife",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Warlock"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 5498,
+   "name": "Runefrost Mender's Breastplate",
+   "item_level": 5400,
+   "set": "",
+   "allowedClasses": [
+    "Warlock",
+    "Bard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Healer's Influence (Greater)",
+     "description": "Healing an ally also heals you for 80,000 and grants you and close Allies 3% Defense for 3s."
+    }
+   ]
+  },
+  {
+   "id": 5623,
+   "name": "Company Raider Cloak",
+   "item_level": 400,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 5624,
+   "name": "Company Raider Cloak",
+   "item_level": 500,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 5625,
+   "name": "Company Raider Cloak",
+   "item_level": 600,
+   "set": "Company",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Company",
+     "pieces": 2,
+     "name": "Company (2/2)",
+     "description": "2 of Set: +500 Power"
+    }
+   ]
+  },
+  {
+   "id": 5694,
+   "name": "Wintermarked Sigil Talisman",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Wizard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 5695,
+   "name": "Wintermarked Frostheart Orb",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Wizard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 5696,
+   "name": "Elemental Lionsmane Duelist Bracers",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5697,
+   "name": "Elemental Lionsmane Duelist Coat",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5698,
+   "name": "Elemental Lionsmane Duelist Gaiters",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5699,
+   "name": "Elemental Lionsmane Duelist Hood",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5700,
+   "name": "Elemental Lionsmane Executioner Bracers",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5701,
+   "name": "Elemental Lionsmane Executioner Coat",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5702,
+   "name": "Elemental Lionsmane Executioner Gaiters",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5703,
+   "name": "Elemental Lionsmane Executioner Hood",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5981,
+   "name": "Lionsmane Duelist Bracers",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5982,
+   "name": "Lionsmane Duelist Coat",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5983,
+   "name": "Lionsmane Duelist Gaiters",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5984,
+   "name": "Lionsmane Duelist Hood",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5985,
+   "name": "Lionsmane Executioner Bracers",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5986,
+   "name": "Lionsmane Executioner Coat",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5987,
+   "name": "Lionsmane Executioner Gaiters",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 5988,
+   "name": "Lionsmane Executioner Hood",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6202,
+   "name": "Runefrost Spellorb",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Wizard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6203,
+   "name": "Runefrost Verseblade",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Bard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6204,
+   "name": "Runefrost Hand Axe",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6205,
+   "name": "Runefrost Longbow",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6206,
+   "name": "Runefrost Skald's Lute",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Bard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6207,
+   "name": "Runefrost Arcane Charm",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Wizard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6236,
+   "name": "Wintermarked Icewind Bow",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6237,
+   "name": "Wintermarked Trail Axe",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Ranger"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6238,
+   "name": "Wintermarked Frostlute",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Bard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6239,
+   "name": "Wintermarked Skaldblade",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Bard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6443,
+   "name": "Dragonsteel Greaves",
+   "item_level": 1900,
+   "set": "",
+   "allowedClasses": [
+    "Barbarian",
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": null,
+     "setName": null,
+     "pieces": null,
+     "name": "This or That",
+     "description": "When not in a party, gain 5,000 Defense. When in a party, gain 10,000 Combat Advantage."
+    },
+    {
+     "ebIndex": 1,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "This or That",
+     "description": "When not in a party, gain 5,000 Defense. When in a party, gain 10,000 Combat Advantage."
+    }
+   ]
+  },
+  {
+   "id": 6488,
+   "name": "Elemental Lionsmane Duelist Greaves",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6489,
+   "name": "Elemental Lionsmane Duelist Sallet",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6490,
+   "name": "Elemental Lionsmane Duelist Scalemail",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6491,
+   "name": "Elemental Lionsmane Duelist Vambraces",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6492,
+   "name": "Elemental Lionsmane Executioner Greaves",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6493,
+   "name": "Elemental Lionsmane Executioner Sallet",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6494,
+   "name": "Elemental Lionsmane Executioner Scalemail",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6495,
+   "name": "Elemental Lionsmane Executioner Vambraces",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6649,
+   "name": "Lionsmane Duelist Greaves",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6650,
+   "name": "Lionsmane Duelist Sallet",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6651,
+   "name": "Lionsmane Duelist Vambraces",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6652,
+   "name": "Lionsmane Executioner Greaves",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6653,
+   "name": "Lionsmane Executioner Sallet",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6654,
+   "name": "Lionsmane Executioner Scalemail",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6655,
+   "name": "Lionsmane Executioner Vambraces",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6719,
+   "name": "Runefrost War Charm",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6720,
+   "name": "Runefrost Warcleaver",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6811,
+   "name": "Wintermarked War Totem",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6812,
+   "name": "Wintermarked Worldrender",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6837,
+   "name": "Lionsmane Duelist Scalemail",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Barbarian"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 6852,
+   "name": "Gladebind Vambraces",
+   "item_level": 4050,
+   "set": null,
+   "allowedClasses": [
+    "Warlock",
+    "Bard"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Spiritual Inspiration",
+     "description": "Your Performance/Soulweave maximum increases by 15%. Gain 3% Forte."
+    }
+   ]
+  },
+  {
+   "id": 6859,
+   "name": "Oakenthorn Cuirass",
+   "item_level": 4050,
+   "set": null,
+   "allowedClasses": [
+    "Paladin",
+    "Barbarian",
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Death Defier's Haste",
+     "description": "Gain 1% Recharge Speed for each enemy you are engaged in battle within 100'. Max 10 Stacks: 10% Recharge Speed"
+    }
+   ]
+  },
+  {
+   "id": 6864,
+   "name": "Ambersteel Vambraces",
+   "item_level": 4050,
+   "set": null,
+   "allowedClasses": [
+    "Paladin",
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Equip",
+     "setName": null,
+     "pieces": null,
+     "name": "Divine Inspiration",
+     "description": "Your Divinity maximum increases by 15%. Gain 3% Forte."
+    }
+   ]
+  },
+  {
+   "id": 6870,
+   "name": "Bloodwoven Brands — Warden's Defense",
+   "item_level": 3150,
+   "set": "Enchanted Awareness",
+   "allowedClasses": [],
+   "lines": [
+    {
+     "ebIndex": 1,
+     "type": "Set",
+     "setName": "Enchanted Awareness",
+     "pieces": 2,
+     "name": "Enchanted Awareness",
+     "description": "2 of Set: +2% Awareness"
+    }
+   ]
+  },
+  {
+   "id": 6878,
+   "name": "Wintermarked Bastion Shield",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6879,
+   "name": "Wintermarked Oathblade",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6880,
+   "name": "Runefrost Tower Shield",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 6881,
+   "name": "Runefrost Vanguard Blade",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 7330,
+   "name": "Elemental Lionsmane Gladiator Helm",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7331,
+   "name": "Elemental Lionsmane Gladiator Breastplate",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7332,
+   "name": "Elemental Lionsmane Gladiator Gauntlets",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7333,
+   "name": "Elemental Lionsmane Gladiator Sabatons",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7334,
+   "name": "Lionsmane Gladiator Helm",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7335,
+   "name": "Lionsmane Gladiator Breastplate",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7336,
+   "name": "Lionsmane Gladiator Gauntlets",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7337,
+   "name": "Lionsmane Gladiator Sabatons",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7338,
+   "name": "Elemental Lionsmane Executioner Helm",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7339,
+   "name": "Elemental Lionsmane Executioner Breastplate",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7340,
+   "name": "Elemental Lionsmane Executioner Gauntlets",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7341,
+   "name": "Lionsmane Executioner Sabatons",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7342,
+   "name": "Lionsmane Executioner Gauntlets",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7343,
+   "name": "Lionsmane Executioner Breastplate",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7344,
+   "name": "Lionsmane Executioner Helm",
+   "item_level": 560,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7345,
+   "name": "Elemental Lionsmane Executioner Sabatons",
+   "item_level": 574,
+   "set": "Lionsmane",
+   "allowedClasses": [
+    "Fighter"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Lionsmane",
+     "pieces": 4,
+     "name": "Lionsmane (4/4)",
+     "description": "2 of Set: Equip: 0 Maximum Hit Points. 3 of Set: +1% Power."
+    }
+   ]
+  },
+  {
+   "id": 7397,
+   "name": "Runefrost Lightstaff",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 7398,
+   "name": "Runefrost Devotion Emblem",
+   "item_level": 5500,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.35% Power, DPS: +0.5% Critical Severity, Healer: +0.4% Overall Outgoing Healing, Tank: +0.4% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 7399,
+   "name": "Wintermarked Rimecrook",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  },
+  {
+   "id": 7400,
+   "name": "Wintermarked Sanctum Emblem",
+   "item_level": 5800,
+   "set": "Chilling Flow",
+   "allowedClasses": [
+    "Cleric"
+   ],
+   "lines": [
+    {
+     "ebIndex": 0,
+     "type": "Set",
+     "setName": "Chilling Flow",
+     "pieces": 2,
+     "name": "Chilling Flow (2/2)",
+     "description": "2 of Set: While in The Biting Cold, your Movement Speed is increased by 12%. Every 3s in combat, you will gain a stack of Chilling Flow. Each stack grants: General: +0.4% Power, DPS: +0.6% Critical Severity, Healer: +0.5% Overall Outgoing Healing, Tank: +0.5% Awareness. Max 10 stacks."
+    }
+   ]
+  }
+ ]
+}

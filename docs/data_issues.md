@@ -1,5 +1,18 @@
 # Data Issues To Investigate
 
+## Umbral Stride + Dark Matter set payloads on 8 members each — double-count check needed (found 2026-07-08)
+The set-bonus convention is ONE member carries the structured stat payload
+(engine credits the set through it). Wave 9's file-wide verification found two
+pre-existing families where EVERY member carries the payload: Umbral Stride
+and Dark Matter (8 owners each). If the engine applies each equipped member's
+payload, wearing 2 pieces would double the set bonus. Counter-evidence: Erik's
+stat calibration is exact, suggesting either he doesn't wear these or the
+engine dedupes by setName. Code-auditor question: how does the ingestion loop
+treat multiple payload-carrying members of one set? Related: ids 47/48's
+Umbral Stride roleMap block has DPS/Tank/Healer roles visibly swapped
+(pre-existing; roleMap is display-only per the 2026-06-19 decision, but the
+display is wrong). (Wave 9.)
+
 ## Mount combat-power self-buffs never scored + "Heal Bonus" stat unrecognized (found 2026-07-08)
 `buildEngineCharacter` only uses `state.activeCombatPower` for TIL and a
 narrow enemy-debuff path (scope==="enemy", stat in {Dmg Debuff, Enemy Dmg

@@ -595,4 +595,16 @@ Integrity audit of the last five unswept source files (336 records; no screensho
 
 ---
 
+## Wave 9 — text-only stat-line census + structuring — 2026-07-08
+
+First-ever full census of unstructured text across gear.json (~3,056 text-only bonus lines): 1,775 covered by set-sibling payloads, 694 proc/conditional class (await engine layers), 235 misc, **287 items with genuinely structurable stat effects scoring zero**. Worklist frozen at `docs/audit/_textonly_stat_lines_2026-07-08.json`; change log at `docs/audit/_wave9_structured_2026-07-08.json`.
+
+**Structured (63 items, description-sourced, append-only):** 8 payload-less set families given exactly ONE payload member each (Company belts +500 Power, Bloodwoven 2pcs, Chilling Flow Wintermarked Oath Shield with role-split stacks via the engine-live `role` key, Enchanted Advantage/Healing/Awareness/Forte, Barovian Lord's Armor, Lionsmane 2pc) — one-payload rule verified file-wide; plus 55 per-item effects (static, zone-conditional, stacking, multi-enemy via engine-live `requiresMultiEnemy`, party-scope). The builder's pre-write audit caught 2 items already structured under different ability names (1994, 3305) — skipped, no double-count.
+
+**Skipped with reasons (229 lines):** 186 set-sibling text copies (correct — payload lives on one member); 23-line Relic family (mixed uncataloged/proc/ambiguous clauses); 20 true flags incl. Modification: mod-slot lines, Menzoberranzan Executioner 30-min procs, Berserker's Might ramp-reverse, id 3306 conflicting party values, id 913 double-"in a party" typo (capture wanted), id 1891 uncapped scaling. "Healer's Influence" family structured for the party % only (flat 80,000 self-heal has no catalog stat — conservative).
+
+**Pre-existing concerns surfaced (not touched, tracked in data_issues):** Umbral Stride + Dark Matter families carry set payloads on 8 members each (vs the one-payload convention — engine double-count semantics need a code-auditor check; note Erik's exact calibration suggests it may be benign in practice); ids 47/48 Umbral Stride roleMap has DPS/Tank/Healer roles swapped.
+
+---
+
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._
