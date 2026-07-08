@@ -6416,6 +6416,16 @@
       // Combat powers' equipBonuses are buff/debuff effects rather than
       // gear-style structured stats. Scaled for tooltip display (Decision 9).
       const bonusBlocks = (p.equipBonuses || []).map(b => {
+        // procHeal-shaped effects (e.g. Rejuvenating Favor's 20% MaxHP heal)
+        // have no `stat` — render them honestly from the procHeal fields.
+        if (b && !b.stat && b.procHeal && b.procHeal.type === "percentMaxHP") {
+          const ph = b.procHeal;
+          const cadence = ph.icdSeconds ? ` <span class="gear-card-bonus-tag">per ${ph.icdSeconds}s</span>` : "";
+          const scopeTag = ph.scope === "self" ? " <span class='gear-card-bonus-tag'>self</span>" : "";
+          return `<div class="gear-card-bonus">
+            <div class="gear-card-bonus-name">Heal ${ph.amount}% of Max HP${scopeTag}${cadence}</div>
+          </div>`;
+        }
         if (!b || !b.stat) return "";
         const scaledAmount = _scaleCombat(b.amount);
         const _isPercent = b.type === "percent" || (b.amount !== undefined && Math.abs(b.amount) < 100);
@@ -11580,22 +11590,39 @@
     }
     function computeGearHealProcPerSec(pCrit) {
       const out = { allyPerSec: 0, selfPerSec: 0, contributors: [] };
-      if (typeof GEAR_SLOTS === "undefined") return out;
       const r = getEngineResult();
       const maxHP = (r.stats["Maximum Hit Points"] && r.stats["Maximum Hit Points"].flat) || 0;
-      for (const slotEntry of GEAR_SLOTS) {
-        const itemName = state.gear[slotEntry.label]; if (!itemName) continue;
-        const item = findGearByName(itemName, slotEntry.slot, (state.gearIL || {})[slotEntry.label]);
-        if (!item || !Array.isArray(item.equipBonuses)) continue;
-        for (const eb of item.equipBonuses) {
+      // Shared per-entry math for any equipBonuses array carrying eb.procHeal —
+      // used for equipped gear AND the active mount combat power below, so
+      // self/ally splitting, ICD math, and the MaxHP reference stay in ONE place.
+      function applyProcHealSource(sourceName, equipBonuses) {
+        if (!Array.isArray(equipBonuses)) return;
+        for (const eb of equipBonuses) {
           const ph = eb && eb.procHeal; if (!ph) continue;
           const pps = procRatePerSec(ph.triggerRateKey, ph.chance, ph.icdSeconds, pCrit);
           const amt = (ph.type === "percentMaxHP") ? (maxHP * (ph.amount || 0) / 100) : (ph.amount || 0);
           const hps = pps * amt;
           if (!(hps > 0)) continue;
-          if (ph.scope === "self") { out.selfPerSec += hps; out.contributors.push({ source: item.name + " — " + (eb.name || "heal proc"), selfPerSec: hps }); }
-          else { out.allyPerSec += hps; out.contributors.push({ source: item.name + " — " + (eb.name || "heal proc"), allyPerSec: hps }); }
+          if (ph.scope === "self") { out.selfPerSec += hps; out.contributors.push({ source: sourceName + " — " + (eb.name || "heal proc"), selfPerSec: hps }); }
+          else { out.allyPerSec += hps; out.contributors.push({ source: sourceName + " — " + (eb.name || "heal proc"), allyPerSec: hps }); }
         }
+      }
+      if (typeof GEAR_SLOTS !== "undefined") {
+        for (const slotEntry of GEAR_SLOTS) {
+          const itemName = state.gear[slotEntry.label]; if (!itemName) continue;
+          const item = findGearByName(itemName, slotEntry.slot, (state.gearIL || {})[slotEntry.label]);
+          if (!item) continue;
+          applyProcHealSource(item.name, item.equipBonuses);
+        }
+      }
+      // Active mount combat power (e.g. Rejuvenating Favor): self-scope heal
+      // procs are survivability, not heal output — they flow into selfPerSec
+      // only, same as any other procHeal source. No rarity/bolster scaling is
+      // applied here (precedent: the enemy-debuff path at ~line 11076 also
+      // takes eb.amount unscaled for Mythic-anchored data).
+      if (typeof state !== "undefined" && state.activeCombatPower != null && typeof findCombatPowerById === "function") {
+        const cp = findCombatPowerById(state.activeCombatPower);
+        if (cp) applyProcHealSource(cp.name, cp.equipBonuses);
       }
       return out;
     }

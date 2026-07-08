@@ -14,13 +14,30 @@ corrected same day per set-sibling id 373's sourced text.
 ## Mount combat-power self-buffs never scored + "Heal Bonus" stat unrecognized (found 2026-07-08)
 `buildEngineCharacter` only uses `state.activeCombatPower` for TIL and a
 narrow enemy-debuff path (scope==="enemy", stat in {Dmg Debuff, Enemy Dmg
-Taken}); self-scope combat-power equipBonuses are never ingested. Concrete
-casualty: Rejuvenating Favor (mount_combat_powers id 32, Golden Rage Drake)
-whose 20% MaxHP heal is stored as `stat:"Heal Bonus"` — a name the engine
-doesn't recognize anyway (not in TOON_FORGE_STATS/aliases/silenced list). Its
-note falsely claimed it was modeled; corrected 2026-07-08. Fix is code-side:
-route self-scope combat-power heal/stat bonuses into the heal-sim layer under
-a recognized stat name. (Wave 8 audit.)
+Taken}); self-scope combat-power equipBonuses are never ingested.
+
+**Heal half RESOLVED 2026-07-08 (Wave 12).** Rejuvenating Favor
+(mount_combat_powers id 32, Golden Rage Drake) had its 20% MaxHP heal stored
+as `stat:"Heal Bonus"` — a name the engine never recognized. Re-modeled using
+the established gear procHeal shape (`chance:100, icdSeconds:60` = exactly
+one proc per 60s recharge, `type:"percentMaxHP", amount:20, scope:"self"`).
+`computeGearHealProcPerSec` (toon-forge.html, gear HEAL-proc layer) now also
+resolves `state.activeCombatPower` and runs its procHeal-bearing
+equipBonuses through the same per-entry math used for gear, so self/ally
+splitting and the MaxHP reference stay in one place. Per the self-heal
+convention, this routes to `selfHealPerSec` → `computeTankSurvivalScore`
+(self-sustain / Tank survivability) only — it is correctly excluded from the
+Healer "What would this heal for?" score, which reads `allyPerSec`
+exclusively and is unchanged. No rarity/bolster scaling applied to the 20%
+(no evidence found it scales in-game); rarity-invariance is assumed pending
+a two-rarity capture (see capture_checklist.md).
+
+**Remaining open sibling (unmodeled, smaller, separate):** id 21 "Actions
+Speak Louder" carries THREE self-scope `stat`-shaped equipBonuses (Incoming
+Damage -15%, Base Damage Boost +15%, Outgoing Healing +15%, 10s window) that
+are still not ingested anywhere — the generic self-scope `stat` path (as
+opposed to the procHeal shape) remains unbuilt. Lower priority; needs its
+own gap/design pass rather than folding into Wave 12's heal-only fix.
 
 ## exclusiveGroup "None" buffs — RESOLVED 2026-07-08 (picker rule generalized)
 The Always-on toggle list now includes every None-group buff with real

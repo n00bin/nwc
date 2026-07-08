@@ -88,6 +88,10 @@ stacking proc).
   Practical template.
 - **Grand Summer Feast** tooltip — confirm Deflect is 1.5% (corrected from a
   2.5% transcription; every other stat matched the source guide).
+- **Rejuvenating Favor** (mount combat power, Golden Rage Drake) tooltip at
+  TWO mount rarities (e.g. Mythic and Celestial) — settles whether the 20%
+  MaxHP heal scales with rarity/bolster. Currently modeled unscaled (Wave 12,
+  2026-07-08); no in-game evidence either way yet.
 
 ## 7. Chilling Flow — Frostbound tier (IL 4800)
 Any Frostbound weapon's set-details panel; per-stack values for this tier are
