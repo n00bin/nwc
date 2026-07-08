@@ -565,11 +565,12 @@ Full project-wide cluster map built and executed for the safe subset. Artifacts:
 
 ---
 
-## Trainer's Restoration stacking — verified 2026-07-08 (live A/B probe)
+## Capture session 2026-07-08 — live probes + captures
 
 | id | name | system | status | source | data version | date verified |
 |----|------|--------|--------|--------|--------------|---------------|
 | mount_insignia_bonuses 18 | Trainer's Restoration | mounts | CONFIRMED — stacks with **exact 100%/50%/25% diminishing** across equipped copies. Three-point full-AP vs used-AP Incoming Healing deltas, fixed stable per reading: 1 copy 3,500 (both test mounts identical solo — quality variance ruled out) · 2 copies 5,250 · 3 copies 6,125. Matches the engine's default DIMINISHING_MULTIPLIERS [1, 0.5, 0.25] exactly — no engine change needed. stackingMode:"diminishing" + maxStacks:3 made explicit in data | live probe (n00b, PS5, 2026-07-08 — panel readings logged in data_issues.md; no screenshots filed) | 2026.03.17a | 2026-07-08 |
+| gear — Whisper of Power 2pc (Paladin pair) | Oathbreaker's Malevolence + Aegis of the Condemned, IL 3400 | gear | CONFIRMED — set panel reads "2 of Set: Whisper of Power **+7,200 Forte**", exactly the DB's stored value. Clears the UNVERIFIABLE flags on ids 486, 1802, 5240, 487, 1801 and the legacy rungs 1803, 1807–1811 (whose set data mirrors these). Same capture re-confirms Oathbreaker IL3400 base stats (Power 1,785 / Defense 1,785 / CR 3,060) | Oathbreaker's Malevolence Whisper of Power_IL3400_set_details.png | 2026.03.17a | 2026-07-08 |
 
 ---
 

@@ -13,10 +13,22 @@ Measured live (full-AP vs used-AP deltas): 3,500 / 5,250 / 6,125 for 1/2/3
 copies — exact 100%/50%/25% diminishing curve, matching the engine's default.
 Encoded on insignia bonus id 18; nothing further needed.
 
-## 2. Whisper of Power 2-piece value (clears ~10 unverified rows)
-**Aegis of the Condemned** or **Oathbreaker's Malevolence** at IL 3400 —
-set-details panel showing the 2-piece bonus (we believe "+7,200 Forte" but
-have no proof image).
+## ~~2. Whisper of Power 2-piece value~~ ✅ DONE 2026-07-08
+Confirmed +7,200 Forte (Oathbreaker's Malevolence Whisper of Power_IL3400_set_details.png).
+
+## 2b. Survivalist's Expertise stacking test (requested by n00b 2026-07-08)
+Insignia bonus id 20 — unconditional +5,000 Forte, so the AP trick doesn't
+apply. Isolate by breaking one combo instead:
+1. Equip 2 (or 3) mounts with the Survivalist's Expertise combo active.
+   Read the **Forte** rating.
+2. On ONE of those mounts, unslot a single insignia that itself gives **no
+   Forte** (check its tooltip first) — this breaks that mount's combo.
+   Read Forte again.
+3. The drop = that copy's bonus contribution. Expected if the standard
+   diminishing law holds: last-of-3 copy = 1,250, last-of-2 copy = 2,500,
+   solo copy = 5,000.
+Repeat the unslot on a second mount if you have 3 active, so we get two
+points on the curve.
 
 ## 3. Dirgeblade IL 3750 set details — scrolled to the BOTTOM
 The archived capture cuts off mid-panel; the Unleashed %/duration/equip line
