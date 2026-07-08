@@ -549,4 +549,20 @@ Screenshots: `docs/calibration/inbox/companion-gear/` (18 files) + `docs/calibra
 
 ---
 
+## Wave 6 — gear.json dedup (duplicate-intake epidemic) — 2026-07-07
+
+Full project-wide cluster map built and executed for the safe subset. Artifacts: `docs/audit/_dup_clusters_2026-07-07.json` (200 clusters / 414 entries, classified) and `docs/audit/dedup_merge_map_2026-07-07.json` (permanent deleted-id → kept-id trace, 123 records).
+
+**Merged (123 rows deleted; gear 6,846 → 6,723):** 112 SUPERSET clusters (keeper provably contains every value of each deleted row — independently re-verified per deletion at merge time + 10-merge post-hoc spot-check, all pass) and 11 metadata-only field-unions (Grimfang/Harrowed Messengers IL3400, Company belts/cloaks with only ability-key-spelling differences). Notes/source folded into keepers with "[merged from id N]" prefixes.
+
+**Deliberately NOT merged (~76 clusters, need arbitration):**
+- **45 class-partition clusters** — per-class intake copies with disjoint allowedClasses; 17 of them also differ in secondary-stat IDENTITY (e.g. Antique Shield of the Vale: Paladin copy CS/CritAvoid vs Fighter copy CA/DeflectSev). **Open question that decides the whole bucket: does older campaign loot genuinely reroll secondary stats per looting class?** One per-class in-game comparison of any affected item settles it project-wide (on the capture list).
+- **10 Main-vs-Off-Hand slot-mismatch weapon pairs** (Titansteel Tabars already tracked; 9 newly surfaced: Wootz Kilij, Aboleth Axes ×4, Trailblazer's Axes, Burning Axes ×3) — need a tooltip each.
+- **~7 genuine name collisions** (Prismatic Crystalflex Bracers, Prismatic Bismuth Mail, Crystalflex Bracers, Fractal Barbut, etc.) — two different physical items sharing name+IL; need per-item arbitration/renaming, not merging.
+- **1 SUPERSET skip:** Skinstealer 4184/6221 — the map's keeper (6221) lacks a stacking-proc entry the loser carries (already a Wave-1 minor: possibly an incomplete parse on 4184); refused mechanically, needs a screenshot.
+- **32 conservative union-skips** whose conflicts touched ratingStats/percentStats (incl. Grimfang upper tiers, where the loser's `ratingStats.Damage` duplicates the keeper's `weaponDamage` field).
+- Cross-cutting note: ability-score keys exist in 3 spellings file-wide (Constitution/CON/con, ~454 occurrences) — confirmed engine-safe (Wave 5: `addAbilityBonus()` aliases all forms via ABIL_NAME_TO_KEY); cosmetic normalization candidate only.
+
+---
+
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._

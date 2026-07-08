@@ -82,7 +82,16 @@ unverified.
   actually captured the Buffs overlay; the real Boons-tab shot is still
   needed.
 
-## 9. From the Wave 5 sweep (companion gear + belts)
+## 9. The one screenshot that settles 45 open clusters (Wave 6)
+Pick ANY class-universal older campaign item that two of your characters of
+DIFFERENT classes can loot/preview (good candidates: Antique Shield of the
+Vale, Black Ice Armor, Hammerstone Gloves, Eternal Boots) and screenshot the
+SAME item's tooltip on both characters. If the secondary stats differ by
+class, the database's 45 "conflicting duplicate" clusters are all legitimate
+per-class variants; if identical, they're intake errors we can merge. One
+comparison answers it for the whole file.
+
+## 10. From the Wave 5 sweep (companion gear + belts)
 - **Any Thayan or Molten companion-gear tooltip** — those two tiers (18 items)
   have zero screenshots anywhere; the Frostforged/True Ice tiers are now fully
   verified, so any lower-tier shot extends the pattern.
@@ -90,7 +99,7 @@ unverified.
   tooltip reads "6%" but every lower tier runs 0.02–0.05%; confirm whether
   it's really 6% or a game typo for 0.06%.
 
-## 10. From the Wave 3 sweep (enchantments)
+## 11. From the Wave 3 sweep (enchantments)
 - **Celestial Lightning Flash tooltip** (any rank) — stored value says 24%
   Damage Bonus, its own description and all 5 sibling enchants say 12%;
   one tooltip settles it for good.

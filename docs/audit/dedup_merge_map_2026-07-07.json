@@ -1,0 +1,875 @@
+{
+ "summary": {
+  "generated": "2026-07-07",
+  "original_count": 6846,
+  "final_count": 6723,
+  "total_deletions": 123,
+  "superset_merged": 112,
+  "superset_skipped": 1,
+  "field_union_merged": 11,
+  "field_union_skipped": 32
+ },
+ "merges": [
+  {
+   "deleted": 775,
+   "kept": 252,
+   "name": "Cosmic Band of Deflection",
+   "item_level": 2400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1591,
+   "kept": 3492,
+   "name": "Dungeon Raider's Cuisses",
+   "item_level": 940,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5258,
+   "kept": 1737,
+   "name": "Pioneer Latt",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5332,
+   "kept": 1745,
+   "name": "Exalted Pioneer Latt",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1746,
+   "kept": 5245,
+   "name": "Exalted Pioneer Latt",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5249,
+   "kept": 1748,
+   "name": "Exalted Pioneer Latt",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5242,
+   "kept": 1752,
+   "name": "Exalted Pioneer Januwiyah",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1841,
+   "kept": 5256,
+   "name": "Wootz Kalkan",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1964,
+   "kept": 5235,
+   "name": "Aboleth Mace",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1965,
+   "kept": 5232,
+   "name": "Aboleth Mace",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1966,
+   "kept": 5233,
+   "name": "Aboleth Mace",
+   "item_level": 650,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1967,
+   "kept": 5234,
+   "name": "Aboleth Mace",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1974,
+   "kept": 5254,
+   "name": "Fey Mace",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1975,
+   "kept": 5243,
+   "name": "Fey Mace",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1977,
+   "kept": 5251,
+   "name": "Fey Mace",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1984,
+   "kept": 5241,
+   "name": "Lifeforged Mace",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1985,
+   "kept": 5255,
+   "name": "Lifeforged Mace",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1986,
+   "kept": 5246,
+   "name": "Lifeforged Mace",
+   "item_level": 650,
+   "mode": "superset"
+  },
+  {
+   "deleted": 1987,
+   "kept": 5250,
+   "name": "Lifeforged Mace",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2004,
+   "kept": 5257,
+   "name": "Oathkeeper's Shield",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2257,
+   "kept": 5663,
+   "name": "Earthen Broadsword",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2258,
+   "kept": 5664,
+   "name": "Earthen Broadsword",
+   "item_level": 400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2259,
+   "kept": 5665,
+   "name": "Earthen Broadsword",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2260,
+   "kept": 5666,
+   "name": "Earthen Broadsword",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5671,
+   "kept": 2261,
+   "name": "Earthen Kite Shield",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2262,
+   "kept": 5672,
+   "name": "Earthen Kite Shield",
+   "item_level": 400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2263,
+   "kept": 5673,
+   "name": "Earthen Kite Shield",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2264,
+   "kept": 5674,
+   "name": "Earthen Kite Shield",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2265,
+   "kept": 5308,
+   "name": "Burning Mace",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2266,
+   "kept": 5305,
+   "name": "Burning Mace",
+   "item_level": 400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2267,
+   "kept": 5306,
+   "name": "Burning Mace",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2268,
+   "kept": 5307,
+   "name": "Burning Mace",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5300,
+   "kept": 2269,
+   "name": "Burning Kite Shield",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2270,
+   "kept": 5297,
+   "name": "Burning Kite Shield",
+   "item_level": 400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2271,
+   "kept": 5298,
+   "name": "Burning Kite Shield",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2272,
+   "kept": 5299,
+   "name": "Burning Kite Shield",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2273,
+   "kept": 5600,
+   "name": "Drowned Broadsword",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2274,
+   "kept": 5601,
+   "name": "Drowned Broadsword",
+   "item_level": 400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2275,
+   "kept": 5602,
+   "name": "Drowned Broadsword",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2276,
+   "kept": 5603,
+   "name": "Drowned Broadsword",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5608,
+   "kept": 2277,
+   "name": "Drowned Kite Shield",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2278,
+   "kept": 5609,
+   "name": "Drowned Kite Shield",
+   "item_level": 400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2279,
+   "kept": 5610,
+   "name": "Drowned Kite Shield",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2280,
+   "kept": 5611,
+   "name": "Drowned Kite Shield",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2418,
+   "kept": 5281,
+   "name": "Bronzewood Quauhololli",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2442,
+   "kept": 5803,
+   "name": "Fanged Sash",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2443,
+   "kept": 5804,
+   "name": "Fanged Sash",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5928,
+   "kept": 2470,
+   "name": "Titansteel Kite Shield",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 4845,
+   "kept": 2518,
+   "name": "Silverspruce Sash",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 4844,
+   "kept": 2519,
+   "name": "Silverspruce Sash",
+   "item_level": 650,
+   "mode": "superset"
+  },
+  {
+   "deleted": 4843,
+   "kept": 2520,
+   "name": "Silverspruce Sash",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2532,
+   "kept": 5945,
+   "name": "Stronghold Mace",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2533,
+   "kept": 5946,
+   "name": "Stronghold Mace",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5643,
+   "kept": 2534,
+   "name": "Stronghold Kite Shield",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2535,
+   "kept": 5644,
+   "name": "Stronghold Kite Shield",
+   "item_level": 400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2536,
+   "kept": 5645,
+   "name": "Stronghold Kite Shield",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2537,
+   "kept": 5646,
+   "name": "Stronghold Kite Shield",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 4863,
+   "kept": 2672,
+   "name": "Company Gladiator Belt",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 4864,
+   "kept": 2674,
+   "name": "Company Gladiator Belt",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 4865,
+   "kept": 2676,
+   "name": "Company Ward Belt",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 4866,
+   "kept": 2679,
+   "name": "Company Ward Belt",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 4867,
+   "kept": 2681,
+   "name": "Company Executioner Cloak",
+   "item_level": 400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 4868,
+   "kept": 2688,
+   "name": "Company Raider's Cloak",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2689,
+   "kept": 5623,
+   "name": "Company Raider Cloak",
+   "item_level": 400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2690,
+   "kept": 5624,
+   "name": "Company Raider Cloak",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2691,
+   "kept": 5625,
+   "name": "Company Raider Cloak",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2693,
+   "kept": 5841,
+   "name": "Grimfang",
+   "item_level": 3750,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2694,
+   "kept": 5842,
+   "name": "Grimfang",
+   "item_level": 4100,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2699,
+   "kept": 5847,
+   "name": "Harrowed Messengers",
+   "item_level": 3750,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2700,
+   "kept": 5848,
+   "name": "Harrowed Messengers",
+   "item_level": 4100,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5849,
+   "kept": 2701,
+   "name": "Harrowed Messengers",
+   "item_level": 4450,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2702,
+   "kept": 5850,
+   "name": "Harrowed Messengers",
+   "item_level": 4800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2703,
+   "kept": 5851,
+   "name": "Harrowed Messengers",
+   "item_level": 5250,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2882,
+   "kept": 5807,
+   "name": "Fey Longbow",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2883,
+   "kept": 5808,
+   "name": "Fey Longbow",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2884,
+   "kept": 5809,
+   "name": "Fey Longbow",
+   "item_level": 650,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2885,
+   "kept": 5810,
+   "name": "Fey Longbow",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5792,
+   "kept": 2886,
+   "name": "Fey Axes",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2887,
+   "kept": 5793,
+   "name": "Fey Axes",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2888,
+   "kept": 5794,
+   "name": "Fey Axes",
+   "item_level": 650,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2889,
+   "kept": 5795,
+   "name": "Fey Axes",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2898,
+   "kept": 5230,
+   "name": "Aboleth Longbow",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2899,
+   "kept": 5227,
+   "name": "Aboleth Longbow",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2900,
+   "kept": 5228,
+   "name": "Aboleth Longbow",
+   "item_level": 650,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2901,
+   "kept": 5229,
+   "name": "Aboleth Longbow",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2980,
+   "kept": 5452,
+   "name": "Howling Longbow",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5675,
+   "kept": 2986,
+   "name": "Earthen Longbow",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 2987,
+   "kept": 5676,
+   "name": "Earthen Longbow",
+   "item_level": 400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5677,
+   "kept": 2988,
+   "name": "Earthen Longbow",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5678,
+   "kept": 2989,
+   "name": "Earthen Longbow",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5660,
+   "kept": 2990,
+   "name": "Earthen Axes",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5661,
+   "kept": 2992,
+   "name": "Earthen Axes",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5662,
+   "kept": 2993,
+   "name": "Earthen Axes",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5301,
+   "kept": 2994,
+   "name": "Burning Longbow",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5303,
+   "kept": 2996,
+   "name": "Burning Longbow",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5302,
+   "kept": 2997,
+   "name": "Burning Longbow",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5612,
+   "kept": 3002,
+   "name": "Drowned Longbow",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5613,
+   "kept": 3003,
+   "name": "Drowned Longbow",
+   "item_level": 400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5614,
+   "kept": 3004,
+   "name": "Drowned Longbow",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5615,
+   "kept": 3005,
+   "name": "Drowned Longbow",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5596,
+   "kept": 3006,
+   "name": "Drowned Axes",
+   "item_level": 300,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5597,
+   "kept": 3007,
+   "name": "Drowned Axes",
+   "item_level": 400,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5598,
+   "kept": 3008,
+   "name": "Drowned Axes",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5599,
+   "kept": 3009,
+   "name": "Drowned Axes",
+   "item_level": 600,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5289,
+   "kept": 3036,
+   "name": "Bronzewood Tlahuitolli",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5286,
+   "kept": 3037,
+   "name": "Bronzewood Tlahuitolli",
+   "item_level": 500,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5287,
+   "kept": 3038,
+   "name": "Bronzewood Tlahuitolli",
+   "item_level": 650,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5288,
+   "kept": 3039,
+   "name": "Bronzewood Tlahuitolli",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5453,
+   "kept": 3047,
+   "name": "Exalted Bronzewood Tlahuitolli",
+   "item_level": 850,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5274,
+   "kept": 3052,
+   "name": "Brightsilver Longbow",
+   "item_level": 350,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5272,
+   "kept": 3054,
+   "name": "Brightsilver Longbow",
+   "item_level": 650,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5273,
+   "kept": 3055,
+   "name": "Brightsilver Longbow",
+   "item_level": 800,
+   "mode": "superset"
+  },
+  {
+   "deleted": 5279,
+   "kept": 2420,
+   "name": "Bronzewood Quauhololli",
+   "item_level": 650,
+   "mode": "field-union"
+  },
+  {
+   "deleted": 5280,
+   "kept": 2421,
+   "name": "Bronzewood Quauhololli",
+   "item_level": 800,
+   "mode": "field-union"
+  },
+  {
+   "deleted": 5276,
+   "kept": 2424,
+   "name": "Bronzewood Cuauhchimalli",
+   "item_level": 650,
+   "mode": "field-union"
+  },
+  {
+   "deleted": 5500,
+   "kept": 2668,
+   "name": "Company Assault Belt",
+   "item_level": 300,
+   "mode": "field-union"
+  },
+  {
+   "deleted": 5501,
+   "kept": 2670,
+   "name": "Company Assault Belt",
+   "item_level": 500,
+   "mode": "field-union"
+  },
+  {
+   "deleted": 3878,
+   "kept": 2673,
+   "name": "Company Gladiator Belt",
+   "item_level": 400,
+   "mode": "field-union"
+  },
+  {
+   "deleted": 3879,
+   "kept": 2678,
+   "name": "Company Ward Belt",
+   "item_level": 500,
+   "mode": "field-union"
+  },
+  {
+   "deleted": 3880,
+   "kept": 2682,
+   "name": "Company Executioner Cloak",
+   "item_level": 500,
+   "mode": "field-union"
+  },
+  {
+   "deleted": 3881,
+   "kept": 2686,
+   "name": "Company Duelist Cloak",
+   "item_level": 500,
+   "mode": "field-union"
+  },
+  {
+   "deleted": 5836,
+   "kept": 2692,
+   "name": "Grimfang",
+   "item_level": 3400,
+   "mode": "field-union"
+  },
+  {
+   "deleted": 5846,
+   "kept": 2698,
+   "name": "Harrowed Messengers",
+   "item_level": 3400,
+   "mode": "field-union"
+  }
+ ]
+}
