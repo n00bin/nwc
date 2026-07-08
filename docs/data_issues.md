@@ -11,6 +11,16 @@ Self-noted as TODO in the entry's own notes but never tracked. Fix is
 code-side: wire `companionDamagePct` into companion-damage scoring and the
 augment grant into the summoned augment's shared stats. (Steward Wave 3.)
 
+**RESOLVED (augment branch) 2026-07-07:** `toon-forge.html` ~12902 now reads
+`ce.companionEnchant`/`rarityLadder` and, for augment summons, pushes a
+`ratingStats` buff of `rung.augmentBonusPerStat` per `augmentShares` stat
+(rank-aware via `state.enchantRarity["Companion"]`). The Companion Damage %
+branch (non-augment summons) is still inert — blocked on the damage-output
+layer that doesn't exist yet, same as At Will Dmg Bonus. Also note: the
+underlying "augment companion shares stats with the player" mechanic itself
+is a separate, still-unbuilt feature this enchant's bonus rides on top of —
+this fix only makes the enchant's own contribution non-zero.
+
 ## Trainer's Restoration — does it stack across mounts? (flagged by n00b 2026-07-07)
 The optimizer's healer result put insignia bonus id 18 (Trainer's Restoration:
 3,500 IH + 3,500 OH at full AP, modeled at 35% uptime) on THREE stable mounts,

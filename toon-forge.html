@@ -12908,6 +12908,28 @@
             ratingStats: ce.ratingStats || {},
             percentStats: ce.percentStats || {}
           });
+          // Choice enchant (e.g. Celestial Companion, id 37): the real values
+          // live in ce.rarityLadder, not ratingStats/percentStats (those are
+          // placeholder {} on this enchant). Mode is set by the summoned
+          // companion's `augment` flag (companions.json). Rank resolution
+          // mirrors _compEnchDesc() — state.enchantRarity["Companion"],
+          // default Celestial.
+          if (ce.companionEnchant && summonedComp) {
+            const er = (s && s.enchantRarity) || (typeof state !== "undefined" && state.enchantRarity) || null;
+            const compRank = (er && er["Companion"]) || "Celestial";
+            const rung = ce.rarityLadder && (ce.rarityLadder[compRank] || ce.rarityLadder["Celestial"]);
+            if (summonedComp.augment === true && Array.isArray(summonedComp.augmentShares) && rung) {
+              const augRatings = {};
+              for (const stat of summonedComp.augmentShares) augRatings[stat] = rung.augmentBonusPerStat;
+              buffs.push({
+                source: "Comp Enchantment: " + ce.name + " (augment grant)",
+                ratingStats: augRatings
+              });
+            }
+            // Non-augment summons take the Companion Damage % branch instead —
+            // inert for now, no damage-output layer exists to apply it yet
+            // (same precedent as At Will Dmg Bonus in toon-forge-stats.js).
+          }
         }
       }
 

@@ -103,6 +103,7 @@ const TOON_FORGE_BONUS_STATS = [
   "heal_pct_damage",    // Master Boon Life Lessons R3 "Return 15% of damage done as a heal over time per rank" — converts damage→HoT. Wire when heal-sim HoT layer exists.
   "heal_pct_max_hp",    // Master Boon procs that heal/HoT/temp-HP for X% of Maximum Hit Points per rank (Death's Bulwark, Enhanced Application, Blessed Advantage). Scales heal output by current Max HP — NOT a Max HP stat bonus. Wire when heal-sim HoT/heal layer exists.
   "damage_taken",       // Master Boon Enhanced Application R3 "Reduces damage of next 1 attack taken by 15% per rank" — incoming-damage mitigation. Wire when survivability layer exists.
+  "Companion Damage",   // Companion-slot choice enchants (e.g. Celestial Companion, id 37) non-augment branch — a % damage buff on the summoned companion's own damage. Wire when damage-output layer exists.
 ];
 
 // Per-paragon display labels for the class resource. The internal

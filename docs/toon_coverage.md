@@ -31,6 +31,7 @@ same-day; numbers below re-counted from live data, not carried forward).
 | Companion proc effects (`statEffects`, always-on passives) | Implemented | engine routes percent/rating/flat; Passive+100%+self = base panel |
 | Companion enhancements | Implemented | `../data/companion_enhancements.json` |
 | Companion gear | Implemented | routed via `buffs[]` (`compGearToBuff`) — see §Note-1 landmine |
+| Companion-slot enchant (choice: Companion Damage % / Augment stat grant) | Partial | see §Partial-4 |
 | Companion bolster (IL × bolster%) | Implemented | verified formula; companion gear/enchant do NOT affect it |
 | Mounts: combat power (125% bolster anchor) | Implemented | magnitudes stored at 125%; engine scales `(1+b/100)/2.25`; `anchorRarity` for Celestial captures |
 | Mounts: equip powers, insignias, insignia bonuses, collars | Implemented | `../data/mount_*.json`; 5-mount loadout rules; mount powers count TIL at rarity IL (Celestial 3,937 vs Mythic 3,000); mount-collection bolster grants NO TIL (2026-06-07 re-add reverted 2026-06-10 — anchor build was stale; see history note in toon-forge.html) |
@@ -91,6 +92,16 @@ same-day; numbers below re-counted from live data, not carried forward).
   healing/per-stack picks recorded but excluded from the sim).
 - **Required:** in-game screenshots of the other seven classes' Enhanced menus
   before their options can appear.
+
+### Partial-4: Companion-slot enchant (choice: Companion Damage % / Augment stat grant)
+- **Location:** `toon-forge.html` ~12902; data in `../data/enchants.json` id 37
+  (Celestial Companion) `companionEnchant`/`rarityLadder`.
+- **Current (fixed 2026-07-07):** augment-summon branch wired — pushes a
+  `ratingStats` buff of `rung.augmentBonusPerStat` per stat in the summoned
+  companion's `augmentShares` (rank-aware via `state.enchantRarity["Companion"]`).
+- **Required:** the Companion Damage % branch (non-augment summons) needs a
+  damage-output layer before it can be applied — silenced as `"Companion
+  Damage"` in `toon-forge-stats.js` in the meantime.
 
 ## Missing entries
 
