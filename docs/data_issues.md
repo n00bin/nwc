@@ -21,6 +21,17 @@ underlying "augment companion shares stats with the player" mechanic itself
 is a separate, still-unbuilt feature this enchant's bonus rides on top of —
 this fix only makes the enchant's own contribution non-zero.
 
+## Trainer's Restoration stacking — RESOLVED 2026-07-08 (measured in-game, three-point A/B)
+n00b ran the full-AP vs used-AP Incoming Healing delta with a fixed stable per
+reading: 1 copy = 3,500 · 2 copies = 5,250 · 3 copies = 6,125 — the exact
+100%/50%/25% diminishing curve. Both mounts measured 3,500 solo (insignia
+quality ruled out). The engine's default `DIMINISHING_MULTIPLIERS = [1, 0.5,
+0.25]` stacking pass models this EXACTLY, so no engine change was needed —
+the "engine credits duplicates additively" worry below predates that pass and
+was stale. id 18 now carries explicit `stackingMode: "diminishing"` +
+`maxStacks: 3` + the probe numbers in notes. A triple-stack is worth 6,125,
+not 10,500. Original entry kept below for history.
+
 ## Trainer's Restoration — does it stack across mounts? (flagged by n00b 2026-07-07)
 The optimizer's healer result put insignia bonus id 18 (Trainer's Restoration:
 3,500 IH + 3,500 OH at full AP, modeled at 35% uptime) on THREE stable mounts,

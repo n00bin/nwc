@@ -8,13 +8,10 @@ them into the calibration archive — no need to rename anything.
 **General tips:** tooltip/panel fully open, Item Level visible, scroll all the
 way down before shooting, one item per shot.
 
-## 1. Trainer's Restoration stacking test (the big one)
-The healer optimizer assumes this insignia bonus stacks across mounts. Prove it:
-1. Equip **1** mount with Trainer's Restoration → screenshot your **Incoming
-   Healing** rating (character sheet).
-2. Same with **2** mounts → screenshot.
-3. Same with **3** mounts → screenshot.
-If the number doesn't triple, the optimizer's healer stable is wrong today.
+## ~~1. Trainer's Restoration stacking test~~ ✅ DONE 2026-07-08
+Measured live (full-AP vs used-AP deltas): 3,500 / 5,250 / 6,125 for 1/2/3
+copies — exact 100%/50%/25% diminishing curve, matching the engine's default.
+Encoded on insignia bonus id 18; nothing further needed.
 
 ## 2. Whisper of Power 2-piece value (clears ~10 unverified rows)
 **Aegis of the Condemned** or **Oathbreaker's Malevolence** at IL 3400 —

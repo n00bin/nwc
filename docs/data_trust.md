@@ -565,4 +565,12 @@ Full project-wide cluster map built and executed for the safe subset. Artifacts:
 
 ---
 
+## Trainer's Restoration stacking — verified 2026-07-08 (live A/B probe)
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| mount_insignia_bonuses 18 | Trainer's Restoration | mounts | CONFIRMED — stacks with **exact 100%/50%/25% diminishing** across equipped copies. Three-point full-AP vs used-AP Incoming Healing deltas, fixed stable per reading: 1 copy 3,500 (both test mounts identical solo — quality variance ruled out) · 2 copies 5,250 · 3 copies 6,125. Matches the engine's default DIMINISHING_MULTIPLIERS [1, 0.5, 0.25] exactly — no engine change needed. stackingMode:"diminishing" + maxStacks:3 made explicit in data | live probe (n00b, PS5, 2026-07-08 — panel readings logged in data_issues.md; no screenshots filed) | 2026.03.17a | 2026-07-08 |
+
+---
+
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._
