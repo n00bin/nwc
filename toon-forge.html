@@ -11384,6 +11384,32 @@
       return Object.assign({}, race, { traits: traits });
     }
 
+    // Shared trigger-rate model for master-boon procs — used by BOTH
+    // masterBoonUptime (stat-buff uptime) and computeHealExpectedHeal's
+    // boon heal layer, so the two can never diverge on how often a trigger
+    // fires (they did once, 2026-07-06: the heal layer shipped without the
+    // healer kill discount its sibling had).
+    function masterBoonTriggerRate(trig, healerBuild) {
+      const U = CONDITIONAL_UPTIME.proc;
+      let rate = U.trigger_rate.other;
+      // Kill triggers: a healer does not land killing blows — owner ruling
+      // 2026-07-06 ("a healer will never proc Deathly Rage"): the kill
+      // component is ZERO for healer builds, not merely discounted.
+      if (/kill/.test(trig)) rate = healerBuild ? 0 : U.trigger_rate.kill;
+      else if (/encounter/.test(trig)) rate = U.trigger_rate.encounter;
+      else if (/at.?will/.test(trig)) rate = U.trigger_rate.hit;
+      else if (/daily/.test(trig)) rate = U.trigger_rate.daily;
+      // "...or when taking more than 50% of your Maximum Hit Points in a
+      // single blow" (Deathly Rage / Death's Bulwark): a second, rare
+      // trigger path on top of kills — one qualifying blow every ~50s.
+      // ALSO zero for healers (owner, 2026-07-06: "still not something that
+      // really procs on someone whose whole job is to heal") — otherwise a
+      // ~7% blow-path uptime lets these win master slots on stat slivers
+      // against alternatives that score exactly 0 for a healer.
+      if (/single blow|taking more than/.test(trig)) rate += healerBuild ? 0 : 0.02;
+      return rate;
+    }
+
     // Master campaign boons: assumed in-combat uptime from the boon's
     // trigger + duration — the same proc duty-cycle model as conditional
     // equip bonuses. Master boon tooltips say "Chance on X" with no %, so
@@ -11400,16 +11426,8 @@
       const chance = (mb.chance != null && !isNaN(+mb.chance))
         ? Math.max(0, Math.min(1, +mb.chance / 100))
         : U.default_chance;
-      let rate = U.trigger_rate.other;
       let gate = 1;
-      if (/kill/.test(trig)) rate = U.trigger_rate.kill;
-      else if (/encounter/.test(trig)) rate = U.trigger_rate.encounter;
-      else if (/at.?will/.test(trig)) rate = U.trigger_rate.hit;
-      else if (/daily/.test(trig)) rate = U.trigger_rate.daily;
-      // "...or when taking more than 50% of your Maximum Hit Points in a
-      // single blow" (Deathly Rage): a second, rare trigger path on top of
-      // kills — model one qualifying blow every ~50s of boss play.
-      if (/single blow|taking more than/.test(trig)) rate += 0.02;
+      let rate = masterBoonTriggerRate(trig, healerBuild);
       if (/on heal|you heal|are healed/.test(trig)) {
         // Heal-GIVEN-only triggers need the build to actually heal. But
         // "…or are healed" triggers (Blessed Resilience) also fire on
@@ -11420,6 +11438,11 @@
         rate = U.trigger_rate.other;
       }
       if (/below\s*\d+%|health is below/.test(trig)) gate = CONDITIONAL_UPTIME.low_threshold;
+      // A zeroed rate means "this trigger cannot fire for this build" —
+      // return 0 outright; the Math.max(0.01, …) exponent floor below would
+      // otherwise manufacture a ~0.3% phantom uptime, enough to win master
+      // slots on stat slivers against true-zero alternatives.
+      if (rate <= 0) return 0;
       const pFire = 1 - Math.pow(1 - chance, Math.max(0.01, rate * dur));
       return Math.max(0, Math.min(1, pFire * gate));
     }
@@ -17191,17 +17214,64 @@
       // not added to the heal score). No-op until items carry eb.procHeal.
       const _healProc = (typeof computeGearHealProcPerSec === "function") ? computeGearHealProcPerSec(pCritH) : { allyPerSec: 0 };
       const procHealPerCast = (_healProc.allyPerSec || 0) / (HEAL_PROC.CAST_RATE || 1);
+      // Master-boon heal procs (heal_pct_max_hp: Blessed Advantage's HoT,
+      // Death's Bulwark's temp HP). That stat is SILENCED in the stat engine
+      // (no HoT layer yet), so these boons scored literally 0 for their
+      // signature effect and lost the boon realloc to fully-modeled stat
+      // boons on healer builds (live case 2026-07-06). Placeholder credit in
+      // the same shape as the gear heal-proc layer: expected %MaxHP/sec from
+      // the boon's own trigger/chance data -> per cast. HoT vs temp-HP scope
+      // nuance deliberately ignored at this altitude; replace both when a
+      // real heal-sim HoT layer lands (toon-forge-stats.js silenced list).
+      let boonHealPerCast = 0;
+      try {
+        if (state.boons && typeof findBoonByKey === "function") {
+          const _maxHP = (r.stats["Maximum Hit Points"] && r.stats["Maximum Hit Points"].flat) || 0;
+          if (_maxHP > 0) {
+            const U2 = CONDITIONAL_UPTIME.proc;
+            let perSec = 0;
+            for (const [bkey, bv] of state.boons) {
+              if (!bv || bv.tier !== "master") continue;
+              const mb = findBoonByKey(bkey); if (!mb) continue;
+              const ranks = Math.min(bv.ranks || 0, mb.maxRanks || 0); if (ranks <= 0) continue;
+              // ALLY/PARTY-scoped effects ONLY: self temp-HP / self-heals
+              // (Death's Bulwark, Enhanced Application — scope:"self" in
+              // campaign_boons.json) are survivability, not heal OUTPUT —
+              // the same self/ally split computeGearHealProcPerSec already
+              // makes for gear heal procs. Untagged entries count as self
+              // (conservative): tag scope:"ally" in the source JSON to
+              // credit a new boon here.
+              let healPct = 0;
+              (mb.perRankEffects || []).forEach(ef => {
+                if (!ef || ef.stat !== "heal_pct_max_hp") return;
+                if (ef.scope !== "ally" && ef.scope !== "party") return;
+                if (ef.unlockRank != null && ranks < ef.unlockRank) return;
+                healPct += (ef.amount || 0) * ((ef.unlockRank == null || ef.scalesPerRank) ? ranks : 1);
+              });
+              if (healPct <= 0) continue;
+              const trig = String(mb.trigger || "").toLowerCase();
+              // Shared trigger-rate model (masterBoonTriggerRate) — this is
+              // heal-role scoring, so healerBuild is always true here.
+              const rate = masterBoonTriggerRate(trig, true);
+              const ch = (mb.chance != null && !isNaN(+mb.chance)) ? Math.max(0, Math.min(1, +mb.chance / 100)) : U2.default_chance;
+              perSec += rate * ch * (healPct / 100) * _maxHP;
+            }
+            boonHealPerCast = perSec / (HEAL_PROC.CAST_RATE || 1);
+          }
+        }
+      } catch (e) { boonHealPerCast = 0; }
       const baseExpected = (1 - pCritH) * baseHeal + pCritH * critHeal;
       const _rows = [
         { sc: "Base heal", icon: "💚", desc: "Standard heal — no critical.",                                             p: 1 - pCritH, d: Math.round(baseHeal) },
         { sc: "Crit heal", icon: "✨", desc: "Critical heal. Crit Severity is halved on heals, so the bonus is smaller.", p: pCritH,     d: Math.round(critHeal) },
       ];
       if (procHealPerCast > 0) _rows.push({ sc: "Gear heal procs", icon: "🩹", desc: "Expected extra healing per cast from gear heal procs (ally-scope).", p: 1, d: Math.round(procHealPerCast) });
+      if (boonHealPerCast > 0) _rows.push({ sc: "Boon heal procs", icon: "🌿", desc: "Expected extra healing per cast from master-boon heal procs (HoT / temp HP, % of Max HP).", p: 1, d: Math.round(boonHealPerCast) });
       // Per-cast expected (calibrated — drives the sim display, unchanged) and a
       // SUSTAINED throughput value = per-cast × cast-frequency (resource pool +
       // regen). The optimizer scores on expectedThroughput so it values Forte /
       // Class-Resource-Regen / pool; the sim still shows per-cast `expected`.
-      const expectedPerCast = baseExpected + procHealPerCast;
+      const expectedPerCast = baseExpected + procHealPerCast + boonHealPerCast;
       const tFactor = (typeof healThroughputFactor === "function") ? healThroughputFactor() : 1;
       return { expected: expectedPerCast, expectedThroughput: expectedPerCast * tFactor, throughputFactor: tFactor, pCritH, rows: _rows };
     }
