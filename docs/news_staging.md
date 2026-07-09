@@ -31,5 +31,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 - Visage of the Eternal Herald: resolved a long-standing question about its equip bonus — it's a resource-regeneration proc (5% faster class-resource regen per stack, up to 10) plus +5% Critical Strike, not the resource-max effect our older records guessed. Structured, and a Critical Severity value was corrected (4,305 → 4,505).
 
+- Companion gear fully verified: all 9 Thayan pieces (IL 2600) checked against their in-game tooltips — every value exact, no corrections needed. With Molten, Frostforged, and True Ice already done, all four endgame companion-gear tiers are now confirmed accurate.
+
 ### Data
 - Confirmed that same-name gear which differs by class (e.g. Hammerstone Mask for Warlocks vs Hammerstone Helmet for Paladins/Fighters — same slot and item level, different secondary stats) is **intentional per-class itemization**, not duplicate data. Those variants are all kept.
