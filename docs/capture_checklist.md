@@ -64,10 +64,10 @@ crit-proc confirmed too. Proof filed.
   MOSTLY DONE 2026-07-09 — all 8 captured; they're pure stat-sticks (no lost
   equip bonus) in 4 three-piece sets. Fixed the Wrathful pair's IL (1400→3400)
   and Diamond pair's IL (350→550); added the Mythallar "Raw Pressure" and
-  Diamond "Dashing Decoy" set-bonus text. ONLY remaining: **Magmatic
-  Efficiency's set bonus** — one expanded Details panel (Choker of Searing
-  Magma or Girdle of Coagulated Magma, scrolled to the "3 of Set" line); our
-  stored "+2% Power/Forte/Defense" is unverified.
+  Diamond "Dashing Decoy" set-bonus text. **Magmatic Efficiency now VERIFIED
+  too** (2026-07-09, expanded panel: +2% Power/Forte/Defense — our guess was
+  right). All 4 are cross-file "artifact sets" (2 gear + 1 artifact 3rd member);
+  nothing missing. ✅ Group fully closed.
 - Value-drift confirmations (one tooltip each, low priority): Cuirass of the
   Crimson Reckoning (3.3%?), Ebon Crusader's Aegis set panel (Forte 8%?),
   Eilistraee's rings (5,000 Forte?), Visage of the Undying Faith (stacking
