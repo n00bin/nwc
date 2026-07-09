@@ -155,9 +155,10 @@ different names, different secondary stats, same slot/IL/CR). All 45 clusters
 + the 32 conservative skips keep every row. Proof filed.
 
 ## 10. From the Wave 5 sweep (companion gear + belts)
-- **Any Thayan or Molten companion-gear tooltip** — those two tiers (18 items)
-  have zero screenshots anywhere; the Frostforged/True Ice tiers are now fully
-  verified, so any lower-tier shot extends the pattern.
+- ~~**Molten companion-gear**~~ ✅ DONE 2026-07-09 — all 9 pieces (IL2200)
+  found already-filed in the archive and verified exact against the data.
+- **Thayan companion-gear tooltip** — the OTHER 9 (ids 1–9, IL2600) still have
+  zero screenshots anywhere; any tooltip extends the now-verified pattern.
 - **Empowered Chain of Scales, zoomed on the Stamina Regeneration line** —
   tooltip reads "6%" but every lower tier runs 0.02–0.05%; confirm whether
   it's really 6% or a game typo for 0.06%.

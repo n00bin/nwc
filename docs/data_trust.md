@@ -629,6 +629,17 @@ Curve: sub-Mythic tier ×0.75 · Mythic anchor ×1.0 (all our stored values) · 
 | gear 297 | Visor of the Red Bastion | gear | FIXED — added the Thay-only Defense +2.3% (Wave 4 skipped it as unsupported; the screenshot shows it exists). Full set: in Thay Def+2.3/Aware+2.7, outside Def+1.5/Aware+2 | Visor of the Red Bastion_IL4100_set-details.png | 2026.03.17a | 2026-07-08 |
 | gear 4004 | Enchanted Bregan D'aerthe Assassin's Leathers | gear | FIXED — equip is only "Liquid Luck" (1.5% Crit Strike/teammate + 8% Crit Sev moving, both already correct); removed the phantom "Precise Teamwork" entry a dark capture had invented. (NOTE: the *Longboots* 2791/4006 are a different item, still open) | Enchanted Bregan Daerthe Assassins Leathers_IL2050_set-details.png | 2026.03.17a | 2026-07-08 |
 
+## Archive re-processing — Molten companion gear + Demon Skull — 2026-07-09
+
+Found already-filed screenshots for open items during an archive sweep (no new captures needed).
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| companion_gear 10–18 | Molten companion gear (all 9 pieces, IL 2200, CR 1980) | companion_gear | CONFIRMED — every ratingStats value + CR matches the data exactly (same clean result as the Frostforged/True Ice tiers in Wave 5). Now HALF the previously-uncaptured companion-gear tiers are verified; only the 9 Thayan pieces (ids 1–9) still lack shots | Molten *of the Companion_IL2200.png (9 files, unbound-gear/companion-gear/) | 2026.03.17a | 2026-07-09 |
+| artifact 95 | Demon Skull | artifacts | FIXED — debuff corrected **5% → 3%** (both the damage-taken and Accuracy-reduction; the crisp verified tooltip reads 3%, and the old gear baseline had 3% right — the 2026-07-02 "5%" was an error). ratingStats/CR/cooldown all re-confirmed exact; AoE 31,271/imp at max quality added to the text | Demon Skull_IL2600_verified.png | 2026.03.17a | 2026-07-09 |
+
+Note: the Molten Girdle's stat shows as "Deflection" on the tooltip but is stored "Deflect" — the project's canonical key (matches the verified Frostforged/True Ice Girdles); value identical, no change.
+
 ---
 
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._
