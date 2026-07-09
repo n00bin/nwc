@@ -2,6 +2,19 @@
 var NEWS_DATA = [
   {
     date: "July 8, 2026",
+    title: "Currency Tracker Gets a Spend Button + 63 More Items Now Score",
+    tags: ["Feature", "Fix"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li><strong>Currency Tracker: a new &#8722; Spent button.</strong> Next to <strong>Update total</strong> on every currency, tap <strong>&#8722; Spent</strong>, type how much you spent at a vendor, and it lowers your held total while leaving <strong>this week's earnings untouched</strong>. This fixes the trap where buying something between two total-updates quietly ate into your weekly-earned number — the spend now lands as its own &#8722;amount entry in the Log, fixable or deletable like any other.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>63 more items now score in Toon Forge.</strong> A first-ever full census found <strong>287 items</strong> whose stat effects existed only as tooltip text — the same \"invisible to the optimizer\" disease we fixed on the Lifebraid shirt. Every cleanly-parseable one is now structured (the Bloodwoven 2-piece sets, Company belt set, Chilling Flow's Wintermarked role-stacking shield, Enchanted accessory sets, and ~55 individual items); the rest are procs waiting on the damage layer or items flagged for in-game re-verification.</li>" +
+      "</ul>"
+  },
+  {
+    date: "July 8, 2026",
     title: "The Great Data Trust Sweep: Every Database Audited, 60+ Fixes",
     tags: ["Fix", "Data"],
     body: "<p style='margin-top:0.5rem;'>Over two days we ran a full trust campaign across <strong>every database on this site</strong> — gear, artifacts, boons, enchantments, overloads, companions and their gear, mounts and their powers, consumables — verifying values against in-game screenshots and live PS5 measurements, and fixing everything the audit exposed. Every confirmed value now has its proof image on file. The highlights:</p>" +
