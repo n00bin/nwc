@@ -32,21 +32,29 @@ exclusively and is unchanged. No rarity/bolster scaling applied to the 20%
 (no evidence found it scales in-game); rarity-invariance is assumed pending
 a two-rarity capture (see capture_checklist.md).
 
-**The generic self-scope stat-buff sibling is PARKED under the 2026-06-19
-decision, not a loose end.** id 21 "Actions Speak Louder" carries THREE
-self-scope `stat`-shaped equipBonuses (Incoming Damage -15%, Base Damage
-Boost +15%, Outgoing Healing +15%, 10s window) — all already correctly-named
-stats, so there is NO data bug here. This is a multi-stat *pure-buff* combat
-power: precisely the "Mighty Dragon's Roar" class that
-"Mount combat-power valuation — engine ignores SELF stat-buffs" (2026-06-19,
-below) deliberately deferred. That decision's harness explicitly proved a
-naive "just push the +15% line into the panel" fix is INCOMPLETE — the proper
-fix is the cap-aware / uptime-aware self-buff valuation pass n00b chose to
-revisit "when we invest," NOT a per-item wiring job. So Wave 12 fixed only the
-heal-magnitude half (a genuine unrecognized-stat data bug); the stat-buff half
-stays parked with the rest of its class until that valuation pass is chosen.
-Distinction: Rejuvenating Favor was a mis-named heal → fixable now; Actions
-Speak Louder is well-formed self stat-buffs → covered by the standing deferral.
+**The generic self-scope stat-buff sibling was PARKED under the 2026-06-19
+decision — DPS half now RESOLVED 2026-07-08 (Wave 14).** id 21 "Actions Speak
+Louder" carries THREE self-scope `stat`-shaped equipBonuses (Incoming Damage
+-15%, Base Damage Boost +15%, Outgoing Healing +15%, 10s window) — all
+already correctly-named stats, so there is NO data bug here. This is a
+multi-stat *pure-buff* combat power: precisely the "Mighty Dragon's Roar"
+class that "Mount combat-power valuation — engine ignores SELF stat-buffs"
+(2026-06-19, below; superseded 2026-07-08) deliberately deferred. That
+decision's harness explicitly proved a naive "just push the +15% line into
+the panel" fix is INCOMPLETE — the proper fix was the cap-aware /
+uptime-aware self-buff valuation pass n00b chose to revisit "when we invest,"
+NOT a per-item wiring job. So Wave 12 fixed the heal-magnitude half (a genuine
+unrecognized-stat data bug); Wave 14 then shipped the cap-aware valuation
+pass for DPS, so Actions Speak Louder's own Base Damage Boost +15% is now
+credited (same mechanism as Wicked Lich, uncapped, full amount × uptime).
+Its Incoming Damage -15% and Outgoing Healing +15% lines are Tank-only /
+Heal-only respectively — DPS-scope Wave 14 correctly does not consume them
+(they're not bugs; they simply have no bucket in the DPS formula). Tank/Heal
+valuation of combat-power self-buffs (including these two lines) remains
+parked, now as its own separate future item rather than bundled with the DPS
+gap. Distinction retained: Rejuvenating Favor was a mis-named heal → fixed in
+Wave 12; Actions Speak Louder's self stat-buffs → DPS portion fixed in Wave
+14, Tank/Heal portion still parked.
 
 ## exclusiveGroup "None" buffs — RESOLVED 2026-07-08 (picker rule generalized)
 The Always-on toggle list now includes every None-group buff with real
@@ -245,7 +253,7 @@ Four audit "verify in-game" gear items were checked against archived captures.
   under 50 — so the high value is real and correctly gated, not always-on.
 
 
-## Mount combat-power valuation — engine ignores SELF stat-buffs; pick is defensible, left as-is + player workaround (2026-06-19)
+## Mount combat-power valuation — engine ignores SELF stat-buffs — SUPERSEDED/RESOLVED 2026-07-08 (Wave 14, DPS-only) — originally: pick is defensible, left as-is + player workaround (2026-06-19)
 The builder's DPS sim (`toon-forge.html` ~10290-10321, the combat-power block of
 `computeDpsExpectedDamage`) credits a mount combat power via only TWO things:
 (1) its **enemy** "Dmg Taken / Dmg Debuff" (multiplies your damage), and
@@ -286,6 +294,82 @@ optimizer's choice.
 **Decision (n00b, 2026-06-19):** leave the engine/optimizer untouched — the current
 pick is sound — and revisit the cap-aware self-buff valuation when we choose to
 invest. Documented only.
+
+**RESOLVED 2026-07-08 (Wave 14) — reopened with n00b's go-ahead, DPS scope
+only.** Shipped the "proper fix" described above, in two surgical spots:
+1. `getPartySummonedCombatMods()` (`toon-forge.html` ~11036-11141) now also
+   scans the active combat power's `equipBonuses` for `scope:"self"` numeric,
+   named stats (skipping roleMap/procHeal/stackingBuff shapes, which have no
+   top-level `.stat`), canonicalizes each via `STAT_NAME_ALIASES`, and returns
+   the raw per-stat amounts (`pmods.selfBuffAmounts`) plus the same 10s/recharge
+   uptime convention already used for the enemy debuff
+   (`pmods.selfBuffUptime`). Raw stored amounts, no anchor/rarity scaling
+   (matches the burst convention, not the enemy-debuff anchor-divide) — see
+   the judgment-call note below.
+2. `computeDpsExpectedDamage()` (~17117-17225) applies CLAMP-THEN-SCALE:
+   a capped stat (Power/Combat Advantage/Critical Severity/Critical
+   Strike/Accuracy — the only capped stats this DPS formula actually
+   consumes) can only credit up to the **live engine's remaining headroom to
+   its own cap** (`min(amount, max(0, cap - currentFinalPct)) * uptime`),
+   added to the same local the base stat feeds, before the non-linear
+   flank/crit math reads it. Base Damage Boost (uncapped) gets the full
+   `amount × uptime`, no clamp, no ceiling — folded into `boostMult` via a
+   NEW local (`_selfBdbCredit`) that does **not** mutate
+   `r.damageBoosts.base`, so the calibrated stat panel is untouched. Stats
+   with no bucket in this DPS-only formula (Awareness, Forte, Critical
+   Avoidance, Defense, Deflect(Severity), Action Point Gain, Incoming Damage,
+   Outgoing Healing, Max HP...) are silently no-ops by design — Tank/Heal
+   self-buff valuation is a separate, still-unaddressed future item.
+
+**Verified before shipping (regression gates, all gitignored scripts under
+`website/scripts/_*.js`):**
+- **Panel byte-identical**: `getEngineResult().stats` + `.damageBoosts` are
+  byte-for-byte identical (verified via a real headless-Chrome load of the
+  live saved build) whether `state.activeCombatPower` is null, 84 (Wicked
+  Lich), or 80 (Mighty Dragon's Roar) — confirming the fix lives entirely in
+  `computeDpsExpectedDamage`'s local variables and never reaches the
+  calibrated Erik/Lia panel. (Total-DPS-number sanity check is separately
+  confounded by a PRE-EXISTING, unrelated mechanic — a combat power's own
+  item level already contributes to Total Item Level — isolated in a
+  follow-up check holding TIL fixed: Wicked Lich's isolated self-buff effect
+  measured **exactly +2.500%**, matching 15% Base Damage Boost × 10/60
+  uptime precisely.)
+- **Decision math (hard assertions, exit-1-on-fail)**: extended
+  `_combat_power_pick_test.js` to model the real clamp-then-scale formula
+  (pulling the actual cap table + `STAT_NAME_ALIASES` from
+  `toon-forge-stats.js` via `vm`, not hand-duplicated numbers). All pass:
+  Wicked Lich still beats Tunnel Vision at rmps 800/1500/3000 (preserves the
+  2026-06-19-validated pick); Mighty Dragon's Roar scores strictly more on an
+  under-cap build than an at-cap build at all three rmps; on a fully-capped
+  build MDR's Critical Strike and Accuracy lines credit exactly 0 while its
+  Base Damage Boost still credits fully (2.5 of 15, at this power's 10/60
+  uptime) — proving cap-awareness end to end.
+- **Code-real proof**: captured the actual shipped `computeDpsExpectedDamage`
+  value for Mighty Dragon's Roar on n00b's real saved build (Critical Strike
+  77.55/90, Accuracy 61.8/90 — genuinely under both caps) both BEFORE this
+  change (via a scoped `git stash` of just `toon-forge.html`, reverted then
+  restored) and after: **3,319,558 → 3,475,671, a +4.70% increase** — the
+  live function now credits a pure-buff power it previously valued at ~0
+  (beyond any enemy debuff it happened to carry).
+
+No `data/*.json` file changed — `mount_combat_powers.json`'s self-scope
+entries were already correctly shaped; this was purely an engine-side
+consumption gap.
+
+**Judgment call flagged for review:** self-buff amounts are NOT divided by
+`mountPowerAnchorFactor()` (unlike the enemy-debuff path), matching the
+explicit instruction to mirror the burst convention. This is exact for 17 of
+19 self-buff powers in current data (which are Mythic-anchor-stored, i.e.
+factor = 1). Two powers — **Relentless Hunter** (id 14, self Accuracy +9.8%)
+and **Stabby Stabs** (id 88, self Defense +7.8%, a stat this DPS formula
+doesn't consume anyway) — are stored at a Celestial anchor (factor ≈1.3125),
+so Relentless Hunter's Accuracy credit is ~31% higher than full
+anchor-consistency would give it. Small, bounded, and confined to one power's
+one stat; flagged rather than silently "fixed" since the instruction to skip
+anchor-scaling was explicit and locked for this wave. Tank/Heal valuation of
+combat-power self-buffs is unchanged and remains a separate future item, as
+is the Healer support-meta rule (`optimizer-local.js`), which this wave did
+not touch.
 
 ## Mount collection bolster not wired to mount-power scaling — DOCUMENTED, left as-is by n00b (2026-06-19)
 Two independent researchers (general web + NW-creators) confirmed mount collection

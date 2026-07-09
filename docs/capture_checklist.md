@@ -92,6 +92,13 @@ stacking proc).
   TWO mount rarities (e.g. Mythic and Celestial) — settles whether the 20%
   MaxHP heal scales with rarity/bolster. Currently modeled unscaled (Wave 12,
   2026-07-08); no in-game evidence either way yet.
+- **Combat-power buff % rarity scaling — general question** (Wave 14): do a
+  combat power's self-buff PERCENTAGES (e.g. +15% Base Damage Boost) change
+  with mount rarity, or only the magnitude/recharge? All self-buffs are now
+  modeled rarity-invariant. Most-affected single case: **Relentless Hunter**
+  (id 14, self Accuracy +9.8%) is stored at a Celestial anchor, so if the %
+  DOES scale, its DPS credit runs ~31% high. Any two-rarity combat-power
+  tooltip comparison settles the whole class.
 
 ## 7. Chilling Flow — Frostbound tier (IL 4800)
 Any Frostbound weapon's set-details panel; per-stack values for this tier are

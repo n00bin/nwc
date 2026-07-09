@@ -11033,13 +11033,20 @@
       return out;
     }
 
-    // Returns { caUnion, caGrants[], dmgTaken, dmgSources[], info[] }.
+    // Returns { caUnion, caGrants[], dmgTaken, dmgSources[], info[], selfBuffAmounts, selfBuffUptime }.
     function getPartySummonedCombatMods() {
       const caGrants = [];     // {name, uptime 0..1}
       const dmgSources = [];   // {name, pct 0..1}
       const info = [];         // {name, text} shown but not calculated
       const seen = new Set();
       let spined = null, succubus = null;   // Succubus doesn't stack w/ Spined Devil
+      // Active mount combat power's SELF stat-buffs (raw per-canonical-stat
+      // amounts) + its on-use uptime. Clamp-then-scale against the LIVE
+      // engine cap happens where this is consumed (computeDpsExpectedDamage)
+      // — not available here. Defaults = zero behavioral change when there's
+      // no active power or it has no self-scope stat buffs.
+      let selfBuffAmounts = {};
+      let selfBuffUptime = 1;
       // Gated by the "Assume support party" master toggle (default OFF).
       for (const name of (state.assumeSupportParty ? (state.partyAllies || []) : [])) {
         if (!name || seen.has(name)) continue;
@@ -11110,6 +11117,25 @@
             const _burst = Math.min(0.06, (_mag / _rc2) / _rmps);
             dmgSources.push({ name: "Combat power burst: " + (_cp.name || ""), pct: _burst });
           }
+          // SELF stat-buffs (e.g. Wicked Lich's own +15% Base Damage Boost;
+          // Mighty Dragon's Roar's +15% Crit Strike/Accuracy/Base Damage
+          // Boost). Raw stored amounts per canonical stat name — NO anchor/
+          // rarity scaling (matches the burst convention above, unlike the
+          // enemy-debuff anchor-divide) and NO clamping here: the live engine
+          // cap/finalPct needed for clamp-then-scale isn't available in this
+          // function — that happens where this is consumed
+          // (computeDpsExpectedDamage). Skips roleMap/procHeal/stackingBuff-
+          // shaped entries (no top-level eb.stat) automatically.
+          for (const eb of (_cp.equipBonuses || [])) {
+            if (!eb || eb.scope !== "self" || typeof eb.amount !== "number" || !eb.stat) continue;
+            const _canon = (typeof STAT_NAME_ALIASES !== "undefined" && STAT_NAME_ALIASES[eb.stat]) || eb.stat;
+            selfBuffAmounts[_canon] = (selfBuffAmounts[_canon] || 0) + eb.amount;
+          }
+          if (Object.keys(selfBuffAmounts).length) {
+            const _selfBuffSeconds = 10;   // same on-use duration assumption as the enemy debuff above
+            const _rc3 = _cp.rechargeTimeSeconds || 60;
+            selfBuffUptime = Math.max(0, Math.min(1, _selfBuffSeconds / _rc3));
+          }
         }
       }
       // Union of CA-grant uptimes: 1 − ∏(1 − uptime).
@@ -11117,7 +11143,7 @@
       for (const g of caGrants) miss *= (1 - g.uptime);
       const caUnion = caGrants.length ? (1 - miss) : 0;
       const dmgTaken = dmgSources.reduce((s, x) => s + x.pct, 0);
-      return { caUnion, caGrants, dmgTaken, dmgSources, info };
+      return { caUnion, caGrants, dmgTaken, dmgSources, info, selfBuffAmounts, selfBuffUptime };
     }
 
     // Companion rarity → item-level mapping. Both CR and percent stats[]
@@ -17098,13 +17124,51 @@
       const baseVal = (mag / 100) * (TIL / 10) * roleMult;
       const stat = n => ((r.stats[n] && r.stats[n].finalPct) || 0) / 100;
       ov = ov || {};
-      const power      = ov.power      != null ? ov.power      : stat("Power");
-      const ca         = ov.ca         != null ? ov.ca         : stat("Combat Advantage");
-      const critSev    = ov.critSev    != null ? ov.critSev    : stat("Critical Severity");
-      const critStrike = ov.critStrike != null ? ov.critStrike : stat("Critical Strike");
-      const accuracy   = ov.accuracy   != null ? ov.accuracy   : stat("Accuracy");
+      let power      = ov.power      != null ? ov.power      : stat("Power");
+      let ca         = ov.ca         != null ? ov.ca         : stat("Combat Advantage");
+      let critSev    = ov.critSev    != null ? ov.critSev    : stat("Critical Severity");
+      let critStrike = ov.critStrike != null ? ov.critStrike : stat("Critical Strike");
+      let accuracy   = ov.accuracy   != null ? ov.accuracy   : stat("Accuracy");
       const e = getEnemyStats();
       const pmods = getPartySummonedCombatMods();
+      // Cap-aware credit for the active mount combat power's SELF stat-buffs
+      // (Wicked Lich's own +15% Base Damage Boost; Mighty Dragon's Roar's
+      // +15% Crit Strike/Accuracy/Base Damage Boost; etc — 2026-06-19 gap,
+      // reopened 2026-07-08 with cap-aware valuation). CLAMP-THEN-SCALE: a
+      // capped stat can only credit up to the LIVE engine's remaining
+      // headroom to ITS OWN cap (so a power can't push a stat past a cap
+      // your gear already reached), then whatever survives the clamp is
+      // scaled by the power's on-use uptime. Uncapped stats (Base Damage
+      // Boost) get the full amount × uptime, no clamp. Credited BEFORE the
+      // non-linear flank/crit/pCrit math below reads these locals, so both
+      // the cap-awareness and that non-linearity are correct together.
+      // Stats with no bucket in THIS (DPS) formula — Awareness, Forte,
+      // Incoming Damage, Outgoing Healing, etc — are silently skipped: this
+      // sim is DPS-only, Tank/Heal self-buff valuation is a separate item.
+      const SELF_BUFF_STAT_LOCAL = { "Power": "power", "Combat Advantage": "ca",
+        "Critical Severity": "critSev", "Critical Strike": "critStrike", "Accuracy": "accuracy" };
+      const _creditLocal = {
+        power: v => { power += v; }, ca: v => { ca += v; }, critSev: v => { critSev += v; },
+        critStrike: v => { critStrike += v; }, accuracy: v => { accuracy += v; }
+      };
+      const _upSelf = (pmods.selfBuffUptime != null) ? pmods.selfBuffUptime : 1;
+      let _selfBdbCredit = 0;   // uncapped Base Damage Boost credit — folded into boostMult below
+      for (const _sStat in (pmods.selfBuffAmounts || {})) {
+        const _amt = pmods.selfBuffAmounts[_sStat];
+        if (!(_amt > 0)) continue;
+        if (_sStat === "Base Damage Boost") {
+          _selfBdbCredit += _amt * _upSelf;
+          continue;
+        }
+        const _localKey = SELF_BUFF_STAT_LOCAL[_sStat];
+        if (!_localKey) continue;   // no DPS bucket for this stat — no-op by design
+        const _sInfo = r.stats[_sStat];
+        const _cur = (_sInfo && _sInfo.finalPct) || 0;
+        const _cap = _sInfo && _sInfo.cap;
+        const _headroom = (_cap == null) ? _amt : Math.max(0, _cap - _cur);
+        const _credited = Math.min(_amt, _headroom) * _upSelf;
+        if (_credited > 0) _creditLocal[_localKey](_credited / 100);
+      }
       // ov.flank lets a caller score at an ASSUMED Combat Advantage uptime
       // without touching the user's display slider — the optimizer passes a
       // high value so it pursues the CA cap (the endgame group scenario)
@@ -17130,7 +17194,7 @@
       // weighted to an effective generic % by rotation share. Multiplies like
       // any other generic damage source.
       const seqProc = (typeof computeSequenceProcBoost === "function") ? computeSequenceProcBoost() : { pct: 0, contributors: [] };
-      const boostMult = (1 + (db.generic || 0) / 100) * (1 + (db.base || 0) / 100) * (1 + typeBoost / 100) * (1 + slotPct / 100) * (1 + seqProc.pct / 100);
+      const boostMult = (1 + (db.generic || 0) / 100) * (1 + ((db.base || 0) + _selfBdbCredit) / 100) * (1 + typeBoost / 100) * (1 + slotPct / 100) * (1 + seqProc.pct / 100);
       // Buff-value layer: damage buffs/debuffs on slotted powers multiply the rest
       // of the rotation, credited at uptime (slottedBuffMultiplier / TF_POWER_BUFFS).
       const buffMult = (typeof slottedBuffMultiplier === "function") ? slottedBuffMultiplier() : 1;
