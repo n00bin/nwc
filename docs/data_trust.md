@@ -640,6 +640,12 @@ Found already-filed screenshots for open items during an archive sweep (no new c
 
 Note: the Molten Girdle's stat shows as "Deflection" on the tooltip but is stored "Deflect" — the project's canonical key (matches the verified Frostforged/True Ice Girdles); value identical, no change.
 
+## Effervescent Tidespan Potion — stat unknown, flagged — 2026-07-09
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| buffs 78 | Effervescent Tidespan Potion | buffs | UNVERIFIABLE (stat unknown) — part of the CURRENT Effervescent Masterwork Alchemy III family (siblings 75/76/77/79 grant +2,000 Power/Crit Strike/Defense/Deflect), so it grants +2,000 of ONE stat. Was stored as "+2,000 Recovery" — a non-canonical name (mis-transcription; "Recovery" is a defunct pre-Mod-16 stat). Real modern stat is UNKNOWN; not in the Mod-24 guide; n00b thinks it may be removed from game. Phantom stat cleared (scored 0 + warned); do NOT guess — needs an in-game tooltip | reference-sheet search (absent) + family cross-check | 2026.03.17a | 2026-07-09 |
+
 ## "Total-loss" accessories — captured, mostly a misnomer — 2026-07-09
 
 The 8 "total-loss" accessory items turned out to be **pure stat-sticks** (their base stats were always stored; there was never an individual equip bonus to lose) belonging to **4 three-piece sets** (not pairs). Captures fixed real errors and filled set-bonus text.

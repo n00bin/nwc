@@ -89,8 +89,13 @@ Fractal Barbut (plus the Skinstealer pair — its two rows disagree on a
 stacking proc).
 
 ## 6d. From the Wave 8 sweep (consumables + mount powers)
-- **Effervescent Tidespan Potion** tooltip — its stored stat says "Recovery",
-  a name that doesn't exist; the potion currently contributes 0.
+- **Effervescent Tidespan Potion** — STAT UNKNOWN, still needs a tooltip if one
+  can be found. It's a CURRENT Effervescent Masterwork Alchemy III potion (its
+  siblings grant +2,000 Power/Crit Strike/Defense/Deflect), so it grants +2,000
+  of one stat — but ours was mis-stored as "Recovery" (not a real stat). Not in
+  the Mod-24 guide; may be removed from game. Phantom stat cleared so it no
+  longer scores a bogus value; the real stat stays unknown. Only a tooltip
+  (from anyone who still has it) can fill it — don't guess.
 - ~~**Tenser's Floating Disk**~~ ✅ DONE 2026-07-08 — confirmed: its power is
   Tenser's Transformation (+15% Base Damage Boost / +15% Movement Speed /
   +2 STR-DEX-CON, 60s), NOT the Rejuvenating Favor heal our data linked.
