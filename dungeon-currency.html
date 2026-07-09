@@ -704,6 +704,7 @@
         <ul class="dc-tip">
           <li>Add a character, then the currencies they farm — where it drops, plus any <strong>weekly cap</strong> or <strong>storage limit</strong>.</li>
           <li>Farmed some? Just hit <strong>↺ Update total</strong> and type your new in-game total — we do the math and count it toward your week.</li>
+          <li>Bought something? Hit <strong>− Spent</strong> and type the amount — it lowers your held total but leaves this week's earnings untouched.</li>
           <li>Fat-fingered a number? It's all in the <strong>Log</strong> — pop in and fix or delete that entry.</li>
           <li>Then <strong>Cap Status</strong> shows you who to farm next. That's it — go get that loot! ⚔</li>
         </ul>
@@ -1144,6 +1145,7 @@
       // previous total is counted as earned this week.
       h += '<div class="dc-cur-row-controls">';
       h += '<button class="dc-log-btn dc-log-primary" data-action="set-total" data-char="' + char.id + '" data-cur="' + cur.id + '" title="Enter your new in-game total — the increase counts as earned this week">↺ Update total</button>';
+      h += '<button class="dc-log-btn" data-action="spend-cur" data-char="' + char.id + '" data-cur="' + cur.id + '" title="Record currency you spent — lowers your held total, not this week&#39;s earnings">− Spent</button>';
       h += '</div>';
 
       h += renderHistory(char, cur);
@@ -1530,6 +1532,27 @@
       recomputeCurrency(cur);
       save(); render();
     }
+    // Record a purchase / spend. You type how much you SPENT; it subtracts that
+    // from your held total and appends the lower number as a log entry. A drop in
+    // total is never counted as earnings, so a buy made between two farming
+    // updates can't eat into your earned-this-week — which is the whole point.
+    function spendCurrency(charId, curId) {
+      var char = findChar(charId);
+      var cur = findCur(char, curId);
+      if (!char || !cur) return;
+      var raw = window.prompt(
+        "How much " + (cur.name || 'currency') + " did " + char.name + " spend?\n" +
+        "(You hold " + commafy(cur.total) + " now — this lowers that and won't touch this week's earnings.)",
+        ''
+      );
+      if (raw === null) return;
+      var amt = toInt(raw);
+      if (amt <= 0) return; // nothing to record
+      var newTotal = Math.max(0, cur.total - amt);
+      cur.history.push({ id: newId('h'), at: new Date().toISOString(), total: newTotal });
+      recomputeCurrency(cur);
+      save(); render();
+    }
     // Fix a fat-fingered log entry: change its recorded total; everything
     // recomputes from the corrected log.
     function editHistoryEntry(charId, curId, entryId) {
@@ -1597,6 +1620,7 @@
       else if (action === 'add-cur') addCurrency(id);
       else if (action === 'del-cur') deleteCurrency(charId, curId);
       else if (action === 'set-total') updateTotal(charId, curId);
+      else if (action === 'spend-cur') spendCurrency(charId, curId);
       else if (action === 'edit-log') editHistoryEntry(charId, curId, btn.getAttribute('data-entry'));
       else if (action === 'del-log') deleteHistoryEntry(charId, curId, btn.getAttribute('data-entry'));
       else if (action === 'toggle-log') {

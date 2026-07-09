@@ -8,6 +8,9 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 (Last published July 8, 2026: "The Great Data Trust Sweep: Every Database Audited, 60+ Fixes")
 
+### Features
+- Currency Tracker now has a **− Spent** button next to Update total: type how much you spent at a vendor and it lowers your held total without touching this week's earnings. Fixes the old trap where buying something between two total-updates quietly ate into your weekly-earned number.
+
 ### Data Additions
 (nothing staged)
 
