@@ -21,5 +21,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Celestial Lightning Flash verified at max rank: its damage bonus is 12% (a long-standing stored 24% is corrected), and its Accuracy/Critical Strike are Lightning Charge stacks (3.6% × 3), which is what its full-stack value already reflected.
 - Combat-power detail pages: two Thayan Zealot weapons (Doomscript Grimoire, Profaned Pact Blade) had their Tank and Healer role bonuses shown swapped — corrected.
 
+- Tenser's Floating Disk was showing the wrong combat power — our data had it granting Rejuvenating Favor (a healing power that actually belongs to the Golden Rage Drake) instead of its real Tenser's Transformation (+15% Base Damage Boost / Movement Speed). Fixed, and the correct power now feeds the optimizer's combat-power valuation.
+
 ### Data
 - Confirmed that same-name gear which differs by class (e.g. Hammerstone Mask for Warlocks vs Hammerstone Helmet for Paladins/Fighters — same slot and item level, different secondary stats) is **intentional per-class itemization**, not duplicate data. Those variants are all kept.

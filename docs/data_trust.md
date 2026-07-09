@@ -605,6 +605,15 @@ First-ever full census of unstructured text across gear.json (~3,056 text-only b
 
 **Pre-existing concerns surfaced (not touched, tracked in data_issues):** Umbral Stride + Dark Matter families carry set payloads on 8 members each (vs the one-payload convention — engine double-count semantics need a code-auditor check; note Erik's exact calibration suggests it may be benign in practice); ids 47/48 Umbral Stride roleMap has DPS/Tank/Healer roles swapped.
 
+## Tenser's Floating Disk combat-power link — fixed 2026-07-08
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| mounts 120, 336 | Tenser's Floating Disk (+ epic) | mounts | FIXED — combatRef was 32 (Rejuvenating Favor, the Golden Rage Drake's heal); corrected to 69 (Tenser's Transformation), the mount's actual power per the in-game preview | Tensers Floating Disk_mount-preview_combat-power.png | 2026.03.17a | 2026-07-08 |
+| mount_combat_powers 69 | Tenser's Transformation | mounts | CONFIRMED + COMPLETED — +15% Base Damage Boost (existing) + added +15% Movement Speed (was missing); +2 STR/DEX/CON flavor; 60s recharge, 10s windows. Now correctly reaches the DPS self-buff valuation (Wave 14) via the fixed mount link | same | 2026.03.17a | 2026-07-08 |
+
+**Rarity-scaling evidence (2026-07-08):** the above preview showed the buff at **11.3% at IL2250** vs the **15% Mythic-anchor** stored value (~0.75×) — first concrete evidence that combat-power buff PERCENTAGES scale with mount tier. Not acted on (one point; optimizer defaults to Celestial). A two-rarity same-power pair would let us add rarity scaling to the Wave 14/15 valuation. Note: combat powers 31/33/32 (Explosive Equalizer/Tunnel Vision/Rejuvenating Favor) are legitimately common stock powers (105/73/35 mounts); Tenser's was a specific mis-assignment, not a systemic dump.
+
 ---
 
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._

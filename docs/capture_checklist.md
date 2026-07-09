@@ -77,10 +77,15 @@ stacking proc).
 ## 6d. From the Wave 8 sweep (consumables + mount powers)
 - **Effervescent Tidespan Potion** tooltip — its stored stat says "Recovery",
   a name that doesn't exist; the potion currently contributes 0.
-- **Tenser's Floating Disk** — open the mount and screenshot its combat
-  power. Our data links it to "Rejuvenating Favor" (another mount's heal),
-  but an orphaned power named for it ("Tenser's Transformation") exists;
-  one shot decides the swap.
+- ~~**Tenser's Floating Disk**~~ ✅ DONE 2026-07-08 — confirmed: its power is
+  Tenser's Transformation (+15% Base Damage Boost / +15% Movement Speed /
+  +2 STR-DEX-CON, 60s), NOT the Rejuvenating Favor heal our data linked.
+  Fixed the link on both mounts (120/336) and completed the power's data.
+  (Its equip power Rapid Accuracy is correctly linked but has empty stats —
+  a Mythic-tier tooltip would fill its Accuracy value.) Soft follow-on: other
+  UNIQUE/premium mounts could be similarly mis-linked to a common stock power
+  (Explosive Equalizer / Tunnel Vision / Rejuvenating Favor) — spot-check any
+  named mount whose combat power looks generic.
 - **Predator's Grace** (mount equip power) tooltip — its stored Combined
   Rating breaks the file-wide 0.9×IL rule; verify CR + the 3-stat kit.
 - **Unified Crescent Collar** (any rank) tooltip — its CR ladder (200-type)
@@ -99,6 +104,12 @@ stacking proc).
   (id 14, self Accuracy +9.8%) is stored at a Celestial anchor, so if the %
   DOES scale, its DPS credit runs ~31% high. Any two-rarity combat-power
   tooltip comparison settles the whole class.
+  **First data point (2026-07-08): it DOES scale.** Tenser's Transformation
+  shows +11.3% Base Damage Boost at IL2250 vs the 15% Mythic-anchor stored
+  value (~0.75×). One point isn't enough to derive the exact curve, and the
+  optimizer defaults to Celestial (best case) so the Mythic-anchor value is a
+  reasonable floor — but a clean two-rarity pair of the SAME power would let
+  us add proper rarity scaling to the combat-power valuation.
 
 ## 7. Chilling Flow — Frostbound tier (IL 4800)
 Any Frostbound weapon's set-details panel; per-stack values for this tier are
