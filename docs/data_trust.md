@@ -619,6 +619,16 @@ First-ever full census of unstructured text across gear.json (~3,056 text-only b
 
 Curve: sub-Mythic tier ×0.75 · Mythic anchor ×1.0 (all our stored values) · Celestial max ×1.31. The two 0.75× buff-% points and the 1.31× magnitude point are mutually consistent, confirming every stored value is the correct Mythic anchor — no data changes. The combat-power SCORING layer uses the Mythic anchor while the optimizer defaults to Celestial, but since the factor is uniform across all combat powers the PICK never changes (monotonic) — a scoring-vs-Celestial refinement would only affect displayed magnitude, so it's deferred as low-value. Note: combat powers 31/33/32 (Explosive Equalizer/Tunnel Vision/Rejuvenating Favor, 105/73/35 mounts) are legitimately common stock powers; Tenser's was a specific mis-assignment, not a systemic dump.
 
+## Value-drift capture batch — 2026-07-08/09
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| gear 42 | Crown of the Everscourge | gear | FIXED — Recharge Speed 5%→3% (the Wave-4 description read 5%; live tooltip + old baseline agree on 3%) | in-game (n00b, verbal) | 2026.03.17a | 2026-07-08 |
+| gear 62 | Vambraces of the Tyrant's Grip | gear | CONFIRMED — Defense 4% (drift flag vs baseline's 3% cleared; no change) | in-game (n00b, verbal) | 2026.03.17a | 2026-07-08 |
+| gear 57 | Greaves of the Unbroken Doctrine | gear | FIXED — Movement Speed / Incoming Healing SWAPPED to 40% / 13% (Wave 4's description had them reversed; the old baseline was right) | in-game (n00b, verbal) | 2026.03.17a | 2026-07-08 |
+| gear 297 | Visor of the Red Bastion | gear | FIXED — added the Thay-only Defense +2.3% (Wave 4 skipped it as unsupported; the screenshot shows it exists). Full set: in Thay Def+2.3/Aware+2.7, outside Def+1.5/Aware+2 | Visor of the Red Bastion_IL4100_set-details.png | 2026.03.17a | 2026-07-08 |
+| gear 4004 | Enchanted Bregan D'aerthe Assassin's Leathers | gear | FIXED — equip is only "Liquid Luck" (1.5% Crit Strike/teammate + 8% Crit Sev moving, both already correct); removed the phantom "Precise Teamwork" entry a dark capture had invented. (NOTE: the *Longboots* 2791/4006 are a different item, still open) | Enchanted Bregan Daerthe Assassins Leathers_IL2050_set-details.png | 2026.03.17a | 2026-07-08 |
+
 ---
 
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._

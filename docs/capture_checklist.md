@@ -38,13 +38,18 @@ right; the 8% from the restored text was wrong and is corrected. Per-item
 crit-proc confirmed too. Proof filed.
 
 ## 6. Single-tooltip quick shots (one screenshot each)
-- **Enchanted Bregan D'aerthe Assassin's Longboots** — two database rows
-  disagree (Crit Strike vs Crit Severity vs Power); tooltip settles it.
-- **Visor of the Red Bastion** — does it still have a Thay-only Defense bonus?
-- **Crown of the Everscourge** — Recharge Speed: 5% or 3%?
-- **Vambraces of the Tyrant's Grip** — Defense: 4% or 3%?
-- **Greaves of the Unbroken Doctrine** — confirm 40% Incoming Healing / 13%
-  Movement Speed (old records had it reversed).
+- **Enchanted Bregan D'aerthe Assassin's Longboots** — STILL OPEN (the
+  *Leathers*, id 4004, was resolved 2026-07-08 — Liquid Luck confirmed, phantom
+  "Precise Teamwork" entry removed — but the Longboots pair 2791/4006 is a
+  different item with a positional close/far bonus and still needs its shot).
+- ~~**Visor of the Red Bastion**~~ ✅ DONE 2026-07-08 — yes, it has the
+  Thay-Defense bonus (+2.3% in Thay); added (Wave 4 had skipped it).
+- ~~**Crown of the Everscourge**~~ ✅ DONE 2026-07-08 — Recharge Speed 3%
+  (corrected from a description-sourced 5%).
+- ~~**Vambraces of the Tyrant's Grip**~~ ✅ DONE 2026-07-08 — Defense 4%
+  confirmed (drift flag cleared).
+- ~~**Greaves of the Unbroken Doctrine**~~ ✅ DONE 2026-07-08 — SWAPPED to
+  40% Movement Speed / 13% Incoming Healing (we'd had them reversed).
 - **Demon Skull** (artifact) — file the proof image for its stats (two old
   records disagreed 5% vs 3% on its debuff).
 - **Astral Raider's Jackboots** — Scaled Disdain text (cosmetic tidy-up).

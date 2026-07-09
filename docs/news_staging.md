@@ -23,5 +23,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 - Tenser's Floating Disk was showing the wrong combat power — our data had it granting Rejuvenating Favor (a healing power that actually belongs to the Golden Rage Drake) instead of its real Tenser's Transformation (+15% Base Damage Boost / Movement Speed). Fixed, and the correct power now feeds the optimizer's combat-power valuation.
 
+- Five item corrections from in-game tooltips: Crown of the Everscourge's Recharge Speed is 3% (was 5%); Greaves of the Unbroken Doctrine's proc is 40% Movement Speed / 13% Incoming Healing (we'd had them reversed); Visor of the Red Bastion's Thay-only +2.3% Defense was missing and is now added; Vambraces of the Tyrant's Grip's 4% Defense is confirmed; and the Bregan D'aerthe Assassin's Leathers had a phantom bonus (from an old dark screenshot) removed — it just has its Liquid Luck equip.
+
 ### Data
 - Confirmed that same-name gear which differs by class (e.g. Hammerstone Mask for Warlocks vs Hammerstone Helmet for Paladins/Fighters — same slot and item level, different secondary stats) is **intentional per-class itemization**, not duplicate data. Those variants are all kept.
