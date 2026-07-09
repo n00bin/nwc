@@ -29,5 +29,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 - Mask of the Bloodletter: its "Tactical Daily" equip name had drifted to "Tactical Defense" in our data — corrected. Its 20%-more-damage proc (next Encounter after a Daily) was actually scoring correctly all along; only the label was wrong.
 
+- Visage of the Eternal Herald: resolved a long-standing question about its equip bonus — it's a resource-regeneration proc (5% faster class-resource regen per stack, up to 10) plus +5% Critical Strike, not the resource-max effect our older records guessed. Structured, and a Critical Severity value was corrected (4,305 → 4,505).
+
 ### Data
 - Confirmed that same-name gear which differs by class (e.g. Hammerstone Mask for Warlocks vs Hammerstone Helmet for Paladins/Fighters — same slot and item level, different secondary stats) is **intentional per-class itemization**, not duplicate data. Those variants are all kept.

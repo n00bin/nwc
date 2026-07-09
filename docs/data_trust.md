@@ -640,6 +640,7 @@ Found already-filed screenshots for open items during an archive sweep (no new c
 
 Note: the Molten Girdle's stat shows as "Deflection" on the tooltip but is stored "Deflect" — the project's canonical key (matches the verified Frostforged/True Ice Girdles); value identical, no change.
 
+| gear 43 | Visage of the Eternal Herald | gear | FIXED 2026-07-09 — the Wave-4 MAX-vs-REGEN conflict settled: it's **REGEN** (Class Resource Regen 5%/stack, max 10, 15s, on damage/heal >10% MaxHP), now structured like the Lesser sibling id 77; + static +5% Critical Strike. Also corrected Critical Severity 4,305→4,505 (transcription error) | Visage of the Eternal Herald_IL4550_set-details.png | 2026.03.17a | 2026-07-09 |
 | gear 78 | Mask of the Bloodletter | gear | CONFIRMED + FIXED 2026-07-09 — stats (Crit Strike 4010 / Defense 1914 / CR 3645) match exactly; equip name corrected "Tactical Defense"→"Tactical Daily (Lesser)". The 20% Daily→Encounter sequence proc IS present and correctly scored: the engine's `computeSequenceProcBoost` reads sequence procs from the equipBonus DESCRIPTION regex (verified match), so no structured field is needed — the Wave-4 "proc gone" flag was a false alarm (it looked for a structured EncounterDmgBonus field the engine doesn't use) | Mask of the Bloodletter_IL4050_set-details.png | 2026.03.17a | 2026-07-09 |
 
 ---

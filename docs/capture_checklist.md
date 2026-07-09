@@ -53,8 +53,9 @@ crit-proc confirmed too. Proof filed.
 - **Demon Skull** (artifact) — file the proof image for its stats (two old
   records disagreed 5% vs 3% on its debuff).
 - **Astral Raider's Jackboots** — Scaled Disdain text (cosmetic tidy-up).
-- **Visage of the Eternal Herald** — old records and current text disagree on
-  whether its bonus is resource MAX or resource REGEN.
+- ~~**Visage of the Eternal Herald**~~ ✅ DONE 2026-07-09 — it's REGEN
+  (Class Resource Regen 5%/stack, max 10) + a static +5% Crit Strike;
+  structured, and a Crit Severity transcription error (4305→4505) fixed too.
 - ~~**Mask of the Bloodletter**~~ ✅ DONE 2026-07-09 — the 20% Daily→Encounter
   proc DOES exist and was scoring all along (engine reads it from the
   description); only fix was the drifted name ("Tactical Defense"→"Tactical
