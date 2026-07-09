@@ -33,28 +33,33 @@ exclusively and is unchanged. No rarity/bolster scaling applied to the 20%
 a two-rarity capture (see capture_checklist.md).
 
 **The generic self-scope stat-buff sibling was PARKED under the 2026-06-19
-decision — DPS half now RESOLVED 2026-07-08 (Wave 14).** id 21 "Actions Speak
-Louder" carries THREE self-scope `stat`-shaped equipBonuses (Incoming Damage
--15%, Base Damage Boost +15%, Outgoing Healing +15%, 10s window) — all
-already correctly-named stats, so there is NO data bug here. This is a
-multi-stat *pure-buff* combat power: precisely the "Mighty Dragon's Roar"
-class that "Mount combat-power valuation — engine ignores SELF stat-buffs"
-(2026-06-19, below; superseded 2026-07-08) deliberately deferred. That
-decision's harness explicitly proved a naive "just push the +15% line into
-the panel" fix is INCOMPLETE — the proper fix was the cap-aware /
-uptime-aware self-buff valuation pass n00b chose to revisit "when we invest,"
-NOT a per-item wiring job. So Wave 12 fixed the heal-magnitude half (a genuine
-unrecognized-stat data bug); Wave 14 then shipped the cap-aware valuation
-pass for DPS, so Actions Speak Louder's own Base Damage Boost +15% is now
-credited (same mechanism as Wicked Lich, uncapped, full amount × uptime).
-Its Incoming Damage -15% and Outgoing Healing +15% lines are Tank-only /
-Heal-only respectively — DPS-scope Wave 14 correctly does not consume them
-(they're not bugs; they simply have no bucket in the DPS formula). Tank/Heal
-valuation of combat-power self-buffs (including these two lines) remains
-parked, now as its own separate future item rather than bundled with the DPS
-gap. Distinction retained: Rejuvenating Favor was a mis-named heal → fixed in
-Wave 12; Actions Speak Louder's self stat-buffs → DPS portion fixed in Wave
-14, Tank/Heal portion still parked.
+decision — DPS half RESOLVED 2026-07-08 (Wave 14), Tank half ALSO RESOLVED
+2026-07-08 (Wave 15).** id 21 "Actions Speak Louder" carries THREE self-scope
+`stat`-shaped equipBonuses (Incoming Damage -15%, Base Damage Boost +15%,
+Outgoing Healing +15%, 10s window) — all already correctly-named stats, so
+there is NO data bug here. This is a multi-stat *pure-buff* combat power:
+precisely the "Mighty Dragon's Roar" class that "Mount combat-power
+valuation — engine ignores SELF stat-buffs" (2026-06-19, below; superseded
+2026-07-08) deliberately deferred. That decision's harness explicitly proved
+a naive "just push the +15% line into the panel" fix is INCOMPLETE — the
+proper fix was the cap-aware / uptime-aware self-buff valuation pass n00b
+chose to revisit "when we invest," NOT a per-item wiring job. So Wave 12
+fixed the heal-magnitude half (a genuine unrecognized-stat data bug); Wave 14
+then shipped the cap-aware valuation pass for DPS, so Actions Speak Louder's
+own Base Damage Boost +15% is now credited (same mechanism as Wicked Lich,
+uncapped, full amount × uptime); Wave 15 shipped the same pass for Tank, so
+its Incoming Damage -15% is now ALSO credited (uncapped — folds into
+`computeTankExpectedTaken`'s incoming-damage-reduction factor alongside
+gear's Incoming Damage bucket, same 10s/recharge uptime convention). Only
+its Outgoing Healing +15% line remains uncredited — that's Heal-scope, and
+Heal valuation of combat-power self-buffs is intentionally NOT shipping: the
+2026-07-05 support-meta rule (`optimizer-local.js`) deliberately excludes
+selfish/self-only powers from healer optimization (a healer power's value
+there is party throughput, not your own Outgoing Healing stat) — reopening
+that exclusion is a separate n00b decision, not a bug. Distinction retained:
+Rejuvenating Favor was a mis-named heal → fixed in Wave 12; Actions Speak
+Louder's self stat-buffs → DPS portion fixed in Wave 14, Tank portion fixed
+in Wave 15, Heal portion intentionally parked (support-meta rule).
 
 ## exclusiveGroup "None" buffs — RESOLVED 2026-07-08 (picker rule generalized)
 The Always-on toggle list now includes every None-group buff with real
@@ -253,7 +258,7 @@ Four audit "verify in-game" gear items were checked against archived captures.
   under 50 — so the high value is real and correctly gated, not always-on.
 
 
-## Mount combat-power valuation — engine ignores SELF stat-buffs — SUPERSEDED/RESOLVED 2026-07-08 (Wave 14, DPS-only) — originally: pick is defensible, left as-is + player workaround (2026-06-19)
+## Mount combat-power valuation — engine ignores SELF stat-buffs — SUPERSEDED/RESOLVED 2026-07-08 (Wave 14 DPS + Wave 15 Tank) — originally: pick is defensible, left as-is + player workaround (2026-06-19)
 The builder's DPS sim (`toon-forge.html` ~10290-10321, the combat-power block of
 `computeDpsExpectedDamage`) credits a mount combat power via only TWO things:
 (1) its **enemy** "Dmg Taken / Dmg Debuff" (multiplies your damage), and
@@ -370,6 +375,78 @@ anchor-scaling was explicit and locked for this wave. Tank/Heal valuation of
 combat-power self-buffs is unchanged and remains a separate future item, as
 is the Healer support-meta rule (`optimizer-local.js`), which this wave did
 not touch.
+
+**Tank half ALSO RESOLVED 2026-07-08 (Wave 15) — same cap-aware pattern,
+Tank scope, reusing Wave 14's `getPartySummonedCombatMods()` output rather
+than re-scanning.**
+1. `computeTankExpectedTaken()` (`toon-forge.html` ~17249-17324) applies the
+   same CLAMP-THEN-SCALE rule to the five capped defensive stats this
+   formula actually consumes (Defense / Awareness / Critical Avoidance /
+   Deflect / Deflect Severity): `min(amount, max(0, cap - currentFinalPct))
+   * uptime`, credited into the same local the base stat feeds, before the
+   non-linear crit/deflect math reads it. Incoming Damage (uncapped, stored
+   NEGATIVE in the data as a reduction) gets the full `amount × uptime`, no
+   clamp — folded into the existing `incFactor` alongside gear's Incoming
+   Damage bucket. Stats with no tank-taken bucket (Power, Critical Strike,
+   Base Damage Boost, Forte, Outgoing Healing, Action Point Gain, Combat
+   Advantage, Critical Severity, Accuracy) are silently no-ops by design.
+2. `computeTankSurvivalScore()` (~17338-17368) separately credits Max HP
+   Percent (uncapped — e.g. mount combat power 11, Neverwinter Armament,
+   +6%) the same way: `maxHP *= 1 + amount × uptime / 100`. "Max HP Percent"
+   canonicalizes to "Maximum Hit Points" in `STAT_NAME_ALIASES` — that's the
+   key `selfBuffAmounts` actually carries it under.
+
+**Verified before shipping (regression gates, gitignored scripts under
+`website/scripts/_tank_selfbuff_gate_*.js`):**
+- **Panel byte-identical**: `getEngineResult().stats` + `.damageBoosts` are
+  byte-for-byte identical on n00b's real saved TANK build whether
+  `state.activeCombatPower` is null, 25 (Skyhold Alligator's Bellow), or 21
+  (Actions Speak Louder) — confirming the fix lives entirely in the two
+  scorers' local variables. The Tank survival score DOES move (+2.56% for
+  both powers, identically — both credit the same -15% Incoming Damage at
+  the same 60s-recharge uptime; Actions Speak Louder's extra Base Damage
+  Boost/Outgoing Healing self-buffs correctly don't touch the Tank number).
+- **No-op proof**: `computeTankExpectedTaken(100)` and
+  `computeTankSurvivalScore(100)` with `activeCombatPower=null` came back
+  byte-for-byte identical BEFORE (scoped `git stash` of just
+  `toon-forge.html`) and AFTER this change — existing tank builds' scores
+  don't move.
+- **Cap-awareness (hard assertions, exit-1-on-fail)**: Stabby Stabs (id 88,
+  +7.8% Defense self, 10/60 uptime) credits exactly **+1.300%** Defense on
+  this build's real under-cap Defense (58.589/120) but exactly **+0.000%**
+  when Defense is forced to its live cap of 120 (headroom clamp verified
+  numerically exact, back-solved from the real function's own `.expected`
+  output — its `defenseDiv` is a uniform divisor across all 4 crit/deflect
+  branches, so `expected = K / defenseDiv` exactly and the credited %
+  recovers cleanly with no need for the scorer to expose internal locals).
+  A second, independently-built at-cap real TANK character was NOT
+  constructed — this fixture's Defense would need an unrealistic
+  ~62-percentage-point rating swing to reach cap (checked: only one
+  base-tier Defense kit exists in `kits.json`, +880 rating, negligible at
+  this build's TIL of 134,126). Instead the at-cap side used the SAME real
+  character and the SAME real function, with `getEngineResult` temporarily
+  monkey-patched to report Defense at its live cap (every other stat/TIL/
+  damageBoosts left untouched) — the same isolation technique Wave 14's own
+  `_selfbuff_gate_a2_isolate.js` used. Flagged for the Critic as this wave's
+  one judgment call.
+- Skyhold Alligator's Bellow (id 25, -15% Incoming Damage self) lowers
+  expected-taken (28,786.81 → 28,067.14) and raises the survival score
+  (65.052 → 66.720) on the real build.
+- Actions Speak Louder (id 21) now credits its Incoming Damage line for
+  Tank: its `.expected` comes out byte-identical to Bellow's (both -15% at
+  60s recharge) — proving its extra Base Damage Boost/Outgoing Healing
+  self-buffs correctly do NOT leak into the Tank number.
+
+No `data/*.json` file changed — engine-only consumption gap, same as Wave 14.
+
+**Heal half remains intentionally OUT of scope.** The 2026-07-05 support-meta
+rule (`optimizer-local.js`) deliberately excludes selfish/self-only powers
+from healer optimization — a healer combat power should be valued on party
+throughput, not on your own Outgoing Healing stat, which is what a
+self-scope buff like Actions Speak Louder's +15% Outgoing Healing actually
+is. Reopening that exclusion (so Heal-role sims would value a power's own
+Outgoing Healing self-buff) is a separate decision for n00b to make — not
+folded into this wave.
 
 ## Mount collection bolster not wired to mount-power scaling — DOCUMENTED, left as-is by n00b (2026-06-19)
 Two independent researchers (general web + NW-creators) confirmed mount collection

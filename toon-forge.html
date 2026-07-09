@@ -17253,8 +17253,53 @@
       const roleMult = (typeof ROLE_MULT !== "undefined" && ROLE_MULT.tank) ? ROLE_MULT.tank : 1.0;
       const baseVal = (mag / 100) * (TIL / 10) * roleMult;
       const stat = n => ((r.stats[n] && r.stats[n].finalPct) || 0) / 100;
-      const awareness = stat("Awareness"), critAvoid = stat("Critical Avoidance"),
-            defense = stat("Defense"), deflect = stat("Deflect"), deflectSev = stat("Deflect Severity");
+      let awareness = stat("Awareness"), critAvoid = stat("Critical Avoidance"),
+          defense = stat("Defense"), deflect = stat("Deflect"), deflectSev = stat("Deflect Severity");
+      // Cap-aware credit for the active mount combat power's SELF stat-buffs,
+      // TANK-relevant subset (Wave 15, 2026-07-08 — mirrors
+      // computeDpsExpectedDamage's Wave 14 clamp-then-scale pattern, reusing
+      // getPartySummonedCombatMods()'s selfBuffAmounts/selfBuffUptime rather
+      // than re-scanning). CLAMP-THEN-SCALE: capped defensive stats (Defense/
+      // Awareness/Critical Avoidance/Deflect/Deflect Severity) can only
+      // credit up to the LIVE engine's remaining headroom to THEIR OWN cap
+      // (so a power can't push a stat past a cap your gear already
+      // reached), then whatever survives the clamp is scaled by the
+      // power's on-use uptime. Incoming Damage is uncapped and stored
+      // NEGATIVE in the data (a damage-taken reduction) — no headroom
+      // clamp applies (nothing to clamp against), just uptime-scale and
+      // fold into incFactor below. Credited BEFORE the mitigation math
+      // reads these locals, so cap-awareness and the non-linear math are
+      // correct together (same ordering as the DPS version). Stats with no
+      // tank-taken bucket (Power, Critical Strike, Base Damage Boost,
+      // Forte, Outgoing Healing, Action Point Gain, Combat Advantage,
+      // Critical Severity, Accuracy, Max HP — that one's credited in
+      // computeTankSurvivalScore, not here) are silently skipped: this
+      // formula is Tank-only, same convention as DPS's own skip list.
+      const pmods = getPartySummonedCombatMods();
+      const TANK_BUFF_STAT_LOCAL = { "Defense": "defense", "Awareness": "awareness",
+        "Critical Avoidance": "critAvoid", "Deflect": "deflect", "Deflect Severity": "deflectSev" };
+      const _creditTankLocal = {
+        defense: v => { defense += v; }, awareness: v => { awareness += v; },
+        critAvoid: v => { critAvoid += v; }, deflect: v => { deflect += v; }, deflectSev: v => { deflectSev += v; }
+      };
+      const _upSelfT = (pmods.selfBuffUptime != null) ? pmods.selfBuffUptime : 1;
+      let _incDmgSelfCredit = 0;   // uncapped — amount already negative in the data
+      for (const _sStat in (pmods.selfBuffAmounts || {})) {
+        const _amt = pmods.selfBuffAmounts[_sStat];
+        if (!_amt) continue;
+        if (_sStat === "Incoming Damage") {
+          _incDmgSelfCredit += _amt * _upSelfT;
+          continue;
+        }
+        const _localKey = TANK_BUFF_STAT_LOCAL[_sStat];
+        if (!_localKey) continue;   // no tank-taken bucket for this stat — no-op by design
+        const _sInfo = r.stats[_sStat];
+        const _cur = (_sInfo && _sInfo.finalPct) || 0;
+        const _cap = _sInfo && _sInfo.cap;
+        const _headroom = (_cap == null) ? _amt : Math.max(0, _cap - _cur);
+        const _credited = Math.min(_amt, _headroom) * _upSelfT;
+        if (_credited > 0) _creditTankLocal[_localKey](_credited / 100);
+      }
       // Boss universal stats: 90% Power, 90% CA (always on tank), 90% CritSev,
       // 50% crit chance, 0% Accuracy.
       const ENEMY_POWER = 0.90, ENEMY_CA = 0.90, ENEMY_CRIT_SEV = 0.90, ENEMY_CRIT = 0.50;
@@ -17263,10 +17308,12 @@
       const defenseDiv = 1 + defense;
       const deflectDiv = 1 + deflectSev;
       // Incoming Damage reduction (TANK-only): Σ -% Incoming Damage from gear,
-      // accumulated in the damageBoosts.incomingDamage bucket (stored negative).
-      // Multiplies damage taken; clamped to a 75% reduction floor for safety.
+      // accumulated in the damageBoosts.incomingDamage bucket (stored negative),
+      // PLUS the active combat power's own self Incoming Damage credit above
+      // (Wave 15, _incDmgSelfCredit). Multiplies damage taken; clamped to a
+      // 75% reduction floor for safety.
       const incDmg = (r.damageBoosts && r.damageBoosts.incomingDamage) || 0;
-      const incFactor = Math.max(0.25, 1 + incDmg / 100);
+      const incFactor = Math.max(0.25, 1 + (incDmg + _incDmgSelfCredit) / 100);
       const taken = (crit, defl) => {
         let d = incoming;
         if (crit) d *= critMult;
@@ -17297,7 +17344,18 @@
       const m = mag || 100;
       const t = computeTankExpectedTaken(m);
       const r = getEngineResult();
-      const maxHP = (r.stats["Maximum Hit Points"] && r.stats["Maximum Hit Points"].flat) || 0;
+      let maxHP = (r.stats["Maximum Hit Points"] && r.stats["Maximum Hit Points"].flat) || 0;
+      // Active mount combat power's self Max HP% credit (Wave 15, 2026-07-08).
+      // Uncapped stat — no headroom clamp, just uptime-scale. "Max HP Percent"
+      // canonicalizes to "Maximum Hit Points" in STAT_NAME_ALIASES
+      // (toon-forge-stats.js) — that's the key getPartySummonedCombatMods()
+      // actually stores in selfBuffAmounts (verified against real data: mount
+      // combat power 11, Neverwinter Armament, "Max HP Percent": 6); the
+      // literal "Max HP Percent" fallback below is defensive/inert. Guarded
+      // so a zero/absent buff or zero Max HP is a byte-identical no-op.
+      const pm = getPartySummonedCombatMods();
+      const hpPct = (pm.selfBuffAmounts || {})["Maximum Hit Points"] || (pm.selfBuffAmounts || {})["Max HP Percent"] || 0;
+      if (hpPct && maxHP > 0) maxHP *= (1 + hpPct * (pm.selfBuffUptime != null ? pm.selfBuffUptime : 1) / 100);
       // Sustain: self-heal procs (heal-proc layer, self-scope) offset incoming
       // damage. Convert HP/sec → HP/hit at the boss hit rate, subtract from the
       // per-hit damage taken; floored at 25% so sustain can't trivialize survival.
