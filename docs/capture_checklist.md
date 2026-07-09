@@ -55,8 +55,10 @@ crit-proc confirmed too. Proof filed.
 - **Astral Raider's Jackboots** — Scaled Disdain text (cosmetic tidy-up).
 - **Visage of the Eternal Herald** — old records and current text disagree on
   whether its bonus is resource MAX or resource REGEN.
-- **Mask of the Bloodletter** — an old 20% Encounter-damage proc vanished from
-  its records entirely; tooltip settles whether it still exists.
+- ~~**Mask of the Bloodletter**~~ ✅ DONE 2026-07-09 — the 20% Daily→Encounter
+  proc DOES exist and was scoring all along (engine reads it from the
+  description); only fix was the drifted name ("Tactical Defense"→"Tactical
+  Daily"). Wave 4's "proc gone" flag was a false alarm.
 - **Iridescent Diamond Pendant** — 8th "total-loss" item: no bonus data
   survives anywhere; only a tooltip can restore it.
 - Value-drift confirmations (one tooltip each, low priority): Cuirass of the

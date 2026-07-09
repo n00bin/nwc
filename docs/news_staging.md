@@ -27,5 +27,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 - Archive cleanup found screenshots we already had but hadn't processed: all 9 Molten companion-gear pieces verified exact against the database (no changes needed), and Demon Skull's debuff corrected from 5% to 3% (its "three imps" leave enemies taking 3% more damage and −3% Accuracy, not 5%).
 
+- Mask of the Bloodletter: its "Tactical Daily" equip name had drifted to "Tactical Defense" in our data — corrected. Its 20%-more-damage proc (next Encounter after a Daily) was actually scoring correctly all along; only the label was wrong.
+
 ### Data
 - Confirmed that same-name gear which differs by class (e.g. Hammerstone Mask for Warlocks vs Hammerstone Helmet for Paladins/Fighters — same slot and item level, different secondary stats) is **intentional per-class itemization**, not duplicate data. Those variants are all kept.
