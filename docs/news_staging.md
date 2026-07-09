@@ -33,5 +33,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 - Companion gear fully verified: all 9 Thayan pieces (IL 2600) checked against their in-game tooltips — every value exact, no corrections needed. With Molten, Frostforged, and True Ice already done, all four endgame companion-gear tiers are now confirmed accurate.
 
+- Eight campaign accessories (the Magma / Wrathful / Mythallar / Diamond sets) verified and corrected: they're pure stat-sticks whose only bonus is a shared 3-piece set effect. Fixed two item-level errors (the Wrathful pieces were stored at 1,400 but are really 3,400; the Diamond pieces at 350 but really 550) and added the missing set-bonus text for the Mythallar and Diamond sets.
+
 ### Data
 - Confirmed that same-name gear which differs by class (e.g. Hammerstone Mask for Warlocks vs Hammerstone Helmet for Paladins/Fighters — same slot and item level, different secondary stats) is **intentional per-class itemization**, not duplicate data. Those variants are all kept.

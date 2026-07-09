@@ -60,8 +60,14 @@ crit-proc confirmed too. Proof filed.
   proc DOES exist and was scoring all along (engine reads it from the
   description); only fix was the drifted name ("Tactical Defense"→"Tactical
   Daily"). Wave 4's "proc gone" flag was a false alarm.
-- **Iridescent Diamond Pendant** — 8th "total-loss" item: no bonus data
-  survives anywhere; only a tooltip can restore it.
+- ~~**Total-loss accessories** (Iridescent Diamond Pendant + 7 others)~~ ✅
+  MOSTLY DONE 2026-07-09 — all 8 captured; they're pure stat-sticks (no lost
+  equip bonus) in 4 three-piece sets. Fixed the Wrathful pair's IL (1400→3400)
+  and Diamond pair's IL (350→550); added the Mythallar "Raw Pressure" and
+  Diamond "Dashing Decoy" set-bonus text. ONLY remaining: **Magmatic
+  Efficiency's set bonus** — one expanded Details panel (Choker of Searing
+  Magma or Girdle of Coagulated Magma, scrolled to the "3 of Set" line); our
+  stored "+2% Power/Forte/Defense" is unverified.
 - Value-drift confirmations (one tooltip each, low priority): Cuirass of the
   Crimson Reckoning (3.3%?), Ebon Crusader's Aegis set panel (Forte 8%?),
   Eilistraee's rings (5,000 Forte?), Visage of the Undying Faith (stacking
