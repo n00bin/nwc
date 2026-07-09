@@ -104,12 +104,18 @@ stacking proc).
   (id 14, self Accuracy +9.8%) is stored at a Celestial anchor, so if the %
   DOES scale, its DPS credit runs ~31% high. Any two-rarity combat-power
   tooltip comparison settles the whole class.
-  **First data point (2026-07-08): it DOES scale.** Tenser's Transformation
-  shows +11.3% Base Damage Boost at IL2250 vs the 15% Mythic-anchor stored
-  value (~0.75×). One point isn't enough to derive the exact curve, and the
-  optimizer defaults to Celestial (best case) so the Mythic-anchor value is a
-  reasonable floor — but a clean two-rarity pair of the SAME power would let
-  us add proper rarity scaling to the combat-power valuation.
+  **CHARACTERIZED 2026-07-08 (three consistent points) — it scales, and our
+  Mythic anchors are correct.** Tenser's Transformation 11.3%/15% and
+  Rejuvenating Favor 15%/20% both = 0.750× at IL2250; Infernal Pounce
+  magnitude 3,000→3,938 at max = 1.3127× (the known Celestial bolster ratio).
+  So the curve is: sub-Mythic tier ×0.75, Mythic anchor ×1.0 (our stored
+  values), Celestial max ×1.31. **Refinement is LOW VALUE and deferred:** the
+  combat-power SCORING layer values at the Mythic anchor while the optimizer
+  defaults to Celestial — but the scale factor is uniform across all combat
+  powers, so the optimizer's PICK never changes (monotonic transform); it
+  would only make the displayed contribution match the card. Not worth a
+  scoring-convention change touching all combat-power credit. Question RESOLVED
+  — our data is right; no engine change warranted.
 
 ## 7. Chilling Flow — Frostbound tier (IL 4800)
 Any Frostbound weapon's set-details panel; per-stack values for this tier are

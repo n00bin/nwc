@@ -612,7 +612,12 @@ First-ever full census of unstructured text across gear.json (~3,056 text-only b
 | mounts 120, 336 | Tenser's Floating Disk (+ epic) | mounts | FIXED — combatRef was 32 (Rejuvenating Favor, the Golden Rage Drake's heal); corrected to 69 (Tenser's Transformation), the mount's actual power per the in-game preview | Tensers Floating Disk_mount-preview_combat-power.png | 2026.03.17a | 2026-07-08 |
 | mount_combat_powers 69 | Tenser's Transformation | mounts | CONFIRMED + COMPLETED — +15% Base Damage Boost (existing) + added +15% Movement Speed (was missing); +2 STR/DEX/CON flavor; 60s recharge, 10s windows. Now correctly reaches the DPS self-buff valuation (Wave 14) via the fixed mount link | same | 2026.03.17a | 2026-07-08 |
 
-**Rarity-scaling evidence (2026-07-08):** the above preview showed the buff at **11.3% at IL2250** vs the **15% Mythic-anchor** stored value (~0.75×) — first concrete evidence that combat-power buff PERCENTAGES scale with mount tier. Not acted on (one point; optimizer defaults to Celestial). A two-rarity same-power pair would let us add rarity scaling to the Wave 14/15 valuation. Note: combat powers 31/33/32 (Explosive Equalizer/Tunnel Vision/Rejuvenating Favor) are legitimately common stock powers (105/73/35 mounts); Tenser's was a specific mis-assignment, not a systemic dump.
+**Mount combat-power rarity scaling — CHARACTERIZED 2026-07-08 (three consistent points), our Mythic anchors CONFIRMED correct:**
+- Tenser's Transformation Base Damage Boost: 15% stored → 11.3% at IL2250 = **0.750×**
+- Rejuvenating Favor heal: 20% stored → 15% at IL2250 = **0.750×** (`Rejuvenating Favor_IL2250 + Infernal Pounce_max_combat-power-picker.png`)
+- Infernal Pounce magnitude: 3,000 stored → **3,938 at max** = **1.3127×** (the known Celestial bolster cap ~1.3124)
+
+Curve: sub-Mythic tier ×0.75 · Mythic anchor ×1.0 (all our stored values) · Celestial max ×1.31. The two 0.75× buff-% points and the 1.31× magnitude point are mutually consistent, confirming every stored value is the correct Mythic anchor — no data changes. The combat-power SCORING layer uses the Mythic anchor while the optimizer defaults to Celestial, but since the factor is uniform across all combat powers the PICK never changes (monotonic) — a scoring-vs-Celestial refinement would only affect displayed magnitude, so it's deferred as low-value. Note: combat powers 31/33/32 (Explosive Equalizer/Tunnel Vision/Rejuvenating Favor, 105/73/35 mounts) are legitimately common stock powers; Tenser's was a specific mis-assignment, not a systemic dump.
 
 ---
 
