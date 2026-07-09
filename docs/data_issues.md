@@ -32,12 +32,21 @@ exclusively and is unchanged. No rarity/bolster scaling applied to the 20%
 (no evidence found it scales in-game); rarity-invariance is assumed pending
 a two-rarity capture (see capture_checklist.md).
 
-**Remaining open sibling (unmodeled, smaller, separate):** id 21 "Actions
-Speak Louder" carries THREE self-scope `stat`-shaped equipBonuses (Incoming
-Damage -15%, Base Damage Boost +15%, Outgoing Healing +15%, 10s window) that
-are still not ingested anywhere — the generic self-scope `stat` path (as
-opposed to the procHeal shape) remains unbuilt. Lower priority; needs its
-own gap/design pass rather than folding into Wave 12's heal-only fix.
+**The generic self-scope stat-buff sibling is PARKED under the 2026-06-19
+decision, not a loose end.** id 21 "Actions Speak Louder" carries THREE
+self-scope `stat`-shaped equipBonuses (Incoming Damage -15%, Base Damage
+Boost +15%, Outgoing Healing +15%, 10s window) — all already correctly-named
+stats, so there is NO data bug here. This is a multi-stat *pure-buff* combat
+power: precisely the "Mighty Dragon's Roar" class that
+"Mount combat-power valuation — engine ignores SELF stat-buffs" (2026-06-19,
+below) deliberately deferred. That decision's harness explicitly proved a
+naive "just push the +15% line into the panel" fix is INCOMPLETE — the proper
+fix is the cap-aware / uptime-aware self-buff valuation pass n00b chose to
+revisit "when we invest," NOT a per-item wiring job. So Wave 12 fixed only the
+heal-magnitude half (a genuine unrecognized-stat data bug); the stat-buff half
+stays parked with the rest of its class until that valuation pass is chosen.
+Distinction: Rejuvenating Favor was a mis-named heal → fixable now; Actions
+Speak Louder is well-formed self stat-buffs → covered by the standing deferral.
 
 ## exclusiveGroup "None" buffs — RESOLVED 2026-07-08 (picker rule generalized)
 The Always-on toggle list now includes every None-group buff with real
