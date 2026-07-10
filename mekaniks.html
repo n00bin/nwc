@@ -859,9 +859,16 @@
       vg.innerHTML = '<iframe src="https://www.youtube.com/embed/' + encodeURIComponent(id) + '?autoplay=1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
     });
 
-    // Dungeon guide list. Each entry: { name, youtubeId, notes? }
+    // Dungeon guide list. Each entry: { name, youtubeId, notes?, creator? }
     // Replace PLACEHOLDER entries with real dungeons + YouTube IDs.
+    // creator defaults to "Aragon" (whose channel all current guides are from);
+    // set it explicitly for videos from a different creator.
     var dungeons = [
+      {
+        name: "Jotunskar Dungeon",
+        youtubeId: "https://youtu.be/06anpiVT0NA",
+        notes: "Module 33 dungeon (Biting Cold expansion). Mechanics guide for how to beat it."
+      },
       {
         name: "Soul Harvest Trial",
         youtubeId: "https://youtu.be/FtdEMG4Vm3g",
@@ -954,7 +961,7 @@
         html += '<div class="video-guide-play">&#9654;</div>';
         html += '<div class="video-guide-overlay"><div>';
         html += '<div class="video-guide-title">Watch: ' + escapeHtml(d.name) + '</div>';
-        html += '<div class="video-guide-meta">YouTube &middot; The N00bin Network</div>';
+        html += '<div class="video-guide-meta">YouTube &middot; ' + escapeHtml(d.creator || "Aragon") + '</div>';
         html += '</div></div>';
         html += '</div>';
         if (d.notes) html += '<div class="stat-desc">' + escapeHtml(d.notes) + '</div>';
