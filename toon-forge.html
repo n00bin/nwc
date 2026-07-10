@@ -4765,7 +4765,9 @@
         ? (state.activeCombatPowerRarity || "Mythic")
         : (state.activeEquipPowerRarity || "Mythic");
       if (field === "item_level") {
-        const il = (typeof mountPowerILFor === "function") ? Math.round(mountPowerILFor(item, rarity)) : 0;
+        // Display parity with the in-game per-power tooltip (round-half-down: 3937,
+        // not 3938 from 3937.5). TIL summation elsewhere uses the unrounded value.
+        const il = (typeof mountPowerDisplayIL === "function") ? mountPowerDisplayIL(item, rarity) : 0;
         return il || value;
       }
       if (field === "magnitude" || field === "combinedRating") {
@@ -6412,7 +6414,9 @@
       }
       const cdr = p.rechargeTimeSeconds ? `${p.rechargeTimeSeconds}s recharge` : "";
       const mag = p.magnitude ? `magnitude ${Math.round(_scaleCombat(p.magnitude))}` : "";
-      const meta = [`IL ${Math.round(mountPowerILFor(p, state.activeCombatPowerRarity)) || p.item_level || "?"}`, mag, cdr].filter(Boolean).join(" · ");
+      // Display IL matches the in-game per-power tooltip (round-half-down); the
+      // TIL sum keeps the unrounded value. See mountPowerDisplayIL for rationale.
+      const meta = [`IL ${mountPowerDisplayIL(p, state.activeCombatPowerRarity) || p.item_level || "?"}`, mag, cdr].filter(Boolean).join(" · ");
       // Combat powers' equipBonuses are buff/debuff effects rather than
       // gear-style structured stats. Scaled for tooltip display (Decision 9).
       const bonusBlocks = (p.equipBonuses || []).map(b => {
@@ -6461,7 +6465,9 @@
       const _eqAnchor = mountPowerAnchorFactor(p);
       const _eqFactor = mountRarityFactor(state.activeEquipPowerRarity || "Mythic") / _eqAnchor;
       const _eqScale = (v) => Math.min((v || 0) * _eqFactor, (v || 0) * (1.3124444 / _eqAnchor));
-      const dispIL = Math.round(mountPowerILFor(p, state.activeEquipPowerRarity));
+      // Display IL matches the in-game per-power tooltip (round-half-down, so
+      // 3937.5 shows as 3937 not 3938). TIL summation stays on the unrounded value.
+      const dispIL = mountPowerDisplayIL(p, state.activeEquipPowerRarity);
       const dispCR = Math.round(_eqScale(p.combinedRating));
       const il = dispIL ? "IL " + dispIL : (p.item_level ? "IL " + p.item_level : "");
       const cr = dispCR ? "CR " + dispCR : "";
@@ -10587,6 +10593,14 @@
       const sel = MOUNT_POWER_IL_RATIO[selectedRarity || "Mythic"];
       if (anchor == null || sel == null) return p.item_level;
       return p.item_level * (sel / anchor);   // fractional — total is rounded once
+    }
+    // Per-power IL as the in-game tooltip DISPLAYS it. The game rounds normally
+    // EXCEPT an exact .5 rounds DOWN: 3000 x 1.3125 = 3937.5 shows as 3937 (not
+    // 3938), while a Celestial-anchored power viewed at Mythic (3937 / 1.3125 =
+    // 2999.6) still shows 3000. Round-half-down = ceil(x - 0.5). Labels use this;
+    // the TIL sum uses the raw unrounded mountPowerILFor value (rounded once).
+    function mountPowerDisplayIL(p, selectedRarity) {
+      return Math.ceil(mountPowerILFor(p, selectedRarity) - 0.5);
     }
     // Base IL every NW character has just for existing (level 20 floor).
     // Documented 2026-05-12 by n00b's community-doc dump: "you start the
