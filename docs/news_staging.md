@@ -6,37 +6,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of July 5, 2026
 
-(Last published July 8, 2026: "The Great Data Trust Sweep: Every Database Audited, 60+ Fixes")
+(Last published July 9, 2026: "New Combat Enchantments, Smarter Combat-Power Scoring & Ollie the Octie")
 
-### Features
-- Currency Tracker: added a **− Spent** button — record currency you spent without touching your weekly-earned total.
-
-### Bug Fixes
-- **Ollie the Octie**'s Tidal Wave combat power was over-crediting your party. Verified from an in-game Mount Preview: the +16.9% "more damage" buff applies to **you** (and the matching +16.9% enemy-damage-taken debuff), but **nearby allies get only +2.3%** — the old data gave allies the full amount. Corrected, and the whole power is now confirmed exact (394 magnitude, 60s recharge) at Celestial.
-- The optimizer now understands combat powers that buff YOU. Powers like Mighty Dragon's Roar (+15% Base Damage Boost / Critical Strike / Accuracy, no direct hit) used to score near-zero because the model only credited direct damage — so a genuinely strong pure-buff power looked worthless. It's now valued cap-aware: an uncapped buff like Base Damage Boost counts in full, while a Critical Strike buff is worth a lot below your cap and nothing once you're capped (no wasted overcap). Verified against the live builder, and the picks it already got right (Wicked Lich over bigger no-buff powers) still hold.
-- Tank builds now get credit for defensive combat powers too. A power like Skyhold Alligator's Bellow (-15% Incoming Damage while it's active) used to score as if it did nothing for survivability — now it properly lowers your expected damage taken. Same cap-aware treatment as above for self Defense/Awareness/Critical Avoidance buffs (won't overcredit a stat you're already capped on) and self Max HP% buffs, so the optimizer can now recognize when a defensive mount power is worth equipping.
-- Mount combat-power self-heals now count toward survivability: the Golden Rage Drake / Celestial Dragonnel's Rejuvenating Favor (heal 20% of Max HP over 10s, per 60s) was stored under a stat name the engine didn't recognize and contributed nothing — it now feeds the self-sustain/Tank survivability model (not the healer output score, per the standing convention).
-- Three always-on potions you could never toggle before now appear in the buff list: Potion of Giant Strength, Potion of Speed, and Minor Potion of Heroism (they carry real stats and last long enough to count).
-- 63 more items now score in Toon Forge: a first-ever full census found items whose stat effects existed only as tooltip text (the same "invisible to the optimizer" issue as the Lifebraid shirt). The cleanly-parseable ones are now structured — the Bloodwoven 2-piece sets, the Company belt set, Chilling Flow's Wintermarked role-stacking shield, the Enchanted accessory sets, and ~55 individual items.
-- Life Lessons (master boon) corrected against its live tooltip: its trigger is a 10% chance (the model had assumed 20%, doubling its effect), and its Rank 3 returns 10% of damage as a heal per rank (was 15%).
-- Celestial Lightning Flash verified at max rank: its damage bonus is 12% (a long-standing stored 24% is corrected), and its Accuracy/Critical Strike are Lightning Charge stacks (3.6% × 3), which is what its full-stack value already reflected.
-- Combat-power detail pages: two Thayan Zealot weapons (Doomscript Grimoire, Profaned Pact Blade) had their Tank and Healer role bonuses shown swapped — corrected.
-
-- Tenser's Floating Disk was showing the wrong combat power — our data had it granting Rejuvenating Favor (a healing power that actually belongs to the Golden Rage Drake) instead of its real Tenser's Transformation (+15% Base Damage Boost / Movement Speed). Fixed, and the correct power now feeds the optimizer's combat-power valuation.
-
-- Five item corrections from in-game tooltips: Crown of the Everscourge's Recharge Speed is 3% (was 5%); Greaves of the Unbroken Doctrine's proc is 40% Movement Speed / 13% Incoming Healing (we'd had them reversed); Visor of the Red Bastion's Thay-only +2.3% Defense was missing and is now added; Vambraces of the Tyrant's Grip's 4% Defense is confirmed; and the Bregan D'aerthe Assassin's Leathers had a phantom bonus (from an old dark screenshot) removed — it just has its Liquid Luck equip.
-
-- Archive cleanup found screenshots we already had but hadn't processed: all 9 Molten companion-gear pieces verified exact against the database (no changes needed), and Demon Skull's debuff corrected from 5% to 3% (its "three imps" leave enemies taking 3% more damage and −3% Accuracy, not 5%).
-
-- Mask of the Bloodletter: its "Tactical Daily" equip name had drifted to "Tactical Defense" in our data — corrected. Its 20%-more-damage proc (next Encounter after a Daily) was actually scoring correctly all along; only the label was wrong.
-
-- Visage of the Eternal Herald: resolved a long-standing question about its equip bonus — it's a resource-regeneration proc (5% faster class-resource regen per stack, up to 10) plus +5% Critical Strike, not the resource-max effect our older records guessed. Structured, and a Critical Severity value was corrected (4,305 → 4,505).
-
-- Companion gear fully verified: all 9 Thayan pieces (IL 2600) checked against their in-game tooltips — every value exact, no corrections needed. With Molten, Frostforged, and True Ice already done, all four endgame companion-gear tiers are now confirmed accurate.
-
-- Eight campaign accessories (the Magma / Wrathful / Mythallar / Diamond sets) verified and corrected: they're pure stat-sticks whose only bonus is a shared 3-piece set effect. Fixed two item-level errors (the Wrathful pieces were stored at 1,400 but are really 3,400; the Diamond pieces at 350 but really 550) and added the missing set-bonus text for the Mythallar and Diamond sets.
-
-### Data
-- Toon Forge: added three endgame **Combat enchantments** from in-game tooltips, at **Mythic (IL 5,750)** and — for two of them — **Celestial (IL 7,000)**. **Fluid Aurora** (healer): boosts Overall Outgoing Healing and your class-resource regeneration & maximum, plus an on-heal buff granting you and two nearby allies bonus Power (Mythic +8% OOH / +9% regen & max / +4.6% Power → Celestial +9% / +10% / +5%). **Shattered Resolve** (tank): +Incoming Damage Reduction, +Maximum HP, and a stacking Defense/Awareness/Deflect buff that fires a shockwave at max stacks (Mythic +11% IDR / +14% HP → Celestial +12% / +15%). **Shifting Shards** (DPS): Base Damage Boost, Power, a 25%-chance Combat Advantage stack (up to 10), and +6% Defense in melee (Mythic +11% BDB / +5% Power / 0.8% CA → Celestial +12% / +5.5% / 0.9%).
-- Mounts: **Olive the Octopus** is now correctly named **Ollie the Octie** (matching the octopus that surfaces on its Tidal Wave combat power), and its insignia slots — previously an unverified placeholder — are now captured: **Barbed, Enlightened, Universal, and Universal (prefers Barbed)**. Its list of compatible insignia set bonuses is now accurate.
-- Confirmed that same-name gear which differs by class (e.g. Hammerstone Mask for Warlocks vs Hammerstone Helmet for Paladins/Fighters — same slot and item level, different secondary stats) is **intentional per-class itemization**, not duplicate data. Those variants are all kept.
+### Needs review before publishing
+- **Life Lessons (master boon)** — a staged correction said its trigger is a 10% chance (model had assumed 20%) and its Rank 3 returns 10% of damage as a heal per rank (was 15%). NOT published on July 9 because the live news already describes a *different* Life Lessons correction (it "lost its below-30%-HP requirement", proc healing 1%/2% per rank). Need to confirm whether this 10%/10% correction is a separate, still-unannounced fix or part of the already-published rework before adding it to the feed.

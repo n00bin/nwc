@@ -1,6 +1,33 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "July 9, 2026",
+    title: "New Combat Enchantments, Smarter Combat-Power Scoring & Ollie the Octie",
+    tags: ["Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li><strong>Three new endgame Combat enchantments.</strong> Pulled from in-game tooltips at Mythic (IL 5,750) and Celestial (IL 7,000): <strong>Fluid Aurora</strong> (healer) boosts Overall Outgoing Healing and your class-resource regeneration and maximum, plus an on-heal buff granting you and two nearby allies bonus Power; <strong>Shattered Resolve</strong> (tank) adds Incoming Damage Reduction, Maximum HP, and a stacking Defense/Awareness/Deflect buff that fires a shockwave at max stacks; and <strong>Shifting Shards</strong> (DPS) gives Base Damage Boost, Power, a 25%-chance Combat Advantage stack, and Defense while in melee. All scored by the builder at both tiers.</li>" +
+      "<li><strong>Mount rename: Olive the Octopus is now Ollie the Octie</strong> — matching the octopus that surfaces on its Tidal Wave combat power. Its insignia slots, previously an unverified placeholder, are now captured from the game — <strong>Barbed, Enlightened, Universal, and Universal (prefers Barbed)</strong> — so its list of compatible insignia set bonuses is finally accurate.</li>" +
+      "<li><strong>Same-name, different-class gear is intentional.</strong> Items like Hammerstone Mask (Warlock) vs Hammerstone Helmet (Paladin/Fighter) share a slot and item level but roll different secondary stats — confirmed as per-class itemization, not duplicate data. Those variants are all kept.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>The optimizer now understands combat powers that buff YOU.</strong> Powers like Mighty Dragon's Roar (+15% Base Damage Boost / Critical Strike / Accuracy, no direct hit) used to score near-zero because the model only credited direct damage. They're now valued cap-aware: an uncapped buff like Base Damage Boost counts in full, while a Critical Strike buff is worth a lot below your cap and nothing once you're capped — no wasted overcap.</li>" +
+      "<li><strong>Tank builds now get credit for defensive combat powers.</strong> A power like Skyhold Alligator's Bellow (&#8722;15% Incoming Damage while active) used to score as if it did nothing for survivability — now it properly lowers your expected damage taken, with the same cap-aware treatment for self Defense / Awareness / Critical Avoidance and Max HP buffs.</li>" +
+      "<li><strong>Mount self-heals now count toward survivability.</strong> The Golden Rage Drake / Celestial Dragonnel's Rejuvenating Favor (heal 20% of Max HP over 10s, per 60s) was stored under a stat name the engine didn't recognize and contributed nothing — it now feeds the Tank self-sustain model (not the healer output score, per the standing convention).</li>" +
+      "<li><strong>Ollie the Octie's Tidal Wave was over-crediting your party.</strong> Verified from an in-game Mount Preview: the +16.9% \"more damage\" buff applies to <strong>you</strong> (and a matching +16.9% enemy-damage-taken debuff), but nearby allies get only <strong>+2.3%</strong> — the old data gave allies the full amount. Corrected, and the whole power is now confirmed exact (394 magnitude, 60s recharge) at Celestial.</li>" +
+      "<li><strong>Three always-on potions are now toggleable buffs</strong> — Potion of Giant Strength, Potion of Speed, and Minor Potion of Heroism carry real stats and last long enough to count.</li>" +
+      "<li><strong>Tenser's Floating Disk had the wrong combat power.</strong> Our data granted it Rejuvenating Favor (a heal that belongs to the Golden Rage Drake) instead of its real Tenser's Transformation (+15% Base Damage Boost / Movement Speed). Fixed, and the correct power now feeds the optimizer.</li>" +
+      "<li><strong>Five item corrections from in-game tooltips:</strong> Crown of the Everscourge's Recharge Speed is 3% (was 5%); Greaves of the Unbroken Doctrine's proc is 40% Movement Speed / 13% Incoming Healing (we'd had them reversed); Visor of the Red Bastion's Thay-only +2.3% Defense was missing and is now added; Vambraces of the Tyrant's Grip's 4% Defense is confirmed; and the Bregan D'aerthe Assassin's Leathers' phantom bonus (from an old dark screenshot) was removed — it just has its Liquid Luck equip.</li>" +
+      "<li><strong>Mask of the Bloodletter:</strong> its \"Tactical Daily\" equip name had drifted to \"Tactical Defense\" in our data — corrected. Its 20%-more-damage proc was scoring correctly all along; only the label was wrong.</li>" +
+      "<li><strong>Visage of the Eternal Herald equip bonus resolved.</strong> It's a resource-regeneration proc (5% faster class-resource regen per stack, up to 10) plus +5% Critical Strike — not the resource-max effect our older records guessed. Structured, and a Critical Severity value was corrected (4,305 &#8594; 4,505).</li>" +
+      "<li><strong>Two Thayan Zealot weapons</strong> (Doomscript Grimoire, Profaned Pact Blade) had their Tank and Healer role bonuses shown swapped on the detail pages — corrected.</li>" +
+      "<li><strong>Eight campaign accessories</strong> (the Magma / Wrathful / Mythallar / Diamond sets) verified and corrected — pure stat-sticks whose only bonus is a shared 3-piece set effect. Fixed two item-level errors (Wrathful was stored at 1,400 but is really 3,400; Diamond at 350 but really 550) and added the missing set-bonus text for the Mythallar and Diamond sets.</li>" +
+      "<li><strong>Archive cleanup:</strong> all 9 Molten companion-gear pieces verified exact (no changes needed), and Demon Skull's companion debuff corrected from 5% to 3% (its three imps leave enemies taking 3% more damage and &#8722;3% Accuracy). With this, all four endgame companion-gear tiers (Molten, Frostforged, True Ice, and the 9 Thayan IL 2,600 pieces) are confirmed accurate.</li>" +
+      "<li><strong>Item reference pages: duplicated bonus text cleaned up.</strong> A multi-stat equip bonus is stored as one entry per stat (e.g. Eagle's Mastery = Power + Critical Strike + Critical Severity), and ~710 gear pages had been printing its description two or three times. They now show the bonus once, matching the live builder — no change to the stats themselves.</li>" +
+      "</ul>"
+  },
+  {
     date: "July 8, 2026",
     title: "Currency Tracker Gets a Spend Button + 63 More Items Now Score",
     tags: ["Feature", "Fix"],
