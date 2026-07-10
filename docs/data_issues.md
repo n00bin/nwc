@@ -1564,9 +1564,12 @@ for entities NOT in our databases. Tooltips preserved under
 (companions.json / companion_powers.json are being touched by a concurrent
 session — coordinate before adding the two companions; the mount is clear to add).
 
-- **Olive the Octopus** (MOUNT) — ADDED 2026-06-15 (mount id 282; combat power Tidal
-  Wave id 92; equip power reuses Mystic Aura id 13). STILL NEEDS: insigniaSlots +
-  lockbox bonus (currently placeholder 4-universal / bonusRef 0) — capture required.
+- **Ollie the Octie** (MOUNT, formerly "Olive the Octopus") — ADDED 2026-06-15 (mount id 282;
+  combat power Tidal Wave id 92; equip power reuses Mystic Aura id 13). RESOLVED 2026-07-09:
+  renamed to **Ollie the Octie** and insignia slots captured — **Barbed / Enlightened /
+  Universal / Universal (preferred Barbed)**. Remaining: native signature lockbox bonus
+  (bonusRef) not captured, but eligible insignia bonuses derive from the slots, so no
+  functional gap.
   - Equip Power **Mystic Aura** (IL 3,000): "+2,250 Power and Accuracy to you and your
     party members within 80'. Multiple of the same Aura do not stack. +2,700 Combined Rating."
   - Combat Power **Tidal Wave** (60s recharge): summons "Ollie the Octie", three expanding

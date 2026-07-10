@@ -36,4 +36,5 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Eight campaign accessories (the Magma / Wrathful / Mythallar / Diamond sets) verified and corrected: they're pure stat-sticks whose only bonus is a shared 3-piece set effect. Fixed two item-level errors (the Wrathful pieces were stored at 1,400 but are really 3,400; the Diamond pieces at 350 but really 550) and added the missing set-bonus text for the Mythallar and Diamond sets.
 
 ### Data
+- Mounts: **Olive the Octopus** is now correctly named **Ollie the Octie** (matching the octopus that surfaces on its Tidal Wave combat power), and its insignia slots — previously an unverified placeholder — are now captured: **Barbed, Enlightened, Universal, and Universal (prefers Barbed)**. Its list of compatible insignia set bonuses is now accurate.
 - Confirmed that same-name gear which differs by class (e.g. Hammerstone Mask for Warlocks vs Hammerstone Helmet for Paladins/Fighters — same slot and item level, different secondary stats) is **intentional per-class itemization**, not duplicate data. Those variants are all kept.
