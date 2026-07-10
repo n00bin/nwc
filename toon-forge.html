@@ -10602,6 +10602,27 @@
     function mountPowerDisplayIL(p, selectedRarity) {
       return Math.ceil(mountPowerILFor(p, selectedRarity) - 0.5);
     }
+    // Ally mount aura (partyEffects) value at CELESTIAL. Allies run their mounts
+    // at the max tier, so the buff you receive is the Celestial magnitude. Unlike
+    // the player's OWN equip power (held at Mythic while its Max HP scaling is
+    // unresolved), every party-aura stat is a plain rating/percent (Power, CA,
+    // Awareness, Defense, Damage Bonus — verified: no Max HP), so it scales by the
+    // uniform Celestial factor. Normalize off the entry's own anchor, then lift to
+    // Celestial: Mythic-anchored +2250 Power -> 2953; Celestial-anchored entries
+    // (already 2953) stay put. Mirrors the player's own combat-power Celestial scale.
+    const MOUNT_CELESTIAL_FACTOR = 1.3124444;
+    function partyMountEffectAmount(ep, eff) {
+      return (eff && eff.amount || 0) * (MOUNT_CELESTIAL_FACTOR / mountPowerAnchorFactor(ep));
+    }
+    // "+2953 Power, +2953 Combat Advantage" — the Celestial aura values, for
+    // both the ally-slot summary and the picker so display matches what's awarded.
+    function partyMountEffectLabel(ep) {
+      return (ep.partyEffects || []).map(e => {
+        const v = partyMountEffectAmount(ep, e);
+        const disp = e.type === "percent" ? Math.round(v * 10) / 10 : Math.round(v);
+        return `${disp > 0 ? "+" : ""}${disp}${e.type === "percent" ? "%" : ""} ${e.stat}`;
+      }).join(", ") || "(no structured party stats)";
+    }
     // Base IL every NW character has just for existing (level 20 floor).
     // Documented 2026-05-12 by n00b's community-doc dump: "you start the
     // game with 5000 TIL, but 0 in your Ratings. That means that all of
@@ -11933,9 +11954,10 @@
         for (const eff of ep.partyEffects) {
           if (!eff || !eff.stat) continue;
           const channel = (eff.type === "rating") ? ratingStats : percentStats;
-          // Decision 8: party ally equip powers are always evaluated at Mythic
-          // rarity — divide Celestial-anchored entries down to baseline.
-          channel[eff.stat] = (channel[eff.stat] || 0) + (eff.amount || 0) / mountPowerAnchorFactor(ep);
+          // Ally mounts run at Celestial, so award the Celestial aura value
+          // (partyMountEffectAmount normalizes off each entry's anchor, then
+          // lifts to Celestial). Supersedes the old Decision-8 Mythic clamp.
+          channel[eff.stat] = (channel[eff.stat] || 0) + partyMountEffectAmount(ep, eff);
         }
         buffs.push({
           source: `Party Mount Buff: Ally's ${epName}`,
@@ -16284,9 +16306,7 @@
           if (state.partyMountAllies.length > slotCount) state.partyMountAllies = state.partyMountAllies.slice(0, slotCount);
           const mEffSummary = {};
           for (const ep of partyMountPowersInner) {
-            mEffSummary[ep.name] = (ep.partyEffects || []).map(e =>
-              `${e.amount > 0 ? "+" : ""}${e.amount}${e.type === "percent" ? "%" : ""} ${e.stat}`
-            ).join(", ") || "(no structured party stats)";
+            mEffSummary[ep.name] = partyMountEffectLabel(ep);
           }
           html += `<div style="border-top:1px solid var(--border);margin-top:0.6rem;padding-top:0.4rem;font-size:0.78rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;">Ally mount equip powers</div>`;
           for (let i = 0; i < slotCount; i++) {
@@ -16422,9 +16442,7 @@
               if (ep.__none) {
                 return { name: ep.name, meta: "", desc: "Clears this slot." };
               }
-              const eff = (ep.partyEffects || []).map(e =>
-                `${e.amount > 0 ? "+" : ""}${e.amount}${e.type === "percent" ? "%" : ""} ${e.stat}`
-              ).join(", ") || "(no structured party stats)";
+              const eff = partyMountEffectLabel(ep);
               const dup = taken.has(ep.name) ? " · already in another slot" : "";
               const _allyNote = cleanNote(ep.notes);
               const note = _allyNote ? _allyNote.split(".")[0] + "." : "";
