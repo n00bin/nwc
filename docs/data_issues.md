@@ -1570,6 +1570,16 @@ session — coordinate before adding the two companions; the mount is clear to a
   Universal / Universal (preferred Barbed)**. Remaining: native signature lockbox bonus
   (bonusRef) not captured, but eligible insignia bonuses derive from the slots, so no
   functional gap.
+  - **Powers verified 2026-07-09** from in-game AH Mount Preview (Celestial). Combat power
+    **Tidal Wave** corrected: the stored data folded self+allies into one +12.8% party
+    entry, but in-game **YOU deal the full buff** (16.9% Cel / 12.9% Mythic anchor) while
+    **allies get only +2.3%** (Cel / 1.75% Mythic). Split into self + party scopes; enemy
+    debuff and self buff refined to 12.9% Mythic (→16.9% Cel), magnitude 300 Mythic (→394
+    Cel) confirmed exact. Equip power **Mystic Aura** reads +2,531 Power/Accuracy, +3,038 CR
+    at IL 3,375 (this mount's Celestial tier) — left on the **shared** equip power id 13 at
+    its Mythic anchor (+2,250 / IL 3,000), since the engine doesn't tier-scale equip powers
+    (id 13 is shared with Myconid Bulette + Snowtusk; per-mount tier scaling is a separate,
+    pre-existing gap).
   - Equip Power **Mystic Aura** (IL 3,000): "+2,250 Power and Accuracy to you and your
     party members within 80'. Multiple of the same Aura do not stack. +2,700 Combined Rating."
   - Combat Power **Tidal Wave** (60s recharge): summons "Ollie the Octie", three expanding
