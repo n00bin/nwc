@@ -1,6 +1,26 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "July 10, 2026",
+    title: "Mount Powers Go Full Celestial — Exact to the Point, with a One-Tap Tier Toggle",
+    tags: ["Feature", "Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li><strong>Mounts page: one &quot;Power tier&quot; toggle for the whole mount.</strong> The mount detail panel now has a single Mythic / Celestial toggle (defaults to Celestial) that scales <strong>both</strong> the Combat Power and Equip Power at once. Previously only the combat power had a toggle and the equip power always showed its Mythic base &#8212; so a Celestial mount's equip stats (item level, Combined Rating, Max HP and the rest) now display their real max-tier values, and flip to Mythic together with the combat power in a single click.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Your own mount equip power now defaults to Celestial in Toon Forge.</strong> The Equip Power rarity was defaulting to Mythic &#8212; a leftover from before Celestial equip scaling was verified &#8212; so your stat bar and the power picker showed lower-than-real numbers until you changed it. It now defaults to Celestial like the Combat Power does; you can still drop it to any lower tier from the &quot;Equip rarity&quot; dropdown. (The Combat rarity dropdown was also reading &quot;Mythic&quot; even though it was already calculating at Celestial &#8212; fixed too.)</li>" +
+      "<li><strong>Ally mount auras now count at Celestial.</strong> In the &quot;assume support party&quot; section, the buffs an ally's mount aura gives you (Mystic Aura, Pack Tactics, Runic Aura, Avian Aura, Ferocity) were valued at Mythic. Since allies run their mounts at max tier, these now show and award their Celestial values (for example +2,250 &#8594; <strong>+2,953</strong> Power) &#8212; both in the picker and in your stats.</li>" +
+      "<li><strong>Mount power stat values are now exact at Celestial.</strong> The Mythic&#8594;Celestial multiplier was very slightly rounded, which only showed on big numbers &#8212; Stalwart's Max HP read 39,373 instead of the in-game <strong>39,375</strong>. It now uses the exact game ratio (&#215;1.3125), so large mount-power stats match the tooltip to the point. Smaller values were already correct.</li>" +
+      "<li><strong>Mount power item level now matches the game exactly.</strong> Celestial mount powers displayed item level 3,938 instead of the in-game 3,937 &#8212; a display-only rounding quirk (the true value is 3,937.5). Your character's total item level was always correct; the shown number now reads 3,937 like the tooltip.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li><strong>New dungeon guide video.</strong> Added the Jotunskar Dungeon (Module 33, Biting Cold expansion) mechanics walkthrough to the Dungeons tab on the Mekaniks page.</li>" +
+      "</ul>"
+  },
+  {
     date: "July 9, 2026",
     title: "New Combat Enchantments, Smarter Combat-Power Scoring & Ollie the Octie",
     tags: ["Fix", "Data"],
