@@ -361,10 +361,11 @@
   // Combat-power values are stored at a Mythic anchor (IL 3000); entries tagged
   // anchorRarity:"Celestial" are stored at IL 3937. The page shows the Celestial
   // (max-tier) value by default — every mount reaches Celestial — with a Mythic
-  // toggle. Combat powers scale uniformly: Celestial = ×1.3124444 (IL 3000 → 3937).
-  // Equip powers are intentionally NOT scaled here (their Max HP stats scale
-  // differently and are in an unresolved Mythic-vs-Celestial state).
-  var MOUNT_CP_RARITY_MULT = { "Mythic": 1.0, "Celestial": 1.3124444 };
+  // toggle. Combat powers scale uniformly by the exact tier ratio ×1.3125
+  // (= IL 3937.5/3000, 21/16); the IL ratio below stays 3937/3000 so the
+  // displayed item level rounds to 3937 like the in-game tooltip.
+  // Equip powers are intentionally NOT scaled here.
+  var MOUNT_CP_RARITY_MULT = { "Mythic": 1.0, "Celestial": 1.3125 };
   var MOUNT_CP_IL_RATIO    = { "Mythic": 1.0, "Celestial": 3937 / 3000 };
   var combatPowerTier = "Celestial";   // default display tier; toggle re-renders
   var currentDetailMount = null;

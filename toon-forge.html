@@ -3139,7 +3139,7 @@
       // 2026-07-10 after the Max HP question closed — n00b's Stalwart capture proved
       // equip stats (ratings, percents, Max HP, CR) ALL scale uniformly ×IL like
       // combat (30,000 → 39,375 Max HP = ×1.3125 exact; the old ~1.667× hypothesis
-      // was a lower-rank-capture artifact). Scaling uses the uniform ×1.3124444.
+      // was a lower-rank-capture artifact). Scaling uses the uniform ×1.3125.
       activeEquipPowerRarity:   "Celestial",
       activeCombatPowerRarity:  "Celestial",
       // Bolster percentages (0–120 for comp, 0–125 for mount). 100 = baseline,
@@ -4779,7 +4779,7 @@
         if (isCombat && typeof mountPowerBolsterFactor === "function") {
           factor = mountPowerBolsterFactor(state.mountBolster) * factor;
         }
-        factor = Math.min(factor, 1.3124444 / anchor);
+        factor = Math.min(factor, 1.3125 / anchor);
         return Math.round(n * factor);
       }
       return value;
@@ -6411,7 +6411,7 @@
       const _cpRarityFactor = mountRarityFactor(state.activeCombatPowerRarity || "Mythic") / _cpAnchorFactor;
       const _cpBolsterFactor = mountPowerBolsterFactor(state.mountBolster);
       function _scaleCombat(stored) {
-        return Math.min((stored || 0) * _cpBolsterFactor * _cpRarityFactor, (stored || 0) * (1.3124444 / _cpAnchorFactor));
+        return Math.min((stored || 0) * _cpBolsterFactor * _cpRarityFactor, (stored || 0) * (1.3125 / _cpAnchorFactor));
       }
       const cdr = p.rechargeTimeSeconds ? `${p.rechargeTimeSeconds}s recharge` : "";
       const mag = p.magnitude ? `magnitude ${Math.round(_scaleCombat(p.magnitude))}` : "";
@@ -6465,7 +6465,7 @@
       // scale with rarity only, Decision 3).
       const _eqAnchor = mountPowerAnchorFactor(p);
       const _eqFactor = mountRarityFactor(state.activeEquipPowerRarity || "Mythic") / _eqAnchor;
-      const _eqScale = (v) => Math.min((v || 0) * _eqFactor, (v || 0) * (1.3124444 / _eqAnchor));
+      const _eqScale = (v) => Math.min((v || 0) * _eqFactor, (v || 0) * (1.3125 / _eqAnchor));
       // Display IL matches the in-game per-power tooltip (round-half-down, so
       // 3937.5 shows as 3937 not 3938). TIL summation stays on the unrounded value.
       const dispIL = mountPowerDisplayIL(p, state.activeEquipPowerRarity);
@@ -10556,7 +10556,7 @@
       return (1 + b / 100) / anchor;
     }
     // Per-slot mount rarity scaling multipliers. Stored values are at Mythic
-    // baseline (factor 1.0). Celestial cap (1.3124444) matches Decision 4.
+    // baseline (factor 1.0). Celestial cap (1.3125) matches Decision 4.
     const MOUNT_RARITY_MULTIPLIERS = {
       "Common":    0.00667,
       "Uncommon":  0.0667,
@@ -10564,7 +10564,7 @@
       "Epic":      0.4,
       "Legendary": 0.667,
       "Mythic":    1.0,
-      "Celestial": 1.3124444
+      "Celestial": 1.3125
     };
     function mountRarityFactor(rarity) {
       return MOUNT_RARITY_MULTIPLIERS[rarity] || 1.0;
@@ -10573,7 +10573,7 @@
     // capture ("Mythic preferred" convention), but some entries were captured
     // at Celestial (anchorRarity: "Celestial" in the data — their stored
     // stats/CR/magnitudes/IL are Celestial-scale, e.g. Pack Tactics 2953 =
-    // 2250 x 1.3124444). Applied scaling must DIVIDE by the anchor's factor or
+    // 2250 x 1.3125). Applied scaling must DIVIDE by the anchor's factor or
     // Celestial-anchored powers double-scale when Celestial is selected.
     function mountPowerAnchorFactor(p) {
       return mountRarityFactor((p && p.anchorRarity) || "Mythic");
@@ -10611,7 +10611,7 @@
     // uniform Celestial factor. Normalize off the entry's own anchor, then lift to
     // Celestial: Mythic-anchored +2250 Power -> 2953; Celestial-anchored entries
     // (already 2953) stay put. Mirrors the player's own combat-power Celestial scale.
-    const MOUNT_CELESTIAL_FACTOR = 1.3124444;
+    const MOUNT_CELESTIAL_FACTOR = 1.3125;
     function partyMountEffectAmount(ep, eff) {
       return (eff && eff.amount || 0) * (MOUNT_CELESTIAL_FACTOR / mountPowerAnchorFactor(ep));
     }
@@ -12145,14 +12145,14 @@
           const percentStats = {};
           for (const st of (ep.stats || [])) {
             const tgt = st.type === "percent" ? percentStats : ratingStats;
-            const _scaledValue = Math.min((st.value || 0) * _rarityFactor, (st.value || 0) * (1.3124444 / _epAnchorFactor));
+            const _scaledValue = Math.min((st.value || 0) * _rarityFactor, (st.value || 0) * (1.3125 / _epAnchorFactor));
             tgt[st.stat] = (tgt[st.stat] || 0) + _scaledValue;
           }
           buffs.push({
             source: "Mount Equip Power: " + ep.name,
             ratingStats, percentStats
           });
-          const _scaledCR = Math.min((ep.combinedRating || 0) * _rarityFactor, (ep.combinedRating || 0) * (1.3124444 / _epAnchorFactor));
+          const _scaledCR = Math.min((ep.combinedRating || 0) * _rarityFactor, (ep.combinedRating || 0) * (1.3125 / _epAnchorFactor));
           const cr = expandCR(_scaledCR, 1);
           if (cr) {
             buffs.push({
@@ -12187,7 +12187,7 @@
           // Decision 10 / R-only row: amount scales with rarity, not bolster.
           if (ep.equipEffect && ep.equipEffect.stat) {
             const ef = ep.equipEffect;
-            const _scaledAmount = Math.min((ef.amount || 0) * _rarityFactor, (ef.amount || 0) * (1.3124444 / _epAnchorFactor));
+            const _scaledAmount = Math.min((ef.amount || 0) * _rarityFactor, (ef.amount || 0) * (1.3125 / _epAnchorFactor));
             const entry = {
               source: `Mount Equip Proc: ${ep.name} (on ${ef.trigger || "trigger"})`,
               conditional: true
@@ -12231,7 +12231,7 @@
               // Celestial exactly as before.
               const _scaledPerStack = sb.flatPerStack
                 ? (perStack || 0)
-                : Math.min((perStack || 0) * _rarityFactor, (perStack || 0) * (1.3124444 / _epAnchorFactor));
+                : Math.min((perStack || 0) * _rarityFactor, (perStack || 0) * (1.3125 / _epAnchorFactor));
               const total = _scaledPerStack * stacks;
               if (perStack > 100) sbRating[stat] = total;
               else                sbPercent[stat] = total;

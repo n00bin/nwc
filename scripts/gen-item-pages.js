@@ -504,7 +504,7 @@ function renderProc(proc, il, baseIL) {
 }
 
 /* ---- mount combat-power scaling (verbatim from mounts-page.js) ---- */
-const MOUNT_CP_RARITY_MULT = { Mythic: 1.0, Celestial: 1.3124444 };
+const MOUNT_CP_RARITY_MULT = { Mythic: 1.0, Celestial: 1.3125 };
 const MOUNT_CP_IL_RATIO = { Mythic: 1.0, Celestial: 3937 / 3000 };
 function cpRoundAmt(x) { var r = Math.round(x * 10) / 10; return r === Math.round(r) ? Math.round(r) : r; }
 function scaleCombatPower(p, tier) {
@@ -563,8 +563,8 @@ try { COMPANION_SKILLS = loadJSGlobal('data/companion-skills.js', 'COMPANION_SKI
   eq('StormEyes@750(base)', scaleStats(storm, 750).stats[0].value, 3.75);
   eq('StormEyes@900(double)', scaleStats(storm, 900).stats[0].value, 4.5);    // 3.75 * (4.50/3.75)
   var ev = scaleCombatPower(mCombatMap[1], 'Celestial');      // Ethereal Vortex, Mythic-anchored
-  eq('EtherealVortex mag Celestial', ev.magnitude, 1050);     // 800 * 1.3124444
-  eq('EtherealVortex debuff Celestial', ev.equipBonuses[0].amount, 20.7);      // 15.8 * 1.3124444
+  eq('EtherealVortex mag Celestial', ev.magnitude, 1050);     // 800 * 1.3125
+  eq('EtherealVortex debuff Celestial', ev.equipBonuses[0].amount, 20.7);      // 15.8 * 1.3125
   var evM = scaleCombatPower(mCombatMap[1], 'Mythic');
   eq('EtherealVortex mag Mythic', evM.magnitude, 800);
   eq('EtherealVortex debuff Mythic', evM.equipBonuses[0].amount, 15.8);
