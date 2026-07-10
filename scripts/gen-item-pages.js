@@ -85,22 +85,50 @@ function statsBlock(item) {
   var r = statsRows(item.ratingStats, 'rating') + statsRows(item.percentStats, 'percent') + statsRows(item.abilityBonuses, 'rating');
   return r ? '<div class="item-sec"><h2>Stats</h2>' + r + '</div>' : '';
 }
+// Per-entry display text: cleaned prose, else synthesized from stat/amount.
+function equipBonusEffectText(b) {
+  var dt = showText(b.description);
+  if (!dt && b.stat != null && typeof b.amount === 'number') {
+    // structured-only entries (no prose) — synthesize from stat/amount.
+    // Percent is the default; kind:"rating"/"flat" marks plain numbers.
+    var isPct = b.isPercent === true || !b.kind;
+    dt = (b.stacking && b.stacking.notes) ? b.stacking.notes
+      : (b.amount > 0 ? '+' : '') + (isPct ? b.amount + '%' : fmt(b.amount)) + ' ' + statName(b.stat);
+  }
+  return dt || '';
+}
 function equipBlock(list) {
   if (!Array.isArray(list) || !list.length) return '';
-  var rows = list.map(function (b) {
-    var head = esc(b.name || (b.type === 'Set' ? 'Set bonus' : 'Equip bonus'));
-    var dt = showText(b.description);
-    if (!dt && b.stat != null && typeof b.amount === 'number') {
-      // structured-only entries (no prose) — synthesize from stat/amount.
-      // Percent is the default; kind:"rating"/"flat" marks plain numbers.
-      var isPct = b.isPercent === true || !b.kind;
-      dt = (b.stacking && b.stacking.notes) ? b.stacking.notes
-        : (b.amount > 0 ? '+' : '') + (isPct ? b.amount + '%' : fmt(b.amount)) + ' ' + statName(b.stat);
+  // Group entries by name so a multi-stat bonus stored as one entry per stat
+  // (e.g. Eagle's Mastery = Power + Crit Strike + Crit Severity) renders its
+  // shared name + description ONCE — mirrors the live Toon Forge gear card's
+  // _equipBonusSection. Distinct effect lines within a name are de-duped, so a
+  // repeated description collapses but a genuine multi-line bonus keeps its lines.
+  // Unnamed entries stay individual (a fallback heading could merge unrelated
+  // bonuses), preserving prior behavior.
+  var byName = {};
+  list.forEach(function (b) { if (b && b.name) { (byName[b.name] = byName[b.name] || []).push(b); } });
+  var emitted = {}, blocks = [];
+  list.forEach(function (b) {
+    if (!b) return;
+    if (b.name) {
+      if (emitted[b.name]) return;       // group already rendered at first sight
+      emitted[b.name] = true;
+      var effects = [], seenTxt = {};
+      byName[b.name].forEach(function (e) {
+        var t = equipBonusEffectText(e);
+        if (t && !seenTxt[t]) { seenTxt[t] = true; effects.push(t); }
+      });
+      var desc = effects.map(function (t) { return '<div class="item-effect">' + esc(t) + '</div>'; }).join('');
+      blocks.push('<div style="margin-bottom:0.5rem"><strong>' + esc(b.name) + '</strong>' + desc + '</div>');
+    } else {
+      var t = equipBonusEffectText(b);
+      if (!t) return;                    // nothing meaningful to show
+      var head = esc(b.type === 'Set' ? 'Set bonus' : 'Equip bonus');
+      blocks.push('<div style="margin-bottom:0.5rem"><strong>' + head + '</strong><div class="item-effect">' + esc(t) + '</div></div>');
     }
-    if (!dt && !b.name) return '';       // nothing meaningful to show
-    var desc = dt ? '<div class="item-effect">' + esc(dt) + '</div>' : '';
-    return '<div style="margin-bottom:0.5rem"><strong>' + head + '</strong>' + desc + '</div>';
-  }).join('');
+  });
+  var rows = blocks.join('');
   return rows ? '<div class="item-sec"><h2>Bonuses</h2>' + rows + '</div>' : '';
 }
 
