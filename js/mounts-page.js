@@ -367,7 +367,7 @@
   // Equip powers are intentionally NOT scaled here.
   var MOUNT_CP_RARITY_MULT = { "Mythic": 1.0, "Celestial": 1.3125 };
   var MOUNT_CP_IL_RATIO    = { "Mythic": 1.0, "Celestial": 3937 / 3000 };
-  var combatPowerTier = "Celestial";   // default display tier; toggle re-renders
+  var mountPowerTier = "Celestial";   // default display tier; toggle re-renders
   var currentDetailMount = null;
 
   function cpRoundAmt(x) {
@@ -391,11 +391,42 @@
     });
     return c;
   }
-  function combatTierToggleHtml() {
-    var tiers = ["Mythic", "Celestial"], h = '<div class="detail-meta" style="margin-bottom:0.4rem;"><span>Tier:</span>';
+  // Tier-scaled COPY of an equip power (never mutates the source data). Scales
+  // IL (via the 3937/3000 ratio so it rounds to 3937 like the tooltip), Combined
+  // Rating, each stat (ratings -> integer, percents -> 1 decimal), and non-flat
+  // stackingBuff perStack values. Mirrors Toon Forge's equip scaling exactly,
+  // including skipping flatPerStack procs (Providence's 2% is tier-independent).
+  // Anchor-aware: a Celestial-anchored power viewed at Celestial is unchanged.
+  function scaleEquipPower(p, tier) {
+    if (!p) return p;
+    var anchor = p.anchorRarity || "Mythic";
+    var vmult = (MOUNT_CP_RARITY_MULT[tier] || 1) / (MOUNT_CP_RARITY_MULT[anchor] || 1);
+    var ilSel = MOUNT_CP_IL_RATIO[tier], ilAnc = MOUNT_CP_IL_RATIO[anchor];
+    var c = JSON.parse(JSON.stringify(p));
+    if (ilSel != null && ilAnc != null && c.item_level) c.item_level = Math.round(c.item_level * ilSel / ilAnc);
+    if (c.combinedRating != null) c.combinedRating = Math.round(c.combinedRating * vmult);
+    (c.stats || []).forEach(function (s) {
+      if (s.value == null) return;
+      s.value = (s.type === "percent") ? Math.round(s.value * vmult * 10) / 10 : Math.round(s.value * vmult);
+    });
+    if (c.stackingBuff && c.stackingBuff.perStack && !c.stackingBuff.flatPerStack) {
+      var ps = c.stackingBuff.perStack;
+      Object.keys(ps).forEach(function (k) {
+        if (ps[k] == null) return;
+        ps[k] = (ps[k] > 100) ? Math.round(ps[k] * vmult) : Math.round(ps[k] * vmult * 10) / 10;
+      });
+    }
+    return c;
+  }
+  // Shared power-tier toggle (Mythic/Celestial). Governs BOTH the Combat Power
+  // and Equip Power sections at once — a mount is a single tier, so its two
+  // powers never differ. (Toon Forge keeps them separate because a loadout can
+  // mix powers from different mounts; here you're viewing one mount.)
+  function mountTierToggleHtml() {
+    var tiers = ["Mythic", "Celestial"], h = '<div class="detail-meta" style="margin-bottom:0.4rem;"><span>Power tier:</span>';
     for (var i = 0; i < tiers.length; i++) {
-      var on = tiers[i] === combatPowerTier;
-      h += '<span class="cp-tier-btn" data-tier="' + tiers[i] + '" style="cursor:pointer;padding:0.12rem 0.5rem;border-radius:var(--radius-sm);' +
+      var on = tiers[i] === mountPowerTier;
+      h += '<span class="mount-tier-btn" data-tier="' + tiers[i] + '" style="cursor:pointer;padding:0.12rem 0.5rem;border-radius:var(--radius-sm);' +
            (on ? 'background:var(--accent);color:#fff;font-weight:600;' : 'color:var(--text-muted);border:1px solid var(--border-default);') +
            '">' + tiers[i] + '</span>';
     }
@@ -410,8 +441,8 @@
     }
     currentDetailMount = mount;
 
-    var cp = scaleCombatPower(combatMap[mount.combatRef], combatPowerTier);
-    var ep = equipMap[mount.equipRef];
+    var cp = scaleCombatPower(combatMap[mount.combatRef], mountPowerTier);
+    var ep = scaleEquipPower(equipMap[mount.equipRef], mountPowerTier);
     var compatibleBonuses = mountBonusCache[mount.id] || [];
     var bonusVal = filterBonus.value;
 
@@ -477,10 +508,12 @@
       html += '<div class="detail-meta">No insignia slots</div>';
     }
 
+    // ---- Power tier toggle (shared by Combat + Equip) ----
+    if (cp || ep) html += mountTierToggleHtml();
+
     // ---- Combat Power ----
     html += '<div class="section-header">Combat Power</div>';
     if (cp) {
-      html += combatTierToggleHtml();
       html += '<div class="proc-block">';
       html += '<div class="detail-name">' + escapeHtml(cp.name) + "</div>";
       html += '<div class="detail-meta">';
@@ -593,11 +626,12 @@
       });
     }
 
-    // Wire the combat-power tier toggle (Mythic/Celestial) -> re-render this mount
-    var tierBtns = detailPanel.querySelectorAll(".cp-tier-btn");
+    // Wire the shared mount power-tier toggle (Mythic/Celestial): one click
+    // re-renders the mount, re-scaling BOTH the Combat and Equip Power sections.
+    var tierBtns = detailPanel.querySelectorAll(".mount-tier-btn");
     for (var tb = 0; tb < tierBtns.length; tb++) {
       tierBtns[tb].addEventListener("click", function () {
-        combatPowerTier = this.getAttribute("data-tier");
+        mountPowerTier = this.getAttribute("data-tier");
         renderDetail(currentDetailMount);
       });
     }

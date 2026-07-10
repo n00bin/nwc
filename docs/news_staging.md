@@ -8,6 +8,9 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 (Last published July 9, 2026: "New Combat Enchantments, Smarter Combat-Power Scoring & Ollie the Octie")
 
+### Features
+- **Mounts page: one power-tier toggle for the whole mount** — The mount detail panel now has a single "Power tier" toggle (Mythic / Celestial, defaults to Celestial) that scales BOTH the Combat Power and Equip Power sections at once. Previously only Combat Power had a toggle and Equip Power always showed its Mythic base — so a Celestial mount's equip stats now display their real max-tier values (item level, Combined Rating, and stats like Max HP), and flip to Mythic together with the combat power.
+
 ### Data Additions
 - **New dungeon guide video** — Added the Jotunskar Dungeon (Module 33, Biting Cold expansion) mechanics walkthrough to the Dungeons tab on the Mekaniks page.
 
