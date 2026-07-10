@@ -1,0 +1,1913 @@
+[
+ {
+  "set": "Living Magma",
+  "need": 4,
+  "equippable": 2,
+  "slots": {
+   "Off Hand": 7,
+   "Main Hand": 7
+  },
+  "pieces": 14,
+  "has_set_bonus": true,
+  "class": "A-weapon-set",
+  "shots": [
+   "docs\\audit\\_up\\barbarian-gear\\Encased Magma Axe Knot_IL2700.png",
+   "docs\\audit\\_up\\barbarian-gear\\Encased Magma Greataxe_IL2700.png",
+   "docs\\audit\\_up\\bard-gear\\Encased Magma Lute_IL2700.png",
+   "docs\\audit\\_up\\bard-gear\\Encased Magma Saber_IL2700.png"
+  ],
+  "sample_items": [
+   "Encased Magma Lute",
+   "Encased Magma Tome",
+   "Encased Magma Pactblade"
+  ]
+ },
+ {
+  "set": "Dark Matter",
+  "need": 4,
+  "equippable": 2,
+  "slots": {
+   "Main Hand": 14,
+   "Off Hand": 14
+  },
+  "pieces": 28,
+  "has_set_bonus": true,
+  "class": "A-weapon-set",
+  "shots": [
+   "docs\\audit\\_up\\barbarian-gear\\Solarium Falchion_IL2500.png",
+   "docs\\audit\\_up\\barbarian-gear\\Starcore Axe Knot_IL2500.png",
+   "docs\\audit\\_up\\ranger-gear\\Solarium Longbow_IL2500.png",
+   "docs\\audit\\_up\\ranger-gear\\Starcore Knives_IL2500.png"
+  ],
+  "sample_items": [
+   "Solarium Pactblade",
+   "Solarium Pactblade +1",
+   "Starcore Tower Shield"
+  ]
+ },
+ {
+  "set": "Alabaster",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Main Hand": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "A-weapon-set",
+  "shots": [],
+  "sample_items": [
+   "Alabaster Pact Blade"
+  ]
+ },
+ {
+  "set": "Burnished",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Main Hand": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "A-weapon-set",
+  "shots": [],
+  "sample_items": [
+   "Burnished Pact Blade"
+  ]
+ },
+ {
+  "set": "Watcher",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Main Hand": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "A-weapon-set",
+  "shots": [],
+  "sample_items": [
+   "Golden Pact Blade of the Watcher"
+  ]
+ },
+ {
+  "set": "Brute's Expertise",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Main Hand": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "A-weapon-set",
+  "shots": [],
+  "sample_items": [
+   "Grand Alliance Pactblade"
+  ]
+ },
+ {
+  "set": "Lionheart",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Main Hand": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "A-weapon-set",
+  "shots": [],
+  "sample_items": [
+   "Lionheart Pact Blade"
+  ]
+ },
+ {
+  "set": "Mountaineer",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Main Hand": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "A-weapon-set",
+  "shots": [],
+  "sample_items": [
+   "Mountaineer Pact Blade"
+  ]
+ },
+ {
+  "set": "Set Sun",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Main Hand": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "A-weapon-set",
+  "shots": [
+   "docs\\audit\\_up\\bard-gear\\Sunset Rapiera_IL800.png"
+  ],
+  "sample_items": [
+   "Sunset Rapiera"
+  ]
+ },
+ {
+  "set": "Primal Weapons",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Main Hand": 8
+  },
+  "pieces": 8,
+  "has_set_bonus": false,
+  "class": "A-weapon-set",
+  "shots": [],
+  "sample_items": [
+   "Primal Omihuiclli",
+   "Primal Omihuiclli",
+   "Primal Omihuiclli"
+  ]
+ },
+ {
+  "set": "Hunts of Omu",
+  "need": 18,
+  "equippable": 1,
+  "slots": {
+   "Armor": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "B-collection-pattern",
+  "shots": [
+   "docs\\audit\\_up\\unbound-gear\\Chitters's Fangs_IL672.png"
+  ],
+  "sample_items": [
+   "Chitters's Fangs"
+  ]
+ },
+ {
+  "set": "Artifacts and Gear in Elemental Evil",
+  "need": 13,
+  "equippable": 1,
+  "slots": {
+   "Shirt": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "B-collection-pattern",
+  "shots": [
+   "docs\\audit\\_up\\unbound-gear\\Bloodstained Shirt_IL630.png"
+  ],
+  "sample_items": [
+   "Bloodstained Shirt"
+  ]
+ },
+ {
+  "set": "Rings: The Reched Edge",
+  "need": 11,
+  "equippable": 2,
+  "slots": {
+   "Ring": 28
+  },
+  "pieces": 28,
+  "has_set_bonus": false,
+  "class": "B-collection-pattern",
+  "shots": [
+   "docs\\audit\\_up\\paladin-gear\\Frostsilver Band of Faith_IL6000.png",
+   "docs\\audit\\_up\\paladin-gear\\Frostsilver Circlet of Protection_IL6000 (2).png",
+   "docs\\audit\\_up\\paladin-gear\\Frostsilver Coil of Wrath_IL6000 (2).png",
+   "docs\\audit\\_up\\paladin-gear\\Frostsilver Halo of Mending_IL6000 (2).png"
+  ],
+  "sample_items": [
+   "Coldsilver Band of Faith",
+   "Coldsilver Circlet of Protection",
+   "Coldsilver Coil of Wrath"
+  ]
+ },
+ {
+  "set": "Clothing: Jotunskar",
+  "need": 11,
+  "equippable": 1,
+  "slots": {
+   "Clothing: Jotunskar": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "B-collection-pattern",
+  "shots": [],
+  "sample_items": [
+   "Veinlit Earthhard Guard"
+  ]
+ },
+ {
+  "set": "Rings: Shackles of Divinity",
+  "need": 8,
+  "equippable": 2,
+  "slots": {
+   "Ring": 12
+  },
+  "pieces": 12,
+  "has_set_bonus": false,
+  "class": "B-collection-pattern",
+  "shots": [],
+  "sample_items": [
+   "The Spine of Dominion",
+   "The Obsidian Bastion",
+   "The Twisted Pact"
+  ]
+ },
+ {
+  "set": "Storm King's Thunder Curiosities",
+  "need": 8,
+  "equippable": 2,
+  "slots": {
+   "Ring": 12
+  },
+  "pieces": 12,
+  "has_set_bonus": false,
+  "class": "B-collection-pattern",
+  "shots": [
+   "docs\\audit\\_up\\unbound-gear\\Greater Ostorian Ring of Blod_IL609.png",
+   "docs\\audit\\_up\\unbound-gear\\Greater Ostorian Ring of Dod_IL609.png",
+   "docs\\audit\\_up\\unbound-gear\\Greater Ostorian Ring of Hellig_IL609.png",
+   "docs\\audit\\_up\\unbound-gear\\Greater Ostorian Ring of Krig_IL609.png"
+  ],
+  "sample_items": [
+   "Greater Ostorian Ring of Skold",
+   "Greater Ostorian Ring of Dod",
+   "Greater Ostorian Ring of Krig"
+  ]
+ },
+ {
+  "set": "Artifacts and Gear in Tyranny of Dragons",
+  "need": 5,
+  "equippable": 2,
+  "slots": {
+   "Head": 2,
+   "Arms": 1
+  },
+  "pieces": 3,
+  "has_set_bonus": false,
+  "class": "B-collection-pattern",
+  "shots": [
+   "docs\\audit\\_up\\unbound-gear\\Black Draconic Guise_IL630.png",
+   "docs\\audit\\_up\\unbound-gear\\Blue Draconic Guise_IL630.png",
+   "docs\\audit\\_up\\unbound-gear\\Cambist's Gauntlets_IL630.png"
+  ],
+  "sample_items": [
+   "Black Draconic Guise",
+   "Blue Draconic Guise",
+   "Cambist's Gauntlets"
+  ]
+ },
+ {
+  "set": "Rings: The Dread Sanctum",
+  "need": 4,
+  "equippable": 2,
+  "slots": {
+   "Ring": 12
+  },
+  "pieces": 12,
+  "has_set_bonus": false,
+  "class": "B-collection-pattern",
+  "shots": [],
+  "sample_items": [
+   "Dreadbreaker Hoop",
+   "Dreadwalker Hoop",
+   "Dreadbreaker Band"
+  ]
+ },
+ {
+  "set": "Rings: Pirates' Skyhold Region",
+  "need": 4,
+  "equippable": 2,
+  "slots": {
+   "Ring": 6
+  },
+  "pieces": 6,
+  "has_set_bonus": false,
+  "class": "B-collection-pattern",
+  "shots": [],
+  "sample_items": [
+   "Bloodbrass Hoop",
+   "Bloodbrass Band",
+   "Bloodbrass Loop"
+  ]
+ },
+ {
+  "set": "Scalebreaker's Gear",
+  "need": 11,
+  "equippable": 1,
+  "slots": {
+   "Arms": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Ancient Scalebreaker's Sleeves_IL1700.png"
+  ],
+  "sample_items": [
+   "Ancient Scalebreaker's Sleeves"
+  ]
+ },
+ {
+  "set": "Armor of the Successor",
+  "need": 9,
+  "equippable": 4,
+  "slots": {
+   "Head": 10,
+   "Feet": 10,
+   "Armor": 11,
+   "Arms": 10
+  },
+  "pieces": 41,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\bard-gear\\Banded Boots of the Successor_IL990.png",
+   "docs\\audit\\_up\\bard-gear\\Banded Bracers of the Successor_IL990 (2).png",
+   "docs\\audit\\_up\\bard-gear\\Elegant Cap of the Successor_IL990 (2).png",
+   "docs\\audit\\_up\\bard-gear\\Elegant Leathers of the Successor_IL990.png"
+  ],
+  "sample_items": [
+   "Sacred Helm of Halaster's Successor",
+   "Adorned Helm of Halaster's Successor · IL 1010",
+   "Venerated Sabatons of Halaster's Successor · IL 1010"
+  ]
+ },
+ {
+  "set": "Tyrators",
+  "need": 8,
+  "equippable": 2,
+  "slots": {
+   "Ring": 6
+  },
+  "pieces": 6,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "The Thorned Edict",
+   "The Lesion Band",
+   "The Hollow Maw"
+  ]
+ },
+ {
+  "set": "Doomvault Remains",
+  "need": 8,
+  "equippable": 4,
+  "slots": {
+   "Ring": 6,
+   "Pants": 3,
+   "Shirt": 3
+  },
+  "pieces": 12,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Graveveil Halo of Finality",
+   "Graveveil Ring of Dusk",
+   "Graveveil Loop of Mourning"
+  ]
+ },
+ {
+  "set": "Demonic Artifacts and Gear",
+  "need": 6,
+  "equippable": 1,
+  "slots": {
+   "Head": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\unbound-gear\\Bloodlord's Visage_IL630.png",
+   "docs\\audit\\_up\\unbound-gear\\Brynnyr's Demise_IL630.png"
+  ],
+  "sample_items": [
+   "Bloodlord's Visage",
+   "Brynnyr's Demise"
+  ]
+ },
+ {
+  "set": "Winterworn Harness",
+  "need": 6,
+  "equippable": 4,
+  "slots": {
+   "Arms": 3,
+   "Feet": 3,
+   "Head": 3,
+   "Armor": 3
+  },
+  "pieces": 12,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\paladin-gear\\Frostbound Hearthbinders_IL4700 (2).png",
+   "docs\\audit\\_up\\paladin-gear\\Frostbound Hearthboots_IL4700 (2).png",
+   "docs\\audit\\_up\\paladin-gear\\Frostbound Hearthhood_IL4700 (2).png",
+   "docs\\audit\\_up\\paladin-gear\\Frostbound Hearthtunic_IL4700 (2).png"
+  ],
+  "sample_items": [
+   "Frostbound Hearthbinders",
+   "Frostbound Hearthboots",
+   "Frostbound Hearthhood"
+  ]
+ },
+ {
+  "set": "Divine Armor",
+  "need": 5,
+  "equippable": 4,
+  "slots": {
+   "Head": 5,
+   "Feet": 5,
+   "Armor": 5,
+   "Arms": 5
+  },
+  "pieces": 20,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\bard-gear\\Divine Raid Braces_IL1230 (2).png",
+   "docs\\audit\\_up\\bard-gear\\Divine Raid Cuisses_IL1230 (2).png",
+   "docs\\audit\\_up\\bard-gear\\Divine Raid Helm_IL1230 (2).png",
+   "docs\\audit\\_up\\bard-gear\\Divine Raid Surcoat_IL1230 (2).png"
+  ],
+  "sample_items": [
+   "Divine Ward Sallet",
+   "Divine Mystic Helm",
+   "Divine Ward Greaves"
+  ]
+ },
+ {
+  "set": "Lion Guard Armor",
+  "need": 5,
+  "equippable": 4,
+  "slots": {
+   "Armor": 3,
+   "Arms": 3,
+   "Feet": 3,
+   "Head": 3
+  },
+  "pieces": 12,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\bard-gear\\Lion Guard's Raid Boots_IL1250.png",
+   "docs\\audit\\_up\\bard-gear\\Lion Guard's Raid Gloves_IL1250.png",
+   "docs\\audit\\_up\\bard-gear\\Lion Guard's Raid Hat_IL1250.png",
+   "docs\\audit\\_up\\bard-gear\\Lion Guard's Raid Leathers_IL1250.png"
+  ],
+  "sample_items": [
+   "Lion Guard's Ward Cuirass",
+   "Lion Guard's Restoration Couters",
+   "Lion Guard's Ward Couters"
+  ]
+ },
+ {
+  "set": "Infernal Forged Armor",
+  "need": 5,
+  "equippable": 4,
+  "slots": {
+   "Head": 13,
+   "Feet": 13,
+   "Armor": 13,
+   "Arms": 13
+  },
+  "pieces": 52,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\bard-gear\\Demon Forged Braces_IL1215.png",
+   "docs\\audit\\_up\\bard-gear\\Demon Forged Coif_IL1215.png",
+   "docs\\audit\\_up\\bard-gear\\Demon Forged Cuisses_IL1215.png",
+   "docs\\audit\\_up\\bard-gear\\Demon Forged Scalemail_IL1215.png"
+  ],
+  "sample_items": [
+   "Fiend Forged Coif",
+   "Fiend Forged Helm",
+   "Fiend Forged Sabatons"
+  ]
+ },
+ {
+  "set": "Eternal Armor Set",
+  "need": 5,
+  "equippable": 4,
+  "slots": {
+   "Head": 2,
+   "Armor": 2,
+   "Arms": 3,
+   "Feet": 2
+  },
+  "pieces": 9,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\bard-gear\\Eternal Boots_IL1300 (2).png",
+   "docs\\audit\\_up\\bard-gear\\Eternal Gloves_IL1300 (2).png",
+   "docs\\audit\\_up\\bard-gear\\Eternal Greaves_IL1300.png",
+   "docs\\audit\\_up\\bard-gear\\Eternal Helmet_IL1300 (2).png"
+  ],
+  "sample_items": [
+   "Eternal Helmet",
+   "Eternal Leather Armor",
+   "Eternal Gloves"
+  ]
+ },
+ {
+  "set": "Pioneer Armor",
+  "need": 4,
+  "equippable": 1,
+  "slots": {
+   "Arms": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Pioneer Assault Sevars_IL616.png"
+  ],
+  "sample_items": [
+   "Pioneer Assault Sevars"
+  ]
+ },
+ {
+  "set": "Umbral Assault",
+  "need": 4,
+  "equippable": 3,
+  "slots": {
+   "Armor": 1,
+   "Arms": 1,
+   "Feet": 1
+  },
+  "pieces": 3,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\bard-gear\\Umbral Assault Boots_IL728.png",
+   "docs\\audit\\_up\\bard-gear\\Umbral Assault Gloves_IL728.png",
+   "docs\\audit\\_up\\bard-gear\\Umbral Assault Vest_IL728.png"
+  ],
+  "sample_items": [
+   "Umbral Assault Vest",
+   "Umbral Assault Gloves",
+   "Umbral Assault Boots"
+  ]
+ },
+ {
+  "set": "Apocalypse",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Apocalypse Choker",
+   "Apocalypse Bindings"
+  ]
+ },
+ {
+  "set": "Focused Radiance",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Belt": 1,
+   "Neck": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Belt of the Forsaken",
+   "Necklace of the Forsaken"
+  ]
+ },
+ {
+  "set": "Finish the Job",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Belt": 1,
+   "Neck": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Nightpiercer Bindings",
+   "Nightpiercer Choker"
+  ]
+ },
+ {
+  "set": "Tiamat's Prized Possessions",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Tiamat's Golden Necklace",
+   "Tiamat's Golden Sash"
+  ]
+ },
+ {
+  "set": "Magmatic Efficiency",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Choker of Searing Magma",
+   "Girdle of Coagulated Magma"
+  ]
+ },
+ {
+  "set": "Wrathful Bindings",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Wrathful Strangler",
+   "Wrathful Waistband"
+  ]
+ },
+ {
+  "set": "Rune of the Underdark",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Netherese Engineer's Pendant",
+   "Netherese Engineer's Chain"
+  ]
+ },
+ {
+  "set": "Mythallar",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Mythallar Shard",
+   "Mythallar Piece"
+  ]
+ },
+ {
+  "set": "Diamond",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Iridescent Diamond Pendant",
+   "Scintillating Diamond Buckle"
+  ]
+ },
+ {
+  "set": "Malignant Energy",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": true,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Ritualistic Necklace",
+   "Ritualistic Strap"
+  ]
+ },
+ {
+  "set": "Crimson Retaliation",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Belt": 1,
+   "Neck": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Girdle of the Crimson Oath",
+   "Pendant of the Crimson Oath"
+  ]
+ },
+ {
+  "set": "Bloodgold Gear",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Belt": 1,
+   "Neck": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Captain's Girdle",
+   "Captain's Pendant"
+  ]
+ },
+ {
+  "set": "Volcanic Jewels",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Locket of the Caldera",
+   "Belt of the Caldera"
+  ]
+ },
+ {
+  "set": "Astral Absorption",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 2,
+   "Belt": 3
+  },
+  "pieces": 5,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Draining Talisman",
+   "Draining Choker",
+   "Draining Girdle"
+  ]
+ },
+ {
+  "set": "Unstable Drive",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 2,
+   "Belt": 2
+  },
+  "pieces": 4,
+  "has_set_bonus": true,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Detector's Choker",
+   "Detector's Pendant",
+   "Detector's Girdle"
+  ]
+ },
+ {
+  "set": "Astral Dash",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Belt": 1,
+   "Neck": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Sash of Shooting Stars",
+   "Cosmic Clasp"
+  ]
+ },
+ {
+  "set": "Rune of Replenishment",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Belt": 1,
+   "Neck": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Belt of Blinding Radiance",
+   "Pendant of Eternal Light"
+  ]
+ },
+ {
+  "set": "Marilith Strike",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Jewel of the Marilith",
+   "Sash of the Marilith"
+  ]
+ },
+ {
+  "set": "Dashing Action",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "House Baenre Brooch",
+   "House Baenre Wrap"
+  ]
+ },
+ {
+  "set": "Ruthless Domination",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Hypnotizing Pendant",
+   "Greater Beholder Belt"
+  ]
+ },
+ {
+  "set": "Attuned Eye of Odran",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Sanity Preservation Choker",
+   "Tassets of Mind Restraint"
+  ]
+ },
+ {
+  "set": "Assassin's Luck",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Assassin's Choker",
+   "Assassin's Belt"
+  ]
+ },
+ {
+  "set": "Tentacle Rod",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Tentacle Eye",
+   "Tentacle Wrap"
+  ]
+ },
+ {
+  "set": "Insightful Alacrity",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Belt": 1,
+   "Neck": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Dragonmind Clasp",
+   "Dragonmind Charm"
+  ]
+ },
+ {
+  "set": "Aggressive Alacrity",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Belt": 1,
+   "Neck": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Dragonhide Sash",
+   "Dragonhide Choker"
+  ]
+ },
+ {
+  "set": "Vanguard's Alacrity",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Dragonscale Neckguard",
+   "Dragonscale Girdle"
+  ]
+ },
+ {
+  "set": "Celestial Alacrity",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Dragonsoul Brooch",
+   "Dragonsoul Belt"
+  ]
+ },
+ {
+  "set": "Ravenloft",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 2
+  },
+  "pieces": 3,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Barovian Lavaliere",
+   "Barovian Cummerbund",
+   "Barovian Cumberbund"
+  ]
+ },
+ {
+  "set": "Dead",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Carcanet of the Dead",
+   "Lacings of the Dead"
+  ]
+ },
+ {
+  "set": "Blood Raven",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Blood Raven Pendant",
+   "Blood Raven Ribbons"
+  ]
+ },
+ {
+  "set": "Star",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Starshard Choker",
+   "Twinkle of the Stars"
+  ]
+ },
+ {
+  "set": "Glorious Light",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Chains of Glory",
+   "Belt of Victory"
+  ]
+ },
+ {
+  "set": "Dark Remnants",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "The Engine Master's Mantle",
+   "Whip of the Erinyes"
+  ]
+ },
+ {
+  "set": "Armaments of the Wyvern",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Wyvern's Eye Necklace",
+   "Wyvern-Skin Belt"
+  ]
+ },
+ {
+  "set": "Armaments of Constructed Demise",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Electric Collar",
+   "Chained Restraints"
+  ]
+ },
+ {
+  "set": "Apprentice's Spoils",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Jhesyra's Tattered Mantle",
+   "Trobriand's Conduction Cable"
+  ]
+ },
+ {
+  "set": "Enchanted Thumb",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Woven Vine",
+   "Blooming Cord"
+  ]
+ },
+ {
+  "set": "Reflective Armaments",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Reflective Collar",
+   "Mirror-Plated Belt"
+  ]
+ },
+ {
+  "set": "Mad Dash",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Necklace of the Mad Mage",
+   "Belt of the Mad Mage"
+  ]
+ },
+ {
+  "set": "Soulmonger",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Belt": 1,
+   "Neck": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\unbound-gear\\Cincture of Atropal Essence_IL350.png",
+   "docs\\audit\\_up\\unbound-gear\\Mantle of Atropal Essence_IL350.png"
+  ],
+  "sample_items": [
+   "Cincture of Atropal Essence",
+   "Mantle of Atropal Essence"
+  ]
+ },
+ {
+  "set": "Skin of the Serpent",
+  "need": 3,
+  "equippable": 1,
+  "slots": {
+   "Belt": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\unbound-gear\\Wrap of the Serpent_IL350.png"
+  ],
+  "sample_items": [
+   "Wrap of the Serpent"
+  ]
+ },
+ {
+  "set": "Skull Lord",
+  "need": 3,
+  "equippable": 1,
+  "slots": {
+   "Belt": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\unbound-gear\\Skull Lord Sash_IL350.png"
+  ],
+  "sample_items": [
+   "Skull Lord Sash"
+  ]
+ },
+ {
+  "set": "Valhalla's Rebuke",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 2,
+   "Belt": 1
+  },
+  "pieces": 3,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Horn of Valhalla",
+   "Belt of Valhalla",
+   "Cloak of Valhalla"
+  ]
+ },
+ {
+  "set": "Black Ice set",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Belt": 1,
+   "Neck": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Greater Belt of Black Ice",
+   "Greater Cloak of Black Ice"
+  ]
+ },
+ {
+  "set": "Lostmauth's Hoard",
+  "need": 3,
+  "equippable": 2,
+  "slots": {
+   "Neck": 1,
+   "Belt": 1
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\unbound-gear\\Golden Belt of Puissance_IL600.png",
+   "docs\\audit\\_up\\unbound-gear\\Lostmauth's Hoard Necklace_IL600.png"
+  ],
+  "sample_items": [
+   "Lostmauth's Hoard Necklace",
+   "Golden Belt of Puissance"
+  ]
+ },
+ {
+  "set": "Enchanted Forte",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Shirt": 4
+  },
+  "pieces": 4,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Mark of the Adept",
+   "Mark of the Fledgling",
+   "Mark of the Adept — Healing Tactics"
+  ]
+ },
+ {
+  "set": "Avernus Campaign Leveling Conduits",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Pants": 10
+  },
+  "pieces": 10,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Upper Pact Brands of the Blaze-bond",
+   "Upper Pact Brands of the Inferno",
+   "Upper Pact Brands of the Pyre"
+  ]
+ },
+ {
+  "set": "Survivor's Savagery",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Curseford's Raid Ushanka",
+   "Curseford's Assault Ushanka"
+  ]
+ },
+ {
+  "set": "Warden's Balance",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Curseford's Raid Longcoat",
+   "Curseford's Assault Longcoat"
+  ]
+ },
+ {
+  "set": "Survivor's Finesse",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Curseford's Raid Bracers",
+   "Curseford's Assault Bracers"
+  ]
+ },
+ {
+  "set": "Survivor's Stride",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Curseford's Raid Pigaches",
+   "Curseford's Assault Pigaches"
+  ]
+ },
+ {
+  "set": "Chultan Remedy",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Primal Assault Barakoa_IL700.png",
+   "docs\\audit\\_up\\warlock-gear\\Primal Raid Barakoa_IL700.png"
+  ],
+  "sample_items": [
+   "Primal Raid Barakoa",
+   "Primal Assault Barakoa"
+  ]
+ },
+ {
+  "set": "Chultan Guard",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Primal Raid Kiuno_IL700.png"
+  ],
+  "sample_items": [
+   "Primal Raid Kiuno"
+  ]
+ },
+ {
+  "set": "Butcher's Might",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 3
+  },
+  "pieces": 3,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Primal Assault Kiuno_IL700.png",
+   "docs\\audit\\_up\\warlock-gear\\Primal Assault Shabas_IL700.png",
+   "docs\\audit\\_up\\warlock-gear\\Primal Raid Shabas_IL700.png"
+  ],
+  "sample_items": [
+   "Primal Raid Shabas",
+   "Primal Assault Shabas",
+   "Primal Assault Kiuno"
+  ]
+ },
+ {
+  "set": "Executioner's Zeal",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Primal Assault Viatus_IL700.png",
+   "docs\\audit\\_up\\warlock-gear\\Primal Raid Viatus_IL700.png"
+  ],
+  "sample_items": [
+   "Primal Raid Viatus",
+   "Primal Assault Viatus"
+  ]
+ },
+ {
+  "set": "Challenger's Guard",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Huntsman Assault Longcoat_IL672.png",
+   "docs\\audit\\_up\\warlock-gear\\Huntsman Raid Longcoat_IL672.png"
+  ],
+  "sample_items": [
+   "Huntsman Raid Longcoat",
+   "Huntsman Assault Longcoat"
+  ]
+ },
+ {
+  "set": "Great Hunter",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Huntsman Assault Cowl_IL672.png",
+   "docs\\audit\\_up\\warlock-gear\\Huntsman Raid Cowl_IL672.png"
+  ],
+  "sample_items": [
+   "Huntsman Raid Cowl",
+   "Huntsman Assault Cowl"
+  ]
+ },
+ {
+  "set": "Challenger's Might",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Huntsman Assault Wristguards_IL672.png",
+   "docs\\audit\\_up\\warlock-gear\\Huntsman Raid Wristguards_IL672.png"
+  ],
+  "sample_items": [
+   "Huntsman Raid Wristguards",
+   "Huntsman Assault Wristguards"
+  ]
+ },
+ {
+  "set": "Executioner's Haste",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Huntsman Assault Pigaches_IL672.png",
+   "docs\\audit\\_up\\warlock-gear\\Huntsman Raid Pigaches_IL672.png"
+  ],
+  "sample_items": [
+   "Huntsman Raid Pigaches",
+   "Huntsman Assault Pigaches"
+  ]
+ },
+ {
+  "set": "Leader's Dash",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Pioneer Assault Crackows_IL616.png",
+   "docs\\audit\\_up\\warlock-gear\\Pioneer Raid Crackows_IL616.png"
+  ],
+  "sample_items": [
+   "Pioneer Raid Crackows",
+   "Pioneer Assault Crackows"
+  ]
+ },
+ {
+  "set": "Leader's Might",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Pioneer Raid Sevars_IL616.png"
+  ],
+  "sample_items": [
+   "Pioneer Raid Sevars"
+  ]
+ },
+ {
+  "set": "Leader's Guard",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Pioneer Assault Manteel_IL616.png",
+   "docs\\audit\\_up\\warlock-gear\\Pioneer Raid Manteel_IL616.png"
+  ],
+  "sample_items": [
+   "Pioneer Raid Manteel",
+   "Pioneer Assault Manteel"
+  ]
+ },
+ {
+  "set": "Leader's Vitality",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Pioneer Assault Barakeh_IL616.png",
+   "docs\\audit\\_up\\warlock-gear\\Pioneer Raid Barakeh_IL616.png"
+  ],
+  "sample_items": [
+   "Pioneer Raid Barakeh",
+   "Pioneer Assault Barakeh"
+  ]
+ },
+ {
+  "set": "Chultan Hunter",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Pilgrim Assault Barakeh_IL644.png",
+   "docs\\audit\\_up\\warlock-gear\\Pilgrim Raid Barakeh_IL644.png"
+  ],
+  "sample_items": [
+   "Pilgrim Raid Barakeh",
+   "Pilgrim Assault Barakeh"
+  ]
+ },
+ {
+  "set": "Death Defier's Guard",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Pilgrim Assault Manteel_IL644.png",
+   "docs\\audit\\_up\\warlock-gear\\Pilgrim Raid Manteel_IL644.png"
+  ],
+  "sample_items": [
+   "Pilgrim Assault Manteel",
+   "Pilgrim Raid Manteel"
+  ]
+ },
+ {
+  "set": "Wanderer's Vigor",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Pilgrim Assault Crackows_IL644.png",
+   "docs\\audit\\_up\\warlock-gear\\Pilgrim Raid Crackows_IL644.png"
+  ],
+  "sample_items": [
+   "Pilgrim Raid Crackows",
+   "Pilgrim Assault Crackows"
+  ]
+ },
+ {
+  "set": "Death Defier's Might",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 2
+  },
+  "pieces": 2,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\Pilgrim Assault Sevars_IL644.png",
+   "docs\\audit\\_up\\warlock-gear\\Pilgrim Raid Sevars_IL644.png"
+  ],
+  "sample_items": [
+   "Pilgrim Raid Sevars",
+   "Pilgrim Assault Sevars"
+  ]
+ },
+ {
+  "set": "Warden's Defense",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 4
+  },
+  "pieces": 4,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\League's Assault Barakeh_IL588.png",
+   "docs\\audit\\_up\\warlock-gear\\League's Elite Assault Barakeh_IL602.png",
+   "docs\\audit\\_up\\warlock-gear\\League's Elite Raid Barakeh_IL602.png",
+   "docs\\audit\\_up\\warlock-gear\\League's Raid Barakeh_IL588.png"
+  ],
+  "sample_items": [
+   "League's Raid Barakeh",
+   "League's Assault Barakeh",
+   "League's Elite Raid Barakeh"
+  ]
+ },
+ {
+  "set": "Survivor's Guard",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 4
+  },
+  "pieces": 4,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\League's Assault Manteel_IL588.png",
+   "docs\\audit\\_up\\warlock-gear\\League's Elite Assault Manteel_IL602.png",
+   "docs\\audit\\_up\\warlock-gear\\League's Elite Raid Manteel_IL602.png",
+   "docs\\audit\\_up\\warlock-gear\\League's Raid Manteel_IL588.png"
+  ],
+  "sample_items": [
+   "League's Raid Manteel",
+   "League's Assault Manteel",
+   "League's Elite Raid Manteel"
+  ]
+ },
+ {
+  "set": "Survivor's Might",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 4
+  },
+  "pieces": 4,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\League's Assault Sevars_IL588.png",
+   "docs\\audit\\_up\\warlock-gear\\League's Elite Assault Sevars_IL602.png",
+   "docs\\audit\\_up\\warlock-gear\\League's Elite Raid Sevars_IL602.png",
+   "docs\\audit\\_up\\warlock-gear\\League's Raid Sevars_IL588.png"
+  ],
+  "sample_items": [
+   "League's Raid Sevars",
+   "League's Assault Sevars",
+   "League's Elite Raid Sevars"
+  ]
+ },
+ {
+  "set": "Warden's Haste",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 4
+  },
+  "pieces": 4,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\warlock-gear\\League's Assault Crackows_IL588.png",
+   "docs\\audit\\_up\\warlock-gear\\League's Elite Assault Crackows_IL602.png",
+   "docs\\audit\\_up\\warlock-gear\\League's Elite Raid Crackows_IL602.png",
+   "docs\\audit\\_up\\warlock-gear\\League's Raid Crackows_IL588.png"
+  ],
+  "sample_items": [
+   "League's Assault Crackows",
+   "League's Raid Crackows",
+   "League's Elite Raid Crackows"
+  ]
+ },
+ {
+  "set": "Gladiator's Focus",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Pulsar Coil"
+  ]
+ },
+ {
+  "set": "Mystic Inspiration",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Armor": 1
+  },
+  "pieces": 1,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [],
+  "sample_items": [
+   "Bregan D'aerthe Expert's Coil"
+  ]
+ },
+ {
+  "set": "Weapons of the Headsman",
+  "need": 2,
+  "equippable": 1,
+  "slots": {
+   "Artifact Equipment": 8
+  },
+  "pieces": 8,
+  "has_set_bonus": false,
+  "class": "C-other",
+  "shots": [
+   "docs\\audit\\_up\\barbarian-gear\\Headsman's Greataxe_IL350.png",
+   "docs\\audit\\_up\\barbarian-gear\\Headsman's Sword Knot_IL350.png"
+  ],
+  "sample_items": [
+   "Headsman's Greataxe",
+   "Headsman's Greataxe",
+   "Headsman's Greataxe"
+  ]
+ }
+]

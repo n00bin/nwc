@@ -1,0 +1,2828 @@
+{
+ "covered": [
+  {
+   "id": 3337,
+   "name": "Forest Guardian's Restoration Cuisses",
+   "il": 1500,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1500 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Mastery",
+     "stat": "Combat Advantage",
+     "amount": 7500.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Combat Advantage is increased by 7500."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Forest Guardian's Restoration Cuisses_IL1500.png",
+    "docs\\audit\\_up\\warlock-gear\\Forest Guardian's Restoration Cuisses_IL1500.png"
+   ]
+  },
+  {
+   "id": 3341,
+   "name": "Forest Guardian's Raid Shoes",
+   "il": 1500,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1500 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Mastery",
+     "stat": "Combat Advantage",
+     "amount": 7500.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Combat Advantage is increased by 7500."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Forest Guardian's Raid Shoes_IL1500.png",
+    "docs\\audit\\_up\\wizard-gear\\Forest Guardian's Raid Shoes_IL1500.png"
+   ]
+  },
+  {
+   "id": 4057,
+   "name": "Forest Guardian's Raid Cuisses",
+   "il": 1500,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1500 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Mastery",
+     "stat": "Combat Advantage",
+     "amount": 7500.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Combat Advantage is increased by 7500."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Forest Guardian's Raid Cuisses_IL1500 (2).png",
+    "docs\\audit\\_up\\bard-gear\\Forest Guardian's Raid Cuisses_IL1500.png"
+   ]
+  },
+  {
+   "id": 6557,
+   "name": "Forest Guardian's Raid Greaves",
+   "il": 1500,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1500 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Mastery",
+     "stat": "Combat Advantage",
+     "amount": 7500.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Combat Advantage is increased by 7500."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Forest Guardian's Raid Greaves_IL1500.png",
+    "docs\\audit\\_up\\fighter-gear\\Forest Guardian's Raid Greaves_IL1500.png"
+   ]
+  },
+  {
+   "id": 1395,
+   "name": "Fiend Forged Coif",
+   "il": 1230,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1230 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Fiend Forged Coif_IL1230.png",
+    "docs\\audit\\_up\\cleric-gear\\Fiend Forged Coif_IL1230.png"
+   ]
+  },
+  {
+   "id": 3394,
+   "name": "Divine Restoration Helm",
+   "il": 1230,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Might' grants 5000 on an IL 1230 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Might",
+     "stat": "Power",
+     "amount": 5000.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Power is increased by 5000."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Divine Restoration Helm_IL1230.png",
+    "docs\\audit\\_up\\warlock-gear\\Divine Restoration Helm_IL1230.png"
+   ]
+  },
+  {
+   "id": 3395,
+   "name": "Divine Raid Hood",
+   "il": 1230,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Might' grants 5000 on an IL 1230 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Might",
+     "stat": "Power",
+     "amount": 5000.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Power is increased by 5000."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\cleric-gear\\Divine Raid Hood_IL1230.png",
+    "docs\\audit\\_up\\warlock-gear\\Divine Raid Hood_IL1230.png"
+   ]
+  },
+  {
+   "id": 3411,
+   "name": "Fiend Forged Cowl",
+   "il": 1230,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1230 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Fiend Forged Cowl_IL1230.png",
+    "docs\\audit\\_up\\wizard-gear\\Fiend Forged Cowl_IL1230.png"
+   ]
+  },
+  {
+   "id": 4098,
+   "name": "Divine Raid Helm",
+   "il": 1230,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Might' grants 5000 on an IL 1230 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Might",
+     "stat": "Power",
+     "amount": 5000.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Power is increased by 5000."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Divine Raid Helm_IL1230 (2).png",
+    "docs\\audit\\_up\\bard-gear\\Divine Raid Helm_IL1230.png"
+   ]
+  },
+  {
+   "id": 4106,
+   "name": "Fiend Forged Hood",
+   "il": 1230,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1230 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Fiend Forged Hood_IL1230 (2).png",
+    "docs\\audit\\_up\\bard-gear\\Fiend Forged Hood_IL1230.png"
+   ]
+  },
+  {
+   "id": 6555,
+   "name": "Fiend Forged Sallet",
+   "il": 1230,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1230 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Fiend Forged Sallet_IL1230.png",
+    "docs\\audit\\_up\\fighter-gear\\Fiend Forged Sallet_IL1230.png"
+   ]
+  },
+  {
+   "id": 1401,
+   "name": "Devil Forged Coif",
+   "il": 1215,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Devil Forged Coif_IL1215.png",
+    "docs\\audit\\_up\\cleric-gear\\Devil Forged Coif_IL1215.png"
+   ]
+  },
+  {
+   "id": 1413,
+   "name": "Demon Forged Coif",
+   "il": 1215,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Demon Forged Coif_IL1215.png",
+    "docs\\audit\\_up\\cleric-gear\\Demon Forged Coif_IL1215.png"
+   ]
+  },
+  {
+   "id": 3418,
+   "name": "Devil Forged Cowl",
+   "il": 1215,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Devil Forged Cowl_IL1215.png",
+    "docs\\audit\\_up\\wizard-gear\\Devil Forged Cowl_IL1215.png"
+   ]
+  },
+  {
+   "id": 3426,
+   "name": "Demon Forged Cowl",
+   "il": 1215,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Demon Forged Cowl_IL1215.png",
+    "docs\\audit\\_up\\wizard-gear\\Demon Forged Cowl_IL1215.png"
+   ]
+  },
+  {
+   "id": 4110,
+   "name": "Devil Forged Hood",
+   "il": 1215,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Devil Forged Hood_IL1215 (2).png",
+    "docs\\audit\\_up\\bard-gear\\Devil Forged Hood_IL1215.png"
+   ]
+  },
+  {
+   "id": 4112,
+   "name": "Demon Forged Hood",
+   "il": 1215,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Demon Forged Hood_IL1215 (2).png",
+    "docs\\audit\\_up\\bard-gear\\Demon Forged Hood_IL1215.png"
+   ]
+  },
+  {
+   "id": 6415,
+   "name": "Demon Forged Sallet",
+   "il": 1215,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Demon Forged Sallet_IL1215.png",
+    "docs\\audit\\_up\\fighter-gear\\Demon Forged Sallet_IL1215.png"
+   ]
+  },
+  {
+   "id": 6423,
+   "name": "Devil Forged Sallet",
+   "il": 1215,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Devil Forged Sallet_IL1215.png",
+    "docs\\audit\\_up\\fighter-gear\\Devil Forged Sallet_IL1215.png"
+   ]
+  },
+  {
+   "id": 1419,
+   "name": "Infernal Forged Coif",
+   "il": 1200,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1200 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Infernal Forged Coif_IL1200.png",
+    "docs\\audit\\_up\\cleric-gear\\Infernal Forged Coif_IL1200.png"
+   ]
+  },
+  {
+   "id": 3439,
+   "name": "Infernal Forged Cowl",
+   "il": 1200,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1200 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Infernal Forged Cowl_IL1200.png",
+    "docs\\audit\\_up\\wizard-gear\\Infernal Forged Cowl_IL1200.png"
+   ]
+  },
+  {
+   "id": 4118,
+   "name": "Infernal Forged Hood",
+   "il": 1200,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1200 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Infernal Forged Hood_IL1200 (2).png",
+    "docs\\audit\\_up\\bard-gear\\Infernal Forged Hood_IL1200.png"
+   ]
+  },
+  {
+   "id": 6611,
+   "name": "Infernal Forged Sallet",
+   "il": 1200,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1200 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Infernal Forged Sallet_IL1200.png",
+    "docs\\audit\\_up\\fighter-gear\\Infernal Forged Sallet_IL1200.png"
+   ]
+  },
+  {
+   "id": 4367,
+   "name": "Dusk Raid Mask",
+   "il": 1175,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 5000,
+     "kind": "rating",
+     "description": "2 of Set: +5,000 Max HP, +1% Power, +1% Defense. Wanderer's Vigor: when not in a party, regenerate 2000 HP every 3s. 4 of Set: On Stronghold map, you and allies gain +5 Movement Speed."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dusk Raid Mask_IL1175.png",
+    "docs\\audit\\_up\\rogue-gear\\Dusk Raid Mask_IL1175.png"
+   ]
+  },
+  {
+   "id": 4368,
+   "name": "Dusk Raid Vest",
+   "il": 1175,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 5000,
+     "kind": "rating",
+     "description": "2 of Set: +5,000 Max HP, +1% Power, +1% Defense. Wanderer's Vigor: when not in a party, regenerate 2000 HP every 3s. 4 of Set: On Stronghold map, you and allies gain +5 Movement Speed."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dusk Raid Vest_IL1175.png",
+    "docs\\audit\\_up\\rogue-gear\\Dusk Raid Vest_IL1175.png"
+   ]
+  },
+  {
+   "id": 4369,
+   "name": "Dusk Raid Gloves",
+   "il": 1175,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 5000,
+     "kind": "rating",
+     "description": "2 of Set: +5,000 Max HP, +1% Power, +1% Defense. Wanderer's Vigor: when not in a party, regenerate 2000 HP every 3s. 4 of Set: On Stronghold map, you and allies gain +5 Movement Speed."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dusk Raid Gloves_IL1175.png",
+    "docs\\audit\\_up\\rogue-gear\\Dusk Raid Gloves_IL1175.png"
+   ]
+  },
+  {
+   "id": 4370,
+   "name": "Dusk Raid Boots",
+   "il": 1175,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 5000,
+     "kind": "rating",
+     "description": "2 of Set: +5,000 Max HP, +1% Power, +1% Defense. Wanderer's Vigor: when not in a party, regenerate 2000 HP every 3s. 4 of Set: On Stronghold map, you and allies gain +5 Movement Speed."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dusk Raid Boots_IL1175.png",
+    "docs\\audit\\_up\\rogue-gear\\Dusk Raid Boots_IL1175.png"
+   ]
+  },
+  {
+   "id": 4371,
+   "name": "Dusk Assault Mask",
+   "il": 1175,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 5000,
+     "kind": "rating",
+     "description": "2 of Set: +5,000 Max HP, +1% Power, +1% Defense. Wanderer's Vigor: when not in a party, regenerate 2000 HP every 3s. 4 of Set: On Stronghold map, you and allies gain +5 Movement Speed."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dusk Assault Mask_IL1175.png",
+    "docs\\audit\\_up\\rogue-gear\\Dusk Assault Mask_IL1175.png"
+   ]
+  },
+  {
+   "id": 4372,
+   "name": "Dusk Assault Vest",
+   "il": 1175,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 5000,
+     "kind": "rating",
+     "description": "2 of Set: +5,000 Max HP, +1% Power, +1% Defense. Wanderer's Vigor: not in party, regenerate 2000 HP every 3s."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dusk Assault Vest_IL1175.png",
+    "docs\\audit\\_up\\rogue-gear\\Dusk Assault Vest_IL1175.png"
+   ]
+  },
+  {
+   "id": 4373,
+   "name": "Dusk Assault Gloves",
+   "il": 1175,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 5000,
+     "kind": "rating",
+     "description": "2 of Set: +5,000 Max HP, +1% Power, +1% Defense. Wanderer's Vigor: not in party, regenerate 2000 HP every 3s."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dusk Assault Gloves_IL1175.png",
+    "docs\\audit\\_up\\rogue-gear\\Dusk Assault Gloves_IL1175.png"
+   ]
+  },
+  {
+   "id": 4374,
+   "name": "Dusk Assault Boots",
+   "il": 1175,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 5000 on an IL 1175 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 5000,
+     "kind": "rating",
+     "description": "2 of Set: +5,000 Max HP, +1% Power, +1% Defense. Wanderer's Vigor: not in party, regenerate 2000 HP every 3s."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dusk Assault Boots_IL1175.png",
+    "docs\\audit\\_up\\rogue-gear\\Dusk Assault Boots_IL1175.png"
+   ]
+  },
+  {
+   "id": 4576,
+   "name": "Elemental Dragonflight Raid Mask",
+   "il": 596,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Elemental Dragonflight Raid Mask_IL596.png",
+    "docs\\audit\\_up\\rogue-gear\\Elemental Dragonflight Raid Mask_IL596.png"
+   ]
+  },
+  {
+   "id": 4577,
+   "name": "Elemental Dragonflight Raid Vest",
+   "il": 596,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Elemental Dragonflight Raid Vest_IL596.png",
+    "docs\\audit\\_up\\rogue-gear\\Elemental Dragonflight Raid Vest_IL596.png"
+   ]
+  },
+  {
+   "id": 4578,
+   "name": "Elemental Dragonflight Raid Gloves",
+   "il": 596,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Elemental Dragonflight Raid Gloves_IL596.png",
+    "docs\\audit\\_up\\rogue-gear\\Elemental Dragonflight Raid Gloves_IL596.png"
+   ]
+  },
+  {
+   "id": 4579,
+   "name": "Elemental Dragonflight Raid Boots",
+   "il": 596,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Elemental Dragonflight Raid Boots_IL596.png",
+    "docs\\audit\\_up\\rogue-gear\\Elemental Dragonflight Raid Boots_IL596.png"
+   ]
+  },
+  {
+   "id": 4580,
+   "name": "Elemental Dragonflight Assault Mask",
+   "il": 596,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Elemental Dragonflight Assault Mask_IL596.png",
+    "docs\\audit\\_up\\rogue-gear\\Elemental Dragonflight Assault Mask_IL596.png"
+   ]
+  },
+  {
+   "id": 4581,
+   "name": "Elemental Dragonflight Assault Vest",
+   "il": 596,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Elemental Dragonflight Assault Vest_IL596.png",
+    "docs\\audit\\_up\\rogue-gear\\Elemental Dragonflight Assault Vest_IL596.png"
+   ]
+  },
+  {
+   "id": 4582,
+   "name": "Elemental Dragonflight Assault Gloves",
+   "il": 596,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Elemental Dragonflight Assault Gloves_IL596.png",
+    "docs\\audit\\_up\\rogue-gear\\Elemental Dragonflight Assault Gloves_IL596.png"
+   ]
+  },
+  {
+   "id": 4583,
+   "name": "Elemental Dragonflight Assault Boots",
+   "il": 596,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 596 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Elemental Dragonflight Assault Boots_IL596.png",
+    "docs\\audit\\_up\\rogue-gear\\Elemental Dragonflight Assault Boots_IL596.png"
+   ]
+  },
+  {
+   "id": 4568,
+   "name": "Dragonflight Raid Mask",
+   "il": 588,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dragonflight Raid Mask_IL588.png",
+    "docs\\audit\\_up\\rogue-gear\\Dragonflight Raid Mask_IL588.png"
+   ]
+  },
+  {
+   "id": 4569,
+   "name": "Dragonflight Raid Vest",
+   "il": 588,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dragonflight Raid Vest_IL588.png",
+    "docs\\audit\\_up\\rogue-gear\\Dragonflight Raid Vest_IL588.png"
+   ]
+  },
+  {
+   "id": 4570,
+   "name": "Dragonflight Raid Gloves",
+   "il": 588,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dragonflight Raid Gloves_IL588.png",
+    "docs\\audit\\_up\\rogue-gear\\Dragonflight Raid Gloves_IL588.png"
+   ]
+  },
+  {
+   "id": 4571,
+   "name": "Dragonflight Raid Boots",
+   "il": 588,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dragonflight Raid Boots_IL588.png",
+    "docs\\audit\\_up\\rogue-gear\\Dragonflight Raid Boots_IL588.png"
+   ]
+  },
+  {
+   "id": 4572,
+   "name": "Dragonflight Assault Vest",
+   "il": 588,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dragonflight Assault Vest_IL588.png",
+    "docs\\audit\\_up\\rogue-gear\\Dragonflight Assault Vest_IL588.png"
+   ]
+  },
+  {
+   "id": 4573,
+   "name": "Dragonflight Assault Mask",
+   "il": 588,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dragonflight Assault Mask_IL588.png",
+    "docs\\audit\\_up\\rogue-gear\\Dragonflight Assault Mask_IL588.png"
+   ]
+  },
+  {
+   "id": 4574,
+   "name": "Dragonflight Assault Gloves",
+   "il": 588,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dragonflight Assault Gloves_IL588.png",
+    "docs\\audit\\_up\\rogue-gear\\Dragonflight Assault Gloves_IL588.png"
+   ]
+  },
+  {
+   "id": 4575,
+   "name": "Dragonflight Assault Boots",
+   "il": 588,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Max HP' grants 3000 on an IL 588 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Max HP",
+     "amount": 3000,
+     "kind": "rating",
+     "description": "2 of Set: +3,000 Maximum Hit Points. 3 of Set: +500 Power."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dragonflight Assault Boots_IL588.png",
+    "docs\\audit\\_up\\rogue-gear\\Dragonflight Assault Boots_IL588.png"
+   ]
+  },
+  {
+   "id": 4300,
+   "name": "Wootz Sakin",
+   "il": 350,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 2000,
+     "kind": "rating",
+     "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\rogue-gear\\Wootz Sakin_IL350.png"
+   ]
+  },
+  {
+   "id": 4722,
+   "name": "Wootz Lute",
+   "il": 350,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Power' grants 2000 on an IL 350 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 2000,
+     "kind": "rating",
+     "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Wootz Lute_IL350.png"
+   ]
+  },
+  {
+   "id": 3997,
+   "name": "Blaspheme Cleaver",
+   "il": 1900,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 7500 vs family median 1000 for Power @ IL~1000",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 7500,
+     "kind": "rating",
+     "description": "2 of Set: Gain 7500 Power/Defense/Outgoing Healing depending on role for 15s when you dodge/block/sprint/shadow slip (30s CD). When dealing CA damage, 10% chance to gain 5% Base Damage Boost/-5% Incoming Damage/5% OOH for 15s (30s CD)."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\rogue-gear\\Blaspheme Cleaver_IL1900.png"
+   ]
+  },
+  {
+   "id": 3998,
+   "name": "Blaspheme Knife",
+   "il": 1900,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 7500 vs family median 1000 for Power @ IL~1000",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 7500,
+     "kind": "rating",
+     "description": "2 of Set: Gain 7500 Power/Defense/Outgoing Healing depending on role for 15s when you dodge/block/sprint/shadow slip (30s CD). When dealing CA damage, 10% chance to gain 5% Base Damage Boost/-5% Incoming Damage/5% OOH for 15s (30s CD)."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\rogue-gear\\Blaspheme Knife_IL1900.png"
+   ]
+  },
+  {
+   "id": 3518,
+   "name": "Gurdunn's Defense",
+   "il": 950,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'The Ol' Switcharoo' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Gurdunn's Defense_IL950.png",
+    "docs\\audit\\_up\\wizard-gear\\Gurdunn's Defense_IL950.png"
+   ]
+  },
+  {
+   "id": 2407,
+   "name": "Bronzewood Ward Ibhantshi",
+   "il": 784,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\paladin-gear\\Bronzewood Ward Ibhantshi_IL784.png"
+   ]
+  },
+  {
+   "id": 2412,
+   "name": "Lichstone Ward Ring",
+   "il": 784,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\unbound-gear\\Lichstone Ward Ring_IL784.png"
+   ]
+  },
+  {
+   "id": 2415,
+   "name": "Bronzewood Restoration Ibhantshi",
+   "il": 784,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\paladin-gear\\Bronzewood Restoration Ibhantshi_IL784.png"
+   ]
+  },
+  {
+   "id": 2417,
+   "name": "Beaded Assault Ring",
+   "il": 784,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Focus' = 1000 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\unbound-gear\\Beaded Assault Ring_IL784.png"
+   ]
+  },
+  {
+   "id": 3029,
+   "name": "Leather Raid Kafe",
+   "il": 784,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Leather Raid Kafe_IL784.png"
+   ]
+  },
+  {
+   "id": 4439,
+   "name": "Dinohide Raid Mederebiya",
+   "il": 784,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dinohide Raid Mederebiya_IL784.png",
+    "docs\\audit\\_up\\rogue-gear\\Dinohide Raid Mederebiya_IL784.png"
+   ]
+  },
+  {
+   "id": 4443,
+   "name": "Dinohide Assault Mederebiya",
+   "il": 784,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Dinohide Assault Mederebiya_IL784.png",
+    "docs\\audit\\_up\\rogue-gear\\Dinohide Assault Mederebiya_IL784.png"
+   ]
+  },
+  {
+   "id": 6218,
+   "name": "Silk Assault Ngubo",
+   "il": 784,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\wizard-gear\\Silk Assault Ngubo_IL784.png"
+   ]
+  },
+  {
+   "id": 6219,
+   "name": "Silk Raid Ngubo",
+   "il": 784,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\wizard-gear\\Silk Raid Ngubo_IL784.png"
+   ]
+  },
+  {
+   "id": 6369,
+   "name": "Bronzewood Assault Kanzu",
+   "il": 784,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Bronzewood Assault Kanzu_IL784.png"
+   ]
+  },
+  {
+   "id": 6377,
+   "name": "Bronzewood Raid Kanzu",
+   "il": 784,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Bronzewood Raid Kanzu_IL784.png"
+   ]
+  },
+  {
+   "id": 3535,
+   "name": "Curselord's Raid Ushanka",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Curselord's Raid Ushanka_IL770.png"
+   ]
+  },
+  {
+   "id": 4176,
+   "name": "Banditlord's Raid Hat",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Banditlord's Raid Hat_IL770.png",
+    "docs\\audit\\_up\\rogue-gear\\Banditlord's Raid Hat_IL770.png"
+   ]
+  },
+  {
+   "id": 4177,
+   "name": "Banditlord's Raid Jerkin",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Banditlord's Raid Jerkin_IL770.png",
+    "docs\\audit\\_up\\rogue-gear\\Banditlord's Raid Jerkin_IL770.png"
+   ]
+  },
+  {
+   "id": 4177,
+   "name": "Banditlord's Raid Jerkin",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Banditlord's Raid Jerkin_IL770.png",
+    "docs\\audit\\_up\\rogue-gear\\Banditlord's Raid Jerkin_IL770.png"
+   ]
+  },
+  {
+   "id": 4178,
+   "name": "Banditlord's Raid Bracers",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Banditlord's Raid Bracers_IL770.png",
+    "docs\\audit\\_up\\rogue-gear\\Banditlord's Raid Bracers_IL770.png"
+   ]
+  },
+  {
+   "id": 4180,
+   "name": "Banditlord's Assault Hat",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Banditlord's Assault Hat_IL770.png",
+    "docs\\audit\\_up\\rogue-gear\\Banditlord's Assault Hat_IL770.png"
+   ]
+  },
+  {
+   "id": 4181,
+   "name": "Banditlord's Assault Bracers",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Banditlord's Assault Bracers_IL770.png",
+    "docs\\audit\\_up\\rogue-gear\\Banditlord's Assault Bracers_IL770.png"
+   ]
+  },
+  {
+   "id": 4183,
+   "name": "Banditlord's Assault Jerkin",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Banditlord's Assault Jerkin_IL770.png",
+    "docs\\audit\\_up\\rogue-gear\\Banditlord's Assault Jerkin_IL770.png"
+   ]
+  },
+  {
+   "id": 4183,
+   "name": "Banditlord's Assault Jerkin",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Banditlord's Assault Jerkin_IL770.png",
+    "docs\\audit\\_up\\rogue-gear\\Banditlord's Assault Jerkin_IL770.png"
+   ]
+  },
+  {
+   "id": 5576,
+   "name": "Curselord's Assault Bracers",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Curselord's Assault Bracers_IL770.png"
+   ]
+  },
+  {
+   "id": 5577,
+   "name": "Curselord's Assault Longcoat",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Curselord's Assault Longcoat_IL770.png"
+   ]
+  },
+  {
+   "id": 5577,
+   "name": "Curselord's Assault Longcoat",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Curselord's Assault Longcoat_IL770.png"
+   ]
+  },
+  {
+   "id": 5578,
+   "name": "Curselord's Assault Ushanka",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Curselord's Assault Ushanka_IL770.png"
+   ]
+  },
+  {
+   "id": 5579,
+   "name": "Curselord's Raid Bracers",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Curselord's Raid Bracers_IL770.png"
+   ]
+  },
+  {
+   "id": 5580,
+   "name": "Curselord's Raid Longcoat",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Curselord's Raid Longcoat_IL770.png"
+   ]
+  },
+  {
+   "id": 5580,
+   "name": "Curselord's Raid Longcoat",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\warlock-gear\\Curselord's Raid Longcoat_IL770.png"
+   ]
+  },
+  {
+   "id": 6033,
+   "name": "Manalord's Assault Bracers",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\wizard-gear\\Manalord's Assault Bracers_IL770.png"
+   ]
+  },
+  {
+   "id": 6034,
+   "name": "Manalord's Assault Coat",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\wizard-gear\\Manalord's Assault Coat_IL770.png"
+   ]
+  },
+  {
+   "id": 6034,
+   "name": "Manalord's Assault Coat",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\wizard-gear\\Manalord's Assault Coat_IL770.png"
+   ]
+  },
+  {
+   "id": 6035,
+   "name": "Manalord's Assault Petasos",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\wizard-gear\\Manalord's Assault Petasos_IL770.png"
+   ]
+  },
+  {
+   "id": 6037,
+   "name": "Manalord's Raid Bracers",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\wizard-gear\\Manalord's Raid Bracers_IL770.png"
+   ]
+  },
+  {
+   "id": 6038,
+   "name": "Manalord's Raid Coat",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\wizard-gear\\Manalord's Raid Coat_IL770.png"
+   ]
+  },
+  {
+   "id": 6038,
+   "name": "Manalord's Raid Coat",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\wizard-gear\\Manalord's Raid Coat_IL770.png"
+   ]
+  },
+  {
+   "id": 6039,
+   "name": "Manalord's Raid Petasos",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\wizard-gear\\Manalord's Raid Petasos_IL770.png"
+   ]
+  },
+  {
+   "id": 6181,
+   "name": "Woodlord's Assault Bracers",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Woodlord's Assault Bracers_IL770.png"
+   ]
+  },
+  {
+   "id": 6182,
+   "name": "Woodlord's Assault Hood",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Woodlord's Assault Hood_IL770.png"
+   ]
+  },
+  {
+   "id": 6183,
+   "name": "Woodlord's Assault Jerkin",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Woodlord's Assault Jerkin_IL770.png"
+   ]
+  },
+  {
+   "id": 6183,
+   "name": "Woodlord's Assault Jerkin",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Woodlord's Assault Jerkin_IL770.png"
+   ]
+  },
+  {
+   "id": 6185,
+   "name": "Woodlord's Raid Bracers",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Woodlord's Raid Bracers_IL770.png"
+   ]
+  },
+  {
+   "id": 6186,
+   "name": "Woodlord's Raid Hood",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Woodlord's Raid Hood_IL770.png"
+   ]
+  },
+  {
+   "id": 6187,
+   "name": "Woodlord's Raid Jerkin",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Woodlord's Raid Jerkin_IL770.png"
+   ]
+  },
+  {
+   "id": 6187,
+   "name": "Woodlord's Raid Jerkin",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Woodlord's Raid Jerkin_IL770.png"
+   ]
+  },
+  {
+   "id": 6338,
+   "name": "Bladelord's Assault Breastplate",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Bladelord's Assault Breastplate_IL770 (2).png",
+    "docs\\audit\\_up\\barbarian-gear\\Bladelord's Assault Breastplate_IL770.png"
+   ]
+  },
+  {
+   "id": 6338,
+   "name": "Bladelord's Assault Breastplate",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Bladelord's Assault Breastplate_IL770 (2).png",
+    "docs\\audit\\_up\\barbarian-gear\\Bladelord's Assault Breastplate_IL770.png"
+   ]
+  },
+  {
+   "id": 6339,
+   "name": "Bladelord's Assault Gauntlets",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Bladelord's Assault Gauntlets_IL770 (2).png",
+    "docs\\audit\\_up\\barbarian-gear\\Bladelord's Assault Gauntlets_IL770.png"
+   ]
+  },
+  {
+   "id": 6340,
+   "name": "Bladelord's Assault Helm",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Bladelord's Assault Helm_IL770.png"
+   ]
+  },
+  {
+   "id": 6342,
+   "name": "Bladelord's Raid Breastplate",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Bladelord's Raid Breastplate_IL770.png"
+   ]
+  },
+  {
+   "id": 6342,
+   "name": "Bladelord's Raid Breastplate",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Bladelord's Raid Breastplate_IL770.png"
+   ]
+  },
+  {
+   "id": 6343,
+   "name": "Bladelord's Raid Gauntlets",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Bladelord's Raid Gauntlets_IL770.png"
+   ]
+  },
+  {
+   "id": 6344,
+   "name": "Bladelord's Raid Helm",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Bladelord's Raid Helm_IL770.png"
+   ]
+  },
+  {
+   "id": 2475,
+   "name": "Titansteel Ward Cuirass",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\paladin-gear\\Titansteel Ward Cuirass_IL756.png"
+   ]
+  },
+  {
+   "id": 2479,
+   "name": "Titansteel Gladiator Cuirass",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\paladin-gear\\Titansteel Gladiator Cuirass_IL756.png"
+   ]
+  },
+  {
+   "id": 2483,
+   "name": "Titansteel Restoration Cuirass",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\paladin-gear\\Titansteel Restoration Cuirass_IL756.png"
+   ]
+  },
+  {
+   "id": 2487,
+   "name": "Titansteel Medic Cuirass",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\paladin-gear\\Titansteel Medic Cuirass_IL756.png"
+   ]
+  },
+  {
+   "id": 2489,
+   "name": "Rubellite Assault Ring",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Focus' = 1000 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\unbound-gear\\Rubellite Assault Ring_IL756.png"
+   ]
+  },
+  {
+   "id": 2492,
+   "name": "Silverspruce Ward Ring",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\unbound-gear\\Silverspruce Ward Ring_IL756.png"
+   ]
+  },
+  {
+   "id": 3061,
+   "name": "Manticore Raid Coat",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Manticore Raid Coat_IL756.png"
+   ]
+  },
+  {
+   "id": 3065,
+   "name": "Manticore Executioner Coat",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Manticore Executioner Coat_IL756.png"
+   ]
+  },
+  {
+   "id": 3069,
+   "name": "Manticore Assault Coat",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Manticore Assault Coat_IL756.png"
+   ]
+  },
+  {
+   "id": 3073,
+   "name": "Manticore Duelist Coat",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Manticore Duelist Coat_IL756.png"
+   ]
+  },
+  {
+   "id": 4497,
+   "name": "Manticore Raid Vest",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Manticore Raid Vest_IL756.png",
+    "docs\\audit\\_up\\rogue-gear\\Manticore Raid Vest_IL756.png"
+   ]
+  },
+  {
+   "id": 4501,
+   "name": "Manticore Executioner Vest",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Manticore Executioner Vest_IL756.png",
+    "docs\\audit\\_up\\rogue-gear\\Manticore Executioner Vest_IL756.png"
+   ]
+  },
+  {
+   "id": 4504,
+   "name": "Manticore Assault Vest",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Manticore Assault Vest_IL756.png",
+    "docs\\audit\\_up\\rogue-gear\\Manticore Assault Vest_IL756.png"
+   ]
+  },
+  {
+   "id": 4509,
+   "name": "Manticore Duelist Vest",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Manticore Duelist Vest_IL756.png",
+    "docs\\audit\\_up\\rogue-gear\\Manticore Duelist Vest_IL756.png"
+   ]
+  },
+  {
+   "id": 6288,
+   "name": "Manticore Assault Robes",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\wizard-gear\\Manticore Assault Robes_IL756.png"
+   ]
+  },
+  {
+   "id": 6292,
+   "name": "Manticore Raid Robes",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\wizard-gear\\Manticore Raid Robes_IL756.png"
+   ]
+  },
+  {
+   "id": 6774,
+   "name": "Titansteel Assault Scalemail",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Titansteel Assault Scalemail_IL756.png"
+   ]
+  },
+  {
+   "id": 6780,
+   "name": "Titansteel Duelist Scalemail",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Titansteel Duelist Scalemail_IL756.png"
+   ]
+  },
+  {
+   "id": 6784,
+   "name": "Titansteel Gladiator Scalemail",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Titansteel Gladiator Scalemail_IL756.png"
+   ]
+  },
+  {
+   "id": 6788,
+   "name": "Titansteel Raid Scalemail",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Titansteel Raid Scalemail_IL756.png"
+   ]
+  },
+  {
+   "id": 2593,
+   "name": "Adamant Restoration Cuirass",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\paladin-gear\\Adamant Restoration Cuirass_IL728.png"
+   ]
+  },
+  {
+   "id": 2597,
+   "name": "Adamant Gladiator Cuirass",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\paladin-gear\\Adamant Gladiator Cuirass_IL728.png"
+   ]
+  },
+  {
+   "id": 2599,
+   "name": "Adamant Medic Cuirass",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\paladin-gear\\Adamant Medic Cuirass_IL728.png"
+   ]
+  },
+  {
+   "id": 2608,
+   "name": "Rosegold Ward Ring",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\unbound-gear\\Rosegold Ward Ring_IL728.png"
+   ]
+  },
+  {
+   "id": 2615,
+   "name": "Rosegold Assault Ring",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Focus' = 1000 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\unbound-gear\\Rosegold Assault Ring_IL728.png"
+   ]
+  },
+  {
+   "id": 2616,
+   "name": "Rosegold Gladiator Ring",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\unbound-gear\\Rosegold Gladiator Ring_IL728.png"
+   ]
+  },
+  {
+   "id": 2622,
+   "name": "Rosegold Executioner Ring",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\unbound-gear\\Rosegold Executioner Ring_IL728.png"
+   ]
+  },
+  {
+   "id": 3116,
+   "name": "Umbral Assault Coat",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Umbral Assault Coat_IL728.png"
+   ]
+  },
+  {
+   "id": 3120,
+   "name": "Umbral Executioner Coat",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Umbral Executioner Coat_IL728.png"
+   ]
+  },
+  {
+   "id": 3122,
+   "name": "Umbral Duelist Coat",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\ranger-gear\\Umbral Duelist Coat_IL728.png"
+   ]
+  },
+  {
+   "id": 4584,
+   "name": "Umbral Assault Vest",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Umbral Assault Vest_IL728.png",
+    "docs\\audit\\_up\\rogue-gear\\Umbral Assault Vest_IL728.png"
+   ]
+  },
+  {
+   "id": 4588,
+   "name": "Umbral Executioner Vest",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Umbral Executioner Vest_IL728.png",
+    "docs\\audit\\_up\\rogue-gear\\Umbral Executioner Vest_IL728.png"
+   ]
+  },
+  {
+   "id": 4590,
+   "name": "Umbral Duelist Vest",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\Umbral Duelist Vest_IL728.png",
+    "docs\\audit\\_up\\rogue-gear\\Umbral Duelist Vest_IL728.png"
+   ]
+  },
+  {
+   "id": 6310,
+   "name": "Adamant Assault Scalemail",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Adamant Assault Scalemail_IL728.png"
+   ]
+  },
+  {
+   "id": 6314,
+   "name": "Adamant Duelist Scalemail",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Adamant Duelist Scalemail_IL728.png"
+   ]
+  },
+  {
+   "id": 6318,
+   "name": "Adamant Gladiator Scalemail",
+   "il": 728,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\barbarian-gear\\Adamant Gladiator Scalemail_IL728.png"
+   ]
+  },
+  {
+   "id": 1825,
+   "name": "Huntsman Raid Ring",
+   "il": 672,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Focus' = 1000 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\unbound-gear\\Huntsman Raid Ring_IL672.png"
+   ]
+  },
+  {
+   "id": 1827,
+   "name": "Huntsman Ward Ring",
+   "il": 672,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Parry' = 1000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\unbound-gear\\Huntsman Ward Ring_IL672.png"
+   ]
+  },
+  {
+   "id": 1894,
+   "name": "Rex Amiculum",
+   "il": 672,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Contender's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": [
+    "docs\\audit\\_up\\unbound-gear\\Rex Amiculum_IL672.png"
+   ]
+  },
+  {
+   "id": 2105,
+   "name": "Brynnyr's Demise",
+   "il": 610,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power/Defense Boost' = 2000 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "name": "Power/Defense Boost",
+     "stat": "Power",
+     "amount": 2000.0,
+     "kind": "rating",
+     "description": "+2000 Power if your Defense is higher than your Power. +2000 Defense if your Power is higher than your Defense."
+    },
+    {
+     "name": "Power/Defense Boost",
+     "stat": "Defense",
+     "amount": 2000.0,
+     "kind": "rating"
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\unbound-gear\\Brynnyr's Demise_IL630.png"
+   ]
+  },
+  {
+   "id": 4082,
+   "name": "The Legion Guard's Barbed Blade",
+   "il": 600,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 1500,
+     "kind": "rating",
+     "description": "2 of Set: You and nearby allies are granted: +1500 Power, +1500 Combat Advantage, +1500 Defense, +1500 Critical Avoidance. Stacks up to 5 times when allies are equipped with full Legion Guard's weapons."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\rogue-gear\\The Legion Guard's Barbed Blade_IL600.png"
+   ]
+  },
+  {
+   "id": 4086,
+   "name": "The Legion Guard's Twisted Blade",
+   "il": 600,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 1500,
+     "kind": "rating",
+     "description": "2 of Set: You and nearby allies are granted: +1500 Power, +1500 Combat Advantage, +1500 Defense, +1500 Critical Avoidance. Stacks up to 5 times when allies are equipped with full Legion Guard's weapons."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\rogue-gear\\The Legion Guard's Twisted Blade_IL600.png"
+   ]
+  },
+  {
+   "id": 4639,
+   "name": "The Legion Guard's Barbed Rapier",
+   "il": 600,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 1500,
+     "kind": "rating",
+     "description": "2 of Set: You and nearby allies: +1500 Power, +1500 Combat Advantage, +1500 Defense, +1500 Critical Avoidance. Stacks up to 5 times when allies are equipped with full Legion Guard's weapons."
+    }
+   ],
+   "shots": [
+    "docs\\audit\\_up\\bard-gear\\The Legion Guard's Barbed Rapier_IL600.png"
+   ]
+  }
+ ],
+ "uncovered": [
+  {
+   "id": 564,
+   "name": "Cerebral Warden Sigils",
+   "il": 2600,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Enervated Parry (Greater)' grants 13475 on an IL 2600 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Enervated Parry (Greater)",
+     "stat": "Deflect",
+     "amount": 13475.0,
+     "kind": "rating",
+     "description": "When your Stamina is under 25%, your Deflect is increased by 13,475."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 576,
+   "name": "Oceans' Warden Sigils",
+   "il": 2350,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Enervated Parry (Greater)' grants 10275 on an IL 2350 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Enervated Parry (Greater)",
+     "stat": "Deflect",
+     "amount": 10275.0,
+     "kind": "rating",
+     "description": "When your Stamina is under 25%, your Deflect is increased by 10,275."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 906,
+   "name": "Abyss Striker's Mauler Wristguards",
+   "il": 2000,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Ferocity' grants 10000 on an IL 2000 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1218,
+   "name": "Serene Boots of the Dragon Hunter",
+   "il": 1850,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Champion's Might' grants 7500 on an IL 1850 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 770,
+   "name": "Shimmering Flarefiber Pants",
+   "il": 1800,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1800 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Mastery",
+     "stat": "Combat Advantage",
+     "amount": 7500.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Combat Advantage is increased by 7500."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 772,
+   "name": "Luminous Flarefiber Pants",
+   "il": 1800,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1800 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Mastery",
+     "stat": "Combat Advantage",
+     "amount": 7500.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Combat Advantage is increased by 7500."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 773,
+   "name": "Illuminated Flarefiber Pants",
+   "il": 1800,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Mastery' grants 7500 on an IL 1800 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Mastery",
+     "stat": "Combat Advantage",
+     "amount": 7500.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Combat Advantage is increased by 7500."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 981,
+   "name": "Faern Elendar Spy's Ring",
+   "il": 1800,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Challenger's Precision' grants 8000 on an IL 1800 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 983,
+   "name": "Faerûn Elendar Zealot's Ring",
+   "il": 1800,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Zealot's Ferocity' grants 8000 on an IL 1800 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 753,
+   "name": "Shimmering Starwoven Shirt",
+   "il": 1700,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Fury' grants 7500 on an IL 1700 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Fury",
+     "stat": "Power",
+     "amount": 7500.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Power is increased by 7500."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 755,
+   "name": "Luminous Starwoven Shirt",
+   "il": 1700,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Fury' grants 7500 on an IL 1700 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Fury",
+     "stat": "Power",
+     "amount": 7500.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Power is increased by 7500."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 756,
+   "name": "Illuminated Starwoven Shirt",
+   "il": 1700,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Fury' grants 7500 on an IL 1700 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Fury",
+     "stat": "Power",
+     "amount": 7500.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Power is increased by 7500."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 757,
+   "name": "Brilliant Starwoven Shirt",
+   "il": 1700,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Fury' grants 7500 on an IL 1700 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Fury",
+     "stat": "Power",
+     "amount": 7500.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Power is increased by 7500."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 1454,
+   "name": "Greaves of the Lightguard",
+   "il": 1250,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Champion's Might' grants 7500 on an IL 1250 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1446,
+   "name": "Crown of the Pit Fiend",
+   "il": 1240,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Martyr's Might' grants 15000 on an IL 1240 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1459,
+   "name": "Ethereal Bracers of the Past",
+   "il": 1240,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Past Regards' grants 5000 on an IL 1240 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Past Regards",
+     "stat": "Power",
+     "amount": 5000.0,
+     "kind": "rating",
+     "description": "Whenever you are damaged for more than 15% of your Maximum Hit Points in a single blow, you will be teleported back 25 feet, and will gain 5000 Power for 10 seconds. (20 second cooldown)"
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 1379,
+   "name": "Divine Ward Sallet",
+   "il": 1230,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Might' grants 5000 on an IL 1230 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Might",
+     "stat": "Power",
+     "amount": 5000.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Power is increased by 5000."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 1380,
+   "name": "Divine Mystic Helm",
+   "il": 1230,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Might' grants 5000 on an IL 1230 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Might",
+     "stat": "Power",
+     "amount": 5000.0,
+     "kind": "rating",
+     "description": "When your Stamina is over 75%, your Power is increased by 5000."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 1396,
+   "name": "Fiend Forged Helm",
+   "il": 1230,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1230 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1450,
+   "name": "Greaves of the Fallen Angel",
+   "il": 1230,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Brute's Might' grants 5000 on an IL 1230 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1499,
+   "name": "Brailiel's Planar Bindings",
+   "il": 1225,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Call of the Nine Hells' grants 5000 on an IL 1225 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Call of the Nine Hells",
+     "stat": "Power",
+     "amount": 5000.0,
+     "kind": "rating",
+     "description": "At the start of combat, you will call forth denizens of the Nine Hells, summoning them to help you and increasing your Power by 5000 for 15 seconds. (60 second cooldown)"
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 1511,
+   "name": "Mighty Storm Slippers",
+   "il": 1225,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Charged Might' grants 5000 on an IL 1225 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Might",
+     "stat": "Power",
+     "amount": 5000.0,
+     "kind": "rating",
+     "description": "When Action Points are full, your Power is increased by 5000."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 1516,
+   "name": "Fancy Duelist Mask of Cormyr",
+   "il": 1225,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Challenger's Might' grants 5000 on an IL 1225 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1400,
+   "name": "Devil Forged Helm",
+   "il": 1215,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1412,
+   "name": "Demon Forged Helm",
+   "il": 1215,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1215 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1424,
+   "name": "Infernal Forged Helm",
+   "il": 1200,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Skirmisher's Might' grants 5000 on an IL 1200 item (> 4x IL)",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 2169,
+   "name": "Ring of Brutality +5",
+   "il": 609,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Brutality' grants 4000 on an IL 609 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Brutality",
+     "stat": "Power",
+     "amount": 4000.0,
+     "kind": "rating",
+     "description": "Every 30 seconds you gain 4000 Power for 10 seconds. This effect only works in combat."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 2170,
+   "name": "Ring of Brutality +4",
+   "il": 596,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Brutality' grants 4000 on an IL 596 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Brutality",
+     "stat": "Power",
+     "amount": 4000.0,
+     "kind": "rating",
+     "description": "Every 30 seconds you gain 4000 Power for 8 seconds. This effect only works in combat."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 2171,
+   "name": "Ring of Brutality +3",
+   "il": 588,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Brutality' grants 4000 on an IL 588 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Brutality",
+     "stat": "Power",
+     "amount": 4000.0,
+     "kind": "rating",
+     "description": "Every 30 seconds you gain 4000 Power for 6 seconds. This effect only works in combat."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 2172,
+   "name": "Ring of Brutality +2",
+   "il": 575,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Brutality' grants 4000 on an IL 575 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Brutality",
+     "stat": "Power",
+     "amount": 4000.0,
+     "kind": "rating",
+     "description": "Every 30 seconds you gain 4000 Power for 4 seconds. This effect only works in combat."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 2173,
+   "name": "Ring of Brutality +1",
+   "il": 567,
+   "check": "C2-rating-absurd",
+   "reason": "rating bonus 'Brutality' grants 4000 on an IL 567 item (> 4x IL)",
+   "flagged_bonuses": [
+    {
+     "name": "Brutality",
+     "stat": "Power",
+     "amount": 4000.0,
+     "kind": "rating",
+     "description": "Every 30 seconds you gain 4000 Power for 2 seconds. This effect only works in combat."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 750,
+   "name": "Blackened Void Pants",
+   "il": 2000,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Depleted Advantage' = 6250 vs family median 1005 for Combat Advantage @ IL~2000",
+   "flagged_bonuses": [
+    {
+     "name": "Depleted Advantage",
+     "stat": "Combat Advantage",
+     "amount": 6250.0,
+     "kind": "rating",
+     "description": "When your Stamina is under 25%, your Combat Advantage is increased by 6,250."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 659,
+   "name": "Basalt Imbued Pants",
+   "il": 1900,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Charged Bulwark' = 4600 vs family median 1000 for Defense @ IL~1000",
+   "flagged_bonuses": [
+    {
+     "name": "Charged Bulwark",
+     "stat": "Defense",
+     "amount": 4600.0,
+     "kind": "rating",
+     "description": "Whenever you are healed in combat, gain 4,600 Defense for 10 seconds. (30 second cooldown)"
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 1008,
+   "name": "Menzoberranzan Ring of Assault",
+   "il": 1600,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Sudden Power' = 5500 vs family median 1000 for Power @ IL~1000",
+   "flagged_bonuses": [
+    {
+     "name": "Sudden Power",
+     "stat": "Power",
+     "amount": 5500.0,
+     "kind": "rating",
+     "description": "Every 30 seconds you gain 5500 Power for 15 seconds. This effect only works in combat."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 1635,
+   "name": "Hard Rock Kickers",
+   "il": 950,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Contender's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1645,
+   "name": "Leafy Disguise of the Wanted",
+   "il": 950,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'The Ol' Switcheroo' = 1300 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 4083,
+   "name": "The Legion Guard's Barbed Blade (IL 800)",
+   "il": 800,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 1500,
+     "kind": "rating",
+     "description": "2 of Set: You and nearby allies are granted: +1500 Power, +1500 Combat Advantage, +1500 Defense, +1500 Critical Avoidance. Stacks up to 5 times when allies are equipped with full Legion Guard's weapons."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 4087,
+   "name": "The Legion Guard's Twisted Blade (IL 800)",
+   "il": 800,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 1500,
+     "kind": "rating",
+     "description": "2 of Set: You and nearby allies are granted: +1500 Power, +1500 Combat Advantage, +1500 Defense, +1500 Critical Avoidance. Stacks up to 5 times when allies are equipped with full Legion Guard's weapons."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 4299,
+   "name": "Wootz Jambiya (IL 800)",
+   "il": 800,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 2000,
+     "kind": "rating",
+     "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 4303,
+   "name": "Wootz Sakin (IL 800)",
+   "il": 800,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 2000,
+     "kind": "rating",
+     "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 4725,
+   "name": "Wootz Lute (IL 800)",
+   "il": 800,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 2000,
+     "kind": "rating",
+     "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 3035,
+   "name": "Leather Assault Kafe",
+   "il": 784,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Challenger's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1241,
+   "name": "Oathlord's Ward Barbute",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1242,
+   "name": "Oathlord's Ward Cuirass",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1242,
+   "name": "Oathlord's Ward Cuirass",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1243,
+   "name": "Oathlord's Ward Gauntlets",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1245,
+   "name": "Oathlord's Restoration Barbute",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Savagery' = 1500 vs family median 100 for Critical Strike @ IL~0",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1247,
+   "name": "Oathlord's Restoration Gauntlets",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Survivor's Finesse' = 2000 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1248,
+   "name": "Oathlord's Restoration Cuirass",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1248,
+   "name": "Oathlord's Restoration Cuirass",
+   "il": 770,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Warden's Balance' = 2000 vs family median 200 for Defense @ IL~0",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 1269,
+   "name": "Knotted Garbs",
+   "il": 756,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Contender's Might' = 1500 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [],
+   "shots": []
+  },
+  {
+   "id": 4298,
+   "name": "Wootz Jambiya (IL 650)",
+   "il": 650,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 2000,
+     "kind": "rating",
+     "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 4302,
+   "name": "Wootz Sakin (IL 650)",
+   "il": 650,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 2000,
+     "kind": "rating",
+     "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 4724,
+   "name": "Wootz Lute (IL 650)",
+   "il": 650,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 2000,
+     "kind": "rating",
+     "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 2189,
+   "name": "Ring of Rising Deflect +5",
+   "il": 609,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Rising Agility' = 135 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [
+    {
+     "name": "Rising Agility",
+     "stat": "Deflect",
+     "amount": 135.0,
+     "kind": "rating",
+     "maxStacks": 10,
+     "perStack": true,
+     "description": "When hit by a foe you gain 135 Deflect for 4 seconds. This effect can stack a maximum of 10 times."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 2190,
+   "name": "Ring of Rising Deflect +4",
+   "il": 596,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Rising Agility' = 115 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [
+    {
+     "name": "Rising Agility",
+     "stat": "Deflect",
+     "amount": 115.0,
+     "kind": "rating",
+     "maxStacks": 10,
+     "perStack": true,
+     "description": "When hit by a foe you gain 115 Deflect for 4 seconds. This effect can stack a maximum of 10 times."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 2191,
+   "name": "Ring of Rising Deflect +3",
+   "il": 588,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Rising Agility' = 95 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [
+    {
+     "name": "Rising Agility",
+     "stat": "Deflect",
+     "amount": 95.0,
+     "kind": "rating",
+     "maxStacks": 10,
+     "perStack": true,
+     "description": "When hit by a foe you gain 95 Deflect for 4 seconds. This effect can stack a maximum of 10 times."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 2192,
+   "name": "Ring of Rising Deflect +2",
+   "il": 575,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Rising Agility' = 75 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [
+    {
+     "name": "Rising Agility",
+     "stat": "Deflect",
+     "amount": 75.0,
+     "kind": "rating",
+     "maxStacks": 10,
+     "perStack": true,
+     "description": "When hit by a foe you gain 75 Deflect for 4 seconds. This effect can stack a maximum of 10 times."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 2193,
+   "name": "Ring of Rising Deflect +1",
+   "il": 567,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Rising Agility' = 55 vs family median 25 for Deflect @ IL~0",
+   "flagged_bonuses": [
+    {
+     "name": "Rising Agility",
+     "stat": "Deflect",
+     "amount": 55.0,
+     "kind": "rating",
+     "maxStacks": 10,
+     "perStack": true,
+     "description": "When hit by a foe you gain 55 Deflect for 4 seconds. This effect can stack a maximum of 10 times."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 4297,
+   "name": "Wootz Jambiya (IL 500)",
+   "il": 500,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 2000,
+     "kind": "rating",
+     "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 4301,
+   "name": "Wootz Sakin (IL 500)",
+   "il": 500,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 2000,
+     "kind": "rating",
+     "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds."
+    }
+   ],
+   "shots": []
+  },
+  {
+   "id": 4723,
+   "name": "Wootz Lute (IL 500)",
+   "il": 500,
+   "check": "C2-rating-off-family",
+   "reason": "rating bonus 'Power' = 2000 vs family median 250 for Power @ IL~0",
+   "flagged_bonuses": [
+    {
+     "stat": "Power",
+     "amount": 2000,
+     "kind": "rating",
+     "description": "2 of Set: Commander's Surprise. At the start of combat, a random stat is increased by 2000 for 10 seconds."
+    }
+   ],
+   "shots": []
+  }
+ ]
+}

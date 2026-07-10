@@ -1,0 +1,842 @@
+[
+ {
+  "name": "Exalted Dinohide Temicamatl",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Grimoire, Off-Hand'"
+ },
+ {
+  "name": "Silverspruce Sash",
+  "new_slot": "Belt",
+  "confidence": "high",
+  "evidence": "Tooltip slot line reads: 'Belt'"
+ },
+ {
+  "name": "Company Raider's Cloak",
+  "new_slot": "Neck",
+  "confidence": "medium",
+  "evidence": "No explicit slot line visible in tooltip; name contains 'Cloak' which maps to Neck by naming rule (cloak \u2192 Neck)."
+ },
+ {
+  "name": "Bismuth Lute",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Physical, Off-Hand'"
+ },
+ {
+  "name": "Bloodbrass Lute",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Physical, Off-Hand'"
+ },
+ {
+  "name": "Voidtouched Lute",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Physical, Off-Hand'"
+ },
+ {
+  "name": "Meteoric Iron Lute",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Physical, Off-Hand'"
+ },
+ {
+  "name": "The Weaver's Lute",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Physical, Off-Hand'"
+ },
+ {
+  "name": "Blaspheme Lute",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Physical, Off-Hand'"
+ },
+ {
+  "name": "Protege's Hood",
+  "new_slot": "Head",
+  "confidence": "high",
+  "evidence": "Tooltip slot line reads: 'Head'"
+ },
+ {
+  "name": "Protege's Buckled Boots",
+  "new_slot": "Feet",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads 'Feet'"
+ },
+ {
+  "name": "Protege's Weathered Gloves",
+  "new_slot": "Arms",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads 'Arms'"
+ },
+ {
+  "name": "Aboleth Mace",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade / Requires Class: Paladin'; set listed as 'Aboleth (0/2): Aboleth Mace / Aboleth Shield' confirming mace is the primary (Main Hand) weapon"
+ },
+ {
+  "name": "Aboleth Shield",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads 'Off-Hand, Shield, Heavy / Requires Class: Fighter'"
+ },
+ {
+  "name": "Lifeforged Mace",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade / Requires Class: Paladin'; set listed as 'Lifeforged (0/2): Lifeforged Mace / Lifeforged Shield' confirming mace is the Main Hand piece"
+ },
+ {
+  "name": "Exalted Pioneer Januwiyah",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads 'Heavy, Off-Hand, Shield / Requires Class: Paladin'"
+ },
+ {
+  "name": "Fey Mace",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade / Requires Class: Paladin'; mace is a one-handed weapon occupying Main Hand"
+ },
+ {
+  "name": "Exalted Pioneer Latt",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade / Requires Class: Paladin'; latt is a blade weapon occupying Main Hand"
+ },
+ {
+  "name": "Lifeforged Shield",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads 'Shield, Off-Hand, Heavy / Requires Class: Fighter'"
+ },
+ {
+  "name": "Fey Shield",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads 'Shield, Off-Hand, Heavy / Requires Class: Fighter'"
+ },
+ {
+  "name": "Wootz Kalkan",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Purified Black Ice, Shield, Heavy, Off-Hand / Requires Class: Paladin'"
+ },
+ {
+  "name": "Oathkeeper's Shield",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Purified Black Ice, Shield, Heavy / Requires Class: Paladin'"
+ },
+ {
+  "name": "Pioneer Latt",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade / Requires Class: Paladin' \u2014 no Off-Hand qualifier present; Paladin latt is the main-hand blade of the Pioneer pair"
+ },
+ {
+  "name": "Bronzewood Cuauhchimalli",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Heavy / Requires Class: Paladin'"
+ },
+ {
+  "name": "Bronzewood Quauhololli",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Collection detail panel type line: 'Blade / Requires Class: Paladin' \u2014 no Off-Hand qualifier; Quauhololli is the main-hand blade of the Masterwork III Paladin pair"
+ },
+ {
+  "name": "Burning Kite Shield",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Heavy, Shield, Off-Hand / Requires Class: Paladin'"
+ },
+ {
+  "name": "Burning Mace",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade / Requires Class: Paladin' \u2014 no Off-Hand qualifier"
+ },
+ {
+  "name": "Aboleth Grimoire",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Grimoire / Requires Class: Warlock'"
+ },
+ {
+  "name": "Burning Grimoire",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Grimoire / Requires Class: Warlock'"
+ },
+ {
+  "name": "Celestial Words of Hope",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Grimoire, Off-Hand / Requires Class: Warlock'"
+ },
+ {
+  "name": "Drowned Axes",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade, Weapon / Requires Class: Ranger'. No Off-Hand qualifier; axe weapon for Ranger = Main Hand."
+ },
+ {
+  "name": "Drowned Broadsword",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade / Requires Class: Paladin'. No Off-Hand qualifier; broadsword for Paladin = Main Hand."
+ },
+ {
+  "name": "Drowned Grimoire",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads: 'Grimoire, Off-Hand / Requires Class: Warlock'."
+ },
+ {
+  "name": "Drowned Kite Shield",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads: 'Heavy, Off-Hand, Shield / Requires Class: Paladin'."
+ },
+ {
+  "name": "Drowned Longbow",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Ranged, Weapon / Requires Class: Ranger'. No Off-Hand qualifier; longbow for Ranger = Main Hand."
+ },
+ {
+  "name": "Company Raider Cloak",
+  "new_slot": "Neck",
+  "confidence": "high",
+  "evidence": "No explicit slot type line visible; item name contains 'Cloak', which maps to Neck slot."
+ },
+ {
+  "name": "Dirgeblade",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads: 'Blade, Implement, Main Hand Only, Weapon / Requires Class: Bard'."
+ },
+ {
+  "name": "Stronghold Kite Shield",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads: 'Off-Hand, Heavy, Shield / Requires Class: Paladin'."
+ },
+ {
+  "name": "Pioneer Jamibya",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads: 'Blade, Physical, Main Hand Only / Requires Class: Bard'."
+ },
+ {
+  "name": "Dread Confessor",
+  "new_slot": "Main Hand",
+  "confidence": "medium",
+  "evidence": "Tooltip type line reads: 'Blade, Weapon / Requires Class: Rogue'. No Off-Hand qualifier present; single-blade Rogue weapon without Off-Hand tag = Main Hand."
+ },
+ {
+  "name": "Exalted Bronzewood Huitzauhqui",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads \"Blade\" with no Off-Hand qualifier. Barbarian main-hand weapon."
+ },
+ {
+  "name": "Exalted Pioneer Halat",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads \"Sword Knot, Off-Hand\"."
+ },
+ {
+  "name": "Exalted Pioneer Scimitar",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads \"Blade\" with no Off-Hand qualifier."
+ },
+ {
+  "name": "Exalted Primal Huitzauhqui",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads \"Blade\" with no Off-Hand qualifier."
+ },
+ {
+  "name": "Exalted Primal Mecatica",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads \"Sword Knot, Off-Hand\"."
+ },
+ {
+  "name": "Exalted Silk Mecatica",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads \"Off-Hand, Sword Knot\"."
+ },
+ {
+  "name": "Exalted Spinebearer",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads \"Sword Knot, Off-Hand\"."
+ },
+ {
+  "name": "Exalted Spinethrasher",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads \"Blade\" with no Off-Hand qualifier."
+ },
+ {
+  "name": "Fey Greatsword",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads \"Blade\" with no Off-Hand qualifier."
+ },
+ {
+  "name": "Fey Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads \"Sword Knot, Off-Hand\"."
+ },
+ {
+  "name": "Exalted Obsidian Mekatl",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Physical, Weapon / Requires Class: Bard' \u2014 no Off-Hand qualifier; Bard physical weapon is main-hand."
+ },
+ {
+  "name": "Eyeripper",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade, Weapon / Requires Class: Ranger' \u2014 no Off-Hand qualifier; Ranger blade is main-hand."
+ },
+ {
+  "name": "Fey Axes",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Weapon, Blade / Requires Class: Ranger' \u2014 no Off-Hand qualifier; Ranger blade weapon is main-hand."
+ },
+ {
+  "name": "Fey Grimoire",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads: 'Off-Hand, Grimoire / Requires Class: Warlock'."
+ },
+ {
+  "name": "Fey Longbow",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Weapon, Ranged / Requires Class: Ranger' \u2014 Ranger ranged weapon is main-hand; no Off-Hand qualifier."
+ },
+ {
+  "name": "Golden Dragon of Flame",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Implement, Orb, Weapon, Ranged / Requires Class: Wizard' \u2014 Orb is the Wizard off-hand implement slot."
+ },
+ {
+  "name": "Grimfang",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Ranged, Weapon / Requires Class: Ranger' \u2014 Ranger ranged weapon is main-hand; no Off-Hand qualifier."
+ },
+ {
+  "name": "Harrowed Messengers",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Weapon, Blade / Requires Class: Ranger' \u2014 Ranger blade weapon is main-hand; no Off-Hand qualifier."
+ },
+ {
+  "name": "Hellfire Engine Grappler",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Ranged, Weapon / Requires Class: Ranger' \u2014 Ranger ranged weapon is main-hand; no Off-Hand qualifier."
+ },
+ {
+  "name": "Hellfire Engine Instruction Manual",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads: 'Grimoire, Off-Hand / Requires Class: Warlock'."
+ },
+ {
+  "name": "Grimfang",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Ranged, Weapon / Requires Class: Ranger' \u2014 Ranged weapon is the off-hand slot for Ranger."
+ },
+ {
+  "name": "Harrowed Messengers",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Weapon, Blade / Requires Class: Ranger' \u2014 Blade is the main-hand slot for Ranger."
+ },
+ {
+  "name": "Hellfire Engine Grappler",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Ranged, Weapon / Requires Class: Ranger' \u2014 Ranged weapon is the off-hand slot for Ranger."
+ },
+ {
+  "name": "Hellfire Engine Instruction Manual",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads: 'Grimoire, Off-Hand / Requires Class: Warlock'."
+ },
+ {
+  "name": "Hellfire Engine Pistons",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade, Weapon / Requires Class: Ranger' \u2014 Blade is the main-hand slot for Ranger."
+ },
+ {
+  "name": "Titansteel Kite Shield",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Hand, Shield, Heavy / Requires Class: Paladin' \u2014 Shield is the off-hand slot."
+ },
+ {
+  "name": "Stronghold Mace",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade / Requires Class: Paladin' \u2014 Blade is the main-hand slot for Paladin."
+ },
+ {
+  "name": "Obsidian Itztopilli",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Weapon, Blade / Requires Class: Ranger' \u2014 Blade is the main-hand slot for Ranger."
+ },
+ {
+  "name": "Obsidian Mekatl",
+  "new_slot": "Off Hand",
+  "confidence": "medium",
+  "evidence": "Tooltip type line: 'Physical, Weapon / Requires Class: Bard'. No explicit Main/Off-Hand text visible; Mekatl is the off-hand piece in the Masterwork III Bard weapon set (paired with the main-hand lute/instrument). Name inference: Mekatl = secondary weapon = Off Hand."
+ },
+ {
+  "name": "Nether Convergence",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Implement, Orb, Ranged, Weapon / Requires Class: Wizard' \u2014 Orb is the off-hand slot for Wizard."
+ },
+ {
+  "name": "Exalted Bronzewood Huitzauhqui",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade' with no Off-Hand designation; Blade = main-hand weapon for Barbarian."
+ },
+ {
+  "name": "Exalted Pioneer Halat",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads 'Sword Knot, Off-Hand'."
+ },
+ {
+  "name": "Exalted Pioneer Scimitar",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade' with no Off-Hand designation; Blade = main-hand weapon for Barbarian."
+ },
+ {
+  "name": "Exalted Primal Huitzauhqui",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade' with no Off-Hand designation; Blade = main-hand weapon for Barbarian."
+ },
+ {
+  "name": "Exalted Primal Mecatica",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads 'Sword Knot, Off-Hand'."
+ },
+ {
+  "name": "Exalted Silk Mecatica",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads 'Off-Hand, Sword Knot'."
+ },
+ {
+  "name": "Exalted Spinebearer",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads 'Sword Knot, Off-Hand'."
+ },
+ {
+  "name": "Exalted Spinethrasher",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade' with no Off-Hand designation; Blade = main-hand weapon for Barbarian."
+ },
+ {
+  "name": "Fey Greatsword",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade' with no Off-Hand designation; Blade = main-hand weapon for Barbarian."
+ },
+ {
+  "name": "Fey Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line explicitly reads 'Sword Knot, Off-Hand'."
+ },
+ {
+  "name": "Skinstealer",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Main Hand Only, Weapon, Blade / Requires Class: Rogue'"
+ },
+ {
+  "name": "Aboleth Greatsword",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade / Requires Class: Barbarian' \u2014 no Off-Hand or Sword Knot marker; greatsword pattern = Main Hand"
+ },
+ {
+  "name": "Aboleth Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Sword Knot, Off-Hand / Requires Class: Barbarian'"
+ },
+ {
+  "name": "Bloodcatcher",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Sword Knot, Off-Hand / Requires Class: Barbarian'"
+ },
+ {
+  "name": "Bloodspiller",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade / Requires Class: Barbarian' \u2014 no Off-Hand or Sword Knot marker"
+ },
+ {
+  "name": "Bronzewood Huitzauhqui",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade / Requires Class: Barbarian' \u2014 no Off-Hand or Sword Knot marker"
+ },
+ {
+  "name": "Burning Greataxe",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade / Requires Class: Barbarian' \u2014 no Off-Hand or Sword Knot marker"
+ },
+ {
+  "name": "Burning Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Sword Knot, Off-Hand / Requires Class: Barbarian'"
+ },
+ {
+  "name": "Celestial Bond of Belief",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Sword Knot / Requires Class: Barbarian'"
+ },
+ {
+  "name": "Celestial Edge of Integrity",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade / Requires Class: Barbarian' \u2014 no Off-Hand or Sword Knot marker"
+ },
+ {
+  "name": "Exalted Primal Huitzauhqui",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade / Requires Class: Barbarian' \u2014 Blade with no Off-Hand qualifier = Main Hand."
+ },
+ {
+  "name": "Exalted Primal Mecatica",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Sword Knot, Off-Hand / Requires Class: Barbarian'."
+ },
+ {
+  "name": "Exalted Silk Mecatica",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Off-Hand, Sword Knot / Requires Class: Barbarian'."
+ },
+ {
+  "name": "Exalted Spinebearer",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Sword Knot, Off-Hand / Requires Class: Barbarian'."
+ },
+ {
+  "name": "Exalted Spinethrasher",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade / Requires Class: Barbarian' \u2014 Blade with no Off-Hand qualifier = Main Hand."
+ },
+ {
+  "name": "Fey Greatsword",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade / Requires Class: Barbarian' \u2014 Blade with no Off-Hand qualifier = Main Hand."
+ },
+ {
+  "name": "Fey Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Sword Knot, Off-Hand / Requires Class: Barbarian'."
+ },
+ {
+  "name": "Headsman's Greataxe",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade / Requires Class: Barbarian' \u2014 Blade with no Off-Hand qualifier = Main Hand."
+ },
+ {
+  "name": "Headsman's Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Sword Knot, Off-Hand / Requires Class: Barbarian'."
+ },
+ {
+  "name": "Hellfire Engine Roadkill Cleaner",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads 'Blade / Requires Class: Barbarian' \u2014 Blade with no Off-Hand qualifier = Main Hand."
+ },
+ {
+  "name": "Exalted Primal Mecatica",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Sword Knot, Off-Hand'"
+ },
+ {
+  "name": "Exalted Silk Mecatica",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Off-Hand, Sword Knot'"
+ },
+ {
+  "name": "Exalted Spinebearer",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Sword Knot, Off-Hand'"
+ },
+ {
+  "name": "Exalted Spinethrasher",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Blade' with no Off-Hand designation; Blade = primary weapon for Barbarian"
+ },
+ {
+  "name": "Fey Greatsword",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Blade' with no Off-Hand designation"
+ },
+ {
+  "name": "Fey Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Sword Knot, Off-Hand'"
+ },
+ {
+  "name": "Headsman's Greataxe",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Blade' with no Off-Hand designation"
+ },
+ {
+  "name": "Headsman's Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Sword Knot, Off-Hand'"
+ },
+ {
+  "name": "Hellfire Engine Roadkill Cleaner",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Blade' with no Off-Hand designation"
+ },
+ {
+  "name": "Hellfire Engine Serpentine Belt",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line reads: 'Off-Hand, Sword Knot'"
+ },
+ {
+  "name": "Honored Axe of the Blessed Blade",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade' \u2014 Barbarian main-hand weapon category."
+ },
+ {
+  "name": "Howling Greatsword",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade' \u2014 Barbarian main-hand weapon category."
+ },
+ {
+  "name": "Howling Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Sword Knot, Off-Hand' \u2014 explicit Off-Hand designation."
+ },
+ {
+  "name": "Knot of the Bloodbound",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Sword Knot' \u2014 explicit Off-Hand designation."
+ },
+ {
+  "name": "Lifeforged Greatsword",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade' \u2014 Barbarian main-hand weapon category."
+ },
+ {
+  "name": "Lifeforged Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Sword Knot' \u2014 explicit Off-Hand designation."
+ },
+ {
+  "name": "Stronghold Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Sword Knot' \u2014 explicit Off-Hand designation."
+ },
+ {
+  "name": "Manticore Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Sword Knot' \u2014 explicit Off-Hand designation."
+ },
+ {
+  "name": "Mirage Greatsword",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade' \u2014 Barbarian main-hand weapon category."
+ },
+ {
+  "name": "Mirage Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Sword Knot, Off-Hand' \u2014 explicit Off-Hand designation."
+ },
+ {
+  "name": "Hellfire Engine Roadkill Cleaner",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade' \u2014 Barbarian main-hand weapon category."
+ },
+ {
+  "name": "Hellfire Engine Serpentine Belt",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Sword Knot'."
+ },
+ {
+  "name": "Honored Axe of the Blessed Blade",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade' \u2014 Barbarian main-hand weapon category."
+ },
+ {
+  "name": "Howling Greatsword",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade' \u2014 Barbarian main-hand weapon category."
+ },
+ {
+  "name": "Howling Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Sword Knot, Off-Hand'."
+ },
+ {
+  "name": "Knot of the Bloodbound",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Sword Knot'."
+ },
+ {
+  "name": "Lifeforged Greatsword",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade' \u2014 Barbarian main-hand weapon category."
+ },
+ {
+  "name": "Lifeforged Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Sword Knot'."
+ },
+ {
+  "name": "Stronghold Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Sword Knot'."
+ },
+ {
+  "name": "Manticore Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Sword Knot'."
+ },
+ {
+  "name": "Vistani Sword Knot",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Off-Hand, Sword Knot'"
+ },
+ {
+  "name": "Wootz Matraqa",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade, Requires Class: Barbarian' \u2014 no Off-Hand or Shield qualifier; blade weapon for Barbarian is Main Hand"
+ },
+ {
+  "name": "Honed Sword of the Blessed Blade",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade, Requires Class: Fighter' \u2014 no Off-Hand qualifier"
+ },
+ {
+  "name": "Kind Defense of the Blessed Blade",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Heavy, Off-Hand, Shield, Requires Class: Fighter'"
+ },
+ {
+  "name": "Celestial Blade of Creed",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade, Requires Class: Fighter' \u2014 no Off-Hand qualifier"
+ },
+ {
+  "name": "Celestial Ward of Loyalty",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Heavy, Off-Hand, Shield, Requires Class: Fighter'"
+ },
+ {
+  "name": "The Legion Guard's Broad Blade",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade, Requires Class: Fighter' \u2014 no Off-Hand qualifier"
+ },
+ {
+  "name": "The Legion Guard's Demon Door",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Heavy, Off-Hand, Shield, Requires Class: Fighter'"
+ },
+ {
+  "name": "Hellfire Engine Clanker",
+  "new_slot": "Main Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Blade, Requires Class: Fighter' \u2014 no Off-Hand qualifier"
+ },
+ {
+  "name": "Hellfire Engine Door Panel",
+  "new_slot": "Off Hand",
+  "confidence": "high",
+  "evidence": "Tooltip type line: 'Heavy, Off-Hand, Shield, Requires Class: Fighter'"
+ }
+]

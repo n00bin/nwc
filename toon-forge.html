@@ -17083,6 +17083,17 @@
     // modifier across all enemies, but research couldn't independently
     // verify it. That claim came from old (pre-Mod 16 / Armor Penetration
     // era) data. We use raw 50% Defense without the −15% adjustment.
+    // Standard endgame-PvE target profile. VERIFIED 2026-07-09 vs the
+    // Neverwinter Fandom wiki + community theorycraft (Obikin89 / nwguide /
+    // NW Hub), two independent research passes, zero contradictions:
+    //   awareness 0 + critAvoid 0 -> bosses do NOT resist Combat Advantage or
+    //     Critical Severity (wiki, verbatim: 'monsters and bosses have 0%
+    //     Awareness'; 'NPCs do not have any Critical Avoidance'), so capping
+    //     CA and CritSev IS correct for DPS -- there is no hidden resistance.
+    //   defense 0.50 / deflect 0.50 / deflectSev 0.90 -> the universal PvE
+    //     baseline; no source shows per-boss/difficulty variance. Accuracy
+    //     reduces deflectSev (not deflect chance), matching the deflect math.
+    // Caveat: all community/wiki-sourced (no dev-published boss numbers).
     function getEnemyStats() {
       return {
         awareness:  0,
@@ -17386,6 +17397,13 @@
             ooh = stat("Overall Outgoing Healing"),
             critSev = stat("Critical Severity"), critStrike = stat("Critical Strike");
       const healMult = (1 + power) * (1 + outgoing + ooh);
+      // CritSev is HALVED for heals. VERIFIED 2026-07-09 (n00b, live PS5):
+      // at 120% CritSev a 344,688 normal heal crit for 551,501 = x1.600 =
+      // +60% = exactly 120%/2. OFFICIAL SOURCE: Mod 19 'Avernus' patch note
+      // (2020-06-29): 'critical severity on healing reduced to 50%, down from
+      // 100%' (was FULL, Mod 16-18). Also Obikin89 / Janne / NW Hub. NOTE:
+      // chance-to-crit is NOT halved; sources split on a heal-crit-chance cap
+      // (~50%?) -- unverified, so pCritH below is left as-is (treated as dmg).
       const critHealMult = (1 + critSev / 2);
       const baseHeal = baseVal * healMult;
       const critHeal = baseVal * healMult * critHealMult;

@@ -1,0 +1,47 @@
+{
+  "purpose": "Issue-chasing session baseline \u00e2\u20ac\u201d n00b's shared tank build (Paladin Justicar, TIL 147,486). Re-run scratchpad tank_baseline_test.js against this after fixes to catch regressions.",
+  "build": "toon-forge.html#b=<hash in scratchpad tank_build_hash.txt>",
+  "date": "2026-07-03",
+  "resolution": "all items resolve except buff 'Crafted Potion of Power Rank 4 +1' (user-added, lives in n00b's localStorage only)",
+  "engine": {
+    "totalItemLevel": 147486,
+    "Power": {
+      "ratingTotal": 131013,
+      "finalPct": 47.03
+    },
+    "Defense": {
+      "ratingTotal": 160033,
+      "finalPct": 116.65,
+      "note": "rating contribution capped at 60%"
+    },
+    "Awareness": {
+      "ratingTotal": 147372,
+      "finalPct": 76.92
+    },
+    "Deflect": {
+      "ratingTotal": 137741,
+      "finalPct": 54.06
+    },
+    "Critical Strike": {
+      "ratingTotal": 116765,
+      "finalPct": 31.05
+    },
+    "Combat Advantage": {
+      "ratingTotal": 129872,
+      "finalPct": 33.39
+    },
+    "Forte": {
+      "ratingTotal": 126082,
+      "finalPct": 47.1
+    },
+    "Recharge Speed": {
+      "finalPct": 11.75
+    },
+    "Maximum Hit Points": {
+      "flat": 2849456,
+      "inGame": 2825049,
+      "deltaPct": 0.86,
+      "note": "calibrated 2026-07-03 after Max HP Percent alias fix; hpModel: TILx10 x1.2 tank +107,280 flat, x1.15 CON30, x1.32 pct"
+    }
+  }
+}

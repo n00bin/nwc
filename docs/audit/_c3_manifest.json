@@ -1,0 +1,3378 @@
+[
+ {
+  "name": "Aegis of the Condemned · IL 4800",
+  "slot": "Off Hand",
+  "il": 4800,
+  "ids": [
+   465,
+   5331
+  ],
+  "copies": [
+   {
+    "id": 465,
+    "ratingStats": {
+     "Critical Strike": 2880,
+     "Awareness": 1920,
+     "Outgoing Healing": 1920
+    },
+    "percentStats": {},
+    "set": "Impending Doom",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "name": "Impending Doom set bonus",
+      "description": "Set Impending Doom (0/2) — Charges by daily/encounter/in-combat. Unleashed: Tank −1% Incoming dmg, Heal −1% OH; +x% Forte; +x% Defense"
+     },
+     {
+      "type": "Set",
+      "name": "Impending Doom (2/2)",
+      "setName": "Impending Doom",
+      "pieces": 2,
+      "description": "2 of Set: Accumulate 13 Charges to consume them and become Unleashed. Charged by: 1 charge per Daily power (10s CD), 1 charge per Encounter power, 1 charge per 9s in combat. Unleashed grants: DPS +5% Base Damage Boost, Heal +3% Outgoing Healing. Charges and Unleashed last 15s and are refreshable. Leaving combat removes all Charges."
+     }
+    ],
+    "source": "Soul Harvest (Advanced)",
+    "notes": ""
+   },
+   {
+    "id": 5331,
+    "ratingStats": {
+     "Critical Strike": 2880,
+     "Outgoing Healing": 1920
+    },
+    "percentStats": {},
+    "set": "Impending Doom",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "name": "Impending Doom (2/2)",
+      "setName": "Impending Doom",
+      "pieces": 2,
+      "description": "2 of Set: Accumulate 13 Charges to consume them and become Unleashed. Charged by: 1 charge per Daily power (10s CD), 1 charge per Encounter power, 1 charge per 9s in combat. Unleashed grants: DPS +5% Base Damage Boost, Heal +3% Outgoing Healing. Charges and Unleashed last 15s and are refreshable. Leaving combat removes all Charges."
+     }
+    ],
+    "source": "Soul Harvest (Master)",
+    "notes": "Screenshot intake (loose root chunk 2). item_level corrected 800->4800 (was rarity-tier mislabel; de"
+   }
+  ],
+  "screens": []
+ },
+ {
+  "name": "Prismatic Crystalflex Bracers",
+  "slot": "Arms",
+  "il": 3700,
+  "ids": [
+   2,
+   3176,
+   3938
+  ],
+  "copies": [
+   {
+    "id": 2,
+    "ratingStats": {
+     "Combat Advantage": 2220,
+     "Critical Severity": 3330
+    },
+    "percentStats": {},
+    "set": "Prismatic Crystalline Armor",
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Critical Severity",
+      "amount": 9.0,
+      "name": "Enveloped Rage (Greater)",
+      "description": "When in combat with 3 or more enemies, your Critical Severity is increased by 1.8% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 9% Critical Severity."
+     }
+    ],
+    "source": "Dread Sanctum (Master)",
+    "notes": "Reinforced: Empty."
+   },
+   {
+    "id": 3176,
+    "ratingStats": {
+     "Critical Strike": 3330,
+     "Outgoing Healing": 2220
+    },
+    "percentStats": {},
+    "set": "Prismatic Crystalline Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Class Resource Max",
+      "amount": 20.0,
+      "name": "Resourceful Forte (Greater)",
+      "description": "Your Divinity/Performance/Soulweave maximum increases by 20%. Gain 3.5% Forte."
+     },
+     {
+      "type": "Equip",
+      "stat": "Forte",
+      "amount": 3.5,
+      "name": "Resourceful Forte (Greater)"
+     }
+    ],
+    "source": "Dread Sanctum (Master)",
+    "notes": "Warlock gear collection screenshot intake 2026-05-13."
+   },
+   {
+    "id": 3938,
+    "ratingStats": {
+     "Combat Advantage": 2220,
+     "Critical Severity": 3530
+    },
+    "percentStats": {},
+    "set": "Prismatic Crystalline Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Critical Severity",
+      "amount": 9.0,
+      "name": "Enveloped Rage (Greater)",
+      "description": "When in combat with 3 or more enemies, your Critical Severity is increased 1.8% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 9% Critical Severity."
+     }
+    ],
+    "source": "Dread Sanctum (Master)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Prismatic Crystalflex Bracers_IL3700.png",
+   "docs\\audit\\_up\\cleric-gear\\Prismatic Crystalflex Bracers_IL3700.png",
+   "docs\\audit\\_up\\ranger-gear\\Prismatic Crystalflex Bracers_IL3700.png",
+   "docs\\audit\\_up\\rogue-gear\\Prismatic Crystalflex Bracers_IL3700.png"
+  ]
+ },
+ {
+  "name": "Prismatic Bismuth Mail",
+  "slot": "Armor",
+  "il": 3700,
+  "ids": [
+   2724,
+   3177,
+   3937
+  ],
+  "copies": [
+   {
+    "id": 2724,
+    "ratingStats": {
+     "Critical Strike": 3330,
+     "Critical Severity": 3330
+    },
+    "percentStats": {},
+    "set": "Prismatic Crystalline Armor",
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Combat Advantage",
+      "amount": 5.0,
+      "name": "Tactical Daily (Greater)",
+      "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown). You gain 5% Combat Advantage."
+     }
+    ],
+    "source": "Dread Sanctum (Master)",
+    "notes": "Recommended. Reinforced: Empty."
+   },
+   {
+    "id": 3177,
+    "ratingStats": {
+     "Critical Severity": 3330,
+     "Outgoing Healing": 2220
+    },
+    "percentStats": {},
+    "set": "Prismatic Crystalline Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "name": "Healer's Influence (Greater)",
+      "description": "Healing an ally with an Encounter power also heals you for 80,000 and grants you and close Allies 3% Defense for 5s."
+     }
+    ],
+    "source": "Dread Sanctum (Master)",
+    "notes": "Stats verified vs in-game tooltip screenshot 2026-06-07 (misnamed capture crystalweave-armlets_il335"
+   },
+   {
+    "id": 3937,
+    "ratingStats": {
+     "Critical Strike": 3530,
+     "Critical Severity": 3530
+    },
+    "percentStats": {},
+    "set": "Prismatic Crystalline Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Combat Advantage",
+      "amount": 5.0,
+      "name": "Tactical Daily (Greater)",
+      "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown). You gain 5% Combat Advantage."
+     }
+    ],
+    "source": "Dread Sanctum (Master)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Prismatic Bismuth Mail_IL3700.png",
+   "docs\\audit\\_up\\cleric-gear\\Prismatic Bismuth Mail_IL3700.png",
+   "docs\\audit\\_up\\ranger-gear\\Prismatic Bismuth Mail_IL3700.png",
+   "docs\\audit\\_up\\rogue-gear\\Prismatic Bismuth Mail_IL3700.png"
+  ]
+ },
+ {
+  "name": "Prismatic Fractal Barbut",
+  "slot": "Head",
+  "il": 3700,
+  "ids": [
+   3178,
+   3940
+  ],
+  "copies": [
+   {
+    "id": 3178,
+    "ratingStats": {
+     "Critical Strike": 3330,
+     "Critical Severity": 3330
+    },
+    "percentStats": {},
+    "set": "Prismatic Crystalline Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Outgoing Healing",
+      "amount": 0.8,
+      "name": "Gladiator's Restoration (Greater)",
+      "description": "For every 5 seconds you are in combat, you gain 0.8% Outgoing Healing and Critical Strike. Max Stacks: 5."
+     },
+     {
+      "type": "Equip",
+      "stat": "Critical Strike",
+      "amount": 0.8,
+      "name": "Gladiator's Restoration (Greater)",
+      "description": "For every 5 seconds you are in combat, you gain 0.8% Outgoing Healing and Critical Strike. Max Stacks: 5."
+     }
+    ],
+    "source": "Dread Sanctum (Master)",
+    "notes": "Stats verified vs in-game tooltip screenshot 2026-06-07 (misnamed capture bismuth-jerkin_il3350.png)"
+   },
+   {
+    "id": 3940,
+    "ratingStats": {
+     "Accuracy": 1804,
+     "Combat Advantage": 2220,
+     "Forte": 1249
+    },
+    "percentStats": {},
+    "set": "Prismatic Crystalline Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Critical Strike",
+      "amount": 1.8,
+      "name": "Critical Spiker (Greater)",
+      "description": "For every 5 seconds you are in combat, you gain 1.8% Critical Strike. Max Stacks: 5."
+     }
+    ],
+    "source": "Dread Sanctum (Master)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Prismatic Fractal Barbut_IL3700.png",
+   "docs\\audit\\_up\\cleric-gear\\Prismatic Fractal Barbut_IL3700.png",
+   "docs\\audit\\_up\\ranger-gear\\Prismatic Fractal Barbut_IL3700.png",
+   "docs\\audit\\_up\\rogue-gear\\Prismatic Fractal Barbut_IL3700.png"
+  ]
+ },
+ {
+  "name": "Crystalflex Bracers",
+  "slot": "Arms",
+  "il": 3350,
+  "ids": [
+   2727,
+   3185,
+   3942
+  ],
+  "copies": [
+   {
+    "id": 2727,
+    "ratingStats": {
+     "Critical Strike": 3015,
+     "Critical Severity": 3015
+    },
+    "percentStats": {},
+    "set": "Crystalline Armor",
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Critical Severity",
+      "amount": 9.0,
+      "name": "Enveloped Rage (Greater)",
+      "description": "When in combat with 3 or more enemies, your Critical Severity is increased by 1.8% every 2 seconds. Every 2 seconds you are in combat with 1 or fewer enemies, lose 1 stack. Max 5 stacks: 9% Critical Severity."
+     }
+    ],
+    "source": "Dread Sanctum (Advanced)",
+    "notes": "Reinforced: Empty."
+   },
+   {
+    "id": 3185,
+    "ratingStats": {
+     "Critical Strike": 3015,
+     "Outgoing Healing": 2010
+    },
+    "percentStats": {},
+    "set": "Crystalline Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "name": "Resourceful Forte (Greater)",
+      "description": "+20% Divinity/Performance/Soulweave maximum. +3.5% Forte."
+     }
+    ],
+    "source": "Dread Sanctum (Advanced)",
+    "notes": "Warlock gear collection screenshot intake 2026-05-13."
+   },
+   {
+    "id": 3942,
+    "ratingStats": {
+     "Critical Strike": 3015,
+     "Critical Severity": 3015
+    },
+    "percentStats": {},
+    "set": "Crystalline Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Critical Severity",
+      "amount": 9.0,
+      "name": "Enveloped Rage (Greater)",
+      "description": "When in combat with 3 or more enemies, your Critical Severity is increased 1.8% every 2 seconds. Max 5 stacks: 9% Critical Severity."
+     }
+    ],
+    "source": "Dread Sanctum (Advanced)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Crystalflex Bracers_IL3350.png",
+   "docs\\audit\\_up\\cleric-gear\\Crystalflex Bracers_IL3350.png",
+   "docs\\audit\\_up\\ranger-gear\\Crystalflex Bracers_IL3350.png",
+   "docs\\audit\\_up\\rogue-gear\\Crystalflex Bracers_IL3350.png"
+  ]
+ },
+ {
+  "name": "Fractal Barbut",
+  "slot": "Head",
+  "il": 3350,
+  "ids": [
+   2729,
+   3183,
+   3944
+  ],
+  "copies": [
+   {
+    "id": 2729,
+    "ratingStats": {
+     "Critical Strike": 3015,
+     "Forte": 2261
+    },
+    "percentStats": {},
+    "set": "Crystalline Armor",
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Critical Strike",
+      "amount": 1.8,
+      "name": "Critical Spiker (Greater)",
+      "description": "For every 5 seconds you are in combat, you gain 1.8% Critical Strike. Max Stacks: 5."
+     }
+    ],
+    "source": "Dread Sanctum (Advanced)",
+    "notes": "Recommended. Reinforced: Empty."
+   },
+   {
+    "id": 3183,
+    "ratingStats": {
+     "Critical Strike": 3015,
+     "Critical Severity": 3015
+    },
+    "percentStats": {},
+    "set": "Crystalline Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "name": "Gladiator's Restoration (Greater)",
+      "description": "Every 3s in combat: +0.8% Outgoing Healing and Critical Strike. Max 5 stacks."
+     }
+    ],
+    "source": "Dread Sanctum (Advanced)",
+    "notes": "Warlock gear collection screenshot intake 2026-05-13."
+   },
+   {
+    "id": 3944,
+    "ratingStats": {
+     "Critical Strike": 3015,
+     "Forte": 3265
+    },
+    "percentStats": {},
+    "set": "Crystalline Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Critical Strike",
+      "amount": 1.8,
+      "name": "Critical Spiker (Greater)",
+      "description": "For every 5 seconds you are in combat, you gain 1.8% Critical Strike. Max Stacks: 5."
+     }
+    ],
+    "source": "Dread Sanctum (Advanced)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Fractal Barbut_IL3350.png",
+   "docs\\audit\\_up\\cleric-gear\\Fractal Barbut_IL3350.png",
+   "docs\\audit\\_up\\ranger-gear\\Fractal Barbut_IL3350.png",
+   "docs\\audit\\_up\\rogue-gear\\Fractal Barbut_IL3350.png"
+  ]
+ },
+ {
+  "name": "Bismuth Mail",
+  "slot": "Armor",
+  "il": 3350,
+  "ids": [
+   3184,
+   3941
+  ],
+  "copies": [
+   {
+    "id": 3184,
+    "ratingStats": {
+     "Critical Strike": 3015,
+     "Critical Severity": 3015
+    },
+    "percentStats": {},
+    "set": "Crystalline Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "name": "Healer's Influence (Greater)",
+      "description": "Encounter heal on ally also heals you 80,000 and grants you and close Allies 3% Defense for 5s."
+     }
+    ],
+    "source": "Dread Sanctum (Advanced)",
+    "notes": "Warlock gear collection screenshot intake 2026-05-13."
+   },
+   {
+    "id": 3941,
+    "ratingStats": {
+     "Combat Advantage": 2010,
+     "Critical Severity": 3015
+    },
+    "percentStats": {},
+    "set": "Crystalline Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Combat Advantage",
+      "amount": 5.0,
+      "name": "Tactical Daily (Greater)",
+      "description": "When you deal damage with a Daily power, your next encounter power will deal 20% more damage. (30 second cooldown). You gain 5% Combat Advantage."
+     }
+    ],
+    "source": "Dread Sanctum (Advanced)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Bismuth Mail_IL3350.png",
+   "docs\\audit\\_up\\cleric-gear\\Bismuth Mail_IL3350.png",
+   "docs\\audit\\_up\\ranger-gear\\Bismuth Mail_IL3350.png",
+   "docs\\audit\\_up\\rogue-gear\\Bismuth Mail_IL3350.png"
+  ]
+ },
+ {
+  "name": "Xaryxian Pactblade",
+  "slot": "Main Hand",
+  "il": 2750,
+  "ids": [
+   199,
+   3197
+  ],
+  "copies": [
+   {
+    "id": 199,
+    "ratingStats": {
+     "Damage": 250,
+     "Critical Severity": 2062,
+     "Forte": 2062
+    },
+    "percentStats": {},
+    "set": "Peer Into the Void",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "name": "Passive bonuses + Wildspace movement",
+      "setName": "Peer Into the Void",
+      "pieces": 2
+     },
+     {
+      "type": "Set",
+      "name": "Darklight (stacking by enemy count)",
+      "setName": "Peer Into the Void",
+      "pieces": 2
+     }
+    ],
+    "source": "The Imperial Citadel (Advanced)",
+    "notes": ""
+   },
+   {
+    "id": 3197,
+    "ratingStats": {
+     "Critical Severity": 2062,
+     "Forte": 2062
+    },
+    "percentStats": {
+     "Damage Bonus": 2.5
+    },
+    "set": "Peer Into the Void",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Overall Outgoing Healing",
+      "amount": 1,
+      "setName": "Peer Into the Void",
+      "pieces": 2,
+      "description": "2 of Set: +1% Overall Outgoing Healing and -5% Incoming Damage. When in Wildspace, your Movement Speed is increased by 12%. Every 2s in combat with a single opponent, gain a stack of Darklight. Every 2s in combat with 4+ opponents, lose a stack. Based on your role, each stack of Darklight grants: DPS +0.6% Base Damage Boost, Tank -0.6% Incoming Damage, Healer +0.6% Overall Outgoing Healing. Max 10 stacks. Stack bonuses doubled in Wildspace."
+     }
+    ],
+    "source": "The Imperial Citadel (Advanced)",
+    "notes": "+250 Damage flat. Warlock gear collection screenshot intake 2026-05-13."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\warlock-gear\\Xaryxian Pactblade_IL2750.png"
+  ]
+ },
+ {
+  "name": "Cosmic Band of Deflection",
+  "slot": "Ring",
+  "il": 2400,
+  "ids": [
+   252,
+   775
+  ],
+  "copies": [
+   {
+    "id": 252,
+    "ratingStats": {
+     "Awareness": 5400,
+     "Critical Avoidance": 1800
+    },
+    "percentStats": {
+     "Stamina Regeneration": 1.5
+    },
+    "set": null,
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Incoming Damage",
+      "amount": -2,
+      "name": "Survivor's Resilience"
+     }
+    ],
+    "source": "Screenshot intake",
+    "notes": "Screenshot intake complete. Tooltip shows Artifact ring, unique-wear text ('You may only wear one of"
+   },
+   {
+    "id": 775,
+    "ratingStats": {
+     "Awareness": 5400,
+     "Critical Avoidance": 1800
+    },
+    "percentStats": {
+     "Stamina Regeneration": 1.5
+    },
+    "set": null,
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "name": "Survivor's Resilience",
+      "description": "Gain up to -2% Incoming Damage based on your missing health. The max bonus is achieved at 25% or less health."
+     }
+    ],
+    "source": "The Imperial Citadel (Advanced)",
+    "notes": ""
+   }
+  ],
+  "screens": []
+ },
+ {
+  "name": "Astral Raider's Hat",
+  "slot": "Head",
+  "il": 2200,
+  "ids": [
+   2766,
+   3981
+  ],
+  "copies": [
+   {
+    "id": 2766,
+    "ratingStats": {
+     "Critical Strike": 1320,
+     "Defense": 990,
+     "Incoming Healing": 990
+    },
+    "percentStats": {},
+    "set": null,
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "name": "Reckless Brutality",
+      "description": "Whenever you deal damage to an enemy, you gain a stack of Reckless Brutality, increasing your Power by 2000 but increasing your damage taken by 2% for 5 seconds. (Max 5 stacks)"
+     }
+    ],
+    "source": "Xaryxian Invasions",
+    "notes": ""
+   },
+   {
+    "id": 3981,
+    "ratingStats": {
+     "Critical Strike": 1320,
+     "Outgoing Healing": 990
+    },
+    "percentStats": {},
+    "set": "Astral Raider's Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "name": "Reckless Brutality",
+      "description": "Whenever you deal damage to an enemy gain a stack of Reckless Brutality, increasing your Power by 2000 but increasing your damage taken by 2% for 5 seconds. (Max 5 stacks)"
+     }
+    ],
+    "source": "Xaryxian Invasions",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Astral Raider's Hat_IL2200.png",
+   "docs\\audit\\_up\\cleric-gear\\Astral Raider's Hat_IL2200.png",
+   "docs\\audit\\_up\\ranger-gear\\Astral Raider's Hat_IL2200.png",
+   "docs\\audit\\_up\\rogue-gear\\Astral Raider's Hat_IL2200.png"
+  ]
+ },
+ {
+  "name": "Astral Raider's Jackboots",
+  "slot": "Feet",
+  "il": 2200,
+  "ids": [
+   2769,
+   3240,
+   3984
+  ],
+  "copies": [
+   {
+    "id": 2769,
+    "ratingStats": {
+     "Defense": 990,
+     "Awareness": 1320,
+     "Critical Avoidance": 990
+    },
+    "percentStats": {},
+    "set": null,
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "name": "Scaled Disdain",
+      "description": "Grants up to -9% Incoming Damage when your total item level is being scaled down. Currently: -0% Incoming Damage. Disabled in Thay Arena PvP."
+     }
+    ],
+    "source": "Xaryxian Invasions",
+    "notes": ""
+   },
+   {
+    "id": 3240,
+    "ratingStats": {
+     "Defense": 990,
+     "Awareness": 1320,
+     "Incoming Healing": 990
+    },
+    "percentStats": {},
+    "set": "Astral Raider's Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "name": "Scaled Disdain",
+      "description": "Grants up to -20% Incoming Damage when your total item level is being scaled down."
+     }
+    ],
+    "source": "Xaryxian Invasions",
+    "notes": "Legacy Warlock gear collection screenshot intake 2026-05-13."
+   },
+   {
+    "id": 3984,
+    "ratingStats": {
+     "Defense": 990,
+     "Awareness": 1320,
+     "Critical Avoidance": 990
+    },
+    "percentStats": {},
+    "set": "Astral Raider's Armor",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "name": "Scaled Disdain",
+      "description": "Grants up to -70% Incoming Damage when your total item level is being scaled down."
+     }
+    ],
+    "source": "Xaryxian Invasions",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Astral Raider's Jackboots_IL2200.png",
+   "docs\\audit\\_up\\cleric-gear\\Astral Raider's Jackboots_IL2200.png",
+   "docs\\audit\\_up\\ranger-gear\\Astral Raider's Jackboots_IL2200.png",
+   "docs\\audit\\_up\\rogue-gear\\Astral Raider's Jackboots_IL2200.png"
+  ]
+ },
+ {
+  "name": "The Weaver's Pactblade",
+  "slot": "Main Hand",
+  "il": 2050,
+  "ids": [
+   195,
+   3253
+  ],
+  "copies": [
+   {
+    "id": 195,
+    "ratingStats": {
+     "Damage": 250,
+     "Critical Severity": 1538,
+     "Forte": 1538
+    },
+    "percentStats": {},
+    "set": "Beholder Slayer",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "name": "HP-difference scaling (damage/heal)",
+      "setName": "Beholder Slayer",
+      "pieces": 2
+     },
+     {
+      "type": "Set",
+      "name": "Party aura (stacks with allies using similar set)",
+      "setName": "Beholder Slayer",
+      "pieces": 2
+     },
+     {
+      "type": "Set",
+      "name": "Underdark bonus",
+      "setName": "Beholder Slayer",
+      "pieces": 2
+     }
+    ],
+    "source": "M25 Gzemnid Trial",
+    "notes": ""
+   },
+   {
+    "id": 3253,
+    "ratingStats": {
+     "Critical Severity": 1538,
+     "Forte": 1538
+    },
+    "percentStats": {
+     "Damage Bonus": 2.5
+    },
+    "set": "Beholder Slayer",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Damage Bonus",
+      "amount": 0,
+      "setName": "Beholder Slayer",
+      "pieces": 2,
+      "description": "2 of Set: Deal or heal up to 5% additional damage based on the difference in hit point percentage between the player and the target. DPS +2% Base Damage Boost, Tank -2% Incoming Damage, Healer +2% Overall Outgoing Healing. May stack up to 5 times when allies are equipped with a set of beholder slayer weapons. When in the Underdark, your Damage is increased by 5%."
+     }
+    ],
+    "source": "Gromnir's Reliquary (Master)",
+    "notes": "Legacy Warlock gear collection screenshot intake 2026-05-13."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\warlock-gear\\The Weaver's Pactblade_IL2050.png"
+  ]
+ },
+ {
+  "name": "Stormforged Pactblade",
+  "slot": "Main Hand",
+  "il": 2000,
+  "ids": [
+   191,
+   3255
+  ],
+  "copies": [
+   {
+    "id": 191,
+    "ratingStats": {
+     "Damage": 200,
+     "Accuracy": 600,
+     "Critical Severity": 900,
+     "Combat Advantage": 500
+    },
+    "percentStats": {},
+    "set": "Stormforged",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "name": "Underdark passive bonuses",
+      "setName": "Stormforged",
+      "pieces": 2
+     },
+     {
+      "type": "Set",
+      "name": "Role boost on dodge/block/sprint/shadow slip",
+      "setName": "Stormforged",
+      "pieces": 2
+     },
+     {
+      "type": "Set",
+      "name": "Role boost on Combat Advantage hit",
+      "setName": "Stormforged",
+      "pieces": 2
+     }
+    ],
+    "source": "Northdark Reaches Campaign",
+    "notes": ""
+   },
+   {
+    "id": 3255,
+    "ratingStats": {
+     "Accuracy": 600,
+     "Combat Advantage": 1500,
+     "Critical Severity": 900
+    },
+    "percentStats": {
+     "Damage Bonus": 2.0
+    },
+    "set": "Stormforged",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Damage Bonus",
+      "amount": 0,
+      "setName": "Stormforged",
+      "pieces": 2,
+      "description": "2 of Set: 2% Base Damage Boost, -2% Incoming Damage, or 2% Overall Outgoing Healing depending on role, while in the Underdark. Gain 7.5% Base Damage Boost, -7.5% Incoming Damage, or 7.5% Overall Outgoing Healing on your role, for 15 seconds when you dodge, block, sprint or shadow slip (30 second cooldown). When dealing combat advantage damage, you have a 10% chance to gain 3% Base Damage Boost, -3% Incoming Damage, or 3% Overall Outgoing Healing for 15s (30s cooldown)."
+     }
+    ],
+    "source": "Northdark Reaches Campaign",
+    "notes": "Legacy Warlock gear collection screenshot intake 2026-05-13."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\warlock-gear\\Stormforged Pactblade_IL2000.png"
+  ]
+ },
+ {
+  "name": "Duergar Mercenary's Steel Pactblade",
+  "slot": "Main Hand",
+  "il": 1900,
+  "ids": [
+   155,
+   3251
+  ],
+  "copies": [
+   {
+    "id": 155,
+    "ratingStats": {
+     "Damage": 200,
+     "Critical Strike": 1425,
+     "Critical Severity": 1425
+    },
+    "percentStats": {},
+    "set": "Duergar Weapon Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "name": "Duergar Weapon Set (aura, stacking)",
+      "setName": "Duergar Weapon Set",
+      "pieces": 2
+     }
+    ],
+    "source": "Masterwork of Menzoberranzan",
+    "notes": ""
+   },
+   {
+    "id": 3251,
+    "ratingStats": {
+     "Critical Strike": 1425,
+     "Critical Severity": 1425
+    },
+    "percentStats": {
+     "Damage Bonus": 2.0
+    },
+    "set": "Duergar Weapon Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Damage Bonus",
+      "amount": 2,
+      "setName": "Duergar Weapon Set",
+      "pieces": 2,
+      "description": "2 of Set: +2% Base Damage Boost, +2% Overall Outgoing Healing, -3% Incoming Damage. May stack up to 5 times when allies are equipped with a set of Duergar weapons."
+     }
+    ],
+    "source": "Adventures in Thay",
+    "notes": "Legacy Warlock gear collection screenshot intake 2026-05-13."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\warlock-gear\\Duergar Mercenary's Steel Pactblade_IL1900.png"
+  ]
+ },
+ {
+  "name": "Mastered Duergar Mercenary's Barbute",
+  "slot": "Head",
+  "il": 1900,
+  "ids": [
+   2784,
+   3999
+  ],
+  "copies": [
+   {
+    "id": 2784,
+    "ratingStats": {
+     "Combat Advantage": 1425,
+     "Critical Severity": 1425
+    },
+    "percentStats": {},
+    "set": null,
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Accuracy",
+      "amount": 10000.0,
+      "kind": "rating",
+      "name": "Survivor's Strike",
+      "description": "When your health is 50% or more, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%."
+     },
+     {
+      "type": "Equip",
+      "stat": "Recharge Speed",
+      "amount": 20.0,
+      "name": "Survivor's Strike"
+     }
+    ],
+    "source": "Menzoberranzan Masterwork Gear (Set 3 of 19)",
+    "notes": ""
+   },
+   {
+    "id": 3999,
+    "ratingStats": {
+     "Combat Advantage": 1425,
+     "Critical Severity": 1425
+    },
+    "percentStats": {},
+    "set": "Menzoberranzan Masterwork Gear",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "name": "Survivor's Strike",
+      "description": "When your health is 50% or more, your Critical Strike is increased by 10,000. When your health is below 50%, your Accuracy is increased by 10,000. When your health is below 50%, Recharge Speed is increased by 20%."
+     }
+    ],
+    "source": "Menzoberranzan Masterwork crafting",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Mastered Duergar Mercenary's Barbute_IL1900.png",
+   "docs\\audit\\_up\\cleric-gear\\Mastered Duergar Mercenary's Barbute_IL1900.png",
+   "docs\\audit\\_up\\ranger-gear\\Mastered Duergar Mercenary's Barbute_IL1900.png",
+   "docs\\audit\\_up\\rogue-gear\\Mastered Duergar Mercenary's Barbute_IL1900.png"
+  ]
+ },
+ {
+  "name": "Crimson Scalebreaker's Rebel Gloves",
+  "slot": "Arms",
+  "il": 1800,
+  "ids": [
+   2816,
+   4044
+  ],
+  "copies": [
+   {
+    "id": 2816,
+    "ratingStats": {
+     "Critical Strike": 1080,
+     "Defense": 810,
+     "Forte": 810
+    },
+    "percentStats": {},
+    "set": null,
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Stamina Regeneration",
+      "amount": 5.0,
+      "name": "Herald's Cunning",
+      "description": "When you have no teammates within 30' of you, your Stamina Regeneration and Control Resistance is increased by 5%."
+     },
+     {
+      "type": "Equip",
+      "stat": "Control Resist",
+      "amount": 5.0,
+      "name": "Herald's Cunning"
+     }
+    ],
+    "source": "Dragonbone Vale Campaign Store (Scalebreaker's Gear, Set 2 of 11)",
+    "notes": ""
+   },
+   {
+    "id": 4044,
+    "ratingStats": {
+     "Critical Strike": 1000,
+     "Defense": 810,
+     "Forte": 810
+    },
+    "percentStats": {},
+    "set": "Crimson Scalebreaker's Rebel",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "name": "Herald's Cunning",
+      "description": "When you have teammates within 10' of you, your Stamina Regeneration and Control Resistance is increased by 5%."
+     }
+    ],
+    "source": "Dragonbone Vale Campaign Store",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Crimson Scalebreaker's Rebel Gloves_IL1800.png",
+   "docs\\audit\\_up\\cleric-gear\\Crimson Scalebreaker's Rebel Gloves_IL1800.png",
+   "docs\\audit\\_up\\ranger-gear\\Crimson Scalebreaker's Rebel Gloves_IL1800.png",
+   "docs\\audit\\_up\\rogue-gear\\Crimson Scalebreaker's Rebel Gloves_IL1800.png"
+  ]
+ },
+ {
+  "name": "Crimson Scalebreaker's Rebel Pikes",
+  "slot": "Feet",
+  "il": 1800,
+  "ids": [
+   2817,
+   4045
+  ],
+  "copies": [
+   {
+    "id": 2817,
+    "ratingStats": {
+     "Combat Advantage": 1080,
+     "Defense": 810,
+     "Critical Avoidance": 810
+    },
+    "percentStats": {},
+    "set": null,
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Movement Speed",
+      "amount": 1.0,
+      "name": "Renegade's Footwork",
+      "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10 seconds. Max 5 Stacks: 5% Movement Speed and Recharge Speed."
+     },
+     {
+      "type": "Equip",
+      "stat": "Recharge Speed",
+      "amount": 1.0,
+      "name": "Renegade's Footwork"
+     }
+    ],
+    "source": "Dragonbone Vale Campaign Store (Scalebreaker's Gear, Set 2 of 11)",
+    "notes": ""
+   },
+   {
+    "id": 4045,
+    "ratingStats": {
+     "Combat Advantage": 1000,
+     "Defense": 810,
+     "Critical Avoidance": 810
+    },
+    "percentStats": {},
+    "set": "Crimson Scalebreaker's Rebel",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Movement Speed",
+      "amount": 1.0,
+      "name": "Renegade's Footwork",
+      "description": "Whenever you Deflect an attack, gain 1% Movement Speed and Recharge Speed for 10 seconds. Max 5 Stacks: 5% Movement Speed and Recharge Speed."
+     },
+     {
+      "type": "Equip",
+      "stat": "Recharge Speed",
+      "amount": 1.0,
+      "name": "Renegade's Footwork"
+     }
+    ],
+    "source": "Dragonbone Vale Campaign Store",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Crimson Scalebreaker's Rebel Pikes_IL1800.png",
+   "docs\\audit\\_up\\cleric-gear\\Crimson Scalebreaker's Rebel Pikes_IL1800.png",
+   "docs\\audit\\_up\\ranger-gear\\Crimson Scalebreaker's Rebel Pikes_IL1800.png",
+   "docs\\audit\\_up\\rogue-gear\\Crimson Scalebreaker's Rebel Pikes_IL1800.png"
+  ]
+ },
+ {
+  "name": "Crimson Scalebreaker's Rebel Shroud",
+  "slot": "Head",
+  "il": 1800,
+  "ids": [
+   2818,
+   4042
+  ],
+  "copies": [
+   {
+    "id": 2818,
+    "ratingStats": {
+     "Accuracy": 1080,
+     "Defense": 810,
+     "Awareness": 810
+    },
+    "percentStats": {},
+    "set": null,
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Critical Severity",
+      "amount": 5.0,
+      "name": "Executioner's Ferocity",
+      "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds."
+     }
+    ],
+    "source": "Dragonbone Vale Campaign Store (Scalebreaker's Gear, Set 2 of 11)",
+    "notes": ""
+   },
+   {
+    "id": 4042,
+    "ratingStats": {
+     "Accuracy": 1000,
+     "Defense": 810,
+     "Awareness": 810
+    },
+    "percentStats": {},
+    "set": "Crimson Scalebreaker's Rebel",
+    "setSize": 4,
+    "equipBonuses": [
+     {
+      "type": "Equip",
+      "stat": "Critical Severity",
+      "amount": 5.0,
+      "name": "Executioner's Ferocity",
+      "description": "When you kill an enemy, your Critical Severity increases by 5% for 10 seconds."
+     }
+    ],
+    "source": "Dragonbone Vale Campaign Store",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Crimson Scalebreaker's Rebel Shroud_IL1800.png",
+   "docs\\audit\\_up\\cleric-gear\\Crimson Scalebreaker's Rebel Shroud_IL1800.png",
+   "docs\\audit\\_up\\ranger-gear\\Crimson Scalebreaker's Rebel Shroud_IL1800.png",
+   "docs\\audit\\_up\\rogue-gear\\Crimson Scalebreaker's Rebel Shroud_IL1800.png"
+  ]
+ },
+ {
+  "name": "Eternal Boots",
+  "slot": "Feet",
+  "il": 1300,
+  "ids": [
+   2342,
+   3698,
+   4419
+  ],
+  "copies": [
+   {
+    "id": 2342,
+    "ratingStats": {
+     "Accuracy": 337,
+     "Combat Advantage": 337,
+     "Defense": 975,
+     "Critical Avoidance": 296
+    },
+    "percentStats": {},
+    "set": "Eternal Armor",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": "Tyranny of Dragons Epic Adventure",
+    "notes": "Bind on Pickup (Account). Reinforced: Empty. Minimum Level: 20."
+   },
+   {
+    "id": 3698,
+    "ratingStats": {
+     "Accuracy": 294,
+     "Combat Advantage": 337,
+     "Defense": 975,
+     "Critical Avoidance": 339
+    },
+    "percentStats": {},
+    "set": "Eternal Armor Set",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Tyranny of Dragons Epic Adventure",
+    "notes": "Legacy Warlock gear screenshot intake 2026-05-15."
+   },
+   {
+    "id": 4419,
+    "ratingStats": {
+     "Accuracy": 337,
+     "Critical Severity": 337,
+     "Defense": 975,
+     "Critical Avoidance": 296
+    },
+    "percentStats": {},
+    "set": "Eternal Armor Set",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Tyranny of Dragons Epic Adventure",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Eternal Boots_IL1300.png",
+   "docs\\audit\\_up\\rogue-gear\\Eternal Boots_IL1300.png"
+  ]
+ },
+ {
+  "name": "Eternal Helmet",
+  "slot": "Head",
+  "il": 1300,
+  "ids": [
+   3695,
+   4422
+  ],
+  "copies": [
+   {
+    "id": 3695,
+    "ratingStats": {
+     "Accuracy": 294,
+     "Combat Advantage": 337,
+     "Defense": 975,
+     "Critical Avoidance": 339
+    },
+    "percentStats": {},
+    "set": "Eternal Armor Set",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Tyranny of Dragons Epic Adventure",
+    "notes": "Legacy Warlock gear screenshot intake 2026-05-15."
+   },
+   {
+    "id": 4422,
+    "ratingStats": {
+     "Combat Advantage": 337,
+     "Critical Severity": 339,
+     "Defense": 975,
+     "Deflect": 294
+    },
+    "percentStats": {},
+    "set": "Eternal Armor Set",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Tyranny of Dragons Epic Adventure",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Eternal Helmet_IL1300.png",
+   "docs\\audit\\_up\\rogue-gear\\Eternal Helmet_IL1300.png"
+  ]
+ },
+ {
+  "name": "Eternal Leather Armor",
+  "slot": "Armor",
+  "il": 1300,
+  "ids": [
+   3696,
+   4421
+  ],
+  "copies": [
+   {
+    "id": 3696,
+    "ratingStats": {
+     "Accuracy": 294,
+     "Combat Advantage": 337,
+     "Defense": 975,
+     "Critical Avoidance": 339
+    },
+    "percentStats": {},
+    "set": "Eternal Armor Set",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Tyranny of Dragons Epic Adventure",
+    "notes": "Legacy Warlock gear screenshot intake 2026-05-15."
+   },
+   {
+    "id": 4421,
+    "ratingStats": {
+     "Accuracy": 337,
+     "Combat Advantage": 337,
+     "Defense": 975,
+     "Critical Avoidance": 296
+    },
+    "percentStats": {},
+    "set": "Eternal Armor Set",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Tyranny of Dragons Epic Adventure",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Eternal Leather Armor_IL1300.png",
+   "docs\\audit\\_up\\rogue-gear\\Eternal Leather Armor_IL1300.png"
+  ]
+ },
+ {
+  "name": "Eternal Gloves",
+  "slot": "Arms",
+  "il": 1300,
+  "ids": [
+   3697,
+   4420
+  ],
+  "copies": [
+   {
+    "id": 3697,
+    "ratingStats": {
+     "Accuracy": 337,
+     "Critical Strike": 337,
+     "Defense": 975,
+     "Critical Avoidance": 296
+    },
+    "percentStats": {},
+    "set": "Eternal Armor Set",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Tyranny of Dragons Epic Adventure",
+    "notes": "Legacy Warlock gear screenshot intake 2026-05-15."
+   },
+   {
+    "id": 4420,
+    "ratingStats": {
+     "Accuracy": 339,
+     "Critical Strike": 339,
+     "Defense": 975,
+     "Deflect": 296
+    },
+    "percentStats": {},
+    "set": "Eternal Armor Set",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Tyranny of Dragons Epic Adventure",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Eternal Gloves_IL1300.png",
+   "docs\\audit\\_up\\rogue-gear\\Eternal Gloves_IL1300.png"
+  ]
+ },
+ {
+  "name": "Thief's Stolen Gloves",
+  "slot": "Arms",
+  "il": 950,
+  "ids": [
+   1626,
+   3515
+  ],
+  "copies": [
+   {
+    "id": 1626,
+    "ratingStats": {
+     "Accuracy": 428,
+     "Critical Severity": 285,
+     "Defense": 712
+    },
+    "percentStats": {},
+    "set": null,
+    "setSize": null,
+    "equipBonuses": [
+     {
+      "name": "Golden Steal",
+      "description": "Your attacks have a chance to cause extra damage, but at a chance financial cost."
+     }
+    ],
+    "source": "Expeditions",
+    "notes": ""
+   },
+   {
+    "id": 3515,
+    "ratingStats": {
+     "Accuracy": 428,
+     "Critical Strike": 285,
+     "Defense": 712
+    },
+    "percentStats": {},
+    "set": "Expedition Rewards",
+    "setSize": 0,
+    "equipBonuses": [
+     {
+      "name": "Golden Steal",
+      "description": "Your attacks have a chance to cause extra damage, but at a financial cost."
+     }
+    ],
+    "source": "Expeditions (Undermountain)",
+    "notes": "Legacy Warlock gear collection screenshot intake 2026-05-13."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\warlock-gear\\Thief's Stolen Gloves_IL950.png",
+   "docs\\audit\\_up\\wizard-gear\\Thief's Stolen Gloves_IL950.png"
+  ]
+ },
+ {
+  "name": "Fanged Sash · IL 800",
+  "slot": "Belt",
+  "il": 800,
+  "ids": [
+   2445,
+   5806
+  ],
+  "copies": [
+   {
+    "id": 2445,
+    "ratingStats": {
+     "Accuracy": 400,
+     "Combat Advantage": 400,
+     "Critical Strike": 400
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 5806,
+    "ratingStats": {
+     "Accuracy": 400,
+     "Combat Advantage": 400,
+     "Critical Strike": 401
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": "",
+    "notes": "Belt. Reinforced: Empty. Minimum Level 18. Maximum Quality."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\unbound-gear\\Fanged Sash_IL800 (2).png",
+   "docs\\audit\\_up\\unbound-gear\\Fanged Sash_IL800 (3).png",
+   "docs\\audit\\_up\\unbound-gear\\Fanged Sash_IL800.png"
+  ]
+ },
+ {
+  "name": "Beaded Sash · IL 800",
+  "slot": "Belt",
+  "il": 800,
+  "ids": [
+   2449,
+   5505
+  ],
+  "copies": [
+   {
+    "id": 2449,
+    "ratingStats": {
+     "Accuracy": 400,
+     "Combat Advantage": 400,
+     "Critical Strike": 401
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 5505,
+    "ratingStats": {
+     "Accuracy": 400,
+     "Combat Advantage": 400,
+     "Critical Strike": 401
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork III crafting",
+    "notes": "Screenshot intake 2026-05-27 (reviewer+renamer pipeline batch)."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\unbound-gear\\Beaded Sash_IL800 (2).png",
+   "docs\\audit\\_up\\unbound-gear\\Beaded Sash_IL800.png"
+  ]
+ },
+ {
+  "name": "Bronzewood Amulet · IL 800",
+  "slot": "Neck",
+  "il": 800,
+  "ids": [
+   2465,
+   5508
+  ],
+  "copies": [
+   {
+    "id": 2465,
+    "ratingStats": {
+     "Accuracy": 400,
+     "Combat Advantage": 400,
+     "Critical Strike": 401
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 5508,
+    "ratingStats": {
+     "Accuracy": 400,
+     "Combat Advantage": 400,
+     "Critical Strike": 401
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork III crafting",
+    "notes": "Screenshot intake 2026-05-27 (reviewer+renamer pipeline batch)."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\unbound-gear\\Bronzewood Amulet_IL800.png"
+  ]
+ },
+ {
+  "name": "Hood of the Thayan Servitor",
+  "slot": "Head",
+  "il": 800,
+  "ids": [
+   2958,
+   3599,
+   4355
+  ],
+  "copies": [
+   {
+    "id": 2958,
+    "ratingStats": {
+     "Accuracy": 88.8,
+     "Combat Advantage": 211,
+     "Critical Strike": 211,
+     "Defense": 600,
+     "Critical Avoidance": 88.8
+    },
+    "percentStats": {},
+    "set": "Thayan Servitor Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": null,
+    "notes": "Binds on Pickup (Account). Minimum Level 16."
+   },
+   {
+    "id": 3599,
+    "ratingStats": {
+     "Combat Advantage": 89,
+     "Critical Strike": 211,
+     "Defense": 600,
+     "Critical Avoidance": 211,
+     "Deflect": 89
+    },
+    "percentStats": {},
+    "set": "Thayan Servitor Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Dread Ring Store (Module 2)",
+    "notes": "Legacy Warlock gear screenshot intake 2026-05-14."
+   },
+   {
+    "id": 4355,
+    "ratingStats": {
+     "Accuracy": 210,
+     "Critical Strike": 88,
+     "Critical Severity": 210,
+     "Defense": 600,
+     "Critical Avoidance": 89
+    },
+    "percentStats": {},
+    "set": "Thayan Servitor Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Dread Ring Store",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Hood of the Thayan Servitor_IL800.png",
+   "docs\\audit\\_up\\rogue-gear\\Hood of the Thayan Servitor_IL800.png"
+  ]
+ },
+ {
+  "name": "Tunic of the Thayan Servitor",
+  "slot": "Armor",
+  "il": 800,
+  "ids": [
+   2959,
+   3600,
+   4356
+  ],
+  "copies": [
+   {
+    "id": 2959,
+    "ratingStats": {
+     "Accuracy": 203,
+     "Critical Strike": 97.2,
+     "Critical Severity": 203,
+     "Defense": 600,
+     "Critical Avoidance": 97.2
+    },
+    "percentStats": {},
+    "set": "Thayan Servitor Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": null,
+    "notes": "Hide, Armor."
+   },
+   {
+    "id": 3600,
+    "ratingStats": {
+     "Combat Advantage": 97,
+     "Critical Strike": 203,
+     "Defense": 600,
+     "Critical Avoidance": 203
+    },
+    "percentStats": {},
+    "set": "Thayan Servitor Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Dread Ring Store (Module 2)",
+    "notes": "Legacy Warlock gear screenshot intake 2026-05-14."
+   },
+   {
+    "id": 4356,
+    "ratingStats": {
+     "Accuracy": 203,
+     "Critical Strike": 97,
+     "Critical Severity": 203,
+     "Defense": 600,
+     "Critical Avoidance": 97
+    },
+    "percentStats": {},
+    "set": "Thayan Servitor Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Dread Ring Store",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Tunic of the Thayan Servitor_IL800.png",
+   "docs\\audit\\_up\\rogue-gear\\Tunic of the Thayan Servitor_IL800.png"
+  ]
+ },
+ {
+  "name": "Boots of the Thayan Servitor",
+  "slot": "Feet",
+  "il": 800,
+  "ids": [
+   2961,
+   3602,
+   4358
+  ],
+  "copies": [
+   {
+    "id": 2961,
+    "ratingStats": {
+     "Accuracy": 210,
+     "Critical Strike": 87.6,
+     "Critical Severity": 210,
+     "Defense": 600,
+     "Critical Avoidance": 88.8
+    },
+    "percentStats": {},
+    "set": "Thayan Servitor Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 3602,
+    "ratingStats": {
+     "Combat Advantage": 89,
+     "Critical Strike": 211,
+     "Defense": 600,
+     "Critical Avoidance": 211,
+     "Deflect": 89
+    },
+    "percentStats": {},
+    "set": "Thayan Servitor Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Dread Ring Store (Module 2)",
+    "notes": "Legacy Warlock gear screenshot intake 2026-05-14."
+   },
+   {
+    "id": 4358,
+    "ratingStats": {
+     "Accuracy": 210,
+     "Critical Strike": 88,
+     "Critical Severity": 210,
+     "Defense": 600,
+     "Critical Avoidance": 89
+    },
+    "percentStats": {},
+    "set": "Thayan Servitor Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Dread Ring Store",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Boots of the Thayan Servitor_IL800.png",
+   "docs\\audit\\_up\\ranger-gear\\Boots of the Thayan Servitor_IL800.png",
+   "docs\\audit\\_up\\rogue-gear\\Boots of the Thayan Servitor_IL800.png"
+  ]
+ },
+ {
+  "name": "Gloves of the Thayan Servitor",
+  "slot": "Arms",
+  "il": 800,
+  "ids": [
+   3601,
+   4357
+  ],
+  "copies": [
+   {
+    "id": 3601,
+    "ratingStats": {
+     "Combat Advantage": 89,
+     "Critical Strike": 211,
+     "Defense": 600,
+     "Critical Avoidance": 211,
+     "Deflect": 89
+    },
+    "percentStats": {},
+    "set": "Thayan Servitor Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Dread Ring Store (Module 2)",
+    "notes": "Legacy Warlock gear screenshot intake 2026-05-14."
+   },
+   {
+    "id": 4357,
+    "ratingStats": {
+     "Accuracy": 210,
+     "Critical Strike": 88,
+     "Critical Severity": 210,
+     "Defense": 600,
+     "Critical Avoidance": 89
+    },
+    "percentStats": {},
+    "set": "Thayan Servitor Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Dread Ring Store",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Gloves of the Thayan Servitor_IL800.png",
+   "docs\\audit\\_up\\rogue-gear\\Gloves of the Thayan Servitor_IL800.png"
+  ]
+ },
+ {
+  "name": "Bronzewood Sash · IL 650",
+  "slot": "Belt",
+  "il": 650,
+  "ids": [
+   2436,
+   5510
+  ],
+  "copies": [
+   {
+    "id": 2436,
+    "ratingStats": {
+     "Combat Advantage": 325,
+     "Critical Strike": 326,
+     "Critical Severity": 325
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 5510,
+    "ratingStats": {
+     "Combat Advantage": 325,
+     "Critical Strike": 326,
+     "Critical Severity": 325
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter power triggers Alacrity stack — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork III crafting",
+    "notes": "Screenshot intake 2026-05-27 (reviewer+renamer pipeline batch)."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\unbound-gear\\Bronzewood Sash_IL650 (2).png",
+   "docs\\audit\\_up\\unbound-gear\\Bronzewood Sash_IL650.png"
+  ]
+ },
+ {
+  "name": "Fanged Sash · IL 650",
+  "slot": "Belt",
+  "il": 650,
+  "ids": [
+   2444,
+   5805
+  ],
+  "copies": [
+   {
+    "id": 2444,
+    "ratingStats": {
+     "Accuracy": 325,
+     "Combat Advantage": 325,
+     "Critical Strike": 325
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 5805,
+    "ratingStats": {
+     "Accuracy": 325,
+     "Combat Advantage": 325,
+     "Critical Strike": 326
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": "",
+    "notes": "Belt. Reinforced: Empty. Minimum Level 18."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\unbound-gear\\Fanged Sash_IL650 (2).png",
+   "docs\\audit\\_up\\unbound-gear\\Fanged Sash_IL650 (3).png",
+   "docs\\audit\\_up\\unbound-gear\\Fanged Sash_IL650.png"
+  ]
+ },
+ {
+  "name": "Beaded Sash · IL 650",
+  "slot": "Belt",
+  "il": 650,
+  "ids": [
+   2448,
+   5504
+  ],
+  "copies": [
+   {
+    "id": 2448,
+    "ratingStats": {
+     "Accuracy": 325,
+     "Combat Advantage": 325,
+     "Critical Strike": 326
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 5504,
+    "ratingStats": {
+     "Accuracy": 325,
+     "Combat Advantage": 325,
+     "Critical Strike": 326
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork III crafting",
+    "notes": "Screenshot intake 2026-05-27 (reviewer+renamer pipeline batch)."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\unbound-gear\\Beaded Sash_IL650 (2).png",
+   "docs\\audit\\_up\\unbound-gear\\Beaded Sash_IL650.png"
+  ]
+ },
+ {
+  "name": "Bronzewood Amulet · IL 650",
+  "slot": "Neck",
+  "il": 650,
+  "ids": [
+   2464,
+   5507
+  ],
+  "copies": [
+   {
+    "id": 2464,
+    "ratingStats": {
+     "Accuracy": 325,
+     "Combat Advantage": 325,
+     "Critical Strike": 326
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 5507,
+    "ratingStats": {
+     "Accuracy": 325,
+     "Combat Advantage": 325,
+     "Critical Strike": 326
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork III crafting",
+    "notes": "Screenshot intake 2026-05-27 (reviewer+renamer pipeline batch)."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\unbound-gear\\Bronzewood Amulet_IL650 (2).png",
+   "docs\\audit\\_up\\unbound-gear\\Bronzewood Amulet_IL650.png"
+  ]
+ },
+ {
+  "name": "Black Ice Armor",
+  "slot": "Armor",
+  "il": 512,
+  "ids": [
+   2081,
+   3588,
+   4345
+  ],
+  "copies": [
+   {
+    "id": 2081,
+    "ratingStats": {
+     "Accuracy": 59.1,
+     "Combat Advantage": 131,
+     "Defense": 384,
+     "Critical Avoidance": 59.9,
+     "Deflect": 131
+    },
+    "percentStats": {},
+    "set": "Black Ice",
+    "setSize": 3,
+    "equipBonuses": [],
+    "source": null,
+    "notes": "Armor, Hide."
+   },
+   {
+    "id": 3588,
+    "ratingStats": {
+     "Accuracy": 74,
+     "Combat Advantage": 163,
+     "Defense": 384,
+     "Critical Avoidance": 147
+    },
+    "percentStats": {},
+    "set": "Black Ice Gear",
+    "setSize": 0,
+    "equipBonuses": [],
+    "source": "Black Ice Forge (Icewind Pass / Module 6)",
+    "notes": "Legacy Warlock gear (Mod 3-7 era) — screenshot intake 2026-05-14."
+   },
+   {
+    "id": 4345,
+    "ratingStats": {
+     "Accuracy": 59,
+     "Combat Advantage": 131,
+     "Defense": 384,
+     "Critical Avoidance": 60,
+     "Deflect": 131
+    },
+    "percentStats": {},
+    "set": "Black Ice Gear",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Black Ice Forge (Module 4 Icewind Dale)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Black Ice Armor_IL512.png",
+   "docs\\audit\\_up\\ranger-gear\\Black Ice Armor_IL512.png",
+   "docs\\audit\\_up\\rogue-gear\\Black Ice Armor_IL512.png"
+  ]
+ },
+ {
+  "name": "Black Ice Boots",
+  "slot": "Feet",
+  "il": 512,
+  "ids": [
+   2949,
+   3590,
+   4347
+  ],
+  "copies": [
+   {
+    "id": 2949,
+    "ratingStats": {
+     "Accuracy": 132,
+     "Critical Severity": 59.9,
+     "Defense": 384,
+     "Awareness": 59.9,
+     "Critical Avoidance": 132
+    },
+    "percentStats": {},
+    "set": "Black Ice",
+    "setSize": 3,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 3590,
+    "ratingStats": {
+     "Accuracy": 163,
+     "Defense": 384,
+     "Awareness": 74,
+     "Critical Avoidance": 147
+    },
+    "percentStats": {},
+    "set": "Black Ice Gear",
+    "setSize": 0,
+    "equipBonuses": [],
+    "source": "Black Ice Forge (Icewind Pass / Module 6)",
+    "notes": "Legacy Warlock gear (Mod 3-7 era) — screenshot intake 2026-05-14."
+   },
+   {
+    "id": 4347,
+    "ratingStats": {
+     "Accuracy": 132,
+     "Critical Severity": 60,
+     "Defense": 384,
+     "Awareness": 60,
+     "Critical Avoidance": 131
+    },
+    "percentStats": {},
+    "set": "Black Ice Gear",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Black Ice Forge (Module 4 Icewind Dale)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Black Ice Boots_IL512.png",
+   "docs\\audit\\_up\\ranger-gear\\Black Ice Boots_IL512.png",
+   "docs\\audit\\_up\\rogue-gear\\Black Ice Boots_IL512.png"
+  ]
+ },
+ {
+  "name": "Black Ice Mask",
+  "slot": "Head",
+  "il": 512,
+  "ids": [
+   3587,
+   4344
+  ],
+  "copies": [
+   {
+    "id": 3587,
+    "ratingStats": {
+     "Combat Advantage": 131,
+     "Critical Strike": 60,
+     "Defense": 384,
+     "Critical Avoidance": 60,
+     "Deflect": 60
+    },
+    "percentStats": {},
+    "set": "Black Ice Gear",
+    "setSize": 0,
+    "equipBonuses": [],
+    "source": "Black Ice Forge (Icewind Pass / Module 6)",
+    "notes": "Legacy Warlock gear (Mod 3-7 era) — screenshot intake 2026-05-14."
+   },
+   {
+    "id": 4344,
+    "ratingStats": {
+     "Combat Advantage": 131,
+     "Critical Strike": 60,
+     "Defense": 384,
+     "Awareness": 59,
+     "Deflect": 131
+    },
+    "percentStats": {},
+    "set": "Black Ice Gear",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Black Ice Forge (Module 4 Icewind Dale)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Black Ice Mask_IL512.png",
+   "docs\\audit\\_up\\rogue-gear\\Black Ice Mask_IL512.png"
+  ]
+ },
+ {
+  "name": "Black Ice Gloves",
+  "slot": "Arms",
+  "il": 512,
+  "ids": [
+   3589,
+   4346
+  ],
+  "copies": [
+   {
+    "id": 3589,
+    "ratingStats": {
+     "Accuracy": 60,
+     "Combat Advantage": 60,
+     "Defense": 384,
+     "Critical Avoidance": 132,
+     "Deflect": 132
+    },
+    "percentStats": {},
+    "set": "Black Ice Gear",
+    "setSize": 0,
+    "equipBonuses": [],
+    "source": "Black Ice Forge (Icewind Pass / Module 6)",
+    "notes": "Legacy Warlock gear (Mod 3-7 era) — screenshot intake 2026-05-14."
+   },
+   {
+    "id": 4346,
+    "ratingStats": {
+     "Accuracy": 59,
+     "Critical Severity": 131,
+     "Defense": 384,
+     "Critical Avoidance": 60,
+     "Deflect": 131
+    },
+    "percentStats": {},
+    "set": "Black Ice Gear",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Black Ice Forge (Module 4 Icewind Dale)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\bard-gear\\Black Ice Gloves_IL512.png",
+   "docs\\audit\\_up\\rogue-gear\\Black Ice Gloves_IL512.png"
+  ]
+ },
+ {
+  "name": "Bronzewood Sash · IL 500",
+  "slot": "Belt",
+  "il": 500,
+  "ids": [
+   2435,
+   5509
+  ],
+  "copies": [
+   {
+    "id": 2435,
+    "ratingStats": {
+     "Combat Advantage": 250,
+     "Critical Strike": 250,
+     "Critical Severity": 250
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 5509,
+    "ratingStats": {
+     "Combat Advantage": 250,
+     "Critical Strike": 250,
+     "Critical Severity": 250
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter power triggers Alacrity stack — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork III crafting",
+    "notes": "Screenshot intake 2026-05-27 (reviewer+renamer pipeline batch)."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\unbound-gear\\Bronzewood Sash_IL500 (2).png",
+   "docs\\audit\\_up\\unbound-gear\\Bronzewood Sash_IL500.png"
+  ]
+ },
+ {
+  "name": "Beaded Sash · IL 500",
+  "slot": "Belt",
+  "il": 500,
+  "ids": [
+   2447,
+   5503
+  ],
+  "copies": [
+   {
+    "id": 2447,
+    "ratingStats": {
+     "Accuracy": 250,
+     "Combat Advantage": 250,
+     "Critical Strike": 250
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 5503,
+    "ratingStats": {
+     "Accuracy": 250,
+     "Combat Advantage": 250,
+     "Critical Strike": 250
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork III crafting",
+    "notes": "Screenshot intake 2026-05-27 (reviewer+renamer pipeline batch)."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\unbound-gear\\Beaded Sash_IL500 (2).png",
+   "docs\\audit\\_up\\unbound-gear\\Beaded Sash_IL500.png"
+  ]
+ },
+ {
+  "name": "Bronzewood Amulet · IL 500",
+  "slot": "Neck",
+  "il": 500,
+  "ids": [
+   2463,
+   5506
+  ],
+  "copies": [
+   {
+    "id": 2463,
+    "ratingStats": {
+     "Accuracy": 250,
+     "Combat Advantage": 250,
+     "Critical Strike": 250
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 5506,
+    "ratingStats": {
+     "Accuracy": 250,
+     "Combat Advantage": 250,
+     "Critical Strike": 250
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork III crafting",
+    "notes": "Screenshot intake 2026-05-27 (reviewer+renamer pipeline batch)."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\unbound-gear\\Bronzewood Amulet_IL500 (2).png",
+   "docs\\audit\\_up\\unbound-gear\\Bronzewood Amulet_IL500.png"
+  ]
+ },
+ {
+  "name": "Sphene Sash · IL 500",
+  "slot": "Belt",
+  "il": 500,
+  "ids": [
+   2523,
+   6222
+  ],
+  "copies": [
+   {
+    "id": 2523,
+    "ratingStats": {
+     "Accuracy": 250,
+     "Combat Advantage": 250,
+     "Critical Strike": 250
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": null,
+    "notes": "Artifact Equipment"
+   },
+   {
+    "id": 6222,
+    "ratingStats": {
+     "Accuracy": 250,
+     "Combat Advantage": 250,
+     "Critical Strike": 250
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 500,
+      "kind": "rating",
+      "setName": "Masterwork II Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks."
+     }
+    ],
+    "source": "",
+    "notes": "Masterwork II Equipment Set. Minimum Level 18."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Sphene Sash_IL500.png",
+   "docs\\audit\\_up\\unbound-gear\\Sphene Sash_IL500.png"
+  ]
+ },
+ {
+  "name": "Brightsilver Longbow · IL 500",
+  "slot": "Main Hand",
+  "il": 500,
+  "ids": [
+   3053,
+   5271
+  ],
+  "copies": [
+   {
+    "id": 3053,
+    "ratingStats": {
+     "Accuracy": 188,
+     "Combat Advantage": 375,
+     "Critical Strike": 188
+    },
+    "percentStats": {},
+    "set": "Masterwork II Weapon Set",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": "Masterwork II / Module 11: The Shroud of Souls",
+    "notes": "Bind on Equip (Character). Set Masterwork II Weapon Set (0/2). Minimum Level: 18."
+   },
+   {
+    "id": 5271,
+    "ratingStats": {
+     "Accuracy": 188,
+     "Combat Advantage": 175,
+     "Critical Strike": 188
+    },
+    "percentStats": {},
+    "set": "Masterwork II Weapon Set",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": "",
+    "notes": "Screenshot intake (loose root chunk 1)."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\ranger-gear\\Brightsilver Longbow · IL 500_IL500.png"
+  ]
+ },
+ {
+  "name": "Hammerstone Gloves",
+  "slot": "Arms",
+  "il": 352,
+  "ids": [
+   2952,
+   3593,
+   4350
+  ],
+  "copies": [
+   {
+    "id": 2952,
+    "ratingStats": {
+     "Combat Advantage": 92.4,
+     "Critical Strike": 39.6,
+     "Critical Severity": 92.4,
+     "Defense": 264,
+     "Deflect": 39.6
+    },
+    "percentStats": {},
+    "set": "Hammerstone Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 3593,
+    "ratingStats": {
+     "Combat Advantage": 92,
+     "Critical Severity": 40,
+     "Defense": 264,
+     "Critical Avoidance": 92,
+     "Deflect": 40
+    },
+    "percentStats": {},
+    "set": "Hammerstone Armor",
+    "setSize": 0,
+    "equipBonuses": [],
+    "source": "Dwarven Valley (Module 3-4)",
+    "notes": "Legacy Warlock gear (Mod 3-7 era) — screenshot intake 2026-05-14."
+   },
+   {
+    "id": 4350,
+    "ratingStats": {
+     "Combat Advantage": 92,
+     "Critical Severity": 39,
+     "Defense": 264,
+     "Critical Avoidance": 40,
+     "Deflect": 92
+    },
+    "percentStats": {},
+    "set": "Hammerstone Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Dwarven Valley (Module 5)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Hammerstone Gloves_IL352.png"
+  ]
+ },
+ {
+  "name": "Hammerstone Boots",
+  "slot": "Feet",
+  "il": 352,
+  "ids": [
+   2953,
+   3594,
+   4351
+  ],
+  "copies": [
+   {
+    "id": 2953,
+    "ratingStats": {
+     "Combat Advantage": 92.4,
+     "Critical Strike": 39.6,
+     "Critical Severity": 92.4,
+     "Defense": 264,
+     "Deflect": 39.6
+    },
+    "percentStats": {},
+    "set": "Hammerstone Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 3594,
+    "ratingStats": {
+     "Combat Advantage": 92,
+     "Critical Severity": 40,
+     "Defense": 264,
+     "Critical Avoidance": 92,
+     "Deflect": 40
+    },
+    "percentStats": {},
+    "set": "Hammerstone Armor",
+    "setSize": 0,
+    "equipBonuses": [],
+    "source": "Dwarven Valley (Module 3-4)",
+    "notes": "Legacy Warlock gear (Mod 3-7 era) — screenshot intake 2026-05-14."
+   },
+   {
+    "id": 4351,
+    "ratingStats": {
+     "Combat Advantage": 92,
+     "Critical Severity": 39,
+     "Defense": 264,
+     "Critical Avoidance": 40,
+     "Deflect": 92
+    },
+    "percentStats": {},
+    "set": "Hammerstone Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Dwarven Valley (Module 5)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Hammerstone Boots_IL352.png"
+  ]
+ },
+ {
+  "name": "Hammerstone Mask",
+  "slot": "Head",
+  "il": 352,
+  "ids": [
+   3591,
+   4348
+  ],
+  "copies": [
+   {
+    "id": 3591,
+    "ratingStats": {
+     "Combat Advantage": 91.9,
+     "Critical Severity": 39.1,
+     "Defense": 264,
+     "Critical Avoidance": 39.6,
+     "Deflect": 91.9
+    },
+    "percentStats": {},
+    "set": "Hammerstone Armor",
+    "setSize": 0,
+    "equipBonuses": [],
+    "source": "Dwarven Valley (Module 3-4)",
+    "notes": "Legacy Warlock gear (Mod 3-7 era) — screenshot intake 2026-05-14."
+   },
+   {
+    "id": 4348,
+    "ratingStats": {
+     "Combat Advantage": 92,
+     "Critical Severity": 39,
+     "Defense": 264,
+     "Critical Avoidance": 40,
+     "Deflect": 92
+    },
+    "percentStats": {},
+    "set": "Hammerstone Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Dwarven Valley (Module 5)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Hammerstone Mask_IL352.png"
+  ]
+ },
+ {
+  "name": "Hammerstone Tunic",
+  "slot": "Armor",
+  "il": 352,
+  "ids": [
+   3592,
+   4349
+  ],
+  "copies": [
+   {
+    "id": 3592,
+    "ratingStats": {
+     "Combat Advantage": 92,
+     "Critical Severity": 40,
+     "Defense": 264,
+     "Critical Avoidance": 92,
+     "Deflect": 40
+    },
+    "percentStats": {},
+    "set": "Hammerstone Armor",
+    "setSize": 0,
+    "equipBonuses": [],
+    "source": "Dwarven Valley (Module 3-4)",
+    "notes": "Legacy Warlock gear (Mod 3-7 era) — screenshot intake 2026-05-14."
+   },
+   {
+    "id": 4349,
+    "ratingStats": {
+     "Combat Advantage": 92,
+     "Critical Severity": 39,
+     "Defense": 264,
+     "Critical Avoidance": 40,
+     "Deflect": 92
+    },
+    "percentStats": {},
+    "set": "Hammerstone Armor",
+    "setSize": 4,
+    "equipBonuses": [],
+    "source": "Dwarven Valley (Module 5)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Hammerstone Tunic_IL352.png"
+  ]
+ },
+ {
+  "name": "Bronzewood Sash · IL 350",
+  "slot": "Belt",
+  "il": 350,
+  "ids": [
+   2434,
+   4462
+  ],
+  "copies": [
+   {
+    "id": 2434,
+    "ratingStats": {
+     "Combat Advantage": 175,
+     "Critical Strike": 175,
+     "Critical Severity": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": null,
+    "notes": "Artifact Equipment. Recommended."
+   },
+   {
+    "id": 4462,
+    "ratingStats": {
+     "Combat Advantage": 175,
+     "Critical Strike": 175,
+     "Critical Severity": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter power triggers Alacrity stack — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork Crafting (Mod 13)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Bronzewood Sash_IL350 (2).png",
+   "docs\\audit\\_up\\rogue-gear\\Bronzewood Sash_IL350 (3).png",
+   "docs\\audit\\_up\\rogue-gear\\Bronzewood Sash_IL350.png"
+  ]
+ },
+ {
+  "name": "Beaded Sash · IL 350",
+  "slot": "Belt",
+  "il": 350,
+  "ids": [
+   2446,
+   4469
+  ],
+  "copies": [
+   {
+    "id": 2446,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Combat Advantage": 175,
+     "Critical Strike": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 4469,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Combat Advantage": 175,
+     "Critical Strike": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork Crafting (Mod 13)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\unbound-gear\\Beaded Sash · IL 350_IL350.png"
+  ]
+ },
+ {
+  "name": "Beaded Amulet · IL 350",
+  "slot": "Neck",
+  "il": 350,
+  "ids": [
+   2450,
+   4472
+  ],
+  "copies": [
+   {
+    "id": 2450,
+    "ratingStats": {
+     "Combat Advantage": 175,
+     "Critical Strike": 175,
+     "Critical Severity": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": null,
+    "notes": "Artifact Equipment. Recommended."
+   },
+   {
+    "id": 4472,
+    "ratingStats": {
+     "Combat Advantage": 175,
+     "Critical Strike": 175,
+     "Critical Severity": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork Crafting (Mod 13)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Beaded Amulet_IL350 (2).png",
+   "docs\\audit\\_up\\rogue-gear\\Beaded Amulet_IL350 (3).png",
+   "docs\\audit\\_up\\rogue-gear\\Beaded Amulet_IL350.png",
+   "docs\\audit\\_up\\rogue-gear\\Fanged Beaded Amulet_IL350 (2).png"
+  ]
+ },
+ {
+  "name": "Lichstone Amulet · IL 350",
+  "slot": "Neck",
+  "il": 350,
+  "ids": [
+   2454,
+   4476
+  ],
+  "copies": [
+   {
+    "id": 2454,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Critical Avoidance": 175,
+     "Deflect": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 4476,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Critical Avoidance": 175,
+     "Deflect": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork Crafting (Mod 13)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Lichstone Amulet_IL350 (2).png",
+   "docs\\audit\\_up\\rogue-gear\\Lichstone Amulet_IL350 (3).png",
+   "docs\\audit\\_up\\rogue-gear\\Lichstone Amulet_IL350.png"
+  ]
+ },
+ {
+  "name": "Fanged Beaded Amulet · IL 350",
+  "slot": "Neck",
+  "il": 350,
+  "ids": [
+   2458,
+   4480
+  ],
+  "copies": [
+   {
+    "id": 2458,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Combat Advantage": 175,
+     "Critical Strike": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 4480,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Combat Advantage": 175,
+     "Critical Strike": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork Crafting (Mod 13)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Fanged Beaded Amulet_IL350 (2).png",
+   "docs\\audit\\_up\\rogue-gear\\Fanged Beaded Amulet_IL350 (3).png",
+   "docs\\audit\\_up\\rogue-gear\\Fanged Beaded Amulet_IL350.png"
+  ]
+ },
+ {
+  "name": "Bronzewood Amulet · IL 350",
+  "slot": "Neck",
+  "il": 350,
+  "ids": [
+   2462,
+   4484
+  ],
+  "copies": [
+   {
+    "id": 2462,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Combat Advantage": 175,
+     "Critical Strike": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": null,
+    "equipBonuses": [],
+    "source": null,
+    "notes": ""
+   },
+   {
+    "id": 4484,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Combat Advantage": 175,
+     "Critical Strike": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork III Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 1,
+      "setName": "Masterwork III Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 1% Accuracy + 5% Movement Speed for 3s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork Crafting (Mod 13)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\unbound-gear\\Bronzewood Amulet · IL 350_IL350.png"
+  ]
+ },
+ {
+  "name": "Silverspruce Amulet · IL 350",
+  "slot": "Neck",
+  "il": 350,
+  "ids": [
+   2502,
+   4516
+  ],
+  "copies": [
+   {
+    "id": 2502,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Critical Avoidance": 175,
+     "Deflect": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": null,
+    "notes": "Artifact Equipment; Recommended"
+   },
+   {
+    "id": 4516,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Critical Avoidance": 175,
+     "Deflect": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 500,
+      "kind": "rating",
+      "setName": "Masterwork II Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity stack — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork Crafting (Mod 11)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Silverspruce Amulet_IL350 (2).png",
+   "docs\\audit\\_up\\rogue-gear\\Silverspruce Amulet_IL350.png",
+   "docs\\audit\\_up\\unbound-gear\\Silverspruce Amulet_IL350.png"
+  ]
+ },
+ {
+  "name": "Sphene Amulet · IL 350",
+  "slot": "Neck",
+  "il": 350,
+  "ids": [
+   2506,
+   4520
+  ],
+  "copies": [
+   {
+    "id": 2506,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Combat Advantage": 175,
+     "Critical Strike": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": null,
+    "notes": "Artifact Equipment; Recommended"
+   },
+   {
+    "id": 4520,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Combat Advantage": 175,
+     "Critical Strike": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 500,
+      "kind": "rating",
+      "setName": "Masterwork II Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity stack — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork Crafting (Mod 11)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Sphene Amulet_IL350 (2).png",
+   "docs\\audit\\_up\\rogue-gear\\Sphene Amulet_IL350.png",
+   "docs\\audit\\_up\\unbound-gear\\Sphene Amulet_IL350.png"
+  ]
+ },
+ {
+  "name": "Rubellite Amulet · IL 350",
+  "slot": "Neck",
+  "il": 350,
+  "ids": [
+   2510,
+   4524
+  ],
+  "copies": [
+   {
+    "id": 2510,
+    "ratingStats": {
+     "Combat Advantage": 175,
+     "Critical Strike": 175,
+     "Critical Severity": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": null,
+    "notes": "Artifact Equipment; Recommended"
+   },
+   {
+    "id": 4524,
+    "ratingStats": {
+     "Combat Advantage": 175,
+     "Critical Strike": 175,
+     "Critical Severity": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 500,
+      "kind": "rating",
+      "setName": "Masterwork II Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork Crafting (Mod 11)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Rubellite Amulet_IL350 (2).png",
+   "docs\\audit\\_up\\rogue-gear\\Rubellite Amulet_IL350.png",
+   "docs\\audit\\_up\\unbound-gear\\Rubellite Amulet_IL350.png"
+  ]
+ },
+ {
+  "name": "Silverspruce Belt · IL 350",
+  "slot": "Belt",
+  "il": 350,
+  "ids": [
+   2521,
+   4532
+  ],
+  "copies": [
+   {
+    "id": 2521,
+    "ratingStats": {
+     "Critical Avoidance": 350,
+     "Deflect": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": null,
+    "notes": "Artifact Equipment; Recommended"
+   },
+   {
+    "id": 4532,
+    "ratingStats": {
+     "Critical Avoidance": 350,
+     "Deflect": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 500,
+      "kind": "rating",
+      "setName": "Masterwork II Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork Crafting (Mod 11)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Silverspruce Belt_IL350 (2).png",
+   "docs\\audit\\_up\\rogue-gear\\Silverspruce Belt_IL350.png"
+  ]
+ },
+ {
+  "name": "Sphene Sash · IL 350",
+  "slot": "Belt",
+  "il": 350,
+  "ids": [
+   2522,
+   4536
+  ],
+  "copies": [
+   {
+    "id": 2522,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Combat Advantage": 175,
+     "Critical Strike": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": null,
+    "notes": "Artifact Equipment; Recommended"
+   },
+   {
+    "id": 4536,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Combat Advantage": 175,
+     "Critical Strike": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 500,
+      "kind": "rating",
+      "setName": "Masterwork II Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork Crafting (Mod 11)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Sphene Sash_IL350 (2).png",
+   "docs\\audit\\_up\\rogue-gear\\Sphene Sash_IL350.png"
+  ]
+ },
+ {
+  "name": "Rubellite Sash · IL 350",
+  "slot": "Belt",
+  "il": 350,
+  "ids": [
+   2526,
+   4540
+  ],
+  "copies": [
+   {
+    "id": 2526,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Combat Advantage": 175,
+     "Critical Strike": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment",
+    "setSize": 2,
+    "equipBonuses": [],
+    "source": null,
+    "notes": "Artifact Equipment; Recommended"
+   },
+   {
+    "id": 4540,
+    "ratingStats": {
+     "Accuracy": 175,
+     "Combat Advantage": 175,
+     "Critical Strike": 175
+    },
+    "percentStats": {},
+    "set": "Masterwork II Equipment Set",
+    "setSize": 2,
+    "equipBonuses": [
+     {
+      "type": "Set",
+      "stat": "Accuracy",
+      "amount": 500,
+      "kind": "rating",
+      "setName": "Masterwork II Equipment Set",
+      "pieces": 2,
+      "description": "2 of Set: Encounter triggers Alacrity — 500 Accuracy + 1000 Movement for 5s. Max 3 stacks."
+     }
+    ],
+    "source": "Masterwork Crafting (Mod 11)",
+    "notes": "Rogue gear — screenshot intake 2026-05-15."
+   }
+  ],
+  "screens": [
+   "docs\\audit\\_up\\rogue-gear\\Rubellite Sash_IL350 (2).png",
+   "docs\\audit\\_up\\rogue-gear\\Rubellite Sash_IL350 (3).png",
+   "docs\\audit\\_up\\rogue-gear\\Rubellite Sash_IL350.png"
+  ]
+ }
+]
