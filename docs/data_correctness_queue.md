@@ -193,3 +193,31 @@ n00b in-game verification queue. NEVER guess amounts.
 - [ ] Master boon proc chances other than Deathly Rage/Death's Bulwark/Blessed Advantage (engine assumes 20% default)
 - [ ] Frostbound-tier Chilling Flow per-stack values (data_issues.md)
 - [ ] Healer-relevant collars beyond the 3 in data (data_issues.md)
+
+### Added from Healer Gate campaign (2026-07-10) — no screenshot in archive
+- [ ] IL3150 Shirt: **Bloodwoven Ink (Butcher's Zeal)** (id 423) — Butcher's Zeal shirt variant, not captured.
+- [ ] IL4700 Head: **Mask of the Vital Sigil** (id 383) — not captured.
+- [ ] IL4700 Arms: **Vambraces of the Vital Sigil** (id 381) — not captured.
+- [ ] IL3600 Shirt: **Mystic Conduit Seal — Healer's Influence** (id 457) — not captured.
+- [ ] IL3600 Shirt: **Mystic Conduit Ink — Butcher's Precision (Lesser)** (id 461) — not captured.
+- [ ] IL3350 Feet: **Luminstep Sabatons — Ruthless Resources** (id 518) — not captured.
+- [ ] IL3000 Feet: **Mirestep Boots — Ruthless Resources** (id 530) — not captured.
+- [ ] IL4900 Ring: **Deathsilver Band of Sacrifice** (id 315) — zero hits, Batch D.
+- [ ] IL4300 Armor: **Cuirass of the Black Flame** (id 51) — zero hits, Batch D.
+- [ ] IL4150 Ring: **The Claw of Covetous Flame** (id 79) — zero hits, Batch D.
+- [ ] IL4100 Head: **Cowl of the Ashen Chant** (id 293) — zero hits, Batch D.
+- [ ] IL4050 Arms: **Gauntlets of the Hierarch** (id 69) — zero hits, Batch D.
+- [ ] IL4050 Armor: **Cuirass of the Ethralled Flame** (id 73) — zero hits, Batch D.
+- [ ] IL3550 Arms: **Gauntlets of the Anointed** (id 304) — zero hits, Batch D.
+
+### Companion owner-judgment questions (2026-07-10) — validator flagged, needs n00b's call
+- [ ] power 110 Vallenhas Elite Soldier — zoom re-read needed: 11% vs 11.3% (screenshot legibility, not a scaling question).
+- [ ] power 173 Grace Revoir — non-linear scaling: confirm 5%@750 vs 13.5%@900, reconcile via effectScaling (notes claim 13.5 is actually the 900 value; record's own IL is 750, math says 11.25 at 750 — needs owner confirmation, not guessed).
+- [ ] power 184/185 Incubus/Succubus (Fiendish Charmer's Distraction / Succubus's Distraction) — in-game name splash ambiguous (card shows "Fiendish..." vs stored "Feywild/Succubus's..."), plus +0 CR anomaly and shared-kit companion identity; content values themselves are fine.
+- [ ] power 193 Lillend — 18% (stored) vs 37.5%@375 (screenshot) heal, same tier — double the value, needs owner confirmation before touching (likely stored value is simply wrong, but not guessed here).
+- [ ] power 259 Celeste — base value/IL pairing implausible as stored (20%@IL75 → over 100% at high tiers); screenshot reads 7.5%@IL375. Derive correct base value/IL pairing from the scaling model before applying.
+
+### Follow-ups — Healer Gate campaign (2026-07-10)
+- [ ] id 3154 (Vambraces of the Eternal Bloom, gear.json) — the "+15% Class Resource Max" sub-effect named in its equip-bonus prose is still unstructured; needs its own equipBonus entry later (percentOfPool pattern, per id 25/291-family precedent). Not attempted this batch per validator instruction.
+- [ ] Repo-wide 94-item duplicate-placeholder dedup (see data_trust.md campaign note 2026-07-07/10) — this batch cleared the 27 healer-gate-relevant ids; the remaining ~67 non-healer-gate ids carrying the same stat:null-placeholder-plus-structured-sibling pattern are still open, campaign-level, out of this batch's scope.
+- [ ] Ledger-vs-JSON drift check (Vampire's Kiss pattern) — Vampire's Kiss (power 92) had a data_trust.md ledger row saying CONFIRMED at 3.8% while the live JSON still said 3.6% (now fixed to 3.8% in this batch). Spot-check other CONFIRMED ledger rows against their live JSON values for the same silent-drift pattern.

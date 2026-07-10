@@ -665,4 +665,129 @@ The 8 "total-loss" accessory items turned out to be **pure stat-sticks** (their 
 
 ---
 
+## Healer Gate campaign — gear + companion corrections — verified 2026-07-10
+
+Steward sweep for the Healer Preview video blocker list (`healer_gate_list.md`). Source: vision-extractor GEAR/COMPANION reports (batches A-F) + data-auditor report, reconciled by the validator into `validator_verdicts.md` (owner approved "GO — apply it all" 2026-07-10). Screenshots per `docs/calibration/inbox/` archive; OCR card archive for the companion exact-match rows.
+
+### Gear — 11 endgame equip bonuses structured (screenshot-verified)
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| gear 377 | Visage of the Eternal Sigil | gear | FIXED→CONFIRMED — "Renewed Spirit" structured (Class Resource Regen 25%, matches siblings 3156/5344); stale duplicate "Renewed Divinity" placeholder retired | docs/calibration/inbox/ (screenshot-intake batches, per validator_verdicts.md) | 2026.03.17a | 2026-07-10 |
+| gear 3161 | Hood of the Lifebloom | gear | FIXED→CONFIRMED — "Flowing Vitality" structured (Class Resource Regen 20%, alwaysActive false, condition: active after moving, lost after 4s standing still); redundant text-only placeholder merged | docs/calibration/inbox/ (screenshot-intake batches, per validator_verdicts.md) | 2026.03.17a | 2026-07-10 |
+| gear 3163 | Gauntlets of the Lifebloom | gear | FIXED→CONFIRMED — "Amplified Potential" structured (Class Resource Max 20%, kind:percentOfPool per the Resourceful Healer (Ascendant) id 25 precedent); redundant text-only placeholder merged | docs/calibration/inbox/ (screenshot-intake batches, per validator_verdicts.md) | 2026.03.17a | 2026-07-10 |
+| gear 5345 | Wintermarked Lifeward Greaves | gear | FIXED→CONFIRMED — "Shared Vitality" structured (Critical Strike 3% + Critical Severity 3.5%); scope corrected party→self (engine skips non-self gear bonuses — precedent id 375) | docs/calibration/inbox/ (screenshot-intake batches, per validator_verdicts.md) | 2026.03.17a | 2026-07-10 |
+| gear 5490 | Wintermarked Mender's Breastplate | gear | FIXED→CONFIRMED — "Guardian's Impact" structured (Defense 1.3% + Critical Avoidance 2%); scope corrected party→self; description "target"→"targets" (plural, screenshot) | docs/calibration/inbox/ (screenshot-intake batches, per validator_verdicts.md) | 2026.03.17a | 2026-07-10 |
+| gear 5497 | Runefrost Pilgrim Poleyns | gear | FIXED→CONFIRMED — "Miracle Crit" structured (Combat Advantage 3% + Critical Avoidance 3%), scope self | docs/calibration/inbox/ (screenshot-intake batches, per validator_verdicts.md) | 2026.03.17a | 2026-07-10 |
+| gear 5381 | Frostbound Hearthboots | gear | FIXED→CONFIRMED — "Relentless Reserves" structured (Class Resource Regen 2%/stack, max 5), matches byte-identical siblings 5489/6242; description fixed to "Divinity/Performance/Soulweave" in both sentences (was inconsistent Stamina/Deflect wording) | docs/calibration/inbox/ (screenshot-intake batches, per validator_verdicts.md) | 2026.03.17a | 2026-07-10 |
+| gear 6847 | Whispersilk Tunic | gear | FIXED→CONFIRMED — "Ruthless Might" structured (Critical Strike 1.2% + Critical Severity 1.2%/stack, max 5), 1.2% confirmed via sibling id 6876 (not 1.5%) | docs/calibration/inbox/ (screenshot-intake batches, per validator_verdicts.md) | 2026.03.17a | 2026-07-10 |
+| gear 442 | Arcane Conduit Sigil — Survivor's Avoidance | gear | FIXED→CONFIRMED — "Survivor's Avoidance" structured (Critical Avoidance 8%, alwaysActive false, health-percentage condition), matches sibling id 5364 | docs/calibration/inbox/ (screenshot-intake batches, per validator_verdicts.md) | 2026.03.17a | 2026-07-10 |
+| gear 5438 | Veinlit Aetherwrap | gear | FIXED→CONFIRMED — "Survivor's Rush" structured (Recharge Speed 5%, alwaysActive false); description corrected from wrongly-named "Critical Severity" to "Recharge Speed", matches the 6 Dragonflight Pants siblings (2394/2395/2396/2397/2400/2401) | docs/calibration/inbox/ (screenshot-intake batches, per validator_verdicts.md) | 2026.03.17a | 2026-07-10 |
+| gear 5402 | Frostsilver Circlet of Protection | gear | FIXED→CONFIRMED — added Defense 4.5% to percentStats (Manticore's Mane Bite rider, already stated in description text); matches sibling id 5320's Defense 3.0 pattern; equipBonuses stays descriptive-only by convention | docs/calibration/inbox/ (screenshot-intake batches, per validator_verdicts.md) | 2026.03.17a | 2026-07-10 |
+
+### Gear — 27 redundant text-only placeholders merged into their structured sibling
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| gear 43 | Visage of the Eternal Herald | gear | FIXED — redundant text-only placeholder ("Ruthless Resources (Ascendant)") deleted; effect already covered by its structured sibling entry. Placeholder's fuller description text moved onto the structured Class Resource Regen entry (which previously carried none). | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 65 | Cuirass of the Crimson Reckoning | gear | FIXED — redundant text-only placeholder ("Enduring Resilience (Lesser)") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 77 | Visage of the Undying Faith | gear | FIXED — redundant text-only placeholder ("Ruthless Resources (Lesser)") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 216 | Vambraces of the Eternal Sigil | gear | FIXED — redundant text-only placeholder ("Radiant Guidance") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 233 | Enchanted Depthforged Greaves | gear | FIXED — redundant text-only placeholder ("Survivor's Critical Resilience") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 373 | Doomward Bastion of the Thayan Zealot | gear | FIXED — redundant text-only placeholder ("Umbral Stride") deleted; effect already covered by its structured sibling entry. Placeholder's description moved onto the structured "Umbral Stride (General)" Power entry; the separate 2pc "Umbral Stride (0/2)" Set-type entry is untouched (legitimate distinct structured data, not a duplicate). | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 374 | Oathbreaker's Judgment of the Thayan Zealot | gear | FIXED — redundant text-only placeholder ("Umbral Stride") deleted; effect already covered by its structured sibling entry. Same treatment as sibling id 373 (identical Umbral Stride kit). | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 375 | Sabatons of the Eternal Sigil | gear | FIXED — redundant text-only placeholder ("Shared Vitality") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 382 | Breastplate of the Vital Sigil | gear | FIXED — redundant text-only placeholder ("Protective Embrace") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 444 | Arcane Conduit Ink — Ruthless Critical | gear | FIXED — redundant text-only placeholder ("Ruthless Critical") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 463 | Mystic Conduit Seal — Survivor's Forte | gear | FIXED — redundant text-only placeholder ("Survivor's Forte") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 514 | Prismatic Luminstep Sabatons — Enduring Resilience | gear | FIXED — redundant text-only placeholder ("Enduring Resilience (Greater)") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 525 | Luminstep Sabatons — Enduring Resilience | gear | FIXED — redundant text-only placeholder ("Enduring Resilience (Greater)") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 534 | Mirestep Boots — Enduring Resilience | gear | FIXED — redundant text-only placeholder ("Enduring Resilience (Lesser)") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 604 | Depthforged Sabatons | gear | FIXED — redundant text-only placeholder ("Survivor's Critical Resilience") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 3154 | Vambraces of the Eternal Bloom | gear | FIXED — redundant text-only placeholder ("Harmonized Momentum") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 3155 | Breastplate of the Eternal Bloom | gear | FIXED — redundant text-only placeholder ("Guardian's Impact") deleted; effect already covered by its structured sibling entry. SPECIAL: bundled with a scope party→self fix on both structured entries (engine-inertness fix); screenshot's "8 seconds" duration already present on the surviving entry, wins over the deleted placeholder's stale "10 seconds". | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 3162 | Cuirass of the Lifebloom | gear | FIXED — redundant text-only placeholder ("Radiant Empowerment") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 3184 | Bismuth Mail | gear | FIXED — redundant text-only placeholder ("Healer's Influence (Greater)") deleted; effect already covered by its structured sibling entry. Placeholder ("Healer's Influence (Greater)") merged into the base-name structured sibling "Healer's Influence"; the unrelated "Tactical Daily (Greater)" entry on the same id is untouched. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 3185 | Crystalflex Bracers | gear | FIXED — redundant text-only placeholder ("Resourceful Forte (Greater)") deleted; effect already covered by its structured sibling entry. Placeholder ("Resourceful Forte (Greater)") merged into its base-name structured sibling; the unrelated "Stacking Critical (Greater)" entry on the same id is untouched. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 3190 | Depthcured Skullcap | gear | FIXED — redundant text-only placeholder ("Channeler's Focus") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 3191 | Depthcured Cackrows | gear | FIXED — redundant text-only placeholder ("Fiery Muse") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 3192 | Depthcured Doublet | gear | FIXED — redundant text-only placeholder ("Ruthless Might") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 5355 | Runefrost Lifeward Vambraces | gear | FIXED — redundant text-only placeholder ("Greater Adaptive Strength") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 6816 | Wintermarked Ravager Cuirass | gear | FIXED — redundant text-only placeholder ("Ruthless Advantage") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 6852 | Gladebind Vambraces | gear | FIXED — redundant text-only placeholder ("Spiritual Inspiration") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+| gear 6864 | Ambersteel Vambraces | gear | FIXED — redundant text-only placeholder ("Divine Inspiration") deleted; effect already covered by its structured sibling entry. | docs/calibration/inbox/ (screenshot-intake batches) | 2026.03.17a | 2026-07-10 |
+
+### Gear — 4 items reviewed, no change needed
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| gear 5320 | Coldsilver Circlet of Protection | gear | CONFIRMED correct as-is — descriptive-only equip bonus stays unstructured by convention (flat-rating item) | docs/calibration/inbox/ | 2026.03.17a | 2026-07-10 |
+| gear 6212 | Runefrost Skirmisher Bracers | gear | CONFIRMED correct as-is — flat 70 AP proc, stays descriptive by convention | docs/calibration/inbox/ | 2026.03.17a | 2026-07-10 |
+| gear 6830 | Cuirass of the Bloodborne Reaper | gear | CONFIRMED correct as-is — damage+heal combo, stays descriptive/silenced by convention | docs/calibration/inbox/ | 2026.03.17a | 2026-07-10 |
+| gear 6863 | Ambersteel Cuirass | gear | CONFIRMED correct as-is — orb-drop proc, stays descriptive by convention | docs/calibration/inbox/ | 2026.03.17a | 2026-07-10 |
+
+### Companion powers — 11 proc corrections (screenshot/scaling-verified)
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| power 2 | Effulgent Epuration | companion_powers | FIXED — procEffect.trigger "below 30% HP"->"below 50% Health" (matches notes, which already said 50%); notes' stray "15%" shield text corrected to "10%" (procEffect.effect's 10% was already right, unchanged) | wave1_findings.md screenshot/scaling evidence | 2026.03.17a | 2026-07-10 |
+| power 23 | Volcanic Galeb Duhr's Presence | companion_powers | FIXED — procEffect prose 3.6%->3.75% (stats[] was already 3.75%, exact) | wave1_findings.md screenshot/scaling evidence | 2026.03.17a | 2026-07-10 |
+| power 31 | Baby Bulette's Presence | companion_powers | FIXED — procEffect prose 11%->11.25% (documented 3x single-stat multiplier; 22.5%@CR750 exact) | wave1_findings.md screenshot/scaling evidence | 2026.03.17a | 2026-07-10 |
+| power 35 | Lava Galeb Duhr's Presence | companion_powers | FIXED — procEffect prose 3.6%->3.75% (Card IL/CR display anomaly noted, not touched — no data change there) | wave1_findings.md screenshot/scaling evidence | 2026.03.17a | 2026-07-10 |
+| power 92 | Vampire's Kiss | companion_powers | FIXED — procEffect prose 3.6%->3.8%; stale "At Epic: 3.6%. Special scaling." note replaced with a reference to the verifying screenshot; retired the matching data_issues.md "special scaling" line | wave1_findings.md screenshot/scaling evidence | 2026.03.17a | 2026-07-10 |
+| power 93 | Elaina's Riposte | companion_powers | FIXED — procEffect prose 1.3%->3.75% (base IL375; 9%@CR900 exact; stats[] was already 3.75%) | wave1_findings.md screenshot/scaling evidence | 2026.03.17a | 2026-07-10 |
+| power 116 | Slyblade Kobold's Discipline | companion_powers | FIXED — stats[] value 1.13->2.25 (1.5x SINGLE_STAT at the record's own IL150); procEffect prose 2.5%->2.25% | wave1_findings.md screenshot/scaling evidence | 2026.03.17a | 2026-07-10 |
+| power 176 | Intelligent & Wise | companion_powers | FIXED — reflect prose 3.7%->5.63% (0.75x table, Mythic rung — record's own IL750); heal 5% portion unchanged | wave1_findings.md screenshot/scaling evidence | 2026.03.17a | 2026-07-10 |
+| power 223 | Air Archon's Insight | companion_powers | FIXED — procEffect prose 2.5%->0.75% (base IL75); added structured statEffects (Power 0.75% self), durationSeconds 10, cooldownSeconds 10 (id 42/73 precedent); Archon-stacking clause stays prose-only | wave1_findings.md screenshot/scaling evidence | 2026.03.17a | 2026-07-10 |
+| power 245 | Cowardly Dash | companion_powers | FIXED — durationSeconds 5->3 (screenshot outranks uncited legacy value); matching "5 seconds"/"5s" mentions in the effect prose and notes updated to 3 for internal consistency | wave1_findings.md screenshot/scaling evidence | 2026.03.17a | 2026-07-10 |
+| power 20 | Celestial Lion's Presence | companion_powers | ENRICHED — added cooldownSeconds:15 (matches sibling id 262, the same companion's higher-rarity record) | wave1_findings.md screenshot/scaling evidence | 2026.03.17a | 2026-07-10 |
+
+### Companion powers — 22 exact-match confirmed (no change)
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| power 14 | Pseudodragon's Presence | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 25 | Galeb Duhr's Presence | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 64 | Hunting Hawk's Presence | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 69 | Pig's Instincts | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 75 | Ox Stot's Instincts | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 78 | Greenscale Hunter's Discipline | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 81 | Panther's Instincts | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 94 | I'm Just a Little Adventurer | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 96 | Dragon's Bane | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 97 | The Bigger They Are | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 115 | Chickenmancer's Discipline | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 159 | Netherese Warlock's Wisdom | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 164 | Batiri's Wisdom | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 169 | Wayward Wisdom | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 179 | Abyssal Guidance | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 195 | Delusional Insight | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 196 | Angel's Insight | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 214 | Astral Deva's Insight | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 262 | Celestial Lion's Presence | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 263 | Dungeon Master's Wisdom | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 264 | Dreadwarrior's Insight | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 267 | Blacksmith's Discipline | companion_powers | CONFIRMED — proc value matches the archived OCR card exactly, no change | OCR card archive (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+
+### Companion powers — 12 utility procs closed (text-only by design)
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| power 10 | Hell Hound's Senses | companion_powers | CLOSED — confirmed text-only-by-design (currency/drop effect) or already structured; no stat work needed | data-auditor + vision-extractor reconciled list (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 98 | Eladrin's Senses | companion_powers | CLOSED — confirmed text-only-by-design (currency/drop effect) or already structured; no stat work needed | data-auditor + vision-extractor reconciled list (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 102 | Chultan Hunter's Discipline | companion_powers | CLOSED — confirmed text-only-by-design (currency/drop effect) or already structured; no stat work needed | data-auditor + vision-extractor reconciled list (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 103 | Vistani's Discipline | companion_powers | CLOSED — confirmed text-only-by-design (currency/drop effect) or already structured; no stat work needed | data-auditor + vision-extractor reconciled list (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 106 | Mageslayer's Assault | companion_powers | CLOSED — confirmed text-only-by-design (currency/drop effect) or already structured; no stat work needed | data-auditor + vision-extractor reconciled list (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 138 | Wiggin's Wisdom | companion_powers | CLOSED — confirmed text-only-by-design (currency/drop effect) or already structured; no stat work needed | data-auditor + vision-extractor reconciled list (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 143 | Stronghold Cleric's Wisdom | companion_powers | CLOSED — confirmed text-only-by-design (currency/drop effect) or already structured; no stat work needed | data-auditor + vision-extractor reconciled list (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 178 | Skyblazer's Sight | companion_powers | CLOSED — confirmed text-only-by-design (currency/drop effect) or already structured; no stat work needed | data-auditor + vision-extractor reconciled list (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 224 | Black Ice Stone's Insight | companion_powers | CLOSED — confirmed text-only-by-design (currency/drop effect) or already structured; no stat work needed | data-auditor + vision-extractor reconciled list (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 232 | Dark Dealings | companion_powers | CLOSED — confirmed text-only-by-design (currency/drop effect) or already structured; no stat work needed | data-auditor + vision-extractor reconciled list (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 242 | Sense Through the Shadowfell | companion_powers | CLOSED — confirmed text-only-by-design (currency/drop effect) or already structured; no stat work needed | data-auditor + vision-extractor reconciled list (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+| power 248 | Highborn Status | companion_powers | CLOSED — confirmed text-only-by-design (currency/drop effect) or already structured; no stat work needed | data-auditor + vision-extractor reconciled list (per wave1_findings.md) | 2026.03.17a | 2026-07-10 |
+
+**Not touched (owner-held, pending his answers):** companion powers 110, 173, 184, 185, 193, 259 — see `data_correctness_queue.md` Tier 4 for the specific owner-judgment questions on each.
+
+---
+
 _Ledger created 2026-06-15. Current data pack version: 2026.03.17a (Mod 32.5)._
