@@ -2809,8 +2809,8 @@
                 <option value="Rare">Rare</option>
                 <option value="Epic">Epic</option>
                 <option value="Legendary">Legendary</option>
-                <option value="Mythic" selected>Mythic</option>
-                <option value="Celestial">Celestial</option>
+                <option value="Mythic">Mythic</option>
+                <option value="Celestial" selected>Celestial</option>
               </select>
             </div>
           </div>
@@ -2819,15 +2819,15 @@
             <div style="display:flex;align-items:center;gap:0.3rem;">
               <label style="font-size:0.7rem;color:var(--text-mute);white-space:nowrap;">Equip rarity:</label>
               <select id="active-equip-power-rarity"
-                      title="Rarity of the mount whose Equip Power you are using. Scales the stat bar immediately — works even if that mount is not in any stable slot. Note: the browse picker still shows Mythic-baseline numbers; only the stat bar reflects this rarity."
+                      title="Rarity of the mount whose Equip Power you are using. Scales the stat bar and the browse-picker numbers immediately — works even if that mount is not in any stable slot. Defaults to Celestial (max tier)."
                       style="font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
                 <option value="Common">Common</option>
                 <option value="Uncommon">Uncommon</option>
                 <option value="Rare">Rare</option>
                 <option value="Epic">Epic</option>
                 <option value="Legendary">Legendary</option>
-                <option value="Mythic" selected>Mythic</option>
-                <option value="Celestial">Celestial</option>
+                <option value="Mythic">Mythic</option>
+                <option value="Celestial" selected>Celestial</option>
               </select>
             </div>
           </div>
@@ -3134,13 +3134,13 @@
       activeEquipPower:  null,   // id from mount_equip_powers.json — drawn from stable mounts
       // Decision 11: per-active-power rarity (supersedes per-slot mountRarity).
       // Rarity applies to the active power itself, not the stable slot it came from.
-      // Combat powers default to Celestial (max tier) 2026-06-29: all mounts reach
-      // Celestial, the endgame audience runs them there, and combat powers scale
-      // uniformly (IL 3937, ×1.3124 over Mythic). EQUIP powers stay Mythic for now —
-      // their Max HP stats (Stalwart/Deadly Decay/Dawn of Life/etc.) scale ~1.667×,
-      // not 1.3124×, and are in an unresolved Mythic-vs-Celestial state. Flip equip
-      // to Celestial only after verifying the Max HP exception.
-      activeEquipPowerRarity:   "Mythic",
+      // Both default to Celestial (max tier): all mounts reach Celestial and the
+      // endgame audience runs them there. Combat flipped 2026-06-29; EQUIP flipped
+      // 2026-07-10 after the Max HP question closed — n00b's Stalwart capture proved
+      // equip stats (ratings, percents, Max HP, CR) ALL scale uniformly ×IL like
+      // combat (30,000 → 39,375 Max HP = ×1.3125 exact; the old ~1.667× hypothesis
+      // was a lower-rank-capture artifact). Scaling uses the uniform ×1.3124444.
+      activeEquipPowerRarity:   "Celestial",
       activeCombatPowerRarity:  "Celestial",
       // Bolster percentages (0–120 for comp, 0–125 for mount). 100 = baseline,
       // i.e. data values apply as listed. See mekaniks.html "Bolster".
@@ -3528,9 +3528,10 @@
         }
       }
       // Decision 11: active-power rarity replaces per-slot mountRarity.
-      // Combat defaults to Celestial; equip stays Mythic (Max HP equip powers scale
-      // differently — see the init-default note). Saves with an explicit value keep it.
-      if (!state.activeEquipPowerRarity)  state.activeEquipPowerRarity  = "Mythic";
+      // Both default to Celestial (equip flipped 2026-07-10 — see the init-default
+      // note). Saves with an explicit value keep it, so a build saved at Mythic
+      // stays Mythic until the user re-picks the dropdown.
+      if (!state.activeEquipPowerRarity)  state.activeEquipPowerRarity  = "Celestial";
       if (!state.activeCombatPowerRarity) state.activeCombatPowerRarity = "Celestial";
       // mountRarity was removed in Decision 11; delete it from any save that still carries it.
       (state.stable || []).forEach(slot => {
