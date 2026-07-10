@@ -221,3 +221,7 @@ n00b in-game verification queue. NEVER guess amounts.
 - [ ] id 3154 (Vambraces of the Eternal Bloom, gear.json) — the "+15% Class Resource Max" sub-effect named in its equip-bonus prose is still unstructured; needs its own equipBonus entry later (percentOfPool pattern, per id 25/291-family precedent). Not attempted this batch per validator instruction.
 - [ ] Repo-wide 94-item duplicate-placeholder dedup (see data_trust.md campaign note 2026-07-07/10) — this batch cleared the 27 healer-gate-relevant ids; the remaining ~67 non-healer-gate ids carrying the same stat:null-placeholder-plus-structured-sibling pattern are still open, campaign-level, out of this batch's scope.
 - [ ] Ledger-vs-JSON drift check (Vampire's Kiss pattern) — Vampire's Kiss (power 92) had a data_trust.md ledger row saying CONFIRMED at 3.8% while the live JSON still said 3.6% (now fixed to 3.8% in this batch). Spot-check other CONFIRMED ledger rows against their live JSON values for the same silent-drift pattern.
+
+## Owner rulings applied 2026-07-10 (held items closed)
+- [x] Lillend 18→37.5% | Celeste re-anchor 7.5%@375 | Grace Revoir effectScaling 750:5/900:13.5 | Vallenhas 11→11.3% (card re-read)
+- [ ] PS5 name-splash check: Incubus vs Succubus — whose power is "Fiendish Charmer's Distraction"? (content verified; name + per-companion identity only)

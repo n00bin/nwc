@@ -2,6 +2,16 @@
 
 This is the **Data Steward team's** record of what data has been *proven correct against an in-game screenshot.* It is maintained by the `/steward` command (see `~/.claude/commands/steward.md`).
 
+## Held-item resolutions — owner rulings 2026-07-10
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| power 193 | Lillend (Song of Restoration) | companion_powers | FIXED — heal 18% → **37.5%** of max HP (owner-approved; card shows 37.5 @ IL375, exact 10× single-stat match; stored 18% was uncited) | audit card c206.png | 2026.03.17a | 2026-07-10 |
+| power 259 | Celeste (Angelic Renewal) | companion_powers | RE-ANCHORED — was IL75/20% (unconfirmed NW Hub, scaled implausibly); now **7.5% @ IL375/CR375** per hard card read (base 1.5%@75, 2× single-stat) | audit card c153.png | 2026.03.17a | 2026-07-10 |
+| power 173 | Grace Revoir (Unseelie Cruelty) | companion_powers | FIXED — non-linear curve stored as effectScaling **750→5% / 900→13.5%** per the record's own declared points (13.5 card-confirmed; 5% uncited — update if an in-game Mythic tooltip disagrees); stats[] tier-mixing resolved | audit card c180.png | 2026.03.17a | 2026-07-10 |
+| power 110 | Vallenhas Elite Soldier (Vallenhas' Discipline) | companion_powers | FIXED — 11% → **11.3%** damage vs Avernus devils; card re-read at full resolution 2026-07-10 settled the digit-misread concern | audit card c109.png | 2026.03.17a | 2026-07-10 |
+| power 184/185 | Incubus / Succubus (Charmer's Distraction) | companion_powers | CONTENT CONFIRMED (10% / Encounter / Daze 3s / 10s ICD); displayed power NAME ("Fiendish" vs stored "Feywild"/"Succubus's") + companion identity on the shared card UNRESOLVABLE from archive → owner in-game name-splash check queued | audit card c194.png | 2026.03.17a | 2026-07-10 |
+
 ## What this is for
 
 The website's data lives in the JSON files in `../data/` (the source of truth). A value being *in* the JSON does not mean it's *right*. This ledger tracks which values have been verified against a screenshot, so that:
