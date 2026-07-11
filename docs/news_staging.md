@@ -21,13 +21,12 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   "conditional" flag and so counted as always-on at rest. They now correctly show
   only with "Hide in-combat bonuses" unchecked. Health-gated "either/or" bonuses
   and passive party/resource scaling were verified and deliberately left as-is.
-- **Daily-triggered gear procs now sit behind the conditional toggle.**
-  Two set bonuses — *Tactical Daily* (Wintermarked/Tactical set, +5% Combat
-  Advantage) and *Malignant Energy* (Ritualistic set, ±2.5% damage) — only fire
-  when you use a Daily power, but were being counted as always-on in the
-  out-of-combat stat panel. They're now correctly gated (shown only with
-  "Hide in-combat bonuses" unchecked), so the resting panel matches the in-game
-  tooltip. Fixed across all rarity tiers of both sets.
+- **Malignant Energy (Ritualistic set) now sits behind the conditional toggle.**
+  Its ±2.5% damage only fires when you use a Daily power, but was counted as
+  always-on in the out-of-combat stat panel. Now correctly gated (shown only with
+  "Hide in-combat bonuses" unchecked). *Tactical Daily* (Wintermarked/Tactical set)
+  keeps its +5% Combat Advantage always-on — that half is unconditional; only its
+  encounter-damage bonus is Daily-triggered.
 - **Summoned companion Combined Rating now uses the summoned slot's rarity.**
   When a build set the bulk companion rarity differently from the summoned
   companion (e.g. bulk Mythic but Drizzt summoned at Celestial), the summoned
