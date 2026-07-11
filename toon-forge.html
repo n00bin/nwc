@@ -3079,6 +3079,12 @@
       // (set via the 🔒 on a filled gear slot). Serialized as an array; carried
       // in saves + share links. Weapons lock as a Main Hand + Off Hand pair.
       pinned: new Set(),
+      // Artifact-slot locks: ARTIFACT_SLOTS names (Primary / Secondary N) the
+      // optimizer must KEEP and build around (set via the 🔒 on a filled
+      // artifact slot). Kept SEPARATE from `pinned` so gear's optimizer
+      // contract stays gear-only. Serialized as an array; carried in saves +
+      // share links.
+      pinnedArtifacts: new Set(),
       role: null,
       class: null,
       paragon: "", race: "", il: "", name: "",
@@ -3331,6 +3337,7 @@
           groupEquipStacks: state.groupEquipStacks !== false,
           assumeSupportParty: state.assumeSupportParty === true,
           pinned: [...(state.pinned || [])],
+          pinnedArtifacts: [...(state.pinnedArtifacts || [])],
           slottedClassFeaturePicks: [...(state.slottedClassFeaturePicks || [])],
           rangerStance: state.rangerStance || "ranged",
           bardActiveSong: state.bardActiveSong || "",
@@ -3357,6 +3364,7 @@
       state.boons = new Map(s.boons || []);
       state.buffs = new Set(s.buffs || []);
       state.pinned = new Set(s.pinned || []);   // slot locks (array -> Set)
+      state.pinnedArtifacts = new Set(s.pinnedArtifacts || []);   // artifact locks (array -> Set)
       // Builds saved before guild boon-structure ranks existed default to
       // max rank (the stored amounts' anchor); builds from the brief
       // single-rank era migrate that one rank to all three categories.
@@ -14989,9 +14997,17 @@
         if (filled) chipClasses.push("filled");
         if (noItems) chipClasses.push("disabled");
         const artInfo = filled ? `<button class="chip-info" data-details-type="artifact" data-details-key="${_escAttr(v)}"${aIL ? ` data-details-il="${aIL}"` : ""} title="See artifact details">\u{1F50D}</button>` : "";
+        // Slot-lock 🔒 — pin a filled artifact slot so the optimizer keeps
+        // that exact artifact and builds the rest of the loadout around it.
+        // Mirrors the gear lock; stored in state.pinnedArtifacts (separate
+        // Set so gear's state.pinned optimizer contract stays gear-only).
+        const isPinned = !!(state.pinnedArtifacts && state.pinnedArtifacts.has(slot));
+        const lockBtn = filled
+          ? `<button class="gear-lock-btn${isPinned ? " on" : ""}" data-art-lock="${_escAttr(slot)}" title="${isPinned ? "Locked — the optimizer keeps this artifact and builds around it. Click to unlock." : "Lock this slot so the optimizer keeps this exact artifact and builds around it"}">${isPinned ? "🔒" : "🔓"}</button>`
+          : "";
         return `
-          <div class="slot ${filled ? "filled" : ""}">
-            <div class="slot-label">${slot}</div>
+          <div class="slot ${filled ? "filled" : ""}${isPinned ? " pinned" : ""}">
+            <div class="slot-label">${slot}${lockBtn}</div>
             <div class="${chipClasses.join(" ")}" data-art-pick="${slot}" title="${filled ? v : "Click to pick an artifact"}">
               ${chipLabel}
               ${artInfo}
@@ -15025,6 +15041,8 @@
               // separate rows); empty slot clears it.
               if (item) state.artifactIL[slot] = (item.item_level != null ? item.item_level : null);
               else delete state.artifactIL[slot];
+              // Clearing a slot drops any lock on it (nothing left to keep).
+              if (!item && state.pinnedArtifacts) state.pinnedArtifacts.delete(slot);
               applyAutoTIL();
               recomputeAbilityTotals();
               renderAbilityGrid();
@@ -15036,6 +15054,20 @@
               toast(item ? `Slotted ${item.name} (${slot})` : `Cleared ${slot}`);
             }
           });
+        });
+      });
+      g.querySelectorAll("[data-art-lock]").forEach(el => {
+        el.addEventListener("click", (ev) => {
+          ev.stopPropagation();
+          const slot = el.dataset.artLock;
+          if (!(state.pinnedArtifacts instanceof Set)) state.pinnedArtifacts = new Set(state.pinnedArtifacts || []);
+          const willPin = !state.pinnedArtifacts.has(slot);
+          if (willPin) state.pinnedArtifacts.add(slot); else state.pinnedArtifacts.delete(slot);
+          renderArtifacts();
+          if (typeof persistAutosave === "function") persistAutosave();
+          toast(willPin
+            ? `🔒 Locked ${slot} artifact — the optimizer will build around it`
+            : `🔓 Unlocked ${slot} artifact`);
         });
       });
     }
