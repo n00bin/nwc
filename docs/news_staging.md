@@ -8,6 +8,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 (Last published July 10, 2026: "Mount Powers Go Full Celestial — Exact to the Point, with a One-Tap Tier Toggle")
 
+### New Features
+- **Lock your artifacts, not just your gear.** The 🔒 lock now appears on
+  filled artifact slots too. Lock an artifact and the optimizer keeps that
+  exact piece and builds the rest of your loadout around it — the missing
+  piece for pinning a Neck + Waist + Artifact set like Vistani. Locks are
+  saved with your build and travel in share links.
+
 ### Bug Fixes
 - **Swift Synergy combat enchant no longer counts its stacks at rest.**
   Celestial Swift Synergy's Combat Advantage and Critical Severity come from
@@ -35,6 +42,15 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   summoned rarity, so every rating matches the in-game stat sheet to within a
   point. Verified against a friend's Warlock/Hellbringer DPS build (all 13 main
   stats within ±1, Max HP within 24, Damage exact).
+- **Vistani set data corrected — it's a 3-piece Neck + Waist + Artifact set.**
+  The Vistani Pendant (Neck) and Vistani Raiments (Waist) had wrong stats and
+  were carrying the Vistani *weapon* set's 2-piece bonus by mistake, and the
+  Tarokka Deck artifact was tagged with a mismatched set name so it never
+  counted. Now fixed and verified from in-game tooltips: Pendant (Accuracy 400
+  / Combat Advantage 400 / Critical Avoidance 401, +4 CON), Raiments (Critical
+  Strike 600 / Combat Advantage 600, +2 STR +2 DEX), and the Tarokka Deck now
+  completes the set. Equipping all three shows Vistani 3/3 with its real
+  3-of-Set bonus (a single-target AoE takes +5% damage for 5s).
 
 <!-- Resolved 2026-07-10: the Life Lessons master-boon correction (chance 20%->10%,
      R3 heal 15%->10%/rank, 4s durations) was screenshot-verified and applied to
