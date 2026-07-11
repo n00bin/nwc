@@ -9,6 +9,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 (Last published July 10, 2026: "Mount Powers Go Full Celestial — Exact to the Point, with a One-Tap Tier Toggle")
 
 ### Bug Fixes
+- **Combat-proc gear bonuses no longer inflate the out-of-combat panel (fleet-wide sweep).**
+  Audited every equip bonus in the gear database and fixed 220 combat procs
+  (across 69 set families — Unleashed, the Challenger's / Survivor's-adjacent
+  stacking lines, Daily/Encounter-triggered buffs, etc.) that were missing the
+  "conditional" flag and so counted as always-on at rest. They now correctly show
+  only with "Hide in-combat bonuses" unchecked. Health-gated "either/or" bonuses
+  and passive party/resource scaling were verified and deliberately left as-is.
 - **Daily-triggered gear procs now sit behind the conditional toggle.**
   Two set bonuses — *Tactical Daily* (Wintermarked/Tactical set, +5% Combat
   Advantage) and *Malignant Energy* (Ritualistic set, ±2.5% damage) — only fire
