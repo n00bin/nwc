@@ -228,5 +228,7 @@ n00b in-game verification queue. NEVER guess amounts.
 
 ## Capture session 2026-07-10 — 9 of 15 Tier-4 items resolved
 - [x] Captured + structured: 51, 73, 69, 315, 79, 423, 457, 461, 530 (see data_trust.md rows)
-- [ ] STILL NEEDED (PS5): Gauntlets of the Anointed (304), Vambraces of the Vital Sigil (381), Mask of the Vital Sigil (383), Cowl of the Ashen Chant (293), Luminstep Sabatons — Ruthless Resources variant (518)
-- [ ] STILL NEEDED (PS5): Incubus vs Succubus name-splash (whose power panel says "Fiendish Charmer's Distraction")
+- [x] CAPTURED 2026-07-10 session 2: Gauntlets of the Anointed (304), Vambraces of the Vital Sigil (381), Mask of the Vital Sigil (383), Cowl of the Ashen Chant (293), Luminstep Sabatons — Ruthless Resources variant (518)
+- [x] RESOLVED 2026-07-10: Incubus vs Succubus name-splash (whose power panel says "Fiendish Charmer's Distraction")
+
+## HEALER GATE: CLOSED 2026-07-10 — all 15 capture-list items verified; healer-relevant engine-blind surface = 0 unexplained.

@@ -2,6 +2,18 @@
 
 This is the **Data Steward team's** record of what data has been *proven correct against an in-game screenshot.* It is maintained by the `/steward` command (see `~/.claude/commands/steward.md`).
 
+## Owner capture session 2 — HEALER GATE CLOSED — 2026-07-10
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| gear 293 | Cowl of the Ashen Chant | gear | VERIFIED+STRUCTURED — Crit 2952/Power 861/CritSev 2952/CR 3690; Thayan Resourcefulness: **12% Class Resource Regen baseline (18% in Thay) — now SCORES** | Cowl of the Ashen Chant_IL4100_verified.png | 2026.03.17a | 2026-07-10 |
+| gear 304 | Gauntlets of the Anointed | gear | VERIFIED+STRUCTURED — IL corrected 3550; CritSev 1917/Deflect 2396/OH 1704/CR 3195; Controlled Divinity: **0.6%/stack regen ×10 on ally heals — now SCORES** | Gauntlets of the Anointed_IL3550_verified.png | 2026.03.17a | 2026-07-10 |
+| gear 381 | Vambraces of the Vital Sigil | gear | VERIFIED+STRUCTURED — Forte 3490/OH 2538/CR 4230; Divine Ascendance: **Divinity max +20% (percentOfPool) — now SCORES** | Vambraces of the Vital Sigil_IL4700_verified.png | 2026.03.17a | 2026-07-10 |
+| gear 383 | Mask of the Vital Sigil | gear | VERIFIED+STRUCTURED — Crit 3807/OH 3102/CR 4230; Healing Momentum: **8% regen after moving — now SCORES** (ally IH rider recorded in description) | Mask of the Vital Sigil_IL4700_verified.png | 2026.03.17a | 2026-07-10 |
+| gear 518 | Luminstep Sabatons — Ruthless Resources | gear | VERIFIED+STRUCTURED — Forte 2261/OH 2010/CR 3015; Ruthless Resources (Greater): **5%/stack regen ×5 — now SCORES** | Luminstep Sabatons (Ruthless Resources)_IL3350_verified.png | 2026.03.17a | 2026-07-10 |
+| power 184 | Incubus (Charmer's Distraction) | companion_powers | NAME FIXED — "Feywild Charmer's Distraction" → **"Fiendish Charmer's Distraction"** per auction-house name-splash inspect; content already verified | Incubus_FiendishCharmersDistraction_IL375_name-splash_verified.png | 2026.03.17a | 2026-07-10 |
+| power 185 | Succubus (Charmer's Distraction) | companion_powers | NAME FIXED — "Succubus's Distraction" → **"Fiendish Charmer's Distraction"** (identical power on both companions, name included) | Succubus_FiendishCharmersDistraction_IL375_name-splash_verified.png | 2026.03.17a | 2026-07-10 |
+
 ## Owner capture session — 9 of 15 Tier-4 items verified — 2026-07-10
 
 | id | name | system | status | source | data version | date verified |
