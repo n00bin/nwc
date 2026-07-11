@@ -2,6 +2,20 @@
 
 This is the **Data Steward team's** record of what data has been *proven correct against an in-game screenshot.* It is maintained by the `/steward` command (see `~/.claude/commands/steward.md`).
 
+## Owner capture session — 9 of 15 Tier-4 items verified — 2026-07-10
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| gear 51 | Cuirass of the Black Flame | gear | VERIFIED+STRUCTURED — stats/CR from tooltip (Acc 3773/CA 2838/Forte 3193/CR 3870); Executioner's Remedy (Greater) "5% health back on kill" captured, unmodeled (no heal-layer) | Cuirass of the Black Flame_IL4300_verified.png | 2026.03.17a | 2026-07-10 |
+| gear 73 | Cuirass of the Ethralled Flame | gear | VERIFIED+STRUCTURED — Acc 4344/CA 2187/Aware 2187/CR 3645; Executioner's Remedy (Lesser) 3.5% on-kill heal, unmodeled | Cuirass of the Ethralled Flame_IL4050_verified.png | 2026.03.17a | 2026-07-10 |
+| gear 69 | Gauntlets of the Hierarch | gear | VERIFIED+STRUCTURED — CritSev 4010/Def 1914/CR 3645; Fount of Healing (Lesser) full orb text captured, descriptive-only per convention | Gauntlets of the Hierarch_IL4050_verified.png | 2026.03.17a | 2026-07-10 |
+| gear 315 | Deathsilver Band of Sacrifice | gear | VERIFIED+STRUCTURED — Crit 8820/Forte 6615/+1.5% Recharge/CR 3920; **Circular Healing: +9% Outgoing Healing 10s on being healed (15s cd) — now SCORES** | Deathsilver Band of Sacrifice_IL4900_verified.png | 2026.03.17a | 2026-07-10 |
+| gear 79 | The Claw of Covetous Flame | gear | VERIFIED+STRUCTURED — Def 3486/CritAvoid 8217/+1.5% StamRegen/CR 3320; Pact of Vengence retaliation proc captured, unmodeled (damage layer) | The Claw of Covetous Flame_IL4150_verified.png | 2026.03.17a | 2026-07-10 |
+| gear 423 | Bloodwoven Ink (Butcher's Zeal) | gear | VERIFIED+STRUCTURED — CritSev 2268/Forte 1276/OH 1134/+1.5% Recharge/CR 2835; Butcher's Zeal 15 AP proc (flat-AP convention, descriptive); **NEW: "Enchanted Healing" 2pc set +2% Outgoing Healing recorded — set was previously unknown** | Bloodwoven Ink (Butcher's Zeal)_IL3150_verified.png | 2026.03.17a | 2026-07-10 |
+| gear 457 | Mystic Conduit Seal (Healer's Influence) | gear | VERIFIED+STRUCTURED — Crit 1944/CtrlRes 1620/OH 1728/+1.5% Recharge/CR 3240; **Healer's Influence: +11,250 OH rating 5s proc — now SCORES** | Mystic Conduit Seal (Healer's Influence)_IL3600_verified.png | 2026.03.17a | 2026-07-10 |
+| gear 461 | Mystic Conduit Ink (Butcher's Precision Lesser) | gear | VERIFIED+STRUCTURED — CA 1296/Crit 2592/Def 1134/+1.5% APG/CR 3240; Butcher's Precision: +11,250 CritSev rating 5s proc — now scores | Mystic Conduit Ink (Butcher's Precision Lesser)_IL3600_verified.png | 2026.03.17a | 2026-07-10 |
+| gear 530 | Mirestep Boots (Ruthless Resources) | gear | VERIFIED+STRUCTURED — CritSev 1350/Deflect 1688/OH 1800/CR 2700; **Ruthless Resources (Lesser): 4%/stack Divinity-Performance-Soulweave regen, max 5 — now SCORES** | Mirestep Boots_IL3000_verified.png | 2026.03.17a | 2026-07-10 |
+
 ## Held-item resolutions — owner rulings 2026-07-10
 
 | id | name | system | status | source | data version | date verified |

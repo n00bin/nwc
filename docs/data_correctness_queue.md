@@ -225,3 +225,8 @@ n00b in-game verification queue. NEVER guess amounts.
 ## Owner rulings applied 2026-07-10 (held items closed)
 - [x] Lillend 18→37.5% | Celeste re-anchor 7.5%@375 | Grace Revoir effectScaling 750:5/900:13.5 | Vallenhas 11→11.3% (card re-read)
 - [ ] PS5 name-splash check: Incubus vs Succubus — whose power is "Fiendish Charmer's Distraction"? (content verified; name + per-companion identity only)
+
+## Capture session 2026-07-10 — 9 of 15 Tier-4 items resolved
+- [x] Captured + structured: 51, 73, 69, 315, 79, 423, 457, 461, 530 (see data_trust.md rows)
+- [ ] STILL NEEDED (PS5): Gauntlets of the Anointed (304), Vambraces of the Vital Sigil (381), Mask of the Vital Sigil (383), Cowl of the Ashen Chant (293), Luminstep Sabatons — Ruthless Resources variant (518)
+- [ ] STILL NEEDED (PS5): Incubus vs Succubus name-splash (whose power panel says "Fiendish Charmer's Distraction")
