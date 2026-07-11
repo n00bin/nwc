@@ -11796,7 +11796,13 @@
         ? COMPANIONS_DATA.find(c => c.name === s.summoned)
         : null;
       const compBolster = ((s.companionBolster == null ? 100 : +s.companionBolster) || 0) / 100;
-      const compRarityForBase = s.companionRarity || "Mythic";
+      // Summoned-companion CR must use the SUMMONED slot's rarity, not the bulk
+      // companionRarity default. When a build sets them differently (e.g. bulk
+      // Mythic but the summoned comp is Celestial), reading companionRarity here
+      // under-credited the base-IL CR to every stat (Celestial 3300 base read as
+      // Mythic 1650 → 1,683 instead of 3,366; ~1.5% low across the whole sheet).
+      // Masked whenever the two rarities matched (most of n00b's own builds).
+      const compRarityForBase = s.summonedRarity || s.companionRarity || "Mythic";
       const compRarityIL = COMPANION_RARITY_IL[compRarityForBase] || COMPANION_RARITY_IL.Mythic;
 
       if (summonedComp && summonedComp.summonedBuff && summonedComp.summonedBuff.stat) {
