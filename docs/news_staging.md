@@ -16,6 +16,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   saved with your build and travel in share links.
 
 ### Bug Fixes
+- **Warlock's Impending Doom set now gives Healers its Outgoing Healing.**
+  The Omen of Doom + Codex of Eternal Chains 2-piece Unleashed bonus grants
+  Base Damage Boost for DPS and +Outgoing Healing for Healers — but only the
+  DPS half was wired up, so a Soulweaver got nothing from Unleashed. All five
+  ranks (IL 3750–5250) now credit the matching Outgoing Healing (+3% to +5%)
+  when you're in the Healer role. It shows on the Outgoing Healing row with
+  in-combat bonuses on (Unleashed is a charge state, so it's conditional).
 - **Swift Synergy combat enchant no longer counts its stacks at rest.**
   Celestial Swift Synergy's Combat Advantage and Critical Severity come from
   Preparation stacks that build as you attack and drop when you leave combat, so
