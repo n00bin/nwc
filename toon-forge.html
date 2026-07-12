@@ -16664,10 +16664,12 @@
             <div class="stable-collar comp-slot ${slot.collar ? "filled" : ""}" data-stable="collar" data-idx="${i}">
               ${slot.collar ? "🔗 " + slot.collar : "+ Collar"}
               ${slot.collar ? `<button class="chip-info" data-details-type="mount_collar" data-details-key="${_escAttr(slot.collar)}" title="See what this collar gives">🔍</button>` : ""}
+              ${slot.collar ? lockButtonHTML(LK.mount("collar:" + i), true) : ""}
             </div>
             <div class="stable-mount comp-slot ${slot.mount ? "filled" : ""}" data-stable="mount" data-idx="${i}">
               ${slot.mount ? "🐎 " + slot.mount : "+ Mount"}
               ${slot.mount ? `<button class="chip-info" data-details-type="mount" data-details-key="${_escAttr(slot.mount)}" title="See mount details">🔍</button>` : ""}
+              ${slot.mount ? lockButtonHTML(LK.mount("stable:" + i), true) : ""}
             </div>`;
         if (insigniaSlots.length) {
           html += `<div class="stable-insignias">`;
@@ -16721,6 +16723,7 @@
         html += `</div>`;
       }
       wrap.innerHTML = html;
+      wireLockButtons(wrap, renderStable);   // 🔒 on mount (mount:stable:i) + collar (mount:collar:i) chips
 
       // Wire click handlers — open searchable picker modals
       // Generic ⓘ button — opens read-only details modal. Wire BEFORE
