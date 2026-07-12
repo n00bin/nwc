@@ -3308,7 +3308,10 @@
       gear: function (l) { return 'gear:' + l; },
       art:  function (s) { return 'artifact:' + s; },
       ench: function (s) { return 'enchant:' + s; },
-      comp: function (s) { return 'companion:' + s; }
+      comp: function (s) { return 'companion:' + s; },
+      over: function (i) { return 'overload:' + i; },
+      kit:  function (l) { return 'kit:' + l; },
+      mount: function (s) { return 'mount:' + s; }
     };
     function isLocked(key) { return (state.locked instanceof Set) && state.locked.has(key); }
     function syncLegacyLocks() {
@@ -14522,7 +14525,7 @@
         const kitChip = kitOptions.length
           ? `<div class="gear-kit-chip ${kitName ? "filled" : ""}" data-gear-kit="${s.label}">
                ${kitName ? "🔧 " + kitName : "+ Reinforcement Kit"}
-               ${kitInfo}
+               ${kitInfo}${kitName ? lockButtonHTML(LK.kit(s.label), true) : ""}
              </div>`
           : "";
         const gearIlAttr = (state.gearIL && state.gearIL[s.label] != null) ? ` data-details-il="${_escAttr(String(state.gearIL[s.label]))}"` : "";
@@ -14740,6 +14743,7 @@
           });
         });
       });
+      wireLockButtons(g, renderGear);   // kit 🔒 (data-lock-key); gear-slot 🔒 uses its own data-gear-lock handler
       renderGearWarnings();
     }
 
@@ -14889,7 +14893,7 @@
         const v = state.overloads[i];
         const info = v ? `<button class="chip-info" data-details-type="overload" data-details-key="${_escAttr(v)}" title="See overload details">\u{1F50D}</button>` : "";
         html += `<div class="slot ${v ? "filled" : ""}" style="cursor:pointer;" data-overload="${i}">
-          <div class="slot-label">Overload ${i + 1}</div>
+          <div class="slot-label">Overload ${i + 1}${lockButtonHTML(LK.over(i), !!v)}</div>
           <div style="padding:0.4rem 0.5rem;font-size:0.85rem;color:${v?'var(--gold)':'var(--text-mute)'};">
             ${v ? "🔥 " + v : "+ pick overload"}
             ${info}
@@ -14897,6 +14901,7 @@
         </div>`;
       }
       wrap.innerHTML = html;
+      wireLockButtons(wrap, renderOverloads);
       wrap.querySelectorAll("[data-overload]").forEach(el => {
         el.addEventListener("click", () => {
           const i = +el.dataset.overload;
@@ -16775,14 +16780,16 @@
       if (cb) {
         const p = findCombatPowerById(state.activeCombatPower);
         const info = p ? ` <button class="chip-info" data-details-type="combat_power" data-details-key="${p.id}" title="See combat power details">\u{1F50D}</button>` : "";
-        cb.innerHTML = (p ? "⚔ " + p.name : "+ Active Combat Power") + info;
+        cb.innerHTML = (p ? "⚔ " + p.name : "+ Active Combat Power") + info + lockButtonHTML(LK.mount("combatPower"), !!p);
         cb.classList.toggle("filled", !!p);
+        wireLockButtons(cb, renderActivePowerChips);
       }
       if (eq) {
         const p = findEquipPowerById(state.activeEquipPower);
         const info = p ? ` <button class="chip-info" data-details-type="equip_power" data-details-key="${p.id}" title="See equip power details">\u{1F50D}</button>` : "";
-        eq.innerHTML = (p ? "✦ " + p.name : "+ Active Equip Power") + info;
+        eq.innerHTML = (p ? "✦ " + p.name : "+ Active Equip Power") + info + lockButtonHTML(LK.mount("equipPower"), !!p);
         eq.classList.toggle("filled", !!p);
+        wireLockButtons(eq, renderActivePowerChips);
       }
     }
 
