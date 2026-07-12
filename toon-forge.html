@@ -3075,15 +3075,21 @@
        ===================================================== */
     const state = {
       step: 1,
-      // Slot locks: gear-slot labels the optimizer must KEEP and build around
-      // (set via the 🔒 on a filled gear slot). Serialized as an array; carried
-      // in saves + share links. Weapons lock as a Main Hand + Off Hand pair.
+      // Unified slot-lock store (CANONICAL). A Set of namespaced slot keys the
+      // optimizer must KEEP and build around, set via the 🔒 on any lockable
+      // slot: "gear:<label>", "artifact:<slot>", and — as more slot types
+      // become lockable — "enchant:<slot>", "companion:<slot>", "mount:…", etc.
+      // Serialized as an array; carried in saves + share links. Adding a new
+      // lockable slot type is a ~2-line change (render a 🔒, add a case to
+      // syncLegacyLocks + a matching check on the optimizer's slot).
+      locked: new Set(),
+      // DERIVED from `locked` via syncLegacyLocks() — the optimizer's current
+      // read interface. `pinned` = gear-slot labels; `pinnedArtifacts` =
+      // artifact slot names. Do not write these directly from the builder;
+      // toggle `locked` and re-derive. Weapons lock as a Main Hand + Off Hand
+      // pair. Legacy saves that only have `pinned`/`pinnedArtifacts` migrate
+      // into `locked` on load.
       pinned: new Set(),
-      // Artifact-slot locks: ARTIFACT_SLOTS names (Primary / Secondary N) the
-      // optimizer must KEEP and build around (set via the 🔒 on a filled
-      // artifact slot). Kept SEPARATE from `pinned` so gear's optimizer
-      // contract stays gear-only. Serialized as an array; carried in saves +
-      // share links.
       pinnedArtifacts: new Set(),
       role: null,
       class: null,
@@ -3291,6 +3297,29 @@
     // their work.
     const AUTOSAVE_KEY = "toon-forge:autosave";
 
+    // ===== Unified lock store =====
+    // state.locked is the canonical Set of namespaced slot-lock keys
+    // ("gear:Head", "artifact:Primary", …). LK builds keys; syncLegacyLocks
+    // derives the optimizer's current read interface (state.pinned = gear
+    // labels, state.pinnedArtifacts = artifact slots) from it. To make a new
+    // slot type lockable, add a case here and a matching check on the
+    // optimizer's slot for that type.
+    const LK = { gear: function (l) { return 'gear:' + l; }, art: function (s) { return 'artifact:' + s; } };
+    function isLocked(key) { return (state.locked instanceof Set) && state.locked.has(key); }
+    function syncLegacyLocks() {
+      if (!(state.locked instanceof Set)) state.locked = new Set(state.locked || []);
+      const g = new Set(), a = new Set();
+      state.locked.forEach(function (key) {
+        if (typeof key !== 'string') return;
+        const i = key.indexOf(':'); if (i < 0) return;
+        const type = key.slice(0, i), slot = key.slice(i + 1);
+        if (type === 'gear') g.add(slot);
+        else if (type === 'artifact') a.add(slot);
+      });
+      state.pinned = g;
+      state.pinnedArtifacts = a;
+    }
+
     function serializeBuild(name) {
       return {
         v: 1,                              // schema version
@@ -3336,6 +3365,7 @@
           partyPackMeta: state.partyPackMeta !== false,
           groupEquipStacks: state.groupEquipStacks !== false,
           assumeSupportParty: state.assumeSupportParty === true,
+          locked: [...(state.locked || [])],
           pinned: [...(state.pinned || [])],
           pinnedArtifacts: [...(state.pinnedArtifacts || [])],
           slottedClassFeaturePicks: [...(state.slottedClassFeaturePicks || [])],
@@ -3363,8 +3393,17 @@
       // state.boons.has()/state.buffs.has() would throw until repaired.
       state.boons = new Map(s.boons || []);
       state.buffs = new Set(s.buffs || []);
-      state.pinned = new Set(s.pinned || []);   // slot locks (array -> Set)
-      state.pinnedArtifacts = new Set(s.pinnedArtifacts || []);   // artifact locks (array -> Set)
+      // Unified lock store. Prefer the canonical `locked` array; migrate legacy
+      // `pinned` (gear labels) + `pinnedArtifacts` (artifact slots) saves that
+      // predate it. Then derive the optimizer's read interface from it.
+      if (Array.isArray(s.locked)) {
+        state.locked = new Set(s.locked);
+      } else {
+        state.locked = new Set();
+        (s.pinned || []).forEach(function (l) { state.locked.add(LK.gear(l)); });
+        (s.pinnedArtifacts || []).forEach(function (sl) { state.locked.add(LK.art(sl)); });
+      }
+      syncLegacyLocks();   // rebuild state.pinned + state.pinnedArtifacts from state.locked
       // Builds saved before guild boon-structure ranks existed default to
       // max rank (the stored amounts' anchor); builds from the brief
       // single-rank era migrate that one rank to all three categories.
@@ -14469,7 +14508,7 @@
         // Slot-lock 🔒 — pin a filled gear slot so the optimizer keeps that
         // exact item and builds the rest of the loadout around it (weapons
         // lock together as a Main Hand + Off Hand pair).
-        const isPinned = !!(state.pinned && state.pinned.has(s.label));
+        const isPinned = isLocked(LK.gear(s.label)) || !!(state.pinned && state.pinned.has && state.pinned.has(s.label));
         const lockBtn = filled
           ? `<button class="gear-lock-btn${isPinned ? " on" : ""}" data-gear-lock="${s.label}" title="${isPinned ? "Locked — the optimizer keeps this slot and builds around it. Click to unlock." : "Lock this slot so the optimizer keeps this exact item and builds around it"}">${isPinned ? "🔒" : "🔓"}</button>`
           : "";
@@ -14637,11 +14676,12 @@
         el.addEventListener("click", (ev) => {
           ev.stopPropagation();
           const lbl = el.dataset.gearLock;
-          if (!(state.pinned instanceof Set)) state.pinned = new Set(state.pinned || []);
+          if (!(state.locked instanceof Set)) state.locked = new Set(state.locked || []);
           // Weapons lock together — the optimizer pairs Main Hand + Off Hand.
           const labels = (lbl === "Main Hand" || lbl === "Off Hand") ? ["Main Hand", "Off Hand"] : [lbl];
-          const willPin = !state.pinned.has(lbl);
-          labels.forEach(L => { if (willPin) state.pinned.add(L); else state.pinned.delete(L); });
+          const willPin = !state.locked.has(LK.gear(lbl));
+          labels.forEach(L => { const k = LK.gear(L); if (willPin) state.locked.add(k); else state.locked.delete(k); });
+          syncLegacyLocks();
           renderGear();
           if (typeof persistAutosave === "function") persistAutosave();
           toast(willPin
@@ -14999,9 +15039,10 @@
         const artInfo = filled ? `<button class="chip-info" data-details-type="artifact" data-details-key="${_escAttr(v)}"${aIL ? ` data-details-il="${aIL}"` : ""} title="See artifact details">\u{1F50D}</button>` : "";
         // Slot-lock 🔒 — pin a filled artifact slot so the optimizer keeps
         // that exact artifact and builds the rest of the loadout around it.
-        // Mirrors the gear lock; stored in state.pinnedArtifacts (separate
-        // Set so gear's state.pinned optimizer contract stays gear-only).
-        const isPinned = !!(state.pinnedArtifacts && state.pinnedArtifacts.has(slot));
+        // Mirrors the gear lock; toggles "artifact:<slot>" in the unified
+        // state.locked store (derived to state.pinnedArtifacts, which the
+        // optimizer reads).
+        const isPinned = isLocked(LK.art(slot)) || !!(state.pinnedArtifacts && state.pinnedArtifacts.has && state.pinnedArtifacts.has(slot));
         const lockBtn = filled
           ? `<button class="gear-lock-btn${isPinned ? " on" : ""}" data-art-lock="${_escAttr(slot)}" title="${isPinned ? "Locked — the optimizer keeps this artifact and builds around it. Click to unlock." : "Lock this slot so the optimizer keeps this exact artifact and builds around it"}">${isPinned ? "🔒" : "🔓"}</button>`
           : "";
@@ -15042,7 +15083,7 @@
               if (item) state.artifactIL[slot] = (item.item_level != null ? item.item_level : null);
               else delete state.artifactIL[slot];
               // Clearing a slot drops any lock on it (nothing left to keep).
-              if (!item && state.pinnedArtifacts) state.pinnedArtifacts.delete(slot);
+              if (!item && (state.locked instanceof Set)) { state.locked.delete(LK.art(slot)); syncLegacyLocks(); }
               applyAutoTIL();
               recomputeAbilityTotals();
               renderAbilityGrid();
@@ -15060,9 +15101,11 @@
         el.addEventListener("click", (ev) => {
           ev.stopPropagation();
           const slot = el.dataset.artLock;
-          if (!(state.pinnedArtifacts instanceof Set)) state.pinnedArtifacts = new Set(state.pinnedArtifacts || []);
-          const willPin = !state.pinnedArtifacts.has(slot);
-          if (willPin) state.pinnedArtifacts.add(slot); else state.pinnedArtifacts.delete(slot);
+          if (!(state.locked instanceof Set)) state.locked = new Set(state.locked || []);
+          const key = LK.art(slot);
+          const willPin = !state.locked.has(key);
+          if (willPin) state.locked.add(key); else state.locked.delete(key);
+          syncLegacyLocks();
           renderArtifacts();
           if (typeof persistAutosave === "function") persistAutosave();
           toast(willPin
