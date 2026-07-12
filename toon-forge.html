@@ -16958,7 +16958,7 @@
           const info = ` <button class="chip-info" data-details-type="enchant" data-details-key="${_escAttr(v)}" data-details-slot="Companion" title="See enchant details">\u{1F50D}</button>`;
           const rankSel = `<select class="ench-rank-select" id="comp-enchant-rank" title="The rank you own (lower = not fully upgraded)" style="font-size:0.68rem;margin-top:0.2rem;width:100%;background:var(--bg-elev,#222);color:var(--text-secondary);border:1px solid var(--border);border-radius:4px;cursor:pointer;">`
             + ENCH_RANKS.map(r => `<option value="${r}"${r === rk ? " selected" : ""}>${r}</option>`).join("") + `</select>`;
-          setChipContent(enchantChip, "✨ " + enchDisplayName(v, rk) + info + rankSel, "+ Enchantment", "");
+          setChipContent(enchantChip, "✨ " + enchDisplayName(v, rk) + info + lockButtonHTML(LK.comp("enchant"), true) + rankSel, "+ Enchantment", "");
         } else {
           setChipContent(enchantChip, "", "+ Enchantment", "");
         }
@@ -16975,19 +16975,22 @@
             renderCompanions(); rerenderAll();
           });
         }
+        wireLockButtons(enchantChip, renderCompanions);
       }
       const enhChip = document.getElementById("comp-enh-chip");
       if (enhChip) {
         const v = state.summonedEnh;
-        const info = v ? ` <button class="chip-info" data-details-type="companion_enhancement" data-details-key="${_escAttr(v)}" title="See enhancement details">\u{1F50D}</button>` : "";
+        const info = v ? (` <button class="chip-info" data-details-type="companion_enhancement" data-details-key="${_escAttr(v)}" title="See enhancement details">\u{1F50D}</button>` + lockButtonHTML(LK.comp("enhancement"), true)) : "";
         setChipContent(enhChip, v ? "🔮 " + v : "", "+ Enhancement", info);
+        wireLockButtons(enhChip, renderCompanions);
       }
       ["Neck", "Waist", "Ring"].forEach(slot => {
         const el = document.querySelector(`[data-summoned-equip="${slot}"]`);
         if (!el) return;
         const v = state.summonedGear[slot];
-        const info = v ? ` <button class="chip-info" data-details-type="companion_gear" data-details-key="${_escAttr(v)}" title="See companion gear details">\u{1F50D}</button>` : "";
+        const info = v ? (` <button class="chip-info" data-details-type="companion_gear" data-details-key="${_escAttr(v)}" title="See companion gear details">\u{1F50D}</button>` + lockButtonHTML(LK.comp("gear:" + slot), true)) : "";
         setChipContent(el, v ? "💍 " + v : "", "+ Equipment", info);
+        wireLockButtons(el, renderCompanions);
       });
       // ---- Bottom: 6 even rows (Summoned + 5 typed actives) ----
       renderCompPickRows();
