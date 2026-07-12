@@ -16,6 +16,12 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   saved with your build and travel in share links.
 
 ### Bug Fixes
+- **Cleaned up duplicate Paladin weapons in the builder.** Oathbreaker's
+  Malevolence and Aegis of the Condemned each appeared several times in the
+  gear picker (stray "IL xxxx" and rarity-named copies, a couple with wrong
+  stats). They're now a single entry per weapon with a rank dropdown (3400
+  through 5250), matching how every other weapon works. Saved/shared builds
+  that used an old name are migrated automatically and keep their exact rank.
 - **Impending Doom set now gives Healers its Outgoing Healing (Warlock, Bard, Paladin).**
   The Impending Doom 2-piece Unleashed bonus grants Outgoing Healing to Healers,
   but only the DPS half was wired up, so a healer got nothing from Unleashed.
