@@ -3304,7 +3304,12 @@
     // labels, state.pinnedArtifacts = artifact slots) from it. To make a new
     // slot type lockable, add a case here and a matching check on the
     // optimizer's slot for that type.
-    const LK = { gear: function (l) { return 'gear:' + l; }, art: function (s) { return 'artifact:' + s; } };
+    const LK = {
+      gear: function (l) { return 'gear:' + l; },
+      art:  function (s) { return 'artifact:' + s; },
+      ench: function (s) { return 'enchant:' + s; },
+      comp: function (s) { return 'companion:' + s; }
+    };
     function isLocked(key) { return (state.locked instanceof Set) && state.locked.has(key); }
     function syncLegacyLocks() {
       if (!(state.locked instanceof Set)) state.locked = new Set(state.locked || []);
@@ -3315,9 +3320,40 @@
         const type = key.slice(0, i), slot = key.slice(i + 1);
         if (type === 'gear') g.add(slot);
         else if (type === 'artifact') a.add(slot);
+        // enchant:/companion:/… need no legacy set — the optimizer reads them
+        // straight from state.locked via each SLOT's lockKey (slotPinned).
       });
       state.pinned = g;
       state.pinnedArtifacts = a;
+    }
+    // Shared 🔒 for any lockable slot. lockButtonHTML renders the button (empty
+    // when the slot is empty); wireLockButtons(root, afterToggle) makes every
+    // [data-lock-key] under `root` toggle its key in state.locked. Used by
+    // enchant + companion slots; gear/artifact keep their own handlers (gear
+    // needs Main Hand + Off Hand weapon-pairing).
+    function lockButtonHTML(lockKey, filled) {
+      if (!filled) return "";
+      const on = isLocked(lockKey);
+      const tip = on
+        ? "Locked — the optimizer keeps this and builds around it. Click to unlock."
+        : "Lock this so the optimizer keeps it and builds the rest of the loadout around it";
+      return `<button class="gear-lock-btn${on ? " on" : ""}" data-lock-key="${_escAttr(lockKey)}" title="${_escAttr(tip)}">${on ? "🔒" : "🔓"}</button>`;
+    }
+    function wireLockButtons(root, afterToggle) {
+      if (!root) return;
+      root.querySelectorAll("[data-lock-key]").forEach(function (el) {
+        el.addEventListener("click", function (ev) {
+          ev.stopPropagation();
+          const key = el.dataset.lockKey;
+          if (!(state.locked instanceof Set)) state.locked = new Set(state.locked || []);
+          const willPin = !state.locked.has(key);
+          if (willPin) state.locked.add(key); else state.locked.delete(key);
+          syncLegacyLocks();
+          if (typeof persistAutosave === "function") persistAutosave();
+          if (typeof afterToggle === "function") afterToggle();
+          toast(willPin ? "🔒 Locked — the optimizer will build around it" : "🔓 Unlocked");
+        });
+      });
     }
 
     function serializeBuild(name) {
@@ -14784,7 +14820,7 @@
         }
         const shownName = filled ? enchDisplayName(name, cur) : "+ pick";
         return `<div class="ench-chip ${filled?"filled":""}" data-ench-type="${slotType}"${idx!==undefined?` data-ench-idx="${idx}"`:""}>
-          <div class="ench-chip-label">${slotType[0].toUpperCase()+slotType.slice(1)}${idx!==undefined?` ${idx+1}`:""}</div>
+          <div class="ench-chip-label">${slotType[0].toUpperCase()+slotType.slice(1)}${idx!==undefined?` ${idx+1}`:""}${lockButtonHTML(LK.ench(slotLabel), filled)}</div>
           <div class="ench-chip-name">${shownName}${info}</div>
           ${rankSel}
         </div>`;
@@ -14840,6 +14876,9 @@
           });
         });
       });
+      // 🔒 lock buttons on filled enchant chips (stopPropagation keeps the
+      // picker from opening). Re-render on toggle so the glyph flips.
+      [off, def, oth].forEach(grid => wireLockButtons(grid, renderEnchantments));
     }
 
     function renderOverloads() {
@@ -16996,6 +17035,7 @@
                style="flex:1;">
             ${text}
             ${infoBtn}
+            ${lockButtonHTML(LK.comp(r.type === "summoned" ? "summoned" : "active:" + r.idx), filled)}
           </div>
           <select class="comp-rarity-mini" data-rarity-row="${r.type}"${r.idx !== undefined ? ` data-idx="${r.idx}"` : ""}
                   style="font-size:0.78rem;padding:0.3rem 0.4rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
@@ -17004,6 +17044,10 @@
         </div>`;
       }
       wrap.innerHTML = html;
+
+      // 🔒 lock buttons on filled companion rows (summoned + active bonds).
+      // stopPropagation keeps the pick dialog from opening; re-render on toggle.
+      wireLockButtons(wrap, renderCompanions);
 
       // Bulk rarity: apply the chosen tier to the summoned + all 5 active slots
       // in one click, then re-render so every per-slot dropdown + the engine
