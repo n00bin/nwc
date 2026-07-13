@@ -5,8 +5,10 @@
 -- what the community ACTUALLY runs.
 --
 -- HOW: for every UNLOCKED bucket (class+paragon+role with >= 5 shared builds —
--- the same k-anonymity floor as meta_counts), rank that bucket's companions
--- (the summoned comp + the 5 active-comp slots) by usage and take its TOP 5.
+-- the same k-anonymity floor as meta_counts), rank that bucket's SUMMONED
+-- companions by usage and take its TOP 5. (Only the summoned comp — NOT the
+-- active-comp slots — because the summoned comp is what an ally brings to the
+-- party; this matches the "Top 5 summoned" the community-meta page shows.)
 -- Then aggregate those per-bucket top-5 lists across every unlocked paragon:
 -- a comp is ranked first by BREADTH (how many paragons' top-5 it appears in),
 -- then by TOTAL usage. This makes the result a cross-paragon "what everyone
@@ -31,20 +33,16 @@ as $$
     having count(*) >= 5
   ),
   picks as (
-    -- one row per companion pick (summoned + each active slot), tagged by bucket
-    select u.class, u.paragon, u.role, c.name
+    -- one row per SUMMONED companion pick, tagged by bucket (summoned only)
+    select u.class, u.paragon, u.role, (sb.build->'s'->>'summoned') as name
     from public.shared_builds sb
     join unlocked u
       on u.class = sb.class
      and u.paragon = sb.paragon
      and u.role = lower(coalesce(sb.role, ''))
-    cross join lateral (
-      select (sb.build->'s'->>'summoned') as name
-      union all
-      select val
-      from jsonb_array_elements_text(coalesce(sb.build->'s'->'activeComps', '[]'::jsonb)) as val
-    ) c
-    where sb.build_hash is not null and c.name is not null and c.name <> ''
+    where sb.build_hash is not null
+      and (sb.build->'s'->>'summoned') is not null
+      and (sb.build->'s'->>'summoned') <> ''
   ),
   per_bucket as (
     select class, paragon, role, name, count(*)::int as cnt,
