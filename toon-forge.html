@@ -16327,8 +16327,10 @@
       const toggleList = [...alwaysOnList, ...noneToggles]
         .sort((a,b) => a.name.localeCompare(b.name));
       if (toggleList.length) {
-        html += `<div class="boon-tier" style="margin-top:0.8rem;">
-          <div class="boon-tier-header">Always-on <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(passive · uncheck if not applicable)</span></div>`;
+        // Full-width header, then the toggles flow as normal 2-col grid cells
+        // (NOT one tall wrapped block — a tall block pairs with a short picker
+        // card in the grid and leaves a big empty gap beneath it).
+        html += `<div class="boon-tier-header" style="grid-column:1/-1;margin-top:0.8rem;">Always-on <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(passive · uncheck if not applicable)</span></div>`;
         for (const b of toggleList) {
           const on = state.buffs.has(b.name);
           const desc = describeBuff(b);
@@ -16340,7 +16342,6 @@
             <div class="boon-counter"><span style="font-size:0.75rem;color:${on?'var(--gold)':'var(--text-dim)'};">${on?'✓ on':'+ add'}</span></div>
           </div>`;
         }
-        html += `</div>`;
       }
 
       // Party Buffs — content-type selector + ally companion slot pickers
