@@ -6,6 +6,6 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of July 12, 2026
 
-(Last published July 12, 2026: "Community-Meta Comp Fill, Artifact Locking & a Stack of Verified Fixes")
+(Last published July 13, 2026: "Wizard Spell-Mastery Slot, the Full Cleric Weapon Set & a Clothing-Slot Overhaul")
 
 _No unpublished entries yet._

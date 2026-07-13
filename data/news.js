@@ -1,6 +1,26 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "July 13, 2026",
+    title: "Wizard Spell-Mastery Slot, the Full Cleric Weapon Set & a Clothing-Slot Overhaul",
+    tags: ["Feature", "Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li><strong>Wizards now have a 4th encounter slot.</strong> Toon Forge gives Wizards their in-game <strong>Spell Mastery</strong> slot &#8212; a 4th encounter power slot (labeled &quot;Mastery&quot;) that no other class gets. Every other class keeps the standard 3. It saves and loads with your build like the other three.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Cleric Impending Doom weapons &#8212; now complete at every rank.</strong> The Warden of the Last Rite and Sigil of the Abyss now carry the correct 2-piece set bonus, verified from in-game screenshots at all five ranks (IL 3,750&#8211;5,250): the always-on Forte and Critical Strike, plus the Unleashed charge bonus (Base Damage Boost for DPS, Power for Healers). The main hand previously had no set bonus at all and the off-hand had one carried over from another class. Their base stats are now exact per rank, too. Cleric was the last of the nine classes to finish this set.</li>" +
+      "<li><strong>Bloodwoven clothing (Doomvault Remains) &#8212; shirt/pants slots corrected.</strong> Reconciled all 12 Bloodwoven variants against in-game screenshots. The Charged At-Will piece is now a shirt (this also resolved a reported &quot;missing Bloodwoven Sigils shirt&quot;), and the Medic's Haste and Skirmisher's Zeal pieces are now pants. Removed two duplicate entries and fixed the Symbols pants Forte value.</li>" +
+      "<li><strong>Soul Harvest Conduit clothing (Mystic &amp; Arcane) &#8212; fully reconciled.</strong> Checked all 24 Mystic and Arcane Conduit shirt/pants variants against in-game screenshots: fixed several swapped shirt/pants slots (including a reported &quot;missing Mystic Conduit Seal pants&quot;), corrected two stat values, and removed 10 duplicate entries left over from earlier imports.</li>" +
+      "<li><strong>Runefrost Skirmisher's Breastplate &#8212; Ruthless Advantage corrected.</strong> Verified from an in-game screenshot: the bonus is 1.2% Accuracy and Combat Advantage per stack (6% at max 5 stacks), triggered when you hit above 10% of your Maximum Hit Points. Our data had it at half that value with the wrong trigger threshold.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li><strong>Dashing Warrior's Breastplate added.</strong> A Barbarian / Fighter / Paladin Armor piece from the Dashing Vest Choice Pack (IL 1,950 &#8212; Defense 1,462 / Awareness 1,462, with the Warden's Defense equip bonus). Contributed via a community report and screenshot-verified.</li>" +
+      "</ul>"
+  },
+  {
     date: "July 12, 2026",
     title: "Community-Meta Comp Fill, Artifact Locking & a Stack of Verified Fixes",
     tags: ["Feature", "Fix", "Data"],
