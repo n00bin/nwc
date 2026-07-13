@@ -16392,7 +16392,7 @@
           <div class="boon-row" style="cursor:default;">
             <div class="boon-row-info">
               <div class="boon-row-name">Assume support party</div>
-              <div class="boon-row-effect">Apply your allies' support-companion buffs (and ally mount auras) to your build <strong>and the optimizer</strong>. Off by default &mdash; turn on when your group brings support comps. <button id="party-fill-standard" type="button" style="margin-left:0.3rem;font-size:0.7rem;padding:0.1rem 0.45rem;background:var(--elevated);color:var(--gold);border:1px solid var(--border);border-radius:4px;cursor:pointer;">Fill standard set</button></div>
+              <div class="boon-row-effect">Turn on to slot your allies' support companions and their mount auras, applying their party buffs to your build. Off by default &mdash; turn on when your group brings support comps. <button id="party-fill-standard" type="button" style="margin-left:0.3rem;font-size:0.7rem;padding:0.1rem 0.45rem;background:var(--elevated);color:var(--gold);border:1px solid var(--border);border-radius:4px;cursor:pointer;">Fill standard set</button></div>
             </div>
             <div class="boon-counter">
               <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.8rem;cursor:pointer;">
@@ -16575,27 +16575,65 @@
           renderBuffs(); rerenderAll();
         });
       }
-      // "Fill standard set" — load the canonical support comps (all editable
-      // afterward) into the first open ally slots and turn the toggle on.
+      // "Fill standard set" — a quick convenience fill: drop the top comps from
+      // the LIVE community meta (meta_top_comps RPC — the cross-paragon
+      // aggregate of what players actually run) straight into the open ally
+      // slots. No hardcoded list, no scoring, no filtering — it self-updates as
+      // builds are shared. Users tweak or ignore the picks; smart, stat-aware
+      // selection is the optimizer's job, not this free helper.
       const fillStdEl = el.querySelector("#party-fill-standard");
       if (fillStdEl) {
-        fillStdEl.addEventListener("click", (ev) => {
+        fillStdEl.addEventListener("click", async (ev) => {
           ev.stopPropagation();
-          const STANDARD_SUPPORT = ["Tutor", "Flapjack", "Portobello DaVinci"];
-          if (!Array.isArray(state.partyAllies)) state.partyAllies = [];
-          let added = 0;
-          for (const nm of STANDARD_SUPPORT) {
-            if (!findCompanionByName(nm)) continue;          // not in data → skip
-            if (state.partyAllies.includes(nm)) continue;    // already slotted
-            if (nm === state.summoned) continue;             // your own summon — wouldn't stack
-            const open = state.partyAllies.findIndex(x => !x);
-            if (open === -1) { toast("All ally slots are full."); break; }
-            state.partyAllies[open] = nm;
-            added++;
+          if (fillStdEl.dataset.busy === "1") return;
+          const origText = fillStdEl.textContent;
+          fillStdEl.dataset.busy = "1";
+          fillStdEl.disabled = true;
+          fillStdEl.textContent = "Loading meta…";
+          try {
+            if (!window.supabase) { toast("Community meta unavailable — offline."); return; }
+            const sb = window.supabase.createClient(
+              "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+              "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+            );
+            const res = await sb.rpc("meta_top_comps", {});
+            const payload = res && res.data;
+            const ranked = (payload && Array.isArray(payload.comps)) ? payload.comps : [];
+            if (!payload || (payload.unlocked_buckets || 0) === 0 || ranked.length === 0) {
+              toast("Community meta is still gathering builds — no paragon unlocked yet. Share builds to seed it.");
+              return;
+            }
+            // Just drop the top meta comps into open slots. The only skips are
+            // structural (the section can't hold a duplicate, and a copy of your
+            // own summon wouldn't stack) — not smart filtering.
+            if (!Array.isArray(state.partyAllies)) state.partyAllies = [];
+            const already = new Set(state.partyAllies.filter(x => x));
+            let added = 0;
+            for (const row of ranked) {
+              const name = row && row.name;
+              if (!name) continue;
+              const open = state.partyAllies.findIndex(x => !x);
+              if (open === -1) break;                          // every slot filled
+              if (name === state.summoned) continue;           // your own summon — wouldn't stack
+              if (already.has(name)) continue;                 // no duplicates in this section
+              state.partyAllies[open] = name;
+              already.add(name);
+              added++;
+            }
+            state.assumeSupportParty = true;                   // filling implies you want it on
+            renderBuffs(); rerenderAll();
+            const nb = payload.unlocked_buckets || 0;
+            toast(added
+              ? `Filled ${added} comp${added === 1 ? "" : "s"} from the community meta (${nb} paragon${nb === 1 ? "" : "s"} unlocked).`
+              : "Ally slots already full — clear one to add a meta comp.");
+          } catch (err) {
+            console.warn("meta_top_comps fill failed:", err);
+            toast("Couldn't reach the community meta — try again.");
+          } finally {
+            fillStdEl.dataset.busy = "0";
+            fillStdEl.textContent = origText;
+            fillStdEl.disabled = false;
           }
-          state.assumeSupportParty = true;                   // filling implies you want it on
-          renderBuffs(); rerenderAll();
-          toast(added ? `Loaded standard support comps (${added}).` : "Standard comps already slotted — toggle is on.");
         });
       }
       // Per-slot ally mount equip power picker

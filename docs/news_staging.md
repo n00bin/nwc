@@ -9,6 +9,14 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 (Last published July 10, 2026: "Mount Powers Go Full Celestial — Exact to the Point, with a One-Tap Tier Toggle")
 
 ### New Features
+- **"Fill standard set" now pulls from the live Community Meta.** In Toon Forge's
+  Party Buffs section, the Fill button populates your ally companion slots from
+  the community meta — the cross-paragon aggregate of the companions players
+  actually run (built from shared builds, ranked by how broadly each comp shows
+  up across paragons) — instead of a fixed list. It self-updates as more builds
+  come in and works off any unlocked paragon. It's a quick convenience fill you
+  can tweak or ignore; smart, stat-aware selection stays with the optimizer. The
+  "Assume support party" toggle wording was also cleaned up.
 - **Lock your artifacts, not just your gear.** The 🔒 lock now appears on
   filled artifact slots too. Lock an artifact and the optimizer keeps that
   exact piece and builds the rest of your loadout around it — the missing
@@ -16,6 +24,19 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   saved with your build and travel in share links.
 
 ### Bug Fixes
+- **Your own summoned companion's buff now counts when it grants two stats.**
+  Companions whose summoned bonus buffs *two* stats at once — like Portobello
+  DaVinci (+3.5% Power and +3.5% Combat Advantage in a full party) — were being
+  silently dropped from your own sheet (ally-slotted copies worked fine, only
+  your own summon was affected). They now apply correctly. If you run Portobello
+  as your summon, your Combat Advantage and Power just picked up their real
+  values — which matters most on a capped build, where that hidden headroom
+  decides whether a gear swap stays over the cap.
+- **Party ally slots now match real party size.** A 5-man dungeon shows **4**
+  ally companion/mount slots and a 10-man trial shows **9** — party size minus
+  you, since you bring your own summon rather than an ally slot. It previously
+  offered one too many (5 and 10). The content dropdown now reads "5-man" /
+  "10-man" to make the distinction clear.
 - **Cleaned up duplicate Paladin weapons in the builder.** Oathbreaker's
   Malevolence and Aegis of the Condemned each appeared several times in the
   gear picker (stray "IL xxxx" and rarity-named copies, a couple with wrong
