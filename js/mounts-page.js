@@ -1058,8 +1058,10 @@
       var rankLabel = COLLAR_RANK_LABEL[row.rank] || "—";
       var rankClass = COLLAR_RANK_CLASS[row.rank] || "";
       var pctText = row.pct == null ? "—" : (row.pct + "%");
+      var colIconFile = window.COLLAR_IMAGES && window.COLLAR_IMAGES[row.category];
+      var colIcon = colIconFile ? '<img loading="lazy" class="list-icon" src="images/collars/' + colIconFile + '" alt="" style="vertical-align:middle;margin-right:0.35rem;">' : "";
       html += '<tr>';
-      html += '<td>' + escapeHtml(row.category) + '</td>';
+      html += '<td style="white-space:nowrap;">' + colIcon + escapeHtml(row.category) + '</td>';
       html += '<td><span class="badge badge-' + escapeHtml(slotLower) + '" style="font-size:0.7rem;padding:0.15rem 0.55rem;">' + escapeHtml(row.slot) + '</span></td>';
       html += '<td>' + escapeHtml(row.bonusText) + '</td>';
       html += '<td><span class="collar-rank collar-rank-' + rankClass + '">' + escapeHtml(rankLabel) + '</span></td>';
@@ -1183,8 +1185,11 @@
     for (var ri = 0; ri < rows.length; ri++) {
       var r = rows[ri];
       var tierClass = INSIGNIA_TIER_CLASS[r.tier] || "";
+      var insIconFile = window.INSIGNIA_IMAGES && r.categories && r.categories.length
+        && window.INSIGNIA_IMAGES[r.categories[0] + " Insignia of " + r.template];
+      var insIcon = insIconFile ? '<img loading="lazy" class="list-icon" src="images/insignias/' + insIconFile + '" alt="" style="vertical-align:middle;margin-right:0.35rem;">' : "";
       html += "<tr>";
-      html += "<td>" + escapeHtml(r.template) + "</td>";
+      html += '<td style="white-space:nowrap;">' + insIcon + escapeHtml(r.template) + "</td>";
       html += '<td><span class="' + tierClass + '" style="font-weight:600;">' + r.tier + "</span></td>";
       html += "<td>" + r.item_level + "</td>";
       // Stats column
