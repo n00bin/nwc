@@ -16441,18 +16441,6 @@
         }
         if (partyBuffCompanions.length) {
           html += `<div style="margin-top:0.4rem;font-size:0.78rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;">Ally summoned companions</div>`;
-          // Aggregate combat-only effects from the slotted allies (CA grants
-          // raise flank uptime; enemy "takes +dmg" debuffs boost damage).
-          const pmods = getPartySummonedCombatMods();
-          const aggBits = [];
-          if (pmods.caUnion > 0) aggBits.push(`effective Combat Advantage uptime +${Math.round(pmods.caUnion * 100)}% (${pmods.caGrants.map(g => g.name).join(", ")})`);
-          if (pmods.dmgTaken > 0) aggBits.push(`enemy takes +${(pmods.dmgTaken * 100).toFixed(1)}% damage (${pmods.dmgSources.map(s => s.name).join(", ")})`);
-          if (aggBits.length) {
-            html += `<div style="font-size:0.72rem;color:var(--gold);margin:0.15rem 0 0.2rem;">⚔ Applied to your damage sim: ${aggBits.join(" · ")}</div>`;
-          }
-          if (pmods.info.length) {
-            html += `<div style="font-size:0.7rem;color:var(--text-dim);margin-bottom:0.2rem;">ⓘ Reference-only (no effect on your numbers): ${pmods.info.map(x => x.name).join(", ")}</div>`;
-          }
           for (let i = 0; i < slotCount; i++) {
             const picked = state.partyAllies[i] || "";
             // Old share links can carry the summoned companion in an ally
