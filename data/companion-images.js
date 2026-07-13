@@ -263,5 +263,6 @@ window.COMPANION_IMAGES = {
   "Yojimbo": "yojimbo (2).webp",
   "Zariel": "zariel.webp",
   "Zariel the Redeemed": "zariel-the-redeemed.webp",
-  "Zhentarim Warlock": "zhentarim-warlock (2).webp"
+  "Zhentarim Warlock": "zhentarim-warlock (2).webp",
+  "Blacksmith": "blacksmith.webp",
 };

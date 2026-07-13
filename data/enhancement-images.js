@@ -27,5 +27,6 @@ window.ENHANCEMENT_IMAGES = {
   "Mobility": "mobility.webp",
   "Precision Breaker": "precision_breaker.webp",
   "Slowed Reactions": "slowed_reactions.webp",
-  "Unflinching Will": "unflinching_will.webp"
+  "Unflinching Will": "unflinching_will.webp",
+  "Keen Eyes": "keen-eyes.webp",
 };
