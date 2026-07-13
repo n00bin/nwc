@@ -16376,8 +16376,10 @@
           scopeTag[c.name] = d.scopeLabel;
         }
         const taken = new Set(state.partyAllies.filter(x => x));
-        html += `<div class="boon-tier" style="margin-top:0.8rem;">
+        html += `<div class="boon-tier" style="grid-column:1/-1;margin-top:0.8rem;">
           <div class="boon-tier-header">Party Buffs <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(allies' summoned companions buff your build)</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;align-items:start;">
+          <div>
           <div class="boon-row" style="cursor:default;">
             <div class="boon-row-info">
               <div class="boon-row-name">Content type</div>
@@ -16425,7 +16427,9 @@
                 <span>${state.groupEquipStacks !== false ? "On" : "Off"}</span>
               </label>
             </div>
-          </div>`;
+          </div>
+          </div>
+          <div>`;
         // Companion slot subsection
         const SCOPE_COLOR = { Party: "#4caf50", Self: "#42a5f5", "Enemy Debuff": "#ef5350", Mixed: "#ffb300" };
         const scopeTagHtml = (name) => {
@@ -16487,6 +16491,8 @@
         }
 
         html += `</div>`;        // close the "Assume support party" dim-wrapper
+        html += `</div>`;        // close the right column (ally slots)
+        html += `</div>`;        // close the settings|allies 2-col grid
         html += `</div>`;        // close the boon-tier
       }
 
