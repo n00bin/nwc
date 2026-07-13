@@ -3040,6 +3040,7 @@
   <script src="data/artifacts.js"></script>
   <script src="data/companion-gear.js"></script>
   <script src="data/enchants.js"></script>
+  <script src="data/enchant-images.js"></script>
   <script src="data/overloads.js"></script>
   <script src="data/kits.js"></script>
   <script src="data/general-feats.js"></script>
@@ -14876,9 +14877,12 @@
             + `</select>`;
         }
         const shownName = filled ? enchDisplayName(name, cur) : "+ pick";
+        const enchIcon = (filled && window.ENCHANT_IMAGES && window.ENCHANT_IMAGES[name])
+          ? `<img loading="lazy" src="images/enchants/${window.ENCHANT_IMAGES[name]}" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:0.25rem;">`
+          : "";
         return `<div class="ench-chip ${filled?"filled":""}" data-ench-type="${slotType}"${idx!==undefined?` data-ench-idx="${idx}"`:""}>
           <div class="ench-chip-label">${slotType[0].toUpperCase()+slotType.slice(1)}${idx!==undefined?` ${idx+1}`:""}${lockButtonHTML(LK.ench(slotLabel), filled)}</div>
-          <div class="ench-chip-name">${shownName}${info}</div>
+          <div class="ench-chip-name">${enchIcon}${shownName}${info}</div>
           ${rankSel}
         </div>`;
       }

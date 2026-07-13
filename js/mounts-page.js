@@ -515,7 +515,8 @@
     html += '<div class="section-header">Combat Power</div>';
     if (cp) {
       html += '<div class="proc-block">';
-      html += '<div class="detail-name">' + escapeHtml(cp.name) + "</div>";
+      var cpImg = window.MOUNT_POWER_IMAGES && window.MOUNT_POWER_IMAGES[cp.name];
+      html += '<div class="detail-name" style="display:flex;align-items:center;gap:0.4rem;">' + (cpImg ? '<img loading="lazy" class="list-icon" src="images/mount-powers/' + cpImg + '" alt="">' : '') + escapeHtml(cp.name) + "</div>";
       html += '<div class="detail-meta">';
       html += "<span>IL " + formatNumber(cp.item_level) + "</span>";
       if (cp.magnitude) html += "<span>Magnitude " + formatNumber(cp.magnitude) + "</span>";
@@ -539,7 +540,8 @@
     html += '<div class="section-header">Equip Power</div>';
     if (ep) {
       html += '<div class="proc-block">';
-      html += '<div class="detail-name">' + escapeHtml(ep.name) + "</div>";
+      var epImg = window.MOUNT_POWER_IMAGES && window.MOUNT_POWER_IMAGES[ep.name];
+      html += '<div class="detail-name" style="display:flex;align-items:center;gap:0.4rem;">' + (epImg ? '<img loading="lazy" class="list-icon" src="images/mount-powers/' + epImg + '" alt="">' : '') + escapeHtml(ep.name) + "</div>";
       html += '<div class="detail-meta">';
       html += "<span>IL " + formatNumber(ep.item_level) + "</span>";
       html += "<span>Combined Rating " + formatNumber(ep.combinedRating) + "</span>";
