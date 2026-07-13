@@ -1,6 +1,31 @@
 // Site news entries — newest first
 var NEWS_DATA = [
   {
+    date: "July 12, 2026",
+    title: "Community-Meta Comp Fill, Artifact Locking & a Stack of Verified Fixes",
+    tags: ["Feature", "Fix", "Data"],
+    body: "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-feature'>Feature</span></div>" +
+      "<ul>" +
+      "<li><strong>&quot;Fill&quot; now pulls from the live Community Meta.</strong> In Toon Forge's Party Buffs section, the Fill button populates your ally companion slots from the <strong>community meta</strong> &#8212; the cross-paragon aggregate of the summoned companions players actually run, built from anonymously shared builds and ranked by how broadly each comp shows up across paragons. It self-updates as more builds come in and works off any unlocked paragon, even if your own is still gathering. It's a quick convenience fill you can tweak or ignore &#8212; smart, stat-aware selection stays with the optimizer. The &quot;Assume support party&quot; toggle wording was cleaned up too.</li>" +
+      "<li><strong>Lock your artifacts, not just your gear.</strong> The &#128274; lock now appears on filled artifact slots. Lock an artifact and the optimizer keeps that exact piece and builds the rest of your loadout around it &#8212; the missing piece for pinning a Neck + Waist + Artifact set like Vistani. Locks are saved with your build and travel in share links.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-fix'>Fix</span></div>" +
+      "<ul>" +
+      "<li><strong>Your own summoned companion's buff now counts when it grants two stats.</strong> Companions whose summoned bonus buffs <em>two</em> stats at once &#8212; like Portobello DaVinci (+3.5% Power and +3.5% Combat Advantage in a full party) &#8212; were being silently dropped from your own sheet (ally-slotted copies worked fine; only your own summon was affected). They now apply correctly. On a capped build that hidden headroom can decide whether a gear swap stays over the cap.</li>" +
+      "<li><strong>Party ally slots now match real party size.</strong> A 5-man dungeon shows <strong>4</strong> ally companion/mount slots and a 10-man trial shows <strong>9</strong> &#8212; party size minus you, since you bring your own summon rather than an ally slot. It previously offered one too many (5 and 10). The content dropdown now reads &quot;5-man&quot; / &quot;10-man&quot;.</li>" +
+      "<li><strong>Impending Doom set now gives Healers its Outgoing Healing (Warlock, Bard, Paladin).</strong> The 2-piece Unleashed bonus grants Outgoing Healing to Healers, but only the DPS half was wired up. All ranks (IL 3,750&#8211;5,250) now credit the matching Outgoing Healing (+3% to +5%) in the Healer role &#8212; Warlock (Omen of Doom + Codex of Eternal Chains), Bard (Dirgeblade + Strings of the Forsaken), and Paladin (Oathbreaker's Malevolence + Aegis of the Condemned). Shown on the Outgoing Healing row with in-combat bonuses on (Unleashed is a charge state, so it's conditional).</li>" +
+      "<li><strong>Summoned companion Combined Rating now uses the summoned slot's rarity.</strong> When a build set the bulk companion rarity differently from the summoned companion (e.g. bulk Mythic but Drizzt summoned at Celestial), the summoned base-item-level Combined Rating was read at the wrong rarity and under-credited ~1,683 rating to <em>every</em> stat (~1.5% low across the whole sheet). Now reads the summoned rarity, matching the in-game sheet to within a point.</li>" +
+      "<li><strong>Swift Synergy combat enchant no longer counts its stacks at rest.</strong> Celestial Swift Synergy's Combat Advantage and Critical Severity come from Preparation stacks that build as you attack and drop out of combat, so they now show only behind the conditional toggle (its always-on +12% damage is unchanged).</li>" +
+      "<li><strong>Combat-proc gear bonuses no longer inflate the out-of-combat panel (fleet-wide sweep).</strong> Audited every equip bonus in the gear database and fixed 220 combat procs (across 69 set families &#8212; Unleashed, the Challenger's / Survivor's-adjacent stacking lines, Daily/Encounter-triggered buffs, etc.) that were missing the &quot;conditional&quot; flag and counted as always-on at rest. They now show only with &quot;Hide in-combat bonuses&quot; unchecked.</li>" +
+      "<li><strong>Malignant Energy (Ritualistic set) now sits behind the conditional toggle.</strong> Its &#177;2.5% damage only fires when you use a Daily power but was counted as always-on. Now correctly gated. <em>Tactical Daily</em> keeps its +5% Combat Advantage always-on &#8212; only its encounter-damage bonus is Daily-triggered.</li>" +
+      "</ul>" +
+      "<div style='margin-top:0.5rem;'><span class='news-tag news-tag-data'>Data</span></div>" +
+      "<ul>" +
+      "<li><strong>Vistani set data corrected &#8212; it's a 3-piece Neck + Waist + Artifact set.</strong> The Vistani Pendant (Neck) and Vistani Raiments (Waist) had wrong stats and were carrying the Vistani <em>weapon</em> set's 2-piece bonus, and the Tarokka Deck artifact was tagged with a mismatched set name so it never counted. Now fixed from in-game tooltips: Pendant (Accuracy 400 / Combat Advantage 400 / Critical Avoidance 401, +4 CON), Raiments (Critical Strike 600 / Combat Advantage 600, +2 STR +2 DEX), and the Tarokka Deck completes the set (Vistani 3/3 &#8212; a single-target AoE takes +5% damage for 5s).</li>" +
+      "<li><strong>Cleaned up duplicate Paladin weapons in the builder.</strong> Oathbreaker's Malevolence and Aegis of the Condemned each appeared several times in the gear picker (stray &quot;IL xxxx&quot; and rarity-named copies, a couple with wrong stats). They're now a single entry per weapon with a rank dropdown (3,400&#8211;5,250), matching every other weapon. Saved/shared builds that used an old name are migrated automatically and keep their exact rank.</li>" +
+      "</ul>"
+  },
+  {
     date: "July 10, 2026",
     title: "Mount Powers Go Full Celestial — Exact to the Point, with a One-Tap Tier Toggle",
     tags: ["Feature", "Fix", "Data"],
