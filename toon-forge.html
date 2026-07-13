@@ -3553,8 +3553,9 @@
       while (_aw.length < 2) _aw.push("");
       state.slottedAtWills = _aw;
       // Pad encounter slot array to exactly 3 entries.
-      const _enc = Array.isArray(s.slottedEncounters) ? s.slottedEncounters.slice(0, 3) : [];
-      while (_enc.length < 3) _enc.push("");
+      const _encN = encounterSlotCount(s.class);
+      const _enc = Array.isArray(s.slottedEncounters) ? s.slottedEncounters.slice(0, _encN) : [];
+      while (_enc.length < _encN) _enc.push("");
       state.slottedEncounters = _enc;
       // Pad daily slot array to exactly 2 entries.
       const _dly = Array.isArray(s.slottedDailies) ? s.slottedDailies.slice(0, 2) : [];
@@ -13420,6 +13421,12 @@
       const it = (typeof findGearByName === "function") ? findGearByName(nm, slotLabel, (s.gearIL || {})[slotLabel]) : null;
       return !(it && it.artifactWeapon === false);
     }
+    // Encounter hotbar slot count. Wizards get a 4th slot (Spell Mastery —
+    // the mastered encounter); every other class has the standard 3.
+    function encounterSlotCount(cls) {
+      const c = (cls != null) ? cls : (typeof state !== "undefined" ? state.class : "");
+      return c === "Wizard" ? 4 : 3;
+    }
     const GEAR_SLOTS = [
       // Column 1 (combat / armor)
       { label: "Head",      slot: "Head"      },
@@ -15608,12 +15615,15 @@
       }
 
       if (encPool.length) {
+        const encCount = encounterSlotCount();
         const encSlots = (state.slottedEncounters || []).slice();
-        while (encSlots.length < 3) encSlots.push("");
+        while (encSlots.length < encCount) encSlots.push("");
         const lookupRangerEncPair = (id) => encPool.find(p => p.pairId === id) || null;
-        out.push('<div class="field" style="margin-top:0.8rem;"><label>Encounters <span style="color:var(--text-dim);font-weight:400;">(3 hotbar slots · click to pick' + (state.class === "Ranger" ? " · each slot is a ranged/melee pair, swap via stance" : "") + ')</span></label>');
-        out.push('<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:0.5rem;">');
-        for (let i = 0; i < 3; i++) {
+        const encNote = state.class === "Ranger" ? " · each slot is a ranged/melee pair, swap via stance"
+          : (state.class === "Wizard" ? " · slot 4 is Spell Mastery" : "");
+        out.push('<div class="field" style="margin-top:0.8rem;"><label>Encounters <span style="color:var(--text-dim);font-weight:400;">(' + encCount + ' hotbar slots · click to pick' + encNote + ')</span></label>');
+        out.push('<div style="display:grid;grid-template-columns:repeat(' + encCount + ', 1fr);gap:0.5rem;">');
+        for (let i = 0; i < encCount; i++) {
           const name = encSlots[i] || "";
           const filled = !!name;
           let label;
@@ -15632,7 +15642,7 @@
           }
           out.push(
             '<div class="slot ' + (filled ? "filled" : "") + '">' +
-              '<div class="slot-label">Slot ' + (i + 1) + '</div>' +
+              '<div class="slot-label">' + (state.class === "Wizard" && i === 3 ? "Mastery" : ("Slot " + (i + 1))) + '</div>' +
               '<div class="gear-pick-chip' + (filled ? " filled" : "") + (filled && state.class === "Ranger" ? " pair-chip" : "") + '" data-enc-pick="' + i + '" title="' + (filled ? escAttr(name) : 'Click to pick an encounter') + '">' +
                 label +
               '</div>' +
@@ -15948,7 +15958,7 @@
             allowNone: true,
             onPick: (item) => {
               const arr = (state.slottedEncounters || []).slice();
-              while (arr.length < 3) arr.push("");
+              while (arr.length < encounterSlotCount()) arr.push("");
               const stored = !item ? "" : (item.pairId || item.name);
               arr[idx] = stored;
               state.slottedEncounters = arr;
