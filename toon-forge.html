@@ -3221,7 +3221,7 @@
       // trial — user picks content type, then which companion is in
       // each slot. Companions can repeat in-game but each unique buff
       // only stacks once, so duplicates are not allowed in the picker.
-      partyContent: "dungeon",                  // "dungeon" (5 slots) | "trial" (10 slots)
+      partyContent: "dungeon",                  // "dungeon" (4 ally slots) | "trial" (9 ally slots)
       partyAllies: ["","","","",""],            // ally companion per slot, "" = empty
       partyMountAllies: ["","","","",""],       // ally mount equip power per slot, "" = empty
       // (removed) partyVipRank3 — was declared but never read, rendered, or
@@ -11915,15 +11915,37 @@
       const compRarityForBase = s.summonedRarity || s.companionRarity || "Mythic";
       const compRarityIL = COMPANION_RARITY_IL[compRarityForBase] || COMPANION_RARITY_IL.Mythic;
 
-      if (summonedComp && summonedComp.summonedBuff && summonedComp.summonedBuff.stat) {
+      if (summonedComp && summonedComp.summonedBuff) {
         const sb = summonedComp.summonedBuff;
-        // value is a percent by default; type/kind "rating" or "flat" (pool
-        // amounts, e.g. Max HP) both ride the non-percent channel
-        const channel = (sb.type === "rating" || sb.kind === "rating" || sb.type === "flat" || sb.kind === "flat") ? "ratingStats" : "percentStats";
-        buffs.push({
-          source: "Summoned: " + summonedComp.name,
-          [channel]: { [sb.stat]: sb.value || 0 }
-        });
+        // Own summoned companion's buff. Handles the legacy single-stat shape
+        // (.stat/.value) AND multi-stat shapes (.effects[] or .stats{}). The
+        // multi-stat branches mirror the ally-buff path below so a two-stat
+        // own-summon buff (e.g. Portobello DaVinci's +3.5% Power AND +3.5%
+        // Combat Advantage) is no longer silently dropped. Party-scope buffs
+        // only apply when the user asserts a support-party context (matches the
+        // ally-buff gating); self-scope buffs always apply while summoned.
+        const partyScoped = (sb.scope === "party" || sb.scope === "mixed");
+        if (!partyScoped || s.assumeSupportParty) {
+          const ratingStats = {};
+          const percentStats = {};
+          if (Array.isArray(sb.effects) && sb.effects.length) {
+            for (const eff of sb.effects) {
+              if (!eff || !eff.stat) continue;
+              const ch = (eff.type === "rating") ? ratingStats : percentStats;
+              ch[eff.stat] = (ch[eff.stat] || 0) + (eff.amount || 0);
+            }
+          } else if (sb.stats && typeof sb.stats === "object") {
+            for (const [stat, val] of Object.entries(sb.stats)) {
+              if (typeof val === "number" && val > 0) ratingStats[stat] = (ratingStats[stat] || 0) + val;
+            }
+          } else if (sb.stat) {
+            const ch = (sb.type === "rating" || sb.kind === "rating" || sb.type === "flat" || sb.kind === "flat") ? ratingStats : percentStats;
+            ch[sb.stat] = (ch[sb.stat] || 0) + (sb.value || 0);
+          }
+          if (Object.keys(ratingStats).length || Object.keys(percentStats).length) {
+            buffs.push({ source: "Summoned: " + summonedComp.name, ratingStats, percentStats });
+          }
+        }
       }
 
       // Summoned companion base IL contribution. Uses the per-rarity
@@ -16338,7 +16360,9 @@
         : [];
       if (partyBuffCompanions.length || partyMountPowersInner.length) {
         const content = state.partyContent || "dungeon";
-        const slotCount = content === "trial" ? 10 : 5;
+        // Ally slots = party size MINUS you (you provide your own summoned
+        // companion, not an ally slot). 5-man dungeon = 4 allies; 10-man trial = 9.
+        const slotCount = content === "trial" ? 9 : 4;
         if (!Array.isArray(state.partyAllies)) state.partyAllies = [];
         // Ensure the array is the right length without losing existing picks
         while (state.partyAllies.length < slotCount) state.partyAllies.push("");
@@ -16356,12 +16380,12 @@
           <div class="boon-row" style="cursor:default;">
             <div class="boon-row-info">
               <div class="boon-row-name">Content type</div>
-              <div class="boon-row-effect">5 ally slots for dungeons, 10 for trials</div>
+              <div class="boon-row-effect">4 ally slots for dungeons, 9 for trials (party size minus you)</div>
             </div>
             <div class="boon-counter">
               <select id="party-content-select" style="font-size:0.85rem;padding:0.2rem 0.4rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
-                <option value="dungeon"${content === "dungeon" ? " selected" : ""}>Dungeon (5)</option>
-                <option value="trial"${content === "trial" ? " selected" : ""}>Trial (10)</option>
+                <option value="dungeon"${content === "dungeon" ? " selected" : ""}>Dungeon (5-man)</option>
+                <option value="trial"${content === "trial" ? " selected" : ""}>Trial (10-man)</option>
               </select>
             </div>
           </div>
@@ -16517,7 +16541,7 @@
         });
       });
 
-      // Party content-type selector (dungeon 5 / trial 10)
+      // Party content-type selector (dungeon = 4 ally slots / trial = 9 ally slots)
       const partyContentEl = el.querySelector("#party-content-select");
       if (partyContentEl) {
         partyContentEl.addEventListener("change", (e) => {
