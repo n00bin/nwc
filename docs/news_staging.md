@@ -8,6 +8,11 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 (Last published July 13, 2026: "Wizard Spell-Mastery Slot, the Full Cleric Weapon Set & a Clothing-Slot Overhaul")
 
+### Bug Fixes
+- Spelling corrections: "Pact of Vengeance" equip power on The Claw of Covetous
+  Flame (was "Vengence") and the "Celestial Rubellite Tourmaline" enchant
+  (was "Rubelite").
+
 ### Data Additions
 - Companion gear database expanded from 36 → 221 entries — added the full
   mid- and lower-tier ladder (Starbound, Twinkling, Imperial, Blessed, and
