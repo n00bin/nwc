@@ -14,6 +14,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   (was "Rubelite").
 
 ### Data Additions
+- Bard fully rebuilt from in-game tooltips — the character builder previously had
+  only a handful of shared Bard powers and no paragon rosters. Now BOTH paths are
+  complete: Songblade (DPS) — Con Elemento, Staccato, Ad Libitum, Contre, Volti
+  Subito, the songs + Ballads, feats & features; and Minstrel (Healer) — Arpeggio,
+  Serenade, Bassline, Curtain Call, Defender's Minuet, Warding Carol, Aurora
+  Fantasia, Sheltering Etude, the Reprised Carols, and its 10-feat tree — all with
+  verified magnitudes, cast times and cooldowns. Songs are now their own category.
 - Companion gear database expanded from 36 → 221 entries — added the full
   mid- and lower-tier ladder (Starbound, Twinkling, Imperial, Blessed, and
   many more "of the Companion" pieces) so the database is complete, not just

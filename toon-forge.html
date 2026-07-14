@@ -15684,6 +15684,34 @@
         out.push('</div></div>');
       }
 
+      // --- Songs (read-only display) ---
+      // Bard-only: Performance-gauge abilities that are their own in-game
+      // category (not encounters/mechanics). Read via the generic pool so
+      // shared + selected-paragon songs both show.
+      const songRaw = _paragonPowerPool("song");
+      if (songRaw.length) {
+        out.push('<div class="field" style="margin-top:0.8rem;"><label>Songs <span style="color:var(--text-dim);font-weight:400;">(Performance-gauge system · reference only)</span></label>');
+        out.push('<div class="loadout-grid">');
+        for (const s of songRaw) {
+          const tagBits = [];
+          if (s.paragon) tagBits.push("paragon");
+          if (s.performanceCost) tagBits.push(s.performanceCost + " perf");
+          const tag = tagBits.length ? '<span class="loadout-card-tag">' + escHtml(tagBits.join(" · ")) + '</span>' : '';
+          const mag = (s.magnitude != null)
+            ? '<div class="loadout-card-substat"><strong>Magnitude ' + escHtml(String(s.magnitude)) + '</strong>' + (s.damageType ? ' ' + escHtml(s.damageType) : '') + '</div>'
+            : '';
+          const sDesc = cleanNote(s.description || s.addedEffect || s.notes) || "";
+          out.push(
+            '<div class="loadout-card">' +
+              '<div class="loadout-card-title">' + escHtml(s.name) + tag + '</div>' +
+              mag +
+              (sDesc ? '<div class="loadout-card-desc">' + escHtml(sDesc) + '</div>' : '') +
+            '</div>'
+          );
+        }
+        out.push('</div></div>');
+      }
+
       // --- Mechanics (read-only display) ---
       // Mechanics aren't slotted in NW — they're class-fixed systems
       // (Forte, class resource, tactical dodge, paragon abilities).
