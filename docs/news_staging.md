@@ -9,6 +9,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 (Last published July 13, 2026: "Wizard Spell-Mastery Slot, the Full Cleric Weapon Set & a Clothing-Slot Overhaul")
 
 ### Bug Fixes
+- Wizard: Conduit of Ice magnitude corrected (550 → 350, in-game verified), and
+  the Wizard class-feature picker now works — it was empty, so you couldn't slot
+  class features on either paragon; both Arcanist and Thaumaturge now list their
+  8 selectable features.
 - Spelling corrections: "Pact of Vengeance" equip power on The Claw of Covetous
   Flame (was "Vengence") and the "Celestial Rubellite Tourmaline" enchant
   (was "Rubelite").
