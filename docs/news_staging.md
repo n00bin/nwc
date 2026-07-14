@@ -8,6 +8,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 (Last published July 13, 2026: "Wizard Spell-Mastery Slot, the Full Cleric Weapon Set & a Clothing-Slot Overhaul")
 
+### Data Additions
+- Companion gear database expanded from 36 → 221 entries — added the full
+  mid- and lower-tier ladder (Starbound, Twinkling, Imperial, Blessed, and
+  many more "of the Companion" pieces) so the database is complete, not just
+  the endgame tiers. Values sourced from the community reference and flagged
+  for in-game confirmation if they surface in a report.
+
 ### Features
 - Mobile navigation: on phones and narrow screens the top menu now collapses
   into a tap-to-open ☰ hamburger, instead of a crowded wall of links. Desktop
