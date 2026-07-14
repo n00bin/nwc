@@ -8,4 +8,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 (Last published July 13, 2026: "Wizard Spell-Mastery Slot, the Full Cleric Weapon Set & a Clothing-Slot Overhaul")
 
-_No unpublished entries yet._
+### Features
+- Mobile navigation: on phones and narrow screens the top menu now collapses
+  into a tap-to-open ☰ hamburger, instead of a crowded wall of links. Desktop
+  is unchanged. Menu closes automatically when you pick a page.

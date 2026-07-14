@@ -28,7 +28,9 @@ function renderNav(activePage) {
     pages.splice(1, 0, { label: PREVIEW_LABEL, href: "preview.html" });
   }
 
-  let html = '<span class="navbar-brand">NWC</span><div class="navbar-links">';
+  let html = '<span class="navbar-brand">NWC</span>';
+  html += '<button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navbarLinks">&#9776;</button>';
+  html += '<div class="navbar-links" id="navbarLinks">';
   for (const p of pages) {
     const cls = p.label === activePage ? " active" : "";
     html += `<a href="${p.href}" class="${cls}">${p.label}</a>`;
@@ -37,6 +39,24 @@ function renderNav(activePage) {
   html += '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:#f0883e;" title="Join The N00bin Network on YouTube">Join on YouTube</a>';
   html += "</div>";
   nav.innerHTML = html;
+
+  // ---- Mobile hamburger ----
+  // On narrow screens the links panel is hidden; this button toggles it open.
+  var navToggle = nav.querySelector(".nav-toggle");
+  var navLinks = nav.querySelector(".navbar-links");
+  if (navToggle && navLinks) {
+    navToggle.addEventListener("click", function () {
+      var open = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    // Tapping any link inside closes the menu again.
+    navLinks.addEventListener("click", function (e) {
+      if (e.target.closest("a")) {
+        navLinks.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
 
   // ---- Footer ----
   var footer = document.createElement("footer");

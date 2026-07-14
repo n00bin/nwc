@@ -134,6 +134,40 @@ a:hover {
   pointer-events: none;
 }
 
+/* ---- Mobile hamburger toggle ----
+   Hidden on desktop; the horizontal .navbar-links show as normal. On narrow
+   screens the links collapse into a dropdown opened by this button. */
+.nav-toggle {
+  display: none;              /* shown only under the mobile breakpoint below */
+  margin-left: auto;         /* push to the far right of the bar */
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.nav-toggle:hover { background: var(--bg-hover); border-color: var(--border-accent); }
+
+@media (max-width: 860px) {
+  .navbar { flex-wrap: wrap; gap: 0.5rem 1rem; }
+  .nav-toggle { display: block; }
+  .navbar-links {
+    display: none;            /* collapsed until the hamburger opens it */
+    flex-basis: 100%;        /* drop to its own full-width row */
+    flex-direction: column;
+    gap: 0.1rem;
+    margin-top: 0.25rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-default);
+  }
+  .navbar-links.open { display: flex; }
+  .navbar-links a { padding: 0.6rem 0.5rem; font-size: 0.95rem; }
+}
+
 /* ---- Badges ---- */
 .badge {
   display: inline-block;
