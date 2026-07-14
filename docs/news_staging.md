@@ -12,3 +12,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Mobile navigation: on phones and narrow screens the top menu now collapses
   into a tap-to-open ☰ hamburger, instead of a crowded wall of links. Desktop
   is unchanged. Menu closes automatically when you pick a page.
+- Home page glow-up: the section cards now show real in-game thumbnails
+  (mount, companion, artifact & consumable icons) plus clear symbols on the
+  rest, in a wider 3-across grid — the front page finally looks like a proper
+  compendium instead of a text list.
