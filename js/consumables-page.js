@@ -131,7 +131,7 @@
       html += '<div class="cnsm-card-icon-ph"></div>';
     }
     html += '<div class="cnsm-card-id">';
-    html += '<div class="cnsm-card-name">' + escapeHtml(b.name) + '</div>';
+    html += '<div class="cnsm-card-name">' + nameHtml(b.name) + '</div>';
     if (b.source) html += '<div class="cnsm-card-source">' + escapeHtml(b.source) + '</div>';
     html += '</div>';
     html += '</div>';
@@ -178,7 +178,7 @@
       var maxIdx = b.levels.length - 1;
       var opts = '';
       b.levels.forEach(function (lv, i) {
-        opts += '<option value="' + i + '"' + (i === maxIdx ? ' selected' : '') + '>'
+        opts += '<option translate="no" class="notranslate" value="' + i + '"' + (i === maxIdx ? ' selected' : '') + '>'
              +  escapeHtml(lv.name) + '</option>';
       });
       html += '<div class="cnsm-level-row" style="margin-top:8px;font-size:0.85em;">'

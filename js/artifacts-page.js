@@ -203,7 +203,7 @@
       if (a.image) {
         html += '<img loading="lazy" class="art-list-icon" src="' + escapeHtml(a.image) + '" alt="">';
       }
-      html += escapeHtml(a.name) + '</span>';
+      html += nameHtml(a.name) + '</span>';
       html += '<span><span class="' + (typeBadgeClass[a.type] || '') + '" style="font-size:0.78rem;">' + (typeLabels[a.type] || a.type) + '</span> <span class="toggle-arrow">&#9654;</span></span>';
       html += '</div>';
       html += '<div class="art-card-body">';
@@ -248,7 +248,7 @@
       if (img) {
         html += '<img loading="lazy" class="art-icon" src="' + escapeHtml(img) + '" alt="' + escapeHtml(r.name) + '">';
       }
-      html += '<div style="font-weight:600;"><span style="color:var(--highlight);margin-right:0.5rem;">#' + r.rank + '</span>' + escapeHtml(r.name) + '</div>';
+      html += '<div style="font-weight:600;"><span style="color:var(--highlight);margin-right:0.5rem;">#' + r.rank + '</span>' + nameHtml(r.name) + '</div>';
       html += '<div class="art-effect" style="margin-top:0.4rem;">' + escapeHtml(r.effect) + '</div>';
       html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.25rem;">Duration: ' + r.duration + '</div>';
       html += '</div>';
@@ -262,7 +262,7 @@
       var s = artifactSets[i];
       html += '<div class="art-card" data-idx="' + i + '">';
       html += '<div class="art-card-header">';
-      html += '<span class="art-card-name">' + escapeHtml(s.name) + '</span>';
+      html += '<span class="art-card-name">' + nameHtml(s.name) + '</span>';
       html += '<span style="font-size:0.78rem;color:var(--text-muted);">' + escapeHtml(s.best) + ' <span class="toggle-arrow">&#9654;</span></span>';
       html += '</div>';
       html += '<div class="art-card-body">';
@@ -323,7 +323,7 @@
     // One enchant = rarity pills (like companions) + the selected rarity's stats.
     function card(e) {
       var ls = lines(e);
-      var h = '<div class="art-card"><div class="art-card-header"><span class="art-card-name">' + escapeHtml(e.displayName || e.name) + '</span>';
+      var h = '<div class="art-card"><div class="art-card-header"><span class="art-card-name">' + nameHtml(e.displayName || e.name) + '</span>';
       h += '<span><span style="font-size:0.68rem;padding:0.12rem 0.55rem;border-radius:10px;background:rgba(63,224,224,0.12);color:' + RARITY_COLOR.Celestial + ';border:1px solid rgba(63,224,224,0.35);">' + escapeHtml(e.slotType === "companion" ? "Companion" : e.slotType) + '</span> <span class="toggle-arrow">&#9654;</span></span></div>';
       h += '<div class="art-card-body">';
       if (e.description) h += '<div class="art-effect" style="margin-bottom:0.5rem;">' + escapeHtml(e.description) + '</div>';

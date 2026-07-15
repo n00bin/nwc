@@ -9,6 +9,15 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 (Last published July 13, 2026: "Wizard Spell-Mastery Slot, the Full Cleric Weapon Set & a Clothing-Slot Overhaul")
 
 ### Features
+- Item names now stay in English when you auto-translate the site. If you read
+  the site through your browser's translator (Russian, German, Spanish —
+  anything), it used to rewrite item names too: "Rimefire Salamander" came out
+  as "Саламандра Инейного Огня", which matches nothing on your console, since
+  Neverwinter only ships in English and French. Names are now marked
+  "do not translate", so the guides and explanations still come through in your
+  language while every mount, companion, gear, artifact, enchant, boon and
+  insignia name stays exactly as it reads in-game. Covers the lookup pages, all
+  8,200+ item database pages, and every Toon Forge picker.
 - "Fill standard set" (Buffs → Assume support party) now **replaces** your ally
   support comps with the current community-meta set every time you click it —
   no need to clear slots first. Same set the optimizer's "Standard set" button

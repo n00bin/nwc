@@ -344,7 +344,7 @@
     for (var i = 0; i < mounts.length; i++) {
       var m = mounts[i];
       var sel = m.id === selectedId ? " selected" : "";
-      var name = currentQuery ? highlightMatch(m.name, currentQuery) : escapeHtml(m.name);
+      var name = noTranslate(currentQuery ? highlightMatch(m.name, currentQuery) : escapeHtml(m.name));
       var listImg = window.MOUNT_IMAGES && window.MOUNT_IMAGES[m.name];
       html += '<div class="list-item' + sel + '" data-id="' + m.id + '">';
       html += '<span class="item-name" style="display:flex;align-items:center;">';
@@ -454,7 +454,7 @@
     if (mountImg) {
       html += '<img loading="lazy" class="mount-icon" src="images/mounts/' + mountImg + '" alt="">';
     }
-    html += '<h2 style="margin:0;">' + escapeHtml(mount.name) + "</h2>";
+    html += '<h2 style="margin:0;">' + nameHtml(mount.name) + "</h2>";
     html += "</div>";
     if (mount.source) {
       html += '<div style="margin-bottom:0.75rem;font-size:0.85rem;"><span style="color:var(--text-muted);">Source: </span><span style="color:var(--highlight);">' + escapeHtml(mount.source) + "</span></div>";
@@ -469,7 +469,7 @@
       if (pinnedBonus) {
         html += '<div class="pinned-bonus">';
         html += '<div class="section-header" style="margin-top:0;">Selected Insignia Bonus</div>';
-        html += '<div class="detail-name">' + escapeHtml(pinnedBonus.name) + renderStackBadge(pinnedBonus) + "</div>";
+        html += '<div class="detail-name">' + nameHtml(pinnedBonus.name) + renderStackBadge(pinnedBonus) + "</div>";
         if (pinnedBonus.requiredInsignias && pinnedBonus.requiredInsignias.length > 0) {
           html += '<div style="margin:0.3rem 0;">';
           html += renderSlotOrderedBadges(mount, pinnedBonus);
@@ -516,7 +516,7 @@
     if (cp) {
       html += '<div class="proc-block">';
       var cpImg = window.MOUNT_POWER_IMAGES && window.MOUNT_POWER_IMAGES[cp.name];
-      html += '<div class="detail-name" style="display:flex;align-items:center;gap:0.4rem;">' + (cpImg ? '<img loading="lazy" class="list-icon" src="images/mount-powers/' + cpImg + '" alt="">' : '') + escapeHtml(cp.name) + "</div>";
+      html += '<div class="detail-name" style="display:flex;align-items:center;gap:0.4rem;">' + (cpImg ? '<img loading="lazy" class="list-icon" src="images/mount-powers/' + cpImg + '" alt="">' : '') + nameHtml(cp.name) + "</div>";
       html += '<div class="detail-meta">';
       html += "<span>IL " + formatNumber(cp.item_level) + "</span>";
       if (cp.magnitude) html += "<span>Magnitude " + formatNumber(cp.magnitude) + "</span>";
@@ -541,7 +541,7 @@
     if (ep) {
       html += '<div class="proc-block">';
       var epImg = window.MOUNT_POWER_IMAGES && window.MOUNT_POWER_IMAGES[ep.name];
-      html += '<div class="detail-name" style="display:flex;align-items:center;gap:0.4rem;">' + (epImg ? '<img loading="lazy" class="list-icon" src="images/mount-powers/' + epImg + '" alt="">' : '') + escapeHtml(ep.name) + "</div>";
+      html += '<div class="detail-name" style="display:flex;align-items:center;gap:0.4rem;">' + (epImg ? '<img loading="lazy" class="list-icon" src="images/mount-powers/' + epImg + '" alt="">' : '') + nameHtml(ep.name) + "</div>";
       html += '<div class="detail-meta">';
       html += "<span>IL " + formatNumber(ep.item_level) + "</span>";
       html += "<span>Combined Rating " + formatNumber(ep.combinedRating) + "</span>";
@@ -574,7 +574,7 @@
         // Header row (always visible) - name + insignia badges
         html += '<div class="ib-header" style="display:flex;justify-content:space-between;align-items:center;">';
         html += '<div>';
-        html += '<span style="font-weight:600;">' + escapeHtml(ib.name) + "</span>";
+        html += '<span style="font-weight:600;">' + nameHtml(ib.name) + "</span>";
         if (activatesPref) {
           html += ' <span title="Activates preferred slot (+20% IL & stats)" style="color:var(--highlight);font-size:0.95em;">&#9733;</span>';
         }
@@ -847,7 +847,7 @@
     for (var i = 0; i < data.length; i++) {
       var d = data[i];
       html += '<div class="ranking-card">';
-      html += '<div style="font-weight:600;">' + escapeHtml(d.name) + '</div>';
+      html += '<div style="font-weight:600;">' + nameHtml(d.name) + '</div>';
       html += '<div class="effect-text" style="margin-top:0.4rem;">' + escapeHtml(d.effect) + '</div>';
       if (d.bonus) {
         html += '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.25rem;">Equip Power: ' + escapeHtml(d.bonus) + '</div>';
@@ -1386,7 +1386,7 @@
       var bonusDesc = bonus.effectText || bonus.description || "";
       html += '<div class="planner-bonus-card" style="background:var(--bg-elevated);border:1px solid var(--border-default);color:var(--text-primary);padding:0.4rem 0.6rem;border-radius:var(--radius-sm);display:flex;flex-direction:column;gap:0.3rem;flex:1 1 280px;max-width:380px;min-width:240px;">';
       html += '<div style="display:flex;align-items:center;justify-content:space-between;gap:0.4rem;">';
-      html += '<span style="font-weight:600;color:var(--text-primary);">' + escapeHtml(bonus.name) + '</span>';
+      html += '<span style="font-weight:600;color:var(--text-primary);">' + nameHtml(bonus.name) + '</span>';
       html += '<button class="planner-remove-bonus" data-id="' + ld.id + '" data-index="' + b + '" title="Remove this bonus" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1.1rem;line-height:1;padding:0 0.2rem;flex-shrink:0;">×</button>';
       html += '</div>';
       if (bonusDesc) {
@@ -1634,7 +1634,7 @@
 
       html += '<div style="border-top:1px solid var(--border-default);padding-top:0.6rem;margin-top:0.5rem;">';
       html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.3rem;">';
-      html += '<span style="font-weight:600;color:var(--highlight);">' + escapeHtml(r.bonus.name) + '</span>';
+      html += '<span style="font-weight:600;color:var(--highlight);">' + nameHtml(r.bonus.name) + '</span>';
       var req = r.bonus.requiredInsignias || [];
       for (var rq = 0; rq < req.length; rq++) html += renderInsigniaBadge(req[rq]);
       if (r.savings > 0) {
@@ -1649,7 +1649,7 @@
       var pieces = [];
       for (var pl = 0; pl < r.stats.perLoadout.length; pl++) {
         var pe = r.stats.perLoadout[pl];
-        pieces.push(escapeHtml(pe.name) + (pe.count > 1 ? ' ×' + pe.count : ''));
+        pieces.push(nameHtml(pe.name) + (pe.count > 1 ? ' ×' + pe.count : ''));
       }
       html += '<div style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:0.4rem;">Wanted by: ' + pieces.join(', ');
       html += ' &nbsp;·&nbsp; ' + r.stats.totalInstances + ' instance' + (r.stats.totalInstances === 1 ? '' : 's') + ', need ' + minMounts + ' distinct mount' + (minMounts === 1 ? '' : 's') + '.</div>';
@@ -1675,7 +1675,7 @@
           if (isForced) pickTitle = ' title="Already picked for another bonus in a loadout that also wants this one — not enough distinct mounts available."';
           else if (isShared) pickTitle = ' title="Same mount serves another bonus in a different loadout. Loadouts save insignia configs separately, so one mount can do double duty."';
           html += '<span' + pickTitle + ' style="display:inline-flex;align-items:center;gap:0.3rem;background:var(--bg-elevated);border:2px solid ' + borderColor + ';border-radius:var(--radius-sm);padding:0.25rem 0.6rem;font-size:0.92rem;font-weight:600;">';
-          html += escapeHtml(cand.mount.name) + prefStr;
+          html += nameHtml(cand.mount.name) + prefStr;
           html += '<span style="font-size:0.7rem;font-weight:400;color:var(--text-muted);">' + cand.slotCount + '-slot</span>';
           if (isForced) {
             html += '<span style="font-size:0.65rem;font-weight:700;color:#000;background:#d29922;border-radius:var(--radius-sm);padding:0.05rem 0.3rem;">reused</span>';
@@ -1819,7 +1819,7 @@
       var mark = ok ? '<span style="color:#3fb950;font-weight:700;">✓</span>' : '<span style="color:var(--stat-negative,#f85149);font-weight:700;">✗</span>';
       html += '<div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;' + (ok ? '' : 'opacity:0.7;') + '">';
       html += mark;
-      html += '<span style="font-weight:600;color:' + (ok ? 'var(--highlight)' : 'var(--text-secondary)') + ';">' + escapeHtml(inst.bonus.name) + '</span>';
+      html += '<span style="font-weight:600;color:' + (ok ? 'var(--highlight)' : 'var(--text-secondary)') + ';">' + nameHtml(inst.bonus.name) + '</span>';
       var req2 = inst.bonus.requiredInsignias || [];
       for (var rq = 0; rq < req2.length; rq++) html += renderInsigniaBadge(req2[rq]);
       html += '</div>';
@@ -1950,7 +1950,7 @@
       if (atCap) cardStyle += "opacity:0.45;cursor:not-allowed;";
       html += '<div class="planner-bonus-picker-card" data-bonus-id="' + b.id + '" style="' + cardStyle + '"' + (atCap ? ' data-disabled="1"' : '') + '>';
       html += '<div style="display:flex;align-items:center;justify-content:space-between;gap:0.4rem;">';
-      html += '<span style="font-weight:600;color:var(--text-primary);">' + escapeHtml(b.name) + '</span>';
+      html += '<span style="font-weight:600;color:var(--text-primary);">' + nameHtml(b.name) + '</span>';
       var note = "";
       if (addedCount > 0 && addedCount >= maxCopies) {
         note = maxCopies === 1 ? "added (1× only)" : "max ×" + maxCopies + " reached";

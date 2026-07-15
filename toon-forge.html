@@ -4228,7 +4228,7 @@
           ? `<button class="user-remove-x" data-remove-user="${i}" title="Remove this item you added — only affects your browser">✕</button>`
           : "";
         html += `<div class="picker-item" data-pick="${i}">
-          <div class="picker-item-name"><span>${_escHTML(r.name)}</span>${pencilHTML}${removeHTML}</div>
+          <div class="picker-item-name"><span translate="no" class="notranslate">${_escHTML(r.name)}</span>${pencilHTML}${removeHTML}</div>
           ${r.meta ? `<div class="picker-item-meta">${r.meta}</div>` : ""}
           ${r.desc ? `<div class="picker-item-desc">${r.desc}</div>` : ""}
         </div>`;
@@ -5865,6 +5865,15 @@
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;");
     }
+    /* Keeps an in-game proper noun in English when a browser auto-translates
+       the page, so it still matches the player's (English-only) console
+       client. Same contract as noTranslate() in js/shared.js, which Toon Forge
+       deliberately does not load. Takes HTML — escape first if needed.
+       Wrap DISPLAYED names only, never strings that feed toast()/source: —
+       those are data, not markup. */
+    function _noTr(html) {
+      return html == null || html === "" ? "" : '<span translate="no" class="notranslate">' + html + "</span>";
+    }
     // Round a number to 2 decimal places, returning a trimmed string
     // (e.g. 1.20 → "1.2", 1.234 → "1.23"). Used for display of scaled
     // percent values where we want compact output.
@@ -5952,7 +5961,7 @@
         const _effects = [...new Set(entries.map(equipBonusEffectText).filter(Boolean))];
         blocks.push(`
           <div class="gear-card-bonus ${isConditional ? "cond" : ""}">
-            <div class="gear-card-bonus-name">🌟 ${_escHTML(name)}${tag ? `<span class="gear-card-bonus-tag">${tag}</span>` : ""}</div>
+            <div class="gear-card-bonus-name">🌟 ${_noTr(_escHTML(name))}${tag ? `<span class="gear-card-bonus-tag">${tag}</span>` : ""}</div>
             ${_effects.map(t => `<div class="gear-card-bonus-desc">${_escHTML(t)}</div>`).join("")}
           </div>`);
       }
@@ -6385,7 +6394,7 @@
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Insignia Bonus</div>
              <div class="gear-card-bonus">
-               <div class="gear-card-bonus-name">🌟 ${_escHTML(bonus.name || "")}</div>
+               <div class="gear-card-bonus-name">🌟 ${_noTr(_escHTML(bonus.name || ""))}</div>
                ${bonus.description ? `<div class="gear-card-bonus-desc">${_escHTML(bonus.description)}</div>` : ""}
              </div>
            </div>`
@@ -10391,7 +10400,7 @@
 
       let html = `<div class="race-choice-callout ${allPicked ? "complete" : "needs-pick"}">
         <div class="race-choice-header">
-          ${allPicked ? "✓" : "⚠"} <strong>${race.name}</strong> ability score choice
+          ${allPicked ? "✓" : "⚠"} <strong>${_noTr(race.name)}</strong> ability score choice
           <span class="race-choice-status">${allPicked ? "applied" : "needs your pick"}</span>
         </div>`;
       slots.forEach((slot, idx) => {
@@ -14567,7 +14576,7 @@
         const opts = gearOptionsForSlot(s.slot, state.class);
         const noItems = opts.length === 0;
         const chipLabel = filled
-          ? "⚔ " + v
+          ? "⚔ " + _noTr(v)
           : (noItems ? "+ Add item" : "+ Pick item");
         const chipClasses = ["gear-pick-chip"];
         if (filled) chipClasses.push("filled");
@@ -14662,7 +14671,7 @@
                 const am = (state.artifactMods || {})["Main Hand 1"] || { power: "" };
                 const cur = menu.find(x => x.name === am.power);
                 const opts = menu.map(x =>
-                  `<option value="${_escAttr(x.name)}"${am.power === x.name ? " selected" : ""} title="${_escAttr(x.description)}">${_escHTML(x.name)}</option>`).join("");
+                  `<option translate="no" class="notranslate" value="${_escAttr(x.name)}"${am.power === x.name ? " selected" : ""} title="${_escAttr(x.description)}">${_escHTML(x.name)}</option>`).join("");
                 const simNote = cur
                   ? (cur.kind === "damage" && !cur.component
                       ? `+${cur.percent}% ${_escHTML(cur.boostsPower)} dmg (counted in sim when slotted)`
@@ -14952,7 +14961,7 @@
         html += `<div class="slot ${v ? "filled" : ""}" style="cursor:pointer;" data-overload="${i}">
           <div class="slot-label">Overload ${i + 1}${lockButtonHTML(LK.over(i), !!v)}</div>
           <div style="padding:0.4rem 0.5rem;font-size:0.85rem;color:${v?'var(--gold)':'var(--text-mute)'};">
-            ${v ? "🔥 " + v : "+ pick overload"}
+            ${v ? "🔥 " + _noTr(v) : "+ pick overload"}
             ${info}
           </div>
         </div>`;
@@ -15132,7 +15141,7 @@
         const noItems = pickerOpts.length === 0;
         const aIL = filled ? (state.artifactIL || {})[slot] : null;
         const chipLabel = filled
-          ? "💎 " + v + (aIL ? ` · IL ${Number(aIL).toLocaleString()}` : "")
+          ? "💎 " + _noTr(v) + (aIL ? ` · IL ${Number(aIL).toLocaleString()}` : "")
           : (noItems ? "(no artifacts available)" : "+ Pick artifact");
         const chipClasses = ["gear-pick-chip"];
         if (filled) chipClasses.push("filled");
@@ -15378,7 +15387,7 @@
           const effect = `<strong style="color:${cur>0?'var(--gold)':'var(--text-mute)'}">+${curPct}%</strong> / +${maxPct}% ${b.stat}`;
           html += `<div class="boon-row ${cur > 0 ? "has-pts" : ""}">
             <div class="boon-row-info">
-              <div class="boon-row-name">${b.name}</div>
+              <div class="boon-row-name">${_noTr(b.name)}</div>
               <div class="boon-row-effect">${effect}</div>
             </div>
             <div class="boon-counter">
@@ -15422,7 +15431,7 @@
             .join(", ") || "specials";
           html += `<div class="boon-row ${isActive ? "has-pts" : ""}">
             <div class="boon-row-info">
-              <div class="boon-row-name">${b.name}</div>
+              <div class="boon-row-name">${_noTr(b.name)}</div>
               <div class="boon-row-effect">${effSummary} · ${slotLabel} · <strong style="color:${isActive?'var(--gold)':'var(--text-mute)'}">${spent}</strong> / ${totalCost} pts (${perRankCost} per rank)</div>
             </div>
             <div class="boon-counter">
@@ -16414,7 +16423,7 @@
           const desc = describeBuff(b);
           html += `<div class="boon-row ${on ? "has-pts" : ""}" data-buff-stack="${b.name.replace(/"/g,'&quot;')}" style="cursor:pointer;">
             <div class="boon-row-info">
-              <div class="boon-row-name">${b.name}</div>
+              <div class="boon-row-name">${_noTr(b.name)}</div>
               <div class="boon-row-effect">${desc}</div>
             </div>
             <div class="boon-counter"><span style="font-size:0.75rem;color:${on?'var(--gold)':'var(--text-dim)'};">${on?'✓ on':'+ add'}</span></div>
@@ -16532,7 +16541,7 @@
               : (picked === state.summoned
                 ? `⚠ Not counted — ${picked} is your summoned companion, so its buff already applies. Pick a different ally.`
                 : effSummary[picked]);
-            const chipLabel = picked ? `👥 ${picked}` : "+ Pick ally";
+            const chipLabel = picked ? `👥 ${_noTr(picked)}` : "+ Pick ally";
             html += `<div class="boon-row ${picked ? "has-pts" : ""}" data-party-slot-pick="${i}" style="cursor:pointer;">
               <div class="boon-row-info">
                 <div class="boon-row-name">Ally slot ${i + 1} — ${picked || "(empty)"}${picked ? scopeTagHtml(picked) : ""}</div>
@@ -16557,7 +16566,7 @@
           for (let i = 0; i < slotCount; i++) {
             const picked = state.partyMountAllies[i] || "";
             const desc = picked ? mEffSummary[picked] : "click to pick an ally's mount equip power";
-            const chipLabel = picked ? `🐉 ${picked}` : "+ Pick mount power";
+            const chipLabel = picked ? `🐉 ${_noTr(picked)}` : "+ Pick mount power";
             html += `<div class="boon-row ${picked ? "has-pts" : ""}" data-party-mount-slot-pick="${i}" style="cursor:pointer;">
               <div class="boon-row-info">
                 <div class="boon-row-name">Ally mount slot ${i + 1} — ${picked || "(empty)"}</div>

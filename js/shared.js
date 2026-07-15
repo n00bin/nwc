@@ -87,6 +87,30 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+/* ---- Proper-noun protection (browser auto-translate) ----
+   Neverwinter's console client ships English and French only, so the item
+   names on a player's screen are English no matter which language they read
+   this site in. Browser translators rewrite those names anyway ("Rimefire
+   Salamander" -> "Саламандра Инейного Огня"), which breaks the match between
+   a page here and the player's own inventory — the site's entire job.
+
+   translate="no" is the HTML standard opt-out; class="notranslate" is the
+   equivalent Google Translate honours. Emitting both covers every current
+   translator. Surrounding prose is left alone and still translates.
+
+   Wrap VISIBLE item names only. For a name that lands in an attribute
+   (alt/title/option) put translate="no" on the element itself instead —
+   an attribute value cannot hold a span. */
+function noTranslate(html) {
+  if (html == null || html === "") return "";
+  return '<span translate="no" class="notranslate">' + html + "</span>";
+}
+
+// Escape a raw name string and protect it from translation in one call.
+function nameHtml(str) {
+  return noTranslate(escapeHtml(str));
+}
+
 // ---- Clean notes for display ----
 // Strips internal prefixes ("Screenshot intake (Mount Preview): ...")
 // and audit-trail / calibration sentences (verification dates, bolster

@@ -23,6 +23,11 @@ function esc(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
+// Mirrors noTranslate()/nameHtml() in js/shared.js — keeps item names in
+// English when a browser auto-translates the page, so they still match the
+// player's (English-only) console client. See the note in js/shared.js.
+function nt(html) { return html == null || html === '' ? '' : '<span translate="no" class="notranslate">' + html + '</span>'; }
+function ntName(s) { return nt(esc(s)); }
 function fmt(n) { return n == null ? '—' : Number(n).toLocaleString('en-US'); }
 function slugify(s) {
   return String(s).toLowerCase().replace(/'/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'item';
@@ -120,7 +125,7 @@ function equipBlock(list) {
         if (t && !seenTxt[t]) { seenTxt[t] = true; effects.push(t); }
       });
       var desc = effects.map(function (t) { return '<div class="item-effect">' + esc(t) + '</div>'; }).join('');
-      blocks.push('<div style="margin-bottom:0.5rem"><strong>' + esc(b.name) + '</strong>' + desc + '</div>');
+      blocks.push('<div style="margin-bottom:0.5rem"><strong>' + ntName(b.name) + '</strong>' + desc + '</div>');
     } else {
       var t = equipBonusEffectText(b);
       if (!t) return;                    // nothing meaningful to show
@@ -166,8 +171,8 @@ function page(o) {
     '  <script type="application/ld+json">' + JSON.stringify(ld) + '</script>\n' +
     '</head>\n<body>\n  <nav class="navbar"></nav>\n' +
     '  <main class="item-wrap">\n' +
-    '    <div class="item-crumb"><a href="index.html">Home</a> &rsaquo; <a href="' + o.backHref + '">' + esc(o.breadcrumb) + '</a> &rsaquo; ' + esc(o.h1) + '</div>\n' +
-    '    <h1 class="item-h1">' + esc(o.h1) + '</h1>\n' +
+    '    <div class="item-crumb"><a href="index.html">Home</a> &rsaquo; <a href="' + o.backHref + '">' + esc(o.breadcrumb) + '</a> &rsaquo; ' + ntName(o.h1) + '</div>\n' +
+    '    <h1 class="item-h1">' + ntName(o.h1) + '</h1>\n' +
     (o.sub ? '    <div class="item-sub">' + o.sub + '</div>\n' : '') +
     o.bodyHtml +
     '    <a class="item-back" href="' + o.backHref + '">' + esc(o.backLabel) + ' &rarr;</a>\n' +
@@ -237,7 +242,7 @@ function build(type, items, opts) {
   entries.sort(function (a, b) { var x = a.name.toLowerCase(), y = b.name.toLowerCase(); return x < y ? -1 : x > y ? 1 : 0; });
   var cards = entries.map(function (e) {
     return '<a class="db-card" href="db/' + type + '/' + e.file + '" data-n="' + esc((e.name + ' ' + (e.meta || '')).toLowerCase()) + '">' +
-      '<span class="db-card-name">' + esc(e.name) + '</span>' + (e.meta ? '<span class="db-card-meta">' + esc(e.meta) + '</span>' : '') + '</a>';
+      '<span class="db-card-name">' + ntName(e.name) + '</span>' + (e.meta ? '<span class="db-card-meta">' + esc(e.meta) + '</span>' : '') + '</a>';
   }).join('');
   var idxBody = DB_IDX_STYLE +
     '<div class="db-tools"><input id="dbq" type="search" placeholder="Filter ' + items.length + ' ' + esc(opts.breadcrumb.toLowerCase()) + '…" autocomplete="off" aria-label="Filter ' + esc(opts.breadcrumb) + '"><span id="dbcount"></span></div>' +

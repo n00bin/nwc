@@ -278,7 +278,7 @@
     for (var i = 0; i < companions.length; i++) {
       var c = companions[i];
       var sel = c.id === selectedId ? " selected" : "";
-      var name = currentQuery ? highlightMatch(c.name, currentQuery) : escapeHtml(c.name);
+      var name = noTranslate(currentQuery ? highlightMatch(c.name, currentQuery) : escapeHtml(c.name));
 
       // Show slot pills in the list
       var pw = powerMap[c.powerRef];
@@ -323,7 +323,7 @@
     if (compImg) {
       html += '<img loading="lazy" class="companion-icon" src="images/companions/' + compImg + '" alt="">';
     }
-    html += '<h2 style="margin:0;">' + escapeHtml(companion.name) + "</h2>";
+    html += '<h2 style="margin:0;">' + nameHtml(companion.name) + "</h2>";
     html += "</div>";
     if (companion.source) {
       html += '<div style="margin-bottom:0.75rem;font-size:0.85rem;"><span style="color:var(--text-muted);">Source: </span><span style="color:var(--highlight);">' + escapeHtml(companion.source) + "</span></div>";
@@ -345,7 +345,7 @@
       var displayCR = scaled ? scaled.combinedRating : activeIL;
 
       html += '<div class="proc-block">';
-      html += '<div class="detail-name">' + escapeHtml(pw.name) + "</div>";
+      html += '<div class="detail-name">' + nameHtml(pw.name) + "</div>";
 
       // Slot badges
       if (pw.slot && pw.slot.length > 0) {
@@ -407,7 +407,7 @@
       if (enImg) {
         html += '<img loading="lazy" class="enhancement-icon" src="images/enhancements/' + enImg + '" alt="">';
       }
-      html += '<div class="detail-name">' + escapeHtml(en.name) + "</div>";
+      html += '<div class="detail-name">' + nameHtml(en.name) + "</div>";
       html += "</div>";
       html += '<div class="detail-meta">';
       html += "<span>IL " + formatNumber(en.item_level) + "</span>";
@@ -445,7 +445,7 @@
         var sk = compSkills[ski];
         var brd = ski < compSkills.length - 1 ? 'border-bottom:1px solid var(--border-default);' : '';
         html += '<div style="padding:0.4rem 0;' + brd + '">';
-        html += '<div class="detail-name" style="font-size:0.9rem;">' + escapeHtml(sk.name) + '</div>';
+        html += '<div class="detail-name" style="font-size:0.9rem;">' + nameHtml(sk.name) + '</div>';
         if (sk.text) {
           html += '<div style="font-size:0.84rem;color:var(--text-secondary);margin-top:0.15rem;line-height:1.4;">' + escapeHtml(sk.text) + '</div>';
         }
@@ -715,7 +715,7 @@
         if (sumImg) {
           html += '<img loading="lazy" class="companion-icon" src="images/companions/' + sumImg + '" alt="">';
         }
-        html += '<span>' + escapeHtml(s.companionName) + '</span>';
+        html += '<span>' + nameHtml(s.companionName) + '</span>';
         if (s.slot && s.slot.length) html += '<span style="display:inline-flex;gap:0.3rem;align-items:center;">' + renderSlotBadges(s.slot) + '</span>';
         html += '</div>';
 
@@ -882,7 +882,7 @@
       if (enImg) {
         html += '<img loading="lazy" class="enhancement-icon" src="images/enhancements/' + enImg + '" alt="">';
       }
-      html += '<span>' + escapeHtml(e.name) + '</span></div>';
+      html += '<span>' + nameHtml(e.name) + '</span></div>';
       if (e.companions.length > 0) {
         html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.2rem;">Used by ' + e.companions.length + ' companion' + (e.companions.length === 1 ? '' : 's') + '</div>';
       }
@@ -1029,10 +1029,10 @@
         if (compImg) {
           html += '<img loading="lazy" class="companion-icon" src="images/companions/' + compImg + '" alt="">';
         }
-        html += '<span>' + escapeHtml(d2.name) + '</span>';
+        html += '<span>' + nameHtml(d2.name) + '</span>';
         if (d2.slot && d2.slot.length) html += '<span style="display:inline-flex;gap:0.3rem;align-items:center;">' + renderSlotBadges(d2.slot) + '</span>';
         html += '</div>';
-        html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.2rem;">' + escapeHtml(d2.powerName) + '</div>';
+        html += '<div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.2rem;">' + nameHtml(d2.powerName) + '</div>';
         if ((d2.stats && d2.stats.length > 0) || d2.celMag) {
           html += '<div style="margin-top:0.3rem;">';
           if (d2.stats) {

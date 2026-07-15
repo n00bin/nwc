@@ -1,5 +1,32 @@
 # Data Issues To Investigate
 
+## 178 orphaned `db/` item pages still live + indexed (found 2026-07-15)
+Surfaced while sweeping `db/` for the `translate="no"` pass: 178 generated item
+pages are tracked in git and deployed, but `scripts/gen-item-pages.js` no longer
+emits them — so they never get refreshed. They date from commit `0df9cbc` (the
+original Phase 1 SEO generation) and describe items whose ids have since been
+removed or renumbered in the source JSON.
+
+Breakdown: 174 in `db/gear`, 3 in `db/consumables`, 1 in `db/enchants`.
+
+Spot-checks against the current source JSON:
+- `db/consumables/2-invocation-blessing.html` — buffs.json id 2 is now
+  **"Power & Defense"**, so this page serves a stale name at a live URL.
+- `db/consumables/40-honey-bread.html`, `42-rataoulle.html` — ids absent.
+- `db/gear/1591-dungeon-raiders-cuisses.html`, `1736-barovian-cumberbund.html`,
+  `1746-exalted-pioneer-latt-il-500.html`, `1801-…`, `1802-…` — ids absent.
+
+Find them all with:
+`grep -Lr 'notranslate' db --include=*.html`
+(post-2026-07-15 every *generated* page carries `notranslate`, so anything
+without it is by definition stale — a convenient orphan detector.)
+
+**Not yet actioned** — needs a decision from n00b, since these are live URLs
+that may hold search rankings. Options: delete them (they 404, Google drops
+them), or have the generator emit a redirect/tombstone to the category index.
+The generator should also learn to prune `db/<type>/*.html` it didn't just
+write, or this recurs on every data renumber.
+
 ## Umbral Stride/Dark Matter multi-payload — RESOLVED 2026-07-08 (engine dedupes; no bug)
 Wave 9 flagged two families carrying set payloads on all 8 members (vs the
 one-payload convention). Code check settles it: `buildEngineCharacter`'s
