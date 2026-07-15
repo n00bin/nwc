@@ -8,6 +8,12 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 (Last published July 13, 2026: "Wizard Spell-Mastery Slot, the Full Cleric Weapon Set & a Clothing-Slot Overhaul")
 
+### Features
+- "Fill standard set" (Buffs → Assume support party) now **replaces** your ally
+  support comps with the current community-meta set every time you click it —
+  no need to clear slots first. Same set the optimizer's "Standard set" button
+  uses, so both stay in sync.
+
 ### Bug Fixes
 - Wizard: Conduit of Ice magnitude corrected (550 → 350, in-game verified), and
   the Wizard class-feature picker now works — it was empty, so you couldn't slot

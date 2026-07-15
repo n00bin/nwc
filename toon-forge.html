@@ -16308,6 +16308,42 @@
       return { name: e(p.name), meta: e(metaParts.join(" · ")), desc: e(descBits.join(" — ")) };
     }
 
+    // Shared "standard set" source for the ally support comps — used by BOTH
+    // the Buffs "Fill standard set" button (manual builder) and the optimizer
+    // setup "Standard set" button, so they behave identically (n00b 2026-07-14:
+    // "same function, two different places"). Pulls the LIVE community meta
+    // (meta_top_comps RPC — the cross-paragon aggregate of what players run),
+    // dedups, and excludes your own summon (a copy wouldn't stack). Resolves
+    // { comps:[names], unlocked } or { error:"message" }.
+    async function tfFetchStandardSet(limit) {
+      if (!window.supabase) return { error: "Community meta unavailable — offline." };
+      try {
+        const sb = window.supabase.createClient(
+          "https://ynrfmmccarrpqjdrpvqn.supabase.co",
+          "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
+        );
+        const res = await sb.rpc("meta_top_comps", {});
+        const payload = res && res.data;
+        const ranked = (payload && Array.isArray(payload.comps)) ? payload.comps : [];
+        if (!payload || (payload.unlocked_buckets || 0) === 0 || ranked.length === 0) {
+          return { error: "Community meta is still gathering builds — no paragon unlocked yet. Share builds to seed it." };
+        }
+        const out = [], seen = new Set();
+        for (const row of ranked) {
+          const name = row && row.name;
+          if (!name || seen.has(name)) continue;
+          if (name === state.summoned) continue;   // your own summon wouldn't stack
+          out.push(name); seen.add(name);
+          if (limit && out.length >= limit) break;
+        }
+        return { comps: out, unlocked: payload.unlocked_buckets || 0 };
+      } catch (err) {
+        console.warn("meta_top_comps fetch failed:", err);
+        return { error: "Couldn't reach the community meta — try again." };
+      }
+    }
+    window.tfFetchStandardSet = tfFetchStandardSet;
+
     function renderBuffs() {
       const el = document.getElementById("buff-list");
       if (!el) return;
@@ -16612,12 +16648,12 @@
           renderBuffs(); rerenderAll();
         });
       }
-      // "Fill standard set" — a quick convenience fill: drop the top comps from
-      // the LIVE community meta (meta_top_comps RPC — the cross-paragon
-      // aggregate of what players actually run) straight into the open ally
-      // slots. No hardcoded list, no scoring, no filtering — it self-updates as
-      // builds are shared. Users tweak or ignore the picks; smart, stat-aware
-      // selection is the optimizer's job, not this free helper.
+      // "Fill standard set" — applies the LIVE community-meta standard comp set
+      // (via the shared tfFetchStandardSet helper, same source the optimizer's
+      // "Standard set" button uses). n00b 2026-07-14: clicking ALWAYS OVERWRITES
+      // the ally slots with the standard set, whether or not they're already
+      // filled. Users then tweak/remove; stat-aware selection is the optimizer's
+      // job, not this free helper.
       const fillStdEl = el.querySelector("#party-fill-standard");
       if (fillStdEl) {
         fillStdEl.addEventListener("click", async (ev) => {
@@ -16628,44 +16664,19 @@
           fillStdEl.disabled = true;
           fillStdEl.textContent = "Loading meta…";
           try {
-            if (!window.supabase) { toast("Community meta unavailable — offline."); return; }
-            const sb = window.supabase.createClient(
-              "https://ynrfmmccarrpqjdrpvqn.supabase.co",
-              "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw"
-            );
-            const res = await sb.rpc("meta_top_comps", {});
-            const payload = res && res.data;
-            const ranked = (payload && Array.isArray(payload.comps)) ? payload.comps : [];
-            if (!payload || (payload.unlocked_buckets || 0) === 0 || ranked.length === 0) {
-              toast("Community meta is still gathering builds — no paragon unlocked yet. Share builds to seed it.");
-              return;
-            }
-            // Just drop the top meta comps into open slots. The only skips are
-            // structural (the section can't hold a duplicate, and a copy of your
-            // own summon wouldn't stack) — not smart filtering.
-            if (!Array.isArray(state.partyAllies)) state.partyAllies = [];
-            const already = new Set(state.partyAllies.filter(x => x));
-            let added = 0;
-            for (const row of ranked) {
-              const name = row && row.name;
-              if (!name) continue;
-              const open = state.partyAllies.findIndex(x => !x);
-              if (open === -1) break;                          // every slot filled
-              if (name === state.summoned) continue;           // your own summon — wouldn't stack
-              if (already.has(name)) continue;                 // no duplicates in this section
-              state.partyAllies[open] = name;
-              already.add(name);
-              added++;
-            }
-            state.assumeSupportParty = true;                   // filling implies you want it on
+            const slotCount = state.partyContent === "trial" ? 9 : 4;
+            const r = await tfFetchStandardSet(slotCount);
+            if (r.error) { toast(r.error); return; }
+            // OVERWRITE every ally slot with the standard set, replacing any
+            // existing picks — clicking this button always resets to the set.
+            const next = [];
+            for (let i = 0; i < slotCount; i++) next[i] = r.comps[i] || "";
+            state.partyAllies = next;
+            state.assumeSupportParty = true;                   // applying the set implies you want it on
             renderBuffs(); rerenderAll();
-            const nb = payload.unlocked_buckets || 0;
-            toast(added
-              ? `Filled ${added} comp${added === 1 ? "" : "s"} from the community meta (${nb} paragon${nb === 1 ? "" : "s"} unlocked).`
-              : "Ally slots already full — clear one to add a meta comp.");
-          } catch (err) {
-            console.warn("meta_top_comps fill failed:", err);
-            toast("Couldn't reach the community meta — try again.");
+            toast(r.comps.length
+              ? `Filled ${r.comps.length} comp${r.comps.length === 1 ? "" : "s"} from the community meta (${r.unlocked} paragon${r.unlocked === 1 ? "" : "s"} unlocked).`
+              : "Community meta returned no comps yet — share builds to seed it.");
           } finally {
             fillStdEl.dataset.busy = "0";
             fillStdEl.textContent = origText;
