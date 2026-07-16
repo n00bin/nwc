@@ -1,31 +1,51 @@
 # Data Issues To Investigate
 
-## 178 orphaned `db/` item pages still live + indexed (found 2026-07-15)
+## 178 stale `db/` pages — generator never prunes (found 2026-07-15)
 Surfaced while sweeping `db/` for the `translate="no"` pass: 178 generated item
 pages are tracked in git and deployed, but `scripts/gen-item-pages.js` no longer
-emits them — so they never get refreshed. They date from commit `0df9cbc` (the
-original Phase 1 SEO generation) and describe items whose ids have since been
-removed or renumbered in the source JSON.
+emits them, so they never get refreshed and serve old data at live URLs.
 
-Breakdown: 174 in `db/gear`, 3 in `db/consumables`, 1 in `db/enchants`.
+Breakdown: 174 `db/gear`, 3 `db/consumables`, 1 `db/enchants`.
 
-Spot-checks against the current source JSON:
-- `db/consumables/2-invocation-blessing.html` — buffs.json id 2 is now
-  **"Power & Defense"**, so this page serves a stale name at a live URL.
-- `db/consumables/40-honey-bread.html`, `42-rataoulle.html` — ids absent.
-- `db/gear/1591-dungeon-raiders-cuisses.html`, `1736-barovian-cumberbund.html`,
-  `1746-exalted-pioneer-latt-il-500.html`, `1801-…`, `1802-…` — ids absent.
+**Root cause: the generator writes pages but never deletes ones it didn't
+write.** Every id renumber, rename, or filename-scheme change leaves the old
+file behind forever. `db/gear` has silted up with ~4 generations of naming:
 
-Find them all with:
-`grep -Lr 'notranslate' db --include=*.html`
-(post-2026-07-15 every *generated* page carries `notranslate`, so anything
-without it is by definition stale — a convenient orphan detector.)
+    1801-oathbreakers-malevolence-il-3-400.html   stale  (comma -> dash slug)
+    1803-oathbreakers-malevolence-epic.html       stale  (per-RARITY model)
+    481-oathbreakers-malevolence-il-4450.html     stale  (em-dash separator)
+    466-oathbreakers-malevolence-il-4800.html     stale  (middot separator)
+    487-oathbreakers-malevolence.html             CURRENT
 
-**Not yet actioned** — needs a decision from n00b, since these are live URLs
-that may hold search rankings. Options: delete them (they 404, Google drops
-them), or have the generator emit a redirect/tombstone to the category index.
-The generator should also learn to prune `db/<type>/*.html` it didn't just
-write, or this recurs on every data renumber.
+**Reachability: 0 of 178 appear in any sitemap; 0 are linked from any `db/`
+index.** (An earlier revision of this note claimed they were indexed and might
+hold rankings — that was wrong. Nothing on the site links them; only an old
+Google entry or a bookmark can reach them.)
+
+**Almost nothing is actually lost.** Matching each stale page's `<h1>` to a
+current page by base name (splitting on ALL separators used across the
+generations — `·`, `—`, `–`; matching only on `—` badly under-counts):
+- **166 superseded** — same item has a live page, e.g.
+  `1591-dungeon-raiders-cuisses.html` -> `3492-dungeon-raiders-cuisses.html`
+- **12 "gone"**, and most of those are renames the matcher can't see:
+  - `Mystic Conduit Crest (Duelist)` -> now `Mystic Conduit Crest · Duelist's Strength`
+  - `Bloodwoven Runes — Challenger's Strength` -> now `Bloodwoven Runes (Challenger's Strength)`
+  - `Barovian Cumberbund` -> now **`Barovian Cummerbund`** (typo fix in the data)
+
+**Genuinely absent from source JSON (4)** — separate question, may be
+deliberate removals or real gaps; do NOT re-add unverified (see the
+no-unverified-item-adds rule):
+- buffs.json: `Invocation Blessing`, `Honey Bread`, `Rataoulle`
+- enchants.json: `Celestial Rubelite Tourmaline`
+
+Handy detector: post-2026-07-15 every *generated* page carries `notranslate`,
+so `grep -Lr 'notranslate' db --include=*.html` lists exactly the stale set.
+
+**Recommended fix (not yet actioned — needs n00b's go-ahead, it deletes live
+URLs):** teach `gen-item-pages.js` to record every file it writes per type and
+delete any other `.html` in `db/<type>/`. That clears all 178 and stops the
+recurrence permanently. Guard it with a dry-run default and a refuse-if-it-would-
+delete->N% safety, so a half-failed data load can never nuke the directory.
 
 ## Umbral Stride/Dark Matter multi-payload — RESOLVED 2026-07-08 (engine dedupes; no bug)
 Wave 9 flagged two families carrying set payloads on all 8 members (vs the
