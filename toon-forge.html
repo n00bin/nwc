@@ -11939,19 +11939,27 @@
         if (!partyScoped || s.assumeSupportParty) {
           const ratingStats = {};
           const percentStats = {};
+          // Derate YOUR OWN summon's buff by its uptime (missing field = 100%,
+          // matching the enemy-damage-boost path ~L11220). A <100%-uptime party
+          // summon (e.g. Dread Warrior, 66%) was landing on your own sheet at FULL
+          // strength, inflating its heal/dps score and over-picking it in the summon
+          // slot (n00b caught it 2026-07-17). NOTE: the ally-buff path below is
+          // intentionally always-on (you assert the ally has it up) — see its
+          // comment; whether allies should also derate is a separate owner call.
+          const up = (typeof sb.uptime === "number") ? Math.max(0, Math.min(1, sb.uptime / 100)) : 1;
           if (Array.isArray(sb.effects) && sb.effects.length) {
             for (const eff of sb.effects) {
               if (!eff || !eff.stat) continue;
               const ch = (eff.type === "rating") ? ratingStats : percentStats;
-              ch[eff.stat] = (ch[eff.stat] || 0) + (eff.amount || 0);
+              ch[eff.stat] = (ch[eff.stat] || 0) + (eff.amount || 0) * up;
             }
           } else if (sb.stats && typeof sb.stats === "object") {
             for (const [stat, val] of Object.entries(sb.stats)) {
-              if (typeof val === "number" && val > 0) ratingStats[stat] = (ratingStats[stat] || 0) + val;
+              if (typeof val === "number" && val > 0) ratingStats[stat] = (ratingStats[stat] || 0) + val * up;
             }
           } else if (sb.stat) {
             const ch = (sb.type === "rating" || sb.kind === "rating" || sb.type === "flat" || sb.kind === "flat") ? ratingStats : percentStats;
-            ch[sb.stat] = (ch[sb.stat] || 0) + (sb.value || 0);
+            ch[sb.stat] = (ch[sb.stat] || 0) + (sb.value || 0) * up;
           }
           if (Object.keys(ratingStats).length || Object.keys(percentStats).length) {
             buffs.push({ source: "Summoned: " + summonedComp.name, ratingStats, percentStats });

@@ -151,3 +151,135 @@ Same inputs → same output. Stable tie-breaks: higher `J`, then higher item lev
 - **M4** — BiS mode + shopping list + tradeoff-explainer polish.
 
 Each milestone is independently shippable and visibly improves build quality.
+
+---
+
+## 11. Investigated & rejected: two-slot / ILS-VND neighborhood (2026-07-16)
+
+**Question:** would adding a two-slot move (Variable Neighborhood Descent on top of
+the existing Iterated Local Search) find better builds than the shipped single-slot
+search? Tested via the headless runner (`scripts/optimize_build.js`) on the Warlock
+DPS BiS build, deterministic seed, baseline vs. variant.
+
+**Findings:**
+1. The shipped search is **already an ILS** (greedy single-slot descent + perturbation
+   kicks), converging to a true local optimum in ~11 kicks at +109% on the test build.
+2. A naive two-slot move ("force slot A, re-optimize all other slots") is **intractable**:
+   run inside every kick it timed out (>10 min, millions of full re-scores); run once as
+   a post-convergence polish it exhausted a 40k-eval budget after **~7 probes** (each probe
+   is a full slot sweep). Both produced a byte-identical build to the baseline.
+3. **Audit of the set data before rebuilding**: every coordinated set-trap the single-slot
+   search is blind to is **already hand-completed** — Neck/Belt/Artifact 3pc, Shirt/Pants
+   2pc, weapon MH/OH sets — or is an armor 4pc set **excluded from the meta by owner ruling
+   (2026-06-21)**. The *only* genuinely-uncovered, non-armor coordinated trap is **Ring 2pc
+   sets** (Lolthian Might IL2050, The Dark Maiden IL1850; Pioneer/Primal are low-IL, not meta).
+4. Built a targeted **ring 2pc set-completion pass** (mirroring `completeClothingSets`, same
+   never-regress guard + cap-repair) and tested it: it evaluated all ring-set pairs (the
+   headless run excludes nothing, so every ring was eligible) and **none beat the Frostsilver
+   stat rings**. Result identical to baseline.
+
+**Conclusion:** the two-slot idea does **not** improve the optimizer for this meta — the
+search already extracts everything the coordinated-move idea can find that the meta allows.
+Prototype (flag + ring pass + benchmark toggle) was **removed**; the file is back to the
+shipped single-slot ILS. Kept this note so the ~6 test-run investigation isn't repeated.
+
+**What would change the calculus:** a class/build where a ring set (Dark Maiden, Lolthian
+Might) is actually BiS. There the single-slot search has a real blind spot, and the removed
+ring-set pass — cheap and never-regressing — would be worth restoring/shipping.
+
+---
+
+## 12. RULINGS (owner spec) — summon SUPPORT/TEAM value + support-party UX (2026-07-17)
+
+Surfaced running a HEALER build through the optimizer (Community-Meta video prep). The
+summoned slot picked **Dread Warrior** (+5,000 Power, +5% Crit Severity, party, ~66% uptime)
+over **Portobello DaVinci** (+3.5% Power, +3.5% Combat Advantage, party, 100% uptime in a
+full party).
+
+**OWNER RULING (hard spec, verbatim 2026-07-17):**
+> "the power and ca are up all the time in endgame content where the dread warrior is not.
+> plus the porto buffs the team"
+
+Read: for a SUPPORT role (healer), endgame = full party, so party-scoped summon buffs are
+always on (Portobello 100%) while Dread Warrior's is not (~66%); and a companion's value to
+the TEAM (buffing allies' damage) is real healer value the objective must credit.
+
+**FIX 1 — score a summon's PARTY-BUFF TEAM value for support roles (SCORING — the real gap).**
+The summoned slot is scored purely on `realScore()` = the player's own heal throughput
+(optimizer-local.js ~L182). A party buff only counts for the sliver that helps the healer's
+OWN heal: Portobello's +Power helps a little, its +Combat Advantage helps a healer ZERO (CA
+is not a heal weight, L82), and its buff to the GROUP's damage is never credited — burying
+genuine support summons under self-heal-only scoring. FIX: for the heal/support objective,
+add a team-buff-value term to the SUMMONED-companion score = the party buff's offensive
+stats (Power/CA/Crit…) × uptime, so a healer's summon is valued for what it gives the party.
+  OWNER WEIGHT (locked 2026-07-17): option (b) PARTIAL + TUNABLE. Team-buff offensive value
+  is credited at a FRACTION of its DPS-equivalent, added to the summoned-companion score:
+  `summonScore = ownHealValue + TEAM_BUFF_W * teamBuffOffensiveValue`, starting
+  `TEAM_BUFF_W = 0.40` (single named constant, easy to dial after real-build testing).
+  Rationale: flips clear cases (Portobello's always-on party Power > Dread Warrior for a
+  healer) without auto-grabbing the biggest team-buffer when a genuine self-heal summon serves
+  the healer better. Gate behind the HEAL_SUPPORT default (support/heal roles only; must NOT
+  touch DPS/tank scoring). VERIFY on a real healer build before redeploy (paid-tool
+  correctness gate). STATUS: weight locked; awaiting critic review, THEN implement — not yet
+  in code.
+
+**FIX 2 — make "assume support party" VISIBLE in the optimizer setup (UX). [SHIPPED 2026-07-17]**
+Unlike the manual builder (explicit toggle), the optimizer setup has NO toggle:
+`readAccountInputs()` derives `state.assumeSupportParty = supportComps.length > 0` on run
+(~L3905). So filling "Standard set" / adding any support comp silently switches the whole run
+to full-party scoring — the owner hit exactly this and didn't realize it was on. FIX
+(shipped, source `js/optimizer-local.js` — SYNC RULE: re-copy to `premium/private/` + redeploy
+to reach paid members): the setup panel now states that adding any comp switches the run to
+full-party scoring (allies' buffs + your own party-scope summon buff count) and empty = solo.
+  Polish TODO: a live on/off badge reflecting the current list state.
+
+Data note: the "Standard set" comes from `meta_top_comps` (LIVE community meta), which today
+reflects only the 2 unlocked DPS paragons — so it's "popular DPS summons" (Drizzt, Black
+Scorpion, Flapjack, Spined Devil, Tutor), NOT a curated support set. Portobello is NOT in it
+today, so it is NOT reserved-for-ally on a standard-set run. Improves as more paragons unlock.
+
+**CRITIC REVIEW (2026-07-17) — found a BUG bigger than Fix 1; Fix 1 REVISED, not yet built.**
+Diagnosis (a)-(d) CONFIRMED; Fix 2 APPROVED as shipped (2 minor follow-ups applied: doc line
+citation corrected to ~L3905; Fix-2 "over-stacking CA" copy tightened — `_allyReserved` only
+blocks self-summoning the SAME named companion an ally runs, not general stat coverage).
+
+**BUG (higher priority than Fix 1) — own-summon party buff applied at FULL value, IGNORING
+uptime** (toon-forge.html ~L11929-11960; identical ally-buff copy path ~L12039-12087). The
+loop sums `sb.effects[].amount` / `sb.stats{}` straight into the player's sheet and never
+reads `sb.uptime`. Dread Warrior's +5,000 Power / +5% Crit Sev (uptime 66) land at 100%, NOT
+×0.66 — inflating its self-heal score; Portobello (no uptime field = 100%) is undamaged. The
+same file already applies uptime for the CA-grant channel (~L11218: `uptime/100`); the
+rating/percent channel just never got it — inconsistency, not a decision → FIX. Because
+`realScore()` now DOMINATES the heal summon pick (post-2026-07-09 formula migration), this
+inflation is likely a bigger cause of Dread-over-Portobello than the missing team value.
+→ FIX THE UPTIME BUG FIRST, re-run the healer build; Portobello may win on corrected numbers
+alone, which also gives Fix 1's weight a stable target to tune against.
+
+**Fix 1 REVISED per critic (do NOT ship the original scope):**
+1. Uptime fix first (above); tune TEAM_BUFF_W against the CORRECTED numbers, not today's.
+2. Team-value = ALLY-ONLY share (party−1), NOT the raw buff amount — the healer's own share
+   is already counted via realScore(); raw would double-count.
+3. Implement in `expectedDamage()`'s `ROLE==='heal'` branch (own constant), NOT in
+   `realScore()` — realScore() feeds every slot's marginal comparison AND the set-completion
+   cost explainer (~L2374), so a companion constant there pollutes unrelated "% healing" text.
+   Keep strictly inside the heal branch; must never touch DPS/tank.
+4. OPEN OWNER DECISION: should HEAL_SUPPORT hard-FILTER the summon slot (as it filters the
+   enhancement + mount-power pools) or stay a soft NUDGE? Default proposed: soft nudge for v1.
+5. Deferred scope: the same blind spot exists on the healer's own MOUNT EQUIP power
+   (partyEffects). Fix 1 handles the summon slot only; the mount analog is explicitly deferred.
+
+**RESOLUTION (2026-07-17):**
+- UPTIME FIX — SHIPPED to `toon-forge.html` (~L11940: own-summon rating/percent buff channel
+  now ×uptime, missing field = 100%, matching the enemy-damage-boost path). VERIFIED via
+  `scripts/_compare_summon_heal.js` on the saved Soulweaver healer (IL 138487, support party
+  on): Dread Warrior 249,618 vs Portobello 247,288 heal throughput — Dread's lead collapsed
+  to +0.93% (near-tie), confirming the ~33% over-credit was real. This corrects the DISPLAYED
+  stat sheet for anyone running a <100%-uptime party summon, not just the optimizer's pick.
+  Ships with a normal site deploy. Keep.
+- FIX 1 (team-buff scoring) — DEFERRED (OWNER CALL 2026-07-17): the summoned-slot pick is
+  low-stakes because users almost always change their summon to one of the community-meta
+  top-5 summoned comps anyway, so a precise team-value score there isn't worth the paid-tool
+  scoring risk. The design (0.40 weight, ally-only share, heal-branch only, HEAL_SUPPORT
+  filter-vs-nudge open) stays spec'd above if ever revisited. NOT implemented.
+- FIX 2 (UX visibility) — SHIPPED to `js/optimizer-local.js` (needs `premium/private/` re-copy
+  + redeploy to reach members).
