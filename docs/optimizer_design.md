@@ -283,3 +283,71 @@ alone, which also gives Fix 1's weight a stable target to tune against.
   filter-vs-nudge open) stays spec'd above if ever revisited. NOT implemented.
 - FIX 2 (UX visibility) — SHIPPED to `js/optimizer-local.js` (needs `premium/private/` re-copy
   + redeploy to reach members).
+
+---
+
+## §13 — Tank over-cap valuation + survival-score sensitivity (owner findings 2026-07-17)
+
+Surfaced when the owner questioned an optimized tank build (it wore a *healer* chest
+"Prismatic Bismuth Plate — Healer's Influence" id 512 and picked "Resiliency of the Depths"
+over the owner's preferred Unholy Protection + Bulwark of Brimstone).
+
+**Finding A — survival SCORE over-amplifies tiny mitigation differences near the self-heal
+sustain floor.** `computeTankSurvivalScore`: `effTaken = max(expected·0.25, expected − healPerHit)`,
+`score = maxHP / effTaken`. As `expected` shrinks toward `healPerHit`, `score` blows up
+hyperbolically. Measured: the healer chest vs a tank chest differ by only ~2.5% in Effective HP
+(23.39M vs 22.82M) but 4× in score (3304 vs 806) — a 2-pt Defense/Deflect cap-maintenance
+difference misreported as a huge survivability gap. This makes the optimizer chase marginal
+CR/cap-maintenance too aggressively (why the higher-CR healer chest won despite wasted
+Forte/Outgoing-Healing named stats). eHP is the stable, honest metric; the score is not.
+→ TASK 1: make the tank objective monotonic/stable (e.g. score on eHP, or saturate the
+self-heal benefit so effTaken can't approach 0), so marginal cap-maintenance stops dominating.
+
+**Finding B — over-cap stats are valued at ZERO, but the owner deliberately runs some over cap.**
+Two cases:
+  - General: the owner keeps Bulwark of Brimstone (+stats even over cap) and swaps creature/zone
+    wards situationally; the optimizer zeroes the over-cap stats so it drops Bulwark for a flat
+    −5% IDR overload (Resiliency of the Depths — also the one still-ungated overload; verify).
+  - PALADIN-SPECIFIC (owner game-mechanics ruling 2026-07-17): the Justicar's **Divine Protection
+    is tied to Critical Avoidance**, and spending Divinity drops it. So the owner intentionally
+    stacks **Critical Avoidance ~10% OVER cap** so that when Divinity is spent, Crit Avoid is
+    still at/near cap. For a Paladin, over-cap Crit Avoid has REAL value (a depletion buffer) —
+    the tool's blanket "over-cap = worthless" headroom clamp is wrong here.
+→ TASK 2: add a Paladin-only credit for over-cap Critical Avoidance up to ~cap+10% (a buffer),
+  instead of zeroing it. Class/paragon-gated; must not touch other classes/stats.
+
+Both are being worked 2026-07-17 (owner chose "both"). Sequenced: Task 1 (score stability,
+affects all tanks) then Task 2 (Paladin Crit Avoid). Each investigate→design→critic→ship.
+
+**TASK 1 RESOLUTION (2026-07-17):** tank optimizer `.score` changed from the unstable
+`maxHP / effTaken` (hits-survived, hyperbolic near the self-heal floor) to
+`eHP + healPerHit × REF_HITS` (REF_HITS=60). CORRECTION to Finding A's aside: eHP and
+healPerHit are BOTH real-HP-scaled (eHP = maxHP·ratio; healPerHit from
+computeGearHealProcPerSec = % of maxHP), so they add directly — the incompatible-scale
+problem was only between healPerHit and the RELATIVE t.expected, not eHP (an earlier
+draft that dropped sustain on a false "incompatible scale" claim was corrected after
+critic review). Owner ruling: value PASSIVE self-heal procs (gear procHeal — no active
+input, doesn't complicate tank play), NOT the castable heal power; computeGearHealProcPerSec
+is gear-proc-only, so the credit hits exactly that. Modest (~+6% for a 0.64%-of-maxHP/hit
+proc). `.score` is optimizer-only (realScore, scale-invariant proportional objective);
+display reads .eHP/.mitigationPct. Fixed the AI-review backend unit label + progress
+overlay + header comment in js/ AND premium/private/ optimizer-local.js (were "boss hits
+absorbed"/"survival score" — false for the new metric). TASK 2 (Paladin over-cap Crit
+Avoid) still pending.
+
+**TASK 1 FINAL (2026-07-17, owner ruling):** after the sustain credit kept surfacing
+valuation problems (hyperbolic blowup → false "incompatible scale" drop → additive credit →
+unbounded-runaway BLOCKER → heal-ally over-credit), the owner chose the simplest, fully-bounded
+option: **tank `.score` = pure Effective HP, no self-heal credit at all.** eHP is stable,
+monotonic, matches the display. Supersedes the additive-credit resolution above.
+KEPT as a separate correctness fix (surfaced by the owner): the 8 "heal an ally with an
+Encounter" gear procs (Healer's Influence / Runefrost Mender lines — ids 36, 60, 512, 520,
+532, 3177, 5353, 5498) now carry `requiresHeal: true` in gear.json, and computeGearHealProcPerSec
+skips `requiresHeal` procs when role !== 'heal' — they never fire for a non-healer, so they must
+not credit self-heal to a tank/DPS anywhere they're read (e.g. `.taken`). The 16 crit-triggered
+self-heal procs are unaffected (fire automatically regardless of role). optimizer-local.js
+labels/comments scrubbed of the (now-superseded) self-heal wording in BOTH js/ and
+premium/private/ copies — AI-review backend `score.unit` and the progress-overlay unit are
+"effective HP (mitigation + Max HP)"; the role-objective header + realScore comments no longer
+claim a self-heal credit (critic round 3 caught one label twin left stale after the additive→pure-eHP
+revert). TASK 2 (Paladin over-cap Crit Avoid) still pending.

@@ -11791,6 +11791,12 @@
         if (!Array.isArray(equipBonuses)) return;
         for (const eb of equipBonuses) {
           const ph = eb && eb.procHeal; if (!ph) continue;
+          // "Requires healing an ally" procs (Healer's Influence, Runefrost
+          // Mender, etc.: "Healing an ally with an Encounter power also heals
+          // you...") only fire for a build that actually heals — inert for a
+          // tank/DPS who never casts a heal. Gate by role so they don't credit
+          // self-heal to a non-healer (owner ruling 2026-07-17).
+          if (ph.requiresHeal && String(state.role || "").toLowerCase() !== "heal") continue;
           const pps = procRatePerSec(ph.triggerRateKey, ph.chance, ph.icdSeconds, pCrit);
           const amt = (ph.type === "percentMaxHP") ? (maxHP * (ph.amount || 0) / 100) : (ph.amount || 0);
           const hps = pps * amt;
@@ -17751,7 +17757,28 @@
       // The display must reflect that honestly, or the % and the eHP number
       // contradict each other (0% "mitigation" next to a sub-HP absorb value).
       const mitigationPct = (t.expectedNoMit > 0) ? (1 - t.expected / t.expectedNoMit) * 100 : 0;
-      return { score: effTaken > 0 ? maxHP / effTaken : 0, taken: effTaken, rawTaken: t.expected, sustainPerHit: healPerHit, maxHP, eHP, mitigationPct };
+      // Optimizer score (consumed ONLY by realScore() in optimizer-local.js — the
+      // panel display reads .eHP/.mitigationPct, not .score). = stable Effective HP
+      // PLUS a bounded, same-scale self-heal credit. This replaces the old
+      // maxHP/effTaken "hits survived", which blew up hyperbolically as self-heal
+      // approached the per-hit damage — a ~2.5% eHP difference read as 4× in score,
+      // making the optimizer over-chase marginal cap-maintenance (§13 finding A).
+      // Scale-invariant for the optimizer: its objective is realScore×(1+proportional
+      // nudges) and matEps ∝ realScore, so the absolute magnitude doesn't matter.
+      //
+      // = pure Effective HP (mitigation + Max HP pool). Owner ruling 2026-07-17
+      // (FINAL): do NOT credit self-heal sustain in the tank objective. Sustain
+      // kept surfacing valuation problems — hyperbolic blowup as a hits-survived
+      // floor, unbounded runaway when additive, and over-crediting "heal an ally"
+      // procs that never fire for a tank — and the owner prefers the optimizer
+      // chase pure mitigation + HP. eHP is stable, monotonic, bounded, and matches
+      // the displayed metric. `.score` is optimizer-only (realScore, scale-invariant
+      // proportional objective); the panel reads .eHP/.mitigationPct.
+      // (The heal-ally proc gating in computeGearHealProcPerSec + gear.json
+      // `requiresHeal` is kept as a SEPARATE correctness fix: those procs must not
+      // credit self-heal to a non-healer anywhere they're read, e.g. `.taken`.)
+      const score = Math.max(0, eHP);
+      return { score, taken: effTaken, rawTaken: t.expected, sustainPerHit: healPerHit, maxHP, eHP, mitigationPct };
     }
 
     // HEALER: expected heal per cast.
