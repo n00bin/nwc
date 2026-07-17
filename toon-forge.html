@@ -3957,8 +3957,14 @@
     }
     function openContentZonePicker() {
       const zoneSet = new Set();
-      (typeof GEAR_DATA !== "undefined" ? GEAR_DATA : []).forEach(it =>
+      // Scan zone tags from BOTH gear and overloads (creature wards store their
+      // situational Incoming-Damage reduction as zone-gated "vs <enemy>" bonuses,
+      // e.g. Dragon Ward -> "vs Dragon"). Without the overload scan the ward
+      // scenarios would never appear in this picker and stay unreachable.
+      const _scanZones = arr => (arr || []).forEach(it =>
         (it.equipBonuses || []).forEach(eb => { if (eb && Array.isArray(eb.zones)) eb.zones.forEach(z => zoneSet.add(z)); }));
+      _scanZones(typeof GEAR_DATA !== "undefined" ? GEAR_DATA : []);
+      _scanZones(typeof OVERLOADS_DATA !== "undefined" ? OVERLOADS_DATA : []);
       const items = [{ name: "General (anywhere)", zone: "" }]
         .concat([...zoneSet].sort().map(z => ({ name: z, zone: z })));
       openPicker({

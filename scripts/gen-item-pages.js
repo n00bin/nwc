@@ -92,7 +92,15 @@ function statsBlock(item) {
 }
 // Per-entry display text: cleaned prose, else synthesized from stat/amount.
 function equipBonusEffectText(b) {
+  // description -> effectText -> synthesized. Overload equip bonuses carry their
+  // zone-conditional prose in `effectText` (no `description`), so without the
+  // effectText fallback the page synthesized a bare "+5% Dmg Bonus" line that
+  // hid the "in Thay"/"in Wildspace" qualifier and read as an always-on bonus.
+  // Guard to strings: `condition` (and occasionally other fields) can be a
+  // structured object (e.g. {distance_ft_max:25}) that would stringify to
+  // "[object Object]" — so we only fall back to effectText when it's a string.
   var dt = showText(b.description);
+  if (!dt && typeof b.effectText === 'string') dt = showText(b.effectText);
   if (!dt && b.stat != null && typeof b.amount === 'number') {
     // structured-only entries (no prose) — synthesize from stat/amount.
     // Percent is the default; kind:"rating"/"flat" marks plain numbers.
@@ -310,7 +318,7 @@ build('consumables', loadJSON('buffs.json'), {
 build('overloads', loadJSON('overloads.json'), {
   breadcrumb: 'Overloads', backHref: 'toon-forge.html', backLabel: 'Use in Toon Forge',
   render: function (o, name) {
-    var parts = [statsBlock(o)];
+    var parts = [statsBlock(o), equipBlock(o.equipBonuses)];
     var meta = [];
     if (o.slotType) meta.push('Slot: ' + esc(o.slotType));
     if (o.enemyType) meta.push('Vs ' + esc(o.enemyType) + (o.damagePct ? ' +' + o.damagePct + '%' : ''));
