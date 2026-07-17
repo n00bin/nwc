@@ -2,6 +2,16 @@
 
 This is the **Data Steward team's** record of what data has been *proven correct against an in-game screenshot.* It is maintained by the `/steward` command (see `~/.claude/commands/steward.md`).
 
+## Owner calibration session — Erik (Paladin Justicar tank) — 2026-07-17
+
+Full defensive stat-panel calibration of the owner's tank. After two build-loadout corrections in Toon Forge (offense enchant one Rubellite Tourmaline → **Celestial Ruby**; Snowtusk **Enlightened Fortitude → Enlightened Brutality**), all 15 stat ratings AND percentages, Max HP (2,987,257 vs game 2,987,258), Damage (14,974), and TIL (148,737) match the in-game panel exactly. Those two were *build* fixes, not data. The one **data** fix:
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| artifact 106 | Broken Halo | artifacts | VERIFIED+STRUCTURED — ratingStats corrected from placeholder 1950/1950/1950 → **Critical Avoidance 2145 / Deflect 2925 / Deflect Severity 2925** at IL-2600 max quality; combinedRating 2210 & IL 2600 confirmed correct (0.85× ratio); source set to "Shackles of Divinity (Advanced)"; stun text 1.3s→1.2s | 2026-07-17_paladin-justicar_broken-halo-tooltip-il2600.png | 2026.03.17a | 2026-07-17 |
+
+Open follow-ups (not blocking): Incoming Damage reads −13.75% vs game −14.6% (traces to Ritualistic Necklace "Malignant Energy" 3-pc uptime weighting, not Broken Halo); Shattered Resolve (enchant 46) on-hit Def/Awareness/Deflect proc still unmodeled pending a proper conditional treatment.
+
 ## Owner capture session 2 — HEALER GATE CLOSED — 2026-07-10
 
 | id | name | system | status | source | data version | date verified |

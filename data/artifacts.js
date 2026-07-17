@@ -3555,18 +3555,18 @@ const ARTIFACTS_DATA = [
       "Wizard"
     ],
     "ratingStats": {
-      "Critical Avoidance": 1950,
-      "Deflect": 1950,
-      "Deflect Severity": 1950
+      "Critical Avoidance": 2145,
+      "Deflect": 2925,
+      "Deflect Severity": 2925
     },
     "percentStats": {},
     "abilityBonuses": {},
     "equipBonuses": [],
-    "power": "Burst of light dealing AoE damage. Stuns lesser enemies 1.3s. +9% damage taken for 10s.",
+    "power": "Burst of light dealing AoE damage. Stuns lesser enemies 1.2s. +9% damage taken for 10s.",
     "debuff": "9% more damage taken + stun",
     "cooldown": 60,
     "set": "None",
-    "source": "? (needs verification)",
+    "source": "Shackles of Divinity (Advanced)",
     "image": "images/artifacts/broken_halo.webp"
   },
   {
