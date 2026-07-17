@@ -196,6 +196,8 @@
   <script src="js/preview-config.js"></script>
   <script src="js/shared.js"></script>
   <script src="data/news.js"></script>
+  <script src="data/i18n-ru.js"></script>
+  <script src="js/i18n.js"></script>
   <script>
     renderNav("Home");
     document.getElementById("mount-count").textContent = MOUNTS_DATA.length + " mounts";
@@ -222,6 +224,7 @@
       homeView.style.display = "none";
       newsView.style.display = "";
       renderNews();
+      if (typeof applyI18n === "function") applyI18n(document.getElementById("news-list"));
     });
 
     function renderNews() {
