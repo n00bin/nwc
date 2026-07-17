@@ -5901,20 +5901,23 @@
       const lines = [];
       // Weapon bonus damage leads, matching the in-game tooltip (kept in
       // sync with the gear-card stat blocks).
-      if (item.weaponDamage) lines.push(`+${(+item.weaponDamage).toLocaleString()} Damage`);
+      // Sign-guard every line: a negative value (e.g. Incoming Damage -9 =
+      // a damage-reduction stat) must render "-9%", never "+-9%".
+      const _sgn = v => (v > 0 ? "+" : "");
+      if (item.weaponDamage) lines.push(`${_sgn(+item.weaponDamage)}${(+item.weaponDamage).toLocaleString()} Damage`);
       if (item.ratingStats) {
         for (const [s, v] of Object.entries(item.ratingStats)) {
-          if (v) lines.push(`+${(+v).toLocaleString()} ${s}`);
+          if (v) lines.push(`${_sgn(+v)}${(+v).toLocaleString()} ${s}`);
         }
       }
       if (item.percentStats) {
         for (const [s, v] of Object.entries(item.percentStats)) {
-          if (v) lines.push(`+${v}% ${s}`);
+          if (v) lines.push(`${_sgn(v)}${v}% ${s}`);
         }
       }
       if (item.abilityBonuses) {
         for (const [s, v] of Object.entries(item.abilityBonuses)) {
-          if (v) lines.push(`+${v} ${s}`);
+          if (v) lines.push(`${_sgn(v)}${v} ${s}`);
         }
       }
       if (!lines.length) return "";

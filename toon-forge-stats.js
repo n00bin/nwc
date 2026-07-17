@@ -99,7 +99,7 @@ const TOON_FORGE_BONUS_STATS = [
   // Tracked in docs/toon_coverage.md → "Open Gaps → Toon Forge stat catalog".
   "At Will Dmg Bonus",  // Sturdy Barbed Collar V "At-Will Powers do 5% more damage" — multiplies at-will magnitudes. Wire when damage-output layer exists.
   "Damage",             // weapon tooltips' base "Damage" line (rating 50–275 on ~90 weapons in gear.json). The damage model is TIL-driven; NEVER route this to Dmg Bonus (it would read as +100%+ damage).
-  "Incoming Damage",    // gear equip bonuses with damage-taken reduction (e.g. Masterwork "-2 Incoming Damage"). Wire when survivability layer exists.
+  "Incoming Damage",    // damage-taken reduction (stored negative). WIRED via DAMAGE_BUCKET_MAP/routeDamageBoost in toon-forge-engine.js → damageBoosts.incomingDamage; the tank survivability layer reads it. Listed here only for name recognition.
   "heal_pct_damage",    // Master Boon Life Lessons R3 "Return 15% of damage done as a heal over time per rank" — converts damage→HoT. Wire when heal-sim HoT layer exists.
   "heal_pct_max_hp",    // Master Boon procs that heal/HoT/temp-HP for X% of Maximum Hit Points per rank (Death's Bulwark, Enhanced Application, Blessed Advantage). Scales heal output by current Max HP — NOT a Max HP stat bonus. Wire when heal-sim HoT/heal layer exists.
   "damage_taken",       // Master Boon Enhanced Application R3 "Reduces damage of next 1 attack taken by 15% per rank" — incoming-damage mitigation. Wire when survivability layer exists.
