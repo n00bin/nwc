@@ -2875,7 +2875,7 @@
         <p class="hint" id="sim-hint">Type your power's magnitude from the in-game tooltip. We'll show what one hit would actually do against a typical PvE enemy. See <a href="mekaniks.html#view-damage" target="_blank">Mekaniks → Damage</a> for the full formula.</p>
         <div class="row-2">
           <div class="field">
-            <label>Power magnitude
+            <label><span id="sim-mag-label">Power magnitude</span>
               <span class="hint-icon" data-tip="Type the magnitude of the power you want to test. Find it on the in-game power tooltip.">?</span>
             </label>
             <input type="number" id="sim-mag" value="800">
@@ -17666,7 +17666,14 @@
             dDefl = taken(false, true), dCritDefl = taken(true, true);
       const expected = (1 - pCritT) * (1 - pDeflT) * dStandard + pCritT * (1 - pDeflT) * dCrit
                      + (1 - pCritT) * pDeflT * dDefl + pCritT * pDeflT * dCritDefl;
-      return { expected, pCritT, pDeflT,
+      // Effective-HP reference (Obikin89 model): the boss's PLAIN hit — its Power
+      // output only, BEFORE Combat-Advantage and Critical amplification and before
+      // any player mitigation. eHP = MaxHP * expectedNoMit / expected (in
+      // computeTankSurvivalScore) = how much raw incoming your Max HP absorbs.
+      // Awareness / Critical Avoidance show up as mitigation because they cut the
+      // CA/crit amplification that `expected` (the real average) still carries.
+      const expectedNoMit = baseVal * (1 + ENEMY_POWER);
+      return { expected, expectedNoMit, pCritT, pDeflT,
         rows: [
           { sc: "Standard hit",   icon: "⚔️", desc: "Boss landed a normal hit on you. No crit, no deflect.",                              p: (1 - pCritT) * (1 - pDeflT), d: Math.round(dStandard) },
           { sc: "Crit",           icon: "💥", desc: "Boss critically hit you — extra damage from boss Critical Severity.",                p: pCritT * (1 - pDeflT),       d: Math.round(dCrit) },
@@ -17703,7 +17710,19 @@
       const selfHealPerSec = (typeof computeGearHealProcPerSec === "function") ? (computeGearHealProcPerSec(_pCritT).selfPerSec || 0) : 0;
       const healPerHit = selfHealPerSec / (HEAL_PROC.TANK_BOSS_HIT_RATE || 1);
       const effTaken = Math.max(t.expected * 0.25, t.expected - healPerHit);
-      return { score: effTaken > 0 ? maxHP / effTaken : 0, taken: effTaken, rawTaken: t.expected, sustainPerHit: healPerHit, maxHP };
+      // Effective HP (community-standard survivability metric, NW Hub / Obikin89):
+      // raw unmitigated incoming your Max HP can absorb once mitigation is applied.
+      // Uses PURE mitigation (t.expected), NOT the sustain-adjusted effTaken —
+      // Obikin89's eHP explicitly excludes special effects (heal procs), and the
+      // "mitigate X%" label must reflect defensive stats only, not self-healing.
+      const mitFraction = (t.expectedNoMit > 0) ? (t.expected / t.expectedNoMit) : 1;
+      const eHP = (mitFraction > 0) ? maxHP / mitFraction : maxHP;
+      // NOT clamped at 0: a build whose CA/crit amplification outpaces its
+      // Defense/Deflect/Awareness has NEGATIVE net mitigation (eHP < Max HP).
+      // The display must reflect that honestly, or the % and the eHP number
+      // contradict each other (0% "mitigation" next to a sub-HP absorb value).
+      const mitigationPct = (t.expectedNoMit > 0) ? (1 - t.expected / t.expectedNoMit) * 100 : 0;
+      return { score: effTaken > 0 ? maxHP / effTaken : 0, taken: effTaken, rawTaken: t.expected, sustainPerHit: healPerHit, maxHP, eHP, mitigationPct };
     }
 
     // HEALER: expected heal per cast.
@@ -17854,7 +17873,7 @@
         hintEl.innerHTML = isHealer
           ? `Type your heal's magnitude from the in-game tooltip. We'll show roughly how much it heals. <strong>Critical Severity is halved on heals</strong>, so crit-heals get a smaller bonus than crit-damage.`
           : isTank
-          ? `Type a sample boss-hit magnitude. We'll show how much damage you'd take — your defensive stats (Awareness, Defense, Crit Avoid, Deflect) cut it down.`
+          ? `Your <strong>Effective HP</strong> below is how much raw incoming your build can absorb before falling. The boss-hit magnitude only scales the per-hit-type cards — it doesn't change your Effective HP.`
           : `Type your power's magnitude from the in-game tooltip. We'll show what one hit would actually do against a typical PvE enemy.`;
       }
 
@@ -17876,14 +17895,21 @@
       if (isTank) {
         // SINGLE SOURCE OF TRUTH: same function the optimizer scores with.
         const _tank = computeTankExpectedTaken(mag);
-        expected = Math.round(_tank.expected);
         rows = _tank.rows;
         const _surv = computeTankSurvivalScore(mag);
-        if (_surv.score > 0) {
+        // HERO number = Effective HP (community-standard survivability metric,
+        // NW Hub / Obikin89) — realistic millions, unlike the old "damage taken
+        // per hit" which used a relative TIL/10 boss magnitude and read as ~25K.
+        expected = Math.round(_surv.eHP);
+        if (_surv.eHP > 0) {
+          const _mit = _surv.mitigationPct;
+          const _mitPhrase = _mit >= 0
+            ? `Your defensive stats mitigate about <strong style="color:var(--text)">${_mit.toFixed(1)}%</strong> of incoming damage.`
+            : `Your defensive stats currently <strong style="color:var(--text)">increase</strong> incoming damage by about <strong style="color:var(--text)">${Math.abs(_mit).toFixed(1)}%</strong> — the enemy's Combat Advantage and crits outweigh your Defense/Deflect. Invest in <strong style="color:var(--text)">Awareness</strong> and <strong style="color:var(--text)">Critical Avoidance</strong> first.`;
           dpsNote = `<div style="font-size:0.78rem;color:var(--text-mute);margin:0.35rem 0 0.2rem;line-height:1.55;">`
-            + `At <strong style="color:var(--text)">${Math.round(_surv.maxHP).toLocaleString()}</strong> Max HP you can absorb about `
-            + `<strong style="color:var(--text)">${_surv.score.toFixed(1)}</strong> average boss hits before dying (with no healing) — `
-            + `this "hits you can take" number is what a Tank optimization maximizes. Both mitigation and HP pool count.`
+            + _mitPhrase + ` `
+            + `Combined with <strong style="color:var(--text)">${Math.round(_surv.maxHP).toLocaleString()}</strong> Max HP, that's the raw incoming you could absorb before falling — your <strong>Effective HP</strong>, what a Tank optimization maximizes. `
+            + `It's a property of your whole build, so it doesn't change with the boss-hit magnitude above — that only scales the per-hit cards below.`
             + `</div>`;
         }
       }
@@ -17924,9 +17950,17 @@
 
       const fmtPct = (x) => (x * 100).toFixed(1) + "%";
       const heroLabel  = isHealer ? "Average heal per cast"
-                       : isTank   ? "Average damage taken per hit"
+                       : isTank   ? "Effective HP (survivability)"
                        :            "Average damage per hit";
       const valueLabel = isHealer ? "Heal" : isTank ? "Damage taken" : "Damage";
+
+      // The magnitude input is a DPS/heal concept ("your power's magnitude").
+      // For a tank it's the incoming boss hit that the per-hit cards below are
+      // scaled to — relabel so the field matches the role.
+      const magLabelEl = document.getElementById("sim-mag-label");
+      if (magLabelEl) magLabelEl.textContent = isHealer ? "Heal magnitude"
+                                             : isTank   ? "Boss hit magnitude"
+                                             :            "Power magnitude";
 
       // Explain any party-ally combat effects folded into the DPS numbers.
       let partyNote = "";
