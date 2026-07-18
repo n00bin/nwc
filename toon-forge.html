@@ -17817,10 +17817,10 @@
       const expectedNoMit = baseVal * (1 + ENEMY_POWER);
       return { expected, expectedNoMit, pCritT, pDeflT,
         rows: [
-          { sc: "Standard hit",   icon: "⚔️", desc: "Boss landed a normal hit on you. No crit, no deflect.",                              p: (1 - pCritT) * (1 - pDeflT), d: Math.round(dStandard) },
-          { sc: "Crit",           icon: "💥", desc: "Boss critically hit you — extra damage from boss Critical Severity.",                p: pCritT * (1 - pDeflT),       d: Math.round(dCrit) },
-          { sc: "Deflected",      icon: "🛡️", desc: "You deflected the hit, reducing the damage taken.",                                  p: (1 - pCritT) * pDeflT,       d: Math.round(dDefl) },
-          { sc: "Crit + Deflect", icon: "⚡", desc: "Boss critted but you deflected — softer than a full crit, but still extra damage.", p: pCritT * pDeflT,             d: Math.round(dCritDefl) },
+          { sc: "Clean hit",        icon: "⚔️", desc: "A normal boss hit — no crit, no deflect. Your Effective HP against a plain hit.",                                       p: (1 - pCritT) * (1 - pDeflT), d: Math.round(dStandard), dRaw: dStandard },
+          { sc: "Crit, no deflect", icon: "💥", desc: "Boss crits and you don't deflect — the hardest hit lands, so this is your survivability FLOOR (lowest Effective HP).", p: pCritT * (1 - pDeflT),       d: Math.round(dCrit),     dRaw: dCrit },
+          { sc: "Deflected",        icon: "🛡️", desc: "You deflect — the softest hit, so this is your best-case Effective HP.",                                                p: (1 - pCritT) * pDeflT,       d: Math.round(dDefl),     dRaw: dDefl },
+          { sc: "Crit + Deflect",   icon: "⚡", desc: "Boss crits but you deflect — softened by both.",                                                                       p: pCritT * pDeflT,             d: Math.round(dCritDefl), dRaw: dCritDefl },
         ] };
     }
     function computeTankSurvivalScore(mag) {
@@ -17990,7 +17990,7 @@
       const body = document.getElementById("sim-body");
       if (!magInput || !body) return;
 
-      const mag = +magInput.value || 100;
+      const mag = Math.max(1, +magInput.value || 100);   // clamp ≥1: a stale negative value (no min attr) must not flip damage/eHP signs
       const r = getEngineResult();
       const TIL = r.totalItemLevel || 0;
       const roleKey = (state.role || "dps").toLowerCase();
@@ -18036,7 +18036,7 @@
         hintEl.innerHTML = isHealer
           ? `Type your heal's magnitude from the in-game tooltip. We'll show roughly how much it heals. <strong>Critical Severity is halved on heals</strong>, so crit-heals get a smaller bonus than crit-damage.`
           : isTank
-          ? `Your <strong>Effective HP</strong> below is how much raw incoming your build can absorb before falling. The boss-hit magnitude only scales the per-hit-type cards — it doesn't change your Effective HP.`
+          ? `Your <strong>Effective HP</strong> is how much raw incoming your build can absorb before falling. The cards below show it under each hit outcome — your best case when you deflect, down to your <strong>floor</strong> on a clean crit.`
           : `Type your power's magnitude from the in-game tooltip. We'll show what one hit would actually do against a typical PvE enemy.`;
       }
 
@@ -18058,12 +18058,20 @@
       if (isTank) {
         // SINGLE SOURCE OF TRUTH: same function the optimizer scores with.
         const _tank = computeTankExpectedTaken(mag);
-        rows = _tank.rows;
         const _surv = computeTankSurvivalScore(mag);
         // HERO number = Effective HP (community-standard survivability metric,
         // NW Hub / Obikin89) — realistic millions, unlike the old "damage taken
         // per hit" which used a relative TIL/10 boss magnitude and read as ~25K.
         expected = Math.round(_surv.eHP);
+        // Per-outcome Effective HP (n00b 2026-07-18): instead of arbitrary
+        // damage-per-hit off a made-up boss magnitude, each card shows the eHP
+        // your build has IF every hit were that outcome — best case (Deflected)
+        // down to the FLOOR (Crit, no deflect). eHP = MaxHP * expectedNoMit /
+        // taken(outcome); the magnitude cancels in the ratio, so tanks get no
+        // magnitude input (the field is hidden below).
+        rows = _tank.rows.map(row => Object.assign({}, row, {
+          d: (row.dRaw > 0) ? Math.round(_surv.maxHP * _tank.expectedNoMit / row.dRaw) : 0
+        }));
         if (_surv.eHP > 0) {
           const _mit = _surv.mitigationPct;
           const _mitPhrase = _mit >= 0
@@ -18072,7 +18080,7 @@
           dpsNote = `<div style="font-size:0.78rem;color:var(--text-mute);margin:0.35rem 0 0.2rem;line-height:1.55;">`
             + _mitPhrase + ` `
             + `Combined with <strong style="color:var(--text)">${Math.round(_surv.maxHP).toLocaleString()}</strong> Max HP, that's the raw incoming you could absorb before falling — your <strong>Effective HP</strong>, what a Tank optimization maximizes. `
-            + `It's a property of your whole build, so it doesn't change with the boss-hit magnitude above — that only scales the per-hit cards below.`
+            + `The cards below give your Effective HP for each hit outcome. Your headline number isn't a plain average of the four — it weighs how <em>often</em> each outcome happens (you deflect most hits) and how the harder hits compound.`
             + `</div>`;
         }
       }
@@ -18115,15 +18123,25 @@
       const heroLabel  = isHealer ? "Average heal per cast"
                        : isTank   ? "Effective HP (survivability)"
                        :            "Average damage per hit";
-      const valueLabel = isHealer ? "Heal" : isTank ? "Damage taken" : "Damage";
+      const valueLabel = isHealer ? "Heal" : isTank ? "Effective HP" : "Damage";
 
       // The magnitude input is a DPS/heal concept ("your power's magnitude").
-      // For a tank it's the incoming boss hit that the per-hit cards below are
-      // scaled to — relabel so the field matches the role.
+      // TANKS: the per-outcome cards now show Effective HP, which is
+      // magnitude-independent (the boss hit cancels in the eHP ratio), so the
+      // magnitude field is HIDDEN entirely for tanks. DPS/heal keep it, relabeled.
       const magLabelEl = document.getElementById("sim-mag-label");
-      if (magLabelEl) magLabelEl.textContent = isHealer ? "Heal magnitude"
-                                             : isTank   ? "Boss hit magnitude"
-                                             :            "Power magnitude";
+      if (magLabelEl) {
+        magLabelEl.textContent = isHealer ? "Heal magnitude" : "Power magnitude";
+        const magField = magLabelEl.closest(".field");
+        if (magField) magField.style.display = isTank ? "none" : "";
+      }
+      // The magnitude + Content Zone fields share a 2-col grid (.row-2). When the
+      // magnitude field is hidden for tanks, CSS grid still reserves its column,
+      // leaving Content Zone squeezed to half-width with a dead blank half — so
+      // span Content Zone across the full row in tank mode (grid-column:1/-1,
+      // the existing in-file idiom). Reset for DPS/heal.
+      const zoneField = document.getElementById("sim-zone-field");
+      if (zoneField) zoneField.style.gridColumn = isTank ? "1 / -1" : "";
 
       // Explain any party-ally combat effects folded into the DPS numbers.
       let partyNote = "";
