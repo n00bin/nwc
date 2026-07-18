@@ -12757,6 +12757,16 @@
       // (setName, stat) ONCE across all equipped pieces. Correctly-authored
       // one-carrier+marker sets are unaffected (only one piece has the stat).
       const seenSetBonus = new Set();
+      // Weapon MH/OH pair dedup (2026-07-18): a weapon set's "Equip" proc is
+      // printed on BOTH the Main Hand and Off Hand (display propagation, same as
+      // set bonuses) but it is ONE effect — a named buff that does not stack with
+      // itself. It is typed "Equip", not "Set", so seenSetBonus above misses it
+      // and the crediting loop counted it once PER WEAPON = twice (n00b caught
+      // Blood Bargain's +10% Critical Avoidance reading as +20%). Credit each
+      // (name, stat) once across the equipped weapon pair. Scoped to the MH/OH
+      // slots so the 353 same-named Equip bonuses that span OTHER slots (rings,
+      // armor, …) — which may legitimately stack — are left untouched.
+      const seenWeaponProc = new Set();
 
       // Helper: ingest one item's equipBonuses for one source label.
       // alwaysActive (default true): if false, this bonus is conditional
@@ -12799,8 +12809,9 @@
         }
         return { names, aboveN, belowN };
       }
-      function ingestEquipBonuses(label, item) {
+      function ingestEquipBonuses(label, item, slot) {
         if (!item || !Array.isArray(item.equipBonuses)) return;
+        const isWeaponSlot = (slot === "Main Hand" || slot === "Off Hand");
         const _hg = _healthGateInfo(item);
         const _hp = (state.currentHealthPct == null ? 100 : +state.currentHealthPct);
         for (const eb of item.equipBonuses) {
@@ -12888,6 +12899,16 @@
             if (_mx != null && eb.amount < _mx - 1e-9) continue;   // not the max instance — the max one credits
             seenSetBonus.add(_setKey);
           }
+          // Weapon MH/OH pair dedup — see seenWeaponProc above. The same-named
+          // "Equip" proc printed on both halves of a weapon pair is one buff;
+          // credit its (name, stat) once across the equipped MH+OH. Guarded by
+          // eb.name so generic stat-only Equip bonuses are unaffected, and by
+          // isWeaponSlot so only the weapon pair (never rings/armor/etc.) dedups.
+          if (isWeaponSlot && eb.type !== "Set" && eb.name) {
+            const _wpKey = eb.name + " " + eb.stat;
+            if (seenWeaponProc.has(_wpKey)) continue;
+            seenWeaponProc.add(_wpKey);
+          }
           const setTag = (eb.type === "Set")
             ? ` (${(setPieceCounts[eb.setName] || 0)}-pc)` : "";
           const baseLabel = (eb.type === "Set")
@@ -12945,7 +12966,7 @@
       }
       if (gear) {
         for (const slotLabel in gear) {
-          ingestEquipBonuses(`Gear ${slotLabel}: ${gear[slotLabel].name}`, gear[slotLabel]);
+          ingestEquipBonuses(`Gear ${slotLabel}: ${gear[slotLabel].name}`, gear[slotLabel], slotLabel);
         }
       }
       if (artifacts.primary) ingestEquipBonuses(`Artifact: ${artifacts.primary.name}`, artifacts.primary);
