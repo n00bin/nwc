@@ -2,6 +2,16 @@
 
 This is the **Data Steward team's** record of what data has been *proven correct against an in-game screenshot.* It is maintained by the `/steward` command (see `~/.claude/commands/steward.md`).
 
+## Owner tank proc audit — Shadow Demon + Blood Bargain — 2026-07-18
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| power 11 | Shadow Demon's Presence | companion_powers | FIXED — proc interval **10s→30s** ("for one deflect every 30 seconds, increase Deflect Severity by 90%"); damage-back prose corrected 1.2→**112 physical** + 20%-chance framing. The **+90% Deflect Severity buff is REAL** (confirmed in-game) — a mid-investigation nw-hub scrape had OMITTED that line and I briefly mis-flagged it as fabricated; the ground-truth tooltip corrected that. Impact on owner's Justicar: the 10s error over-credited Deflect Severity (+84% @ ~39% uptime → showed CAPPED 120); corrected to +50% @ ~23% uptime → **real Deflect Severity ≈90** (under the 120 cap). Buff DURATION not shown on tooltip (engine assumes 8s) — remaining uncertainty. | Screenshot 2026-07-18 042636.png | 2026.03.17a | 2026-07-18 |
+
+**Related engine fix (same session, `toon-forge.html` commit f458399f):** weapon MH/OH pair "Equip" procs were double-counted — Blood Bargain's on-crit-struck +10% Critical Avoidance / +5% Power (and Umbral Stride) is printed on BOTH weapons but is one non-stacking effect, and `ingestEquipBonuses` (per-item) summed it once per weapon. Added `seenWeaponProc` dedup: credit each (name,stat) Equip proc once across the equipped MH+OH; **weapon-slot-scoped** so the 353 same-named non-weapon Equip bonuses (which may legitimately stack) are untouched. Only 6 combos qualify (Blood Bargain CA+Power, Umbral Stride ×4). On owner's Justicar this dropped CA from a false 90 (capped) to a real ~84. Critic-APPROVED (independent code+data verification, no blockers).
+
+**Open follow-up (NOT fixed — pending owner in-game read):** `conditionalDamageUptime` misclassifies "struck by a Critical Strike" procs as the OUTGOING crit rate (2.0/s → ~88% uptime) instead of an incoming rate (`struck` 0.3/s → ~27%) — the `/critical/` branch is tested before `/struck/`. Affects ~11 defensive tank procs (Blood Bargain CA; Deflect-Sev / Max-HP "Ghosted"-style boots). Even 27% likely overstates it (high CA suppresses being crit-struck). Awaiting owner's read on realistic in-game uptime before finalizing.
+
 ## Owner calibration session — Erik (Paladin Justicar tank) — 2026-07-17
 
 Full defensive stat-panel calibration of the owner's tank. After two build-loadout corrections in Toon Forge (offense enchant one Rubellite Tourmaline → **Celestial Ruby**; Snowtusk **Enlightened Fortitude → Enlightened Brutality**), all 15 stat ratings AND percentages, Max HP (2,987,257 vs game 2,987,258), Damage (14,974), and TIL (148,737) match the in-game panel exactly. Those two were *build* fixes, not data. The one **data** fix:
