@@ -13134,7 +13134,15 @@
             if (extraStacks <= 0) continue;
             const factor = (eff.scope === "party") ? 1 : procU;
             if (factor < 1) weightedAny = true; else if ((eff.value || 0) > 0) _procHasFullPart = true;
-            const amount = (eff.value || 0) * extraStacks * scale * factor;
+            // `eff.noRarityScale: true` marks a FIXED proc-buff percentage that
+            // does NOT scale with the companion's rarity/IL — only damage
+            // magnitudes do (n00b ruling 2026-07-18, re: Shadow Demon's flat +90%
+            // Deflect Severity). Default (no flag) keeps the rarity scale for
+            // backward compatibility. Must match companions-page.js + gen-item-
+            // pages.js, which scale the SAME field. A broader "all companion
+            // proc-% buffs are flat" audit + a shared scale helper is a follow-up.
+            const effScale = eff.noRarityScale ? 1 : scale;
+            const amount = (eff.value || 0) * extraStacks * effScale * factor;
             if (eff.type === "percent") {
               procPercent[eff.stat] = (procPercent[eff.stat] || 0) + amount;
             } else {

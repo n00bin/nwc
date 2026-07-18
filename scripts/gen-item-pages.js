@@ -513,7 +513,9 @@ function renderProc(proc, il, baseIL) {
     for (var i = 0; i < proc.statEffects.length; i++) {
       var se = proc.statEffects[i]; var scope = se.scope ? ' (' + se.scope + ')' : '';
       var sv = se.value;
-      if (typeof sv === 'number' && il && baseIL && il !== baseIL) {
+      // se.noRarityScale = flat proc-buff % (doesn't grow with rarity/IL); must
+      // match toon-forge.html engine + companions-page.js. (Shadow Demon +90% Deflect Sev.)
+      if (typeof sv === 'number' && il && baseIL && il !== baseIL && !se.noRarityScale) {
         sv = sv * il / baseIL;
         sv = (se.type === 'percent') ? Math.round(sv * 100) / 100 : Math.round(sv);
       }

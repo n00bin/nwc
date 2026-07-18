@@ -499,7 +499,10 @@
         var se = proc.statEffects[i];
         var scope = se.scope ? " (" + se.scope + ")" : "";
         var sv = se.value;
-        if (typeof sv === "number" && il && baseIL && il !== baseIL) {
+        // se.noRarityScale = a FLAT proc-buff % that doesn't grow with rarity/IL
+        // (only damage magnitudes do) — e.g. Shadow Demon's flat +90% Deflect
+        // Severity. Must match toon-forge.html's engine + gen-item-pages.js.
+        if (typeof sv === "number" && il && baseIL && il !== baseIL && !se.noRarityScale) {
           sv = sv * il / baseIL;
           sv = (se.type === "percent") ? Math.round(sv * 100) / 100 : Math.round(sv);
         }
