@@ -3011,7 +3011,7 @@
             <input type="checkbox" id="dstats-hide-party-buffs">
             Hide party buffs
           </label>
-          <label class="dstats-hide-buffs" id="dstats-show-cond-label" title="Checked (default): in-combat bonuses are hidden — stats match your in-game out-of-combat tooltip. Uncheck to add combat-only procs and stacks to the totals.">
+          <label class="dstats-hide-buffs" id="dstats-show-cond-label" title="Checked (default): in-combat bonuses are hidden — stats match your in-game out-of-combat tooltip. Uncheck to add combat-only procs and stacks to the totals. Tip: turn all three Hide switches (buffs, party buffs, in-combat) OFF and these totals match the footer's full-combat numbers.">
             <input type="checkbox" id="dstats-show-cond" checked>
             Hide in-combat bonuses
           </label>
@@ -13716,6 +13716,80 @@
       "Action Point Gain":  "AP Gain"
     };
 
+    // Footer FULL-PROCS value for one stat — the "everything ACTIVE" state:
+    // in-combat procs lifted to their full when-active value (amount/uptime),
+    // PLUS consumable + party buffs (the footer never hides anything). Owner
+    // ruling 2026-07-18: the footer shows this full state, so it equals the
+    // Detailed panel with ALL THREE hide switches OFF ("Hide in-combat bonuses"
+    // + "Hide buffs" + "Hide party buffs"); the panel's DEFAULT (all three ON)
+    // stays out-of-combat + unbuffed = the in-game tooltip.
+    //
+    // This is a HAND-SYNCED REPLICA of formatStatRow's show-conditional lift
+    // (its `else` rebase branch), NOT a shared function — if either changes,
+    // re-verify with scripts/_footer_match*.js. (A shared computeStatView() both
+    // call is the durable fix — logged as a follow-up.) Flat stats other than
+    // Max HP just lift the rating channel here; Max HP is composed separately by
+    // composeMaxHP (its procs ride the percent channel through a multiplicative
+    // formula this simple path can't reproduce).
+    function quickStatFull(s, def, TIL) {
+      const contribs = s.contributors || [];
+      const liftRating = contribs
+        .filter(c => c.conditional && c.uptime && c.type === "rating")
+        .reduce((a, c) => a + ((c.amount || 0) / c.uptime - (c.amount || 0)), 0);
+      const liftPercent = contribs
+        .filter(c => c.conditional && c.uptime && c.type === "percent")
+        .reduce((a, c) => a + ((c.amount || 0) / c.uptime - (c.amount || 0)), 0);
+      if (def.kind === "flat") return { flat: (s.flat || 0) + liftRating, finalPct: null };
+      // No uptime-tagged procs to lift ⇒ nothing to recompute; use the engine's
+      // finalPct verbatim (exactly what formatStatRow does — it only rebases when
+      // a lift exists — so no rounding drift vs the old footer on proc-less stats).
+      if (!liftRating && !liftPercent) return { flat: null, finalPct: s.finalPct };
+      const ratingTotal = contribs.filter(c => c.type === "rating").reduce((a, c) => a + (c.amount || 0), 0) + liftRating;
+      const percentTotal = (s.percentTotal || 0) + liftPercent;
+      let ratingContribPct, finalPct;
+      if (def.kind === "fixed" && def.flatRating) {
+        ratingContribPct = ratingTotal / def.flatRating;
+        finalPct = ratingContribPct + percentTotal;
+      } else {
+        ratingContribPct = ratingToPercentLocal(ratingTotal, TIL, def.cap);
+        finalPct = ratingContribPct + percentTotal;
+      }
+      // Cap applies only to rating-derived stats — mirrors formatStatRow, whose
+      // rebase() clamps inside the non-fixed branch only; fixed stats (Recharge
+      // Speed / AP Gain) are uncapped.
+      if (def.kind !== "fixed" && typeof def.cap === "number" && finalPct > def.cap) finalPct = def.cap;
+      return { flat: null, finalPct };
+    }
+
+    // Max HP for a given view — the calibrated THREE-BUCKET multiplicative
+    // composition (in-game proven 2026-07-04). This is a HAND-SYNCED REPLICA of
+    // the _hdlMaxHP block in openDetailedStats (NOT a shared function) so the
+    // footer and the Detailed-panel headline show the same number; if either
+    // changes, re-verify with scripts/_maxhp_dom2.js. showConditional=true lifts
+    // uptime procs to full (amount/uptime); hideBuffs mirrors the panel's "Hide
+    // buffs" switch. (A shared Max-HP composer both call is the durable fix —
+    // logged as a follow-up.)
+    function composeMaxHP(hpStat, TIL, role, con, showConditional, hideBuffs) {
+      const keep = c => (showConditional || !c.conditional)
+        && (!hideBuffs || !isConsumableBuffContributor(c));
+      const fullVal = c => (c.conditional && c.uptime ? (c.amount || 0) / c.uptime : (c.amount || 0));
+      const roleMult = ({ dps: 1.00, heal: 1.10, tank: 1.20 })[String(role || "dps").toLowerCase()] || 1.0;
+      const base = Math.round((TIL || 0) * 10 * roleMult);
+      const flat = (hpStat.contributors || [])
+        .filter(c => c.type === "rating" && keep(c)).reduce((sum, c) => sum + fullVal(c), 0);
+      let pctEnch = 0, pctBoonOv = 0, pctBase = 0;
+      for (const c of (hpStat.contributors || []).filter(c => c.type === "percent" && keep(c))) {
+        const src = c.source || "";
+        if (/^(?:Buff: )?Enchant /.test(src)) pctEnch += fullVal(c);
+        else if (/^Boon: /.test(src) || /^(?:Buff: )?Overload /.test(src)) pctBoonOv += fullVal(c);
+        else pctBase += fullVal(c);
+      }
+      return Math.round((base + flat)
+        * (1 + con * 0.005 + pctBase / 100)
+        * (1 + pctBoonOv / 100)
+        * (1 + pctEnch / 100));
+    }
+
     function quickStats() {
       const r = getEngineResult();
       // window.__tfStatFocus: optional role override for the footer strip —
@@ -13724,6 +13798,7 @@
       // stat lineup being chased. Cleared when the role goal is picked.
       const role = (window.__tfStatFocus || state.role) || "dps";
       const names = ROLE_QUICK_STATS[role] || ROLE_QUICK_STATS[state.role || "dps"];
+      const TIL = r.totalItemLevel;
       return names.map(name => {
         const s = r.stats[name];
         const def = (typeof TOON_FORGE_STAT_BY_NAME !== "undefined") ? TOON_FORGE_STAT_BY_NAME[name] : null;
@@ -13733,9 +13808,18 @@
           return { name: label, val: 0, suffix: "%", cap: false, pct: 0 };
         }
 
-        // Flat stats (Maximum Hit Points, Class Resource Max)
+        const full = quickStatFull(s, def, TIL);
+
+        // Flat stats (Maximum Hit Points, Class Resource Max). Max HP uses the
+        // calibrated three-bucket composition (full procs) so it matches the
+        // Detailed headline with in-combat bonuses shown; other flat stats use
+        // the simple lifted value. Role mult uses the REAL role (state.role),
+        // not the __tfStatFocus lineup override.
         if (def.kind === "flat") {
-          const k = Math.round((s.flat || 0) / 1000);
+          const flatVal = (def.name === "Maximum Hit Points")
+            ? composeMaxHP(s, TIL, state.role || "dps", (state.abil && state.abil.con) || 10, true, false)
+            : (full.flat || 0);
+          const k = Math.round(flatVal / 1000);
           return {
             name: label,
             val: k,
@@ -13745,13 +13829,15 @@
           };
         }
 
-        // Percent-style stats
-        const val = Math.round(s.finalPct);
+        // Percent-style stats — full-procs finalPct so the strip matches the
+        // Detailed panel with in-combat bonuses shown.
+        const fp = full.finalPct;
+        const val = Math.round(fp);
         const capNum = (typeof def.cap === "number") ? def.cap : null;
-        const capReached = capNum !== null && s.capReached;
+        const capReached = capNum !== null && fp >= capNum - 0.05;
         const pct = (capNum !== null)
-          ? Math.min(100, (s.finalPct / capNum) * 100)
-          : Math.min(100, s.finalPct);   // uncapped: treat % directly
+          ? Math.min(100, (fp / capNum) * 100)
+          : Math.min(100, fp);   // uncapped: treat % directly
         return { name: label, val, suffix: "%", cap: capReached, pct };
       });
     }
