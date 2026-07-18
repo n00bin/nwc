@@ -351,3 +351,56 @@ premium/private/ copies — AI-review backend `score.unit` and the progress-over
 "effective HP (mitigation + Max HP)"; the role-objective header + realScore comments no longer
 claim a self-heal credit (critic round 3 caught one label twin left stale after the additive→pure-eHP
 revert). TASK 2 (Paladin over-cap Crit Avoid) still pending.
+
+**TASK 2 RESOLUTION (2026-07-17, owner ruling — an OPT-IN TOGGLE, not the always-on credit
+originally proposed above).** The owner rejected touching the engine/score directly: *"leave
+everything where it is and maybe build in … a toggle … for the optimizer to say that crit avoid
+it 10% so that it tries to build 10% over — this is silent in the engine, never show, only by the
+optimizer toggle."* So instead of an always-on Crit-Avoidance over-cap credit, TASK 2 shipped as a
+**Paladin-only, opt-in optimizer toggle** in `js/optimizer-local.js` (the buffer must be invisible
+everywhere except that it steers item/boon selection):
+
+- **UI:** a checkbox in the Optimize dialog, *"Crit Avoidance buffer (+10% over cap …)"*, rendered
+  ONLY when `state.class === 'Paladin'`. `OPT.critBuffer` / `tfOptimizerToggles.critBuffer`, default
+  off. Subtext discloses it applies to the **Group-Role** build, not the ⚔ Damage objective.
+- **Mechanism (isolated to SCORING only):** `caBufferBonus()` = 0 at/below the 90 cap, ramping
+  linearly to 1 at uncapped ≥ cap+10 (uncapped = `ratingContribPct + percentTotal`, pre-clamp). Added
+  to the tank AND heal branches of `expectedDamage()` weighted `× *_CAP_NUDGE` (0.002) — same bracket
+  and weight as the existing cap nudge, so it can only win survivability-/heal-**neutral** ties
+  (< ~0.2% of real eHP/healing), never trade a meaningful survivability delta for CA. Gated by
+  `critBufferOn()` (`OPT.critBuffer && state.class === 'Paladin'`) → returns 0 (no-op) for everyone
+  else; toggle-off is provably byte-identical to before.
+- **Why NOT the cap ladder:** a first cut moved CA's cap-ladder target to cap+10, but `capsDoneOf()`/
+  `fillOf()` also feed the member-facing "Build order: X of 5 mains at cap" note — so a buffer-on
+  Paladin would have seen "4 of 5" while the sheet showed CA capped at 90 (a visible contradiction).
+  Reverted; the ladder + flat-% weights are byte-unchanged. Every gear/enchant/overload/artifact/comp/
+  boon candidate is already scored by the full `expectedDamage()` (`tryBest`/`boonReallocPhase`), so
+  the single `caBufferBonus` nudge steers the search with no pruning exception needed.
+- **Silence — verified across 4 critic rounds + headless runs:** engine hard-clamps CA `finalPct` at
+  90 (toon-forge.html untouched); the build-order note, under-cap explainers, and tail note read the
+  capped `finalPct` (CA never flagged); the tank tail is Power/Combat-Advantage (no CA). The one real
+  leak the critic found — the Forgemaster **AI-review payload** (`runAiReview`→`slim()`), which quotes
+  raw item stats & prose — is scrubbed when `res.critBuffer` (stamped on `runOptimize`'s return, since
+  `critBufferOn()` is scoped to `runOptimize` and unreachable in the sibling `runAiReview`): CA is
+  removed from `rating`/`percent` (cloned first — they alias shared GEAR_DATA), from `bonuses[].stat/
+  name`, and from ALL free-text (`description`/`effect`/`proc.effect`/bonus `desc`) via
+  `CA_RE = /Crit(ical)?\s*Avoid|\bCA\b/i` (the `\bCA\b` catches the data's bare-"CA" abbreviation used
+  in ~9 proc descriptions; it over-redacts ~7 "CA damage"=Combat-Advantage lines on buffer-on runs —
+  an accepted trade). Accepted residual (disclosed): the full `serializeBuild()` + raw diff item NAMES
+  in the POST body bypass `slim()` and can't be scrubbed without breaking the review, so a
+  Neverwinter-knowledgeable model could in theory infer over-cap CA from item names.
+- **Empirical proof (headless optimize on the owner's tank "Erik", Paladin/Justicar):** toggle OFF the
+  optimizer let CA drift to uncapped **91.34** (dropped CA rating 50→46.5) chasing neutral gains;
+  toggle ON it held CA at uncapped **93.87** (kept CA rating maxed at 50) — a **+2.5-pt buffer above
+  the 90 cap**, with the character sheet showing **90** in both cases. Cost: eHP 26.17M vs 26.30M
+  (**≈0.5%**), the deliberate small tradeoff of building a depletion buffer. It reached +3.87 (not the
+  full +10) because Erik's gear can't cheaply support more — the nudge correctly stops where further CA
+  stops being worth it rather than forcing a large eHP loss.
+- **Deploy:** `js/optimizer-local.js` is gitignored and served only on localhost (live-site optimizer
+  delivery is still disabled pre-launch — see toon-forge.html), so this change is not committed. The
+  `premium/private/optimizer-local.js` at-launch copy is ~918 lines BEHIND `js/` (predates the whole
+  formula-driven migration, not just this toggle) — it needs a wholesale re-sync at launch prep, NOT a
+  piecemeal hand-port; flagged to the owner as a separate decision.
+- **Maintenance note (critic):** the AI-payload CA scrub is a denylist verified against the current
+  gear.js/artifacts.js. Re-run the sweep (`Critical Avoidance` and `\bCA\b` in description/effect
+  fields) against any future data additions before assuming full coverage.
