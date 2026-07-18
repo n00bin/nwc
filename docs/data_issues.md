@@ -1990,3 +1990,38 @@ tank mitigation UI) were FIXED. Remaining items need n00b verification or are lo
 - **MINOR — procHeal scope default:** computeGearHealProcPerSec routes any procHeal without
   scope:"self" to allyPerSec. A typo (e.g. "ally ") would silently mis-route. Add a
   scope-value check to the gear intake checklist when ally-scope heal procs are first added.
+
+## PENDING — Wondrous Dragon belt family (split started 2026-07-18)
+The old single `Wonderous Dragon` buff (id 98, +6%/+6% vs Dragons) was actually one
+color of a whole family of belt figurines — each color a distinct item with a *different*
+equip bonus, plus a **cosmetic** illusionary-dragon summon (no combat effect). Split into
+per-color entries from n00b's auction-house tooltips (all **Rare** quality, verified
+2026-07-18):
+- id 98 **Wondrous White Dragon** — +1% Damage & +1% Damage Resistance vs Dragons
+- id 143 **Wondrous Red Dragon** — +1% Action Point Gain (NOT dragon-conditional)
+- id 144 **Wondrous Green Dragon** — +2% Damage Resistance vs Dragons
+
+**Still pending screenshots (do not fabricate):**
+1. Equip bonuses for the remaining colors seen in the AH list but without tooltips:
+   **Black, Blue, Gold** (and any metallic colors — Silver/Bronze/Brass/Copper — if they exist).
+2. The per-rarity ladder for every color. Only Rare is verified. Community sheet
+   (`docs/reference/sheets/sheet2__Consumables_and_belt_Items.csv`) claims the White/damage
+   variant reaches ~+6% at Epic–Mythic; exact Epic/Legendary/Mythic values unconfirmed.
+   Stored notes say "scales with rarity" until a tooltip ladder lands.
+
+## Crafted Potion of [Stat] family (added 2026-07-18)
+Added the missing endgame crafted stat potions as a per-stat family (mirrors the
+Scroll of Fate split), all `Crafted Potion of [Stat] Rank 14, +1` = +5,600 rating,
+1 hour, persists through death, one stat-potion active at a time:
+- id 61 **Power** — converted from the old mislabeled "Potion of Power Rank 13 +1"
+  (+5,100 → +5,600)
+- id 145 **Accuracy**, id 146 **Critical Strike**, id 147 **Defense**, id 148 **Deflect**
+
+**Provenance:** Deflect is screenshot-verified 2026-07-18 (Rank 4 = 3,000, Rank 4+1 =
+3,600, Rank 14 = 5,000; R14+1 = 5,600 per sheet). Power/Accuracy/Crit Strike/Defense
+values are from `sheet2__Consumables_and_belt_Items.csv` ("+5,600 of: Power / Accuracy /
+Critical Strike / Defense / Deflect"), not individually screenshotted.
+
+**Pending:** confirm whether the crafted line ALSO exists for Critical Severity,
+Awareness, Critical Avoidance, and Combat Advantage (sheet lists only the 5 above; not
+yet added — do not fabricate). Grab a tooltip for any that exist.

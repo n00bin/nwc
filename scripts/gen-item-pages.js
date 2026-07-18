@@ -296,7 +296,18 @@ build('artifacts', loadJSON('artifacts.json'), {
 build('consumables', loadJSON('buffs.json'), {
   breadcrumb: 'Consumables', backHref: 'consumables.html', backLabel: 'View in the full Consumables database',
   render: function (b, name) {
-    var parts = [statsBlock(b)];
+    // statsBlock only renders rating/percent/ability stats. Buffs that grant a
+    // vs-enemy damage bonus carry it separately in enemyType+damagePct (e.g.
+    // Wondrous White Dragon's +1% vs Dragon, Scroll of Dragon Slaying's +10%), so
+    // append it as a stat row — otherwise that whole effect is dropped from the
+    // detail page. Matches the "+X% vs <enemy>" chip on the consumables grid.
+    var statsHtml = statsRows(b.ratingStats, 'rating') + statsRows(b.percentStats, 'percent') + statsRows(b.abilityBonuses, 'rating');
+    if (b.enemyType && b.damagePct) {
+      statsHtml += '<div class="stat-row"><span class="stat-name">' + esc('Damage vs ' + b.enemyType)
+                +  '</span><span class="stat-value stat-positive">' + esc('+' + b.damagePct + '%') + '</span></div>';
+    }
+    var parts = [];
+    if (statsHtml) parts.push('<div class="item-sec"><h2>Stats</h2>' + statsHtml + '</div>');
     var note = showText(b.notes);
     if (note) parts.push('<div class="item-sec"><h2>Effect</h2><div class="item-effect">' + esc(note) + '</div></div>');
     var meta = [];
