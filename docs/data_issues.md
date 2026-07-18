@@ -2001,13 +2001,29 @@ per-color entries from n00b's auction-house tooltips (all **Rare** quality, veri
 - id 143 **Wondrous Red Dragon** — +1% Action Point Gain (NOT dragon-conditional)
 - id 144 **Wondrous Green Dragon** — +2% Damage Resistance vs Dragons
 
-**Still pending screenshots (do not fabricate):**
-1. Equip bonuses for the remaining colors seen in the AH list but without tooltips:
-   **Black, Blue, Gold** (and any metallic colors — Silver/Bronze/Brass/Copper — if they exist).
-2. The per-rarity ladder for every color. Only Rare is verified. Community sheet
-   (`docs/reference/sheets/sheet2__Consumables_and_belt_Items.csv`) claims the White/damage
-   variant reaches ~+6% at Epic–Mythic; exact Epic/Legendary/Mythic values unconfirmed.
-   Stored notes say "scales with rarity" until a tooltip ladder lands.
+**FAMILY COMPLETE — all 6 colors added (2026-07-18):**
+- id 98 **White** — Damage & DR vs Dragons (both). Rare +1%, Legendary +3%, Mythic +6% (ladder verified).
+- id 143 **Red** — Action Point Gain. Rare +1% → Mythic +3%.
+- id 144 **Green** — DR vs Dragons only (defensive). Rare +2%.
+- id 149 **Blue** — +2% Gold Gain + chance at Rough Astral Diamonds (wealth/economy; no combat stat). → Mythic +6%.
+- id 150 **Gold** — the premium color, ALL three lines (Mythic): +6% Damage & DR vs Dragons, +3% AP Gain, +6% Gold Gain + AD.
+- id 151 **Black** — Damage vs Dragons only (offensive; mirror of Green). Legendary +6% verified;
+  STORED AT RARE +2% derived from the verified 2×-per-portion pattern (see below). Rare tooltip not captured.
+
+**Verified family pattern:** single-effect colors give 2× the White (both-effect) per-portion value
+at the same rarity — Green Rare +2% DR = 2× White Rare DR +1%; Black Legendary +6% dmg = 2× White
+Legendary dmg +3%. Two independent anchors, so Black Rare = 2× White Rare dmg (+1%) = **+2%** (derived).
+
+**Rarity ceilings (from Mythic Gold tooltip + Legendary White):** White/dragon-combat 1%→3%→6%
+(Rare/Legendary/Mythic), AP 1%→3%, Gold 2%→6%. White/Red/Green/Blue/Black STORED AT RARE; Gold at Mythic.
+
+**Still open (do not fabricate):**
+1. Black's actual Rare tooltip (currently +2% derived, not screenshotted).
+2. Green's and Black's Mythic values (single-effect colors' top tier unconfirmed).
+3. Any other metallic colors (Silver/Bronze/Brass/Copper) — unverified whether they exist.
+4. Full Epic-tier values for each color, if we ever want per-rarity tier toggles.
+5. **Rarity normalization decision:** family is stored at mixed rarities (most at Rare, Gold at
+   Mythic). Could normalize all to one tier for cleaner comparison — pending n00b's call.
 
 ## Crafted Potion of [Stat] family (added 2026-07-18)
 Added the missing endgame crafted stat potions as a per-stat family (mirrors the
@@ -2017,8 +2033,8 @@ Scroll of Fate split), all `Crafted Potion of [Stat] Rank 14, +1` = +5,600 ratin
   (+5,100 → +5,600)
 - id 145 **Accuracy**, id 146 **Critical Strike**, id 147 **Defense**, id 148 **Deflect**
 
-**Provenance:** Deflect is screenshot-verified 2026-07-18 (Rank 4 = 3,000, Rank 4+1 =
-3,600, Rank 14 = 5,000; R14+1 = 5,600 per sheet). Power/Accuracy/Crit Strike/Defense
+**Provenance:** Deflect is fully screenshot-verified 2026-07-18 (Rank 4 = 3,000, Rank 4+1 =
+3,600, Rank 14 = 5,000, Rank 14+1 = 5,600 — all confirmed). Power/Accuracy/Crit Strike/Defense
 values are from `sheet2__Consumables_and_belt_Items.csv` ("+5,600 of: Power / Accuracy /
 Critical Strike / Defense / Deflect"), not individually screenshotted.
 

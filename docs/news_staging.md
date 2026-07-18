@@ -40,9 +40,11 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - Wondrous Dragon belts split into their real color family. What we listed as one
   generic "Wonderous Dragon" is actually several different belt items — one per
   dragon color, each with its own bonus and a cosmetic dragon it summons. Corrected
-  the name spelling and added the three verified from in-game tooltips: White
-  (+Damage & Damage Resistance vs Dragons), Red (+Action Point Gain), and Green
-  (+Damage Resistance vs Dragons). More colors/rarities to follow.
+  the name spelling and added five verified from in-game tooltips: White (+Damage &
+  Damage Resistance vs Dragons), Red (+Action Point Gain), Green (+Damage Resistance
+  vs Dragons), Blue (+Gold Gain & a chance at Rough Astral Diamonds), and the premium
+  Gold (all three: +6% dragon damage/resistance, +3% Action Points, +6% Gold Gain), and
+  Black (offensive — Damage vs Dragons). All six colors are now in the database.
 - Crafted stat potions added (the +5,600 endgame ones). We were missing the top-rank
   Crafted Potion of [Stat] line players actually run — now in for Power, Accuracy,
   Critical Strike, Defense and Deflect (Rank 14, +1). One stat potion active at a time,
