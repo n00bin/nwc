@@ -4131,6 +4131,18 @@
             ${vals.map(v => `<option value="${_escAttr(String(v))}"${String(v) === cur ? " selected" : ""}>${_escHTML(pf.optLabel ? pf.optLabel(v, _pickerState.items) : String(v))}</option>`).join("")}
           </select>`);
         }
+        // Insignia rarity rides in the SAME filter bar (matching the collar
+        // picker's types/shapes/levels row). Not an "All …" filter — every
+        // insignia exists at every rarity — it sets which rarity the list
+        // previews at and which rarity your pick is saved with.
+        if (_pickerState.dataType === "insignia") {
+          const INS_TIERS = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
+          const curInsTier = _pickerState.insTier || "Mythic";
+          selects.push(`<select class="picker-collar-filter" id="picker-ins-tier" aria-label="Rarity you own"
+              title="Rarity you own — the list previews at this rarity and your pick is saved with it">
+            ${INS_TIERS.map(t => `<option value="${t}"${t === curInsTier ? " selected" : ""}>${t}</option>`).join("")}
+          </select>`);
+        }
         if (selects.length) html += `<div class="picker-collar-filters">${selects.join("")}</div>`;
       }
       if (isGearPicker) {
@@ -4174,18 +4186,8 @@
           <span>Add Missing Insignia</span>
           <span class="picker-add-missing-hint">Don't see your insignia? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
-        // Insignia rarity picker (same pattern as the enchant "Tier you own"):
-        // choose the rarity here; every insignia below previews AND is picked
-        // at that rarity. The stable row then just displays what was picked —
-        // no separate dropdown to remember afterwards.
-        const INS_TIERS = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
-        const curInsTier = _pickerState.insTier || "Mythic";
-        html += `<div class="picker-collar-filters" style="align-items:center;gap:0.4rem;">
-          <span style="font-size:0.78rem;opacity:0.85;">Rarity you own:</span>
-          <select class="picker-collar-filter" id="picker-ins-tier" aria-label="Insignia rarity">
-            ${INS_TIERS.map(t => `<option value="${t}"${t === curInsTier ? " selected" : ""}>${t}</option>`).join("")}
-          </select>
-        </div>`;
+        // (Rarity dropdown lives in the filter bar above, next to the
+        //  type + stat filters — same layout as the collar picker.)
       }
       const isBuffPicker = _pickerState.dataType === "buff";
       if (isBuffPicker) {
