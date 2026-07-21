@@ -4126,10 +4126,27 @@
       if (pickerFilters.length) {
         const selects = [];
         for (const pf of pickerFilters) {
-          const vals = Array.from(new Set(_pickerState.items.map(it => pf.get ? pf.get(it) : it[pf.field]).filter(v => v != null)));
-          if (vals.length < 2) continue; // nothing to filter on (e.g. a single-category slot)
-          vals.sort(pf.numeric ? (a, b) => a - b : (a, b) => String(a).localeCompare(String(b)));
+          const getVal = (it) => pf.get ? pf.get(it) : it[pf.field];
+          const baseVals = Array.from(new Set(_pickerState.items.map(getVal).filter(v => v != null)));
+          if (baseVals.length < 2) continue; // nothing to filter on (e.g. a single-category slot)
+          // Cascade: this dropdown's options come from items that pass the
+          // OTHER dropdowns' selections — pick Stat first and Type only
+          // offers types that actually carry that stat (and vice versa).
+          // Without this, cross-picking a combo with no members shows an
+          // empty list (n00b caught it 2026-07-21).
+          const pool = _pickerState.items.filter(it => {
+            for (const o of pickerFilters) {
+              if (o === pf) continue;
+              const sel = filterVals[o.field];
+              if (sel && String(o.get ? o.get(it) : it[o.field]) !== sel) return false;
+            }
+            return true;
+          });
           const cur = filterVals[pf.field] || "";
+          const vals = Array.from(new Set(pool.map(getVal).filter(v => v != null)));
+          // Defensive: never hide the option the user currently has selected.
+          if (cur && !vals.some(v => String(v) === cur)) vals.push(cur);
+          vals.sort(pf.numeric ? (a, b) => a - b : (a, b) => String(a).localeCompare(String(b)));
           selects.push(`<select class="picker-collar-filter" data-pf-field="${_escAttr(pf.field)}" aria-label="${_escAttr(pf.allLabel)}">
             <option value="">${_escHTML(pf.allLabel)}</option>
             ${vals.map(v => `<option value="${_escAttr(String(v))}"${String(v) === cur ? " selected" : ""}>${_escHTML(pf.optLabel ? pf.optLabel(v, _pickerState.items) : String(v))}</option>`).join("")}
