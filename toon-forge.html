@@ -4024,7 +4024,11 @@
           } }
       ],
       insignia: [
-        { field: "category", allLabel: "All types" }
+        // Shape/slot type: Barbed, Crescent, Regal, Illuminated, Enlightened.
+        // (Auto-hidden on typed slots where only one category fits anyway.)
+        { field: "category", allLabel: "All types" },
+        // Stat family: Fortitude, Dominance, Brutality, ... — the "of X" part.
+        { field: "statTemplate", allLabel: "All stats" }
       ]
     };
     // Per-dataType registry for user-added item stores: how to load/save the
@@ -17030,11 +17034,16 @@
               : "";
             // Rarity is chosen IN the insignia picker (like enchants) and just
             // displayed here — click the insignia itself to re-pick/change it.
+            // When the insignia earns the preferred-slot boost, say so.
             const tierRO = cur
               ? `<div data-stable="insignia" data-idx="${i}" data-ins-idx="${idx}"
-                    title="Rarity is picked with the insignia — click to change"
-                    style="font-size:0.72rem;padding:0.1rem 0.3rem;color:var(--text-mute);cursor:pointer;">
-                  ${_escHTML(curTier)}</div>`
+                    title="${prefActive
+                      ? "This insignia gets +20% IL &amp; stats from the preferred slot — rarity is picked with the insignia, click to change"
+                      : "Rarity is picked with the insignia — click to change"}"
+                    style="font-size:0.72rem;padding:0.1rem 0.3rem;cursor:pointer;${prefActive
+                      ? "color:var(--amber,#f0c674);"
+                      : "color:var(--text-mute);"}">
+                  ${_escHTML(curTier)}${prefActive ? " ★ preferred" : ""}</div>`
               : "";
             html += `<div class="stable-ins-pair" style="display:flex;flex-direction:column;gap:0.2rem;">
               <div class="stable-ins comp-slot ${cur ? "filled" : ""}"
