@@ -4119,6 +4119,10 @@
           on any item to fix it for your build.</span>
         </div>`;
       }
+      // Filter bar (type/stat/rarity dropdowns) is BUILT here but rendered
+      // AFTER the Add-Missing banner below — n00b's call 2026-07-21: filters
+      // belong under the banner, next to the list they narrow.
+      let filterBarHTML = "";
       if (pickerFilters.length) {
         const selects = [];
         for (const pf of pickerFilters) {
@@ -4143,7 +4147,7 @@
             ${INS_TIERS.map(t => `<option value="${t}"${t === curInsTier ? " selected" : ""}>${t}</option>`).join("")}
           </select>`);
         }
-        if (selects.length) html += `<div class="picker-collar-filters">${selects.join("")}</div>`;
+        if (selects.length) filterBarHTML = `<div class="picker-collar-filters">${selects.join("")}</div>`;
       }
       if (isGearPicker) {
         html += `<button id="picker-add-missing" class="picker-add-missing-btn" type="button">
@@ -4237,6 +4241,8 @@
           <span class="picker-add-missing-hint">Don't see your collar? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
       }
+      // Filter bar goes here — under every Add-Missing banner, above the list.
+      html += filterBarHTML;
       if (_pickerState.allowNone !== false) {
         html += `<div class="picker-item empty" data-pick-none="1">— None —</div>`;
       }
