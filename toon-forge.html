@@ -4510,9 +4510,12 @@
       e.preventDefault();
       // A slotted insignia's popup must render at the slot's tier, not the
       // leftover _activeInsigniaTier from the last picker open. The button
-      // carries its slot tier in data-details-tier (kept fresh by renderStable).
-      if (btn.dataset.detailsType === "insignia" && btn.dataset.detailsTier) {
-        _activeInsigniaTier = btn.dataset.detailsTier;
+      // carries its slot tier in data-details-tier (kept fresh by renderStable),
+      // and the slot's preferred category in data-details-prefcat so the popup
+      // shows the +20% preferred-slot boost the in-game tooltip shows.
+      if (btn.dataset.detailsType === "insignia") {
+        if (btn.dataset.detailsTier) _activeInsigniaTier = btn.dataset.detailsTier;
+        _activeInsigniaPreferredCat = btn.dataset.detailsPrefcat || null;
       }
       openDetailsByType(btn.dataset.detailsType, btn.dataset.detailsKey, {
         rarity:   btn.dataset.detailsRarity,
@@ -6441,16 +6444,26 @@
     // pickInsignia sets _activeInsigniaTier so the picker meta + values
     // reflect that slot's selected tier instead of the legacy global.
     let _activeInsigniaTier = "Mythic";
+    // The preferred category of the slot the popup/picker was opened from
+    // (null = not a preferred slot). When the rendered insignia's category
+    // matches, the game boosts THAT insignia's IL, stats and CR by +20%
+    // while slotted there — and the card must mirror the in-game tooltip,
+    // or players report our base values as wrong data (Reports #94,
+    // #222–224). Same 1.20 factor the build math applies at 12487.
+    let _activeInsigniaPreferredCat = null;
     function renderInsignia(i) {
       const tier = _activeInsigniaTier || state.insigniaRarity || "Mythic";
+      const pref = !!(_activeInsigniaPreferredCat && i.category === _activeInsigniaPreferredCat);
+      const prefBoost = pref ? 1.20 : 1.0;
       const tierIL = insigniaTierIL(tier);
-      const mult = insigniaTierMultiplier(tier);
+      const shownIL = pref ? Math.round(tierIL * prefBoost) : tierIL;
+      const mult = insigniaTierMultiplier(tier) * prefBoost;
       const baseCR = i.combinedRating || 0;
       const scaledCR = Math.round(baseCR * mult);
       const meta = [
         i.category || "?",
         i.statTemplate ? "(" + i.statTemplate + ")" : "",
-        `IL ${tierIL} (${tier})`,
+        `IL ${shownIL} (${tier}${pref ? " ★ preferred +20%" : ""})`,
         scaledCR ? "CR " + scaledCR : ""
       ].filter(Boolean).join(" · ");
       const synth = { ratingStats: {}, percentStats: {} };
@@ -6462,7 +6475,16 @@
         if (isPct) synth.percentStats[s.stat] = shown;
         else synth.ratingStats[s.stat] = shown;
       }
-      const desc = _statSection(synth, "Stats (at " + tier + ")");
+      let desc = _statSection(synth, "Stats (at " + tier + (pref ? " ★ preferred slot" : "") + ")");
+      if (pref) {
+        desc += `<div class="gear-card-section">
+             <div class="gear-card-set-text" style="font-size:0.75rem;color:var(--text-mute);">
+               ★ This slot prefers ${_escHTML(_activeInsigniaPreferredCat)} insignias: the game boosts this
+               insignia's Item Level and stats by 20% while it's slotted here, and these values include
+               that boost — they should match your in-game tooltip. Unboosted ${_escHTML(tier)}: IL ${tierIL}.
+             </div>
+           </div>`;
+      }
       return { name: i.name, meta, desc };
     }
 
@@ -16971,13 +16993,25 @@
             const cur = (slot.insignias || [])[idx] || "";
             const allowedLabel = (ins.allowed || []).join("/").replace("*", "Universal");
             const curTier = slot.insigniaTiers[idx] || "Mythic";
+            // Preferred-slot marker: gold ★ when the slotted insignia's
+            // category matches the slot's preferred type (+20% active),
+            // dim ★ when the slot has a preferred type not currently matched.
+            const prefCat = ins.preferred || "";
+            const curInsObj = cur ? findInsigniaByName(cur) : null;
+            const prefActive = !!(prefCat && curInsObj && curInsObj.category === prefCat);
+            const prefStar = prefCat
+              ? `<span title="${prefActive
+                    ? `Preferred slot match: ${_escAttr(prefCat)} gets +20% IL &amp; stats here`
+                    : `Preferred slot: a ${_escAttr(prefCat)} insignia gets +20% IL &amp; stats here`}"
+                  style="cursor:help;${prefActive ? "color:var(--amber,#f0c674);" : "color:var(--text-dim);opacity:0.7;"}">★</span>`
+              : "";
             const tierOpts = TIER_LIST
               .map(t => `<option value="${t}"${t === curTier ? " selected" : ""}>${t}</option>`).join("");
             html += `<div class="stable-ins-pair" style="display:flex;flex-direction:column;gap:0.2rem;">
               <div class="stable-ins comp-slot ${cur ? "filled" : ""}"
                 data-stable="insignia" data-idx="${i}" data-ins-idx="${idx}">
-                ${cur ? "💎 " + cur : "+ " + allowedLabel}
-                ${cur ? `<button class="chip-info" data-details-type="insignia" data-details-key="${_escAttr(cur)}" data-details-tier="${_escAttr(curTier)}" title="See insignia details">🔍</button>` : ""}
+                ${cur ? "💎 " + cur : "+ " + allowedLabel}${prefStar}
+                ${cur ? `<button class="chip-info" data-details-type="insignia" data-details-key="${_escAttr(cur)}" data-details-tier="${_escAttr(curTier)}" data-details-prefcat="${_escAttr(prefCat)}" title="See insignia details">🔍</button>` : ""}
               </div>
               <select data-stable="ins-tier" data-idx="${i}" data-ins-idx="${idx}"
                       style="font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
@@ -17196,14 +17230,19 @@
     function pickInsignia(idx, insIdx) {
       const mount = findMountByName(state.stable[idx].mount);
       if (!mount) return;
-      const allowed = (mount.insigniaSlots[insIdx] || {}).allowed || [];
+      const slotMeta = mount.insigniaSlots[insIdx] || {};
+      const allowed = slotMeta.allowed || [];
       const allowedLabel = allowed.join("/").replace("*", "Universal");
-      // Tell renderInsignia which insignia's tier to display values at.
+      // Tell renderInsignia which insignia's tier to display values at, and
+      // the slot's preferred category so matching candidates render with the
+      // +20% preferred boost (helps players pick the type that earns it).
       const tiers = Array.isArray(state.stable[idx].insigniaTiers) ? state.stable[idx].insigniaTiers : [];
       _activeInsigniaTier = tiers[insIdx] || "Mythic";
+      _activeInsigniaPreferredCat = slotMeta.preferred || null;
       openPicker({
         dataType: "insignia",
-        title: `Insignia · ${allowedLabel} · tier ${_activeInsigniaTier}`,
+        title: `Insignia · ${allowedLabel} · tier ${_activeInsigniaTier}`
+          + (_activeInsigniaPreferredCat ? ` · ★ preferred: ${_activeInsigniaPreferredCat} (+20%)` : ""),
         items: insigniaOptionsForSlot(allowed),
         render: renderInsignia,
         onPick: (ins) => {

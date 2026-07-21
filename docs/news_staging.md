@@ -9,6 +9,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 (Last published July 13, 2026: "Wizard Spell-Mastery Slot, the Full Cleric Weapon Set & a Clothing-Slot Overhaul")
 
 ### Features
+- Russian language toggle now covers the whole Mounts page. The EN | RU switch
+  (top-right of the navbar) previously only translated the home page; it now
+  also does the Mounts page — the view tabs, search boxes, filters, tooltips,
+  table headers, insignia quality/slot names, the empty-state messages, and the
+  full Stable Planner (buttons, labels, and the how-to steps). Item names still
+  stay in English so they keep matching the game. Thanks to community translator
+  Dark Lord for the Russian.
 - Item names now stay in English when you auto-translate the site. If you read
   the site through your browser's translator (Russian, German, Spanish —
   anything), it used to rewrite item names too: "Rimefire Salamander" came out
@@ -64,6 +71,16 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   for in-game confirmation if they surface in a report.
 
 ### Features
+- Toon Forge now shows the preferred-slot boost on insignias. In the game, an
+  insignia slotted into its mount's matching "preferred" slot gets +20% to its
+  item level and stats — so your in-game tooltip could read IL 900 / 1,350
+  while the site's popup showed IL 750 / 1,125 for the same Celestial insignia,
+  which looked like wrong data (it wasn't — the build math already applied the
+  boost). The insignia detail popup now shows the boosted values with a ★
+  "preferred +20%" tag when it applies, preferred slots get a ★ marker right
+  in the stable (gold when your slotted insignia earns the boost), and the
+  insignia picker flags which choices would activate it. What you see now
+  matches your in-game tooltip. (Reports #222–224)
 - Mobile navigation: on phones and narrow screens the top menu now collapses
   into a tap-to-open ☰ hamburger, instead of a crowded wall of links. Desktop
   is unchanged. Menu closes automatically when you pick a page.
