@@ -81,6 +81,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   in the stable (gold when your slotted insignia earns the boost), and the
   insignia picker flags which choices would activate it. What you see now
   matches your in-game tooltip. (Reports #222–224)
+- Insignia rarity is now picked in the insignia picker, like enchants. The
+  picker has a "Rarity you own" dropdown (next to the existing type filter) —
+  every insignia in the list previews at that rarity, preferred-slot matches
+  preview with their +20% boost included, and whatever rarity you had selected
+  travels with your pick. The old rarity dropdown under each stable slot is
+  now just a label showing what you picked — click it (or the insignia) to
+  change either.
 - Mobile navigation: on phones and narrow screens the top menu now collapses
   into a tap-to-open ☰ hamburger, instead of a crowded wall of links. Desktop
   is unchanged. Menu closes automatically when you pick a page.

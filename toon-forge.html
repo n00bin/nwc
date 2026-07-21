@@ -4170,6 +4170,18 @@
           <span>Add Missing Insignia</span>
           <span class="picker-add-missing-hint">Don't see your insignia? Add it yourself — it'll show up in your build right away.</span>
         </button>`;
+        // Insignia rarity picker (same pattern as the enchant "Tier you own"):
+        // choose the rarity here; every insignia below previews AND is picked
+        // at that rarity. The stable row then just displays what was picked —
+        // no separate dropdown to remember afterwards.
+        const INS_TIERS = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
+        const curInsTier = _pickerState.insTier || "Mythic";
+        html += `<div class="picker-collar-filters" style="align-items:center;gap:0.4rem;">
+          <span style="font-size:0.78rem;opacity:0.85;">Rarity you own:</span>
+          <select class="picker-collar-filter" id="picker-ins-tier" aria-label="Insignia rarity">
+            ${INS_TIERS.map(t => `<option value="${t}"${t === curInsTier ? " selected" : ""}>${t}</option>`).join("")}
+          </select>
+        </div>`;
       }
       const isBuffPicker = _pickerState.dataType === "buff";
       if (isBuffPicker) {
@@ -4256,6 +4268,18 @@
         enchTierSel.addEventListener("change", e => {
           _pickerState.enchTier = e.target.value;
           renderPickerList(_searchEl ? _searchEl.value : "");
+        });
+      }
+      // Insignia rarity dropdown: re-render the list at the chosen rarity.
+      // _activeInsigniaTier is what renderInsignia reads, and what onPick
+      // writes back to the slot's insigniaTiers.
+      const insTierSel = document.getElementById("picker-ins-tier");
+      if (insTierSel) {
+        const _searchEl2 = document.getElementById("picker-search");
+        insTierSel.addEventListener("change", e => {
+          _pickerState.insTier = e.target.value;
+          _activeInsigniaTier = e.target.value;
+          renderPickerList(_searchEl2 ? _searchEl2.value : "");
         });
       }
       // Tier dropdowns on grouped gear rows (groupGearTiers): changing the
@@ -16988,7 +17012,6 @@
           // Make sure the per-insignia tier array has an entry for each slot.
           if (!Array.isArray(slot.insigniaTiers)) slot.insigniaTiers = [];
           while (slot.insigniaTiers.length < insigniaSlots.length) slot.insigniaTiers.push("Mythic");
-          const TIER_LIST = ["Uncommon","Rare","Epic","Legendary","Mythic","Celestial"];
           insigniaSlots.forEach((ins, idx) => {
             const cur = (slot.insignias || [])[idx] || "";
             const allowedLabel = (ins.allowed || []).join("/").replace("*", "Universal");
@@ -17005,18 +17028,21 @@
                     : `Preferred slot: a ${_escAttr(prefCat)} insignia gets +20% IL &amp; stats here`}"
                   style="cursor:help;${prefActive ? "color:var(--amber,#f0c674);" : "color:var(--text-dim);opacity:0.7;"}">★</span>`
               : "";
-            const tierOpts = TIER_LIST
-              .map(t => `<option value="${t}"${t === curTier ? " selected" : ""}>${t}</option>`).join("");
+            // Rarity is chosen IN the insignia picker (like enchants) and just
+            // displayed here — click the insignia itself to re-pick/change it.
+            const tierRO = cur
+              ? `<div data-stable="insignia" data-idx="${i}" data-ins-idx="${idx}"
+                    title="Rarity is picked with the insignia — click to change"
+                    style="font-size:0.72rem;padding:0.1rem 0.3rem;color:var(--text-mute);cursor:pointer;">
+                  ${_escHTML(curTier)}</div>`
+              : "";
             html += `<div class="stable-ins-pair" style="display:flex;flex-direction:column;gap:0.2rem;">
               <div class="stable-ins comp-slot ${cur ? "filled" : ""}"
                 data-stable="insignia" data-idx="${i}" data-ins-idx="${idx}">
                 ${cur ? "💎 " + cur : "+ " + allowedLabel}${prefStar}
                 ${cur ? `<button class="chip-info" data-details-type="insignia" data-details-key="${_escAttr(cur)}" data-details-tier="${_escAttr(curTier)}" data-details-prefcat="${_escAttr(prefCat)}" title="See insignia details">🔍</button>` : ""}
               </div>
-              <select data-stable="ins-tier" data-idx="${i}" data-ins-idx="${idx}"
-                      style="font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
-                ${tierOpts}
-              </select>
+              ${tierRO}
             </div>`;
           });
           html += `</div>`;
@@ -17076,19 +17102,9 @@
           pickInsignia(+el.dataset.idx, +el.dataset.insIdx);
         });
       });
-      wrap.querySelectorAll("select[data-stable='ins-tier']").forEach(sel => {
-        sel.addEventListener("change", e => {
-          const i = +sel.dataset.idx;
-          const insIdx = +sel.dataset.insIdx;
-          const slot = state.stable[i];
-          if (slot) {
-            if (!Array.isArray(slot.insigniaTiers)) slot.insigniaTiers = [];
-            slot.insigniaTiers[insIdx] = e.target.value;
-          }
-          renderStable();   // refresh the slot's detail-popup tier attribute + dropdown
-          rerenderAll();
-        });
-      });
+      // (ins-tier select handler removed — rarity now travels with the pick
+      //  from the insignia picker's "Rarity you own" dropdown; the stable row
+      //  shows it read-only and clicking it re-opens the picker.)
       // mount-rarity per-slot change handler removed (Decision 11).
       wrap.querySelectorAll("[data-stable='bonus']").forEach(el => {
         el.addEventListener("click", (e) => {
@@ -17241,12 +17257,19 @@
       _activeInsigniaPreferredCat = slotMeta.preferred || null;
       openPicker({
         dataType: "insignia",
-        title: `Insignia · ${allowedLabel} · tier ${_activeInsigniaTier}`
+        title: `Insignia · ${allowedLabel}`
           + (_activeInsigniaPreferredCat ? ` · ★ preferred: ${_activeInsigniaPreferredCat} (+20%)` : ""),
         items: insigniaOptionsForSlot(allowed),
         render: renderInsignia,
+        insTier: _activeInsigniaTier,
         onPick: (ins) => {
           state.stable[idx].insignias[insIdx] = ins ? ins.name : null;
+          // The rarity chosen in the picker's dropdown travels with the pick —
+          // the stable row displays it read-only from here on.
+          if (ins) {
+            if (!Array.isArray(state.stable[idx].insigniaTiers)) state.stable[idx].insigniaTiers = [];
+            state.stable[idx].insigniaTiers[insIdx] = _activeInsigniaTier || "Mythic";
+          }
           renderStable(); rerenderAll();
         }
       });
