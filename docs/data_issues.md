@@ -2049,22 +2049,29 @@ do not conflate them again:
 
 | Set | Pieces | 3pc bonus | Status |
 |---|---|---|---|
-| **Tiamat set** | Amulet of Tiamat's Demise (Neck) + **Tiamat Sash** (Belt) + Tiamat's Orb of Majesty (Artifact, id 12) | +5% Outgoing Healing, +5% Incoming Healing | **Only the Orb exists in our data** |
+| **Tiamat set** | Amulet of Tiamat's Demise (Neck) + **Tiamat Sash** (Belt, gear 7413) + Tiamat's Orb of Majesty (Artifact, id 12) | +5% Outgoing Healing, +5% Incoming Healing | **2 of 3 present — Amulet still missing** |
 | Tiamat's Prized Possessions | Tiamat's Golden Necklace (236) + Tiamat's Golden Sash (259) + Tiamat's Arcane Globe (artifact 73) | Draconic Resilience (8% DR + 8% Crit Avoid @ stamina <75%) | Complete, IL 1800 |
 
 **Verified from** `docs/calibration/inbox/_set_details/Tiamat set_set_details.png`
 (the Orb's tooltip lists all three set members by name) +
 `docs/calibration/inbox/artifacts/Tiamat's Orb of Majesty.png`.
 
-**Blocked on (do not fabricate):**
-1. **Tiamat Sash** — Belt, IL 1000, CR 900. Stats are Accuracy / Combat
-   Advantage / Critical Strike (per n00b); only Critical Strike +501 is known
-   from report #227. Need the Accuracy + CA values. Player also reports a
-   "+2 Wisdom / +2 Charisma" ability-bonus line — confirm it's on the item.
-2. **Amulet of Tiamat's Demise** — Neck. Report #226 claims IL 1000, CR 901,
-   Outgoing Healing +5 (that +5 is likely the *set* bonus misread as a stat).
-   Need a full tooltip.
-3. **Orb's 3pc bonus is deliberately NOT recorded yet.** Artifact id 12 has
-   `"set": "Tiamat Set"` with empty `equipBonuses`. Writing the 3pc bonus while
-   2/3 pieces are absent would give the ILS optimizer a set it can never
-   complete — add the bonus in the SAME change that adds the two pieces.
+**RESOLVED 2026-07-27 — Tiamat Sash added (gear 7413).** In-game AH tooltip:
+Belt, IL 1,000, CR 900, +500 Accuracy / +500 Combat Advantage / +501 Critical
+Strike, +2 WIS / +2 CHA, Min Level 18, refinement 330, Binds on Equip. Source
+campaign not shown on the AH tooltip — left blank rather than guessed. The 3pc
+bonus is now recorded on both the Sash and the Orb (artifact 12 also got
+`setPartners`); its `set` string already read "Tiamat Set" so the two pool.
+
+**Still blocked (do not fabricate):**
+1. **Amulet of Tiamat's Demise** — Neck, last piece. Report #226 claims IL 1000,
+   CR 901, Outgoing Healing +5 (that +5 is almost certainly the *set* bonus
+   misread as a stat). Need a full tooltip.
+2. Until the Amulet exists the set can never reach 3/3. That is inert, not
+   broken: the optimizer's set-completion advisor requires a Neck, Belt AND
+   Artifact member before it acts (`js/optimizer-local.js:2612`), so a partial
+   family is simply skipped.
+3. **Artifact pages don't render set-bonus text at all** (pre-existing template
+   gap in `scripts/gen-item-pages.js` — Tarokka Deck's 3pc Vistani bonus is
+   invisible too). The Orb's new 3pc entry is stored but won't show on its page
+   until that template learns to render `equipBonuses`.
