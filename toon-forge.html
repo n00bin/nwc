@@ -7256,6 +7256,18 @@
       "Action Point Gain", "Control Bonus", "Control Resist"
     ];
 
+    // Stats that a gear tooltip always shows with a "%" and that our schema
+    // therefore stores in percentStats, never ratingStats. Verified against
+    // gear.json: Recharge Speed 0 rating/196 percent, Action Point Gain
+    // 0/211, Movement Speed 0/101, Stamina Regeneration 0/153 (the lone
+    // outlier, Lolthian Arrogance Ring id 994 @ 1518, is a suspected data
+    // error — every other entry is 1.5). Note this is about how the TOOLTIP
+    // presents them, not TOON_FORGE_STATS' `kind`, which describes how the
+    // engine converts them.
+    const AMI_PERCENT_STATS = new Set([
+      "Recharge Speed", "Action Point Gain", "Movement Speed", "Stamina Regeneration"
+    ]);
+
     // Ability scores are a SEPARATE list from AMI_STAT_OPTIONS on purpose:
     // ENCH_STAT_OPTIONS slices AMI_STAT_OPTIONS, and enchants never carry
     // ability scores. Canonical full-word spelling — addAbilityBonus() also
@@ -7276,7 +7288,7 @@
           <div class="ami-stat-row">
             <select class="ami-stat-name" data-row="${i}">
               <option value="">— stat ${i + 1} —</option>
-              ${AMI_STAT_OPTIONS.map(s => `<option value="${s}">${s}</option>`).join("")}
+              ${AMI_STAT_OPTIONS.map(s => `<option value="${s}">${s}${AMI_PERCENT_STATS.has(s) ? " (%)" : ""}</option>`).join("")}
             </select>
             <input type="number" class="ami-stat-value" data-row="${i}" placeholder="value" step="any">
           </div>`;
@@ -7445,13 +7457,18 @@
         msg.className = "ami-msg error"; return;
       }
 
-      // Collect stats
+      // Collect stats. Percent-only stats (the "+1.5% Recharge Speed" lines)
+      // go to percentStats — filing them as ratings made the engine read 1.5
+      // as a rating of 1.5, i.e. nothing at all.
       const ratingStats = {};
+      const percentStats = {};
+      const statValues = document.querySelectorAll(".ami-stat-value");
       document.querySelectorAll(".ami-stat-name").forEach((sel, i) => {
         const sName = sel.value;
-        const sVal = parseFloat(document.querySelectorAll(".ami-stat-value")[i].value);
+        const sVal = parseFloat(statValues[i].value);
         if (sName && !isNaN(sVal)) {
-          ratingStats[sName] = sVal;
+          if (AMI_PERCENT_STATS.has(sName)) percentStats[sName] = sVal;
+          else ratingStats[sName] = sVal;
         }
       });
 
@@ -7477,7 +7494,7 @@
         item_level: il,
         ratingStats: ratingStats,
         combinedRating: cr,
-        percentStats: {},
+        percentStats: percentStats,
         abilityBonuses: abilityBonuses,
         set: setName,
         setSize: setName ? 2 : 0,
@@ -7521,6 +7538,13 @@
         reportLines.push("Stats:");
         for (const k of Object.keys(ratingStats)) {
           reportLines.push("  • " + k + ": +" + ratingStats[k]);
+        }
+      }
+      if (Object.keys(percentStats).length) {
+        reportLines.push("");
+        reportLines.push("Percent Stats:");
+        for (const k of Object.keys(percentStats)) {
+          reportLines.push("  • " + k + ": +" + percentStats[k] + "%");
         }
       }
       if (Object.keys(abilityBonuses).length) {
