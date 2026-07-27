@@ -2156,3 +2156,35 @@ user-added items live in the same lookup. So the correction modal's "Site
 shows:" line is *what that player sees*, which may be their own earlier edit or
 their own added item — not what our data publishes. A correction whose "Site
 shows" value doesn't exist anywhere in our JSON is the tell.
+
+## Clothing slots: use the STAT-RATIO template, not the bonus name (2026-07-27)
+Resolving report #233 produced a better discriminator than the bonus→slot
+fingerprint recorded for the Jotunskar family.
+
+**Bonus names are NOT globally slot-determining:** 23 of the 108 distinct
+equip-bonus names on Shirt/Pants gear appear on BOTH slots (Encounter Reprieve,
+Charged Fury, Precision Tactics, Unfaltered Finesse, Occult Advantage…). The
+bonus→slot rule holds *within* a clothing family, not across the game.
+
+**Stat-ratio templates do discriminate.** Anchor verified from
+`docs/calibration/inbox/gear/bloodwoven/shirts/bloodwoven_runes_SHIRT_challengers-strength.png`
+(image read, not filename-trusted) — Bloodwoven Runes, IL 3,150:
+CA 1,512 / Awareness 1,134 / Control Bonus 1,418 / +1.5% Recharge / CR 2,835.
+
+| Template (x item level) | Slot | Anchor |
+|---|---|---|
+| CA 0.48 / Awareness 0.36 / Control Bonus 0.45 | **Shirt** | Bloodwoven Runes id 421 (archived under shirts/) |
+| CA 0.48 / Critical Severity 0.54 / Critical Avoidance 0.495 | **Pants** | Bloodwoven Runes id 419 (archived under pants/) |
+
+FIXED: id 477 Runes of the Oathbound, Pants → Shirt (matches the shirt
+template; reporting player independently said Shirt).
+
+**Suspect, NOT changed — template says Shirt but filed as Pants:**
+- id 359 **Mark of the Initiate (Unfaltered Finesse)**, IL 2,600
+- id 499 **Mark of the Initiate (Unfazed Finesse)**, IL 2,600
+
+Both carry the verified shirt template exactly. Unlike 477 there is no player
+report or archived tooltip for either, and template-alone has not been proven
+sufficient across families — so they need one collection screenshot each before
+flipping. (id 452 Arcane Conduit Crest already sits on this template as a
+Shirt, consistent with the rule.)
