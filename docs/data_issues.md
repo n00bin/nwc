@@ -2135,13 +2135,15 @@ actually contains the Rank 14 / 5,000 tooltip and `rank14_+5000.png` contains
 the Rank 4 / 3,000 one. The table above is from reading the images, not the
 names. Don't re-derive from filenames.
 
-**Still missing — do NOT fabricate:** the Rank 4 / Rank 4,+1 / Rank 14 rungs
-for **Power, Accuracy, Critical Strike, Defense** (12 entries). All five stats
-agree at 5,600 for Rank 14,+1, which makes a stat-agnostic ladder
-(3,000/3,600/5,000/5,600) very likely — but that is an inference, and the
-top-rank values for those four stats came from
-`sheet2__Consumables_and_belt_Items.csv`, not individual tooltips. One
-Accuracy Rank 4,+1 tooltip would confirm the pattern and unlock all 12 at once.
+**COMPLETE as of 2026-07-27.** n00b confirmed from in-game knowledge that the
+ladder is identical for every stat, so the remaining 12 rungs were added
+(ids 155-166): Power, Accuracy, Critical Strike and Defense each gained
+Rank 4 / Rank 4, +1 / Rank 14. All 20 entries (5 stats x 4 ranks) now read
+3,000 / 3,600 / 5,000 / 5,600.
+
+Provenance is recorded per-entry: Deflect's four rungs are screenshot-verified;
+the other 16 are ladder-derived on n00b's confirmation, NOT individually
+screenshotted. If a tooltip ever contradicts one, the tooltip wins.
 
 Also still open from the earlier entry: whether the crafted line exists for
 Critical Severity, Awareness, Critical Avoidance and Combat Advantage at all.
