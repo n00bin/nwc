@@ -4921,7 +4921,8 @@
         const il = (typeof mountPowerDisplayIL === "function") ? mountPowerDisplayIL(item, rarity) : 0;
         return il || value;
       }
-      if (field === "magnitude" || field === "combinedRating") {
+      const statIdx = field.match(/^stats\[(\d+)\]\.value$/);
+      if (field === "magnitude" || field === "combinedRating" || (statIdx && isEquip)) {
         const n = Number(value);
         if (!Number.isFinite(n)) return value;
         const anchor = mountPowerAnchorFactor(item) || 1;
@@ -4930,6 +4931,13 @@
           factor = mountPowerBolsterFactor(state.mountBolster) * factor;
         }
         factor = Math.min(factor, 1.3125 / anchor);
+        if (statIdx) {
+          // Equip-power stat lines scale with rarity like CR does (report #218-220:
+          // showing Celestial IL/CR beside the raw Mythic stat reads as a mismatch).
+          const st = (item.stats || [])[Number(statIdx[1])];
+          const scaled = n * factor;
+          return (st && st.type === "percent") ? Math.round(scaled * 10) / 10 : Math.round(scaled);
+        }
         return Math.round(n * factor);
       }
       return value;
