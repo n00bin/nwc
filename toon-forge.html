@@ -5018,17 +5018,40 @@
             const obj = item[field];
             if (!obj || typeof obj !== "object" || Array.isArray(obj)) continue;
             const keys = Object.keys(obj);
-            if (!keys.length) continue;
-            // Combat-stat maps (ratingStats / percentStats) get the stat-name
-            // dropdown on every item type. abilityBonuses stays value-only —
-            // those are ability scores (STR/DEX/…), a different list.
-            const editableMap = desc.editableKey || field === "ratingStats" || field === "percentStats";
+            const isAbil = field === "abilityBonuses";
+            // abilityBonuses renders even when EMPTY: an item whose ability
+            // line we never captured is exactly the case a player needs to
+            // report (report #230 — they had nowhere to put "+2 WIS" and
+            // typed it into the equip-bonus text instead).
+            if (!keys.length && !isAbil) continue;
+            // Stat-name dropdowns on every item type. abilityBonuses gets one
+            // too now, backed by the six-ability list rather than the combat
+            // catalog (see _ccStatOptions).
+            const editableMap = desc.editableKey || isAbil
+              || field === "ratingStats" || field === "percentStats";
             secHtml += `<div class="cc-subsection-title">${_esc(label)}</div>`;
             for (const k of keys) {
               if (editableMap) {
                 secHtml += _ccStatRow(field, k, obj[k]);
               } else {
                 secHtml += r(k, obj[k], `${field}.${k}`, "num");
+              }
+            }
+            if (isAbil) {
+              // Offer the abilities this item doesn't list yet. The override
+              // layer creates the key on save (abilityBonuses itself always
+              // exists), so these need no extra plumbing.
+              const present = new Set(keys.map(k => _ccAbilCanonical(k)));
+              const absent = _ccAbilityList().filter(a => !present.has(a));
+              if (absent.length) {
+                secHtml += `<details class="cc-section" style="margin:0.3rem 0 0.6rem;">
+                  <summary style="cursor:pointer;color:var(--text-mute);font-size:0.85rem;padding:0.3rem 0;">
+                    ${keys.length ? "Add another ability score" : "This item has no ability scores — add one"}
+                  </summary>
+                  <div style="padding-top:0.4rem;">
+                    ${absent.map(a => r(a, null, `${field}.${a}`, "num")).join("")}
+                  </div>
+                </details>`;
               }
             }
             continue;
@@ -5744,7 +5767,35 @@
     // Canonical stat names for the dropdown. Prefers the engine's catalog
     // (toon-forge-stats.js); falls back to a hardcoded list if it isn't in
     // scope so the editor can never crash.
-    function _ccStatOptions() {
+    // The six ability scores, canonical full-word spelling.
+    function _ccAbilityList() {
+      return (typeof AMI_ABILITY_OPTIONS !== "undefined")
+        ? AMI_ABILITY_OPTIONS.slice()
+        : ["Strength", "Constitution", "Dexterity", "Intelligence", "Wisdom", "Charisma"];
+    }
+    // Stored ability keys come in three shapes ("Wisdom" / "WIS" / "wis").
+    // Fold any of them to the canonical word so "already present" checks work.
+    const _CC_ABIL_CANON = {
+      str: "Strength", strength: "Strength",
+      con: "Constitution", constitution: "Constitution",
+      dex: "Dexterity", dexterity: "Dexterity",
+      int: "Intelligence", intelligence: "Intelligence",
+      wis: "Wisdom", wisdom: "Wisdom",
+      cha: "Charisma", charisma: "Charisma"
+    };
+    function _ccAbilCanonical(key) {
+      return _CC_ABIL_CANON[String(key || "").toLowerCase()] || key;
+    }
+
+    function _ccStatOptions(base) {
+      // Ability-score maps get the six abilities, never the combat catalog —
+      // offering "Critical Strike" as an ability score is nonsense and was
+      // the reason abilityBonuses stayed read-only before report #230.
+      if (base === "abilityBonuses") {
+        return (typeof AMI_ABILITY_OPTIONS !== "undefined")
+          ? AMI_ABILITY_OPTIONS.slice()
+          : ["Strength", "Constitution", "Dexterity", "Intelligence", "Wisdom", "Charisma"];
+      }
       try {
         if (typeof TOON_FORGE_STAT_NAMES !== "undefined" && Array.isArray(TOON_FORGE_STAT_NAMES)) {
           return TOON_FORGE_STAT_NAMES.slice();
@@ -5815,7 +5866,7 @@
       const currentLabel = _ccStatLabel(oldKey);
       const nameEl = row.querySelector(".cc-row-label");
 
-      const opts = _ccStatOptions();
+      const opts = _ccStatOptions(base);
       if (opts.indexOf(currentLabel) === -1) opts.unshift(currentLabel);
 
       const wrap = document.createElement("span");
@@ -7205,6 +7256,15 @@
       "Action Point Gain", "Control Bonus", "Control Resist"
     ];
 
+    // Ability scores are a SEPARATE list from AMI_STAT_OPTIONS on purpose:
+    // ENCH_STAT_OPTIONS slices AMI_STAT_OPTIONS, and enchants never carry
+    // ability scores. Canonical full-word spelling — addAbilityBonus() also
+    // accepts "WIS"/"wis", but new data should only ever use these six.
+    const AMI_ABILITY_OPTIONS = [
+      "Strength", "Constitution", "Dexterity",
+      "Intelligence", "Wisdom", "Charisma"
+    ];
+
     function ensureAddMissingItemDOM() {
       if (document.getElementById("ami-overlay")) return;
       const overlay = document.createElement("div");
@@ -7219,6 +7279,20 @@
               ${AMI_STAT_OPTIONS.map(s => `<option value="${s}">${s}</option>`).join("")}
             </select>
             <input type="number" class="ami-stat-value" data-row="${i}" placeholder="value" step="any">
+          </div>`;
+      }
+      // Ability-score rows (Neck/Belt items commonly carry +2 WIS, +6 CHA…).
+      // Two rows covers every item in our data; report #230 was filed because
+      // there was nowhere to put these at all.
+      let abilRows = "";
+      for (let i = 0; i < 2; i++) {
+        abilRows += `
+          <div class="ami-stat-row">
+            <select class="ami-abil-name" data-row="${i}">
+              <option value="">— ability ${i + 1} —</option>
+              ${AMI_ABILITY_OPTIONS.map(s => `<option value="${s}">${s}</option>`).join("")}
+            </select>
+            <input type="number" class="ami-abil-value" data-row="${i}" placeholder="value" step="any">
           </div>`;
       }
       // Class checkboxes — pulled from CLASSES_DATA so the list stays in sync
@@ -7252,6 +7326,10 @@
             <div class="ami-row">
               <label>Stats (up to 6 — pick the stat, type the +value)</label>
               ${statRows}
+            </div>
+            <div class="ami-row">
+              <label>Ability Scores (optional — the "+2 WIS" style lines)</label>
+              ${abilRows}
             </div>
             <div class="ami-row">
               <label>Combined Rating <span class="req">*</span></label>
@@ -7322,6 +7400,8 @@
       document.getElementById("ami-notes").value = "";
       document.querySelectorAll(".ami-stat-name").forEach(el => el.value = "");
       document.querySelectorAll(".ami-stat-value").forEach(el => el.value = "");
+      document.querySelectorAll(".ami-abil-name").forEach(el => el.value = "");
+      document.querySelectorAll(".ami-abil-value").forEach(el => el.value = "");
       // Reset class checkboxes — default-check the picker's current class so the
       // player can confirm or expand from there
       document.querySelectorAll(".ami-class").forEach(cb => {
@@ -7375,6 +7455,17 @@
         }
       });
 
+      // Ability scores land in their own bucket — addAbilityBonus() reads
+      // abilityBonuses, never ratingStats, so a "+2 WIS" filed as a rating
+      // would silently never reach the ability grid.
+      const abilityBonuses = {};
+      const abilValues = document.querySelectorAll(".ami-abil-value");
+      document.querySelectorAll(".ami-abil-name").forEach((sel, i) => {
+        const aName = sel.value;
+        const aVal = parseFloat(abilValues[i].value);
+        if (aName && !isNaN(aVal) && aVal !== 0) abilityBonuses[aName] = aVal;
+      });
+
       const equipBonuses = [];
       if (desc) {
         equipBonuses.push({ type: "Equip", name: "", description: desc });
@@ -7387,7 +7478,7 @@
         ratingStats: ratingStats,
         combinedRating: cr,
         percentStats: {},
-        abilityBonuses: {},
+        abilityBonuses: abilityBonuses,
         set: setName,
         setSize: setName ? 2 : 0,
         source: "User-added (pending review)",
@@ -7430,6 +7521,13 @@
         reportLines.push("Stats:");
         for (const k of Object.keys(ratingStats)) {
           reportLines.push("  • " + k + ": +" + ratingStats[k]);
+        }
+      }
+      if (Object.keys(abilityBonuses).length) {
+        reportLines.push("");
+        reportLines.push("Ability Scores:");
+        for (const k of Object.keys(abilityBonuses)) {
+          reportLines.push("  • " + k + ": " + (abilityBonuses[k] > 0 ? "+" : "") + abilityBonuses[k]);
         }
       }
       if (desc) {
