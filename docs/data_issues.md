@@ -2111,3 +2111,46 @@ Minor aside noticed in the same family: 990 Vengeance's secondary is 1538
 where 992/994/997/999 use 1518. Both numbers appear elsewhere in the Lolthian
 set (Arms pieces are 1538/1538), so this may be genuine — not worth chasing
 without a tooltip.
+
+## Crafted stat-potion family — only Deflect has a verified rank ladder (2026-07-27)
+Report #225 was filed as a "Name" correction but is really a MISSING ITEM: the
+player owns a *Crafted Potion of Accuracy Rank 4, +1* and we only carried each
+stat's top rank. (The "Site shows: Accuracy Rank 4+1" line was their own
+locally-added entry — see the note below on why that field can echo the
+player's own data.)
+
+**Screenshot-verified 2026-07-18, all four Deflect rungs** (AH tooltips in
+`docs/calibration/inbox/consumables/`; recharge 18s, 1 hour, persists through
+death, one stat-potion at a time):
+
+| Potion | Rating | Min level | id |
+|---|---|---|---|
+| Crafted Potion of Deflect Rank 4 | 3,000 | 19 | 152 |
+| Crafted Potion of Deflect Rank 4, +1 | 3,600 | 19 | 153 |
+| Crafted Potion of Deflect Rank 14 | 5,000 | 20 | 154 |
+| Crafted Potion of Deflect Rank 14, +1 | 5,600 | 20 | 148 |
+
+⚠ **Two of those four screenshot FILENAMES are wrong** — `rank4_+3000.png`
+actually contains the Rank 14 / 5,000 tooltip and `rank14_+5000.png` contains
+the Rank 4 / 3,000 one. The table above is from reading the images, not the
+names. Don't re-derive from filenames.
+
+**Still missing — do NOT fabricate:** the Rank 4 / Rank 4,+1 / Rank 14 rungs
+for **Power, Accuracy, Critical Strike, Defense** (12 entries). All five stats
+agree at 5,600 for Rank 14,+1, which makes a stat-agnostic ladder
+(3,000/3,600/5,000/5,600) very likely — but that is an inference, and the
+top-rank values for those four stats came from
+`sheet2__Consumables_and_belt_Items.csv`, not individual tooltips. One
+Accuracy Rank 4,+1 tooltip would confirm the pattern and unlock all 12 at once.
+
+Also still open from the earlier entry: whether the crafted line exists for
+Critical Severity, Awareness, Critical Avoidance and Combat Advantage at all.
+
+## Correction form: "Site shows" can echo the player's own local edit
+Root cause behind #225's confusing title, worth knowing when triaging any
+correction. Every `find*` lookup is wrapped (`_inline_0.js`, OVERRIDE_WRAPPER
+_INJECT) to return items with the player's local overrides already applied, and
+user-added items live in the same lookup. So the correction modal's "Site
+shows:" line is *what that player sees*, which may be their own earlier edit or
+their own added item — not what our data publishes. A correction whose "Site
+shows" value doesn't exist anywhere in our JSON is the tell.
