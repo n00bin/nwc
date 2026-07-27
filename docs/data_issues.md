@@ -2075,3 +2075,39 @@ bonus is now recorded on both the Sash and the Orb (artifact 12 also got
    gap in `scripts/gen-item-pages.js` — Tarokka Deck's 3pc Vistani bonus is
    invisible too). The Orb's new 3pc entry is stored but won't show on its page
    until that template learns to render `equipBonuses`.
+
+## Lolthian Arrogance (gear 994) — secondary stat NAME is wrong (found 2026-07-27)
+Surfaced while fixing the Add-Missing-Item percent-stat routing (report #230
+follow-up). This is the ONLY item in gear.json storing Stamina Regeneration as
+a rating; the other 153 entries are all `percentStats: 1.5`.
+
+Current data:
+```
+994  Lolthian Arrogance  (Ring, IL 2050, CR 1640, Demonweb Pits Advanced)
+     ratingStats : { "Critical Strike": 4612, "Stamina Regeneration": 1518 }
+     percentStats: { "Stamina Regeneration": 1.5 }
+```
+
+**The value 1518 is almost certainly right — the stat NAME is wrong.** The
+Lolthian ring family follows a strict pattern:
+
+| Shape | Rings | Rating stats | Percent |
+|---|---|---|---|
+| two-stat | 990 Vengeance, 992 Anger, **994 Arrogance**, 997 Pain, 999 Dominance | primary 4612 + secondary ~1518 | Stamina Regeneration 1.5% |
+| one-stat | 991 Repulsion, 993 Rage, 995 Abrasion, 996 Spite, 998 Aberrance | single 6150 | Action Point Gain 1.5% |
+
+994 fits the two-stat shape exactly (4612 primary + 1518 secondary + 1.5%
+Stamina Regen), so the 1518 slot is real. But every sibling's secondary is a
+DIFFERENT stat from its percent line — Critical Severity (992), Incoming
+Healing (997), Outgoing Healing (999) — and no ring in the family repeats its
+percent stat as a rating. 994 naming its secondary "Stamina Regeneration"
+duplicates its own percent line, which no other item in the set does.
+
+**Do not guess the replacement.** Needs one in-game tooltip of Lolthian
+Arrogance (Ring) to read the second stat name; the 1518 value and everything
+else can stay. Drops from The Demonweb Pits (Advanced).
+
+Minor aside noticed in the same family: 990 Vengeance's secondary is 1538
+where 992/994/997/999 use 1518. Both numbers appear elsewhere in the Lolthian
+set (Arms pieces are 1538/1538), so this may be genuine — not worth chasing
+without a tooltip.
