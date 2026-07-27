@@ -2214,3 +2214,28 @@ known to lag. The real item is probably *Elemental Rapier of the Black Earth*.
 **Blocked on:** one tooltip screenshot. Worth noting the wider gap — this is a
 whole campaign's gear missing, not one weapon, so a Black Earth collection-page
 shot would seed many items at once.
+
+### Amulet of Tiamat's Demise (report #226) — confirmed real, values still blocked
+Third and last piece of the Tiamat set (Sash id 7413 and Orb artifact 12 are in).
+
+**Confirmed** from the Neverwinter wiki + our own set-details screenshot:
+- Real in-game name is **Amulet of Tiamat's Demise** — "Tiamat's Neck" is the
+  reporter's shorthand, the same pattern as #232's "black earth rapier".
+- Neck slot, part of Tiamat set (0/3), 3pc = +5% Outgoing / +5% Incoming Healing.
+- Source: Temple of Tiamat.
+- Historically carried an ability bonus (+2/3 CON), which mirrors the Sash's
+  +2 WIS / +2 CHA — the Tiamat pieces all grant ability scores.
+
+**Report #226's "Outgoing Healing: +5" is the SET BONUS, not a stat** — now
+confirmed, not just suspected: the wiki tooltip shows the same 5%/5% set line.
+Do not enter it as a rating.
+
+**Why the wiki values are unusable:** it lists Item Level 575, Rank 60,
+Requires Level 70, +460 Combined Rating, +22,080 Max HP — all pre-Mod-16
+(2019 stat squish) numbers. The reporter gives IL 1,000 / CR 901, which is the
+modern item. The wiki is right about identity and set, useless for magnitudes.
+
+**Blocked on:** one in-game tooltip. Expect roughly the Sash's shape — IL 1,000,
+CR ~900, three rating stats near 500 each, plus a CON ability bonus. We have no
+IL-1,000 Neck in the database to cross-check against, so nothing here can be
+derived; it must be read off the item.
