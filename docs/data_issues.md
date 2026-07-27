@@ -2188,3 +2188,29 @@ report or archived tooltip for either, and template-alone has not been proven
 sufficient across families — so they need one collection screenshot each before
 flipping. (id 452 Arcane Conduit Crest already sits on this template as a
 Shirt, consistent with the rule.)
+
+## Elemental Evil cult gear — entire families absent (found 2026-07-27, report #232)
+Report #232 asks for a "black earth rapier" (Bard Main Hand, IL 1,150, CR 1,035,
+Combat Advantage +862, Critical Strike +862). Checked and NOT added:
+
+- Not in `gear.json` — we hold **0** items from any Elemental Evil cult family
+  (Black Earth / Howling Hatred / Crushing Wave / Eternal Flame).
+- Not among the 766 archived `docs/audit/_up/bard-gear/` screenshots (43 of them
+  rapiers; the only IL 1,150 bard weapons archived are Celestial Point of Melody
+  and Pure Note of the Blessed Blade, both already in the data).
+- Not in the cached community sheets.
+
+**The numbers are almost certainly real.** 862/1,150 = 0.7496 and CR 1,035/1,150
+= 0.90 — the exact IL-1,150 main-hand template shared by 19 weapons we already
+carry. A fabricated report would not land on the template to four decimals. The
+player is reading a genuine tooltip.
+
+**But the name they gave is not an in-game name.** The Neverwinter family is
+titled "Elemental <Weapon> of the Black Earth" (Elemental Evil campaign, 2015 —
+wiki documents Dagger, Longbow, Longsword, Mace, Orb, Pact Blade, Symbol,
+Grimoire). No rapier is documented, though the wiki predates Bard (2021) and is
+known to lag. The real item is probably *Elemental Rapier of the Black Earth*.
+
+**Blocked on:** one tooltip screenshot. Worth noting the wider gap — this is a
+whole campaign's gear missing, not one weapon, so a Black Earth collection-page
+shot would seed many items at once.
