@@ -56,14 +56,6 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   1,000, and together with Tiamat's Orb of Majesty the 3-piece bonus (+5%
   Outgoing and +5% Incoming Healing) now completes in the builder.
 
-- **Tiamat Sash added, and there are two Tiamat sets (Report #227).** The
-  sash players kept reporting as missing really was missing — it's a
-  different item from Tiamat's Golden Sash. It's now in as a Belt at item
-  level 1,000 (+500 Accuracy, +500 Combat Advantage, +501 Critical Strike,
-  +2 WIS, +2 CHA) with its 3-piece Tiamat set bonus of +5% Outgoing and +5%
-  Incoming Healing. The Amulet of Tiamat's Demise is the last piece still
-  missing.
-
 ### Features (Toon Forge)
 
 - **You can now report ability scores (Report #230).** Items with "+2 WIS"
