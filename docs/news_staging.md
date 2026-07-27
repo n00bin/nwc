@@ -49,6 +49,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   from the same screenshots. Cracked's Corrupt Power downside also corrected
   to −7.5% Incoming Healing.
 
+- **The whole Tiamat set is now in (Reports #226, #227).** Two pieces players
+  kept reporting as missing really were missing, and they belong to a
+  different set from the similarly-named Tiamat's Golden gear. Tiamat Sash
+  (Belt) and the Amulet of Tiamat's Demise (Neck) are both in at item level
+  1,000, and together with Tiamat's Orb of Majesty the 3-piece bonus (+5%
+  Outgoing and +5% Incoming Healing) now completes in the builder.
+
 - **Tiamat Sash added, and there are two Tiamat sets (Report #227).** The
   sash players kept reporting as missing really was missing — it's a
   different item from Tiamat's Golden Sash. It's now in as a Belt at item
