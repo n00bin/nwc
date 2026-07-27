@@ -10,6 +10,68 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
+- **Optimizer: Augment companions are off by default.** The optimizer used to
+  pick an Augment (Ioun Stones and the like) as your summoned companion because
+  it scores higher on paper — the companion enchantment feeds an Augment's bonus
+  stats straight to your sheet. The current community meta treats a summoned
+  Augment as a no-go, so builds nobody would invite you to run aren't much use.
+  Augments are now excluded from the summoned slot by default, at every role.
+  A new **"Allow Augment companions"** checkbox in the optimize dialog's Party
+  meta section lets you run it both ways and compare the two builds yourself.
+  The result screen tells you which way the run went either way.
+
 ### Bug Fixes
 
+- **Optimizer results: trimmed the reasoning wall.** The "Why these picks" box
+  used to explain every choice the optimizer made (build order, why a companion
+  was picked, etc.) — mostly noise. It's now a "⚠ Heads up" box that only shows
+  when there's something you should actually act on: a locked companion that
+  makes an illegal loadout, boon points over the cap, a party-meta pick, or the
+  Augment compare hint. Most runs it won't appear at all.
+
+- **Optimizer: tanks and healers could still get an Augment summon.** The
+  tank/healer support meta was supposed to prevent this, but three paths walked
+  around it — the ⚔ Damage objective on a tank/heal paragon, unticking the
+  support-meta box, and the owned-companion fallback when you don't own any
+  party-aura summon. The new Augment gate is role-independent, so all three are
+  covered.
+
 ### Data Additions
+
+- **Titanweave Harness family untangled (Reports #217, #221).** Two player
+  reports of "missing" Wizard/Warlock shirts turned out to be our old
+  shirt/pants mislabel: the Cracked, Veinlit (IL 4,350) and Runemarked
+  Titanweave Harnesses were all filed as pants. Archived in-game tooltips
+  confirmed the family rule (CA/Crit Strike/Power/Recharge = shirt;
+  Accuracy/CA/Crit Severity/AP Gain = pants), so all three are shirts now —
+  and the two genuine pants variants (Cracked with the stacking Ruthless
+  Critical bonus, Veinlit with Critical Charge's 25 Action Points) were added
+  from the same screenshots. Cracked's Corrupt Power downside also corrected
+  to −7.5% Incoming Healing.
+
+- **Tiamat Sash added, and there are two Tiamat sets (Report #227).** The
+  sash players kept reporting as missing really was missing — it's a
+  different item from Tiamat's Golden Sash. It's now in as a Belt at item
+  level 1,000 (+500 Accuracy, +500 Combat Advantage, +501 Critical Strike,
+  +2 WIS, +2 CHA) with its 3-piece Tiamat set bonus of +5% Outgoing and +5%
+  Incoming Healing. The Amulet of Tiamat's Demise is the last piece still
+  missing.
+
+### Features (Toon Forge)
+
+- **You can now report ability scores (Report #230).** Items with "+2 WIS"
+  style lines had nowhere to be reported: the Add Missing Item form had no
+  ability fields, and the correction panel would only let you change an
+  ability an item already had — never add one. Both are fixed. The Add
+  Missing Item form has an Ability Scores section, and the correction panel
+  now offers all six abilities on any item, including ones we currently list
+  with none. This affected 316 items that carry ability scores plus every
+  accessory that should have one.
+
+### Bug Fixes (Toon Forge)
+
+- **Correction card: mount equip-power stats now scale with the shown tier
+  (Reports #218–#220).** The "suggest a correction" card showed a mount equip
+  power's Celestial item level and Combined Rating next to its raw Mythic stat
+  value, which read as a data error and drew three reports. The stat line now
+  scales with the selected tier like everything else on the card.
