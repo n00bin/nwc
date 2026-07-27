@@ -70,6 +70,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes (Toon Forge)
 
+- **Add Missing Item: percent stats were being saved as ratings.** The four
+  stats a tooltip shows with a "%" — Recharge Speed, Action Point Gain,
+  Movement Speed and Stamina Regeneration — were all filed as ratings, so a
+  submitted "+1.5% Recharge Speed" was read as a rating of 1.5 and did
+  nothing. They now save as percentages, and the dropdown marks them "(%)"
+  so it's clear you type 1.5 rather than 1500.
+
 - **Correction card: mount equip-power stats now scale with the shown tier
   (Reports #218–#220).** The "suggest a correction" card showed a mount equip
   power's Celestial item level and Combined Rating next to its raw Mythic stat
