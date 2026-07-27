@@ -2042,14 +2042,14 @@ Critical Strike / Defense / Deflect"), not individually screenshotted.
 Awareness, Critical Avoidance, and Combat Advantage (sheet lists only the 5 above; not
 yet added — do not fabricate). Grab a tooltip for any that exist.
 
-## Tiamat set (3pc) — two of three pieces MISSING (found 2026-07-27)
+## Tiamat set (3pc) — COMPLETE 2026-07-27 (was: two of three missing)
 Reports #226/#227 are genuine missing items, not duplicates of the
 "Tiamat's Prized Possessions" line. There are **two distinct Tiamat sets** —
 do not conflate them again:
 
 | Set | Pieces | 3pc bonus | Status |
 |---|---|---|---|
-| **Tiamat set** | Amulet of Tiamat's Demise (Neck) + **Tiamat Sash** (Belt, gear 7413) + Tiamat's Orb of Majesty (Artifact, id 12) | +5% Outgoing Healing, +5% Incoming Healing | **2 of 3 present — Amulet still missing** |
+| **Tiamat set** | Amulet of Tiamat's Demise (Neck) + **Tiamat Sash** (Belt, gear 7413) + Tiamat's Orb of Majesty (Artifact, id 12) | +5% Outgoing Healing, +5% Incoming Healing | **COMPLETE — Amulet id 7414, Sash id 7413, Orb artifact 12** |
 | Tiamat's Prized Possessions | Tiamat's Golden Necklace (236) + Tiamat's Golden Sash (259) + Tiamat's Arcane Globe (artifact 73) | Draconic Resilience (8% DR + 8% Crit Avoid @ stamina <75%) | Complete, IL 1800 |
 
 **Verified from** `docs/calibration/inbox/_set_details/Tiamat set_set_details.png`
@@ -2076,7 +2076,7 @@ bonus is now recorded on both the Sash and the Orb (artifact 12 also got
    invisible too). The Orb's new 3pc entry is stored but won't show on its page
    until that template learns to render `equipBonuses`.
 
-## Lolthian Arrogance (gear 994) — secondary stat NAME is wrong (found 2026-07-27)
+## Lolthian Arrogance (gear 994) — RESOLVED 2026-07-27
 Surfaced while fixing the Add-Missing-Item percent-stat routing (report #230
 follow-up). This is the ONLY item in gear.json storing Stamina Regeneration as
 a rating; the other 153 entries are all `percentStats: 1.5`.
@@ -2103,7 +2103,14 @@ Healing (997), Outgoing Healing (999) — and no ring in the family repeats its
 percent stat as a rating. 994 naming its secondary "Stamina Regeneration"
 duplicates its own percent line, which no other item in the set does.
 
-**Do not guess the replacement.** Needs one in-game tooltip of Lolthian
+**RESOLVED from an in-game tooltip 2026-07-27: the stat is `Defense 1538`.** Both
+halves of the prediction were half-right — the NAME was indeed wrong, but so was
+the value (1538, not 1518; it matches Lolthian Vengeance's secondary). Source
+also corrected to Gzemnid's Reliquary (Master); the other nine Lolthian rings
+still carry the unverified "The Demonweb Pits (Advanced)" string and the
+collection tab is actually Rings of Menzoberranzan.
+
+Original note kept below for the reasoning trail. Needs one in-game tooltip of Lolthian
 Arrogance (Ring) to read the second stat name; the 1518 value and everything
 else can stay. Drops from The Demonweb Pits (Advanced).
 
@@ -2239,3 +2246,20 @@ modern item. The wiki is right about identity and set, useless for magnitudes.
 CR ~900, three rating stats near 500 each, plus a CON ability bonus. We have no
 IL-1,000 Neck in the database to cross-check against, so nothing here can be
 derived; it must be read off the item.
+
+### Amulet of Tiamat's Demise — RESOLVED 2026-07-27 (report #226)
+Added as gear 7414 from an in-game AH tooltip: Neck, IL 1,000, CR 900,
++500 Accuracy / +500 Combat Advantage / +501 Critical Avoidance, +5 CON,
+Binds on Equip, Min Level 18, refinement 330. Tiamat set verified completing
+3/3 in the live engine with Sash 7413 and Orb artifact 12.
+
+Two predictions worth recording because one was wrong:
+- ✅ Report #226's "Outgoing Healing: +5" WAS the set bonus misread as a stat.
+  The real third stat is Critical Avoidance 501.
+- ❌ The wiki's stats were correctly rejected as pre-Mod-16, but note it also
+  said "+2/3 CON" where the live item gives **+5 CON** — so even the *shape*
+  of stale wiki data can mislead, not just the magnitudes.
+
+The Tiamat pieces each carry an ability bonus (Sash +2 WIS/+2 CHA, Amulet
++5 CON) — the exact class of data that was unreportable until the #230 fix
+landed the same day.
