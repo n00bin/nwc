@@ -2286,3 +2286,21 @@ Two predictions worth recording because one was wrong:
 The Tiamat pieces each carry an ability bonus (Sash +2 WIS/+2 CHA, Amulet
 +5 CON) — the exact class of data that was unreportable until the #230 fix
 landed the same day.
+
+---
+
+## Companion rename: "Raptor" -> "Tamed Velociraptor" (2026-07-30)
+
+Community feedback (via owner): players searched the builder/lookup for the in-game
+name "Tamed Velociraptor" and found nothing -- the entry (companions.json id 49) was
+recorded under the shorthand "Raptor". In-game name corroborated by the wiki
+(Tamed Velociraptor; Trade Bar Merchant / Merchant Prince Lockbox -- matches our
+source field). RESOLVED: renamed id 49; added COMPANION_NAME_ALIASES
+({"Raptor": "Tamed Velociraptor"}) in toon-forge.html, applied in applyBuild()
+(summoned / activeComps / partyAllies) and as a findCompanionByName() fallback, so
+old saves, share links and Supabase shared-build rows storing "Raptor" still
+resolve. "Feral Velociraptor" (id 242) is a separate companion, untouched.
+Cosmetic tooltip strings ("e.g. Raptor 5x4.5% Power") updated in toon-forge.html +
+js/optimizer-local.js. NOTE for community meta: historical shared-build rows store
+the old string -- meta tallies render whatever the row says, so old rows may show
+"Raptor" until resubmitted; new shares store the canonical name.

@@ -3502,6 +3502,16 @@
       state.partyPackMeta = s.partyPackMeta === true;
       state.groupEquipStacks = s.groupEquipStacks === true;
       state.assumeSupportParty = s.assumeSupportParty === true;
+      // Migrate renamed companions (COMPANION_NAME_ALIASES) the same way gear
+      // renames migrate above — summoned, the 5 active slots, and party-ally
+      // support comps all store names. Quiet rewrite (no toast): unlike gear,
+      // nothing visible changes for the player except the current name.
+      if (typeof COMPANION_NAME_ALIASES !== "undefined") {
+        const _calias = (n) => (n && Object.prototype.hasOwnProperty.call(COMPANION_NAME_ALIASES, n)) ? COMPANION_NAME_ALIASES[n] : n;
+        state.summoned = _calias(state.summoned);
+        if (Array.isArray(state.activeComps)) state.activeComps = state.activeComps.map(_calias);
+        if (Array.isArray(state.partyAllies)) state.partyAllies = state.partyAllies.map(_calias);
+      }
       // Picked-tier map for same-name multi-IL gear; legacy saves have none.
       state.gearIL = (s.gearIL && typeof s.gearIL === "object") ? { ...s.gearIL } : {};
       // Artifact Modifications; legacy saves have none.
@@ -6963,6 +6973,17 @@
     // so the slot doesn't silently go blank. applyBuild() also rewrites these
     // in state.gear on load and toasts the player. Keep keys exact (the name
     // string the old build saved).
+    // Companion renames — same migration idea as GEAR_NAME_ALIASES below.
+    // Saved builds, share links and shared-meta rows store companions BY NAME,
+    // so a data-side rename must map old -> canonical here or those builds
+    // silently lose the companion. Applied in applyBuild() + as a fallback in
+    // findCompanionByName().
+    const COMPANION_NAME_ALIASES = {
+      // Renamed 2026-07-30: entry was shorthand "Raptor"; the in-game name is
+      // "Tamed Velociraptor" (players searched the real name and found
+      // nothing — community feedback via owner). Wiki + in-game sources agree.
+      "Raptor": "Tamed Velociraptor"
+    };
     const GEAR_NAME_ALIASES = {
       // Removed generic duplicate (old id 393, IL 3600). It was the Explosive
       // Defense variant all along; fold into the labeled entry (id 447).
@@ -11093,6 +11114,11 @@
     }
     function findCompanionByName(name) {
       if (!name) return null;
+      // Old saved/shared names (e.g. "Raptor") resolve to the canonical entry.
+      if (typeof COMPANION_NAME_ALIASES !== "undefined" &&
+          Object.prototype.hasOwnProperty.call(COMPANION_NAME_ALIASES, name)) {
+        name = COMPANION_NAME_ALIASES[name];
+      }
       if (typeof COMPANIONS_DATA !== "undefined") {
         const hit = COMPANIONS_DATA.find(c => c.name === name);
         if (hit) return hit;
@@ -16846,7 +16872,7 @@
           <div class="boon-row" style="cursor:default;">
             <div class="boon-row-info">
               <div class="boon-row-name">Party runs Part of the Pack</div>
-              <div class="boon-row-effect">Part of the Pack gains one stack per party member running a Pack companion. On counts a full group's 5 stacks &#8212; the common group meta (e.g. Raptor at 5&times;4.5% = 22.5% Power). Off counts only your own stack, for solo play.</div>
+              <div class="boon-row-effect">Part of the Pack gains one stack per party member running a Pack companion. On counts a full group's 5 stacks &#8212; the common group meta (e.g. Tamed Velociraptor at 5&times;4.5% = 22.5% Power). Off counts only your own stack, for solo play.</div>
             </div>
             <div class="boon-counter">
               <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.8rem;cursor:pointer;">
@@ -19398,7 +19424,12 @@
         const bySlot = {};
         rows.forEach(function (r) { (bySlot[r.slot] = bySlot[r.slot] || []).push(r); });
         let html = '<div class="mt-cat-title">Gear <span class="n">· per slot, top 3</span></div>';
-        Object.keys(bySlot).sort().forEach(function (slot) {
+        // Slots in the builder's own layout order (n00b 2026-07-28), not
+        // alphabetical; anything unexpected in the data lands at the end.
+        const SLOT_ORDER = ["Head", "Armor", "Arms", "Main Hand", "Off Hand", "Feet",
+                           "Neck", "Ring 1", "Ring 2", "Waist", "Shirt", "Pants"];
+        const slotRank = function (s) { const i = SLOT_ORDER.indexOf(s); return i === -1 ? SLOT_ORDER.length : i; };
+        Object.keys(bySlot).sort(function (a, b) { return slotRank(a) - slotRank(b) || a.localeCompare(b); }).forEach(function (slot) {
           html += '<div class="mt-slot-label">' + mtEsc(slot) + '</div>';
           bySlot[slot].slice().sort(function (a, b) { return b.cnt - a.cnt; }).slice(0, 3)
             .forEach(function (r, i) { html += mtBar(r.name, Math.round(r.cnt / total * 100), i + 1, (you.gear[slot] === r.name)); });
