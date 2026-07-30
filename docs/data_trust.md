@@ -2,6 +2,23 @@
 
 This is the **Data Steward team's** record of what data has been *proven correct against an in-game screenshot.* It is maintained by the `/steward` command (see `~/.claude/commands/steward.md`).
 
+## Owner capture session — Slaughterhouse IL4600 tier-2 (Ichorpact + Cruorforged) — 2026-07-30
+
+New items added to `gear.json` (ids 7415-7422), resolving reports #234/#235/#236. Both sets are the IL4600 tier-2 continuation of the existing IL4050 Slaughterhouse families (Oakenthorn -> Ichorpact, Ambersteel -> Cruorforged); equip bonuses mirror the tier-1 siblings' schema and (for Ichorpact Greaves, Cruorforged Breastplate, Cruorforged Gauntlets) match their tier-1 wording/values exactly.
+
+| id | name | system | status | source | data version | date verified |
+|----|------|--------|--------|--------|--------------|---------------|
+| gear 7415 | Ichorpact Helm | gear | CONFIRMED — Defense 2705 / Incoming Healing 1904 / CR 4140; Warden's Stamina (0.4% Stamina Regen + 0.6% Awareness per stack, max 10) | Ichorpact Helm_IL4600_verified.png | 2026.03.17a | 2026-07-30 |
+| gear 7416 | Ichorpact Breastplate | gear | CONFIRMED — Defense 2705 / Awareness 1932 / CR 4140; Death Defier's Haste (1% Recharge Speed per nearby enemy, max 10) | Ichorpact Breastplate_IL4600_verified.png | 2026.03.17a | 2026-07-30 |
+| gear 7417 | Ichorpact Gauntlets | gear | CONFIRMED — Defense 2898 / Critical Avoidance 2657 / CR 4140; Renegade's Stamina (1.4% Stamina Regen on Deflect, max 5) | Ichorpact Gauntlets_IL4600_verified.png | 2026.03.17a | 2026-07-30 |
+| gear 7418 | Ichorpact Greaves | gear | CONFIRMED — Awareness 3698 / Critical Avoidance 2277 / CR 4140; Sudden Intuition (20% chance on CA damage taken: +7% Awareness + Deflect Severity, 8s, 15s cd) | Ichorpact Greaves_IL4600_verified.png | 2026.03.17a | 2026-07-30 |
+| gear 7419 | Cruorforged Helm | gear | CONFIRMED — Accuracy 3319 / Forte 4036 / CR 4140; Channeler's Focus (0.5% Outgoing Healing + 0.5% Power per stack, max 10) | Cruorforged Helm_IL4600_verified.png | 2026.03.17a | 2026-07-30 |
+| gear 7420 | Cruorforged Breastplate | gear | CONFIRMED — Combat Advantage 3146 / Outgoing Healing 3091 / CR 4140; Fount of Healing (Lesser) full orb text captured, descriptive-only per convention (id 6863 etc.) | Cruorforged Breastplate_IL4600_verified.png | 2026.03.17a | 2026-07-30 |
+| gear 7421 | Cruorforged Gauntlets | gear | CONFIRMED — Critical Severity 3312 / Outgoing Healing 2760 / CR 4140; Divine Inspiration (Divinity max +15%, +3% Forte, always active) | Cruorforged Gauntlets_IL4600_verified.png | 2026.03.17a | 2026-07-30 |
+| gear 7422 | Cruorforged Greaves | gear | CONFIRMED — Forte 3353 / Outgoing Healing 3146 / CR 4140; Renegade's Footwork (1% Movement Speed + Recharge Speed on Deflect, max 5) | Cruorforged Greaves_IL4600_verified.png | 2026.03.17a | 2026-07-30 |
+
+**Intake-bug note (report #235):** the report text read "Stamina Regeneration +2657%" for the Gauntlets' second stat — this was the Add-Missing-Item form's percent-stat routing bug (a rating value dropped into the percent-stat field), the same bug first seen on report #230 (Lolthian). Actual stat is **Critical Avoidance 2657 (rating)**. See `data_issues.md` for the recurring-bug entry.
+
 ## Owner tank proc audit — Shadow Demon + Blood Bargain — 2026-07-18
 
 | id | name | system | status | source | data version | date verified |

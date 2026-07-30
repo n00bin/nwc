@@ -1,5 +1,28 @@
 # Data Issues To Investigate
 
+## Reports #234/#235/#236 RESOLVED 2026-07-30 — Ichorpact + Cruorforged (IL4600 Slaughterhouse tier-2)
+Added 8 screenshot-verified items to `gear.json` (ids 7415-7422): Ichorpact
+Helm/Breastplate/Gauntlets/Greaves (Paladin/Barbarian/Fighter, tier-2 of the
+existing Oakenthorn family) and Cruorforged Helm/Breastplate/Gauntlets/Greaves
+(Paladin/Cleric, tier-2 of the existing Ambersteel family). All IL4600,
+combinedRating 4140, source "The Slaughterhouse collection (Soul Collector
+Campaign Store)". Full row-by-row detail in `data_trust.md` (session
+"Slaughterhouse IL4600 tier-2", 2026-07-30).
+
+**Report #235's "Stamina Regeneration +2657%" was the Add-Missing-Item
+percent-stat routing bug again** — second occurrence after report #230
+(Lolthian Arrogance, gear 994, resolved 2026-07-27, see below). The form
+dropped a rating value into the percent-stat field; the actual second stat on
+Ichorpact Gauntlets is **Critical Avoidance 2657 (a rating, not a percent)**.
+Report #236's follow-up correctly identified the bonus name for the same item
+(Renegade's Stamina) — that part of the report was accurate.
+
+**Open item: the Add-Missing-Item intake form's percent-stat routing bug is
+recurring** (now 2 confirmed occurrences — #230/Lolthian and #235/Ichorpact
+Gauntlets). Root cause not yet found in the form code; needs a proper fix
+rather than continuing to catch it manually per report. Flagging so it isn't
+lost between owner capture sessions.
+
 ## 178 stale `db/` pages — generator never prunes (found 2026-07-15)
 Surfaced while sweeping `db/` for the `translate="no"` pass: 178 generated item
 pages are tracked in git and deployed, but `scripts/gen-item-pages.js` no longer
