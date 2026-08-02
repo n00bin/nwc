@@ -1290,6 +1290,15 @@
       background: rgba(240, 136, 62, 0.10);
     }
     .hero-correction-callout .hcc-btn:active { transform: translateY(1px); }
+    /* Live state: the player HAS submissions, so the button stops looking
+       disabled. Brightened to normal text rather than amber on purpose — a
+       fourth orange element in this box would just be noise again; the amber
+       count pill is doing the accent work. */
+    .hero-correction-callout .hcc-btn.has-subs {
+      color: var(--text);
+      border-color: rgba(240, 136, 62, 0.45);
+      background: rgba(240, 136, 62, 0.06);
+    }
     /* Submission count pill — only rendered once the player has sent something.
        This is the one loud element, and only when there's a reason to look. */
     .hero-correction-callout .hcc-btn-count {
@@ -20408,9 +20417,11 @@
       if (n > 0) {
         cnt.textContent = n;
         cnt.style.display = "";
+        btn.classList.add("has-subs");
         btn.title = `See the ${n} correction${n === 1 ? "" : "s"} and item${n === 1 ? "" : "s"} you've submitted`;
       } else {
         cnt.style.display = "none";
+        btn.classList.remove("has-subs");
         btn.title = "See the corrections and items you've submitted";
       }
     }
