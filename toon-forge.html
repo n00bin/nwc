@@ -92,6 +92,12 @@
       margin-left: 0.5rem;
       vertical-align: middle;
     }
+    /* Released version badge — green instead of the old amber "work in progress" look */
+    .hero .badge.badge-release {
+      background: rgba(63,185,80,0.15);
+      color: var(--pos);
+      border-color: rgba(63,185,80,0.4);
+    }
     .save-status {
       float: right;
       color: var(--text-mute);
@@ -1205,6 +1211,97 @@
       border: 1px solid var(--amber);
       border-radius: 3px;
       font-weight: 700;
+    }
+    /* Two-route how-to list: "fix a wrong value" (amber ✎) and "add a missing
+       item" (green + Add Missing). Each row leads with a miniature of the REAL
+       control the player has to hunt for, in the same colour, so the callout
+       teaches the visual language of the pickers. */
+    .hero-correction-callout .hcc-list {
+      list-style: none;
+      margin: 0.6rem 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .hero-correction-callout .hcc-list li {
+      display: flex;
+      gap: 0.55rem;
+      align-items: baseline;
+      font-size: 0.88rem;
+      color: var(--text-mute);
+    }
+    .hero-correction-callout .hcc-list b { color: var(--text); font-weight: 600; }
+    .hero-correction-callout .hcc-chip {
+      flex: 0 0 auto;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      line-height: 1.4;
+    }
+    .hero-correction-callout .hcc-chip-fix {
+      color: var(--amber);
+      background: rgba(240, 136, 62, 0.12);
+      border: 1px solid var(--amber);
+    }
+    .hero-correction-callout .hcc-chip-add {
+      color: var(--stat-positive, #4cbc7a);
+      background: rgba(76, 188, 122, 0.10);
+      border: 1px dashed var(--stat-positive, #4cbc7a);
+    }
+    .hero-correction-callout .hcc-foot {
+      margin-top: 0.7rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid rgba(240, 136, 62, 0.25);
+      display: flex;
+      gap: 0.6rem 1rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .hero-correction-callout .hcc-foot-note {
+      font-size: 0.82rem;
+      color: var(--text-mute);
+    }
+    /* The one genuinely clickable thing in the callout — styled as a real
+       button so it doesn't read as more body text. */
+    .hero-correction-callout .hcc-btn {
+      flex: 0 0 auto;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--amber);
+      background: rgba(240, 136, 62, 0.12);
+      border: 1px solid var(--amber);
+      border-radius: 6px;
+      padding: 0.32rem 0.7rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .hero-correction-callout .hcc-btn:hover {
+      background: rgba(240, 136, 62, 0.24);
+    }
+    .hero-correction-callout .hcc-btn:active { transform: translateY(1px); }
+    /* Submission count pill — only rendered once the player has sent something. */
+    .hero-correction-callout .hcc-btn-count {
+      display: inline-block;
+      margin-left: 0.4rem;
+      min-width: 1.15rem;
+      padding: 0 0.3rem;
+      border-radius: 999px;
+      background: var(--amber);
+      color: #1a1206;
+      font-size: 0.72rem;
+      font-weight: 800;
+      line-height: 1.35;
+      text-align: center;
+    }
+    @media (max-width: 560px) {
+      .hero-correction-callout .hcc-foot { justify-content: flex-start; }
+      .hero-correction-callout .hcc-btn { width: 100%; text-align: center; }
     }
     /* Inline ✎ pencil for "suggest a correction" on any picker card. */
     .correction-pencil {
@@ -2345,7 +2442,6 @@
     .tf-navbar-join {
       color: var(--amber) !important;
     }
-  @media (hover: none) { .experimental-note-mobile { display: block !important; } }
 
   /* ===== Community dropdown + Meta Tracker (Phase 2) ===== */
   .tf-comm-wrap { position: relative; display: inline-block; }
@@ -2505,15 +2601,26 @@
   <div class="hero">
     <span class="local-preview-badge" id="local-preview-badge" style="display:none;">🔧 Local Preview · showcasing functionality &amp; features coming soon</span>
     <span class="save-status" id="save-status">Auto-saved · just now</span>
-    <h1>Toon Forge<span class="accent">— build your character, see what hits</span><span class="badge" title="Work-in-progress. Numbers may not be 100% accurate yet — help us improve by using the ✎ pencil to fix anything wrong.">Experimental</span></h1>
+    <h1>Toon Forge<span class="accent">— build your character, see what hits</span><span class="badge badge-release" title="Version 1.0 — the stat engine is calibrated against in-game values. Spot something off? Use the ✎ pencil to fix it.">v1.0</span></h1>
     <p>A friendly character builder for Neverwinter. Pick your role, equip your gear, and watch the build come together — no spreadsheet skills required.</p>
-  <p class="experimental-note-mobile" style="display:none;font-size:0.78rem;color:var(--text-mute);">Experimental: numbers may not be 100% accurate yet — tap the ✎ pencil on any item to fix anything wrong.</p>
     <div class="hero-correction-callout" role="note">
       <span class="hcc-icon">✎</span>
       <div class="hcc-body">
-        <strong>Something not matching in-game?</strong>
-        Tap the <span class="hcc-pencil">✎</span> next to any item to fix it — stats, names, anything. Your build uses your version right away!
-        <a href="#" id="contributions-link" onclick="openContributionsModal();return false;" style="margin-left:0.75em;color:var(--amber);font-size:0.85em;text-decoration:none;white-space:nowrap;">&#128203; Your submissions</a>
+        <strong>Something not matching in-game? You can fix it yourself.</strong>
+        <ul class="hcc-list">
+          <li>
+            <span class="hcc-chip hcc-chip-fix">✎</span>
+            <span><b>A number looks wrong.</b> Tap the pencil next to any item — stats, names, anything.</span>
+          </li>
+          <li>
+            <span class="hcc-chip hcc-chip-add">+ Add Missing</span>
+            <span><b>Your item isn't in the list.</b> Open that slot's picker and hit the green button at the top.</span>
+          </li>
+        </ul>
+        <div class="hcc-foot">
+          <span class="hcc-foot-note">Either way, your build uses your version right away.</span>
+          <button type="button" class="hcc-btn" id="contributions-link" onclick="openContributionsModal();return false;" title="See the corrections and items you've submitted">&#128203; Your submissions<span class="hcc-btn-count" style="display:none;"></span></button>
+        </div>
       </div>
     </div>
     <div class="hero-actions" style="display:flex;gap:0.6rem;margin-top:1rem;align-items:stretch;justify-content:center;flex-wrap:wrap;">
@@ -18712,6 +18819,9 @@
         const search = document.getElementById("picker-search");
         renderPickerList(search ? search.value : "");
       }
+      // Keep the hero "Your submissions" count honest — every add-missing save
+      // and correction submit ends in a rerenderAll().
+      if (typeof updateContributionsCount === "function") updateContributionsCount();
       flashSaved();
     }
 
@@ -20239,6 +20349,7 @@
 
       // 5. Re-render and toast if anything changed.
       if (anyChange) rerenderAll();
+      updateContributionsCount();
       if (toastItems.length > 0) {
         // Sticky toast so the player can actually read the message — these
         // include admin notes and resolved/rejected status, not just a quick ack.
@@ -20248,18 +20359,68 @@
 
     // Wire runReconciliation into page init (after rerenderAll on line 11021).
     if (window.supabase) runReconciliation();
+    // Seed the hero submission count on load (reconciliation refreshes it again
+    // once it has resolved/dropped anything the site has since fixed).
+    updateContributionsCount();
 
     // =========================================================================
     // openContributionsModal (C4) — shows pending + resolved submissions.
     // Force-refreshes the cache on open so the player always sees current status.
     // =========================================================================
+    // Every report id this browser has on record — user-added items across all
+    // ten categories plus stat corrections. Shared by the contributions modal
+    // and the hero button's counter so the two can never disagree.
+    function collectSubmissionIds() {
+      const idSet = new Set();
+      const lists = [
+        getUserAddedGear(), getUserAddedEnchants(), getUserAddedOverloads(),
+        getUserAddedInsignias(), getUserAddedBuffs(), getUserAddedGuildBoons(),
+        getUserAddedArtifacts(), getUserAddedCompanions(), getUserAddedMounts(),
+        getUserAddedCollars(),
+      ];
+      for (const list of lists) {
+        for (const item of (list || [])) {
+          if (item && item.__reportId) idSet.add(item.__reportId);
+        }
+      }
+      const overrides = (window.NWCBDataCorrections && NWCBDataCorrections.getAllOverrides)
+        ? NWCBDataCorrections.getAllOverrides()
+        : {};
+      for (const key of Object.keys(overrides)) {
+        const entry = overrides[key];
+        if (entry && entry.reportId) idSet.add(entry.reportId);
+      }
+      return idSet;
+    }
+
+    // Hero "Your submissions" button: show a count once the player has actually
+    // sent something, so the button earns its place instead of reading as decor.
+    // Hidden entirely at zero — a brand-new player has nothing to look at.
+    function updateContributionsCount() {
+      const btn = document.getElementById("contributions-link");
+      if (!btn) return;
+      let n = 0;
+      try { n = collectSubmissionIds().size; } catch (e) { n = 0; }
+      const cnt = btn.querySelector(".hcc-btn-count");
+      if (!cnt) return;
+      if (n > 0) {
+        cnt.textContent = n;
+        cnt.style.display = "";
+        btn.title = `See the ${n} correction${n === 1 ? "" : "s"} and item${n === 1 ? "" : "s"} you've submitted`;
+      } else {
+        cnt.style.display = "none";
+        btn.title = "See the corrections and items you've submitted";
+      }
+    }
+    window.updateContributionsCount = updateContributionsCount;
+
     async function openContributionsModal() {
       const overlay = document.getElementById("contributions-overlay");
       const list    = document.getElementById("contributions-list");
       overlay.classList.add("open");
       list.innerHTML = '<p style="color:var(--muted);">Loading…</p>';
 
-      // Collect all pending report ids.
+      // Per-category lists, used further down to render each submission row.
       const userGear  = getUserAddedGear();
       const userEnchants = getUserAddedEnchants();
       const userOverloads = getUserAddedOverloads();
@@ -20274,41 +20435,7 @@
         ? NWCBDataCorrections.getAllOverrides()
         : {};
 
-      const idSet = new Set();
-      for (const item of userGear) {
-        if (item.__reportId) idSet.add(item.__reportId);
-      }
-      for (const item of userEnchants) {
-        if (item.__reportId) idSet.add(item.__reportId);
-      }
-      for (const item of userOverloads) {
-        if (item.__reportId) idSet.add(item.__reportId);
-      }
-      for (const item of userInsignias) {
-        if (item.__reportId) idSet.add(item.__reportId);
-      }
-      for (const item of userBuffsModal) {
-        if (item.__reportId) idSet.add(item.__reportId);
-      }
-      for (const item of userGuildBoonsModal) {
-        if (item.__reportId) idSet.add(item.__reportId);
-      }
-      for (const item of userArtifactsModal) {
-        if (item.__reportId) idSet.add(item.__reportId);
-      }
-      for (const item of userCompanionsModal) {
-        if (item.__reportId) idSet.add(item.__reportId);
-      }
-      for (const item of userMountsModal) {
-        if (item.__reportId) idSet.add(item.__reportId);
-      }
-      for (const item of userCollarsModal) {
-        if (item.__reportId) idSet.add(item.__reportId);
-      }
-      for (const key of Object.keys(overrides)) {
-        const entry = overrides[key];
-        if (entry && entry.reportId) idSet.add(entry.reportId);
-      }
+      const idSet = collectSubmissionIds();
 
       if (idSet.size === 0) {
         list.innerHTML = '<p style="color:var(--muted);">You have no submissions on record in this browser.</p>';

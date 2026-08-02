@@ -10,6 +10,21 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
+- **Toon Forge is out of Experimental — say hello to v1.0.** The orange
+  "Experimental" tag on the builder is gone, replaced by a green **v1.0**
+  badge. The stat engine has been calibrated against in-game sheets for all
+  three roles, so the numbers you see are the numbers you get. The ✎ pencil
+  isn't going anywhere — if something still doesn't match your character,
+  fix it right there and your build uses your version immediately.
+
+- **The "help us fix it" box now tells you about both routes.** It only ever
+  mentioned the ✎ pencil for correcting a wrong number — it never told anyone
+  they can also **add an item that isn't in the list at all**. It now shows
+  both, each with a little copy of the actual button you're looking for (amber
+  ✎ pencil, green dashed "+ Add Missing"), so you know what to hunt for once
+  you open a picker. **Your submissions** is now a proper button instead of a
+  line of text nobody realised was clickable.
+
 - **Optimizer: Augment companions are off by default.** The optimizer used to
   pick an Augment (Ioun Stones and the like) as your summoned companion because
   it scores higher on paper — the companion enchantment feeds an Augment's bonus
@@ -81,3 +96,11 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   power's Celestial item level and Combined Rating next to its raw Mythic stat
   value, which read as a data error and drew three reports. The stat line now
   scales with the selected tier like everything else on the card.
+
+- **Optimizer: the Pack-meta note no longer doubles up.** When the final
+  stability sweep moved the "Part of the Pack" companion to a different slot,
+  the results screen kept both messages — "slotted in Offense" AND "slotted in
+  Universal" for the same companion, with two different costs. The note now
+  updates itself, so you see one message that matches where the companion
+  actually ended up. (The build itself was always legal — only the message
+  doubled.)
