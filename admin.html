@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Admin — Neverwinter Compendium</title>
+  <!-- Not for players: keep it out of search results and out of the sitemaps.
+       The page itself is public (it's a static site) — what's protected is the
+       DATA, which only get_site_stats() returns, and only with the password. -->
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .admin-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3rem;
+    }
+
+    /* ---- Sign-in card ---- */
+    .gate {
+      max-width: 420px;
+      margin: 3rem auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      text-align: center;
+    }
+    .gate h1 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      margin: 0 0 0.4rem;
+      color: var(--text-primary);
+    }
+    .gate p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      margin: 0 0 1.25rem;
+      line-height: 1.5;
+    }
+    .gate .search-input { min-width: 0; width: 100%; text-align: center; }
+    .gate-btn {
+      margin-top: 0.75rem;
+      width: 100%;
+      padding: 0.55rem 1rem;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius-sm);
+      color: #0d1117;
+      font-size: 0.92rem;
+      font-weight: 700;
+      font-family: var(--font-main);
+      cursor: pointer;
+    }
+    .gate-btn:hover:not(:disabled) { background: var(--accent-hover); }
+    .gate-btn:disabled { opacity: 0.6; cursor: default; }
+    .gate-msg {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      min-height: 1.2em;
+      color: var(--stat-negative);
+    }
+
+    /* ---- Headline numbers ---- */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .stat-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.1rem;
+    }
+    .stat-box .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+    .stat-box .value {
+      font-family: var(--font-mono);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.1;
+    }
+    .stat-box .sub {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      margin-top: 0.3rem;
+      line-height: 1.35;
+    }
+
+    /* ---- Section blocks ---- */
+    .section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      margin: 0 0 0.2rem;
+      color: var(--text-primary);
+    }
+    .section .hint {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin: 0 0 0.9rem;
+      line-height: 1.45;
+    }
+
+    /* ---- Tables ---- */
+    .stat-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .stat-table th {
+      text-align: left;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      font-weight: 600;
+      padding: 0.35rem 0.5rem;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .stat-table th.num, .stat-table td.num { text-align: right; font-family: var(--font-mono); }
+    .stat-table td {
+      padding: 0.4rem 0.5rem;
+      border-bottom: 1px solid var(--bg-elevated);
+      color: var(--text-primary);
+    }
+    .stat-table tr:last-child td { border-bottom: none; }
+
+    /* Proportion bar behind the page name — quick visual ranking. */
+    .bar-cell { position: relative; }
+    .bar-fill {
+      position: absolute;
+      left: 0; top: 2px; bottom: 2px;
+      background: rgba(88, 166, 255, 0.14);
+      border-radius: var(--radius-sm);
+      z-index: 0;
+    }
+    .bar-label { position: relative; z-index: 1; }
+
+    /* ---- Daily chart: plain CSS columns, no chart library ---- */
+    .chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 140px;
+      padding-top: 0.5rem;
+    }
+    .chart .col {
+      flex: 1;
+      min-width: 2px;
+      background: var(--accent);
+      opacity: 0.55;
+      border-radius: 2px 2px 0 0;
+      transition: opacity 0.12s;
+    }
+    .chart .col:hover { opacity: 1; }
+    .chart-axis {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      font-family: var(--font-mono);
+    }
+
+    .empty-note {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      padding: 0.75rem 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <!-- ============ Password gate ============ -->
+  <div id="gate" class="gate">
+    <h1>Site Admin</h1>
+    <p>Private traffic figures. Nothing here for players — the numbers are
+       never shown on the public site.</p>
+    <input type="password" class="search-input" id="gate-pass" placeholder="Admin password" autocomplete="current-password">
+    <button class="gate-btn" id="gate-btn" type="button">Sign in</button>
+    <div class="gate-msg" id="gate-msg"></div>
+  </div>
+
+  <!-- ============ Dashboard (hidden until signed in) ============ -->
+  <div id="dash" style="display:none;">
+    <div class="controls-bar">
+      <select class="filter-select" id="range-select">
+        <option value="7">Last 7 days</option>
+        <option value="30" selected>Last 30 days</option>
+        <option value="90">Last 90 days</option>
+        <option value="365">Last 12 months</option>
+      </select>
+      <span id="range-note" style="color:var(--text-muted);font-size:0.85rem;align-self:center;"></span>
+      <button class="filter-select" id="signout-btn" type="button" style="margin-left:auto;cursor:pointer;">Sign out</button>
+    </div>
+
+    <div class="admin-container">
+      <div class="stat-row" id="stat-row"></div>
+
+      <div class="section">
+        <h2>Views per day</h2>
+        <p class="hint">One bar per day. Hover a bar for the exact figure.</p>
+        <div id="chart-wrap"></div>
+      </div>
+
+      <div class="section">
+        <h2>Pages</h2>
+        <p class="hint">Views is every time a page was opened. Visitors is how
+           many different browsers opened that page, counted once per browser
+           per day.</p>
+        <div id="pages-wrap"></div>
+      </div>
+
+      <div class="section">
+        <h2>Where people came from</h2>
+        <p class="hint">"Direct" means typed in, bookmarked, or arrived from
+           somewhere that doesn't pass a referrer (most chat apps do this).</p>
+        <div id="refs-wrap"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/shared.js"></script>
+  <script>
+  (function () {
+    "use strict";
+
+    var SUPABASE_URL  = "https://ynrfmmccarrpqjdrpvqn.supabase.co";
+    var SUPABASE_ANON = "sb_publishable_RSK4LJnJ4-HQDudcRq3gRw_WJI5WIUw";
+
+    renderNav("");
+
+    // The password lives in memory only — never localStorage, never
+    // sessionStorage. Closing the tab signs you out, which is the behaviour
+    // you want for a password that also controls report moderation.
+    var adminPass = "";
+
+    var gate      = document.getElementById("gate");
+    var gatePass  = document.getElementById("gate-pass");
+    var gateBtn   = document.getElementById("gate-btn");
+    var gateMsg   = document.getElementById("gate-msg");
+    var dash      = document.getElementById("dash");
+    var rangeSel  = document.getElementById("range-select");
+    var rangeNote = document.getElementById("range-note");
+    var signoutBtn= document.getElementById("signout-btn");
+
+    function rpc(name, body) {
+      return fetch(SUPABASE_URL + "/rest/v1/rpc/" + name, {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_ANON,
+          "Authorization": "Bearer " + SUPABASE_ANON,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+      }).then(function (r) { return r.json(); });
+    }
+
+    function num(n) { return (n || 0).toLocaleString(); }
+
+    // ---- Sign in ----
+    function signIn() {
+      var pass = gatePass.value;
+      if (!pass) { gateMsg.textContent = "Enter the password."; return; }
+
+      gateBtn.disabled = true;
+      gateBtn.textContent = "Checking...";
+      gateMsg.textContent = "";
+
+      rpc("get_site_stats", { p_days: 30, p_admin_pass: pass })
+        .then(function (data) {
+          gateBtn.disabled = false;
+          gateBtn.textContent = "Sign in";
+
+          if (!data || data.ok !== true) {
+            gateMsg.textContent = (data && data.reason === "unauthorized")
+              ? "Wrong password."
+              : "Couldn't load the figures. Check your connection and try again.";
+            return;
+          }
+          adminPass = pass;
+          gatePass.value = "";
+          gate.style.display = "none";
+          dash.style.display = "block";
+          render(data);
+        })
+        .catch(function () {
+          gateBtn.disabled = false;
+          gateBtn.textContent = "Sign in";
+          gateMsg.textContent = "Couldn't reach the server. Check your connection and try again.";
+        });
+    }
+
+    gateBtn.addEventListener("click", signIn);
+    gatePass.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") signIn();
+    });
+
+    signoutBtn.addEventListener("click", function () {
+      adminPass = "";
+      dash.style.display = "none";
+      gate.style.display = "block";
+      gateMsg.textContent = "";
+    });
+
+    // ---- Range change ----
+    rangeSel.addEventListener("change", function () {
+      if (!adminPass) return;
+      rangeNote.textContent = "Loading...";
+      rpc("get_site_stats", { p_days: parseInt(rangeSel.value, 10), p_admin_pass: adminPass })
+        .then(function (data) {
+          if (!data || data.ok !== true) {
+            rangeNote.textContent = "Couldn't load that range.";
+            return;
+          }
+          render(data);
+        })
+        .catch(function () { rangeNote.textContent = "Couldn't reach the server."; });
+    });
+
+    // ---- Render ----
+    function render(data) {
+      var totals = data.totals || { views: 0, visitors: 0 };
+      var daily  = data.daily || [];
+      var pages  = data.pages || [];
+      var refs   = data.referrers || [];
+
+      rangeNote.textContent = "";
+
+      // Headline boxes.
+      var busiest = 0;
+      for (var i = 0; i < daily.length; i++) {
+        if (daily[i].views > busiest) busiest = daily[i].views;
+      }
+      var avg = daily.length ? Math.round(totals.views / daily.length) : 0;
+
+      document.getElementById("stat-row").innerHTML =
+        box("Page views", num(totals.views), "Every page opened in this window.") +
+        box("Visitors", num(totals.visitors),
+            "Different browsers per day, added up. Someone visiting on three " +
+            "days counts three times — this is not unique people.") +
+        box("Busiest day", num(busiest), "Most views in a single day.") +
+        box("Average day", num(avg), "Views per day across the window.");
+
+      // Daily chart.
+      var chartWrap = document.getElementById("chart-wrap");
+      if (!daily.length || !busiest) {
+        chartWrap.innerHTML = '<div class="empty-note">No views recorded yet.</div>';
+      } else {
+        var bars = '<div class="chart">';
+        for (var d = 0; d < daily.length; d++) {
+          var row = daily[d];
+          var pct = Math.max((row.views / busiest) * 100, row.views > 0 ? 2 : 0.5);
+          bars += '<div class="col" style="height:' + pct.toFixed(1) + '%" title="' +
+                  escapeHtml(row.day) + ' — ' + num(row.views) + ' views, ' +
+                  num(row.visitors) + ' visitors"></div>';
+        }
+        bars += '</div><div class="chart-axis"><span>' + escapeHtml(daily[0].day) +
+                '</span><span>' + escapeHtml(daily[daily.length - 1].day) + '</span></div>';
+        chartWrap.innerHTML = bars;
+      }
+
+      // Pages table, with a proportion bar behind each name.
+      var pagesWrap = document.getElementById("pages-wrap");
+      if (!pages.length) {
+        pagesWrap.innerHTML = '<div class="empty-note">No page views recorded yet.</div>';
+      } else {
+        var top = pages[0].views || 1;
+        var ph = '<table class="stat-table"><thead><tr><th>Page</th>' +
+                 '<th class="num">Views</th><th class="num">Visitors</th></tr></thead><tbody>';
+        for (var p = 0; p < pages.length; p++) {
+          var pr = pages[p];
+          var w = Math.max((pr.views / top) * 100, 1);
+          ph += '<tr><td class="bar-cell">' +
+                '<span class="bar-fill" style="width:' + w.toFixed(1) + '%"></span>' +
+                '<span class="bar-label">' + escapeHtml(pr.page) + '</span></td>' +
+                '<td class="num">' + num(pr.views) + '</td>' +
+                '<td class="num">' + num(pr.visitors) + '</td></tr>';
+        }
+        pagesWrap.innerHTML = ph + '</tbody></table>';
+      }
+
+      // Referrers table.
+      var refsWrap = document.getElementById("refs-wrap");
+      if (!refs.length) {
+        refsWrap.innerHTML = '<div class="empty-note">Nothing recorded yet.</div>';
+      } else {
+        var rh = '<table class="stat-table"><thead><tr><th>Came from</th>' +
+                 '<th class="num">Views</th></tr></thead><tbody>';
+        for (var r = 0; r < refs.length; r++) {
+          rh += '<tr><td>' + escapeHtml(refs[r].host) + '</td>' +
+                '<td class="num">' + num(refs[r].views) + '</td></tr>';
+        }
+        refsWrap.innerHTML = rh + '</tbody></table>';
+      }
+    }
+
+    function box(label, value, sub) {
+      return '<div class="stat-box"><div class="label">' + escapeHtml(label) +
+             '</div><div class="value">' + escapeHtml(value) +
+             '</div><div class="sub">' + escapeHtml(sub) + '</div></div>';
+    }
+  })();
+  </script>
+</body>
+</html>

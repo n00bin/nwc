@@ -3,4 +3,8 @@
 User-agent: *
 Allow: /
 
+# Private traffic dashboard — nothing for players, and nothing worth indexing.
+# The figures themselves are password-guarded server-side, not by this line.
+Disallow: /admin.html
+
 Sitemap: https://n00bin.github.io/nwc/sitemap.xml

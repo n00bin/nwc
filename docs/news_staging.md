@@ -10,6 +10,16 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
+- **The Optimizer and the Forgemaster's Verdict are LIVE for Legendary Noob
+  members.** The two premium tools have been sitting behind a "coming soon"
+  button for a while — they're open now. The Optimizer rebuilds your gear,
+  enchants, artifacts, companions, mounts, insignias and boons around your
+  role in one click. The Forgemaster's Verdict is an AI that reviews any
+  build, tells you what's wrong with it, and coaches you on how to actually
+  play it. 30 runs a month. Click either button on Toon Forge and sign in
+  with Discord — make sure your YouTube membership is linked under Discord
+  Settings → Connections.
+
 - **Toon Forge is out of Experimental — say hello to v1.0.** The orange
   "Experimental" tag on the builder is gone, replaced by a green **v1.0**
   badge. The stat engine has been calibrated against in-game sheets for all
@@ -34,6 +44,14 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   A new **"Allow Augment companions"** checkbox in the optimize dialog's Party
   meta section lets you run it both ways and compare the two builds yourself.
   The result screen tells you which way the run went either way.
+
+- **The site now counts page views — and there's a line in the footer saying
+  so.** Until now there was no way to tell which pages people actually use, so
+  every decision about what to build next was a guess. Every page now counts
+  how many times it was opened and which site you arrived from. No accounts,
+  no ads, no personal data, no cookies — just counts, and they are never shown
+  publicly anywhere on the site. If your browser sends a "Do Not Track"
+  signal, nothing is counted at all.
 
 ### Bug Fixes
 

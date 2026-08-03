@@ -65,7 +65,8 @@ function renderNav(activePage) {
     '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:#f0883e;text-decoration:none;">Join on YouTube</a>' +
     '<div style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-secondary);">Want to collaborate or contribute data? Reach out: <a href="mailto:n00binhard@gmail.com" style="color:var(--accent);text-decoration:none;">n00binhard@gmail.com</a></div>' +
     '<div style="margin-top:0.6rem;"><a href="db/" style="color:var(--accent);text-decoration:none;">Browse the full item database &rarr;</a> <span style="color:var(--text-secondary);">&mdash; every companion, mount, gear piece, artifact &amp; more</span></div>' +
-    '<div style="margin-top:0.5rem;">Neverwinter Compendium &copy; N00bin ' + new Date().getFullYear() + '</div>';
+    '<div style="margin-top:0.5rem;">Neverwinter Compendium &copy; N00bin ' + new Date().getFullYear() + '</div>' +
+    '<div style="margin-top:0.5rem;font-size:0.76rem;color:var(--text-muted);max-width:640px;margin-left:auto;margin-right:auto;line-height:1.45;">This site counts how many times each page is opened, and which site you arrived from, so we know what to work on next. No accounts, no ads, no personal data &mdash; just page counts, and they are never shown publicly.</div>';
   document.body.appendChild(footer);
 }
 
