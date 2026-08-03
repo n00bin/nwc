@@ -55,6 +55,16 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes
 
+- **Collars: only one of each type, the way the game works.** The optimizer
+  could hand you a stable wearing two or three **Sturdy** collars at once —
+  "Sturdy Barbed", "Sturdy Crescent" and "Sturdy Regal" are three different
+  items, so nothing stopped it, but in game they're all *Sturdy* and you can
+  only wear one. Same for Wayfaring, Supportive, Practical and Unified. The
+  optimizer now treats them as one per type, and the collar picker hides a
+  type that's already on another mount. If you have an older build saved (or
+  someone shares one with you) that breaks the rule, the affected collars now
+  show a ⚠ so you know why the totals look high. Thanks n00b for spotting it.
+
 - **Optimizer results: trimmed the reasoning wall.** The "Why these picks" box
   used to explain every choice the optimizer made (build order, why a companion
   was picked, etc.) — mostly noise. It's now a "⚠ Heads up" box that only shows

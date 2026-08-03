@@ -17298,9 +17298,22 @@
     function renderStable() {
       const wrap = document.getElementById("stable-grid");
       if (!wrap) return;
+      // Flag collar types worn on more than one mount. The picker prevents
+      // building this now, but a build saved or shared before that fix can
+      // still hold one — and the engine would sum BOTH collars' stats and
+      // item level, so the totals would read high. Warn rather than silently
+      // clearing someone's build for them.
+      const collarTypeCount = {};
+      for (let j = 0; j < 5; j++) {
+        const worn = state.stable[j] && state.stable[j].collar;
+        if (!worn) continue;
+        const t = collarTypeOfName(worn);
+        collarTypeCount[t] = (collarTypeCount[t] || 0) + 1;
+      }
       let html = "";
       for (let i = 0; i < 5; i++) {
         const slot = state.stable[i];
+        const collarDup = !!(slot.collar && collarTypeCount[collarTypeOfName(slot.collar)] > 1);
         const mount = findMountByName(slot.mount);
         const insigniaSlots = (mount && mount.insigniaSlots) || [];
         const bonus = mount ? findBonusById(mount.bonusRef) : null;
@@ -17310,6 +17323,7 @@
           <div class="stable-row-pickers">
             <div class="stable-collar comp-slot ${slot.collar ? "filled" : ""}" data-stable="collar" data-idx="${i}">
               ${slot.collar ? "🔗 " + slot.collar : "+ Collar"}
+              ${collarDup ? `<span title="Another mount already wears a ${_escAttr((findCollarByName(slot.collar) || {}).collarSlot || "")} collar. Only one of each type can be equipped, so this build can't exist in game and its totals will read high. Change one of them." style="color:var(--danger,#e07a6a);font-weight:700;margin-left:0.2rem;">&#9888;</span>` : ""}
               ${slot.collar ? `<button class="chip-info" data-details-type="mount_collar" data-details-key="${_escAttr(slot.collar)}" title="See what this collar gives">🔍</button>` : ""}
               ${slot.collar ? lockButtonHTML(LK.mount("collar:" + i), true) : ""}
             </div>
@@ -17524,11 +17538,40 @@
         }
       });
     }
+    // Collar TYPE (collarSlot) for a collar name, lowercased for comparison.
+    // Unknown / user-added collars with no type fall back to their own name so
+    // they stay unique against themselves instead of blocking everything.
+    function collarTypeOfName(name) {
+      if (!name) return "";
+      const c = findCollarByName(name);
+      return (c && c.collarSlot) ? String(c.collarSlot).toLowerCase() : "name:" + name;
+    }
+
     function pickCollar(idx) {
+      // One collar per TYPE across the whole stable — Sturdy, Wayfaring,
+      // Supportive, Practical and Unified. All three shapes of a type
+      // ("Sturdy Barbed", "Sturdy Crescent", "Sturdy Regal") are the same
+      // Sturdy in game, so once one is worn the other two can't be. Hide the
+      // types already used by OTHER slots; always keep this slot's current
+      // pick visible so re-opening the picker shows what's equipped.
+      const usedTypes = new Set();
+      for (let j = 0; j < (state.stable || []).length; j++) {
+        if (j === idx) continue;
+        const worn = state.stable[j] && state.stable[j].collar;
+        if (worn) usedTypes.add(collarTypeOfName(worn));
+      }
+      const all = getCollarList();
+      const current = (state.stable[idx] && state.stable[idx].collar) || "";
+      const items = all.filter(c => {
+        if (c.name === current) return true;
+        return !usedTypes.has(collarTypeOfName(c.name));
+      });
+      const hidden = all.length - items.length;
       openPicker({
         dataType: "mount_collar",
-        title: `Stable slot ${idx + 1} — Collar`,
-        items: getCollarList(),
+        title: `Stable slot ${idx + 1} — Collar` +
+               (hidden ? ` — ${hidden} hidden (that type is on another mount)` : ""),
+        items,
         render: renderCollar,
         onPick: (c) => {
           state.stable[idx].collar = c ? c.name : "";
