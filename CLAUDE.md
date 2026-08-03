@@ -35,6 +35,10 @@ A static website (GitHub Pages) for Neverwinter (PS5) players. It's a reference 
 | `insignia-priority.html` | Insignia priority reference |
 | `preview.html` | Mod preview content (gear, comps, screenshots) |
 
+Deployed but not public-facing: `admin.html` — private traffic dashboard,
+password-gated, `noindex` + `Disallow` in robots.txt, deliberately NOT in the
+navbar or any sitemap. See **Site Analytics** below.
+
 Local-only (gitignored, not deployed): `_uptime_test.html`.
 `prototypes/toon-forge.html` is a redirect stub to the root page.
 
@@ -49,6 +53,7 @@ Local-only (gitignored, not deployed): `_uptime_test.html`.
 | `js/reports-page.js` | Supabase integration for reports, voting, admin, replies |
 | `js/data-corrections.js` | Override layer for user-submitted data corrections |
 | `js/preview-config.js` | Preview page configuration |
+| `js/analytics.js` | Page-view counter. Standalone (no deps) — Toon Forge can't use shared.js |
 | `js/optimizer-local.js` | Build optimizer — **gitignored, paid IP, never deploy** |
 | `toon-forge-engine.js` | Toon Forge stat engine (root level; public) |
 | `toon-forge-stats.js` | Stat catalog: names, caps, aliases (root level; single source of truth) |
@@ -238,6 +243,35 @@ New → Confirmed → In Progress → Fixed / Won't Fix
 ## Deployment
 - **GitHub Actions** (`deploy.yml`): pushes to `main` → auto-deploys to GitHub Pages
 - **Patch Notes** (`update-patch-notes.yml`): daily cron fetches from Arc Games API
+
+---
+
+## Site Analytics (private — added 2026-08-03)
+
+Page-view counting for n00b's own decisions. **Nothing is ever displayed
+publicly** — no counters on buttons, no visitor badge. Schema:
+`docs/supabase/site_analytics.sql`.
+
+- `js/analytics.js` on all 14 public pages → `record_pageview()` (anon,
+  write-only, can't read anything back). Stores page name + date +
+  referring **hostname**. No IP, no user agent, no per-visit rows, no cookies.
+- `admin.html` → `get_site_stats(days, admin_pass)`, guarded by the same
+  `admin_config` password as the reports RPCs.
+
+Things that look like bugs but aren't:
+- **The tracker skips `localhost` and `file://`** — local testing will always
+  show zero. The only real test is the deployed site.
+- **Do Not Track is honoured**, and blocked localStorage means no recording
+  (no way to dedupe, so it skips rather than over-count).
+- **"Visitors" is summed DAILY uniques**, not unique people over the window —
+  one person visiting on 3 days counts 3. `site_page_stats.visitors` likewise
+  cannot be summed across pages; that's why `site_daily` exists separately.
+- **Unknown page names bucket to `other`** rather than creating rows. Adding a
+  new page to the site means adding it to `known_pages` inside
+  `record_pageview()`, or its views land in `other`.
+
+Disclosure copy lives in the `js/shared.js` footer, with a standalone copy in
+`toon-forge.html` (which doesn't load shared.js).
 
 ---
 
