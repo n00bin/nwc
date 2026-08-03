@@ -273,6 +273,21 @@ Things that look like bugs but aren't:
 Disclosure copy lives in the `js/shared.js` footer, with a standalone copy in
 `toon-forge.html` (which doesn't load shared.js).
 
+### Premium tool usage (same dashboard)
+`docs/supabase/premium_usage_stats.sql` adds `record_premium_mode()` +
+`get_premium_stats()` on top of the existing `premium_usage` quota table.
+**These count AI CALLS, not optimizer runs.** The gear search runs entirely
+client-side and never reaches the server; the AI review after it is an opt-in
+button (`optimizer-local.js`, `aiBtn.onclick`). So:
+- `inspect` = Forgemaster's Verdict — **exact**.
+- `optimize` = ran the optimizer *and* asked the AI to explain it — a
+  **floor** on optimizer runs, not the count.
+
+Counting real optimizer runs needs a call added to the gated client script.
+The mode split rides in a **separate best-effort RPC**, never bolted onto
+`record_premium_run` — that one is on the quota path and fails closed, so a
+signature change there would lock paying members out.
+
 ---
 
 ## News Workflow

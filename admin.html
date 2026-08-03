@@ -226,6 +226,16 @@
       </div>
 
       <div class="section">
+        <h2>Premium tools</h2>
+        <p class="hint">Counts AI calls, which is not the same as optimizer
+           runs &mdash; the gear search runs in the browser and never reaches
+           the server, and the AI review after it is a separate button. So
+           <strong>Optimize</strong> below is a floor on optimizer use, not the
+           count. <strong>Verdict</strong> is exact.</p>
+        <div id="premium-wrap"><div class="empty-note">Loading&hellip;</div></div>
+      </div>
+
+      <div class="section">
         <h2>Where people came from</h2>
         <p class="hint">"Direct" means typed in, bookmarked, or arrived from
            somewhere that doesn't pass a referrer (most chat apps do this).</p>
@@ -297,6 +307,7 @@
           gate.style.display = "none";
           dash.style.display = "block";
           render(data);
+          loadPremium();
         })
         .catch(function () {
           gateBtn.disabled = false;
@@ -407,6 +418,69 @@
         }
         refsWrap.innerHTML = rh + '</tbody></table>';
       }
+    }
+
+    // ---- Premium tools (separate RPC — always by month, not by the day range) ----
+    function loadPremium() {
+      var wrap = document.getElementById("premium-wrap");
+      rpc("get_premium_stats", { p_months: 6, p_admin_pass: adminPass })
+        .then(function (data) {
+          // The migration may not be deployed yet — say so plainly instead of
+          // showing an empty table that looks like "nobody used it".
+          if (!data || data.ok !== true) {
+            wrap.innerHTML = '<div class="empty-note">Premium figures aren\'t set up yet &mdash; ' +
+              'run <code>docs/supabase/premium_usage_stats.sql</code> in the Supabase SQL editor.</div>';
+            return;
+          }
+          renderPremium(data);
+        })
+        .catch(function () {
+          wrap.innerHTML = '<div class="empty-note">Couldn\'t load the premium figures.</div>';
+        });
+    }
+
+    function renderPremium(data) {
+      var wrap    = document.getElementById("premium-wrap");
+      var periods = data.periods || [];
+      var modes   = data.modes || [];
+
+      if (!periods.length) {
+        wrap.innerHTML = '<div class="empty-note">No premium runs recorded yet.</div>';
+        return;
+      }
+
+      // Index the mode split by month so each row can show its own breakdown.
+      var byPeriod = {};
+      for (var m = 0; m < modes.length; m++) {
+        var mo = modes[m];
+        if (!byPeriod[mo.period]) byPeriod[mo.period] = {};
+        byPeriod[mo.period][mo.mode] = mo.runs;
+      }
+
+      var h = '<table class="stat-table"><thead><tr><th>Month</th>' +
+              '<th class="num">Verdict</th><th class="num">Optimize</th>' +
+              '<th class="num">AI calls</th><th class="num">Members</th></tr></thead><tbody>';
+      for (var i = 0; i < periods.length; i++) {
+        var p = periods[i];
+        var split = byPeriod[p.period] || {};
+        // Before the mode split was deployed there's no breakdown to show —
+        // a dash is honest, a zero would be a lie.
+        var hasSplit = split.inspect !== undefined || split.optimize !== undefined ||
+                       split.unknown !== undefined;
+        h += '<tr><td>' + escapeHtml(p.period) + '</td>' +
+             '<td class="num">' + (hasSplit ? num(split.inspect || 0) : '&mdash;') + '</td>' +
+             '<td class="num">' + (hasSplit ? num(split.optimize || 0) : '&mdash;') + '</td>' +
+             '<td class="num">' + num(p.runs) + '</td>' +
+             '<td class="num">' + num(p.members) + '</td></tr>';
+      }
+      h += '</tbody></table>';
+
+      var t = data.totals || { runs: 0, members: 0 };
+      h += '<div style="margin-top:0.6rem;font-size:0.8rem;color:var(--text-secondary);">' +
+           num(t.runs) + ' AI calls from ' + num(t.members) +
+           ' member' + (t.members === 1 ? '' : 's') + ' over the last 6 months. ' +
+           'A dash means that month predates the Verdict/Optimize split.</div>';
+      wrap.innerHTML = h;
     }
 
     function box(label, value, sub) {
