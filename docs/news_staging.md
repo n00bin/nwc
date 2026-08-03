@@ -65,6 +65,14 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
   someone shares one with you) that breaks the rule, the affected collars now
   show a ⚠ so you know why the totals look high. Thanks n00b for spotting it.
 
+- **Mounts: the picker no longer offers one you've already stabled.** Same
+  family of problem — you can only own one of each mount, but the picker
+  listed every mount every time, so nothing stopped you putting the same one
+  in two slots. It now hides mounts already in your stable (your own slot's
+  mount stays visible), tells you how many it hid, and if every mount that
+  grants the bonus you picked is already stabled it says so instead of opening
+  an empty list. Builds that already break the rule get the same ⚠.
+
 - **Optimizer results: trimmed the reasoning wall.** The "Why these picks" box
   used to explain every choice the optimizer made (build order, why a companion
   was picked, etc.) — mostly noise. It's now a "⚠ Heads up" box that only shows

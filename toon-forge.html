@@ -17304,16 +17304,22 @@
       // item level, so the totals would read high. Warn rather than silently
       // clearing someone's build for them.
       const collarTypeCount = {};
+      const mountCount = {};
       for (let j = 0; j < 5; j++) {
         const worn = state.stable[j] && state.stable[j].collar;
-        if (!worn) continue;
-        const t = collarTypeOfName(worn);
-        collarTypeCount[t] = (collarTypeCount[t] || 0) + 1;
+        if (worn) {
+          const t = collarTypeOfName(worn);
+          collarTypeCount[t] = (collarTypeCount[t] || 0) + 1;
+        }
+        // Same story for mounts: one stable, one of each.
+        const mnt = state.stable[j] && state.stable[j].mount;
+        if (mnt) mountCount[mnt] = (mountCount[mnt] || 0) + 1;
       }
       let html = "";
       for (let i = 0; i < 5; i++) {
         const slot = state.stable[i];
         const collarDup = !!(slot.collar && collarTypeCount[collarTypeOfName(slot.collar)] > 1);
+        const mountDup = !!(slot.mount && mountCount[slot.mount] > 1);
         const mount = findMountByName(slot.mount);
         const insigniaSlots = (mount && mount.insigniaSlots) || [];
         const bonus = mount ? findBonusById(mount.bonusRef) : null;
@@ -17329,6 +17335,7 @@
             </div>
             <div class="stable-mount comp-slot ${slot.mount ? "filled" : ""}" data-stable="mount" data-idx="${i}">
               ${slot.mount ? "🐎 " + slot.mount : "+ Mount"}
+              ${mountDup ? `<span title="This mount is in more than one stable slot. You can only own one of each, so this build can't exist in game and its totals will read high. Change one of them." style="color:var(--danger,#e07a6a);font-weight:700;margin-left:0.2rem;">&#9888;</span>` : ""}
               ${slot.mount ? `<button class="chip-info" data-details-type="mount" data-details-key="${_escAttr(slot.mount)}" title="See mount details">🔍</button>` : ""}
               ${slot.mount ? lockButtonHTML(LK.mount("stable:" + i), true) : ""}
             </div>`;
@@ -17513,10 +17520,32 @@
     }
 
     function openMountStage(idx, bonus, allowedMounts) {
-      const items = allowedMounts || getMountList();
+      // A mount can only be in your stable once. Both entry points (bonus-first
+      // and "no bonus filter") land here, so filtering once covers both. Keep
+      // this slot's own mount visible so re-opening shows what's equipped.
+      const pool = allowedMounts || getMountList();
+      const usedMounts = new Set();
+      for (let j = 0; j < (state.stable || []).length; j++) {
+        if (j === idx) continue;
+        const worn = state.stable[j] && state.stable[j].mount;
+        if (worn) usedMounts.add(worn);
+      }
+      const current = (state.stable[idx] && state.stable[idx].mount) || "";
+      const items = pool.filter(m => m.name === current || !usedMounts.has(m.name));
+      const hiddenMounts = pool.length - items.length;
+      // The bonus stage checks its allowed list is non-empty BEFORE this
+      // dedupe, so filtering can still empty it here — say why instead of
+      // opening a blank picker.
+      if (!items.length) {
+        toast(bonus
+          ? `Every mount that grants ${bonus.name} is already in your stable`
+          : `Every mount is already in your stable`);
+        return;
+      }
+      const dupNote = hiddenMounts ? ` — ${hiddenMounts} already in your stable` : "";
       const title = bonus
-        ? `Stable slot ${idx + 1} — Mount for "${bonus.name}" (${items.length})`
-        : `Stable slot ${idx + 1} — Mount (no bonus filter)`;
+        ? `Stable slot ${idx + 1} — Mount for "${bonus.name}" (${items.length})${dupNote}`
+        : `Stable slot ${idx + 1} — Mount (no bonus filter)${dupNote}`;
       openPicker({
         dataType: "mount",
         title,
