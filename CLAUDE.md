@@ -273,20 +273,26 @@ Things that look like bugs but aren't:
 Disclosure copy lives in the `js/shared.js` footer, with a standalone copy in
 `toon-forge.html` (which doesn't load shared.js).
 
-### Premium tool usage (same dashboard)
-`docs/supabase/premium_usage_stats.sql` adds `record_premium_mode()` +
-`get_premium_stats()` on top of the existing `premium_usage` quota table.
-**These count AI CALLS, not optimizer runs.** The gear search runs entirely
-client-side and never reaches the server; the AI review after it is an opt-in
-button (`optimizer-local.js`, `aiBtn.onclick`). So:
-- `inspect` = Forgemaster's Verdict — **exact**.
-- `optimize` = ran the optimizer *and* asked the AI to explain it — a
-  **floor** on optimizer runs, not the count.
+### Tool run counters (same dashboard)
+`docs/supabase/tool_run_counters.sql` — a `tool_runs(period, tool, runs)`
+table plus `record_tool_run()` (anon, no password, increment-only) and
+`get_tool_runs()` (admin-guarded). Two numbers only: Optimizer and
+Forgemaster, per month. No member id, no build, nothing personal.
 
-Counting real optimizer runs needs a call added to the gated client script.
-The mode split rides in a **separate best-effort RPC**, never bolted onto
-`record_premium_run` — that one is on the quota path and fails closed, so a
-signature change there would lock paying members out.
+Fired from `js/optimizer-local.js` (gitignored, hardlinked to
+`premium/private/optimizer-local.js` — **verify both copies match after any
+edit**, since the premium backend serves the private one via
+`/api/optimizer_js`):
+- `runPass()` after `showResult(...)` → `optimizer`. Counts a completed
+  search, so a re-run after "I don't have this item" counts again.
+- `runAiReview()` after a successful render, `inspect` only → `forgemaster`.
+  The post-optimize AI explanation is part of an optimizer run, not a
+  separate Forgemaster use.
+
+Deliberately NOT bolted onto `record_premium_run` (the quota path): that one
+fails closed, so a signature change there would lock paying members out of a
+tool they pay for while the backend redeployed. `premium_usage` remains a
+pure quota counter — it counts AI calls, which is not the same question.
 
 ---
 

@@ -226,12 +226,10 @@
       </div>
 
       <div class="section">
-        <h2>Premium tools</h2>
-        <p class="hint">Counts AI calls, which is not the same as optimizer
-           runs &mdash; the gear search runs in the browser and never reaches
-           the server, and the AI review after it is a separate button. So
-           <strong>Optimize</strong> below is a floor on optimizer use, not the
-           count. <strong>Verdict</strong> is exact.</p>
+        <h2>Tool runs</h2>
+        <p class="hint">How many times each tool has actually run. A re-run
+           after marking &ldquo;I don&rsquo;t have this item&rdquo; is a second
+           search and counts again.</p>
         <div id="premium-wrap"><div class="empty-note">Loading&hellip;</div></div>
       </div>
 
@@ -420,67 +418,52 @@
       }
     }
 
-    // ---- Premium tools (separate RPC — always by month, not by the day range) ----
+    // ---- Tool runs (separate RPC — always by month, not by the day range) ----
     function loadPremium() {
       var wrap = document.getElementById("premium-wrap");
-      rpc("get_premium_stats", { p_months: 6, p_admin_pass: adminPass })
+      rpc("get_tool_runs", { p_months: 12, p_admin_pass: adminPass })
         .then(function (data) {
           // The migration may not be deployed yet — say so plainly instead of
-          // showing an empty table that looks like "nobody used it".
+          // showing zeroes that look like "nobody used it".
           if (!data || data.ok !== true) {
-            wrap.innerHTML = '<div class="empty-note">Premium figures aren\'t set up yet &mdash; ' +
-              'run <code>docs/supabase/premium_usage_stats.sql</code> in the Supabase SQL editor.</div>';
+            wrap.innerHTML = '<div class="empty-note">Run counting isn\'t set up yet &mdash; ' +
+              'run <code>docs/supabase/tool_run_counters.sql</code> in the Supabase SQL editor.</div>';
             return;
           }
           renderPremium(data);
         })
         .catch(function () {
-          wrap.innerHTML = '<div class="empty-note">Couldn\'t load the premium figures.</div>';
+          wrap.innerHTML = '<div class="empty-note">Couldn\'t load the run counts.</div>';
         });
     }
 
     function renderPremium(data) {
-      var wrap    = document.getElementById("premium-wrap");
-      var periods = data.periods || [];
-      var modes   = data.modes || [];
+      var wrap   = document.getElementById("premium-wrap");
+      var months = data.months || [];
+      var t      = data.totals || { optimizer: 0, forgemaster: 0 };
 
-      if (!periods.length) {
-        wrap.innerHTML = '<div class="empty-note">No premium runs recorded yet.</div>';
+      // The two numbers, big and up front.
+      var h = '<div class="stat-row" style="margin-bottom:1rem;">' +
+              box("Optimizer runs", num(t.optimizer), "Last 12 months.") +
+              box("Forgemaster runs", num(t.forgemaster), "Last 12 months.") +
+              '</div>';
+
+      if (!months.length) {
+        h += '<div class="empty-note">No runs recorded yet.</div>';
+        wrap.innerHTML = h;
         return;
       }
 
-      // Index the mode split by month so each row can show its own breakdown.
-      var byPeriod = {};
-      for (var m = 0; m < modes.length; m++) {
-        var mo = modes[m];
-        if (!byPeriod[mo.period]) byPeriod[mo.period] = {};
-        byPeriod[mo.period][mo.mode] = mo.runs;
+      h += '<table class="stat-table"><thead><tr><th>Month</th>' +
+           '<th class="num">Optimizer</th><th class="num">Forgemaster</th>' +
+           '</tr></thead><tbody>';
+      for (var i = 0; i < months.length; i++) {
+        var m = months[i];
+        h += '<tr><td>' + escapeHtml(m.period) + '</td>' +
+             '<td class="num">' + num(m.optimizer) + '</td>' +
+             '<td class="num">' + num(m.forgemaster) + '</td></tr>';
       }
-
-      var h = '<table class="stat-table"><thead><tr><th>Month</th>' +
-              '<th class="num">Verdict</th><th class="num">Optimize</th>' +
-              '<th class="num">AI calls</th><th class="num">Members</th></tr></thead><tbody>';
-      for (var i = 0; i < periods.length; i++) {
-        var p = periods[i];
-        var split = byPeriod[p.period] || {};
-        // Before the mode split was deployed there's no breakdown to show —
-        // a dash is honest, a zero would be a lie.
-        var hasSplit = split.inspect !== undefined || split.optimize !== undefined ||
-                       split.unknown !== undefined;
-        h += '<tr><td>' + escapeHtml(p.period) + '</td>' +
-             '<td class="num">' + (hasSplit ? num(split.inspect || 0) : '&mdash;') + '</td>' +
-             '<td class="num">' + (hasSplit ? num(split.optimize || 0) : '&mdash;') + '</td>' +
-             '<td class="num">' + num(p.runs) + '</td>' +
-             '<td class="num">' + num(p.members) + '</td></tr>';
-      }
-      h += '</tbody></table>';
-
-      var t = data.totals || { runs: 0, members: 0 };
-      h += '<div style="margin-top:0.6rem;font-size:0.8rem;color:var(--text-secondary);">' +
-           num(t.runs) + ' AI calls from ' + num(t.members) +
-           ' member' + (t.members === 1 ? '' : 's') + ' over the last 6 months. ' +
-           'A dash means that month predates the Verdict/Optimize split.</div>';
-      wrap.innerHTML = h;
+      wrap.innerHTML = h + '</tbody></table>';
     }
 
     function box(label, value, sub) {
