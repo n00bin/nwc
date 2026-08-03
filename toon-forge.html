@@ -2666,10 +2666,10 @@
         <span style="font-size:0.58rem;font-weight:800;letter-spacing:0.09em;color:#0c0e14;background:var(--amber);padding:0.12rem 0.5rem;border-radius:999px;text-transform:uppercase;">Members&nbsp;Only</span>
         <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;justify-content:center;">
           <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
-          <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Coming soon — the optimizer isn't available yet" style="opacity:0.92;" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">🚀 Optimize My Build</button>
-          <button class="btn" type="button" id="verdict-soon-btn" title="Coming soon — the Forgemaster's AI build verdict isn't available yet" style="opacity:0.92;background:rgba(212,160,23,0.12);color:var(--amber);border:1px solid var(--amber);" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">⚒ Forgemaster's Verdict</button>
+          <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Legendary Noob members — click to sign in with Discord and unlock" style="opacity:0.92;" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">🚀 Optimize My Build</button>
+          <button class="btn" type="button" id="verdict-soon-btn" title="Legendary Noob members — click to sign in with Discord and unlock" style="opacity:0.92;background:rgba(212,160,23,0.12);color:var(--amber);border:1px solid var(--amber);" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">⚒ Forgemaster's Verdict</button>
         </div>
-        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-mute);max-width:280px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization, plus the Forgemaster's AI verdict that reviews any build and coaches how to play it. Still in development — not available yet, coming soon.</span>
+        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-mute);max-width:280px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization, plus the Forgemaster's AI verdict that reviews any build and coaches how to play it. Click a button to sign in with Discord.</span>
       </div>
     </div>
   </div>
@@ -20814,54 +20814,88 @@
     }
   })();
 </script>
-<!-- LIVE-SITE premium gate — optimizer DELIVERY still disabled until launch
-     (held off 2026-06-13). The members-only optimizer is NOT ready, so the
-     live site must not fetch/inject it for ANYONE — members included. What
-     this block DOES do: read the membership token (localStorage
-     'nwcb_premium_token', captured from a #pt=... sign-in redirect) purely to
-     decide WHICH note to show on click — a membership sales pitch for
-     non-members, and a "you're in, it's almost ready" note for Legendary
-     members. NO optimizer fetch, NO inject, NO Discord login trigger yet.
-     Local dev is unaffected (the loader above loads js/optimizer-local.js).
-     TO RE-ENABLE DELIVERY AT LAUNCH: restore the full unlock bootstrap from
-     git history (commit a41790c) AND set OPTIMIZER_ENABLED=1 on the backend. -->
+<!-- LIVE-SITE premium unlock (Legendary Noob members) — LAUNCHED 2026-08-03.
+     The gated optimizer never ships in this repo: members fetch it from the
+     premium backend with their membership token and the page injects it.
+     Non-members clicking a premium button are sent through Discord sign-in;
+     the backend redirects back here with #pt=<token> (member) or
+     #pt_denied=<reason>. Local dev never runs this — the local loader above
+     already loaded the real file from disk.
+     TO DISABLE AGAIN: set OPTIMIZER_ENABLED=0 in the Vercel env and redeploy.
+     That alone kills delivery for everyone (this block then shows the 403
+     "coming soon" note); no push to this file is required. -->
 <script>
   (function () {
     var h = location.hostname;
     var local = h === 'localhost' || h === '127.0.0.1' || h === '' || location.protocol === 'file:';
     if (local) return;  // local dev loads the real optimizer directly (loader above)
+    var API = 'https://premium-tau-three.vercel.app';
+    window.PREMIUM_API_BASE = API;  // the injected optimizer reads this
     var KEY = 'nwcb_premium_token';
-    // Capture a membership token handed back via the post-sign-in redirect
-    // (#pt=<token>). Dormant until the sign-in flow is wired at launch, but
-    // harmless now — it lets a verified member be recognised the moment it is.
-    try {
-      var m = location.hash.match(/[#&]pt=([^&]+)/);
-      if (m) {
-        localStorage.setItem(KEY, decodeURIComponent(m[1]));
-        history.replaceState(null, '', location.pathname + location.search);
-      }
-    } catch (e) {}
-    function isMember() { try { return !!localStorage.getItem(KEY); } catch (e) { return false; } }
-    // Both premium buttons call this. We only ever show a note — the
-    // (unfinished) optimizer is never delivered, member or not.
-    window.nwcbPremiumGo = function () {
+    var JOIN = 'https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join';
+    var INVITE = 'https://discord.gg/vraCFxvdW3';
+
+    function note(html) {
       var n = document.getElementById('optimize-soon-note');
-      if (!n) return;
-      n.style.display = 'block';
-      if (isMember()) {
-        // Legendary member: feature isn't built yet.
-        n.innerHTML = '✅ Thanks for being a <strong style="color:var(--amber);">Legendary Noob</strong>! ' +
-          'The Optimizer and the Forgemaster\'s AI verdict are still in development and aren\'t available ' +
-          'yet — they\'ll unlock right here the moment they launch. Hang tight!';
-      } else {
-        // Non-member: sell the membership.
-        n.innerHTML = '⚒ One-click build optimization and the Forgemaster\'s AI verdict are a ' +
-          '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" ' +
-          'rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> ' +
-          'perk ($9.99/mo): the optimizer rebuilds your gear &amp; boons for your role, and the AI reviews any ' +
-          'build and coaches how to play it. Join now and you\'ll be ready the day it launches.';
-      }
-    };
+      if (n) { n.style.display = 'block'; n.innerHTML = html; }
+    }
+
+    // Capture a fresh token (or a denial) delivered via the URL hash after login.
+    var hash = location.hash || '';
+    var m = hash.match(/[#&]pt=([^&]+)/);
+    if (m) {
+      try { localStorage.setItem(KEY, decodeURIComponent(m[1])); } catch (e) {}
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+    var d = hash.match(/[#&]pt_denied=([^&]+)/);
+    if (d) {
+      history.replaceState(null, '', location.pathname + location.search);
+      note('&#128274; ' + decodeURIComponent(d[1]) +
+        '<br><a href="' + JOIN + '" target="_blank" rel="noopener" style="color:var(--amber);">Join Legendary Noob</a>' +
+        ' &middot; <a href="' + INVITE + '" target="_blank" rel="noopener" style="color:var(--amber);">our Discord</a>' +
+        ' — link YouTube in Discord Settings &rarr; Connections, then click Optimize again.');
+    }
+
+    function inject(js) {
+      var s = document.createElement('script');
+      s.textContent = js;
+      document.body.appendChild(s);
+      var soon = document.getElementById('tf-premium-soon');
+      if (soon) soon.style.display = 'none';
+      var grp = document.getElementById('tf-featured-group');
+      if (grp) grp.style.display = 'flex';
+    }
+
+    function login() {
+      location.href = API + '/api/auth_login?return=' +
+        encodeURIComponent(location.href.split('#')[0]);
+    }
+
+    function unlock(viaClick) {
+      var token = null;
+      try { token = localStorage.getItem(KEY); } catch (e) {}
+      if (!token) { if (viaClick) login(); return; }
+      fetch(API + '/api/optimizer_js', { headers: { 'Authorization': 'Bearer ' + token } })
+        .then(function (r) {
+          if (r.ok) return r.text().then(inject);
+          if (r.status === 401) {  // expired/cancelled — clear and re-login on click
+            try { localStorage.removeItem(KEY); } catch (e) {}
+            if (viaClick) login();
+          } else if (r.status === 403) {
+            // Backend kill switch is off (OPTIMIZER_ENABLED=0). Valid member,
+            // feature deliberately withdrawn — say so plainly, don't blame them.
+            if (viaClick) note('The optimizer is temporarily unavailable — it will be back shortly. Your membership is fine.');
+          } else {
+            note('&#9888;&#65039; The optimizer service hit a snag (' + r.status + ') — try again in a moment.');
+          }
+        })
+        .catch(function () {
+          note('&#9888;&#65039; Could not reach the membership server — try again in a moment.');
+        });
+    }
+
+    window.nwcbPremiumGo = function () { unlock(true); };
+    unlock(false);  // returning members unlock silently on page load
   })();
 </script>
 </body>
