@@ -29,13 +29,22 @@
   var DECO = "\\s\\u2013\\u2014\\u2190-\\u21FF\\u2600-\\u27BF\\u2B00-\\u2BFF\\uFE0F►▶◀◄»«…·";
   var SPLIT = new RegExp("^([" + DECO + "]*)([\\s\\S]*?)([" + DECO + "]*)$");
 
+  var WSPLIT = /^(\s*)([\s\S]*?)(\s*)$/;   // just the surrounding whitespace
+
   function translate(text) {
-    if (!text) return null;
+    if (!text || typeof I18N_RU === "undefined") return null;
+    // 1) Exact match on the whitespace-trimmed value. Keys copied verbatim
+    //    from the DOM (incl. "★ …", "Search mounts...", the "…" placeholder)
+    //    hit here directly; the surrounding whitespace is re-attached.
+    var w = text.match(WSPLIT);
+    if (w && w[2] && I18N_RU[w[2]]) return w[1] + I18N_RU[w[2]] + w[3];
+    // 2) Fall back to the decoration-aware match, so decorated UI like
+    //    "View Preview →" still resolves to the bare "View Preview" key.
     var m = text.match(SPLIT);
     if (!m) return null;
     var core = m[2];
     if (!core) return null;
-    var ru = (typeof I18N_RU !== "undefined") && I18N_RU[core];
+    var ru = I18N_RU[core];
     if (!ru) return null;
     return m[1] + ru + m[3];          // keep the original decoration
   }
@@ -94,19 +103,26 @@
     }
   }
 
+  // True if the element (or any ancestor) is <script>/<style> or an
+  // opted-out translate="no" / .notranslate subtree — i.e. item names.
+  function inNoTranslate(el) {
+    for (var e = el; e; e = e.parentElement) {
+      var tag = e.tagName;
+      if (tag === "SCRIPT" || tag === "STYLE") return true;
+      if (e.getAttribute && (e.getAttribute("translate") === "no" ||
+          (e.classList && e.classList.contains("notranslate")))) return true;
+    }
+    return false;
+  }
+
   // Walk visible text nodes and translate exact matches. Skips <script>,
   // <style>, and any translate="no" / .notranslate subtree (item names).
   function sweep(root) {
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode: function (n) {
         if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-        for (var e = n.parentElement; e; e = e.parentElement) {
-          var tag = e.tagName;
-          if (tag === "SCRIPT" || tag === "STYLE") return NodeFilter.FILTER_REJECT;
-          if (e.getAttribute && (e.getAttribute("translate") === "no" ||
-              (e.classList && e.classList.contains("notranslate")))) return NodeFilter.FILTER_REJECT;
-        }
-        return NodeFilter.FILTER_ACCEPT;
+        return inNoTranslate(n.parentElement) ? NodeFilter.FILTER_REJECT
+                                              : NodeFilter.FILTER_ACCEPT;
       }
     });
     var pending = [], node;
@@ -117,11 +133,74 @@
     pending.forEach(function (p) { p[0].nodeValue = p[1]; });
   }
 
+  // Attributes that hold user-facing text: search placeholders, tooltips.
+  // (Text-node sweep can't reach these — they're not text nodes.)
+  var ATTRS = ["placeholder", "title", "aria-label"];
+  function sweepAttrs(root) {
+    if (!root.querySelectorAll) return;
+    var els = root.querySelectorAll("[placeholder],[title],[aria-label]");
+    var list = root.matches && root.matches("[placeholder],[title],[aria-label]")
+      ? [root].concat(Array.prototype.slice.call(els))
+      : Array.prototype.slice.call(els);
+    list.forEach(function (el) {
+      if (inNoTranslate(el)) return;
+      ATTRS.forEach(function (a) {
+        if (!el.hasAttribute(a)) return;
+        var v = el.getAttribute(a);
+        var ru = translate(v);
+        if (ru !== null && ru !== v) el.setAttribute(a, ru);
+      });
+    });
+  }
+
+  // Whole-element fallback for sentences broken up by inline markup, e.g.
+  // "<li><strong>Click …</strong> for each loadout…</li>" — the text-node
+  // sweep sees two fragments and can't match the full key. Only fires on
+  // long keys (>=40 chars) so no short generic word (Notes/Type/DPS) can be
+  // matched here; replacing textContent drops the inline <strong> bolding.
+  function sweepBlocks(root) {
+    if (!root.querySelectorAll) return;
+    var els = root.querySelectorAll("li,p,button,span,label,td,th,div,a");
+    Array.prototype.forEach.call(els, function (el) {
+      if (!el.children || el.children.length === 0) return;   // not fragmented
+      if (inNoTranslate(el)) return;
+      var key = (el.textContent || "").replace(/\s+/g, " ").trim();
+      if (key.length < 40) return;
+      var ru = I18N_RU[key];
+      if (ru) el.textContent = ru;
+    });
+  }
+
+  // Re-translate content that pages render AFTER load (mount list, detail
+  // panel, planner, pickers — all via innerHTML). We observe only childList,
+  // never characterData/attributes, so our own writes can't re-trigger it.
+  var observer = null;
+  function startObserver() {
+    if (observer || typeof MutationObserver === "undefined" || !document.body) return;
+    observer = new MutationObserver(function (muts) {
+      for (var i = 0; i < muts.length; i++) {
+        var added = muts[i].addedNodes;
+        for (var j = 0; j < added.length; j++) {
+          var n = added[j];
+          if (n.nodeType === 1) { sweep(n); sweepAttrs(n); sweepBlocks(n); }
+          else if (n.nodeType === 3) {
+            var ru = translate(n.nodeValue);
+            if (ru !== null && ru !== n.nodeValue) n.nodeValue = ru;
+          }
+        }
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
   // Public: translate the whole page (or a subtree after dynamic render).
   window.applyI18n = function (root) {
     if (getLang() !== "ru") return;
     try {
-      sweep(root || document.body);
+      var r = root || document.body;
+      sweep(r);
+      sweepAttrs(r);
+      sweepBlocks(r);
       if (!root) { applyCounts(); applyPreviewBanner(); }
       document.documentElement.setAttribute("lang", "ru");
     } catch (e) { /* never let translation break the page */ }
@@ -153,7 +232,11 @@
     nav.appendChild(box);
   }
 
-  function boot() { mountToggle(); window.applyI18n(); }
+  function boot() {
+    mountToggle();
+    if (getLang() === "ru") startObserver();   // catch content rendered after load
+    window.applyI18n();
+  }
   if (document.readyState === "complete") boot();
   else window.addEventListener("load", boot);
 })();
