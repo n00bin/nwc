@@ -14,8 +14,8 @@ _(nothing staged yet)_
 
 ### Bug Fixes
 
-_(nothing staged yet)_
+- **Ichorpact Gauntlets** — the Renegade's Stamina equip bonus is now applied to your stats (1.4% Stamina Regeneration per stack, 7% at 5 stacks), not just shown as text. (Report #236)
 
 ### Data Additions
 
-_(nothing staged yet)_
+- **The Slaughterhouse tier 2 — 8 more armor pieces at Item Level 4,600.** Full Head/Armor/Arms/Feet sets for two more families from the Soul Collector Campaign Store: **Ichorpact** (Paladin/Barbarian/Fighter) and **Cruorforged** (Paladin/Cleric), all screenshot-verified with their equip bonuses. These went live August 2 but were never announced. (Reports #234, #235, #236, #237, #238)

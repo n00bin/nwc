@@ -2219,31 +2219,71 @@ sufficient across families — so they need one collection screenshot each befor
 flipping. (id 452 Arcane Conduit Crest already sits on this template as a
 Shirt, consistent with the rule.)
 
-## Elemental Evil cult gear — entire families absent (found 2026-07-27, report #232)
+## "black earth rapier" — one IL-1,150 Bard weapon, not a missing campaign (report #232)
+
+> **CORRECTED 2026-08-03.** The original 2026-07-27 version of this entry claimed
+> we hold **0** Elemental Evil cult items and that the family is named
+> "Elemental \<Weapon\> of the Black Earth". **Both claims were wrong**, and an
+> admin note repeating them was sent to the reporter. Corrected below; a
+> corrected note has been posted to report #232.
+
 Report #232 asks for a "black earth rapier" (Bard Main Hand, IL 1,150, CR 1,035,
-Combat Advantage +862, Critical Strike +862). Checked and NOT added:
+Combat Advantage +862, Critical Strike +862).
 
-- Not in `gear.json` — we hold **0** items from any Elemental Evil cult family
-  (Black Earth / Howling Hatred / Crushing Wave / Eternal Flame).
-- Not among the 766 archived `docs/audit/_up/bard-gear/` screenshots (43 of them
-  rapiers; the only IL 1,150 bard weapons archived are Celestial Point of Melody
-  and Pure Note of the Blessed Blade, both already in the data).
-- Not in the cached community sheets.
+**We DO carry the Elemental Evil cult weapons.** All four cults are in
+`gear.json` under their modern short names, 275 entries across Main Hand and
+Off Hand, IL 300/400/500/600:
 
-**The numbers are almost certainly real.** 862/1,150 = 0.7496 and CR 1,035/1,150
-= 0.90 — the exact IL-1,150 main-hand template shared by 19 weapons we already
-carry. A fabricated report would not land on the template to four decimals. The
-player is reading a genuine tooltip.
+| Cult | Family prefix | Set name | Entries |
+|---|---|---|---|
+| Black Earth | `Earthen ` | Earthen Heart | 69 |
+| Howling Hatred | `Howling ` | — | 65 |
+| Crushing Wave | `Drowned ` | — | 69 |
+| Eternal Flame | `Burning ` | — | 72 |
 
-**But the name they gave is not an in-game name.** The Neverwinter family is
-titled "Elemental <Weapon> of the Black Earth" (Elemental Evil campaign, 2015 —
-wiki documents Dagger, Longbow, Longsword, Mace, Orb, Pact Blade, Symbol,
-Grimoire). No rapier is documented, though the wiki predates Bard (2021) and is
-known to lag. The real item is probably *Elemental Rapier of the Black Earth*.
+Source on all of them: *Weapons of the Elements (Module 8)*. The Black Earth
+family covers 31 distinct weapon names — Rapier, Lute, Longbow, Orb, Grimoire,
+Pact Blade, Talisman, Dagger, Longsword, Greatsword, Kite Shield, Sword Knot
+and more. The wiki's 2015-era "Elemental \<Weapon\> of the Black Earth" titles
+are the **pre-Mod-16 names**; the live game uses the short form.
 
-**Blocked on:** one tooltip screenshot. Worth noting the wider gap — this is a
-whole campaign's gear missing, not one weapon, so a Black Earth collection-page
-shot would seed many items at once.
+**So `Earthen Rapier` (Bard, set "Earthen Heart") already exists — but it does
+not match the report.** Two mismatches:
+
+- **Item level.** Our Earthen ladder stops at IL 600. The report says 1,150.
+- **Stat template.** Earthen Rapier is a THREE-stat weapon
+  (Accuracy 0.375 / Combat Advantage 0.75 / Critical Strike 0.375 × IL).
+  The report is a TWO-stat weapon (0.75 / 0.75). Both total ≈1.5 × IL, so the
+  stat *budget* is right — only the split differs.
+
+**The reported numbers are real.** 862/1,150 = 0.7496 and CR 1,035/1,150 = 0.90
+is the exact IL-1,150 main-hand template. At IL 1,150 our data holds exactly two
+families, one weapon per class each: **Blessed Blade** (The Redeemed Citadel,
+Mod 19) and **Celestial** (Trial: Zariel's Challenge). The reported **CR 1,035
+matches Celestial**, not Blessed Blade (Bard's Honed Tip is CR 1,015).
+
+Precedent that a second variant exists per class: Ranger carries BOTH
+*Celestial Steel of Grace* (Combat Advantage / Critical Strike) and *Celestial
+Bow of Dignity* (Accuracy / Critical Severity) at IL 1,150. Bard currently has
+only the Accuracy/Critical Severity one (*Celestial Point of Melody*).
+
+**Two live hypotheses, both needing the same screenshot:**
+1. A missing **Bard Celestial main-hand variant** with Combat Advantage /
+   Critical Strike — the sibling of Celestial Point of Melody. Best fit for the
+   CR, worst fit for the reporter's wording.
+2. The **Earthen ladder continues above IL 600** in the live game and switches
+   to the 2-stat template at the top. Best fit for the wording, and would mean
+   we are missing top tiers across all four cult families.
+
+**Blocked on:** a tooltip of the reporter's actual rapier — we need its **exact
+in-game name**, which decides between (1) and (2). The old ask ("send the Black
+Earth collection page") was based on the wrong premise and has been withdrawn.
+
+**Also not found** (unchanged from the original check): not among the 766
+archived `docs/audit/_up/bard-gear/` screenshots (43 rapiers; the only IL-1,150
+Bard weapons archived are Celestial Point of Melody and Pure Note of the
+Blessed Blade, both already in the data), and not in the cached community
+sheets.
 
 ### Amulet of Tiamat's Demise (report #226) — confirmed real, values still blocked
 Third and last piece of the Tiamat set (Sash id 7413 and Orb artifact 12 are in).
