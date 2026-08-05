@@ -1,8 +1,15 @@
 # v1.1 Blind-Spot Sweep — make the optimizer see everything it scores
 
-**Locked 2026-08-04 (`OPT-V1.1 = A`).** The optimizer/engine can only value
-bonuses that carry structured `{stat, amount}` fields. This sweep closes the
-gap between what tooltips say and what the score sees, endgame-first.
+**STATUS: PLAN ONLY (2026-08-04). Nothing here is implemented.** n00b locked
+`OPT-V1.1 = A` as the *direction* for the next version; implementation waits
+for an explicit go. A trial batch of 6 items was briefly shipped 2026-08-04
+and **reverted the same day** (parent `485f936` → revert `451bfa2`) — the
+per-item analysis below is real and verified, only the data changes were
+backed out.
+
+The optimizer/engine can only value bonuses that carry structured
+`{stat, amount}` fields. This sweep closes the gap between what tooltips say
+and what the score sees, endgame-first.
 
 Canonical census: `python scripts/audit_structured_coverage.py` →
 `docs/audit/structured_coverage.md`. At sweep start (2026-08-04):
@@ -24,11 +31,13 @@ Canonical census: `python scripts/audit_structured_coverage.py` →
 Triage 2026-08-04 of the 97 blind bonuses on 94 items at IL≥3000:
 ~55 stat-parseable, ~23 resource/heal procs (A3), 4 blank (A4), 14 bespoke.
 
-- **Batch 1 SHIPPED 2026-08-04** (parent `485f936`): 253 Rotsteel Hoop
-  (Charged Fortitude Defense 5), 5410 Rimetouched Coil (Divine Blessing L
-  Forte 4), 6849 Whispersilk Boots + 7384 Cindersilk Shoes (Discharged Force
-  CritSev 7 always-on), 6860 Oakenthorn Vambraces (Renegade's Stamina
-  1.4×5), 6865 Ambersteel Greaves (Renegade's Footwork MoveSpd+RechSpd 1×5).
+- **Batch 1 (analyzed + verified, REVERTED — ready to reapply on go):**
+  253 Rotsteel Hoop (Charged Fortitude Defense 5, twin 5409), 5410
+  Rimetouched Coil (Divine Blessing L Forte 4, twin 548), 6849 Whispersilk
+  Boots + 7384 Cindersilk Shoes (Discharged Force CritSev 7 always-on, twin
+  3278), 6860 Oakenthorn Vambraces (Renegade's Stamina 1.4×5, same as #236),
+  6865 Ambersteel Greaves (Renegade's Footwork MoveSpd+RechSpd 1×5, twin
+  1097). Exact edits recoverable from reverted parent commit `485f936`.
 - **Next up (hand-review, own text explicit):** 313 Deathsilver Loop
   (Challenger's Lethality 0.4% CS+CSev ×10, vs-1-enemy condition), 286
   Sabatons of the Flayed Legion (Malignant Energy +60% next Encounter —
