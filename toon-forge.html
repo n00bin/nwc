@@ -2796,7 +2796,7 @@
 
       <div class="panel">
         <h2>Enchantments</h2>
-        <p class="hint">Eleven slots in total: <strong>4 Offense</strong>, <strong>4 Defense</strong>, <strong>1 Utility</strong>, <strong>1 Combat</strong>, and <strong>1 Bonus</strong>. Universal enchants change what stat they give based on which slot you put them in.</p>
+        <p class="hint" id="ench-slot-hint">Eleven slots in total: <strong>4 Offense</strong>, <strong>4 Defense</strong>, <strong>1 Utility</strong>, <strong>1 Combat</strong>, and <strong>1 Bonus</strong>. Universal enchants change what stat they give based on which slot you put them in.</p>
         <div id="ench-offense-grid"></div>
         <div id="ench-defense-grid"></div>
         <div id="ench-other-grid"></div>
@@ -3194,6 +3194,23 @@
   <script src="js/preview-config.js"></script>
 
   <script>
+    /* ===== M33.5 (Monoliths of Madness) feature gate =====
+       Module 33.5 adds a SECOND Combat Enchantment slot — one Offense,
+       one Defense (announced 2026-08-05; live ~early September 2026).
+       Until n00b verifies it live in-game this stays LOCAL-ONLY: the
+       flag is true on localhost / file:// and always false on the
+       deployed site, so live builds keep matching the real game.
+       When M33.5 ships: replace the expression with `true`.
+       Tentative rules encoded (confirm on live): Offense-slot accepts
+       appliesTo Offense, Defense-slot accepts appliesTo Defense, and
+       Utility-tagged combat enchants (Divine Aegis etc.) fit either. */
+    const M335_DUAL_COMBAT = (location.protocol === "file:" ||
+      /^(localhost|127\.0\.0\.1)$/.test(location.hostname));
+    if (M335_DUAL_COMBAT) {
+      const _enchHint = document.getElementById("ench-slot-hint");
+      if (_enchHint) _enchHint.innerHTML = 'Twelve slots in total <em>(M33.5 preview — local test only)</em>: <strong>4 Offense</strong>, <strong>4 Defense</strong>, <strong>1 Utility</strong>, <strong>2 Combat</strong> (one Offense, one Defense), and <strong>1 Bonus</strong>. Universal enchants change what stat they give based on which slot you put them in.';
+    }
+
     /* =====================================================
        State + engine wiring. The prototype's gear/artifact
        pickers still hold placeholder strings — engine numbers
@@ -3243,12 +3260,15 @@
       // keyed by mod slot (currently "Off Hand 2"): { stat, value }.
       artifactMods: {},
       kits: {},  // gear-slot label → kit name (reinforcement kit per gear piece)
-      // Enchantments — 11 typed slots: 4 offense, 4 defense, 1 utility, 1 combat, 1 bonus
+      // Enchantments — 11 typed slots: 4 offense, 4 defense, 1 utility, 1 combat, 1 bonus.
+      // combat2 = the M33.5 second Combat slot (Defense side); only rendered and
+      // only counted while M335_DUAL_COMBAT is on. Harmless dead key otherwise.
       enchants: {
         offense: [null, null, null, null],
         defense: [null, null, null, null],
         utility: null,
         combat: null,
+        combat2: null,
         bonus: null
       },
       overloads: [null, null],  // 2 overload slots
@@ -3579,6 +3599,8 @@
       }
       // Builds saved before per-enchant rank existed default to Celestial (top).
       if (s.enchantRarity == null) state.enchantRarity = {};
+      // Builds saved before the M33.5 second Combat slot existed.
+      if (state.enchants && state.enchants.combat2 === undefined) state.enchants.combat2 = null;
       // Builds saved before per-artifact rarity existed default to top tier.
       state.artifactIL = (s.artifactIL && typeof s.artifactIL === "object") ? { ...s.artifactIL } : {};
       // Migrate any renamed/merged gear in the saved loadout so the slot keeps
@@ -7802,7 +7824,7 @@
           }
         }
       });
-      ["utility", "combat", "bonus"].forEach(fam => {
+      ["utility", "combat", "combat2", "bonus"].forEach(fam => {
         if (e[fam] === name) e[fam] = null;
       });
     }
@@ -10836,6 +10858,11 @@
         (ench.offense || []).forEach((n, i) => slots.push([n, `Offense ${i + 1}`]));
         (ench.defense || []).forEach((n, i) => slots.push([n, `Defense ${i + 1}`]));
         slots.push([ench.utility, "Utility"], [ench.combat, "Combat"], [ench.bonus, "Bonus"]);
+        // M33.5 second Combat slot. TENTATIVE: whether it contributes TIL
+        // in-game is unverified — gated local-only until n00b checks live.
+        if (typeof M335_DUAL_COMBAT !== "undefined" && M335_DUAL_COMBAT) {
+          slots.push([ench.combat2, "Combat 2"]);
+        }
         for (const [name, slotLabel] of slots) {
           const e = findEnchantByName(name);
           if (e && e.item_level) {
@@ -12207,7 +12234,7 @@
         const slottedEnch = new Set();
         if (s.enchants) {
           const e = s.enchants;
-          [].concat(e.offense || [], e.defense || [], [e.utility], [e.combat], [e.bonus])
+          [].concat(e.offense || [], e.defense || [], [e.utility], [e.combat], [e.combat2], [e.bonus])
             .forEach(n => { if (n) slottedEnch.add(n); });
         }
         for (const slot in gear) {
@@ -13707,6 +13734,11 @@
       (ench.defense || []).forEach((n, i) => pushEnchant("defense", `Defense ${i+1}`, n));
       pushEnchant("utility", "Utility", ench.utility);
       pushEnchant("combat",  "Combat",  ench.combat);
+      // M33.5 second Combat slot — gated so live-site stat panels keep
+      // matching the in-game reality until the module actually ships.
+      if (typeof M335_DUAL_COMBAT !== "undefined" && M335_DUAL_COMBAT) {
+        pushEnchant("combat", "Combat 2", ench.combat2);
+      }
       pushEnchant("bonus",   "Bonus",   ench.bonus);
 
       // Reinforcement kits — one per applicable gear slot. Add their
@@ -14971,7 +15003,7 @@
         const slotted = new Set();
         if (typeof state !== "undefined" && state.enchants) {
           const e = state.enchants;
-          [].concat(e.offense || [], e.defense || [], [e.utility], [e.combat], [e.bonus])
+          [].concat(e.offense || [], e.defense || [], [e.utility], [e.combat], [e.combat2], [e.bonus])
             .forEach(n => { if (n) slotted.add(n); });
         }
         const rows = item.gemSynergy.map(g => {
@@ -15069,7 +15101,7 @@
       const slottedEnchSet = new Set();
       if (state.enchants) {
         const e = state.enchants;
-        [].concat(e.offense || [], e.defense || [], [e.utility], [e.combat], [e.bonus])
+        [].concat(e.offense || [], e.defense || [], [e.utility], [e.combat], [e.combat2], [e.bonus])
           .forEach(n => { if (n) slottedEnchSet.add(n); });
       }
       g.innerHTML = GEAR_SLOTS.map(s => {
@@ -15329,10 +15361,21 @@
         .filter(e => !canonicalNames.has(e.name));
       const want = (slotType === "offense" || slotType === "defense" || slotType === "utility")
         ? "Universal"
+        : slotType === "combat2" ? "Combat"  // M33.5 second Combat slot
         : slotType[0].toUpperCase() + slotType.slice(1);  // "Combat" / "Bonus"
-      return canonical.concat(userAdded)
-        .filter(e => e.slotType === want)
-        .sort((a,b) => (b.item_level||0)-(a.item_level||0) || a.name.localeCompare(b.name));
+      let list = canonical.concat(userAdded).filter(e => e.slotType === want);
+      // M33.5 dual Combat slots are typed: slot 1 = Offense, slot 2 = Defense.
+      // TENTATIVE until verified live: Utility-tagged combat enchants (Divine
+      // Aegis, Radiant Sanctuary, Fluid Aurora) are allowed in either slot,
+      // and untagged (user-added) entries aren't blocked.
+      if (M335_DUAL_COMBAT && (slotType === "combat" || slotType === "combat2")) {
+        const need = slotType === "combat" ? "Offense" : "Defense";
+        list = list.filter(e => {
+          const a = e.appliesTo || [];
+          return a.length === 0 || a.includes(need) || a.includes("Utility");
+        });
+      }
+      return list.sort((a,b) => (b.item_level||0)-(a.item_level||0) || a.name.localeCompare(b.name));
     }
     // Description tailored to which slot it's going into (Universal varies by slot).
     function renderEnchantPickFor(slotType) {
@@ -15380,7 +15423,13 @@
       const ENCH_RANKS = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
       function chip(slotType, name, idx) {
         const filled = !!name;
-        const slotLabel = slotType[0].toUpperCase() + slotType.slice(1) + (idx !== undefined ? ` ${idx + 1}` : "");
+        // "Combat 2" is the stable key for rarity/locks; the chip shows Off/Def
+        // qualifiers only while the M33.5 dual-combat gate is on.
+        const slotLabel = slotType === "combat2" ? "Combat 2"
+          : slotType[0].toUpperCase() + slotType.slice(1) + (idx !== undefined ? ` ${idx + 1}` : "");
+        const dispLabel = (slotType === "combat" && M335_DUAL_COMBAT) ? "Combat · Off"
+          : slotType === "combat2" ? "Combat · Def"
+          : slotType[0].toUpperCase() + slotType.slice(1) + (idx !== undefined ? ` ${idx + 1}` : "");
         const info = filled ? `<button class="chip-info" data-details-type="enchant" data-details-key="${_escAttr(name)}" data-details-slot="${_escAttr(slotLabel)}" title="See enchant details">\u{1F50D}</button>` : "";
         let rankSel = "";
         const cur = (state.enchantRarity && state.enchantRarity[slotLabel]) || "Celestial";
@@ -15394,7 +15443,7 @@
           ? `<img loading="lazy" src="images/enchants/${window.ENCHANT_IMAGES[name]}" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:0.25rem;">`
           : "";
         return `<div class="ench-chip ${filled?"filled":""}" data-ench-type="${slotType}"${idx!==undefined?` data-ench-idx="${idx}"`:""}>
-          <div class="ench-chip-label">${slotType[0].toUpperCase()+slotType.slice(1)}${idx!==undefined?` ${idx+1}`:""}${lockButtonHTML(LK.ench(slotLabel), filled)}</div>
+          <div class="ench-chip-label">${dispLabel}${lockButtonHTML(LK.ench(slotLabel), filled)}</div>
           <div class="ench-chip-name">${enchIcon}${shownName}${info}</div>
           ${rankSel}
         </div>`;
@@ -15407,6 +15456,7 @@
       oth.innerHTML = '<div class="ench-row">' +
         chip("utility", state.enchants.utility) +
         chip("combat", state.enchants.combat) +
+        (M335_DUAL_COMBAT ? chip("combat2", state.enchants.combat2) : "") +
         chip("bonus", state.enchants.bonus) +
         '</div>';
 
@@ -15415,13 +15465,17 @@
           el.addEventListener("click", () => {
             const t = el.dataset.enchType;
             const idx = el.dataset.enchIdx !== undefined ? +el.dataset.enchIdx : null;
-            const _slotLabel = t[0].toUpperCase() + t.slice(1) + (idx !== null ? ` ${idx + 1}` : "");
+            const _slotLabel = t === "combat2" ? "Combat 2"
+              : t[0].toUpperCase() + t.slice(1) + (idx !== null ? ` ${idx + 1}` : "");
+            const _title = (t === "combat" && M335_DUAL_COMBAT) ? "Combat enchantment (Offense)"
+              : t === "combat2" ? "Combat enchantment (Defense)"
+              : `${t[0].toUpperCase()+t.slice(1)} enchantment` + (idx !== null ? ` (slot ${idx + 1})` : "");
             openPicker({
               dataType: "enchant",
               enchantSlotType: t,
               enchantSlotLabel: _slotLabel,
               enchTier: (state.enchantRarity && state.enchantRarity[_slotLabel]) || "Celestial",
-              title: `${t[0].toUpperCase()+t.slice(1)} enchantment` + (idx !== null ? ` (slot ${idx + 1})` : ""),
+              title: _title,
               items: enchantsForSlotType(t),
               render: renderEnchantPickFor(t),
               onPick: (e) => {
