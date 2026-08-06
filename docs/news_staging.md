@@ -10,7 +10,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
-_(nothing staged yet)_
+- **Preview page rotated to Mod 33.5: Monoliths of Madness.** The preview section now covers the upcoming module (PC test servers opened August 5; release aimed at early September): the new Monoliths of Madness event campaign across four returning zones, a second Combat Enchantment slot (Offense + Defense), item stacks raised from 99 to 999, and the announced upcoming rewards (Abyssal Spider mount, Burning Hope artifact, Staring Cat of Uldunn-Dar legendary companion, Renewed gear, and more). Mod 33 preview screenshots have been retired. Test-server screenshots will be added as content gets verified.
 
 ### Bug Fixes
 
