@@ -257,7 +257,7 @@
 
     <div class="preview-section">
       <h2 class="preview-section-title">Gear</h2>
-      <p class="preview-section-desc">New gear previewed for Mod 33.5 — Renewed armor, rings, and shirts/pants are expected. Pick a class to see their gear.</p>
+      <p class="preview-section-desc">New gear previewed for Mod 33.5 — the Renewed armor and shirts/pants have no class requirement, so they live under &ldquo;All Classes&rdquo;. Pick a group to see the gear, then filter by slot.</p>
       <div class="class-buttons" id="gear-class-buttons"></div>
       <div class="class-buttons" id="gear-slot-buttons" style="display:none;"></div>
       <div id="gear-grid">
@@ -302,7 +302,7 @@
       if (notice) notice.style.display = "block";
     }
 
-    var NW_CLASSES = ["Barbarian", "Bard", "Cleric", "Fighter", "Paladin", "Ranger", "Rogue", "Warlock", "Wizard"];
+    var NW_CLASSES = ["All Classes", "Barbarian", "Bard", "Cleric", "Fighter", "Paladin", "Ranger", "Rogue", "Warlock", "Wizard"];
 
     function renderCard(it) {
       var html = '<div class="preview-image-card">';

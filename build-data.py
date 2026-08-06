@@ -108,7 +108,8 @@ def build_preview_data():
         return False
 
     image_exts = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
-    classes = ["Barbarian", "Bard", "Cleric", "Fighter", "Paladin",
+    # "All Classes" holds gear with no class requirement (e.g. Mod 33.5 Renewed gear)
+    classes = ["All Classes", "Barbarian", "Bard", "Cleric", "Fighter", "Paladin",
                "Ranger", "Rogue", "Warlock", "Wizard"]
 
     def list_images(rel_dir):

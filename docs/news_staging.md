@@ -12,6 +12,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 - **Preview page rotated to Mod 33.5: Monoliths of Madness.** The preview section now covers the upcoming module (PC test servers opened August 5; release aimed at early September): the new Monoliths of Madness event campaign across four returning zones, a second Combat Enchantment slot (Offense + Defense), item stacks raised from 99 to 999, and the announced upcoming rewards (Abyssal Spider mount, Burning Hope artifact, Staring Cat of Uldunn-Dar legendary companion, Renewed gear, and more). Mod 33 preview screenshots have been retired. Test-server screenshots will be added as content gets verified.
 
+### Data Additions (Preview)
+
+- **First Mod 33.5 test-server screenshots are up on the Preview page (29 images).** The Staring Cat of Uldun-Dar legendary companion (both tooltip tabs), the Umbral Widow mount (equip/combat powers + insignia slots), the Burning Hope artifact, and the full Renewed gear lineup: Delzoun armor (Head/Chest/Arms/Feet, 3 variants each) plus all 6 Obsidian shirt and 6 pants variants. The Renewed gear has no class requirement, so the Gear section now has an "All Classes" group with slot filters.
+
 ### Bug Fixes
 
 - **Ichorpact Gauntlets** — the Renegade's Stamina equip bonus is now applied to your stats (1.4% Stamina Regeneration per stack, 7% at 5 stacks), not just shown as text. (Report #236)
