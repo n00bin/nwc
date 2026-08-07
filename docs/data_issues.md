@@ -1175,6 +1175,21 @@ Player report flagged the following gear as missing from the site:
 Need to: source screenshots (in-game tooltips or NW Hub references),
 extract stats, add to `gear.json` with proper slot/set/IL data.
 
+## Rogue frost weapons — Frostbound pair still missing (2026-08-07)
+
+The four Chilling Flow rogue weapons were added 2026-08-07 (Runefrost
+Nightknife/Sideblade IL 5500, Wintermarked Shardfang/Offhand Fang IL 5800 —
+Reports #239/#240/#241, screenshot-verified). Two Rogue frost daggers from
+the same NW Hub gap list (`docs/audit/nwhub_gear_gap_2026-07-14.md` §A2)
+remain missing:
+
+- **Frostbound Knife** — Main Hand, Rogue, IL 4,800, no set
+- **Frostbound Sideknife** — Off Hand, Rogue, IL 4,800, no set
+
+Need in-game collection tooltips before adding (no-unverified-adds rule).
+The Cleric pair in §A3 (Frostbound Crookstaff / Faith Symbol, IL 4,800) is
+also still unverified.
+
 ## Fighter weapons missing — including the Mod 33 / Soul Collector set (2026-06-12)
 
 **✅ RESOLVED 2026-06-19 (Mod 33 / Soul Collector set — Report #33 gear thread):**
