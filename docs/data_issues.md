@@ -1,5 +1,32 @@
 # Data Issues To Investigate
 
+## Reinforcement-kit ladder: derived values need in-game verification (added 2026-08-07, Report #242)
+Added the full Greater / Greater +1 / Major (non-+1) ladder for all 10 kit
+families (`kits.json` ids 12-44). Anchors: Major CA Jewel non-+1 = 800 CA /
+IL 40 (n00b), all Major +1 values calibration-verified. Wiki tooltips confirm
+the 400/440/800 rating pattern for Accuracy, Critical Avoidance, Awareness,
+Combat Advantage, and Stamina Regeneration (50/55/100/110 SGG = 1.0/1.1/2.0/2.2%).
+
+**Needs verification** (flagged in each entry's notes):
+- Stat values for Defense / Hit Points / Power / Critical Strike / Deflect /
+  Critical Severity lower tiers — their wiki pages are stale mod-16 values or
+  missing, so ours are pattern-derived (Greater = half Major; +1 = x1.1;
+  HP: 1600/1760/3200).
+- All Greater-tier item levels (20 / 22) — derived by halving Major's 40/44.
+  Corroboration (not verification): the Report #242-247 player's in-game
+  Greater CA Jewel +1 reads IL 22 / 440 CA (reports #243/#244, 2026-08-07),
+  matching our derived values exactly. Still needs a screenshot to close.
+  Cluster resolved 2026-08-10: #242/#245/#246/#247 Fixed, #243/#244 Won't Fix
+  (tier mix-up — player's local overrides hid Major +1 in their browser;
+  closing the reports auto-clears those overrides via reconciliation).
+
+**Open question — ids 1-2 naming:** our "Accuracy Armor Kit +1" and "Defense
+Armor Kit +1" carry the Major-tier value (880) but no "Major" prefix; the wiki
+ladder says an 880 kit is "Major X Armor Kit +1". Likely misnamed at intake.
+NOT renamed yet: Toon Forge share links and owned profiles reference kits BY
+NAME, so a rename needs a load-time migration alias. Needs an in-game tooltip
+check first (any gear piece with those kits shows "Reinforced <kit name>").
+
 ## Reports #234/#235/#236 RESOLVED 2026-07-30 — Ichorpact + Cruorforged (IL4600 Slaughterhouse tier-2)
 Added 8 screenshot-verified items to `gear.json` (ids 7415-7422): Ichorpact
 Helm/Breastplate/Gauntlets/Greaves (Paladin/Barbarian/Fighter, tier-2 of the
