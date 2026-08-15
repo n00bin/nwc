@@ -1453,6 +1453,21 @@
       opacity: 0.85;
       margin-bottom: 0.4rem;
     }
+    /* Plain-English heads-up at the top of the correction card, for item
+       types whose stored numbers are a "max rank" value the player may not
+       be running yet (guild boons). Stops false "this number is wrong"
+       corrections — see reports #254/#255. */
+    .cc-notice {
+      font-size: 0.78rem;
+      line-height: 1.35;
+      color: var(--text-dim);
+      background: var(--panel2, #1b2030);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--amber);
+      border-radius: 6px;
+      padding: 0.5rem 0.6rem;
+      margin-bottom: 0.7rem;
+    }
     .cc-subsection-title {
       font-size: 0.68rem;
       text-transform: uppercase;
@@ -5452,12 +5467,33 @@
     // Build the card-style readout of an item. Each editable cell carries
     // data-field (the override path) + data-kind ("text" or "num" or
     // "longtext") so the inline edit form can re-render properly.
+    // Some item types store a "max rank" value that the player may not be
+    // running yet, so the card would otherwise look plainly wrong to them.
+    // Returns a short plain-English banner (or "") to sit above the fields.
+    function _ccCardNotice(item, dataType) {
+      if (dataType === "guild_boon") {
+        const per = (item && item.perRank) || {};
+        const pAmt = per.amount != null ? per.amount : 300;
+        const pCR  = per.combinedRating != null ? per.combinedRating : 80;
+        const pIL  = per.itemLevel != null ? per.itemLevel : 100;
+        const max  = +(item && item.maxRank) || 10;
+        return `<div class="cc-notice">These are the <strong>rank ${max}</strong> numbers — a fully upgraded
+          guild structure. Each structure rank adds ${pAmt.toLocaleString()} to the stat,
+          ${pCR} Combined Rating and ${pIL} item level, so a rank 3 structure shows
+          ${(pAmt * 3).toLocaleString()} and ${pCR * 3} Combined Rating in game.
+          If your numbers look low, set your guild's rank with the
+          <strong>Rank</strong> dropdown on the Boons panel rather than editing here.</div>`;
+      }
+      return "";
+    }
+
     function _ccRenderCard(item, dataType) {
+      const notice = _ccCardNotice(item, dataType);
       // ---- Descriptor path (Phase 2): use per-type field descriptors ----
       const descriptors = FIELD_DESCRIPTORS[dataType];
       if (descriptors) {
         const { html, rendered } = _ccRenderDescriptor(item, dataType, descriptors);
-        return html + _ccRenderMissingFieldsExpander(item, rendered);
+        return notice + html + _ccRenderMissingFieldsExpander(item, rendered);
       }
 
       // ---- Fallback path (Phase 1): hand-rendered + auto-scan ----------
@@ -5597,7 +5633,7 @@
         html += `<div class="cc-section"><div class="cc-section-title">Other Fields</div>${auto.join("")}</div>`;
       }
 
-      return html;
+      return notice + html;
     }
 
     function openCorrectionModal(dataType, item) {
