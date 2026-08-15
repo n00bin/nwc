@@ -1,5 +1,55 @@
 const PATCH_NOTES_DATA = [
   {
+    "id": "11582499",
+    "title": "Patch Notes for 08/11/2026",
+    "language": {
+      "id": "en"
+    },
+    "summary": "Check out all the exciting changes coming to Neverwinter in our latest patch notes!",
+    "tags": [
+      "nw-launcher",
+      "nw-patch-notes",
+      "nw-news",
+      "neverwinter",
+      "patch-notes",
+      "nw-xbox",
+      "nw-playstation"
+    ],
+    "master_id": "561",
+    "translations": [
+      {
+        "master_id": "561",
+        "id": "11582499",
+        "language": "en",
+        "game_abbrs": ",nw,nwps,nwxb,"
+      },
+      {
+        "master_id": "561",
+        "id": "11582502",
+        "language": "de",
+        "game_abbrs": ",nw,nwps,nwxb,"
+      },
+      {
+        "master_id": "561",
+        "id": "11582505",
+        "language": "fr",
+        "game_abbrs": ",nw,nwps,nwxb,"
+      },
+      {
+        "master_id": "561",
+        "id": "11582508",
+        "language": "it",
+        "game_abbrs": ",nw,nwps,nwxb,"
+      },
+      {
+        "master_id": "561",
+        "id": "11582511",
+        "language": "ru",
+        "game_abbrs": ",nw,nwps,nwxb,"
+      }
+    ]
+  },
+  {
     "id": "11582307",
     "title": "Patch Notes for 07/15/2026",
     "language": {
@@ -25,8 +75,8 @@ const PATCH_NOTES_DATA = [
       },
       {
         "master_id": "465",
-        "id": "11582313",
-        "language": "fr",
+        "id": "11582307",
+        "language": "en",
         "game_abbrs": ",nw,nwps,nwxb,"
       },
       {
@@ -37,8 +87,8 @@ const PATCH_NOTES_DATA = [
       },
       {
         "master_id": "465",
-        "id": "11582307",
-        "language": "en",
+        "id": "11582313",
+        "language": "fr",
         "game_abbrs": ",nw,nwps,nwxb,"
       }
     ]
