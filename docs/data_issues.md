@@ -659,8 +659,17 @@ Likewise the Celestial Companion enchant's "+9,000 to each Augment Companion
 Bonus Stat" adds *on top of* whatever the companion already shares.
 
 **Augments on the sheets we don't carry as companions** (missing-item gap):
-Gelatinous Cube, Joy Dancer of Lliira, Juvenile Jade Dragonnel, Star of Simril,
+Gelatinous Cube, Joy Dancer of Lliira, Juvenile Jade Dragonnel,
 Winter Fox, Ioun Stone of the Feywild, Panda.
+
+- ~~Star of Simril~~ — **CLOSED 2026-08-15** (player report #253 + n00b's Auction
+  House screenshots). Companion id 271 / power id 270, base rarity Uncommon
+  (IL 150), enhancement Perfect Vision, shares Power / Awareness / Critical
+  Avoidance. Note for the remaining six: NW Hub's companion-power table was
+  **wrong** on this one — it lists Celestial as 14,000 Max HP / 10% Gold Bonus,
+  which doesn't fit the screenshot-verified IL-150 rung (the real Celestial is
+  12,000 / 3% / 6%). Verify NW Hub rows against a rung we can actually see
+  before trusting them for the others.
 
 ## Set-bonus text backfill — 3 gaps found (2026-06-15)
 During the set-bonus text pass (gear cards now show the full tooltip text

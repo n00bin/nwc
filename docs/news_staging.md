@@ -6,6 +6,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of August 10, 2026
 
+### Data Additions
+
+- **Star of Simril added** — the Winter Festival augment companion. It shares Power, Awareness and Critical Avoidance with you, comes with the Perfect Vision enhancement, and its Offense/Utility power (Star of Simril's Insight) gives Maximum Hit Points, Critical Strike and a Gold Bonus — 12,000 HP / 3% Critical Strike / 6% Gold at Celestial. Thanks to the player who reported it missing! (Report #253)
+
 ### Features
 
 - **Guild boons now say which rank you're looking at.** When you open a guild boon's correction card in Toon Forge, it now explains up front that the numbers shown are the fully upgraded rank-10 values, and that each structure rank is worth 300 stat / 80 Combined Rating / 100 item level — with a pointer to the Rank dropdown on the Boons panel. Two players' "wrong value" reports turned out to be rank-3 guild structures. (Reports #254, #255)
