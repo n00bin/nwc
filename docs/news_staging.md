@@ -14,6 +14,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 - **Guild boons now say which rank you're looking at.** When you open a guild boon's correction card in Toon Forge, it now explains up front that the numbers shown are the fully upgraded rank-10 values, and that each structure rank is worth 300 stat / 80 Combined Rating / 100 item level — with a pointer to the Rank dropdown on the Boons panel. Two players' "wrong value" reports turned out to be rank-3 guild structures. (Reports #254, #255)
 
+### Bug Fixes
+
+- **Correction reports now remember the site's original value.** If you edited the same field twice on a Toon Forge correction card, the report sent to us said the site showed "(empty)" instead of the real original number. Reports now always carry the site's original value, and re-typing your own earlier edit no longer counts as a change. (Reports #256–#262)
+
 ---
 
 ## Week of August 3, 2026
