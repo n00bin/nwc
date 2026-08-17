@@ -5869,26 +5869,36 @@
 
       // Apply override + recompute immediately so the player sees the fix.
       const overrideKey = `${dataType}:${item.id}:${field}`;
-      // Capture the original source value so future admin corrections
-      // can supersede this override. If a previous override exists,
-      // setOverride keeps the existing snapshot (don't snap-to-overridden).
-      // For first-time overrides, we read the pre-edit displayed value
-      // from valueEl — when no prior override exists, that equals source.
-      let originalSourceValue;
-      const existing = window.NWCBDataCorrections.getOverrideEntry &&
-                        window.NWCBDataCorrections.getOverrideEntry(overrideKey);
-      if (!existing && valueEl && valueEl.dataset && valueEl.dataset.value !== undefined) {
-        originalSourceValue = valueEl.dataset.value;
+      // The value currently shown in the row (override-applied when one
+      // exists). Used for the zero-change guard below.
+      let displayedValue;
+      if (valueEl && valueEl.dataset && valueEl.dataset.value !== undefined) {
+        displayedValue = valueEl.dataset.value;
         // Coerce to number if it parses cleanly, matching how
         // applyOverridesToItem compares values.
-        const n = Number(originalSourceValue);
-        if (originalSourceValue !== "" && Number.isFinite(n)) originalSourceValue = n;
+        const n = Number(displayedValue);
+        if (displayedValue !== "" && Number.isFinite(n)) displayedValue = n;
+      }
+      // The pre-override source value, for the report's "Site shows" line.
+      // First-time overrides read it from the row (no override yet, so the
+      // displayed value equals source); re-edits reuse the snapshot the
+      // first edit stored — without that fallback the report says
+      // "Site shows: (empty)" (Reports #256/#258/#262).
+      const existing = window.NWCBDataCorrections.getOverrideEntry &&
+                        window.NWCBDataCorrections.getOverrideEntry(overrideKey);
+      let originalSourceValue;
+      if (existing && existing.originalSourceValue !== undefined) {
+        originalSourceValue = existing.originalSourceValue;
+      } else if (!existing) {
+        originalSourceValue = displayedValue;
       }
 
       // Bail out if the user didn't actually change anything. Without this
       // check, the form would create a zero-change correction report
-      // (e.g. Report #31 — identical "before" and "after" text).
-      if (_ccValuesEqual(claimedValue, originalSourceValue)) {
+      // (e.g. Report #31 — identical "before" and "after" text). Compare
+      // against the DISPLAYED value: on a re-edit the input is pre-filled
+      // with the override, so retyping it is the no-change case.
+      if (_ccValuesEqual(claimedValue, displayedValue)) {
         status.textContent = `No change to submit — that's the same value that's already there.`;
         status.className = "correction-status";
         editor.remove();
