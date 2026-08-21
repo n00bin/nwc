@@ -1362,13 +1362,15 @@
         var pct = r.weeklyOn ? Math.min(100, (r.weeklyEarned / r.weeklyCap) * 100)
                 : (r.totalOn ? Math.min(100, (r.total / r.totalCap) * 100) : 0);
         var cls = 'dc-guide-char' + (r.done ? ' capped' : (i === recommendIdx ? ' recommend' : ''));
+        // Count UP (earned / cap) rather than down (remaining), matching the
+        // character cards' progress lines.
         var amt;
         if (r.done) {
-          amt = r.totalCapped && !r.weeklyCapped ? 'storage full ✓'
-              : (r.weeklyCapped && !r.totalCapped ? 'weekly cap ✓' : 'capped ✓');
+          amt = r.totalCapped && !r.weeklyCapped ? commafy(r.total) + ' / ' + commafy(r.totalCap) + ' held ✓'
+              : (r.weeklyCapped && !r.totalCapped ? commafy(r.weeklyEarned) + ' / ' + commafy(r.weeklyCap) + ' this week ✓' : 'capped ✓');
         } else {
-          amt = r.weeklyOn ? commafy(r.remaining) + ' left this week'
-              : (r.totalOn ? commafy(r.remaining) + ' to limit' : 'no cap');
+          amt = r.weeklyOn ? commafy(r.weeklyEarned) + ' / ' + commafy(r.weeklyCap) + ' this week'
+              : (r.totalOn ? commafy(r.total) + ' / ' + commafy(r.totalCap) + ' held' : 'no cap');
         }
         h += '<div class="' + cls + '">';
         h +=   '<span class="dc-guide-char-name">' + escapeHtml(r.charName) +

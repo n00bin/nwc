@@ -4,6 +4,14 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ---
 
+## Week of August 17, 2026
+
+### Features
+
+- **Currency Tracker — Cap Status now counts up.** Each character row in the Cap Status list now shows progress as earned / cap (e.g. "1,200 / 3,000 this week") instead of counting down what's left, matching the progress lines on the character cards. Capped rows show the full amount with a checkmark.
+
+---
+
 ## Week of August 10, 2026
 
 ### Data Additions
