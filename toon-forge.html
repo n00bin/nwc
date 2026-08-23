@@ -4448,7 +4448,7 @@
           ? `<button class="user-remove-x" data-remove-user="${i}" title="Remove this item you added — only affects your browser">✕</button>`
           : "";
         html += `<div class="picker-item" data-pick="${i}">
-          <div class="picker-item-name"><span translate="no" class="notranslate">${_escHTML(r.name)}</span>${pencilHTML}${removeHTML}</div>
+          <div class="picker-item-name"><span translate="no" class="notranslate">${r.nameHTML || _escHTML(r.name)}</span>${pencilHTML}${removeHTML}</div>
           ${r.meta ? `<div class="picker-item-meta">${r.meta}</div>` : ""}
           ${r.desc ? `<div class="picker-item-desc">${r.desc}</div>` : ""}
         </div>`;
@@ -16773,8 +16773,10 @@
             sideBlock("🏹", r) +
             sideBlock("⚔",  m) +
           '</div>';
-        // meta/desc handled inside the stacked block per side.
-        return { name: stackedName, meta: "", desc: "" };
+        // meta/desc handled inside the stacked block per side. The HTML
+        // block rides in nameHTML (inserted raw by renderPickerList);
+        // name stays plain text so the picker's search/escaping see text.
+        return { name: r.name + " / " + m.name, nameHTML: stackedName, meta: "", desc: "" };
       }
       // Single-power branch (non-Ranger or unpaired entries).
       const metaParts = [];
@@ -16834,7 +16836,8 @@
             sideBlock("🏹", p.ranged) +
             sideBlock("⚔",  p.melee) +
           '</div>';
-        return { name: stackedName, meta: "", desc: "" };
+        // Same nameHTML convention as renderAtWillItem's pair branch.
+        return { name: p.ranged.name + " / " + p.melee.name, nameHTML: stackedName, meta: "", desc: "" };
       }
       // Single-power branch.
       const metaParts = [];

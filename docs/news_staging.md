@@ -10,6 +10,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 - **Currency Tracker — Cap Status now counts up.** Each character row in the Cap Status list now shows progress as earned / cap (e.g. "1,200 / 3,000 this week") instead of counting down what's left, matching the progress lines on the character cards. Capped rows show the full amount with a checkmark.
 
+### Bug Fixes
+
+- **Ranger at-will and encounter pickers are readable again.** Since mid-July, opening the At-Will or Encounter picker on a Ranger in Toon Forge showed a wall of raw code text instead of the powers. The pickers now show each ranged/melee pair properly again — 🏹 ranged side and ⚔ melee side, each with its own damage, cast time and description — and searching the list by power name works too. Only Rangers were affected (they're the only class whose powers come in stance pairs).
+
 ---
 
 ## Week of August 10, 2026
