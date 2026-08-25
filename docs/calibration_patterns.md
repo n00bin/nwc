@@ -229,6 +229,33 @@ the fix.
 
 ---
 
+## Pattern: Validate a gear stat against its own tier ladder before asking for a screenshot (2026-08-24)
+
+Gear that exists at several item levels within one set family (Dominion /
+Eternal Dominion / Supreme Dominion, etc.) scales by the **Combined Rating
+ratio**, not by item level. Eternal (IL 4300, CR 3870) vs Dominion (IL 4050,
+CR 3645) is exactly x1.0617.
+
+Worked example — Report #265, `Bulwark of the Eternal Zulkirate` (gear id 53):
+- Verified IL 4050 sibling: Deflect Severity 4,101. 4101 x 1.0617 = **4,354.05**.
+  Our stored 4,154 was a digit transposition; the player's 4,354 was right.
+- The third stat was stored as `Defense 2612`. Across the ladder,
+  Forte 2,460 (4050) -> **2,612** (4300), while Defense 1,914 (4050) ->
+  **2,032** (4300). 2,612 is a Forte value; the stat NAME was wrong.
+- Both predictions were then confirmed by the in-game Collections tooltip.
+
+**How to use it:** when a correction report touches a stat on a tiered set
+piece, pull every sibling tier out of `gear.json`, compute the CR ratio, and
+check which stat's ladder the disputed number lands on. It tells you whether
+the player is right BEFORE the screenshot arrives, and it tells you exactly
+which tooltip to ask for. It does not replace the screenshot gate for the
+final edit — it aims it.
+
+**Corollary:** a value that matches no ladder for the stat it is labelled
+with is a stat-NAME error, not a value error. Same number, wrong label.
+
+---
+
 ## Evidence library
 
 Committed screenshots in `docs/calibration/evidence/` referenced by patterns above:
