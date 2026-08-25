@@ -2395,3 +2395,49 @@ Cosmetic tooltip strings ("e.g. Raptor 5x4.5% Power") updated in toon-forge.html
 js/optimizer-local.js. NOTE for community meta: historical shared-build rows store
 the old string -- meta tallies render whatever the row says, so old rows may show
 "Raptor" until resubmitted; new shares store the canonical name.
+
+
+## "laughing neck" / "laughing belt" — unidentifiable nicknames, IL 4,050 accessories (reports #263, #264)
+
+Same reporter pattern as ["black earth rapier" (#232)](#black-earth-rapier--one-il-1150-bard-weapon-not-a-missing-campaign-report-232):
+an all-lowercase nickname that matches no in-game item name.
+
+Reported (Missing Item form, 2026-08-21, both filed as Bard):
+- **#264 "laughing neck"** — Neck, IL 4,050, CR 3,618, Combat Advantage +1,215,
+  Critical Severity +3,645, Forte +2,734, Strength +3 / Dexterity +3.
+- **#263 "laughing belt"** — Belt, IL 4,050, CR 3,645, set "evolving form",
+  Accuracy +1,974, Power +2,126, Critical Severity +1,823,
+  Strength +3 / Dexterity +3, equip bonus "2% crit strike / 7.5 movement /
+  2% combat advantage".
+
+**Searched, not found:** no `gear.json` item or set contains "laughing" or
+"evolving"; the NW wiki API has no gear by either word ("Laughing Skull" is a
+companion, "Masquerade of Liars" is the Halloween event); not in the cached
+community sheets; no IL 4,050 neck screenshot in any archive.
+
+**What the tier ladder says.** At IL 4,050 we hold exactly four accessory sets —
+Focused Radiance, Finish the Job, Crimson Retaliation, Malignant Energy — every
+one of them CR **3,645**, necks templated Combat Advantage 1,215 / <stat> 2,126 /
+<stat> 1,215, belts Critical Strike or Awareness ~3,645 / Defense 1,063 /
+Deflect 2,278.
+- The neck's **Combat Advantage 1,215 is exactly on-ladder** — it really does
+  look like an IL 4,050 neck.
+- Its **CR 3,618 is not** — nothing at this tier is 3,618.
+- Its **Critical Severity 3,645 equals the tier's CR value**, which is what a
+  mis-transcribed Combined Rating line would look like. Not asserted, just noted.
+- **Strength +3 / Dexterity +3** appears on no IL 4,050 accessory we hold (ours
+  run Str+3/Con+3, Dex+3/Int+3, Str+3/Int+3, Con+6, Cha+6).
+- "Usable by: Bard" is almost certainly just the class they were playing —
+  accessories at this tier are all-class ([[reference-nw-shirt-pants-not-class-locked]]),
+  so `allowedClasses` should be `[]` if these ever get added.
+
+**Two possibilities, one screenshot settles both:**
+1. A **fifth IL 4,050 accessory set** exists that we hold zero pieces of — in
+   which case we are missing a belt, a neck and probably rings, not two items.
+2. The player renamed pieces of a set we already carry, and the numbers are
+   partly mis-transcribed.
+
+**Blocked on:** the reporter's tooltip (asked on #264, status In Progress
+2026-08-24 — also asked whether their client is English, since the nickname
+reads like a translation). n00b can independently rule out (1) from the
+accessory Collections page at that tier.
