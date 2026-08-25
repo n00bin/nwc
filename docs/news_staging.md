@@ -4,6 +4,19 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ---
 
+## Week of August 24, 2026
+
+### Bug Fixes
+
+- **Bulwark of the Eternal Zulkirate had two wrong stats.** The IL 4,300 chest piece was listed with 4,154 Deflect Severity and a Defense stat it does not have. It is actually **4,354 Deflect Severity** and **2,612 Forte** — now corrected and verified against the in-game Collections tooltip. (Report #265)
+- **Ruthless Might (Lesser) was under-valued.** The IL 4,050 Bulwark of the Zulkirate's equip bonus was stored as 1% Critical Strike and Critical Severity per stack; in game it is **1.2% per stack** (5 stacks = 6%). Toon Forge now scores this chest correctly.
+
+### Features
+
+- **Currency Tracker now resets your week by itself.** Set your weekly reset day and time once in the bar at the top, and this week's earnings zero themselves the moment it arrives — you no longer have to press “Reset week now”. It works even if you leave the page open (or come back to a sleeping tab): the tracker re-checks the moment you return, drops the week back to 0, and tells you a new week started. The bar also shows a live countdown (“auto-resets in 2d 14h”) so you can see when it is due. Your held totals and your full log are untouched — only the this-week numbers roll over. The “Reset week now” button is still there as a manual override if you want to start a fresh week early.
+
+---
+
 ## Week of August 17, 2026
 
 ### Features
