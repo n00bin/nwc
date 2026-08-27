@@ -6,6 +6,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of August 24, 2026
 
+### Data Additions
+
+- **Bloodthirst Chalice added** — the artifact from Tempus Arena: The Slaughterhouse. All five ranks are in, from Uncommon (item level 1,300) up to Artifact Maximum Quality (item level 2,600), each with its own stats, recharge time and debuff strength. At the top rank it gives **1,638 Power / 1,092 Defense / 1,502 Critical Avoidance**, hits for 26,171 AoE damage, applies a bleed, and weakens enemy damage by 10% while slowing lesser enemies by 15%. Thanks to the player who flagged it as missing. (Reports #268-#273)
+
 ### Bug Fixes
 
 - **Bulwark of the Eternal Zulkirate had two wrong stats.** The IL 4,300 chest piece was listed with 4,154 Deflect Severity and a Defense stat it does not have. It is actually **4,354 Deflect Severity** and **2,612 Forte** — now corrected and verified against the in-game Collections tooltip. (Report #265)
