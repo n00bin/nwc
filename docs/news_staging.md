@@ -8,7 +8,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Data Additions
 
-- **Underdark Lurker overload added** — the 300 House Baenre Coin overload from the Northdark Merchant. It gives **+5% Critical Avoidance**, and the tooltip's "doubles in the Underdark" is modelled properly: pick Underdark as your content zone in Toon Forge and it becomes 10%, everywhere else it stays 5%. (Report #275)
+- **The whole Northdark Merchant overload set is now in.** Underdark Lurker (300 House Baenre Coins) gives **+5% Critical Avoidance**, and the tooltip's "doubles in the Underdark" is modelled properly — pick Underdark as your content zone in Toon Forge and it becomes 10%, everywhere else it stays 5%. Joining it: **Drow Ward** and **Spider Ward** (−10% damage taken from Drow / Spiders) and **Spider Slayer** (+10% damage to Spiders), 100 coins each. Drow Slayer was already on the site and its +10% checked out exactly against the in-game tooltip. (Report #275)
 
 ### Bug Fixes
 
