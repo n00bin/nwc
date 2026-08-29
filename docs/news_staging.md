@@ -6,6 +6,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of August 24, 2026
 
+### Data Additions
+
+- **Underdark Lurker overload added** — the 300 House Baenre Coin overload from the Northdark Merchant. It gives **+5% Critical Avoidance**, and the tooltip's "doubles in the Underdark" is modelled properly: pick Underdark as your content zone in Toon Forge and it becomes 10%, everywhere else it stays 5%. (Report #275)
+
 ### Bug Fixes
 
 - **"Add Missing" submissions were being lost.** If you used **+ Add Missing Artifact, Mount, Companion, Enchantment, Insignia, Collar, Buff, Guild Boon or Overload** in Toon Forge, the item still went into your own build — but the report telling us about it never reached us, so it could never be added to the site for everyone. (The gear one always worked; these nine did not.) That's fixed. If you added something this way and it never showed up on the site, please add it again — it will reach us now, and you'll see it under **Your Submissions**.
