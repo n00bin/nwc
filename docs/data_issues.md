@@ -2441,3 +2441,18 @@ Deflect 2,278.
 2026-08-24 — also asked whether their client is English, since the nickname
 reads like a translation). n00b can independently rule out (1) from the
 accessory Collections page at that tier.
+
+## Dragonborn "Draconic Heritage" trait — no description, no stats (2026-08-29)
+
+Surfaced while building the Mekaniks **Races** tab: in `../data/races.json`,
+Dragonborn's Draconic Heritage trait is an empty stub (name only — no
+description, no percentStats/effects, notes: None). The wiki says it's
+"+5% incoming healing", but per the no-unverified-values rule it was NOT
+added from that alone. Metallic Dragonborn's Metallic Ancestry (+3% Incoming
+Healing / +3% Max HP) IS structured, so regular Dragonborn's version likely
+differs — worth an in-game check.
+
+**On the site:** the Races tab renders the trait name with no body until this
+is filled in.
+**Needs:** one screenshot of the Dragonborn racial-traits panel (character
+creation or the wiki-independent in-game race info card).

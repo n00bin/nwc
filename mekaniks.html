@@ -270,6 +270,7 @@
     <button class="view-tab active" data-tab="stats">Stats</button>
     <button class="view-tab" data-tab="abilities">Ability Scores</button>
     <button class="view-tab" data-tab="classes">Classes</button>
+    <button class="view-tab" data-tab="races">Races</button>
     <button class="view-tab" data-tab="priorities">Stat Priorities</button>
     <button class="view-tab" data-tab="bolster">Bolster</button>
     <button class="view-tab" data-tab="damage">Combat Formulas</button>
@@ -680,6 +681,13 @@
     <div id="classes-list"></div>
   </div>
 
+  <!-- RACES TAB -->
+  <div class="mek-container mek-view" id="view-races">
+    <h2 style="margin-bottom:0.5rem;">Races</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1.25rem;">Each race's ability score bonuses and racial traits. Ability bonuses stack on top of your class's base scores; traits marked <em>situational</em> only apply in the described circumstances. Premium races are bought separately in the Zen Market.</p>
+    <div id="races-list"></div>
+  </div>
+
   <!-- DUNGEONS TAB -->
   <div class="mek-container mek-view" id="view-dungeons">
     <h2 style="margin-bottom:0.5rem;">Dungeon Guides</h2>
@@ -727,6 +735,7 @@
 
   <script src="js/shared.js"></script>
   <script src="data/classes.js"></script>
+  <script src="data/races.js"></script>
   <script>
     renderNav("Mekaniks");
 
@@ -1018,9 +1027,98 @@
       list.innerHTML = html;
     }
 
+    // Races rendering — pulls from RACES_DATA (data/races.js).
+    function renderRaces() {
+      var list = document.getElementById("races-list");
+      if (!list || typeof RACES_DATA === "undefined") return;
+
+      // Player-facing text for traits whose data entry has no description
+      // (their data notes are internal). Wording matches the in-game tooltips.
+      var TRAIT_FALLBACK = {
+        "Stand Your Ground": "20% resistance to Knock and Push effects.",
+        "Swift Charge": "+10% Movement Speed for 3 seconds when entering combat (once every 20 seconds).",
+        "Heroic Effort": "An extra Heroic Feat point at levels 10, 15 and 20."
+      };
+
+      // "+2 WIS", or "+2 any ability" when the data lists every score
+      // (Human "+3 any", Dragonborn "+2 any" — the player picks in-game).
+      function bonusText(b) {
+        if (Array.isArray(b.stat)) return "+" + b.amount + " any ability";
+        return "+" + b.amount + " " + b.stat;
+      }
+      function abilitySummary(r) {
+        var parts = (r.fixedBonuses || []).map(bonusText);
+        var choices = r.choiceBonuses || [];
+        if (choices.length) {
+          var sameAmt = choices.every(function(c) { return c.amount === choices[0].amount; });
+          var allSingle = choices.every(function(c) { return !Array.isArray(c.stat); });
+          if (sameAmt && allSingle && choices.length > 1) {
+            parts.push("+" + choices[0].amount + " " + choices.map(function(c) { return c.stat; }).join(" or "));
+          } else {
+            parts = parts.concat(choices.map(bonusText));
+          }
+        }
+        // Collapse repeated "+N any ability" slots (Dragonborn has two)
+        // into one phrase: "+2 to any two abilities".
+        var anyCounts = {};
+        var rest = [];
+        parts.forEach(function(p) {
+          var m = p.match(/^\+(\d+) any ability$/);
+          if (m) anyCounts[m[1]] = (anyCounts[m[1]] || 0) + 1;
+          else rest.push(p);
+        });
+        var WORDS = { 2: "two", 3: "three" };
+        Object.keys(anyCounts).forEach(function(amt) {
+          var n = anyCounts[amt];
+          rest.push(n === 1 ? "+" + amt + " any ability"
+                            : "+" + amt + " to any " + (WORDS[n] || n) + " abilities");
+        });
+        return rest.join(" · ") || "—";
+      }
+      // A trait's stat lines come from percentStats (map) or effects (list).
+      function traitStats(t) {
+        var out = [];
+        var pct = t.percentStats || {};
+        Object.keys(pct).forEach(function(k) { out.push("+" + pct[k] + "% " + k); });
+        (t.effects || []).forEach(function(e) {
+          if (pct[e.stat] !== undefined) return; // don't double-list
+          out.push("+" + e.amount + (e.type === "percent" ? "%" : "") + " " + e.stat);
+        });
+        return out;
+      }
+
+      var html = "";
+      var sorted = RACES_DATA.slice().sort(function(a, b) { return a.name.localeCompare(b.name); });
+      for (var i = 0; i < sorted.length; i++) {
+        var r = sorted[i];
+        var traitHtml = (r.traits || []).map(function(t) {
+          var desc = t.description || TRAIT_FALLBACK[t.name] || "";
+          var stats = traitStats(t);
+          return '<div class="paragon-card">' +
+              '<div class="paragon-name">' + escapeHtml(t.name) +
+                (t.conditional ? ' <span class="paragon-roles">(situational)</span>' : '') + '</div>' +
+              (desc ? '<div class="stat-desc" style="margin-top:0;">' + escapeHtml(desc) + '</div>' : '') +
+              stats.map(function(s) {
+                return '<div class="paragon-row"><span class="paragon-row-label">Stat bonus</span><span class="paragon-row-value">' + escapeHtml(s) + '</span></div>';
+              }).join("") +
+            '</div>';
+        }).join("");
+        html += '<div class="stat-card open" style="margin-bottom:0.75rem;">' +
+            '<div class="stat-card-header"><span class="stat-card-name">' + escapeHtml(r.name) +
+              (r.premium ? ' <span class="paragon-roles">(Premium — Zen Market)</span>' : '') + '</span></div>' +
+            '<div class="stat-card-body" style="display:block;">' +
+              '<div class="stat-info-row"><span class="stat-info-label">Ability scores</span><span class="stat-info-value" style="font-family:var(--font-mono);">' + escapeHtml(abilitySummary(r)) + '</span></div>' +
+              '<div class="paragon-grid">' + traitHtml + '</div>' +
+            '</div>' +
+          '</div>';
+      }
+      list.innerHTML = html;
+    }
+
     renderStats();
     renderDungeons();
     renderClasses();
+    renderRaces();
   </script>
   <script src="js/analytics.js"></script>
 </body>

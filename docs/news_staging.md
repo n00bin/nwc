@@ -25,6 +25,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
+- **New Races tab on the Mekaniks page.** Right next to the Classes tab: every playable race with its ability score bonuses (including "choose one" picks and Human/Dragonborn's "any ability" slots) and all its racial traits with their stat bonuses spelled out. Premium races are marked, and situational traits (like party auras) are labelled so you know they're not always-on.
+
 - **Currency Tracker now resets your week by itself.** Set your weekly reset day and time once in the bar at the top, and this week's earnings zero themselves the moment it arrives — you no longer have to press “Reset week now”. It works even if you leave the page open (or come back to a sleeping tab): the tracker re-checks the moment you return, drops the week back to 0, and tells you a new week started. The bar also shows a live countdown (“auto-resets in 2d 14h”) so you can see when it is due. Your held totals and your full log are untouched — only the this-week numbers roll over. The “Reset week now” button is still there as a manual override if you want to start a fresh week early.
 
 ---
