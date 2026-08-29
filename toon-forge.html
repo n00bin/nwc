@@ -8142,7 +8142,7 @@
           const rpcRes = await sb.rpc("submit_missing_item_report", {
             p_title: "Missing enchantment: " + name,
             p_description: reportLines.join("\n"),
-            p_category: "Missing Enchantment",
+            p_category: "Missing Item",   // was "Missing Enchantment" - rejected by the server
             p_image_url: ""
           });
           if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
@@ -8415,7 +8415,7 @@
           const rpcRes = await sb.rpc("submit_missing_item_report", {
             p_title: "Missing overload: " + name,
             p_description: reportLines.join("\n"),
-            p_category: "Missing Overload",
+            p_category: "Missing Item",   // was "Missing Overload" - rejected by the server
             p_image_url: ""
           });
           if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
@@ -8698,7 +8698,7 @@
           const rpcRes = await sb.rpc("submit_missing_item_report", {
             p_title: "Missing insignia: " + name,
             p_description: reportLines.join("\n"),
-            p_category: "Missing Insignia",
+            p_category: "Missing Item",   // was "Missing Insignia" - rejected by the server
             p_image_url: ""
           });
           if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
@@ -9012,7 +9012,7 @@
           const rpcRes = await sb.rpc("submit_missing_item_report", {
             p_title: "Missing mount collar: " + name,
             p_description: reportLines.join("\n"),
-            p_category: "Missing Collar",
+            p_category: "Missing Item",   // was "Missing Collar" - rejected by the server
             p_image_url: ""
           });
           if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
@@ -9301,7 +9301,7 @@
           const rpcRes = await sb.rpc("submit_missing_item_report", {
             p_title: "Missing buff: " + name,
             p_description: reportLines.join("\n"),
-            p_category: "Missing Buff",
+            p_category: "Missing Item",   // was "Missing Buff" - rejected by the server
             p_image_url: ""
           });
           if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
@@ -9548,7 +9548,7 @@
           const rpcRes = await sb.rpc("submit_missing_item_report", {
             p_title: "Missing guild boon: " + name,
             p_description: reportLines.join("\n"),
-            p_category: "Missing Guild Boon",
+            p_category: "Missing Item",   // was "Missing Guild Boon" - rejected by the server
             p_image_url: ""
           });
           if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
@@ -9905,7 +9905,7 @@
           const rpcRes = await sb.rpc("submit_missing_item_report", {
             p_title: "Missing artifact: " + name,
             p_description: reportLines.join("\n"),
-            p_category: "Missing Artifact",
+            p_category: "Missing Item",   // was "Missing Artifact" - rejected by the server
             p_image_url: ""
           });
           if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
@@ -10212,7 +10212,7 @@
           const rpcRes = await sb.rpc("submit_missing_item_report", {
             p_title:       "Missing mount: " + name,
             p_description: reportLines.join("\n"),
-            p_category:    "Missing Mount",
+            p_category:    "Missing Item",   // was "Missing Mount" - rejected by the server
             p_image_url:   ""
           });
           if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {
@@ -10545,7 +10545,7 @@
           const rpcRes = await sb.rpc("submit_missing_item_report", {
             p_title: "Missing companion: " + name,
             p_description: reportLines.join("\n"),
-            p_category: "Missing Companion",
+            p_category: "Missing Item",   // was "Missing Companion" - rejected by the server
             p_image_url: ""
           });
           if (rpcRes.data && rpcRes.data.ok && rpcRes.data.report_id) {

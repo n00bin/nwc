@@ -6,6 +6,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of August 24, 2026
 
+### Bug Fixes
+
+- **"Add Missing" submissions were being lost.** If you used **+ Add Missing Artifact, Mount, Companion, Enchantment, Insignia, Collar, Buff, Guild Boon or Overload** in Toon Forge, the item still went into your own build — but the report telling us about it never reached us, so it could never be added to the site for everyone. (The gear one always worked; these nine did not.) That's fixed. If you added something this way and it never showed up on the site, please add it again — it will reach us now, and you'll see it under **Your Submissions**.
+
 ### Data Additions
 
 - **Bloodthirst Chalice added** — the artifact from Tempus Arena: The Slaughterhouse. All five ranks are in, from Uncommon (item level 1,300) up to Artifact Maximum Quality (item level 2,600), each with its own stats, recharge time and debuff strength. At the top rank it gives **1,638 Power / 1,092 Defense / 1,502 Critical Avoidance**, hits for 26,171 AoE damage, applies a bleed, and weakens enemy damage by 10% while slowing lesser enemies by 15%. Thanks to the player who flagged it as missing. (Reports #268-#273)
