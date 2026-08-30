@@ -6,6 +6,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of August 24, 2026
 
+### Bug Fixes
+
+- **Wizards can now pick their main-hand Artifact Modification.** In Toon Forge the main hand showed its set bonus but had no place to choose your active modification — the picker only appeared for classes whose verified list we had. The Wizard's six are now in: **Enhanced Magic Missile, Storm Pillar, Scorching Burst, Chilling Cloud, Ray of Frost and Arcane Bolt**, each +10% damage to that power. Pick the one you have Set to Active and, if that power is slotted, the damage sim counts it. (Report #210)
+
 ### Data Additions
 
 - **The whole Northdark Merchant overload set is now in.** Underdark Lurker (300 House Baenre Coins) gives **+5% Critical Avoidance**, and the tooltip's "doubles in the Underdark" is modelled properly — pick Underdark as your content zone in Toon Forge and it becomes 10%, everywhere else it stays 5%. Joining it: **Drow Ward** and **Spider Ward** (−10% damage taken from Drow / Spiders) and **Spider Slayer** (+10% damage to Spiders), 100 coins each. Drow Slayer was already on the site and its +10% checked out exactly against the in-game tooltip. (Report #275)
