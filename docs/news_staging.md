@@ -8,6 +8,12 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes
 
+- **Dragonsteel Spikes and Sabatons had the wrong stats.** Two of the Northdark Reaches seal-store boots were recorded incorrectly. **Dragonsteel Spikes** (Paladin/Cleric) was carrying a phantom **+1,710 Forte** that was really just its Combined Rating counted twice, and its equip bonus read 3,000 Forte when the real tooltip says **5,000**. **Dragonsteel Sabatons** (Paladin/Barbarian/Fighter) was missing **+1,140 Awareness** entirely. Both are now corrected against in-game tooltips. Other pieces in the Dragonsteel family are still being checked.
+
+- **Off-hand Artifact Modification 1 can now be upgraded.** The first off-hand modification was treated as a single fixed amount per stat. Five of its eight options actually upgrade over a range - **Control Bonus, Control Resist, Incoming Healing, Forte and Critical Severity all run 1,200 to 3,000** - so those now get a value box where you enter what yours currently grants. The three percent options (Action Point Gain 2.5%, Recharge Speed 2.5%, Stamina Regeneration 5%) are genuinely fixed and stay a simple pick. Builds you had already saved keep the amount they were saved with.
+
+### Bug Fixes
+
 - **Wizards can now pick their main-hand Artifact Modification.** In Toon Forge the main hand showed its set bonus but had no place to choose your active modification — the picker only appeared for classes whose verified list we had. The Wizard's six are now in: **Enhanced Magic Missile, Storm Pillar, Scorching Burst, Chilling Cloud, Ray of Frost and Arcane Bolt**, each +10% damage to that power. Pick the one you have Set to Active and, if that power is slotted, the damage sim counts it. (Report #210)
 
 ### Data Additions

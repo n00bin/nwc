@@ -1,5 +1,72 @@
 # Data Issues To Investigate
 
+## "This or That" credits BOTH mutually exclusive branches (added 2026-08-30)
+The Dragonsteel / Dragonhide **Feet** line (10 items in `gear.json`, e.g.
+Dragonsteel Spikes id 950) carries the equip bonus "This or That": *when not
+in a party, gain 3,000 Forte; when in a party, gain 10,000 Outgoing Healing.*
+That is a binary either/or, but it is stored as two independent
+`equipBonuses` entries and the engine credits **both**, each haircut by the
+generic ~60% conditional uptime.
+
+Verified in-engine 2026-08-30 (Paladin, Feet = Dragonsteel Spikes):
+- `Forte  +1800`  ("This or That (~60% uptime)")  <- should be 0 in a party
+- `Outgoing Healing +6000` ("This or That (~60% uptime)") <- should be 10,000
+
+So a partied healer is simultaneously over-credited 1,800 phantom Forte and
+under-credited 4,000 Outgoing Healing.
+
+Root cause: the `alwaysActive` flag on those entries is **inert** — the
+string appears nowhere in `toon-forge-engine.js` or `toon-forge.html`. The
+fix needs a party-state switch (drive off `state.partyContent` / a party
+toggle) rather than an uptime fraction, since the condition is binary, not a
+proc. Likely a shared pattern — audit other either/or equip bonuses before
+fixing just this family.
+
+NOT fixed — awaiting n00b's go.
+
+## Dragonsteel / Dragonhide family: broken rating splits (added 2026-08-30)
+n00b flagged the numbers as wrong; screenshot sweep confirms it. Ground truth
+from two tooltips in `docs/audit/_up/`:
+- `paladin-gear/Dragonsteel Sabatons_IL1900.png`
+- `cleric-gear/Dragonhide Pikes_IL1900 (2).png`
+
+**Family schema (verified):** exactly THREE rating stats, one 1,140 + two 855
+= 2,850 total, plus Combined Rating 1,710 listed separately. Equip bonus
+"This or That" = *not in a party: 5,000 <stat A>; in a party: 10,000 <stat B>*.
+
+**7 of 20 `Dragonsteel Gear` entries violate it:**
+- **All 5 Arms pieces** (Dragonsteel Guards / Mitts, Dragonhide Band / Cuffs /
+  Sleeves): stored as TWO stats at 1,425 each. Sum is right, split is wrong —
+  should be 1,140 + 855 + 855. Systematic intake error across the Arms row.
+- ~~**Dragonsteel Sabatons**~~ **FIXED 2026-08-30** — Awareness 1,140 added and
+  the description corrected 3,000 -> 5,000 Critical Avoidance, both per
+  `docs/audit/_up/paladin-gear/Dragonsteel Sabatons_IL1900.png`.
+- **Dragonsteel Helm**: STILL BROKEN — two stats summing 1,710, missing its
+  1,140 stat (unknown, no screenshot).
+- ~~**Dragonsteel Spikes**: FOUR stats summing 4,560 — spurious `Forte: 1710`
+  duplicating the Combined Rating.~~ **FIXED 2026-08-30** from n00b's tooltip
+  (archived to `docs/calibration/inbox/gear/{paladin,cleric}-gear/feet/Dragonsteel Spikes_IL1900.png`):
+  Crit Strike 1,140 / Defense 855 / Crit Avoidance 855 / CR 1,710. Spurious
+  Forte removed; "This or That" corrected 3,000 -> **5,000 Forte**.
+
+**Description text drift:** Sabatons' stored description reads "3,000 Critical
+Avoidance" but the tooltip says **5,000** (the parsed `amount` is correctly
+5,000, so text and value disagree). Dragonsteel Spikes' description says
+"3,000 Forte" — every other family member says 5,000, so this is likely wrong
+too, but it is UNVERIFIED.
+
+**Dragonhide Crakows:** its "This or That" bonus produced NO parsed stat
+entries at all, so it contributes nothing in the engine.
+
+**Evidence still needed:** Dragonsteel **Cover**, **Vest** and **Mitts**
+(Paladin+Cleric line) still have no screenshot anywhere, plus **Helm** and the
+whole Arms row. Mitts is in the broken Arms group, so it is both unverified
+AND known-wrong.
+
+**Status:** Spikes + Sabatons fixed in `gear.json` and rebuilt 2026-08-30.
+The 5 Arms pieces, Helm, and the Crakows unparsed bonus remain OPEN.
+Not committed or pushed — awaiting n00b's go.
+
 ## Reinforcement-kit ladder: derived values need in-game verification (added 2026-08-07, Report #242)
 Added the full Greater / Greater +1 / Major (non-+1) ladder for all 10 kit
 families (`kits.json` ids 12-44). Anchors: Major CA Jewel non-+1 = 800 CA /
