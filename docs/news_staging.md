@@ -34,6 +34,14 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes
 
+### Data Additions
+
+- **22 Manticore and Umbral pieces were missing their equip bonus.** Every Cowl, Longcoat, Wristguard and Pigache in these two sets showed a bonus in-game that the site didn't know about — **Gladiator's Accuracy** and **Gladiator's Focus** (100 Accuracy or Critical Strike every 5 seconds in combat), **Challenger's Might** (+1,500 Power against a single enemy) and **Survivor's Parry** (25 Deflect per 1% of health missing). All now added.
+
+### Bug Fixes
+
+- **Seven of those same pieces also had wrong stats.** Checking each tooltip one by one turned up five stats recorded under the wrong name — mostly a defensive stat sitting in an offensive slot — plus two items whose numbers belonged to a completely different piece: **Manticore Duelist Pigaches** and **Umbral Duelist Pigaches** had both been given the Executioner version's stat line. Their real stats are Combat Advantage and Awareness, not Accuracy and Critical Strike.
+
 - **Two more missing class versions found.** Several older sets give each class group its own version of the same item, and we only had some of them. Added: **Eternal Boots** for **Paladin and Fighter** (the set's Gauntlets, Armor and Helm were listed but the boots never were) and a **Barbarian Eternal Helm**. **Reinforced Dragonflight Assault Hood** also had Critical Severity recorded under the wrong stat name.
 
 - **Six more corrections, including two items the wrong classes could see.** **Prismatic Crystalflex Bracers** and **Crystalflex Bracers** were listed for Warlock and Bard when they actually require **Rogue, Cleric, Bard or Ranger** — so they were being offered to a class that can't wear them and hidden from three that can — and both had wrong stats too. **Blaspheme Longbow** was missing its first two lines entirely (+50 Damage, +570 Accuracy). **Crimson Scalebreaker's Raid Hood** and **Tracker's Dragonflight Ring** each had Critical Severity recorded under the wrong stat name. And **Knight's Dragonflight Ring** had Defense and Incoming Healing **swapped** — 1,125 and 3,375 the wrong way round.
