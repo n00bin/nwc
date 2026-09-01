@@ -12,6 +12,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes
 
+- **Two more missing class versions found.** Several older sets give each class group its own version of the same item, and we only had some of them. Added: **Eternal Boots** for **Paladin and Fighter** (the set's Gauntlets, Armor and Helm were listed but the boots never were) and a **Barbarian Eternal Helm**. **Reinforced Dragonflight Assault Hood** also had Critical Severity recorded under the wrong stat name.
+
 - **Six more corrections, including two items the wrong classes could see.** **Prismatic Crystalflex Bracers** and **Crystalflex Bracers** were listed for Warlock and Bard when they actually require **Rogue, Cleric, Bard or Ranger** — so they were being offered to a class that can't wear them and hidden from three that can — and both had wrong stats too. **Blaspheme Longbow** was missing its first two lines entirely (+50 Damage, +570 Accuracy). **Crimson Scalebreaker's Raid Hood** and **Tracker's Dragonflight Ring** each had Critical Severity recorded under the wrong stat name. And **Knight's Dragonflight Ring** had Defense and Incoming Healing **swapped** — 1,125 and 3,375 the wrong way round.
 
 - **Three healer and Bard pieces had stats in the wrong slots.** **Exalted Maiden's Rejuvenation Mitts** had its Outgoing Healing recorded as Critical Strike, with Outgoing Healing left at zero — a healer was getting 1,538 of a stat the item doesn't give while losing 1,538 of the one it does. **The Dark Maiden's Rejuvenation Mitts** had the same problem one tier down (Defense recorded as Critical Strike), and **Stormforged Point** was missing 900 Critical Severity while carrying 600 Forte that isn't on the weapon at all.
