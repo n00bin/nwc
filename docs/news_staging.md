@@ -34,6 +34,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes
 
+### Bug Fixes
+
+- **All eight Rosegold rings had the wrong Combined Rating.** Every rating stat on them was right, but the Combined Rating read 382 instead of **582** on all eight — Assault, Duelist, Executioner, Gladiator, Medic, Raid, Restoration and Ward. **Fret Barbute of Halaster's Successor** had the same kind of error (999 instead of **909**). Combined Rating is spread across fifteen stats behind the scenes, so a wrong one quietly skews everything rather than showing up as one obviously bad number. Also fixed: the **Warlock** version of **Eternal Helmet**, which had picked up two numbers belonging to the Bard/Rogue version.
+
 ### Data Additions
 
 - **22 Manticore and Umbral pieces were missing their equip bonus.** Every Cowl, Longcoat, Wristguard and Pigache in these two sets showed a bonus in-game that the site didn't know about — **Gladiator's Accuracy** and **Gladiator's Focus** (100 Accuracy or Critical Strike every 5 seconds in combat), **Challenger's Might** (+1,500 Power against a single enemy) and **Survivor's Parry** (25 Deflect per 1% of health missing). All now added.
