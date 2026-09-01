@@ -1,0 +1,8 @@
+# Items visually verified against their own tooltip and confirmed CORRECT.
+# The audit stops re-flagging these. name<TAB>item_level<TAB>why
+Omen of Doom	4800	OCR read the set-bonus line "+2.5% Power" as a rating; base stats verified 2026-08-31 (Damage 100 added separately)
+Dread Confessor	4800	OCR misread 3,120 Accuracy as 3,320; tooltip matches JSON exactly
+Rotsteel Band of Withering	4650	the non-(2) screenshot was mislabeled (it is Coil of Blight); both rings verified correct
+Rotsteel Coil of Blight	4650	verified against the renamed screenshot; matches exactly
+Cracked Earthshard Guard	4600	both Shirt and Pants variants verified correct
+Soulbound Sword Knot of the Thayan Zealot	3300	OCR split "Deflect Severity" across text regions; tooltip matches JSON exactly

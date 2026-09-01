@@ -6,7 +6,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of August 24, 2026
 
+### Data Additions
+
+- **Four gear pieces were missing a second version.** Some items share a name and item level but come in two versions with completely different stats and a different equip bonus — the game shows them as separate pieces, but we only had one of each. Now added: a second **Veinlit Earthshard Guard** (Pants, Survivor's Avoidance), **Veinlit Stonevein Straps** (Pants, Warden's Defense), **Veinlit Stormbind Tunic** (Pants, Pinpoint Tactics) and **Enchanted Depthforged Gauntlets** (Arms, Enveloped Precision — Barbarian and Fighter only, unlike its Paladin-inclusive twin).
+
 ### Bug Fixes
+
+- **Four more stat and bonus corrections.** **Astral Raider's Cap** had Control Resist at 1,980 and **Lolthian Coif** had Incoming Healing at 1,845 — in both cases the item's Combined Rating had been copied into a stat slot; both should be **990** and **923**. And **Lolthian Coif** and **Lolthian Circlet** both listed their Skirmisher's Might bonus as 7,300 Power when the real tooltip says **7,500**.
 
 - **Eight more gear pieces had wrong stats — including two endgame weapons.** A new audit reads every archived in-game tooltip and compares each item to its *own* screenshot. Corrections: **Wintermarked Twin Shardblades** was missing **+3,480 Critical Severity** (a top-tier Warlock main hand), **Omen of Doom** was missing **+100 Damage**, **Treads of the Infernal Tempest** was missing **+2,925 Accuracy**, **Deep-Riven Earthshard Guard** was missing **+2,728 Deflect**, and **Huntsman Ward Armet** was missing **+302 Awareness**. **Manticore Duelist Bracers** had Defense at 227 instead of **567**, **Snowbound Halo of Mending** had Forte at 8,445 instead of **6,345**, and **Astral Raider's Coif** carried a phantom +1,980 Outgoing Healing that was really just its Combined Rating counted twice.
 
