@@ -4,6 +4,24 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ---
 
+## Week of August 31, 2026
+
+### Features
+
+- **The Mod 33.5 preview page has been rebuilt from the official release article.** Everything Cryptic published for **Monoliths of Madness** is now written up on the preview page: how the 12-week event campaign works (four phases of three weeks, one of four rotating zones active each week, everyone downscaled), what you need to join each zone, how **Shards of Madness** and the server-wide **Nightmare Progression** bar pay out, how the **corrupted altars** are opened (three Lesser Abyssal Lures, then three Greater ones), the roaming world boss **Maxare'xek the Mad**, and the reworked corrupted Heroic Encounters.
+
+- **Two new sections on the preview page: New Items & Rewards, and Battle Pass & Lockbox.** Full stat lines as published for the **Staring Cat of Uldun-Dar** companion (Unflinching Will / Grim Omen), the **Umbral Widow** mount (Shadow Sight / Tunnel Vission), the **Burning Hope** artifact (Healing Flame), the **Laughing Void** artifact with its **Voidbound Necklace + Belt** set effect, **Star Angler** mount (Uncanny Precision: 2,700 Combined Rating, 2,250 Combat Advantage, 2,250 Accuracy) and **Encore the Virtuoso** companion, plus the Warden's Cache contents, the 90-slot Brimming Bountiful Bag, the Peeper Keeper, and the new **Coffer of Celestial Insignias** in the Vault of Piety. None of it is in the databases yet — it goes in once we have in-game screenshots.
+
+- **Corrections to what was on the preview page before.** The earlier write-up came from the August announcement and several details had changed or were wrong: the fourth zone is **Dragonbone Vale** (not Dragonbane), the altar currency is **Abyssal Lures** (not Nightmare Fragments), the event mount is the **Umbral Widow** (not "Abyssal Spider"), and the lockbox pair are **Star Angler** and **Encore the Virtuoso**. The two Combat Enchantment slots are **Strike and Guard** — not Offense and Defense — and two important details were missing: Combat Enchantment **Item Level is halved** so two of them total what one did before, and they now increase **Base Damage** instead of Damage, which means they no longer boost Outgoing Healing.
+
+- **Toon Forge now has both Combat Enchantment slots.** Module 33.5 gave every character a second Combat Enchantment slot, and Toon Forge now matches the game: the Enhancements step shows **Combat · Strike** and **Combat · Guard**. Strike takes the offensive combat enchants, Guard takes the defensive ones, and the three that work either way (**Divine Aegis**, **Radiant Sanctuary**, **Fluid Aurora**) show up in both. The optimizer searches the new slot too. Builds you saved before this still load exactly as you saved them.
+
+- **Combat Enchantment Item Level is now halved, matching the patch.** The game halved the Item Level on every Combat Enchantment so that wearing two of them adds up to what one used to give. Toon Forge's Item Level totals now use the new numbers, so your Total Item Level reads the same as in-game instead of running 3,000 to 3,500 high.
+
+- **Combat Enchantments now boost Base Damage, not Damage.** The patch changed this because their damage bonus was also boosting Outgoing Healing, which was never intended. The damage sim now treats that bonus the same way the game does. Healers: nothing you see changes — Toon Forge never counted combat enchants toward healing in the first place.
+
+---
+
 ## Week of August 24, 2026
 
 ### Data Additions

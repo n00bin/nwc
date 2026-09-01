@@ -2811,7 +2811,7 @@
 
       <div class="panel">
         <h2>Enchantments</h2>
-        <p class="hint" id="ench-slot-hint">Eleven slots in total: <strong>4 Offense</strong>, <strong>4 Defense</strong>, <strong>1 Utility</strong>, <strong>1 Combat</strong>, and <strong>1 Bonus</strong>. Universal enchants change what stat they give based on which slot you put them in.</p>
+        <p class="hint" id="ench-slot-hint">Twelve slots in total: <strong>4 Offense</strong>, <strong>4 Defense</strong>, <strong>1 Utility</strong>, <strong>2 Combat</strong> (one <strong>Strike</strong>, one <strong>Guard</strong>), and <strong>1 Bonus</strong>. Universal enchants change what stat they give based on which slot you put them in.</p>
         <div id="ench-offense-grid"></div>
         <div id="ench-defense-grid"></div>
         <div id="ench-other-grid"></div>
@@ -3209,22 +3209,23 @@
   <script src="js/preview-config.js"></script>
 
   <script>
-    /* ===== M33.5 (Monoliths of Madness) feature gate =====
-       Module 33.5 adds a SECOND Combat Enchantment slot — one Offense,
-       one Defense (announced 2026-08-05; live ~early September 2026).
-       Until n00b verifies it live in-game this stays LOCAL-ONLY: the
-       flag is true on localhost / file:// and always false on the
-       deployed site, so live builds keep matching the real game.
-       When M33.5 ships: replace the expression with `true`.
-       Tentative rules encoded (confirm on live): Offense-slot accepts
-       appliesTo Offense, Defense-slot accepts appliesTo Defense, and
-       Utility-tagged combat enchants (Divine Aegis etc.) fit either. */
-    const M335_DUAL_COMBAT = (location.protocol === "file:" ||
-      /^(localhost|127\.0\.0\.1)$/.test(location.hostname));
-    if (M335_DUAL_COMBAT) {
-      const _enchHint = document.getElementById("ench-slot-hint");
-      if (_enchHint) _enchHint.innerHTML = 'Twelve slots in total <em>(M33.5 preview — local test only)</em>: <strong>4 Offense</strong>, <strong>4 Defense</strong>, <strong>1 Utility</strong>, <strong>2 Combat</strong> (one Offense, one Defense), and <strong>1 Bonus</strong>. Universal enchants change what stat they give based on which slot you put them in.';
-    }
+    /* ===== M33.5 (Monoliths of Madness) dual Combat slots — LIVE =====
+       Module 33.5 shipped 2026-09-01 and added a SECOND Combat Enchantment
+       slot. Per the release article the two slots are named STRIKE and
+       GUARD ("similar to Neverwinter's original Weapon and Armor
+       Enchantment system"), and the Utility slot moved down into the old
+       Combat slot position. Kept as a named constant rather than deleted
+       so the dual-slot code paths stay greppable and can be switched off
+       in one place if the live game turns out to differ.
+       Slot rules: Strike takes appliesTo Offense, Guard takes appliesTo
+       Defense, and Utility-tagged combat enchants (Divine Aegis, Radiant
+       Sanctuary, Fluid Aurora) fit either.
+       Two related M33.5 changes live in ../data/enchants.json, not here:
+       Combat enchant Item Level was HALVED (two now total what one did),
+       and their damage line became Base Damage ("Base Damage Boost")
+       instead of Damage ("Dmg Bonus") — which is why they no longer
+       boost Outgoing Healing in game. */
+    const M335_DUAL_COMBAT = true;
 
     /* =====================================================
        State + engine wiring. The prototype's gear/artifact
@@ -3275,9 +3276,10 @@
       // keyed by mod slot (currently "Off Hand 2"): { stat, value }.
       artifactMods: {},
       kits: {},  // gear-slot label → kit name (reinforcement kit per gear piece)
-      // Enchantments — 11 typed slots: 4 offense, 4 defense, 1 utility, 1 combat, 1 bonus.
-      // combat2 = the M33.5 second Combat slot (Defense side); only rendered and
-      // only counted while M335_DUAL_COMBAT is on. Harmless dead key otherwise.
+      // Enchantments — 12 typed slots: 4 offense, 4 defense, 1 utility, 2 combat, 1 bonus.
+      // combat2 = the M33.5 second Combat slot (Guard); `combat` is Strike.
+      // Serialized key stays "combat2" so existing saves/share links keep
+      // resolving — only the on-screen label says Strike/Guard.
       enchants: {
         offense: [null, null, null, null],
         defense: [null, null, null, null],
@@ -3690,12 +3692,17 @@
         }
         delete state.artifactMods["Main Hand 1"];
       }
-      // Mod 1 grants a fixed value per stat — snap any stored value (from
-      // the brief free-entry version) to the real one.
+      // Mod 1's percent dials grant a fixed value — snap any stored amount
+      // (from the brief free-entry version) to the real one. The rating
+      // dials upgrade over a range, so a stored amount is a real choice:
+      // clamp it into min..max rather than snapping it to the top, which
+      // would silently hand every loaded build a fully-upgraded dial.
       const oh1 = state.artifactMods["Off Hand 1"];
       if (oh1 && oh1.stat) {
         const d1 = artModDef("Off Hand 1", oh1.stat);
-        oh1.value = d1 ? d1.max : 0;
+        if (!d1) oh1.value = 0;
+        else if (d1.min == null) oh1.value = d1.max;
+        else oh1.value = Math.max(d1.min, Math.min(+oh1.value || d1.min, d1.max));
       }
       // Slots whose gear name was migrated above: if the OLD name encoded a
       // tier ("Dirgeblade (IL 4450)", "Aegis — IL 4550"), carry it into
@@ -10904,8 +10911,9 @@
         (ench.offense || []).forEach((n, i) => slots.push([n, `Offense ${i + 1}`]));
         (ench.defense || []).forEach((n, i) => slots.push([n, `Defense ${i + 1}`]));
         slots.push([ench.utility, "Utility"], [ench.combat, "Combat"], [ench.bonus, "Bonus"]);
-        // M33.5 second Combat slot. TENTATIVE: whether it contributes TIL
-        // in-game is unverified — gated local-only until n00b checks live.
+        // M33.5 second Combat slot (Guard). It does add Item Level — which is
+        // exactly why the release halved every Combat enchant's IL, so two
+        // slotted together total what one did before.
         if (typeof M335_DUAL_COMBAT !== "undefined" && M335_DUAL_COMBAT) {
           slots.push([ench.combat2, "Combat 2"]);
         }
@@ -13553,8 +13561,8 @@
             if (eff.scope === "enemy") continue;
             // Party-scope stacking buffs (e.g. "Part of the Pack"): each
             // stack comes from a party member running the companion. With
-            // the Pack-meta assumption ON (default — current group meta),
-            // count full stacks. OFF = solo: only your own stack counts.
+            // the Pack-meta toggle ON, count full stacks. OFF (the default
+            // since f97862dc, 2026-06-23) = only your own stack counts.
             const effStacks = (eff.scope === "party" && s.partyPackMeta === false) ? 1 : maxStacks;
             labelStacks = Math.max(labelStacks, effStacks);
             const alreadyBaseline = (power.stats || []).some(s2 =>
@@ -13780,8 +13788,7 @@
       (ench.defense || []).forEach((n, i) => pushEnchant("defense", `Defense ${i+1}`, n));
       pushEnchant("utility", "Utility", ench.utility);
       pushEnchant("combat",  "Combat",  ench.combat);
-      // M33.5 second Combat slot — gated so live-site stat panels keep
-      // matching the in-game reality until the module actually ships.
+      // M33.5 second Combat slot (Guard) — same stat treatment as the first.
       if (typeof M335_DUAL_COMBAT !== "undefined" && M335_DUAL_COMBAT) {
         pushEnchant("combat", "Combat 2", ench.combat2);
       }
@@ -13878,18 +13885,23 @@
       { stat: "Deflect Severity",   max: 6800,  short: "Defl Severity" },
       { stat: "Defense",            max: 3200,  short: "Defense" },
     ];
-    // Off Hand mod 1: FIXED-value menu — each stat grants exactly `max`
-    // when selected (no upgrade range, so the UI is a picker only).
+    // Off Hand mod 1: MIXED menu. The three percent dials are FIXED — the
+    // stat grants exactly `max` the moment you pick it, so they stay
+    // picker-only. The five rating dials carry an upgrade range
+    // (`min`..`max`), so they get a value box like mod 2.
+    // Ranges owner-provided 2026-08-29; they replace the single fixed
+    // values captured 2026-06-07 (1200/1200/1400/1100/1400), which were
+    // one weapon's current amounts rather than the ladder's top.
     // percent: true entries route to percentStats; the rest are ratings.
     const ARTIFACT_MOD1_STATS = [
       { stat: "Action Point Gain",    max: 2.5, percent: true, short: "AP Gain" },
       { stat: "Recharge Speed",       max: 2.5, percent: true, short: "Recharge" },
       { stat: "Stamina Regeneration", max: 5,   percent: true, short: "Stam Regen" },
-      { stat: "Control Bonus",        max: 1200, short: "Ctrl Bonus" },
-      { stat: "Control Resist",       max: 1200, short: "Ctrl Resist" },
-      { stat: "Incoming Healing",     max: 1400, short: "Inc Healing" },
-      { stat: "Forte",                max: 1100, short: "Forte" },
-      { stat: "Critical Severity",    max: 1400, short: "Crit Sev" },
+      { stat: "Control Bonus",        min: 1200, max: 3000, short: "Ctrl Bonus" },
+      { stat: "Control Resist",       min: 1200, max: 3000, short: "Ctrl Resist" },
+      { stat: "Incoming Healing",     min: 1200, max: 3000, short: "Inc Healing" },
+      { stat: "Forte",                min: 1200, max: 3000, short: "Forte" },
+      { stat: "Critical Severity",    min: 1200, max: 3000, short: "Crit Sev" },
     ];
     // Menu + entry lookup by mod-slot key ("Off Hand 1" / "Off Hand 2").
     function artModMenu(modSlot) {
@@ -15211,26 +15223,35 @@
               // Plain weapons (artifactWeapon:false, e.g. Wintermarked /
               // Runefrost) have no Artifact Modification slots in game.
               if ((s.label === "Off Hand" || s.label === "Main Hand") && !weaponHasArtMods(s.label)) return "";
-              // Off Hand — Artifact Modifications 1 + 2, side by side on
-              // one compact row (wraps on narrow screens). Mod 1 grants a
-              // FIXED value per stat (shown in the option label), so it's
-              // a picker only — no value box. Mod 2 is player-upgraded:
+              // Off Hand — Artifact Modifications 1 + 2, each on its own
+              // compact row (wraps on narrow screens). Mod 1's percent
+              // dials are fixed (value shown in the option label, picker
+              // only); its rating dials have an upgrade range, so they get
+              // a value box clamped to min..max. Mod 2 is player-upgraded:
               // stat picker + value entry (0..stat max).
               if (s.label === "Off Hand") {
-                const fmtFixed = x => x.percent ? `+${x.max}%` : `+${x.max.toLocaleString()}`;
+                // Fixed dials read "+2.5%"; ranged dials read "+1,200-3,000".
+                const fmtMod1 = x => x.percent ? `+${x.max}%`
+                  : (x.min != null ? `+${x.min.toLocaleString()}–${x.max.toLocaleString()}`
+                                   : `+${x.max.toLocaleString()}`);
                 const am1 = (state.artifactMods || {})["Off Hand 1"] || { stat: "", value: 0 };
+                const def1 = artModDef("Off Hand 1", am1.stat);
                 const opts1 = artModMenu("Off Hand 1").map(x =>
-                  `<option value="${_escAttr(x.stat)}"${am1.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)} ${fmtFixed(x)}</option>`).join("");
+                  `<option value="${_escAttr(x.stat)}"${am1.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)} ${fmtMod1(x)}</option>`).join("");
                 const am2 = (state.artifactMods || {})["Off Hand 2"] || { stat: "", value: 0 };
                 const def2 = artModDef("Off Hand 2", am2.stat);
                 const opts2 = artModMenu("Off Hand 2").map(x =>
                   `<option value="${_escAttr(x.stat)}"${am2.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)}</option>`).join("");
                 return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
-                    title="Artifact Modification 1 — pick the stat your off-hand's first modification grants; its value is fixed in game">
+                    title="Artifact Modification 1 — pick the stat your off-hand's first modification grants. The percent dials are a fixed amount; the rating dials upgrade, so enter what yours currently grants.">
                   <span style="opacity:.8;">⚙ Art Mod 1:</span>
                   <select class="picker-collar-filter" data-amod-stat="Off Hand 1">
                     <option value="">— none —</option>${opts1}
                   </select>
+                  ${def1 && def1.min != null ? `<input type="number" data-amod-val="Off Hand 1" min="${def1.min}" max="${def1.max}" step="50"
+                    value="${am1.value || def1.min}" style="width:5.5em;">
+                  <span style="opacity:.55;">${def1.min.toLocaleString()}–${def1.max.toLocaleString()}</span>` : ""}
+                  ${def1 && def1.percent ? `<span style="opacity:.55;">fixed</span>` : ""}
                 </div>
                 <div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
                     title="Artifact Modification 2 — pick the stat your off-hand's second modification grants and enter its current value">
@@ -15294,7 +15315,15 @@
           cur.stat = el.value;
           const def = artModDef(key, cur.stat);
           if (!cur.stat) cur.value = 0;
-          else if (/ 1$/.test(key)) cur.value = def ? def.max : 0;   // fixed-value mod
+          else if (/ 1$/.test(key)) {
+            // Mod 1: percent dials are fixed, so picking one IS the value.
+            // Rating dials upgrade over a range — keep an already-typed
+            // amount when it's legal for the new stat (the ranges match),
+            // otherwise start at the floor the modification grants.
+            if (!def) cur.value = 0;
+            else if (def.min == null) cur.value = def.max;
+            else if (!(cur.value >= def.min && cur.value <= def.max)) cur.value = def.min;
+          }
           else if (def && cur.value > def.max) cur.value = def.max;
           state.artifactMods[key] = cur;
           renderGear(); rerenderAll();
@@ -15312,6 +15341,11 @@
           if (def && v > def.max) {
             v = def.max;
             toast(`${cur.stat} modification caps at ${isPct ? def.max + "%" : def.max.toLocaleString()}`);
+          } else if (def && def.min != null && v < def.min) {
+            // A modification you own always grants at least its floor —
+            // below that isn't a state the game can be in.
+            v = def.min;
+            toast(`${cur.stat} modification starts at ${def.min.toLocaleString()}`);
           }
           cur.value = v;
           el.value = v;
@@ -15410,10 +15444,10 @@
         : slotType === "combat2" ? "Combat"  // M33.5 second Combat slot
         : slotType[0].toUpperCase() + slotType.slice(1);  // "Combat" / "Bonus"
       let list = canonical.concat(userAdded).filter(e => e.slotType === want);
-      // M33.5 dual Combat slots are typed: slot 1 = Offense, slot 2 = Defense.
-      // TENTATIVE until verified live: Utility-tagged combat enchants (Divine
-      // Aegis, Radiant Sanctuary, Fluid Aurora) are allowed in either slot,
-      // and untagged (user-added) entries aren't blocked.
+      // M33.5 dual Combat slots are typed: Strike = Offense, Guard = Defense.
+      // Utility-tagged combat enchants (Divine Aegis, Radiant Sanctuary,
+      // Fluid Aurora) are allowed in either slot, and untagged (user-added)
+      // entries aren't blocked.
       if (M335_DUAL_COMBAT && (slotType === "combat" || slotType === "combat2")) {
         const need = slotType === "combat" ? "Offense" : "Defense";
         list = list.filter(e => {
@@ -15469,12 +15503,12 @@
       const ENCH_RANKS = ["Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Celestial"];
       function chip(slotType, name, idx) {
         const filled = !!name;
-        // "Combat 2" is the stable key for rarity/locks; the chip shows Off/Def
-        // qualifiers only while the M33.5 dual-combat gate is on.
+        // "Combat 2" is the stable key for rarity/locks and share links — never
+        // rename it. The chip shows the in-game Strike/Guard names instead.
         const slotLabel = slotType === "combat2" ? "Combat 2"
           : slotType[0].toUpperCase() + slotType.slice(1) + (idx !== undefined ? ` ${idx + 1}` : "");
-        const dispLabel = (slotType === "combat" && M335_DUAL_COMBAT) ? "Combat · Off"
-          : slotType === "combat2" ? "Combat · Def"
+        const dispLabel = (slotType === "combat" && M335_DUAL_COMBAT) ? "Combat · Strike"
+          : slotType === "combat2" ? "Combat · Guard"
           : slotType[0].toUpperCase() + slotType.slice(1) + (idx !== undefined ? ` ${idx + 1}` : "");
         const info = filled ? `<button class="chip-info" data-details-type="enchant" data-details-key="${_escAttr(name)}" data-details-slot="${_escAttr(slotLabel)}" title="See enchant details">\u{1F50D}</button>` : "";
         let rankSel = "";
@@ -15513,8 +15547,8 @@
             const idx = el.dataset.enchIdx !== undefined ? +el.dataset.enchIdx : null;
             const _slotLabel = t === "combat2" ? "Combat 2"
               : t[0].toUpperCase() + t.slice(1) + (idx !== null ? ` ${idx + 1}` : "");
-            const _title = (t === "combat" && M335_DUAL_COMBAT) ? "Combat enchantment (Offense)"
-              : t === "combat2" ? "Combat enchantment (Defense)"
+            const _title = (t === "combat" && M335_DUAL_COMBAT) ? "Combat enchantment (Strike)"
+              : t === "combat2" ? "Combat enchantment (Guard)"
               : `${t[0].toUpperCase()+t.slice(1)} enchantment` + (idx !== null ? ` (slot ${idx + 1})` : "");
             openPicker({
               dataType: "enchant",

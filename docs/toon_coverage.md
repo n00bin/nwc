@@ -24,6 +24,7 @@ same-day; numbers below re-counted from live data, not carried forward).
 | Gear reinforcement kits | Implemented | `../data/kits.json`, kit chips per slot |
 | Frostsilver gem synergy | Implemented | `gemSynergy` field + `buildEngineCharacter` merge (only while matching enchant slotted) |
 | Enchantments (stats + Universal CR 1620 + gemstone multi-stat) | Implemented | `../data/enchants.json`, `pushEnchant` (CR fix b6f0043); bonus enchants contribute 0 TIL (verified) |
+| M33.5 dual Combat Enchantment slots (Strike + Guard) | Implemented | Live since M33.5 shipped 2026-09-01. `M335_DUAL_COMBAT = true` in `toon-forge.html` (kept as a named constant so the dual-slot paths stay greppable). UI chips read `Combat · Strike` / `Combat · Guard`; stored key stays `state.enchants.combat2` (share links / saves). Engine (`pushEnchant "Combat 2"`), TIL, gem-synergy sets and the optimizer (`enchant:Combat 2` slot, own candidate pool) all wired. Data side: every Combat enchant's Item Level HALVED and its damage line moved from `Dmg Bonus` to `Base Damage Boost`, per the release article. UNVERIFIED IN-GAME: whether the same Utility-tagged combat enchant (Divine Aegis / Radiant Sanctuary / Fluid Aurora) may sit in BOTH slots at once — duplicates are currently allowed |
 | Overloads | Implemented | `../data/overloads.json`; contribute 0 Total Item Level (owner-verified 2026-06-07) |
 | Weapon Artifact Modifications (Off Hand Art Mod 1 + 2; Main Hand Enhanced power) | Partial | `state.artifactMods`; Art Mod 1 fixed owner-verified values, Art Mod 2 clamped entry; see §Partial-3 |
 | Artifacts (primary + 3 secondary) | Implemented | `../data/artifacts.json` |
@@ -102,6 +103,14 @@ same-day; numbers below re-counted from live data, not carried forward).
 - **Required:** the Companion Damage % branch (non-augment summons) needs a
   damage-output layer before it can be applied — silenced as `"Companion
   Damage"` in `toon-forge-stats.js` in the meantime.
+- **Optimizer note (2026-07-23):** because only the augment branch is wired,
+  augments out-score every other summon and the optimizer picked them at every
+  role. They are now barred from the summoned slot by default via a
+  role-independent gate in `js/optimizer-local.js` (`OPT.augments`,
+  `ALLOW_AUGMENTS`/`isAugmentComp`), lifted by the `tf-allow-augment` checkbox.
+  This is a COMMUNITY-META constraint, not a math fix — closing the Companion
+  Damage % branch above will narrow the real gap and is the thing that would
+  justify revisiting the default.
 
 ## Missing entries
 
