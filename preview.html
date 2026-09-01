@@ -51,6 +51,35 @@
       color: var(--text-secondary);
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     }
+    .preview-table-wrap { overflow-x: auto; margin-bottom: 1rem; }
+    .preview-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      min-width: 520px;
+    }
+    .preview-table th, .preview-table td {
+      text-align: left;
+      padding: 0.4rem 0.7rem;
+      border-bottom: 1px solid var(--border-default);
+      vertical-align: top;
+    }
+    .preview-table th {
+      color: var(--highlight);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .preview-table td { color: var(--text-secondary); }
+    .preview-table td:first-child { color: var(--text-primary); }
+    .preview-table tr:last-child td { border-bottom: none; }
+    .preview-table-note {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin: -0.5rem 0 1.25rem;
+      font-style: italic;
+    }
     .preview-section {
       margin-bottom: 2rem;
     }
@@ -242,11 +271,11 @@
         </div>
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;">Campaign &amp; Shards of Madness</strong>
-          <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">Four phases of three weeks each. Daily and weekly challenges pay out <strong>Shards of Madness</strong>, which push you through campaign milestones. Milestone rewards include Warden&rsquo;s Caches, Insignia Powder, Tradebars, Legendary Dragon Keys, and Mount &amp; Companion Upgrade Tokens. The <span translate="no">Staring Cat of Uldun-Dar</span> companion comes from the &lsquo;Can you hear him?&rsquo; phase. Rewards can be claimed on up to five characters per account; after that most convert to Warden&rsquo;s Caches.</span>
+          <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">Four phases of three weeks each. Daily and weekly challenges pay out <strong>Shards of Madness</strong>, which push you through campaign milestones. Milestone rewards include Warden&rsquo;s Caches, Insignia Powder, Tradebars, Legendary Dragon Keys, and Mount &amp; Companion Upgrade Tokens. The <span translate="no">Staring Cat of Uldun-Dar</span> companion comes from the &lsquo;Can you hear him?&rsquo; phase. Rewards can be claimed on up to five characters per account; after that most convert to Warden&rsquo;s Caches. A <span translate="no">Monoliths of Madness</span> Vendor also sells the Epic armor, shirts/pants and rings, <span translate="no">Magnificent Illusion Essence</span>, and more Warden&rsquo;s Caches.</span>
         </div>
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;">Nightmare Progression (Server-Wide)</strong>
-          <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">Every campaign phase also has a global progress bar filled by all player contribution. Clear a phase and everyone who earned at least 500 Shards of Madness is mailed the rewards at phase end: <span translate="no">Burning Hope</span> (artifact), the <span translate="no">Umbral Widow</span> mount, the <span translate="no">Brimming Bountiful Bag</span>, and the <span translate="no">Peeper Keeper</span>. If the server does not finish a phase, nobody gets that phase&rsquo;s rewards.</span>
+          <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">Every campaign phase also has a global progress bar filled by all player contribution. Clear a phase and everyone who earned at least 500 Shards of Madness is mailed that phase&rsquo;s reward: Phase 1 gives <span translate="no">Burning Hope</span> (artifact), Phase 2 the <span translate="no">Umbral Widow</span> mount, Phase 3 the <span translate="no">Brimming Bountiful Bag</span>, and Phase 4 both the <span translate="no">Peeper Keeper</span> and the <span translate="no">Champion of the Emerald Vigil</span> title. If the server does not finish a phase, nobody gets that phase&rsquo;s reward.</span>
         </div>
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;">Corrupted Altars</strong>
@@ -276,12 +305,68 @@
     </div>
 
     <div class="preview-section">
+      <h2 class="preview-section-title">Campaign Schedule</h2>
+      <p class="preview-section-desc">Four phases of three weeks. Three of the four zones are in rotation each phase, one active per week.</p>
+      <div class="preview-table-wrap">
+        <table class="preview-table" style="min-width:640px;">
+          <thead><tr><th>Campaign Phase</th><th>Dates</th><th>Zones in rotation</th></tr></thead>
+          <tbody>
+            <tr><td>Phase 1: It Begins</td><td>Sep 1 &ndash; Sep 21</td><td><span translate="no">Menzoberranzan</span> &middot; <span translate="no">Northdark Reaches</span> &middot; <span translate="no">Narbondellyn</span></td></tr>
+            <tr><td>Phase 2: Madness Rising</td><td>Sep 21 &ndash; Oct 13</td><td><span translate="no">Dragonbone Vale</span> &middot; <span translate="no">Menzoberranzan</span> &middot; <span translate="no">Northdark Reaches</span></td></tr>
+            <tr><td>Phase 3: Delirium</td><td>Oct 13 &ndash; Nov 3</td><td><span translate="no">Narbondellyn</span> &middot; <span translate="no">Dragonbone Vale</span> &middot; <span translate="no">Menzoberranzan</span></td></tr>
+            <tr><td>Phase 4: Can you hear him?</td><td>Nov 3 &ndash; Nov 24</td><td><span translate="no">Northdark Reaches</span> &middot; <span translate="no">Narbondellyn</span> &middot; <span translate="no">Dragonbone Vale</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="preview-table-note">The official article names Phase 4 both &ldquo;Can you hear him?&rdquo; and &ldquo;Can you hear me?&rdquo; in different places. Needs an in-game check.</p>
+      <h3 style="color:var(--text-primary);font-size:0.95rem;margin:1.25rem 0 0.5rem;">Event currencies</h3>
+      <div class="preview-table-wrap">
+        <table class="preview-table" style="min-width:560px;">
+          <thead><tr><th>Currency</th><th>How to obtain</th></tr></thead>
+          <tbody>
+            <tr><td>Shards of Madness</td><td>Defeat critters, complete Heroic Encounters</td></tr>
+            <tr><td>Warden Mark</td><td>Defeat critters, complete Heroic Encounters, and complete Quests</td></tr>
+            <tr><td>Lesser Abyssal Lure</td><td>Defeat enemies within the active <span translate="no">Monoliths of Madness</span> event zone</td></tr>
+            <tr><td>Greater Abyssal Lure</td><td>Defeat bosses spawning from Corrupted Altars</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="preview-section">
       <h2 class="preview-section-title">New Items &amp; Rewards</h2>
       <p class="preview-section-desc">Stat lines exactly as written in the release article. None of this is in-game verified yet, so it is not in the compendium databases until a screenshot confirms it.</p>
+      <h3 style="color:var(--text-primary);font-size:0.95rem;margin:0 0 0.5rem;">Every new item and where it comes from</h3>
+      <div class="preview-table-wrap">
+        <table class="preview-table" style="min-width:660px;">
+          <thead><tr><th>Item</th><th>Type</th><th>How to obtain</th></tr></thead>
+          <tbody>
+            <tr><td>Armor (Epic)</td><td>Gear</td><td><span translate="no">Monoliths of Madness</span> Vendor</td></tr>
+            <tr><td>Shirts and Pants (Epic)</td><td>Gear</td><td><span translate="no">Monoliths of Madness</span> Vendor</td></tr>
+            <tr><td>Rings (Epic)</td><td>Gear</td><td><span translate="no">Monoliths of Madness</span> Vendor</td></tr>
+            <tr><td><span translate="no">Magnificent Illusion Essence</span></td><td>&mdash;</td><td><span translate="no">Monoliths of Madness</span> Vendor</td></tr>
+            <tr><td><span translate="no">Warden&rsquo;s Cache</span></td><td>&mdash;</td><td><span translate="no">Monoliths of Madness</span> Vendor / Campaign phases</td></tr>
+            <tr><td><span translate="no">Burning Hope</span> (Epic)</td><td>Artifact</td><td>Phase 1: It Begins (Nightmare progression)</td></tr>
+            <tr><td><span translate="no">Umbral Widow</span> (Epic)</td><td>Mount</td><td>Phase 2: Madness Rising (Nightmare progression)</td></tr>
+            <tr><td>Legendary Enchantment Choice Pack</td><td>&mdash;</td><td>Phase 2: Madness Rising (Campaign)</td></tr>
+            <tr><td><span translate="no">Brimming Bountiful Bag</span> (90 slots)</td><td>Bag</td><td>Phase 3: Delirium (Nightmare progression)</td></tr>
+            <tr><td><span translate="no">Peeper Keeper</span></td><td>Backpack</td><td>Phase 4: Can you hear him? (Nightmare progression)</td></tr>
+            <tr><td><span translate="no">Champion of the Emerald Vigil</span></td><td>Title</td><td>Phase 4: Can you hear him? (Nightmare progression)</td></tr>
+            <tr><td><span translate="no">Staring Cat of Uldun-Dark</span> (Legendary)</td><td>Companion</td><td>Phase 4: Can you hear him? (Campaign)</td></tr>
+            <tr><td><span translate="no">Laughing Void</span> (Mythic)</td><td>Artifact</td><td><span translate="no">Of Minds and Madness</span> Battle Pass (Phase 1)</td></tr>
+            <tr><td><span translate="no">Voidbound Necklace</span> (Mythic)</td><td>Neck</td><td><span translate="no">Of Minds and Madness</span> Battle Pass (Phase 1)</td></tr>
+            <tr><td><span translate="no">Voidbound Belt</span> (Mythic)</td><td>Waist</td><td><span translate="no">Of Minds and Madness</span> Battle Pass (Phase 1)</td></tr>
+            <tr><td><span translate="no">Pika the Tressym</span></td><td>Backpack</td><td><span translate="no">Of Minds and Madness</span> Battle Pass (Phase 2)</td></tr>
+            <tr><td><span translate="no">Star Angler</span> (Mythic)</td><td>Mount</td><td><span translate="no">Wild Adventures</span> Lockbox</td></tr>
+            <tr><td><span translate="no">Encore the Virtuoso</span> (Mythic)</td><td>Companion</td><td><span translate="no">Wild Adventures</span> Lockbox</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="preview-table-note">The article spells the companion both &ldquo;Staring Cat of Uldun-Dar&rdquo; (body text) and &ldquo;Staring Cat of Uldun-Dark&rdquo; (source table). Needs an in-game check before it goes in the database.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;">
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;"><span translate="no">Staring Cat of Uldun-Dar</span> &mdash; Legendary Companion</strong>
-          <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">From the <span translate="no">Monoliths of Madness</span> campaign (&lsquo;Can you hear him?&rsquo; phase).<br><strong>Enhancement: <span translate="no">Unflinching Will</span></strong> &mdash; Chance on hit to increase your and your companion&rsquo;s Deflect and Deflect Severity for 15 seconds. Maximum 4.5%.<br><strong>Defense Power: <span translate="no">Grim Omen</span></strong> &mdash; Grants Movement Speed, Mount Speed, and Combined Rating.</span>
+          <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">From the <span translate="no">Monoliths of Madness</span> campaign, Phase 4 (Nov 3 &ndash; Nov 24).<br><strong>Enhancement: <span translate="no">Unflinching Will</span></strong> &mdash; Chance on hit to increase your and your companion&rsquo;s Deflect and Deflect Severity for 15 seconds. Maximum 4.5%.<br><strong>Defense Power: <span translate="no">Grim Omen</span></strong> &mdash; Grants Movement Speed, Mount Speed, and Combined Rating.</span>
         </div>
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;"><span translate="no">Umbral Widow</span> &mdash; Epic Mount</strong>
@@ -297,11 +382,11 @@
         </div>
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;"><span translate="no">Brimming Bountiful Bag</span> (90 slots)</strong>
-          <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">From the Nightmare Progression. A 90-slot bag.</span>
+          <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">A 90-slot bag, from Phase 3 of the Nightmare Progression.</span>
         </div>
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;"><span translate="no">Peeper Keeper</span></strong>
-          <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">From the Nightmare Progression. Recovered from the monoliths; it keeps an eye on your loot.</span>
+          <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">A Backpack, from Phase 4 of the Nightmare Progression. Recovered from the monoliths; it keeps an eye on your loot.</span>
         </div>
       </div>
     </div>
@@ -338,6 +423,29 @@
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;"><span translate="no">Encore the Virtuoso</span> &mdash; Mythic Companion (Lockbox)</strong>
           <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">A kenku minstrel.<br><strong><span translate="no">Mending Melody</span></strong> &mdash; heals up to 5 allies and buffs their Outgoing Healing, Power, and Critical Severity.<br><strong><span translate="no">Strings on Fire</span></strong> &mdash; damages an enemy and increases their Incoming Damage.<br><strong><span translate="no">Tune of Order</span></strong> &mdash; damages and pulls in nearby enemies, reducing their Outgoing Damage and Movement Speed.<br><strong>Enhancement</strong> &mdash; additional Combined Rating.<br><strong>Defense Power: <span translate="no">Bard&rsquo;s Finesse</span></strong> &mdash; Critical Severity, Combined Rating, Outgoing Healing Bonus, and Power.</span>
         </div>
+      </div>
+      <h3 style="color:var(--text-primary);font-size:0.95rem;margin:1.5rem 0 0.5rem;">Content calendar</h3>
+      <p class="preview-section-desc" style="margin-bottom:0.6rem;">Published schedule through November 13, 2026. Blank cells mean the row above is still running.</p>
+      <div class="preview-table-wrap">
+        <table class="preview-table" style="min-width:760px;">
+          <thead><tr><th>Date</th><th>Events</th><th>Battle Pass</th><th>Lockbox</th><th>Double Currency</th></tr></thead>
+          <tbody>
+            <tr><td>Tue Sep 1</td><td></td><td>Of Minds and Madness &mdash; Phase 1</td><td>Wild Adventures</td><td>Descent into Avernus + Glory</td></tr>
+            <tr><td>Fri Sep 11</td><td></td><td></td><td></td><td>Icewind Dale</td></tr>
+            <tr><td>Fri Sep 18</td><td></td><td></td><td></td><td>Chult + Progression</td></tr>
+            <tr><td>Fri Sep 25</td><td></td><td></td><td></td><td>Legacy Campaigns</td></tr>
+            <tr><td>Thu Oct 1</td><td>Harvester of Nightmare</td><td></td><td></td><td></td></tr>
+            <tr><td>Fri Oct 2</td><td>Harvester of Nightmare</td><td>Of Minds and Madness &mdash; Phase 2</td><td></td><td>Ravenloft + Refining Gems</td></tr>
+            <tr><td>Thu Oct 8</td><td>Harvester of Nightmare</td><td></td><td></td><td></td></tr>
+            <tr><td>Fri Oct 9</td><td>Harvester of Nightmare</td><td></td><td></td><td>Cloaked Ascendancy</td></tr>
+            <tr><td>Fri Oct 16</td><td>Harvester of Nightmare</td><td></td><td></td><td>Storm King&rsquo;s Thunder + Guild Marks + Shards of Power + Influence</td></tr>
+            <tr><td>Thu Oct 22</td><td>Masquerade of Liars</td><td></td><td></td><td></td></tr>
+            <tr><td>Fri Oct 23</td><td>Masquerade of Liars</td><td></td><td></td><td>Path of the Fallen</td></tr>
+            <tr><td>Fri Oct 30</td><td>Masquerade of Liars</td><td></td><td></td><td>Dread Ring + Profession Resources</td></tr>
+            <tr><td>Fri Nov 6</td><td></td><td></td><td></td><td>Icewind Dale</td></tr>
+            <tr><td>Fri Nov 13</td><td></td><td></td><td></td><td>Descent into Avernus + Seals</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
