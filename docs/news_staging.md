@@ -36,6 +36,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes
 
+- **Six more Combined Rating fixes, and a damage bonus that was too generous.** **Ring of the Shadowstalker +5** had its Combined Rating at 538 instead of 571, and its Brute's Fury bonus listed as 3% extra damage when the real tooltip says **2.5%** — that one was inflating damage numbers for anyone using the ring. **Black Draconic Guise** and **Bracers of Defense** both read 472 instead of **567**, and the three Atropal/Skull Lord artifact pieces all read 385 instead of **315**.
+
 - **All eight Rosegold rings had the wrong Combined Rating.** Every rating stat on them was right, but the Combined Rating read 382 instead of **582** on all eight — Assault, Duelist, Executioner, Gladiator, Medic, Raid, Restoration and Ward. **Fret Barbute of Halaster's Successor** had the same kind of error (999 instead of **909**). Combined Rating is spread across fifteen stats behind the scenes, so a wrong one quietly skews everything rather than showing up as one obviously bad number. Also fixed: the **Warlock** version of **Eternal Helmet**, which had picked up two numbers belonging to the Bard/Rogue version.
 
 ### Data Additions
