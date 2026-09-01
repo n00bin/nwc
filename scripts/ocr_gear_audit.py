@@ -90,8 +90,16 @@ def parse_tooltip(text):
         st = canon_stat(name)
         if not st:
             continue
+        # Low-item-level legacy gear really does carry FRACTIONAL ratings
+        # (+39.6 Accuracy on Hammerstone Helmet is what the tooltip says), so a
+        # decimal point must be preserved, not stripped. Only a '.' used as a
+        # thousands separator by OCR is dropped.
         try:
-            v = int(num.replace(',', '').replace('.', ''))
+            t = num.replace(',', '')
+            if re.match(r"^\d+\.\d{1,2}$", t):
+                v = float(t)
+            else:
+                v = int(t.replace('.', ''))
         except ValueError:
             continue
         if v <= 0 or v > 200000:

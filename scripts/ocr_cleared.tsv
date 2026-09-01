@@ -6,3 +6,8 @@ Rotsteel Band of Withering	4650	the non-(2) screenshot was mislabeled (it is Coi
 Rotsteel Coil of Blight	4650	verified against the renamed screenshot; matches exactly
 Cracked Earthshard Guard	4600	both Shirt and Pants variants verified correct
 Soulbound Sword Knot of the Thayan Zealot	3300	OCR split "Deflect Severity" across text regions; tooltip matches JSON exactly
+Pulsar Armet	2600	OCR welded a background number onto the Defense line; tooltip 1170/1950/780 CR2340 matches JSON exactly
+Pulsar Breastplate	2600	same OCR noise; tooltip 1950/780/1170 CR2340 matches JSON exactly
+Exalted Maiden's Rejuvenation Hood	2050	tooltip 1538 Critical Strike / 1538 Defense / CR1845 matches JSON; the Mitts defect did not propagate to the Hood
+The Dark Maiden's Rejuvenation Hood	2000	tooltip 1500 Critical Strike / 1500 Defense / CR1800 matches JSON
+Stormforged Longbow	2000	set sibling checked during the Stormforged Point fix; shape is correct

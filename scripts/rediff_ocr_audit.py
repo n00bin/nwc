@@ -45,6 +45,12 @@ def score(ocr, js):
             diffs.append(dict(stat=st, shot=v, json=None, kind='missing_in_json'))
         elif js[st] != v:
             j = js[st]
+            # Decimal-strip artifact: the first OCR pass parsed "+39.6" as 396
+            # because it stripped the '.'. Fractional ratings are REAL on old
+            # low-IL gear, so a JSON value that is exactly the shot value / 10
+            # with a fractional part is the SAME number, not a x10 error.
+            if not float(j).is_integer() and abs(float(j) * 10 - v) <= 2:
+                continue
             sj, ss = str(int(j)) if float(j).is_integer() else str(j), str(v)
             if len(sj) > len(ss) and sj.endswith(ss):
                 continue             # OCR dropped a leading digit (4,800 -> 800)
