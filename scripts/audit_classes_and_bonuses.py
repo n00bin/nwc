@@ -109,7 +109,14 @@ for _k, (_seen, _ours, _rel, _anyall) in cls_seen.items():
 
 print("tooltips with text: %d\n" % seen_txt)
 print("=" * 92)
-print("CLASS-LIST DISAGREEMENTS: %d items" % len(cls_bad))
+print("CLASS-LIST DISAGREEMENTS: %d items   <-- SUPERSEDED, DO NOT USE" % len(cls_bad))
+print("    This union-based check compares a tooltip against EVERY entry sharing
+"
+      "    its name+item level, so multi-variant items always look wrong. Use
+"
+      "    scripts/audit_class_lists.py, which matches each screenshot to the
+"
+      "    right variant by its stats first.")
 print("=" * 92)
 for (n, il), (sc, ours, rel) in sorted(cls_bad.items(), key=lambda kv: -(kv[0][1] or 0))[:30]:
     print("  %-42s IL%-6s shot=%-26s ours=%s" % (n[:42], il, '/'.join(sc), ' | '.join('/'.join(o) or 'ALL' for o in ours)))
