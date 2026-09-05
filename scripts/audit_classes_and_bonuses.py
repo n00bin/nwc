@@ -95,6 +95,18 @@ for line in io.open(os.path.join(ROOT, 'scripts', '_ocr_text.jsonl'), encoding='
             if key not in bonus_missing:
                 bonus_missing[key] = (sb, sorted(names)[:2], r['rel'], r['il'] or 0)
 
+# Resolve the class check ONCE, after every copy of every tooltip has been
+# seen, so a single bad OCR read cannot condemn an item its other copies
+# agree on. This step went MISSING in an earlier revision, which made the
+# script silently report ZERO class disagreements no matter what the data
+# said. It reported 0 for hours while real errors sat in the file.
+for _k, (_seen, _ours, _rel, _anyall) in cls_seen.items():
+    _sc = sorted(_seen)
+    if _anyall:            # empty allowedClasses = all classes, never flag
+        continue
+    if not any(o == _sc for o in _ours):
+        cls_bad[_k] = (_sc, _ours, _rel)
+
 print("tooltips with text: %d\n" % seen_txt)
 print("=" * 92)
 print("CLASS-LIST DISAGREEMENTS: %d items" % len(cls_bad))
