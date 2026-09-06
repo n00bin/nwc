@@ -47,9 +47,15 @@ fixes (Circlet gem-synergy typo, Aasimar bonuses — parent 15d08ba, website
   change. So in the persistent game state the chest's +5% Max HP line
   does NOT apply at all (in-game bug; tooltip still says 5%). The tool
   reproduces 3,200,456 to 2 HP once the 5% is dropped and the −0.93%
-  multiplier residual is accepted. Recommendation: model the line as
-  non-functional with a `bugged` note until Cryptic fixes it (a real
-  in-game state, per the views-must-be-real-states rule). Awaiting go.
+  multiplier residual is accepted. n00b's position (2026-09-06): the bonus DOES work — he re-equips the
+  chest after every relog/map change and plays at 3,460,807 — so the
+  re-equipped state is the one to model. Shattered Resolve confirmed
+  Celestial 15% (Mythic is 14%), so that is not the −0.93% either.
+  Problem: the re-equipped state is x1.08135 from a 5% line and no bucket
+  placement reproduces it; today's model (5% in the base bucket) reads
+  3,351,909, −3.1%. Options: (A) leave at tooltip 5%, accept −3.1% on
+  this chest; (B) pin a measured 8.135% own-multiplier on this item's HP
+  line with provenance. Awaiting n00b's pick.
 - **Max HP: tool reads 7.6% LOW.** The 3,200,456 the aura-bucket fit was
   made against was a BUGGED game state: n00b had to unequip and re-equip
   the Cuirass of Endless Butchery to get its HP bonus applied; the sheet
