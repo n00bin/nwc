@@ -37,9 +37,16 @@ fixes (Circlet gem-synergy typo, Aasimar bonuses — parent 15d08ba, website
   aura-bucket choice (own multiplier vs base) is UNVERIFIED — both land
   ~8% low against the fixed state. Corroborates the 2026-08-30 lead that
   the HP model reads ~8% low. Base-bucket % needed to hit 3,460,807 is
-  33.3 (tool has 22). Next step is a clean A/B: unequip the chest
-  entirely, read Max HP + TIL; re-equip, read again (both at rest, no
-  food). Do NOT refit on the single number.
+  33.3 (tool has 22). **A/B done 2026-09-06** (overloads corrected to
+  Bulwark of Brimstone + Unholy Protection): chest OFF game 3,102,009 at
+  TIL 146,743 vs tool 3,130,666 (+0.9%); chest ON game 3,460,807 at TIL
+  151,337 vs tool 3,351,909 (−3.1%). The chest is worth 358,798 in-game
+  vs 221,243 in the tool. Its IL+kit part is ~99k either way; the
+  Divine Blessing line is worth ~259k = 8.1% of the pre-bonus total, not
+  5%. A standalone ×1.081 multiplier lands within 125 HP. The stored 5%
+  came from a text parse — NO tooltip archived for Cuirass of Endless
+  Butchery. Waiting on the tooltip before changing anything. The +0.9%
+  chest-off residual is a separate, smaller unknown.
 - **Incoming Damage line**: game −15.5% vs tool −28.25% at rest. July
   sheet read −14.6% with Shattered Resolve (−12) equipped; the line's
   semantics on the in-game sheet are unclear (does it exclude enchant IDR
