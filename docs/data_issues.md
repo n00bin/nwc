@@ -28,8 +28,18 @@ fixes (Circlet gem-synergy typo, Aasimar bonuses — parent 15d08ba, website
 - **Control Resist rating +68** (game 120,534 vs tool 120,466). Only
   stat-specific source is Warboots of the Cataclysmic March (stored 3,686,
   no tooltip archived). Check the Warboots tooltip.
-- **Max HP −2,304 (0.07%)** residual after the aura bucket. Inside
-  tolerance; not chased.
+- **Max HP: tool reads 7.6% LOW.** The 3,200,456 the aura-bucket fit was
+  made against was a BUGGED game state: n00b had to unequip and re-equip
+  the Cuirass of Endless Butchery to get its HP bonus applied; the sheet
+  then reads **3,460,807** (tool 3,198,152, ratio 1.082). The game's delta
+  for the chest re-equip is 260,351 HP; the tool values the whole chest
+  (IL base + kit + 5%) at 210,241 and its 5% line alone at ~116k. So the
+  aura-bucket choice (own multiplier vs base) is UNVERIFIED — both land
+  ~8% low against the fixed state. Corroborates the 2026-08-30 lead that
+  the HP model reads ~8% low. Base-bucket % needed to hit 3,460,807 is
+  33.3 (tool has 22). Next step is a clean A/B: unequip the chest
+  entirely, read Max HP + TIL; re-equip, read again (both at rest, no
+  food). Do NOT refit on the single number.
 - **Incoming Damage line**: game −15.5% vs tool −28.25% at rest. July
   sheet read −14.6% with Shattered Resolve (−12) equipped; the line's
   semantics on the in-game sheet are unclear (does it exclude enchant IDR
