@@ -34,6 +34,12 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 - **Aasimar ability bonuses were the wrong way round.** The race gives a fixed +2 Charisma with a choice of +2 Constitution or +2 Wisdom. We had the fixed +2 on Wisdom and the choice between Constitution and Charisma, which put Aasimar characters 2 points high on Wisdom and 2 low on Charisma — nudging Forte, Recharge Speed, Control Resist and Outgoing Healing. Verified against an in-game ability panel.
 
+- **Priestess of Sehanine Moonbow gave too little Deflect.** Her Sehanine's Wisdom power was stored as +1.8% Deflect / +3.75% Awareness at Legendary. In-game both stats are equal (+4.5% each at Celestial), so Deflect is now +3.75% at Legendary and scales with the other stat.
+
+- **Shadow Demon's +90% Deflect Severity now shows on your standing stats.** The buff is handed out every 30 seconds whether or not you are fighting, and the in-game sheet shows it at rest, so Toon Forge now does too. Previously it was treated as a rare proc and hidden behind "in-combat bonuses". Tanks will see Deflect Severity jump when this companion is active, which is what the game shows.
+
+- **Aasimar's Celestial Presence now counts for you.** The +2% Maximum Hit Points aura was listed under its wiki name and treated as party-only. The in-game tooltip says it includes you, so it is now always on. Max HP for an Aasimar tank went from 2% under the sheet to within a rounding error of it.
+
 ---
 
 ## Week of August 24, 2026

@@ -9,27 +9,27 @@ summoned companion, WIS 16 / CHA 28, four "+1" stamina jewels) and two data
 fixes (Circlet gem-synergy typo, Aasimar bonuses — parent 15d08ba, website
 3c89d649): TIL exact, every rating ±1 except one, 14 of 16 percents exact.
 
+**RESOLVED same day (second pass, n00b rulings):**
+- Awareness/Deflect +4.5%: the "Lich" slot was really **Priestess of
+  Sehanine Moonbow**; her power had Deflect 1.8 at IL 750 with no source —
+  corrected to 3.75 (double-stat rung, both stats). Now 57.1 / 69.4 exact.
+- Deflect Severity 120%: owner ruling — Shadow Demon's +90% is granted
+  every 30s in or out of combat, so it is STANDING. `procEffect.
+  standingActive: true` (new flag, toon-forge.html) makes the stat grant
+  always-on; supersedes the 2026-07-18 uptime-0.12 model. Note this raises
+  the optimizer's valuation of Shadow Demon for tanks.
+- Max HP: the trait is really **Celestial Presence** (General section) and
+  its tooltip says the +2% includes the user → always-on, and it is its OWN
+  multiplicative bucket (`aura: true` → " (aura)" label → 4th HP bucket in
+  engine finalize, composeMaxHP and the Detailed Stats headline). Tool
+  3,198,152 vs game 3,200,456 (−0.07%, −2,304 HP). Single-point fit.
+
 **Still open:**
-- **Awareness +4.5% and Deflect +4.5%** (game 57.1 / 69.4 vs tool 52.6 /
-  64.9, ratings exact). Same amount on both = one double-stat source at
-  Celestial. No item in the build supplies it. Lead: the build's five
-  active companions may be mis-transcribed (a Deflect+Awareness comp such
-  as Dragonborn Brawler in place of "Lich" would also explain why the
-  in-game Incoming Damage line barely moved since July). Needs a
-  Companions-tab screenshot.
-- **Deflect Severity 120% in-game vs tool 61.9% at rest.** Shadow Demon's
-  "+90% Deflect Severity for one deflect every 30s" is shown STANDING on
-  the sheet (46.9 rating + 14 Forte + 1 boon + 90 = 152 → capped 120).
-  The tool models it as a consumed proc at ~12% uptime (owner ruling
-  2026-07-18) and hides it at rest. Display-only gap; the combat value is
-  unchanged. Would need a "standing value ≠ combat value" concept to show.
 - **Control Resist rating +68** (game 120,534 vs tool 120,466). Only
   stat-specific source is Warboots of the Cataclysmic March (stored 3,686,
   no tooltip archived). Check the Warboots tooltip.
-- **Max HP +2.07%** (game 3,200,456 vs tool 3,135,443). Aasimar's Healing
-  Hands (+2%, "nearby party members") applied to self as its own
-  multiplier lands within 0.07%. Unverified — same pattern as Graceful
-  Harmony including yourself.
+- **Max HP −2,304 (0.07%)** residual after the aura bucket. Inside
+  tolerance; not chased.
 - **Incoming Damage line**: game −15.5% vs tool −28.25% at rest. July
   sheet read −14.6% with Shattered Resolve (−12) equipped; the line's
   semantics on the in-game sheet are unclear (does it exclude enchant IDR
