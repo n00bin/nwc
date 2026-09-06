@@ -33,10 +33,15 @@ fixes (Circlet gem-synergy typo, Aasimar bonuses — parent 15d08ba, website
   additive base + one shared multiplier structure holds and the bug was
   purely the Divine Blessing 5% not applying. Two things fall out:
   (1) the measured multiplier on both bugged states is 1.6786 vs the
-  tool's 1.6942 — EXACTLY one missing 1% in the boon/overload bucket
-  (1.325 x 1.08 x 1.15 x 1.02 = 1.67857). Lead: one of the four Bulwark
-  campaign boons in the build (Cultist/Demonic/Dino/Necrotic, 5 pts each)
-  is not actually maxed in-game. Needs the boons page.
+  tool's 1.6942 (−0.93%) — numerically one 1% short in the boon/overload
+  bucket, BUT the boons page (evidence/2026-09-06_..._boons-page.png)
+  shows all four Bulwark boons maxed, so the lead is DEAD. The page did
+  catch one build error: the build carried Tier-3 Deflect Severity (id
+  19) that he does not have — invisible because Deflect Severity is
+  capped at 120. Removed from the link. Boon ledger: game 105 spent vs
+  tool ordering math 97 — not chased. The −0.93% is now unexplained
+  (Shattered Resolve at Mythic 14% instead of Celestial 15% would give
+  −0.87%; unverified).
   (2) Divine Blessing's tooltip 5% is worth x1.08135 in-game (3,200,456 →
   3,460,807). Own-multiplier 1.05 undercounts by 2.9%; no bucket
   placement reproduces 8.135% from a 5% line. Not modeled yet — awaiting
