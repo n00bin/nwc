@@ -42,11 +42,14 @@ fixes (Circlet gem-synergy typo, Aasimar bonuses — parent 15d08ba, website
   tool ordering math 97 — not chased. The −0.93% is now unexplained
   (Shattered Resolve at Mythic 14% instead of Celestial 15% would give
   −0.87%; unverified).
-  (2) Divine Blessing's tooltip 5% is worth x1.08135 in-game (3,200,456 →
-  3,460,807). Own-multiplier 1.05 undercounts by 2.9%; no bucket
-  placement reproduces 8.135% from a 5% line. Not modeled yet — awaiting
-  n00b's call: pin the measured x1.0813 on the item, or model the tooltip
-  5% and accept the gap.
+  (2) Divine Blessing: the 3,460,807 re-equip state is a TRANSIENT
+  artifact — n00b confirms HP drops back to 3,200,456 on relog or map
+  change. So in the persistent game state the chest's +5% Max HP line
+  does NOT apply at all (in-game bug; tooltip still says 5%). The tool
+  reproduces 3,200,456 to 2 HP once the 5% is dropped and the −0.93%
+  multiplier residual is accepted. Recommendation: model the line as
+  non-functional with a `bugged` note until Cryptic fixes it (a real
+  in-game state, per the views-must-be-real-states rule). Awaiting go.
 - **Max HP: tool reads 7.6% LOW.** The 3,200,456 the aura-bucket fit was
   made against was a BUGGED game state: n00b had to unequip and re-equip
   the Cuirass of Endless Butchery to get its HP bonus applied; the sheet
