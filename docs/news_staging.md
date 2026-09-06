@@ -28,6 +28,12 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 - **Combat Enchantments now boost Base Damage, not Damage.** The patch changed this because their damage bonus was also boosting Outgoing Healing, which was never intended. The damage sim now treats that bonus the same way the game does. Healers: nothing you see changes — Toon Forge never counted combat enchants toward healing in the first place.
 
+### Bug Fixes
+
+- **Frostsilver Circlet of Protection's Rubellite gem line never paid out.** The ring's "+3% Forte when a Celestial Rubellite Tourmaline is slotted" line was spelled with one L in the database, so the tool never recognised the slotted enchant and quietly dropped the 3%. Fixed against the ring's own tooltip; a Justicar tank sheet now reads Forte 54.0% exactly as in-game.
+
+- **Aasimar ability bonuses were the wrong way round.** The race gives a fixed +2 Charisma with a choice of +2 Constitution or +2 Wisdom. We had the fixed +2 on Wisdom and the choice between Constitution and Charisma, which put Aasimar characters 2 points high on Wisdom and 2 low on Charisma — nudging Forte, Recharge Speed, Control Resist and Outgoing Healing. Verified against an in-game ability panel.
+
 ---
 
 ## Week of August 24, 2026

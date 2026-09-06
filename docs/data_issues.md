@@ -1,5 +1,69 @@
 # Data Issues To Investigate
 
+## Erik tank sheet re-calibration 2026-09-06 — open residuals
+Erik (Paladin Justicar, Aasimar, TIL 151,337) at-rest sheet vs Toon Forge's
+Detailed Stats with all three Hide switches on. Evidence:
+`docs/calibration/evidence/2026-09-06_erik-paladin-justicar_stat-panel-{main,boosts}_at-rest.png`.
+After the build-side corrections (2x True Ice **Belt** not Tome on the
+summoned companion, WIS 16 / CHA 28, four "+1" stamina jewels) and two data
+fixes (Circlet gem-synergy typo, Aasimar bonuses — parent 15d08ba, website
+3c89d649): TIL exact, every rating ±1 except one, 14 of 16 percents exact.
+
+**Still open:**
+- **Awareness +4.5% and Deflect +4.5%** (game 57.1 / 69.4 vs tool 52.6 /
+  64.9, ratings exact). Same amount on both = one double-stat source at
+  Celestial. No item in the build supplies it. Lead: the build's five
+  active companions may be mis-transcribed (a Deflect+Awareness comp such
+  as Dragonborn Brawler in place of "Lich" would also explain why the
+  in-game Incoming Damage line barely moved since July). Needs a
+  Companions-tab screenshot.
+- **Deflect Severity 120% in-game vs tool 61.9% at rest.** Shadow Demon's
+  "+90% Deflect Severity for one deflect every 30s" is shown STANDING on
+  the sheet (46.9 rating + 14 Forte + 1 boon + 90 = 152 → capped 120).
+  The tool models it as a consumed proc at ~12% uptime (owner ruling
+  2026-07-18) and hides it at rest. Display-only gap; the combat value is
+  unchanged. Would need a "standing value ≠ combat value" concept to show.
+- **Control Resist rating +68** (game 120,534 vs tool 120,466). Only
+  stat-specific source is Warboots of the Cataclysmic March (stored 3,686,
+  no tooltip archived). Check the Warboots tooltip.
+- **Max HP +2.07%** (game 3,200,456 vs tool 3,135,443). Aasimar's Healing
+  Hands (+2%, "nearby party members") applied to self as its own
+  multiplier lands within 0.07%. Unverified — same pattern as Graceful
+  Harmony including yourself.
+- **Incoming Damage line**: game −15.5% vs tool −28.25% at rest. July
+  sheet read −14.6% with Shattered Resolve (−12) equipped; the line's
+  semantics on the in-game sheet are unclear (does it exclude enchant IDR
+  and companion IDR?). Not chased.
+
+## Screenshot audit sweep 2026-08-31 — 3 more confirmed stat errors
+Ran a mechanical sweep of all 6,722 `gear.json` entries against the 13,271
+archived screenshots, then visually verified the top flags. Generated files:
+`scripts/_coverage_missing.txt`, `scripts/_coverage_wrongil.txt`,
+`scripts/_outlier_report.txt` (regenerate with `scripts/_screenshot_coverage.py`
+and `scripts/_family_outliers2.py`).
+
+**CONFIRMED against tooltips, NOT yet fixed:**
+- **Astral Raider's Coif** (Head, IL2200, Warlock/Bard) — spurious
+  `Outgoing Healing: 1980` rating stat; it is the Combined Rating duplicated,
+  exactly the Dragonsteel Spikes bug. Tooltip: 1,320 Crit Strike / 990 Defense
+  / 990 Deflect Severity / CR 1,980. Shot: `docs/audit/_up/bard-gear/Astral Raider's Coif_IL2200.png`
+- **Huntsman Ward Armet** (Head, IL672, Paladin) — missing **Awareness 302**.
+  Tooltip: 202 CA / 504 Defense / 302 Awareness / CR 605.
+  Shot: `docs/audit/_up/paladin-gear/Huntsman Ward Armet_IL672.png`
+- **Manticore Duelist Bracers** (Arms, IL756, Ranger) — Defense stored as
+  **227, should be 567**. Tooltip: 170 Accuracy / 170 Crit Severity / 567
+  Defense / 227 Deflection / CR 680.
+  Shot: `docs/audit/_up/ranger-gear/Manticore Duelist Bracers_IL756.png`
+
+**Verified CORRECT (heuristic false positive, do not re-flag):** Alliance
+Assault Ring IL546 — 2,948 CA / 1,966 Crit Strike / CR 218 matches the
+tooltip exactly. A low Combined Rating next to large stats is legitimate on
+that ring, so "total off by 500%" was noise.
+
+**Still unverified:** 151 slot-exact family-shape outliers remain, of which
+8 are "missing a stat" and 16 have totals off by >5%. See
+`scripts/_outlier_report.txt`.
+
 ## "This or That" credits BOTH mutually exclusive branches (added 2026-08-30)
 The Dragonsteel / Dragonhide **Feet** line (10 items in `gear.json`, e.g.
 Dragonsteel Spikes id 950) carries the equip bonus "This or That": *when not
