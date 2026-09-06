@@ -50,12 +50,18 @@ fixes (Circlet gem-synergy typo, Aasimar bonuses — parent 15d08ba, website
   multiplier residual is accepted. n00b's position (2026-09-06): the bonus DOES work — he re-equips the
   chest after every relog/map change and plays at 3,460,807 — so the
   re-equipped state is the one to model. Shattered Resolve confirmed
-  Celestial 15% (Mythic is 14%), so that is not the −0.93% either.
-  Problem: the re-equipped state is x1.08135 from a 5% line and no bucket
-  placement reproduces it; today's model (5% in the base bucket) reads
-  3,351,909, −3.1%. Options: (A) leave at tooltip 5%, accept −3.1% on
-  this chest; (B) pin a measured 8.135% own-multiplier on this item's HP
-  line with provenance. Awaiting n00b's pick.
+  Celestial 15%; VIP Rank 12 confirmed active (+1% base bucket, was not
+  ticked in the shared link — now ticked). Both Aasimar HP lines are real
+  ("does not stack" = two Aasimar, per n00b).
+  WITH VIP the multiplier stack read +1.7% high. Fit table (M measured
+  1.67860 from the chest A/B; O 1.09, E 1.15 held): Presence own bucket
+  +1.69%, Presence in base +1.19%, Presence NOT applied −0.31%. So
+  Celestial Presence is back to conditional (party aura; does not stand
+  solo) — races.json + website rebuilt 2026-09-06 evening. Party probe
+  pending: grouping should add ~2% HP (~62k) if this is right.
+  Divine Blessing (re-equipped x1.08135 from a 5% line) still unmodeled:
+  (A) tooltip 5% (tool −3.1% on this chest) or (B) measured pin.
+  Awaiting n00b's pick.
 - **Max HP: tool reads 7.6% LOW.** The 3,200,456 the aura-bucket fit was
   made against was a BUGGED game state: n00b had to unequip and re-equip
   the Cuirass of Endless Butchery to get its HP bonus applied; the sheet
