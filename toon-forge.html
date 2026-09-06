@@ -14716,14 +14716,32 @@
         .filter(c => c.type === "rating" && !c.conditional && (!_dstatsHideBuffs || !isConsumableBuffContributor(c)))
         .map(c => `  ${c.source}: +${c.amount.toLocaleString()}`)
         .join("\n") || "  (none)";
+      // In-combat (conditional) contributors: listed at their full when-active
+      // value whenever "Hide in-combat bonuses" is off — they are already IN
+      // the headline number in that mode, and n00b 2026-09-06 could not find
+      // the Warboots' Ghosted +15% here because this list only ever showed
+      // the always-on lines.
+      const _hpCondContribLines = !_dstatsShowConditional ? "" : ((_hpStat.contributors || [])
+        .filter(c => c.type === "percent" && c.conditional && _hpKeep(c))
+        .map(c => `  ${c.source}: +${_hpFullVal(c).toFixed(2)}%`)
+        .join("\n") || "  (none)");
+      const _hpCondFlatLines = !_dstatsShowConditional ? "" : ((_hpStat.contributors || [])
+        .filter(c => c.type === "rating" && c.conditional && _hpKeep(c))
+        .map(c => `  ${c.source}: +${Math.round(_hpFullVal(c)).toLocaleString()}`)
+        .join("\n") || "  (none)");
       const _hpDebugTitle = `Base = TIL ${_hdlTIL.toLocaleString()} × 10 × ${_hdlHpRoleMult.toFixed(2)} = ${_hdlBaseMaxHP.toLocaleString()}\n` +
         `Flat HP from items = +${_hpAlwaysOnFlat.toLocaleString()}\n` +
         `Bucket 1 = 1 + CON ${_hpCON} × 0.5% + ${_hpPctBase.toFixed(2)}% (insignia bonuses / VIP / misc)\n` +
         `Bucket 2 = 1 + ${_hpPctBoonOv.toFixed(2)}% (campaign boons + overloads)\n` +
         `Bucket 3 = 1 + ${_hpPctEnch.toFixed(2)}% (enchants)\n` +
-        `MaxHP = (Base + Flat) × B1 × B2 × B3 = ${_hdlMaxHP.toLocaleString()} HP\n` +
+        (_hpPctAura ? `Bucket 4 = 1 + ${_hpPctAura.toFixed(2)}% (race aura)\n` : "") +
+        `MaxHP = (Base + Flat) × B1 × B2 × B3${_hpPctAura ? " × B4" : ""} = ${_hdlMaxHP.toLocaleString()} HP\n` +
         `\nAlways-on percent contributors:\n${_hpContribLines}\n` +
-        `\nAlways-on flat contributors:\n${_hpFlatContribLines}`;
+        `\nAlways-on flat contributors:\n${_hpFlatContribLines}` +
+        (_dstatsShowConditional
+          ? `\n\nIn-combat percent contributors (shown at full value):\n${_hpCondContribLines}\n` +
+            `\nIn-combat flat contributors:\n${_hpCondFlatLines}`
+          : "");
       html += `<div class="dstats-section">
         <div class="dstats-section-title">Character</div>
         <div class="dstat-row">

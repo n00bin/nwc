@@ -55,13 +55,19 @@ fixes (Circlet gem-synergy typo, Aasimar bonuses — parent 15d08ba, website
   ("does not stack" = two Aasimar, per n00b).
   WITH VIP the multiplier stack read +1.7% high. Fit table (M measured
   1.67860 from the chest A/B; O 1.09, E 1.15 held): Presence own bucket
-  +1.69%, Presence in base +1.19%, Presence NOT applied −0.31%. So
-  Celestial Presence is back to conditional (party aura; does not stand
-  solo) — races.json + website rebuilt 2026-09-06 evening. Party probe
-  pending: grouping should add ~2% HP (~62k) if this is right.
+  +1.69%, Presence in base +1.19%, Presence NOT applied −0.31%. Celestial Presence was briefly set party-only on that arithmetic, then
+  n00b RULED it applies at all times (solo included) — restored always-on
+  in the base bucket 2026-09-06 evening (parent + website 1cd5a24e). The
+  solo sheet therefore reads +1.2% high in the tool; accepted, source
+  unexplained. Both Aasimar HP lines are real ("does not stack" = two
+  Aasimar in a party).
   Divine Blessing (re-equipped x1.08135 from a 5% line) still unmodeled:
   (A) tooltip 5% (tool −3.1% on this chest) or (B) measured pin.
   Awaiting n00b's pick.
+  Detailed Stats fix same night: the Max HP "Sources" list only ever
+  showed always-on lines, so with in-combat bonuses shown the Warboots'
+  Ghosted +15% was in the total but absent from the list (n00b caught
+  it). Now lists in-combat contributors at full value in that mode.
 - **Max HP: tool reads 7.6% LOW.** The 3,200,456 the aura-bucket fit was
   made against was a BUGGED game state: n00b had to unequip and re-equip
   the Cuirass of Endless Butchery to get its HP bonus applied; the sheet
