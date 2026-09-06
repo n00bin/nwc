@@ -25,9 +25,23 @@ fixes (Circlet gem-synergy typo, Aasimar bonuses — parent 15d08ba, website
   3,198,152 vs game 3,200,456 (−0.07%, −2,304 HP). Single-point fit.
 
 **Still open:**
-- **Control Resist rating +68** (game 120,534 vs tool 120,466). Only
-  stat-specific source is Warboots of the Cataclysmic March (stored 3,686,
-  no tooltip archived). Check the Warboots tooltip.
+- ~~Control Resist rating +68~~ RESOLVED: Warboots tooltip reads Control
+  Resistance 3,754 (stored 3,686). Fixed, parent + website d4351a53.
+- **Max HP, what the chest A/B proved (tooltips now archived, both say
+  5%):** bugged-on state 3,200,456 = chest-off 3,102,009 scaled by the
+  chest's IL+kit flat part alone (tool reproduces it to 2 HP), so the
+  additive base + one shared multiplier structure holds and the bug was
+  purely the Divine Blessing 5% not applying. Two things fall out:
+  (1) the measured multiplier on both bugged states is 1.6786 vs the
+  tool's 1.6942 — EXACTLY one missing 1% in the boon/overload bucket
+  (1.325 x 1.08 x 1.15 x 1.02 = 1.67857). Lead: one of the four Bulwark
+  campaign boons in the build (Cultist/Demonic/Dino/Necrotic, 5 pts each)
+  is not actually maxed in-game. Needs the boons page.
+  (2) Divine Blessing's tooltip 5% is worth x1.08135 in-game (3,200,456 →
+  3,460,807). Own-multiplier 1.05 undercounts by 2.9%; no bucket
+  placement reproduces 8.135% from a 5% line. Not modeled yet — awaiting
+  n00b's call: pin the measured x1.0813 on the item, or model the tooltip
+  5% and accept the gap.
 - **Max HP: tool reads 7.6% LOW.** The 3,200,456 the aura-bucket fit was
   made against was a BUGGED game state: n00b had to unequip and re-equip
   the Cuirass of Endless Butchery to get its HP bonus applied; the sheet
