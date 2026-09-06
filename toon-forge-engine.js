@@ -344,17 +344,19 @@
     }
 
     // 4. Race traits' percentStats (+ratingStats). A trait may carry
-    //    `conditional: true` (e.g. Aasimar's Healing Hands party aura,
+    //    `conditional: true` (e.g. a party-only aura,
     //    Tiefling's Bloodhunt execute window) — propagated so the panel
     //    can gate it behind "Show Conditional".
     var race = character.race;
     if (race && race.traits) {
       for (var t = 0; t < race.traits.length; t++) {
         var trait = race.traits[t];
-        ingestPercentStats(result, trait.percentStats,
-          "Race: " + race.name + " / " + trait.name, !!trait.conditional);
-        ingestRatingStats(result, trait.ratingStats,
-          "Race: " + race.name + " / " + trait.name, !!trait.conditional);
+        // `aura: true` traits (Aasimar's Celestial Presence — a party aura
+        // that includes you) get an " (aura)" label suffix so the Max HP
+        // composer can put them in their own multiplicative bucket.
+        var traitLabel = "Race: " + race.name + " / " + trait.name + (trait.aura ? " (aura)" : "");
+        ingestPercentStats(result, trait.percentStats, traitLabel, !!trait.conditional);
+        ingestRatingStats(result, trait.ratingStats, traitLabel, !!trait.conditional);
       }
     }
 
@@ -617,20 +619,28 @@
           // Split percent contributors into the three buckets by source label.
           // Unmeasured source kinds (gear equip %HP, companion %HP) default to
           // the BASE bucket — the conservative choice pending their own A/B.
-          var pctEnchHP = 0, pctBoonOvHP = 0, pctBaseHP = 0;
+          // Fourth bucket (2026-09-06): party AURAS that include the caster
+          // — Aasimar's Celestial Presence (+2% HP, "does not stack") — are
+          // their own multiplier. Erik at rest: game 3,200,456; base bucket
+          // gave 3,181,050 (−0.61%), own multiplier 3,198,152 (−0.07%).
+          // Single-point fit; the label suffix " (aura)" is set by the race
+          // ingest from the trait's `aura: true` flag.
+          var pctEnchHP = 0, pctBoonOvHP = 0, pctBaseHP = 0, pctAuraHP = 0;
           for (var ci = 0; ci < s.contributors.length; ci++) {
             var cb = s.contributors[ci];
             if (!cb || cb.type !== "percent") continue;
             var src = cb.source || "";
             if (/^(?:Buff: )?Enchant /.test(src)) pctEnchHP += (cb.amount || 0);
             else if (/^Boon: /.test(src) || /^(?:Buff: )?Overload /.test(src)) pctBoonOvHP += (cb.amount || 0);
+            else if (/ \(aura\)$/.test(src)) pctAuraHP += (cb.amount || 0);
             else pctBaseHP += (cb.amount || 0);
           }
           var hpFinal = (tilHP * (1 + roleBonusHP) + itemFlatHP)
                       * (1 + conHP * HPM.conPerPoint + pctBaseHP / 100)
                       * (1 + pctBoonOvHP / 100)
-                      * (1 + pctEnchHP / 100);
-          s.hpModel = { base: tilHP, roleBonus: roleBonusHP, itemFlat: itemFlatHP, con: conHP, pct: s.percentTotal || 0, pctBase: pctBaseHP, pctBoonOv: pctBoonOvHP, pctEnch: pctEnchHP };
+                      * (1 + pctEnchHP / 100)
+                      * (1 + pctAuraHP / 100);
+          s.hpModel = { base: tilHP, roleBonus: roleBonusHP, itemFlat: itemFlatHP, con: conHP, pct: s.percentTotal || 0, pctBase: pctBaseHP, pctBoonOv: pctBoonOvHP, pctEnch: pctEnchHP, pctAura: pctAuraHP };
           s.flat = hpFinal;
           s.ratingContribPct = 0;
           s.finalPct = 0;

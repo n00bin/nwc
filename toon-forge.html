@@ -11995,7 +11995,7 @@
     }
 
     // Race traits flagged `conditional: true` (Tiefling's Bloodhunt fires only
-    // vs targets below 50% HP; Aasimar's Healing Hands is a party aura) must be
+    // vs targets below 50% HP; Aasimar's Celestial Presence is a party aura that includes you) must be
     // uptime-weighted the SAME way conditional gear/overload bonuses are — the
     // engine otherwise ingests their full value as always-on. Without this the
     // optimizer always picks Tiefling, because Bloodhunt's +5% execute-window
@@ -13500,10 +13500,16 @@
           // in the BASE panel, not behind the Show Conditional toggle.
           // Party-scope stacks (Part of the Pack) stay conditional: they
           // depend on group composition (pack-meta toggle handles stacks).
-          const alwaysOn = pe.trigger === "Passive" &&
+          // `standingActive: true` (data pin) marks a proc whose stat grant
+          // is re-applied on a timer in AND out of combat, so it sits on the
+          // in-game character sheet at rest — Shadow Demon's +90% Deflect
+          // Severity ("one deflect every 30 seconds"; owner ruling 2026-09-06,
+          // Erik's sheet reads 120% capped with it). Same word as the insignia
+          // bonus flag. The damage sub-effect stays text-only.
+          const alwaysOn = pe.standingActive === true || (pe.trigger === "Passive" &&
             (pe.chance == null || pe.chance >= 100) &&
             !pe.durationSeconds && maxStacks <= 1 &&
-            pe.statEffects.every(e => !e || e.scope !== "party");
+            pe.statEffects.every(e => !e || e.scope !== "party"));
           // OPT-G1 (critic round 1, BLOCKER 1): non-passive companion proc
           // stat grants are duty-cycle weighted with the SAME proc model as
           // gear bonuses — otherwise a "+9% Crit Sev on encounter use"
@@ -14232,17 +14238,19 @@
       const base = Math.round((TIL || 0) * 10 * roleMult);
       const flat = (hpStat.contributors || [])
         .filter(c => c.type === "rating" && keep(c)).reduce((sum, c) => sum + fullVal(c), 0);
-      let pctEnch = 0, pctBoonOv = 0, pctBase = 0;
+      let pctEnch = 0, pctBoonOv = 0, pctBase = 0, pctAura = 0;
       for (const c of (hpStat.contributors || []).filter(c => c.type === "percent" && keep(c))) {
         const src = c.source || "";
         if (/^(?:Buff: )?Enchant /.test(src)) pctEnch += fullVal(c);
         else if (/^Boon: /.test(src) || /^(?:Buff: )?Overload /.test(src)) pctBoonOv += fullVal(c);
+        else if (/ \(aura\)$/.test(src)) pctAura += fullVal(c);   // race aura incl. self (2026-09-06)
         else pctBase += fullVal(c);
       }
       return Math.round((base + flat)
         * (1 + con * 0.005 + pctBase / 100)
         * (1 + pctBoonOv / 100)
-        * (1 + pctEnch / 100));
+        * (1 + pctEnch / 100)
+        * (1 + pctAura / 100));
     }
 
     function quickStats() {
@@ -14666,17 +14674,20 @@
       const _hpCON = (state.abil && state.abil.con) || 10;
       const _hpFiltered = (_hpStat.contributors || [])
         .filter(c => c.type === "percent" && _hpKeep(c));
-      let _hpPctEnch = 0, _hpPctBoonOv = 0, _hpPctBase = 0;
+      //                 × (1 + race aura %)                [Celestial Presence — own bucket, 2026-09-06]
+      let _hpPctEnch = 0, _hpPctBoonOv = 0, _hpPctBase = 0, _hpPctAura = 0;
       for (const c of _hpFiltered) {
         const src = c.source || "";
         if (/^(?:Buff: )?Enchant /.test(src)) _hpPctEnch += _hpFullVal(c);
         else if (/^Boon: /.test(src) || /^(?:Buff: )?Overload /.test(src)) _hpPctBoonOv += _hpFullVal(c);
+        else if (/ \(aura\)$/.test(src)) _hpPctAura += _hpFullVal(c);
         else _hpPctBase += _hpFullVal(c);
       }
       const _hdlMaxHP = Math.round((_hdlBaseMaxHP + _hpAlwaysOnFlat)
         * (1 + _hpCON * 0.005 + _hpPctBase / 100)
         * (1 + _hpPctBoonOv / 100)
-        * (1 + _hpPctEnch / 100));
+        * (1 + _hpPctEnch / 100)
+        * (1 + _hpPctAura / 100));
       // Weapons carry a flat "+X Damage" base stat (e.g. Omen of Doom +100)
       // the TIL-scaled formula above doesn't capture. Sum weaponDamage across
       // equipped gear and add it so the Damage headline matches in-game.
