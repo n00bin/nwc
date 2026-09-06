@@ -61,9 +61,10 @@ fixes (Circlet gem-synergy typo, Aasimar bonuses — parent 15d08ba, website
   solo sheet therefore reads +1.2% high in the tool; accepted, source
   unexplained. Both Aasimar HP lines are real ("does not stack" = two
   Aasimar in a party).
-  Divine Blessing (re-equipped x1.08135 from a 5% line) still unmodeled:
-  (A) tooltip 5% (tool −3.1% on this chest) or (B) measured pin.
-  Awaiting n00b's pick.
+  Divine Blessing: n00b RULED (A) — keep the tooltip's 5% (base bucket,
+  as already modeled). The re-equipped in-game state reads x1.08135 from
+  that line; the tool sits 3.1% under it on this chest by design. No
+  measured pin. CLOSED.
   Detailed Stats fix same night: the Max HP "Sources" list only ever
   showed always-on lines, so with in-combat bonuses shown the Warboots'
   Ghosted +15% was in the total but absent from the list (n00b caught
