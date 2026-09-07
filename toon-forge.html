@@ -3218,8 +3218,9 @@
        so the dual-slot code paths stay greppable and can be switched off
        in one place if the live game turns out to differ.
        Slot rules: Strike takes appliesTo Offense, Guard takes appliesTo
-       Defense, and Utility-tagged combat enchants (Divine Aegis, Radiant
-       Sanctuary, Fluid Aurora) fit either.
+       Defense. There are NO Utility-tagged combat enchants: Divine Aegis,
+       Radiant Sanctuary and Fluid Aurora are Guard-slot (Defense) enchants
+       (n00b ruling 2026-09-07; data retagged the same day).
        Two related M33.5 changes live in ../data/enchants.json, not here:
        Combat enchant Item Level was HALVED (two now total what one did),
        and their damage line became Base Damage ("Base Damage Boost")
@@ -8093,7 +8094,7 @@
         item = {
           name, slotType: slotTypeName, item_level: il, combinedRating: cr,
           ratingStats, percentStats,
-          appliesTo: [_ameSlotType === "combat" ? "Offense" : "Utility"],
+          appliesTo: [_ameSlotType === "combat" ? "Offense" : "Defense"],   // Strike = Offense, Guard = Defense (no Utility-tagged combat enchants)
           source: "User-added (pending review)",
           notes: notes || "User-added — pending admin review."
         };
@@ -15502,14 +15503,14 @@
         : slotType[0].toUpperCase() + slotType.slice(1);  // "Combat" / "Bonus"
       let list = canonical.concat(userAdded).filter(e => e.slotType === want);
       // M33.5 dual Combat slots are typed: Strike = Offense, Guard = Defense.
-      // Utility-tagged combat enchants (Divine Aegis, Radiant Sanctuary,
-      // Fluid Aurora) are allowed in either slot, and untagged (user-added)
-      // entries aren't blocked.
+      // No Utility-tagged combat enchants exist (Divine Aegis / Radiant
+      // Sanctuary / Fluid Aurora are Guard — n00b ruling 2026-09-07). Untagged
+      // (user-added) entries aren't blocked.
       if (M335_DUAL_COMBAT && (slotType === "combat" || slotType === "combat2")) {
         const need = slotType === "combat" ? "Offense" : "Defense";
         list = list.filter(e => {
           const a = e.appliesTo || [];
-          return a.length === 0 || a.includes(need) || a.includes("Utility");
+          return a.length === 0 || a.includes(need);
         });
       }
       return list.sort((a,b) => (b.item_level||0)-(a.item_level||0) || a.name.localeCompare(b.name));
