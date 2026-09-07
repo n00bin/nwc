@@ -13178,6 +13178,19 @@
       const setStatMax = {};   // (setName + stat) -> MAX amount across equipped members, so the
                                // dedup below credits the best-tier value (mixed-IL MH+OH no longer
                                // credits the lower-tier amount; audit fix 2026-06-22).
+      // Dedup/max key. A set can legitimately carry TWO bonuses on the same stat
+      // that are different mechanics — Peer Into the Void's flat +5% OOH plus
+      // +0.6%/stack Darklight OOH; a Thay set's zone-gated +2% Damage plus a
+      // conditional proc +5% Damage. Keying on setName+stat alone made them
+      // cancel (only the "max instance" credited). The variant flags keep those
+      // apart while same-mechanic entries across MH/OH tiers still dedup
+      // (2026-09-07, set-bonus audit batch 3).
+      function _setVariantKey(eb) {
+        return eb.setName + "" + eb.stat
+          + (eb.perStack ? "#stack" : "")
+          + ((eb.zones && eb.zones.length) ? "#zone" : "")
+          + (eb.alwaysActive === false ? "#cond" : "");
+      }
       function countSetPieces(item) {
         if (!item || !Array.isArray(item.equipBonuses)) return;
         // Count each ITEM once per set name. An item can carry several Set
@@ -13193,7 +13206,7 @@
               setPieceCounts[eb.setName] = (setPieceCounts[eb.setName] || 0) + 1;
             }
             if (eb.stat && typeof eb.amount === "number") {
-              const mk = eb.setName + "" + eb.stat;
+              const mk = _setVariantKey(eb);
               if (setStatMax[mk] == null || eb.amount > setStatMax[mk]) setStatMax[mk] = eb.amount;
             }
           }
@@ -13346,7 +13359,7 @@
           if (eb.type === "Set") {
             // Dedup: credit this set's (setName, stat) bonus only once, no
             // matter how many equipped members carry it (see seenSetBonus above).
-            const _setKey = eb.setName + "" + eb.stat;
+            const _setKey = _setVariantKey(eb);
             if (seenSetBonus.has(_setKey)) continue;
             const _mx = setStatMax[_setKey];
             if (_mx != null && eb.amount < _mx - 1e-9) continue;   // not the max instance — the max one credits
