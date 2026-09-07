@@ -49,6 +49,7 @@ same-day; numbers below re-counted from live data, not carried forward).
 | Detailed Stats explainability (Hide buffs / Hide party buffs / Hide in-combat bonuses, proc-uptime tags) | Implemented | three consistent "Hide X" toggles (in-combat default-hidden, checkbox checked = hidden); uptime % shown on proc stat-grant lines |
 | Share links / saved builds | Implemented | `serializeBuild`/`applyBuild`; incl. `gearIL`, sim settings (`flankUptime`, `simMag`), `contentZone`, `artifactMods` |
 | Resource & heal proc engine layers | Missing | see §Missing-1 |
+| Optimizer: honest total item level per candidate (OPT-TIL = 2, 2026-09-07) | Implemented (local-only, not on Vercel) | `js/optimizer-local.js` `refreshTIL()` at the top of `expectedDamage()` — `computeTILFromBuild()` → `state.il` on every scoring call, memoized on the TIL-relevant state slices. Before this TIL was read once at optimize-start and frozen through the whole search (a fresh Bard settled at TIL 89k with 1,900 weapons; honest search reaches 143k). Flag `OPT_HONEST_TIL`; A/B hook `window.__OPT_HONEST_TIL=false`; `scripts/_optimize_validate.js` honours `HONEST_TIL=0`. Cost: more candidates survive pruning on low-TIL builds (quick 30s→80s); ~none at endgame |
 | Optimizer (engine-scored, role objectives) | Implemented (local-only) | `js/optimizer-local.js` — gitignored, paid IP, never deployed; button lives in the local-only "Premium" hero group |
 | Conditional-uptime weighting — ALL bonuses (OPT-G1, 2026-06-10) | Implemented | `conditionalDamageUptime` applies to every gear/overload equip bonus (stat grants included, no longer damage-buckets-only) and to non-passive companion proc stat-grants (duty-cycle from structured trigger/chance/duration/cooldownSeconds; party-scope Pack stacks exempt). Kill switch `CONDITIONAL_UPTIME.apply_to_stat_grants=false`; per-bonus pin `uptimeOverride` (0..1, NaN-guarded) on gear equip bonuses and companion `procEffect`. Lines credited <100% show `~X% uptime`. 11 gear.json pins shipped (6 Charged Rejuvenation @0.90, 5 Living Magma @0.55) |
 
@@ -69,6 +70,17 @@ same-day; numbers below re-counted from live data, not carried forward).
 - **Required:** continue parse batches; each structured bonus immediately counts
   in stats/optimizer (no engine change needed for plain stat bonuses). Do NOT
   structure sequence-proc texts (§Note-2).
+- **Update 2026-09-07 (set bonuses):** the SET-bonus subset of the long tail is
+  now cleared — `docs/audit/set_bonus_audit_2026-09-07.md`. Chilling Flow was
+  wired on Paladin only (8 classes scored it as zero); Dark Matter's "up to 5.5%
+  by HP difference" read as always-on; 48 sets had per-class wiring holes; 283
+  amount-0 placeholders looked wired. Four batches structured ~75 sets on every
+  class (one wired piece per class+tier, stat-less marker, stated uptimes via
+  `uptimeOverride` / `uptimeClass` / `procModel`). Engine: `CONDITIONAL_UPTIME.hp_diff`
+  (0.40) + generic `uptimeClass`; set dedup key gained `#stack/#zone/#cond` so two
+  mechanics on one stat coexist. Scripts: `scripts/_set_wire*.py` (local). Still
+  text-only by nature: Crimson Retaliation, Astral Absorption, Lostmauth's Hoard,
+  Vistani 3pc, Chultan, Drowcraft; Chilling Flow 4800 numbers not captured.
 - **Update 2026-06-15:** re-census (all instances incl. Set) = **3,238 of 5,233
   structured (61%)**; ~1,679 description-only, of which **744 are heal/resource
   (blocked on Missing-1, not data work)** and ~515 DPS-relevant skew low-IL. The
