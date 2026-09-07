@@ -30,6 +30,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes
 
+- **Chilling Flow weapon set bonus now counts for every class.** The Wintermarked (Item Level 5,800) and Runefrost (5,500) weapon pairs' 2-piece bonus was only wired up on the Paladin shield; the other eight classes' pairs were text-only, so Toon Forge and the optimizer scored the set as zero. All 17 off-hands now carry the tier-exact stacks (5,800: +0.4% Power and +0.6% Critical Severity per stack for DPS, +0.5% Overall Outgoing Healing for healers, +0.5% Awareness for tanks, 10 stacks; 5,500: +0.35% / +0.5% / +0.4% / +0.4%). The Frostbound (4,800) rung stays text-only until a tooltip with its per-stack numbers is captured.
+
 - **Frostsilver Circlet of Protection's Rubellite gem line never paid out.** The ring's "+3% Forte when a Celestial Rubellite Tourmaline is slotted" line was spelled with one L in the database, so the tool never recognised the slotted enchant and quietly dropped the 3%. Fixed against the ring's own tooltip; a Justicar tank sheet now reads Forte 54.0% exactly as in-game.
 
 - **Aasimar ability bonuses were the wrong way round.** The race gives a fixed +2 Charisma with a choice of +2 Constitution or +2 Wisdom. We had the fixed +2 on Wisdom and the choice between Constitution and Charisma, which put Aasimar characters 2 points high on Wisdom and 2 low on Charisma — nudging Forte, Recharge Speed, Control Resist and Outgoing Healing. Verified against an in-game ability panel.
