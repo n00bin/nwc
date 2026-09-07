@@ -135,3 +135,43 @@ combat powers; cooldown reduction -> Recharge Speed equivalent) and leave
 heal/resource for the heal-sim layer. Needs a lock before any data work.
 
 **Correction (same day):** 6 'next Encounter after a Daily' entries had been structured as `Encounter Dmg Bonus` in batches 1-2 while `computeSequenceProcBoost` already models that sentence at runtime from the text (Note-2) -> double count. Reverted to text-only (note on the entry); riders kept; both batch scripts now refuse to structure a `SEQ_RE` match. Vital Onslaught / Raging Rally ('next three strikes') do NOT match the runtime regex and stay structured.
+
+## Batch 3 — EB-A3 = FIX ALL (n00b, 2026-09-07) — shipped
+
+Every remaining text-only equip bonus now either lands in an engine hook or is
+tagged `displayOnly: true` + `displayReason` (census counts it as intentional).
+`scripts/_eb_wire_batch3.py` (rule per name, own-text numbers, idempotent):
+**315 structured, 195 display-only.**
+
+Hooks used (existing unless noted):
+- `procDamage` {trigger, chance, icd, magnitude | flatDamage | percentMaxHP} —
+  Critical Force, Magnified Force, Explosive Force, Daily Burst/Explosion, Power at
+  Any Cost, Summon Undead/Devil/Myconid, Rothe's Intimidation, and the REFLECT
+  rings (Manticore's Mane Bite, Pact of Vengeance, Fanged Vice/Vex, Tangled
+  Shadows, Reprisal Reflex) via **`percentMaxHP` (engine addition)**: flat damage
+  sized by the build's own Max HP at runtime.
+- `procHeal` — Butcher's/Executioner's/Survivor's Remedy, Soul Siphon, Shroud,
+  Control Power Regen, Wanderer's/Survivor's Vigor (periodic regen as a self
+  proc), Fount of Healing (ally orbs), Medic's Respite (requiresHeal), Bone Armor
+  (shield as a self heal). Self-scope stays display/sustain per the 2026-07-17
+  tank ruling; ally-scope feeds the healer score.
+- Stat conversions (formulas on every entry's `note`):
+  AP procs -> `Action Point Gain` % = 100 x AP x procs/s / 40 (Critical Charge
+  9.2%, Butcher's Zeal 4-35% by tier, Skirmisher's/Raging Zeal, Advantageous
+  Action, Executioner's Zeal 0.5-1.5%); cooldown procs -> `Recharge Speed` % =
+  100 x seconds x procs/s (Encounter Reprieve 14.7%, Medic's Haste, Artifact
+  Fanatic, Death Defier's Haste, Challenger's Alacrity).
+- **Engine addition:** `PROC_DAMAGE.rates` gained kill 0.02 / deflect 0.15 /
+  bighit 0.3 / heal 1.0 / combat_start 0.017 (rotation estimates, tunable).
+- Incoming-damage vs enemy types via the overload `zones` convention ("vs
+  Dragon", "vs Drow", "vs Spider", new "vs Beholder", "vs Drider House Captain").
+- Display-only reasons: threat, stealth, control, summons with no stated damage,
+  gold, flavor/category text, refinement notes, ally/enemy-scope effects, and
+  5 "pending re-verify" captures (Aura of Enfeeblement, Positional Advantage,
+  Relentless Assault, Low Reserve, Charged Might).
+
+Census after batch 3 (`audit_structured_coverage.py`, which now counts
+procHeal/procDamage/procModel as engine-consumed, displayOnly and wired-set
+text markers as intentional): **structured 6267 / blind 333 / effective
+coverage 96.5%**. Anything still blind is a Set entry of a set with no data
+(the 220 tag-only families) or a capture with no text.

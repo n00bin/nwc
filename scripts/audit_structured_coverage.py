@@ -127,6 +127,22 @@ for it in gear:
         if eb.get("stat") and eb.get("amount") is not None:
             inst["structured"] += 1
             continue
+        # Engine-consumed proc shapes (no stat field by design): heal procs, damage
+        # procs, proc-modeled uptimes. And explicit display-only text (vanity /
+        # threat / summons / enemy debuffs / pending re-verify) tagged by the
+        # 2026-09-07 EB-A3 sweep — intentional, not a gap.
+        if eb.get("procHeal") or eb.get("procDamage") or eb.get("procModel"):
+            inst["structured"] += 1
+            continue
+        if eb.get("displayOnly"):
+            inst["marker"] += 1
+            continue
+        # A description-bearing Set entry on a piece whose set is wired (stat entries
+        # elsewhere on the same item or set) is the tooltip-text MARKER of the
+        # 2026-09-07 set-bonus convention, not a blind bonus.
+        if eb.get("type") == "Set" and eb.get("setName") and desc and set_has_stat[eb["setName"]]:
+            inst["marker"] += 1
+            continue
         if eb.get("type") == "Set" and eb.get("setName") and not desc:
             if set_has_stat[eb["setName"]]:
                 inst["marker"] += 1          # partner piece of a modeled set — by design
