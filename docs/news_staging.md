@@ -46,6 +46,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Data Additions
 
+- **Immortal Jade Horse mount (Feast of Lanterns).** Added with its Barbed + Regal + 2 Universal insignia slots, the Indestructible equip power (+5,062 Defense / +3,038 Combined Rating at Item Level 3,375), and the new Bolstering Cry combat power (+19.7% Maximum Hit Points for allies and yourself plus +13.1% Recharge Speed for 10s, 60s recharge, Celestial Item Level 3,937). Screenshot-verified from the Mount Preview.
+
 - **Four gear pieces were missing a second version.** Some items share a name and item level but come in two versions with completely different stats and a different equip bonus — the game shows them as separate pieces, but we only had one of each. Now added: a second **Veinlit Earthshard Guard** (Pants, Survivor's Avoidance), **Veinlit Stonevein Straps** (Pants, Warden's Defense), **Veinlit Stormbind Tunic** (Pants, Pinpoint Tactics) and **Enchanted Depthforged Gauntlets** (Arms, Enveloped Precision — Barbarian and Fighter only, unlike its Paladin-inclusive twin).
 
 ### Bug Fixes
