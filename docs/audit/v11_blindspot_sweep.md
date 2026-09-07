@@ -1,6 +1,6 @@
 # v1.1 Blind-Spot Sweep — make the optimizer see everything it scores
 
-**STATUS: PLAN ONLY (2026-08-04). Nothing here is implemented.** n00b locked
+**STATUS: IN PROGRESS (go from n00b 2026-09-07). Batch 1 shipped; see the status block at the end.** n00b locked
 `OPT-V1.1 = A` as the *direction* for the next version; implementation waits
 for an explicit go. A trial batch of 6 items was briefly shipped 2026-08-04
 and **reverted the same day** (parent `485f936` → revert `451bfa2`) — the
@@ -74,3 +74,38 @@ conventions (or explicit display-only status) before touching.
 
 ### Deferred
 IL<3000 long tail (~686 items) — after the endgame set is clean.
+
+---
+
+## Status 2026-09-07 — go received, batch 1 shipped
+
+n00b: "let's go back to work: equip bonuses that are broken or text only or
+placeholders or partials." Set bonuses were cleared first the same day
+(`docs/audit/set_bonus_audit_2026-09-07.md`, ~75 sets, 283 placeholders).
+
+**Batch 1 (IL >= 3000, `scripts/_eb_wire_batch1.py`, idempotent):**
+- A1: 24 text-only stubs deleted (structured same-name sibling on the same item;
+  kept when the stub was the only carrier of the full tooltip — Manticore's
+  Mane Bite / Charging Bull keep their proc text next to the appended rider).
+  3 exact duplicate blind entries removed.
+- A2: 37 bonuses structured from own text, incl. the reverted 2026-08-04 batch
+  (253, 5410, 6849, 7384, 6860, 6865) and the "next up" list (313, 286, 6853,
+  6855 — 3978's conflicting text still to reconcile). New convention: "next
+  Encounter after a Daily" family (Battle Reserves, Focused Burst, Vital
+  Onslaught, Malignant Energy) -> `Encounter Dmg Bonus` at 0.11 uptime
+  (1 of ~9 encounter casts per 30s cooldown); 3-strike variant 0.6.
+- Fix: "Action Points less than 80%" family pinned to `uptimeOverride 0.75`
+  (classifier read "less than" as a low-HP threshold = 0.15). 9 entries.
+- Verified headless: every structured entry credits (engine contributors), no
+  page errors.
+
+**Still blind at IL >= 3000 (by design, A3/A4):** Butcher's Zeal x2, Critical
+Charge, Executioner's Zeal, Encounter Reprieve x4, Skirmisher's Zeal, Pressured
+Muse, Medic's Haste (resource/cooldown); Fount of Healing x4, Executioner's
+Remedy x2 (heal); Explosive Force, Pact of Vengeance, Power at Any Cost,
+Critical Force x2, Manticore's/Charging Bull proc halves (flat damage / threat);
+Charged At-Will + the two Bloodwoven blanks (A4 screenshots).
+
+**Next:** A2b e50971a verify-then-restore (82 items), then the IL < 3000 tail
+(census: ~1,144 parseable-% + 360 parseable-rating instances, mostly IL<3000),
+then A3 as a design gap.
