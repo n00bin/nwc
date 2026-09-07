@@ -158,3 +158,44 @@ an in-game bonus; a tooltip screenshot settles each one.
 
 Regenerate: `python3 scripts/_set_bonus_audit.py` (set-level scan, writes set_audit_raw.md)
 then `python3 scripts/_set_bonus_audit_report.py <dir with set_audit_raw.md>`.
+
+---
+
+## Status after the fix sweep (same day, 2026-09-07, all pushed)
+
+n00b's go: "fix the equip bonuses that are missing or text based or placeholders".
+Four batches, each verified in Toon Forge (per role, per zone, no page errors):
+
+| Batch | What | Commits |
+|---|---|---|
+| 1 | Chilling Flow 5800/5500 wired on all 9 classes (4800 rung stays text-only: no numbers captured) | 6a94f6e8 |
+| 2 | Engine: `CONDITIONAL_UPTIME.hp_diff = 0.40` + `uptimeClass` entry field. Data: Dark Matter / Meteoric Fury / Beholder Slayer / Demon Lords re-shaped (HP-difference part at 40%, always-on role riders added) on every class | 6049c43a |
+| 3 | Engine: set dedup key carries #stack/#zone/#cond so two bonuses on one stat coexist. Data: 21 endgame weapon sets (Umbral Stride, Prismatic Defier, Skyhold Arms, Living Magma, Peer Into the Void, Demonweb, Whisper of Power, 8 Thay sets x2 tiers) on every class | a8d2e167 |
+| 4 | ~50 leveling / accessory / armor sets structured with stated uptimes; 283 amount-0 placeholders removed; unknown stats dropped; Dusk + Dragonflight Max HP as flat pool; 17 structural weapon-slot fixes | faacfb3f |
+
+Re-running the scan afterwards: fully structured 27 -> 68 sets; text-only 30 -> 14
+(all of them un-scorable by nature, listed below); unknown-stat 2 -> 0; per-class
+wiring holes 48 -> 0 at endgame (the ones left are IL <= 1500 families such as
+Lionsmane / Vistani 2pc / Masterwork VII). The remaining "PARTIAL" flags are the
+scanner seeing cooldown or duration numbers in the text, not missing stats.
+
+Result on the captured 145k Bard: Wintermarked 5800 now scores 208k vs Solarium
+2700 at 198k (was 203k vs 197k, and Solarium won once every cap saturated).
+
+**Deliberately left as text-only** (no stat to score): Crimson Retaliation (amplifies an
+artifact), Astral Absorption (burst/shield/heal), Lostmauth's Hoard (100-mag proc),
+Vistani 3pc, Chultan (random stat, 10s), Drowcraft (vs Demons), Relic, Black Ice,
+Soulmonger, Apocalypse (enemy debuff), Golden Dragon / Dagger of Elemental Fire
+(mod-slot sets), Burning Heart (AP restore), Drowned Heart (self-heal).
+
+**Still open / needs a screenshot:** Chilling Flow 4800 per-stack numbers; Bard Pilgrim
+pair (Fleshtaker / Earbleeder both tagged Main Hand); Paladin + Ranger Golden Dragon
+pairs; Rogue "Nightspiercer Dagger" typo duplicate; Impending Doom untouched (per-class
+entries exist, Unleashed at ~60% uptime by design).
+
+**Not touched (paid IP, n00b's call):** the optimizer freezes total item level during the
+weapon-pair search, so a low-IL pair is never charged for the item level it costs.
+
+Data conventions used (scripts/_set_wire.py, local): one wired piece per class + tier
+(Off Hand primary), marker entry stat-less, every entry named, uptime stated as
+`uptimeOverride` / `uptimeClass` / `procModel` with the reasoning in the name.
