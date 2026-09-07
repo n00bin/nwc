@@ -133,3 +133,5 @@ procs, incoming-damage riders. Options: (1) score as display-only forever,
 (3) map the DPS-relevant subset (flat-damage procs -> burst share like mount
 combat powers; cooldown reduction -> Recharge Speed equivalent) and leave
 heal/resource for the heal-sim layer. Needs a lock before any data work.
+
+**Correction (same day):** 6 'next Encounter after a Daily' entries had been structured as `Encounter Dmg Bonus` in batches 1-2 while `computeSequenceProcBoost` already models that sentence at runtime from the text (Note-2) -> double count. Reverted to text-only (note on the entry); riders kept; both batch scripts now refuse to structure a `SEQ_RE` match. Vital Onslaught / Raging Rally ('next three strikes') do NOT match the runtime regex and stay structured.
