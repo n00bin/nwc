@@ -11914,6 +11914,16 @@
       self_ramp: 1.0, on_action: 0.85, range_gated: 0.85, positional: 0.80,
       party_stacks: 0.80, high_threshold: 0.55, low_threshold: 0.15,
       vs_enemy: 0.0, on_kill: 0.20, unspecified: 0.60,
+      // "Deal up to X% additional damage based on the difference in hit point
+      // percentage between you and the target" (Dark Matter / Meteoric Fury /
+      // Beholder Slayer / Demon Lords' Immortality weapon+accessory sets). The
+      // bonus scales with (your HP% - target HP%): ~0 on a fresh boss, near max
+      // as it dies while you stay healthy. Averaged over a 100->0 boss kill with
+      // you holding ~90% HP that is ~0.4 of the printed maximum. ASSUMPTION,
+      // tunable here; entries opt in with uptimeClass: "hp_diff" (2026-09-07 —
+      // before this, the full 5.5% read as always-on and handed a Bard DPS the
+      // IL 2700 Solarium/Starcore pair over IL 5800 Wintermarked).
+      hp_diff: 0.40,
       proc: {
         default_duration: 8, default_chance: 0.20,
         // trigger events per second (rotation estimates; pFire saturates so
@@ -11940,8 +11950,13 @@
         // Malformed override (non-numeric) falls through to classification
         // rather than silently corrupting stats with NaN.
       }
+      // Explicit uptime CLASS pin: the entry names one of the CONDITIONAL_UPTIME
+      // keys (e.g. "hp_diff", "party_stacks") so the VALUE stays config-driven
+      // while the data says which mechanic applies. Unknown keys fall through.
+      if (eb && eb.uptimeClass && typeof CONDITIONAL_UPTIME[eb.uptimeClass] === 'number') return CONDITIONAL_UPTIME[eb.uptimeClass];
       const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
       if (eb.zones && eb.zones.length) return 1;            // zone-gated: the zone gate already confirmed we're in-zone, so it's fully active (full uptime) here — NOT 0, which would zero out the bonus
+      if (/based on the difference in hit point/.test(txt)) return CONDITIONAL_UPTIME.hp_diff;   // "up to X% ... HP% difference" sets
       // Structured proc model (e.g. "when you use a Daily, +X for 10s"): the
       // trigger fires every time you use that power (no chance), so uptime is
       // duration × how often that power comes up, capped at 1. Uses the data's
