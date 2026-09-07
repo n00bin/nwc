@@ -109,3 +109,27 @@ Charged At-Will + the two Bloodwoven blanks (A4 screenshots).
 **Next:** A2b e50971a verify-then-restore (82 items), then the IL < 3000 tail
 (census: ~1,144 parseable-% + 360 parseable-rating instances, mostly IL<3000),
 then A3 as a design gap.
+
+**Batch 2 (IL < 3000 tail + A2b, `scripts/_eb_wire_batch2.py`, idempotent) — shipped same day:**
+- ~55 bonus NAMES with a rule each (shape from the name, magnitude regex-parsed from
+  the item's own text): 106 instances structured. Unparsed by rule: 7 (Manticore
+  IL<3000 texts have no rider; two Brute's Expertise phrasings).
+- A1 at every IL: 95 stubs removed; 85 exact duplicate text entries removed.
+- A2b: 43 of 82 still differed from baseline — all but 3 sets were already
+  restored/re-shaped (perStack forms) or are contradicted by current text
+  (Oathbreaker Forte 7200, Spine of Dominion CS vs CSev, Dark Maiden 3000 vs
+  5000). Restored with `parsedFrom: baseline-420454c` + screenshot-wanted note:
+  Wrathful Bindings (-5% Incoming Damage), Magmatic Efficiency (+2% Power/Forte/
+  Defense), Diamond (Dashing Decoy -5% Incoming / +5% Awareness).
+- Census after batch 2: structured 5880 / engine-blind 3560 instances
+  (`docs/audit/structured_coverage.md`). What is left is A3 (resource / heal /
+  cooldown / flat-damage procs — a design gap), by-design text (movement-only,
+  vanity IL<700 effects, enemy debuffs, zone-only trivia), and A4 screenshots.
+
+**Open design gap for n00b (A3):** ~700 surfaces need an engine bucket — AP /
+resource gain, heal-on-hit / orbs, cooldown reduction, flat-magnitude damage
+procs, incoming-damage riders. Options: (1) score as display-only forever,
+(2) add a "utility value" side-score the optimizer can weight per role,
+(3) map the DPS-relevant subset (flat-damage procs -> burst share like mount
+combat powers; cooldown reduction -> Recharge Speed equivalent) and leave
+heal/resource for the heal-sim layer. Needs a lock before any data work.
