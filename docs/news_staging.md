@@ -8,6 +8,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
+- **Enemies in combat slider (Toon Forge).** Set how many enemies you usually fight at once (1 = a single boss). Bonuses that need 2, 3 or more enemies (Enveloped, Maiden's Advantage, Challenger's Awareness), bonuses that only work against one enemy (Challenger's Might/Guard/Strength, Overwhelming Offense, Solitary Power, Tenacious Luck) and bonuses that grow per enemy (Death Defier's family, Death Defying Advantage, Berserking Might, Overwhelming Parry) all follow this number. 353 entries. Saved in builds; default 1.
+
 - **Moving / Standing still toggle (Toon Forge).** Beside the sliders: say whether you usually move or hold position. Bonuses that only work while moving (Critical Momentum, Serpentine, Expert's Grace, Momentum's Edge, Kinetic Precision, Dancer's Guard) or only after standing still (Defense, Advantage, Healing and Control Preparation, Immovable Bulwark, Bulwark Preparation) now count exactly by your setting. 48 entries. Saved in builds; default Moving.
 
 - **Current stamina slider (Toon Forge).** Third slider beside distance and action points: set how full your stamina bar usually is. The 164 shirt, pants, ring and helm bonuses that only work over 75% stamina (Charged Fury, Charged Might, Precision Tactics, Charged Precision) or only under 25% (Depleted Grace, Depleted Advantage, Enervated Parry, Unfazed Finesse) now count exactly when your setting allows it. Before this, both sides were being counted at once. Saved in builds and share links; default 100%.
