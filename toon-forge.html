@@ -12237,7 +12237,8 @@
       // healing an ally (healer cast rate) and combat start (one per ~60s pull).
       // Rotation estimates like the rest of this table — tunable here.
       rates: { hit: 2.0, atwill: 1.4, encounter: 0.3, daily: 1 / 60, struck: 0.3,
-               kill: 0.02, deflect: 0.15, bighit: 0.3, heal: 1.0, combat_start: 0.017 }
+               kill: 0.02, deflect: 0.15, bighit: 0.3, heal: 1.0, combat_start: 0.017,
+               fullheal: 0.1 }   // healed to 100% in combat ~every 10 s (Fount of Power, n00b 2026-09-08)
       // daily = 1/60: Daily powers have a 60s cooldown (n00b ruling 2026-09-07); was 0.07 (one per ~14s).
       // crit / noncrit derive dynamically: HIT_RATE × pCrit / × (1 − pCrit)
     };
