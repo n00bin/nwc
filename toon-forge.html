@@ -12080,6 +12080,7 @@
       if (eb && (eb.vsRangedOnly || eb.vsMeleeOnly || eb.vsShieldedOnly)) return 1;   // attack-type / shield gate already decided
       if (eb && eb.missingHealthMaxAtPct != null) return 1;   // graded by the Current Health slider instead
       if (eb && eb.conditionId) return 1;   // build-condition gate already decided
+      if (eb && (eb.soloOnly || eb.partyOnly)) return 1;   // solo / party gate already decided
       if (eb && eb.uptimeClass && typeof CONDITIONAL_UPTIME[eb.uptimeClass] === 'number') return CONDITIONAL_UPTIME[eb.uptimeClass];
       const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
       if (eb.zones && eb.zones.length) return 1;            // zone-gated: the zone gate already confirmed we're in-zone, so it's fully active (full uptime) here — NOT 0, which would zero out the bonus
@@ -12297,6 +12298,24 @@
       return eb;
     }
 
+    // State gates for proc entries (n00b 2026-09-08). The stat loops in
+    // buildEngineCharacter gate on role / zone / build condition / solo-party;
+    // the proc collectors below read the same rules from here so a procDamage
+    // or procHeal entry cannot bypass a gate its stat siblings respect.
+    function equipBonusGatedByState(eb) {
+      if (!eb) return true;
+      const st = (typeof state !== "undefined") ? state : {};
+      const zone = st.contentZone || "";
+      if (eb.zones && eb.zones.length && !eb.zones.includes(zone)) return true;
+      if (eb.zonesExclude && eb.zonesExclude.includes(zone)) return true;
+      if (eb.role) { const r = String(eb.role).toLowerCase(), me = String(st.role || "").toLowerCase(); if (!(r === me || ((r === "heal" || r === "healer") && (me === "heal" || me === "healer")))) return true; }
+      const solo = (st.partyContent === "solo");
+      if (eb.soloOnly && !solo) return true;
+      if (eb.partyOnly && solo) return true;
+      if (eb.conditionId && typeof resolveBuildCondition === "function" && !resolveBuildCondition(eb.conditionId, st).value) return true;
+      return false;
+    }
+
     // Gear damage procs (eb.procDamage on equipped items): magnitude procs
     // ride the player multiplier chain like companion procs; flatDamage procs
     // are in-game tooltip captures (character-dependent numbers) added as
@@ -12311,6 +12330,7 @@
         if (!item || !Array.isArray(item.equipBonuses)) continue;
         for (const eb of item.equipBonuses) {
           const pd = eb && eb.procDamage; if (!pd) continue;
+          if (equipBonusGatedByState(eb)) continue;
           const pps = procRatePerSec(pd.triggerRateKey, pd.chance, pd.icdSeconds, pCrit);
           if (pd.magnitude > 0) {
             const mph = pps * pd.magnitude / PROC_DAMAGE.HIT_RATE;
@@ -12420,6 +12440,7 @@
         if (!Array.isArray(equipBonuses)) return;
         for (const eb of equipBonuses) {
           const ph = eb && eb.procHeal; if (!ph) continue;
+          if (equipBonusGatedByState(eb)) continue;
           // "Requires healing an ally" procs (Healer's Influence, Runefrost
           // Mender, etc.: "Healing an ally with an Encounter power also heals
           // you...") only fire for a build that actually heals — inert for a
@@ -13613,6 +13634,16 @@
         if (!eb || !eb.conditionId) return false;
         return !resolveBuildCondition(eb.conditionId, s).value;
       }
+      // Solo / party gate (n00b 2026-09-08): Content type "Solo" switches soloOnly
+      // entries on and partyOnly entries off; perTeammate stackers use _partySize.
+      const _solo = (s.partyContent === "solo");
+      const _partySize = _solo ? 1 : (s.partyContent === "trial" ? 10 : 5);
+      function _partySkip(eb) {
+        if (!eb) return false;
+        if (eb.soloOnly && !_solo) return true;
+        if (eb.partyOnly && _solo) return true;
+        return false;
+      }
       // Health-threshold gating: either/or gear ("+X above N% HP / +Y below N% HP")
       // is resolved by the Current Health % slider. Returns the item's health-gated
       // bonus names + the parsed above/below thresholds.
@@ -13656,6 +13687,7 @@
           if (_enemyCountSkip(eb)) continue;   // enemy-count gate
           if (_attackTypeSkip(eb)) continue;   // enemy attack-type gate
           if (_conditionSkip(eb)) continue;   // build-condition gate
+          if (_partySkip(eb)) continue;   // solo / party gate
           // Multi-enemy gate: "Enveloped"-type bonuses need 3+ enemies, so they
           // are DOWN against a single boss (the default sim target). Excluded
           // from the stat TOTAL here (the conditional flag is display-only and
@@ -13760,8 +13792,9 @@
             // ramp up over a boss fight and keep their full maxStacks.
             const enemyScaled = eb.perEnemy || /\b(each|per)\s+enem/i.test((eb.description || "") + " " + (eb.condition || ""));
             // Per-enemy stackers scale with the Enemies-in-combat slider (default 1 = single boss).
-            const effStacks = enemyScaled ? Math.max(1, Math.min(_enemies, maxStacks)) : maxStacks;
-            const stackLabel = enemyScaled ? `${effStacks} enem${effStacks === 1 ? "y" : "ies"} in combat` : `full ${maxStacks} stacks`;
+            const teamScaled = !!eb.perTeammate;   // "per player in your team" -> party size (solo 1 / dungeon 5 / trial 10)
+            const effStacks = teamScaled ? Math.max(1, Math.min(_partySize, maxStacks)) : (enemyScaled ? Math.max(1, Math.min(_enemies, maxStacks)) : maxStacks);
+            const stackLabel = teamScaled ? `${effStacks} in your team` : (enemyScaled ? `${effStacks} enem${effStacks === 1 ? "y" : "ies"} in combat` : `full ${maxStacks} stacks`);
             if (isConditional) {
               // Purely conditional - full stack value at proc
               buffs.push({
@@ -14245,6 +14278,7 @@
           if (_enemyCountSkip(eb)) continue;   // enemy-count gate
           if (_attackTypeSkip(eb)) continue;   // enemy attack-type gate
           if (_conditionSkip(eb)) continue;   // build-condition gate
+          if (_partySkip(eb)) continue;   // solo / party gate
           const channel = (eb.kind === "rating" || eb.kind === "flat") ? "ratingStats" : "percentStats";
           // Zone or trigger context implies conditional. If neither, treat
           // it as always-on per the data's intent.
@@ -17542,7 +17576,7 @@
         const content = state.partyContent || "dungeon";
         // Ally slots = party size MINUS you (you provide your own summoned
         // companion, not an ally slot). 5-man dungeon = 4 allies; 10-man trial = 9.
-        const slotCount = content === "trial" ? 9 : 4;
+        const slotCount = content === "trial" ? 9 : (content === "solo" ? 0 : 4);
         if (!Array.isArray(state.partyAllies)) state.partyAllies = [];
         // Ensure the array is the right length without losing existing picks
         while (state.partyAllies.length < slotCount) state.partyAllies.push("");
@@ -17562,12 +17596,13 @@
           <div class="boon-row" style="cursor:default;">
             <div class="boon-row-info">
               <div class="boon-row-name">Content type</div>
-              <div class="boon-row-effect">4 ally slots for dungeons, 9 for trials (party size minus you)</div>
+              <div class="boon-row-effect">4 ally slots for dungeons, 9 for trials, none solo (party size minus you). Solo also switches "when not in a party" gear on and "per teammate" gear down.</div>
             </div>
             <div class="boon-counter">
               <select id="party-content-select" style="font-size:0.85rem;padding:0.2rem 0.4rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
                 <option value="dungeon"${content === "dungeon" ? " selected" : ""}>Dungeon (5-man)</option>
                 <option value="trial"${content === "trial" ? " selected" : ""}>Trial (10-man)</option>
+                <option value="solo"${content === "solo" ? " selected" : ""}>Solo (no party)</option>
               </select>
             </div>
           </div>
@@ -17783,7 +17818,7 @@
           fillStdEl.disabled = true;
           fillStdEl.textContent = "Loading meta…";
           try {
-            const slotCount = state.partyContent === "trial" ? 9 : 4;
+            const slotCount = state.partyContent === "trial" ? 9 : (state.partyContent === "solo" ? 0 : 4);
             const r = await tfFetchStandardSet(slotCount);
             if (r.error) { toast(r.error); return; }
             // OVERWRITE every ally slot with the standard set, replacing any
