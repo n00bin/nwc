@@ -3040,6 +3040,12 @@
             <input type="range" id="current-stamina-pct" min="0" max="100" step="5" value="100" style="width:100%;">
             <span class="hint" id="current-stamina-label">100%</span>
           </div>
+          <div class="field" id="sim-movement-field">
+            <label>Movement
+              <span class="hint-icon" data-tip="Are you usually moving or standing still in the fight? A few bonuses only work while moving (Critical Momentum, Serpentine, Expert's Grace) and a few only after standing still for a few seconds (Earthen Heart, Defense Preparation, Astral Dash).">?</span>
+            </label>
+            <select id="movement-state" style="width:100%;"><option value="moving">Moving</option><option value="standing">Standing still</option></select>
+          </div>
         </div>
 
         <p class="hint" style="margin-top:0.8rem;">💡 <strong>Chance</strong> = how likely each outcome is on a single hit. All the cards below add up to 100% — every hit has to land in exactly one.</p>
@@ -3379,6 +3385,7 @@
       // tagged with a `zones` restriction (e.g. "+5% damage in Wildspace")
       // are EXCLUDED, so situational damage never inflates the always-on number.
       contentZone: "",
+      movementState: "moving",  // "moving" | "standing" toggle; gates movingOnly / standingOnly entries exactly (n00b 2026-09-08)
       currentStaminaPct: 100,  // Current stamina % slider; gates staminaAbovePct / staminaBelowPct entries exactly (n00b 2026-09-07)
       currentApPct: 50,    // Current action points % slider; gates apBelowPct / apFullOnly entries exactly (n00b 2026-09-07)
       targetRangeFt: 10,   // Distance-to-target slider (feet); gates targetRangeFt-tagged bonuses exactly (n00b 2026-09-07)
@@ -3591,6 +3598,7 @@
           targetRangeFt: (typeof state.targetRangeFt === "number") ? state.targetRangeFt : 10,
           currentApPct: (typeof state.currentApPct === "number") ? state.currentApPct : 50,
           currentStaminaPct: (typeof state.currentStaminaPct === "number") ? state.currentStaminaPct : 100,
+          movementState: state.movementState === "standing" ? "standing" : "moving",
           partyAllies: [...(state.partyAllies || [])],
           partyMountAllies: [...(state.partyMountAllies || [])],
           partyPackMeta: state.partyPackMeta !== false,
@@ -3759,6 +3767,8 @@
       if (typeof updateApControl === "function") updateApControl();
       state.currentStaminaPct = (typeof s.currentStaminaPct === "number") ? s.currentStaminaPct : 100;
       if (typeof updateStaminaControl === "function") updateStaminaControl();
+      state.movementState = (s.movementState === "standing") ? "standing" : "moving";
+      if (typeof updateMovementControl === "function") updateMovementControl();
       state.slottedClassFeaturePicks = Array.isArray(s.slottedClassFeaturePicks) ? s.slottedClassFeaturePicks.slice() : [];
       state.rangerStance = s.rangerStance || "ranged";
       state.bardActiveSong = s.bardActiveSong || "";
@@ -4163,6 +4173,9 @@
     /* Content-zone field is a custom searchable picker (matches Race/Paragon).
        Zones are derived from gear equip bonuses that only apply in a zone;
        "General (anywhere)" is the explicit default (empty contentZone). */
+    function updateMovementControl() {
+      const sel = document.getElementById("movement-state"); if (sel) sel.value = (state.movementState === "standing") ? "standing" : "moving";
+    }
     function updateStaminaControl() {
       const v = (typeof state.currentStaminaPct === "number") ? state.currentStaminaPct : 100;
       const inp = document.getElementById("current-stamina-pct"); if (inp) inp.value = v;
@@ -12007,6 +12020,7 @@
       if (eb && (eb.apBelowPct != null || eb.apFullOnly)) return 1;   // AP gate already decided inclusion
       if (eb && (eb.staminaAbovePct != null || eb.staminaBelowPct != null)) return 1;   // stamina gate already decided inclusion
       if (eb && (eb.healthBelowPct != null || eb.healthAbovePct != null)) return 1;   // explicit health gate already decided inclusion
+      if (eb && (eb.movingOnly || eb.standingOnly)) return 1;   // movement gate already decided inclusion
       if (eb && eb.uptimeClass && typeof CONDITIONAL_UPTIME[eb.uptimeClass] === 'number') return CONDITIONAL_UPTIME[eb.uptimeClass];
       const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
       if (eb.zones && eb.zones.length) return 1;            // zone-gated: the zone gate already confirmed we're in-zone, so it's fully active (full uptime) here — NOT 0, which would zero out the bonus
@@ -13360,6 +13374,15 @@
         if (eb.healthAbovePct != null && !(_hpPctGate >= eb.healthAbovePct)) return true;
         return false;
       }
+      // Movement gate (n00b 2026-09-08): movingOnly entries count while the Moving /
+      // Standing still toggle is "moving"; standingOnly entries only while "standing".
+      const _moving = (s.movementState !== "standing");
+      function _movementSkip(eb) {
+        if (!eb) return false;
+        if (eb.movingOnly && !_moving) return true;
+        if (eb.standingOnly && _moving) return true;
+        return false;
+      }
       // Health-threshold gating: either/or gear ("+X above N% HP / +Y below N% HP")
       // is resolved by the Current Health % slider. Returns the item's health-gated
       // bonus names + the parsed above/below thresholds.
@@ -13397,6 +13420,7 @@
           if (_apSkip(eb)) continue;   // action-point gate
           if (_staminaSkip(eb)) continue;   // stamina gate
           if (_healthSkip(eb)) continue;   // explicit health gate
+          if (_movementSkip(eb)) continue;   // movement gate
           // Multi-enemy gate: "Enveloped"-type bonuses need 3+ enemies, so they
           // are DOWN against a single boss (the default sim target). Excluded
           // from the stat TOTAL here (the conditional flag is display-only and
@@ -13979,6 +14003,7 @@
           if (_apSkip(eb)) continue;   // action-point gate
           if (_staminaSkip(eb)) continue;   // stamina gate
           if (_healthSkip(eb)) continue;   // explicit health gate
+          if (_movementSkip(eb)) continue;   // movement gate
           const channel = (eb.kind === "rating" || eb.kind === "flat") ? "ratingStats" : "percentStats";
           // Zone or trigger context implies conditional. If neither, treat
           // it as always-on per the data's intent.
@@ -14234,7 +14259,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
@@ -19431,6 +19456,9 @@
     const stamInp = document.getElementById("current-stamina-pct");
     if (stamInp) stamInp.addEventListener("input", e => { state.currentStaminaPct = +e.target.value; updateStaminaControl(); rerenderAll(); });
     updateStaminaControl();
+    const mvSel = document.getElementById("movement-state");
+    if (mvSel) mvSel.addEventListener("change", e => { state.movementState = e.target.value === "standing" ? "standing" : "moving"; rerenderAll(); });
+    updateMovementControl();
     const zoneBtn = document.getElementById("content-zone-btn");
     if (zoneBtn) {
       zoneBtn.addEventListener("click", () => openContentZonePicker());

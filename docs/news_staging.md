@@ -8,6 +8,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
+- **Moving / Standing still toggle (Toon Forge).** Beside the sliders: say whether you usually move or hold position. Bonuses that only work while moving (Critical Momentum, Serpentine, Expert's Grace, Momentum's Edge, Kinetic Precision, Dancer's Guard) or only after standing still (Defense, Advantage, Healing and Control Preparation, Immovable Bulwark, Bulwark Preparation) now count exactly by your setting. 48 entries. Saved in builds; default Moving.
+
 - **Current stamina slider (Toon Forge).** Third slider beside distance and action points: set how full your stamina bar usually is. The 164 shirt, pants, ring and helm bonuses that only work over 75% stamina (Charged Fury, Charged Might, Precision Tactics, Charged Precision) or only under 25% (Depleted Grace, Depleted Advantage, Enervated Parry, Unfazed Finesse) now count exactly when your setting allows it. Before this, both sides were being counted at once. Saved in builds and share links; default 100%.
 
 - **Current action points slider (Toon Forge).** Next to the distance slider: set how full your action-point bar usually is. Gear that only works below 80% (Discharged Force, Discharged Precision, Sharpened Precision) or only at a full bar (Charged Focus, Charged Power, Charged Might) now counts exactly when your setting allows it. Saved in builds and share links; default 50%.
