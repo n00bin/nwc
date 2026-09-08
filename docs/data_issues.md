@@ -2650,4 +2650,5 @@ creation or the wiki-independent in-game race info card).
 - Text: "Grants up to 20% bonus Damage / up to -20% Incoming Damage when your total item level is being scaled down."
 - Currently display-only (10 pieces). The size of the bonus depends on how far the content scales the character down, which the site cannot know; at endgame it is 0.
 - Open decision: keep as notes vs a "Scaled down by %" slider. Blocked on the curve: the tooltip does not say how much scaling gives the full 20%. Needs an in-game read in scaled content (tooltip shows "Currently: X%").
-- Data oddity: Astral Raider's Wristguards (gear id 3983) carries BOTH Scaled Furor and Scaled Disdain; the screenshot-sourced entry says Disdain. Needs the tooltip to settle which one.
+- Tooltip read (Wristguards screenshot): "Currently: 0 Damage (100%)" - the bracketed % is the scaling ratio, so the bonus is a function of TIL-after-scaling / TIL. Curve still unknown.
+- Wristguards (gear id 3983) dup RESOLVED 2026-09-08: screenshot shows Scaled Furor only; the Disdain entry was removed.
