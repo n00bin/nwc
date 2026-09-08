@@ -12053,6 +12053,7 @@
       if (eb && (eb.movingOnly || eb.standingOnly)) return 1;   // movement gate already decided inclusion
       if (eb && (eb.minEnemies != null || eb.maxEnemies != null || eb.requiresMultiEnemy || eb.perEnemy)) return 1;   // enemy-count gate/scale already decided
       if (eb && (eb.vsRangedOnly || eb.vsMeleeOnly)) return 1;   // attack-type gate already decided
+      if (eb && eb.missingHealthMaxAtPct != null) return 1;   // graded by the Current Health slider instead
       if (eb && eb.uptimeClass && typeof CONDITIONAL_UPTIME[eb.uptimeClass] === 'number') return CONDITIONAL_UPTIME[eb.uptimeClass];
       const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
       if (eb.zones && eb.zones.length) return 1;            // zone-gated: the zone gate already confirmed we're in-zone, so it's fully active (full uptime) here — NOT 0, which would zero out the bonus
@@ -13439,6 +13440,14 @@
         if (eb.healthAbovePct != null && !(_hpPctGate >= eb.healthAbovePct)) return true;
         return false;
       }
+      // Missing-health graded bonuses (n00b 2026-09-08): "Gain up to X based on your
+      // missing health; max at N% or less" -> 0 at full health, linear to the full
+      // value at N% health, read off the Current Health slider.
+      function _missingHpFactor(eb) {
+        if (!eb || eb.missingHealthMaxAtPct == null) return 1;
+        const n = Math.max(0, Math.min(99, +eb.missingHealthMaxAtPct));
+        return Math.max(0, Math.min(1, (100 - _hpPctGate) / (100 - n)));
+      }
       // Movement gate (n00b 2026-09-08): movingOnly entries count while the Moving /
       // Standing still toggle is "moving"; standingOnly entries only while "standing".
       const _moving = (s.movementState !== "standing");
@@ -13502,6 +13511,7 @@
           if (eb.scope && eb.scope !== "self") continue;  // party/enemy buffs handled elsewhere
           if (eb.role && !roleMatches(eb.role)) continue; // role-conditional set bonuses
           if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate: General (no zone) drops zone-locked bonuses
+          if (eb.zonesExclude && eb.zonesExclude.includes(contentZone)) continue; // "elsewhere" half of a zone-split bonus
           if (_targetRangeSkip(eb)) continue;   // distance-to-target gate
           if (_apSkip(eb)) continue;   // action-point gate
           if (_staminaSkip(eb)) continue;   // stamina gate
@@ -13528,7 +13538,7 @@
           // deterministically picks which half is active, overriding the uptime
           // estimate. Skip the half that isn't active at the set health.
           let _healthGated = false;
-          if (eb.name && _hg.names.has(eb.name) && (_hg.aboveN != null || _hg.belowN != null)) {
+          if (eb.missingHealthMaxAtPct == null && eb.name && _hg.names.has(eb.name) && (_hg.aboveN != null || _hg.belowN != null)) {   // graded entries are scaled, not gated
             _healthGated = true;
             const _active = (eb.alwaysActive !== false)
               ? (_hg.aboveN == null ? true : _hp >= _hg.aboveN)
@@ -13552,7 +13562,8 @@
           const _gradedFactor = _graded
             ? (/health/.test(_gradedTxt) && !/stamina gauge/.test(_gradedTxt) ? Math.max(0, Math.min(1, _hp / 100)) : 1)
             : 1;
-          const uptimeFactor = _graded ? _gradedFactor
+          const uptimeFactor = (eb.missingHealthMaxAtPct != null) ? _missingHpFactor(eb)
+            : _graded ? _gradedFactor
             : (_healthGated ? 1 : ((CONDITIONAL_UPTIME.apply_to_stat_grants || isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1));
           // Conditional bonuses (in-combat stacks, procs, group-only, etc.)
           // are pushed with conditional: true so the renderer can filter
@@ -14088,6 +14099,7 @@
           if (!eb || !eb.stat || eb.amount == null) continue;
           if (eb.scope && eb.scope !== "self") continue;
           if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate (General drops zone-locked)
+          if (eb.zonesExclude && eb.zonesExclude.includes(contentZone)) continue; // "elsewhere" half of a zone-split bonus
           if (_targetRangeSkip(eb)) continue;   // distance-to-target gate
           if (_apSkip(eb)) continue;   // action-point gate
           if (_staminaSkip(eb)) continue;   // stamina gate
@@ -14101,7 +14113,8 @@
           const isCond = !!(eb.zones && eb.zones.length) || (eb.alwaysActive === false);
           const ctxTag = (eb.zones && eb.zones.length) ? ` (in ${eb.zones.join("/")})` : "";
           // OPT-G1: same universal uptime weighting as gear ingestion above.
-          const uptimeFactor = (CONDITIONAL_UPTIME.apply_to_stat_grants || isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1;
+          const uptimeFactor = (eb.missingHealthMaxAtPct != null) ? _missingHpFactor(eb)
+            : (CONDITIONAL_UPTIME.apply_to_stat_grants || isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1;
           buffs.push({
             source: `Overload ${i + 1}: ${o.name}${ctxTag}`,
             conditional: isCond,
