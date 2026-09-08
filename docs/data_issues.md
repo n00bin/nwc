@@ -2652,3 +2652,7 @@ creation or the wiki-independent in-game race info card).
 - Open decision: keep as notes vs a "Scaled down by %" slider. Blocked on the curve: the tooltip does not say how much scaling gives the full 20%. Needs an in-game read in scaled content (tooltip shows "Currently: X%").
 - Tooltip read (Wristguards screenshot): "Currently: 0 Damage (100%)" - the bracketed % is the scaling ratio, so the bonus is a function of TIL-after-scaling / TIL. Curve still unknown.
 - Wristguards (gear id 3983) dup RESOLVED 2026-09-08: screenshot shows Scaled Furor only; the Disdain entry was removed.
+
+## Lion Guard's Ward Helm / Raid Helm (Fighter, IL 1250) - Charged Might stat name clipped (2026-09-08)
+- Both archived screenshots cut the tooltip at the right edge: "When your Stamina is over 75%, you[r ...] is increased by 5000."
+- Every other class's Lion Guard helm reads Power, but the rule is the item's own tooltip -> both stay display-only until a reshoot with the tooltip fully in frame.
