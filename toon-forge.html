@@ -12006,6 +12006,7 @@
       if (eb && eb.targetRangeFt != null) return 1;   // distance gate already decided inclusion — full value
       if (eb && (eb.apBelowPct != null || eb.apFullOnly)) return 1;   // AP gate already decided inclusion
       if (eb && (eb.staminaAbovePct != null || eb.staminaBelowPct != null)) return 1;   // stamina gate already decided inclusion
+      if (eb && (eb.healthBelowPct != null || eb.healthAbovePct != null)) return 1;   // explicit health gate already decided inclusion
       if (eb && eb.uptimeClass && typeof CONDITIONAL_UPTIME[eb.uptimeClass] === 'number') return CONDITIONAL_UPTIME[eb.uptimeClass];
       const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
       if (eb.zones && eb.zones.length) return 1;            // zone-gated: the zone gate already confirmed we're in-zone, so it's fully active (full uptime) here — NOT 0, which would zero out the bonus
@@ -13349,6 +13350,16 @@
         if (eb.staminaBelowPct != null && !(_stamPct < eb.staminaBelowPct)) return true;
         return false;
       }
+      // Explicit health gate (n00b 2026-09-08): healthBelowPct / healthAbovePct on an
+      // entry use the Current Health % slider directly, for texts the older
+      // _healthGateInfo wording regexes do not catch ("At <=50% HP", "at 25% health or lower").
+      const _hpPctGate = (s.currentHealthPct == null ? 100 : +s.currentHealthPct);
+      function _healthSkip(eb) {
+        if (!eb) return false;
+        if (eb.healthBelowPct != null && !(_hpPctGate <= eb.healthBelowPct)) return true;
+        if (eb.healthAbovePct != null && !(_hpPctGate >= eb.healthAbovePct)) return true;
+        return false;
+      }
       // Health-threshold gating: either/or gear ("+X above N% HP / +Y below N% HP")
       // is resolved by the Current Health % slider. Returns the item's health-gated
       // bonus names + the parsed above/below thresholds.
@@ -13385,6 +13396,7 @@
           if (_targetRangeSkip(eb)) continue;   // distance-to-target gate
           if (_apSkip(eb)) continue;   // action-point gate
           if (_staminaSkip(eb)) continue;   // stamina gate
+          if (_healthSkip(eb)) continue;   // explicit health gate
           // Multi-enemy gate: "Enveloped"-type bonuses need 3+ enemies, so they
           // are DOWN against a single boss (the default sim target). Excluded
           // from the stat TOTAL here (the conditional flag is display-only and
@@ -13966,6 +13978,7 @@
           if (_targetRangeSkip(eb)) continue;   // distance-to-target gate
           if (_apSkip(eb)) continue;   // action-point gate
           if (_staminaSkip(eb)) continue;   // stamina gate
+          if (_healthSkip(eb)) continue;   // explicit health gate
           const channel = (eb.kind === "rating" || eb.kind === "flat") ? "ratingStats" : "percentStats";
           // Zone or trigger context implies conditional. If neither, treat
           // it as always-on per the data's intent.
