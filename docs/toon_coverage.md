@@ -172,3 +172,4 @@ same-day; numbers below re-counted from live data, not carried forward).
   Legion classes + missing stat, Enchanted Advantage/Awareness real set
   names, set-suffix clusters, clothing-variant slots). Balgora id 56,
   Hellfire Remains, and Ultraviolet Cap were all RESOLVED 2026-06-09.
+| Enemy attacks toggle (melee / ranged) | Implemented | `toon-forge.html` `state.incomingAttackType`, `_attackTypeSkip`; `vsRangedOnly` / `vsMeleeOnly` entry fields | Sim-row select "Mostly melee / Mostly ranged" (default melee) gates 7 Bulwark's Shield entries ("3% less damage from Ranged attacks"); serialized, in the share link + engine cache key (n00b 2026-09-08). | n/a |
