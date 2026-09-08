@@ -8,6 +8,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
+- **Current stamina slider (Toon Forge).** Third slider beside distance and action points: set how full your stamina bar usually is. The 164 shirt, pants, ring and helm bonuses that only work over 75% stamina (Charged Fury, Charged Might, Precision Tactics, Charged Precision) or only under 25% (Depleted Grace, Depleted Advantage, Enervated Parry, Unfazed Finesse) now count exactly when your setting allows it. Before this, both sides were being counted at once. Saved in builds and share links; default 100%.
+
 - **Current action points slider (Toon Forge).** Next to the distance slider: set how full your action-point bar usually is. Gear that only works below 80% (Discharged Force, Discharged Precision, Sharpened Precision) or only at a full bar (Charged Focus, Charged Power, Charged Might) now counts exactly when your setting allows it. Saved in builds and share links; default 50%.
 
 - **Distance to target slider (Toon Forge).** Next to the Content zone picker: set how far you usually stand from the boss, in feet. Gear that only works up close (Brute's Expertise, Brute's Fury, Brute's Might, Brute's Advantage, Abyssal Fury rings) or only at range (Sniper's Fury, Sniper's Advantage, Magician's Fury, Soulpiercer) now counts exactly when your distance allows it, instead of an assumed 85/15 split. Saved in builds and share links; default 10 ft.

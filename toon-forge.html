@@ -3033,6 +3033,13 @@
             <input type="range" id="current-ap-pct" min="0" max="100" step="5" value="50" style="width:100%;">
             <span class="hint" id="current-ap-label">50%</span>
           </div>
+          <div class="field" id="sim-stamina-field">
+            <label>Current stamina
+              <span class="hint-icon" data-tip="How full your stamina bar usually is. Many shirts, pants and rings only work while stamina is over 75% (Charged Fury, Charged Might, Precision Tactics) or only under 25% (Depleted and Enervated bonuses). Bonuses that need the other state are left out.">?</span>
+            </label>
+            <input type="range" id="current-stamina-pct" min="0" max="100" step="5" value="100" style="width:100%;">
+            <span class="hint" id="current-stamina-label">100%</span>
+          </div>
         </div>
 
         <p class="hint" style="margin-top:0.8rem;">💡 <strong>Chance</strong> = how likely each outcome is on a single hit. All the cards below add up to 100% — every hit has to land in exactly one.</p>
@@ -3372,6 +3379,7 @@
       // tagged with a `zones` restriction (e.g. "+5% damage in Wildspace")
       // are EXCLUDED, so situational damage never inflates the always-on number.
       contentZone: "",
+      currentStaminaPct: 100,  // Current stamina % slider; gates staminaAbovePct / staminaBelowPct entries exactly (n00b 2026-09-07)
       currentApPct: 50,    // Current action points % slider; gates apBelowPct / apFullOnly entries exactly (n00b 2026-09-07)
       targetRangeFt: 10,   // Distance-to-target slider (feet); gates targetRangeFt-tagged bonuses exactly (n00b 2026-09-07)
       boons: new Map(),  // key: "tier1:1" / "master:3" → { tier, boonId, points or ranks }
@@ -3582,6 +3590,7 @@
           contentZone: state.contentZone || "",
           targetRangeFt: (typeof state.targetRangeFt === "number") ? state.targetRangeFt : 10,
           currentApPct: (typeof state.currentApPct === "number") ? state.currentApPct : 50,
+          currentStaminaPct: (typeof state.currentStaminaPct === "number") ? state.currentStaminaPct : 100,
           partyAllies: [...(state.partyAllies || [])],
           partyMountAllies: [...(state.partyMountAllies || [])],
           partyPackMeta: state.partyPackMeta !== false,
@@ -3748,6 +3757,8 @@
       if (typeof updateTargetRangeControl === "function") updateTargetRangeControl();
       state.currentApPct = (typeof s.currentApPct === "number") ? s.currentApPct : 50;
       if (typeof updateApControl === "function") updateApControl();
+      state.currentStaminaPct = (typeof s.currentStaminaPct === "number") ? s.currentStaminaPct : 100;
+      if (typeof updateStaminaControl === "function") updateStaminaControl();
       state.slottedClassFeaturePicks = Array.isArray(s.slottedClassFeaturePicks) ? s.slottedClassFeaturePicks.slice() : [];
       state.rangerStance = s.rangerStance || "ranged";
       state.bardActiveSong = s.bardActiveSong || "";
@@ -4152,6 +4163,11 @@
     /* Content-zone field is a custom searchable picker (matches Race/Paragon).
        Zones are derived from gear equip bonuses that only apply in a zone;
        "General (anywhere)" is the explicit default (empty contentZone). */
+    function updateStaminaControl() {
+      const v = (typeof state.currentStaminaPct === "number") ? state.currentStaminaPct : 100;
+      const inp = document.getElementById("current-stamina-pct"); if (inp) inp.value = v;
+      const lbl = document.getElementById("current-stamina-label"); if (lbl) lbl.textContent = v + "%" + (v > 75 ? " (over 75%)" : v < 25 ? " (under 25%)" : "");
+    }
     function updateApControl() {
       const v = (typeof state.currentApPct === "number") ? state.currentApPct : 50;
       const inp = document.getElementById("current-ap-pct"); if (inp) inp.value = v;
@@ -11989,6 +12005,7 @@
       // while the data says which mechanic applies. Unknown keys fall through.
       if (eb && eb.targetRangeFt != null) return 1;   // distance gate already decided inclusion — full value
       if (eb && (eb.apBelowPct != null || eb.apFullOnly)) return 1;   // AP gate already decided inclusion
+      if (eb && (eb.staminaAbovePct != null || eb.staminaBelowPct != null)) return 1;   // stamina gate already decided inclusion
       if (eb && eb.uptimeClass && typeof CONDITIONAL_UPTIME[eb.uptimeClass] === 'number') return CONDITIONAL_UPTIME[eb.uptimeClass];
       const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
       if (eb.zones && eb.zones.length) return 1;            // zone-gated: the zone gate already confirmed we're in-zone, so it's fully active (full uptime) here — NOT 0, which would zero out the bonus
@@ -13323,6 +13340,15 @@
         if (eb.apFullOnly && _apPct < 100) return true;
         return false;
       }
+      // Stamina gate (n00b 2026-09-07): staminaAbovePct N = counts only while the
+      // Current-stamina slider is over N%; staminaBelowPct N = only under N%.
+      const _stamPct = (typeof s.currentStaminaPct === "number") ? s.currentStaminaPct : 100;
+      function _staminaSkip(eb) {
+        if (!eb) return false;
+        if (eb.staminaAbovePct != null && !(_stamPct > eb.staminaAbovePct)) return true;
+        if (eb.staminaBelowPct != null && !(_stamPct < eb.staminaBelowPct)) return true;
+        return false;
+      }
       // Health-threshold gating: either/or gear ("+X above N% HP / +Y below N% HP")
       // is resolved by the Current Health % slider. Returns the item's health-gated
       // bonus names + the parsed above/below thresholds.
@@ -13358,6 +13384,7 @@
           if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate: General (no zone) drops zone-locked bonuses
           if (_targetRangeSkip(eb)) continue;   // distance-to-target gate
           if (_apSkip(eb)) continue;   // action-point gate
+          if (_staminaSkip(eb)) continue;   // stamina gate
           // Multi-enemy gate: "Enveloped"-type bonuses need 3+ enemies, so they
           // are DOWN against a single boss (the default sim target). Excluded
           // from the stat TOTAL here (the conditional flag is display-only and
@@ -13938,6 +13965,7 @@
           if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate (General drops zone-locked)
           if (_targetRangeSkip(eb)) continue;   // distance-to-target gate
           if (_apSkip(eb)) continue;   // action-point gate
+          if (_staminaSkip(eb)) continue;   // stamina gate
           const channel = (eb.kind === "rating" || eb.kind === "flat") ? "ratingStats" : "percentStats";
           // Zone or trigger context implies conditional. If neither, treat
           // it as always-on per the data's intent.
@@ -14193,7 +14221,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
@@ -19387,6 +19415,9 @@
     const apInp = document.getElementById("current-ap-pct");
     if (apInp) apInp.addEventListener("input", e => { state.currentApPct = +e.target.value; updateApControl(); rerenderAll(); });
     updateApControl();
+    const stamInp = document.getElementById("current-stamina-pct");
+    if (stamInp) stamInp.addEventListener("input", e => { state.currentStaminaPct = +e.target.value; updateStaminaControl(); rerenderAll(); });
+    updateStaminaControl();
     const zoneBtn = document.getElementById("content-zone-btn");
     if (zoneBtn) {
       zoneBtn.addEventListener("click", () => openContentZonePicker());
