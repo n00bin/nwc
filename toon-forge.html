@@ -11709,7 +11709,11 @@
       };
       // "when you [use/deal damage with/activate] a Daily/Encounter, your next
       // [N] Encounter/At-Will [will] deal +X% [more] damage" (+ optional cooldown)
-      const RE = /when(?:ever)? you (?:use|deal damage with|activate|cast)[^.]*?\b(daily|encounter)\b[^.]*?your next (\d+ )?(encounter|at-?will|daily)[^.]*?(?:deal|do)\w*\s*\+?(\d+(?:\.\d+)?)%\s*(?:more )?damage/i;
+      // Count may be a digit or a word, and "strikes/hits from|with" may sit between
+      // the count and the power type ("your next three strikes from encounter powers",
+      // Raging Rally / Vital Onslaught — n00b 2026-09-08).
+      const RE = /when(?:ever)? you (?:use|deal damage with|activate|cast)[^.]*?\b(daily|encounter)\b[^.]*?your next (\d+|one|two|three|four|five)?\s*(?:(?:strikes?|hits?) (?:from|with) )?(encounter|at-?will|daily)[^.]*?(?:deal|do)\w*\s*\+?(\d+(?:\.\d+)?)%\s*(?:more )?damage/i;
+      const WORD_NUM = { one: 1, two: 2, three: 3, four: 4, five: 5 };
       const seen = new Set();
       for (const label in state.gear) {
         const nm = state.gear[label]; if (!nm) continue;
@@ -11720,7 +11724,7 @@
           const d = eb.description || eb.effect || "";
           const m = RE.exec(d); if (!m) continue;
           const triggerType = m[1].toLowerCase();
-          const count = m[2] ? parseInt(m[2], 10) : 1;
+          const count = m[2] ? (WORD_NUM[m[2].toLowerCase()] || parseInt(m[2], 10) || 1) : 1;
           const boostType = norm(m[3]);
           const pct = parseFloat(m[4]);
           const key = nm + "|" + (eb.name || "") + "|" + pct;
