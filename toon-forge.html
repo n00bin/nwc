@@ -3067,6 +3067,8 @@
           </div>
         </div>
 
+        <div id="build-conditions" hidden></div>
+
         <p class="hint" style="margin-top:0.8rem;">💡 <strong>Chance</strong> = how likely each outcome is on a single hit. All the cards below add up to 100% — every hit has to land in exactly one.</p>
         <div class="sim-cards" id="sim-body"></div>
       </div>
@@ -3461,6 +3463,8 @@
       // buffs apply to both the stat panel and the optimizer. Matches the
       // OFF-by-default pattern of the two group-meta toggles above.
       assumeSupportParty: false,
+      partyHealerClass: "",        // "" | Paladin | Cleric | Warlock | Bard - auto-answers party-dependent build conditions (n00b 2026-09-08)
+      conditionAnswers: {},        // manual Yes/No answers for build conditions the build cannot auto-resolve: {id: true|false}
       // (legacy — kept so older saves still load without losing data)
       partyBuffs: new Set(),
       simMag: 100,
@@ -3629,6 +3633,8 @@
           partyPackMeta: state.partyPackMeta !== false,
           groupEquipStacks: state.groupEquipStacks !== false,
           assumeSupportParty: state.assumeSupportParty === true,
+          partyHealerClass: state.partyHealerClass || "",
+          conditionAnswers: Object.assign({}, state.conditionAnswers || {}),
           locked: [...(state.locked || [])],
           pinned: [...(state.pinned || [])],
           pinnedArtifacts: [...(state.pinnedArtifacts || [])],
@@ -3721,6 +3727,8 @@
         state.__gearRenamedSlots = _renamed.map(r => ({ slot: r.slot, from: r.from }));
       }
       state.partyContent = s.partyContent || "dungeon";
+      state.partyHealerClass = ["Paladin", "Cleric", "Warlock", "Bard"].includes(s.partyHealerClass) ? s.partyHealerClass : "";
+      state.conditionAnswers = (s.conditionAnswers && typeof s.conditionAnswers === "object") ? Object.assign({}, s.conditionAnswers) : {};
       state.partyAllies = Array.isArray(s.partyAllies) ? s.partyAllies.slice() : [];
       state.partyMountAllies = Array.isArray(s.partyMountAllies) ? s.partyMountAllies.slice() : [];
       // Both group-meta toggles default OFF: only ON if a save explicitly
@@ -12071,6 +12079,7 @@
       if (eb && (eb.minEnemies != null || eb.maxEnemies != null || eb.requiresMultiEnemy || eb.perEnemy)) return 1;   // enemy-count gate/scale already decided
       if (eb && (eb.vsRangedOnly || eb.vsMeleeOnly || eb.vsShieldedOnly)) return 1;   // attack-type / shield gate already decided
       if (eb && eb.missingHealthMaxAtPct != null) return 1;   // graded by the Current Health slider instead
+      if (eb && eb.conditionId) return 1;   // build-condition gate already decided
       if (eb && eb.uptimeClass && typeof CONDITIONAL_UPTIME[eb.uptimeClass] === 'number') return CONDITIONAL_UPTIME[eb.uptimeClass];
       const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
       if (eb.zones && eb.zones.length) return 1;            // zone-gated: the zone gate already confirmed we're in-zone, so it's fully active (full uptime) here — NOT 0, which would zero out the bonus
@@ -12444,6 +12453,81 @@
       }
       return out;
     }
+
+    // ===== Build conditions (n00b 2026-09-08) =====
+    // A condition is a named situation an equip bonus depends on that is NOT a
+    // fact about the player alone (those are the sim sliders/toggles) but about
+    // the party or the slotted powers. Each has a plain-English question, an
+    // auto-resolver that answers from the build when it can, and falls back to
+    // the manual answer in state.conditionAnswers. Unanswered = No, so a piece
+    // never earns credit for a situation the player has not confirmed - the
+    // optimizer resolves through the same function without asking anything.
+    const BUILD_CONDITIONS = {
+      shield_or_temphp: {
+        label: "Shield or Temp HP on you",
+        question: "Do you usually have a Shield or Temp HP during the fight?",
+        resolve(s) {
+          const enc = (s.slottedEncounters || []).concat(s.slottedAtWills || [], s.slottedDailies || []);
+          if (s.class === "Wizard" && enc.includes("Shield")) return { value: true, reason: "Shield is slotted" };
+          if (s.partyHealerClass === "Paladin") return { value: true, reason: "party healer is a Paladin (temp HP)" };
+          if (s.partyHealerClass === "Warlock") return { value: true, reason: "party healer is a Warlock (shields)" };
+          return null;
+        }
+      }
+    };
+    function resolveBuildCondition(id, s) {
+      const def = BUILD_CONDITIONS[id];
+      if (!def) return { value: false, auto: false, reason: "unknown condition" };
+      let r = null;
+      try { r = def.resolve(s); } catch (e) { r = null; }
+      if (r && typeof r.value === "boolean") return { value: r.value, auto: true, reason: r.reason || "" };
+      const a = s.conditionAnswers && s.conditionAnswers[id];
+      if (typeof a === "boolean") return { value: a, auto: false, reason: a ? "you answered Yes" : "you answered No" };
+      return { value: false, auto: false, reason: "not answered (counts as No)" };
+    }
+    // Conditions attached to the pieces currently on the build (gear + overloads).
+    function equippedBuildConditions() {
+      const found = new Map();
+      const add = function (eb, itemName) {
+        if (!eb || !eb.conditionId || !BUILD_CONDITIONS[eb.conditionId]) return;
+        if (!found.has(eb.conditionId)) found.set(eb.conditionId, new Set());
+        found.get(eb.conditionId).add(itemName);
+      };
+      for (const label in (state.gear || {})) {
+        const nm = state.gear[label]; if (!nm) continue;
+        const slotType = label === "Waist" ? "Belt" : label.replace(/ \d+$/, "");
+        const item = (typeof findGearByName === "function") ? findGearByName(nm, slotType, (state.gearIL || {})[label]) : null;
+        if (item) for (const eb of (item.equipBonuses || [])) add(eb, nm);
+      }
+      for (const nm of (state.overloads || [])) {
+        if (!nm) continue;
+        const o = (typeof OVERLOADS_DATA !== "undefined") ? OVERLOADS_DATA.find(x => x && x.name === nm) : null;
+        if (o) for (const eb of (o.equipBonuses || [])) add(eb, nm);
+      }
+      return found;
+    }
+    function renderBuildConditions() {
+      const box = document.getElementById("build-conditions"); if (!box) return;
+      const found = equippedBuildConditions();
+      if (!found.size) { box.hidden = true; box.innerHTML = ""; return; }
+      box.hidden = false;
+      let html = '<div class="boon-tier-header" style="margin-top:0.6rem;">Build conditions <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(only asked for pieces on this build)</span></div>';
+      for (const [id, items] of found) {
+        const def = BUILD_CONDITIONS[id]; const r = resolveBuildCondition(id, state);
+        const a = state.conditionAnswers && state.conditionAnswers[id];
+        const sel = r.auto ? `<span class="hint">Auto: ${r.value ? "Yes" : "No"} &mdash; ${escapeHtmlTF(r.reason)}</span>`
+          : `<select data-cond="${id}" style="font-size:0.85rem;padding:0.2rem 0.4rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;"><option value=""${a == null ? " selected" : ""}>Not answered (No)</option><option value="yes"${a === true ? " selected" : ""}>Yes</option><option value="no"${a === false ? " selected" : ""}>No</option></select>`;
+        html += `<div class="boon-row" style="cursor:default;"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(def.question)}</div><div class="boon-row-effect">Used by: <span translate="no">${[...items].map(escapeHtmlTF).join(", ")}</span></div></div><div class="boon-counter">${sel}</div></div>`;
+      }
+      box.innerHTML = html;
+      box.querySelectorAll("select[data-cond]").forEach(el => el.addEventListener("change", e => {
+        const id = e.target.dataset.cond; const v = e.target.value;
+        if (!state.conditionAnswers) state.conditionAnswers = {};
+        if (v === "yes") state.conditionAnswers[id] = true; else if (v === "no") state.conditionAnswers[id] = false; else delete state.conditionAnswers[id];
+        rerenderAll();
+      }));
+    }
+    function escapeHtmlTF(t) { return String(t == null ? "" : t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
 
     function buildEngineCharacter(s) {
       // Resolve gear: state.gear is { "Head": "name string", ... };
@@ -13496,6 +13580,12 @@
         if (eb.vsShieldedOnly && !s.targetShielded) return true;   // "Target has a shield" toggle (n00b 2026-09-08)
         return false;
       }
+      // Build-condition gate (n00b 2026-09-08): conditionId entries count only when
+      // the condition resolves Yes (auto from the build, or a manual answer).
+      function _conditionSkip(eb) {
+        if (!eb || !eb.conditionId) return false;
+        return !resolveBuildCondition(eb.conditionId, s).value;
+      }
       // Health-threshold gating: either/or gear ("+X above N% HP / +Y below N% HP")
       // is resolved by the Current Health % slider. Returns the item's health-gated
       // bonus names + the parsed above/below thresholds.
@@ -13538,6 +13628,7 @@
           if (_movementSkip(eb)) continue;   // movement gate
           if (_enemyCountSkip(eb)) continue;   // enemy-count gate
           if (_attackTypeSkip(eb)) continue;   // enemy attack-type gate
+          if (_conditionSkip(eb)) continue;   // build-condition gate
           // Multi-enemy gate: "Enveloped"-type bonuses need 3+ enemies, so they
           // are DOWN against a single boss (the default sim target). Excluded
           // from the stat TOTAL here (the conditional flag is display-only and
@@ -14126,6 +14217,7 @@
           if (_movementSkip(eb)) continue;   // movement gate
           if (_enemyCountSkip(eb)) continue;   // enemy-count gate
           if (_attackTypeSkip(eb)) continue;   // enemy attack-type gate
+          if (_conditionSkip(eb)) continue;   // build-condition gate
           const channel = (eb.kind === "rating" || eb.kind === "flat") ? "ratingStats" : "percentStats";
           // Zone or trigger context implies conditional. If neither, treat
           // it as always-on per the data's intent.
@@ -14382,7 +14474,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
@@ -17454,6 +17546,17 @@
           </div>
           <div class="boon-row" style="cursor:default;">
             <div class="boon-row-info">
+              <div class="boon-row-name">Party healer</div>
+              <div class="boon-row-effect">Which class heals your group. Answers party-dependent gear conditions for you (Paladin = temp HP, Warlock = shields).</div>
+            </div>
+            <div class="boon-counter">
+              <select id="party-healer-select" style="font-size:0.85rem;padding:0.2rem 0.4rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
+                ${["", "Paladin", "Cleric", "Warlock", "Bard"].map(c => `<option value="${c}"${(state.partyHealerClass || "") === c ? " selected" : ""}>${c || "None / unknown"}</option>`).join("")}
+              </select>
+            </div>
+          </div>
+          <div class="boon-row" style="cursor:default;">
+            <div class="boon-row-info">
               <div class="boon-row-name">Assume support party</div>
               <div class="boon-row-effect">Turn on to slot your allies' support companions and their mount auras, applying their party buffs to your build. Off by default &mdash; turn on when your group brings support comps. <button id="party-fill-standard" type="button" style="margin-left:0.3rem;font-size:0.7rem;padding:0.1rem 0.45rem;background:var(--elevated);color:var(--gold);border:1px solid var(--border);border-radius:4px;cursor:pointer;">Fill standard set</button></div>
             </div>
@@ -17602,6 +17705,13 @@
         partyContentEl.addEventListener("change", (e) => {
           state.partyContent = e.target.value;
           renderBuffs(); rerenderAll();
+        });
+      }
+      const partyHealerEl = el.querySelector("#party-healer-select");
+      if (partyHealerEl) {
+        partyHealerEl.addEventListener("change", (e) => {
+          state.partyHealerClass = e.target.value || "";
+          rerenderAll();
         });
       }
       // Pack-meta toggle (party-scope companion stacks at full vs solo)
@@ -19366,6 +19476,7 @@
       // value is updated in place, so users typing manually will see
       // their value get re-derived from build state.
       applyAutoTIL();
+      if (typeof renderBuildConditions === "function") renderBuildConditions();
       renderQuickStats();
       renderScore();
       renderStepDoneStates();
