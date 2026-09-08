@@ -8,6 +8,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
+- **Proc bonuses now follow your own crit and deflect chance.** Action-point procs (Critical Charge, Raging Zeal, Skirmisher's Zeal, Butcher's Zeal, Executioner's Zeal) and cooldown procs (Encounter Reprieve, Medic's Haste) are computed from the proc's own terms at your build's crit chance rather than a fixed number, and deflect-triggered heals (Survivor's Remedy) use your Deflect chance. The Detailed Stats line shows the math, for example "25 AP x 0.161/s at 81% crit".
+
 - **Enemies in combat slider (Toon Forge).** Set how many enemies you usually fight at once (1 = a single boss). Bonuses that need 2, 3 or more enemies (Enveloped, Maiden's Advantage, Challenger's Awareness), bonuses that only work against one enemy (Challenger's Might/Guard/Strength, Overwhelming Offense, Solitary Power, Tenacious Luck) and bonuses that grow per enemy (Death Defier's family, Death Defying Advantage, Berserking Might, Overwhelming Parry) all follow this number. 353 entries. Saved in builds; default 1.
 
 - **Moving / Standing still toggle (Toon Forge).** Beside the sliders: say whether you usually move or hold position. Bonuses that only work while moving (Critical Momentum, Serpentine, Expert's Grace, Momentum's Edge, Kinetic Precision, Dancer's Guard) or only after standing still (Defense, Advantage, Healing and Control Preparation, Immovable Bulwark, Bulwark Preparation) now count exactly by your setting. 48 entries. Saved in builds; default Moving.

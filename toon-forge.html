@@ -12032,6 +12032,7 @@
       // Explicit uptime CLASS pin: the entry names one of the CONDITIONAL_UPTIME
       // keys (e.g. "hp_diff", "party_stacks") so the VALUE stays config-driven
       // while the data says which mechanic applies. Unknown keys fall through.
+      if (eb && (eb.apProc || eb.cdProc)) return 1;   // runtime proc conversion already embeds cadence (no second discount)
       if (eb && eb.targetRangeFt != null) return 1;   // distance gate already decided inclusion — full value
       if (eb && (eb.apBelowPct != null || eb.apFullOnly)) return 1;   // AP gate already decided inclusion
       if (eb && (eb.staminaAbovePct != null || eb.staminaBelowPct != null)) return 1;   // stamina gate already decided inclusion
@@ -12210,7 +12211,7 @@
     };
     // Shared proc cadence: trigger events/sec × chance, capped by internal
     // cooldown. crit/noncrit rates derive from the build's actual crit chance.
-    function procRatePerSec(triggerRateKey, chancePct, icdSeconds, pCrit) {
+    function procRatePerSec(triggerRateKey, chancePct, icdSeconds, pCrit, pDeflect) {
       const pc = Math.max(0, Math.min(1, pCrit || 0));
       let rate;
       if (triggerRateKey === "crit") rate = PROC_DAMAGE.HIT_RATE * pc;
@@ -12219,14 +12220,39 @@
         // Deflects per second = hits taken per second x the build's OWN Deflect
         // chance (n00b 2026-09-08) — not a flat guess. Falls back to the table
         // rate if the engine result is unavailable.
-        let pd = null;
-        try { const _r = (typeof getEngineResult === "function") ? getEngineResult() : null; pd = (_r && _r.stats && _r.stats["Deflect"] && _r.stats["Deflect"].finalPct != null) ? Math.max(0, Math.min(1, _r.stats["Deflect"].finalPct / 100)) : null; } catch (e) { pd = null; }
+        let pd = (typeof pDeflect === "number") ? Math.max(0, Math.min(1, pDeflect)) : null;
+        if (pd == null) { try { const _r = (typeof getEngineResult === "function") ? getEngineResult() : null; pd = (_r && _r.stats && _r.stats["Deflect"] && _r.stats["Deflect"].finalPct != null) ? Math.max(0, Math.min(1, _r.stats["Deflect"].finalPct / 100)) : null; } catch (e) { pd = null; } }
         rate = (pd == null) ? PROC_DAMAGE.rates.deflect : PROC_DAMAGE.rates.struck * pd;
       }
       else rate = (PROC_DAMAGE.rates[triggerRateKey] != null) ? PROC_DAMAGE.rates[triggerRateKey] : PROC_DAMAGE.rates.hit;
       let pps = rate * ((chancePct != null ? chancePct : 100) / 100);
       if (icdSeconds) pps = Math.min(pps, 1 / icdSeconds);
       return pps;
+    }
+
+    // ===== Runtime proc conversions (n00b 2026-09-08) =====
+    // apProc {ap, triggerRateKey, chance, icdSeconds}  -> "Action Point Gain" % = 100 x ap x procs/s / AP_PER_SEC
+    // cdProc {seconds, triggerRateKey, chance, icdSeconds} -> "Recharge Speed" %  = 100 x seconds x procs/s
+    // procs/s come from procRatePerSec at the build's OWN crit / deflect chance
+    // (hints set by getEngineResult's two-pass evaluation below), so the value
+    // follows the character sheet instead of a number baked into the data.
+    const PROC_CONV = { AP_PER_SEC: 40 };
+    let _procCritHint = 0.9, _procDeflHint = 0.2, _procConvUsed = false;
+    function _procConvert(eb) {
+      const pc = _procCritHint, pd = _procDeflHint;
+      if (eb.apProc) {
+        const a = eb.apProc; const pps = procRatePerSec(a.triggerRateKey || "hit", a.chance, a.icdSeconds, pc, pd);
+        const amt = 100 * (a.ap || 0) * pps / PROC_CONV.AP_PER_SEC; _procConvUsed = true;
+        return Object.assign({}, eb, { stat: "Action Point Gain", amount: Math.round(amt * 100) / 100, kind: undefined, alwaysActive: true,
+          _convLabel: `${a.ap} AP x ${pps.toFixed(3)}/s at ${Math.round(pc * 100)}% crit` });
+      }
+      if (eb.cdProc) {
+        const c = eb.cdProc; const pps = procRatePerSec(c.triggerRateKey || "hit", c.chance, c.icdSeconds, pc, pd);
+        const amt = 100 * (c.seconds || 0) * pps; _procConvUsed = true;
+        return Object.assign({}, eb, { stat: "Recharge Speed", amount: Math.round(amt * 100) / 100, kind: undefined, alwaysActive: true,
+          _convLabel: `${c.seconds}s off cooldowns x ${pps.toFixed(3)}/s at ${Math.round(pc * 100)}% crit` });
+      }
+      return eb;
     }
 
     // Gear damage procs (eb.procDamage on equipped items): magnitude procs
@@ -13447,7 +13473,8 @@
         const isWeaponSlot = (slot === "Main Hand" || slot === "Off Hand");
         const _hg = _healthGateInfo(item);
         const _hp = (state.currentHealthPct == null ? 100 : +state.currentHealthPct);
-        for (const eb of item.equipBonuses) {
+        for (let eb of item.equipBonuses) {
+          if (eb && (eb.apProc || eb.cdProc)) eb = _procConvert(eb);   // runtime AP / cooldown proc conversion
           if (!eb || !eb.stat || eb.amount == null) continue;
           if (eb.scope && eb.scope !== "self") continue;  // party/enemy buffs handled elsewhere
           if (eb.role && !roleMatches(eb.role)) continue; // role-conditional set bonuses
@@ -13550,9 +13577,9 @@
           }
           const setTag = (eb.type === "Set")
             ? ` (${(setPieceCounts[eb.setName] || 0)}-pc)` : "";
-          const baseLabel = (eb.type === "Set")
+          const baseLabel = ((eb.type === "Set")
             ? `${label} set: ${eb.setName}${setTag}`
-            : `${label} bonus: ${eb.name || eb.stat}`;
+            : `${label} bonus: ${eb.name || eb.stat}`) + (eb._convLabel ? ` (${eb._convLabel})` : "");
           if (isStacked) {
             const maxStacks = eb.maxStacks;
             // Per-enemy stackers ("+X per nearby enemy, max N") scale with enemy
@@ -14304,7 +14331,18 @@
       });
       if (key === _engineCacheKey && _engineResult) return _engineResult;
       _engineCacheKey = key;
-      _engineResult = TOON_FORGE_ENGINE.computeStats(buildEngineCharacter(state));
+      // Pass 1 always starts from fixed hints so the result depends only on state
+      // (deterministic); pass 2 re-evaluates AP / cooldown proc conversions at the
+      // crit and deflect chance pass 1 produced. Skipped when no such proc is equipped.
+      _procCritHint = 0.9; _procDeflHint = 0.2; _procConvUsed = false;
+      let _res = TOON_FORGE_ENGINE.computeStats(buildEngineCharacter(state));
+      if (_procConvUsed) {
+        const _c = ((_res.stats["Critical Strike"] && _res.stats["Critical Strike"].finalPct) || 0) / 100;
+        const _d = ((_res.stats["Deflect"] && _res.stats["Deflect"].finalPct) || 0) / 100;
+        _procCritHint = Math.max(0, Math.min(1, _c)); _procDeflHint = Math.max(0, Math.min(1, _d));
+        _res = TOON_FORGE_ENGINE.computeStats(buildEngineCharacter(state));
+      }
+      _engineResult = _res;
       return _engineResult;
     }
 
