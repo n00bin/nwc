@@ -3019,6 +3019,13 @@
             </label>
             <button type="button" id="content-zone-btn" class="field-picker-btn">General (anywhere)</button>
           </div>
+          <div class="field" id="sim-range-field">
+            <label>Distance to target
+              <span class="hint-icon" data-tip="How far you usually stand from the boss. Some gear only works within 20 or 25 feet (melee), some only at 25 or 50 feet and beyond (ranged). Bonuses that need the other distance are left out.">?</span>
+            </label>
+            <input type="range" id="target-range-ft" min="0" max="80" step="5" value="10" style="width:100%;">
+            <span class="hint" id="target-range-label">10 ft (melee)</span>
+          </div>
         </div>
 
         <p class="hint" style="margin-top:0.8rem;">💡 <strong>Chance</strong> = how likely each outcome is on a single hit. All the cards below add up to 100% — every hit has to land in exactly one.</p>
@@ -3358,6 +3365,7 @@
       // tagged with a `zones` restriction (e.g. "+5% damage in Wildspace")
       // are EXCLUDED, so situational damage never inflates the always-on number.
       contentZone: "",
+      targetRangeFt: 10,   // Distance-to-target slider (feet); gates targetRangeFt-tagged bonuses exactly (n00b 2026-09-07)
       boons: new Map(),  // key: "tier1:1" / "master:3" → { tier, boonId, points or ranks }
       // Order in which master boons were first ranked (by boonId).
       // Determines each boon's cost slot: slot N → N pts/rank to fully rank.
@@ -3564,6 +3572,7 @@
           buffs: [...state.buffs],
           partyContent: state.partyContent || "dungeon",
           contentZone: state.contentZone || "",
+          targetRangeFt: (typeof state.targetRangeFt === "number") ? state.targetRangeFt : 10,
           partyAllies: [...(state.partyAllies || [])],
           partyMountAllies: [...(state.partyMountAllies || [])],
           partyPackMeta: state.partyPackMeta !== false,
@@ -3726,6 +3735,8 @@
       state.simMag = (typeof s.simMag === "number") ? s.simMag : 100;
       state.contentZone = (typeof s.contentZone === "string") ? s.contentZone : "";
       updateContentZoneButton();
+      state.targetRangeFt = (typeof s.targetRangeFt === "number") ? s.targetRangeFt : 10;
+      if (typeof updateTargetRangeControl === "function") updateTargetRangeControl();
       state.slottedClassFeaturePicks = Array.isArray(s.slottedClassFeaturePicks) ? s.slottedClassFeaturePicks.slice() : [];
       state.rangerStance = s.rangerStance || "ranged";
       state.bardActiveSong = s.bardActiveSong || "";
@@ -4130,6 +4141,12 @@
     /* Content-zone field is a custom searchable picker (matches Race/Paragon).
        Zones are derived from gear equip bonuses that only apply in a zone;
        "General (anywhere)" is the explicit default (empty contentZone). */
+    function updateTargetRangeControl() {
+      const ft = (typeof state.targetRangeFt === "number") ? state.targetRangeFt : 10;
+      const inp = document.getElementById("target-range-ft"); if (inp) inp.value = ft;
+      const lbl = document.getElementById("target-range-label");
+      if (lbl) lbl.textContent = ft + " ft (" + (ft <= 20 ? "melee" : ft <= 40 ? "mid range" : "ranged") + ")";
+    }
     function updateContentZoneButton() {
       const btn = document.getElementById("content-zone-btn");
       if (!btn) return;
@@ -11954,6 +11971,7 @@
       // Explicit uptime CLASS pin: the entry names one of the CONDITIONAL_UPTIME
       // keys (e.g. "hp_diff", "party_stacks") so the VALUE stays config-driven
       // while the data says which mechanic applies. Unknown keys fall through.
+      if (eb && eb.targetRangeFt != null) return 1;   // distance gate already decided inclusion — full value
       if (eb && eb.uptimeClass && typeof CONDITIONAL_UPTIME[eb.uptimeClass] === 'number') return CONDITIONAL_UPTIME[eb.uptimeClass];
       const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
       if (eb.zones && eb.zones.length) return 1;            // zone-gated: the zone gate already confirmed we're in-zone, so it's fully active (full uptime) here — NOT 0, which would zero out the bonus
@@ -13267,6 +13285,17 @@
       // zone-locked bonuses, so situational damage (e.g. "+5% in Wildspace")
       // never inflates the always-on number.
       const contentZone = s.contentZone || "";
+      // Distance-to-target gate (n00b 2026-09-07): entries tagged targetRangeFt +
+      // targetRangeSide ("within" | "beyond") count ONLY when the build's
+      // Distance-to-target slider satisfies them — an exact gate, replacing the
+      // old range_gated 0.85 / far 0.15 uptime guesses (Brute's / Sniper's /
+      // Magician's families, Abyssal Fury, Soulpiercer, ...).
+      const _rangeFt = (typeof s.targetRangeFt === "number") ? s.targetRangeFt : 10;
+      function _targetRangeSkip(eb) {
+        if (!eb || eb.targetRangeFt == null) return false;
+        const within = _rangeFt <= eb.targetRangeFt;
+        return (eb.targetRangeSide === "beyond") ? within : !within;
+      }
       // Health-threshold gating: either/or gear ("+X above N% HP / +Y below N% HP")
       // is resolved by the Current Health % slider. Returns the item's health-gated
       // bonus names + the parsed above/below thresholds.
@@ -13300,6 +13329,7 @@
           if (eb.scope && eb.scope !== "self") continue;  // party/enemy buffs handled elsewhere
           if (eb.role && !roleMatches(eb.role)) continue; // role-conditional set bonuses
           if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate: General (no zone) drops zone-locked bonuses
+          if (_targetRangeSkip(eb)) continue;   // distance-to-target gate
           // Multi-enemy gate: "Enveloped"-type bonuses need 3+ enemies, so they
           // are DOWN against a single boss (the default sim target). Excluded
           // from the stat TOTAL here (the conditional flag is display-only and
@@ -13878,6 +13908,7 @@
           if (!eb || !eb.stat || eb.amount == null) continue;
           if (eb.scope && eb.scope !== "self") continue;
           if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate (General drops zone-locked)
+          if (_targetRangeSkip(eb)) continue;   // distance-to-target gate
           const channel = (eb.kind === "rating" || eb.kind === "flat") ? "ratingStats" : "percentStats";
           // Zone or trigger context implies conditional. If neither, treat
           // it as always-on per the data's intent.
@@ -14133,7 +14164,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
@@ -19321,6 +19352,9 @@
     // Content zone selector — lights up zone-gated gear bonuses (e.g. "+5% Damage
     // in Thay"). Options are derived from the gear data so new zones appear
     // automatically; the engine already gates on state.contentZone.
+    const rangeInp = document.getElementById("target-range-ft");
+    if (rangeInp) rangeInp.addEventListener("input", e => { state.targetRangeFt = +e.target.value; updateTargetRangeControl(); rerenderAll(); });
+    updateTargetRangeControl();
     const zoneBtn = document.getElementById("content-zone-btn");
     if (zoneBtn) {
       zoneBtn.addEventListener("click", () => openContentZonePicker());
