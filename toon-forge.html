@@ -12493,17 +12493,7 @@
         if (!found.has(eb.conditionId)) found.set(eb.conditionId, new Set());
         found.get(eb.conditionId).add(itemName);
       };
-      for (const label in (state.gear || {})) {
-        const nm = state.gear[label]; if (!nm) continue;
-        const slotType = label === "Waist" ? "Belt" : label.replace(/ \d+$/, "");
-        const item = (typeof findGearByName === "function") ? findGearByName(nm, slotType, (state.gearIL || {})[label]) : null;
-        if (item) for (const eb of (item.equipBonuses || [])) add(eb, nm);
-      }
-      for (const nm of (state.overloads || [])) {
-        if (!nm) continue;
-        const o = (typeof OVERLOADS_DATA !== "undefined") ? OVERLOADS_DATA.find(x => x && x.name === nm) : null;
-        if (o) for (const eb of (o.equipBonuses || [])) add(eb, nm);
-      }
+      for (const x of equippedEquipBonuses()) add(x.eb, x.itemName);
       return found;
     }
     function renderBuildConditions() {
@@ -12528,6 +12518,43 @@
       }));
     }
     function escapeHtmlTF(t) { return String(t == null ? "" : t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+    // Every equip bonus on the pieces currently on the build (gear + overloads).
+    function equippedEquipBonuses() {
+      const out = [];
+      for (const label in (state.gear || {})) {
+        const nm = state.gear[label]; if (!nm) continue;
+        const slotType = label === "Waist" ? "Belt" : label.replace(/ \d+$/, "");
+        const item = (typeof findGearByName === "function") ? findGearByName(nm, slotType, (state.gearIL || {})[label]) : null;
+        if (item) for (const eb of (item.equipBonuses || [])) if (eb) out.push({ eb, itemName: nm });
+      }
+      for (const nm of (state.overloads || [])) {
+        if (!nm) continue;
+        const o = (typeof OVERLOADS_DATA !== "undefined") ? OVERLOADS_DATA.find(x => x && x.name === nm) : null;
+        if (o) for (const eb of (o.equipBonuses || [])) if (eb) out.push({ eb, itemName: nm });
+      }
+      return out;
+    }
+    // Contextual sim controls (n00b 2026-09-08): a slider or toggle is shown only
+    // when a piece on the build actually reads it, so the sim row never lists
+    // controls that cannot change anything for this build. The Content zone
+    // picker stays (zones gate overloads, boons and many sets). Hidden controls
+    // keep their value; nothing reads it until a piece that needs it is equipped.
+    const SIM_CONTROL_NEEDS = {
+      "sim-range-field":       eb => eb.targetRangeFt != null,
+      "sim-ap-field":          eb => eb.apBelowPct != null || !!eb.apFullOnly,
+      "sim-stamina-field":     eb => eb.staminaAbovePct != null || eb.staminaBelowPct != null,
+      "sim-movement-field":    eb => !!eb.movingOnly || !!eb.standingOnly,
+      "sim-enemies-field":     eb => eb.minEnemies != null || eb.maxEnemies != null || !!eb.perEnemy || !!eb.requiresMultiEnemy,
+      "sim-attack-type-field": eb => !!eb.vsRangedOnly || !!eb.vsMeleeOnly,
+      "sim-shield-field":      eb => !!eb.vsShieldedOnly
+    };
+    function updateSimControlVisibility() {
+      const ebs = equippedEquipBonuses().map(x => x.eb);
+      for (const id in SIM_CONTROL_NEEDS) {
+        const el = document.getElementById(id); if (!el) continue;
+        el.hidden = !ebs.some(SIM_CONTROL_NEEDS[id]);
+      }
+    }
 
     function buildEngineCharacter(s) {
       // Resolve gear: state.gear is { "Head": "name string", ... };
@@ -19477,6 +19504,7 @@
       // their value get re-derived from build state.
       applyAutoTIL();
       if (typeof renderBuildConditions === "function") renderBuildConditions();
+      if (typeof updateSimControlVisibility === "function") updateSimControlVisibility();
       renderQuickStats();
       renderScore();
       renderStepDoneStates();
