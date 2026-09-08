@@ -12215,6 +12215,14 @@
       let rate;
       if (triggerRateKey === "crit") rate = PROC_DAMAGE.HIT_RATE * pc;
       else if (triggerRateKey === "noncrit") rate = PROC_DAMAGE.HIT_RATE * (1 - pc);
+      else if (triggerRateKey === "deflect") {
+        // Deflects per second = hits taken per second x the build's OWN Deflect
+        // chance (n00b 2026-09-08) — not a flat guess. Falls back to the table
+        // rate if the engine result is unavailable.
+        let pd = null;
+        try { const _r = (typeof getEngineResult === "function") ? getEngineResult() : null; pd = (_r && _r.stats && _r.stats["Deflect"] && _r.stats["Deflect"].finalPct != null) ? Math.max(0, Math.min(1, _r.stats["Deflect"].finalPct / 100)) : null; } catch (e) { pd = null; }
+        rate = (pd == null) ? PROC_DAMAGE.rates.deflect : PROC_DAMAGE.rates.struck * pd;
+      }
       else rate = (PROC_DAMAGE.rates[triggerRateKey] != null) ? PROC_DAMAGE.rates[triggerRateKey] : PROC_DAMAGE.rates.hit;
       let pps = rate * ((chancePct != null ? chancePct : 100) / 100);
       if (icdSeconds) pps = Math.min(pps, 1 / icdSeconds);
