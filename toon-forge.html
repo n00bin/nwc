@@ -314,6 +314,7 @@
     .field-picker-btn.filled { color: var(--text); }
     .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .sc-tab { border-radius: 8px 8px 0 0; border-bottom: none; }
+    .sc-pane[hidden] { display: none !important; }   /* .row-2 display:grid would otherwise override the hidden attribute */
     .sc-tab.active { background: var(--elevated); color: var(--gold); }
     #combat-scenario-panel .field { margin-bottom: 0.4rem; }
     .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
