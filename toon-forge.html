@@ -12183,7 +12183,7 @@
       // while the data says which mechanic applies. Unknown keys fall through.
       if (eb && (eb.apProc || eb.cdProc)) return 1;   // runtime proc conversion already embeds cadence (no second discount)
       if (eb && eb.targetRangeFt != null) return 1;   // distance gate already decided inclusion — full value
-      if (eb && (eb.apBelowPct != null || eb.apFullOnly)) return 1;   // AP gate already decided inclusion
+      if (eb && (eb.apBelowPct != null || eb.apAbovePct != null || eb.apFullOnly)) return 1;   // AP gate already decided inclusion
       if (eb && (eb.staminaAbovePct != null || eb.staminaBelowPct != null)) return 1;   // stamina gate already decided inclusion
       if (eb && (eb.healthBelowPct != null || eb.healthAbovePct != null)) return 1;   // explicit health gate already decided inclusion
       if (eb && (eb.movingOnly || eb.standingOnly)) return 1;   // movement gate already decided inclusion
@@ -12411,6 +12411,21 @@
       return eb;
     }
 
+    // Active insignia bonuses on the stable (n00b 2026-09-09): used by the proc
+    // collectors so a bonus's procDamage / procHeal entries count like gear's do.
+    // One instance per bonus name (procs do not stack across mounts).
+    function activeInsigniaBonuses() {
+      const out = new Map();
+      if (typeof state === "undefined" || !Array.isArray(state.stable)) return [];
+      for (const slot of state.stable) {
+        if (!slot || !slot.desiredBonus) continue;
+        const bonus = (typeof findBonusById === "function") ? findBonusById(slot.desiredBonus) : null; if (!bonus || out.has(bonus.name)) continue;
+        const mount = (typeof findMountByName === "function") ? findMountByName(slot.mount) : null;
+        if (typeof bonusActive === "function" && typeof slottedCategoriesForRow === "function" && !bonusActive(bonus.requiredInsignias, slottedCategoriesForRow(slot), mount ? mount.insigniaSlots : null)) continue;
+        out.set(bonus.name, bonus);
+      }
+      return [...out.values()];
+    }
     // State gates for proc entries (n00b 2026-09-08). The stat loops in
     // buildEngineCharacter gate on role / zone / build condition / solo-party;
     // the proc collectors below read the same rules from here so a procDamage
@@ -12443,11 +12458,15 @@
     function computeGearProcDamagePerHit(pCrit) {
       const out = { magPerHit: 0, flatPerHit: 0, contributors: [] };
       if (typeof GEAR_SLOTS === "undefined") return out;
+      const _srcs = [];
       for (const slotEntry of GEAR_SLOTS) {
         const itemName = state.gear[slotEntry.label];
         if (!itemName) continue;
         const item = findGearByName(itemName, slotEntry.slot, (state.gearIL || {})[slotEntry.label]);
-        if (!item || !Array.isArray(item.equipBonuses)) continue;
+        if (item && Array.isArray(item.equipBonuses)) _srcs.push(item);
+      }
+      if (typeof activeInsigniaBonuses === "function") for (const bnz of activeInsigniaBonuses()) if (Array.isArray(bnz.equipBonuses)) _srcs.push({ name: "Insignia bonus: " + bnz.name, equipBonuses: bnz.equipBonuses });
+      for (const item of _srcs) {
         for (const eb of item.equipBonuses) {
           const pd = eb && eb.procDamage; if (!pd) continue;
           if (equipBonusGatedByState(eb)) continue;
@@ -12583,6 +12602,7 @@
           applyProcHealSource(item.name, item.equipBonuses);
         }
       }
+      if (typeof activeInsigniaBonuses === "function") for (const bnz of activeInsigniaBonuses()) applyProcHealSource("Insignia bonus: " + bnz.name, bnz.equipBonuses);
       // Active mount combat power (e.g. Rejuvenating Favor): self-scope heal
       // procs are survivability, not heal output — they flow into selfPerSec
       // only, same as any other procHeal source. No rarity/bolster scaling is
@@ -13673,6 +13693,7 @@
       }
 
       const DIMINISHING_MULTIPLIERS = [1, 0.5, 0.25];
+      const _insigniaEqQueue = [];   // bonuses carrying gear-style equipBonuses: ingested after the gates exist (below)
       for (const bonusName in bonusInstances) {
         if (!Object.prototype.hasOwnProperty.call(bonusInstances, bonusName)) continue;
         const insts = bonusInstances[bonusName];
@@ -13680,6 +13701,11 @@
         const mode = bonus.stackingMode || "diminishing";
         const maxStacks = bonus.maxStacks || (mode === "diminishing" ? 3 : 5);
         const n = Math.min(insts.length, maxStacks);
+        if (Array.isArray(bonus.equipBonuses) && bonus.equipBonuses.length && !(Array.isArray(bonus.instanceStats) && bonus.instanceStats.length)) {
+          if (!exclusivityLoser[bonusName]) _insigniaEqQueue.push({ bonus, insts, n, mode });
+          else buffs.push({ source: `Mount ${insts[0].slotIdx + 1} Insignia Bonus: ${bonusName} (no effect — overwritten by ${exclusivityLoser[bonusName]})`, conditional: true, ratingStats: {}, percentStats: {} });
+          continue;
+        }
         // Conditional flag: bonuses with a trigger ("at full HP", "AP full",
         // "when Stamina < 25%", "on crit", etc.) only fire when the trigger
         // is met — treat as conditional so the standing-around stat panel
@@ -13923,6 +13949,7 @@
       function _apSkip(eb) {
         if (!eb) return false;
         if (eb.apBelowPct != null && !(_apPct < eb.apBelowPct)) return true;
+        if (eb.apAbovePct != null && !(_apPct > eb.apAbovePct)) return true;
         if (eb.apFullOnly && _apPct < 100) return true;
         return false;
       }
@@ -14678,6 +14705,35 @@
             uptime: uptimeFactor < 1 ? uptimeFactor : undefined,
             [channel]: { [eb.stat]: _ebAmount(eb) * uptimeFactor }
           });
+        }
+      }
+
+      // Insignia bonuses with gear-style equipBonuses (n00b 2026-09-09): same gates,
+      // uptime, ramp and conversion logic as gear, times the per-instance multiplier.
+      for (const q of _insigniaEqQueue) {
+        for (let i = 0; i < q.n; i++) {
+          const mult = (q.mode === "linear") ? 1 : (DIMINISHING_MULTIPLIERS[i] || 0);
+          if (mult === 0) break;
+          const slotLabel = "Mount " + (q.insts[i].slotIdx + 1);
+          const stackTag = (q.mode === "diminishing" && q.n > 1) ? ` (stack ${i + 1}/${q.n} ×${mult})` : (q.mode === "linear" && q.insts.length > 1 ? ` (stack ${i + 1}/${q.insts.length})` : "");
+          for (let eb of q.bonus.equipBonuses) {
+            if (eb && (eb.apProc || eb.cdProc)) eb = _procConvert(eb);
+            if (!eb || !eb.stat || eb.amount == null) continue;
+            if (eb.scope && eb.scope !== "self") continue;
+            if (eb.role && !roleMatches(eb.role)) continue;
+            if (_zoneSkip(eb) || _targetRangeSkip(eb) || _apSkip(eb) || _staminaSkip(eb) || _healthSkip(eb) || _movementSkip(eb) || _enemyCountSkip(eb) || _attackTypeSkip(eb) || _conditionSkip(eb) || _partySkip(eb) || _enemyHpSkip(eb)) continue;
+            const up = (eb.missingHealthMaxAtPct != null) ? _missingHpFactor(eb)
+              : ((CONDITIONAL_UPTIME.apply_to_stat_grants || isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1);
+            const stacks = eb.perStack ? Math.max(1, (eb.perEnemy ? Math.min(_enemies, eb.maxStacks || 1) : (eb.maxStacks || 1))) : 1;
+            const channel = (eb.kind === "rating" || eb.kind === "flat") ? "ratingStats" : "percentStats";
+            const isCond = (eb.alwaysActive === false) || up < 1;
+            buffs.push({
+              source: `${slotLabel} Insignia Bonus: ${q.bonus.name}${stackTag}` + ((eb.name && eb.name !== q.bonus.name) ? `: ${eb.name}` : (eb.name ? "" : `: ${eb.stat}`)) + (eb._convLabel ? ` (${eb._convLabel})` : "") + (up < 1 ? ` (~${Math.round(up * 100)}% uptime)` : ""),
+              conditional: isCond,
+              uptime: up < 1 ? up : undefined,
+              [channel]: { [eb.stat]: _ebAmount(eb) * stacks * mult * up }
+            });
+          }
         }
       }
 
