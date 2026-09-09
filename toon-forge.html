@@ -12211,6 +12211,9 @@
       // keys (e.g. "hp_diff", "party_stacks") so the VALUE stays config-driven
       // while the data says which mechanic applies. Unknown keys fall through.
       if (eb && (eb.apProc || eb.cdProc)) return 1;   // runtime proc conversion already embeds cadence (no second discount)
+      // Window bonuses (n00b 2026-09-09): eb.window = {triggerRateKey, seconds[, chance, icdSeconds]} ->
+      // uptime = window length x triggers per second (daily / artifact / mountpower read the cadence sliders).
+      if (eb && eb.window && eb.window.seconds > 0) return Math.max(0, Math.min(1, eb.window.seconds * procRatePerSec(eb.window.triggerRateKey || "hit", eb.window.chance, eb.window.icdSeconds, 0.9)));
       if (eb && eb.targetRangeFt != null) return 1;   // distance gate already decided inclusion — full value
       if (eb && (eb.apBelowPct != null || eb.apAbovePct != null || eb.apFullOnly)) return 1;   // AP gate already decided inclusion
       if (eb && (eb.staminaAbovePct != null || eb.staminaBelowPct != null)) return 1;   // stamina gate already decided inclusion
