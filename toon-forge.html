@@ -12779,8 +12779,10 @@
       const box = document.getElementById("class-mechanics-box"); if (!box) return;
       const mechs = classMechanicsFor(state.class, state.paragon);
       if (!mechs.length) { box.innerHTML = '<p class="hint">Pick a class and paragon first.</p>'; return; }
+      if (!state.paragon) { box.innerHTML = '<p class="hint" style="color:var(--amber);">No paragon picked yet: only class-wide mechanics and powers are listed. Pick your paragon in step 1 to see its own mechanics (Soul Sparks, Curse, Battlerage, Vengeance...) and powers.</p>'; }
+      else box.innerHTML = "";
       const am = state.activeMechanics || {};
-      box.innerHTML = mechs.map(m => {
+      box.innerHTML += mechs.map(m => {
         const fx = Array.isArray(m.effects) ? m.effects : [];
         const a = am[m.name];
         const fxText = fx.length ? fx.map(ef => (ef.amount > 0 ? "+" : "") + ef.amount + ((ef.kind === "rating" || ef.kind === "flat") ? "" : "%") + " " + ef.stat + (ef.perStack ? " per stack (max " + ef.maxStacks + ")" : "")).join(", ") : "";
@@ -12791,7 +12793,7 @@
         return `<div class="boon-row" style="cursor:default;"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(m.name)}${fx.length ? "" : ' <span class="hint">(no stat effect on record)</span>'}</div><div class="boon-row-effect">${escapeHtmlTF(fxText || m.addedEffect || m.notes || "")}</div></div><div class="boon-counter">${ctl}</div></div>`;
       }).join("");
       // ---- Powers with buffs / debuffs (class + paragon pool) ----
-      const BUFF_RE = /increases? (?:your )?damage|damage dealt|damage taken|takes? \d+% more damage|damage resistance|less damage|combat advantage|increases? (?:your )?power|critical (?:strike|severity)|deflect|awareness|defense|recharge speed|action point/i;
+      const BUFF_RE = /increases? (?:your )?damage|damage dealt|damage taken|takes? \d+% more damage|damage resistance|less damage|combat advantage|increases? (?:your )?power|critical (?:strike|severity)|deflect|awareness|defense|recharge speed|action point|outgoing healing|incoming healing|absorb|\+\d+(?:\.\d+)?% damage/i;
       const slotted = new Set([].concat(state.slottedAtWills || [], state.slottedEncounters || [], state.slottedDailies || []).filter(Boolean));
       const fpb = state.forcedPowerBuffs || {};
       const rows = [];
