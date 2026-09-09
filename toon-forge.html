@@ -3147,10 +3147,6 @@
 
     <!-- ============ Step 7: Results ============ -->
     <div class="step-panel" data-panel="7">
-      <div class="panel" id="premium-panel">
-        <h2>Optimize</h2>
-        <p class="hint">Members: one-click gear and boon optimization against the fight you set in step 6, plus the Forgemaster's Verdict. The buttons are in the header at the top of the page. <a href="#" id="premium-jump">Take me there</a>.</p>
-      </div>
       <div class="panel">
         <h2 id="sim-title">What would this do?</h2>
         <p class="hint" id="sim-hint">Type your power's magnitude from the in-game tooltip. We'll show what one hit would actually do against a typical PvE enemy. See <a href="mekaniks.html#view-damage" target="_blank">Mekaniks → Damage</a> for the full formula.</p>
@@ -12869,8 +12865,6 @@
     }
     function wireScenarioPanel() {
       const strip = document.getElementById("scenario-strip");
-      const pj = document.getElementById("premium-jump");
-      if (pj) pj.addEventListener("click", e => { e.preventDefault(); const t = document.getElementById("tf-featured-group"); const t2 = document.getElementById("tf-premium-soon"); const el = (t && t.style.display !== "none") ? t : t2; window.scrollTo({ top: 0, behavior: "smooth" }); if (el) { el.style.outline = "2px solid var(--amber)"; setTimeout(() => { el.style.outline = ""; }, 1800); } });
       if (strip) strip.addEventListener("click", () => gotoStep(6));
       document.querySelectorAll(".sc-tab").forEach(b => b.addEventListener("click", () => {
         document.querySelectorAll(".sc-tab").forEach(x => x.classList.toggle("active", x === b));
