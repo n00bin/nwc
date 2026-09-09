@@ -313,6 +313,9 @@
     .field-picker-btn:hover { border-color: var(--amber); }
     .field-picker-btn.filled { color: var(--text); }
     .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .sc-tab { border-radius: 8px 8px 0 0; border-bottom: none; }
+    .sc-tab.active { background: var(--elevated); color: var(--gold); }
+    #combat-scenario-panel .field { margin-bottom: 0.4rem; }
     .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
     .row-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem; }
 
@@ -2700,6 +2703,114 @@
 
   <div class="page">
 
+    <!-- ============ Combat scenario (always visible; the builder AND the optimizer score against it) ============ -->
+    <div class="panel" id="combat-scenario-panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:0.6rem;flex-wrap:wrap;">
+        <div>
+          <h2 style="margin:0;">Combat scenario</h2>
+          <p class="hint" id="scenario-summary" style="margin:0.25rem 0 0;"></p>
+        </div>
+        <button type="button" class="btn btn-ghost" id="scenario-toggle">Edit scenario</button>
+      </div>
+      <div id="scenario-body" hidden>
+        <p class="hint" style="margin:0.6rem 0 0.4rem;">Describe the fight you are building for. Every conditional bonus on your gear reads these values, and the optimizer scores every candidate against exactly this scenario. Want a different answer? Change the scenario and run again.</p>
+        <div style="display:flex;gap:2px;flex-wrap:wrap;margin:0.5rem 0 0.6rem;border-bottom:1px solid var(--border);">
+          <button type="button" class="btn btn-ghost sc-tab active" data-sc-tab="you">You</button>
+          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="fight">Fight</button>
+          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="party">Party</button>
+          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="conditions">Conditions</button>
+        </div>
+        <div class="sc-pane row-2" data-sc-pane="you">
+          <div class="field" id="sc-health-field">
+            <label>Current health
+              <span class="hint-icon" data-tip="Your health during the fight. Low-health bonuses, 'above N% health' bonuses and 'based on missing health' bonuses all read this. Same slider as the one in Detailed Stats.">?</span>
+            </label>
+            <input type="range" id="scenario-health-pct" min="0" max="100" step="5" value="100" style="width:100%;">
+            <span class="hint" id="scenario-health-label">100%</span>
+          </div>
+          <div class="field" id="sim-ap-field">
+            <label>Current action points
+              <span class="hint-icon" data-tip="How full your action-point bar usually is. Some gear only works while it is below 80% (Discharged Force, Discharged Precision, Sharpened Precision), some only when it is full (Charged Focus, Charged Power). Bonuses that need the other state are left out.">?</span>
+            </label>
+            <input type="range" id="current-ap-pct" min="0" max="100" step="5" value="50" style="width:100%;">
+            <span class="hint" id="current-ap-label">50%</span>
+          </div>
+          <div class="field" id="sim-stamina-field">
+            <label>Current stamina
+              <span class="hint-icon" data-tip="How full your stamina bar usually is. Many shirts, pants and rings only work while stamina is over 75% (Charged Fury, Charged Might, Precision Tactics) or only under 25% (Depleted and Enervated bonuses). Bonuses that need the other state are left out.">?</span>
+            </label>
+            <input type="range" id="current-stamina-pct" min="0" max="100" step="5" value="100" style="width:100%;">
+            <span class="hint" id="current-stamina-label">100%</span>
+          </div>
+          <div class="field" id="sim-movement-field">
+            <label>Movement
+              <span class="hint-icon" data-tip="Are you usually moving or standing still in the fight? A few bonuses only work while moving (Critical Momentum, Serpentine, Expert's Grace) and a few only after standing still for a few seconds (Earthen Heart, Defense Preparation, Astral Dash).">?</span>
+            </label>
+            <select id="movement-state" style="width:100%;"><option value="moving">Moving</option><option value="standing">Standing still</option></select>
+          </div>
+          <div class="field" id="sc-tic-field">
+            <label>Time in combat
+              <span class="hint-icon" data-tip="How long the fight has been going. Bonuses that ramp over a fight (Artifact Fanatic: +2% Recharge Speed per artifact use, one use a minute) read this.">?</span>
+            </label>
+            <input type="range" id="time-in-combat" min="0" max="600" step="15" value="120" style="width:100%;">
+            <span class="hint" id="time-in-combat-label">2 min</span>
+          </div>
+        </div>
+        <div class="sc-pane row-2" data-sc-pane="fight" hidden>
+          <div class="field" id="sim-zone-field">
+            <label>Content zone
+              <span class="hint-icon" data-tip="Where are you running? Some gear gives extra damage only in a specific zone (e.g. &quot;+5% Damage in Thay&quot;). Pick your zone to count that bonus; leave on General for the everywhere value only.">?</span>
+            </label>
+            <button type="button" id="content-zone-btn" class="field-picker-btn">General (anywhere)</button>
+          </div>
+          <div class="field" id="sim-range-field">
+            <label>Distance to target
+              <span class="hint-icon" data-tip="How far you usually stand from the boss. Some gear only works within 20 or 25 feet (melee), some only at 25 or 50 feet and beyond (ranged). Bonuses that need the other distance are left out.">?</span>
+            </label>
+            <input type="range" id="target-range-ft" min="0" max="80" step="5" value="10" style="width:100%;">
+            <span class="hint" id="target-range-label">10 ft (melee)</span>
+          </div>
+          <div class="field" id="sim-enemies-field">
+            <label>Enemies in combat
+              <span class="hint-icon" data-tip="How many enemies you are usually fighting at once. 1 = a single boss. Bonuses that need 2, 3 or more enemies, bonuses that only work against one enemy, and bonuses that grow per enemy (Berserking Might, Death Defying Advantage, Overwhelming Parry) all follow this number.">?</span>
+            </label>
+            <input type="range" id="enemy-count" min="1" max="10" step="1" value="1" style="width:100%;">
+            <span class="hint" id="enemy-count-label">1 (single boss)</span>
+          </div>
+          <div class="field" id="sim-attack-type-field">
+            <label>Enemy attacks
+              <span class="hint-icon" data-tip="What mostly hits you: melee swings or ranged attacks. A few pieces only reduce one kind (Bulwark's Shield: ranged).">?</span>
+            </label>
+            <select id="incoming-attack-type" style="width:100%;"><option value="melee">Mostly melee</option><option value="ranged">Mostly ranged</option></select>
+          </div>
+          <div class="field" id="sim-shield-field">
+            <label>Target has a shield
+              <span class="hint-icon" data-tip="Tick when the enemy you fight carries a shield. Shield Breaker (Garnet Abyssal Loop) only works against shielded targets.">?</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="target-shielded"> <span class="hint">Shielded enemy</span></label>
+          </div>
+        </div>
+        <div class="sc-pane row-2" data-sc-pane="party" hidden>
+          <div class="field">
+            <label>Content type
+              <span class="hint-icon" data-tip="Dungeon = 5-man (4 ally slots), Trial = 10-man (9), Solo = no party. Solo switches 'when not in a party' gear on and 'per teammate' gear down. Same setting as the one in Party Buffs.">?</span>
+            </label>
+            <select id="scenario-party-content" style="width:100%;"><option value="dungeon">Dungeon (5-man)</option><option value="trial">Trial (10-man)</option><option value="solo">Solo (no party)</option></select>
+          </div>
+          <div class="field">
+            <label>Party healer
+              <span class="hint-icon" data-tip="Which class heals your group. Answers party-dependent gear conditions for you (Paladin = temp HP, Warlock = shields). Same setting as the one in Party Buffs.">?</span>
+            </label>
+            <select id="scenario-party-healer" style="width:100%;"><option value="">None / unknown</option><option value="Paladin">Paladin</option><option value="Cleric">Cleric</option><option value="Warlock">Warlock</option><option value="Bard">Bard</option></select>
+          </div>
+          <p class="hint" style="grid-column:1 / -1;margin:0;">Allies' companions and mount auras are picked in <strong>Boons &amp; Buffs → Party Buffs</strong>.</p>
+        </div>
+        <div class="sc-pane" data-sc-pane="conditions" hidden>
+          <div id="build-conditions"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- ============ Step 1: Role & Class ============ -->
     <div class="step-panel active" data-panel="1">
       <div class="panel">
@@ -3013,61 +3124,9 @@
             </label>
             <input type="number" id="sim-mag" value="800">
           </div>
-          <div class="field" id="sim-zone-field">
-            <label>Content zone
-              <span class="hint-icon" data-tip="Where are you running? Some gear gives extra damage only in a specific zone (e.g. &quot;+5% Damage in Thay&quot;). Pick your zone to count that bonus; leave on General for the everywhere value only.">?</span>
-            </label>
-            <button type="button" id="content-zone-btn" class="field-picker-btn">General (anywhere)</button>
-          </div>
-          <div class="field" id="sim-range-field">
-            <label>Distance to target
-              <span class="hint-icon" data-tip="How far you usually stand from the boss. Some gear only works within 20 or 25 feet (melee), some only at 25 or 50 feet and beyond (ranged). Bonuses that need the other distance are left out.">?</span>
-            </label>
-            <input type="range" id="target-range-ft" min="0" max="80" step="5" value="10" style="width:100%;">
-            <span class="hint" id="target-range-label">10 ft (melee)</span>
-          </div>
-          <div class="field" id="sim-ap-field">
-            <label>Current action points
-              <span class="hint-icon" data-tip="How full your action-point bar usually is. Some gear only works while it is below 80% (Discharged Force, Discharged Precision, Sharpened Precision), some only when it is full (Charged Focus, Charged Power). Bonuses that need the other state are left out.">?</span>
-            </label>
-            <input type="range" id="current-ap-pct" min="0" max="100" step="5" value="50" style="width:100%;">
-            <span class="hint" id="current-ap-label">50%</span>
-          </div>
-          <div class="field" id="sim-stamina-field">
-            <label>Current stamina
-              <span class="hint-icon" data-tip="How full your stamina bar usually is. Many shirts, pants and rings only work while stamina is over 75% (Charged Fury, Charged Might, Precision Tactics) or only under 25% (Depleted and Enervated bonuses). Bonuses that need the other state are left out.">?</span>
-            </label>
-            <input type="range" id="current-stamina-pct" min="0" max="100" step="5" value="100" style="width:100%;">
-            <span class="hint" id="current-stamina-label">100%</span>
-          </div>
-          <div class="field" id="sim-movement-field">
-            <label>Movement
-              <span class="hint-icon" data-tip="Are you usually moving or standing still in the fight? A few bonuses only work while moving (Critical Momentum, Serpentine, Expert's Grace) and a few only after standing still for a few seconds (Earthen Heart, Defense Preparation, Astral Dash).">?</span>
-            </label>
-            <select id="movement-state" style="width:100%;"><option value="moving">Moving</option><option value="standing">Standing still</option></select>
-          </div>
-          <div class="field" id="sim-enemies-field">
-            <label>Enemies in combat
-              <span class="hint-icon" data-tip="How many enemies you are usually fighting at once. 1 = a single boss. Bonuses that need 2, 3 or more enemies, bonuses that only work against one enemy, and bonuses that grow per enemy (Berserking Might, Death Defying Advantage, Overwhelming Parry) all follow this number.">?</span>
-            </label>
-            <input type="range" id="enemy-count" min="1" max="10" step="1" value="1" style="width:100%;">
-            <span class="hint" id="enemy-count-label">1 (single boss)</span>
-          </div>
-          <div class="field" id="sim-attack-type-field">
-            <label>Enemy attacks
-              <span class="hint-icon" data-tip="What mostly hits you: melee swings or ranged attacks. A few pieces only reduce one kind (Bulwark's Shield: ranged).">?</span>
-            </label>
-            <select id="incoming-attack-type" style="width:100%;"><option value="melee">Mostly melee</option><option value="ranged">Mostly ranged</option></select>
-          </div>
-          <div class="field" id="sim-shield-field">
-            <label>Target has a shield
-              <span class="hint-icon" data-tip="Tick when the enemy you fight carries a shield. Shield Breaker (Garnet Abyssal Loop) only works against shielded targets.">?</span>
-            </label>
-            <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="target-shielded"> <span class="hint">Shielded enemy</span></label>
-          </div>
         </div>
 
-        <div id="build-conditions" hidden></div>
+        <p class="hint" style="margin-top:0.4rem;">Fight settings (zone, distance, enemies, health, party) live in the <a href="#combat-scenario-panel">Combat scenario</a> panel at the top of the page.</p>
 
         <p class="hint" style="margin-top:0.8rem;">💡 <strong>Chance</strong> = how likely each outcome is on a single hit. All the cards below add up to 100% — every hit has to land in exactly one.</p>
         <div class="sim-cards" id="sim-body"></div>
@@ -3407,6 +3466,7 @@
       // are EXCLUDED, so situational damage never inflates the always-on number.
       contentZone: "",
       targetShielded: false,   // "Target has a shield" toggle; gates vsShieldedOnly entries (Shield Breaker) (n00b 2026-09-08)
+      timeInCombatSec: 120,   // Combat scenario: how long the fight has run; drives eb.ramp bonuses (n00b 2026-09-08)
       incomingAttackType: "melee",   // "melee" | "ranged" toggle; gates vsMeleeOnly / vsRangedOnly entries (n00b 2026-09-08)
       enemyCount: 1,   // Enemies-in-combat slider (1 = single boss); gates minEnemies / maxEnemies / requiresMultiEnemy and scales per-enemy stackers (n00b 2026-09-08)
       movementState: "moving",  // "moving" | "standing" toggle; gates movingOnly / standingOnly entries exactly (n00b 2026-09-08)
@@ -3627,6 +3687,7 @@
           movementState: state.movementState === "standing" ? "standing" : "moving",
           enemyCount: (typeof state.enemyCount === "number") ? state.enemyCount : 1,
           incomingAttackType: state.incomingAttackType === "ranged" ? "ranged" : "melee",
+          timeInCombatSec: (typeof state.timeInCombatSec === "number") ? state.timeInCombatSec : 120,
           targetShielded: !!state.targetShielded,
           partyAllies: [...(state.partyAllies || [])],
           partyMountAllies: [...(state.partyMountAllies || [])],
@@ -3805,6 +3866,7 @@
       state.enemyCount = (typeof s.enemyCount === "number") ? Math.max(1, Math.min(10, s.enemyCount)) : 1;
       if (typeof updateEnemyCountControl === "function") updateEnemyCountControl();
       state.incomingAttackType = (s.incomingAttackType === "ranged") ? "ranged" : "melee";
+      state.timeInCombatSec = (typeof s.timeInCombatSec === "number") ? Math.max(0, Math.min(600, s.timeInCombatSec)) : 120;
       if (typeof updateAttackTypeControl === "function") updateAttackTypeControl();
       state.targetShielded = !!s.targetShielded;
       if (typeof updateShieldControl === "function") updateShieldControl();
@@ -12081,6 +12143,7 @@
       if (eb && eb.missingHealthMaxAtPct != null) return 1;   // graded by the Current Health slider instead
       if (eb && eb.conditionId) return 1;   // build-condition gate already decided
       if (eb && (eb.soloOnly || eb.partyOnly)) return 1;   // solo / party gate already decided
+      if (eb && eb.ramp) return 1;   // ramp entries are sized by Time in combat, not an uptime guess
       if (eb && eb.uptimeClass && typeof CONDITIONAL_UPTIME[eb.uptimeClass] === 'number') return CONDITIONAL_UPTIME[eb.uptimeClass];
       const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
       if (eb.zones && eb.zones.length) return 1;            // zone-gated: the zone gate already confirmed we're in-zone, so it's fully active (full uptime) here — NOT 0, which would zero out the bonus
@@ -12520,15 +12583,16 @@
     function renderBuildConditions() {
       const box = document.getElementById("build-conditions"); if (!box) return;
       const found = equippedBuildConditions();
-      if (!found.size) { box.hidden = true; box.innerHTML = ""; return; }
       box.hidden = false;
-      let html = '<div class="boon-tier-header" style="margin-top:0.6rem;">Build conditions <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(only asked for pieces on this build)</span></div>';
-      for (const [id, items] of found) {
+      let html = '<p class="hint" style="margin:0 0 0.4rem;">Situations your party or your powers create. Answered from the build where possible; otherwise say Yes or No. Unanswered counts as No, for the panel and for the optimizer.</p>';
+      for (const id in BUILD_CONDITIONS) {
+        const items = found.get(id) || new Set();
         const def = BUILD_CONDITIONS[id]; const r = resolveBuildCondition(id, state);
         const a = state.conditionAnswers && state.conditionAnswers[id];
         const sel = r.auto ? `<span class="hint">Auto: ${r.value ? "Yes" : "No"} &mdash; ${escapeHtmlTF(r.reason)}</span>`
           : `<select data-cond="${id}" style="font-size:0.85rem;padding:0.2rem 0.4rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;"><option value=""${a == null ? " selected" : ""}>Not answered (No)</option><option value="yes"${a === true ? " selected" : ""}>Yes</option><option value="no"${a === false ? " selected" : ""}>No</option></select>`;
-        html += `<div class="boon-row" style="cursor:default;"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(def.question)}</div><div class="boon-row-effect">Used by: <span translate="no">${[...items].map(escapeHtmlTF).join(", ")}</span></div></div><div class="boon-counter">${sel}</div></div>`;
+        const used = items.size ? `Used by: <span translate="no">${[...items].map(escapeHtmlTF).join(", ")}</span>` : "No equipped piece uses this yet (the optimizer still reads it).";
+        html += `<div class="boon-row" style="cursor:default;"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(def.question)}</div><div class="boon-row-effect">${used}</div></div><div class="boon-counter">${sel}</div></div>`;
       }
       box.innerHTML = html;
       box.querySelectorAll("select[data-cond]").forEach(el => el.addEventListener("change", e => {
@@ -12539,6 +12603,88 @@
       }));
     }
     function escapeHtmlTF(t) { return String(t == null ? "" : t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+    // ===== Combat scenario helpers (n00b 2026-09-08) =====
+    function scenarioSummary() {
+      const st = state;
+      const zone = st.contentZone || "General";
+      const mv = st.movementState === "standing" ? "standing still" : "moving";
+      const pc = st.partyContent === "solo" ? "solo" : (st.partyContent === "trial" ? "trial (10)" : "dungeon (5)");
+      const tic = (typeof st.timeInCombatSec === "number") ? st.timeInCombatSec : 120;
+      const parts = [zone, (st.targetRangeFt == null ? 10 : st.targetRangeFt) + " ft", (st.enemyCount || 1) + (st.enemyCount > 1 ? " enemies" : " enemy"),
+        (st.incomingAttackType === "ranged" ? "ranged" : "melee") + " attackers", st.targetShielded ? "shielded target" : null,
+        "HP " + (st.currentHealthPct == null ? 100 : st.currentHealthPct) + "%", "AP " + (st.currentApPct == null ? 50 : st.currentApPct) + "%",
+        "stamina " + (st.currentStaminaPct == null ? 100 : st.currentStaminaPct) + "%", mv, (tic >= 60 ? Math.round(tic / 60 * 10) / 10 + " min" : tic + " s") + " in combat",
+        pc, "healer: " + (st.partyHealerClass || "none")];
+      return parts.filter(Boolean).join(" · ");
+    }
+    window.scenarioSummary = scenarioSummary;
+    // Which scenario inputs an item's equip bonuses depend on, and how each resolved
+    // under the current scenario. Used by the optimizer result cards and the gear cards.
+    function scenarioTagsForItem(item) {
+      const out = []; if (!item || !Array.isArray(item.equipBonuses)) return out;
+      const st = state; const seen = new Set();
+      const add = function (key, on, text) { const k = key + "|" + text; if (seen.has(k)) return; seen.add(k); out.push({ on: !!on, text }); };
+      const rangeFt = (st.targetRangeFt == null ? 10 : st.targetRangeFt), hp = (st.currentHealthPct == null ? 100 : +st.currentHealthPct);
+      const ap = (st.currentApPct == null ? 50 : +st.currentApPct), stam = (st.currentStaminaPct == null ? 100 : +st.currentStaminaPct);
+      const enemies = st.enemyCount || 1, moving = st.movementState !== "standing", solo = st.partyContent === "solo";
+      for (const eb of item.equipBonuses) {
+        if (!eb) continue; const nm = eb.name || eb.stat || "bonus";
+        if (eb.targetRangeFt != null) { const within = rangeFt <= eb.targetRangeFt; const on = (eb.targetRangeSide === "beyond") ? !within : within;
+          add("range", on, nm + ": " + (eb.targetRangeSide === "beyond" ? "beyond" : "within") + " " + eb.targetRangeFt + " ft" + (on ? " (counted at " + rangeFt + " ft)" : " (off at " + rangeFt + " ft)")); }
+        if (eb.apBelowPct != null) add("ap", ap < eb.apBelowPct, nm + ": AP under " + eb.apBelowPct + "%" + (ap < eb.apBelowPct ? " (counted)" : " (off at " + ap + "%)"));
+        if (eb.apFullOnly) add("ap", ap >= 100, nm + ": full AP only" + (ap >= 100 ? " (counted)" : " (off at " + ap + "%)"));
+        if (eb.staminaAbovePct != null) add("stam", stam > eb.staminaAbovePct, nm + ": stamina over " + eb.staminaAbovePct + "%" + (stam > eb.staminaAbovePct ? " (counted)" : " (off)"));
+        if (eb.staminaBelowPct != null) add("stam", stam < eb.staminaBelowPct, nm + ": stamina under " + eb.staminaBelowPct + "%" + (stam < eb.staminaBelowPct ? " (counted)" : " (off)"));
+        if (eb.healthBelowPct != null) add("hp", hp <= eb.healthBelowPct, nm + ": health at or under " + eb.healthBelowPct + "%" + (hp <= eb.healthBelowPct ? " (counted)" : " (off at " + hp + "%)"));
+        if (eb.healthAbovePct != null) add("hp", hp >= eb.healthAbovePct, nm + ": health at or over " + eb.healthAbovePct + "%" + (hp >= eb.healthAbovePct ? " (counted)" : " (off at " + hp + "%)"));
+        if (eb.missingHealthMaxAtPct != null) { const f = Math.max(0, Math.min(1, (100 - hp) / (100 - Math.min(99, eb.missingHealthMaxAtPct)))); add("hp", f > 0, nm + ": scales with missing health (" + Math.round(f * 100) + "% of max at " + hp + "% HP)"); }
+        if (eb.movingOnly) add("mv", moving, nm + ": while moving" + (moving ? " (counted)" : " (off: standing still)"));
+        if (eb.standingOnly) add("mv", !moving, nm + ": after standing still" + (!moving ? " (counted)" : " (off: moving)"));
+        if (eb.minEnemies != null || eb.requiresMultiEnemy) { const n = eb.minEnemies || 3; add("en", enemies >= n, nm + ": needs " + n + "+ enemies" + (enemies >= n ? " (counted)" : " (off at " + enemies + ")")); }
+        if (eb.maxEnemies != null) add("en", enemies <= eb.maxEnemies, nm + ": up to " + eb.maxEnemies + " enemies" + (enemies <= eb.maxEnemies ? " (counted)" : " (off at " + enemies + ")"));
+        if (eb.perEnemy) add("en", true, nm + ": per enemy (" + Math.min(enemies, eb.maxStacks || enemies) + " counted)");
+        if (eb.vsRangedOnly) add("iat", st.incomingAttackType === "ranged", nm + ": vs ranged attackers" + (st.incomingAttackType === "ranged" ? " (counted)" : " (off: melee)"));
+        if (eb.vsMeleeOnly) add("iat", st.incomingAttackType !== "ranged", nm + ": vs melee attackers" + (st.incomingAttackType !== "ranged" ? " (counted)" : " (off: ranged)"));
+        if (eb.vsShieldedOnly) add("tsh", !!st.targetShielded, nm + ": shielded target only" + (st.targetShielded ? " (counted)" : " (off)"));
+        if (eb.zones && eb.zones.length) { const on = eb.zones.includes(st.contentZone || ""); add("zone", on, nm + ": in " + eb.zones.join("/") + (on ? " (counted)" : " (off: " + (st.contentZone || "General") + ")")); }
+        if (eb.zonesExclude && eb.zonesExclude.length) { const on = !eb.zonesExclude.includes(st.contentZone || ""); add("zone", on, nm + ": outside " + eb.zonesExclude.join("/") + (on ? " (counted)" : " (off)")); }
+        if (eb.soloOnly) add("party", solo, nm + ": solo only" + (solo ? " (counted)" : " (off: in a party)"));
+        if (eb.partyOnly) add("party", !solo, nm + ": in a party" + (!solo ? " (counted)" : " (off: solo)"));
+        if (eb.perTeammate) add("party", true, nm + ": per teammate (" + (solo ? 1 : (st.partyContent === "trial" ? 10 : 5)) + " counted)");
+        if (eb.conditionId && typeof resolveBuildCondition === "function") { const r = resolveBuildCondition(eb.conditionId, st); const def = BUILD_CONDITIONS[eb.conditionId]; add("cond", r.value, nm + ": " + (def ? def.label : eb.conditionId) + " - " + (r.value ? "yes" : "no") + " (" + r.reason + ")"); }
+        if (eb.ramp && typeof eb.ramp.perMin === "number") { const tic = (typeof st.timeInCombatSec === "number") ? st.timeInCombatSec : 120; add("tic", true, nm + ": ramps " + eb.ramp.perMin + "/min, " + Math.round(Math.min(eb.amount, eb.ramp.perMin * tic / 60) * 10) / 10 + " at " + Math.round(tic / 60 * 10) / 10 + " min"); }
+        if (eb.role) { const r = String(eb.role).toLowerCase(), me = String(st.role || "").toLowerCase(); const on = r === me || ((r === "heal" || r === "healer") && (me === "heal" || me === "healer")); add("role", on, nm + ": " + eb.role + " role only" + (on ? " (counted)" : " (off)")); }
+      }
+      return out;
+    }
+    window.scenarioTagsForItem = scenarioTagsForItem;
+    function updateScenarioControls() {
+      const sum = document.getElementById("scenario-summary"); if (sum) sum.textContent = scenarioSummary();
+      const h = document.getElementById("scenario-health-pct"), hl = document.getElementById("scenario-health-label");
+      const hv = (state.currentHealthPct == null ? 100 : state.currentHealthPct); if (h) h.value = hv; if (hl) hl.textContent = hv + "%";
+      const dh = document.getElementById("dstats-health"), dhv = document.getElementById("dstats-health-val"); if (dh) dh.value = hv; if (dhv) dhv.textContent = hv + "%";
+      const t = document.getElementById("time-in-combat"), tl = document.getElementById("time-in-combat-label");
+      const tv = (typeof state.timeInCombatSec === "number") ? state.timeInCombatSec : 120; if (t) t.value = tv; if (tl) tl.textContent = tv >= 60 ? (Math.round(tv / 60 * 10) / 10) + " min" : tv + " s";
+      const pc = document.getElementById("scenario-party-content"); if (pc) pc.value = ["trial", "solo"].includes(state.partyContent) ? state.partyContent : "dungeon";
+      const ph = document.getElementById("scenario-party-healer"); if (ph) ph.value = state.partyHealerClass || "";
+    }
+    function wireScenarioPanel() {
+      const tog = document.getElementById("scenario-toggle"), body = document.getElementById("scenario-body");
+      if (tog && body) tog.addEventListener("click", () => { body.hidden = !body.hidden; tog.textContent = body.hidden ? "Edit scenario" : "Hide scenario"; });
+      document.querySelectorAll(".sc-tab").forEach(b => b.addEventListener("click", () => {
+        document.querySelectorAll(".sc-tab").forEach(x => x.classList.toggle("active", x === b));
+        document.querySelectorAll(".sc-pane").forEach(pn => { pn.hidden = pn.dataset.scPane !== b.dataset.scTab; });
+      }));
+      const h = document.getElementById("scenario-health-pct");
+      if (h) h.addEventListener("input", e => { state.currentHealthPct = +e.target.value; rerenderAll(); });
+      const t = document.getElementById("time-in-combat");
+      if (t) t.addEventListener("input", e => { state.timeInCombatSec = Math.max(0, Math.min(600, +e.target.value || 0)); rerenderAll(); });
+      const pc = document.getElementById("scenario-party-content");
+      if (pc) pc.addEventListener("change", e => { state.partyContent = e.target.value; if (typeof renderBuffs === "function") renderBuffs(); rerenderAll(); });
+      const ph = document.getElementById("scenario-party-healer");
+      if (ph) ph.addEventListener("change", e => { state.partyHealerClass = e.target.value || ""; if (typeof renderBuffs === "function") renderBuffs(); rerenderAll(); });
+      updateScenarioControls();
+    }
     // Every equip bonus on the pieces currently on the build (gear + overloads).
     function equippedEquipBonuses() {
       const out = [];
@@ -12570,11 +12716,9 @@
       "sim-shield-field":      eb => !!eb.vsShieldedOnly
     };
     function updateSimControlVisibility() {
-      const ebs = equippedEquipBonuses().map(x => x.eb);
-      for (const id in SIM_CONTROL_NEEDS) {
-        const el = document.getElementById(id); if (!el) continue;
-        el.hidden = !ebs.some(SIM_CONTROL_NEEDS[id]);
-      }
+      // Retired 2026-09-08: the Combat scenario panel shows every control all the
+      // time (n00b, after reviewing NWCharBuilderPlus). SIM_CONTROL_NEEDS is kept
+      // for the scenario summary / optimizer tags.
     }
 
     function buildEngineCharacter(s) {
@@ -13636,6 +13780,13 @@
       }
       // Solo / party gate (n00b 2026-09-08): Content type "Solo" switches soloOnly
       // entries on and partyOnly entries off; perTeammate stackers use _partySize.
+      // Ramp bonuses (n00b 2026-09-08): eb.ramp = {perMin} grows with Time in combat
+      // up to eb.amount (the cap). Artifact Fanatic: +2%/min, cap 20%.
+      const _tic = (typeof s.timeInCombatSec === "number") ? s.timeInCombatSec : 120;
+      function _ebAmount(eb) {
+        if (eb && eb.ramp && typeof eb.ramp.perMin === "number") return Math.min(eb.amount, eb.ramp.perMin * _tic / 60);
+        return eb.amount;
+      }
       const _solo = (s.partyContent === "solo");
       const _partySize = _solo ? 1 : (s.partyContent === "trial" ? 10 : 5);
       function _partySkip(eb) {
@@ -13801,7 +13952,7 @@
                 source: `${baseLabel} (${stackLabel}${uptimeFactor < 1 ? `, ~${Math.round(uptimeFactor * 100)}% uptime` : ``})`,
                 conditional: true,
                 uptime: uptimeFactor < 1 ? uptimeFactor : undefined,
-                [channel]: { [eb.stat]: eb.amount * effStacks * uptimeFactor }
+                [channel]: { [eb.stat]: _ebAmount(eb) * effStacks * uptimeFactor }
               });
             } else {
               // 1-stack always-on baseline + extra stacks conditional
@@ -13816,7 +13967,7 @@
                   source: `${baseLabel} (${stackLabel}${uptimeFactor < 1 ? `, ~${Math.round(uptimeFactor * 100)}% uptime` : ``})`,
                   conditional: true,
                   uptime: uptimeFactor < 1 ? uptimeFactor : undefined,
-                  [channel]: { [eb.stat]: eb.amount * extra * uptimeFactor }
+                  [channel]: { [eb.stat]: _ebAmount(eb) * extra * uptimeFactor }
                 });
               }
             }
@@ -13830,7 +13981,7 @@
               source: baseLabel + (uptimeFactor < 1 ? ` (${eb.uptimeWeighted ? 'proc ' : ''}~${Math.round(uptimeFactor * 100)}% uptime)` : ``),
               conditional: eb.uptimeWeighted ? false : isConditional,
               uptime: uptimeFactor < 1 ? uptimeFactor : undefined,
-              [channel]: { [eb.stat]: eb.amount * uptimeFactor }
+              [channel]: { [eb.stat]: _ebAmount(eb) * uptimeFactor }
             });
           }
           // type === "Modification" or anything else: skip (narrative)
@@ -14291,7 +14442,7 @@
             source: `Overload ${i + 1}: ${o.name}${ctxTag}`,
             conditional: isCond,
             uptime: uptimeFactor < 1 ? uptimeFactor : undefined,
-            [channel]: { [eb.stat]: eb.amount * uptimeFactor }
+            [channel]: { [eb.stat]: _ebAmount(eb) * uptimeFactor }
           });
         }
       }
@@ -14535,7 +14686,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, tic: state.timeInCombatSec, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
@@ -19539,7 +19690,7 @@
       // their value get re-derived from build state.
       applyAutoTIL();
       if (typeof renderBuildConditions === "function") renderBuildConditions();
-      if (typeof updateSimControlVisibility === "function") updateSimControlVisibility();
+      if (typeof updateScenarioControls === "function") updateScenarioControls();
       renderQuickStats();
       renderScore();
       renderStepDoneStates();
@@ -19773,6 +19924,7 @@
     const iatSel = document.getElementById("incoming-attack-type");
     if (iatSel) iatSel.addEventListener("change", e => { state.incomingAttackType = e.target.value === "ranged" ? "ranged" : "melee"; rerenderAll(); });
     updateAttackTypeControl();
+    wireScenarioPanel();
     const tshCb = document.getElementById("target-shielded");
     if (tshCb) tshCb.addEventListener("change", e => { state.targetShielded = !!e.target.checked; rerenderAll(); });
     updateShieldControl();
