@@ -2660,3 +2660,4 @@ creation or the wiki-independent in-game race info card).
 ## Enchanter's Hex (insignia bonus) - REVISIT (n00b 2026-09-09)
 - "When you use an Encounter or Daily power with a control effect on a target, deal an extra 50 magnitude damage."
 - Needs powers tagged with their control effects (classes.json has free-text addedEffect only) before this can be a proc. Display-only until then.
+- Same dependency: Combatant's Maneuver (2500 Combat Advantage for 10 s whenever you control an enemy).
