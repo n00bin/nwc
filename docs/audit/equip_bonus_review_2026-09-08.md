@@ -83,3 +83,18 @@ Systems built during the review: Distance / AP / Stamina / Movement / Enemies / 
 - 118-123 Drafting/On Daily Use notes; Wanderer's Vigor soloOnly; Survivor's Vigor fine; Leader's Vitality perTeammate; Shroud fine; SOLO MODE built; proc collectors now gated (bug fix)
 - 124-129 Control Power Regen fine; Gold Bonus/Vanishing/Reflexive/Impenetrability/Cowardice notes
 - 130-148 Underdark rings + old artifact text: all fine / notes. QUEUE CLOSED 2026-09-08
+
+
+# Insignia bonus review - rulings log (2026-09-09)
+
+Same process as the gear review: 43 names, one at a time. Queue: scripts/_insig_review_queue.py. Insignia bonuses now carry gear-style equipBonuses (gates, procs, windows, cadence triggers).
+
+- INSIG 1-3: Master's Cruelty fine; Defender's Retort procDamage 200 struck icd10; Tactician's Precision cdProc 5s/daily
+- INSIG 4-6: Enchanter's Hex REVISIT (control-tag powers); Protector's Covenant fine; Lionheart's procHeal 20% <=30% hp
+- INSIG 7-10: Warlord's Motivation display-only (no comp dmg layer); Ally's Resilience party; Master's Precision stamina 25-75; Mender's fine
+- INSIG 11-14: cadence sliders built (daily/artifact/mountpower 60s, n00b); Artificer's cdProc artifact 3s; Cavalry's Haste cdProc mountpower 4s; Accursed's 0.9; Executioner's fine
+- INSIG 15-19: Cautious Devotion/Guardian's/Trainer's fine; Predator's Instinct window 20s mountpower; Cavalry's Alarm old text rule (cadence-driven)
+- INSIG 20-25: Knight's Condemnation procHeal struck 100% (enemy CA on every hit, n00b) icd10; Shepherd's window daily 10s + party; Traveler's note; rest fine
+- INSIG 26-29: Wanderer's note; Assassin's fine; Champion's Return procHeal 10% <=50% icd30; Berserker's fine
+- INSIG 30-36 applied per assumptions (n00b fine)
+- INSIG 37-43 applied; INSIGNIA QUEUE CLOSED 2026-09-09
