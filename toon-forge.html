@@ -11786,7 +11786,7 @@
           if (gs[0] === "daily") { const ap = (+p.actionPointCost > 0) ? +p.actionPointCost : 1000; const iv = ap / (AP_PER_SEC * (1 + apg)); uptime = iv > 0 ? Math.min(1, (b.durationSeconds || 0) / iv) : 1; }
           else if (gs[0] === "encounter") { const cd = p.cooldownSeconds || p.rechargeSeconds || 0; const cdEff = cd > 0 ? Math.max(cd, 6) / (1 + rsi) : 0; uptime = cdEff > 0 ? Math.min(1, (b.durationSeconds || 0) / cdEff) : 1; }
           else uptime = 1;
-          if (state.forcedPowerBuffs && state.forcedPowerBuffs[nm]) uptime = 1;   // Combat scenario Class tab: "up the whole fight"
+          if (state.forcedPowerBuffs && state.forcedPowerBuffs[nm] && (typeof classTabEnabled !== "function" || classTabEnabled())) uptime = 1;   // Combat scenario Class tab: "up the whole fight"
           let eff = (b.pct || 0) * uptime;
           if (b.appliesTo && mix && mix[b.appliesTo] != null) eff *= mix[b.appliesTo];
           pct += eff;
@@ -12739,6 +12739,13 @@
       return out;
     }
     window.scenarioTagsForItem = scenarioTagsForItem;
+    // Class tab gate (n00b 2026-09-08): stays local-only until it works properly.
+    const TF_CLASS_TAB_LIVE = false;
+    function tfIsLocal() {
+      try { const h = location.hostname; return location.protocol === "file:" || h === "localhost" || h === "127.0.0.1" || h === ""; } catch (e) { return false; }
+    }
+    function classTabEnabled() { return TF_CLASS_TAB_LIVE || tfIsLocal(); }
+    window.classTabEnabled = classTabEnabled;
     // Class mechanics for the current class + paragon (classes.json `mechanic` arrays:
     // class powers, paragon path, paragon powers); paragon copies win on a name clash.
     function classMechanicsFor(cls, paragon) {
@@ -12777,12 +12784,17 @@
     }
     function renderClassMechanics() {
       const box = document.getElementById("class-mechanics-box"); if (!box) return;
+      if (!classTabEnabled()) { box.innerHTML = '<p class="hint" style="color:var(--amber);"><strong>Coming soon.</strong> Class mechanics and buff powers (Battlerage, Soul Sparks, Curse, Vengeance...) are being worked out and do not affect any number yet.</p>'; return; }
+      // Do not rebuild the box while a control inside it is being dragged (the slider was
+      // being destroyed mid-drag); the change event re-renders when the drag ends.
+      if (box.contains(document.activeElement) && document.activeElement.type === "range") return;
       const mechs = classMechanicsFor(state.class, state.paragon);
       if (!mechs.length) { box.innerHTML = '<p class="hint">Pick a class and paragon first.</p>'; return; }
       if (!state.paragon) { box.innerHTML = '<p class="hint" style="color:var(--amber);">No paragon picked yet: only class-wide mechanics and powers are listed. Pick your paragon in step 1 to see its own mechanics (Soul Sparks, Curse, Battlerage, Vengeance...) and powers.</p>'; }
       else box.innerHTML = "";
       const am = state.activeMechanics || {};
-      box.innerHTML += mechs.map(m => {
+      const notModeled = mechs.filter(m => !(Array.isArray(m.effects) && m.effects.length)).map(m => m.name);
+      box.innerHTML += mechs.filter(m => Array.isArray(m.effects) && m.effects.length).map(m => {
         const fx = Array.isArray(m.effects) ? m.effects : [];
         const a = am[m.name];
         const fxText = fx.length ? fx.map(ef => (ef.amount > 0 ? "+" : "") + ef.amount + ((ef.kind === "rating" || ef.kind === "flat") ? "" : "%") + " " + ef.stat + (ef.perStack ? " per stack (max " + ef.maxStacks + ")" : "")).join(", ") : "";
@@ -12790,8 +12802,8 @@
         const ctl = stackFx
           ? `<input type="range" data-mech="${escapeHtmlTF(m.name)}" data-mech-stacks="1" min="0" max="${stackFx.maxStacks || 1}" step="1" value="${typeof a === "number" ? a : 0}" style="width:110px;vertical-align:middle;"> <span class="hint" data-mech-label="${escapeHtmlTF(m.name)}">${typeof a === "number" ? a : 0} stacks</span>`
           : `<input type="checkbox" data-mech="${escapeHtmlTF(m.name)}"${a ? " checked" : ""}${fx.length ? "" : " disabled"}>`;
-        return `<div class="boon-row" style="cursor:default;"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(m.name)}${fx.length ? "" : ' <span class="hint">(no stat effect on record)</span>'}</div><div class="boon-row-effect">${escapeHtmlTF(fxText || m.addedEffect || m.notes || "")}</div></div><div class="boon-counter">${ctl}</div></div>`;
-      }).join("");
+        return `<div class="boon-row" style="cursor:default;"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(m.name)}</div><div class="boon-row-effect">${escapeHtmlTF(fxText || m.addedEffect || m.notes || "")}</div></div><div class="boon-counter">${ctl}</div></div>`;
+      }).join("") + (notModeled.length ? `<p class="hint" style="margin:0.4rem 0 0;">Not modeled yet: <span translate="no">${notModeled.map(escapeHtmlTF).join(", ")}</span></p>` : "");
       // ---- Powers with buffs / debuffs (class + paragon pool) ----
       const BUFF_RE = /increases? (?:your )?damage|damage dealt|damage taken|takes? \d+% more damage|damage resistance|less damage|combat advantage|increases? (?:your )?power|critical (?:strike|severity)|deflect|awareness|defense|recharge speed|action point|outgoing healing|incoming healing|absorb|\+\d+(?:\.\d+)?% damage/i;
       const slotted = new Set([].concat(state.slottedAtWills || [], state.slottedEncounters || [], state.slottedDailies || []).filter(Boolean));
@@ -12817,13 +12829,16 @@
         if (e.target.checked) state.forcedPowerBuffs[e.target.dataset.fpb] = true; else delete state.forcedPowerBuffs[e.target.dataset.fpb];
         rerenderAll();
       }));
-      box.querySelectorAll("input[data-mech]").forEach(el => el.addEventListener(el.type === "range" ? "input" : "change", e => {
-        if (!state.activeMechanics) state.activeMechanics = {};
-        const nm = e.target.dataset.mech;
-        if (e.target.type === "range") { const v = +e.target.value; if (v > 0) state.activeMechanics[nm] = v; else delete state.activeMechanics[nm]; const lb = box.querySelector(`[data-mech-label="${CSS.escape(nm)}"]`); if (lb) lb.textContent = v + " stacks"; }
-        else { if (e.target.checked) state.activeMechanics[nm] = true; else delete state.activeMechanics[nm]; }
-        rerenderAll();
-      }));
+      box.querySelectorAll("input[data-mech]").forEach(el => {
+        const apply = (e) => {
+          if (!state.activeMechanics) state.activeMechanics = {};
+          const nm = e.target.dataset.mech;
+          if (e.target.type === "range") { const v = +e.target.value; if (v > 0) state.activeMechanics[nm] = v; else delete state.activeMechanics[nm]; const lb = box.querySelector(`[data-mech-label="${CSS.escape(nm)}"]`); if (lb) lb.textContent = v + " stacks"; }
+          else { if (e.target.checked) state.activeMechanics[nm] = true; else delete state.activeMechanics[nm]; }
+        };
+        if (el.type === "range") { el.addEventListener("input", apply); el.addEventListener("change", e => { apply(e); el.blur(); rerenderAll(); }); }
+        else el.addEventListener("change", e => { apply(e); rerenderAll(); });
+      });
     }
     function enemyTypeChoices() {
       const set = new Set();
@@ -14678,7 +14693,7 @@
 
       // Class mechanics (Combat scenario Class tab, n00b 2026-09-08): a mechanic the
       // player marks active contributes its data-driven effects[] (classes.json).
-      for (const m of ((typeof classMechanicsFor === "function") ? classMechanicsFor(s.class, s.paragon) : [])) {
+      for (const m of ((typeof classMechanicsFor === "function" && (typeof classTabEnabled !== "function" || classTabEnabled())) ? classMechanicsFor(s.class, s.paragon) : [])) {
         const a = s.activeMechanics && s.activeMechanics[m.name];
         if (!a || !Array.isArray(m.effects)) continue;
         for (const ef of m.effects) {
