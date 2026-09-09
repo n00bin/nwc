@@ -12661,6 +12661,15 @@
     }
     function escapeHtmlTF(t) { return String(t == null ? "" : t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
     // ===== Combat scenario helpers (n00b 2026-09-08) =====
+    // Powers gate (n00b 2026-09-09): damage and healing are per-hit x casts-per-second,
+    // and casts-per-second comes from the slotted powers. No rotation = no honest number,
+    // so the Results damage view and the dps/heal optimizer refuse to score until at
+    // least one at-will and one encounter are slotted (step 2). Tank survival needs none.
+    function hasRotationSlotted() {
+      const some = arr => Array.isArray(arr) && arr.some(x => x && String(x).trim());
+      return some(state.slottedAtWills) && some(state.slottedEncounters);
+    }
+    window.tfHasRotation = hasRotationSlotted;
     function scenarioSummary() {
       const st = state;
       const zone = st.contentZone || "General";
@@ -12676,7 +12685,8 @@
         (st.enemyTypes && st.enemyTypes.length) ? "vs " + st.enemyTypes.join("/") : null,
         (typeof st.flankUptime === "number" && st.flankUptime < 1) ? "CA " + Math.round(st.flankUptime * 100) + "%" : null,
         Object.keys(st.activeMechanics || {}).length ? "mechanics: " + Object.keys(st.activeMechanics).join(", ") : null,
-        Object.keys(st.forcedPowerBuffs || {}).length ? "buffs up all fight: " + Object.keys(st.forcedPowerBuffs).join(", ") : null];
+        Object.keys(st.forcedPowerBuffs || {}).length ? "buffs up all fight: " + Object.keys(st.forcedPowerBuffs).join(", ") : null,
+        (String(st.role || "").toLowerCase() !== "tank" && !hasRotationSlotted()) ? "NO POWERS SLOTTED (damage not scored)" : null];
       return parts.filter(Boolean).join(" · ");
     }
     window.scenarioSummary = scenarioSummary;
@@ -19514,6 +19524,15 @@
       const roleMult = ROLE_MULT[roleKey] || 1.20;
       const isHealer = (roleKey === "heal");
       const isTank   = (roleKey === "tank");
+      if (!isTank && !hasRotationSlotted()) {
+        body.innerHTML = '<div class="panel" style="grid-column:1/-1;border-color:var(--amber);"><strong style="color:var(--amber);">Slot your powers first.</strong> ' +
+          (isHealer ? 'Healing' : 'Damage') + ' is damage per hit times casts per second, and casts per second comes from the powers you slot. Pick at least one at-will and one encounter in ' +
+          '<a href="#" id="powers-gate-jump">step 2 &rarr; Your Powers</a> and this page fills in.</div>';
+        const j = document.getElementById("powers-gate-jump"); if (j) j.addEventListener("click", e => { e.preventDefault(); gotoStep(2); });
+        const sa = document.getElementById("stat-advisor"); if (sa) sa.innerHTML = "";
+        const ah = document.getElementById("advisor-hint"); if (ah) ah.textContent = "Slot your powers in step 2 to see what to upgrade next.";
+        return;
+      }
 
       // Engine percentages → decimals
       const stat = (n) => ((r.stats[n] && r.stats[n].finalPct) || 0) / 100;
