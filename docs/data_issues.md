@@ -2656,3 +2656,7 @@ creation or the wiki-independent in-game race info card).
 ## Lion Guard's Ward Helm / Raid Helm (Fighter, IL 1250) - Charged Might stat name clipped (2026-09-08)
 - Both archived screenshots cut the tooltip at the right edge: "When your Stamina is over 75%, you[r ...] is increased by 5000."
 - Every other class's Lion Guard helm reads Power, but the rule is the item's own tooltip -> both stay display-only until a reshoot with the tooltip fully in frame.
+
+## Enchanter's Hex (insignia bonus) - REVISIT (n00b 2026-09-09)
+- "When you use an Encounter or Daily power with a control effect on a target, deal an extra 50 magnitude damage."
+- Needs powers tagged with their control effects (classes.json has free-text addedEffect only) before this can be a proc. Display-only until then.
