@@ -2719,6 +2719,8 @@
           <button type="button" class="btn btn-ghost sc-tab active" data-sc-tab="you">You</button>
           <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="fight">Fight</button>
           <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="party">Party</button>
+          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="powers">Powers</button>
+          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="class">Class</button>
           <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="conditions">Conditions</button>
         </div>
         <div class="sc-pane row-2" data-sc-pane="you">
@@ -2756,6 +2758,19 @@
             <input type="range" id="time-in-combat" min="0" max="600" step="15" value="120" style="width:100%;">
             <span class="hint" id="time-in-combat-label">2 min</span>
           </div>
+          <div class="field" id="sc-standing-field">
+            <label>Standing still for
+              <span class="hint-icon" data-tip="Only read while Movement is Standing still. 'When you stand still for N seconds' bonuses (Defense / Advantage / Healing / Control Preparation) count once you have stood this long.">?</span>
+            </label>
+            <input type="range" id="standing-sec" min="0" max="30" step="1" value="5" style="width:100%;">
+            <span class="hint" id="standing-sec-label">5 s</span>
+          </div>
+          <div class="field" id="sc-incombat-field">
+            <label>In combat
+              <span class="hint-icon" data-tip="Off = the at-rest character sheet (what the game shows out of combat). On = in-combat bonuses (procs, stacks) are added to the Detailed Stats totals. Same switch as 'Hide in-combat bonuses' in Detailed Stats.">?</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="scenario-in-combat"> <span class="hint">Show in-combat bonuses in Detailed Stats</span></label>
+          </div>
         </div>
         <div class="sc-pane row-2" data-sc-pane="fight" hidden>
           <div class="field" id="sim-zone-field">
@@ -2790,6 +2805,26 @@
             </label>
             <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="target-shielded"> <span class="hint">Shielded enemy</span></label>
           </div>
+          <div class="field" id="sc-enemy-hp-field">
+            <label>Enemy health
+              <span class="hint-icon" data-tip="The enemy's health during the fight. 'When your enemy's health is greater than N%' bonuses (Destroyer's Might, Killer's Might) and execute-style bonuses read this.">?</span>
+            </label>
+            <input type="range" id="enemy-health-pct" min="0" max="100" step="5" value="100" style="width:100%;">
+            <span class="hint" id="enemy-health-label">100%</span>
+          </div>
+          <div class="field" id="sc-ca-field">
+            <label>Combat Advantage uptime
+              <span class="hint-icon" data-tip="How much of the fight you have Combat Advantage (flanking, or a Combat Advantage source on you). The damage model multiplies your CA bonus by this. Tanks and healers that stand in front rarely flank.">?</span>
+            </label>
+            <input type="range" id="flank-uptime-pct" min="0" max="100" step="5" value="100" style="width:100%;">
+            <span class="hint" id="flank-uptime-label">100%</span>
+          </div>
+          <div class="field" id="sc-enemy-types-field" style="grid-column:1 / -1;">
+            <label>Enemy types in this fight
+              <span class="hint-icon" data-tip="Tick every creature type you fight. Gear and wards with 'vs Dragon', 'vs Undead' and similar bonuses count only when that type is ticked. Several can be on at once.">?</span>
+            </label>
+            <div id="enemy-types-box" style="display:flex;flex-wrap:wrap;gap:0.4rem 0.9rem;"></div>
+          </div>
         </div>
         <div class="sc-pane row-2" data-sc-pane="party" hidden>
           <div class="field">
@@ -2805,6 +2840,14 @@
             <select id="scenario-party-healer" style="width:100%;"><option value="">None / unknown</option><option value="Paladin">Paladin</option><option value="Cleric">Cleric</option><option value="Warlock">Warlock</option><option value="Bard">Bard</option></select>
           </div>
           <p class="hint" style="grid-column:1 / -1;margin:0;">Allies' companions and mount auras are picked in <strong>Boons &amp; Buffs → Party Buffs</strong>.</p>
+        </div>
+        <div class="sc-pane" data-sc-pane="powers" hidden>
+          <p class="hint" style="margin:0 0 0.5rem;">Damage mix from your slotted powers over the Time in combat you set: each encounter casts every cooldown (after Recharge Speed), each daily every AP bar, the strongest at-will fills the rest. Read-only; change your powers in <strong>Your Character → Your Powers</strong>.</p>
+          <div id="damage-mix-box"></div>
+        </div>
+        <div class="sc-pane" data-sc-pane="class" hidden>
+          <p class="hint" style="margin:0 0 0.5rem;">Class mechanics for your class and paragon. Tick the ones that are up during the fight you are building for. Mechanics with numbers in their tooltip feed the stats; the rest are listed so nothing is forgotten.</p>
+          <div id="class-mechanics-box"></div>
         </div>
         <div class="sc-pane" data-sc-pane="conditions" hidden>
           <div id="build-conditions"></div>
@@ -3467,6 +3510,10 @@
       // are EXCLUDED, so situational damage never inflates the always-on number.
       contentZone: "",
       targetShielded: false,   // "Target has a shield" toggle; gates vsShieldedOnly entries (Shield Breaker) (n00b 2026-09-08)
+      enemyHealthPct: 100,    // Combat scenario: enemy health; gates enemyHealthAbovePct / enemyHealthBelowPct entries
+      enemyTypes: [],         // Combat scenario: enemy types in the fight ("Dragon", "Undead"...); gates "vs X" zone entries
+      standingSec: 5,         // Combat scenario: seconds standing still (only read while Movement = standing)
+      activeMechanics: {},    // Combat scenario Class tab: {mechanicName: true | stacks}
       timeInCombatSec: 120,   // Combat scenario: how long the fight has run; drives eb.ramp bonuses (n00b 2026-09-08)
       incomingAttackType: "melee",   // "melee" | "ranged" toggle; gates vsMeleeOnly / vsRangedOnly entries (n00b 2026-09-08)
       enemyCount: 1,   // Enemies-in-combat slider (1 = single boss); gates minEnemies / maxEnemies / requiresMultiEnemy and scales per-enemy stackers (n00b 2026-09-08)
@@ -3689,6 +3736,10 @@
           enemyCount: (typeof state.enemyCount === "number") ? state.enemyCount : 1,
           incomingAttackType: state.incomingAttackType === "ranged" ? "ranged" : "melee",
           timeInCombatSec: (typeof state.timeInCombatSec === "number") ? state.timeInCombatSec : 120,
+          enemyHealthPct: (typeof state.enemyHealthPct === "number") ? state.enemyHealthPct : 100,
+          enemyTypes: Array.isArray(state.enemyTypes) ? state.enemyTypes.slice() : [],
+          standingSec: (typeof state.standingSec === "number") ? state.standingSec : 5,
+          activeMechanics: Object.assign({}, state.activeMechanics || {}),
           targetShielded: !!state.targetShielded,
           partyAllies: [...(state.partyAllies || [])],
           partyMountAllies: [...(state.partyMountAllies || [])],
@@ -3851,7 +3902,7 @@
       // Damage-sim settings: restore explicitly with defaults, so loading an
       // old save (without these keys) resets them instead of inheriting
       // whatever the current session had.
-      state.flankUptime = 1.0;  // fixed 100% CA uptime; ignore any saved slider value
+      state.flankUptime = (typeof s.flankUptime === "number") ? Math.max(0, Math.min(1, s.flankUptime)) : 1.0;  // Combat scenario CA uptime slider (re-exposed 2026-09-08)
       state.currentHealthPct = (typeof s.currentHealthPct === "number") ? s.currentHealthPct : 100;
       state.simMag = (typeof s.simMag === "number") ? s.simMag : 100;
       state.contentZone = (typeof s.contentZone === "string") ? s.contentZone : "";
@@ -3868,6 +3919,10 @@
       if (typeof updateEnemyCountControl === "function") updateEnemyCountControl();
       state.incomingAttackType = (s.incomingAttackType === "ranged") ? "ranged" : "melee";
       state.timeInCombatSec = (typeof s.timeInCombatSec === "number") ? Math.max(0, Math.min(600, s.timeInCombatSec)) : 120;
+      state.enemyHealthPct = (typeof s.enemyHealthPct === "number") ? Math.max(0, Math.min(100, s.enemyHealthPct)) : 100;
+      state.enemyTypes = Array.isArray(s.enemyTypes) ? s.enemyTypes.filter(x => typeof x === "string") : [];
+      state.standingSec = (typeof s.standingSec === "number") ? Math.max(0, Math.min(30, s.standingSec)) : 5;
+      state.activeMechanics = (s.activeMechanics && typeof s.activeMechanics === "object") ? Object.assign({}, s.activeMechanics) : {};
       if (typeof updateAttackTypeControl === "function") updateAttackTypeControl();
       state.targetShielded = !!s.targetShielded;
       if (typeof updateShieldControl === "function") updateShieldControl();
@@ -4322,7 +4377,7 @@
       _scanZones(typeof GEAR_DATA !== "undefined" ? GEAR_DATA : []);
       _scanZones(typeof OVERLOADS_DATA !== "undefined" ? OVERLOADS_DATA : []);
       const items = [{ name: "General (anywhere)", zone: "" }]
-        .concat([...zoneSet].sort().map(z => ({ name: z, zone: z })));
+        .concat([...zoneSet].filter(z => !/^vs /.test(z)).sort().map(z => ({ name: z, zone: z })));   // "vs X" = Enemy types (Combat scenario)
       openPicker({
         title: "Content zone",
         items,
@@ -12145,6 +12200,7 @@
       if (eb && eb.conditionId) return 1;   // build-condition gate already decided
       if (eb && (eb.soloOnly || eb.partyOnly)) return 1;   // solo / party gate already decided
       if (eb && eb.ramp) return 1;   // ramp entries are sized by Time in combat, not an uptime guess
+      if (eb && (eb.enemyHealthAbovePct != null || eb.enemyHealthBelowPct != null)) return 1;   // enemy health gate already decided
       if (eb && eb.uptimeClass && typeof CONDITIONAL_UPTIME[eb.uptimeClass] === 'number') return CONDITIONAL_UPTIME[eb.uptimeClass];
       const txt = ((eb.effectText || eb.description || '') + ' ' + (eb.name || '')).toLowerCase();
       if (eb.zones && eb.zones.length) return 1;            // zone-gated: the zone gate already confirmed we're in-zone, so it's fully active (full uptime) here — NOT 0, which would zero out the bonus
@@ -12370,8 +12426,15 @@
       if (!eb) return true;
       const st = (typeof state !== "undefined") ? state : {};
       const zone = st.contentZone || "";
-      if (eb.zones && eb.zones.length && !eb.zones.includes(zone)) return true;
+      if (eb.zones && eb.zones.length) {
+        const types = eb.zones.filter(z => /^vs /.test(z)), areas = eb.zones.filter(z => !/^vs /.test(z));
+        if (areas.length && !areas.includes(zone)) return true;
+        if (types.length && !types.some(z => (st.enemyTypes || []).includes(z.replace(/^vs /, "")))) return true;
+      }
       if (eb.zonesExclude && eb.zonesExclude.includes(zone)) return true;
+      const ehp = (typeof st.enemyHealthPct === "number") ? st.enemyHealthPct : 100;
+      if (eb.enemyHealthAbovePct != null && !(ehp > eb.enemyHealthAbovePct)) return true;
+      if (eb.enemyHealthBelowPct != null && !(ehp < eb.enemyHealthBelowPct)) return true;
       if (eb.role) { const r = String(eb.role).toLowerCase(), me = String(st.role || "").toLowerCase(); if (!(r === me || ((r === "heal" || r === "healer") && (me === "heal" || me === "healer")))) return true; }
       const solo = (st.partyContent === "solo");
       if (eb.soloOnly && !solo) return true;
@@ -12615,7 +12678,11 @@
         (st.incomingAttackType === "ranged" ? "ranged" : "melee") + " attackers", st.targetShielded ? "shielded target" : null,
         "HP " + (st.currentHealthPct == null ? 100 : st.currentHealthPct) + "%", "AP " + (st.currentApPct == null ? 50 : st.currentApPct) + "%",
         "stamina " + (st.currentStaminaPct == null ? 100 : st.currentStaminaPct) + "%", mv, (tic >= 60 ? Math.round(tic / 60 * 10) / 10 + " min" : tic + " s") + " in combat",
-        pc, "healer: " + (st.partyHealerClass || "none")];
+        pc, "healer: " + (st.partyHealerClass || "none"),
+        (st.enemyHealthPct != null && st.enemyHealthPct < 100) ? "enemy HP " + st.enemyHealthPct + "%" : null,
+        (st.enemyTypes && st.enemyTypes.length) ? "vs " + st.enemyTypes.join("/") : null,
+        (typeof st.flankUptime === "number" && st.flankUptime < 1) ? "CA " + Math.round(st.flankUptime * 100) + "%" : null,
+        Object.keys(st.activeMechanics || {}).length ? "mechanics: " + Object.keys(st.activeMechanics).join(", ") : null];
       return parts.filter(Boolean).join(" · ");
     }
     window.scenarioSummary = scenarioSummary;
@@ -12647,7 +12714,14 @@
         if (eb.vsRangedOnly) add("iat", st.incomingAttackType === "ranged", nm + ": vs ranged attackers" + (st.incomingAttackType === "ranged" ? " (counted)" : " (off: melee)"));
         if (eb.vsMeleeOnly) add("iat", st.incomingAttackType !== "ranged", nm + ": vs melee attackers" + (st.incomingAttackType !== "ranged" ? " (counted)" : " (off: ranged)"));
         if (eb.vsShieldedOnly) add("tsh", !!st.targetShielded, nm + ": shielded target only" + (st.targetShielded ? " (counted)" : " (off)"));
-        if (eb.zones && eb.zones.length) { const on = eb.zones.includes(st.contentZone || ""); add("zone", on, nm + ": in " + eb.zones.join("/") + (on ? " (counted)" : " (off: " + (st.contentZone || "General") + ")")); }
+        if (eb.zones && eb.zones.length) {
+          const types = eb.zones.filter(z => /^vs /.test(z)), areas = eb.zones.filter(z => !/^vs /.test(z));
+          if (areas.length) { const on = areas.includes(st.contentZone || ""); add("zone", on, nm + ": in " + areas.join("/") + (on ? " (counted)" : " (off: " + (st.contentZone || "General") + ")")); }
+          if (types.length) { const on = types.some(z => (st.enemyTypes || []).includes(z.replace(/^vs /, ""))); add("etype", on, nm + ": " + types.join("/") + (on ? " (counted)" : " (off: enemy type not ticked)")); }
+        }
+        if (eb.enemyHealthAbovePct != null) { const ehp = (st.enemyHealthPct == null ? 100 : st.enemyHealthPct); add("ehp", ehp > eb.enemyHealthAbovePct, nm + ": enemy above " + eb.enemyHealthAbovePct + "% health" + (ehp > eb.enemyHealthAbovePct ? " (counted at " + ehp + "%)" : " (off at " + ehp + "%)")); }
+        if (eb.enemyHealthBelowPct != null) { const ehp = (st.enemyHealthPct == null ? 100 : st.enemyHealthPct); add("ehp", ehp < eb.enemyHealthBelowPct, nm + ": enemy below " + eb.enemyHealthBelowPct + "% health" + (ehp < eb.enemyHealthBelowPct ? " (counted)" : " (off at " + ehp + "%)")); }
+        if (eb.standingOnly && eb.standingAfterSec != null) { const ok = !moving && (st.standingSec == null ? 5 : st.standingSec) >= eb.standingAfterSec; add("mv", ok, nm + ": after " + eb.standingAfterSec + " s standing still" + (ok ? " (counted)" : " (off)")); }
         if (eb.zonesExclude && eb.zonesExclude.length) { const on = !eb.zonesExclude.includes(st.contentZone || ""); add("zone", on, nm + ": outside " + eb.zonesExclude.join("/") + (on ? " (counted)" : " (off)")); }
         if (eb.soloOnly) add("party", solo, nm + ": solo only" + (solo ? " (counted)" : " (off: in a party)"));
         if (eb.partyOnly) add("party", !solo, nm + ": in a party" + (!solo ? " (counted)" : " (off: solo)"));
@@ -12659,7 +12733,92 @@
       return out;
     }
     window.scenarioTagsForItem = scenarioTagsForItem;
+    // Class mechanics for the current class + paragon (classes.json `mechanic` arrays:
+    // class powers, paragon path, paragon powers); paragon copies win on a name clash.
+    function classMechanicsFor(cls, paragon) {
+      const c = (typeof findClass === "function") ? findClass(cls) : null; if (!c) return [];
+      const out = new Map();
+      const add = (arr) => (arr || []).forEach(m => { if (m && m.name) out.set(m.name, m); });
+      add((c.powers || {}).mechanic);
+      const pp = (c.paragonPaths || []).find(x => x && x.name === paragon);
+      if (pp) { add(pp.mechanic); add((pp.powers || {}).mechanic); }
+      return [...out.values()];
+    }
+    // Damage mix over Time in combat: encounters cast every effective cooldown (first at t=0),
+    // dailies every AP bar (Action Point Gain shortens it), the strongest at-will fills the rest.
+    function rotationMixOverTime(T) {
+      const findP = (t, nm) => _paragonPowerPool(t).find(p => p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)));
+      const er = (typeof getEngineResult === "function") ? getEngineResult() : null;
+      const rsi = ((er && er.stats && er.stats["Recharge Speed"] && er.stats["Recharge Speed"].finalPct) || 0) / 100;
+      const apg = ((er && er.stats && er.stats["Action Point Gain"] && er.stats["Action Point Gain"].finalPct) || 0) / 100;
+      const mix = { atWill: 0, encounter: 0, daily: 0, lines: [] };
+      let bestAW = null;
+      (state.slottedAtWills || []).forEach(nm => { if (!nm) return; const p = findP("atWill", nm); if (!p) return; const side = p.ranged || p; const mag = _powerMag(p, state.paragon), cast = side.castSeconds || p.castSeconds || 0; if (mag > 0 && cast > 0 && (!bestAW || mag / cast > bestAW.mps)) bestAW = { nm, mps: mag / cast }; });
+      (state.slottedEncounters || []).forEach(nm => { if (!nm) return; const p = findP("encounter", nm); if (!p) return; const mag = _powerMag(p, state.paragon), cd = p.cooldownSeconds || p.rechargeSeconds || 0; const cdEff = cd > 0 ? Math.max(cd, 6) / (1 + rsi) : 0; if (!(mag > 0 && cdEff > 0)) return; const casts = Math.floor(T / cdEff) + 1; mix.encounter += mag * casts; mix.lines.push(nm + ": " + casts + " cast" + (casts === 1 ? "" : "s") + " (every " + Math.round(cdEff * 10) / 10 + " s)"); });
+      (state.slottedDailies || []).forEach(nm => { if (!nm) return; const p = findP("daily", nm); if (!p) return; const mag = _powerMag(p, state.paragon); const apCost = (+p.actionPointCost > 0) ? +p.actionPointCost : 1000; const iv = apCost / (40 * (1 + apg)); if (!(mag > 0 && iv > 0)) return; const casts = Math.floor(T / iv); mix.daily += mag * casts; mix.lines.push(nm + ": " + casts + " cast" + (casts === 1 ? "" : "s") + " (AP bar every " + Math.round(iv) + " s)"); });
+      if (bestAW) { mix.atWill = bestAW.mps * T; mix.lines.push(bestAW.nm + ": fills the gaps"); }
+      const tot = mix.atWill + mix.encounter + mix.daily;
+      mix.pct = tot > 0 ? { atWill: mix.atWill / tot * 100, encounter: mix.encounter / tot * 100, daily: mix.daily / tot * 100 } : null;
+      return mix;
+    }
+    function renderDamageMix() {
+      const box = document.getElementById("damage-mix-box"); if (!box) return;
+      let mix = null; try { mix = rotationMixOverTime((typeof state.timeInCombatSec === "number") ? state.timeInCombatSec : 120); } catch (e) { mix = null; }
+      if (!mix || !mix.pct) { box.innerHTML = '<p class="hint">Slot at least one power with a magnitude to see the mix.</p>'; return; }
+      const bar = (label, v) => `<div class="field" style="margin-bottom:0.3rem;"><label>${label} <span class="hint" style="float:right;">${Math.round(v)}%</span></label><input type="range" min="0" max="100" value="${Math.round(v)}" disabled style="width:100%;opacity:0.8;"></div>`;
+      box.innerHTML = '<div class="row-2">' + bar("At-will damage", mix.pct.atWill) + bar("Encounter damage", mix.pct.encounter) + bar("Daily damage", mix.pct.daily) + '</div>' +
+        '<p class="hint" style="margin:0.3rem 0 0;">' + mix.lines.map(escapeHtmlTF).join(" · ") + '</p>';
+    }
+    function renderClassMechanics() {
+      const box = document.getElementById("class-mechanics-box"); if (!box) return;
+      const mechs = classMechanicsFor(state.class, state.paragon);
+      if (!mechs.length) { box.innerHTML = '<p class="hint">Pick a class and paragon first.</p>'; return; }
+      const am = state.activeMechanics || {};
+      box.innerHTML = mechs.map(m => {
+        const fx = Array.isArray(m.effects) ? m.effects : [];
+        const a = am[m.name];
+        const fxText = fx.length ? fx.map(ef => (ef.amount > 0 ? "+" : "") + ef.amount + ((ef.kind === "rating" || ef.kind === "flat") ? "" : "%") + " " + ef.stat + (ef.perStack ? " per stack (max " + ef.maxStacks + ")" : "")).join(", ") : "";
+        const stackFx = fx.find(ef => ef.perStack);
+        const ctl = stackFx
+          ? `<input type="range" data-mech="${escapeHtmlTF(m.name)}" data-mech-stacks="1" min="0" max="${stackFx.maxStacks || 1}" step="1" value="${typeof a === "number" ? a : 0}" style="width:110px;vertical-align:middle;"> <span class="hint" data-mech-label="${escapeHtmlTF(m.name)}">${typeof a === "number" ? a : 0} stacks</span>`
+          : `<input type="checkbox" data-mech="${escapeHtmlTF(m.name)}"${a ? " checked" : ""}${fx.length ? "" : " disabled"}>`;
+        return `<div class="boon-row" style="cursor:default;"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(m.name)}${fx.length ? "" : ' <span class="hint">(no stat effect on record)</span>'}</div><div class="boon-row-effect">${escapeHtmlTF(fxText || m.addedEffect || m.notes || "")}</div></div><div class="boon-counter">${ctl}</div></div>`;
+      }).join("");
+      box.querySelectorAll("input[data-mech]").forEach(el => el.addEventListener(el.type === "range" ? "input" : "change", e => {
+        if (!state.activeMechanics) state.activeMechanics = {};
+        const nm = e.target.dataset.mech;
+        if (e.target.type === "range") { const v = +e.target.value; if (v > 0) state.activeMechanics[nm] = v; else delete state.activeMechanics[nm]; const lb = box.querySelector(`[data-mech-label="${CSS.escape(nm)}"]`); if (lb) lb.textContent = v + " stacks"; }
+        else { if (e.target.checked) state.activeMechanics[nm] = true; else delete state.activeMechanics[nm]; }
+        rerenderAll();
+      }));
+    }
+    function enemyTypeChoices() {
+      const set = new Set();
+      const scan = arr => (arr || []).forEach(it => (it.equipBonuses || []).forEach(eb => { if (eb && Array.isArray(eb.zones)) eb.zones.forEach(z => { if (/^vs /.test(z)) set.add(z.replace(/^vs /, "")); }); }));
+      scan(typeof GEAR_DATA !== "undefined" ? GEAR_DATA : []); scan(typeof OVERLOADS_DATA !== "undefined" ? OVERLOADS_DATA : []);
+      return [...set].sort();
+    }
+    function renderEnemyTypes() {
+      const box = document.getElementById("enemy-types-box"); if (!box || box.dataset.built) return;
+      box.dataset.built = "1";
+      box.innerHTML = enemyTypeChoices().map(t => `<label style="display:flex;align-items:center;gap:4px;font-size:0.85rem;"><input type="checkbox" data-etype="${escapeHtmlTF(t)}"> ${escapeHtmlTF(t)}</label>`).join("");
+      box.querySelectorAll("input[data-etype]").forEach(el => el.addEventListener("change", e => {
+        const t = e.target.dataset.etype; const cur = new Set(state.enemyTypes || []);
+        if (e.target.checked) cur.add(t); else cur.delete(t);
+        state.enemyTypes = [...cur]; rerenderAll();
+      }));
+    }
     function updateScenarioControls() {
+      renderEnemyTypes();
+      const et = new Set(state.enemyTypes || []); document.querySelectorAll("#enemy-types-box input[data-etype]").forEach(el => { el.checked = et.has(el.dataset.etype); });
+      const eh = document.getElementById("enemy-health-pct"), ehl = document.getElementById("enemy-health-label");
+      const ehv = (typeof state.enemyHealthPct === "number") ? state.enemyHealthPct : 100; if (eh) eh.value = ehv; if (ehl) ehl.textContent = ehv + "%";
+      const fu = document.getElementById("flank-uptime-pct"), ful = document.getElementById("flank-uptime-label");
+      const fuv = Math.round(((typeof state.flankUptime === "number") ? state.flankUptime : 1) * 100); if (fu) fu.value = fuv; if (ful) ful.textContent = fuv + "%";
+      const ss = document.getElementById("standing-sec"), ssl = document.getElementById("standing-sec-label");
+      const ssv = (typeof state.standingSec === "number") ? state.standingSec : 5; if (ss) ss.value = ssv; if (ssl) ssl.textContent = ssv + " s" + (state.movementState === "standing" ? "" : " (only while standing still)");
+      const ic = document.getElementById("scenario-in-combat"); if (ic) ic.checked = !!_dstatsShowConditional;
+      renderDamageMix(); renderClassMechanics();
       const sum = document.getElementById("scenario-summary"); if (sum) sum.textContent = scenarioSummary();
       const h = document.getElementById("scenario-health-pct"), hl = document.getElementById("scenario-health-label");
       const hv = (state.currentHealthPct == null ? 100 : state.currentHealthPct); if (h) h.value = hv; if (hl) hl.textContent = hv + "%";
@@ -12680,6 +12839,19 @@
       if (h) h.addEventListener("input", e => { state.currentHealthPct = +e.target.value; rerenderAll(); });
       const t = document.getElementById("time-in-combat");
       if (t) t.addEventListener("input", e => { state.timeInCombatSec = Math.max(0, Math.min(600, +e.target.value || 0)); rerenderAll(); });
+      const eh = document.getElementById("enemy-health-pct");
+      if (eh) eh.addEventListener("input", e => { state.enemyHealthPct = +e.target.value; rerenderAll(); });
+      const fu = document.getElementById("flank-uptime-pct");
+      if (fu) fu.addEventListener("input", e => { state.flankUptime = Math.max(0, Math.min(1, (+e.target.value || 0) / 100)); rerenderAll(); });
+      const ss = document.getElementById("standing-sec");
+      if (ss) ss.addEventListener("input", e => { state.standingSec = Math.max(0, Math.min(30, +e.target.value || 0)); rerenderAll(); });
+      const ic = document.getElementById("scenario-in-combat");
+      if (ic) ic.addEventListener("change", e => {
+        _dstatsShowConditional = !!e.target.checked;
+        const cb = document.getElementById("dstats-show-cond"); if (cb) cb.checked = !_dstatsShowConditional;
+        const lbl = document.getElementById("dstats-show-cond-label"); if (lbl) lbl.classList.toggle("on", !_dstatsShowConditional);
+        rerenderAll();
+      });
       const pc = document.getElementById("scenario-party-content");
       if (pc) pc.addEventListener("change", e => { state.partyContent = e.target.value; if (typeof renderBuffs === "function") renderBuffs(); rerenderAll(); });
       const ph = document.getElementById("scenario-party-healer");
@@ -13750,6 +13922,7 @@
         if (!eb) return false;
         if (eb.movingOnly && !_moving) return true;
         if (eb.standingOnly && _moving) return true;
+        if (eb.standingOnly && eb.standingAfterSec != null && _standSec < eb.standingAfterSec) return true;   // "stand still for N seconds"
         return false;
       }
       // Enemy-count gate (n00b 2026-09-08): minEnemies / maxEnemies read the
@@ -13788,6 +13961,26 @@
         if (eb && eb.ramp && typeof eb.ramp.perMin === "number") return Math.min(eb.amount, eb.ramp.perMin * _tic / 60);
         return eb.amount;
       }
+      // Enemy health gate (n00b 2026-09-08): enemyHealthAbovePct / enemyHealthBelowPct read the
+      // Combat scenario Enemy health slider.
+      const _ehp = (typeof s.enemyHealthPct === "number") ? s.enemyHealthPct : 100;
+      function _enemyHpSkip(eb) {
+        if (!eb) return false;
+        if (eb.enemyHealthAbovePct != null && !(_ehp > eb.enemyHealthAbovePct)) return true;
+        if (eb.enemyHealthBelowPct != null && !(_ehp < eb.enemyHealthBelowPct)) return true;
+        return false;
+      }
+      // Zone gate split (n00b 2026-09-08): "vs <type>" zones are enemy types (Combat scenario
+      // checkboxes, several at once); the rest are areas (Content zone, one at a time).
+      const _etypes = new Set((s.enemyTypes || []).map(x => "vs " + x));
+      function _zoneSkip(eb) {
+        if (!eb || !eb.zones || !eb.zones.length) return false;
+        const types = eb.zones.filter(z => /^vs /.test(z)), areas = eb.zones.filter(z => !/^vs /.test(z));
+        if (areas.length && !areas.includes(contentZone)) return true;
+        if (types.length && !types.some(z => _etypes.has(z))) return true;
+        return false;
+      }
+      const _standSec = (typeof s.standingSec === "number") ? s.standingSec : 5;
       const _solo = (s.partyContent === "solo");
       const _partySize = _solo ? 1 : (s.partyContent === "trial" ? 10 : 5);
       function _partySkip(eb) {
@@ -13829,7 +14022,7 @@
           if (!eb || !eb.stat || eb.amount == null) continue;
           if (eb.scope && eb.scope !== "self") continue;  // party/enemy buffs handled elsewhere
           if (eb.role && !roleMatches(eb.role)) continue; // role-conditional set bonuses
-          if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate: General (no zone) drops zone-locked bonuses
+          if (_zoneSkip(eb)) continue; // zone gate: areas need the Content zone, "vs X" need the enemy type
           if (eb.zonesExclude && eb.zonesExclude.includes(contentZone)) continue; // "elsewhere" half of a zone-split bonus
           if (_targetRangeSkip(eb)) continue;   // distance-to-target gate
           if (_apSkip(eb)) continue;   // action-point gate
@@ -13840,6 +14033,7 @@
           if (_attackTypeSkip(eb)) continue;   // enemy attack-type gate
           if (_conditionSkip(eb)) continue;   // build-condition gate
           if (_partySkip(eb)) continue;   // solo / party gate
+          if (_enemyHpSkip(eb)) continue;   // enemy health gate
           // Multi-enemy gate: "Enveloped"-type bonuses need 3+ enemies, so they
           // are DOWN against a single boss (the default sim target). Excluded
           // from the stat TOTAL here (the conditional flag is display-only and
@@ -14420,7 +14614,7 @@
         for (const eb of (o.equipBonuses || [])) {
           if (!eb || !eb.stat || eb.amount == null) continue;
           if (eb.scope && eb.scope !== "self") continue;
-          if (eb.zones && eb.zones.length && !eb.zones.includes(contentZone)) continue; // zone gate (General drops zone-locked)
+          if (_zoneSkip(eb)) continue; // zone gate (areas / enemy types)
           if (eb.zonesExclude && eb.zonesExclude.includes(contentZone)) continue; // "elsewhere" half of a zone-split bonus
           if (_targetRangeSkip(eb)) continue;   // distance-to-target gate
           if (_apSkip(eb)) continue;   // action-point gate
@@ -14431,6 +14625,7 @@
           if (_attackTypeSkip(eb)) continue;   // enemy attack-type gate
           if (_conditionSkip(eb)) continue;   // build-condition gate
           if (_partySkip(eb)) continue;   // solo / party gate
+          if (_enemyHpSkip(eb)) continue;   // enemy health gate
           const channel = (eb.kind === "rating" || eb.kind === "flat") ? "ratingStats" : "percentStats";
           // Zone or trigger context implies conditional. If neither, treat
           // it as always-on per the data's intent.
@@ -14445,6 +14640,19 @@
             uptime: uptimeFactor < 1 ? uptimeFactor : undefined,
             [channel]: { [eb.stat]: _ebAmount(eb) * uptimeFactor }
           });
+        }
+      }
+
+      // Class mechanics (Combat scenario Class tab, n00b 2026-09-08): a mechanic the
+      // player marks active contributes its data-driven effects[] (classes.json).
+      for (const m of ((typeof classMechanicsFor === "function") ? classMechanicsFor(s.class, s.paragon) : [])) {
+        const a = s.activeMechanics && s.activeMechanics[m.name];
+        if (!a || !Array.isArray(m.effects)) continue;
+        for (const ef of m.effects) {
+          if (!ef || !ef.stat || ef.amount == null) continue;
+          const stacks = ef.perStack ? Math.max(0, Math.min(ef.maxStacks || 1, (typeof a === "number") ? a : (ef.maxStacks || 1))) : 1;
+          const ch = (ef.kind === "rating" || ef.kind === "flat") ? "ratingStats" : "percentStats";
+          buffs.push({ source: "Class mechanic: " + m.name + (ef.perStack ? " (" + stacks + " stacks)" : ""), conditional: true, [ch]: { [ef.stat]: ef.amount * stacks } });
         }
       }
 
@@ -14687,7 +14895,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, tic: state.timeInCombatSec, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, tic: state.timeInCombatSec, ehp: state.enemyHealthPct, ety: state.enemyTypes, ssec: state.standingSec, am: state.activeMechanics, fu: state.flankUptime, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
