@@ -3515,6 +3515,7 @@
       enemyTypes: [],         // Combat scenario: enemy types in the fight ("Dragon", "Undead"...); gates "vs X" zone entries
       standingSec: 5,         // Combat scenario: seconds standing still (only read while Movement = standing)
       activeMechanics: {},    // Combat scenario Class tab: {mechanicName: true | stacks}
+      forcedPowerBuffs: {},   // Combat scenario Class tab: {powerName: true} = buff/debuff counted at 100% uptime instead of cooldown-based
       timeInCombatSec: 120,   // Combat scenario: how long the fight has run; drives eb.ramp bonuses (n00b 2026-09-08)
       incomingAttackType: "melee",   // "melee" | "ranged" toggle; gates vsMeleeOnly / vsRangedOnly entries (n00b 2026-09-08)
       enemyCount: 1,   // Enemies-in-combat slider (1 = single boss); gates minEnemies / maxEnemies / requiresMultiEnemy and scales per-enemy stackers (n00b 2026-09-08)
@@ -3741,6 +3742,7 @@
           enemyTypes: Array.isArray(state.enemyTypes) ? state.enemyTypes.slice() : [],
           standingSec: (typeof state.standingSec === "number") ? state.standingSec : 5,
           activeMechanics: Object.assign({}, state.activeMechanics || {}),
+          forcedPowerBuffs: Object.assign({}, state.forcedPowerBuffs || {}),
           targetShielded: !!state.targetShielded,
           partyAllies: [...(state.partyAllies || [])],
           partyMountAllies: [...(state.partyMountAllies || [])],
@@ -3924,6 +3926,7 @@
       state.enemyTypes = Array.isArray(s.enemyTypes) ? s.enemyTypes.filter(x => typeof x === "string") : [];
       state.standingSec = (typeof s.standingSec === "number") ? Math.max(0, Math.min(30, s.standingSec)) : 5;
       state.activeMechanics = (s.activeMechanics && typeof s.activeMechanics === "object") ? Object.assign({}, s.activeMechanics) : {};
+      state.forcedPowerBuffs = (s.forcedPowerBuffs && typeof s.forcedPowerBuffs === "object") ? Object.assign({}, s.forcedPowerBuffs) : {};
       if (typeof updateAttackTypeControl === "function") updateAttackTypeControl();
       state.targetShielded = !!s.targetShielded;
       if (typeof updateShieldControl === "function") updateShieldControl();
@@ -11783,6 +11786,7 @@
           if (gs[0] === "daily") { const ap = (+p.actionPointCost > 0) ? +p.actionPointCost : 1000; const iv = ap / (AP_PER_SEC * (1 + apg)); uptime = iv > 0 ? Math.min(1, (b.durationSeconds || 0) / iv) : 1; }
           else if (gs[0] === "encounter") { const cd = p.cooldownSeconds || p.rechargeSeconds || 0; const cdEff = cd > 0 ? Math.max(cd, 6) / (1 + rsi) : 0; uptime = cdEff > 0 ? Math.min(1, (b.durationSeconds || 0) / cdEff) : 1; }
           else uptime = 1;
+          if (state.forcedPowerBuffs && state.forcedPowerBuffs[nm]) uptime = 1;   // Combat scenario Class tab: "up the whole fight"
           let eff = (b.pct || 0) * uptime;
           if (b.appliesTo && mix && mix[b.appliesTo] != null) eff *= mix[b.appliesTo];
           pct += eff;
@@ -12683,7 +12687,8 @@
         (st.enemyHealthPct != null && st.enemyHealthPct < 100) ? "enemy HP " + st.enemyHealthPct + "%" : null,
         (st.enemyTypes && st.enemyTypes.length) ? "vs " + st.enemyTypes.join("/") : null,
         (typeof st.flankUptime === "number" && st.flankUptime < 1) ? "CA " + Math.round(st.flankUptime * 100) + "%" : null,
-        Object.keys(st.activeMechanics || {}).length ? "mechanics: " + Object.keys(st.activeMechanics).join(", ") : null];
+        Object.keys(st.activeMechanics || {}).length ? "mechanics: " + Object.keys(st.activeMechanics).join(", ") : null,
+        Object.keys(st.forcedPowerBuffs || {}).length ? "buffs up all fight: " + Object.keys(st.forcedPowerBuffs).join(", ") : null];
       return parts.filter(Boolean).join(" · ");
     }
     window.scenarioSummary = scenarioSummary;
@@ -12785,6 +12790,31 @@
           : `<input type="checkbox" data-mech="${escapeHtmlTF(m.name)}"${a ? " checked" : ""}${fx.length ? "" : " disabled"}>`;
         return `<div class="boon-row" style="cursor:default;"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(m.name)}${fx.length ? "" : ' <span class="hint">(no stat effect on record)</span>'}</div><div class="boon-row-effect">${escapeHtmlTF(fxText || m.addedEffect || m.notes || "")}</div></div><div class="boon-counter">${ctl}</div></div>`;
       }).join("");
+      // ---- Powers with buffs / debuffs (class + paragon pool) ----
+      const BUFF_RE = /increases? (?:your )?damage|damage dealt|damage taken|takes? \d+% more damage|damage resistance|less damage|combat advantage|increases? (?:your )?power|critical (?:strike|severity)|deflect|awareness|defense|recharge speed|action point/i;
+      const slotted = new Set([].concat(state.slottedAtWills || [], state.slottedEncounters || [], state.slottedDailies || []).filter(Boolean));
+      const fpb = state.forcedPowerBuffs || {};
+      const rows = [];
+      for (const [type, label] of [["atWill", "At-will"], ["encounter", "Encounter"], ["daily", "Daily"]]) {
+        for (const pw of _paragonPowerPool(type)) {
+          const nm = pw.name; const modeled = (typeof TF_POWER_BUFFS !== "undefined") ? TF_POWER_BUFFS[nm] : null;
+          const txt = [pw.addedEffect, pw.description, pw.notes].filter(Boolean).join(" ");
+          if (!modeled && !BUFF_RE.test(txt)) continue;
+          const isSlotted = slotted.has(nm);
+          const eff = modeled ? ((modeled.scope === "target" ? "Target takes +" : "+") + modeled.pct + "% damage for " + modeled.durationSeconds + " s" + (modeled.appliesTo ? " (" + modeled.appliesTo + " powers)" : "")) : (pw.addedEffect || "");
+          const status = !isSlotted ? '<span class="hint">not slotted (slot it in step 2 to count it)</span>' : (modeled ? '<span class="hint">slotted - counted at cooldown uptime unless forced</span>' : '<span class="hint">slotted - no stat effect on record</span>');
+          const ctl = (isSlotted && modeled)
+            ? `<label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" data-fpb="${escapeHtmlTF(nm)}"${fpb[nm] ? " checked" : ""}> <span class="hint">up all fight</span></label>`
+            : `<input type="checkbox" disabled>`;
+          rows.push(`<div class="boon-row" style="cursor:default;${isSlotted ? "" : "opacity:0.55;"}"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(nm)} <span class="hint">(${label})</span></div><div class="boon-row-effect">${escapeHtmlTF(eff)} ${status}</div></div><div class="boon-counter">${ctl}</div></div>`);
+        }
+      }
+      if (rows.length) box.innerHTML += '<div class="boon-tier-header" style="margin-top:0.8rem;">Powers with buffs or debuffs <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(your class and paragon; greyed = not slotted)</span></div>' + rows.join("");
+      box.querySelectorAll("input[data-fpb]").forEach(el => el.addEventListener("change", e => {
+        if (!state.forcedPowerBuffs) state.forcedPowerBuffs = {};
+        if (e.target.checked) state.forcedPowerBuffs[e.target.dataset.fpb] = true; else delete state.forcedPowerBuffs[e.target.dataset.fpb];
+        rerenderAll();
+      }));
       box.querySelectorAll("input[data-mech]").forEach(el => el.addEventListener(el.type === "range" ? "input" : "change", e => {
         if (!state.activeMechanics) state.activeMechanics = {};
         const nm = e.target.dataset.mech;
@@ -14896,7 +14926,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, tic: state.timeInCombatSec, ehp: state.enemyHealthPct, ety: state.enemyTypes, ssec: state.standingSec, am: state.activeMechanics, fu: state.flankUptime, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, tic: state.timeInCombatSec, ehp: state.enemyHealthPct, ety: state.enemyTypes, ssec: state.standingSec, am: state.activeMechanics, fpb: state.forcedPowerBuffs, fu: state.flankUptime, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
