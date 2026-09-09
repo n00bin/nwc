@@ -3040,12 +3040,6 @@
             <input type="range" id="standing-sec" min="0" max="30" step="1" value="5" style="width:100%;">
             <span class="hint" id="standing-sec-label">5 s</span>
           </div>
-          <div class="field" id="sc-incombat-field">
-            <label>In combat
-              <span class="hint-icon" data-tip="Off = the at-rest character sheet (what the game shows out of combat). On = in-combat bonuses (procs, stacks) are added to the Detailed Stats totals. Same switch as 'Hide in-combat bonuses' in Detailed Stats.">?</span>
-            </label>
-            <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="scenario-in-combat"> <span class="hint">Show in-combat bonuses in Detailed Stats</span></label>
-          </div>
         </div>
         <div class="sc-pane row-2" data-sc-pane="fight" hidden>
           <div class="field" id="sim-zone-field">
@@ -12865,7 +12859,6 @@
       const fuv = Math.round(((typeof state.flankUptime === "number") ? state.flankUptime : 1) * 100); if (fu) fu.value = fuv; if (ful) ful.textContent = fuv + "%";
       const ss = document.getElementById("standing-sec"), ssl = document.getElementById("standing-sec-label");
       const ssv = (typeof state.standingSec === "number") ? state.standingSec : 5; if (ss) ss.value = ssv; if (ssl) ssl.textContent = ssv + " s" + (state.movementState === "standing" ? "" : " (only while standing still)");
-      const ic = document.getElementById("scenario-in-combat"); if (ic) ic.checked = !!_dstatsShowConditional;
       renderDamageMix(); renderClassMechanics();
       const sum = document.getElementById("scenario-summary"); if (sum) sum.textContent = scenarioSummary();
       const h = document.getElementById("scenario-health-pct"), hl = document.getElementById("scenario-health-label");
@@ -12893,13 +12886,6 @@
       if (fu) fu.addEventListener("input", e => { state.flankUptime = Math.max(0, Math.min(1, (+e.target.value || 0) / 100)); rerenderAll(); });
       const ss = document.getElementById("standing-sec");
       if (ss) ss.addEventListener("input", e => { state.standingSec = Math.max(0, Math.min(30, +e.target.value || 0)); rerenderAll(); });
-      const ic = document.getElementById("scenario-in-combat");
-      if (ic) ic.addEventListener("change", e => {
-        _dstatsShowConditional = !!e.target.checked;
-        const cb = document.getElementById("dstats-show-cond"); if (cb) cb.checked = !_dstatsShowConditional;
-        const lbl = document.getElementById("dstats-show-cond-label"); if (lbl) lbl.classList.toggle("on", !_dstatsShowConditional);
-        rerenderAll();
-      });
       const pc = document.getElementById("scenario-party-content");
       if (pc) pc.addEventListener("change", e => { state.partyContent = e.target.value; if (typeof renderBuffs === "function") renderBuffs(); rerenderAll(); });
       const ph = document.getElementById("scenario-party-healer");
@@ -14876,8 +14862,10 @@
       const userBuffs = getUserAddedBuffs();
       return userBuffs.find(b => b.name === name) || null;
     }
-    // Belt Item, Battle Belt, Battle Horn, and Companion Bell all use
-    // the single belt slot in-game — merge them under "Belt Item".
+    // Belt Item, Battle Belt, Battle Horn, and Companion Bell all go in the belt —
+    // merged under "Belt Item". The game has THREE belt slots (n00b 2026-09-08), so
+    // the Belt Item group renders as three rows and allows up to three distinct picks.
+    const BELT_SLOTS = 3;
     function displayGroupOf(buff) {
       const g = buff.exclusiveGroup || "None";
       if (g === "Battle Belt" || g === "Battle Horn" || g === "Companion Bell") return "Belt Item";
@@ -17913,21 +17901,25 @@
       // Single-pick groups → one picker row each
       for (const g of [...orderedSingle, ...otherGroups]) {
         const list = groups[g];
-        // Find which buff (if any) from this group is active
-        let active = null;
+        const picks = [];   // buffs of this group in state.buffs, insertion order
         for (const name of state.buffs) {
           const b = findBuffByName(name);
-          if (b && displayGroupOf(b) === g) { active = b; break; }
+          if (b && displayGroupOf(b) === g) picks.push(b);
         }
-        const desc = active ? describeBuff(active) : `${list.length} options · pick one`;
-        const info = active ? ` <button class="chip-info" data-details-type="buff" data-details-key="${_escAttr(active.name)}" title="See buff details">\u{1F50D}</button>` : "";
-        html += `<div class="boon-row ${active ? "has-pts" : ""}" data-buff-group-pick="${g}" style="cursor:pointer;">
-          <div class="boon-row-info">
-            <div class="boon-row-name">${g} — ${active ? active.name : "(none)"}${info}</div>
-            <div class="boon-row-effect">${desc}</div>
-          </div>
-          <div class="boon-counter"><span style="font-size:0.75rem;color:var(--text-dim);">click to pick</span></div>
-        </div>`;
+        const slots = (g === "Belt Item") ? BELT_SLOTS : 1;
+        for (let si = 0; si < slots; si++) {
+          const active = picks[si] || null;
+          const label = slots > 1 ? `${g} slot ${si + 1}` : g;
+          const desc = active ? describeBuff(active) : `${list.length} options · pick one`;
+          const info = active ? ` <button class="chip-info" data-details-type="buff" data-details-key="${_escAttr(active.name)}" title="See buff details">\u{1F50D}</button>` : "";
+          html += `<div class="boon-row ${active ? "has-pts" : ""}" data-buff-group-pick="${g}" data-buff-slot="${si}" style="cursor:pointer;">
+            <div class="boon-row-info">
+              <div class="boon-row-name">${label} — ${active ? active.name : "(none)"}${info}</div>
+              <div class="boon-row-effect">${desc}</div>
+            </div>
+            <div class="boon-counter"><span style="font-size:0.75rem;color:var(--text-dim);">click to pick</span></div>
+          </div>`;
+        }
       }
 
       // Default-on buffs from the "Other" group + every "None"-group buff
@@ -18159,12 +18151,24 @@
             items,
             render: renderBuffPick,
             onPick: (b) => {
-              // Clear any existing buff from this group (covers merged Belt Item + Battle Belt)
-              for (const other of [...state.buffs]) {
-                const ob = findBuffByName(other);
-                if (ob && displayGroupOf(ob) === g) state.buffs.delete(other);
+              // Multi-slot groups (belt x3): replace only THIS slot's pick; a buff already
+              // in another slot of the group is never duplicated. Single-slot groups clear
+              // the whole group (covers merged Belt Item + Battle Belt etc.).
+              const si = +(row.dataset.buffSlot || 0);
+              const picks = [];
+              for (const other of state.buffs) { const ob = findBuffByName(other); if (ob && displayGroupOf(ob) === g) picks.push(other); }
+              if (g === "Belt Item") {
+                if (b && picks.includes(b.name) && picks[si] !== b.name) { toast(b.name + " is already in another belt slot."); return; }
+                if (picks[si]) state.buffs.delete(picks[si]);
+                // rebuild in slot order so the new pick lands in slot si
+                const rest = picks.filter((n, i) => i !== si && state.buffs.has(n));
+                rest.forEach(n => state.buffs.delete(n));
+                const ordered = rest.slice(); ordered.splice(Math.min(si, ordered.length), 0, b ? b.name : null);
+                ordered.filter(Boolean).forEach(n => state.buffs.add(n));
+              } else {
+                for (const other of picks) state.buffs.delete(other);
+                if (b) state.buffs.add(b.name);
               }
-              if (b) state.buffs.add(b.name);
               renderBuffs(); rerenderAll();
             }
           });
