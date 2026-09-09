@@ -3128,6 +3128,26 @@
         <div class="sc-pane" data-sc-pane="powers" hidden>
           <p class="hint" style="margin:0 0 0.5rem;">Damage mix from your slotted powers over the Time in combat you set: each encounter casts every cooldown (after Recharge Speed), each daily every AP bar, the strongest at-will fills the rest. Read-only; change your powers in <strong>Your Character → Your Powers</strong>.</p>
           <div id="damage-mix-box"></div>
+          <div class="row-2" style="margin-top:0.6rem;">
+            <div class="field">
+              <label>Daily every
+                <span class="hint-icon" data-tip="Seconds between your Daily power uses. Dailies run about a 60 s cooldown; the AP bar can only make it slower, never faster. Feeds Daily-triggered procs and the rotation.">?</span>
+              </label>
+              <input type="range" id="daily-cadence" min="15" max="300" step="5" value="60" style="width:100%;"><span class="hint" id="daily-cadence-label">60 s</span>
+            </div>
+            <div class="field">
+              <label>Artifact every
+                <span class="hint-icon" data-tip="Seconds between uses of your active artifact power (about its 60 s cooldown). Feeds artifact-triggered bonuses (Artificer's Enticement, Artifact Fanatic).">?</span>
+              </label>
+              <input type="range" id="artifact-cadence" min="15" max="300" step="5" value="60" style="width:100%;"><span class="hint" id="artifact-cadence-label">60 s</span>
+            </div>
+            <div class="field">
+              <label>Mount power every
+                <span class="hint-icon" data-tip="Seconds between mount combat power uses (about its 60 s cooldown). Feeds mount-power-triggered bonuses (Cavalry's Haste / Alarm / Warning, Predator's Instinct).">?</span>
+              </label>
+              <input type="range" id="mountpower-cadence" min="15" max="300" step="5" value="60" style="width:100%;"><span class="hint" id="mountpower-cadence-label">60 s</span>
+            </div>
+          </div>
         </div>
         <div class="sc-pane" data-sc-pane="class" hidden>
           <p class="hint" style="margin:0 0 0.5rem;">Class mechanics for your class and paragon. Tick the ones that are up during the fight you are building for. Mechanics with numbers in their tooltip feed the stats; the rest are listed so nothing is forgotten.</p>
@@ -3504,6 +3524,9 @@
       standingSec: 5,         // Combat scenario: seconds standing still (only read while Movement = standing)
       activeMechanics: {},    // Combat scenario Class tab: {mechanicName: true | stacks}
       forcedPowerBuffs: {},   // Combat scenario Class tab: {powerName: true} = buff/debuff counted at 100% uptime instead of cooldown-based
+      dailyCadenceSec: 60,        // Combat scenario: seconds between Daily uses (~cooldown)
+      artifactCadenceSec: 60,     // Combat scenario: seconds between Artifact power uses
+      mountPowerCadenceSec: 60,   // Combat scenario: seconds between Mount combat power uses
       timeInCombatSec: 120,   // Combat scenario: how long the fight has run; drives eb.ramp bonuses (n00b 2026-09-08)
       incomingAttackType: "melee",   // "melee" | "ranged" toggle; gates vsMeleeOnly / vsRangedOnly entries (n00b 2026-09-08)
       enemyCount: 1,   // Enemies-in-combat slider (1 = single boss); gates minEnemies / maxEnemies / requiresMultiEnemy and scales per-enemy stackers (n00b 2026-09-08)
@@ -3726,6 +3749,9 @@
           enemyCount: (typeof state.enemyCount === "number") ? state.enemyCount : 1,
           incomingAttackType: state.incomingAttackType === "ranged" ? "ranged" : "melee",
           timeInCombatSec: (typeof state.timeInCombatSec === "number") ? state.timeInCombatSec : 120,
+          dailyCadenceSec: (typeof state.dailyCadenceSec === "number") ? state.dailyCadenceSec : 60,
+          artifactCadenceSec: (typeof state.artifactCadenceSec === "number") ? state.artifactCadenceSec : 60,
+          mountPowerCadenceSec: (typeof state.mountPowerCadenceSec === "number") ? state.mountPowerCadenceSec : 60,
           enemyHealthPct: (typeof state.enemyHealthPct === "number") ? state.enemyHealthPct : 100,
           enemyTypes: Array.isArray(state.enemyTypes) ? state.enemyTypes.slice() : [],
           standingSec: (typeof state.standingSec === "number") ? state.standingSec : 5,
@@ -3910,6 +3936,9 @@
       if (typeof updateEnemyCountControl === "function") updateEnemyCountControl();
       state.incomingAttackType = (s.incomingAttackType === "ranged") ? "ranged" : "melee";
       state.timeInCombatSec = (typeof s.timeInCombatSec === "number") ? Math.max(0, Math.min(600, s.timeInCombatSec)) : 120;
+      state.dailyCadenceSec = (typeof s.dailyCadenceSec === "number") ? Math.max(15, Math.min(300, s.dailyCadenceSec)) : 60;
+      state.artifactCadenceSec = (typeof s.artifactCadenceSec === "number") ? Math.max(15, Math.min(300, s.artifactCadenceSec)) : 60;
+      state.mountPowerCadenceSec = (typeof s.mountPowerCadenceSec === "number") ? Math.max(15, Math.min(300, s.mountPowerCadenceSec)) : 60;
       state.enemyHealthPct = (typeof s.enemyHealthPct === "number") ? Math.max(0, Math.min(100, s.enemyHealthPct)) : 100;
       state.enemyTypes = Array.isArray(s.enemyTypes) ? s.enemyTypes.filter(x => typeof x === "string") : [];
       state.standingSec = (typeof s.standingSec === "number") ? Math.max(0, Math.min(30, s.standingSec)) : 5;
@@ -11745,7 +11774,7 @@
         if (!nm) return; const p = findP("daily", nm); if (!p) return;
         const mag = _powerMag(p, state.paragon);
         const apCost = (+p.actionPointCost > 0) ? +p.actionPointCost : 1000;
-        const interval = apCost / (AP_PER_SEC * (1 + _apg));
+        const interval = Math.max(apCost / (AP_PER_SEC * (1 + _apg)), tfCadence("daily"));   // AP bar vs the Daily cadence: the slower one limits
         if (mag > 0 && interval > 0) { mps += mag / interval; any = true; }
       });
       return any ? mps : 0;
@@ -11771,7 +11800,7 @@
           const b = TF_POWER_BUFFS[nm]; if (!b || !b.pct) return;
           const p = findPB(gs[0], nm); if (!p) return;
           let uptime;
-          if (gs[0] === "daily") { const ap = (+p.actionPointCost > 0) ? +p.actionPointCost : 1000; const iv = ap / (AP_PER_SEC * (1 + apg)); uptime = iv > 0 ? Math.min(1, (b.durationSeconds || 0) / iv) : 1; }
+          if (gs[0] === "daily") { const ap = (+p.actionPointCost > 0) ? +p.actionPointCost : 1000; const iv = Math.max(ap / (AP_PER_SEC * (1 + apg)), tfCadence("daily")); uptime = iv > 0 ? Math.min(1, (b.durationSeconds || 0) / iv) : 1; }
           else if (gs[0] === "encounter") { const cd = p.cooldownSeconds || p.rechargeSeconds || 0; const cdEff = cd > 0 ? Math.max(cd, 6) / (1 + rsi) : 0; uptime = cdEff > 0 ? Math.min(1, (b.durationSeconds || 0) / cdEff) : 1; }
           else uptime = 1;
           if (state.forcedPowerBuffs && state.forcedPowerBuffs[nm] && (typeof classTabEnabled !== "function" || classTabEnabled())) uptime = 1;   // Combat scenario Class tab: "up the whole fight"
@@ -11822,7 +11851,7 @@
         return r;
       };
       const triggerRateOf = function (type) {
-        if (type === "daily") return 1 / SEQ_PROC.dailyIntervalSec;
+        if (type === "daily") return 1 / tfCadence("daily");
         if (type === "encounter") return encounterRate();
         return 0;   // at-will trigger: treat as ~continuous, not modeled here
       };
@@ -12224,7 +12253,7 @@
         if (/critical/.test(txt)) rate = U.trigger_rate.crit;
         else if (/at-will|when you hit|deal damage/.test(txt)) rate = U.trigger_rate.hit;
         else if (/encounter/.test(txt)) rate = U.trigger_rate.encounter;
-        else if (/daily/.test(txt)) rate = U.trigger_rate.daily;
+        else if (/daily/.test(txt)) rate = (1 / tfCadence("daily"));
         else if (/struck|when you are (?:hit|damaged)|receive damage/.test(txt)) rate = U.trigger_rate.struck;
         else if (/kill/.test(txt)) rate = U.trigger_rate.kill;
         const window = icd ? Math.max(icd, dur) : dur;
@@ -12294,7 +12323,7 @@
       if (/kill/.test(trig)) rate = healerBuild ? 0 : U.trigger_rate.kill;
       else if (/encounter/.test(trig)) rate = U.trigger_rate.encounter;
       else if (/at.?will/.test(trig)) rate = U.trigger_rate.hit;
-      else if (/daily/.test(trig)) rate = U.trigger_rate.daily;
+      else if (/daily/.test(trig)) rate = (1 / tfCadence("daily"));
       // "...or when taking more than 50% of your Maximum Hit Points in a
       // single blow" (Deathly Rage / Death's Bulwark): a second, rare
       // trigger path on top of kills — one qualifying blow every ~50s.
@@ -12380,6 +12409,9 @@
         if (pd == null) { try { const _r = (typeof getEngineResult === "function") ? getEngineResult() : null; pd = (_r && _r.stats && _r.stats["Deflect"] && _r.stats["Deflect"].finalPct != null) ? Math.max(0, Math.min(1, _r.stats["Deflect"].finalPct / 100)) : null; } catch (e) { pd = null; } }
         rate = (pd == null) ? PROC_DAMAGE.rates.deflect : PROC_DAMAGE.rates.struck * pd;
       }
+      else if (triggerRateKey === "daily") rate = 1 / tfCadence("daily");
+      else if (triggerRateKey === "artifact") rate = 1 / tfCadence("artifact");
+      else if (triggerRateKey === "mountpower") rate = 1 / tfCadence("mountpower");
       else rate = (PROC_DAMAGE.rates[triggerRateKey] != null) ? PROC_DAMAGE.rates[triggerRateKey] : PROC_DAMAGE.rates.hit;
       let pps = rate * ((chancePct != null ? chancePct : 100) / 100);
       if (icdSeconds) pps = Math.min(pps, 1 / icdSeconds);
@@ -12393,6 +12425,13 @@
     // (hints set by getEngineResult's two-pass evaluation below), so the value
     // follows the character sheet instead of a number baked into the data.
     const PROC_CONV = { AP_PER_SEC: 40 };
+    // Cadence of the three "use" triggers, from the Combat scenario (n00b 2026-09-09:
+    // Daily, Artifact and Mount combat power each go off about every 60 s, their cooldown).
+    function tfCadence(kind) {
+      const st = (typeof state !== "undefined") ? state : {};
+      const v = kind === "artifact" ? st.artifactCadenceSec : kind === "mountpower" ? st.mountPowerCadenceSec : st.dailyCadenceSec;
+      return (typeof v === "number" && v > 0) ? v : 60;
+    }
     let _procCritHint = 0.9, _procDeflHint = 0.2, _procConvUsed = false;
     function _procConvert(eb) {
       const pc = _procCritHint, pd = _procDeflHint;
@@ -12400,13 +12439,13 @@
         const a = eb.apProc; const pps = procRatePerSec(a.triggerRateKey || "hit", a.chance, a.icdSeconds, pc, pd);
         const amt = 100 * (a.ap || 0) * pps / PROC_CONV.AP_PER_SEC; _procConvUsed = true;
         return Object.assign({}, eb, { stat: "Action Point Gain", amount: Math.round(amt * 100) / 100, kind: undefined, alwaysActive: true,
-          _convLabel: `${a.ap} AP x ${pps.toFixed(3)}/s at ${Math.round(pc * 100)}% crit` });
+          _convLabel: `${a.ap} AP x ${pps.toFixed(3)}/s` + (/crit/.test(a.triggerRateKey || "") ? ` at ${Math.round(pc * 100)}% crit` : "") });
       }
       if (eb.cdProc) {
         const c = eb.cdProc; const pps = procRatePerSec(c.triggerRateKey || "hit", c.chance, c.icdSeconds, pc, pd);
         const amt = 100 * (c.seconds || 0) * pps; _procConvUsed = true;
         return Object.assign({}, eb, { stat: "Recharge Speed", amount: Math.round(amt * 100) / 100, kind: undefined, alwaysActive: true,
-          _convLabel: `${c.seconds}s off cooldowns x ${pps.toFixed(3)}/s at ${Math.round(pc * 100)}% crit` });
+          _convLabel: `${c.seconds}s off cooldowns x ${pps.toFixed(3)}/s` + (/crit/.test(c.triggerRateKey || "") ? ` at ${Math.round(pc * 100)}% crit` : "") });
       }
       return eb;
     }
@@ -12706,6 +12745,9 @@
         (typeof st.flankUptime === "number" && st.flankUptime < 1) ? "CA " + Math.round(st.flankUptime * 100) + "%" : null,
         Object.keys(st.activeMechanics || {}).length ? "mechanics: " + Object.keys(st.activeMechanics).join(", ") : null,
         Object.keys(st.forcedPowerBuffs || {}).length ? "buffs up all fight: " + Object.keys(st.forcedPowerBuffs).join(", ") : null,
+        (st.dailyCadenceSec && st.dailyCadenceSec !== 60) ? "daily every " + st.dailyCadenceSec + " s" : null,
+        (st.artifactCadenceSec && st.artifactCadenceSec !== 60) ? "artifact every " + st.artifactCadenceSec + " s" : null,
+        (st.mountPowerCadenceSec && st.mountPowerCadenceSec !== 60) ? "mount power every " + st.mountPowerCadenceSec + " s" : null,
         (String(st.role || "").toLowerCase() !== "tank" && !hasRotationSlotted()) ? "NO POWERS SLOTTED (damage not scored)" : null];
       return parts.filter(Boolean).join(" · ");
     }
@@ -12786,7 +12828,7 @@
       let bestAW = null;
       (state.slottedAtWills || []).forEach(nm => { if (!nm) return; const p = findP("atWill", nm); if (!p) return; const side = p.ranged || p; const mag = _powerMag(p, state.paragon), cast = side.castSeconds || p.castSeconds || 0; if (mag > 0 && cast > 0 && (!bestAW || mag / cast > bestAW.mps)) bestAW = { nm, mps: mag / cast }; });
       (state.slottedEncounters || []).forEach(nm => { if (!nm) return; const p = findP("encounter", nm); if (!p) return; const mag = _powerMag(p, state.paragon), cd = p.cooldownSeconds || p.rechargeSeconds || 0; const cdEff = cd > 0 ? Math.max(cd, 6) / (1 + rsi) : 0; if (!(mag > 0 && cdEff > 0)) return; const casts = Math.floor(T / cdEff) + 1; mix.encounter += mag * casts; mix.lines.push(nm + ": " + casts + " cast" + (casts === 1 ? "" : "s") + " (every " + Math.round(cdEff * 10) / 10 + " s)"); });
-      (state.slottedDailies || []).forEach(nm => { if (!nm) return; const p = findP("daily", nm); if (!p) return; const mag = _powerMag(p, state.paragon); const apCost = (+p.actionPointCost > 0) ? +p.actionPointCost : 1000; const iv = apCost / (40 * (1 + apg)); if (!(mag > 0 && iv > 0)) return; const casts = Math.floor(T / iv); mix.daily += mag * casts; mix.lines.push(nm + ": " + casts + " cast" + (casts === 1 ? "" : "s") + " (AP bar every " + Math.round(iv) + " s)"); });
+      (state.slottedDailies || []).forEach(nm => { if (!nm) return; const p = findP("daily", nm); if (!p) return; const mag = _powerMag(p, state.paragon); const apCost = (+p.actionPointCost > 0) ? +p.actionPointCost : 1000; const iv = Math.max(apCost / (40 * (1 + apg)), tfCadence("daily")); if (!(mag > 0 && iv > 0)) return; const casts = Math.floor(T / iv); mix.daily += mag * casts; mix.lines.push(nm + ": " + casts + " cast" + (casts === 1 ? "" : "s") + " (every " + Math.round(iv) + " s)"); });
       if (bestAW) { mix.atWill = bestAW.mps * T; mix.lines.push(bestAW.nm + ": fills the gaps"); }
       const tot = mix.atWill + mix.encounter + mix.daily;
       mix.pct = tot > 0 ? { atWill: mix.atWill / tot * 100, encounter: mix.encounter / tot * 100, daily: mix.daily / tot * 100 } : null;
@@ -12883,6 +12925,10 @@
       const fuv = Math.round(((typeof state.flankUptime === "number") ? state.flankUptime : 1) * 100); if (fu) fu.value = fuv; if (ful) ful.textContent = fuv + "%";
       const ss = document.getElementById("standing-sec"), ssl = document.getElementById("standing-sec-label");
       const ssv = (typeof state.standingSec === "number") ? state.standingSec : 5; if (ss) ss.value = ssv; if (ssl) ssl.textContent = ssv + " s" + (state.movementState === "standing" ? "" : " (only while standing still)");
+      for (const [id, key] of [["daily-cadence", "dailyCadenceSec"], ["artifact-cadence", "artifactCadenceSec"], ["mountpower-cadence", "mountPowerCadenceSec"]]) {
+        const el = document.getElementById(id), lb = document.getElementById(id + "-label"); const v = (typeof state[key] === "number") ? state[key] : 60;
+        if (el) el.value = v; if (lb) lb.textContent = v + " s";
+      }
       renderDamageMix(); renderClassMechanics();
       const sum = document.getElementById("scenario-summary"); if (sum) sum.textContent = scenarioSummary();
       const h = document.getElementById("scenario-health-pct"), hl = document.getElementById("scenario-health-label");
@@ -12906,6 +12952,9 @@
       if (t) t.addEventListener("input", e => { state.timeInCombatSec = Math.max(0, Math.min(600, +e.target.value || 0)); rerenderAll(); });
       const eh = document.getElementById("enemy-health-pct");
       if (eh) eh.addEventListener("input", e => { state.enemyHealthPct = +e.target.value; rerenderAll(); });
+      for (const [id, key] of [["daily-cadence", "dailyCadenceSec"], ["artifact-cadence", "artifactCadenceSec"], ["mountpower-cadence", "mountPowerCadenceSec"]]) {
+        const el = document.getElementById(id); if (el) el.addEventListener("input", e => { state[key] = Math.max(15, Math.min(300, +e.target.value || 60)); rerenderAll(); });
+      }
       const fu = document.getElementById("flank-uptime-pct");
       if (fu) fu.addEventListener("input", e => { state.flankUptime = Math.max(0, Math.min(1, (+e.target.value || 0) / 100)); rerenderAll(); });
       const ss = document.getElementById("standing-sec");
@@ -13788,7 +13837,7 @@
           if ((!bonus.stats || !bonus.stats.length) && bonus.effectText && typeof expandCR === "function") {
             const _m = bonus.effectText.match(/(\d[\d,]*)\s+to all (?:of your )?ratings for (\d+)\s*second/i);
             if (_m) {
-              const _MOUNT_POWER_CYCLE = 80;   // practical seconds between mount-power uses in a real rotation
+              const _MOUNT_POWER_CYCLE = tfCadence("mountpower");   // Combat scenario: seconds between mount-power uses
               const _amt = parseInt(_m[1].replace(/,/g, ""), 10);
               const _dur = parseInt(_m[2], 10);
               const _up = Math.max(0, Math.min(1, _dur / _MOUNT_POWER_CYCLE));
@@ -14374,7 +14423,7 @@
             let rate = U.trigger_rate.other;
             if (/crit/.test(t)) rate = U.trigger_rate.crit;
             else if (/encounter/.test(t)) rate = U.trigger_rate.encounter;
-            else if (/daily/.test(t)) rate = U.trigger_rate.daily;
+            else if (/daily/.test(t)) rate = (1 / tfCadence("daily"));
             // "receiv" catches "Hit (received)" / "Damage received" — an
             // INCOMING-hit trigger must not fall through to the outgoing
             // /hit/ branch below (2.0/s vs 0.3/s — critic round 2).
@@ -14991,7 +15040,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, tic: state.timeInCombatSec, ehp: state.enemyHealthPct, ety: state.enemyTypes, ssec: state.standingSec, am: state.activeMechanics, fpb: state.forcedPowerBuffs, fu: state.flankUptime, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, tic: state.timeInCombatSec, cad: [state.dailyCadenceSec, state.artifactCadenceSec, state.mountPowerCadenceSec], ehp: state.enemyHealthPct, ety: state.enemyTypes, ssec: state.standingSec, am: state.activeMechanics, fpb: state.forcedPowerBuffs, fu: state.flankUptime, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
