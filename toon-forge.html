@@ -2668,6 +2668,28 @@
         </span>
         <button class="btn btn-ghost" id="clear-build" title="Reset every field back to a blank build">🗑️ Clear all</button>
       </div>
+      <!-- Premium (paid) group — revealed only when running locally; the optimizer
+           and Featured Builds buttons are injected into the slots below. Hidden on
+           the live site (paid features not launched yet). -->
+      <div id="tf-featured-group" style="display:none;align-items:center;gap:0.4rem;padding:0.2rem 0.55rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
+        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
+        <span id="featured-optimizer-slot" style="display:contents;"></span>
+        <span id="featured-builds-slot" style="display:contents;"></span>
+      </div>
+      <!-- Premium gate (LIVE site): the real members-only Optimize entry.
+           Clicking it runs the unlock bootstrap at the bottom of this file —
+           members get the gated optimizer fetched + injected; everyone else
+           goes through Discord sign-in. Hidden on localhost by the local
+           loader, which loads the real file directly. -->
+      <div id="tf-premium-soon" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.3rem;padding:0.25rem 0.7rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
+        <span style="font-size:0.58rem;font-weight:800;letter-spacing:0.09em;color:#0c0e14;background:var(--amber);padding:0.12rem 0.5rem;border-radius:999px;text-transform:uppercase;">Members&nbsp;Only</span>
+        <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;justify-content:center;">
+          <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
+          <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Legendary Noob members — click to sign in with Discord and unlock" style="opacity:0.92;" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">🚀 Optimize My Build</button>
+          <button class="btn" type="button" id="verdict-soon-btn" title="Legendary Noob members — click to sign in with Discord and unlock" style="opacity:0.92;background:rgba(212,160,23,0.12);color:var(--amber);border:1px solid var(--amber);" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">⚒ Forgemaster's Verdict</button>
+        </div>
+        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-mute);max-width:280px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization, plus the Forgemaster's AI verdict that reviews any build and coaches how to play it. Click a button to sign in with Discord.</span>
+      </div>
     </div>
   </div>
 
@@ -3127,31 +3149,7 @@
     <div class="step-panel" data-panel="7">
       <div class="panel" id="premium-panel">
         <h2>Optimize</h2>
-        <p class="hint">Members: one-click gear and boon optimization against the fight you set in step 6, plus the Forgemaster's Verdict.</p>
-        <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center;">
-      <!-- Premium (paid) group — revealed only when running locally; the optimizer
-           and Featured Builds buttons are injected into the slots below. Hidden on
-           the live site (paid features not launched yet). -->
-      <div id="tf-featured-group" style="display:none;align-items:center;gap:0.4rem;padding:0.2rem 0.55rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
-        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
-        <span id="featured-optimizer-slot" style="display:contents;"></span>
-        <span id="featured-builds-slot" style="display:contents;"></span>
-      </div>
-      <!-- Premium gate (LIVE site): the real members-only Optimize entry.
-           Clicking it runs the unlock bootstrap at the bottom of this file —
-           members get the gated optimizer fetched + injected; everyone else
-           goes through Discord sign-in. Hidden on localhost by the local
-           loader, which loads the real file directly. -->
-      <div id="tf-premium-soon" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.3rem;padding:0.25rem 0.7rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
-        <span style="font-size:0.58rem;font-weight:800;letter-spacing:0.09em;color:#0c0e14;background:var(--amber);padding:0.12rem 0.5rem;border-radius:999px;text-transform:uppercase;">Members&nbsp;Only</span>
-        <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;justify-content:center;">
-          <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
-          <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Legendary Noob members — click to sign in with Discord and unlock" style="opacity:0.92;" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">🚀 Optimize My Build</button>
-          <button class="btn" type="button" id="verdict-soon-btn" title="Legendary Noob members — click to sign in with Discord and unlock" style="opacity:0.92;background:rgba(212,160,23,0.12);color:var(--amber);border:1px solid var(--amber);" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">⚒ Forgemaster's Verdict</button>
-        </div>
-        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-mute);max-width:280px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization, plus the Forgemaster's AI verdict that reviews any build and coaches how to play it. Click a button to sign in with Discord.</span>
-      </div>
-        </div>
+        <p class="hint">Members: one-click gear and boon optimization against the fight you set in step 6, plus the Forgemaster's Verdict. The buttons are in the header at the top of the page. <a href="#" id="premium-jump">Take me there</a>.</p>
       </div>
       <div class="panel">
         <h2 id="sim-title">What would this do?</h2>
@@ -12871,6 +12869,8 @@
     }
     function wireScenarioPanel() {
       const strip = document.getElementById("scenario-strip");
+      const pj = document.getElementById("premium-jump");
+      if (pj) pj.addEventListener("click", e => { e.preventDefault(); const t = document.getElementById("tf-featured-group"); const t2 = document.getElementById("tf-premium-soon"); const el = (t && t.style.display !== "none") ? t : t2; window.scrollTo({ top: 0, behavior: "smooth" }); if (el) { el.style.outline = "2px solid var(--amber)"; setTimeout(() => { el.style.outline = ""; }, 1800); } });
       if (strip) strip.addEventListener("click", () => gotoStep(6));
       document.querySelectorAll(".sc-tab").forEach(b => b.addEventListener("click", () => {
         document.querySelectorAll(".sc-tab").forEach(x => x.classList.toggle("active", x === b));
