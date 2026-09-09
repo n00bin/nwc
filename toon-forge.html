@@ -2668,192 +2668,23 @@
         </span>
         <button class="btn btn-ghost" id="clear-build" title="Reset every field back to a blank build">🗑️ Clear all</button>
       </div>
-      <!-- Premium (paid) group — revealed only when running locally; the optimizer
-           and Featured Builds buttons are injected into the slots below. Hidden on
-           the live site (paid features not launched yet). -->
-      <div id="tf-featured-group" style="display:none;align-items:center;gap:0.4rem;padding:0.2rem 0.55rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
-        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
-        <span id="featured-optimizer-slot" style="display:contents;"></span>
-        <span id="featured-builds-slot" style="display:contents;"></span>
-      </div>
-      <!-- Premium gate (LIVE site): the real members-only Optimize entry.
-           Clicking it runs the unlock bootstrap at the bottom of this file —
-           members get the gated optimizer fetched + injected; everyone else
-           goes through Discord sign-in. Hidden on localhost by the local
-           loader, which loads the real file directly. -->
-      <div id="tf-premium-soon" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.3rem;padding:0.25rem 0.7rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
-        <span style="font-size:0.58rem;font-weight:800;letter-spacing:0.09em;color:#0c0e14;background:var(--amber);padding:0.12rem 0.5rem;border-radius:999px;text-transform:uppercase;">Members&nbsp;Only</span>
-        <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;justify-content:center;">
-          <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
-          <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Legendary Noob members — click to sign in with Discord and unlock" style="opacity:0.92;" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">🚀 Optimize My Build</button>
-          <button class="btn" type="button" id="verdict-soon-btn" title="Legendary Noob members — click to sign in with Discord and unlock" style="opacity:0.92;background:rgba(212,160,23,0.12);color:var(--amber);border:1px solid var(--amber);" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">⚒ Forgemaster's Verdict</button>
-        </div>
-        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-mute);max-width:280px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization, plus the Forgemaster's AI verdict that reviews any build and coaches how to play it. Click a button to sign in with Discord.</span>
-      </div>
     </div>
   </div>
 
   <div class="steps" id="steps">
     <div class="step active" data-step="1"><span class="num">1</span> Role &amp; Class</div>
-    <div class="step"        data-step="2"><span class="num">2</span> Your Character</div>
-    <div class="step"        data-step="3"><span class="num">3</span> Gear &amp; Artifacts</div>
+    <div class="step"        data-step="2"><span class="num">2</span> Character &amp; Powers</div>
+    <div class="step"        data-step="3"><span class="num">3</span> Gear</div>
     <div class="step"        data-step="4"><span class="num">4</span> Companions &amp; Mounts</div>
-    <div class="step"        data-step="5"><span class="num">5</span> Boons &amp; Buffs</div>
-    <div class="step"        data-step="6"><span class="num">6</span> See It In Action</div>
+    <div class="step"        data-step="5"><span class="num">5</span> Boons</div>
+    <div class="step"        data-step="6"><span class="num">6</span> The Fight</div>
+    <div class="step"        data-step="7"><span class="num">7</span> Results</div>
+  </div>
+  <div id="scenario-strip" title="The fight every number on this page is computed for. Click to change it (step 6)." style="cursor:pointer;background:var(--surface);border-bottom:1px solid var(--border);padding:0.35rem 2rem;font-size:0.75rem;color:var(--text-mute);">
+    <span style="color:var(--gold);font-weight:700;">Fight:</span> <span id="scenario-summary"></span>
   </div>
 
   <div class="page">
-
-    <!-- ============ Combat scenario (always visible; the builder AND the optimizer score against it) ============ -->
-    <div class="panel" id="combat-scenario-panel">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:0.6rem;flex-wrap:wrap;">
-        <div>
-          <h2 style="margin:0;">Combat scenario</h2>
-          <p class="hint" id="scenario-summary" style="margin:0.25rem 0 0;"></p>
-        </div>
-        <button type="button" class="btn btn-ghost" id="scenario-toggle">Edit scenario</button>
-      </div>
-      <div id="scenario-body" hidden>
-        <p class="hint" style="margin:0.6rem 0 0.4rem;">Describe the fight you are building for. Every conditional bonus on your gear reads these values, and the optimizer scores every candidate against exactly this scenario. Want a different answer? Change the scenario and run again.</p>
-        <div style="display:flex;gap:2px;flex-wrap:wrap;margin:0.5rem 0 0.6rem;border-bottom:1px solid var(--border);">
-          <button type="button" class="btn btn-ghost sc-tab active" data-sc-tab="you">You</button>
-          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="fight">Fight</button>
-          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="party">Party</button>
-          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="powers">Powers</button>
-          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="class">Class</button>
-          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="conditions">Conditions</button>
-        </div>
-        <div class="sc-pane row-2" data-sc-pane="you">
-          <div class="field" id="sc-health-field">
-            <label>Current health
-              <span class="hint-icon" data-tip="Your health during the fight. Low-health bonuses, 'above N% health' bonuses and 'based on missing health' bonuses all read this. Same slider as the one in Detailed Stats.">?</span>
-            </label>
-            <input type="range" id="scenario-health-pct" min="0" max="100" step="5" value="100" style="width:100%;">
-            <span class="hint" id="scenario-health-label">100%</span>
-          </div>
-          <div class="field" id="sim-ap-field">
-            <label>Current action points
-              <span class="hint-icon" data-tip="How full your action-point bar usually is. Some gear only works while it is below 80% (Discharged Force, Discharged Precision, Sharpened Precision), some only when it is full (Charged Focus, Charged Power). Bonuses that need the other state are left out.">?</span>
-            </label>
-            <input type="range" id="current-ap-pct" min="0" max="100" step="5" value="50" style="width:100%;">
-            <span class="hint" id="current-ap-label">50%</span>
-          </div>
-          <div class="field" id="sim-stamina-field">
-            <label>Current stamina
-              <span class="hint-icon" data-tip="How full your stamina bar usually is. Many shirts, pants and rings only work while stamina is over 75% (Charged Fury, Charged Might, Precision Tactics) or only under 25% (Depleted and Enervated bonuses). Bonuses that need the other state are left out.">?</span>
-            </label>
-            <input type="range" id="current-stamina-pct" min="0" max="100" step="5" value="100" style="width:100%;">
-            <span class="hint" id="current-stamina-label">100%</span>
-          </div>
-          <div class="field" id="sim-movement-field">
-            <label>Movement
-              <span class="hint-icon" data-tip="Are you usually moving or standing still in the fight? A few bonuses only work while moving (Critical Momentum, Serpentine, Expert's Grace) and a few only after standing still for a few seconds (Earthen Heart, Defense Preparation, Astral Dash).">?</span>
-            </label>
-            <select id="movement-state" style="width:100%;"><option value="moving">Moving</option><option value="standing">Standing still</option></select>
-          </div>
-          <div class="field" id="sc-tic-field">
-            <label>Time in combat
-              <span class="hint-icon" data-tip="How long the fight has been going. Bonuses that ramp over a fight (Artifact Fanatic: +2% Recharge Speed per artifact use, one use a minute) read this.">?</span>
-            </label>
-            <input type="range" id="time-in-combat" min="0" max="600" step="15" value="120" style="width:100%;">
-            <span class="hint" id="time-in-combat-label">2 min</span>
-          </div>
-          <div class="field" id="sc-standing-field">
-            <label>Standing still for
-              <span class="hint-icon" data-tip="Only read while Movement is Standing still. 'When you stand still for N seconds' bonuses (Defense / Advantage / Healing / Control Preparation) count once you have stood this long.">?</span>
-            </label>
-            <input type="range" id="standing-sec" min="0" max="30" step="1" value="5" style="width:100%;">
-            <span class="hint" id="standing-sec-label">5 s</span>
-          </div>
-          <div class="field" id="sc-incombat-field">
-            <label>In combat
-              <span class="hint-icon" data-tip="Off = the at-rest character sheet (what the game shows out of combat). On = in-combat bonuses (procs, stacks) are added to the Detailed Stats totals. Same switch as 'Hide in-combat bonuses' in Detailed Stats.">?</span>
-            </label>
-            <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="scenario-in-combat"> <span class="hint">Show in-combat bonuses in Detailed Stats</span></label>
-          </div>
-        </div>
-        <div class="sc-pane row-2" data-sc-pane="fight" hidden>
-          <div class="field" id="sim-zone-field">
-            <label>Content zone
-              <span class="hint-icon" data-tip="Where are you running? Some gear gives extra damage only in a specific zone (e.g. &quot;+5% Damage in Thay&quot;). Pick your zone to count that bonus; leave on General for the everywhere value only.">?</span>
-            </label>
-            <button type="button" id="content-zone-btn" class="field-picker-btn">General (anywhere)</button>
-          </div>
-          <div class="field" id="sim-range-field">
-            <label>Distance to target
-              <span class="hint-icon" data-tip="How far you usually stand from the boss. Some gear only works within 20 or 25 feet (melee), some only at 25 or 50 feet and beyond (ranged). Bonuses that need the other distance are left out.">?</span>
-            </label>
-            <input type="range" id="target-range-ft" min="0" max="80" step="5" value="10" style="width:100%;">
-            <span class="hint" id="target-range-label">10 ft (melee)</span>
-          </div>
-          <div class="field" id="sim-enemies-field">
-            <label>Enemies in combat
-              <span class="hint-icon" data-tip="How many enemies you are usually fighting at once. 1 = a single boss. Bonuses that need 2, 3 or more enemies, bonuses that only work against one enemy, and bonuses that grow per enemy (Berserking Might, Death Defying Advantage, Overwhelming Parry) all follow this number.">?</span>
-            </label>
-            <input type="range" id="enemy-count" min="1" max="10" step="1" value="1" style="width:100%;">
-            <span class="hint" id="enemy-count-label">1 (single boss)</span>
-          </div>
-          <div class="field" id="sim-attack-type-field">
-            <label>Enemy attacks
-              <span class="hint-icon" data-tip="What mostly hits you: melee swings or ranged attacks. A few pieces only reduce one kind (Bulwark's Shield: ranged).">?</span>
-            </label>
-            <select id="incoming-attack-type" style="width:100%;"><option value="melee">Mostly melee</option><option value="ranged">Mostly ranged</option></select>
-          </div>
-          <div class="field" id="sim-shield-field">
-            <label>Target has a shield
-              <span class="hint-icon" data-tip="Tick when the enemy you fight carries a shield. Shield Breaker (Garnet Abyssal Loop) only works against shielded targets.">?</span>
-            </label>
-            <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="target-shielded"> <span class="hint">Shielded enemy</span></label>
-          </div>
-          <div class="field" id="sc-enemy-hp-field">
-            <label>Enemy health
-              <span class="hint-icon" data-tip="The enemy's health during the fight. 'When your enemy's health is greater than N%' bonuses (Destroyer's Might, Killer's Might) and execute-style bonuses read this.">?</span>
-            </label>
-            <input type="range" id="enemy-health-pct" min="0" max="100" step="5" value="100" style="width:100%;">
-            <span class="hint" id="enemy-health-label">100%</span>
-          </div>
-          <div class="field" id="sc-ca-field">
-            <label>Combat Advantage uptime
-              <span class="hint-icon" data-tip="How much of the fight you have Combat Advantage (flanking, or a Combat Advantage source on you). The damage model multiplies your CA bonus by this. Tanks and healers that stand in front rarely flank.">?</span>
-            </label>
-            <input type="range" id="flank-uptime-pct" min="0" max="100" step="5" value="100" style="width:100%;">
-            <span class="hint" id="flank-uptime-label">100%</span>
-          </div>
-          <div class="field" id="sc-enemy-types-field" style="grid-column:1 / -1;">
-            <label>Enemy types in this fight
-              <span class="hint-icon" data-tip="Tick every creature type you fight. Gear and wards with 'vs Dragon', 'vs Undead' and similar bonuses count only when that type is ticked. Several can be on at once.">?</span>
-            </label>
-            <div id="enemy-types-box" style="display:flex;flex-wrap:wrap;gap:0.4rem 0.9rem;"></div>
-          </div>
-        </div>
-        <div class="sc-pane row-2" data-sc-pane="party" hidden>
-          <div class="field">
-            <label>Content type
-              <span class="hint-icon" data-tip="Dungeon = 5-man (4 ally slots), Trial = 10-man (9), Solo = no party. Solo switches 'when not in a party' gear on and 'per teammate' gear down. Same setting as the one in Party Buffs.">?</span>
-            </label>
-            <select id="scenario-party-content" style="width:100%;"><option value="dungeon">Dungeon (5-man)</option><option value="trial">Trial (10-man)</option><option value="solo">Solo (no party)</option></select>
-          </div>
-          <div class="field">
-            <label>Party healer
-              <span class="hint-icon" data-tip="Which class heals your group. Answers party-dependent gear conditions for you (Paladin = temp HP, Warlock = shields). Same setting as the one in Party Buffs.">?</span>
-            </label>
-            <select id="scenario-party-healer" style="width:100%;"><option value="">None / unknown</option><option value="Paladin">Paladin</option><option value="Cleric">Cleric</option><option value="Warlock">Warlock</option><option value="Bard">Bard</option></select>
-          </div>
-          <p class="hint" style="grid-column:1 / -1;margin:0;">Allies' companions and mount auras are picked in <strong>Boons &amp; Buffs → Party Buffs</strong>.</p>
-        </div>
-        <div class="sc-pane" data-sc-pane="powers" hidden>
-          <p class="hint" style="margin:0 0 0.5rem;">Damage mix from your slotted powers over the Time in combat you set: each encounter casts every cooldown (after Recharge Speed), each daily every AP bar, the strongest at-will fills the rest. Read-only; change your powers in <strong>Your Character → Your Powers</strong>.</p>
-          <div id="damage-mix-box"></div>
-        </div>
-        <div class="sc-pane" data-sc-pane="class" hidden>
-          <p class="hint" style="margin:0 0 0.5rem;">Class mechanics for your class and paragon. Tick the ones that are up during the fight you are building for. Mechanics with numbers in their tooltip feed the stats; the rest are listed so nothing is forgotten.</p>
-          <div id="class-mechanics-box"></div>
-        </div>
-        <div class="sc-pane" data-sc-pane="conditions" hidden>
-          <div id="build-conditions"></div>
-        </div>
-      </div>
-    </div>
 
     <!-- ============ Step 1: Role & Class ============ -->
     <div class="step-panel active" data-panel="1">
@@ -2965,6 +2796,11 @@
       </div>
 
       <div class="panel">
+        <h2>Artifacts</h2>
+        <p class="hint">The Primary artifact is the one with the active power you can press in a fight. The other three secondary artifacts don't have an active power — you equip them for their stat bonuses.</p>
+        <div class="slot-grid" id="artifact-grid" style="grid-template-columns:repeat(2,1fr);"></div>
+      </div>
+      <div class="panel">
         <h2>Enchantments</h2>
         <p class="hint" id="ench-slot-hint">Twelve slots in total: <strong>4 Offense</strong>, <strong>4 Defense</strong>, <strong>1 Utility</strong>, <strong>2 Combat</strong> (one <strong>Strike</strong>, one <strong>Guard</strong>), and <strong>1 Bonus</strong>. Universal enchants change what stat they give based on which slot you put them in.</p>
         <div id="ench-offense-grid"></div>
@@ -2978,11 +2814,6 @@
         <div class="slot-grid" id="overload-grid"></div>
       </div>
 
-      <div class="panel">
-        <h2>Artifacts</h2>
-        <p class="hint">The Primary artifact is the one with the active power you can press in a fight. The other three secondary artifacts don't have an active power — you equip them for their stat bonuses.</p>
-        <div class="slot-grid" id="artifact-grid" style="grid-template-columns:repeat(2,1fr);"></div>
-      </div>
 
       <div class="nav-buttons">
         <button class="btn btn-ghost" data-go="back">← Back</button>
@@ -2992,6 +2823,68 @@
 
     <!-- ============ Step 4: Companions & Mounts ============ -->
     <div class="step-panel" data-panel="4">
+
+      <div class="panel">
+        <h2>Pick your companions</h2>
+        <p class="hint">Top row gears up your summoned companion — <strong>Enchantment</strong>, <strong>Enhancement</strong>, and 3 <strong>Equipment</strong> slots. Bottom: pick the summoned companion itself, plus 5 active companions whose powers boost your stats.</p>
+        <div id="comp-loadout-row" class="comp-loadout">
+          <div class="comp-loadout-chip" id="comp-enchant-chip">+ Enchantment</div>
+          <div class="comp-loadout-chip" id="comp-enh-chip">+ Enhancement</div>
+          <div class="comp-loadout-chip" data-summoned-equip="Neck">+ Equipment</div>
+          <div class="comp-loadout-chip" data-summoned-equip="Waist">+ Equipment</div>
+          <div class="comp-loadout-chip" data-summoned-equip="Ring">+ Equipment</div>
+        </div>
+        <div id="comp-pick-rows"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Mount stable</h2>
+        <p class="hint">Five mounts in your stable. Each gets a <strong>collar</strong>, a <strong>mount</strong>, and a set of <strong>insignias</strong>. Pick which <strong>Insignia Bonus</strong> you want per mount — slot the matching insignia categories and the row turns green. Using the same bonus on multiple mounts stacks with diminishing returns — bonuses with a known in-game ladder use their exact values (e.g. Guardian's Spirit 8% / 12% / 15%); others use the generic <strong>100% / 50% / 25%</strong> curve (see <a href="mekaniks.html#view-stacking" target="_blank">Mekaniks → Stacking</a>).</p>
+        <div style="margin-bottom:0.6rem;">
+          <button class="btn btn-ghost" id="find-bonus-btn" style="font-size:0.85rem;">🔍 Find an Insignia Bonus</button>
+        </div>
+        <!-- Active combat + equip power loadout (drawn from stable mounts) -->
+        <!-- Decision 11: rarity pickers live here, next to the active-power chips. -->
+        <div class="active-power-row">
+          <div class="active-power-col" style="display:flex;flex-direction:column;gap:0.2rem;">
+            <div class="comp-loadout-chip" id="active-combat-chip">+ Active Combat Power</div>
+            <div style="display:flex;align-items:center;gap:0.3rem;">
+              <label style="font-size:0.7rem;color:var(--text-mute);white-space:nowrap;">Combat rarity:</label>
+              <select id="active-combat-power-rarity"
+                      title="Rarity of the mount whose Combat Power you are using. Scales the combat-power detail card values only — does NOT change the stat bar."
+                      style="font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
+                <option value="Common">Common</option>
+                <option value="Uncommon">Uncommon</option>
+                <option value="Rare">Rare</option>
+                <option value="Epic">Epic</option>
+                <option value="Legendary">Legendary</option>
+                <option value="Mythic">Mythic</option>
+                <option value="Celestial" selected>Celestial</option>
+              </select>
+            </div>
+          </div>
+          <div class="active-power-col" style="display:flex;flex-direction:column;gap:0.2rem;">
+            <div class="comp-loadout-chip" id="active-equip-chip">+ Active Equip Power</div>
+            <div style="display:flex;align-items:center;gap:0.3rem;">
+              <label style="font-size:0.7rem;color:var(--text-mute);white-space:nowrap;">Equip rarity:</label>
+              <select id="active-equip-power-rarity"
+                      title="Rarity of the mount whose Equip Power you are using. Scales the stat bar and the browse-picker numbers immediately — works even if that mount is not in any stable slot. Defaults to Celestial (max tier)."
+                      style="font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
+                <option value="Common">Common</option>
+                <option value="Uncommon">Uncommon</option>
+                <option value="Rare">Rare</option>
+                <option value="Epic">Epic</option>
+                <option value="Legendary">Legendary</option>
+                <option value="Mythic">Mythic</option>
+                <option value="Celestial" selected>Celestial</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div id="stable-grid"></div>
+        <div id="insignia-summary"></div>
+      </div>
+
       <div class="panel">
         <h2>Bolster</h2>
         <p class="hint">Bolster is what your <strong>top 10 companions</strong> and <strong>top 10 mounts</strong> by quality give you, even when they're not summoned. Type how many of each rarity you own and your bolster fills in automatically. See <a href="mekaniks.html#view-bolster" target="_blank">Mekaniks → Bolster</a> for the per-tier table.</p>
@@ -3063,70 +2956,9 @@
         </div>
       </div>
 
-      <div class="panel">
-        <h2>Pick your companions</h2>
-        <p class="hint">Top row gears up your summoned companion — <strong>Enchantment</strong>, <strong>Enhancement</strong>, and 3 <strong>Equipment</strong> slots. Bottom: pick the summoned companion itself, plus 5 active companions whose powers boost your stats.</p>
-        <div id="comp-loadout-row" class="comp-loadout">
-          <div class="comp-loadout-chip" id="comp-enchant-chip">+ Enchantment</div>
-          <div class="comp-loadout-chip" id="comp-enh-chip">+ Enhancement</div>
-          <div class="comp-loadout-chip" data-summoned-equip="Neck">+ Equipment</div>
-          <div class="comp-loadout-chip" data-summoned-equip="Waist">+ Equipment</div>
-          <div class="comp-loadout-chip" data-summoned-equip="Ring">+ Equipment</div>
-        </div>
-        <div id="comp-pick-rows"></div>
-      </div>
-
-      <div class="panel">
-        <h2>Mount stable</h2>
-        <p class="hint">Five mounts in your stable. Each gets a <strong>collar</strong>, a <strong>mount</strong>, and a set of <strong>insignias</strong>. Pick which <strong>Insignia Bonus</strong> you want per mount — slot the matching insignia categories and the row turns green. Using the same bonus on multiple mounts stacks with diminishing returns — bonuses with a known in-game ladder use their exact values (e.g. Guardian's Spirit 8% / 12% / 15%); others use the generic <strong>100% / 50% / 25%</strong> curve (see <a href="mekaniks.html#view-stacking" target="_blank">Mekaniks → Stacking</a>).</p>
-        <div style="margin-bottom:0.6rem;">
-          <button class="btn btn-ghost" id="find-bonus-btn" style="font-size:0.85rem;">🔍 Find an Insignia Bonus</button>
-        </div>
-        <!-- Active combat + equip power loadout (drawn from stable mounts) -->
-        <!-- Decision 11: rarity pickers live here, next to the active-power chips. -->
-        <div class="active-power-row">
-          <div class="active-power-col" style="display:flex;flex-direction:column;gap:0.2rem;">
-            <div class="comp-loadout-chip" id="active-combat-chip">+ Active Combat Power</div>
-            <div style="display:flex;align-items:center;gap:0.3rem;">
-              <label style="font-size:0.7rem;color:var(--text-mute);white-space:nowrap;">Combat rarity:</label>
-              <select id="active-combat-power-rarity"
-                      title="Rarity of the mount whose Combat Power you are using. Scales the combat-power detail card values only — does NOT change the stat bar."
-                      style="font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
-                <option value="Common">Common</option>
-                <option value="Uncommon">Uncommon</option>
-                <option value="Rare">Rare</option>
-                <option value="Epic">Epic</option>
-                <option value="Legendary">Legendary</option>
-                <option value="Mythic">Mythic</option>
-                <option value="Celestial" selected>Celestial</option>
-              </select>
-            </div>
-          </div>
-          <div class="active-power-col" style="display:flex;flex-direction:column;gap:0.2rem;">
-            <div class="comp-loadout-chip" id="active-equip-chip">+ Active Equip Power</div>
-            <div style="display:flex;align-items:center;gap:0.3rem;">
-              <label style="font-size:0.7rem;color:var(--text-mute);white-space:nowrap;">Equip rarity:</label>
-              <select id="active-equip-power-rarity"
-                      title="Rarity of the mount whose Equip Power you are using. Scales the stat bar and the browse-picker numbers immediately — works even if that mount is not in any stable slot. Defaults to Celestial (max tier)."
-                      style="font-size:0.72rem;padding:0.2rem 0.3rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
-                <option value="Common">Common</option>
-                <option value="Uncommon">Uncommon</option>
-                <option value="Rare">Rare</option>
-                <option value="Epic">Epic</option>
-                <option value="Legendary">Legendary</option>
-                <option value="Mythic">Mythic</option>
-                <option value="Celestial" selected>Celestial</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div id="stable-grid"></div>
-        <div id="insignia-summary"></div>
-      </div>
-
       <div class="nav-buttons">
         <button class="btn btn-ghost" data-go="back">← Back</button>
-        <button class="btn btn-primary" data-go="next">Next: Boons &amp; Buffs →</button>
+        <button class="btn btn-primary" data-go="next">Next: Boons →</button>
       </div>
     </div>
 
@@ -3144,20 +2976,189 @@
         <div id="guild-boon-list"></div>
       </div>
 
-      <div class="panel">
-        <h2>Optional buffs</h2>
-        <p class="hint">Things you eat, drink, or pop before a fight. One per category. Free always-on buffs (Campfire, VIP, Invocation) are at the bottom — check the ones your character actually has.</p>
-        <div class="toggle-list" id="buff-list"></div>
-      </div>
 
       <div class="nav-buttons">
         <button class="btn btn-ghost" data-go="back">← Back</button>
-        <button class="btn btn-primary" data-go="next">Next: See It In Action →</button>
+        <button class="btn btn-primary" data-go="next">Next: The Fight →</button>
       </div>
     </div>
 
-    <!-- ============ Step 6: Test & Tune ============ -->
+    <!-- ============ Step 6: The Fight ============ -->
     <div class="step-panel" data-panel="6">
+    <div class="panel" id="combat-scenario-panel">
+      <h2>The fight you are building for</h2>
+      <div id="scenario-body">
+        <p class="hint" style="margin:0.6rem 0 0.4rem;">Describe the fight you are building for. Every conditional bonus on your gear reads these values, and the optimizer scores every candidate against exactly this scenario. Want a different answer? Change the scenario and run again.</p>
+        <div style="display:flex;gap:2px;flex-wrap:wrap;margin:0.5rem 0 0.6rem;border-bottom:1px solid var(--border);">
+          <button type="button" class="btn btn-ghost sc-tab active" data-sc-tab="you">You</button>
+          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="fight">Fight</button>
+          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="party">Party</button>
+          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="consumables">Consumables</button>
+          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="powers">Powers</button>
+          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="class">Class</button>
+          <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="conditions">Conditions</button>
+        </div>
+        <div class="sc-pane row-2" data-sc-pane="you">
+          <div class="field" id="sc-health-field">
+            <label>Current health
+              <span class="hint-icon" data-tip="Your health during the fight. Low-health bonuses, 'above N% health' bonuses and 'based on missing health' bonuses all read this. Same slider as the one in Detailed Stats.">?</span>
+            </label>
+            <input type="range" id="scenario-health-pct" min="0" max="100" step="5" value="100" style="width:100%;">
+            <span class="hint" id="scenario-health-label">100%</span>
+          </div>
+          <div class="field" id="sim-ap-field">
+            <label>Current action points
+              <span class="hint-icon" data-tip="How full your action-point bar usually is. Some gear only works while it is below 80% (Discharged Force, Discharged Precision, Sharpened Precision), some only when it is full (Charged Focus, Charged Power). Bonuses that need the other state are left out.">?</span>
+            </label>
+            <input type="range" id="current-ap-pct" min="0" max="100" step="5" value="50" style="width:100%;">
+            <span class="hint" id="current-ap-label">50%</span>
+          </div>
+          <div class="field" id="sim-stamina-field">
+            <label>Current stamina
+              <span class="hint-icon" data-tip="How full your stamina bar usually is. Many shirts, pants and rings only work while stamina is over 75% (Charged Fury, Charged Might, Precision Tactics) or only under 25% (Depleted and Enervated bonuses). Bonuses that need the other state are left out.">?</span>
+            </label>
+            <input type="range" id="current-stamina-pct" min="0" max="100" step="5" value="100" style="width:100%;">
+            <span class="hint" id="current-stamina-label">100%</span>
+          </div>
+          <div class="field" id="sim-movement-field">
+            <label>Movement
+              <span class="hint-icon" data-tip="Are you usually moving or standing still in the fight? A few bonuses only work while moving (Critical Momentum, Serpentine, Expert's Grace) and a few only after standing still for a few seconds (Earthen Heart, Defense Preparation, Astral Dash).">?</span>
+            </label>
+            <select id="movement-state" style="width:100%;"><option value="moving">Moving</option><option value="standing">Standing still</option></select>
+          </div>
+          <div class="field" id="sc-tic-field">
+            <label>Time in combat
+              <span class="hint-icon" data-tip="How long the fight has been going. Bonuses that ramp over a fight (Artifact Fanatic: +2% Recharge Speed per artifact use, one use a minute) read this.">?</span>
+            </label>
+            <input type="range" id="time-in-combat" min="0" max="600" step="15" value="120" style="width:100%;">
+            <span class="hint" id="time-in-combat-label">2 min</span>
+          </div>
+          <div class="field" id="sc-standing-field">
+            <label>Standing still for
+              <span class="hint-icon" data-tip="Only read while Movement is Standing still. 'When you stand still for N seconds' bonuses (Defense / Advantage / Healing / Control Preparation) count once you have stood this long.">?</span>
+            </label>
+            <input type="range" id="standing-sec" min="0" max="30" step="1" value="5" style="width:100%;">
+            <span class="hint" id="standing-sec-label">5 s</span>
+          </div>
+          <div class="field" id="sc-incombat-field">
+            <label>In combat
+              <span class="hint-icon" data-tip="Off = the at-rest character sheet (what the game shows out of combat). On = in-combat bonuses (procs, stacks) are added to the Detailed Stats totals. Same switch as 'Hide in-combat bonuses' in Detailed Stats.">?</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="scenario-in-combat"> <span class="hint">Show in-combat bonuses in Detailed Stats</span></label>
+          </div>
+        </div>
+        <div class="sc-pane row-2" data-sc-pane="fight" hidden>
+          <div class="field" id="sim-zone-field">
+            <label>Content zone
+              <span class="hint-icon" data-tip="Where are you running? Some gear gives extra damage only in a specific zone (e.g. &quot;+5% Damage in Thay&quot;). Pick your zone to count that bonus; leave on General for the everywhere value only.">?</span>
+            </label>
+            <button type="button" id="content-zone-btn" class="field-picker-btn">General (anywhere)</button>
+          </div>
+          <div class="field" id="sim-range-field">
+            <label>Distance to target
+              <span class="hint-icon" data-tip="How far you usually stand from the boss. Some gear only works within 20 or 25 feet (melee), some only at 25 or 50 feet and beyond (ranged). Bonuses that need the other distance are left out.">?</span>
+            </label>
+            <input type="range" id="target-range-ft" min="0" max="80" step="5" value="10" style="width:100%;">
+            <span class="hint" id="target-range-label">10 ft (melee)</span>
+          </div>
+          <div class="field" id="sim-enemies-field">
+            <label>Enemies in combat
+              <span class="hint-icon" data-tip="How many enemies you are usually fighting at once. 1 = a single boss. Bonuses that need 2, 3 or more enemies, bonuses that only work against one enemy, and bonuses that grow per enemy (Berserking Might, Death Defying Advantage, Overwhelming Parry) all follow this number.">?</span>
+            </label>
+            <input type="range" id="enemy-count" min="1" max="10" step="1" value="1" style="width:100%;">
+            <span class="hint" id="enemy-count-label">1 (single boss)</span>
+          </div>
+          <div class="field" id="sim-attack-type-field">
+            <label>Enemy attacks
+              <span class="hint-icon" data-tip="What mostly hits you: melee swings or ranged attacks. A few pieces only reduce one kind (Bulwark's Shield: ranged).">?</span>
+            </label>
+            <select id="incoming-attack-type" style="width:100%;"><option value="melee">Mostly melee</option><option value="ranged">Mostly ranged</option></select>
+          </div>
+          <div class="field" id="sim-shield-field">
+            <label>Target has a shield
+              <span class="hint-icon" data-tip="Tick when the enemy you fight carries a shield. Shield Breaker (Garnet Abyssal Loop) only works against shielded targets.">?</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="target-shielded"> <span class="hint">Shielded enemy</span></label>
+          </div>
+          <div class="field" id="sc-enemy-hp-field">
+            <label>Enemy health
+              <span class="hint-icon" data-tip="The enemy's health during the fight. 'When your enemy's health is greater than N%' bonuses (Destroyer's Might, Killer's Might) and execute-style bonuses read this.">?</span>
+            </label>
+            <input type="range" id="enemy-health-pct" min="0" max="100" step="5" value="100" style="width:100%;">
+            <span class="hint" id="enemy-health-label">100%</span>
+          </div>
+          <div class="field" id="sc-ca-field">
+            <label>Combat Advantage uptime
+              <span class="hint-icon" data-tip="How much of the fight you have Combat Advantage (flanking, or a Combat Advantage source on you). The damage model multiplies your CA bonus by this. Tanks and healers that stand in front rarely flank.">?</span>
+            </label>
+            <input type="range" id="flank-uptime-pct" min="0" max="100" step="5" value="100" style="width:100%;">
+            <span class="hint" id="flank-uptime-label">100%</span>
+          </div>
+          <div class="field" id="sc-enemy-types-field" style="grid-column:1 / -1;">
+            <label>Enemy types in this fight
+              <span class="hint-icon" data-tip="Tick every creature type you fight. Gear and wards with 'vs Dragon', 'vs Undead' and similar bonuses count only when that type is ticked. Several can be on at once.">?</span>
+            </label>
+            <div id="enemy-types-box" style="display:flex;flex-wrap:wrap;gap:0.4rem 0.9rem;"></div>
+          </div>
+        </div>
+        <div class="sc-pane" data-sc-pane="party" hidden>
+          <p class="hint" style="margin:0 0 0.5rem;">Who you run with: content type (dungeon / trial / solo), the party healer, and your allies' summoned companions and mount auras.</p>
+          <div class="toggle-list" id="party-buffs-list"></div>
+        </div>
+        <div class="sc-pane" data-sc-pane="consumables" hidden>
+          <p class="hint" style="margin:0 0 0.5rem;">Things you eat, drink, or pop before a fight. One per category. Free always-on buffs (Campfire, VIP, Invocation) are at the bottom — check the ones your character actually has.</p>
+          <div class="toggle-list" id="buff-list"></div>
+        </div>
+        <div class="sc-pane" data-sc-pane="powers" hidden>
+          <p class="hint" style="margin:0 0 0.5rem;">Damage mix from your slotted powers over the Time in combat you set: each encounter casts every cooldown (after Recharge Speed), each daily every AP bar, the strongest at-will fills the rest. Read-only; change your powers in <strong>Your Character → Your Powers</strong>.</p>
+          <div id="damage-mix-box"></div>
+        </div>
+        <div class="sc-pane" data-sc-pane="class" hidden>
+          <p class="hint" style="margin:0 0 0.5rem;">Class mechanics for your class and paragon. Tick the ones that are up during the fight you are building for. Mechanics with numbers in their tooltip feed the stats; the rest are listed so nothing is forgotten.</p>
+          <div id="class-mechanics-box"></div>
+        </div>
+        <div class="sc-pane" data-sc-pane="conditions" hidden>
+          <div id="build-conditions"></div>
+        </div>
+      </div>
+    </div>
+
+      <div class="nav-buttons">
+        <button class="btn btn-ghost" data-go="back">← Back</button>
+        <button class="btn btn-primary" data-go="next">Next: Results →</button>
+      </div>
+    </div>
+
+    <!-- ============ Step 7: Results ============ -->
+    <div class="step-panel" data-panel="7">
+      <div class="panel" id="premium-panel">
+        <h2>Optimize</h2>
+        <p class="hint">Members: one-click gear and boon optimization against the fight you set in step 6, plus the Forgemaster's Verdict.</p>
+        <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center;">
+      <!-- Premium (paid) group — revealed only when running locally; the optimizer
+           and Featured Builds buttons are injected into the slots below. Hidden on
+           the live site (paid features not launched yet). -->
+      <div id="tf-featured-group" style="display:none;align-items:center;gap:0.4rem;padding:0.2rem 0.55rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
+        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
+        <span id="featured-optimizer-slot" style="display:contents;"></span>
+        <span id="featured-builds-slot" style="display:contents;"></span>
+      </div>
+      <!-- Premium gate (LIVE site): the real members-only Optimize entry.
+           Clicking it runs the unlock bootstrap at the bottom of this file —
+           members get the gated optimizer fetched + injected; everyone else
+           goes through Discord sign-in. Hidden on localhost by the local
+           loader, which loads the real file directly. -->
+      <div id="tf-premium-soon" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.3rem;padding:0.25rem 0.7rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
+        <span style="font-size:0.58rem;font-weight:800;letter-spacing:0.09em;color:#0c0e14;background:var(--amber);padding:0.12rem 0.5rem;border-radius:999px;text-transform:uppercase;">Members&nbsp;Only</span>
+        <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;justify-content:center;">
+          <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
+          <button class="btn btn-primary" type="button" id="optimize-soon-btn" title="Legendary Noob members — click to sign in with Discord and unlock" style="opacity:0.92;" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">🚀 Optimize My Build</button>
+          <button class="btn" type="button" id="verdict-soon-btn" title="Legendary Noob members — click to sign in with Discord and unlock" style="opacity:0.92;background:rgba(212,160,23,0.12);color:var(--amber);border:1px solid var(--amber);" onclick="if(window.nwcbPremiumGo){window.nwcbPremiumGo();}else{var n=document.getElementById('optimize-soon-note');if(n)n.style.display='block';}">⚒ Forgemaster's Verdict</button>
+        </div>
+        <span id="optimize-soon-note" style="display:none;font-size:0.7rem;color:var(--text-mute);max-width:280px;text-align:center;line-height:1.4;">For <a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">Legendary Noob</a> members ($9.99/mo): one-click gear &amp; boon optimization, plus the Forgemaster's AI verdict that reviews any build and coaches how to play it. Click a button to sign in with Discord.</span>
+      </div>
+        </div>
+      </div>
       <div class="panel">
         <h2 id="sim-title">What would this do?</h2>
         <p class="hint" id="sim-hint">Type your power's magnitude from the in-game tooltip. We'll show what one hit would actually do against a typical PvE enemy. See <a href="mekaniks.html#view-damage" target="_blank">Mekaniks → Damage</a> for the full formula.</p>
@@ -3170,7 +3171,7 @@
           </div>
         </div>
 
-        <p class="hint" style="margin-top:0.4rem;">Fight settings (zone, distance, enemies, health, party) live in the <a href="#combat-scenario-panel">Combat scenario</a> panel at the top of the page.</p>
+        <p class="hint" style="margin-top:0.4rem;">This hit is computed against the fight you set in step 6 (zone, distance, enemies, health, party).</p>
 
         <p class="hint" style="margin-top:0.8rem;">💡 <strong>Chance</strong> = how likely each outcome is on a single hit. All the cards below add up to 100% — every hit has to land in exactly one.</p>
         <div class="sim-cards" id="sim-body"></div>
@@ -12829,8 +12830,8 @@
       const ph = document.getElementById("scenario-party-healer"); if (ph) ph.value = state.partyHealerClass || "";
     }
     function wireScenarioPanel() {
-      const tog = document.getElementById("scenario-toggle"), body = document.getElementById("scenario-body");
-      if (tog && body) tog.addEventListener("click", () => { body.hidden = !body.hidden; tog.textContent = body.hidden ? "Edit scenario" : "Hide scenario"; });
+      const strip = document.getElementById("scenario-strip");
+      if (strip) strip.addEventListener("click", () => gotoStep(6));
       document.querySelectorAll(".sc-tab").forEach(b => b.addEventListener("click", () => {
         document.querySelectorAll(".sc-tab").forEach(x => x.classList.toggle("active", x === b));
         document.querySelectorAll(".sc-pane").forEach(pn => { pn.hidden = pn.dataset.scPane !== b.dataset.scTab; });
@@ -18081,6 +18082,17 @@
         html += `</div>`;        // close the boon-tier
       }
 
+      // Party Buffs render into their own host (The Fight -> Party tab) when it exists;
+      // consumables stay in #buff-list (The Fight -> Consumables tab). Split on the
+      // party tier marker so the two sections are independent.
+      const _partyMarker = '<div class="boon-tier-header">Party Buffs <span';
+      const _pi = html.indexOf(_partyMarker);
+      const _partyEl = document.getElementById("party-buffs-list");
+      if (_pi >= 0 && _partyEl) {
+        const _tierStart = html.lastIndexOf('<div class="boon-tier"', _pi);
+        _partyEl.innerHTML = html.slice(_tierStart);
+        html = html.slice(0, _tierStart);
+      }
       el.innerHTML = html;
 
       // Single-pick group → opens picker for that category
@@ -18122,14 +18134,14 @@
       });
 
       // Party content-type selector (dungeon = 4 ally slots / trial = 9 ally slots)
-      const partyContentEl = el.querySelector("#party-content-select");
+      const partyContentEl = document.querySelector("#party-content-select");
       if (partyContentEl) {
         partyContentEl.addEventListener("change", (e) => {
           state.partyContent = e.target.value;
           renderBuffs(); rerenderAll();
         });
       }
-      const partyHealerEl = el.querySelector("#party-healer-select");
+      const partyHealerEl = document.querySelector("#party-healer-select");
       if (partyHealerEl) {
         partyHealerEl.addEventListener("change", (e) => {
           state.partyHealerClass = e.target.value || "";
@@ -18137,7 +18149,7 @@
         });
       }
       // Pack-meta toggle (party-scope companion stacks at full vs solo)
-      const packMetaEl = el.querySelector("#party-pack-meta-toggle");
+      const packMetaEl = document.querySelector("#party-pack-meta-toggle");
       if (packMetaEl) {
         packMetaEl.addEventListener("change", (e) => {
           state.partyPackMeta = !!e.target.checked;
@@ -18145,7 +18157,7 @@
         });
       }
       // Group-equip-stacks toggle (group-stacked mount equip procs, e.g. Providence)
-      const groupEquipEl = el.querySelector("#group-equip-stacks-toggle");
+      const groupEquipEl = document.querySelector("#group-equip-stacks-toggle");
       if (groupEquipEl) {
         groupEquipEl.addEventListener("change", (e) => {
           state.groupEquipStacks = !!e.target.checked;
@@ -18155,7 +18167,7 @@
       // Assume-support-party master toggle — gates every ally contribution
       // (summoned-comp buffs, ally mount auras, and CA-grant/debuff combat mods)
       // for both the stat panel and the optimizer. Default OFF.
-      const assumePartyEl = el.querySelector("#assume-support-party-toggle");
+      const assumePartyEl = document.querySelector("#assume-support-party-toggle");
       if (assumePartyEl) {
         assumePartyEl.addEventListener("change", (e) => {
           state.assumeSupportParty = !!e.target.checked;
@@ -18168,7 +18180,7 @@
       // the ally slots with the standard set, whether or not they're already
       // filled. Users then tweak/remove; stat-aware selection is the optimizer's
       // job, not this free helper.
-      const fillStdEl = el.querySelector("#party-fill-standard");
+      const fillStdEl = document.querySelector("#party-fill-standard");
       if (fillStdEl) {
         fillStdEl.addEventListener("click", async (ev) => {
           ev.stopPropagation();
@@ -18199,7 +18211,7 @@
         });
       }
       // Per-slot ally mount equip power picker
-      el.querySelectorAll("[data-party-mount-slot-pick]").forEach(row => {
+      document.querySelectorAll("[data-party-mount-slot-pick]").forEach(row => {
         row.addEventListener("click", () => {
           const slot = +row.dataset.partyMountSlotPick;
           const taken = new Set((state.partyMountAllies || []).filter((n, i) => n && i !== slot));
@@ -18246,7 +18258,7 @@
       // so the user can see each companion's buff effects (and full
       // details via 🔍) before choosing. Already-selected companions
       // in other slots are visually marked as "(already slotted)".
-      el.querySelectorAll("[data-party-slot-pick]").forEach(row => {
+      document.querySelectorAll("[data-party-slot-pick]").forEach(row => {
         row.addEventListener("click", () => {
           const slot = +row.dataset.partySlotPick;
           const taken = new Set((state.partyAllies || []).filter((n, i) => n && i !== slot));
@@ -18959,8 +18971,9 @@
         2: !!state.paragon && !!state.race && !!state.il,
         3: Object.values(state.gear).some(v => v && v !== "— None —"),
         4: !!state.summoned || state.stable.some(s => s.mount),
-        5: state.boons.size > 0 || state.buffs.size > 0,
-        6: false,
+        5: state.boons.size > 0,
+        6: state.buffs.size > 0 || !!state.contentZone || (state.enemyTypes || []).length > 0 || Object.keys(state.activeMechanics || {}).length > 0 || !!state.partyHealerClass,
+        7: false,
       };
       document.querySelectorAll(".step").forEach(s => {
         const n = +s.dataset.step;
@@ -19904,7 +19917,7 @@
       renderScore();
       renderStepDoneStates();
       renderClassLoadout();
-      if (state.step === 6) { renderSim(); renderSummary(); }
+      if (state.step === 7) { renderSim(); renderSummary(); }
       // If a picker is open, re-render its list too. This keeps the
       // displayed values in picker cards in sync with state changes
       // (e.g., bolster slider, per-slot comp rarity dropdowns) that
@@ -19993,7 +20006,8 @@
       document.querySelectorAll(".step-panel").forEach(p => p.classList.toggle("active", +p.dataset.panel === n));
       window.scrollTo({ top: 0, behavior: "smooth" });
       renderStepDoneStates();
-      if (n === 6) { renderSim(); renderSummary(); }
+      if (n === 7) { renderSim(); renderSummary(); }
+      if (n === 6 && typeof renderBuffs === "function") renderBuffs();
     }
 
     /* ===== Role/Class compatibility ===== */
@@ -20080,7 +20094,7 @@
       b.addEventListener("click", () => {
         const dir = b.dataset.go;
         const next = state.step + (dir === "next" ? 1 : -1);
-        if (next >= 1 && next <= 6) gotoStep(next);
+        if (next >= 1 && next <= 7) gotoStep(next);
       });
     });
     // Form fields
