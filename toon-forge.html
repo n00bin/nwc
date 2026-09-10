@@ -22147,7 +22147,15 @@
      already loaded the real file from disk.
      TO DISABLE AGAIN: set OPTIMIZER_ENABLED=0 in the Vercel env and redeploy.
      That alone kills delivery for everyone (this block then shows the 403
-     "coming soon" note); no push to this file is required. -->
+     "coming soon" note); no push to this file is required.
+     2026-09-10: a denial used to print a tiny grey line and the next click
+     bounced straight back through Discord (prompt=none makes that instant),
+     which members read as "login works, nothing happens". Now the denial is
+     an amber banner with the actual fix, it is remembered for the tab
+     (sessionStorage), and a second click re-shows the reason instead of
+     re-looping — "Sign in again" is an explicit link. A browser that blocks
+     site storage (private mode, some console browsers) is called out too,
+     since a token that can't be saved looks exactly like a denial. -->
 <script>
   (function () {
     var h = location.hostname;
@@ -22156,28 +22164,79 @@
     var API = 'https://premium-tau-three.vercel.app';
     window.PREMIUM_API_BASE = API;  // the injected optimizer reads this
     var KEY = 'nwcb_premium_token';
+    var DENY_KEY = 'nwcb_premium_denied';  // sessionStorage — this tab only
     var JOIN = 'https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join';
     var INVITE = 'https://discord.gg/vraCFxvdW3';
 
-    function note(html) {
+    function note(html, level) {
       var n = document.getElementById('optimize-soon-note');
-      if (n) { n.style.display = 'block'; n.innerHTML = html; }
+      if (!n) return;
+      n.style.display = 'block';
+      n.innerHTML = html;
+      if (level === 'warn') {
+        n.style.color = 'var(--text)';
+        n.style.fontSize = '0.78rem';
+        n.style.maxWidth = '360px';
+        n.style.border = '1px solid var(--amber)';
+        n.style.borderRadius = '8px';
+        n.style.padding = '0.45rem 0.6rem';
+        n.style.background = 'rgba(212,160,23,0.10)';
+        try { n.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) {}
+      }
+    }
+    function link(href, text) {
+      return '<a href="' + href + '" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;">' + text + '</a>';
+    }
+    function getDenied() { try { return sessionStorage.getItem(DENY_KEY); } catch (e) { return null; } }
+    function setDenied(v) { try { if (v) sessionStorage.setItem(DENY_KEY, v); else sessionStorage.removeItem(DENY_KEY); } catch (e) {} }
+
+    // Why the backend said no, in the member's terms, with the one thing that fixes it.
+    function deniedHtml(reason) {
+      var why;
+      if (/not in the discord/i.test(reason)) {
+        why = 'Discord signed you in, but that account isn\'t in our server yet. ' +
+          link(INVITE, 'Join the Discord') + ' first, then sign in again.';
+      } else if (/missing member role/i.test(reason)) {
+        why = 'Discord signed you in, but that account doesn\'t hold the <b>Legendary N00B</b> role, ' +
+          'which is what unlocks the optimizer. It is granted automatically once your YouTube membership is linked: ' +
+          'Discord &rarr; Settings &rarr; Connections &rarr; add YouTube, then leave and re-join the server (or wait a few minutes). ' +
+          'Not a Legendary N00B yet? ' + link(JOIN, 'Join here') + '. Lower tiers don\'t unlock it.';
+      } else {
+        why = 'Discord signed you in, but the membership check failed: <i>' + reason + '</i>. ' +
+          link(JOIN, 'Join Legendary Noob') + ' &middot; ' + link(INVITE, 'our Discord') + '.';
+      }
+      return '&#128274; <b>Not unlocked.</b> ' + why +
+        '<br><a href="#" id="tf-premium-retry" style="color:var(--amber);font-weight:700;">Sign in again</a>' +
+        ' <span style="color:var(--text-mute);">(after fixing the above)</span>';
+    }
+    function showDenied(reason) {
+      note(deniedHtml(reason), 'warn');
+      var a = document.getElementById('tf-premium-retry');
+      if (a) a.onclick = function (ev) { ev.preventDefault(); setDenied(null); login(); };
     }
 
     // Capture a fresh token (or a denial) delivered via the URL hash after login.
     var hash = location.hash || '';
     var m = hash.match(/[#&]pt=([^&]+)/);
     if (m) {
-      try { localStorage.setItem(KEY, decodeURIComponent(m[1])); } catch (e) {}
+      var saved = false;
+      try {
+        localStorage.setItem(KEY, decodeURIComponent(m[1]));
+        saved = localStorage.getItem(KEY) === decodeURIComponent(m[1]);
+      } catch (e) {}
       history.replaceState(null, '', location.pathname + location.search);
+      setDenied(null);
+      if (!saved) {
+        note('&#9888;&#65039; <b>Signed in, but your browser is blocking site storage</b> (private/incognito mode, or a console browser), ' +
+          'so the membership token can\'t be kept. Open this page in a normal browser window and sign in again.', 'warn');
+      }
     }
     var d = hash.match(/[#&]pt_denied=([^&]+)/);
     if (d) {
       history.replaceState(null, '', location.pathname + location.search);
-      note('&#128274; ' + decodeURIComponent(d[1]) +
-        '<br><a href="' + JOIN + '" target="_blank" rel="noopener" style="color:var(--amber);">Join Legendary Noob</a>' +
-        ' &middot; <a href="' + INVITE + '" target="_blank" rel="noopener" style="color:var(--amber);">our Discord</a>' +
-        ' — link YouTube in Discord Settings &rarr; Connections, then click Optimize again.');
+      var reason = decodeURIComponent(d[1]);
+      setDenied(reason);
+      showDenied(reason);
     }
 
     function inject(js) {
@@ -22198,7 +22257,15 @@
     function unlock(viaClick) {
       var token = null;
       try { token = localStorage.getItem(KEY); } catch (e) {}
-      if (!token) { if (viaClick) login(); return; }
+      if (!token) {
+        if (!viaClick) return;
+        // A denial from earlier in this tab: re-show the reason instead of
+        // silently round-tripping Discord again (that loop is invisible).
+        var prior = getDenied();
+        if (prior) { showDenied(prior); return; }
+        login();
+        return;
+      }
       fetch(API + '/api/optimizer_js', { headers: { 'Authorization': 'Bearer ' + token } })
         .then(function (r) {
           if (r.ok) return r.text().then(inject);
