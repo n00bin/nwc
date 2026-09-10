@@ -3130,19 +3130,19 @@
           <div id="damage-mix-box"></div>
           <div class="row-2" style="margin-top:0.6rem;">
             <div class="field">
-              <label>Daily every
+              <label>Daily cooldown
                 <span class="hint-icon" data-tip="Seconds between your Daily power uses. Dailies run about a 60 s cooldown; the AP bar can only make it slower, never faster. Feeds Daily-triggered procs and the rotation.">?</span>
               </label>
               <input type="range" id="daily-cadence" min="15" max="300" step="5" value="60" style="width:100%;"><span class="hint" id="daily-cadence-label">60 s</span>
             </div>
             <div class="field">
-              <label>Artifact every
+              <label>Artifact cooldown
                 <span class="hint-icon" data-tip="Seconds between uses of your active artifact power (about its 60 s cooldown). Feeds artifact-triggered bonuses (Artificer's Enticement, Artifact Fanatic).">?</span>
               </label>
               <input type="range" id="artifact-cadence" min="15" max="300" step="5" value="60" style="width:100%;"><span class="hint" id="artifact-cadence-label">60 s</span>
             </div>
             <div class="field">
-              <label>Mount power every
+              <label>Mount power cooldown
                 <span class="hint-icon" data-tip="Seconds between mount combat power uses (about its 60 s cooldown). Feeds mount-power-triggered bonuses (Cavalry's Haste / Alarm / Warning, Predator's Instinct).">?</span>
               </label>
               <input type="range" id="mountpower-cadence" min="15" max="300" step="5" value="60" style="width:100%;"><span class="hint" id="mountpower-cadence-label">60 s</span>
@@ -12894,7 +12894,8 @@
           const isSlotted = slotted.has(nm);
           const eff = modeled ? ((modeled.scope === "target" ? "Target takes +" : "+") + modeled.pct + "% damage for " + modeled.durationSeconds + " s" + (modeled.appliesTo ? " (" + modeled.appliesTo + " powers)" : "")) : (pw.addedEffect || "");
           const ln = (isSlotted && modeled) ? buffLines.find(l => l.name === nm) : null;
-          const upTxt = !ln ? "" : ln.forced ? "counted as up the whole fight (forced below)" : (ln.uptime >= 1 ? "counted at 100% uptime" + (ln.intervalSec > 0 ? " (" + ln.durationSeconds + " s up, recast every " + Math.round(ln.intervalSec) + " s)" : "") : "counted at " + Math.round(ln.uptime * 100) + "% uptime (" + ln.durationSeconds + " s up every " + Math.round(ln.intervalSec) + " s" + (ln.type === "daily" ? ", your Daily cadence" : "") + ")");
+          const cdWord = ln && ln.type === "daily" ? "Daily cooldown" : "cooldown";
+          const upTxt = !ln ? "" : ln.forced ? "counted as up the whole fight (forced below)" : (ln.uptime >= 1 ? "buff lasts " + ln.durationSeconds + " s, " + cdWord + " " + Math.round(ln.intervalSec) + " s: up the whole fight" : "buff lasts " + ln.durationSeconds + " s, " + cdWord + " " + Math.round(ln.intervalSec) + " s: up " + ln.durationSeconds + " s of every " + Math.round(ln.intervalSec) + " s");
           const status = !isSlotted ? '<span class="hint">not slotted (slot it in step 2 to count it)</span>' : (modeled ? '<span class="hint">slotted - ' + escapeHtmlTF(upTxt) + '</span>' : '<span class="hint">slotted - no stat effect on record</span>');
           const ctl = (isSlotted && modeled)
             ? `<label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" data-fpb="${escapeHtmlTF(nm)}"${fpb[nm] ? " checked" : ""}> <span class="hint">count as up the whole fight</span></label>`
@@ -15832,9 +15833,9 @@
           if (_bl.length) {
             const _blTot = _bl.reduce((a, l) => a + l.eff, 0);
             const _blSrc = `<details class="dstat-sources" style="margin-top:0.3rem;"><summary>Sources</summary><div class="dstat-sources-body" style="white-space:pre-wrap;font-size:0.82rem;line-height:1.4;">`
-              + _bl.map(l => `  ${escapeHtmlTF(l.name)}: +${l.pct}% x ${Math.round(l.uptime * 100)}% uptime` + (l.forced ? " (forced: up the whole fight)" : (l.intervalSec > 0 ? ` (${l.durationSeconds} s up every ${Math.round(l.intervalSec)} s)` : "")) + (l.appliesTo ? ` x ${l.appliesTo} share` : "") + ` = +${l.eff.toFixed(2)}%`).join("\n")
+              + _bl.map(l => `  ${escapeHtmlTF(l.name)}: +${l.pct}% for ${l.durationSeconds} s` + (l.forced ? ", forced up the whole fight" : (l.intervalSec > 0 ? `, cooldown ${Math.round(l.intervalSec)} s (up ${l.durationSeconds} s of every ${Math.round(l.intervalSec)} s)` : "")) + (l.appliesTo ? `, ${l.appliesTo} powers only` : "") + ` = +${l.eff.toFixed(2)}% over the fight`).join("\n")
               + `</div></details>`;
-            _dmgHtml += _boostRow("Slotted power buffs / debuffs", _blTot, _blSrc, "(Tyrannical Curse, Lurker's Assault... at the uptime your rotation gives them)");
+            _dmgHtml += _boostRow("Slotted power buffs / debuffs", _blTot, _blSrc, "(Tyrannical Curse, Lurker's Assault... buff duration vs cooldown, averaged over the fight)");
           }
         } catch (e) {}
         if (db.incomingDamage && db.incomingDamage !== 0) {
