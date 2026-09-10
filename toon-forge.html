@@ -12860,12 +12860,16 @@
       box.innerHTML += mechs.filter(m => Array.isArray(m.effects) && m.effects.length).map(m => {
         const fx = Array.isArray(m.effects) ? m.effects : [];
         const a = am[m.name];
-        const fxText = fx.length ? fx.map(ef => (ef.amount > 0 ? "+" : "") + ef.amount + ((ef.kind === "rating" || ef.kind === "flat") ? "" : "%") + " " + ef.stat + (ef.perStack ? " per stack (max " + ef.maxStacks + ")" : "")).join(", ") : "";
+        const unit = ef => (ef.kind === "rating" || ef.kind === "flat") ? "" : "%";
+        const fxText = fx.length ? fx.map(ef => (ef.base ? "+" + ef.base + unit(ef) + " " + ef.stat + ", " : "") + (ef.amount > 0 ? "+" : "") + ef.amount + unit(ef) + " " + ef.stat + (ef.perStack ? " per stack (max " + ef.maxStacks + ")" : "") + (ef.requiresFeat ? " [needs the " + ef.requiresFeat + " feat]" : "")).join(", ") : "";
+        const featsSlotted = new Set((state.slottedFeats || []).filter(Boolean));
+        const missingFeat = fx.map(ef => ef.requiresFeat).filter(f => f && !featsSlotted.has(f));
+        const featHint = missingFeat.length ? ' <span class="hint" style="color:var(--amber);">' + escapeHtmlTF(missingFeat.join(", ")) + ' not slotted (step 2) - no effect yet</span>' : "";
         const stackFx = fx.find(ef => ef.perStack);
         const ctl = stackFx
           ? `<input type="range" data-mech="${escapeHtmlTF(m.name)}" data-mech-stacks="1" min="0" max="${stackFx.maxStacks || 1}" step="1" value="${typeof a === "number" ? a : 0}" style="width:110px;vertical-align:middle;"> <span class="hint" data-mech-label="${escapeHtmlTF(m.name)}">${typeof a === "number" ? a : 0} stacks</span>`
           : `<input type="checkbox" data-mech="${escapeHtmlTF(m.name)}"${a ? " checked" : ""}${fx.length ? "" : " disabled"}>`;
-        return `<div class="boon-row" style="cursor:default;"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(m.name)}</div><div class="boon-row-effect">${escapeHtmlTF(fxText || m.addedEffect || m.notes || "")}</div></div><div class="boon-counter">${ctl}</div></div>`;
+        return `<div class="boon-row" style="cursor:default;${missingFeat.length ? "opacity:0.6;" : ""}"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(m.name)}</div><div class="boon-row-effect">${escapeHtmlTF(fxText || m.addedEffect || m.notes || "")}${featHint}</div></div><div class="boon-counter">${ctl}</div></div>`;
       }).join("") + (notModeled.length ? `<p class="hint" style="margin:0.4rem 0 0;">Not modeled yet: <span translate="no">${notModeled.map(escapeHtmlTF).join(", ")}</span></p>` : "");
       // ---- Powers with buffs / debuffs (class + paragon pool) ----
       const BUFF_RE = /increases? (?:your )?damage|damage dealt|damage taken|takes? \d+% more damage|damage resistance|less damage|combat advantage|increases? (?:your )?power|critical (?:strike|severity)|deflect|awareness|defense|recharge speed|action point|outgoing healing|incoming healing|absorb|\+\d+(?:\.\d+)?% damage/i;
@@ -14796,9 +14800,14 @@
         if (!a || !Array.isArray(m.effects)) continue;
         for (const ef of m.effects) {
           if (!ef || !ef.stat || ef.amount == null) continue;
+          // requiresFeat: the effect only exists while that feat is slotted (e.g. Risky Investment
+          // turns Soul Investiture into an Encounter-damage buff).
+          if (ef.requiresFeat && !(Array.isArray(s.slottedFeats) && s.slottedFeats.includes(ef.requiresFeat))) continue;
           const stacks = ef.perStack ? Math.max(0, Math.min(ef.maxStacks || 1, (typeof a === "number") ? a : (ef.maxStacks || 1))) : 1;
+          if (ef.perStack && stacks <= 0) continue;
           const ch = (ef.kind === "rating" || ef.kind === "flat") ? "ratingStats" : "percentStats";
-          buffs.push({ source: "Class mechanic: " + m.name + (ef.perStack ? " (" + stacks + " stacks)" : ""), conditional: true, [ch]: { [ef.stat]: ef.amount * stacks } });
+          const amt = (ef.base || 0) + ef.amount * stacks;   // base = once while the buff is up, amount = per stack
+          buffs.push({ source: "Class mechanic: " + m.name + (ef.perStack ? " (" + stacks + " stacks)" : "") + (ef.requiresFeat ? " via " + ef.requiresFeat : ""), conditional: true, [ch]: { [ef.stat]: amt } });
         }
       }
 
