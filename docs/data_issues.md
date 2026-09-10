@@ -2661,3 +2661,5 @@ creation or the wiki-independent in-game race info card).
 - "When you use an Encounter or Daily power with a control effect on a target, deal an extra 50 magnitude damage."
 - Needs powers tagged with their control effects (classes.json has free-text addedEffect only) before this can be a proc. Display-only until then.
 - Same dependency: Combatant's Maneuver (2500 Combat Advantage for 10 s whenever you control an enemy).
+
+- **Shroomwood Amulet (IL 1700, base rank) ability line inferred** (2026-09-10): +6 STR copied from the +1 rank tooltip; the other three Menzoberranzan pieces keep the same ability line across ranks. Wants a base-rank tooltip screenshot to close.

@@ -99,8 +99,11 @@ same-day; numbers below re-counted from live data, not carried forward).
   2-piece accessory sets** (`completeAccessorySets`, mirror of the clothing pass
   with cap-repair). Found via the Shroomwood/Scintillant vs Voidbound case: each
   Menzoberranzan piece alone is IL 1800 vs 4050 with no bonus, so a from-scratch
-  greedy never tried the pair. With the pass the pair scores +2.8% on the shared
-  Warlock build and is picked from bare gear too. 4pc armor still omitted.
+  greedy never tried the pair. The pass tries EVERY neck x belt combination of the
+  top-3-by-IL pieces per slot (same-IL siblings differ by ability line: Shroomwood
+  STR/DEX vs Scintillant INT/CHA). With the pass and the ability lines in data the
+  Scintillant pair scores +5.5% over Voidbound on the shared Warlock build and is
+  picked from bare gear too. 4pc armor still omitted.
 
 ### Partial-2: Max HP calibration
 - **Location:** `toon-forge-engine.js` finalize() HP branch; constants `TOON_FORGE_HP_MODEL`.
