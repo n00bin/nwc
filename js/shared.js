@@ -60,6 +60,7 @@ function renderNav(activePage) {
 
   // ---- Footer ----
   var footer = document.createElement("footer");
+  footer.className = "site-footer";
   footer.style.cssText = "text-align:center;padding:2rem 1rem;margin-top:3rem;border-top:1px solid var(--border-default);color:var(--text-muted);font-size:0.82rem;";
   footer.innerHTML = '<a href="https://www.youtube.com/@N00binHard" target="_blank" rel="noopener" style="color:#ff0000;text-decoration:none;margin-right:1rem;">&#9654; The N00bin Network</a>' +
     '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:#f0883e;text-decoration:none;">Join on YouTube</a>' +
@@ -68,6 +69,25 @@ function renderNav(activePage) {
     '<div style="margin-top:0.5rem;">Neverwinter Compendium &copy; N00bin ' + new Date().getFullYear() + '</div>' +
     '<div style="margin-top:0.5rem;font-size:0.76rem;color:var(--text-muted);max-width:640px;margin-left:auto;margin-right:auto;line-height:1.45;">This site counts how many times each page is opened, and which site you arrived from, so we know what to work on next. No accounts, no ads, no personal data &mdash; just page counts, and they are never shown publicly.</div>';
   document.body.appendChild(footer);
+
+  // ---- Tab strips on phones ----
+  // .view-tabs scrolls sideways under 768px; keep the active tab in view on
+  // load and after a tap. block:"nearest" stops the page jumping vertically.
+  var strips = document.querySelectorAll(".controls-bar.view-tabs");
+  for (var si = 0; si < strips.length; si++) {
+    (function (strip) {
+      function reveal(el) {
+        if (el && el.scrollIntoView && strip.scrollWidth > strip.clientWidth) {
+          el.scrollIntoView({ inline: "center", block: "nearest" });
+        }
+      }
+      strip.addEventListener("click", function (e) {
+        var tab = e.target.closest(".view-tab");
+        if (tab) reveal(tab);
+      });
+      setTimeout(function () { reveal(strip.querySelector(".view-tab.active")); }, 0);
+    })(strips[si]);
+  }
 }
 
 // ---- Lookup map builder ----

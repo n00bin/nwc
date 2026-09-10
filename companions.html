@@ -88,7 +88,7 @@
   <nav class="navbar"></nav>
 
   <!-- View tabs -->
-  <div class="controls-bar" style="gap:0.25rem;padding-bottom:0;">
+  <div class="controls-bar view-tabs">
     <button class="view-tab active" id="tab-lookup">Lookup</button>
     <button class="view-tab" id="tab-summoned">Summoned Buffs</button>
     <button class="view-tab" id="tab-enhancements">Enhancements</button>
@@ -154,20 +154,6 @@
   </div>
 
   <style>
-    .view-tab {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-default);
-      border-bottom: none;
-      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-      color: var(--text-secondary);
-      padding: 0.45rem 1rem;
-      font-size: 0.9rem;
-      font-family: var(--font-main);
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s;
-    }
-    .view-tab:hover { color: var(--text-primary); background: var(--bg-hover); }
-    .view-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
     .summoned-card {
       background: var(--bg-surface);

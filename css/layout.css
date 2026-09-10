@@ -118,14 +118,6 @@
 }
 
 @media (max-width: 480px) {
-  .navbar {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .navbar-brand {
-    width: 100%;
-  }
-
   .landing-grid {
     padding: 1.5rem 1rem;
   }
