@@ -95,6 +95,12 @@ same-day; numbers below re-counted from live data, not carried forward).
   `docs/audit/eb_parse_progress.md` 2026-06-15). Remaining DPS-relevant work is
   the lower-IL tail; the bigger lever now is optimizer search quality
   (multi-start + armor set-completion), not data vision.
+- **Update 2026-09-10:** optimizer set-completion now also assembles **Neck+Belt
+  2-piece accessory sets** (`completeAccessorySets`, mirror of the clothing pass
+  with cap-repair). Found via the Shroomwood/Scintillant vs Voidbound case: each
+  Menzoberranzan piece alone is IL 1800 vs 4050 with no bonus, so a from-scratch
+  greedy never tried the pair. With the pass the pair scores +2.8% on the shared
+  Warlock build and is picked from bare gear too. 4pc armor still omitted.
 
 ### Partial-2: Max HP calibration
 - **Location:** `toon-forge-engine.js` finalize() HP branch; constants `TOON_FORGE_HP_MODEL`.
