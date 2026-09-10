@@ -8,6 +8,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
+- **"You are debuffed" switch (Toon Forge).** The Fight → You has a new checkbox, off by default. Accursed's Resolve (the insignia bonus that gives 3500 Power and Deflect while you are debuffed) only counts when it is on. It had been counted at 90% uptime, which made it the top four-insignia pick for every role; being debuffed is rare, so the tool no longer assumes it.
 - **Better on phones (round 1).** The header is one row again (site name left, language switch and menu button right). Tab rows on Mounts, Companions, Artifacts, Mekaniks and Professions no longer stack into a tall column; they scroll sideways and the current tab slides into view. Search boxes and dropdowns no longer make iPhones zoom in when you tap them, and the footer links are easier to hit. Next up: opening an item full-screen on the list pages, then the Toon Forge menu.
 
 ## Week of August 31, 2026

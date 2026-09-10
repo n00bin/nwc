@@ -98,3 +98,4 @@ Same process as the gear review: 43 names, one at a time. Queue: scripts/_insig_
 - INSIG 26-29: Wanderer's note; Assassin's fine; Champion's Return procHeal 10% <=50% icd30; Berserker's fine
 - INSIG 30-36 applied per assumptions (n00b fine)
 - INSIG 37-43 applied; INSIGNIA QUEUE CLOSED 2026-09-09
+- 2026-09-10 REVISION (n00b): Accursed's Resolve 0.9 uptime was an assumption that went through in the 11-14 batch, not a ruling. Replaced by a "You are debuffed" scenario toggle (default off) and the `whileDebuffed` entry field; the bonus is now never counted unless the player says so.

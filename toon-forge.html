@@ -3062,6 +3062,12 @@
             <input type="range" id="standing-sec" min="0" max="30" step="1" value="5" style="width:100%;">
             <span class="hint" id="standing-sec-label">5 s</span>
           </div>
+          <div class="field" id="sim-debuffed-field">
+            <label>You are debuffed
+              <span class="hint-icon" data-tip="Tick if you usually sit under an enemy debuff during the fight (poison, bleed, curse, a damage-over-time). Accursed's Resolve (insignia bonus: +3500 Power and Deflect while debuffed) only counts when this is on. Off means it is never counted.">?</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="you-debuffed"> <span class="hint">Debuffed during the fight</span></label>
+          </div>
         </div>
         <div class="sc-pane row-2" data-sc-pane="fight" hidden>
           <div class="field" id="sim-zone-field">
@@ -3519,6 +3525,7 @@
       // are EXCLUDED, so situational damage never inflates the always-on number.
       contentZone: "",
       targetShielded: false,   // "Target has a shield" toggle; gates vsShieldedOnly entries (Shield Breaker) (n00b 2026-09-08)
+      debuffed: false,         // "You are debuffed" toggle; gates whileDebuffed entries (Accursed's Resolve). Default off: the state is rarely up (n00b 2026-09-10)
       enemyHealthPct: 100,    // Combat scenario: enemy health; gates enemyHealthAbovePct / enemyHealthBelowPct entries
       enemyTypes: [],         // Combat scenario: enemy types in the fight ("Dragon", "Undead"...); gates "vs X" zone entries
       standingSec: 5,         // Combat scenario: seconds standing still (only read while Movement = standing)
@@ -3758,6 +3765,7 @@
           activeMechanics: Object.assign({}, state.activeMechanics || {}),
           forcedPowerBuffs: Object.assign({}, state.forcedPowerBuffs || {}),
           targetShielded: !!state.targetShielded,
+          debuffed: !!state.debuffed,
           partyAllies: [...(state.partyAllies || [])],
           partyMountAllies: [...(state.partyMountAllies || [])],
           partyPackMeta: state.partyPackMeta !== false,
@@ -3947,6 +3955,8 @@
       if (typeof updateAttackTypeControl === "function") updateAttackTypeControl();
       state.targetShielded = !!s.targetShielded;
       if (typeof updateShieldControl === "function") updateShieldControl();
+      state.debuffed = !!s.debuffed;
+      if (typeof updateDebuffedControl === "function") updateDebuffedControl();
       state.slottedClassFeaturePicks = Array.isArray(s.slottedClassFeaturePicks) ? s.slottedClassFeaturePicks.slice() : [];
       state.rangerStance = s.rangerStance || "ranged";
       state.bardActiveSong = s.bardActiveSong || "";
@@ -4353,6 +4363,9 @@
        "General (anywhere)" is the explicit default (empty contentZone). */
     function updateShieldControl() {
       const cb = document.getElementById("target-shielded"); if (cb) cb.checked = !!state.targetShielded;
+    }
+    function updateDebuffedControl() {
+      const cb = document.getElementById("you-debuffed"); if (cb) cb.checked = !!state.debuffed;
     }
     function updateAttackTypeControl() {
       const sel = document.getElementById("incoming-attack-type"); if (sel) sel.value = (state.incomingAttackType === "ranged") ? "ranged" : "melee";
@@ -12229,7 +12242,7 @@
       if (eb && (eb.healthBelowPct != null || eb.healthAbovePct != null)) return 1;   // explicit health gate already decided inclusion
       if (eb && (eb.movingOnly || eb.standingOnly)) return 1;   // movement gate already decided inclusion
       if (eb && (eb.minEnemies != null || eb.maxEnemies != null || eb.requiresMultiEnemy || eb.perEnemy)) return 1;   // enemy-count gate/scale already decided
-      if (eb && (eb.vsRangedOnly || eb.vsMeleeOnly || eb.vsShieldedOnly)) return 1;   // attack-type / shield gate already decided
+      if (eb && (eb.vsRangedOnly || eb.vsMeleeOnly || eb.vsShieldedOnly || eb.whileDebuffed)) return 1;   // attack-type / shield / debuffed gate already decided
       if (eb && eb.missingHealthMaxAtPct != null) return 1;   // graded by the Current Health slider instead
       if (eb && eb.conditionId) return 1;   // build-condition gate already decided
       if (eb && (eb.soloOnly || eb.partyOnly)) return 1;   // solo / party gate already decided
@@ -12748,7 +12761,7 @@
       const pc = st.partyContent === "solo" ? "solo" : (st.partyContent === "trial" ? "trial (10)" : "dungeon (5)");
       const tic = (typeof st.timeInCombatSec === "number") ? st.timeInCombatSec : 120;
       const parts = [zone, (st.targetRangeFt == null ? 10 : st.targetRangeFt) + " ft", (st.enemyCount || 1) + (st.enemyCount > 1 ? " enemies" : " enemy"),
-        (st.incomingAttackType === "ranged" ? "ranged" : "melee") + " attackers", st.targetShielded ? "shielded target" : null,
+        (st.incomingAttackType === "ranged" ? "ranged" : "melee") + " attackers", st.targetShielded ? "shielded target" : null, st.debuffed ? "debuffed" : null,
         "HP " + (st.currentHealthPct == null ? 100 : st.currentHealthPct) + "%", "AP " + (st.currentApPct == null ? 50 : st.currentApPct) + "%",
         "stamina " + (st.currentStaminaPct == null ? 100 : st.currentStaminaPct) + "%", mv, (tic >= 60 ? Math.round(tic / 60 * 10) / 10 + " min" : tic + " s") + " in combat",
         pc, "healer: " + (st.partyHealerClass || "none"),
@@ -12792,6 +12805,7 @@
         if (eb.vsRangedOnly) add("iat", st.incomingAttackType === "ranged", nm + ": vs ranged attackers" + (st.incomingAttackType === "ranged" ? " (counted)" : " (off: melee)"));
         if (eb.vsMeleeOnly) add("iat", st.incomingAttackType !== "ranged", nm + ": vs melee attackers" + (st.incomingAttackType !== "ranged" ? " (counted)" : " (off: ranged)"));
         if (eb.vsShieldedOnly) add("tsh", !!st.targetShielded, nm + ": shielded target only" + (st.targetShielded ? " (counted)" : " (off)"));
+        if (eb.whileDebuffed) add("dbf", !!st.debuffed, nm + ": while you are debuffed" + (st.debuffed ? " (counted)" : " (off)"));
         if (eb.zones && eb.zones.length) {
           const types = eb.zones.filter(z => /^vs /.test(z)), areas = eb.zones.filter(z => !/^vs /.test(z));
           if (areas.length) { const on = areas.includes(st.contentZone || ""); add("zone", on, nm + ": in " + areas.join("/") + (on ? " (counted)" : " (off: " + (st.contentZone || "General") + ")")); }
@@ -13013,7 +13027,8 @@
       "sim-movement-field":    eb => !!eb.movingOnly || !!eb.standingOnly,
       "sim-enemies-field":     eb => eb.minEnemies != null || eb.maxEnemies != null || !!eb.perEnemy || !!eb.requiresMultiEnemy,
       "sim-attack-type-field": eb => !!eb.vsRangedOnly || !!eb.vsMeleeOnly,
-      "sim-shield-field":      eb => !!eb.vsShieldedOnly
+      "sim-shield-field":      eb => !!eb.vsShieldedOnly,
+      "sim-debuffed-field":    eb => !!eb.whileDebuffed
     };
     function updateSimControlVisibility() {
       // Retired 2026-09-08: the Combat scenario panel shows every control all the
@@ -14078,6 +14093,7 @@
         if (eb.vsRangedOnly && !_ranged) return true;
         if (eb.vsMeleeOnly && _ranged) return true;
         if (eb.vsShieldedOnly && !s.targetShielded) return true;   // "Target has a shield" toggle (n00b 2026-09-08)
+        if (eb.whileDebuffed && !s.debuffed) return true;          // "You are debuffed" toggle, default off (n00b 2026-09-10)
         return false;
       }
       // Build-condition gate (n00b 2026-09-08): conditionId entries count only when
@@ -15065,7 +15081,7 @@
         cb: state.companionBolster, mb: state.mountBolster, cr: state.companionRarity, ir: state.insigniaRarity,
         sr: state.summonedRarity, acr: state.activeCompRarities,
         cc: state.compCollection, mc: state.mountCollection,
-        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, tic: state.timeInCombatSec, cad: [state.dailyCadenceSec, state.artifactCadenceSec, state.mountPowerCadenceSec], ehp: state.enemyHealthPct, ety: state.enemyTypes, ssec: state.standingSec, am: state.activeMechanics, fpb: state.forcedPowerBuffs, fu: state.flankUptime, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
+        boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, dbf: state.debuffed, tic: state.timeInCombatSec, cad: [state.dailyCadenceSec, state.artifactCadenceSec, state.mountPowerCadenceSec], ehp: state.enemyHealthPct, ety: state.enemyTypes, ssec: state.standingSec, am: state.activeMechanics, fpb: state.forcedPowerBuffs, fu: state.flankUptime, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
       });
@@ -20356,6 +20372,9 @@
     const tshCb = document.getElementById("target-shielded");
     if (tshCb) tshCb.addEventListener("change", e => { state.targetShielded = !!e.target.checked; rerenderAll(); });
     updateShieldControl();
+    const dbfCb = document.getElementById("you-debuffed");
+    if (dbfCb) dbfCb.addEventListener("change", e => { state.debuffed = !!e.target.checked; rerenderAll(); });
+    updateDebuffedControl();
     const zoneBtn = document.getElementById("content-zone-btn");
     if (zoneBtn) {
       zoneBtn.addEventListener("click", () => openContentZonePicker());
