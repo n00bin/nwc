@@ -84,11 +84,14 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ---
 
+### Data Additions
+
+- **Tyrannical Curse magnitude corrected to 1,150** (was 1,350) from the in-game tooltip, so the Warlock daily now sims at its real hit.
+
 ## Week of August 24, 2026
 
 ### Data Additions
 
-- **Tyrannical Curse magnitude corrected to 1,150** (was 1,350) from the in-game tooltip, so the Warlock daily now sims at its real hit.
 - **Leveling-tier gear bonuses structured (Item Level under 3,000), plus three lost accessory sets restored.** About 55 bonus families that only existed as tooltip text now count, each with the number taken from that item's own text and a stated uptime for procs: Brute's Expertise/Fury/Tactics, Warden's Defiance, Maiden's Blade, Bulwark's Shield, the Chult and Undermountain hunter bonuses, Victim's Parry/Resistance, This or That, Reckless Brutality/Rage/Advantage, Defender Guard/Strike, Charged Expertise/Precision/Power, Awareness Escalation, Herald's Cry/Defense/Cunning, Executioner's Guard/Fury, Discharged Force, Killer's and Destroyer's Might, Depleted Determination/Desperado/Expert, Medic's Devotion, Gluttonous Might, Veiled Barricade, Ascended Party Bonus, Fairy's Whimsy, Challenger's Haste/Resilience, Adrenaline Rush, Shielded Strength, Skirmisher's Versatility and more. The Wrathful Bindings, Magmatic Efficiency and Diamond 3-piece sets, whose values were lost in a May data rewrite, are back from the in-game validated March baseline. 180 duplicate text entries were removed so cards read once.
 
 - **37 more endgame gear bonuses now count (Item Level 3,000 and up).** Text-only equip bonuses are structured from each item's own tooltip, with a stated uptime for procs: Frostsilver and Coldsilver Circlet/Hoop riders (+Defense / +Forte), Divine Blessing, Warden's Defiance, Critical Guard, Battle Reserves, Focused Burst, Vital Onslaught, Malignant Energy (the "next Encounter after a Daily" family now feeds Encounter damage), Challenger's Lethality, Sharpened Precision and the Discharged Precision boots (with their Pirates' Skyhold / Dread Sanctum / Reghed Edge zone extras), Charged Fortitude, Discharged Force, Berserking Might, Past Regards, Defender Strike, Renegade's Stamina and Footwork, Rested/Corrupt Healing, Survivors Healing Aura, Critical Momentum, Charged Fury, Reckless Remedy (Defense up, Critical Severity down), Duelist's Strength, Critical Tactics and Indefatigable Advantage. Bonuses that key on "Action Points below 80%" were being counted at 15%; they now count at 75% of a fight. 24 duplicate text stubs were removed so gear cards read once.
