@@ -2600,6 +2600,20 @@ const COMPANION_SKILLS = {
       "text": "The rusting caused by Corrosive Touch becomes rampant, spreading to the target's armor causing them to take additional damage over time."
     }
   ],
+  "sardina the tressym": [
+    {
+      "name": "Cataclysmic Meow",
+      "text": "Sardina uses a powerful super \"meow\", damaging enemies around her and slowing lesser enemies."
+    },
+    {
+      "name": "Murder Mittens",
+      "text": "Sardina scratches her target, using her dangerous murder mittens. Causes bleed from mean scratchies."
+    },
+    {
+      "name": "Pounce",
+      "text": "Sardina leaps gaining height and then quickly diving on her target, hitting it forcefully."
+    }
+  ],
   "savage allosaur": [
     {
       "name": "Broadside",

@@ -19,6 +19,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Data Additions
 
+- **Sardina the Tressym (companion).** Added to the Companions database from the in-game Inspect panel at Mythic: Sardina's Grace (Offense/Utility) gives +3.8% Power, +4% Movement Speed and +750 Combined Rating; enhancement Enduring Alacrity. Skills in the Lookup detail panel.
 - **Sir Waddlelot (companion).** Added to the Companions database from the in-game Inspect panel at Mythic: Relentless Waddle (Defense/Offense) gives +7.5% Critical Severity for 7 seconds whenever you run, plus +750 Combined Rating; enhancement Enduring Guard. His Inspirational Honk (+3.5% Defense and Power to you and nearby allies) is on the Summoned Buffs tab.
 - **Twitchspine the Clinging (companion).** Added to the Companions database from the in-game Inspect panel at Mythic: Twitchspine's Resilience (Defense) gives a 25% chance when you take damage to gain +4% Awareness and +4% Critical Avoidance for 7 seconds (10s cooldown), plus +750 Combined Rating; enhancement Enduring Guard. Skills in the Lookup detail panel.
 - **Wormungandr (companion, campaign reward).** Added to the Companions database from the in-game Inspect panel at Mythic: Continental Craving (Offense) gives +3.8% Critical Strike, +3.8% Power and +750 Combined Rating (4.5% / 4.5% / 900 at Celestial); enhancement Exploit Weakness. Its Destined Devourer party Power stacks (+2.5% at 5 stacks) and Unending Hunger bite debuff are on the Summoned Buffs and Damage tabs.
