@@ -27,10 +27,13 @@ Every number carries its source. Do not tighten an estimate without a measuremen
 - Everfrost Icy Aggression 15% -> 5% max HP (Apr 2024). Jewel of the North: threat bonus to tanks
   (Mar 2022). Soulweaver healing threat reduced (Sep 2023); Soul Manipulation reduces warlock heal
   threat (Mod 19). Minsc no longer generates extra threat (Jun 2024).
-- Justicar tooltips (verbatim, re-read 2026-09-11): Oath Strike and Vow of Enmity carry "Added
-  Effect: Increased Threat"; Shielding Strike carries Stamina Restoration (no threat tag); Vow of
-  Enmity: "If you are not the affected targets' highest threat, place yourself at the top of their
-  threat list."; Oath of Protection: "Threat generation greatly increased."
+- Justicar tooltips (verbatim, re-read 2026-09-11, all 16 attack screenshots): "Added Effect:
+  Increased Threat" is on Oath Strike, Templar's Wrath, Sacred Weapon (Justicar) and Vow of Enmity.
+  NOT tagged: Shielding Strike (Stamina Restoration), Valorous Strike, Radiant Slam, Relentless
+  Avenger, Burning Light (Stun), Smite, Bane, Divine Judgement, Radiant Charge (Knock Down), Binding
+  Oath (Stamina Restoration), Divine Touch (heal). Vow of Enmity: "If you are not the affected
+  targets' highest threat, place yourself at the top of their threat list."; Oath of Protection:
+  "Threat generation greatly increased."
 
 ## Estimated (derived; always shown with an estimate marker)
 
@@ -67,7 +70,7 @@ on should read about 1.33x the first.
 
 ## Data status (2026-09-11)
 
-- Paladin / Justicar: all powers, feats, features have tooltip text; four re-read verbatim.
+- Paladin / Justicar: all powers, feats, features have tooltip text; every attack re-read verbatim for the tag (threatTags written).
 - Fighter / Vanguard and Barbarian / Sentinel: paragon powers NOT in classes.json (Threatening Rush,
   Enforced Threat, Knight's Challenge, Commander's Strike, Mark; Sentinel's Slash, Challenger's
   Slash, Come and Get It, Primal Fury, Takedown, Enduring Shout, Unstoppable). Screenshots for all
