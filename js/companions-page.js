@@ -438,14 +438,16 @@
         html += renderStatValue(enStats[esi].value, enStats[esi].type || en.type);
         html += "</div>";
       }
-      html += "</div>"; // close proc-block
-
+      // The game's wording belongs INSIDE the enhancement card, not floating
+      // underneath it as a separate note.
       if (en.tooltip) {
         html += '<div class="effect-text">' + escapeHtml(en.tooltip) + "</div>";
       } else if (en.notes) {
         var _enote = cleanEnhancementNotes(en.notes);
         if (_enote) html += '<div class="effect-text">' + escapeHtml(_enote) + "</div>";
       }
+
+      html += "</div>"; // close proc-block
     } else {
       html += '<div class="detail-meta">No enhancement data</div>';
     }
