@@ -164,10 +164,9 @@ own attacks trigger it. The tooltip only says "Chance on hit" and never says who
 
 Two consequences:
 - All 24 proc triggers now read "On hit, including your companion's own attacks".
-- **The chance-per-hit test (step 8) is no longer measurable the simple way.** You
-  cannot count your own hits when the companion is landing its own in between. Since
-  the practical answer is that it stays up through a fight, and that is exactly how we
-  model it, counting hits is no longer worth your time.
+- Counting your own hits is meaningless while the pet lands its own in between, so
+  step 8 as originally written cannot work. **Test A2 solves it** by using a companion
+  that never attacks.
 
 ### Test A, step 7 — duration — **15 seconds, confirmed**
 
@@ -182,7 +181,7 @@ The tooltip's 15 seconds is correct.
 | What does it add? | Percentage POINTS on the final percentage, never rating. |
 | What triggers it? | Any hit, **including the companion's own attacks**. |
 | How long? | 15 seconds. |
-| Chance per hit | Not measurable — the pet's hits are mixed in with yours. |
+| Chance per hit | **Test A2 below** — measurable by removing the pet's hits. |
 
 Everything here matches how we now model it: `conditional: true`, shown behind the
 combat buff, value added as percent points.
@@ -195,6 +194,59 @@ future proc work — mount powers, gear procs, companion powers — check the bu
 first: it gives you the trigger, the duration and whether the effect refreshes or
 stacks, without any arithmetic.
 
-### Still outstanding
+---
 
+## Test A2 — the proc chance, with the pet's hits removed
+
+The problem with counting hits is that the companion attacks too. **Augment companions
+do not attack.** Summon one and every trigger is yours, so a straight count works.
+
+We have 33 augments. Good choices, because their rarity is easy to hold fixed:
+**Black Dragon Ioun Stone**, **Baby Owlbear** or **Baby Deep Crow** (all base Mythic),
+or any Ioun Stone you have at Celestial.
+
+The buff bar is the instrument — the proc shows there with its 15 second countdown, so
+you do not need the character sheet at all.
+
+**Steps**
+
+1. Summon an **augment** companion. Keep **Perfect Vision** equipped. Note which augment
+   and its rarity.
+2. Go to a target dummy. Confirm the augment is not attacking it — augments never do.
+3. Land **single, deliberate at-will hits**, counting them, and stop the moment
+   Perfect Vision appears on your buff bar. Write down the count.
+4. Wait for the buff to fully expire (15 seconds), then repeat. Do this **ten times** —
+   the count varies a lot, so a handful of trials is not enough to pin a percentage.
+5. If the buff appears on the very first hit every single time, the chance is likely
+   100% with an internal cooldown instead. In that case, note how many seconds pass
+   between one proc ending and the next one being able to start.
+
+**Record**
+
+| Trial | Hits to proc |
+|---|---|
+| 1 | |
+| 2 | |
+| 3 | |
+| 4 | |
+| 5 | |
+| 6 | |
+| 7 | |
+| 8 | |
+| 9 | |
+| 10 | |
+
+Chance per hit is roughly 1 divided by the average count. Ten hits on average means
+about 10%, two means about 50%.
+
+**Caveat to check first:** the tooltip says the buff depends on "the item level of your
+summoned pet". Confirm on the buff bar that it still procs at all with an augment out.
+If augments somehow do not satisfy the "companion is near" condition, this test is void
+and we fall back to accepting "up continuously in combat".
+
+---
+
+## Still outstanding
+
+- Test A2, the proc chance.
 - Test B, Kelemvor's Sword.

@@ -498,6 +498,7 @@ function getAvailableRarities(baseIL) { var b = getRarityByIL(baseIL); return RA
 function renderProc(proc, il, baseIL) {
   var parts = [];
   if (proc.trigger) parts.push('<div class="item-effect"><span class="stat-name">Trigger:</span> ' + esc(proc.trigger) + '</div>');
+  if (proc.affects) parts.push('<div class="item-effect"><span class="stat-name">Affects:</span> ' + esc(proc.affects) + '</div>');
   var chance = proc.chance;
   if (proc.chanceScaling && il != null) { var cv = proc.chanceScaling[String(il)]; if (cv != null) chance = cv; }
   if (chance != null) parts.push('<div class="item-effect"><span class="stat-name">Chance:</span> ' + chance + '%</div>');
@@ -639,8 +640,11 @@ build('companions', loadJSON('companions.json'), {
       parts.push('<div class="item-sec"><h2>Summoned Power' + (pw.name ? ' — ' + esc(pw.name) : '') + '</h2>' + pbody + '</div>');
     }
     if (enh) {
-      var enhTT = enh.procEffect
-        ? (renderProc(enh.procEffect, 900, 900) || '')
+      var enhProc = enh.procEffect
+        ? (enh.scope ? Object.assign({}, enh.procEffect, { affects: enh.scope.charAt(0).toUpperCase() + enh.scope.slice(1) }) : enh.procEffect)
+        : null;
+      var enhTT = enhProc
+        ? (renderProc(enhProc, 900, 900) || '')
         : (enh.tooltip ? '<div class="item-effect" style="margin-top:0.3rem">' + esc(enh.tooltip) + '</div>' : '');
       parts.push('<div class="item-sec"><h2>Enhancement — ' + esc(enh.name) + '</h2>' + statRow(statName(enh.stat), renderStatValue(enh.value, enh.type)) + enhTT + '<div class="item-effect" style="margin-top:0.3rem">Item Level ' + fmt(enh.item_level) + '</div></div>');
     }

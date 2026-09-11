@@ -437,8 +437,8 @@
       var _erc = getRarityByIL(_eil).color;
       html += '<div class="detail-meta">';
       html += '<span style="color:' + _erc + ';" title="The enhancement scales with the item level of your summoned companion.">IL <span class="rarity-num">' + formatNumber(_eil) + '</span></span>';
-      if (en.scope) {
-        html += '<span>Scope: ' + escapeHtml(en.scope) + "</span>";
+      if (en.scope && !en.procEffect) {
+        html += '<span>Affects: ' + escapeHtml(titleCase(en.scope)) + "</span>";
       }
       html += "</div>";
 
@@ -467,7 +467,9 @@
       // underneath it as a separate note.
       // Proc enhancements get the SAME structured breakdown as a power's proc.
       if (en.procEffect) {
-        html += renderProcEffect(en.procEffect, enIL, ENH_MAX_IL, _erc);
+        var _pe = en.procEffect;
+        if (en.scope) { _pe = Object.assign({}, _pe, { affects: titleCase(en.scope) }); }
+        html += renderProcEffect(_pe, enIL, ENH_MAX_IL, _erc);
       }
       // The structured rows already carry the game's wording, so the full
       // sentence would only repeat them (same rule as powers).
@@ -511,6 +513,10 @@
   // game's wording into the structured fields. Some powers (stat-only ones)
   // have no prose to carry, so the flag is the only signal that `notes` has
   // become internal-only and must not be rendered.
+  function titleCase(v) {
+    return String(v || "").replace(/(^|\s)([a-z])/g, function (m, a, b) { return a + b.toUpperCase(); });
+  }
+
   function hasVerbatim(pw) {
     return !!(pw && (pw.verbatimChecked || pw.tooltip || (pw.procEffect && pw.procEffect.tooltip)));
   }
@@ -553,6 +559,9 @@
 
     if (proc.trigger) {
       html += "<div><span class=\"stat-name\">Trigger:</span> " + escapeHtml(proc.trigger) + "</div>";
+    }
+    if (proc.affects) {
+      html += "<div><span class=\"stat-name\">Affects:</span> " + escapeHtml(proc.affects) + "</div>";
     }
     var displayChance = proc.chance;
     if (proc.chanceScaling && il != null) {
