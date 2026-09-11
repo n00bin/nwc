@@ -71,7 +71,8 @@
     168: true, // Apprentice Healer - Apprentice's Wisdom (Max HP, Incoming Healing)
     174: true, // Lysaera - Spiteful Hex (Incoming Damage debuff, Defense buff)
     104: true, // Tutor - Tutor's Discipline (Critical Severity, Combat Advantage)
-    248: true  // Demonic Servant - Highborn Status (Forte, Accuracy + 10% Menzoberranzan currency)
+    248: true, // Demonic Servant - Highborn Status (Forte, Accuracy + 10% Menzoberranzan currency)
+    271: true  // Encore the Virtuoso - Bard's Finesse (Critical Severity, Outgoing Healing, Power; 3-stat triple scale)
   };
 
   function isScalablePower(pw) {

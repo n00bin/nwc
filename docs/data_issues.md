@@ -1,9 +1,5 @@
 # Data Issues To Investigate
 
-## Star Angler preferred insignia slot type — unread (2026-09-11)
-
-- **Star Angler** (mount id 343): the 4th (Universal) slot carries the +20% preferred-insignia marker in the Mount Preview, but the small type icon beside it is not legible in the capture (docs/calibration/inbox/mounts/Star_Angler_insignia_slots_Celestial_IL3937.png). `preferred` left unset so the Stable Planner and optimizer do not credit a +20% on a guessed type. Fix: zoomed capture of that slot icon (the preview's Zoom option) or the Insignia Bonuses tab, then set `insigniaSlots[3].preferred` in `../data/mounts.json`.
-
 ## Erik tank sheet re-calibration 2026-09-06 — open residuals
 Erik (Paladin Justicar, Aasimar, TIL 151,337) at-rest sheet vs Toon Forge's
 Detailed Stats with all three Hide switches on. Evidence:
