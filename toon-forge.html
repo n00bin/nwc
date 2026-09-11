@@ -3133,6 +3133,7 @@
         </div>
         <div class="sc-pane" data-sc-pane="powers" hidden>
           <p class="hint" style="margin:0 0 0.5rem;">Damage mix from your slotted powers over the Time in combat you set: each encounter casts every cooldown (after Recharge Speed), each daily every AP bar, the strongest at-will fills the rest. Read-only; change your powers in <strong>Your Character → Your Powers</strong>.</p>
+          <div id="rotation-builder-box"></div>
           <div id="damage-mix-box"></div>
           <div class="row-2" style="margin-top:0.6rem;">
             <div class="field">
@@ -3368,6 +3369,7 @@
        (bit n00b 2026-07-04: an edge kept an old engine for 30+ minutes). -->
   <script src="toon-forge-stats.js?v=20260704a"></script>
   <script src="toon-forge-engine.js?v=20260704a"></script>
+  <script src="toon-forge-rotation.js?v=20260911a"></script>
   <script src="toon-forge-rotation-profiles.js?v=20260704a"></script>
   <!-- Supabase + data-corrections plumbing — lets users submit ✎ fixes -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -3631,6 +3633,8 @@
       // power; Forest Ghost is stance-neutral, Seismic Shot is its
       // own thing, etc.). Stored as plain power names.
       slottedDailies: ["", ""],
+      rotationSteps: [],        // ROT-2: ordered cast list [{kind, name}], any length; [] = default order
+      scorchAtSparks: 18,       // Soul Scorch policy: fire at N sparks (6-18)
       // Selected paragon feats — 5 slots, 1 per tier of the in-game
       // paragon feat tree. Stored as feat names; "" = empty slot.
       // Display-only today.
@@ -3783,6 +3787,8 @@
           slottedAtWills: [...(state.slottedAtWills || [])],
           slottedEncounters: [...(state.slottedEncounters || [])],
           slottedDailies: [...(state.slottedDailies || [])],
+          rotationSteps: (state.rotationSteps || []).map(x => ({ kind: x.kind, name: x.name })),
+          scorchAtSparks: (typeof state.scorchAtSparks === "number") ? state.scorchAtSparks : 18,
           slottedFeats: [...(state.slottedFeats || [])],
           // Damage-sim settings — were silently dropped from saves/share
           // links before (audit #25), reverting to defaults on load.
@@ -3980,6 +3986,8 @@
       const _dly = Array.isArray(s.slottedDailies) ? s.slottedDailies.slice(0, 2) : [];
       while (_dly.length < 2) _dly.push("");
       state.slottedDailies = _dly;
+      state.rotationSteps = Array.isArray(s.rotationSteps) ? s.rotationSteps.filter(x => x && x.kind && x.name).map(x => ({ kind: x.kind, name: x.name })) : [];
+      state.scorchAtSparks = (typeof s.scorchAtSparks === "number") ? Math.max(6, Math.min(18, s.scorchAtSparks)) : 18;
       // Feats — pad to exactly 5 slots (1 per in-game feat tier).
       const _ft = Array.isArray(s.slottedFeats) ? s.slottedFeats.slice(0, 5) : [];
       while (_ft.length < 5) _ft.push("");
@@ -11738,6 +11746,8 @@
     // no powers are slotted, so the caller can fall back to a generic estimate.
     function rotationMagPerSec() {
       if (typeof state === "undefined") return 0;
+      // ROT-1: the simulator replaces the rate model when enabled (local only for now).
+      if (rotationSimEnabled()) { const sim = getRotationSim(); if (sim) return sim.mps > 0 ? sim.mps : 0; }
       const findP = function (type, nm) {
         return _paragonPowerPool(type).find(function (p) { return p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)); });
       };
@@ -12837,6 +12847,58 @@
       try { const h = location.hostname; return location.protocol === "file:" || h === "localhost" || h === "127.0.0.1" || h === ""; } catch (e) { return false; }
     }
     function classTabEnabled() { return TF_CLASS_TAB_LIVE || tfIsLocal(); }
+    // ===== Rotation simulator (ROT-1 / ROT-2, n00b 2026-09-11) =====
+    // LOCAL ONLY until n00b flips it: the live site keeps the rate model for both
+    // the display and the optimizer's scoring.
+    const TF_ROTATION_SIM_LIVE = false;
+    function rotationSimEnabled() { return (TF_ROTATION_SIM_LIVE || tfIsLocal()) && typeof TF_ROTATION_SIM !== "undefined"; }
+    window.rotationSimEnabled = rotationSimEnabled;
+    // Build the simulator input from the build. Reads only data (classes.json blocks)
+    // and the scenario; Recharge Speed / AP Gain come from the last engine result the
+    // same way the rate model reads them.
+    function buildRotationSimInput() {
+      const findP = (t, nm) => _paragonPowerPool(t).find(p => p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)));
+      const pick = (t, names) => (names || []).filter(Boolean).map(nm => findP(t, nm)).filter(Boolean);
+      const er = (typeof getEngineResult === "function") ? getEngineResult() : null;
+      const rsi = ((er && er.stats && er.stats["Recharge Speed"] && er.stats["Recharge Speed"].finalPct) || 0);
+      const apg = ((er && er.stats && er.stats["Action Point Gain"] && er.stats["Action Point Gain"].finalPct) || 0);
+      const mechs = classMechanicsFor(state.class, state.paragon);
+      const scorchM = mechs.find(m => m && m.sparkSpend);
+      const puppetM = mechs.find(m => m && m.summon && m.summon.attackMagnitude != null);
+      const features = {}; (state.slottedClassFeaturePicks || []).filter(Boolean).forEach(n => { features[n] = true; });
+      const feats = {}; (state.slottedFeats || []).filter(Boolean).forEach(n => { feats[n] = true; });
+      const steps = (state.rotationSteps || []).filter(x => x && x.kind && x.name);
+      return {
+        fightSeconds: (typeof state.timeInCombatSec === "number") ? state.timeInCombatSec : 120, dt: 0.1,
+        rechargePct: rsi, apGainPct: apg, apPerSec: 40,
+        cadence: { daily: tfCadence("daily"), artifact: tfCadence("artifact"), mountpower: tfCadence("mountpower") },
+        scorchAtSparks: (typeof state.scorchAtSparks === "number") ? state.scorchAtSparks : 18,
+        powers: { atWill: pick("atWill", state.slottedAtWills), encounter: pick("encounter", state.slottedEncounters), daily: pick("daily", state.slottedDailies) },
+        scorch: scorchM ? Object.assign({ castSeconds: scorchM.sparkSpend.castSeconds || 1 }, scorchM.sparkSpend) : null,
+        puppet: puppetM ? puppetM.summon : null,
+        features: features, feats: feats,
+        enemyHealthPct: (typeof state.enemyHealthPct === "number") ? state.enemyHealthPct : 100,
+        steps: steps.length ? steps : null
+      };
+    }
+    let _rotSimCache = { key: "", result: null };
+    // Cached per rotation-affecting change so gear swaps that do not touch powers or
+    // Recharge / AP do not re-simulate (the optimizer calls this per candidate).
+    function getRotationSim() {
+      if (!rotationSimEnabled()) return null;
+      const inp = buildRotationSimInput();
+      const key = JSON.stringify([inp.steps, inp.powers.atWill.map(p => p.name), inp.powers.encounter.map(p => p.name), inp.powers.daily.map(p => p.name),
+        Object.keys(inp.features), Object.keys(inp.feats), state.class, state.paragon, inp.fightSeconds, Math.round(inp.rechargePct * 10) / 10, Math.round(inp.apGainPct * 10) / 10,
+        inp.cadence, inp.scorchAtSparks, inp.enemyHealthPct]);
+      if (_rotSimCache.key === key && _rotSimCache.result) return _rotSimCache.result;
+      const res = TF_ROTATION_SIM.simulate(inp);
+      _rotSimCache = { key: key, result: res };
+      return res;
+    }
+    // Engine-side read: never triggers a fresh simulation (buildEngineCharacter runs
+    // inside getEngineResult, which the adapter itself reads) - peek the cache.
+    function peekRotationSim() { return rotationSimEnabled() ? _rotSimCache.result : null; }
+    window.getRotationSim = getRotationSim;
     // CLASS-1: the one Soul Sparks value (0-30), stored as the Soul Spark mechanic's stack count.
     function soulSparkCount() {
       const am = (typeof state !== "undefined" && state.activeMechanics) ? state.activeMechanics : null;
@@ -12858,6 +12920,15 @@
     // Damage mix over Time in combat: encounters cast every effective cooldown (first at t=0),
     // dailies every AP bar (Action Point Gain shortens it), the strongest at-will fills the rest.
     function rotationMixOverTime(T) {
+      if (rotationSimEnabled()) {
+        const sim = getRotationSim();
+        if (sim && sim.mix && sim.mix.pct) {
+          const lines = [];
+          const top = Object.entries(sim.bySource || {}).sort((a, b) => b[1] - a[1]).slice(0, 4).map(e => e[0] + " " + Math.round(e[1] / sim.fightSeconds) + "/s");
+          lines.push((sim.defaultOrderUsed ? "default order (no rotation built)" : "your rotation") + " · " + Math.round(sim.mps) + " magnitude/s · " + top.join(", "));
+          return { atWill: sim.mix.atWill, encounter: sim.mix.encounter, daily: sim.mix.daily, other: sim.mix.other, lines: lines, pct: { atWill: sim.mix.pct.atWill, encounter: sim.mix.pct.encounter, daily: sim.mix.pct.daily } };
+        }
+      }
       const findP = (t, nm) => _paragonPowerPool(t).find(p => p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)));
       const er = (typeof getEngineResult === "function") ? getEngineResult() : null;
       const rsi = ((er && er.stats && er.stats["Recharge Speed"] && er.stats["Recharge Speed"].finalPct) || 0) / 100;
@@ -12871,6 +12942,72 @@
       const tot = mix.atWill + mix.encounter + mix.daily;
       mix.pct = tot > 0 ? { atWill: mix.atWill / tot * 100, encounter: mix.encounter / tot * 100, daily: mix.daily / tot * 100 } : null;
       return mix;
+    }
+    // ===== Rotation builder UI (ROT-2) =====
+    function rotationCastables() {
+      const items = [];
+      const add = (kind, label, names) => (names || []).filter(Boolean).forEach(nm => items.push({ name: nm, _kind: kind, _label: label }));
+      add("atWill", "At-will", state.slottedAtWills); add("encounter", "Encounter", state.slottedEncounters); add("daily", "Daily", state.slottedDailies);
+      const mechs = classMechanicsFor(state.class, state.paragon);
+      if (mechs.some(m => m && m.sparkSpend)) items.push({ name: "Soul Scorch", _kind: "scorch", _label: "Mechanic (spark spend)" });
+      if (state.artifacts && state.artifacts.Primary) items.push({ name: state.artifacts.Primary, _kind: "artifact", _label: "Artifact power" });
+      if (state.activeCombatPower != null && typeof findCombatPowerById === "function") { const cp = findCombatPowerById(state.activeCombatPower); if (cp) items.push({ name: cp.name, _kind: "mount", _label: "Mount combat power" }); }
+      return items;
+    }
+    function renderRotationBuilder() {
+      const box = document.getElementById("rotation-builder-box"); if (!box) return;
+      if (!rotationSimEnabled()) { box.innerHTML = ""; return; }
+      const steps = state.rotationSteps || [];
+      const sim = getRotationSim();
+      const esc = escapeHtmlTF;
+      const kindLabel = { atWill: "at-will", encounter: "encounter", daily: "daily", scorch: "spend", artifact: "artifact", mount: "mount" };
+      let h = '<div class="boon-tier-header" style="margin-top:0.2rem;">Rotation <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(local only · add your casts in the order you use them; steps that are not ready are skipped, the list loops, the first at-will fills the gaps)</span></div>';
+      if (!steps.length) h += '<p class="hint" style="margin:0.2rem 0 0.4rem;color:var(--amber);">No rotation built yet - the simulator is using a default order (strongest per cast first). Add steps below to replace it.</p>';
+      h += '<ol id="rotation-steps" style="margin:0.2rem 0 0.4rem;padding-left:1.4rem;">';
+      steps.forEach((st, i) => {
+        h += '<li style="margin:0.15rem 0;"><span translate="no">' + esc(st.name) + '</span> <span class="hint">(' + esc(kindLabel[st.kind] || st.kind) + ')</span> ' +
+          '<button type="button" class="btn btn-ghost" data-rot-up="' + i + '" title="Move up" style="padding:0 0.4rem;font-size:0.75rem;"' + (i === 0 ? ' disabled' : '') + '>&#9650;</button>' +
+          '<button type="button" class="btn btn-ghost" data-rot-down="' + i + '" title="Move down" style="padding:0 0.4rem;font-size:0.75rem;"' + (i === steps.length - 1 ? ' disabled' : '') + '>&#9660;</button>' +
+          '<button type="button" class="btn btn-ghost" data-rot-del="' + i + '" title="Remove" style="padding:0 0.4rem;font-size:0.75rem;">&#10005;</button></li>';
+      });
+      h += '</ol>';
+      h += '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;"><button type="button" class="btn btn-primary" id="rotation-add-step">+ Add step</button>' + (steps.length ? '<button type="button" class="btn btn-ghost" id="rotation-clear">Clear list</button>' : '') + '</div>';
+      const inp = buildRotationSimInput();
+      if (inp.scorch) {
+        const sat = inp.scorchAtSparks;
+        h += '<div class="field" style="margin-top:0.6rem;"><label>Fire Soul Scorch at <span class="hint" id="scorch-at-label">' + sat + ' sparks</span> <span class="hint-icon" data-tip="Soul Scorch casts itself when your spark pool reaches this number, unless you placed it in the list above (then the list decides). 18 is the most one cast can spend.">?</span></label><input type="range" id="scorch-at-sparks" min="6" max="18" step="1" value="' + sat + '" style="width:100%;"></div>';
+      }
+      if (sim) {
+        const d = sim.derived || {};
+        const pct = v => (v == null ? "-" : Math.round(v * 100) + "%");
+        h += '<div style="margin-top:0.6rem;font-size:0.85rem;"><strong>' + Math.round(sim.mps) + ' magnitude/s</strong> over ' + sim.fightSeconds + ' s' + (sim.defaultOrderUsed ? ' (default order)' : '') + ' · ' + sim.cycles + ' full cycles</div>';
+        const chips = [];
+        if (d.curseUptime != null && (inp.powers.encounter.some(p => p.tags && p.tags.curse) || inp.powers.daily.some(p => p.tags && p.tags.curse))) chips.push('Curse up ' + pct(d.curseUptime) + ' (' + d.curseApplies + ' applied, ' + d.curseConsumes + ' consumed, ' + d.curseExpiries + ' expired)');
+        if (d.sparksAvg != null) chips.push('Soul Sparks avg ' + d.sparksAvg.toFixed(1) + ' (peak ' + d.sparksMax + '), ' + d.scorchCasts + ' Scorch casts');
+        if (d.puppetUptime != null) chips.push('Soul Puppet up ' + pct(d.puppetUptime) + ', Investiture avg ' + d.investitureAvg.toFixed(1) + ' stacks');
+        if (d.creepingDeathAvgStacks != null) chips.push('Creeping Death avg ' + d.creepingDeathAvgStacks.toFixed(1) + ' stacks');
+        if (chips.length) h += '<div class="hint" style="margin-top:0.2rem;">' + chips.map(esc).join(' · ') + '</div>';
+        const top = Object.entries(sim.bySource || {}).sort((a, b) => b[1] - a[1]).slice(0, 8);
+        if (top.length) h += '<div class="hint" style="margin-top:0.2rem;">Top sources: ' + top.map(e => esc(e[0]) + ' ' + Math.round(e[1] / sim.fightSeconds) + '/s').join(', ') + '</div>';
+        const cyc = (sim.timeline || []).filter(e => sim.firstCycleEnd == null || e.t <= sim.firstCycleEnd + 0.01).slice(0, 24);
+        if (cyc.length) h += '<details style="margin-top:0.3rem;"><summary class="hint" style="cursor:pointer;">Timeline, first cycle (' + cyc.length + ' casts)</summary><div class="hint" style="margin-top:0.2rem;line-height:1.5;" translate="no">' + cyc.map(e => e.t.toFixed(1) + 's ' + esc(e.name) + (e.note ? ' [' + esc(e.note) + ']' : '')).join(' · ') + '</div></details>';
+      }
+      box.innerHTML = h;
+      const commit = () => { _rotSimCache = { key: "", result: null }; rerenderAll(); };
+      box.querySelectorAll("[data-rot-up]").forEach(b => b.addEventListener("click", () => { const i = +b.dataset.rotUp; const a = state.rotationSteps; [a[i - 1], a[i]] = [a[i], a[i - 1]]; commit(); }));
+      box.querySelectorAll("[data-rot-down]").forEach(b => b.addEventListener("click", () => { const i = +b.dataset.rotDown; const a = state.rotationSteps; [a[i + 1], a[i]] = [a[i], a[i + 1]]; commit(); }));
+      box.querySelectorAll("[data-rot-del]").forEach(b => b.addEventListener("click", () => { state.rotationSteps.splice(+b.dataset.rotDel, 1); commit(); }));
+      const clr = box.querySelector("#rotation-clear"); if (clr) clr.addEventListener("click", () => { state.rotationSteps = []; commit(); });
+      const addBtn = box.querySelector("#rotation-add-step");
+      if (addBtn) addBtn.addEventListener("click", () => {
+        const items = rotationCastables();
+        if (!items.length) { alert("Slot at least one power in step 2 first."); return; }
+        openPicker({ title: "Add a rotation step", items: items, allowNone: false,
+          render: (it) => ({ name: it.name, meta: it._label, desc: "" }),
+          onPick: (it) => { if (!it) return; if (!Array.isArray(state.rotationSteps)) state.rotationSteps = []; state.rotationSteps.push({ kind: it._kind, name: it.name }); commit(); } });
+      });
+      const sl = box.querySelector("#scorch-at-sparks");
+      if (sl) { sl.addEventListener("input", e => { const lb = box.querySelector("#scorch-at-label"); if (lb) lb.textContent = e.target.value + " sparks"; }); sl.addEventListener("change", e => { state.scorchAtSparks = Math.max(6, Math.min(18, +e.target.value || 18)); commit(); }); }
     }
     function renderDamageMix() {
       const box = document.getElementById("damage-mix-box"); if (!box) return;
@@ -12962,7 +13099,12 @@
         const nothingApplies = fx.length > 0 && baseFx.length === 0 && missingFeat.length === gatedFx.length;
         const featHint = nothingApplies ? ' <span class="hint" style="color:var(--amber);">' + escapeHtmlTF(missingFeat.join(", ")) + ' not slotted (step 2) - no effect yet</span>' : "";
         const stackFx = fx.find(ef => ef.perStack);
-        const ctl = stackFx
+        const _rsim = (typeof getRotationSim === "function") ? getRotationSim() : null;
+        let derivedStacks = null;
+        if (_rsim && _rsim.derived) { if (m.name === "Soul Spark" && _rsim.derived.sparksAvg != null) derivedStacks = _rsim.derived.sparksAvg; if (m.name === "Soul Investiture" && _rsim.derived.investitureAvg != null) derivedStacks = _rsim.derived.investitureAvg; }
+        const ctl = (derivedStacks != null)
+          ? `<span class="hint" title="Derived from your rotation on The Fight → Powers; the slider is off while the simulator is on">${derivedStacks.toFixed(1)} stacks avg (from your rotation)</span>`
+          : stackFx
           ? `<input type="range" data-mech="${escapeHtmlTF(m.name)}" data-mech-stacks="1" min="0" max="${stackFx.maxStacks || 1}" step="1" value="${typeof a === "number" ? a : 0}" style="width:110px;vertical-align:middle;"> <span class="hint" data-mech-label="${escapeHtmlTF(m.name)}">${typeof a === "number" ? a : 0} stacks</span>`
           : `<input type="checkbox" data-mech="${escapeHtmlTF(m.name)}"${a ? " checked" : ""}${fx.length ? "" : " disabled"}>`;
         return `<div class="boon-row" style="cursor:default;${nothingApplies ? "opacity:0.6;" : ""}"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(m.name)}</div><div class="boon-row-effect">${escapeHtmlTF(fxText || m.addedEffect || m.notes || "")}${featHint}</div></div><div class="boon-counter">${ctl}</div></div>`;
@@ -13037,6 +13179,7 @@
         const el = document.getElementById(id), lb = document.getElementById(id + "-label"); const v = (typeof state[key] === "number") ? state[key] : 60;
         if (el) el.value = v; if (lb) lb.textContent = v + " s";
       }
+      if (typeof renderRotationBuilder === "function") renderRotationBuilder();
       renderDamageMix(); renderClassMechanics();
       const sum = document.getElementById("scenario-summary"); if (sum) sum.textContent = scenarioSummary();
       const h = document.getElementById("scenario-health-pct"), hl = document.getElementById("scenario-health-label");
@@ -13521,15 +13664,34 @@
           // (e.g. Bard's Critical Tuning — technically a 20s song-triggered
           // buff, but songs ARE the Bard rotation so combat uptime is
           // ~100%) count as always-on and show without the toggle.
-          const cPct = cf.percentStatsConditional || cf.conditionalPercentStats || null;
-          const cRat = cf.ratingStatsConditional  || cf.conditionalRatingStats  || null;
+          let cPct = cf.percentStatsConditional || cf.conditionalPercentStats || null;
+          let cRat = cf.ratingStatsConditional  || cf.conditionalRatingStats  || null;
           if (cPct || cRat) {
             const alwaysOn = !!cf.assumeAlwaysOn;
+            // ROT-1: curseGated features (Warlock's Curse) follow the simulated Curse uptime.
+            const _rs2 = (cf.curseGated && typeof peekRotationSim === "function") ? peekRotationSim() : null;
+            let up = null;
+            if (_rs2 && _rs2.derived && _rs2.derived.curseUptime != null) {
+              up = Math.max(0, Math.min(1, _rs2.derived.curseUptime));
+              const scale = (o) => { if (!o) return o; const r = {}; for (const k in o) r[k] = Math.round(o[k] * up * 100) / 100; return r; };
+              cPct = scale(cPct); cRat = scale(cRat);
+            }
+            // Enemy-missing-health scaled features (Executioner's Gift: up to 30% as the
+            // target's health drops) read the scenario enemy-health slider: 0 at full
+            // health, the full amount at 0% (linear, per the R2-27 ruling).
+            let missScale = null;
+            if (cf.enemyMissingHealthScaled) {
+              const ehp = (typeof s.enemyHealthPct === "number") ? s.enemyHealthPct : 100;
+              missScale = Math.max(0, Math.min(1, 1 - ehp / 100));
+              const scaleM = (o) => { if (!o) return o; const r = {}; for (const k in o) r[k] = Math.round(o[k] * missScale * 100) / 100; return r; };
+              cPct = scaleM(cPct); cRat = scaleM(cRat);
+            }
             buffs.push({
-              source: `Class Feature: ${cf.name}` + (alwaysOn ? "" : " (conditional)"),
+              source: `Class Feature: ${cf.name}` + (up != null ? ` (Curse up ${Math.round(up * 100)}% of the fight)` : missScale != null ? ` (enemy at ${Math.round(100 - missScale * 100)}% health)` : (alwaysOn ? "" : " (conditional)")),
               percentStats: cPct || {},
               ratingStats:  cRat || {},
-              conditional: !alwaysOn
+              conditional: !alwaysOn,
+              uptime: (up != null && up < 1) ? up : undefined
             });
           }
         }
@@ -14902,7 +15064,14 @@
       // Class mechanics (Combat scenario Class tab, n00b 2026-09-08): a mechanic the
       // player marks active contributes its data-driven effects[] (classes.json).
       for (const m of ((typeof classMechanicsFor === "function" && (typeof classTabEnabled !== "function" || classTabEnabled())) ? classMechanicsFor(s.class, s.paragon) : [])) {
-        const a = s.activeMechanics && s.activeMechanics[m.name];
+        let a = s.activeMechanics && s.activeMechanics[m.name];
+        // ROT-1: when the simulator is on, Soul Spark and Soul Investiture stacks are
+        // derived from the rotation timeline (time-weighted averages), not the sliders.
+        const _rs = (typeof peekRotationSim === "function") ? peekRotationSim() : null;
+        if (_rs && _rs.derived) {
+          if (m.name === "Soul Spark" && _rs.derived.sparksAvg != null) a = Math.round(_rs.derived.sparksAvg * 10) / 10 || 0;
+          if (m.name === "Soul Investiture" && _rs.derived.investitureAvg != null) a = Math.round(_rs.derived.investitureAvg * 10) / 10 || 0;
+        }
         if (!a || !Array.isArray(m.effects)) continue;
         for (const ef of m.effects) {
           if (!ef || !ef.stat || ef.amount == null) continue;
@@ -15150,6 +15319,7 @@
         sumG: state.summonedGear,
         ac: state.activeComps,
         stable: state.stable, mcp: state.activeCombatPower, mep: state.activeEquipPower,
+        rsim: (typeof _rotSimCache !== "undefined" && _rotSimCache.result) ? _rotSimCache.key : "",   // ROT-1: derived stacks / Curse uptime come from the sim
         // Decision 11: active-power rarity must invalidate cache on change
         aepr: state.activeEquipPowerRarity, acpr: state.activeCombatPowerRarity,
         ench: state.enchants, ovr: state.overloads, kits: state.kits,
@@ -15160,7 +15330,7 @@
         cc: state.compCollection, mc: state.mountCollection,
         boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, dbf: state.debuffed, tic: state.timeInCombatSec, cad: [state.dailyCadenceSec, state.artifactCadenceSec, state.mountPowerCadenceSec], ehp: state.enemyHealthPct, ety: state.enemyTypes, ssec: state.standingSec, am: state.activeMechanics, fpb: state.forcedPowerBuffs, fu: state.flankUptime, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
-        aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats
+        aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats, rot: state.rotationSteps, sat: state.scorchAtSparks
       });
       if (key === _engineCacheKey && _engineResult) return _engineResult;
       _engineCacheKey = key;
@@ -20254,6 +20424,11 @@
       // abilityBonuses (e.g. Campfire) must propagate to state.abil before
       // any downstream code (engine) reads it. Idempotent and cheap.
       recomputeAbilityTotals();
+      // ROT-1: refresh the rotation simulation before any panel reads the engine, so the
+      // derived stacks / Curse uptime it feeds are current (the sim reads Recharge / AP
+      // from the previous engine result; that lag only matters when recharge gear changes
+      // and settles on the next render).
+      if (typeof rotationSimEnabled === "function" && rotationSimEnabled()) { try { getRotationSim(); } catch (e) { console.warn("rotation sim", e); } }
       // Recompute TIL first — every state change (gear, summoned comp,
       // active mount, bolster, rarity) can affect it. The IL input
       // value is updated in place, so users typing manually will see
