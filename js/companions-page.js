@@ -544,7 +544,7 @@
     var html = '<div class="proc-block">';
     html += '<div class="proc-label">Proc Effect</div>';
 
-    if (proc.trigger && !proc.tooltip) {
+    if (proc.trigger) {
       html += "<div><span class=\"stat-name\">Trigger:</span> " + escapeHtml(proc.trigger) + "</div>";
     }
     var displayChance = proc.chance;
@@ -552,32 +552,10 @@
       var chanceVal = proc.chanceScaling[String(il)];
       if (chanceVal != null) displayChance = chanceVal;
     }
-    if (displayChance != null && !proc.tooltip) {
+    if (displayChance != null) {
       html += "<div><span class=\"stat-name\">Chance:</span> " + '<span class="rarity-num" style="color:' + (rarityColor || "inherit") + ';">' + displayChance + '%</span></div>';
     }
-    // proc.tooltip = the game's wording, copied verbatim from the screenshot.
-    // {chance} / effectScaling placeholders still interpolate so the line is
-    // correct at the selected rarity. When present it REPLACES the parsed
-    // Trigger/Chance/Effect lines above as the human-readable description.
-    if (proc.tooltip) {
-      var vt = proc.tooltip;
-      if (displayChance != null) {
-        vt = vt.replace(/\{chance\}%/g, markRarity(displayChance + "%"))
-               .replace(/\{chance\}/g, markRarity(displayChance));
-      }
-      if (proc.effectScaling && il) {
-        var vKey = String(il);
-        for (var vk in proc.effectScaling) {
-          var vv = proc.effectScaling[vk][vKey];
-          if (vv == null) continue;
-          vt = vt.split("{" + vk + "}%").join(markRarity(vv + "%"))
-                 .split("{" + vk + "}").join(markRarity(vv));
-        }
-      }
-      vt = vt.replace(/\{[^}]+\}/g, "?");
-      html += '<div class="proc-verbatim">' + paintRarityMarks(escapeHtml(vt), rarityColor || "inherit") + "</div>";
-    }
-    if (proc.effect && !proc.tooltip) {
+    if (proc.effect) {
       var effectText = proc.effect;
       // Interpolate scaled values if effectScaling is present
       if (proc.effectScaling && il) {
@@ -617,12 +595,12 @@
       }
     }
 
-    if (proc.durationSeconds && !proc.tooltip) {
+    if (proc.durationSeconds) {
       html += "<div><span class=\"stat-name\">Duration:</span> " + proc.durationSeconds + "s</div>";
     }
-    if (proc.cooldown && !proc.tooltip) {
+    if (proc.cooldown) {
       html += "<div><span class=\"stat-name\">Cooldown:</span> " + escapeHtml(String(proc.cooldown)) + "</div>";
-    } else if (proc.cooldownSeconds && !proc.tooltip) {
+    } else if (proc.cooldownSeconds) {
       html += "<div><span class=\"stat-name\">Cooldown:</span> " + proc.cooldownSeconds + "s</div>";
     }
     if (proc.maxStacks) {

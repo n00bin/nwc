@@ -497,19 +497,11 @@ function getAvailableRarities(baseIL) { var b = getRarityByIL(baseIL); return RA
 /* proc-effect rendering (faithful port of companions-page.js renderProcEffect) */
 function renderProc(proc, il, baseIL) {
   var parts = [];
-  var chance0 = null;
-  if (proc.trigger && !proc.tooltip) parts.push('<div class="item-effect"><span class="stat-name">Trigger:</span> ' + esc(proc.trigger) + '</div>');
+  if (proc.trigger) parts.push('<div class="item-effect"><span class="stat-name">Trigger:</span> ' + esc(proc.trigger) + '</div>');
   var chance = proc.chance;
   if (proc.chanceScaling && il != null) { var cv = proc.chanceScaling[String(il)]; if (cv != null) chance = cv; }
-  if (proc.tooltip) {
-    var vt = proc.tooltip;
-    if (chance != null) vt = vt.replace(/\{chance\}/g, chance);
-    if (proc.effectScaling && il) { var vk = String(il); for (var vkey in proc.effectScaling) { var vv = proc.effectScaling[vkey][vk]; if (vv != null) vt = vt.split('{' + vkey + '}').join(vv); } }
-    vt = vt.replace(/\{[^}]+\}/g, '?');
-    parts.push('<div class="item-effect">' + esc(vt) + '</div>');
-  }
-  if (chance != null && !proc.tooltip) parts.push('<div class="item-effect"><span class="stat-name">Chance:</span> ' + chance + '%</div>');
-  if (proc.effect && !proc.tooltip) {
+  if (chance != null) parts.push('<div class="item-effect"><span class="stat-name">Chance:</span> ' + chance + '%</div>');
+  if (proc.effect) {
     var t = proc.effect;
     if (proc.effectScaling && il) { var k = String(il); for (var key in proc.effectScaling) { var v = proc.effectScaling[key][k]; if (v != null) t = t.replace('{' + key + '}', v); } }
     t = t.replace(/\{[^}]+\}/g, '?');
@@ -771,7 +763,11 @@ var enchantsData = loadJSON('enchants.json');
   function eq(l, g, w) { if (String(g) !== String(w)) throw new Error('ENCHANT REGRESSION ' + l + ': got ' + g + ' want ' + w); }
   eq('Cobalt Celestial offense', m[1].rarities.Celestial.universal.offense['Critical Severity'], 2700);
   eq('Cobalt Uncommon offense', m[1].rarities.Uncommon.universal.offense['Critical Severity'], 450);
-  eq('Cursed Burn Celestial Dmg Bonus', m[27].rarities.Celestial.percentStats['Dmg Bonus'], 12);
+  // Patch 09/10/2026 moved Combat enchantments off "Dmg Bonus" onto "Base
+  // Damage Boost" and rebased the ladder (Celestial 15%). The old assertion
+  // still named the retired stat, so it threw and aborted page generation
+  // part-way through every run since that patch.
+  eq('Cursed Burn Celestial Base Damage Boost', m[27].rarities.Celestial.percentStats['Base Damage Boost'], 15);
   console.log('Enchant assertions passed.');
 })();
 build('enchants', enchantsData, {
