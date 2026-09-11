@@ -17255,6 +17255,33 @@
       _mechOpenFlag = !!v;
       try { localStorage.setItem("tf-mechanics-open", _mechOpenFlag ? "1" : "0"); } catch (e) {}
     }
+    let _generalOpenFlag = null;
+    function _generalOpen() {
+      if (_generalOpenFlag === null) { try { _generalOpenFlag = localStorage.getItem("tf-general-open") === "1"; } catch (e) { _generalOpenFlag = false; } }
+      return _generalOpenFlag;
+    }
+    function _setGeneralOpen(v) {
+      _generalOpenFlag = !!v;
+      try { localStorage.setItem("tf-general-open", _generalOpenFlag ? "1" : "0"); } catch (e) {}
+    }
+    // Collapsible section header for step 2. The summary text is a <span>, not a
+    // <label>: a label is interactive content, and the browser skips the
+    // <details> toggle when the click lands on interactive content, which is why
+    // the first version only opened when you hit the caret.
+    function collapsibleSummaryHTML(cls, open, title, sub) {
+      return '<details class="field ' + cls + '" style="margin-top:0.8rem;"' + (open ? ' open' : '') +
+        '><summary style="cursor:pointer;list-style:none;"><span class="tf-collapse-label" style="display:inline;color:var(--text-mute);font-size:0.82rem;font-weight:600;cursor:pointer;">' +
+        '<span class="tf-collapse-caret" style="display:inline-block;width:1em;">' + (open ? '\u25BE' : '\u25B8') + '</span> ' + escHtml(title) +
+        ' <span style="color:var(--text-dim);font-weight:400;">(' + escHtml(sub) + ' · click to ' + (open ? 'collapse' : 'expand') + ')</span></span></summary>';
+    }
+    function wireCollapsible(root, cls, setOpen) {
+      const d = root.querySelector('details.' + cls); if (!d) return;
+      d.addEventListener('toggle', () => {
+        setOpen(d.open);
+        const caret = d.querySelector('.tf-collapse-caret'); if (caret) caret.textContent = d.open ? '\u25BE' : '\u25B8';
+        const hint = d.querySelector('summary span span:last-child'); if (hint) hint.textContent = hint.textContent.replace(/click to (expand|collapse)/, 'click to ' + (d.open ? 'collapse' : 'expand'));
+      });
+    }
     function renderClassLoadout() {
       const panel = document.getElementById("class-loadout-panel");
       const body  = document.getElementById("class-loadout-body");
@@ -17488,82 +17515,9 @@
         out.push('</div></div>');
       }
 
-      // --- Mechanics (read-only display) ---
-      // Mechanics aren't slotted in NW — they're class-fixed systems
-      // (Forte, class resource, tactical dodge, paragon abilities).
-      // Display the class-shared + selected-paragon list so a Justicar
-      // never shows Oathkeeper mechanics (and vice versa).
-      const mechanicRaw = _paragonPowerPool("mechanic");
-
-      // (cleanNote is defined at module scope — used here to strip
-      // "Screenshot intake YYYY-MM-DD." capture boilerplate.)
-
-      // Pick the most user-facing field: description (in-game tooltip
-      // text) wins, then addedEffect (mechanic summary), then notes
-      // (which is sometimes capture metadata, sometimes the only field
-      // available for older entries).
-      const mechDesc = (m) => cleanNote(m && (m.description || m.addedEffect || m.notes)) || "";
-
-      // For Ranger, the two stance mechanics (Ranged Stance / Melee
-      // Stance) are two halves of the same toggle — collapse them into
-      // a single "Stance" card so the display matches how it actually
-      // works in-game.
-      let mechanicList;
-      if (state.class === "Ranger") {
-        const ranged = mechanicRaw.find(m => m.name === "Ranged Stance");
-        const melee  = mechanicRaw.find(m => m.name === "Melee Stance");
-        const others = mechanicRaw.filter(m => m.name !== "Ranged Stance" && m.name !== "Melee Stance");
-        mechanicList = [];
-        if (ranged || melee) {
-          mechanicList.push({
-            name: "Stance",
-            isStancePair: true,
-            ranged, melee,
-            rNote: mechDesc(ranged),
-            mNote: mechDesc(melee)
-          });
-        }
-        mechanicList.push(...others);
-      } else {
-        mechanicList = mechanicRaw;
-      }
-
-      if (mechanicList.length) {
-        // Collapsible (n00b 2026-09-11): collapsed by default, the open state is
-        // remembered across re-renders (rerenderAll rebuilds this panel often) and
-        // across visits in this browser.
-        out.push('<details class="field tf-mech-details" style="margin-top:0.8rem;"' + (_mechanicsOpen() ? ' open' : '') + '><summary style="cursor:pointer;list-style:none;"><label style="cursor:pointer;display:inline;"><span class="tf-mech-caret" style="display:inline-block;width:1em;">' + (_mechanicsOpen() ? '\u25BE' : '\u25B8') + '</span> Mechanics <span style="color:var(--text-dim);font-weight:400;">(' + mechanicList.length + ' class-fixed systems · reference only · click to ' + (_mechanicsOpen() ? 'collapse' : 'expand') + ')</span></label></summary>');
-        out.push('<div class="loadout-grid" style="margin-top:0.4rem;">');
-        for (const m of mechanicList) {
-          // Combined Ranger stance card — show both stances in one box.
-          if (m.isStancePair) {
-            out.push(
-              '<div class="loadout-card">' +
-                '<div class="loadout-card-title">Stance</div>' +
-                '<div class="loadout-card-substat"><strong>🏹 Ranged Stance</strong>' + (m.rNote ? ' — ' + escHtml(m.rNote) : '') + '</div>' +
-                '<div class="loadout-card-substat"><strong>⚔ Melee Stance</strong>'  + (m.mNote ? ' — ' + escHtml(m.mNote) : '') + '</div>' +
-              '</div>'
-            );
-            continue;
-          }
-          const tagBits = [];
-          if (m.tactical) tagBits.push("tactical");
-          if (m.paragon)  tagBits.push("paragon");
-          const tag = tagBits.length ? '<span class="loadout-card-tag">' + escHtml(tagBits.join(" · ")) + '</span>' : '';
-          const desc = mechDesc(m);
-          out.push(
-            '<div class="loadout-card">' +
-              '<div class="loadout-card-title">' + escHtml(m.name) + tag + '</div>' +
-              (desc ? '<div class="loadout-card-desc">' + escHtml(desc) + '</div>' : '') +
-            '</div>'
-          );
-        }
-        out.push('</div></details>');
-      }
-
       // --- Slotted Class Features (pick up to 2) ---
-      // Lives after Mechanics so the loadout reads at-wills → encounters
-      // → dailies → mechanics → class features, mirroring the in-game
+      // Order (n00b 2026-09-11): at-wills → encounters → dailies → class features
+      // → mechanics → general, mirroring the in-game
       // Powers tab row order.
       if (pickable.length) {
         // Slot+chip pattern (matches At-Wills / Encounters / Feats): each
@@ -17660,9 +17614,82 @@
         }
       }
 
+      // --- Mechanics (read-only display) ---
+      // Mechanics aren't slotted in NW — they're class-fixed systems
+      // (Forte, class resource, tactical dodge, paragon abilities).
+      // Display the class-shared + selected-paragon list so a Justicar
+      // never shows Oathkeeper mechanics (and vice versa).
+      const mechanicRaw = _paragonPowerPool("mechanic");
+
+      // (cleanNote is defined at module scope — used here to strip
+      // "Screenshot intake YYYY-MM-DD." capture boilerplate.)
+
+      // Pick the most user-facing field: description (in-game tooltip
+      // text) wins, then addedEffect (mechanic summary), then notes
+      // (which is sometimes capture metadata, sometimes the only field
+      // available for older entries).
+      const mechDesc = (m) => cleanNote(m && (m.description || m.addedEffect || m.notes)) || "";
+
+      // For Ranger, the two stance mechanics (Ranged Stance / Melee
+      // Stance) are two halves of the same toggle — collapse them into
+      // a single "Stance" card so the display matches how it actually
+      // works in-game.
+      let mechanicList;
+      if (state.class === "Ranger") {
+        const ranged = mechanicRaw.find(m => m.name === "Ranged Stance");
+        const melee  = mechanicRaw.find(m => m.name === "Melee Stance");
+        const others = mechanicRaw.filter(m => m.name !== "Ranged Stance" && m.name !== "Melee Stance");
+        mechanicList = [];
+        if (ranged || melee) {
+          mechanicList.push({
+            name: "Stance",
+            isStancePair: true,
+            ranged, melee,
+            rNote: mechDesc(ranged),
+            mNote: mechDesc(melee)
+          });
+        }
+        mechanicList.push(...others);
+      } else {
+        mechanicList = mechanicRaw;
+      }
+
+      if (mechanicList.length) {
+        // Collapsible (n00b 2026-09-11): collapsed by default, the open state is
+        // remembered across re-renders (rerenderAll rebuilds this panel often) and
+        // across visits in this browser.
+        out.push(collapsibleSummaryHTML("tf-mech-details", _mechanicsOpen(), "Mechanics", mechanicList.length + " class-fixed systems · reference only"));
+        out.push('<div class="loadout-grid" style="margin-top:0.4rem;">');
+        for (const m of mechanicList) {
+          // Combined Ranger stance card — show both stances in one box.
+          if (m.isStancePair) {
+            out.push(
+              '<div class="loadout-card">' +
+                '<div class="loadout-card-title">Stance</div>' +
+                '<div class="loadout-card-substat"><strong>🏹 Ranged Stance</strong>' + (m.rNote ? ' — ' + escHtml(m.rNote) : '') + '</div>' +
+                '<div class="loadout-card-substat"><strong>⚔ Melee Stance</strong>'  + (m.mNote ? ' — ' + escHtml(m.mNote) : '') + '</div>' +
+              '</div>'
+            );
+            continue;
+          }
+          const tagBits = [];
+          if (m.tactical) tagBits.push("tactical");
+          if (m.paragon)  tagBits.push("paragon");
+          const tag = tagBits.length ? '<span class="loadout-card-tag">' + escHtml(tagBits.join(" · ")) + '</span>' : '';
+          const desc = mechDesc(m);
+          out.push(
+            '<div class="loadout-card">' +
+              '<div class="loadout-card-title">' + escHtml(m.name) + tag + '</div>' +
+              (desc ? '<div class="loadout-card-desc">' + escHtml(desc) + '</div>' : '') +
+            '</div>'
+          );
+        }
+        out.push('</div></details>');
+      }
+
       if (generalEntries.length) {
-        out.push('<div class="field" style="margin-top:0.8rem;"><label>General <span style="color:var(--text-dim);font-weight:400;">(auto-applied passives · class skills + racial traits)</span></label>');
-        out.push('<div class="loadout-grid">');
+        out.push(collapsibleSummaryHTML("tf-general-details", _generalOpen(), "General", generalEntries.length + " auto-applied passives · class skills + racial traits"));
+        out.push('<div class="loadout-grid" style="margin-top:0.4rem;">');
         for (const ge of generalEntries) {
           const cf = ge.feature;
           const bonusBits = [];
@@ -17688,7 +17715,7 @@
             '</div>'
           );
         }
-        out.push('</div></div>');
+        out.push('</div></details>');
       }
 
       // --- Ranger stance toggle ---
@@ -17879,11 +17906,8 @@
           });
         });
       });
-      const mechDetails = body.querySelector('details.tf-mech-details');
-      if (mechDetails) mechDetails.addEventListener('toggle', () => {
-        _setMechanicsOpen(mechDetails.open);
-        const caret = mechDetails.querySelector('.tf-mech-caret'); if (caret) caret.textContent = mechDetails.open ? '\u25BE' : '\u25B8';
-      });
+      wireCollapsible(body, 'tf-mech-details', _setMechanicsOpen);
+      wireCollapsible(body, 'tf-general-details', _setGeneralOpen);
       const sparksSlider = body.querySelector('#warlock-sparks-slider');
       if (sparksSlider) {
         sparksSlider.addEventListener('input', e => {
