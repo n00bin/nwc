@@ -497,11 +497,19 @@ function getAvailableRarities(baseIL) { var b = getRarityByIL(baseIL); return RA
 /* proc-effect rendering (faithful port of companions-page.js renderProcEffect) */
 function renderProc(proc, il, baseIL) {
   var parts = [];
-  if (proc.trigger) parts.push('<div class="item-effect"><span class="stat-name">Trigger:</span> ' + esc(proc.trigger) + '</div>');
+  var chance0 = null;
+  if (proc.trigger && !proc.tooltip) parts.push('<div class="item-effect"><span class="stat-name">Trigger:</span> ' + esc(proc.trigger) + '</div>');
   var chance = proc.chance;
   if (proc.chanceScaling && il != null) { var cv = proc.chanceScaling[String(il)]; if (cv != null) chance = cv; }
-  if (chance != null) parts.push('<div class="item-effect"><span class="stat-name">Chance:</span> ' + chance + '%</div>');
-  if (proc.effect) {
+  if (proc.tooltip) {
+    var vt = proc.tooltip;
+    if (chance != null) vt = vt.replace(/\{chance\}/g, chance);
+    if (proc.effectScaling && il) { var vk = String(il); for (var vkey in proc.effectScaling) { var vv = proc.effectScaling[vkey][vk]; if (vv != null) vt = vt.split('{' + vkey + '}').join(vv); } }
+    vt = vt.replace(/\{[^}]+\}/g, '?');
+    parts.push('<div class="item-effect">' + esc(vt) + '</div>');
+  }
+  if (chance != null && !proc.tooltip) parts.push('<div class="item-effect"><span class="stat-name">Chance:</span> ' + chance + '%</div>');
+  if (proc.effect && !proc.tooltip) {
     var t = proc.effect;
     if (proc.effectScaling && il) { var k = String(il); for (var key in proc.effectScaling) { var v = proc.effectScaling[key][k]; if (v != null) t = t.replace('{' + key + '}', v); } }
     t = t.replace(/\{[^}]+\}/g, '?');
@@ -634,12 +642,13 @@ build('companions', loadJSON('companions.json'), {
         var prLabel = (topIL !== pw.item_level) ? '<div style="color:var(--text-muted);font-size:0.8rem">At ' + esc(getRarityByIL(topIL).name) + ' (IL ' + fmt(topIL) + ')</div>' : '';
         if (pr) pbody += '<div style="margin-top:0.5rem">' + prLabel + pr + '</div>';
       }
-      var pnote = showText(pw.notes);
+      var pnote = (pw.tooltip || (pw.procEffect && pw.procEffect.tooltip)) ? '' : showText(pw.notes);
       if (pnote) pbody += '<div class="item-effect" style="margin-top:0.4rem">' + esc(pnote) + '</div>';
       parts.push('<div class="item-sec"><h2>Summoned Power' + (pw.name ? ' — ' + esc(pw.name) : '') + '</h2>' + pbody + '</div>');
     }
     if (enh) {
-      parts.push('<div class="item-sec"><h2>Enhancement — ' + esc(enh.name) + '</h2>' + statRow(statName(enh.stat), renderStatValue(enh.value, enh.type)) + '<div class="item-effect" style="margin-top:0.3rem">Item Level ' + fmt(enh.item_level) + '</div></div>');
+      var enhTT = enh.tooltip ? '<div class="item-effect" style="margin-top:0.3rem">' + esc(enh.tooltip) + '</div>' : '';
+      parts.push('<div class="item-sec"><h2>Enhancement — ' + esc(enh.name) + '</h2>' + statRow(statName(enh.stat), renderStatValue(enh.value, enh.type)) + enhTT + '<div class="item-effect" style="margin-top:0.3rem">Item Level ' + fmt(enh.item_level) + '</div></div>');
     }
     var skills = COMPANION_SKILLS[String(name).toLowerCase()];
     if (Array.isArray(skills) && skills.length) {
