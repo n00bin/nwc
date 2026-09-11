@@ -1,9 +1,10 @@
 # Companion verification pass (started 2026-09-11)
 n00b and Claude walk every companion in alphabetical order. For each one we confirm FOUR things against an in-game screenshot:
-1. **Starting rarity** (the rarity it drops at = the rung its power is stored on)
-2. **Slotted bonuses** (the stats the power gives while slotted)
-3. **Summoned bonuses** (anything it gives while summoned - drives the Summoned Buffs tab)
-4. **Slot** (Offense / Defense / Utility, and combinations)
+1. **Is it an augment?** (does it attack in game) - flags are known-unreliable, see below
+2. **Starting rarity** (the rarity it drops at = the rung its power is stored on)
+3. **Slotted bonuses** (the stats the power gives while slotted)
+4. **Summoned bonuses** (anything it gives while summoned - drives the Summoned Buffs tab)
+5. **Slot** (Offense / Defense / Utility, and combinations)
 
 ## LOCKED CARD STYLE (set on Abyssal Chicken, 2026-09-11) — every companion follows this
 
@@ -56,6 +57,8 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 - **Instrument note:** the buff bar shows these procs with a countdown, which beats reading the character sheet for any future proc work (mount powers, gear procs, companion powers).
 
 **ORIGINAL FINDING:** 23 of 30 enhancements say "Chance on hit to ...", but only Perfect Vision is flagged `conditional`. The other 22 are attached to **242 of 274 companions** and are currently modelled as always-on. The six Enduring ones plus Reinvigorate say "While your companion is summoned and not downed" and are genuinely always-on. Measurement procedure written up in `docs/tests/companion_proc_tests.md`. Engine NOT changed - this would move the standing stat panel for nearly every companion.
+
+**AUGMENT FLAGS ARE NOT TRUSTWORTHY (found 2026-09-11).** Proud Pink Yeti was stored `augment: false`; n00b confirmed in-game that it does not attack, so it IS an augment. Corrected. This matters beyond display: the optimizer bars augments from the SUMMONED slot by default, so a wrong flag makes an illegal summon look legal. There is **no reliable signal in the data** to audit the rest - 37 companions have a "...'s Presence" power without the augment flag, while 26 flagged augments use other power names entirely. **Add "does it attack?" to the per-companion check as we pass through.** Proud Pink Yeti also still needs its `augmentShares` read off its Inspect panel (it is the only augment missing that).
 
 **CONFLICT TO RESOLVE:** Toon Forge's own per-tier table (toon-forge.html, the comp-bolster hint text and `compBolsterFromCollection`) reads Common 1 / Uncommon 2 / Rare 3.5 / Epic 5 / Legendary 7.5 / Mythic 10 / Celestial 12. Mythic and Celestial agree with n00b; the five lower tiers do not. Those five were flagged "unverified (estimated)" in project memory. Engine NOT changed yet - needs n00b's go, because it moves TIL math.
 
