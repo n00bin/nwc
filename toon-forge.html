@@ -12884,15 +12884,26 @@
         const fx = Array.isArray(m.effects) ? m.effects : [];
         const a = am[m.name];
         const unit = ef => (ef.kind === "rating" || ef.kind === "flat") ? "" : "%";
-        const fxText = fx.length ? fx.map(ef => (ef.base ? "+" + ef.base + unit(ef) + " " + ef.stat + ", " : "") + (ef.amount > 0 ? "+" : "") + ef.amount + unit(ef) + " " + ef.stat + (ef.perStack ? " per stack (max " + ef.maxStacks + ")" : "") + (ef.requiresFeat ? " [needs the " + ef.requiresFeat + " feat]" : "")).join(", ") : "";
+        // Feat-gated effects (requiresFeat) read as an add-on to the base line, and
+        // the row only greys out when NOTHING on it applies (n00b 2026-09-10: Soul
+        // Spark's base 0.5% per spark always counts; Wrathful Souls adds 0.5% more).
         const featsSlotted = new Set((state.slottedFeats || []).filter(Boolean));
-        const missingFeat = fx.map(ef => ef.requiresFeat).filter(f => f && !featsSlotted.has(f));
-        const featHint = missingFeat.length ? ' <span class="hint" style="color:var(--amber);">' + escapeHtmlTF(missingFeat.join(", ")) + ' not slotted (step 2) - no effect yet</span>' : "";
+        const fxLine = ef => (ef.base ? "+" + ef.base + unit(ef) + " " + ef.stat + ", " : "") + (ef.amount > 0 ? "+" : "") + ef.amount + unit(ef) + " " + ef.stat + (ef.perStack ? " per stack (max " + ef.maxStacks + ")" : "");
+        const baseFx = fx.filter(ef => !ef.requiresFeat), gatedFx = fx.filter(ef => ef.requiresFeat);
+        const gatedText = gatedFx.map(ef => {
+          const on = featsSlotted.has(ef.requiresFeat);
+          const more = (ef.base ? "+" + ef.base + unit(ef) + " " + ef.stat + " and " : "") + (ef.amount > 0 ? "+" : "") + ef.amount + unit(ef) + " " + ef.stat + (ef.perStack ? " more per stack" : " more");
+          return more + " with the " + ef.requiresFeat + " feat" + (on ? " (slotted, counted)" : " (not slotted, not counted)");
+        });
+        const fxText = fx.length ? baseFx.map(fxLine).concat(gatedText).join("; ") : "";
+        const missingFeat = gatedFx.map(ef => ef.requiresFeat).filter(f => !featsSlotted.has(f));
+        const nothingApplies = fx.length > 0 && baseFx.length === 0 && missingFeat.length === gatedFx.length;
+        const featHint = nothingApplies ? ' <span class="hint" style="color:var(--amber);">' + escapeHtmlTF(missingFeat.join(", ")) + ' not slotted (step 2) - no effect yet</span>' : "";
         const stackFx = fx.find(ef => ef.perStack);
         const ctl = stackFx
           ? `<input type="range" data-mech="${escapeHtmlTF(m.name)}" data-mech-stacks="1" min="0" max="${stackFx.maxStacks || 1}" step="1" value="${typeof a === "number" ? a : 0}" style="width:110px;vertical-align:middle;"> <span class="hint" data-mech-label="${escapeHtmlTF(m.name)}">${typeof a === "number" ? a : 0} stacks</span>`
           : `<input type="checkbox" data-mech="${escapeHtmlTF(m.name)}"${a ? " checked" : ""}${fx.length ? "" : " disabled"}>`;
-        return `<div class="boon-row" style="cursor:default;${missingFeat.length ? "opacity:0.6;" : ""}"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(m.name)}</div><div class="boon-row-effect">${escapeHtmlTF(fxText || m.addedEffect || m.notes || "")}${featHint}</div></div><div class="boon-counter">${ctl}</div></div>`;
+        return `<div class="boon-row" style="cursor:default;${nothingApplies ? "opacity:0.6;" : ""}"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(m.name)}</div><div class="boon-row-effect">${escapeHtmlTF(fxText || m.addedEffect || m.notes || "")}${featHint}</div></div><div class="boon-counter">${ctl}</div></div>`;
       }).join("") + (notModeled.length ? `<p class="hint" style="margin:0.4rem 0 0;">Not modeled yet: <span translate="no">${notModeled.map(escapeHtmlTF).join(", ")}</span></p>` : "");
       // ---- Powers with buffs / debuffs (class + paragon pool) ----
       const BUFF_RE = /increases? (?:your )?damage|damage dealt|damage taken|takes? \d+% more damage|damage resistance|less damage|combat advantage|increases? (?:your )?power|critical (?:strike|severity)|deflect|awareness|defense|recharge speed|action point|outgoing healing|incoming healing|absorb|\+\d+(?:\.\d+)?% damage/i;
