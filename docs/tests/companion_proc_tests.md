@@ -221,30 +221,38 @@ you do not need the character sheet at all.
    100% with an internal cooldown instead. In that case, note how many seconds pass
    between one proc ending and the next one being able to start.
 
-### Test A2 RESULT — n00b, 2026-09-11
+### Test A2 RESULT — n00b, 2026-09-11 — **20 trials**
 
 Augment summoned: **Proud Pink Yeti (Celestial)** — confirmed in-game that it does not
 attack, so every trigger was the player's own hit. The enhancement still procs with an
-augment out, so the "companion is near" condition is satisfied.
+augment out, so the "companion is near" condition is satisfied. (It was stored
+`augment: false` — corrected as part of this test.)
 
-Hits to proc, 10 trials: **1, 2, 4, 7, 2, 26, 8, 12, 8, 9** — mean 7.9.
+Hits to proc, 20 trials:
+**1, 2, 4, 7, 2, 26, 8, 12, 8, 9, 11, 2, 11, 2, 9, 2, 2, 6, 17, 9**
+
+150 hits, 20 procs, mean 7.5 hits per proc.
 
 | | |
 |---|---|
-| Point estimate | **12.7% per hit** |
-| 95% range | 6.1% to 21.6% |
-| Verdict | about 1 in 8; the data cannot separate 10% from 15% |
+| Point estimate | **13.3% per hit** |
+| 95% range | 8.1% to 19.8% |
+| 20% | ruled out |
+| 10% / 12.5% / 15% | all still possible |
+| Best-fitting round number | **12.5%, exactly 1 in 8** |
 
-The 26-hit trial is **not** evidence of an internal cooldown. At a 12.7% rate a trial
-needing 26 or more hits happens 3.4% of the time, so one in ten trials is ordinary.
+The 26-hit trial is ordinary variance at this rate, not an internal cooldown.
 
-Stored on Perfect Vision as `chanceApprox` with the raw trials kept, and the card shows
-it as "~12.7% (measured over 10 trials)" so nobody reads it as an exact figure. **Not
-copied to the other 23 enhancements** — they share the wording but the number is
-unmeasured for them.
+Stored on Perfect Vision as `chanceApprox: 13.3` with all 20 raw trials kept. The card
+shows "~13.3% (measured over 20 trials)" so it never reads as an exact game figure.
 
-To narrow the range meaningfully you would need roughly 40 more trials, which is
-probably not worth it: 12.7% is close enough for build decisions.
+**Not copied to the other 23 enhancements** — they share the wording but the number is
+unmeasured for them. One more 20-trial run on a different enhancement would show
+whether the family shares a single rate; if it does, applying 12.5% across the family
+would be justified.
+
+Doubling again to 40 trials would only tighten the range to roughly 9.5-18%, which
+still would not separate 10% from 15%. Not worth the time.
 
 ---
 
