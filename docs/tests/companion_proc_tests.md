@@ -8,19 +8,25 @@ Record results at the bottom of this file, then Claude writes them into the data
 
 ---
 
-## Why Test A matters
+## Ruling and current state (n00b, 2026-09-11)
 
-23 of our 30 companion enhancements describe themselves as **"Chance on hit to ..."**,
-which is a proc, not a standing buff. Only **one** of them (Perfect Vision) is flagged
-as conditional in our data. The other 22 are currently treated as always-on.
+24 of our 30 enhancements describe themselves as **"Chance on hit to ..."**. All 24
+are now flagged `conditional` in the data, which means Toon Forge keeps them **out of
+the at-rest stat panel** and shows them in the **combat / Show conditional** view.
+That is the ruling: in practice the proc is up almost continuously once a fight is
+going, so it belongs behind the combat buff rather than in the unbuffed sheet.
 
-Those 22 are attached to **242 of 274 companions**, so if they really are procs, the
-standing stat panel in Toon Forge is crediting a buff that is not up at rest for
-almost every companion in the database.
+Before this change only Perfect Vision was flagged, so the other 23 were inflating the
+at-rest panel. **161 companions** carried a self-affecting one. The other 81 use
+enemy-scope debuffs, which the engine already skipped.
 
-The six **Enduring** enhancements (Precision, Alacrity, Craft, Guard, Senses, plus
-Reinvigorate) say "While your companion is summoned and not downed", which is a
-genuine always-on buff. Those are not in question.
+The five **Enduring** enhancements say "While your companion is summoned and not
+downed" and remain genuinely always-on. **Reinvigorate has no description text at all**
+in our data and is left unflagged until someone reads its tooltip.
+
+**What the test is still for:** we want the real proc chance, so the card can state it
+instead of only saying "chance on hit". The modelling question is settled; the number
+is not.
 
 ---
 
@@ -29,8 +35,8 @@ genuine always-on buff. Those are not in question.
 Run this once on **any one** chance-on-hit enhancement first. If it behaves as a proc,
 the finding applies to the class and we only spot-check the rest.
 
-Suggested subject: **Vulnerability** on Acolyte of Kelemvor, or **Precision**
-(21 companions) if you would rather test the most common one.
+Subject: **Perfect Vision** (n00b's pick). It buffs your Accuracy directly, so your own
+character sheet moves, and it is carried by 15 companions including Abyssal Chicken.
 
 **What we are trying to learn**
 1. Does the buff show on the character sheet while standing still, out of combat?
@@ -40,11 +46,9 @@ Suggested subject: **Vulnerability** on Acolyte of Kelemvor, or **Precision**
 
 **Steps**
 
-1. Summon the companion carrying the enhancement. Stand somewhere safe, out of
-   combat, and let every buff drop. Open the character sheet and write down the
-   exact value of the affected stat. For Vulnerability that stat sits on the enemy,
-   so use **Perfect Vision (Accuracy)** or **Precision (Critical Strike)** instead,
-   which buff you directly.
+1. Summon a companion carrying **Perfect Vision** (Abyssal Chicken works). Stand
+   somewhere safe, out of combat, and let every buff drop. Open the character sheet
+   and write down your exact **Accuracy**.
 2. Unsummon the companion. Read the same stat again and write it down. The
    difference between steps 1 and 2 is what the enhancement gives you **at rest**.
    If the difference is zero, it is a proc and our always-on modelling is wrong.
@@ -61,8 +65,8 @@ Suggested subject: **Vulnerability** on Acolyte of Kelemvor, or **Precision**
 
 | Field | Value |
 |---|---|
-| Enhancement tested | |
-| Stat | |
+| Enhancement tested | Perfect Vision |
+| Stat | Accuracy |
 | At rest, companion summoned | |
 | At rest, companion unsummoned | |
 | Peak during combat | |
