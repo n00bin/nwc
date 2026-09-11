@@ -47,12 +47,14 @@ Status values: `unchecked` | `verified` | `fixed` | `needs screenshot`
 
 Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bolster 10%" in 130 companion notes was never stale data - those were captures of Mythic copies. Do NOT store a bolster figure per companion; strip it as we pass through. Published as the "Companion Bolster" tab on companions.html.
 
+**OPEN — enhancement procs (found 2026-09-11 on Acolyte of Kelemvor):** 23 of 30 enhancements say "Chance on hit to ...", but only Perfect Vision is flagged `conditional`. The other 22 are attached to **242 of 274 companions** and are currently modelled as always-on. The six Enduring ones plus Reinvigorate say "While your companion is summoned and not downed" and are genuinely always-on. Measurement procedure written up in `docs/tests/companion_proc_tests.md`. Engine NOT changed - this would move the standing stat panel for nearly every companion.
+
 **CONFLICT TO RESOLVE:** Toon Forge's own per-tier table (toon-forge.html, the comp-bolster hint text and `compBolsterFromCollection`) reads Common 1 / Uncommon 2 / Rare 3.5 / Epic 5 / Legendary 7.5 / Mythic 10 / Celestial 12. Mythic and Celestial agree with n00b; the five lower tiers do not. Those five were flagged "unverified (estimated)" in project memory. Engine NOT changed yet - needs n00b's go, because it moves TIL math.
 
 | # | Companion | Status | Base rarity (stored) | Slot (stored) | Slotted bonuses (stored) | Summoned (stored) |
 |---|---|---|---|---|---|---|
 | 1 | Abyssal Chicken | **VERIFIED 4/4** (Epic / Offense / no slotted stats / no summoned bonuses) | Epic | Offense | PROC | - |
-| 2 | Acolyte of Kelemvor | unchecked | Uncommon | Utility | Deflect 0.75%, Incoming Healing 0.75% | - |
+| 2 | Acolyte of Kelemvor | 4/4 checked - summoned bonus added; Kelemvor's Sword amount pending Test B | Uncommon | Utility | Deflect 0.75%, Incoming Healing 0.75% | - |
 | 3 | Air Archon | unchecked | Common | Offense/Utility | Power 0.75% | - |
 | 4 | Alchemist Experimenter | unchecked | Epic | Offense/Utility | Critical Strike 1.88%, Combat Advantage 1.88% | - |
 | 5 | Allosaurus | unchecked | Epic | Defense/Utility | Maximum Hit Points 7500, Critical Strike 1.9% | - |
