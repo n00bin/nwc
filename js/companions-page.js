@@ -23,6 +23,11 @@
   var TRIPLE_STAT_SCALE = { 75: 0.25, 150: 0.50, 250: 0.83, 375: 1.25, 550: 1.83, 750: 2.50, 900: 3.00 };
   var MAX_HP_SCALE = { 75: 1500, 150: 3000, 250: 5000, 375: 7500, 550: 11000, 750: 15000, 900: 18000 };
 
+  // Companion Bolster contribution by rarity (n00b in-game 2026-09-11).
+  // Best 10 companions count, so the ceiling is 120% (ten Celestials).
+  // See the "Companion Bolster" tab on this page.
+  var BOLSTER_BY_IL = { 75: 0.5, 150: 1, 250: 2, 375: 3, 550: 5, 750: 10, 900: 12 };
+
   var selectedRarity = 900; // Default to Celestial
 
   function getRarityByIL(il) {
@@ -367,6 +372,9 @@
       html += '<div class="detail-meta">';
       html += '<span style="color:' + activeRarity.color + ';">IL ' + formatNumber(activeIL) + ' (' + activeRarity.name + ')</span>';
       html += "<span>Combined Rating " + formatNumber(displayCR) + "</span>";
+      if (BOLSTER_BY_IL[activeIL] != null) {
+        html += '<span title="What this companion adds to your Companion Bolster at this rarity. Your best 10 companions count, so the ceiling is 120%.">Bolster +' + BOLSTER_BY_IL[activeIL] + "%</span>";
+      }
       html += "</div>";
 
       // Stats
@@ -463,7 +471,7 @@
     var html = '<div class="proc-block">';
     html += '<div class="proc-label">Proc Effect</div>';
 
-    if (proc.trigger) {
+    if (proc.trigger && !proc.tooltip) {
       html += "<div><span class=\"stat-name\">Trigger:</span> " + escapeHtml(proc.trigger) + "</div>";
     }
     var displayChance = proc.chance;
@@ -471,10 +479,27 @@
       var chanceVal = proc.chanceScaling[String(il)];
       if (chanceVal != null) displayChance = chanceVal;
     }
-    if (displayChance != null) {
+    if (displayChance != null && !proc.tooltip) {
       html += "<div><span class=\"stat-name\">Chance:</span> " + displayChance + "%</div>";
     }
-    if (proc.effect) {
+    // proc.tooltip = the game's wording, copied verbatim from the screenshot.
+    // {chance} / effectScaling placeholders still interpolate so the line is
+    // correct at the selected rarity. When present it REPLACES the parsed
+    // Trigger/Chance/Effect lines above as the human-readable description.
+    if (proc.tooltip) {
+      var vt = proc.tooltip;
+      if (displayChance != null) vt = vt.replace(/\{chance\}/g, displayChance);
+      if (proc.effectScaling && il) {
+        var vKey = String(il);
+        for (var vk in proc.effectScaling) {
+          var vv = proc.effectScaling[vk][vKey];
+          if (vv != null) vt = vt.split("{" + vk + "}").join(vv);
+        }
+      }
+      vt = vt.replace(/\{[^}]+\}/g, "?");
+      html += '<div class="proc-verbatim">' + escapeHtml(vt) + "</div>";
+    }
+    if (proc.effect && !proc.tooltip) {
       var effectText = proc.effect;
       // Interpolate scaled values if effectScaling is present
       if (proc.effectScaling && il) {
@@ -514,12 +539,12 @@
       }
     }
 
-    if (proc.durationSeconds) {
+    if (proc.durationSeconds && !proc.tooltip) {
       html += "<div><span class=\"stat-name\">Duration:</span> " + proc.durationSeconds + "s</div>";
     }
-    if (proc.cooldown) {
+    if (proc.cooldown && !proc.tooltip) {
       html += "<div><span class=\"stat-name\">Cooldown:</span> " + escapeHtml(String(proc.cooldown)) + "</div>";
-    } else if (proc.cooldownSeconds) {
+    } else if (proc.cooldownSeconds && !proc.tooltip) {
       html += "<div><span class=\"stat-name\">Cooldown:</span> " + proc.cooldownSeconds + "s</div>";
     }
     if (proc.maxStacks) {
@@ -774,6 +799,7 @@
       .replace(/^[A-Z][\w'’.\- ]+? (?:slotted power|defense\/utility power|defense power|offense power|utility power)\.\s*/i, "")
       .replace(/^[\w'’\- ]+? (?:Presence|Instincts|Wisdom|Discipline|Insight|Gait|Gaze|Grace|Senses|Confidence|Guidance)\.\s*/, "")
       .replace(/\s*Tooltip base text reads[\s\S]*?rune quality\.?/i, "")
+      .replace(/\s*Verbatim tooltip\b[\s\S]*$/i, "")
       .replace(/\s*Re-anchored\b[\s\S]*$/i, "")
       .replace(/\s*Was wrongly[\s\S]*$/i, "")
       .replace(/\s*VERIFIED in-game[\s\S]*$/i, "")

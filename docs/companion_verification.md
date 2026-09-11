@@ -5,6 +5,10 @@ n00b and Claude walk every companion in alphabetical order. For each one we conf
 3. **Summoned bonuses** (anything it gives while summoned - drives the Summoned Buffs tab)
 4. **Slot** (Offense / Defense / Utility, and combinations)
 
+**Proc text rule (n00b 2026-09-11):** any proc description must be VERBATIM from the screenshot. Store the game's own wording in `procEffect.tooltip`, with `{chance}` and `effectScaling` placeholders so it stays correct at every rarity. Keep the game's grammar quirks. The card shows the verbatim line instead of our parsed Trigger/Chance/Effect wording.
+
+**Card shows bolster (n00b 2026-09-11):** the Lookup card's meta line now prints the companion's bolster contribution at the selected rarity, from the rarity table.
+
 Status values: `unchecked` | `verified` | `fixed` | `needs screenshot`
 
 **Card map:** `docs/audit/companion_card_map.json` maps 157 companions to their archived Inspect card under `docs/audit/companions/_up/`. 117 companions have no card. Cards show slot, slotted bonuses, the summoned Powers list and the enhancement, but they are the owner's UPGRADED copy - they never prove starting rarity.
@@ -27,7 +31,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 
 | # | Companion | Status | Base rarity (stored) | Slot (stored) | Slotted bonuses (stored) | Summoned (stored) |
 |---|---|---|---|---|---|---|
-| 1 | Abyssal Chicken | 3/4 verified - rarity open | Epic | Offense | PROC | - |
+| 1 | Abyssal Chicken | VERIFIED 4/4 | Epic | Offense | PROC | - |
 | 2 | Acolyte of Kelemvor | unchecked | Uncommon | Utility | Deflect 0.75%, Incoming Healing 0.75% | - |
 | 3 | Air Archon | unchecked | Common | Offense/Utility | Power 0.75% | - |
 | 4 | Alchemist Experimenter | unchecked | Epic | Offense/Utility | Critical Strike 1.88%, Combat Advantage 1.88% | - |
