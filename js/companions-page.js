@@ -369,11 +369,15 @@
         html += '</div>';
       }
 
+      // Item level, Combined Rating and Bolster ALL move with rarity, so each
+      // carries the rarity colour — the point is to make the difference between
+      // rarities jump out the moment someone clicks a different one.
+      var _rc = activeRarity.color;
       html += '<div class="detail-meta">';
-      html += '<span style="color:' + activeRarity.color + ';">IL ' + formatNumber(activeIL) + ' (' + activeRarity.name + ')</span>';
-      html += "<span>Combined Rating " + formatNumber(displayCR) + "</span>";
+      html += '<span>IL <span class="rarity-num" style="color:' + _rc + ';">' + formatNumber(activeIL) + '</span> <span style="color:' + _rc + ';">(' + escapeHtml(activeRarity.name) + ')</span></span>';
+      html += '<span>Combined Rating <span class="rarity-num" style="color:' + _rc + ';">' + formatNumber(displayCR) + '</span></span>';
       if (BOLSTER_BY_IL[activeIL] != null) {
-        html += '<span title="What this companion adds to your Companion Bolster at this rarity. Your best 10 companions count, so the ceiling is 120%.">Bolster +' + BOLSTER_BY_IL[activeIL] + "%</span>";
+        html += '<span title="What this companion adds to your Companion Bolster at this rarity. Your best 10 companions count, so the ceiling is 120%.">Bolster <span class="rarity-num" style="color:' + _rc + ';">+' + BOLSTER_BY_IL[activeIL] + '%</span></span>';
       }
       html += "</div>";
 
@@ -548,7 +552,7 @@
       if (chanceVal != null) displayChance = chanceVal;
     }
     if (displayChance != null && !proc.tooltip) {
-      html += "<div><span class=\"stat-name\">Chance:</span> " + '<span class="rarity-num" style="color:' + (rarityColor || "inherit") + ';">' + displayChance + "%</span></div>";
+      html += "<div><span class=\"stat-name\">Chance:</span> " + '<span class="rarity-num" style="color:' + (rarityColor || "inherit") + ';">' + displayChance + '%</span></div>';
     }
     // proc.tooltip = the game's wording, copied verbatim from the screenshot.
     // {chance} / effectScaling placeholders still interpolate so the line is
@@ -556,12 +560,17 @@
     // Trigger/Chance/Effect lines above as the human-readable description.
     if (proc.tooltip) {
       var vt = proc.tooltip;
-      if (displayChance != null) vt = vt.replace(/\{chance\}/g, markRarity(displayChance));
+      if (displayChance != null) {
+        vt = vt.replace(/\{chance\}%/g, markRarity(displayChance + "%"))
+               .replace(/\{chance\}/g, markRarity(displayChance));
+      }
       if (proc.effectScaling && il) {
         var vKey = String(il);
         for (var vk in proc.effectScaling) {
           var vv = proc.effectScaling[vk][vKey];
-          if (vv != null) vt = vt.split("{" + vk + "}").join(markRarity(vv));
+          if (vv == null) continue;
+          vt = vt.split("{" + vk + "}%").join(markRarity(vv + "%"))
+                 .split("{" + vk + "}").join(markRarity(vv));
         }
       }
       vt = vt.replace(/\{[^}]+\}/g, "?");
