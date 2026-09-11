@@ -3779,7 +3779,7 @@
           slottedClassFeaturePicks: [...(state.slottedClassFeaturePicks || [])],
           rangerStance: state.rangerStance || "ranged",
           bardActiveSong: state.bardActiveSong || "",
-          warlockSoulSparks: state.warlockSoulSparks || 0,
+          warlockSoulSparks: soulSparkCount(),   // legacy field (CLASS-1): the value now lives in activeMechanics["Soul Spark"]
           slottedAtWills: [...(state.slottedAtWills || [])],
           slottedEncounters: [...(state.slottedEncounters || [])],
           slottedDailies: [...(state.slottedDailies || [])],
@@ -3960,7 +3960,13 @@
       state.slottedClassFeaturePicks = Array.isArray(s.slottedClassFeaturePicks) ? s.slottedClassFeaturePicks.slice() : [];
       state.rangerStance = s.rangerStance || "ranged";
       state.bardActiveSong = s.bardActiveSong || "";
+      // CLASS-1 (n00b 2026-09-10): Soul Sparks live in activeMechanics["Soul Spark"] (0-30).
+      // Migrate an old save's slider value (0-10) when the save carries no mechanic value.
       state.warlockSoulSparks = typeof s.warlockSoulSparks === "number" ? s.warlockSoulSparks : 0;
+      if (state.warlockSoulSparks > 0 && !(state.activeMechanics && typeof state.activeMechanics["Soul Spark"] === "number")) {
+        if (!state.activeMechanics) state.activeMechanics = {};
+        state.activeMechanics["Soul Spark"] = Math.max(0, Math.min(30, state.warlockSoulSparks));
+      }
       // Pad at-will slot array to exactly 2 entries so older saves load.
       const _aw = Array.isArray(s.slottedAtWills) ? s.slottedAtWills.slice(0, 2) : [];
       while (_aw.length < 2) _aw.push("");
@@ -12831,6 +12837,12 @@
       try { const h = location.hostname; return location.protocol === "file:" || h === "localhost" || h === "127.0.0.1" || h === ""; } catch (e) { return false; }
     }
     function classTabEnabled() { return TF_CLASS_TAB_LIVE || tfIsLocal(); }
+    // CLASS-1: the one Soul Sparks value (0-30), stored as the Soul Spark mechanic's stack count.
+    function soulSparkCount() {
+      const am = (typeof state !== "undefined" && state.activeMechanics) ? state.activeMechanics : null;
+      const v = am && typeof am["Soul Spark"] === "number" ? am["Soul Spark"] : 0;
+      return Math.max(0, Math.min(30, v));
+    }
     window.classTabEnabled = classTabEnabled;
     // Class mechanics for the current class + paragon (classes.json `mechanic` arrays:
     // class powers, paragon path, paragon powers); paragon copies win on a name clash.
@@ -13553,16 +13565,19 @@
         }
       }
 
-      // Warlock Hellbringer Soul Sparks — each stockpiled spark grants
-      // +1% Damage Bonus (capped at 10 = +10%). Conditional because
-      // sparks deplete via Soul Scorch / time out; the slider models
-      // an assumed average uptime.
-      if (s.class === "Warlock" && s.paragon === "Hellbringer") {
-        const sparks = Math.max(0, Math.min(10, s.warlockSoulSparks || 0));
+      // Warlock Hellbringer Soul Sparks (CLASS-1, n00b 2026-09-10): the value is
+      // activeMechanics["Soul Spark"] (0-30). When the Class tab is enabled the
+      // mechanic loop below counts it from classes.json (0.5% per spark base,
+      // +0.5% with Wrathful Souls). This block is the LIVE-SITE fallback while
+      // the tab is still gated off there, with the same numbers, so nothing is
+      // counted twice and nothing is lost.
+      if (s.class === "Warlock" && s.paragon === "Hellbringer" && !(typeof classTabEnabled === "function" && classTabEnabled())) {
+        const sparks = Math.max(0, Math.min(30, (s.activeMechanics && typeof s.activeMechanics["Soul Spark"] === "number") ? s.activeMechanics["Soul Spark"] : 0));
         if (sparks > 0) {
+          const perSpark = 0.5 + ((Array.isArray(s.slottedFeats) && s.slottedFeats.includes("Wrathful Souls")) ? 0.5 : 0);
           buffs.push({
-            source: `Soul Sparks (${sparks})`,
-            percentStats: { "Damage Bonus": sparks * 1 },
+            source: `Soul Sparks (${sparks})` + (perSpark > 0.5 ? " via Wrathful Souls" : ""),
+            percentStats: { "Dmg Bonus": sparks * perSpark },
             ratingStats: {},
             conditional: true
           });
@@ -17691,13 +17706,17 @@
         out.push('</div>');
       }
 
-      // --- Warlock Hellbringer Soul Sparks slider ---
-      if (state.class === "Warlock" && state.paragon === "Hellbringer") {
-        const sparks = Math.max(0, Math.min(10, state.warlockSoulSparks || 0));
-        out.push('<div class="field" style="margin-top:0.8rem;"><label>Soul Sparks <span style="color:var(--text-dim);font-weight:400;">(each spark = +1% Damage Bonus, conditional)</span></label>');
+      // --- Warlock Hellbringer Soul Sparks slider (CLASS-1 fallback) ---
+      // The control lives on The Fight -> Class as the Soul Spark mechanic slider.
+      // This copy renders ONLY while the Class tab is gated off (live site), writes
+      // the same activeMechanics["Soul Spark"] key, and disappears when the tab goes live.
+      if (state.class === "Warlock" && state.paragon === "Hellbringer" && !classTabEnabled()) {
+        const sparks = soulSparkCount();
+        const ws = (state.slottedFeats || []).includes("Wrathful Souls");
+        out.push('<div class="field" style="margin-top:0.8rem;"><label>Soul Sparks <span style="color:var(--text-dim);font-weight:400;">(each spark = +' + (ws ? "1.0" : "0.5") + '% damage' + (ws ? " with Wrathful Souls" : ", +1.0% with Wrathful Souls") + ', conditional)</span></label>');
         out.push('<div style="display:flex;align-items:center;gap:0.6rem;">');
-        out.push('<input type="range" id="warlock-sparks-slider" min="0" max="10" step="1" value="' + sparks + '" style="flex:1;">');
-        out.push('<span id="warlock-sparks-readout" style="min-width:3em;text-align:right;font-variant-numeric:tabular-nums;">' + sparks + ' / 10</span>');
+        out.push('<input type="range" id="warlock-sparks-slider" min="0" max="30" step="1" value="' + sparks + '" style="flex:1;">');
+        out.push('<span id="warlock-sparks-readout" style="min-width:3em;text-align:right;font-variant-numeric:tabular-nums;">' + sparks + ' / 30</span>');
         out.push('</div></div>');
       }
 
@@ -17850,9 +17869,12 @@
       const sparksSlider = body.querySelector('#warlock-sparks-slider');
       if (sparksSlider) {
         sparksSlider.addEventListener('input', e => {
-          state.warlockSoulSparks = parseInt(e.target.value, 10) || 0;
+          const v = Math.max(0, Math.min(30, parseInt(e.target.value, 10) || 0));
+          if (!state.activeMechanics) state.activeMechanics = {};
+          if (v > 0) state.activeMechanics["Soul Spark"] = v; else delete state.activeMechanics["Soul Spark"];
+          state.warlockSoulSparks = v;   // legacy mirror
           const readout = body.querySelector('#warlock-sparks-readout');
-          if (readout) readout.textContent = state.warlockSoulSparks + ' / 10';
+          if (readout) readout.textContent = v + ' / 30';
           rerenderAll();
         });
       }
@@ -20353,6 +20375,7 @@
         state.slottedClassFeaturePicks = [];
         state.bardActiveSong = "";
         state.warlockSoulSparks = 0;
+        if (state.activeMechanics) delete state.activeMechanics["Soul Spark"];
         state.rangerStance = "ranged";
         state.slottedAtWills = ["", ""];
         state.slottedEncounters = ["", "", ""];
