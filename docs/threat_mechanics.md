@@ -35,10 +35,15 @@ Every number carries its source. Do not tighten an estimate without a measuremen
 ## Estimated (derived; always shown with an estimate marker)
 
 - Untagged tank power multiplier: 4.5 x ~3 = about 13.5x damage-to-threat.
-- Increased Threat power multiplier: 8x at the 2019 preview, unchanged by the 2023 rework; 12x if
-  the 8x scaled with the 2021 role change (3 -> 4.5), 8x if it did not. Chart uses 12x with 8x as
-  the floor. Consequence: on a single boss the tag no longer beats raw magnitude (the rework's
-  stated aim was to bring untagged powers level).
+- Increased Threat power multiplier, PRIMARY reading (n00b 2026-09-11, the literal one): the three
+  statements are three LAYERS. Role (Oath of Protection) 4.5x; untagged power x3 after the rework
+  = 13.5x; tagged power x8, unchanged = 4.5 x 8 = 36x. The tag is worth 8/3 = about 2.7x an
+  untagged hit. Chart uses this.
+- Alternative reading (kept for the record): the 2019 "8x" was the whole multiplier, so tagged
+  powers sit at 8-12x today and the tag adds nothing over an untagged hit. This one needs the extra
+  assumption that the rework aimed at parity, which the note never says.
+- The dummy test (Shielding Strike run vs Oath Strike run) tells the two apart: a ratio near 2.7
+  = layered, near 1 = alternative.
 - DPS / healer damage-to-threat: about 1x.
 
 ## Unknown (untested; leave blank in the chart)
