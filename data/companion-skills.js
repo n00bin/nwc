@@ -3114,6 +3114,20 @@ const COMPANION_SKILLS = {
       "text": "Deals damage to target foe with a single, well-placed attack."
     }
   ],
+  "twitchspine the clinging": [
+    {
+      "name": "Bonebreaker",
+      "text": "Twitchspine winds up a massive punch, driving it forward crushing all enemies."
+    },
+    {
+      "name": "Frenzied Resilience",
+      "text": "Twitchspine's unstable body responds dynamically to his health, growing more defensive when stable, but more violent when wounded. Above 50% of his Maximum Hit Points: Twitchspine gains +8% Defense and +8% Awareness. Below 50% of his Maximum Hit Points: Twitchspine enters Berserk Mode, gaining +10% Movement Speed and doubling his Damage."
+    },
+    {
+      "name": "Spinal Slam",
+      "text": "Twitchspine slams the ground with bone-shaking force, sending a shockwave outwards that topples and hinders all nearby enemies."
+    }
+  ],
   "vallenhas elite soldier": [
     {
       "name": "Alric's Teachings",
