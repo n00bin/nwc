@@ -374,10 +374,10 @@
       // rarities jump out the moment someone clicks a different one.
       var _rc = activeRarity.color;
       html += '<div class="detail-meta">';
-      html += '<span>IL <span class="rarity-num" style="color:' + _rc + ';">' + formatNumber(activeIL) + '</span> <span style="color:' + _rc + ';">(' + escapeHtml(activeRarity.name) + ')</span></span>';
-      html += '<span>Combined Rating <span class="rarity-num" style="color:' + _rc + ';">' + formatNumber(displayCR) + '</span></span>';
+      html += '<span style="color:' + _rc + ';">IL <span class="rarity-num">' + formatNumber(activeIL) + '</span> (' + escapeHtml(activeRarity.name) + ')</span>';
+      html += '<span style="color:' + _rc + ';">Combined Rating <span class="rarity-num">' + formatNumber(displayCR) + '</span></span>';
       if (BOLSTER_BY_IL[activeIL] != null) {
-        html += '<span title="What this companion adds to your Companion Bolster at this rarity. Your best 10 companions count, so the ceiling is 120%.">Bolster <span class="rarity-num" style="color:' + _rc + ';">+' + BOLSTER_BY_IL[activeIL] + '%</span></span>';
+        html += '<span style="color:' + _rc + ';" title="What this companion adds to your Companion Bolster at this rarity. Your best 10 companions count, so the ceiling is 120%.">Bolster <span class="rarity-num">+' + BOLSTER_BY_IL[activeIL] + '%</span></span>';
       }
       html += "</div>";
 
@@ -433,8 +433,9 @@
       }
       html += '<div class="detail-name">' + nameHtml(en.name) + "</div>";
       html += "</div>";
+      var _erc = getRarityByIL((typeof activeIL === "number" && activeIL) ? activeIL : ENH_MAX_IL).color;
       html += '<div class="detail-meta">';
-      html += "<span>IL " + formatNumber(en.item_level) + "</span>";
+      html += '<span style="color:' + _erc + ';">IL <span class="rarity-num">' + formatNumber(en.item_level) + '</span></span>';
       if (en.scope) {
         html += '<span>Scope: ' + escapeHtml(en.scope) + "</span>";
       }
