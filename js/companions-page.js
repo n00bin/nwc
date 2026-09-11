@@ -397,15 +397,16 @@
         html += '<div style="margin-top:0.4rem;"><span class="badge" style="background:var(--highlight);color:#000;">Zone Conditional</span></div>';
       }
 
-      html += "</div>"; // close proc-block
-
       // `notes` is INTERNAL (provenance, scaling reasoning, engine flags) and
       // must never reach the card once we have the game's own wording. Once a
       // power carries verbatim text, that text is the whole description.
+      // Whatever we do show belongs INSIDE the power card, not floating below it.
       if (pw.notes && !hasVerbatim(pw)) {
         var _pnote = cleanEnhancementNotes(pw.notes);
         if (_pnote) html += '<div class="effect-text">' + escapeHtml(_pnote) + "</div>";
       }
+
+      html += "</div>"; // close proc-block
     } else {
       html += '<div class="detail-meta">No power data</div>';
     }
