@@ -5,7 +5,13 @@ n00b and Claude walk every companion in alphabetical order. For each one we conf
 3. **Summoned bonuses** (anything it gives while summoned - drives the Summoned Buffs tab)
 4. **Slot** (Offense / Defense / Utility, and combinations)
 
-**Proc text rule (n00b 2026-09-11):** any proc description must be VERBATIM from the screenshot. Store the game's own wording in `procEffect.tooltip`, with `{chance}` and `effectScaling` placeholders so it stays correct at every rarity. Keep the game's grammar quirks. The card shows the verbatim line instead of our parsed Trigger/Chance/Effect wording.
+**Verbatim text rule (n00b 2026-09-11) - the style every companion must follow:**
+- `tooltip` = the game's own wording, copied EXACTLY from the screenshot (keep its grammar quirks; drop only the UI label prefix such as `Equip:`). Powers use `procEffect.tooltip`; enhancements use a top-level `tooltip`.
+- `notes` = INTERNAL only - provenance, scaling reasoning, engine flags. Once an entity has verbatim text, `notes` is never rendered anywhere.
+- Placeholders (`{chance}`, `effectScaling` keys) interpolate so the verbatim line stays correct at every rarity.
+- Verbatim text replaces our derived Trigger/Chance/Effect/Duration/Cooldown lines on the card, and is used by the Lookup, Enhancements and Damage tabs alike.
+
+**Old rule text:** any proc description must be VERBATIM from the screenshot. Store the game's own wording in `procEffect.tooltip`, with `{chance}` and `effectScaling` placeholders so it stays correct at every rarity. Keep the game's grammar quirks. The card shows the verbatim line instead of our parsed Trigger/Chance/Effect wording.
 
 **Card shows bolster (n00b 2026-09-11):** the Lookup card's meta line now prints the companion's bolster contribution at the selected rarity, from the rarity table.
 

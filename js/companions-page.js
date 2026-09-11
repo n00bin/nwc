@@ -399,7 +399,10 @@
 
       html += "</div>"; // close proc-block
 
-      if (pw.notes) {
+      // `notes` is INTERNAL (provenance, scaling reasoning, engine flags) and
+      // must never reach the card once we have the game's own wording. Once a
+      // power carries verbatim text, that text is the whole description.
+      if (pw.notes && !hasVerbatim(pw)) {
         var _pnote = cleanEnhancementNotes(pw.notes);
         if (_pnote) html += '<div class="effect-text">' + escapeHtml(_pnote) + "</div>";
       }
@@ -437,7 +440,9 @@
       }
       html += "</div>"; // close proc-block
 
-      if (en.notes) {
+      if (en.tooltip) {
+        html += '<div class="effect-text">' + escapeHtml(en.tooltip) + "</div>";
+      } else if (en.notes) {
         var _enote = cleanEnhancementNotes(en.notes);
         if (_enote) html += '<div class="effect-text">' + escapeHtml(_enote) + "</div>";
       }
@@ -467,6 +472,12 @@
   }
 
   // ---- Render proc effect ----
+  // True once a power carries the game's own wording, which then replaces
+  // every derived line we would otherwise print.
+  function hasVerbatim(pw) {
+    return !!(pw && (pw.tooltip || (pw.procEffect && pw.procEffect.tooltip)));
+  }
+
   function renderProcEffect(proc, il, baseIL) {
     var html = '<div class="proc-block">';
     html += '<div class="proc-label">Proc Effect</div>';
@@ -839,7 +850,7 @@
       if (!enMap[en.name]) {
         var enListStats = (en.stats && en.stats.length) ? en.stats : [{ stat: en.stat, value: en.value }];
         // notes carry the proc/conditional context; stat values are shown as chips
-        var desc = en.notes ? cleanEnhancementNotes(en.notes) : "";
+        var desc = en.tooltip ? en.tooltip : (en.notes ? cleanEnhancementNotes(en.notes) : "");
         enMap[en.name] = { name: en.name, description: desc, stats: enListStats, companions: [] };
       }
     }
@@ -984,7 +995,7 @@
       if (notes.indexOf("2.3% - 5.3% damage") !== -1) { match = true; category = category || "Boss Damage"; }
 
       if (match) {
-        var desc = pw.notes ? cleanEnhancementNotes(pw.notes) : "";
+        var desc = hasVerbatim(pw) ? (pw.tooltip || pw.procEffect.tooltip) : (pw.notes ? cleanEnhancementNotes(pw.notes) : "");
         var realStats = (pw.stats || []).filter(function (s) { return s.stat !== "CombinedRating"; });
         // Scale stats to Celestial using ratio from current IL
         var curIL = pw.item_level || 75;
