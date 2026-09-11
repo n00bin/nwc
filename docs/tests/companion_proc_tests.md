@@ -169,8 +169,32 @@ Two consequences:
   the practical answer is that it stays up through a fight, and that is exactly how we
   model it, counting hits is no longer worth your time.
 
+### Test A, step 7 — duration — **15 seconds, confirmed**
+
+n00b, 2026-09-11: the proc appears **in the buff bar with a visible 15 second countdown**.
+The tooltip's 15 seconds is correct.
+
+### TEST A IS CLOSED
+
+| Question | Answer |
+|---|---|
+| Is it a proc, or always on? | A proc. Zero change at rest. |
+| What does it add? | Percentage POINTS on the final percentage, never rating. |
+| What triggers it? | Any hit, **including the companion's own attacks**. |
+| How long? | 15 seconds. |
+| Chance per hit | Not measurable — the pet's hits are mixed in with yours. |
+
+Everything here matches how we now model it: `conditional: true`, shown behind the
+combat buff, value added as percent points.
+
+### Instrument note for every future proc test
+
+**The buff bar shows these procs with a live countdown.** That is a far better
+instrument than the character sheet, which you cannot watch while fighting. For any
+future proc work — mount powers, gear procs, companion powers — check the buff bar
+first: it gives you the trigger, the duration and whether the effect refreshes or
+stacks, without any arithmetic.
+
 ### Still outstanding
 
-- **Duration** (step 7) — how long it lasts after all hitting stops. The tooltip claims
-  15 seconds; worth one clean reading.
 - Test B, Kelemvor's Sword.
