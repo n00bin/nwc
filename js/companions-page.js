@@ -377,9 +377,16 @@
       }
       html += "</div>";
 
-      // Stats
+      // Stats — these move with rarity, so paint them in the rarity colour.
       if (displayStats && displayStats.length > 0) {
-        html += renderStatsTable(displayStats);
+        for (var dsi = 0; dsi < displayStats.length; dsi++) {
+          var ds = displayStats[dsi];
+          if (!ds || !ds.stat) continue;
+          html += '<div class="stat-row">';
+          html += '<span class="stat-name">' + escapeHtml(getStatDisplayName(ds.stat)) + "</span>";
+          html += renderRarityValue(ds.value, ds.type, activeRarity.color);
+          html += "</div>";
+        }
       }
 
       // Role conditional
@@ -389,7 +396,7 @@
 
       // Proc effect
       if (pw.procEffect) {
-        html += renderProcEffect(pw.procEffect, activeIL, pw.item_level);
+        html += renderProcEffect(pw.procEffect, activeIL, pw.item_level, activeRarity.color);
       }
 
       // Zone conditional indicator
@@ -439,7 +446,7 @@
         if (!enStats[esi] || !enStats[esi].stat) continue;
         html += '<div class="stat-row">';
         html += '<span class="stat-name">' + escapeHtml(enStats[esi].stat) + "</span>";
-        html += renderStatValue(scaleEnhValue(enStats[esi].value, enIL), enStats[esi].type || en.type);
+        html += renderRarityValue(scaleEnhValue(enStats[esi].value, enIL), enStats[esi].type || en.type, getRarityByIL(enIL).color);
         html += "</div>";
       }
       if (enIL !== ENH_MAX_IL) {
@@ -499,6 +506,25 @@
   // DISPLAY ONLY: this is the Companions page. The Toon Forge engine and the
   // optimizer are untouched and keep using the stored maximum.
   var ENH_MAX_IL = 900;
+
+  // Any number that MOVES when you change the rarity is painted in that
+  // rarity's colour, so it is obvious at a glance which figures are
+  // rarity-dependent and which are fixed.
+  var RARITY_MARK_A = "", RARITY_MARK_B = "";
+  function markRarity(v) { return RARITY_MARK_A + v + RARITY_MARK_B; }
+  function paintRarityMarks(escapedText, color) {
+    return escapedText
+      .split(RARITY_MARK_A).join('<span class="rarity-num" style="color:' + color + ';">')
+      .split(RARITY_MARK_B).join('</span>');
+  }
+  function renderRarityValue(value, type, color) {
+    if (value == null) return "—";
+    var isPercent = type === "percent";
+    var prefix = value > 0 ? "+" : "";
+    var txt = prefix + (isPercent ? value + "%" : formatNumber(value));
+    return '<span class="stat-value rarity-num" style="color:' + color + ';">' + txt + "</span>";
+  }
+
   function enhMaxText(st, en) {
     if (!st || typeof st.value !== "number") return "—";
     var t = st.type || (en && en.type);
@@ -509,7 +535,7 @@
     return Math.round(v * il / ENH_MAX_IL * 100) / 100;
   }
 
-  function renderProcEffect(proc, il, baseIL) {
+  function renderProcEffect(proc, il, baseIL, rarityColor) {
     var html = '<div class="proc-block">';
     html += '<div class="proc-label">Proc Effect</div>';
 
@@ -522,7 +548,7 @@
       if (chanceVal != null) displayChance = chanceVal;
     }
     if (displayChance != null && !proc.tooltip) {
-      html += "<div><span class=\"stat-name\">Chance:</span> " + displayChance + "%</div>";
+      html += "<div><span class=\"stat-name\">Chance:</span> " + '<span class="rarity-num" style="color:' + (rarityColor || "inherit") + ';">' + displayChance + "%</span></div>";
     }
     // proc.tooltip = the game's wording, copied verbatim from the screenshot.
     // {chance} / effectScaling placeholders still interpolate so the line is
@@ -530,16 +556,16 @@
     // Trigger/Chance/Effect lines above as the human-readable description.
     if (proc.tooltip) {
       var vt = proc.tooltip;
-      if (displayChance != null) vt = vt.replace(/\{chance\}/g, displayChance);
+      if (displayChance != null) vt = vt.replace(/\{chance\}/g, markRarity(displayChance));
       if (proc.effectScaling && il) {
         var vKey = String(il);
         for (var vk in proc.effectScaling) {
           var vv = proc.effectScaling[vk][vKey];
-          if (vv != null) vt = vt.split("{" + vk + "}").join(vv);
+          if (vv != null) vt = vt.split("{" + vk + "}").join(markRarity(vv));
         }
       }
       vt = vt.replace(/\{[^}]+\}/g, "?");
-      html += '<div class="proc-verbatim">' + escapeHtml(vt) + "</div>";
+      html += '<div class="proc-verbatim">' + paintRarityMarks(escapeHtml(vt), rarityColor || "inherit") + "</div>";
     }
     if (proc.effect && !proc.tooltip) {
       var effectText = proc.effect;
@@ -576,7 +602,7 @@
         }
         html += '<div class="stat-row">';
         html += '<span class="stat-name">' + escapeHtml(se.stat) + escapeHtml(scope) + "</span>";
-        html += renderStatValue(sv, se.type);
+        html += (se.noRarityScale ? renderStatValue(sv, se.type) : renderRarityValue(sv, se.type, rarityColor || "inherit"));
         html += "</div>";
       }
     }
