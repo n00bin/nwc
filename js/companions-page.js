@@ -432,12 +432,22 @@
       // Stat display — multi-stat enhancements carry stats[]; legacy
       // stat/value mirrors stats[0]
       var enStats = (en.stats && en.stats.length) ? en.stats : [{ stat: en.stat, value: en.value, type: en.type }];
+      // Scale to the rarity the user has selected for this companion. When the
+      // companion has no power we have no selector, so fall back to the max.
+      var enIL = (typeof activeIL === "number" && activeIL) ? activeIL : ENH_MAX_IL;
       for (var esi = 0; esi < enStats.length; esi++) {
         if (!enStats[esi] || !enStats[esi].stat) continue;
         html += '<div class="stat-row">';
         html += '<span class="stat-name">' + escapeHtml(enStats[esi].stat) + "</span>";
-        html += renderStatValue(enStats[esi].value, enStats[esi].type || en.type);
+        html += renderStatValue(scaleEnhValue(enStats[esi].value, enIL), enStats[esi].type || en.type);
         html += "</div>";
+      }
+      if (enIL !== ENH_MAX_IL) {
+        var _rn = getRarityByIL(enIL).name;
+        html += '<div class="detail-meta" style="margin-top:0.2rem;"><span>Value shown for ' +
+                (/^[AEIOU]/.test(_rn) ? 'an ' : 'a ') +
+                escapeHtml(_rn) + ' summoned companion &middot; maximum ' +
+                escapeHtml(enhMaxText(enStats[0], en)) + '</span></div>';
       }
       // The game's wording belongs INSIDE the enhancement card, not floating
       // underneath it as a separate note.
@@ -479,6 +489,24 @@
   // every derived line we would otherwise print.
   function hasVerbatim(pw) {
     return !!(pw && (pw.tooltip || (pw.procEffect && pw.procEffect.tooltip)));
+  }
+
+  // An enhancement rune's player-side value is capped at its printed maximum
+  // and scales with the item level of the SUMMONED companion ("The value of
+  // the buff depends on the item level of your summoned pet"). Stored values
+  // are the maximum, i.e. the figure at IL 900, and the ladder is linear in
+  // item level - 9% x 375/900 = 3.75%, exactly the single-stat table.
+  // DISPLAY ONLY: this is the Companions page. The Toon Forge engine and the
+  // optimizer are untouched and keep using the stored maximum.
+  var ENH_MAX_IL = 900;
+  function enhMaxText(st, en) {
+    if (!st || typeof st.value !== "number") return "—";
+    var t = st.type || (en && en.type);
+    return st.value + (t === "percent" ? "%" : "");
+  }
+  function scaleEnhValue(v, il) {
+    if (typeof v !== "number" || !il || il === ENH_MAX_IL) return v;
+    return Math.round(v * il / ENH_MAX_IL * 100) / 100;
   }
 
   function renderProcEffect(proc, il, baseIL) {
