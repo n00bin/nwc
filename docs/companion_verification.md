@@ -13,8 +13,9 @@ n00b and Claude walk every companion in alphabetical order. For each one we conf
 4. **Enhancements carry a top-level `tooltip`** with the full verbatim sentence; they have no structure to break into rows.
 5. **Descriptions live INSIDE their card**, never as a loose paragraph beneath it.
 6. **Every rarity-dependent figure is painted in the rarity colour, label included**, and the number is bold: item level, Combined Rating, Bolster, proc chance, proc stat effects, power stats, enhancement value and enhancement item level. Fixed figures keep normal styling — the contrast is the point.
-7. **The enhancement scales with the summoned companion's item level.** Stored value is the printed maximum at IL 900 and the ladder is linear, so 9% x 375/900 = 3.75%. The card shows the value for the selected rarity, its item level, and the maximum alongside. DISPLAY ONLY — the engine and optimizer keep using the stored maximum.
-8. **Rarity palette:** Common #a8a8a8, Uncommon #4caf50, Rare #4a9eff, Epic #b46cff, Legendary #ff9c3a, **Mythic #56d6f0 (light blue)**, **Celestial #ff7bd1 (pink)**.
+7. **Never restate what the game's own text already says.** The tooltip states the maximum itself (often twice), so our line beside the value only names the rarity it is shown for.
+8. **The enhancement scales with the summoned companion's item level.** Stored value is the printed maximum at IL 900 and the ladder is linear, so 9% x 375/900 = 3.75%. The card shows the value for the selected rarity, its item level, and the maximum alongside. DISPLAY ONLY — the engine and optimizer keep using the stored maximum.
+9. **Rarity palette:** Common #a8a8a8, Uncommon #4caf50, Rare #4a9eff, Epic #b46cff, Legendary #ff9c3a, **Mythic #56d6f0 (light blue)**, **Celestial #ff7bd1 (pink)**.
 
 **PENDING (n00b agreed, not yet done):** the Artifacts page (`js/artifacts-page.js` RARITY_COLOR) and `insignia-priority.html` still use the old palette — Mythic red, Celestial cyan/light blue. Bring them onto the palette above so a rarity colour means one thing site-wide.
 

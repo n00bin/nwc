@@ -456,11 +456,12 @@
         html += "</div>";
       }
       if (enIL !== ENH_MAX_IL) {
+        // The game's own sentence already states the maximum (twice, in fact),
+        // so this line only says which rarity the shown figure is for.
         var _rn = getRarityByIL(enIL).name;
         html += '<div class="detail-meta" style="margin-top:0.2rem;"><span>Value shown for ' +
                 (/^[AEIOU]/.test(_rn) ? 'an ' : 'a ') +
-                escapeHtml(_rn) + ' summoned companion &middot; maximum ' +
-                escapeHtml(enhMaxText(enStats[0], en)) + '</span></div>';
+                escapeHtml(_rn) + ' summoned companion</span></div>';
       }
       // The game's wording belongs INSIDE the enhancement card, not floating
       // underneath it as a separate note.
@@ -535,11 +536,6 @@
     return '<span class="stat-value rarity-num" style="color:' + color + ';">' + txt + "</span>";
   }
 
-  function enhMaxText(st, en) {
-    if (!st || typeof st.value !== "number") return "—";
-    var t = st.type || (en && en.type);
-    return st.value + (t === "percent" ? "%" : "");
-  }
   function scaleEnhValue(v, il) {
     if (typeof v !== "number" || !il || il === ENH_MAX_IL) return v;
     return Math.round(v * il / ENH_MAX_IL * 100) / 100;
