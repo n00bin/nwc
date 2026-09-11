@@ -12905,6 +12905,49 @@
           : `<input type="checkbox" data-mech="${escapeHtmlTF(m.name)}"${a ? " checked" : ""}${fx.length ? "" : " disabled"}>`;
         return `<div class="boon-row" style="cursor:default;${nothingApplies ? "opacity:0.6;" : ""}"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(m.name)}</div><div class="boon-row-effect">${escapeHtmlTF(fxText || m.addedEffect || m.notes || "")}${featHint}</div></div><div class="boon-counter">${ctl}</div></div>`;
       }).join("") + (notModeled.length ? `<p class="hint" style="margin:0.4rem 0 0;">Not modeled yet: <span translate="no">${notModeled.map(escapeHtmlTF).join(", ")}</span></p>` : "");
+      // ---- Soul Spark income table (CLASS-2, n00b 2026-09-10) ----
+      // Built from the `soulSparks` blocks on powers and the spark blocks on
+      // mechanics / features. Display only: the engine does not derive stacks
+      // from it yet; the Soul Sparks slider above stays the input.
+      (function () {
+        const rows = [];
+        const slottedNames = new Set([].concat(state.slottedAtWills || [], state.slottedEncounters || [], state.slottedDailies || []).filter(Boolean));
+        const pickedFeatures = new Set((state.slottedClassFeaturePicks || []).filter(Boolean));
+        const slottedFeatsSet = new Set((state.slottedFeats || []).filter(Boolean));
+        for (const [type, label] of [["atWill", "At-will"], ["encounter", "Encounter"], ["daily", "Daily"]]) {
+          for (const pw of _paragonPowerPool(type)) {
+            const sp = pw && pw.soulSparks; if (!sp) continue;
+            let per = (sp.perCast != null) ? ((sp.perCast < 1 && sp.basis) ? sp.basis : sp.perCast + " per cast") : "";
+            if (sp.perCastCursed != null) per += " (" + sp.perCastCursed + " on a Cursed target)";
+            let rate = (sp.perSecond != null) ? "about " + sp.perSecond + "/s as filler" : "";
+            if (sp.modes) rate = Object.keys(sp.modes).map(k => k + " " + (sp.modes[k].perSecond != null ? "about " + sp.modes[k].perSecond + "/s" : "")).join(", ");
+            rows.push({ name: pw.name, kind: label, per: per, rate: rate, basis: sp.basis || "", on: slottedNames.has(pw.name) });
+          }
+        }
+        const pDef = findParagon(state.class, state.paragon), cDef = findClass(state.class);
+        const featureLists = [].concat((pDef && pDef.slottedClassFeatures) || [], (cDef && cDef.classFeatures) || [], (pDef && pDef.classFeatures) || []);
+        for (const f of featureLists) {
+          if (!f) continue;
+          if (f.sparkIncome) rows.push({ name: f.name, kind: "Class feature", per: (f.sparkIncome.onCombatStart != null ? f.sparkIncome.onCombatStart + " on combat start" : "") + (f.sparkIncome.onKill != null ? ", " + f.sparkIncome.onKill + " per kill" : ""), rate: f.sparkIncome.icdSeconds ? "each once per " + f.sparkIncome.icdSeconds + " s" : "", basis: f.sparkIncome.bossValue || "", on: pickedFeatures.has(f.name) });
+          if (f.puppetSparkOnHit) rows.push({ name: f.name, kind: "Class feature", per: f.puppetSparkOnHit.sparksPerHit + " per Soul Puppet hit", rate: f.puppetSparkOnHit.sparksPerSecond != null ? "about " + f.puppetSparkOnHit.sparksPerSecond + "/s while the puppet is up" : "", basis: "the puppet makes no sparks without this", on: pickedFeatures.has(f.name) });
+          if (Array.isArray(f.powerMods)) f.powerMods.forEach(pm => { if (pm.soulSparksPerCast != null) rows.push({ name: f.name, kind: "Class feature", per: pm.soulSparksPerCast + " per " + pm.power + " hit (replaces its normal sparks)", rate: "", basis: pm.note || "", on: pickedFeatures.has(f.name) }); });
+        }
+        const scorch = classMechanicsFor(state.class, state.paragon).find(m => m && m.sparkSpend);
+        if (!rows.length) return;
+        const esc = escapeHtmlTF;
+        const td = 'style="padding:0.25rem 0.4rem;"';
+        let h = '<div class="boon-tier-header" style="margin-top:0.8rem;">Soul Spark income <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(single boss; slotted sources in full, others dimmed; the slider above is still what the numbers use)</span></div>';
+        h += '<div style="overflow-x:auto;"><table style="width:100%;font-size:0.8rem;border-collapse:collapse;"><thead><tr><th style="text-align:left;padding:0.25rem 0.4rem;">Source</th><th style="text-align:left;padding:0.25rem 0.4rem;">Type</th><th style="text-align:left;padding:0.25rem 0.4rem;">Sparks</th><th style="text-align:left;padding:0.25rem 0.4rem;">Rate</th></tr></thead><tbody>';
+        rows.forEach(r => { h += '<tr style="' + (r.on ? "" : "opacity:0.5;") + 'border-top:1px solid var(--border-default);" title="' + esc(r.basis) + '"><td ' + td + ' translate="no">' + esc(r.name) + (r.on ? '' : ' <span class="hint">(not slotted)</span>') + '</td><td ' + td + '>' + esc(r.kind) + '</td><td ' + td + '>' + esc(r.per) + '</td><td ' + td + '>' + esc(r.rate) + '</td></tr>'; });
+        if (scorch && scorch.sparkSpend) {
+          const sp = scorch.sparkSpend, fc = sp.fullCast || {}, ds = slottedFeatsSet.has("Double Scorch") && sp.withDoubleScorch;
+          const hitPer = ds ? sp.withDoubleScorch.magnitudePerSpark : sp.magnitudePerSpark;
+          const hitFull = ds ? (sp.withDoubleScorch.fullCast || {}).hitMagnitude : fc.hitMagnitude;
+          h += '<tr style="border-top:2px solid var(--border-default);"><td ' + td + ' translate="no">' + esc(scorch.name) + ' <span class="hint">(spend)</span></td><td ' + td + '>Mechanic</td><td ' + td + '>-' + esc(String(sp.minSparks)) + ' to -' + esc(String(sp.maxSparks)) + ' per cast</td><td ' + td + '>hit ' + esc(String(hitPer)) + ' + burn ' + esc(String(sp.dotMagnitudePerSpark)) + ' magnitude per spark' + (ds ? ' (Double Scorch slotted)' : '') + '; at ' + esc(String(fc.sparks || sp.maxSparks)) + ' sparks: hit ' + esc(String(hitFull)) + ', burn ' + esc(String(fc.dotMagnitude)) + '</td></tr>';
+        }
+        h += '</tbody></table></div>';
+        box.innerHTML += h;
+      })();
       // ---- Powers with buffs / debuffs (class + paragon pool) ----
       const BUFF_RE = /increases? (?:your )?damage|damage dealt|damage taken|takes? \d+% more damage|damage resistance|less damage|combat advantage|increases? (?:your )?power|critical (?:strike|severity)|deflect|awareness|defense|recharge speed|action point|outgoing healing|incoming healing|absorb|\+\d+(?:\.\d+)?% damage/i;
       const slotted = new Set([].concat(state.slottedAtWills || [], state.slottedEncounters || [], state.slottedDailies || []).filter(Boolean));
