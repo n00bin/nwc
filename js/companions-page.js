@@ -606,7 +606,7 @@
   filterEnhancement.addEventListener("change", onFilterChange);
   filterStat.addEventListener("change", onFilterChange);
 
-  // ---- Summoned Buffs View ----
+  // ---- Summoned Bonuses View ----
   var tabLookup  = document.getElementById("tab-lookup");
   var tabSummoned = document.getElementById("tab-summoned");
   var lookupView = document.getElementById("lookup-view");
@@ -682,7 +682,7 @@
       return true;
     });
 
-    summonedCount.textContent = filtered.length + " of " + summonedData.length + " companions with summoned buffs";
+    summonedCount.textContent = filtered.length + " of " + summonedData.length + " companions with summoned bonuses";
 
     if (filtered.length === 0) {
       summonedList.innerHTML = '<div class="empty-state">No companions match your filters</div>';
