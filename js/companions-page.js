@@ -14,8 +14,8 @@
     { name: "Rare",      il: 250, color: "#4a9eff" },
     { name: "Epic",      il: 375, color: "#b46cff" },
     { name: "Legendary", il: 550, color: "#ff9c3a" },
-    { name: "Mythic",    il: 750, color: "#ff5a5a" },
-    { name: "Celestial", il: 900, color: "#9eb6ff" }
+    { name: "Mythic",    il: 750, color: "#56d6f0" },
+    { name: "Celestial", il: 900, color: "#ff7bd1" }
   ];
 
   var SINGLE_STAT_SCALE = { 75: 0.75, 150: 1.50, 250: 2.50, 375: 3.75, 550: 5.50, 750: 7.50, 900: 9.00 };
@@ -433,9 +433,10 @@
       }
       html += '<div class="detail-name">' + nameHtml(en.name) + "</div>";
       html += "</div>";
-      var _erc = getRarityByIL((typeof activeIL === "number" && activeIL) ? activeIL : ENH_MAX_IL).color;
+      var _eil = (typeof activeIL === "number" && activeIL) ? activeIL : ENH_MAX_IL;
+      var _erc = getRarityByIL(_eil).color;
       html += '<div class="detail-meta">';
-      html += '<span style="color:' + _erc + ';">IL <span class="rarity-num">' + formatNumber(en.item_level) + '</span></span>';
+      html += '<span style="color:' + _erc + ';" title="The enhancement scales with the item level of your summoned companion.">IL <span class="rarity-num">' + formatNumber(_eil) + '</span></span>';
       if (en.scope) {
         html += '<span>Scope: ' + escapeHtml(en.scope) + "</span>";
       }
