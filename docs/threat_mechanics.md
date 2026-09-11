@@ -28,7 +28,9 @@ Every number carries its source. Do not tighten an estimate without a measuremen
   (Mar 2022). Soulweaver healing threat reduced (Sep 2023); Soul Manipulation reduces warlock heal
   threat (Mod 19). Minsc no longer generates extra threat (Jun 2024).
 - Justicar tooltips (verbatim, re-read 2026-09-11, all 16 attack screenshots): "Added Effect:
-  Increased Threat" is on Oath Strike, Templar's Wrath, Sacred Weapon (Justicar) and Vow of Enmity.
+  Increased Threat" is on Oath Strike, Templar's Wrath and Vow of Enmity, and on Sacred Weapon
+  (Justicar) ONLY while the Sacred Shield choice feat is slotted (n00b 2026-09-11; the May capture
+  had it slotted; base tooltip without the feat not captured yet).
   NOT tagged: Shielding Strike (Stamina Restoration), Valorous Strike, Radiant Slam, Relentless
   Avenger, Burning Light (Stun), Smite, Bane, Divine Judgement, Radiant Charge (Knock Down), Binding
   Oath (Stamina Restoration), Divine Touch (heal). Vow of Enmity: "If you are not the affected
