@@ -1038,6 +1038,20 @@ const COMPANION_SKILLS = {
       "text": "Elminster of the Realm's elemental powers are accompanied by constant Lightning Strikes. When Elminster strike a foe, this lightning has a 50% chance of arcing a bolt of lightning off of them to a nearby foe, dealing damage. This can chain up to 3 times."
     }
   ],
+  "encore the virtuoso": [
+    {
+      "name": "Mending Melody",
+      "text": "A peaceful melody that Heals up to 5 allies and buffs their Outgoing Healing, Power, and Critical Severity by 1.5% for 12 seconds."
+    },
+    {
+      "name": "Strings on Fire",
+      "text": "Encore performs a swift and vicious melody, damaging an enemy and increasing their Incoming Damage by +2.5% for 5 seconds."
+    },
+    {
+      "name": "Tune of Order",
+      "text": "Quick tune strikes a foe that damages and pulls in nearby enemies, reducing their Outgoing Damage by 5% and lesser enemies are Slowed by 10% for 8 seconds."
+    }
+  ],
   "energon": [
     {
       "name": "Gathering Energy",
