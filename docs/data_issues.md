@@ -1894,7 +1894,7 @@ session — coordinate before adding the two companions; the mount is clear to a
   - Combat Power **Tidal Wave** (60s recharge): summons "Ollie the Octie", three expanding
     tidal waves. Wave Magnitude 300; Knockback; enemies take +12.8% damage for 10s;
     you & nearby allies deal +12.8% damage for 10s.
-- **Sir Waddlelot** (COMPANION) — not in companions.json.
+- **Sir Waddlelot** (COMPANION) — ADDED 2026-09-11 (companion id 275; power Relentless Waddle id 274 at the Mythic rung; enhancement Enduring Guard id 25; summoned buff Inspirational Honk). Verified from n00b's AH Inspect screenshots.
   - Enhancement **Enduring Guard**: "While your companion is summoned and not downed,
     increases your Defense and your companion's Defense. Value scales with summoned
     companion's item level. Maximum 6%."

@@ -2744,6 +2744,20 @@ const COMPANION_SKILLS = {
       "text": "Throws a snowball at the enemy that damages."
     }
   ],
+  "sir waddlelot": [
+    {
+      "name": "Inspirational Honk",
+      "text": "Sir Waddlelot lifts his head and lets out a heroic honk, filling you and nearby allies with courage, boosting your Defense and Power by 3.5% for 7 seconds. Multiple Waddlelots strengthen the effect, but with diminishing returns."
+    },
+    {
+      "name": "Offensive Waddle",
+      "text": "Sir Waddlelot winds up for a strike, swinging his sword to deal damage to a single target."
+    },
+    {
+      "name": "Valiant Protector",
+      "text": "Sir Waddlelot plants his shield firmly, chest puffed, daring foes to strike him first. His heroic stance reduces incoming damage and draws enemy attention."
+    }
+  ],
   "skeletal dog": [
     {
       "name": "Bite",
