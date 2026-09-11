@@ -7,9 +7,11 @@ n00b and Claude walk every companion in alphabetical order. For each one we conf
 
 Status values: `unchecked` | `verified` | `fixed` | `needs screenshot`
 
+**Bolster watch:** every companion read in-game so far (Abyssal Chicken, Encore the Virtuoso, Wormungandr, Twitchspine, Sir Waddlelot, Sardina, Star of Simril) shows **12%**, across every base rarity. 130 companion notes still say 10% and were never re-read. Treat 10% as stale-until-verified, but do NOT bulk-rewrite - confirm per companion as we pass through.
+
 | # | Companion | Status | Base rarity (stored) | Slot (stored) | Slotted bonuses (stored) | Summoned (stored) |
 |---|---|---|---|---|---|---|
-| 1 | Abyssal Chicken | unchecked | Epic | Offense | PROC | - |
+| 1 | Abyssal Chicken | verified (bolster fixed) | Epic | Offense | PROC | - |
 | 2 | Acolyte of Kelemvor | unchecked | Uncommon | Utility | Deflect 0.75%, Incoming Healing 0.75% | - |
 | 3 | Air Archon | unchecked | Common | Offense/Utility | Power 0.75% | - |
 | 4 | Alchemist Experimenter | unchecked | Epic | Offense/Utility | Critical Strike 1.88%, Combat Advantage 1.88% | - |
