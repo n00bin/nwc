@@ -141,6 +141,36 @@ This was tested by swapping the rune with the companion left summoned, so item l
 companion power stats and bolster were all held constant — the rune was the only
 variable.
 
-Still outstanding: proc size, duration and chance per hit (steps 6-8), plus which
-companion and rarity were summoned, since the buff scales off the summoned companion's
-item level.
+### Test A, step 6 — proc size — **it is percentage POINTS, not rating**
+
+Celestial companion summoned, so Perfect Vision is at its 9% maximum.
+
+| | Accuracy rating | Accuracy % |
+|---|---|---|
+| At rest | 138,402 | 53.6% |
+| Procced | **138,402 — unchanged** | **62.6%** |
+
+The rating never moves. The buff adds **9 percentage points** straight onto the final
+percentage: 53.6 + 9 = 62.6 exactly.
+
+**This confirms the engine is already correct.** `toon-forge-engine.js` computes
+`finalPct = ratingContribPct + percentTotal`, i.e. percent bonuses are added as points
+on top of the rating contribution and never touch the rating itself. No change needed.
+
+### Test A — the companion triggers it, not just you
+
+n00b, 2026-09-11: **the proc fired while he was not attacking at all.** The companion's
+own attacks trigger it. The tooltip only says "Chance on hit" and never says whose hit.
+
+Two consequences:
+- All 24 proc triggers now read "On hit, including your companion's own attacks".
+- **The chance-per-hit test (step 8) is no longer measurable the simple way.** You
+  cannot count your own hits when the companion is landing its own in between. Since
+  the practical answer is that it stays up through a fight, and that is exactly how we
+  model it, counting hits is no longer worth your time.
+
+### Still outstanding
+
+- **Duration** (step 7) — how long it lasts after all hitting stops. The tooltip claims
+  15 seconds; worth one clean reading.
+- Test B, Kelemvor's Sword.
