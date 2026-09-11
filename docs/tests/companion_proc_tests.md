@@ -221,28 +221,30 @@ you do not need the character sheet at all.
    100% with an internal cooldown instead. In that case, note how many seconds pass
    between one proc ending and the next one being able to start.
 
-**Record**
+### Test A2 RESULT — n00b, 2026-09-11
 
-| Trial | Hits to proc |
+Augment summoned: **Proud Pink Yeti (Celestial)** — confirmed in-game that it does not
+attack, so every trigger was the player's own hit. The enhancement still procs with an
+augment out, so the "companion is near" condition is satisfied.
+
+Hits to proc, 10 trials: **1, 2, 4, 7, 2, 26, 8, 12, 8, 9** — mean 7.9.
+
+| | |
 |---|---|
-| 1 | |
-| 2 | |
-| 3 | |
-| 4 | |
-| 5 | |
-| 6 | |
-| 7 | |
-| 8 | |
-| 9 | |
-| 10 | |
+| Point estimate | **12.7% per hit** |
+| 95% range | 6.1% to 21.6% |
+| Verdict | about 1 in 8; the data cannot separate 10% from 15% |
 
-Chance per hit is roughly 1 divided by the average count. Ten hits on average means
-about 10%, two means about 50%.
+The 26-hit trial is **not** evidence of an internal cooldown. At a 12.7% rate a trial
+needing 26 or more hits happens 3.4% of the time, so one in ten trials is ordinary.
 
-**Caveat to check first:** the tooltip says the buff depends on "the item level of your
-summoned pet". Confirm on the buff bar that it still procs at all with an augment out.
-If augments somehow do not satisfy the "companion is near" condition, this test is void
-and we fall back to accepting "up continuously in combat".
+Stored on Perfect Vision as `chanceApprox` with the raw trials kept, and the card shows
+it as "~12.7% (measured over 10 trials)" so nobody reads it as an exact figure. **Not
+copied to the other 23 enhancements** — they share the wording but the number is
+unmeasured for them.
+
+To narrow the range meaningfully you would need roughly 40 more trials, which is
+probably not worth it: 12.7% is close enough for build decisions.
 
 ---
 

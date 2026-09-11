@@ -570,6 +570,12 @@
     }
     if (displayChance != null && !proc.chanceUnmeasured) {
       html += "<div><span class=\"stat-name\">Chance:</span> " + '<span class="rarity-num" style="color:' + (rarityColor || "inherit") + ';">' + displayChance + '%</span></div>';
+    } else if (proc.chanceApprox != null) {
+      // Measured, not printed by the game - shown as an approximation with the
+      // trial count, so nobody reads it as an exact figure.
+      var _tr = Array.isArray(proc.chanceTrials) ? proc.chanceTrials.length : 0;
+      html += '<div><span class="stat-name">Chance:</span> ~' + proc.chanceApprox + '%' +
+              (_tr ? ' <span style="color:var(--text-muted);font-size:0.82em;">(measured over ' + _tr + ' trials)</span>' : '') + '</div>';
     }
     if (proc.effect) {
       var effectText = proc.effect;
