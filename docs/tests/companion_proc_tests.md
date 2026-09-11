@@ -83,9 +83,9 @@ debuff the target, so your own sheet never moves.
 |---|---|
 | Enhancement tested | Perfect Vision |
 | Stat | Accuracy |
-| Summoned companion used (and rarity) | |
-| At rest, rune NOT equipped | |
-| At rest, rune equipped | |
+| Summoned companion used (and rarity) | not recorded - ask |
+| At rest, rune NOT equipped | Accuracy 138,402 (53.6%), TIL 139,797 |
+| At rest, rune equipped | **138,402 - no change** |
 | Peak during combat | |
 | Duration after last hit | |
 | Hits to first proc (5 trials) | |
@@ -124,4 +124,23 @@ store a value or score it in the optimizer.
 
 ## Results
 
-_Nothing recorded yet._
+### Test A, steps 1-5 — n00b, 2026-09-11 — **PROC CONFIRMED**
+
+Standing still, out of combat, base item level 139,797:
+
+| Rune | Accuracy |
+|---|---|
+| Perfect Vision NOT equipped | 138,402 (53.6%) |
+| Perfect Vision equipped | 138,402 — **no change** |
+
+Equipping the rune moves nothing at rest. The buff is genuinely off until it procs,
+so **`conditional: true` on all 24 chance-on-hit enhancements is correct** and the
+at-rest stat panel should not credit them. No revert needed.
+
+This was tested by swapping the rune with the companion left summoned, so item level,
+companion power stats and bolster were all held constant — the rune was the only
+variable.
+
+Still outstanding: proc size, duration and chance per hit (steps 6-8), plus which
+companion and rarity were summoned, since the buff scales off the summoned companion's
+item level.
