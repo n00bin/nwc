@@ -44,22 +44,38 @@ character sheet moves, and it is carried by 15 companions including Abyssal Chic
 3. Roughly how often does it fire?
 4. How long does it last after you stop attacking?
 
+**Key fact (n00b, 2026-09-11):** a companion only **unlocks** its enhancement. The rune
+is equipped independently and needs neither that companion summoned nor slotted. So the
+clean way to isolate it is to **leave one companion summoned and unchanged, and swap the
+rune in and out**. Companion item level, its power stats and its bolster all stay
+constant, so the only thing that moves is the enhancement. Unsummoning would change
+several things at once and ruin the reading.
+
+Avoid enemy-scope enhancements as a test subject (Vulnerability, Blurred Vision,
+Dulled Senses, Armor Break, Weapon Break, Slowed Reactions, Precision Breaker) - those
+debuff the target, so your own sheet never moves.
+
 **Steps**
 
-1. Summon a companion carrying **Perfect Vision** (Abyssal Chicken works). Stand
-   somewhere safe, out of combat, and let every buff drop. Open the character sheet
-   and write down your exact **Accuracy**.
-2. Unsummon the companion. Read the same stat again and write it down. The
-   difference between steps 1 and 2 is what the enhancement gives you **at rest**.
-   If the difference is zero, it is a proc and our always-on modelling is wrong.
-3. Re-summon, go to a target dummy, and attack continuously while watching that
-   stat on the character sheet. Write down the highest value it reaches. Subtract
-   the step 2 reading to get the **proc size**.
-4. Stop attacking and keep watching. Write down how many seconds pass before the
-   stat drops back. That is the **duration**. The tooltips claim 15 seconds.
-5. Restart the fight from a clean state and count how many hits you land before
-   the buff first appears. Repeat five times and note each count. That gives us a
-   rough **chance per hit**.
+1. Stand somewhere quiet and out of combat, with no campfire, no VIP, no potions and
+   no zone buff. Let every buff icon clear.
+2. Summon any companion and leave it alone for the whole test. Note which one and its
+   rarity - the buff scales off the **summoned** companion's item level, whichever
+   companion unlocked the rune.
+3. Make sure nothing else in the build touches **Accuracy** (active companions, mount
+   insignia bonuses, food, enchantments). Anything else that procs Accuracy pollutes
+   the reading.
+4. With **Perfect Vision NOT equipped**, write down your exact Accuracy. This is the
+   baseline.
+5. Equip **Perfect Vision**, still standing still and out of combat, and write down
+   Accuracy again. **If it has not moved, the buff is off at rest and our conditional
+   model is right. If it has moved, the model is wrong and we revert.**
+6. Go to a target dummy and attack continuously, watching Accuracy. Write down the
+   highest value it reaches. Subtract the step 4 baseline to get the proc size.
+7. Stop attacking and keep watching. Write down how many seconds pass before Accuracy
+   drops back. The tooltip claims 15 seconds.
+8. From a clean state, count how many hits you land before Accuracy first jumps.
+   Repeat five times and note each count. That gives the rough chance per hit.
 
 **Record**
 
@@ -67,11 +83,13 @@ character sheet moves, and it is carried by 15 companions including Abyssal Chic
 |---|---|
 | Enhancement tested | Perfect Vision |
 | Stat | Accuracy |
-| At rest, companion summoned | |
-| At rest, companion unsummoned | |
+| Summoned companion used (and rarity) | |
+| At rest, rune NOT equipped | |
+| At rest, rune equipped | |
 | Peak during combat | |
 | Duration after last hit | |
 | Hits to first proc (5 trials) | |
+| Peak minus baseline (proc size) | |
 
 ---
 
