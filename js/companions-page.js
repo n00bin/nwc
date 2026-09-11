@@ -500,8 +500,12 @@
   // ---- Render proc effect ----
   // True once a power carries the game's own wording, which then replaces
   // every derived line we would otherwise print.
+  // verbatimChecked = we have read this power off its screenshot and put the
+  // game's wording into the structured fields. Some powers (stat-only ones)
+  // have no prose to carry, so the flag is the only signal that `notes` has
+  // become internal-only and must not be rendered.
   function hasVerbatim(pw) {
-    return !!(pw && (pw.tooltip || (pw.procEffect && pw.procEffect.tooltip)));
+    return !!(pw && (pw.verbatimChecked || pw.tooltip || (pw.procEffect && pw.procEffect.tooltip)));
   }
 
   // An enhancement rune's player-side value is capped at its printed maximum

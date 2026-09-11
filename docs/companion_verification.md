@@ -5,6 +5,19 @@ n00b and Claude walk every companion in alphabetical order. For each one we conf
 3. **Summoned bonuses** (anything it gives while summoned - drives the Summoned Buffs tab)
 4. **Slot** (Offense / Defense / Utility, and combinations)
 
+## LOCKED CARD STYLE (set on Abyssal Chicken, 2026-09-11) — every companion follows this
+
+1. **Proc layout is the structured breakdown** — `Trigger / Chance / Effect / stat rows / Duration / Cooldown`. Do NOT collapse it into one paragraph.
+2. **The wording in those fields is the game's own**, copied from the screenshot (e.g. trigger `When you kill an enemy`, not our shorthand `Enemy kill`). Only the cooldown drops the game's parenthetical, because the row label already says Cooldown.
+3. **`notes` is INTERNAL** — provenance, scaling reasoning, engine flags. Never rendered once verbatim text exists. Never restate the stat rows in prose.
+4. **Enhancements carry a top-level `tooltip`** with the full verbatim sentence; they have no structure to break into rows.
+5. **Descriptions live INSIDE their card**, never as a loose paragraph beneath it.
+6. **Every rarity-dependent figure is painted in the rarity colour, label included**, and the number is bold: item level, Combined Rating, Bolster, proc chance, proc stat effects, power stats, enhancement value and enhancement item level. Fixed figures keep normal styling — the contrast is the point.
+7. **The enhancement scales with the summoned companion's item level.** Stored value is the printed maximum at IL 900 and the ladder is linear, so 9% x 375/900 = 3.75%. The card shows the value for the selected rarity, its item level, and the maximum alongside. DISPLAY ONLY — the engine and optimizer keep using the stored maximum.
+8. **Rarity palette:** Common #a8a8a8, Uncommon #4caf50, Rare #4a9eff, Epic #b46cff, Legendary #ff9c3a, **Mythic #56d6f0 (light blue)**, **Celestial #ff7bd1 (pink)**.
+
+**PENDING (n00b agreed, not yet done):** the Artifacts page (`js/artifacts-page.js` RARITY_COLOR) and `insignia-priority.html` still use the old palette — Mythic red, Celestial cyan/light blue. Bring them onto the palette above so a rarity colour means one thing site-wide.
+
 **Verbatim text rule (n00b 2026-09-11) - the style every companion must follow:**
 - `tooltip` = the game's own wording, copied EXACTLY from the screenshot (keep its grammar quirks; drop only the UI label prefix such as `Equip:`). Powers use `procEffect.tooltip`; enhancements use a top-level `tooltip`.
 - `notes` = INTERNAL only - provenance, scaling reasoning, engine flags. Once an entity has verbatim text, `notes` is never rendered anywhere.
@@ -37,7 +50,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 
 | # | Companion | Status | Base rarity (stored) | Slot (stored) | Slotted bonuses (stored) | Summoned (stored) |
 |---|---|---|---|---|---|---|
-| 1 | Abyssal Chicken | VERIFIED 4/4 | Epic | Offense | PROC | - |
+| 1 | Abyssal Chicken | **VERIFIED 4/4** (Epic / Offense / no slotted stats / no summoned bonuses) | Epic | Offense | PROC | - |
 | 2 | Acolyte of Kelemvor | unchecked | Uncommon | Utility | Deflect 0.75%, Incoming Healing 0.75% | - |
 | 3 | Air Archon | unchecked | Common | Offense/Utility | Power 0.75% | - |
 | 4 | Alchemist Experimenter | unchecked | Epic | Offense/Utility | Critical Strike 1.88%, Combat Advantage 1.88% | - |

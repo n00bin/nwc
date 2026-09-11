@@ -634,7 +634,7 @@ build('companions', loadJSON('companions.json'), {
         var prLabel = (topIL !== pw.item_level) ? '<div style="color:var(--text-muted);font-size:0.8rem">At ' + esc(getRarityByIL(topIL).name) + ' (IL ' + fmt(topIL) + ')</div>' : '';
         if (pr) pbody += '<div style="margin-top:0.5rem">' + prLabel + pr + '</div>';
       }
-      var pnote = (pw.tooltip || (pw.procEffect && pw.procEffect.tooltip)) ? '' : showText(pw.notes);
+      var pnote = (pw.verbatimChecked || pw.tooltip || (pw.procEffect && pw.procEffect.tooltip)) ? '' : showText(pw.notes);
       if (pnote) pbody += '<div class="item-effect" style="margin-top:0.4rem">' + esc(pnote) + '</div>';
       parts.push('<div class="item-sec"><h2>Summoned Power' + (pw.name ? ' — ' + esc(pw.name) : '') + '</h2>' + pbody + '</div>');
     }
