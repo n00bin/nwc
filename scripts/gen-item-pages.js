@@ -639,7 +639,9 @@ build('companions', loadJSON('companions.json'), {
       parts.push('<div class="item-sec"><h2>Summoned Power' + (pw.name ? ' — ' + esc(pw.name) : '') + '</h2>' + pbody + '</div>');
     }
     if (enh) {
-      var enhTT = enh.tooltip ? '<div class="item-effect" style="margin-top:0.3rem">' + esc(enh.tooltip) + '</div>' : '';
+      var enhTT = enh.procEffect
+        ? (renderProc(enh.procEffect, 900, 900) || '')
+        : (enh.tooltip ? '<div class="item-effect" style="margin-top:0.3rem">' + esc(enh.tooltip) + '</div>' : '');
       parts.push('<div class="item-sec"><h2>Enhancement — ' + esc(enh.name) + '</h2>' + statRow(statName(enh.stat), renderStatValue(enh.value, enh.type)) + enhTT + '<div class="item-effect" style="margin-top:0.3rem">Item Level ' + fmt(enh.item_level) + '</div></div>');
     }
     var skills = COMPANION_SKILLS[String(name).toLowerCase()];

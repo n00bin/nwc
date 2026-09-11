@@ -465,9 +465,15 @@
       }
       // The game's wording belongs INSIDE the enhancement card, not floating
       // underneath it as a separate note.
-      if (en.tooltip) {
+      // Proc enhancements get the SAME structured breakdown as a power's proc.
+      if (en.procEffect) {
+        html += renderProcEffect(en.procEffect, enIL, ENH_MAX_IL, _erc);
+      }
+      // The structured rows already carry the game's wording, so the full
+      // sentence would only repeat them (same rule as powers).
+      if (en.tooltip && !en.procEffect) {
         html += '<div class="effect-text">' + escapeHtml(en.tooltip) + "</div>";
-      } else if (en.notes) {
+      } else if (en.notes && !en.tooltip && !en.procEffect) {
         var _enote = cleanEnhancementNotes(en.notes);
         if (_enote) html += '<div class="effect-text">' + escapeHtml(_enote) + "</div>";
       }
@@ -553,7 +559,7 @@
       var chanceVal = proc.chanceScaling[String(il)];
       if (chanceVal != null) displayChance = chanceVal;
     }
-    if (displayChance != null) {
+    if (displayChance != null && !proc.chanceUnmeasured) {
       html += "<div><span class=\"stat-name\">Chance:</span> " + '<span class="rarity-num" style="color:' + (rarityColor || "inherit") + ';">' + displayChance + '%</span></div>';
     }
     if (proc.effect) {
