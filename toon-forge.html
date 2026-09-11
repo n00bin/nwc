@@ -3633,7 +3633,8 @@
       // power; Forest Ghost is stance-neutral, Seismic Shot is its
       // own thing, etc.). Stored as plain power names.
       slottedDailies: ["", ""],
-      rotationSteps: [],        // ROT-2: ordered cast list [{kind, name}], any length; [] = default order
+      rotationSteps: [],        // ROT-3: the LOOP [{kind, name}], repeats to the end; [] = opener repeats, or default order
+      rotationOpener: [],       // ROT-3: the OPENER, runs once
       scorchAtSparks: 18,       // Soul Scorch policy: fire at N sparks (6-18)
       // Selected paragon feats — 5 slots, 1 per tier of the in-game
       // paragon feat tree. Stored as feat names; "" = empty slot.
@@ -3788,6 +3789,7 @@
           slottedEncounters: [...(state.slottedEncounters || [])],
           slottedDailies: [...(state.slottedDailies || [])],
           rotationSteps: (state.rotationSteps || []).map(x => ({ kind: x.kind, name: x.name })),
+          rotationOpener: (state.rotationOpener || []).map(x => ({ kind: x.kind, name: x.name })),
           scorchAtSparks: (typeof state.scorchAtSparks === "number") ? state.scorchAtSparks : 18,
           slottedFeats: [...(state.slottedFeats || [])],
           // Damage-sim settings — were silently dropped from saves/share
@@ -3987,6 +3989,7 @@
       while (_dly.length < 2) _dly.push("");
       state.slottedDailies = _dly;
       state.rotationSteps = Array.isArray(s.rotationSteps) ? s.rotationSteps.filter(x => x && x.kind && x.name).map(x => ({ kind: x.kind, name: x.name })) : [];
+      state.rotationOpener = Array.isArray(s.rotationOpener) ? s.rotationOpener.filter(x => x && x.kind && x.name).map(x => ({ kind: x.kind, name: x.name })) : [];
       state.scorchAtSparks = (typeof s.scorchAtSparks === "number") ? Math.max(6, Math.min(18, s.scorchAtSparks)) : 18;
       // Feats — pad to exactly 5 slots (1 per in-game feat tier).
       const _ft = Array.isArray(s.slottedFeats) ? s.slottedFeats.slice(0, 5) : [];
@@ -12868,7 +12871,10 @@
       const features = {}; (state.slottedClassFeaturePicks || []).filter(Boolean).forEach(n => { features[n] = true; });
       const feats = {}; (state.slottedFeats || []).filter(Boolean).forEach(n => { feats[n] = true; });
       const steps = (state.rotationSteps || []).filter(x => x && x.kind && x.name);
+      const opener = (state.rotationOpener || []).filter(x => x && x.kind && x.name);
+      const cpName = (state.activeCombatPower != null && typeof findCombatPowerById === "function") ? ((findCombatPowerById(state.activeCombatPower) || {}).name || null) : null;
       return {
+        opener: opener, loop: steps, artifactName: (state.artifacts && state.artifacts.Primary) || null, mountName: cpName,
         fightSeconds: (typeof state.timeInCombatSec === "number") ? state.timeInCombatSec : 120, dt: 0.1,
         rechargePct: rsi, apGainPct: apg, apPerSec: 40,
         cadence: { daily: tfCadence("daily"), artifact: tfCadence("artifact"), mountpower: tfCadence("mountpower") },
@@ -12878,7 +12884,7 @@
         puppet: puppetM ? puppetM.summon : null,
         features: features, feats: feats,
         enemyHealthPct: (typeof state.enemyHealthPct === "number") ? state.enemyHealthPct : 100,
-        steps: steps.length ? steps : null
+        steps: null
       };
     }
     let _rotSimCache = { key: "", result: null };
@@ -12887,7 +12893,7 @@
     function getRotationSim() {
       if (!rotationSimEnabled()) return null;
       const inp = buildRotationSimInput();
-      const key = JSON.stringify([inp.steps, inp.powers.atWill.map(p => p.name), inp.powers.encounter.map(p => p.name), inp.powers.daily.map(p => p.name),
+      const key = JSON.stringify([inp.opener, inp.loop, inp.artifactName, inp.mountName, inp.powers.atWill.map(p => p.name), inp.powers.encounter.map(p => p.name), inp.powers.daily.map(p => p.name),
         Object.keys(inp.features), Object.keys(inp.feats), state.class, state.paragon, inp.fightSeconds, Math.round(inp.rechargePct * 10) / 10, Math.round(inp.apGainPct * 10) / 10,
         inp.cadence, inp.scorchAtSparks, inp.enemyHealthPct]);
       if (_rotSimCache.key === key && _rotSimCache.result) return _rotSimCache.result;
@@ -12954,58 +12960,90 @@
       if (state.activeCombatPower != null && typeof findCombatPowerById === "function") { const cp = findCombatPowerById(state.activeCombatPower); if (cp) items.push({ name: cp.name, _kind: "mount", _label: "Mount combat power" }); }
       return items;
     }
+    // Parse a pasted rotation: one cast per line or comma, "x3" / "×3" repeats a cast,
+    // names matched case-insensitively against what this build can cast.
+    function parseRotationText(txt) {
+      const items = rotationCastables(); const out = [], unknown = [];
+      String(txt || "").split(/[\n,]+/).map(x => x.trim()).filter(Boolean).forEach(tok => {
+        let n = 1; const m = tok.match(/^(.*?)\s*[x×]\s*(\d+)$/i) || tok.match(/^(\d+)\s*[x×]\s*(.*)$/i);
+        let name = tok;
+        if (m) { if (/^\d+$/.test(m[1])) { n = +m[1]; name = m[2]; } else { name = m[1]; n = +m[2]; } }
+        name = name.trim().toLowerCase();
+        const it = items.find(i => i.name.toLowerCase() === name) || items.find(i => i.name.toLowerCase().startsWith(name)) || (name === "daily" ? items.find(i => i._kind === "daily") : null) || (/^(artifact|arti)$/.test(name) ? items.find(i => i._kind === "artifact") : null) || (/^mount( power)?$/.test(name) ? items.find(i => i._kind === "mount") : null) || (/^scorch$/.test(name) ? items.find(i => i._kind === "scorch") : null);
+        if (!it) { unknown.push(tok); return; }
+        for (let k = 0; k < Math.max(1, Math.min(20, n)); k++) out.push({ kind: it._kind, name: it.name });
+      });
+      return { steps: out, unknown: unknown };
+    }
     function renderRotationBuilder() {
       const box = document.getElementById("rotation-builder-box"); if (!box) return;
       if (!rotationSimEnabled()) { box.innerHTML = ""; return; }
-      const steps = state.rotationSteps || [];
+      if (!Array.isArray(state.rotationOpener)) state.rotationOpener = [];
+      if (!Array.isArray(state.rotationSteps)) state.rotationSteps = [];
       const sim = getRotationSim();
       const esc = escapeHtmlTF;
       const kindLabel = { atWill: "at-will", encounter: "encounter", daily: "daily", scorch: "spend", artifact: "artifact", mount: "mount" };
-      let h = '<div class="boon-tier-header" style="margin-top:0.2rem;">Rotation <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(local only · add your casts in the order you use them; steps that are not ready are skipped, the list loops, the first at-will fills the gaps)</span></div>';
-      if (!steps.length) h += '<p class="hint" style="margin:0.2rem 0 0.4rem;color:var(--amber);">No rotation built yet - the simulator is using a default order (strongest per cast first). Add steps below to replace it.</p>';
-      h += '<ol id="rotation-steps" style="margin:0.2rem 0 0.4rem;padding-left:1.4rem;">';
-      steps.forEach((st, i) => {
-        h += '<li style="margin:0.15rem 0;"><span translate="no">' + esc(st.name) + '</span> <span class="hint">(' + esc(kindLabel[st.kind] || st.kind) + ')</span> ' +
-          '<button type="button" class="btn btn-ghost" data-rot-up="' + i + '" title="Move up" style="padding:0 0.4rem;font-size:0.75rem;"' + (i === 0 ? ' disabled' : '') + '>&#9650;</button>' +
-          '<button type="button" class="btn btn-ghost" data-rot-down="' + i + '" title="Move down" style="padding:0 0.4rem;font-size:0.75rem;"' + (i === steps.length - 1 ? ' disabled' : '') + '>&#9660;</button>' +
-          '<button type="button" class="btn btn-ghost" data-rot-del="' + i + '" title="Remove" style="padding:0 0.4rem;font-size:0.75rem;">&#10005;</button></li>';
-      });
-      h += '</ol>';
-      h += '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;"><button type="button" class="btn btn-primary" id="rotation-add-step">+ Add step</button>' + (steps.length ? '<button type="button" class="btn btn-ghost" id="rotation-clear">Clear list</button>' : '') + '</div>';
+      const listHTML = (key, steps) => {
+        let h = '<ol style="margin:0.2rem 0 0.4rem;padding-left:1.4rem;" data-rot-list="' + key + '">';
+        steps.forEach((st, i) => {
+          h += '<li style="margin:0.15rem 0;"><span translate="no">' + esc(st.name) + '</span> <span class="hint">(' + esc(kindLabel[st.kind] || st.kind) + ')</span> ' +
+            '<button type="button" class="btn btn-ghost" data-rot-up="' + i + '" data-rot-key="' + key + '" title="Move up" style="padding:0 0.4rem;font-size:0.75rem;"' + (i === 0 ? ' disabled' : '') + '>&#9650;</button>' +
+            '<button type="button" class="btn btn-ghost" data-rot-down="' + i + '" data-rot-key="' + key + '" title="Move down" style="padding:0 0.4rem;font-size:0.75rem;"' + (i === steps.length - 1 ? ' disabled' : '') + '>&#9660;</button>' +
+            '<button type="button" class="btn btn-ghost" data-rot-del="' + i + '" data-rot-key="' + key + '" title="Remove" style="padding:0 0.4rem;font-size:0.75rem;">&#10005;</button></li>';
+        });
+        h += '</ol><div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;"><button type="button" class="btn btn-primary" data-rot-add="' + key + '">+ Add step</button><button type="button" class="btn btn-ghost" data-rot-paste="' + key + '">Paste list</button>' + (steps.length ? '<button type="button" class="btn btn-ghost" data-rot-clear="' + key + '">Clear</button>' : '') + '</div>' +
+          '<div data-rot-paste-box="' + key + '" hidden style="margin-top:0.4rem;"><textarea data-rot-paste-text="' + key + '" rows="4" style="width:100%;font-size:0.8rem;" placeholder="One cast per line (or comma separated). x3 repeats a cast. Example:\nHellish Rebuke\nKilling Flames\nDark Helix x3\nScorch"></textarea><div style="margin-top:0.3rem;display:flex;gap:0.5rem;"><button type="button" class="btn btn-primary" data-rot-paste-apply="' + key + '">Use this list</button><button type="button" class="btn btn-ghost" data-rot-paste-cancel="' + key + '">Cancel</button></div><div class="hint" data-rot-paste-msg="' + key + '"></div></div>';
+        return h;
+      };
+      let h = '<div class="boon-tier-header" style="margin-top:0.2rem;">Rotation <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(local only · scripts: every entry casts in order, at-wills included; a step still on cooldown is waited for with your filler at-will, or skipped if it is more than 5 s away)</span></div>';
+      h += '<div class="field" style="margin-top:0.3rem;"><label>Opener <span style="color:var(--text-dim);font-weight:400;">(runs once from the pull' + (state.rotationOpener.length ? '' : ' · empty = straight into the loop') + ')</span></label>' + listHTML("opener", state.rotationOpener) + '</div>';
+      h += '<div class="field" style="margin-top:0.6rem;"><label>Loop <span style="color:var(--text-dim);font-weight:400;">(repeats until the fight ends' + (state.rotationSteps.length ? '' : (state.rotationOpener.length ? ' · empty = the opener repeats' : ' · empty = default order')) + ')</span></label>' + listHTML("loop", state.rotationSteps) + '</div>';
+      h += '<p class="hint" style="margin:0.4rem 0 0;">Anything you do not list fires on its own when it is up: your artifact and mount power, your dailies when the bar is full, and Soul Scorch at the number below. A listed Soul Scorch casts at its turn with whatever sparks you hold.</p>';
+      if (!state.rotationOpener.length && !state.rotationSteps.length) h += '<p class="hint" style="margin:0.2rem 0 0.4rem;color:var(--amber);">No rotation built yet - the simulator is using a default order (strongest per cast first).</p>';
       const inp = buildRotationSimInput();
       if (inp.scorch) {
         const sat = inp.scorchAtSparks;
-        h += '<div class="field" style="margin-top:0.6rem;"><label>Fire Soul Scorch at <span class="hint" id="scorch-at-label">' + sat + ' sparks</span> <span class="hint-icon" data-tip="Soul Scorch casts itself when your spark pool reaches this number, unless you placed it in the list above (then the list decides). 18 is the most one cast can spend.">?</span></label><input type="range" id="scorch-at-sparks" min="6" max="18" step="1" value="' + sat + '" style="width:100%;"></div>';
+        h += '<div class="field" style="margin-top:0.6rem;"><label>Fire Soul Scorch at <span class="hint" id="scorch-at-label">' + sat + ' sparks</span> <span class="hint-icon" data-tip="Only used when Soul Scorch is not in the running list: it casts itself when the pool reaches this number. 18 is the most one cast can spend.">?</span></label><input type="range" id="scorch-at-sparks" min="6" max="18" step="1" value="' + sat + '" style="width:100%;"></div>';
       }
       if (sim) {
         const d = sim.derived || {};
         const pct = v => (v == null ? "-" : Math.round(v * 100) + "%");
-        h += '<div style="margin-top:0.6rem;font-size:0.85rem;"><strong>' + Math.round(sim.mps) + ' magnitude/s</strong> over ' + sim.fightSeconds + ' s' + (sim.defaultOrderUsed ? ' (default order)' : '') + ' · ' + sim.cycles + ' full cycles</div>';
+        h += '<div style="margin-top:0.6rem;font-size:0.85rem;"><strong>' + Math.round(sim.mps) + ' magnitude/s</strong> over ' + sim.fightSeconds + ' s' + (sim.defaultOrderUsed ? ' (default order)' : '') + ' · ' + sim.cycles + ' loops</div>';
         const chips = [];
         if (d.curseUptime != null && (inp.powers.encounter.some(p => p.tags && p.tags.curse) || inp.powers.daily.some(p => p.tags && p.tags.curse))) chips.push('Curse up ' + pct(d.curseUptime) + ' (' + d.curseApplies + ' applied, ' + d.curseConsumes + ' consumed, ' + d.curseExpiries + ' expired)');
-        if (d.sparksAvg != null) chips.push('Soul Sparks avg ' + d.sparksAvg.toFixed(1) + ' (peak ' + d.sparksMax + '), ' + d.scorchCasts + ' Scorch casts');
+        if (d.sparksAvg != null) chips.push('Soul Sparks avg ' + d.sparksAvg.toFixed(1) + ' (peak ' + d.sparksMax + '), ' + d.scorchCasts + ' Scorch casts' + (d.scorchCasts ? ' (one every ' + (sim.fightSeconds / d.scorchCasts).toFixed(1) + ' s)' : ''));
         if (d.puppetUptime != null) chips.push('Soul Puppet up ' + pct(d.puppetUptime) + ', Investiture avg ' + d.investitureAvg.toFixed(1) + ' stacks');
         if (d.creepingDeathAvgStacks != null) chips.push('Creeping Death avg ' + d.creepingDeathAvgStacks.toFixed(1) + ' stacks');
         if (chips.length) h += '<div class="hint" style="margin-top:0.2rem;">' + chips.map(esc).join(' · ') + '</div>';
         const top = Object.entries(sim.bySource || {}).sort((a, b) => b[1] - a[1]).slice(0, 8);
         if (top.length) h += '<div class="hint" style="margin-top:0.2rem;">Top sources: ' + top.map(e => esc(e[0]) + ' ' + Math.round(e[1] / sim.fightSeconds) + '/s').join(', ') + '</div>';
-        const cyc = (sim.timeline || []).filter(e => sim.firstCycleEnd == null || e.t <= sim.firstCycleEnd + 0.01).slice(0, 24);
-        if (cyc.length) h += '<details style="margin-top:0.3rem;"><summary class="hint" style="cursor:pointer;">Timeline, first cycle (' + cyc.length + ' casts)</summary><div class="hint" style="margin-top:0.2rem;line-height:1.5;" translate="no">' + cyc.map(e => e.t.toFixed(1) + 's ' + esc(e.name) + (e.note ? ' [' + esc(e.note) + ']' : '')).join(' · ') + '</div></details>';
+        const cyc = (sim.timeline || []).filter(e => sim.firstCycleEnd == null || e.t <= sim.firstCycleEnd + 0.01).slice(0, 40);
+        if (cyc.length) h += '<details style="margin-top:0.3rem;"><summary class="hint" style="cursor:pointer;">Timeline, ' + (sim.opener && sim.opener.length ? 'opener' : 'first loop') + ' (' + cyc.length + ' casts)</summary><div class="hint" style="margin-top:0.2rem;line-height:1.5;" translate="no">' + cyc.map(e => e.t.toFixed(1) + 's ' + esc(e.name) + (e.note ? ' [' + esc(e.note) + ']' : '')).join(' · ') + '</div></details>';
       }
       box.innerHTML = h;
+      const listOf = key => key === "opener" ? state.rotationOpener : state.rotationSteps;
       const commit = () => { _rotSimCache = { key: "", result: null }; rerenderAll(); };
-      box.querySelectorAll("[data-rot-up]").forEach(b => b.addEventListener("click", () => { const i = +b.dataset.rotUp; const a = state.rotationSteps; [a[i - 1], a[i]] = [a[i], a[i - 1]]; commit(); }));
-      box.querySelectorAll("[data-rot-down]").forEach(b => b.addEventListener("click", () => { const i = +b.dataset.rotDown; const a = state.rotationSteps; [a[i + 1], a[i]] = [a[i], a[i + 1]]; commit(); }));
-      box.querySelectorAll("[data-rot-del]").forEach(b => b.addEventListener("click", () => { state.rotationSteps.splice(+b.dataset.rotDel, 1); commit(); }));
-      const clr = box.querySelector("#rotation-clear"); if (clr) clr.addEventListener("click", () => { state.rotationSteps = []; commit(); });
-      const addBtn = box.querySelector("#rotation-add-step");
-      if (addBtn) addBtn.addEventListener("click", () => {
+      box.querySelectorAll("[data-rot-up]").forEach(b => b.addEventListener("click", () => { const a = listOf(b.dataset.rotKey), i = +b.dataset.rotUp; [a[i - 1], a[i]] = [a[i], a[i - 1]]; commit(); }));
+      box.querySelectorAll("[data-rot-down]").forEach(b => b.addEventListener("click", () => { const a = listOf(b.dataset.rotKey), i = +b.dataset.rotDown; [a[i + 1], a[i]] = [a[i], a[i + 1]]; commit(); }));
+      box.querySelectorAll("[data-rot-del]").forEach(b => b.addEventListener("click", () => { listOf(b.dataset.rotKey).splice(+b.dataset.rotDel, 1); commit(); }));
+      box.querySelectorAll("[data-rot-clear]").forEach(b => b.addEventListener("click", () => { listOf(b.dataset.rotKey).length = 0; commit(); }));
+      box.querySelectorAll("[data-rot-add]").forEach(b => b.addEventListener("click", () => {
         const items = rotationCastables();
         if (!items.length) { alert("Slot at least one power in step 2 first."); return; }
-        openPicker({ title: "Add a rotation step", items: items, allowNone: false,
+        const key = b.dataset.rotAdd;
+        openPicker({ title: "Add a step to the " + key, items: items, allowNone: false,
           render: (it) => ({ name: it.name, meta: it._label, desc: "" }),
-          onPick: (it) => { if (!it) return; if (!Array.isArray(state.rotationSteps)) state.rotationSteps = []; state.rotationSteps.push({ kind: it._kind, name: it.name }); commit(); } });
-      });
+          onPick: (it) => { if (!it) return; listOf(key).push({ kind: it._kind, name: it.name }); commit(); } });
+      }));
+      box.querySelectorAll("[data-rot-paste]").forEach(b => b.addEventListener("click", () => { const k = b.dataset.rotPaste; const bx = box.querySelector('[data-rot-paste-box="' + k + '"]'); if (bx) { bx.hidden = !bx.hidden; if (!bx.hidden) bx.querySelector("textarea").focus(); } }));
+      box.querySelectorAll("[data-rot-paste-cancel]").forEach(b => b.addEventListener("click", () => { const bx = box.querySelector('[data-rot-paste-box="' + b.dataset.rotPasteCancel + '"]'); if (bx) bx.hidden = true; }));
+      box.querySelectorAll("[data-rot-paste-apply]").forEach(b => b.addEventListener("click", () => {
+        const k = b.dataset.rotPasteApply; const ta = box.querySelector('[data-rot-paste-text="' + k + '"]'); const msg = box.querySelector('[data-rot-paste-msg="' + k + '"]');
+        const res = parseRotationText(ta ? ta.value : "");
+        if (res.unknown.length) { if (msg) msg.textContent = "Not on this build: " + res.unknown.join(", ") + " (slot it in step 2 first, or check the spelling)"; return; }
+        if (!res.steps.length) { if (msg) msg.textContent = "Nothing to add."; return; }
+        const a = listOf(k); a.length = 0; res.steps.forEach(x => a.push(x)); commit();
+      }));
       const sl = box.querySelector("#scorch-at-sparks");
       if (sl) { sl.addEventListener("input", e => { const lb = box.querySelector("#scorch-at-label"); if (lb) lb.textContent = e.target.value + " sparks"; }); sl.addEventListener("change", e => { state.scorchAtSparks = Math.max(6, Math.min(18, +e.target.value || 18)); commit(); }); }
     }
@@ -15330,7 +15368,7 @@
         cc: state.compCollection, mc: state.mountCollection,
         boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, dbf: state.debuffed, tic: state.timeInCombatSec, cad: [state.dailyCadenceSec, state.artifactCadenceSec, state.mountPowerCadenceSec], ehp: state.enemyHealthPct, ety: state.enemyTypes, ssec: state.standingSec, am: state.activeMechanics, fpb: state.forcedPowerBuffs, fu: state.flankUptime, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
-        aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats, rot: state.rotationSteps, sat: state.scorchAtSparks
+        aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats, rot: state.rotationSteps, rop: state.rotationOpener, sat: state.scorchAtSparks
       });
       if (key === _engineCacheKey && _engineResult) return _engineResult;
       _engineCacheKey = key;

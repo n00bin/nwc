@@ -1,9 +1,13 @@
 /* ============================================================
    Toon Forge — rotation simulator (ROT-1 / ROT-2, locked 2026-09-11)
    ------------------------------------------------------------
-   A timeline over the fight: casts the player's ordered step list, skipping
-   steps that are not ready, looping from the top, filling gaps with the first
-   at-will in the list. Tracks cooldowns (charges, escalation, Recharge Speed),
+   A timeline over the fight (ROT-3, 2026-09-11): an OPENER list runs once, then a
+   LOOP list repeats to the end. Both are scripts: every entry casts in order,
+   at-wills included. A step on cooldown is waited for (the filler at-will is
+   woven in) unless the wait would exceed 5 s, then it is skipped. Soul Scorch
+   in a list casts at its turn with whatever sparks are held (min 6); the
+   fire-at-N policy only auto-fires when Scorch is in no list. Artifact / mount
+   powers cast at their list position, or on their own when up if not listed. Tracks cooldowns (charges, escalation, Recharge Speed),
    action points, cast times and channels, and the Hellbringer layers that the
    power review recorded as data blocks:
      - Curse (8 s, apply / consume / synergy tags, All-Consuming Curse,
@@ -81,10 +85,17 @@
     const puppetDef = input.puppet || null;            // { attackMagnitude, attacksPerSecond, durationSeconds }
     const enemyHp = num(input.enemyHealthPct, 100);
 
-    let steps = Array.isArray(input.steps) && input.steps.length ? input.steps.filter(function (s) { return s && s.kind && s.name; }) : null;
-    const defaultOrderUsed = !steps;
-    if (!steps) steps = defaultSteps(powers);
-    if (scorch && hasSparks && !steps.some(function (s) { return s.kind === "scorch"; })) { /* auto-fire rule handles it */ }
+    const clean = function (a) { return Array.isArray(a) ? a.filter(function (s) { return s && s.kind && s.name; }) : []; };
+    let opener = clean(input.opener);
+    let loop = clean(input.loop).length ? clean(input.loop) : clean(input.steps);   // legacy `steps` = loop
+    let defaultOrderUsed = false;
+    if (!loop.length && opener.length) loop = opener.slice();           // no loop: the opener repeats
+    if (!loop.length) { loop = defaultSteps(powers); defaultOrderUsed = true; }
+    // "Listed" is judged against the list currently running: something in the opener
+    // but not the loop fires on its own once the loop starts (artifact, mount, dailies).
+    const listedIn = function (list, kind, name) { return list.some(function (s) { return s.kind === kind && (name == null || s.name === name); }); };
+    const steps = loop;   // exposed in the result
+    const MAX_WAIT = 5;   // seconds: wait (weaving the filler) for a step this close to ready, else skip it
 
     // ---- per-power runtime state ----
     const st = {};
@@ -265,7 +276,7 @@
       return true;
     }
     function isReady(step) {
-      if (step.kind === "scorch") return !!scorch && sparks >= Math.max(num(scorch.minSparks, 6), scorchAt);   // a placed Scorch still waits for the fire-at-N setting (n00b 2026-09-11: at 6 it became the filler)
+      if (step.kind === "scorch") return !!scorch && sparks >= num(scorch.minSparks, 6);   // ROT-3: a listed Scorch is cast for the cooldown cut, with whatever is held
       if (step.kind === "artifact") return t >= artifactReady;
       if (step.kind === "mount") return t >= mountReady;
       const p = byName[step.kind + ":" + step.name]; if (!p) return false;
@@ -278,6 +289,26 @@
       if (step.kind === "daily") { const sd = pst("daily:" + p.name); return ap >= num(p.actionPointCost, 1000) && t >= sd.lastUse + cad.daily; }   // each daily has its own cooldown; the AP bar is shared
       return false;
     }
+    // Seconds until a step could be cast (Infinity = unknown / far). Used by the
+    // script rule: wait (weave the filler) if close, skip if far.
+    function waitFor(step) {
+      if (step.kind === "atWill") return 0;
+      if (step.kind === "scorch") return (!!scorch && sparks >= num(scorch.minSparks, 6)) ? 0 : Infinity;
+      if (step.kind === "artifact") return Math.max(0, artifactReady - t);
+      if (step.kind === "mount") return Math.max(0, mountReady - t);
+      const p = byName[step.kind + ":" + step.name]; if (!p) return Infinity;
+      if (step.kind === "encounter") {
+        if (p.name === "Curse Bite" && !cursed()) return Infinity;
+        const s2 = pst("encounter:" + p.name); const n = chargesOf(p); while (s2.ready.length < n) s2.ready.push(0);
+        return Math.max(0, Math.min.apply(null, s2.ready) - t);
+      }
+      if (step.kind === "daily") {
+        const sd = pst("daily:" + p.name); const cost = num(p.actionPointCost, 1000);
+        const apWait = ap >= cost ? 0 : (cost - ap) / Math.max(1, AP_PER_SEC);
+        return Math.max(apWait, sd.lastUse + cad.daily - t, 0);
+      }
+      return Infinity;
+    }
     function castStep(step) {
       if (step.kind === "scorch") return castScorch();
       if (step.kind === "artifact") { artifactReady = t + cad.artifact; busyUntil = t + 0.5; castCount["Artifact"] = (castCount["Artifact"] || 0) + 1; pushTimeline(step.name || "Artifact", "other", 0, "trigger only"); return true; }
@@ -285,7 +316,7 @@
       const p = byName[step.kind + ":" + step.name]; if (!p) return false;
       castPower(step.kind, p); return true;
     }
-    const fillerStep = steps.find(function (s) { return s.kind === "atWill"; }) || (function () {
+    const fillerStep = loop.find(function (s) { return s.kind === "atWill"; }) || opener.find(function (s) { return s.kind === "atWill"; }) || (function () {
       const d = defaultSteps(powers).find(function (s) { return s.kind === "atWill"; }); return d || null;
     })();
 
@@ -293,9 +324,17 @@
     if (feature_("Dark One's Blessing")) addSparks(6);
     if (desecration && puppetDef) { puppetUntil = 1e9; puppetNextAttack = 1; }
 
-    // ---- main loop ----
-    const cycleLen = steps.length;
+    // ---- main loop (script): opener once, then the loop repeats ----
+    let phase = opener.length ? "opener" : "loop", ptr = 0;
     let cyclesDone = 0, firstCycleEnd = null;
+    const curList = function () { return phase === "opener" ? opener : loop; };
+    const advance = function () {
+      ptr++;
+      if (ptr >= curList().length) {
+        if (phase === "opener") { phase = "loop"; ptr = 0; if (firstCycleEnd === null) firstCycleEnd = t; }
+        else { ptr = 0; cyclesDone++; if (firstCycleEnd === null) firstCycleEnd = t; }
+      }
+    };
     while (t < T) {
       flushEvents();
       // time-weighted derived stats
@@ -317,13 +356,23 @@
       // act
       if (t >= busyUntil) {
         let acted = false;
-        // auto Soul Scorch at the fire-at-N policy (unless the player placed it in the list)
-        if (scorch && hasSparks && !steps.some(function (s) { return s.kind === "scorch"; }) && sparks >= scorchAt) acted = castScorch();
+        // things that fire on their own when not in the current list: Scorch at the
+        // fire-at policy, artifact / mount when up, dailies when the bar is full
+        const cur = curList();
+        if (scorch && hasSparks && !listedIn(cur, "scorch") && sparks >= scorchAt) acted = castScorch();
+        if (!acted && !listedIn(cur, "artifact") && input.artifactName && t >= artifactReady) acted = castStep({ kind: "artifact", name: input.artifactName });
+        if (!acted && !listedIn(cur, "mount") && input.mountName && t >= mountReady) acted = castStep({ kind: "mount", name: input.mountName });
+        if (!acted) for (let di = 0; di < powers.daily.length && !acted; di++) { const dp = powers.daily[di]; const ds = { kind: "daily", name: dp.name }; if (!listedIn(cur, "daily", dp.name) && isReady(ds)) acted = castStep(ds); }
         if (!acted) {
-          for (let k = 0; k < cycleLen; k++) {
-            const idx = (stepIdx + k) % cycleLen; const step = steps[idx];
-            if (step.kind === "atWill" && k > 0) continue;      // at-wills only fill; they are not "waited for"
-            if (isReady(step)) { acted = castStep(step); if (acted) { stepIdx = (idx + 1) % cycleLen; if (idx === cycleLen - 1) { cyclesDone++; if (firstCycleEnd === null) firstCycleEnd = t; } break; } }
+          // script rule: cast the current step; wait (weave the filler) if it is close; skip it if far
+          let guard = 0;
+          while (!acted && guard++ < 64) {
+            const list = curList(); if (!list.length) break;
+            const step = list[ptr];
+            const w = waitFor(step);
+            if (w <= 0 && isReady(step)) { acted = castStep(step); advance(); }
+            else if (w <= MAX_WAIT) { break; }                 // close: weave one filler cast, then re-check this step
+            else { advance(); }                                 // far: skip it
           }
         }
         if (!acted && fillerStep) { const p = byName["atWill:" + fillerStep.name]; if (p) castPower("atWill", p); else busyUntil = t + dt; }
@@ -343,7 +392,7 @@
     };
     const totalMix = mix.atWill + mix.encounter + mix.daily + mix.other;
     return {
-      fightSeconds: T, mps: mps, magnitudeTotal: magTotal, defaultOrderUsed: defaultOrderUsed, steps: steps,
+      fightSeconds: T, mps: mps, magnitudeTotal: magTotal, defaultOrderUsed: defaultOrderUsed, steps: steps, opener: opener, loop: loop,
       casts: castCount, bySource: bySource, timeline: timeline, firstCycleEnd: firstCycleEnd, cycles: cyclesDone,
       mix: { atWill: mix.atWill, encounter: mix.encounter, daily: mix.daily, other: mix.other, pct: totalMix > 0 ? { atWill: mix.atWill / totalMix * 100, encounter: mix.encounter / totalMix * 100, daily: mix.daily / totalMix * 100, other: mix.other / totalMix * 100 } : null },
       derived: derived
