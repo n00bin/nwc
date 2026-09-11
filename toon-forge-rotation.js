@@ -205,7 +205,7 @@
         schedule(t + castSec, hit, p.name, kind, true, { sparks: sparksFor(p, wasCursed) });
         const noDot = feature_("No Pity, No Mercy") && p.name === "Hellish Rebuke";
         if (!noDot) {
-          const key = "dot:" + p.name; events.forEach(function (e) { if (e.extra && e.extra.dotKey === key) e.mag = 0; });   // refresh, never stack
+          const key = "dot:" + p.name; for (let ei = events.length - 1; ei >= 0; ei--) { if (events[ei].extra && events[ei].extra.dotKey === key) events.splice(ei, 1); }   // refresh, never stack (old ticks gone: no damage AND no sparks)
           const perTick = num(p.dotBlock.dotMagnitude, 0) / ticks;
           for (let i = 1; i <= ticks; i++) schedule(t + castSec + dotSec * i / ticks, perTick, p.name + " (burn)", kind, true, { dotKey: key, sparks: (p.soulSparks && p.soulSparks.perTick) ? num(p.soulSparks.perTick) : 0 });
         } else { total += 15; schedule(t + castSec, 15, p.name, kind, false); }
@@ -265,7 +265,7 @@
       return true;
     }
     function isReady(step) {
-      if (step.kind === "scorch") return !!scorch && sparks >= num(scorch.minSparks, 6);
+      if (step.kind === "scorch") return !!scorch && sparks >= Math.max(num(scorch.minSparks, 6), scorchAt);   // a placed Scorch still waits for the fire-at-N setting (n00b 2026-09-11: at 6 it became the filler)
       if (step.kind === "artifact") return t >= artifactReady;
       if (step.kind === "mount") return t >= mountReady;
       const p = byName[step.kind + ":" + step.name]; if (!p) return false;
