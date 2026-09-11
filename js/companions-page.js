@@ -911,6 +911,8 @@
 
   // ---- Damage Companions View ----
   var tabDamage = document.getElementById("tab-damage");
+  var tabBolster = document.getElementById("tab-bolster");
+  var bolsterView = document.getElementById("bolster-view");
   var damageView = document.getElementById("damage-view");
   var damageControls = document.getElementById("damage-controls");
   var damageList = document.getElementById("damage-list");
@@ -1066,6 +1068,7 @@
     tabSummoned.classList.toggle("active", activeTab === "summoned");
     tabEnhancements.classList.toggle("active", activeTab === "enhancements");
     tabDamage.classList.toggle("active", activeTab === "damage");
+    tabBolster.classList.toggle("active", activeTab === "bolster");
     lookupView.style.display = activeTab === "lookup" ? "" : "none";
     lookupControls.style.display = activeTab === "lookup" ? "flex" : "none";
     summonedView.style.display = activeTab === "summoned" ? "" : "none";
@@ -1074,6 +1077,7 @@
     enhancementControls.style.display = activeTab === "enhancements" ? "flex" : "none";
     damageView.style.display = activeTab === "damage" ? "" : "none";
     damageControls.style.display = activeTab === "damage" ? "flex" : "none";
+    bolsterView.style.display = activeTab === "bolster" ? "" : "none";
   }
 
   tabLookup.addEventListener("click", function () {
@@ -1093,6 +1097,10 @@
   tabDamage.addEventListener("click", function () {
     switchTab("damage");
     renderDamageView();
+  });
+
+  tabBolster.addEventListener("click", function () {
+    switchTab("bolster");
   });
 
   summonedSearch.addEventListener("input", renderSummonedView);

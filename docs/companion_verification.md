@@ -7,11 +7,27 @@ n00b and Claude walk every companion in alphabetical order. For each one we conf
 
 Status values: `unchecked` | `verified` | `fixed` | `needs screenshot`
 
-**Bolster watch:** every companion read in-game so far (Abyssal Chicken, Encore the Virtuoso, Wormungandr, Twitchspine, Sir Waddlelot, Sardina, Star of Simril) shows **12%**, across every base rarity. 130 companion notes still say 10% and were never re-read. Treat 10% as stale-until-verified, but do NOT bulk-rewrite - confirm per companion as we pass through.
+**Card map:** `docs/audit/companion_card_map.json` maps 157 companions to their archived Inspect card under `docs/audit/companions/_up/`. 117 companions have no card. Cards show slot, slotted bonuses, the summoned Powers list and the enhancement, but they are the owner's UPGRADED copy - they never prove starting rarity.
+
+**Bolster is rarity-driven, NOT a companion property (n00b 2026-09-11).** The Inspect panel's "Companions Bolster Contribution" just reports the rarity the companion is currently at:
+
+| Rarity | Bolster |
+|---|---|
+| Common | 0.5% |
+| Uncommon | 1% |
+| Rare | 2% |
+| Epic | 3% |
+| Legendary | 5% |
+| Mythic | 10% |
+| Celestial | 12% |
+
+Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bolster 10%" in 130 companion notes was never stale data - those were captures of Mythic copies. Do NOT store a bolster figure per companion; strip it as we pass through. Published as the "Companion Bolster" tab on companions.html.
+
+**CONFLICT TO RESOLVE:** Toon Forge's own per-tier table (toon-forge.html, the comp-bolster hint text and `compBolsterFromCollection`) reads Common 1 / Uncommon 2 / Rare 3.5 / Epic 5 / Legendary 7.5 / Mythic 10 / Celestial 12. Mythic and Celestial agree with n00b; the five lower tiers do not. Those five were flagged "unverified (estimated)" in project memory. Engine NOT changed yet - needs n00b's go, because it moves TIL math.
 
 | # | Companion | Status | Base rarity (stored) | Slot (stored) | Slotted bonuses (stored) | Summoned (stored) |
 |---|---|---|---|---|---|---|
-| 1 | Abyssal Chicken | verified (bolster fixed) | Epic | Offense | PROC | - |
+| 1 | Abyssal Chicken | 3/4 verified - rarity open | Epic | Offense | PROC | - |
 | 2 | Acolyte of Kelemvor | unchecked | Uncommon | Utility | Deflect 0.75%, Incoming Healing 0.75% | - |
 | 3 | Air Archon | unchecked | Common | Offense/Utility | Power 0.75% | - |
 | 4 | Alchemist Experimenter | unchecked | Epic | Offense/Utility | Critical Strike 1.88%, Combat Advantage 1.88% | - |

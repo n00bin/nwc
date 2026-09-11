@@ -93,6 +93,7 @@
     <button class="view-tab" id="tab-summoned">Summoned Bonuses</button>
     <button class="view-tab" id="tab-enhancements">Enhancements</button>
     <button class="view-tab" id="tab-damage">Damage Companions</button>
+    <button class="view-tab" id="tab-bolster">Companion Bolster</button>
   </div>
 
   <!-- Filters / Search (lookup view) -->
@@ -155,6 +156,30 @@
 
   <style>
 
+    .bolster-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .bolster-table th, .bolster-table td {
+      padding: 0.6rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-default);
+      font-size: 0.9rem;
+    }
+    .bolster-table th { color: var(--text-muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .bolster-table tr:last-child td { border-bottom: none; }
+    .bolster-table td:first-child { font-weight: 600; }
+    .rar-common { color: #a8a8a8; }
+    .rar-uncommon { color: #4caf50; }
+    .rar-rare { color: #4a9eff; }
+    .rar-epic { color: #b46cff; }
+    .rar-legendary { color: #ff9c3a; }
+    .rar-mythic { color: #ff5a5a; }
+    .rar-celestial { color: #9eb6ff; }
     .summoned-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-default);
@@ -205,6 +230,35 @@
   <!-- Damage companions view -->
   <div id="damage-view" style="display:none; max-width:900px; margin:0 auto; padding:1rem 1.5rem 3rem;">
     <div id="damage-list"></div>
+  </div>
+
+
+  <!-- Companion bolster view -->
+  <div id="bolster-view" style="display:none; max-width:900px; margin:0 auto; padding:1rem 1.5rem 3rem;">
+    <h2 style="margin:0 0 0.4rem;font-size:1.15rem;">Companion Bolster</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.6;margin:0 0 1rem;">
+      Every companion you own adds to your Companion Bolster, and the amount depends on its rarity.
+      Only your <strong>best 10 companions</strong> count, so the ceiling is <strong>120%</strong> &mdash;
+      exactly ten Celestial companions. Bolster multiplies what your summoned companion contributes to
+      your item level, so raising it lifts every stat that item level feeds.
+    </p>
+    <table class="bolster-table">
+      <thead><tr><th>Rarity</th><th>Bolster given</th><th>Ten of them</th></tr></thead>
+      <tbody>
+        <tr><td><span class="rar-common">Common</span></td><td>0.5%</td><td>5%</td></tr>
+        <tr><td><span class="rar-uncommon">Uncommon</span></td><td>1%</td><td>10%</td></tr>
+        <tr><td><span class="rar-rare">Rare</span></td><td>2%</td><td>20%</td></tr>
+        <tr><td><span class="rar-epic">Epic</span></td><td>3%</td><td>30%</td></tr>
+        <tr><td><span class="rar-legendary">Legendary</span></td><td>5%</td><td>50%</td></tr>
+        <tr><td><span class="rar-mythic">Mythic</span></td><td>10%</td><td>100%</td></tr>
+        <tr><td><span class="rar-celestial">Celestial</span></td><td>12%</td><td>120% (cap)</td></tr>
+      </tbody>
+    </table>
+    <p style="color:var(--text-muted);font-size:0.82rem;line-height:1.6;margin:1rem 0 0;">
+      100% is the baseline, not the maximum &mdash; the bar runs to 120%. You can read your own figure on the
+      character sheet, next to the companion item level contribution.
+      Mounts use a separate bolster with its own table and a 125% ceiling.
+    </p>
   </div>
 
   <!-- Data -->
