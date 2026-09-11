@@ -3394,6 +3394,20 @@ const COMPANION_SKILLS = {
       "text": "Bleed now lasts 50% longer and the first tick hits twice."
     }
   ],
+  "wormungandr": [
+    {
+      "name": "Destined Devourer",
+      "text": "Each time Wormungandr bites an enemy, his hunger affects up to 3 nearby teammates with a +0.5% Power buff for 6 seconds. Max 5 stacks: +2.5% Power."
+    },
+    {
+      "name": "Tail Whirl",
+      "text": "Wormungandr performs a damaging sweep on the ground, knocking down minor enemies."
+    },
+    {
+      "name": "Unending Hunger",
+      "text": "A devastating bite that damages the target and increases its Incoming Damage by +0.5%, while also enhancing Wormungandr's size and increasing its Power by 1% for 6 seconds, stacking up to 5 times."
+    }
+  ],
   "wulfgar": [
     {
       "name": "Action Star",

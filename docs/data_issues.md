@@ -1900,7 +1900,7 @@ session — coordinate before adding the two companions; the mount is clear to a
     companion's item level. Maximum 6%."
   - Power **Relentless Waddle** (IL 750, Offense/Defense): "Whenever you run, … increasing
     you and your summoned companions' Critical Severity by +7.5% for 7 seconds." +750 CR.
-- **Wormungandr** (COMPANION) — not in companions.json.
+- **Wormungandr** (COMPANION) — ADDED 2026-09-11 (companion id 273; power Continental Craving id 272 at the Mythic rung; enhancement Exploit Weakness id 26; summoned buff Destined Devourer). Verified from n00b's Campaigns-window Inspect screenshots.
   - Enhancement **Exploit Weakness**: "Chance on hit to increase your and your companion's
     critical strike and severity for 15 seconds. Value scales with summoned pet's item
     level. Maximum 4.5%."
