@@ -2663,3 +2663,16 @@ creation or the wiki-independent in-game race info card).
 - Same dependency: Combatant's Maneuver (2500 Combat Advantage for 10 s whenever you control an enemy).
 
 - **Shroomwood Amulet (IL 1700, base rank) ability line inferred** (2026-09-10): +6 STR copied from the +1 rank tooltip; the other three Menzoberranzan pieces keep the same ability line across ranks. Wants a base-rank tooltip screenshot to close.
+
+## Base Damage ceiling (~70%) - noted, not modeled (2026-09-11)
+Patch 09/10/2026: "The Base Damage Boost for all Strike Combat Enchantments has been
+raised with a flat 3%, buffing the power for all players with a lower Base Damage
+than ~55% before equipping a Combat Enchantment. Players with more than ~55% Base
+Damage before equipping a Combat Enchantment will notice a tiny nerf."
+A flat +3 can only be a nerf if the total is capped; break-even at ~55 before a
++15 enchant implies a ceiling near 70% Base Damage Boost. The engine has no cap
+on the base bucket (toon-forge-engine.js damageBoosts.base), so builds above the
+ceiling are over-credited. n00b 2026-09-11: apply the +3, note the ceiling, not a
+problem right now. To confirm: character-sheet Base Damage with the Celestial
+Strike enchant slotted vs unslotted. Applied: all 7 Strike combat enchants +3 at
+every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
