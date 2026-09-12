@@ -117,8 +117,8 @@ store a value or score it in the optimizer.
 
 | Trial | Companion Critical Avoidance | Your CA at rest | Your CA peak | Duration |
 |---|---|---|---|---|
-| 1 | 8,661 | 109,840 rating / 21.2% | | |
-| 2 | | | | |
+| 1 | 8,661 | 109,840 rating / 21.2% | 109,840 rating / **22.2%** | 8s |
+| 2 | change it and re-read | | | |
 
 ### Test B baseline — n00b, 2026-09-11
 
@@ -130,7 +130,26 @@ store a value or score it in the optimizer.
 | Companion's own Critical Avoidance | 8,661 rating |
 | Out of combat | **no change** — expected, Kelemvor's Sword is a cast ability, not a standing buff |
 
-Still needed: the in-combat peak, and whether the buff shows on the buff bar.
+### Test B trial 1 RESULT — **it is a flat percentage, and the tooltip is misleading**
+
+| | At rest | Kelemvor's Sword up |
+|---|---|---|
+| Critical Avoidance rating | 109,840 | **109,840 — unchanged** |
+| Critical Avoidance percent | 21.2% | **22.2%** |
+| Companion's own Critical Avoidance | 8,661 | 8,661 — unchanged |
+| Duration | | **8 seconds** |
+
+**The grant is +1 percentage point.** The rating never moved, so it is not a share of the
+companion's stat. A 10% share would have pushed the rating to 110,706 and a full share to
+118,501; neither happened.
+
+That contradicts the tooltip, which says the grant is "based on your companions level and
+total Critical Avoidance". Whatever that phrase means, it is not a rating transfer.
+
+Duration is **8 seconds**, not the 15 the enhancement procs use — so durations are
+per-ability and cannot be assumed across a companion's kit.
+
+Stored as `Critical Avoidance +1%, 8s` on the Acolyte's summoned bonus.
 
 _(A first baseline of TIL 143,535 / CA 114,205 / 20.7% was discarded — n00b was wearing
 gear that interfered. The formula checked out on that reading too: it predicted 20.67%.)_
