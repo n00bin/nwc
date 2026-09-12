@@ -96,7 +96,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 7 | Ambush Drake | **VERIFIED** - all four checks confirmed off card c054, nothing to fix | Epic | Offense/Utility | Critical Severity 1.88%, Awareness 1.88% | - |
 | 8 | Angel of Protection | **VERIFIED** - Protective Ward always-on + non-stacking; Ward captured, blocked on per-effect uptime | Epic | Defense | PROC | party: Defense 3.0% |
 | 9 | Aoth Fezim & Brightwing | **VERIFIED** off card c140; Keen Eyes 9.6% confirmed genuine; name spelling open | Mythic | Offense/Utility | Accuracy 3.75%, Combat Advantage 3.75% | - |
-| 10 | Apprentice Healer | unchecked | Common | Utility | Incoming Healing 0.37% | - |
+| 10 | Apprentice Healer | **VERIFIED** off two named screenshots; Max HP moved out of a fake proc; exact-rung sweep | Common | Utility | Incoming Healing 0.37% | - |
 | 11 | Aranea | unchecked | Uncommon | Offense | PROC | - |
 | 12 | Armored Orc Wolf | unchecked | Common | Offense | Accuracy 0.38%, Critical Strike 0.38% | - |
 | 13 | Assassin Drake | unchecked | Epic | Offense | Accuracy 1.88%, Critical Severity 1.88% | - |
@@ -372,6 +372,20 @@ Process, per companion:
 1. Claude reads the Powers list off the archived Inspect card (or a fresh screenshot) and **surfaces every ally-affecting or enemy-affecting power**, with whatever magnitude and duration the game states.
 2. n00b rules on whether it is worth recording as a buff.
 3. If yes, Claude measures what is missing and records it. If no, the effect is left out of `summonedBuff` entirely and the details go in the companion's `notes` so the work survives.
+
+**STORE THE EXACT RUNG, NOT THE 2dp TABLE (found on Apprentice Healer, 2026-09-11).** The rarity tables in our code are themselves rounded to two decimals. The double-stat anchor is 4.50 at Celestial, so the true Common rung is **0.375**, not the 0.38 the table lists - and the game's own tooltip shows **0.37**, truncating rather than rounding. All three numbers disagree and only 0.375 derives correctly.
+
+| stored | derives to at Celestial |
+|---|---|
+| 0.37 (the game's display) | 4.44 |
+| 0.38 (our table) | 4.56 |
+| **0.375 (exact)** | **4.50** |
+
+**99 values across 53 powers** were 2dp roundings and are now stored exact. The error scales with the gap between the base rung and Celestial, so it was worst on low-rarity companions - 0.06 points for a Common base, 0.012 for an Epic one. This supersedes the earlier "normalize to the table" fix, which was right in direction but stopped one decimal short.
+
+**Also confirmed on this companion:** the in-game roster shows **"Companions Bolster Contribution: 0.5%"** for a Common, which independently verifies the bolster table n00b supplied.
+
+And its Maximum Hit Points was stored as a `trigger: "Passive"` proc when the card plainly lists it as a stat - same miscategorisation shape as the Raptor powers. Moved into `stats[]`.
 
 **KEEN EYES 9.6% IS REAL (2026-09-11).** I had flagged it as a likely misread, since every other single-stat enhancement is 9%. Card c140 shows it verbatim: "up to 9.6% ... Maximum 9.6%." It is a genuine outlier, now carrying its verbatim tooltip. **Do not "correct" it.**
 
