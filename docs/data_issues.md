@@ -1,5 +1,26 @@
 # Data Issues To Investigate
 
+## Two different runes are both called "Master of Craft" (found 2026-09-12)
+
+A Vistani-style name collision, inside the companion enhancements.
+
+| | Enhancement 3 | Enhancement 31 |
+|---|---|---|
+| Gives | Forte to YOU only, 9%, 15s | Critical Avoidance to you AND the pet, 9% |
+| Cards | c143 Kavatos Stormeye, c244 Golden Goat, c253 Catti-brie, c264 Etrien | c141 Rath Modar |
+| Icon | magenta winged sigil | purple shield |
+
+All six companions that reference the name were pointed at ONE record storing
+Critical Avoidance, so the four Forte companions were handing out the wrong stat
+entirely. Split 2026-09-12: enhancement 3 corrected to Forte, new enhancement 31
+created for the Critical Avoidance variant, Rath Modar repointed at it.
+
+**Open: Verdant Elder.** No card found. It sits on the majority Forte record,
+unconfirmed and flagged on its own row.
+
+**Lesson:** match enhancements on TOOLTIP TEXT, not display name. The name is not
+unique. Worth a sweep of the other 30 enhancement records for the same pattern.
+
 ## Per-effect uptime: now blocking TWO companions (2026-09-12)
 
 The engine applies a single `summonedBuff.uptime` to every effect in that buff. Two
