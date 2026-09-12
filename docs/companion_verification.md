@@ -20,6 +20,12 @@ n00b and Claude walk every companion in alphabetical order. For each one we conf
 
 **PENDING (n00b agreed, not yet done):** the Artifacts page (`js/artifacts-page.js` RARITY_COLOR) and `insignia-priority.html` still use the old palette — Mythic red, Celestial cyan/light blue. Bring them onto the palette above so a rarity colour means one thing site-wide.
 
+**WHAT COUNTS AS A SUMMONED BONUS (n00b ruling 2026-09-11).** The point of the Summoned Bonuses tab is to surface buffs that are **actually useful and have good uptime**. Effects that are trivially small or blink in and out are NOT recorded as buffs at all — no `summonedBuff` entry, so they are absent from the tab and from the engine. Measurements are still kept in the companion's `notes` so the work is never lost.
+
+First application: **Acolyte of Kelemvor**, both effects dropped — Kelemvor's Sword (+1 point Critical Avoidance, 8s) and Blessings of Kelemvor (10% damage reduction, **3s**).
+
+**THRESHOLD NOT YET PINNED — needs n00b.** 43 companions currently carry a summonedBuff and they were never filtered by this standard. They range from Dread Warrior (+5,000 Power party-wide, 66% uptime) down to Alpha Compy (+1% damage, and only while the companion is below half health). Only 14 of the 43 record an uptime at all and **none** record a duration, so most cannot be judged against a magnitude-times-uptime rule without more reading. See the open question at the end of this file.
+
 **TOOLTIP SCALING CLAIMS ARE NOT TRUSTWORTHY (2026-09-11).** Twice in one companion: "target ally" actually meant the summoner, and Kelemvor's Sword's "based on your companions level and total Critical Avoidance" is false on every clause - measured flat at +1 point across two rarities with two different companion stat values. **Never encode a tooltip's arithmetic; measure it or mark it unverified.**
 
 **Verbatim text rule (n00b 2026-09-11) - the style every companion must follow:**
@@ -341,3 +347,15 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 272 | Zariel | unchecked | Epic | Defense | Critical Strike 1.88%, Critical Severity 1.88% | enemy |
 | 273 | Zariel the Redeemed | unchecked | Epic | Defense | Critical Strike 1.88%, Critical Severity 1.88% | - |
 | 274 | Zhentarim Warlock | unchecked | Legendary | Offense/Utility | Combat Advantage 2.8% | - |
+
+---
+
+## OPEN QUESTION — where is the "worth listing" line?
+
+n00b's ruling on Acolyte of Kelemvor sets a standard the other 43 summoned buffs have never been held to. To apply it consistently rather than case by case, we need a rule. Candidates:
+
+1. **Always-on or nothing.** List a buff only if it holds while the companion is summoned (or has measured uptime above some figure). This would drop most short procs and keep Dread Warrior, the combat-advantage debuffers and the flat party auras.
+2. **Magnitude floor.** Drop anything under, say, 2% or 3%. Simple, but it would keep a 3% buff that is up 10% of the time and drop a 1.5% buff that is always up.
+3. **Magnitude x uptime.** The honest measure, but only 14 of 43 record an uptime and none record a duration, so it needs reading before it can be applied.
+
+Worth noting: Acolyte's dropped effects were **1% for 8s** and **10% for 3s**. A rule that drops both but keeps, for example, Alpha Compy's conditional +1% would be inconsistent.
