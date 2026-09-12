@@ -418,6 +418,10 @@ That is **2 wrong out of the 8 we could actually check** - the other 4 had cards
 
 The stat VALUES survive a base change, because they derive by ratio - Armored Orc Wolf still lands on 3.75 at Mythic either way. What breaks is **which rarity buttons appear** and therefore what a player thinks they can reach. **Only n00b's in-game check settles this**, so keep asking.
 
+**A CELESTIAL BASE IS ALMOST CERTAINLY WRONG.** A companion stored at a Celestial base has no upgrade path at all - the rarity selector shows one button. **14 companions are stored that way**, and Black Scorpion contradicts itself: its base says Celestial while its own scaling notes list a full ladder from Common upward. That reads like someone recording a maxed-out copy as the base, the same mistake as the Mythic and Legendary cases but taken to the ceiling.
+
+The 14: Black Scorpion, Drizzt Do'Urden, Duergar Guard, Flapjack, Golden Cat, Lich, Mercenary, Minsc, Portobello DaVinci, Regis, Spined Devil, Stalwart Golden Lion, Tamed Velociraptor, Tutor. Some may be genuine Celestial-only rewards - confirm each with n00b.
+
 **Batiri Runt was the worst yet: stored Legendary, really Uncommon** - four tiers out, hiding four rarity rungs from anyone who owns it. Legendary is a rare base (only 7 companions left on it), so treat it as suspect.
 
 The 24 stored as Common: Apprentice Healer (confirmed), Blue Fire Eye, Cambion Magus, Cold Iron Warrior, Con Artist, Crimson Crystal Golem, Damaran Shepherd, Dancing Blade, Elite Intern, Feywild Sylph, Flaming Skull, Harper Bard, Hunting Hawk, Jarlaxle Baenre, Kingfisher Intern, Mini Apparatus of Gond, Phasespider, Proud Pink Yeti, Riotous Rothe, Shieldmaiden, Soradiel, War Boar, War Dog, Wolf.

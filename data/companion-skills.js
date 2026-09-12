@@ -226,6 +226,20 @@ const COMPANION_SKILLS = {
       "text": "A poisoned bolt that damages and poisons the target foe."
     }
   ],
+  "black scorpion": [
+    {
+      "name": "Savage Pincers",
+      "text": "The scorpion's pincers hit his target, doing damage."
+    },
+    {
+      "name": "Tail Sting",
+      "text": "The scorpion's tail rapidly strikes the target dealing damage and poisoning the target. Damage is increased if the black scorpion has combat advantage."
+    },
+    {
+      "name": "Too Many Legs",
+      "text": "Enemies hit by the scorpion's pincers are struck with fear, giving the black scorpion and allies combat advantage."
+    }
+  ],
   "boar": [
     {
       "name": "Charge",
