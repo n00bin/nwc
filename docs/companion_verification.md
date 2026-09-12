@@ -359,3 +359,17 @@ n00b's ruling on Acolyte of Kelemvor sets a standard the other 43 summoned buffs
 3. **Magnitude x uptime.** The honest measure, but only 14 of 43 record an uptime and none record a duration, so it needs reading before it can be applied.
 
 Worth noting: Acolyte's dropped effects were **1% for 8s** and **10% for 3s**. A rule that drops both but keeps, for example, Alpha Compy's conditional +1% would be inconsistent.
+
+### 43 is a FLOOR, not the candidate pool
+
+43 is how many we have **recorded**, not how many exist. Acolyte of Kelemvor itself had none recorded until this session, and Encore the Virtuoso, Wormungandr and Sir Waddlelot were all added today. Scanning the skills text of companions that currently have no `summonedBuff`:
+
+| | Count |
+|---|---|
+| Recorded summoned buff today | 43 |
+| No entry, but skills text mentions allies / party / "grants you" / shield | **19** |
+| No entry and **no skills text at all**, so unknowable from data | **50** |
+
+So the real pool is at least 62 and possibly over 100. The 50 with no skills text are the blind spot — those need their Inspect panel read before we can say anything. The 19 named candidates include obvious ones like Battlefield Medic ("Aid All"), Stronghold's Cleric ("Aid and Protect") and Linu La'neral ("Lunar Light").
+
+**Practical consequence:** testing usability only on the 43 as we pass them would miss the rest. The per-companion check already reads the Powers list off the Inspect card, which is where an unrecorded buff shows up, so this is covered as long as we keep doing that for every companion rather than only for the ones already flagged.
