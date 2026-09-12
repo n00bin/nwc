@@ -236,10 +236,19 @@ per hit. Ten or more gaps is enough to see the cadence.
    only uses powers while actively fighting.
 4. Watch for the **wind-up swing** - it is a distinct, slow animation, unlike his
    normal cone attack. If the dummy can be knocked down, the knockdown is an even
-   clearer cue. Every time you see it, say "now" and I will record the round.
-5. Give me ten or more gaps. Report them however is easiest: seconds between swings,
-   or just "how many swings in 60 seconds" repeated a few times. Either shape gives
-   the cadence.
+   clearer cue.
+5. **Count swings inside a fixed 60-second window** and report just the count. Repeat
+   the window five or six times. Five counts is plenty to see the cadence.
+
+**The timing has to happen on your side.** Claude cannot time the gaps between
+messages - typing "now" each swing conveys the order but not the seconds, and message
+latency would swamp the real gaps. A phone stopwatch and a count is the whole
+instrument. This is the same shape as Test A2, where n00b reported hits-to-proc as
+numbers rather than Claude observing anything.
+
+`uptime = min(100%, (swings per minute x 5 seconds) / 60 seconds)`
+
+So 4 swings a minute is 33%, 6 is 50%, 12 or more is effectively always on.
 
 **If the dummy will not work.** Some dummies are immune to knockdown, which removes
 the clearest cue but not the wind-up animation. If Bobby will not engage a dummy at
