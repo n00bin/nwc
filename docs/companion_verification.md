@@ -89,8 +89,8 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 |---|---|---|---|---|---|---|
 | 1 | Abyssal Chicken | **VERIFIED 4/4** (Epic / Offense / no slotted stats / no summoned bonuses) | Epic | Offense | PROC | - |
 | 2 | Acolyte of Kelemvor | **VERIFIED** - summoned bonus added and measured; Blessings of Kelemvor duration still open | Uncommon | Utility | Deflect 0.75%, Incoming Healing 0.75% | - |
-| 3 | Air Archon | unchecked | Common | Offense/Utility | Power 0.75% | - |
-| 4 | Alchemist Experimenter | unchecked | Epic | Offense/Utility | Critical Strike 1.88%, Combat Advantage 1.88% | - |
+| 3 | Air Archon | **VERIFIED** - rarity corrected to Rare; double-counted Power bonus fixed | Common | Offense/Utility | Power 0.75% | - |
+| 4 | Alchemist Experimenter | **VERIFIED** - no summoned bonus (heal, ruled out) | Epic | Offense/Utility | Critical Strike 1.88%, Combat Advantage 1.88% | - |
 | 5 | Allosaurus | unchecked | Epic | Defense/Utility | Maximum Hit Points 7500, Critical Strike 1.9% | - |
 | 6 | Alpha Compy | unchecked | Mythic | Utility | Power 7.5% | party: Damage Bonus 1.0% |
 | 7 | Ambush Drake | unchecked | Epic | Offense/Utility | Critical Severity 1.88%, Awareness 1.88% | - |
@@ -372,6 +372,11 @@ Process, per companion:
 1. Claude reads the Powers list off the archived Inspect card (or a fresh screenshot) and **surfaces every ally-affecting or enemy-affecting power**, with whatever magnitude and duration the game states.
 2. n00b rules on whether it is worth recording as a buff.
 3. If yes, Claude measures what is missing and records it. If no, the effect is left out of `summonedBuff` entirely and the details go in the companion's `notes` so the work survives.
+
+**A HEAL IS NOT A BUFF (n00b ruling 2026-09-11).** Healing an ally does not get recorded as a summoned bonus, whatever its size. First application: Alchemist Experimenter's Rejuvenating Potion (5% of an ally's life). Existing entries checked against this - none are heal-only:
+- **Minsc** records Incoming Healing, which is a stat buff (it raises healing received), not a heal. Stays.
+- **Encore the Virtuoso** records the Outgoing Healing / Power / Critical Severity buff from Mending Melody; the heal itself was never recorded as an effect. Stays.
+- **Deva Champion** records "+5% of max HP as shield" with **no stat effects at all** - it is a shield, not a stat buff, and closer to a heal than to anything else on the tab. **Flagged for n00b** - probably should come off by the same rule.
 
 **Why no formula.** Usefulness is not only magnitude x uptime. Some buffs matter because a group will *let you bring that companion* on the strength of it, and some large-looking effects are irrelevant in practice. That judgement is n00b's and it is not reducible to a number.
 
