@@ -107,7 +107,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 18 | Baby Deep Crow (augment) | unchecked | Mythic | Offense | Power 7.5% | - |
 | 19 | Baby Displacer Beast (augment) | unchecked | Uncommon | Defense/Offense | PROC | - |
 | 20 | Infant Gorilla (was Baby Gorilla, augment) | **VERIFIED** off card c056; renamed - predicted from the icon filename | Epic | Offense/Utility | Deflect 1.88%, Critical Severity 1.88% | - |
-| 21 | Baby Owlbear (augment) | unchecked | Mythic | Utility | PROC | - |
+| 21 | Baby Owlbear (augment) | **VERIFIED** off card c011; magnitude ladder derived; rename candidate (owlbear-cub) | Mythic | Utility | PROC | - |
 | 22 | Barbarian Shaman | unchecked | Rare | Offense/Utility | Combat Advantage 1.25%, Power 1.25% | - |
 | 23 | Basic Bok | unchecked | Epic | Utility | PROC | - |
 | 24 | Batiri Runt | unchecked | Legendary | Offense | Damage Vs Bosses 8.25% | - |
