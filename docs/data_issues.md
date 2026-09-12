@@ -1,6 +1,6 @@
 # Data Issues To Investigate
 
-## Your OWN combat-advantage companion is worth zero in the sim (found 2026-09-12)
+## FIXED 2026-09-12: your OWN summon's sim-side buffs were worth zero
 
 Seven companions carry `summonedBuff.effect = "combat_advantage_grant"`: Black
 Death Scorpion (100%), Panther (59%), Yeth Hound (58%), Blink Dog (50%),
@@ -24,12 +24,15 @@ Net effect: summon Blink Dog yourself and it contributes nothing. Only an
 ALLY's copy counts, and only with the support-party toggle on. This
 under-values all seven companions in the summon slot for DPS builds.
 
-**Proposed fix (awaiting n00b's lock):** in `getPartySummonedCombatMods()`,
-feed `state.summoned` into the `combat_advantage_grant` branch as well,
-ungated by `assumeSupportParty` (your own summon is always with you). Leave
-every other branch alone, since stat buffs really are handled on the sheet.
-The existing `seen` set already dedupes you and an ally running the same
-companion, and the union math handles partial overlap.
+**FIXED.** The loop now takes your own summon first, ungated by the support-party
+toggle, with the seen-set stopping an ally copy from stacking on top. It applies to
+BOTH sim-side branches, because the identical dropout hit enemy damage-taken
+debuffs as well: your own Spined Devil, Succubus, Zariel, Rattigan the Wise or
+Bobby also contributed nothing. Verified headless on six cases, including that the
+Spined Devil / Succubus no-stack pairing still picks the stronger of the two.
+
+Still true, and deliberately unchanged: buffs that carry actual STATS are handled
+on the stat sheet, so they stay out of this function or they would double-count.
 
 ## MISSING: Pseudodragon's combat advantage grant (found 2026-09-12)
 

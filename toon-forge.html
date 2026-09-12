@@ -11953,32 +11953,25 @@
       // no active power or it has no self-scope stat buffs.
       let selfBuffAmounts = {};
       let selfBuffUptime = 1;
-      // YOUR OWN summoned companion's combat-advantage grant. The ally loop
-      // below skips state.summoned because "your own summoned companion's buff
-      // already applies" - true for buffs that carry STATS, but a
-      // combat_advantage_grant carries none, so the own-summon path (~L13414,
-      // which only reads effects[] / stats{} / stat+value) dropped it and the
-      // effect was worth ZERO whenever YOU ran the companion rather than an
-      // ally (found 2026-09-12, n00b approved the fix). Affects all seven CA
-      // granters: Black Death Scorpion, Panther, Yeth Hound, Blink Dog,
-      // Swashbuckler, Dancing Blade, Cantankerous Mage.
-      // NOT gated by assumeSupportParty - your own summon is always with you.
-      // ONLY this branch: stat buffs really are handled on the sheet, so
-      // routing them here too would double-count them.
-      if (state.summoned) {
-        const ownC = findCompanionByName(state.summoned);
-        const ownSb = ownC && ownC.summonedBuff;
-        if (ownSb && ownSb.effect === "combat_advantage_grant") {
-          seen.add(state.summoned);   // an ally copy must not stack on top
-          caGrants.push({ name: state.summoned, uptime: Math.max(0, Math.min(1, (ownSb.uptime || 0) / 100)) });
-        }
-      }
-      // Gated by the "Assume support party" master toggle (default OFF).
-      for (const name of (state.assumeSupportParty ? (state.partyAllies || []) : [])) {
+      // YOUR OWN summoned companion takes part in exactly two branches below:
+      // the combat-advantage grant and the enemy damage-taken debuff. Both are
+      // sim-side effects that carry NO stats, so the own-summon path (~L13414,
+      // which only reads effects[] / stats{} / stat+value) drops them entirely.
+      // The loop used to skip state.summoned outright, on the grounds that the
+      // stat sheet already applies your own summon's buff - true for buffs that
+      // carry stats, false for these two, so BOTH were worth ZERO whenever YOU
+      // ran the companion instead of an ally (found 2026-09-12).
+      //   CA granters: Black Death Scorpion, Panther, Yeth Hound, Blink Dog,
+      //                Swashbuckler, Dancing Blade, Cantankerous Mage.
+      //   Damage debuffs: Spined Devil, Succubus, Zariel, Rattigan the Wise, Bobby.
+      // Your own summon is NOT gated by assumeSupportParty - it is always with
+      // you. Allies still are. Own goes first so the seen-set stops an ally
+      // copy from stacking on top (the single-benefit rule).
+      const ownSummonName = state.summoned || null;
+      const allyNames = state.assumeSupportParty ? (state.partyAllies || []) : [];
+      for (const name of (ownSummonName ? [ownSummonName] : []).concat(allyNames)) {
         if (!name || seen.has(name)) continue;
-        // Same single-benefit rule as the stat sheet: your own summoned
-        // companion's buff already applies — an ally copy doesn't stack.
-        if (name === state.summoned) continue;
+        const isOwnSummon = (name === ownSummonName);
         seen.add(name);
         const c = findCompanionByName(name);
         const sb = c && c.summonedBuff;
@@ -11993,7 +11986,8 @@
           else dmgSources.push({ name, pct });
         } else if (Array.isArray(sb.effects) || (sb.scope === "mixed" && sb.stats)) {
           // party stat buffs / Priestess — handled on the stat sheet, not here.
-        } else {
+        } else if (!isOwnSummon) {
+          // Own-summon leftovers are already described on the stat sheet.
           info.push({ name, text: sb.buff || "" });
         }
       }
