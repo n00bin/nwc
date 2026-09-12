@@ -1,5 +1,39 @@
 # Data Issues To Investigate
 
+## 103 proc effects print the same number at every rarity (found 2026-09-12)
+
+Every proc whose `effect` text contains a hard-coded number and no `effectScaling`
+shows that one number on all rarity buttons, while the item level, combined rating
+and bolster beside it all change. The card looks alive and the proc value is wrong
+everywhere except the base rarity.
+
+Four were found and fixed one at a time during the verification pass - Blacksmith,
+Butterfly, Captain Elaina Sartell, Celeste - before it was clear this is systemic.
+
+**Scale of it:**
+
+| Kind | Count | Notes |
+|---|---|---|
+| Percent procs | 71 | ladder derivable from the ratio to their own base rung |
+| Magnitude procs | 15 | flat-per-IL rules, different maths (see Aranea, Black Death Scorpion) |
+| Neither | 17 | stamina, drop rates, stack counts, genuinely flat text |
+
+**Of the 71 percent procs, about half sit on a clean multiplier** of the single-stat
+rung at their base item level: 14 at exactly 1x, 4 at 0.5x, 2 at 1.5x, 2 at 2x and so
+on. Those are safe to derive.
+
+**The other 39 look odd, and a large share are the ROUNDING fault, not a strange
+ladder.** A cluster of 7 sits at x1.013, which is simply 3.8 stored where the exact
+rung is 3.75. Likewise x0.507 is 1.9 for 1.875, and x1.493 is 5.6 for 5.625. So the
+stored proc TEXT still carries the game's rounded display even though the stats[]
+values were corrected in the earlier exact-rung sweep - that sweep never touched proc
+strings.
+
+**Recommendation: do NOT bulk-fix.** Each needs its card to confirm both the
+multiplier and the exact rung, which is exactly what the companion-by-companion pass
+produces. Fix them as their rows come up, the way the first four were done. Revisit
+this entry when the pass finishes to catch anything with no card.
+
 ## Two different runes are both called "Master of Craft" (found 2026-09-12)
 
 A Vistani-style name collision, inside the companion enhancements.
