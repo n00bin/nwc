@@ -103,9 +103,9 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 14 | Astral Deva | **VERIFIED** (no card); heal was double-stored as a permanent stat - fixed; ladder added | Rare | Defense | Heal Percent 2.5% | - |
 | 15 | Bear Cub (was Baby Bear, augment) | **VERIFIED** off card c080; renamed; proc re-based to the exact 1.125 rung | Uncommon | Defense | PROC | - |
 | 16 | Boar (was Baby Boar) | **VERIFIED** off card c075; renamed; augment flag removed; a second boar (c081) is MISSING from the db | Uncommon | Offense | Deflect 0.75%, Critical Severity 0.75% | - |
-| 17 | Baby Bulette (augment) | unchecked | Epic | Defense | PROC | - |
-| 18 | Baby Deep Crow (augment) | unchecked | Mythic | Offense | Power 7.5% | - |
-| 19 | Baby Displacer Beast (augment) | unchecked | Uncommon | Defense/Offense | PROC | - |
+| 17 | Bulette Pup (was Baby Bulette, augment) | **VERIFIED**; renamed by n00b; Epic base | Epic | Defense | PROC | - |
+| 18 | Deep Crow Hatchling (was Baby Deep Crow, augment) | **VERIFIED**; renamed; base corrected Mythic -> Epic (n00b) | Epic | Offense | Power 3.75% | - |
+| 19 | Baby Displacer Beast (augment) | **VERIFIED**; Uncommon base; proc read verbatim | Uncommon | Defense/Offense | PROC | - |
 | 20 | Infant Gorilla (was Baby Gorilla, augment) | **VERIFIED** off card c056; renamed - predicted from the icon filename | Epic | Offense/Utility | Deflect 1.88%, Critical Severity 1.88% | - |
 | 21 | Owlbear Cub (was Baby Owlbear, augment) | **VERIFIED** off card c011; renamed (predicted from filename); base corrected Mythic -> Epic | Mythic | Utility | PROC | - |
 | 22 | Barbarian Shaman | **VERIFIED** off card c162; skills text corrected; Nature's Wind not recorded (shield) | Rare | Offense/Utility | Combat Advantage 1.25%, Power 1.25% | - |
