@@ -444,6 +444,37 @@ Current state: **534 notes across powers and companions, and only 8 flag an open
 
 **Not scored by the optimizer.** Structuring the data does not make the engine use it; a Chult build still sees half the real value of these powers. Wiring that is engine work and needs n00b's go.
 
+**IMAGE FILENAMES ARE A RENAME DETECTOR (2026-09-12).** Three renames in a row already had the new name baked into their icon filename before we knew: `savage-allosaur.webp`, `bear-cub.webp`, `bulette-pup.webp`. So the icons were downloaded against current in-game names while the data kept old ones.
+
+Sweeping all 274 and filtering out duplicate-download `(2)` suffixes and punctuation noise leaves **22 genuine differences**. These are LEADS, not conclusions - some are abbreviations and some are plainly typos in the filename (`scorpin`, `cantankkerous`, `chichenmancer`, `wattigan`).
+
+| stored name | filename suggests |
+|---|---|
+| Golden Bulette Pup | golden-bulette |
+| Celestial Lion | stalwart-golden-lion |
+| Baby Owlbear | **owlbear-cub** |
+| Ice Galeb Duhr | **frozen-galeb-duhr** |
+| Watler | walter |
+| Scarecrow | **wandering-scarecrow** |
+| Rimefire Golem | rimefire |
+| Black Scorpion | scorpin (typo) |
+| Baby Gorilla | **infant-gorilla** |
+| Snow Fawn | **snowy-fawn** |
+| Fawn | **fawn-of-shiallia** |
+| Greenscale Hunter | **greenscale-dowman** |
+| Boar | boar-shoat |
+| Diana | **diana-the-acrobat** |
+| Xaryxian | **xaryxian-defector** |
+| Grillmaster | **dragon-grillmaster** |
+| Earl the Chickenmancer | chichenmancer (typo) |
+| Rattigan the Wise | wattigan (typo?) |
+| Stronghold's Cleric | stronghold_cleric |
+| Cantankerous Mage | cantankkerous (typo) |
+| Kenku Archer | kenku archers wisdom (that is the POWER name) |
+| Batiri Runt | batiri |
+
+Bolded ones look like real renames of the kind we keep finding. Confirm each with n00b as we reach it rather than renaming on filename evidence alone.
+
 **SLOT LISTS CAN BE WRONG TOO (Baby Displacer Beast, 2026-09-12).** We stored Defense/Offense; n00b confirmed **Offense only**. The card said Offense but the label was clipped at the panel edge, so it could not settle it alone.
 
 **75 of our powers claim more than one slot** - 29 Offense/Utility, 28 Defense/Utility, 13 Defense/Offense and 5 all three. A wrong extra slot lets a companion be slotted somewhere the game forbids, so the optimizer can build a loadout that cannot exist. Check the slot line on every card, and read past a clipped label rather than trusting it.

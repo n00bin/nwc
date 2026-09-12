@@ -16,7 +16,7 @@ window.COMPANION_IMAGES = {
   "Astral Deva": "astral-deva.webp",
   "Bear Cub": "bear-cub.webp",
   "Boar": "boar-shoat.webp",
-  "Baby Bulette": "bulette-pup.webp",
+  "Bulette Pup": "bulette-pup.webp",
   "Deep Crow Hatchling": "deep-crow-hatchling.webp",
   "Baby Displacer Beast": "baby-displacer-beast.webp",
   "Baby Gorilla": "infant-gorilla.webp",
