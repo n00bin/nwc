@@ -113,7 +113,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 24 | Batiri Runt | **VERIFIED** off card c171; base corrected Legendary -> Uncommon; duplicate proc removed | Legendary | Offense | Damage Vs Bosses 8.25% | - |
 | 25 | Battlefield Medic | **VERIFIED** (no card); Epic base confirmed by n00b; all three skills are heals | Epic | Utility | Combat Advantage 1.88%, Incoming Healing 1.88% | - |
 | 26 | Black Dragon Ioun Stone (augment) | **VERIFIED** (no card); base corrected Mythic -> Epic (n00b) | Mythic | Offense | Critical Strike 7.5% | - |
-| 27 | Black Ice Prospector | unchecked | Epic | Defense | Deflect 1.88%, Critical Avoidance 1.88% | - |
+| 27 | Black Ice Prospector | **VERIFIED** off card c107; n00b confirmed Epic (purple) base; exact 1.875 rungs already stored; Mountain Hard is a self-deflect buff on the pet, not recorded | Epic | Defense | Deflect 1.875%, Critical Avoidance 1.875% | - |
 | 28 | Black Ice Stone (augment) | **VERIFIED** off card c207; duplicate Passive proc removed; stat registered with the engine; ladder confirmed in game (Celestial -27%) and whitelisted for rarity scaling | Uncommon | Utility | PROC | - |
 | 29 | Black Death Scorpion (was Black Scorpion) | **VERIFIED** off card c053; base Celestial -> Epic; exact magnitude ladder 56.25/82.5/112.5/135 | Epic | Offense | PROC | enemy: grants combat advantage |
 | 30 | Blacksmith | **VERIFIED** off card c119; n00b confirmed Rare base and 4.5% reflect at Celestial, matching the half-single-stat ladder; proc made verbatim, Slowed Reactions tooltip captured, augment:false | Rare | Utility | PROC (reflect 1.25% -> 4.5%) | - (enhancement debuffs enemy deflect) |
