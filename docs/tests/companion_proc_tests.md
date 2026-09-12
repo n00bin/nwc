@@ -235,7 +235,9 @@ Hits to proc, 20 trials:
 
 | | |
 |---|---|
-| Point estimate | **13.3% per hit** |
+| Raw estimate (n/S) | 13.33% per hit |
+| Bias-corrected ((n-1)/(S-1)) | **12.75% per hit** |
+| Displayed on the card | **~13%** |
 | 95% range | 8.1% to 19.8% |
 | 20% | ruled out |
 | 10% / 12.5% / 15% | all still possible |
@@ -243,8 +245,18 @@ Hits to proc, 20 trials:
 
 The 26-hit trial is ordinary variance at this rate, not an internal cooldown.
 
-Stored on Perfect Vision as `chanceApprox: 13.3` with all 20 raw trials kept. The card
-shows "~13.3% (measured over 20 trials)" so it never reads as an exact game figure.
+**Why ~13% and not 13.3%:** the simple estimator `n/S` is known to run high on small
+samples. The bias-corrected form `(n-1)/(S-1)` gives 12.75%, and 20 trials only supports
+about two significant figures anyway — 13.33% claimed a precision we do not have. So the
+card rounds to **~13%**.
+
+**Why not just say 12.5%:** it sits 0.25 points off the bias-corrected figure and one in
+eight is exactly the kind of number a designer picks, so it is very likely the truth —
+but likely is not proven, and the card should not state a design number we inferred.
+It is recorded in the notes as the leading hypothesis.
+
+Stored as `chanceApprox: 13` with all 20 raw trials kept, so the sample can be extended
+later without redoing any of it.
 
 ### RULING — n00b, 2026-09-11
 
