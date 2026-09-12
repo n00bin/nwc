@@ -305,8 +305,11 @@ have not proven the cooldown is exactly 15.
 real contribution, and it now actually reaches the sim after the own-summon fix. It is
 still narrower than the party-wide buffs because only n00b and Bobby benefit.
 
-**Not measured:** whether the 5-second duration is exact (the tooltip's number was
-taken on trust) and whether the cadence changes with Bobby's rarity.
+**Duration confirmed** by n00b in game 2026-09-12: the debuff really does run 5
+seconds. Both halves of the 32% are now measured rather than one measured and one
+taken from the tooltip.
+
+**Still not measured:** whether the cadence changes with Bobby's rarity.
 
 ## Results
 
