@@ -97,7 +97,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 8 | Angel of Protection | **VERIFIED** - Protective Ward always-on + non-stacking; Ward captured, blocked on per-effect uptime | Epic | Defense | PROC | party: Defense 3.0% |
 | 9 | Aoth Fezim & Brightwing | **VERIFIED** off card c140; Keen Eyes 9.6% confirmed genuine; name spelling open | Mythic | Offense/Utility | Accuracy 3.75%, Combat Advantage 3.75% | - |
 | 10 | Apprentice Healer | **VERIFIED** off two named screenshots; Max HP moved out of a fake proc; exact-rung sweep | Common | Utility | Incoming Healing 0.37% | - |
-| 11 | Aranea | unchecked | Uncommon | Offense | PROC | - |
+| 11 | Aranea | **VERIFIED** off card c144; 5% vs 10% contradiction resolved in favour of the card | Uncommon | Offense | PROC | - |
 | 12 | Armored Orc Wolf | unchecked | Common | Offense | Accuracy 0.38%, Critical Strike 0.38% | - |
 | 13 | Assassin Drake | unchecked | Epic | Offense | Accuracy 1.88%, Critical Severity 1.88% | - |
 | 14 | Astral Deva | unchecked | Rare | Defense | Heal Percent 2.5% | - |
