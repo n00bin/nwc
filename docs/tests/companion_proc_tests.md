@@ -372,8 +372,31 @@ That is the second sheet figure to survive contact with a card or a reading toda
 after Cantankerous Mage's 4-second grant matched its 34% uptime. Aragon's numbers are
 earning their trust.
 
-**Still open:** the duration ("a short duration" is all the card says) and the cadence,
-which together give the uptime that replaces the sheet's ~66%.
+**Cadence measured:** 10 Cutlass Combos in a 2-minute window = **one every 12 seconds**.
+That matches the ~12s cadence independently implied by Cantankerous Mage's numbers, so
+12s looks like a common companion-power cooldown.
+
+**Duration measured: 9.98 seconds**, so a 10-second buff on a 12-second cadence.
+
+### TEST D CLOSED — **+5 points Critical Severity at 83% uptime, and the sheet was wrong**
+
+| Quantity | Measured | Was |
+|---|---|---|
+| Size | +5.0 percentage points | 5% (sheet) - confirmed |
+| Duration | 9.98s, so 10s | unknown, card says "a short duration" |
+| Cadence | 10 uses / 2 min = every 12s | unknown |
+| **Uptime** | **83%** | ~66% (sheet) - **WRONG** |
+
+**This is the first community-sheet figure to fail a reading today**, after Cantankerous
+Mage's 34% and this buff's own 5% both held. So the sheet is good but not infallible:
+its stat VALUES have been right every time, its UPTIMES are the soft part. Re-measure
+uptimes where they matter; trust the values more readily.
+
+**A modelling problem this exposed.** Elaina's two effects have genuinely different
+uptimes - Readiness Aura is a passive aura that is always on, Cutlass Combo is 83% - but
+the engine applies ONE uptime to the whole summonedBuff and ignores per-effect values.
+The true per-effect numbers are now stored, and are currently unread. This is the second
+companion blocked on per-effect uptime support, after Angel of Protection's Ward.
 
 ## Results
 

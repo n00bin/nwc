@@ -1,5 +1,22 @@
 # Data Issues To Investigate
 
+## Per-effect uptime: now blocking TWO companions (2026-09-12)
+
+The engine applies a single `summonedBuff.uptime` to every effect in that buff. Two
+companions genuinely need different uptimes per effect:
+
+- **Captain Elaina Sartell** - Readiness Aura (+5% Action Point Gain) is a passive
+  aura, always on; Cutlass Combo (+5% Critical Severity) is 83%, both numbers measured
+  in Test D. Per-effect uptimes are stored in `effects[].uptime` and are NOT read.
+  Whichever single uptime is chosen, one of the two is wrong by about 0.85 points.
+- **Angel of Protection** - Ward (10s interception every 60s) cannot sit alongside an
+  always-on party buff, so it is parked in `cooldownEffects` and scored as nothing.
+
+**Fix shape:** have the own-summon and ally-buff paths read `effects[].uptime` when
+present and fall back to `summonedBuff.uptime` otherwise. Small and backwards
+compatible - every existing record keeps its behaviour. Not built; engine changes wait
+for n00b's go.
+
 ## FIXED 2026-09-12: your OWN summon's sim-side buffs were worth zero
 
 Seven companions carry `summonedBuff.effect = "combat_advantage_grant"`: Black
