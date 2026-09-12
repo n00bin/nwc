@@ -226,7 +226,7 @@ const COMPANION_SKILLS = {
       "text": "A poisoned bolt that damages and poisons the target foe."
     }
   ],
-  "black scorpion": [
+  "black death scorpion": [
     {
       "name": "Savage Pincers",
       "text": "The scorpion's pincers hit his target, doing damage."

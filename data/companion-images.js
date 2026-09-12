@@ -29,7 +29,7 @@ window.COMPANION_IMAGES = {
   "Black Dragon Ioun Stone": "black-dragon-ioun-stone.webp",
   "Black Ice Prospector": "black-ice-prospector.webp",
   "Black Ice Stone": "black-ice-stone.webp",
-  "Black Scorpion": "scorpin.webp",
+  "Black Death Scorpion": "scorpin.webp",
   "Blaspheme Assassin": "blaspheme-assassin.webp",
   "Blink Dog": "blink-dog.webp",
   "Blue Fire Eye": "blue-fire-eye.webp",
