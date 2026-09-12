@@ -92,7 +92,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 3 | Air Archon | **VERIFIED** - rarity corrected to Rare; double-counted Power bonus fixed | Common | Offense/Utility | Power 0.75% | - |
 | 4 | Alchemist Experimenter | **VERIFIED** - no summoned bonus (heal, ruled out) | Epic | Offense/Utility | Critical Strike 1.88%, Combat Advantage 1.88% | - |
 | 5 | Savage Allosaur (was Allosaurus) | **VERIFIED** - renamed; stat normalized; NO skills text so summoned bonus UNKNOWN | Epic | Defense/Utility | Maximum Hit Points 7500, Critical Strike 1.9% | - |
-| 6 | Alpha Compy | unchecked | Mythic | Utility | Power 7.5% | party: Damage Bonus 1.0% |
+| 6 | Alpha Compy | **VERIFIED** - Call of Vengeance ruled out; Chult doubling captured | Mythic | Utility | Power 7.5% | party: Damage Bonus 1.0% |
 | 7 | Ambush Drake | unchecked | Epic | Offense/Utility | Critical Severity 1.88%, Awareness 1.88% | - |
 | 8 | Angel of Protection | unchecked | Epic | Defense | PROC | party: Defense 3.0% |
 | 9 | Aoth Fezim & Brightwing | unchecked | Mythic | Offense/Utility | Accuracy 3.75%, Combat Advantage 3.75% | - |
@@ -372,6 +372,12 @@ Process, per companion:
 1. Claude reads the Powers list off the archived Inspect card (or a fresh screenshot) and **surfaces every ally-affecting or enemy-affecting power**, with whatever magnitude and duration the game states.
 2. n00b rules on whether it is worth recording as a buff.
 3. If yes, Claude measures what is missing and records it. If no, the effect is left out of `summonedBuff` entirely and the details go in the companion's `notes` so the work survives.
+
+**ZONE CONDITIONALS ARE NOW STRUCTURED (n00b ruling 2026-09-11: capture the zone).** Alpha Compy's power doubles in Chult and that was only prose in its notes - the power carried no `zoneConditional` field at all. Now stored as `{zone, multiplier, note}` and the card reads **"Doubled in Chult"** instead of a generic badge. Static pages show it too (the generator ignored zone conditionals entirely).
+
+**15 other powers still carry a bare `zoneConditional: true`** - the flag says a zone matters but not WHICH zone or by HOW MUCH, so the card can only show a generic badge. Capture zone and multiplier for each as we pass through: Hell Hound's Senses, Yeth Hound's Presence, Dragon's Bane, Eladrin's Senses, Chultan Hunter's Discipline, Vistani's Discipline, Mageslayer's Assault, Vallenhas' Discipline, Siege Master's Discipline, Wiggin's Wisdom, Stronghold Cleric's Wisdom, Skyblazer's Sight, Dark Dealings, Sense Through the Shadowfell, Fire Eye's Insight.
+
+**Not scored by the optimizer.** Structuring the data does not make the engine use it; a Chult build still sees half the real value of these powers. Wiring that is engine work and needs n00b's go.
 
 **RENAMES NEED AN ALIAS MAP, AND COMPANIONS DO NOT HAVE ONE.** Saved and shared builds store companions by NAME, so a rename silently blanks the slot. Toon Forge already solves this for gear - `GEAR_NAME_ALIASES` in toon-forge.html rewrites old names on load and toasts the player - but **nothing equivalent exists for companions or mounts**. Three renames have already happened with no alias: Raptor -> Tamed Velociraptor, Olive the Octopus -> Ollie the Octie, and now Allosaurus -> Savage Allosaur. A 274-companion audit will produce more.
 

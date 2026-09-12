@@ -403,9 +403,16 @@
         html += renderProcEffect(pw.procEffect, activeIL, pw.item_level, activeRarity.color);
       }
 
-      // Zone conditional indicator
+      // Zone conditional. Newer entries are structured ({zone, multiplier});
+      // older ones are a bare `true` and can only show a generic badge until
+      // their zone and multiplier are captured.
       if (pw.zoneConditional) {
-        html += '<div style="margin-top:0.4rem;"><span class="badge" style="background:var(--highlight);color:#000;">Zone Conditional</span></div>';
+        var zc = pw.zoneConditional;
+        var zlabel = "Zone Conditional";
+        if (zc && typeof zc === "object" && zc.zone) {
+          zlabel = (zc.multiplier === 2 ? "Doubled in " : (zc.multiplier ? "x" + zc.multiplier + " in " : "Boosted in ")) + zc.zone;
+        }
+        html += '<div style="margin-top:0.4rem;"><span class="badge" style="background:var(--highlight);color:#000;">' + escapeHtml(zlabel) + '</span></div>';
       }
 
       // `notes` is INTERNAL (provenance, scaling reasoning, engine flags) and
