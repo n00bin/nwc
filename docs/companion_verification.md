@@ -98,7 +98,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 9 | Aoth Fezim & Brightwing | **VERIFIED** off card c140; Keen Eyes 9.6% confirmed genuine; name spelling open | Mythic | Offense/Utility | Accuracy 3.75%, Combat Advantage 3.75% | - |
 | 10 | Apprentice Healer | **VERIFIED** off two named screenshots; Max HP moved out of a fake proc; exact-rung sweep | Common | Utility | Incoming Healing 0.37% | - |
 | 11 | Aranea | **VERIFIED** off card c144; chance is flat 5%, magnitude ladder derived and Celestial predicted at 270 | Uncommon | Offense | PROC | - |
-| 12 | Armored Orc Wolf | **VERIFIED** off card c070; ladder lands on 3.75 at Mythic matching the card's rounded 3.8 | Common | Offense | Accuracy 0.38%, Critical Strike 0.38% | - |
+| 12 | Armored Orc Wolf | **VERIFIED** off card c070; base corrected Common -> Uncommon (n00b: green) | Common | Offense | Accuracy 0.38%, Critical Strike 0.38% | - |
 | 13 | Assassin Drake | unchecked | Epic | Offense | Accuracy 1.88%, Critical Severity 1.88% | - |
 | 14 | Astral Deva | unchecked | Rare | Defense | Heal Percent 2.5% | - |
 | 15 | Baby Bear (augment) | unchecked | Uncommon | Defense | PROC | - |
@@ -407,6 +407,14 @@ The whole Apprentice Healer ladder now reads 0.38 / 0.75 / 1.25 / 1.88 / 2.75 / 
 And its Maximum Hit Points was stored as a `trigger: "Passive"` proc when the card plainly lists it as a stat - same miscategorisation shape as the Raptor powers. Moved into `stats[]`.
 
 **KEEN EYES 9.6% IS REAL (2026-09-11).** I had flagged it as a likely misread, since every other single-stat enhancement is 9%. Card c140 shows it verbatim: "up to 9.6% ... Maximum 9.6%." It is a genuine outlier, now carrying its verbatim tooltip. **Do not "correct" it.**
+
+**STORED BASE RARITY IS NOT RELIABLE - CHECK EVERY ONE.** Two of the twelve companions checked so far had the wrong starting rarity: Air Archon (stored Common, really Rare) and Armored Orc Wolf (stored Common, really Uncommon). Both were stored a tier or two too low, and in both cases the archive card could not catch it because the card shows an upgraded copy.
+
+That is **2 wrong out of the 8 we could actually check** - the other 4 had cards at their base rung. The Common tier looks over-used: **24 companions are stored as Common**, and two of the three we have examined were wrong. Apprentice Healer is the only confirmed Common so far (its roster screen reads Neophyte and 0.5% bolster).
+
+The stat VALUES survive a base change, because they derive by ratio - Armored Orc Wolf still lands on 3.75 at Mythic either way. What breaks is **which rarity buttons appear** and therefore what a player thinks they can reach. **Only n00b's in-game check settles this**, so keep asking.
+
+The 24 stored as Common: Apprentice Healer (confirmed), Blue Fire Eye, Cambion Magus, Cold Iron Warrior, Con Artist, Crimson Crystal Golem, Damaran Shepherd, Dancing Blade, Elite Intern, Feywild Sylph, Flaming Skull, Harper Bard, Hunting Hawk, Jarlaxle Baenre, Kingfisher Intern, Mini Apparatus of Gond, Phasespider, Proud Pink Yeti, Riotous Rothe, Shieldmaiden, Soradiel, War Boar, War Dog, Wolf.
 
 **Card-map misses keep turning up.** c140 (Aoth Fezim) and c070 (Armored Orc Wolf) were both missed by the indexing pass but named in project docs - c070 in `docs/data_trust.md`. **When a companion shows no card, grep the docs for its name before concluding none exists.** Map now at 159.
 
