@@ -1,5 +1,26 @@
 # Data Issues To Investigate
 
+## Proc text disagrees with the scored magnitude on 2 more powers (found 2026-09-12)
+
+Caught while verifying Cockatrice, whose card printed "17.2 magnitude" on the page
+while the same record's `procDamage.magnitude` said 112. The card confirmed 112, so
+the page had been showing a number about seven times too small while the engine
+scored the right one. Fixed there; two more carry the same split:
+
+| Power | Printed on the page | Scored by the engine |
+|---|---|---|
+| Manticore's Presence (id 21) | 17.2 | 112 |
+| War Boar's Instincts (id 60) | 38.0 | 11.25 |
+
+**Manticore is almost certainly the same copy-paste as Cockatrice** - the identical
+wrong figure, 17.2, on a power with the identical correct figure, 112. War Boar is a
+different shape: its printed number is LARGER than its scored one, so that one needs
+its card before anyone decides which side is right.
+
+Neither is fixed. Both have tracker rows still to come, and each needs its own card -
+the same discipline that caught this one. Do not bulk-align text to procDamage: on
+Cockatrice the scored value happened to be right, but that is not proof it always is.
+
 ## 103 proc effects print the same number at every rarity (found 2026-09-12)
 
 Every proc whose `effect` text contains a hard-coded number and no `effectScaling`
