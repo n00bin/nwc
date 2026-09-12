@@ -444,6 +444,10 @@ Current state: **534 notes across powers and companions, and only 8 flag an open
 
 **Not scored by the optimizer.** Structuring the data does not make the engine use it; a Chult build still sees half the real value of these powers. Wiring that is engine work and needs n00b's go.
 
+**THE CARD HEADER CARRIES THE IN-GAME NAME.** The Companion tab of an Inspect card prints the companion's name at the top - c017 reads **"Deep Crow Hatchling"** where we stored "Baby Deep Crow". So renames can be caught from the archive itself, no in-game check needed, whenever a card captured the Companion tab rather than the Stats and Powers tab. **Check the header on every card that has one.**
+
+Its power kept the old name ("Baby Deep Crow's Presence"), which matches what n00b confirmed on Bear Cub and Savage Allosaur: a companion rename does not drag its power name along.
+
 **TWO COMPANIONS CAN SHARE A POWER NAME (Boar, 2026-09-12).** Cards c075 and c081 both display **"Baby Boar's Instincts" at IL 150** but are different companions - different icon, health, ability list, stats, and one is an augment. Our record was a MIX: augment flag and shares from c081, stat values from c075. n00b settled it in game (Deflect + Critical Severity), so the record is now **Boar**, not an augment, and the c081 augment is **missing from the database entirely** - logged in data_issues.md.
 
 The June 2026 conclusion recorded in data_trust.md ("c081 wrong") was the wrong framing: c081 is not wrong, it is a different companion. Corrected there too.
