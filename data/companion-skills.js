@@ -169,10 +169,10 @@ const COMPANION_SKILLS = {
   "assassin drake": [
     {
       "name": "Acid Prepared",
-      "text": "The Assassin' Drake's biite does 50% more damage if the target is taking damage from his acid spit."
+      "text": "The Assassin Drake's bite does 50% more damage if the target is taking damage from his acid spit."
     },
     {
-      "name": "Acid Spew",
+      "name": "Acidic Spew",
       "text": "Spits acid on up to 5 target foes, dealing initial acid damage and damage over time."
     },
     {

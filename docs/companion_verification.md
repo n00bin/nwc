@@ -99,7 +99,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 10 | Apprentice Healer | **VERIFIED** off two named screenshots; Max HP moved out of a fake proc; exact-rung sweep | Common | Utility | Incoming Healing 0.37% | - |
 | 11 | Aranea | **VERIFIED** off card c144; chance is flat 5%, magnitude ladder derived and Celestial predicted at 270 | Uncommon | Offense | PROC | - |
 | 12 | Armored Orc Wolf | **VERIFIED** off card c070; base corrected Common -> Uncommon (n00b: green) | Common | Offense | Accuracy 0.38%, Critical Strike 0.38% | - |
-| 13 | Assassin Drake | unchecked | Epic | Offense | Accuracy 1.88%, Critical Severity 1.88% | - |
+| 13 | Assassin Drake | **VERIFIED** off card c006; two skill-text typos fixed against the card | Epic | Offense | Accuracy 1.88%, Critical Severity 1.88% | - |
 | 14 | Astral Deva | unchecked | Rare | Defense | Heal Percent 2.5% | - |
 | 15 | Baby Bear (augment) | unchecked | Uncommon | Defense | PROC | - |
 | 16 | Baby Boar (augment) | unchecked | Uncommon | Offense | Deflect 0.75%, Critical Severity 0.75% | - |
