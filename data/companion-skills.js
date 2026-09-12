@@ -212,6 +212,20 @@ const COMPANION_SKILLS = {
       "text": "Squawks at an enemy, lowering it's damage dealt by 5% for 6 seconds."
     }
   ],
+  "batiri runt": [
+    {
+      "name": "Blow Darts",
+      "text": "A blow dart that damages the target foe."
+    },
+    {
+      "name": "Chief Killer",
+      "text": "Batiri does 25% more damage against bosses."
+    },
+    {
+      "name": "Poisoned Bolt",
+      "text": "A poisoned bolt that damages and poisons the target foe."
+    }
+  ],
   "boar": [
     {
       "name": "Charge",

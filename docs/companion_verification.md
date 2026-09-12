@@ -110,7 +110,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 21 | Owlbear Cub (was Baby Owlbear, augment) | **VERIFIED** off card c011; renamed (predicted from filename); base corrected Mythic -> Epic | Mythic | Utility | PROC | - |
 | 22 | Barbarian Shaman | **VERIFIED** off card c162; skills text corrected; Nature's Wind not recorded (shield) | Rare | Offense/Utility | Combat Advantage 1.25%, Power 1.25% | - |
 | 23 | Basic Bok | **VERIFIED** off card c266; skills added; Squabble debuff needs a ruling | Epic | Utility | PROC | - |
-| 24 | Batiri Runt | unchecked | Legendary | Offense | Damage Vs Bosses 8.25% | - |
+| 24 | Batiri Runt | **VERIFIED** off card c171; duplicate Passive proc removed; skills added | Legendary | Offense | Damage Vs Bosses 8.25% | - |
 | 25 | Battlefield Medic | unchecked | Epic | Utility | Combat Advantage 1.88%, Incoming Healing 1.88% | - |
 | 26 | Black Dragon Ioun Stone (augment) | unchecked | Mythic | Offense | Critical Strike 7.5% | - |
 | 27 | Black Ice Prospector | unchecked | Epic | Defense | Deflect 1.88%, Critical Avoidance 1.88% | - |
@@ -505,7 +505,7 @@ This matters because the optimizer bars augments from the summoned slot by defau
 
 **PROCESS FIX: FOLLOW THE TRACKER ORDER, NOT MY OWN ALPHABETISING.** I skipped **Astral Deva** (#14) and **Baby Boar** (#16) by re-deriving the order in my head each time instead of reading this table. n00b caught it. Work the numbered rows in order.
 
-**DOUBLE-COUNT REVIEW LIST (24 powers).** A stat sitting in `stats[]` while the power's own proc describes that same stat is the Air Archon shape - the effect gets credited permanently AND again when it fires. Confirmed and fixed so far: **Air Archon** (Power), **Apprentice Healer** (Max HP, stored as a fake Passive proc), **Astral Deva** (Heal Percent). Confirmed CORRECT: **Yojimbo's Discipline** (its proc swaps the stat, so the base must stay).
+**DOUBLE-COUNT REVIEW LIST (24 powers).** A stat sitting in `stats[]` while the power's own proc describes that same stat is the Air Archon shape - the effect gets credited permanently AND again when it fires. Confirmed and fixed so far: **Air Archon** (Power), **Apprentice Healer** (Max HP, stored as a fake Passive proc), **Astral Deva** (Heal Percent), **Batiri Runt** (Damage Vs Bosses - the card lists it as a plain Equip stat, and the `trigger: "Passive"` proc was just a restatement of `stats[]`). Confirmed CORRECT: **Yojimbo's Discipline** (its proc swaps the stat, so the base must stay).
 
 **Not bulk-changed** - most of the remaining 20 are probably legitimate, since a proc's text often just mentions the stat name it boosts. Each needs its tooltip read. The list: Rustmonster's Presence, Volcanic/Ice/Lava/plain Galeb Duhr's Presence, Raptor's Instincts, Hunting Hawk's Presence, Honeybadger's Instincts, Panther's Instincts, Elaina's Riposte, Dragon's Bane, The Bigger They Are, Siege Master's Discipline, Slyblade Kobold's Discipline, Undying Overlord, Netherese Warlock's Wisdom, Elemental Cultist's Wisdom, Batiri's Wisdom, Unseelie Cruelty, Delusional Insight, Feral Raptor's Instincts, Hollyphant's Guidance.
 
