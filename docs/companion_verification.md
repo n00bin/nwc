@@ -111,7 +111,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 22 | Barbarian Shaman | **VERIFIED** off card c162; skills text corrected; Nature's Wind not recorded (shield) | Rare | Offense/Utility | Combat Advantage 1.25%, Power 1.25% | - |
 | 23 | Basic Bok | **VERIFIED** off card c266; skills added; Squabble debuff needs a ruling | Epic | Utility | PROC | - |
 | 24 | Batiri Runt | **VERIFIED** off card c171; base corrected Legendary -> Uncommon; duplicate proc removed | Legendary | Offense | Damage Vs Bosses 8.25% | - |
-| 25 | Battlefield Medic | unchecked | Epic | Utility | Combat Advantage 1.88%, Incoming Healing 1.88% | - |
+| 25 | Battlefield Medic | **VERIFIED** (no card); all three skills are heals, nothing recorded | Epic | Utility | Combat Advantage 1.88%, Incoming Healing 1.88% | - |
 | 26 | Black Dragon Ioun Stone (augment) | unchecked | Mythic | Offense | Critical Strike 7.5% | - |
 | 27 | Black Ice Prospector | unchecked | Epic | Defense | Deflect 1.88%, Critical Avoidance 1.88% | - |
 | 28 | Black Ice Stone (augment) | unchecked | Uncommon | Utility | PROC | - |
