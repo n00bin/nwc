@@ -117,7 +117,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 28 | Black Ice Stone (augment) | unchecked | Uncommon | Utility | PROC | - |
 | 29 | Black Scorpion | unchecked | Celestial | Offense | PROC | enemy |
 | 30 | Blacksmith | unchecked | Rare | Utility | PROC | - |
-| 31 | Blaspheme Assassin | **VERIFIED** off card c093; crit severity re-based to the exact 5.625 rung; base disputed | Mythic | Offense | PROC | enemy |
+| 31 | Blaspheme Assassin | **VERIFIED** off card c093; Mythic base confirmed; Faerie Fire recorded as the summoned bonus | Mythic | Offense | PROC | enemy |
 | 32 | Blink Dog | unchecked | Uncommon | Offense | Deflect 0.75%, Critical Avoidance 0.75% | enemy |
 | 33 | Blue Fire Eye | unchecked | Common | Offense | PROC | party: Critical Strike 3.0% |
 | 34 | Bobby | unchecked | Mythic | Defense/Utility | Maximum Hit Points 12000, Defense 4.5% | - |
@@ -417,6 +417,8 @@ And its Maximum Hit Points was stored as a `trigger: "Passive"` proc when the ca
 That is **2 wrong out of the 8 we could actually check** - the other 4 had cards at their base rung. The Common tier looks over-used: **24 companions are stored as Common**, and two of the three we have examined were wrong. Apprentice Healer is the only confirmed Common so far (its roster screen reads Neophyte and 0.5% bolster).
 
 The stat VALUES survive a base change, because they derive by ratio - Armored Orc Wolf still lands on 3.75 at Mythic either way. What breaks is **which rarity buttons appear** and therefore what a player thinks they can reach. **Only n00b's in-game check settles this**, so keep asking.
+
+**REGRESSION I CAUSED AND CAUGHT (2026-09-12).** My Damage-tab change read `pw.procEffect.tooltip` whenever `hasVerbatim(pw)` was true. Setting `verbatimChecked` on a power with **no** procEffect (Batiri Runt, once its duplicate proc was removed) then threw on page load - `buildDamageList()` runs at load, so the **entire Companions page was broken**, not just that tab. Fixed. Lesson: a flag that means "we checked this" is not a promise that a particular field exists.
 
 **A CELESTIAL BASE IS ALMOST CERTAINLY WRONG - FIRST ONE CONFIRMED.** Black Death Scorpion was stored Celestial; n00b confirmed it starts at **Epic**, four tiers down, equalling Batiri Runt as the worst base error found. The contradiction that flagged it (a Celestial base with a scaling ladder starting at Common) is a reliable tell - look for it on the rest. A companion stored at a Celestial base has no upgrade path at all - the rarity selector shows one button. **14 companions are stored that way**, and Black Scorpion contradicts itself: its base says Celestial while its own scaling notes list a full ladder from Common upward. That reads like someone recording a maxed-out copy as the base, the same mistake as the Mythic and Legendary cases but taken to the ceiling.
 

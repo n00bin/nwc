@@ -843,8 +843,10 @@
         var chips = "";
         for (var ci = 0; ci < s.statChips.length; ci++) {
           var sc = s.statChips[ci];
+          // A debuff carries a negative value - do not prefix it with "+".
+          var sgn = (typeof sc.value === "number" && sc.value < 0) ? "" : "+";
           var label = sc.value == null ? sc.stat
-            : sc.stat + ": " + (sc.type === "percent" ? "+" + sc.value + "%" : "+" + sc.value);
+            : sc.stat + ": " + (sc.type === "percent" ? sgn + sc.value + "%" : sgn + sc.value);
           chips += statChip(label);
         }
         if (s.range) chips += statChip("Range: " + s.range + "'");
@@ -1012,7 +1014,7 @@
       for (var c2 = 0; c2 < e.stats.length; c2++) {
         var s = e.stats[c2];
         if (!s.stat) continue;
-        chips += statChip(s.stat + ": +" + s.value + "%");
+        chips += statChip(s.stat + ": " + ((typeof s.value === "number" && s.value < 0) ? "" : "+") + s.value + "%");
       }
       if (chips) html += '<div style="margin-top:0.3rem;">' + chips + '</div>';
       if (e.description) {
@@ -1075,7 +1077,7 @@
       if (notes.indexOf("2.3% - 5.3% damage") !== -1) { match = true; category = category || "Boss Damage"; }
 
       if (match) {
-        var desc = hasVerbatim(pw) ? (pw.tooltip || pw.procEffect.tooltip) : (pw.notes ? cleanEnhancementNotes(pw.notes) : "");
+        var desc = (pw.tooltip || (pw.procEffect && pw.procEffect.tooltip)) || (hasVerbatim(pw) ? "" : (pw.notes ? cleanEnhancementNotes(pw.notes) : ""));
         var realStats = (pw.stats || []).filter(function (s) { return s.stat !== "CombinedRating"; });
         // Scale stats to Celestial using ratio from current IL
         var curIL = pw.item_level || 75;
