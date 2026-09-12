@@ -404,7 +404,21 @@ optimizer result or stat panel changes whether the true figure is 12.5% or 13.3%
 
 ---
 
+## Blessings of Kelemvor — partial
+
+- **Duration: 3 seconds** (n00b, 2026-09-11, off the buff bar).
+- **10% damage reduction: taken from the tooltip, NOT measured.** Flagged
+  `amountFromTooltip`. This companion has already produced two false tooltip claims, so
+  the figure is carried as unconfirmed rather than as fact.
+
+Two things left hanging:
+
+1. **Kelemvor's Retribution claims to double the Blessings duration.** So is the observed
+   3s already doubled (base 1.5s), or was Retribution not active? Unresolved.
+2. **No uptime is set**, so the engine credits this 3-second buff at full strength. On a
+   buff this short that is almost certainly too generous — see the open question in
+   `companion_verification.md`.
+
 ## Still outstanding
 
-- **Blessings of Kelemvor** — its 10% damage reduction and duration are still unmeasured.
-  Same method: read Incoming Damage / your damage taken at rest and while it is up.
+- Nothing blocking. Both tests are closed.
