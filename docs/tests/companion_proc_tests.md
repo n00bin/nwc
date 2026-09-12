@@ -246,13 +246,37 @@ The 26-hit trial is ordinary variance at this rate, not an internal cooldown.
 Stored on Perfect Vision as `chanceApprox: 13.3` with all 20 raw trials kept. The card
 shows "~13.3% (measured over 20 trials)" so it never reads as an exact game figure.
 
-**Not copied to the other 23 enhancements** — they share the wording but the number is
-unmeasured for them. One more 20-trial run on a different enhancement would show
-whether the family shares a single rate; if it does, applying 12.5% across the family
-would be justified.
+### RULING — n00b, 2026-09-11
 
-Doubling again to 40 trials would only tighten the range to roughly 9.5-18%, which
-still would not separate 10% from 15%. Not worth the time.
+**One rate for the whole "Chance on hit" family.** All 24 conditional enhancements read
+*exactly* "Chance on hit", with no variants, so the Perfect Vision measurement is applied
+across all of them. The card distinguishes the two cases honestly:
+
+- Perfect Vision: "~13.3% (measured over 20 trials)"
+- The other 23: "~13.3% (same trigger wording, measured on Perfect Vision)"
+
+**Anything worded differently must be retested.** A "chance on getting hit" trigger, or
+any trigger that is not a plain on-hit, gets its own 20 trials. None of the current 24
+fall into that bucket, but new data will.
+
+**The companion's hits are assumed to proc at the same rate.** Augments are rarely used
+in practice, so in a real build the pet is landing most of the hits. Measuring the pet's
+rate separately is not practical, and there is no reason to expect the game rolls a
+different number for it.
+
+**Why we stopped at 20 trials.** Separating 10% from 15% needs roughly 120 procs, about
+960 hits — precision improves only with the square root of the sample:
+
+| Total procs | Hits needed | 95% range | Separates 10/15? |
+|---|---|---|---|
+| 20 | 150 | 8.1-19.8% | no |
+| 40 | ~320 | 8.9-16.7% | no |
+| 80 | ~640 | 9.9-15.4% | no |
+| 120 | ~960 | 10.4-14.8% | yes |
+
+Not worth it: **the chance is display-only.** Nothing computes with it. These
+enhancements are modelled as conditional and effectively always-up in combat, so no
+optimizer result or stat panel changes whether the true figure is 12.5% or 13.3%.
 
 ---
 
