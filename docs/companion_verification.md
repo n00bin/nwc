@@ -94,7 +94,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 5 | Savage Allosaur (was Allosaurus) | **VERIFIED** - renamed; stat normalized; NO skills text so summoned bonus UNKNOWN | Epic | Defense/Utility | Maximum Hit Points 7500, Critical Strike 1.9% | - |
 | 6 | Alpha Compy | **VERIFIED** - Call of Vengeance ruled out; Chult doubling captured | Mythic | Utility | Power 7.5% | party: Damage Bonus 1.0% |
 | 7 | Ambush Drake | **VERIFIED** - all four checks confirmed off card c054, nothing to fix | Epic | Offense/Utility | Critical Severity 1.88%, Awareness 1.88% | - |
-| 8 | Angel of Protection | unchecked | Epic | Defense | PROC | party: Defense 3.0% |
+| 8 | Angel of Protection | **VERIFIED** - Protective Ward always-on + non-stacking; Ward captured, blocked on per-effect uptime | Epic | Defense | PROC | party: Defense 3.0% |
 | 9 | Aoth Fezim & Brightwing | unchecked | Mythic | Offense/Utility | Accuracy 3.75%, Combat Advantage 3.75% | - |
 | 10 | Apprentice Healer | unchecked | Common | Utility | Incoming Healing 0.37% | - |
 | 11 | Aranea | unchecked | Uncommon | Offense | PROC | - |
@@ -372,6 +372,12 @@ Process, per companion:
 1. Claude reads the Powers list off the archived Inspect card (or a fresh screenshot) and **surfaces every ally-affecting or enemy-affecting power**, with whatever magnitude and duration the game states.
 2. n00b rules on whether it is worth recording as a buff.
 3. If yes, Claude measures what is missing and records it. If no, the effect is left out of `summonedBuff` entirely and the details go in the companion's `notes` so the work survives.
+
+**ENGINE GAP: ONE UPTIME PER SUMMONED BUFF (found on Angel of Protection, 2026-09-11).** The own-summon path in toon-forge.html reads a single `sb.uptime` and applies it to **every** effect in a `summonedBuff`. That is fine while a companion has one effect, but Angel of Protection has two of very different shapes: Protective Ward is **always on** (+3% Defense to allies) while Ward intercepts **half of all incoming damage for 10s once every 60s** (16.7% uptime max).
+
+They cannot share an uptime. Ward is therefore captured in `summonedBuff.cooldownEffects`, which nothing reads, rather than in `effects[]` where it would be credited at full uptime and make this the strongest defensive companion in the game. **Per-effect uptime is the fix** and it is engine work needing n00b's go. Until then the interception is invisible to the optimizer.
+
+Also captured from card c203: Protective Ward **does not stack** with a second Angel of Protection - party-composition relevant and previously unrecorded.
 
 **NOTES ARE FOR OPEN ITEMS ONLY (n00b ruling 2026-09-11).** A `notes` field should contain something we need to **revisit, verify or fix** - nothing else - so open work stands out instead of hiding inside provenance prose. Start them with VERIFY: or FIX:.
 
