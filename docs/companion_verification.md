@@ -444,6 +444,10 @@ Current state: **534 notes across powers and companions, and only 8 flag an open
 
 **Not scored by the optimizer.** Structuring the data does not make the engine use it; a Chult build still sees half the real value of these powers. Wiring that is engine work and needs n00b's go.
 
+**A CONDITION IS NOT A CHANCE (Baby Bulette, 2026-09-11).** Its power fires when you take a big hit - a condition, always true when met - but it was stored with `chance: 100`, which the card printed as a Chance row. Removed. Same shape as Air Archon's bogus `chance: 10`, which was really its cooldown. **Only store a chance when the game states a percentage roll.**
+
+**POWER NAMES SURVIVE A COMPANION RENAME (n00b 2026-09-11).** Bear Cub still uses "Baby Bear's Instincts" and Savage Allosaur still uses "Allosaurus's Instincts" in game - the companion was renamed, the power was not. Do not rename a power to match its companion without reading it.
+
 **NAME ALIASES: BUILT AND WIRED (2026-09-11).** Saved and shared builds store companions and mounts by NAME, so a rename silently blanks the slot - proven on our own `best_build_warlock_dps_bis`, which had to be hand-edited when Baby Bear became Bear Cub.
 
 I was also wrong earlier: a `COMPANION_NAME_ALIASES` block already existed inside toon-forge.html, but it was hand-maintained and held only one entry (Raptor), so the three renames since had never been added, and **mounts had nothing at all**.
