@@ -26,6 +26,12 @@ First application: **Acolyte of Kelemvor**, both effects dropped — Kelemvor's 
 
 **THRESHOLD NOT YET PINNED — needs n00b.** 43 companions currently carry a summonedBuff and they were never filtered by this standard. They range from Dread Warrior (+5,000 Power party-wide, 66% uptime) down to Alpha Compy (+1% damage, and only while the companion is below half health). Only 14 of the 43 record an uptime at all and **none** record a duration, so most cannot be judged against a magnitude-times-uptime rule without more reading. See the open question at the end of this file.
 
+**SAME STAT IN TWO PLACES = DOUBLE COUNT (found on Air Archon, 2026-09-11).** Air Archon's Insight stored its Power bonus BOTH as an always-on `stats[]` entry AND inside its daily-use proc, so the engine credited it twice - permanently and again conditionally. Fixed: it is proc-only, `stats[]` emptied. A bogus `chance: 10` was also removed (a daily-use trigger is not a chance roll; the 10 was the cooldown misread).
+
+Scan found **3 other powers with the same stat in both places**:
+- **Yojimbo's Discipline** (105) - CORRECT as stored. The proc *swaps* the stat (+7.5% Power, **-7.5% Deflect**) so the base Deflect must stay in `stats[]` for the negative to cancel it.
+- **Raptor's Instincts** (49, Tamed Velociraptor) and **Feral Raptor's Instincts** (241, Feral Velociraptor) - SUSPECTED double count, **NOT touched**. Both carry a per-stack party Power/Awareness value in `stats[]` *and* in a `trigger: "Passive", chance: 100` proc, which project memory says the engine treats as always-on and counts in the base panel. The Tamed Velociraptor is a meta companion (18 of 20 captured builds), so changing it moves real build numbers - needs n00b's go and ideally an in-game read.
+
 **TOOLTIP SCALING CLAIMS ARE NOT TRUSTWORTHY (2026-09-11).** Twice in one companion: "target ally" actually meant the summoner, and Kelemvor's Sword's "based on your companions level and total Critical Avoidance" is false on every clause - measured flat at +1 point across two rarities with two different companion stat values. **Never encode a tooltip's arithmetic; measure it or mark it unverified.**
 
 **Verbatim text rule (n00b 2026-09-11) - the style every companion must follow:**
