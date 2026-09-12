@@ -106,7 +106,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 17 | Baby Bulette (augment) | unchecked | Epic | Defense | PROC | - |
 | 18 | Baby Deep Crow (augment) | unchecked | Mythic | Offense | Power 7.5% | - |
 | 19 | Baby Displacer Beast (augment) | unchecked | Uncommon | Defense/Offense | PROC | - |
-| 20 | Baby Gorilla (augment) | **VERIFIED** off card c056; shares reordered to card wording; rename candidate (infant-gorilla) | Epic | Offense/Utility | Deflect 1.88%, Critical Severity 1.88% | - |
+| 20 | Infant Gorilla (was Baby Gorilla, augment) | **VERIFIED** off card c056; renamed - predicted from the icon filename | Epic | Offense/Utility | Deflect 1.88%, Critical Severity 1.88% | - |
 | 21 | Baby Owlbear (augment) | unchecked | Mythic | Utility | PROC | - |
 | 22 | Barbarian Shaman | unchecked | Rare | Offense/Utility | Combat Advantage 1.25%, Power 1.25% | - |
 | 23 | Basic Bok | unchecked | Epic | Utility | PROC | - |
@@ -474,6 +474,8 @@ Sweeping all 274 and filtering out duplicate-download `(2)` suffixes and punctua
 | Batiri Runt | batiri |
 
 Bolded ones look like real renames of the kind we keep finding. Confirm each with n00b as we reach it rather than renaming on filename evidence alone.
+
+**FIRST PREDICTION CONFIRMED:** `infant-gorilla` was flagged from the filename before we reached the companion, and n00b confirmed **Infant Gorilla** in game. The detector works - the remaining bolded entries are now credible rather than speculative.
 
 **SLOT LISTS CAN BE WRONG TOO (Baby Displacer Beast, 2026-09-12).** We stored Defense/Offense; n00b confirmed **Offense only**. The card said Offense but the label was clipped at the panel edge, so it could not settle it alone.
 
