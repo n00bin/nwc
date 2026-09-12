@@ -26,7 +26,13 @@ First application: **Acolyte of Kelemvor**, both effects dropped — Kelemvor's 
 
 **THRESHOLD NOT YET PINNED — needs n00b.** 43 companions currently carry a summonedBuff and they were never filtered by this standard. They range from Dread Warrior (+5,000 Power party-wide, 66% uptime) down to Alpha Compy (+1% damage, and only while the companion is below half health). Only 14 of the 43 record an uptime at all and **none** record a duration, so most cannot be judged against a magnitude-times-uptime rule without more reading. See the open question at the end of this file.
 
-**THE ENHANCEMENT ITEM LEVEL ON A SCREENSHOT IS PLAYER-SPECIFIC (n00b, 2026-09-11).** The rune's item level comes from whichever companion the PLAYER owns that unlocks it, at the rarity they own it - not from the companion being inspected. n00b hit a card showing the companion's own power at IL 900 and its enhancement at IL 250 in the same frame. So: **never infer a companion's rarity from the enhancement item level, or the reverse.** More dangerous: an enhancement VALUE read off such a card is understated. That has already bitten once - the whole Enduring family was stored at 4% from base-quality text and corrected to 6% (the IL-900 figure). All 30 enhancements are stored at IL 900, which is right; the risk is in any value that was transcribed from a low-rune screenshot.
+**THE ENHANCEMENT ITEM LEVEL ON A SCREENSHOT FOLLOWS THE SUMMONED COMPANION (n00b, 2026-09-11).** Not the companion being inspected, and not the one that unlocks the rune - it is the same input the tooltip names, "the item level of your summoned pet". Evidence: n00b had just upgraded Acolyte of Kelemvor to Rare and had it summoned, so every Inspect panel showed its enhancement at IL 250 even where the companion's own power read IL 900.
+
+Two consequences:
+- **Never infer a companion's rarity from the enhancement item level on a card.** That number describes whatever pet was out when the screenshot was taken.
+- **An enhancement value read off a card is understated whenever the summoned pet was below IL 900.** Already bitten once - the Enduring family was stored at 4% from a low reading and corrected to 6%. All 30 enhancements are stored at IL 900, which is right; the exposure is in any value transcribed from a low-pet screenshot, and a bad one looks like a plausible number.
+
+This also **confirms the Companions page card is modelled correctly**: its enhancement item level and value both follow the rarity selector, which stands in for the summoned companion.
 
 **SAME STAT IN TWO PLACES = DOUBLE COUNT (found on Air Archon, 2026-09-11).** Air Archon's Insight stored its Power bonus BOTH as an always-on `stats[]` entry AND inside its daily-use proc, so the engine credited it twice - permanently and again conditionally. Fixed: it is proc-only, `stats[]` emptied. A bogus `chance: 10` was also removed (a daily-use trigger is not a chance roll; the 10 was the cooldown misread).
 
