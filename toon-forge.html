@@ -3352,6 +3352,7 @@
   <script src="data/overloads.js"></script>
   <script src="data/kits.js"></script>
   <script src="data/general-feats.js"></script>
+  <script src="data/name-aliases.js"></script>
   <script src="data/companions.js"></script>
   <script src="data/companion-powers.js"></script>
   <script src="data/companion-enhancements.js"></script>
@@ -3891,6 +3892,15 @@
         state.summoned = _calias(state.summoned);
         if (Array.isArray(state.activeComps)) state.activeComps = state.activeComps.map(_calias);
         if (Array.isArray(state.partyAllies)) state.partyAllies = state.partyAllies.map(_calias);
+      }
+      // Migrate renamed mounts in the stable (MOUNT_NAME_ALIASES), same reason
+      // as companions: a stable slot stores the mount by name.
+      if (typeof MOUNT_NAME_ALIASES !== "undefined" && Array.isArray(state.stable)) {
+        for (const slot of state.stable) {
+          if (slot && slot.mount && Object.prototype.hasOwnProperty.call(MOUNT_NAME_ALIASES, slot.mount)) {
+            slot.mount = MOUNT_NAME_ALIASES[slot.mount];
+          }
+        }
       }
       // Picked-tier map for same-name multi-IL gear; legacy saves have none.
       state.gearIL = (s.gearIL && typeof s.gearIL === "object") ? { ...s.gearIL } : {};
@@ -7461,12 +7471,6 @@
     // so a data-side rename must map old -> canonical here or those builds
     // silently lose the companion. Applied in applyBuild() + as a fallback in
     // findCompanionByName().
-    const COMPANION_NAME_ALIASES = {
-      // Renamed 2026-07-30: entry was shorthand "Raptor"; the in-game name is
-      // "Tamed Velociraptor" (players searched the real name and found
-      // nothing — community feedback via owner). Wiki + in-game sources agree.
-      "Raptor": "Tamed Velociraptor"
-    };
     const GEAR_NAME_ALIASES = {
       // Removed generic duplicate (old id 393, IL 3600). It was the Explosive
       // Defense variant all along; fold into the labeled entry (id 447).

@@ -444,6 +444,23 @@ Current state: **534 notes across powers and companions, and only 8 flag an open
 
 **Not scored by the optimizer.** Structuring the data does not make the engine use it; a Chult build still sees half the real value of these powers. Wiring that is engine work and needs n00b's go.
 
+**NAME ALIASES: BUILT AND WIRED (2026-09-11).** Saved and shared builds store companions and mounts by NAME, so a rename silently blanks the slot - proven on our own `best_build_warlock_dps_bis`, which had to be hand-edited when Baby Bear became Bear Cub.
+
+I was also wrong earlier: a `COMPANION_NAME_ALIASES` block already existed inside toon-forge.html, but it was hand-maintained and held only one entry (Raptor), so the three renames since had never been added, and **mounts had nothing at all**.
+
+Now:
+- **`formerNames` on the source JSON is the single source of truth.** Add the old name there when renaming.
+- **`build-data.py` generates `data/name-aliases.js`** from it, emitting both `COMPANION_NAME_ALIASES` and `MOUNT_NAME_ALIASES`. The hand-maintained inline block is deleted, so the map can no longer drift from the data.
+- **Toon Forge migrates on load** - summoned companion, the 5 active slots, party-ally support comps, and now every mount in the stable.
+
+Verified by round-tripping a real serialised build with old names injected: `Baby Bear -> Bear Cub`, `Raptor -> Tamed Velociraptor`, `Allosaurus -> Savage Allosaur`, `Olive the Octopus -> Ollie the Octie`.
+
+**ZONE CONDITIONALS ARE NOW STRUCTURED (n00b ruling 2026-09-11: capture the zone).** Alpha Compy's power doubles in Chult and that was only prose in its notes - the power carried no `zoneConditional` field at all. Now stored as `{zone, multiplier, note}` and the card reads **"Doubled in Chult"** instead of a generic badge. Static pages show it too (the generator ignored zone conditionals entirely).
+
+**15 other powers still carry a bare `zoneConditional: true`** - the flag says a zone matters but not WHICH zone or by HOW MUCH, so the card can only show a generic badge. Capture zone and multiplier for each as we pass through: Hell Hound's Senses, Yeth Hound's Presence, Dragon's Bane, Eladrin's Senses, Chultan Hunter's Discipline, Vistani's Discipline, Mageslayer's Assault, Vallenhas' Discipline, Siege Master's Discipline, Wiggin's Wisdom, Stronghold Cleric's Wisdom, Skyblazer's Sight, Dark Dealings, Sense Through the Shadowfell, Fire Eye's Insight.
+
+**Not scored by the optimizer.** Structuring the data does not make the engine use it; a Chult build still sees half the real value of these powers. Wiring that is engine work and needs n00b's go.
+
 **RENAMES NEED AN ALIAS MAP - AND ONE OF OUR OWN SAVED BUILDS JUST BROKE.** Renaming Baby Bear to Bear Cub required editing `docs/best_build_warlock_dps_bis.build.json`, which stored the companion by its old name. That is the exact failure a player hits, demonstrated on our own file. Four renames now: Raptor, Olive the Octopus, Allosaurus, Baby Bear.
 
 **RENAMES NEED AN ALIAS MAP, AND COMPANIONS DO NOT HAVE ONE.** Saved and shared builds store companions by NAME, so a rename silently blanks the slot. Toon Forge already solves this for gear - `GEAR_NAME_ALIASES` in toon-forge.html rewrites old names on load and toasts the player - but **nothing equivalent exists for companions or mounts**. Three renames have already happened with no alias: Raptor -> Tamed Velociraptor, Olive the Octopus -> Ollie the Octie, and now Allosaurus -> Savage Allosaur. A 274-companion audit will produce more.
