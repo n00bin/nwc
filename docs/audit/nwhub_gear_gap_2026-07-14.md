@@ -23,14 +23,14 @@ and 108 "equip-power" mismatches — but after filtering our naming conventions,
 Confirmed absent (`grep "Abyss Conqueror" → 0`). Highest-confidence gap.
 
 ### A2. Rogue frost weapons (Chilling Flow family) — we have Paladin/Cleric frost, not Rogue
-| NW Hub name | Slot | Class | IL | Set |
-|---|---|---|---|---|
-| Runefrost Nightknife | Main Hand | Rogue | 5500 | Jotunskar (Advanced) |
-| Runefrost Sideblade | Off-hand | Rogue | 5500 | Jotunskar (Advanced) |
-| Wintermarked Shardfang | Main Hand | Rogue | 5800 | Jotunskar (Master) |
-| Wintermarked Offhand Fang | Off-hand | Rogue | 5800 | Jotunskar (Master) |
-| Frostbound Knife | Main Hand | Rogue | 4800 | — |
-| Frostbound Sideknife | Off-hand | Rogue | 4800 | — |
+| NW Hub name | Slot | Class | IL | Set | Status |
+|---|---|---|---|---|---|
+| Runefrost Nightknife | Main Hand | Rogue | 5500 | Jotunskar (Advanced) | ✅ ADDED 2026-08-07 (id 7423, screenshot-verified) |
+| Runefrost Sideblade | Off-hand | Rogue | 5500 | Jotunskar (Advanced) | ✅ ADDED 2026-08-07 (id 7424, screenshot-verified) |
+| Wintermarked Shardfang | Main Hand | Rogue | 5800 | Jotunskar (Master) | ✅ ADDED 2026-08-07 (id 7425, screenshot-verified; Reports #239/#240) |
+| Wintermarked Offhand Fang | Off-hand | Rogue | 5800 | Jotunskar (Master) | ✅ ADDED 2026-08-07 (id 7426, screenshot-verified; Report #241) |
+| Frostbound Knife | Main Hand | Rogue | 4800 | — | still missing — needs screenshot |
+| Frostbound Sideknife | Off-hand | Rogue | 4800 | — | still missing — needs screenshot |
 
 ### A3. Cleric frost weapons — verify (we have Frostbound War Mace/Oath Shield, not these)
 | NW Hub name | Slot | IL |

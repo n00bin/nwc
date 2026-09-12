@@ -1,0 +1,3119 @@
+# Missing Screenshot Evidence — 2026-08-10
+
+Companion doc to `full_item_audit_2026-08-10.md`. Every item name below has **no item-named screenshot** anywhere in the archive (16,734 files indexed: `docs/calibration/**` including `_trash/originals`, `_ve_*_up`, `_setbonus_up`, `_preview_archive`).
+
+**How to read this:** these are un-evidenced, not necessarily wrong. Matching is by filename, so batch-captured screenshots (timestamped names) don't count toward coverage — per-category caveats below say where batch evidence may exist. Known matcher false-positives are listed at the bottom.
+
+## Coverage summary
+
+| Category | Unique names | With screenshots | Missing |
+|---|---|---|---|
+| Gear | 5772 | 4507 | **1265** |
+| Artifacts | 138 | 23 | **115** |
+| Enchantments | 47 | 47 | **0** |
+| Companion Gear | 221 | 36 | **185** |
+| Companions | 268 | 37 | **231** |
+| Companion Powers | 259 | 16 | **243** |
+| Companion Enhancements | 30 | 3 | **27** |
+| Mounts | 339 | 31 | **308** |
+| Mount Combat Powers | 96 | 22 | **74** |
+| Mount Equip Powers | 55 | 19 | **36** |
+| Mount Insignias | 49 | 0 | **49** |
+| Mount Insignia Bonuses | 43 | 4 | **39** |
+| Mount Collars | 75 | 0 | **75** |
+| Overloads | 44 | 29 | **15** |
+| Reinforcement Kits | 44 | 0 | **44** |
+| Buffs / Consumables | 123 | 9 | **114** |
+| Set Bonuses (set-detail captures) | 326 | 177 | **149** |
+
+## Gear — 1265 missing
+
+> Filename-matched against 16,734 archived screenshots. ~2,549 generic-named files in `_trash/originals` and ~105 Warlock gear tooltips in `_preview_archive/mod33/` could not be matched by filename and may cover some of these.
+
+### Armor (129)
+- Abyss Conquerer's Healing Raiment (All; IL 2050)
+- Abyss Conquerer's Mauler Plate (All; IL 2050)
+- Abyss Conquerer's Provoker Cuirass (All; IL 2050)
+- Abyss Conquerer's Spellweaver Robe (All; IL 2050)
+- Abyss Striker's Healing Raiment (All; IL 2000)
+- Abyss Striker's Mauler Plate (All; IL 2000)
+- Abyss Striker's Provoker Cuirass (All; IL 2000)
+- Abyss Striker's Spellweaver Robe (All; IL 2000)
+- Adorned Platemail of Halaster's Successor · IL 1010 (Paladin; IL 1010)
+- Adorned Platemail of the Successor (Paladin; IL 990)
+- Aegis of the Crimson Crucible (All; IL 3550)
+- Aegis of the Eternal Sigil (Cleric/Paladin; IL 5000)
+- Ancient Scalebreaker's Cuirass (Barbarian/Fighter/Paladin; IL 1700)
+- Ancient Scalebreaker's Vest (Cleric/Paladin; IL 1700)
+- Apprentice's Ruined Breastplate (Barbarian/Fighter/Paladin; IL 690)
+- Apprentice's Runed Breastplate (Barbarian/Fighter/Paladin; IL 965)
+- Boghide Armor — Sudden Defense (All; IL 3000)
+- Boghide Jerkin — Tactical Daily (All; IL 3000)
+- Boghide Vest — Healer's Influence (Cleric/Paladin; IL 3000)
+- Bone Devil's Ribcage (All; IL 1250)
+- Breastplate of the Crusader (All; IL 1250)
+- Breastplate of the Spy's Guild (Barbarian/Fighter/Paladin; IL 940)
+- Breastplate of the Vital Sigil (Cleric/Paladin; IL 4700)
+- Bregan D'aerthe Expert's Coil (Bard/Warlock; IL 2000)
+- Bregan D'aerthe Priest's Raiment (Cleric/Paladin; IL 2000)
+- Bregan D'aerthe Provoker's Cuirass (Barbarian/Fighter/Paladin; IL 2000)
+- Bulwark of the Eternal Zulkirate (All; IL 4300)
+- Bulwark of the Zulkir's Decree (Barbarian/Bard/Cleric/Fighter/Paladin/Ranger/Rogue/Warlock/Wizard; IL 4550)
+- Carapace of the Red Bastion (All; IL 4100)
+- Cindersilk Robes (Warlock/Wizard; IL 4600)
+- Clingy Leather Coat (All; IL 1225)
+- Cosmic Corsair's Cuirass (All; IL 2400)
+- Cosmic Corsair's Jerkin (All; IL 2400)
+- Cosmic Corsair's Raiment (All; IL 2400)
+- Crimson Scalebreaker's Restoration Vest (Cleric/Paladin; IL 1800)
+- Crimson Scalebreaker's Ward Cuirass (Barbarian/Fighter/Paladin; IL 1800)
+- Cuirass of Endless Butchery (All; IL 4550)
+- Cuirass of the Crimson Reckoning (All; IL 4050)
+- Curseford's Assault Longcoat (Warlock; IL 770)
+- Curseford's Assault Pigaches (Warlock; IL 770)
+- Curseford's Assault Ushanka (Warlock; IL 770)
+- Curseford's Raid Longcoat (Warlock; IL 770)
+- Curseford's Raid Pigaches (Warlock; IL 770)
+- Curseford's Raid Ushanka (Warlock; IL 770)
+- Dark Ritual Robe (All; IL 1225)
+- Delzoun Jerkin (All; IL 2700)
+- Delzoun Raiment (All; IL 2700)
+- Demon Forged Breastplate (Barbarian/Fighter/Paladin; IL 1215)
+- Depthforged Coat (Cleric/Paladin; IL 3000)
+- Devil Forged Breastplate (Barbarian/Fighter/Paladin; IL 1215)
+- Divine Mystic Chestpiece (Cleric/Paladin; IL 1230)
+- Divine Ward Breastplate (Barbarian/Fighter/Paladin; IL 1230)
+- Dragonsteel Cuirass (Barbarian/Fighter/Paladin; IL 1900)
+- Dragonsteel Vest (Cleric/Paladin; IL 1900)
+- Dungeon Raider's Breastplate (Barbarian/Fighter/Paladin; IL 940)
+- Dusk Assault Longcoat (Warlock; IL 1175)
+- Dusk Raid Longcoat (Warlock; IL 1175)
+- Dusk Ward Cuirass (All; IL 1058)
+- Dusk Ward Cuirass — Defense variant (All; IL 1058)
+- Enchanted Bregan D'aerthe Priest's Raiment (Cleric/Paladin; IL 2050)
+- Enchanted Bregan D'aerthe Provoker's Cuirass (Barbarian/Fighter/Paladin; IL 2050)
+- Enchanted Depthweave Coat (Warlock/Wizard; IL 3200)
+- Exalted Maiden's Restoration Brigandine (Cleric/Paladin; IL 2050)
+- Faerie's Tunic (All; IL 1525)
+- Fiend Forged Breastplate (Barbarian/Fighter/Paladin; IL 1230)
+- Forsaken Mender's Scalemail (Bard/Cleric/Paladin/Warlock; IL 1225)
+- Forsaken Sentinel's Breastplate (Barbarian/Fighter/Paladin; IL 1225)
+- Furred Kiuno of the Bear (All; IL 672)
+- Garbs of the Cubi (All; IL 1230)
+- Garbs of the Herald (All; IL 1240)
+- Hag's Rags (All; IL 756)
+- Harness of the Flayed Legion (All; IL 4100)
+- Haunted Hides of the Hall (All; IL 1000)
+- Inferior Plate of the Dragon Hunter (All; IL 1650)
+- Infernal Forged Breastplate (Barbarian/Fighter/Paladin; IL 1200)
+- Knotted Garbs (All; IL 756)
+- Lion Guard's Restoration Cuirass (Paladin; IL 1250)
+- Lion Guard's Ward Cuirass (Paladin; IL 1250)
+- Lolthian Cuirass (Barbarian/Fighter/Paladin; IL 2050)
+- Lolthian Vest (Cleric/Paladin; IL 2050)
+- Mastered Duergar Mercenary's Cuirass (Barbarian/Fighter/Paladin; IL 1900)
+- Mastered Duergar Mercenary's Light Plate (Cleric/Paladin; IL 1900)
+- Mercenary of the Maze's Breastplate (Barbarian/Fighter/Paladin; IL 1000)
+- Midnight Cuirass (All; IL 1525)
+- Mighty Cuirass of the Dragon Hunter (All; IL 1850)
+- Oathlord's Restoration Cuirass (Paladin; IL 770)
+- Oathlord's Ward Cuirass (Paladin; IL 770)
+- Order Mercenary's Breastplate (Barbarian/Fighter/Paladin; IL 1600)
+- Order Physician's Breastplate (Cleric/Paladin; IL 1600)
+- Plate of the Erinyes (All; IL 1240)
+- Poisoned Leathers of Rage (All; IL 1225)
+- Protege's Filigreed Breastplate (Barbarian/Fighter/Paladin; IL 980)
+- Protégé's Chained Robe (Bard/Cleric/Paladin/Warlock; IL 980)
+- Protégé's Mantled Robes (Warlock/Wizard; IL 980)
+- Puppet's Plate (All; IL 756)
+- Raiment of the Bonekeeper (All; IL 3550)
+- Raindrop Raiment (All; IL 1525)
+- Robes of the Crimson Order (All; IL 4050)
+- Robes of the Last Profit (All; IL 1000)
+- Rugged Mail of the Dragon Hunter (All; IL 1850)
+- Rusted Mail of the Dragon Hunter (All; IL 1650)
+- Sacred Platemail of Halaster's Successor · IL 1010 (Paladin; IL 1010)
+- Sacred Platemail of the Successor (Paladin; IL 990)
+- Safety Harness of Protection (All; IL 1225)
+- Sentinel of the Star's Breastplate (Barbarian/Fighter/Paladin; IL 1000)
+- Serene Robes of the Dragon Hunter (All; IL 1850)
+- Shabby Cuirass of the Dragon Hunter (All; IL 1650)
+- Shattered Plate of the Fallen (All; IL 950)
+- Shimbly's Knotted Bark (All; IL 950)
+- Starforged Coat (Cleric/Paladin; IL 2700)
+- Superior Plate of the Dragon Hunter (All; IL 1850)
+- Tactful Leathers of the Dragon Hunter (All; IL 1850)
+- Tattered Exorcist Robes (All; IL 756)
+- Tattered Leathers of the Dragon Hunter (All; IL 1650)
+- Templar of the Twilight's Breastplate (Barbarian/Fighter/Paladin; IL 1000)
+- The Dark Maiden's Restoration Brigandine (Cleric/Paladin; IL 2000)
+- Timeworn Robes of the Dragon Hunter (All; IL 1650)
+- Tunic of the Deceased Negotiator (All; IL 1225)
+- Tunic of the Gifted Negotiator (All; IL 1300)
+- Tunic of the Hell's Negotiator (All; IL 1323)
+- Tunic of the Negotiator (All; IL 1275)
+- Tunic of the Temporary Negotiator (All; IL 1250)
+- Umbral Raid Longcoat (Warlock; IL 728)
+- Vambrace of the Bloodbound Cleric (All; IL 4050)
+- Vestments of the Ashen Chant (All; IL 4100)
+- Vestments of the Crimson Magister (All; IL 4300)
+- Warden's Chestplate (All; IL 756)
+- Wasteland Merc's Leathers (All; IL 1525)
+- Worn Jacket of the Dragon Hunter (All; IL 1650)
+
+### Arms (87)
+- Abyss Conquerer's Healing Mitts (All; IL 2050)
+- Abyss Conquerer's Provoker Gloves (All; IL 2050)
+- Abyss Conquerer's Spellweaver Band (All; IL 2050)
+- Abyss Striker's Healing Mitts (All; IL 2000)
+- Abyss Striker's Provoker Gloves (All; IL 2000)
+- Abyss Striker's Spellweaver Band (All; IL 2000)
+- Ancient Scalebreaker's Guards (Barbarian/Fighter/Paladin; IL 1700)
+- Ancient Scalebreaker's Mitts (Cleric/Paladin; IL 1700)
+- Apprentice's Ruined Gauntlets (Barbarian/Fighter/Paladin; IL 690)
+- Apprentice's Runed Gauntlets (Barbarian/Fighter/Paladin; IL 965)
+- Arms of the Last Resistance (All; IL 1250)
+- Arms of the Living Fire (All; IL 1240)
+- Balor Braces (All; IL 1230)
+- Bindings of the Black Pact (Barbarian/Bard/Cleric/Fighter/Paladin/Ranger/Rogue/Warlock/Wizard; IL 4050)
+- Bindings of the Death Pact (All; IL 4300)
+- Brailiel's Planar Bindings (All; IL 1225)
+- Bregan D'aerthe Priest's Gloves (Cleric/Paladin; IL 2000)
+- Carlunk's Furry Sleeves (All; IL 1000)
+- Cindersilk Armguards (Warlock/Wizard; IL 4600)
+- Cosmic Corsair's Cuffs (All; IL 2400)
+- Cosmic Corsair's Guards (All; IL 2400)
+- Cosmic Corsair's Sleeves (All; IL 2400)
+- Crag Scaler Gauntlets (All; IL 1525)
+- Crimson Scalebreaker's Restoration Mitts (Cleric/Paladin; IL 1800)
+- Crimson Scalebreaker's Ward Guards (Barbarian/Fighter/Paladin; IL 1800)
+- Delzoun Cuffs (All; IL 2700)
+- Delzoun Sleeves (All; IL 2700)
+- Demon Forged Gauntlets (Barbarian/Fighter/Paladin; IL 1215)
+- Depthforged Mitts (Cleric/Paladin; IL 3000)
+- Devil Forged Gauntlets (Barbarian/Fighter/Paladin; IL 1215)
+- Divine Ward Vambraces (Barbarian/Fighter/Paladin; IL 1230)
+- Dragonsteel Guards (Barbarian/Fighter/Paladin; IL 1900)
+- Dragonsteel Mitts (Cleric/Paladin; IL 1900)
+- Dungeon Raider's Gauntlets (Barbarian/Fighter/Paladin; IL 940)
+- Enchanted Bregan D'aerthe Priest's Gloves (Cleric/Paladin; IL 2050)
+- Exalted Maiden's Restoration Grasp (Cleric/Paladin; IL 2050)
+- Fiend Forged Gauntlets (Barbarian/Fighter/Paladin; IL 1230)
+- Forsaken Mender's Braces (Bard/Cleric/Paladin/Warlock; IL 1225)
+- Forsaken Sentinel's Gauntlets (Barbarian/Fighter/Paladin; IL 1225)
+- Gauntlets of Merciless Blows (All; IL 4050)
+- Gauntlets of the High Hierarch (All; IL 4300)
+- Gauntlets of the Infernal Ascendant (All; IL 3550)
+- Gauntlets of the Red Bastion (All; IL 4100)
+- Gauntlets of the Spy's Guild (Barbarian/Fighter/Paladin; IL 940)
+- Gauntlets of the Wrathborn (All; IL 4550)
+- Grasp of the Silent Sentinel (All; IL 3550)
+- Inferior Crushers of the Dragon Hunter (All; IL 1650)
+- Infernal Forged Gauntlets (Barbarian/Fighter/Paladin; IL 1200)
+- Lazaric's Hide Gloves (All; IL 756)
+- Lion Guard's Ward Couters (Paladin; IL 1250)
+- Lolthian Guards (Barbarian/Fighter/Paladin; IL 2050)
+- Lolthian Mitts (Cleric/Paladin; IL 2050)
+- Lycosa's Barbed Gloves (All; IL 756)
+- Mastered Duergar Mercenary's Gauntlets (Barbarian/Fighter/Paladin; IL 1900)
+- Midnight's Grips (All; IL 1525)
+- Mighty Vambraces of the Dragon Hunter (All; IL 1850)
+- Oathkeeper's Ward Coulters (Paladin; IL 560)
+- Oathlord's Restoration Gauntlets (Paladin; IL 770)
+- Oathlord's Ward Gauntlets (Paladin; IL 770)
+- Order Mercenary's Gauntlets (Barbarian/Fighter/Paladin; IL 1600)
+- Order Physician's Gloves (Cleric/Paladin; IL 1600)
+- Plated Gauntlets of Halaster's Successor · IL 1010 (Paladin; IL 1010)
+- Plated Gauntlets of the Successor (Paladin; IL 990)
+- Protege's Filigreed Gauntlets (Barbarian/Fighter/Paladin; IL 980)
+- Protégé's Charmed Gloves (Warlock/Wizard; IL 980)
+- Protégé's Trimmed Gloves (Bard/Cleric/Paladin/Warlock; IL 980)
+- Rugged Gauntlets of the Dragon Hunter (All; IL 1850)
+- Rusted Gauntlets of the Dragon Hunter (All; IL 1650)
+- Serene Mitts of the Dragon Hunter (All; IL 1850)
+- Shabby Vambraces of the Dragon Hunter (All; IL 1650)
+- Sharp Reachers of the Dragon Hunter (Barbarian/Bard/Cleric/Fighter/Paladin/Ranger/Rogue/Warlock/Wizard; IL 1850)
+- Sister's Clutches (All; IL 756)
+- Spiked Defender Vambrace (All; IL 1225)
+- Sprite's Wraps (All; IL 1525)
+- Starforged Mitts (Cleric/Paladin; IL 2700)
+- Superior Crushers of the Dragon Hunter (All; IL 1850)
+- Tactful Gloves of the Dragon Hunter (All; IL 1850)
+- Tattered Gloves of the Dragon Hunter (All; IL 1650)
+- Terrored Grips (All; IL 756)
+- The Dark Maiden's Restoration Grasp (Cleric/Paladin; IL 2000)
+- Timeworn Mitts of the Dragon Hunter (All; IL 1650)
+- Vambraces of the Flayed Legion (All; IL 4100)
+- Vambraces of the Red Sacrament (All; IL 4050)
+- Vambraces of the Unbreakable Creed (All; IL 4550)
+- Venerated Gauntlets of Halaster's Successor · IL 1010 (Paladin; IL 1010)
+- Venerated Gauntlets of the Successor (Paladin; IL 990)
+- Worn Reachers of the Dragon Hunter (All; IL 1650)
+
+### Artifact Equipment (5)
+- League's Assault Khaltan (Rogue; IL 588)
+- League's Elite Assault Khaltan (Rogue; IL 602)
+- League's Elite Raid Khaltan (Rogue; IL 602)
+- League's Raid Khaltan (Rogue; IL 588)
+- Piña Halat (Barbarian; IL 350, 500, 650, 800)
+
+### Belt (36)
+- Apocalypse Bindings (All; IL 0)
+- Assassin's Belt (All; IL 1800)
+- Barovian Cummerbund (All; IL 0)
+- Belt of Blinding Radiance (All; IL 2300)
+- Belt of Valhalla (All; IL 0)
+- Belt of Victory (All; IL 550)
+- Belt of the Caldera (All; IL 3200)
+- Belt of the Forsaken (All; IL 4050)
+- Belt of the Mad Mage (All; IL 550)
+- Blood Raven Ribbons (All; IL 0)
+- Blooming Cord (All; IL 550)
+- Captain's Girdle (All; IL 1400)
+- Chained Restraints (All; IL 550)
+- Detector's Sash (All; IL 2500)
+- Dragonhide Sash (All; IL 1600)
+- Dragonmind Clasp (All; IL 1600)
+- Dragonscale Girdle (All; IL 1600)
+- Dragonsoul Belt (All; IL 1600)
+- Draining Girdle (All; IL 2250)
+- Draining Sash — CON/CHA (All; IL 2250)
+- Draining Sash — STR/CHA (All; IL 2250)
+- Greater Beholder Belt (All; IL 2050)
+- House Baenre Wrap (All; IL 2000)
+- Lacings of the Dead (All; IL 0)
+- Mirror-Plated Belt (All; IL 875)
+- Netherese Engineer's Chain (All; IL 2000)
+- Nightpiercer Bindings (All; IL 4050)
+- Sash of Shooting Stars (All; IL 2600)
+- Tassets of Mind Restraint (All; IL 2000)
+- Tentacle Wrap (All; IL 1800)
+- Tiamat Sash (All; IL 1000)
+- Tiamat's Golden Sash (All; IL 1800)
+- Trobriand's Conduction Cable (All; IL 550)
+- Twinkle of the Stars (All; IL 350)
+- Whip of the Erinyes (All; IL 550)
+- Wyvern-Skin Belt (All; IL 550)
+
+### Clothing: Jotunskar (1)
+- Veinlit Earthhard Guard (All; IL 3800)
+
+### Feet (115)
+- Abyss Conquerer's Healing Sollerets (All; IL 2050)
+- Abyss Conquerer's Mauler Greaves (All; IL 2050)
+- Abyss Conquerer's Provoker Crushers (All; IL 2050)
+- Abyss Conquerer's Spellweaver Crakows (All; IL 2050)
+- Abyss Striker's Healing Sollerets (All; IL 2000)
+- Abyss Striker's Mauler Greaves (All; IL 2000)
+- Abyss Striker's Provoker Crushers (All; IL 2000)
+- Abyss Striker's Spellweaver Crakows (All; IL 2000)
+- Ancient Scalebreaker's Pigaches (Cleric/Paladin; IL 1700)
+- Ancient Scalebreaker's Sabatons (Barbarian/Fighter/Paladin; IL 1700)
+- Apprentice's Ruined Sabatons (Barbarian/Fighter/Paladin; IL 690)
+- Apprentice's Runed Sabatons (Barbarian/Fighter/Paladin; IL 965)
+- Armando's Dueling Boots (All; IL 1225)
+- Barbed Cultist Greaves (All; IL 1225)
+- Boots of the Bandit (All; IL 756)
+- Boots of the Endless March (All; IL 4300)
+- Boots of the Herald (All; IL 1240)
+- Boots of the Marching Legions (All; IL 4050)
+- Bregan D'aerthe Priest's Sollerets (Cleric/Paladin; IL 2000)
+- Bregan D'aerthe Provoker's Crushers (Barbarian/Fighter/Paladin; IL 2000)
+- Busted Iron Leggings (All; IL 1225)
+- Cindersilk Shoes (Warlock/Wizard; IL 4600)
+- Cosmic Corsair's Boots (All; IL 2400)
+- Cosmic Corsair's Cackrows (All; IL 2400)
+- Cosmic Corsair's Sabatons (All; IL 2400)
+- Crimson Scalebreaker's Restoration Pigaches (Cleric/Paladin; IL 1800)
+- Crimson Scalebreaker's Ward Sabatons (Barbarian/Fighter/Paladin; IL 1800)
+- Delzoun Boots (All; IL 2700)
+- Delzoun Cacknows (All; IL 2700)
+- Delzoun Sabatons (All; IL 2700)
+- Demon Forged Sabatons (Barbarian/Fighter/Paladin; IL 1215)
+- Depthforged Spikes (Cleric/Paladin; IL 3000)
+- Devil Forged Sabatons (Barbarian/Fighter/Paladin; IL 1215)
+- Divine Mystic Pigaches (Cleric/Paladin; IL 1230)
+- Divine Ward Greaves (Barbarian/Fighter/Paladin; IL 1230)
+- Dragonsteel Spikes (Cleric/Paladin; IL 1900)
+- Dungeon Raider's Sabatons (Barbarian/Fighter/Paladin; IL 940)
+- Dusk Assault Pigaches (Warlock; IL 1175)
+- Dusk Raid Pigaches (Warlock; IL 1175)
+- Enchanted Bregan D'aerthe Priest's Sollerets (Cleric/Paladin; IL 2050)
+- Enchanted Bregan D'aerthe Provoker's Crushers (Barbarian/Fighter/Paladin; IL 2050)
+- Exalted Maiden's Restoration Stompers (Cleric/Paladin; IL 2050)
+- Faerie's Steps (All; IL 1525)
+- Fiend Forged Sabatons (Barbarian/Fighter/Paladin; IL 1230)
+- Forsaken Mender's Cuisses (Bard/Cleric/Paladin/Warlock; IL 1225)
+- Forsaken Sentinel's Sabatons (Barbarian/Fighter/Paladin; IL 1225)
+- Greaves of the Crimson March (Barbarian/Bard/Cleric/Fighter/Paladin/Ranger/Rogue/Warlock/Wizard; IL 4550)
+- Greaves of the Fallen Angel (All; IL 1230)
+- Greaves of the Iron Doctrine (All; IL 4050)
+- Greaves of the Lightguard (All; IL 1250)
+- Greaves of the Red Bastion (All; IL 4100)
+- Greaves of the Unbroken Doctrine (All; IL 4300)
+- Gurtunk's Booties (All; IL 950)
+- Hard Rock Kickers (All; IL 950)
+- Heels of Fury (All; IL 756)
+- Inferior Stompers of the Dragon Hunter (All; IL 1650)
+- Infernal Forged Sabatons (Barbarian/Fighter/Paladin; IL 1200)
+- Lion Guard's Restoration Poleyns (Paladin; IL 1250)
+- Lion Guard's Ward Poleyns (Paladin; IL 1250)
+- Lolthian Spikes (Cleric/Paladin; IL 2050)
+- Lycan Boots of the Pack (All; IL 756)
+- Mastered Duergar Mercenary's Plate Sabatons (Barbarian/Fighter/Paladin; IL 1900)
+- Mastered Duergar Mercenary's Restoration Sabatons (Cleric/Paladin; IL 1900)
+- Mercenary of the Maze's Sabatons (Barbarian/Fighter/Paladin; IL 1000)
+- Midnight's Whispers (All; IL 1525)
+- Mighty Greaves of the Dragon Hunter (All; IL 1850)
+- Mighty Storm Slippers (All; IL 1225)
+- Mirestep Boots — Discharged Precision (All; IL 3000)
+- Mirestep Boots — Enduring Resilience (All; IL 3000)
+- Mirestep Boots — Ruthless Resources (Cleric/Paladin; IL 3000)
+- Oathlord's Restoration Sabatons (Paladin; IL 770)
+- Oathlord's Ward Sabatons (Paladin; IL 770)
+- Order Mercenary's Greaves (Barbarian/Fighter/Paladin; IL 1600)
+- Order Physician's Sollerets (Cleric/Paladin; IL 1600)
+- Plated Sabatons of Halaster's Successor · IL 1010 (Paladin; IL 1010)
+- Plated Sabatons of the Successor (Paladin; IL 990)
+- Protege's Gild Boots (Barbarian/Fighter/Paladin; IL 980)
+- Protégé's Layered Boots (Warlock/Wizard; IL 980)
+- Protégé's Plated Boots (Barbarian/Fighter; IL 980)
+- Root Stompers (All; IL 1000)
+- Rugged Sabatons of the Dragon Hunter (All; IL 1850)
+- Rusted Rider Greaves (All; IL 756)
+- Rusted Sabatons of the Dragon Hunter (All; IL 1650)
+- Sabatons of the Deathless Faith (All; IL 4550)
+- Sabatons of the Exalted Martyr (All; IL 4050)
+- Sabatons of the Flayed Legion (All; IL 4100)
+- Sabatons of the Silent Passage (All; IL 3550)
+- Sabatons of the Spy's Guild · Combat Advantage (Barbarian/Fighter/Paladin; IL 940)
+- Sabatons of the Vital Sigil (Cleric/Paladin; IL 4700)
+- Sentinel of the Star's Sabatons (Barbarian/Fighter/Paladin; IL 1000)
+- Serene Boots of the Dragon Hunter (All; IL 1850)
+- Shabby Greaves of the Dragon Hunter (All; IL 1650)
+- Shoes of Superstition (All; IL 756)
+- Shrouds of the Ashen Chant (All; IL 4100)
+- Slips of the Rain (All; IL 1525)
+- Sparkly Slippers of Sloopna (All; IL 950)
+- Stalkers of the Undying Legions (All; IL 3550)
+- Starforged Spikes (Cleric/Paladin; IL 2700)
+- Stealer of the Star's Boots (Bard/Cleric/Ranger/Rogue; IL 1000)
+- Striders of the Gilded Hunter (All; IL 3550)
+- Superior Stompers of the Dragon Hunter (All; IL 1850)
+- Tactful Boots of the Dragon Hunter (All; IL 1850)
+- Tattered Boots of the Dragon Hunter (All; IL 1650)
+- Templar of the Twilight's Sabatons (Barbarian/Fighter/Paladin; IL 1000)
+- The Dark Maiden's Restoration Stompers (Cleric/Paladin; IL 2000)
+- Timeworn Boots of the Dragon Hunter (All; IL 1650)
+- Treads of the Arcane Thrall (All; IL 4050)
+- Treads of the Arch-Thrall (All; IL 4300)
+- Umbral Raid Pigaches (Warlock; IL 728)
+- Venerated Sabatons of Halaster's Successor · IL 1010 (Paladin; IL 1010)
+- Venerated Sabatons of the Successor (Paladin; IL 990)
+- Warboots of the Cataclysmic March (All; IL 4550)
+- Wasteland Wanderers (All; IL 1525)
+- Wisps of the Shadow Demon (All; IL 1230)
+- Worn Longboots of the Dragon Hunter (All; IL 1650)
+
+### Head (116)
+- Abyss Conquerer's Healing Guard (All; IL 2050)
+- Abyss Conquerer's Mauler Mask (All; IL 2050)
+- Abyss Conquerer's Provoker Helm (All; IL 2050)
+- Abyss Conquerer's Spellweaver Hood (All; IL 2050)
+- Abyss Striker's Healing Guard (All; IL 2000)
+- Abyss Striker's Mauler Mask (All; IL 2000)
+- Abyss Striker's Provoker Helm (All; IL 2000)
+- Abyss Striker's Spellweaver Hood (All; IL 2000)
+- Adorned Helm of Halaster's Successor · IL 1010 (Paladin; IL 1010)
+- Adorned Helm of Halaster's Successor · IL 990 (Paladin; IL 990)
+- Ancient Scalebreaker's Cover (Cleric/Paladin; IL 1700)
+- Apprentice's Ruined Helm (Barbarian/Fighter/Paladin; IL 690)
+- Apprentice's Runed Helm (Barbarian/Fighter/Paladin; IL 965)
+- Boghide Cap — Critical Spiker (All; IL 3000)
+- Boghide Cowl — Gladiator's Restoration (Cleric/Paladin; IL 3000)
+- Boghide Helm — Warden's Reflexes (All; IL 3000)
+- Bone Harvester Hood (All; IL 1225)
+- Bregan D'aerthe Priest's Guard (Cleric/Paladin; IL 2000)
+- Bregan D'aerthe Provoker's Helm (Barbarian/Fighter/Paladin; IL 2000)
+- Broken Cap of the Omnipotent (All; IL 1000)
+- Chitter's Fangs (All; IL 672)
+- Cosmic Corsair's Cap (All; IL 2400)
+- Cosmic Corsair's Coif (All; IL 2400)
+- Cosmic Corsair's Helm (All; IL 2400)
+- Cowl of the Dead (All; IL 756)
+- Crimson Scalebreaker's Restoration Cover (Cleric/Paladin; IL 1800)
+- Crimson Scalebreaker's Ward Helm (Barbarian/Fighter/Paladin; IL 1800)
+- Crown of Brambles (All; IL 756)
+- Crown of the Everscourge (All; IL 4550)
+- Crown of the First Enthraller (Barbarian/Bard/Cleric/Fighter/Paladin/Ranger/Rogue/Warlock/Wizard; IL 4550)
+- Crown of the Lost King (All; IL 1000)
+- Crown of the Supreme Will (All; IL 4050)
+- Crown of the Undead (All; IL 756)
+- Crown of the Unyielding Will (All; IL 4300)
+- Decaying Habit (All; IL 756)
+- Delzoun Cap (All; IL 2700)
+- Delzoun Coif (All; IL 2700)
+- Demon Forged Helm (Barbarian/Fighter/Paladin; IL 1215)
+- Demon Hunter's Trackers (All; IL 1230)
+- Depthforged Cover (Cleric/Paladin; IL 3000)
+- Devil Forged Helm (Barbarian/Fighter/Paladin; IL 1215)
+- Dinohide Assault Chinibilli (Bard/Rogue; IL 784)
+- Dinohide Raid Chinibilli (Bard/Rogue; IL 784)
+- Divine Mystic Helm (Cleric/Paladin; IL 1230)
+- Divine Ward Sallet (Barbarian/Fighter/Paladin; IL 1230)
+- Dragonsteel Cover (Cleric/Paladin; IL 1900)
+- Dragonsteel Helm (Barbarian/Fighter/Paladin; IL 1900)
+- Dungeon Raider's Helm (Barbarian/Fighter/Paladin; IL 940)
+- Dusk Assault Cowl (Warlock; IL 1175)
+- Enchanted Bregan D'aerthe Priest's Guard (Cleric/Paladin; IL 2050)
+- Enchanted Bregan D'aerthe Provoker's Helm (Barbarian/Fighter/Paladin; IL 2050)
+- Enchanted Depthweave Cap (Warlock/Wizard; IL 3200)
+- Exalted Maiden's Restoration Cover (Cleric/Paladin; IL 2050)
+- Fancy Duelist Mask of Cormyr (All; IL 1225)
+- Fiend Forged Helm (Barbarian/Fighter/Paladin; IL 1230)
+- Forsaken Mender's Coif (Bard/Cleric/Paladin/Warlock; IL 1225)
+- Forsaken Sentinel's Helm (Barbarian/Fighter/Paladin; IL 1225)
+- Goristro's Horns (All; IL 1230)
+- Hat of the Cowardly (All; IL 950)
+- Helm of the Eternal Gaze (All; IL 3550)
+- Helm of the Skyblazer (All; IL 1250)
+- Helm of the Spy's Guild (Barbarian/Fighter/Paladin; IL 940)
+- Hood of the Obedient (All; IL 4050)
+- Hood of the Subjugator (All; IL 4300)
+- Inferior Helmet of the Dragon Hunter (All; IL 1650)
+- Infernal Forged Helm (Barbarian/Fighter/Paladin; IL 1200)
+- Infernal Offering Helm (All; IL 1225)
+- Leafy Disguise of the Wanted (All; IL 950)
+- Lion Guard's Restoration Barbute (Paladin; IL 1250)
+- Lion Guard's Ward Barbute (Paladin; IL 1250)
+- Lolthian Cover (Cleric/Paladin; IL 2050)
+- Lolthian Helm (Barbarian/Fighter/Paladin; IL 2050)
+- Mask of the Flayed Legion (All; IL 4100)
+- Mastered Duergar Mercenary's Coif (Cleric/Paladin; IL 1900)
+- Mercenary of the Maze's Helm (Barbarian/Fighter/Paladin; IL 1000)
+- Midnight Cowl (All; IL 1525)
+- Mighty Helm of the Dragon Hunter (All; IL 1850)
+- Murme's Soup Bowl (All; IL 950)
+- Nightpact Coif (Rogue; IL 4600)
+- Oathlord's Restoration Barbute (Paladin; IL 770)
+- Oathlord's Ward Barbute (Paladin; IL 770)
+- Order Mercenary's Armet (Barbarian/Fighter/Paladin; IL 1600)
+- Order Physician's Helm (Cleric/Paladin; IL 1600)
+- Protege's Feathered Helm (Barbarian/Fighter/Paladin; IL 980)
+- Protégé's Charmed Hat (Warlock/Wizard; IL 980)
+- Protégé's Crowned Coif (Bard/Cleric/Paladin/Warlock; IL 980)
+- Rain-Catcher (All; IL 1525)
+- Ras Manca's Spare Hat (All; IL 756)
+- Redcap's Cap (All; IL 1525)
+- Rugged Sallet of the Dragon Hunter (All; IL 1850)
+- Rusted Sallet of the Dragon Hunter (All; IL 1650)
+- Sacred Helm of Halaster's Successor (Paladin; IL 1010)
+- Sacred Helm of the Successor (Paladin; IL 990)
+- Sentinel of the Star's Helm (Barbarian/Fighter/Paladin; IL 1000)
+- Serene Hood of the Dragon Hunter (All; IL 1850)
+- Shabby Helm of the Dragon Hunter (All; IL 1650)
+- Shadowbrand Coif (Bard/Warlock; IL 4600)
+- Sood's Good Wood Hood (All; IL 1000)
+- Starforged Cover (Cleric/Paladin; IL 2700)
+- Superior Helmet of the Dragon Hunter (All; IL 1850)
+- Tattered Cap of the Dragon Hunter (All; IL 1650)
+- Templar of the Twilight's Helm (Barbarian/Fighter/Paladin; IL 1000)
+- The Cardinal's Coral Coif (All; IL 950)
+- The Dark Maiden's Restoration Cover (Cleric/Paladin; IL 2000)
+- Timeworn Hood of the Dragon Hunter (All; IL 1650)
+- Turban of Shifting Sands (All; IL 1525)
+- Umbral Assault Cowl (Warlock; IL 728)
+- Umbral Raid Cowl (Warlock; IL 728)
+- Veil of the Blinking Beast (All; IL 1225)
+- Veil of the Enclave (All; IL 4050)
+- Veil of the Eternal Enclave (All; IL 4300)
+- Veil of the Last Oath (All; IL 3550)
+- Visage of the Undying Faith (All; IL 4050)
+- Warhelm of the Crimson Apex (All; IL 3550)
+- Whisper's Hood of Quiet (All; IL 1250)
+- Worn Circlet of the Dragon Hunter (All; IL 1650)
+
+### Main Hand (50)
+- Alabaster Pact Blade (Warlock; IL 1000)
+- Antique Mace of the Vale (Paladin; IL 1700)
+- Bear Tribe Blade (Paladin; IL 4)
+- Bismuth Mace (Paladin; IL 3400)
+- Burnished Pact Blade (Warlock; IL 1000)
+- Corpseslayer (Warlock; IL 350, 500, 650, 700, 800)
+- Crystal Mace (Paladin; IL 3100)
+- Deathstinger Bow of the Thayan Zealot (Ranger; IL 3300)
+- Durgarrn Thord Pactblade (Warlock; IL 1850)
+- Ebonized Pact Blade (Warlock; IL 909)
+- Encased Magma Hammer (Paladin; IL 2700)
+- Encased Magma Pactblade (Warlock; IL 2700)
+- Exalted Corpseslayer (Warlock; IL 350, 500, 650, 800)
+- Feywood Club (Paladin; IL 1400)
+- Feywood Pact Blade (Warlock; IL 1400)
+- Feywood Pact Blade +1 (Warlock; IL 1500)
+- Fleshbaker (Bard; IL 350)
+- Fortified Mace of the Vale (Paladin; IL 1800)
+- Frostbound Hunter's Bow (Ranger; IL 4800)
+- Golden Pact Blade of the Watcher (Warlock; IL 1000)
+- Hellfire Engine Clatter · IL 1000 (Paladin; IL 1000)
+- Hellfire Engine Clatter · IL 1200 (Paladin; IL 1200)
+- Hellfire Engine Clatter · IL 600 (Paladin; IL 600)
+- Hellfire Engine Clatter · IL 800 (Paladin; IL 800)
+- Infiltrator of the Golden Dragon (Rogue; IL 300)
+- Lionheart Pact Blade (Warlock; IL 1200)
+- Meteoric Iron Mace (Paladin; IL 2450)
+- Mountaineer Pact Blade (Warlock; IL 1000)
+- Nightspiercer Dagger of the Thayan Zealot (Rogue; IL 3300)
+- Oathbound Judgment (Paladin; IL 3800)
+- Obsidian Omihuiclli (Rogue; IL 350)
+- Perfect Justice of Lolth (Paladin; IL 2475)
+- Shadewalker's Rapier (Bard; IL 350)
+- Shadewalker's Rapier (IL 500) (Bard; IL 500)
+- Shadewalker's Rapier (IL 650) (Bard; IL 650)
+- Shadewalker's Rapier (IL 800) (Bard; IL 800)
+- Shard of Orcus' Wand (All; IL 250)
+- Solarium Kris +1 (Rogue; IL 2700)
+- Sunset Mace · IL 350 (Paladin; IL 350)
+- Sunset Mace · IL 500 (Paladin; IL 500)
+- Sunset Mace · IL 650 (Paladin; IL 650)
+- Sunset Mace · IL 800 (Paladin; IL 800)
+- The Legion Guard's Damned Mace · IL 1000 (Paladin; IL 1000)
+- The Legion Guard's Damned Mace · IL 1200 (Paladin; IL 1200)
+- The Legion Guard's Damned Mace · IL 600 (Paladin; IL 600)
+- The Legion Guard's Damned Mace · IL 800 (Paladin; IL 800)
+- Twisted Makhira (Bard; IL 300, 400, 500, 600)
+- Voidtouched Battleaxe (Paladin; IL 3000)
+- Woote Jambiya (Bard; IL 350, 500, 650, 800)
+- Xaryxian Battleaxe (Paladin; IL 2750)
+
+### Neck (36)
+- Apocalypse Choker (All; IL 0)
+- Assassin's Choker (All; IL 1800)
+- Barovian Lavaliere (All; IL 0)
+- Blood Raven Pendant (All; IL 0)
+- Captain's Pendant (All; IL 1400)
+- Carcanet of the Dead (All; IL 0)
+- Chains of Glory (All; IL 550)
+- Cosmic Clasp (All; IL 2600)
+- Detector's Pendant (All; IL 2500)
+- Divine Focus (All; IL 550)
+- Dragonhide Choker (All; IL 1600)
+- Dragonmind Charm (All; IL 1600)
+- Dragonscale Neckguard (All; IL 1600)
+- Dragonsoul Brooch (All; IL 1600)
+- Draining Choker (All; IL 2250)
+- Draining Talisman (All; IL 2250)
+- Electric Collar (All; IL 550)
+- House Baenre Brooch (All; IL 2000)
+- Hypnotizing Pendant (All; IL 2050)
+- Jhesyra's Tattered Mantle (All; IL 550)
+- Locket of the Caldera (All; IL 3200)
+- Necklace of the Forsaken (All; IL 4050)
+- Necklace of the Mad Mage (All; IL 550)
+- Netherese Engineer's Pendant (All; IL 2000)
+- Nightpiercer Choker (All; IL 4050)
+- Pendant of Eternal Light (All; IL 2300)
+- Pendant of the Crimson Oath (All; IL 4050)
+- Reflective Collar (All; IL 550)
+- Ritualistic Necklace (All; IL 4050)
+- Sanity Preservation Choker (All; IL 2000)
+- Starshard Choker (All; IL 350)
+- Tentacle Eye (All; IL 1800)
+- The Engine Master's Mantle (All; IL 550)
+- Tiamat's Golden Necklace (All; IL 1800)
+- Woven Vine (All; IL 550)
+- Wyvern's Eye Necklace (All; IL 550)
+
+### Off Hand (24)
+- Doomward Bastion of the Thayan Zealot (Paladin; IL 3900)
+- Ebon Crusader's Ward (Paladin; IL 3800)
+- Encased Magma Tome (Warlock; IL 2700)
+- Exalted Obsidian Iztopilli · IL 400 (Ranger; IL 400)
+- Exalted Obsidian Iztopilli · IL 550 (Ranger; IL 550)
+- Exalted Obsidian Iztopilli · IL 700 (Ranger; IL 700)
+- Exalted Obsidian Iztopilli · IL 850 (Ranger; IL 850)
+- Exalted Obsidian Mokali (Bard; IL 400, 550, 700, 850)
+- Hellfire Engine Sidepanel · IL 1000 (Paladin; IL 1000)
+- Hellfire Engine Sidepanel · IL 1200 (Paladin; IL 1200)
+- Hellfire Engine Sidepanel · IL 600 (Paladin; IL 600)
+- Hellfire Engine Sidepanel · IL 800 (Paladin; IL 800)
+- Obsidian Iztopilli · IL 350 (Ranger; IL 350)
+- Obsidian Iztopilli · IL 500 (Ranger; IL 500)
+- Obsidian Iztopilli · IL 650 (Ranger; IL 650)
+- Obsidian Iztopilli · IL 800 (Ranger; IL 800)
+- Obsidian Mokali (Bard; IL 350, 500, 650, 800)
+- Perfect Barb of Lolth (Rogue; IL 2475)
+- Perfect Tower of Lolth (Paladin; IL 2475)
+- Shadewalker's Lute (Bard; IL 350)
+- Shadewalker's Lute (IL 500) (Bard; IL 500)
+- Shadewalker's Lute (IL 650) (Bard; IL 650)
+- Shadewalker's Lute (IL 800) (Bard; IL 800)
+- Sovereigner of the Golden Dragon (Warlock; IL 300)
+
+### Pants (181)
+- Abyssal Void Pants (All; IL 2000)
+- Assault Trousers of the Spy's Guild (All; IL 940)
+- Basalt Burned Pants (All; IL 1900)
+- Basalt Glazed Pants (All; IL 1900)
+- Basalt Imbued Pants (All; IL 1900)
+- Basalt Infused Pants (All; IL 1900)
+- Basalt Plated Pants (All; IL 1900)
+- Basalt Stitched Pants (All; IL 1900)
+- Blackened Void Pants (All; IL 2000)
+- Bregan D'aerthe Mercenary's Leggings (All; IL 1600)
+- Bregan D'aerthe Officer's Leggings (All; IL 1600)
+- Bregan D'aerthe Physician's Leggings (All; IL 1600)
+- Bregan D'aerthe Scout's Leggings (All; IL 1600)
+- Bregan D'aerthe Soldier's Leggings (All; IL 1600)
+- Brilliant Flarefiber Pants (All; IL 1800)
+- Brilliant Starwoven Pants (All; IL 1700)
+- Cerebral Sage Sigils — Critical Severity/Forte (All; IL 2600)
+- Cerebral Sage Sigils — Critical Strike/Incoming Healing (All; IL 2600)
+- Cerebral Warden Sigils (All; IL 2600)
+- Corroded Tights of the Dragon Cult (All; IL 1300)
+- Covert Branche Assault Breeches (All; IL 1600)
+- Covert Branche Raid Breeches (All; IL 1600)
+- Covert Branche Restoration Breeches (All; IL 1600)
+- Covert Branche Scout Breeches (All; IL 1600)
+- Covert Branche Ward Breeches (All; IL 1600)
+- Dashing Mycelial Bottoms (All; IL 1550)
+- Dazzling Flarefiber Pants (All; IL 1800)
+- Dazzling Starwoven Pants (All; IL 1700)
+- Debonair Mycelial Bottoms (All; IL 1550)
+- Defiant Northdark Breeches (All; IL 1550)
+- Distinct Mycelial Bottoms (All; IL 1550)
+- Drow Assailant's Tights (All; IL 1450)
+- Drow Healer's Tights (All; IL 1450)
+- Drow Knight's Tights (All; IL 1450)
+- Drow Mage's Tights (All; IL 1450)
+- Drow Mercenary's Tights (All; IL 1450)
+- Drow Priest's Tights (All; IL 1450)
+- Ember Burned Pants (All; IL 2400)
+- Ember Glazed Pants (All; IL 2400)
+- Ember Imbued Pants (All; IL 2400)
+- Ember Infused Pants (All; IL 2400)
+- Ember Plated Pants (All; IL 2400)
+- Ember Stitched Pants (All; IL 2400)
+- Endless Void Pants (All; IL 2000)
+- Fabulous Mycelial Bottoms (All; IL 1550)
+- Graceful Mycelial Bottoms (All; IL 1550)
+- Halaster's Party Pants (All; IL 1010)
+- Illuminated Flarefiber Pants (All; IL 1800)
+- Illuminated Starwoven Pants (All; IL 1700)
+- Infernal Forged Assault Trousers (All; IL 1200)
+- Infernal Forged Raid Trousers (All; IL 1200)
+- Infernal Forged Restoration Trousers (All; IL 1200)
+- Infernal Forged Ward Trousers (All; IL 1200)
+- Leggings of the Herald (All; IL 1100)
+- Lightless Void Pants (All; IL 2000)
+- Lolth's Embrace: Anger, Lower (All; IL 1750)
+- Lolth's Embrace: Chaos, Lower (All; IL 1750)
+- Lolth's Embrace: Hatred, Lower (All; IL 1750)
+- Lolth's Embrace: Rage, Lower (All; IL 1750)
+- Lolth's Embrace: Revenge, Lower (All; IL 1750)
+- Lower Pact Brands of the Blaze-bond (All; IL 1325)
+- Lower Pact Brands of the Fire (All; IL 1250)
+- Lower Pact Brands of the Flame (All; IL 1225)
+- Lower Pact Brands of the Inferno (All; IL 1300)
+- Lower Pact Brands of the Pyre (All; IL 1275)
+- Luminous Flarefiber Pants (All; IL 1800)
+- Luminous Starwoven Pants (All; IL 1700)
+- Magma Burned Pants (All; IL 2200)
+- Magma Glazed Pants (All; IL 2200)
+- Magma Imbued Pants (All; IL 2200)
+- Magma Infused Pants (All; IL 2200)
+- Magma Plated Pants (All; IL 2200)
+- Magma Stitched Pants (All; IL 2200)
+- Mark of the Initiate (Unfaltered Finesse) (All; IL 2600)
+- Mark of the Novice (All; IL 2600)
+- Mark of the Novice (Unfaltered Finesse) (All; IL 2600)
+- Mark of the Novice — Solitary Power (All; IL 2600)
+- Mighty Dwarven Limb Pattern (All; IL 1600)
+- Mudwalker's Sage Sigils — Critical Severity/Outgoing Healing (All; IL 2100)
+- Mudwalker's Sage Sigils — Critical Strike/Forte (All; IL 2100)
+- Mudwalker's Warden Sigils (All; IL 2100)
+- Mystic Conduit Insignia — Challenger's Accuracy (All; IL 3600)
+- Mystic Conduit Mark — Charged Precision (All; IL 3600)
+- Mystic Conduit Seal — Survivor's Forte (All; IL 3600)
+- Mystic Conduit Sigil — Survivor's Avoidance (Lesser) (All; IL 3600)
+- Nostalgic Mycelial Bottoms (All; IL 1550)
+- Obsidian Burned Pants (All; IL 2000)
+- Obsidian Glazed Pants (All; IL 2000)
+- Obsidian Imbued Pants (All; IL 2000)
+- Obsidian Infused Pants (All; IL 2000)
+- Obsidian Plated Pants (All; IL 2000)
+- Obsidian Stitched Pants (All; IL 2000)
+- Oceans' Sage Ink — Critical Strike/Control Resistance (All; IL 2350)
+- Oceans' Sage Ink — Critical Strike/Incoming Healing (All; IL 2350)
+- Pants of the Blinding Defense (All; IL 1525)
+- Pants of the Blue Leaf +1 (All; IL 1225)
+- Pants of the Blue Leaf +2 (All; IL 1250)
+- Pants of the Blue Leaf +3 (All; IL 1275)
+- Pants of the Blue Leaf +4 (All; IL 1300)
+- Pants of the Clarifying Stance (All; IL 1525)
+- Pants of the Clear Mind (All; IL 1525)
+- Pants of the Critical Guard (All; IL 1525)
+- Pants of the Cruel Interrogator (All; IL 1275)
+- Pants of the Cunning Retreat (All; IL 1525)
+- Pants of the Deceased Negotiator (All; IL 1225)
+- Pants of the Duelist (All; IL 1010)
+- Pants of the Enchanter (All; IL 1010)
+- Pants of the Firm Rebuttal (All; IL 1525)
+- Pants of the Gifted Negotiator (All; IL 1300)
+- Pants of the Gold Dawn +1 (All; IL 1225)
+- Pants of the Gold Dawn +2 (All; IL 1250)
+- Pants of the Gold Dawn +3 (All; IL 1275)
+- Pants of the Gold Dawn +4 (All; IL 1300)
+- Pants of the Green Storm +2 (All; IL 1250)
+- Pants of the Green Storm +3 (All; IL 1275)
+- Pants of the Green Storm +3 (Avoidance variant) (All; IL 1225)
+- Pants of the Green Storm +4 (All; IL 1300)
+- Pants of the Hell's Interrogator (All; IL 1325)
+- Pants of the Hell's Negotiator (All; IL 1325)
+- Pants of the Interrogator (All; IL 1225)
+- Pants of the Negotiator (All; IL 1275)
+- Pants of the Outfitter (All; IL 1010)
+- Pants of the Red Waters +1 (All; IL 1225)
+- Pants of the Red Waters +2 (All; IL 1250)
+- Pants of the Red Waters +3 (All; IL 1275)
+- Pants of the Red Waters +4 (All; IL 1300)
+- Pants of the Sentinel (All; IL 1010)
+- Pants of the Strategist (All; IL 1010)
+- Pants of the Strict Interrogator (All; IL 1250)
+- Pants of the Temporary Negotiator (All; IL 1250)
+- Pants of the Veteran (All; IL 1010)
+- Pants of the Vicious Interrogator (All; IL 1300)
+- Protege's Assault Trousers (All; IL 980)
+- Protege's Raid Trousers (All; IL 980)
+- Protege's Restoration Trousers (All; IL 980)
+- Protege's Ward Trousers (All; IL 980)
+- Raid Trousers of the Spy's Guild (All; IL 940)
+- Regal Northdark Breeches (All; IL 1550)
+- Restoration Trousers of the Spy's Guild (All; IL 940)
+- Rugged Dwarven Limb Pattern (All; IL 1600)
+- Runes of the Avowed — Challenger's Awareness (All; IL 3000)
+- Runes of the Covenant — Encounter Reprieve (All; IL 3000)
+- Runes of the Sworn — Challenger's Forte (All; IL 3000)
+- Ruthless Dwarven Limb Pattern (All; IL 1600)
+- Serrated Tights of the Dragon Cult (All; IL 1300)
+- Shifting Void Pants (All; IL 2000)
+- Shimmering Flarefiber Pants (All; IL 1800)
+- Shimmering Starwoven Pants (All; IL 1700)
+- Soiled Tights of the Dragon Cult (All; IL 1300)
+- Splendid Northdark Breeches (All; IL 1550)
+- Star-bleached Pants of Silk (All; IL 1010)
+- Star-studded Pants of Gold (All; IL 1010)
+- Star-tanned Pants of Hardened Leather (All; IL 1010)
+- Striking Northdark Breeches (All; IL 1550)
+- Supreme Northdark Breeches (All; IL 1550)
+- Tainted Tights of the Dragon Cult (All; IL 1300)
+- Tarnished Tights of the Dragon Cult (All; IL 1300)
+- Tempest Gaze Crest — Charged Fury (All; IL 3150)
+- Tempest Gaze Ink — Charged Fury (All; IL 3150)
+- Tempest Gaze Insignia (Depleted Advantage) (All; IL 3150)
+- Tempest Gaze Sigil (Charged Bulwark) (All; IL 3150)
+- Tempest Gaze Sigil — Depleted Defiance (All; IL 3150)
+- Torn Tights of the Dragon Cult (All; IL 1300)
+- Unfathomable Void Pants (All; IL 2000)
+- Upper Pact Brands of the Blaze-bond (All; IL 1325)
+- Upper Pact Brands of the Fire (All; IL 1250)
+- Upper Pact Brands of the Flame (All; IL 1225)
+- Upper Pact Brands of the Inferno (All; IL 1300)
+- Upper Pact Brands of the Pyre (All; IL 1275)
+- Vale Trousers (All; IL 1400)
+- Valiant Dwarven Limb Pattern (All; IL 1600)
+- Vibrant Dwarven Limb Pattern (All; IL 1600)
+- Vivid Flarefiber Pants (All; IL 1800)
+- Vivid Starwoven Pants (All; IL 1700)
+- War-Worn Pants of the Medic (All; IL 1400)
+- War-Worn Pants of the Mercenary (All; IL 1400)
+- War-Worn Pants of the Officer (All; IL 1400)
+- War-Worn Pants of the Physician (All; IL 1400)
+- War-Worn Pants of the Scout (All; IL 1400)
+- War-Worn Pants of the Soldier (All; IL 1400)
+- Ward Trousers of the Spy's Guild (All; IL 940)
+
+### Physical, Weapon (1)
+- Woote Lute (Bard; IL 350, 500, 650, 800)
+
+### Ring (317)
+- Abyssal Touched Amethyst (All; IL 1700)
+- Abyssal Touched Garnet (All; IL 1700)
+- Abyssal Touched Malachite (All; IL 1700)
+- Abyssal Touched Platinum (All; IL 1700)
+- Abyssal Touched Topaz (All; IL 1700)
+- Amethyst Abyssal Loop (All; IL 2250)
+- Ashen Band (All; IL 2150)
+- Ashen Circle (All; IL 2150)
+- Ashen Halo (All; IL 2150)
+- Ashen Hoop (All; IL 2150)
+- Ashen Loop (All; IL 2150)
+- Ashen Ring (All; IL 2150)
+- Assault Ring of the Spy's Guild (All; IL 940)
+- Band of Air (All; IL 1300)
+- Blooming Ring of Ivy (All; IL 1010)
+- Blooming Ring of the Rose (All; IL 1010)
+- Borrowed Ring (All; IL 990)
+- Brilliant Band of Xaryxis · IL 2500 (All; IL 2500)
+- Brilliant Band of Xaryxis · IL 2700 (All; IL 2700)
+- Brilliant Band of Xaryxis · IL 2900 (All; IL 2900)
+- Budding Ring of Ivy (All; IL 990)
+- Budding Ring of the Rose (All; IL 990)
+- Bypass Gold Ring (All; IL 1010)
+- Bypass Silver Ring (All; IL 1010)
+- Chained Ring of the Dragon Cultist (All; IL 1300)
+- Copper-plated Ring (All; IL 965)
+- Corroded Ring of the Dragon Cultist (All; IL 1300)
+- Cosmic Band of Assault · IL 2400 (All; IL 2400)
+- Cosmic Band of Assault · IL 2600 (All; IL 2600)
+- Cosmic Band of Assault · IL 2800 (All; IL 2800)
+- Cosmic Band of Deflection (All; IL 2400)
+- Cosmic Band of Deflection · IL 2600 (All; IL 2600)
+- Cosmic Band of Deflection · IL 2800 (All; IL 2800)
+- Cosmic Band of Energy · IL 2400 (All; IL 2400)
+- Cosmic Band of Energy · IL 2600 (All; IL 2600)
+- Cosmic Band of Energy · IL 2800 (All; IL 2800)
+- Cosmic Band of Health · IL 2400 (All; IL 2400)
+- Cosmic Band of Health · IL 2600 (All; IL 2600)
+- Cosmic Band of Health · IL 2800 (All; IL 2800)
+- Cosmic Band of Meteors · IL 2400 (All; IL 2400)
+- Cosmic Band of Meteors · IL 2600 (All; IL 2600)
+- Cosmic Band of Meteors · IL 2800 (All; IL 2800)
+- Deathsilver Coil of Dominion (All; IL 4900)
+- Deathsilver Hoop of Oppression (All; IL 4900)
+- Deathsilver Loop of Influence (All; IL 4900)
+- Decaying Ring of Ivy (All; IL 940)
+- Decaying Ring of the Rose (All; IL 940)
+- Defending Ring of the Guard (All; IL 940)
+- Defending Ring of the Keeper (All; IL 990)
+- Defending Ring of the Sentinel (All; IL 1010)
+- Defending Ring of the Sentry (All; IL 965)
+- Defending Ring of the Warden (All; IL 980)
+- Diamond Abyssal Loop (All; IL 2250)
+- Diamond Drow Ring (All; IL 1700)
+- Diamond Ring of Flight +1 (All; IL 1225)
+- Diamond Ring of Might +1 (All; IL 1225)
+- Diamond Ring of Might +2 (All; IL 1250)
+- Diamond Ring of Spite +1 (All; IL 1225)
+- Diamond Ring of Spite +2 (All; IL 1250)
+- Dragon Turtle Scale Ring (All; IL 1010)
+- Dreadbreaker Band (All; IL 3500)
+- Dreadbreaker Coil (All; IL 3500)
+- Dreadbreaker Halo (All; IL 3500)
+- Dreadbreaker Hoop (All; IL 3500)
+- Dreadbreaker Loop (All; IL 3500)
+- Dreadbreaker Ring (All; IL 3500)
+- Dreadwalker Band (All; IL 3150)
+- Dreadwalker Coil (All; IL 3150)
+- Dreadwalker Halo (All; IL 3150)
+- Dreadwalker Hoop (All; IL 3150)
+- Dreadwalker Loop (All; IL 3150)
+- Dreadwalker Ring (All; IL 3150)
+- Drow Acolyte's Ring — Northdark Reaches (All; IL 1450)
+- Drow Apothecary's Ring (All; IL 1450)
+- Drow Mystic's Ring (All; IL 1450)
+- Drow Provoker's Ring (All; IL 1450)
+- Drow Rager's Ring (All; IL 1450)
+- Drow Striker's Ring (All; IL 1450)
+- Dying Light Loop of Xaryxis · IL 2500 (All; IL 2500)
+- Dying Light Loop of Xaryxis · IL 2700 (All; IL 2700)
+- Dying Light Loop of Xaryxis · IL 2900 (All; IL 2900)
+- Eilistraee's Beauty (All; IL 1850)
+- Eilistraee's Benediction (All; IL 1850)
+- Eilistraee's Benevolence (All; IL 1850)
+- Eilistraee's Devotion (All; IL 1850)
+- Eilistraee's Elegance (All; IL 1850)
+- Eilistraee's Enduring (All; IL 1850)
+- Eilistraee's Grace (All; IL 1850)
+- Eilistraee's Harmony (All; IL 1850)
+- Eilistraee's Obligation (All; IL 1850)
+- Eilistraee's Patience (All; IL 1850)
+- Eilistraee's Tenacity (All; IL 1850)
+- Eilistraee's Truth (All; IL 1850)
+- Electrum Ring of the Herald (All; IL 1100)
+- Emerald Abyssal Loop (All; IL 2250)
+- Emerald Drow Ring (All; IL 1700)
+- Endless Loop of Xaryxis · IL 2500 (All; IL 2500)
+- Endless Loop of Xaryxis · IL 2700 (All; IL 2700)
+- Endless Loop of Xaryxis · IL 2900 (All; IL 2900)
+- Faern Elendar Acolyte's Ring (All; IL 1800)
+- Faern Elendar Brute's Ring (All; IL 1800)
+- Faern Elendar Spy's Ring (All; IL 1800)
+- Faerûn Elendar Breaker's Ring (All; IL 1800)
+- Faerûn Elendar Zealot's Ring (All; IL 1800)
+- Fish Scale Ring (All; IL 940)
+- Fungal Loop of the Champion (All; IL 1550)
+- Fungal Loop of the Kind (All; IL 1550)
+- Fungal Loop of the Savage (All; IL 1550)
+- Fungal Loop of the Swift (All; IL 1550)
+- Fungal Loop of the Weary (All; IL 1550)
+- Fungal Loop of the Wise (All; IL 1550)
+- Galactic Band · IL 2300 (All; IL 2300)
+- Galactic Band · IL 2400 (All; IL 2400)
+- Galactic Band · IL 2500 (All; IL 2500)
+- Galactic Halo · IL 2300 (All; IL 2300)
+- Galactic Halo · IL 2400 (All; IL 2400)
+- Galactic Halo · IL 2500 (All; IL 2500)
+- Galactic Hoop · IL 2300 (All; IL 2300)
+- Galactic Hoop · IL 2400 (All; IL 2400)
+- Galactic Hoop · IL 2500 (All; IL 2500)
+- Galactic Loop · IL 2300 (All; IL 2300)
+- Galactic Loop · IL 2400 (All; IL 2400)
+- Galactic Loop · IL 2500 (All; IL 2500)
+- Galactic Ring · IL 2300 (All; IL 2300)
+- Galactic Ring · IL 2400 (All; IL 2400)
+- Galactic Ring · IL 2500 (All; IL 2500)
+- Garnet Abyssal Loop (All; IL 2250)
+- Gold Ring of the Herald (All; IL 1100)
+- Gold-plated Ring (All; IL 1010)
+- Graveveil Band of Unlife (All; IL 4050)
+- Graveveil Coil of Silence (All; IL 4050)
+- Graveveil Halo of Finality (All; IL 4050)
+- Graveveil Hoop of Decay (All; IL 4050)
+- Graveveil Loop of Mourning (All; IL 4050)
+- Graveveil Ring of Dusk (All; IL 4050)
+- Guiding Ring of the Archer (All; IL 980)
+- Guiding Ring of the Scout (All; IL 965)
+- Guiding Ring of the Sharp-shooter (All; IL 1010)
+- Guiding Ring of the Spy (All; IL 990)
+- Guiding Ring of the Traveler (All; IL 940)
+- Hydra Scale Ring (All; IL 990)
+- Inherited Ring (All; IL 1010)
+- Interstellar Band · IL 2100 (All; IL 2100)
+- Interstellar Band · IL 2200 (All; IL 2200)
+- Interstellar Band · IL 2300 (All; IL 2300)
+- Interstellar Halo · IL 2100 (All; IL 2100)
+- Interstellar Halo · IL 2200 (All; IL 2200)
+- Interstellar Halo · IL 2300 (All; IL 2300)
+- Interstellar Hoop · IL 2100 (All; IL 2100)
+- Interstellar Hoop · IL 2200 (All; IL 2200)
+- Interstellar Hoop · IL 2300 (All; IL 2300)
+- Interstellar Loop · IL 2100 (All; IL 2100)
+- Interstellar Loop · IL 2200 (All; IL 2200)
+- Interstellar Loop · IL 2300 (All; IL 2300)
+- Interstellar Ring · IL 2100 (All; IL 2100)
+- Interstellar Ring · IL 2200 (All; IL 2200)
+- Interstellar Ring · IL 2300 (All; IL 2300)
+- Ivory Drow Ring (All; IL 1700)
+- Kuo-Toa Scale Ring (All; IL 965)
+- Lead-plated Ring (All; IL 940)
+- Leading Ring of the Guide (All; IL 965)
+- Leading Ring of the Herald (All; IL 940)
+- Leading Ring of the Mentor (All; IL 980)
+- Leading Ring of the Sage (All; IL 1010)
+- Leading Ring of the Teacher (All; IL 990)
+- Liquescent Band (All; IL 2550)
+- Liquescent Halo (All; IL 2550)
+- Liquescent Hoop (All; IL 2550)
+- Liquescent Loop (All; IL 2550)
+- Liquescent Ring (All; IL 2550)
+- Lolthian Aberrance (All; IL 2050)
+- Lolthian Abrasion (All; IL 2050)
+- Lolthian Anger (All; IL 2050)
+- Lolthian Dominance (All; IL 2050)
+- Lolthian Pain (All; IL 2050)
+- Lolthian Rage (All; IL 2050)
+- Lolthian Repulsion (All; IL 2050)
+- Lolthian Spite (All; IL 2050)
+- Lolthian Vengeance (All; IL 2050)
+- Lunar Band (All; IL 2200)
+- Lunar Halo (All; IL 2200)
+- Lunar Hoop (All; IL 2200)
+- Lunar Knot (All; IL 2200)
+- Lunar Loop (All; IL 2200)
+- Lunar Ring (All; IL 2200)
+- Malachite Abyssal Loop (All; IL 2250)
+- Medic's Ring of Mending (All; IL 1400)
+- Menzoberranzan Ring of Assault (All; IL 1600)
+- Menzoberranzan Ring of Consequence (All; IL 1600)
+- Menzoberranzan Ring of Control (All; IL 1600)
+- Menzoberranzan Ring of Midnight (All; IL 1600)
+- Menzoberranzan Ring of Observation (All; IL 1600)
+- Mercenary's Ring of Resistance (All; IL 1400)
+- Merrow Scale Ring (All; IL 980)
+- Mightbreaker's Ring of Clarity (All; IL 1650)
+- Mightbreaker's Ring of Elegance (All; IL 1650)
+- Moondancer's Binding of Advantage (All; IL 2400)
+- Moondancer's Binding of Cognition (All; IL 2400)
+- Moondancer's Binding of Control (All; IL 2400)
+- Moondancer's Binding of Deflection (All; IL 2400)
+- Moondancer's Binding of Health (All; IL 2400)
+- Moondancer's Binding of Precision (All; IL 2400)
+- Moss Ring of the Forest (All; IL 940)
+- Nickel-plated Ring (All; IL 990)
+- Officer's Ring of Striking (All; IL 1400)
+- Opal Abyssal Loop (All; IL 2250)
+- Phlogiston Band of Adventure (All; IL 2500)
+- Phlogiston Band of Discovery (All; IL 2500)
+- Phlogiston Band of Dominance (All; IL 2500)
+- Phlogiston Band of Exploration (All; IL 2500)
+- Phlogiston Band of Vengeance (All; IL 2500)
+- Physician's Ring of Healing (All; IL 1400)
+- Piercing Ring of the Assassin (All; IL 1010)
+- Piercing Ring of the Criminal (All; IL 980)
+- Piercing Ring of the Killer (All; IL 990)
+- Piercing Ring of the Thief (All; IL 965)
+- Piercing Ring of the Urchin (All; IL 940)
+- Pinched Gold Ring (All; IL 940)
+- Pinched Silver Ring (All; IL 940)
+- Platinum Abyssal Loop (All; IL 2250)
+- Platinum Ring of the Herald (All; IL 1100)
+- Prickly Ring of the Forest (All; IL 980)
+- Protege's Assault Ring (All; IL 980)
+- Protege's Raid Ring (All; IL 980)
+- Protege's Restoration Ring (All; IL 980)
+- Protege's Ward Ring (All; IL 980)
+- Punished Ring of the Dragon Cultist (All; IL 1300)
+- Raid Ring of the Spy's Guild (All; IL 940)
+- Red Dwarf Ring of Xaryxis · IL 2500 (All; IL 2500)
+- Red Dwarf Ring of Xaryxis · IL 2700 (All; IL 2700)
+- Red Dwarf Ring of Xaryxis · IL 2900 (All; IL 2900)
+- Restoration Ring of the Spy's Guild (All; IL 940)
+- Ring of Bel +1 (All; IL 980)
+- Ring of Bel +2 (All; IL 990)
+- Ring of Bel +3 (All; IL 1010)
+- Ring of Bel +4 (All; IL 1050)
+- Ring of Bel +5 (All; IL 1100)
+- Ring of Darkness (All; IL 1300)
+- Rotsteel Coil of Blight (All; IL 4650)
+- Rotsteel Halo of Festering (All; IL 4650)
+- Rotsteel Hoop of Corruption (All; IL 4650)
+- Rotsteel Loop of Ash (All; IL 4650)
+- Rotsteel Ring of Spores (All; IL 4650)
+- Ruby Abyssal Loop (All; IL 2250)
+- Ruby Drow Ring (All; IL 1700)
+- Sapphire Abyssal Loop (All; IL 2250)
+- Sapphire Drow Ring (All; IL 1700)
+- Scout's Ring of Striking (All; IL 1400)
+- Serrated Ring of the Dragon Cultist (All; IL 1300)
+- Silver Ring of the Herald (All; IL 1100)
+- Snatched Ring (All; IL 965)
+- Solar Band (All; IL 2000)
+- Solar Halo (All; IL 2000)
+- Solar Hoop (All; IL 2000)
+- Solar Knot (All; IL 2000)
+- Solar Loop (All; IL 2000)
+- Solar Ring (All; IL 2000)
+- Soldier's Ring of Advantage (All; IL 1400)
+- Soothsayer's Ring of Confession (All; IL 1650)
+- Soulfire Ring of Penance (All; IL 1650)
+- Soulfire Ring of Piety (All; IL 1650)
+- Spiked Ring of the Dragon Cultist (All; IL 1300)
+- Spined Ring of the Forest (All; IL 990)
+- Split Gold Ring (All; IL 980)
+- Split Silver Ring (All; IL 980)
+- Sprouting Ring of Ivy (All; IL 980)
+- Sprouting Ring of the Rose (All; IL 980)
+- Stalwartneedle Ring of Bulwark (All; IL 1650)
+- Stalwartneedle Ring of Celerity (All; IL 1650)
+- Stellar Halo of Xaryxis · IL 2500 (All; IL 2500)
+- Stellar Halo of Xaryxis · IL 2700 (All; IL 2700)
+- Stellar Halo of Xaryxis · IL 2900 (All; IL 2900)
+- Stolen Ring (All; IL 940)
+- Striking Ring of the Knight (All; IL 980)
+- Striking Ring of the Master (All; IL 990)
+- Striking Ring of the Soldier (All; IL 940)
+- Striking Ring of the Squire (All; IL 965)
+- Striking Ring of the Veteran (All; IL 1010)
+- Tainted Ring of the Dragon Cultist (All; IL 1300)
+- Taken Ring (All; IL 980)
+- Tanner's Furred Ring (All; IL 965)
+- Tanner's Hardened Leather Ring (All; IL 1010)
+- Tanner's Hide Ring (All; IL 980)
+- Tanner's Leather Ring (All; IL 990)
+- Tanner's Scrapped Ring (All; IL 940)
+- Tapered Gold Ring (All; IL 965)
+- Tapered Silver Ring (All; IL 965)
+- The Bladed Ascendant (All; IL 3950)
+- The Bloodlit Veil (All; IL 4150)
+- The Crimson Inlay (All; IL 3950)
+- The Forgotten Relic (All; IL 3450)
+- The Hollow Maw (All; IL 3450)
+- The Lesion Band (All; IL 3450)
+- The Obsidian Bastion (All; IL 4150)
+- The Path of Dusk (All; IL 3450)
+- The Runebound Shackle (All; IL 3950)
+- The Sanguine Seal (All; IL 3950)
+- The Spine of Dominion (All; IL 4150)
+- The Thorned Edict (All; IL 3450)
+- The Triarch Sigil (All; IL 3950)
+- The Twisted Pact (All; IL 4150)
+- The Unbroken Seal (All; IL 3450)
+- The Veinbinder (All; IL 3950)
+- The Watcher's Gaze (All; IL 4150)
+- Thorn Ring of the Forest (All; IL 1010)
+- Tin-plated Ring (All; IL 980)
+- Topaz Abyssal Loop (All; IL 2250)
+- Twisting Gold Ring (All; IL 990)
+- Twisting Silver Ring (All; IL 990)
+- Vine Ring of the Forest (All; IL 965)
+- Ward Ring of the Spy's Guild (All; IL 940)
+- Wayseeker's Ring of Intellect (All; IL 1650)
+- Wayseeker's Ring of Punishment (All; IL 1650)
+- Waywatcher's Ring of Advantage (All; IL 1650)
+- Waywatcher's Ring of Precision (All; IL 1650)
+- Withering Ring of Ivy (All; IL 965)
+- Withering Ring of the Rose (All; IL 965)
+
+### Shirt (167)
+- Abyssal Void Shirt (All; IL 2000)
+- Assault Shirt of the Spy's Guild (All; IL 940)
+- Basalt Burned Shirt (All; IL 1900)
+- Basalt Glazed Shirt (All; IL 1900)
+- Basalt Imbued Shirt (All; IL 1900)
+- Basalt Infused Shirt (All; IL 1900)
+- Basalt Plated Shirt (All; IL 1900)
+- Basalt Stitched Shirt (All; IL 1900)
+- Blackened Void Shirt (All; IL 2000)
+- Bregan D'aerthe Mercenary's Tunic (All; IL 1600)
+- Bregan D'aerthe Officer's Tunic (All; IL 1600)
+- Bregan D'aerthe Physician's Tunic (All; IL 1600)
+- Bregan D'aerthe Scout's Tunic (All; IL 1600)
+- Bregan D'aerthe Soldier's Tunic (All; IL 1600)
+- Brilliant Flarefiber Shirt (All; IL 1800)
+- Brilliant Starwoven Shirt (All; IL 1700)
+- Cerebral Sage Ink — Critical/Forte (All; IL 2600)
+- Corroded Shirt of the Dragon Cult (All; IL 1300)
+- Covert Branche Assault Shirt (All; IL 1600)
+- Covert Branche Raid Shirt (All; IL 1600)
+- Covert Branche Restoration Shirt (All; IL 1600)
+- Covert Branche Scout Shirt (All; IL 1600)
+- Covert Branche Ward Shirt (All; IL 1600)
+- Dashing Mycelial Top (All; IL 1550)
+- Dazzling Flarefiber Shirt (All; IL 1800)
+- Dazzling Starwoven Shirt (All; IL 1700)
+- Debonair Mycelial Top (All; IL 1550)
+- Defiant Northdark Shirt (All; IL 1550)
+- Distinct Mycelial Top (All; IL 1550)
+- Drow Assailant's Tunic (All; IL 1450)
+- Drow Healer's Tunic (All; IL 1450)
+- Drow Knight's Tunic (All; IL 1450)
+- Drow Mage's Tunic (All; IL 1450)
+- Drow Mercenary's Tunic (All; IL 1450)
+- Drow Priest's Tunic (All; IL 1450)
+- Ember Burned Shirt (All; IL 2400)
+- Ember Glazed Shirt (All; IL 2400)
+- Ember Imbued Shirt (All; IL 2400)
+- Ember Infused Shirt (All; IL 2400)
+- Ember Plated Shirt (All; IL 2400)
+- Ember Stitched Shirt (All; IL 2400)
+- Endless Void Shirt (All; IL 2000)
+- Fabulous Mycelial Top (All; IL 1550)
+- Graceful Mycelial Top (All; IL 1550)
+- Halaster's Party Shirt (All; IL 1010)
+- Illuminated Flarefiber Shirt (All; IL 1800)
+- Illuminated Starwoven Shirt (All; IL 1700)
+- Infernal Forged Assault Shirt (All; IL 1200)
+- Infernal Forged Raid Shirt (All; IL 1200)
+- Infernal Forged Restoration Shirt (All; IL 1200)
+- Infernal Forged Ward Shirt (All; IL 1200)
+- Lightless Void Shirt (All; IL 2000)
+- Lolth's Embrace: Anger, Upper (All; IL 1750)
+- Lolth's Embrace: Chaos, Upper (All; IL 1750)
+- Lolth's Embrace: Hatred, Upper (All; IL 1750)
+- Lolth's Embrace: Rage, Upper (All; IL 1750)
+- Lolth's Embrace: Revenge, Upper (All; IL 1750)
+- Luminous Flarefiber Shirt (All; IL 1800)
+- Luminous Starwoven Shirt (All; IL 1700)
+- Magma Burned Shirt (All; IL 2200)
+- Magma Glazed Shirt (All; IL 2200)
+- Magma Imbued Shirt (All; IL 2200)
+- Magma Infused Shirt (All; IL 2200)
+- Magma Plated Shirt (All; IL 2200)
+- Magma Stitched Shirt (All; IL 2200)
+- Mark of the Recruit (Unfaltered Finesse) (All; IL 2600)
+- Mighty Dwarven Body Pattern (All; IL 1600)
+- Mudwalker's Sage Ink — Critical Strike/Control Resistance (All; IL 2100)
+- Mudwalker's Sage Ink — Critical Strike/Outgoing Healing (All; IL 2100)
+- Mudwalker's Warden Ink (All; IL 2100)
+- Mystic Conduit Crest — Duelist's Strength (All; IL 3600)
+- Mystic Conduit Insignia — Indefatigable Advantage (All; IL 3600)
+- Mystic Conduit Mark — Precise Severity (All; IL 3600)
+- Mystic Conduit Sigil — Sudden Intuition (All; IL 3600)
+- Nostalgic Mycelial Top (All; IL 1550)
+- Obsidian Burned Shirt (All; IL 2000)
+- Obsidian Glazed Shirt (All; IL 2000)
+- Obsidian Imbued Shirt (All; IL 2000)
+- Obsidian Infused Shirt (All; IL 2000)
+- Obsidian Plated Shirt (All; IL 2000)
+- Obsidian Stitched Shirt (All; IL 2000)
+- Oceans' Sage Sigils — Critical Strike/Control Resistance (All; IL 2350)
+- Oceans' Sage Sigils — Critical Strike/Defense (All; IL 2350)
+- Protege's Assault Shirt (All; IL 980)
+- Protege's Raid Shirt (All; IL 980)
+- Protege's Restoration Shirt (All; IL 980)
+- Protege's Ward Shirt (All; IL 980)
+- Raid Shirt of the Spy's Guild (All; IL 940)
+- Regal Northdark Shirt (All; IL 1550)
+- Restoration Shirt of the Spy's Guild (All; IL 940)
+- Rugged Dwarven Body Pattern (All; IL 1600)
+- Runemarked Titanwave Harness (All; IL 3800)
+- Runes of the Oathbound — Encounter Reprieve (All; IL 3000)
+- Runes of the Pledged — Challenger's Forte (All; IL 3000)
+- Runes of the Promised — Encounter Reprieve (All; IL 3000)
+- Ruthless Dwarven Body Pattern (All; IL 1600)
+- Serrated Shirt of the Dragon Cult (All; IL 1300)
+- Shifting Void Shirt (All; IL 2000)
+- Shimmering Flarefiber Shirt (All; IL 1800)
+- Shimmering Starwoven Shirt (All; IL 1700)
+- Shirt of the Assassin (All; IL 1010)
+- Shirt of the Binding Offense (All; IL 1525)
+- Shirt of the Blue Leaf +1 (All; IL 1225)
+- Shirt of the Blue Leaf +2 (All; IL 1250)
+- Shirt of the Blue Leaf +3 (All; IL 1275)
+- Shirt of the Blue Leaf +4 (All; IL 1300)
+- Shirt of the Champion (All; IL 1010)
+- Shirt of the Clarifying Stance (All; IL 1525)
+- Shirt of the Clear Mind (All; IL 1525)
+- Shirt of the Critical Attack (All; IL 1525)
+- Shirt of the Cruel Interrogator (All; IL 1275)
+- Shirt of the Cunning Strike (All; IL 1525)
+- Shirt of the Enchanter (All; IL 1010)
+- Shirt of the Firm Rebuttal (All; IL 1525)
+- Shirt of the Gold Dawn +1 (All; IL 1225)
+- Shirt of the Gold Dawn +2 (All; IL 1250)
+- Shirt of the Gold Dawn +3 (All; IL 1275)
+- Shirt of the Gold Dawn +4 (All; IL 1300)
+- Shirt of the Green Storm +1 (All; IL 1225)
+- Shirt of the Green Storm +2 (All; IL 1250)
+- Shirt of the Green Storm +3 (All; IL 1275)
+- Shirt of the Green Storm +4 (All; IL 1300)
+- Shirt of the Hell's Interrogator (All; IL 1325)
+- Shirt of the Interrogator (All; IL 1225)
+- Shirt of the Outfitter (All; IL 1010)
+- Shirt of the Red Waters +1 (All; IL 1225)
+- Shirt of the Red Waters +2 (All; IL 1250)
+- Shirt of the Red Waters +3 (All; IL 1275)
+- Shirt of the Red Waters +4 (All; IL 1300)
+- Shirt of the Sage (All; IL 1010)
+- Shirt of the Sharp-shooter (All; IL 1010)
+- Shirt of the Strict Interrogator (All; IL 1250)
+- Shirt of the Vicious Interrogator (All; IL 1300)
+- Slip of the Herald (All; IL 1100)
+- Soiled Shirt of the Dragon Cult (All; IL 1300)
+- Splendid Northdark Shirt (All; IL 1550)
+- Star-bleached Shirt of Silk (All; IL 1010)
+- Star-studded Shirt of Gold (All; IL 1010)
+- Star-tanned Shirt of Hardened Leather (All; IL 1010)
+- Striking Northdark Shirt (All; IL 1550)
+- Supreme Northdark Shirt (All; IL 1550)
+- Tainted Shirt of the Dragon Cult (All; IL 1300)
+- Tarnished Shirt of the Dragon Cult (All; IL 1300)
+- Tempest Gaze Crest (All; IL 3150)
+- Tempest Gaze Crest (Depleted Advantage) (All; IL 3150)
+- Tempest Gaze Ink (All; IL 3150)
+- Tempest Gaze Ink (Depleted Advantage) (All; IL 3150)
+- Tempest Gaze Insignia (All; IL 3150)
+- Tempest Gaze Insignia — Charged Fury (All; IL 3150)
+- Tempest Gaze Mark (All; IL 3150)
+- Tempest Gaze Mark — Depleted Defiance (All; IL 3150)
+- Tempest Gaze Seal — Charged Fury (All; IL 3150)
+- Tempest Gaze Sigil (All; IL 3150)
+- Torn Shirt of the Dragon Cult (All; IL 1300)
+- Unfathomable Void Shirt (All; IL 2000)
+- Vale Tunic (All; IL 1400)
+- Valiant Dwarven Body Pattern (All; IL 1600)
+- Vibrant Dwarven Body Pattern — Outgoing Healing (All; IL 1600)
+- Vivid Flarefiber Shirt (All; IL 1800)
+- Vivid Starwoven Shirt (All; IL 1700)
+- War-Worn Shirt of the Medic (All; IL 1400)
+- War-Worn Shirt of the Mercenary (All; IL 1400)
+- War-Worn Shirt of the Officer (All; IL 1400)
+- War-Worn Shirt of the Physician (All; IL 1400)
+- War-Worn Shirt of the Scout (All; IL 1400)
+- War-Worn Shirt of the Soldier (All; IL 1400)
+- Ward Shirt of the Spy's Guild (All; IL 940)
+
+## Artifacts — 115 missing
+
+> Most artifact values came from batch captures and older intake; only 23 have item-named screenshots. `_originals/boons_gear_artifacts_2026-07-02` contains unmatched artifact tooltips.
+
+- Alaric's Artillery Beacon
+- Apocalypse Dagger
+- Arcturia's Music Box
+- Arcturia's Resonating Music Box
+- Arma-Egg-On
+- Assassin's Dice
+- Assassin's Knife
+- Astral Seed Tendril
+- Aurora's Whole Realms Catalogue
+- Beacon of Meteor Swarm
+- Beacon of Simril
+- Beacon of the Astral Sea
+- Belial's Portal Stone
+- Black Dragon's Mark
+- Bloodcrystal Raven Skull
+- Blue Dragon's Mark
+- Book of Vile Darkness
+- Bruenor's Helm
+- Champion's Banner
+- Champion's Battle Horn
+- Crimson Calamity
+- Crown of the Undead
+- Crystal of Soul's Flight
+- Deck of a Few Things
+- Defender's Banner
+- Demogorgon's Reach
+- Draconic Essence
+- Dragonbone Wand
+- Emblem of the Seldarine
+- Empowered Illusionist's Mask
+- Erratic Drift Globe
+- Eye of Odran
+- Eye of the Giant
+- Flask of Brewing
+- Forgehammer of Gond
+- Globe of the Third Eye
+- Golden Memories
+- Gond's Anvil of Creation
+- Grace of Pelor
+- Green Dragon's Mark
+- Halaster's Blast Scepter
+- Heart of the Black Dragon
+- Heart of the Blue Dragon
+- Heart of the Green Dragon
+- Heart of the Red Dragon
+- Heart of the Volcano
+- Heart of the White Dragon
+- Illusionist's Mask
+- Imbued Staff of Flowers
+- Jewel of the Caldera
+- Jewel of the North
+- Kessell's Spheres of Annihilation
+- Lantern of Revelation
+- Manticore Talon
+- Marco's Mystic Marker
+- Marilith Mask
+- Memories (Redeemed)
+- Mystic Bolt
+- Mythallar Fragment
+- Neverwinter's Standard
+- Oghma's Token of Free Movement
+- Portable Spelljammer Detector
+- Realm Engine Core
+- Red Dragon's Mark
+- Refulgent Diamond Pin
+- Repurposed Phylactory
+- Ring of Fowl Weather
+- Rod of Pain
+- Scintillating Symbol of Air
+- Scintillating Symbol of Earth
+- Scintillating Symbol of Fire
+- Scintillating Symbol of Water
+- Sealing Parchment
+- Searing Conduit of Magma
+- Shard of Orcus' Wand
+- Siege Master's War Horn
+- Siegebreaker's Banner
+- Sigil of the Barbarian
+- Sigil of the Bard
+- Sigil of the Cleric
+- Sigil of the Fighter
+- Sigil of the Nine
+- Sigil of the Paladin
+- Sigil of the Ranger
+- Sigil of the Rogue
+- Sigil of the Warlock
+- Sigil of the Wizard
+- Soul Sight Crystal
+- Sovereign's Sporestaff
+- Sparkling Fey Emblem
+- Staff of Flowers
+- Sword of Zariel
+- Symbol of Air
+- Symbol of Earth
+- Symbol of Fire
+- Symbol of Water
+- Tactician's Banner
+- Tentacle Rod
+- Thayan Book of the Dead
+- Tiamat's Arcane Globe
+- Token of Chromatic Storm
+- Tome of Ascendance
+- Trobriand's Overcharged Ring
+- Trobriand's Ring
+- Tymora's Spinning Coin
+- Vanguard's Banner
+- Vibrating Erratic Drift Globe
+- Wand of Domination
+- Waters of Elah'zad
+- Waukeen's Horde
+- Wheel of Elements
+- White Dragon's Mark
+- Wrath of Kossuth
+- Wyvern-Venom Coated Knives
+- Xeleth's Blast Scepter
+
+## Enchantments — 0 missing
+
+> Full filename coverage (47/47) — nothing missing.
+
+_None — full coverage._
+
+## Companion Gear — 185 missing
+
+> Only the Thayan/Molten/Frostforged/True Ice tiers (ids 1-36) are screenshot-verified. Ids 37-221 are NW Hub scrapes, self-tagged pending verification.
+
+- Blessed Belt of the Companion
+- Blessed Grimoire of the Companion
+- Blessed Icon of the Companion
+- Blessed Necklace of the Companion
+- Blessed Ring of the Companion
+- Blessed Sword Knot of the Companion
+- Blessed Talisman of the Companion
+- Briar-vined Sword Knot of the Companion
+- Brilliant Diamond Belt of the Companion
+- Burnt Belt of the Companion
+- Burnt Necklace of the Companion
+- Burnt Ring of the Companion
+- Chained Grimoire of the Companion
+- Chained Grimoire of the Companion (1010)
+- Chained Icon of the Companion
+- Chained Icon of the Companion (1010)
+- Chained Sword Knot of the Companion
+- Chained Sword Knot of the Companion (1010)
+- Chained Talisman of the Companion
+- Choke Chain of the Companion
+- Cracked Belt of the Companion
+- Dingy Belt of the Companion
+- Dingy Collar of the Companion
+- Dull Belt of the Companion
+- Dull Ring of the Companion
+- Flawless Amber Necklace of the Companion
+- Flawless Ivory Icon of the Companion
+- Glistening Grimoire of the Companion
+- Glistening Icon of the Companion
+- Glistening Sword Knot of the Companion
+- Glistening Talisman of the Companion
+- Gold Icon of the Companion
+- Gold Talisman of the Companion
+- Gold-clasped Sword Knot of the Companion
+- Gold-leafed Grimoire of the Companion
+- Ideal Chain Sword Knot of the Companion
+- Impeccable Emerald Talisman of the Companion
+- Imperfect Chain Sword Knot of the Companion
+- Imperfect Onyx Grimoire of the Companion
+- Imperial Crystal Necklace of the Companion
+- Imperial Diamond Belt of the Companion
+- Imperial Diamond Belt of the Companion (1010)
+- Imperial Diamond Necklace of the Companion
+- Imperial Diamond Necklace of the Companion (1010)
+- Imperial Diamond Ring of the Companion
+- Imperial Diamond Ring of the Companion (1010)
+- Imperial Moonstone Belt of the Companion
+- Imperial Moonstone Necklace of the Companion
+- Imperial Moonstone Ring of the Companion
+- Imperial Pearl Ring of the Companion
+- Imperial Quartz Necklace of the Companion
+- Ivy Grown Grimoire of the Companion
+- Ivy Grown Icon of the Companion
+- Ivy Grown Talisman of the Companion
+- Ivy-grown Grimoire of the Companion
+- Ivy-grown Icon of the Companion
+- Ivy-grown Sword Knot of the Companion
+- Ivy-grown Talisman of the Companion
+- Majestic Garnet Ring of the Companion
+- Majestic Jasper Ring of the Companion
+- Majestic Ruby Ring of the Companion
+- Majestic Ruby Ring of the Companion (1010)
+- Nickel Icon of the Companion
+- Nickel Icon of the Companion (990)
+- Nickel Talisman of the Companion
+- Nickel Talisman of the Companion (990)
+- Nickel-Bound Grimoire of the Companion
+- Nickel-Magic Grimoire of the Companion
+- Nickel-threaded Sword Knot of the Companion
+- Nickel-threaded Sword Knot of the Companion (990)
+- Noble Emerald Ring of the Companion
+- Noble Emerald Ring of the Companion (1010)
+- Noble Jade Ring of the Companion
+- Noble Peridot of the Companion
+- Pearl Ring of the Companion
+- Perfect Chain Sword Knot of the Companion
+- Perfect Onyx Grimoire of the Companion
+- Perfect Sapphire Ring of the Companion
+- Pewter Icon of the Companion
+- Pewter Talisman of the Companion
+- Pewter-Magic Grimoire of the Companion
+- Pewter-threaded Sword Knot of the Companion
+- Plated Belt of the Companion
+- Platinum Icon of the Companion
+- Platinum Talisman of the Companion
+- Platinum-capped Sword Knot of the Companion
+- Platinum-cased Grimoire of the Companion
+- Pointed Belt of the Companion
+- Pointed Ring of the Companion
+- Polished Ivory Icon of the Companion
+- Pristine Belt of the Companion
+- Pristine Necklace of the Companion
+- Pristine Ring of the Companion
+- Regal Topaz Ring of the Companion
+- Restored Grimoire of the Companion
+- Roped Grimoire of the Companion
+- Roped Grimoire of the Companion (990)
+- Roped Icon of the Companion
+- Roped Icon of the Companion (990)
+- Roped Sword Knot of the Companion
+- Roped Sword Knot of the Companion (990)
+- Roped Talisman of the Companion
+- Rose Gold Icon of the Companion
+- Rose Gold Talisman of the Companion
+- Rose Gold-clasped Sword Knot of the Companion
+- Rose Gold-leafed Grimoire of the Companion
+- Royal Saphire Ring of the Companion
+- Royal Saphire Ring of the Companion (1010)
+- Royal Turqoise Ring of the Companion
+- Royal Zircon Ring of the Companion
+- Scintillant Diamond Belt of the Companion
+- Scorched Belt of the Companion
+- Shattered Ring of the Companion
+- Shimmering Emerald Talisman of the Companion
+- Shining Amber Necklace of the Companion
+- Silver Icon of the Companion
+- Silver Icon of the Companion (1010)
+- Silver Talisman of the Companion
+- Silver Talisman of the Companion (old)
+- Silver-Bound Grimoire of the Companion
+- Silver-Magic Grimoire of the Companion
+- Silver-threaded Sword Knot of the Companion
+- Silver-threaded Sword Knot of the Companion (1010)
+- Singed Ring of the Companion
+- Sparkling Sapphire Ring of the Companion
+- Spiked Belt of the Companion
+- Spiked Belt of the Companion (rare)
+- Spiked Necklace of the Companion
+- Spiked Necklace of the Companion (rare)
+- Spiked Ring of the Companion
+- Spiked Ring of the Companion (1010)
+- Spined Belt of the Companion
+- Spined Ring of the Companion
+- Stained Amber Necklace of the Companion
+- Stained Diamond Belt of the Companion
+- Stained Emerald Talisman of the Companion
+- Stained Ivory Icon of the Companion
+- Stained Sapphire Ring of the Companion
+- Starbound Belt of the Companion
+- Starbound Grimoire of the Companion
+- Starbound Icon of the Companion
+- Starbound Necklace of the Companion
+- Starbound Ring of the Companion
+- Starbound Sword Knot of the Companion
+- Starbound Talisman of the Companion
+- Steel Icon of the Companion
+- Steel Talisman of the Companion
+- Steel-capped Sword Knot of the Companion
+- Steel-cased Grimoire of the Companion
+- Summer Sash of the Companion
+- Tarnished Amber Necklace of the Companion
+- Tarnished Chain Sword Knot of the Companion
+- Tarnished Diamond Belt of the Companion
+- Tarnished Emerald Talisman of the Companion
+- Tarnished Ivory Icon of the Companion
+- Tarnished Necklace of the Companion
+- Tarnished Onyx Grimoire of the Companion
+- Tarnished Ring of the Companion
+- Tarnished Sapphire Ring of the Companion
+- The Forest Lady's Icon of the Companion +1
+- The Forest Lady's Icon of the Companion +2
+- The Forest Lady's Icon of the Companion +3
+- The Guiding Light's Talisman of the Companion +1
+- The Guiding Light's Talisman of the Companion +2
+- The Guiding Light's Talisman of the Companion +3
+- The Living Tree's Grimoire of the Companion +1
+- The Living Tree's Grimoire of the Companion +2
+- The Living Tree's Grimoire of the Companion +3
+- The Wild Mare's Sword Knot of the Companion +1
+- The Wild Mare's Sword Knot of the Companion +2
+- The Wild Mare's Sword Knot of the Companion +3
+- Thorned Necklace of the Companion
+- Torched Belt of the Companion
+- Torched Necklace of the Companion
+- Torched Ring of the Companion
+- Twined Grimoire of the Companion
+- Twined Icon of the Companion
+- Twined Sword Knot of the Companion
+- Twinkling Belt of the Companion
+- Twinkling Grimoire of the Companion
+- Twinkling Icon of the Companion
+- Twinkling Necklace of the Companion
+- Twinkling Ring of the Companion
+- Twinkling Sword Knot of the Companion
+- Twinkling Talisman of the Companion
+
+## Companions — 231 missing
+
+> Companion tooltips were captured in batch/timestamped sessions; absence of an item-named file does not always mean no capture exists.
+
+- Abyssal Chicken
+- Acolyte of Kelemvor
+- Air Archon
+- Alchemist Experimenter
+- Allosaurus
+- Alpha Compy
+- Angel of Protection
+- Aoth Fezim & Brightwing
+- Aranea
+- Armored Orc Wolf
+- Assassin Drake
+- Astral Deva
+- Baby Bear
+- Baby Boar
+- Baby Bulette
+- Baby Deep Crow
+- Baby Displacer Beast
+- Baby Gorilla
+- Baby Owlbear
+- Barbarian Shaman
+- Basic Bok
+- Batiri Runt
+- Battlefield Medic
+- Black Dragon Ioun Stone
+- Black Scorpion
+- Blacksmith
+- Blink Dog
+- Bobby
+- Book Imp
+- Bruenor Battlehammer
+- Butterfly
+- Cambion Magus
+- Captain Elaina Sartell
+- Cat
+- Catti-brie
+- Cave Bear
+- Celeste
+- Chicken
+- Cleric Disciple
+- Cockatrice
+- Con Artist
+- Crab
+- Crimson Crystal Golem
+- Crystalline Golem
+- Cunning Mimic
+- Dancing Blade
+- Dark Dealer
+- Death Slaad
+- Dedicated Squire
+- Deva Champion
+- Diana
+- Displacer Beast
+- Dog
+- Dragon Hunter
+- Dragonborn Brawler
+- Dragonborn Raider
+- Drizzt Do'Urden
+- Duergar Guard
+- Duergar Theurge
+- Earl the Chickenmancer
+- Earth Archon
+- Eladrin
+- Elemental Air Cultist
+- Elite Intern
+- Elminster Aumar
+- Elminster Simulacrum
+- Energon
+- Eric the Cavalier
+- Erinyes of Belial
+- Etrien
+- Faithful Initiate
+- Fawn
+- Feral Velociraptor
+- Festive Tiger
+- Feywild Sylph
+- Fireblossom Zealot
+- Flame Sprite
+- Flaming Skull
+- Flapjack
+- Flumph
+- Frost Mimic
+- Galeb Duhr
+- Ghost
+- Githyanki
+- Goat
+- Golden Bulette Pup
+- Golden Cat
+- Golden Deep Crow Egg
+- Golden Goat
+- Goldfish
+- Grace Revoir
+- Grazilaxx
+- Green Slime
+- Greenscale Hunter
+- Grillmaster
+- Gromph Baenre
+- Grung
+- Hank the Ranger
+- Harper Bard
+- Hawk
+- Hell Hound
+- Helmite Paladin Ghost
+- Honey Badger
+- Hunting Drake
+- Hunting Hawk
+- Ice Galeb Duhr
+- Ice Sprite
+- Icosahedron Ioun Stone
+- Intellect Devourer
+- Ioun Stone of Allure
+- Ioun Stone of Might
+- Ioun Stone of Radiance
+- Iron Golem
+- Jagged Dancing Blade
+- Jarlaxle Baenre
+- Kavatos Stormeye
+- Kenku Archer
+- Kingfisher Intern
+- Laughing Skull
+- Lava Galeb Duhr
+- Leprechaun
+- Lich
+- Lich Makos
+- Lightfoot Thief
+- Lillend
+- Little White
+- Lizardfolk Shaman
+- Lulu the Hollyphant
+- Lysaera
+- Makos
+- Man at Arms
+- Mini Apparatus of Gond
+- Minotaur
+- Minsc
+- Minstrel
+- Moonshae Druid
+- Mornhelm the Severed
+- Myconid
+- Mystagogue
+- Mystic Phoera
+- Netherese Arcanist
+- Neverember Guard
+- Neverember Guard Archer
+- Neverwinter Knight
+- Orc Wolf
+- Owl
+- Ox Stot
+- Panther
+- Paranoid Delusion
+- Pewter Golem
+- Phasespider
+- Phoera
+- Pig
+- Polar Bear Cub
+- Portal Hound
+- Presto the Magician
+- Priestess of Sehanine Moonbow
+- Priestess of Sune
+- Proud Pink Yeti
+- Pseudodragon
+- Quasit
+- Quickling
+- Rabbit
+- Rat Pup
+- Rath Modar
+- Rattigan the Wise
+- Razorwood
+- Red Dragon Ioun Stone
+- Red Slaad
+- Redcap Powrie
+- Redeemed Fallen
+- Regis
+- Remorhaz
+- Renegade Evoker
+- Renegade Illusionist
+- Repentant Dragon Cultist
+- Rimefire Golem
+- Riotous Rothe
+- Rothé
+- Rumpadump
+- Rust Monster
+- Scarecrow
+- Sellsword
+- Sergeant Knox
+- Shadar-kai Witch
+- Shadow Elemental
+- Siege Master
+- Skeletal Dog
+- Skeleton
+- Skyblazer
+- Slyblade Kobold
+- Snow Fawn
+- Snow Leopard
+- Songstress
+- Soradiel
+- Spined Devil
+- Splinters
+- Sprite
+- Staldorf
+- Storm Rider
+- Stronghold's Cleric
+- Swashbuckler
+- Sylph
+- Tamed Velociraptor
+- Tiger
+- Tomb Spider
+- Traveling Entertainer
+- Trobriand's Construct
+- Tutor
+- Vallenhas Elite Soldier
+- Vanguard of the Citadel
+- Vicious Dire Wolf
+- Volcanic Galeb Duhr
+- War Dog
+- Water Archon
+- Watler
+- Wererat Thief
+- Werewolf
+- Wiggins the Undead Intern
+- Wild Hunt Rider
+- Will-O'-Wisp
+- Windsoul Genasi
+- Wolf
+- Wulfgar
+- Xuna
+- Yeth Hound
+- Yeti
+- Yojimbo
+- Zariel
+- Zariel the Redeemed
+- Zhentarim Warlock
+
+## Companion Powers — 243 missing
+
+> Same batch-capture caveat as companions.
+
+- Abyssal Guidance
+- Acolyte's Wisdom
+- Acrobatic Speed
+- Air Archon's Insight
+- Alchemist's Discipline
+- Allosaurus's Instincts
+- Alluring Insight
+- Angel's Insight
+- Aoth's Wisdom
+- Apprentice's Wisdom
+- Aranea's Wisdom
+- Archer Guard's Discipline
+- Assassin Drake's Presence
+- Astral Deva's Insight
+- Baby Bear's Instincts
+- Baby Boar's Instincts
+- Baby Bulette's Presence
+- Baby Deep Crow's Presence
+- Baby Displacer Beast's Presence
+- Baby Gorilla's Instincts
+- Baby Owlbear's Presence
+- Baby Polar Bear's Instincts
+- Barbarian Shaman's Wisdom
+- Bard's Discipline
+- Batiri's Wisdom
+- Battlefield Medic's Wisdom
+- Black Dragon's Insight
+- Black Scorpion's Instincts
+- Blacksmith's Discipline
+- Blink Dog's Presence
+- Boney Wisdom
+- Book Imp's Presence
+- Broom's Insight
+- Bruenor's Bulwark
+- Butterfly's Grace
+- Cambion's Insight
+- Cantankerous Mage's Wisdom
+- Cat's Instincts
+- Catti's Coordination
+- Cave Bear's Instincts
+- Celeste's Wisdom
+- Chicken's Instincts
+- Chickenmancer's Discipline
+- Cleric Disciple's Wisdom
+- Cockatrice's Presence
+- Coldlight Walker's Gaze
+- Compy's Instincts
+- Conartist's Discipline
+- Construct's Instincts
+- Consume Soul
+- Cowardly Dash
+- Crab's Instincts
+- Crimson Crystal Golem's Influence
+- Cryptic Insight
+- Crystal Golem's Presence
+- Cunning Hunter
+- Damaran Shepherd's Instincts
+- Dancing Blade's Insight
+- Dark Dealings
+- Death Slaad's Presence
+- Deceptive Insight
+- Delusional Insight
+- Deva Champion's Insight
+- Divine Answers
+- Divine Insight
+- Dog's Instincts
+- Doom and Bloom
+- Dragon's Bane
+- Dragon's Insight
+- Dragonborn Raider's Discipline
+- Dragonborn's Brawler's Discipline
+- Dreadwarrior's Insight
+- Drizzt's Devastation
+- Duergar Guard's Discipline
+- Duergar Theurge's Discipline
+- Dungeon Master's Wisdom
+- Dwarf Pickman's Discipline
+- Earth Archon's Insight
+- Effulgent Epuration
+- Eladrin's Senses
+- Elaina's Riposte
+- Elemental Cultist's Wisdom
+- Elite Intern's Wisdom
+- Elminster's Chain Lightning
+- Elusive Rabbit
+- Entertainer's Discipline
+- Erinyes's Wisdom
+- Etrien's Exuberance
+- Evoker's Wisdom
+- Faithful Initiate's Wisdom
+- Fawn's Instincts
+- Feral Raptor's Instincts
+- Feywild Sylph's Insight
+- Fire Archon's Insight
+- Fire Eye's Insight
+- Flamesprite's Insight
+- Forgotten Instincts
+- Galeb Duhr's Presence
+- Ghost Paladin's Wisdom
+- Ghost's Wisdom
+- Githyanki Vigor
+- Goat's Instincts
+- Golden Bulette Pup's Presence
+- Golden Cat's Instincts
+- Golden Deep Crow's Presence
+- Golden Goat's Instincts
+- Goldfish's Instincts
+- Grazilaxx's Wisdom
+- Greenscale Hunter's Discipline
+- Gromph's Confidence
+- Grung's Instincts
+- Halfling Thief's Discipline
+- Hank's Aim
+- Hawk's Instincts
+- Hell Hound's Senses
+- Highborn Status
+- Hollyphant's Guidance
+- Honeybadger's Instincts
+- Hot Foot
+- Hunting Drake's Presence
+- Hunting Hawk's Presence
+- I'm Just a Little Adventurer
+- Ice Galeb Duhr's Presence
+- Icesprite's Insight
+- Icosahedron Stone's Insight
+- Igneous Skin
+- Illusory Wisdom
+- Intellect Devourer's Presence
+- Intelligent & Wise
+- Invigorating Spores
+- Iron Golem's Presence
+- Jagged Blade's Insight
+- Kenku Archer's Wisdom
+- Kingfisher's Wisdom
+- Kuo-toa's Instincts
+- Laughing Skull's Cryptic Insight
+- Lava Galeb Duhr's Presence
+- Leprechaun's Insight
+- Lillend's Insight
+- Lizardman Shaman's Wisdom
+- Lord of the Wilderness
+- Maestro's Observation
+- Mageslayer's Assault
+- Makos' Wisdom
+- Man at Arms's Discipline
+- Manticore's Presence
+- Mercenary's Discipline
+- Mighty Insight
+- Minstrel's Discipline
+- Moonshae Druid's Wisdom
+- Mornhelm's Anguish
+- Myconid's Presence
+- Mystagogue's Wisdom
+- Mystic Phoera's Presence
+- Netherese Warlock's Wisdom
+- Neverember Guard's Discipline
+- Neverwinter Knight's Discipline
+- Orc Wolf's Instincts
+- Owl's Instincts
+- Ox Stot's Instincts
+- Panther's Instincts
+- Pewter Golem's Presence
+- Phasespider's Instincts
+- Phasespider's Presence
+- Phoera's Presence
+- Pig's Instincts
+- Plagueborne Insight
+- Portalhound's Presence
+- Pouncer's Instincts
+- Presto's Wisdom
+- Proud Pink Yeti's Presence
+- Pseudodragon's Presence
+- Quasit's Insight
+- Quickling's Wisdom
+- Radiant Insight
+- Rat Pup's Instincts
+- Rath's Patience
+- Red Slaad's Presence
+- Redcap's Wisdom
+- Regis's Reflexes
+- Remorhaz's Presence
+- Repentant Cultist's Discipline
+- Rimefire Golem's Presence
+- Rustmonster's Presence
+- Scarecrow's Presence
+- Sehanine's Wisdom
+- Sellsword's Discipline
+- Sense Through the Shadowfell
+- Sergeant Knox's Wisdom
+- Shadow Demon's Presence
+- Shadow Force
+- Siege Master's Discipline
+- Skeleton Dog's Instincts
+- Skyblazer's Sight
+- Slime's Insight
+- Slyblade Kobold's Discipline
+- Snow Fawn's Instincts
+- Snow Leopard's Instincts
+- Snow Worries
+- Spined Devil's Influence
+- Spiteful Hex
+- Spiteful Presence
+- Sprite's Insight
+- Squire's Discipline
+- Staldorf's Presence
+- Storm Eyes
+- Stormrider's Discipline
+- Stronghold Cleric's Wisdom
+- Sune's Wisdom
+- Swashbuckler's Discipline
+- Sylph's Insight
+- The Bigger They Are
+- Tiger's Instincts
+- Tomb Spider's Instincts
+- Tutor's Discipline
+- Twibright's Insight
+- Undying Overlord
+- Unseelie Cruelty
+- Vallenhas' Discipline
+- Vampire's Kiss
+- Vicious Direwolf's Presence
+- Volcanic Galeb Duhr's Presence
+- Wailer's Presence
+- War Boar's Instincts
+- War Drummer's Discipline
+- Wardog's Instincts
+- Water Archon's Insight
+- Wayward Wisdom
+- Wererat's Discipline
+- Werewolf's Presence
+- Wiggin's Wisdom
+- Wild Hunter's Discipline
+- Willowisp's Insight
+- Windsoul Genasi's Gait
+- Wolf's Instincts
+- Wulfgar's Wrecking
+- Xaryxian Precision
+- Xegut's Insight
+- Xuna's Wisdom
+- Yeth Hound's Presence
+- Yeti's Presence
+- Yojimbo's Discipline
+- Zhentarim Warlock's Wisdom
+
+## Companion Enhancements — 27 missing
+
+> Dedicated inbox/enhancements folder is EMPTY. Only coverage found: `_preview_archive/mod33/companions` (generic filenames, e.g. Sir Waddlelot / Enduring Guard).
+
+- Acute Senses
+- Anticipation
+- Armor Break
+- Blurred Vision
+- Counteract
+- Deflecting Shards
+- Dulled Senses
+- Enduring Craft
+- Enduring Guard
+- Enduring Precision
+- Enduring Senses
+- Exploit Weakness
+- Honed Instincts
+- Impactful Maneuvers
+- Keen Eyes
+- Master of Craft
+- Mobility
+- Perfect Vision
+- Potency
+- Potent Precision
+- Precision Breaker
+- Redemption
+- Reinvigorate
+- Slowed Reactions
+- Unflinching Will
+- Vulnerability
+- Weapon Break
+
+## Mounts — 308 missing
+
+> Celestial mount batch lives in `_originals/mounts_celestial_2026-06-29` (timestamped names). Equip/combat power coverage is the better signal.
+
+- Aberrant Drake
+- Aberrant Fey Wolf
+- Aberrant Yeth Hound
+- Adolescent Deep Crow
+- Amnian Horse
+- Amphail Fancy Horse
+- Appaloosa Horse
+- Apparatus of Gond
+- Apparatus of Kwalish
+- Arcane Whirlwind
+- Arkaiun Courser
+- Armored Axe Beak
+- Armored Bear
+- Armored Boar
+- Armored Bulette
+- Armored Ghost Horse
+- Armored Giant Strider
+- Armored Griffon
+- Armored Pale Horse
+- Ashen Brindle Horse
+- Autumn Stag
+- Axe Beak
+- Balgora
+- Barded Neverwintan Lion
+- Barlgura
+- Bay Zakharan Horse
+- Beholder Personal Tank
+- Beholder Rune Board
+- Bigby's Hand
+- Black Horse
+- Black Owlbear
+- Black Stallion
+- Black Unicorn
+- Blue Butterfly Swarm
+- Blue Ribbon Pig
+- Blueforged Rage Drake
+- Boar
+- Boots of Misty Step
+- Bore Worm - Account
+- Brindle Horse
+- Broom of Twilight
+- Broom of the Wilds
+- Brown Siege Bear
+- Brown Siege Bear - Account
+- Buckskin Destrier
+- Bulette
+- Butterfly Wings
+- Cactus the Hedgehog
+- Calimshan Horse
+- Carmine Bulette
+- Cavalry Tyrannosaur
+- Champion's Armored Bulette
+- Clockmaker Rune Board
+- Coastal Flail Snail
+- Commander Tyrannosaur
+- Confetti Machination
+- Cosmic Pig
+- Cosmic Stag
+- Crag Cat
+- Crystalline Warhorse
+- Dappled Riding Horse
+- Dark Butterfly Wings
+- Dawn Unicorn
+- Decaying Stag
+- Deinonychus
+- Demon Sled
+- Demon Wings
+- Demonic Gravehound
+- Divine Wings
+- Dragon Chicken
+- Dusk Unicorn
+- Ebon Riding Lizard
+- Eclipse Lion
+- Eku's Titivated Lion
+- Elite Shadow Wolf
+- Embellished Apparatus of Gond
+- Emerald Glazed Giant Beetle
+- Emperor Beetle
+- Empowered Dragonbone Golem
+- Enchanted Broom
+- Enchanted Courser
+- Enlarged Chicken
+- Epic Giant Toad
+- Escargo-fast Turbo 3000
+- Fallen Angel's Wings
+- Fancy Gorgon
+- Fey Wolf
+- Feywild Griffon
+- Feywild Griffon - Account
+- Feywild Stag
+- Feywild Stag - Account
+- Flail Snail
+- Forest Flail Snail
+- Forever Familiar
+- Frost Giantess
+- Frost Giantess - Account
+- Frozen Demon Sled
+- Frozen Gorgon
+- Frozen Polar Bear
+- Frozen Winter Sled
+- Fungal Flail Snail
+- Gas Spore
+- Gelatinous Cube
+- Giant Beetle
+- Giant Crab
+- Giant Space Hamster
+- Giant Strider
+- Gilded Giant Spider
+- Gilded Goose
+- Glacier Prowler
+- Glorious Panda
+- Glorious Undead Lion
+- Glorious Whirlwind
+- Gold Dragon Wings
+- Gold-Lined Apparatus of Kwalish
+- Golden Armored Griffon
+- Golden Brindle Horse
+- Golden Goose
+- Golden Rage Drake
+- Golden Warhorse
+- Gravewake
+- Green Owlbear
+- Grey Horse
+- Grubshank the Burdened
+- Guard Drake
+- Hag's Cauldron
+- Hag's Cooking Cauldron
+- Hag's Cooking Cauldron - Account
+- Hag's Enchanted Cauldron
+- Halaster's Green Whirlwind
+- Halaster's Whirly Whirlwind
+- Heavy Giant Spider
+- Heavy Howler
+- Heavy Inferno Nightmare
+- Heavy Mystic Nightmare
+- Heavy Twilight Nightmare
+- Heavy Worg
+- Hell Emblazon Worg
+- Hell Hound
+- Hellfire Steed
+- High Forest Bear
+- Hotenow Rune Board
+- Hound of the Forge
+- Howler
+- Ice Panther
+- Imperial Rage Drake
+- Infernal War Machine
+- Infernal War Machine - Account
+- Inferno Nightmare
+- Jubilee Parade Horse
+- Jubilee Unicorn
+- King of Spines
+- King of Spines - Account
+- Legendary Adolescent Deep Crow
+- Legendary Adolescent Deepcrow
+- Legendary Barlgura
+- Legendary Hellfire Engine
+- Legendary Reconnaissance Balloons
+- Leopard of Chult
+- Leopard-printed Yeth Hound
+- Lord's Armored Polar Bear
+- Lunar New Year's Dragonnel
+- Maltese Tiger
+- Marbled Stallion
+- Marvelous Reconnaissance Balloons
+- Mechanical Goose
+- Medium Adventurer's Horse
+- Medium Black Horse
+- Medium Palomino Horse
+- Medium Pharaoh Steed
+- Medium Snowswift Horse
+- Medium Snowswift Steed
+- Medium Tiger
+- Medium Waterdeep Horse
+- Medium Worg
+- Midnight's Plume
+- Mist Form
+- Moonbear
+- Moss-daubed Horse
+- Mossy Flail Snail
+- Mottled Rage Drake
+- Myconid Bulette
+- Mystical Butterfly Wings
+- Neo Eclipse Lion
+- Neverwinter Champion's Charger
+- Neverwinter Siegebreaker's Charger
+- Neverwinter's Hand
+- New Year's Boar
+- New Year's Ox
+- New Year's Rabbit
+- New Year's Tiger
+- Nightfire Dragonnel
+- Noble Pegasus
+- Noble Pegasus - Account
+- Nostura's Winter Stag
+- Ochre Bulette
+- Omen of Despair
+- Ornate Apparatus of Gond
+- Owlbear
+- Pale Horse
+- Palomino Horse
+- Panther
+- Pegasus
+- Pegasus - Account
+- Phantom Panther
+- Pharaoh Steed
+- Pink Sylph Wings
+- Poisonous Looking Spider
+- Polar Bear
+- Polar Siege Bear
+- Polar Siege Bear - Account
+- Protective Pink Yeti
+- Purple Guard Drake
+- Purple Owlbear
+- Rage Drake
+- Rainbow Starry Panther
+- Reanimated Chariot
+- Reanimated Destrier
+- Reclusive Rothe
+- Reclusive Rothé
+- Red Butterfly Swarm
+- Red Dragon Wings
+- Red Giant Beetle
+- Red Mountain Fox
+- Red-Hued Apparatus of Gond
+- Regal Armored Griffon
+- Regal Cobra
+- Rimefire Salamander
+- Rothe Traveler
+- Royal Winter Sled
+- Runeclad Manticore
+- Sabino Destrier
+- Sabino Horse
+- Savage Polar Bear
+- Shadow Drake
+- Shadow Wolf
+- Siegebreaker Griffon
+- Sienna Tribal Lion
+- Silverback Bear
+- Silverleaf Sled
+- Skeletal Worg
+- Skeleton Steed
+- Skyhold Throne
+- Slab of Vecna
+- Slaghound
+- Small Forest Stag
+- Snowclad Manticore
+- Soot Tribal Lion
+- Space Guppy School
+- Spiked Deinonychus
+- Starfade Stag
+- Starry Panther
+- Starry Sphere
+- Stormraider Clydesdale
+- Striped Owlbear
+- Striped Rage Drake
+- Sunite Steed
+- Sunscorch Rune Board
+- Suratuk's Banded Spider
+- Suratuk's Blue Poisonous Looking Spider
+- Suratuk's Blue Tarantula
+- Suratuk's Darkfish Fey Wolf
+- Suratuk's Giant Red Crab
+- Suratuk's Giant Spider
+- Suratuk's Giant Sunset Crab
+- Suratuk's Gold-Dusted Axebeak
+- Suratuk's Jungle Spider
+- Suratuk's Orange Poisonous Looking Spider
+- Suratuk's Orange Tarantula
+- Suratuk's Red-Dusted Axebeak
+- Suratuk's Ruby Strider
+- Suratuk's Teal Crag Cat
+- Suratuk's Teal Spider
+- Swarm
+- Sylvan Stag
+- Teal Armored Axe Beak
+- Tenser's Floating Disk (epic)
+- Tethyr Horse
+- The Herald's Horse
+- Tiger-striped Owlbear
+- Toothesome
+- Toothsome
+- Trained Basilisk
+- Trained Grizzly
+- Tribal Polar Bear
+- Triceratops
+- Tuigan Courser
+- Turmish Lion
+- Twilight Yeti
+- Umber Hulk
+- Uni the Unicorn
+- Volcanic Flail Snail
+- War Triceratops
+- Warpainted Tyrannosaur
+- Water Horse
+- Waterdeep Horse
+- White Horse
+- White Owlbear
+- White Tiger
+- Winter Flail Snail
+- Winter Sled
+- Winter Wolf
+- Witch's Broom
+- Wolf of the Wild Hunt
+- Yellow Butterfly Swarm
+- Yeth Hound
+- Zodar Armor
+- Zombie Chicken
+
+## Mount Combat Powers — 74 missing
+
+> Some coverage inside inbox/mounts with power names in filenames.
+
+- Actions Speak Louder
+- Arcane Maelstrom
+- Arcane Siege Volley
+- Bat Swarm
+- Beholder's Might
+- Bigby's Crushing Hand
+- Call of the Heavens
+- Cannon Siege Volley
+- Cauldron Fumes
+- Cauldron Gasses
+- Commander Tyrannosaurus Rex'em
+- Confetti Catastrophe
+- Crystal Eruption
+- Dark Call
+- Dark Vortex
+- Deep Crow Shriek
+- Disintegration Beam
+- Dragon Nugget Bomb
+- Eclipsed Armament
+- Explosive Equalizer
+- Ferocious Roar
+- Flail Snail
+- Frozen Stamp
+- Golden Touch
+- Ground Slam
+- Grubshank SMAAASH
+- Hamsphere
+- Harrowing Screech
+- Hell on Faerûn
+- Hell's Impact
+- Hot Streak
+- Imperious Stomp
+- Intoxicating Venom
+- Invigorating Foxfire
+- Lolth's Gift
+- Marvelous Balloon Bombardment
+- Meteoric Impact
+- Mighty Dragon's Roar
+- Mossy Flail Snail
+- Mythic Tyrannosaurus Rex'em
+- Necrotic Roar
+- Neverwinter Armament
+- Path of Fire
+- Phantasmic Wake
+- Piercing Screech
+- Protector's Hand
+- Psionic Blast
+- Rabbit Hole
+- Rain of Shards
+- Rain of Spines
+- Relentless Hunter
+- Resonating Screech
+- Rimefire Retribution
+- Rothe Charge
+- Rush of Despair
+- Rush of Torment
+- Sand Coffin
+- School's in Session
+- Shadowy Rush
+- Skyhold Alligator's Bellow
+- Spinning Axe Strike
+- Spinning Axe Strike (Teal)
+- Spore Explosion
+- Stabby Stabs
+- Strider Fire
+- Tenser's Transformation
+- Terrifying Roar
+- Tiger's Charge
+- Tunnel Vision
+- Uni's Charge
+- Vortex of Despair
+- Warpainted Tyrannosaurus Rex'em
+- Wicked Lich
+- Winter's Wrath
+
+## Mount Equip Powers — 36 missing
+
+> Same as combat powers.
+
+- All A Flutter
+- Armor Breaker
+- Avian Aura
+- Blazing Opportunity
+- Dash of Life
+- Dawn of Life
+- Deadly Decay
+- Divine Decree
+- Dominant Force
+- Fast Striding
+- Ferocity
+- Hearty Resistance
+- Heroic Soul
+- Mighty Action
+- Mist Me
+- Necrotic Flesh
+- Neverwinter's Pride
+- Omnipotence
+- Opportunism
+- Otherworldly Adaptability
+- Otherworldly Force
+- Quick Action
+- Reactive Agility
+- Reptilian Skin
+- Resilient
+- Runic Aura
+- Seeing Red
+- Shadow Sight
+- Smooth Ride
+- Sturdy Accuracy
+- Tactical Reconnaissance
+- The High Ground
+- Uncanny Precision
+- Untouchable
+- Vigilance
+- Vulpine Vigor
+
+## Mount Insignias — 49 missing
+
+> No per-insignia files, but 7 insignia-related screenshots exist inside inbox/mounts/.
+
+- Barbed Insignia of Aggression
+- Barbed Insignia of Brutality
+- Barbed Insignia of Dominance
+- Barbed Insignia of Evasion
+- Barbed Insignia of Fortitude
+- Barbed Insignia of Gond
+- Barbed Insignia of Initiative
+- Barbed Insignia of Mastery
+- Barbed Insignia of Skill
+- Crescent Insignia of Balance
+- Crescent Insignia of Brutality
+- Crescent Insignia of Courage
+- Crescent Insignia of Evasion
+- Crescent Insignia of Fortitude
+- Crescent Insignia of Gond
+- Crescent Insignia of Initiative
+- Crescent Insignia of Prosperity
+- Crescent Insignia of Skill
+- Crescent Insignia of Tranquility
+- Enlightened Insignia of Brutality
+- Enlightened Insignia of Courage
+- Enlightened Insignia of Fortitude
+- Enlightened Insignia of Gond
+- Enlightened Insignia of Initiative
+- Enlightened Insignia of Mastery
+- Enlightened Insignia of Precision
+- Enlightened Insignia of Prosperity
+- Enlightened Insignia of Refuge
+- Enlightened Insignia of Skill
+- Illuminated Insignia of Aggression
+- Illuminated Insignia of Brutality
+- Illuminated Insignia of Dominance
+- Illuminated Insignia of Fortitude
+- Illuminated Insignia of Gond
+- Illuminated Insignia of Initiative
+- Illuminated Insignia of Mastery
+- Illuminated Insignia of Refuge
+- Illuminated Insignia of Rhythm
+- Regal Insignia of Aggression
+- Regal Insignia of Brutality
+- Regal Insignia of Courage
+- Regal Insignia of Dominance
+- Regal Insignia of Evasion
+- Regal Insignia of Fortitude
+- Regal Insignia of Gond
+- Regal Insignia of Initiative
+- Regal Insignia of Precision
+- Regal Insignia of Prosperity
+- Regal Insignia of Refuge
+
+## Mount Insignia Bonuses — 39 missing
+
+> Partially covered by insignia-bonus screens inside inbox/mounts/ and evidence/.
+
+- Accursed's Resolve
+- Alchemist's Invigoration
+- Ally's Resilience
+- Artificer's Enticement
+- Artificer's Persuasion
+- Assassin's Covenant
+- Barbarian's Revelry
+- Berserker's Rage
+- Cautious Devotion
+- Cavalry's Alarm
+- Cavalry's Haste
+- Cavalry's Warning
+- Champion's Return
+- Combatant's Maneuver
+- Defender's Retort
+- Enchanter's Hex
+- Gladiator's Guile
+- Guardian's Spirit
+- Ice Cold Aggression
+- Knight's Condemnation
+- Knight's Rebuke
+- Lionheart's Perseverance
+- Magistrate's Patience
+- Master's Cruelty
+- Master's Precision
+- Mender's Covenant
+- Oppressor's Reprieve
+- Protector's Camaraderie
+- Protector's Covenant
+- Shepherd's Devotion
+- Slayer's Bloodlust
+- Survivalist's Expertise
+- Survivor's Blessing
+- Tactician's Precision
+- Trainer's Restoration
+- Traveler's Treasures
+- Victim's Preservation
+- Wanderer's Fortune
+- Warlord's Motivation
+
+## Mount Collars — 75 missing
+
+> NO collar screenshot folder exists anywhere in the archive. Entire system unverified by screenshot.
+
+- Practical Barbed Collar I
+- Practical Barbed Collar II
+- Practical Barbed Collar III
+- Practical Barbed Collar IV
+- Practical Barbed Collar V
+- Practical Crescent Collar I
+- Practical Crescent Collar II
+- Practical Crescent Collar III
+- Practical Crescent Collar IV
+- Practical Crescent Collar V
+- Practical Regal Collar I
+- Practical Regal Collar II
+- Practical Regal Collar III
+- Practical Regal Collar IV
+- Practical Regal Collar V
+- Sturdy Barbed Collar I
+- Sturdy Barbed Collar II
+- Sturdy Barbed Collar III
+- Sturdy Barbed Collar IV
+- Sturdy Barbed Collar V
+- Sturdy Crescent Collar I
+- Sturdy Crescent Collar II
+- Sturdy Crescent Collar III
+- Sturdy Crescent Collar IV
+- Sturdy Crescent Collar V
+- Sturdy Regal Collar I
+- Sturdy Regal Collar II
+- Sturdy Regal Collar III
+- Sturdy Regal Collar IV
+- Sturdy Regal Collar V
+- Supportive Barbed Collar I
+- Supportive Barbed Collar II
+- Supportive Barbed Collar III
+- Supportive Barbed Collar IV
+- Supportive Barbed Collar V
+- Supportive Crescent Collar I
+- Supportive Crescent Collar II
+- Supportive Crescent Collar III
+- Supportive Crescent Collar IV
+- Supportive Crescent Collar V
+- Supportive Regal Collar I
+- Supportive Regal Collar II
+- Supportive Regal Collar III
+- Supportive Regal Collar IV
+- Supportive Regal Collar V
+- Unified Barbed Collar I
+- Unified Barbed Collar II
+- Unified Barbed Collar III
+- Unified Barbed Collar IV
+- Unified Barbed Collar V
+- Unified Crescent Collar I
+- Unified Crescent Collar II
+- Unified Crescent Collar III
+- Unified Crescent Collar IV
+- Unified Crescent Collar V
+- Unified Regal Collar I
+- Unified Regal Collar II
+- Unified Regal Collar III
+- Unified Regal Collar IV
+- Unified Regal Collar V
+- Wayfaring Barbed Collar I
+- Wayfaring Barbed Collar II
+- Wayfaring Barbed Collar III
+- Wayfaring Barbed Collar IV
+- Wayfaring Barbed Collar V
+- Wayfaring Crescent Collar I
+- Wayfaring Crescent Collar II
+- Wayfaring Crescent Collar III
+- Wayfaring Crescent Collar IV
+- Wayfaring Crescent Collar V
+- Wayfaring Regal Collar I
+- Wayfaring Regal Collar II
+- Wayfaring Regal Collar III
+- Wayfaring Regal Collar IV
+- Wayfaring Regal Collar V
+
+## Overloads — 15 missing
+
+> 29/44 have item-named screenshots.
+
+- Bulwark of Brimstone
+- Demonic Empowerment
+- Devil's Precision
+- Dragon Ward
+- Drow Slayer
+- Elemental Slayer
+- Elemental Ward
+- Giant Slayer
+- Giant Ward
+- Lesser Demon Slayer
+- Rage of Flames
+- Resiliency of the Depths
+- Sword Coast Tactician
+- Unholy Protection
+- Wildspace Warrior
+
+## Reinforcement Kits — 44 missing
+
+> NO reinforcement-kit screenshot folder exists. The 30 new ladder rungs from commit de1507eb self-note 'needs in-game verification'.
+
+- Accuracy Armor Kit +1
+- Defense Armor Kit +1
+- Greater Accuracy Armor Kit
+- Greater Accuracy Armor Kit +1
+- Greater Awareness Jewel
+- Greater Awareness Jewel +1
+- Greater Combat Advantage Jewel
+- Greater Combat Advantage Jewel +1
+- Greater Critical Avoidance Armor Kit
+- Greater Critical Avoidance Armor Kit +1
+- Greater Critical Severity Armor Kit
+- Greater Critical Severity Armor Kit +1
+- Greater Critical Strike Armor Kit
+- Greater Critical Strike Armor Kit +1
+- Greater Defense Armor Kit
+- Greater Defense Armor Kit +1
+- Greater Deflect Armor Kit
+- Greater Deflect Armor Kit +1
+- Greater Hit Points Armor Kit
+- Greater Hit Points Armor Kit +1
+- Greater Power Armor Kit
+- Greater Power Armor Kit +1
+- Greater Stamina Regeneration Jewel
+- Greater Stamina Regeneration Jewel +1
+- Major Accuracy Armor Kit
+- Major Awareness Jewel
+- Major Awareness Jewel +1
+- Major Combat Advantage Jewel
+- Major Combat Advantage Jewel +1
+- Major Critical Avoidance Armor Kit
+- Major Critical Avoidance Armor Kit +1
+- Major Critical Severity Armor Kit
+- Major Critical Severity Armor Kit +1
+- Major Critical Strike Armor Kit
+- Major Critical Strike Armor Kit +1
+- Major Defense Armor Kit
+- Major Deflect Armor Kit
+- Major Deflect Armor Kit +1
+- Major Hit Points Armor Kit
+- Major Hit Points Armor Kit +1
+- Major Power Armor Kit
+- Major Power Armor Kit +1
+- Major Stamina Regeneration Jewel
+- Major Stamina Regeneration Jewel +1
+
+## Buffs / Consumables — 114 missing
+
+> Most consumables were sourced from tooltips read live or wiki-era data; belt-items folder covers the Wondrous belt family.
+
+- Accuracy & Awareness
+- Adorable Pocket Pet
+- Alliance Battle Horn
+- Anniversary Ham
+- Awakened Forger's Box
+- Bat Wing Soup
+- Campfire
+- Caprese
+- Champions Battle Horn
+- Chocolate
+- Crafted Potion of Accuracy Rank 14
+- Crafted Potion of Accuracy Rank 14, +1
+- Crafted Potion of Accuracy Rank 4
+- Crafted Potion of Accuracy Rank 4, +1
+- Crafted Potion of Critical Strike Rank 14
+- Crafted Potion of Critical Strike Rank 14, +1
+- Crafted Potion of Critical Strike Rank 4
+- Crafted Potion of Critical Strike Rank 4, +1
+- Crafted Potion of Defense Rank 14
+- Crafted Potion of Defense Rank 14, +1
+- Crafted Potion of Defense Rank 4
+- Crafted Potion of Defense Rank 4, +1
+- Crafted Potion of Deflect Rank 14
+- Crafted Potion of Deflect Rank 14, +1
+- Crafted Potion of Deflect Rank 4
+- Crafted Potion of Deflect Rank 4, +1
+- Crafted Potion of Power Rank 14
+- Crafted Potion of Power Rank 14, +1
+- Crafted Potion of Power Rank 4
+- Crafted Potion of Power Rank 4, +1
+- Critical Severity & Critical Avoidance
+- Critical Strike & Deflect
+- Cured Meat
+- Deep Gnome Trillimac Pods
+- Diamond Blessing
+- Divine Injury Kit
+- Dragonfire
+- Drow Green Wine
+- Effervescent Fortification Potion
+- Effervescent Potion of Accuracy
+- Effervescent Potion of Force
+- Effervescent Potion of Reflexes
+- Effervescent Tidespan Potion
+- Elixir of Corelion's Blood
+- Elixir of Fate
+- Elixir of Life
+- Elixir of Steadfast Devotion
+- Elixir of the Moonmaiden
+- Fizzy Brew
+- Flask of Potency Rank 3 +1
+- Foehammer's Favor Elixir
+- Fried Spring Rolls
+- Grand Summer Feast
+- Grilled Rodent
+- Hero's Feast
+- Honeyed Bread
+- Hot Wings
+- Intense Injury Kit
+- Lathander's Dew
+- Lightwine
+- Lliira's Fare
+- Lliiras Bell
+- Lliiras Bell of Celerity
+- Lliiras Bell of Empowerment
+- Mochi
+- Mushroom Plate
+- Neverwintan Hawk
+- Neverwintan Red Veins
+- Niangao
+- Oil of Sharpness
+- Owlbear Figurine
+- Perfect Spider Totem
+- Pho
+- Pork Bun
+- Portable Altar
+- Potion of Coalesced
+- Potion of Giant Strength
+- Potion of Healing Rank x
+- Potion of Power
+- Potion of Speed
+- Power & Defense
+- Prime Rib
+- Pristine Siegebreakers Battle Horn
+- Pumpkin Soup
+- Ratatouille
+- Sambocade
+- Scorpion Skewer
+- Scroll of Dragon Slaying Rank 5
+- Scroll of Fate: Accuracy
+- Scroll of Fate: Awareness
+- Scroll of Fate: Combat Advantage
+- Scroll of Fate: Critical Avoidance
+- Scroll of Fate: Critical Severity
+- Scroll of Fate: Critical Strike
+- Scroll of Fate: Defense
+- Scroll of Fate: Deflect
+- Scroll of Fate: Power
+- Scroll of Life
+- Scroll of Mass Life
+- Scroll of Protection from Dragons Rank 5
+- Seard Tuna
+- Seed Bread
+- Squash Soup
+- Stone of Health
+- Sunlord's Gift Elixir
+- Superior Flask of Protection
+- Tentacle Skewer
+- Tymoras Lucky Coin
+- VIP Rank 3 Bonus
+- Vintage Lightwine
+- Watermelon Sorbet
+- Wild Storm Elixir
+- Wounderous Doohicky
+- Zurek
+
+## Set Bonuses (set-detail captures) — 149 missing
+
+> Set-name matching used the 583-file `_set_details` folder + `_setbonus_up` + `_ve_*_up`. A set listed below has NO set-details capture under any tier-suffix variant.
+
+- Abyssal Fury
+- Alabaster
+- Alliance Armor
+- Ancient Scalebreaker's Gear
+- Antiquities of Undermountain
+- Apocalypse
+- Apprentice's Spoils
+- Armaments of Constructed Demise
+- Armaments of the Wyvern
+- Armor of Halaster's Successor
+- Armor of the Dungeon Raider
+- Armor of the Successor
+- Artifacts and Gear of Undermountain
+- Assassin's Luck
+- Astral Absorption
+- Astral Dash
+- Attuned Eye of Odran
+- Barovian Lord's Armor
+- Barovian Lord's Armor (Assault)
+- Barovian Lord's Armor (Raid)
+- Blood Raven
+- Bloodgold Gear
+- Bregan D'aerthe Gear
+- Brute's Expertise
+- Burnished
+- Butcher's Might
+- Challenger's Guard
+- Challenger's Might
+- Cindersilk
+- Clothing: Doomvault Remains
+- Clothing: Pirates' Skyhold Region
+- Clothing: Soul Harvest
+- Clothing: The Dread Sanctum
+- Companion Gear
+- Crimson Scalebreaker's Gear
+- Crone's Gear
+- Crystalline Armor
+- Dark Maiden's Gear
+- Dark Remnants
+- Dashing Action
+- Dead
+- Death Defier's Guard
+- Death Defier's Might
+- Demonic Artifacts and Gear
+- Depths Armor
+- Dinohide Set
+- Divine Armor
+- Dominion Armor
+- Doomed Reaver Armor
+- Dragon Bone Weapons
+- Dragonsteel Gear
+- Dread March Armor
+- Dusk Armor (Assault)
+- Dusk Armor (Raid)
+- Dwarven Resilience
+- Elemental Alliance Armor
+- Elemental Elven Armor
+- Elemental Infusion
+- Elven Armor
+- Enchanted Depths Armor
+- Enchanted Menzoberranzan Gear
+- Enchanted Thumb
+- Eternal Armor
+- Eternal Armor Set
+- Eternal Dominion Armor
+- Exalted Dark Maiden's Gear
+- Expedition Rewards
+- Finish the Job
+- Forest Guardian's Gear
+- Gladiator's Focus
+- Glorious Light
+- Great Hunter
+- Infernal Forged Armor
+- Infernal Forged Armor (Demon Forged)
+- Infernal Forged Armor (Devil Forged)
+- Infernal Forged Armor (Fiend Forged)
+- Infused Accuracy
+- Infused Defense
+- Infused Healing
+- Infused Power
+- Infused Recharge
+- Last Justice Armor
+- Leader's Dash
+- Leader's Guard
+- Leader's Might
+- Leader's Vitality
+- Lion Guard Armor
+- Lion Guard's Armor
+- Lionheart
+- Lolthblessed
+- Lolthian Gear
+- Mad Dash
+- Magician's Fury
+- Magmatic Efficiency
+- Manticore Set
+- Marilith Strike
+- Masterwork Armor
+- Masterwork Armor II
+- Masterwork Armor II / Ranger Stronghold Set II
+- Masterwork Armor III
+- Masterwork Armor III / Ranger Stronghold Set III
+- Masterwork II Weapon Set
+- Masterwork III Weapon Set
+- Masterwork VII Weapon Set
+- Menzoberranzan Gear
+- Menzoberranzan Masterwork Gear
+- Mountaineer
+- Nightpact
+- Oathkeeper's Relic
+- Prismatic Crystalline Armor
+- Protege Set
+- Protégé Set
+- Queen's Empowerment
+- Ravenloft
+- Reflective Armaments
+- Rings of the Demonweb Pits
+- Rings: Soul Harvest
+- Rune of Replenishment
+- Rune of the Underdark
+- Runed Apprentice Armor
+- Ruthless Domination
+- Scalebreaker's Gear
+- Spy's Guild Armor
+- Star
+- Supreme Dominion Armor
+- Survivor's Finesse
+- Survivor's Guard
+- Survivor's Might
+- Survivor's Savagery
+- Survivor's Stride
+- Swamp Dweller Armor
+- Tentacle Rod
+- Thayan Servitor Armor
+- The Crone's Gear
+- Tiamat's Prized Possessions
+- Trailblazer's Relic
+- Twisted Set
+- Tyrators
+- Umbral Set
+- Vanguard's Vow Armor
+- Volcanic Jewels
+- Wanderer's Vigor
+- Warden's Balance
+- Warden's Haste
+- Watcher
+- Weapons of the Bear Tribe
+- Weathered Wood Gear
+- Winterworn Harness
+- Wrathful Bindings
+
+## Known matcher false-positives (found by the vision pass)
+
+These items counted as 'covered' but their matched file is a DIFFERENT thing — treat them as missing evidence too:
+
+- **Minor Potion of Heroism** (buffs) — matched `powers/paladin-powers/Heroism.png`, a Paladin daily power, not the potion.
+- **Bloodwoven Symbols (Medic's Haste)** (Pants) — only match `_trash/originals/Bloodwoven.png` is the tooltip of 'Bloodwoven Ink', a different item.
+- **Black Ice Beholder** (artifact) — matched `_setbonus_up/Black_Ice.png`, which is the Greater Cloak of Black Ice tooltip (set list only).
+- **Insightful/Aggressive/Vanguard's/Celestial Alacrity** (sets) — index hits are unrelated files; no real set-detail capture exists.
+- **Prestige Duelist Bracers** — index sample pointed at Prestige Gladiator Cuirass set-details; real bracers tooltip found separately in `_trash/originals`.
