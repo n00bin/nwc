@@ -78,6 +78,8 @@ const TOON_FORGE_STAT_NAMES = TOON_FORGE_STATS.map(function(s) { return s.name; 
 // about them, but they don't get a final % computation.
 const TOON_FORGE_BONUS_STATS = [
   "Gold Bonus",
+  // Non-combat: Black Ice Stone reduces Black Ice consumption in Icewind Dale.
+  "Black Ice Consumption",
   "Glory Bonus",
   "Stamina",          // distinct from Stamina Regeneration
   "magnitude",        // damage-formula side; not a stat percentage

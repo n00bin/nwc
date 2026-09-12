@@ -114,7 +114,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 25 | Battlefield Medic | **VERIFIED** (no card); Epic base confirmed by n00b; all three skills are heals | Epic | Utility | Combat Advantage 1.88%, Incoming Healing 1.88% | - |
 | 26 | Black Dragon Ioun Stone (augment) | **VERIFIED** (no card); base corrected Mythic -> Epic (n00b) | Mythic | Offense | Critical Strike 7.5% | - |
 | 27 | Black Ice Prospector | unchecked | Epic | Defense | Deflect 1.88%, Critical Avoidance 1.88% | - |
-| 28 | Black Ice Stone (augment) | unchecked | Uncommon | Utility | PROC | - |
+| 28 | Black Ice Stone (augment) | **VERIFIED** off card c207; duplicate Passive proc removed; stat registered with the engine | Uncommon | Utility | PROC | - |
 | 29 | Black Scorpion | unchecked | Celestial | Offense | PROC | enemy |
 | 30 | Blacksmith | unchecked | Rare | Utility | PROC | - |
 | 31 | Blaspheme Assassin | **VERIFIED** off card c093; Mythic base confirmed; Faerie Fire recorded as the summoned bonus | Mythic | Offense | PROC | enemy |
