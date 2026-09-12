@@ -456,7 +456,7 @@ const DOUBLE_STAT_SCALE = { 75: 0.375, 150: 0.75, 250: 1.25, 375: 1.875, 550: 2.
 const TRIPLE_STAT_SCALE = { 75: 0.25, 150: 0.50, 250: 0.8333, 375: 1.25, 550: 1.8333, 750: 2.50, 900: 3.00 };
 const MAX_HP_SCALE = { 75: 1500, 150: 3000, 250: 5000, 375: 7500, 550: 11000, 750: 15000, 900: 18000 };
 const SCALABLE_POWER_IDS = {};
-[156, 54, 147, 234, 170, 228, 232, 113, 210, 87, 99, 194, 226, 161, 120, 77, 242, 70, 128, 26, 168, 174, 104, 248].forEach(function (id) { SCALABLE_POWER_IDS[id] = true; });
+[156, 54, 147, 224, 234, 170, 228, 232, 113, 210, 87, 99, 194, 226, 161, 120, 77, 242, 70, 128, 26, 168, 174, 104, 248].forEach(function (id) { SCALABLE_POWER_IDS[id] = true; });
 function isScalablePower(pw) {
   if (!pw || !pw.slot) return false;
   if (SCALABLE_POWER_IDS[pw.id]) return true;
