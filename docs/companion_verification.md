@@ -100,7 +100,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 11 | Aranea | **VERIFIED** off card c144; chance is flat 5%, magnitude ladder derived and Celestial predicted at 270 | Uncommon | Offense | PROC | - |
 | 12 | Armored Orc Wolf | **VERIFIED** off card c070; base corrected Common -> Uncommon (n00b: green) | Common | Offense | Accuracy 0.38%, Critical Strike 0.38% | - |
 | 13 | Assassin Drake | **VERIFIED** off card c006; two skill-text typos fixed against the card | Epic | Offense | Accuracy 1.88%, Critical Severity 1.88% | - |
-| 14 | Astral Deva | unchecked | Rare | Defense | Heal Percent 2.5% | - |
+| 14 | Astral Deva | **VERIFIED** (no card); heal was double-stored as a permanent stat - fixed; ladder added | Rare | Defense | Heal Percent 2.5% | - |
 | 15 | Bear Cub (was Baby Bear, augment) | **VERIFIED** off card c080; renamed; proc re-based to the exact 1.125 rung | Uncommon | Defense | PROC | - |
 | 16 | Baby Boar (augment) | unchecked | Uncommon | Offense | Deflect 0.75%, Critical Severity 0.75% | - |
 | 17 | Baby Bulette (augment) | unchecked | Epic | Defense | PROC | - |
@@ -443,6 +443,12 @@ Current state: **534 notes across powers and companions, and only 8 flag an open
 **15 other powers still carry a bare `zoneConditional: true`** - the flag says a zone matters but not WHICH zone or by HOW MUCH, so the card can only show a generic badge. Capture zone and multiplier for each as we pass through: Hell Hound's Senses, Yeth Hound's Presence, Dragon's Bane, Eladrin's Senses, Chultan Hunter's Discipline, Vistani's Discipline, Mageslayer's Assault, Vallenhas' Discipline, Siege Master's Discipline, Wiggin's Wisdom, Stronghold Cleric's Wisdom, Skyblazer's Sight, Dark Dealings, Sense Through the Shadowfell, Fire Eye's Insight.
 
 **Not scored by the optimizer.** Structuring the data does not make the engine use it; a Chult build still sees half the real value of these powers. Wiring that is engine work and needs n00b's go.
+
+**PROCESS FIX: FOLLOW THE TRACKER ORDER, NOT MY OWN ALPHABETISING.** I skipped **Astral Deva** (#14) and **Baby Boar** (#16) by re-deriving the order in my head each time instead of reading this table. n00b caught it. Work the numbered rows in order.
+
+**DOUBLE-COUNT REVIEW LIST (24 powers).** A stat sitting in `stats[]` while the power's own proc describes that same stat is the Air Archon shape - the effect gets credited permanently AND again when it fires. Confirmed and fixed so far: **Air Archon** (Power), **Apprentice Healer** (Max HP, stored as a fake Passive proc), **Astral Deva** (Heal Percent). Confirmed CORRECT: **Yojimbo's Discipline** (its proc swaps the stat, so the base must stay).
+
+**Not bulk-changed** - most of the remaining 20 are probably legitimate, since a proc's text often just mentions the stat name it boosts. Each needs its tooltip read. The list: Rustmonster's Presence, Volcanic/Ice/Lava/plain Galeb Duhr's Presence, Raptor's Instincts, Hunting Hawk's Presence, Honeybadger's Instincts, Panther's Instincts, Elaina's Riposte, Dragon's Bane, The Bigger They Are, Siege Master's Discipline, Slyblade Kobold's Discipline, Undying Overlord, Netherese Warlock's Wisdom, Elemental Cultist's Wisdom, Batiri's Wisdom, Unseelie Cruelty, Delusional Insight, Feral Raptor's Instincts, Hollyphant's Guidance.
 
 **A CONDITION IS NOT A CHANCE (Baby Bulette, 2026-09-11).** Its power fires when you take a big hit - a condition, always true when met - but it was stored with `chance: 100`, which the card printed as a Chance row. Removed. Same shape as Air Archon's bogus `chance: 10`, which was really its cooldown. **Only store a chance when the game states a percentage roll.**
 
