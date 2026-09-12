@@ -116,7 +116,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 27 | Black Ice Prospector | unchecked | Epic | Defense | Deflect 1.88%, Critical Avoidance 1.88% | - |
 | 28 | Black Ice Stone (augment) | **VERIFIED** off card c207; duplicate Passive proc removed; stat registered with the engine; ladder confirmed in game (Celestial -27%) and whitelisted for rarity scaling | Uncommon | Utility | PROC | - |
 | 29 | Black Death Scorpion (was Black Scorpion) | **VERIFIED** off card c053; base Celestial -> Epic; exact magnitude ladder 56.25/82.5/112.5/135 | Epic | Offense | PROC | enemy: grants combat advantage |
-| 30 | Blacksmith | card c119 read: Utility slot, reflect proc made verbatim + exact rungs, Slowed Reactions tooltip captured, augment:false. **Base rarity awaiting n00b** (card was captured at Rare, which is only a lower bound) | Rare | Utility | PROC (reflect) | - (enhancement debuffs enemy deflect) |
+| 30 | Blacksmith | **VERIFIED** off card c119; n00b confirmed Rare base and 4.5% reflect at Celestial, matching the half-single-stat ladder; proc made verbatim, Slowed Reactions tooltip captured, augment:false | Rare | Utility | PROC (reflect 1.25% -> 4.5%) | - (enhancement debuffs enemy deflect) |
 | 31 | Blaspheme Assassin | **VERIFIED** off card c093; Mythic base confirmed; Faerie Fire recorded as the summoned bonus | Mythic | Offense | PROC | enemy |
 | 32 | Blink Dog | unchecked | Uncommon | Offense | Deflect 0.75%, Critical Avoidance 0.75% | enemy |
 | 33 | Blue Fire Eye | unchecked | Common | Offense | PROC | party: Critical Strike 3.0% |
