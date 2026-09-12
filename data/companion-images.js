@@ -14,7 +14,7 @@ window.COMPANION_IMAGES = {
   "Armored Orc Wolf": "armored-orc-wolf.webp",
   "Assassin Drake": "assassin-drake.webp",
   "Astral Deva": "astral-deva.webp",
-  "Baby Bear": "bear-cub.webp",
+  "Bear Cub": "bear-cub.webp",
   "Baby Boar": "boar-shoat.webp",
   "Baby Bulette": "bulette-pup.webp",
   "Baby Deep Crow": "deep-crow-hatchling.webp",
