@@ -20,7 +20,7 @@ window.COMPANION_IMAGES = {
   "Deep Crow Hatchling": "deep-crow-hatchling.webp",
   "Baby Displacer Beast": "baby-displacer-beast.webp",
   "Infant Gorilla": "infant-gorilla.webp",
-  "Baby Owlbear": "owlbear-cub.webp",
+  "Owlbear Cub": "owlbear-cub.webp",
   "Baby Polar Bear": "polar_bear_cub.webp",
   "Barbarian Shaman": "barbarian-shaman.webp",
   "Basic Bok": "basic-bok.webp",

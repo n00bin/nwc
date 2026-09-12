@@ -107,7 +107,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 18 | Baby Deep Crow (augment) | unchecked | Mythic | Offense | Power 7.5% | - |
 | 19 | Baby Displacer Beast (augment) | unchecked | Uncommon | Defense/Offense | PROC | - |
 | 20 | Infant Gorilla (was Baby Gorilla, augment) | **VERIFIED** off card c056; renamed - predicted from the icon filename | Epic | Offense/Utility | Deflect 1.88%, Critical Severity 1.88% | - |
-| 21 | Baby Owlbear (augment) | **VERIFIED** off card c011; magnitude ladder derived; rename candidate (owlbear-cub) | Mythic | Utility | PROC | - |
+| 21 | Owlbear Cub (was Baby Owlbear, augment) | **VERIFIED** off card c011; renamed (predicted from filename); base corrected Mythic -> Epic | Mythic | Utility | PROC | - |
 | 22 | Barbarian Shaman | unchecked | Rare | Offense/Utility | Combat Advantage 1.25%, Power 1.25% | - |
 | 23 | Basic Bok | unchecked | Epic | Utility | PROC | - |
 | 24 | Batiri Runt | unchecked | Legendary | Offense | Damage Vs Bosses 8.25% | - |
@@ -412,7 +412,7 @@ And its Maximum Hit Points was stored as a `trigger: "Passive"` proc when the ca
 
 **KEEN EYES 9.6% IS REAL (2026-09-11).** I had flagged it as a likely misread, since every other single-stat enhancement is 9%. Card c140 shows it verbatim: "up to 9.6% ... Maximum 9.6%." It is a genuine outlier, now carrying its verbatim tooltip. **Do not "correct" it.**
 
-**STORED BASE RARITY IS NOT RELIABLE - CHECK EVERY ONE.** Three of the seventeen companions checked so far had the wrong starting rarity: Air Archon (stored Common, really Rare) and Armored Orc Wolf (stored Common, really Uncommon). Air Archon and Armored Orc Wolf were stored too LOW (Common when really Rare and Uncommon); **Deep Crow Hatchling was stored too HIGH** (Mythic when really Epic), so the error runs both ways. The archive card can never catch it - it shows an upgraded copy.
+**STORED BASE RARITY IS NOT RELIABLE - CHECK EVERY ONE.** Four of the twenty-one companions checked so far had the wrong starting rarity: Air Archon (stored Common, really Rare) and Armored Orc Wolf (stored Common, really Uncommon). Air Archon and Armored Orc Wolf were stored too LOW (Common when really Rare and Uncommon); **Deep Crow Hatchling was stored too HIGH** (Mythic when really Epic), so the error runs both ways. The archive card can never catch it - it shows an upgraded copy.
 
 That is **2 wrong out of the 8 we could actually check** - the other 4 had cards at their base rung. The Common tier looks over-used: **24 companions are stored as Common**, and two of the three we have examined were wrong. Apprentice Healer is the only confirmed Common so far (its roster screen reads Neophyte and 0.5% bolster).
 
@@ -475,7 +475,7 @@ Sweeping all 274 and filtering out duplicate-download `(2)` suffixes and punctua
 
 Bolded ones look like real renames of the kind we keep finding. Confirm each with n00b as we reach it rather than renaming on filename evidence alone.
 
-**FIRST PREDICTION CONFIRMED:** `infant-gorilla` was flagged from the filename before we reached the companion, and n00b confirmed **Infant Gorilla** in game. The detector works - the remaining bolded entries are now credible rather than speculative.
+**TWO PREDICTIONS CONFIRMED:** `infant-gorilla` -> **Infant Gorilla** and `owlbear-cub` -> **Owlbear Cub**, both flagged from the filename before we reached the companion and both confirmed by n00b. The detector works - the remaining bolded entries are credible, not speculative.
 
 **SLOT LISTS CAN BE WRONG TOO (Baby Displacer Beast, 2026-09-12).** We stored Defense/Offense; n00b confirmed **Offense only**. The card said Offense but the label was clipped at the panel edge, so it could not settle it alone.
 
