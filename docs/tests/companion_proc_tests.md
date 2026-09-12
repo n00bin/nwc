@@ -272,9 +272,41 @@ enemy's debuff icons, tell me whether an icon appears when Bobby swings, and how
 it stays. That would confirm the 5-second duration directly instead of trusting the
 tooltip, the same way the buff bar confirmed 15 seconds in Test A.
 
-### Test C results
+### Test C results — n00b, 2026-09-12 (in progress)
 
-_Awaiting n00b._
+2-minute windows, dummy, continuous attack.
+
+| Round | Swings in 2 min | Implied uptime |
+|---|---|---|
+| 1 | 7 | 29.2% |
+| 2 | 8 | 33.3% |
+| 3 | 8 | 33.3% |
+| 4 | 8 | 33.3% |
+
+**31 swings over 480 seconds = one every 15.5 seconds. Uptime 32.3%.**
+
+### TEST C RESULT — **32% uptime, and the 25% placeholder is replaced**
+
+Three of the four windows gave exactly 8, and the spread never left 7-8. That is a
+fixed cooldown, not a random roll, which is what we expected from a companion power
+rather than a chance-on-hit.
+
+**The cadence is ~15.5 seconds.** A 15-second design cooldown fits well: a perfect 15s
+timer yields 8 swings in a 120s window depending on where the window starts, and the
+half-second of slack is the wind-up animation and the time he spends on other attacks.
+Round 1's 7 is window alignment, not a different rate.
+
+**Stored as 32%**, the measured figure, not the 33.3% that an exactly-15s cooldown
+would give. Same principle as Test A2's ~13%: record what was measured and note the
+likely design number without asserting it. 33.3% is very likely the real value but we
+have not proven the cooldown is exactly 15.
+
+**What this means for Bobby.** 5% damage on the target about a third of the time is a
+real contribution, and it now actually reaches the sim after the own-summon fix. It is
+still narrower than the party-wide buffs because only n00b and Bobby benefit.
+
+**Not measured:** whether the 5-second duration is exact (the tooltip's number was
+taken on trust) and whether the cadence changes with Bobby's rarity.
 
 ## Results
 
