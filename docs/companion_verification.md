@@ -91,7 +91,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 2 | Acolyte of Kelemvor | **VERIFIED** - summoned bonus added and measured; Blessings of Kelemvor duration still open | Uncommon | Utility | Deflect 0.75%, Incoming Healing 0.75% | - |
 | 3 | Air Archon | **VERIFIED** - rarity corrected to Rare; double-counted Power bonus fixed | Common | Offense/Utility | Power 0.75% | - |
 | 4 | Alchemist Experimenter | **VERIFIED** - no summoned bonus (heal, ruled out) | Epic | Offense/Utility | Critical Strike 1.88%, Combat Advantage 1.88% | - |
-| 5 | Allosaurus | unchecked | Epic | Defense/Utility | Maximum Hit Points 7500, Critical Strike 1.9% | - |
+| 5 | Savage Allosaur (was Allosaurus) | **VERIFIED** - renamed; stat normalized; NO skills text so summoned bonus UNKNOWN | Epic | Defense/Utility | Maximum Hit Points 7500, Critical Strike 1.9% | - |
 | 6 | Alpha Compy | unchecked | Mythic | Utility | Power 7.5% | party: Damage Bonus 1.0% |
 | 7 | Ambush Drake | unchecked | Epic | Offense/Utility | Critical Severity 1.88%, Awareness 1.88% | - |
 | 8 | Angel of Protection | unchecked | Epic | Defense | PROC | party: Defense 3.0% |
@@ -372,6 +372,12 @@ Process, per companion:
 1. Claude reads the Powers list off the archived Inspect card (or a fresh screenshot) and **surfaces every ally-affecting or enemy-affecting power**, with whatever magnitude and duration the game states.
 2. n00b rules on whether it is worth recording as a buff.
 3. If yes, Claude measures what is missing and records it. If no, the effect is left out of `summonedBuff` entirely and the details go in the companion's `notes` so the work survives.
+
+**RENAMES NEED AN ALIAS MAP, AND COMPANIONS DO NOT HAVE ONE.** Saved and shared builds store companions by NAME, so a rename silently blanks the slot. Toon Forge already solves this for gear - `GEAR_NAME_ALIASES` in toon-forge.html rewrites old names on load and toasts the player - but **nothing equivalent exists for companions or mounts**. Three renames have already happened with no alias: Raptor -> Tamed Velociraptor, Olive the Octopus -> Ollie the Octie, and now Allosaurus -> Savage Allosaur. A 274-companion audit will produce more.
+
+Interim: `formerNames` is now recorded on the companion entries themselves (Savage Allosaur, Tamed Velociraptor). **Wiring an alias map into build loading is engine work and needs n00b's go** - the gear version is the pattern to copy.
+
+**ROUNDED TOOLTIP VALUES NORMALIZED (2026-09-11).** The game displays rounded stat figures and several were stored as displayed. Left alone they derive wrong upward, because the ladder multiplies: 1.9% at Epic becomes 4.56% at Celestial instead of 4.50%. Nine values across seven powers fixed - Iron Golem's Presence, Hunting Drake's Presence, Rimefire Golem's Presence, Allosaurus's Instincts, Cave Bear's Instincts, Owl's Instincts and Etrien's Exuberance (three stats, the worst at 0.12 points over). This continues the same normalization the project ran on 2026-07-04.
 
 **A HEAL IS NOT A BUFF (n00b ruling 2026-09-11).** Healing an ally does not get recorded as a summoned bonus, whatever its size. First application: Alchemist Experimenter's Rejuvenating Potion (5% of an ally's life). Existing entries checked against this - none are heal-only:
 - **Minsc** records Incoming Healing, which is a stat buff (it raises healing received), not a heal. Stays.

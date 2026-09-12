@@ -4,7 +4,7 @@ window.COMPANION_IMAGES = {
   "Acolyte of Kelemvor": "acolyte-of-kelemvor.webp",
   "Air Archon": "air-archon.webp",
   "Alchemist Experimenter": "alchemist-experimenter.webp",
-  "Allosaurus": "savage-allosaur.webp",
+  "Savage Allosaur": "savage-allosaur.webp",
   "Alpha Compy": "alpha-compy.webp",
   "Ambush Drake": "ambush-drake.webp",
   "Angel of Protection": "angel-of-protection.webp",
