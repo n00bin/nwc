@@ -350,15 +350,18 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 
 ---
 
-## OPEN QUESTION — where is the "worth listing" line?
+## HOW SUMMONED BONUSES GET DECIDED (n00b ruling 2026-09-11)
 
-n00b's ruling on Acolyte of Kelemvor sets a standard the other 43 summoned buffs have never been held to. To apply it consistently rather than case by case, we need a rule. Candidates:
+**Case by case. There is no numeric threshold and we are not going to invent one.**
 
-1. **Always-on or nothing.** List a buff only if it holds while the companion is summoned (or has measured uptime above some figure). This would drop most short procs and keep Dread Warrior, the combat-advantage debuffers and the flat party auras.
-2. **Magnitude floor.** Drop anything under, say, 2% or 3%. Simple, but it would keep a 3% buff that is up 10% of the time and drop a 1.5% buff that is always up.
-3. **Magnitude x uptime.** The honest measure, but only 14 of 43 record an uptime and none record a duration, so it needs reading before it can be applied.
+Process, per companion:
+1. Claude reads the Powers list off the archived Inspect card (or a fresh screenshot) and **surfaces every ally-affecting or enemy-affecting power**, with whatever magnitude and duration the game states.
+2. n00b rules on whether it is worth recording as a buff.
+3. If yes, Claude measures what is missing and records it. If no, the effect is left out of `summonedBuff` entirely and the details go in the companion's `notes` so the work survives.
 
-Worth noting: Acolyte's dropped effects were **1% for 8s** and **10% for 3s**. A rule that drops both but keeps, for example, Alpha Compy's conditional +1% would be inconsistent.
+**Why no formula.** Usefulness is not only magnitude x uptime. Some buffs matter because a group will *let you bring that companion* on the strength of it, and some large-looking effects are irrelevant in practice. That judgement is n00b's and it is not reducible to a number.
+
+First application: **Acolyte of Kelemvor** — Kelemvor's Sword (+1 point Critical Avoidance, 8s) and Blessings of Kelemvor (10% damage reduction, 3s) both ruled not worth recording.
 
 ### 43 is a FLOOR, not the candidate pool
 
