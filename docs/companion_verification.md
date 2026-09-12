@@ -118,7 +118,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 29 | Black Death Scorpion (was Black Scorpion) | **VERIFIED** off card c053; base Celestial -> Epic; exact magnitude ladder 56.25/82.5/112.5/135 | Epic | Offense | PROC | enemy: grants combat advantage |
 | 30 | Blacksmith | **VERIFIED** off card c119; n00b confirmed Rare base and 4.5% reflect at Celestial, matching the half-single-stat ladder; proc made verbatim, Slowed Reactions tooltip captured, augment:false | Rare | Utility | PROC (reflect 1.25% -> 4.5%) | - (enhancement debuffs enemy deflect) |
 | 31 | Blaspheme Assassin | **VERIFIED** off card c093; Mythic base confirmed; Faerie Fire recorded as the summoned bonus | Mythic | Offense | PROC | enemy |
-| 32 | Blink Dog | unchecked | Uncommon | Offense | Deflect 0.75%, Critical Avoidance 0.75% | enemy |
+| 32 | Blink Dog | card c035 read: Offense, +0.75% Deflect / +0.75% Critical Avoidance / +150 CR confirmed, power renamed to the card's spelling Blinkdog's Presence, not an augment. **Open:** base rarity, and whether Lightning Claws counts as a summoned bonus (its 50% uptime is unsourced) | Uncommon | Offense | Deflect 0.75%, Critical Avoidance 0.75% | enemy? |
 | 33 | Blue Fire Eye | unchecked | Common | Offense | PROC | party: Critical Strike 3.0% |
 | 34 | Bobby | unchecked | Mythic | Defense/Utility | Maximum Hit Points 12000, Defense 4.5% | - |
 | 35 | Book Imp | unchecked | Epic | Offense/Utility | Accuracy 1.88%, Combat Advantage 1.88% | - |
