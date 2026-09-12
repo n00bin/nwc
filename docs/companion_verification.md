@@ -317,7 +317,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 228 | Splinters | unchecked | Uncommon | Defense | Critical Severity 0.75%, Critical Avoidance 0.75% | - |
 | 229 | Sprite | unchecked | Epic | Defense/Offense | Accuracy 1.88%, Critical Avoidance 1.88% | - |
 | 230 | Staldorf | unchecked | Epic | Offense | Combat Advantage 3.75% | - |
-| 231 | Stalwart Golden Lion | unchecked | Celestial | Utility | PROC | self |
+| 231 | ~~Stalwart Golden Lion~~ | **MERGED into row 45** 2026-09-12 - this was the duplicate record (id 250) of the same companion filed under Celestial Lion. One companion, one row. | - | - | - | - |
 | 232 | Star of Simril (augment) | unchecked | Uncommon | Offense/Utility | Maximum Hit Points 2000, Critical Strike 0.5%, Gold Bonus 1% | - |
 | 233 | Storm Rider | unchecked | Uncommon | Utility | Power 0.75% | - |
 | 234 | Stronghold's Cleric | unchecked | Epic | Utility | PROC | - |
@@ -422,7 +422,7 @@ The stat VALUES survive a base change, because they derive by ratio - Armored Or
 
 **A CELESTIAL BASE IS ALMOST CERTAINLY WRONG - FIRST ONE CONFIRMED.** Black Death Scorpion was stored Celestial; n00b confirmed it starts at **Epic**, four tiers down, equalling Batiri Runt as the worst base error found. The contradiction that flagged it (a Celestial base with a scaling ladder starting at Common) is a reliable tell - look for it on the rest. A companion stored at a Celestial base has no upgrade path at all - the rarity selector shows one button. **14 companions are stored that way**, and Black Scorpion contradicts itself: its base says Celestial while its own scaling notes list a full ladder from Common upward. That reads like someone recording a maxed-out copy as the base, the same mistake as the Mythic and Legendary cases but taken to the ceiling.
 
-The remaining 13: Drizzt Do'Urden, Duergar Guard, Flapjack, Golden Cat, Lich, Mercenary, Minsc, Portobello DaVinci, Regis, Spined Devil, Stalwart Golden Lion, Tamed Velociraptor, Tutor. Some may be genuine Celestial-only rewards - confirm each with n00b.
+The remaining 13: Drizzt Do'Urden, Duergar Guard, Flapjack, Golden Cat, Lich, Mercenary, Minsc, Portobello DaVinci, Regis, Spined Devil, ~~Stalwart Golden Lion~~ (RESOLVED 2026-09-12: it was a duplicate carrying a Celestial base; merged into row 45 at its real Epic base), Tamed Velociraptor, Tutor. Some may be genuine Celestial-only rewards - confirm each with n00b.
 
 **Batiri Runt was the worst yet: stored Legendary, really Uncommon** - four tiers out, hiding four rarity rungs from anyone who owns it. Legendary is a rare base (only 7 companions left on it), so treat it as suspect.
 
