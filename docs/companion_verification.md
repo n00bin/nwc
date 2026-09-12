@@ -444,6 +444,10 @@ Current state: **534 notes across powers and companions, and only 8 flag an open
 
 **Not scored by the optimizer.** Structuring the data does not make the engine use it; a Chult build still sees half the real value of these powers. Wiring that is engine work and needs n00b's go.
 
+**SLOT LISTS CAN BE WRONG TOO (Baby Displacer Beast, 2026-09-12).** We stored Defense/Offense; n00b confirmed **Offense only**. The card said Offense but the label was clipped at the panel edge, so it could not settle it alone.
+
+**75 of our powers claim more than one slot** - 29 Offense/Utility, 28 Defense/Utility, 13 Defense/Offense and 5 all three. A wrong extra slot lets a companion be slotted somewhere the game forbids, so the optimizer can build a loadout that cannot exist. Check the slot line on every card, and read past a clipped label rather than trusting it.
+
 **THE CARD HEADER CARRIES THE IN-GAME NAME.** The Companion tab of an Inspect card prints the companion's name at the top - c017 reads **"Deep Crow Hatchling"** where we stored "Baby Deep Crow". So renames can be caught from the archive itself, no in-game check needed, whenever a card captured the Companion tab rather than the Stats and Powers tab. **Check the header on every card that has one.**
 
 Its power kept the old name ("Baby Deep Crow's Presence"), which matches what n00b confirmed on Bear Cub and Savage Allosaur: a companion rename does not drag its power name along.
