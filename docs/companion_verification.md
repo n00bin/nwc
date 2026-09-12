@@ -444,6 +444,12 @@ Current state: **534 notes across powers and companions, and only 8 flag an open
 
 **Not scored by the optimizer.** Structuring the data does not make the engine use it; a Chult build still sees half the real value of these powers. Wiring that is engine work and needs n00b's go.
 
+**A RENAME ORPHANS THE ICON (found 2026-09-12).** The image map is keyed by companion NAME, so renaming an entry without updating the key leaves the companion iconless and the file unreferenced. Polar Bear Cub had been renamed at some point and its icon was still keyed "Baby Polar Bear" - so it had been showing no icon. **Tamed Velociraptor** had the same problem from the July rename.
+
+Both repaired. Only one orphan key is left unexplained (`Archmage's Apprentice`, `Stag`), and **12 companions have no icon entry at all**, mostly ones added recently: Aoth Fezim & Brightwing, Encore the Virtuoso, Halfling Wayward Wizard, Lightfoot Thief, Sardina the Tressym, Sir Waddlelot, Star of Simril, Twitchspine the Clinging, Vanguard of the Citadel, Verdant Elder, Wormungandr.
+
+**Add the icon key to the rename checklist**, alongside `formerNames`, the card map and the skills key.
+
 **IMAGE FILENAMES ARE A RENAME DETECTOR (2026-09-12).** Three renames in a row already had the new name baked into their icon filename before we knew: `savage-allosaur.webp`, `bear-cub.webp`, `bulette-pup.webp`. So the icons were downloaded against current in-game names while the data kept old ones.
 
 Sweeping all 274 and filtering out duplicate-download `(2)` suffixes and punctuation noise leaves **22 genuine differences**. These are LEADS, not conclusions - some are abbreviations and some are plainly typos in the filename (`scorpin`, `cantankkerous`, `chichenmancer`, `wattigan`).
