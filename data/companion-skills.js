@@ -240,6 +240,20 @@ const COMPANION_SKILLS = {
       "text": "Enemies hit by the scorpion's pincers are struck with fear, giving the black scorpion and allies combat advantage."
     }
   ],
+  "blaspheme assassin": [
+    {
+      "name": "Faerie Fire",
+      "text": "Outlines an enemy in brilliant color, reducing Deflect by 2% and increasing damage taken by 1%. Does not stack."
+    },
+    {
+      "name": "Hemophilic Strike",
+      "text": "Teleports behind a random enemy and delivers a debilitating wound that continues to bleed."
+    },
+    {
+      "name": "Twin Daggers",
+      "text": "Deals damage and causes target to bleed increasingly with each strike. Deals increased damage if the target is affected by Hemophilic Strike."
+    }
+  ],
   "boar": [
     {
       "name": "Charge",
