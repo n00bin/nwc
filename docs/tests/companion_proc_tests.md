@@ -117,23 +117,26 @@ store a value or score it in the optimizer.
 
 | Trial | Companion Critical Avoidance | Your CA at rest | Your CA peak | Duration |
 |---|---|---|---|---|
-| 1 | 8,661 | 114,205 rating / 20.7% | | |
+| 1 | 8,661 | 109,840 rating / 21.2% | | |
 | 2 | | | | |
 
 ### Test B baseline — n00b, 2026-09-11
 
 | | |
 |---|---|
-| Total item level | 143,535 |
-| Your Critical Avoidance at rest | 114,205 rating = 20.7% |
+| Total item level | 138,685 |
+| Your Critical Avoidance at rest | 109,840 rating = 21.2% |
 | Acolyte of Kelemvor rarity | Uncommon (green) — its base rarity |
 | Companion's own Critical Avoidance | 8,661 rating |
 | Out of combat | **no change** — expected, Kelemvor's Sword is a cast ability, not a standing buff |
 
 Still needed: the in-combat peak, and whether the buff shows on the buff bar.
 
+_(A first baseline of TIL 143,535 / CA 114,205 / 20.7% was discarded — n00b was wearing
+gear that interfered. The formula checked out on that reading too: it predicted 20.67%.)_
+
 **Bonus validation from these numbers.** The rating-to-percent formula
-`(rating - (TIL - 50,000)) / 1000` gives **20.67%** here against an observed 20.7%.
+`(rating - (TIL - 50,000)) / 1000` gives **21.16%** here against an observed 21.2%.
 It also explains the Test A Accuracy reading: it predicts 48.6% where n00b saw 53.6%,
 and that 5.0 point gap is exactly percent-type bonuses stacking on top of the rating
 contribution — which is the `finalPct = ratingContribPct + percentTotal` model the
