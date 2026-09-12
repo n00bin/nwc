@@ -373,6 +373,10 @@ Process, per companion:
 2. n00b rules on whether it is worth recording as a buff.
 3. If yes, Claude measures what is missing and records it. If no, the effect is left out of `summonedBuff` entirely and the details go in the companion's `notes` so the work survives.
 
+**A THIRD SCALING SHAPE: 0.75x SINGLE (Baby Bear, 2026-09-11).** Its Outrage proc reads 1.1% at Uncommon on card c080, which fits none of the three standard tables (single 1.5, double 0.75, triple 0.5). It sits on **0.75 x single**, i.e. an anchor of 6.75 at Celestial, giving an exact 1.125 at Uncommon. Stored 1.13 was the 2dp rounding of that and would have derived to 6.78.
+
+So proc stat values do not always use the three companion tables. **Derive the anchor from the reading rather than assuming a table**, then check it lands on a clean Celestial figure.
+
 **PROC CHANCE AND PROC MAGNITUDE SCALE DIFFERENTLY (Aranea, 2026-09-11).** n00b read Aranea's ladder in game: the **chance stays 5% at every rarity** while only the **magnitude** moves - 45 / 75 / 112 / 165 / 225 across Uncommon to Mythic. Do not assume a proc's chance scales just because its numbers do.
 
 The magnitude is a flat **0.30 per item level** at every rung (the Epic 112 is the game truncating 112.5), so **Celestial is 270**. Stored as an `effectScaling` ladder with `chanceFlat: true`.
