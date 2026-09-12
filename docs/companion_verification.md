@@ -20,6 +20,8 @@ n00b and Claude walk every companion in alphabetical order. For each one we conf
 
 **PENDING (n00b agreed, not yet done):** the Artifacts page (`js/artifacts-page.js` RARITY_COLOR) and `insignia-priority.html` still use the old palette — Mythic red, Celestial cyan/light blue. Bring them onto the palette above so a rarity colour means one thing site-wide.
 
+**TOOLTIP SCALING CLAIMS ARE NOT TRUSTWORTHY (2026-09-11).** Twice in one companion: "target ally" actually meant the summoner, and Kelemvor's Sword's "based on your companions level and total Critical Avoidance" is false on every clause - measured flat at +1 point across two rarities with two different companion stat values. **Never encode a tooltip's arithmetic; measure it or mark it unverified.**
+
 **Verbatim text rule (n00b 2026-09-11) - the style every companion must follow:**
 - `tooltip` = the game's own wording, copied EXACTLY from the screenshot (keep its grammar quirks; drop only the UI label prefix such as `Equip:`). Powers use `procEffect.tooltip`; enhancements use a top-level `tooltip`.
 - `notes` = INTERNAL only - provenance, scaling reasoning, engine flags. Once an entity has verbatim text, `notes` is never rendered anywhere.
@@ -66,7 +68,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | # | Companion | Status | Base rarity (stored) | Slot (stored) | Slotted bonuses (stored) | Summoned (stored) |
 |---|---|---|---|---|---|---|
 | 1 | Abyssal Chicken | **VERIFIED 4/4** (Epic / Offense / no slotted stats / no summoned bonuses) | Epic | Offense | PROC | - |
-| 2 | Acolyte of Kelemvor | 4/4 checked - summoned bonus added; Kelemvor's Sword amount pending Test B | Uncommon | Utility | Deflect 0.75%, Incoming Healing 0.75% | - |
+| 2 | Acolyte of Kelemvor | **VERIFIED** - summoned bonus added and measured; Blessings of Kelemvor duration still open | Uncommon | Utility | Deflect 0.75%, Incoming Healing 0.75% | - |
 | 3 | Air Archon | unchecked | Common | Offense/Utility | Power 0.75% | - |
 | 4 | Alchemist Experimenter | unchecked | Epic | Offense/Utility | Critical Strike 1.88%, Combat Advantage 1.88% | - |
 | 5 | Allosaurus | unchecked | Epic | Defense/Utility | Maximum Hit Points 7500, Critical Strike 1.9% | - |

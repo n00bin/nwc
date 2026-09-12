@@ -118,7 +118,7 @@ store a value or score it in the optimizer.
 | Trial | Companion Critical Avoidance | Your CA at rest | Your CA peak | Duration |
 |---|---|---|---|---|
 | 1 | 8,661 | 109,840 rating / 21.2% | 109,840 rating / **22.2%** | 8s |
-| 2 (Rare) | 8,661 | 110,214 rating / 21.0% | | |
+| 2 (Rare) | 9,035 | 110,214 rating / 21.0% | 110,214 rating / **22.0%** | 8s |
 
 ### Test B baseline — n00b, 2026-09-11
 
@@ -166,12 +166,34 @@ This is a clean either/or, because every scaling model we use gives the same ans
 | follows the single-stat table | 1.67% | 22.7% |
 | follows the double-stat table | 1.67% | 22.7% |
 
-22.0% means no scaling. 22.7% means it scales, and one reading settles which. Nothing
-in between is plausible.
+### Test B trial 2 RESULT — **22.0%. It does not scale. TEST B CLOSED.**
 
-Also worth re-reading while the companion is upgraded: its **own** Critical Avoidance.
-At Uncommon it was 8,661. If that number changed with the upgrade but the grant did not,
-that independently kills the tooltip's "total Critical Avoidance" claim.
+| | Trial 1 | Trial 2 |
+|---|---|---|
+| Acolyte rarity | Uncommon | **Rare** |
+| Companion's own Critical Avoidance | 8,661 | **9,035** |
+| Your CA rating, at rest and buffed | 109,840 / 109,840 | 110,214 / 110,214 |
+| Your CA percent | 21.2% → 22.2% | 21.0% → 22.0% |
+| **Grant** | **+1.0 point** | **+1.0 point** |
+
+**Kelemvor's Sword is a flat +1 percentage point of Critical Avoidance for 8 seconds.**
+It does not scale with the companion's rarity, its level, or its own Critical Avoidance.
+
+**The tooltip is wrong on every clause.** It reads "granting Critical Avoidance based on
+your companions level and total Critical Avoidance". Between the two trials the level
+changed *and* the companion's own Critical Avoidance changed, and the grant did not
+budge. The player's rating never moves either, so it is not a rating transfer of any
+kind. Treat that sentence as legacy text.
+
+Stored with `noRarityScale` so nothing in the tool scales it.
+
+### Lead worth remembering
+
+This is the second time today a companion tooltip described a scaling relationship that
+does not exist (the first: "target ally" actually meaning the summoner). **Wording that
+claims an ability scales off the companion cannot be trusted without a measurement.**
+Where such a claim affects a stored number, measure it or mark it unverified — do not
+encode the tooltip's arithmetic.
 
 _(A first baseline of TIL 143,535 / CA 114,205 / 20.7% was discarded — n00b was wearing
 gear that interfered. The formula checked out on that reading too: it predicted 20.67%.)_
@@ -384,5 +406,5 @@ optimizer result or stat panel changes whether the true figure is 12.5% or 13.3%
 
 ## Still outstanding
 
-- Test A2, the proc chance.
-- Test B, Kelemvor's Sword.
+- **Blessings of Kelemvor** — its 10% damage reduction and duration are still unmeasured.
+  Same method: read Incoming Damage / your damage taken at rest and while it is up.
