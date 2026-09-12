@@ -110,7 +110,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 21 | Owlbear Cub (was Baby Owlbear, augment) | **VERIFIED** off card c011; renamed (predicted from filename); base corrected Mythic -> Epic | Mythic | Utility | PROC | - |
 | 22 | Barbarian Shaman | **VERIFIED** off card c162; skills text corrected; Nature's Wind not recorded (shield) | Rare | Offense/Utility | Combat Advantage 1.25%, Power 1.25% | - |
 | 23 | Basic Bok | **VERIFIED** off card c266; skills added; Squabble debuff needs a ruling | Epic | Utility | PROC | - |
-| 24 | Batiri Runt | **VERIFIED** off card c171; duplicate Passive proc removed; skills added | Legendary | Offense | Damage Vs Bosses 8.25% | - |
+| 24 | Batiri Runt | **VERIFIED** off card c171; base corrected Legendary -> Uncommon; duplicate proc removed | Legendary | Offense | Damage Vs Bosses 8.25% | - |
 | 25 | Battlefield Medic | unchecked | Epic | Utility | Combat Advantage 1.88%, Incoming Healing 1.88% | - |
 | 26 | Black Dragon Ioun Stone (augment) | unchecked | Mythic | Offense | Critical Strike 7.5% | - |
 | 27 | Black Ice Prospector | unchecked | Epic | Defense | Deflect 1.88%, Critical Avoidance 1.88% | - |
@@ -412,11 +412,13 @@ And its Maximum Hit Points was stored as a `trigger: "Passive"` proc when the ca
 
 **KEEN EYES 9.6% IS REAL (2026-09-11).** I had flagged it as a likely misread, since every other single-stat enhancement is 9%. Card c140 shows it verbatim: "up to 9.6% ... Maximum 9.6%." It is a genuine outlier, now carrying its verbatim tooltip. **Do not "correct" it.**
 
-**STORED BASE RARITY IS NOT RELIABLE - CHECK EVERY ONE.** Four of the twenty-one companions checked so far had the wrong starting rarity: Air Archon (stored Common, really Rare) and Armored Orc Wolf (stored Common, really Uncommon). Air Archon and Armored Orc Wolf were stored too LOW (Common when really Rare and Uncommon); **Deep Crow Hatchling was stored too HIGH** (Mythic when really Epic), so the error runs both ways. The archive card can never catch it - it shows an upgraded copy.
+**STORED BASE RARITY IS NOT RELIABLE - CHECK EVERY ONE.** Five of the twenty-four companions checked so far had the wrong starting rarity - over one in five: Air Archon (stored Common, really Rare) and Armored Orc Wolf (stored Common, really Uncommon). Air Archon and Armored Orc Wolf were stored too LOW (Common when really Rare and Uncommon); **Deep Crow Hatchling was stored too HIGH** (Mythic when really Epic), so the error runs both ways. The archive card can never catch it - it shows an upgraded copy.
 
 That is **2 wrong out of the 8 we could actually check** - the other 4 had cards at their base rung. The Common tier looks over-used: **24 companions are stored as Common**, and two of the three we have examined were wrong. Apprentice Healer is the only confirmed Common so far (its roster screen reads Neophyte and 0.5% bolster).
 
 The stat VALUES survive a base change, because they derive by ratio - Armored Orc Wolf still lands on 3.75 at Mythic either way. What breaks is **which rarity buttons appear** and therefore what a player thinks they can reach. **Only n00b's in-game check settles this**, so keep asking.
+
+**Batiri Runt was the worst yet: stored Legendary, really Uncommon** - four tiers out, hiding four rarity rungs from anyone who owns it. Legendary is a rare base (only 7 companions left on it), so treat it as suspect.
 
 The 24 stored as Common: Apprentice Healer (confirmed), Blue Fire Eye, Cambion Magus, Cold Iron Warrior, Con Artist, Crimson Crystal Golem, Damaran Shepherd, Dancing Blade, Elite Intern, Feywild Sylph, Flaming Skull, Harper Bard, Hunting Hawk, Jarlaxle Baenre, Kingfisher Intern, Mini Apparatus of Gond, Phasespider, Proud Pink Yeti, Riotous Rothe, Shieldmaiden, Soradiel, War Boar, War Dog, Wolf.
 
