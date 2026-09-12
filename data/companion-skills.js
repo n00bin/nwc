@@ -194,6 +194,24 @@ const COMPANION_SKILLS = {
       "text": "When taking damage greater than 20% of the Deva's maximum life, the cooldown on Holy Light is refreshed."
     }
   ],
+  "basic bok": [
+    {
+      "name": "Bite",
+      "text": "Bites the target, dealing physical damage."
+    },
+    {
+      "name": "Double Peck",
+      "text": "Pecks an enemy twice, dealing physical damage."
+    },
+    {
+      "name": "Rake",
+      "text": "Rakes an enemy in front of it, causing the target to take Damage Over Time through a Bleed effect if the Basic Bok has combat advantage."
+    },
+    {
+      "name": "Squabble",
+      "text": "Squawks at an enemy, lowering it's damage dealt by 5% for 6 seconds."
+    }
+  ],
   "boar": [
     {
       "name": "Charge",

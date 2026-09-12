@@ -109,7 +109,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 20 | Infant Gorilla (was Baby Gorilla, augment) | **VERIFIED** off card c056; renamed - predicted from the icon filename | Epic | Offense/Utility | Deflect 1.88%, Critical Severity 1.88% | - |
 | 21 | Owlbear Cub (was Baby Owlbear, augment) | **VERIFIED** off card c011; renamed (predicted from filename); base corrected Mythic -> Epic | Mythic | Utility | PROC | - |
 | 22 | Barbarian Shaman | **VERIFIED** off card c162; skills text corrected; SHIELD ruling needed | Rare | Offense/Utility | Combat Advantage 1.25%, Power 1.25% | - |
-| 23 | Basic Bok | unchecked | Epic | Utility | PROC | - |
+| 23 | Basic Bok | **VERIFIED** off card c266; skills added; Squabble debuff needs a ruling | Epic | Utility | PROC | - |
 | 24 | Batiri Runt | unchecked | Legendary | Offense | Damage Vs Bosses 8.25% | - |
 | 25 | Battlefield Medic | unchecked | Epic | Utility | Combat Advantage 1.88%, Incoming Healing 1.88% | - |
 | 26 | Black Dragon Ioun Stone (augment) | unchecked | Mythic | Offense | Critical Strike 7.5% | - |
