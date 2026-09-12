@@ -118,7 +118,7 @@ store a value or score it in the optimizer.
 | Trial | Companion Critical Avoidance | Your CA at rest | Your CA peak | Duration |
 |---|---|---|---|---|
 | 1 | 8,661 | 109,840 rating / 21.2% | 109,840 rating / **22.2%** | 8s |
-| 2 | change it and re-read | | | |
+| 2 (Rare) | 8,661 | 110,214 rating / 21.0% | | |
 
 ### Test B baseline — n00b, 2026-09-11
 
@@ -150,6 +150,28 @@ Duration is **8 seconds**, not the 15 the enhancement procs use — so durations
 per-ability and cannot be assumed across a companion's kit.
 
 Stored as `Critical Avoidance +1%, 8s` on the Acolyte's summoned bonus.
+
+### Test B trial 2 — does it scale with the Acolyte's rarity?
+
+n00b upgraded the Acolyte **Uncommon (green, IL 150) to Rare (blue, IL 250)**.
+New baseline: TIL 139,225, Critical Avoidance 110,214 rating = 21.0%
+(formula predicts 20.99% — a fourth match).
+
+This is a clean either/or, because every scaling model we use gives the same answer here:
+
+| If the grant | Grant | Your % reads |
+|---|---|---|
+| does not scale with rarity | 1.00% | **22.0%** |
+| scales linearly with item level | 1.67% | **22.7%** |
+| follows the single-stat table | 1.67% | 22.7% |
+| follows the double-stat table | 1.67% | 22.7% |
+
+22.0% means no scaling. 22.7% means it scales, and one reading settles which. Nothing
+in between is plausible.
+
+Also worth re-reading while the companion is upgraded: its **own** Critical Avoidance.
+At Uncommon it was 8,661. If that number changed with the upgrade but the grant did not,
+that independently kills the tooltip's "total Critical Avoidance" claim.
 
 _(A first baseline of TIL 143,535 / CA 114,205 / 20.7% was discarded — n00b was wearing
 gear that interfered. The formula checked out on that reading too: it predicted 20.67%.)_
