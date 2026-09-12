@@ -221,11 +221,11 @@ const COMPANION_SKILLS = {
   "barbarian shaman": [
     {
       "name": "Howling Wrath",
-      "text": "Natures Wind now damages foes caught in the storm."
+      "text": "Nature's Wind now damages foes caught in the storm."
     },
     {
       "name": "Nature's Wind",
-      "text": "A gust of fortifying wind surrounds all allies near the Shaman, granting them temporary hit points."
+      "text": "A gust of fortifying wind surrounds all allies near the Shaman, shielding them for 5% of their maximum health."
     },
     {
       "name": "Protecting Strike",
