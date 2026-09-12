@@ -93,7 +93,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 4 | Alchemist Experimenter | **VERIFIED** - no summoned bonus (heal, ruled out) | Epic | Offense/Utility | Critical Strike 1.88%, Combat Advantage 1.88% | - |
 | 5 | Savage Allosaur (was Allosaurus) | **VERIFIED** - renamed; stat normalized; NO skills text so summoned bonus UNKNOWN | Epic | Defense/Utility | Maximum Hit Points 7500, Critical Strike 1.9% | - |
 | 6 | Alpha Compy | **VERIFIED** - Call of Vengeance ruled out; Chult doubling captured | Mythic | Utility | Power 7.5% | party: Damage Bonus 1.0% |
-| 7 | Ambush Drake | unchecked | Epic | Offense/Utility | Critical Severity 1.88%, Awareness 1.88% | - |
+| 7 | Ambush Drake | **VERIFIED** - all four checks confirmed off card c054, nothing to fix | Epic | Offense/Utility | Critical Severity 1.88%, Awareness 1.88% | - |
 | 8 | Angel of Protection | unchecked | Epic | Defense | PROC | party: Defense 3.0% |
 | 9 | Aoth Fezim & Brightwing | unchecked | Mythic | Offense/Utility | Accuracy 3.75%, Combat Advantage 3.75% | - |
 | 10 | Apprentice Healer | unchecked | Common | Utility | Incoming Healing 0.37% | - |
@@ -372,6 +372,14 @@ Process, per companion:
 1. Claude reads the Powers list off the archived Inspect card (or a fresh screenshot) and **surfaces every ally-affecting or enemy-affecting power**, with whatever magnitude and duration the game states.
 2. n00b rules on whether it is worth recording as a buff.
 3. If yes, Claude measures what is missing and records it. If no, the effect is left out of `summonedBuff` entirely and the details go in the companion's `notes` so the work survives.
+
+**NOTES ARE FOR OPEN ITEMS ONLY (n00b ruling 2026-09-11).** A `notes` field should contain something we need to **revisit, verify or fix** - nothing else - so open work stands out instead of hiding inside provenance prose. Start them with VERIFY: or FIX:.
+
+History does NOT belong there. Git carries provenance, and this document carries the findings; repeating "normalized 2026-07-04" or "verified by n00b" on the record itself only buries the two notes that actually need action.
+
+Current state: **534 notes across powers and companions, and only 8 flag an open item.** 66 power notes are nothing but the 2026-07-04 normalization line.
+
+**They cannot be bulk-cleared yet.** A power's `notes` still doubles as its card description whenever the power has no verbatim text, so wiping them would blank the description for most of the database. They get cleared companion by companion as we capture verbatim text and set `verbatimChecked` - which is exactly what the pass is already doing. Companions 1-7 are now clean, with notes surviving only on Acolyte of Kelemvor and Savage Allosaur, where something really is outstanding.
 
 **ZONE CONDITIONALS ARE NOW STRUCTURED (n00b ruling 2026-09-11: capture the zone).** Alpha Compy's power doubles in Chult and that was only prose in its notes - the power carried no `zoneConditional` field at all. Now stored as `{zone, multiplier, note}` and the card reads **"Doubled in Chult"** instead of a generic badge. Static pages show it too (the generator ignored zone conditionals entirely).
 
