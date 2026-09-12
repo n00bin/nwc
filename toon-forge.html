@@ -12143,7 +12143,15 @@
     // powers to the exact rung at every rarity while keeping verified
     // off-scale powers (Energon, Bobby's Vigor…) proportional.
     const COMP_PCT_SINGLE = {75:0.75,150:1.5,250:2.5,375:3.75,550:5.5,750:7.5,900:9.0};
-    const COMP_PCT_DOUBLE = {75:0.38,150:0.75,250:1.25,375:1.88,550:2.75,750:3.75,900:4.5};
+    // EXACT rungs, not the game's displayed rounding. These are ratio
+    // denominators, so a rounded entry (0.38 / 1.88) skews every power based
+    // at that rarity: a 2-stat Epic power scaled to Celestial came out
+    // 4.4880% instead of 4.5000%, and a Common-based one 4.4408% - the same
+    // 4.44-not-4.50 error n00b rejected on the Companions page, which was
+    // fixed there but not here (found 2026-09-12). 47 of 113 two-stat powers
+    // were affected. Percent stats add percentage POINTS, so this never moved
+    // a rating - only the % column.
+    const COMP_PCT_DOUBLE = {75:0.375,150:0.75,250:1.25,375:1.875,550:2.75,750:3.75,900:4.5};
     const COMP_MAX_HP     = {75:1500,150:3000,250:5000,375:7500,550:11000,750:15000,900:18000};
 
     function compStatRarityScale(targetRarity, basePower, statName) {
