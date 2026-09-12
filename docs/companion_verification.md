@@ -95,7 +95,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 6 | Alpha Compy | **VERIFIED** - Call of Vengeance ruled out; Chult doubling captured | Mythic | Utility | Power 7.5% | party: Damage Bonus 1.0% |
 | 7 | Ambush Drake | **VERIFIED** - all four checks confirmed off card c054, nothing to fix | Epic | Offense/Utility | Critical Severity 1.88%, Awareness 1.88% | - |
 | 8 | Angel of Protection | **VERIFIED** - Protective Ward always-on + non-stacking; Ward captured, blocked on per-effect uptime | Epic | Defense | PROC | party: Defense 3.0% |
-| 9 | Aoth Fezim & Brightwing | unchecked | Mythic | Offense/Utility | Accuracy 3.75%, Combat Advantage 3.75% | - |
+| 9 | Aoth Fezim & Brightwing | **VERIFIED** off card c140; Keen Eyes 9.6% confirmed genuine; name spelling open | Mythic | Offense/Utility | Accuracy 3.75%, Combat Advantage 3.75% | - |
 | 10 | Apprentice Healer | unchecked | Common | Utility | Incoming Healing 0.37% | - |
 | 11 | Aranea | unchecked | Uncommon | Offense | PROC | - |
 | 12 | Armored Orc Wolf | unchecked | Common | Offense | Accuracy 0.38%, Critical Strike 0.38% | - |
@@ -372,6 +372,10 @@ Process, per companion:
 1. Claude reads the Powers list off the archived Inspect card (or a fresh screenshot) and **surfaces every ally-affecting or enemy-affecting power**, with whatever magnitude and duration the game states.
 2. n00b rules on whether it is worth recording as a buff.
 3. If yes, Claude measures what is missing and records it. If no, the effect is left out of `summonedBuff` entirely and the details go in the companion's `notes` so the work survives.
+
+**KEEN EYES 9.6% IS REAL (2026-09-11).** I had flagged it as a likely misread, since every other single-stat enhancement is 9%. Card c140 shows it verbatim: "up to 9.6% ... Maximum 9.6%." It is a genuine outlier, now carrying its verbatim tooltip. **Do not "correct" it.**
+
+**The card map has OCR misses.** c140 was not matched to Aoth Fezim & Brightwing by the indexing pass, yet the companion's own notes named it. When a companion shows no card, check its notes for a c-number before concluding none exists. Map repaired: 158 companions mapped.
 
 **ENGINE GAP: ONE UPTIME PER SUMMONED BUFF (found on Angel of Protection, 2026-09-11).** The own-summon path in toon-forge.html reads a single `sb.uptime` and applies it to **every** effect in a `summonedBuff`. That is fine while a companion has one effect, but Angel of Protection has two of very different shapes: Protective Ward is **always on** (+3% Defense to allies) while Ward intercepts **half of all incoming damage for 10s once every 60s** (16.7% uptime max).
 
