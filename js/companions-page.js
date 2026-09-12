@@ -593,13 +593,18 @@
         for (var key in proc.effectScaling) {
           var val = proc.effectScaling[key][ilKey];
           if (val != null) {
-            effectText = effectText.replace("{" + key + "}", val);
+            // These values MOVE with rarity, so mark them for the rarity
+            // colour. A trailing % is pulled inside the mark so the figure
+            // reads as one unit.
+            effectText = effectText.split("{" + key + "}%").join(markRarity(val + "%"))
+                                   .split("{" + key + "}").join(markRarity(val));
           }
         }
       }
       // Clean up any unresolved placeholders
       effectText = effectText.replace(/\{[^}]+\}/g, "?");
-      html += "<div><span class=\"stat-name\">Effect:</span> " + escapeHtml(effectText) + "</div>";
+      html += "<div><span class=\"stat-name\">Effect:</span> " +
+              paintRarityMarks(escapeHtml(effectText), rarityColor || "inherit") + "</div>";
     }
 
     // Stat effects within proc — values are stored at the power's BASE
