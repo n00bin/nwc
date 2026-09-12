@@ -502,7 +502,7 @@ function renderProc(proc, il, baseIL) {
   var chance = proc.chance;
   if (proc.chanceScaling && il != null) { var cv = proc.chanceScaling[String(il)]; if (cv != null) chance = cv; }
   if (chance != null) parts.push('<div class="item-effect"><span class="stat-name">Chance:</span> ' + chance + '%</div>');
-  else if (proc.chanceApprox != null) parts.push('<div class="item-effect"><span class="stat-name">Chance:</span> ' + proc.chanceApprox + '%</div>');
+  else if (proc.chanceApprox != null) parts.push('<div class="item-effect"><span class="stat-name">Chance:</span> ~' + proc.chanceApprox + '%</div>');
   if (proc.effect) {
     var t = proc.effect;
     if (proc.effectScaling && il) { var k = String(il); for (var key in proc.effectScaling) { var v = proc.effectScaling[key][k]; if (v != null) t = t.replace('{' + key + '}', v); } }

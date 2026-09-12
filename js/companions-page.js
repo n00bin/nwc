@@ -573,8 +573,9 @@
     } else if (proc.chanceApprox != null) {
       // Measured by us, not printed by the game. Just the number - the
       // provenance lives in the data notes, not on the card.
+      // Tilde marks it as our estimate rather than a figure the game prints.
       html += '<div><span class="stat-name">Chance:</span> ' +
-              '<span class="rarity-num" style="color:' + (rarityColor || "inherit") + ';">' +
+              '<span class="rarity-num" style="color:' + (rarityColor || "inherit") + ';">~' +
               proc.chanceApprox + '%</span></div>';
     }
     if (proc.effect) {
