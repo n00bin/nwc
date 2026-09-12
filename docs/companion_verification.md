@@ -377,6 +377,8 @@ Process, per companion:
 
 The magnitude is a flat **0.30 per item level** at every rung (the Epic 112 is the game truncating 112.5), so **Celestial is 270**. Stored as an `effectScaling` ladder with `chanceFlat: true`.
 
+**DISPLAY THE EXACT VALUE, NOT THE GAME'S TRUNCATION (n00b ruling 2026-09-11).** The card shows Epic as **112.5** where the game prints 112. Same rule as the stat rungs: we hold and show the real number, because the game's display rounds and truncates inconsistently and its figure is the derived one, not the source. Applies to magnitudes and stat values alike.
+
 Contrast with Abyssal Chicken, where the *chance* scales (7.5% Epic to 18% Celestial) and there is no magnitude at all. Both shapes exist; read which one before storing.
 
 **STORE THE EXACT RUNG, NOT THE 2dp TABLE (found on Apprentice Healer, 2026-09-11).** The rarity tables in our code are themselves rounded to two decimals. The double-stat anchor is 4.50 at Celestial, so the true Common rung is **0.375**, not the 0.38 the table lists - and the game's own tooltip shows **0.37**, truncating rather than rounding. All three numbers disagree and only 0.375 derives correctly.
