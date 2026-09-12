@@ -1,5 +1,22 @@
 # Data Issues To Investigate
 
+## MISSING COMPANION: the augment boar on card c081 (found 2026-09-12)
+
+Archive card `docs/audit/companions/_up/c081.png` shows a companion that is **not in the database under any name**. Its power is displayed as **"Baby Boar's Instincts" at Item Level 150** - the same name and item level as Boar's power - but everything else differs:
+
+| | c081 (missing companion) | c075 (Boar) |
+|---|---|---|
+| Powers list | Enhancement only | Charge, Gouge, Wild Bloodlust |
+| Enhancement | Accuracy, Deflect and Critical Strike **shared with the owner** | Combined Rating only |
+| Stats | +3,000 Maximum Hit Points, +0.75% Critical Severity | +0.75% Deflect Chance, +0.75% Critical Severity |
+| Health | 1,753,249 | 1,482,956 |
+| Power icon | a pig | a ring |
+| Type | augment | attacks |
+
+Our old Baby Boar record was a MIX of the two: the augment flag and augmentShares came from c081, the stat values from c075. Corrected 2026-09-12 - the record is now Boar (c075) and is not an augment.
+
+**Needed:** the augment's real in-game name, then add it. Two powers genuinely share a display name, like the Vistani set collision.
+
 ## Erik tank sheet re-calibration 2026-09-06 — open residuals
 Erik (Paladin Justicar, Aasimar, TIL 151,337) at-rest sheet vs Toon Forge's
 Detailed Stats with all three Hide switches on. Evidence:

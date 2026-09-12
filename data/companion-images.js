@@ -15,7 +15,7 @@ window.COMPANION_IMAGES = {
   "Assassin Drake": "assassin-drake.webp",
   "Astral Deva": "astral-deva.webp",
   "Bear Cub": "bear-cub.webp",
-  "Baby Boar": "boar-shoat.webp",
+  "Boar": "boar-shoat.webp",
   "Baby Bulette": "bulette-pup.webp",
   "Baby Deep Crow": "deep-crow-hatchling.webp",
   "Baby Displacer Beast": "baby-displacer-beast.webp",

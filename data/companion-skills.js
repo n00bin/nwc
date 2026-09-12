@@ -194,7 +194,7 @@ const COMPANION_SKILLS = {
       "text": "When taking damage greater than 20% of the Deva's maximum life, the cooldown on Holy Light is refreshed."
     }
   ],
-  "baby boar": [
+  "boar": [
     {
       "name": "Charge",
       "text": "Charges at and deals damage to target foe."
