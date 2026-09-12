@@ -264,6 +264,33 @@ in practice, so in a real build the pet is landing most of the hits. Measuring t
 rate separately is not practical, and there is no reason to expect the game rolls a
 different number for it.
 
+### Does the companion's hits raise the 13.3%?
+
+**No.** 13.3% is a probability **per hit**, not a rate per second. The pet does not change
+the odds on any given swing; it changes how many swings happen. Adding its hits into the
+percentage would be double-counting and would make the number mean something else.
+
+What the pet does change is **uptime**, and that is the part worth knowing. The buff
+lasts 15 seconds and averages one proc per 7.5 hits, so you only need **0.5 hits per
+second**, from you and the pet combined, to average one proc per duration:
+
+| Hits landed in a 15s window | Chance the buff is up |
+|---|---|
+| 5 | 51% |
+| 10 | 76% |
+| 20 | 94% |
+| 30 | 99% |
+| 40 | 99.7% |
+
+In a real fight your at-will chain alone clears that bar, and the pet's hits push it
+further. This is the arithmetic behind treating these as **effectively always on in
+combat**, which is exactly how they are modelled — `conditional: true`, credited behind
+the combat buff and kept out of the at-rest panel.
+
+It also explains why the augment was necessary for the measurement: with a normal pet
+attacking, the buff would have been re-procced before it ever expired, and counting your
+own hits would have been meaningless.
+
 **Why we stopped at 20 trials.** Separating 10% from 15% needs roughly 120 procs, about
 960 hits — precision improves only with the square root of the sample:
 
