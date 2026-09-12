@@ -137,7 +137,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 48 | Cleric Disciple | **VERIFIED** off card c175; n00b confirmed Uncommon (green) base; stats exact as stored, no faults found; all three powers are heals, so no summoned bonus | Uncommon | Utility | Incoming Healing 0.75%, Power 0.75% | - |
 | 49 | Cockatrice | **VERIFIED** off card c023; n00b confirmed Epic (purple) base; **proc text said 17.2 magnitude while the record's own damage field said 112** - card confirms 112, so the page was printing ~7x too small; rebuilt on the 0.30-per-IL ladder (22.5 -> 270) at the exact 112.5; Redemption tooltip captured (a heal, scores nothing) | Epic | Utility | PROC (112.5 -> 270 magnitude + root, 10% when hit) | - |
 | 50 | Cold Iron Warrior | **VERIFIED** off card c121; base corrected Common -> Uncommon (n00b: green); value re-based from the rounded 1.13 to the exact 1.5x-single rung 2.25 at Uncommon (card shows 2.3); Potency tooltip captured; stale note named a non-existent power | Uncommon | Offense | Damage Vs Fey 2.25% | - |
-| 51 | Coldlight Walker | unchecked | Mythic | Utility | Critical Strike 3.75%, Critical Severity 3.75% | - |
+| 51 | Coldlight Walker | **VERIFIED** off card c240; n00b confirmed Mythic base (two rarity buttons is correct, not a hidden ladder); Celestial capture's +4.5%/+4.5%/+900 CR proves the exact 3.75 rungs; no faults found | Mythic | Utility | Critical Strike 3.75%, Critical Severity 3.75% | - |
 | 52 | Con Artist | unchecked | Common | Offense | PROC | - |
 | 53 | Crab | unchecked | Epic | Utility | PROC | - |
 | 54 | Crimson Crystal Golem | unchecked | Common | Utility/Defense | Accuracy 0.38%, Combat Advantage 0.38% | - |
