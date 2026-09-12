@@ -19,7 +19,20 @@ created for the Critical Avoidance variant, Rath Modar repointed at it.
 unconfirmed and flagged on its own row.
 
 **Lesson:** match enhancements on TOOLTIP TEXT, not display name. The name is not
-unique. Worth a sweep of the other 30 enhancement records for the same pattern.
+unique.
+
+**Sweep run 2026-09-12, INCONCLUSIVE.** Every archived card was scanned for the
+player-side phrase ("increase your X by up to" / "reduce an enemy's X by up to").
+Only 6 enhancement names produced a clean reading on two or more cards - Anticipation,
+Armor Break, Blurred Vision, Counteract, Fortification, Precision - and all six match
+what we store. The other 24 could not be read reliably from the OCR text, so they are
+neither cleared nor condemned. Re-run this as each enhancement's cards get opened by
+eye during the verification pass; that is how the Master of Craft split was caught.
+
+Note: the recurring "X plus critical avoidance" pattern in the raw scan is NOT a
+second stat on the player - it is the pet-side half of a split rune (Fortification,
+Counteract and others buff the companion's Critical Avoidance alongside your stat).
+Do not chase it as an error.
 
 ## Per-effect uptime: now blocking TWO companions (2026-09-12)
 
