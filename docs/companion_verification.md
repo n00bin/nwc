@@ -108,7 +108,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 19 | Baby Displacer Beast (augment) | unchecked | Uncommon | Defense/Offense | PROC | - |
 | 20 | Infant Gorilla (was Baby Gorilla, augment) | **VERIFIED** off card c056; renamed - predicted from the icon filename | Epic | Offense/Utility | Deflect 1.88%, Critical Severity 1.88% | - |
 | 21 | Owlbear Cub (was Baby Owlbear, augment) | **VERIFIED** off card c011; renamed (predicted from filename); base corrected Mythic -> Epic | Mythic | Utility | PROC | - |
-| 22 | Barbarian Shaman | **VERIFIED** off card c162; skills text corrected; SHIELD ruling needed | Rare | Offense/Utility | Combat Advantage 1.25%, Power 1.25% | - |
+| 22 | Barbarian Shaman | **VERIFIED** off card c162; skills text corrected; Nature's Wind not recorded (shield) | Rare | Offense/Utility | Combat Advantage 1.25%, Power 1.25% | - |
 | 23 | Basic Bok | **VERIFIED** off card c266; skills added; Squabble debuff needs a ruling | Epic | Utility | PROC | - |
 | 24 | Batiri Runt | unchecked | Legendary | Offense | Damage Vs Bosses 8.25% | - |
 | 25 | Battlefield Medic | unchecked | Epic | Utility | Combat Advantage 1.88%, Incoming Healing 1.88% | - |
@@ -537,6 +537,12 @@ Verified by round-tripping a real serialised build with old names injected: `Bab
 Interim: `formerNames` is now recorded on the companion entries themselves (Savage Allosaur, Tamed Velociraptor). **Wiring an alias map into build loading is engine work and needs n00b's go** - the gear version is the pattern to copy.
 
 **ROUNDED TOOLTIP VALUES NORMALIZED (2026-09-11).** The game displays rounded stat figures and several were stored as displayed. Left alone they derive wrong upward, because the ladder multiplies: 1.9% at Epic becomes 4.56% at Celestial instead of 4.50%. Nine values across seven powers fixed - Iron Golem's Presence, Hunting Drake's Presence, Rimefire Golem's Presence, Allosaurus's Instincts, Cave Bear's Instincts, Owl's Instincts and Etrien's Exuberance (three stats, the worst at 0.12 points over). This continues the same normalization the project ran on 2026-07-04.
+
+**SHIELDS ARE OUT TOO (n00b ruling 2026-09-12).** A shield or temporary hit points is not recorded as a summoned bonus, same as a heal. Applied to:
+- **Barbarian Shaman** - Nature's Wind (shields all nearby allies for 5% of their maximum health) NOT recorded.
+- **Deva Champion** - its "+5% of max HP as shield" entry REMOVED; it was the only shield in the 43 and carried no stat effects anyway.
+
+**Where the line sits.** Out: heals, shields, temporary hit points - anything that adds or restores a health pool. In: percentage stat buffs and debuffs, including **damage reduction**, because that is a stat the engine already models (Bruenor Battlehammer's +3% damage reduction stays). So Angel of Protection's **Ward** (intercepts half your incoming damage) is kept in `cooldownEffects` as a damage-reduction effect rather than deleted - it is unscored regardless, pending per-effect uptime.
 
 **A HEAL IS NOT A BUFF (n00b ruling 2026-09-11).** Healing an ally does not get recorded as a summoned bonus, whatever its size. First application: Alchemist Experimenter's Rejuvenating Potion (5% of an ally's life). Existing entries checked against this - none are heal-only:
 - **Minsc** records Incoming Healing, which is a stat buff (it raises healing received), not a heal. Stays.
