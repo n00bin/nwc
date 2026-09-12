@@ -98,7 +98,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 9 | Aoth Fezim & Brightwing | **VERIFIED** off card c140; Keen Eyes 9.6% confirmed genuine; name spelling open | Mythic | Offense/Utility | Accuracy 3.75%, Combat Advantage 3.75% | - |
 | 10 | Apprentice Healer | **VERIFIED** off two named screenshots; Max HP moved out of a fake proc; exact-rung sweep | Common | Utility | Incoming Healing 0.37% | - |
 | 11 | Aranea | **VERIFIED** off card c144; chance is flat 5%, magnitude ladder derived and Celestial predicted at 270 | Uncommon | Offense | PROC | - |
-| 12 | Armored Orc Wolf | unchecked | Common | Offense | Accuracy 0.38%, Critical Strike 0.38% | - |
+| 12 | Armored Orc Wolf | **VERIFIED** off card c070; ladder lands on 3.75 at Mythic matching the card's rounded 3.8 | Common | Offense | Accuracy 0.38%, Critical Strike 0.38% | - |
 | 13 | Assassin Drake | unchecked | Epic | Offense | Accuracy 1.88%, Critical Severity 1.88% | - |
 | 14 | Astral Deva | unchecked | Rare | Defense | Heal Percent 2.5% | - |
 | 15 | Baby Bear (augment) | unchecked | Uncommon | Defense | PROC | - |
@@ -407,6 +407,8 @@ The whole Apprentice Healer ladder now reads 0.38 / 0.75 / 1.25 / 1.88 / 2.75 / 
 And its Maximum Hit Points was stored as a `trigger: "Passive"` proc when the card plainly lists it as a stat - same miscategorisation shape as the Raptor powers. Moved into `stats[]`.
 
 **KEEN EYES 9.6% IS REAL (2026-09-11).** I had flagged it as a likely misread, since every other single-stat enhancement is 9%. Card c140 shows it verbatim: "up to 9.6% ... Maximum 9.6%." It is a genuine outlier, now carrying its verbatim tooltip. **Do not "correct" it.**
+
+**Card-map misses keep turning up.** c140 (Aoth Fezim) and c070 (Armored Orc Wolf) were both missed by the indexing pass but named in project docs - c070 in `docs/data_trust.md`. **When a companion shows no card, grep the docs for its name before concluding none exists.** Map now at 159.
 
 **The card map has OCR misses.** c140 was not matched to Aoth Fezim & Brightwing by the indexing pass, yet the companion's own notes named it. When a companion shows no card, check its notes for a c-number before concluding none exists. Map repaired: 158 companions mapped.
 
