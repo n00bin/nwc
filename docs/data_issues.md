@@ -1,5 +1,44 @@
 # Data Issues To Investigate
 
+## Your OWN combat-advantage companion is worth zero in the sim (found 2026-09-12)
+
+Seven companions carry `summonedBuff.effect = "combat_advantage_grant"`: Black
+Death Scorpion (100%), Panther (59%), Yeth Hound (58%), Blink Dog (50%),
+Swashbuckler (50%), Dancing Blade (41%), Cantankerous Mage (34%). Uptimes come
+from Aragon's PC-tested party support sheet (updated 2026-03-02).
+
+The engine models the effect correctly but only reaches it down ONE path:
+
+- `getPartySummonedCombatMods()` (toon-forge.html ~L11943) unions the uptimes
+  into `caUnion`, which raises the damage sim's effective flank uptime at
+  L19666 and L20056. That part is right.
+- That loop iterates `state.partyAllies` only, is gated behind the
+  "Assume support party" toggle (default OFF), and **explicitly skips
+  `state.summoned`** (~L11961) on the grounds that "your own summoned
+  companion's buff already applies".
+- It does not already apply. The own-summon path (~L13414) only reads
+  `effects[]`, `stats{}` or the legacy `stat`/`value` shapes. A combat
+  advantage grant has none of them, so it falls straight through.
+
+Net effect: summon Blink Dog yourself and it contributes nothing. Only an
+ALLY's copy counts, and only with the support-party toggle on. This
+under-values all seven companions in the summon slot for DPS builds.
+
+**Proposed fix (awaiting n00b's lock):** in `getPartySummonedCombatMods()`,
+feed `state.summoned` into the `combat_advantage_grant` branch as well,
+ungated by `assumeSupportParty` (your own summon is always with you). Leave
+every other branch alone, since stat buffs really are handled on the sheet.
+The existing `seen` set already dedupes you and an ally running the same
+companion, and the union math handles partial overlap.
+
+## MISSING: Pseudodragon's combat advantage grant (found 2026-09-12)
+
+Aragon's sheet lists "Pseudodragon - makes its target grant combat advantage,
+46% uptime (excluding mechanics)". Our Pseudodragon (companion id 14) has no
+`summonedBuff` at all, while the other seven from the same sheet block do.
+Looks like a transcription miss. Confirm against a card before adding, and
+handle it on its own row in the verification pass.
+
 ## MISSING COMPANION: the augment boar on card c081 (found 2026-09-12)
 
 Archive card `docs/audit/companions/_up/c081.png` shows a companion that is **not in the database under any name**. Its power is displayed as **"Baby Boar's Instincts" at Item Level 150** - the same name and item level as Boar's power - but everything else differs:
