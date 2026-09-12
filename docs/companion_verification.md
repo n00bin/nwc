@@ -120,7 +120,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 31 | Blaspheme Assassin | **VERIFIED** off card c093; Mythic base confirmed; Faerie Fire recorded as the summoned bonus | Mythic | Offense | PROC | enemy |
 | 32 | Blink Dog | **VERIFIED** off card c035; n00b confirmed Uncommon (green) base; +0.75% Deflect / +0.75% Critical Avoidance / +150 CR exact; power renamed to the card's spelling Blinkdog's Presence; summoned bonus kept, 50% uptime sourced to Aragon's sheet | Uncommon | Offense | Deflect 0.75%, Critical Avoidance 0.75% | enemy: grants combat advantage, 50% uptime |
 | 33 | Blue Fire Eye | **VERIFIED** off card c229; **enhancement was WRONG** (Precision -> Perfect Vision); base corrected Common -> Uncommon (n00b: green); fake Passive proc converted to a Damage Vs Kabal stat on exact rungs (Celestial 6.75, not the game's 6.8); party buff confirmed verbatim + does not stack | Uncommon | Offense | Damage Vs Kabal 1.125% | party: Critical Strike 3.0% (no stack) |
-| 34 | Bobby | unchecked | Mythic | Defense/Utility | Maximum Hit Points 12000, Defense 4.5% | - |
+| 34 | Bobby | **VERIFIED** off card c087; n00b confirmed Mythic base; off-scale 12,000 HP / 4.5% Defense confirmed, marked DO NOT NORMALIZE; Unflinching Will tooltip captured (dual 4.5%); Swing For the Fences not recorded (self+pet only) | Mythic | Defense/Utility | Maximum Hit Points 12000, Defense 4.5% | - |
 | 35 | Book Imp | unchecked | Epic | Offense/Utility | Accuracy 1.88%, Combat Advantage 1.88% | - |
 | 36 | Bruenor Battlehammer | unchecked | Mythic | Defense | Awareness 3.75%, Defense 3.75% | party: Incoming Damage -3.0% |
 | 37 | Butterfly (augment) | unchecked | Mythic | Defense | PROC | - |
@@ -549,6 +549,8 @@ Interim: `formerNames` is now recorded on the companion entries themselves (Sava
 **SHIELDS ARE OUT TOO (n00b ruling 2026-09-12).** A shield or temporary hit points is not recorded as a summoned bonus, same as a heal. Applied to:
 - **Barbarian Shaman** - Nature's Wind (shields all nearby allies for 5% of their maximum health) NOT recorded.
 - **Deva Champion** - its "+5% of max HP as shield" entry REMOVED; it was the only shield in the 43 and carried no stat effects anyway.
+
+**SELF-AND-PET-ONLY DEBUFFS ARE OUT (n00b ruling 2026-09-12).** A debuff that only benefits you and your own companion, rather than the party, is not recorded as a summoned bonus - especially on a short duration with an unmeasured cooldown. Applied to **Bobby** - Swing For the Fences (target takes 5% more damage **from you and Bobby** for 5 seconds) NOT recorded. Contrast the combat-advantage granters, which flag the target for everyone attacking it and ARE recorded.
 
 **Where the line sits.** Out: heals, shields, temporary hit points - anything that adds or restores a health pool. In: percentage stat buffs and debuffs, including **damage reduction**, because that is a stat the engine already models (Bruenor Battlehammer's +3% damage reduction stays). So Angel of Protection's **Ward** (intercepts half your incoming damage) is kept in `cooldownEffects` as a damage-reduction effect rather than deleted - it is unscored regardless, pending per-effect uptime.
 
