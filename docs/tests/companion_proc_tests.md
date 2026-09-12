@@ -347,9 +347,33 @@ side; Claude cannot time anything between messages.
 that a solo build cannot use, which is itself worth marking, rather than leaving a 5%
 on the record that nobody can reach alone.
 
-### Test D results
+### Test D results — n00b, 2026-09-12 (in progress)
 
-_Awaiting n00b._
+**Baseline, Elaina summoned, out of combat, solo:**
+Critical Severity **120,156 rating / 30.9%**.
+
+**During combat, cutlass swinging:** Critical Severity **120,156 rating / 35.9%**.
+
+### Step 2-3 RESULT — **it DOES reach a solo summoner, and it is exactly +5 points**
+
+Two findings in one reading.
+
+**The "nearby party members" wording does not exclude the summoner.** The buff landed
+on a solo player with no party at all. The worry that opened this test is dead, and the
+lesson generalises: on these cards, "party members" is not evidence that the summoner
+is excluded. Do not read buff scope off the wording alone - test it.
+
+**The rating did not move. Only the percentage did, by exactly 5.0 points.** Same
+signature as Test A: a percent buff adds percentage POINTS and never touches the
+rating. So the community sheet's 5% is now a measured number, not a borrowed one, and
+`finalPct = ratingContribPct + percentTotal` holds again.
+
+That is the second sheet figure to survive contact with a card or a reading today,
+after Cantankerous Mage's 4-second grant matched its 34% uptime. Aragon's numbers are
+earning their trust.
+
+**Still open:** the duration ("a short duration" is all the card says) and the cadence,
+which together give the uptime that replaces the sheet's ~66%.
 
 ## Results
 
