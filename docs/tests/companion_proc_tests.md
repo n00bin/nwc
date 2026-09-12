@@ -207,6 +207,55 @@ engine already uses. Two independent stats, both consistent.
 
 ---
 
+## Test C — how often does Bobby swing? (Swing For the Fences uptime)
+
+Bobby's **Swing For the Fences** makes the target take **5% more damage from you and
+Bobby for 5 seconds**. Both numbers are read straight off card c087. What we do NOT
+have is how often Bobby actually uses it, and without that the uptime is a guess.
+
+Right now the data carries **25%**, borrowed from Succubus because it is the only
+other five-second enemy damage debuff we hold. It is flagged `uptimeUnmeasured` and
+must not be treated as a finding until this test replaces it.
+
+**What we are measuring:** the average gap, in seconds, between one Swing For the
+Fences and the next, while Bobby is in continuous combat.
+Then `uptime = min(100%, 5 / average gap)`.
+
+**Why a gap and not a proc chance:** this is not a chance-on-hit like Test A. It is a
+companion power on its own AI cadence, so the thing to measure is rhythm, not a rate
+per hit. Ten or more gaps is enough to see the cadence.
+
+**Steps**
+
+1. Summon Bobby. Any rarity is fine - power cadence is not a scaling stat, and if it
+   turns out to differ by rarity that is a separate finding.
+2. Go somewhere with a target that will not die and will not run: a training dummy in
+   Protector's Enclave is ideal. A dummy keeps Bobby in continuous combat, which is
+   what we want, and removes the risk of the gap being an artifact of things dying.
+3. Attack the dummy and keep attacking, so Bobby stays engaged the whole time. Bobby
+   only uses powers while actively fighting.
+4. Watch for the **wind-up swing** - it is a distinct, slow animation, unlike his
+   normal cone attack. If the dummy can be knocked down, the knockdown is an even
+   clearer cue. Every time you see it, say "now" and I will record the round.
+5. Give me ten or more gaps. Report them however is easiest: seconds between swings,
+   or just "how many swings in 60 seconds" repeated a few times. Either shape gives
+   the cadence.
+
+**If the dummy will not work.** Some dummies are immune to knockdown, which removes
+the clearest cue but not the wind-up animation. If Bobby will not engage a dummy at
+all, use any normal-difficulty trash mob area where enemies live long enough to watch
+several swings, and tell me that is what you did, since respawn gaps would then need
+allowing for.
+
+**One thing worth checking while you are there.** If you can see the dummy's or
+enemy's debuff icons, tell me whether an icon appears when Bobby swings, and how long
+it stays. That would confirm the 5-second duration directly instead of trusting the
+tooltip, the same way the buff bar confirmed 15 seconds in Test A.
+
+### Test C results
+
+_Awaiting n00b._
+
 ## Results
 
 ### Test A, steps 1-5 — n00b, 2026-09-11 — **PROC CONFIRMED**
