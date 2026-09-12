@@ -311,6 +311,46 @@ taken from the tooltip.
 
 **Still not measured:** whether the cadence changes with Bobby's rarity.
 
+## Test D — what does Cutlass Combo actually give? (Captain Elaina Sartell)
+
+Card c091 names the buff but prints no number and no duration: *"Attacks the enemy
+with her cutlass, then bolsters nearby party members with a boost to Critical Severity
+for a short duration."* Our **+5% Critical Severity at ~66% uptime** is community-sheet
+data, not a reading.
+
+**The first question is not the number.** The card says *"nearby party members"*, while
+her other aura says *"the summoner and allies"*. Those are different words, and if
+Cutlass Combo genuinely excludes the summoner, then solo it is worth nothing and the
+5% we store is unreachable for a solo player. Step 2 settles that before anything else
+matters.
+
+**Steps**
+
+1. Summon Elaina, solo, out of combat. Write down your **Critical Severity** from the
+   character sheet, both the rating and the percentage. This is the baseline, and it
+   has to be exact - see the instrument note further down this file.
+2. Attack a training dummy and keep attacking. Watch Critical Severity on the sheet.
+   **If it never moves across several cutlass swings, stop: that is the answer.** It
+   means the buff does not reach the summoner and the test needs a party member.
+3. If it does move, write down the **peak** value. Peak minus baseline is the real
+   size of the buff, and tells us whether 5% is right.
+4. Watch how long it stays up before dropping back. The card only says "a short
+   duration", so this number does not exist anywhere yet.
+5. Then count **how many times she uses Cutlass Combo in 2 minutes**, the same way we
+   counted Bobby's swings in Test C. Duration divided by the gap gives the uptime, and
+   replaces the sheet's 66%.
+
+**Same instrument caveat as Test C.** The stopwatch and the counting are on n00b's
+side; Claude cannot time anything between messages.
+
+**If it turns out to be party-only.** Say so and we will record it as a party-only buff
+that a solo build cannot use, which is itself worth marking, rather than leaving a 5%
+on the record that nobody can reach alone.
+
+### Test D results
+
+_Awaiting n00b._
+
 ## Results
 
 ### Test A, steps 1-5 — n00b, 2026-09-11 — **PROC CONFIRMED**
