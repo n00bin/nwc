@@ -381,7 +381,18 @@ Process, per companion:
 | 0.38 (our table) | 4.56 |
 | **0.375 (exact)** | **4.50** |
 
-**99 values across 53 powers** were 2dp roundings and are now stored exact. The error scales with the gap between the base rung and Celestial, so it was worst on low-rarity companions - 0.06 points for a Common base, 0.012 for an Epic one. This supersedes the earlier "normalize to the table" fix, which was right in direction but stopped one decimal short.
+**99 values across 53 powers** were 2dp roundings and are now stored exact.
+
+**But storing exact values was only half the fix - n00b caught the other half.** The card still showed 4.44% at Celestial, because `scaleStats` derives by RATIO against the same rounded tables: `0.375 stored / 0.38 table x 4.50 = 4.44`. The tables themselves had to be exact. Fixed in **both** copies (`js/companions-page.js` and `scripts/gen-item-pages.js`):
+
+| table | was | now |
+|---|---|---|
+| DOUBLE 75 | 0.38 | **0.375** |
+| DOUBLE 375 | 1.88 | **1.875** |
+| TRIPLE 250 | 0.83 | **0.8333** |
+| TRIPLE 550 | 1.83 | **1.8333** |
+
+The whole Apprentice Healer ladder now reads 0.38 / 0.75 / 1.25 / 1.88 / 2.75 / 3.75 / **4.5**, which is what n00b sees in game. Lesson: **a rounded lookup table is not just a display issue when it is also the denominator of a ratio.** The error scales with the gap between the base rung and Celestial, so it was worst on low-rarity companions - 0.06 points for a Common base, 0.012 for an Epic one. This supersedes the earlier "normalize to the table" fix, which was right in direction but stopped one decimal short.
 
 **Also confirmed on this companion:** the in-game roster shows **"Companions Bolster Contribution: 0.5%"** for a Common, which independently verifies the bolster table n00b supplied.
 
