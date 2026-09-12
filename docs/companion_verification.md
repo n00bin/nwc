@@ -117,7 +117,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 28 | Black Ice Stone (augment) | unchecked | Uncommon | Utility | PROC | - |
 | 29 | Black Scorpion | unchecked | Celestial | Offense | PROC | enemy |
 | 30 | Blacksmith | unchecked | Rare | Utility | PROC | - |
-| 31 | Blaspheme Assassin | unchecked | Mythic | Offense | PROC | enemy |
+| 31 | Blaspheme Assassin | **VERIFIED** off card c093; crit severity re-based to the exact 5.625 rung; base disputed | Mythic | Offense | PROC | enemy |
 | 32 | Blink Dog | unchecked | Uncommon | Offense | Deflect 0.75%, Critical Avoidance 0.75% | enemy |
 | 33 | Blue Fire Eye | unchecked | Common | Offense | PROC | party: Critical Strike 3.0% |
 | 34 | Bobby | unchecked | Mythic | Defense/Utility | Maximum Hit Points 12000, Defense 4.5% | - |
