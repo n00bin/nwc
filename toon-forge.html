@@ -11953,6 +11953,26 @@
       // no active power or it has no self-scope stat buffs.
       let selfBuffAmounts = {};
       let selfBuffUptime = 1;
+      // YOUR OWN summoned companion's combat-advantage grant. The ally loop
+      // below skips state.summoned because "your own summoned companion's buff
+      // already applies" - true for buffs that carry STATS, but a
+      // combat_advantage_grant carries none, so the own-summon path (~L13414,
+      // which only reads effects[] / stats{} / stat+value) dropped it and the
+      // effect was worth ZERO whenever YOU ran the companion rather than an
+      // ally (found 2026-09-12, n00b approved the fix). Affects all seven CA
+      // granters: Black Death Scorpion, Panther, Yeth Hound, Blink Dog,
+      // Swashbuckler, Dancing Blade, Cantankerous Mage.
+      // NOT gated by assumeSupportParty - your own summon is always with you.
+      // ONLY this branch: stat buffs really are handled on the sheet, so
+      // routing them here too would double-count them.
+      if (state.summoned) {
+        const ownC = findCompanionByName(state.summoned);
+        const ownSb = ownC && ownC.summonedBuff;
+        if (ownSb && ownSb.effect === "combat_advantage_grant") {
+          seen.add(state.summoned);   // an ally copy must not stack on top
+          caGrants.push({ name: state.summoned, uptime: Math.max(0, Math.min(1, (ownSb.uptime || 0) / 100)) });
+        }
+      }
       // Gated by the "Assume support party" master toggle (default OFF).
       for (const name of (state.assumeSupportParty ? (state.partyAllies || []) : [])) {
         if (!name || seen.has(name)) continue;
@@ -20179,9 +20199,16 @@
       let partyNote = "";
       if (!isHealer && !isTank && (pmods.caUnion > 0 || pmods.dmgTaken > 0)) {
         const bits = [];
-        if (pmods.caUnion > 0) bits.push(`effective CA uptime ${Math.round(effFlank * 100)}% (allies: ${pmods.caGrants.map(g => g.name).join(", ")})`);
+        if (pmods.caUnion > 0) {
+          // caGrants can now include YOUR OWN summon, so don't call it an ally.
+          const ownCA = pmods.caGrants.filter(g => g.name === state.summoned).map(g => g.name);
+          const allyCA = pmods.caGrants.filter(g => g.name !== state.summoned).map(g => g.name);
+          const who = [ownCA.length ? `your ${ownCA[0]}` : null,
+                       allyCA.length ? `allies: ${allyCA.join(", ")}` : null].filter(Boolean).join("; ");
+          bits.push(`effective CA uptime ${Math.round(effFlank * 100)}% (${who})`);
+        }
         if (pmods.dmgTaken > 0) bits.push(`+${(pmods.dmgTaken * 100).toFixed(1)}% enemy damage taken (${pmods.dmgSources.map(s => s.name).join(", ")})`);
-        partyNote = `<div style="font-size:0.74rem;color:var(--gold);margin:0.3rem 0 0.1rem;">⚔ Party allies applied: ${bits.join("; ")}</div>`;
+        partyNote = `<div style="font-size:0.74rem;color:var(--gold);margin:0.3rem 0 0.1rem;">⚔ Combat effects applied: ${bits.join("; ")}</div>`;
       }
 
       body.innerHTML = `
