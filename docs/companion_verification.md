@@ -97,7 +97,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 8 | Angel of Protection | **VERIFIED** - Protective Ward always-on + non-stacking; Ward captured, blocked on per-effect uptime | Epic | Defense | PROC | party: Defense 3.0% |
 | 9 | Aoth Fezim & Brightwing | **VERIFIED** off card c140; Keen Eyes 9.6% confirmed genuine; name spelling open | Mythic | Offense/Utility | Accuracy 3.75%, Combat Advantage 3.75% | - |
 | 10 | Apprentice Healer | **VERIFIED** off two named screenshots; Max HP moved out of a fake proc; exact-rung sweep | Common | Utility | Incoming Healing 0.37% | - |
-| 11 | Aranea | **VERIFIED** off card c144; 5% vs 10% contradiction resolved in favour of the card | Uncommon | Offense | PROC | - |
+| 11 | Aranea | **VERIFIED** off card c144; chance is flat 5%, magnitude ladder derived and Celestial predicted at 270 | Uncommon | Offense | PROC | - |
 | 12 | Armored Orc Wolf | unchecked | Common | Offense | Accuracy 0.38%, Critical Strike 0.38% | - |
 | 13 | Assassin Drake | unchecked | Epic | Offense | Accuracy 1.88%, Critical Severity 1.88% | - |
 | 14 | Astral Deva | unchecked | Rare | Defense | Heal Percent 2.5% | - |
@@ -372,6 +372,12 @@ Process, per companion:
 1. Claude reads the Powers list off the archived Inspect card (or a fresh screenshot) and **surfaces every ally-affecting or enemy-affecting power**, with whatever magnitude and duration the game states.
 2. n00b rules on whether it is worth recording as a buff.
 3. If yes, Claude measures what is missing and records it. If no, the effect is left out of `summonedBuff` entirely and the details go in the companion's `notes` so the work survives.
+
+**PROC CHANCE AND PROC MAGNITUDE SCALE DIFFERENTLY (Aranea, 2026-09-11).** n00b read Aranea's ladder in game: the **chance stays 5% at every rarity** while only the **magnitude** moves - 45 / 75 / 112 / 165 / 225 across Uncommon to Mythic. Do not assume a proc's chance scales just because its numbers do.
+
+The magnitude is a flat **0.30 per item level** at every rung (the Epic 112 is the game truncating 112.5), so **Celestial is 270**. Stored as an `effectScaling` ladder with `chanceFlat: true`.
+
+Contrast with Abyssal Chicken, where the *chance* scales (7.5% Epic to 18% Celestial) and there is no magnitude at all. Both shapes exist; read which one before storing.
 
 **STORE THE EXACT RUNG, NOT THE 2dp TABLE (found on Apprentice Healer, 2026-09-11).** The rarity tables in our code are themselves rounded to two decimals. The double-stat anchor is 4.50 at Celestial, so the true Common rung is **0.375**, not the 0.38 the table lists - and the game's own tooltip shows **0.37**, truncating rather than rounding. All three numbers disagree and only 0.375 derives correctly.
 
