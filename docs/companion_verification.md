@@ -102,7 +102,7 @@ Best 10 companions count, so the ceiling is 120% (ten Celestials). The old "Bols
 | 13 | Assassin Drake | **VERIFIED** off card c006; two skill-text typos fixed against the card | Epic | Offense | Accuracy 1.88%, Critical Severity 1.88% | - |
 | 14 | Astral Deva | **VERIFIED** (no card); heal was double-stored as a permanent stat - fixed; ladder added | Rare | Defense | Heal Percent 2.5% | - |
 | 15 | Bear Cub (was Baby Bear, augment) | **VERIFIED** off card c080; renamed; proc re-based to the exact 1.125 rung | Uncommon | Defense | PROC | - |
-| 16 | Baby Boar (augment) | unchecked | Uncommon | Offense | Deflect 0.75%, Critical Severity 0.75% | - |
+| 16 | Baby Boar | stats VERIFIED off card c075; skills added; **augment flag disputed** | Uncommon | Offense | Deflect 0.75%, Critical Severity 0.75% | - |
 | 17 | Baby Bulette (augment) | unchecked | Epic | Defense | PROC | - |
 | 18 | Baby Deep Crow (augment) | unchecked | Mythic | Offense | Power 7.5% | - |
 | 19 | Baby Displacer Beast (augment) | unchecked | Uncommon | Defense/Offense | PROC | - |
@@ -443,6 +443,12 @@ Current state: **534 notes across powers and companions, and only 8 flag an open
 **15 other powers still carry a bare `zoneConditional: true`** - the flag says a zone matters but not WHICH zone or by HOW MUCH, so the card can only show a generic badge. Capture zone and multiplier for each as we pass through: Hell Hound's Senses, Yeth Hound's Presence, Dragon's Bane, Eladrin's Senses, Chultan Hunter's Discipline, Vistani's Discipline, Mageslayer's Assault, Vallenhas' Discipline, Siege Master's Discipline, Wiggin's Wisdom, Stronghold Cleric's Wisdom, Skyblazer's Sight, Dark Dealings, Sense Through the Shadowfell, Fire Eye's Insight.
 
 **Not scored by the optimizer.** Structuring the data does not make the engine use it; a Chult build still sees half the real value of these powers. Wiring that is engine work and needs n00b's go.
+
+**THE AUGMENT FLAG IS WRONG IN BOTH DIRECTIONS.** Proud Pink Yeti was stored `augment: false` and really is one. **Baby Boar** is stored `augment: true` and its card shows three combat abilities (Charge, Gouge, Wild Bloodlust) - augments do not attack.
+
+**A reliable tell exists on the card.** A real augment's Enhancement line reads *"Gives an additional bonus to X, Y and Z **shared with the owner**"* (Bear Cub, Baby Bulette). A non-augment reads only *"Gives an additional bonus to Combined Rating"* - which is what Baby Boar's card says. Use that wording, not the power name, when a card is available.
+
+This matters because the optimizer bars augments from the summoned slot by default, so a wrong flag either offers an illegal summon or forbids a legal one.
 
 **PROCESS FIX: FOLLOW THE TRACKER ORDER, NOT MY OWN ALPHABETISING.** I skipped **Astral Deva** (#14) and **Baby Boar** (#16) by re-deriving the order in my head each time instead of reading this table. n00b caught it. Work the numbered rows in order.
 

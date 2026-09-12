@@ -194,6 +194,20 @@ const COMPANION_SKILLS = {
       "text": "When taking damage greater than 20% of the Deva's maximum life, the cooldown on Holy Light is refreshed."
     }
   ],
+  "baby boar": [
+    {
+      "name": "Charge",
+      "text": "Charges at and deals damage to target foe."
+    },
+    {
+      "name": "Gouge",
+      "text": "A vicious bite that leaves a bleeding wound."
+    },
+    {
+      "name": "Wild Bloodlust",
+      "text": "If the Boar charges a Gouged foe he enrages, healing himself for 10% of his hit points over 20 seconds and the Charge deals bonus damage. This consumes the Gouge."
+    }
+  ],
   "baby displacer beast": [
     {
       "name": "Augmentation",
