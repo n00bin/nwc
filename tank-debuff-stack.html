@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="What the Neverwinter tank debuff stack is actually worth to the whole party: Faerie Fire, Spiteful Hex, Vistani, Armor Break and Midnight's Malady, totalled against a raid boss.">
+<meta property="og:title" content="Five Debuffs, One Number">
+<meta property="og:description" content="What the Neverwinter tank debuff stack is actually worth to the whole party.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext y='14' font-size='14'%3E%F0%9F%9B%A1%3C/text%3E%3C/svg%3E">
+<title>Five Debuffs, One Number</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600&display=swap">
+<style>
+:root{
+  --ground:#F1EAE0;
+  --panel:#FBF7F1;
+  --panel-2:#F6EFE5;
+  --ink:#221A21;
+  --ink-2:#5B4C57;
+  --muted:#877584;
+  --rule:#DCCFBE;
+  --rule-hard:#C3B199;
+  --brass:#8A6612;
+  --blood:#9A2B27;
+  --bar-a:#8A6612;
+  --bar-b:#B99433;
+
+  --fs-eyebrow:.72rem;
+  --fs-body:1rem;
+  --fs-lead:1.11rem;
+  --fs-h2:1.42rem;
+  --fs-h1:clamp(2.1rem,6vw,3.3rem);
+  --fs-hero:clamp(3.6rem,15vw,7rem);
+  --maxw:1000px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#15101A;
+    --panel:#1D1724;
+    --panel-2:#241C2C;
+    --ink:#EFE6E6;
+    --ink-2:#C2B0BD;
+    --muted:#96828F;
+    --rule:#332838;
+    --rule-hard:#4A3A4E;
+    --brass:#D7AE45;
+    --blood:#D0514A;
+    --bar-a:#D7AE45;
+    --bar-b:#8E7231;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#15101A;
+  --panel:#1D1724;
+  --panel-2:#241C2C;
+  --ink:#EFE6E6;
+  --ink-2:#C2B0BD;
+  --muted:#96828F;
+  --rule:#332838;
+  --rule-hard:#4A3A4E;
+  --brass:#D7AE45;
+  --blood:#D0514A;
+  --bar-a:#D7AE45;
+  --bar-b:#8E7231;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:Barlow,"Segoe UI",system-ui,sans-serif;
+  font-size:var(--fs-body);
+  line-height:1.55;
+  margin:0;
+  padding-block:34px 56px;
+  padding-left:20px;
+  padding-right:20px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;display:flex;flex-direction:column;gap:38px}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+
+.eyebrow{
+  font-family:"Barlow Condensed",Barlow,sans-serif;
+  font-size:var(--fs-eyebrow);
+  letter-spacing:.19em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+}
+
+.masthead{display:flex;flex-direction:column;gap:10px}
+.masthead h1{
+  font-family:Cinzel,Georgia,serif;
+  font-weight:700;
+  font-size:var(--fs-h1);
+  line-height:1.02;
+}
+.masthead h1 em{font-style:normal;color:var(--brass)}
+.deck{font-size:var(--fs-lead);color:var(--ink-2);max-width:62ch}
+
+.total{
+  background:var(--panel);
+  border:1px solid var(--rule);
+  border-top:3px solid var(--brass);
+  display:grid;
+  grid-template-columns:minmax(0,auto) minmax(0,1fr);
+  gap:8px 42px;
+  align-items:center;
+  padding:30px 32px;
+}
+.total .fig{display:flex;flex-direction:column;gap:2px}
+.total .num{
+  font-family:Cinzel,Georgia,serif;
+  font-weight:700;
+  font-size:var(--fs-hero);
+  line-height:.88;
+  color:var(--brass);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-.01em;
+}
+.total .num small{font-size:.42em;letter-spacing:0}
+.total .say{font-size:var(--fs-lead);color:var(--ink-2);max-width:40ch}
+.total .say strong{color:var(--ink);font-weight:600}
+.total-foot{
+  grid-column:1/-1;
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid var(--rule);
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 30px;
+}
+.mini{display:flex;flex-direction:column}
+.mini b{font-size:1.22rem;font-weight:600;font-variant-numeric:tabular-nums}
+
+.section-head{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.section-head h2{font-family:Cinzel,Georgia,serif;font-size:var(--fs-h2);font-weight:500}
+.section-head p{color:var(--ink-2);max-width:66ch}
+
+.ledger{display:flex;flex-direction:column}
+.row{
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) minmax(0,1.5fr) 150px 96px;
+  gap:6px 22px;
+  align-items:center;
+  padding:16px 0 16px 16px;
+  border-top:1px solid var(--rule);
+  border-left:3px solid var(--hue,var(--rule-hard));
+}
+.row:last-of-type{border-bottom:1px solid var(--rule)}
+.nm{display:flex;flex-direction:column;gap:1px;min-width:0}
+.nm b{font-size:1.06rem;font-weight:600}
+.nm span{font-size:.86rem;color:var(--muted)}
+.eff{font-size:.93rem;color:var(--ink-2);min-width:0}
+.eff code{
+  font-family:"Barlow Condensed",Barlow,sans-serif;
+  font-size:1.04em;
+  letter-spacing:.02em;
+  color:var(--ink);
+  font-weight:600;
+}
+.bararea{display:flex;flex-direction:column;gap:5px;min-width:0}
+.track{height:9px;background:var(--panel-2);border:1px solid var(--rule);position:relative;overflow:hidden}
+.fill{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,var(--bar-a),var(--bar-b))}
+.val{
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+  font-size:1.24rem;
+  font-weight:600;
+  color:var(--ink);
+}
+.up{
+  font-family:"Barlow Condensed",Barlow,sans-serif;
+  font-size:.78rem;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.sumline{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:8px 18px;
+  margin-top:22px;
+  padding:16px 18px;
+  background:var(--panel-2);
+  border-left:3px solid var(--brass);
+}
+.sumline b.big{font-family:Cinzel,Georgia,serif;font-size:1.5rem;color:var(--brass);font-variant-numeric:tabular-nums}
+.sumline p{color:var(--ink-2);font-size:.96rem;max-width:58ch}
+.sumline p b{color:var(--ink)}
+
+.pools{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pool{background:var(--panel);border:1px solid var(--rule);padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.pool h3{font-size:1.12rem;font-weight:600}
+.pool p{font-size:.93rem;color:var(--ink-2)}
+.stack-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.stack-list li{display:flex;justify-content:space-between;gap:14px;font-size:.93rem;border-bottom:1px dotted var(--rule);padding-bottom:4px}
+.stack-list li span:last-child{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600;white-space:nowrap}
+.pool .out{
+  margin-top:auto;
+  padding-top:12px;
+  border-top:1px solid var(--rule-hard);
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+}
+.pool .out b{font-family:Cinzel,Georgia,serif;font-size:1.5rem;color:var(--brass);font-variant-numeric:tabular-nums}
+
+.defmeter{display:flex;flex-direction:column;gap:6px}
+.defmeter .bar{height:26px;background:var(--panel-2);border:1px solid var(--rule);position:relative;display:flex}
+.defmeter .kept{background:var(--rule-hard)}
+.defmeter .stripped{background:repeating-linear-gradient(-45deg,var(--blood),var(--blood) 3px,transparent 3px,transparent 7px);border-left:1px solid var(--blood)}
+.defmeter .lbls{display:flex;justify-content:space-between;font-family:"Barlow Condensed",Barlow,sans-serif;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+.party{background:var(--panel);border:1px solid var(--rule);padding:24px 26px;display:flex;flex-direction:column;gap:16px}
+.pbars{display:flex;flex-direction:column;gap:12px}
+.pb{display:grid;grid-template-columns:118px minmax(0,1fr) 74px;align-items:center;gap:14px}
+.pb .cap{font-family:"Barlow Condensed",Barlow,sans-serif;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pb .t{height:20px;background:var(--panel-2);border:1px solid var(--rule);position:relative}
+.pb .f{position:absolute;top:0;bottom:0;left:0;background:var(--rule-hard)}
+.pb .f.hot{background:linear-gradient(90deg,var(--bar-a),var(--bar-b))}
+.pb .n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.party .kicker{font-size:var(--fs-lead);color:var(--ink-2)}
+.party .kicker strong{color:var(--brass);font-weight:600}
+
+.notes{display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--rule);padding-top:20px}
+.notes h2{font-family:Cinzel,Georgia,serif;font-size:1.14rem;font-weight:500}
+.notes dl{margin:0;display:flex;flex-direction:column;gap:13px}
+.notes dt{font-family:"Barlow Condensed",Barlow,sans-serif;font-size:.79rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);font-weight:600}
+.notes dd{margin:3px 0 0;font-size:.92rem;color:var(--ink-2);max-width:78ch}
+.notes dd b{color:var(--ink);font-weight:600}
+footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px}
+
+@media (max-width:780px){
+  .total{grid-template-columns:1fr;gap:16px;padding:24px 20px}
+  .row{grid-template-columns:minmax(0,1fr) 86px;gap:6px 14px}
+  .row .eff{grid-column:1 / -1}
+  .row .bararea{grid-column:1 / 2}
+  .row .val{grid-column:2 / 3}
+    .pools{grid-template-columns:1fr}
+  .pb{grid-template-columns:92px minmax(0,1fr) 62px;gap:10px}
+}
+</style>
+<style>
+/* GitHub Pages standalone: the artifact host normally supplies these */
+html{color-scheme:light dark}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Neverwinter &middot; PS5 &middot; Buff / Debuff Tank</p>
+    <h1>Five Debuffs, <em>One Number</em></h1>
+    <p class="deck">What the whole stack is actually worth &mdash; Faerie Fire, Spiteful Hex, Vistani, Armor Break and Midnight&rsquo;s Malady, totalled against a raid boss and applied to every damage number in the party.</p>
+  </header>
+
+  <section class="total">
+    <div class="fig">
+      <div class="num">+22.1<small>%</small></div>
+      <p class="eyebrow">Party-wide damage, full stack up</p>
+    </div>
+    <p class="say">Every hit from <strong>every player in the group</strong> lands 22.1% harder while the stack is running.</p>
+    <div class="total-foot">
+      <div class="mini"><span class="eyebrow">At realistic uptime</span><b>+19.7%</b></div>
+      <div class="mini"><span class="eyebrow">If you just add them up</span><b>+20.3%</b></div>
+      <div class="mini"><span class="eyebrow">Boss defence stripped</span><b>50% &rarr; 34.5%</b></div>
+      <div class="mini"><span class="eyebrow">Same as bringing</span><b>another DPS</b></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>What each one brings</h2>
+      <p>The five debuffs this build runs, ordered by what they contribute. Each bar is that debuff measured on its own.</p>
+    </div>
+
+    <div class="ledger">
+
+      <div class="row" style="--hue:#B5651D">
+        <div class="nm"><b>Armor Break</b><span>Companion enhancement &middot; IL 900</span></div>
+        <p class="eff">Boss <code>Defence &minus;9%</code> for 15s. Chance on hit &mdash; and your companion&rsquo;s hits trigger it too.</p>
+        <div class="bararea"><div class="track"><div class="fill" style="width:91.2%"></div></div><p class="up">~98% uptime</p></div>
+        <div class="val">+6.38%</div>
+      </div>
+
+      <div class="row" style="--hue:#7B3F6B">
+        <div class="nm"><b>Vistani (3/3)</b><span>Pendant + Raiments + Tarokka Deck</span></div>
+        <p class="eff">Cast a damaging AoE that hits <em>one</em> target, and that target <code>takes +5% damage</code> for 5s.</p>
+        <div class="bararea"><div class="track"><div class="fill" style="width:71.4%"></div></div><p class="up">~100% uptime</p></div>
+        <div class="val">+5.00%</div>
+      </div>
+
+      <div class="row" style="--hue:#4E7A52">
+        <div class="nm"><b>Spiteful Hex</b><span>Lysaera &middot; Utility / Defence power</span></div>
+        <p class="eff">When a crit hits <em>you</em>: 70% chance to burst &mdash; enemies <code>take +4.5% damage</code> for 10s, you gain +4.5% Defence.</p>
+        <div class="bararea"><div class="track"><div class="fill" style="width:64.3%"></div></div><p class="up">~85% typical</p></div>
+        <div class="val">+4.50%</div>
+      </div>
+
+      <div class="row" style="--hue:#3B4A86">
+        <div class="nm"><b>Midnight&rsquo;s Malady</b><span>Eilistraee&rsquo;s Grace &middot; Ring</span></div>
+        <p class="eff">Same single-target-AoE trigger: boss <code>Defence &minus;3.5%</code> (and Awareness &minus;3.5%) for 5s.</p>
+        <div class="bararea"><div class="track"><div class="fill" style="width:34.1%"></div></div><p class="up">~100% uptime</p></div>
+        <div class="val">+2.39%</div>
+      </div>
+
+      <div class="row" style="--hue:#8A5FA8">
+        <div class="nm"><b>Faerie Fire</b><span>Drow / Menzoberranzan racial</span></div>
+        <p class="eff">10% chance on attack: boss <code>Defence &minus;3%</code> and <em>their</em> damage &minus;3%, for 3s.</p>
+        <div class="bararea"><div class="track"><div class="fill" style="width:29.2%"></div></div><p class="up">~45% uptime</p></div>
+        <div class="val">+2.04%</div>
+      </div>
+
+    </div>
+
+    <div class="sumline">
+      <b class="big">+20.31%</b>
+      <p>is what you get by adding those five numbers together &mdash; but the real stack is <b>+22.12%</b>. Running them together beats the sum of the parts. Here is why.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Two pools, not five effects</h2>
+      <p>The game sorts these into two different buckets. Inside a bucket they add together; the two buckets then multiply.</p>
+    </div>
+    <div class="pools">
+
+      <div class="pool">
+        <p class="eyebrow">Pool 1 &mdash; strip the boss&rsquo;s defence</p>
+        <h3>50% &rarr; 34.5% Defence</h3>
+        <ul class="stack-list">
+          <li><span>Armor Break</span><span>&minus;9.0</span></li>
+          <li><span>Midnight&rsquo;s Malady</span><span>&minus;3.5</span></li>
+          <li><span>Faerie Fire</span><span>&minus;3.0</span></li>
+        </ul>
+        <div class="defmeter">
+          <div class="bar">
+            <div class="kept" style="width:69%"></div>
+            <div class="stripped" style="width:31%"></div>
+          </div>
+          <div class="lbls"><span>34.5 left standing</span><span>15.5 stripped</span></div>
+        </div>
+        <p>A boss sitting at 50% Defence only lets <b>66.7%</b> of your hit through. These three strip 15.5 points off that, down to 34.5% Defence &mdash; now <b>74.3%</b> gets through. That jump is the +11.52%.</p>
+        <p>Defence divides your damage rather than subtracting from it, so each point you strip is worth slightly more than the one before it. That is why the three of them together beat the sum of what they each do alone.</p>
+        <div class="out"><span class="eyebrow">Damage gained</span><b>+11.52%</b></div>
+      </div>
+
+      <div class="pool">
+        <p class="eyebrow">Pool 2 &mdash; make the boss take more</p>
+        <h3>Incoming damage +9.5%</h3>
+        <ul class="stack-list">
+          <li><span>Vistani (3/3)</span><span>+5.0</span></li>
+          <li><span>Spiteful Hex</span><span>+4.5</span></li>
+        </ul>
+        <p>This pool is a flat multiplier on the damage that already got through, so it never competes with the defence pool &mdash; the two stack clean.</p>
+        <p>Vistani and Midnight&rsquo;s Malady also share the same trigger, a damaging AoE that lands on a single target. One cast feeds both of them.</p>
+        <div class="out"><span class="eyebrow">Damage gained</span><b>+9.50%</b></div>
+      </div>
+    </div>
+
+    <div class="sumline" style="border-left-color:var(--blood)">
+      <b class="big">1.1152 &times; 1.0950 = 1.2212</b>
+      <p>Pool one times pool two. That is the <b>+22.1%</b> at the top of the page.</p>
+    </div>
+  </section>
+
+  <section class="party">
+    <p class="eyebrow">What the group actually sees</p>
+    <div class="pbars">
+      <div class="pb"><span class="cap">No debuffs</span><div class="t"><div class="f" style="width:81.9%"></div></div><span class="n">100%</span></div>
+      <div class="pb"><span class="cap">Full stack up</span><div class="t"><div class="f hot" style="width:100%"></div></div><span class="n">122.1%</span></div>
+    </div>
+    <p class="kicker">Everyone in the group hits 22.1% harder. Across a 5-man, all that extra damage adds up to <strong>the same as bringing another DPS</strong> &mdash; and every bit of it comes from the five pieces above.</p>
+  </section>
+
+  <section class="notes">
+    <h2>The fine print</h2>
+    <dl>
+      <dt>The boss these are measured against</dt>
+      <dd>Defence 50%, Deflect 50%, Deflect Severity 90%, Awareness 0, Accuracy 0.</dd>
+
+      <dt>The Awareness half of Midnight&rsquo;s Malady is unverified</dt>
+      <dd>Awareness cancels out a player&rsquo;s Combat Advantage bonus &mdash; your damage is <b>&times; (1 + your CA &minus; target Awareness)</b>. Every model we have puts bosses at <b>0 Awareness</b>, in which case pushing it lower buys nothing and only the Defence half counts. But nobody has actually read a boss&rsquo;s Awareness value in game, and whether it can be driven <em>below</em> zero is unknown. If it can, the debuff is worth roughly <b>+1.6%</b> more at the Combat Advantage cap, which would take the whole stack to +24.1%. <b>The +22.1% here assumes it does nothing</b>, which is the cautious reading. Either way it only matters while somebody is flanking.</dd>
+
+      <dt>Where the uptime figures come from</dt>
+      <dd>Proc uptime modelled as <b>1 &minus; e^(&minus;chance &times; events per second &times; duration)</b>. Armor Break lands near 98% at two hits per second; Faerie Fire only reaches about 45%, because it is a 10% chance on a three-second debuff. Weighting both pools by uptime gives +19.7% instead of +22.1%. <b>These uptimes are a model, not a measured in-game number.</b></dd>
+
+      <dt>Spiteful Hex is the one that depends on the fight</dt>
+      <dd>It needs a <em>critical strike to land on you</em>, so its uptime tracks how hard you are being hit, not how fast you attack. Against a boss at 50% crit chance with a 70% proc and a 10-second debuff: one hit every 3s gives <b>69%</b>, one hit every 2s gives <b>83%</b>, one hit per second gives <b>97%</b>. Holding a pack of adds pins it near 100%; a slow single boss does not. <b>85% is the middle figure used here.</b> Even at the pessimistic end the full stack only falls from +22.1% to +20.6%, so the headline holds either way.</dd>
+
+      <dt>Capping Critical Avoidance does not switch Spiteful Hex off</dt>
+      <dd>Critical Avoidance cuts the <em>severity</em> of the crits you take, not how often they land &mdash; the validated formula is <b>1 + 0.50 &times; (0.90 &minus; Critical Avoidance)</b>. At the 90% cap a crit stops hurting extra but still counts as a crit, so the proc still fires. What is <b>not verified</b> is whether a blocked hit still counts as being struck &mdash; a Paladin holding block may see fewer procs than this model assumes.</dd>
+
+      <dt>There is a second Faerie Fire</dt>
+      <dd>Blaspheme Assassin&rsquo;s summoned buff carries the same name but does something different: boss Deflect &minus;2% and +1% damage taken, worth <b>+2.25%</b>. That is slightly more than the racial version, and it is permanent instead of a 45%-uptime proc. Whether the two versions stack or overwrite each other is <b>not verified</b>.</dd>
+
+      <dt>Spiteful Hex also makes you harder to kill</dt>
+      <dd>Its self half is +4.5% Defence for 10s &mdash; but only if you are <b>under the 90% Defence cap</b>. At cap it is wasted. Faerie Fire&rsquo;s &minus;3% to enemy damage always counts. Together they are worth roughly <b>5% less damage taken</b>.</dd>
+
+      <dt>What &ldquo;the same as another DPS&rdquo; means</dt>
+      <dd>Five players each doing one share of damage is five shares. Buff all of them by 22.1% and the group puts out <b>6.1 shares</b> &mdash; the extra 1.1 is where the sixth-player comparison comes from. It assumes everyone contributes an equal share, which is a rough way to picture it rather than a literal measurement. <b>The +22.1% itself holds no matter who is doing the damage.</b></dd>
+
+    </dl>
+  </section>
+
+  <footer>
+    Values pulled from the Neverwinter Compendium data set &mdash; companion enhancement 17, companion power 174, Eilistraee&rsquo;s Grace, the Vistani three-piece and the Menzoberranzan Renegade racial. Module 33, PS5.
+  </footer>
+</div>
+</body>
+</html>
