@@ -1,5 +1,45 @@
 # Data Issues To Investigate
 
+## 33 powers hide a plain stat inside a fake "Passive" proc (found 2026-09-13)
+
+A sibling of the frozen-proc problem, with the same symptom and a different cause.
+These powers carry `procEffect.trigger = "Passive"` with `chance: 100`, which is not
+something the game has - the cards show these as plain **Equip** lines. Because the
+value sits in proc text rather than `stats[]`, it never scales: the card prints the
+base number on every rarity button.
+
+Caught one at a time so far: Blue Fire Eye, Chultan Hunter, Crystalline Golem. On
+Crystalline Golem the effect was stark - it showed 7,500 Maximum Hit Points at every
+rarity when the real ladder runs to 18,000.
+
+**9 of the 33 are a pure "+N Maximum Hit Points" line, and 8 of those hold exactly
+the MAX_HP table value for their stored item level:**
+
+| Power | IL | Stored | Table |
+|---|---|---|---|
+| Stormrider's Discipline | 150 | 3,000 | 3,000 |
+| Zhentarim Warlock's Wisdom | 550 | 11,000 | 11,000 |
+| Ghost Paladin's Wisdom | 150 | 3,000 | 3,000 |
+| Moonshae Druid's Wisdom | 150 | 3,000 | 3,000 |
+| Dragon's Insight | 250 | 5,000 | 5,000 |
+| Skeleton Dog's Instincts | 375 | 7,500 | 7,500 |
+| War Drummer's Discipline | 375 | 7,500 | 7,500 |
+| Divine Insight | 250 | 5,000 | 5,000 |
+| **Xegut's Insight** | 750 | **35,000** | 15,000 |
+
+Xegut is the known, game-verified outlier - do NOT normalise it (see
+reference_companion_offscale_verified). The other 8 are mechanical: moving the value
+from proc text into `stats[]` changes no number at the stored rarity, it only lets the
+ladder work. That fix is independent of base rarity, which is the other big fault, so
+getting the base wrong later does not make this wrong.
+
+**The remaining 24 are mixed shapes** - zone currency, conditional damage, damage
+resistance, attribute bonuses, the two Part of the Pack powers - and each needs its
+card to decide what it should become.
+
+**Recommendation:** the 8 exact Max HP ones could be fixed as one safe batch on n00b's
+say-so; everything else waits for its row.
+
 ## Proc text disagrees with the scored magnitude on 2 more powers (found 2026-09-12)
 
 Caught while verifying Cockatrice, whose card printed "17.2 magnitude" on the page
