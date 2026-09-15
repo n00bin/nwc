@@ -3647,6 +3647,14 @@
        Serializes the entire build state to JSON. Stored locally via
        localStorage (multi-slot). Sharable via URL hash (#b=<base64>). */
     const BUILDS_KEY = "toon-forge:builds";
+    // Hard ceiling on the saved-build list. The list USED to silently drop the
+    // oldest build once it passed 20 (`list.shift()`) — a real, unreported data
+    // loss: save your 21st build, your 1st was gone with no warning. Saving now
+    // refuses at the ceiling and says so, so nothing disappears unasked.
+    const MAX_BUILDS = 50;
+    // Marker written into exported backup files so Import can tell one of our
+    // backups from an unrelated .json the player picked by mistake.
+    const BUILDS_FILE_FORMAT = "nwcb-toon-forge-builds";
     // Working-draft autosave. Separate from BUILDS_KEY (named saves) — this is
     // the single live build the player is editing right now, written on every
     // change and restored on page load so a reload or back-button never wipes
@@ -4098,6 +4106,102 @@
     function saveBuildsList(arr) {
       try { localStorage.setItem(BUILDS_KEY, JSON.stringify(arr)); } catch (e) {}
     }
+
+    /* ===== Backup: export / import =====
+       Saved builds live in this browser's localStorage and NOWHERE else, so a
+       browser that clears its own storage takes every build with it. Mobile
+       Safari does exactly that on its own — it evicts script-written storage
+       for any site the player hasn't opened in ~7 days — which is the most
+       common way players lose builds they never touched. Moving to IndexedDB
+       would not help: Safari evicts that in the same sweep.
+
+       These two buttons are the stopgap that at least lets a player keep a
+       copy off the device. The real fix (builds saved server-side against a
+       free sign-in) is the next stage of work. */
+    function buildsBackupFilename() {
+      return "nwcb-builds-" + new Date().toISOString().slice(0, 10) + ".json";
+    }
+    function exportBuilds() {
+      const builds = getBuildsList();
+      if (!builds.length) { toast("No saved builds to back up yet."); return; }
+      const payload = {
+        format: BUILDS_FILE_FORMAT,
+        v: 1,
+        exportedAt: new Date().toISOString(),
+        builds: builds,
+      };
+      let url = null;
+      try {
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+        url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = buildsBackupFilename();
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      } catch (e) {
+        toast("This browser blocked the download — try a normal (non-private) window.");
+        return;
+      } finally {
+        if (url) setTimeout(() => { try { URL.revokeObjectURL(url); } catch (e) {} }, 60000);
+      }
+      toast("Backed up " + builds.length + (builds.length === 1 ? " build" : " builds"));
+    }
+
+    /* Import MERGES, it never replaces. Same name = the newer savedAt wins;
+       an unmatched name is added. Nothing already saved is ever removed by an
+       import — a player restoring an old backup onto a browser that still has
+       newer work must not lose that work. */
+    function importBuildsFromText(text) {
+      let parsed;
+      try { parsed = JSON.parse(text); }
+      catch (e) { toastSticky("That file couldn't be read — it isn't a builds backup."); return; }
+      // Accept the wrapper written by exportBuilds(), and also a bare array in
+      // case someone hand-edits the file down to just the list.
+      const incoming = Array.isArray(parsed) ? parsed
+        : (parsed && Array.isArray(parsed.builds) ? parsed.builds : null);
+      if (!incoming) { toastSticky("That file doesn't contain any saved builds."); return; }
+      // A build is only usable if it carries a state object; anything else is
+      // dropped rather than loaded as a broken entry.
+      const valid = incoming.filter(b => b && typeof b === "object" && b.s && typeof b.s === "object");
+      let unreadable = incoming.length - valid.length;
+      if (!valid.length) { toastSticky("That file doesn't contain any saved builds."); return; }
+
+      const list = getBuildsList();
+      let added = 0, updated = 0, alreadyCurrent = 0, noRoom = 0;
+      valid.forEach(b => {
+        const name = ((b.name || "").trim()) || "Unnamed Build";
+        const entry = {
+          v: b.v || 1,
+          name: name,
+          savedAt: (typeof b.savedAt === "number" && b.savedAt > 0) ? b.savedAt : Date.now(),
+          s: b.s,
+        };
+        const i = list.findIndex(x => (x.name || "").trim().toLowerCase() === name.toLowerCase());
+        if (i === -1) {
+          if (list.length >= MAX_BUILDS) { noRoom++; return; }
+          list.push(entry);
+          added++;
+        } else if (entry.savedAt > (list[i].savedAt || 0)) {
+          list[i] = entry;
+          updated++;
+        } else {
+          alreadyCurrent++;
+        }
+      });
+      saveBuildsList(list);
+      openBuildsModal();   // refresh the list behind the toast
+
+      const bits = [];
+      if (added) bits.push(added + " restored");
+      if (updated) bits.push(updated + " updated to the newer copy");
+      if (alreadyCurrent) bits.push(alreadyCurrent + " already up to date");
+      if (unreadable) bits.push(unreadable + " unreadable and skipped");
+      if (noRoom) bits.push(noRoom + " skipped — your list is full at " + MAX_BUILDS);
+      toastSticky(bits.length ? "Restored from backup: " + bits.join(", ") + "."
+                              : "Nothing to restore — every build in that file is already here.");
+    }
     // URL-safe base64 (UTF-8 safe).
     function b64encode(str) {
       return btoa(unescape(encodeURIComponent(str))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
@@ -4143,6 +4247,17 @@
             style="flex:1;padding:0.5rem 0.7rem;background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:6px;"
             value="${(state.name || '').replace(/"/g,'&quot;')}">
           <button class="btn btn-primary" id="build-save-now" type="button">💾 Save current</button>
+        </div>
+        <div style="margin-bottom:0.7rem;display:flex;gap:0.4rem;align-items:center;flex-wrap:wrap;">
+          <button class="btn btn-ghost" id="builds-export" type="button" style="font-size:0.8rem;">⬇️ Back up to a file</button>
+          <button class="btn btn-ghost" id="builds-import" type="button" style="font-size:0.8rem;">⬆️ Restore from a file</button>
+          <input type="file" id="builds-import-file" accept="application/json,.json" style="display:none;">
+        </div>
+        <div style="margin-bottom:0.9rem;padding:0.55rem 0.7rem;border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:6px;font-size:0.78rem;line-height:1.45;color:var(--text-mute);">
+          <b style="color:var(--text);">Your builds are saved in this browser only.</b>
+          Clearing your browsing data deletes them, and phone browsers can clear
+          them on their own if you don't visit for a week or two. Back up to a
+          file to keep a copy you control.
         </div>`;
       if (!builds.length) {
         html += `<div class="picker-empty">No saved builds yet. Save one above to come back to it later.</div>`;
@@ -4175,14 +4290,36 @@
           list[existingIdx] = built;
           toast(`Updated "${name}"`);
         } else {
+          // NEVER silently drop the oldest build to make room (what the old
+          // `while (list.length > 20) list.shift()` did). Refuse and say why.
+          if (list.length >= MAX_BUILDS) {
+            alert(`You already have ${MAX_BUILDS} saved builds, which is the most this browser will hold.
+
+` +
+                  `Delete one you no longer need, then save again. Back up to a file first if you want to keep it.`);
+            return;
+          }
           list.push(built);
-          while (list.length > 20) list.shift();   // cap at 20 (oldest dropped)
           toast(`Saved "${name}"`);
         }
         saveBuildsList(list);
         nudgeCommunityShare("save");
         openBuildsModal();   // refresh
       });
+      // Back up / restore
+      document.getElementById("builds-export").addEventListener("click", exportBuilds);
+      const importInput = document.getElementById("builds-import-file");
+      document.getElementById("builds-import").addEventListener("click", () => importInput.click());
+      importInput.addEventListener("change", () => {
+        const file = importInput.files && importInput.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => importBuildsFromText(String(reader.result || ""));
+        reader.onerror = () => toastSticky("That file couldn't be opened.");
+        reader.readAsText(file);
+        importInput.value = "";   // let the same file be picked again
+      });
+
       // Load (whole row)
       wrap.querySelectorAll("[data-build-load], [data-build-load-btn]").forEach(el => {
         el.addEventListener("click", (ev) => {
