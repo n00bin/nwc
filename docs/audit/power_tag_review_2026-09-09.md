@@ -135,4 +135,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BB-11 Roar (Blademaster encounter): AREA 45-degree cone 30 ft / ranged (shout) / STUN 2 s + INTERRUPT / no DoT / physical; mag 250; Rage per target hit (amount unknown); base cd 12.6 s (n00b; 11.8 shown) (2026-09-20, n00b ruling)
 - BB-12 Frenzy (Blademaster encounter): single / melee 17 ft / none / no DoT / physical; mag 1275; base cd 15.6 s (n00b; 14.5 shown) (2026-09-20, n00b ruling)
 - BB-13 Battle Fury (Blademaster encounter): AREA 80 ft / melee (self-cast) / none / no DoT / kind BUFF: self +10% dmg, party +5% dmg, 10 s; Rage on cast (amount unknown); base cd 19.5 s (n00b; 18.1 shown); party 5% needs a TF_POWER_BUFFS party entry (POWER-TAGS-2) (2026-09-20, n00b ruling)
+- BB-14 Axestorm (Blademaster encounter): AREA line 50 x 10 ft / ranged / none / no DoT / physical; mag 450; base cd 14.6 s (n00b; 13.6 shown) (2026-09-20, n00b ruling). Blademaster encounters complete.
 
