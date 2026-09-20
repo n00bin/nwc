@@ -111,4 +111,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SF-17 Essence of Time (Soulweaver feat T1a): Soulweave regen ramp, 1 stack per 3 s idle, max 4, reset on any spend; per-stack value UNKNOWN - test (reviewFlag); model = regen while idle (2026-09-20, n00b ruling)
 - SF-18 Essence of Power (Soulweaver feat T1b): Soulweave regen boost for 6 s after any damaging hit; amount UNKNOWN - test (reviewFlag); model = regen while attacking, uptime from hit rate (2026-09-20, n00b ruling)
 - SF-19 Focused Spark (Soulweaver feat T2a): Soul Reconstruction marks the target 6 s -> Inspirit +100 (220) on them + pet priority; ~+80 heal mag per press on the same ally; powerMods block (2026-09-20, fine)
+- SF-20 Soul Reclamation (Soulweaver feat T2b): under 30% Soulweave the pet channels regen on you instead of Inspirit; amount UNKNOWN - test (reviewFlag) (2026-09-20, n00b ruling)
 

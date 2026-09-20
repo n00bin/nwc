@@ -2886,4 +2886,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Lifepact Soulweave drain rate** (2026-09-20): channelling drains Soulweave (n00b) but the tooltip gives no number; needs an in-game test. Stored null with a reviewFlag.
 - **Essence of Time regen per stack** (2026-09-20): tooltip gives no number; n00b to test. Stored null with a reviewFlag.
 - **Essence of Power regen boost amount** (2026-09-20): tooltip gives no number; n00b to test. Stored null with a reviewFlag.
+- **Soul Reclamation regen boost amount** (2026-09-20): tooltip gives no number; n00b to test. Stored null with a reviewFlag.
 
