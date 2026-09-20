@@ -93,3 +93,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SW-10 Soul Barrier (Soulweaver daily): AREA (20 ft around the lifespark; old 70 ft note dropped per n00b) / melee / none / no DoT / kind BUFF+HEAL+SHIELD: allies -10% damage taken 12 s; heal over time 250 over 12 s (BASE, n00b); Infernal Barrier absorbs = HP healed, 20 s; 1,000 AP at the Daily cadence (2026-09-20, n00b ruling)
 - SW-11 Soul Pact (Soulweaver daily): AREA (up to 9 allies, 100 ft) / melee / none / no DoT / kind HEAL+BUFF: 800 burst heal each, +10% damage resistance self+targets 10 s, self drain 1% max HP/s for 10 s (cost); 1,000 AP at the Daily cadence (2026-09-20, fine)
 
+## SOULWEAVER FEATURES PASS (2026-09-20): 7 mechanics, 1 class feature, 8 slotted features, 10 feats
+- SF-1 Forte (Soulweaver mechanic): Soulweave Regen primary (resource rate, rotation model), excels Critical Strike + Awareness (paragon percentStats via applyForte) - alreadyModeled (2026-09-20, fine)
+
