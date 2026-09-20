@@ -140,4 +140,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BB-16 Spinning Strike (shared daily): AREA 15 ft / melee / none / no DoT / physical; 1400 over a 3 s CHANNEL; control immunity + 100% movement display only; 1,000 AP (2026-09-20, fine)
 - BB-17 Crescendo (shared daily): single / melee (30 ft) / STUN 3 s / no DoT / physical; 2800 multi-hit combo; control immunity display only; 1,000 AP (2026-09-20, fine)
 - BB-18 Avalanche of Steel (Blademaster daily): AREA at landing / melee (30 ft leap) / KNOCKDOWN / no DoT / physical; 1400 after a 5 s airborne cast (dead time charged by the rotation model); 1,000 AP (2026-09-20, fine)
+- BB-19 Adamantine Strike (Blademaster daily): AREA 180-degree cone 30 ft / melee / none / no DoT / physical; 1200; targets +5% damage taken 10 s (buff table); 1,000 AP (2026-09-20, fine). BLADEMASTER POWERS COMPLETE (shared + paragon).
 
