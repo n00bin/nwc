@@ -106,4 +106,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SF-13 Borrowed Spirit (Soulweaver slotted feature): Soulweave income 50 per 10 s (5/s) only when ANOTHER player's power heals you - party condition (second healer), 0 solo; no stat effect (2026-09-20, fine)
 - SF-14 Flowing Link (Soulweaver slotted feature): move while channelling Lifelink - displayOnly (2026-09-20, fine)
 - SF-15 Souleater (Soulweaver slotted feature): damage proc +20 mag necrotic after damaging attacks only (n00b; never heals), 10 Soulweave per proc - rotation model charges the Soulweave (~20/s at 2 hits/s); excluded attacks unknown (2026-09-20, n00b ruling)
+- SF-16 Soulbond (Soulweaver slotted feature): heal proc 300 mag to an ally under 50% within 30 ft, once per 10 s, no cost; conditional heal stream (party-health uptime) (2026-09-20, fine)
+## Soulweaver slotted features complete 8/8; feats next (10)
 
