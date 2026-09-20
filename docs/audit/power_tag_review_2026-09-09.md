@@ -104,4 +104,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SF-8 Vengeful Blades (Soulweaver class feature / General skill): retaliation proc 5% per hit taken, 100 mag PHYSICAL to the attacker; rate from the enemy-attacks input; procDamage block (2026-09-20, fine)
 - SF-9..SF-12 Flames of Empowerment / Dark One's Blessing / Dust to Dust / Shadow Walk (class-shared slotted features, Soulweaver screens): IDENTICAL to the Hellbringer rulings of 2026-09-10 (Dark One's Blessing reads 60 Soulweave instead of 6 Soul Sparks - resource block added); Soulweaver copies stamped sharedIdentical with the Hellbringer stat blocks (2026-09-20, pass rule)
 - SF-13 Borrowed Spirit (Soulweaver slotted feature): Soulweave income 50 per 10 s (5/s) only when ANOTHER player's power heals you - party condition (second healer), 0 solo; no stat effect (2026-09-20, fine)
+- SF-14 Flowing Link (Soulweaver slotted feature): move while channelling Lifelink - displayOnly (2026-09-20, fine)
 
