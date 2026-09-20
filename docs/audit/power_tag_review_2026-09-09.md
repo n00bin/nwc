@@ -123,4 +123,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 
 ## BARBARIAN PASS (2026-09-20). Count check first (n00b): Sentinel's Slash + Challenger's Slash were MISSING (added from tooltips), Sprint marked Blademaster-only; queue/apply now read the direct paragon shape and dedupe marked copies. Order: shared -> Blademaster -> Sentinel per section; Sentinel-side differences reviewed on the Sentinel pass.
 - BB-1 Sure Strike (shared at-will, Blademaster screen): single / melee / none / no DoT / physical; 4 x 60 @0.45 s (240 per 1.8 s); Sentinel adds Stamina Restoration - Sentinel pass (2026-09-20, fine)
+- BB-2 Bounding Slam (shared at-will): AREA (10 ft around target) / melee (30 ft lunge) / none / no DoT / physical; 80 mag @1 s, 120 under Battlerage/Unstoppable (Class-tab toggle) (2026-09-20, fine)
 
