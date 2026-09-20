@@ -101,4 +101,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SF-5 Lifemark (Soulweaver mechanic): pet priority-target rule, no numbers - displayOnly (2026-09-20, fine)
 - SF-6 Lifelink (Soulweaver mechanic): input binding (tap Lifemark / hold Lifepact) - displayOnly (2026-09-20, fine)
 - SF-7 Lifepact (Soulweaver mechanic): single (Lifemark ally or self) / ranged 120 ft / kind HEAL CHANNEL 1,000 heal mag/s while held, no cooldown; DRAINS Soulweave while channelled (n00b), rate UNKNOWN - test (reviewFlag); rotation = channel share bounded by Soulweave (2026-09-20, n00b ruling)
+- SF-8 Vengeful Blades (Soulweaver class feature / General skill): retaliation proc 5% per hit taken, 100 mag PHYSICAL to the attacker; rate from the enemy-attacks input; procDamage block (2026-09-20, fine)
 
