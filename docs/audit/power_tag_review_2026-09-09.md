@@ -95,4 +95,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 
 ## SOULWEAVER FEATURES PASS (2026-09-20): 7 mechanics, 1 class feature, 8 slotted features, 10 feats
 - SF-1 Forte (Soulweaver mechanic): Soulweave Regen primary (resource rate, rotation model), excels Critical Strike + Awareness (paragon percentStats via applyForte) - alreadyModeled (2026-09-20, fine)
+- SF-2 Soul Manipulation (Soulweaver mechanic): Soulweave replaces Soul Sparks (no spark slider for Soulweavers); regen per second in combat + out-of-combat bonus UNKNOWN - n00b to test (reviewFlag); no hidden healing static (Lia 2026-07-05); threat reduction display only (2026-09-20, n00b ruling)
 

@@ -2882,4 +2882,5 @@ problem right now. To confirm: character-sheet Base Damage with the Celestial
 Strike enchant slotted vs unslotted. Applied: all 7 Strike combat enchants +3 at
 every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Warlock's Bargain Soulweave restore amount** (2026-09-20): tooltip says "restore some soulweave" with no number; n00b to test in game. Stored as resource.restore null with a reviewFlag.
+- **Soulweave regen rate** (2026-09-20): Soul Manipulation gives no numbers; in-combat regen per second and the out-of-combat bonus need an in-game test (n00b). Stored null with a reviewFlag; the healer rotation model needs it.
 
