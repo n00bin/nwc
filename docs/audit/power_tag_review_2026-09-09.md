@@ -108,4 +108,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SF-15 Souleater (Soulweaver slotted feature): damage proc +20 mag necrotic after damaging attacks only (n00b; never heals), 10 Soulweave per proc - rotation model charges the Soulweave (~20/s at 2 hits/s); excluded attacks unknown (2026-09-20, n00b ruling)
 - SF-16 Soulbond (Soulweaver slotted feature): heal proc 300 mag to an ally under 50% within 30 ft, once per 10 s, no cost; conditional heal stream (party-health uptime) (2026-09-20, fine)
 ## Soulweaver slotted features complete 8/8; feats next (10)
+- SF-17 Essence of Time (Soulweaver feat T1a): Soulweave regen ramp, 1 stack per 3 s idle, max 4, reset on any spend; per-stack value UNKNOWN - test (reviewFlag); model = regen while idle (2026-09-20, n00b ruling)
 
