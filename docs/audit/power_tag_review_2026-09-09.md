@@ -100,4 +100,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SF-4 Inspirit (Soulweaver mechanic, pet spell): single / ranged 80 ft / kind HEAL 120 per cast, fixed 2.5 s cadence (n00b) = 48 heal mag/s passive; the 60-over-12 s heal over time is FEAT-ADDED (n00b) (2026-09-20, n00b ruling)
 - SF-5 Lifemark (Soulweaver mechanic): pet priority-target rule, no numbers - displayOnly (2026-09-20, fine)
 - SF-6 Lifelink (Soulweaver mechanic): input binding (tap Lifemark / hold Lifepact) - displayOnly (2026-09-20, fine)
+- SF-7 Lifepact (Soulweaver mechanic): single (Lifemark ally or self) / ranged 120 ft / kind HEAL CHANNEL 1,000 heal mag/s while held, no cooldown; DRAINS Soulweave while channelled (n00b), rate UNKNOWN - test (reviewFlag); rotation = channel share bounded by Soulweave (2026-09-20, n00b ruling)
 
