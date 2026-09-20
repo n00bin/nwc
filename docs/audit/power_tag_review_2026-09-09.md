@@ -121,3 +121,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 
 ## SOULWEAVER FEATURES PASS COMPLETE 2026-09-20: 26/26 (7 mechanics, 1 class feature, 8 slotted, 10 feats). WARLOCK CLASS FULLY REVIEWED (both paragons). Open tests: Soulweave regen rate + OOC bonus, Warlock's Bargain restore, Lifepact drain, Essence of Time/Power values, Soul Reclamation value, Oversoul curve, Bright+Focused Spark stacking, Hellpact Infernal Sanction size. Next: Barbarian (19 powers).
 
+## BARBARIAN PASS (2026-09-20). Count check first (n00b): Sentinel's Slash + Challenger's Slash were MISSING (added from tooltips), Sprint marked Blademaster-only; queue/apply now read the direct paragon shape and dedupe marked copies. Order: shared -> Blademaster -> Sentinel per section; Sentinel-side differences reviewed on the Sentinel pass.
+- BB-1 Sure Strike (shared at-will, Blademaster screen): single / melee / none / no DoT / physical; 4 x 60 @0.45 s (240 per 1.8 s); Sentinel adds Stamina Restoration - Sentinel pass (2026-09-20, fine)
+
