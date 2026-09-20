@@ -102,4 +102,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SF-6 Lifelink (Soulweaver mechanic): input binding (tap Lifemark / hold Lifepact) - displayOnly (2026-09-20, fine)
 - SF-7 Lifepact (Soulweaver mechanic): single (Lifemark ally or self) / ranged 120 ft / kind HEAL CHANNEL 1,000 heal mag/s while held, no cooldown; DRAINS Soulweave while channelled (n00b), rate UNKNOWN - test (reviewFlag); rotation = channel share bounded by Soulweave (2026-09-20, n00b ruling)
 - SF-8 Vengeful Blades (Soulweaver class feature / General skill): retaliation proc 5% per hit taken, 100 mag PHYSICAL to the attacker; rate from the enemy-attacks input; procDamage block (2026-09-20, fine)
+- SF-9..SF-12 Flames of Empowerment / Dark One's Blessing / Dust to Dust / Shadow Walk (class-shared slotted features, Soulweaver screens): IDENTICAL to the Hellbringer rulings of 2026-09-10 (Dark One's Blessing reads 60 Soulweave instead of 6 Soul Sparks - resource block added); Soulweaver copies stamped sharedIdentical with the Hellbringer stat blocks (2026-09-20, pass rule)
 
