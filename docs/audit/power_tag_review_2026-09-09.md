@@ -117,4 +117,7 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SF-23 Bright Spark (Soulweaver feat T4a): Inspirit +300 for 12 s after each Daily (~+1,500 heal mag per Daily, ~25/s at 60 s cadence); stacking with Focused Spark UNKNOWN - test (reviewFlag) (2026-09-20, n00b ruling)
 - SF-24 From the Brink (Soulweaver feat T4b): +15% Outgoing Healing on allies under 25% HP; counted at the party-health uptime share (same input as Soulbond) (2026-09-20, fine)
 - SF-25 Feypact (Soulweaver feat T5a): owns the heal-over-time blocks parked on Revitalize 200/12 s, Soulstorm 250/12 s, Inspirit 60/12 s and Soulweaver Vampiric Embrace 250/12 s (screens were taken with Feypact selected); powerMods block, featAdded entries re-pointed (2026-09-20, fine)
+- SF-26 Hellpact (Soulweaver feat T5b): Vampiric Embrace / Revitalize / Soulstorm / Inspirit raise an Infernal Barrier = 65% of HP healed, 20 s (n00b, from the affected powers' tooltips); Infernal Sanction barrier stronger by UNKNOWN - test (2026-09-20, n00b ruling)
+
+## SOULWEAVER FEATURES PASS COMPLETE 2026-09-20: 26/26 (7 mechanics, 1 class feature, 8 slotted, 10 feats). WARLOCK CLASS FULLY REVIEWED (both paragons). Open tests: Soulweave regen rate + OOC bonus, Warlock's Bargain restore, Lifepact drain, Essence of Time/Power values, Soul Reclamation value, Oversoul curve, Bright+Focused Spark stacking, Hellpact Infernal Sanction size. Next: Barbarian (19 powers).
 
