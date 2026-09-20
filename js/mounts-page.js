@@ -887,6 +887,13 @@
   var filterInsigniaTier = document.getElementById("filter-insignia-tier");
   var filterInsigniaCategory = document.getElementById("filter-insignia-category");
 
+  var tabBonuses       = document.getElementById("tab-bonuses");
+  var bonusesView      = document.getElementById("bonuses-view");
+  var bonusesControls  = document.getElementById("bonuses-controls");
+  var bonusesSearch    = document.getElementById("bonuses-search");
+  var filterBonusType  = document.getElementById("filter-bonus-type");
+  var filterBonusStat  = document.getElementById("filter-bonus-stat");
+
   var tabPlanner       = document.getElementById("tab-planner");
   var plannerView      = document.getElementById("planner-view");
   var plannerControls  = document.getElementById("planner-controls");
@@ -897,7 +904,7 @@
 
   function switchMountTab(activeTab) {
     activeRankingTab = activeTab;
-    var tabs = [tabLookup, tabCombat, tabStdps, tabEquip, tabCollars, tabInsignias, tabPlanner];
+    var tabs = [tabLookup, tabCombat, tabStdps, tabEquip, tabCollars, tabInsignias, tabBonuses, tabPlanner];
     for (var t = 0; t < tabs.length; t++) if (tabs[t]) tabs[t].classList.remove("active");
     lookupView.style.display = "none";
     lookupControls.style.display = "none";
@@ -911,6 +918,8 @@
     if (collarsControls) collarsControls.style.display = "none";
     if (insigniasView) insigniasView.style.display = "none";
     if (insigniasControls) insigniasControls.style.display = "none";
+    if (bonusesView) bonusesView.style.display = "none";
+    if (bonusesControls) bonusesControls.style.display = "none";
     if (plannerView) plannerView.style.display = "none";
     if (plannerControls) plannerControls.style.display = "none";
   }
@@ -1247,6 +1256,160 @@
     filterInsigniaTemplate.addEventListener("change", renderInsignias);
     filterInsigniaTier.addEventListener("change", renderInsignias);
     filterInsigniaCategory.addEventListener("change", renderInsignias);
+  }
+
+  // ============================================================
+  // Insignia Bonuses view — every bonus in the game, mount-agnostic
+  // ============================================================
+
+  // How many mounts can actually form each bonus (uses mountBonusCache,
+  // which already accounts for fixed/universal slot rules).
+  var bonusMountCount = {};
+  for (var bmId in mountBonusCache) {
+    if (!mountBonusCache.hasOwnProperty(bmId)) continue;
+    var bmList = mountBonusCache[bmId];
+    for (var bmi = 0; bmi < bmList.length; bmi++) {
+      var bmName = bmList[bmi].name;
+      bonusMountCount[bmName] = (bonusMountCount[bmName] || 0) + 1;
+    }
+  }
+
+  function bonusStatPills(stats) {
+    var out = "";
+    for (var i = 0; i < stats.length; i++) {
+      var st = stats[i];
+      var val = st.type === "percent" ? st.value + "%" : formatNumber(st.value);
+      var cls = st.value < 0 ? "stat-pill stat-pill-negative" : "stat-pill";
+      out += '<span class="' + cls + '">' + escapeHtml(st.stat) + ": " + val + "</span> ";
+    }
+    return out;
+  }
+
+  // A bonus "mentions" a stat if it is in its structured stats[], in a parsed
+  // equip bonus, or named in its effect text. Many bonuses carry their numbers
+  // only in effectText (stats[] is empty for 30 of 43), so text has to count —
+  // but only stats[] values are ever DISPLAYED as numbers.
+  function bonusMentionsStat(bonus, statName) {
+    var sts = bonus.stats || [];
+    for (var i = 0; i < sts.length; i++) if (sts[i].stat === statName) return true;
+    var ebs = bonus.equipBonuses || [];
+    for (var j = 0; j < ebs.length; j++) if (ebs[j].stat === statName) return true;
+    return (bonus.effectText || "").toLowerCase().indexOf(statName.toLowerCase()) !== -1;
+  }
+
+  function populateBonusStatFilter() {
+    if (!filterBonusStat) return;
+    var seen = {};
+    for (var i = 0; i < MOUNT_INSIGNIA_BONUSES_DATA.length; i++) {
+      var b0 = MOUNT_INSIGNIA_BONUSES_DATA[i];
+      var sts = b0.stats || [];
+      for (var j = 0; j < sts.length; j++) seen[sts[j].stat] = true;
+      var ebs = b0.equipBonuses || [];
+      for (var k = 0; k < ebs.length; k++) if (ebs[k].stat) seen[ebs[k].stat] = true;
+    }
+    var names = Object.keys(seen).sort();
+    for (var n = 0; n < names.length; n++) {
+      var opt = document.createElement("option");
+      opt.value = names[n];
+      opt.textContent = names[n];
+      filterBonusStat.appendChild(opt);
+    }
+  }
+
+  function renderBonuses() {
+    var query   = (bonusesSearch ? bonusesSearch.value : "").trim().toLowerCase();
+    var typeVal = filterBonusType ? filterBonusType.value : "";
+    var statVal = filterBonusStat ? filterBonusStat.value : "";
+
+    var rows = MOUNT_INSIGNIA_BONUSES_DATA.filter(function (b) {
+      if (query) {
+        var hay = (b.name + " " + (b.effectText || "") + " "
+          + (b.stats || []).map(function (s) { return s.stat; }).join(" ")).toLowerCase();
+        if (hay.indexOf(query) === -1) return false;
+      }
+      if (typeVal && (b.requiredInsignias || []).indexOf(typeVal) === -1) return false;
+      if (statVal && !bonusMentionsStat(b, statVal)) return false;
+      return true;
+    }).sort(function (a, b) { return a.name.localeCompare(b.name); });
+
+    var countEl = document.getElementById("bonuses-count");
+    if (countEl) {
+      countEl.textContent = rows.length + " of " + MOUNT_INSIGNIA_BONUSES_DATA.length + " insignia bonuses";
+    }
+
+    if (rows.length === 0) {
+      document.getElementById("bonuses-list").innerHTML =
+        '<div class="empty-state">No insignia bonuses match your filters.</div>';
+      return;
+    }
+
+    var html = '<table class="insignias-table bonuses-table"><thead><tr>'
+      + '<th>Bonus</th><th>Insignias Needed</th><th>What It Does</th><th>Mounts</th>'
+      + '</tr></thead><tbody>';
+    for (var r = 0; r < rows.length; r++) {
+      var b = rows[r];
+      html += "<tr>";
+      html += '<td class="bonus-name">' + nameHtml(b.name) + renderStackBadge(b) + "</td>";
+
+      html += '<td class="bonus-req">';
+      var req = b.requiredInsignias || [];
+      for (var q = 0; q < req.length; q++) html += renderInsigniaBadge(req[q]) + " ";
+      html += '<div style="color:var(--text-muted);font-size:0.72rem;margin-top:0.2rem;">'
+            + '<span>Insignias</span>: ' + req.length + '</div>';
+      html += "</td>";
+
+      html += '<td class="bonus-effect">';
+      if (b.stats && b.stats.length > 0) {
+        html += '<div style="margin-bottom:0.3rem;">' + bonusStatPills(b.stats) + "</div>";
+      }
+      html += escapeHtml(b.effectText || "");
+      if (b.notes) {
+        html += '<div style="color:var(--text-muted);font-size:0.78rem;margin-top:0.3rem;">'
+              + escapeHtml(cleanNotes(b.notes)) + "</div>";
+      }
+      html += "</td>";
+
+      var mcount = bonusMountCount[b.name] || 0;
+      html += '<td style="white-space:nowrap;">';
+      if (mcount > 0) {
+        html += '<button class="bonus-mounts-btn" data-bonus="' + escapeHtml(b.name)
+              + '" title="Show the mounts that can run this bonus">' + mcount + ' mounts &rsaquo;</button>';
+      } else {
+        html += '<span style="color:var(--text-muted);font-size:0.78rem;">No mount fits</span>';
+      }
+      html += "</td>";
+      html += "</tr>";
+    }
+    html += "</tbody></table>";
+    var listEl = document.getElementById("bonuses-list");
+    listEl.innerHTML = html;
+
+    // "N mounts" jumps to the Lookup tab filtered to that bonus
+    var btns = listEl.querySelectorAll(".bonus-mounts-btn");
+    for (var bi2 = 0; bi2 < btns.length; bi2++) {
+      btns[bi2].addEventListener("click", function () {
+        var name = this.getAttribute("data-bonus");
+        filterBonus.value = name;
+        searchInput.value = "";
+        onFilterChange();
+        tabLookup.click();
+        window.scrollTo(0, 0);
+      });
+    }
+  }
+
+  if (tabBonuses) {
+    populateBonusStatFilter();
+    tabBonuses.addEventListener("click", function () {
+      switchMountTab("bonuses");
+      tabBonuses.classList.add("active");
+      bonusesView.style.display = "";
+      bonusesControls.style.display = "";
+      renderBonuses();
+    });
+    bonusesSearch.addEventListener("input", renderBonuses);
+    filterBonusType.addEventListener("change", renderBonuses);
+    filterBonusStat.addEventListener("change", renderBonuses);
   }
 
   // ============================================================

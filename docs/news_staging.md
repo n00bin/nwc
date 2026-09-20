@@ -8,6 +8,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
+- **New "Insignia Bonuses" tab on the Mounts page.** Every insignia bonus in the game on one page: which insignias it needs, what it gives, and how many of your mounts can actually hold it. Search it, filter by insignia type or by the stat you want, and click the mount count on any bonus to jump straight to the mounts that can run it. No mount picking required &mdash; it is a plain look-up list.
+
 - **Back up your saved builds to a file (Toon Forge).** My Builds now has **Back up to a file** and **Restore from a file**. Saved builds only ever lived inside your own browser, so clearing your browsing data wiped them — and phone browsers quietly delete them by themselves if you don't visit for a week or two. That is why some of you lost builds you never deleted. A backup file is a copy you keep, and restoring it puts them back. Restoring never deletes anything: if the same build name exists in both places the newer one wins, and anything only on your device stays put. The window now says plainly that builds live in this browser. Saving builds to your account so they can't be lost at all is the next piece of work.
 
 - **Saving your 21st build no longer deletes your 1st.** The saved list quietly threw away your oldest build once you passed 20, with no warning at all. The limit is now 50, and reaching it asks you to delete one instead of silently dropping the oldest.

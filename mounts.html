@@ -121,6 +121,42 @@
     .insignias-table .stat-pill-cr {
       color: var(--text-muted);
     }
+    /* Insignia Bonuses table */
+    .bonuses-table td { vertical-align: top; }
+    .bonuses-table .bonus-name { font-weight: 600; white-space: nowrap; }
+    .bonuses-table .bonus-effect {
+      color: var(--text-secondary);
+      font-size: 0.83rem;
+      line-height: 1.5;
+      min-width: 340px;
+      width: 48%;
+    }
+    .bonuses-table .stat-pill-negative { color: var(--stat-negative, #f85149); }
+    .bonuses-table .bonus-req { white-space: nowrap; }
+    .bonus-mounts-btn {
+      background: none;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      color: var(--accent, #58a6ff);
+      font: inherit;
+      font-size: 0.78rem;
+      padding: 0.15rem 0.5rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .bonus-mounts-btn:hover { background: var(--bg-hover); }
+    /* Phone: stack each bonus as a card instead of scrolling sideways */
+    @media (max-width: 760px) {
+      .bonuses-table, .bonuses-table tbody, .bonuses-table tr, .bonuses-table td { display: block; width: auto; }
+      .bonuses-table thead { display: none; }
+      .bonuses-table tr {
+        border-bottom: 1px solid var(--border-default);
+        padding: 0.5rem 0.25rem;
+      }
+      .bonuses-table td { border-bottom: none; padding: 0.2rem 0.5rem; }
+      .bonuses-table .bonus-effect { min-width: 0; width: auto; }
+      .bonuses-table .bonus-req { white-space: normal; }
+    }
     /* Slot-type pills tinted by row quality */
     .insignia-cat-pill {
       display: inline-block;
@@ -208,6 +244,7 @@
     <button class="view-tab" id="tab-equip" title="Equip powers ranked for Tank and Healer builds">Support Equip Bonuses</button>
     <button class="view-tab" id="tab-collars">Collars</button>
     <button class="view-tab" id="tab-insignias">Insignias</button>
+    <button class="view-tab" id="tab-bonuses" title="Every insignia bonus and what it gives">Insignia Bonuses</button>
     <button class="view-tab" id="tab-planner">Stable Planner</button>
   </div>
 
@@ -310,6 +347,29 @@
   </div>
   <div id="insignias-view" style="display:none; max-width:1200px; margin:0 auto; padding:1rem 1.5rem 3rem;">
     <div id="insignias-list"></div>
+  </div>
+
+  <!-- Insignia Bonuses controls -->
+  <div class="controls-bar" id="bonuses-controls" style="display:none;">
+    <input type="text" class="search-input" id="bonuses-search" placeholder="Search insignia bonuses...">
+    <select class="filter-select" id="filter-bonus-type">
+      <option value="">All Insignia Types</option>
+      <option value="Regal">Regal</option>
+      <option value="Barbed">Barbed</option>
+      <option value="Crescent">Crescent</option>
+      <option value="Illuminated">Illuminated</option>
+      <option value="Enlightened">Enlightened</option>
+    </select>
+    <select class="filter-select" id="filter-bonus-stat">
+      <option value="">All Stats</option>
+    </select>
+  </div>
+  <div id="bonuses-view" style="display:none; max-width:1200px; margin:0 auto; padding:1rem 1.5rem 3rem;">
+    <div class="ranking-card" style="flex-direction:column;align-items:stretch;margin-bottom:1.25rem;">
+      <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.6;">Every insignia bonus in the game. Slot the listed insignias on one mount to activate it &mdash; the mount itself does not matter, only its slot types. Stat values are per activation; bonuses that stack show how many times they can be re-used across your five mount slots.</div>
+    </div>
+    <div id="bonuses-count" class="list-count"></div>
+    <div id="bonuses-list" style="overflow-x:auto;"></div>
   </div>
 
   <!-- Stable Planner controls -->
