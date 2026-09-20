@@ -138,4 +138,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BB-14 Axestorm (Blademaster encounter): AREA line 50 x 10 ft / ranged / none / no DoT / physical; mag 450; base cd 14.6 s (n00b; 13.6 shown) (2026-09-20, n00b ruling). Blademaster encounters complete.
 - BB-15 Savage Advance (shared daily): MIXED (single 1800 hit, area KNOCKBACK, areaShare 0) / melee (82 ft lunge) / physical; 1,000 AP at the Daily cadence (2026-09-20, fine)
 - BB-16 Spinning Strike (shared daily): AREA 15 ft / melee / none / no DoT / physical; 1400 over a 3 s CHANNEL; control immunity + 100% movement display only; 1,000 AP (2026-09-20, fine)
+- BB-17 Crescendo (shared daily): single / melee (30 ft) / STUN 3 s / no DoT / physical; 2800 multi-hit combo; control immunity display only; 1,000 AP (2026-09-20, fine)
 
