@@ -144,4 +144,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 
 ## BLADEMASTER FEATURES PASS (2026-09-20)
 - BF-1 Battlerage (Blademaster mechanic): +25% dmg / -15% taken / control immunity / faster at-wills; burst window ~8.7 s attacking (n00b 2026-06-08), NOT holdable; Class-tab toggle stands in; TEST: at-will speed %, rebuild-to-50% time, Rage income per source (2026-09-20, n00b ruling)
+- BF-2 Forte (Blademaster mechanic): Power primary, excels Critical Severity + Awareness - alreadyModeled via paragon percentStats (2026-09-20, fine)
 
