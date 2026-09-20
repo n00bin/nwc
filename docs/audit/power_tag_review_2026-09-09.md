@@ -82,3 +82,7 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SW-2 Eldritch Blast (shared, Soulweaver screen): IDENTICAL minus the Soul Spark line; stamped sharedIdentical, soulSparks gated paragon=Hellbringer, soulweave.generation=unknown (2026-09-11, Recommended)
 - SW-3 Soul Reconstruction (Soulweaver at-will): single / ranged / none / no DoT / kind HEAL; heal 275 per press, 1 s cadence (base), 40 Soulweave -> 275 heal mag/s at 40 Soulweave/s; NEW fields heal{magnitude,targets,cadenceSeconds,perSecond} + resource{type,cost,perSecond}; ruling modelDefined, engine read pending (2026-09-11, Recommended)
 - SW-4 Infernal Sanction (Soulweaver at-will): single / ranged / none / no DoT / kind SHIELD; heal 50 rider + NEW shield block {800, 20 s, refreshOnRecast + no stacking ASSUMED, reviewFlag}; rotationBasis maintenance = 42.5 mag/s + 4 Soulweave/s per protected target; ruling modelDefined (2026-09-11, Recommended). Open: recast on a live barrier = refresh / add / waste?
+
+## AMENDMENT 2026-09-20 (n00b: "can we make it both") - targets gains a third value **mixed**
+- PT-2 / SW-2 Eldritch Blast: targets single -> **mixed**, areaShare 0.5 (hits 1-2 = 90 single, hit 3 = 90 area of the 180-magnitude combo). Rule: a power whose combo/ticks are part single-target, part area is tagged mixed with areaShare = the area share of its magnitude; single-target bonuses count on (1 - areaShare), area bonuses on areaShare. Engine read pending with the rest of POWER-TAGS-2.
+
