@@ -98,4 +98,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SF-2 Soul Manipulation (Soulweaver mechanic): Soulweave replaces Soul Sparks (no spark slider for Soulweavers); regen per second in combat + out-of-combat bonus UNKNOWN - n00b to test (reviewFlag); no hidden healing static (Lia 2026-07-05); threat reduction display only (2026-09-20, n00b ruling)
 - SF-3 Lifespark (Soulweaver mechanic): always-present pet, auto-casts Inspirit; silenced by Warlock's Bargain (10 s) and Soul Barrier (channel); pet layer not built (2026-09-20, fine)
 - SF-4 Inspirit (Soulweaver mechanic, pet spell): single / ranged 80 ft / kind HEAL 120 per cast, fixed 2.5 s cadence (n00b) = 48 heal mag/s passive; the 60-over-12 s heal over time is FEAT-ADDED (n00b) (2026-09-20, n00b ruling)
+- SF-5 Lifemark (Soulweaver mechanic): pet priority-target rule, no numbers - displayOnly (2026-09-20, fine)
+- SF-6 Lifelink (Soulweaver mechanic): input binding (tap Lifemark / hold Lifepact) - displayOnly (2026-09-20, fine)
 
