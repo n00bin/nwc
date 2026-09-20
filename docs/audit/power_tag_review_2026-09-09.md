@@ -131,4 +131,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BB-7 Punishing Charge (shared encounter, + duplicate Blademaster block copy): single / melee (60 ft lunge) / STUN 3 s / no DoT / physical; mag 650; base cd 14.6 s (n00b; 13.6 shown) (2026-09-20, n00b ruling)
 - BB-8 Indomitable Battle Strike (shared encounter): single / melee / none / no DoT / physical; mag 750 flat, base cd 11.7 s (n00b live reading); archived screenshot is STALE (shows rage-scaling 800-1200, 10.9 s) - reshoot (2026-09-20, n00b ruling)
 - BB-9 Bloodletter (shared encounter): single / melee / none / no DoT / physical; mag 600 (live-confirmed) with lifesteal rider; base cd 14.6 s (n00b; 13.6 shown) (2026-09-20, n00b ruling)
+- BB-10 Hidden Daggers (Blademaster encounter): AREA cone / ranged 40 ft / none / no DoT / physical; mag 100 + Surprise Attack 150 on next other attack (sequence proc, 1 per cast); 2 charges, base cd 7.8 s each (n00b; 7.2 shown) (2026-09-20, n00b ruling)
 
