@@ -126,4 +126,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BB-2 Bounding Slam (shared at-will): AREA (10 ft around target) / melee (30 ft lunge) / none / no DoT / physical; 80 mag @1 s, 120 under Battlerage/Unstoppable (Class-tab toggle) (2026-09-20, fine)
 - BB-3 Brash Strike (Blademaster at-will): single / melee / none / no DoT / physical; 3 x 140 @0.65 s (~215 mag/s) (2026-09-20, fine)
 - BB-4 Relentless Slash (Blademaster at-will): AREA (240-degree cone) / melee / none / no DoT / physical; 2 x 55 @0.8 s (~69 mag/s); self +5% damage 12 s, ~100% uptime while used (2026-09-20, fine)
+- BB-5 Not So Fast (shared encounter): AREA 15 ft / melee / SLOW 6 s / no DoT / physical; mag 300; base cd 11.7 s (n00b; 10.9 shown) (2026-09-20, n00b ruling)
 
