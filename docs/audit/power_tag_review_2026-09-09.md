@@ -130,4 +130,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BB-6 Mighty Leap (shared encounter): AREA 12 ft at landing / melee (50 ft leap) / none / no DoT / physical; mag 380; base cd 14.6 s (n00b; 13.6 shown) (2026-09-20, n00b ruling)
 - BB-7 Punishing Charge (shared encounter, + duplicate Blademaster block copy): single / melee (60 ft lunge) / STUN 3 s / no DoT / physical; mag 650; base cd 14.6 s (n00b; 13.6 shown) (2026-09-20, n00b ruling)
 - BB-8 Indomitable Battle Strike (shared encounter): single / melee / none / no DoT / physical; mag 750 flat, base cd 11.7 s (n00b live reading); archived screenshot is STALE (shows rage-scaling 800-1200, 10.9 s) - reshoot (2026-09-20, n00b ruling)
+- BB-9 Bloodletter (shared encounter): single / melee / none / no DoT / physical; mag 600 (live-confirmed) with lifesteal rider; base cd 14.6 s (n00b; 13.6 shown) (2026-09-20, n00b ruling)
 
