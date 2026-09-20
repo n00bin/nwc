@@ -137,4 +137,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BB-13 Battle Fury (Blademaster encounter): AREA 80 ft / melee (self-cast) / none / no DoT / kind BUFF: self +10% dmg, party +5% dmg, 10 s; Rage on cast (amount unknown); base cd 19.5 s (n00b; 18.1 shown); party 5% needs a TF_POWER_BUFFS party entry (POWER-TAGS-2) (2026-09-20, n00b ruling)
 - BB-14 Axestorm (Blademaster encounter): AREA line 50 x 10 ft / ranged / none / no DoT / physical; mag 450; base cd 14.6 s (n00b; 13.6 shown) (2026-09-20, n00b ruling). Blademaster encounters complete.
 - BB-15 Savage Advance (shared daily): MIXED (single 1800 hit, area KNOCKBACK, areaShare 0) / melee (82 ft lunge) / physical; 1,000 AP at the Daily cadence (2026-09-20, fine)
+- BB-16 Spinning Strike (shared daily): AREA 15 ft / melee / none / no DoT / physical; 1400 over a 3 s CHANNEL; control immunity + 100% movement display only; 1,000 AP (2026-09-20, fine)
 
