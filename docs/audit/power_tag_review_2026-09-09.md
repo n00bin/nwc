@@ -116,4 +116,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SF-22 Soultheft (Soulweaver feat T3b): 25 Soulweave per 10 s when struck (2.5/s, enemy-attacks input) (2026-09-20, fine)
 - SF-23 Bright Spark (Soulweaver feat T4a): Inspirit +300 for 12 s after each Daily (~+1,500 heal mag per Daily, ~25/s at 60 s cadence); stacking with Focused Spark UNKNOWN - test (reviewFlag) (2026-09-20, n00b ruling)
 - SF-24 From the Brink (Soulweaver feat T4b): +15% Outgoing Healing on allies under 25% HP; counted at the party-health uptime share (same input as Soulbond) (2026-09-20, fine)
+- SF-25 Feypact (Soulweaver feat T5a): owns the heal-over-time blocks parked on Revitalize 200/12 s, Soulstorm 250/12 s, Inspirit 60/12 s and Soulweaver Vampiric Embrace 250/12 s (screens were taken with Feypact selected); powerMods block, featAdded entries re-pointed (2026-09-20, fine)
 
