@@ -2891,4 +2891,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Bright Spark + Focused Spark stacking** (2026-09-20): do the +300 and +100 Inspirit bonuses add on one target (520)? n00b to test.
 - **Hellpact Infernal Sanction barrier size** (2026-09-20): base 800, "now stronger" with Hellpact; amount unknown, n00b to test.
 - **Indomitable Battle Strike screenshot stale** (2026-09-20): archive shows rage-scaling 800-1200 magnitude; n00b reads flat 750 in game (Blademaster). Reshoot both paragon tooltips.
+- **Battlerage window model** (2026-09-20): needs in-game tests (n00b) - at-will speed increase during Battlerage, time to rebuild to 50% Rage, Rage income per source. Until then the Class-tab toggle is the stand-in for a ~8.7 s burst window.
 
