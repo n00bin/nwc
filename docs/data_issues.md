@@ -2881,3 +2881,5 @@ ceiling are over-credited. n00b 2026-09-11: apply the +3, note the ceiling, not 
 problem right now. To confirm: character-sheet Base Damage with the Celestial
 Strike enchant slotted vs unslotted. Applied: all 7 Strike combat enchants +3 at
 every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
+- **Warlock's Bargain Soulweave restore amount** (2026-09-20): tooltip says "restore some soulweave" with no number; n00b to test in game. Stored as resource.restore null with a reviewFlag.
+
