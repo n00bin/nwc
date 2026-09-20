@@ -110,7 +110,10 @@
   }
 
   function cleanCardNote(notes) {
-    return notes
+    // Shared cleaner first (audit-trail patterns + the internal-sentence
+    // sweep in shared.js), then the consumables-specific scrubbing.
+    var base = (typeof cleanNotes === "function") ? cleanNotes(notes) : notes;
+    return base
       .replace(/\|\s*normalized:.*$/i, '')
       .replace(/normalized:.*$/i, '')
       // Drop any sentence mentioning screenshots — intake/verification

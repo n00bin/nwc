@@ -1362,11 +1362,9 @@
       if (b.stats && b.stats.length > 0) {
         html += '<div style="margin-bottom:0.3rem;">' + bonusStatPills(b.stats) + "</div>";
       }
+      // b.notes is deliberately NOT rendered: insignia-bonus notes are internal
+      // provenance (A/B proofs, structuring history), never player-facing.
       html += escapeHtml(b.effectText || "");
-      if (b.notes) {
-        html += '<div style="color:var(--text-muted);font-size:0.78rem;margin-top:0.3rem;">'
-              + escapeHtml(cleanNotes(b.notes)) + "</div>";
-      }
       html += "</td>";
 
       var mcount = bonusMountCount[b.name] || 0;

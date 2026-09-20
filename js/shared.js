@@ -167,7 +167,7 @@ var AUDIT_TRAIL_PATTERNS = [
   // (intake / verification workflow chatter) is internal provenance and
   // never user-facing. Runs after cleanNotes' leading-marker rewrites, so
   // "Tooltip: <description>" conversions are preserved.
-  /(?:^|\s)[^.!?]*screenshots?\b[^.!?]*(?:[.!?]+|$)/gi
+  /(?:^|\s)[^.!?]*screenshot\w*[^.!?]*(?:[.!?]+|$)/gi
 ];
 
 function stripAuditTrail(str) {
@@ -176,7 +176,100 @@ function stripAuditTrail(str) {
   for (var i = 0; i < AUDIT_TRAIL_PATTERNS.length; i++) {
     s = s.replace(AUDIT_TRAIL_PATTERNS[i], "");
   }
+  s = dropInternalFragments(s);
+  s = dropInternalSentences(s);
   return s.replace(/\s+/g, " ").trim();
+}
+
+// Sentence-level sweep for internal prose the pattern list above can't catch:
+// A/B proof write-ups, re-anchor/normalization history, engine and field
+// names, screenshot paths — anything addressed to us rather than to a player.
+// A note keeps every sentence that does NOT match one of these.
+// Internal tags that sit INSIDE an otherwise player-facing sentence, e.g.
+// "reduces damage by 15.7% (modeled)" or "Magnitude 750 over 3s baseline
+// (Mythic-100%-bolster)". Cut the tag, keep the sentence.
+var INTERNAL_FRAGMENT_PATTERNS = [
+  /\s*\((?:un)?modell?ed[^)]*\)/gi,
+  /\s*\([^)]*(?:bolster|baseline|anchor|scale|scaling|stored|assumed|estimate)[^)]*\)/gi,
+  /\s*\([^)]*n00b[^)]*\)/gi,
+  /\s*\([^)]*\bid \d+\s*\)/gi,
+  /\s+baseline\b/gi,
+  /\s*\(unmodelled? CC\)/gi
+];
+
+function dropInternalFragments(str) {
+  var s = str;
+  for (var i = 0; i < INTERNAL_FRAGMENT_PATTERNS.length; i++) {
+    s = s.replace(INTERNAL_FRAGMENT_PATTERNS[i], "");
+  }
+  return s;
+}
+
+var INTERNAL_SENTENCE_PATTERNS = [
+  /\bn00b\b/i,
+  /\bproven\b/i,
+  /\bA\/B\b/,
+  /^\s*(?:FIX|TODO|NOTE TO SELF|BUG)\s*:/i,
+  /\bthe engine\b|\bthe optimizer\b|\bToon Forge\b/i,
+  /\bdocs\/|\.png\b|\.json\b|\.jsx?\b/i,
+  /\binstanceStats\b|\bstackingMode\b|\bmaxStacks\b|\bsummonedBuff\b|\bcooldownEffects\b|\beffectScaling\b|\bcombinedRating\b|\bpowerRef\b|\benhancementRef\b|\bequipBonuses\b|\bprocEffect\b|\bstatEffects\b/,
+  /\bre-?anchored\b|\bnormali[sz]ed to\b|\bre-?normali[sz]ed\b/i,
+  /\bstructured (?:stats? )?(?:added|in|on)\b|\bverbatim tooltip\b/i,
+  /\bre-?verified\b|\bcalibrat(?:ed|ion)\b|\bcross-?check(?:ed)?\b/i,
+  /\b(?:mythic|celestial|rarity|IL)[- ]anchor(?:ed)?\b|\banchor(?:ed)? to\b/i,
+  /\bstale\b|\bplaceholder\b|\bneeds? verification\b|\bunverified\b/i,
+  /\bslot schema\b|\bdata pack\b|\bsource:\s|\bNW Hub\b/i,
+  /\bearlier (?:entry|reading|value)\b|\bprevious(?:ly)? (?:entry|stored|value)\b/i,
+  /\breport #\d+|\bmisread\b|\bghost-icon\b/i,
+  /\banchor/i,
+  /\bid \d+/i,
+  /\bstored\b|\brestored\b|\bschema\b/i,
+  /\bentry\b|\bentries\b|\bdata entry\b/i,
+  /\bcorrected\b|\bwas wrongly\b|\bdo not normali[sz]e\b/i,
+  /\badded from\b|\bweb research\b|\bresearch sourced\b|\bwiki\b|\bcommunity list\b/i,
+  /\bverif(?:y|ied|ication)\b|\bconfirmed\b|\blegible\b|\bin-game check\b/i,
+  /\breports? #\d+|\bper report\b/i,
+  /\bmodell?ed as\b|\bno scorer\b|\bleft as flavor\b|\btreated as\b/i,
+  /\d{4}-\d{2}-\d{2}/,
+  /\bcaptur(?:e|ed|ing)\b|\bstructured\b|\brenamed\b|\bwas missing\b/i,
+  /\bassumed?\b|\bestimate\b|\buptimeOverride\b|\bnormali[sz]/i,
+  /\bconfirm/i,
+  /\bmodell?ed\b|\bstat engine\b|\bengine consistency\b|\boptimizer relevant\b/i,
+  /\bcircle back\b|\bwas wrong\b|\bold model\b|\bdata populated\b/i
+];
+
+
+// Split on a period/!/? followed by whitespace or end of string, so decimals
+// ("9.5%"), file names and "id 13)." stay inside their own sentence.
+function splitSentences(str) {
+  var out = [];
+  var buf = "";
+  for (var i = 0; i < str.length; i++) {
+    buf += str.charAt(i);
+    var ch = str.charAt(i);
+    var isEnd = (ch === "." || ch === "!" || ch === "?");
+    var next = str.charAt(i + 1);
+    if (isEnd && (next === "" || /\s/.test(next))) {
+      out.push(buf);
+      buf = "";
+    }
+  }
+  if (buf) out.push(buf);
+  return out;
+}
+
+function dropInternalSentences(str) {
+  if (!str) return "";
+  var parts = splitSentences(str);
+  var kept = [];
+  for (var i = 0; i < parts.length; i++) {
+    var internal = false;
+    for (var p = 0; p < INTERNAL_SENTENCE_PATTERNS.length; p++) {
+      if (INTERNAL_SENTENCE_PATTERNS[p].test(parts[i])) { internal = true; break; }
+    }
+    if (!internal) kept.push(parts[i]);
+  }
+  return kept.join(" ");
 }
 
 function cleanNotes(str) {

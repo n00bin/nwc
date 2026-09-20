@@ -14,6 +14,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 - **Saving your 21st build no longer deletes your 1st.** The saved list quietly threw away your oldest build once you passed 20, with no warning at all. The limit is now 50, and reaching it asks you to delete one instead of silently dropping the oldest.
 
+### Bug Fixes
+
+- **Internal working notes no longer show up on item pages.** Some mounts, mount powers, companions and consumables carried notes meant for us — verification logs, "re-anchored", screenshot filenames, engine wording — and those were being printed under the item like player information. They are now filtered out everywhere notes are shown, sentence by sentence, so what is left is the actual description. The notes still exist behind the scenes; they are just not shown to you.
+
 ## Week of September 7, 2026
 
 ### Features
