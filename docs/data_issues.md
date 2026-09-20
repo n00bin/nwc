@@ -2888,4 +2888,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Essence of Power regen boost amount** (2026-09-20): tooltip gives no number; n00b to test. Stored null with a reviewFlag.
 - **Soul Reclamation regen boost amount** (2026-09-20): tooltip gives no number; n00b to test. Stored null with a reviewFlag.
 - **Oversoul fall-off curve** (2026-09-20): +10% damage at full Soulweave, decreasing as it drops; linear assumed, steps unknown (n00b). Test: read the buff at 50% bar.
+- **Bright Spark + Focused Spark stacking** (2026-09-20): do the +300 and +100 Inspirit bonuses add on one target (520)? n00b to test.
 
