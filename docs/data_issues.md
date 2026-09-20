@@ -2885,4 +2885,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Soulweave regen rate** (2026-09-20): Soul Manipulation gives no numbers; in-combat regen per second and the out-of-combat bonus need an in-game test (n00b). Stored null with a reviewFlag; the healer rotation model needs it.
 - **Lifepact Soulweave drain rate** (2026-09-20): channelling drains Soulweave (n00b) but the tooltip gives no number; needs an in-game test. Stored null with a reviewFlag.
 - **Essence of Time regen per stack** (2026-09-20): tooltip gives no number; n00b to test. Stored null with a reviewFlag.
+- **Essence of Power regen boost amount** (2026-09-20): tooltip gives no number; n00b to test. Stored null with a reviewFlag.
 

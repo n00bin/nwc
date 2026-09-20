@@ -109,4 +109,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SF-16 Soulbond (Soulweaver slotted feature): heal proc 300 mag to an ally under 50% within 30 ft, once per 10 s, no cost; conditional heal stream (party-health uptime) (2026-09-20, fine)
 ## Soulweaver slotted features complete 8/8; feats next (10)
 - SF-17 Essence of Time (Soulweaver feat T1a): Soulweave regen ramp, 1 stack per 3 s idle, max 4, reset on any spend; per-stack value UNKNOWN - test (reviewFlag); model = regen while idle (2026-09-20, n00b ruling)
+- SF-18 Essence of Power (Soulweaver feat T1b): Soulweave regen boost for 6 s after any damaging hit; amount UNKNOWN - test (reviewFlag); model = regen while attacking, uptime from hit rate (2026-09-20, n00b ruling)
 
