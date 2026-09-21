@@ -213,4 +213,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 
 ## BARD SONGS (2026-09-21). Song tag shape: kind song, songType elemental|ballad|heal|utility, targets/delivery/damageType for the on-cast hit, plus a songEffects block {durationSeconds, cancelsOtherSongs, onCast, powerMods (flat magnitude / type conversion), partyBuff, links}. Written onto BOTH paragon copies of a shared song.
 - BS-1 Blaze Flamenco (shared song): elemental 72 s; on cast 350 fire area 30 ft; at-wills/encounters +20 flat mag -> fire; party +2% dmg +2% magical; 100 Performance (2026-09-21, fine)
+- BS-2 Steel March (Songblade song): elemental 72 s; on cast 350 physical cone 40 ft; at-wills/encounters +20 flat -> physical; self + party +2% dmg +2% physical (n00b: includes you); 100 Performance (2026-09-21, fine)
 
