@@ -215,4 +215,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BS-1 Blaze Flamenco (shared song): elemental 72 s; on cast 350 fire area 30 ft; at-wills/encounters +20 flat mag -> fire; party +2% dmg +2% magical; 100 Performance (2026-09-21, fine)
 - BS-2 Steel March (Songblade song): elemental 72 s; on cast 350 physical cone 40 ft; at-wills/encounters +20 flat -> physical; self + party +2% dmg +2% physical (n00b: includes you); 100 Performance (2026-09-21, fine)
 - BS-3 Tailwind Mambo (Songblade song): elemental 72 s; on cast 350 projectile line 80 ft; at-wills/encounters +20 flat -> projectile; self + party +2% dmg +2% projectile; projectile bucket = physical ASSUMED (n00b unsure - test) (2026-09-21, fine)
+- BS-4 Ballad of the Hero (Songblade song): BALLAD 20 s (stacks with the elemental song); +85 radiant rider per hit on the primary target; Hero's Finale 800 single via Perform (ends it); 100 Performance (2026-09-21, fine)
 
