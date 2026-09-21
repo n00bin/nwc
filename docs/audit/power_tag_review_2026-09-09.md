@@ -208,4 +208,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BD-10 Contre (Songblade encounter): hold-keyed modes: Seconde tap 500 area knockdown / Septime 1 s 1200 single knockback (default) / Neuvieme 2 s 900 area x3; frontal absorb + control immunity while held (display); base cd 14.3 s (n00b; 12.9 shown) (2026-09-21, n00b ruling)
 - BD-11 Volti Subito (Songblade encounter): AREA path 34 ft / melee rush / none / no DoT / physical; 300 x 3 guaranteed rushes per cooldown; base cd 15.3 s (n00b; 13.7 shown) (2026-09-21, n00b ruling). Songblade encounters complete.
 - BD-12 Inspiration (shared daily): self + nearest ally 15 ft / kind BUFF +25% dmg, -15% taken, control immunity 12 s; HoT 400 x 5 over 12 s BASE (n00b); 1,000 AP (2026-09-21, fine)
+- BD-13 Encore (shared daily): self / kind RESOURCE - free replay of the last song; 1,000 AP and 0.8 s cast once a song has been played (n00b; tooltip shows 0 s / no cost before then) (2026-09-21, n00b ruling)
 
