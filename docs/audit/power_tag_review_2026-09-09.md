@@ -177,4 +177,8 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BM-2 Unstoppable (Sentinel mechanic): Battlerage engine (50% Rage, faster at-wills, drains) but the window = absorb all damage up to 60% max HP on stamina + control immunity, no damage bonus; window/rebuild/speed TESTS separate from the Blademaster numbers (2026-09-20, fine)
 - BM-3 Path of the Sentinel: threat multiplier, no number - displayOnly (2026-09-20, ok)
 - BM-4 Sentinel Forte: Defense primary, Crit Sev + Awareness - alreadyModeled (2026-09-20, ok). Sentinel mechanics complete 4/4.
+- BF-S1 Raging Bladeturn (Sentinel feature): up to +5% Deflect + Crit Avoidance by Rage level (slider, linear assumed) (2026-09-20, fine)
+- BF-S2 Challenger's Charge: Punishing Charge taunts, chargeable (charged = no taunt) - displayOnly (2026-09-20, fine)
+- BF-S3 Threatening Presence: threat up - displayOnly (2026-09-20, fine)
+- BF-S4 Furious Reaction: stamina empty -> 10 Rage + heal 10% max HP over 10 s, ICD 10 s (procHeal) (2026-09-20, fine)
 
