@@ -185,4 +185,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-S6 Leap into Action (T1b): Mighty Leap threat boost 10 s - displayOnly (2026-09-20, fine)
 - BF-S7 Indomitable Might (Sentinel feat T2a): Indomitable Battle Strike 500-1000 by remaining health (linear assumed) replaces flat 750 (2026-09-20, fine)
 - BF-S8 On the Move (T2b): Not So Fast 350 mag + party +20% movement 4 s (display only) (2026-09-20, fine)
+- BF-S9 Disarming Takedown (Sentinel feat T3a): Takedown -> target +5% physical damage taken 10 s (~100% uptime), party-wide for physical (2026-09-20, fine)
+- BF-S10 Boasting Takedown (T3b): Takedown threat - displayOnly; confirmed source of the BS-5 parked threat line (2026-09-20, fine)
 
