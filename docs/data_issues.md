@@ -2890,6 +2890,6 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Oversoul fall-off curve** (2026-09-20): +10% damage at full Soulweave, decreasing as it drops; linear assumed, steps unknown (n00b). Test: read the buff at 50% bar.
 - **Bright Spark + Focused Spark stacking** (2026-09-20): do the +300 and +100 Inspirit bonuses add on one target (520)? n00b to test.
 - **Hellpact Infernal Sanction barrier size** (2026-09-20): base 800, "now stronger" with Hellpact; amount unknown, n00b to test.
-- **Indomitable Battle Strike screenshot stale** (2026-09-20): archive shows rage-scaling 800-1200 magnitude; n00b reads flat 750 in game (Blademaster). Reshoot both paragon tooltips.
+- ~~Indomitable Battle Strike screenshot stale~~ RESOLVED 2026-09-20: the archived 800-1200 text is the Indomitable Rage feat (BF-11) modifying the tooltip, not a stale capture. Base is flat 750 (n00b). Lesson: feat-modified tooltips look like data changes - check the character's feats.
 - **Battlerage window model** (2026-09-20): needs in-game tests (n00b) - at-will speed increase during Battlerage, time to rebuild to 50% Rage, Rage income per source. Until then the Class-tab toggle is the stand-in for a ~8.7 s burst window.
 

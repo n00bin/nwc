@@ -152,4 +152,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-7 Impatience: -2 s all cooldowns on entering Battlerage (cdProc on the Battlerage cadence, BF-1 test) (2026-09-20, fine)
 - BF-8 Relentless Speed (Blademaster feat T1a): 15% per Relentless Slash combo -> free Not So Fast cast (no cooldown), ~1 per 11 s; needs both slotted (2026-09-20, fine)
 - BF-9 Mightier Leap (T1b): whiff-recast mode on Mighty Leap (second cast 780), cannot chain; optional play pattern, off by default (2026-09-20, fine)
+- BF-10 Bloodspiller (T2a): Bloodletter 950 mag, cd -3 s, lifesteal -> self damage (powerMods) (2026-09-20, fine)
+- BF-11 Indomitable Rage (T2b): Indomitable Battle Strike 800-1200 by Rage level (linear assumed) replaces flat 750; RETRACTS the BB-8 stale-screenshot flag - the archive was feat-modified (same lesson as Feypact) (2026-09-20, fine)
 
