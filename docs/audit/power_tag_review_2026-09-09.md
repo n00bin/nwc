@@ -201,4 +201,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BD-3 Con Elemento (Songblade at-will): AREA / DUAL (song-keyed modes block: base 140 fire radius melee; Con Fuoco fire radius; Con Moto projectile line ranged; Con Brio physical cone) / none / no DoT / damage type follows the song; variant magnitudes TEST (2026-09-21, n00b ruling)
 - BD-4 Staccato (Songblade at-will): single / melee / none / no DoT / physical; 120 per hit @0.5 s; combo hit count TEST (2026-09-21, n00b ruling)
 - BD-5 Lunge (shared encounter): single / melee (60 ft lunge) / STUN 1 s / no DoT / physical; mag 500; base cd 7.6 s (n00b; 6.8 shown) (2026-09-21, n00b ruling). Minstrel at-wills deferred to the Minstrel pass (n00b).
+- BD-6 Dancing Lights (shared encounter): single / ranged 80 ft / DAZE 3 s / no DoT / magical; mag 900; target -5% damage 6 s; base cd 13.3 s (n00b; 12.5 shown) (2026-09-21, n00b ruling)
 
