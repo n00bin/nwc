@@ -202,4 +202,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BD-4 Staccato (Songblade at-will): single / melee / none / no DoT / physical; 120 per hit @0.5 s; combo hit count TEST (2026-09-21, n00b ruling)
 - BD-5 Lunge (shared encounter): single / melee (60 ft lunge) / STUN 1 s / no DoT / physical; mag 500; base cd 7.6 s (n00b; 6.8 shown) (2026-09-21, n00b ruling). Minstrel at-wills deferred to the Minstrel pass (n00b).
 - BD-6 Dancing Lights (shared encounter): single / ranged 80 ft / DAZE 3 s / no DoT / magical; mag 900; target -5% damage 6 s; base cd 13.3 s (n00b; 12.5 shown) (2026-09-21, n00b ruling)
+- BD-7 Flourish (shared encounter): self / melee / kind BUFF +30% encounter + song damage AND healing 4 s, re-cast unlocked by any other encounter/song (2 casts per cooldown, up to 8 s); base cd 17.2 s (n00b; 16 shown) (2026-09-21, n00b ruling). TF_POWER_BUFFS needs an appliesTo encounter+song entry (POWER-TAGS-2).
 
