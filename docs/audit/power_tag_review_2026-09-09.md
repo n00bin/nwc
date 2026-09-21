@@ -230,4 +230,8 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-B2 Songward (shared): absorb while in Performance Mode - displayOnly (2026-09-21, fine)
 - BF-B3 Mystifying Strikes (shared): 5% proc; solo 500 psychic DoT/12 s, group = ally pops it for 400 + 400 heal (Solo toggle) (2026-09-21, fine)
 - BF-B4 Sforzando (shared): +5% dmg + healing 20 s per song (100% on the ballad metronome) (2026-09-21, fine)
+- BF-B5 Advancing Parry (Songblade): +25% Deflect 2 s after Reprise/Flourish/Volti Subito (~100% with Reprise) (2026-09-21, fine)
+- BF-B6 Advancing Blade: +1% dmg per finished at-will combo, 5 stacks, 12 s (default 5) (2026-09-21, fine)
+- BF-B7 Masterful Performance: elemental song added effects x1.5 when played manually (default on) (2026-09-21, fine)
+- BF-B8 Musician's Flow: Performance regen x1.25 (2026-09-21, fine). Songblade class features complete 8/8.
 
