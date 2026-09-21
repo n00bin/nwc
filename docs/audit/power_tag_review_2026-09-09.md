@@ -199,4 +199,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BD-1 Reprise (shared at-will): AREA 200-degree cone / melee / none / no DoT / physical; 4 x 35 @0.3 s (~117 mag/s) (2026-09-21, fine)
 - BD-2 Fleche (shared at-will): single / ranged 80 ft / none / no DoT / magical (psychic); 180+180+240 = 600 per 1.8 s (~333 mag/s) (2026-09-21, fine)
 - BD-3 Con Elemento (Songblade at-will): AREA / DUAL (song-keyed modes block: base 140 fire radius melee; Con Fuoco fire radius; Con Moto projectile line ranged; Con Brio physical cone) / none / no DoT / damage type follows the song; variant magnitudes TEST (2026-09-21, n00b ruling)
+- BD-4 Staccato (Songblade at-will): single / melee / none / no DoT / physical; 120 per hit @0.5 s; combo hit count TEST (2026-09-21, n00b ruling)
 

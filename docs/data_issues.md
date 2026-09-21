@@ -2893,4 +2893,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - ~~Indomitable Battle Strike screenshot stale~~ RESOLVED 2026-09-20: the archived 800-1200 text is the Indomitable Rage feat (BF-11) modifying the tooltip, not a stale capture. Base is flat 750 (n00b). Lesson: feat-modified tooltips look like data changes - check the character's feats.
 - **Battlerage window model** (2026-09-20): needs in-game tests (n00b) - at-will speed increase during Battlerage, time to rebuild to 50% Rage, Rage income per source. Until then the Class-tab toggle is the stand-in for a ~8.7 s burst window.
 - **Con Elemento variant magnitudes** (2026-09-21): Con Fuoco / Con Moto / Con Brio magnitudes are not on the tooltip; n00b to test each under its song. Stored null in the modes block.
+- **Staccato hit count** (2026-09-21): 120 magnitude per hit, hit count not on the tooltip; n00b to test.
 
