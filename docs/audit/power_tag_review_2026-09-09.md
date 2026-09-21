@@ -240,4 +240,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-B10 Voice Throw (T1b): 50% threat to the tank 10 s - displayOnly (2026-09-21, fine)
 - BF-B11 Battlefield Ostinato (T2a): single-target at-wills buff area at-wills +20% and vice versa (12 s) - reads tags.targets; +20% all at-will dmg with one of each (2026-09-21, fine)
 - BF-B12 Elemental Medley (T2b): +10 flat song magnitude per Con Elemento variant, 3 stacks/60 s, default 1 (2026-09-21, fine)
+- BF-B13 Ballad Colla Voce (T3a): manual ballad -> party role buff (DPS +5% dmg / tank -5% taken / healer +5% OH) 20 s, ends on finale (2026-09-21, fine)
+- BF-B14 A Due (T3b): self + nearest ally 25 ft: +10% dmg, -10% taken, +10% OH; ~100% in a group, 0 solo (2026-09-21, fine)
 
