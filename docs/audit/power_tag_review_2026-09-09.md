@@ -169,4 +169,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BS-3 addendum: Come and Get It base cd 14.6 s (n00b)
 - BS-4 Enduring Shout (Sentinel encounter): self / melee / none / kind BUFF +20% Max HP 15 s + heal 20% max HP per cast; base cd 29.2 s (n00b; 26.9 shown) (2026-09-20, fine)
 - BS-5 Takedown (Sentinel encounter): single / melee / KNOCKDOWN / no DoT / physical; mag 400; base cd 9.7 s (n00b; 8.9 shown); the Increased Threat line is FEAT-ADDED, not base (n00b) - parked, attribute at the feat pass (2026-09-20, n00b ruling)
+- BS-6 Ignore Weakness (Sentinel encounter): self / melee / none / kind RESOURCE: stamina 50%-100% by missing health (linear assumed); base cd 23.4 s (n00b; 21.5 shown) (2026-09-20, n00b ruling)
 
