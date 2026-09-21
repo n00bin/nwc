@@ -150,4 +150,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-5 Steel Blitz: at-wills 20% double-strike = +20% At Will Dmg Bonus (slot.atwill bucket) (2026-09-20, fine)
 - BF-6 Raging Strikes: up to +15% Dmg Bonus by Rage level (Class-tab Rage slider, linear assumed) (2026-09-20, fine)
 - BF-7 Impatience: -2 s all cooldowns on entering Battlerage (cdProc on the Battlerage cadence, BF-1 test) (2026-09-20, fine)
+- BF-8 Relentless Speed (Blademaster feat T1a): 15% per Relentless Slash combo -> free Not So Fast cast (no cooldown), ~1 per 11 s; needs both slotted (2026-09-20, fine)
+- BF-9 Mightier Leap (T1b): whiff-recast mode on Mighty Leap (second cast 780), cannot chain; optional play pattern, off by default (2026-09-20, fine)
 
