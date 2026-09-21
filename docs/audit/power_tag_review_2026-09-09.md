@@ -146,4 +146,8 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-1 Battlerage (Blademaster mechanic): +25% dmg / -15% taken / control immunity / faster at-wills; burst window ~8.7 s attacking (n00b 2026-06-08), NOT holdable; Class-tab toggle stands in; TEST: at-will speed %, rebuild-to-50% time, Rage income per source (2026-09-20, n00b ruling)
 - BF-2 Forte (Blademaster mechanic): Power primary, excels Critical Severity + Awareness - alreadyModeled via paragon percentStats (2026-09-20, fine)
 - BF-3 Shared class features (Bravery / Steady Rage / Mighty Vitality / Trample the Fallen): STRUCTURE - they are slottable (2 of 8 with the paragon four), NOT always-on; moved out of class.classFeatures into BOTH paragons' slottedClassFeatures as full copies (Warlock/Paladin convention), 'active' flags dropped. Bravery +10% Movement/Deflect; Steady Rage 2 Rage/s; Mighty Vitality +10% Max HP +2.5% Power; Trample the Fallen control-proc +5% self dmg / +5% target taken 10 s (uptime from tags.control cadence, POWER-TAGS-2) (2026-09-20, fine)
+- BF-4 Barbed Strikes (Blademaster feature): +5% Crit Strike + Crit Severity at full stamina, scaling down (stamina slider, linear assumed) (2026-09-20, fine)
+- BF-5 Steel Blitz: at-wills 20% double-strike = +20% At Will Dmg Bonus (slot.atwill bucket) (2026-09-20, fine)
+- BF-6 Raging Strikes: up to +15% Dmg Bonus by Rage level (Class-tab Rage slider, linear assumed) (2026-09-20, fine)
+- BF-7 Impatience: -2 s all cooldowns on entering Battlerage (cdProc on the Battlerage cadence, BF-1 test) (2026-09-20, fine)
 
