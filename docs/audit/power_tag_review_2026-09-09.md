@@ -175,4 +175,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BS-9 Battle High (Sentinel daily): self / melee / kind BUFF +35% Max HP 10 s + heal 35% per cast; allies +15% is FEAT-ADDED, not base (n00b) - parked; 1,000 AP (2026-09-20, n00b ruling). SENTINEL POWERS COMPLETE.
 - BM-1 Block (Sentinel tactical): frontal absorb up to 40% max HP on stamina, control immunity; during Unstoppable -> +15% Crit Avoidance instead; blockModel block, tank-model input (2026-09-20, fine)
 - BM-2 Unstoppable (Sentinel mechanic): Battlerage engine (50% Rage, faster at-wills, drains) but the window = absorb all damage up to 60% max HP on stamina + control immunity, no damage bonus; window/rebuild/speed TESTS separate from the Blademaster numbers (2026-09-20, fine)
+- BM-3 Path of the Sentinel: threat multiplier, no number - displayOnly (2026-09-20, ok)
+- BM-4 Sentinel Forte: Defense primary, Crit Sev + Awareness - alreadyModeled (2026-09-20, ok). Sentinel mechanics complete 4/4.
 
