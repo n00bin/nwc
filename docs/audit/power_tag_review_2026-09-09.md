@@ -195,3 +195,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 
 ## BARD-DUP-1 (locked 2026-09-21 = Recommended, n00b "1 copy"): every Bard paragon power existed twice (direct pp[t] = July screenshot rebuild; pp.powers[t] = older copy) and songs in three places, with the engine reading the OLD song list. Merged to ONE copy: direct pp[t] kept (old-only keys filled in, conflicts noted in mergeNote), pp.powers[t] deleted; songs merged into pp.powers.songs (the engine key) with July fields overlaid (conflict flagged: Rejuvenating Carol performanceCost 100 vs 150 - settle at the song review), class.powers.song + pp.song deleted; shared Blaze Flamenco + Rejuvenating Carol ADDED to the Minstrel list (were missing - a Minstrel could not pick them). Verified headless: Songblade 4/7/3/6 + 6 songs, Minstrel 4/7/3/6 + 8 songs, rotation profile names resolve, engine ok. Count check vs the Powers screens: all rows match on both paragons (Minstrel shows 2 locked song slots on n00b's toon).
 
+## BARD PASS (2026-09-21). Order: shared -> Songblade -> Minstrel per section; songs after dailies.
+- BD-1 Reprise (shared at-will): AREA 200-degree cone / melee / none / no DoT / physical; 4 x 35 @0.3 s (~117 mag/s) (2026-09-21, fine)
+
