@@ -158,4 +158,7 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-13 Brutal Critical (T3b): +3 Rage per crit (~5.4/s), Rage income only (2026-09-20, fine)
 - BF-14 Steel Slam (T4a): Avalanche of Steel + 200 x 5 area DoT over 12 s + Slow 3 s (data said x3, tooltip x5 - corrected) (2026-09-20, fine)
 - BF-15 Unstoppable Spin (T4b): Spinning Strike sets Rage >= 50 and auto-Battlerage +6 s at 50% dmg; excludes Rampage; value pends BF-1 test (2026-09-20, fine)
+- BF-16 Relentless Battlerage (T5a): 2x Rage from hits/encounters/damage taken/kills; shortens rebuild only (BF-1 test) (2026-09-20, fine)
+- BF-17 Escalating Rage (T5b): 5 crits outside Battlerage arm Rampage 20 s -> next window +8 s and +25% (50% total); excludes Unstoppable Spin (2026-09-20, fine)
+## BLADEMASTER COMPLETE 2026-09-20: 19 powers + 2 mechanics + 8 features + 10 feats. Open tests: Battlerage at-will speed / rebuild time / Rage income; curves on Raging Strikes, Barbed Strikes, Overpenetration (linear assumed). Next: SENTINEL side (2 at-wills, 5 encounters, 2 dailies, 4 mechanics, 4 features, 10 feats + Sentinel screens of the shared powers).
 
