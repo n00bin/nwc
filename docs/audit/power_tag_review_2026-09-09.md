@@ -145,4 +145,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 ## BLADEMASTER FEATURES PASS (2026-09-20)
 - BF-1 Battlerage (Blademaster mechanic): +25% dmg / -15% taken / control immunity / faster at-wills; burst window ~8.7 s attacking (n00b 2026-06-08), NOT holdable; Class-tab toggle stands in; TEST: at-will speed %, rebuild-to-50% time, Rage income per source (2026-09-20, n00b ruling)
 - BF-2 Forte (Blademaster mechanic): Power primary, excels Critical Severity + Awareness - alreadyModeled via paragon percentStats (2026-09-20, fine)
+- BF-3 Shared class features (Bravery / Steady Rage / Mighty Vitality / Trample the Fallen): STRUCTURE - they are slottable (2 of 8 with the paragon four), NOT always-on; moved out of class.classFeatures into BOTH paragons' slottedClassFeatures as full copies (Warlock/Paladin convention), 'active' flags dropped. Bravery +10% Movement/Deflect; Steady Rage 2 Rage/s; Mighty Vitality +10% Max HP +2.5% Power; Trample the Fallen control-proc +5% self dmg / +5% target taken 10 s (uptime from tags.control cadence, POWER-TAGS-2) (2026-09-20, fine)
 
