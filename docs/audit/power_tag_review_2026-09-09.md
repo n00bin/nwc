@@ -165,4 +165,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 ## SENTINEL PASS (2026-09-20)
 - BS-1 Sentinel's Slash (Sentinel at-will): AREA 15 ft / melee / none / no DoT / physical; CHARGE 50-300 over 2.8 s (default full hold); blocks frontal attacks on stamina while charging (display only) (2026-09-20, fine)
 - BS-2 Challenger's Slash (Sentinel at-will): AREA 260-degree cone / melee / none / no DoT / physical; 3 x 30 @0.65 s (~46 mag/s); Increased Threat flag (2026-09-20, fine)
+- BS-3 Come and Get It (Sentinel encounter): AREA 30 ft / melee / PULL (Draw In) / no damage / kind TAUNT; base cd OPEN (13.4 shown) (2026-09-20, fine)
 
