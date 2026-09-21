@@ -162,3 +162,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-17 Escalating Rage (T5b): 5 crits outside Battlerage arm Rampage 20 s -> next window +8 s and +25% (50% total); excludes Unstoppable Spin (2026-09-20, fine)
 ## BLADEMASTER COMPLETE 2026-09-20: 19 powers + 2 mechanics + 8 features + 10 feats. Open tests: Battlerage at-will speed / rebuild time / Rage income; curves on Raging Strikes, Barbed Strikes, Overpenetration (linear assumed). Next: SENTINEL side (2 at-wills, 5 encounters, 2 dailies, 4 mechanics, 4 features, 10 feats + Sentinel screens of the shared powers).
 
+## SENTINEL PASS (2026-09-20)
+- BS-1 Sentinel's Slash (Sentinel at-will): AREA 15 ft / melee / none / no DoT / physical; CHARGE 50-300 over 2.8 s (default full hold); blocks frontal attacks on stamina while charging (display only) (2026-09-20, fine)
+
