@@ -197,4 +197,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 
 ## BARD PASS (2026-09-21). Order: shared -> Songblade -> Minstrel per section; songs after dailies.
 - BD-1 Reprise (shared at-will): AREA 200-degree cone / melee / none / no DoT / physical; 4 x 35 @0.3 s (~117 mag/s) (2026-09-21, fine)
+- BD-2 Fleche (shared at-will): single / ranged 80 ft / none / no DoT / magical (psychic); 180+180+240 = 600 per 1.8 s (~333 mag/s) (2026-09-21, fine)
 
