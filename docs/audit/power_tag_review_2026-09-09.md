@@ -156,4 +156,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-11 Indomitable Rage (T2b): Indomitable Battle Strike 800-1200 by Rage level (linear assumed) replaces flat 750; RETRACTS the BB-8 stale-screenshot flag - the archive was feat-modified (same lesson as Feypact) (2026-09-20, fine)
 - BF-12 Overpenetration (T3a): up to +10% Dmg Bonus by crit-stat cap proximity (sheet-computed, linear assumed; capped build = flat 10%) (2026-09-20, fine)
 - BF-13 Brutal Critical (T3b): +3 Rage per crit (~5.4/s), Rage income only (2026-09-20, fine)
+- BF-14 Steel Slam (T4a): Avalanche of Steel + 200 x 5 area DoT over 12 s + Slow 3 s (data said x3, tooltip x5 - corrected) (2026-09-20, fine)
+- BF-15 Unstoppable Spin (T4b): Spinning Strike sets Rage >= 50 and auto-Battlerage +6 s at 50% dmg; excludes Rampage; value pends BF-1 test (2026-09-20, fine)
 
