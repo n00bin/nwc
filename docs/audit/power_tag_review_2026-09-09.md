@@ -221,4 +221,7 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BM-B1 Roll (shared tactical): dodge + brief immunity - displayOnly (2026-09-21, fine)
 - BM-B2 Perform (shared mechanic): Performance resource block (min 100, songs cost 100, doubles as the finale button); fill rate TEST (2026-09-21, n00b ruling)
 - BM-B3 Free Perform: out-of-combat song creation - displayOnly (2026-09-21, fine)
+- BM-B4 All the World's a Stage (Songblade mechanic): gauge 100 -> 150 (base 100, n00b), songs 72 s, regen up (amount in the fill-rate test) (2026-09-21, fine)
+- BM-B5 Battle Harmony: the matching-type +2% inside each elemental song - alreadyModeled (2026-09-21, fine)
+- BM-B6 Songblade Forte: Power / Crit Sev / Deflect Sev - alreadyModeled (2026-09-21, fine). Songblade mechanics complete.
 
