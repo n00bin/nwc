@@ -218,4 +218,7 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BS-4 Ballad of the Hero (Songblade song): BALLAD 20 s (stacks with the elemental song); +85 radiant rider per hit on the primary target; Hero's Finale 800 single via Perform (ends it); 100 Performance (2026-09-21, fine)
 - BS-5 Ballad of the Witch (Songblade song): BALLAD 20 s; +40 arcane rider on all targets per hit; Witch's Finale 400 area via Perform; 100 Performance (2026-09-21, fine)
 - BS-6 Rejuvenating Carol (shared song): HEAL song 60 s (cancels elemental); HoT 100 on self + party; per-tick vs total and tick interval UNKNOWN - test; screen fixes the merge conflict (100 cost / 100 mag) (2026-09-21, fine). Songblade-side songs complete 6/6.
+- BM-B1 Roll (shared tactical): dodge + brief immunity - displayOnly (2026-09-21, fine)
+- BM-B2 Perform (shared mechanic): Performance resource block (min 100, songs cost 100, doubles as the finale button); fill rate TEST (2026-09-21, n00b ruling)
+- BM-B3 Free Perform: out-of-combat song creation - displayOnly (2026-09-21, fine)
 
