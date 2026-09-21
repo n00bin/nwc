@@ -253,4 +253,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BN-2 Phantasmal Concerto (Minstrel at-will): AREA 30 ft / ranged / none / CHANNEL 70 psychic per 1.1 s tick (~64 mag/s) (2026-09-21, fine)
 - BN-3 Serenade (Minstrel encounter): single / ranged / kind BUFF on own healing: tap +5% permanent mark (no cd), hold +50% 10 s; base cd 22.9 s (n00b; 21.4 shown) (2026-09-21, n00b ruling)
 - BN-4 Delayed Play (Minstrel encounter): self / kind UTILITY - store a song, fire it instantly later; display only; base cd 11.4 s (n00b; 10.7 shown) (2026-09-21, n00b ruling)
+- BN-5 Bassline (Minstrel encounter): self / kind RESOURCE - 10 s channel, up to 200 Performance (20/s), early-cancel refund; base cd 22.9 s (n00b; 21.4 shown) (2026-09-21, n00b ruling). Minstrel encounters complete.
 
