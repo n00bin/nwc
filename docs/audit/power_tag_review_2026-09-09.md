@@ -211,3 +211,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BD-13 Encore (shared daily): self / kind RESOURCE - free replay of the last song; 1,000 AP and 0.8 s cast once a song has been played (n00b; tooltip shows 0 s / no cost before then) (2026-09-21, n00b ruling)
 - BD-14 Lore (Songblade daily): single / ranged 80 ft / kind BUFF: target +10% crit sev taken 10 s (party), self +20% dmg 10 s, typed lore +10% 30 s (type follows the song); 1,000 AP (2026-09-21, fine). SONGBLADE POWERS COMPLETE (shared + paragon).
 
+## BARD SONGS (2026-09-21). Song tag shape: kind song, songType elemental|ballad|heal|utility, targets/delivery/damageType for the on-cast hit, plus a songEffects block {durationSeconds, cancelsOtherSongs, onCast, powerMods (flat magnitude / type conversion), partyBuff, links}. Written onto BOTH paragon copies of a shared song.
+- BS-1 Blaze Flamenco (shared song): elemental 72 s; on cast 350 fire area 30 ft; at-wills/encounters +20 flat mag -> fire; party +2% dmg +2% magical; 100 Performance (2026-09-21, fine)
+
