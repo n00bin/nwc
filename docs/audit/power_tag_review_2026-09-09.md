@@ -171,4 +171,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BS-5 Takedown (Sentinel encounter): single / melee / KNOCKDOWN / no DoT / physical; mag 400; base cd 9.7 s (n00b; 8.9 shown); the Increased Threat line is FEAT-ADDED, not base (n00b) - parked, attribute at the feat pass (2026-09-20, n00b ruling)
 - BS-6 Ignore Weakness (Sentinel encounter): self / melee / none / kind RESOURCE: stamina 50%-100% by missing health (linear assumed); base cd 23.4 s (n00b; 21.5 shown) (2026-09-20, n00b ruling)
 - BS-7 Primal Fury (Sentinel encounter): AREA 15 ft / melee / none / no DoT / physical; 200-600 by missing stamina (linear assumed); Rage spender 30 per cast, base cd 0.9 s (n00b; 0.8 shown); threat line BASE (n00b); ends Unstoppable (2026-09-20, n00b ruling). Sentinel encounters complete.
+- BS-8 Primal Instinct (Sentinel daily): self / melee / kind BUFF +30% Awareness +90% Crit Avoidance 10 s; Rage over time (amount unknown); 1,000 AP (2026-09-20, fine)
 
