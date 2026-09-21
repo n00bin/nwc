@@ -242,4 +242,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-B12 Elemental Medley (T2b): +10 flat song magnitude per Con Elemento variant, 3 stacks/60 s, default 1 (2026-09-21, fine)
 - BF-B13 Ballad Colla Voce (T3a): manual ballad -> party role buff (DPS +5% dmg / tank -5% taken / healer +5% OH) 20 s, ends on finale (2026-09-21, fine)
 - BF-B14 A Due (T3b): self + nearest ally 25 ft: +10% dmg, -10% taken, +10% OH; ~100% in a group, 0 solo (2026-09-21, fine)
+- BF-B15 Redoublement (T4a): weave inside Ad Libitum / Volti Subito; encounters +10% inside the window (2026-09-21, fine)
+- BF-B16 Martial Performance (T4b): manual elemental song whose opening hit lands -> +10 flat for the song's 72 s (stacks: +60 with Medley + Masterful) (2026-09-21, fine)
 
