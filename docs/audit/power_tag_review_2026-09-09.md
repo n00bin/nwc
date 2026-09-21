@@ -181,4 +181,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-S2 Challenger's Charge: Punishing Charge taunts, chargeable (charged = no taunt) - displayOnly (2026-09-20, fine)
 - BF-S3 Threatening Presence: threat up - displayOnly (2026-09-20, fine)
 - BF-S4 Furious Reaction: stamina empty -> 10 Rage + heal 10% max HP over 10 s, ICD 10 s (procHeal) (2026-09-20, fine)
+- BF-S5 Frustrating Slash (Sentinel feat T1a): Sentinel's Slash threat boost 5 s - displayOnly (2026-09-20, fine)
+- BF-S6 Leap into Action (T1b): Mighty Leap threat boost 10 s - displayOnly (2026-09-20, fine)
 
