@@ -205,4 +205,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BD-7 Flourish (shared encounter): self / melee / kind BUFF +30% encounter + song damage AND healing 4 s, re-cast unlocked by any other encounter/song (2 casts per cooldown, up to 8 s); base cd 17.2 s (n00b; 16 shown) (2026-09-21, n00b ruling). TF_POWER_BUFFS needs an appliesTo encounter+song entry (POWER-TAGS-2).
 - BD-8 Duet (shared encounter): AREA 20 ft / melee / DAZE 2 s / no DoT / magical (arcane); 250 x 2 = 500; base cd 15.3 s (n00b; 14.2 shown) (2026-09-21, n00b ruling)
 - BD-9 Ad Libitum (Songblade encounter): single / melee / none / no DoT / physical; 700, 50% re-cast chain up to 3x (1.875 expected casts); base cd 15.3 s (n00b; 13.7 shown) (2026-09-21, n00b ruling)
+- BD-10 Contre (Songblade encounter): hold-keyed modes: Seconde tap 500 area knockdown / Septime 1 s 1200 single knockback (default) / Neuvieme 2 s 900 area x3; frontal absorb + control immunity while held (display); base cd 14.3 s (n00b; 12.9 shown) (2026-09-21, n00b ruling)
 
