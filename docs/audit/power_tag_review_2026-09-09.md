@@ -238,4 +238,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 ## SONGBLADE FEATS (2026-09-21)
 - BF-B9 Backup Performer (T1a): manual Rejuvenating Carol -> Reinvigorating Carol: 1,200 instant party heal + 100 resource to healers, no song cancel, 30 s lockout (2026-09-21, fine)
 - BF-B10 Voice Throw (T1b): 50% threat to the tank 10 s - displayOnly (2026-09-21, fine)
+- BF-B11 Battlefield Ostinato (T2a): single-target at-wills buff area at-wills +20% and vice versa (12 s) - reads tags.targets; +20% all at-will dmg with one of each (2026-09-21, fine)
+- BF-B12 Elemental Medley (T2b): +10 flat song magnitude per Con Elemento variant, 3 stacks/60 s, default 1 (2026-09-21, fine)
 
