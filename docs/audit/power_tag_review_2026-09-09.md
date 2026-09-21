@@ -209,4 +209,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BD-11 Volti Subito (Songblade encounter): AREA path 34 ft / melee rush / none / no DoT / physical; 300 x 3 guaranteed rushes per cooldown; base cd 15.3 s (n00b; 13.7 shown) (2026-09-21, n00b ruling). Songblade encounters complete.
 - BD-12 Inspiration (shared daily): self + nearest ally 15 ft / kind BUFF +25% dmg, -15% taken, control immunity 12 s; HoT 400 x 5 over 12 s BASE (n00b); 1,000 AP (2026-09-21, fine)
 - BD-13 Encore (shared daily): self / kind RESOURCE - free replay of the last song; 1,000 AP and 0.8 s cast once a song has been played (n00b; tooltip shows 0 s / no cost before then) (2026-09-21, n00b ruling)
+- BD-14 Lore (Songblade daily): single / ranged 80 ft / kind BUFF: target +10% crit sev taken 10 s (party), self +20% dmg 10 s, typed lore +10% 30 s (type follows the song); 1,000 AP (2026-09-21, fine). SONGBLADE POWERS COMPLETE (shared + paragon).
 
