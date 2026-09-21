@@ -248,3 +248,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-B18 Loremaster (T5b): Battle Research 5 stacks (at-will proc / 1 s Research casts) -> Ready to Exploit! +125% encounter + finale dmg 10 s; proc chance TEST (2026-09-21, fine)
 ## SONGBLADE COMPLETE 2026-09-21: 14 powers, 6 songs, 6 mechanics, 8 features, 10 feats. Open tests: Performance fill rate, Con Elemento variants, Staccato hits, Rejuvenating Carol ticks, projectile bucket, Soloist in group, Performer + Loremaster proc chances. Next: MINSTREL (2 at-wills, 3 encounters, 1 daily, 6 songs, 3 mechanics, 4 features, 10 feats).
 
+## MINSTREL PASS (2026-09-21)
+- BN-1 Arpeggio (Minstrel at-will): single / ranged / kind HEAL 250 per press, 1 s cadence, 40 Performance (250 heal mag/s) (2026-09-21, fine)
+
