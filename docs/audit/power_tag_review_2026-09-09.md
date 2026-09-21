@@ -189,4 +189,7 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-S10 Boasting Takedown (T3b): Takedown threat - displayOnly; confirmed source of the BS-5 parked threat line (2026-09-20, fine)
 - BF-S11 Crushing Advance (Sentinel feat T4a): Savage Advance loses knockback, gains target -12% damage dealt 12 s (2026-09-20, fine)
 - BF-S12 Inspiring Bravado (T4b): Battle High party +15% max HP 10 s - owns the BS-9 parked ally line (2026-09-20, fine)
+- BF-S13 Rage and Rally (Sentinel feat T5a): Unstoppable threat (display) + up to 40% stamina refund when it ends (2026-09-20, fine)
+- BF-S14 Blood Fury (T5b): Primal Fury cost 30 (base is 40 - n00b; BS-7's 30 was feat-modified, corrected), free + lifesteal during Unstoppable (2026-09-20, fine)
+## BARBARIAN COMPLETE 2026-09-20: both paragons - 29 powers, 6 mechanics, 16 features, 20 feats. Open tests: Battlerage/Unstoppable windows (speed, rebuild, income); linear-assumed curves (Raging Strikes, Raging Bladeturn, Barbed Strikes, Overpenetration, Indomitable Might/Rage, Primal Fury, Ignore Weakness). Lesson repeated: archived tooltips carry the capture character's FEATS (Indomitable Rage, Boasting Takedown, Inspiring Bravado, Blood Fury) - always ask n00b for base. Next: Bard.
 
