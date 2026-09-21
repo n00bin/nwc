@@ -2898,4 +2898,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Rejuvenating Carol tick model** (2026-09-21): heal magnitude 100 over 60 s; is that per tick or the whole song, and what is the tick interval? n00b to test.
 - **Performance gauge fill rate** (2026-09-21): Perform gives no number; in-combat regen per second needed for the Bard song rotation model. n00b to test.
 - **Soloist in a group** (2026-09-21): reportedly active in a party as long as no party member is within 30 ft; n00b to test. Until then the Solo toggle is the only gate.
+- **Performer / Loremaster proc chances** (2026-09-21): neither tooltip gives the chance (improvised encounter proc; Battle Research at-will proc). n00b to test; both cadences hang on it.
 

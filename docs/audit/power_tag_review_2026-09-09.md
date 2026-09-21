@@ -244,4 +244,7 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-B14 A Due (T3b): self + nearest ally 25 ft: +10% dmg, -10% taken, +10% OH; ~100% in a group, 0 solo (2026-09-21, fine)
 - BF-B15 Redoublement (T4a): weave inside Ad Libitum / Volti Subito; encounters +10% inside the window (2026-09-21, fine)
 - BF-B16 Martial Performance (T4b): manual elemental song whose opening hit lands -> +10 flat for the song's 72 s (stacks: +60 with Medley + Masterful) (2026-09-21, fine)
+- BF-B17 Performer (T5a): chance for a free improvised encounter cast per at-will/encounter use; 8 procs -> Grandstand (Encore song x2); proc chance TEST (2026-09-21, fine)
+- BF-B18 Loremaster (T5b): Battle Research 5 stacks (at-will proc / 1 s Research casts) -> Ready to Exploit! +125% encounter + finale dmg 10 s; proc chance TEST (2026-09-21, fine)
+## SONGBLADE COMPLETE 2026-09-21: 14 powers, 6 songs, 6 mechanics, 8 features, 10 feats. Open tests: Performance fill rate, Con Elemento variants, Staccato hits, Rejuvenating Carol ticks, projectile bucket, Soloist in group, Performer + Loremaster proc chances. Next: MINSTREL (2 at-wills, 3 encounters, 1 daily, 6 songs, 3 mechanics, 4 features, 10 feats).
 
