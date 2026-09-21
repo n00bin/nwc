@@ -154,4 +154,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-9 Mightier Leap (T1b): whiff-recast mode on Mighty Leap (second cast 780), cannot chain; optional play pattern, off by default (2026-09-20, fine)
 - BF-10 Bloodspiller (T2a): Bloodletter 950 mag, cd -3 s, lifesteal -> self damage (powerMods) (2026-09-20, fine)
 - BF-11 Indomitable Rage (T2b): Indomitable Battle Strike 800-1200 by Rage level (linear assumed) replaces flat 750; RETRACTS the BB-8 stale-screenshot flag - the archive was feat-modified (same lesson as Feypact) (2026-09-20, fine)
+- BF-12 Overpenetration (T3a): up to +10% Dmg Bonus by crit-stat cap proximity (sheet-computed, linear assumed; capped build = flat 10%) (2026-09-20, fine)
+- BF-13 Brutal Critical (T3b): +3 Rage per crit (~5.4/s), Rage income only (2026-09-20, fine)
 
