@@ -2895,4 +2895,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Con Elemento variant magnitudes** (2026-09-21): Con Fuoco / Con Moto / Con Brio magnitudes are not on the tooltip; n00b to test each under its song. Stored null in the modes block.
 - **Staccato hit count** (2026-09-21): 120 magnitude per hit, hit count not on the tooltip; n00b to test.
 - **Projectile damage bucket** (2026-09-21): Tailwind Mambo / Con Moto / projectile lore are filed under Physical Damage Boost by assumption; n00b is not sure. Test: does Physical Damage Boost change a projectile hit?
+- **Rejuvenating Carol tick model** (2026-09-21): heal magnitude 100 over 60 s; is that per tick or the whole song, and what is the tick interval? n00b to test.
 
