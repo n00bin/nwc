@@ -250,4 +250,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 
 ## MINSTREL PASS (2026-09-21)
 - BN-1 Arpeggio (Minstrel at-will): single / ranged / kind HEAL 250 per press, 1 s cadence, 40 Performance (250 heal mag/s) (2026-09-21, fine)
+- BN-2 Phantasmal Concerto (Minstrel at-will): AREA 30 ft / ranged / none / CHANNEL 70 psychic per 1.1 s tick (~64 mag/s) (2026-09-21, fine)
 
