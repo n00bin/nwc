@@ -235,3 +235,7 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-B7 Masterful Performance: elemental song added effects x1.5 when played manually (default on) (2026-09-21, fine)
 - BF-B8 Musician's Flow: Performance regen x1.25 (2026-09-21, fine). Songblade class features complete 8/8.
 
+## SONGBLADE FEATS (2026-09-21)
+- BF-B9 Backup Performer (T1a): manual Rejuvenating Carol -> Reinvigorating Carol: 1,200 instant party heal + 100 resource to healers, no song cancel, 30 s lockout (2026-09-21, fine)
+- BF-B10 Voice Throw (T1b): 50% threat to the tank 10 s - displayOnly (2026-09-21, fine)
+
