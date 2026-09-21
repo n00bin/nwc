@@ -225,3 +225,9 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BM-B5 Battle Harmony: the matching-type +2% inside each elemental song - alreadyModeled (2026-09-21, fine)
 - BM-B6 Songblade Forte: Power / Crit Sev / Deflect Sev - alreadyModeled (2026-09-21, fine). Songblade mechanics complete.
 
+## BARD CLASS FEATURES (2026-09-21; 8 slottable per paragon already as full copies)
+- BF-B1 Soloist (shared): +10% dmg with no party member nearby; n00b: reportedly also works IN a group when nobody is within 30 ft - TEST; Solo toggle gates until then (2026-09-21, n00b ruling)
+- BF-B2 Songward (shared): absorb while in Performance Mode - displayOnly (2026-09-21, fine)
+- BF-B3 Mystifying Strikes (shared): 5% proc; solo 500 psychic DoT/12 s, group = ally pops it for 400 + 400 heal (Solo toggle) (2026-09-21, fine)
+- BF-B4 Sforzando (shared): +5% dmg + healing 20 s per song (100% on the ballad metronome) (2026-09-21, fine)
+
