@@ -187,4 +187,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-S8 On the Move (T2b): Not So Fast 350 mag + party +20% movement 4 s (display only) (2026-09-20, fine)
 - BF-S9 Disarming Takedown (Sentinel feat T3a): Takedown -> target +5% physical damage taken 10 s (~100% uptime), party-wide for physical (2026-09-20, fine)
 - BF-S10 Boasting Takedown (T3b): Takedown threat - displayOnly; confirmed source of the BS-5 parked threat line (2026-09-20, fine)
+- BF-S11 Crushing Advance (Sentinel feat T4a): Savage Advance loses knockback, gains target -12% damage dealt 12 s (2026-09-20, fine)
+- BF-S12 Inspiring Bravado (T4b): Battle High party +15% max HP 10 s - owns the BS-9 parked ally line (2026-09-20, fine)
 
