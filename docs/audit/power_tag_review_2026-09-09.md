@@ -183,4 +183,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-S4 Furious Reaction: stamina empty -> 10 Rage + heal 10% max HP over 10 s, ICD 10 s (procHeal) (2026-09-20, fine)
 - BF-S5 Frustrating Slash (Sentinel feat T1a): Sentinel's Slash threat boost 5 s - displayOnly (2026-09-20, fine)
 - BF-S6 Leap into Action (T1b): Mighty Leap threat boost 10 s - displayOnly (2026-09-20, fine)
+- BF-S7 Indomitable Might (Sentinel feat T2a): Indomitable Battle Strike 500-1000 by remaining health (linear assumed) replaces flat 750 (2026-09-20, fine)
+- BF-S8 On the Move (T2b): Not So Fast 350 mag + party +20% movement 4 s (display only) (2026-09-20, fine)
 
