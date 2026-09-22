@@ -258,4 +258,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 
 ## MINSTREL SONGS (2026-09-22)
 - BNS-1 Defender's Minuet (Minstrel song): instant single-target 2,000 heal (lowest HP / Serenade mark), 160 Performance, no duration (2026-09-22, fine)
+- BNS-2 Warding Carol (Minstrel song): utility cleanse 10 s, 80 ft, 120 Performance - displayOnly (Curtain Call cash-in carries the number) (2026-09-22, fine)
 
