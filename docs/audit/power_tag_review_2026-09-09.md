@@ -279,3 +279,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-N9 Vamp (T3a): 20% per song -> Delayed Play keeps the stored song 20 s - displayOnly (2026-09-22, fine)
 - BF-N10 Sudden Muse (T3b): 10% per 3 s (ICD 20 s, ~every 30 s) -> one of three next-cast muses (heal x1.25 / carol duration x2 / free elemental song); even odds assumed (2026-09-22, fine)
 
+## CORRECTION 2026-09-22 (n00b): shared powers can DIFFER per paragon and each item is reviewed individually. Rejuvenating Carol on the MINSTREL = cost 150 / heal 200 (Songblade copy stays 100 / 100). Every shared Bard item stamped from one screen is being re-checked against its second-paragon screenshot one per turn; the Barbarian Sentinel-side pass on shared powers (promised at BS-1) is still owed.
+
