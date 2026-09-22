@@ -256,3 +256,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BN-5 Bassline (Minstrel encounter): self / kind RESOURCE - 10 s channel, up to 200 Performance (20/s), early-cancel refund; base cd 22.9 s (n00b; 21.4 shown) (2026-09-21, n00b ruling). Minstrel encounters complete.
 - BN-6 Curtain Call (Minstrel daily): AREA 100 ft / kind HEAL+BUFF cash-in of active songs (Rejuv 800 heal, Etude 800 shield 20 s, Warding -10% taken 10 s, Blaze 100 AP); 1,000 AP (2026-09-21, fine). MINSTREL POWERS COMPLETE.
 
+## MINSTREL SONGS (2026-09-22)
+- BNS-1 Defender's Minuet (Minstrel song): instant single-target 2,000 heal (lowest HP / Serenade mark), 160 Performance, no duration (2026-09-22, fine)
+
