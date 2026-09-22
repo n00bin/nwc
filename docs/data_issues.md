@@ -2900,4 +2900,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Soloist in a group** (2026-09-21): reportedly active in a party as long as no party member is within 30 ft; n00b to test. Until then the Solo toggle is the only gate.
 - **Performer / Loremaster proc chances** (2026-09-21): neither tooltip gives the chance (improvised encounter proc; Battle Research at-will proc). n00b to test; both cadences hang on it.
 - **Aurora Fantasia drain rate** (2026-09-22): held indefinitely while Performance drains; rate not on the tooltip. n00b to test.
+- **Reprised Carol roll odds** (2026-09-22): both Gambler carols roll one of three buffs (or a fallback heal); odds and per-stack scaling are not on the tooltips. n00b to test.
 
