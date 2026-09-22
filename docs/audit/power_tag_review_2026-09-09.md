@@ -266,4 +266,8 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BM-N1 The Gift of Song (Minstrel mechanic): gauge 1000, songs do not cancel each other, heal threat down (display) (2026-09-22, fine)
 - BM-N2 Natural Talents: +1 quickplay slot - displayOnly (2026-09-22, fine)
 - BM-N3 Minstrel Forte: Performance Regen / Crit Sev / Deflect Sev - alreadyModeled (2026-09-22, fine). Minstrel mechanics complete.
+- BF-N1 Arpeggio Fortissimo (Minstrel feature): Arpeggio -> 100 per member within 40 ft for 60 Performance (2026-09-22, fine)
+- BF-N2 Vamos Alla!: Blaze Flamenco party movement +10% (20% OOC) - displayOnly (2026-09-22, fine)
+- BF-N3 Play it Back: Aurora drain -10/tick; Aurora Finale 20% double (x1.2) (2026-09-22, fine)
+- BF-N4 Starstruck: role-keyed proc heal on manual carol targets 10 s; chance/amount/rates TEST (2026-09-22, fine). Minstrel class features complete 8/8.
 
