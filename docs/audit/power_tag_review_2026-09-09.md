@@ -276,4 +276,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-N6 Diminuendo (T1b): Arpeggio starts 500, -50/s to 250 (Fortissimo 200 -> 100), resets 5 s after stopping (tap feat) (2026-09-22, fine)
 - BF-N7 Art of War (T2a): Fleche 3rd hit 390 primary + 15 ft splash for 40 Performance; 3 stacks -> next Dancing Lights 1,400 primary + 20 ft splash (~every cast) (2026-09-22, fine)
 - BF-N8 Rhapsody at Arms (T2b): +1% dmg / -1% taken per active song; NEW shared Class-tab input `songsActive` 0-4 (Minstrel default 4, Songblade 2) - n00b: the sim must be told how many songs are usually active (2026-09-22, n00b ruling)
+- BF-N9 Vamp (T3a): 20% per song -> Delayed Play keeps the stored song 20 s - displayOnly (2026-09-22, fine)
+- BF-N10 Sudden Muse (T3b): 10% per 3 s (ICD 20 s, ~every 30 s) -> one of three next-cast muses (heal x1.25 / carol duration x2 / free elemental song); even odds assumed (2026-09-22, fine)
 
