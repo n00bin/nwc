@@ -263,4 +263,7 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BNS-4 Sheltering Etude (Minstrel song): heal 60 s; 600 delayed heal per member (under 50% or expiry; recast pops it), 200 Performance (2026-09-22, fine)
 - BNS-5 Reprised Carol: Enhance (Minstrel song, Gambler): spends Gambler's Delight, rolls Crit Sev / Mitigation / Recharge 2% (stack-scaled) 15 s, else 100 party HoT; odds + scaling TEST (2026-09-22, fine)
 - BNS-6 Reprised Carol: Recovery (Gambler): rolls stamina regen / shield / AP regen 15 s, else 100 HoT; odds TEST (2026-09-22, fine). Minstrel songs complete 8/8.
+- BM-N1 The Gift of Song (Minstrel mechanic): gauge 1000, songs do not cancel each other, heal threat down (display) (2026-09-22, fine)
+- BM-N2 Natural Talents: +1 quickplay slot - displayOnly (2026-09-22, fine)
+- BM-N3 Minstrel Forte: Performance Regen / Crit Sev / Deflect Sev - alreadyModeled (2026-09-22, fine). Minstrel mechanics complete.
 
