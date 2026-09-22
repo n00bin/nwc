@@ -271,3 +271,7 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-N3 Play it Back: Aurora drain -10/tick; Aurora Finale 20% double (x1.2) (2026-09-22, fine)
 - BF-N4 Starstruck: role-keyed proc heal on manual carol targets 10 s; chance/amount/rates TEST (2026-09-22, fine). Minstrel class features complete 8/8.
 
+## MINSTREL FEATS (2026-09-22). Arpeggio confirmed a held 1 s-tick channel.
+- BF-N5 Crescendo (T1a): Arpeggio ramps +50 per 3 s held to 400 (hold feat) (2026-09-22, fine)
+- BF-N6 Diminuendo (T1b): Arpeggio starts 500, -50/s to 250 (Fortissimo 200 -> 100), resets 5 s after stopping (tap feat) (2026-09-22, fine)
+
