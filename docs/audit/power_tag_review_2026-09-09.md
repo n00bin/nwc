@@ -274,4 +274,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 ## MINSTREL FEATS (2026-09-22). Arpeggio confirmed a held 1 s-tick channel.
 - BF-N5 Crescendo (T1a): Arpeggio ramps +50 per 3 s held to 400 (hold feat) (2026-09-22, fine)
 - BF-N6 Diminuendo (T1b): Arpeggio starts 500, -50/s to 250 (Fortissimo 200 -> 100), resets 5 s after stopping (tap feat) (2026-09-22, fine)
+- BF-N7 Art of War (T2a): Fleche 3rd hit 390 primary + 15 ft splash for 40 Performance; 3 stacks -> next Dancing Lights 1,400 primary + 20 ft splash (~every cast) (2026-09-22, fine)
+- BF-N8 Rhapsody at Arms (T2b): +1% dmg / -1% taken per active song; NEW shared Class-tab input `songsActive` 0-4 (Minstrel default 4, Songblade 2) - n00b: the sim must be told how many songs are usually active (2026-09-22, n00b ruling)
 
