@@ -4,6 +4,14 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ---
 
+## Week of September 21, 2026
+
+### Features
+
+- **Sign in and your saved builds can't be lost (Toon Forge).** My Builds now has a free sign-in. Once you're signed in, every build you save is kept on the site as well as in your browser, so clearing your browsing data can't lose them, and they follow you between your phone and your PC. This is the real fix for builds vanishing on their own: phone browsers quietly delete stored data for sites you haven't opened in a week or two, which is why some of you lost builds you never deleted. Sign in once and they come back by themselves the next time you open the page. It's free and it is not the membership — it only saves builds, nothing else changes. Not signing in changes nothing either: your builds still work exactly as they do now, and the backup file is still there.
+
+- **Deleting a build now deletes it everywhere.** If you're signed in, deleting a build removes it from your account too, so it can't reappear later.
+
 ## Week of September 14, 2026
 
 ### Features

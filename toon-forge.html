@@ -4169,8 +4169,32 @@
       if (!valid.length) { toastSticky("That file doesn't contain any saved builds."); return; }
 
       const list = getBuildsList();
+      const st = mergeBuildsInto(list, valid);
+      saveBuildsList(list);
+      openBuildsModal();   // refresh the list behind the toast
+
+      const bits = [];
+      if (st.added) bits.push(st.added + " restored");
+      if (st.updated) bits.push(st.updated + " updated to the newer copy");
+      if (st.alreadyCurrent) bits.push(st.alreadyCurrent + " already up to date");
+      if (unreadable) bits.push(unreadable + " unreadable and skipped");
+      if (st.noRoom) bits.push(st.noRoom + " skipped — your list is full at " + MAX_BUILDS);
+      toastSticky(bits.length ? "Restored from backup: " + bits.join(", ") + "."
+                              : "Nothing to restore — every build in that file is already here.");
+    }
+
+    /* The one and only merge rule, shared by file-restore and cloud sync.
+       Mutates `list` in place and returns what it did.
+
+       NEVER DELETES. An incoming build can add a name, or replace an OLDER
+       copy of a name already there — nothing else. A browser whose storage
+       was just wiped arrives with an empty list, so "whatever is local is the
+       truth" would erase the player's other copy. That is the exact bug this
+       feature exists to fix, so the rule lives here once, for both callers. */
+    function mergeBuildsInto(list, incoming) {
       let added = 0, updated = 0, alreadyCurrent = 0, noRoom = 0;
-      valid.forEach(b => {
+      (incoming || []).forEach(b => {
+        if (!b || typeof b !== "object" || !b.s || typeof b.s !== "object") return;
         const name = ((b.name || "").trim()) || "Unnamed Build";
         const entry = {
           v: b.v || 1,
@@ -4190,17 +4214,138 @@
           alreadyCurrent++;
         }
       });
-      saveBuildsList(list);
-      openBuildsModal();   // refresh the list behind the toast
+      return { added, updated, alreadyCurrent, noRoom };
+    }
 
-      const bits = [];
-      if (added) bits.push(added + " restored");
-      if (updated) bits.push(updated + " updated to the newer copy");
-      if (alreadyCurrent) bits.push(alreadyCurrent + " already up to date");
-      if (unreadable) bits.push(unreadable + " unreadable and skipped");
-      if (noRoom) bits.push(noRoom + " skipped — your list is full at " + MAX_BUILDS);
-      toastSticky(bits.length ? "Restored from backup: " + bits.join(", ") + "."
-                              : "Nothing to restore — every build in that file is already here.");
+    /* ===== Cloud saved builds (free account) =====
+       The file backup above only helps a player who pressed the button before
+       disaster struck. This is the copy that needs no foresight: builds are
+       mirrored to the player's own row on the server, keyed to the Discord /
+       YouTube id from the premium backend's existing OAuth login.
+
+       FREE, deliberately. Membership only decides the tier stamped into the
+       token; the optimizer endpoints check that tier, cloud saves don't. The
+       account token lives under its OWN storage key so a free token can never
+       be mistaken for a membership token. */
+    const ACCT_KEY = "toon-forge:acct";
+    const ACCT_HASH_STASH = "toon-forge:acct-return-hash";
+    const ACCT_API = (function () {
+      const h = location.hostname;
+      const local = h === "localhost" || h === "127.0.0.1" || h === "" || location.protocol === "file:";
+      return local ? "http://127.0.0.1:8990" : "https://premium-tau-three.vercel.app";
+    })();
+
+    function acctToken() {
+      try { return localStorage.getItem(ACCT_KEY) || null; } catch (e) { return null; }
+    }
+    function acctSignedIn() { return !!acctToken(); }
+
+    function acctSignIn() {
+      // A shared-build link (#b=...) would be lost across the OAuth round trip,
+      // so park the current hash and put it back on return.
+      try { if (location.hash) sessionStorage.setItem(ACCT_HASH_STASH, location.hash); } catch (e) {}
+      const sep = location.search ? "&" : "?";
+      const back = location.origin + location.pathname + location.search + sep + "acct=1";
+      location.href = ACCT_API + "/api/auth_login?return=" + encodeURIComponent(back);
+    }
+
+    function acctSignOut() {
+      try { localStorage.removeItem(ACCT_KEY); } catch (e) {}
+      toast("Signed out — your builds are still saved in this browser.");
+      openBuildsModal();
+    }
+
+    // Pick up the token the backend hands back as #acct=<jwt>.
+    function acctCaptureFromHash() {
+      const m = (location.hash || "").match(/[#&]acct=([^&]+)/);
+      if (!m) return false;
+      const tok = decodeURIComponent(m[1]);
+      let kept = false;
+      try { localStorage.setItem(ACCT_KEY, tok); kept = localStorage.getItem(ACCT_KEY) === tok; } catch (e) {}
+      let back = "";
+      try {
+        back = sessionStorage.getItem(ACCT_HASH_STASH) || "";
+        sessionStorage.removeItem(ACCT_HASH_STASH);
+      } catch (e) {}
+      const search = location.search.replace(/([?&])acct=1(?=&|$)/, "$1").replace(/[?&]$/, "");
+      history.replaceState(null, "", location.pathname + search + back);
+      if (!kept) {
+        // Same failure the premium unlock already guards against: a browser
+        // blocking site storage looks exactly like a rejected login.
+        toastSticky("Signed in, but this browser is blocking site storage, so the sign-in can't be " +
+                    "remembered. Open the page in a normal (non-private) window and sign in again.");
+        return false;
+      }
+      return true;
+    }
+
+    function acctPost(payload) {
+      const token = acctToken();
+      if (!token) return Promise.reject(new Error("not signed in"));
+      return fetch(ACCT_API + "/api/builds", {
+        method: "POST",
+        headers: { "Authorization": "Bearer " + token, "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }).then(r => {
+        if (r.status === 401) {   // expired or revoked — drop it and ask again
+          try { localStorage.removeItem(ACCT_KEY); } catch (e) {}
+          throw new Error("your sign-in expired, please sign in again");
+        }
+        return r.json().catch(() => ({})).then(j => {
+          if (!r.ok || !j.ok) throw new Error(j.detail || ("server error " + r.status));
+          return j;
+        });
+      });
+    }
+
+    /* Push the local list up, pull the merged list back down. One round trip,
+       and both sides end up holding the union. */
+    function acctSync(opts) {
+      opts = opts || {};
+      if (!acctSignedIn()) return Promise.resolve(null);
+      const list = getBuildsList();
+      return acctPost({ op: "sync", builds: list }).then(res => {
+        const st = mergeBuildsInto(list, res.builds || []);
+        saveBuildsList(list);
+        if (opts.refresh !== false &&
+            document.getElementById("builds-overlay").classList.contains("open")) {
+          openBuildsModal();
+        }
+        if (opts.loud) {
+          const bits = [];
+          if (st.added) bits.push(st.added + " brought back from your account");
+          if (st.updated) bits.push(st.updated + " updated to the newer copy");
+          if (res.skipped_full) bits.push(res.skipped_full + " not saved — your account is full at " + (res.limit || MAX_BUILDS));
+          if (res.skipped_big) bits.push(res.skipped_big + " too large to save");
+          toastSticky(bits.length ? "Synced: " + bits.join(", ") + "."
+                                  : "Synced — your account and this browser already match.");
+        }
+        return res;
+      }).catch(err => {
+        if (opts.loud) {
+          toastSticky("Couldn't reach your account — " + err.message +
+                      ". Your builds are still saved in this browser.");
+        }
+        return null;
+      });
+    }
+
+    /* Deleting has to reach the server too, or the next sync would bring the
+       build straight back. If the call fails we say so rather than pretending. */
+    function acctRemove(name) {
+      if (!acctSignedIn()) return Promise.resolve(true);
+      return acctPost({ op: "delete", name: name }).then(() => true).catch(err => {
+        toastSticky("Deleted here, but it's still in your account (" + err.message + "), " +
+                    "so it will come back next time you sync.");
+        return false;
+      });
+    }
+
+    // The My Builds button: show the list, then quietly reconcile it with the
+    // account so what the player sees is the real, complete list.
+    function openMyBuilds() {
+      openBuildsModal();
+      if (acctSignedIn()) acctSync({ loud: false });
     }
     // URL-safe base64 (UTF-8 safe).
     function b64encode(str) {
@@ -4234,6 +4379,34 @@
       }
     }
 
+    /* The notice at the top of My Builds. Signed out it explains the real
+       risk and offers the fix; signed in it confirms the builds are off the
+       device. Either way the player is told where their builds actually live,
+       because the old silent "they're in your browser" is what made losing
+       them feel like the site deleted them. */
+    function acctRowHTML() {
+      if (acctSignedIn()) {
+        return `<div style="margin-bottom:0.9rem;padding:0.55rem 0.7rem;border:1px solid var(--border);border-left:3px solid var(--pos);border-radius:6px;font-size:0.78rem;line-height:1.45;color:var(--text-mute);display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+          <span style="flex:1;min-width:200px;">
+            <b style="color:var(--pos);">Saved to your account.</b>
+            Your builds are kept off this device, so clearing your browser won't
+            lose them, and they follow you between your phone and your PC.
+          </span>
+          <button class="btn btn-ghost" id="acct-sync" type="button" style="font-size:0.78rem;">Sync now</button>
+          <button class="btn btn-ghost" id="acct-signout" type="button" style="font-size:0.78rem;">Sign out</button>
+        </div>`;
+      }
+      return `<div style="margin-bottom:0.9rem;padding:0.55rem 0.7rem;border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:6px;font-size:0.78rem;line-height:1.45;color:var(--text-mute);display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+        <span style="flex:1;min-width:200px;">
+          <b style="color:var(--text);">Your builds are saved in this browser only.</b>
+          Clearing your browsing data deletes them, and phone browsers can clear
+          them on their own if you don't visit for a week or two. Sign in (it's
+          free) and they're saved to your account as well, or back up to a file.
+        </span>
+        <button class="btn btn-primary" id="acct-signin" type="button" style="font-size:0.78rem;white-space:nowrap;">Sign in with Discord</button>
+      </div>`;
+    }
+
     function openBuildsModal() {
       const wrap = document.getElementById("builds-list");
       const builds = getBuildsList();
@@ -4253,12 +4426,7 @@
           <button class="btn btn-ghost" id="builds-import" type="button" style="font-size:0.8rem;">⬆️ Restore from a file</button>
           <input type="file" id="builds-import-file" accept="application/json,.json" style="display:none;">
         </div>
-        <div style="margin-bottom:0.9rem;padding:0.55rem 0.7rem;border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:6px;font-size:0.78rem;line-height:1.45;color:var(--text-mute);">
-          <b style="color:var(--text);">Your builds are saved in this browser only.</b>
-          Clearing your browsing data deletes them, and phone browsers can clear
-          them on their own if you don't visit for a week or two. Back up to a
-          file to keep a copy you control.
-        </div>`;
+        ${acctRowHTML()}`;
       if (!builds.length) {
         html += `<div class="picker-empty">No saved builds yet. Save one above to come back to it later.</div>`;
       } else {
@@ -4293,9 +4461,7 @@
           // NEVER silently drop the oldest build to make room (what the old
           // `while (list.length > 20) list.shift()` did). Refuse and say why.
           if (list.length >= MAX_BUILDS) {
-            alert(`You already have ${MAX_BUILDS} saved builds, which is the most this browser will hold.
-
-` +
+            alert(`You already have ${MAX_BUILDS} saved builds, which is the most this browser will hold.\n\n` +
                   `Delete one you no longer need, then save again. Back up to a file first if you want to keep it.`);
             return;
           }
@@ -4305,7 +4471,16 @@
         saveBuildsList(list);
         nudgeCommunityShare("save");
         openBuildsModal();   // refresh
+        acctSync({ loud: false });   // mirror it to the account straight away
       });
+      // Account
+      const btnSignIn = document.getElementById("acct-signin");
+      if (btnSignIn) btnSignIn.addEventListener("click", acctSignIn);
+      const btnSignOut = document.getElementById("acct-signout");
+      if (btnSignOut) btnSignOut.addEventListener("click", acctSignOut);
+      const btnSync = document.getElementById("acct-sync");
+      if (btnSync) btnSync.addEventListener("click", () => acctSync({ loud: true }));
+
       // Back up / restore
       document.getElementById("builds-export").addEventListener("click", exportBuilds);
       const importInput = document.getElementById("builds-import-file");
@@ -4365,6 +4540,7 @@
           toast(`Updated "${old.name}"`);
           nudgeCommunityShare("save");
           openBuildsModal();
+          acctSync({ loud: false });
         });
       });
       // Delete
@@ -4373,10 +4549,15 @@
           ev.stopPropagation();
           const idx = +btn.dataset.buildDelete;
           const list = getBuildsList();
-          if (!confirm(`Delete "${list[idx]?.name || 'this build'}"?`)) return;
+          const gone = list[idx];
+          if (!gone) return;
+          if (!confirm(`Delete "${gone.name || 'this build'}"?`)) return;
           list.splice(idx, 1);
           saveBuildsList(list);
           openBuildsModal();
+          // Remove it from the account as well, or the next sync would merge
+          // it straight back and look like the delete never happened.
+          acctRemove(gone.name);
         });
       });
 
@@ -21607,7 +21788,7 @@
       // Reload with no hash so a shared-link build doesn't reload either.
       window.location.href = window.location.pathname;
     });
-    document.getElementById("open-builds").addEventListener("click", openBuildsModal);
+    document.getElementById("open-builds").addEventListener("click", openMyBuilds);
     document.getElementById("builds-close").addEventListener("click", () => {
       document.getElementById("builds-overlay").classList.remove("open");
     });
@@ -21634,6 +21815,11 @@
     updateRoleClassCompatibility();
     rerenderAll();
 
+    // Catch a token coming back from the account sign-in FIRST: it clears
+    // #acct= out of the URL and puts back any #b= share link that was parked
+    // across the OAuth round trip, so the restore below still sees it.
+    acctCaptureFromHash();
+
     // Restore the player's work. A #b=... share link in the URL wins (the
     // player explicitly opened a shared build); otherwise fall back to the
     // autosaved working draft so a reload / back-button picks up where they
@@ -21652,6 +21838,13 @@
         console.warn("Failed to restore autosaved build", e);
       }
     }
+
+    // Pull the account's saved builds down in the background. This is the
+    // moment that actually fixes the reported bug: a player whose browser
+    // cleared itself lands here with an empty list and gets their builds back
+    // without doing anything. Quiet on purpose — nothing to announce when it
+    // works, and a failure must not block the page.
+    if (acctSignedIn()) acctSync({ loud: false, refresh: false });
 
     // Belt-and-braces: if the page is being hidden or closed (back-button,
     // tab close, app switch) within the 350ms debounce window, flush the

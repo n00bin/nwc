@@ -296,6 +296,53 @@ pure quota counter — it counts AI calls, which is not the same question.
 
 ---
 
+## Saved builds: browser + cloud (Toon Forge)
+
+Players were losing saved builds they never deleted. Saved builds lived only
+in `localStorage` (`toon-forge:builds`), and **mobile Safari evicts
+script-written storage for any site not opened in ~7 days**. Switching to
+IndexedDB would not help — Safari evicts it in the same sweep. The only fix is
+a copy off the device.
+
+Two layers, both in `toon-forge.html`:
+
+1. **Backup file** (shipped 2026-09-14) — "Back up to a file" / "Restore from
+   a file" in My Builds. Writes `nwcb-builds-<date>.json`.
+2. **Cloud saves on a free sign-in** — builds mirror to Supabase against the
+   player's Discord id, using the premium backend's existing OAuth.
+
+### The rule that must never be broken
+`mergeBuildsInto()` (the client) and `toon_builds_sync` (the RPC) are the ONLY
+merge paths, and **neither ever deletes**. An incoming build may add a name or
+replace an *older* copy of a name — nothing else. A browser that was just wiped
+arrives with an EMPTY list, so "local is the truth" would erase the player's
+cloud copy and recreate the original bug. Deletion is only ever the explicit
+`toon_builds_delete` / the Delete button.
+
+### Free vs paid
+The account sign-in is deliberately **free**. `?acct=1` on the return URL picks
+the account door in `premium/lib/routes.py`; it issues a token with
+`tier="free"` for non-members and `tier="member"` for members, delivered as
+`#acct=` and stored under `toon-forge:acct` — a separate key from the premium
+token (`nwcb_premium_token`), so a free token can never be mistaken for a
+membership. `/api/optimize` and `/api/optimizer_js` check `tier == "member"`;
+`/api/builds` does not.
+
+- Schema: `premium/supabase-toon-builds-setup.sql` (`toon_builds` +
+  `toon_builds_sync` / `toon_builds_delete`, admin-pass guarded, same pattern
+  as `premium_usage`).
+- Caps: 50 builds per player, 256 KB per build. `MAX_BUILDS` in
+  `toon-forge.html` and `MAX_BUILDS` in `premium/lib/builds.py` must stay equal
+  or the site will offer saves the server refuses.
+- The old saved list silently dropped the oldest build past 20
+  (`list.shift()`). That is gone — saving now refuses at the cap and says so.
+
+**Deploying a backend change here needs BOTH:** the SQL run in Supabase, and
+`premium/` redeployed to Vercel (`vercel --prod` from `premium/`). `premium/`
+is gitignored, so pushing the website repo does not ship it.
+
+---
+
 ## News Workflow
 
 ### Staging
