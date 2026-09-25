@@ -287,4 +287,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RC-5 Dancing Lights (both screens): IDENTICAL, base cd 13.3 s confirmed (12 / 12.5 shown) - sharedIdentical (2026-09-24, n00b)
 - RC-6 Flourish (both screens): IDENTICAL, base cd 17.2 s confirmed (15.5 / 16 shown) - sharedIdentical (2026-09-24, n00b)
 - RC-7 Duet (both screens): IDENTICAL, base cd 15.3 s confirmed on the Minstrel (13.7 / 14.2 shown) - sharedIdentical (2026-09-24, n00b)
+- RC-8 Encore (both screens): IDENTICAL - sharedIdentical; Inspiration already read on both at BD-12 - sharedIdentical. BARD SHARED-ITEM RE-CHECK COMPLETE (2026-09-24). Resume Minstrel feats one per turn at Desperate Finale (Pianissimo was presented but never ruled - re-present).
 
