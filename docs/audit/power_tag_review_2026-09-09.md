@@ -286,4 +286,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RC-4 Lunge (Minstrel screen): IDENTICAL (7.1 s shown vs 6.8 = Recharge difference, base 7.6) - sharedIdentical (2026-09-24, fine)
 - RC-5 Dancing Lights (both screens): IDENTICAL, base cd 13.3 s confirmed (12 / 12.5 shown) - sharedIdentical (2026-09-24, n00b)
 - RC-6 Flourish (both screens): IDENTICAL, base cd 17.2 s confirmed (15.5 / 16 shown) - sharedIdentical (2026-09-24, n00b)
+- RC-7 Duet (both screens): IDENTICAL, base cd 15.3 s confirmed on the Minstrel (13.7 / 14.2 shown) - sharedIdentical (2026-09-24, n00b)
 
