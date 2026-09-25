@@ -284,4 +284,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RC-2 Rejuvenating Carol (Minstrel copy): 150 cost, 200 PER TICK (n00b), 30 s, radius 80 ft, no cancel (Songblade: 100 / 100 per tick / 60 s / Self / cancels); tick interval still to test (2026-09-22, n00b ruling)
 - RC-3 Fleche (Minstrel screen): IDENTICAL to the Songblade - sharedIdentical (2026-09-24, fine)
 - RC-4 Lunge (Minstrel screen): IDENTICAL (7.1 s shown vs 6.8 = Recharge difference, base 7.6) - sharedIdentical (2026-09-24, fine)
+- RC-5 Dancing Lights (both screens): IDENTICAL, base cd 13.3 s confirmed (12 / 12.5 shown) - sharedIdentical (2026-09-24, n00b)
 
