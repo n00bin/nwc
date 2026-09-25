@@ -289,4 +289,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RC-7 Duet (both screens): IDENTICAL, base cd 15.3 s confirmed on the Minstrel (13.7 / 14.2 shown) - sharedIdentical (2026-09-24, n00b)
 - RC-8 Encore (both screens): IDENTICAL - sharedIdentical; Inspiration already read on both at BD-12 - sharedIdentical. BARD SHARED-ITEM RE-CHECK COMPLETE (2026-09-24). Resume Minstrel feats one per turn at Desperate Finale (Pianissimo was presented but never ruled - re-present).
 - BF-N11 Desperate Finale (Minstrel feat T4a): 600 Performance when the gauge drops under 200, once per 360 s (2026-09-24, fine)
+- BF-N12 Pianissimo (T4b): Carol 100/160, Minuet 120/1600, Etude 150/480 (cheaper, 80% heal); Encore exempt (2026-09-24, fine)
 
