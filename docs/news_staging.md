@@ -12,6 +12,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 - **Deleting a build now deletes it everywhere.** If you're signed in, deleting a build removes it from your account too, so it can't reappear later.
 
+### Data Additions
+
+- **Demon Ward overload added.** Demons that strike you take a 10% damage reduction, and allies you heal share the ward for 10 seconds. It now appears in the Overload picker, and "Demon" is a tickable enemy type in the Combat scenario panel.
+
 ## Week of September 14, 2026
 
 ### Features
