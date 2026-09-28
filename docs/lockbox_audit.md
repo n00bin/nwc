@@ -1,6 +1,6 @@
 # Lockbox audit — icons + coverage (2026-09-28)
 
-**Shipped:** icons are wired into `data/lockboxes.json` (`icon.direct_image_url` → `images/lockboxes/<catalog id>.webp`) and render on the Consumables → Lockboxes tab. 80 of 85 catalog entries have an icon. Still without one: Buried Treasure, Wild Adventures, Astral Casket, Tarmalune Mystery Box, Magnificent Resurgence Lockbox.
+**Shipped:** icons are wired into `data/lockboxes.json` (`icon.direct_image_url` → `images/lockboxes/<catalog id>.webp`) and render on the Consumables → Lockboxes tab. 80 of 85 catalog entries have an icon. Still without one: Wild Adventures, Astral Casket, Tarmalune Mystery Box, Magnificent Resurgence Lockbox. (Buried Treasure added 2026-09-28 from wiki File:Icon_M33_Lockbox_B.png.)
 
 Sources: Official Neverwinter Wiki `Lockbox` table (stops at Dragon Cult, June 2022), NW Hub "Packs & Lockboxes" catalogue (72 boxes, 2013–2026), and the official Arc Games news feed (every "Lockbox" article, 103 hits, used for the post-2022 names and the newest two boxes).
 
@@ -104,3 +104,6 @@ Every featured mount/companion/artifact from all 75 boxes exists in our data exc
 - **Hag's Hexing Cauldron** (legendary mount, Spellbound Lockbox) — we have "Hag's Cauldron", "Hag's Cooking Cauldron" and "Hag's Enchanted Cauldron"; confirm which entry is the Hexing (legendary) one or whether it is missing.
 
 Name-only differences (present, spelled differently): Crystal Golem → Crystalline Golem; Bobby the Barbarian → Bobby; Xaryxian Defector → Xaryxian; Diana the Acrobat → Diana; Minotaur Mercenary → Minotaur; Twice-Pale Alder Mount → Twice-Pale Alder.
+
+## Trust note (2026-09-28)
+NW Hub's `bloodthirst_chalice.webp` is actually the **Laughing Void** icon (pink orb). Verified against n00b's Bloodthirst Chalice tooltip silhouette (a ring/bowl) and the wiki uploads `Icon_Inventory_Artifact_M325_Bloodthirstchalice.png` / `Icon_Inventory_Artifact_M335_Laughingvoid.png`. Treat NW Hub artifact icon names for Mod 32.5+ items as unverified; the wiki `File:` namespace (`list=allimages&aiprefix=Icon_Inventory_Artifact_M3`) is the better source for new-module icons.

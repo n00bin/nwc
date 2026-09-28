@@ -8,6 +8,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
+- **More icons found online.** Laughing Void and Bloodthirst Chalice now show their real in-game icons (the Bloodthirst one we had briefly was mislabeled at the source), the Buried Treasure Lockbox has its box icon, and the Prototype Realm Engine gadget on Campaign Boosters has its art.
 - **Campaign Boosters now show companion icons.** All twelve booster companions have their icon next to the name; the six gadgets show a placeholder until we have in-game screenshots of them.
 - **Lockboxes tab added under Consumables.** Browse the historical lockbox catalog with search, entry-type and availability filters, reward details, source links, and clearly labeled rate information. Unverified icons and incomplete reward lists are marked.
 - **Lockbox icons.** Every lockbox in the catalog now shows its in-game box icon (80 of 85 entries, including the Waukeen chests and both Gifts of the Gods). Only the two newest boxes, Buried Treasure and Wild Adventures, and three recurring containers still wait on an in-game screenshot.
