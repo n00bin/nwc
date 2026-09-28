@@ -1209,6 +1209,11 @@
     }
     .hero-correction-callout .hcc-body { flex: 1 1 auto; }
     .hero-correction-callout strong { color: var(--amber); }
+    .hero-correction-callout .hcc-details > summary {
+      cursor: pointer;
+      list-style: none;
+    }
+    .hero-correction-callout .hcc-details > summary::-webkit-details-marker { display: none; }
     .hero-correction-callout .hcc-pencil {
       color: var(--amber);
       padding: 0 0.3rem;
@@ -2094,8 +2099,69 @@
     /* ===== Mobile responsive ===== */
     @media (max-width: 768px) {
       body { font-size: 14px; }
-      .hero { padding: 1.2rem 1rem; }
+      .hero { padding: 0.9rem 0.85rem 0.75rem; }
       .hero h1 { font-size: 1.4rem; }
+      .hero p { font-size: 0.86rem; line-height: 1.4; }
+
+      /* Keep the builder close to the top on phones. The longer correction
+         guide stays available behind its summary when a player needs it. */
+      .hero-correction-callout {
+        margin-top: 0.65rem;
+        padding: 0.55rem 0.65rem;
+        gap: 0.45rem;
+        font-size: 0.84rem;
+      }
+      .hero-correction-callout .hcc-icon { font-size: 1.1rem; }
+      .hero-correction-callout .hcc-details > summary {
+        position: relative;
+        padding-right: 1.1rem;
+        line-height: 1.35;
+      }
+      .hero-correction-callout .hcc-details > summary::after {
+        content: "▾";
+        position: absolute;
+        right: 0;
+        color: var(--amber);
+      }
+      .hero-correction-callout .hcc-details:not([open]) > summary::after { content: "▸"; }
+      .hero-correction-callout .hcc-btn { min-height: 40px; }
+
+      /* Give the tool buttons a consistent, thumb-sized layout. */
+      .hero-actions { margin-top: 0.6rem !important; gap: 0.4rem !important; }
+      .hero-actions .ha-group {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        gap: 0.35rem !important;
+        padding: 0.35rem !important;
+      }
+      .hero-actions .ha-group > button,
+      .hero-actions .tf-comm-wrap > button {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        padding: 0.5rem 0.45rem;
+        font-size: 0.78rem;
+      }
+      .hero-actions .ha-group > .tf-comm-wrap { display: block; min-width: 0; }
+      .hero-actions .tf-comm-menu { min-width: min(260px, calc(100vw - 2rem)); }
+      #tf-premium-soon { width: 100%; }
+      #tf-premium-soon > div {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+      }
+      #tf-premium-soon > div > span:first-child {
+        grid-column: 1 / -1;
+        text-align: center;
+      }
+      #tf-premium-soon button {
+        min-width: 0;
+        min-height: 44px;
+        padding: 0.5rem 0.35rem;
+        font-size: 0.74rem;
+        white-space: normal;
+      }
 
       /* Step nav: horizontal scroll instead of squeezing */
       .steps {
@@ -2654,8 +2720,9 @@
     <div class="hero-correction-callout" role="note">
       <span class="hcc-icon">✎</span>
       <div class="hcc-body">
-        <strong>Something not matching in-game? You can fix it yourself.</strong>
-        <ul class="hcc-list">
+        <details class="hcc-details" id="hcc-details" open>
+          <summary><strong>Something not matching in-game? You can fix it yourself.</strong></summary>
+          <ul class="hcc-list">
           <li>
             <span class="hcc-chip hcc-chip-fix">✎</span>
             <span><b>A number looks wrong.</b> Tap the pencil next to any item — stats, names, anything.</span>
@@ -2664,11 +2731,12 @@
             <span class="hcc-chip hcc-chip-add">+ Add Missing</span>
             <span><b>Your item isn't in the list.</b> Open that slot's picker and hit the green button at the top.</span>
           </li>
-        </ul>
-        <div class="hcc-foot">
-          <span class="hcc-foot-note">Either way, your build uses your version right away — and it's sent to us for review.</span>
-          <button type="button" class="hcc-btn" id="contributions-link" onclick="openContributionsModal();return false;" title="See the corrections and items you've submitted">Your submissions<span class="hcc-btn-count" style="display:none;"></span></button>
-        </div>
+          </ul>
+          <div class="hcc-foot">
+            <span class="hcc-foot-note">Either way, your build uses your version right away — and it's sent to us for review.</span>
+            <button type="button" class="hcc-btn" id="contributions-link" onclick="openContributionsModal();return false;" title="See the corrections and items you've submitted">Your submissions<span class="hcc-btn-count" style="display:none;"></span></button>
+          </div>
+        </details>
       </div>
     </div>
     <div class="hero-actions" style="display:flex;gap:0.6rem;margin-top:1rem;align-items:stretch;justify-content:center;flex-wrap:wrap;">
@@ -2710,6 +2778,20 @@
       </div>
     </div>
   </div>
+
+  <script>
+    (() => {
+      const guide = document.getElementById("hcc-details");
+      if (!guide || !window.matchMedia) return;
+      const mobile = window.matchMedia("(max-width: 768px)");
+      let userToggled = false;
+      guide.querySelector("summary").addEventListener("click", () => { userToggled = true; });
+      const syncGuide = () => { if (!userToggled) guide.open = !mobile.matches; };
+      syncGuide();
+      if (mobile.addEventListener) mobile.addEventListener("change", syncGuide);
+      else if (mobile.addListener) mobile.addListener(syncGuide);
+    })();
+  </script>
 
   <div class="steps" id="steps">
     <div class="step active" data-step="1"><span class="num">1</span> Role &amp; Class</div>
