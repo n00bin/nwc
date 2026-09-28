@@ -8,6 +8,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
+- **Consumables icons.** 33 more consumables now show their in-game icon: all the Stronghold and event foods, the six Wondrous Dragons, Scrolls of Fate, Scroll of Life, Potion of Giant Strength and more. Icons are drawn a little larger with the full art, like the other pages.
 - **More icons found online.** Laughing Void and Bloodthirst Chalice now show their real in-game icons (the Bloodthirst one we had briefly was mislabeled at the source), the Buried Treasure Lockbox has its box icon, and the Prototype Realm Engine gadget on Campaign Boosters has its art.
 - **Campaign Boosters now show companion icons.** All twelve booster companions have their icon next to the name; the six gadgets show a placeholder until we have in-game screenshots of them.
 - **Lockboxes tab added under Consumables.** Browse the historical lockbox catalog with search, entry-type and availability filters, reward details, source links, and clearly labeled rate information. Unverified icons and incomplete reward lists are marked.
