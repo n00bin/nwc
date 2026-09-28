@@ -30,6 +30,9 @@
     }
     .cb-card:hover { border-color: var(--border-accent); }
     .cb-header { display:flex; justify-content:space-between; align-items:center; }
+    .cb-title { display:flex; align-items:center; gap:0.6rem; min-width:0; }
+    .cb-icon { width:40px; height:40px; flex:0 0 40px; object-fit:contain; }
+    .cb-icon-placeholder { width:40px; height:40px; flex:0 0 40px; box-sizing:border-box; border:1px dashed var(--border-default); border-radius:var(--radius-sm); color:var(--text-muted); font-size:0.6rem; line-height:1.1; text-align:center; display:grid; place-items:center; }
     .cb-name { font-weight:700; font-size:1.05rem; }
     .cb-info { display:flex; justify-content:space-between; padding:0.3rem 0; border-bottom:1px solid var(--border-default); font-size:0.88rem; }
     .cb-info:last-child { border-bottom:none; }
@@ -116,7 +119,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Prototype Realm Engine</span>
+        <span class="cb-title"><div class="cb-icon-placeholder" role="img" aria-label="No icon yet">No<br>icon</div><span class="cb-name">Prototype Realm Engine</span></span>
         <span class="cb-boost">+15%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Gadget (Quickslot)</span></div>
@@ -127,7 +130,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Lantern of the Gravewalker</span>
+        <span class="cb-title"><div class="cb-icon-placeholder" role="img" aria-label="No icon yet">No<br>icon</div><span class="cb-name">Lantern of the Gravewalker</span></span>
         <span class="cb-boost">+15%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Gadget (Quickslot)</span></div>
@@ -138,7 +141,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Gravity Orb</span>
+        <span class="cb-title"><div class="cb-icon-placeholder" role="img" aria-label="No icon yet">No<br>icon</div><span class="cb-name">Gravity Orb</span></span>
         <span class="cb-boost">+15%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Gadget (Quickslot)</span></div>
@@ -149,7 +152,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Frost Visage</span>
+        <span class="cb-title"><div class="cb-icon-placeholder" role="img" aria-label="No icon yet">No<br>icon</div><span class="cb-name">Frost Visage</span></span>
         <span class="cb-boost">+15%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Gadget (Quickslot)</span></div>
@@ -160,7 +163,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Echo Locator</span>
+        <span class="cb-title"><div class="cb-icon-placeholder" role="img" aria-label="No icon yet">No<br>icon</div><span class="cb-name">Echo Locator</span></span>
         <span class="cb-boost">+15%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Gadget (Quickslot)</span></div>
@@ -172,7 +175,7 @@
     <div class="cb-card" style="border:1px dashed var(--highlight);opacity:0.85;">
       <div style="color:var(--highlight);font-size:0.78rem;font-weight:600;margin-bottom:0.4rem;">&#9888; UNCONFIRMED &mdash; details below are not verified in-game yet. Don't plan around this one.</div>
       <div class="cb-header">
-        <span class="cb-name">Synthetic Astral Seed</span>
+        <span class="cb-title"><div class="cb-icon-placeholder" role="img" aria-label="No icon yet">No<br>icon</div><span class="cb-name">Synthetic Astral Seed</span></span>
         <span class="cb-boost">+?%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Gadget (Quickslot)</span></div>
@@ -185,7 +188,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Stronghold's Cleric</span>
+        <span class="cb-title"><img class="cb-icon" src="images/companions/stronghold_cleric.webp" alt="" loading="lazy"><span class="cb-name">Stronghold's Cleric</span></span>
         <span class="cb-boost">+10%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
@@ -196,7 +199,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Demonic Servant</span>
+        <span class="cb-title"><img class="cb-icon" src="images/companions/demonic-servant.webp" alt="" loading="lazy"><span class="cb-name">Demonic Servant</span></span>
         <span class="cb-boost">+10%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
@@ -207,7 +210,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Shadar-kai Witch</span>
+        <span class="cb-title"><img class="cb-icon" src="images/companions/shadar-kai-witch (2).webp" alt="" loading="lazy"><span class="cb-name">Shadar-kai Witch</span></span>
         <span class="cb-boost">+10%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
@@ -218,7 +221,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Chultan Hunter</span>
+        <span class="cb-title"><img class="cb-icon" src="images/companions/chultan_hunter.webp" alt="" loading="lazy"><span class="cb-name">Chultan Hunter</span></span>
         <span class="cb-boost">+10%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
@@ -229,7 +232,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Eladrin</span>
+        <span class="cb-title"><img class="cb-icon" src="images/companions/eladrin.webp" alt="" loading="lazy"><span class="cb-name">Eladrin</span></span>
         <span class="cb-boost">+10%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
@@ -240,7 +243,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Skyblazer</span>
+        <span class="cb-title"><img class="cb-icon" src="images/companions/skyblazer.webp" alt="" loading="lazy"><span class="cb-name">Skyblazer</span></span>
         <span class="cb-boost">+10%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
@@ -251,7 +254,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Vistani Wanderer</span>
+        <span class="cb-title"><img class="cb-icon" src="images/companions/vistani_wanderer.webp" alt="" loading="lazy"><span class="cb-name">Vistani Wanderer</span></span>
         <span class="cb-boost">+3.8%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
@@ -262,7 +265,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Watler</span>
+        <span class="cb-title"><img class="cb-icon" src="images/companions/walter.webp" alt="" loading="lazy"><span class="cb-name">Watler</span></span>
         <span class="cb-boost">2x</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
@@ -273,7 +276,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Wiggins the Undead Intern</span>
+        <span class="cb-title"><img class="cb-icon" src="images/companions/wiggins_the_undead_intern.webp" alt="" loading="lazy"><span class="cb-name">Wiggins the Undead Intern</span></span>
         <span class="cb-boost">+10%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
@@ -284,7 +287,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Mage Slayer</span>
+        <span class="cb-title"><img class="cb-icon" src="images/companions/mage-slayer (2).webp" alt="" loading="lazy"><span class="cb-name">Mage Slayer</span></span>
         <span class="cb-boost">2x</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
@@ -295,7 +298,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Hell Hound</span>
+        <span class="cb-title"><img class="cb-icon" src="images/companions/hell-hound (2).webp" alt="" loading="lazy"><span class="cb-name">Hell Hound</span></span>
         <span class="cb-boost">+10%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
@@ -306,7 +309,7 @@
 
     <div class="cb-card">
       <div class="cb-header">
-        <span class="cb-name">Dark Dealer</span>
+        <span class="cb-title"><img class="cb-icon" src="images/companions/dark-dealer.webp" alt="" loading="lazy"><span class="cb-name">Dark Dealer</span></span>
         <span class="cb-boost">+10%</span>
       </div>
       <div class="cb-info"><span class="cb-label">Type</span><span class="cb-val">Companion</span></div>
