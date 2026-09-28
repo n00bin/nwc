@@ -1214,6 +1214,12 @@
       list-style: none;
     }
     .hero-correction-callout .hcc-details > summary::-webkit-details-marker { display: none; }
+    .hero-correction-callout .hcc-details > summary::after {
+      content: "▾";
+      margin-left: 0.4rem;
+      color: var(--amber);
+    }
+    .hero-correction-callout .hcc-details:not([open]) > summary::after { content: "▸"; }
     .hero-correction-callout .hcc-pencil {
       color: var(--amber);
       padding: 0 0.3rem;
@@ -2121,6 +2127,7 @@
         content: "▾";
         position: absolute;
         right: 0;
+        margin-left: 0;
         color: var(--amber);
       }
       .hero-correction-callout .hcc-details:not([open]) > summary::after { content: "▸"; }
