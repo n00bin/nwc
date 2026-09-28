@@ -290,4 +290,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RC-8 Encore (both screens): IDENTICAL - sharedIdentical; Inspiration already read on both at BD-12 - sharedIdentical. BARD SHARED-ITEM RE-CHECK COMPLETE (2026-09-24). Resume Minstrel feats one per turn at Desperate Finale (Pianissimo was presented but never ruled - re-present).
 - BF-N11 Desperate Finale (Minstrel feat T4a): 600 Performance when the gauge drops under 200, once per 360 s (2026-09-24, fine)
 - BF-N12 Pianissimo (T4b): Carol 100/160, Minuet 120/1600, Etude 150/480 (cheaper, 80% heal); Encore exempt (2026-09-24, fine)
-
+- BF-N13 Storyteller (Minstrel feat T5a): manual song -> party role buff 5%/stack x3, 15 s, 50 ft (2026-09-28, fine)
+- BF-N14 Gambler (T5b): stacks Gambler's Delight per manual heal song (15 s), spent by the Reprised Carols; unused expiry = 100 party heal; max stacks TEST (2026-09-28, fine)
+## BARD COMPLETE 2026-09-28: both paragons - 20 powers, 12 songs, 9 mechanics, 16 features, 20 feats; shared items re-checked per paragon (2 variants). Open tests: Performance fill rate, Con Elemento variants, Staccato hits, carol tick interval, projectile bucket, Soloist in group, Performer/Loremaster procs, Aurora drain, Reprised Carol odds, Starstruck, Gambler max stacks. Next class: Cleric.
