@@ -19,6 +19,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/lockboxes.css">
   <style>
     .cnsm-page { max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
     .cnsm-page h2 { margin: 0 0 0.4rem; }
@@ -314,15 +315,37 @@
 <body>
   <nav class="navbar"></nav>
 
+  <div class="controls-bar view-tabs" role="tablist" aria-label="Consumables sections">
+    <button class="view-tab active" id="tab-consumables" type="button" role="tab" aria-selected="true" aria-controls="consumables-view" data-consumables-tab="consumables">Consumables</button>
+    <button class="view-tab" id="tab-lockboxes" type="button" role="tab" aria-selected="false" aria-controls="lockboxes-view" data-consumables-tab="lockboxes" tabindex="-1">Lockboxes</button>
+  </div>
+
   <!-- Filters / Search (standard site controls bar) -->
-  <div class="controls-bar">
+  <div class="controls-bar" id="consumables-controls">
     <input type="text" class="search-input" id="cnsm-search" placeholder="Search consumables...">
     <select class="filter-select" id="cnsm-cat">
       <option value="">All Categories</option>
     </select>
   </div>
 
-  <div class="cnsm-page">
+  <div class="controls-bar" id="lockboxes-controls" hidden>
+    <input type="text" class="search-input" id="lb-search" placeholder="Search lockboxes or rewards...">
+    <select class="filter-select" id="lb-group">
+      <option value="">All Entry Types</option>
+      <option value="keyed_lockboxes">Keyed Lockboxes</option>
+      <option value="related_containers">Related Containers</option>
+      <option value="historical_variants">Historical Variants</option>
+    </select>
+    <select class="filter-select" id="lb-availability">
+      <option value="">All Availability</option>
+      <option value="currently_dropping">Currently Dropping</option>
+      <option value="rotated_out_of_current_drops">Not Currently Dropping</option>
+      <option value="periodic_resurgence">Periodic Return</option>
+      <option value="unknown">Not Confirmed</option>
+    </select>
+  </div>
+
+  <main id="consumables-view" class="cnsm-page" role="tabpanel" aria-labelledby="tab-consumables" tabindex="0">
     <h2>Consumables &amp; Buffs</h2>
     <p class="cnsm-intro">Potions, foods, scrolls — the stuff you pop before a fight for a quick edge. Anything marked <span class="cnsm-excl-badge">Only one active at a time</span> won't stack within its own category, but it plays nice with the others. See <a href="mekaniks.html#view-stacking" target="_blank" style="color:var(--amber);">Mekaniks → Stacking</a> for how buffs combine with diminishing returns from other sources.</p>
 
@@ -340,12 +363,21 @@
 
     <div class="cnsm-count" id="cnsm-count"></div>
     <div id="cnsm-sections"></div>
-  </div>
+  </main>
+
+  <main id="lockboxes-view" class="lb-page" role="tabpanel" aria-labelledby="tab-lockboxes" tabindex="0" hidden>
+    <h2>Neverwinter Lockboxes</h2>
+    <p class="lb-intro">Browse the lockboxes and related containers recorded in the catalog. Search names and rewards, then open an entry to see its reward details, rate information, and source links.</p>
+    <div class="lb-note" role="note">Reward lists may be incomplete. Exact displayed odds and historical community estimates are labeled separately. Direct game icon images are shown only when verified. Availability can change with updates.</div>
+    <div class="lb-count" id="lb-count" aria-live="polite">Loading lockbox catalog…</div>
+    <div class="lb-grid" id="lb-cards"></div>
+  </main>
 
   <script src="data/buffs.js"></script>
   <script src="data/consumable-images.js"></script>
   <script src="js/shared.js"></script>
   <script src="js/consumables-page.js"></script>
+  <script src="js/lockboxes-page.js"></script>
   <script src="js/analytics.js"></script>
 </body>
 </html>

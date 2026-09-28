@@ -24,7 +24,7 @@ A static website (GitHub Pages) for Neverwinter (PS5) players. It's a reference 
 | `companions.html` | Companion database (Lookup, Summoned Buffs, Enhancements, Damage tabs) |
 | `mounts.html` | Mount database (Lookup, Rankings, Collars, Insignias, Stable Planner) |
 | `artifacts.html` | Artifact reference with icons |
-| `consumables.html` | Buffs/consumables with duration filters |
+| `consumables.html` | Consumable and lockbox tabs with searchable rewards and rate information |
 | `mekaniks.html` | Game mechanics and stat explanations (hash deep-links to tabs) |
 | `professions.html` | Crafting/profession guide (artisan table, masterwork) |
 | `campaign-boosters.html` | Companions and items that boost campaign currencies |

@@ -6,6 +6,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of September 28, 2026
 
+### Features
+
+- **Lockboxes tab added under Consumables.** Browse the historical lockbox catalog with search, entry-type and availability filters, reward details, source links, and clearly labeled rate information. Unverified icons and incomplete reward lists are marked.
+
 ### Data Additions
 
 - **Umbral Widow mount (M33.5 preview).** Added with its Illuminated + Crescent + Regal + Universal insignia slots, the Shadow Sight equip power (+3% Movement Speed, +1.5% Awareness, +2,700 Combined Rating at Mythic) and the Tunnel Vision combat power. Screenshot-verified from the Wondrous Bazaar Mount Preview.

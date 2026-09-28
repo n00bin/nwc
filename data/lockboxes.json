@@ -1,0 +1,2827 @@
+{
+  "dataset_name": "Neverwinter Lockbox Catalog",
+  "schema_version": "1.0.0",
+  "last_checked": "2026-09-24",
+  "coverage": {
+    "keyed_lockbox_count": 73,
+    "related_container_count": 11,
+    "scope": "Named keyed lockboxes in the historical index plus official releases through Wild Adventures Lockbox (2026-09-01). Related recurring/event containers are listed separately.",
+    "contents_limit": "Most rows have confirmed headliner rewards only. The detailed outcome groups are copied from the cited wiki pages where available; the file does not claim every possible item inside every reward pack.",
+    "icon_limit": "Direct icon image URLs were not verified in this pass. Each record links to a source page where an icon may be shown.",
+    "drop_rate_limit": "Dragon Cult odds are transcribed from its chance table. A few pre-2022 rates are historical community estimates, not official odds. Later lockboxes display odds in-game, but most exact values were not transcribed.",
+    "platform_limit": "Historical dates are PC dates from the index. Console release timing differed for older boxes."
+  },
+  "sources": [
+    {
+      "name": "Lockbox index",
+      "url": "https://neverwinter.fandom.com/wiki/Lockbox",
+      "type": "community-maintained index"
+    },
+    {
+      "name": "Historical RNG tests and limitations",
+      "url": "https://neverwinter.fandom.com/wiki/RNG_Tests",
+      "type": "community sample estimates"
+    },
+    {
+      "name": "RNG Value Calculator",
+      "url": "https://www.nwo-uncensored.com/phpBB3/app.php/nwountools/ahtools/rngvalue",
+      "type": "community sample estimates"
+    },
+    {
+      "name": "Dragon Cult Lockbox and odds changes",
+      "url": "https://www.arcgames.com/en/corp-news/detail/11517143-dev-blog%3A-dragon-cult-lockbox-%26-lockbox-changes",
+      "type": "official announcement"
+    }
+  ],
+  "keyed_lockboxes": [
+    {
+      "id": "nightmare-lockbox",
+      "name": "Nightmare Lockbox",
+      "release_date_pc": "2013-04-25",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Heavy Inferno Nightmare",
+        "Phoera"
+      ],
+      "contents_detail_status": "detailed_box_outcomes_transcribed",
+      "contents_detail": {
+        "always": [
+          "Approximately 10 Tarmalune Trade Bars"
+        ],
+        "one_of": [
+          "Heavy Inferno Nightmare Mount",
+          "Phoera Companion",
+          "Lesser Plague Fire Enchantment",
+          "Lesser Tenebrous Enchantment",
+          "Lesser Indomitable Runestone",
+          "Gloomwrought Weapons Crate",
+          "Coffer of Enchantments",
+          "Coffer of Runestones",
+          "Leadership Special Pack Profession Pack"
+        ]
+      },
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Nightmare_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Nightmare_Lockbox"
+      ]
+    },
+    {
+      "id": "feywild-lockbox",
+      "name": "Feywild Lockbox",
+      "release_date_pc": "2013-08-22",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Sylvan Stag",
+        "Aranea"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Feywild_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Feywild_Lockbox"
+      ]
+    },
+    {
+      "id": "dark-forest-lockbox",
+      "name": "Dark Forest Lockbox",
+      "release_date_pc": "2013-10-03",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Owlbear",
+        "Pseudodragon"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Dark_Forest_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Dark_Forest_Lockbox"
+      ]
+    },
+    {
+      "id": "rusted-iron-lockbox",
+      "name": "Rusted Iron Lockbox",
+      "release_date_pc": "2013-12-05",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Apparatus of Kwalish",
+        "Rust Monster"
+      ],
+      "contents_detail_status": "detailed_box_outcomes_transcribed",
+      "contents_detail": {
+        "always": [
+          "Tarmalune Trade Bars"
+        ],
+        "one_of": [
+          "Apparatus of Kwalish Mount",
+          "Rust Monster Companion",
+          "Artifact Provisions Pack",
+          "Jeweled Thayan Equipment Crate",
+          "Iron Strongbox of Enchantments",
+          "Leadership Special Pack",
+          "Thayan Relic Fragment",
+          "Tarmalune Trade Bar Jackpot"
+        ]
+      },
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Rusted_Iron_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Rusted_Iron_Lockbox"
+      ]
+    },
+    {
+      "id": "unearthed-lockbox",
+      "name": "Unearthed Lockbox",
+      "release_date_pc": "2014-02-13",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Emperor Beetle",
+        "Giant Beetle",
+        "Thayan Book of the Dead"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Unearthed_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Unearthed_Lockbox"
+      ]
+    },
+    {
+      "id": "frozen-crystal-lockbox",
+      "name": "Frozen Crystal Lockbox",
+      "release_date_pc": "2014-05-13",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Black Ice Warhorse",
+        "Black Ice Ioun Stone",
+        "Sphere of Black Ice"
+      ],
+      "contents_detail_status": "detailed_box_outcomes_transcribed",
+      "contents_detail": {
+        "always": [
+          "Tarmalune Trade Bars"
+        ],
+        "one_of": [
+          "Black Ice Warhorse Mount",
+          "Black Ice Ioun Stone Companion",
+          "Sphere of Black Ice Artifact",
+          "Slayer Amulet of the Xvim",
+          "Artifact Provisions Pack",
+          "Corrupted Strongbox of Enchantments",
+          "Black Ice Shaping Special Pack",
+          "Dated Companion Fortification Kit",
+          "Reghed Barbarian Relic",
+          "Tarmalune Trade Bar Jackpot"
+        ]
+      },
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Frozen_Crystal_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Frozen_Crystal_Lockbox"
+      ]
+    },
+    {
+      "id": "lockbox-of-the-magnificent-emporium",
+      "name": "Lockbox of the Magnificent Emporium",
+      "release_date_pc": "2014-06-27",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Tenser's Floating Disk",
+        "Laughing Skull",
+        "Kessell's Spheres of Annihilation"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Magnificent_Emporium",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Magnificent_Emporium"
+      ]
+    },
+    {
+      "id": "tyrannical-lockbox",
+      "name": "Tyrannical Lockbox",
+      "release_date_pc": "2014-08-14",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Imperial Rage Drake",
+        "Rage Drake",
+        "Oghma's Token of Free Movement"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Tyrannical_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Tyrannical_Lockbox"
+      ]
+    },
+    {
+      "id": "fell-dragon-lockbox",
+      "name": "Fell Dragon Lockbox",
+      "release_date_pc": "2014-10-02",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Skeleton Steed",
+        "Assassin Drake",
+        "Belial's Portal Stone"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Fell_Dragon_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Fell_Dragon_Lockbox"
+      ]
+    },
+    {
+      "id": "nine-hells-lockbox",
+      "name": "Nine Hells Lockbox",
+      "release_date_pc": "2014-11-18",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Token of Chromatic Storm",
+        "Heart of the Black Dragon",
+        "Heart of the Blue Dragon",
+        "Heart of the Green Dragon",
+        "Heart of the White Dragon"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Nine_Hells_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Nine_Hells_Lockbox"
+      ]
+    },
+    {
+      "id": "dragonforged-lockbox",
+      "name": "Dragonforged Lockbox",
+      "release_date_pc": "2015-01-15",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Sigil of the Metallic Ancestry Dragonborn",
+        "Gorgon",
+        "Iron Golem"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Dragonforged_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Dragonforged_Lockbox"
+      ]
+    },
+    {
+      "id": "black-earth-lockbox",
+      "name": "Black Earth Lockbox",
+      "release_date_pc": "2015-04-07",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Armored Bulette",
+        "Bulette",
+        "Symbol of Earth"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Black_Earth_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Black_Earth_Lockbox"
+      ]
+    },
+    {
+      "id": "eternal-flame-lockbox",
+      "name": "Eternal Flame Lockbox",
+      "release_date_pc": "2015-06-04",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Armored Giant Strider",
+        "Giant Strider",
+        "Symbol of Fire"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Eternal_Flame_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Eternal_Flame_Lockbox"
+      ]
+    },
+    {
+      "id": "crushing-wave-lockbox",
+      "name": "Crushing Wave Lockbox",
+      "release_date_pc": "2015-08-12",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Coastal Flail Snail",
+        "Flail Snail",
+        "Symbol of Water"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Crushing_Wave_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Crushing_Wave_Lockbox"
+      ]
+    },
+    {
+      "id": "howling-hatred-lockbox",
+      "name": "Howling Hatred Lockbox",
+      "release_date_pc": "2015-10-01",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Armored Axe Beak",
+        "Axe Beak",
+        "Symbol of Air"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Howling_Hatred_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Howling_Hatred_Lockbox"
+      ]
+    },
+    {
+      "id": "glorious-resurgence-lockbox",
+      "name": "Glorious Resurgence Lockbox",
+      "release_date_pc": "2015-11-17",
+      "availability_status": "periodic_resurgence",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Glorious Resurgence Legendary Pack",
+        "Glorious Resurgence Epic Mounts Pack",
+        "Glorious Resurgence Epic Companions Pack",
+        "Glorious Resurgence Epic Artifacts Pack"
+      ],
+      "contents_detail_status": "detailed_box_outcomes_transcribed",
+      "contents_detail": {
+        "always": [
+          "Tarmalune Trade Bars"
+        ],
+        "one_of": [
+          "Glorious Resurgence Legendary Pack",
+          "Glorious Resurgence Epic Artifacts Pack",
+          "Glorious Resurgence Epic Companions Pack",
+          "Glorious Resurgence Epic Mounts Pack",
+          "Howling Adventure Pack",
+          "Full Moon Enchantment Pack",
+          "Cursed Artifact Equipment Pack",
+          "Bloodied Companion Equipment Pack",
+          "Darkened Night Stronghold Pack",
+          "Variety Fashion Pack",
+          "Tarmalune Trade Bar Jackpot"
+        ]
+      },
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Glorious_Resurgence_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Glorious_Resurgence_Lockbox"
+      ]
+    },
+    {
+      "id": "new-life-lockbox",
+      "name": "New Life Lockbox",
+      "release_date_pc": "2016-01-21",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "New Life Legendary Companion Pack",
+        "New Life Epic Companion Pack",
+        "Horn of Valhalla"
+      ],
+      "contents_detail_status": "detailed_box_outcomes_transcribed",
+      "contents_detail": {
+        "always": [
+          "Tarmalune Trade Bars"
+        ],
+        "possible_outcomes": [
+          "New Life Legendary Companion Pack",
+          "New Life Epic Companion Pack",
+          "Horn of Valhalla",
+          "Genie's Dusky Footwear Pack"
+        ]
+      },
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/New_Life_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/New_Life_Lockbox"
+      ]
+    },
+    {
+      "id": "shaundakul-lockbox",
+      "name": "Shaundakul Lockbox",
+      "release_date_pc": "2016-03-15",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Armored Griffon Mount Pack"
+      ],
+      "contents_detail_status": "detailed_box_outcomes_transcribed",
+      "contents_detail": {
+        "always": [
+          "Tarmalune Trade Bars"
+        ],
+        "one_of": [
+          "Armored Griffon Mount Pack",
+          "Crescent Insignia Pack",
+          "Regal Insignia Pack",
+          "Barbed Insignia Pack",
+          "Illuminated Insignia Pack",
+          "Enlightened Insignia Pack",
+          "Rare Mount Pack",
+          "Wanderer's Artifact Weapon Pack",
+          "Shaundakul's Artifact Pack",
+          "Rider's Strongbox of Enchantments",
+          "Companion Augmentation Pack",
+          "Professions Master Pack",
+          "Tarmalune Trade Bar Jackpot"
+        ]
+      },
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Shaundakul_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Shaundakul_Lockbox"
+      ]
+    },
+    {
+      "id": "firemane-lockbox",
+      "name": "Firemane Lockbox",
+      "release_date_pc": "2016-06-07",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Swift Golden Lion",
+        "Golden Lion Insignia Pack",
+        "Stalwart Golden Lion"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Firemane_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Firemane_Lockbox"
+      ]
+    },
+    {
+      "id": "runic-lockbox",
+      "name": "Runic Lockbox",
+      "release_date_pc": "2016-08-16",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Runeclad Manticore",
+        "Manticore Insignia Pack"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Runic_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Runic_Lockbox"
+      ]
+    },
+    {
+      "id": "giants-lockbox",
+      "name": "Giants' Lockbox",
+      "release_date_pc": "2016-11-08",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Eye of the Giant",
+        "Manticore"
+      ],
+      "contents_detail_status": "detailed_box_outcomes_transcribed",
+      "contents_detail": {
+        "always": [
+          "Tarmalune Trade Bars"
+        ],
+        "rare_or_special": [
+          "Eye of the Giant Artifact",
+          "Manticore Companion"
+        ],
+        "one_of": [
+          "Mystic Mount Pack",
+          "Frozen Companion Pack",
+          "Ice-packed Artifact Pack",
+          "Gigantic Stronghold Pack",
+          "Artisan's Professions Pack",
+          "Crystalized Enchantment Pack",
+          "Ostorian Relic Pack",
+          "Tarmalune Trade Bar Jackpot"
+        ]
+      },
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Giants'_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Giants'_Lockbox"
+      ]
+    },
+    {
+      "id": "many-starred-lockbox",
+      "name": "Many-Starred Lockbox",
+      "release_date_pc": "2017-02-21",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Arcane Whirlwind",
+        "Whirlwind",
+        "Tome of Ascendance"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [
+          {
+            "item": "Arcane Whirlwind",
+            "rate_percent": 0.17,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Tarmalune Trade Bars",
+            "average_amount": 8.0,
+            "kind": "historical_community_average"
+          }
+        ],
+        "status": "historical_community_estimates",
+        "sources": [
+          "https://neverwinter.fandom.com/wiki/RNG_Tests",
+          "https://www.nwo-uncensored.com/phpBB3/app.php/nwountools/ahtools/rngvalue"
+        ]
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Many-Starred_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Many-Starred_Lockbox"
+      ]
+    },
+    {
+      "id": "lockbox-of-the-nine",
+      "name": "Lockbox of the Nine",
+      "release_date_pc": "2017-05-02",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Celestial Stag",
+        "Starfade Stag",
+        "Sigil of the Nine"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [
+          {
+            "item": "Celestial Stag",
+            "rate_percent": 0.14,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Starfade Stag",
+            "rate_percent": 0.27,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Sigil of the Nine",
+            "rate_percent": 0.55,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "The Advisor's Artifact Pack",
+            "rate_percent": 17.29,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "The Keep's Artifact Equipment Pack",
+            "rate_percent": 17.22,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "The Noble's Enchantment Pack",
+            "rate_percent": 17.02,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "The Squire's Companion Pack",
+            "rate_percent": 16.72,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "The Cavalry's Mount Pack",
+            "rate_percent": 16.72,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "The Quartermaster's Professions Pack",
+            "rate_percent": 4.6,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "The Lord's Stronghold Pack",
+            "rate_percent": 8.77,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Tarmalune Trade Bar Jackpot",
+            "rate_percent": 0.71,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Tarmalune Trade Bars",
+            "average_amount": 8.05,
+            "kind": "historical_community_average"
+          }
+        ],
+        "status": "historical_community_estimates",
+        "sources": [
+          "https://neverwinter.fandom.com/wiki/RNG_Tests",
+          "https://www.nwo-uncensored.com/phpBB3/app.php/nwountools/ahtools/rngvalue"
+        ]
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Nine",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Nine"
+      ]
+    },
+    {
+      "id": "merchant-prince-lockbox",
+      "name": "Merchant Prince Lockbox",
+      "release_date_pc": "2017-07-25",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Legendary Tyrannosaur Pack",
+        "Cavalry Tyrannosaur",
+        "Tamed Velociraptor"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [
+          {
+            "item": "Legendary Tyrannosaur Pack",
+            "rate_percent": 0.18,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Tarmalune Trade Bars",
+            "average_amount": 8.0,
+            "kind": "historical_community_average"
+          }
+        ],
+        "status": "historical_community_estimates",
+        "sources": [
+          "https://neverwinter.fandom.com/wiki/RNG_Tests",
+          "https://www.nwo-uncensored.com/phpBB3/app.php/nwountools/ahtools/rngvalue"
+        ]
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Merchant_Prince_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Merchant_Prince_Lockbox"
+      ]
+    },
+    {
+      "id": "lockbox-of-the-lost",
+      "name": "Lockbox of the Lost",
+      "release_date_pc": "2017-10-24",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Legendary Carpet of Flying",
+        "Carpet of Flying",
+        "Savage Allosaur"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [
+          {
+            "item": "Legendary Carpet of Flying",
+            "rate_percent": 0.14,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Carpet of Flying",
+            "rate_percent": 0.34,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Savage Allosaur",
+            "rate_percent": 0.51,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Lost Artifact Pack",
+            "rate_percent": 22.89,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Exhumed Companion Pack",
+            "rate_percent": 21.44,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Nine Gods Enchantment Pack",
+            "rate_percent": 22.63,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Jungle Cat Mount Pack",
+            "rate_percent": 20.65,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Lost Stronghold Pack",
+            "rate_percent": 10.74,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Tarmalune Trade Bar Jackpot",
+            "rate_percent": 0.66,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Tarmalune Trade Bars",
+            "average_amount": 8.05,
+            "kind": "historical_community_average"
+          }
+        ],
+        "status": "historical_community_estimates",
+        "sources": [
+          "https://neverwinter.fandom.com/wiki/RNG_Tests",
+          "https://www.nwo-uncensored.com/phpBB3/app.php/nwountools/ahtools/rngvalue"
+        ]
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Lost",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Lost"
+      ]
+    },
+    {
+      "id": "soulmongers-lockbox",
+      "name": "Soulmonger's Lockbox",
+      "release_date_pc": "2018-02-27",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "War Triceratops",
+        "Triceratops",
+        "Infant Gorilla"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [
+          {
+            "item": "War Triceratops",
+            "rate_percent": 0.18,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Triceratops",
+            "rate_percent": 0.44,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Infant Gorilla",
+            "rate_percent": 0.53,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Adventurer Pack",
+            "rate_percent": 20.95,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Forgotten Enchantment Pack",
+            "rate_percent": 20.47,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Lost Artifact Pack",
+            "rate_percent": 20.87,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Carapace Mount Pack",
+            "rate_percent": 18.58,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "The Quartermaster's Professions Pack",
+            "rate_percent": 13.36,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Genie's Gift x3",
+            "rate_percent": 3.98,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Tarmalune Trade Bar Jackpot",
+            "rate_percent": 0.65,
+            "kind": "historical_community_estimate"
+          },
+          {
+            "item": "Tarmalune Trade Bars",
+            "average_amount": 8.11,
+            "kind": "historical_community_average"
+          }
+        ],
+        "status": "historical_community_estimates",
+        "sources": [
+          "https://neverwinter.fandom.com/wiki/RNG_Tests",
+          "https://www.nwo-uncensored.com/phpBB3/app.php/nwountools/ahtools/rngvalue"
+        ]
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Soulmonger's_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Soulmonger's_Lockbox"
+      ]
+    },
+    {
+      "id": "undying-lockbox",
+      "name": "Undying Lockbox",
+      "release_date_pc": "2018-06-26",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Swarm",
+        "Mist Form",
+        "Razorwood"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Undying_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Undying_Lockbox"
+      ]
+    },
+    {
+      "id": "new-opportunities-lockbox",
+      "name": "New Opportunities Lockbox",
+      "release_date_pc": "2018-11-06",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Legendary Adolescent Deep Crow",
+        "Adolescent Deep Crow",
+        "Deep Crow Hatchling"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/New_Opportunities_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/New_Opportunities_Lockbox"
+      ]
+    },
+    {
+      "id": "reborn-lockbox",
+      "name": "Reborn Lockbox",
+      "release_date_pc": "2018-11-06",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Reborn Legendary Mounts Pack",
+        "Reborn Epic Mounts Pack",
+        "Reborn Epic Companions Pack"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Reborn_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Reborn_Lockbox"
+      ]
+    },
+    {
+      "id": "acquired-treasures-lockbox",
+      "name": "Acquired Treasures Lockbox",
+      "release_date_pc": "2019-02-12",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Acquired Treasures Legendary Mount Pack",
+        "Acquired Treasures Epic Mount Pack",
+        "Acquired Treasures Epic Companion Pack"
+      ],
+      "contents_detail_status": "detailed_box_outcomes_transcribed",
+      "contents_detail": {
+        "outcome_groups": [
+          [
+            "Acquired Treasures Legendary Mount Pack",
+            "Acquired Treasures Epic Mount Pack",
+            "Acquired Treasures Epic Companion Pack",
+            "Baphomet's Infernal Talisman",
+            "Epic Insignia",
+            "Rank 8 Runestones",
+            "Companion Upgrade Tokens",
+            "Cube of Augmentation",
+            "Jadeite",
+            "Tarmalune Trade Bar Jackpot"
+          ],
+          [
+            "Ultimate Enchanting Stone",
+            "Brilliant Diamond",
+            "Moderate Feytouched Enchantment",
+            "Moderate Negation Enchantment",
+            "Ultimate Mark of Potency",
+            "Superior Mark of Potency",
+            "Superior Enchanting Stone",
+            "Alexandrite",
+            "Blood Ruby",
+            "Greater Enchanting Stones and Jadeite",
+            "Greater Mark of Potency",
+            "Rank 8 Enchantment"
+          ],
+          [
+            "Legendary Tool",
+            "Uncommon Profession Asset",
+            "Rare Insignia",
+            "Three Rare Insignia Pack",
+            "Greater Stone of Health",
+            "Stronghold Vouchers",
+            "Cube of Augmentation",
+            "Black Opal"
+          ]
+        ]
+      },
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Acquired_Treasures_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Acquired_Treasures_Lockbox"
+      ]
+    },
+    {
+      "id": "lockbox-of-the-mad-mage",
+      "name": "Lockbox of the Mad Mage",
+      "release_date_pc": "2019-04-23",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Legendary Hellfire Engine",
+        "Hellfire Engine",
+        "Grung"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Mad_Mage",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Mad_Mage"
+      ]
+    },
+    {
+      "id": "excavated-lockbox",
+      "name": "Excavated Lockbox",
+      "release_date_pc": "2019-06-11",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Excavated Legendary Mounts Pack",
+        "Excavated Epic Mounts Pack",
+        "Excavated Epic Companions Pack"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Excavated_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Excavated_Lockbox"
+      ]
+    },
+    {
+      "id": "halasters-lockbox",
+      "name": "Halaster's Lockbox",
+      "release_date_pc": "2019-08-13",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Legendary Giant Toad",
+        "Epic Giant Toad",
+        "Crystal Golem"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Halaster's_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Halaster's_Lockbox"
+      ]
+    },
+    {
+      "id": "stardock-lockbox",
+      "name": "Stardock Lockbox",
+      "release_date_pc": "2019-11-22",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Stardock Legendary Mount Pack",
+        "Stardock Epic Mount Pack",
+        "Stardock Epic Companion Pack"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Stardock_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Stardock_Lockbox"
+      ]
+    },
+    {
+      "id": "the-descent-lockbox",
+      "name": "The Descent Lockbox",
+      "release_date_pc": "2020-01-21",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Legendary Barlgura",
+        "Barlgura",
+        "Fiendish Charmer Pack"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/The_Descent_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/The_Descent_Lockbox"
+      ]
+    },
+    {
+      "id": "wasteland-lockbox",
+      "name": "Wasteland Lockbox",
+      "release_date_pc": "2020-04-16",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Wasteland Legendary Mount Pack",
+        "Wasteland Epic Mount Pack",
+        "Wasteland Epic Companion Pack"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Wasteland_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Wasteland_Lockbox"
+      ]
+    },
+    {
+      "id": "the-blood-war-lockbox",
+      "name": "The Blood War Lockbox",
+      "release_date_pc": "2020-06-30",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Infernal War Machine",
+        "Spined Devil"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/The_Blood_War_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/The_Blood_War_Lockbox"
+      ]
+    },
+    {
+      "id": "redeemed-lockbox",
+      "name": "Redeemed Lockbox",
+      "release_date_pc": "2020-09-15",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "King of Spines",
+        "Legendary Tyrannosaur Pack",
+        "Redeemed Epic Companion Pack"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Redeemed_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Redeemed_Lockbox"
+      ]
+    },
+    {
+      "id": "forsaken-lockbox",
+      "name": "Forsaken Lockbox",
+      "release_date_pc": "2020-12-08",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Polar Siege Bear",
+        "Brown Siege Bear",
+        "Forsaken Epic Companion Pack"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Forsaken_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Forsaken_Lockbox"
+      ]
+    },
+    {
+      "id": "spellbound-lockbox",
+      "name": "Spellbound Lockbox",
+      "release_date_pc": "2021-02-09",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Hag's Hexing Cauldron",
+        "Hag's Cooking Cauldron",
+        "Displacer Beast"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Spellbound_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Spellbound_Lockbox"
+      ]
+    },
+    {
+      "id": "enchanting-lockbox",
+      "name": "Enchanting Lockbox",
+      "release_date_pc": "2021-04-29",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Feywild Stag",
+        "Cosmos Stag",
+        "Enchanting Epic Companion Pack"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Enchanting_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Enchanting_Lockbox"
+      ]
+    },
+    {
+      "id": "ensorcelled-lockbox",
+      "name": "Ensorcelled Lockbox",
+      "release_date_pc": "2021-06-17",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Feywild Griffon",
+        "Armored Griffon",
+        "Butterfly"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Ensorcelled_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Ensorcelled_Lockbox"
+      ]
+    },
+    {
+      "id": "lockbox-of-justice",
+      "name": "Lockbox of Justice",
+      "release_date_pc": "2021-07-27",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Noble Pegasus",
+        "Pegasus",
+        "Minsc"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_Justice",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Lockbox_of_Justice"
+      ]
+    },
+    {
+      "id": "reconnaissance-lockbox",
+      "name": "Reconnaissance Lockbox",
+      "release_date_pc": "2021-10-07",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Marvelous Reconnaissance Balloons",
+        "Legendary Reconnaissance Balloons",
+        "Legendary Class Companion Choice Pack"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Reconnaissance_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Reconnaissance_Lockbox"
+      ]
+    },
+    {
+      "id": "stealth-lockbox",
+      "name": "Stealth Lockbox",
+      "release_date_pc": "2021-12-02",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Rimefire Salamander",
+        "Frost Salamander",
+        "Shadow Elemental"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Stealth_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Stealth_Lockbox"
+      ]
+    },
+    {
+      "id": "skeletal-lockbox",
+      "name": "Skeletal Lockbox",
+      "release_date_pc": "2022-01-11",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Empowered Dragonbone Golem",
+        "Dragonbone Golem",
+        "Lich"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Skeletal_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Skeletal_Lockbox"
+      ]
+    },
+    {
+      "id": "lockbox-of-dark-omens",
+      "name": "Lockbox of Dark Omens",
+      "release_date_pc": "2022-03-24",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Omen of Despair",
+        "Black Unicorn",
+        "Dragon Hunter"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "not_found_in_sources_reviewed"
+      },
+      "guarantee_after_openings": null,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_Dark_Omens",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Lockbox_of_Dark_Omens"
+      ]
+    },
+    {
+      "id": "dragon-cult-lockbox",
+      "name": "Dragon Cult Lockbox",
+      "release_date_pc": "2022-06-14",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Nightfire Dragonnel",
+        "Dragonbone Blades"
+      ],
+      "contents_detail_status": "full_outcome_pool_transcribed",
+      "contents_detail": {
+        "one_of": [
+          "Nightfire Dragonnel (account unlock)",
+          "Dragonbone Blades (account unlock)",
+          "Random Mythic Insignia",
+          "Legendary Account Mount",
+          "Bag of Holding (60)",
+          "Epic Companion",
+          "Legendary Insignia",
+          "Epic Mount",
+          "Stone of Health",
+          "Genie's Gift x5",
+          "Epic Insignia",
+          "Uncommon Mount",
+          "Uncommon Companion",
+          "Common Mount",
+          "Common Companion",
+          "Epic Collar Choice Pack",
+          "Mount Upgrade Token x10",
+          "Companion Upgrade Token x10",
+          "Legendary Dragon Key",
+          "Overload Enchantment",
+          "Stronghold Voucher",
+          "Reward Reroll Token x10",
+          "Preservation Ward x5",
+          "Insignia Powder x25",
+          "Tarmalune Trade Bars x25"
+        ]
+      },
+      "drop_rates": {
+        "official_exact": [
+          {
+            "item": "Nightfire Dragonnel (account)",
+            "odds_raw": "1/250",
+            "rate_percent": 0.4
+          },
+          {
+            "item": "Dragonbone Blades (account)",
+            "odds_raw": "1/250",
+            "rate_percent": 0.4
+          },
+          {
+            "item": "Random Mythic Insignia",
+            "odds_raw": "1/200",
+            "rate_percent": 0.5
+          },
+          {
+            "item": "Legendary Account Mount",
+            "odds_raw": "1/125",
+            "rate_percent": 0.8
+          },
+          {
+            "item": "Bag of Holding",
+            "odds_raw": "1/100",
+            "rate_percent": 1.0
+          },
+          {
+            "item": "Epic Companion",
+            "odds_raw": "1/100",
+            "rate_percent": 1.0
+          },
+          {
+            "item": "Legendary Insignia",
+            "odds_raw": "1/50",
+            "rate_percent": 2.0
+          },
+          {
+            "item": "Epic Mount",
+            "odds_raw": "1/50",
+            "rate_percent": 2.0
+          },
+          {
+            "item": "Stone of Health",
+            "odds_raw": "1/50",
+            "rate_percent": 2.0
+          },
+          {
+            "item": "Genie's Gift x5",
+            "odds_raw": "1/50",
+            "rate_percent": 2.0
+          },
+          {
+            "item": "Epic Insignia",
+            "odds_raw": "1/40",
+            "rate_percent": 2.5
+          },
+          {
+            "item": "Uncommon Mount",
+            "odds_raw": "1/36",
+            "rate_percent": 2.7777777777777777
+          },
+          {
+            "item": "Uncommon Companion",
+            "odds_raw": "1/25",
+            "rate_percent": 4.0
+          },
+          {
+            "item": "Common Mount",
+            "odds_raw": "1/25",
+            "rate_percent": 4.0
+          },
+          {
+            "item": "Common Companion",
+            "odds_raw": "1/22",
+            "rate_percent": 4.545454545454546
+          },
+          {
+            "item": "Epic Collar Choice Pack",
+            "odds_raw": "1/20",
+            "rate_percent": 5.0
+          },
+          {
+            "item": "Mount Upgrade Token x10",
+            "odds_raw": "1/20",
+            "rate_percent": 5.0
+          },
+          {
+            "item": "Companion Upgrade Token x10",
+            "odds_raw": "1/20",
+            "rate_percent": 5.0
+          },
+          {
+            "item": "Legendary Dragon Key",
+            "odds_raw": "1/20",
+            "rate_percent": 5.0
+          },
+          {
+            "item": "Overload Enchantment",
+            "odds_raw": "1/20",
+            "rate_percent": 5.0
+          },
+          {
+            "item": "Stronghold Voucher",
+            "odds_raw": "1/20",
+            "rate_percent": 5.0
+          },
+          {
+            "item": "Reward Reroll Token x10",
+            "odds_raw": "1/10",
+            "rate_percent": 10.0
+          },
+          {
+            "item": "Preservation Ward x5",
+            "odds_raw": "1/10",
+            "rate_percent": 10.0
+          },
+          {
+            "item": "Insignia Powder x25",
+            "odds_raw": "1/10",
+            "rate_percent": 10.0
+          },
+          {
+            "item": "Tarmalune Trade Bars x25",
+            "odds_raw": "1/10",
+            "rate_percent": 10.0
+          }
+        ],
+        "historical_community_estimates": [],
+        "status": "official_in_game_odds_transcribed_from_wiki_tooltip",
+        "sources": [
+          "https://neverwinter.fandom.com/wiki/Dragon_Cult_Lockbox",
+          "https://www.arcgames.com/en/corp-news/detail/11517143-dev-blog%3A-dragon-cult-lockbox-%26-lockbox-changes"
+        ]
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Dragon_Cult_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Dragon_Cult_Lockbox"
+      ]
+    },
+    {
+      "id": "dragonslayer-lockbox",
+      "name": "Dragonslayer Lockbox",
+      "release_date_pc": "2022-09-01",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [],
+      "contents_detail_status": "reward_list_not_yet_verified",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Dragonslayer_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Dragonslayer_Lockbox"
+      ]
+    },
+    {
+      "id": "myconid-lockbox",
+      "name": "Myconid Lockbox",
+      "release_date_pc": "2022-11-08",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Myconid Bulette",
+        "Rumpadump"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Myconid_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Myconid_Lockbox",
+        "https://www.arcgames.com/en/corp-news/detail/11528983-developer-blog%3A-myconid-lockbox%21"
+      ]
+    },
+    {
+      "id": "lockbox-of-lost-knowledge",
+      "name": "Lockbox of Lost Knowledge",
+      "release_date_pc": "2023-01-12",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [],
+      "contents_detail_status": "reward_list_not_yet_verified",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_Lost_Knowledge",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Lockbox_of_Lost_Knowledge"
+      ]
+    },
+    {
+      "id": "lolthian-lockbox",
+      "name": "Lolthian Lockbox",
+      "release_date_pc": "2023-03-28",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Ebon Riding Lizard",
+        "Blaspheme Assassin"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Lolthian_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Lolthian_Lockbox",
+        "https://www.arcgames.com/en/corp-news/detail/11539343-developer-blog%3A-lolthian-lockbox%21"
+      ]
+    },
+    {
+      "id": "atramentous-lockbox",
+      "name": "Atramentous Lockbox",
+      "release_date_pc": "2023-05-25",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Deadly Driderform",
+        "Minotaur Mercenary"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Atramentous_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Atramentous_Lockbox",
+        "https://www.arcgames.com/en/corp-news/detail/11544173-atramentous-lockbox"
+      ]
+    },
+    {
+      "id": "planar-panic-lockbox",
+      "name": "Planar Panic Lockbox",
+      "release_date_pc": "2023-07-07",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Uni the Unicorn",
+        "Bobby the Barbarian"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Planar_Panic_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Planar_Panic_Lockbox",
+        "https://www.arcgames.com/en/corp-news/detail/11547963-the-planar-panic-lock-box%21"
+      ]
+    },
+    {
+      "id": "lockbox-of-shadowy-flight",
+      "name": "Lockbox of Shadowy Flight",
+      "release_date_pc": "2023-09-14",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Demon Wings",
+        "Crystal of Soul's Flight"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_Shadowy_Flight",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Lockbox_of_Shadowy_Flight",
+        "https://www.arcgames.com/en/corp-news/detail/11554043-the-lock-box-of-shadowy-flight%21"
+      ]
+    },
+    {
+      "id": "miniature-giant-space-lockbox",
+      "name": "Miniature Giant Space Lockbox",
+      "release_date_pc": "2023-11-07",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Giant Space Hamster",
+        "Xaryxian Defector"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Miniature_Giant_Space_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Miniature_Giant_Space_Lockbox"
+      ]
+    },
+    {
+      "id": "starlight-armaments-lockbox",
+      "name": "Starlight Armaments Lockbox",
+      "release_date_pc": "2024-01-18",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Golden Armored Griffon",
+        "Marco's Mystic Marker"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Starlight_Armaments_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Starlight_Armaments_Lockbox",
+        "https://www.arcgames.com/en/corp-news/detail/11561603-starlight-armaments-lockbox%21"
+      ]
+    },
+    {
+      "id": "doomspace-lockbox",
+      "name": "Doomspace Lockbox",
+      "release_date_pc": "2024-04-23",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Zodar Armor",
+        "Beacon of Meteor Swarm"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Doomspace_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Doomspace_Lockbox",
+        "https://www.arcgames.com/en/corp-news/detail/11567863-the-doomspace-lock-box%21"
+      ]
+    },
+    {
+      "id": "astronautical-lockbox",
+      "name": "Astronautical Lockbox",
+      "release_date_pc": "2024-06-03",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Space Guppy School",
+        "Flapjack"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Astronautical_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Astronautical_Lockbox",
+        "https://www.playneverwinter.com/en/news-details/11569334"
+      ]
+    },
+    {
+      "id": "leaping-flame-lockbox",
+      "name": "Leaping Flame Lockbox",
+      "release_date_pc": "2024-07-16",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [],
+      "contents_detail_status": "reward_list_not_yet_verified",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Leaping_Flame_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Leaping_Flame_Lockbox"
+      ]
+    },
+    {
+      "id": "foxfire-lockbox",
+      "name": "Foxfire Lockbox",
+      "release_date_pc": "2024-09-19",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [],
+      "contents_detail_status": "reward_list_not_yet_verified",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Foxfire_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Foxfire_Lockbox",
+        "https://www.playneverwinter.com/en/news-details/11570930"
+      ]
+    },
+    {
+      "id": "psionic-lockbox",
+      "name": "Psionic Lockbox",
+      "release_date_pc": "2024-11-19",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [],
+      "contents_detail_status": "reward_list_not_yet_verified",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Psionic_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Psionic_Lockbox"
+      ]
+    },
+    {
+      "id": "earth-mote-lockbox",
+      "name": "Earth Mote Lockbox",
+      "release_date_pc": "2025-01-12",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [],
+      "contents_detail_status": "reward_list_not_yet_verified",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Earth_Mote_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Earth_Mote_Lockbox"
+      ]
+    },
+    {
+      "id": "glorious-undead-lockbox",
+      "name": "Glorious Undead Lockbox",
+      "release_date_pc": "2025-03-11",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Glorious Undead Lion",
+        "Nightflame Censer"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Glorious_Undead_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Glorious_Undead_Lockbox",
+        "https://www.playneverwinter.com/en/news-details/11574390"
+      ]
+    },
+    {
+      "id": "wings-and-cauldrons-lockbox",
+      "name": "Wings and Cauldrons Lockbox",
+      "release_date_pc": "2025-05-14",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Hag's Enchanted Cauldron",
+        "Aoth Fezim and Brightwing"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Wings_and_Cauldrons_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Wings_and_Cauldrons_Lockbox"
+      ]
+    },
+    {
+      "id": "phantasmal-fantasy-lockbox",
+      "name": "Phantasmal Fantasy Lockbox",
+      "release_date_pc": "2025-07-17",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Lysaera"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Phantasmal_Fantasy_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Phantasmal_Fantasy_Lockbox"
+      ]
+    },
+    {
+      "id": "feywild-wonders-lockbox",
+      "name": "Feywild Wonders Lockbox",
+      "release_date_pc": "2025-08-27",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [],
+      "contents_detail_status": "reward_list_not_yet_verified",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Feywild_Wonders_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Feywild_Wonders_Lockbox",
+        "https://www.playneverwinter.com/en/news-details/11577336"
+      ]
+    },
+    {
+      "id": "grubby-goods-lockbox",
+      "name": "Grubby Goods Lockbox",
+      "release_date_pc": "2025-11-25",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Grubshank the Burdened"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Grubby_Goods_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Grubby_Goods_Lockbox",
+        "https://www.playneverwinter.com/en/news-details/11578608"
+      ]
+    },
+    {
+      "id": "deathly-delights-lockbox",
+      "name": "Deathly Delights Lockbox",
+      "release_date_pc": "2026-01-20",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Demonic Gravehound",
+        "Demon Skull"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Deathly_Delights_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Deathly_Delights_Lockbox",
+        "https://www.playneverwinter.com/en/news-details/11579430"
+      ]
+    },
+    {
+      "id": "pet-pals-lockbox",
+      "name": "Pet Pals Lockbox",
+      "release_date_pc": "2026-03-10",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Cactus the Hedgehog",
+        "Sardina the Tressym"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Pet_Pals_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Pet_Pals_Lockbox"
+      ]
+    },
+    {
+      "id": "encroaching-frost-lockbox",
+      "name": "Encroaching Frost Lockbox",
+      "release_date_pc": "2026-05-19",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Snowtusk",
+        "Sir Waddlelot"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Encroaching_Frost_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Encroaching_Frost_Lockbox",
+        "https://www.playneverwinter.com/en/news-details/11580852"
+      ]
+    },
+    {
+      "id": "buried-treasure-lockbox",
+      "name": "Buried Treasure Lockbox",
+      "release_date_pc": "2026-07-09",
+      "availability_status": "rotated_out_of_current_drops",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Ollie the Octie",
+        "Combat Enchantments Choice Pack"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Buried_Treasure_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Buried_Treasure_Lockbox",
+        "https://store.steampowered.com/news/app/109600/view/707775747757970920"
+      ]
+    },
+    {
+      "id": "wild-adventures-lockbox",
+      "name": "Wild Adventures Lockbox",
+      "release_date_pc": "2026-09-01",
+      "availability_status": "currently_dropping",
+      "key_required": true,
+      "confirmed_headliner_rewards": [
+        "Star Angler",
+        "Encore the Virtuoso"
+      ],
+      "contents_detail_status": "headliners_only",
+      "contents_detail": null,
+      "drop_rates": {
+        "official_exact": [],
+        "historical_community_estimates": [],
+        "status": "official_odds_displayed_in_game_values_not_transcribed"
+      },
+      "guarantee_after_openings": 250,
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Wild_Adventures_Lockbox",
+        "status": "source_page_linked_direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Wild_Adventures_Lockbox",
+        "https://www.playneverwinter.com/en/news-details/11582729"
+      ]
+    }
+  ],
+  "related_containers": [
+    {
+      "id": "astral-lockbox",
+      "name": "Astral Lockbox",
+      "kind": "recurring_keyless_lockbox",
+      "key_required": false,
+      "contents_detail_status": "needs_version_check_or_varies_by_event",
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Astral_Lockbox",
+        "status": "direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Astral_Lockbox",
+        "https://neverwinter.fandom.com/wiki/Lockbox"
+      ]
+    },
+    {
+      "id": "astral-casket",
+      "name": "Astral Casket",
+      "kind": "keyless_related_container",
+      "key_required": false,
+      "contents_detail_status": "needs_version_check_or_varies_by_event",
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox",
+        "status": "direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox",
+        "https://neverwinter.fandom.com/wiki/Lockbox"
+      ]
+    },
+    {
+      "id": "tarmalune-mystery-box",
+      "name": "Tarmalune Mystery Box",
+      "kind": "seasonal_keyless_container",
+      "key_required": false,
+      "contents_detail_status": "needs_version_check_or_varies_by_event",
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Summer_Festival",
+        "status": "direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Summer_Festival",
+        "https://neverwinter.fandom.com/wiki/Lockbox"
+      ]
+    },
+    {
+      "id": "magnificent-resurgence-lockbox",
+      "name": "Magnificent Resurgence Lockbox",
+      "kind": "recurring_keyed_resurgence_box",
+      "key_required": true,
+      "contents_detail_status": "needs_version_check_or_varies_by_event",
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.obikin89.com/mounts/list",
+        "status": "direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.obikin89.com/mounts/list",
+        "https://neverwinter.fandom.com/wiki/Lockbox"
+      ]
+    },
+    {
+      "id": "gift-of-tymora",
+      "name": "Gift of Tymora",
+      "kind": "event_keyless_container",
+      "key_required": false,
+      "contents_detail_status": "needs_version_check_or_varies_by_event",
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Tymora%27s_Gift",
+        "status": "direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Tymora%27s_Gift",
+        "https://neverwinter.fandom.com/wiki/Lockbox"
+      ]
+    },
+    {
+      "id": "waukeens-coin-purse",
+      "name": "Waukeen's Coin Purse",
+      "kind": "event_keyless_container",
+      "key_required": false,
+      "contents_detail_status": "needs_version_check_or_varies_by_event",
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
+        "status": "direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
+        "https://neverwinter.fandom.com/wiki/Lockbox"
+      ]
+    },
+    {
+      "id": "waukeens-strongbox",
+      "name": "Waukeen's Strongbox",
+      "kind": "event_keyless_container",
+      "key_required": false,
+      "contents_detail_status": "needs_version_check_or_varies_by_event",
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
+        "status": "direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
+        "https://neverwinter.fandom.com/wiki/Lockbox"
+      ]
+    },
+    {
+      "id": "waukeens-treasure-chest",
+      "name": "Waukeen's Treasure Chest",
+      "kind": "event_keyless_container",
+      "key_required": false,
+      "contents_detail_status": "needs_version_check_or_varies_by_event",
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
+        "status": "direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
+        "https://neverwinter.fandom.com/wiki/Lockbox"
+      ]
+    },
+    {
+      "id": "waukeens-golden-chest",
+      "name": "Waukeen's Golden Chest",
+      "kind": "event_keyless_container",
+      "key_required": false,
+      "contents_detail_status": "needs_version_check_or_varies_by_event",
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
+        "status": "direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
+        "https://neverwinter.fandom.com/wiki/Lockbox"
+      ]
+    },
+    {
+      "id": "gift-of-the-gods",
+      "name": "Gift of the Gods",
+      "kind": "event_keyless_container",
+      "key_required": false,
+      "contents_detail_status": "needs_version_check_or_varies_by_event",
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Challenge_of_the_Gods",
+        "status": "direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Challenge_of_the_Gods",
+        "https://neverwinter.fandom.com/wiki/Lockbox"
+      ]
+    },
+    {
+      "id": "blessed-gift-of-the-gods",
+      "name": "Blessed Gift of the Gods",
+      "kind": "event_keyless_container",
+      "key_required": false,
+      "contents_detail_status": "needs_version_check_or_varies_by_event",
+      "icon": {
+        "direct_image_url": null,
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Challenge_of_the_Gods",
+        "status": "direct_image_file_not_verified"
+      },
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Challenge_of_the_Gods",
+        "https://neverwinter.fandom.com/wiki/Lockbox"
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "name": "Nightmare Lockbox (temporary prizes)",
+      "parent_id": "nightmare-lockbox",
+      "date_range_pc": [
+        "2013-08-15",
+        "2013-08-22"
+      ],
+      "confirmed_headliner_rewards": [
+        "Heavy Mystic Nightmare",
+        "Mystic Phoera"
+      ],
+      "source_urls": [
+        "https://neverwinter.fandom.com/wiki/Lockbox"
+      ]
+    }
+  ]
+}
