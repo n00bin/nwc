@@ -4,6 +4,12 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ---
 
+## Week of September 28, 2026
+
+### Bug Fixes
+
+- **Ring of Initiative's 6% Combat Advantage now counts (Toon Forge).** Maiden's Advantage reads "You gain 6% Combat Advantage. When in combat with 2 or more enemies, you also gain 3.25% Power." We had the enemies condition on both halves, so the Combat Advantage silently switched off whenever the enemies slider sat at 1. The Combat Advantage is now always on and only the Power half waits for a second enemy. Same fix for the other three rings that share the bonus: The Bloodlit Veil, Eilistraee's Beauty and the Coldsilver Ring of Initiative. Reported by a player (Report #282).
+
 ## Week of September 21, 2026
 
 ### Features

@@ -1,5 +1,23 @@
 # Data Issues To Investigate
 
+## OPEN leads from reports 2026-09-28 (need in-game tooltip screenshots)
+
+- **Duergar Mercenary's Steel Rapier +1** (Main Hand, Bard, IL 2000) - reports #283/#284.
+  We only carry the IL 1900 base (gear id 4627); Pactblade +1 (id 156) shows the
+  ladder shape (1500/1500, CR 1800) but the rule is screenshots only. Asked the player.
+- **Dragonbone belt** (Belt, IL 1800, CR 1620, "Runes of Aggression" set, CritSev
+  1350 / Deflect 1350, DEX+3 INT+3) - report #281. Not in gear.json at all, and we have
+  no other item on that set. Asked the player for the tooltip with set text.
+- **Portable Spelljammer Detector rank values** (artifact id 120, IL 1500) - report #285.
+  Player's IL 1500 tooltip: +10% damage taken, 3.8% CritSev on use, and a base
+  +3.8% Critical Severity percent stat. Ours (wiki-derived, no screenshot): +12%,
+  7.5%, no percent stat. Same IL, different numbers, so our row is probably a
+  different rank mislabeled as 1500 (js/artifacts-page.js row also says +12%).
+  Asked the player for the tooltip.
+- Still waiting on players: #232 (Black Earth/Earthen Rapier IL 1150 - which set?)
+  and #249 (second belt slot - where were they looking?).
+
+
 ## 33 powers hide a plain stat inside a fake "Passive" proc (found 2026-09-13)
 
 A sibling of the frozen-proc problem, with the same symptom and a different cause.
