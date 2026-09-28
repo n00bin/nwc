@@ -2134,33 +2134,51 @@
       .stable-row-pickers { gap: 0.35rem; }
       .stable-mount, .stable-collar { min-width: 130px; }
 
-      /* Footer bar — horizontal scroll on mobile (gauge + stats + button
-         all fit in one scrollable row instead of stacking vertically). */
+      /* Keep the score visible while the stats row scrolls on its own. */
       .footer-bar {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        gap: 0.5rem;
-        padding: 0.55rem 0.7rem;
-        align-items: center;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.35rem;
+        padding: 0.5rem 0.7rem calc(0.5rem + env(safe-area-inset-bottom));
+        overflow: visible;
+        align-items: stretch;
       }
-      .footer-bar > * { flex: 0 0 auto; }
-      .score-box { flex: 0 0 auto; }
+      .footer-bar > * { min-width: 0; }
+      .score-box { width: 100%; gap: 0.55rem; }
+      .gauge { width: 44px; height: 44px; flex: 0 0 44px; }
+      .gauge::after { inset: 3px; }
+      .gauge .num { font-size: 1rem; }
+      .score-label .value { font-size: 0.95rem; }
+      .score-label .desc { display: none; }
+      .quick-stats-wrap {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+        gap: 0.45rem;
+        min-width: 0;
+        width: 100%;
+      }
+      .quick-stats-tag { white-space: nowrap; font-size: 0.6rem; text-align: left; }
       .quick-stats {
         display: flex;
         flex-wrap: nowrap;
         gap: 0.4rem;
-        grid-template-columns: none;
-        width: auto;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
       }
       .quick-stat {
         flex: 0 0 auto;
-        min-width: 78px;
+        min-width: 72px;
         padding: 0.3rem 0.4rem;
       }
       .quick-stat .label { font-size: 0.65rem; }
       .quick-stat .val { font-size: 0.95rem; }
+      .page { padding-bottom: calc(8rem + env(safe-area-inset-bottom)); }
 
       /* Picker + Detailed Stats modals — near fullscreen */
       .picker-overlay, .dstats-overlay {
