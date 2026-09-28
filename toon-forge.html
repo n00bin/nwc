@@ -2338,6 +2338,15 @@
       .row-6 { grid-template-columns: repeat(2, 1fr); }
       .class-grid { grid-template-columns: 1fr; }
       .comp-loadout { grid-template-columns: 1fr; }
+      .active-power-row { grid-template-columns: minmax(0, 1fr); }
+      .active-power-col > div:last-child { min-height: 44px; }
+      #active-combat-power-rarity,
+      #active-equip-power-rarity {
+        flex: 1 1 0;
+        min-width: 0;
+        min-height: 44px;
+        font-size: 16px !important;
+      }
     }
 
     /* Keep summoned companion gear compact on standard-width phones. */
