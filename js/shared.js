@@ -17,6 +17,38 @@ const NAV_PAGES = [
   { label: "Creators & Tools", href: "creators-tools.html" },
 ];
 
+function mobileDetailBackButtonHtml() {
+  return '<button type="button" class="mobile-detail-back" aria-label="Back to results list"><span aria-hidden="true">&#8592;</span><span>Back to results</span></button>';
+}
+
+function initMobileListDetailSwitch() {
+  document.querySelectorAll(".page-body").forEach(function (view) {
+    var listPanel = view.querySelector(".list-panel");
+    var detailPanel = view.querySelector(".detail-panel");
+    if (!listPanel || !detailPanel || view.dataset.mobileListDetail === "ready") return;
+
+    view.dataset.mobileListDetail = "ready";
+    listPanel.setAttribute("tabindex", "-1");
+    view.addEventListener("click", function (e) {
+      var target = e.target;
+      if (!target || !target.closest) return;
+
+      if (target.closest(".mobile-detail-back")) {
+        view.classList.remove("mobile-detail-open");
+        document.body.classList.remove("mobile-lookup-detail-open");
+        try { listPanel.focus({ preventScroll: true }); }
+        catch (_) { listPanel.focus(); }
+        return;
+      }
+
+      if (target.closest(".list-item")) {
+        view.classList.add("mobile-detail-open");
+        document.body.classList.add("mobile-lookup-detail-open");
+      }
+    });
+  });
+}
+
 // ---- Navigation ----
 function renderNav(activePage) {
   const nav = document.querySelector(".navbar");
@@ -28,15 +60,13 @@ function renderNav(activePage) {
     pages.splice(1, 0, { label: PREVIEW_LABEL, href: "preview.html" });
   }
 
-  let html = '<span class="navbar-brand">NWC</span>';
+  let html = '<a class="navbar-brand" href="index.html" aria-label="Neverwinter Compendium home">NWC</a>';
   html += '<button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navbarLinks">&#9776;</button>';
   html += '<div class="navbar-links" id="navbarLinks">';
   for (const p of pages) {
     const cls = p.label === activePage ? " active" : "";
     html += `<a href="${p.href}" class="${cls}">${p.label}</a>`;
   }
-  html += '<a href="https://www.youtube.com/@N00binHard" target="_blank" rel="noopener" style="color:#ff0000;" title="The N00bin Network on YouTube">&#9654; The N00bin Network</a>';
-  html += '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:#f0883e;" title="Join The N00bin Network on YouTube">Join on YouTube</a>';
   html += "</div>";
   nav.innerHTML = html;
 
@@ -74,6 +104,7 @@ function renderNav(activePage) {
   // .view-tabs scrolls sideways under 768px; keep the active tab in view on
   // load and after a tap. block:"nearest" stops the page jumping vertically.
   var strips = document.querySelectorAll(".controls-bar.view-tabs");
+  initMobileListDetailSwitch();
   for (var si = 0; si < strips.length; si++) {
     (function (strip) {
       function reveal(el) {

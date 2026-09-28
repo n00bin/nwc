@@ -8,9 +8,9 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Features
 
-- **Artifact icons show at full size.** The Artifacts list icons were tiny and clipped at the corners; they are now shown larger with the full art. Bloodthirst Chalice and Burning Hope now have their in-game icons too.
 - **Lockboxes tab added under Consumables.** Browse the historical lockbox catalog with search, entry-type and availability filters, reward details, source links, and clearly labeled rate information. Unverified icons and incomplete reward lists are marked.
 - **Lockbox icons.** Every lockbox in the catalog now shows its in-game box icon (80 of 85 entries, including the Waukeen chests and both Gifts of the Gods). Only the two newest boxes, Buried Treasure and Wild Adventures, and three recurring containers still wait on an in-game screenshot.
+- **Mount and companion lookups now work better on phones.** Selecting an item opens its details on a dedicated view with a clear Back to results button, so the list and details no longer compete for a small screen.
 
 ### Data Additions
 
@@ -22,6 +22,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes
 
+- **Mobile controls are easier to tap and muted text is easier to read.** Navigation links, tabs, search fields, and list rows have larger touch targets, and muted labels now have stronger contrast.
 - **Ring of Initiative's 6% Combat Advantage now counts (Toon Forge).** Maiden's Advantage reads "You gain 6% Combat Advantage. When in combat with 2 or more enemies, you also gain 3.25% Power." We had the enemies condition on both halves, so the Combat Advantage silently switched off whenever the enemies slider sat at 1. The Combat Advantage is now always on and only the Power half waits for a second enemy. Same fix for the other three rings that share the bonus: The Bloodlit Veil, Eilistraee's Beauty and the Coldsilver Ring of Initiative. Reported by a player (Report #282).
 
 ## Week of September 21, 2026

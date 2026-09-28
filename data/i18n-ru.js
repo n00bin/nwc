@@ -15,7 +15,10 @@ var I18N_RU = {
   "Everything you need to gear up in Neverwinter — mounts, companions, artifacts, and more, all in one friendly place.":
     "Всё, что Вам нужно, чтобы экипироваться в Neverwinter — скакуны, спутники, артефакты и многое другое — всё в одном удобном месте.",
   "Home": "Главная",
+  "Overview": "Обзор",
   "News": "Новости",
+  "Back to results": "Назад к списку",
+  "Back to results list": "Назад к списку",
   "is live": "уже здесь",
   "Gear, comps, and screenshots from the upcoming module":
     "Экипировка, спутники и скриншоты из грядущего модуля",

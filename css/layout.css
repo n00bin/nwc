@@ -64,6 +64,10 @@
   padding: 1.25rem max(1.5rem, calc((100% - 720px) / 2));
 }
 
+.mobile-detail-back {
+  display: none;
+}
+
 /* ---- Custom Scrollbars ---- */
 .list-panel::-webkit-scrollbar,
 .detail-panel::-webkit-scrollbar {
@@ -95,17 +99,63 @@
   .page-body {
     grid-template-columns: 1fr;
     height: auto;
+    overflow: visible;
   }
 
   .list-panel {
     border-right: none;
     border-bottom: 1px solid var(--border-default);
-    max-height: 45vh;
+    max-height: min(62vh, 40rem);
     overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .detail-panel {
+    display: none;
+    min-height: 0;
+    overflow: visible;
+    padding: 1rem;
+  }
+
+  .page-body.mobile-detail-open .list-panel {
+    display: none;
+  }
+
+  .page-body.mobile-detail-open .detail-panel {
+    display: block;
     min-height: 50vh;
+  }
+
+  body.mobile-lookup-detail-open #lookup-controls {
+    display: none;
+  }
+
+  .mobile-detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    position: sticky;
+    top: 3.5rem;
+    z-index: 5;
+    min-height: 44px;
+    margin-bottom: 1rem;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .mobile-detail-back:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-hover);
+  }
+
+  .list-item {
+    min-height: 44px;
   }
 
   .controls-bar {

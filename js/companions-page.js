@@ -315,14 +315,14 @@
   // ---- Render detail ----
   function renderDetail(companion) {
     if (!companion) {
-      detailPanel.innerHTML = '<div class="empty-state">Select a companion to view details</div>';
+      detailPanel.innerHTML = mobileDetailBackButtonHtml() + '<div class="empty-state">Select a companion to view details</div>';
       return;
     }
 
     var pw = powerMap[companion.powerRef];
     var en = enhancementMap[companion.enhancementRef];
 
-    var html = "";
+    var html = mobileDetailBackButtonHtml();
 
     // Companion name with icon
     var compImg = window.COMPANION_IMAGES && window.COMPANION_IMAGES[companion.name];

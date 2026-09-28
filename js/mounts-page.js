@@ -436,7 +436,7 @@
   // ---- Render detail ----
   function renderDetail(mount) {
     if (!mount) {
-      detailPanel.innerHTML = '<div class="empty-state">Select a mount to view details</div>';
+      detailPanel.innerHTML = mobileDetailBackButtonHtml() + '<div class="empty-state">Select a mount to view details</div>';
       return;
     }
     currentDetailMount = mount;
@@ -446,7 +446,7 @@
     var compatibleBonuses = mountBonusCache[mount.id] || [];
     var bonusVal = filterBonus.value;
 
-    var html = "";
+    var html = mobileDetailBackButtonHtml();
 
     // Mount name with icon
     var mountImg = window.MOUNT_IMAGES && window.MOUNT_IMAGES[mount.name];
