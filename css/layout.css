@@ -68,7 +68,7 @@
   display: none;
 }
 
-.lookup-filter-fields {
+.mobile-filter-fields {
   display: contents;
 }
 
@@ -183,13 +183,13 @@
     min-width: 100%;
   }
 
-  #lookup-controls {
+  .mobile-disclosure-controls {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
   }
 
-  #lookup-controls .search-input {
+  .mobile-disclosure-controls .search-input {
     grid-column: 1;
     width: 100%;
     min-width: 0;
@@ -225,7 +225,7 @@
     transform: rotate(180deg);
   }
 
-  .lookup-filter-fields {
+  .mobile-filter-fields {
     display: none;
     grid-column: 1 / -1;
     flex-direction: column;
@@ -235,11 +235,11 @@
     padding-top: 0.25rem;
   }
 
-  #lookup-controls.filters-open .lookup-filter-fields {
+  .mobile-disclosure-controls.filters-open .mobile-filter-fields {
     display: flex;
   }
 
-  #lookup-controls .filter-select {
+  .mobile-disclosure-controls .filter-select {
     width: 100%;
     min-width: 0;
   }

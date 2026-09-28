@@ -127,17 +127,22 @@
 
   <p style="max-width:900px;margin:1rem auto 0;padding:0 1.5rem;color:var(--text-secondary);font-size:0.9rem;">Fresh from Arc Games, updated daily. Search or filter to find what changed for your platform.</p>
 
-  <div class="controls-bar">
+  <div class="controls-bar mobile-disclosure-controls" id="patchnotes-controls">
     <input type="text" class="search-input" id="search" placeholder="Search patch notes...">
-    <select class="filter-select" id="filter-platform">
-      <option value="">All Platforms</option>
-      <option value="ps">PlayStation</option>
-      <option value="pc">PC</option>
-      <option value="xbox">Xbox</option>
-    </select>
-    <select class="filter-select" id="filter-year">
-      <option value="">All Years</option>
-    </select>
+    <button type="button" class="mobile-filter-toggle" aria-expanded="false" aria-controls="patchnotes-filter-fields">
+      <span>Filters</span><span class="mobile-filter-chevron" aria-hidden="true">&#9662;</span>
+    </button>
+    <div class="mobile-filter-fields" id="patchnotes-filter-fields">
+      <select class="filter-select" id="filter-platform">
+        <option value="">All Platforms</option>
+        <option value="ps">PlayStation</option>
+        <option value="pc">PC</option>
+        <option value="xbox">Xbox</option>
+      </select>
+      <select class="filter-select" id="filter-year">
+        <option value="">All Years</option>
+      </select>
+    </div>
   </div>
 
   <div class="pn-container">

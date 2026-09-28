@@ -50,14 +50,15 @@ function initMobileListDetailSwitch() {
 }
 
 function initMobileFilterDisclosure() {
-  var controls = document.getElementById("lookup-controls");
-  var toggle = controls && controls.querySelector(".mobile-filter-toggle");
-  if (!controls || !toggle || controls.dataset.mobileFilterDisclosure === "ready") return;
+  document.querySelectorAll(".mobile-disclosure-controls").forEach(function (controls) {
+    var toggle = controls.querySelector(".mobile-filter-toggle");
+    if (!toggle || controls.dataset.mobileFilterDisclosure === "ready") return;
 
-  controls.dataset.mobileFilterDisclosure = "ready";
-  toggle.addEventListener("click", function () {
-    var isOpen = controls.classList.toggle("filters-open");
-    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    controls.dataset.mobileFilterDisclosure = "ready";
+    toggle.addEventListener("click", function () {
+      var isOpen = controls.classList.toggle("filters-open");
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
   });
 }
 
