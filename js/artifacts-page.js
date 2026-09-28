@@ -22,7 +22,7 @@
     { rank: 5,  name: "Nightflame Censer",             effect: "+12.5% damage taken, −11.9% enemy damage dealt + DoT",                    duration: "10s" },
     { rank: 6,  name: "Wyvern-Venom Coated Knives",    effect: "+12% damage taken, −12% enemy damage dealt",                              duration: "10s" },
     { rank: 7,  name: "Dragonbone Blades",             effect: "+12% damage taken, −12% enemy damage dealt",                              duration: "10s" },
-    { rank: 8,  name: "Portable Spelljammer Detector", effect: "+12% damage taken (single-target arcane disrupt)",                        duration: "10s" },
+    { rank: 8,  name: "Portable Spelljammer Detector", effect: "+10% damage taken (+12% in Wildspace) + 3.8% self Crit Severity",           duration: "10s" },
     { rank: 9,  name: "Beacon of Meteor Swarm",        effect: "+10% damage taken + stun + DoT (AoE meteor storm)",                       duration: "10s" },
     { rank: 10, name: "Heart of the Volcano",          effect: "+10% damage taken from all sources + 10% self DR (line)",                 duration: "10s" },
     { rank: 11, name: "Jewel of the Caldera",          effect: "+10% damage taken (lunge, line)",                                         duration: "10s" },
