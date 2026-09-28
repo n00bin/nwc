@@ -2251,7 +2251,8 @@
       }
       .quick-stat .label { font-size: 0.65rem; }
       .quick-stat .val { font-size: 0.95rem; }
-      .page { padding-bottom: calc(8rem + env(safe-area-inset-bottom)); }
+      .page { padding: 1rem 0.75rem calc(8rem + env(safe-area-inset-bottom)); }
+      .panel { padding: 1rem 0.85rem; margin-bottom: 0.85rem; }
 
       /* Picker + Detailed Stats modals — near fullscreen */
       .picker-overlay, .dstats-overlay {
@@ -2278,6 +2279,25 @@
       /* Ability advisor */
       .advisor-row { padding: 0.55rem 0.65rem; }
       .advisor-name { font-size: 0.92rem; }
+    }
+
+    /* Two columns save a lot of scrolling on ordinary phones. Keep very
+       narrow screens in the single-column layout above so controls stay usable. */
+    @media (min-width: 360px) and (max-width: 768px) {
+      #gear-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        grid-template-rows: repeat(6, auto);
+        grid-auto-flow: column;
+      }
+      #artifact-grid, #overload-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      #gear-grid .slot, #artifact-grid .slot, #overload-grid .slot {
+        min-width: 0;
+        padding: 0.6rem 0.55rem;
+      }
+      .gear-pick-chip { min-height: 44px; padding: 0.45rem 0.5rem; font-size: 0.78rem; }
+      .gear-kit-chip { min-height: 42px; padding: 0.35rem 0.4rem; font-size: 0.7rem; }
     }
 
     /* Very small screens (< 400px) */
