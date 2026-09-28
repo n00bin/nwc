@@ -39,6 +39,106 @@
     .art-table .val-neg { color:var(--stat-negative); }
     .art-table .val-best { color:var(--highlight); font-weight:700; }
     .art-table .prof-badge { font-size:0.7rem; padding:0.1rem 0.35rem; border-radius:999px; font-weight:600; }
+    .artisan-mobile-sort { display:none; }
+
+    @media (max-width:640px) {
+      .prof-container { padding:0.9rem 0.85rem 2rem; }
+      .artisan-mobile-sort {
+        display:grid;
+        grid-template-columns:auto minmax(0,1fr) auto;
+        align-items:center;
+        gap:0.45rem;
+        margin:0 0 0.75rem;
+      }
+      .artisan-mobile-sort label { color:var(--text-secondary); font-size:0.82rem; }
+      .artisan-mobile-sort select,
+      .artisan-mobile-sort button {
+        box-sizing:border-box;
+        min-width:0;
+        min-height:44px;
+        border:1px solid var(--border-default);
+        border-radius:var(--radius-sm);
+        background:var(--bg-primary);
+        color:var(--text-primary);
+        font:inherit;
+        font-size:0.82rem;
+      }
+      .artisan-mobile-sort select { width:100%; padding:0.45rem 0.55rem; font-size:16px; }
+      .artisan-mobile-sort button {
+        padding:0.4rem 0.55rem;
+        white-space:nowrap;
+        cursor:pointer;
+      }
+      .artisan-mobile-sort button:hover { border-color:var(--border-accent); background:var(--bg-hover); }
+      .artisan-mobile-sort select:focus-visible,
+      .artisan-mobile-sort button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+
+      .art-table-wrap { overflow:visible; }
+      .art-table { display:block; width:100%; border-collapse:separate; border-spacing:0; }
+      .art-table thead {
+        position:absolute;
+        width:1px;
+        height:1px;
+        margin:-1px;
+        padding:0;
+        overflow:hidden;
+        clip:rect(0,0,0,0);
+        white-space:nowrap;
+        border:0;
+      }
+      .art-table tbody { display:grid; gap:0.65rem; }
+      .art-table tbody tr {
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        min-width:0;
+        overflow:hidden;
+        border:1px solid var(--border-default);
+        border-radius:var(--radius-md);
+        background:var(--bg-surface);
+      }
+      .art-table td {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap:0.18rem;
+        min-width:0;
+        padding:0.55rem 0.65rem;
+        border:0;
+        border-bottom:1px solid var(--border-default);
+        white-space:normal;
+        overflow-wrap:anywhere;
+        font-size:0.86rem;
+      }
+      .art-table td::before {
+        content:attr(data-label);
+        color:var(--text-muted);
+        font-size:0.66rem;
+        font-weight:650;
+        letter-spacing:0.04em;
+        text-transform:uppercase;
+      }
+      .art-table td:first-child {
+        grid-column:1/-1;
+        padding:0.75rem 0.8rem;
+        background:var(--bg-elevated);
+        color:var(--text-primary);
+        font-size:1rem;
+        font-weight:700;
+      }
+      .art-table td:first-child::before { display:none; }
+      .art-table td:nth-child(2) {
+        grid-column:1/-1;
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between;
+        padding:0.55rem 0.8rem;
+      }
+      .art-table td:nth-child(2) .prof-badge { margin-left:auto; white-space:normal; text-align:right; }
+      .art-table td:nth-child(7) { grid-column:1/-1; }
+      .art-table td:last-child { border-bottom:0; }
+      .art-table tr:hover td { background:transparent; }
+      .art-table tr:hover td:first-child { background:var(--bg-elevated); }
+    }
 
     /* Masterwork table */
     .mw-table { width:100%; border-collapse:collapse; margin:0.5rem 0; font-size:0.85rem; }
@@ -179,6 +279,20 @@
   <!-- ARTISANS (full table) -->
   <div class="prof-container prof-view" id="view-artisans">
     <div id="artisan-count" style="color:var(--text-muted);font-size:0.85rem;margin-bottom:0.5rem;"></div>
+    <div class="artisan-mobile-sort" role="group" aria-label="Sort artisans">
+      <label for="artisan-sort-select">Sort:</label>
+      <select id="artisan-sort-select">
+        <option value="name">Name</option>
+        <option value="prof" selected>Profession</option>
+        <option value="proficiency">Proficiency</option>
+        <option value="focus">Focus</option>
+        <option value="commission">Commission</option>
+        <option value="speed">Speed</option>
+        <option value="skill">Special Skill</option>
+        <option value="skillPct">Skill Chance</option>
+      </select>
+      <button type="button" id="artisan-sort-direction" aria-label="Change sort direction; currently ascending">Ascending ↑</button>
+    </div>
     <div class="art-table-wrap"><table class="art-table" id="artisan-table">
       <thead><tr>
         <th data-sort="name">Name <span class="sort-arrow"></span></th>
@@ -219,8 +333,11 @@
     var artisanControls = document.getElementById("artisan-controls");
     var tbody = document.getElementById("artisan-tbody");
     var countEl = document.getElementById("artisan-count");
+    var mobileSortSelect = document.getElementById("artisan-sort-select");
+    var mobileSortDirection = document.getElementById("artisan-sort-direction");
 
     var currentSort = { col: "prof", dir: 1 };
+    var defaultSortDirections = { name:1, prof:1, proficiency:-1, focus:-1, commission:1, speed:-1, skill:1, skillPct:-1 };
     var profColors = { Adventurer:"#8b949e", Alchemist:"#3fb950", Armorer:"#58a6ff", Artificer:"#a371f7", Blacksmith:"#f85149", Jeweler:"#d29922", Leatherworker:"#f0883e", Tailor:"#58a6ff" };
 
     // Populate filters
@@ -272,17 +389,29 @@
         var skillBest = a.skillPct === maxSkillPct ? "val-best" : "";
 
         html += "<tr>";
-        html += "<td><strong>" + escapeHtml(a.name) + "</strong></td>";
-        html += '<td><span class="prof-badge" style="background:' + (profColors[a.prof]||"#666") + ';color:#fff;">' + a.prof + "</span></td>";
-        html += '<td class="' + profClass + '">' + a.proficiency + "</td>";
-        html += '<td class="' + focusClass + '">' + a.focus + "</td>";
-        html += '<td class="' + commBest + '">' + (a.commission > 0 ? "+" : "") + a.commission + "%</td>";
-        html += '<td class="' + speedBest + '">' + (a.speed > 0 ? "+" : "") + a.speed + "%</td>";
-        html += "<td>" + escapeHtml(a.skill) + "</td>";
-        html += '<td class="' + skillBest + '">' + a.skillPct + "%</td>";
+        html += '<td data-label="Name"><strong>' + escapeHtml(a.name) + "</strong></td>";
+        html += '<td data-label="Profession"><span class="prof-badge" style="background:' + (profColors[a.prof]||"#666") + ';color:#fff;">' + escapeHtml(a.prof) + "</span></td>";
+        html += '<td data-label="Proficiency" class="' + profClass + '">' + a.proficiency + "</td>";
+        html += '<td data-label="Focus" class="' + focusClass + '">' + a.focus + "</td>";
+        html += '<td data-label="Commission" class="' + commBest + '">' + (a.commission > 0 ? "+" : "") + a.commission + "%</td>";
+        html += '<td data-label="Speed" class="' + speedBest + '">' + (a.speed > 0 ? "+" : "") + a.speed + "%</td>";
+        html += '<td data-label="Special Skill">' + escapeHtml(a.skill) + "</td>";
+        html += '<td data-label="Skill Chance" class="' + skillBest + '">' + a.skillPct + "%</td>";
         html += "</tr>";
       }
       tbody.innerHTML = html;
+    }
+
+    function updateSortControls() {
+      if (mobileSortSelect) mobileSortSelect.value = currentSort.col;
+      if (mobileSortDirection) {
+        var ascending = currentSort.dir === 1;
+        mobileSortDirection.textContent = ascending ? "Ascending ↑" : "Descending ↓";
+        mobileSortDirection.setAttribute("aria-label", "Change sort direction; currently " + (ascending ? "ascending" : "descending"));
+      }
+      document.querySelectorAll(".art-table th .sort-arrow").forEach(function(arrow) { arrow.textContent = ""; });
+      var activeHeader = document.querySelector('.art-table th[data-sort="' + currentSort.col + '"] .sort-arrow');
+      if (activeHeader) activeHeader.textContent = currentSort.dir === -1 ? " \u25BC" : " \u25B2";
     }
 
     // Sort on header click
@@ -291,12 +420,23 @@
       if (!th) return;
       var col = th.getAttribute("data-sort");
       if (currentSort.col === col) { currentSort.dir *= -1; }
-      else { currentSort.col = col; currentSort.dir = col === "commission" ? 1 : -1; }
-      // Update arrows
-      document.querySelectorAll(".art-table th .sort-arrow").forEach(function(s) { s.textContent = ""; });
-      th.querySelector(".sort-arrow").textContent = currentSort.dir === -1 ? " \u25BC" : " \u25B2";
+      else { currentSort.col = col; currentSort.dir = defaultSortDirections[col] || 1; }
+      updateSortControls();
       renderTable();
     });
+
+    if (mobileSortSelect) mobileSortSelect.addEventListener("change", function() {
+      currentSort.col = mobileSortSelect.value;
+      currentSort.dir = defaultSortDirections[currentSort.col] || 1;
+      updateSortControls();
+      renderTable();
+    });
+    if (mobileSortDirection) mobileSortDirection.addEventListener("click", function() {
+      currentSort.dir *= -1;
+      updateSortControls();
+      renderTable();
+    });
+    updateSortControls();
 
     searchInput.addEventListener("input", renderTable);
     filterProf.addEventListener("change", renderTable);
