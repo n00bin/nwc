@@ -293,3 +293,7 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BF-N13 Storyteller (Minstrel feat T5a): manual song -> party role buff 5%/stack x3, 15 s, 50 ft (2026-09-28, fine)
 - BF-N14 Gambler (T5b): stacks Gambler's Delight per manual heal song (15 s), spent by the Reprised Carols; unused expiry = 100 party heal; max stacks TEST (2026-09-28, fine)
 ## BARD COMPLETE 2026-09-28: both paragons - 20 powers, 12 songs, 9 mechanics, 16 features, 20 feats; shared items re-checked per paragon (2 variants). Open tests: Performance fill rate, Con Elemento variants, Staccato hits, carol tick interval, projectile bucket, Soloist in group, Performer/Loremaster procs, Aurora drain, Reprised Carol odds, Starstruck, Gambler max stacks. Next class: Cleric.
+
+## CLERIC PASS (2026-09-28). Count check vs both Powers screens: every row matches (Arbiter 4/10/5/4/8/10, Devout 4/10/5/6/8/10); shared powers already carry per-paragon values (magnitudeByParagon etc.); both paragon screens archived for every shared item.
+- CL-0 STRUCTURE (n00b fine): the 8 class features are slottable (2 Active of 8) but were always-on with empty slottable lists - moved 4 shared + 4 paragon into each paragon's slottedClassFeatures, 'active' flags dropped (same fix as Barbarian BF-3). No stats on them yet; stats come at their review.
+
