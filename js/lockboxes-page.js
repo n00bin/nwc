@@ -212,6 +212,10 @@
       + (checked ? " · Catalog checked " + formatDate(checked) : "");
   }
 
+  if (searchInput) searchInput.addEventListener("input", applyFilters);
+  if (groupSelect) groupSelect.addEventListener("change", applyFilters);
+  if (availabilitySelect) availabilitySelect.addEventListener("change", applyFilters);
+
   function setTab(name, updateHash) {
     var active = name === "lockboxes" ? "lockboxes" : "consumables";
     tabs.forEach(function (tab) {
