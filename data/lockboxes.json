@@ -1,13 +1,13 @@
 {
   "dataset_name": "Neverwinter Lockbox Catalog",
   "schema_version": "1.0.0",
-  "last_checked": "2026-09-24",
+  "last_checked": "2026-09-28",
   "coverage": {
     "keyed_lockbox_count": 73,
     "related_container_count": 11,
     "scope": "Named keyed lockboxes in the historical index plus official releases through Wild Adventures Lockbox (2026-09-01). Related recurring/event containers are listed separately.",
     "contents_limit": "Most rows have confirmed headliner rewards only. The detailed outcome groups are copied from the cited wiki pages where available; the file does not claim every possible item inside every reward pack.",
-    "icon_limit": "Direct icon image URLs are added where the Neverwinter Wiki item page identifies the matching icon file; remaining records link to their item page and stay unverified.",
+    "icon_limit": "Box icons are local copies in images/lockboxes/ (64px WebP; Runic 128px), sourced from the Neverwinter Wiki item pages and NW Hub. Buried Treasure and Wild Adventures have no published icon yet and need an in-game screenshot.",
     "drop_rate_limit": "Dragon Cult odds are transcribed from its chance table. A few pre-2022 rates are historical community estimates, not official odds. Later lockboxes display odds in-game, but most exact values were not transcribed.",
     "platform_limit": "Historical dates are PC dates from the index. Console release timing differed for older boxes."
   },
@@ -68,9 +68,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/nightmare-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Nightmare_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -96,9 +97,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/feywild-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Feywild_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -124,9 +126,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/dark-forest-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Dark_Forest_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -166,9 +169,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/f/fd/Icon_Lockbox_Rustediron.png/revision/latest?cb=20131205160739",
+        "direct_image_url": "images/lockboxes/rusted-iron-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Rusted_Iron_Lockbox",
-        "status": "verified_image_from_wiki_item_page"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -195,9 +199,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/unearthed-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Unearthed_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -240,9 +245,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/frozen-crystal-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Frozen_Crystal_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -269,9 +275,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/lockbox-of-the-magnificent-emporium.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Magnificent_Emporium",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -298,9 +305,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/tyrannical-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Tyrannical_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -327,9 +335,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/fell-dragon-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Fell_Dragon_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -358,9 +367,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/nine-hells-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Nine_Hells_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -387,9 +397,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/dragonforged-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Dragonforged_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -416,9 +427,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/black-earth-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Black_Earth_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -445,9 +457,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/eternal-flame-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Eternal_Flame_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -474,9 +487,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/crushing-wave-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Crushing_Wave_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -503,9 +517,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/howling-hatred-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Howling_Hatred_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -550,9 +565,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/3/3a/Icon_Lockbox_Resurgence.png/revision/latest?cb=20151118124235",
+        "direct_image_url": "images/lockboxes/glorious-resurgence-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Glorious_Resurgence_Lockbox",
-        "status": "verified_image_from_wiki_item_page"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -589,9 +605,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/new-life-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/New_Life_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -635,9 +652,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/shaundakul-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Shaundakul_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -664,9 +682,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/firemane-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Firemane_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -692,9 +711,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/e/e1/Icon_Lockbox_Runic.png/revision/latest/scale-to-width-down/64?cb=20160825095209",
+        "direct_image_url": "images/lockboxes/runic-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Runic_Lockbox",
-        "status": "verified_image_from_wiki_item_page"
+        "status": "verified_image_local_copy",
+        "image_source": "Neverwinter Wiki"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -738,9 +758,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/giants-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Giants'_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -782,9 +803,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/many-starred-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Many-Starred_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -876,9 +898,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/e/e5/Icon_Lockbox_Ofthenine.png/revision/latest",
+        "direct_image_url": "images/lockboxes/lockbox-of-the-nine.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Nine",
-        "status": "verified_image_from_wiki_item_page"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -920,9 +943,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/merchant-prince-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Merchant_Prince_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1004,9 +1028,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/lockbox-of-the-lost.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Lost",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1093,9 +1118,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/soulmongers-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Soulmonger's_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1122,9 +1148,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/undying-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Undying_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1151,9 +1178,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/d/d8/Icon_Lockbox_Newopportunities.png/revision/latest",
+        "direct_image_url": "images/lockboxes/new-opportunities-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/New_Opportunities_Lockbox",
-        "status": "verified_image_from_wiki_item_page"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1180,9 +1208,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/reborn-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Reborn_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1248,9 +1277,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/acquired-treasures-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Acquired_Treasures_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1277,9 +1307,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/lockbox-of-the-mad-mage.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Mad_Mage",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1306,9 +1337,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/excavated-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Excavated_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1335,9 +1367,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/halasters-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Halaster's_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1364,9 +1397,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/4/49/Icon_Lockbox_Stardock.png/revision/latest?cb=20210702160531",
+        "direct_image_url": "images/lockboxes/stardock-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Stardock_Lockbox",
-        "status": "verified_image_from_wiki_item_page"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1393,9 +1427,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/the-descent-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/The_Descent_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1422,9 +1457,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/wasteland-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Wasteland_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1450,9 +1486,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/the-blood-war-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/The_Blood_War_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1479,9 +1516,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/redeemed-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Redeemed_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1508,9 +1546,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/forsaken-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Forsaken_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1537,9 +1576,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/0/0b/Icon_Lockbox_Spellbound.png/revision/latest",
+        "direct_image_url": "images/lockboxes/spellbound-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Spellbound_Lockbox",
-        "status": "verified_image_from_wiki_item_page"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1566,9 +1606,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/enchanting-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Enchanting_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1595,9 +1636,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/ensorcelled-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Ensorcelled_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1624,9 +1666,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/lockbox-of-justice.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_Justice",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1653,9 +1696,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/reconnaissance-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Reconnaissance_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1682,9 +1726,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/stealth-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Stealth_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1711,9 +1756,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/skeletal-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Skeletal_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1740,9 +1786,10 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/0/06/Icon_Lockbox_DarkOmens.png/revision/latest",
+        "direct_image_url": "images/lockboxes/lockbox-of-dark-omens.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_Dark_Omens",
-        "status": "verified_image_from_wiki_item_page"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1926,9 +1973,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/dragon-cult-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Dragon_Cult_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1951,9 +1999,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/dragonslayer-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Dragonslayer_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1979,9 +2028,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/myconid-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Myconid_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2005,9 +2055,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/lockbox-of-lost-knowledge.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_Lost_Knowledge",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2033,9 +2084,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/lolthian-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Lolthian_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2062,9 +2114,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/atramentous-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Atramentous_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2091,9 +2144,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/planar-panic-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Planar_Panic_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2120,9 +2174,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/lockbox-of-shadowy-flight.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_Shadowy_Flight",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2149,9 +2204,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/miniature-giant-space-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Miniature_Giant_Space_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2177,9 +2233,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/starlight-armaments-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Starlight_Armaments_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2206,9 +2263,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/doomspace-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Doomspace_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2235,9 +2293,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/astronautical-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Astronautical_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2261,9 +2320,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/leaping-flame-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Leaping_Flame_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2286,9 +2346,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/foxfire-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Foxfire_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2312,9 +2373,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/psionic-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Psionic_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2337,9 +2399,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/earth-mote-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Earth_Mote_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2365,9 +2428,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/glorious-undead-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Glorious_Undead_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2394,9 +2458,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/wings-and-cauldrons-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Wings_and_Cauldrons_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2421,9 +2486,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/phantasmal-fantasy-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Phantasmal_Fantasy_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2446,9 +2512,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/feywild-wonders-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Feywild_Wonders_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2474,9 +2541,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/grubby-goods-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Grubby_Goods_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2503,9 +2571,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/deathly-delights-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Deathly_Delights_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2532,9 +2601,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/pet-pals-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Pet_Pals_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2560,9 +2630,10 @@
       },
       "guarantee_after_openings": 250,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/encroaching-frost-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Encroaching_Frost_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "NW Hub (nw-hub.com)"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2591,7 +2662,7 @@
       "icon": {
         "direct_image_url": null,
         "source_page_url": "https://neverwinter.fandom.com/wiki/Buried_Treasure_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "no_icon_needs_in_game_screenshot"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2620,7 +2691,7 @@
       "icon": {
         "direct_image_url": null,
         "source_page_url": "https://neverwinter.fandom.com/wiki/Wild_Adventures_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "no_icon_needs_in_game_screenshot"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -2637,9 +2708,10 @@
       "key_required": false,
       "contents_detail_status": "needs_version_check_or_varies_by_event",
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/astral-lockbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Astral_Lockbox",
-        "status": "direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "Neverwinter Wiki"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Astral_Lockbox",
@@ -2701,9 +2773,10 @@
       "key_required": false,
       "contents_detail_status": "needs_version_check_or_varies_by_event",
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/gift-of-tymora.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Tymora%27s_Gift",
-        "status": "direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "Neverwinter Wiki"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Tymora%27s_Gift",
@@ -2717,9 +2790,10 @@
       "key_required": false,
       "contents_detail_status": "needs_version_check_or_varies_by_event",
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/waukeens-coin-purse.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
-        "status": "direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "Neverwinter Wiki"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
@@ -2733,9 +2807,10 @@
       "key_required": false,
       "contents_detail_status": "needs_version_check_or_varies_by_event",
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/waukeens-strongbox.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
-        "status": "direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "Neverwinter Wiki"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
@@ -2749,9 +2824,10 @@
       "key_required": false,
       "contents_detail_status": "needs_version_check_or_varies_by_event",
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/waukeens-treasure-chest.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
-        "status": "direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "Neverwinter Wiki"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
@@ -2765,9 +2841,10 @@
       "key_required": false,
       "contents_detail_status": "needs_version_check_or_varies_by_event",
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/waukeens-golden-chest.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
-        "status": "direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "Neverwinter Wiki"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Coins_of_Waukeen",
@@ -2781,9 +2858,10 @@
       "key_required": false,
       "contents_detail_status": "needs_version_check_or_varies_by_event",
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/gift-of-the-gods.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Challenge_of_the_Gods",
-        "status": "direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "Neverwinter Wiki"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Challenge_of_the_Gods",
@@ -2797,9 +2875,10 @@
       "key_required": false,
       "contents_detail_status": "needs_version_check_or_varies_by_event",
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "images/lockboxes/blessed-gift-of-the-gods.webp",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Challenge_of_the_Gods",
-        "status": "direct_image_file_not_verified"
+        "status": "verified_image_local_copy",
+        "image_source": "Neverwinter Wiki"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Challenge_of_the_Gods",
@@ -2821,7 +2900,13 @@
       ],
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox"
-      ]
+      ],
+      "icon": {
+        "direct_image_url": "images/lockboxes/nightmare-lockbox.webp",
+        "status": "verified_image_local_copy",
+        "image_source": "Neverwinter Wiki (same file as Nightmare Lockbox)",
+        "source_page_url": "https://neverwinter.fandom.com/wiki/Nightmare_Lockbox"
+      }
     }
   ]
 }

@@ -9,6 +9,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ### Features
 
 - **Lockboxes tab added under Consumables.** Browse the historical lockbox catalog with search, entry-type and availability filters, reward details, source links, and clearly labeled rate information. Unverified icons and incomplete reward lists are marked.
+- **Lockbox icons.** Every lockbox in the catalog now shows its in-game box icon (80 of 85 entries, including the Waukeen chests and both Gifts of the Gods). Only the two newest boxes, Buried Treasure and Wild Adventures, and three recurring containers still wait on an in-game screenshot.
 
 ### Data Additions
 
