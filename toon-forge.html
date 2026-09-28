@@ -591,6 +591,36 @@
       background: rgba(240,136,62,0.12);
       box-shadow: 0 0 12px rgba(240,136,62,0.2);
     }
+    .collection-count-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 0.3rem;
+    }
+    .field .collection-tier {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.3rem;
+      min-width: 0;
+      margin: 0;
+      color: var(--text-mute);
+      text-align: center;
+      font-size: 0.72rem;
+      line-height: 1.2;
+    }
+    .field .collection-tier input {
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
+      min-height: 38px;
+      padding: 0.35rem 0.25rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--elevated);
+      color: var(--text);
+      text-align: center;
+      font: inherit;
+    }
 
     /* ===== Buff toggle list ===== */
     /* ===== Boons (point allocator) ===== */
@@ -2206,6 +2236,9 @@
       /* Stable rows: pickers wrap nicely */
       .stable-row-pickers { gap: 0.35rem; }
       .stable-mount, .stable-collar { min-width: 130px; }
+      .collection-count-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.45rem; }
+      .field .collection-tier { padding: 0.35rem 0.25rem; }
+      .field .collection-tier input { min-height: 44px; font-size: 16px; }
 
       /* Keep the score visible while the stats row scrolls on its own. */
       .footer-bar {
@@ -3052,21 +3085,14 @@
               <span class="hint-icon" data-tip="How many companions you own at each rarity. Per-tier bolster: Common 1% / Uncommon 2% / Rare 3.5% / Epic 5% / Legendary 7.5% / Mythic 10% / Celestial 12%. Top 10 by quality counted, capped at 120%.">?</span>
               <span style="float:right;color:var(--text-mute);font-size:0.78rem;" id="comp-collection-summary">top 10 of 0: 0%</span>
             </label>
-            <div class="comp-collection-grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:0.3rem;font-size:0.74rem;">
-              <div style="text-align:center;color:var(--text-mute);">Common</div>
-              <div style="text-align:center;color:var(--text-mute);">Uncom.</div>
-              <div style="text-align:center;color:var(--text-mute);">Rare</div>
-              <div style="text-align:center;color:var(--text-mute);">Epic</div>
-              <div style="text-align:center;color:var(--text-mute);">Legen.</div>
-              <div style="text-align:center;color:var(--text-mute);">Mythic</div>
-              <div style="text-align:center;color:var(--text-mute);">Celes.</div>
-              <input type="number" min="0" data-comp-tier="Common"    style="width:100%;text-align:center;">
-              <input type="number" min="0" data-comp-tier="Uncommon"  style="width:100%;text-align:center;">
-              <input type="number" min="0" data-comp-tier="Rare"      style="width:100%;text-align:center;">
-              <input type="number" min="0" data-comp-tier="Epic"      style="width:100%;text-align:center;">
-              <input type="number" min="0" data-comp-tier="Legendary" style="width:100%;text-align:center;">
-              <input type="number" min="0" data-comp-tier="Mythic"    style="width:100%;text-align:center;">
-              <input type="number" min="0" data-comp-tier="Celestial" style="width:100%;text-align:center;">
+            <div class="comp-collection-grid collection-count-grid">
+              <label class="collection-tier">Common<input type="number" min="0" data-comp-tier="Common" aria-label="Common companions owned"></label>
+              <label class="collection-tier">Uncommon<input type="number" min="0" data-comp-tier="Uncommon" aria-label="Uncommon companions owned"></label>
+              <label class="collection-tier">Rare<input type="number" min="0" data-comp-tier="Rare" aria-label="Rare companions owned"></label>
+              <label class="collection-tier">Epic<input type="number" min="0" data-comp-tier="Epic" aria-label="Epic companions owned"></label>
+              <label class="collection-tier">Legendary<input type="number" min="0" data-comp-tier="Legendary" aria-label="Legendary companions owned"></label>
+              <label class="collection-tier">Mythic<input type="number" min="0" data-comp-tier="Mythic" aria-label="Mythic companions owned"></label>
+              <label class="collection-tier">Celestial<input type="number" min="0" data-comp-tier="Celestial" aria-label="Celestial companions owned"></label>
             </div>
           </div>
         </div>
@@ -3085,21 +3111,14 @@
               <span class="hint-icon" data-tip="How many mounts you own at each rarity. Per-tier bolster: Common 1% / Uncommon 2% / Rare 3.5% / Epic 5% / Legendary 7.5% / Mythic 10% / Celestial 12.5%. Top 10 by quality counted, capped at 125%.">?</span>
               <span style="float:right;color:var(--text-mute);font-size:0.78rem;" id="mount-collection-summary">top 10 of 0: 0%</span>
             </label>
-            <div class="mount-collection-grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:0.3rem;font-size:0.74rem;">
-              <div style="text-align:center;color:var(--text-mute);">Common</div>
-              <div style="text-align:center;color:var(--text-mute);">Uncom.</div>
-              <div style="text-align:center;color:var(--text-mute);">Rare</div>
-              <div style="text-align:center;color:var(--text-mute);">Epic</div>
-              <div style="text-align:center;color:var(--text-mute);">Legen.</div>
-              <div style="text-align:center;color:var(--text-mute);">Mythic</div>
-              <div style="text-align:center;color:var(--text-mute);">Celes.</div>
-              <input type="number" min="0" data-mount-tier="Common"    style="width:100%;text-align:center;">
-              <input type="number" min="0" data-mount-tier="Uncommon"  style="width:100%;text-align:center;">
-              <input type="number" min="0" data-mount-tier="Rare"      style="width:100%;text-align:center;">
-              <input type="number" min="0" data-mount-tier="Epic"      style="width:100%;text-align:center;">
-              <input type="number" min="0" data-mount-tier="Legendary" style="width:100%;text-align:center;">
-              <input type="number" min="0" data-mount-tier="Mythic"    style="width:100%;text-align:center;">
-              <input type="number" min="0" data-mount-tier="Celestial" style="width:100%;text-align:center;">
+            <div class="mount-collection-grid collection-count-grid">
+              <label class="collection-tier">Common<input type="number" min="0" data-mount-tier="Common" aria-label="Common mounts owned"></label>
+              <label class="collection-tier">Uncommon<input type="number" min="0" data-mount-tier="Uncommon" aria-label="Uncommon mounts owned"></label>
+              <label class="collection-tier">Rare<input type="number" min="0" data-mount-tier="Rare" aria-label="Rare mounts owned"></label>
+              <label class="collection-tier">Epic<input type="number" min="0" data-mount-tier="Epic" aria-label="Epic mounts owned"></label>
+              <label class="collection-tier">Legendary<input type="number" min="0" data-mount-tier="Legendary" aria-label="Legendary mounts owned"></label>
+              <label class="collection-tier">Mythic<input type="number" min="0" data-mount-tier="Mythic" aria-label="Mythic mounts owned"></label>
+              <label class="collection-tier">Celestial<input type="number" min="0" data-mount-tier="Celestial" aria-label="Celestial mounts owned"></label>
             </div>
           </div>
         </div>
