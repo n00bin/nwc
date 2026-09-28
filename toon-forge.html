@@ -2340,6 +2340,11 @@
       .comp-loadout { grid-template-columns: 1fr; }
     }
 
+    /* Keep summoned companion gear compact on standard-width phones. */
+    @media (min-width: 360px) and (max-width: 400px) {
+      .comp-loadout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
     /* ===== Tooltips ===== */
     [data-tip] { position: relative; }
     [data-tip]:hover::after {
