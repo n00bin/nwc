@@ -7,7 +7,7 @@
     "related_container_count": 11,
     "scope": "Named keyed lockboxes in the historical index plus official releases through Wild Adventures Lockbox (2026-09-01). Related recurring/event containers are listed separately.",
     "contents_limit": "Most rows have confirmed headliner rewards only. The detailed outcome groups are copied from the cited wiki pages where available; the file does not claim every possible item inside every reward pack.",
-    "icon_limit": "Direct icon image URLs were not verified in this pass. Each record links to a source page where an icon may be shown.",
+    "icon_limit": "Direct icon image URLs are added where the Neverwinter Wiki item page identifies the matching icon file; remaining records link to their item page and stay unverified.",
     "drop_rate_limit": "Dragon Cult odds are transcribed from its chance table. A few pre-2022 rates are historical community estimates, not official odds. Later lockboxes display odds in-game, but most exact values were not transcribed.",
     "platform_limit": "Historical dates are PC dates from the index. Console release timing differed for older boxes."
   },
@@ -166,9 +166,9 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/f/fd/Icon_Lockbox_Rustediron.png/revision/latest?cb=20131205160739",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Rusted_Iron_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_from_wiki_item_page"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -770,7 +770,7 @@
           },
           {
             "item": "Tarmalune Trade Bars",
-            "average_amount": 8.0,
+            "average_amount": 8,
             "kind": "historical_community_average"
           }
         ],
@@ -876,9 +876,9 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/e/e5/Icon_Lockbox_Ofthenine.png/revision/latest",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_the_Nine",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_from_wiki_item_page"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -908,7 +908,7 @@
           },
           {
             "item": "Tarmalune Trade Bars",
-            "average_amount": 8.0,
+            "average_amount": 8,
             "kind": "historical_community_average"
           }
         ],
@@ -1151,9 +1151,9 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/d/d8/Icon_Lockbox_Newopportunities.png/revision/latest",
         "source_page_url": "https://neverwinter.fandom.com/wiki/New_Opportunities_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_from_wiki_item_page"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1537,9 +1537,9 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/0/0b/Icon_Lockbox_Spellbound.png/revision/latest",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Spellbound_Lockbox",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_from_wiki_item_page"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1740,9 +1740,9 @@
       },
       "guarantee_after_openings": null,
       "icon": {
-        "direct_image_url": null,
+        "direct_image_url": "https://static.wikia.nocookie.net/neverwinter_gamepedia/images/0/06/Icon_Lockbox_DarkOmens.png/revision/latest",
         "source_page_url": "https://neverwinter.fandom.com/wiki/Lockbox_of_Dark_Omens",
-        "status": "source_page_linked_direct_image_file_not_verified"
+        "status": "verified_image_from_wiki_item_page"
       },
       "source_urls": [
         "https://neverwinter.fandom.com/wiki/Lockbox",
@@ -1814,32 +1814,32 @@
           {
             "item": "Bag of Holding",
             "odds_raw": "1/100",
-            "rate_percent": 1.0
+            "rate_percent": 1
           },
           {
             "item": "Epic Companion",
             "odds_raw": "1/100",
-            "rate_percent": 1.0
+            "rate_percent": 1
           },
           {
             "item": "Legendary Insignia",
             "odds_raw": "1/50",
-            "rate_percent": 2.0
+            "rate_percent": 2
           },
           {
             "item": "Epic Mount",
             "odds_raw": "1/50",
-            "rate_percent": 2.0
+            "rate_percent": 2
           },
           {
             "item": "Stone of Health",
             "odds_raw": "1/50",
-            "rate_percent": 2.0
+            "rate_percent": 2
           },
           {
             "item": "Genie's Gift x5",
             "odds_raw": "1/50",
-            "rate_percent": 2.0
+            "rate_percent": 2
           },
           {
             "item": "Epic Insignia",
@@ -1854,12 +1854,12 @@
           {
             "item": "Uncommon Companion",
             "odds_raw": "1/25",
-            "rate_percent": 4.0
+            "rate_percent": 4
           },
           {
             "item": "Common Mount",
             "odds_raw": "1/25",
-            "rate_percent": 4.0
+            "rate_percent": 4
           },
           {
             "item": "Common Companion",
@@ -1869,52 +1869,52 @@
           {
             "item": "Epic Collar Choice Pack",
             "odds_raw": "1/20",
-            "rate_percent": 5.0
+            "rate_percent": 5
           },
           {
             "item": "Mount Upgrade Token x10",
             "odds_raw": "1/20",
-            "rate_percent": 5.0
+            "rate_percent": 5
           },
           {
             "item": "Companion Upgrade Token x10",
             "odds_raw": "1/20",
-            "rate_percent": 5.0
+            "rate_percent": 5
           },
           {
             "item": "Legendary Dragon Key",
             "odds_raw": "1/20",
-            "rate_percent": 5.0
+            "rate_percent": 5
           },
           {
             "item": "Overload Enchantment",
             "odds_raw": "1/20",
-            "rate_percent": 5.0
+            "rate_percent": 5
           },
           {
             "item": "Stronghold Voucher",
             "odds_raw": "1/20",
-            "rate_percent": 5.0
+            "rate_percent": 5
           },
           {
             "item": "Reward Reroll Token x10",
             "odds_raw": "1/10",
-            "rate_percent": 10.0
+            "rate_percent": 10
           },
           {
             "item": "Preservation Ward x5",
             "odds_raw": "1/10",
-            "rate_percent": 10.0
+            "rate_percent": 10
           },
           {
             "item": "Insignia Powder x25",
             "odds_raw": "1/10",
-            "rate_percent": 10.0
+            "rate_percent": 10
           },
           {
             "item": "Tarmalune Trade Bars x25",
             "odds_raw": "1/10",
-            "rate_percent": 10.0
+            "rate_percent": 10
           }
         ],
         "historical_community_estimates": [],
