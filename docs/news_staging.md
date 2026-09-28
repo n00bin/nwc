@@ -6,6 +6,10 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of September 28, 2026
 
+### Data Additions
+
+- **Umbral Widow mount (M33.5 preview).** Added with its Illuminated + Crescent + Regal + Universal insignia slots, the Shadow Sight equip power (+3% Movement Speed, +1.5% Awareness, +2,700 Combined Rating at Mythic) and the Tunnel Vision combat power. Screenshot-verified from the Wondrous Bazaar Mount Preview.
+
 ### Data Fixes
 
 - **Portable Spelljammer Detector corrected.** At item level 1,500 it makes enemies take 10% more damage (not 12%) and gives you 3.8% Critical Severity on use (not 7.5%), and it carries a base +3.8% Critical Severity we were not showing. Fixed on the Artifacts page and in Toon Forge from a player's tooltip (Report #285).
