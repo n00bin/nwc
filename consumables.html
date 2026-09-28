@@ -321,28 +321,38 @@
   </div>
 
   <!-- Filters / Search (standard site controls bar) -->
-  <div class="controls-bar" id="consumables-controls">
+  <div class="controls-bar mobile-disclosure-controls" id="consumables-controls">
     <input type="text" class="search-input" id="cnsm-search" placeholder="Search consumables...">
-    <select class="filter-select" id="cnsm-cat">
-      <option value="">All Categories</option>
-    </select>
+    <button type="button" class="mobile-filter-toggle" aria-expanded="false" aria-controls="consumables-filter-fields">
+      <span>Filters</span><span class="mobile-filter-chevron" aria-hidden="true">&#9662;</span>
+    </button>
+    <div class="mobile-filter-fields" id="consumables-filter-fields">
+      <select class="filter-select" id="cnsm-cat">
+        <option value="">All Categories</option>
+      </select>
+    </div>
   </div>
 
-  <div class="controls-bar" id="lockboxes-controls" hidden>
+  <div class="controls-bar mobile-disclosure-controls" id="lockboxes-controls" hidden>
     <input type="text" class="search-input" id="lb-search" placeholder="Search lockboxes or rewards...">
-    <select class="filter-select" id="lb-group">
-      <option value="">All Entry Types</option>
-      <option value="keyed_lockboxes">Keyed Lockboxes</option>
-      <option value="related_containers">Related Containers</option>
-      <option value="historical_variants">Historical Variants</option>
-    </select>
-    <select class="filter-select" id="lb-availability">
-      <option value="">All Availability</option>
-      <option value="currently_dropping">Currently Dropping</option>
-      <option value="rotated_out_of_current_drops">Not Currently Dropping</option>
-      <option value="periodic_resurgence">Periodic Return</option>
-      <option value="unknown">Not Confirmed</option>
-    </select>
+    <button type="button" class="mobile-filter-toggle" aria-expanded="false" aria-controls="lockboxes-filter-fields">
+      <span>Filters</span><span class="mobile-filter-chevron" aria-hidden="true">&#9662;</span>
+    </button>
+    <div class="mobile-filter-fields" id="lockboxes-filter-fields">
+      <select class="filter-select" id="lb-group">
+        <option value="">All Entry Types</option>
+        <option value="keyed_lockboxes">Keyed Lockboxes</option>
+        <option value="related_containers">Related Containers</option>
+        <option value="historical_variants">Historical Variants</option>
+      </select>
+      <select class="filter-select" id="lb-availability">
+        <option value="">All Availability</option>
+        <option value="currently_dropping">Currently Dropping</option>
+        <option value="rotated_out_of_current_drops">Not Currently Dropping</option>
+        <option value="periodic_resurgence">Periodic Return</option>
+        <option value="unknown">Not Confirmed</option>
+      </select>
+    </div>
   </div>
 
   <main id="consumables-view" class="cnsm-page" role="tabpanel" aria-labelledby="tab-consumables" tabindex="0">
