@@ -251,21 +251,26 @@
   <!-- Filters / Search (lookup view) -->
   <div class="controls-bar" id="lookup-controls">
     <input type="text" class="search-input" id="search" placeholder="Search mounts...">
-    <select class="filter-select" id="filter-combat">
-      <option value="">All Combat Powers</option>
-    </select>
-    <select class="filter-select" id="filter-equip">
-      <option value="">All Equip Powers</option>
-    </select>
-    <select class="filter-select" id="filter-bonus">
-      <option value="">All Insignia Bonuses</option>
-    </select>
-    <label style="display:flex;align-items:center;gap:0.4rem;color:var(--text-secondary);font-size:0.85rem;cursor:pointer;white-space:nowrap;">
-      <input type="checkbox" id="toggle-preferred"> <span title="Only mounts with a preferred slot: the matching insignia type gets a +20% bonus there">Preferred Slot</span>
-    </label>
-    <label style="display:flex;align-items:center;gap:0.4rem;color:var(--text-secondary);font-size:0.85rem;cursor:pointer;white-space:nowrap;">
-      <input type="checkbox" id="toggle-4slot"> <span title="Only mounts with four insignia slots (more room for stat bonuses)">4-Slot Only</span>
-    </label>
+    <button type="button" class="mobile-filter-toggle" aria-expanded="false" aria-controls="lookup-filter-fields">
+      <span>Filters</span><span class="mobile-filter-chevron" aria-hidden="true">&#9662;</span>
+    </button>
+    <div class="lookup-filter-fields" id="lookup-filter-fields">
+      <select class="filter-select" id="filter-combat">
+        <option value="">All Combat Powers</option>
+      </select>
+      <select class="filter-select" id="filter-equip">
+        <option value="">All Equip Powers</option>
+      </select>
+      <select class="filter-select" id="filter-bonus">
+        <option value="">All Insignia Bonuses</option>
+      </select>
+      <label class="lookup-check-filter">
+        <input type="checkbox" id="toggle-preferred"> <span title="Only mounts with a preferred slot: the matching insignia type gets a +20% bonus there">Preferred Slot</span>
+      </label>
+      <label class="lookup-check-filter">
+        <input type="checkbox" id="toggle-4slot"> <span title="Only mounts with four insignia slots (more room for stat bonuses)">4-Slot Only</span>
+      </label>
+    </div>
   </div>
 
   <!-- Two-panel layout (lookup view) -->

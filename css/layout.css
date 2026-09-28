@@ -68,6 +68,23 @@
   display: none;
 }
 
+.lookup-filter-fields {
+  display: contents;
+}
+
+.mobile-filter-toggle {
+  display: none;
+}
+
+.lookup-check-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
 /* ---- Custom Scrollbars ---- */
 .list-panel::-webkit-scrollbar,
 .detail-panel::-webkit-scrollbar {
@@ -164,6 +181,72 @@
 
   .search-input {
     min-width: 100%;
+  }
+
+  #lookup-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  #lookup-controls .search-input {
+    grid-column: 1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .mobile-filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .mobile-filter-toggle:hover,
+  .mobile-filter-toggle[aria-expanded="true"] {
+    border-color: var(--border-accent);
+    background: var(--bg-hover);
+  }
+
+  .mobile-filter-chevron {
+    transition: transform 0.15s;
+  }
+
+  .mobile-filter-toggle[aria-expanded="true"] .mobile-filter-chevron {
+    transform: rotate(180deg);
+  }
+
+  .lookup-filter-fields {
+    display: none;
+    grid-column: 1 / -1;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    width: 100%;
+    padding-top: 0.25rem;
+  }
+
+  #lookup-controls.filters-open .lookup-filter-fields {
+    display: flex;
+  }
+
+  #lookup-controls .filter-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .lookup-check-filter {
+    min-height: 44px;
+    white-space: normal;
   }
 }
 

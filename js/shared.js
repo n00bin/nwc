@@ -49,6 +49,18 @@ function initMobileListDetailSwitch() {
   });
 }
 
+function initMobileFilterDisclosure() {
+  var controls = document.getElementById("lookup-controls");
+  var toggle = controls && controls.querySelector(".mobile-filter-toggle");
+  if (!controls || !toggle || controls.dataset.mobileFilterDisclosure === "ready") return;
+
+  controls.dataset.mobileFilterDisclosure = "ready";
+  toggle.addEventListener("click", function () {
+    var isOpen = controls.classList.toggle("filters-open");
+    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+}
+
 // ---- Navigation ----
 function renderNav(activePage) {
   const nav = document.querySelector(".navbar");
@@ -105,6 +117,7 @@ function renderNav(activePage) {
   // load and after a tap. block:"nearest" stops the page jumping vertically.
   var strips = document.querySelectorAll(".controls-bar.view-tabs");
   initMobileListDetailSwitch();
+  initMobileFilterDisclosure();
   for (var si = 0; si < strips.length; si++) {
     (function (strip) {
       function reveal(el) {

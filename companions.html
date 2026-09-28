@@ -99,18 +99,23 @@
   <!-- Filters / Search (lookup view) -->
   <div class="controls-bar" id="lookup-controls">
     <input type="text" class="search-input" id="search" placeholder="Search companions...">
-    <select class="filter-select" id="filter-stat">
-      <option value="">All Stats</option>
-    </select>
-    <select class="filter-select" id="filter-slot">
-      <option value="">All Slot Types</option>
-    </select>
-    <select class="filter-select" id="filter-rarity">
-      <option value="">All Rarities</option>
-    </select>
-    <select class="filter-select" id="filter-enhancement">
-      <option value="">All Enhancements</option>
-    </select>
+    <button type="button" class="mobile-filter-toggle" aria-expanded="false" aria-controls="lookup-filter-fields">
+      <span>Filters</span><span class="mobile-filter-chevron" aria-hidden="true">&#9662;</span>
+    </button>
+    <div class="lookup-filter-fields" id="lookup-filter-fields">
+      <select class="filter-select" id="filter-stat">
+        <option value="">All Stats</option>
+      </select>
+      <select class="filter-select" id="filter-slot">
+        <option value="">All Slot Types</option>
+      </select>
+      <select class="filter-select" id="filter-rarity">
+        <option value="">All Rarities</option>
+      </select>
+      <select class="filter-select" id="filter-enhancement">
+        <option value="">All Enhancements</option>
+      </select>
+    </div>
   </div>
 
   <!-- Filters (summoned view) -->

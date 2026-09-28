@@ -17,6 +17,7 @@ var I18N_RU = {
   "Home": "Главная",
   "Overview": "Обзор",
   "News": "Новости",
+  "Filters": "Фильтры",
   "Back to results": "Назад к списку",
   "Back to results list": "Назад к списку",
   "is live": "уже здесь",
