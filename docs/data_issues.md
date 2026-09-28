@@ -8,12 +8,10 @@
 - **Dragonbone belt** (Belt, IL 1800, CR 1620, "Runes of Aggression" set, CritSev
   1350 / Deflect 1350, DEX+3 INT+3) - report #281. Not in gear.json at all, and we have
   no other item on that set. Asked the player for the tooltip with set text.
-- **Portable Spelljammer Detector rank values** (artifact id 120, IL 1500) - report #285.
-  Player's IL 1500 tooltip: +10% damage taken, 3.8% CritSev on use, and a base
-  +3.8% Critical Severity percent stat. Ours (wiki-derived, no screenshot): +12%,
-  7.5%, no percent stat. Same IL, different numbers, so our row is probably a
-  different rank mislabeled as 1500 (js/artifacts-page.js row also says +12%).
-  Asked the player for the tooltip.
+- **Portable Spelljammer Detector - RESOLVED 2026-09-28.** Player's IL 1500 tooltip
+  values applied (n00b confirmed): +10% damage taken, +3.8% CritSev on use, base +3.8%
+  Critical Severity, Deflect 1275. Old +12% / +7.5% row was wiki-derived; the higher
+  rank it described has no known IL, so it was not kept. Report #285.
 - Still waiting on players: #232 (Black Earth/Earthen Rapier IL 1150 - which set?)
   and #249 (second belt slot - where were they looking?).
 
