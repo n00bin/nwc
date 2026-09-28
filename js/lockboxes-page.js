@@ -19,6 +19,11 @@
   var countEl = document.getElementById("lb-count");
   var cardsEl = document.getElementById("lb-cards");
   var entries = [];
+  var catalogVersion = "";
+  try {
+    var scriptSource = document.currentScript && document.currentScript.src;
+    if (scriptSource) catalogVersion = new URL(scriptSource).searchParams.get("v") || "";
+  } catch (e) {}
 
   function esc(value) {
     return escapeHtml(String(value == null ? "" : value));
@@ -257,7 +262,9 @@
   });
   setTab(window.location.hash === "#lockboxes" ? "lockboxes" : "consumables", false);
 
-  fetch("data/lockboxes.json")
+  var catalogUrl = "data/lockboxes.json";
+  if (catalogVersion) catalogUrl += "?v=" + encodeURIComponent(catalogVersion);
+  fetch(catalogUrl)
     .then(function (response) {
       if (!response.ok) throw new Error("Lockbox catalog could not be loaded.");
       return response.json();
