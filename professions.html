@@ -123,14 +123,19 @@
   </div>
 
   <!-- Artisan controls -->
-  <div class="controls-bar" id="artisan-controls" style="display:none;">
+  <div class="controls-bar mobile-disclosure-controls" id="artisan-controls" style="display:none;">
     <input type="text" class="search-input" id="search" placeholder="Search artisans...">
-    <select class="filter-select" id="filter-prof">
-      <option value="">All Professions</option>
-    </select>
-    <select class="filter-select" id="filter-skill">
-      <option value="">All Skills</option>
-    </select>
+    <button type="button" class="mobile-filter-toggle" aria-expanded="false" aria-controls="artisan-filter-fields">
+      <span>Filters</span><span class="mobile-filter-chevron" aria-hidden="true">&#9662;</span>
+    </button>
+    <div class="mobile-filter-fields" id="artisan-filter-fields">
+      <select class="filter-select" id="filter-prof">
+        <option value="">All Professions</option>
+      </select>
+      <select class="filter-select" id="filter-skill">
+        <option value="">All Skills</option>
+      </select>
+    </div>
   </div>
 
   <!-- OVERVIEW -->
@@ -407,7 +412,7 @@
         document.querySelectorAll(".prof-view").forEach(function(v) { v.classList.remove("active"); });
         var tabName = tab.getAttribute("data-tab");
         document.getElementById("view-" + tabName).classList.add("active");
-        artisanControls.style.display = tabName === "artisans" ? "flex" : "none";
+        artisanControls.style.display = tabName === "artisans" ? "" : "none";
         if (tabName === "artisans") renderTable();
         if (tabName === "best") renderBest();
         if (tabName === "masterwork") renderMasterwork();
