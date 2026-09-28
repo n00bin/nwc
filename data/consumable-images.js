@@ -83,5 +83,13 @@ window.CONSUMABLE_IMAGES = {
   "Owlbear Figurine": "Icons_Inventory_Event_Aprilfools_Owlbear_Statue.webp",
   "Chain of Scales": "Crafting_Resource_Relicsteelrings.webp",
   "Potion of Coalesced": "Crafting_Alchemy_Potion_Flaskofpotency_T05_01.webp",
-  "Potion of Power": "Crafting_Alchemy_Potion_Flaskofpotency_T05_01.webp"
+  "Potion of Power": "Crafting_Alchemy_Potion_Flaskofpotency_T05_01.webp",
+  "Crafted Potion of Deflect Rank 14, +1": "crafted_potion_deflect_r14_plus1.webp",
+  "Crafted Potion of Deflect Rank 4": "crafted_potion_deflect_r4.webp",
+  "Crafted Potion of Deflect Rank 4, +1": "crafted_potion_deflect_r4_plus1.webp",
+  "Crafted Potion of Deflect Rank 14": "crafted_potion_deflect_r14.webp",
+  "Crafted Potion of Accuracy Rank 4": "crafted_potion_accuracy_r4.webp",
+  "Crafted Potion of Accuracy Rank 4, +1": "crafted_potion_accuracy_r4_plus1.webp",
+  "Crafted Potion of Accuracy Rank 14": "crafted_potion_accuracy_r4.webp",
+  "Crafted Potion of Accuracy Rank 14, +1": "crafted_potion_accuracy_r4_plus1.webp"
 };
