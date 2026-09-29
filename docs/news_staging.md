@@ -18,6 +18,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ### Data Additions
 
 - **Umbral Widow mount (M33.5 preview).** Added with its Illuminated + Crescent + Regal + Universal insignia slots, the Shadow Sight equip power (+3% Movement Speed, +1.5% Awareness, +2,700 Combined Rating at Mythic) and the Tunnel Vision combat power. Screenshot-verified from the Wondrous Bazaar Mount Preview.
+- **White Dragon Glyph overload.** Now selectable in Toon Forge. When you deal damage or heal allies it has a 25% chance to grant Aspect of Ice for 20 seconds: +800 Power and +10% healing on your allies, at most once every 60 seconds. Toon Forge counts it at its real average uptime (about a third of the fight), not as always-on. Screenshot-verified from an in-game tooltip.
 
 ### Data Fixes
 
