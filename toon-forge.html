@@ -615,6 +615,12 @@
       font-size: 0.72rem;
       line-height: 1.2;
     }
+    .field .collection-tier-pct {
+      margin-top: -0.2rem;
+      color: var(--accent, var(--text));
+      font-size: 0.68rem;
+      white-space: nowrap;
+    }
     .field .collection-tier input {
       box-sizing: border-box;
       width: 100%;
@@ -21395,6 +21401,22 @@
       });
     });
     applyMountCollectionToInputs();
+    // Per-tier bolster % under each collection header (n00b 2026-09-29), read
+    // from the same tables the bolster math uses so the two can never disagree.
+    function labelCollectionTierPcts() {
+      const each = (sel, key, table) => document.querySelectorAll(sel).forEach(inp => {
+        const label = inp.closest("label.collection-tier");
+        const pct = table[inp.dataset[key]];
+        if (!label || pct == null || label.querySelector(".collection-tier-pct")) return;
+        const s = document.createElement("span");
+        s.className = "collection-tier-pct";
+        s.textContent = "+" + pct + "% each";
+        label.insertBefore(s, inp);
+      });
+      each("input[data-comp-tier]", "compTier", COMP_BOLSTER_PCT_PER_TIER);
+      each("input[data-mount-tier]", "mountTier", MOUNT_BOLSTER_PCT_PER_TIER);
+    }
+    labelCollectionTierPcts();
     // (Insignia tier bulk dropdown removed; per-insignia-or-per-mount
     //  picking will land later. state.insigniaRarity stays at "Mythic"
     //  default which matches the data baseline.)
