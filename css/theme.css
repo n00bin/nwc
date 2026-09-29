@@ -500,8 +500,8 @@ a:hover {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.15rem 0.5rem;
-    max-height: min(40vh, 22rem);
-    max-height: min(40dvh, 22rem);
+    max-height: min(28vh, 16rem);
+    max-height: min(28dvh, 16rem);
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
