@@ -2231,6 +2231,22 @@
       .scenario-tabs::-webkit-scrollbar { height: 4px; }
       .scenario-tabs::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
+      /* Give the scenario sliders room for a thumb and make their values
+         stand out from the explanatory text. */
+      #combat-scenario-panel input[type="range"] {
+        min-height: 44px;
+        accent-color: var(--amber);
+        touch-action: pan-y;
+      }
+      #combat-scenario-panel .field > .hint[id] {
+        display: block;
+        margin: 0.15rem 0 0;
+        color: var(--gold);
+        font-size: 0.82rem;
+        font-style: normal;
+        font-weight: 600;
+      }
+
       /* Forms */
       .row-2 { grid-template-columns: 1fr; gap: 0.6rem; }
       .row-6 { grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
