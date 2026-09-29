@@ -314,6 +314,13 @@
     .field-picker-btn.filled { color: var(--text); }
     .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .sc-tab { border-radius: 8px 8px 0 0; border-bottom: none; }
+    .scenario-tabs {
+      display: flex;
+      gap: 2px;
+      flex-wrap: wrap;
+      margin: 0.5rem 0 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
     .sc-pane[hidden] { display: none !important; }   /* .row-2 display:grid would otherwise override the hidden attribute */
     .sc-tab.active { background: var(--elevated); color: var(--gold); }
     #combat-scenario-panel .field { margin-bottom: 0.4rem; }
@@ -2209,6 +2216,20 @@
       }
       .step { flex: 0 0 auto; font-size: 0.78rem; padding-bottom: 0.5rem; }
       .step .num { width: 22px; height: 22px; font-size: 0.7rem; }
+      .scenario-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+      .scenario-tabs .sc-tab {
+        flex: 0 0 auto;
+        min-height: 44px;
+        white-space: nowrap;
+      }
+      .scenario-tabs::-webkit-scrollbar { height: 4px; }
+      .scenario-tabs::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
       /* Forms */
       .row-2 { grid-template-columns: 1fr; gap: 0.6rem; }
@@ -3226,7 +3247,7 @@
       <h2>The fight you are building for</h2>
       <div id="scenario-body">
         <p class="hint" style="margin:0.6rem 0 0.4rem;">Describe the fight you are building for. Every conditional bonus on your gear reads these values, and the optimizer scores every candidate against exactly this scenario. Want a different answer? Change the scenario and run again.</p>
-        <div style="display:flex;gap:2px;flex-wrap:wrap;margin:0.5rem 0 0.6rem;border-bottom:1px solid var(--border);">
+        <div class="scenario-tabs">
           <button type="button" class="btn btn-ghost sc-tab active" data-sc-tab="you">You</button>
           <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="fight">Fight</button>
           <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="party">Party</button>
