@@ -314,6 +314,13 @@
     .field-picker-btn.filled { color: var(--text); }
     .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .sc-tab { border-radius: 8px 8px 0 0; border-bottom: none; }
+    .scenario-tabs {
+      display: flex;
+      gap: 2px;
+      flex-wrap: wrap;
+      margin: 0.5rem 0 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
     .sc-pane[hidden] { display: none !important; }   /* .row-2 display:grid would otherwise override the hidden attribute */
     .sc-tab.active { background: var(--elevated); color: var(--gold); }
     #combat-scenario-panel .field { margin-bottom: 0.4rem; }
@@ -590,6 +597,36 @@
       border-color: var(--amber);
       background: rgba(240,136,62,0.12);
       box-shadow: 0 0 12px rgba(240,136,62,0.2);
+    }
+    .collection-count-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 0.3rem;
+    }
+    .field .collection-tier {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.3rem;
+      min-width: 0;
+      margin: 0;
+      color: var(--text-mute);
+      text-align: center;
+      font-size: 0.72rem;
+      line-height: 1.2;
+    }
+    .field .collection-tier input {
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
+      min-height: 38px;
+      padding: 0.35rem 0.25rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--elevated);
+      color: var(--text);
+      text-align: center;
+      font: inherit;
     }
 
     /* ===== Buff toggle list ===== */
@@ -1209,6 +1246,17 @@
     }
     .hero-correction-callout .hcc-body { flex: 1 1 auto; }
     .hero-correction-callout strong { color: var(--amber); }
+    .hero-correction-callout .hcc-details > summary {
+      cursor: pointer;
+      list-style: none;
+    }
+    .hero-correction-callout .hcc-details > summary::-webkit-details-marker { display: none; }
+    .hero-correction-callout .hcc-details > summary::after {
+      content: "▾";
+      margin-left: 0.4rem;
+      color: var(--amber);
+    }
+    .hero-correction-callout .hcc-details:not([open]) > summary::after { content: "▸"; }
     .hero-correction-callout .hcc-pencil {
       color: var(--amber);
       padding: 0 0.3rem;
@@ -2094,8 +2142,70 @@
     /* ===== Mobile responsive ===== */
     @media (max-width: 768px) {
       body { font-size: 14px; }
-      .hero { padding: 1.2rem 1rem; }
+      .hero { padding: 0.9rem 0.85rem 0.75rem; }
       .hero h1 { font-size: 1.4rem; }
+      .hero p { font-size: 0.86rem; line-height: 1.4; }
+
+      /* Keep the builder close to the top on phones. The longer correction
+         guide stays available behind its summary when a player needs it. */
+      .hero-correction-callout {
+        margin-top: 0.65rem;
+        padding: 0.55rem 0.65rem;
+        gap: 0.45rem;
+        font-size: 0.84rem;
+      }
+      .hero-correction-callout .hcc-icon { font-size: 1.1rem; }
+      .hero-correction-callout .hcc-details > summary {
+        position: relative;
+        padding-right: 1.1rem;
+        line-height: 1.35;
+      }
+      .hero-correction-callout .hcc-details > summary::after {
+        content: "▾";
+        position: absolute;
+        right: 0;
+        margin-left: 0;
+        color: var(--amber);
+      }
+      .hero-correction-callout .hcc-details:not([open]) > summary::after { content: "▸"; }
+      .hero-correction-callout .hcc-btn { min-height: 40px; }
+
+      /* Give the tool buttons a consistent, thumb-sized layout. */
+      .hero-actions { margin-top: 0.6rem !important; gap: 0.4rem !important; }
+      .hero-actions .ha-group {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        gap: 0.35rem !important;
+        padding: 0.35rem !important;
+      }
+      .hero-actions .ha-group > button,
+      .hero-actions .tf-comm-wrap > button {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        padding: 0.5rem 0.45rem;
+        font-size: 0.78rem;
+      }
+      .hero-actions .ha-group > .tf-comm-wrap { display: block; min-width: 0; }
+      .hero-actions .tf-comm-menu { min-width: min(260px, calc(100vw - 2rem)); }
+      #tf-premium-soon { width: 100%; }
+      #tf-premium-soon > div {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+      }
+      #tf-premium-soon > div > span:first-child {
+        grid-column: 1 / -1;
+        text-align: center;
+      }
+      #tf-premium-soon button {
+        min-width: 0;
+        min-height: 44px;
+        padding: 0.5rem 0.35rem;
+        font-size: 0.74rem;
+        white-space: normal;
+      }
 
       /* Step nav: horizontal scroll instead of squeezing */
       .steps {
@@ -2106,6 +2216,36 @@
       }
       .step { flex: 0 0 auto; font-size: 0.78rem; padding-bottom: 0.5rem; }
       .step .num { width: 22px; height: 22px; font-size: 0.7rem; }
+      .scenario-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+      .scenario-tabs .sc-tab {
+        flex: 0 0 auto;
+        min-height: 44px;
+        white-space: nowrap;
+      }
+      .scenario-tabs::-webkit-scrollbar { height: 4px; }
+      .scenario-tabs::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+      /* Give the scenario sliders room for a thumb and make their values
+         stand out from the explanatory text. */
+      #combat-scenario-panel input[type="range"] {
+        min-height: 44px;
+        accent-color: var(--amber);
+        touch-action: pan-y;
+      }
+      #combat-scenario-panel .field > .hint[id] {
+        display: block;
+        margin: 0.15rem 0 0;
+        color: var(--gold);
+        font-size: 0.82rem;
+        font-style: normal;
+        font-weight: 600;
+      }
 
       /* Forms */
       .row-2 { grid-template-columns: 1fr; gap: 0.6rem; }
@@ -2133,34 +2273,56 @@
       /* Stable rows: pickers wrap nicely */
       .stable-row-pickers { gap: 0.35rem; }
       .stable-mount, .stable-collar { min-width: 130px; }
+      .collection-count-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.45rem; }
+      .field .collection-tier { padding: 0.35rem 0.25rem; }
+      .field .collection-tier input { min-height: 44px; font-size: 16px; }
 
-      /* Footer bar — horizontal scroll on mobile (gauge + stats + button
-         all fit in one scrollable row instead of stacking vertically). */
+      /* Keep the score visible while the stats row scrolls on its own. */
       .footer-bar {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        gap: 0.5rem;
-        padding: 0.55rem 0.7rem;
-        align-items: center;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.35rem;
+        padding: 0.5rem 0.7rem calc(0.5rem + env(safe-area-inset-bottom));
+        overflow: visible;
+        align-items: stretch;
       }
-      .footer-bar > * { flex: 0 0 auto; }
-      .score-box { flex: 0 0 auto; }
+      .footer-bar > * { min-width: 0; }
+      .score-box { width: 100%; gap: 0.55rem; }
+      .gauge { width: 44px; height: 44px; flex: 0 0 44px; }
+      .gauge::after { inset: 3px; }
+      .gauge .num { font-size: 1rem; }
+      .score-label .value { font-size: 0.95rem; }
+      .score-label .desc { display: none; }
+      .quick-stats-wrap {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+        gap: 0.45rem;
+        min-width: 0;
+        width: 100%;
+      }
+      .quick-stats-tag { white-space: nowrap; font-size: 0.6rem; text-align: left; }
       .quick-stats {
         display: flex;
         flex-wrap: nowrap;
         gap: 0.4rem;
-        grid-template-columns: none;
-        width: auto;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
       }
       .quick-stat {
         flex: 0 0 auto;
-        min-width: 78px;
+        min-width: 72px;
         padding: 0.3rem 0.4rem;
       }
       .quick-stat .label { font-size: 0.65rem; }
       .quick-stat .val { font-size: 0.95rem; }
+      .page { padding: 1rem 0.75rem calc(8rem + env(safe-area-inset-bottom)); }
+      .panel { padding: 1rem 0.85rem; margin-bottom: 0.85rem; }
 
       /* Picker + Detailed Stats modals — near fullscreen */
       .picker-overlay, .dstats-overlay {
@@ -2189,11 +2351,99 @@
       .advisor-name { font-size: 0.92rem; }
     }
 
+    /* Two columns save a lot of scrolling on ordinary phones. Keep very
+       narrow screens in the single-column layout above so controls stay usable. */
+    @media (min-width: 360px) and (max-width: 768px) {
+      #gear-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        grid-template-rows: repeat(6, auto);
+        grid-auto-flow: column;
+      }
+      #artifact-grid, #overload-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      #gear-grid .slot, #artifact-grid .slot, #overload-grid .slot {
+        min-width: 0;
+        padding: 0.6rem 0.55rem;
+      }
+      .gear-pick-chip { min-height: 44px; padding: 0.45rem 0.5rem; font-size: 0.78rem; }
+      .gear-kit-chip { min-height: 42px; padding: 0.35rem 0.4rem; font-size: 0.7rem; }
+    }
+
     /* Very small screens (< 400px) */
     @media (max-width: 400px) {
       .row-6 { grid-template-columns: repeat(2, 1fr); }
       .class-grid { grid-template-columns: 1fr; }
       .comp-loadout { grid-template-columns: 1fr; }
+    }
+
+    /* Keep summoned companion gear compact on standard-width phones. */
+    @media (min-width: 360px) and (max-width: 400px) {
+      .comp-loadout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    /* Give mount power rarity controls enough room on typical phones. */
+    @media (max-width: 480px) {
+      .active-power-row { grid-template-columns: minmax(0, 1fr); }
+      .active-power-col > div:last-child { min-height: 44px; }
+      #active-combat-power-rarity,
+      #active-equip-power-rarity {
+        flex: 1 1 0;
+        min-width: 0;
+        min-height: 44px;
+        font-size: 16px !important;
+      }
+
+      /* Give each stable row a predictable order: mount/collar first,
+         then the insignias that belong to that mount. */
+      .stable-row-pickers {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+      }
+      .stable-row-pickers > .stable-insignias,
+      .stable-row-pickers > .stable-insignias-empty { grid-column: 1 / -1; }
+      .stable-row .stable-mount,
+      .stable-row .stable-collar {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        justify-content: flex-start;
+        text-align: left;
+        overflow-wrap: anywhere;
+      }
+      .stable-row .stable-insignias {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.35rem;
+        width: 100%;
+        min-width: 0;
+        padding: 0.45rem 0 0;
+        border-left: 0;
+        border-top: 1px dashed var(--border);
+      }
+      .stable-ins-pair { min-width: 0; }
+      .stable-row .stable-ins {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        justify-content: flex-start;
+        text-align: left;
+        overflow-wrap: anywhere;
+      }
+      .stable-row .stable-insignias-empty { padding-left: 0; }
+      .stable-bonus-pick {
+        width: 100%;
+        min-height: 44px;
+        justify-content: flex-start;
+        text-align: left;
+        overflow-wrap: anywhere;
+      }
+    }
+
+    @media (max-width: 359px) {
+      .stable-row-pickers,
+      .stable-row .stable-insignias { grid-template-columns: 1fr; }
     }
 
     /* ===== Tooltips ===== */
@@ -2636,8 +2886,9 @@
     <div class="hero-correction-callout" role="note">
       <span class="hcc-icon">✎</span>
       <div class="hcc-body">
-        <strong>Something not matching in-game? You can fix it yourself.</strong>
-        <ul class="hcc-list">
+        <details class="hcc-details" id="hcc-details" open>
+          <summary><strong>Something not matching in-game? You can fix it yourself.</strong></summary>
+          <ul class="hcc-list">
           <li>
             <span class="hcc-chip hcc-chip-fix">✎</span>
             <span><b>A number looks wrong.</b> Tap the pencil next to any item — stats, names, anything.</span>
@@ -2646,11 +2897,12 @@
             <span class="hcc-chip hcc-chip-add">+ Add Missing</span>
             <span><b>Your item isn't in the list.</b> Open that slot's picker and hit the green button at the top.</span>
           </li>
-        </ul>
-        <div class="hcc-foot">
-          <span class="hcc-foot-note">Either way, your build uses your version right away — and it's sent to us for review.</span>
-          <button type="button" class="hcc-btn" id="contributions-link" onclick="openContributionsModal();return false;" title="See the corrections and items you've submitted">Your submissions<span class="hcc-btn-count" style="display:none;"></span></button>
-        </div>
+          </ul>
+          <div class="hcc-foot">
+            <span class="hcc-foot-note">Either way, your build uses your version right away — and it's sent to us for review.</span>
+            <button type="button" class="hcc-btn" id="contributions-link" onclick="openContributionsModal();return false;" title="See the corrections and items you've submitted">Your submissions<span class="hcc-btn-count" style="display:none;"></span></button>
+          </div>
+        </details>
       </div>
     </div>
     <div class="hero-actions" style="display:flex;gap:0.6rem;margin-top:1rem;align-items:stretch;justify-content:center;flex-wrap:wrap;">
@@ -2692,6 +2944,20 @@
       </div>
     </div>
   </div>
+
+  <script>
+    (() => {
+      const guide = document.getElementById("hcc-details");
+      if (!guide || !window.matchMedia) return;
+      const mobile = window.matchMedia("(max-width: 768px)");
+      let userToggled = false;
+      guide.querySelector("summary").addEventListener("click", () => { userToggled = true; });
+      const syncGuide = () => { if (!userToggled) guide.open = !mobile.matches; };
+      syncGuide();
+      if (mobile.addEventListener) mobile.addEventListener("change", syncGuide);
+      else if (mobile.addListener) mobile.addListener(syncGuide);
+    })();
+  </script>
 
   <div class="steps" id="steps">
     <div class="step active" data-step="1"><span class="num">1</span> Role &amp; Class</div>
@@ -2925,21 +3191,14 @@
               <span class="hint-icon" data-tip="How many companions you own at each rarity. Per-tier bolster: Common 1% / Uncommon 2% / Rare 3.5% / Epic 5% / Legendary 7.5% / Mythic 10% / Celestial 12%. Top 10 by quality counted, capped at 120%.">?</span>
               <span style="float:right;color:var(--text-mute);font-size:0.78rem;" id="comp-collection-summary">top 10 of 0: 0%</span>
             </label>
-            <div class="comp-collection-grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:0.3rem;font-size:0.74rem;">
-              <div style="text-align:center;color:var(--text-mute);">Common</div>
-              <div style="text-align:center;color:var(--text-mute);">Uncom.</div>
-              <div style="text-align:center;color:var(--text-mute);">Rare</div>
-              <div style="text-align:center;color:var(--text-mute);">Epic</div>
-              <div style="text-align:center;color:var(--text-mute);">Legen.</div>
-              <div style="text-align:center;color:var(--text-mute);">Mythic</div>
-              <div style="text-align:center;color:var(--text-mute);">Celes.</div>
-              <input type="number" min="0" data-comp-tier="Common"    style="width:100%;text-align:center;">
-              <input type="number" min="0" data-comp-tier="Uncommon"  style="width:100%;text-align:center;">
-              <input type="number" min="0" data-comp-tier="Rare"      style="width:100%;text-align:center;">
-              <input type="number" min="0" data-comp-tier="Epic"      style="width:100%;text-align:center;">
-              <input type="number" min="0" data-comp-tier="Legendary" style="width:100%;text-align:center;">
-              <input type="number" min="0" data-comp-tier="Mythic"    style="width:100%;text-align:center;">
-              <input type="number" min="0" data-comp-tier="Celestial" style="width:100%;text-align:center;">
+            <div class="comp-collection-grid collection-count-grid">
+              <label class="collection-tier">Common<input type="number" min="0" data-comp-tier="Common" aria-label="Common companions owned"></label>
+              <label class="collection-tier">Uncommon<input type="number" min="0" data-comp-tier="Uncommon" aria-label="Uncommon companions owned"></label>
+              <label class="collection-tier">Rare<input type="number" min="0" data-comp-tier="Rare" aria-label="Rare companions owned"></label>
+              <label class="collection-tier">Epic<input type="number" min="0" data-comp-tier="Epic" aria-label="Epic companions owned"></label>
+              <label class="collection-tier">Legendary<input type="number" min="0" data-comp-tier="Legendary" aria-label="Legendary companions owned"></label>
+              <label class="collection-tier">Mythic<input type="number" min="0" data-comp-tier="Mythic" aria-label="Mythic companions owned"></label>
+              <label class="collection-tier">Celestial<input type="number" min="0" data-comp-tier="Celestial" aria-label="Celestial companions owned"></label>
             </div>
           </div>
         </div>
@@ -2958,21 +3217,14 @@
               <span class="hint-icon" data-tip="How many mounts you own at each rarity. Per-tier bolster: Common 1% / Uncommon 2% / Rare 3.5% / Epic 5% / Legendary 7.5% / Mythic 10% / Celestial 12.5%. Top 10 by quality counted, capped at 125%.">?</span>
               <span style="float:right;color:var(--text-mute);font-size:0.78rem;" id="mount-collection-summary">top 10 of 0: 0%</span>
             </label>
-            <div class="mount-collection-grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:0.3rem;font-size:0.74rem;">
-              <div style="text-align:center;color:var(--text-mute);">Common</div>
-              <div style="text-align:center;color:var(--text-mute);">Uncom.</div>
-              <div style="text-align:center;color:var(--text-mute);">Rare</div>
-              <div style="text-align:center;color:var(--text-mute);">Epic</div>
-              <div style="text-align:center;color:var(--text-mute);">Legen.</div>
-              <div style="text-align:center;color:var(--text-mute);">Mythic</div>
-              <div style="text-align:center;color:var(--text-mute);">Celes.</div>
-              <input type="number" min="0" data-mount-tier="Common"    style="width:100%;text-align:center;">
-              <input type="number" min="0" data-mount-tier="Uncommon"  style="width:100%;text-align:center;">
-              <input type="number" min="0" data-mount-tier="Rare"      style="width:100%;text-align:center;">
-              <input type="number" min="0" data-mount-tier="Epic"      style="width:100%;text-align:center;">
-              <input type="number" min="0" data-mount-tier="Legendary" style="width:100%;text-align:center;">
-              <input type="number" min="0" data-mount-tier="Mythic"    style="width:100%;text-align:center;">
-              <input type="number" min="0" data-mount-tier="Celestial" style="width:100%;text-align:center;">
+            <div class="mount-collection-grid collection-count-grid">
+              <label class="collection-tier">Common<input type="number" min="0" data-mount-tier="Common" aria-label="Common mounts owned"></label>
+              <label class="collection-tier">Uncommon<input type="number" min="0" data-mount-tier="Uncommon" aria-label="Uncommon mounts owned"></label>
+              <label class="collection-tier">Rare<input type="number" min="0" data-mount-tier="Rare" aria-label="Rare mounts owned"></label>
+              <label class="collection-tier">Epic<input type="number" min="0" data-mount-tier="Epic" aria-label="Epic mounts owned"></label>
+              <label class="collection-tier">Legendary<input type="number" min="0" data-mount-tier="Legendary" aria-label="Legendary mounts owned"></label>
+              <label class="collection-tier">Mythic<input type="number" min="0" data-mount-tier="Mythic" aria-label="Mythic mounts owned"></label>
+              <label class="collection-tier">Celestial<input type="number" min="0" data-mount-tier="Celestial" aria-label="Celestial mounts owned"></label>
             </div>
           </div>
         </div>
@@ -3011,7 +3263,7 @@
       <h2>The fight you are building for</h2>
       <div id="scenario-body">
         <p class="hint" style="margin:0.6rem 0 0.4rem;">Describe the fight you are building for. Every conditional bonus on your gear reads these values, and the optimizer scores every candidate against exactly this scenario. Want a different answer? Change the scenario and run again.</p>
-        <div style="display:flex;gap:2px;flex-wrap:wrap;margin:0.5rem 0 0.6rem;border-bottom:1px solid var(--border);">
+        <div class="scenario-tabs">
           <button type="button" class="btn btn-ghost sc-tab active" data-sc-tab="you">You</button>
           <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="fight">Fight</button>
           <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="party">Party</button>

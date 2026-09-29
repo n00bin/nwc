@@ -88,15 +88,27 @@ function renderNav(activePage) {
   var navToggle = nav.querySelector(".nav-toggle");
   var navLinks = nav.querySelector(".navbar-links");
   if (navToggle && navLinks) {
-    navToggle.addEventListener("click", function () {
-      var open = navLinks.classList.toggle("open");
+    function setNavOpen(open) {
+      navLinks.classList.toggle("open", open);
+      document.body.classList.toggle("nav-menu-open", open);
       navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    navToggle.addEventListener("click", function () {
+      setNavOpen(!navLinks.classList.contains("open"));
     });
     // Tapping any link inside closes the menu again.
     navLinks.addEventListener("click", function (e) {
-      if (e.target.closest("a")) {
-        navLinks.classList.remove("open");
-        navToggle.setAttribute("aria-expanded", "false");
+      if (e.target.closest("a")) setNavOpen(false);
+    });
+    // The dimmed area closes the menu, and Escape supports keyboard users.
+    document.addEventListener("click", function (e) {
+      if (navLinks.classList.contains("open") && !nav.contains(e.target)) setNavOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && navLinks.classList.contains("open")) {
+        setNavOpen(false);
+        navToggle.focus();
       }
     });
   }
