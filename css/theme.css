@@ -466,8 +466,8 @@ a:hover {
    Mobile (phone) adjustments — shared by every page
    ============================================================ */
 @media (max-width: 860px) {
-  /* Keep the bar to one compact row; show the links in a short overlay. */
-  .navbar { padding: 0.6rem 1rem; gap: 0.5rem; }
+  /* Let the header scroll away on phones instead of covering page content. */
+  .navbar { position: relative; top: auto; padding: 0.45rem 1rem; gap: 0.5rem; }
   #nwc-lang-toggle { order: 2; margin-left: auto; }
   #nwc-lang-toggle button { min-width: 44px; min-height: 44px; }
   .nav-toggle {
@@ -500,8 +500,8 @@ a:hover {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.15rem 0.5rem;
-    max-height: min(52vh, 28rem);
-    max-height: min(52dvh, 28rem);
+    max-height: min(40vh, 22rem);
+    max-height: min(40dvh, 22rem);
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
