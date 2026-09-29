@@ -616,9 +616,7 @@
       line-height: 1.2;
     }
     .field .collection-tier-pct {
-      margin-top: -0.2rem;
       color: var(--accent, var(--text));
-      font-size: 0.68rem;
       white-space: nowrap;
     }
     .field .collection-tier input {
@@ -21408,10 +21406,16 @@
         const label = inp.closest("label.collection-tier");
         const pct = table[inp.dataset[key]];
         if (!label || pct == null || label.querySelector(".collection-tier-pct")) return;
+        // Name and % share one line ("Common 1%"); the label is a flex column,
+        // so they need a common wrapper to sit side by side.
+        const head = document.createElement("span");
+        head.className = "collection-tier-head";
+        while (label.firstChild && label.firstChild !== inp) head.appendChild(label.firstChild);
         const s = document.createElement("span");
         s.className = "collection-tier-pct";
-        s.textContent = "+" + pct + "% each";
-        label.insertBefore(s, inp);
+        s.textContent = " " + pct + "%";
+        head.appendChild(s);
+        label.insertBefore(head, inp);
       });
       each("input[data-comp-tier]", "compTier", COMP_BOLSTER_PCT_PER_TIER);
       each("input[data-mount-tier]", "mountTier", MOUNT_BOLSTER_PCT_PER_TIER);

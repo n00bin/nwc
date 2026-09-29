@@ -15,7 +15,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - **Lockbox icons.** Every lockbox in the catalog now shows its in-game box icon (80 of 85 entries, including the Waukeen chests and both Gifts of the Gods). Only the two newest boxes, Buried Treasure and Wild Adventures, and three recurring containers still wait on an in-game screenshot.
 - **Mount and companion lookups now work better on phones.** Selecting an item opens its details on a dedicated view with a clear Back to results button, so the list and details no longer compete for a small screen.
 
-- **Bolster percentages shown on the collection boxes (Toon Forge).** Each companion and mount collection box now shows how much bolster one of that tier gives (for example Mythic +10% each, Celestial mount +12.5% each), so it is easier to make your bolster match the game.
+- **Bolster percentages shown on the collection boxes (Toon Forge).** Each companion and mount collection box now shows how much bolster one of that tier gives (for example Mythic 10%, Celestial mount 12.5%), so it is easier to make your bolster match the game.
 
 ### Data Additions
 
