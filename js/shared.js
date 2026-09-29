@@ -73,8 +73,15 @@ function renderNav(activePage) {
     pages.splice(1, 0, { label: PREVIEW_LABEL, href: "preview.html" });
   }
 
+  const hasActivePage = pages.some(function (page) { return page.label === activePage; });
   let html = '<a class="navbar-brand" href="index.html" aria-label="Neverwinter Compendium home">NWC</a>';
-  html += '<button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navbarLinks">&#9776;</button>';
+  html += '<select class="nav-select" aria-label="Go to a page">';
+  html += '<option value="" disabled' + (hasActivePage ? "" : " selected") + '>Go to page…</option>';
+  for (const p of pages) {
+    const selected = p.label === activePage ? " selected" : "";
+    html += `<option value="${escapeHtml(p.href)}"${selected}>${escapeHtml(p.label)}</option>`;
+  }
+  html += "</select>";
   html += '<div class="navbar-links" id="navbarLinks">';
   for (const p of pages) {
     const cls = p.label === activePage ? " active" : "";
@@ -83,33 +90,11 @@ function renderNav(activePage) {
   html += "</div>";
   nav.innerHTML = html;
 
-  // ---- Mobile hamburger ----
-  // On narrow screens the links panel is hidden; this button toggles it open.
-  var navToggle = nav.querySelector(".nav-toggle");
-  var navLinks = nav.querySelector(".navbar-links");
-  if (navToggle && navLinks) {
-    function setNavOpen(open) {
-      navLinks.classList.toggle("open", open);
-      document.body.classList.toggle("nav-menu-open", open);
-      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
-    }
-
-    navToggle.addEventListener("click", function () {
-      setNavOpen(!navLinks.classList.contains("open"));
-    });
-    // Tapping any link inside closes the menu again.
-    navLinks.addEventListener("click", function (e) {
-      if (e.target.closest("a")) setNavOpen(false);
-    });
-    // The dimmed area closes the menu, and Escape supports keyboard users.
-    document.addEventListener("click", function (e) {
-      if (navLinks.classList.contains("open") && !nav.contains(e.target)) setNavOpen(false);
-    });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && navLinks.classList.contains("open")) {
-        setNavOpen(false);
-        navToggle.focus();
-      }
+  // The compact mobile picker navigates as soon as a destination is selected.
+  var navSelect = nav.querySelector(".nav-select");
+  if (navSelect) {
+    navSelect.addEventListener("change", function () {
+      if (navSelect.value) window.location.href = navSelect.value;
     });
   }
 
