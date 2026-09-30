@@ -306,4 +306,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CL-8 Daunting Light (shared encounter, both screens): AREA 12 ft / ranged 80 ft / none / no DoT / magical (radiant); 280, Divinity spender (100 Devout / 150 Arbiter), base cd 0.9 s; Arbiter +1 Burning, 320 under Radiant (2026-09-30, n00b ruling)
 - CL-9 Geas (shared encounter, both screens): single / ranged 80 ft / none / no DoT / magical (radiant); 700 Devout / 650 Arbiter; target -5% damage 6 s (data said -3%, corrected); Arbiter +1 Burning, 750 under Radiant; base cd 14.5 s (n00b; 14.1/14.3 shown) (2026-09-30, n00b ruling)
 - CL-10 Bastion of Health (shared encounter, both screens): AREA 20 ft / ranged 80 ft / kind HEAL 1,600 for 100 Divinity (Devout) / 1,200 for 200 (Arbiter), split by targets; base cd 0.4 s (2026-09-30, fine)
+- CL-11 Divine Glow (shared encounter, both screens identical): AREA 25 ft / melee / kind BUFF party +5% dmg / +5% Incoming Healing / +5% Recharge 12 s; self half threat + Divinity regen (amount TEST); base cd 29 s (n00b; 28.2/28.6 shown) (2026-09-30, n00b ruling). Shared encounters complete.
 

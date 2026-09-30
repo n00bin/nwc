@@ -2919,4 +2919,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Reprised Carol roll odds** (2026-09-22): both Gambler carols roll one of three buffs (or a fallback heal); odds and per-stack scaling are not on the tooltips. n00b to test.
 - **Starstruck numbers** (2026-09-22): apply chance per carol tick, heal magnitude and role trigger rates are not on the tooltip. n00b to test.
 - **Gambler's Delight max stacks** (2026-09-28): not on the tooltip; n00b to test.
+- **Divine Glow Divinity regen boost** (2026-09-30): tooltip gives no number; n00b to test.
 
