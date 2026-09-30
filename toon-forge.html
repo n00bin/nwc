@@ -2253,6 +2253,56 @@
       .scenario-tabs::-webkit-scrollbar { height: 4px; }
       .scenario-tabs::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
+      /* Make Party setup easier to scan and tap on a phone. */
+      .party-config-grid { grid-template-columns: 1fr !important; gap: 0.75rem !important; }
+      .party-settings { display: grid; gap: 0.45rem; }
+      .party-setting-row {
+        min-width: 0;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.7rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--elevated);
+      }
+      .party-setting-row .boon-counter { width: 100%; justify-content: flex-start; }
+      .party-setting-row .boon-counter label { min-height: 44px; }
+      .party-setting-row .boon-row-name { font-size: 0.88rem; }
+      .party-setting-row .boon-row-effect { font-size: 0.76rem; line-height: 1.4; }
+      .party-setting-row .boon-counter { min-width: 0; }
+      #party-content-select, #party-healer-select {
+        width: 100%;
+        min-height: 44px;
+        padding: 0.55rem 0.65rem !important;
+        font-size: 0.9rem !important;
+      }
+      .party-setting-row input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+        accent-color: var(--amber);
+      }
+      .party-allies { min-width: 0; }
+      .party-slot-heading {
+        margin: 0.8rem 0 0.35rem;
+        color: var(--text-mute);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      .party-slot-row {
+        min-height: 60px;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.65rem 0.7rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--elevated);
+      }
+      .party-slot-row .boon-counter { justify-content: flex-end; min-height: 40px; }
+      .party-slot-row .boon-row-name { line-height: 1.35; }
+      .party-slot-row .boon-row-effect { line-height: 1.4; }
+
       /* Give the scenario sliders room for a thumb and make their values
          stand out from the explanatory text. */
       #combat-scenario-panel input[type="range"] {
@@ -19167,12 +19217,12 @@
         const taken = new Set(state.partyAllies.filter(x => x));
         html += `<div class="boon-tier" style="grid-column:1/-1;margin-top:0.8rem;">
           <div class="boon-tier-header">Party Buffs <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(allies' summoned companions buff your build)</span></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;align-items:start;">
-          <div>
-          <div class="boon-row" style="cursor:default;">
+          <div class="party-config-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;align-items:start;">
+          <div class="party-settings">
+          <div class="boon-row party-setting-row" style="cursor:default;">
             <div class="boon-row-info">
               <div class="boon-row-name">Content type</div>
-              <div class="boon-row-effect">4 ally slots for dungeons, 9 for trials, none solo (party size minus you). Solo also switches "when not in a party" gear on and "per teammate" gear down.</div>
+              <div class="boon-row-effect">Dungeon: 4 allies. Trial: 9 allies. Solo: no allies and solo gear rules apply.</div>
             </div>
             <div class="boon-counter">
               <select id="party-content-select" style="font-size:0.85rem;padding:0.2rem 0.4rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
@@ -19182,10 +19232,10 @@
               </select>
             </div>
           </div>
-          <div class="boon-row" style="cursor:default;">
+          <div class="boon-row party-setting-row" style="cursor:default;">
             <div class="boon-row-info">
               <div class="boon-row-name">Party healer</div>
-              <div class="boon-row-effect">Which class heals your group. Answers party-dependent gear conditions for you (Paladin = temp HP, Warlock = shields).</div>
+              <div class="boon-row-effect">Used for gear bonuses that depend on your healer.</div>
             </div>
             <div class="boon-counter">
               <select id="party-healer-select" style="font-size:0.85rem;padding:0.2rem 0.4rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;">
@@ -19193,10 +19243,10 @@
               </select>
             </div>
           </div>
-          <div class="boon-row" style="cursor:default;">
+          <div class="boon-row party-setting-row" style="cursor:default;">
             <div class="boon-row-info">
               <div class="boon-row-name">Assume support party</div>
-              <div class="boon-row-effect">Turn on to slot your allies' support companions and their mount auras, applying their party buffs to your build. Off by default &mdash; turn on when your group brings support comps. <button id="party-fill-standard" type="button" style="margin-left:0.3rem;font-size:0.7rem;padding:0.1rem 0.45rem;background:var(--elevated);color:var(--gold);border:1px solid var(--border);border-radius:4px;cursor:pointer;">Fill standard set</button></div>
+              <div class="boon-row-effect">Apply allies' companion and mount buffs to your build. <button id="party-fill-standard" type="button" style="margin-left:0.3rem;font-size:0.7rem;padding:0.1rem 0.45rem;background:var(--elevated);color:var(--gold);border:1px solid var(--border);border-radius:4px;cursor:pointer;">Fill standard set</button></div>
             </div>
             <div class="boon-counter">
               <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.8rem;cursor:pointer;">
@@ -19205,10 +19255,10 @@
               </label>
             </div>
           </div>
-          <div class="boon-row" style="cursor:default;">
+          <div class="boon-row party-setting-row" style="cursor:default;">
             <div class="boon-row-info">
               <div class="boon-row-name">Party runs Part of the Pack</div>
-              <div class="boon-row-effect">Part of the Pack gains one stack per party member running a Pack companion. On counts a full group's 5 stacks &#8212; the common group meta (e.g. Tamed Velociraptor at 5&times;4.5% = 22.5% Power). Off counts only your own stack, for solo play.</div>
+              <div class="boon-row-effect">Count all 5 stacks for a typical party, or only your own when solo.</div>
             </div>
             <div class="boon-counter">
               <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.8rem;cursor:pointer;">
@@ -19217,10 +19267,10 @@
               </label>
             </div>
           </div>
-          <div class="boon-row" style="cursor:default;">
+          <div class="boon-row party-setting-row" style="cursor:default;">
             <div class="boon-row-info">
               <div class="boon-row-name">Group stacks Providence</div>
-              <div class="boon-row-effect">Endgame group meta: everyone runs Providence (incl. the Celestial Swift Golden Lion), so its Radiant Weapon holds the full 8-stack cap (+16% damage). Turn off if your group isn't running it.</div>
+              <div class="boon-row-effect">Count the full 8-stack (+16% damage) group bonus when your party uses Providence.</div>
             </div>
             <div class="boon-counter">
               <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.8rem;cursor:pointer;">
@@ -19230,7 +19280,7 @@
             </div>
           </div>
           </div>
-          <div>`;
+          <div class="party-allies">`;
         // Companion slot subsection
         const SCOPE_COLOR = { Party: "#4caf50", Self: "#42a5f5", "Enemy Debuff": "#ef5350", Mixed: "#ffb300" };
         const scopeTagHtml = (name) => {
@@ -19246,7 +19296,7 @@
           html += `<div style="font-size:0.72rem;color:var(--text-dim);margin:0.35rem 0 0.1rem;">Turn on <strong>Assume support party</strong> above to apply these to your build and optimizer.</div>`;
         }
         if (partyBuffCompanions.length) {
-          html += `<div style="margin-top:0.4rem;font-size:0.78rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;">Ally summoned companions</div>`;
+          html += `<div class="party-slot-heading">Ally summoned companions</div>`;
           for (let i = 0; i < slotCount; i++) {
             const picked = state.partyAllies[i] || "";
             // Old share links can carry the summoned companion in an ally
@@ -19256,7 +19306,7 @@
                 ? `⚠ Not counted — ${picked} is your summoned companion, so its buff already applies. Pick a different ally.`
                 : effSummary[picked]);
             const chipLabel = picked ? `👥 ${_noTr(picked)}` : "+ Pick ally";
-            html += `<div class="boon-row ${picked ? "has-pts" : ""}" data-party-slot-pick="${i}" style="cursor:pointer;">
+            html += `<div class="boon-row party-slot-row ${picked ? "has-pts" : ""}" data-party-slot-pick="${i}" style="cursor:pointer;">
               <div class="boon-row-info">
                 <div class="boon-row-name">Ally slot ${i + 1} — ${picked || "(empty)"}${picked ? scopeTagHtml(picked) : ""}</div>
                 <div class="boon-row-effect">${desc}</div>
@@ -19276,12 +19326,12 @@
           for (const ep of partyMountPowersInner) {
             mEffSummary[ep.name] = partyMountEffectLabel(ep);
           }
-          html += `<div style="border-top:1px solid var(--border);margin-top:0.6rem;padding-top:0.4rem;font-size:0.78rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;">Ally mount equip powers</div>`;
+          html += `<div class="party-slot-heading">Ally mount equip powers</div>`;
           for (let i = 0; i < slotCount; i++) {
             const picked = state.partyMountAllies[i] || "";
             const desc = picked ? mEffSummary[picked] : "click to pick an ally's mount equip power";
             const chipLabel = picked ? `🐉 ${_noTr(picked)}` : "+ Pick mount power";
-            html += `<div class="boon-row ${picked ? "has-pts" : ""}" data-party-mount-slot-pick="${i}" style="cursor:pointer;">
+            html += `<div class="boon-row party-slot-row ${picked ? "has-pts" : ""}" data-party-mount-slot-pick="${i}" style="cursor:pointer;">
               <div class="boon-row-info">
                 <div class="boon-row-name">Ally mount slot ${i + 1} — ${picked || "(empty)"}</div>
                 <div class="boon-row-effect">${desc}</div>
