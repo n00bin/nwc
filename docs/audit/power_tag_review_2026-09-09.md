@@ -327,4 +327,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 
 ## CLERIC MECHANICS (2026-09-30)
 - CM-1 Dodge (shared tactical, both screens): dodge + brief immunity - displayOnly (2026-09-30, fine)
+- CM-2 Channel Divinity (shared mechanic, differs per paragon): Devout = input hub (tap Mark / hold Light of Divinity / 3 s Gathering Light), base cast 2.5 s (n00b; archived 3 s = Gathering Light feat) - displayOnly; Arbiter = held Divinity refill, rate TEST, value via Scales of Judgement (2026-09-30, n00b ruling)
 
