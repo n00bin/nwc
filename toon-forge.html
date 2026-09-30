@@ -20016,7 +20016,7 @@
           }).length;
           return {
             name: b.name,
-            meta: `Requires ${(b.requiredInsignias || []).join(" + ")} · ${mounts.length} compatible mount${mounts.length === 1 ? "" : "s"}` +
+            meta: `Requires ${(b.requiredInsignias || []).join(" + ")} · <span style="color:var(--pos);font-weight:700;">${mounts.length} compatible mount${mounts.length === 1 ? "" : "s"}</span>` +
               (pref ? ` · <span style="color:var(--amber);font-weight:700;">★ ${pref} with a preferred slot</span>` : ""),
             desc: b.effectText || "(no effect text)"
           };
