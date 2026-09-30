@@ -348,4 +348,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CF-10 Swift Prayers (Devout): move at reduced speed while channeling Channel Divinity / casting Astral Shield; utility, scored 0, no test (2026-09-30, fine)
 - CF-11 Hallowed Guide (Devout): +5% healing when target within 15 ft; stored as conditional panel Outgoing Healing behind a default-on range toggle; panel-vs-multiplier = test (2026-09-30, fine)
 - CF-12 Overflowing Spirit (Devout): +25% Outgoing Healing (panel %) only at 100% divinity; gated by the shared divinityLevel slider; opening-heal-off-full = test. Cleric class features COMPLETE (CF-1..12) (2026-09-30, fine)
+- Cleric feats: count check OK (10 Arbiter + 10 Devout on both screens, all screenshotted). AF-1 Lightspeed (Arbiter T1): Javelin cast -> 10 s buff; Daunting Light cast reduced (number = test) + 1 extra Burning Judgement (2/cast); always-on while both slotted (2026-09-30, fine)
 
