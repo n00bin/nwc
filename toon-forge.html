@@ -158,6 +158,10 @@
     }
     .step.active .num { background: var(--amber); color: #000; border-color: var(--amber); }
     .step.done .num   { background: var(--pos);   color: #000; border-color: var(--pos); }
+    .step-nav-select {
+      display: none;
+      width: 100%;
+    }
     .step.done .num::before { content: "✓"; }
     .step.done .num   { font-size: 0; }
     .step.done .num::before { font-size: 0.85rem; }
@@ -2211,15 +2215,29 @@
         white-space: normal;
       }
 
-      /* Step nav: horizontal scroll instead of squeezing */
+      /* Replace the wide seven-step strip with one thumb-friendly picker. */
       .steps {
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        white-space: nowrap;
-        gap: 0.6rem;
+        display: block;
+        padding: 0.55rem 0.85rem;
+        overflow: visible;
       }
-      .step { flex: 0 0 auto; font-size: 0.78rem; padding-bottom: 0.5rem; }
-      .step .num { width: 22px; height: 22px; font-size: 0.7rem; }
+      .steps .step { display: none; }
+      .step-nav-select {
+        display: block;
+        min-height: 44px;
+        padding: 0.55rem 2.5rem 0.55rem 0.8rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--elevated);
+        color: var(--text);
+        font: inherit;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+      .step-nav-select:focus-visible {
+        outline: 2px solid var(--amber);
+        outline-offset: 2px;
+      }
       .scenario-tabs {
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -3024,6 +3042,15 @@
     <div class="step"        data-step="5"><span class="num">5</span> Boons</div>
     <div class="step"        data-step="6"><span class="num">6</span> The Fight</div>
     <div class="step"        data-step="7"><span class="num">7</span> Results</div>
+    <select class="step-nav-select" id="step-nav-select" aria-label="Choose a Toon Forge step">
+      <option value="1">Step 1 of 7 — Role &amp; Class</option>
+      <option value="2">Step 2 of 7 — Character &amp; Powers</option>
+      <option value="3">Step 3 of 7 — Gear</option>
+      <option value="4">Step 4 of 7 — Companions &amp; Mounts</option>
+      <option value="5">Step 5 of 7 — Boons</option>
+      <option value="6">Step 6 of 7 — The Fight</option>
+      <option value="7">Step 7 of 7 — Results</option>
+    </select>
   </div>
   <div id="scenario-strip" title="The fight every number on this page is computed for. Click to change it (step 6)." style="cursor:pointer;background:var(--surface);border-bottom:1px solid var(--border);padding:0.35rem 2rem;font-size:0.75rem;color:var(--text-mute);">
     <span style="color:var(--gold);font-weight:700;">Fight:</span> <span id="scenario-summary"></span>
@@ -21224,6 +21251,8 @@
     function gotoStep(n) {
       state.step = n;
       document.querySelectorAll(".step").forEach(s => s.classList.toggle("active", +s.dataset.step === n));
+      const stepPicker = document.getElementById("step-nav-select");
+      if (stepPicker) stepPicker.value = String(n);
       document.querySelectorAll(".step-panel").forEach(p => p.classList.toggle("active", +p.dataset.panel === n));
       window.scrollTo({ top: 0, behavior: "smooth" });
       renderStepDoneStates();
@@ -21311,6 +21340,8 @@
     document.querySelectorAll(".step").forEach(s => {
       s.addEventListener("click", () => gotoStep(+s.dataset.step));
     });
+    const stepPicker = document.getElementById("step-nav-select");
+    if (stepPicker) stepPicker.addEventListener("change", () => gotoStep(+stepPicker.value));
     // Next/Back
     document.querySelectorAll("[data-go]").forEach(b => {
       b.addEventListener("click", () => {
