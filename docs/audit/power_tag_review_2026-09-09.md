@@ -339,4 +339,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CF-1 Soothing Prayer (shared, both screens identical): 25 self heal per ~1 s tick for the length of the Channel Divinity hold (n00b) (2026-09-30, n00b ruling)
 - CF-2 Hallowed Armor (shared, both screens identical): -5% Incoming Damage always; -10% during Channel Divinity (replace vs add TEST) (2026-09-30, n00b ruling)
 - CF-3 Pilgrim's Light (shared, both screens identical): +5% dmg with no party member nearby (Soloist twin; same isolation test; Solo toggle gates) (2026-09-30, fine)
+- CF-4 Expanded Faith (shared, both screens identical): +150 max divinity; base pool size unknown on both paragons -> test item; rotation-only value (2026-09-30, fine)
 
