@@ -303,4 +303,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CL-5 Soothe (Devout at-will): single / ranged / kind HEAL 275 per 1 s cast, 40 Divinity (2026-09-30, fine)
 - CL-6 Blessing of Light (Devout at-will): self / kind BUFF next heal +10% within 12 s, 1.2 s cast, free; pairs with the biggest heal (2026-09-30, fine). Cleric at-wills complete 6/6.
 - CL-7 Sun Burst (shared encounter, both screens): AREA 25 ft / melee / KNOCKBACK on full charge only / no DoT / magical (fire); 260; Arbiter +1 Radiant, 310 under Burning; base cd 11.6 s (n00b; 11.2/11.4 shown) (2026-09-30, n00b ruling)
+- CL-8 Daunting Light (shared encounter, both screens): AREA 12 ft / ranged 80 ft / none / no DoT / magical (radiant); 280, Divinity spender (100 Devout / 150 Arbiter), base cd 0.9 s; Arbiter +1 Burning, 320 under Radiant (2026-09-30, n00b ruling)
 
