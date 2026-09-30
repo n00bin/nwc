@@ -2949,3 +2949,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Empowered Soothe (Devout feat) stack rules** — cast two encounters back to back: 3 stacks or 6? Do Bastion of Health taps grant stacks? (n00b, 2026-09-30).
 - [ ] **Battle Prayer (Devout feat) rules** — heal amount of a 1 s Battle Prayer Light of Divinity (still 1,700?); does one cast consume the buff or does it last the full 12 s for several? (n00b, 2026-09-30).
 - [ ] **Blessed Armaments (Devout feat) rules** — do heal casts trigger the 20 radiant proc; does the 10% damage-taken cut appear on the character sheet while Divine Glow / Exaltation are active? (n00b, 2026-09-30).
+- [ ] **Persistent Guardian (Devout feat) interval** — time between the guardian's 600 heals; does it skip casting when nobody is wounded (saving a charge) or cast anyway? (n00b, 2026-09-30).
