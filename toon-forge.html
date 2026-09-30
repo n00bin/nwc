@@ -994,11 +994,15 @@
     .picker-header {
       padding: 1rem 1.2rem;
       border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 0.8rem;
+      display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;
     }
-    .picker-header h3 { margin: 0; color: var(--amber); font-family: var(--font-display); flex: 0 0 auto; }
+    /* Titles carry counts and bonus names ("Mount for "Shepherd's Devotion"
+       (116, ★ 5 preferred) — 3 already in your stable") — the title must
+       wrap inside the modal, and the search box drops to its own line when
+       there is no room left, instead of both running past the right edge. */
+    .picker-header h3 { margin: 0; color: var(--amber); font-family: var(--font-display); flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
     .picker-header input {
-      flex: 1; padding: 0.5rem 0.7rem;
+      flex: 1 1 220px; min-width: 0; padding: 0.5rem 0.7rem;
       background: var(--bg); border: 1px solid var(--border); color: var(--text);
       border-radius: 6px; font-size: 0.95rem;
     }
@@ -20007,7 +20011,7 @@
           return {
             name: b.name,
             meta: `Requires ${(b.requiredInsignias || []).join(" + ")} · ${mounts.length} compatible mount${mounts.length === 1 ? "" : "s"}` +
-              (pref ? ` · ★ ${pref} with a preferred slot` : ""),
+              (pref ? ` · <span style="color:var(--amber);font-weight:700;">★ ${pref} with a preferred slot</span>` : ""),
             desc: b.effectText || "(no effect text)"
           };
         },
@@ -20077,7 +20081,7 @@
         items,
         render: (m) => {
           const r = renderMount(m);
-          if (prefNames.has(m.name)) r.meta = `★ Preferred slot active (+20% IL & stats) · ${r.meta}`;
+          if (prefNames.has(m.name)) r.meta = `<span style="color:var(--amber);font-weight:700;">★ Preferred slot active (+20% IL &amp; stats)</span> · ${r.meta}`;
           return r;
         },
         onPick: (m) => {
