@@ -298,4 +298,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CL-0 STRUCTURE (n00b fine): the 8 class features are slottable (2 Active of 8) but were always-on with empty slottable lists - moved 4 shared + 4 paragon into each paragon's slottedClassFeatures, 'active' flags dropped (same fix as Barbarian BF-3). No stats on them yet; stats come at their review.
 - CL-1 Sacred Flame (shared at-will, both screens): single / ranged 80 ft / none / no DoT / magical (fire); Devout 3 x 90, Arbiter 3 x 100 (+1 Radiant Judgement per hit, 110 under Burning) (2026-09-30, fine)
 - CL-2 Scattering Light (shared at-will, both screens): AREA 10 ft / ranged 80 ft / none / no DoT / magical (radiant); 70 @0.8 s; Arbiter +1 Burning per cast, 77 under Radiant (2026-09-30, fine)
+- CL-3 Lance of Faith (Arbiter at-will): single / ranged 80 ft / none / no DoT / magical (radiant); 3 x 110 @0.6 s (~183 mag/s); +1 Burning per hit, 121 under Radiant (2026-09-30, fine)
 
