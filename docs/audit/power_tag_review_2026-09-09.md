@@ -331,4 +331,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CM-3 Scales of Judgement (Arbiter mechanic): two 6-pip gauges (n00b) - fire powers build Radiant, radiant powers build Burning, each spent by the other type at the per-power charged magnitude; engine model = alternate types, 100% charged share default; Channel Divinity dump amount TEST (2026-09-30, n00b ruling)
 - CM-4 Arbiter Forte: Power / Crit Sev / Deflect - alreadyModeled (2026-09-30, fine). Arbiter mechanics complete.
 - CM-5 Righteousness (Devout mechanic): healing effectiveness % TEST, Divinity cost cut already in per-paragon costs, threat display only, Divinity regen rate TEST (2026-09-30, n00b ruling)
+- CM-6 Light of Divinity (Devout mechanic, Channel Divinity hold): single (Mark ally / self) / ranged 120 ft / kind HEAL charge 1,700 on a full 2.5 s hold for 120 Divinity; partial-charge curve TEST (2026-09-30, n00b ruling)
 
