@@ -344,4 +344,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CF-6 Doomsayer (Arbiter): +10% dmg for 10 s per encounter that debuffs (Chains / Break the Spirit / Prophecy of Doom); cooldown-driven uptime; Judgement-applying hits = test (2026-09-30, fine)
 - CF-7 Light of the Scales (Arbiter): x1.10 on the divinity restored by Channel Divinity's Judgement dump only; folded into the Scales of Judgement dump test (2026-09-30, fine)
 - CF-8 Divine Equilibrium (Arbiter): +15% dmg at exactly half divinity, falling either side; placeholder linear curve, divinityLevel slider, scored ~7.5% shown as 0-15%; curve = test (2026-09-30, fine)
+- CF-9 Desperate Prayers (Devout): up to +20% Outgoing Healing (panel %) below half divinity, 0 at half -> 20 at empty; shares the divinityLevel slider; displayed 0-20%, slider decides; curve test merged with Divine Equilibrium (2026-09-30, fine)
 
