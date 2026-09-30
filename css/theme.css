@@ -511,21 +511,19 @@ a:hover {
   }
 
   /* Main-page secondary tabs use one compact picker on phones. */
-  .controls-bar.view-tabs.mobile-dropdown-tabs {
-    display: block;
-    padding: 0.55rem 0.75rem;
-  }
-  .controls-bar.view-tabs.mobile-dropdown-tabs .view-tab,
-  .home-tabs .home-tab {
+  .controls-bar.view-tabs.mobile-dropdown-tabs,
+  .home-tabs {
     display: none !important;
   }
-  .controls-bar.view-tabs.mobile-dropdown-tabs .mobile-view-tab-select,
-  .home-tabs .mobile-view-tab-select {
+  .controls-bar.view-tabs.mobile-dropdown-tabs + .mobile-view-tab-select {
     display: block;
+    width: calc(100% - 1.5rem);
+    margin: 0.55rem 0.75rem;
   }
-  .home-tabs {
+  .home-tabs + .mobile-view-tab-select {
     display: block;
-    padding: 0 1rem;
+    width: calc(100% - 2rem);
+    margin: 0 auto 0.5rem;
   }
 
   /* iOS Safari zooms the page when a focused field is under 16px. */

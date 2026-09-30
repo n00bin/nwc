@@ -35,7 +35,7 @@ function initMobileTabDropdowns() {
       var select = document.createElement("select");
       select.className = "mobile-view-tab-select";
       select.setAttribute("aria-label", group.getAttribute("aria-label") || "Choose a section");
-      group.appendChild(select);
+      group.parentNode.insertBefore(select, group.nextSibling);
 
       function isAvailable(tab) {
         return !tab.hidden &&
