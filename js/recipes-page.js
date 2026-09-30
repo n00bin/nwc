@@ -47,7 +47,7 @@
      logged to the console, so "I still see the old behaviour" can be
      answered by looking instead of guessing. The <script> tags carry the
      same token as a query string, so a plain reload picks up new code. */
-  var BUILD = "20260918e";
+  var BUILD = "20260929a";
 
   var NL = String.fromCharCode(10);   // newline, for the exported file header
 
@@ -1466,6 +1466,8 @@
     document.querySelectorAll(".rc-view").forEach(function (v) {
       v.classList.toggle("active", v.id === "view-" + name);
     });
+    var mobileTabSelect = $("mobile-view-select");
+    if (mobileTabSelect) mobileTabSelect.value = name;
     $("browse-controls").style.display = name === "browse" ? "flex" : "none";
 
     if (name === "browse") { renderBrowseControls(); renderBrowse(); }
@@ -1492,6 +1494,8 @@
     document.querySelectorAll(".view-tab").forEach(function (t) {
       t.addEventListener("click", function () { switchTab(t.getAttribute("data-tab")); });
     });
+    var mobileTabSelect = $("mobile-view-select");
+    if (mobileTabSelect) mobileTabSelect.addEventListener("change", function () { switchTab(this.value); });
 
     // Browse controls
     $("browse-target").addEventListener("change", function () {
