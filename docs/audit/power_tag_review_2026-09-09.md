@@ -311,4 +311,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CL-13 Forgemaster's Flame (Arbiter encounter): single / ranged 80 ft / none / no DoT / magical (fire); 770 (870 under Burning), +1 Radiant; Divinity 300, base cd 0.9 s (2026-09-30, fine)
 - CL-14 Chains of Blazing Light (Arbiter encounter): AREA 20 ft / ranged 80 ft / ROOT 5 s / no DoT / magical (radiant); 320 (360 under Radiant), +1 Burning; base cd 15.4 s (n00b; 15.2 shown) (2026-09-30, n00b ruling)
 - CL-15 Break the Spirit (Arbiter encounter): single / ranged 80 ft / none / no DoT / magical (radiant); 520 (620 under Radiant), +1 Burning; target +10% damage taken from MAGICAL + PROJECTILE only, 10 s; base cd 20.3 s (n00b; 20 shown) (2026-09-30, n00b ruling)
+- CL-16 Prophecy of Doom (Arbiter encounter): single / ranged 80 ft / kind BUFF: 30% of own damage to the target over 10 s echoed at the end (data said 10%, corrected); base cd 25.1 s (n00b; 24.8 shown); TF_POWER_BUFFS 20% entry flagged wrong (2026-09-30, n00b ruling). Arbiter encounters complete.
 
