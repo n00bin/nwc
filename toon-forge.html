@@ -7868,7 +7868,13 @@
       const desc = [statBlock, buffTextBlock, sourceBlock].filter(Boolean).join("");
       return { name: c.name, meta, desc };
     }
-    function renderMount(m) {
+    // opts.picker = the stable picker's card: slots only. The stable picker
+    // is about which insignias a mount can hold — its equip/combat powers are
+    // chosen separately from ALL powers, and its own insignia bonus (bonusRef)
+    // is informational and reads as a second "bonus" right after the player
+    // just picked one (n00b 2026-09-30). The Details 🔍 card keeps everything.
+    function renderMount(m, opts) {
+      const compact = !!(opts && opts.picker);
       // Card-style sections, same language as the gear cards.
       const slots = (m.insigniaSlots || []).map(s =>
         (s.allowed || []).join("/").replace("*", "Universal") +
@@ -7903,8 +7909,8 @@
         : "";
       return {
         name: m.name,
-        meta: `${slots.length} insignia slot${slots.length === 1 ? "" : "s"}` + (bonus && bonus.name ? ` · 🛡 ${bonus.name}` : ""),
-        desc: [slotBlock, powerBlock, bonusBlock].filter(Boolean).join("")
+        meta: `${slots.length} insignia slot${slots.length === 1 ? "" : "s"}` + (!compact && bonus && bonus.name ? ` · 🛡 ${bonus.name}` : ""),
+        desc: (compact ? [slotBlock] : [slotBlock, powerBlock, bonusBlock]).filter(Boolean).join("")
       };
     }
     function renderCollar(c) {
@@ -20080,7 +20086,7 @@
         title,
         items,
         render: (m) => {
-          const r = renderMount(m);
+          const r = renderMount(m, { picker: true });
           if (prefNames.has(m.name)) r.meta = `<span style="color:var(--amber);font-weight:700;">★ Preferred slot active (+20% IL &amp; stats)</span> · ${r.meta}`;
           return r;
         },
