@@ -342,4 +342,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CF-4 Expanded Faith (shared, both screens identical): +150 max divinity; base pool size unknown on both paragons -> test item; rotation-only value (2026-09-30, fine)
 - CF-5 Critical Insight (Arbiter): +10 divinity per critical strike; per-tick/per-target/hidden-cooldown behaviour = test item (2026-09-30, needs testing)
 - CF-6 Doomsayer (Arbiter): +10% dmg for 10 s per encounter that debuffs (Chains / Break the Spirit / Prophecy of Doom); cooldown-driven uptime; Judgement-applying hits = test (2026-09-30, fine)
+- CF-7 Light of the Scales (Arbiter): x1.10 on the divinity restored by Channel Divinity's Judgement dump only; folded into the Scales of Judgement dump test (2026-09-30, fine)
 
