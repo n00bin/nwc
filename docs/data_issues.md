@@ -2945,3 +2945,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Burning Patch (Arbiter feat) tick rules** — can the 540 patch ticks crit, do they get the Burning Judgement bonus, and does the patch tick every 3 s as 540 x 6 / 18 s implies? (n00b, 2026-09-30).
 - [ ] **Perfect Balance (Arbiter feat) imbalance rule** — build 1 Radiant Shift then stop: does it survive (gap of 1 allowed) or clear at once? Then 2 Radiant vs 0 Burning. The feat only works if a gap of 1 is allowed (n00b, 2026-09-30).
 - [ ] **Angel of Death (Arbiter feat) rules** — does the stack counter reset after converting; do Bastion of Health / Divine Glow casts count as divinity-costing encounters; do all 26 stacks fall off together after 60 s idle? (n00b, 2026-09-30).
+- [ ] **Repeated Blessings (Devout feat) triggers** — does recasting Healing Word on the same ally extend it; does one area heal extend every ally it hits? (n00b, 2026-09-30).
