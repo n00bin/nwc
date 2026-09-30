@@ -21,6 +21,75 @@ function mobileDetailBackButtonHtml() {
   return '<button type="button" class="mobile-detail-back" aria-label="Back to results list"><span aria-hidden="true">&#8592;</span><span>Back to results</span></button>';
 }
 
+function initMobileTabDropdowns() {
+  var groups = document.querySelectorAll(".controls-bar.view-tabs.mobile-dropdown-tabs, .home-tabs");
+  for (var gi = 0; gi < groups.length; gi++) {
+    (function (group) {
+      if (group.dataset.mobileTabDropdown === "ready") return;
+
+      var tabSelector = group.classList.contains("home-tabs") ? ".home-tab" : ".view-tab";
+      var tabs = Array.prototype.slice.call(group.querySelectorAll(tabSelector));
+      if (tabs.length < 2) return;
+
+      group.dataset.mobileTabDropdown = "ready";
+      var select = document.createElement("select");
+      select.className = "mobile-view-tab-select";
+      select.setAttribute("aria-label", group.getAttribute("aria-label") || "Choose a section");
+      group.appendChild(select);
+
+      function isAvailable(tab) {
+        return !tab.hidden &&
+          tab.getAttribute("aria-hidden") !== "true" &&
+          tab.style.display !== "none" &&
+          !tab.classList.contains("hidden");
+      }
+
+      function syncSelect() {
+        var available = [];
+        for (var i = 0; i < tabs.length; i++) {
+          if (isAvailable(tabs[i])) available.push(i);
+        }
+
+        select.replaceChildren();
+        for (var ai = 0; ai < available.length; ai++) {
+          var tabIndex = available[ai];
+          var option = document.createElement("option");
+          option.value = String(tabIndex);
+          option.textContent = tabs[tabIndex].textContent.replace(/\s+/g, " ").trim() || ("Section " + (tabIndex + 1));
+          if (tabs[tabIndex].title) option.title = tabs[tabIndex].title;
+          select.appendChild(option);
+        }
+
+        var activeIndex = tabs.findIndex(function (tab) {
+          return tab.classList.contains("active") || tab.getAttribute("aria-selected") === "true";
+        });
+        if (available.indexOf(activeIndex) < 0) activeIndex = available.length ? available[0] : -1;
+        select.hidden = available.length === 0;
+        select.disabled = available.length === 0;
+        if (activeIndex >= 0) select.value = String(activeIndex);
+      }
+
+      select.addEventListener("change", function () {
+        var tab = tabs[Number(select.value)];
+        if (tab && isAvailable(tab)) tab.click();
+      });
+
+      var observer = new MutationObserver(syncSelect);
+      for (var ti = 0; ti < tabs.length; ti++) {
+        observer.observe(tabs[ti], {
+          attributes: true,
+          attributeFilter: ["class", "style", "hidden", "aria-hidden", "aria-selected"],
+          childList: true,
+          characterData: true,
+          subtree: true
+        });
+      }
+
+      syncSelect();
+    })(groups[gi]);
+  }
+}
+
 function initMobileListDetailSwitch() {
   document.querySelectorAll(".page-body").forEach(function (view) {
     var listPanel = view.querySelector(".list-panel");
@@ -110,12 +179,14 @@ function renderNav(activePage) {
     '<div style="margin-top:0.5rem;font-size:0.76rem;color:var(--text-muted);max-width:640px;margin-left:auto;margin-right:auto;line-height:1.45;">This site counts how many times each page is opened, and which site you arrived from, so we know what to work on next. No accounts, no ads, no personal data &mdash; just page counts, and they are never shown publicly.</div>';
   document.body.appendChild(footer);
 
-  // ---- Tab strips on phones ----
-  // .view-tabs scrolls sideways under 768px; keep the active tab in view on
-  // load and after a tap. block:"nearest" stops the page jumping vertically.
-  var strips = document.querySelectorAll(".controls-bar.view-tabs");
+  // ---- Tabs on phones ----
   initMobileListDetailSwitch();
   initMobileFilterDisclosure();
+  initMobileTabDropdowns();
+
+  // Keep custom tab strips (such as Toon Forge) working with their own
+  // mobile behavior. The main-page strips use the shared dropdown above.
+  var strips = document.querySelectorAll(".controls-bar.view-tabs:not(.mobile-dropdown-tabs)");
   for (var si = 0; si < strips.length; si++) {
     (function (strip) {
       function reveal(el) {

@@ -21,6 +21,12 @@
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/layout.css">
   <style>
+    .home-tabs {
+      display: flex;
+      gap: 0.25rem;
+      justify-content: center;
+      padding: 0 1.5rem;
+    }
     .home-tab {
       background: var(--bg-elevated);
       border: 1px solid var(--border-default);
@@ -103,7 +109,7 @@
     <p style="color:var(--text-secondary); font-size:1rem;">Everything you need to gear up in Neverwinter — mounts, companions, artifacts, and more, all in one friendly place. ⚔</p>
   </header>
 
-  <div style="display:flex;gap:0.25rem;justify-content:center;padding:0 1.5rem;">
+  <div class="home-tabs" aria-label="Home sections">
     <button class="home-tab active" id="tab-home">Overview</button>
     <button class="home-tab" id="tab-news">News</button>
   </div>

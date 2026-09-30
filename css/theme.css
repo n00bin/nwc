@@ -356,6 +356,24 @@ a:hover {
   border-color: var(--accent);
 }
 
+.mobile-view-tab-select {
+  display: none;
+  width: 100%;
+  min-height: 48px;
+  padding: 0.65rem 0.85rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: var(--font-main);
+  cursor: pointer;
+}
+.mobile-view-tab-select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
 /* ---- View tabs (Lookup / Rankings / ...) ----
    Shared by every tabbed page. The strip is a .controls-bar so it inherits the
    surface + border; .view-tabs tightens the gap and removes the bottom padding
@@ -473,8 +491,8 @@ a:hover {
 @media (max-width: 768px) {
   html { font-size: 16px; }
 
-  /* Tab strips scroll sideways instead of stacking into a tower. */
-  .controls-bar.view-tabs {
+  /* Custom tab strips can keep their own phone behavior. */
+  .controls-bar.view-tabs:not(.mobile-dropdown-tabs) {
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -483,13 +501,31 @@ a:hover {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
-  .controls-bar.view-tabs::-webkit-scrollbar { display: none; }
-  .view-tab {
+  .controls-bar.view-tabs:not(.mobile-dropdown-tabs)::-webkit-scrollbar { display: none; }
+  .controls-bar.view-tabs:not(.mobile-dropdown-tabs) .view-tab {
     flex: 0 0 auto;
     white-space: nowrap;
     min-height: 44px;
     padding: 0.6rem 0.9rem;
     font-size: 0.95rem;
+  }
+
+  /* Main-page secondary tabs use one compact picker on phones. */
+  .controls-bar.view-tabs.mobile-dropdown-tabs {
+    display: block;
+    padding: 0.55rem 0.75rem;
+  }
+  .controls-bar.view-tabs.mobile-dropdown-tabs .view-tab,
+  .home-tabs .home-tab {
+    display: none !important;
+  }
+  .controls-bar.view-tabs.mobile-dropdown-tabs .mobile-view-tab-select,
+  .home-tabs .mobile-view-tab-select {
+    display: block;
+  }
+  .home-tabs {
+    display: block;
+    padding: 0 1rem;
   }
 
   /* iOS Safari zooms the page when a focused field is under 16px. */
