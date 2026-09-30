@@ -369,3 +369,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DF-9 Gathering Light (Devout T5): Channel Divinity hold 2.5 -> 3 s; full hold adds Gathering Light 800 area heal around the Mark target, same divinity; assumed additive to Light of Divinity 1,700 = test; radius unknown (2026-09-30, fine)
 - DF-10 Angel of Life (Devout T5): Ready = Channel Divinity hold 4 s; full hold -> 12 s of free healing spells, once per 180 s; burst on a 180 s clock; Ready scope / partial hold = test. DEVOUT FEATS COMPLETE (DF-1..10) (2026-09-30, fine)
 - Cleric General row count check: 6 icons on both screens = 4 class skills + Elven Accuracy + Wild Step (Wood Elf racial, already in races.json). GS-1 Religion (all Clerics): world interaction, utility scored 0 (2026-09-30, fine)
+- GS-2 Divine Meditation (all Clerics): out-of-combat divinity regen only; utility scored 0, no test (2026-09-30, fine)
