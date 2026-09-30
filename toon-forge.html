@@ -8225,6 +8225,46 @@
       return assign(0);
     }
 
+    // Can the mount run this bonus with a PREFERRED slot holding its preferred
+    // type (the +20% IL/stat slot)? Same rule as bonusActivatesPreferred() in
+    // js/mounts-page.js — keep the two in step so both pages count the same
+    // mounts. Places the preferred type on each preferred slot in turn and
+    // checks the remaining required insignias still fit (fixed slots filled).
+    function mountRunsBonusOnPreferredSlot(mount, required) {
+      if (!mount || !required || !required.length) return false;
+      const slots = mount.insigniaSlots || [];
+      if (slots.length < required.length) return false;
+      const isUniv = (s) => (s.allowed || []).indexOf("*") !== -1;
+      const accepts = (s, cat) => {
+        const a = s.allowed || [];
+        return a.indexOf("*") !== -1 || a.indexOf(cat) !== -1;
+      };
+      for (let pi = 0; pi < slots.length; pi++) {
+        const pref = slots[pi].preferred;
+        if (!pref || pref === "unknown" || pref === true) continue;
+        if (required.indexOf(pref) === -1) continue;
+        const rest = required.slice();
+        rest.splice(rest.indexOf(pref), 1);
+        const used = new Array(slots.length).fill(false);
+        used[pi] = true;
+        const assign = (ri) => {
+          if (ri >= rest.length) {
+            for (let f = 0; f < slots.length; f++) if (!used[f] && !isUniv(slots[f])) return false;
+            return true;
+          }
+          for (let k = 0; k < slots.length; k++) {
+            if (used[k] || !accepts(slots[k], rest[ri])) continue;
+            used[k] = true;
+            if (assign(ri + 1)) return true;
+            used[k] = false;
+          }
+          return false;
+        };
+        if (assign(0)) return true;
+      }
+      return false;
+    }
+
     // Returns sorted array of bonuses this mount CAN unlock.
     function bonusesAvailableForMount(mount) {
       if (!mount || typeof MOUNT_INSIGNIA_BONUSES_DATA === "undefined") return [];
@@ -19958,9 +19998,16 @@
         items: bonusItems,
         render: (b) => {
           const mounts = mountsThatGrantBonus(b.id);
+          // How many of those run it on a preferred slot (+20% IL/stats) —
+          // the number players actually shop by (n00b 2026-09-30).
+          const pref = mounts.filter(n => {
+            const m = findMountByName(n);
+            return m && mountRunsBonusOnPreferredSlot(m, b.requiredInsignias);
+          }).length;
           return {
             name: b.name,
-            meta: `Requires ${(b.requiredInsignias || []).join(" + ")} · ${mounts.length} compatible mount${mounts.length === 1 ? "" : "s"}`,
+            meta: `Requires ${(b.requiredInsignias || []).join(" + ")} · ${mounts.length} compatible mount${mounts.length === 1 ? "" : "s"}` +
+              (pref ? ` · ★ ${pref} with a preferred slot` : ""),
             desc: b.effectText || "(no effect text)"
           };
         },
@@ -19998,8 +20045,19 @@
         if (worn) usedMounts.add(worn);
       }
       const current = (state.stable[idx] && state.stable[idx].mount) || "";
-      const items = pool.filter(m => m.name === current || !usedMounts.has(m.name));
+      let items = pool.filter(m => m.name === current || !usedMounts.has(m.name));
       const hiddenMounts = pool.length - items.length;
+      // With a bonus chosen, the mounts that run it on a PREFERRED slot (+20%
+      // IL/stats) go to the top and wear a ★ badge — the same rule the Mounts
+      // page counts by, so the two pages agree (n00b 2026-09-30).
+      const prefNames = new Set();
+      if (bonus) {
+        items.forEach(m => { if (mountRunsBonusOnPreferredSlot(m, bonus.requiredInsignias)) prefNames.add(m.name); });
+        if (prefNames.size) {
+          items = items.filter(m => prefNames.has(m.name)).concat(items.filter(m => !prefNames.has(m.name)));
+        }
+      }
+      const prefNote = prefNames.size ? `, ★ ${prefNames.size} preferred` : "";
       // The bonus stage checks its allowed list is non-empty BEFORE this
       // dedupe, so filtering can still empty it here — say why instead of
       // opening a blank picker.
@@ -20011,13 +20069,17 @@
       }
       const dupNote = hiddenMounts ? ` — ${hiddenMounts} already in your stable` : "";
       const title = bonus
-        ? `Stable slot ${idx + 1} — Mount for "${bonus.name}" (${items.length})${dupNote}`
+        ? `Stable slot ${idx + 1} — Mount for "${bonus.name}" (${items.length}${prefNote})${dupNote}`
         : `Stable slot ${idx + 1} — Mount (no bonus filter)${dupNote}`;
       openPicker({
         dataType: "mount",
         title,
         items,
-        render: renderMount,
+        render: (m) => {
+          const r = renderMount(m);
+          if (prefNames.has(m.name)) r.meta = `★ Preferred slot active (+20% IL & stats) · ${r.meta}`;
+          return r;
+        },
         onPick: (m) => {
           state.stable[idx].mount = m ? m.name : "";
           // Resize insignias array to match the picked mount's slot count
