@@ -335,3 +335,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CM-7 Mark of Divinity (Devout mechanic, Channel Divinity tap): permanent +5% heals on one marked ally, no cost; picks the Light of Divinity / Gathering Light target (2026-09-30, fine)
 - CM-8 Devout Forte: Divinity Regen / Crit Sev / Deflect - alreadyModeled (2026-09-30, fine). CLERIC MECHANICS COMPLETE 8/8. Next: class features (8 per paragon, now slottable), then feats (10 per paragon).
 
+## CLERIC CLASS FEATURES (2026-09-30; 8 slottable per paragon after CL-0)
+- CF-1 Soothing Prayer (shared, both screens identical): 25 self heal per ~1 s tick for the length of the Channel Divinity hold (n00b) (2026-09-30, n00b ruling)
+
