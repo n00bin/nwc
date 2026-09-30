@@ -325,3 +325,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CL-27 Anointed Army (Devout daily): AREA 40 ft / melee / kind HEAL+BUFF: 900 delayed heal per member (under 50% or 15 s expiry) + party +6% dmg 15 s; 1,000 AP (2026-09-30, fine)
 - CL-28 Guardian of Life (Devout daily): AREA 40 ft / melee / kind HEAL 800 burst + 500 PER TICK HoT 15 s (base); tap = heal (normal tap cast), full 5.4 s charge = heal + revive up to 4; tick interval to test; 1,000 AP (2026-09-30, n00b ruling). CLERIC POWERS COMPLETE 28/28 (both paragons, every shared item read on both screens).
 
+## CLERIC MECHANICS (2026-09-30)
+- CM-1 Dodge (shared tactical, both screens): dodge + brief immunity - displayOnly (2026-09-30, fine)
+
