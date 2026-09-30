@@ -2264,6 +2264,63 @@
         outline-offset: 2px;
       }
 
+      /* Make Consumables easier to scan and tap on a phone. */
+      #buff-list { grid-template-columns: minmax(0, 1fr); gap: 0.55rem; }
+      .consumables-section-title {
+        grid-column: 1 / -1;
+        margin: 0.25rem 0 0;
+        padding: 0.35rem 0 0.45rem;
+        border-bottom: 1px solid var(--border);
+        color: var(--amber);
+        font-size: 0.77rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .consumables-section-title span {
+        display: block;
+        margin-top: 0.15rem;
+        color: var(--text-dim);
+        font-size: 0.72rem;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      #buff-list .consumable-choice {
+        min-width: 0;
+        min-height: 88px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.35rem;
+        padding: 0.7rem 0.75rem;
+        border-radius: 8px;
+        background: var(--elevated);
+      }
+      #buff-list .consumable-choice .boon-row-info { width: 100%; }
+      #buff-list .consumable-choice .boon-row-effect { line-height: 1.4; }
+      #buff-list .consumable-action {
+        align-self: flex-end;
+        min-height: 40px;
+        color: var(--amber);
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+      #buff-list [data-buff-stack] {
+        min-width: 0;
+        min-height: 60px;
+        margin-bottom: 0;
+        padding: 0.7rem 0.75rem;
+        border-radius: 8px;
+        background: var(--elevated);
+      }
+      #buff-list .consumable-toggle-state {
+        min-height: 40px;
+        color: var(--text-mute);
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+      #buff-list [data-buff-stack].has-pts .consumable-toggle-state { color: var(--amber); }
+
       /* Make Party setup easier to scan and tap on a phone. */
       .party-config-grid { grid-template-columns: 1fr !important; gap: 0.75rem !important; }
       .party-settings { display: grid; gap: 0.45rem; }
@@ -3534,7 +3591,7 @@
           <div class="toggle-list" id="party-buffs-list"></div>
         </div>
         <div class="sc-pane" data-sc-pane="consumables" hidden>
-          <p class="hint" style="margin:0 0 0.5rem;">Things you eat, drink, or pop before a fight. One per category. Free always-on buffs (Campfire, VIP, Invocation) are at the bottom — check the ones your character actually has.</p>
+          <p class="hint" style="margin:0 0 0.5rem;">Choose items by category. Pick one in each group, up to three Belt Items, and turn on any always-on buffs your character has.</p>
           <div class="toggle-list" id="buff-list"></div>
         </div>
         <div class="sc-pane" data-sc-pane="powers" hidden>
@@ -19150,6 +19207,9 @@
         !groupOrder.includes(g) && g !== "None" && g !== "Other");
 
       let html = "";
+      if ([...orderedSingle, ...otherGroups].length) {
+        html += `<div class="consumables-section-title">Choose consumables <span>One per category · up to three Belt Items</span></div>`;
+      }
 
       // Single-pick groups → one picker row each
       for (const g of [...orderedSingle, ...otherGroups]) {
@@ -19165,12 +19225,12 @@
           const label = slots > 1 ? `${g} slot ${si + 1}` : g;
           const desc = active ? describeBuff(active) : `${list.length} options · pick one`;
           const info = active ? ` <button class="chip-info" data-details-type="buff" data-details-key="${_escAttr(active.name)}" title="See buff details">\u{1F50D}</button>` : "";
-          html += `<div class="boon-row ${active ? "has-pts" : ""}" data-buff-group-pick="${g}" data-buff-slot="${si}" style="cursor:pointer;">
+          html += `<div class="boon-row consumable-choice ${active ? "has-pts" : ""}" data-buff-group-pick="${g}" data-buff-slot="${si}" style="cursor:pointer;">
             <div class="boon-row-info">
               <div class="boon-row-name">${label} — ${active ? active.name : "(none)"}${info}</div>
               <div class="boon-row-effect">${desc}</div>
             </div>
-            <div class="boon-counter"><span style="font-size:0.75rem;color:var(--text-dim);">click to pick</span></div>
+            <div class="boon-counter consumable-action">${active ? "Change item ›" : "Choose item ›"}</div>
           </div>`;
         }
       }
@@ -19205,7 +19265,7 @@
               <div class="boon-row-name">${_noTr(b.name)}</div>
               <div class="boon-row-effect">${desc}</div>
             </div>
-            <div class="boon-counter"><span style="font-size:0.75rem;color:${on?'var(--gold)':'var(--text-dim)'};">${on?'✓ on':'+ add'}</span></div>
+            <div class="boon-counter consumable-toggle-state">${on ? "✓ On" : "+ Turn on"}</div>
           </div>`;
         }
       }
