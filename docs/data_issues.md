@@ -2951,3 +2951,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Blessed Armaments (Devout feat) rules** — do heal casts trigger the 20 radiant proc; does the 10% damage-taken cut appear on the character sheet while Divine Glow / Exaltation are active? (n00b, 2026-09-30).
 - [ ] **Persistent Guardian (Devout feat) interval** — time between the guardian's 600 heals; does it skip casting when nobody is wounded (saving a charge) or cast anyway? (n00b, 2026-09-30).
 - [ ] **Gathering Light (Devout feat) additive?** — hold Channel Divinity the full 3 s: does the Mark target receive 1,700 + 800 or only the 800; how wide is "near the target"? (n00b, 2026-09-30).
+- [ ] **Angel of Life (Devout feat) hold scope** — is Channel Divinity a 4 s hold only while Angel of Life Ready shows (2.5 s again during the 180 s cooldown)? Does releasing early still cast a normal Light of Divinity without using the window? (n00b, 2026-09-30).
