@@ -300,4 +300,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CL-2 Scattering Light (shared at-will, both screens): AREA 10 ft / ranged 80 ft / none / no DoT / magical (radiant); 70 @0.8 s; Arbiter +1 Burning per cast, 77 under Radiant (2026-09-30, fine)
 - CL-3 Lance of Faith (Arbiter at-will): single / ranged 80 ft / none / no DoT / magical (radiant); 3 x 110 @0.6 s (~183 mag/s); +1 Burning per hit, 121 under Radiant (2026-09-30, fine)
 - CL-4 Conflagrate (Arbiter at-will): AREA 10 ft / ranged 80 ft / none / no DoT / magical (fire); 150 @1.8 s; +3 Radiant per cast, 165 under Burning (2026-09-30, fine). Cleric at-wills complete.
+- CL-5 Soothe (Devout at-will): single / ranged / kind HEAL 275 per 1 s cast, 40 Divinity (2026-09-30, fine)
 
