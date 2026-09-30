@@ -320,4 +320,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CL-22 Guardian of Faith (shared daily, both screens): MIXED (single 1,700 hit, area STUN 3 s 10 ft) / ranged 60 ft / magical (radiant); Arbiter +1 Burning, 1,800 under Radiant; 1,000 AP (2026-09-30, fine)
 - CL-23 Hallowed Ground (shared daily, both screens identical): AREA zone 25 ft / melee / kind BUFF+HEAL: allies -10% damage taken + 500 PER TICK HoT (n00b) for 18 s; tick interval to test; 1,000 AP (2026-09-30, n00b ruling)
 - CL-24 Flame Strike (shared daily, both screens): AREA 15 ft / ranged 80 ft / DoT 180 PER TICK 12 s (n00b) / magical (fire); 260 impact; Arbiter +1 Radiant, 360 under Burning; 1,000 AP; tick interval to test (2026-09-30, n00b ruling). Shared dailies complete.
+- CL-25 Celestial Prominence (Arbiter daily): AREA 15 ft / ranged 80 ft / STUN 3 s / magical (radiant); 700 early / 1,300 after 5 s (default) / auto at 15 s; +1 Burning, 1,400 under Radiant; 1,000 AP (2026-09-30, fine)
 
