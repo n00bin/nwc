@@ -2933,4 +2933,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Cleric base max divinity (Arbiter AND Devout)** — Expanded Faith adds +150 but the pool size is not recorded anywhere; read the divinity bar max with the feature unslotted on each paragon (n00b, 2026-09-30).
 - [ ] **Critical Insight (Arbiter) recovery rules** — 10 divinity per crit: test whether DoT ticks and each area target count separately, and whether there is a hidden cooldown between recoveries (n00b, 2026-09-30).
 - [ ] **Doomsayer (Arbiter) trigger set** — does Searing Javelin / Forgemaster's Flame applying Judgement count as a negative condition and refresh Doomsayer? (n00b, 2026-09-30).
+- [ ] **Divine Equilibrium (Arbiter) fall-off curve** — read the buff value at full / 75% / half / 25% / empty divinity; data holds a placeholder linear peak (n00b, 2026-09-30).
 
