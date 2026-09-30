@@ -2929,4 +2929,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Scales of Judgement dump** (2026-09-30): Divinity restored when Channel Divinity empties a full 6-pip gauge is not on the tooltip. n00b to test.
 - **Righteousness numbers** (2026-09-30): the Devout hidden healing-effectiveness multiplier and in-combat Divinity regen per second are not on the tooltip. n00b to test (calibrate a Devout sheet).
 - **Light of Divinity partial charge** (2026-09-30): magnitude and Divinity cost at less than a full 2.5 s hold are not on the tooltip. n00b to test.
+- **Hallowed Armor during Channel Divinity** (2026-09-30): is the 10% instead of the 5% or on top of it (15%)? n00b to test.
 
