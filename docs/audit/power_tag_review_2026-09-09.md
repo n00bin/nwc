@@ -370,3 +370,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DF-10 Angel of Life (Devout T5): Ready = Channel Divinity hold 4 s; full hold -> 12 s of free healing spells, once per 180 s; burst on a 180 s clock; Ready scope / partial hold = test. DEVOUT FEATS COMPLETE (DF-1..10) (2026-09-30, fine)
 - Cleric General row count check: 6 icons on both screens = 4 class skills + Elven Accuracy + Wild Step (Wood Elf racial, already in races.json). GS-1 Religion (all Clerics): world interaction, utility scored 0 (2026-09-30, fine)
 - GS-2 Divine Meditation (all Clerics): out-of-combat divinity regen only; utility scored 0, no test (2026-09-30, fine)
+- GS-3 Composed Insight (all Clerics): up to +10% Accuracy at full stamina; BASE panel at rest (stamina full), staminaLevel slider default 100, placeholder linear; sheet check + half-stamina value = test (2026-09-30, fine)
+- OWED: Barbarian General skills (Persistent Rage, Dungeoneering, Marathon Runner, Raging Criticals) were never stamped in the Barbarian pass; do after Cleric closes, with the Sentinel shared-power differences
