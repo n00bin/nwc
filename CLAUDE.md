@@ -26,7 +26,8 @@ A static website (GitHub Pages) for Neverwinter (PS5) players. It's a reference 
 | `artifacts.html` | Artifact reference with icons |
 | `consumables.html` | Consumable and lockbox tabs with searchable rewards and rate information |
 | `mekaniks.html` | Game mechanics and stat explanations (hash deep-links to tabs) |
-| `professions.html` | Crafting/profession guide (artisan table, masterwork) |
+| `professions.html` | Crafting/profession guide (artisan table, masterwork; **Crafting** tab embeds `recipes.html?embed=1` in an iframe, `#crafting` deep-links to it) |
+| `recipes.html` | Crafting Codex — community-filled recipe tree (browse / add / wanted / review; Supabase). Standalone page AND embedded in Professions → Crafting. `?embed=1` hides navbar/footer/hero text and posts its height to the parent |
 | `campaign-boosters.html` | Companions and items that boost campaign currencies |
 | `patchnotes.html` | Auto-updated patch notes from Arc Games API |
 | `reports.html` | Community bug reports (Supabase backend) |

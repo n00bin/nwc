@@ -220,6 +220,7 @@
     <button class="view-tab" data-tab="masterwork">Masterwork Guide</button>
     <button class="view-tab" data-tab="profit">Profitable Crafting</button>
     <button class="view-tab" data-tab="workshop">Workshop Upgrades</button>
+    <button class="view-tab" data-tab="crafting">Crafting</button>
   </div>
 
   <!-- Artisan controls -->
@@ -321,6 +322,13 @@
 
   <!-- WORKSHOP -->
   <div class="prof-container prof-view" id="view-workshop"><div id="workshop-content"></div></div>
+
+  <!-- CRAFTING (the Crafting Codex, recipes.html, embedded) -->
+  <div class="prof-container prof-view" id="view-crafting">
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin:0 0 0.6rem;">The Crafting Codex: pick anything craftable and see every material under it, down to the raw mats.
+      <a href="recipes.html" style="color:var(--accent);text-decoration:none;">Open it on its own page &rarr;</a></p>
+    <iframe id="crafting-frame" title="Crafting Codex" loading="lazy" style="width:100%;min-height:600px;border:0;border-radius:var(--radius-md);background:transparent;display:block;"></iframe>
+  </div>
 
   <script src="data/artisans.js"></script>
   <script src="js/shared.js"></script>
@@ -558,8 +566,18 @@
         if (tabName === "masterwork") renderMasterwork();
         if (tabName === "profit") renderProfit();
         if (tabName === "workshop") renderWorkshop();
+        if (tabName === "crafting") {
+          var fr = document.getElementById("crafting-frame");
+          if (!fr.getAttribute("src")) fr.setAttribute("src", "recipes.html?embed=1");
+        }
       });
     });
+    // the embedded Codex reports its height so the tab grows with it instead of scrolling inside a box
+    window.addEventListener("message", function (e) {
+      if (e.origin !== location.origin) return;
+      if (e.data && e.data.nwcEmbedHeight) document.getElementById("crafting-frame").style.height = Math.max(600, e.data.nwcEmbedHeight + 40) + "px";
+    });
+    if (location.hash === "#crafting") { var ct = document.querySelector('.view-tab[data-tab="crafting"]'); if (ct) ct.click(); }
   </script>
   <script src="js/analytics.js"></script>
 </body>

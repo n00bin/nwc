@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crafting Codex — Neverwinter Compendium</title>
+  <meta name="description" content="Neverwinter crafting material calculator — pick an item and see every material it needs, down to raw mats, with morale and time totals.">
+  <!-- Standalone for now: deliberately not in the navbar and not in the
+       sitemap. Reached by direct link only until the recipe data is deep
+       enough to be worth announcing. -->
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .rc-container { max-width:1100px; margin:0 auto; padding:1rem 1.5rem 3rem; }
+    .rc-view { display:none; }
+    .rc-view.active { display:block; }
+
+    .rc-hero { max-width:1100px; margin:0 auto; padding:1.25rem 1.5rem 0.25rem; }
+    .rc-hero h1 { font-size:1.6rem; color:var(--highlight); margin-bottom:0.3rem; }
+    .rc-hero p { color:var(--text-secondary); font-size:0.92rem; line-height:1.6; margin:0 0 0.4rem; max-width:70ch; }
+    .rc-progress { font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted); }
+
+    .rc-section { font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;
+                  color:var(--highlight); padding:1.25rem 0 0.4rem;
+                  border-bottom:1px solid var(--border-default); margin-bottom:0.75rem; }
+    .rc-note { background:var(--bg-elevated); border-left:3px solid var(--accent);
+               padding:0.6rem 0.8rem; border-radius:var(--radius-sm); font-size:0.88rem;
+               color:var(--text-secondary); line-height:1.6; margin:0.5rem 0 0.75rem; }
+    .rc-warn { background:var(--bg-elevated); border-left:3px solid var(--highlight);
+               padding:0.6rem 0.8rem; border-radius:var(--radius-sm); font-size:0.88rem;
+               color:var(--text-secondary); margin-bottom:0.75rem; }
+    .rc-muted { color:var(--text-muted); font-size:0.85rem; }
+
+    .empty-state { background:var(--bg-surface); border:1px solid var(--border-default);
+                   border-radius:var(--radius-md); padding:1.5rem; text-align:left; }
+    .empty-state h3 { color:var(--highlight); margin-bottom:0.5rem; }
+    .empty-state p { color:var(--text-secondary); font-size:0.9rem; line-height:1.6; margin:0 0 0.6rem; }
+
+    /* Totals */
+    .rc-totals { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:0.6rem; margin-bottom:0.5rem; }
+    .rc-total { background:var(--bg-surface); border:1px solid var(--border-default);
+                border-radius:var(--radius-md); padding:0.7rem 0.9rem; }
+    .rc-total-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); }
+    .rc-total-value { font-family:var(--font-mono); font-size:1.4rem; color:var(--highlight); line-height:1.3; }
+    .rc-total-sub { font-size:0.75rem; color:var(--text-secondary); }
+
+    /* Tree */
+    .rc-tree { background:var(--bg-surface); border:1px solid var(--border-default);
+               border-radius:var(--radius-md); padding:0.7rem 0.9rem; overflow-x:auto; }
+    .rc-node { padding:0.18rem 0; font-size:0.88rem; white-space:nowrap; }
+    .rc-node.is-raw .rc-name { color:var(--text-secondary); }
+    .rc-toggle { background:var(--bg-elevated); border:1px solid var(--border-default);
+                 color:var(--text-secondary); width:18px; height:18px; line-height:1;
+                 border-radius:3px; cursor:pointer; font-size:0.75rem; padding:0; margin-right:0.35rem; }
+    .rc-toggle:hover { color:var(--accent); border-color:var(--accent); }
+    .rc-toggle-spacer { display:inline-block; width:18px; margin-right:0.35rem; }
+    .rc-qty { font-family:var(--font-mono); color:var(--accent); }
+    .rc-name { color:var(--text-primary); font-weight:600; }
+    .rc-sub { color:var(--text-muted); font-size:0.78rem; }
+    .rc-tag { font-size:0.68rem; padding:0.05rem 0.35rem; border-radius:999px;
+              background:var(--bg-hover); color:var(--text-secondary); }
+    .rc-tag-mw { background:#3a2a12; color:var(--highlight); }
+    .rc-tag-raw { background:#1d2b1d; color:var(--stat-positive); }
+    .rc-tag-bad { background:#3a1717; color:var(--stat-negative); }
+    .rc-tag-pending  { background:#3a2a12; color:var(--highlight); }
+    .rc-tag-approved { background:#1d2b1d; color:var(--stat-positive); }
+    .rc-tag-rejected { background:#3a1717; color:var(--stat-negative); }
+    .rc-addlink { font-size:0.75rem; color:var(--accent); margin-left:0.35rem; }
+
+    /* Shopping / wanted lists */
+    .rc-shop { background:var(--bg-surface); border:1px solid var(--border-default);
+               border-radius:var(--radius-md); padding:0.5rem 0.9rem; }
+    .rc-shop-row { padding:0.25rem 0; border-bottom:1px solid var(--border-default); font-size:0.88rem; }
+    .rc-shop-row:last-child { border-bottom:none; }
+    .rc-shop-qty { font-family:var(--font-mono); color:var(--accent); display:inline-block; min-width:3.5rem; }
+    .rc-shop-name { color:var(--text-primary); font-weight:600; }
+
+    /* Tree + totals, side by side on wide screens */
+    .rc-split { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; align-items:start; }
+    @media (max-width:900px) { .rc-split { grid-template-columns:1fr; } }
+    .rc-split-head { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em;
+                     color:var(--text-muted); margin-bottom:0.35rem; }
+
+    /* Rolled-up totals */
+    .rc-totals-table { width:100%; border-collapse:collapse; font-size:0.84rem;
+                       background:var(--bg-surface); border:1px solid var(--border-default);
+                       border-radius:var(--radius-md); overflow:hidden; }
+    .rc-totals-table th { background:var(--bg-elevated); color:var(--text-muted); font-weight:600;
+                          font-size:0.72rem; text-transform:uppercase; letter-spacing:0.04em;
+                          padding:0.4rem 0.55rem; text-align:left; }
+    .rc-totals-table td { padding:0.35rem 0.55rem; border-top:1px solid var(--border-default);
+                          vertical-align:top; }
+    .rc-totals-table tr.rc-row-multi td { background:rgba(240,136,62,0.07); }
+    .rc-total-qty { font-family:var(--font-mono); color:var(--accent); white-space:nowrap; }
+    .rc-multi { color:var(--highlight); font-size:0.8rem; }
+
+    /* Facts table */
+    .rc-facts { width:100%; border-collapse:collapse; font-size:0.86rem; }
+    .rc-facts th, .rc-facts td { padding:0.32rem 0.55rem; border:1px solid var(--border-default); text-align:left; }
+    .rc-facts th { background:var(--bg-elevated); color:var(--text-secondary); font-weight:600; width:200px; }
+
+    /* Form */
+    .rc-form-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0.7rem; }
+    .rc-field label { display:block; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em;
+                      color:var(--text-muted); margin-bottom:0.2rem; }
+    .rc-field .rc-hint { display:block; font-size:0.75rem; color:var(--text-muted);
+                         text-transform:none; letter-spacing:0; margin-top:0.15rem; }
+    .rc-input { width:100%; background:var(--bg-elevated); border:1px solid var(--border-default);
+                border-radius:var(--radius-sm); color:var(--text-primary); padding:0.4rem 0.55rem;
+                font-size:0.88rem; font-family:var(--font-main); }
+    .rc-input:focus { outline:none; border-color:var(--accent); }
+    .rc-mat-row { display:grid; grid-template-columns:1fr 80px 150px 36px; gap:0.4rem; margin-bottom:0.35rem; }
+    @media (max-width:640px) { .rc-mat-row { grid-template-columns:1fr 70px; } .rc-mat-row .rc-mat-kind { grid-column:1 / 2; } .rc-mat-row .rc-mat-del { grid-column:2 / 3; } }
+    .rc-btn { background:var(--accent); border:1px solid var(--accent); color:#fff;
+              padding:0.4rem 0.8rem; border-radius:var(--radius-sm); font-size:0.85rem; cursor:pointer; }
+    .rc-btn:hover { background:var(--accent-hover); border-color:var(--accent-hover); }
+    .rc-btn:disabled { opacity:0.5; cursor:not-allowed; }
+    .rc-btn-ghost { background:transparent; color:var(--text-secondary); border-color:var(--border-default); }
+    .rc-btn-ghost:hover { background:var(--bg-hover); color:var(--text-primary); border-color:var(--border-default); }
+    .rc-msg { margin-top:0.7rem; font-size:0.88rem; color:var(--text-secondary); line-height:1.6; }
+    .rc-msg-good { color:var(--stat-positive); }
+    .rc-msg-bad  { color:var(--stat-negative); }
+    .rc-msg ul { margin:0.3rem 0 0 1.1rem; }
+
+    /* Review */
+    .rc-sub-card { background:var(--bg-surface); border:1px solid var(--border-default);
+                   border-radius:var(--radius-md); padding:0.7rem 0.9rem; margin-top:0.7rem; }
+    .rc-sub-head { margin-bottom:0.4rem; font-size:0.9rem; }
+    .rc-json { background:var(--bg-primary); border:1px solid var(--border-default);
+               border-radius:var(--radius-sm); padding:0.5rem; font-family:var(--font-mono);
+               font-size:0.76rem; color:var(--text-secondary); overflow-x:auto; max-height:240px; }
+    .rc-sub-actions { margin-top:0.5rem; }
+    /* embed=1: shown inside the Professions page's Crafting tab */
+    body.embedded .navbar, body.embedded .site-footer, body.embedded .rc-hero p { display:none !important; }
+    body.embedded .rc-hero { padding-top:0; }
+    body.embedded .rc-hero h1 { font-size:1.3rem; }
+  </style>
+  <script>
+    if (/[?&]embed=1/.test(location.search)) {
+      document.documentElement.classList.add("embedded");
+      document.addEventListener("DOMContentLoaded", function () { document.body.classList.add("embedded"); });
+      (function () {
+        var last = 0;
+        function report() { var h = document.documentElement.scrollHeight; if (h !== last) { last = h; parent.postMessage({ nwcEmbedHeight: h }, location.origin); } }
+        window.addEventListener("load", function () { report(); new MutationObserver(report).observe(document.body, { childList: true, subtree: true, attributes: true }); setInterval(report, 1000); });
+      })();
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <div class="rc-hero">
+    <h1>Crafting Codex</h1>
+    <p>Pick something craftable and see every material underneath it — each
+       intermediate craft, all the way down to the raw mats you actually have to
+       gather or buy — with the morale and time it costs.</p>
+    <p><strong>It only knows what people put in it.</strong> Neverwinter has hundreds
+       of recipes and this site does not publish guessed numbers, so the Codex is
+       being filled in by hand, by players with the game open. If you craft, the
+       <strong>Add a Recipe</strong> tab is where you can help.</p>
+    <div class="rc-progress" id="rc-progress"></div>
+    <div class="rc-progress" id="rc-build" title="Which version of this page you are looking at. If this is not the latest, reload with Ctrl+Shift+R."></div>
+  </div>
+
+  <div class="controls-bar view-tabs">
+    <button class="view-tab active" data-tab="browse">Browse</button>
+    <button class="view-tab" data-tab="add">Add a Recipe</button>
+    <button class="view-tab" data-tab="wanted">Wanted</button>
+    <button class="view-tab" data-tab="review">Review</button>
+  </div>
+
+  <div class="controls-bar" id="browse-controls">
+    <select class="filter-select" id="browse-target" style="min-width:320px;"></select>
+    <label class="rc-muted" style="display:flex;align-items:center;gap:0.4rem;">
+      How many?
+      <input type="number" class="search-input" id="browse-qty" value="1" min="1" step="1" style="width:90px;">
+    </label>
+  </div>
+
+  <!-- BROWSE -->
+  <div class="rc-container rc-view active" id="view-browse">
+    <div id="browse-content"></div>
+  </div>
+
+  <!-- ADD -->
+  <div class="rc-container rc-view" id="view-add">
+    <div id="edit-banner" style="display:none;"></div>
+    <div class="rc-note" id="add-note">
+      Copy what your workshop screen says, exactly as it spells it — the Codex
+      matches materials to recipes by name, so "Adamant Ore" and "Adamantine Ore"
+      are two different things to it. Only the item name, profession, tier and the
+      material list are required; leave anything you cannot see blank rather than
+      guessing at it. Submissions are checked before they appear.
+    </div>
+
+    <div class="rc-section">The item this recipe makes</div>
+    <div class="rc-form-grid">
+      <div class="rc-field">
+        <label for="f-name">Crafted item *</label>
+        <input type="text" class="rc-input" id="f-name" placeholder="e.g. Adamant Ingot" list="known-items">
+      </div>
+      <div class="rc-field">
+        <label for="f-profession">Profession *</label>
+        <select class="rc-input" id="f-profession"><option value="">Pick one…</option></select>
+      </div>
+      <div class="rc-field">
+        <label for="f-tier">Tier *</label>
+        <select class="rc-input" id="f-tier"></select>
+      </div>
+      <div class="rc-field">
+        <label for="f-yield">Yield per craft *</label>
+        <input type="number" class="rc-input" id="f-yield" value="1" min="1" step="1">
+        <span class="rc-hint">How many you get from one craft.</span>
+      </div>
+    </div>
+
+    <div class="rc-section">What it consumes *</div>
+    <div id="mat-rows"></div>
+    <button type="button" class="rc-btn rc-btn-ghost" id="add-mat">+ Another material</button>
+
+    <div class="rc-section">The numbers (leave blank if you cannot see them)</div>
+    <div class="rc-form-grid">
+      <div class="rc-field">
+        <label for="f-level">Level required</label>
+        <input type="number" class="rc-input" id="f-level" min="1" step="1">
+      </div>
+      <div class="rc-field">
+        <label for="f-morale">Morale per craft</label>
+        <input type="number" class="rc-input" id="f-morale" min="0" step="1">
+      </div>
+      <div class="rc-field">
+        <label for="f-minutes">Craft time in minutes</label>
+        <input type="number" class="rc-input" id="f-minutes" min="0" step="1">
+        <span class="rc-hint">A 2 hour craft is 120.</span>
+      </div>
+      <div class="rc-field">
+        <label for="f-commission">Commission</label>
+        <input type="text" class="rc-input" id="f-commission" placeholder="e.g. 1g 20s">
+      </div>
+      <div class="rc-field">
+        <label for="f-tool">Tool used</label>
+        <input type="text" class="rc-input" id="f-tool" placeholder="e.g. Masterwork Blacksmith Tools">
+      </div>
+      <div class="rc-field">
+        <label for="f-proficiency">Proficiency needed</label>
+        <input type="number" class="rc-input" id="f-proficiency" min="0" step="1">
+      </div>
+      <div class="rc-field">
+        <label for="f-focus">Focus needed</label>
+        <input type="number" class="rc-input" id="f-focus" min="0" step="1">
+      </div>
+      <div class="rc-field">
+        <label for="f-unlock">How it is unlocked</label>
+        <input type="text" class="rc-input" id="f-unlock" placeholder="e.g. Masterwork II quest">
+      </div>
+      <div class="rc-field">
+        <label for="f-source">Module / patch you saw it in</label>
+        <input type="text" class="rc-input" id="f-source" placeholder="e.g. Mod 33">
+      </div>
+      <div class="rc-field">
+        <label for="f-submitter">Your name (optional)</label>
+        <input type="text" class="rc-input" id="f-submitter" placeholder="So you can be credited" maxlength="40">
+      </div>
+    </div>
+
+    <div class="rc-field" style="margin-top:0.7rem;">
+      <label for="f-notes">Anything else worth knowing</label>
+      <textarea class="rc-input" id="f-notes" rows="2" placeholder="Optional"></textarea>
+    </div>
+
+    <div class="rc-section">Preview</div>
+    <div id="form-preview"></div>
+
+    <div style="margin-top:0.9rem;">
+      <button class="rc-btn" id="submit-recipe">Submit recipe</button>
+      <button class="rc-btn rc-btn-ghost" id="clear-recipe">Clear the form</button>
+    </div>
+    <div class="rc-msg" id="form-msg"></div>
+
+    <div id="drafts-box"></div>
+
+    <datalist id="known-items"></datalist>
+  </div>
+
+  <!-- WANTED -->
+  <div class="rc-container rc-view" id="view-wanted">
+    <div id="wanted-content"></div>
+  </div>
+
+  <!-- REVIEW -->
+  <div class="rc-container rc-view" id="view-review">
+    <div class="rc-note">Owner only. Submissions stay invisible to everyone else until they are approved here.</div>
+    <div class="controls-bar" style="padding-left:0;">
+      <input type="password" class="search-input" id="review-pass" placeholder="Admin password">
+      <select class="filter-select" id="review-status">
+        <option value="pending">Pending</option>
+        <option value="approved">Approved</option>
+        <option value="rejected">Rejected</option>
+        <option value="">All</option>
+      </select>
+      <button class="rc-btn" id="review-login">Open queue</button>
+    </div>
+    <div id="review-content"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="data/recipes.js?v=20260918e"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/recipes-page.js?v=20260918e"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>
