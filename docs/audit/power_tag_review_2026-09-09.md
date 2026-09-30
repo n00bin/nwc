@@ -296,4 +296,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 
 ## CLERIC PASS (2026-09-28). Count check vs both Powers screens: every row matches (Arbiter 4/10/5/4/8/10, Devout 4/10/5/6/8/10); shared powers already carry per-paragon values (magnitudeByParagon etc.); both paragon screens archived for every shared item.
 - CL-0 STRUCTURE (n00b fine): the 8 class features are slottable (2 Active of 8) but were always-on with empty slottable lists - moved 4 shared + 4 paragon into each paragon's slottedClassFeatures, 'active' flags dropped (same fix as Barbarian BF-3). No stats on them yet; stats come at their review.
+- CL-1 Sacred Flame (shared at-will, both screens): single / ranged 80 ft / none / no DoT / magical (fire); Devout 3 x 90, Arbiter 3 x 100 (+1 Radiant Judgement per hit, 110 under Burning) (2026-09-30, fine)
 
