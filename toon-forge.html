@@ -1846,11 +1846,32 @@
       border: 1px solid var(--border);
       color: var(--text);
     }
-    .insignia-crescent     { color: #4fb3ff; border-color: #4fb3ff; }
-    .insignia-barbed       { color: #ff5e5e; border-color: #ff5e5e; }
-    .insignia-illuminated  { color: #ffd866; border-color: #ffd866; }
-    .insignia-enlightened  { color: #d2a8ff; border-color: #d2a8ff; }
-    .insignia-regal        { color: #f0883e; border-color: #f0883e; }
+    /* Insignia type colours — the SAME values as css/theme.css (the Mounts
+       and Insignia Bonus pages), so a Regal reads purple and an Enlightened
+       green everywhere on the site. This page doesn't load theme.css, so the
+       tokens are repeated here; change both files together. */
+    :root {
+      --ins-regal:       #a371f7;
+      --ins-barbed:      #f85149;
+      --ins-crescent:    #58a6ff;
+      --ins-illuminated: #d29922;
+      --ins-enlightened: #3fb950;
+      --ins-universal:   #8b949e;
+    }
+    .insignia-crescent     { color: var(--ins-crescent);    border-color: var(--ins-crescent); }
+    .insignia-barbed       { color: var(--ins-barbed);      border-color: var(--ins-barbed); }
+    .insignia-illuminated  { color: var(--ins-illuminated); border-color: var(--ins-illuminated); }
+    .insignia-enlightened  { color: var(--ins-enlightened); border-color: var(--ins-enlightened); }
+    .insignia-regal        { color: var(--ins-regal);       border-color: var(--ins-regal); }
+    .insignia-universal    { color: var(--ins-universal);   border-color: var(--ins-universal); }
+    /* Inline type name (bonus "Requires …", mount slot lines, stable chips). */
+    .ins-type { font-weight: 600; }
+    .ins-type-crescent     { color: var(--ins-crescent); }
+    .ins-type-barbed       { color: var(--ins-barbed); }
+    .ins-type-illuminated  { color: var(--ins-illuminated); }
+    .ins-type-enlightened  { color: var(--ins-enlightened); }
+    .ins-type-regal        { color: var(--ins-regal); }
+    .ins-type-universal    { color: var(--ins-universal); }
 
     /* ===== Gear warning banner ===== */
     #gear-warnings { margin-bottom: 0.75rem; }
@@ -5842,7 +5863,7 @@
       insignia:              (name) => ({ item: findInsigniaByName(name), render: renderInsignia }),
       insignia_bonus:        (id)   => ({ item: findBonusById(+id), render: (b) => ({
                                             name: b.name,
-                                            meta: `Requires ${(b.requiredInsignias || []).join(" + ")}`,
+                                            meta: `Requires ${insTypesHTML(b.requiredInsignias)}`,
                                             desc: b.effectText || "(no effect text)"
                                          }) }),
       companion_enhancement: (name) => ({ item: findEnhancementByName(name), render: renderEnhancement }),
@@ -7364,6 +7385,19 @@
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;");
     }
+    // Insignia type name in the site's colour for that type (same palette as
+    // the Mounts / Insignia Bonus pages — see the --ins-* tokens). "*" is the
+    // universal slot. Use wherever a type is DISPLAYED; never for titles or
+    // text that goes into a report body (those are plain text).
+    function insTypeHTML(t) {
+      const label = (t === "*" || t == null || t === "") ? "Universal" : String(t);
+      const key = label.toLowerCase();
+      const known = /^(crescent|barbed|illuminated|enlightened|regal|universal)$/.test(key);
+      return `<span class="ins-type${known ? " ins-type-" + key : ""}">${_escHTML(label)}</span>`;
+    }
+    function insTypesHTML(list, sep) {
+      return (Array.isArray(list) ? list : []).map(insTypeHTML).join(sep == null ? " + " : sep);
+    }
     /* Keeps an in-game proper noun in English when a browser auto-translates
        the page, so it still matches the player's (English-only) console
        client. Same contract as noTranslate() in js/shared.js, which Toon Forge
@@ -7876,9 +7910,10 @@
     function renderMount(m, opts) {
       const compact = !!(opts && opts.picker);
       // Card-style sections, same language as the gear cards.
+      // Each line is HTML: type names carry the site's insignia colours.
       const slots = (m.insigniaSlots || []).map(s =>
-        (s.allowed || []).join("/").replace("*", "Universal") +
-        (s.preferred ? ` ★ ${s.preferred}` : "")
+        insTypesHTML(s.allowed && s.allowed.length ? s.allowed : ["*"], "/") +
+        (s.preferred ? ` <span style="color:var(--amber);">★</span> ${insTypeHTML(s.preferred)}` : "")
       );
       const bonus = (m.bonusRef && typeof findBonusById === "function") ? findBonusById(m.bonusRef) : null;
       const combat = (m.combatRef && typeof findCombatPowerById === "function") ? findCombatPowerById(m.combatRef) : null;
@@ -7886,7 +7921,7 @@
       const slotBlock = slots.length
         ? `<div class="gear-card-section">
              <div class="gear-card-section-title">Insignia Slots</div>
-             ${slots.map(s => `<div class="gear-card-stat-line">${_escHTML(s)}</div>`).join("")}
+             ${slots.map(s => `<div class="gear-card-stat-line">${s}</div>`).join("")}
            </div>`
         : "";
       const powerLines = [];
@@ -7957,7 +7992,7 @@
       const baseCR = i.combinedRating || 0;
       const scaledCR = Math.round(baseCR * mult);
       const meta = [
-        i.category || "?",
+        i.category ? insTypeHTML(i.category) : "?",
         i.statTemplate ? "(" + i.statTemplate + ")" : "",
         `IL ${shownIL} (${tier}${pref ? " ★ preferred +20%" : ""})`,
         scaledCR ? "CR " + scaledCR : ""
@@ -19863,7 +19898,7 @@
           while (slot.insigniaTiers.length < insigniaSlots.length) slot.insigniaTiers.push("Mythic");
           insigniaSlots.forEach((ins, idx) => {
             const cur = (slot.insignias || [])[idx] || "";
-            const allowedLabel = (ins.allowed || []).join("/").replace("*", "Universal");
+            const allowedLabel = insTypesHTML(ins.allowed && ins.allowed.length ? ins.allowed : ["*"], "/");
             const curTier = slot.insigniaTiers[idx] || "Mythic";
             // Preferred-slot marker: gold ★ when the slotted insignia's
             // category matches the slot's preferred type (+20% active),
@@ -19918,7 +19953,7 @@
           if (desiredBonus) {
             html += `<div class="stable-bonus ${active ? "active" : ""}">
               <span class="stable-bonus-status">${active ? "✓ ACTIVE" : "○ inactive"}</span>
-              requires ${(desiredBonus.requiredInsignias || []).join(" + ")}
+              requires ${insTypesHTML(desiredBonus.requiredInsignias)}
               ${desiredBonus.effectText ? `<div class="stable-bonus-effect">${desiredBonus.effectText}</div>` : ""}
             </div>`;
           }
@@ -20016,7 +20051,7 @@
           }).length;
           return {
             name: b.name,
-            meta: `Requires ${(b.requiredInsignias || []).join(" + ")} · <span style="color:var(--pos);font-weight:700;">${mounts.length} compatible mount${mounts.length === 1 ? "" : "s"}</span>` +
+            meta: `Requires ${insTypesHTML(b.requiredInsignias)} · <span style="color:var(--pos);font-weight:700;">${mounts.length} compatible mount${mounts.length === 1 ? "" : "s"}</span>` +
               (pref ? ` · <span style="color:var(--amber);font-weight:700;">★ ${pref} with a preferred slot</span>` : ""),
             desc: b.effectText || "(no effect text)"
           };
@@ -20161,7 +20196,7 @@
         items,
         render: (b) => ({
           name: b.name,
-          meta: `Requires ${(b.requiredInsignias || []).join(" + ")}`,
+          meta: `Requires ${insTypesHTML(b.requiredInsignias)}`,
           desc: b.effectText || "(no effect text)"
         }),
         onPick: (b) => {
@@ -21917,7 +21952,7 @@
             : `No mount currently grants this bonus.`;
           return {
             name: b.name,
-            meta: `Requires ${(b.requiredInsignias || []).join(" + ")}`,
+            meta: `Requires ${insTypesHTML(b.requiredInsignias)}`,
             desc: `${b.effectText || "(no effect text)"} — ${mountList}`
           };
         },
