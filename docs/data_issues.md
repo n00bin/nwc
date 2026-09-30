@@ -2942,4 +2942,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Sudden Verdict (Arbiter feat) fill kind** — when the 25% fires, is the gauge filled with the casting power's Judgement kind or the kind already held; on a mixed gauge does it convert or overwrite? (n00b, 2026-09-30).
 - [ ] **Inner Balance (Arbiter feat) fall-off** — needs the Scales dump base first; then read the extra restore at equal ratings and with one rating ~10% / ~25% higher, for both pairs (n00b, 2026-09-30).
 - [ ] **Critical Sun (Arbiter feat) rules** — does any single crit in the area arm it; is the free cast's own crit blocked; does the 6 s window cover only placing the free cast (so it can still wait 5 s for the 1,300 pop) or the whole cast and pop? (n00b, 2026-09-30).
-
+- [ ] **Burning Patch (Arbiter feat) tick rules** — can the 540 patch ticks crit, do they get the Burning Judgement bonus, and does the patch tick every 3 s as 540 x 6 / 18 s implies? (n00b, 2026-09-30).
