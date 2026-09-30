@@ -325,6 +325,7 @@
       margin: 0.5rem 0 0.6rem;
       border-bottom: 1px solid var(--border);
     }
+    .scenario-tab-select { display: none; }
     .sc-pane[hidden] { display: none !important; }   /* .row-2 display:grid would otherwise override the hidden attribute */
     .sc-tab.active { background: var(--elevated); color: var(--gold); }
     #combat-scenario-panel .field { margin-bottom: 0.4rem; }
@@ -2239,19 +2240,29 @@
         outline-offset: 2px;
       }
       .scenario-tabs {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: thin;
+        display: block;
+        margin: 0.5rem 0 0.6rem;
+        overflow: visible;
+        border-bottom: 0;
       }
-      .scenario-tabs .sc-tab {
-        flex: 0 0 auto;
+      .scenario-tabs .sc-tab { display: none; }
+      .scenario-tab-select {
+        display: block;
+        width: 100%;
         min-height: 44px;
-        white-space: nowrap;
+        padding: 0.55rem 2.5rem 0.55rem 0.8rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--elevated);
+        color: var(--text);
+        font: inherit;
+        font-size: 0.9rem;
+        font-weight: 700;
       }
-      .scenario-tabs::-webkit-scrollbar { height: 4px; }
-      .scenario-tabs::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+      .scenario-tab-select:focus-visible {
+        outline: 2px solid var(--amber);
+        outline-offset: 2px;
+      }
 
       /* Make Party setup easier to scan and tap on a phone. */
       .party-config-grid { grid-template-columns: 1fr !important; gap: 0.75rem !important; }
@@ -3405,6 +3416,15 @@
           <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="powers">Powers</button>
           <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="class">Class</button>
           <button type="button" class="btn btn-ghost sc-tab" data-sc-tab="conditions">Conditions</button>
+          <select class="scenario-tab-select" id="scenario-tab-select" aria-label="Choose a Fight section">
+            <option value="you">You</option>
+            <option value="fight">Fight</option>
+            <option value="party">Party</option>
+            <option value="consumables">Consumables</option>
+            <option value="powers">Powers</option>
+            <option value="class">Class</option>
+            <option value="conditions">Conditions</option>
+          </select>
         </div>
         <div class="sc-pane row-2" data-sc-pane="you">
           <div class="field" id="sc-health-field">
@@ -13961,10 +13981,17 @@
     function wireScenarioPanel() {
       const strip = document.getElementById("scenario-strip");
       if (strip) strip.addEventListener("click", () => gotoStep(6));
-      document.querySelectorAll(".sc-tab").forEach(b => b.addEventListener("click", () => {
+      const scenarioPicker = document.getElementById("scenario-tab-select");
+      const activateScenarioTab = b => {
         document.querySelectorAll(".sc-tab").forEach(x => x.classList.toggle("active", x === b));
         document.querySelectorAll(".sc-pane").forEach(pn => { pn.hidden = pn.dataset.scPane !== b.dataset.scTab; });
-      }));
+        if (scenarioPicker) scenarioPicker.value = b.dataset.scTab;
+      };
+      document.querySelectorAll(".sc-tab").forEach(b => b.addEventListener("click", () => activateScenarioTab(b)));
+      if (scenarioPicker) scenarioPicker.addEventListener("change", () => {
+        const b = document.querySelector('.sc-tab[data-sc-tab="' + scenarioPicker.value + '"]');
+        if (b) activateScenarioTab(b);
+      });
       const h = document.getElementById("scenario-health-pct");
       if (h) h.addEventListener("input", e => { state.currentHealthPct = +e.target.value; rerenderAll(); });
       const t = document.getElementById("time-in-combat");
