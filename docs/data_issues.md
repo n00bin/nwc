@@ -2924,4 +2924,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Astral Shield tick interval** (2026-09-30): 22 Divinity per tick and a 250 HoT over 10 s while channelled; tick interval unknown. n00b to test.
 - **Hallowed Ground tick interval** (2026-09-30): 500 heal per tick for 18 s (n00b); tick interval unknown. n00b to test.
 - **Flame Strike DoT tick interval** (2026-09-30): 180 per tick for 12 s (n00b); tick interval unknown. n00b to test.
+- **Guardian of Life HoT tick interval** (2026-09-30): 500 per tick for 15 s (n00b); tick interval unknown. n00b to test.
 

@@ -323,4 +323,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CL-25 Celestial Prominence (Arbiter daily): AREA 15 ft / ranged 80 ft / STUN 3 s / magical (radiant); 700 early / 1,300 after 5 s (default) / auto at 15 s; +1 Burning, 1,400 under Radiant; 1,000 AP (2026-09-30, fine)
 - CL-26 Hammer of Fate (Arbiter daily): single / ranged 80 ft / none / no DoT / magical (fire); 1,800 over 3 hits @0.25 s; +3 Radiant, 1,900 under Burning; 1,000 AP (2026-09-30, fine). Arbiter powers complete.
 - CL-27 Anointed Army (Devout daily): AREA 40 ft / melee / kind HEAL+BUFF: 900 delayed heal per member (under 50% or 15 s expiry) + party +6% dmg 15 s; 1,000 AP (2026-09-30, fine)
+- CL-28 Guardian of Life (Devout daily): AREA 40 ft / melee / kind HEAL 800 burst + 500 PER TICK HoT 15 s (base); tap = heal (normal tap cast), full 5.4 s charge = heal + revive up to 4; tick interval to test; 1,000 AP (2026-09-30, n00b ruling). CLERIC POWERS COMPLETE 28/28 (both paragons, every shared item read on both screens).
 
