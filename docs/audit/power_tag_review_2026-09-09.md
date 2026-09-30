@@ -305,4 +305,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CL-7 Sun Burst (shared encounter, both screens): AREA 25 ft / melee / KNOCKBACK on full charge only / no DoT / magical (fire); 260; Arbiter +1 Radiant, 310 under Burning; base cd 11.6 s (n00b; 11.2/11.4 shown) (2026-09-30, n00b ruling)
 - CL-8 Daunting Light (shared encounter, both screens): AREA 12 ft / ranged 80 ft / none / no DoT / magical (radiant); 280, Divinity spender (100 Devout / 150 Arbiter), base cd 0.9 s; Arbiter +1 Burning, 320 under Radiant (2026-09-30, n00b ruling)
 - CL-9 Geas (shared encounter, both screens): single / ranged 80 ft / none / no DoT / magical (radiant); 700 Devout / 650 Arbiter; target -5% damage 6 s (data said -3%, corrected); Arbiter +1 Burning, 750 under Radiant; base cd 14.5 s (n00b; 14.1/14.3 shown) (2026-09-30, n00b ruling)
+- CL-10 Bastion of Health (shared encounter, both screens): AREA 20 ft / ranged 80 ft / kind HEAL 1,600 for 100 Divinity (Devout) / 1,200 for 200 (Arbiter), split by targets; base cd 0.4 s (2026-09-30, fine)
 
