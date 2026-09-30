@@ -21,6 +21,7 @@
     .rc-hero h1 { font-size:1.6rem; color:var(--highlight); margin-bottom:0.3rem; }
     .rc-hero p { color:var(--text-secondary); font-size:0.92rem; line-height:1.6; margin:0 0 0.4rem; max-width:70ch; }
     .rc-progress { font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted); }
+    .mobile-view-select { display:none; }
 
     .rc-section { font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;
                   color:var(--highlight); padding:1.25rem 0 0.4rem;
@@ -124,6 +125,29 @@
     .rc-msg-bad  { color:var(--stat-negative); }
     .rc-msg ul { margin:0.3rem 0 0 1.1rem; }
 
+    @media (max-width:640px) {
+      .controls-bar.view-tabs { display:block; padding:0.55rem 0.75rem; }
+      .controls-bar.view-tabs .view-tab { display:none; }
+      .mobile-view-select {
+        display:block; width:100%; min-height:44px; padding:0.55rem 0.7rem;
+        border:1px solid var(--border-default); border-radius:var(--radius-sm);
+        background:var(--bg-primary); color:var(--text-primary); font:inherit; font-size:16px;
+      }
+      .mobile-view-select:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+      #browse-controls { gap:0.6rem; padding:0.7rem 0.85rem; }
+      #browse-target {
+        box-sizing:border-box; flex:1 1 100%; width:100%; min-width:0 !important;
+        min-height:44px; font-size:16px;
+      }
+      #browse-controls label { width:100%; min-height:44px; justify-content:space-between; }
+      #browse-qty { box-sizing:border-box; width:6.5rem !important; min-height:44px; font-size:16px; }
+      .rc-btn { min-height:44px; }
+      .rc-facts th { width:36%; min-width:0; }
+      .rc-facts td { overflow-wrap:anywhere; }
+      .rc-tree { padding:0.55rem 0.65rem; }
+      .rc-node { font-size:0.82rem; }
+    }
+
     /* Review */
     .rc-sub-card { background:var(--bg-surface); border:1px solid var(--border-default);
                    border-radius:var(--radius-md); padding:0.7rem 0.9rem; margin-top:0.7rem; }
@@ -170,10 +194,16 @@
     <button class="view-tab" data-tab="add">Add a Recipe</button>
     <button class="view-tab" data-tab="wanted">Wanted</button>
     <button class="view-tab" data-tab="review">Review</button>
+    <select class="mobile-view-select" id="mobile-view-select" aria-label="Choose a Crafting Codex section">
+      <option value="browse">Browse</option>
+      <option value="add">Add a Recipe</option>
+      <option value="wanted">Wanted</option>
+      <option value="review">Review</option>
+    </select>
   </div>
 
   <div class="controls-bar" id="browse-controls">
-    <select class="filter-select" id="browse-target" style="min-width:320px;"></select>
+    <select class="filter-select" id="browse-target"></select>
     <label class="rc-muted" style="display:flex;align-items:center;gap:0.4rem;">
       How many?
       <input type="number" class="search-input" id="browse-qty" value="1" min="1" step="1" style="width:90px;">
@@ -309,7 +339,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="data/recipes.js?v=20260929a"></script>
   <script src="js/shared.js"></script>
-  <script src="js/recipes-page.js?v=20260918e"></script>
+  <script src="js/recipes-page.js?v=20260929a"></script>
   <script src="js/analytics.js"></script>
 </body>
 </html>
