@@ -372,3 +372,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - GS-2 Divine Meditation (all Clerics): out-of-combat divinity regen only; utility scored 0, no test (2026-09-30, fine)
 - GS-3 Composed Insight (all Clerics): up to +10% Accuracy at full stamina; BASE panel at rest (stamina full), staminaLevel slider default 100, placeholder linear; sheet check + half-stamina value = test (2026-09-30, fine)
 - OWED: Barbarian General skills (Persistent Rage, Dungeoneering, Marathon Runner, Raging Criticals) were never stamped in the Barbarian pass; do after Cleric closes, with the Sentinel shared-power differences
+- GS-4 Divine Protection (all Clerics): up to +10% Critical Avoidance at full divinity; BASE at rest (atRestValue 100), combat follows the divinityLevel slider; curve merged into the divinity curves test. CLERIC COMPLETE 2026-09-30: 28 powers + 8 mechanics + 12 class features + 20 feats + 4 skills (2026-09-30, fine)
