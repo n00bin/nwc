@@ -315,4 +315,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CL-17 Healing Word (Devout encounter): AREA 80 ft / melee / kind HEAL 450 party burst + 300 HoT 18 s (BASE, n00b; tick model to test); Divinity 220, base cd 0.4 s (2026-09-30, n00b ruling)
 - CL-18 Exaltation (Devout encounter): self + nearest DPS 25 ft / kind BUFF self +20% OH +20% dmg, ally +10% dmg, 8 s; base cd 19.3 s (n00b; 18.8 shown) (2026-09-30, n00b ruling)
 - CL-19 Cleansing Light (Devout encounter): AREA 20 ft / ranged 80 ft / kind HEAL 300 per ally + cleanse 1; Divinity 150, base cd 0.4 s (2026-09-30, fine)
+- CL-20 Astral Shield (Devout encounter): AREA zone 10 ft / ranged 80 ft / kind BUFF+HEAL held channel: party -10% damage taken + 250 HoT (BASE) over 10 s; Divinity 22 PER TICK (n00b); base cd 0.4 s; tick interval to test (2026-09-30, n00b ruling)
 

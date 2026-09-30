@@ -2921,4 +2921,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Gambler's Delight max stacks** (2026-09-28): not on the tooltip; n00b to test.
 - **Divine Glow Divinity regen boost** (2026-09-30): tooltip gives no number; n00b to test.
 - **Healing Word HoT tick model** (2026-09-30): 300 over 18 s is base; per tick or total unknown. n00b to test.
+- **Astral Shield tick interval** (2026-09-30): 22 Divinity per tick and a 250 HoT over 10 s while channelled; tick interval unknown. n00b to test.
 
