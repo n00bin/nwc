@@ -194,6 +194,19 @@
     return result;
   }
 
+  // How many mounts can run a bonus at all, and how many of those can run it
+  // with a preferred slot holding its preferred type (the +20% IL/stat slot).
+  function bonusMountCounts(bonus) {
+    var total = 0, preferred = 0;
+    for (var i = 0; i < MOUNTS_DATA.length; i++) {
+      var list = mountBonusCache[MOUNTS_DATA[i].id] || [];
+      if (list.indexOf(bonus) === -1) continue;
+      total++;
+      if (bonusActivatesPreferred(MOUNTS_DATA[i], bonus)) preferred++;
+    }
+    return { total: total, preferred: preferred };
+  }
+
   // Pre-compute for all mounts (used by filter)
   var mountBonusCache = {};
   for (var mi = 0; mi < MOUNTS_DATA.length; mi++) {
@@ -239,6 +252,19 @@
     return b.name;
   });
   populateFilter(filterBonus, bonusNames, "All Insignia Bonuses");
+  // Label each bonus with how many mounts can run it, and how many of those
+  // also activate a preferred slot with it. The option VALUE stays the bare
+  // bonus name, so filtering is unchanged.
+  (function () {
+    var byName = {};
+    for (var i = 0; i < MOUNT_INSIGNIA_BONUSES_DATA.length; i++) byName[MOUNT_INSIGNIA_BONUSES_DATA[i].name] = MOUNT_INSIGNIA_BONUSES_DATA[i];
+    for (var o = 0; o < filterBonus.options.length; o++) {
+      var opt = filterBonus.options[o], b = byName[opt.value];
+      if (!b) continue;
+      var c = bonusMountCounts(b);
+      opt.textContent = opt.value + " (" + c.total + " mounts, " + c.preferred + " preferred)";
+    }
+  })();
 
   // ---- Filter logic ----
   function getFilteredMounts() {
@@ -1262,16 +1288,12 @@
   // Insignia Bonuses view — every bonus in the game, mount-agnostic
   // ============================================================
 
-  // How many mounts can actually form each bonus (uses mountBonusCache,
-  // which already accounts for fixed/universal slot rules).
+  // How many mounts can actually form each bonus, split into all mounts and
+  // the ones that also activate a preferred slot (uses mountBonusCache, which
+  // already accounts for fixed/universal slot rules).
   var bonusMountCount = {};
-  for (var bmId in mountBonusCache) {
-    if (!mountBonusCache.hasOwnProperty(bmId)) continue;
-    var bmList = mountBonusCache[bmId];
-    for (var bmi = 0; bmi < bmList.length; bmi++) {
-      var bmName = bmList[bmi].name;
-      bonusMountCount[bmName] = (bonusMountCount[bmName] || 0) + 1;
-    }
+  for (var bmi = 0; bmi < MOUNT_INSIGNIA_BONUSES_DATA.length; bmi++) {
+    bonusMountCount[MOUNT_INSIGNIA_BONUSES_DATA[bmi].name] = bonusMountCounts(MOUNT_INSIGNIA_BONUSES_DATA[bmi]);
   }
 
   function bonusStatPills(stats) {
@@ -1367,11 +1389,19 @@
       html += escapeHtml(b.effectText || "");
       html += "</td>";
 
-      var mcount = bonusMountCount[b.name] || 0;
+      var mc = bonusMountCount[b.name] || { total: 0, preferred: 0 };
+      var mcount = mc.total;
       html += '<td style="white-space:nowrap;">';
       if (mcount > 0) {
         html += '<button class="bonus-mounts-btn" data-bonus="' + escapeHtml(b.name)
               + '" title="Show the mounts that can run this bonus">' + mcount + ' mounts &rsaquo;</button>';
+        if (mc.preferred > 0) {
+          html += '<br><button class="bonus-mounts-btn" data-preferred="1" data-bonus="' + escapeHtml(b.name)
+                + '" style="margin-top:0.3rem;" title="Show only the mounts that run this bonus with a preferred slot active (+20% item level &amp; stats on that insignia)">'
+                + '<span style="color:var(--highlight);">&#9733;</span> ' + mc.preferred + ' preferred &rsaquo;</button>';
+        } else {
+          html += '<div style="color:var(--text-muted);font-size:0.72rem;margin-top:0.3rem;">0 preferred</div>';
+        }
       } else {
         html += '<span style="color:var(--text-muted);font-size:0.78rem;">No mount fits</span>';
       }
@@ -1388,6 +1418,7 @@
       btns[bi2].addEventListener("click", function () {
         var name = this.getAttribute("data-bonus");
         filterBonus.value = name;
+        togglePreferred.checked = this.getAttribute("data-preferred") === "1";
         searchInput.value = "";
         onFilterChange();
         tabLookup.click();
