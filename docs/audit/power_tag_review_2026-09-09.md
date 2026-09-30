@@ -347,4 +347,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CF-9 Desperate Prayers (Devout): up to +20% Outgoing Healing (panel %) below half divinity, 0 at half -> 20 at empty; shares the divinityLevel slider; displayed 0-20%, slider decides; curve test merged with Divine Equilibrium (2026-09-30, fine)
 - CF-10 Swift Prayers (Devout): move at reduced speed while channeling Channel Divinity / casting Astral Shield; utility, scored 0, no test (2026-09-30, fine)
 - CF-11 Hallowed Guide (Devout): +5% healing when target within 15 ft; stored as conditional panel Outgoing Healing behind a default-on range toggle; panel-vs-multiplier = test (2026-09-30, fine)
+- CF-12 Overflowing Spirit (Devout): +25% Outgoing Healing (panel %) only at 100% divinity; gated by the shared divinityLevel slider; opening-heal-off-full = test. Cleric class features COMPLETE (CF-1..12) (2026-09-30, fine)
 

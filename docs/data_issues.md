@@ -2935,4 +2935,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Doomsayer (Arbiter) trigger set** — does Searing Javelin / Forgemaster's Flame applying Judgement count as a negative condition and refresh Doomsayer? (n00b, 2026-09-30).
 - [ ] **Cleric divinity feature curves** — Divine Equilibrium (Arbiter): read the buff value at full / 75% / half / 25% / empty divinity; Desperate Prayers (Devout): read the OH value at 40 / 25 / 10 / 0% divinity. Data holds placeholder linear curves for both (n00b, 2026-09-30).
 - [ ] **Hallowed Guide (Devout) stat kind** — slot it and heal a target inside 15 ft: does the character sheet's Outgoing Healing rise by 5%, or do heals land 5% higher with the sheet unchanged? (n00b, 2026-09-30).
+- [ ] **Overflowing Spirit (Devout) full-bar window** — does the 25% apply to the heal that spends divinity off full, or only while the bar reads full before the cast? (n00b, 2026-09-30).
 
