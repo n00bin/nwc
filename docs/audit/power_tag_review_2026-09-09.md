@@ -340,4 +340,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CF-2 Hallowed Armor (shared, both screens identical): -5% Incoming Damage always; -10% during Channel Divinity (replace vs add TEST) (2026-09-30, n00b ruling)
 - CF-3 Pilgrim's Light (shared, both screens identical): +5% dmg with no party member nearby (Soloist twin; same isolation test; Solo toggle gates) (2026-09-30, fine)
 - CF-4 Expanded Faith (shared, both screens identical): +150 max divinity; base pool size unknown on both paragons -> test item; rotation-only value (2026-09-30, fine)
+- CF-5 Critical Insight (Arbiter): +10 divinity per critical strike; per-tick/per-target/hidden-cooldown behaviour = test item (2026-09-30, needs testing)
 

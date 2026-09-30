@@ -2931,4 +2931,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Light of Divinity partial charge** (2026-09-30): magnitude and Divinity cost at less than a full 2.5 s hold are not on the tooltip. n00b to test.
 - **Hallowed Armor during Channel Divinity** (2026-09-30): is the 10% instead of the 5% or on top of it (15%)? n00b to test.
 - [ ] **Cleric base max divinity (Arbiter AND Devout)** — Expanded Faith adds +150 but the pool size is not recorded anywhere; read the divinity bar max with the feature unslotted on each paragon (n00b, 2026-09-30).
+- [ ] **Critical Insight (Arbiter) recovery rules** — 10 divinity per crit: test whether DoT ticks and each area target count separately, and whether there is a hidden cooldown between recoveries (n00b, 2026-09-30).
 
