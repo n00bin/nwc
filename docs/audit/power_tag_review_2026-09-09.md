@@ -333,4 +333,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CM-5 Righteousness (Devout mechanic): healing effectiveness % TEST, Divinity cost cut already in per-paragon costs, threat display only, Divinity regen rate TEST (2026-09-30, n00b ruling)
 - CM-6 Light of Divinity (Devout mechanic, Channel Divinity hold): single (Mark ally / self) / ranged 120 ft / kind HEAL charge 1,700 on a full 2.5 s hold for 120 Divinity; partial-charge curve TEST (2026-09-30, n00b ruling)
 - CM-7 Mark of Divinity (Devout mechanic, Channel Divinity tap): permanent +5% heals on one marked ally, no cost; picks the Light of Divinity / Gathering Light target (2026-09-30, fine)
+- CM-8 Devout Forte: Divinity Regen / Crit Sev / Deflect - alreadyModeled (2026-09-30, fine). CLERIC MECHANICS COMPLETE 8/8. Next: class features (8 per paragon, now slottable), then feats (10 per paragon).
 
