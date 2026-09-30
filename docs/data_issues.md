@@ -2938,4 +2938,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Overflowing Spirit (Devout) full-bar window** — does the 25% apply to the heal that spends divinity off full, or only while the bar reads full before the cast? (n00b, 2026-09-30).
 - [ ] **Lightspeed (Arbiter feat) cast reduction** — read Daunting Light's cast time while Lightspeed is up (base 0.7 s); the tooltip gives no number (n00b, 2026-09-30).
 - [ ] **Piercing Javelin (Arbiter feat) roll rule** — does every at-will hit roll the 10% (an area at-will on 5 targets = 5 rolls), or one roll per cast? (n00b, 2026-09-30).
+- [ ] **Tipping Scales (Arbiter feat) fill rules** — cast Divine Glow holding (a) only Burning, (b) only Radiant, (c) both, (d) zero charges; record which kind fills and whether (d) does nothing (n00b, 2026-09-30).
 

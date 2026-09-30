@@ -351,4 +351,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - Cleric feats: count check OK (10 Arbiter + 10 Devout on both screens, all screenshotted). AF-1 Lightspeed (Arbiter T1): Javelin cast -> 10 s buff; Daunting Light cast reduced (number = test) + 1 extra Burning Judgement (2/cast); always-on while both slotted (2026-09-30, fine)
 - AF-2 Piercing Javelin (Arbiter T1): at-wills 10% -> next Searing Javelin guaranteed crit (10 s); crit top-up on Javelin only; per-hit vs per-cast roll = test (2026-09-30, fine)
 - AF-3 Focused Light (Arbiter T2): Forgemaster's Flame cast -> 10 s buff; Daunting Light becomes single-target 450, Radiant Judgement bonus 100; always-on while both slotted; no test (2026-09-30, fine)
+- AF-4 Tipping Scales (Arbiter T2): Divine Glow fills the Judgement gauge to 6 of the held kind when >= 1 charge held; ~+5 charges per 29 s cast; both-kinds / zero-charge behaviour = test (2026-09-30, need test)
 
