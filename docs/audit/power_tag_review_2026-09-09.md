@@ -366,3 +366,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DF-6 Towering Light (Devout T3): +10% dmg at full divinity falling with the bar; placeholder linear, shared divinityLevel slider, scored 5% shown 0-10%; curve merged into the divinity curves test (2026-09-30, fine)
 - DF-7 Sanctified Ground (Devout T4): Hallowed Ground zone gets a further -5% damage taken (total -15%) and +15% Recharge Speed for allies inside; party buff at Daily cadence; no new test (2026-09-30, fine)
 - DF-8 Persistent Guardian (Devout T4): after either Guardian daily, 600-mag smart heals on wounded allies, max 6 casts / 45 s; scored 3,600 per Daily use; interval + full-health behaviour = test (2026-09-30, fine)
+- DF-9 Gathering Light (Devout T5): Channel Divinity hold 2.5 -> 3 s; full hold adds Gathering Light 800 area heal around the Mark target, same divinity; assumed additive to Light of Divinity 1,700 = test; radius unknown (2026-09-30, fine)
