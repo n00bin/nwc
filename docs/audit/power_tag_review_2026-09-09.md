@@ -353,4 +353,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AF-3 Focused Light (Arbiter T2): Forgemaster's Flame cast -> 10 s buff; Daunting Light becomes single-target 450, Radiant Judgement bonus 100; always-on while both slotted; no test (2026-09-30, fine)
 - AF-4 Tipping Scales (Arbiter T2): Divine Glow fills the Judgement gauge to 6 of the held kind when >= 1 charge held; ~+5 charges per 29 s cast; both-kinds / zero-charge behaviour = test (2026-09-30, need test)
 - AF-5 Sudden Verdict (Arbiter T3): Judgement-generating encounters (7 listed) 25% -> gauge filled to 6; fill kind assumed = caster's kind, test (2026-09-30, test fine)
+- AF-6 Inner Balance (Arbiter T3): up to +20 divinity per Radiant dump (CritStrike vs Accuracy ratings equal) / Burning dump (CA vs CritSev equal); placeholder linear fall-off on rating gap; curve = test after the Scales dump base (2026-09-30, test then fine)
 

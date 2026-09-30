@@ -2940,4 +2940,5 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Piercing Javelin (Arbiter feat) roll rule** — does every at-will hit roll the 10% (an area at-will on 5 targets = 5 rolls), or one roll per cast? (n00b, 2026-09-30).
 - [ ] **Tipping Scales (Arbiter feat) fill rules** — cast Divine Glow holding (a) only Burning, (b) only Radiant, (c) both, (d) zero charges; record which kind fills and whether (d) does nothing (n00b, 2026-09-30).
 - [ ] **Sudden Verdict (Arbiter feat) fill kind** — when the 25% fires, is the gauge filled with the casting power's Judgement kind or the kind already held; on a mixed gauge does it convert or overwrite? (n00b, 2026-09-30).
+- [ ] **Inner Balance (Arbiter feat) fall-off** — needs the Scales dump base first; then read the extra restore at equal ratings and with one rating ~10% / ~25% higher, for both pairs (n00b, 2026-09-30).
 
