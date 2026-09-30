@@ -9,7 +9,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ### Features
 
 - **Insignia bonuses now show preferred-slot mounts (Mounts page).** Next to the number of mounts that can run each insignia bonus, you now also see how many of them run it with a preferred slot active (the slot that gives +20% item level and stats). Tap the star count to list only those mounts. The bonus filter on the Lookup tab shows both numbers too.
-- **Three more consumable icons from the wiki.** Elixir of Corellon's Blood, Hot Wings and Potion of Speed now show their in-game icons.
+- **Sixteen more consumable icons from the wiki.** Elixir of Corellon's Blood, Hot Wings, Potion of Speed and the Scroll of Dragon Slaying now show their icons, and all twelve crafted Potions of Power, Critical Strike and Defense show the matching potion flask.
 - **Consumables icons.** 33 more consumables now show their in-game icon: all the Stronghold and event foods, the six Wondrous Dragons, Scrolls of Fate, Scroll of Life, Potion of Giant Strength and more. Icons are drawn a little larger with the full art, like the other pages. Crafted Potions of Deflect and Accuracy show their icons too (cropped from auction listings, so a stack count is visible).
 - **More icons found online.** Laughing Void and Bloodthirst Chalice now show their real in-game icons (the Bloodthirst one we had briefly was mislabeled at the source), the Buried Treasure Lockbox has its box icon, and the Prototype Realm Engine gadget on Campaign Boosters has its art.
 - **Campaign Boosters now show companion icons.** All twelve booster companions have their icon next to the name; the six gadgets show a placeholder until we have in-game screenshots of them.
