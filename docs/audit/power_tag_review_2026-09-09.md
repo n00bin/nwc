@@ -363,3 +363,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DF-3 Cycle of Prayer (Devout T2): +divinity regen per 3 s idle, 4 stacks, reset on any spend; no numbers on tooltip, scored 0 pending the regen test (2026-09-30, fine)
 - DF-4 Battle Prayer (Devout T2): divinity encounters -> next Light of Divinity 1 s cast and -50 divinity (12 s); modeled always-available with an encounter in rotation; full-heal + consumption = test (2026-09-30, ok)
 - DF-5 Blessed Armaments (Devout T3): while Divine Glow or Exaltation is up, -10% damage taken + 20 radiant proc after attacks; uptime = union of the two buffs (~69% staggered); heal-casts-as-attacks / on-sheet = test (2026-09-30, fine)
+- DF-6 Towering Light (Devout T3): +10% dmg at full divinity falling with the bar; placeholder linear, shared divinityLevel slider, scored 5% shown 0-10%; curve merged into the divinity curves test (2026-09-30, fine)
