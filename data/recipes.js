@@ -51,6 +51,8 @@
    ============================================================ */
 
 const RECIPES_DATA = [
+  // "Marilih Charm" is spelled exactly as read off the workshop screen (the
+  // material list also has "Perfect Marilith Hair", -th). Left as typed.
   {
     id: "duergar-mercenary-s-steel-longsword",
     name: "Duergar Mercenary's Steel Longsword",
@@ -59,16 +61,11 @@ const RECIPES_DATA = [
     level: 20,
     yield: 1,
     materials: [
-      // "Marilih Charm" spelled exactly as submitted. It now appears with
-      // this same spelling in the Steel Shield recipe below too, so it is
-      // probably the real in-game name rather than a slip — but it sits in
-      // the same list as "Perfect Marilith Hair" (-th), which is odd
-      // enough to deserve one eyes-on check. Not "corrected" here.
-      { item: "Marilih Charm",             qty: 3 },
-      { item: "Hardened Mushroom",         qty: 4 },
-      { item: "Lacquered Goristro Leather", qty: 2 },
-      { item: "Perfect Marilith Hair",     qty: 3 },
-      { item: "Abyssal Crystal",           qty: 1 }
+      { item: "Marilih Charm"              , qty: 3 },
+      { item: "Hardened Mushroom"          , qty: 4 },
+      { item: "Lacquered Goristro Leather" , qty: 2 },
+      { item: "Perfect Marilith Hair"      , qty: 3 },
+      { item: "Abyssal Crystal"            , qty: 1 }
     ],
     morale: 45,
     proficiency: 1450,
@@ -92,6 +89,147 @@ const RECIPES_DATA = [
     morale: 45,
     proficiency: 1450,
     focus: 1450,
+    tool: "Hammer",
+    submitter: "n00b"
+  },
+  {
+    id: "marilih-charm",
+    name: "Marilih Charm",
+    profession: "Blacksmithing",
+    tier: "Normal",
+    level: 20,
+    yield: 4,
+    materials: [
+      { item: "Fallen God's Ore"           , qty: 2 },
+      { item: "Abyssal Crystal"            , qty: 1 },
+      { item: "Demonweb Faerzress Crystal" , qty: 1 },
+      { item: "Calcified Webbing"          , qty: 1 }
+    ],
+    morale: 45,
+    minutes: 180,
+    proficiency: 1450,
+    focus: 1450,
+    commission: "1g 65s",
+    tool: "Hammer",
+    submitter: "n00b"
+  },
+  {
+    id: "hardened-mushroom",
+    name: "Hardened Mushroom",
+    profession: "Armorsmithing",
+    tier: "Normal",
+    level: 20,
+    yield: 2,
+    materials: [
+      { item: "Mushroom Lumber"         , qty: 4 },
+      { item: "Purified Darklake Water" , qty: 1 },
+      { item: "Calcified Webbing"       , qty: 1 }
+    ],
+    morale: 45,
+    minutes: 180,
+    proficiency: 1450,
+    focus: 1450,
+    commission: "1g 65s",
+    tool: "Hammer",
+    submitter: "n00b"
+  },
+  {
+    id: "lacquered-goristro-leather",
+    name: "Lacquered Goristro Leather",
+    profession: "Leatherworking",
+    tier: "Normal",
+    level: 20,
+    yield: 2,
+    materials: [
+      { item: "Mushroom Droplet"        , qty: 12 },
+      { item: "Shroomsap Spores"        , qty: 2 },
+      { item: "Purified Darklake Water" , qty: 2 },
+      { item: "Goristro Hide"           , qty: 8 }
+    ],
+    morale: 45,
+    minutes: 180,
+    proficiency: 1450,
+    focus: 1450,
+    commission: "1g 65s",
+    tool: "Knife",
+    submitter: "n00b"
+  },
+  {
+    id: "lacquered-mushroom",
+    name: "Lacquered Mushroom",
+    profession: "Leatherworking",
+    tier: "Normal",
+    level: 20,
+    yield: 2,
+    materials: [
+      { item: "Goristro Hide"           , qty: 2 },
+      { item: "Purified Darklake Water" , qty: 2 },
+      { item: "Mushroom Droplet"        , qty: 4 },
+      { item: "Mushroom Log"            , qty: 16 }
+    ],
+    morale: 45,
+    minutes: 180,
+    proficiency: 1450,
+    focus: 1450,
+    commission: "1g 65s",
+    tool: "Knife",
+    submitter: "n00b"
+  },
+  {
+    id: "mushroom-lumber",
+    name: "Mushroom Lumber",
+    profession: "Armorsmithing",
+    tier: "Normal",
+    level: 20,
+    yield: 4,
+    materials: [
+      { item: "Mushroom Log"     , qty: 12 },
+      { item: "Mushroom Droplet" , qty: 1 }
+    ],
+    morale: 45,
+    minutes: 180,
+    proficiency: 1450,
+    focus: 1450,
+    commission: "1g 65s",
+    tool: "Hammer",
+    submitter: "n00b"
+  },
+  {
+    id: "purified-darklake-water",
+    name: "Purified Darklake Water",
+    profession: "Alchemy",
+    tier: "Normal",
+    level: 20,
+    yield: 3,
+    materials: [
+      { item: "Luminescent Darklake Water" , qty: 15 },
+      { item: "Terebinth"                  , qty: 5 }
+    ],
+    morale: 45,
+    minutes: 180,
+    proficiency: 1450,
+    focus: 1450,
+    commission: "1g 65s",
+    tool: "Alembic",
+    submitter: "n00b"
+  },
+  {
+    id: "unknown-godsteel",
+    name: "Unknown Godsteel",
+    profession: "Blacksmithing",
+    tier: "Normal",
+    level: 20,
+    yield: 3,
+    materials: [
+      { item: "Druegarsteel Scrap" , qty: 12 },
+      { item: "Fallen God's Ore"   , qty: 1 },
+      { item: "Calcified Webbing"  , qty: 1 }
+    ],
+    morale: 45,
+    minutes: 181,
+    proficiency: 1450,
+    focus: 1450,
+    commission: "1g 65s",
     tool: "Hammer",
     submitter: "n00b"
   }
@@ -123,7 +261,27 @@ const RECIPES_DATA = [
    yet — that keeps it on the Wanted list as a genuine to-do. Anything not
    listed here at all stays "unclassified" and the page asks which it is.
    ============================================================ */
-const MATERIALS_DATA = [];
+const MATERIALS_DATA = [
+  { name: "Abyssal Crystal"             , kind: "gathered" },
+  { name: "Hardened Mushroom"           , kind: "crafted" },
+  { name: "Lacquered Goristro Leather"  , kind: "crafted" },
+  { name: "Marilih Charm"               , kind: "crafted" },
+  { name: "Perfect Marilith Hair"       , kind: "gathered" },
+  { name: "Calcified Webbing"           , kind: "gathered" },
+  { name: "Demonweb Faerzress Crystal"  , kind: "gathered" },
+  { name: "Fallen God's Ore"            , kind: "gathered" },
+  { name: "Goristro Hide"               , kind: "gathered" },
+  { name: "Lacquered Mushroom"          , kind: "crafted" },
+  { name: "Mushroom Droplet"            , kind: "gathered" },
+  { name: "Mushroom Lumber"             , kind: "crafted" },
+  { name: "Purified Darklake Water"     , kind: "crafted" },
+  { name: "Shroomsap Spores"            , kind: "gathered" },
+  { name: "Unknown Godsteel"            , kind: "crafted" },
+  { name: "Luminescent Darklake Water"  , kind: "gathered" },
+  { name: "Druegarsteel Scrap"          , kind: "gathered" },
+  { name: "Mushroom Log"                , kind: "gathered" },
+  { name: "Terebinth"                   , kind: "gathered" }
+];
 
 
 /* ------------------------------------------------------------
