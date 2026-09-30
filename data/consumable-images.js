@@ -91,5 +91,8 @@ window.CONSUMABLE_IMAGES = {
   "Crafted Potion of Accuracy Rank 4": "crafted_potion_accuracy_r4.webp",
   "Crafted Potion of Accuracy Rank 4, +1": "crafted_potion_accuracy_r4_plus1.webp",
   "Crafted Potion of Accuracy Rank 14": "crafted_potion_accuracy_r4.webp",
-  "Crafted Potion of Accuracy Rank 14, +1": "crafted_potion_accuracy_r4_plus1.webp"
+  "Crafted Potion of Accuracy Rank 14, +1": "crafted_potion_accuracy_r4_plus1.webp",
+  "Elixir of Corelion's Blood": "elixir_of_corellons_blood.webp",
+  "Hot Wings": "hot_wings.webp",
+  "Potion of Speed": "potion_of_speed.webp",
 };
