@@ -408,3 +408,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FM-1 Block (Vanguard, L1): front block up to 40% max HP per hold, drains stamina, no regen while held, control immune; block economy model defined, pool/regen/drain = test (2026-09-30, fine)
 - FM-2 Dig In (Vanguard, R1): all-direction block up to 60% max HP, no move/attack, reduced regen (rate = test), +15% Awareness while held, control immune, never ends on empty (2026-09-30, fine)
 - FM-3 Retaliate (Vanguard): BASE flat 500 cone (80 deg, 20 ft) + threat on Dig In release after a blocked hit, once per 10 s; the 500-800 stamina scaling on the archived screen is FEAT-added (2026-09-30, n00b)
+- FM-4 Path of the Vanguard: passive threat multiplier, no number; resolve from docs/threat_mechanics.md, not an in-game test (2026-09-30, fine)
