@@ -565,3 +565,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - JC-2 Blessed Wanderer (Justicar copy): identical to OC-2 (conditional +20% damage, no party member within 30 ft); data fix was applied at OC-2, review stamp now. model: claude-opus-5.5 (2026-10-01, fine)
 - JC-3 Composure (Justicar copy): identical to OC-3 (+10% Divinity regen while slotted). model: claude-opus-5.5 (2026-10-01, fine)
 - JC-4 Aura of Wrath (Justicar copy): identical text; +4% Critical Strike at rest, Divine Champion +2% to you + party at 50% uptime (data only, JC-1 treatment). model: claude-opus-5.5 (2026-10-01, fine)
+- JC-5 Aura of Valor (Justicar only): party threat aura - nearby non-tank party members -25% threat, +15% more during Divine Champion (50%); feeds the threat model, stat score 0; competes for the aura slot. model: claude-opus-5.5 (2026-10-01, fine)
