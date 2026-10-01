@@ -2962,3 +2962,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Combat Balance (Vanguard feat) curve** — damage-taken cut with Critical Avoidance / Deflect / Awareness ratings equal, then with one rating ~10% and ~25% off (n00b, 2026-09-30).
 - [ ] **Shake It Off / Retaliate (Vanguard)** — with the feat, read Retaliate's damage at full, half and near-empty stamina (base 500, feat says up to +300 at full) (n00b, 2026-09-30).
 - [ ] **Reprisal (Dreadnought mechanic)** — compare Guarded Strike and Shield Bash hit damage on the Dreadnought vs the Vanguard at the same Power (tooltips say 100/55 on both; Reprisal claims +20/+35), and read Vengeance gained per hit on one target and on three (n00b, 2026-10-01).
+- [ ] **Vengeance gauge (Dreadnought)** — gauge maximum, how much one blocked hit adds, and whether it decays over time or out of combat (n00b, 2026-10-01).
