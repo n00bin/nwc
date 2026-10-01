@@ -534,3 +534,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - OG-3 Divine Meditation (Paladin class skill, both screens identical): out-of-combat Divinity regen only, utility scored 0 (Cleric GS-2 shape). model: claude-opus-5.5 (2026-10-01, fine)
 - OG-4 Religion (Paladin class skill, both screens identical): world interaction, utility scored 0. model: claude-opus-5.5 (2026-10-01, fine)
 - OATHKEEPER COMPLETE 2026-10-01: 4 at-wills, 10 encounters, 5 dailies, 6 mechanics, 8 class features, 10 feats + 4 General skills (class-level, cover both paragons). Data fixes: Divine Shelter radius 80 self-centred, Banishment bogus magnitude + debuff -5%, Hand of Divinity out-of-range wording, Blessed Wanderer conditional (both paragons), Sheltered Healing spelling (+ saved-build alias). Base cooldowns from n00b: Sacred Weapon 28.5, Banishment 20, Circle of Divinity 28.5, Bond of Virtue 12. Cross-class tests flagged: Cleric Divine Protection at rest, Fighter Marathon Runner at rest. All OE-3..OG-4 proposed by claude-opus-5.5. NEXT: Justicar (top to bottom).
+
+## Paladin - Justicar (started 2026-10-01)
+- JA-1 Radiant Slam (Justicar copy): screens identical to Oathkeeper; same model as OA-1 (30 ft lunge gap-closer, 60 radiant area 10 ft, 0.8 s); description text filled. model: claude-opus-5.5 (2026-10-01, fine)
