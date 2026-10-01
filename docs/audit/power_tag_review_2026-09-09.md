@@ -396,3 +396,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FE-8 Bull Charge (Vanguard): single melee physical 520 after a 60 ft charge, Knock Back, 0.65 s, BASE 11.7 s cd (2026-09-30, n00b)
 - FE-9 Enforced Threat (Vanguard): 30 ft area taunt, no damage, -10% Awareness on all targets 10 s (party debuff), 0.55 s, BASE 13.6 s cd. DATA FIX -70% -> -10% (2026-09-30, fine)
 - FE-10 Knight's Challenge (Vanguard): self resource - 50% stamina instant + 100 thorns per blocked hit for 8 s; 0.75 s, BASE 23.4 s cd (2026-09-30, n00b)
+- FE-11 Linebreaker (Vanguard): 55 ft charge + 90 deg cone 300 physical, Increased Threat, 0.7 s, BASE 13.6 s cd (2026-09-30, n00b)
