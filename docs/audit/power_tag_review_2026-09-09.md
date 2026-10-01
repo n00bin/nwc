@@ -424,3 +424,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - VF-4 Cleaving Bull (Vanguard T2): Bull Charge loses knockback, +40 physical per multi-target attack for 6 s (~51% uptime); explains the archived Tide of Iron 40/6 s line (2026-09-30, fine)
 - VF-5 Critical Deflection (Vanguard T3): up to 10 stamina per deflect (not blocking), once per 5 s (data said 3 s - fixed), full when CritStrike rating >= Deflect rating; rating-pair model like Inner Balance (2026-09-30, fine)
 - VF-6 Combat Balance (Vanguard T3): up to -10% damage taken while not blocking when CritAvoid / Deflect / Awareness RATINGS are equal; placeholder spread curve, test (2026-09-30, fine)
+- VF-7 Sharpened Senses (Vanguard T4): Bladed Rampart adds +30% Awareness for its 10 s; capped panel stat (2026-09-30, fine)
