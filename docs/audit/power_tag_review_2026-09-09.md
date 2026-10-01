@@ -431,3 +431,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - Fighter General row count check: 6 icons on both screens = 4 class skills + 2 Dragonborn racial (races.json). FG-1 Marathon Runner (both screens identical): +10% move speed out of combat; utility scored 0 (2026-09-30, fine)
 - FG-2 Dungeoneering (both screens identical): world interaction, utility scored 0 (2026-09-30, fine)
 - FG-3 Unshakable Shieldarm (both screens identical): +10% Critical Avoidance while blocking (blockShare conditional, capped) (2026-09-30, fine)
+- FG-4 Tactician's Edge (both screens identical): CA + Crit Strike 10% at full stamina, 5% at empty, linear; base at rest, slider in combat. VANGUARD COMPLETE 2026-09-30 incl. 4 General skills (fine)
