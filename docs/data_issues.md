@@ -2957,3 +2957,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Second Wind (Fighter daily) lifesteal portion** — during the 10 s window, read the HP recovered per at-will hit against the hit's damage (n00b, 2026-09-30).
 - [ ] **Bladed Rampart (Vanguard daily) defense kind** — during the 10 s, does the sheet's Defense % rise by 30, or does incoming damage drop with the sheet unchanged? (n00b, 2026-09-30).
 - [ ] **Fighter stamina / block economy (both paragons)** — stamina pool size, time to refill empty to full standing idle, how much stamina one blocked hit of known damage drains, the reduced regen rate while Dig In is held, and the refill time with Shield Talent slotted vs unslotted (n00b, 2026-09-30).
+- [ ] **Anvil of Challenge (Vanguard feature) charged magnitude** — with it slotted, hold Anvil of Doom to full charge and read the damage (tap is 880) (n00b, 2026-09-30).

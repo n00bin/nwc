@@ -416,3 +416,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FC-4 Combat Superiority (Vanguard copy): +10% at-will damage for 10 s per encounter/daily cast = always on while slotted; rotation-only (2026-09-30, fine)
 - FC-5 Ferocious Reaction (Vanguard): 25 physical thorns per deflected attack; rate = hit rate x Deflect (2026-09-30, fine)
 - FC-6 Steel Recovery (Vanguard): +5% stamina per encounter/daily cast; block economy input (2026-09-30, fine)
+- FC-7 Anvil of Challenge (Vanguard): Anvil of Doom tap = single-target taunt; chargeable, full charge (1.36 s) drops the taunt, charged magnitude = test. Corrects FE-3: the 1.36 s cast on the Vanguard screen was this feature, not a feat (2026-09-30, fine)
