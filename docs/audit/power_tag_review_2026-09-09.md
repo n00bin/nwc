@@ -388,3 +388,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FE-1 Shield Throw (Vanguard copy): BASE 450 single ranged physical projectile, Stun 3 s, 0.65 s cast, 11.7 s base cd. Archived Vanguard screen (325/threat/5.5 s) = Shieldthrower FEAT version (2026-09-30, n00b base values)
 - FE-2 Shield Throw (Dreadnought copy): same BASE as Vanguard (450 single ranged physical, Stun 3 s, 0.65 s, 11.7 s, 50 ft); bounce rider = Ricochet feat (2026-09-30, n00b)
 - FE-3 Anvil of Doom (Vanguard copy): 880 single melee physical, BASE 0.86 s cast / 17.5 s cd (screen 1.36 s / 16.6 s feat+recharge modified); no riders (2026-09-30, n00b base values)
+- FE-4 Anvil of Doom (Dreadnought copy): BASE only - 880 single melee physical, 0.86 s, 17.5 s; the Vengeance spender rider (1,360 / -4 s / 15) is FEAT-added, attach at the Dreadnought feat pass (2026-09-30, n00b)
