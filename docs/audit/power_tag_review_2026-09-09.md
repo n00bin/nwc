@@ -390,3 +390,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FE-3 Anvil of Doom (Vanguard copy): 880 single melee physical, BASE 0.86 s cast / 17.5 s cd (screen 1.36 s / 16.6 s feat+recharge modified); no riders (2026-09-30, n00b base values)
 - FE-4 Anvil of Doom (Dreadnought copy): BASE only - 880 single melee physical, 0.86 s, 17.5 s; the Vengeance spender rider (1,360 / -4 s / 15) is FEAT-added, attach at the Dreadnought feat pass (2026-09-30, n00b)
 - FE-5 Shield Slam (Vanguard copy): area line melee physical 350, Knock Down, 0.7 s, BASE 13.6 s cd (2026-09-30, n00b base values)
+- FE-6 Shield Slam (Dreadnought copy): area line melee physical 400 (paragon difference vs 350), Knock Down, 0.7 s, 13.6 s base cd (2026-09-30, n00b base values)
