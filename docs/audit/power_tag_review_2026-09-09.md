@@ -410,3 +410,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FM-3 Retaliate (Vanguard): BASE flat 500 cone (80 deg, 20 ft) + threat on Dig In release after a blocked hit, once per 10 s; the 500-800 stamina scaling on the archived screen is FEAT-added (2026-09-30, n00b)
 - FM-4 Path of the Vanguard: passive threat multiplier, no number; resolve from docs/threat_mechanics.md, not an in-game test (2026-09-30, fine)
 - FM-5 Forte (Vanguard): Defense 50 / Accuracy 25 / Critical Avoidance 25, already modeled. VANGUARD MECHANICS COMPLETE (2026-09-30, fine)
+- FC-1 Vigorous Strikes (Vanguard copy): +5% Critical Strike at full stamina, base at rest, staminaLevel slider, placeholder linear (2026-09-30, fine)
