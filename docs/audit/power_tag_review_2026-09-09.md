@@ -406,3 +406,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FD-5 Phalanx (Vanguard): 16 ft party zone -20% damage taken 14 s (ends on block) + self control immunity; 0.75 s, 1,000 AP. VANGUARD DAILIES COMPLETE (2026-09-30, fine)
 - FM-0: Fighter class-wide mechanics split per paragon (Block + Dig In -> Vanguard; Forge Ahead + Seethe -> Dreadnought); class-wide mechanic list emptied (2026-09-30)
 - FM-1 Block (Vanguard, L1): front block up to 40% max HP per hold, drains stamina, no regen while held, control immune; block economy model defined, pool/regen/drain = test (2026-09-30, fine)
+- FM-2 Dig In (Vanguard, R1): all-direction block up to 60% max HP, no move/attack, reduced regen (rate = test), +15% Awareness while held, control immune, never ends on empty (2026-09-30, fine)
