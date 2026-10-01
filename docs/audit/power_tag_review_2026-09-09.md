@@ -418,3 +418,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FC-6 Steel Recovery (Vanguard): +5% stamina per encounter/daily cast; block economy input (2026-09-30, fine)
 - FC-7 Anvil of Challenge (Vanguard): Anvil of Doom tap = single-target taunt; chargeable, full charge (1.36 s) drops the taunt, charged magnitude = test. Corrects FE-3: the 1.36 s cast on the Vanguard screen was this feature, not a feat (2026-09-30, fine)
 - FC-8 Enduring Warrior (Vanguard): -5% damage taken below 25% HP; scored at a lowHpShare scenario fraction (default 5%). VANGUARD CLASS FEATURES COMPLETE (2026-09-30, fine)
+- VF-1 Shieldthrower (Vanguard T1): Shield Throw -> 325, 6 s cd, Increased Threat, no stun (explains the archived Vanguard screen) (2026-09-30, fine)
