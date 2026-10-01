@@ -36,6 +36,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ### Bug Fixes
 
 - **Blessed Wanderer no longer counts in a party (Toon Forge, Paladin).** Its +20% damage only works when no party member is within 30 feet, but Toon Forge was counting it all the time. It now shows under "Show Conditional", the same as the Bard's Soloist and the Cleric's Pilgrim's Light. Fixed on both Oathkeeper and Justicar.
+- **Divine Retribution no longer counts at full stamina (Toon Forge, Paladin Justicar).** Its damage bonus grows to 5% only as your stamina runs low, but Toon Forge was counting the full 5% all the time. It now shows under "Show Conditional" and starts at 0% with full stamina, like the game.
 - **Mobile controls are easier to tap and muted text is easier to read.** Navigation links, tabs, search fields, and list rows have larger touch targets, and muted labels now have stronger contrast.
 - **Ring of Initiative's 6% Combat Advantage now counts (Toon Forge).** Maiden's Advantage reads "You gain 6% Combat Advantage. When in combat with 2 or more enemies, you also gain 3.25% Power." We had the enemies condition on both halves, so the Combat Advantage silently switched off whenever the enemies slider sat at 1. The Combat Advantage is now always on and only the Power half waits for a second enemy. Same fix for the other three rings that share the bonus: The Bloodlit Veil, Eilistraee's Beauty and the Coldsilver Ring of Initiative. Reported by a player (Report #282).
 

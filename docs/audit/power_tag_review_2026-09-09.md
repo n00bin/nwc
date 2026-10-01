@@ -566,3 +566,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - JC-3 Composure (Justicar copy): identical to OC-3 (+10% Divinity regen while slotted). model: claude-opus-5.5 (2026-10-01, fine)
 - JC-4 Aura of Wrath (Justicar copy): identical text; +4% Critical Strike at rest, Divine Champion +2% to you + party at 50% uptime (data only, JC-1 treatment). model: claude-opus-5.5 (2026-10-01, fine)
 - JC-5 Aura of Valor (Justicar only): party threat aura - nearby non-tank party members -25% threat, +15% more during Divine Champion (50%); feeds the threat model, stat score 0; competes for the aura slot. model: claude-opus-5.5 (2026-10-01, fine)
+- JC-6 Divine Retribution (Justicar only): DATA FIX - +5% Damage Bonus was always-on percentStats; moved to percentStatsConditional on the staminaLevel slider (inverse: 0% at full stamina, 5% at empty, default full = 0%). Curve = test. News staged. model: claude-opus-5.5 (2026-10-01, 1)
