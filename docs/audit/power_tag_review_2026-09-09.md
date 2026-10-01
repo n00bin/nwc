@@ -482,3 +482,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DG-4 Tactician's Edge (Dreadnought General row, presented to n00b): same model as the Vanguard review (2026-10-01, fine)
 - FIGHTER COMPLETE 2026-10-01 (for real): Dreadnought General row DG-1..4 presented and passed by n00b.
 - OA-1 Radiant Slam (Oathkeeper copy): area melee magical (radiant) 60 / 0.8 s, 30 ft lunge gap-closer; base confirmed (2026-10-01, ye (base))
+- OA-2 Valorous Strike (Oathkeeper copy): single melee magical (radiant), 3 hits, 60 read as PER HIT (180 per 0.35 s cast) on n00b's 'each hit' point + the game's 'Total Combo Magnitude' wording elsewhere; test (2026-10-01, yes, and it says radiant damage each hit)

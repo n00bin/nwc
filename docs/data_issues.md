@@ -2969,3 +2969,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Executioner's Cut (Dreadnought feat) rules** — cast two encounters inside 2 s: does the first slice still land? Is the 5 Vengeance charged once per cast or once per target hit? (n00b, 2026-10-01).
 - [ ] **Striker's Mark (Dreadnought feat) rules** — on an area daily, is the +400 applied to every marked target; does another player's Physical Vulnerability debuff count, and does the daily strip it? (n00b, 2026-10-01).
 - [ ] **Bloody Reprise (Dreadnought feat) rules** — is there a cooldown between resets; does the encounter that dropped the gauge (Anvil with Weight of Vengeance) also fire the reset, or does it take a second encounter within 3 s? (n00b, 2026-10-01).
+- [ ] **Valorous Strike (Paladin at-will) magnitude basis** — one cast should show three hits; is each one a 60-magnitude hit (per-hit reading) or do the three add up to 60? (n00b, 2026-10-01).
