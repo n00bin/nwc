@@ -2978,3 +2978,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Circle of Divinity (Paladin Oathkeeper) Divinity restore** — empty the Divinity bar, drop the circle, stand in it for the full 12 s and note how much the bar refills (n00b, 2026-10-01).
 - [ ] **Sanctuary (Paladin Oathkeeper) heal over time** — stand in the dome from low HP for the full 12 s and add up the heal ticks; is 600 the total or the amount per tick? (n00b, 2026-10-01).
 - [ ] **Paladin Block stamina** — note the stamina bar size, time an idle refill from empty to full, and how much one blocked hit of known damage drains; does stamina refill while you hold Block? (n00b, 2026-10-01).
+- [ ] **Aura of Divinity (Paladin Oathkeeper) boost** — slot Aura of Protection, then read your Defense % with Aura of Divinity on yourself and with it on someone else; the difference is the boost (n00b, 2026-10-01).
