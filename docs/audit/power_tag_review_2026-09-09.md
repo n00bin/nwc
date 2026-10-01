@@ -545,3 +545,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - JE-3 Bane (Justicar copy): screens identical; same model as OE-5 (15 ft area at target, flat 620, 0.74 s, 300 Divinity); description filled. model: claude-opus-5.5 (2026-10-01, fine)
 - JE-4 Sacred Weapon (Justicar copy): BASE = 52 radiant rider on most attacks for 10 s (OE-2 model); the stamina + Increased Threat lines on the capture = Sacred Shield feat (attach at that feat); BASE cd 28.5 s (27.6 shown). model: claude-opus-5.5 (2026-10-01, 28.5)
 - JE-5 Divine Touch (Justicar copy): paragon variant - 900 split heal at target (80/20 ft), 0.8 s, 200 Divinity, NO barrier (Oathkeeper 100 + barrier); split = shared OE-3 test; description filled. model: claude-opus-5.5 (2026-10-01, fine)
+- JE-6 Templar's Wrath (Justicar only): self-centred 30 ft radiant burst, flat 400, 1 s, 300 Divinity, Increased Threat; tank pack-threat spend vs Bane. model: claude-opus-5.5 (2026-10-01, fine)
