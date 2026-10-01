@@ -498,3 +498,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - OE-9 Circle of Divinity (Oathkeeper, paragon-only): self circle 12 s, +15% Outgoing Healing (capped panel stat) + Divinity restore (amount = test) while standing in it; full 12 s uptime per cast; 1.5 s, BASE 28.5 s cd (27.4 s shown). model: claude-opus-5.5 (2026-10-01, 28.5, 1)
 - OE-10 Bond of Virtue (Oathkeeper, paragon-only): area heal at target (80 ft / 20 ft) 300 per ally + extra 300 on the most injured party member, 0.8 s, BASE 12 s cd (n00b: same as shown), no Divinity. model: claude-opus-5.5 (2026-10-01, 12)
 - OE-2 amendment: Sacred Weapon (Oathkeeper) base cooldown 28.5 s (27.4 s shown); OWED item closed. model: claude-opus-5.5 (2026-10-01, 28.5). OATHKEEPER ENCOUNTERS COMPLETE 10/10.
+- OD-1 Divine Judgement (Oathkeeper copy): single ranged magical (radiant) 2,200, 40 ft, 0.9 s, 1,000 AP; both screens identical. model: claude-opus-5.5 (2026-10-01, fine)
