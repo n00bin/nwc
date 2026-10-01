@@ -455,3 +455,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DC-2 Greater Endurance (Dreadnought copy): screen identical to Vanguard, same model (2026-10-01, fine)
 - DC-3 Shield Talent (Dreadnought copy): screen identical to Vanguard, same model (2026-10-01, fine)
 - DC-4 Combat Superiority (Dreadnought copy): screen identical to Vanguard, same model (2026-10-01, fine)
+- DC-5 Momentum (Dreadnought): Bull Charge +400 (920) and no knockback; +20% run speed after 2 s unscored (2026-10-01, fine)
