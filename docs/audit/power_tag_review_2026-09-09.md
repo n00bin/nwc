@@ -414,3 +414,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FC-2 Greater Endurance (Vanguard copy): +10% move speed at full stamina; utility scored 0 (2026-09-30, fine)
 - FC-3 Shield Talent (Vanguard copy): stamina regen bonus, no number; block economy input, scored 0 until measured (2026-09-30, fine)
 - FC-4 Combat Superiority (Vanguard copy): +10% at-will damage for 10 s per encounter/daily cast = always on while slotted; rotation-only (2026-09-30, fine)
+- FC-5 Ferocious Reaction (Vanguard): 25 physical thorns per deflected attack; rate = hit rate x Deflect (2026-09-30, fine)
