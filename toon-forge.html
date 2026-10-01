@@ -4571,21 +4571,25 @@
         if (!state.activeMechanics) state.activeMechanics = {};
         state.activeMechanics["Soul Spark"] = Math.max(0, Math.min(30, state.warlockSoulSparks));
       }
+      // Powers that carried a paragon suffix ("Anvil of Doom (Dreadnought)", "Sacred Weapon (Justicar)")
+      // were renamed to their in-game names when shared powers became per-paragon copies (2026-10-01).
+      // Saved builds store powers by NAME, so strip the old suffix on load or the slot would silently blank.
+      const _pwAlias = (n) => (typeof n === "string" && s.paragon && n.endsWith(" (" + s.paragon + ")")) ? n.slice(0, -(String(s.paragon).length + 3)) : n;
       // Pad at-will slot array to exactly 2 entries so older saves load.
-      const _aw = Array.isArray(s.slottedAtWills) ? s.slottedAtWills.slice(0, 2) : [];
+      const _aw = Array.isArray(s.slottedAtWills) ? s.slottedAtWills.slice(0, 2).map(_pwAlias) : [];
       while (_aw.length < 2) _aw.push("");
       state.slottedAtWills = _aw;
       // Pad encounter slot array to exactly 3 entries.
       const _encN = encounterSlotCount(s.class);
-      const _enc = Array.isArray(s.slottedEncounters) ? s.slottedEncounters.slice(0, _encN) : [];
+      const _enc = Array.isArray(s.slottedEncounters) ? s.slottedEncounters.slice(0, _encN).map(_pwAlias) : [];
       while (_enc.length < _encN) _enc.push("");
       state.slottedEncounters = _enc;
       // Pad daily slot array to exactly 2 entries.
-      const _dly = Array.isArray(s.slottedDailies) ? s.slottedDailies.slice(0, 2) : [];
+      const _dly = Array.isArray(s.slottedDailies) ? s.slottedDailies.slice(0, 2).map(_pwAlias) : [];
       while (_dly.length < 2) _dly.push("");
       state.slottedDailies = _dly;
-      state.rotationSteps = Array.isArray(s.rotationSteps) ? s.rotationSteps.filter(x => x && x.kind && x.name).map(x => ({ kind: x.kind, name: x.name })) : [];
-      state.rotationOpener = Array.isArray(s.rotationOpener) ? s.rotationOpener.filter(x => x && x.kind && x.name).map(x => ({ kind: x.kind, name: x.name })) : [];
+      state.rotationSteps = Array.isArray(s.rotationSteps) ? s.rotationSteps.filter(x => x && x.kind && x.name).map(x => ({ kind: x.kind, name: _pwAlias(x.name) })) : [];
+      state.rotationOpener = Array.isArray(s.rotationOpener) ? s.rotationOpener.filter(x => x && x.kind && x.name).map(x => ({ kind: x.kind, name: _pwAlias(x.name) })) : [];
       state.scorchAtSparks = (typeof s.scorchAtSparks === "number") ? Math.max(6, Math.min(18, s.scorchAtSparks)) : 18;
       // Feats — pad to exactly 5 slots (1 per in-game feat tier).
       const _ft = Array.isArray(s.slottedFeats) ? s.slottedFeats.slice(0, 5) : [];
