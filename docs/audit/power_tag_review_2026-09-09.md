@@ -394,3 +394,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - ORDER RULE (n00b 2026-09-30): one paragon top to bottom (encounters -> dailies -> mechanics -> class features -> feats), THEN the other paragon. No flipping per power. Vanguard first, Dreadnought second (Into the Fray added at its encounter pass).
 - FE-7 Knee Breaker (Vanguard): single melee physical 700, Slow 8 s, 0.55 s, BASE 15.6 s cd (2026-09-30, n00b)
 - FE-8 Bull Charge (Vanguard): single melee physical 520 after a 60 ft charge, Knock Back, 0.65 s, BASE 11.7 s cd (2026-09-30, n00b)
+- FE-9 Enforced Threat (Vanguard): 30 ft area taunt, no damage, -10% Awareness on all targets 10 s (party debuff), 0.55 s, BASE 13.6 s cd. DATA FIX -70% -> -10% (2026-09-30, fine)
