@@ -404,3 +404,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FD-3 Determination (Vanguard): self +40% dmg 10 s + dispel/control immunity (utility 0); 0.8 s, 1,000 AP (2026-09-30, fine)
 - FD-4 Bladed Rampart (Vanguard): self +30% Defense (panel stat assumed, test) + 260 thorns per hit taken, 10 s; 1 s, 1,000 AP (2026-09-30, fine)
 - FD-5 Phalanx (Vanguard): 16 ft party zone -20% damage taken 14 s (ends on block) + self control immunity; 0.75 s, 1,000 AP. VANGUARD DAILIES COMPLETE (2026-09-30, fine)
+- FM-0: Fighter class-wide mechanics split per paragon (Block + Dig In -> Vanguard; Forge Ahead + Seethe -> Dreadnought); class-wide mechanic list emptied (2026-09-30)
