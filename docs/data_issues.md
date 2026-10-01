@@ -2953,4 +2953,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Gathering Light (Devout feat) additive?** — hold Channel Divinity the full 3 s: does the Mark target receive 1,700 + 800 or only the 800; how wide is "near the target"? (n00b, 2026-09-30).
 - [ ] **Angel of Life (Devout feat) hold scope** — is Channel Divinity a 4 s hold only while Angel of Life Ready shows (2.5 s again during the 180 s cooldown)? Does releasing early still cast a normal Light of Divinity without using the window? (n00b, 2026-09-30).
 - [ ] **Composed Insight (Cleric skill) sheet check** — with stamina full, does the character sheet's Accuracy already include the +10%? Read the value again at about half stamina (n00b, 2026-09-30).
-- [ ] **Brazen Slash (Fighter at-will)** — is magnitude 100 the whole threefold attack or each hit; how much stamina does one cast restore? (n00b, 2026-09-30).
+- [ ] **Brazen Slash + Cleave (Fighter at-wills)** — is the magnitude (100 / 55) the whole threefold attack or each hit; how much stamina does one cast restore? (n00b, 2026-09-30).

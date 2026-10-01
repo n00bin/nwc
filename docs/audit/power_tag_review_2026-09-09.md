@@ -379,3 +379,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FA-1 Brazen Slash (shared, identical): single melee physical, 3 hits, 100 read as total per 0.5 s; Stamina Restoration amount + total-vs-per-hit = test (2026-09-30, fine)
 - FA-2 Shield Bash (shared, identical): area line melee physical 55 / 0.6 s, usable while blocking (blockShare input later); no test (2026-09-30, fine)
 - FA-3 Guarded Strike (shared, identical): single melee physical 100 / 0.5 s, usable while blocking; no test (2026-09-30, fine)
+- FA-4 Cleave (shared, identical): area cone (200 deg) melee physical, 3 hits, 55 read as total / 0.5 s; shares the Brazen total-vs-per-hit test (2026-09-30, fine)
