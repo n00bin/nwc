@@ -552,3 +552,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - JE-10 Relentless Avenger (Justicar only): 60 ft lunge gap-closer, 600 radiant single target, 0.65 s, BASE cd 11.4 s (11 shown); description filled. JUSTICAR ENCOUNTERS COMPLETE 10/10. model: claude-opus-5.5 (2026-10-01, 11.4)
 - JD-1 Divine Judgement (Justicar copy): identical to OD-1 (single ranged radiant 2,200, 40 ft, 0.9 s, 1,000 AP); description filled. model: claude-opus-5.5 (2026-10-01, fine)
 - JD-2 Shield of Faith (Justicar copy): identical to OD-2 (80 ft party buff on you, instant, 1,000 AP, 10 s: -5% damage taken + 10% Incoming Healing); Sheltering Light at its feat. model: claude-opus-5.5 (2026-10-01, fine)
+- JD-3 Radiant Charge (Justicar copy): identical to OD-3 (80 ft line, 750 radiant + knockdown, 1.9 s, 1,000 AP). model: claude-opus-5.5 (2026-10-01, fine)
