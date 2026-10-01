@@ -2988,3 +2988,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Cleric Divine Protection at rest** — on a Cleric with full Divinity, compare the in-game Critical Avoidance with Toon Forge's; our Cleric copy may be leaving out the 10% at rest (flagged at Paladin OG-1) (n00b, 2026-10-01).
 - [ ] **Fighter Marathon Runner at rest** — on a Fighter out of combat, compare the in-game Movement Speed with Toon Forge's; our Fighter copy may be leaving out the +10% (flagged at Paladin OG-2) (n00b, 2026-10-01).
 - [ ] **Shielding Strike (Paladin Justicar) stamina restore** — drain some stamina by blocking, then use Shielding Strike and note how much the bar refills per cast (n00b, 2026-10-01).
+- [ ] **Binding Oath (Paladin Justicar) stamina restore** — drain some stamina by blocking, cast Binding Oath and note how much the bar refills over its 12 s (n00b, 2026-10-01).
