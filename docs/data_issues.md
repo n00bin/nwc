@@ -2960,3 +2960,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Anvil of Challenge (Vanguard feature) charged magnitude** — with it slotted, hold Anvil of Doom to full charge and read the damage (tap is 880) (n00b, 2026-09-30).
 - [ ] **Rising Tide / Tide of Iron (Vanguard)** — with Rising Tide taken, read Tide of Iron's magnitude (base 120; archived screen said 100) and the rider line (feat says 25 / 3 s; archived screen said 40 / 6 s) (n00b, 2026-09-30).
 - [ ] **Combat Balance (Vanguard feat) curve** — damage-taken cut with Critical Avoidance / Deflect / Awareness ratings equal, then with one rating ~10% and ~25% off (n00b, 2026-09-30).
+- [ ] **Shake It Off / Retaliate (Vanguard)** — with the feat, read Retaliate's damage at full, half and near-empty stamina (base 500, feat says up to +300 at full) (n00b, 2026-09-30).

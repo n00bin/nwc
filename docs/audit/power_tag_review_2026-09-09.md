@@ -426,3 +426,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - VF-6 Combat Balance (Vanguard T3): up to -10% damage taken while not blocking when CritAvoid / Deflect / Awareness RATINGS are equal; placeholder spread curve, test (2026-09-30, fine)
 - VF-7 Sharpened Senses (Vanguard T4): Bladed Rampart adds +30% Awareness for its 10 s; capped panel stat (2026-09-30, fine)
 - VF-8 Perfect Block (Vanguard T4): Determination blocks without stamina for its 10 s but gains a 180 s cooldown; emergency window, sustained loss (2026-09-30, fine)
+- VF-9 Shake It Off (Vanguard T5): Retaliate +0..300 by REMAINING stamina (full = +300); corrects the FM-3 direction note; placeholder linear, magnitude-vs-stamina = test (2026-09-30, fine)
