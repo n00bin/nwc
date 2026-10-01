@@ -2974,3 +2974,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Burning Light (Paladin) stun rule** — does a quick tap stun for 3 s, or only a fully charged cast? (n00b, 2026-10-01).
 - [ ] **Sacred Weapon (Paladin) rider rate** — inside the 10 s window, does Valorous Strike add the 52 radiant hit on each of its three hits or once per cast? (n00b, 2026-10-01).
 - [ ] **Divine Touch (Paladin Oathkeeper) heal split** — cast it on 1 ally, then on a group of 3 and of 5, and note the heal each ally gets; is the 900 divided between targets or does it drop by a set amount per extra target? (n00b, 2026-10-01).
+- [ ] **Smite (Paladin) Divinity curve** — hit the same target dummy with Smite at full, about 75%, half and about 25% Divinity and note each hit; 1,150 is the full-Divinity magnitude (n00b, 2026-10-01).
