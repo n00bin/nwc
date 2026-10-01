@@ -437,3 +437,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DE-3 Griffon's Wrath (Dreadnought): single melee physical, 3 hits, TOTAL 1,350, 0.55 s, BASE 15.6 s; 'Total Combo Magnitude' wording supports the total reading for the threefold at-wills (2026-10-01, n00b)
 - DE-4 Onslaught (Dreadnought): area 20 ft around target, melee physical 550, Stun 1 s, 1.1 s cast, BASE 17.5 s (2026-10-01, n00b)
 - DE-5 Commander's Strike (Dreadnought): single melee physical 780 + 10% physical vulnerability on target 10 s (party debuff, physical only), 0.8 s, BASE 17.5 s (2026-10-01, n00b)
+- DE-6 Tremor (Dreadnought): self-centred 15 ft area melee physical 440, 0.8 s, BASE 15.6 s (2026-10-01, n00b)
