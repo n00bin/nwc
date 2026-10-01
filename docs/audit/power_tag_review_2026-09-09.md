@@ -547,3 +547,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - JE-5 Divine Touch (Justicar copy): paragon variant - 900 split heal at target (80/20 ft), 0.8 s, 200 Divinity, NO barrier (Oathkeeper 100 + barrier); split = shared OE-3 test; description filled. model: claude-opus-5.5 (2026-10-01, fine)
 - JE-6 Templar's Wrath (Justicar only): self-centred 30 ft radiant burst, flat 400, 1 s, 300 Divinity, Increased Threat; tank pack-threat spend vs Bane. model: claude-opus-5.5 (2026-10-01, fine)
 - JE-7 Vow of Enmity (Justicar only): hard taunt - 130 radiant to target + enemies within 20 ft (80 ft range), top of threat on every target hit + Increased Threat, 0.5 s, BASE cd 19 s (18.4 shown), no Divinity; kind taunt. model: claude-opus-5.5 (2026-10-01, 19)
+- JE-8 Absolution (Justicar only): self -20% damage taken 8 s, 0.75 s, BASE cd 22.8 s (22.1 shown); Iron Warrior twin. model: claude-opus-5.5 (2026-10-01, 22.8)
