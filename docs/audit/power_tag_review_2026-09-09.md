@@ -500,3 +500,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - OE-2 amendment: Sacred Weapon (Oathkeeper) base cooldown 28.5 s (27.4 s shown); OWED item closed. model: claude-opus-5.5 (2026-10-01, 28.5). OATHKEEPER ENCOUNTERS COMPLETE 10/10.
 - OD-1 Divine Judgement (Oathkeeper copy): single ranged magical (radiant) 2,200, 40 ft, 0.9 s, 1,000 AP; both screens identical. model: claude-opus-5.5 (2026-10-01, fine)
 - OD-2 Shield of Faith (Oathkeeper copy): self-centred 80 ft party buff, instant, 1,000 AP, 10 s: -5% damage taken + 10% Incoming Healing (healing RECEIVED = receiver-side stat); both screens identical; Convalescence / Sheltering Light at feat passes. model: claude-opus-5.5 (2026-10-01, fine)
+- OD-3 Radiant Charge (Oathkeeper copy): 80 ft line (20 ft wide) from you, magical (radiant) 750 per enemy + knockdown, 1.9 s, 1,000 AP; both screens identical. model: claude-opus-5.5 (2026-10-01, fine)
