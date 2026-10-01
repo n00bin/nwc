@@ -443,3 +443,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DD-2 Second Wind (Dreadnought copy): same as Vanguard (+20% max HP 10 s, burst heal, lifesteal test) (2026-10-01, fine)
 - DD-3 Determination (Dreadnought copy): same as Vanguard (+40% dmg 10 s, dispel/immunity utility) (2026-10-01, fine)
 - DD-4 Shockwave (Dreadnought): 50 ft line area melee physical 1,150 + Knockback, 1.2 s, 1,000 AP (2026-10-01, fine)
+- DD-5 Mow Down (Dreadnought): single melee physical, 2 hits, TOTAL 2,100, Knockdown, 1.5 s, 1,000 AP. DREADNOUGHT DAILIES COMPLETE (2026-10-01, fine and knockdown)
