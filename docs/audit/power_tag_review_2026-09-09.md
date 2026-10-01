@@ -537,3 +537,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 
 ## Paladin - Justicar (started 2026-10-01)
 - JA-1 Radiant Slam (Justicar copy): screens identical to Oathkeeper; same model as OA-1 (30 ft lunge gap-closer, 60 radiant area 10 ft, 0.8 s); description text filled. model: claude-opus-5.5 (2026-10-01, fine)
+- JA-2 Valorous Strike (Justicar copy): screens identical; same model as OA-2 (3 hits, 60 per hit = 180/cast, 0.35 s); per-hit test shared. model: claude-opus-5.5 (2026-10-01, fine)
