@@ -487,3 +487,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - OA-3 Cure Wounds (Oathkeeper): single ranged heal 275 / 1 s for 40 Divinity; Divinity-bound, pool + regen = test (2026-10-01, yes (base))
 - OA-4 Divine Fulmination (Oathkeeper): single ranged magical (radiant) 180 / 1.46 s, 80 ft, no cost. OATHKEEPER AT-WILLS COMPLETE (2026-10-01, fine)
 - OE-1 Burning Light (Oathkeeper copy): area 25 ft melee magical, charge 200-400 (2 s full), Stun 3 s, BASE 14.2 s; stun on a tap = test (2026-10-01, fine 14.2)
+- OE-2 Sacred Weapon (Oathkeeper copy): BASE = 52 radiant rider on most attacks for 10 s; the -10% damage taken + Divinity Regeneration on the archived screen are feat-added (Enduring Spirit); base cooldown still owed (27.4 s shown) (2026-10-01, base is 52 and 10s)
