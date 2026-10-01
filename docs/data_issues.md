@@ -2971,3 +2971,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Bloody Reprise (Dreadnought feat) rules** — is there a cooldown between resets; does the encounter that dropped the gauge (Anvil with Weight of Vengeance) also fire the reset, or does it take a second encounter within 3 s? (n00b, 2026-10-01).
 - [ ] **Valorous Strike (Paladin at-will) magnitude basis** — one cast should show three hits; is each one a 60-magnitude hit (per-hit reading) or do the three add up to 60? (n00b, 2026-10-01).
 - [ ] **Paladin Divinity pool + regen (Oathkeeper AND Justicar)** — read the Divinity bar maximum and time an empty-to-full refill standing idle; every Divinity spender (Cure Wounds 40, the 0.5 s cooldown encounters) depends on it (n00b, 2026-10-01).
+- [ ] **Burning Light (Paladin) stun rule** — does a quick tap stun for 3 s, or only a fully charged cast? (n00b, 2026-10-01).
