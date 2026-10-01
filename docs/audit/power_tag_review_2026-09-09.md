@@ -412,3 +412,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FM-5 Forte (Vanguard): Defense 50 / Accuracy 25 / Critical Avoidance 25, already modeled. VANGUARD MECHANICS COMPLETE (2026-09-30, fine)
 - FC-1 Vigorous Strikes (Vanguard copy): +5% Critical Strike at full stamina, base at rest, staminaLevel slider, placeholder linear (2026-09-30, fine)
 - FC-2 Greater Endurance (Vanguard copy): +10% move speed at full stamina; utility scored 0 (2026-09-30, fine)
+- FC-3 Shield Talent (Vanguard copy): stamina regen bonus, no number; block economy input, scored 0 until measured (2026-09-30, fine)
