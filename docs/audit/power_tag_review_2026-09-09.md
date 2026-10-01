@@ -451,3 +451,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DM-4 Vengeance (Dreadnought): gauge built by blocking / Seethe / Reprisal hits; Vengeful at >= 50% = +20% damage dealt; vengefulUptime input (default 80%), off at rest; gauge max / per-hit / decay = test (2026-10-01, fine)
 - DM-5 Revengeance (Dreadnought): flat 500 cone (80 deg, 20 ft) on Seethe release after a blocked hit, once per 5 s; base confirmed (2026-10-01, yes)
 - DM-6 Forte (Dreadnought): Power 50 / Accuracy 25 / Critical Avoidance 25, already modeled. DREADNOUGHT MECHANICS COMPLETE 6/6 (2026-10-01, fine)
+- DC-1 Vigorous Strikes (Dreadnought copy): screen identical to Vanguard, same model (2026-10-01, fine)
