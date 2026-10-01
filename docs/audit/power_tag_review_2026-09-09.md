@@ -434,3 +434,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FG-4 Tactician's Edge (both screens identical): CA + Crit Strike 10% at full stamina, 5% at empty, linear; base at rest, slider in combat. VANGUARD COMPLETE 2026-09-30 incl. 4 General skills (fine)
 - DE-1 Knee Breaker (Dreadnought copy): 700 single melee physical, Slow 8 s, 0.55 s, BASE 15.6 s (identical to Vanguard) (2026-10-01, n00b)
 - DE-2 Bull Charge (Dreadnought copy): 520 single melee physical, 60 ft charge, KNOCK BACK (n00b flagged it as missing - control tag + addedEffect confirmed on the copy), 0.65 s, BASE 11.7 s (2026-10-01, n00b)
+- DE-3 Griffon's Wrath (Dreadnought): single melee physical, 3 hits, TOTAL 1,350, 0.55 s, BASE 15.6 s; 'Total Combo Magnitude' wording supports the total reading for the threefold at-wills (2026-10-01, n00b)
