@@ -450,3 +450,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DM-3 Reprisal (Dreadnought, ADDED from n00b's screenshot): passive +20 Guarded Strike / +35 Shield Bash at hit time + each hit fills Vengeance; at-will tooltips stay 100/55 (n00b corrected my 120/90); hit damage + gauge per hit = test (2026-10-01, fine)
 - DM-4 Vengeance (Dreadnought): gauge built by blocking / Seethe / Reprisal hits; Vengeful at >= 50% = +20% damage dealt; vengefulUptime input (default 80%), off at rest; gauge max / per-hit / decay = test (2026-10-01, fine)
 - DM-5 Revengeance (Dreadnought): flat 500 cone (80 deg, 20 ft) on Seethe release after a blocked hit, once per 5 s; base confirmed (2026-10-01, yes)
+- DM-6 Forte (Dreadnought): Power 50 / Accuracy 25 / Critical Avoidance 25, already modeled. DREADNOUGHT MECHANICS COMPLETE 6/6 (2026-10-01, fine)
