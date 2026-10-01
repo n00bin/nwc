@@ -2913,7 +2913,7 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - **Projectile damage bucket** (2026-09-21): Tailwind Mambo / Con Moto / projectile lore are filed under Physical Damage Boost by assumption; n00b is not sure. Test: does Physical Damage Boost change a projectile hit?
 - **Rejuvenating Carol tick interval** (2026-09-22): magnitude is PER TICK (n00b: Songblade 100, Minstrel 200); the tick interval is still unknown. n00b to test.
 - **Performance gauge fill rate** (2026-09-21): Perform gives no number; in-combat regen per second needed for the Bard song rotation model. n00b to test.
-- **Soloist in a group** (2026-09-21): reportedly active in a party as long as no party member is within 30 ft; n00b to test. Until then the Solo toggle is the only gate.
+- **Soloist in a group** (2026-09-21): reportedly active in a party as long as no party member is within 30 ft; n00b to test. Until then the Solo toggle is the only gate. UPDATE 2026-10-01: n00b says he knows some powers like these still work in groups as long as party members are 30 ft or further away. Same rule now recorded on Paladin Blessed Wanderer (+20%) and applies to Cleric Pilgrim's Light (+5%); a per-power in-game check would still confirm each one.
 - **Performer / Loremaster proc chances** (2026-09-21): neither tooltip gives the chance (improvised encounter proc; Battle Research at-will proc). n00b to test; both cadences hang on it.
 - **Aurora Fantasia drain rate** (2026-09-22): held indefinitely while Performance drains; rate not on the tooltip. n00b to test.
 - **Reprised Carol roll odds** (2026-09-22): both Gambler carols roll one of three buffs (or a fallback heal); odds and per-stack scaling are not on the tooltips. n00b to test.
