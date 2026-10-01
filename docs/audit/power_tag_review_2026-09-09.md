@@ -447,3 +447,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DM-0: Dreadnought mechanic row shows 6 icons, data has 5; the 3rd icon (blue shield+sword) has no screenshot - n00b will provide it at DM-3.
 - DM-1 Forge Ahead (Dreadnought, L1): front block up to 30% max HP, drains stamina, control immune; first 1 s = immunity to most damage + 50% move speed, once per 3 s (opener window) (2026-10-01, fine)
 - DM-2 Seethe (Dreadnought, R1): all-direction block up to 50% max HP, no move/attack, control immune; drains stamina INTO the Vengeance gauge (rate = test) (2026-10-01, fine)
+- DM-3 Reprisal (Dreadnought, ADDED from n00b's screenshot): passive +20 Guarded Strike / +35 Shield Bash at hit time + each hit fills Vengeance; at-will tooltips stay 100/55 (n00b corrected my 120/90); hit damage + gauge per hit = test (2026-10-01, fine)
