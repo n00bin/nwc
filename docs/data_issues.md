@@ -2989,3 +2989,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Fighter Marathon Runner at rest** — on a Fighter out of combat, compare the in-game Movement Speed with Toon Forge's; our Fighter copy may be leaving out the +10% (flagged at Paladin OG-2) (n00b, 2026-10-01).
 - [ ] **Shielding Strike (Paladin Justicar) stamina restore** — drain some stamina by blocking, then use Shielding Strike and note how much the bar refills per cast (n00b, 2026-10-01).
 - [ ] **Binding Oath (Paladin Justicar) stamina restore** — drain some stamina by blocking, cast Binding Oath and note how much the bar refills over its 12 s (n00b, 2026-10-01).
+- [ ] **Divine Champion (Paladin Justicar) drain + absorb cap** — turn it on at full Divinity and time how long until it drops; while it's on, take hits worth more than 40% of your max HP and see whether it keeps absorbing half or stops (n00b, 2026-10-01).
