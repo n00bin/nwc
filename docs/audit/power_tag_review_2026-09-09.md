@@ -478,3 +478,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - Screenshot key: `Name.png` = JUSTICAR screen, `Name (2).png` = OATHKEEPER screen.
 - DG-1 Marathon Runner (Dreadnought General row, presented to n00b): same model as the Vanguard review (2026-10-01, fine)
 - DG-2 Dungeoneering (Dreadnought General row, presented to n00b): same model as the Vanguard review (2026-10-01, fine)
+- DG-3 Unshakable Shieldarm (Dreadnought General row, presented to n00b): same model as the Vanguard review (2026-10-01, fine)
