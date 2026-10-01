@@ -429,3 +429,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - VF-9 Shake It Off (Vanguard T5): Retaliate +0..300 by REMAINING stamina (full = +300); corrects the FM-3 direction note; placeholder linear, magnitude-vs-stamina = test (2026-09-30, fine)
 - VF-10 Deep Breathing (Vanguard T5): +4% dmg / +4% healing received per 3 s of Dig In, 3 stacks, 10 s; digInHoldsPerMinute input. Vanguard feats complete (General row still open at this point - n00b caught the skip) (fine)
 - Fighter General row count check: 6 icons on both screens = 4 class skills + 2 Dragonborn racial (races.json). FG-1 Marathon Runner (both screens identical): +10% move speed out of combat; utility scored 0 (2026-09-30, fine)
+- FG-2 Dungeoneering (both screens identical): world interaction, utility scored 0 (2026-09-30, fine)
