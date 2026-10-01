@@ -479,3 +479,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DG-1 Marathon Runner (Dreadnought General row, presented to n00b): same model as the Vanguard review (2026-10-01, fine)
 - DG-2 Dungeoneering (Dreadnought General row, presented to n00b): same model as the Vanguard review (2026-10-01, fine)
 - DG-3 Unshakable Shieldarm (Dreadnought General row, presented to n00b): same model as the Vanguard review (2026-10-01, fine)
+- DG-4 Tactician's Edge (Dreadnought General row, presented to n00b): same model as the Vanguard review (2026-10-01, fine)
+- FIGHTER COMPLETE 2026-10-01 (for real): Dreadnought General row DG-1..4 presented and passed by n00b.
