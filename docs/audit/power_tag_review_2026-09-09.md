@@ -440,3 +440,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DE-6 Tremor (Dreadnought): self-centred 15 ft area melee physical 440, 0.8 s, BASE 15.6 s (2026-10-01, n00b)
 - DE-7 Into the Fray (Dreadnought, ADDED from screenshot): party +20% move speed 8 s / 50 ft (utility 0) + instant 100% stamina; 0.9 s, BASE 19.5 s. DREADNOUGHT ENCOUNTERS COMPLETE 10/10 (2026-10-01, n00b)
 - DD-1 Earthshaker (Dreadnought copy): area 20 ft melee physical 1,050 + Stun 3 s, 1.6 s, 1,000 AP (identical to Vanguard) (2026-10-01, fine)
+- DD-2 Second Wind (Dreadnought copy): same as Vanguard (+20% max HP 10 s, burst heal, lifesteal test) (2026-10-01, fine)
