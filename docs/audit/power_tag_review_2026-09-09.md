@@ -446,3 +446,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DD-5 Mow Down (Dreadnought): single melee physical, 2 hits, TOTAL 2,100, Knockdown, 1.5 s, 1,000 AP. DREADNOUGHT DAILIES COMPLETE (2026-10-01, fine and knockdown)
 - DM-0: Dreadnought mechanic row shows 6 icons, data has 5; the 3rd icon (blue shield+sword) has no screenshot - n00b will provide it at DM-3.
 - DM-1 Forge Ahead (Dreadnought, L1): front block up to 30% max HP, drains stamina, control immune; first 1 s = immunity to most damage + 50% move speed, once per 3 s (opener window) (2026-10-01, fine)
+- DM-2 Seethe (Dreadnought, R1): all-direction block up to 50% max HP, no move/attack, control immune; drains stamina INTO the Vengeance gauge (rate = test) (2026-10-01, fine)
