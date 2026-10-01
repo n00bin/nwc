@@ -458,3 +458,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DC-5 Momentum (Dreadnought): Bull Charge +400 (920) and no knockback; +20% run speed after 2 s unscored (2026-10-01, fine)
 - DC-6 Plow the Road (Dreadnought): Shield Slam +200 (600) for 10 Vengeance, needs >= 10; gauge maximum inferred as 100 from the 10/15 costs vs 50%/55 thresholds (2026-10-01, fine)
 - DC-7 Always Spiteful (Dreadnought): gauge set to 55 at combat start (12 s cd) = Vengeful from the first hit; lifts the vengefulUptime default 80 -> 95 when slotted (2026-10-01, fine)
+- DC-8 Enduring Vengeance (Dreadnought): +1% dmg per 10 s above 50% Vengeance, 5 stacks, wiped below 50%; scored off vengefulUptime, shown 0-5%. DREADNOUGHT CLASS FEATURES COMPLETE 8/8 (2026-10-01, fine)
