@@ -430,3 +430,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - VF-10 Deep Breathing (Vanguard T5): +4% dmg / +4% healing received per 3 s of Dig In, 3 stacks, 10 s; digInHoldsPerMinute input. Vanguard feats complete (General row still open at this point - n00b caught the skip) (fine)
 - Fighter General row count check: 6 icons on both screens = 4 class skills + 2 Dragonborn racial (races.json). FG-1 Marathon Runner (both screens identical): +10% move speed out of combat; utility scored 0 (2026-09-30, fine)
 - FG-2 Dungeoneering (both screens identical): world interaction, utility scored 0 (2026-09-30, fine)
+- FG-3 Unshakable Shieldarm (both screens identical): +10% Critical Avoidance while blocking (blockShare conditional, capped) (2026-09-30, fine)
