@@ -2956,3 +2956,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Brazen Slash + Cleave (Fighter at-wills)** — is the magnitude (100 / 55) the whole threefold attack or each hit; how much stamina does one cast restore? (n00b, 2026-09-30).
 - [ ] **Second Wind (Fighter daily) lifesteal portion** — during the 10 s window, read the HP recovered per at-will hit against the hit's damage (n00b, 2026-09-30).
 - [ ] **Bladed Rampart (Vanguard daily) defense kind** — during the 10 s, does the sheet's Defense % rise by 30, or does incoming damage drop with the sheet unchanged? (n00b, 2026-09-30).
+- [ ] **Fighter stamina / block economy (both paragons)** — stamina pool size, time to refill empty to full standing idle, and how much stamina one blocked hit of known damage drains (n00b, 2026-09-30).
