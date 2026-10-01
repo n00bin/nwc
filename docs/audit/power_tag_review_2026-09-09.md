@@ -485,3 +485,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - OA-2 Valorous Strike (Oathkeeper copy): single melee magical (radiant), 3 hits, 60 read as PER HIT (180 per 0.35 s cast) on n00b's 'each hit' point + the game's 'Total Combo Magnitude' wording elsewhere; test (2026-10-01, yes, and it says radiant damage each hit)
 - FLIP (n00b 2026-10-01): Fighter Brazen Slash, Cleave, Reave magnitude now read PER HIT (300 / 165 / 120 per cast) to match the Valorous Strike reading; test stays open.
 - OA-3 Cure Wounds (Oathkeeper): single ranged heal 275 / 1 s for 40 Divinity; Divinity-bound, pool + regen = test (2026-10-01, yes (base))
+- OA-4 Divine Fulmination (Oathkeeper): single ranged magical (radiant) 180 / 1.46 s, 80 ft, no cost. OATHKEEPER AT-WILLS COMPLETE (2026-10-01, fine)
