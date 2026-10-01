@@ -383,3 +383,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FA-5 Heavy Slash (Dreadnought): single melee physical 175 / 0.7 s; +5% dmg dealt 12 s self-buff on every cast = always on while slotted; no test (2026-09-30, fine)
 - FA-6 Reave (Dreadnought): area line RANGED physical, 2 hits, 60 total / 0.4 s, 45 ft; out-of-melee filler; shares the total-vs-per-hit test (2026-09-30, fine)
 - FA-7 Tide of Iron (Vanguard): BASE 120 / 1 s single melee physical + threat up 5 s per cast (always on). Archived screen was FEAT-modified (100 mag + 40 multi-target rider) - rider to be attached at the Vanguard feat pass (2026-09-30, n00b base values)
+- FA-8 Threatening Rush (Vanguard): single melee physical 60 / 0.8 s, 25 ft gap-closer + Increased Threat; no test. FIGHTER AT-WILLS COMPLETE (FA-1..8) (2026-09-30, fine)
