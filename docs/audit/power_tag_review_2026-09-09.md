@@ -391,3 +391,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FE-4 Anvil of Doom (Dreadnought copy): BASE only - 880 single melee physical, 0.86 s, 17.5 s; the Vengeance spender rider (1,360 / -4 s / 15) is FEAT-added, attach at the Dreadnought feat pass (2026-09-30, n00b)
 - FE-5 Shield Slam (Vanguard copy): area line melee physical 350, Knock Down, 0.7 s, BASE 13.6 s cd (2026-09-30, n00b base values)
 - FE-6 Shield Slam (Dreadnought copy): area line melee physical 400 (paragon difference vs 350), Knock Down, 0.7 s, 13.6 s base cd (2026-09-30, n00b base values)
+- ORDER RULE (n00b 2026-09-30): one paragon top to bottom (encounters -> dailies -> mechanics -> class features -> feats), THEN the other paragon. No flipping per power. Vanguard first, Dreadnought second (Into the Fray added at its encounter pass).
+- FE-7 Knee Breaker (Vanguard): single melee physical 700, Slow 8 s, 0.55 s, BASE 15.6 s cd (2026-09-30, n00b)
