@@ -477,3 +477,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - COMPAT FIX: toon-forge applyBuild now strips an old ' (<Paragon>)' suffix from saved slotted powers and rotation steps, so builds holding 'Sacred Weapon (Justicar)' / 'Divine Touch (Justicar)' / 'Anvil of Doom (Dreadnought)' keep their slots (the Fighter rename on 2026-09-30 had the same exposure). Verified headless.
 - Screenshot key: `Name.png` = JUSTICAR screen, `Name (2).png` = OATHKEEPER screen.
 - DG-1 Marathon Runner (Dreadnought General row, presented to n00b): same model as the Vanguard review (2026-10-01, fine)
+- DG-2 Dungeoneering (Dreadnought General row, presented to n00b): same model as the Vanguard review (2026-10-01, fine)
