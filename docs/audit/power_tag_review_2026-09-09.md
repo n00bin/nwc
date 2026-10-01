@@ -402,3 +402,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FD-1 Earthshaker (Vanguard): area 20 ft melee physical 1,050 + Stun 3 s, 1.6 s cast, 1,000 AP (2026-09-30, fine)
 - FD-2 Second Wind (Vanguard): self +20% max HP 10 s, 20%-of-max burst heal, lifesteal on attacks (portion = test); 1.1 s, 1,000 AP (2026-09-30, fine)
 - FD-3 Determination (Vanguard): self +40% dmg 10 s + dispel/control immunity (utility 0); 0.8 s, 1,000 AP (2026-09-30, fine)
+- FD-4 Bladed Rampart (Vanguard): self +30% Defense (panel stat assumed, test) + 260 thorns per hit taken, 10 s; 1 s, 1,000 AP (2026-09-30, fine)
