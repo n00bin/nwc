@@ -427,4 +427,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - VF-7 Sharpened Senses (Vanguard T4): Bladed Rampart adds +30% Awareness for its 10 s; capped panel stat (2026-09-30, fine)
 - VF-8 Perfect Block (Vanguard T4): Determination blocks without stamina for its 10 s but gains a 180 s cooldown; emergency window, sustained loss (2026-09-30, fine)
 - VF-9 Shake It Off (Vanguard T5): Retaliate +0..300 by REMAINING stamina (full = +300); corrects the FM-3 direction note; placeholder linear, magnitude-vs-stamina = test (2026-09-30, fine)
-- VF-10 Deep Breathing (Vanguard T5): +4% dmg / +4% healing received per 3 s of Dig In, 3 stacks, 10 s; digInHoldsPerMinute input. VANGUARD COMPLETE 2026-09-30 (6 at-wills, 10 encounters, 5 dailies, 5 mechanics, 8 features, 10 feats) (fine)
+- VF-10 Deep Breathing (Vanguard T5): +4% dmg / +4% healing received per 3 s of Dig In, 3 stacks, 10 s; digInHoldsPerMinute input. Vanguard feats complete (General row still open at this point - n00b caught the skip) (fine)
+- Fighter General row count check: 6 icons on both screens = 4 class skills + 2 Dragonborn racial (races.json). FG-1 Marathon Runner (both screens identical): +10% move speed out of combat; utility scored 0 (2026-09-30, fine)
