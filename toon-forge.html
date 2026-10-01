@@ -4592,7 +4592,9 @@
       state.rotationOpener = Array.isArray(s.rotationOpener) ? s.rotationOpener.filter(x => x && x.kind && x.name).map(x => ({ kind: x.kind, name: _pwAlias(x.name) })) : [];
       state.scorchAtSparks = (typeof s.scorchAtSparks === "number") ? Math.max(6, Math.min(18, s.scorchAtSparks)) : 18;
       // Feats — pad to exactly 5 slots (1 per in-game feat tier).
-      const _ft = Array.isArray(s.slottedFeats) ? s.slottedFeats.slice(0, 5) : [];
+      // Feats renamed to their in-game spelling keep old saves working (feats are stored by NAME).
+      const _FEAT_RENAMES = { "Sheltred Healing": "Sheltered Healing" };   // Paladin Oathkeeper T1, fixed 2026-10-01
+      const _ft = Array.isArray(s.slottedFeats) ? s.slottedFeats.slice(0, 5).map(n => _FEAT_RENAMES[n] || n) : [];
       while (_ft.length < 5) _ft.push("");
       state.slottedFeats = _ft;
       // Re-render every section
