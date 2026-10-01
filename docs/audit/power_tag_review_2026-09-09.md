@@ -399,3 +399,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FE-11 Linebreaker (Vanguard): 55 ft charge + 90 deg cone 300 physical, Increased Threat, 0.7 s, BASE 13.6 s cd (2026-09-30, n00b)
 - FE-12 Iron Warrior (Vanguard): SELF -20% damage taken 8 s, 1.2 s cast, BASE 23.4 s cd (80 ft range line cosmetic) (2026-09-30, n00b)
 - FE-13 Knight's Valor (Vanguard): cover nearest ally 25 ft, intercept all damage + take their threat, 10 s, reuse cancels; 0.2 s, BASE 17.5 s cd; utility. VANGUARD ENCOUNTERS COMPLETE (2026-09-30, n00b)
+- FD-1 Earthshaker (Vanguard): area 20 ft melee physical 1,050 + Stun 3 s, 1.6 s cast, 1,000 AP (2026-09-30, fine)
