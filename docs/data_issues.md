@@ -2984,3 +2984,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Aura of Life (Paladin Oathkeeper) proc rate** — with Aura of Life slotted, cast Cleansing Touch twice quickly; do both casts trigger the party heal, or is there a cooldown between procs? (n00b, 2026-10-01).
 - [ ] **Battle Focus (Paladin Oathkeeper) regen boost** — with Composure unslotted, time a Divinity refill while hitting a dummy and while standing idle; the difference is the boost (n00b, 2026-10-01).
 - [ ] **Enduring Spirit (Paladin Oathkeeper) Divinity regen** — with Enduring Spirit picked, compare how fast Divinity refills with Sacred Weapon up and with it down (n00b, 2026-10-01).
+- [ ] **Emissary of Warding (Paladin Oathkeeper) + conversions** — with Convalescence picked, crit a Divine Touch inside Shield of Faith; does the converted heal include Emissary's extra 25%? (n00b, 2026-10-01).
