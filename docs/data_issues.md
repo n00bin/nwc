@@ -2965,3 +2965,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Vengeance gauge (Dreadnought)** — gauge maximum, how much one blocked hit adds, and whether it decays over time or out of combat (n00b, 2026-10-01).
 - [ ] **Trip Attack (Dreadnought feat) combat advantage** — is it for the enhanced Knee Breaker hit only, or a timed combat-advantage window on the target? (n00b, 2026-10-01).
 - [ ] **Ricochet (Dreadnought feat) rules** — does the 10% free-Shield-Throw chance roll once per area cast or once per enemy struck; do the bounce hits also stun? (n00b, 2026-10-01).
+- [ ] **Crushing Blows (Dreadnought feat) hit counting** — does each hit of a threefold at-will roll the 20%, does each enemy hit by an area power roll, and is there a hidden cooldown? Watch how fast the Vengeance gauge drains. (n00b, 2026-10-01).
