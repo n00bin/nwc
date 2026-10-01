@@ -461,3 +461,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - DC-8 Enduring Vengeance (Dreadnought): +1% dmg per 10 s above 50% Vengeance, 5 stacks, wiped below 50%; scored off vengefulUptime, shown 0-5%. DREADNOUGHT CLASS FEATURES COMPLETE 8/8 (2026-10-01, fine)
 - RF-1 Trip Attack (Dreadnought T1): Knee Breaker -> 1,300 + knockdown + combat advantage for 10 Vengeance (needs >= 10). DATA FIX from 1,100 / 30 (2026-10-01, fine)
 - RF-2 Weight of Vengeance (Dreadnought T1): Anvil of Doom +480 (1,360), cooldown -4 s (13.5 s), 15 Vengeance, needs >= 15; explains the archived Dreadnought Anvil screen (2026-10-01, fine)
+- RF-3 Ricochet (Dreadnought T2): Shield Throw bounces to 3 more enemies at 90/80/70%; other area powers 10% to grant a free Shield Throw; pack-only value; roll basis + bounce stun = test (2026-10-01, fine)
