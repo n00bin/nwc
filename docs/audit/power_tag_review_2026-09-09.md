@@ -466,3 +466,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RF-5 Crushing Blows (Dreadnought T3): 20% on hit -> +150 magnitude for 5 Vengeance; value hinges on hit counting and Vengeance income, drain charged against Vengeful uptime (2026-10-01, fine)
 - RF-6 Executioner's Cut (Dreadnought T3): each encounter cast spends 5 Vengeance for a delayed 200 on every target hit, no stacking; model PROVISIONAL until the stack rule and cost basis are tested (2026-10-01, test (model provisional))
 - RF-7 Landwaster (Dreadnought T4): Earthshaker above 50 Vengeance opens a 5 s window (data said 3 s - fixed) to fire a free Shockwave for 50 Vengeance; 2,200 area magnitude per AP bar (2026-10-01, fine)
+- RF-8 Striker's Mark (Dreadnought T4): dailies +400 vs a Physical Vulnerability Up target and the mark is consumed; single-boss pick; per-target + other-player debuff = test (2026-10-01, fine)

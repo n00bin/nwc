@@ -2967,3 +2967,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Ricochet (Dreadnought feat) rules** — does the 10% free-Shield-Throw chance roll once per area cast or once per enemy struck; do the bounce hits also stun? (n00b, 2026-10-01).
 - [ ] **Crushing Blows (Dreadnought feat) hit counting** — does each hit of a threefold at-will roll the 20%, does each enemy hit by an area power roll, and is there a hidden cooldown? Watch how fast the Vengeance gauge drains. (n00b, 2026-10-01).
 - [ ] **Executioner's Cut (Dreadnought feat) rules** — cast two encounters inside 2 s: does the first slice still land? Is the 5 Vengeance charged once per cast or once per target hit? (n00b, 2026-10-01).
+- [ ] **Striker's Mark (Dreadnought feat) rules** — on an area daily, is the +400 applied to every marked target; does another player's Physical Vulnerability debuff count, and does the daily strip it? (n00b, 2026-10-01).
