@@ -381,3 +381,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - FA-3 Guarded Strike (shared, identical): single melee physical 100 / 0.5 s, usable while blocking; no test (2026-09-30, fine)
 - FA-4 Cleave (shared, identical): area cone (200 deg) melee physical, 3 hits, 55 read as total / 0.5 s; shares the Brazen total-vs-per-hit test (2026-09-30, fine)
 - FA-5 Heavy Slash (Dreadnought): single melee physical 175 / 0.7 s; +5% dmg dealt 12 s self-buff on every cast = always on while slotted; no test (2026-09-30, fine)
+- FA-6 Reave (Dreadnought): area line RANGED physical, 2 hits, 60 total / 0.4 s, 45 ft; out-of-melee filler; shares the total-vs-per-hit test (2026-09-30, fine)
