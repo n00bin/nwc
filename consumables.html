@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/lockboxes.css">
+  <link rel="stylesheet" href="css/overloads-history.css">
   <style>
     .cnsm-page { max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
     .cnsm-page h2 { margin: 0 0 0.4rem; }
@@ -318,6 +319,7 @@
   <div class="controls-bar view-tabs mobile-dropdown-tabs" role="tablist" aria-label="Consumables sections">
     <button class="view-tab active" id="tab-consumables" type="button" role="tab" aria-selected="true" aria-controls="consumables-view" data-consumables-tab="consumables">Consumables</button>
     <button class="view-tab" id="tab-lockboxes" type="button" role="tab" aria-selected="false" aria-controls="lockboxes-view" data-consumables-tab="lockboxes" tabindex="-1">Lockboxes</button>
+    <button class="view-tab" id="tab-overloads" type="button" role="tab" aria-selected="false" aria-controls="overloads-view" data-consumables-tab="overloads" tabindex="-1">Historical Overloads</button>
   </div>
 
   <!-- Filters / Search (standard site controls bar) -->
@@ -355,6 +357,23 @@
     </div>
   </div>
 
+  <div class="controls-bar mobile-disclosure-controls" id="overloads-controls" hidden>
+    <input type="text" class="search-input" id="ovh-search" placeholder="Search overload names or effects...">
+    <button type="button" class="mobile-filter-toggle" aria-expanded="false" aria-controls="overloads-filter-fields">
+      <span>Filters</span><span class="mobile-filter-chevron" aria-hidden="true">&#9662;</span>
+    </button>
+    <div class="mobile-filter-fields" id="overloads-filter-fields">
+      <select class="filter-select" id="ovh-category">
+        <option value="">All Categories</option>
+      </select>
+      <select class="filter-select" id="ovh-target">
+        <option value="">Players &amp; Companions</option>
+        <option value="player">Player overloads</option>
+        <option value="companion">Companion marks</option>
+      </select>
+    </div>
+  </div>
+
   <main id="consumables-view" class="cnsm-page" role="tabpanel" aria-labelledby="tab-consumables" tabindex="0">
     <h2>Consumables &amp; Buffs</h2>
     <p class="cnsm-intro">Potions, foods, scrolls — the stuff you pop before a fight for a quick edge. Anything marked <span class="cnsm-excl-badge">Only one active at a time</span> won't stack within its own category, but it plays nice with the others. See <a href="mekaniks.html#view-stacking" target="_blank" style="color:var(--amber);">Mekaniks → Stacking</a> for how buffs combine with diminishing returns from other sources.</p>
@@ -383,11 +402,20 @@
     <div class="lb-grid" id="lb-cards"></div>
   </main>
 
+  <main id="overloads-view" class="lb-page" role="tabpanel" aria-labelledby="tab-overloads" tabindex="0" hidden>
+    <h2>Historical Overload Enchantments</h2>
+    <p class="lb-intro">Older overload enchantments: Draconic Glyphs, Black Ice overloads, Stronghold marks, companion marks, and campaign and event overloads. Lesser and Greater versions are separate items, and so are Rank 1 and Rank 2 marks. Companion marks only work on your companion.</p>
+    <div class="lb-note" role="note">This is a historical reference collected from community wiki pages. It has not been checked against in-game tooltips, and effects or availability may have changed since. Toon Forge does not use this list.</div>
+    <div class="lb-count" id="ovh-count" aria-live="polite">Loading overload reference…</div>
+    <div id="ovh-sections"></div>
+  </main>
+
   <script src="data/buffs.js"></script>
   <script src="data/consumable-images.js"></script>
   <script src="js/shared.js"></script>
   <script src="js/consumables-page.js"></script>
   <script src="js/lockboxes-page.js"></script>
+  <script src="js/overloads-history-page.js"></script>
   <script src="js/analytics.js"></script>
 </body>
 </html>

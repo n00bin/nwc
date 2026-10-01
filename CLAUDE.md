@@ -24,7 +24,7 @@ A static website (GitHub Pages) for Neverwinter (PS5) players. It's a reference 
 | `companions.html` | Companion database (Lookup, Summoned Buffs, Enhancements, Damage tabs) |
 | `mounts.html` | Mount database (Lookup, Rankings, Collars, Insignias, Stable Planner) |
 | `artifacts.html` | Artifact reference with icons |
-| `consumables.html` | Consumable and lockbox tabs with searchable rewards and rate information |
+| `consumables.html` | Consumable, lockbox and Historical Overloads tabs (`#lockboxes` / `#overloads` deep-link; tab switching lives in `js/lockboxes-page.js`) |
 | `mekaniks.html` | Game mechanics and stat explanations (hash deep-links to tabs) |
 | `professions.html` | Crafting/profession guide (artisan table, masterwork; **Crafting** tab embeds `recipes.html?embed=1` in an iframe, `#crafting` deep-links to it) |
 | `recipes.html` | Crafting Codex — community-filled recipe tree (browse / add / wanted / review; Supabase). Standalone page AND embedded in Professions → Crafting. `?embed=1` hides navbar/footer/hero text and posts its height to the parent |
@@ -98,6 +98,12 @@ Hand-edited `data/*.js` (NOT built from source JSON — edit directly):
 - `news.js`, `patch-notes-var.js` (+ CI-written `patch-notes.json`)
 - hand-curated lookup maps: `artisans.js`, `companion-images.js`,
   `consumable-images.js`, `enhancement-images.js`, `mount-images.js`
+- `overloads-historical.json` — historical overload reference (community
+  wiki text, NOT screenshot-verified), fetched by `js/overloads-history-page.js`
+  for Consumables → Historical Overloads (`#overloads`). Display-only: the
+  engine/optimizer read `overloads.json`, never this. Effects stay verbatim;
+  versioned entries use `<version>_effect` keys (`lesser_effect`,
+  `rank_1_effect`), single-version entries use `effect`.
 - `companion-skills.js` — companion active-skill reference text (the
   `COMPANION_SKILLS` map, keyed by LOWERCASE companion name) shown in the
   Companions Lookup detail panel. Regenerate from

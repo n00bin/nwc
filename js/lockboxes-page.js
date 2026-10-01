@@ -7,11 +7,18 @@
   var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-consumables-tab]"));
   var panels = {
     consumables: document.getElementById("consumables-view"),
-    lockboxes: document.getElementById("lockboxes-view")
+    lockboxes: document.getElementById("lockboxes-view"),
+    overloads: document.getElementById("overloads-view")
   };
   var controls = {
     consumables: document.getElementById("consumables-controls"),
-    lockboxes: document.getElementById("lockboxes-controls")
+    lockboxes: document.getElementById("lockboxes-controls"),
+    overloads: document.getElementById("overloads-controls")
+  };
+  var tabTitles = {
+    consumables: "Consumables — Neverwinter Compendium",
+    lockboxes: "Lockboxes — Neverwinter Compendium",
+    overloads: "Historical Overloads — Neverwinter Compendium"
   };
   var searchInput = document.getElementById("lb-search");
   var groupSelect = document.getElementById("lb-group");
@@ -222,7 +229,7 @@
   if (availabilitySelect) availabilitySelect.addEventListener("change", applyFilters);
 
   function setTab(name, updateHash) {
-    var active = name === "lockboxes" ? "lockboxes" : "consumables";
+    var active = Object.prototype.hasOwnProperty.call(panels, name) && panels[name] ? name : "consumables";
     tabs.forEach(function (tab) {
       var selected = tab.getAttribute("data-consumables-tab") === active;
       tab.classList.toggle("active", selected);
@@ -233,9 +240,9 @@
       if (panels[key]) panels[key].hidden = key !== active;
       if (controls[key]) controls[key].hidden = key !== active;
     });
-    document.title = active === "lockboxes" ? "Lockboxes — Neverwinter Compendium" : "Consumables — Neverwinter Compendium";
+    document.title = tabTitles[active];
     if (updateHash) {
-      var url = window.location.pathname + window.location.search + (active === "lockboxes" ? "#lockboxes" : "");
+      var url = window.location.pathname + window.location.search + (active === "consumables" ? "" : "#" + active);
       window.history.replaceState(null, "", url);
     }
   }
@@ -257,10 +264,14 @@
     });
   });
 
+  // #lockboxes / #overloads deep-link to their tab; anything else = Consumables.
+  function tabFromHash() {
+    return window.location.hash.slice(1);
+  }
   window.addEventListener("hashchange", function () {
-    setTab(window.location.hash === "#lockboxes" ? "lockboxes" : "consumables", false);
+    setTab(tabFromHash(), false);
   });
-  setTab(window.location.hash === "#lockboxes" ? "lockboxes" : "consumables", false);
+  setTab(tabFromHash(), false);
 
   var catalogUrl = "data/lockboxes.json";
   if (catalogVersion) catalogUrl += "?v=" + encodeURIComponent(catalogVersion);

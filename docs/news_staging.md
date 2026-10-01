@@ -25,6 +25,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Data Additions
 
+- **Historical Overloads tab (Consumables page).** A searchable reference for 114 older overload enchantments: the Draconic Glyphs, Black Ice overloads, Stronghold Slayer, Ward and utility marks (PvE and PvP), companion marks, the Storm King's Thunder Frosted glyphs, and campaign and event overloads. Lesser and Greater versions, and Rank 1 and Rank 2 marks, are shown side by side. Filter by category or by player and companion. The list comes from community wiki pages and has not been checked against in-game tooltips, so effects and availability may have changed. Toon Forge does not use it.
 - **Umbral Widow mount (M33.5 preview).** Added with its Illuminated + Crescent + Regal + Universal insignia slots, the Shadow Sight equip power (+3% Movement Speed, +1.5% Awareness, +2,700 Combined Rating at Mythic) and the Tunnel Vision combat power. Screenshot-verified from the Wondrous Bazaar Mount Preview.
 - **White Dragon Glyph overload.** Now selectable in Toon Forge. When you deal damage or heal allies it has a 25% chance to grant Aspect of Ice for 20 seconds: +800 Power and +10% healing on your allies, at most once every 60 seconds. Toon Forge counts it at its real average uptime (about a third of the fight), not as always-on. Screenshot-verified from an in-game tooltip.
 

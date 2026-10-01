@@ -1,0 +1,677 @@
+{
+  "title": "Historical Overload Enchantments",
+  "added": "2026-10-01",
+  "provenance": "Community wiki reference supplied by n00b on 2026-10-01. Names and effect text are preserved as supplied. NOT screenshot-verified. Display-only: Toon Forge and the optimizer do not read this file (their overloads live in ../data/overloads.json).",
+  "data_notes": [
+    "Lesser/Greater are separate enchantment items. Keep their effects separate.",
+    "Stronghold marks use Rank 1/Rank 2.",
+    "Companion marks use Rank 1/Rank 2 and work on companions, not players.",
+    "Some campaign/event overloads have one listed version rather than a Lesser/Greater pair.",
+    "Preserve the names and effect text below. Do not invent versions or effects.",
+    "Enchantment effects and item availability may have changed between game updates. Treat this as a historical reference, not a guarantee of current availability."
+  ],
+  "categories": [
+    {
+      "category": "Draconic Glyphs",
+      "versions": ["Lesser", "Greater"],
+      "duration": "1 hour Lesser; 2 hours Greater (combat time)",
+      "trigger": "25% chance; can trigger once every 60 seconds",
+      "entries": [
+        {
+          "name": "Black Dragon Glyph",
+          "trigger_condition": "When dealing damage",
+          "lesser_effect": "Gain 400 Critical Strike for 20 seconds. Damaging powers deal an additional 600 Acid damage over 6 seconds; this damage can stack up to 3 times.",
+          "greater_effect": "Gain 800 Critical Strike for 20 seconds. Damaging powers deal an additional 900 Acid damage over 6 seconds; this damage can stack up to 3 times."
+        },
+        {
+          "name": "Blue Dragon Glyph",
+          "trigger_condition": "When dealing or taking damage",
+          "lesser_effect": "Gain 400 Defense for 20 seconds. Targets that hit you take 400 Lightning damage.",
+          "greater_effect": "Gain 800 Defense for 20 seconds. Targets that hit you take 600 Lightning damage."
+        },
+        {
+          "name": "Green Dragon Glyph",
+          "trigger_condition": "When dealing or taking damage",
+          "lesser_effect": "Gain 400 Deflect for 20 seconds. Deal 200 Poison damage every 2 seconds to foes within 30 feet. When the effect ends, foes within 30 feet take 2,000 Poison damage.",
+          "greater_effect": "Gain 800 Deflect for 20 seconds. Deal 300 Poison damage every 2 seconds to foes within 30 feet. When the effect ends, foes within 30 feet take 3,000 Poison damage."
+        },
+        {
+          "name": "Red Dragon Glyph",
+          "trigger_condition": "When dealing damage",
+          "lesser_effect": "Gain 400 Armor Penetration for 20 seconds. Damaging powers deal an additional 400 Fire damage.",
+          "greater_effect": "Gain 800 Armor Penetration for 20 seconds. Damaging powers deal an additional 600 Fire damage."
+        },
+        {
+          "name": "White Dragon Glyph",
+          "trigger_condition": "When dealing damage or healing allies",
+          "lesser_effect": "Gain 400 Power for 20 seconds and increase outgoing healing by 7%.",
+          "greater_effect": "Gain 800 Power for 20 seconds and increase outgoing healing by 10%."
+        }
+      ]
+    },
+    {
+      "category": "Black Ice Overloads",
+      "versions": ["Lesser", "Greater"],
+      "duration": "8 hours combat time",
+      "trigger": "25% chance; can trigger once every 70 seconds",
+      "entries": [
+        {
+          "name": "Corrupt Black Ice Enchantment",
+          "trigger_condition": "When dealing damage",
+          "lesser_effect": "Gain 300 Power for 8 seconds and generate 0.5% of Action Points per second while the buff is active.",
+          "greater_effect": "Gain 800 Power for 8 seconds and generate 1.25% of Action Points per second while the buff is active."
+        },
+        {
+          "name": "Corrupt Lethal Enchantment",
+          "trigger_condition": "When dealing damage",
+          "lesser_effect": "Gain 300 Critical Strike for 8 seconds and generate 0.5% of Action Points per second while the buff is active.",
+          "greater_effect": "Gain 800 Critical Strike for 8 seconds and generate 1.25% of Action Points per second while the buff is active."
+        },
+        {
+          "name": "Corrupt Piercing Enchantment",
+          "trigger_condition": "When dealing damage",
+          "lesser_effect": "Gain 300 Armor Penetration for 8 seconds and generate 0.5% of Action Points per second while the buff is active.",
+          "greater_effect": "Gain 800 Armor Penetration for 8 seconds and generate 1.25% of Action Points per second while the buff is active."
+        },
+        {
+          "name": "Purified Black Ice Enchantment",
+          "trigger_condition": "When taking damage",
+          "lesser_effect": "Gain 300 Defense and 2,000 temporary Hit Points for 8 seconds.",
+          "greater_effect": "Gain 800 Defense and 5,500 temporary Hit Points for 8 seconds."
+        },
+        {
+          "name": "Purified Restoration Enchantment",
+          "trigger_condition": "When taking damage",
+          "lesser_effect": "Gain 300 Life Steal and 2,000 temporary Hit Points for 8 seconds.",
+          "greater_effect": "Gain 800 Life Steal and 5,500 temporary Hit Points for 8 seconds."
+        },
+        {
+          "name": "Purified Tempered Enchantment",
+          "trigger_condition": "When taking damage",
+          "lesser_effect": "Gain 300 Deflect and 2,000 temporary Hit Points for 8 seconds.",
+          "greater_effect": "Gain 800 Deflect and 5,500 temporary Hit Points for 8 seconds."
+        }
+      ]
+    },
+    {
+      "category": "Stronghold PvE Slayer Marks",
+      "versions": ["Rank 1", "Rank 2"],
+      "duration": "2 hours combat time",
+      "entries": [
+        {
+          "name": "Mark of the Demon Slayer",
+          "rank_1_effect": "Your damaging At-Will, Encounter, and Daily powers deal 5% extra damage against Demon enemies.",
+          "rank_2_effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Demon enemies."
+        },
+        {
+          "name": "Mark of the Dragon Slayer",
+          "rank_1_effect": "Your damaging At-Will, Encounter, and Daily powers deal 5% extra damage against Dragon enemies.",
+          "rank_2_effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Dragon enemies."
+        },
+        {
+          "name": "Mark of the Elemental Slayer",
+          "rank_1_effect": "Your damaging At-Will, Encounter, and Daily powers deal 5% extra damage against Elemental enemies.",
+          "rank_2_effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Elemental enemies."
+        },
+        {
+          "name": "Mark of the Fey Slayer",
+          "rank_1_effect": "Your damaging At-Will, Encounter, and Daily powers deal 5% extra damage against Fey enemies.",
+          "rank_2_effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Fey enemies."
+        },
+        {
+          "name": "Mark of the Giant Slayer",
+          "rank_1_effect": "Your damaging At-Will, Encounter, and Daily powers deal 5% extra damage against Giant enemies.",
+          "rank_2_effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Giant enemies."
+        },
+        {
+          "name": "Mark of the Lycanthrope Slayer",
+          "rank_1_effect": "Your damaging At-Will, Encounter, and Daily powers deal 5% extra damage against Lycanthrope enemies.",
+          "rank_2_effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Lycanthrope enemies."
+        },
+        {
+          "name": "Mark of the Orc Slayer",
+          "rank_1_effect": "Your damaging At-Will, Encounter, and Daily powers deal 5% extra damage against Orc enemies.",
+          "rank_2_effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Orc enemies."
+        },
+        {
+          "name": "Mark of the Thayan Slayer",
+          "rank_1_effect": "Your damaging At-Will, Encounter, and Daily powers deal 5% extra damage against Thayan enemies.",
+          "rank_2_effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Thayan enemies."
+        },
+        {
+          "name": "Mark of the Undead Slayer",
+          "rank_1_effect": "Your damaging At-Will, Encounter, and Daily powers deal 5% extra damage against Undead enemies.",
+          "rank_2_effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Undead enemies."
+        },
+        {
+          "name": "Mark of the Troll Slayer",
+          "rank_1_effect": "Your damaging At-Will, Encounter, and Daily powers deal 5% extra damage against Troll enemies.",
+          "rank_2_effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Troll enemies."
+        }
+      ]
+    },
+    {
+      "category": "Stronghold PvE Ward Marks",
+      "versions": ["Rank 1", "Rank 2"],
+      "duration": "2 hours combat time",
+      "effect_note": "When an enemy of the listed type strikes you, it receives a damage reduction debuff for 10 seconds. Allies healed by you can also trigger the ward effect.",
+      "entries": [
+        {
+          "name": "Mark of the Demon Ward",
+          "rank_1_effect": "The Demon enemy deals 5% less damage.",
+          "rank_2_effect": "The Demon enemy deals 10% less damage."
+        },
+        {
+          "name": "Mark of the Dragon Ward",
+          "rank_1_effect": "The Dragon enemy deals 5% less damage.",
+          "rank_2_effect": "The Dragon enemy deals 10% less damage."
+        },
+        {
+          "name": "Mark of the Elemental Ward",
+          "rank_1_effect": "The Elemental enemy deals 5% less damage.",
+          "rank_2_effect": "The Elemental enemy deals 10% less damage."
+        },
+        {
+          "name": "Mark of the Fey Ward",
+          "rank_1_effect": "The Fey enemy deals 5% less damage.",
+          "rank_2_effect": "The Fey enemy deals 10% less damage."
+        },
+        {
+          "name": "Mark of the Giant Ward",
+          "rank_1_effect": "The Giant enemy deals 5% less damage.",
+          "rank_2_effect": "The Giant enemy deals 10% less damage."
+        },
+        {
+          "name": "Mark of the Lycanthrope Ward",
+          "rank_1_effect": "The Lycanthrope enemy deals 5% less damage.",
+          "rank_2_effect": "The Lycanthrope enemy deals 10% less damage."
+        },
+        {
+          "name": "Mark of the Orc Ward",
+          "rank_1_effect": "The Orc enemy deals 5% less damage.",
+          "rank_2_effect": "The Orc enemy deals 10% less damage."
+        },
+        {
+          "name": "Mark of the Thayan Ward",
+          "rank_1_effect": "The Thayan enemy deals 5% less damage.",
+          "rank_2_effect": "The Thayan enemy deals 10% less damage."
+        },
+        {
+          "name": "Mark of the Undead Ward",
+          "rank_1_effect": "The Undead enemy deals 5% less damage.",
+          "rank_2_effect": "The Undead enemy deals 10% less damage."
+        },
+        {
+          "name": "Mark of the Troll Ward",
+          "rank_1_effect": "The Troll enemy deals 5% less damage.",
+          "rank_2_effect": "The Troll enemy deals 10% less damage."
+        }
+      ]
+    },
+    {
+      "category": "Campaign Slayer and Ward Overloads",
+      "entries": [
+        {
+          "name": "Drow Slayer",
+          "effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Drow enemies."
+        },
+        {
+          "name": "Drow Ward",
+          "effect": "Drow enemies that strike you receive a debuff causing them to deal 10% less damage. Allies healed by you gain this ward effect for 10 seconds."
+        },
+        {
+          "name": "Spider Slayer",
+          "effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Spider enemies."
+        },
+        {
+          "name": "Spider Ward",
+          "effect": "Spider enemies that strike you receive a debuff causing them to deal 10% less damage. Allies healed by you gain this ward effect for 10 seconds."
+        },
+        {
+          "name": "Lesser Demon Slayer",
+          "effect": "Your damaging At-Will, Encounter, and Daily powers deal 8% extra damage against Demon enemies."
+        },
+        {
+          "name": "Greater Demon Slayer",
+          "effect": "Your damaging At-Will, Encounter, and Daily powers deal 10% extra damage against Demon enemies."
+        },
+        {
+          "name": "Lesser Demon Ward",
+          "effect": "Demon enemies that strike you receive a debuff causing them to deal 8% less damage. Allies healed by you gain this ward effect for 10 seconds."
+        },
+        {
+          "name": "Greater Demon Ward",
+          "effect": "Demon enemies that strike you receive a debuff causing them to deal 10% less damage. Allies healed by you gain this ward effect for 10 seconds."
+        }
+      ]
+    },
+    {
+      "category": "Storm King's Thunder Frosted Overloads",
+      "trigger": "25% chance when dealing damage; can trigger once every 60 seconds",
+      "duration": "20 seconds",
+      "entries": [
+        {
+          "name": "Frosted Smiting Glyph",
+          "effect": "Gain 1% Power. Damaging powers apply Froststrike to the target, stacking up to 10 times. When Frost's Wrath ends, the target takes 800 Cold damage per Froststrike stack."
+        },
+        {
+          "name": "Frosted Lethal Glyph",
+          "effect": "Gain 1% Critical Strike. Damaging powers apply Froststrike to the target, stacking up to 10 times. When Frost's Fury ends, the target takes 800 Cold damage per Froststrike stack."
+        },
+        {
+          "name": "Frosted Protection Glyph",
+          "effect": "Gain 1% Defense and 1.5% Awareness."
+        },
+        {
+          "name": "Frosted Tempered Glyph",
+          "effect": "Gain 1% Deflect and 1.5% Awareness."
+        }
+      ]
+    },
+    {
+      "category": "Appointment Event Overloads",
+      "duration": "10 hours combat time",
+      "entries": [
+        {
+          "name": "Bulwark of Brimstone",
+          "effect": "+5% Maximum Hit Points."
+        },
+        {
+          "name": "Demonic Empowerment",
+          "effect": "+5% Action Points."
+        },
+        {
+          "name": "Devil's Precision",
+          "effect": "+5% Critical Strike and +5% Accuracy."
+        },
+        {
+          "name": "Rage of Flames",
+          "effect": "+5% Total Damage Bonus."
+        },
+        {
+          "name": "Resiliency of the Depths",
+          "effect": "+5% Physical Damage Reduction."
+        },
+        {
+          "name": "Unholy Protection",
+          "effect": "+5% Critical Avoidance and +5% Deflection."
+        }
+      ]
+    },
+    {
+      "category": "Stronghold PvP Slayer Marks",
+      "versions": ["Rank 1", "Rank 2"],
+      "duration": "2 hours combat time",
+      "entries": [
+        {
+          "name": "Mark of the Barbarian Slayer",
+          "rank_1_effect": "5% extra damage against Barbarian player characters.",
+          "rank_2_effect": "10% extra damage against Barbarian player characters."
+        },
+        {
+          "name": "Mark of the Cleric Slayer",
+          "rank_1_effect": "5% extra damage against Cleric player characters.",
+          "rank_2_effect": "10% extra damage against Cleric player characters."
+        },
+        {
+          "name": "Mark of the Fighter Slayer",
+          "rank_1_effect": "5% extra damage against Fighter player characters.",
+          "rank_2_effect": "10% extra damage against Fighter player characters."
+        },
+        {
+          "name": "Mark of the Guardian Slayer",
+          "rank_1_effect": "5% extra damage against Guardian player characters.",
+          "rank_2_effect": "10% extra damage against Guardian player characters."
+        },
+        {
+          "name": "Mark of the Paladin Slayer",
+          "rank_1_effect": "5% extra damage against Paladin player characters.",
+          "rank_2_effect": "10% extra damage against Paladin player characters."
+        },
+        {
+          "name": "Mark of the Ranger Slayer",
+          "rank_1_effect": "5% extra damage against Ranger player characters.",
+          "rank_2_effect": "10% extra damage against Ranger player characters."
+        },
+        {
+          "name": "Mark of the Rogue Slayer",
+          "rank_1_effect": "5% extra damage against Rogue player characters.",
+          "rank_2_effect": "10% extra damage against Rogue player characters."
+        },
+        {
+          "name": "Mark of the Warlock Slayer",
+          "rank_1_effect": "5% extra damage against Warlock player characters.",
+          "rank_2_effect": "10% extra damage against Warlock player characters."
+        },
+        {
+          "name": "Mark of the Wizard Slayer",
+          "rank_1_effect": "5% extra damage against Wizard player characters.",
+          "rank_2_effect": "10% extra damage against Wizard player characters."
+        }
+      ]
+    },
+    {
+      "category": "Stronghold PvP Ward Marks",
+      "versions": ["Rank 1", "Rank 2"],
+      "effect_note": "When struck by the listed player class, that attacker receives a damage reduction debuff for 10 seconds. Allies healed by you can also trigger the ward effect.",
+      "entries": [
+        {
+          "name": "Mark of the Barbarian Ward",
+          "rank_1_effect": "Barbarian player attackers deal 5% less damage.",
+          "rank_2_effect": "Barbarian player attackers deal 10% less damage."
+        },
+        {
+          "name": "Mark of the Cleric Ward",
+          "rank_1_effect": "Cleric player attackers deal 5% less damage.",
+          "rank_2_effect": "Cleric player attackers deal 10% less damage."
+        },
+        {
+          "name": "Mark of the Fighter Ward",
+          "rank_1_effect": "Fighter player attackers deal 5% less damage.",
+          "rank_2_effect": "Fighter player attackers deal 10% less damage."
+        },
+        {
+          "name": "Mark of the Guardian Ward",
+          "rank_1_effect": "Guardian player attackers deal 5% less damage.",
+          "rank_2_effect": "Guardian player attackers deal 10% less damage."
+        },
+        {
+          "name": "Mark of the Paladin Ward",
+          "rank_1_effect": "Paladin player attackers deal 5% less damage.",
+          "rank_2_effect": "Paladin player attackers deal 10% less damage."
+        },
+        {
+          "name": "Mark of the Ranger Ward",
+          "rank_1_effect": "Ranger player attackers deal 5% less damage.",
+          "rank_2_effect": "Ranger player attackers deal 10% less damage."
+        },
+        {
+          "name": "Mark of the Rogue Ward",
+          "rank_1_effect": "Rogue player attackers deal 5% less damage.",
+          "rank_2_effect": "Rogue player attackers deal 10% less damage."
+        },
+        {
+          "name": "Mark of the Warlock Ward",
+          "rank_1_effect": "Warlock player attackers deal 5% less damage.",
+          "rank_2_effect": "Warlock player attackers deal 10% less damage."
+        },
+        {
+          "name": "Mark of the Wizard Ward",
+          "rank_1_effect": "Wizard player attackers deal 5% less damage.",
+          "rank_2_effect": "Wizard player attackers deal 10% less damage."
+        }
+      ]
+    },
+    {
+      "category": "Stronghold PvP utility marks",
+      "versions": ["Rank 1", "Rank 2"],
+      "duration": "2 hours combat time",
+      "entries": [
+        {
+          "name": "Mark of AP Drain",
+          "rank_1_effect": "Daily powers drain 10% of an enemy player's Action Points.",
+          "rank_2_effect": "Daily powers drain 20% of an enemy player's Action Points."
+        },
+        {
+          "name": "Mark of AP Ward",
+          "rank_1_effect": "Blocks AP Drain Rank 1 and halves AP Drain Rank 2 when used against you.",
+          "rank_2_effect": "Fully negates AP Drain Rank 1 and Rank 2 when used against you."
+        },
+        {
+          "name": "Mark of Stamina Drain",
+          "rank_1_effect": "Powers drain 2% of an enemy player's Stamina.",
+          "rank_2_effect": "Powers drain 4% of an enemy player's Stamina."
+        },
+        {
+          "name": "Mark of Stamina Ward",
+          "rank_1_effect": "Negates 10% of Mark of Stamina Drain effects.",
+          "rank_2_effect": "Negates 20% of Mark of Stamina Drain effects."
+        }
+      ]
+    },
+    {
+      "category": "Companion PvE Slayer Marks",
+      "versions": ["Rank 1", "Rank 2"],
+      "effect_note": "Companion-only. No effect when equipped by a player.",
+      "entries": [
+        {
+          "name": "Companion's Mark of the Demon Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Demon enemies.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Demon enemies."
+        },
+        {
+          "name": "Companion's Mark of the Dragon Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Dragon enemies.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Dragon enemies."
+        },
+        {
+          "name": "Companion's Mark of the Elemental Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Elemental enemies.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Elemental enemies."
+        },
+        {
+          "name": "Companion's Mark of the Fey Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Fey enemies.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Fey enemies."
+        },
+        {
+          "name": "Companion's Mark of the Giant Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Giant enemies.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Giant enemies."
+        },
+        {
+          "name": "Companion's Mark of the Lycanthrope Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Lycanthrope enemies.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Lycanthrope enemies."
+        },
+        {
+          "name": "Companion's Mark of the Orc Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Orc enemies.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Orc enemies."
+        },
+        {
+          "name": "Companion's Mark of the Thayan Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Thayan enemies.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Thayan enemies."
+        },
+        {
+          "name": "Companion's Mark of the Troll Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Troll enemies.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Troll enemies."
+        },
+        {
+          "name": "Companion's Mark of the Undead Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Undead enemies.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Undead enemies."
+        }
+      ]
+    },
+    {
+      "category": "Companion PvE Ward Marks",
+      "versions": ["Rank 1", "Rank 2"],
+      "effect_note": "Companion-only. When an enemy of the listed type strikes the companion, it receives a damage reduction debuff for 10 seconds. Companion healing can also trigger the ward effect.",
+      "entries": [
+        {
+          "name": "Companion's Mark of the Demon Ward",
+          "rank_1_effect": "Demon enemies deal 5% less damage.",
+          "rank_2_effect": "Demon enemies deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Dragon Ward",
+          "rank_1_effect": "Dragon enemies deal 5% less damage.",
+          "rank_2_effect": "Dragon enemies deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Elemental Ward",
+          "rank_1_effect": "Elemental enemies deal 5% less damage.",
+          "rank_2_effect": "Elemental enemies deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Fey Ward",
+          "rank_1_effect": "Fey enemies deal 5% less damage.",
+          "rank_2_effect": "Fey enemies deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Giant Ward",
+          "rank_1_effect": "Giant enemies deal 5% less damage.",
+          "rank_2_effect": "Giant enemies deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Lycanthrope Ward",
+          "rank_1_effect": "Lycanthrope enemies deal 5% less damage.",
+          "rank_2_effect": "Lycanthrope enemies deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Orc Ward",
+          "rank_1_effect": "Orc enemies deal 5% less damage.",
+          "rank_2_effect": "Orc enemies deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Thayan Ward",
+          "rank_1_effect": "Thayan enemies deal 5% less damage.",
+          "rank_2_effect": "Thayan enemies deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Troll Ward",
+          "rank_1_effect": "Troll enemies deal 5% less damage.",
+          "rank_2_effect": "Troll enemies deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Undead Ward",
+          "rank_1_effect": "Undead enemies deal 5% less damage.",
+          "rank_2_effect": "Undead enemies deal 10% less damage."
+        }
+      ]
+    },
+    {
+      "category": "Companion PvP Slayer Marks",
+      "versions": ["Rank 1", "Rank 2"],
+      "effect_note": "Companion-only. No effect when equipped by a player.",
+      "entries": [
+        {
+          "name": "Companion's Mark of the Barbarian Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Barbarian player characters.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Barbarian player characters."
+        },
+        {
+          "name": "Companion's Mark of the Cleric Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Cleric player characters.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Cleric player characters."
+        },
+        {
+          "name": "Companion's Mark of the Fighter Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Fighter player characters.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Fighter player characters."
+        },
+        {
+          "name": "Companion's Mark of the Guardian Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Guardian player characters.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Guardian player characters."
+        },
+        {
+          "name": "Companion's Mark of the Paladin Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Paladin player characters.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Paladin player characters."
+        },
+        {
+          "name": "Companion's Mark of the Ranger Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Ranger player characters.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Ranger player characters."
+        },
+        {
+          "name": "Companion's Mark of the Rogue Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Rogue player characters.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Rogue player characters."
+        },
+        {
+          "name": "Companion's Mark of the Warlock Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Warlock player characters.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Warlock player characters."
+        },
+        {
+          "name": "Companion's Mark of the Wizard Slayer",
+          "rank_1_effect": "Companion attacks deal 25% extra damage against Wizard player characters.",
+          "rank_2_effect": "Companion attacks deal 50% extra damage against Wizard player characters."
+        }
+      ]
+    },
+    {
+      "category": "Companion PvP Ward Marks",
+      "versions": ["Rank 1", "Rank 2"],
+      "effect_note": "Companion-only. When the companion is struck by a player of the listed class, that player receives a damage reduction debuff for 10 seconds. Companion healing can also trigger the ward effect.",
+      "entries": [
+        {
+          "name": "Companion's Mark of the Barbarian Ward",
+          "rank_1_effect": "Barbarian player attackers deal 5% less damage.",
+          "rank_2_effect": "Barbarian player attackers deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Cleric Ward",
+          "rank_1_effect": "Cleric player attackers deal 5% less damage.",
+          "rank_2_effect": "Cleric player attackers deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Fighter Ward",
+          "rank_1_effect": "Fighter player attackers deal 5% less damage.",
+          "rank_2_effect": "Fighter player attackers deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Guardian Ward",
+          "rank_1_effect": "Guardian player attackers deal 5% less damage.",
+          "rank_2_effect": "Guardian player attackers deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Paladin Ward",
+          "rank_1_effect": "Paladin player attackers deal 5% less damage.",
+          "rank_2_effect": "Paladin player attackers deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Ranger Ward",
+          "rank_1_effect": "Ranger player attackers deal 5% less damage.",
+          "rank_2_effect": "Ranger player attackers deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Rogue Ward",
+          "rank_1_effect": "Rogue player attackers deal 5% less damage.",
+          "rank_2_effect": "Rogue player attackers deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Warlock Ward",
+          "rank_1_effect": "Warlock player attackers deal 5% less damage.",
+          "rank_2_effect": "Warlock player attackers deal 10% less damage."
+        },
+        {
+          "name": "Companion's Mark of the Wizard Ward",
+          "rank_1_effect": "Wizard player attackers deal 5% less damage.",
+          "rank_2_effect": "Wizard player attackers deal 10% less damage."
+        }
+      ]
+    },
+    {
+      "category": "Legacy Greater Draconic Glyph aliases",
+      "effect_note": "Some wiki pages use Greater/Lesser Dragon Glyph names, while the main table uses Black/Blue/Green/Red/White Dragon Glyph. Preserve these aliases only if needed to match old item records; do not count them as additional effects.",
+      "entries": [
+        {
+          "name": "Greater Black Dragon Glyph",
+          "same_family_as": "Black Dragon Glyph"
+        },
+        {
+          "name": "Greater Blue Dragon Glyph",
+          "same_family_as": "Blue Dragon Glyph"
+        },
+        {
+          "name": "Greater Green Dragon Glyph",
+          "same_family_as": "Green Dragon Glyph"
+        },
+        {
+          "name": "Greater Red Dragon Glyph",
+          "same_family_as": "Red Dragon Glyph"
+        },
+        {
+          "name": "Greater White Dragon Glyph",
+          "same_family_as": "White Dragon Glyph"
+        }
+      ]
+    }
+  ]
+}
