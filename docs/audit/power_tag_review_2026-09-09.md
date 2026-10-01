@@ -421,3 +421,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - VF-1 Shieldthrower (Vanguard T1): Shield Throw -> 325, 6 s cd, Increased Threat, no stun (explains the archived Vanguard screen) (2026-09-30, fine)
 - VF-2 Staying Power (Vanguard T1): Enforced Threat adds a 10 s threat-generation buff on all powers (~74% uptime); threat model only (2026-09-30, fine)
 - VF-3 Rising Tide (Vanguard T2): Tide of Iron cast -> 3 s window, +25 physical per multi-target attack; archived Tide of Iron screen (40 / 6 s, at-will 100) disagrees - 25/3 s locked, at-will 120-vs-100 = test (2026-09-30, n00b)
+- VF-4 Cleaving Bull (Vanguard T2): Bull Charge loses knockback, +40 physical per multi-target attack for 6 s (~51% uptime); explains the archived Tide of Iron 40/6 s line (2026-09-30, fine)
