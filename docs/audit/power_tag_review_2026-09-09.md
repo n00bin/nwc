@@ -468,3 +468,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RF-7 Landwaster (Dreadnought T4): Earthshaker above 50 Vengeance opens a 5 s window (data said 3 s - fixed) to fire a free Shockwave for 50 Vengeance; 2,200 area magnitude per AP bar (2026-10-01, fine)
 - RF-8 Striker's Mark (Dreadnought T4): dailies +400 vs a Physical Vulnerability Up target and the mark is consumed; single-boss pick; per-target + other-player debuff = test (2026-10-01, fine)
 - RF-9 Roiling Hatred (Dreadnought T5): +2 Vengeance per critical strike = the Vengeance income source; per-hit vs per-cast folded into the Crushing Blows test (2026-10-01, fine)
+- RF-10 Bloody Reprise (Dreadnought T5): dropping below 50% Vengeance opens 3 s in which the next encounter sets the gauge to 75; lifts the vengefulUptime default when taken; cooldown / same-cast = test. DREADNOUGHT FEATS COMPLETE 10/10 (2026-10-01, fine)
