@@ -616,3 +616,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RD-3 Snipe (Hunter copy): single ranged physical 1,900, 1.25 s, 1,000 AP (2026-10-01, fine)
 - RD-4 Slasher's Mark (Hunter): single melee physical 2,100 after an 83 ft leap + 10 s mark restoring stamina / Guard Meter on hits (amount + allies = test), 0.7 s, 1,000 AP (2026-10-01, fine)
 - RD-5 Disruptive Shot (Hunter): single ranged physical 400 + interrupt, 0.5 s, 250 AP (4 per bar). HUNTER DAILIES COMPLETE (2026-10-01, fine)
+- RM-1 Shift (Hunter): dodge while moving, brief immunity to most damage + control; stamina cost; utility scored 0 (2026-10-02, fine)
