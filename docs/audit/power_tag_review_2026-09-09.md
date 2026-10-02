@@ -607,3 +607,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RE-7b Gushing Wound (Hunter): single melee physical 400 + DoT 400 over 10 s (total), 1.3 s, BASE 15.5 s (2026-10-01, 15.5)
 - RE-8 Hawk Shot (Hunter): area 80 ft line ranged physical 275, 1.5 s, BASE 14.5 s (2026-10-01, 14.5)
 - RE-8b Hawkeye (Hunter): party +5% encounter-power damage within 100 ft for 5 s, 0.5 s, BASE 17.4 s (2026-10-01, 17.4)
+- RE-9 Commanding Shot (Hunter): single ranged physical 520 + PARTY 10% damage-taken debuff 10 s + Strong Grasping Roots, 1.4 s, BASE 14.5 s (2026-10-01, party; 14.5)
+- RE-9b Stag Heart (Hunter): party temp HP 15% max HP for 15 s within 100 ft, 0.5 s, BASE 19.4 s (2026-10-01, duration 15s; 19.4)
