@@ -618,3 +618,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RD-5 Disruptive Shot (Hunter): single ranged physical 400 + interrupt, 0.5 s, 250 AP (4 per bar). HUNTER DAILIES COMPLETE (2026-10-01, fine)
 - RM-1 Shift (Hunter): dodge while moving, brief immunity to most damage + control; stamina cost; utility scored 0 (2026-10-02, fine)
 - RM-2 Grasping Roots (Hunter): Weak 1.5 s root or 80 dmg vs immune, Strong 3 s or 175; boss = conversion to damage; model provisional, test (2026-10-02, test (model provisional))
+- RM-3 Ranged Stance / Melee Stance (Hunter): one toggle (0.4 s) picking the side of every at-will/encounter pair (rangerStance input, default ranged); old +5% Stamina Regen (ranged) / +5% Movement Speed (melee) not on the tooltip -> kept as an unscored NOTE (2026-10-02, note)
