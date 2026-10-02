@@ -3004,3 +3004,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Crushing Roots (Ranger) vs immune targets** — slot it and hit a boss: does the Grasping Roots conversion damage change from 80 / 175 (e.g. doubled with the duration)? (n00b, 2026-10-02).
 - [ ] **Aspect of the Serpent (Ranger) stacks** — what is the maximum stack count, and does a multi-hit attack (Rapid Strike combo, Valorous-style) spend one stack or one per hit? (n00b, 2026-10-02).
 - [ ] **Primal Instincts (Ranger Hunter)** — with it slotted, does Hawkeye read 6% and Stag Heart 18%, or do their durations get longer instead? (n00b, 2026-10-02).
+- [ ] **Critical Action (Ranger Hunter)** — cast a second daily inside the 10 s window: do the Critical Severity stacks add on top or replace the first set? (n00b, 2026-10-02).
