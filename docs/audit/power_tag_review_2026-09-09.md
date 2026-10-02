@@ -599,3 +599,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RE-3b Steel Breeze (Hunter copy): area 20 ft melee physical 250, +10% stamina per enemy hit, 0.5 s, BASE 13.5 s (2026-10-01, 13.5)
 - RE-4 Rain of Arrows (Hunter copy): area ranged physical 60 x 5 (300 per target), small area at 80 ft, 1 s, BASE 15.5 s (2026-10-01, 15.5)
 - RE-4b Rain of Swords (Hunter copy): area 15 ft melee physical 200 + DoT 50x4 over 8 s, 1.5 s, BASE 13.5 s (2026-10-01, 13.5)
+- RE-5 Cordon of Arrows (Hunter copy): trap at 80 ft, 225 + Strong Grasping Roots on an enemy entering 15 ft, max 3 out, 1.2 s, BASE 19.4 s; trigger behaviour = test (2026-10-01, needs a test; 19.4)
+- RE-5b Plant Growth (Hunter copy): area 20 ft melee physical 150 + DoT 50x4 over 4 s + Weak Grasping Roots, 0.7 s, BASE 19.4 s. HUNTER SHARED ENCOUNTERS DONE (2026-10-01, 19.4)
