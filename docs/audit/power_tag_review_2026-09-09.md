@@ -628,3 +628,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RC-6 Pathfinder's Action (Hunter): each Daily cast -> +5% Deflect and +10% move speed (unscored) for 10 s; Daily-cadence uptime (2026-10-02, fine)
 - RC-7 Cruel Recovery (Hunter): crit heals 1% max HP, once per 2 s (cap 0.5%/s); self-sustain, unscored for damage (2026-10-02, fine)
 - RC-8 Primal Instincts (Hunter): Hawkeye 5 -> 6% encounter damage, Stag Heart 15 -> 18% max HP shield (amount assumed, test). HUNTER CLASS FEATURES COMPLETE 8/8 (2026-10-02, fine)
+- Hunter RF-1 Longshot (Hunter T1 top): ranged encounters x1.5, melee encounters x0.5; reads rangerStance (2026-10-02, fine)
