@@ -622,3 +622,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RM-4 Forte (Hunter): Power 50 / Accuracy 25 / Deflect 25, already modeled (checked). HUNTER MECHANICS COMPLETE 4 icons (5 entries) (2026-10-02, fine)
 - RC-1 Seeker's Vengeance (Hunter copy, shared): +10% damage from behind; behindTarget TOGGLE (n00b), default off (2026-10-02, just a toggle: behind the boss or not)
 - RC-2 Crushing Roots (Hunter copy, shared): roots last twice as long + Weak 0.5 s / Strong 1 s daze; control only, 0 damage until tested whether the 80/175 immune hits change (2026-10-02, need to test if the damage changes)
+- RC-3 Aspect of the Pack (Hunter copy, shared): party Combat Advantage 1% per friendly affected incl. you, cap 5% (full group = 5%), needs an ally within 30 ft (2026-10-02, you count as 1 plus 1 per friendly (5-man = 5%))
