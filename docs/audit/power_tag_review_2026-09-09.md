@@ -597,3 +597,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RE-2b Marauder's Rush (Hunter copy): single melee physical 580 after an 83 ft rush, Confusion 1 s, 0.7 s, BASE 13.4 s (2026-10-01, 13.4)
 - RE-3 Constricting Arrow (Hunter copy): area 12 ft ranged physical 520, Strong Grasping Roots, 0.5 s, BASE 14.5 s (2026-10-01, 14.5)
 - RE-3b Steel Breeze (Hunter copy): area 20 ft melee physical 250, +10% stamina per enemy hit, 0.5 s, BASE 13.5 s (2026-10-01, 13.5)
+- RE-4 Rain of Arrows (Hunter copy): area ranged physical 60 x 5 (300 per target), small area at 80 ft, 1 s, BASE 15.5 s (2026-10-01, 15.5)
+- RE-4b Rain of Swords (Hunter copy): area 15 ft melee physical 200 + DoT 50x4 over 8 s, 1.5 s, BASE 13.5 s (2026-10-01, 13.5)
