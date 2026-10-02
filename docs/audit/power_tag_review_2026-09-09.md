@@ -636,3 +636,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - Hunter RF-6 Predator (Hunter T3 bottom): ranged encounter applies Prey (+10% your damage vs that target, 10 s, no early refresh) = ~always on one target in ranged stance (2026-10-02, fine)
 - Hunter RF-7 Forestbond (Hunter T4 top): each Strong root -10% / Weak -5% off all recharging cooldowns (~+20% casts/min); immune-boss counting = Grasping Roots test (2026-10-02, fine)
 - Hunter RF-8 Commander in Chief (Hunter T4 bottom): Commanding Shot adds +10% projectile damage for 10 s (~69% uptime); projectile scope = test (2026-10-02, fine)
+- Hunter RF-9 More Than Disruptive (Hunter T5 top): Disruptive Shot adds +10% ranged-power damage for 5 s (~33% uptime at default AP gain) (2026-10-02, fine)
