@@ -640,3 +640,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - Hunter RF-10 Slasher's Expertise (Hunter T5 bottom): Slasher's Mark adds +10% melee-power damage for 15 s (~25% uptime). HUNTER FEATS COMPLETE 10/10 (2026-10-02, fine)
 - HG-1 Nature (Hunter General): world interaction, utility scored 0. Row = 4 Ranger skills + Elven Accuracy / Wild Step (Wood Elf racial, races.json) (2026-10-02, fine)
 - HG-2 Lucky Skirmisher (Hunter General): +2.5% Deflect always on, already modeled (2026-10-02, fine)
+- HG-3 Stance Mastery (Hunter General): ranged +5% stamina regen / melee +5% move speed, follows rangerStance; both unscored for damage (2026-10-02, fine)
