@@ -601,3 +601,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RE-4b Rain of Swords (Hunter copy): area 15 ft melee physical 200 + DoT 50x4 over 8 s, 1.5 s, BASE 13.5 s (2026-10-01, 13.5)
 - RE-5 Cordon of Arrows (Hunter copy): trap at 80 ft, 225 + Strong Grasping Roots on an enemy entering 15 ft, max 3 out, 1.2 s, BASE 19.4 s; trigger behaviour = test (2026-10-01, needs a test; 19.4)
 - RE-5b Plant Growth (Hunter copy): area 20 ft melee physical 150 + DoT 50x4 over 4 s + Weak Grasping Roots, 0.7 s, BASE 19.4 s. HUNTER SHARED ENCOUNTERS DONE (2026-10-01, 19.4)
+- RE-6 Ambush (Hunter): self stealth; next attack +150, then targets take +10% from your attacks for 5 s; 0.5 s, BASE 14.5 s (2026-10-01, 14.5)
+- RE-6b Bear Trap (Hunter): trap at 30 ft, first enemy near it takes 220 + DoT 185 over 5 s + Hold 2 s + Slow 5 s; 0.47 s, BASE 9.7 s; trap behaviour + DoT basis = test (2026-10-01, mag 220, dot 185 5s, hold 2s, slow 5s; 9.7; test bear trap)
