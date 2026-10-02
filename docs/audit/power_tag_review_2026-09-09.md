@@ -623,3 +623,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RC-1 Seeker's Vengeance (Hunter copy, shared): +10% damage from behind; behindTarget TOGGLE (n00b), default off (2026-10-02, just a toggle: behind the boss or not)
 - RC-2 Crushing Roots (Hunter copy, shared): roots last twice as long + Weak 0.5 s / Strong 1 s daze; control only, 0 damage until tested whether the 80/175 immune hits change (2026-10-02, need to test if the damage changes)
 - RC-3 Aspect of the Pack (Hunter copy, shared): party Combat Advantage 1% per friendly affected incl. you, cap 5% (full group = 5%), needs an ally within 30 ft (2026-10-02, you count as 1 plus 1 per friendly (5-man = 5%))
+- RC-4 Aspect of the Serpent (Hunter copy, shared): +3% at-will/encounter damage per stack, stacks built in one stance buff the other, spent 1 per buffed attack; stanceSwapsPerMinute input default 0; max stacks + multi-hit spend = test (2026-10-02, fine)

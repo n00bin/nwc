@@ -3002,3 +3002,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Slasher's Mark (Ranger Hunter) mark** — how much stamina comes back per hit on the marked target, do allies hitting it get it too, and does a Fighter/Paladin ally get Guard Meter? (n00b, 2026-10-01).
 - [ ] **Grasping Roots (Ranger) on immune targets** — on a boss, does each Weak root land an 80 hit and each Strong root a 175 hit, and does Hindering Shot convert on every one of its 3 charges? (n00b, 2026-10-02).
 - [ ] **Crushing Roots (Ranger) vs immune targets** — slot it and hit a boss: does the Grasping Roots conversion damage change from 80 / 175 (e.g. doubled with the duration)? (n00b, 2026-10-02).
+- [ ] **Aspect of the Serpent (Ranger) stacks** — what is the maximum stack count, and does a multi-hit attack (Rapid Strike combo, Valorous-style) spend one stack or one per hit? (n00b, 2026-10-02).
