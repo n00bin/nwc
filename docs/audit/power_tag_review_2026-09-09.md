@@ -591,3 +591,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RH-3b Aimed Strike (Hunter): single melee physical 65 hit + DoT 65x5 over 10 s, 1.2 s cast; DoT refresh vs stack = test (2026-10-01, fine)
 - RH-4 Hunter's Teamwork (Hunter): single ranged physical 160 / 0.7 s, 80 ft; one-target 20 s supply mark (utility 0); stance pair with Careful Attack (2026-10-01, presented with the pair; n00b supplied the Careful Attack numbers)
 - RH-4b Careful Attack (Hunter): 10 s study mark at 80 ft; each At-Will/Encounter/Daily hit on the target adds 15; allies' hits counting = assumed, test (2026-10-01, mag 15 per hit duration 10s)
+- RE-1 Hindering Shot (Hunter copy): single ranged physical 130 x 3 charges (2 s apart), Weak Grasping Roots, 0.5 s, BASE 11.5 s (2026-10-01, 11.5)
+- RE-1b Hindering Strike (Hunter copy): area 15 ft melee physical 520, Strong Grasping Roots, 0.5 s, BASE 13.4 s (2026-10-01, 13.4)
