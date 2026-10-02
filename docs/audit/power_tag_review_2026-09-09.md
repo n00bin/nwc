@@ -626,3 +626,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RC-4 Aspect of the Serpent (Hunter copy, shared): +3% at-will/encounter damage per stack, stacks built in one stance buff the other, spent 1 per buffed attack; stanceSwapsPerMinute input default 0; max stacks + multi-hit spend = test (2026-10-02, fine)
 - RC-5 Aspect of the Falcon (Hunter): +10% ranged-power damage within 25 ft; reads the existing targetRangeFt slider (default 10 ft = on), no toggle (2026-10-02, no toggle - use the existing range slider)
 - RC-6 Pathfinder's Action (Hunter): each Daily cast -> +5% Deflect and +10% move speed (unscored) for 10 s; Daily-cadence uptime (2026-10-02, fine)
+- RC-7 Cruel Recovery (Hunter): crit heals 1% max HP, once per 2 s (cap 0.5%/s); self-sustain, unscored for damage (2026-10-02, fine)
