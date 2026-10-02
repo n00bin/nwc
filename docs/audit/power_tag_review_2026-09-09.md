@@ -593,3 +593,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RH-4b Careful Attack (Hunter): 10 s study mark at 80 ft; each At-Will/Encounter/Daily hit on the target adds 15; allies' hits counting = assumed, test (2026-10-01, mag 15 per hit duration 10s)
 - RE-1 Hindering Shot (Hunter copy): single ranged physical 130 x 3 charges (2 s apart), Weak Grasping Roots, 0.5 s, BASE 11.5 s (2026-10-01, 11.5)
 - RE-1b Hindering Strike (Hunter copy): area 15 ft melee physical 520, Strong Grasping Roots, 0.5 s, BASE 13.4 s (2026-10-01, 13.4)
+- RE-2 Marauder's Escape (Hunter copy): single ranged physical 550 total over 3 arrows + 50 ft back-dash, Confusion 1 s, 1.3 s, BASE 14.4 s (2026-10-01, 14.4)
+- RE-2b Marauder's Rush (Hunter copy): single melee physical 580 after an 83 ft rush, Confusion 1 s, 0.7 s, BASE 13.4 s (2026-10-01, 13.4)
