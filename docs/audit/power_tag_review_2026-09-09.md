@@ -613,3 +613,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RE-10b Windwalk Strike (Hunter): area dash-path melee physical 180 over 35 ft, 0.6 s, BASE 15 s. HUNTER ENCOUNTERS COMPLETE (2026-10-01, 15)
 - RD-1 Forest Ghost (Hunter copy): single melee physical 250 x 4 over 5 s while untargetable, 0 s cast, 500 AP (2026-10-01, fine)
 - RD-2 Seismic Shot (Hunter copy): area ranged physical 800 + pull, 1 s, 1,000 AP (2026-10-01, fine)
+- RD-3 Snipe (Hunter copy): single ranged physical 1,900, 1.25 s, 1,000 AP (2026-10-01, fine)
