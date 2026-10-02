@@ -587,3 +587,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RH-1b Rapid Strike (Hunter copy): single melee physical 4-hit combo 55/55/55/80 per 0.4 s (avg 61.25); stance pair with Rapid Shot (2026-10-01, fine)
 - RH-2 Split Shot (Hunter copy): area 75 deg cone ranged physical, focus 95-220 over 2.1 s (default full); stance pair with Split Strike (2026-10-01, fine)
 - RH-2b Split Strike (Hunter copy): area 8 ft melee physical 50 / 0.55 s with a short dash; stance pair with Split Shot (2026-10-01, fine)
+- RH-3 Aimed Shot (Hunter): single ranged physical 260 / 1 s, 80 ft; stance pair with Aimed Strike (2026-10-01, fine)
+- RH-3b Aimed Strike (Hunter): single melee physical 65 hit + DoT 65x5 over 10 s, 1.2 s cast; DoT refresh vs stack = test (2026-10-01, fine)
