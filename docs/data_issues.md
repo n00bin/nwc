@@ -3005,3 +3005,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Aspect of the Serpent (Ranger) stacks** — what is the maximum stack count, and does a multi-hit attack (Rapid Strike combo, Valorous-style) spend one stack or one per hit? (n00b, 2026-10-02).
 - [ ] **Primal Instincts (Ranger Hunter)** — with it slotted, does Hawkeye read 6% and Stag Heart 18%, or do their durations get longer instead? (n00b, 2026-10-02).
 - [ ] **Critical Action (Ranger Hunter)** — cast a second daily inside the 10 s window: do the Critical Severity stacks add on top or replace the first set? (n00b, 2026-10-02).
+- [ ] **Commander in Chief (Ranger Hunter)** — during the 10 s buff, do all ranged-stance powers (at-wills, encounters, dailies) hit 10% harder, or only some? (n00b, 2026-10-02).
