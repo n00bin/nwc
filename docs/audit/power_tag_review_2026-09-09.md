@@ -614,3 +614,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RD-1 Forest Ghost (Hunter copy): single melee physical 250 x 4 over 5 s while untargetable, 0 s cast, 500 AP (2026-10-01, fine)
 - RD-2 Seismic Shot (Hunter copy): area ranged physical 800 + pull, 1 s, 1,000 AP (2026-10-01, fine)
 - RD-3 Snipe (Hunter copy): single ranged physical 1,900, 1.25 s, 1,000 AP (2026-10-01, fine)
+- RD-4 Slasher's Mark (Hunter): single melee physical 2,100 after an 83 ft leap + 10 s mark restoring stamina / Guard Meter on hits (amount + allies = test), 0.7 s, 1,000 AP (2026-10-01, fine)
