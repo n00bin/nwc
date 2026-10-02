@@ -3001,3 +3001,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Rapid Volley (Ranger Hunter) charges** — does the 4.8 s cooldown refill one charge at a time or all five at once, and is there a delay between charge uses (Hindering Shot has 2 s)? (n00b, 2026-10-01).
 - [ ] **Slasher's Mark (Ranger Hunter) mark** — how much stamina comes back per hit on the marked target, do allies hitting it get it too, and does a Fighter/Paladin ally get Guard Meter? (n00b, 2026-10-01).
 - [ ] **Grasping Roots (Ranger) on immune targets** — on a boss, does each Weak root land an 80 hit and each Strong root a 175 hit, and does Hindering Shot convert on every one of its 3 charges? (n00b, 2026-10-02).
+- [ ] **Crushing Roots (Ranger) vs immune targets** — slot it and hit a boss: does the Grasping Roots conversion damage change from 80 / 175 (e.g. doubled with the duration)? (n00b, 2026-10-02).
