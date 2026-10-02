@@ -631,3 +631,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - Hunter RF-1 Longshot (Hunter T1 top): ranged encounters x1.5, melee encounters x0.5; reads rangerStance (2026-10-02, fine)
 - Hunter RF-2 Rate of Change (Hunter T1 bottom): stance swap -> 15% dmg decaying 5% per 3 s over 9 s (avg 10%), refreshed by the next swap; reads stanceSwapsPerMinute (2026-10-02, fine)
 - Hunter RF-3 Critical Action (Hunter T2 top): +6% Critical Severity per 25% AP spent on a daily (1,000 AP = +24%) for 10 s; second-daily stacking = test (2026-10-02, fine)
+- Hunter RF-4 Thorned Roots (Hunter T2 bottom): Strong roots tick 75/s; immune conversion 175 -> 225 (single hit assumed, folded into the Grasping Roots test) (2026-10-02, fine)
