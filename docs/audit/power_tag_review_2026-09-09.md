@@ -605,3 +605,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - RE-6b Bear Trap (Hunter): trap at 30 ft, first enemy near it takes 220 + DoT 185 over 5 s + Hold 2 s + Slow 5 s; 0.47 s, BASE 9.7 s; trap behaviour + DoT basis = test (2026-10-01, mag 220, dot 185 5s, hold 2s, slow 5s; 9.7; test bear trap)
 - RE-7 Longstrider's Shot (Hunter): single ranged physical 650, 0.6 s, BASE 13.5 s (2026-10-01, 13.5)
 - RE-7b Gushing Wound (Hunter): single melee physical 400 + DoT 400 over 10 s (total), 1.3 s, BASE 15.5 s (2026-10-01, 15.5)
+- RE-8 Hawk Shot (Hunter): area 80 ft line ranged physical 275, 1.5 s, BASE 14.5 s (2026-10-01, 14.5)
+- RE-8b Hawkeye (Hunter): party +5% encounter-power damage within 100 ft for 5 s, 0.5 s, BASE 17.4 s (2026-10-01, 17.4)
