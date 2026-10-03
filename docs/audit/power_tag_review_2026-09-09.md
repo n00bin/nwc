@@ -702,3 +702,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - Warden WF-8 To the Wind (Warden T4 bottom): Throw Caution buff 10 -> 15% for its 5 s (~+2% avg); needs Throw Caution slotted (2026-10-03, fine)
 - Warden WF-9 Enhanced Conductivity (Warden T5 top): Call of the Storm enchant strike 100 -> 150 (+500 per cast, ~+1,000 per AP bar) (2026-10-03, fine)
 - Warden WF-10 Nature's Envoy (Warden T5 bottom): Forest Ghost adds +15% power damage for 10 s (~33% uptime, ~+5% avg). WARDEN FEATS COMPLETE 10/10 (2026-10-03, fine)
+- WG-1 Nature (Warden General): same as Hunter - world interaction, utility scored 0 (2026-10-03, fine)
