@@ -719,3 +719,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WK-7 Path of the Blade (Whisperknife copy): area melee physical 140 x 4 over 6 s, 0.8 s, BASE 15.5 s; Stealth = same total in 3 s (2026-10-03, 15.5)
 - WK-8 Smoke Bomb (Whisperknife copy): area 20 ft, poison 120 x 4 (MAGICAL, provisional), Daze 4 s, 0.5 s, BASE 14.5 s; Stealth = party Combat Advantage vs enemies inside (2026-10-03, poison magical (i think); 14.5)
 - WK-9 Bait and Switch (Whisperknife copy): utility decoy (50% max HP, taunts trash in 20 ft, AP on decoy hits), 0.65 s, BASE 23.3 s; Stealth = refill the Stealth meter and stay stealthed. WHISPERKNIFE SHARED ENCOUNTERS DONE (2026-10-03, 23.3)
+- WK-10 Vengeance's Pursuit (Whisperknife): 200 dagger + teleport 250 area (450), target outgoing dmg -5% 8 s, 0.7 s, BASE 9.7 s; Stealth = keeps Stealth, follow-up 715 single + Stun 1 s (915) (2026-10-03, 9.7)
