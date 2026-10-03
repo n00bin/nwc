@@ -667,3 +667,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WE-6b Throw Caution (Warden): single melee physical 500 + self +10% damage 5 s, 0.5 s, BASE 11.6 s (2026-10-02, 11.6)
 - WE-7 Boar Hide (Warden): party 5 stacks Thick Skin +2% Defense each (100 ft), one stack lost per hit taken, 0.5 s, BASE 19.4 s (2026-10-02, 19.4)
 - WE-7b Boar Charge (Warden): single melee physical 585 after a 26 ft charge, Knockdown 1 s, 0.1 s, BASE 15.5 s (2026-10-02, 15.5)
+- WE-8 Fox's Cunning (Warden): party -10% damage taken 8 s within 100 ft, 0.5 s, BASE 21.3 s (2026-10-02, 21.3)
+- WE-8b Fox Shift (Warden): 3 dashes x 400 (1,200) spread over nearby enemies, Slow 7 s, 0.1 s, BASE 17.4 s (2026-10-02, 17.4)
