@@ -678,3 +678,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WD-3 Snipe (Warden copy): single ranged physical 1,900, 1.25 s, 1,000 AP; same as Hunter (2026-10-03, fine)
 - WD-4 Cold Steel Hurricane (Warden): area ranged MAGICAL (lightning) 1,000 + Slow 3 s, 60 ft, 1.5 s, 1,000 AP; linger/re-hit = test (2026-10-03, fine)
 - WD-5 Call of the Storm (Warden): area 15 ft MAGICAL 400 + 10 s weapon enchant adding a 100 magical strike once per second, 1 s, 500 AP. WARDEN DAILIES COMPLETE (2026-10-03, fine)
+- WM-1 Shift (Warden): dodge while moving, brief immunity; utility scored 0; same as Hunter (2026-10-03, fine)
