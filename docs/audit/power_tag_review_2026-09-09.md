@@ -661,3 +661,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WE-3b Steel Breeze (Warden copy): area 20 ft radius melee physical 250, +10% stamina per enemy hit, BASE 13.5 s (2026-10-02, radius 20, 13.5)
 - WE-4 Rain of Arrows (Warden copy): area ranged physical 60 x 5, 80 ft, 1 s, BASE 15.5 s (2026-10-02, 15.5)
 - WE-4b Rain of Swords (Warden copy): area 15 ft melee physical 200 + DoT 50x4 over 8 s, 1.5 s, BASE 13.5 s (2026-10-02, 13.5)
+- WE-5 Cordon of Arrows (Warden copy): trap 225 + Strong Grasping Roots, max 3, BASE 19.4 s (n00b, despite 17.3 shown) (2026-10-02, 19.4)
+- WE-5b Plant Growth (Warden copy): area 20 ft melee physical 150 + DoT 50x4 over 4 s + Weak Grasping Roots, BASE 19.4 s. WARDEN SHARED ENCOUNTERS DONE (2026-10-02, 19.4)
