@@ -3009,3 +3009,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Storm Strike (Ranger Warden) combo length** — how many hits does the combo take before the lightning finisher fires its 55 splash? (n00b, 2026-10-01).
 - [ ] **Cold Steel Hurricane (Ranger Warden)** — does the storm linger and damage the same enemy repeatedly, or is it one 1,000 hit per enemy? (n00b, 2026-10-01).
 - [ ] **Stormstep Action (Ranger Warden)** — how many seconds come off encounter cooldowns after a 500 AP daily (Call of the Storm) vs a 1,000 AP daily? (n00b, 2026-10-03).
+- [ ] **Blade Storm (Ranger Warden)** — when it procs on a single boss with nothing else nearby, does the boss take the extra 20% burst? (n00b, 2026-10-03).
