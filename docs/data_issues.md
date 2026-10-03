@@ -3011,3 +3011,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Stormstep Action (Ranger Warden)** — how many seconds come off encounter cooldowns after a 500 AP daily (Call of the Storm) vs a 1,000 AP daily? (n00b, 2026-10-03).
 - [ ] **Blade Storm (Ranger Warden)** — when it procs on a single boss with nothing else nearby, does the boss take the extra 20% burst? (n00b, 2026-10-03).
 - [ ] **Storm's Recovery (Ranger Warden)** — does each charge of Hindering Shot count as a use and refund 3 s to the other ranged encounters (3 charges = 9 s)? (Hint: Swiftness of the Fox cuts Hindering Shot's refund to 1 s, which suggests each charge does count.) (n00b, 2026-10-03).
+- [ ] **Blade Hurricane (Ranger Warden)** — does the 3 s Flurry window start when the encounter cast begins or when it finishes? (n00b, 2026-10-03).

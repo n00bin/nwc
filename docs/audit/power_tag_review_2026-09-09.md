@@ -695,3 +695,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - Warden WF-2 Focused (Warden T1 bottom): +4%/s in a stance up to +20% after 5 s on that stance powers, reset on swap; ~19% avg with 0 swaps (2026-10-03, fine)
 - Warden WF-3 Storm's Recovery (Warden T2 top): each encounter cast cuts 3 s off the other same-stance encounters (~+60% casts with 3 slotted); Hindering Shot per-charge = test (2026-10-03, fine)
 - Warden WF-4 Swiftness of the Fox (Warden T2 bottom): +5% power damage always on; encounters cut the OTHER stance cooldowns by 2 s (Cordon / Hindering Shot 1 s), weaving only (2026-10-03, fine)
+- Warden WF-5 Blade Hurricane (Warden T3 top): each encounter cast -> 3 s of doubled same-stance at-will damage (~58% uptime, ~95% with Storm's Recovery); window start = test (2026-10-03, fine)
