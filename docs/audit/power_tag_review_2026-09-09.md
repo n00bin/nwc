@@ -692,3 +692,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WC-7 Twin-Blade Storm (Warden): +8% damage on attacks that hit 3+ enemies; reads the existing enemyCount slider (2026-10-03, fine)
 - WC-8 Aspect of the Lone Wolf (Warden): +5% Accuracy always on; +1% Deflect per enemy within 30 ft (cap 10%) via the existing enemyCount + range sliders. WARDEN CLASS FEATURES COMPLETE 8/8 (2026-10-03, fine)
 - Warden WF-1 Deft Strikes (Warden T1 top): encounter in one stance -> the other stance encounters +30% for 3 s; weaving only, reads stanceSwapsPerMinute (2026-10-03, fine)
+- Warden WF-2 Focused (Warden T1 bottom): +4%/s in a stance up to +20% after 5 s on that stance powers, reset on swap; ~19% avg with 0 swaps (2026-10-03, fine)
