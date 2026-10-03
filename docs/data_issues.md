@@ -3006,9 +3006,10 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Primal Instincts (Ranger Hunter)** — with it slotted, does Hawkeye read 6% and Stag Heart 18%, or do their durations get longer instead? (n00b, 2026-10-02).
 - [ ] **Critical Action (Ranger Hunter)** — cast a second daily inside the 10 s window: do the Critical Severity stacks add on top or replace the first set? (n00b, 2026-10-02).
 - [ ] **Commander in Chief (Ranger Hunter)** — during the 10 s buff, do all ranged-stance powers (at-wills, encounters, dailies) hit 10% harder, or only some? (n00b, 2026-10-02).
-- [ ] **Storm Strike (Ranger Warden) combo length** — how many hits does the combo take before the lightning finisher fires its 55 splash? (n00b, 2026-10-01).
+- [x] **Storm Strike (Ranger Warden) combo length** RESOLVED 2026-10-03: 3 hits, lightning on the third (Storm Conduit feat tooltip). Original question: — how many hits does the combo take before the lightning finisher fires its 55 splash? (n00b, 2026-10-01).
 - [ ] **Cold Steel Hurricane (Ranger Warden)** — does the storm linger and damage the same enemy repeatedly, or is it one 1,000 hit per enemy? (n00b, 2026-10-01).
 - [ ] **Stormstep Action (Ranger Warden)** — how many seconds come off encounter cooldowns after a 500 AP daily (Call of the Storm) vs a 1,000 AP daily? (n00b, 2026-10-03).
 - [ ] **Blade Storm (Ranger Warden)** — when it procs on a single boss with nothing else nearby, does the boss take the extra 20% burst? (n00b, 2026-10-03).
 - [ ] **Storm's Recovery (Ranger Warden)** — does each charge of Hindering Shot count as a use and refund 3 s to the other ranged encounters (3 charges = 9 s)? (Hint: Swiftness of the Fox cuts Hindering Shot's refund to 1 s, which suggests each charge does count.) (n00b, 2026-10-03).
 - [ ] **Blade Hurricane (Ranger Warden)** — does the 3 s Flurry window start when the encounter cast begins or when it finishes? (n00b, 2026-10-03).
+- [ ] **Storm Conduit (Ranger Warden)** — how long does the Storm Conduit debuff last on the target after one lightning hit? (n00b, 2026-10-03).
