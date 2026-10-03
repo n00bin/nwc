@@ -663,3 +663,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WE-4b Rain of Swords (Warden copy): area 15 ft melee physical 200 + DoT 50x4 over 8 s, 1.5 s, BASE 13.5 s (2026-10-02, 13.5)
 - WE-5 Cordon of Arrows (Warden copy): trap 225 + Strong Grasping Roots, max 3, BASE 19.4 s (n00b, despite 17.3 shown) (2026-10-02, 19.4)
 - WE-5b Plant Growth (Warden copy): area 20 ft melee physical 150 + DoT 50x4 over 4 s + Weak Grasping Roots, BASE 19.4 s. WARDEN SHARED ENCOUNTERS DONE (2026-10-02, 19.4)
+- WE-6 Split the Sky (Warden): storm 30 ft at 80 ft, 5 x 225 MAGICAL (lightning) strikes on random enemies + Slow 3 s, 1.5 s, BASE 17.4 s (2026-10-02, 17.4)
+- WE-6b Throw Caution (Warden): single melee physical 500 + self +10% damage 5 s, 0.5 s, BASE 11.6 s (2026-10-02, 11.6)
