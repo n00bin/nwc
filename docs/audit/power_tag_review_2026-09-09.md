@@ -714,3 +714,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WK-2 Sly Flourish (Whisperknife copy): single melee physical combo from 40 at 0.26 s per swing; ramp + combo length unknown -> scored at the floor, test (2026-10-03, fine; combo values unknown)
 - WK-3 Disheartening Strike (Whisperknife): single ranged physical 75 + DoT 450 over 10 s + party 5% physical/projectile vulnerability 10 s; maintenance cast; DoT stacking = test (2026-10-03, fine)
 - WK-4 Shuriken Toss (Whisperknife): ranged physical 60 / 0.53 s, ricochets to 2 more (max 3 targets). WHISPERKNIFE AT-WILLS COMPLETE (2026-10-03, fine)
+- WK-5 Blade Flurry (Whisperknife copy): area 15 ft melee physical 330, 0.45 s, BASE 11.6 s; Stealth = 25 ft radius and no cooldown (2026-10-03, 11.6)
