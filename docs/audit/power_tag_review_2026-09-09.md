@@ -675,3 +675,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WE-10b Thorn Strike (Warden): single melee physical execute 500-750 by target missing HP (enemyHealthPct slider), 0.7 s, BASE 11.6 s. WARDEN ENCOUNTERS COMPLETE (2026-10-02, 11.6)
 - WD-1 Forest Ghost (Warden copy): 250 x 4 over 5 s while untargetable, 0 s cast, 500 AP; same as Hunter (2026-10-03, fine)
 - WD-2 Seismic Shot (Warden copy): area ranged physical 800 + pull, 1 s, 1,000 AP; same as Hunter (2026-10-03, fine)
+- WD-3 Snipe (Warden copy): single ranged physical 1,900, 1.25 s, 1,000 AP; same as Hunter (2026-10-03, fine)
