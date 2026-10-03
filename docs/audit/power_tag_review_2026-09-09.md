@@ -681,3 +681,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WM-1 Shift (Warden): dodge while moving, brief immunity; utility scored 0; same as Hunter (2026-10-03, fine)
 - WM-2 Grasping Roots (Warden): same provisional model as Hunter; Warden sources Weak = Hindering Shot, Plant Growth; Strong = Hindering Strike, Constricting Arrow, Cordon, Binding Arrow (2026-10-03, fine (provisional, same test as Hunter))
 - WM-3 Ranged Stance / Melee Stance (Warden): same toggle as Hunter; WARDEN default stance = MELEE (Hunter = ranged); +5% bonuses sourced to Stance Mastery (2026-10-03, fine and melee)
+- WM-4 Forte (Warden): Power 50 / Accuracy 25 / Deflect 25, already modeled (checked) (2026-10-03, fine)
