@@ -671,3 +671,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WE-8b Fox Shift (Warden): 3 dashes x 400 (1,200) spread over nearby enemies, Slow 7 s, 0.1 s, BASE 17.4 s (2026-10-02, 17.4)
 - WE-9 Binding Arrow (Warden): single ranged physical 1,000 + Strong Grasping Roots, 0.7 s, BASE 17.4 s (2026-10-02, 17.4)
 - WE-9b Oak Skin (Warden): self heal 9% max HP over 9 s + 10% incoming healing; allies 4.5% + 5%; 0.6 s, BASE 17.4 s (2026-10-02, 17.4)
+- WE-10 Thorn Ward (Warden): summoned ward 6 x 200 on one target + party +10% physical/projectile vulnerability refreshed per hit (10 s), 1.5 s, BASE 21.3 s (2026-10-02, 21.3)
+- WE-10b Thorn Strike (Warden): single melee physical execute 500-750 by target missing HP (enemyHealthPct slider), 0.7 s, BASE 11.6 s. WARDEN ENCOUNTERS COMPLETE (2026-10-02, 11.6)
