@@ -641,3 +641,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - HG-1 Nature (Hunter General): world interaction, utility scored 0. Row = 4 Ranger skills + Elven Accuracy / Wild Step (Wood Elf racial, races.json) (2026-10-02, fine)
 - HG-2 Lucky Skirmisher (Hunter General): +2.5% Deflect always on, already modeled (2026-10-02, fine)
 - HG-3 Stance Mastery (Hunter General): ranged +5% stamina regen / melee +5% move speed, follows rangerStance; both unscored for damage (2026-10-02, fine)
+- HG-4 Weapon Mastery (Hunter General): +2.5% Critical Strike always on, already modeled. HUNTER COMPLETE (at-wills 4 slots, encounters 10 slots, dailies 5, mechanics 4 icons, features 8, feats 10, General 4) (2026-10-02, fine)
