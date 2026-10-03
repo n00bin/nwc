@@ -659,3 +659,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WE-2b Marauder's Rush (Warden copy): 580 after an 83 ft rush, Confusion 1 s, BASE 13.5 s (2026-10-02, 13.5 (Hunter too))
 - WE-3 Constricting Arrow (Warden copy): area 12 ft radius at 80 ft range, ranged physical 520, Strong Grasping Roots, BASE 14.5 s (2026-10-02, range 80, radius 12, 14.5)
 - WE-3b Steel Breeze (Warden copy): area 20 ft radius melee physical 250, +10% stamina per enemy hit, BASE 13.5 s (2026-10-02, radius 20, 13.5)
+- WE-4 Rain of Arrows (Warden copy): area ranged physical 60 x 5, 80 ft, 1 s, BASE 15.5 s (2026-10-02, 15.5)
+- WE-4b Rain of Swords (Warden copy): area 15 ft melee physical 200 + DoT 50x4 over 8 s, 1.5 s, BASE 13.5 s (2026-10-02, 13.5)
