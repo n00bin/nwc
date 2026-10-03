@@ -653,3 +653,7 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CORRECTION (n00b 2026-10-02): Hunter Hindering Shot base 11.5 -> 11.6 s, Hindering Strike 13.4 -> 13.5 s (same as the Warden).
 - WE-1 Hindering Shot (Warden copy): single ranged physical 130 x 3 charges, Weak Grasping Roots, BASE 11.6 s (2026-10-02, 11.6 (Hunter too))
 - WE-1b Hindering Strike (Warden copy): area 15 ft melee physical 520, Strong Grasping Roots, BASE 13.5 s (2026-10-02, 13.5 (Hunter too))
+- CORRECTION (n00b 2026-10-02): Hunter Marauder's Escape base 14.4 -> 14.5 s.
+- CORRECTION (n00b 2026-10-02): Hunter Marauder's Rush base 13.4 -> 13.5 s.
+- WE-2 Marauder's Escape (Warden copy): 550 over 3 arrows + back-dash, Confusion 1 s, BASE 14.5 s (2026-10-02, 14.5 (Hunter too))
+- WE-2b Marauder's Rush (Warden copy): 580 after an 83 ft rush, Confusion 1 s, BASE 13.5 s (2026-10-02, 13.5 (Hunter too))
