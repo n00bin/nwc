@@ -685,3 +685,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WM-5 Fighting Style Mastery (Warden, ADDED from screenshot): automatic passive raising Rapid Shot 65 -> 90 and Rapid Strike 55/80 -> 80/120; ALREADY reflected in the Warden entries, engine must not re-apply. WARDEN MECHANICS COMPLETE 5 icons (2026-10-03, fine)
 - WC-1 Seeker's Vengeance (Warden copy, shared): screen identical to Hunter, same model (2026-10-03, fine)
 - WC-2 Crushing Roots (Warden copy, shared): screen identical to Hunter, same model (2026-10-03, fine)
+- WC-3 Aspect of the Pack (Warden copy, shared): screen identical to Hunter, same model (2026-10-03, fine)
