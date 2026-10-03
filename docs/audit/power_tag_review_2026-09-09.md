@@ -646,3 +646,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WA-1b Rapid Strike (Warden copy): single melee physical combo 80/80/80/120 (Hunter 55/80) - Warden base per n00b (2026-10-02, 90 and 80/120 are the base)
 - WA-2 Split Shot (Warden copy): area cone ranged physical focus 95-220 over 2.1 s; same as Hunter (2026-10-02, fine)
 - WA-2b Split Strike (Warden copy): area 8 ft melee physical 50 / 0.55 s; same as Hunter (2026-10-02, fine)
+- WA-3 Electric Shot (Warden): area 25 ft around target, ranged, MAGICAL (lightning) 100 / 0.7 s (2026-10-02, lightning damage should be magical)
+- WA-3b Clear the Ground (Warden): area 15 ft melee MAGICAL (lightning) 60 / 0.4 s (2026-10-02, lightning damage should be magical)
