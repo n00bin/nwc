@@ -716,3 +716,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WK-4 Shuriken Toss (Whisperknife): ranged physical 60 / 0.53 s, ricochets to 2 more (max 3 targets). WHISPERKNIFE AT-WILLS COMPLETE (2026-10-03, fine)
 - WK-5 Blade Flurry (Whisperknife copy): area 15 ft melee physical 330, 0.45 s, BASE 11.6 s; Stealth = 25 ft radius and no cooldown (2026-10-03, 11.6)
 - WK-6 Lashing Blade (Whisperknife copy): single melee physical 715, 1 s, BASE 11.6 s; Stealth adds a 300 hit (1,015) (2026-10-03, yes (11.6))
+- WK-7 Path of the Blade (Whisperknife copy): area melee physical 140 x 4 over 6 s, 0.8 s, BASE 15.5 s; Stealth = same total in 3 s (2026-10-03, 15.5)
