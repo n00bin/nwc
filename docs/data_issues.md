@@ -3007,3 +3007,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Critical Action (Ranger Hunter)** — cast a second daily inside the 10 s window: do the Critical Severity stacks add on top or replace the first set? (n00b, 2026-10-02).
 - [ ] **Commander in Chief (Ranger Hunter)** — during the 10 s buff, do all ranged-stance powers (at-wills, encounters, dailies) hit 10% harder, or only some? (n00b, 2026-10-02).
 - [ ] **Storm Strike (Ranger Warden) combo length** — how many hits does the combo take before the lightning finisher fires its 55 splash? (n00b, 2026-10-01).
+- [ ] **Cold Steel Hurricane (Ranger Warden)** — does the storm linger and damage the same enemy repeatedly, or is it one 1,000 hit per enemy? (n00b, 2026-10-01).

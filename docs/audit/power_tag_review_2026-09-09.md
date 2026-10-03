@@ -676,3 +676,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WD-1 Forest Ghost (Warden copy): 250 x 4 over 5 s while untargetable, 0 s cast, 500 AP; same as Hunter (2026-10-03, fine)
 - WD-2 Seismic Shot (Warden copy): area ranged physical 800 + pull, 1 s, 1,000 AP; same as Hunter (2026-10-03, fine)
 - WD-3 Snipe (Warden copy): single ranged physical 1,900, 1.25 s, 1,000 AP; same as Hunter (2026-10-03, fine)
+- WD-4 Cold Steel Hurricane (Warden): area ranged MAGICAL (lightning) 1,000 + Slow 3 s, 60 ft, 1.5 s, 1,000 AP; linger/re-hit = test (2026-10-03, fine)
