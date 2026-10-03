@@ -665,3 +665,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WE-5b Plant Growth (Warden copy): area 20 ft melee physical 150 + DoT 50x4 over 4 s + Weak Grasping Roots, BASE 19.4 s. WARDEN SHARED ENCOUNTERS DONE (2026-10-02, 19.4)
 - WE-6 Split the Sky (Warden): storm 30 ft at 80 ft, 5 x 225 MAGICAL (lightning) strikes on random enemies + Slow 3 s, 1.5 s, BASE 17.4 s (2026-10-02, 17.4)
 - WE-6b Throw Caution (Warden): single melee physical 500 + self +10% damage 5 s, 0.5 s, BASE 11.6 s (2026-10-02, 11.6)
+- WE-7 Boar Hide (Warden): party 5 stacks Thick Skin +2% Defense each (100 ft), one stack lost per hit taken, 0.5 s, BASE 19.4 s (2026-10-02, 19.4)
+- WE-7b Boar Charge (Warden): single melee physical 585 after a 26 ft charge, Knockdown 1 s, 0.1 s, BASE 15.5 s (2026-10-02, 15.5)
