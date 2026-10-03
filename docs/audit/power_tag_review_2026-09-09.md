@@ -699,3 +699,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - Warden WF-6 Storm Conduit (Warden T3 bottom): listed lightning hits apply +10% damage taken from YOUR powers; always on with a lightning at-will; duration = test (2026-10-03, fine)
 - RESOLVED 2026-10-03: Storm Strike combo = 3 hits, lightning splash on the third (Storm Conduit tooltip); test item closed.
 - Warden WF-7 Skirmisher's Gambit (Warden T4 top): +10% Critical Severity always on (uncapped, on the sheet) (2026-10-03, fine)
+- Warden WF-8 To the Wind (Warden T4 bottom): Throw Caution buff 10 -> 15% for its 5 s (~+2% avg); needs Throw Caution slotted (2026-10-03, fine)
