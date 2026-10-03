@@ -642,3 +642,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - HG-2 Lucky Skirmisher (Hunter General): +2.5% Deflect always on, already modeled (2026-10-02, fine)
 - HG-3 Stance Mastery (Hunter General): ranged +5% stamina regen / melee +5% move speed, follows rangerStance; both unscored for damage (2026-10-02, fine)
 - HG-4 Weapon Mastery (Hunter General): +2.5% Critical Strike always on, already modeled. HUNTER COMPLETE (at-wills 4 slots, encounters 10 slots, dailies 5, mechanics 4 icons, features 8, feats 10, General 4) (2026-10-02, fine)
+- WA-1 Rapid Shot (Warden copy): single ranged physical 90 / 0.4 s (Hunter 65) - Warden base per n00b (2026-10-02, 90 and 80/120 are the base)
+- WA-1b Rapid Strike (Warden copy): single melee physical combo 80/80/80/120 (Hunter 55/80) - Warden base per n00b (2026-10-02, 90 and 80/120 are the base)
