@@ -689,3 +689,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WC-4 Aspect of the Serpent (Warden copy, shared): screen identical to Hunter, same model (2026-10-03, fine)
 - WC-5 Stormstep Action (Warden): each Daily cast cuts encounter cooldowns by up to 2 s, scaled by AP spent (proportional assumed); small value; scaling = test (2026-10-03, fine)
 - WC-6 Blade Storm (Warden): melee damage 20% chance to deal +20% of the hit as an area burst (expected +4% melee, more on packs); whether it hits the primary target = test (2026-10-03, fine)
+- WC-7 Twin-Blade Storm (Warden): +8% damage on attacks that hit 3+ enemies; reads the existing enemyCount slider (2026-10-03, fine)
