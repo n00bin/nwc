@@ -722,3 +722,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WK-10 Vengeance's Pursuit (Whisperknife): 200 dagger + teleport 250 area (450), target outgoing dmg -5% 8 s, 0.7 s, BASE 9.7 s; Stealth = keeps Stealth, follow-up 715 single + Stun 1 s (915) (2026-10-03, 9.7)
 - WK-11 Blitz (Whisperknife): area 90 deg cone ranged physical 450, 0.9 s, BASE 13.5 s; Stealth = encounter cooldowns -2 s (self-inclusion = test) (2026-10-03, 13.5)
 - WK-12 Impact Shot (Whisperknife): single ranged physical 600, 0.9 s, BASE 9.7 s; Stealth = Stun 2 s (2026-10-03, yes (9.7))
+- WK-13 Shadow Strike (Whisperknife): single ranged physical 775, +20% Stealth on hit, party 5% physical/projectile vulnerability 10 s, 1 s, BASE 13.5 s; Stealth = keeps Stealth + Daze 3 s; debuff stacking with Disheartening Strike = test (2026-10-03, yes (13.5))
