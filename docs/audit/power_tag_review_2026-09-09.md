@@ -650,3 +650,6 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WA-3b Clear the Ground (Warden): area 15 ft melee MAGICAL (lightning) 60 / 0.4 s (2026-10-02, lightning damage should be magical)
 - WA-4 Penetrating Arrows (Warden): area line ranged physical 90 / 0.7 s (2026-10-02, fine)
 - WA-4b Storm Strike (Warden): single melee physical 110 combo, finisher adds a 55 MAGICAL (lightning) splash to nearby enemies; combo length = test (2026-10-02, test, fine)
+- CORRECTION (n00b 2026-10-02): Hunter Hindering Shot base 11.5 -> 11.6 s, Hindering Strike 13.4 -> 13.5 s (same as the Warden).
+- WE-1 Hindering Shot (Warden copy): single ranged physical 130 x 3 charges, Weak Grasping Roots, BASE 11.6 s (2026-10-02, 11.6 (Hunter too))
+- WE-1b Hindering Strike (Warden copy): area 15 ft melee physical 520, Strong Grasping Roots, BASE 13.5 s (2026-10-02, 13.5 (Hunter too))
