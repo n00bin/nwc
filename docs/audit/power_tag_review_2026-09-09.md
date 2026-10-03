@@ -687,3 +687,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WC-2 Crushing Roots (Warden copy, shared): screen identical to Hunter, same model (2026-10-03, fine)
 - WC-3 Aspect of the Pack (Warden copy, shared): screen identical to Hunter, same model (2026-10-03, fine)
 - WC-4 Aspect of the Serpent (Warden copy, shared): screen identical to Hunter, same model (2026-10-03, fine)
+- WC-5 Stormstep Action (Warden): each Daily cast cuts encounter cooldowns by up to 2 s, scaled by AP spent (proportional assumed); small value; scaling = test (2026-10-03, fine)
