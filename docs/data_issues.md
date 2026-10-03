@@ -3013,3 +3013,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Storm's Recovery (Ranger Warden)** — does each charge of Hindering Shot count as a use and refund 3 s to the other ranged encounters (3 charges = 9 s)? (Hint: Swiftness of the Fox cuts Hindering Shot's refund to 1 s, which suggests each charge does count.) (n00b, 2026-10-03).
 - [ ] **Blade Hurricane (Ranger Warden)** — does the 3 s Flurry window start when the encounter cast begins or when it finishes? (n00b, 2026-10-03).
 - [ ] **Storm Conduit (Ranger Warden)** — how long does the Storm Conduit debuff last on the target after one lightning hit? (n00b, 2026-10-03).
+- [ ] **Sly Flourish (Rogue at-will) combo ramp** — how many swings are in the combo and what does each hit for (tooltip only gives the opening 40)? (n00b, 2026-10-01).
