@@ -657,3 +657,5 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - CORRECTION (n00b 2026-10-02): Hunter Marauder's Rush base 13.4 -> 13.5 s.
 - WE-2 Marauder's Escape (Warden copy): 550 over 3 arrows + back-dash, Confusion 1 s, BASE 14.5 s (2026-10-02, 14.5 (Hunter too))
 - WE-2b Marauder's Rush (Warden copy): 580 after an 83 ft rush, Confusion 1 s, BASE 13.5 s (2026-10-02, 13.5 (Hunter too))
+- WE-3 Constricting Arrow (Warden copy): area 12 ft radius at 80 ft range, ranged physical 520, Strong Grasping Roots, BASE 14.5 s (2026-10-02, range 80, radius 12, 14.5)
+- WE-3b Steel Breeze (Warden copy): area 20 ft radius melee physical 250, +10% stamina per enemy hit, BASE 13.5 s (2026-10-02, radius 20, 13.5)
