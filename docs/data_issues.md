@@ -3020,7 +3020,7 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Blitz (Rogue Whisperknife) Stealth refund** — cast from Stealth: does the 2 s come off Blitz's own cooldown too, or only the other encounters? (n00b, 2026-10-01).
 - [ ] **Whisperknife 5% vulnerability stacking** — with both Disheartening Strike and Shadow Strike on a target, is the physical/projectile vulnerability 5% or 10%? (n00b, 2026-10-01).
 - [ ] **Shadowy Disappearance (Rogue Whisperknife)** — teleport a very short distance next to a single boss: does it take both 300 hits (exit and entry)? (n00b, 2026-10-01).
-- [ ] **Hateful Knives (Rogue daily) Combat Advantage** — after the cast, do party members also get Combat Advantage against the target for the 6 s, or only you? (n00b, 2026-10-01).
+- [ ] **Hateful Knives + Dazing Strike (Rogue) Combat Advantage** — after Hateful Knives, do party members also get Combat Advantage against the target for the 6 s, or only you? Same for Dazing Strike (Assassin): who gets it, and does it last the 4 s of the Daze? (n00b, 2026-10-01).
 - [ ] **Killing Storm (Rogue Whisperknife)** — on a single boss, do all 12 dash hits land (2,400), and how many seconds does the sequence take? (n00b, 2026-10-01).
 - [ ] **Rogue Stealth meter refill (GATING for the class)** — in combat, how many seconds does the Stealth meter take to refill from empty? Also during Lurker's Assault (fast regen). Every encounter's Stealth mode is scored at its base version until this is known (n00b, 2026-10-04).
 - [ ] **Dagger Threat (Rogue Whisperknife) falloff** — what is the ranged damage bonus at 30 ft, 40 ft and 50 ft from the target (full 10% is within 20 ft)? (n00b, 2026-10-04).
