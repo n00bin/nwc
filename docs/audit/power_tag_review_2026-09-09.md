@@ -761,3 +761,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AS-4 Gloaming Cut (Assassin): single melee physical execute 150-300 by target missing health (enemyHealthPct), +50% Stealth regen 8 s, +20% Stealth on kill; base values unverified + regen stacking = test. ASSASSIN AT-WILLS COMPLETE (2026-10-04, idk, need test, fine)
 - AS-5 Blade Flurry (Assassin copy): same as Whisperknife - area 15 ft melee physical 330, BASE 11.6 s; Stealth = 25 ft radius and no cooldown (2026-10-04, fine (11.6))
 - AS-6 Lashing Blade (Assassin copy): same as Whisperknife - single melee physical 715, BASE 11.6 s; Stealth adds a 300 hit (1,015) (2026-10-04, fine (11.6))
+- AS-7 Path of the Blade (Assassin copy): same as Whisperknife - area melee physical 140 x 4 over 6 s, BASE 15.5 s (shown 14.3 vs 14.7 on the other screen, unexplained) (2026-10-04, 15.5)
