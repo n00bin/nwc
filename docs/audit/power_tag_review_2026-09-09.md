@@ -739,3 +739,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WK-27 Dagger Threat (Whisperknife): ranged attacks up to +10%, full within 20 ft, via the existing range slider (default on); falloff beyond 20 ft placeholder linear to 0 at 50 ft = test (2026-10-04, fine)
 - WK-28 Razor Action (Whisperknife): each Daily cast flings daggers 30 ft for 300 per target + 2% speed per target hit (max 10%, unscored); target cap + duration = test (2026-10-04, fine)
 - WK-29 Advantageous Position (Whisperknife): 2 s after leaving Stealth keep Combat Advantage + take 20% less AoE/ranged damage; feeds flankUptime via Stealth exits, gated on the refill test (2026-10-04, fine)
+- WK-30 Talisman of Shadows (Whisperknife): entering Stealth dazes + slows foes within 20 ft for 1 s; control only, scored 0. WHISPERKNIFE CLASS FEATURES COMPLETE 8/8 (2026-10-04, fine)
