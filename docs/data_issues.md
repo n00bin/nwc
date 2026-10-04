@@ -3050,3 +3050,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Arcanist Arcane Bolt: count how many bolts land per cast and whether magnitude 120 is per bolt or the total (n00b, 2026-10-04).
 - [ ] Wizard Repel in the Spell Mastery slot: does the main target take 300 or 580, and how wide does the multi-target version reach (n00b, 2026-10-04).
 - [ ] Wizard Ray of Enfeeblement: confirm the damage ticks for 10 s and totals 520; check whether the Spell Mastery +10% magical and projectile damage taken stacks with other classes' damage-taken debuffs (joins the vulnerability stacking test) (n00b, 2026-10-04).
+- [ ] Wizard Icy Terrain: does the 400 land once or tick while enemies stand on the ice; how long does the ice last and how fast does it add Chill; how far can the Spell Mastery version be placed (n00b, 2026-10-04).
