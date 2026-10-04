@@ -749,3 +749,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WKF-7 Shadow of Demise (Whisperknife T4 top): Stealth encounters mark the target 5 s; 40% of your damage to it is dealt again on expiry (x1.4 in the window); crit behaviour + re-application = test (2026-10-04, fine)
 - WKF-8 Shadowy Opportunity (Whisperknife T4 bottom): 5 s after leaving Stealth every hit adds a 130 hit (~1,560 per window with Cloud of Steel); multi-hit + DoT tick counting = test (2026-10-04, fine)
 - WKF-9 Ambusher's Haste (Whisperknife T5 top): while Stealthed powers up to +40% by Stealth meter fullness (placeholder linear); curve = test (2026-10-04, fine)
+- WKF-10 Gutterborn's Touch (Whisperknife T5 bottom): ranged powers +10% for 5 s, refreshed by attacking with Combat Advantage = uptime follows flankUptime; works today. WHISPERKNIFE FEATS COMPLETE 10/10 (2026-10-04, fine)
