@@ -3031,4 +3031,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Shadow of Demise (Rogue Whisperknife)** — can the 40% repeat hit crit by itself, and does a second Stealth encounter inside the 5 s extend the mark or restart it? (n00b, 2026-10-04).
 - [ ] **Shadowy Opportunity (Rogue Whisperknife)** — in the 5 s window, does each hit of a multi-hit power add its own 130, and do DoT ticks (Disheartening Strike, Path of the Blade pulses) count as hits? (n00b, 2026-10-04).
 - [ ] **Ambusher's Haste (Rogue Whisperknife) curve** — what is the damage bonus while Stealthed with the meter full, half and nearly empty? (n00b, 2026-10-04).
-- [ ] **Rogue General skills on the sheet** — Swift Footwork: does the character sheet's Stamina Regeneration already include the +5%? (n00b, 2026-10-04).
+- [ ] **Rogue General skills on the sheet** — Swift Footwork: does the character sheet's Stamina Regeneration already include the +5%? Scoundrel Training: does the Combat Advantage line include its +2% (added to the engine 2026-10-04; remove if the sheet says no)? (n00b, 2026-10-04).
