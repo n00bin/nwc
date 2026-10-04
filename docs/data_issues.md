@@ -3028,3 +3028,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Last Moments (Rogue Whisperknife) curve** — what is the damage bonus with the target at 50% health and at 10% health (out of Stealth)? (n00b, 2026-10-04).
 - [ ] **Stealth regen stacking (Rogue)** — with both Hidden Attacks (+50%) and Tenacious Concealment (+50%), does the meter refill at +100% or +125%? (n00b, 2026-10-04).
 - [ ] **Return to Shadows (Rogue Whisperknife)** — hit a large pack with one encounter: is the Stealth refill capped at some number of targets? (n00b, 2026-10-04).
+- [ ] **Shadow of Demise (Rogue Whisperknife)** — can the 40% repeat hit crit by itself, and does a second Stealth encounter inside the 5 s extend the mark or restart it? (n00b, 2026-10-04).
