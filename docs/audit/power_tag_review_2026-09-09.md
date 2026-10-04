@@ -757,3 +757,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WKG-4 Scoundrel Training (Whisperknife General): +2% Combat Advantage always on - percentStats ADDED (bare Rogue CA 2 -> 4%, damage stat); sheet check = test. WHISPERKNIFE COMPLETE (2026-10-04, test then fine)
 - AS-1 Cloud of Steel (Assassin copy): single ranged physical 45 / 0.4 s, self-stacking +2.5% per hit to 10 stacks (+25%); Assassin base differs from Whisperknife (60 / 5%) (2026-10-04, fine)
 - AS-2 Sly Flourish (Assassin copy): same as Whisperknife - melee combo from 40 at 0.26 s, ramp unknown, scored at the floor (2026-10-04, fine)
+- AS-3 Duelist's Flurry (Assassin): single melee physical 35 per 0.15 s flurry attack; Bleed (chance per flurry hit, 10 stacks, 9 s) has no numbers -> scored 0, underestimate, test (2026-10-04, fine)
