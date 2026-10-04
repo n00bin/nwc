@@ -743,3 +743,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WKF-1 Last Moments (Whisperknife T1 top): powers up to +10% as the target loses health (enemyHealthPct slider), doubled in Stealth; curve placeholder linear = test (2026-10-04, fine)
 - WKF-2 Shady Preparations (Whisperknife T1 bottom): each Stealth entry cuts all encounter cooldowns by 2 s; Stealth-model input, gated on the refill test (2026-10-04, fine)
 - WKF-3 Dark Reimbursement (Whisperknife T2 top): an encounter that ends Stealth returns 25% of the meter; Stealth-model input, gated on the refill test (2026-10-04, fine)
+- WKF-4 Hidden Attacks (Whisperknife T2 bottom): at-wills drain 10% Stealth instead of the base 15%; Stealth regen +50% (stacking with Tenacious Concealment assumed additive, test) (2026-10-04, fine)

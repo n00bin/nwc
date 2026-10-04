@@ -3026,3 +3026,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Dagger Threat (Rogue Whisperknife) falloff** — what is the ranged damage bonus at 30 ft, 40 ft and 50 ft from the target (full 10% is within 20 ft)? (n00b, 2026-10-04).
 - [ ] **Razor Action (Rogue Whisperknife)** — how many enemies can the daggers hit per daily cast, and how long does the speed bonus last? (n00b, 2026-10-04).
 - [ ] **Last Moments (Rogue Whisperknife) curve** — what is the damage bonus with the target at 50% health and at 10% health (out of Stealth)? (n00b, 2026-10-04).
+- [ ] **Stealth regen stacking (Rogue)** — with both Hidden Attacks (+50%) and Tenacious Concealment (+50%), does the meter refill at +100% or +125%? (n00b, 2026-10-04).
