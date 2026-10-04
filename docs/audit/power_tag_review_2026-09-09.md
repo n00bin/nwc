@@ -764,3 +764,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AS-7 Path of the Blade (Assassin copy): same as Whisperknife - area melee physical 140 x 4 over 6 s, BASE 15.5 s (shown 14.3 vs 14.7 on the other screen, unexplained) (2026-10-04, 15.5)
 - AS-8 Smoke Bomb (Assassin copy): same as Whisperknife - area 20 ft poison 120 x 4 (magical, provisional), Daze 4 s, BASE 14.5 s; Stealth = party Combat Advantage (2026-10-04, 14.5)
 - AS-9 Bait and Switch (Assassin copy): same as Whisperknife - utility decoy, BASE 23.3 s; Stealth = refill meter + stay stealthed. ASSASSIN SHARED ENCOUNTERS DONE (2026-10-04, 23.3)
+- AS-10 Impossible to Catch (Assassin): utility - control break + immunity + 10% Deflect 4 s, instant, BASE 19.4 s; Stealth = +25% move speed and +10% Defense; scored 0 for damage (2026-10-04, 19.4)
