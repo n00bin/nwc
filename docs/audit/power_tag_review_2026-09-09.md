@@ -778,3 +778,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AS-21 Stealth (Assassin): same cycle model + useStealth toggle; Assassin sources = meter, Gloaming Cut regen/kill, Bait and Switch refill; only Bait and Switch keeps Stealth; gated on the shared refill test (2026-10-04, fine)
 - AS-22 Forte (Assassin): Power 50 / Combat Advantage 25 / Deflect Severity 25, already modeled. ASSASSIN MECHANICS COMPLETE 3/3 (2026-10-04, fine)
 - AS-23 Skillful Infiltrator (Assassin copy, shared): screen identical to Whisperknife, same model (2026-10-04, fine)
+- AS-24 Sneak Attack (Assassin copy, shared): screen identical to Whisperknife, same model (2026-10-04, fine)
