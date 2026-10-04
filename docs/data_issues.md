@@ -3022,3 +3022,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Shadowy Disappearance (Rogue Whisperknife)** — teleport a very short distance next to a single boss: does it take both 300 hits (exit and entry)? (n00b, 2026-10-01).
 - [ ] **Hateful Knives (Rogue daily) Combat Advantage** — after the cast, do party members also get Combat Advantage against the target for the 6 s, or only you? (n00b, 2026-10-01).
 - [ ] **Killing Storm (Rogue Whisperknife)** — on a single boss, do all 12 dash hits land (2,400), and how many seconds does the sequence take? (n00b, 2026-10-01).
+- [ ] **Rogue Stealth meter refill (GATING for the class)** — in combat, how many seconds does the Stealth meter take to refill from empty? Also during Lurker's Assault (fast regen). Every encounter's Stealth mode is scored at its base version until this is known (n00b, 2026-10-04).
