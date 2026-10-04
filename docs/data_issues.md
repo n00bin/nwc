@@ -3045,3 +3045,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Hastily Sharpened Blades (Rogue Assassin)** — with Critical Strike already at the cap, does this feat's per-attack bonus still add anything? (n00b, 2026-10-04).
 - [ ] **Execution (Rogue Assassin)** — below 20% target health, does each hit of Duelist's Flurry roll the 10% execute chance, or one roll per power use? (n00b, 2026-10-04).
 - [ ] Wizard Magic Missile (both paragons share the tooltip): confirm the third cast deals 3 hits of 60 each (cycle 300), not 60 split across 3 hits; also whether the third cast adds 1 or 3 Arcane Mastery stacks (n00b, 2026-10-04).
+- [ ] Wizard Ray of Frost (both paragons share the tooltip): measure how many damage hits per second the beam deals and whether each is magnitude 65; measure how long the freeze at 6 Chill stacks lasts and whether bosses ignore it (n00b, 2026-10-04).
