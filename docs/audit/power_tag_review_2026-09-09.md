@@ -727,3 +727,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WK-15 Hateful Knives (Whisperknife copy): single melee physical 2,000 after an 82 ft dash, Prone, Combat Advantage 6 s (scope = test), 1.8 s, 1,000 AP (2026-10-03, fine)
 - WK-16 Whirlwind of Blades (Whisperknife copy): area 30 ft melee physical 450 + self +3% dmg per enemy hit (max 5 = 15%) for 10 s via enemyCount, 1.5 s, 1,000 AP (2026-10-04, fine)
 - WK-17 Courage Breaker (Whisperknife copy): single melee physical 1,800 after a 45 ft teleport; target outgoing dmg -15% and Slow 70% (ignores control immunity) for 8 s; 2 s, 1,000 AP (2026-10-04, fine)
+- WK-18 Killing Storm (Whisperknife): 12 dashes x 200 (2,400) in a small area + party -5% Awareness debuff 10 s, 0.2 s, 1,000 AP; single-target hit count + sequence length = test (2026-10-04, fine)
