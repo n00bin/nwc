@@ -794,3 +794,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - ASF-7 Back Alley Tactics (Assassin T4 top): up to +10% damage the fewer Action Points you have, via the existing currentApPct slider (default 50% = +5%); curve = test (2026-10-04, fine)
 - ASF-8 Hastily Sharpened Blades (Assassin T4 bottom): Critical Strike +5 to 10% random per attack; COUNTED AT THE GUARANTEED 5% everywhere (n00b ruling), displayed as 5-10%; cap behaviour = test (2026-10-04, Alternative: count the guaranteed 5% everywhere; anything above is a bonus)
 - ASF-9 Execution (Assassin T5 top): target under 20% life -> attacks 10% chance for a 200 hit (expected +20 per attack in that window, enemyHealthPct); per-hit roll = test (2026-10-04, fine)
+- ASF-10 Shadow's Flurry (Assassin T5 bottom): attacks 5% to spawn a shadow doing the final combo of Duelist's Flurry; damage per shadow unknown -> scored 0, underestimate, test. ASSASSIN FEATS COMPLETE 10/10 (2026-10-04, fine)
