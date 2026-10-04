@@ -747,3 +747,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WKF-5 One with the Shadows (Whisperknife T3 top): every 12 s the next encounter refills 50% Stealth = one full meter per 24 s, a fixed floor usable before the refill test (2026-10-04, fine)
 - WKF-6 Return to Shadows (Whisperknife T3 bottom): encounters refill 7.5% Stealth per target hit (10% from behind), not while stealthed; fixed rate via enemyCount + behindTarget; target cap = test (2026-10-04, fine)
 - WKF-7 Shadow of Demise (Whisperknife T4 top): Stealth encounters mark the target 5 s; 40% of your damage to it is dealt again on expiry (x1.4 in the window); crit behaviour + re-application = test (2026-10-04, fine)
+- WKF-8 Shadowy Opportunity (Whisperknife T4 bottom): 5 s after leaving Stealth every hit adds a 130 hit (~1,560 per window with Cloud of Steel); multi-hit + DoT tick counting = test (2026-10-04, fine)
