@@ -3047,3 +3047,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Magic Missile (both paragons share the tooltip): confirm the third cast deals 3 hits of 60 each (cycle 300), not 60 split across 3 hits; also whether the third cast adds 1 or 3 Arcane Mastery stacks (n00b, 2026-10-04).
 - [ ] Wizard Ray of Frost (both paragons share the tooltip): measure how many damage hits per second the beam deals and whether each is magnitude 65; measure how long the freeze at 6 Chill stacks lasts and whether bosses ignore it (n00b, 2026-10-04).
 - [ ] Wizard Arcanist Storm Pillar: count how many times the full-charge lightning pillar hits in its 3 s and whether each hit is magnitude 50; check whether a second full charge adds a second pillar or replaces the first (n00b, 2026-10-04).
+- [ ] Wizard Arcanist Arcane Bolt: count how many bolts land per cast and whether magnitude 120 is per bolt or the total (n00b, 2026-10-04).

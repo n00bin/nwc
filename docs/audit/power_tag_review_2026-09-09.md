@@ -806,3 +806,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AR-1 Magic Missile (Arcanist at-will): single, ranged, magical; 60 per hit, third cast 3 hits (cycle average 100 per cast, PROVISIONAL); adds 1 Arcane Mastery stack per cast (2026-10-04, test then fine)
 - AR-2 Ray of Frost (Arcanist at-will): single, ranged, magical cold, channelled; 65 per damage hit; 1 Chill stack per hit, freeze at 6 stacks; tick rate and freeze duration unmeasured (2026-10-04, fine)
 - AR-3 Storm Pillar (Arcanist at-will): area radius 8, ranged, magical lightning, chargeable 40-100 over 1.6 s, scored at full charge; full charge spawns a pillar (50, 3 s; hit count assumed 1 per second, PROVISIONAL); refreshes Arcane Mastery and Chill above 50% charge (2026-10-04, test then fine)
+- AR-4 Arcane Bolt (Arcanist at-will): single, ranged, magical arcane; 120 per cast (assumed total); 1 Arcane Mastery stack per cast (2026-10-04, fine)
