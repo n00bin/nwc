@@ -725,3 +725,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WK-13 Shadow Strike (Whisperknife): single ranged physical 775, +20% Stealth on hit, party 5% physical/projectile vulnerability 10 s, 1 s, BASE 13.5 s; Stealth = keeps Stealth + Daze 3 s; debuff stacking with Disheartening Strike = test (2026-10-03, yes (13.5))
 - WK-14 Shadowy Disappearance (Whisperknife): 50 ft teleport, 300 at exit + 300 at entry (10 ft), grants Stealth 1.5 s, 0.6 s, BASE 13.5 s; double-hit on one target = test. WHISPERKNIFE ENCOUNTERS COMPLETE 10/10 (2026-10-03, yes (13.5))
 - WK-15 Hateful Knives (Whisperknife copy): single melee physical 2,000 after an 82 ft dash, Prone, Combat Advantage 6 s (scope = test), 1.8 s, 1,000 AP (2026-10-03, fine)
+- WK-16 Whirlwind of Blades (Whisperknife copy): area 30 ft melee physical 450 + self +3% dmg per enemy hit (max 5 = 15%) for 10 s via enemyCount, 1.5 s, 1,000 AP (2026-10-04, fine)
