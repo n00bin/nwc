@@ -775,3 +775,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AS-18 Bloodbath (Assassin): 2,200 physical within 30 ft while untargetable, 0.25 s trigger, 1,000 AP; single-target total + pack split + run time = test (with Killing Storm) (2026-10-04, fine)
 - AS-19 Shocking Execution (Assassin): single melee physical 2,200, 1.5 s, 1,000 AP; target below 20% HP -> refill half AP once per 20 s (enemyHealthPct). ASSASSIN DAILIES COMPLETE (2026-10-04, fine)
 - AS-20 Roll (Assassin): same as Whisperknife - dodge, utility scored 0 (2026-10-04, fine)
+- AS-21 Stealth (Assassin): same cycle model + useStealth toggle; Assassin sources = meter, Gloaming Cut regen/kill, Bait and Switch refill; only Bait and Switch keeps Stealth; gated on the shared refill test (2026-10-04, fine)
