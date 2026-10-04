@@ -745,3 +745,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WKF-3 Dark Reimbursement (Whisperknife T2 top): an encounter that ends Stealth returns 25% of the meter; Stealth-model input, gated on the refill test (2026-10-04, fine)
 - WKF-4 Hidden Attacks (Whisperknife T2 bottom): at-wills drain 10% Stealth instead of the base 15%; Stealth regen +50% (stacking with Tenacious Concealment assumed additive, test) (2026-10-04, fine)
 - WKF-5 One with the Shadows (Whisperknife T3 top): every 12 s the next encounter refills 50% Stealth = one full meter per 24 s, a fixed floor usable before the refill test (2026-10-04, fine)
+- WKF-6 Return to Shadows (Whisperknife T3 bottom): encounters refill 7.5% Stealth per target hit (10% from behind), not while stealthed; fixed rate via enemyCount + behindTarget; target cap = test (2026-10-04, fine)
