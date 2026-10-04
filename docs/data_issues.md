@@ -3037,3 +3037,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Physical vulnerability stacking across classes** — Rogue Wicked Reminder (10%), Fighter Commander's Strike (10%) and Ranger Thorn Ward (10%) on the same target: do they add up, or does only one apply? (n00b, 2026-10-01).
 - [ ] **Assassinate (Rogue Assassin)** — cast from Stealth while behind the target: is it 25% stronger once (about 1,056) or twice (about 1,320)? (n00b, 2026-10-01).
 - [ ] **Oppressive Darkness (Rogue Assassin)** — with Combat Advantage, does each hit of Duelist's Flurry add the 20 magnitude, or only one 20 per power use? (n00b, 2026-10-04).
+- [ ] **Assassin's Target (Rogue Assassin)** — does each hit of a multi-hit at-will add a 'targeted' stack, or one stack per cast? (n00b, 2026-10-04).
