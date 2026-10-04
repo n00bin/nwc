@@ -3041,3 +3041,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Toxic Blades (Rogue Assassin)** — does applying a new stack refresh the 15 s on the stacks already there, and does a multi-target encounter (Blade Flurry, Dazing Strike) put a stack on every enemy hit? (n00b, 2026-10-04).
 - [ ] **Duelist's Expertise (Rogue Assassin)** — while Master Duelist (15%, 10 s) is running, do the 0.5% stacks start building again, or only after it ends? (n00b, 2026-10-04).
 - [ ] **Skullcracker (Rogue Assassin)** — does the 10% mark land on a boss that is immune to the Daze, and does the 15 s timer restart when the buff appears or when you use it? (n00b, 2026-10-04).
+- [ ] **Back Alley Tactics (Rogue Assassin) curve** — what is the damage bonus at an empty AP bar, at half, and just under full? (n00b, 2026-10-04).
