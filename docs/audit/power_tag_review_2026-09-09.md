@@ -770,3 +770,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AS-13 Dazing Strike (Assassin): area 130 deg melee physical 350, Combat Advantage + Daze 4 s + Interrupt, 0.45 s, BASE 9.7 s; Stealth = 500; CA scope folded into the Hateful Knives test (2026-10-04, 9.7)
 - AS-14 Assassinate (Assassin): single melee physical 845 (was 865 in data - fixed) + interrupt, x1.25 from behind (behindTarget toggle), 0.95 s, BASE 14.5 s; Stealth = x1.25 from any direction; stacking of the two = test. ASSASSIN ENCOUNTERS COMPLETE 10/10 (2026-10-04, 14.5)
 - AS-15 Hateful Knives (Assassin copy): same as Whisperknife - single melee physical 2,000, Prone, Combat Advantage 6 s, 1.8 s, 1,000 AP (2026-10-04, fine)
+- AS-16 Whirlwind of Blades (Assassin copy): same as Whisperknife - area 30 ft melee physical 450 + self +3% dmg per enemy hit (max 15%) 10 s, 1.5 s, 1,000 AP (2026-10-04, fine)
