@@ -784,3 +784,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AS-27 Invisible Infiltrator (Assassin): each Daily cast refills the Stealth meter (fixed Stealth floor) and gives +5% damage for 5 s (2026-10-04, fine)
 - AS-28 Infiltrator's Action (Assassin): each Daily cast -> Combat Advantage for 10 s; adds to the existing flankUptime input (2026-10-04, fine)
 - AS-29 Oppressive Darkness (Assassin): +20 magnitude on powers while you have Combat Advantage; per hit assumed (would be +57% on Duelist's Flurry), provisional until tested (2026-10-04, test then fine)
+- AS-30 First Strike (Assassin): first attack of each combat +15% (one-time, spread over timeInCombatSec); near nothing on a boss. ASSASSIN CLASS FEATURES COMPLETE 8/8 (2026-10-04, fine)
