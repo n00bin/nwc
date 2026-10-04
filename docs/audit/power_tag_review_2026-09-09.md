@@ -737,3 +737,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WK-25 Tenacious Concealment (Whisperknife copy, shared): Stealth regen x1.5; Stealth-model input, gated on the refill test (2026-10-04, fine)
 - WK-26 Tactics (Whisperknife copy, shared): +10% Action Point Gain while slotted (sheet stat, feeds Daily cadence). WHISPERKNIFE SHARED FEATURES DONE (2026-10-04, fine)
 - WK-27 Dagger Threat (Whisperknife): ranged attacks up to +10%, full within 20 ft, via the existing range slider (default on); falloff beyond 20 ft placeholder linear to 0 at 50 ft = test (2026-10-04, fine)
+- WK-28 Razor Action (Whisperknife): each Daily cast flings daggers 30 ft for 300 per target + 2% speed per target hit (max 10%, unscored); target cap + duration = test (2026-10-04, fine)

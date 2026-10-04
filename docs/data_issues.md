@@ -3024,3 +3024,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Killing Storm (Rogue Whisperknife)** — on a single boss, do all 12 dash hits land (2,400), and how many seconds does the sequence take? (n00b, 2026-10-01).
 - [ ] **Rogue Stealth meter refill (GATING for the class)** — in combat, how many seconds does the Stealth meter take to refill from empty? Also during Lurker's Assault (fast regen). Every encounter's Stealth mode is scored at its base version until this is known (n00b, 2026-10-04).
 - [ ] **Dagger Threat (Rogue Whisperknife) falloff** — what is the ranged damage bonus at 30 ft, 40 ft and 50 ft from the target (full 10% is within 20 ft)? (n00b, 2026-10-04).
+- [ ] **Razor Action (Rogue Whisperknife)** — how many enemies can the daggers hit per daily cast, and how long does the speed bonus last? (n00b, 2026-10-04).
