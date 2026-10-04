@@ -731,3 +731,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WK-19 Lurker's Assault (Whisperknife): self +40% damage 10 s + very fast Stealth regen for the window + teleport to target, 0.5 s, 1,000 AP. WHISPERKNIFE DAILIES COMPLETE (2026-10-04, fine)
 - WK-20 Roll (Whisperknife): dodge while moving, brief immunity; utility scored 0 (2026-10-04, fine)
 - WK-21 Stealth (Whisperknife): 6 s max, Combat Advantage + encounter Stealth modes; cycle model with a plain useStealth toggle; meter refill time unknown -> Stealth modes shown, scored at base (underestimate) until tested (2026-10-04, fine and test)
+- WK-22 Forte (Whisperknife): Power 50 / Combat Advantage 25 / Deflect Severity 25, already modeled (checked). WHISPERKNIFE MECHANICS COMPLETE 3/3 (2026-10-04, fine)
