@@ -809,3 +809,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AR-4 Arcane Bolt (Arcanist at-will): single, ranged, magical arcane; 120 per cast (assumed total); 1 Arcane Mastery stack per cast (2026-10-04, fine)
 - AR-5 Entangling Force (Arcanist encounter): single, ranged, magical arcane, 600 one hit; Hold 2 s +0.1 s per Arcane Mastery stack; base cooldown 15.5 s (screen 13.8) (2026-10-04, base cooldown 15.5)
 - AR-6 Repel (Arcanist encounter): single, ranged, magical arcane, 580, Push; Spell Mastery mode = area 300 per target (main target value and radius unmeasured); base cooldown 10.6 s (screen 9.5) (2026-10-04, base cooldown 10.6)
+- AR-7 Ray of Enfeeblement (Arcanist encounter): single, ranged, magical arcane DoT 520 total (10 s assumed); target outgoing damage -10% for 10 s; Spell Mastery mode: target takes +10% magical and projectile damage for 10 s (party-wide); base cooldown 17.4 s (screen 15.5) (2026-10-04, base cooldown 17.4)
