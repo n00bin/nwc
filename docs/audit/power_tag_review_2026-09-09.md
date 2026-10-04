@@ -751,3 +751,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - WKF-9 Ambusher's Haste (Whisperknife T5 top): while Stealthed powers up to +40% by Stealth meter fullness (placeholder linear); curve = test (2026-10-04, fine)
 - WKF-10 Gutterborn's Touch (Whisperknife T5 bottom): ranged powers +10% for 5 s, refreshed by attacking with Combat Advantage = uptime follows flankUptime; works today. WHISPERKNIFE FEATS COMPLETE 10/10 (2026-10-04, fine)
 - WKG-1 Thievery (Whisperknife General): world interaction, utility scored 0. Row = 4 Rogue skills + Furious Assault / Swift Charge (Half-Orc racial) (2026-10-04, fine)
+- WKG-2 Swift Footwork (Whisperknife General): +5% Stamina Regeneration always on - percentStats ADDED (panel line changes, no damage change); sheet check = test (2026-10-04, test and fine)
