@@ -3033,3 +3033,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Ambusher's Haste (Rogue Whisperknife) curve** — what is the damage bonus while Stealthed with the meter full, half and nearly empty? (n00b, 2026-10-04).
 - [ ] **Rogue General skills on the sheet** — Swift Footwork: does the character sheet's Stamina Regeneration already include the +5%? Scoundrel Training: does the Combat Advantage line include its +2% (added to the engine 2026-10-04; remove if the sheet says no)? (n00b, 2026-10-04).
 - [ ] **Duelist's Flurry Bleed (Rogue Assassin, biggest open Assassin number)** — damage per Bleed stack, how often it ticks, and about how many flurry hits it takes to reach 10 stacks (n00b, 2026-10-01).
+- [ ] **Gloaming Cut (Rogue Assassin) base + stacking** — on a toon with no feats affecting it, is it 150 magnitude at a 1.1 s cast? Does its +50% Stealth regeneration add to Tenacious Concealment's +50%? (n00b, 2026-10-01).

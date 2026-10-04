@@ -758,3 +758,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AS-1 Cloud of Steel (Assassin copy): single ranged physical 45 / 0.4 s, self-stacking +2.5% per hit to 10 stacks (+25%); Assassin base differs from Whisperknife (60 / 5%) (2026-10-04, fine)
 - AS-2 Sly Flourish (Assassin copy): same as Whisperknife - melee combo from 40 at 0.26 s, ramp unknown, scored at the floor (2026-10-04, fine)
 - AS-3 Duelist's Flurry (Assassin): single melee physical 35 per 0.15 s flurry attack; Bleed (chance per flurry hit, 10 stacks, 9 s) has no numbers -> scored 0, underestimate, test (2026-10-04, fine)
+- AS-4 Gloaming Cut (Assassin): single melee physical execute 150-300 by target missing health (enemyHealthPct), +50% Stealth regen 8 s, +20% Stealth on kill; base values unverified + regen stacking = test. ASSASSIN AT-WILLS COMPLETE (2026-10-04, idk, need test, fine)
