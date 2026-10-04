@@ -797,3 +797,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - ASF-10 Shadow's Flurry (Assassin T5 bottom): attacks 5% to spawn a shadow doing the final combo of Duelist's Flurry; damage per shadow unknown -> scored 0, underestimate, test. ASSASSIN FEATS COMPLETE 10/10 (2026-10-04, fine)
 - ASG-1 Thievery (Assassin General): same as Whisperknife - world interaction, utility scored 0 (2026-10-04, fine)
 - ASG-2 Swift Footwork (Assassin General): same as Whisperknife - +5% Stamina Regeneration always on; sheet check on the shared test (2026-10-04, fine)
+- ASG-3 Cunning Ambusher (Assassin General): same as Whisperknife - +10% damage 5 s after leaving Stealth; Assassin Stealth floor is lower (Invisible Infiltrator, one per daily) (2026-10-04, fine)
