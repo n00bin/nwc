@@ -781,3 +781,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AS-24 Sneak Attack (Assassin copy, shared): screen identical to Whisperknife, same model (2026-10-04, fine)
 - AS-25 Tenacious Concealment (Assassin copy, shared): screen identical to Whisperknife, same model (2026-10-04, fine)
 - AS-26 Tactics (Assassin copy, shared): screen identical to Whisperknife, same model (2026-10-04, fine)
+- AS-27 Invisible Infiltrator (Assassin): each Daily cast refills the Stealth meter (fixed Stealth floor) and gives +5% damage for 5 s (2026-10-04, fine)
