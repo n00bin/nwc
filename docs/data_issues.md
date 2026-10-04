@@ -3020,3 +3020,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Blitz (Rogue Whisperknife) Stealth refund** — cast from Stealth: does the 2 s come off Blitz's own cooldown too, or only the other encounters? (n00b, 2026-10-01).
 - [ ] **Whisperknife 5% vulnerability stacking** — with both Disheartening Strike and Shadow Strike on a target, is the physical/projectile vulnerability 5% or 10%? (n00b, 2026-10-01).
 - [ ] **Shadowy Disappearance (Rogue Whisperknife)** — teleport a very short distance next to a single boss: does it take both 300 hits (exit and entry)? (n00b, 2026-10-01).
+- [ ] **Hateful Knives (Rogue daily) Combat Advantage** — after the cast, do party members also get Combat Advantage against the target for the 6 s, or only you? (n00b, 2026-10-01).
