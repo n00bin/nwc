@@ -759,3 +759,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AS-2 Sly Flourish (Assassin copy): same as Whisperknife - melee combo from 40 at 0.26 s, ramp unknown, scored at the floor (2026-10-04, fine)
 - AS-3 Duelist's Flurry (Assassin): single melee physical 35 per 0.15 s flurry attack; Bleed (chance per flurry hit, 10 stacks, 9 s) has no numbers -> scored 0, underestimate, test (2026-10-04, fine)
 - AS-4 Gloaming Cut (Assassin): single melee physical execute 150-300 by target missing health (enemyHealthPct), +50% Stealth regen 8 s, +20% Stealth on kill; base values unverified + regen stacking = test. ASSASSIN AT-WILLS COMPLETE (2026-10-04, idk, need test, fine)
+- AS-5 Blade Flurry (Assassin copy): same as Whisperknife - area 15 ft melee physical 330, BASE 11.6 s; Stealth = 25 ft radius and no cooldown (2026-10-04, fine (11.6))
