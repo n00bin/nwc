@@ -762,3 +762,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AS-5 Blade Flurry (Assassin copy): same as Whisperknife - area 15 ft melee physical 330, BASE 11.6 s; Stealth = 25 ft radius and no cooldown (2026-10-04, fine (11.6))
 - AS-6 Lashing Blade (Assassin copy): same as Whisperknife - single melee physical 715, BASE 11.6 s; Stealth adds a 300 hit (1,015) (2026-10-04, fine (11.6))
 - AS-7 Path of the Blade (Assassin copy): same as Whisperknife - area melee physical 140 x 4 over 6 s, BASE 15.5 s (shown 14.3 vs 14.7 on the other screen, unexplained) (2026-10-04, 15.5)
+- AS-8 Smoke Bomb (Assassin copy): same as Whisperknife - area 20 ft poison 120 x 4 (magical, provisional), Daze 4 s, BASE 14.5 s; Stealth = party Combat Advantage (2026-10-04, 14.5)
