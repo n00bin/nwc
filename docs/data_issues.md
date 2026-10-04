@@ -3038,3 +3038,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] **Assassinate (Rogue Assassin)** — cast from Stealth while behind the target: is it 25% stronger once (about 1,056) or twice (about 1,320)? (n00b, 2026-10-01).
 - [ ] **Oppressive Darkness (Rogue Assassin)** — with Combat Advantage, does each hit of Duelist's Flurry add the 20 magnitude, or only one 20 per power use? (n00b, 2026-10-04).
 - [ ] **Assassin's Target (Rogue Assassin)** — does each hit of a multi-hit at-will add a 'targeted' stack, or one stack per cast? (n00b, 2026-10-04).
+- [ ] **Toxic Blades (Rogue Assassin)** — does applying a new stack refresh the 15 s on the stacks already there, and does a multi-target encounter (Blade Flurry, Dazing Strike) put a stack on every enemy hit? (n00b, 2026-10-04).
