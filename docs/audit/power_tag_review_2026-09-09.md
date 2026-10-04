@@ -790,3 +790,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - ASF-3 Knife's Edge (Assassin T2 top): each Daily cast cuts encounter cooldowns by 4 s (~+7% casts at the default cadence) (2026-10-04, fine)
 - ASF-4 Master of Shadows (Assassin T2 bottom): Stealth regen +50% and Stealth lasts +25% longer (6 -> 7.5 s); Stealth-model input, stacking folded into the regen test (2026-10-04, fine)
 - ASF-5 Duelist's Expertise (Assassin T3 top): +0.5% dmg/Deflect per second to 15 stacks, 16th -> Master Duelist 15% for 10 s; scored ~8% average (26 s cycle), ~13% if stacks rebuild during the burst = test (2026-10-04, fine)
+- ASF-6 Skullcracker (Assassin T3 bottom): every 15 s next at-will/encounter Dazes 3 s + marks 10 s (+0.5 s per damage instance, max 15 s); marked target takes +10% from your powers = ~permanent +10% on one target; boss mark + timer = test (2026-10-04, fine)
