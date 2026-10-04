@@ -788,3 +788,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - ASF-1 Assassin's Target (Assassin T1 top): at-will/daily attacks stack 'targeted' to 5; next Encounter on the target +1% per stack (~flat +5% on encounters with Duelist's Flurry); stack basis = test (2026-10-04, fine)
 - ASF-2 Toxic Blades (Assassin T1 bottom): encounter/daily attacks stack a DoT, 20 weapon (physical) magnitude per 3 s for 15 s, max 5 (~33 mag/s at 5); refresh + multi-target = test (2026-10-04, fine)
 - ASF-3 Knife's Edge (Assassin T2 top): each Daily cast cuts encounter cooldowns by 4 s (~+7% casts at the default cadence) (2026-10-04, fine)
+- ASF-4 Master of Shadows (Assassin T2 bottom): Stealth regen +50% and Stealth lasts +25% longer (6 -> 7.5 s); Stealth-model input, stacking folded into the regen test (2026-10-04, fine)
