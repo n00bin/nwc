@@ -779,3 +779,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AS-22 Forte (Assassin): Power 50 / Combat Advantage 25 / Deflect Severity 25, already modeled. ASSASSIN MECHANICS COMPLETE 3/3 (2026-10-04, fine)
 - AS-23 Skillful Infiltrator (Assassin copy, shared): screen identical to Whisperknife, same model (2026-10-04, fine)
 - AS-24 Sneak Attack (Assassin copy, shared): screen identical to Whisperknife, same model (2026-10-04, fine)
+- AS-25 Tenacious Concealment (Assassin copy, shared): screen identical to Whisperknife, same model (2026-10-04, fine)
