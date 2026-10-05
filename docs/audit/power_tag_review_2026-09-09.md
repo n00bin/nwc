@@ -921,3 +921,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SE-10 Crescendo (Sentinel daily, re-read): identical to Blademaster - single melee combo physical 2800 total, Stun 3 s, control immune while attacking, 1,000 action points. All 10 Sentinel shared-power re-reads complete. (2026-10-05, yes)
 - SEG-1 Dungeoneering (Sentinel General skill): identical to the Blademaster copy - utility only (2026-10-05, fine)
 - SEG-2 Persistent Rage (Sentinel General skill): identical to the Blademaster copy - faster Rage generation, no number; feeds Unstoppable on this paragon; already inside measured timings (2026-10-05, fine)
+- SEG-3 Marathon Runner (Sentinel General skill): identical to the Blademaster copy - +10% Movement Speed out of combat, tied to the existing Hide in-combat bonuses toggle, stored inactive until the engine pass (2026-10-05, fine)
