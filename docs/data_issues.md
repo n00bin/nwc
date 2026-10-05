@@ -3076,3 +3076,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Arcanist Assailing Force: count how often the buff icon appears over about 50 encounter casts; when it is up compare the doubled hit with a normal one on the same power (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Snap Freeze: hold Ray of Frost on a dummy past 6 Chill stacks and watch whether the extra 70 hits keep coming; repeat on a boss (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Chaos Magic: count how often each of the three buff icons appears over about 100 encounter casts (overall rate near 7%? equal thirds?) (n00b, 2026-10-05).
+- [ ] Wizard Arcanist Iced Lightning: cast Lightning Bolt on a chilled and an unchilled dummy and compare (30% higher expected); check whether the Storm Pillar lightning pillar also rises; repeat on a boss (n00b, 2026-10-05).
