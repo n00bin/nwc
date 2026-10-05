@@ -3085,3 +3085,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Improved Technique: compare Control Bonus on a Wizard in-game character sheet with the builder now that the +5% is counted (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Scorching Burst: measure the radius at full charge, and how long a tap takes so tap (60) and full charge (110 over 1.7 s) can be compared per second (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Chilling Cloud: what does the third hit deal to a second enemy next to the target, and how close must that enemy be (n00b, 2026-10-05).
+- [ ] Wizard Thaumaturge Fanning the Flame: does the 500 land at once or over 6 s; with two smoldering enemies side by side, how many times does the 100 fire during one burn (n00b, 2026-10-05).
