@@ -876,3 +876,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - TH-23 Teleport (Thaumaturge tactical mechanic): identical to the Arcanist copy - the Wizard dodge, utility only; trigger for Brisk Transport (2026-10-05, fine)
 - TH-24 Spell Mastery (Thaumaturge mechanic): identical to the Arcanist copy - fourth encounter slot, bonus only from each power Spell Mastery mode (PROVISIONAL), per-build choice (2026-10-05, fine)
 - TH-25 Smolder (Thaumaturge paragon mechanic): fire powers apply a magical fire DoT; with Chill on the target it becomes Rimefire Smolder and Chill refreshes it; NO NUMBERS on the tooltip - scored 0 and marked data-missing; GATING TEST for Thaumaturge (known underestimate until measured) (2026-10-05, test then fine)
+- TH-26 Forte (Thaumaturge paragon mechanic): identical to the Arcanist copy - Power / Combat Advantage / Critical Avoidance, split 50/25/25 unchanged. Thaumaturge mechanics complete. (2026-10-05, fine)
