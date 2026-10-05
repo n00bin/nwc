@@ -3102,3 +3102,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Thaumaturge Rimefire Weaving: on a boss compare the same hit with nothing on the target, with Smolder only, and with Smolder plus Chill (gains of 5% and 10% confirm the model) (n00b, 2026-10-05).
 - [ ] POWER-TAGS-2 / Barbarian Marathon Runner: build the out-of-combat stat filter on the Hide in-combat bonuses toggle, then compare Movement Speed on a Barbarian sheet in town with the builder at-rest value (n00b, 2026-10-05).
 - [ ] Barbarian Raging Criticals: open the character sheet, activate Battlerage and check Critical Severity rises by 10 points (n00b, 2026-10-05).
+- [ ] Barbarian Sentinel Sure Strike: empty the stamina bar and count how many hits refill it (stamina restored per hit) (n00b, 2026-10-05).
