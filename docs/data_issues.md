@@ -3095,3 +3095,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Thaumaturge Critical Conflagration: with no fire power slotted, attack a dummy with Ray of Frost and confirm Smolder appears on the first critical hit (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Swath of Destruction: with Smolder on a dummy, have a party member hit it with the feature slotted and unslotted and compare (3% on their hits confirms party-wide) (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Relative Haste: check an encounter cooldown with one chilled dummy nearby and with none (5% shorter confirms); note how near the enemy must be (n00b, 2026-10-05).
+- [ ] Wizard Thaumaturge Glowing Flames: put Smolder on two dummies together, then on one of two - does the splash need Smolder on the second dummy, and do both radiate (n00b, 2026-10-05).
