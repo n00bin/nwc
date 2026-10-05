@@ -3077,3 +3077,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Arcanist Snap Freeze: hold Ray of Frost on a dummy past 6 Chill stacks and watch whether the extra 70 hits keep coming; repeat on a boss (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Chaos Magic: count how often each of the three buff icons appears over about 100 encounter casts (overall rate near 7%? equal thirds?) (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Iced Lightning: cast Lightning Bolt on a chilled and an unchilled dummy and compare (30% higher expected); check whether the Storm Pillar lightning pillar also rises; repeat on a boss (n00b, 2026-10-05).
+- [ ] Wizard Arcanist Nightmare Wizardry: solo on a dummy with no flanking, run a 60 s rotation and time how long the Combat Advantage icon is up (n00b, 2026-10-05).
