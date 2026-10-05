@@ -819,3 +819,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AR-14 Arcane Conduit (Arcanist encounter): single, ranged, magical arcane 300; target takes +15% from the caster own arcane powers for 5 s (uptime-scored); Spell Mastery mode: 20% and magnitude 330; 1 Arcane Mastery stack; base cooldown 11.6 s (screen 10.3). Arcanist encounters complete. (2026-10-04, base cooldown 11.6)
 - AR-15 Arcane Singularity (Arcanist daily): area radius 42, ranged, magical arcane 1200 (one hit assumed), Pull; 1 Arcane Mastery stack; 1,000 action points (2026-10-05, fine)
 - AR-16 Ice Knife (Arcanist daily): single, ranged, magical cold 2300 one hit; Knockdown 1.5 s; adds 3 Chill stacks; 1,000 action points (2026-10-05, fine)
+- AR-17 Oppressive Force (Arcanist daily): area radius 25 around the caster, magical arcane 200 x 2 + explosion 500 = 900; Daze 1 s, Repel on the explosion; 1 Arcane Mastery stack; 1,000 action points (2026-10-05, fine)
