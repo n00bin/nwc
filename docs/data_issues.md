@@ -3056,3 +3056,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Arcanist Disintegrate: confirm the 750 magnitude lands on every cast when the target is below 20% life, not only on some casts (n00b, 2026-10-04).
 - [ ] Wizard Arcanist Steal Time: does the 350 land once at the shatter or tick during the slow, and how long after the cast does the stun arrive (n00b, 2026-10-04).
 - [ ] Wizard Arcanist Arcane Conduit: check which powers the game counts as arcane for the +15% bonus against our element tags (Magic Missile, Arcane Bolt, Entangling Force, Repel, Ray of Enfeeblement, Shield, Disintegrate, Steal Time, Arcane Tempest), and whether the Conduit hit boosts itself (n00b, 2026-10-04).
+- [ ] Wizard Arcane Singularity: does the 1200 land once or tick during the pull, and how long does the singularity last (n00b, 2026-10-05).
