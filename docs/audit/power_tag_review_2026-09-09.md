@@ -897,3 +897,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - THF-9 Directed Flames (Thaumaturge feat, pair 5 top): Smolder stops ticking and deals a burst of 25% of its total damage on each apply or reapply, max 1 per second; Rimefire refresh assumed to count as reapply; scores 0 until Smolder is measured (2026-10-05, fine)
 - THF-10 Rimefire Weaving (Thaumaturge feat, pair 5 bottom): target resistance to YOUR damage -5% with Smolder or Chill, -10% with Rimefire (both), no stacking; personal; modelled as +5%/+10% damage, scores today from Smolder presence and chillStacks (PROVISIONAL). Thaumaturge feats complete. (2026-10-05, fine)
 - THG-1 Arcana (Thaumaturge General skill): identical to the Arcanist copy - utility only, no combat effect (2026-10-05, fine)
+- THG-2 Brisk Transport (Thaumaturge General skill): identical to the Arcanist copy - Movement Speed +10 (read as percent) for 2 s after a Teleport; mobility only (2026-10-05, fine)
