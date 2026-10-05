@@ -915,3 +915,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SE-4 Mighty Leap (Sentinel encounter, re-read): identical to Blademaster - 50 ft leap, area radius 12, physical 380, base cooldown 14.6 s (screen 13.4) (2026-10-05, 380, 14.6)
 - SE-5 Punishing Charge (Sentinel encounter, re-read): identical to Blademaster - 60 ft lunge, single physical 650, Stun 3 s, base cooldown 14.6 s (screen 13.4) (2026-10-05, base and yes (14.6))
 - SE-6 Indomitable Battle Strike (Sentinel encounter, re-read): single melee physical 750 - first direct capture of the unfeated base; base cooldown 11.7 s (screen 10.7) (2026-10-05, 11.7)
+- SE-7 Bloodletter (Sentinel encounter, re-read): identical to Blademaster - single melee physical 600 with lifesteal; base cooldown 14.6 s (screen 13.4). Sentinel shared encounters complete. (2026-10-05, yes, 14.6)
