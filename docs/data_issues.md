@@ -3079,3 +3079,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Arcanist Iced Lightning: cast Lightning Bolt on a chilled and an unchilled dummy and compare (30% higher expected); check whether the Storm Pillar lightning pillar also rises; repeat on a boss (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Nightmare Wizardry: solo on a dummy with no flanking, run a 60 s rotation and time how long the Combat Advantage icon is up (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Striking Advantage: with Combat Advantage on a dummy, hold Ray of Frost for 60 s and count the procs (about 15 = 25% once per second) (n00b, 2026-10-05).
+- [ ] Wizard Arcanist A Step Above Mastery: build 10 stacks and compare a Disintegrate hit at 0 and at 10 stacks (10% rise = 1% per stack, 5% = 0.5%); repeat with Lightning Bolt to see whether non-arcane damage rises; check how many stacks Arcane Empowerment grants with the feat (n00b, 2026-10-05).
