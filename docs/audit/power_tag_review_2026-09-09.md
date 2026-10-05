@@ -873,3 +873,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - TH-20 Control Mastery (Thaumaturge mechanic): identical to the Arcanist copy - always-on x2.5 on Stun, Root, Hold and Daze vs non-player enemies; no damage or stat (2026-10-05, fine)
 - TH-21 Arcane Mastery (Thaumaturge mechanic): same model as the Arcanist copy (max 5, 8 s, +0.5% arcane per stack); slider DEFAULT 0 for Thaumaturge since only shared arcane powers build stacks (2026-10-05, fine (slider default 0 for Thaumaturge))
 - TH-22 Chill (Thaumaturge mechanic): same model as the Arcanist copy (enemy stacks, max 6, slow, freeze at 6); eight Thaumaturge sources; feeds Smolder Rimefire and feats; chillStacks slider default 0 (2026-10-05, fine (slider default 0))
+- TH-23 Teleport (Thaumaturge tactical mechanic): identical to the Arcanist copy - the Wizard dodge, utility only; trigger for Brisk Transport (2026-10-05, fine)
