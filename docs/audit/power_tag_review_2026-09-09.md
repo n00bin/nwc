@@ -907,3 +907,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BL-1 Sprint (Blademaster tactical mechanic): held sprint, +100% Movement Speed and Control Immunity while held, 1 s damage immunity once per 3 s; utility only; stamina drain rate not on the tooltip (blank) (2026-10-05, fine)
 - BLG-1 Dungeoneering (Blademaster General skill): utility only, no combat effect (2026-10-05, fine)
 - BLG-2 Persistent Rage (Blademaster General skill): faster Rage generation, no number on the tooltip (blank); always on, already inside measured Rage timings, not to be added on top (2026-10-05, fine)
+- BLG-3 Marathon Runner (Blademaster General skill): +10% Movement Speed out of combat; n00b ruling: tie to the existing Hide in-combat bonuses toggle (shows in the out-of-combat view, removed in the in-combat view); stored inactive as outOfCombatStats, panel change deferred to the engine pass (2026-10-05, fine; toggle change waits for the engine pass)
