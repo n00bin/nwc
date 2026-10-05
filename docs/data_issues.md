@@ -3127,3 +3127,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] POWER-TAGS-2 / Barbarian Marathon Runner: build the out-of-combat stat filter on the Hide in-combat bonuses toggle, then compare Movement Speed on a Barbarian sheet in town with the builder at-rest value (n00b, 2026-10-05).
 - [ ] Barbarian Raging Criticals: open the character sheet, activate Battlerage and check Critical Severity rises by 10 points (n00b, 2026-10-05).
 - [ ] Barbarian Sentinel Sure Strike: empty the stamina bar and count how many hits refill it (stamina restored per hit) (n00b, 2026-10-05).
+- [ ] Bard Truly Inspired: play a non-quick-play song in combat and check the sheet Damage Bonus (Songblade) rises by 10 for 20 s (n00b, 2026-10-05).
