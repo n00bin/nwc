@@ -3090,3 +3090,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Thaumaturge Chill Strike in the Spell Mastery slot: what does the main target take (300 or 660), how far does the splash reach, and do nearby enemies get a Chill stack (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Conduit of Ice: cast on a dummy and count the hits and the Chill stacks it leaves (one hit or a ticking storm); note the radius (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Furious Immolation: does the 900 land as one hit at the blast or over several ticks; is the upward blast a knockdown on normal enemies; does a boss still take the 900 and Smolder (n00b, 2026-10-05).
+- [ ] Wizard Thaumaturge Ice Storm: does every enemy hit get the Chill stack or only one target; does the 1200 land as one hit (n00b, 2026-10-05).
