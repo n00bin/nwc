@@ -3060,3 +3060,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Oppressive Force: does the 1 s Daze apply once or on both 200 hits, and how long is the delay before the 500 explosion (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Maelstrom of Chaos: is the damage lightning or arcane - cast it with and without Arcane Conduit on the target and compare the hit (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Arcane Empowerment: measure how much faster encounters recharge during the 10 s (compare one encounter cooldown inside and outside the window); check whether the +20% applies to an encounter DoT cast before the buff (Ray of Enfeeblement) (n00b, 2026-10-05).
+- [ ] Wizard Spell Mastery: cast Lightning Bolt (no Spell Mastery line) from a normal slot and from the R1 slot on a dummy and compare the hits, to see whether the slot adds a hidden damage bonus (n00b, 2026-10-05).
