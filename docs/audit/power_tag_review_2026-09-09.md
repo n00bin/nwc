@@ -867,3 +867,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - TH-14 Fireball (Thaumaturge encounter): area radius 15, ranged, magical fire 350, adds Smolder to all targets hit; Spell Mastery mode: single target 700; base cooldown 11.6 s (screen 10.2). Thaumaturge encounters complete. (2026-10-05, base cooldown 11.6; fine)
 - TH-15 Arcane Singularity (Thaumaturge daily): identical to the Arcanist copy - area radius 42, ranged, magical arcane 1200, Pull, 1 Arcane Mastery stack, 1,000 action points (2026-10-05, fine)
 - TH-16 Ice Knife (Thaumaturge daily): identical to the Arcanist copy - single, ranged, magical cold 2300, Knockdown 1.5 s, 3 Chill stacks, 1,000 action points (2026-10-05, fine)
+- TH-17 Oppressive Force (Thaumaturge daily): identical to the Arcanist copy - area radius 25 around the caster, magical arcane 200 x 2 + 500 = 900, Daze 1 s, Repel, 1 Arcane Mastery stack, 1,000 action points (2026-10-05, fine)
