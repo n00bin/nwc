@@ -3088,3 +3088,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Thaumaturge Fanning the Flame: does the 500 land at once or over 6 s; with two smoldering enemies side by side, how many times does the 100 fire during one burn (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Icy Rays: fire both beams at one dummy and read the combat log (one hit of 850, two hits of 425, or two hits of 850); also whether each beam adds its own Chill stack (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Chill Strike in the Spell Mastery slot: what does the main target take (300 or 660), how far does the splash reach, and do nearby enemies get a Chill stack (n00b, 2026-10-05).
+- [ ] Wizard Thaumaturge Conduit of Ice: cast on a dummy and count the hits and the Chill stacks it leaves (one hit or a ticking storm); note the radius (n00b, 2026-10-05).
