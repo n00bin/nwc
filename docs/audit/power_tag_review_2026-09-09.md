@@ -931,3 +931,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - BDG-4 Truly Inspired (Songblade General skill): non-quick-play song in combat grants Songblade Damage Bonus +10% (Minstrel: Healing bonus +10%) for 20 s; combat uptime 100%; stored as a per-paragon conditional map, INACTIVE until the engine pass. Songblade General row complete. (2026-10-05, fine)
 - BDG-5 Thievery (Minstrel General skill): identical to the Songblade copy - utility only (2026-10-05, fine)
 - BDG-6 Harmonize (Minstrel General skill): identical to the Songblade copy - +2% Action Point Gain, already wired (2026-10-05, fine)
+- BDG-7 Critical Tuning (Minstrel General skill): identical to the Songblade copy - 10% Critical Severity for 20 s per non-quick-play song, in-combat bonus (view fix applies class-wide); heals can crit so it matters to the healer (2026-10-05, fine)
