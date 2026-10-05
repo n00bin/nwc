@@ -3128,3 +3128,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Barbarian Raging Criticals: open the character sheet, activate Battlerage and check Critical Severity rises by 10 points (n00b, 2026-10-05).
 - [ ] Barbarian Sentinel Sure Strike: empty the stamina bar and count how many hits refill it (stamina restored per hit) (n00b, 2026-10-05).
 - [ ] Bard Truly Inspired: play a non-quick-play song in combat and check the sheet Damage Bonus (Songblade) rises by 10 for 20 s (n00b, 2026-10-05).
+- [ ] Bard Minstrel Truly Inspired: play a non-quick-play song in combat and see whether Outgoing Healing on the sheet rises by 10 (no move = the uncapped Overall Outgoing Healing kind) (n00b, 2026-10-05).
