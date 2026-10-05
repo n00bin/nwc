@@ -917,3 +917,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SE-6 Indomitable Battle Strike (Sentinel encounter, re-read): single melee physical 750 - first direct capture of the unfeated base; base cooldown 11.7 s (screen 10.7) (2026-10-05, 11.7)
 - SE-7 Bloodletter (Sentinel encounter, re-read): identical to Blademaster - single melee physical 600 with lifesteal; base cooldown 14.6 s (screen 13.4). Sentinel shared encounters complete. (2026-10-05, yes, 14.6)
 - SE-8 Savage Advance (Sentinel daily, re-read): identical to Blademaster - 82 ft lunge, single physical 1800, area knockback, 1,000 action points; DATA FIX range 62 -> 82 on both paragon copies (2026-10-05, base)
+- SE-9 Spinning Strike (Sentinel daily, re-read): identical to Blademaster - 3 s spin, area radius 15, physical 1400 total, control immunity + 100% movement during the spin, 1,000 action points (2026-10-05, yes)
