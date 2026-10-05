@@ -879,3 +879,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - TH-26 Forte (Thaumaturge paragon mechanic): identical to the Arcanist copy - Power / Combat Advantage / Critical Avoidance, split 50/25/25 unchanged. Thaumaturge mechanics complete. (2026-10-05, fine)
 - TH-27 Arcane Presence (Thaumaturge class feature): identical to the Arcanist copy - +1% per Arcane Mastery stack on cold, fire and lightning (covers nearly the whole Thaumaturge kit and Smolder); reads arcaneMasteryStacks, default 0 on this paragon (2026-10-05, fine)
 - TH-28 Evocation (Thaumaturge class feature): identical to the Arcanist copy - +10% on area powers and Spell Mastery area modes; Smolder assumed not boosted (PROVISIONAL) (2026-10-05, fine)
+- TH-29 Chilling Presence (Thaumaturge class feature): identical to the Arcanist copy - +0.5% all damage per Chill stack (3% at 6), doubled on Frozen; reads chillStacks default 0 (PROVISIONAL) (2026-10-05, fine)
