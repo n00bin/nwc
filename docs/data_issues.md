@@ -3070,3 +3070,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Arcanist Eye of the Storm: watch the buff icon through a rotation and time the gap between two grants (10 s = 50% uptime, 15 s = 33%) (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Storm Spell: count shocks against critical hits over a long Ray of Frost channel (about 1 per 5 crits = no lockout); check whether Ray of Enfeeblement ticks trigger the shock (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Storm Fury: let one enemy attack you for 30 s and count the bolts (10 confirms the 3 s per-enemy timer); check whether a dodged or shielded attack still triggers it (n00b, 2026-10-05).
+- [ ] Wizard Arcanist Arcane Power Field: with Arcane Presence slotted, compare a Lightning Bolt hit inside and outside the window (does the doubling reach Arcane Presence); count the aura ticks on a dummy across one 8 s window (n00b, 2026-10-05).
