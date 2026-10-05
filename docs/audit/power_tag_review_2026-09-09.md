@@ -854,3 +854,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - TH-1 Magic Missile (Thaumaturge at-will): identical to the Arcanist copy - single, ranged, magical arcane, 60 per hit, third cast 3 hits (PROVISIONAL), 1 Arcane Mastery stack per cast (2026-10-05, fine)
 - TH-2 Ray of Frost (Thaumaturge at-will): identical to the Arcanist copy - single, ranged, magical cold, channelled, 65 per hit, 1 Chill per hit, freeze at 6 (2026-10-05, fine)
 - TH-3 Scorching Burst (Thaumaturge at-will): area (radius 1 ft minimum, grows), ranged, magical fire, chargeable 60-110 over 1.7 s (base confirmed), scored at full charge (PROVISIONAL); adds Smolder (2026-10-05, base; test then fine)
+- TH-4 Chilling Cloud (Thaumaturge at-will): mixed (third of three hits splashes), ranged, magical cold, 90 per hit (base confirmed); 1 Chill per hit on the target, third hit adds Chill to all targets. Thaumaturge at-wills complete. (2026-10-05, base; test then fine)
