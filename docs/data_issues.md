@@ -3062,3 +3062,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Arcanist Arcane Empowerment: measure how much faster encounters recharge during the 10 s (compare one encounter cooldown inside and outside the window); check whether the +20% applies to an encounter DoT cast before the buff (Ray of Enfeeblement) (n00b, 2026-10-05).
 - [ ] Wizard Spell Mastery: cast Lightning Bolt (no Spell Mastery line) from a normal slot and from the R1 slot on a dummy and compare the hits, to see whether the slot adds a hidden damage bonus (n00b, 2026-10-05).
 - [ ] Wizard Chill: measure how long a Chill stack lasts without a refresh, and whether a boss shows Chill stacks (matters for Chilling Presence) (n00b, 2026-10-05).
+- [ ] Wizard Arcane Mastery: check whether an arcane power with no listed stack (Disintegrate, Entangling Force) still builds a stack, and whether a new stack resets the 8 s timer on all stacks (n00b, 2026-10-05).
