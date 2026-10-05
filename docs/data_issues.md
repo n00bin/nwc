@@ -3092,3 +3092,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Thaumaturge Furious Immolation: does the 900 land as one hit at the blast or over several ticks; is the upward blast a knockdown on normal enemies; does a boss still take the 900 and Smolder (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Ice Storm: does every enemy hit get the Chill stack or only one target; does the 1200 land as one hit (n00b, 2026-10-05).
 - [ ] GATING (Wizard Thaumaturge) Smolder: apply with one Fireball on a dummy and read the combat log - damage per tick (as magnitude if possible), time between ticks, total duration; a second Fireball shows stack or refresh; then apply Chill and confirm Rimefire refreshes the duration (n00b, 2026-10-05).
+- [ ] Wizard Thaumaturge Critical Conflagration: with no fire power slotted, attack a dummy with Ray of Frost and confirm Smolder appears on the first critical hit (n00b, 2026-10-05).

@@ -881,3 +881,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - TH-28 Evocation (Thaumaturge class feature): identical to the Arcanist copy - +10% on area powers and Spell Mastery area modes; Smolder assumed not boosted (PROVISIONAL) (2026-10-05, fine)
 - TH-29 Chilling Presence (Thaumaturge class feature): identical to the Arcanist copy - +0.5% all damage per Chill stack (3% at 6), doubled on Frozen; reads chillStacks default 0 (PROVISIONAL) (2026-10-05, fine)
 - TH-30 Orb of Imposition (Thaumaturge class feature): identical to the Arcanist copy - control durations +25% (display), control-tagged powers +5% vs control immune targets; reads targetControlImmune (PROVISIONAL) (2026-10-05, fine)
+- TH-31 Critical Conflagration (Thaumaturge class feature): a critical hit from any power applies Smolder if the target has none; no damage of its own, value = Smolder always up; scores 0 until the Smolder gating test (2026-10-05, fine)
