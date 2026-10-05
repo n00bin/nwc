@@ -3083,3 +3083,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Arcanist Elemental Reinforcement: watch the buff value while casting arcane then lightning, then arcane twice in a row, and note when it changes and how long the drop lasts (n00b, 2026-10-05).
 - [ ] Wizard Controlled Momentum: cast Entangling Force in a party and check whether the buff icon appears on the Wizard or only on allies; try Repel to see whether a push encounter triggers it (n00b, 2026-10-05).
 - [ ] Wizard Improved Technique: compare Control Bonus on a Wizard in-game character sheet with the builder now that the +5% is counted (n00b, 2026-10-05).
+- [ ] Wizard Thaumaturge Scorching Burst: measure the radius at full charge, and how long a tap takes so tap (60) and full charge (110 over 1.7 s) can be compared per second (n00b, 2026-10-05).
