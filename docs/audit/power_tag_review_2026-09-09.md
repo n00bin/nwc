@@ -868,3 +868,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - TH-15 Arcane Singularity (Thaumaturge daily): identical to the Arcanist copy - area radius 42, ranged, magical arcane 1200, Pull, 1 Arcane Mastery stack, 1,000 action points (2026-10-05, fine)
 - TH-16 Ice Knife (Thaumaturge daily): identical to the Arcanist copy - single, ranged, magical cold 2300, Knockdown 1.5 s, 3 Chill stacks, 1,000 action points (2026-10-05, fine)
 - TH-17 Oppressive Force (Thaumaturge daily): identical to the Arcanist copy - area radius 25 around the caster, magical arcane 200 x 2 + 500 = 900, Daze 1 s, Repel, 1 Arcane Mastery stack, 1,000 action points (2026-10-05, fine)
+- TH-18 Furious Immolation (Thaumaturge daily): area radius 35, ranged, magical fire 900 (base confirmed, one hit assumed), Pull 1 s then upward blast (knockdown reading), adds Smolder; 1,000 action points (PROVISIONAL) (2026-10-05, 900 base; test then fine)

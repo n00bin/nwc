@@ -3089,3 +3089,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Thaumaturge Icy Rays: fire both beams at one dummy and read the combat log (one hit of 850, two hits of 425, or two hits of 850); also whether each beam adds its own Chill stack (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Chill Strike in the Spell Mastery slot: what does the main target take (300 or 660), how far does the splash reach, and do nearby enemies get a Chill stack (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Conduit of Ice: cast on a dummy and count the hits and the Chill stacks it leaves (one hit or a ticking storm); note the radius (n00b, 2026-10-05).
+- [ ] Wizard Thaumaturge Furious Immolation: does the 900 land as one hit at the blast or over several ticks; is the upward blast a knockdown on normal enemies; does a boss still take the 900 and Smolder (n00b, 2026-10-05).
