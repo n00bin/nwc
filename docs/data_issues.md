@@ -3065,3 +3065,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Arcane Mastery: check whether an arcane power with no listed stack (Disintegrate, Entangling Force) still builds a stack, and whether a new stack resets the 8 s timer on all stacks (n00b, 2026-10-05).
 - [ ] Wizard Control Mastery: time the Entangling Force hold on a normal enemy with 0 Arcane Mastery stacks (5 s confirms the x2.5); check whether a Ray of Frost freeze is also lengthened (n00b, 2026-10-05).
 - [ ] Wizard Evocation: cast Lightning Bolt on a single dummy with Evocation slotted and unslotted and compare the hits; also check whether the Storm Pillar lightning pillar gets the 10% (n00b, 2026-10-05).
+- [ ] Wizard Chilling Presence: with the feature slotted, compare a hit on a boss at 0 and at 6 Chill stacks to confirm the 3% applies on bosses (pairs with the AR-23 boss Chill test) (n00b, 2026-10-05).
