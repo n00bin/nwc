@@ -3051,7 +3051,7 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Repel in the Spell Mastery slot: does the main target take 300 or 580, and how wide does the multi-target version reach (n00b, 2026-10-04).
 - [ ] Wizard Ray of Enfeeblement: confirm the damage ticks for 10 s and totals 520; check whether the Spell Mastery +10% magical and projectile damage taken stacks with other classes' damage-taken debuffs (joins the vulnerability stacking test) (n00b, 2026-10-04).
 - [ ] Wizard Icy Terrain: does the 400 land once or tick while enemies stand on the ice; how long does the ice last and how fast does it add Chill; how far can the Spell Mastery version be placed (n00b, 2026-10-04).
-- [ ] Wizard Shield: measure the pulse magnitude in the Spell Mastery slot, the pulse radius, and how long the shield lasts unbroken; also re-check the base cooldown (n00b gave 17.4 against a shown 15.1; the other Arcanist encounters share a ratio that predicts about 17.0) (n00b, 2026-10-04).
+- [ ] Wizard Shield: measure the pulse magnitude in the Spell Mastery slot, the pulse radius, and how long the shield lasts unbroken (base cooldown 17.4 confirmed by the Thaumaturge capture 2026-10-05) (n00b, 2026-10-04).
 - [ ] Wizard Arcanist Lightning Bolt: count how many times one target is hit per cast and whether each hit is magnitude 350 (n00b, 2026-10-04).
 - [ ] Wizard Arcanist Disintegrate: confirm the 750 magnitude lands on every cast when the target is below 20% life, not only on some casts (n00b, 2026-10-04).
 - [ ] Wizard Arcanist Steal Time: does the 350 land once at the shatter or tick during the slow, and how long after the cast does the stun arrive (n00b, 2026-10-04).
