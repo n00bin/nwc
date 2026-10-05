@@ -3074,3 +3074,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Arcanist Alacrity: put all four encounters on cooldown, cast a damaging daily and check each timer drops 5 s; repeat with Arcane Empowerment to see whether a self-buff daily triggers it (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Spell Twisting: from an empty bar cast one encounter then one at-will and read the action point gain (is it scaled by Action Point Gain); hold Ray of Frost with 4 stacks and count the stacks spent (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Assailing Force: count how often the buff icon appears over about 50 encounter casts; when it is up compare the doubled hit with a normal one on the same power (n00b, 2026-10-05).
+- [ ] Wizard Arcanist Snap Freeze: hold Ray of Frost on a dummy past 6 Chill stacks and watch whether the extra 70 hits keep coming; repeat on a boss (n00b, 2026-10-05).
