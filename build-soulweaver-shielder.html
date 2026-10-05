@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The AI-built Soulweaver Warlock shielding build from The N00bin Network, Mod 33.5: the one feat that makes it work, what changed from the healer build, every slot, and a one-click Toon Forge link.">
+<meta property="og:title" content="The Shielding Warlock">
+<meta property="og:description" content="The Hellpact Soulweaver: one feat, what changed from the healer build, every slot, and a one-click Toon Forge link. Mod 33.5.">
+<meta property="og:type" content="article">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext y='14' font-size='14'%3E%F0%9F%9B%A1%3C/text%3E%3C/svg%3E">
+<title>The Shielding Warlock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600&display=swap">
+<style>
+:root{
+  --ground:#F1EAE0;
+  --panel:#FBF7F1;
+  --panel-2:#F6EFE5;
+  --ink:#221A21;
+  --ink-2:#5B4C57;
+  --muted:#877584;
+  --rule:#DCCFBE;
+  --rule-hard:#C3B199;
+  --brass:#8A6612;
+  --blood:#9A2B27;
+  --leaf:#3E7A4C;
+  --bar-a:#8A6612;
+  --bar-b:#B99433;
+
+  --fs-eyebrow:.72rem;
+  --fs-body:1rem;
+  --fs-lead:1.11rem;
+  --fs-h2:1.42rem;
+  --fs-h1:clamp(2.1rem,6vw,3.3rem);
+  --fs-hero:clamp(3.6rem,15vw,7rem);
+  --maxw:1000px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#15101A;
+    --panel:#1D1724;
+    --panel-2:#241C2C;
+    --ink:#EFE6E6;
+    --ink-2:#C2B0BD;
+    --muted:#96828F;
+    --rule:#332838;
+    --rule-hard:#4A3A4E;
+    --brass:#D7AE45;
+    --blood:#D0514A;
+    --leaf:#7CC48E;
+    --bar-a:#D7AE45;
+    --bar-b:#8E7231;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#15101A;
+  --panel:#1D1724;
+  --panel-2:#241C2C;
+  --ink:#EFE6E6;
+  --ink-2:#C2B0BD;
+  --muted:#96828F;
+  --rule:#332838;
+  --rule-hard:#4A3A4E;
+  --brass:#D7AE45;
+  --blood:#D0514A;
+  --leaf:#7CC48E;
+  --bar-a:#D7AE45;
+  --bar-b:#8E7231;
+}
+
+*{box-sizing:border-box}
+html{color-scheme:light dark}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:Barlow,"Segoe UI",system-ui,sans-serif;
+  font-size:var(--fs-body);
+  line-height:1.55;
+  margin:0;
+  padding-block:34px 56px;
+  padding-left:20px;
+  padding-right:20px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;display:flex;flex-direction:column;gap:38px}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--brass)}
+
+.eyebrow{
+  font-family:"Barlow Condensed",Barlow,sans-serif;
+  font-size:var(--fs-eyebrow);
+  letter-spacing:.19em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+}
+
+.masthead{display:flex;flex-direction:column;gap:10px}
+.masthead h1{
+  font-family:Cinzel,Georgia,serif;
+  font-weight:700;
+  font-size:var(--fs-h1);
+  line-height:1.02;
+}
+.masthead h1 em{font-style:normal;color:var(--brass)}
+.deck{font-size:var(--fs-lead);color:var(--ink-2);max-width:62ch}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.btn{
+  display:inline-block;
+  font-family:"Barlow Condensed",Barlow,sans-serif;
+  font-size:1.02rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-weight:600;
+  text-decoration:none;
+  padding:11px 18px;
+  border:1px solid var(--brass);
+  color:var(--brass);
+  background:transparent;
+}
+.btn.primary{background:var(--brass);color:var(--ground)}
+.btn:hover{filter:brightness(1.08)}
+
+.total{
+  background:var(--panel);
+  border:1px solid var(--rule);
+  border-top:3px solid var(--brass);
+  display:grid;
+  grid-template-columns:minmax(0,auto) minmax(0,1fr);
+  gap:8px 42px;
+  align-items:center;
+  padding:30px 32px;
+}
+.total .fig{display:flex;flex-direction:column;gap:2px}
+.total .num{
+  font-family:Cinzel,Georgia,serif;
+  font-weight:700;
+  font-size:var(--fs-hero);
+  line-height:.88;
+  color:var(--brass);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-.01em;
+}
+.total .num small{font-size:.42em;letter-spacing:0}
+.total .say{font-size:var(--fs-lead);color:var(--ink-2);max-width:40ch}
+.total .say strong{color:var(--ink);font-weight:600}
+.total-foot{
+  grid-column:1/-1;
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid var(--rule);
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 30px;
+}
+.mini{display:flex;flex-direction:column}
+.mini b{font-size:1.22rem;font-weight:600;font-variant-numeric:tabular-nums}
+
+.section-head{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.section-head h2{font-family:Cinzel,Georgia,serif;font-size:var(--fs-h2);font-weight:500}
+.section-head p{color:var(--ink-2);max-width:66ch}
+.prose{color:var(--ink-2);max-width:70ch;display:flex;flex-direction:column;gap:12px}
+.prose b{color:var(--ink);font-weight:600}
+
+.ledger{display:flex;flex-direction:column}
+.row{
+  display:grid;
+  grid-template-columns:minmax(0,1.3fr) minmax(0,1.7fr) 150px 96px;
+  gap:6px 22px;
+  align-items:center;
+  padding:16px 0 16px 16px;
+  border-top:1px solid var(--rule);
+  border-left:3px solid var(--hue,var(--rule-hard));
+}
+.row:last-of-type{border-bottom:1px solid var(--rule)}
+.nm{display:flex;flex-direction:column;gap:1px;min-width:0}
+.nm b{font-size:1.06rem;font-weight:600}
+.nm span{font-size:.86rem;color:var(--muted)}
+.eff{font-size:.93rem;color:var(--ink-2);min-width:0}
+.eff code{
+  font-family:"Barlow Condensed",Barlow,sans-serif;
+  font-size:1.04em;
+  letter-spacing:.02em;
+  color:var(--ink);
+  font-weight:600;
+}
+.bararea{display:flex;flex-direction:column;gap:5px;min-width:0}
+.track{height:9px;background:var(--panel-2);border:1px solid var(--rule);position:relative;overflow:hidden}
+.fill{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,var(--bar-a),var(--bar-b))}
+.val{
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+  font-size:1.24rem;
+  font-weight:600;
+  color:var(--ink);
+}
+.val small{font-size:.7em;color:var(--muted);font-weight:500}
+.up{
+  font-family:"Barlow Condensed",Barlow,sans-serif;
+  font-size:.78rem;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.gear .row{grid-template-columns:minmax(0,1.2fr) minmax(0,2fr) 150px}
+.gear .row .val{font-size:1.02rem;line-height:1.2}
+
+.sumline{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:8px 18px;
+  margin-top:22px;
+  padding:16px 18px;
+  background:var(--panel-2);
+  border-left:3px solid var(--brass);
+}
+.sumline b.big{font-family:Cinzel,Georgia,serif;font-size:1.5rem;color:var(--brass);font-variant-numeric:tabular-nums}
+.sumline p{color:var(--ink-2);font-size:.96rem;max-width:58ch}
+.sumline p b{color:var(--ink)}
+
+.pools{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+.pools.two{grid-template-columns:1fr 1fr}
+.pool{background:var(--panel);border:1px solid var(--rule);padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.pool h3{font-size:1.12rem;font-weight:600}
+.pool p{font-size:.93rem;color:var(--ink-2)}
+.stack-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.stack-list li{display:flex;justify-content:space-between;gap:14px;font-size:.93rem;border-bottom:1px dotted var(--rule);padding-bottom:4px}
+.stack-list li span:first-child{color:var(--ink-2)}
+.stack-list li span:first-child b{color:var(--ink);font-weight:600}
+.stack-list li span:last-child{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600;white-space:nowrap}
+.pool .out{
+  margin-top:auto;
+  padding-top:12px;
+  border-top:1px solid var(--rule-hard);
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+}
+.pool .out b{font-family:Cinzel,Georgia,serif;font-size:1.5rem;color:var(--brass);font-variant-numeric:tabular-nums}
+.plain{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:.93rem;color:var(--ink-2)}
+.plain b{color:var(--ink);font-weight:600}
+
+.party{background:var(--panel);border:1px solid var(--rule);padding:24px 26px;display:flex;flex-direction:column;gap:16px}
+.pbars{display:flex;flex-direction:column;gap:12px}
+.pb{display:grid;grid-template-columns:150px minmax(0,1fr) 92px;align-items:center;gap:14px}
+.pb .cap{font-family:"Barlow Condensed",Barlow,sans-serif;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pb .t{height:20px;background:var(--panel-2);border:1px solid var(--rule);position:relative}
+.pb .f{position:absolute;top:0;bottom:0;left:0;background:var(--rule-hard)}
+.pb .f.hot{background:linear-gradient(90deg,var(--bar-a),var(--bar-b))}
+.pb .n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.party .kicker{font-size:var(--fs-lead);color:var(--ink-2)}
+.party .kicker strong{color:var(--brass);font-weight:600}
+
+.verdict{background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--brass);padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.verdict .big{font-family:Cinzel,Georgia,serif;font-size:1.6rem;color:var(--brass)}
+.verdict p{color:var(--ink-2);max-width:70ch}
+.verdict p b{color:var(--ink)}
+
+.notes{display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--rule);padding-top:20px}
+.notes h2{font-family:Cinzel,Georgia,serif;font-size:1.14rem;font-weight:500}
+.notes dl{margin:0;display:flex;flex-direction:column;gap:13px}
+.notes dt{font-family:"Barlow Condensed",Barlow,sans-serif;font-size:.79rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);font-weight:600}
+.notes dd{margin:3px 0 0;font-size:.92rem;color:var(--ink-2);max-width:78ch}
+.notes dd b{color:var(--ink);font-weight:600}
+footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px}
+
+@media (max-width:780px){
+  .total{grid-template-columns:1fr;gap:16px;padding:24px 20px}
+  .row{grid-template-columns:minmax(0,1fr) 86px;gap:6px 14px}
+  .row .eff{grid-column:1 / -1}
+  .row .bararea{grid-column:1 / 2}
+  .row .val{grid-column:2 / 3}
+  .gear .row{grid-template-columns:minmax(0,1fr) 86px}
+  .pools,.pools.two{grid-template-columns:1fr}
+  .pb{grid-template-columns:110px minmax(0,1fr) 70px;gap:10px}
+}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Neverwinter &middot; PS5 &middot; Soulweaver Warlock Shielder &middot; Mod 33.5</p>
+    <h1>The Shielding <em>Warlock</em></h1>
+    <p class="deck">Same Warlock as the heal-over-time build, opposite job. Built by the Toon Forge AI optimizer, equipped and played by N00binHard. One feat does the converting; this page shows what else changed and why. Written for new and mid-game healers whose group keeps asking for shields.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://n00bin.github.io/nwc/b/soulweaver-shielder/">&#9874; Load this build in the Toon Forge</a>
+      <a class="btn" id="watch" href="https://www.youtube.com/playlist?list=PLBNuxIil7fCujBNCOUdUMEPZNk-OYd43r" target="_blank" rel="noopener">&#9654; Watch the video guide</a>
+    </div>
+  </header>
+
+  <section class="total">
+    <div class="fig">
+      <div class="num">65<small>%</small></div>
+      <p class="eyebrow">Of every heal comes back as a shield</p>
+    </div>
+    <p class="say">With <strong>Hellpact</strong> slotted, Vampiric Embrace, Revitalize and Soulstorm each raise an Infernal Barrier that absorbs damage equal to <strong>65% of the hit points healed</strong>. The heal still lands. The shield goes on top.</p>
+    <div class="total-foot">
+      <div class="mini"><span class="eyebrow">Infernal Sanction shield</span><b>1,000 magnitude</b></div>
+      <div class="mini"><span class="eyebrow">Outgoing Healing, town &rarr; fight</span><b>100.7% &rarr; 120%</b></div>
+      <div class="mini"><span class="eyebrow">Power, town &rarr; fight</span><b>95% &rarr; 120%</b></div>
+      <div class="mini"><span class="eyebrow">Crit Severity, town &rarr; fight</span><b>108% &rarr; 120%</b></div>
+      <div class="mini"><span class="eyebrow">Total item level</span><b>139,837</b></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>One feat makes it a shielder</h2>
+      <p>No piece of gear on this character mentions shields. The feat is the whole conversion, and it&rsquo;s the last one on the list.</p>
+    </div>
+    <div class="pools two">
+      <div class="pool">
+        <h3>Feypact &mdash; the healer build</h3>
+        <p>Vampiric Embrace, Revitalize, Soulstorm and your lifespark&rsquo;s heal all leave a <b>heal over time</b>. You top people up after they get hit.</p>
+        <ul class="plain">
+          <li><b>Best when</b> the damage is constant and ticking.</li>
+          <li><a href="https://n00bin.github.io/nwc/build-soulweaver-healer.html">The heal-over-time build &rarr;</a></li>
+        </ul>
+      </div>
+      <div class="pool">
+        <h3>Hellpact &mdash; this build</h3>
+        <p>Those same four leave an <b>Infernal Barrier</b> instead, sized from the heal, and Infernal Sanction&rsquo;s barrier gets stronger. You soak the damage before it reaches the health bar.</p>
+        <ul class="plain">
+          <li><b>Best when</b> survivability is the problem in the dungeon.</li>
+          <li><b>Even full-health allies get the shield</b>, so you can put it up before the damage comes.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sumline">
+      <b class="big">The catch: resource.</b>
+      <p>A heal-over-time keeps working for seconds after you cast. A shield doesn&rsquo;t &mdash; once it&rsquo;s gone, you cast again. <b>A shielder casts more often, and every heal and every shield costs Soulweave.</b> That&rsquo;s why the regen moved to the helm.</p>
+    </div>
+  </section>
+
+  <section class="gear">
+    <div class="section-head">
+      <h2>What changed from the healer build</h2>
+      <p>If you built the heal-over-time Warlock, you already own most of this. These are the only differences.</p>
+    </div>
+    <div class="ledger">
+      <div class="row" style="--hue:#8A6612">
+        <div class="nm"><b>Feat: Hellpact</b><span>was Feypact</span></div>
+        <p class="eff">The whole conversion. Your heals stop leaving a heal-over-time and leave an <code>Infernal Barrier</code> instead.</p>
+        <div class="val">The shield</div>
+      </div>
+      <div class="row" style="--hue:#8A6612">
+        <div class="nm"><b>Head: Visage of the Eternal Herald</b><span>was Wintermarked Mender Barbute</span></div>
+        <p class="eff"><code>Ruthless Resources</code> moves to the helm and stacks to 10, plus +5% Crit Strike. Gives up the Barbute&rsquo;s +9% Outgoing Healing above 90% health.</p>
+        <div class="val">Soulweave</div>
+      </div>
+      <div class="row" style="--hue:#9A2B27">
+        <div class="nm"><b>Armor: Enchanted Bregan D&rsquo;aerthe Expert&rsquo;s Cloth</b><span>was Aegis of the Bloodwrought Covenant</span></div>
+        <p class="eff"><code>Menacing Aura</code>: a debuff on every enemy within 10 feet. Gives up the Aegis&rsquo;s stacking Outgoing Healing and Crit Strike.</p>
+        <div class="val">Team debuff</div>
+      </div>
+      <div class="row" style="--hue:#8A6612">
+        <div class="nm"><b>Feet: Prismatic Luminstep Boots</b><span>was Prismatic Luminstep Greaves</span></div>
+        <p class="eff">Crit Severity and Combat Advantage rating. The Greaves are the regen version &mdash; see &ldquo;What I wear on camera&rdquo; in the fine print.</p>
+        <div class="val">Crit Sev</div>
+      </div>
+      <div class="row" style="--hue:#9A2B27">
+        <div class="nm"><b>Primary artifact: Xeleth&rsquo;s Blast Scepter</b><span>was Demogorgon&rsquo;s Reach</span></div>
+        <p class="eff">Same job, different button: the active lowers the target&rsquo;s damage resistance by 15%.</p>
+        <div class="val">Team debuff</div>
+      </div>
+      <div class="row" style="--hue:#B99433">
+        <div class="nm"><b>Artifact: Demon Skull</b><span>was Nightflame Censer</span></div>
+        <p class="eff">A stat swap in the secondaries: Power, Crit Severity, Combat Advantage.</p>
+        <div class="val">Stats</div>
+      </div>
+      <div class="row" style="--hue:#9A2B27">
+        <div class="nm"><b>Summoned: Tutor + Vulnerability</b><span>was Flapjack + Dulled Senses</span></div>
+        <p class="eff">Still one party buff and one enemy debuff, different picks. Tutor: +5% Combat Advantage in a full party within 50&rsquo;. Vulnerability: a chance to cut enemy Critical Avoidance by up to 9%.</p>
+        <div class="val">Team</div>
+      </div>
+      <div class="row" style="--hue:#B99433">
+        <div class="nm"><b>Companion: Proud Pink Yeti</b><span>was Encore the Virtuoso</span></div>
+        <p class="eff">Outgoing Healing in an active slot.</p>
+        <div class="val">Healing</div>
+      </div>
+      <div class="row" style="--hue:#B99433">
+        <div class="nm"><b>Boons &amp; guild</b><span>two campaign boons, one guild boon</span></div>
+        <p class="eff">Critical Avoidance 4 &rarr; 5, Dino Bulwark 3 &rarr; 5. Guild utility: Movement Speed &rarr; Revive Sickness.</p>
+        <div class="val">99 pts</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gear">
+    <div class="section-head">
+      <h2>Gear, slot by slot</h2>
+      <p>Twelve slots. Three changed.</p>
+      <p><b>Defense Armor Kit +1</b> on all four armor slots.</p>
+      <p><b>Major Awareness Jewel +1</b> on all four jewelry slots.</p>
+    </div>
+    <div class="ledger">
+      <div class="row" style="--hue:#8A6612">
+        <div class="nm"><b>Visage of the Eternal Herald</b><span>Head &middot; changed</span></div>
+        <p class="eff"><code>Ruthless Resources</code> (Ascendant): land a heal or hit for more than 10% of your max HP and gain 5% faster Soulweave regen for 15s, up to 10 stacks. Plus +5% Crit Strike. Crit Severity 4,505 &middot; Outgoing Healing 2,457.</p>
+        <div class="val">4,550 <small>IL</small></div>
+      </div>
+      <div class="row" style="--hue:#9A2B27">
+        <div class="nm"><b>Enchanted Bregan D&rsquo;aerthe Expert&rsquo;s Cloth</b><span>Armor &middot; changed &middot; Warlock / Bard only</span></div>
+        <p class="eff"><code>Menacing Aura</code>: enemies within 10 feet of you lose 5% Defense, Awareness and Critical Avoidance. Multiple of the same aura do not stack. The lowest item level armor piece in the build, kept for the team.</p>
+        <div class="val">2,050 <small>IL</small></div>
+      </div>
+      <div class="row" style="--hue:#B99433">
+        <div class="nm"><b>Vambraces of the Bloodforged Edict</b><span>Arms</span></div>
+        <p class="eff"><code>Resourceful Healer</code>: +20% maximum Soulweave, +5% Outgoing Healing.</p>
+        <div class="val">4,550 <small>IL</small></div>
+      </div>
+      <div class="row" style="--hue:#8A6612">
+        <div class="nm"><b>Prismatic Luminstep Boots</b><span>Feet &middot; changed</span></div>
+        <p class="eff">Crit Severity 3,330 &middot; Combat Advantage 2,220. Read the equip bonus off your own tooltip &mdash; and see the fine print for the Greaves I wear on camera.</p>
+        <div class="val">3,700 <small>IL</small></div>
+      </div>
+      <div class="row" style="--hue:#B99433">
+        <div class="nm"><b>Frost-Riven Lifebraid Vestment</b><span>Shirt</span></div>
+        <p class="eff"><code>Graceful Harmony</code>: +1.4% Outgoing Healing per teammate; teammates within 20&rsquo; get +1.2% Forte. Freezing Energy set: +4% Crit Strike.</p>
+        <div class="val">4,850 <small>IL</small></div>
+      </div>
+      <div class="row" style="--hue:#B99433">
+        <div class="nm"><b>Deep-Riven Dawnshard Raiment</b><span>Pants</span></div>
+        <p class="eff"><code>Rested Healing</code>: +9% Outgoing Healing while stamina is above 75%. Freezing Touch set: +4% Power.</p>
+        <div class="val">4,850 <small>IL</small></div>
+      </div>
+      <div class="row" style="--hue:#7B3F6B">
+        <div class="nm"><b>Frostsilver Halo of Mending</b><span>Ring</span></div>
+        <p class="eff"><code>Circular Healing</code>: +8% Outgoing Healing for 10s when you get healed in combat. It stays on a shield build because a Hellpact Warlock still heals with every cast &mdash; the shield goes on top of the heal.</p>
+        <div class="val">6,000 <small>IL</small></div>
+      </div>
+      <div class="row" style="--hue:#7B3F6B">
+        <div class="nm"><b>Frostsilver Band of Faith</b><span>Ring</span></div>
+        <p class="eff"><code>Deity&rsquo;s Gift</code>: up to +8.5% Power from your current hit points. Shields have to go down before your health does, so this stays up longer here than on the healer.</p>
+        <div class="val">6,000 <small>IL</small></div>
+      </div>
+      <div class="row" style="--hue:#9A2B27">
+        <div class="nm"><b>Jewel of the Marilith</b><span>Neck &middot; Marilith Strike 1/3</span></div>
+        <p class="eff">With the Sash and the Marilith Mask: <code>every crit makes the enemy take +1% damage</code> for 5s, stacking to 5. Your Eldritch Blast crits are the party&rsquo;s damage buff.</p>
+        <div class="val">2,050 <small>IL</small></div>
+      </div>
+      <div class="row" style="--hue:#9A2B27">
+        <div class="nm"><b>Sash of the Marilith</b><span>Waist &middot; Marilith Strike 2/3</span></div>
+        <p class="eff">Second Marilith piece. +3 STR, +3 DEX.</p>
+        <div class="val">2,050 <small>IL</small></div>
+      </div>
+      <div class="row" style="--hue:#5B4C57">
+        <div class="nm"><b>Omen of Doom</b><span>Main hand &middot; Impending Doom 1/2</span></div>
+        <p class="eff">Set 2/2: <code>+9% Crit Severity, +5% Power</code>. Unleashed (Healer): +5% Outgoing Healing once charged in combat. Mod: Enhanced Dark Spiral.</p>
+        <div class="val">5,250 <small>IL</small></div>
+      </div>
+      <div class="row" style="--hue:#5B4C57">
+        <div class="nm"><b>Codex of Eternal Chains</b><span>Off hand &middot; Impending Doom 2/2</span></div>
+        <p class="eff">Completes the set. Off-hand mods: Recharge Speed, Combat Advantage.</p>
+        <div class="val">5,250 <small>IL</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Enchantments &amp; artifacts</h2>
+      <p>Enchantments are identical to the healer build, including both Mod 33.5 combat slots. Two of the four artifacts changed.</p>
+    </div>
+    <div class="pools two">
+      <div class="pool">
+        <h3>Enchantments</h3>
+        <ul class="stack-list">
+          <li><span><b>Strike</b> &middot; Celestial Shifting Shards</span><span>base damage, Power, CA proc</span></li>
+          <li><span><b>Guard</b> &middot; Celestial Fluid Aurora</span><span>+10% regen, +10% max, +9% OH</span></li>
+          <li><span><b>Offense &times;4</b> &middot; Celestial Garnet, Opal, Cobalt, Ammolite</span><span></span></li>
+          <li><span><b>Defense &times;4</b> &middot; Celestial Garnet</span><span></span></li>
+          <li><span><b>Utility</b> &middot; Celestial Jade &nbsp; <b>Bonus</b> &middot; Celestial Movement</span><span></span></li>
+          <li><span><b>Overloads</b> &middot; Demonic Empowerment, Demon Ward</span><span>content-specific</span></li>
+        </ul>
+        <p>Overloads don&rsquo;t make or break the build. Match the ward to the content you&rsquo;re running.</p>
+      </div>
+      <div class="pool">
+        <h3>Artifacts</h3>
+        <ul class="stack-list">
+          <li><span><b>Xeleth&rsquo;s Blast Scepter</b> &middot; primary &middot; arcane blast that stuns and lowers the target&rsquo;s damage resistance by 15%. 60s cooldown.</span><span>HP &middot; Power &middot; Crit Strike</span></li>
+          <li><span><b>Demon Skull</b> &middot; secondary, here for its stats</span><span>Power &middot; Crit Sev &middot; CA</span></li>
+          <li><span><b>Marilith Mask</b> &middot; completes Marilith Strike 3/3</span><span>Crit Sev &middot; CA &middot; Accuracy</span></li>
+          <li><span><b>Burning Hope</b> &middot; unchanged from the healer build</span><span>Power &middot; Crit Sev &middot; OH</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="gear">
+    <div class="section-head">
+      <h2>Mounts</h2>
+      <p><b>Equip power:</b> Mystic Aura &mdash; Power and Accuracy (2,953 each on my tooltip). <b>Combat power:</b> Devouring Depths &mdash; on my tooltip, the target deals 20.7% less damage, takes 20.7% more, and loses 13.8% Combat Advantage. Same five mounts, collars and bonuses as the healer build; three single insignias differ. Mount bolster 125.</p>
+    </div>
+    <div class="ledger">
+      <div class="row" style="--hue:#8A6612">
+        <div class="nm"><b>Demonic Gravehound</b><span>Slot 1 &middot; Sturdy Crescent Collar V</span></div>
+        <p class="eff"><code>Enlightened</code> Brutality &middot; <code>Barbed</code> Dominance &middot; <code>Illuminated</code> Rhythm &middot; <code>Crescent</code> Brutality</p>
+        <div class="val">Mender&rsquo;s Covenant</div>
+      </div>
+      <div class="row" style="--hue:#8A6612">
+        <div class="nm"><b>Dragon Chicken</b><span>Slot 2 &middot; Practical Regal Collar V</span></div>
+        <p class="eff"><code>Barbed</code> Dominance &middot; <code>Enlightened</code> Brutality &middot; <code>Crescent</code> Brutality &middot; <code>Illuminated</code> Rhythm</p>
+        <div class="val">Mender&rsquo;s Covenant</div>
+      </div>
+      <div class="row" style="--hue:#7B3F6B">
+        <div class="nm"><b>Brain Stealer Dragon</b><span>Slot 3 &middot; Supportive Regal Collar V</span></div>
+        <p class="eff"><code>Crescent</code> Brutality &middot; <code>Regal</code> Dominance &middot; <code>Illuminated</code> Dominance &middot; <code>Regal</code> Dominance</p>
+        <div class="val">Cautious Devotion</div>
+      </div>
+      <div class="row" style="--hue:#7B3F6B">
+        <div class="nm"><b>Crimson Crystal Horse</b><span>Slot 4 &middot; Unified Crescent Collar V</span></div>
+        <p class="eff"><code>Crescent</code> Brutality &middot; <code>Regal</code> Dominance &middot; <code>Regal</code> Dominance &middot; <code>Illuminated</code> Refuge</p>
+        <div class="val">Cautious Devotion</div>
+      </div>
+      <div class="row" style="--hue:#B99433">
+        <div class="nm"><b>Golden Armored Griffon</b><span>Slot 5 &middot; Wayfaring Barbed Collar V</span></div>
+        <p class="eff"><code>Crescent</code> Brutality &middot; <code>Illuminated</code> Brutality &middot; <code>Illuminated</code> Rhythm &middot; <code>Enlightened</code> Brutality</p>
+        <div class="val">Trainer&rsquo;s Restoration</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Companions &amp; boons</h2>
+    </div>
+    <div class="pools two">
+      <div class="pool">
+        <h3>Companions</h3>
+        <ul class="stack-list">
+          <li><span><b>Summoned</b> &middot; Tutor &middot; Class In Session: Combat Advantage for the party when you&rsquo;re in a full group within 50&rsquo;. Vulnerability enhancement, Celestial Companion runestone, three True Ice Icons of the Companion.</span><span>+5% Combat Advantage</span></li>
+          <li><span><b>Offense slot</b> &middot; Tamed Velociraptor &middot; Raptor&rsquo;s Instincts</span><span>+4.5% Power / stack</span></li>
+          <li><span><b>Defense slot</b> &middot; Golden Bulette Pup</span><span>+9% Outgoing Healing</span></li>
+          <li><span><b>Active</b> &middot; Kenku Archer</span><span>+4.5% Power &middot; +4.5% Crit Sev</span></li>
+          <li><span><b>Active</b> &middot; Proud Pink Yeti &middot; new in this build</span><span>+9% Outgoing Healing</span></li>
+          <li><span><b>Active</b> &middot; Quickling</span><span>+4.5% Crit Strike &middot; +4.5% Outgoing Healing</span></li>
+        </ul>
+        <p>All Celestial, companion bolster 120. Read each bonus off your own companion sheet.</p>
+        <p><b>Live-swap rule:</b> if someone in your group already has the same companion summoned, swap yours. The optimizer can&rsquo;t see who&rsquo;s standing next to you.</p>
+      </div>
+      <div class="pool">
+        <h3>Boons</h3>
+        <p class="eyebrow" style="margin-top:6px">Tier 1</p>
+        <ul class="stack-list">
+          <li><span><b>Recruit&rsquo;s Training</b> &middot; Power</span><span>5 pts</span></li>
+          <li><span><b>Critical Strike</b></span><span>5 pts</span></li>
+          <li><span><b>Cultist Bulwark</b> &middot; Maximum Hit Points</span><span>5 pts</span></li>
+          <li><span><b>Critical Avoidance</b></span><span>5 pts</span></li>
+        </ul>
+        <p class="eyebrow" style="margin-top:6px">Tier 2</p>
+        <ul class="stack-list">
+          <li><span><b>Squire&rsquo;s Training</b> &middot; Power</span><span>5 pts</span></li>
+          <li><span><b>Critical Severity</b></span><span>5 pts</span></li>
+          <li><span><b>Defense</b></span><span>5 pts</span></li>
+          <li><span><b>Demonic Bulwark</b> &middot; Maximum Hit Points</span><span>5 pts</span></li>
+          <li><span><b>Marathon Runner</b> &middot; Movement Speed</span><span>5 pts</span></li>
+          <li><span><b>Lingering Medicine</b></span><span>2 pts</span></li>
+        </ul>
+        <p class="eyebrow" style="margin-top:6px">Tier 3</p>
+        <ul class="stack-list">
+          <li><span><b>Knight&rsquo;s Training</b> &middot; Power</span><span>5 pts</span></li>
+          <li><span><b>Combat Advantage</b></span><span>5 pts</span></li>
+          <li><span><b>Awareness</b></span><span>5 pts</span></li>
+          <li><span><b>Dino Bulwark</b> &middot; Maximum Hit Points</span><span>5 pts</span></li>
+          <li><span><b>Dino Power</b> &middot; Damage Bonus</span><span>5 pts</span></li>
+        </ul>
+        <p class="eyebrow" style="margin-top:6px">Tier 4</p>
+        <ul class="stack-list">
+          <li><span><b>Captain&rsquo;s Training</b> &middot; Power</span><span>5 pts</span></li>
+          <li><span><b>Necrotic Bulwark</b> &middot; Maximum Hit Points</span><span>5 pts</span></li>
+          <li><span><b>Necrotic Mastery</b> &middot; Damage Bonus</span><span>5 pts</span></li>
+        </ul>
+        <p class="eyebrow" style="margin-top:6px">Tier 5</p>
+        <ul class="stack-list">
+          <li><span><b>Masterclass</b> &middot; Forte</span><span>4 pts</span></li>
+          <li><span><b>Blessed Touch</b> &middot; Outgoing Healing</span><span>4 pts</span></li>
+          <li><span><b>Call of Power</b> &middot; Action Point Gain</span><span>4 pts</span></li>
+        </ul>
+        <p class="eyebrow" style="margin-top:6px">Master boons</p>
+        <ul class="stack-list">
+          <li><span><b>Life Lessons</b></span><span>3 rank</span></li>
+          <li><span><b>Enhanced Application</b></span><span>3 rank</span></li>
+          <li><span><b>Blessed Advantage</b></span><span>3 rank</span></li>
+          <li><span><b>Blessed Resilience</b></span><span>3 rank</span></li>
+        </ul>
+        <p class="eyebrow" style="margin-top:6px">Guild boons</p>
+        <ul class="stack-list">
+          <li><span><b>Power Bonus</b></span><span>10 rank</span></li>
+          <li><span><b>Defense Bonus</b></span><span>10 rank</span></li>
+          <li><span><b>Revive Sickness</b></span><span>10 rank</span></li>
+        </ul>
+        <p>99 campaign points. Master boons at rank 3, guild boons at rank 10. Newer healers who die often: Revive Sickness is the guild utility pick; otherwise Movement Speed works.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Powers &amp; feats</h2>
+      <p><b>Same tray as the healer build.</b> Seven powers and both class features are identical. One feat changed, and it changes what every button does.</p>
+    </div>
+    <div class="pools" style="grid-template-columns:1fr">
+      <div class="pool">
+        <h3>The loadout</h3>
+        <ul class="stack-list">
+          <li><span><b>At-Wills</b></span><span>Eldritch Blast &middot; Infernal Sanction</span></li>
+          <li><span><b>Encounters</b></span><span>Revitalize &middot; Vampiric Embrace &middot; Soulstorm</span></li>
+          <li><span><b>Dailies</b></span><span>Soul Barrier &middot; Soul Pact</span></li>
+          <li><span><b>Class features</b></span><span>Flames of Empowerment &middot; Soulbond</span></li>
+          <li><span><b>Feats</b></span><span>Essence of Power &middot; Soul Reclamation &middot; Soultheft &middot; From the Brink &middot; Hellpact</span></li>
+          <li><span><b>Ability scores</b></span><span>Dexterity and Wisdom &middot; every level-up point</span></li>
+        </ul>
+        <ul class="plain">
+          <li><b>Infernal Sanction</b> is the tank&rsquo;s shield: a small heal and a big single-target barrier.</li>
+          <li><b>Vampiric Embrace</b> is still the main heal &mdash; and now every cast shields everyone it reaches.</li>
+          <li><b>Soul Barrier</b> is the mitigation daily: 10% less damage for allies inside it, plus a heal over time.</li>
+          <li><b>Soul Pact</b> is for when the party is spread too far for Soul Barrier to cover.</li>
+          <li><b>Soulstorm or Pillar of Power:</b> swap by content. Pillar of Power needs the group to stand in it.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="party">
+    <p class="eyebrow">Load it yourself &mdash; free</p>
+    <p class="kicker">The link opens this build in the Toon Forge, every slot filled. Mark what you don&rsquo;t own and it shows you where you stand. The builder and the whole Compendium are free and stay free. <strong>The AI optimizer that produced this build is a Legendary N00B member perk.</strong></p>
+    <div class="cta">
+      <a class="btn primary" href="https://n00bin.github.io/nwc/b/soulweaver-shielder/">&#9874; Load this build in the Toon Forge</a>
+      <a class="btn" href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener">&#11088; Legendary N00B</a>
+    </div>
+  </section>
+
+  <section class="notes">
+    <h2>The fine print</h2>
+    <dl>
+      <dt>What I wear on camera</dt>
+      <dd>The video shows a few pieces that differ from the linked build, and either version works. <b>Feet:</b> on camera I wear the Prismatic Luminstep Greaves with Ruthless Resources (regen, up to 5 stacks) so the helm and boots stack; the link has the Luminstep Boots. <b>Summoned companion:</b> Portobello DaVinci on camera, Tutor in the link. <b>Overload:</b> a Giant Ward on camera, Demon Ward in the link. <b>Boons:</b> my live character has 129 points spent; the link shows 99.</dd>
+
+      <dt>One slip in the video</dt>
+      <dd>In the powers section I say the shields on Vampiric Embrace and Revitalize come &ldquo;because of Feypact&rdquo;. I meant <b>Hellpact</b>.</dd>
+
+      <dt>What the optimizer was told</dt>
+      <dd>A healer-role run with Hellpact slotted. Dungeon content, <b>no support party assumed</b>, party-pack meta on, companion bolster 120, mount bolster 125, Wood Elf with +2 Wisdom. Nothing locked, nothing pinned.</dd>
+
+      <dt>Where the numbers on this page come from</dt>
+      <dd>The 65% and the 1,000-magnitude Infernal Sanction shield are read off the in-game tooltips with Hellpact slotted. The town figures are my Stats screen unbuffed in the training room; the fight figures are the same character fully buffed in combat in Master Shrieking Halls. Mount power values are my live tooltips.</dd>
+
+      <dt>Every item was checked</dt>
+      <dd>Every item, power, feat and boon in the linked build was verified against the Compendium&rsquo;s data pack before publication. Tooltips in game are the final word &mdash; if one disagrees, use the <a href="https://n00bin.github.io/nwc/reports.html">Reports</a> page.</dd>
+
+      <dt>When to run it</dt>
+      <dd>This is a second loadout, not a replacement for the healer build. You can&rsquo;t change loadouts once a fight starts, so pick before the pull: when survivability is the problem in the dungeon, switch to this one.</dd>
+    </dl>
+  </section>
+
+  <footer>
+    Values pulled from the Neverwinter Compendium data set. Module 33.5 (Monoliths of Madness), PS5. First published 2026-10-05.
+  </footer>
+</div>
+<script>
+  // Set once the video is live: replaces the playlist link with the video.
+  var VIDEO_ID = 'NORmtbn-t2w';
+  if (VIDEO_ID) { var w = document.getElementById('watch'); if (w) w.href = 'https://youtu.be/' + VIDEO_ID; }
+</script>
+</body>
+</html>
