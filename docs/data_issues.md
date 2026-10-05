@@ -1,5 +1,29 @@
 # Data Issues To Investigate
 
+## OPEN artisan leads from the community Professions sheet (2026-10-05)
+
+Compared our Professions page (209 artisans, source nwo.tbotr.net) against the
+community Google Sheet tab (gid 355191217). 204 of 208 shared artisans match on
+every column. Fixed on sight: **Eamhair Seaghdha** (Armorer) Proficiency 412 -> 416;
+412 was the only value on the whole page off the game's stat ladder
+(360/366/371/.../444/450) and 416 is on it. tbotr still shows 412.
+
+Still unverified - two community sources disagree, neither screenshot-backed.
+Need a Workshop artisan screenshot for each before changing anything:
+
+| Artisan | Profession | Column | Sheet | Site (tbotr) |
+|---|---|---|---|---|
+| Alyss Quorthlyn | Jeweler | Speed | -50% | +50% |
+| Vorryl Farwalker | Adventurer | Commission | +50% | +200% |
+| Yaelyn Mitraliir | Blacksmith | Skill Chance | 25% | 20% |
+| Greyshore (Blacksmith) | name spelling | - | Marysa | Maryse |
+
+**Karmela Valeri** - the sheet lists her under all seven crafting professions
+(not Gathering) with identical stats: 433/433, 0% commission, 0% speed, Passion
+Project 25%. Looks like a special multi-profession artisan. Not on tbotr, not on
+our page, nothing found on the wiki or web. Not added (no unverified item adds);
+needs an in-game screenshot showing where she comes from and her card.
+
 ## OPEN leads from reports 2026-09-28 (need in-game tooltip screenshots)
 
 - **Duergar Mercenary's Steel Rapier +1** (Main Hand, Bard, IL 2000) - reports #283/#284.

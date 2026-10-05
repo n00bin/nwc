@@ -66,7 +66,7 @@ const ARTISANS_DATA = [
 {"name":"Aynhild Rubystone","prof":"Armorer","proficiency":433,"focus":394,"commission":50,"speed":0,"skill":"Miracle Worker","skillPct":20},
 {"name":"Bridgit Foucault","prof":"Armorer","proficiency":399,"focus":428,"commission":75,"speed":25,"skill":"Dab Hand","skillPct":20},
 {"name":"Dorfok Guggenston","prof":"Armorer","proficiency":433,"focus":383,"commission":-25,"speed":0,"skill":"Virtuoso","skillPct":15},
-{"name":"Eamhair Seaghdha","prof":"Armorer","proficiency":412,"focus":422,"commission":50,"speed":0,"skill":"Recycle","skillPct":10},
+{"name":"Eamhair Seaghdha","prof":"Armorer","proficiency":416,"focus":422,"commission":50,"speed":0,"skill":"Recycle","skillPct":10},
 {"name":"Enako Kadou","prof":"Armorer","proficiency":428,"focus":439,"commission":125,"speed":-50,"skill":"Passion Project","skillPct":10},
 {"name":"Mitra Lashgari","prof":"Armorer","proficiency":439,"focus":394,"commission":0,"speed":0,"skill":"Virtuoso","skillPct":5},
 {"name":"Naera Amanodel","prof":"Armorer","proficiency":422,"focus":383,"commission":50,"speed":75,"skill":"Passion Project","skillPct":25},

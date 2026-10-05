@@ -35,6 +35,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes
 
+- **Artisan stat fix (Professions).** Eamhair Seaghdha (Armorer) now shows Proficiency 416 instead of 412, after a cross-check of the whole artisan table against a community spreadsheet. Everything else on the table agreed.
 - **Blessed Wanderer no longer counts in a party (Toon Forge, Paladin).** Its +20% damage only works when no party member is within 30 feet, but Toon Forge was counting it all the time. It now shows under "Show Conditional", the same as the Bard's Soloist and the Cleric's Pilgrim's Light. Fixed on both Oathkeeper and Justicar.
 - **Divine Retribution no longer counts at full stamina (Toon Forge, Paladin Justicar).** Its damage bonus grows to 5% only as your stamina runs low, but Toon Forge was counting the full 5% all the time. It now shows under "Show Conditional" and starts at 0% with full stamina, like the game.
 - **Mobile controls are easier to tap and muted text is easier to read.** Navigation links, tabs, search fields, and list rows have larger touch targets, and muted labels now have stronger contrast.
