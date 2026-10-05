@@ -3053,3 +3053,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Icy Terrain: does the 400 land once or tick while enemies stand on the ice; how long does the ice last and how fast does it add Chill; how far can the Spell Mastery version be placed (n00b, 2026-10-04).
 - [ ] Wizard Shield: measure the pulse magnitude in the Spell Mastery slot, the pulse radius, and how long the shield lasts unbroken; also re-check the base cooldown (n00b gave 17.4 against a shown 15.1; the other Arcanist encounters share a ratio that predicts about 17.0) (n00b, 2026-10-04).
 - [ ] Wizard Arcanist Lightning Bolt: count how many times one target is hit per cast and whether each hit is magnitude 350 (n00b, 2026-10-04).
+- [ ] Wizard Arcanist Disintegrate: confirm the 750 magnitude lands on every cast when the target is below 20% life, not only on some casts (n00b, 2026-10-04).
