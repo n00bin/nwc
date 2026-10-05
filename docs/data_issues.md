@@ -3058,3 +3058,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Arcanist Arcane Conduit: check which powers the game counts as arcane for the +15% bonus against our element tags (Magic Missile, Arcane Bolt, Entangling Force, Repel, Ray of Enfeeblement, Shield, Disintegrate, Steal Time, Arcane Tempest), and whether the Conduit hit boosts itself (n00b, 2026-10-04).
 - [ ] Wizard Arcane Singularity: does the 1200 land once or tick during the pull, and how long does the singularity last (n00b, 2026-10-05).
 - [ ] Wizard Oppressive Force: does the 1 s Daze apply once or on both 200 hits, and how long is the delay before the 500 explosion (n00b, 2026-10-05).
+- [ ] Wizard Arcanist Maelstrom of Chaos: is the damage lightning or arcane - cast it with and without Arcane Conduit on the target and compare the hit (n00b, 2026-10-05).

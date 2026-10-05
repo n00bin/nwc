@@ -820,3 +820,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - AR-15 Arcane Singularity (Arcanist daily): area radius 42, ranged, magical arcane 1200 (one hit assumed), Pull; 1 Arcane Mastery stack; 1,000 action points (2026-10-05, fine)
 - AR-16 Ice Knife (Arcanist daily): single, ranged, magical cold 2300 one hit; Knockdown 1.5 s; adds 3 Chill stacks; 1,000 action points (2026-10-05, fine)
 - AR-17 Oppressive Force (Arcanist daily): area radius 25 around the caster, magical arcane 200 x 2 + explosion 500 = 900; Daze 1 s, Repel on the explosion; 1 Arcane Mastery stack; 1,000 action points (2026-10-05, fine)
+- AR-18 Maelstrom of Chaos (Arcanist daily): area radius 8, ranged, magical 1400 one hit, element lightning PROVISIONAL; Knockdown 1 s; refreshes Arcane Mastery and Chill; control immune while casting; 1,000 action points (2026-10-05, test then fine)
