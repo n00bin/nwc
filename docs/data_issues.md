@@ -3097,3 +3097,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Thaumaturge Relative Haste: check an encounter cooldown with one chilled dummy nearby and with none (5% shorter confirms); note how near the enemy must be (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Glowing Flames: put Smolder on two dummies together, then on one of two - does the splash need Smolder on the second dummy, and do both radiate (n00b, 2026-10-05).
 - [ ] Wizard Thaumaturge Chilling Advantage: with no fire power slotted and Critical Conflagration unslotted, hit a dummy with Chill Strike and confirm (Rimefire) Smolder appears; note whether its ticks differ from plain Smolder (n00b, 2026-10-05).
+- [ ] Wizard Thaumaturge Shatter Strike: on a boss, cast Chill Strike with and without the feat (gap should equal 200 magnitude); hold Ray of Frost and see whether the extra 200 appears once per channel or on every tick (n00b, 2026-10-05).
