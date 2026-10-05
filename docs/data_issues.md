@@ -3068,3 +3068,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Wizard Chilling Presence: with the feature slotted, compare a hit on a boss at 0 and at 6 Chill stacks to confirm the 3% applies on bosses (pairs with the AR-23 boss Chill test) (n00b, 2026-10-05).
 - [ ] Wizard Orb of Imposition: on a boss, compare Entangling Force, Repel and Disintegrate with the feature slotted and unslotted - only control powers should rise 5%; shows whether a push counts as a control power (n00b, 2026-10-05).
 - [ ] Wizard Arcanist Eye of the Storm: watch the buff icon through a rotation and time the gap between two grants (10 s = 50% uptime, 15 s = 33%) (n00b, 2026-10-05).
+- [ ] Wizard Arcanist Storm Spell: count shocks against critical hits over a long Ray of Frost channel (about 1 per 5 crits = no lockout); check whether Ray of Enfeeblement ticks trigger the shock (n00b, 2026-10-05).
