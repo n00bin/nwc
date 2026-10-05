@@ -920,3 +920,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - SE-9 Spinning Strike (Sentinel daily, re-read): identical to Blademaster - 3 s spin, area radius 15, physical 1400 total, control immunity + 100% movement during the spin, 1,000 action points (2026-10-05, yes)
 - SE-10 Crescendo (Sentinel daily, re-read): identical to Blademaster - single melee combo physical 2800 total, Stun 3 s, control immune while attacking, 1,000 action points. All 10 Sentinel shared-power re-reads complete. (2026-10-05, yes)
 - SEG-1 Dungeoneering (Sentinel General skill): identical to the Blademaster copy - utility only (2026-10-05, fine)
+- SEG-2 Persistent Rage (Sentinel General skill): identical to the Blademaster copy - faster Rage generation, no number; feeds Unstoppable on this paragon; already inside measured timings (2026-10-05, fine)
