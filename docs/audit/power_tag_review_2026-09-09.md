@@ -866,3 +866,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - TH-13 Conduit of Ice (Thaumaturge encounter): area around the target, ranged, magical cold 350 (one hit assumed, PROVISIONAL), 1 Chill stack on all targets hit; base cooldown 12.6 s (screen 11) (2026-10-05, base cooldown 12.6; test then fine)
 - TH-14 Fireball (Thaumaturge encounter): area radius 15, ranged, magical fire 350, adds Smolder to all targets hit; Spell Mastery mode: single target 700; base cooldown 11.6 s (screen 10.2). Thaumaturge encounters complete. (2026-10-05, base cooldown 11.6; fine)
 - TH-15 Arcane Singularity (Thaumaturge daily): identical to the Arcanist copy - area radius 42, ranged, magical arcane 1200, Pull, 1 Arcane Mastery stack, 1,000 action points (2026-10-05, fine)
+- TH-16 Ice Knife (Thaumaturge daily): identical to the Arcanist copy - single, ranged, magical cold 2300, Knockdown 1.5 s, 3 Chill stacks, 1,000 action points (2026-10-05, fine)
