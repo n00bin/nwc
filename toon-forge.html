@@ -14057,6 +14057,16 @@
           else if (b === "magical" || b === "physical") typeAdd[b] += v;
           else if (b.indexOf("slot.") === 0) slotAdd[b.slice(5)] = (slotAdd[b.slice(5)] || 0) + v;
         }
+        // rating buffs (banners' 5,000 Power, Predator's Instinct): turned into % at your item level and current rating,
+        // through the rating cap, then added like a % buff (total cap per hit)
+        if (rules.buffStats) for (const a of active) for (const k in (a.ratingStats || {})) {
+          const lk = PT2_STAT_LOCAL[k], si = ctx.r.stats[k]; if (!lk || !si) continue;
+          const v = (+a.ratingStats[k] || 0) * a.f; if (!v) continue;
+          const rcap = si.cap === 90 ? 50 : si.cap === 120 ? 60 : Infinity;
+          const now = si.ratingContribPct || 0;
+          const after = Math.min(rcap, Math.max(0, 50 + ((si.ratingTotal || 0) + v - ctx.TIL) / 1000));
+          if (after > now) hm.add[lk] = (hm.add[lk] || 0) + (after - now);
+        }
         const ht = (hit.damageType === "physical" || hit.damageType === "projectile") ? "physical" : hit.damageType === "magical" ? "magical" : ctx.dmgType;
         const ty = rules.typePerHit ? ht : ctx.dmgType;
         hm.typeBoost = (ctx.db[ty] || 0) + typeAdd[ty];

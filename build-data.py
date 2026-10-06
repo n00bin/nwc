@@ -58,10 +58,10 @@ FX_COMMON = {"kind", "when", "gate", "requiresFeat", "requiresFeature", "require
 FX_KINDS = {
     "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name", "scalesWith", "maxTargets", "pctOfTrigger"},
     "dot":      {"magnitude", "perTick", "ticks", "seconds", "stacking", "maxStacks", "damageType", "element", "name", "targets", "scalesWith"},
-    "buff":     {"stats", "scope", "seconds", "appliesTo", "stacks", "maxStacks", "radius", "name", "op"},
+    "buff":     {"stats", "ratingStats", "scope", "seconds", "appliesTo", "stacks", "maxStacks", "radius", "name", "op", "role"},
     "debuff":   {"stats", "personal", "appliesTo", "seconds", "maxStacks", "name", "targets"},
     "stack":    {"resource", "op", "amount", "target", "max", "min", "seconds", "targets", "scalesWith", "name"},
-    "resource": {"pool", "op", "amount", "pctOfBar"},
+    "resource": {"pool", "op", "amount", "pctOfBar", "seconds"},
     "cooldown": {"targets", "op", "seconds", "pct"},
     "proc":     {"effects", "name"},
     "control":  {"control", "seconds", "perStack", "targets", "name"},
@@ -133,6 +133,16 @@ def validate_fx(data):
     walk(data, "")
     return errs
 
+def validate_callfx(data):
+    """PT2 step 2.5: artifact call records (`callFx`) use the same vocabulary."""
+    errs, stacks = [], FX_STACKS | _fx_extra_stacks()
+    for a in data if isinstance(data, list) else []:
+        for i, rec in enumerate(a.get("callFx") or []):
+            _fx_check_record(rec, f"artifact {a.get('name', '?')}.callFx[{i}]", errs, stacks)
+        if a.get("callStatus") is not None and a["callStatus"] not in ("W", "A", "L", "M", "R", "P", "N", "D"):
+            errs.append(f"artifact {a.get('name', '?')}: bad callStatus {a['callStatus']!r}")
+    return errs
+
 def convert_file(source_name, output_name, var_name):
     source_path = os.path.join(SOURCE_DIR, source_name)
     output_path = os.path.join(OUTPUT_DIR, output_name)
@@ -151,8 +161,8 @@ def convert_file(source_name, output_name, var_name):
         return False
 
     # POWER-TAGS-2: the effect vocabulary is enforced on classes.json (step 2.1).
-    if source_name == "classes.json":
-        fx_errs = validate_fx(data)
+    if source_name in ("classes.json", "artifacts.json"):
+        fx_errs = validate_fx(data) if source_name == "classes.json" else validate_callfx(data)
         if fx_errs:
             print(f"  FAIL  {source_name}: {len(fx_errs)} effect record(s) outside the vocabulary - output left unchanged")
             for e in fx_errs[:25]: print(f"          {e}")

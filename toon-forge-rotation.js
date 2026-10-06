@@ -455,6 +455,7 @@
       if (r.paragon && paragon && r.paragon !== paragon) return false;
       if (r.requiresFeat && !featOn[r.requiresFeat]) return false;
       if (r.requiresFeature && !featureOn[r.requiresFeature]) return false;
+      if (r.role && input.role && String(r.role).toLowerCase() !== String(input.role).toLowerCase()) return false;
       return true;
     }
     function fxOf(owner) {
@@ -663,9 +664,9 @@
     // conditional (no seconds, a gate, no trigger): counted on every hit by the gate's value then;
     // passive (no seconds, no gate, no trigger) on a feature / feat / mechanic: the engine owns it, never here.
     const condStatRecs = [];
-    function statKey(ow, r) { return ow.name + "|" + r.kind + "|" + (r.name || "") + "|" + JSON.stringify(r.stats) + "|" + JSON.stringify(r.appliesTo || null); }
+    function statKey(ow, r) { return ow.name + "|" + r.kind + "|" + (r.name || "") + "|" + JSON.stringify(r.stats || null) + "|" + JSON.stringify(r.ratingStats || null) + "|" + JSON.stringify(r.appliesTo || null); }
     function statApply(ow, r) {
-      if (!(scoreHit || input.liveRecharge) || !r.stats || r.seconds == null && r.gate && !r.when) return;
+      if (!(scoreHit || input.liveRecharge) || !(r.stats || r.ratingStats) || r.seconds == null && r.gate && !r.when) return;
       if (r.seconds == null && !r.gate && !r.when && !isPower(ow) && ow.type !== "song") return;
       const f = (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate))) ? gateFrac(r.gate) : 1;
       statUp.set(statKey(ow, r), { rec: r, until: r.seconds != null ? t + num(r.seconds) : 1e12, f: f, owner: ow.name });
@@ -680,15 +681,15 @@
     }
     function activeStats(hit, ow) {
       const out = [];
-      statUp.forEach(function (v) { if (v.until > t && v.f > 0 && hitMatches(v.rec.appliesTo, hit, ow)) out.push({ kind: v.rec.kind, name: v.rec.name || v.owner, stats: v.rec.stats, f: v.f }); });
-      condStatRecs.forEach(function (c) { const f = gateFrac(c.rec.gate); if (f > 0) statOwnersOn[c.owner] = true; if (f > 0 && hitMatches(c.rec.appliesTo, hit, ow)) out.push({ kind: c.rec.kind, name: c.rec.name || c.owner, stats: c.rec.stats, f: f }); });
+      statUp.forEach(function (v) { if (v.until > t && v.f > 0 && hitMatches(v.rec.appliesTo, hit, ow)) out.push({ kind: v.rec.kind, name: v.rec.name || v.owner, stats: v.rec.stats || {}, ratingStats: v.rec.ratingStats || null, f: v.f }); });
+      condStatRecs.forEach(function (c) { const f = gateFrac(c.rec.gate); if (f > 0) statOwnersOn[c.owner] = true; if (f > 0 && hitMatches(c.rec.appliesTo, hit, ow)) out.push({ kind: c.rec.kind, name: c.rec.name || c.owner, stats: c.rec.stats || {}, ratingStats: c.rec.ratingStats || null, f: f }); });
       return out;
     }
     // Recharge Speed from buffs up now (timed and gated), in % points
     function rechargeBonusNow() {
       let b = 0;
-      statUp.forEach(function (v) { if (v.until > t && v.rec.kind === "buff" && v.rec.stats["Recharge Speed"]) b += num(v.rec.stats["Recharge Speed"]) * v.f; });
-      condStatRecs.forEach(function (c) { if (c.rec.kind === "buff" && c.rec.stats["Recharge Speed"]) b += num(c.rec.stats["Recharge Speed"]) * gateFrac(c.rec.gate); });
+      statUp.forEach(function (v) { if (v.until > t && v.rec.kind === "buff" && v.rec.stats && v.rec.stats["Recharge Speed"]) b += num(v.rec.stats["Recharge Speed"]) * v.f; });
+      condStatRecs.forEach(function (c) { if (c.rec.kind === "buff" && c.rec.stats && c.rec.stats["Recharge Speed"]) b += num(c.rec.stats["Recharge Speed"]) * gateFrac(c.rec.gate); });
       return b;
     }
     function scoreLanded(ow, recName, m, isTick, offMain, rec) {
@@ -821,7 +822,12 @@
         case "cooldown": applyCooldown(r, 1); return 0;
         case "echo": echoes.push({ name: r.name || ow.name, pct: num(r.pct, 0), until: t + num(r.seconds, 0), deliver: r.deliver || "end", targets: r.targets || "single", acc: 0 }); return 0;
         case "resource":
-          if (r.pool === "actionPoints" && (r.op === "gain" || r.op === "set")) { const g = r.pctOfBar != null ? num(r.pctOfBar) * 10 : num(r.amount, 0); ap = r.op === "set" ? g : ap + g; }
+          if (r.pool === "actionPoints" && (r.op === "gain" || r.op === "set")) {
+            const g = r.pctOfBar != null ? num(r.pctOfBar) * 10 : num(r.amount, 0);
+            // gain over time (Sigil of the Cleric: 25% of the bar over 15 s): one share per second
+            if (r.op === "gain" && num(r.seconds, 0) > 0) { const n = Math.max(1, Math.round(num(r.seconds))); for (let i = 1; i <= n; i++) schedule(t + i * num(r.seconds) / n, function () { ap += g / n; }); }
+            else ap = r.op === "set" ? g : ap + g;
+          }
           return 0;
         case "proc": (r.effects || []).filter(function (e) { return recOn(e, ow.obj); }).forEach(function (e) { runRecord({ obj: ow.obj, type: "proc", name: r.name || ow.name }, e, spent, null); }); return 0;
         default: return 0;   // resource / control / heal / shield: recorded, not scored by the damage simulator
@@ -1043,7 +1049,7 @@
 
     buildListeners();
     if (scoreHit || input.liveRecharge) owners.forEach(function (ow) { fxOf(ow.obj).forEach(function (r) {
-      if ((r.kind === "buff" || r.kind === "debuff") && r.stats && r.seconds == null && r.gate && !r.when && r.op !== "remove") condStatRecs.push({ rec: r, owner: ow.name });
+      if ((r.kind === "buff" || r.kind === "debuff") && (r.stats || r.ratingStats) && r.seconds == null && r.gate && !r.when && r.op !== "remove") condStatRecs.push({ rec: r, owner: ow.name });
     }); });
     // combat start: mechanics first (they set resources), then features, feats, powers
     fire("combatStart", {});

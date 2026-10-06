@@ -151,3 +151,15 @@ Echo damage never feeds another echo and fires no triggers.
 - Party value (PT2-15 revised). `buff` records with `scope: party` count for the player only.
 - Prose-only effects that name no number (`stealthEffect` strings). They are listed by the migration as
   unmapped for review, never guessed.
+
+## Additions for step 2.5 (2026-10-06)
+
+- **buff `ratingStats`**: rating amounts instead of % (banners' 5,000 Power, Predator's Instinct's 3,000). The per-hit
+  scorer turns them into % at your item level and current rating, through the stat's rating cap (50% for 90%-cap
+  stats, 60% for 120%-cap stats), then the total cap applies as for any buff.
+- **buff `role`**: the record only applies for that role (Sigil of the Bard's DPS version).
+- **resource `seconds`**: the gain arrives in equal shares, one per second, over that time (Sigil of the Cleric:
+  25% of the Action Point bar over 15 s).
+- **Artifact `callFx`** (`../data/artifacts.json`): the artifact's call in this vocabulary, with `callStatus`
+  (W counts, A assumed, L length missing, M amount missing, R random, P passive, N nothing for damage, D own damage
+  only) and `callNote`. Validated by `validate_callfx` in `build-data.py`.
