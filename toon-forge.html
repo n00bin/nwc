@@ -14127,31 +14127,97 @@
       };
     }
     let _rotDmgCache = { key: "", result: null };
+    // The scored run's inputs, built once with the per-hit rules' engine switches (2.4-B, 2.5-D) in place.
+    function pt2ScoredSetup(rules) {
+      let ctx = null, inp = null, call = null;
+      const owned = rules.simOwnsKit ? pt2SimOwnedNames(buildRotationSimInput().kit) : null;
+      window.__pt2SimOwnsKit = owned; window.__pt2SimOwnsCall = !!rules.callWindow;
+      try { ctx = dpsBuildContext(); inp = buildRotationSimInput(); if (rules.callWindow) call = pt2CallInput(getEngineResult()); }
+      finally { window.__pt2SimOwnsKit = null; window.__pt2SimOwnsCall = false; }
+      return ctx ? { ctx, inp, call, rules } : null;
+    }
+    function pt2SimScored(su, kit, call) {
+      const r = su.rules; call = call !== undefined ? call : su.call;
+      return TF_ROTATION_SIM.simulateFx(Object.assign({}, su.inp, { kit: kit || su.inp.kit, scoreHit: pt2MakeScoreHit(su.ctx, r), liveRecharge: !!r.liveRecharge,
+        role: state.role || null, expectedProcs: !!r.expectedProcs, critChance: su.ctx.critStrike },
+        call ? { callWindow: { every: tfCadence("artifact"), seconds: 10 }, call: call } : {}));
+    }
     function getRotationDamage() {
       if (!pt2UsesFxSim() || !getRotationSim()) return null;
       const rules = pt2HitRules();
       getEngineResult();
       const key = _engineCacheKey + JSON.stringify(rules);
       if (_rotDmgCache.key === key && _rotDmgCache.result) return _rotDmgCache.result;
-      let ctx = null, inp = null, call = null;
-      const owned = rules.simOwnsKit ? pt2SimOwnedNames(buildRotationSimInput().kit) : null;
-      window.__pt2SimOwnsKit = owned; window.__pt2SimOwnsCall = !!rules.callWindow;
-      try { ctx = dpsBuildContext(); inp = buildRotationSimInput(); if (rules.callWindow) call = pt2CallInput(getEngineResult()); }
-      finally { window.__pt2SimOwnsKit = null; window.__pt2SimOwnsCall = false; }
-      let res = null;
-      if (ctx) res = TF_ROTATION_SIM.simulateFx(Object.assign(inp, { scoreHit: pt2MakeScoreHit(ctx, rules), liveRecharge: !!rules.liveRecharge, role: state.role || null,
-        expectedProcs: !!rules.expectedProcs, critChance: ctx.critStrike },
-        call ? { callWindow: { every: tfCadence("artifact"), seconds: 10 }, call: call } : {}));
+      const su = pt2ScoredSetup(rules);
+      const res = su ? pt2SimScored(su) : null;
       if (res) {
-        const on = new Set(res.statOwnersOn || []), owned = pt2SimOwnedNames(inp.kit);
+        const inp = su.inp, on = new Set(res.statOwnersOn || []), owned = pt2SimOwnedNames(inp.kit);
         res.notOn = [].concat(inp.kit.mechanics || [], inp.kit.features || [], inp.kit.feats || [], inp.kit.always || [])
           .filter((o, i, a) => o && owned.has(o.name) && !on.has(o.name) && a.findIndex(x => x && x.name === o.name) === i)
           .map(o => ({ name: o.name, why: pt2WhyNotOn(o) }));
       }
       getEngineResult(); getRotationSim();   // put the normal caches back
-      _rotDmgCache = { key: key, result: res };
+      _rotDmgCache = { key: key, result: res, su: su };
       return res;
     }
+    // ===== PT2 step 2.6: confidence line (PT2-14, lock 2.6-C) =====
+    // Measured: the fight again with every ASSUMED record in the kit (and assumed artifact call rows) switched off;
+    // the difference is the damage resting on assumed numbers. Each assumed item is ranked by its own run.
+    // MISSING items count zero today, so they are ranked by the damage share of the power or feature that owns them.
+    function pt2KitOwners(kit) {
+      return [].concat(kit.powers.atWill || [], kit.powers.encounter || [], kit.powers.daily || [], kit.songs || [], kit.mechanics || [], kit.features || [], kit.feats || [], kit.always || []);
+    }
+    function pt2RecsOf(o) {   // [{key, rec}] for an owner's fx and its modes' fx
+      const out = [];
+      (o.fx || []).forEach((r, i) => out.push({ key: o.name + "#" + i, rec: r }));
+      Object.keys(o.modes || {}).forEach(m => ((o.modes[m] && o.modes[m].fx) || []).forEach((r, i) => out.push({ key: o.name + "#" + m + "." + i, rec: r })));
+      return out;
+    }
+    function pt2KitWithout(kit, drop) {   // a copy of the kit with the records whose key is in `drop` removed
+      const strip = o => {
+        if (!o) return o;
+        const c = Object.assign({}, o);
+        if (Array.isArray(o.fx)) c.fx = o.fx.filter((r, i) => !drop.has(o.name + "#" + i));
+        if (o.modes) { c.modes = {}; Object.keys(o.modes).forEach(m => { c.modes[m] = Object.assign({}, o.modes[m]); if (o.modes[m] && Array.isArray(o.modes[m].fx)) c.modes[m].fx = o.modes[m].fx.filter((r, i) => !drop.has(o.name + "#" + m + "." + i)); }); }
+        return c;
+      };
+      const L = a => (a || []).map(strip);
+      return Object.assign({}, kit, { powers: { atWill: L(kit.powers.atWill), encounter: L(kit.powers.encounter), daily: L(kit.powers.daily) },
+        songs: L(kit.songs), mechanics: L(kit.mechanics), features: L(kit.features), feats: L(kit.feats), always: L(kit.always) });
+    }
+    function pt2RecLabel(o, r) {
+      const what = r.name && r.name !== o.name ? o.name + ": " + r.name : o.name;
+      const why = r.note ? String(r.note).split(/[;(]/)[0].trim() : "";
+      return what + (why ? " (" + why + ")" : "");
+    }
+    let _rotConfCache = { key: "", result: null };
+    function getRotationConfidence() {
+      const full = getRotationDamage(); if (!full || !(full.damageTotal > 0)) return null;
+      const key = _rotDmgCache.key; if (_rotConfCache.key === key) return _rotConfCache.result;
+      const su = _rotDmgCache.su; if (!su) return null;
+      const kit = su.inp.kit, assumed = [], missing = [];
+      pt2KitOwners(kit).forEach(o => { if (!o || !o.name) return; pt2RecsOf(o).forEach(x => {
+        if (x.rec.provisional) assumed.push({ key: x.key, owner: o.name, label: pt2RecLabel(o, x.rec) });
+        if (x.rec.missing) missing.push({ key: x.key, owner: o.name, label: pt2RecLabel(o, x.rec) + " - missing " + [].concat(x.rec.missing).join(", ") });
+      }); });
+      // the artifact's call: assumed rows (A) and rows missing a length or amount (L / M) from the approved list
+      const art = su.call && su.call.artifact ? findArtifactByName(state.artifacts.Primary, (state.artifactIL || {}).Primary) : null;
+      const artAssumed = !!(art && art.callStatus === "A"), artMissing = !!(art && (art.callStatus === "L" || art.callStatus === "M"));
+      if (artMissing) missing.push({ key: "artifact", owner: art.name, label: art.name + " call (" + (art.callNote || "a number missing") + ")" });
+      const T = full.damageTotal, share = d => Math.max(0, (T - d) / T * 100);
+      const callNoArt = su.call ? Object.assign({}, su.call, { artifact: su.call.artifact ? Object.assign({}, su.call.artifact, { fx: [] }) : null }) : su.call;
+      const items = assumed.map(a => ({ label: a.label, pct: share(pt2SimScored(su, pt2KitWithout(kit, new Set([a.key]))).damageTotal) }));
+      if (artAssumed) items.push({ label: art.name + " call (" + (art.callNote || "assumed") + ")", pct: share(pt2SimScored(su, kit, callNoArt).damageTotal) });
+      const allOff = pt2SimScored(su, pt2KitWithout(kit, new Set(assumed.map(a => a.key))), artAssumed ? callNoArt : undefined);
+      items.sort((a, b) => b.pct - a.pct || a.label.localeCompare(b.label));
+      const ownerShare = n => ((full.damageByOwner || {})[n] || 0) / T * 100;
+      const miss = missing.map(m => ({ label: m.label, ownerPct: ownerShare(m.owner) })).sort((a, b) => b.ownerPct - a.ownerPct || a.label.localeCompare(b.label));
+      const res = { assumedPct: share(allOff.damageTotal), assumed: items, missing: miss };
+      getEngineResult(); getRotationSim();
+      _rotConfCache = { key: key, result: res };
+      return res;
+    }
+    window.getRotationConfidence = getRotationConfidence;
     window.getRotationDamage = getRotationDamage;
     // Engine-side read: never triggers a fresh simulation (buildEngineCharacter runs
     // inside getEngineResult, which the adapter itself reads) - peek the cache.
@@ -14274,6 +14340,14 @@
             h += '<div class="hint" style="margin-top:0.1rem;">Call windows (' + cw.windows.length + ' x 10 s, at ' + cw.windows.map(w => Math.round(w[0]) + ' s').join(', ') + '): '
               + Math.round(cw.damageInside / Math.max(1, winSec)).toLocaleString() + '/s inside, ' + Math.round(cw.damageOutside / outSec).toLocaleString() + '/s outside · '
               + Math.round(cw.damageInside / Math.max(1, fd.damageTotal) * 100) + '% of the fight damage lands inside</div>';
+          }
+          const conf = (typeof getRotationConfidence === "function") ? getRotationConfidence() : null;
+          if (conf) {
+            const top = conf.assumed.filter(x => x.pct >= 0.05).slice(0, 4).map(x => esc(x.label) + " " + x.pct.toFixed(1) + "%");
+            const mtop = conf.missing.slice(0, 3).map(x => esc(x.label) + (x.ownerPct > 0 ? " (on a source with " + Math.round(x.ownerPct) + "% of your damage)" : ""));
+            h += '<div class="hint" style="margin-top:0.1rem;">' + conf.assumedPct.toFixed(1) + '% of this fight\u2019s damage rests on assumed numbers.'
+              + (top.length ? ' Capture first: ' + top.join("; ") + (conf.assumed.length > top.length ? " (+" + (conf.assumed.length - top.length) + " more)" : "") + '.' : '')
+              + (mtop.length ? ' Missing (counted as zero): ' + mtop.join("; ") + (conf.missing.length > mtop.length ? " (+" + (conf.missing.length - mtop.length) + " more)" : "") + '.' : '') + '</div>';
           }
           if (fd.notOn && fd.notOn.length) h += '<div class="hint" style="margin-top:0.1rem;">Not counted (never turned on in this fight): ' + fd.notOn.map(x => esc(x.name) + ' (' + esc(x.why) + ')').join('; ') + '</div>';
         }

@@ -1,6 +1,6 @@
 # POWER-TAGS-2 step 2.6: expected-value procs and the confidence line (plan)
 
-Written 2026-10-06. Nothing here is built yet. Part of `docs/plans/power_tags_2_plan.md`, Stage 2; locked by PT2-13
+Written 2026-10-06. **Built locally 2026-10-06** (results in the step log, `docs/audit/power_tag_review_2026-09-09.md`). Part of `docs/plans/power_tags_2_plan.md`, Stage 2; locked by PT2-13
 and PT2-14 (register: `docs/audit/power_tag_review_2026-09-09.md`). Everything stays local-only.
 
 **PT2-13 (locked):** the review rulings apply on the timeline as EXPECTED VALUES - each eligible hit adds its share of
