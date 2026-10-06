@@ -12971,7 +12971,7 @@
       // the same effect — take the larger, never sum. (NOTE: the combat power's
       // raw burst magnitude is a separate cooldown, not part of this per-hit
       // sustained number, so it isn't counted here.)
-      if (typeof state !== "undefined" && state.activeCombatPower != null && typeof findCombatPowerById === "function") {
+      if (typeof state !== "undefined" && state.activeCombatPower != null && typeof findCombatPowerById === "function" && !window.__pt2SimOwnsCall) {
         const _cp = findCombatPowerById(state.activeCombatPower);
         if (_cp) {
           let _pct = 0;
@@ -14025,7 +14025,7 @@
     //   liveRecharge Recharge Speed buffs speed cooldowns only while up (2.4-E)
     //   critSevTaken Critical Severity Taken debuffs count, outside your cap (2.4-F, provisional)
     function pt2HitRules() {
-      return Object.assign({ buffStats: true, slotPerHit: true, typePerHit: true, simOwnsKit: true, liveRecharge: true, critSevTaken: true }, window.__pt2HitRules || {});
+      return Object.assign({ buffStats: true, slotPerHit: true, typePerHit: true, simOwnsKit: true, liveRecharge: true, critSevTaken: true, callWindow: true }, window.__pt2HitRules || {});
     }
     // Kit owners (features, feats, mechanics) whose fx carry stat buffs the simulator counts (timed, gated or triggered).
     function pt2SimOwnedNames(kit) {
@@ -14098,6 +14098,32 @@
       }
       return "never turned on in this fight";
     }
+    // PT2 step 2.5: the mount combat power as timed records - the same stored numbers today's average uses
+    // (enemy debuff = the larger of the two debuff lines / anchor; self buffs raw; its own hit = raw magnitude), 10 s.
+    function pt2MountCallFx(cp) {
+      const fx = [];
+      if (cp.magnitude > 0) fx.push({ kind: "hit", magnitude: cp.magnitude, targets: "single", name: cp.name });
+      let pct = 0;
+      for (const eb of (cp.equipBonuses || [])) if (eb && eb.scope === "enemy" && (eb.stat === "Enemy Dmg Taken" || eb.stat === "Dmg Debuff")) pct = Math.max(pct, (eb.amount || 0) / mountPowerAnchorFactor(cp));
+      if (pct > 0) fx.push({ kind: "debuff", name: cp.name + " (debuff)", stats: { "Damage Taken": pct }, seconds: 10 });
+      const self = {};
+      for (const eb of (cp.equipBonuses || [])) {
+        if (!eb || eb.scope !== "self" || typeof eb.amount !== "number" || !eb.stat) continue;
+        const k = (typeof STAT_NAME_ALIASES !== "undefined" && STAT_NAME_ALIASES[eb.stat]) || eb.stat;
+        self[k] = (self[k] || 0) + eb.amount;
+      }
+      if (Object.keys(self).length) fx.push({ kind: "buff", name: cp.name + " (self)", stats: self, seconds: 10 });
+      return fx;
+    }
+    function pt2CallInput(er) {
+      const art = (state.artifacts && state.artifacts.Primary) ? findArtifactByName(state.artifacts.Primary, (state.artifactIL || {}).Primary) : null;
+      const cp = (state.activeCombatPower != null && typeof findCombatPowerById === "function") ? findCombatPowerById(state.activeCombatPower) : null;
+      return {
+        artifact: art ? { name: art.name, cooldown: art.cooldown || 60, fx: art.callFx || [] } : null,
+        mount: cp ? { name: cp.name, cooldown: cp.rechargeTimeSeconds || 60, fx: pt2MountCallFx(cp) } : null,
+        triggered: (er && er.__pt2Call) || []
+      };
+    }
     let _rotDmgCache = { key: "", result: null };
     function getRotationDamage() {
       if (!pt2UsesFxSim() || !getRotationSim()) return null;
@@ -14105,13 +14131,14 @@
       getEngineResult();
       const key = _engineCacheKey + JSON.stringify(rules);
       if (_rotDmgCache.key === key && _rotDmgCache.result) return _rotDmgCache.result;
-      let ctx = null, inp = null;
-      if (rules.simOwnsKit) {
-        window.__pt2SimOwnsKit = pt2SimOwnedNames(buildRotationSimInput().kit);
-        try { ctx = dpsBuildContext(); inp = buildRotationSimInput(); } finally { window.__pt2SimOwnsKit = null; }
-      } else { ctx = dpsBuildContext(); inp = buildRotationSimInput(); }
+      let ctx = null, inp = null, call = null;
+      const owned = rules.simOwnsKit ? pt2SimOwnedNames(buildRotationSimInput().kit) : null;
+      window.__pt2SimOwnsKit = owned; window.__pt2SimOwnsCall = !!rules.callWindow;
+      try { ctx = dpsBuildContext(); inp = buildRotationSimInput(); if (rules.callWindow) call = pt2CallInput(getEngineResult()); }
+      finally { window.__pt2SimOwnsKit = null; window.__pt2SimOwnsCall = false; }
       let res = null;
-      if (ctx) res = TF_ROTATION_SIM.simulateFx(Object.assign(inp, { scoreHit: pt2MakeScoreHit(ctx, rules), liveRecharge: !!rules.liveRecharge }));
+      if (ctx) res = TF_ROTATION_SIM.simulateFx(Object.assign(inp, { scoreHit: pt2MakeScoreHit(ctx, rules), liveRecharge: !!rules.liveRecharge, role: state.role || null },
+        call ? { callWindow: { every: tfCadence("artifact"), seconds: 10 }, call: call } : {}));
       if (res) {
         const on = new Set(res.statOwnersOn || []), owned = pt2SimOwnedNames(inp.kit);
         res.notOn = [].concat(inp.kit.mechanics || [], inp.kit.features || [], inp.kit.feats || [], inp.kit.always || [])
@@ -14237,6 +14264,14 @@
           const topD = Object.entries(fd.damageByOwner || {}).sort((a, b) => b[1] - a[1]).slice(0, 5);
           h += '<div style="margin-top:0.2rem;font-size:0.85rem;"><strong>' + Math.round(fd.dps).toLocaleString() + ' damage/s</strong> <span class="hint">each hit scored with the buffs and debuffs up at that moment</span></div>';
           if (topD.length) h += '<div class="hint" style="margin-top:0.1rem;">Top damage: ' + topD.map(e => esc(e[0]) + ' ' + Math.round(e[1] / fd.fightSeconds).toLocaleString() + '/s').join(', ') + '</div>';
+          // PT2 step 2.5: the call window split (inside + outside = the total above)
+          const cw = fd.callWindow;
+          if (cw && cw.windows && cw.windows.length && cw.damageInside != null) {
+            const winSec = cw.windows.reduce((t0, w) => t0 + Math.max(0, Math.min(w[1], fd.fightSeconds) - w[0]), 0), outSec = Math.max(1, fd.fightSeconds - winSec);
+            h += '<div class="hint" style="margin-top:0.1rem;">Call windows (' + cw.windows.length + ' x 10 s, at ' + cw.windows.map(w => Math.round(w[0]) + ' s').join(', ') + '): '
+              + Math.round(cw.damageInside / Math.max(1, winSec)).toLocaleString() + '/s inside, ' + Math.round(cw.damageOutside / outSec).toLocaleString() + '/s outside · '
+              + Math.round(cw.damageInside / Math.max(1, fd.damageTotal) * 100) + '% of the fight damage lands inside</div>';
+          }
           if (fd.notOn && fd.notOn.length) h += '<div class="hint" style="margin-top:0.1rem;">Not counted (never turned on in this fight): ' + fd.notOn.map(x => esc(x.name) + ' (' + esc(x.why) + ')').join('; ') + '</div>';
         }
         const chips = [];
@@ -14664,6 +14699,9 @@
     }
 
     function buildEngineCharacter(s) {
+      // PT2 step 2.5-D: during the per-hit run the call's insignia bonuses are collected for the simulator, not averaged
+      const _pt2Call = window.__pt2SimOwnsCall ? [] : null;
+      if (_pt2Call) window.__pt2CallCollected = _pt2Call;
       // Resolve gear: state.gear is { "Head": "name string", ... };
       // engine wants { "Head": gearObject }.
       const gear = {};
@@ -15530,7 +15568,11 @@
           // _MOUNT_POWER_CYCLE to dial it.
           if ((!bonus.stats || !bonus.stats.length) && bonus.effectText && typeof expandCR === "function") {
             const _m = bonus.effectText.match(/(\d[\d,]*)\s+to all (?:of your )?ratings for (\d+)\s*second/i);
-            if (_m) {
+            if (_m && _pt2Call && /mount combat power/i.test(bonus.condition || bonus.effectText)) {
+              const _a = parseInt(_m[1].replace(/,/g, ""), 10) * mult, _rs = {};
+              ["Power", "Accuracy", "Combat Advantage", "Critical Strike", "Critical Severity"].forEach(k => { _rs[k] = _a; });   // the damage ratings of "all"
+              _pt2Call.push({ on: "mountpower", name: bonus.name, rec: { kind: "buff", name: bonus.name, ratingStats: _rs, seconds: parseInt(_m[2], 10) } });
+            } else if (_m) {
               const _MOUNT_POWER_CYCLE = tfCadence("mountpower");   // Combat scenario: seconds between mount-power uses
               const _amt = parseInt(_m[1].replace(/,/g, ""), 10);
               const _dur = parseInt(_m[2], 10);
@@ -16461,6 +16503,14 @@
           const slotLabel = "Mount " + (q.insts[i].slotIdx + 1);
           const stackTag = (q.mode === "diminishing" && q.n > 1) ? ` (stack ${i + 1}/${q.n} ×${mult})` : (q.mode === "linear" && q.insts.length > 1 ? ` (stack ${i + 1}/${q.insts.length})` : "");
           for (let eb of q.bonus.equipBonuses) {
+            const _trig = eb && ((eb.cdProc && eb.cdProc.triggerRateKey) || (eb.window && eb.window.triggerRateKey));
+            if (_pt2Call && ["mountpower", "artifact", "daily"].indexOf(_trig) !== -1 && (!eb.scope || eb.scope === "self")) {
+              if (eb.cdProc) _pt2Call.push({ on: _trig, name: q.bonus.name, icdSeconds: eb.cdProc.icdSeconds || null,
+                rec: { kind: "cooldown", targets: { type: ["encounter"] }, op: "reduce", seconds: (eb.cdProc.seconds || 0) * mult } });
+              else if (eb.stat && eb.amount != null) _pt2Call.push({ on: _trig, name: q.bonus.name,
+                rec: { kind: "buff", name: q.bonus.name, [(eb.kind === "rating" || eb.kind === "flat") ? "ratingStats" : "stats"]: { [eb.stat]: eb.amount * mult }, seconds: eb.window.seconds || 10 } });
+              continue;
+            }
             if (eb && (eb.apProc || eb.cdProc)) eb = _procConvert(eb);
             if (!eb || !eb.stat || eb.amount == null) continue;
             if (eb.scope && eb.scope !== "self") continue;
@@ -16763,7 +16813,7 @@
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats, rot: state.rotationSteps, rop: state.rotationOpener, sat: state.scorchAtSparks,
         // POWER-TAGS-2: everything the condition resolver reads must invalidate the cache
-        pt2: [state.pt2Fight || null, state.enemyCount, state.enemyHealthPct, (typeof pt2ScoringMode !== "undefined") ? pt2ScoringMode : "", window.__pt2ForceGates || 0, (typeof window.__pt2FlagOverride === "boolean") ? window.__pt2FlagOverride : null, window.__pt2SimOwnsKit ? [...window.__pt2SimOwnsKit].join("|") : ""]
+        pt2: [state.pt2Fight || null, state.enemyCount, state.enemyHealthPct, (typeof pt2ScoringMode !== "undefined") ? pt2ScoringMode : "", window.__pt2ForceGates || 0, (typeof window.__pt2FlagOverride === "boolean") ? window.__pt2FlagOverride : null, window.__pt2SimOwnsKit ? [...window.__pt2SimOwnsKit].join("|") : "", window.__pt2SimOwnsCall ? "call" : ""]
       });
       if (key === _engineCacheKey && _engineResult) return _engineResult;
       _engineCacheKey = key;
@@ -16778,6 +16828,7 @@
         _procCritHint = Math.max(0, Math.min(1, _c)); _procDeflHint = Math.max(0, Math.min(1, _d));
         _res = TOON_FORGE_ENGINE.computeStats(buildEngineCharacter(state));
       }
+      if (window.__pt2SimOwnsCall) _res.__pt2Call = (window.__pt2CallCollected || []).slice();
       _engineResult = _res;
       return _engineResult;
     }

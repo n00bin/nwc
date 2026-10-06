@@ -1,6 +1,6 @@
 # POWER-TAGS-2 step 2.5: fight script and artifact call window (plan)
 
-Written 2026-10-06. Nothing here is built yet. Part of `docs/plans/power_tags_2_plan.md`, Stage 2; locked by PT2-12
+Written 2026-10-06. **Built locally 2026-10-06** (commits 2.5.1 to 2.5.5; results in the step log, `docs/audit/power_tag_review_2026-09-09.md`). Part of `docs/plans/power_tags_2_plan.md`, Stage 2; locked by PT2-12
 (register: `docs/audit/power_tag_review_2026-09-09.md`). Everything stays local-only (one go-live at the very end).
 
 **PT2-12 in n00b's words:** one fight script - 1-2 full rotations, then a 10 s artifact call window (the length players
