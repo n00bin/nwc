@@ -13843,7 +13843,7 @@
     // ships behind these, local-only until n00b checks it and says go. Unused until step 1.2.
     const TF_PT2_PANEL_LIVE = false;
     const TF_PT2_SIM_LIVE = false;
-    function pt2PanelEnabled() { return TF_PT2_PANEL_LIVE || tfIsLocal(); }
+    function pt2PanelEnabled() { if (typeof window.__pt2FlagOverride === "boolean") return window.__pt2FlagOverride; return TF_PT2_PANEL_LIVE || tfIsLocal(); }   // override = test hook only
     function pt2SimEnabled() { return TF_PT2_SIM_LIVE || tfIsLocal(); }
     // ===== Rotation simulator (ROT-1 / ROT-2, n00b 2026-09-11) =====
     // LOCAL ONLY until n00b flips it: the live site keeps the rate model for both
@@ -14293,6 +14293,107 @@
       // for the scenario summary / optimizer tags.
     }
 
+    // ===== POWER-TAGS-2 condition resolver (PT2-1/2/4/6/8; plan step 1.2) =====
+    // One table turns each gate on a class feature / feat / General skill into a 0..1
+    // "how on" fraction. Gates and their stat maps live in classes.json (Migration A,
+    // scripts/_pt2_migration_a.py). Only used while pt2PanelEnabled() (local-only for now).
+    //   fight keys  - the player sets them in the Fight panel (defaults = guaranteed minimum)
+    //   you keys    - existing stamina / health / range / enemy sliders
+    //   build keys  - worked out from the slotted kit. Stage 1: on when the kit has a source
+    //                 (the peak); Stage 2 replaces this with the simulated value.
+    // Modes (PT2-4): "snapshot" = the in-combat view, timed buffs counted as up;
+    // "average" = optimizer scoring, timed buffs at their duty cycle. The optimizer sets it.
+    let pt2ScoringMode = "snapshot";
+    window.pt2SetScoringMode = (m) => { pt2ScoringMode = (m === "average") ? "average" : "snapshot"; };
+    const PT2_FIGHT_DEFAULTS = { soloOrIsolated: false, behindTarget: false, healTargetWithin15ft: false,
+      allyBelowHealthPct: false, targetControlImmune: true, beingAttacked: false };
+    function pt2Kit(s) {
+      const pick = (t, names) => (names || []).filter(Boolean).map(nm => _paragonPowerPool(t).find(p => p && (p.name === nm || p.pairId === nm))).filter(Boolean);
+      const atWill = pick("atWill", s.slottedAtWills), encounter = pick("encounter", s.slottedEncounters), daily = pick("daily", s.slottedDailies);
+      const all = atWill.concat(encounter, daily);
+      const res = p => (p && p.resource && typeof p.resource === "object") ? p.resource : {};
+      const feats = new Set((s.slottedFeats || []).filter(Boolean)), features = new Set((s.slottedClassFeaturePicks || []).filter(Boolean));
+      const chill = all.some(p => res(p).builds === "Chill");
+      const smolder = all.some(p => res(p).applies === "Smolder") || features.has("Critical Conflagration") || (chill && feats.has("Chilling Advantage"));
+      const elements = new Set(atWill.concat(encounter).map(p => p.tags && p.tags.element).filter(Boolean));
+      return { atWill, encounter, daily, all, chill, smolder, elements, cls: s.class };
+    }
+    function pt2KeyValue(key, s, kit) {
+      if (key in PT2_FIGHT_DEFAULTS) { const f = s.pt2Fight || {}; return (typeof f[key] === "boolean") ? f[key] : PT2_FIGHT_DEFAULTS[key]; }
+      switch (key) {
+        case "currentStaminaPct": return (typeof s.currentStaminaPct === "number") ? s.currentStaminaPct : 100;
+        case "enemyHealthPct":    return (typeof s.enemyHealthPct === "number") ? s.enemyHealthPct : 100;
+        case "targetRangeFt":     return (typeof s.targetRangeFt === "number") ? s.targetRangeFt : 10;
+        case "enemyCount":        return (typeof s.enemyCount === "number") ? s.enemyCount : 1;
+        case "inCombat":          return true;
+        case "rageWindowActive":  return kit.cls === "Barbarian";
+        case "songPlayed":        return kit.cls === "Bard";
+        case "channelingDivinity": case "divinityFull": return kit.cls === "Cleric";
+        case "teleportedRecently": case "castingSpells": return kit.cls === "Wizard";
+        case "stealthed": case "afterStealth": return kit.cls === "Rogue";
+        case "controlHitRecently": return kit.encounter.concat(kit.daily).some(p => p.tags && Array.isArray(p.tags.control) && p.tags.control.length > 0);
+        case "parryFinisherRecently": return kit.atWill.some(p => ["Reprise", "Flourish", "Volti Subito"].indexOf(p.name) !== -1);
+        case "dailyUsedRecently": return kit.daily.length > 0;
+        case "encounterOrDailyUsed": return kit.encounter.length + kit.daily.length > 0;
+        case "flamesOnTarget":    return kit.atWill.length > 0;
+        case "targetCursed":      return kit.all.some(p => p.tags && p.tags.curse === "apply");
+        case "alternateElements": return kit.elements.size >= 2;
+        case "chillStacks":       return kit.chill ? 6 : 0;
+        case "chillOrSmolderOnTarget": return kit.chill || kit.smolder;
+        case "rimefireOnTarget":  return kit.chill && kit.smolder;
+      }
+      return undefined;   // unknown key: the caller keeps the old behaviour (full value) and flags it
+    }
+    function pt2GateFraction(g, s, kit) {
+      if (!g || !g.shape) return { f: 1, label: "", unknown: true };
+      if (window.__pt2ForceGates === 1) return { f: 1, label: "forced on (check)" };
+      const v = pt2KeyValue(g.key, s, kit);
+      if (v === undefined) return { f: 1, label: "condition not wired yet: counted in full", unknown: true };
+      const cl = x => Math.max(0, Math.min(1, x));
+      let reqOk = true;
+      if (g.requires) { const m = String(g.requires).match(/^(\w+)\s*>\s*(-?\d+(?:\.\d+)?)$/); if (m) reqOk = (+pt2KeyValue(m[1], s, kit) > +m[2]); }
+      switch (g.shape) {
+        case "toggle": {
+          if (pt2ScoringMode === "average" && g.key === "targetCursed") {
+            const rs = (typeof peekRotationSim === "function") ? peekRotationSim() : null;
+            if (rs && rs.derived && rs.derived.curseUptime != null) return { f: cl(rs.derived.curseUptime), label: "Curse up " + Math.round(rs.derived.curseUptime * 100) + "% of the fight" };
+          }
+          return { f: v ? 1 : 0, label: v ? "" : "off" };
+        }
+        case "linear": {
+          let f;
+          if (g.fullAt != null && g.zeroAt != null) f = cl((v - g.zeroAt) / (g.fullAt - g.zeroAt));
+          else { const a0 = (g.at0 != null) ? g.at0 : 0, a1 = (g.at100 != null) ? g.at100 : 1; f = cl(a0 + (a1 - a0) * v / 100); }
+          return { f, label: "at " + Math.round(v) + (g.key === "targetRangeFt" ? " ft" : g.key === "enemyCount" ? " enemies" : "%") };
+        }
+        case "perStack": { const n = Math.max(0, Math.min(g.maxStacks || 1, +v || 0)); return { f: cl(n * (g.perStack || 0)), label: n + (n === 1 ? " stack" : " stacks") }; }
+        case "dutyCycle": {
+          if (!v) return { f: 0, label: "off" };
+          if (pt2ScoringMode === "average" && g.cycleSeconds) { const u = cl(g.durationSeconds / g.cycleSeconds); return { f: u, label: "up " + Math.round(u * 100) + "% of the fight" }; }
+          return { f: 1, label: (pt2ScoringMode === "average") ? "" : "buff up" };
+        }
+        case "threshold": {
+          const ok = (g.op === "<=") ? v <= g.value : (g.op === ">=") ? v >= g.value : (g.op === "<") ? v < g.value : (g.op === ">") ? v > g.value : v === g.value;
+          return { f: ok ? 1 : 0, label: ok ? "" : "off" };
+        }
+        case "count": { if (!reqOk) return { f: 0, label: "off" }; const n = Math.max(0, Math.min(g.maxUnits || 1, +v || 0)); return { f: cl(n * (g.perUnit || 0)), label: n + " enemies" }; }
+      }
+      return { f: 1, label: "", unknown: true };
+    }
+    // Gated stat lines for one feature. Each part becomes one conditional buff.
+    function pt2GatedBuffs(cf, s, kit) {
+      if (cf.pt2Stage === 2 || cf.pt2View) return [];
+      const parts = Array.isArray(cf.gateParts) ? cf.gateParts
+        : [{ gate: cf.gate, stats: cf.gateStatsByParagon ? (cf.gateStatsByParagon[s.paragon] || {}) : (cf.gateStats || cf.percentStatsConditional || {}) }];
+      const out = [];
+      for (const part of parts) {
+        const r = pt2GateFraction(part.gate, s, kit);
+        const pct = {}; for (const k in (part.stats || {})) pct[k] = Math.round(part.stats[k] * r.f * 100) / 100;
+        out.push({ source: "Class Feature: " + cf.name + (r.label ? " (" + r.label + ")" : ""), percentStats: pct, ratingStats: {}, conditional: true, pt2Gate: part.gate ? part.gate.key : null, pt2Fraction: r.f, pt2Unknown: !!r.unknown });
+      }
+      return out;
+    }
+
     function buildEngineCharacter(s) {
       // Resolve gear: state.gear is { "Head": "name string", ... };
       // engine wants { "Head": gearObject }.
@@ -14679,6 +14780,7 @@
         slottedPicked.length ? slottedPicked : null,
         featPicked.length ? featPicked : null
       ];
+      let _pt2Kit = null;   // POWER-TAGS-2: slotted-kit summary, built on first use
       for (const list of featureLists) {
         if (!list) continue;
         for (const cf of list) {
@@ -14696,6 +14798,13 @@
             percentStats,
             ratingStats:  cf.ratingStats  || {}
           });
+          // POWER-TAGS-2 step 1.2: a feature carrying a PT2 gate is resolved by the
+          // condition table instead of the old conditional path (local-only flag).
+          if ((cf.gate || cf.gateParts || cf.pt2Stage || cf.pt2View) && typeof pt2PanelEnabled === "function" && pt2PanelEnabled()) {
+            if (!_pt2Kit) _pt2Kit = pt2Kit(s);
+            for (const gb of pt2GatedBuffs(cf, s, _pt2Kit)) buffs.push(gb);
+            continue;
+          }
           // Conditional stats (Soloist's "no party members", Sforzando's
           // "play song in combat", Aspect of the Lone Wolf's Deflect
           // scaling with nearby enemies, etc.) — push as conditional so
@@ -16370,7 +16479,9 @@
         cc: state.compCollection, mc: state.mountCollection,
         boons: [...state.boons], buffs: [...state.buffs], partyContent: state.partyContent, contentZone: state.contentZone, trf: state.targetRangeFt, ap: state.currentApPct, stam: state.currentStaminaPct, mv: state.movementState, ec: state.enemyCount, iat: state.incomingAttackType, tsh: state.targetShielded, dbf: state.debuffed, tic: state.timeInCombatSec, cad: [state.dailyCadenceSec, state.artifactCadenceSec, state.mountPowerCadenceSec], ehp: state.enemyHealthPct, ety: state.enemyTypes, ssec: state.standingSec, am: state.activeMechanics, fpb: state.forcedPowerBuffs, fu: state.flankUptime, phc: state.partyHealerClass, ca: state.conditionAnswers, partyAllies: state.partyAllies, partyMountAllies: state.partyMountAllies, ppm: state.partyPackMeta, ges: state.groupEquipStacks, asp: state.assumeSupportParty,
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
-        aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats, rot: state.rotationSteps, rop: state.rotationOpener, sat: state.scorchAtSparks
+        aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats, rot: state.rotationSteps, rop: state.rotationOpener, sat: state.scorchAtSparks,
+        // POWER-TAGS-2: everything the condition resolver reads must invalidate the cache
+        pt2: [state.pt2Fight || null, state.enemyCount, state.enemyHealthPct, (typeof pt2ScoringMode !== "undefined") ? pt2ScoringMode : "", window.__pt2ForceGates || 0, (typeof window.__pt2FlagOverride === "boolean") ? window.__pt2FlagOverride : null]
       });
       if (key === _engineCacheKey && _engineResult) return _engineResult;
       _engineCacheKey = key;
