@@ -13967,8 +13967,31 @@
         puppet: puppetM ? puppetM.summon : null,
         features: features, feats: feats,
         enemyHealthPct: (typeof state.enemyHealthPct === "number") ? state.enemyHealthPct : 100,
-        steps: null
+        steps: null,
+        // PT2 step 2.3 (fx simulator): the kit objects themselves, so their fx records travel with them
+        kit: pt2SimKit(pick, mechs),
+        paragon: state.paragon, caps: ((typeof findClass === "function" && findClass(state.class)) || {}).fxStackCaps || {},
+        fight: Object.assign({}, PT2_FIGHT_DEFAULTS, state.pt2Fight || {}), enemyCount: (typeof state.enemyCount === "number") ? state.enemyCount : 1,
+        spendAt: (typeof state.scorchAtSparks === "number") ? state.scorchAtSparks : null
       };
+    }
+    function pt2SimKit(pick, mechs) {
+      const cDef = (typeof findClass === "function") ? findClass(state.class) : null, pDef = (typeof findParagon === "function") ? findParagon(state.class, state.paragon) : null;
+      const picks = new Set((state.slottedClassFeaturePicks || []).filter(Boolean)), fts = new Set((state.slottedFeats || []).filter(Boolean));
+      return {
+        powers: { atWill: pick("atWill", state.slottedAtWills), encounter: pick("encounter", state.slottedEncounters), daily: pick("daily", state.slottedDailies) },
+        mechanics: mechs,
+        features: ((pDef && pDef.slottedClassFeatures) || []).filter(f => f && picks.has(f.name)),
+        feats: ((pDef && pDef.feats) || []).filter(f => f && fts.has(f.name)),
+        always: [].concat((cDef && cDef.classFeatures) || [], (pDef && pDef.classFeatures) || [])
+      };
+    }
+    // The fx simulator runs where the PT2 simulator flag is on AND the class's data has been migrated
+    // (Migration B writes fxStackCaps / fx); every other class keeps today's simulator.
+    function pt2UsesFxSim() {
+      if (!pt2SimEnabled() || typeof TF_ROTATION_SIM === "undefined" || !TF_ROTATION_SIM.simulateFx) return false;
+      const c = (typeof findClass === "function") ? findClass(state.class) : null;
+      return !!(c && c.fxStackCaps);
     }
     let _rotSimCache = { key: "", result: null };
     // Cached per rotation-affecting change so gear swaps that do not touch powers or
@@ -13978,9 +14001,9 @@
       const inp = buildRotationSimInput();
       const key = JSON.stringify([inp.opener, inp.loop, inp.artifactName, inp.mountName, inp.powers.atWill.map(p => p.name), inp.powers.encounter.map(p => p.name), inp.powers.daily.map(p => p.name),
         Object.keys(inp.features), Object.keys(inp.feats), state.class, state.paragon, inp.fightSeconds, Math.round(inp.rechargePct * 10) / 10, Math.round(inp.apGainPct * 10) / 10,
-        inp.cadence, inp.scorchAtSparks, inp.enemyHealthPct]);
+        inp.cadence, inp.scorchAtSparks, inp.enemyHealthPct, pt2UsesFxSim(), inp.fight, inp.enemyCount]);
       if (_rotSimCache.key === key && _rotSimCache.result) return _rotSimCache.result;
-      const res = TF_ROTATION_SIM.simulate(inp);
+      const res = pt2UsesFxSim() ? TF_ROTATION_SIM.simulateFx(inp) : TF_ROTATION_SIM.simulate(inp);
       _rotSimCache = { key: key, result: res };
       return res;
     }
@@ -14097,6 +14120,10 @@
         if (d.sparksAvg != null) chips.push('Soul Sparks avg ' + d.sparksAvg.toFixed(1) + ' (peak ' + d.sparksMax + '), ' + d.scorchCasts + ' Scorch casts' + (d.scorchCasts ? ' (one every ' + (sim.fightSeconds / d.scorchCasts).toFixed(1) + ' s)' : ''));
         if (d.puppetUptime != null) chips.push('Soul Puppet up ' + pct(d.puppetUptime) + ', Investiture avg ' + d.investitureAvg.toFixed(1) + ' stacks');
         if (d.creepingDeathAvgStacks != null) chips.push('Creeping Death avg ' + d.creepingDeathAvgStacks.toFixed(1) + ' stacks');
+        if (sim.engine === "fx") {   // PT2: every stack and named buff the data tracks, no names in code
+          Object.keys(d.stacksAvg || {}).filter(n => d.stacksAvg[n] > 0).forEach(n => chips.push(n + ' avg ' + d.stacksAvg[n].toFixed(1)));
+          Object.keys(d.buffUptime || {}).forEach(n => chips.push(n + ' up ' + pct(d.buffUptime[n])));
+        }
         if (chips.length) h += '<div class="hint" style="margin-top:0.2rem;">' + chips.map(esc).join(' · ') + '</div>';
         const top = Object.entries(sim.bySource || {}).sort((a, b) => b[1] - a[1]).slice(0, 8);
         if (top.length) h += '<div class="hint" style="margin-top:0.2rem;">Top sources: ' + top.map(e => esc(e[0]) + ' ' + Math.round(e[1] / sim.fightSeconds) + '/s').join(', ') + '</div>';
@@ -14437,13 +14464,12 @@
         case "rimefireOnTarget":  return kit.chill && kit.smolder;
         case "vengeful":          return kit.cls === "Fighter";
         case "blocking":          return kit.cls === "Fighter" || kit.cls === "Barbarian";
-        case "soulSparks": case "investitureStacks": case "investitureUp": {
-          const rs = (typeof peekRotationSim === "function") ? peekRotationSim() : null;
-          const dv = rs && rs.derived ? rs.derived : {};
-          if (key === "soulSparks") return (dv.sparksAvg != null) ? dv.sparksAvg : 0;
-          if (key === "investitureStacks") return (dv.investitureAvg != null) ? dv.investitureAvg : 0;
-          return (dv.investitureAvg != null) && dv.investitureAvg > 0;
-        }
+      }
+      // PT2 step 2.3: a stack the fx simulator tracks - its simulated fight average (0 where no simulation ran)
+      if (typeof key === "string" && key.indexOf("stack:") === 0) {
+        const rs = (typeof peekRotationSim === "function") ? peekRotationSim() : null;
+        const av = rs && rs.derived && rs.derived.stacksAvg;
+        return (av && av[key.slice(6)] != null) ? av[key.slice(6)] : 0;
       }
       return undefined;   // unknown key: the caller keeps the old behaviour (full value) and flags it
     }

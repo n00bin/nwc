@@ -69,7 +69,7 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
 - **Deadly Curse** (slottedClassFeatures)
   - hit 25, when Curse is applied
 - **No Pity, No Mercy** (slottedClassFeatures)
-  - adds to Hellish Rebuke: +3 Soul Spark, on cast, - 3 per initial hit, removes from Hellish Rebuke: dot, Soul Spark, - no burn; 3 sparks per initial hit
+  - adds to Hellish Rebuke: +3 Soul Spark, on each hit, - 3 per initial hit, removes from Hellish Rebuke: dot, Soul Spark, - no burn; 3 sparks per initial hit
   - Hellish Rebuke (Hellish Rebuke): magnitude add 15
   - Hellish Rebuke (Retaliate): magnitude add 15
 - **Dark Prayers** (slottedClassFeatures)
@@ -87,7 +87,7 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
   - buff Damage Bonus +15% (you), only while the target is Cursed
 - **Soul Desecration** (feats)
   - Soul Puppet: permanent set True
-  - Soul Puppet (Soul Puppet attack): magnitudePct add 100
+  - Soul Puppet (Soul Puppet attack): magnitude mult 2, - deals 100% more damage
   - buff Soul Puppet (you) for 20 s, at the pull, - auto-summons when none is active; never dissipates
 - **Creeping Death** (feats)
   - damage over time 25 x5 over 10 s, up to 5 stacks, on each hit from atWill/encounter/daily powers
@@ -140,7 +140,7 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
 - **Soul Scorch** (mechanic)
   - spend Soul Spark (up to 18, at least 6), - spends up to 18; needs at least 6. When to fire is the rotation's choice (scorchAtSparks)
   - hit 25 per Soul Spark spent (single)
-  - damage over time 25 per Soul Spark spent over 6 s, ASSUMED, - 12 ft around the target; 1 s ticks assumed
+  - damage over time 25 per Soul Spark spent over 6 s, ASSUMED, - 12 ft around the target; 1 s ticks assumed; a second Scorch is assumed to REPLACE a burn still running (not on the tooltip)
 - **Soul Puppet** (mechanic)
   - hit 60 (single), every 1 s while Soul Puppet is up, - about one swing per second while the puppet is up (n00b)
   - +1 Soul Investiture, lasts 20 s, when Soul Puppet is summoned again while up, - summoning while one is active refreshes it and adds a stack
@@ -259,6 +259,11 @@ The step 2.3 parity check must show exactly these differences and nothing else.
 8. Brood of Hadar imps: spacing changes from 10/7 s to 10/6 s apart. Same total.
 9. Hadar's Grasp on a Cursed target: today's simulator gives all 4 sparks on the grab. New data: 1 per hit, the 4th on the extra hold second (damage unknown, counted zero).
 10. Retaliate (Hellish Rebuke), Sphere retaliation, Vengeful Curse: only fire when the 'being attacked' fight fact is on; today's simulator never fires them. Default off, so no change unless you switch it on.
+11. Soul Scorch burn (found in the step 2.3 check, not in the approved list): today's simulator lets a second burn run beside one still ticking; the new data assumes the new burn replaces it. Worth about 2% on a No Pity, No Mercy build. Marked ASSUMED and added to the in-game checks.
+12. Flames of Phlegethos sparks (found in the step 2.3 check): today's simulator gives all 5 on the first hit; the new data gives 1 per hit as the burn ticks. Same total, different timing.
+13. Arms of Hadar escalating cooldown (found in the step 2.3 check): today's simulator never resets the +2 s per use, because it stamps the use time before checking the 10 s reset. The new simulator resets after 10 s unused, as the tooltip says.
+14. Soulweaver damage numbers (found in the step 2.3 check): today's simulator uses the Hellbringer numbers for shared powers (Dreadtheft 200x4, Hadar's Grasp 300). The new one uses each paragon's own tooltip (Soulweaver 175x4 and 200).
+15. Soulweaver and Curse (found in the step 2.3 check): today's simulator lets a Soulweaver apply Curse (Flames of Phlegethos, Brood of Hadar) and so boosts Dreadtheft. Curse is a Hellbringer mechanic, so the new one never curses on a Soulweaver.
 
 ## In-game checks this batch adds to the test list
 
@@ -266,5 +271,6 @@ The step 2.3 parity check must show exactly these differences and nothing else.
 - Infernal Spheres: does releasing Seeking Spheres end the +5% damage buff early?
 - Brood of Hadar and Flames of Phlegethos: do they really apply Curse? The Curse tooltip says encounter powers; these are dailies.
 - Do you start a fight with 6 Soul Sparks? (Look at the spark counter just before the pull.)
+- Soul Scorch burn: cast two Scorches within 6 s on a dummy - does the second burn replace the first, or do both tick?
 
 Records: 151. Validator: PASS.

@@ -114,7 +114,8 @@ Pools: `actionPoints`, `stamina`, `divinity`, `rage`, `performance`, `soulweave`
     `record` (a record's `name`). Fields the simulator understands: `magnitude`, `magnitudePct` (adds a percent to
     the magnitude), a dotted path into the record (`scalesWith.per`), `permanent` (on a buff), `dropFx` (a list of
     record matchers to remove) and `fx` with `addFx`. A gated `mod` applies only while its gate holds.
-11. **Stack caps** live in `docs/plans/effect_vocabulary_resources.json` (`caps`), next to extra stack names.
+11. **Stack caps** live on the class entry in classes.json as `fxStackCaps` (Warlock: Soul Spark 30, Soul
+    Investiture 5, Curse 1, Dark Spiral 2). Extra stack names live in `docs/plans/effect_vocabulary_resources.json`.
 
 ## What is deliberately left out
 

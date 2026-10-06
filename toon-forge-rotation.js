@@ -399,7 +399,556 @@
     };
   }
 
-  const api = { simulate: simulate, defaultSteps: defaultSteps, powerMagnitude: powerMagnitude, parseMag: parseMag, VERSION: "2026-09-11a" };
+
+  /* ------------------------------------------------------------------
+     POWER-TAGS-2 step 2.3: the tag-driven simulator. Same fight script as
+     simulate() (opener once, loop repeats, wait <= 5 s else skip, filler
+     at-will, dailies / artifact / mount / spender on their own when not
+     listed), but every effect comes from the `fx` records
+     (docs/plans/effect_vocabulary.md). No power, feat or class name is
+     written in this function: names come only from the data.
+
+     input = simulate()'s input plus
+       kit: { powers: {atWill, encounter, daily}, mechanics: [], features: [], feats: [], always: [] }
+            (the objects themselves, so their fx travel with them)
+       paragon, caps {stack: max}, modes {powerName: modeName}, fight {beingAttacked: bool, ...},
+       spendAt (the fire-at-N policy for a spender mechanic; legacy scorchAtSparks)
+     Output = simulate()'s shape (mps, bySource, casts, timeline, mix, derived)
+       plus byOwner and stacksAvg / buffUptime for every name the data uses.
+     Magnitudes stay RAW (step 2.4 adds per-hit stat multipliers).
+     ------------------------------------------------------------------ */
+  function simulateFx(input) {
+    const T = Math.max(10, num(input.fightSeconds, 120));
+    const dt = num(input.dt, 0.1);
+    const rsi = num(input.rechargePct, 0) / 100;
+    const AP_PER_SEC = num(input.apPerSec, 40) * (1 + num(input.apGainPct, 0) / 100);
+    const cad = Object.assign({ daily: 60, artifact: 60, mountpower: 60 }, input.cadence || {});
+    const kit = input.kit || {};
+    const paragon = input.paragon || null;
+    const caps = input.caps || {};
+    const fight = input.fight || {};
+    const modes = input.modes || {};
+    const enemyHp = num(input.enemyHealthPct, 100);
+    const featOn = {}, featureOn = {};
+    (kit.feats || []).forEach(function (f) { if (f && f.name) featOn[f.name] = true; });
+    (kit.features || []).concat(kit.always || []).forEach(function (f) { if (f && f.name) featureOn[f.name] = true; });
+    const powers = { atWill: (kit.powers && kit.powers.atWill) || [], encounter: (kit.powers && kit.powers.encounter) || [], daily: (kit.powers && kit.powers.daily) || [] };
+    const byName = {};
+    ["atWill", "encounter", "daily"].forEach(function (k) { powers[k].forEach(function (p) { byName[k + ":" + p.name] = p; }); });
+
+    // ---- record filters ----
+    function recOn(r) {
+      if (!r) return false;
+      if (r.paragon && paragon && r.paragon !== paragon) return false;
+      if (r.requiresFeat && !featOn[r.requiresFeat]) return false;
+      if (r.requiresFeature && !featureOn[r.requiresFeature]) return false;
+      return true;
+    }
+    function fxOf(owner) {
+      let list = (owner && Array.isArray(owner.fx)) ? owner.fx.slice() : [];
+      const md = owner && owner.modes && modes[owner.name] && owner.modes[modes[owner.name]];
+      const mdDefault = owner && owner.modes && !modes[owner.name] ? (owner.modes.melee || owner.modes[Object.keys(owner.modes)[0]]) : null;
+      const m = md || mdDefault;
+      if (m && Array.isArray(m.fx)) list = list.concat(m.fx);
+      return list.filter(recOn);
+    }
+
+    // ---- owners: everything that can carry fx ----
+    const owners = [];   // {obj, type: atWill|encounter|daily|mechanic|feature|feat, name}
+    (kit.mechanics || []).forEach(function (o) { if (o && o.name) owners.push({ obj: o, type: "mechanic", name: o.name }); });
+    (kit.always || []).forEach(function (o) { if (o && o.name) owners.push({ obj: o, type: "feature", name: o.name }); });
+    (kit.features || []).forEach(function (o) { if (o && o.name) owners.push({ obj: o, type: "feature", name: o.name }); });
+    (kit.feats || []).forEach(function (o) { if (o && o.name) owners.push({ obj: o, type: "feat", name: o.name }); });
+    ["atWill", "encounter", "daily"].forEach(function (k) { powers[k].forEach(function (p) { owners.push({ obj: p, type: k, name: p.name }); }); });
+
+    // ---- mods (feats / features / mechanics / powers change other owners) ----
+    const mods = [];
+    owners.forEach(function (ow) { fxOf(ow.obj).forEach(function (r) { if (r.kind === "mod") mods.push(r); }); });
+    function tagsMatch(want, tags) { tags = tags || {}; return Object.keys(want || {}).every(function (k) { return tags[k] === want[k]; }); }
+    function filterMatch(f, ow) {
+      if (!f) return true;
+      if (f.type) { const ts = Array.isArray(f.type) ? f.type : [f.type]; if (ts.indexOf("any") < 0 && ts.indexOf(ow.type) < 0) return false; }
+      if (f.names && f.names.indexOf(ow.name) < 0) return false;
+      if (f.tags && !tagsMatch(f.tags, ow.obj && ow.obj.tags)) return false;
+      if (f.element && !(ow.obj && ow.obj.tags && ow.obj.tags.element === f.element)) return false;
+      return true;
+    }
+    function modsFor(ow) {
+      return mods.filter(function (m) {
+        const tg = m.target || {};
+        if (tg.power) return tg.power === ow.name && ow.type !== "mechanic";
+        if (tg.mechanic) return tg.mechanic === ow.name && ow.type === "mechanic";
+        if (tg.filter) return filterMatch(tg.filter, ow);
+        return false;
+      });
+    }
+    function isPower(ow) { return ow.type === "atWill" || ow.type === "encounter" || ow.type === "daily"; }
+    // record-targeted value mods, read at the moment a listener fires
+    function withRecMods(ow, r) {
+      const rr = Object.assign({}, r);
+      modsFor(ow).forEach(function (md) {
+        const tg = md.target || {};
+        if (!tg.record || tg.record !== r.name || md.field === "magnitudePct" || md.field === "dropFx" || md.field === "fx") return;
+        if (md.missing && md.missing.indexOf("value") >= 0) return;
+        if (gateFrac(md.gate) <= 0) return;
+        setPath(rr, md.field, md.op, md.value);
+      });
+      return rr;
+    }
+    function matches(rec, matcher) { return Object.keys(matcher).every(function (k) { return rec[k] === matcher[k]; }); }
+    function setPath(o, path, op, v) {
+      const ks = path.split("."); let cur = o;
+      for (let i = 0; i < ks.length - 1; i++) { cur[ks[i]] = Object.assign({}, cur[ks[i]] || {}); cur = cur[ks[i]]; }
+      const k = ks[ks.length - 1], old = num(cur[k], 0);
+      cur[k] = op === "add" ? old + num(v) : op === "mult" ? old * num(v) : v;
+    }
+    // An owner's effective records: its own fx, plus addFx, minus dropFx, with magnitude mods applied.
+    // Gated mods are read at the moment the records are built (cast time / trigger time), except
+    // magnitudePct, which is a per-hit multiplier read when each hit lands.
+    function effective(ow, opts) {
+      let recs = fxOf(ow.obj).filter(function (r) { return r.kind !== "mod"; }).map(function (r) { return Object.assign({}, r); });
+      const ms = modsFor(ow);
+      ms.forEach(function (m) {
+        if (m.field === "dropFx" && gateFrac(m.gate) > 0) recs = recs.filter(function (r) { return !(m.value || []).some(function (mt) { return matches(r, mt); }); });
+      });
+      ms.forEach(function (m) {
+        if (m.addFx && gateFrac(m.gate) > 0) recs = recs.concat(m.addFx.filter(recOn).map(function (r) { return Object.assign({}, r); }));
+      });
+      const mainMods = [];
+      ms.forEach(function (m) {
+        if (m.field === "dropFx" || m.field === "fx" || m.field === "magnitudePct" || m.field === "permanent") return;
+        if (m.missing && m.missing.indexOf("value") >= 0) return;
+        if (gateFrac(m.gate) <= 0) return;
+        const tg = m.target || {};
+        if (tg.record) { if (!(opts && opts.noRecordMods)) recs.forEach(function (r) { if (r.name === tg.record) setPath(r, m.field, m.op, m.value); }); }
+        else mainMods.push(m);
+      });
+      return { recs: recs, mainMods: mainMods };
+    }
+    function pctModsFor(ownerName, ownerType, recName) {
+      let pct = 0;
+      mods.forEach(function (m) {
+        if (m.field !== "magnitudePct") return;
+        const tg = m.target || {};
+        const ownerHit = (tg.power && tg.power === ownerName && ownerType !== "mechanic") || (tg.mechanic && tg.mechanic === ownerName && ownerType === "mechanic");
+        if (!ownerHit || (tg.record && tg.record !== recName)) return;
+        pct += num(m.value) * gateFrac(m.gate);
+      });
+      return pct;
+    }
+    const permanentBuff = {};
+    mods.forEach(function (m) { if (m.field === "permanent" && m.target && m.target.buff && m.value) permanentBuff[m.target.buff] = true; });
+
+    // ---- stacks and buffs ----
+    const stacks = {};   // name -> { n: untimed count, timers: [expiry] }
+    function stk(name) { if (!stacks[name]) stacks[name] = { n: 0, timers: [] }; return stacks[name]; }
+    function stackCount(name) { const s = stacks[name]; if (!s) return 0; const live = s.timers.filter(function (x) { return x > t; }).length; const c = s.n + live; return caps[name] != null ? Math.min(caps[name], c) : c; }
+    const buffs = {};    // name -> until
+    function buffUp(name) { return permanentBuff[name] ? buffs[name] != null : (buffs[name] != null && buffs[name] > t); }
+    function gateFrac(g) {
+      if (!g) return 1;
+      const key = g.key || "";
+      let v;
+      if (key.indexOf("stack:") === 0) v = stackCount(key.slice(6));
+      else if (key.indexOf("buff:") === 0) v = buffUp(key.slice(5)) ? 1 : 0;
+      else if (key === "enemyHealthPct") v = enemyHp;
+      else v = (fight[key] === true) ? 1 : (typeof fight[key] === "number" ? fight[key] : 0);
+      if (g.shape === "toggle") return v > 0 ? 1 : 0;
+      if (g.shape === "perStack") return Math.min(num(g.maxStacks, 1e9), v) * num(g.perStack, 0);
+      if (g.shape === "linear") { const a0 = num(g.at0, 0), a100 = num(g.at100, 1); return Math.max(0, Math.min(1, a0 + (a100 - a0) * v / 100)); }
+      if (g.shape === "threshold") { if (g.below != null) return v < g.below ? 1 : 0; return v > 0 ? 1 : 0; }
+      return 1;
+    }
+
+    // ---- listeners (records that fire on events) ----
+    const listeners = [];   // {rec, ow, count, nextAt}
+    function buildListeners() {
+      listeners.length = 0;
+      owners.forEach(function (ow) {
+        effective(ow, { noRecordMods: true }).recs.forEach(function (r) {
+          if (!r.when) return;
+          if (r.when.on !== "cast") listeners.push({ rec: r, ow: ow, count: 0, nextAt: null, lastFire: -1e9 });
+          else if (r.when.from || !isPower(ow)) listeners.push({ rec: r, ow: ow, count: 0, nextAt: null, lastFire: -1e9, castListener: true });
+        });
+      });
+    }
+
+    // ---- fight state ----
+    let t = 0, busyUntil = 0, ap = 0;
+    let artifactReady = 0, mountReady = 0;
+    const events = [];
+    const dotStacks = {};
+    let magTotal = 0;
+    const bySource = {}, byOwner = {}, castCount = {}, mix = { atWill: 0, encounter: 0, daily: 0, other: 0 };
+    const timeline = []; const TIMELINE_MAX = 80;
+    const stackTimeSum = {}, buffTime = {};
+    const st = {};
+    function pst(key) { if (!st[key]) st[key] = { ready: [0], uses: 0, lastUse: -1e9 }; return st[key]; }
+    function cdSeconds(p, s) {
+      let base = num(p.cooldownSeconds, 0) || num(p.rechargeSeconds, 0);
+      if (base <= 0) return 0;
+      if (p.cooldownEscalation) { const e = p.cooldownEscalation; if (t - s.lastUse > num(e.resetAfterSeconds, 10)) s.uses = 0; base = base + num(e.perUseSeconds, 2) * s.uses; }
+      else if (base < 2) base = 6;
+      return base / (1 + rsi);
+    }
+    function chargesOf(p) { return Math.max(1, num(p.charges, 1)); }
+    function pushTimeline(name, kind, mag, note) { if (timeline.length < TIMELINE_MAX) timeline.push({ t: Math.round(t * 10) / 10, name: name, kind: kind, mag: Math.round(mag), note: note || "" }); }
+    function schedule(at, fn, tag) { events.push({ t: at, fn: fn, tag: tag || null }); }
+    function flushEvents() {
+      for (let i = events.length - 1; i >= 0; i--) { const e = events[i]; if (e.t <= t) { events.splice(i, 1); e.fn(); } }
+    }
+
+    // ---- damage ----
+    function mixKind(ow) { return (ow.type === "atWill" || ow.type === "encounter" || ow.type === "daily") ? ow.type : (ow.spender ? "encounter" : "other"); }
+    function land(ow, recName, mag, isTick) {
+      const pct = pctModsFor(ow.name, ow.type, recName);
+      let m = mag * (1 + pct / 100);
+      if (m > 0) {
+        magTotal += m;
+        const label = recName && recName !== ow.name ? ow.name + " · " + recName : ow.name;
+        bySource[label] = (bySource[label] || 0) + m; byOwner[ow.name] = (byOwner[ow.name] || 0) + m;
+        mix[mixKind(ow)] += m;
+      }
+      fire("hit", { ow: ow, recName: recName });
+      if (isTick) fire("dotTick", { ow: ow, recName: recName });
+    }
+    function hitTargets(r) { return r.targets === "others" ? Math.max(0, num(input.enemyCount, 1) - 1) : 1; }
+    // Schedule a hit / dot record. `spent` = stacks this cast consumed (scalesWith).
+    function scheduleDamage(ow, r, start, spent, magOverride) {
+      const n = hitTargets(r); if (n <= 0) return 0;
+      const sw = r.scalesWith ? num(r.scalesWith.per) * num(spent[r.scalesWith.resource], 0) : 0;
+      if (r.kind === "hit") {
+        const m = (magOverride != null ? magOverride : num(r.magnitude, 0)) + sw;
+        const c = Math.max(1, num(r.count, 1));
+        for (let i = 0; i < c; i++) schedule(start + num(r.delaySeconds, 0), function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, m, false); });
+        return m * c * n;
+      }
+      if (r.kind === "dot") {
+        const ticks = Math.max(1, num(r.ticks, 1)), sec = num(r.seconds, ticks);
+        const total = (r.perTick != null ? num(r.perTick) * ticks : num(r.magnitude, 0)) + sw;
+        const per = total / ticks;
+        const key = "dot:" + ow.name + ":" + (r.name || "");
+        if (r.stacking === "stack") {
+          const liveSt = (dotStacks[key] || []).filter(function (x) { return x > t; });
+          if (r.maxStacks != null && liveSt.length >= num(r.maxStacks)) { dotStacks[key] = liveSt; return 0; }
+          liveSt.push(start + sec); dotStacks[key] = liveSt;
+        }
+        if (r.stacking === "refresh") { for (let ei = events.length - 1; ei >= 0; ei--) if (events[ei].tag === key) events.splice(ei, 1); }
+        for (let i = 1; i <= ticks; i++) schedule(start + sec * i / ticks, function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, per, true); }, key);
+        return total * n;
+      }
+      return 0;
+    }
+
+    // ---- non-damage records ----
+    function applyBuff(r) {
+      const name = r.name || "(buff)";
+      const wasUp = buffUp(name);
+      buffs[name] = (permanentBuff[name] || r.seconds == null) ? 1e12 : t + num(r.seconds);
+      if (wasUp) fire("buffRefreshed", { name: name });
+      else {
+        listeners.forEach(function (L) { if (L.rec.when.on === "periodic" && L.rec.when.name === name) L.nextAt = t + num(L.rec.when.every, 1); });
+        fire("buffApplied", { name: name });
+      }
+    }
+    function applyStack(r, spent) {
+      const name = r.resource, s = stk(name);
+      s.timers = s.timers.filter(function (x) { return x > t; });
+      const op = r.op;
+      if (op === "add" || op === "set") {
+        let amt = num(r.amount, 0) + (r.scalesWith ? num(r.scalesWith.per) * num((spent || {})[r.scalesWith.resource], 0) : 0);
+        if (op === "set") { s.n = 0; s.timers = []; }
+        if (!(amt > 0)) return;
+        if (r.seconds != null) { for (let i = 0; i < amt; i++) s.timers.push(t + num(r.seconds)); }
+        else { s.n = caps[name] != null ? Math.min(caps[name], s.n + amt) : s.n + amt; }
+        fire("stackApplied", { resource: name });
+      } else if (op === "refresh") {
+        if (stackCount(name) > 0 && r.seconds != null) s.timers = s.timers.map(function () { return t + num(r.seconds); });
+      } else if (op === "consume") {
+        const have = Math.floor(stackCount(name));
+        if (have <= 0) return 0;
+        const want = r.amount != null ? Math.min(num(r.amount), have) : have;
+        if (r.min != null && want < num(r.min)) return 0;
+        let left = want;
+        const fromN = Math.min(s.n, left); s.n -= fromN; left -= fromN;
+        s.timers.sort(function (a, b) { return a - b; }); s.timers.splice(0, left);
+        fire("stackSpent", { resource: name, amount: want });
+        fire("stackRemoved", { resource: name });
+        return want;
+      }
+      return 0;
+    }
+    function applyCooldown(r, times) {
+      const cut = num(r.seconds, 0) * times;
+      Object.keys(st).forEach(function (k) {
+        const kind = k.split(":")[0];
+        const f = r.targets || {};
+        const ts = f.type ? (Array.isArray(f.type) ? f.type : [f.type]) : ["encounter"];
+        if (ts.indexOf(kind) >= 0) st[k].ready = st[k].ready.map(function (x) { return x - cut; });
+      });
+    }
+    function runRecord(ow, r, spent, castEnd, skipGate) {
+      if (!skipGate && gateFrac(r.gate) <= 0) return 0;
+      switch (r.kind) {
+        case "hit": case "dot": return scheduleDamage(ow, r, castEnd != null ? castEnd : t, spent || {});
+        case "buff": if (r.name) applyBuff(r); return 0;
+        case "debuff": if (r.name) buffs[r.name] = r.seconds != null ? t + num(r.seconds) : 1e12; return 0;
+        case "stack": applyStack(r, spent); return 0;
+        case "cooldown": applyCooldown(r, 1); return 0;
+        case "proc": (r.effects || []).filter(recOn).forEach(function (e) { runRecord({ obj: ow.obj, type: "proc", name: r.name || ow.name }, e, spent, null); }); return 0;
+        default: return 0;   // resource / control / heal / shield: recorded, not scored by the damage simulator
+      }
+    }
+
+    // ---- events ----
+    function fromMatch(L, ctx) {
+      const w = L.rec.when, f = w.from;
+      if (!f) {
+        if (L.ow.type === "atWill" || L.ow.type === "encounter" || L.ow.type === "daily") return ctx.ow && ctx.ow.name === L.ow.name && ctx.ow.type === L.ow.type;
+        return ctx.ow && ["atWill", "encounter", "daily", "mechanic"].indexOf(ctx.ow.type) >= 0;   // your powers; pets and procs only by name
+      }
+      return !!ctx.ow && filterMatch(f, ctx.ow);
+    }
+    function fire(ev, ctx) {
+      for (let i = 0; i < listeners.length; i++) {
+        const L = listeners[i], w = L.rec.when;
+        if (w.on !== ev || L.castListener) continue;
+        if (ev === "hit" || ev === "dotTick") {
+          if (!fromMatch(L, ctx)) continue;
+          if (w.name && ctx.recName !== w.name) continue;
+        }
+        if ((ev === "stackApplied" || ev === "stackRemoved") && w.resource !== ctx.resource) continue;
+        if ((ev === "buffRefreshed" || ev === "buffApplied") && w.name !== ctx.name) continue;
+        if (ev === "stackSpent") {
+          if (w.resource !== ctx.resource) continue;
+          const every = num(w.every, 1); const times = Math.floor(num(ctx.amount) / every);
+          if (times <= 0) continue;
+          if (L.rec.kind === "cooldown") { if (gateFrac(L.rec.gate) > 0) applyCooldown(L.rec, times); continue; }
+          for (let k = 0; k < times; k++) runRecord(L.ow, withRecMods(L.ow, L.rec), null, null);
+          continue;
+        }
+        if (w.every && (ev === "hit" || ev === "dotTick")) { L.count++; if (L.count % num(w.every) !== 0) continue; }
+        if (w.icdSeconds && t - L.lastFire < num(w.icdSeconds)) continue;
+        const chance = w.chance != null ? num(w.chance) / 100 : 1;
+        if (chance <= 0) continue;
+        L.lastFire = t;
+        if (chance < 1) continue;   // step 2.6: expected-value procs; fight facts that drive chance events are off by default
+        runRecord(L.ow, withRecMods(L.ow, L.rec), null, null);
+      }
+    }
+    function fireCast(ow) {
+      for (let i = 0; i < listeners.length; i++) {
+        const L = listeners[i]; if (!L.castListener) continue;
+        if (!filterMatch(L.rec.when.from, ow)) continue;
+        runRecord(L.ow, withRecMods(L.ow, L.rec), null, null);
+      }
+    }
+
+    // ---- casting ----
+    function mainMagnitude(p) {
+      const mbp = p.magnitudeByParagon && paragon && p.magnitudeByParagon[paragon] != null ? p.magnitudeByParagon[paragon] : null;
+      return mbp != null ? mbp : null;
+    }
+    function untriggeredDamage(recs) { return recs.filter(function (r) { return (r.kind === "hit" || r.kind === "dot") && (!r.when || (r.when.on === "cast" && !r.when.from)); }); }
+    // A cast is useful when it would deal damage or do something; a power whose only damage is gated off
+    // (e.g. a Curse Consume hit with no Curse up) is not cast.
+    function castUseful(ow) {
+      const e = effective(ow); const dmg = untriggeredDamage(e.recs);
+      if (!dmg.length) return true;
+      return dmg.some(function (r) { return gateFrac(r.gate) > 0; });
+    }
+    function castOwner(ow, kind) {
+      const p = ow.obj;
+      const castSec = num(p.channelSeconds, 0) > 0 ? num(p.channelSeconds) : num(p.castSeconds, 0);
+      busyUntil = t + Math.max(0.1, castSec);
+      const castEnd = t + castSec;
+      castCount[p.name] = (castCount[p.name] || 0) + 1;
+      const s = kind === "spender" ? null : pst(kind + ":" + p.name);
+      if (s) { s.uses++; }
+      // 1. gates read now (records are built with this moment's state)
+      const e = effective(ow);
+      const own = function (r) { return !r.when || (r.when.on === "cast" && !r.when.from); };
+      const live = e.recs.filter(function (r) { return own(r) && gateFrac(r.gate) > 0; });
+      // 2. consumes first: they decide scalesWith and must see the state before triggers change it
+      const spent = {};
+      live.forEach(function (r) { if (r.kind === "stack" && r.op === "consume") spent[r.resource] = (spent[r.resource] || 0) + applyStack(r, spent); });
+      if (kind === "spender" && !(Object.keys(spent).some(function (k) { return spent[k] > 0; }))) { castCount[p.name]--; busyUntil = t; return false; }
+      // 3. cast-triggered records elsewhere (Curse apply / consume by tags, at-will Curse ...)
+      fireCast(ow);
+      // 4. damage and the rest of the power's own records
+      let total = 0;
+      const dmg = untriggeredDamage(live);
+      if (dmg.length) dmg.forEach(function (r) { total += scheduleDamage(ow, r, castEnd, spent); });
+      else total = scheduleTopLevel(ow, kind, castSec, e.mainMods, s);
+      live.forEach(function (r) { if (r.kind !== "hit" && r.kind !== "dot" && !(r.kind === "stack" && r.op === "consume")) runRecord(ow, r, spent, castEnd, true); });
+      if (s) s.lastUse = t;
+      if (kind === "encounter") { const cd = cdSeconds(p, s); const n = chargesOf(p); while (s.ready.length < n) s.ready.push(0); s.ready.sort(function (a, b) { return a - b; }); s.ready[0] = t + cd; }
+      else if (kind === "daily") { ap -= num(p.actionPointCost, 1000); }
+      pushTimeline(p.name, kind === "spender" ? "encounter" : kind, total, kind === "spender" ? Object.keys(spent).map(function (k) { return spent[k] + " " + k; }).join(", ") : "");
+      return true;
+    }
+    // Powers with no hit / dot records: the top-level magnitude, in the same shapes simulate() used
+    // ("AxB" pulses over the channel or duration, combo steps, a missing-health range, one hit).
+    function scheduleTopLevel(ow, kind, castSec, mainMods, s) {
+      const p = ow.obj;
+      let magRaw = mainMagnitude(p); if (magRaw == null) magRaw = p.magnitude;
+      const pm = parseMag(magRaw);
+      const applyMain = function (m) { mainMods.forEach(function (md) { m = md.op === "add" ? m + num(md.value) : md.op === "mult" ? m * num(md.value) : num(md.value); }); return m; };
+      if (pm.count > 1) {
+        const ch = num(p.channelSeconds, 0) > 0, sec = ch ? num(p.channelSeconds) : (num(p.durationSeconds, 0) || castSec);
+        const per = applyMain(pm.per);
+        for (let i = 1; i <= pm.count; i++) schedule(t + (ch ? 0 : castSec) + sec * i / pm.count, function () { land(ow, ow.name, per, false); });
+        return per * pm.count;
+      }
+      if (Array.isArray(p.comboMagnitudes) && p.comboMagnitudes.length) {
+        const i = ((s ? s.uses : 1) - 1) % p.comboMagnitudes.length; const m = applyMain(num(p.comboMagnitudes[i], 0));
+        schedule(t + castSec, function () { land(ow, ow.name, m, false); }); return m;
+      }
+      const m = applyMain(magRaw != null && mainMagnitude(p) != null ? pm.total : powerMagnitude(p, enemyHp));
+      schedule(t + castSec, function () { land(ow, ow.name, m, false); });
+      return m;
+    }
+
+    // ---- the spender mechanic (a mechanic whose fx consumes a stack with a minimum) ----
+    const spenderOw = (function () {
+      for (let i = 0; i < owners.length; i++) { const ow = owners[i]; if (ow.type !== "mechanic") continue; const c = fxOf(ow.obj).find(function (r) { return r.kind === "stack" && r.op === "consume" && r.min != null && !r.when; }); if (c) { ow.spender = c; return ow; } }
+      return null;
+    })();
+    const spendAt = spenderOw ? Math.max(num(spenderOw.spender.min), Math.min(num(spenderOw.spender.amount, 1e9), num(input.spendAt != null ? input.spendAt : input.scorchAtSparks, num(spenderOw.spender.amount, 0)))) : 0;
+    function spenderReady() { return !!spenderOw && stackCount(spenderOw.spender.resource) >= num(spenderOw.spender.min); }
+
+    // ---- script (same rules as simulate()) ----
+    const clean = function (a) { return Array.isArray(a) ? a.filter(function (x) { return x && x.kind && x.name; }) : []; };
+    let opener = clean(input.opener);
+    let loop = clean(input.loop).length ? clean(input.loop) : clean(input.steps);
+    let defaultOrderUsed = false;
+    if (!loop.length && opener.length) loop = opener.slice();
+    if (!loop.length) { loop = defaultSteps(powers); defaultOrderUsed = true; }
+    const listedIn = function (list, kind, name) { return list.some(function (x) { return x.kind === kind && (name == null || x.name === name); }); };
+    const MAX_WAIT = 5;
+    function owOf(kind, name) { const p = byName[kind + ":" + name]; return p ? owners.find(function (o) { return o.obj === p; }) : null; }
+    function isReady(step) {
+      if (step.kind === "scorch") return spenderReady();
+      if (step.kind === "artifact") return t >= artifactReady;
+      if (step.kind === "mount") return t >= mountReady;
+      const ow = owOf(step.kind, step.name); if (!ow) return false;
+      if (step.kind === "atWill") return true;
+      if (step.kind === "encounter") {
+        if (!castUseful(ow)) return false;
+        const s = pst("encounter:" + ow.name); const n = chargesOf(ow.obj); while (s.ready.length < n) s.ready.push(0);
+        return s.ready.some(function (r) { return r <= t; });
+      }
+      if (step.kind === "daily") { const sd = pst("daily:" + ow.name); return ap >= num(ow.obj.actionPointCost, 1000) && t >= sd.lastUse + cad.daily; }
+      return false;
+    }
+    function waitFor(step) {
+      if (step.kind === "atWill") return 0;
+      if (step.kind === "scorch") return spenderReady() ? 0 : Infinity;
+      if (step.kind === "artifact") return Math.max(0, artifactReady - t);
+      if (step.kind === "mount") return Math.max(0, mountReady - t);
+      const ow = owOf(step.kind, step.name); if (!ow) return Infinity;
+      if (step.kind === "encounter") {
+        if (!castUseful(ow)) return Infinity;
+        const s2 = pst("encounter:" + ow.name); const n = chargesOf(ow.obj); while (s2.ready.length < n) s2.ready.push(0);
+        return Math.max(0, Math.min.apply(null, s2.ready) - t);
+      }
+      if (step.kind === "daily") {
+        const sd = pst("daily:" + ow.name); const cost = num(ow.obj.actionPointCost, 1000);
+        const apWait = ap >= cost ? 0 : (cost - ap) / Math.max(1, AP_PER_SEC);
+        return Math.max(apWait, sd.lastUse + cad.daily - t, 0);
+      }
+      return Infinity;
+    }
+    function castStep(step) {
+      if (step.kind === "scorch") return spenderOw ? castOwner(spenderOw, "spender") : false;
+      if (step.kind === "artifact") { artifactReady = t + cad.artifact; busyUntil = t + 0.5; castCount["Artifact"] = (castCount["Artifact"] || 0) + 1; pushTimeline(step.name || "Artifact", "other", 0, "trigger only"); return true; }
+      if (step.kind === "mount") { mountReady = t + cad.mountpower; busyUntil = t + 0.5; castCount["Mount power"] = (castCount["Mount power"] || 0) + 1; pushTimeline(step.name || "Mount power", "other", 0, "trigger only (mount burst layer scores it)"); return true; }
+      const ow = owOf(step.kind, step.name); if (!ow) return false;
+      return castOwner(ow, step.kind);
+    }
+    const fillerStep = loop.find(function (x) { return x.kind === "atWill"; }) || opener.find(function (x) { return x.kind === "atWill"; }) || (function () {
+      const d = defaultSteps(powers).find(function (x) { return x.kind === "atWill"; }); return d || null;
+    })();
+
+    buildListeners();
+    // combat start: mechanics first (they set resources), then features, feats, powers
+    fire("combatStart", {});
+
+    let phase = opener.length ? "opener" : "loop", ptr = 0, cyclesDone = 0, firstCycleEnd = null;
+    const curList = function () { return phase === "opener" ? opener : loop; };
+    const advance = function () {
+      ptr++;
+      if (ptr >= curList().length) {
+        if (phase === "opener") { phase = "loop"; ptr = 0; if (firstCycleEnd === null) firstCycleEnd = t; }
+        else { ptr = 0; cyclesDone++; if (firstCycleEnd === null) firstCycleEnd = t; }
+      }
+    };
+    const watchedStacks = {}; const watchedBuffs = {};
+    owners.forEach(function (ow) { fxOf(ow.obj).forEach(function (r) {
+      (r.addFx || []).concat([r]).forEach(function (x) { if (x.kind === "stack") watchedStacks[x.resource] = true; if ((x.kind === "buff" || x.kind === "debuff") && x.name) watchedBuffs[x.name] = true; });
+      if (r.gate && /^stack:/.test(r.gate.key || "")) watchedStacks[r.gate.key.slice(6)] = true;
+    }); });
+    while (t < T) {
+      flushEvents();
+      Object.keys(watchedStacks).forEach(function (n) { stackTimeSum[n] = (stackTimeSum[n] || 0) + stackCount(n) * dt; });
+      Object.keys(watchedBuffs).forEach(function (n) { if (buffUp(n)) buffTime[n] = (buffTime[n] || 0) + dt; });
+      // expiries: a timed stack running out fires stackRemoved
+      Object.keys(stacks).forEach(function (n) {
+        const s = stacks[n]; const before = s.timers.length;
+        s.timers = s.timers.filter(function (x) { return x > t; });
+        if (s.timers.length < before && s.timers.length === 0 && s.n === 0) fire("stackRemoved", { resource: n });
+      });
+      // periodic records (pets): every N s, only while their named buff is up
+      for (let i = 0; i < listeners.length; i++) {
+        const L = listeners[i], w = L.rec.when; if (w.on !== "periodic") continue;
+        if (w.name && !buffUp(w.name)) continue;
+        if (L.nextAt == null) L.nextAt = num(w.every, 1);
+        if (t >= L.nextAt) { L.nextAt = t + num(w.every, 1); if (gateFrac(L.rec.gate) > 0) runPeriodic(L); }
+      }
+      if (t >= busyUntil) {
+        let acted = false;
+        const cur = curList();
+        if (spenderOw && !listedIn(cur, "scorch") && stackCount(spenderOw.spender.resource) >= spendAt) acted = castOwner(spenderOw, "spender");
+        if (!acted && !listedIn(cur, "artifact") && input.artifactName && t >= artifactReady) acted = castStep({ kind: "artifact", name: input.artifactName });
+        if (!acted && !listedIn(cur, "mount") && input.mountName && t >= mountReady) acted = castStep({ kind: "mount", name: input.mountName });
+        if (!acted) for (let di = 0; di < powers.daily.length && !acted; di++) { const dp = powers.daily[di]; const ds = { kind: "daily", name: dp.name }; if (!listedIn(cur, "daily", dp.name) && isReady(ds)) acted = castStep(ds); }
+        if (!acted) {
+          let guard = 0;
+          while (!acted && guard++ < 64) {
+            const list = curList(); if (!list.length) break;
+            const step = list[ptr];
+            const w = waitFor(step);
+            if (w <= 0 && isReady(step)) { acted = castStep(step); advance(); }
+            else if (w <= MAX_WAIT) break;
+            else advance();
+          }
+        }
+        if (!acted && fillerStep) { const ow = owOf("atWill", fillerStep.name); if (ow) castOwner(ow, "atWill"); else busyUntil = t + dt; }
+        if (!acted && !fillerStep) busyUntil = t + dt;
+      }
+      ap += AP_PER_SEC * dt;
+      t += dt;
+    }
+    flushEvents();
+    function runPeriodic(L) {
+      const r = withRecMods(L.ow, L.rec);
+      if (r.kind === "hit") { land(L.ow, r.name || L.ow.name, num(r.magnitude, 0), false); return; }
+      runRecord(L.ow, r, null, null);
+    }
+
+    const avg = {}; Object.keys(stackTimeSum).forEach(function (n) { avg[n] = stackTimeSum[n] / T; });
+    const up = {}; Object.keys(buffTime).forEach(function (n) { up[n] = Math.min(1, buffTime[n] / T); });
+    const totalMix = mix.atWill + mix.encounter + mix.daily + mix.other;
+    return {
+      engine: "fx", fightSeconds: T, mps: magTotal / T, magnitudeTotal: magTotal, defaultOrderUsed: defaultOrderUsed, steps: loop, opener: opener, loop: loop,
+      casts: castCount, bySource: bySource, byOwner: byOwner, timeline: timeline, firstCycleEnd: firstCycleEnd, cycles: cyclesDone,
+      mix: { atWill: mix.atWill, encounter: mix.encounter, daily: mix.daily, other: mix.other, pct: totalMix > 0 ? { atWill: mix.atWill / totalMix * 100, encounter: mix.encounter / totalMix * 100, daily: mix.daily / totalMix * 100, other: mix.other / totalMix * 100 } : null },
+      stacksAvg: avg, buffUptime: up,
+      derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 }
+    };
+  }
+
+  const api = { simulate: simulate, simulateFx: simulateFx, defaultSteps: defaultSteps, powerMagnitude: powerMagnitude, parseMag: parseMag, VERSION: "2026-09-11a" };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   root.TF_ROTATION_SIM = api;
 })(typeof window !== "undefined" ? window : globalThis);

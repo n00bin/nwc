@@ -1,10 +1,4 @@
 {
-  "_note": "Stack names a class needs beyond the built-in list, and the stack caps the simulator enforces. Added by the Migration B batches, never invented by code.",
-  "stacks": ["Dark Spiral"],
-  "caps": {
-    "Soul Spark": 30,
-    "Soul Investiture": 5,
-    "Curse": 1,
-    "Dark Spiral": 2
-  }
+  "_note": "Stack names a class needs beyond the built-in list. Added by the Migration B batches, never invented by code. Stack caps live on each class entry in classes.json as fxStackCaps.",
+  "stacks": ["Dark Spiral"]
 }
