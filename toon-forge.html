@@ -20903,14 +20903,20 @@
     // formula and can never drift apart. Self-contained (reads the engine + enemy
     // + state). `mag` = power magnitude; `ov` = optional {power, ca, critSev,
     // critStrike, accuracy} decimals to override the engine-derived stat values.
+    // PT2 step 2.4: split in two. dpsBuildContext() works out everything that belongs to the
+    // build (stats, enemy, Combat Advantage, bonus groups, procs) ONCE; dpsHitDamage() scores
+    // one hit from it. The rotation simulator calls dpsHitDamage per landed hit with that
+    // moment's buffs (hm); with no hm it is exactly the old single formula.
     function computeDpsExpectedDamage(mag, ov) {
+      const ctx = dpsBuildContext(ov);
+      return ctx ? dpsHitDamage(ctx, mag) : { expected: 0, rows: [], pCrit: 0, effFlank: 0, pDeflect: 0, deflLoss: 0, deflCut: 0 };
+    }
+    function dpsBuildContext(ov) {
       const r = getEngineResult();
       const TIL = r.totalItemLevel || 0;
-      const empty = { expected: 0, rows: [], pCrit: 0, effFlank: 0, pDeflect: 0, deflLoss: 0, deflCut: 0 };
-      if (TIL <= 0) return empty;
+      if (TIL <= 0) return null;
       const roleMult = (typeof ROLE_MULT !== "undefined" && ROLE_MULT.dps) ? ROLE_MULT.dps : 1.20;
       const POWER_MIX = getPowerMix();   // per-paragon slot emphasis (was a shared constant)
-      const baseVal = (mag / 100) * (TIL / 10) * roleMult;
       const stat = n => ((r.stats[n] && r.stats[n].finalPct) || 0) / 100;
       ov = ov || {};
       let power      = ov.power      != null ? ov.power      : stat("Power");
@@ -20983,11 +20989,49 @@
       // weighted to an effective generic % by rotation share. Multiplies like
       // any other generic damage source.
       const seqProc = (typeof computeSequenceProcBoost === "function") ? computeSequenceProcBoost() : { pct: 0, contributors: [] };
-      const boostMult = (1 + (db.generic || 0) / 100) * (1 + ((db.base || 0) + _selfBdbCredit) / 100) * (1 + typeBoost / 100) * (1 + slotPct / 100) * (1 + seqProc.pct / 100);
       // Buff-value layer: damage buffs/debuffs on slotted powers multiply the rest
       // of the rotation, credited at uptime (slottedBuffMultiplier / TF_POWER_BUFFS).
       const buffMult = (typeof slottedBuffMultiplier === "function") ? slottedBuffMultiplier() : 1;
-      const baseDmg = baseVal * (1 + pmods.dmgTaken) * boostMult * buffMult;
+      const pCrit0 = Math.max(0, Math.min(1, critStrike));
+      // Proc-damage layer: expected bonus damage per hit from active
+      // companions' damage procs (Xuna, Black Scorpion, …) and equipped
+      // gear's damage procs (Critical Force, Daily Burst, …). Magnitude
+      // procs ride the same stat-multiplier chain; flat-damage gear procs
+      // (tooltip-captured numbers) are added after the multipliers.
+      const procs = computeCompanionProcMagPerHit(pCrit0);
+      const gearProcs = computeGearProcDamagePerHit(pCrit0);
+      return { r, TIL, roleMult, POWER_MIX, power, ca, critSev, critStrike, accuracy, e, pmods, selfBdbCredit: _selfBdbCredit,
+        effFlank, db, dmgType, typeBoost, slotPct, seqProc, buffMult, procs, gearProcs };
+    }
+    // One hit of magnitude `mag` from a build context. `hm` (optional, the simulator's per-hit view):
+    //   add {power, ca, critSev, critStrike, accuracy}  % points from buffs up now, clamped to each stat's cap (2.4-D)
+    //   generic, base, typeBoost, slotPct               % overrides / additions for the bonus groups (2.4-C)
+    //   dmgTaken  % from debuffs up now; critSevTaken  % added outside the cap (2.4-F)
+    //   noBuffMult  leave the averaged slotted-power buffs out (the simulator owns them, 2.4-B)
+    function dpsHitDamage(ctx, mag, hm) {
+      const { r, TIL, roleMult, e, pmods, effFlank, db, seqProc, procs, gearProcs } = ctx;
+      let { power, ca, critSev, critStrike, accuracy } = ctx;
+      let generic = db.generic || 0, base = (db.base || 0) + ctx.selfBdbCredit, typeBoost = ctx.typeBoost, slotPct = ctx.slotPct;
+      let dmgTaken = pmods.dmgTaken, buffMult = ctx.buffMult;
+      if (hm) {
+        const capOf = n => { const si = r.stats[n]; return (si && typeof si.cap === "number") ? si.cap / 100 : Infinity; };
+        const add = hm.add || {};
+        if (add.power) power = Math.min(capOf("Power"), power + add.power / 100);
+        if (add.ca) ca = Math.min(capOf("Combat Advantage"), ca + add.ca / 100);
+        if (add.critSev) critSev = Math.min(capOf("Critical Severity"), critSev + add.critSev / 100);
+        if (add.critStrike) critStrike = Math.min(capOf("Critical Strike"), critStrike + add.critStrike / 100);
+        if (add.accuracy) accuracy = Math.min(capOf("Accuracy"), accuracy + add.accuracy / 100);
+        if (hm.critSevTaken) critSev += hm.critSevTaken / 100;
+        if (hm.generic) generic += hm.generic;
+        if (hm.base) base += hm.base;
+        if (hm.typeBoost != null) typeBoost = hm.typeBoost;
+        if (hm.slotPct != null) slotPct = hm.slotPct;
+        if (hm.dmgTaken) dmgTaken += hm.dmgTaken / 100;
+        if (hm.noBuffMult) buffMult = 1;
+      }
+      const baseVal = (mag / 100) * (TIL / 10) * roleMult;
+      const boostMult = (1 + generic / 100) * (1 + base / 100) * (1 + typeBoost / 100) * (1 + slotPct / 100) * (1 + seqProc.pct / 100);
+      const baseDmg = baseVal * (1 + dmgTaken) * boostMult * buffMult;
       const powerMult = 1 + power;
       const flankBonus = 1 + Math.max(0, ca - e.awareness);
       const critBonus = 1 + Math.max(0, critSev - e.critAvoid);
@@ -21002,13 +21046,6 @@
       const cleanAvg = pBase * dBase + pFlank * dFlank + pCritOnly * dCrit + pBoth * dBoth;
       // Deflect is an INDEPENDENT chance — a deflected hit can still crit/flank.
       const deflectMult = 1 - pDeflect * (1 - 1 / deflectDivide);
-      // Proc-damage layer: expected bonus damage per hit from active
-      // companions' damage procs (Xuna, Black Scorpion, …) and equipped
-      // gear's damage procs (Critical Force, Daily Burst, …). Magnitude
-      // procs ride the same stat-multiplier chain; flat-damage gear procs
-      // (tooltip-captured numbers) are added after the multipliers.
-      const procs = computeCompanionProcMagPerHit(pCrit);
-      const gearProcs = computeGearProcDamagePerHit(pCrit);
       const procMagPerHit = procs.magPerHit + gearProcs.magPerHit;
       const procMult = 1 + procMagPerHit / Math.max(1, mag);
       const baseExpected = cleanAvg * deflectMult;
