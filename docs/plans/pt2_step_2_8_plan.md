@@ -51,7 +51,7 @@ order or your typed order). Everything stays local-only.
 
 | Gap | Question | Recommended |
 |---|---|---|
-| 2.8-A | What form does the rule-built rotation take? | Open. |
+| 2.8-A | What form does the rule-built rotation take? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** A priority list: the rules rank powers and mechanics; at every free moment the simulator casts the first entry that is ready and useful (refresh a dropping buff / stack, buffs and debuffs before damage, encounters strongest first, at-wills fill). Stage 4 refinement reorders the list. The panel shows the list with a reason per entry plus the first loop from the timeline. A typed rotation always wins (strict script, as today). |
 | 2.8-B | How does it hold encounters, dailies and Action Points for the call window? | Open. |
 | 2.8-C | Powers with modes (tap / full charge, channel length, Contre stances): which mode? | Open. |
 
