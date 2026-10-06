@@ -56,7 +56,7 @@ stats plus the buffs and debuffs that are up right then, instead of counting raw
 |---|---|---|
 | 2.4-A | What does the new number replace? | **LOCKED 2026-10-06 (n00b: ok) = Recommended.** Nothing yet. `scores.dps` (one average hit) stays as it is; fight damage per second is a new number on the rotation panel. The optimizer starts using it in Stage 4. Alternative: the damage score switches to fight damage per second now, behind the local flag, so the gear optimizer reads it straight away (bigger change, every damage score moves). |
 | 2.4-B | Double counting: a power buff is counted today as an average (slotted buff powers, Class tab buffs, class-feature gates) and would now also count per hit. | **LOCKED 2026-10-06 (n00b: recommended) = Recommended.** When the new simulator runs, it owns every buff that comes from the kit (powers, class features, feats, mechanics, songs), and the averaged copies of those same buffs are left out of the per-hit path. Gear, companion, mount, boon and race bonuses stay averaged (the simulator does not model them yet). |
-| 2.4-C | Power-type and damage-type bonuses: blend by the fixed profile, or by each hit? | By each hit: an at-will bonus counts on at-will hits only, a magical bonus on magical hits only. Listed as a difference in the attribution check. |
+| 2.4-C | Power-type and damage-type bonuses: blend by the fixed profile, or by each hit? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** By each hit: an at-will bonus counts on at-will hits only, a magical bonus on magical hits only. Listed as a difference in the attribution check. |
 | 2.4-D | A buff that pushes a stat past its cap. | Clamp per hit to the engine's cap, like the panel. |
 
 ## Build order (one commit each, local only)
