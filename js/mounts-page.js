@@ -927,6 +927,12 @@
   var plannerResults   = document.getElementById("planner-results");
   var plannerAddBtn    = document.getElementById("planner-add-loadout");
   var plannerClearBtn  = document.getElementById("planner-clear");
+  var plannerHowto     = document.getElementById("planner-howto");
+  // Keep the long help available without making mobile users scroll through
+  // it before reaching their loadouts. Desktop retains the expanded guide.
+  if (plannerHowto && window.matchMedia("(max-width: 768px)").matches) {
+    plannerHowto.open = false;
+  }
 
   function switchMountTab(activeTab) {
     activeRankingTab = activeTab;
@@ -1561,17 +1567,17 @@
 
   function renderLoadoutCard(ld) {
     var html = '<div class="ranking-card" data-loadout-id="' + ld.id + '" style="flex-direction:column;align-items:stretch;gap:0.5rem;margin-bottom:0.75rem;">';
-    html += '<div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">';
+    html += '<div class="planner-loadout-header">';
     html += '<input type="text" class="search-input planner-name" data-id="' + ld.id + '" value="' + escapeHtml(ld.name) + '" style="max-width:240px;">';
-    html += '<select class="filter-select planner-role" data-id="' + ld.id + '">';
+    html += '<select class="filter-select planner-role" data-id="' + ld.id + '" aria-label="Loadout role">';
     for (var r = 0; r < ROLE_OPTIONS.length; r++) {
       var role = ROLE_OPTIONS[r];
       html += '<option value="' + role + '"' + (ld.role === role ? ' selected' : '') + '>' + role + '</option>';
     }
     html += '</select>';
-    html += '<button class="filter-select planner-delete" data-id="' + ld.id + '" style="cursor:pointer;color:var(--stat-negative,#f85149);">Delete</button>';
+    html += '<button class="filter-select planner-delete" data-id="' + ld.id + '" aria-label="Delete loadout" style="cursor:pointer;color:var(--stat-negative,#f85149);">Delete</button>';
     html += '</div>';
-    html += '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:stretch;">';
+    html += '<div class="planner-bonus-list">';
     for (var b = 0; b < ld.desiredBonuses.length; b++) {
       var bonus = bonusMap[ld.desiredBonuses[b]];
       if (!bonus) continue;
@@ -1579,7 +1585,7 @@
       html += '<div class="planner-bonus-card" style="background:var(--bg-elevated);border:1px solid var(--border-default);color:var(--text-primary);padding:0.4rem 0.6rem;border-radius:var(--radius-sm);display:flex;flex-direction:column;gap:0.3rem;flex:1 1 280px;max-width:380px;min-width:240px;">';
       html += '<div style="display:flex;align-items:center;justify-content:space-between;gap:0.4rem;">';
       html += '<span style="font-weight:600;color:var(--text-primary);">' + nameHtml(bonus.name) + '</span>';
-      html += '<button class="planner-remove-bonus" data-id="' + ld.id + '" data-index="' + b + '" title="Remove this bonus" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1.1rem;line-height:1;padding:0 0.2rem;flex-shrink:0;">×</button>';
+      html += '<button class="planner-remove-bonus" data-id="' + ld.id + '" data-index="' + b + '" title="Remove this bonus" aria-label="Remove bonus" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-weight:700;font-size:1.1rem;line-height:1;padding:0 0.2rem;flex-shrink:0;">×</button>';
       html += '</div>';
       if (bonusDesc) {
         html += '<div style="font-size:0.8rem;color:var(--text-muted);line-height:1.4;">' + escapeHtml(bonusDesc) + '</div>';
@@ -1599,7 +1605,7 @@
     html += renderLoadoutInventoryHTML(ld);
     if (ld.desiredBonuses.length) {
       var feasIsOpen = !!feasOpen[ld.id];
-      html += '<div style="margin-top:0.5rem;">';
+      html += '<div class="planner-feas-wrap" style="margin-top:0.5rem;">';
       html += '<button class="filter-select planner-feas-toggle" data-id="' + ld.id + '" style="cursor:pointer;border-color:#3fb950;color:#3fb950;">' + (feasIsOpen ? '▾' : '▸') + ' What can I build with my insignias?</button>';
       html += '<div class="planner-feas-panel" data-id="' + ld.id + '">';
       if (feasIsOpen) html += renderLoadoutFeasibilityHTML(ld);
@@ -1900,13 +1906,13 @@
   // Render one loadout's five insignia-count inputs (each loadout owns its set).
   function renderLoadoutInventoryHTML(ld) {
     var inv = ld.insigniaInventory || emptyInventory();
-    var html = '<div style="display:flex;flex-wrap:wrap;gap:0.6rem;align-items:center;margin-top:0.1rem;">';
-    html += '<span style="font-size:0.8rem;color:var(--text-secondary);font-weight:600;">My insignias for this loadout:</span>';
+    var html = '<div class="planner-inventory">';
+    html += '<span class="planner-inventory-title">My insignias for this loadout:</span>';
     for (var i = 0; i < INSIGNIA_TYPES.length; i++) {
       var t = INSIGNIA_TYPES[i];
-      html += '<label style="display:flex;align-items:center;gap:0.35rem;">';
+      html += '<label class="planner-inventory-item">';
       html += renderInsigniaBadge(t);
-      html += '<input type="number" min="0" step="1" class="search-input planner-inv-input" data-id="' + ld.id + '" data-type="' + t + '" value="' + (inv[t] || 0) + '" style="width:4.5rem;">';
+      html += '<input type="number" min="0" step="1" class="search-input planner-inv-input" data-id="' + ld.id + '" data-type="' + t + '" value="' + (inv[t] || 0) + '" aria-label="' + t + ' insignias owned">';
       html += '</label>';
     }
     html += '</div>';
