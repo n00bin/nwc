@@ -626,6 +626,10 @@
     const castEvery = {};
     let magTotal = 0;
     const bySource = {}, byOwner = {}, castCount = {}, mix = { atWill: 0, encounter: 0, daily: 0, other: 0 };
+    // PT2 step 2.4: per-hit damage. input.scoreHit(mag, hit, active) -> damage; without it nothing below runs.
+    const scoreHit = typeof input.scoreHit === "function" ? input.scoreHit : null;
+    let dmgTotal = 0; const dmgByOwner = {};
+    const statUp = new Map();   // key -> {rec, until, f}: timed buff / debuff records carrying stats, while up
     const timeline = []; const TIMELINE_MAX = 80;
     const stackTimeSum = {}, buffTime = {};
     const st = {};
@@ -646,18 +650,54 @@
 
     // ---- damage ----
     function mixKind(ow) { return (ow.type === "atWill" || ow.type === "encounter" || ow.type === "daily") ? ow.type : (ow.spender ? "encounter" : "other"); }
-    function addEcho(name, m) {
+    function addEcho(name, m, d) {
       if (!(m > 0)) return;
       magTotal += m; bySource[name] = (bySource[name] || 0) + m; byOwner[name] = (byOwner[name] || 0) + m; mix.other += m;
+      if (scoreHit && d > 0) { dmgTotal += d; dmgByOwner[name] = (dmgByOwner[name] || 0) + d; }
     }
-    function land(ow, recName, mag, isTick, offMain) {
+    // ---- stat records (buffs and debuffs with stats) ----
+    // timed (seconds) or triggered: counted while up, from the moment they are applied;
+    // conditional (no seconds, a gate, no trigger): counted on every hit by the gate's value then;
+    // passive (no seconds, no gate, no trigger) on a feature / feat / mechanic: the engine owns it, never here.
+    const condStatRecs = [];
+    function statKey(ow, r) { return ow.name + "|" + r.kind + "|" + (r.name || "") + "|" + JSON.stringify(r.stats) + "|" + JSON.stringify(r.appliesTo || null); }
+    function statApply(ow, r) {
+      if (!scoreHit || !r.stats || r.seconds == null && r.gate && !r.when) return;
+      if (r.seconds == null && !r.gate && !r.when && !isPower(ow) && ow.type !== "song") return;
+      const f = (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate))) ? gateFrac(r.gate) : 1;
+      statUp.set(statKey(ow, r), { rec: r, until: r.seconds != null ? t + num(r.seconds) : 1e12, f: f, owner: ow.name });
+    }
+    function statRemove(name) { statUp.forEach(function (v) { if (v.rec.name === name) v.until = -1; }); }
+    function hitMatches(af, hit, ow) {
+      if (!af) return true;
+      const rest = Object.assign({}, af); delete rest.damageType;
+      if (af.damageType && !oneOf(af.damageType, hit.damageType) && !oneOf(af.damageType, hit.element)) return false;
+      return filterMatch(rest, ow);
+    }
+    function activeStats(hit, ow) {
+      const out = [];
+      statUp.forEach(function (v) { if (v.until > t && v.f > 0 && hitMatches(v.rec.appliesTo, hit, ow)) out.push({ kind: v.rec.kind, name: v.rec.name || v.owner, stats: v.rec.stats, f: v.f }); });
+      condStatRecs.forEach(function (c) { const f = gateFrac(c.rec.gate); if (f > 0 && hitMatches(c.rec.appliesTo, hit, ow)) out.push({ kind: c.rec.kind, name: c.rec.name || c.owner, stats: c.rec.stats, f: f }); });
+      return out;
+    }
+    function scoreLanded(ow, recName, m, isTick, offMain, rec) {
+      const tg = (ow.obj && ow.obj.tags) || {};
+      const hit = { type: ow.type, name: ow.name, recName: recName, tags: tg, element: (rec && rec.element) || tg.element || null,
+        damageType: (rec && rec.damageType) || tg.damageType || (ow.obj && ow.obj.damageType) || null,
+        targets: (rec && rec.targets) || tg.targets || null, isTick: !!isTick, offMain: !!offMain, proc: !!ow.proc };
+      const d = scoreHit(m, hit, activeStats(hit, ow));
+      if (d > 0) { dmgTotal += d; dmgByOwner[ow.name] = (dmgByOwner[ow.name] || 0) + d; }
+      return d;
+    }
+    function land(ow, recName, mag, isTick, offMain, rec) {
       const pct = pctModsFor(ow.name, ow.type, recName);
       let m = mag * (1 + pct / 100);
+      const d = (scoreHit && m > 0) ? scoreLanded(ow, recName, m, isTick, offMain, rec) : 0;
       if (m > 0 && !offMain) {
         for (let ei = 0; ei < echoes.length; ei++) {
           const E = echoes[ei]; if (E.until <= t) continue;
-          if (E.deliver === "end") E.acc += m;
-          else addEcho(E.name, m * E.pct / 100 * (E.targets === "others" ? Math.max(0, num(input.enemyCount, 1) - 1) : 1));
+          if (E.deliver === "end") { E.acc += m; E.dacc = (E.dacc || 0) + d; }
+          else { const k = E.pct / 100 * (E.targets === "others" ? Math.max(0, num(input.enemyCount, 1) - 1) : 1); addEcho(E.name, m * k, d * k); }
         }
       }
       if (m > 0) {
@@ -681,7 +721,7 @@
       if (r.kind === "hit") {
         const m = (magOverride != null ? magOverride : num(r.magnitude, 0)) + sw;
         const c = Math.max(1, num(r.count, 1));
-        for (let i = 0; i < c; i++) schedule(start + num(r.delaySeconds, 0), function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, m, false, k > 0 || r.targets === "others"); });
+        for (let i = 0; i < c; i++) schedule(start + num(r.delaySeconds, 0), function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, m, false, k > 0 || r.targets === "others", r); });
         return m * c * n;
       }
       if (r.kind === "dot") {
@@ -695,7 +735,7 @@
           liveSt.push(start + sec); dotStacks[key] = liveSt;
         }
         if (r.stacking === "refresh") { for (let ei = events.length - 1; ei >= 0; ei--) if (events[ei].tag === key) events.splice(ei, 1); }
-        for (let i = 1; i <= ticks; i++) schedule(start + sec * i / ticks, function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, per, true, k > 0 || r.targets === "others"); }, key);
+        for (let i = 1; i <= ticks; i++) schedule(start + sec * i / ticks, function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, per, true, k > 0 || r.targets === "others", r); }, key);
         return total * n;
       }
       return 0;
@@ -764,8 +804,8 @@
       if (!skipGate && gateFrac(r.gate) <= 0) return 0;
       switch (r.kind) {
         case "hit": case "dot": return scheduleDamage(ow, r, castEnd != null ? castEnd : t, spent || {});
-        case "buff": if (r.name) applyBuff(r); return 0;
-        case "debuff": if (r.name) buffs[r.name] = r.seconds != null ? t + num(r.seconds) : 1e12; return 0;
+        case "buff": if (r.op === "remove" && r.name) statRemove(r.name); else statApply(ow, r); if (r.name) applyBuff(r); return 0;
+        case "debuff": statApply(ow, r); if (r.name) buffs[r.name] = r.seconds != null ? t + num(r.seconds) : 1e12; return 0;
         case "stack": applyStack(r, spent); return 0;
         case "cooldown": applyCooldown(r, 1); return 0;
         case "echo": echoes.push({ name: r.name || ow.name, pct: num(r.pct, 0), until: t + num(r.seconds, 0), deliver: r.deliver || "end", targets: r.targets || "single", acc: 0 }); return 0;
@@ -991,6 +1031,9 @@
     })();
 
     buildListeners();
+    if (scoreHit) owners.forEach(function (ow) { fxOf(ow.obj).forEach(function (r) {
+      if ((r.kind === "buff" || r.kind === "debuff") && r.stats && r.seconds == null && r.gate && !r.when && r.op !== "remove") condStatRecs.push({ rec: r, owner: ow.name });
+    }); });
     // combat start: mechanics first (they set resources), then features, feats, powers
     fire("combatStart", {});
 
@@ -1020,7 +1063,7 @@
       // echoes whose window closed deal their stored share now (no triggers, never echoed)
       for (let ei = echoes.length - 1; ei >= 0; ei--) {
         const E = echoes[ei];
-        if (E.until <= t) { echoes.splice(ei, 1); if (E.deliver === "end" && E.acc > 0) addEcho(E.name, E.acc * E.pct / 100); }
+        if (E.until <= t) { echoes.splice(ei, 1); if (E.deliver === "end" && E.acc > 0) addEcho(E.name, E.acc * E.pct / 100, (E.dacc || 0) * E.pct / 100); }
       }
       if (input.trace && Math.abs(t - Math.round(t)) < dt / 2) traceRows.push({ t: Math.round(t), stacks: Object.fromEntries(Object.keys(stacks).map(function (n) { return [n, Math.round(stackCount(n) * 10) / 10]; })), up: Object.keys(buffs).filter(buffUp) });
       // expiries: a timed stack running out fires stackRemoved
@@ -1063,7 +1106,7 @@
     flushEvents();
     function runPeriodic(L) {
       const r = withRecMods(L.ow, L.rec);
-      if (r.kind === "hit") { land(asProc(L.ow), r.name || L.ow.name, num(r.magnitude, 0) * (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate)) ? gateFrac(r.gate) : 1), false); return; }
+      if (r.kind === "hit") { land(asProc(L.ow), r.name || L.ow.name, num(r.magnitude, 0) * (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate)) ? gateFrac(r.gate) : 1), false, false, r); return; }
       runRecord(asProc(L.ow), r, null, null);
     }
 
@@ -1075,6 +1118,7 @@
       casts: castCount, bySource: bySource, byOwner: byOwner, timeline: timeline, firstCycleEnd: firstCycleEnd, cycles: cyclesDone,
       mix: { atWill: mix.atWill, encounter: mix.encounter, daily: mix.daily, other: mix.other, pct: totalMix > 0 ? { atWill: mix.atWill / totalMix * 100, encounter: mix.encounter / totalMix * 100, daily: mix.daily / totalMix * 100, other: mix.other / totalMix * 100 } : null },
       stacksAvg: avg, buffUptime: up,
+      damageTotal: scoreHit ? dmgTotal : undefined, dps: scoreHit ? dmgTotal / T : undefined, damageByOwner: scoreHit ? dmgByOwner : undefined,
       derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 },
       trace: input.trace ? traceRows : undefined
     };
