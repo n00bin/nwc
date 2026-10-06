@@ -13926,7 +13926,7 @@
     function tfIsLocal() {
       try { const h = location.hostname; return location.protocol === "file:" || h === "localhost" || h === "127.0.0.1" || h === ""; } catch (e) { return false; }
     }
-    function classTabEnabled() { return TF_CLASS_TAB_LIVE || tfIsLocal(); }
+    function classTabEnabled() { if (typeof pt2PanelEnabled === "function" && pt2PanelEnabled()) return false; return TF_CLASS_TAB_LIVE || tfIsLocal(); }   // PT2-9: off wherever the PT2 panel is on
     // POWER-TAGS-2 (docs/plans/power_tags_2_plan.md, step 0.2): new panel / simulator behaviour
     // ships behind these, local-only until n00b checks it and says go. Unused until step 1.2.
     const TF_PT2_PANEL_LIVE = false;
@@ -14188,6 +14188,12 @@
       }
       return h + '</tbody></table></div>';
     }
+    function pt2HideClassTab() {   // PT2-9: the Class tab is removed where the PT2 panel is on
+      if (!(typeof pt2PanelEnabled === "function" && pt2PanelEnabled())) return;
+      const opt = document.querySelector('#scenario-tab-select option[value="class"]'); if (opt) opt.remove();
+      const pane = document.querySelector('.sc-pane[data-sc-pane="class"]'); if (pane) pane.remove();
+    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", pt2HideClassTab); else pt2HideClassTab();
     function renderClassMechanics() {
       const box = document.getElementById("class-mechanics-box"); if (!box) return;
       if (!classTabEnabled()) { box.innerHTML = '<p class="hint" style="color:var(--amber);"><strong>Coming soon.</strong> Class mechanics and buff powers (Battlerage, Soul Sparks, Curse, Vengeance...) are being worked out and do not affect any number yet.</p>'; return; }
@@ -14429,6 +14435,15 @@
         case "chillStacks":       return kit.chill ? 6 : 0;
         case "chillOrSmolderOnTarget": return kit.chill || kit.smolder;
         case "rimefireOnTarget":  return kit.chill && kit.smolder;
+        case "vengeful":          return kit.cls === "Fighter";
+        case "blocking":          return kit.cls === "Fighter" || kit.cls === "Barbarian";
+        case "soulSparks": case "investitureStacks": case "investitureUp": {
+          const rs = (typeof peekRotationSim === "function") ? peekRotationSim() : null;
+          const dv = rs && rs.derived ? rs.derived : {};
+          if (key === "soulSparks") return (dv.sparksAvg != null) ? dv.sparksAvg : 0;
+          if (key === "investitureStacks") return (dv.investitureAvg != null) ? dv.investitureAvg : 0;
+          return (dv.investitureAvg != null) && dv.investitureAvg > 0;
+        }
       }
       return undefined;   // unknown key: the caller keeps the old behaviour (full value) and flags it
     }
@@ -14454,7 +14469,7 @@
           else { const a0 = (g.at0 != null) ? g.at0 : 0, a1 = (g.at100 != null) ? g.at100 : 1; f = cl(a0 + (a1 - a0) * v / 100); }
           return { f, label: "at " + Math.round(v) + (g.key === "targetRangeFt" ? " ft" : g.key === "enemyCount" ? " enemies" : "%") };
         }
-        case "perStack": { const n = Math.max(0, Math.min(g.maxStacks || 1, +v || 0)); return { f: cl(n * (g.perStack || 0)), label: n + (n === 1 ? " stack" : " stacks") }; }
+        case "perStack": { const n = Math.max(0, Math.min(g.maxStacks || 1, +v || 0)); const nr = Math.round(n * 10) / 10; return { f: cl(n * (g.perStack || 0)), label: nr + (nr === 1 ? " stack" : " stacks") }; }
         case "dutyCycle": {
           if (!v) return { f: 0, label: "off" };
           if (pt2ScoringMode === "average" && g.cycleSeconds) { const u = cl(g.durationSeconds / g.cycleSeconds); return { f: u, label: "up " + Math.round(u * 100) + "% of the fight" }; }
@@ -14485,11 +14500,12 @@
     }
     // Gated stat lines for one feature. Each part becomes one conditional buff.
     function pt2GatedBuffs(cf, s, kit) {
-      if (cf.pt2Stage === 2 || cf.pt2View) return [];
+      if (cf.pt2Stage === 2 || cf.pt2View || cf.pt2Duplicate) return [];
       const parts = Array.isArray(cf.gateParts) ? cf.gateParts
         : [{ gate: cf.gate, stats: cf.gateStatsByParagon ? (cf.gateStatsByParagon[s.paragon] || {}) : (cf.gateStats || cf.percentStatsConditional || {}) }];
       const out = [];
       for (const part of parts) {
+        if (part.requiresFeat && !((s.slottedFeats || []).indexOf(part.requiresFeat) !== -1)) continue;
         const r = pt2GateFraction(part.gate, s, kit);
         const pct = {}; for (const k in (part.stats || {})) pct[k] = Math.round(part.stats[k] * r.f * 100) / 100;
         out.push({ source: "Class Feature: " + cf.name + (r.label ? " (" + r.label + ")" : ""), percentStats: pct, ratingStats: {}, conditional: true, pt2Gate: part.gate ? part.gate.key : null, pt2Fraction: r.f, pt2Unknown: !!r.unknown });
@@ -14985,7 +15001,7 @@
       // +0.5% with Wrathful Souls). This block is the LIVE-SITE fallback while
       // the tab is still gated off there, with the same numbers, so nothing is
       // counted twice and nothing is lost.
-      if (s.class === "Warlock" && s.paragon === "Hellbringer" && !(typeof classTabEnabled === "function" && classTabEnabled())) {
+      if (s.class === "Warlock" && s.paragon === "Hellbringer" && !(typeof classTabEnabled === "function" && classTabEnabled()) && !(typeof pt2PanelEnabled === "function" && pt2PanelEnabled())) {
         const sparks = Math.max(0, Math.min(30, (s.activeMechanics && typeof s.activeMechanics["Soul Spark"] === "number") ? s.activeMechanics["Soul Spark"] : 0));
         if (sparks > 0) {
           const perSpark = 0.5 + ((Array.isArray(s.slottedFeats) && s.slottedFeats.includes("Wrathful Souls")) ? 0.5 : 0);
@@ -16313,6 +16329,15 @@
         }
       }
 
+      // POWER-TAGS-2 (PT2-9, Migration A2): class mechanics with a gate are resolved from the
+      // kit / the simulated rotation; the hand toggles of the old Class tab no longer apply.
+      if (typeof pt2PanelEnabled === "function" && pt2PanelEnabled() && typeof classMechanicsFor === "function") {
+        const _mk = pt2Kit(s);
+        for (const m of classMechanicsFor(s.class, s.paragon)) {
+          if (!m || !(m.gate || m.gateParts)) continue;
+          for (const gb of pt2GatedBuffs(Object.assign({}, m, { gateStats: m.gateStats || {} }), s, _mk)) { gb.source = gb.source.replace("Class Feature: ", "Class mechanic: "); buffs.push(gb); }
+        }
+      }
       // Class mechanics (Combat scenario Class tab, n00b 2026-09-08): a mechanic the
       // player marks active contributes its data-driven effects[] (classes.json).
       for (const m of ((typeof classMechanicsFor === "function" && (typeof classTabEnabled !== "function" || classTabEnabled())) ? classMechanicsFor(s.class, s.paragon) : [])) {
@@ -19179,7 +19204,7 @@
       // The control lives on The Fight -> Class as the Soul Spark mechanic slider.
       // This copy renders ONLY while the Class tab is gated off (live site), writes
       // the same activeMechanics["Soul Spark"] key, and disappears when the tab goes live.
-      if (state.class === "Warlock" && state.paragon === "Hellbringer" && !classTabEnabled()) {
+      if (state.class === "Warlock" && state.paragon === "Hellbringer" && !classTabEnabled() && !(typeof pt2PanelEnabled === "function" && pt2PanelEnabled())) {
         const sparks = soulSparkCount();
         const ws = (state.slottedFeats || []).includes("Wrathful Souls");
         out.push('<div class="field" style="margin-top:0.8rem;"><label>Soul Sparks <span style="color:var(--text-dim);font-weight:400;">(each spark = +' + (ws ? "1.0" : "0.5") + '% damage' + (ws ? " with Wrathful Souls" : ", +1.0% with Wrathful Souls") + ', conditional)</span></label>');
