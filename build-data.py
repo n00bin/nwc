@@ -54,7 +54,7 @@ def build_header(source_name):
 # ---- POWER-TAGS-2 effect vocabulary validator (docs/plans/effect_vocabulary.md, step 2.1) ----
 # Any `fx` record outside the vocabulary FAILS the classes.json build loudly, so drift cannot
 # creep back in. Entries without `fx` are not checked (the old free-form blocks are records only).
-FX_COMMON = {"kind", "when", "gate", "requiresFeat", "requiresFeature", "requiresSlotted", "provisional", "missing", "note", "paragon"}
+FX_COMMON = {"kind", "when", "gate", "requiresFeat", "requiresFeature", "requiresSlotted", "provisional", "missing", "note", "paragon", "slot"}
 FX_KINDS = {
     "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name", "scalesWith"},
     "dot":      {"magnitude", "perTick", "ticks", "seconds", "stacking", "maxStacks", "damageType", "element", "name", "targets", "scalesWith"},

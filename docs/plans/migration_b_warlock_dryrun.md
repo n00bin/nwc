@@ -35,7 +35,7 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
   - hold 2 s
   - Hadar's Grasp (Hadar's Grasp): magnitude add 150, only while the target is Cursed, Hellbringer only, - Curse Consume: +150 magnitude
   - hold 1 s, only while the target is Cursed, Hellbringer only, - Curse Consume: hold +1 s
-  - hit 0 (single), only while the target is Cursed, Hellbringer only, MISSING magnitude (counts zero), - n00b counted a 4th hit on a Cursed boss; its damage is not on the tooltip
+  - hit (amount missing) (single), only while the target is Cursed, Hellbringer only, MISSING magnitude (counts zero), - n00b counted a 4th hit on a Cursed boss; its damage is not on the tooltip
   - buff Soul Puppet (you) for 20 s, only while the target is Cursed, Hellbringer only, - Curse Consume summons a Soul Puppet
   - +1 Soul Spark, on each hit, Hellbringer only
 - **Dreadtheft** (encounter)
@@ -69,7 +69,7 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
 - **Deadly Curse** (slottedClassFeatures)
   - hit 25, when Curse is applied
 - **No Pity, No Mercy** (slottedClassFeatures)
-  - adds to Hellish Rebuke: +3 Soul Spark, on each hit, - 3 per initial hit, removes from Hellish Rebuke: dot, Soul Spark, - no burn; 3 sparks per initial hit
+  - adds to Hellish Rebuke: +3 Soul Spark, on each Hellish Rebuke hit, - 3 per initial hit, removes from Hellish Rebuke: dot, Soul Spark, - no burn; 3 sparks per initial hit
   - Hellish Rebuke (Hellish Rebuke): magnitude add 15
   - Hellish Rebuke (Retaliate): magnitude add 15
 - **Dark Prayers** (slottedClassFeatures)
@@ -173,7 +173,7 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
   - adds to Soul Reconstruction: buff Focused Spark (party) for 6 s
   - Inspirit: magnitude add 100, while Focused Spark is up
 - **Soul Reclamation** (feats)
-  - Soulweave regenPct ?, while Soulweave is under 30%, MISSING amount (counts zero), - Lifespark stops casting Inspirit meanwhile
+  - Soulweave regenPct ?, only when pool:soulweavePct < 30, MISSING amount (counts zero), - Lifespark stops casting Inspirit meanwhile
 - **Oversoul** (feats)
   - buff Dmg Bonus +10% (you), scaled by how full the Soulweave bar is, ASSUMED, - straight-line fall-off assumed
 - **Soultheft** (feats)
@@ -272,5 +272,12 @@ The step 2.3 parity check must show exactly these differences and nothing else.
 - Brood of Hadar and Flames of Phlegethos: do they really apply Curse? The Curse tooltip says encounter powers; these are dailies.
 - Do you start a fight with 6 Soul Sparks? (Look at the spark counter just before the pull.)
 - Soul Scorch burn: cast two Scorches within 6 s on a dummy - does the second burn replace the first, or do both tick?
+
+## Stack rules
+
+- **Soul Spark**: max 30
+- **Soul Investiture**: max 5
+- **Curse**: max 1
+- **Dark Spiral**: max 2
 
 Records: 151. Validator: PASS.
