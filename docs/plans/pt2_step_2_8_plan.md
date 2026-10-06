@@ -52,7 +52,7 @@ order or your typed order). Everything stays local-only.
 | Gap | Question | Recommended |
 |---|---|---|
 | 2.8-A | What form does the rule-built rotation take? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** A priority list: the rules rank powers and mechanics; at every free moment the simulator casts the first entry that is ready and useful (refresh a dropping buff / stack, buffs and debuffs before damage, encounters strongest first, at-wills fill). Stage 4 refinement reorders the list. The panel shows the list with a reason per entry plus the first loop from the timeline. A typed rotation always wins (strict script, as today). |
-| 2.8-B | How does it hold encounters, dailies and Action Points for the call window? | Open. |
+| 2.8-B | How does it hold encounters, dailies and Action Points for the call window? | **LOCKED 2026-10-06 (n00b: 1, "this should be easy ... it knows the cast time, the cooldown and when the arti call will fire") = Recommended.** Each cast checks those three numbers: a power is held when casting it now would leave it still on cooldown when the window opens (a daily also when Action Points would refill in time anyway). The simulator runs no hold / hold dailies / hold encounters / hold both and keeps the most total fight damage; the panel says which and by how much. |
 | 2.8-C | Powers with modes (tap / full charge, channel length, Contre stances): which mode? | Open. |
 
 ## Build order (one commit each, local only)
