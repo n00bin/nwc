@@ -745,7 +745,10 @@
         const f = r.targets || {};
         if (f.names) { if (f.names.indexOf(nm) < 0) return; }
         else { const ts = f.type ? (Array.isArray(f.type) ? f.type : [f.type]) : ["encounter"]; if (ts.indexOf(kind) < 0) return; }
-        st[k].ready = r.op === "reset" ? st[k].ready.map(function () { return t; }) : st[k].ready.map(function (x) { return x - cut; });
+        if (f.tags) { const pw = byName[kind + ":" + nm]; if (!pw || !tagsMatch(f.tags, pw.tags)) return; }
+        st[k].ready = r.op === "reset" ? st[k].ready.map(function () { return t; })
+          : r.pct != null ? st[k].ready.map(function (x) { return x > t ? t + (x - t) * (1 - num(r.pct) / 100) : x; })
+          : st[k].ready.map(function (x) { return x - cut; });
       });
     }
     function runRecord(ow, r, spent, castEnd, skipGate) {
@@ -896,7 +899,7 @@
         schedule(t + castSec, function () { land(ow, ow.name, m, false); }); return m;
       }
       const m = applyMain(magRaw != null && mainMagnitude(p) != null ? pm.total : powerMagnitude(p, enemyHp));
-      schedule(t + castSec, function () { land(ow, ow.name, m, false); });
+      if (m > 0) schedule(t + castSec, function () { land(ow, ow.name, m, false); });
       return m;
     }
 

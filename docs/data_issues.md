@@ -1,5 +1,10 @@
 # Data Issues To Investigate
 
+## OPEN Ranger data checks for n00b (2026-10-06, Migration B)
+
+- **Boar Charge (Warden):** stored magnitude 385, but the tooltip transcription and the review note both read 585. Left at 385 until checked in game.
+- **Cold Steel Hurricane / Call of the Storm (Warden dailies):** no castSeconds stored (review notes say 1.5 s and 1 s), so they cast instantly in the simulator. Confirm the cast times, then add them.
+
 ## OPEN artisan leads from the community Professions sheet (2026-10-05)
 
 Compared our Professions page (209 artisans, source nwo.tbotr.net) against the

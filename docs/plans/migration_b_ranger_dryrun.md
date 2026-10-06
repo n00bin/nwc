@@ -18,8 +18,8 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
 - **Aspect of the Serpent** (slottedClassFeatures)
   - +1 Serpent (ranged-built), on cast from powers tagged stance ranged
   - +1 Serpent (melee-built), on cast from powers tagged stance melee
-  - buff Damage Bonus +3% (you), to type atWill/encounter, tags {"stance": "melee"}, scaled by Serpent (ranged-built) stacks, - ranged-built stacks buff melee attacks (maximum stacks unknown)
-  - buff Damage Bonus +3% (you), to type atWill/encounter, tags {"stance": "ranged"}, scaled by Serpent (melee-built) stacks
+  - buff Damage Bonus +3% (you), to type atWill/encounter, tags {"stance": "melee"}, scaled by Serpent (ranged-built) stacks, ASSUMED, - ranged-built stacks buff melee attacks; the maximum is not on the tooltip, so 1 stack (the guaranteed minimum) is counted
+  - buff Damage Bonus +3% (you), to type atWill/encounter, tags {"stance": "ranged"}, scaled by Serpent (melee-built) stacks, ASSUMED
   - spend Serpent (ranged-built) (all held, up to 1), on each hit from powers tagged stance melee, - each buffed attack spends one
   - spend Serpent (melee-built) (all held, up to 1), on each hit from powers tagged stance ranged
 - **Rapid Strike** (atWill)
@@ -137,8 +137,8 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
 - **Aspect of the Serpent** (slottedClassFeatures)
   - +1 Serpent (ranged-built), on cast from powers tagged stance ranged
   - +1 Serpent (melee-built), on cast from powers tagged stance melee
-  - buff Damage Bonus +3% (you), to type atWill/encounter, tags {"stance": "melee"}, scaled by Serpent (ranged-built) stacks, - ranged-built stacks buff melee attacks (maximum stacks unknown)
-  - buff Damage Bonus +3% (you), to type atWill/encounter, tags {"stance": "ranged"}, scaled by Serpent (melee-built) stacks
+  - buff Damage Bonus +3% (you), to type atWill/encounter, tags {"stance": "melee"}, scaled by Serpent (ranged-built) stacks, ASSUMED, - ranged-built stacks buff melee attacks; the maximum is not on the tooltip, so 1 stack (the guaranteed minimum) is counted
+  - buff Damage Bonus +3% (you), to type atWill/encounter, tags {"stance": "ranged"}, scaled by Serpent (melee-built) stacks, ASSUMED
   - spend Serpent (ranged-built) (all held, up to 1), on each hit from powers tagged stance melee, - each buffed attack spends one
   - spend Serpent (melee-built) (all held, up to 1), on each hit from powers tagged stance ranged
 - **Rapid Strike** (atWill)
@@ -260,7 +260,9 @@ The step 2.3 parity check must show exactly these differences and nothing else.
 4. Ambush: today's simulator lands 150 at the cast. New data adds 150 to your next attack and the +10% damage taken debuff.
 5. Grasping Roots: today's simulator never converts roots. New data adds an 80 / 175 hit per root power cast on a control-immune target (the default boss toggle, provisional).
 6. Careful Attack: today's simulator scores 0. New data adds +15 to every At-Will / Encounter / Daily hit while the target is studied.
-7. Everything else today's simulator does not model for Ranger (stances and their feats, buffs, debuffs, procs) starts counting where the data has numbers.
+7. Call of the Storm (found in the step 2.3 check): today's simulator counts only the 400 hit. New data adds its Lightning Enchanted Weapon: 100 lightning once per second while attacking, for 10 s.
+8. Aspect of the Serpent (changed after approval, found in the step 2.3 check): with no maximum on the tooltip the stacks grew without limit (86 in a test). Now counted at 1 stack, the guaranteed minimum, until the maximum is captured.
+9. Everything else today's simulator does not model for Ranger (stances and their feats, buffs, debuffs, procs) starts counting where the data has numbers.
 
 ## In-game checks this batch adds to the test list
 
@@ -273,7 +275,7 @@ The step 2.3 parity check must show exactly these differences and nothing else.
 
 - **Focused**: max 5
 - **Ambush**: max 1
-- **Serpent (ranged-built)**: max - (ASSUMED) - maximum not on the tooltip
-- **Serpent (melee-built)**: max - (ASSUMED)
+- **Serpent (ranged-built)**: max 1 (ASSUMED) - maximum not on the tooltip: counted at 1 (the guaranteed minimum)
+- **Serpent (melee-built)**: max 1 (ASSUMED)
 
 Records: 150. Validator: PASS.
