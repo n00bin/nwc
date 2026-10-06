@@ -13980,7 +13980,9 @@
         // player picks the data reads (pick:<setting>:<value> gates) and the Spell Mastery (R1) encounter;
         // no control sets these yet - they arrive with the free simulator display (step 2.9)
         picks: { chaosMagicBuff: state.chaosMagicBuff || null }, spellMasteryPower: state.spellMasteryPower || null,
-        spendAt: (typeof state.scorchAtSparks === "number") ? state.scorchAtSparks : null
+        spendAt: (typeof state.scorchAtSparks === "number") ? state.scorchAtSparks : null,
+        // PT2 step 2.8: with no typed opener or loop, the fx simulator builds the rotation (a priority list)
+        ruleBuilt: pt2UsesFxSim() && !steps.length && !opener.length
       };
     }
     function pt2SimKit(pick, mechs) {
@@ -14010,9 +14012,9 @@
       const inp = buildRotationSimInput();
       const key = JSON.stringify([inp.opener, inp.loop, inp.artifactName, inp.mountName, inp.powers.atWill.map(p => p.name), inp.powers.encounter.map(p => p.name), inp.powers.daily.map(p => p.name),
         Object.keys(inp.features), Object.keys(inp.feats), state.class, state.paragon, inp.fightSeconds, Math.round(inp.rechargePct * 10) / 10, Math.round(inp.apGainPct * 10) / 10,
-        inp.cadence, inp.scorchAtSparks, inp.enemyHealthPct, pt2UsesFxSim(), inp.fight, inp.enemyCount]);
+        inp.cadence, inp.scorchAtSparks, inp.enemyHealthPct, pt2UsesFxSim(), inp.fight, inp.enemyCount, inp.ruleBuilt]);
       if (_rotSimCache.key === key && _rotSimCache.result) return _rotSimCache.result;
-      const res = pt2UsesFxSim() ? TF_ROTATION_SIM.simulateFx(inp) : TF_ROTATION_SIM.simulate(inp);
+      const res = pt2UsesFxSim() ? TF_ROTATION_SIM.simulateFxBest(inp) : TF_ROTATION_SIM.simulate(inp);
       _rotSimCache = { key: key, result: res };
       return res;
     }
@@ -14138,7 +14140,7 @@
     }
     function pt2SimScored(su, kit, call) {
       const r = su.rules; call = call !== undefined ? call : su.call;
-      return TF_ROTATION_SIM.simulateFx(Object.assign({}, su.inp, { kit: kit || su.inp.kit, scoreHit: pt2MakeScoreHit(su.ctx, r), liveRecharge: !!r.liveRecharge,
+      return TF_ROTATION_SIM.simulateFxBest(Object.assign({}, su.inp, su.choices ? { choices: su.choices } : {}, { kit: kit || su.inp.kit, scoreHit: pt2MakeScoreHit(su.ctx, r), liveRecharge: !!r.liveRecharge,
         role: state.role || null, expectedProcs: !!r.expectedProcs, critChance: su.ctx.critStrike, areaTargets: !!r.areaTargets },
         call ? { callWindow: { every: tfCadence("artifact"), seconds: 10 }, call: call } : {}));
     }
@@ -14150,6 +14152,7 @@
       if (_rotDmgCache.key === key && _rotDmgCache.result) return _rotDmgCache.result;
       const su = pt2ScoredSetup(rules);
       const res = su ? pt2SimScored(su) : null;
+      if (su && res && res.choices) su.choices = { hold: res.choices.hold, modes: res.choices.modes, spendAt: res.choices.spendAt, filler: res.choices.filler, skip: res.choices.skip };   // 2.8: confidence runs keep these
       if (res) {
         const inp = su.inp, on = new Set(res.statOwnersOn || []), owned = pt2SimOwnedNames(inp.kit);
         res.notOn = [].concat(inp.kit.mechanics || [], inp.kit.features || [], inp.kit.feats || [], inp.kit.always || [])
@@ -14335,6 +14338,15 @@
         h += '<div style="margin-top:0.6rem;font-size:0.85rem;"><strong>' + Math.round(sim.mps) + ' magnitude/s</strong> over ' + sim.fightSeconds + ' s' + (sim.defaultOrderUsed ? ' (default order)' : '') + ' · ' + sim.cycles + ' loops</div>';
         // PT2 step 2.4 (local only): fight damage scored hit by hit, beside magnitude (2.4-A: the damage score is unchanged)
         const fd = (sim.engine === "fx" && typeof getRotationDamage === "function") ? getRotationDamage() : null;
+        // PT2 step 2.8: the rule-built rotation (shown when the player typed none) with a reason per entry, and its choices
+        const rbx = (fd && fd.ruleBuilt) || sim.ruleBuilt;
+        if (rbx && rbx.list && rbx.list.length) {
+          h += '<details style="margin-top:0.3rem;" open><summary class="hint" style="cursor:pointer;">Rule-built rotation (you have not typed one): cast the first ready entry</summary><ol class="hint" style="margin:0.2rem 0 0 1.2rem;padding:0;">'
+            + rbx.list.map(e => '<li>' + esc(e.name) + ' <span style="opacity:0.75;">- ' + esc(e.reason) + '</span></li>').join('') + '</ol></details>';
+          const gains = ((fd && fd.choices) || sim.choices || {}).gains || [];
+          const shown = gains.filter(g => g.picked !== "n/a").map(g => esc(g.choice) + ': ' + esc(g.picked) + (g.pct > 0.05 ? ' (+' + g.pct.toFixed(1) + '%)' : ''));
+          if (shown.length) h += '<div class="hint" style="margin-top:0.1rem;">Choices tried: ' + shown.join('; ') + '</div>';
+        }
         if (fd && fd.dps != null) {
           const topD = Object.entries(fd.damageByOwner || {}).sort((a, b) => b[1] - a[1]).slice(0, 5);
           h += '<div style="margin-top:0.2rem;font-size:0.85rem;"><strong>' + Math.round(fd.dps).toLocaleString() + ' damage/s</strong> <span class="hint">each hit scored with the buffs and debuffs up at that moment</span></div>';

@@ -1121,7 +1121,13 @@
     if (RB) {
       owners.forEach(function (ow) {
         if (ow.type !== "mechanic" || ow === spenderOw) return;
-        if (fxOf(ow.obj).some(function (r) { return !r.when; })) rbList.push({ kind: "mechanic", name: ow.name, ow: ow, reason: "castable mechanic: cast when ready and useful" });
+        // castable = it has a cast time and its own records do something for damage (passive stack mechanics such as Arcane
+        // Mastery have no cast time; heal-only ones such as Light of Divinity do nothing for damage)
+        if (ow.obj.castSeconds == null) return;
+        const own = fxOf(ow.obj).filter(function (r) { return !r.when; });
+        if (!own.some(function (r) { return ["buff", "debuff", "stack", "hit", "dot"].indexOf(r.kind) >= 0; })) return;
+        const named = own.filter(function (r) { return (r.kind === "buff" || r.kind === "debuff") && r.name && r.op !== "remove"; }).map(function (r) { return r.name; });
+        rbList.push({ kind: "mechanic", name: ow.name, ow: ow, named: named, reason: "castable mechanic: cast when ready and its effect is down" });
       });
       owners.filter(function (ow) { return isPower(ow) || ow.type === "song"; }).forEach(function (ow) {
         const ef = rbEffects(ow); if (!ef.length) return;
@@ -1131,12 +1137,14 @@
       ["encounter", "daily"].forEach(function (k) {
         owners.filter(function (ow) { return ow.type === k; }).map(function (ow) { return { ow: ow, d: rbOwnDamage(ow) }; })
           .filter(function (x) { return !(x.d <= 0 && rbEffects(x.ow).length); })   // a buff-only power is cast by its refresh entry, not for damage
+          .filter(function (x) { return (input.noDamageCast || []).indexOf(x.ow.name) < 0; })   // the search found the fight does better without casting it for damage
           .sort(function (a, b) { return b.d - a.d; })
           .forEach(function (x) { rbList.push({ kind: k, name: x.ow.name, ow: x.ow, reason: (k === "encounter" ? "encounter" : "daily") + ": strongest per cast first (" + Math.round(x.d) + ")" }); });
       });
     }
-    const rbFiller = RB ? owners.filter(function (ow) { return ow.type === "atWill"; }).map(function (ow) { const c = num(ow.obj.castSeconds, 0) || 1; return { ow: ow, mps: rbOwnDamage(ow) / c }; })
-      .sort(function (a, b) { return b.mps - a.mps; })[0] : null;
+    // the filler: input.filler (the choice search tries each at-will), else the best stored damage per second of casting
+    const rbFiller = RB ? (owners.filter(function (ow) { return ow.type === "atWill"; }).map(function (ow) { const c = num(ow.obj.castSeconds, 0) || 1; return { ow: ow, mps: rbOwnDamage(ow) / c }; })
+      .sort(function (a, b) { return (input.filler ? (b.ow.name === input.filler) - (a.ow.name === input.filler) : 0) || b.mps - a.mps; })[0] || null) : null;
     function rbRemaining(e) {   // seconds left on the effects this entry keeps up (0 = down)
       let left = Infinity;
       e.refresh.forEach(function (x) {
@@ -1165,6 +1173,7 @@
       for (let i = 0; i < rbList.length; i++) {
         const e = rbList[i];
         if (!rbReady(e) || rbHeld(e)) continue;
+        if (e.named && e.named.length && e.named.every(function (n) { return buffUp(n) && (permanentBuff[n] || buffs[n] - t > num(e.ow.obj.castSeconds, 0) + 0.5); })) continue;
         if (e.refresh) { const c = num(e.ow.obj.castSeconds, 0); if (rbRemaining(e) > c + 0.5) continue; }
         if (e.kind !== "mechanic" && e.kind !== "spender" && !isReady({ kind: e.kind, name: e.name })) { rbInvalid++; continue; }
         if (e.kind === "mechanic") return castOwner(e.ow, "mechanic");
@@ -1306,8 +1315,8 @@
       mix: { atWill: mix.atWill, encounter: mix.encounter, daily: mix.daily, other: mix.other, pct: totalMix > 0 ? { atWill: mix.atWill / totalMix * 100, encounter: mix.encounter / totalMix * 100, daily: mix.daily / totalMix * 100, other: mix.other / totalMix * 100 } : null },
       stacksAvg: avg, buffUptime: up,
       damageTotal: scoreHit ? dmgTotal : undefined, dps: scoreHit ? dmgTotal / T : undefined, damageByOwner: scoreHit ? dmgByOwner : undefined,
-      ruleBuilt: RB ? { list: rbList.map(function (e) { return { kind: e.kind, name: e.name, reason: e.reason }; }).concat(rbFiller ? [{ kind: "atWill", name: rbFiller.ow.name, reason: "filler: best at-will per second of casting" }] : []),
-        hold: { encounter: !!HOLD.encounter, daily: !!HOLD.daily }, spendAt: spenderOw ? spendAt : null, invalidCasts: rbInvalid } : undefined,
+      ruleBuilt: RB ? { list: rbList.map(function (e) { return { kind: e.kind, name: e.name, reason: e.reason }; }).concat(rbFiller ? [{ kind: "atWill", name: rbFiller.ow.name, reason: input.filler ? "filler: the at-will that gave the most damage" : "filler: best at-will per second of casting" }] : []),
+        hold: { encounter: !!HOLD.encounter, daily: !!HOLD.daily }, filler: rbFiller ? rbFiller.ow.name : null, spendAt: spenderOw ? spendAt : null, invalidCasts: rbInvalid } : undefined,
       callWindow: CW ? { windows: windows.map(function (w) { return [Math.round(w[0] * 10) / 10, Math.round(w[1] * 10) / 10]; }), magnitudeInside: magIn, magnitudeOutside: magTotal - magIn,
         damageInside: scoreHit ? dmgIn : undefined, damageOutside: scoreHit ? dmgTotal - dmgIn : undefined } : undefined, statOwnersOn: scoreHit ? Object.keys(statOwnersOn) : undefined,
       derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 },
@@ -1350,11 +1359,11 @@
     const run = function (ch) {
       const fxModes = Object.assign({}, input.modes || {});
       Object.keys(ch.modes).forEach(function (n) { const all = [].concat(kit.powers.atWill || [], kit.powers.encounter || [], kit.powers.daily || []); const p = all.find(function (x) { return x.name === n; }); if (p && p.modes[ch.modes[n]] && Array.isArray(p.modes[ch.modes[n]].fx)) fxModes[n] = ch.modes[n]; });
-      const r = simulateFx(Object.assign({}, input, { kit: kitWithModes(kit, ch.modes), hold: ch.hold, spendAt: ch.spendAt, modes: fxModes }));
+      const r = simulateFx(Object.assign({}, input, { kit: kitWithModes(kit, ch.modes), hold: ch.hold, spendAt: ch.spendAt, modes: fxModes, filler: ch.filler || null, noDamageCast: ch.skip || [] }));
       r._score = r.damageTotal != null ? r.damageTotal : r.magnitudeTotal; return r;
     };
     if (input.choices) { const r = run(input.choices); r.choices = Object.assign({ gains: [] }, input.choices); return r; }
-    const ch = { hold: {}, modes: {}, spendAt: input.spendAt != null ? input.spendAt : input.scorchAtSparks };
+    const ch = { hold: {}, modes: {}, spendAt: input.spendAt != null ? input.spendAt : input.scorchAtSparks, filler: null, skip: [] };
     let best = run(ch); const gains = [];
     const tryAll = function (label, opts, apply) {
       const base = best._score; let win = null;
@@ -1362,6 +1371,14 @@
       if (win) { Object.assign(ch, win.c); gains.push({ choice: label, picked: win.o.label, pct: base > 0 ? (best._score - base) / base * 100 : 0 }); }
       else gains.push({ choice: label, picked: opts.length ? "default" : "n/a", pct: 0 });
     };
+    const aws = (kit.powers.atWill || []).map(function (p) { return p.name; });
+    if (aws.length > 1) tryAll("at-will filler", aws.filter(function (n) { return n !== (best.ruleBuilt && best.ruleBuilt.filler); }).map(function (n) { return { label: n, n: n }; }),
+      function (o) { return Object.assign({}, ch, { filler: o.n }); });
+    // "spend cooldowns as they come up" is not always right: an encounter that comes back fast can crowd out a stronger
+    // filler. Each encounter is tried left out of the damage casts (refresh casts still happen); kept only when it gains.
+    (kit.powers.encounter || []).forEach(function (p) {
+      tryAll(p.name + " for damage", [{ label: "leave it to the filler", n: p.name }], function (o) { return Object.assign({}, ch, { skip: (ch.skip || []).concat([o.n]) }); });
+    });
     if (input.callWindow) tryAll("hold for the call", [{ label: "hold dailies", h: { daily: true } }, { label: "hold encounters", h: { encounter: true } }, { label: "hold both", h: { daily: true, encounter: true } }],
       function (o) { return Object.assign({}, ch, { hold: o.h }); });
     [].concat(kit.powers.atWill || [], kit.powers.encounter || [], kit.powers.daily || []).forEach(function (p) {
@@ -1371,7 +1388,7 @@
     const sp = (kit.mechanics || []).map(function (m) { return (m.fx || []).find(function (r) { return r.kind === "stack" && r.op === "consume" && r.min != null && !r.when; }); }).filter(Boolean)[0];
     if (sp) { const opts = []; for (let k = num(sp.min); k <= num(sp.amount, sp.min); k++) opts.push({ label: k + " " + sp.resource, k: k });
       tryAll("spend " + sp.resource + " at", opts, function (o) { return Object.assign({}, ch, { spendAt: o.k }); }); }
-    best.choices = { hold: ch.hold, modes: ch.modes, spendAt: ch.spendAt, gains: gains };
+    best.choices = { hold: ch.hold, modes: ch.modes, spendAt: ch.spendAt, filler: ch.filler, skip: ch.skip, gains: gains };
     return best;
   }
 
