@@ -43,7 +43,10 @@ the score is your own damage only. Everything stays local-only.
 |---|---|---|
 | 2.7-A | Target caps: almost none stored. | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** An area hit reaches every enemy up to the slider; the 4 caps named in power text apply (Ballad of the Witch 3, Oath Strike 3, Steel Breeze 5, Shuriken Toss 3). With the slider above 1 the confidence line lists "target cap unknown" for each area power in the kit. |
 | 2.7-B | Mixed powers: how much lands on the extra enemies? (The 11 untagged powers deal no damage; 10 mixed once paragon copies merge.) | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Mixed powers with split records (Storm Strike, Shuriken Toss, Vengeance's Pursuit, Chilling Cloud) follow each record's tag. The 6 with one total magnitude (Savage Advance, Contre, Guardian of Faith, Fox Shift, Killing Storm, Eldritch Blast) count as single-target, the guaranteed minimum; with the slider above 1 the confidence line lists each as "area share unknown". |
-| 2.7-C | Which hits does a debuff boost when there are several enemies? | Open. |
+| 2.7-C | Which hits does a debuff boost when there are several enemies? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Only the hits on the enemies it landed on. A class debuff follows its power's tag (area power: every enemy it hits; single: the main target); a feature / feat debuff (no tag) covers the main target; artifact call debuffs get the tag their text gives (24 area, 6 single: a small data addition shown as a dry run before apply); mount power debuffs cover the main target until captured. At 1 enemy nothing changes. |
+
+**Gap list complete 2026-10-06.** Rescan: per-target procs and stacks already run per landed hit; damage over time
+records follow the same per-enemy rule as hits; echoes stay on the main target unless their record says others.
 
 ## Build order (one commit each, local only)
 
