@@ -632,6 +632,16 @@
     // PT2 step 2.4: per-hit damage. input.scoreHit(mag, hit, active) -> damage; without it nothing below runs.
     const scoreHit = typeof input.scoreHit === "function" ? input.scoreHit : null;
     let dmgTotal = 0; const dmgByOwner = {};
+    // PT2 step 2.5: the fight script's call window. input.callWindow {every, seconds}: the first window opens when the
+    // first full rotation ends, then one every `every` s. At the window start the call fires: input.call.artifact
+    // (its callFx, when off cooldown) and input.call.mount (its records, when off cooldown); input.call.triggered are
+    // records fired by the artifact / mount power / daily (insignia bonuses, 2.5-D). Without callWindow: unchanged.
+    const CW = input.callWindow || null, CALL = input.call || {};
+    const windows = [];
+    let nextWindowAt = null, callArtReady = 0, callMountReady = 0, dmgIn = 0, magIn = 0;
+    let pendArt = false, pendMount = false;   // the call waits inside its window for a cooldown that is a moment late
+    const trigLast = {};
+    function inWindow() { for (let i = windows.length - 1; i >= 0; i--) if (t >= windows[i][0] - 1e-9 && t < windows[i][1]) return true; return false; }
     const statUp = new Map();   // key -> {rec, until, f}: timed buff / debuff records carrying stats, while up
     const statOwnersOn = {};    // owners whose stat records were on at least once (2.4-G: the rest are listed)
     const timeline = []; const TIMELINE_MAX = 80;
@@ -657,7 +667,8 @@
     function addEcho(name, m, d) {
       if (!(m > 0)) return;
       magTotal += m; bySource[name] = (bySource[name] || 0) + m; byOwner[name] = (byOwner[name] || 0) + m; mix.other += m;
-      if (scoreHit && d > 0) { dmgTotal += d; dmgByOwner[name] = (dmgByOwner[name] || 0) + d; }
+      if (CW && inWindow()) magIn += m;
+      if (scoreHit && d > 0) { dmgTotal += d; dmgByOwner[name] = (dmgByOwner[name] || 0) + d; if (CW && inWindow()) dmgIn += d; }
     }
     // ---- stat records (buffs and debuffs with stats) ----
     // timed (seconds) or triggered: counted while up, from the moment they are applied;
@@ -698,7 +709,7 @@
         damageType: (rec && rec.damageType) || tg.damageType || (ow.obj && ow.obj.damageType) || null,
         targets: (rec && rec.targets) || tg.targets || null, isTick: !!isTick, offMain: !!offMain, proc: !!ow.proc };
       const d = scoreHit(m, hit, activeStats(hit, ow));
-      if (d > 0) { dmgTotal += d; dmgByOwner[ow.name] = (dmgByOwner[ow.name] || 0) + d; }
+      if (d > 0) { dmgTotal += d; dmgByOwner[ow.name] = (dmgByOwner[ow.name] || 0) + d; if (CW && inWindow()) dmgIn += d; }
       return d;
     }
     function land(ow, recName, mag, isTick, offMain, rec) {
@@ -713,7 +724,7 @@
         }
       }
       if (m > 0) {
-        magTotal += m;
+        magTotal += m; if (CW && inWindow()) magIn += m;
         const label = recName && recName !== ow.name ? ow.name + " · " + recName : ow.name;
         bySource[label] = (bySource[label] || 0) + m; byOwner[ow.name] = (byOwner[ow.name] || 0) + m;
         mix[mixKind(ow)] += m;
@@ -946,7 +957,7 @@
       if (s) s.lastUse = t;
       if (kind === "encounter") { const cd = cdSeconds(p, s); const n = chargesOf(p); while (s.ready.length < n) s.ready.push(0); s.ready.sort(function (a, b) { return a - b; }); s.ready[0] = t + cd; }
       else if (kind === "mechanic") { s.ready = [t + num(p.cooldownSeconds, 0)]; }
-      else if (kind === "daily") { ap -= num(p.actionPointCost, 1000); if (num(p.cooldownSeconds, 0) > 0) s.ready = [t + num(p.cooldownSeconds)]; }
+      else if (kind === "daily") { ap -= num(p.actionPointCost, 1000); if (num(p.cooldownSeconds, 0) > 0) s.ready = [t + num(p.cooldownSeconds)]; if (CW) callTrigger("daily"); }
       pushTimeline(p.name, kind === "spender" ? "encounter" : kind, total, kind === "spender" ? Object.keys(spent).map(function (k) { return spent[k] + " " + k; }).join(", ") : "");
       return true;
     }
@@ -1003,8 +1014,8 @@
       if (step.kind === "mechanic") return mechReady(mechOw(step.name));
       if (step.kind === "song") return !!owOf("song", step.name) && !buffUp(step.name);
       if (step.kind === "scorch") return spenderReady();
-      if (step.kind === "artifact") return t >= artifactReady;
-      if (step.kind === "mount") return t >= mountReady;
+      if (step.kind === "artifact") return !CW && t >= artifactReady;
+      if (step.kind === "mount") return !CW && t >= mountReady;
       const ow = owOf(step.kind, step.name); if (!ow) return false;
       if (step.kind === "atWill") return true;
       if (step.kind === "encounter") {
@@ -1020,8 +1031,8 @@
       if (step.kind === "scorch") return spenderReady() ? 0 : Infinity;
       if (step.kind === "mechanic") return mechReady(mechOw(step.name)) ? 0 : Infinity;
       if (step.kind === "song") return !owOf("song", step.name) ? Infinity : (!buffUp(step.name) ? 0 : (permanentBuff[step.name] ? Infinity : Math.max(0, buffs[step.name] - t)));
-      if (step.kind === "artifact") return Math.max(0, artifactReady - t);
-      if (step.kind === "mount") return Math.max(0, mountReady - t);
+      if (step.kind === "artifact") return CW ? Infinity : Math.max(0, artifactReady - t);
+      if (step.kind === "mount") return CW ? Infinity : Math.max(0, mountReady - t);
       const ow = owOf(step.kind, step.name); if (!ow) return Infinity;
       if (step.kind === "encounter") {
         if (!castUseful(ow)) return Infinity;
@@ -1047,6 +1058,37 @@
       const d = defaultSteps(powers).find(function (x) { return x.kind === "atWill"; }); return d || null;
     })();
 
+    function callTrigger(on) {
+      (CALL.triggered || []).forEach(function (x, i) {
+        if (x.on !== on || !x.rec) return;
+        if (x.icdSeconds && trigLast[i] != null && t - trigLast[i] < num(x.icdSeconds)) return;
+        trigLast[i] = t;
+        runRecord({ obj: { name: x.name, fx: [x.rec] }, type: "insignia", name: x.name }, x.rec, {}, t);
+      });
+    }
+    function callFire(c, type, label, trig) {
+      const ow = { obj: { name: c.name, fx: c.fx || [] }, type: type, name: c.name };
+      (c.fx || []).filter(function (r) { return recOn(r, ow.obj); }).forEach(function (r) { runRecord(ow, r, {}, t); });
+      castCount[c.name] = (castCount[c.name] || 0) + 1;
+      pushTimeline(c.name, "other", 0, label);
+      callTrigger(trig);
+    }
+    function openWindow() {
+      const len = num(CW.seconds, 10);
+      windows.push([t, t + len]);
+      pushTimeline("Call window", "other", 0, len + " s");
+      pendArt = !!CALL.artifact; pendMount = !!CALL.mount;
+      const busy = callPending();
+      while (nextWindowAt <= t) nextWindowAt += Math.max(1, num(CW.every, 60));
+      busyUntil = t + Math.max(dt, busy);
+    }
+    // fire whatever part of the call is off cooldown; inside the window it keeps waiting for the rest
+    function callPending() {
+      let busy = 0;
+      if (pendArt && t >= callArtReady) { callFire(CALL.artifact, "artifact", "artifact call", "artifact"); callArtReady = t + num(CALL.artifact.cooldown, 60); pendArt = false; busy += 0.5; }
+      if (pendMount && t >= callMountReady) { callFire(CALL.mount, "mount", "mount combat power", "mountpower"); callMountReady = t + num(CALL.mount.cooldown, 60); pendMount = false; busy += 0.5; }
+      return busy;
+    }
     buildListeners();
     if (scoreHit || input.liveRecharge) owners.forEach(function (ow) { fxOf(ow.obj).forEach(function (r) {
       if ((r.kind === "buff" || r.kind === "debuff") && (r.stats || r.ratingStats) && r.seconds == null && r.gate && !r.when && r.op !== "remove") condStatRecs.push({ rec: r, owner: ow.name });
@@ -1096,12 +1138,18 @@
         if (L.nextAt == null) L.nextAt = num(w.every, 1);
         if (t >= L.nextAt) { L.nextAt = t + num(w.every, 1); if (gateFrac(L.rec.gate) > 0) runPeriodic(L); }
       }
+      if (CW && nextWindowAt == null && (firstCycleEnd != null || t >= num(CW.every, 60))) nextWindowAt = firstCycleEnd != null ? firstCycleEnd : t;
       if (t >= busyUntil) {
         let acted = false;
         const cur = curList();
-        if (spenderOw && !listedIn(cur, "scorch") && stackCount(spenderOw.spender.resource) >= spendAt) acted = castOwner(spenderOw, "spender");
-        if (!acted && !listedIn(cur, "artifact") && input.artifactName && t >= artifactReady) acted = castStep({ kind: "artifact", name: input.artifactName });
-        if (!acted && !listedIn(cur, "mount") && input.mountName && t >= mountReady) acted = castStep({ kind: "mount", name: input.mountName });
+        if (CW && nextWindowAt != null && t >= nextWindowAt) { openWindow(); acted = true; }
+        else if (CW && (pendArt || pendMount)) {
+          if (!inWindow()) { pendArt = false; pendMount = false; }   // still on cooldown when the window closed: skipped this call
+          else { const b = callPending(); if (b > 0) { busyUntil = t + b; acted = true; } }
+        }
+        if (!acted && spenderOw && !listedIn(cur, "scorch") && stackCount(spenderOw.spender.resource) >= spendAt) acted = castOwner(spenderOw, "spender");
+        if (!acted && !CW && !listedIn(cur, "artifact") && input.artifactName && t >= artifactReady) acted = castStep({ kind: "artifact", name: input.artifactName });
+        if (!acted && !CW && !listedIn(cur, "mount") && input.mountName && t >= mountReady) acted = castStep({ kind: "mount", name: input.mountName });
         if (!acted) for (let di = 0; di < powers.daily.length && !acted; di++) { const dp = powers.daily[di]; const ds = { kind: "daily", name: dp.name }; if (!listedIn(cur, "daily", dp.name) && isReady(ds)) acted = castStep(ds); }
         if (!acted) {
           let guard = 0;
@@ -1140,7 +1188,9 @@
       casts: castCount, bySource: bySource, byOwner: byOwner, timeline: timeline, firstCycleEnd: firstCycleEnd, cycles: cyclesDone,
       mix: { atWill: mix.atWill, encounter: mix.encounter, daily: mix.daily, other: mix.other, pct: totalMix > 0 ? { atWill: mix.atWill / totalMix * 100, encounter: mix.encounter / totalMix * 100, daily: mix.daily / totalMix * 100, other: mix.other / totalMix * 100 } : null },
       stacksAvg: avg, buffUptime: up,
-      damageTotal: scoreHit ? dmgTotal : undefined, dps: scoreHit ? dmgTotal / T : undefined, damageByOwner: scoreHit ? dmgByOwner : undefined, statOwnersOn: scoreHit ? Object.keys(statOwnersOn) : undefined,
+      damageTotal: scoreHit ? dmgTotal : undefined, dps: scoreHit ? dmgTotal / T : undefined, damageByOwner: scoreHit ? dmgByOwner : undefined,
+      callWindow: CW ? { windows: windows.map(function (w) { return [Math.round(w[0] * 10) / 10, Math.round(w[1] * 10) / 10]; }), magnitudeInside: magIn, magnitudeOutside: magTotal - magIn,
+        damageInside: scoreHit ? dmgIn : undefined, damageOutside: scoreHit ? dmgTotal - dmgIn : undefined } : undefined, statOwnersOn: scoreHit ? Object.keys(statOwnersOn) : undefined,
       derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 },
       trace: input.trace ? traceRows : undefined
     };
