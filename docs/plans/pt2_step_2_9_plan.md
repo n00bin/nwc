@@ -50,7 +50,7 @@ the peak, scoring uses the simulated value). Everything stays local-only until t
 
 | Gap | Question | Recommended |
 |---|---|---|
-| 2.9-A | Bard songs: which songs can the simulator play? | Open. |
+| 2.9-A | Bard songs: which songs can the simulator play? | **LOCKED 2026-10-06 (n00b: "we have tagged everything so everything that can and can not already holds a tag") = Recommended, availability from the tags.** Every song in the paragon's `powers.songs` list is playable (no slot count in the data); `requiresFeat` gates the Reprised Carols (Gambler); `tags.songType` (ballad / elemental / heal / utility) tells the rule-built rotation what each does; songs whose value is healing or utility do nothing for the damage score. The search tries each elemental song and each ballad and keeps the best. The old "active song" picker retires for Bards on the fx simulator; the `songsActive` class input becomes a simulated build state for scoring (the snapshot view keeps its value). |
 | 2.9-B | Quick play: who decides which song sits in the quick play slot? | Open. |
 | 2.9-C | Spell Mastery: who picks the encounter in the slot? | Open. |
 
