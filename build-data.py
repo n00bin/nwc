@@ -65,7 +65,7 @@ FX_KINDS = {
     "cooldown": {"targets", "op", "seconds", "pct"},
     "proc":     {"effects", "name"},
     "control":  {"control", "seconds", "perStack", "targets", "name"},
-    "heal":     {"magnitude", "pctMaxHp", "pctOfDamage", "scope", "seconds", "perTick", "name"},
+    "heal":     {"magnitude", "pctMaxHp", "pctOfDamage", "pctOfHealed", "scope", "seconds", "perTick", "name"},
     "shield":   {"magnitude", "pctMaxHp", "pctOfHealed", "scope", "seconds", "name"},
     "mod":      {"target", "field", "op", "value", "addFx"},
     "echo":     {"pct", "seconds", "deliver", "targets", "name"},
