@@ -439,8 +439,12 @@
     (kit.feats || []).forEach(function (f) { if (f && f.name) featOn[f.name] = true; });
     (kit.features || []).concat(kit.always || []).forEach(function (f) { if (f && f.name) featureOn[f.name] = true; });
     const powers = { atWill: (kit.powers && kit.powers.atWill) || [], encounter: (kit.powers && kit.powers.encounter) || [], daily: (kit.powers && kit.powers.daily) || [] };
+    const songs = (kit.songs || []).filter(function (p) { return p && p.name; });
+    // songs in a quick play slot (n00b 2026-10-06: Songblade 1, Minstrel 2) skip the "not in a quick play slot" bonuses
+    const quickplay = Array.isArray(input.quickplay) ? input.quickplay : [];
     const byName = {};
     ["atWill", "encounter", "daily"].forEach(function (k) { powers[k].forEach(function (p) { byName[k + ":" + p.name] = p; }); });
+    songs.forEach(function (p) { byName["song:" + p.name] = p; });
 
     // ---- record filters ----
     function recOn(r, owner) {
@@ -467,6 +471,7 @@
     (kit.features || []).forEach(function (o) { if (o && o.name) owners.push({ obj: o, type: "feature", name: o.name }); });
     (kit.feats || []).forEach(function (o) { if (o && o.name) owners.push({ obj: o, type: "feat", name: o.name }); });
     ["atWill", "encounter", "daily"].forEach(function (k) { powers[k].forEach(function (p) { owners.push({ obj: p, type: k, name: p.name }); }); });
+    songs.forEach(function (p) { owners.push({ obj: p, type: "song", name: p.name }); });
 
     // ---- mods (feats / features / mechanics / powers change other owners) ----
     const mods = [];
@@ -483,6 +488,7 @@
       if (f.element && !oneOf(f.element, tg.element)) return false;
       if (f.hasControl && !(Array.isArray(tg.control) && tg.control.length)) return false;
       if (f.damageType && !oneOf(f.damageType, tg.damageType || (ow.obj && ow.obj.damageType))) return false;
+      if (f.manual && quickplay.indexOf(ow.name) >= 0) return false;
       return true;
     }
     function modsFor(ow) {
@@ -571,6 +577,7 @@
       if (key.indexOf("stack:") === 0) return stackCount(key.slice(6));
       if (key.indexOf("buff:") === 0) return buffUp(key.slice(5)) ? 1 : 0;
       if (key.indexOf("pick:") === 0) { const ps = key.split(":"); return picks[ps[1]] === ps[2] ? 1 : 0; }
+      if (key.indexOf("quickplay:") === 0) return quickplay.indexOf(key.slice(10)) >= 0 ? 1 : 0;
       if (key === "enemyHealthPct") return enemyHp;
       if (key === "enemyCount") return num(input.enemyCount, 1);
       if (key === "otherEnemies") return Math.max(0, num(input.enemyCount, 1) - 1);
@@ -877,7 +884,7 @@
           total += scheduleDamage(ow, r, castEnd, spent, mo);
         });
       }
-      else total = scheduleTopLevel({ obj: p, type: ow.type, name: ow.name, spender: ow.spender }, kind, castSec, e.mainMods, s);
+      else if (kind !== "song") total = scheduleTopLevel({ obj: p, type: ow.type, name: ow.name, spender: ow.spender }, kind, castSec, e.mainMods, s);
       live.forEach(function (r) { if (r.kind !== "hit" && r.kind !== "dot" && !(r.kind === "stack" && r.op === "consume")) runRecord(ow, r, spent, castEnd, true); });
       if (s) s.lastUse = t;
       if (kind === "encounter") { const cd = cdSeconds(p, s); const n = chargesOf(p); while (s.ready.length < n) s.ready.push(0); s.ready.sort(function (a, b) { return a - b; }); s.ready[0] = t + cd; }
@@ -896,6 +903,7 @@
       if (pm.count > 1) {
         const ch = num(p.channelSeconds, 0) > 0, sec = ch ? num(p.channelSeconds) : (num(p.durationSeconds, 0) || castSec);
         const per = applyMain(pm.per);
+        if (per <= 0) return 0;
         for (let i = 1; i <= pm.count; i++) schedule(t + (ch ? 0 : castSec) + sec * i / pm.count, function () { land(ow, ow.name, per, false); });
         return per * pm.count;
       }
@@ -936,6 +944,7 @@
     }
     function isReady(step) {
       if (step.kind === "mechanic") return mechReady(mechOw(step.name));
+      if (step.kind === "song") return !!owOf("song", step.name) && !buffUp(step.name);
       if (step.kind === "scorch") return spenderReady();
       if (step.kind === "artifact") return t >= artifactReady;
       if (step.kind === "mount") return t >= mountReady;
@@ -953,6 +962,7 @@
       if (step.kind === "atWill") return 0;
       if (step.kind === "scorch") return spenderReady() ? 0 : Infinity;
       if (step.kind === "mechanic") return mechReady(mechOw(step.name)) ? 0 : Infinity;
+      if (step.kind === "song") return !owOf("song", step.name) ? Infinity : (!buffUp(step.name) ? 0 : (permanentBuff[step.name] ? Infinity : Math.max(0, buffs[step.name] - t)));
       if (step.kind === "artifact") return Math.max(0, artifactReady - t);
       if (step.kind === "mount") return Math.max(0, mountReady - t);
       const ow = owOf(step.kind, step.name); if (!ow) return Infinity;
