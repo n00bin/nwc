@@ -494,6 +494,7 @@
         return false;
       });
     }
+    function asProc(ow) { return ow.proc ? ow : Object.assign({}, ow, { proc: true }); }
     function isPower(ow) { return ow.type === "atWill" || ow.type === "encounter" || ow.type === "daily"; }
     // record-targeted value mods, read at the moment a listener fires
     function withRecMods(ow, r) {
@@ -593,6 +594,7 @@
         const x = num(g.value, 0);
         f = (g.op === "<=" ? v <= x : g.op === ">=" ? v >= x : g.op === "<" ? v < x : g.op === ">" ? v > x : g.op === "==" ? v === x : v > 0) ? 1 : 0;
       } else if (g.shape === "count") f = Math.min(num(g.maxUnits, 1), v) * num(g.perUnit, 0);
+      else if (g.shape === "dutyCycle" && g.uptime != null) f = num(g.uptime);   // a ruled uptime share (e.g. Divine Champion 50%)
       return g.invert ? (f > 0 ? 0 : 1) : f;
     }
 
@@ -771,6 +773,9 @@
     // ---- events ----
     function fromMatch(L, ctx) {
       const w = L.rec.when, f = w.from;
+      // a hit made by a proc / triggered record never triggers effects that filter by power type (no chains);
+      // a listener that names the owner (Dark Prayers: Soul Puppet) still sees it
+      if (ctx.ow && ctx.ow.proc && !(f && f.names && !f.type && !f.tags && !f.element && !f.hasControl)) return false;
       if (!f) {
         if (L.ow.type === "atWill" || L.ow.type === "encounter" || L.ow.type === "daily") return ctx.ow && ctx.ow.name === L.ow.name && ctx.ow.type === L.ow.type;
         return ctx.ow && ["atWill", "encounter", "daily", "mechanic"].indexOf(ctx.ow.type) >= 0;   // your powers; pets and procs only by name
@@ -786,14 +791,14 @@
           if (w.name && ctx.recName !== w.name) continue;
         }
         if ((ev === "stackApplied" || ev === "stackRemoved") && w.resource !== ctx.resource) continue;
-        if (ev === "stackApplied" && w.every) { const times = Math.floor(num(ctx.amount, 1) / num(w.every)); for (let k = 0; k < times; k++) runRecord(L.ow, withRecMods(L.ow, L.rec), null, null); continue; }
+        if (ev === "stackApplied" && w.every) { const times = Math.floor(num(ctx.amount, 1) / num(w.every)); for (let k = 0; k < times; k++) runRecord(asProc(L.ow), withRecMods(L.ow, L.rec), null, null); continue; }
         if ((ev === "buffRefreshed" || ev === "buffApplied" || ev === "buffEnded") && w.name !== ctx.name) continue;
         if (ev === "stackSpent") {
           if (w.resource !== ctx.resource) continue;
           const every = num(w.every, 1); const times = Math.floor(num(ctx.amount) / every);
           if (times <= 0) continue;
           if (L.rec.kind === "cooldown") { if (gateFrac(L.rec.gate) > 0) applyCooldown(L.rec, times); continue; }
-          for (let k = 0; k < times; k++) runRecord(L.ow, withRecMods(L.ow, L.rec), null, null);
+          for (let k = 0; k < times; k++) runRecord(asProc(L.ow), withRecMods(L.ow, L.rec), null, null);
           continue;
         }
         if (w.every && (ev === "hit" || ev === "dotTick")) { L.count++; if (L.count % num(w.every) !== 0) continue; }
@@ -802,7 +807,7 @@
         if (chance <= 0) continue;
         L.lastFire = t;
         if (chance < 1) continue;   // step 2.6: expected-value procs; fight facts that drive chance events are off by default
-        runRecord(L.ow, withRecMods(L.ow, L.rec), null, null);
+        runRecord(asProc(L.ow), withRecMods(L.ow, L.rec), null, null);
       }
     }
     function fireCast(ow) {
@@ -816,7 +821,7 @@
         if (chance <= 0) continue;
         L.lastFire = t;
         if (chance < 1) continue;   // step 2.6: expected-value procs
-        runRecord(L.ow, withRecMods(L.ow, L.rec), null, null);
+        runRecord(asProc(L.ow), withRecMods(L.ow, L.rec), null, null);
       }
     }
 
@@ -1048,8 +1053,8 @@
     flushEvents();
     function runPeriodic(L) {
       const r = withRecMods(L.ow, L.rec);
-      if (r.kind === "hit") { land(L.ow, r.name || L.ow.name, num(r.magnitude, 0), false); return; }
-      runRecord(L.ow, r, null, null);
+      if (r.kind === "hit") { land(asProc(L.ow), r.name || L.ow.name, num(r.magnitude, 0) * (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate)) ? gateFrac(r.gate) : 1), false); return; }
+      runRecord(asProc(L.ow), r, null, null);
     }
 
     const avg = {}; Object.keys(stackTimeSum).forEach(function (n) { avg[n] = stackTimeSum[n] / T; });

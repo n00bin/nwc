@@ -161,4 +161,7 @@ The step 2.3 parity check must show exactly these differences and nothing else.
 - Smite magnitude at full / half / low Divinity (the scaling curve).
 - Valorous / Oath / Shielding Strike: per hit or per cast?
 
+## Stack rules
+
+
 Records: 76. Validator: PASS.
