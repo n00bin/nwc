@@ -956,6 +956,7 @@
       busyUntil = t + Math.max(0.1, castSec);
       const castEnd = t + castSec;
       castCount[p.name] = (castCount[p.name] || 0) + 1;
+      if (RB && firstCycleEnd === null && powers.encounter.every(function (e) { return castCount[e.name] > 0; })) firstCycleEnd = t;
       const s = kind === "spender" ? null : pst(kind + ":" + ow.name);
       if (s) { s.uses++; }
       // 1. gates read now (records are built with this moment's state)
@@ -1093,6 +1094,86 @@
       const d = defaultSteps(powers).find(function (x) { return x.kind === "atWill"; }); return d || null;
     })();
 
+    // ===== PT2 step 2.8: rule-built rotation (input.ruleBuilt; locks 2.8-A/B) =====
+    // A priority list built from the records, no names in code: castable mechanics, then refreshers (powers whose own
+    // records put up a timed buff / debuff / stack: cast when it is down or about to drop), the spender, encounters and
+    // dailies strongest per cast first, the best at-will as filler. At every free moment the first entry that is ready
+    // and useful casts. input.hold {encounter, daily}: outside the call window a power waits when casting it now would
+    // leave it still cooling down (an encounter) or the Action Point bar not refilled (a daily) when the window opens.
+    const RB = !!input.ruleBuilt;
+    const HOLD = input.hold || {};
+    let rbInvalid = 0;
+    function rbOwnDamage(ow) {
+      const recs = fxOf(ow.obj).filter(function (r) { return (r.kind === "hit" || r.kind === "dot") && !r.when; });
+      if (!recs.length) return num(powerMagnitude(ow.obj, enemyHp), 0);
+      return recs.reduce(function (a, r) { return a + (r.kind === "dot" ? (r.perTick != null ? num(r.perTick) * Math.max(1, num(r.ticks, 1)) : num(r.magnitude, 0)) : num(r.magnitude, 0) * Math.max(1, num(r.count, 1))); }, 0);
+    }
+    function rbEffects(ow) {   // what a cast of this owner puts up and keeps up (timed)
+      const out = [];
+      fxOf(ow.obj).forEach(function (r) {
+        if (r.when || r.op === "remove") return;
+        if ((r.kind === "buff" || r.kind === "debuff") && r.seconds != null && (r.stats || r.ratingStats || r.name)) out.push({ rec: r, name: r.name || null });
+        if (r.kind === "stack" && (r.op === "add" || r.op === "set") && (r.seconds != null || (rules[r.resource] && rules[r.resource].seconds != null))) out.push({ stack: r.resource });
+      });
+      return out;
+    }
+    const rbList = [];
+    if (RB) {
+      owners.forEach(function (ow) {
+        if (ow.type !== "mechanic" || ow === spenderOw) return;
+        if (fxOf(ow.obj).some(function (r) { return !r.when; })) rbList.push({ kind: "mechanic", name: ow.name, ow: ow, reason: "castable mechanic: cast when ready and useful" });
+      });
+      owners.filter(function (ow) { return isPower(ow) || ow.type === "song"; }).forEach(function (ow) {
+        const ef = rbEffects(ow); if (!ef.length) return;
+        rbList.push({ kind: ow.type, name: ow.name, ow: ow, refresh: ef, reason: "keeps its buff / debuff / stacks up: cast when down or about to drop" });
+      });
+      if (spenderOw) rbList.push({ kind: "spender", name: spenderOw.name, ow: spenderOw, reason: "spender: at " + spendAt + " " + spenderOw.spender.resource });
+      ["encounter", "daily"].forEach(function (k) {
+        owners.filter(function (ow) { return ow.type === k; }).map(function (ow) { return { ow: ow, d: rbOwnDamage(ow) }; })
+          .filter(function (x) { return !(x.d <= 0 && rbEffects(x.ow).length); })   // a buff-only power is cast by its refresh entry, not for damage
+          .sort(function (a, b) { return b.d - a.d; })
+          .forEach(function (x) { rbList.push({ kind: k, name: x.ow.name, ow: x.ow, reason: (k === "encounter" ? "encounter" : "daily") + ": strongest per cast first (" + Math.round(x.d) + ")" }); });
+      });
+    }
+    const rbFiller = RB ? owners.filter(function (ow) { return ow.type === "atWill"; }).map(function (ow) { const c = num(ow.obj.castSeconds, 0) || 1; return { ow: ow, mps: rbOwnDamage(ow) / c }; })
+      .sort(function (a, b) { return b.mps - a.mps; })[0] : null;
+    function rbRemaining(e) {   // seconds left on the effects this entry keeps up (0 = down)
+      let left = Infinity;
+      e.refresh.forEach(function (x) {
+        let l = 0;
+        if (x.stack) { const sk = stk(x.stack); sk.timers = sk.timers.filter(function (y) { return y > t; }); l = sk.timers.length ? Math.max.apply(null, sk.timers) - t : 0; }
+        else if (x.name && buffs[x.name] != null) l = buffUp(x.name) ? (permanentBuff[x.name] ? 1e9 : buffs[x.name] - t) : 0;
+        else { statUp.forEach(function (v) { if (v.owner === e.name && v.rec === x.rec || (v.owner === e.name && JSON.stringify(v.rec.stats) === JSON.stringify(x.rec.stats))) l = Math.max(l, v.until - t); }); }
+        left = Math.min(left, l);
+      });
+      return left === Infinity ? 0 : left;
+    }
+    function rbReady(e) {
+      if (e.kind === "mechanic") return mechReady(e.ow);
+      if (e.kind === "spender") return stackCount(spenderOw.spender.resource) >= spendAt && spenderReady();
+      if (e.kind === "atWill") return true;
+      return isReady({ kind: e.kind, name: e.name });
+    }
+    function rbHeld(e) {
+      if (!CW || nextWindowAt == null || inWindow()) return false;
+      const W = nextWindowAt - t; if (W <= 0) return false;
+      if (e.kind === "encounter" && HOLD.encounter) return W < cdSeconds(e.ow.obj, pst("encounter:" + e.name));
+      if (e.kind === "daily" && HOLD.daily) return W < num(e.ow.obj.actionPointCost, 1000) / Math.max(1, AP_PER_SEC);
+      return false;
+    }
+    function rbAct() {
+      for (let i = 0; i < rbList.length; i++) {
+        const e = rbList[i];
+        if (!rbReady(e) || rbHeld(e)) continue;
+        if (e.refresh) { const c = num(e.ow.obj.castSeconds, 0); if (rbRemaining(e) > c + 0.5) continue; }
+        if (e.kind !== "mechanic" && e.kind !== "spender" && !isReady({ kind: e.kind, name: e.name })) { rbInvalid++; continue; }
+        if (e.kind === "mechanic") return castOwner(e.ow, "mechanic");
+        if (e.kind === "spender") return castOwner(spenderOw, "spender");
+        return castStep({ kind: e.kind, name: e.name });
+      }
+      if (rbFiller) return castOwner(rbFiller.ow, "atWill");
+      busyUntil = t + dt; return false;
+    }
     function callTrigger(on) {
       (CALL.triggered || []).forEach(function (x, i) {
         if (x.on !== on || !x.rec) return;
@@ -1182,6 +1263,7 @@
           if (!inWindow()) { pendArt = false; pendMount = false; }   // still on cooldown when the window closed: skipped this call
           else { const b = callPending(); if (b > 0) { busyUntil = t + b; acted = true; } }
         }
+        if (!acted && RB) { rbAct(); acted = true; }
         if (!acted && spenderOw && !listedIn(cur, "scorch") && stackCount(spenderOw.spender.resource) >= spendAt) acted = castOwner(spenderOw, "spender");
         if (!acted && !CW && !listedIn(cur, "artifact") && input.artifactName && t >= artifactReady) acted = castStep({ kind: "artifact", name: input.artifactName });
         if (!acted && !CW && !listedIn(cur, "mount") && input.mountName && t >= mountReady) acted = castStep({ kind: "mount", name: input.mountName });
@@ -1219,11 +1301,13 @@
     const up = {}; Object.keys(buffTime).forEach(function (n) { up[n] = Math.min(1, buffTime[n] / T); });
     const totalMix = mix.atWill + mix.encounter + mix.daily + mix.other;
     return {
-      engine: "fx", fightSeconds: T, mps: magTotal / T, magnitudeTotal: magTotal, defaultOrderUsed: defaultOrderUsed, steps: loop, opener: opener, loop: loop,
+      engine: "fx", fightSeconds: T, mps: magTotal / T, magnitudeTotal: magTotal, defaultOrderUsed: defaultOrderUsed && !RB, steps: loop, opener: opener, loop: loop,
       casts: castCount, bySource: bySource, byOwner: byOwner, timeline: timeline, firstCycleEnd: firstCycleEnd, cycles: cyclesDone,
       mix: { atWill: mix.atWill, encounter: mix.encounter, daily: mix.daily, other: mix.other, pct: totalMix > 0 ? { atWill: mix.atWill / totalMix * 100, encounter: mix.encounter / totalMix * 100, daily: mix.daily / totalMix * 100, other: mix.other / totalMix * 100 } : null },
       stacksAvg: avg, buffUptime: up,
       damageTotal: scoreHit ? dmgTotal : undefined, dps: scoreHit ? dmgTotal / T : undefined, damageByOwner: scoreHit ? dmgByOwner : undefined,
+      ruleBuilt: RB ? { list: rbList.map(function (e) { return { kind: e.kind, name: e.name, reason: e.reason }; }).concat(rbFiller ? [{ kind: "atWill", name: rbFiller.ow.name, reason: "filler: best at-will per second of casting" }] : []),
+        hold: { encounter: !!HOLD.encounter, daily: !!HOLD.daily }, spendAt: spenderOw ? spendAt : null, invalidCasts: rbInvalid } : undefined,
       callWindow: CW ? { windows: windows.map(function (w) { return [Math.round(w[0] * 10) / 10, Math.round(w[1] * 10) / 10]; }), magnitudeInside: magIn, magnitudeOutside: magTotal - magIn,
         damageInside: scoreHit ? dmgIn : undefined, damageOutside: scoreHit ? dmgTotal - dmgIn : undefined } : undefined, statOwnersOn: scoreHit ? Object.keys(statOwnersOn) : undefined,
       derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 },
@@ -1231,7 +1315,67 @@
     };
   }
 
-  const api = { simulate: simulate, simulateFx: simulateFx, defaultSteps: defaultSteps, powerMagnitude: powerMagnitude, parseMag: parseMag, VERSION: "2026-09-11a" };
+  // ===== PT2 step 2.8: the rule-built rotation's choices (locks 2.8-B/C/D) =====
+  // With input.ruleBuilt, try the choices one after another and keep the most total fight damage (magnitude when no
+  // scorer): hold for the call window (none / dailies / encounters / both), each player-choice mode (tap or full charge,
+  // Contre stances, early or enhanced detonation, melee or ranged), the spender's stack count (its minimum to the most it
+  // spends). input.choices {hold, modes, spendAt} skips the search and runs those. result.choices says what won and by how much.
+  const MODE_META = { keyedOn: 1, "default": 1, autoDetonateSeconds: 1, base: 1, stealth: 1, behind: 1, spellMastery: 1 };
+  function choiceModes(p) {
+    const m = p && p.modes; if (!m || typeof m !== "object" || m.keyedOn === "activeSong") return null;
+    const names = Object.keys(m).filter(function (k) { return !MODE_META[k] && m[k] && typeof m[k] === "object" && (m[k].magnitude != null || Array.isArray(m[k].fx)); });
+    return names.length > 1 ? names : null;
+  }
+  function withMode(p, name) {
+    const md = p.modes[name]; if (Array.isArray(md.fx)) return p;   // fx modes (melee / ranged) go through input.modes
+    const c = Object.assign({}, p);
+    if (md.castSeconds != null) c.castSeconds = md.castSeconds;   // a mode with no cast time of its own keeps the power's (guaranteed minimum)
+    const hits = (p.fx || []).filter(function (r) { return r.kind === "hit" && !r.when; });
+    if (hits.length) {
+      const first = hits[0];
+      c.fx = p.fx.map(function (r) { return r === first ? Object.assign({}, r, { magnitude: md.magnitude, targets: md.targets || r.targets, delaySeconds: num(r.delaySeconds, 0) + num(md.waitSeconds, 0) }) : r; });
+    } else {
+      c.magnitude = md.magnitude;
+      if (md.targets) c.tags = Object.assign({}, p.tags || {}, { targets: md.targets });
+    }
+    return c;
+  }
+  function kitWithModes(kit, sel) {
+    const L = function (a) { return (a || []).map(function (p) { const m = sel[p.name]; return (m && p.modes && p.modes[m]) ? withMode(p, m) : p; }); };
+    return Object.assign({}, kit, { powers: { atWill: L(kit.powers.atWill), encounter: L(kit.powers.encounter), daily: L(kit.powers.daily) } });
+  }
+  function simulateFxBest(input) {
+    if (!input.ruleBuilt) return simulateFx(input);
+    const kit = input.kit || { powers: {} };
+    const run = function (ch) {
+      const fxModes = Object.assign({}, input.modes || {});
+      Object.keys(ch.modes).forEach(function (n) { const all = [].concat(kit.powers.atWill || [], kit.powers.encounter || [], kit.powers.daily || []); const p = all.find(function (x) { return x.name === n; }); if (p && p.modes[ch.modes[n]] && Array.isArray(p.modes[ch.modes[n]].fx)) fxModes[n] = ch.modes[n]; });
+      const r = simulateFx(Object.assign({}, input, { kit: kitWithModes(kit, ch.modes), hold: ch.hold, spendAt: ch.spendAt, modes: fxModes }));
+      r._score = r.damageTotal != null ? r.damageTotal : r.magnitudeTotal; return r;
+    };
+    if (input.choices) { const r = run(input.choices); r.choices = Object.assign({ gains: [] }, input.choices); return r; }
+    const ch = { hold: {}, modes: {}, spendAt: input.spendAt != null ? input.spendAt : input.scorchAtSparks };
+    let best = run(ch); const gains = [];
+    const tryAll = function (label, opts, apply) {
+      const base = best._score; let win = null;
+      opts.forEach(function (o) { const c = apply(o); const r = run(c); if (r._score > best._score + 1e-9) { best = r; win = { o: o, c: c }; } });
+      if (win) { Object.assign(ch, win.c); gains.push({ choice: label, picked: win.o.label, pct: base > 0 ? (best._score - base) / base * 100 : 0 }); }
+      else gains.push({ choice: label, picked: opts.length ? "default" : "n/a", pct: 0 });
+    };
+    if (input.callWindow) tryAll("hold for the call", [{ label: "hold dailies", h: { daily: true } }, { label: "hold encounters", h: { encounter: true } }, { label: "hold both", h: { daily: true, encounter: true } }],
+      function (o) { return Object.assign({}, ch, { hold: o.h }); });
+    [].concat(kit.powers.atWill || [], kit.powers.encounter || [], kit.powers.daily || []).forEach(function (p) {
+      const names = choiceModes(p); if (!names) return;
+      tryAll(p.name + " mode", names.map(function (n) { return { label: n, n: n }; }), function (o) { const m = Object.assign({}, ch.modes); m[p.name] = o.n; return Object.assign({}, ch, { modes: m }); });
+    });
+    const sp = (kit.mechanics || []).map(function (m) { return (m.fx || []).find(function (r) { return r.kind === "stack" && r.op === "consume" && r.min != null && !r.when; }); }).filter(Boolean)[0];
+    if (sp) { const opts = []; for (let k = num(sp.min); k <= num(sp.amount, sp.min); k++) opts.push({ label: k + " " + sp.resource, k: k });
+      tryAll("spend " + sp.resource + " at", opts, function (o) { return Object.assign({}, ch, { spendAt: o.k }); }); }
+    best.choices = { hold: ch.hold, modes: ch.modes, spendAt: ch.spendAt, gains: gains };
+    return best;
+  }
+
+  const api = { simulate: simulate, simulateFx: simulateFx, simulateFxBest: simulateFxBest, choiceModes: choiceModes, defaultSteps: defaultSteps, powerMagnitude: powerMagnitude, parseMag: parseMag, VERSION: "2026-09-11a" };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   root.TF_ROTATION_SIM = api;
 })(typeof window !== "undefined" ? window : globalThis);
