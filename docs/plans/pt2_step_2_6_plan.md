@@ -55,7 +55,11 @@ most valuable first - that list doubles as n00b's capture priority.
 |---|---|---|
 | 2.6-A | How does a chance proc play out without dice? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Damage effects (hit, damage over time) add their share on every eligible event (exact expected damage). Everything else (buffs, stacks, cooldown resets, resources) adds its chance to a running share and fires whole when the share reaches 100%. Events inside a lockout add nothing. Same build, same answer. |
 | 2.6-B | Which procs move into the simulator: the class ones only, or gear, companion and insignia procs too? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Class procs only (the 26 chance records and every on-crit record). Gear (112 AP, 57 damage, 52 cooldown, 39 cast-triggered), companion (120) and insignia (4) procs stay averaged in the build part of the per-hit score, as today. Moving them onto the timeline is a later Migration C with its own approved dry-run list, after Stage 2. |
-| 2.6-C | How is the capture list in the confidence line ranked? | Open. |
+| 2.6-C | How is the capture list in the confidence line ranked? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Measured with extra simulator runs: the fight again with every assumed record in the kit off gives "N% of this fight's damage rests on assumed numbers"; each assumed item ranked by its own measured share (one run per item); missing items (zero today, cannot be measured) ranked after, by the damage share of the power or feature that owns them. Shown on the rotation panel. |
+
+**Gap list complete 2026-10-06.** Rescan: on-crit records with no chance become crit-share procs and follow 2.6-A;
+next-cast procs (Assailing Force) are a stack the data already spends on the next encounter, so they follow 2.6-A
+too; the plain magnitude run (engine stack averages) also gets the procs, which moves local-only numbers only.
 
 ## Build order (one commit each, local only)
 
