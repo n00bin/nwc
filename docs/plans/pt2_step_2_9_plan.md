@@ -32,8 +32,8 @@ the peak, scoring uses the simulated value). Everything stays local-only until t
 2. **Timeline** marks each call window and what fired in it (artifact, mount power, held casts).
 3. **Bard songs** reach the simulator (which songs: gap 2.9-A) and the rule-built rotation plays them (2.8 refresh
    rule). The old `bardActiveSong` picker retires for Bards on the fx simulator (saved builds still load).
-4. **Quick play** choice (gap 2.9-B).
-5. **Spell Mastery** (gap 2.9-C) and **Chaos Magic** pickers (the player's pick, PT2-13; none = zero).
+4. **Quick play** chosen by the search (2.9-B).
+5. **Spell Mastery** as a 4th Wizard encounter slot; **Chaos Magic** as an expected value (2.9-C). No pickers.
 6. **Scoring reads simulated build states**: in the "average" scoring mode the build states read the simulation
    (Chill average stacks, Stealth uptime, Vengeful uptime ...); the snapshot view keeps the peak (PT2-4).
 7. Everything the player sets here saves with the build and loads from old builds without errors.
@@ -52,12 +52,17 @@ the peak, scoring uses the simulated value). Everything stays local-only until t
 |---|---|---|
 | 2.9-A | Bard songs: which songs can the simulator play? | **LOCKED 2026-10-06 (n00b: "we have tagged everything so everything that can and can not already holds a tag") = Recommended, availability from the tags.** Every song in the paragon's `powers.songs` list is playable (no slot count in the data); `requiresFeat` gates the Reprised Carols (Gambler); `tags.songType` (ballad / elemental / heal / utility) tells the rule-built rotation what each does; songs whose value is healing or utility do nothing for the damage score. The search tries each elemental song and each ballad and keeps the best. The old "active song" picker retires for Bards on the fx simulator; the `songsActive` class input becomes a simulated build state for scoring (the snapshot view keeps its value). |
 | 2.9-B | Quick play: who decides which song sits in the quick play slot? | **LOCKED 2026-10-06 (n00b: "the optimizer is supposed to be doing the pick not the user; the only thing the user picks are the optimizer settings").** No player picker. The search decides: it tries no quick play and each eligible song in the slot (up to 1, Minstrel 2 with Natural Talents; manual-only songs excluded) and keeps the most damage; the panel shows the choice and what quick-playing each song would cost. RULE FOR THE REST OF PT2: in-game choices are made by the search, never a player picker. |
-| 2.9-C | Spell Mastery: who picks the encounter in the slot? | Open. |
+| 2.9-C | Spell Mastery and Chaos Magic (re-asked under the 2.9-B rule). | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Spell Mastery is a 4th encounter slot in the Wizard loadout, filled like any power slot; empty = the search tries each Wizard encounter there and keeps the best; Stage 4 picks it with the other powers. Chaos Magic (the game rolls one of three buffs on a 7% proc) counts as an expected value: each buff a one-in-three share of every proc under the 2.6-A rule; equal odds ASSUMED (tooltip: "one of three"), labelled and listed in the confidence line. Supersedes PT2-13's "random picks stay with the player" for Chaos Magic. No pickers. |
+
+**Gap list complete 2026-10-06.** Rescan under the 2.9-B rule: the old "active song" picker retires (2.9-A); the
+`songsActive` slider becomes a simulated build state for scoring (2.9-A); `rangerStance` only swaps Stance Mastery's
+non-damage stat on the sheet and the simulator already follows stances from the rotation, so it stays a view input;
+"Fire Soul Scorch at N sparks" only applies to typed rotations (2.8-D).
 
 ## Build order (one commit each, local only)
 
 1. Per-power table and the timeline window marks.
 2. Songs into the kit (2.9-A) and quick play (2.9-B); Bard parity kit B4 re-run on the page.
-3. Spell Mastery (2.9-C) and Chaos Magic pickers; save / load.
+3. Spell Mastery slot (2.9-C) and Chaos Magic expected value; save / load.
 4. Scoring reads simulated build states (average mode only).
 5. Page test on the 33 builds, baseline, step log, `docs/toon_coverage.md`.
