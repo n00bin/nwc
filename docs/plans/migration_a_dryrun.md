@@ -46,7 +46,7 @@ Key kinds: **fight** = you set it in the Fight panel; **you** = existing stamina
 ## Rogue
 
 - **Cunning Ambusher** (general): dutyCycle on `afterStealth` (build); Dmg Bonus +10. 5 s after leaving Stealth. Snapshot: on. Optimizer: share of the fight after Stealth (Stage 2).
-- **Dagger Threat** (Whisperknife): linear on `targetRangeFt` (fight); Dmg Bonus +10. Full 10% within 20 ft, falling to 0 at 30 ft (n00b: 0 past 30 ft; the slope between 20 and 30 ft is assumed straight).
+- **Dagger Threat** (Whisperknife): threshold on `targetRangeFt` (fight); Dmg Bonus +10. Full 10% within 20 ft, 0 past 20 ft (n00b 2026-10-06: the tooltip says at 20 ft).
 - **Hastily Sharpened Blades** (Assassin): toggle on `inCombat` (build); Critical Strike +5. In combat; rolled 5-10%, counted at the guaranteed 5% (your ruling).
 - **Sneak Attack** (Assassin, Whisperknife): toggle on `stealthed` (build); Recharge Speed +10. While Stealthed.
 
@@ -83,10 +83,10 @@ Key kinds: **fight** = you set it in the Fight panel; **you** = existing stamina
 ## Counts
 
 - toggle: 15
-- linear: 4
+- linear: 3
 - perStack: 2
 - dutyCycle: 7
-- threshold: 2
+- threshold: 3
 - count: 2
 - two parts: 2
 - view rule: 1

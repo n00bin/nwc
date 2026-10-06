@@ -54,13 +54,13 @@ def build_header(source_name):
 # ---- POWER-TAGS-2 effect vocabulary validator (docs/plans/effect_vocabulary.md, step 2.1) ----
 # Any `fx` record outside the vocabulary FAILS the classes.json build loudly, so drift cannot
 # creep back in. Entries without `fx` are not checked (the old free-form blocks are records only).
-FX_COMMON = {"kind", "when", "gate", "requiresFeat", "requiresFeature", "requiresSlotted", "provisional", "missing", "note"}
+FX_COMMON = {"kind", "when", "gate", "requiresFeat", "requiresFeature", "requiresSlotted", "provisional", "missing", "note", "paragon"}
 FX_KINDS = {
-    "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name"},
-    "dot":      {"magnitude", "perTick", "ticks", "seconds", "stacking", "maxStacks", "damageType", "element", "name", "targets"},
+    "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name", "scalesWith"},
+    "dot":      {"magnitude", "perTick", "ticks", "seconds", "stacking", "maxStacks", "damageType", "element", "name", "targets", "scalesWith"},
     "buff":     {"stats", "scope", "seconds", "appliesTo", "stacks", "maxStacks", "radius", "name"},
     "debuff":   {"stats", "personal", "appliesTo", "seconds", "maxStacks", "name", "targets"},
-    "stack":    {"resource", "op", "amount", "target", "max", "seconds", "targets"},
+    "stack":    {"resource", "op", "amount", "target", "max", "min", "seconds", "targets", "scalesWith"},
     "resource": {"pool", "op", "amount", "pctOfBar"},
     "cooldown": {"targets", "op", "seconds", "pct"},
     "proc":     {"effects", "name"},
@@ -70,7 +70,7 @@ FX_KINDS = {
     "mod":      {"target", "field", "op", "value", "addFx"},
 }
 FX_EVENTS = {"cast", "hit", "crit", "dotTick", "kill", "combatStart", "periodic", "stackSpent", "stackReached",
-             "takeHit", "block", "deflect", "dodge", "buffApplied"}
+             "stackApplied", "stackRemoved", "takeHit", "block", "deflect", "dodge", "buffApplied", "buffRefreshed"}
 FX_WHEN = {"on", "from", "chance", "icdSeconds", "every", "resource", "amount", "name"}
 FX_POOLS = {"actionPoints", "stamina", "divinity", "rage", "performance", "soulweave", "vengeance", "stealthMeter"}
 FX_STACKS = {"Chill", "Arcane Mastery", "Smolder", "Soul Spark", "Soul Investiture", "Curse", "Spell Twisting",

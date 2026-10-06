@@ -89,6 +89,33 @@ Stacks: `Chill`, `Arcane Mastery`, `Smolder`, `Soul Spark`, `Soul Investiture`, 
 (added when a class needs one, never invented by code).
 Pools: `actionPoints`, `stamina`, `divinity`, `rage`, `performance`, `soulweave`, `vengeance`, `stealthMeter`.
 
+## Rules the simulator follows (added with the Warlock batch, step 2.2)
+
+1. **A power's damage.** If a power's `fx` has any `hit` or `dot` record with no `when`, those records ARE the power's
+   damage and the top-level `magnitude` is only the tooltip total for display (Hellfire Ring 450 = blast 200 + field
+   50 x5). Otherwise the top-level `magnitude` is one hit when the cast ends.
+2. **`when` on a power without `from`** means this power's own hits; on a mechanic, feature or feat it means any of
+   your hits. `hit` fires for every damage instance, including dot ticks and channel ticks; `dotTick` fires for
+   ticks only.
+3. **Order at a cast.** Every gate on the cast's records is read first, then the power's own records apply, then
+   triggered records fire. So a Curse Consume power sees the Curse it is about to remove.
+4. **`paragon`** limits a record on a class-wide power to one paragon (Dark Helix sparks are Hellbringer only).
+5. **`scalesWith` {resource, per}** on `hit`, `dot` or `stack` adds `per` for each stack of that resource the same
+   cast consumed (Soul Scorch 25 per spark, Dark Helix 50 per Dark Spiral). `min` on a consume is the least it needs.
+6. **Simulator-time gate keys:** `stack:<name>` (that stack is up; perStack reads the count), `buff:<name>` (that
+   named buff is up), `pool:<name>Pct` (how full a bar is). Stage 1 panel keys stay as they are.
+7. **New events:** `stackApplied` / `stackRemoved` (a stack is put on, or consumed or expires; `resource`),
+   `buffRefreshed` (a named buff is applied again while still up; `name`). `periodic` with `name` runs only while
+   that named buff is up (pets).
+8. **A `buff` with no `seconds`** lasts while its gate holds. **`stacking: "stack"`** on a dot = independent stacks;
+   a new one past `maxStacks` is ignored. A `stack` add with `seconds` gives each stack its own timer; `set` resets.
+9. **`targets: "others"`** = only the extra enemies, never the main target (Brood of Hadar splash).
+10. **`mod` targets:** `power`, `mechanic`, `buff`, or `filter` (same keys as `from`, plus `tags`), and optionally
+    `record` (a record's `name`). Fields the simulator understands: `magnitude`, `magnitudePct` (adds a percent to
+    the magnitude), a dotted path into the record (`scalesWith.per`), `permanent` (on a buff), `dropFx` (a list of
+    record matchers to remove) and `fx` with `addFx`. A gated `mod` applies only while its gate holds.
+11. **Stack caps** live in `docs/plans/effect_vocabulary_resources.json` (`caps`), next to extra stack names.
+
 ## What is deliberately left out
 
 - Healing and survival timelines (PT2-16: the search is damage-focused). `heal` and `shield` records are
