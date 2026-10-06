@@ -1,4 +1,15 @@
 {
   "_note": "Stack names a class needs beyond the built-in list. Added by the Migration B batches, never invented by code. Stack caps live on each class entry in classes.json as fxStackCaps.",
-  "stacks": ["Dark Spiral", "Assailing Force"]
+  "stacks": [
+    "Dark Spiral",
+    "Assailing Force",
+    "Stealth Meter",
+    "Cloud of Steel",
+    "Targeted",
+    "Toxic Blades",
+    "Duelist's Expertise",
+    "Skullcracker",
+    "One with the Shadows",
+    "First Strike"
+  ]
 }

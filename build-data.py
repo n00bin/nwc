@@ -56,11 +56,11 @@ def build_header(source_name):
 # creep back in. Entries without `fx` are not checked (the old free-form blocks are records only).
 FX_COMMON = {"kind", "when", "gate", "requiresFeat", "requiresFeature", "requiresSlotted", "provisional", "missing", "note", "paragon", "slot"}
 FX_KINDS = {
-    "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name", "scalesWith"},
+    "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name", "scalesWith", "maxTargets"},
     "dot":      {"magnitude", "perTick", "ticks", "seconds", "stacking", "maxStacks", "damageType", "element", "name", "targets", "scalesWith"},
-    "buff":     {"stats", "scope", "seconds", "appliesTo", "stacks", "maxStacks", "radius", "name"},
+    "buff":     {"stats", "scope", "seconds", "appliesTo", "stacks", "maxStacks", "radius", "name", "op"},
     "debuff":   {"stats", "personal", "appliesTo", "seconds", "maxStacks", "name", "targets"},
-    "stack":    {"resource", "op", "amount", "target", "max", "min", "seconds", "targets", "scalesWith"},
+    "stack":    {"resource", "op", "amount", "target", "max", "min", "seconds", "targets", "scalesWith", "name"},
     "resource": {"pool", "op", "amount", "pctOfBar"},
     "cooldown": {"targets", "op", "seconds", "pct"},
     "proc":     {"effects", "name"},
@@ -70,7 +70,7 @@ FX_KINDS = {
     "mod":      {"target", "field", "op", "value", "addFx"},
 }
 FX_EVENTS = {"cast", "hit", "crit", "dotTick", "kill", "combatStart", "periodic", "stackSpent", "stackReached",
-             "stackApplied", "stackRemoved", "takeHit", "block", "deflect", "dodge", "buffApplied", "buffRefreshed"}
+             "stackApplied", "stackRemoved", "takeHit", "block", "deflect", "dodge", "buffApplied", "buffRefreshed", "buffEnded"}
 FX_WHEN = {"on", "from", "chance", "icdSeconds", "every", "resource", "amount", "name"}
 FX_POOLS = {"actionPoints", "stamina", "divinity", "rage", "performance", "soulweave", "vengeance", "stealthMeter"}
 FX_STACKS = {"Chill", "Arcane Mastery", "Smolder", "Soul Spark", "Soul Investiture", "Curse", "Spell Twisting",
