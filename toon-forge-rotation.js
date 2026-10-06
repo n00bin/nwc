@@ -631,7 +631,7 @@
     const bySource = {}, byOwner = {}, castCount = {}, mix = { atWill: 0, encounter: 0, daily: 0, other: 0 };
     // PT2 step 2.4: per-hit damage. input.scoreHit(mag, hit, active) -> damage; without it nothing below runs.
     const scoreHit = typeof input.scoreHit === "function" ? input.scoreHit : null;
-    let dmgTotal = 0; const dmgByOwner = {};
+    let dmgTotal = 0; const dmgByOwner = {}, dmgInByOwner = {};
     // PT2 step 2.5: the fight script's call window. input.callWindow {every, seconds}: the first window opens when the
     // first full rotation ends, then one every `every` s. At the window start the call fires: input.call.artifact
     // (its callFx, when off cooldown) and input.call.mount (its records, when off cooldown); input.call.triggered are
@@ -669,7 +669,7 @@
       if (!(m > 0)) return;
       magTotal += m; bySource[name] = (bySource[name] || 0) + m; byOwner[name] = (byOwner[name] || 0) + m; mix.other += m;
       if (CW && inWindow()) magIn += m;
-      if (scoreHit && d > 0) { dmgTotal += d; dmgByOwner[name] = (dmgByOwner[name] || 0) + d; if (CW && inWindow()) dmgIn += d; }
+      if (scoreHit && d > 0) { dmgTotal += d; dmgByOwner[name] = (dmgByOwner[name] || 0) + d; if (CW && inWindow()) { dmgIn += d; dmgInByOwner[name] = (dmgInByOwner[name] || 0) + d; } }
     }
     // ---- stat records (buffs and debuffs with stats) ----
     // timed (seconds) or triggered: counted while up, from the moment they are applied;
@@ -717,7 +717,7 @@
         targets: (rec && rec.targets) || tg.targets || null, isTick: !!isTick, offMain: !!offMain, proc: !!ow.proc };
       const d = scoreHit(m, hit, activeStats(hit, ow));
       if (hit.pCrit != null) lastPCrit = hit.pCrit;   // the scorer reports the crit chance it used for this hit
-      if (d > 0) { dmgTotal += d; dmgByOwner[ow.name] = (dmgByOwner[ow.name] || 0) + d; if (CW && inWindow()) dmgIn += d; }
+      if (d > 0) { dmgTotal += d; dmgByOwner[ow.name] = (dmgByOwner[ow.name] || 0) + d; if (CW && inWindow()) { dmgIn += d; dmgInByOwner[ow.name] = (dmgInByOwner[ow.name] || 0) + d; } }
       return d;
     }
     function land(ow, recName, mag, isTick, offMain, rec) {
@@ -1318,7 +1318,7 @@
       ruleBuilt: RB ? { list: rbList.map(function (e) { return { kind: e.kind, name: e.name, reason: e.reason }; }).concat(rbFiller ? [{ kind: "atWill", name: rbFiller.ow.name, reason: input.filler ? "filler: the at-will that gave the most damage" : "filler: best at-will per second of casting" }] : []),
         hold: { encounter: !!HOLD.encounter, daily: !!HOLD.daily }, filler: rbFiller ? rbFiller.ow.name : null, spendAt: spenderOw ? spendAt : null, invalidCasts: rbInvalid } : undefined,
       callWindow: CW ? { windows: windows.map(function (w) { return [Math.round(w[0] * 10) / 10, Math.round(w[1] * 10) / 10]; }), magnitudeInside: magIn, magnitudeOutside: magTotal - magIn,
-        damageInside: scoreHit ? dmgIn : undefined, damageOutside: scoreHit ? dmgTotal - dmgIn : undefined } : undefined, statOwnersOn: scoreHit ? Object.keys(statOwnersOn) : undefined,
+        damageInside: scoreHit ? dmgIn : undefined, damageOutside: scoreHit ? dmgTotal - dmgIn : undefined, damageInsideByOwner: scoreHit ? dmgInByOwner : undefined } : undefined, statOwnersOn: scoreHit ? Object.keys(statOwnersOn) : undefined,
       derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 },
       trace: input.trace ? traceRows : undefined
     };

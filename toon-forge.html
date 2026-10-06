@@ -14326,7 +14326,9 @@
       h += '<div class="field" style="margin-top:0.3rem;"><label>Opener <span style="color:var(--text-dim);font-weight:400;">(runs once from the pull' + (state.rotationOpener.length ? '' : ' · empty = straight into the loop') + ')</span></label>' + listHTML("opener", state.rotationOpener) + '</div>';
       h += '<div class="field" style="margin-top:0.6rem;"><label>Loop <span style="color:var(--text-dim);font-weight:400;">(repeats until the fight ends' + (state.rotationSteps.length ? '' : (state.rotationOpener.length ? ' · empty = the opener repeats' : ' · empty = default order')) + ')</span></label>' + listHTML("loop", state.rotationSteps) + '</div>';
       h += '<p class="hint" style="margin:0.4rem 0 0;">Anything you do not list fires on its own when it is up: your artifact and mount power, your dailies when the bar is full, and Soul Scorch at the number below. A listed Soul Scorch casts at its turn with whatever sparks you hold.</p>';
-      if (!state.rotationOpener.length && !state.rotationSteps.length) h += '<p class="hint" style="margin:0.2rem 0 0.4rem;color:var(--amber);">No rotation built yet - the simulator is using a default order (strongest per cast first).</p>';
+      if (!state.rotationOpener.length && !state.rotationSteps.length) h += (sim && sim.ruleBuilt)
+        ? '<p class="hint" style="margin:0.2rem 0 0.4rem;">No rotation typed - the simulator builds one from your powers (the rule-built list below). Type an opener or loop to use your own.</p>'
+        : '<p class="hint" style="margin:0.2rem 0 0.4rem;color:var(--amber);">No rotation built yet - the simulator is using a default order (strongest per cast first).</p>';
       const inp = buildRotationSimInput();
       if (inp.scorch) {
         const sat = inp.scorchAtSparks;
@@ -14335,7 +14337,7 @@
       if (sim) {
         const d = sim.derived || {};
         const pct = v => (v == null ? "-" : Math.round(v * 100) + "%");
-        h += '<div style="margin-top:0.6rem;font-size:0.85rem;"><strong>' + Math.round(sim.mps) + ' magnitude/s</strong> over ' + sim.fightSeconds + ' s' + (sim.defaultOrderUsed ? ' (default order)' : '') + ' · ' + sim.cycles + ' loops</div>';
+        h += '<div style="margin-top:0.6rem;font-size:0.85rem;"><strong>' + Math.round(sim.mps) + ' magnitude/s</strong> over ' + sim.fightSeconds + ' s' + (sim.defaultOrderUsed ? ' (default order)' : '') + (sim.ruleBuilt ? ' (rule-built rotation)' : ' · ' + sim.cycles + ' loops') + '</div>';
         // PT2 step 2.4 (local only): fight damage scored hit by hit, beside magnitude (2.4-A: the damage score is unchanged)
         const fd = (sim.engine === "fx" && typeof getRotationDamage === "function") ? getRotationDamage() : null;
         // PT2 step 2.8: the rule-built rotation (shown when the player typed none) with a reason per entry, and its choices
@@ -14350,7 +14352,16 @@
         if (fd && fd.dps != null) {
           const topD = Object.entries(fd.damageByOwner || {}).sort((a, b) => b[1] - a[1]).slice(0, 5);
           h += '<div style="margin-top:0.2rem;font-size:0.85rem;"><strong>' + Math.round(fd.dps).toLocaleString() + ' damage/s</strong> <span class="hint">each hit scored with the buffs and debuffs up at that moment</span></div>';
-          if (topD.length) h += '<div class="hint" style="margin-top:0.1rem;">Top damage: ' + topD.map(e => esc(e[0]) + ' ' + Math.round(e[1] / fd.fightSeconds).toLocaleString() + '/s').join(', ') + '</div>';
+          // PT2 step 2.9: per-power table (damage adds up to the total; inside = share of that row landing in call windows)
+          const rows = Object.entries(fd.damageByOwner || {}).sort((a, b) => b[1] - a[1]);
+          if (rows.length) {
+            const inBy = (fd.callWindow && fd.callWindow.damageInsideByOwner) || {};
+            h += '<details style="margin-top:0.3rem;" open><summary class="hint" style="cursor:pointer;">Per power (' + rows.length + ')</summary><table class="hint" style="margin-top:0.2rem;border-collapse:collapse;width:100%;font-size:0.8rem;" translate="no">'
+              + '<tr style="text-align:left;"><th>Power</th><th style="text-align:right;">Casts</th><th style="text-align:right;">Damage/s</th><th style="text-align:right;">Share</th><th style="text-align:right;">Per cast</th><th style="text-align:right;">In windows</th></tr>'
+              + rows.map(([n, d]) => { const c = (fd.casts || {})[n]; return '<tr><td>' + esc(n) + '</td><td style="text-align:right;">' + (c ? c : '-') + '</td><td style="text-align:right;">' + Math.round(d / fd.fightSeconds).toLocaleString()
+                + '</td><td style="text-align:right;">' + (d / fd.damageTotal * 100).toFixed(1) + '%</td><td style="text-align:right;">' + (c ? Math.round(d / c).toLocaleString() : '-') + '</td><td style="text-align:right;">' + (fd.callWindow ? Math.round((inBy[n] || 0) / d * 100) + '%' : '-') + '</td></tr>'; }).join('')
+              + '</table></details>';
+          }
           // PT2 step 2.5: the call window split (inside + outside = the total above)
           const cw = fd.callWindow;
           if (cw && cw.windows && cw.windows.length && cw.damageInside != null) {
@@ -14381,8 +14392,12 @@
         if (chips.length) h += '<div class="hint" style="margin-top:0.2rem;">' + chips.map(esc).join(' · ') + '</div>';
         const top = Object.entries(sim.bySource || {}).sort((a, b) => b[1] - a[1]).slice(0, 8);
         if (top.length) h += '<div class="hint" style="margin-top:0.2rem;">Top sources: ' + top.map(e => esc(e[0]) + ' ' + Math.round(e[1] / sim.fightSeconds) + '/s').join(', ') + '</div>';
-        const cyc = (sim.timeline || []).filter(e => sim.firstCycleEnd == null || e.t <= sim.firstCycleEnd + 0.01).slice(0, 40);
-        if (cyc.length) h += '<details style="margin-top:0.3rem;"><summary class="hint" style="cursor:pointer;">Timeline, ' + (sim.opener && sim.opener.length ? 'opener' : 'first loop') + ' (' + cyc.length + ' casts)</summary><div class="hint" style="margin-top:0.2rem;line-height:1.5;" translate="no">' + cyc.map(e => e.t.toFixed(1) + 's ' + esc(e.name) + (e.note ? ' [' + esc(e.note) + ']' : '')).join(' · ') + '</div></details>';
+        // PT2 step 2.9: the fight's timeline (the scored run when there is one) up to the end of the first call window, windows marked
+        const tsrc = (fd && fd.timeline) || sim.timeline || [];
+        const w1 = fd && fd.callWindow && fd.callWindow.windows && fd.callWindow.windows[0];
+        const cyc = w1 ? tsrc.filter(e => e.t <= w1[1] + 0.01).slice(0, 60) : tsrc.filter(e => sim.firstCycleEnd == null || e.t <= sim.firstCycleEnd + 0.01).slice(0, 40);
+        if (cyc.length) h += '<details style="margin-top:0.3rem;"><summary class="hint" style="cursor:pointer;">Timeline, ' + (w1 ? 'to the end of the first call window' : (sim.opener && sim.opener.length ? 'opener' : 'first loop')) + ' (' + cyc.length + ' entries)</summary><div class="hint" style="margin-top:0.2rem;line-height:1.5;" translate="no">'
+          + cyc.map(e => e.name === "Call window" ? '<strong>| ' + e.t.toFixed(1) + 's CALL WINDOW (' + esc(e.note) + ') |</strong>' : e.t.toFixed(1) + 's ' + esc(e.name) + (e.note ? ' [' + esc(e.note) + ']' : '')).join(' · ') + '</div></details>';
       }
       box.innerHTML = h;
       const listOf = key => key === "opener" ? state.rotationOpener : state.rotationSteps;
