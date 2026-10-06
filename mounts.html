@@ -174,6 +174,96 @@
     .insignia-cat-pill[data-tier="Epic"]       { background: #a371f7; color: #fff; }
     .insignia-cat-pill[data-tier="Rare"]       { background: #58a6ff; color: #fff; }
     .insignia-cat-pill[data-tier="Uncommon"]   { background: #3fb950; color: #000; }
+    /* Stable Planner */
+    .planner-controls { align-items: center; }
+    .planner-saved-note { color: var(--text-muted); font-size: 0.82rem; }
+    .planner-howto { display: block; }
+    .planner-howto > summary {
+      color: var(--accent, #58a6ff);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      list-style: none;
+    }
+    .planner-howto > summary::-webkit-details-marker { display: none; }
+    .planner-howto > summary::after { content: "▾"; float: right; color: var(--text-muted); }
+    .planner-howto:not([open]) > summary::after { content: "▸"; }
+    .planner-howto ol {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin: 0.65rem 0 0;
+      padding-left: 1.35rem;
+    }
+    .planner-howto li + li { margin-top: 0.2rem; }
+    .planner-loadout-header { display: flex; gap: 0.55rem; align-items: center; flex-wrap: wrap; }
+    .planner-name { width: min(100%, 240px); }
+    .planner-role { min-width: 120px; }
+    .planner-delete { margin-left: auto; }
+    .planner-bonus-list { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: stretch; }
+    .planner-bonus-card { min-width: min(240px, 100%); }
+    .planner-remove-bonus {
+      display: inline-grid;
+      place-items: center;
+      width: 40px;
+      min-width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+    }
+    .planner-remove-bonus:hover { background: var(--bg-hover); color: var(--stat-negative, #f85149); }
+    .planner-inventory {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.5rem;
+      align-items: end;
+      margin-top: 0.15rem;
+    }
+    .planner-inventory-title {
+      grid-column: 1 / -1;
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .planner-inventory-item {
+      display: flex;
+      min-width: 0;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .planner-inv-input { width: 4.4rem; min-width: 0; }
+    .planner-feas-toggle { min-height: 44px; white-space: normal; text-align: left; }
+    .planner-mount-chip { max-width: 100%; overflow-wrap: anywhere; }
+
+    @media (max-width: 768px) {
+      #planner-controls {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+        padding: 0.65rem 0.75rem;
+      }
+      #planner-controls > button { width: 100%; min-width: 0; }
+      .planner-saved-note { grid-column: 1 / -1; text-align: center; }
+      #planner-view { padding: 0.7rem 0.7rem calc(2rem + env(safe-area-inset-bottom)) !important; }
+      .planner-howto { margin-bottom: 0.7rem !important; padding: 0.75rem 0.85rem; }
+      .planner-howto ol { font-size: 0.82rem; padding-left: 1.2rem; }
+      #planner-editor .ranking-card { padding: 0.75rem; }
+      .planner-loadout-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.45rem; }
+      .planner-name { grid-column: 1 / -1; width: 100%; max-width: none !important; }
+      .planner-role { width: 100%; min-width: 0; }
+      .planner-delete { min-width: 88px; margin-left: 0; }
+      .planner-bonus-list { display: grid; grid-template-columns: minmax(0, 1fr); }
+      .planner-bonus-card { width: 100%; max-width: none !important; min-width: 0 !important; }
+      .planner-remove-bonus { width: 44px; min-width: 44px; height: 44px; }
+      .planner-inventory { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
+      .planner-inventory-item { flex-direction: column; align-items: stretch; gap: 0.25rem; padding: 0.4rem; border: 1px solid var(--border-default); border-radius: var(--radius-sm); background: var(--bg-elevated); }
+      .planner-inv-input { width: 100% !important; min-height: 44px; padding: 0.35rem; text-align: center; }
+      .planner-feas-toggle { width: 100%; }
+      #planner-results { margin-top: 1rem !important; }
+    }
+    @media (max-width: 380px) {
+      .planner-inventory { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
   </style>
   <script type="application/ld+json">
   {
@@ -378,15 +468,15 @@
   </div>
 
   <!-- Stable Planner controls -->
-  <div class="controls-bar" id="planner-controls" style="display:none;">
+  <div class="controls-bar planner-controls" id="planner-controls" style="display:none;">
     <button id="planner-add-loadout" class="filter-select" style="cursor:pointer;">+ Add Loadout</button>
     <button id="planner-clear" class="filter-select" style="cursor:pointer;">Clear All</button>
-    <span style="color:var(--text-muted);font-size:0.85rem;">Saved in this browser only.</span>
+    <span class="planner-saved-note">Saved in this browser only.</span>
   </div>
   <div id="planner-view" style="display:none; max-width:1400px; margin:0 auto; padding:1rem 1.5rem 3rem;">
-    <div id="planner-howto" class="ranking-card" style="flex-direction:column;align-items:stretch;margin-bottom:1.25rem;">
-      <div style="font-weight:700;font-size:1rem;color:var(--accent,#58a6ff);margin-bottom:0.6rem;">How to use the Stable Planner</div>
-      <ol style="color:var(--text-secondary);font-size:0.9rem;line-height:1.6;margin:0;padding-left:1.4rem;">
+    <details id="planner-howto" class="ranking-card planner-howto" open>
+      <summary>How to use the Stable Planner</summary>
+      <ol>
         <li><strong>Click "+ Add Loadout"</strong> for each loadout you actually run in-game (e.g., one for healer, one for tank, one per DPS spec).</li>
         <li><strong>Name it, pick a role</strong> (DPS / Tank / Healer), then add up to 5 insignia bonuses you want active in that loadout. The same bonus can be added more than once if you want it on multiple mounts.</li>
         <li><strong>Fill in "My insignias for this loadout"</strong> on each loadout with how many of each type you own — just five numbers, no sorting needed. Each loadout has its own counts, so you can plan loadouts with different insignia sets.</li>
@@ -396,7 +486,7 @@
         <li><strong>Don't own a recommended mount?</strong> Click the × on its tile. It moves to the "Excluded mounts" bar and the next-best candidate takes its place. Click ↻ to restore.</li>
         <li><strong>Everything saves automatically</strong> in this browser only — refresh, come back tomorrow, your loadouts are still there. Use "Clear All" to reset.</li>
       </ol>
-    </div>
+    </details>
     <div id="planner-editor"></div>
     <div id="planner-results" style="margin-top:1.5rem;"></div>
   </div>
