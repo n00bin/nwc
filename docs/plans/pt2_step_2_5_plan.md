@@ -56,7 +56,7 @@ opens the window and fires the call in it.
 
 | Gap | Question | Recommended |
 |---|---|---|
-| 2.5-A | When does the window open? | Open. |
+| 2.5-A | When does the window open? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** The existing artifact cadence setting (default 60 s): the first window opens when the first full rotation ends, then one every cadence seconds to the fight end. The artifact fires in a window when off cooldown (a 180 s artifact every third window); the mount combat power fires in every window. Nothing new to set. |
 | 2.5-B | The Party section's always-on buffs (ally companion buffs, ally mount auras, Pack): whole fight, or the window only? | Open. |
 | 2.5-C | Approve the artifact extraction list (`docs/plans/artifact_window_dryrun.md`). | Open. |
 
