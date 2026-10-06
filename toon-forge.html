@@ -4175,6 +4175,7 @@
       assumeSupportParty: false,
       partyHealerClass: "",        // "" | Paladin | Cleric | Warlock | Bard - auto-answers party-dependent build conditions (n00b 2026-09-08)
       conditionAnswers: {},        // manual Yes/No answers for build conditions the build cannot auto-resolve: {id: true|false}
+      pt2Fight: {},                // POWER-TAGS-2 fight facts the player answers in the Conditions tab: {key: true|false}
       // (legacy — kept so older saves still load without losing data)
       partyBuffs: new Set(),
       simMag: 100,
@@ -4366,6 +4367,7 @@
           assumeSupportParty: state.assumeSupportParty === true,
           partyHealerClass: state.partyHealerClass || "",
           conditionAnswers: Object.assign({}, state.conditionAnswers || {}),
+          pt2Fight: Object.assign({}, state.pt2Fight || {}),
           locked: [...(state.locked || [])],
           pinned: [...(state.pinned || [])],
           pinnedArtifacts: [...(state.pinnedArtifacts || [])],
@@ -4463,6 +4465,7 @@
       state.partyContent = s.partyContent || "dungeon";
       state.partyHealerClass = ["Paladin", "Cleric", "Warlock", "Bard"].includes(s.partyHealerClass) ? s.partyHealerClass : "";
       state.conditionAnswers = (s.conditionAnswers && typeof s.conditionAnswers === "object") ? Object.assign({}, s.conditionAnswers) : {};
+      state.pt2Fight = (s.pt2Fight && typeof s.pt2Fight === "object") ? Object.assign({}, s.pt2Fight) : {};
       state.partyAllies = Array.isArray(s.partyAllies) ? s.partyAllies.slice() : [];
       state.partyMountAllies = Array.isArray(s.partyMountAllies) ? s.partyMountAllies.slice() : [];
       // Both group-meta toggles default OFF: only ON if a save explicitly
@@ -13729,6 +13732,89 @@
       for (const x of equippedEquipBonuses()) add(x.eb, x.itemName);
       return found;
     }
+    // ===== POWER-TAGS-2 steps 1.3 / 1.4: class conditions in the Conditions tab =====
+    // Lists only the conditions the CURRENT build reads (General skills, picked class features,
+    // picked feats). Fight facts get a Yes/No the player sets (state.pt2Fight, saved with the
+    // build). Build results are worked out from the slotted kit and shown with the reason; the
+    // player cannot override them (PT2-5). Slider conditions point at the existing sliders.
+    const PT2_FIGHT_QUESTIONS = {
+      soloOrIsolated: "Are you fighting with no party member within 30 ft (solo, or standing apart)?",
+      behindTarget: "Do you attack from behind the target?",
+      healTargetWithin15ft: "Is your heal target usually within 15 ft of you?",
+      allyBelowHealthPct: "Is an ally below 25% health?",
+      targetControlImmune: "Is the target immune to control (a boss)?",
+      beingAttacked: "Are enemies attacking you?"
+    };
+    const PT2_SLIDER_KEYS = { currentStaminaPct: "your stamina slider", targetRangeFt: "the distance-to-target slider", enemyCount: "the enemy count slider", enemyHealthPct: "the enemy health slider" };
+    function pt2KeyReason(key, s, kit) {
+      const nm = arr => arr.map(p => p.name).join(", ");
+      const v = pt2KeyValue(key, s, kit);
+      switch (key) {
+        case "rageWindowActive": return "Battlerage / Unstoppable, counted as up in combat";
+        case "songPlayed": return "songs are the Bard rotation, counted as up";
+        case "channelingDivinity": return "counted while you channel Divinity";
+        case "divinityFull": return "counted at full Divinity";
+        case "teleportedRecently": return "counted right after a Teleport";
+        case "castingSpells": return "you are casting spells";
+        case "stealthed": return "counted while in Stealth";
+        case "afterStealth": return "counted right after leaving Stealth";
+        case "inCombat": return "always on in the in-combat view";
+        case "controlHitRecently": { const l = kit.encounter.concat(kit.daily).filter(p => p.tags && Array.isArray(p.tags.control) && p.tags.control.length); return l.length ? nm(l) + " control the target" : "no slotted encounter or daily has a control effect"; }
+        case "parryFinisherRecently": { const l = kit.atWill.filter(p => ["Reprise", "Flourish", "Volti Subito"].indexOf(p.name) !== -1); return l.length ? nm(l) + " slotted" : "Reprise, Flourish or Volti Subito not slotted"; }
+        case "dailyUsedRecently": return kit.daily.length ? "counted right after a daily (" + nm(kit.daily) + ")" : "no daily slotted";
+        case "encounterOrDailyUsed": return v ? "counted right after an encounter or daily" : "no encounter or daily slotted";
+        case "flamesOnTarget": return kit.atWill.length ? "your at-wills keep it on the target" : "no at-will slotted";
+        case "targetCursed": { const l = kit.all.filter(p => p.tags && p.tags.curse === "apply"); return l.length ? nm(l) + " apply Curse" : "no slotted power applies Curse"; }
+        case "alternateElements": return kit.elements.size >= 2 ? "your powers mix " + [...kit.elements].join(", ") : "your slotted powers use one element";
+        case "chillStacks": { const l = kit.all.filter(p => p.resource && p.resource.builds === "Chill"); return l.length ? "6 stacks: " + nm(l) + " build Chill" : "0 stacks: no slotted power builds Chill"; }
+        case "chillOrSmolderOnTarget": return v ? "Chill or Smolder comes from your slotted powers" : "nothing slotted applies Chill or Smolder";
+        case "rimefireOnTarget": return v ? "your kit applies both Chill and Smolder" : "your kit does not apply both Chill and Smolder";
+      }
+      return "";
+    }
+    function pt2ConditionsHTML() {
+      const s = state, cDef = findClass(s.class), pDef = findParagon(s.class, s.paragon);
+      if (!cDef) return "";
+      const picks = new Set((s.slottedClassFeaturePicks || []).filter(Boolean)), feats = new Set((s.slottedFeats || []).filter(Boolean));
+      const entries = [].concat((cDef.classFeatures || []), ((pDef && pDef.slottedClassFeatures) || []).filter(f => picks.has(f.name)), ((pDef && pDef.feats) || []).filter(f => feats.has(f.name)));
+      const byKey = new Map();
+      for (const f of entries) {
+        const gates = Array.isArray(f.gateParts) ? f.gateParts.map(p => p.gate) : (f.gate ? [f.gate] : []);
+        for (const g of gates) { if (!g || !g.key) continue; if (!byKey.has(g.key)) byKey.set(g.key, new Set()); byKey.get(g.key).add(f.name); }
+        if (Array.isArray(f.gateParts) || f.gate) {
+          for (const g of gates) { const m = g && g.requires && String(g.requires).match(/^(\w+)/); if (m) { if (!byKey.has(m[1])) byKey.set(m[1], new Set()); byKey.get(m[1]).add(f.name); } }
+        }
+      }
+      if (!byKey.size) return "";
+      const kit = pt2Kit(s), esc = escapeHtmlTF, fight = s.pt2Fight || {};
+      let h = '<div class="boon-tier-header" style="margin-top:0.8rem;">From your class features and feats</div>';
+      h += '<p class="hint" style="margin:0 0 0.4rem;">Yes / No questions are about the fight. Everything marked Auto is worked out from the powers you slotted.</p>';
+      const order = [...byKey.keys()].sort((a, b) => ((a in PT2_FIGHT_QUESTIONS) ? 0 : (a in PT2_SLIDER_KEYS) ? 1 : 2) - ((b in PT2_FIGHT_QUESTIONS) ? 0 : (b in PT2_SLIDER_KEYS) ? 1 : 2));
+      for (const key of order) {
+        const used = "Used by: <span translate=\"no\">" + [...byKey.get(key)].map(esc).join(", ") + "</span>";
+        let q, ctl;
+        if (key in PT2_FIGHT_QUESTIONS) {
+          const cur = (typeof fight[key] === "boolean") ? fight[key] : PT2_FIGHT_DEFAULTS[key];
+          q = PT2_FIGHT_QUESTIONS[key];
+          ctl = '<select data-pt2-fight="' + key + '" style="font-size:0.85rem;padding:0.2rem 0.4rem;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:4px;"><option value="yes"' + (cur ? " selected" : "") + '>Yes</option><option value="no"' + (cur ? "" : " selected") + '>No</option></select>';
+        } else if (key in PT2_SLIDER_KEYS) {
+          q = "Reads " + PT2_SLIDER_KEYS[key]; ctl = '<span class="hint">set on The Fight</span>';
+        } else {
+          const v = pt2KeyValue(key, s, kit);
+          q = pt2KeyReason(key, s, kit) || key;
+          ctl = '<span class="hint">Auto: ' + ((typeof v === "number") ? v : (v ? "Yes" : "No")) + '</span>';
+        }
+        h += '<div class="boon-row" style="cursor:default;"><div class="boon-row-info"><div class="boon-row-name">' + esc(q) + '</div><div class="boon-row-effect">' + used + '</div></div><div class="boon-counter">' + ctl + '</div></div>';
+      }
+      return h;
+    }
+    function pt2BindConditions(box) {
+      box.querySelectorAll("select[data-pt2-fight]").forEach(el => el.addEventListener("change", e => {
+        if (!state.pt2Fight) state.pt2Fight = {};
+        state.pt2Fight[e.target.dataset.pt2Fight] = (e.target.value === "yes");
+        rerenderAll();
+      }));
+    }
     function renderBuildConditions() {
       const box = document.getElementById("build-conditions"); if (!box) return;
       const found = equippedBuildConditions();
@@ -13743,7 +13829,9 @@
         const used = items.size ? `Used by: <span translate="no">${[...items].map(escapeHtmlTF).join(", ")}</span>` : "No equipped piece uses this yet (the optimizer still reads it).";
         html += `<div class="boon-row" style="cursor:default;"><div class="boon-row-info"><div class="boon-row-name">${escapeHtmlTF(def.question)}</div><div class="boon-row-effect">${used}</div></div><div class="boon-counter">${sel}</div></div>`;
       }
+      if (typeof pt2PanelEnabled === "function" && pt2PanelEnabled()) html += pt2ConditionsHTML();   // POWER-TAGS-2 1.3 / 1.4
       box.innerHTML = html;
+      if (typeof pt2PanelEnabled === "function" && pt2PanelEnabled()) pt2BindConditions(box);
       box.querySelectorAll("select[data-cond]").forEach(el => el.addEventListener("change", e => {
         const id = e.target.dataset.cond; const v = e.target.value;
         if (!state.conditionAnswers) state.conditionAnswers = {};
