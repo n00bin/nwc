@@ -3130,3 +3130,4 @@ every rank (Uncommon 5, Rare 7, Epic 9, Legendary 11, Mythic 13, Celestial 15).
 - [ ] Bard Truly Inspired: play a non-quick-play song in combat and check the sheet Damage Bonus (Songblade) rises by 10 for 20 s (n00b, 2026-10-05).
 - [ ] Bard Minstrel Truly Inspired: play a non-quick-play song in combat and see whether Outgoing Healing on the sheet rises by 10 (no move = the uncapped Overall Outgoing Healing kind) (n00b, 2026-10-05).
 - [ ] Paladin Oathkeeper after OK-0: on the next healer sheet comparison, confirm Composure and Aura of Restoration are slotted in the builder when they are slotted in game (the always-on duplicates that masked this are gone) (n00b, 2026-10-05).
+- [ ] PT2-12 data: capture the buff length of the 25 artifacts whose power text has no duration; capture the active damage (magnitude, cooldown) of every damage-dealing belt item (n00b, 2026-10-06).
