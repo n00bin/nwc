@@ -72,10 +72,6 @@ the data, not a tooltip capture, so the A / L / M rows are the capture list.
 - **Black Dragon's Mark**: Damage resistance -10%: length not on the text.
 - **Xeleth's Blast Scepter**: Damage resistance -15%: length not on the text.
 - **Burning Hope** (5 ranks): +Power self buff: length not on the text (amount per rank is). Amounts by rank: 6.7%, 6%, 5.2%, 4.2%, 3%.
-- **Burning Hope** (5 ranks): +Power self buff: length not on the text (amount per rank is). Amounts by rank: 6.7%, 6%, 5.2%, 4.2%, 3%.
-- **Burning Hope** (5 ranks): +Power self buff: length not on the text (amount per rank is). Amounts by rank: 6.7%, 6%, 5.2%, 4.2%, 3%.
-- **Burning Hope** (5 ranks): +Power self buff: length not on the text (amount per rank is). Amounts by rank: 6.7%, 6%, 5.2%, 4.2%, 3%.
-- **Burning Hope** (5 ranks): +Power self buff: length not on the text (amount per rank is). Amounts by rank: 6.7%, 6%, 5.2%, 4.2%, 3%.
 
 ## Effect found, AMOUNT missing: counts zero (3)
 
