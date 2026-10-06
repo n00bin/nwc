@@ -580,7 +580,8 @@
     function gateFrac(g) {
       if (!g) return 1;
       if (Array.isArray(g)) return g.reduce(function (a, x) { return a * gateFrac(x); }, 1);
-      const v = keyValue(g.key || "");
+      // a fight input the page does not set yet (e.g. average Divinity level) uses the gate's default
+      const v = (g.default != null && fight[g.key] === undefined && (g.key || "").indexOf(":") < 0 && ["enemyHealthPct", "enemyCount", "otherEnemies"].indexOf(g.key) < 0) ? num(g.default) : keyValue(g.key || "");
       const cl = function (x) { return Math.max(0, Math.min(1, x)); };
       let f = 1;
       if (g.shape === "toggle") f = v > 0 ? 1 : 0;

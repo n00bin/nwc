@@ -213,7 +213,8 @@ The step 2.3 parity check must show exactly these differences and nothing else.
 1. Arbiter Judgement: today's simulator always uses each power's plain magnitude. New data alternates fire and radiant charges, so a power cast with the other kind's Judgement held lands at its charged magnitude (e.g. Forgemaster's Flame 770 -> 870).
 2. Flame Strike: today's simulator counts only the 260 impact. New data adds its burn at the one guaranteed tick (180) until the tick interval is captured.
 3. Celestial Prominence: today's simulator lands 700 at the cast. New data detonates 1,300 after the 5 s expansion (the review's default).
-4. Everything else today's simulator does not model for Cleric (Prophecy of Doom echo, Doomsayer, Divine Equilibrium, feats) starts counting where the data has numbers.
+4. Geas and Sacred Flame (found in the step 2.3 check): today's simulator scores them 0 - it never reads per-paragon magnitudes and these powers store only those (Geas 700 / 650, Sacred Flame 90 / 100). The new simulator uses each paragon's number.
+5. Everything else today's simulator does not model for Cleric (Prophecy of Doom echo, Doomsayer, Divine Equilibrium, feats) starts counting where the data has numbers.
 
 ## In-game checks this batch adds to the test list
 
