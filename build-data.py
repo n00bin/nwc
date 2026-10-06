@@ -51,6 +51,87 @@ def build_header(source_name):
         f"// Do not edit — re-run build-data.py to regenerate.\n\n"
     )
 
+# ---- POWER-TAGS-2 effect vocabulary validator (docs/plans/effect_vocabulary.md, step 2.1) ----
+# Any `fx` record outside the vocabulary FAILS the classes.json build loudly, so drift cannot
+# creep back in. Entries without `fx` are not checked (the old free-form blocks are records only).
+FX_COMMON = {"kind", "when", "gate", "requiresFeat", "requiresFeature", "requiresSlotted", "provisional", "missing", "note"}
+FX_KINDS = {
+    "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name"},
+    "dot":      {"magnitude", "perTick", "ticks", "seconds", "stacking", "maxStacks", "damageType", "element", "name", "targets"},
+    "buff":     {"stats", "scope", "seconds", "appliesTo", "stacks", "maxStacks", "radius", "name"},
+    "debuff":   {"stats", "personal", "appliesTo", "seconds", "maxStacks", "name", "targets"},
+    "stack":    {"resource", "op", "amount", "target", "max", "seconds", "targets"},
+    "resource": {"pool", "op", "amount", "pctOfBar"},
+    "cooldown": {"targets", "op", "seconds", "pct"},
+    "proc":     {"effects", "name"},
+    "control":  {"control", "seconds", "perStack", "targets"},
+    "heal":     {"magnitude", "pctMaxHp", "pctOfDamage", "scope", "seconds", "perTick", "name"},
+    "shield":   {"magnitude", "pctMaxHp", "pctOfHealed", "scope", "seconds", "name"},
+    "mod":      {"target", "field", "op", "value", "addFx"},
+}
+FX_EVENTS = {"cast", "hit", "crit", "dotTick", "kill", "combatStart", "periodic", "stackSpent", "stackReached",
+             "takeHit", "block", "deflect", "dodge", "buffApplied"}
+FX_WHEN = {"on", "from", "chance", "icdSeconds", "every", "resource", "amount", "name"}
+FX_POOLS = {"actionPoints", "stamina", "divinity", "rage", "performance", "soulweave", "vengeance", "stealthMeter"}
+FX_STACKS = {"Chill", "Arcane Mastery", "Smolder", "Soul Spark", "Soul Investiture", "Curse", "Spell Twisting",
+             "Stealth", "Sly Flourish", "Vengeance"}
+
+def _fx_extra_stacks():
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "plans", "effect_vocabulary_resources.json")
+    try:
+        with open(p, "r", encoding="utf-8") as f:
+            return set(json.load(f).get("stacks", []))
+    except (OSError, ValueError):
+        return set()
+
+def _fx_check_record(rec, where, errs, stacks):
+    if not isinstance(rec, dict):
+        errs.append(f"{where}: record is not an object"); return
+    kind = rec.get("kind")
+    if kind not in FX_KINDS:
+        errs.append(f"{where}: unknown kind {kind!r}"); return
+    bad = set(rec) - FX_COMMON - FX_KINDS[kind]
+    if bad:
+        errs.append(f"{where}: {kind} has fields outside the vocabulary: {sorted(bad)}")
+    w = rec.get("when")
+    if w is not None:
+        if not isinstance(w, dict) or w.get("on") not in FX_EVENTS:
+            errs.append(f"{where}: bad trigger {w!r}")
+        elif set(w) - FX_WHEN:
+            errs.append(f"{where}: trigger fields outside the vocabulary: {sorted(set(w) - FX_WHEN)}")
+    if kind == "stack" and rec.get("resource") not in stacks:
+        errs.append(f"{where}: unknown stack resource {rec.get('resource')!r}")
+    if kind == "resource" and rec.get("pool") not in FX_POOLS:
+        errs.append(f"{where}: unknown pool {rec.get('pool')!r}")
+    for k in ("magnitude", "count", "amount", "seconds", "perTick", "ticks", "pct", "pctMaxHp", "pctOfBar"):
+        v = rec.get(k)
+        if v is not None and not isinstance(v, (int, float)):
+            errs.append(f"{where}: {k} must be a number, got {v!r}")
+    if kind == "proc":
+        for i, sub in enumerate(rec.get("effects") or []):
+            _fx_check_record(sub, f"{where}.effects[{i}]", errs, stacks)
+    if kind == "mod":
+        for i, sub in enumerate(rec.get("addFx") or []):
+            _fx_check_record(sub, f"{where}.addFx[{i}]", errs, stacks)
+
+def validate_fx(data):
+    """Return a list of error strings for every `fx` record in classes.json data."""
+    errs, stacks = [], FX_STACKS | _fx_extra_stacks()
+    def walk(o, path):
+        if isinstance(o, dict):
+            if "fx" in o:
+                if not isinstance(o["fx"], list):
+                    errs.append(f"{path}/{o.get('name', '?')}: fx must be a list")
+                else:
+                    for i, rec in enumerate(o["fx"]):
+                        _fx_check_record(rec, f"{path}/{o.get('name', '?')}.fx[{i}]", errs, stacks)
+            for k, v in o.items():
+                if k != "fx": walk(v, path + "/" + str(o.get("name", k)) if isinstance(v, (dict, list)) else path)
+        elif isinstance(o, list):
+            for x in o: walk(x, path)
+    walk(data, "")
+    return errs
+
 def convert_file(source_name, output_name, var_name):
     source_path = os.path.join(SOURCE_DIR, source_name)
     output_path = os.path.join(OUTPUT_DIR, output_name)
@@ -67,6 +148,14 @@ def convert_file(source_name, output_name, var_name):
     except json.JSONDecodeError as e:
         print(f"  FAIL  {source_name}: invalid JSON ({e}) — output left unchanged")
         return False
+
+    # POWER-TAGS-2: the effect vocabulary is enforced on classes.json (step 2.1).
+    if source_name == "classes.json":
+        fx_errs = validate_fx(data)
+        if fx_errs:
+            print(f"  FAIL  {source_name}: {len(fx_errs)} effect record(s) outside the vocabulary - output left unchanged")
+            for e in fx_errs[:25]: print(f"          {e}")
+            return False
 
     header = build_header(source_name)
 
