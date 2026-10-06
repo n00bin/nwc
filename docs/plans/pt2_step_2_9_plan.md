@@ -51,7 +51,7 @@ the peak, scoring uses the simulated value). Everything stays local-only until t
 | Gap | Question | Recommended |
 |---|---|---|
 | 2.9-A | Bard songs: which songs can the simulator play? | **LOCKED 2026-10-06 (n00b: "we have tagged everything so everything that can and can not already holds a tag") = Recommended, availability from the tags.** Every song in the paragon's `powers.songs` list is playable (no slot count in the data); `requiresFeat` gates the Reprised Carols (Gambler); `tags.songType` (ballad / elemental / heal / utility) tells the rule-built rotation what each does; songs whose value is healing or utility do nothing for the damage score. The search tries each elemental song and each ballad and keeps the best. The old "active song" picker retires for Bards on the fx simulator; the `songsActive` class input becomes a simulated build state for scoring (the snapshot view keeps its value). |
-| 2.9-B | Quick play: who decides which song sits in the quick play slot? | Open. |
+| 2.9-B | Quick play: who decides which song sits in the quick play slot? | **LOCKED 2026-10-06 (n00b: "the optimizer is supposed to be doing the pick not the user; the only thing the user picks are the optimizer settings").** No player picker. The search decides: it tries no quick play and each eligible song in the slot (up to 1, Minstrel 2 with Natural Talents; manual-only songs excluded) and keeps the most damage; the panel shows the choice and what quick-playing each song would cost. RULE FOR THE REST OF PT2: in-game choices are made by the search, never a player picker. |
 | 2.9-C | Spell Mastery: who picks the encounter in the slot? | Open. |
 
 ## Build order (one commit each, local only)
