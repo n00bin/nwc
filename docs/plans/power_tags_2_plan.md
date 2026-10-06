@@ -8,6 +8,8 @@ today because it cannot get powers right or match gear to powers.
 
 ## Ground rules for every step
 
+- **ONE go-live at the end (n00b 2026-10-06):** "I will not go live until the whole thing is built and working, because what is currently live is working and I don't want to break that with a system that is not completely built." Every stage stays behind the local-only flags; checkpoints 1.7 and 2.10 become local checks, not go-lives. The live switch flips once, after Stage 4 is built, checked locally and approved.
+
 - One small step per commit. Push both repos after each step that touches data (`../data` is live and shared with
   other sessions; never build or push `data/*.js` blind).
 - `python3 build-data.py` after every source JSON edit.
