@@ -1,5 +1,11 @@
 # Data Issues To Investigate
 
+## OPEN artifact call captures (2026-10-06, PT2 step 2.5)
+These count ZERO in the call window until a tooltip screenshot gives the missing number (list: `docs/plans/artifact_window_dryrun.md`).
+- **Length missing:** Mythallar Fragment (damage resistance -15% "for duration"), Xeleth's Blast Scepter (-15%), Black Dragon's Mark (-10%), Burning Hope (all 5 ranks, +Power self buff), Flayed Storyteller's Journal (+5% damage "after 15 s"), Darkened Storyteller's Journal (+5% necrotic weapon damage per stack).
+- **Amount missing:** Sigil of the Barbarian (the value at one target; 14% is the maximum), Beacon of Simril (the Power buff at 6 stacks), Globe of the Third Eye (effect unknown).
+- **Assumed (counted, labelled; a tooltip would confirm):** Frozen Storyteller's Journal 15 s, Decanter of Atropal Essence full 10%, Book of Vile Darkness 1 s, Envenomed Storyteller's Journal 15 s, Demogorgon's Reach 18%, Dragonbone Blades 10 s, Alaric's Artillery Beacon 5%.
+
 ## OPEN Bard check for n00b (2026-10-06, PT2 step 2.4-F)
 - **Lore's "Critical Severity Taken +10%" and the 120% cap.** Counted OUTSIDE your Critical Severity cap (provisional, n00b lock 2.4-F). Test: on a Songblade at 120% Critical Severity, compare crit numbers on a target dummy with and without Lore's debuff. Bigger crits with Lore = keep; no change = switch to inside the cap.
 

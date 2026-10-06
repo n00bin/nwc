@@ -58,7 +58,11 @@ opens the window and fires the call in it.
 |---|---|---|
 | 2.5-A | When does the window open? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** The existing artifact cadence setting (default 60 s): the first window opens when the first full rotation ends, then one every cadence seconds to the fight end. The artifact fires in a window when off cooldown (a 180 s artifact every third window); the mount combat power fires in every window. Nothing new to set. |
 | 2.5-B | The Party section's always-on buffs (ally companion buffs, ally mount auras, Pack): whole fight, or the window only? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Passive party buffs (ally companion buffs, ally mount auras, Pack, ally CA grants and debuffs) stay as today, all fight. The window adds only timed effects: your artifact and your mount combat power. Timed party effects (an ally artifact, a banner) would go inside the window if ever modelled; none exist in the Party section today. |
-| 2.5-C | Approve the artifact extraction list (`docs/plans/artifact_window_dryrun.md`). | Open. |
+| 2.5-C | Approve the artifact extraction list (`docs/plans/artifact_window_dryrun.md`). | **APPROVED 2026-10-06 (n00b: approve)**, including the 7 assumed rows; applied in build step 2. |
+
+**Gap list complete 2026-10-06.** Rescan found nothing new: every mount combat power has a 60 s recharge (98 of 98), so
+it fires in every window at the default cadence; the simulator still checks its cooldown, so a longer cadence or a
+future slower power behaves like the artifact. The 13 rows missing a number are logged in `docs/data_issues.md`.
 
 ## Build order (one commit each, local only)
 
