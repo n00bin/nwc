@@ -169,7 +169,8 @@ The step 2.3 parity check must show exactly these differences and nothing else.
 
 1. Primal Fury: today's simulator casts it every 6 s at 600. New data needs 40 Rage (only known income counts) and scales 200 at full stamina to 600 at empty (your stamina slider, default full = 200).
 2. Bounding Slam: today's simulator always uses 80. New data uses 120 while Battlerage / Unstoppable is up.
-3. Everything else today's simulator does not model for Barbarian (Rage, Battlerage windows, Relentless Slash and Battle Fury buffs, Trample the Fallen, feats) starts counting where the data has numbers.
+3. Hidden Daggers (found in the step 2.3 check): today's simulator counts only the 100 throw. New data adds its Surprise Attack (+150 on your next attack that is not Hidden Daggers).
+4. Everything else today's simulator does not model for Barbarian (Rage, Battlerage windows, Relentless Slash and Battle Fury buffs, Trample the Fallen, feats) starts counting where the data has numbers.
 
 ## In-game checks this batch adds to the test list
 
