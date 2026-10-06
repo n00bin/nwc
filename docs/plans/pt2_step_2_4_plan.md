@@ -1,6 +1,6 @@
 # POWER-TAGS-2 step 2.4: per-hit multipliers (plan)
 
-Written 2026-10-06. Nothing here is built yet. Part of `docs/plans/power_tags_2_plan.md`, Stage 2. Everything stays
+Written 2026-10-06. **Built locally 2026-10-06** (commits 2.4.1 to 2.4.3; results in the step log, `docs/audit/power_tag_review_2026-09-09.md`). Part of `docs/plans/power_tags_2_plan.md`, Stage 2. Everything stays
 local-only (one go-live at the very end, n00b 2026-10-06).
 
 **The step in one line:** every hit the simulator lands is turned into real damage at that moment, using the build's

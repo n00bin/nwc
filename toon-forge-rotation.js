@@ -23,8 +23,10 @@
    build; this file only simulates. Also loadable in node for tests.
 
    Output magnitudes are RAW power magnitudes (the same scale the rate model
-   used); stat multipliers (Power, crit, Damage Bonus...) are applied later by
-   computeDpsExpectedDamage. Stat-side mechanics (Warlock's Curse, Soul Spark
+   used). The page's damage score does not multiply them; the optimizer scales
+   its per-hit score by magnitude/s. PT2 step 2.4: simulateFx can also score
+   every hit through input.scoreHit (the page passes dpsHitDamage with the
+   buffs up at that moment) and returns damageTotal / dps. Stat-side mechanics (Warlock's Curse, Soul Spark
    stacks, Investiture stacks) come back as `derived` numbers for the engine.
    ============================================================ */
 (function (root) {
@@ -662,7 +664,7 @@
     const condStatRecs = [];
     function statKey(ow, r) { return ow.name + "|" + r.kind + "|" + (r.name || "") + "|" + JSON.stringify(r.stats) + "|" + JSON.stringify(r.appliesTo || null); }
     function statApply(ow, r) {
-      if (!scoreHit || !r.stats || r.seconds == null && r.gate && !r.when) return;
+      if (!(scoreHit || input.liveRecharge) || !r.stats || r.seconds == null && r.gate && !r.when) return;
       if (r.seconds == null && !r.gate && !r.when && !isPower(ow) && ow.type !== "song") return;
       const f = (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate))) ? gateFrac(r.gate) : 1;
       statUp.set(statKey(ow, r), { rec: r, until: r.seconds != null ? t + num(r.seconds) : 1e12, f: f, owner: ow.name });
@@ -679,6 +681,13 @@
       statUp.forEach(function (v) { if (v.until > t && v.f > 0 && hitMatches(v.rec.appliesTo, hit, ow)) out.push({ kind: v.rec.kind, name: v.rec.name || v.owner, stats: v.rec.stats, f: v.f }); });
       condStatRecs.forEach(function (c) { const f = gateFrac(c.rec.gate); if (f > 0 && hitMatches(c.rec.appliesTo, hit, ow)) out.push({ kind: c.rec.kind, name: c.rec.name || c.owner, stats: c.rec.stats, f: f }); });
       return out;
+    }
+    // Recharge Speed from buffs up now (timed and gated), in % points
+    function rechargeBonusNow() {
+      let b = 0;
+      statUp.forEach(function (v) { if (v.until > t && v.rec.kind === "buff" && v.rec.stats["Recharge Speed"]) b += num(v.rec.stats["Recharge Speed"]) * v.f; });
+      condStatRecs.forEach(function (c) { if (c.rec.kind === "buff" && c.rec.stats["Recharge Speed"]) b += num(c.rec.stats["Recharge Speed"]) * gateFrac(c.rec.gate); });
+      return b;
     }
     function scoreLanded(ow, recName, m, isTick, offMain, rec) {
       const tg = (ow.obj && ow.obj.tags) || {};
@@ -1031,7 +1040,7 @@
     })();
 
     buildListeners();
-    if (scoreHit) owners.forEach(function (ow) { fxOf(ow.obj).forEach(function (r) {
+    if (scoreHit || input.liveRecharge) owners.forEach(function (ow) { fxOf(ow.obj).forEach(function (r) {
       if ((r.kind === "buff" || r.kind === "debuff") && r.stats && r.seconds == null && r.gate && !r.when && r.op !== "remove") condStatRecs.push({ rec: r, owner: ow.name });
     }); });
     // combat start: mechanics first (they set resources), then features, feats, powers
@@ -1101,6 +1110,11 @@
         if (!acted && !fillerStep) busyUntil = t + dt;
       }
       ap += AP_PER_SEC * dt;
+      // 2.4-E: a running encounter cooldown loses dt x bonus of base time while a Recharge Speed buff is up
+      if (input.liveRecharge) {
+        const rb = rechargeBonusNow();
+        if (rb > 0) Object.keys(st).forEach(function (k) { if (k.indexOf("encounter:") === 0) st[k].ready = st[k].ready.map(function (r) { return r > t ? Math.max(t, r - dt * rb / 100 / (1 + rsi)) : r; }); });
+      }
       t += dt;
     }
     flushEvents();

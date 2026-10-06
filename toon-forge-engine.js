@@ -734,5 +734,7 @@
     _ratingToPercent: ratingToPercent,
     _ratingCapForStat: ratingCapForStat,
     _initResult: initResult,
+    // PT2 step 2.4: the simulator's per-hit scorer routes buff stats through the same groups
+    damageBucket: function (statName) { return DAMAGE_BUCKET_MAP[statName] || null; },
   };
 })();

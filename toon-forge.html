@@ -14016,6 +14016,81 @@
       _rotSimCache = { key: key, result: res };
       return res;
     }
+    // ===== PT2 step 2.4: fight damage, scored hit by hit (local only; a new number beside the score, 2.4-A) =====
+    // Rules (all on; tests switch them off one at a time through window.__pt2HitRules):
+    //   buffStats    buff / debuff stats up at the moment of the hit count on it (clamped per hit, 2.4-D)
+    //   slotPerHit   at-will / encounter / daily / damage-over-time / single-target bonuses by the hit, not the profile mix (2.4-C)
+    //   typePerHit   magical or physical bonus by the hit's own damage type (2.4-C)
+    //   simOwnsKit   the kit's own conditional buffs and slotted-power buffs come from the simulator only (2.4-B)
+    //   liveRecharge Recharge Speed buffs speed cooldowns only while up (2.4-E)
+    //   critSevTaken Critical Severity Taken debuffs count, outside your cap (2.4-F, provisional)
+    function pt2HitRules() {
+      return Object.assign({ buffStats: true, slotPerHit: true, typePerHit: true, simOwnsKit: true, liveRecharge: true, critSevTaken: true }, window.__pt2HitRules || {});
+    }
+    // Kit owners (features, feats, mechanics) whose fx carry stat buffs the simulator counts (timed, gated or triggered).
+    function pt2SimOwnedNames(kit) {
+      const out = new Set();
+      [].concat(kit.mechanics || [], kit.features || [], kit.feats || [], kit.always || []).forEach(o => {
+        if (o && o.name && (o.fx || []).some(r => (r.kind === "buff" || r.kind === "debuff") && r.stats && r.op !== "remove" && (r.seconds != null || r.gate || r.when))) out.add(o.name);
+      });
+      return out;
+    }
+    const PT2_STAT_LOCAL = { "Power": "power", "Combat Advantage": "ca", "Critical Severity": "critSev", "Critical Strike": "critStrike", "Accuracy": "accuracy" };
+    const PT2_SLOT_KEYS = ["atwill", "encounter", "daily", "ranged", "melee", "single", "dot"];
+    function pt2MakeScoreHit(ctx, rules) {
+      const bucketOf = n => (TOON_FORGE_ENGINE.damageBucket ? TOON_FORGE_ENGINE.damageBucket(n) : null);
+      const sl = ctx.db.slot || {}, mix = ctx.POWER_MIX;
+      return function (m, hit, active) {
+        const hm = { add: {}, generic: 0, base: 0, dmgTaken: 0, critSevTaken: 0, noBuffMult: !!rules.simOwnsKit };
+        const typeAdd = { magical: 0, physical: 0 }, slotAdd = {};
+        if (rules.buffStats) for (const a of active) for (const k in a.stats) {
+          const v = (+a.stats[k] || 0) * a.f; if (!v) continue;
+          if (a.kind === "debuff") {
+            if (k === "Damage Taken") hm.dmgTaken += v;
+            else if (k === "Damage Resistance") hm.dmgTaken -= v;   // Rimefire Weaving: resistance down = damage taken up
+            else if (k === "Critical Severity Taken" && rules.critSevTaken) hm.critSevTaken += v;
+            continue;   // enemy Outgoing Damage, Awareness, Critical Avoidance: no change to your hit
+          }
+          if (PT2_STAT_LOCAL[k]) { hm.add[PT2_STAT_LOCAL[k]] = (hm.add[PT2_STAT_LOCAL[k]] || 0) + v; continue; }
+          const b = bucketOf(k); if (!b) continue;   // defensive / healing stats: not damage
+          if (b === "generic") hm.generic += v; else if (b === "base") hm.base += v;
+          else if (b === "magical" || b === "physical") typeAdd[b] += v;
+          else if (b.indexOf("slot.") === 0) slotAdd[b.slice(5)] = (slotAdd[b.slice(5)] || 0) + v;
+        }
+        const ht = (hit.damageType === "physical" || hit.damageType === "projectile") ? "physical" : hit.damageType === "magical" ? "magical" : ctx.dmgType;
+        const ty = rules.typePerHit ? ht : ctx.dmgType;
+        hm.typeBoost = (ctx.db[ty] || 0) + typeAdd[ty];
+        let w = mix;
+        if (rules.slotPerHit) {
+          const area = hit.offMain || hit.targets === "area" || hit.targets === "others";
+          const del = hit.tags && hit.tags.delivery;
+          w = { atwill: hit.type === "atWill" ? 1 : 0, encounter: hit.type === "encounter" ? 1 : 0, daily: hit.type === "daily" ? 1 : 0,
+            ranged: del === "ranged" ? 1 : del === "melee" ? 0 : mix.ranged, melee: del === "melee" ? 1 : del === "ranged" ? 0 : mix.melee,
+            single: area ? 0 : 1, dot: hit.isTick ? 1 : 0 };
+        }
+        hm.slotPct = PT2_SLOT_KEYS.reduce((acc, k) => acc + (w[k] || 0) * ((sl[k] || 0) + (slotAdd[k] || 0)), 0);
+        return m * dpsHitDamage(ctx, 100, hm).expected / 100;
+      };
+    }
+    let _rotDmgCache = { key: "", result: null };
+    function getRotationDamage() {
+      if (!pt2UsesFxSim() || !getRotationSim()) return null;
+      const rules = pt2HitRules();
+      getEngineResult();
+      const key = _engineCacheKey + JSON.stringify(rules);
+      if (_rotDmgCache.key === key && _rotDmgCache.result) return _rotDmgCache.result;
+      let ctx = null, inp = null;
+      if (rules.simOwnsKit) {
+        window.__pt2SimOwnsKit = pt2SimOwnedNames(buildRotationSimInput().kit);
+        try { ctx = dpsBuildContext(); inp = buildRotationSimInput(); } finally { window.__pt2SimOwnsKit = null; }
+      } else { ctx = dpsBuildContext(); inp = buildRotationSimInput(); }
+      let res = null;
+      if (ctx) res = TF_ROTATION_SIM.simulateFx(Object.assign(inp, { scoreHit: pt2MakeScoreHit(ctx, rules), liveRecharge: !!rules.liveRecharge }));
+      getEngineResult(); getRotationSim();   // put the normal caches back
+      _rotDmgCache = { key: key, result: res };
+      return res;
+    }
+    window.getRotationDamage = getRotationDamage;
     // Engine-side read: never triggers a fresh simulation (buildEngineCharacter runs
     // inside getEngineResult, which the adapter itself reads) - peek the cache.
     function peekRotationSim() { return rotationSimEnabled() ? _rotSimCache.result : null; }
@@ -14124,6 +14199,13 @@
         const d = sim.derived || {};
         const pct = v => (v == null ? "-" : Math.round(v * 100) + "%");
         h += '<div style="margin-top:0.6rem;font-size:0.85rem;"><strong>' + Math.round(sim.mps) + ' magnitude/s</strong> over ' + sim.fightSeconds + ' s' + (sim.defaultOrderUsed ? ' (default order)' : '') + ' · ' + sim.cycles + ' loops</div>';
+        // PT2 step 2.4 (local only): fight damage scored hit by hit, beside magnitude (2.4-A: the damage score is unchanged)
+        const fd = (sim.engine === "fx" && typeof getRotationDamage === "function") ? getRotationDamage() : null;
+        if (fd && fd.dps != null) {
+          const topD = Object.entries(fd.damageByOwner || {}).sort((a, b) => b[1] - a[1]).slice(0, 5);
+          h += '<div style="margin-top:0.2rem;font-size:0.85rem;"><strong>' + Math.round(fd.dps).toLocaleString() + ' damage/s</strong> <span class="hint">each hit scored with the buffs and debuffs up at that moment</span></div>';
+          if (topD.length) h += '<div class="hint" style="margin-top:0.1rem;">Top damage: ' + topD.map(e => esc(e[0]) + ' ' + Math.round(e[1] / fd.fightSeconds).toLocaleString() + '/s').join(', ') + '</div>';
+        }
         const chips = [];
         if (d.curseUptime != null && (inp.powers.encounter.some(p => p.tags && p.tags.curse) || inp.powers.daily.some(p => p.tags && p.tags.curse))) chips.push('Curse up ' + pct(d.curseUptime) + ' (' + d.curseApplies + ' applied, ' + d.curseConsumes + ' consumed, ' + d.curseExpiries + ' expired)');
         if (d.sparksAvg != null) chips.push('Soul Sparks avg ' + d.sparksAvg.toFixed(1) + ' (peak ' + d.sparksMax + '), ' + d.scorchCasts + ' Scorch casts' + (d.scorchCasts ? ' (one every ' + (sim.fightSeconds / d.scorchCasts).toFixed(1) + ' s)' : ''));
@@ -14952,6 +15034,8 @@
             percentStats,
             ratingStats:  cf.ratingStats  || {}
           });
+          // PT2 step 2.4-B: the per-hit run leaves the kit's conditional buffs to the simulator
+          if (window.__pt2SimOwnsKit && window.__pt2SimOwnsKit.has(cf.name)) continue;
           // POWER-TAGS-2 step 1.2: a feature carrying a PT2 gate is resolved by the
           // condition table instead of the old conditional path (local-only flag).
           if ((cf.gate || cf.gateParts || cf.pt2Stage || cf.pt2View) && typeof pt2PanelEnabled === "function" && pt2PanelEnabled()) {
@@ -16370,12 +16454,14 @@
         const _mk = pt2Kit(s);
         for (const m of classMechanicsFor(s.class, s.paragon)) {
           if (!m || !(m.gate || m.gateParts)) continue;
+          if (window.__pt2SimOwnsKit && window.__pt2SimOwnsKit.has(m.name)) continue;
           for (const gb of pt2GatedBuffs(Object.assign({}, m, { gateStats: m.gateStats || {} }), s, _mk)) { gb.source = gb.source.replace("Class Feature: ", "Class mechanic: "); buffs.push(gb); }
         }
       }
       // Class mechanics (Combat scenario Class tab, n00b 2026-09-08): a mechanic the
       // player marks active contributes its data-driven effects[] (classes.json).
       for (const m of ((typeof classMechanicsFor === "function" && (typeof classTabEnabled !== "function" || classTabEnabled())) ? classMechanicsFor(s.class, s.paragon) : [])) {
+        if (window.__pt2SimOwnsKit && window.__pt2SimOwnsKit.has(m.name)) continue;
         let a = s.activeMechanics && s.activeMechanics[m.name];
         // ROT-1: when the simulator is on, Soul Spark and Soul Investiture stacks are
         // derived from the rotation timeline (time-weighted averages), not the sliders.
@@ -16644,7 +16730,7 @@
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats, rot: state.rotationSteps, rop: state.rotationOpener, sat: state.scorchAtSparks,
         // POWER-TAGS-2: everything the condition resolver reads must invalidate the cache
-        pt2: [state.pt2Fight || null, state.enemyCount, state.enemyHealthPct, (typeof pt2ScoringMode !== "undefined") ? pt2ScoringMode : "", window.__pt2ForceGates || 0, (typeof window.__pt2FlagOverride === "boolean") ? window.__pt2FlagOverride : null]
+        pt2: [state.pt2Fight || null, state.enemyCount, state.enemyHealthPct, (typeof pt2ScoringMode !== "undefined") ? pt2ScoringMode : "", window.__pt2ForceGates || 0, (typeof window.__pt2FlagOverride === "boolean") ? window.__pt2FlagOverride : null, window.__pt2SimOwnsKit ? [...window.__pt2SimOwnsKit].join("|") : ""]
       });
       if (key === _engineCacheKey && _engineResult) return _engineResult;
       _engineCacheKey = key;
