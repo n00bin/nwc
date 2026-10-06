@@ -681,8 +681,14 @@
       if (!(scoreHit || input.liveRecharge) || !(r.stats || r.ratingStats) || r.seconds == null && r.gate && !r.when) return;
       if (r.seconds == null && !r.gate && !r.when && !isPower(ow) && ow.type !== "song") return;
       const f = (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate))) ? gateFrac(r.gate) : 1;
-      statUp.set(statKey(ow, r), { rec: r, until: r.seconds != null ? t + num(r.seconds) : 1e12, f: f, owner: ow.name });
+      statUp.set(statKey(ow, r), { rec: r, until: r.seconds != null ? t + num(r.seconds) : 1e12, f: f, owner: ow.name, all: debuffAll(r, ow) });
       if (f > 0) statOwnersOn[ow.name] = true;
+    }
+    // 2.7-C: a debuff covers every enemy when it (or, untagged, its power) is area; otherwise the main target only
+    function debuffAll(r, ow) {
+      if (r.kind !== "debuff") return true;
+      const tg = r.targets || ((isPower(ow) || ow.type === "song") && ow.obj && ow.obj.tags ? ow.obj.tags.targets : null);
+      return tg === "area" || tg === "others";
     }
     function statRemove(name) { statUp.forEach(function (v) { if (v.rec.name === name) v.until = -1; }); }
     function hitMatches(af, hit, ow) {
@@ -693,8 +699,8 @@
     }
     function activeStats(hit, ow) {
       const out = [];
-      statUp.forEach(function (v) { if (v.until > t && v.f > 0 && hitMatches(v.rec.appliesTo, hit, ow)) out.push({ kind: v.rec.kind, name: v.rec.name || v.owner, stats: v.rec.stats || {}, ratingStats: v.rec.ratingStats || null, f: v.f }); });
-      condStatRecs.forEach(function (c) { const f = gateFrac(c.rec.gate); if (f > 0) statOwnersOn[c.owner] = true; if (f > 0 && hitMatches(c.rec.appliesTo, hit, ow)) out.push({ kind: c.rec.kind, name: c.rec.name || c.owner, stats: c.rec.stats || {}, ratingStats: c.rec.ratingStats || null, f: f }); });
+      statUp.forEach(function (v) { if (v.until > t && v.f > 0 && !(input.areaTargets && hit.offMain && !v.all) && hitMatches(v.rec.appliesTo, hit, ow)) out.push({ kind: v.rec.kind, name: v.rec.name || v.owner, stats: v.rec.stats || {}, ratingStats: v.rec.ratingStats || null, f: v.f }); });
+      condStatRecs.forEach(function (c) { const f = gateFrac(c.rec.gate); if (f > 0) statOwnersOn[c.owner] = true; if (f > 0 && !(input.areaTargets && hit.offMain && !c.all) && hitMatches(c.rec.appliesTo, hit, ow)) out.push({ kind: c.rec.kind, name: c.rec.name || c.owner, stats: c.rec.stats || {}, ratingStats: c.rec.ratingStats || null, f: f }); });
       return out;
     }
     // Recharge Speed from buffs up now (timed and gated), in % points
@@ -736,19 +742,28 @@
       if (isTick) fire("dotTick", { ow: ow, recName: recName });
       if (input.expectedProcs && m > 0) { const pc = lastPCrit != null ? lastPCrit : num(input.critChance, 0); if (pc > 0) fire("crit", { ow: ow, recName: recName, share: Math.min(1, pc) }); }
     }
-    function hitTargets(r) {
-      if (r.targets !== "others") return 1;
-      const n = Math.max(0, num(input.enemyCount, 1) - 1);
-      return r.maxTargets != null ? Math.min(num(r.maxTargets), n) : n;
+    // PT2 step 2.7 (input.areaTargets; locks 2.7-A/B): an area hit lands once per enemy up to the enemy count
+    // (a stored cap where there is one); a record with no tag follows its power; "mixed" with one magnitude = single.
+    function hitTargets(r, ow) {
+      const tg = r.targets || (input.areaTargets && ow && ow.obj && ow.obj.tags && ow.obj.tags.targets) || "single";
+      if (tg === "others") {
+        const n = Math.max(0, num(input.enemyCount, 1) - 1);
+        return r.maxTargets != null ? Math.min(num(r.maxTargets), n) : n;
+      }
+      if (tg === "area" && input.areaTargets) {
+        const n = Math.max(1, Math.round(num(input.enemyCount, 1))), cap = r.maxTargets != null ? r.maxTargets : (ow && ow.obj ? ow.obj.maxTargets : null);
+        return cap != null ? Math.max(1, Math.min(num(cap), n)) : n;
+      }
+      return 1;
     }
     // Schedule a hit / dot record. `spent` = stacks this cast consumed (scalesWith).
     function scheduleDamage(ow, r, start, spent, magOverride) {
-      const n = hitTargets(r) * (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate)) ? gateFrac(r.gate) : 1); if (n <= 0) return 0;
+      const n = hitTargets(r, ow) * (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate)) ? gateFrac(r.gate) : 1); if (n <= 0) return 0;
       const sw = r.scalesWith ? num(r.scalesWith.per) * num(spent[r.scalesWith.resource], 0) : 0;
       if (r.kind === "hit") {
         const m = (magOverride != null ? magOverride : num(r.magnitude, 0)) + sw;
         const c = Math.max(1, num(r.count, 1));
-        for (let i = 0; i < c; i++) schedule(start + num(r.delaySeconds, 0), function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, m, false, k > 0 || r.targets === "others", r); });
+        for (let i = 0; i < c; i++) schedule(start + num(r.delaySeconds, 0), function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, m * Math.min(1, n - k), false, k > 0 || r.targets === "others", r); });
         return m * c * n;
       }
       if (r.kind === "dot") {
@@ -762,7 +777,7 @@
           liveSt.push(start + sec); dotStacks[key] = liveSt;
         }
         if (r.stacking === "refresh") { for (let ei = events.length - 1; ei >= 0; ei--) if (events[ei].tag === key) events.splice(ei, 1); }
-        for (let i = 1; i <= ticks; i++) schedule(start + sec * i / ticks, function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, per, true, k > 0 || r.targets === "others", r); }, key);
+        for (let i = 1; i <= ticks; i++) schedule(start + sec * i / ticks, function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, per * Math.min(1, n - k), true, k > 0 || r.targets === "others", r); }, key);
         return total * n;
       }
       return 0;
@@ -983,6 +998,8 @@
     // ("AxB" pulses over the channel or duration, combo steps, a missing-health range, one hit).
     function scheduleTopLevel(ow, kind, castSec, mainMods, s) {
       const p = ow.obj;
+      const nT = (input.areaTargets && p.tags && p.tags.targets === "area") ? hitTargets({ targets: "area" }, ow) : 1;
+      const landAll = function (m) { for (let k = 0; k < nT; k++) land(ow, ow.name, m, false, k > 0); };
       let magRaw = mainMagnitude(p); if (magRaw == null) magRaw = p.magnitude;
       const pm = parseMag(magRaw);
       const applyMain = function (m) { mainMods.forEach(function (md) { if (md.field !== "magnitude") return; m = md.op === "add" ? m + num(md.value) : md.op === "mult" ? m * num(md.value) : num(md.value); }); return m; };
@@ -990,16 +1007,16 @@
         const ch = num(p.channelSeconds, 0) > 0, sec = ch ? num(p.channelSeconds) : (num(p.durationSeconds, 0) || castSec);
         const per = applyMain(pm.per);
         if (per <= 0) return 0;
-        for (let i = 1; i <= pm.count; i++) schedule(t + (ch ? 0 : castSec) + sec * i / pm.count, function () { land(ow, ow.name, per, false); });
-        return per * pm.count;
+        for (let i = 1; i <= pm.count; i++) schedule(t + (ch ? 0 : castSec) + sec * i / pm.count, function () { landAll(per); });
+        return per * pm.count * nT;
       }
       if (Array.isArray(p.comboMagnitudes) && p.comboMagnitudes.length) {
         const i = ((s ? s.uses : 1) - 1) % p.comboMagnitudes.length; const m = applyMain(num(p.comboMagnitudes[i], 0));
-        schedule(t + castSec, function () { land(ow, ow.name, m, false); }); return m;
+        schedule(t + castSec, function () { landAll(m); }); return m * nT;
       }
       const m = applyMain(magRaw != null && mainMagnitude(p) != null ? pm.total : powerMagnitude(p, enemyHp));
-      if (m > 0) schedule(t + castSec, function () { land(ow, ow.name, m, false); });
-      return m;
+      if (m > 0) schedule(t + castSec, function () { landAll(m); });
+      return m * nT;
     }
 
     // ---- the spender mechanic (a mechanic whose fx consumes a stack with a minimum) ----
@@ -1109,7 +1126,7 @@
     }
     buildListeners();
     if (scoreHit || input.liveRecharge) owners.forEach(function (ow) { fxOf(ow.obj).forEach(function (r) {
-      if ((r.kind === "buff" || r.kind === "debuff") && (r.stats || r.ratingStats) && r.seconds == null && r.gate && !r.when && r.op !== "remove") condStatRecs.push({ rec: r, owner: ow.name });
+      if ((r.kind === "buff" || r.kind === "debuff") && (r.stats || r.ratingStats) && r.seconds == null && r.gate && !r.when && r.op !== "remove") condStatRecs.push({ rec: r, owner: ow.name, all: debuffAll(r, ow) });
     }); });
     // combat start: mechanics first (they set resources), then features, feats, powers
     fire("combatStart", {});
