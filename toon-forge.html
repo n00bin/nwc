@@ -14025,7 +14025,7 @@
     //   liveRecharge Recharge Speed buffs speed cooldowns only while up (2.4-E)
     //   critSevTaken Critical Severity Taken debuffs count, outside your cap (2.4-F, provisional)
     function pt2HitRules() {
-      return Object.assign({ buffStats: true, slotPerHit: true, typePerHit: true, simOwnsKit: true, liveRecharge: true, critSevTaken: true, callWindow: true }, window.__pt2HitRules || {});
+      return Object.assign({ buffStats: true, slotPerHit: true, typePerHit: true, simOwnsKit: true, liveRecharge: true, critSevTaken: true, callWindow: true, expectedProcs: true }, window.__pt2HitRules || {});
     }
     // Kit owners (features, feats, mechanics) whose fx carry stat buffs the simulator counts (timed, gated or triggered).
     function pt2SimOwnedNames(kit) {
@@ -14079,7 +14079,9 @@
             single: area ? 0 : 1, dot: hit.isTick ? 1 : 0 };
         }
         hm.slotPct = PT2_SLOT_KEYS.reduce((acc, k) => acc + (w[k] || 0) * ((sl[k] || 0) + (slotAdd[k] || 0)), 0);
-        return m * dpsHitDamage(ctx, 100, hm).expected / 100;
+        const one = dpsHitDamage(ctx, 100, hm);
+        hit.pCrit = one.pCrit;   // 2.6: on-crit records see this hit's crit chance (with the buffs up now)
+        return m * one.expected / 100;
       };
     }
     // 2.4-G (n00b 2026-10-06): a kit buff the simulator never turns on counts zero, and the panel says why.
@@ -14137,7 +14139,8 @@
       try { ctx = dpsBuildContext(); inp = buildRotationSimInput(); if (rules.callWindow) call = pt2CallInput(getEngineResult()); }
       finally { window.__pt2SimOwnsKit = null; window.__pt2SimOwnsCall = false; }
       let res = null;
-      if (ctx) res = TF_ROTATION_SIM.simulateFx(Object.assign(inp, { scoreHit: pt2MakeScoreHit(ctx, rules), liveRecharge: !!rules.liveRecharge, role: state.role || null },
+      if (ctx) res = TF_ROTATION_SIM.simulateFx(Object.assign(inp, { scoreHit: pt2MakeScoreHit(ctx, rules), liveRecharge: !!rules.liveRecharge, role: state.role || null,
+        expectedProcs: !!rules.expectedProcs, critChance: ctx.critStrike },
         call ? { callWindow: { every: tfCadence("artifact"), seconds: 10 }, call: call } : {}));
       if (res) {
         const on = new Set(res.statOwnersOn || []), owned = pt2SimOwnedNames(inp.kit);

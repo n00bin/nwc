@@ -644,6 +644,7 @@
     function inWindow() { for (let i = windows.length - 1; i >= 0; i--) if (t >= windows[i][0] - 1e-9 && t < windows[i][1]) return true; return false; }
     const statUp = new Map();   // key -> {rec, until, f}: timed buff / debuff records carrying stats, while up
     const statOwnersOn = {};    // owners whose stat records were on at least once (2.4-G: the rest are listed)
+    let lastPCrit = null;       // crit chance of the hit being landed (2.6)
     const timeline = []; const TIMELINE_MAX = 80;
     const stackTimeSum = {}, buffTime = {};
     const st = {};
@@ -709,12 +710,14 @@
         damageType: (rec && rec.damageType) || tg.damageType || (ow.obj && ow.obj.damageType) || null,
         targets: (rec && rec.targets) || tg.targets || null, isTick: !!isTick, offMain: !!offMain, proc: !!ow.proc };
       const d = scoreHit(m, hit, activeStats(hit, ow));
+      if (hit.pCrit != null) lastPCrit = hit.pCrit;   // the scorer reports the crit chance it used for this hit
       if (d > 0) { dmgTotal += d; dmgByOwner[ow.name] = (dmgByOwner[ow.name] || 0) + d; if (CW && inWindow()) dmgIn += d; }
       return d;
     }
     function land(ow, recName, mag, isTick, offMain, rec) {
       const pct = pctModsFor(ow.name, ow.type, recName);
       let m = mag * (1 + pct / 100);
+      lastPCrit = null;
       const d = (scoreHit && m > 0) ? scoreLanded(ow, recName, m, isTick, offMain, rec) : 0;
       if (m > 0 && !offMain) {
         for (let ei = 0; ei < echoes.length; ei++) {
@@ -731,6 +734,7 @@
       }
       fire("hit", { ow: ow, recName: recName });
       if (isTick) fire("dotTick", { ow: ow, recName: recName });
+      if (input.expectedProcs && m > 0) { const pc = lastPCrit != null ? lastPCrit : num(input.critChance, 0); if (pc > 0) fire("crit", { ow: ow, recName: recName, share: Math.min(1, pc) }); }
     }
     function hitTargets(r) {
       if (r.targets !== "others") return 1;
@@ -861,7 +865,7 @@
       for (let i = 0; i < listeners.length; i++) {
         const L = listeners[i], w = L.rec.when;
         if (w.on !== ev || L.castListener) continue;
-        if (ev === "hit" || ev === "dotTick") {
+        if (ev === "hit" || ev === "dotTick" || ev === "crit") {
           if (!fromMatch(L, ctx)) continue;
           if (w.name && ctx.recName !== w.name) continue;
         }
@@ -877,13 +881,32 @@
           continue;
         }
         if (w.every && (ev === "hit" || ev === "dotTick")) { L.count++; if (L.count % num(w.every) !== 0) continue; }
-        if (w.icdSeconds && t - L.lastFire < num(w.icdSeconds)) continue;
-        const chance = w.chance != null ? num(w.chance) / 100 : 1;
-        if (chance <= 0) continue;
-        L.lastFire = t;
-        if (chance < 1) continue;   // step 2.6: expected-value procs; fight facts that drive chance events are off by default
-        runRecord(asProc(L.ow), withRecMods(L.ow, L.rec), null, null);
+        procFire(L, ev === "crit" ? num(ctx.share, 0) : 1);
       }
+    }
+    // PT2 step 2.6 (input.expectedProcs; lock 2.6-A): a trigger with a chance below 100% (or a crit, whose share is the
+    // hit's crit chance) plays out as its expected value, no dice. Damage with no lockout adds its share on every
+    // event; anything else (and anything with a lockout) adds its chance to a running share and fires whole at 100%.
+    // Events inside a lockout add nothing. Without expectedProcs a chance below 100% never fires (as before).
+    function isDamageRec(r) { return r.kind === "hit" || r.kind === "dot" || (r.kind === "proc" && (r.effects || []).length > 0 && r.effects.every(isDamageRec)); }
+    function scaleRec(r, f) {
+      const c = Object.assign({}, r);
+      if (c.magnitude != null) c.magnitude = num(c.magnitude) * f;
+      if (c.perTick != null) c.perTick = num(c.perTick) * f;
+      if (c.kind === "proc") c.effects = (c.effects || []).map(function (e) { return scaleRec(e, f); });
+      return c;
+    }
+    function procFire(L, eventShare) {
+      const w = L.rec.when;
+      if (w.icdSeconds && t - L.lastFire < num(w.icdSeconds)) return;
+      const share = (w.chance != null ? num(w.chance) / 100 : 1) * eventShare;
+      if (share <= 0) return;
+      if (share >= 1 - 1e-9) { L.lastFire = t; runRecord(asProc(L.ow), withRecMods(L.ow, L.rec), null, null); return; }
+      if (!input.expectedProcs) return;
+      const r = withRecMods(L.ow, L.rec);
+      if (!w.icdSeconds && isDamageRec(r)) { runRecord(asProc(L.ow), scaleRec(r, share), null, null); return; }
+      L.acc = (L.acc || 0) + share;
+      if (L.acc >= 1 - 1e-9) { L.acc -= 1; L.lastFire = t; runRecord(asProc(L.ow), r, null, null); }
     }
     function fireCast(ow) {
       for (let i = 0; i < listeners.length; i++) {
@@ -891,12 +914,7 @@
         const w = L.rec.when;
         if (!filterMatch(w.from, ow)) continue;
         if (w.every) { L.count++; if (L.count % num(w.every) !== 0) continue; }
-        if (w.icdSeconds && t - L.lastFire < num(w.icdSeconds)) continue;
-        const chance = w.chance != null ? num(w.chance) / 100 : 1;
-        if (chance <= 0) continue;
-        L.lastFire = t;
-        if (chance < 1) continue;   // step 2.6: expected-value procs
-        runRecord(asProc(L.ow), withRecMods(L.ow, L.rec), null, null);
+        procFire(L, 1);
       }
     }
 
