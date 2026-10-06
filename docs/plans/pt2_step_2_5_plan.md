@@ -59,8 +59,11 @@ opens the window and fires the call in it.
 | 2.5-A | When does the window open? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** The existing artifact cadence setting (default 60 s): the first window opens when the first full rotation ends, then one every cadence seconds to the fight end. The artifact fires in a window when off cooldown (a 180 s artifact every third window); the mount combat power fires in every window. Nothing new to set. |
 | 2.5-B | The Party section's always-on buffs (ally companion buffs, ally mount auras, Pack): whole fight, or the window only? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Passive party buffs (ally companion buffs, ally mount auras, Pack, ally CA grants and debuffs) stay as today, all fight. The window adds only timed effects: your artifact and your mount combat power. Timed party effects (an ally artifact, a banner) would go inside the window if ever modelled; none exist in the Party section today. |
 | 2.5-C | Approve the artifact extraction list (`docs/plans/artifact_window_dryrun.md`). | **APPROVED 2026-10-06 (n00b: approve)**, including the 7 assumed rows; applied in build step 2. |
+| 2.5-D | Insignia bonuses triggered by the call (found from n00b's question): Predator's Instinct, Cavalry's Alarm / Warning, Cavalry's Haste, Artificer's Enticement / Persuasion, Tactician's Precision. Today each is a fight-long average off the cadence sliders. | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Fired by the simulator with the triggering action: the rating buffs as 20 s buffs from the mount power cast (per hit, clamped), the cooldown cuts as real cuts when the mount power / artifact / daily fires. Their averaged copies are left out of the new number (as 2.4-B); today's damage score is unchanged. Shepherd's Devotion is defensive and stays out. |
 
-**Gap list complete 2026-10-06.** Rescan found nothing new: every mount combat power has a 60 s recharge (98 of 98), so
+**Gap list complete 2026-10-06 (reopened once for 2.5-D).** Gear procs triggered by Daily / Encounter use
+(Umbral Convergence, Controlled Sandstorm, Battle Reserves, Malignant Energy) are step 2.6's timeline procs, not this
+step. Rescan found nothing else: every mount combat power has a 60 s recharge (98 of 98), so
 it fires in every window at the default cadence; the simulator still checks its cooldown, so a longer cadence or a
 future slower power behaves like the artifact. The 13 rows missing a number are logged in `docs/data_issues.md`.
 
@@ -72,6 +75,7 @@ future slower power behaves like the artifact. The 13 rows missing a number are 
    `data/artifacts.js`.
 3. Simulator: the fight script and the window; the artifact and mount power as owners cast at the window start;
    inside / outside totals. No-window check.
-4. Page: pass the artifact's `callFx` and the mount power records. Split check, attribution.
+4. Page: pass the artifact's `callFx`, the mount power records and the call-triggered insignia bonuses (2.5-D), with
+   their averaged copies left out of the new number. Split check, attribution.
 5. Rotation panel: the inside / outside split and the windows on the timeline. Page test, baseline, step log,
    `docs/toon_coverage.md`.
