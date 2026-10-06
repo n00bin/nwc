@@ -23,10 +23,10 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
   - heal 2000 over 12 s
   - Inspiration: magnitude set 0, - no hit (the 400x5 is the heal)
 - **Critical Tuning** (classFeatures)
-  - buff Critical Tuning Critical Severity +10% (you) for 20 s, on cast from song powers, - after a song that is not in a quick play slot
+  - buff Critical Tuning Critical Severity +10% (you) for 20 s, on cast from song powers not in a quick play slot, - after a song that is not in a quick play slot
 - **Truly Inspired** (classFeatures)
-  - buff Truly Inspired Damage Bonus +10% (you) for 20 s, on cast from song powers, Songblade only
-  - buff Truly Inspired Outgoing Healing +10% (you) for 20 s, on cast from song powers, Minstrel only
+  - buff Truly Inspired Damage Bonus +10% (you) for 20 s, on cast from song powers not in a quick play slot, Songblade only, - songs not in a quick play slot
+  - buff Truly Inspired Outgoing Healing +10% (you) for 20 s, on cast from song powers not in a quick play slot, Minstrel only
 - **Encore** (daily)
   - performance gain 100, - replays your last song for no Performance
 
@@ -45,12 +45,12 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
   - +1 Advancing Blade, on cast from atWill powers, ASSUMED, - the final hit of each at-will combo (counted per at-will cast)
   - buff Damage Bonus +1% (you), scaled by Advancing Blade stacks, - 1% per stack, 5 max
 - **Masterful Performance** (slottedClassFeatures)
-  - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Blaze Flamenco is up, - +50% on the song's added effects when played manually: +20 -> +30
-  - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Steel March is up, - +50% on the song's added effects when played manually: +20 -> +30
-  - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Tailwind Mambo is up, - +50% on the song's added effects when played manually: +20 -> +30
-  - buff Damage Bonus +1% (you), while Blaze Flamenco is up, - +2% -> +3%
-  - buff Damage Bonus +1% (you), while Steel March is up, - +2% -> +3%
-  - buff Damage Bonus +1% (you), while Tailwind Mambo is up, - +2% -> +3%
+  - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Blaze Flamenco is up and not quick-played: Blaze Flamenco, - +50% on the song's added effects when not quick-played: +20 -> +30
+  - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Steel March is up and not quick-played: Steel March, - +50% on the song's added effects when not quick-played: +20 -> +30
+  - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Tailwind Mambo is up and not quick-played: Tailwind Mambo, - +50% on the song's added effects when not quick-played: +20 -> +30
+  - buff Damage Bonus +1% (you), while Blaze Flamenco is up and not quick-played: Blaze Flamenco, - +2% -> +3%
+  - buff Damage Bonus +1% (you), while Steel March is up and not quick-played: Steel March, - +2% -> +3%
+  - buff Damage Bonus +1% (you), while Tailwind Mambo is up and not quick-played: Tailwind Mambo, - +2% -> +3%
 - **Musician's Flow** (slottedClassFeatures)
   - performance regenPct ?, MISSING amount (counts zero), - +25% Performance regeneration (base not captured)
 - **Battlefield Ostinato** (feats)
@@ -63,16 +63,16 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
   - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Steel March is up, ASSUMED, - one stack per Con Elemento variant: holding one song = 1 stack (+10)
   - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Tailwind Mambo is up, ASSUMED, - one stack per Con Elemento variant: holding one song = 1 stack (+10)
 - **Ballad Colla Voce** (feats)
-  - buff Colla Voce Damage Bonus +5% (you), while Ballad of the Hero is up, - DPS role: +5% while the ballad runs (party)
-  - buff Colla Voce Damage Bonus +5% (you), while Ballad of the Witch is up, - DPS role: +5% while the ballad runs (party)
+  - buff Colla Voce Damage Bonus +5% (you), while Ballad of the Hero is up and not quick-played: Ballad of the Hero, - DPS role: +5% while the ballad runs, not quick-played (party)
+  - buff Colla Voce Damage Bonus +5% (you), while Ballad of the Witch is up and not quick-played: Ballad of the Witch, - DPS role: +5% while the ballad runs, not quick-played (party)
 - **A Due** (feats)
   - buff A Due Damage Bonus +10%, Incoming Damage -10%, Outgoing Healing +10% (you), not (only when soloOrIsolated), - you and the nearest party member within 25 ft
 - **Redoublement** (feats)
   - buff Redoublement Encounter Damage +10% (you) for 6 s, on cast from Ad Libitum, Volti Subito, ASSUMED, - encounters between Ad Libitum / Volti Subito strikes +10% (window read as 6 s)
 - **Martial Performance** (feats)
-  - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Blaze Flamenco is up, - +10 for the song when its opening hit lands
-  - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Steel March is up, - +10 for the song when its opening hit lands
-  - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Tailwind Mambo is up, - +10 for the song when its opening hit lands
+  - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Blaze Flamenco is up and not quick-played: Blaze Flamenco, - +10 for the song when its opening hit lands (not quick-played)
+  - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Steel March is up and not quick-played: Steel March, - +10 for the song when its opening hit lands (not quick-played)
+  - powers matching {"type": ["atWill", "encounter"]}: magnitude add 10, while Tailwind Mambo is up and not quick-played: Tailwind Mambo, - +10 for the song when its opening hit lands (not quick-played)
 - **Performer** (feats)
   - proc: hit (amount missing), MISSING magnitude (counts zero), on cast from atWill/encounter powers, MISSING chance (counts zero), - a chance (not on the tooltip) to cast an improvised encounter
 - **Loremaster** (feats)
@@ -151,7 +151,7 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
   - Fleche (Fleche (third bolt)): magnitude add 150, - the final bolt +150 on the primary and splashes 15 ft (40 Performance)
   - Dancing Lights: magnitude set 1400, ASSUMED, - 3 Art of War stacks (3 Fleche combos) convert it: effectively every cast while Fleche is the filler
 - **Storyteller** (feats)
-  - +1 Storyteller, lasts 15 s, on cast from song powers
+  - +1 Storyteller, lasts 15 s, on cast from song powers not in a quick play slot
   - buff Damage Bonus +5% (you), scaled by Storyteller stacks, - DPS role: +5% per stack, 3 max (party)
 - **Desperate Finale** (feats)
   - performance gain 600, MISSING trigger (counts zero), - below 200 Performance, once per 360 s
@@ -192,6 +192,7 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
 
 ## Not mapped (and why)
 
+- **Quick play slot (n00b 2026-10-06)**: Songblade has 1 quick play slot, Minstrel 2. The build lists which songs are quick-played (default none); those songs do not trigger the 'not in a quick play slot' bonuses. Pins only show a song's button sequence: no effect.
 - **Performance (both paragons)**: GATING: the gauge fill rate is not captured: song costs recorded, not limiting casts. All the World's a Stage / Musician's Flow / Gift of Song regen boosts wait on it.
 - **Song slots on the page**: There is no song picker in the builder yet: songs reach the simulator once the step 2.9 controls exist (the data is ready).
 - **Con Elemento variants**: Con Fuoco / Moto / Brio magnitudes are not on the tooltip: the base 140 fire is used.
