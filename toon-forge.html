@@ -14072,6 +14072,22 @@
         return m * dpsHitDamage(ctx, 100, hm).expected / 100;
       };
     }
+    // 2.4-G (n00b 2026-10-06): a kit buff the simulator never turns on counts zero, and the panel says why.
+    function pt2WhyNotOn(o) {
+      const recs = (o.fx || []).filter(r => (r.kind === "buff" || r.kind === "debuff") && r.stats && r.op !== "remove" && (r.seconds != null || r.gate || r.when));
+      const spend = (o.fx || []).find(r => r.kind === "stack" && r.op === "consume" && r.min != null && !r.when);
+      if (spend) return "needs " + spend.min + " " + spend.resource + " to cast, which the simulator never built";
+      for (const r of recs) {
+        const gs = [].concat(r.gate || []);
+        const sg = gs.find(g => /^stack:/.test(g.key || "")); if (sg) return "needs " + sg.key.slice(6) + ", which the simulator never built";
+        const bg = gs.find(g => /^buff:/.test(g.key || "")); if (bg) return "needs " + bg.key.slice(5) + ", which never went up in this fight";
+        const f = r.when && r.when.from;
+        if (f && [].concat(f.type || []).indexOf("song") >= 0) return "needs a song played; song slots arrive with the simulator display";
+        if (r.when && r.when.name) return "needs " + r.when.name + ", which never happened in this fight";
+        if (r.when) return "its trigger never happened in this fight";
+      }
+      return "never turned on in this fight";
+    }
     let _rotDmgCache = { key: "", result: null };
     function getRotationDamage() {
       if (!pt2UsesFxSim() || !getRotationSim()) return null;
@@ -14086,6 +14102,12 @@
       } else { ctx = dpsBuildContext(); inp = buildRotationSimInput(); }
       let res = null;
       if (ctx) res = TF_ROTATION_SIM.simulateFx(Object.assign(inp, { scoreHit: pt2MakeScoreHit(ctx, rules), liveRecharge: !!rules.liveRecharge }));
+      if (res) {
+        const on = new Set(res.statOwnersOn || []), owned = pt2SimOwnedNames(inp.kit);
+        res.notOn = [].concat(inp.kit.mechanics || [], inp.kit.features || [], inp.kit.feats || [], inp.kit.always || [])
+          .filter((o, i, a) => o && owned.has(o.name) && !on.has(o.name) && a.findIndex(x => x && x.name === o.name) === i)
+          .map(o => ({ name: o.name, why: pt2WhyNotOn(o) }));
+      }
       getEngineResult(); getRotationSim();   // put the normal caches back
       _rotDmgCache = { key: key, result: res };
       return res;
@@ -14205,6 +14227,7 @@
           const topD = Object.entries(fd.damageByOwner || {}).sort((a, b) => b[1] - a[1]).slice(0, 5);
           h += '<div style="margin-top:0.2rem;font-size:0.85rem;"><strong>' + Math.round(fd.dps).toLocaleString() + ' damage/s</strong> <span class="hint">each hit scored with the buffs and debuffs up at that moment</span></div>';
           if (topD.length) h += '<div class="hint" style="margin-top:0.1rem;">Top damage: ' + topD.map(e => esc(e[0]) + ' ' + Math.round(e[1] / fd.fightSeconds).toLocaleString() + '/s').join(', ') + '</div>';
+          if (fd.notOn && fd.notOn.length) h += '<div class="hint" style="margin-top:0.1rem;">Not counted (never turned on in this fight): ' + fd.notOn.map(x => esc(x.name) + ' (' + esc(x.why) + ')').join('; ') + '</div>';
         }
         const chips = [];
         if (d.curseUptime != null && (inp.powers.encounter.some(p => p.tags && p.tags.curse) || inp.powers.daily.some(p => p.tags && p.tags.curse))) chips.push('Curse up ' + pct(d.curseUptime) + ' (' + d.curseApplies + ' applied, ' + d.curseConsumes + ' consumed, ' + d.curseExpiries + ' expired)');

@@ -632,6 +632,7 @@
     const scoreHit = typeof input.scoreHit === "function" ? input.scoreHit : null;
     let dmgTotal = 0; const dmgByOwner = {};
     const statUp = new Map();   // key -> {rec, until, f}: timed buff / debuff records carrying stats, while up
+    const statOwnersOn = {};    // owners whose stat records were on at least once (2.4-G: the rest are listed)
     const timeline = []; const TIMELINE_MAX = 80;
     const stackTimeSum = {}, buffTime = {};
     const st = {};
@@ -668,6 +669,7 @@
       if (r.seconds == null && !r.gate && !r.when && !isPower(ow) && ow.type !== "song") return;
       const f = (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate))) ? gateFrac(r.gate) : 1;
       statUp.set(statKey(ow, r), { rec: r, until: r.seconds != null ? t + num(r.seconds) : 1e12, f: f, owner: ow.name });
+      if (f > 0) statOwnersOn[ow.name] = true;
     }
     function statRemove(name) { statUp.forEach(function (v) { if (v.rec.name === name) v.until = -1; }); }
     function hitMatches(af, hit, ow) {
@@ -679,7 +681,7 @@
     function activeStats(hit, ow) {
       const out = [];
       statUp.forEach(function (v) { if (v.until > t && v.f > 0 && hitMatches(v.rec.appliesTo, hit, ow)) out.push({ kind: v.rec.kind, name: v.rec.name || v.owner, stats: v.rec.stats, f: v.f }); });
-      condStatRecs.forEach(function (c) { const f = gateFrac(c.rec.gate); if (f > 0 && hitMatches(c.rec.appliesTo, hit, ow)) out.push({ kind: c.rec.kind, name: c.rec.name || c.owner, stats: c.rec.stats, f: f }); });
+      condStatRecs.forEach(function (c) { const f = gateFrac(c.rec.gate); if (f > 0) statOwnersOn[c.owner] = true; if (f > 0 && hitMatches(c.rec.appliesTo, hit, ow)) out.push({ kind: c.rec.kind, name: c.rec.name || c.owner, stats: c.rec.stats, f: f }); });
       return out;
     }
     // Recharge Speed from buffs up now (timed and gated), in % points
@@ -1132,7 +1134,7 @@
       casts: castCount, bySource: bySource, byOwner: byOwner, timeline: timeline, firstCycleEnd: firstCycleEnd, cycles: cyclesDone,
       mix: { atWill: mix.atWill, encounter: mix.encounter, daily: mix.daily, other: mix.other, pct: totalMix > 0 ? { atWill: mix.atWill / totalMix * 100, encounter: mix.encounter / totalMix * 100, daily: mix.daily / totalMix * 100, other: mix.other / totalMix * 100 } : null },
       stacksAvg: avg, buffUptime: up,
-      damageTotal: scoreHit ? dmgTotal : undefined, dps: scoreHit ? dmgTotal / T : undefined, damageByOwner: scoreHit ? dmgByOwner : undefined,
+      damageTotal: scoreHit ? dmgTotal : undefined, dps: scoreHit ? dmgTotal / T : undefined, damageByOwner: scoreHit ? dmgByOwner : undefined, statOwnersOn: scoreHit ? Object.keys(statOwnersOn) : undefined,
       derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 },
       trace: input.trace ? traceRows : undefined
     };
