@@ -740,10 +740,11 @@
     function applyCooldown(r, times) {
       const cut = num(r.seconds, 0) * times;
       Object.keys(st).forEach(function (k) {
-        const kind = k.split(":")[0];
+        const kind = k.split(":")[0], nm = k.slice(kind.length + 1);
         const f = r.targets || {};
-        const ts = f.type ? (Array.isArray(f.type) ? f.type : [f.type]) : ["encounter"];
-        if (ts.indexOf(kind) >= 0) st[k].ready = st[k].ready.map(function (x) { return x - cut; });
+        if (f.names) { if (f.names.indexOf(nm) < 0) return; }
+        else { const ts = f.type ? (Array.isArray(f.type) ? f.type : [f.type]) : ["encounter"]; if (ts.indexOf(kind) < 0) return; }
+        st[k].ready = r.op === "reset" ? st[k].ready.map(function () { return t; }) : st[k].ready.map(function (x) { return x - cut; });
       });
     }
     function runRecord(ow, r, spent, castEnd, skipGate) {
@@ -872,7 +873,7 @@
       if (s) s.lastUse = t;
       if (kind === "encounter") { const cd = cdSeconds(p, s); const n = chargesOf(p); while (s.ready.length < n) s.ready.push(0); s.ready.sort(function (a, b) { return a - b; }); s.ready[0] = t + cd; }
       else if (kind === "mechanic") { s.ready = [t + num(p.cooldownSeconds, 0)]; }
-      else if (kind === "daily") { ap -= num(p.actionPointCost, 1000); }
+      else if (kind === "daily") { ap -= num(p.actionPointCost, 1000); if (num(p.cooldownSeconds, 0) > 0) s.ready = [t + num(p.cooldownSeconds)]; }
       pushTimeline(p.name, kind === "spender" ? "encounter" : kind, total, kind === "spender" ? Object.keys(spent).map(function (k) { return spent[k] + " " + k; }).join(", ") : "");
       return true;
     }
@@ -936,7 +937,7 @@
         const s = pst("encounter:" + ow.name); const n = chargesOf(ow.obj); while (s.ready.length < n) s.ready.push(0);
         return s.ready.some(function (r) { return r <= t; });
       }
-      if (step.kind === "daily") { const sd = pst("daily:" + ow.name); return ap >= num(ow.obj.actionPointCost, 1000) && t >= sd.lastUse + cad.daily; }
+      if (step.kind === "daily") { const sd = pst("daily:" + ow.name); return ap >= num(ow.obj.actionPointCost, 1000) && t >= sd.lastUse + cad.daily && sd.ready.every(function (x) { return x <= t; }); }
       return false;
     }
     function waitFor(step) {
@@ -954,7 +955,7 @@
       if (step.kind === "daily") {
         const sd = pst("daily:" + ow.name); const cost = num(ow.obj.actionPointCost, 1000);
         const apWait = ap >= cost ? 0 : (cost - ap) / Math.max(1, AP_PER_SEC);
-        return Math.max(apWait, sd.lastUse + cad.daily - t, 0);
+        return Math.max(apWait, sd.lastUse + cad.daily - t, Math.max.apply(null, sd.ready) - t, 0);
       }
       return Infinity;
     }
