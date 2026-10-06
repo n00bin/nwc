@@ -56,6 +56,11 @@ today because it cannot get powers right or match gear to powers.
 | 2.9 | Free simulator display: per-power table, inside and outside split, timeline, confidence line; own powers in rule-built or typed order. Build-result states switch from peak to simulated values for scoring; the snapshot view keeps the peak. | Headless render on every reference build with no page errors. |
 | 2.10 | **Checkpoint: n00b checks the simulator locally, then on his go the simulator flag goes live.** | n00b's live runs (PT2-17). |
 
+**Migration C (added 2026-10-06, lock 2.6-B; after Stage 2):** gear, companion and insignia procs (about 380
+records in free text and mixed shapes: gear AP / damage / cooldown / cast-triggered procs, companion procEffect,
+insignia windows) move into the effect vocabulary so the simulator runs them on the timeline instead of as engine
+averages. Same process as Migration B: a dry-run list n00b approves, then a parity check.
+
 ## Stage 3: data captures and the live-run loop (n00b-driven, ongoing)
 
 - Captures, ranked by the confidence line: Smolder numbers (Thaumaturge gating), Stealth refill time (Rogue gating),
