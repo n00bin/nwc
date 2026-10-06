@@ -56,7 +56,7 @@ def build_header(source_name):
 # creep back in. Entries without `fx` are not checked (the old free-form blocks are records only).
 FX_COMMON = {"kind", "when", "gate", "requiresFeat", "requiresFeature", "requiresSlotted", "provisional", "missing", "note", "paragon", "slot"}
 FX_KINDS = {
-    "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name", "scalesWith", "maxTargets"},
+    "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name", "scalesWith", "maxTargets", "pctOfTrigger"},
     "dot":      {"magnitude", "perTick", "ticks", "seconds", "stacking", "maxStacks", "damageType", "element", "name", "targets", "scalesWith"},
     "buff":     {"stats", "scope", "seconds", "appliesTo", "stacks", "maxStacks", "radius", "name", "op"},
     "debuff":   {"stats", "personal", "appliesTo", "seconds", "maxStacks", "name", "targets"},
@@ -64,7 +64,7 @@ FX_KINDS = {
     "resource": {"pool", "op", "amount", "pctOfBar"},
     "cooldown": {"targets", "op", "seconds", "pct"},
     "proc":     {"effects", "name"},
-    "control":  {"control", "seconds", "perStack", "targets"},
+    "control":  {"control", "seconds", "perStack", "targets", "name"},
     "heal":     {"magnitude", "pctMaxHp", "pctOfDamage", "scope", "seconds", "perTick", "name"},
     "shield":   {"magnitude", "pctMaxHp", "pctOfHealed", "scope", "seconds", "name"},
     "mod":      {"target", "field", "op", "value", "addFx"},
