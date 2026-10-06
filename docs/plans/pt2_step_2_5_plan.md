@@ -36,7 +36,7 @@ the window and the timeline. Party buffs only from the Party section. Nothing ne
    assumed numbers are used and labelled; random effects count their guaranteed minimum (zero).
 4. **Mount combat power in the window.** Its existing stored numbers (debuff, self buffs, damage) move from averages
    to timed records cast at the window start. No new extraction.
-5. **Party buffs** as gap 2.5-B decides.
+5. **Party buffs** stay as today, all fight (2.5-B): they are passive in game.
 6. **Result.** Damage inside windows and outside, which add up to the total; the timeline marks each window.
    Damage belt items, artifact damage and ally mount combat powers have no numbers: they count zero and join the
    capture list.
@@ -57,7 +57,7 @@ opens the window and fires the call in it.
 | Gap | Question | Recommended |
 |---|---|---|
 | 2.5-A | When does the window open? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** The existing artifact cadence setting (default 60 s): the first window opens when the first full rotation ends, then one every cadence seconds to the fight end. The artifact fires in a window when off cooldown (a 180 s artifact every third window); the mount combat power fires in every window. Nothing new to set. |
-| 2.5-B | The Party section's always-on buffs (ally companion buffs, ally mount auras, Pack): whole fight, or the window only? | Open. |
+| 2.5-B | The Party section's always-on buffs (ally companion buffs, ally mount auras, Pack): whole fight, or the window only? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Passive party buffs (ally companion buffs, ally mount auras, Pack, ally CA grants and debuffs) stay as today, all fight. The window adds only timed effects: your artifact and your mount combat power. Timed party effects (an ally artifact, a banner) would go inside the window if ever modelled; none exist in the Party section today. |
 | 2.5-C | Approve the artifact extraction list (`docs/plans/artifact_window_dryrun.md`). | Open. |
 
 ## Build order (one commit each, local only)
@@ -68,6 +68,6 @@ opens the window and fires the call in it.
    `data/artifacts.js`.
 3. Simulator: the fight script and the window; the artifact and mount power as owners cast at the window start;
    inside / outside totals. No-window check.
-4. Page: pass the artifact's `callFx` and the mount power records; party rule (2.5-B). Split check, attribution.
+4. Page: pass the artifact's `callFx` and the mount power records. Split check, attribution.
 5. Rotation panel: the inside / outside split and the windows on the timeline. Page test, baseline, step log,
    `docs/toon_coverage.md`.
