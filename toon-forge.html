@@ -14468,6 +14468,21 @@
       }
       return { f: 1, label: "", unknown: true };
     }
+    // PT2-3 view rule: out-of-combat-only stats (Marathon Runner). Shown on the at-rest sheet,
+    // removed in the in-combat view, never added to engine totals (so never scored).
+    function pt2OutOfCombatStats() {
+      if (!(typeof pt2PanelEnabled === "function" && pt2PanelEnabled())) return null;
+      const cDef = findClass(state.class), pDef = findParagon(state.class, state.paragon);
+      if (!cDef) return null;
+      const picks = new Set((state.slottedClassFeaturePicks || []).filter(Boolean)), feats = new Set((state.slottedFeats || []).filter(Boolean));
+      const entries = [].concat(cDef.classFeatures || [], ((pDef && pDef.slottedClassFeatures) || []).filter(f => picks.has(f.name)), ((pDef && pDef.feats) || []).filter(f => feats.has(f.name)));
+      const stats = {}, names = {};
+      for (const f of entries) {
+        if (f.pt2View !== "outOfCombat" || !f.outOfCombatStats) continue;
+        for (const k in f.outOfCombatStats) { stats[k] = (stats[k] || 0) + (+f.outOfCombatStats[k] || 0); (names[k] = names[k] || []).push(f.name); }
+      }
+      return { stats, names };
+    }
     // Gated stat lines for one feature. Each part becomes one conditional buff.
     function pt2GatedBuffs(cf, s, kit) {
       if (cf.pt2Stage === 2 || cf.pt2View) return [];
@@ -16920,6 +16935,9 @@
           .reduce((sum, c) => sum + ((c.amount || 0) / c.uptime - (c.amount || 0)), 0);
         if (liftRating || liftPercent) rebase(-liftRating, -liftPercent);
       }
+      // POWER-TAGS-2 PT2-3: out-of-combat-only stats count on the at-rest sheet only.
+      const _ooc = (ctx && ctx.pt2Ooc && ctx.pt2Ooc.stats && ctx.pt2Ooc.stats[def.name]) || 0;
+      if (_ooc && !showConditional) rebase(0, -_ooc);
 
       if (hideBuffs) {
         const allContribs = s.contributors || [];
@@ -17016,6 +17034,7 @@
         .map(c => (showConditional && c.conditional && c.uptime)
           ? Object.assign({}, c, { amount: (c.amount || 0) / c.uptime })
           : c);
+      if (_ooc && !showConditional) allContribsFiltered.push({ source: (ctx.pt2Ooc.names[def.name] || []).join(", ") + " (out of combat only)", amount: _ooc, type: "percent" });
       const allRating = allContribsFiltered.filter(c => c.type === "rating");
       const directContribs = allRating
         .filter(c => !isCRSource(c.source))
@@ -17262,7 +17281,8 @@
         hideBuffs: _dstatsHideBuffs,
         hidePartyBuffs: _dstatsHidePartyBuffs,
         showConditional: _dstatsShowConditional,
-        allStats: r.stats
+        allStats: r.stats,
+        pt2Ooc: (typeof pt2OutOfCombatStats === "function") ? pt2OutOfCombatStats() : null   // POWER-TAGS-2 PT2-3
       };
       for (const cat of DSTATS_CATEGORIES) {
         const stats = TOON_FORGE_STATS.filter(d => d.category === cat);
