@@ -13970,8 +13970,14 @@
         steps: null,
         // PT2 step 2.3 (fx simulator): the kit objects themselves, so their fx records travel with them
         kit: pt2SimKit(pick, mechs),
-        paragon: state.paragon, caps: ((typeof findClass === "function" && findClass(state.class)) || {}).fxStackCaps || {},
-        fight: Object.assign({}, PT2_FIGHT_DEFAULTS, state.pt2Fight || {}), enemyCount: (typeof state.enemyCount === "number") ? state.enemyCount : 1,
+        paragon: state.paragon, stackRules: ((typeof findClass === "function" && findClass(state.class)) || {}).fxStacks || {},
+        fight: Object.assign({}, PT2_FIGHT_DEFAULTS, state.pt2Fight || {}, {
+          targetRangeFt: (typeof state.targetRangeFt === "number") ? state.targetRangeFt : 10,
+          flankUptime: ((typeof state.flankUptime === "number") ? state.flankUptime : 1) * 100 }),
+        enemyCount: (typeof state.enemyCount === "number") ? state.enemyCount : 1,
+        // player picks the data reads (pick:<setting>:<value> gates) and the Spell Mastery (R1) encounter;
+        // no control sets these yet - they arrive with the free simulator display (step 2.9)
+        picks: { chaosMagicBuff: state.chaosMagicBuff || null }, spellMasteryPower: state.spellMasteryPower || null,
         spendAt: (typeof state.scorchAtSparks === "number") ? state.scorchAtSparks : null
       };
     }
@@ -13991,7 +13997,7 @@
     function pt2UsesFxSim() {
       if (!pt2SimEnabled() || typeof TF_ROTATION_SIM === "undefined" || !TF_ROTATION_SIM.simulateFx) return false;
       const c = (typeof findClass === "function") ? findClass(state.class) : null;
-      return !!(c && c.fxStackCaps);
+      return !!(c && c.fxStacks);
     }
     let _rotSimCache = { key: "", result: null };
     // Cached per rotation-affecting change so gear swaps that do not touch powers or

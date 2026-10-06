@@ -425,7 +425,13 @@
     const cad = Object.assign({ daily: 60, artifact: 60, mountpower: 60 }, input.cadence || {});
     const kit = input.kit || {};
     const paragon = input.paragon || null;
-    const caps = input.caps || {};
+    // stack rules: class fxStacks {name: {max, seconds, refresh}}; legacy input.caps = max only
+    const rules = {};
+    Object.keys(input.caps || {}).forEach(function (n) { rules[n] = { max: input.caps[n] }; });
+    Object.keys(input.stackRules || {}).forEach(function (n) { rules[n] = Object.assign({}, rules[n] || {}, input.stackRules[n]); });
+    const caps = {};
+    const picks = input.picks || {};
+    const smPower = input.spellMasteryPower || null;
     const fight = input.fight || {};
     const modes = input.modes || {};
     const enemyHp = num(input.enemyHealthPct, 100);
@@ -437,8 +443,9 @@
     ["atWill", "encounter", "daily"].forEach(function (k) { powers[k].forEach(function (p) { byName[k + ":" + p.name] = p; }); });
 
     // ---- record filters ----
-    function recOn(r) {
+    function recOn(r, owner) {
       if (!r) return false;
+      if (r.slot) { const inSM = !!(owner && smPower && owner.name === smPower); if ((r.slot === "spellMastery") !== inSM) return false; }
       if (r.paragon && paragon && r.paragon !== paragon) return false;
       if (r.requiresFeat && !featOn[r.requiresFeat]) return false;
       if (r.requiresFeature && !featureOn[r.requiresFeature]) return false;
@@ -447,10 +454,10 @@
     function fxOf(owner) {
       let list = (owner && Array.isArray(owner.fx)) ? owner.fx.slice() : [];
       const md = owner && owner.modes && modes[owner.name] && owner.modes[modes[owner.name]];
-      const mdDefault = owner && owner.modes && !modes[owner.name] ? (owner.modes.melee || owner.modes[Object.keys(owner.modes)[0]]) : null;
+      const mdDefault = owner && owner.modes && !modes[owner.name] ? (owner.modes.melee || owner.modes[Object.keys(owner.modes).filter(function (k) { return k !== "spellMastery"; })[0]]) : null;
       const m = md || mdDefault;
       if (m && Array.isArray(m.fx)) list = list.concat(m.fx);
-      return list.filter(recOn);
+      return list.filter(function (r) { return recOn(r, owner); });
     }
 
     // ---- owners: everything that can carry fx ----
@@ -464,13 +471,17 @@
     // ---- mods (feats / features / mechanics / powers change other owners) ----
     const mods = [];
     owners.forEach(function (ow) { fxOf(ow.obj).forEach(function (r) { if (r.kind === "mod") mods.push(r); }); });
-    function tagsMatch(want, tags) { tags = tags || {}; return Object.keys(want || {}).every(function (k) { return tags[k] === want[k]; }); }
+    function oneOf(want, have) { return Array.isArray(want) ? want.indexOf(have) >= 0 : want === have; }
+    function tagsMatch(want, tags) { tags = tags || {}; return Object.keys(want || {}).every(function (k) { return oneOf(want[k], tags[k]); }); }
     function filterMatch(f, ow) {
       if (!f) return true;
       if (f.type) { const ts = Array.isArray(f.type) ? f.type : [f.type]; if (ts.indexOf("any") < 0 && ts.indexOf(ow.type) < 0) return false; }
       if (f.names && f.names.indexOf(ow.name) < 0) return false;
       if (f.tags && !tagsMatch(f.tags, ow.obj && ow.obj.tags)) return false;
-      if (f.element && !(ow.obj && ow.obj.tags && ow.obj.tags.element === f.element)) return false;
+      const tg = (ow.obj && ow.obj.tags) || {};
+      if (f.element && !oneOf(f.element, tg.element)) return false;
+      if (f.hasControl && !(Array.isArray(tg.control) && tg.control.length)) return false;
+      if (f.damageType && !oneOf(f.damageType, tg.damageType || (ow.obj && ow.obj.damageType))) return false;
       return true;
     }
     function modsFor(ow) {
@@ -512,7 +523,7 @@
         if (m.field === "dropFx" && gateFrac(m.gate) > 0) recs = recs.filter(function (r) { return !(m.value || []).some(function (mt) { return matches(r, mt); }); });
       });
       ms.forEach(function (m) {
-        if (m.addFx && gateFrac(m.gate) > 0) recs = recs.concat(m.addFx.filter(recOn).map(function (r) { return Object.assign({}, r); }));
+        if (m.addFx && gateFrac(m.gate) > 0) recs = recs.concat(m.addFx.filter(function (r) { return recOn(r, ow.obj); }).map(function (r) { return Object.assign({}, r); }));
       });
       const mainMods = [];
       ms.forEach(function (m) {
@@ -536,6 +547,12 @@
       });
       return pct;
     }
+    mods.forEach(function (m) {   // feats that change a stack's rules (A Step Above Mastery)
+      if (!m.target || !m.target.stack || gateFrac(m.gate) <= 0) return;
+      const r0 = rules[m.target.stack] = Object.assign({}, rules[m.target.stack] || {});
+      r0[m.field] = m.op === "add" ? num(r0[m.field], 0) + num(m.value) : m.op === "mult" ? num(r0[m.field], 0) * num(m.value) : m.value;
+    });
+    Object.keys(rules).forEach(function (n) { if (rules[n].max != null) caps[n] = num(rules[n].max); });
     const permanentBuff = {};
     mods.forEach(function (m) { if (m.field === "permanent" && m.target && m.target.buff && m.value) permanentBuff[m.target.buff] = true; });
 
@@ -545,19 +562,32 @@
     function stackCount(name) { const s = stacks[name]; if (!s) return 0; const live = s.timers.filter(function (x) { return x > t; }).length; const c = s.n + live; return caps[name] != null ? Math.min(caps[name], c) : c; }
     const buffs = {};    // name -> until
     function buffUp(name) { return permanentBuff[name] ? buffs[name] != null : (buffs[name] != null && buffs[name] > t); }
+    function keyValue(key) {
+      if (key.indexOf("stack:") === 0) return stackCount(key.slice(6));
+      if (key.indexOf("buff:") === 0) return buffUp(key.slice(5)) ? 1 : 0;
+      if (key.indexOf("pick:") === 0) { const ps = key.split(":"); return picks[ps[1]] === ps[2] ? 1 : 0; }
+      if (key === "enemyHealthPct") return enemyHp;
+      if (key === "enemyCount") return num(input.enemyCount, 1);
+      if (key === "otherEnemies") return Math.max(0, num(input.enemyCount, 1) - 1);
+      return (fight[key] === true) ? 1 : (typeof fight[key] === "number" ? fight[key] : 0);
+    }
+    // A gate (or a list of gates, all of which apply) as a 0..1+ fraction - the PT2-2 shapes, same fields as Stage 1.
     function gateFrac(g) {
       if (!g) return 1;
-      const key = g.key || "";
-      let v;
-      if (key.indexOf("stack:") === 0) v = stackCount(key.slice(6));
-      else if (key.indexOf("buff:") === 0) v = buffUp(key.slice(5)) ? 1 : 0;
-      else if (key === "enemyHealthPct") v = enemyHp;
-      else v = (fight[key] === true) ? 1 : (typeof fight[key] === "number" ? fight[key] : 0);
-      if (g.shape === "toggle") return v > 0 ? 1 : 0;
-      if (g.shape === "perStack") return Math.min(num(g.maxStacks, 1e9), v) * num(g.perStack, 0);
-      if (g.shape === "linear") { const a0 = num(g.at0, 0), a100 = num(g.at100, 1); return Math.max(0, Math.min(1, a0 + (a100 - a0) * v / 100)); }
-      if (g.shape === "threshold") { if (g.below != null) return v < g.below ? 1 : 0; return v > 0 ? 1 : 0; }
-      return 1;
+      if (Array.isArray(g)) return g.reduce(function (a, x) { return a * gateFrac(x); }, 1);
+      const v = keyValue(g.key || "");
+      const cl = function (x) { return Math.max(0, Math.min(1, x)); };
+      let f = 1;
+      if (g.shape === "toggle") f = v > 0 ? 1 : 0;
+      else if (g.shape === "perStack") f = Math.min(num(g.maxStacks, 1e9), v) * num(g.perStack, 0);
+      else if (g.shape === "linear") {
+        if (g.fullAt != null && g.zeroAt != null) f = cl((v - g.zeroAt) / (g.fullAt - g.zeroAt));
+        else { const a0 = num(g.at0, 0), a100 = num(g.at100, 1); f = cl(a0 + (a100 - a0) * v / 100); }
+      } else if (g.shape === "threshold") {
+        const x = num(g.value, 0);
+        f = (g.op === "<=" ? v <= x : g.op === ">=" ? v >= x : g.op === "<" ? v < x : g.op === ">" ? v > x : g.op === "==" ? v === x : v > 0) ? 1 : 0;
+      } else if (g.shape === "count") f = Math.min(num(g.maxUnits, 1), v) * num(g.perUnit, 0);
+      return g.invert ? (f > 0 ? 0 : 1) : f;
     }
 
     // ---- listeners (records that fire on events) ----
@@ -578,6 +608,7 @@
     let artifactReady = 0, mountReady = 0;
     const events = [];
     const dotStacks = {};
+    const castEvery = {};
     let magTotal = 0;
     const bySource = {}, byOwner = {}, castCount = {}, mix = { atWill: 0, encounter: 0, daily: 0, other: 0 };
     const timeline = []; const TIMELINE_MAX = 80;
@@ -615,7 +646,7 @@
     function hitTargets(r) { return r.targets === "others" ? Math.max(0, num(input.enemyCount, 1) - 1) : 1; }
     // Schedule a hit / dot record. `spent` = stacks this cast consumed (scalesWith).
     function scheduleDamage(ow, r, start, spent, magOverride) {
-      const n = hitTargets(r); if (n <= 0) return 0;
+      const n = hitTargets(r) * (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate)) ? gateFrac(r.gate) : 1); if (n <= 0) return 0;
       const sw = r.scalesWith ? num(r.scalesWith.per) * num(spent[r.scalesWith.resource], 0) : 0;
       if (r.kind === "hit") {
         const m = (magOverride != null ? magOverride : num(r.magnitude, 0)) + sw;
@@ -659,11 +690,16 @@
         let amt = num(r.amount, 0) + (r.scalesWith ? num(r.scalesWith.per) * num((spent || {})[r.scalesWith.resource], 0) : 0);
         if (op === "set") { s.n = 0; s.timers = []; }
         if (!(amt > 0)) return;
-        if (r.seconds != null) { for (let i = 0; i < amt; i++) s.timers.push(t + num(r.seconds)); }
-        else { s.n = caps[name] != null ? Math.min(caps[name], s.n + amt) : s.n + amt; }
-        fire("stackApplied", { resource: name });
+        const rule = rules[name] || {};
+        const secs = r.seconds != null ? num(r.seconds) : (rule.seconds != null ? num(rule.seconds) : null);
+        if (secs != null) {
+          for (let i = 0; i < amt; i++) s.timers.push(t + secs);
+          if (rule.refresh === "all") s.timers = s.timers.map(function () { return t + secs; });
+        } else { s.n = caps[name] != null ? Math.min(caps[name], s.n + amt) : s.n + amt; }
+        fire("stackApplied", { resource: name, amount: amt });
       } else if (op === "refresh") {
-        if (stackCount(name) > 0 && r.seconds != null) s.timers = s.timers.map(function () { return t + num(r.seconds); });
+        const rsec = r.seconds != null ? num(r.seconds) : ((rules[name] || {}).seconds != null ? num(rules[name].seconds) : null);
+        if (stackCount(name) > 0 && rsec != null) s.timers = s.timers.map(function () { return t + rsec; });
       } else if (op === "consume") {
         const have = Math.floor(stackCount(name));
         if (have <= 0) return 0;
@@ -695,7 +731,10 @@
         case "debuff": if (r.name) buffs[r.name] = r.seconds != null ? t + num(r.seconds) : 1e12; return 0;
         case "stack": applyStack(r, spent); return 0;
         case "cooldown": applyCooldown(r, 1); return 0;
-        case "proc": (r.effects || []).filter(recOn).forEach(function (e) { runRecord({ obj: ow.obj, type: "proc", name: r.name || ow.name }, e, spent, null); }); return 0;
+        case "resource":
+          if (r.pool === "actionPoints" && (r.op === "gain" || r.op === "set")) { const g = r.pctOfBar != null ? num(r.pctOfBar) * 10 : num(r.amount, 0); ap = r.op === "set" ? g : ap + g; }
+          return 0;
+        case "proc": (r.effects || []).filter(function (e) { return recOn(e, ow.obj); }).forEach(function (e) { runRecord({ obj: ow.obj, type: "proc", name: r.name || ow.name }, e, spent, null); }); return 0;
         default: return 0;   // resource / control / heal / shield: recorded, not scored by the damage simulator
       }
     }
@@ -718,6 +757,7 @@
           if (w.name && ctx.recName !== w.name) continue;
         }
         if ((ev === "stackApplied" || ev === "stackRemoved") && w.resource !== ctx.resource) continue;
+        if (ev === "stackApplied" && w.every) { const times = Math.floor(num(ctx.amount, 1) / num(w.every)); for (let k = 0; k < times; k++) runRecord(L.ow, withRecMods(L.ow, L.rec), null, null); continue; }
         if ((ev === "buffRefreshed" || ev === "buffApplied") && w.name !== ctx.name) continue;
         if (ev === "stackSpent") {
           if (w.resource !== ctx.resource) continue;
@@ -739,13 +779,21 @@
     function fireCast(ow) {
       for (let i = 0; i < listeners.length; i++) {
         const L = listeners[i]; if (!L.castListener) continue;
-        if (!filterMatch(L.rec.when.from, ow)) continue;
+        const w = L.rec.when;
+        if (!filterMatch(w.from, ow)) continue;
+        if (w.every) { L.count++; if (L.count % num(w.every) !== 0) continue; }
+        if (w.icdSeconds && t - L.lastFire < num(w.icdSeconds)) continue;
+        const chance = w.chance != null ? num(w.chance) / 100 : 1;
+        if (chance <= 0) continue;
+        L.lastFire = t;
+        if (chance < 1) continue;   // step 2.6: expected-value procs
         runRecord(L.ow, withRecMods(L.ow, L.rec), null, null);
       }
     }
 
     // ---- casting ----
     function mainMagnitude(p) {
+      if (smPower && p.name === smPower && p.modes && p.modes.spellMastery && p.modes.spellMastery.magnitude != null) return p.modes.spellMastery.magnitude;
       const mbp = p.magnitudeByParagon && paragon && p.magnitudeByParagon[paragon] != null ? p.magnitudeByParagon[paragon] : null;
       return mbp != null ? mbp : null;
     }
@@ -768,7 +816,13 @@
       // 1. gates read now (records are built with this moment's state)
       const e = effective(ow);
       const own = function (r) { return !r.when || (r.when.on === "cast" && !r.when.from); };
-      const live = e.recs.filter(function (r) { return own(r) && gateFrac(r.gate) > 0; });
+      const everyOk = function (r) {
+        if (!(r.when && r.when.every)) return true;
+        const k = ow.name + "|" + r.kind + "|" + (r.name || "") + "|" + (r.resource || "");
+        castEvery[k] = (castEvery[k] || 0) + 1;
+        return castEvery[k] % num(r.when.every) === 0;
+      };
+      const live = e.recs.filter(function (r) { return own(r) && everyOk(r) && gateFrac(r.gate) > 0; });
       // 2. consumes first: they decide scalesWith and must see the state before triggers change it
       const spent = {};
       live.forEach(function (r) { if (r.kind === "stack" && r.op === "consume") spent[r.resource] = (spent[r.resource] || 0) + applyStack(r, spent); });
@@ -778,7 +832,14 @@
       // 4. damage and the rest of the power's own records
       let total = 0;
       const dmg = untriggeredDamage(live);
-      if (dmg.length) dmg.forEach(function (r) { total += scheduleDamage(ow, r, castEnd, spent); });
+      if (dmg.length) {
+        const firstHit = dmg.find(function (r) { return r.kind === "hit"; });
+        dmg.forEach(function (r) {
+          let mo = null;
+          if (r === firstHit && e.mainMods.length) { mo = num(r.magnitude, 0); e.mainMods.forEach(function (md) { mo = md.op === "add" ? mo + num(md.value) : md.op === "mult" ? mo * num(md.value) : num(md.value); }); }
+          total += scheduleDamage(ow, r, castEnd, spent, mo);
+        });
+      }
       else total = scheduleTopLevel(ow, kind, castSec, e.mainMods, s);
       live.forEach(function (r) { if (r.kind !== "hit" && r.kind !== "dot" && !(r.kind === "stack" && r.op === "consume")) runRecord(ow, r, spent, castEnd, true); });
       if (s) s.lastUse = t;

@@ -212,6 +212,7 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
 - **Scorching Burst** (atWill)
   - hit 110 (area), - full charge (1.7 s); a tap is 60
 - **Chilling Cloud** (atWill)
+  - hit 90 (single)
   - +1 Chill on the target, on each hit
   - hit 90 (others), on every 3rd cast, ASSUMED, - third hit also hits enemies near the target (full 90 assumed)
   - +1 Chill on the target, on every 3rd cast, - third hit chills all targets
@@ -275,4 +276,4 @@ The step 2.3 parity check must show exactly these differences and nothing else.
 - **Spell Twisting**: max 4
 - **Assailing Force**: max 1
 
-Records: 149. Validator: PASS.
+Records: 150. Validator: PASS.

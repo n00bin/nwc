@@ -117,6 +117,23 @@ Pools: `actionPoints`, `stamina`, `divinity`, `rage`, `performance`, `soulweave`
 11. **Stack caps** live on the class entry in classes.json as `fxStackCaps` (Warlock: Soul Spark 30, Soul
     Investiture 5, Curse 1, Dark Spiral 2). Extra stack names live in `docs/plans/effect_vocabulary_resources.json`.
 
+## Added with the Wizard batch (step 2.2 / 2.3)
+
+12. **Stack rules on the class:** `fxStacks` {name: {max, seconds, refresh}} replaces `fxStackCaps`. `seconds` is the
+    default lifetime for any add without its own; `refresh: "all"` means a new stack resets every timer (Arcane
+    Mastery). A `mod` with `target: {stack: <name>}` changes a rule (A Step Above Mastery: max 10, 10 s).
+13. **Gates:** `gate` may be a list (all apply, fractions multiply); `invert: true` flips a gate; threshold, count and
+    linear use the Stage 1 fields (`op`/`value`, `perUnit`/`maxUnits`, `at0`/`at100` or `fullAt`/`zeroAt`).
+    Keys added: `pick:<setting>:<value>` (a player's pick, e.g. Chaos Magic), `otherEnemies` (enemy count - 1),
+    `enemyCount`, `targetRangeFt`, `flankUptime` (0-100). A hit or dot gated by a non-toggle shape is scaled by it.
+14. **`slot`:** `"spellMastery"` = only while that encounter sits in the R1 slot, `"normal"` = only outside it. In the
+    slot, a power's `modes.spellMastery.magnitude` replaces its top-level magnitude.
+15. **Filters** (`from`, `appliesTo`, mod `filter`): `element` and `damageType` take a list; `hasControl: true` =
+    powers with any control tag; `tags` values may be lists.
+16. **`every` on a power's own on-cast record** = only every Nth cast (Magic Missile's third cast); on
+    `stackApplied` = once per stack applied (Snap Freeze). Cast-triggered records obey `every`, lockout and chance.
+17. **Action point gains** (`resource`, pool `actionPoints`, `pctOfBar` of a 1,000 bar) fill the simulated AP bar.
+
 ## What is deliberately left out
 
 - Healing and survival timelines (PT2-16: the search is damage-focused). `heal` and `shield` records are
