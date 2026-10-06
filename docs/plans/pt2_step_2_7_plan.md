@@ -42,7 +42,7 @@ the score is your own damage only. Everything stays local-only.
 | Gap | Question | Recommended |
 |---|---|---|
 | 2.7-A | Target caps: almost none stored. | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** An area hit reaches every enemy up to the slider; the 4 caps named in power text apply (Ballad of the Witch 3, Oath Strike 3, Steel Breeze 5, Shuriken Toss 3). With the slider above 1 the confidence line lists "target cap unknown" for each area power in the kit. |
-| 2.7-B | Mixed powers (11) and untagged powers (11): how much lands on the extra enemies? | Open. |
+| 2.7-B | Mixed powers: how much lands on the extra enemies? (The 11 untagged powers deal no damage; 10 mixed once paragon copies merge.) | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Mixed powers with split records (Storm Strike, Shuriken Toss, Vengeance's Pursuit, Chilling Cloud) follow each record's tag. The 6 with one total magnitude (Savage Advance, Contre, Guardian of Faith, Fox Shift, Killing Storm, Eldritch Blast) count as single-target, the guaranteed minimum; with the slider above 1 the confidence line lists each as "area share unknown". |
 | 2.7-C | Which hits does a debuff boost when there are several enemies? | Open. |
 
 ## Build order (one commit each, local only)
