@@ -14025,7 +14025,7 @@
     //   liveRecharge Recharge Speed buffs speed cooldowns only while up (2.4-E)
     //   critSevTaken Critical Severity Taken debuffs count, outside your cap (2.4-F, provisional)
     function pt2HitRules() {
-      return Object.assign({ buffStats: true, slotPerHit: true, typePerHit: true, simOwnsKit: true, liveRecharge: true, critSevTaken: true, callWindow: true, expectedProcs: true }, window.__pt2HitRules || {});
+      return Object.assign({ buffStats: true, slotPerHit: true, typePerHit: true, simOwnsKit: true, liveRecharge: true, critSevTaken: true, callWindow: true, expectedProcs: true, areaTargets: true }, window.__pt2HitRules || {});
     }
     // Kit owners (features, feats, mechanics) whose fx carry stat buffs the simulator counts (timed, gated or triggered).
     function pt2SimOwnedNames(kit) {
@@ -14139,7 +14139,7 @@
     function pt2SimScored(su, kit, call) {
       const r = su.rules; call = call !== undefined ? call : su.call;
       return TF_ROTATION_SIM.simulateFx(Object.assign({}, su.inp, { kit: kit || su.inp.kit, scoreHit: pt2MakeScoreHit(su.ctx, r), liveRecharge: !!r.liveRecharge,
-        role: state.role || null, expectedProcs: !!r.expectedProcs, critChance: su.ctx.critStrike },
+        role: state.role || null, expectedProcs: !!r.expectedProcs, critChance: su.ctx.critStrike, areaTargets: !!r.areaTargets },
         call ? { callWindow: { every: tfCadence("artifact"), seconds: 10 }, call: call } : {}));
     }
     function getRotationDamage() {
@@ -14203,6 +14203,12 @@
       // the artifact's call: assumed rows (A) and rows missing a length or amount (L / M) from the approved list
       const art = su.call && su.call.artifact ? findArtifactByName(state.artifacts.Primary, (state.artifactIL || {}).Primary) : null;
       const artAssumed = !!(art && art.callStatus === "A"), artMissing = !!(art && (art.callStatus === "L" || art.callStatus === "M"));
+      // 2.7-A / 2.7-B: with more than one enemy, an area power with no stored cap and a mixed power with one magnitude
+      if ((+state.enemyCount || 1) > 1 && su.rules.areaTargets) [].concat(kit.powers.atWill || [], kit.powers.encounter || [], kit.powers.daily || []).forEach(o => {
+        const tg = o && o.tags && o.tags.targets;
+        if (tg === "area" && o.maxTargets == null && !(o.fx || []).some(r => r.maxTargets != null)) missing.push({ key: o.name + "#cap", owner: o.name, label: o.name + ": target cap unknown" });
+        if (tg === "mixed" && !(o.fx || []).some(r => (r.kind === "hit" || r.kind === "dot") && r.targets)) missing.push({ key: o.name + "#share", owner: o.name, label: o.name + ": area share unknown (counted single-target)" });
+      });
       if (artMissing) missing.push({ key: "artifact", owner: art.name, label: art.name + " call (" + (art.callNote || "a number missing") + ")" });
       const T = full.damageTotal, share = d => Math.max(0, (T - d) / T * 100);
       const callNoArt = su.call ? Object.assign({}, su.call, { artifact: su.call.artifact ? Object.assign({}, su.call.artifact, { fx: [] }) : null }) : su.call;
