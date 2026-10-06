@@ -58,6 +58,8 @@ stats plus the buffs and debuffs that are up right then, instead of counting raw
 | 2.4-B | Double counting: a power buff is counted today as an average (slotted buff powers, Class tab buffs, class-feature gates) and would now also count per hit. | **LOCKED 2026-10-06 (n00b: recommended) = Recommended.** When the new simulator runs, it owns every buff that comes from the kit (powers, class features, feats, mechanics, songs), and the averaged copies of those same buffs are left out of the per-hit path. Gear, companion, mount, boon and race bonuses stay averaged (the simulator does not model them yet). |
 | 2.4-C | Power-type and damage-type bonuses: blend by the fixed profile, or by each hit? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** By each hit: an at-will bonus counts on at-will hits only, a magical bonus on magical hits only. Listed as a difference in the attribution check. |
 | 2.4-D | A buff that pushes a stat past its cap. | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Clamp per hit to the engine's cap, like the panel. |
+| 2.4-E | Timed Recharge Speed buffs (Rapid Recovery, Sanctified Ground, Divine Glow, Sneak Attack, Relative Haste, Arcane Empowerment): found on the rescan; 2.4-B moved them into the simulator. | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Cooldowns tick faster only while the buff is up: every running cooldown's remaining time is recalculated when a recharge buff starts or ends. Changes cast counts, listed in the attribution check. |
+| 2.4-F | Lore's "Critical Severity Taken +10%" (enemy debuff, Bard): inside or outside your Critical Severity cap. | Open. |
 
 ## Build order (one commit each, local only)
 
