@@ -12,8 +12,8 @@ the score is your own damage only. Everything stays local-only.
 - **The data knows which powers are area.** 132 powers are tagged `tags.targets: "area"`, 139 `"single"`, 11
   `"mixed"`, 11 untagged. Hit records: 49 area, 67 single, 23 untagged (they follow their power), 7 others.
   100 area powers deal their damage through the top-level magnitude (no hit record of their own).
-- **Target caps are almost never stored.** One record has `maxTargets`; only 4 power texts name a count (Ballad of
-  the Witch 3 targets, Oath Strike 3 enemies, Steel Breeze 5 targets, Shuriken Toss 3 enemies).
+- **Target caps are almost never stored.** One record has `maxTargets` (Shuriken Toss's ricochet, max 3 enemies);
+  no other power text names a cap (corrected: three counts first read as caps are comparison notes).
 - **No area share is stored** for the 11 mixed powers (`areaShare` is in the vocabulary, used 0 times).
 - **Debuffs hit every enemy equally.** A debuff that is up boosts every hit in step 2.4's scoring, whichever enemy it
   lands on. 44 class debuffs carry no target tag; the artifact call debuffs carry none either.
@@ -41,7 +41,7 @@ the score is your own damage only. Everything stays local-only.
 
 | Gap | Question | Recommended |
 |---|---|---|
-| 2.7-A | Target caps: almost none stored. | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** An area hit reaches every enemy up to the slider; the 4 caps named in power text apply (Ballad of the Witch 3, Oath Strike 3, Steel Breeze 5, Shuriken Toss 3). With the slider above 1 the confidence line lists "target cap unknown" for each area power in the kit. |
+| 2.7-A | Target caps: almost none stored. | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** An area hit reaches every enemy up to the slider; known caps apply. CORRECTED 2026-10-06 on re-reading the text: of the 4 "caps" quoted at lock time only Shuriken Toss (max 3 enemies) is a cap, and the data already has it (its ricochet record: others, maxTargets 2); Ballad of the Witch "wins past ~3 targets" and Oath Strike "from ~3 enemies up" are comparison notes, Steel Breeze "5 targets = half a bar" a stamina example. So no new caps. With the slider above 1 the confidence line lists "target cap unknown" for each area power in the kit. |
 | 2.7-B | Mixed powers: how much lands on the extra enemies? (The 11 untagged powers deal no damage; 10 mixed once paragon copies merge.) | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Mixed powers with split records (Storm Strike, Shuriken Toss, Vengeance's Pursuit, Chilling Cloud) follow each record's tag. The 6 with one total magnitude (Savage Advance, Contre, Guardian of Faith, Fox Shift, Killing Storm, Eldritch Blast) count as single-target, the guaranteed minimum; with the slider above 1 the confidence line lists each as "area share unknown". |
 | 2.7-C | Which hits does a debuff boost when there are several enemies? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Only the hits on the enemies it landed on. A class debuff follows its power's tag (area power: every enemy it hits; single: the main target); a feature / feat debuff (no tag) covers the main target; artifact call debuffs get the tag their text gives (24 area, 6 single: a small data addition shown as a dry run before apply); mount power debuffs cover the main target until captured. At 1 enemy nothing changes. |
 
