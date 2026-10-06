@@ -13839,6 +13839,12 @@
       try { const h = location.hostname; return location.protocol === "file:" || h === "localhost" || h === "127.0.0.1" || h === ""; } catch (e) { return false; }
     }
     function classTabEnabled() { return TF_CLASS_TAB_LIVE || tfIsLocal(); }
+    // POWER-TAGS-2 (docs/plans/power_tags_2_plan.md, step 0.2): new panel / simulator behaviour
+    // ships behind these, local-only until n00b checks it and says go. Unused until step 1.2.
+    const TF_PT2_PANEL_LIVE = false;
+    const TF_PT2_SIM_LIVE = false;
+    function pt2PanelEnabled() { return TF_PT2_PANEL_LIVE || tfIsLocal(); }
+    function pt2SimEnabled() { return TF_PT2_SIM_LIVE || tfIsLocal(); }
     // ===== Rotation simulator (ROT-1 / ROT-2, n00b 2026-09-11) =====
     // LOCAL ONLY until n00b flips it: the live site keeps the rate model for both
     // the display and the optimizer's scoring.
