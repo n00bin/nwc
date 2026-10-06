@@ -134,6 +134,16 @@ Pools: `actionPoints`, `stamina`, `divinity`, `rage`, `performance`, `soulweave`
     `stackApplied` = once per stack applied (Snap Freeze). Cast-triggered records obey `every`, lockout and chance.
 17. **Action point gains** (`resource`, pool `actionPoints`, `pctOfBar` of a 1,000 bar) fill the simulated AP bar.
 
+## The thirteenth kind: `echo` (added 2026-10-06, n00b: "approve and echo")
+
+Repeats a share of the damage YOU deal to the target during a window. Fields: `pct`, `seconds`, `name`,
+`deliver` (`"end"` = the total is dealt again when the window ends; `"each"` = every hit is copied as it lands),
+`targets` (`"single"` = the same target; `"others"` = the other enemies, so zero on a single boss).
+Echo damage never feeds another echo and fires no triggers.
+
+- Shadow of Demise: `{kind: echo, pct: 40, seconds: 5, deliver: end, targets: single}` on encounters cast from Stealth.
+- Tyrannical Curse: `{kind: echo, pct: 15, seconds: 20, deliver: each, targets: others}` (damage link to enemies within 30 ft).
+
 ## What is deliberately left out
 
 - Healing and survival timelines (PT2-16: the search is damage-focused). `heal` and `shield` records are

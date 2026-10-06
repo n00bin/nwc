@@ -68,6 +68,7 @@ FX_KINDS = {
     "heal":     {"magnitude", "pctMaxHp", "pctOfDamage", "scope", "seconds", "perTick", "name"},
     "shield":   {"magnitude", "pctMaxHp", "pctOfHealed", "scope", "seconds", "name"},
     "mod":      {"target", "field", "op", "value", "addFx"},
+    "echo":     {"pct", "seconds", "deliver", "targets", "name"},
 }
 FX_EVENTS = {"cast", "hit", "crit", "dotTick", "kill", "combatStart", "periodic", "stackSpent", "stackReached",
              "stackApplied", "stackRemoved", "takeHit", "block", "deflect", "dodge", "buffApplied", "buffRefreshed", "buffEnded"}

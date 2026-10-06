@@ -477,6 +477,7 @@
       if (!f) return true;
       if (f.type) { const ts = Array.isArray(f.type) ? f.type : [f.type]; if (ts.indexOf("any") < 0 && ts.indexOf(ow.type) < 0) return false; }
       if (f.names && f.names.indexOf(ow.name) < 0) return false;
+      if (f.notNames && f.notNames.indexOf(ow.name) >= 0) return false;
       if (f.tags && !tagsMatch(f.tags, ow.obj && ow.obj.tags)) return false;
       const tg = (ow.obj && ow.obj.tags) || {};
       if (f.element && !oneOf(f.element, tg.element)) return false;
@@ -561,6 +562,9 @@
     function stk(name) { if (!stacks[name]) stacks[name] = { n: 0, timers: [] }; return stacks[name]; }
     function stackCount(name) { const s = stacks[name]; if (!s) return 0; const live = s.timers.filter(function (x) { return x > t; }).length; const c = s.n + live; return caps[name] != null ? Math.min(caps[name], c) : c; }
     const buffs = {};    // name -> until
+    const buffWasUp = {};
+    const echoes = [];   // {name, pct, until, deliver, targets, acc}
+    const traceRows = [];
     function buffUp(name) { return permanentBuff[name] ? buffs[name] != null : (buffs[name] != null && buffs[name] > t); }
     function keyValue(key) {
       if (key.indexOf("stack:") === 0) return stackCount(key.slice(6));
@@ -569,6 +573,7 @@
       if (key === "enemyHealthPct") return enemyHp;
       if (key === "enemyCount") return num(input.enemyCount, 1);
       if (key === "otherEnemies") return Math.max(0, num(input.enemyCount, 1) - 1);
+      if (key === "pool:apPct") return Math.max(0, Math.min(100, ap / 10));
       return (fight[key] === true) ? 1 : (typeof fight[key] === "number" ? fight[key] : 0);
     }
     // A gate (or a list of gates, all of which apply) as a 0..1+ fraction - the PT2-2 shapes, same fields as Stage 1.
@@ -631,9 +636,20 @@
 
     // ---- damage ----
     function mixKind(ow) { return (ow.type === "atWill" || ow.type === "encounter" || ow.type === "daily") ? ow.type : (ow.spender ? "encounter" : "other"); }
-    function land(ow, recName, mag, isTick) {
+    function addEcho(name, m) {
+      if (!(m > 0)) return;
+      magTotal += m; bySource[name] = (bySource[name] || 0) + m; byOwner[name] = (byOwner[name] || 0) + m; mix.other += m;
+    }
+    function land(ow, recName, mag, isTick, offMain) {
       const pct = pctModsFor(ow.name, ow.type, recName);
       let m = mag * (1 + pct / 100);
+      if (m > 0 && !offMain) {
+        for (let ei = 0; ei < echoes.length; ei++) {
+          const E = echoes[ei]; if (E.until <= t) continue;
+          if (E.deliver === "end") E.acc += m;
+          else addEcho(E.name, m * E.pct / 100 * (E.targets === "others" ? Math.max(0, num(input.enemyCount, 1) - 1) : 1));
+        }
+      }
       if (m > 0) {
         magTotal += m;
         const label = recName && recName !== ow.name ? ow.name + " · " + recName : ow.name;
@@ -643,7 +659,11 @@
       fire("hit", { ow: ow, recName: recName });
       if (isTick) fire("dotTick", { ow: ow, recName: recName });
     }
-    function hitTargets(r) { return r.targets === "others" ? Math.max(0, num(input.enemyCount, 1) - 1) : 1; }
+    function hitTargets(r) {
+      if (r.targets !== "others") return 1;
+      const n = Math.max(0, num(input.enemyCount, 1) - 1);
+      return r.maxTargets != null ? Math.min(num(r.maxTargets), n) : n;
+    }
     // Schedule a hit / dot record. `spent` = stacks this cast consumed (scalesWith).
     function scheduleDamage(ow, r, start, spent, magOverride) {
       const n = hitTargets(r) * (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate)) ? gateFrac(r.gate) : 1); if (n <= 0) return 0;
@@ -651,7 +671,7 @@
       if (r.kind === "hit") {
         const m = (magOverride != null ? magOverride : num(r.magnitude, 0)) + sw;
         const c = Math.max(1, num(r.count, 1));
-        for (let i = 0; i < c; i++) schedule(start + num(r.delaySeconds, 0), function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, m, false); });
+        for (let i = 0; i < c; i++) schedule(start + num(r.delaySeconds, 0), function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, m, false, k > 0 || r.targets === "others"); });
         return m * c * n;
       }
       if (r.kind === "dot") {
@@ -665,7 +685,7 @@
           liveSt.push(start + sec); dotStacks[key] = liveSt;
         }
         if (r.stacking === "refresh") { for (let ei = events.length - 1; ei >= 0; ei--) if (events[ei].tag === key) events.splice(ei, 1); }
-        for (let i = 1; i <= ticks; i++) schedule(start + sec * i / ticks, function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, per, true); }, key);
+        for (let i = 1; i <= ticks; i++) schedule(start + sec * i / ticks, function () { for (let k = 0; k < n; k++) land(ow, r.name || ow.name, per, true, k > 0 || r.targets === "others"); }, key);
         return total * n;
       }
       return 0;
@@ -675,6 +695,7 @@
     function applyBuff(r) {
       const name = r.name || "(buff)";
       const wasUp = buffUp(name);
+      if (r.op === "remove") { if (wasUp) { buffs[name] = -1; buffWasUp[name] = false; fire("buffEnded", { name: name }); } return; }
       buffs[name] = (permanentBuff[name] || r.seconds == null) ? 1e12 : t + num(r.seconds);
       if (wasUp) fire("buffRefreshed", { name: name });
       else {
@@ -701,12 +722,14 @@
         const rsec = r.seconds != null ? num(r.seconds) : ((rules[name] || {}).seconds != null ? num(rules[name].seconds) : null);
         if (stackCount(name) > 0 && rsec != null) s.timers = s.timers.map(function () { return t + rsec; });
       } else if (op === "consume") {
-        const have = Math.floor(stackCount(name));
-        if (have <= 0) return 0;
+        // whole-stack spenders (a minimum to spend, e.g. Soul Scorch) spend whole stacks; meters spend fractions
+        const have = r.min != null ? Math.floor(stackCount(name)) : stackCount(name);
+        if (!(have > 1e-9)) return 0;
         const want = r.amount != null ? Math.min(num(r.amount), have) : have;
         if (r.min != null && want < num(r.min)) return 0;
         let left = want;
         const fromN = Math.min(s.n, left); s.n -= fromN; left -= fromN;
+        if (s.n < 1e-9) s.n = 0;
         s.timers.sort(function (a, b) { return a - b; }); s.timers.splice(0, left);
         fire("stackSpent", { resource: name, amount: want });
         fire("stackRemoved", { resource: name });
@@ -731,6 +754,7 @@
         case "debuff": if (r.name) buffs[r.name] = r.seconds != null ? t + num(r.seconds) : 1e12; return 0;
         case "stack": applyStack(r, spent); return 0;
         case "cooldown": applyCooldown(r, 1); return 0;
+        case "echo": echoes.push({ name: r.name || ow.name, pct: num(r.pct, 0), until: t + num(r.seconds, 0), deliver: r.deliver || "end", targets: r.targets || "single", acc: 0 }); return 0;
         case "resource":
           if (r.pool === "actionPoints" && (r.op === "gain" || r.op === "set")) { const g = r.pctOfBar != null ? num(r.pctOfBar) * 10 : num(r.amount, 0); ap = r.op === "set" ? g : ap + g; }
           return 0;
@@ -758,7 +782,7 @@
         }
         if ((ev === "stackApplied" || ev === "stackRemoved") && w.resource !== ctx.resource) continue;
         if (ev === "stackApplied" && w.every) { const times = Math.floor(num(ctx.amount, 1) / num(w.every)); for (let k = 0; k < times; k++) runRecord(L.ow, withRecMods(L.ow, L.rec), null, null); continue; }
-        if ((ev === "buffRefreshed" || ev === "buffApplied") && w.name !== ctx.name) continue;
+        if ((ev === "buffRefreshed" || ev === "buffApplied" || ev === "buffEnded") && w.name !== ctx.name) continue;
         if (ev === "stackSpent") {
           if (w.resource !== ctx.resource) continue;
           const every = num(w.every, 1); const times = Math.floor(num(ctx.amount) / every);
@@ -806,12 +830,15 @@
       return dmg.some(function (r) { return gateFrac(r.gate) > 0; });
     }
     function castOwner(ow, kind) {
-      const p = ow.obj;
+      // field mods on the power itself (Stealth Blade Flurry: no cooldown; Path of the Blade: 3 s) - read at cast
+      let p = ow.obj;
+      const fieldMods = effective(ow).mainMods.filter(function (md) { return md.field !== "magnitude"; });
+      if (fieldMods.length) { p = Object.assign({}, p); fieldMods.forEach(function (md) { setPath(p, md.field, md.op, md.value); }); }
       const castSec = num(p.channelSeconds, 0) > 0 ? num(p.channelSeconds) : num(p.castSeconds, 0);
       busyUntil = t + Math.max(0.1, castSec);
       const castEnd = t + castSec;
       castCount[p.name] = (castCount[p.name] || 0) + 1;
-      const s = kind === "spender" ? null : pst(kind + ":" + p.name);
+      const s = kind === "spender" ? null : pst(kind + ":" + ow.name);
       if (s) { s.uses++; }
       // 1. gates read now (records are built with this moment's state)
       const e = effective(ow);
@@ -836,14 +863,15 @@
         const firstHit = dmg.find(function (r) { return r.kind === "hit"; });
         dmg.forEach(function (r) {
           let mo = null;
-          if (r === firstHit && e.mainMods.length) { mo = num(r.magnitude, 0); e.mainMods.forEach(function (md) { mo = md.op === "add" ? mo + num(md.value) : md.op === "mult" ? mo * num(md.value) : num(md.value); }); }
+          if (r === firstHit && e.mainMods.length) { mo = num(r.magnitude, 0); e.mainMods.forEach(function (md) { if (md.field !== "magnitude") return; mo = md.op === "add" ? mo + num(md.value) : md.op === "mult" ? mo * num(md.value) : num(md.value); }); }
           total += scheduleDamage(ow, r, castEnd, spent, mo);
         });
       }
-      else total = scheduleTopLevel(ow, kind, castSec, e.mainMods, s);
+      else total = scheduleTopLevel({ obj: p, type: ow.type, name: ow.name, spender: ow.spender }, kind, castSec, e.mainMods, s);
       live.forEach(function (r) { if (r.kind !== "hit" && r.kind !== "dot" && !(r.kind === "stack" && r.op === "consume")) runRecord(ow, r, spent, castEnd, true); });
       if (s) s.lastUse = t;
       if (kind === "encounter") { const cd = cdSeconds(p, s); const n = chargesOf(p); while (s.ready.length < n) s.ready.push(0); s.ready.sort(function (a, b) { return a - b; }); s.ready[0] = t + cd; }
+      else if (kind === "mechanic") { s.ready = [t + num(p.cooldownSeconds, 0)]; }
       else if (kind === "daily") { ap -= num(p.actionPointCost, 1000); }
       pushTimeline(p.name, kind === "spender" ? "encounter" : kind, total, kind === "spender" ? Object.keys(spent).map(function (k) { return spent[k] + " " + k; }).join(", ") : "");
       return true;
@@ -854,7 +882,7 @@
       const p = ow.obj;
       let magRaw = mainMagnitude(p); if (magRaw == null) magRaw = p.magnitude;
       const pm = parseMag(magRaw);
-      const applyMain = function (m) { mainMods.forEach(function (md) { m = md.op === "add" ? m + num(md.value) : md.op === "mult" ? m * num(md.value) : num(md.value); }); return m; };
+      const applyMain = function (m) { mainMods.forEach(function (md) { if (md.field !== "magnitude") return; m = md.op === "add" ? m + num(md.value) : md.op === "mult" ? m * num(md.value) : num(md.value); }); return m; };
       if (pm.count > 1) {
         const ch = num(p.channelSeconds, 0) > 0, sec = ch ? num(p.channelSeconds) : (num(p.durationSeconds, 0) || castSec);
         const per = applyMain(pm.per);
@@ -888,7 +916,16 @@
     const listedIn = function (list, kind, name) { return list.some(function (x) { return x.kind === kind && (name == null || x.name === name); }); };
     const MAX_WAIT = 5;
     function owOf(kind, name) { const p = byName[kind + ":" + name]; return p ? owners.find(function (o) { return o.obj === p; }) : null; }
+    function mechOw(name) { return owners.find(function (o) { return o.type === "mechanic" && o.name === name; }) || null; }
+    // a mechanic is castable when it has own records (no trigger) - e.g. entering Stealth; ready when one of them would apply
+    function mechReady(ow) {
+      if (!ow) return false;
+      const own = effective(ow).recs.filter(function (r) { return !r.when; });
+      if (!own.length || !own.some(function (r) { return gateFrac(r.gate) > 0; })) return false;
+      const sm = pst("mechanic:" + ow.name); return sm.ready.every(function (x) { return x <= t; });
+    }
     function isReady(step) {
+      if (step.kind === "mechanic") return mechReady(mechOw(step.name));
       if (step.kind === "scorch") return spenderReady();
       if (step.kind === "artifact") return t >= artifactReady;
       if (step.kind === "mount") return t >= mountReady;
@@ -905,6 +942,7 @@
     function waitFor(step) {
       if (step.kind === "atWill") return 0;
       if (step.kind === "scorch") return spenderReady() ? 0 : Infinity;
+      if (step.kind === "mechanic") return mechReady(mechOw(step.name)) ? 0 : Infinity;
       if (step.kind === "artifact") return Math.max(0, artifactReady - t);
       if (step.kind === "mount") return Math.max(0, mountReady - t);
       const ow = owOf(step.kind, step.name); if (!ow) return Infinity;
@@ -921,6 +959,7 @@
       return Infinity;
     }
     function castStep(step) {
+      if (step.kind === "mechanic") { const mo = mechOw(step.name); return mo ? castOwner(mo, "mechanic") : false; }
       if (step.kind === "scorch") return spenderOw ? castOwner(spenderOw, "spender") : false;
       if (step.kind === "artifact") { artifactReady = t + cad.artifact; busyUntil = t + 0.5; castCount["Artifact"] = (castCount["Artifact"] || 0) + 1; pushTimeline(step.name || "Artifact", "other", 0, "trigger only"); return true; }
       if (step.kind === "mount") { mountReady = t + cad.mountpower; busyUntil = t + 0.5; castCount["Mount power"] = (castCount["Mount power"] || 0) + 1; pushTimeline(step.name || "Mount power", "other", 0, "trigger only (mount burst layer scores it)"); return true; }
@@ -953,6 +992,17 @@
       flushEvents();
       Object.keys(watchedStacks).forEach(function (n) { stackTimeSum[n] = (stackTimeSum[n] || 0) + stackCount(n) * dt; });
       Object.keys(watchedBuffs).forEach(function (n) { if (buffUp(n)) buffTime[n] = (buffTime[n] || 0) + dt; });
+      Object.keys(buffs).forEach(function (n) {
+        const up = buffUp(n);
+        if (buffWasUp[n] && !up) { buffWasUp[n] = false; fire("buffEnded", { name: n }); }
+        else buffWasUp[n] = up;
+      });
+      // echoes whose window closed deal their stored share now (no triggers, never echoed)
+      for (let ei = echoes.length - 1; ei >= 0; ei--) {
+        const E = echoes[ei];
+        if (E.until <= t) { echoes.splice(ei, 1); if (E.deliver === "end" && E.acc > 0) addEcho(E.name, E.acc * E.pct / 100); }
+      }
+      if (input.trace && Math.abs(t - Math.round(t)) < dt / 2) traceRows.push({ t: Math.round(t), stacks: Object.fromEntries(Object.keys(stacks).map(function (n) { return [n, Math.round(stackCount(n) * 10) / 10]; })), up: Object.keys(buffs).filter(buffUp) });
       // expiries: a timed stack running out fires stackRemoved
       Object.keys(stacks).forEach(function (n) {
         const s = stacks[n]; const before = s.timers.length;
@@ -1005,7 +1055,8 @@
       casts: castCount, bySource: bySource, byOwner: byOwner, timeline: timeline, firstCycleEnd: firstCycleEnd, cycles: cyclesDone,
       mix: { atWill: mix.atWill, encounter: mix.encounter, daily: mix.daily, other: mix.other, pct: totalMix > 0 ? { atWill: mix.atWill / totalMix * 100, encounter: mix.encounter / totalMix * 100, daily: mix.daily / totalMix * 100, other: mix.other / totalMix * 100 } : null },
       stacksAvg: avg, buffUptime: up,
-      derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 }
+      derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 },
+      trace: input.trace ? traceRows : undefined
     };
   }
 

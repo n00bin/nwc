@@ -180,6 +180,8 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
 - **Return to Shadows** (feats)
   - +7.5 Stealth Meter, on cast from encounter powers, not (while Stealth is up) and x1 per enemyCount (max 99), ASSUMED, - 7.5% per target hit; target cap unknown
   - +2.5 Stealth Meter, on cast from encounter powers, not (while Stealth is up) and only when behindTarget and x1 per enemyCount (max 99), - 10% from behind
+- **Shadow of Demise** (feats)
+  - echo 40% of your damage to the target over 5 s, dealt again at the end, on cast from encounter powers, while Stealth is up, ASSUMED, - encounters from Stealth: 40% of your damage to the target in 5 s is dealt again; a second mark inside the window assumed to start its own
 - **Shadowy Opportunity** (feats)
   - buff Shadowy Opportunity (you) for 5 s, when Stealth ends
   - hit 130, on each hit from atWill/encounter/daily powers, while Shadowy Opportunity is up, ASSUMED, - each of your hits (dot ticks counted, test)
@@ -221,7 +223,6 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
 ## Not mapped (and why)
 
 - **Stealth refill**: THE gating number: seconds to refill the meter from empty. Until captured it counts zero, so Stealth only comes from Invisible Infiltrator, One with the Shadows, Return to Shadows, Shadow Strike, Bait and Switch, Shadowy Disappearance and the full meter at the pull. Every Stealth-dependent number is a known underestimate.
-- **Shadow of Demise**: 40% of the damage you deal during the 5 s mark is dealt again: the vocabulary has no 'repeat damage' effect (same gap as Tyrannical Curse). Proposing one new kind, 'echo' (a percent of the damage you deal to the target over a window, dealt again at the end).
 - **Sly Flourish**: Magnitude rises through the combo but later hits and combo length are not on the tooltip: scored at the 40 floor (known underestimate).
 - **Duelist's Flurry Bleed**: Chance, damage per stack and tick rate are not on the tooltip: recorded, scores zero (the biggest open Assassin number).
 - **Skullcracker mark extension**: +0.5 s per damage instance up to +5 s: counted as the full 15 s (a fast at-will reaches it in under 2 s).
@@ -261,4 +262,4 @@ The step 2.3 parity check must show exactly these differences and nothing else.
 - **One with the Shadows**: max 1
 - **First Strike**: max 1
 
-Records: 137. Validator: PASS.
+Records: 138. Validator: PASS.

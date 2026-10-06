@@ -129,6 +129,7 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
   - +1 Soul Spark, on each hit
 - **Tyrannical Curse** (daily)
   - debuff Tyrannical Curse Damage Taken +15% (on the target) for 20 s
+  - echo 15% of your damage to the target over 20 s, copied to other enemies as it lands, - 15% of your damage to the target is copied to other enemies within 30 ft (zero on a single boss)
   - +1 Soul Spark, on each hit
 - **Curse** (mechanic)
   - set Curse to 1 on the target, lasts 8 s, on cast from powers tagged curse apply, - powers tagged Curse apply
@@ -232,7 +233,6 @@ Old blocks stay as the human record. **MISSING** = not on the tooltip, counts ze
 
 ## Not mapped (and why)
 
-- **Tyrannical Curse**: Damage link: 15% of your damage to the target is copied to other enemies within 30 ft for 20 s. The vocabulary has no 'copy damage' effect. Zero on a single boss; matters only with more than one enemy. Needs one new effect kind if we want it.
 - **Curse**: Combat Advantage for 3 s: already inside the 100% Combat Advantage the engine assumes, so not counted twice.
 - **Flames of Phlegethos**: Combat Advantage for the burn: same reason as Curse.
 - **Soul Spark**: Out of combat, sparks above 6 burn off at 1 per second and heal 0.5% max HP: not part of a fight.
@@ -280,4 +280,4 @@ The step 2.3 parity check must show exactly these differences and nothing else.
 - **Curse**: max 1
 - **Dark Spiral**: max 2
 
-Records: 151. Validator: PASS.
+Records: 152. Validator: PASS.
