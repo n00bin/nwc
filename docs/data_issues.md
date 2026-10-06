@@ -1,5 +1,8 @@
 # Data Issues To Investigate
 
+## OPEN Bard check for n00b (2026-10-06, PT2 step 2.4-F)
+- **Lore's "Critical Severity Taken +10%" and the 120% cap.** Counted OUTSIDE your Critical Severity cap (provisional, n00b lock 2.4-F). Test: on a Songblade at 120% Critical Severity, compare crit numbers on a target dummy with and without Lore's debuff. Bigger crits with Lore = keep; no change = switch to inside the cap.
+
 ## OPEN Ranger data checks for n00b (2026-10-06, Migration B)
 
 - **Boar Charge (Warden):** stored magnitude 385, but the tooltip transcription and the review note both read 585. Left at 385 until checked in game.

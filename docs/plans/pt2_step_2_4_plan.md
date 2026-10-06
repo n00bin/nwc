@@ -59,7 +59,12 @@ stats plus the buffs and debuffs that are up right then, instead of counting raw
 | 2.4-C | Power-type and damage-type bonuses: blend by the fixed profile, or by each hit? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** By each hit: an at-will bonus counts on at-will hits only, a magical bonus on magical hits only. Listed as a difference in the attribution check. |
 | 2.4-D | A buff that pushes a stat past its cap. | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Clamp per hit to the engine's cap, like the panel. |
 | 2.4-E | Timed Recharge Speed buffs (Rapid Recovery, Sanctified Ground, Divine Glow, Sneak Attack, Relative Haste, Arcane Empowerment): found on the rescan; 2.4-B moved them into the simulator. | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Cooldowns tick faster only while the buff is up: every running cooldown's remaining time is recalculated when a recharge buff starts or ends. Changes cast counts, listed in the attribution check. |
-| 2.4-F | Lore's "Critical Severity Taken +10%" (enemy debuff, Bard): inside or outside your Critical Severity cap. | Open. |
+| 2.4-F | Lore's "Critical Severity Taken +10%" (enemy debuff, Bard): inside or outside your Critical Severity cap. | **LOCKED 2026-10-06 (n00b: 1) = Recommended, PROVISIONAL.** Outside the cap: added after your Critical Severity is clamped (enemy-side, like Damage Taken). In-game test logged in `docs/data_issues.md`. |
+
+**Gap list complete 2026-10-06.** Rescan after 2.4-F found nothing new. Settled by the data, no decision needed:
+defensive and healing stats do not enter the damage number; "Dmg Bonus" / "Encounter Dmg Bonus" / "Encounter Damage"
+map through the existing name table; "Damage Taken" debuffs join the damage-taken group; Rimefire Weaving's
+"Damage Resistance -5" counts as damage taken (its approved record's note); enemy "Outgoing Damage" is defensive.
 
 ## Build order (one commit each, local only)
 
@@ -68,7 +73,8 @@ stats plus the buffs and debuffs that are up right then, instead of counting raw
    `input.scoreHit` with the hit and the active stats. With no `scoreHit` passed, the simulator behaves exactly as
    now (all nine parity scripts still pass).
 3. The page passes `scoreHit` (built from the build part) when the new simulator runs. Equality check.
-4. Switch on, one at a time: buff stats per hit, per-hit power type, per-hit damage type, the 2.4-B rule.
+4. Switch on, one at a time: buff stats per hit, per-hit power type, per-hit damage type, the 2.4-B rule, timed
+   Recharge Speed (2.4-E), Critical Severity Taken (2.4-F).
    Attribution check per class.
 5. Rotation panel: damage per second beside magnitude per second. Page test, 33-build baseline, step log entry,
    `docs/toon_coverage.md` updated.
