@@ -13,6 +13,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ### Bug Fixes
 
 - **Mount power "Fix this item" card showed the wrong percentages (Toon Forge).** When you opened the fix card for a mount's combat power, it showed the item level for your chosen tier but the percentages for a lower one. For example, Bat Swarm showed item level 3,937 with 15% when the game shows 19.7%. Both now match your chosen tier. Thanks to the player who reported it.
+- **Renewed Obsidian Infused Shirt and Pants added.** Item level 4,300, with the Infused Power set bonus (+5,700 Power when you wear both). Thanks to the player who reported them.
 - **Tempest Gaze Ink (Depleted Advantage) is pants, not a shirt.** It now sits in the Pants slot with the correct Deflect of 2,126 (was 1,276). Thanks to the player who reported it.
 - **Mythallar Fragment was missing its Stamina Regeneration.** The top rank gives +15% Stamina Regeneration, which the site did not show or count. It does now.
 
