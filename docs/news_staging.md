@@ -8,7 +8,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Data Additions
 
-- **Lower ranks for two artifacts.** Lantern of Revelation now has its item level 100 rank, and Mythallar Fragment has its item level 200 and 800 ranks. Pick the rank you own from the Rank menu on the Artifacts page or in Toon Forge. Thanks to the player who reported these.
+- **Lower ranks for two artifacts.** Lantern of Revelation now has its item level 100 rank, and Mythallar Fragment has its item level 200, 300 and 800 ranks. Pick the rank you own from the Rank menu on the Artifacts page or in Toon Forge. Thanks to the player who reported these.
 
 ### Bug Fixes
 
