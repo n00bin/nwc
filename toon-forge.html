@@ -4326,6 +4326,11 @@
         : "Lock this so the optimizer keeps it and builds the rest of the loadout around it";
       return `<button class="gear-lock-btn${on ? " on" : ""}" data-lock-key="${_escAttr(lockKey)}" title="${_escAttr(tip)}">${on ? "🔒" : "🔓"}</button>`;
     }
+    // PT2 Stage 4 (4-A): locks on power / class feature / feat slots - the kit search keeps a locked pick
+    function pt2KitLockHTML(lockKey, filled) {
+      if (!(typeof pt2UsesFxSim === "function" && pt2UsesFxSim())) return "";
+      return " " + lockButtonHTML(lockKey, filled);
+    }
     function wireLockButtons(root, afterToggle) {
       if (!root) return;
       root.querySelectorAll("[data-lock-key]").forEach(function (el) {
@@ -13850,6 +13855,35 @@
       }
       return h;
     }
+    // PT2 Stage 4 (4-A): the fight facts the optimizer's candidates can read - the paragon's whole power / feature /
+    // feat / mechanic pool (the kit search may pick any of them), the equipped gear / overload / companion procs and the
+    // artifact call - with the shared value (state.pt2Fight: the same as the Fight panel's questions).
+    window.pt2SetupFightFacts = function () {
+      if (!(typeof pt2UsesFxSim === "function" && pt2UsesFxSim())) return null;
+      const used = new Map();
+      const note = (key, who) => { if (!key || !(key in PT2_FIGHT_QUESTIONS)) return; if (!used.has(key)) used.set(key, new Set()); used.get(key).add(who); };
+      const scanRecs = (recs, who) => (recs || []).forEach(r => { if (!r) return; [].concat(r.gate || []).forEach(g => g && note(g.key, who)); if (r.effects) scanRecs(r.effects, who); if (r.addFx) scanRecs(r.addFx, who); });
+      const scanOwner = o => { if (!o || !o.name) return; scanRecs(o.fx, o.name);
+        Object.keys(o.modes || {}).forEach(m => o.modes[m] && scanRecs(o.modes[m].fx, o.name));
+        [].concat(o.gate || [], Array.isArray(o.gateParts) ? o.gateParts.map(x => x.gate) : []).forEach(g => g && note(g.key, o.name)); };
+      const cDef = findClass(state.class), pDef = findParagon(state.class, state.paragon);
+      ["atWill", "encounter", "daily"].forEach(t => _paragonPowerPool(t).forEach(scanOwner));
+      [].concat((cDef && cDef.classFeatures) || [], (pDef && pDef.slottedClassFeatures) || [], (pDef && pDef.feats) || [], classMechanicsFor(state.class, state.paragon) || []).forEach(scanOwner);
+      try { pt2ProcOwners().owners.forEach(scanOwner); } catch (e) {}
+      try { const a = state.artifacts && state.artifacts.Primary ? findArtifactByName(state.artifacts.Primary, (state.artifactIL || {}).Primary) : null; if (a) scanRecs(a.callFx, a.name); } catch (e) {}
+      const fight = state.pt2Fight || {};
+      return [...used].map(([k, who]) => ({ key: k, question: PT2_FIGHT_QUESTIONS[k], value: (typeof fight[k] === "boolean") ? fight[k] : !!PT2_FIGHT_DEFAULTS[k], usedBy: [...who].slice(0, 4), more: Math.max(0, who.size - 4) }));
+    };
+    window.pt2SetFightFact = function (key, v) { if (!state.pt2Fight) state.pt2Fight = {}; state.pt2Fight[key] = !!v; };
+    window.pt2FightSliders = function () {
+      return { enemyCount: (typeof state.enemyCount === "number") ? state.enemyCount : 1, targetRangeFt: (typeof state.targetRangeFt === "number") ? state.targetRangeFt : 10,
+        flankPct: Math.round(((typeof state.flankUptime === "number") ? state.flankUptime : 1) * 100) };
+    };
+    window.pt2SetFightSliders = function (v) {
+      if (v.enemyCount != null && isFinite(v.enemyCount)) state.enemyCount = Math.max(1, Math.min(20, Math.round(+v.enemyCount)));
+      if (v.targetRangeFt != null && isFinite(v.targetRangeFt)) state.targetRangeFt = Math.max(0, Math.min(100, +v.targetRangeFt));
+      if (v.flankPct != null && isFinite(v.flankPct)) state.flankUptime = Math.max(0, Math.min(1, +v.flankPct / 100));
+    };
     function pt2BindConditions(box) {
       box.querySelectorAll("select[data-pt2-fight]").forEach(el => el.addEventListener("change", e => {
         if (!state.pt2Fight) state.pt2Fight = {};
@@ -19316,7 +19350,7 @@
           }
           out.push(
             '<div class="slot ' + (filled ? "filled" : "") + '">' +
-              '<div class="slot-label">Slot ' + (i + 1) + '</div>' +
+              '<div class="slot-label">Slot ' + (i + 1) + '' + pt2KitLockHTML("power:atWill:" + i, filled) + '</div>' +
               '<div class="gear-pick-chip' + (filled ? " filled" : "") + (filled && state.class === "Ranger" ? " pair-chip" : "") + '" data-atwill-pick="' + i + '" title="' + (filled ? escAttr(name) : 'Click to pick an at-will') + '">' +
                 label +
               '</div>' +
@@ -19382,7 +19416,7 @@
           }
           out.push(
             '<div class="slot ' + (filled ? "filled" : "") + '">' +
-              '<div class="slot-label">' + (state.class === "Wizard" && i === 3 ? "Mastery" : ("Slot " + (i + 1))) + '</div>' +
+              '<div class="slot-label">' + (state.class === "Wizard" && i === 3 ? "Mastery" : ("Slot " + (i + 1))) + '' + pt2KitLockHTML("power:encounter:" + i, filled) + '</div>' +
               '<div class="gear-pick-chip' + (filled ? " filled" : "") + (filled && state.class === "Ranger" ? " pair-chip" : "") + '" data-enc-pick="' + i + '" title="' + (filled ? escAttr(name) : 'Click to pick an encounter') + '">' +
                 label +
               '</div>' +
@@ -19410,7 +19444,7 @@
           const label = filled ? "★ " + escHtml(name) : "+ Pick daily";
           out.push(
             '<div class="slot ' + (filled ? "filled" : "") + '">' +
-              '<div class="slot-label">Slot ' + (i + 1) + '</div>' +
+              '<div class="slot-label">Slot ' + (i + 1) + '' + pt2KitLockHTML("power:daily:" + i, filled) + '</div>' +
               '<div class="gear-pick-chip' + (filled ? " filled" : "") + '" data-daily-pick="' + i + '" title="' + (filled ? escAttr(name) : 'Click to pick a daily') + '">' +
                 label +
               '</div>' +
@@ -19467,7 +19501,7 @@
           const label = filled ? "✦ " + escHtml(name) : "+ Pick class feature";
           out.push(
             '<div class="slot ' + (filled ? "filled" : "") + '">' +
-              '<div class="slot-label">Slot ' + (i + 1) + '</div>' +
+              '<div class="slot-label">Slot ' + (i + 1) + '' + pt2KitLockHTML("feature:" + i, filled) + '</div>' +
               '<div class="gear-pick-chip' + (filled ? " filled" : "") + '" data-cf-pick="' + i + '" title="' + (filled ? escAttr(name) : 'Click to pick a class feature') + '">' +
                 label +
               '</div>' +
@@ -19494,7 +19528,7 @@
           const label = filled ? "✦ " + escHtml(name) : "+ Pick feat";
           out.push(
             '<div class="slot ' + (filled ? "filled" : "") + '">' +
-              '<div class="slot-label">Tier ' + (i + 1) + '</div>' +
+              '<div class="slot-label">Tier ' + (i + 1) + '' + pt2KitLockHTML("feat:" + i, filled) + '</div>' +
               '<div class="gear-pick-chip' + (filled ? " filled" : "") + '" data-feat-pick="' + i + '" title="' + (filled ? escAttr(name) : 'Click to pick a feat') + '">' +
                 label +
               '</div>' +
@@ -19724,6 +19758,7 @@
       });
       // Encounter slot clicks → same modal pattern, three slots, uses
       // renderEncounterItem to surface cooldowns and per-side magnitudes.
+      wireLockButtons(body, renderClassLoadout);   // PT2 4-A: kit locks
       body.querySelectorAll('[data-enc-pick]').forEach(el => {
         el.addEventListener('click', () => {
           const idx = parseInt(el.dataset.encPick, 10);
