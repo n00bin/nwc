@@ -9,6 +9,15 @@ capture, so those classes get no Main Hand pick (and no +10%) until it exists. A
 Warlock screen (docs/calibration/evidence/2026-06-07_warlock_main-hand-artifact-modification-management-1..6.png).
 Needed: one screenshot of that screen per class (every Enhanced option listed, with its tooltip).
 
+## WATCH Mythallar Fragment Blue/Purple ranks are derived, not seen (2026-10-07, reports #288-#302)
+
+n00b's tooltips: Green IL 200, Orange IL 800, Mythic IL 1200. Blue (IL 400, ids 155) and Purple
+(IL 600, id 156) assume evenly spaced ranks (n00b's call: "let's assume that's right; if another
+report comes back we will recheck"). Conflicting evidence already on file: the reporting player
+gave a Blue at **IL 300** (Acc 225 / CA 450 / CR 240 / 6% / 160 s), which would mean either uneven
+ranks or item level rising while refining within a rarity. Any new Mythallar (or Lantern of
+Revelation) report with an in-between item level = reopen this. Lantern has only IL 100 and 600.
+
 ## OPEN COMP-DMG-1: your companion's own damage is not modeled (2026-10-07, PT2 gap 4-H)
 
 Toon Forge does not simulate the summoned companion's own attacks. So the Companion Enchantment's "+X% Companion
