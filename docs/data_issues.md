@@ -1,5 +1,8 @@
 # Data Issues To Investigate
 
+## OPEN flat-damage proc test (2026-10-06, PT2 Migration C lock C-B)
+- **Do flat-damage gear procs scale with your stats?** Counted at the tooltip number today (Daily Explosion 16,336, Explosive Force 13,225, Power at Any Cost 91,980). Test: on a dummy, Daily Explosion's number with and without a Power buff up. A bigger number = switch them to scaled.
+
 ## OPEN artifact call captures (2026-10-06, PT2 step 2.5)
 - **Debuff targets (step 2.7-C, applied 2026-10-06, n00b: "approved", tag whatever shows issues in testing):** 24 area / 6 single / 1 untagged from each power text (`docs/plans/artifact_debuff_targets_dryrun.md`). Check first: **Dragonbone Wand** is area only because its text says "Enemies" (plural) - the hit may be single-target.
 These count ZERO in the call window until a tooltip screenshot gives the missing number (list: `docs/plans/artifact_window_dryrun.md`).

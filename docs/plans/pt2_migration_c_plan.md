@@ -49,7 +49,11 @@ All of these are fight-long AVERAGES computed in the engine, then baked into the
 | Gap | Question | Recommended |
 |---|---|---|
 | C-A | Which procs move onto the timeline? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Every proc whose trigger the simulator produces: your hits, at-will hits, encounter / daily casts, your crits and non-crits, Combat Advantage hits (flank share), artifact and mount power use, combat start. Triggers on things the simulator does not model (being hit / crit by enemies, kills, deflects, big hits taken, healing, revives, running, being controlled) stay engine averages as today (PT2-16: no incoming-damage / healing timeline); tank and healer scores unchanged. Moved procs leave their averaged copy out of the per-hit run. |
-| C-B | Flat-damage and %-of-max-HP procs: scaled by your damage stats or not? | Open. |
+| C-B | Flat-damage and %-of-max-HP procs: scaled by your damage stats or not? | **LOCKED 2026-10-06 (n00b: 1) = Recommended.** Today's rule: the tooltip number, not raised by Power / crit / Combat Advantage / damage bonuses; %-of-max-HP uses the engine's Max HP. Capture test added: does Daily Explosion's 16,336 change with a Power buff up on a dummy? The five "next enemy that attacks you" %-HP procs need the being-attacked fight fact (off by default) under C-A. |
+
+**Gap list complete 2026-10-06.** Rescan: overload `window` procs (Aspect of Ice, on hit) are included with gear;
+summoned companions' procEffect stays out (today they contribute only through the summoned buff); the companion
+trigger-text mapping (including the known regex misses) is shown line by line in the dry-run list for approval.
 
 ## Build order (one commit each, local only)
 
