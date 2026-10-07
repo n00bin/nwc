@@ -12884,8 +12884,8 @@
     function computeSequenceProcBoost() {
       const out = { pct: 0, contributors: [] };
       if (typeof state === "undefined" || !state.gear) return out;
-      const rotMag = (typeof rotationMagPerSec === "function") ? rotationMagPerSec() : 0;
-      if (!(rotMag > 0)) return out;                       // no rotation → can't weight honestly
+      // the rotation's magnitude rate, read only when a gear bonus needs it (it can run the fight simulator)
+      let _rotMag = null; const rotMagOf = function () { if (_rotMag == null) _rotMag = (typeof rotationMagPerSec === "function") ? (rotationMagPerSec() || 0) : 0; return _rotMag; };
       const findP = function (t, nm) { return _paragonPowerPool(t).find(function (p) { return p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)); }); };
       const norm = function (w) { w = String(w || "").toLowerCase().replace(/[\s-]/g, ""); return w === "atwill" ? "atWill" : w; };
       const slotKeyFor = function (type) { return type === "atWill" ? "slottedAtWills" : type === "encounter" ? "slottedEncounters" : "slottedDailies"; };
@@ -12927,6 +12927,7 @@
         for (const eb of (item.equipBonuses || [])) {
           const d = eb.description || eb.effect || "";
           const m = RE.exec(d); if (!m) continue;
+          const rotMag = rotMagOf(); if (!(rotMag > 0)) return out;   // no rotation → can't weight honestly
           const triggerType = m[1].toLowerCase();
           const count = m[2] ? (WORD_NUM[m[2].toLowerCase()] || parseInt(m[2], 10) || 1) : 1;
           const boostType = norm(m[3]);
@@ -14089,6 +14090,7 @@
       return !!(c && c.fxStacks);
     }
     let _rotSimCache = { key: "", result: null };
+    const _pt2SimMemo = new Map(); let _pt2SimMemoRun = null;   // Stage 4.2: plain fights seen during one optimizer run
     // Cached per rotation-affecting change so gear swaps that do not touch powers or
     // Recharge / AP do not re-simulate (the optimizer calls this per candidate).
     function getRotationSim() {
@@ -14096,10 +14098,13 @@
       const inp = buildRotationSimInput();
       const key = JSON.stringify([inp.opener, inp.loop, inp.artifactName, inp.mountName, inp.powers.atWill.map(p => p.name), inp.powers.encounter.map(p => p.name), inp.powers.daily.map(p => p.name),
         Object.keys(inp.features), Object.keys(inp.feats), state.class, state.paragon, inp.fightSeconds, Math.round(inp.rechargePct * 10) / 10, Math.round(inp.apGainPct * 10) / 10,
-        inp.cadence, inp.scorchAtSparks, inp.enemyHealthPct, pt2UsesFxSim(), inp.fight, inp.enemyCount, inp.ruleBuilt]);
+        inp.cadence, inp.scorchAtSparks, inp.enemyHealthPct, pt2UsesFxSim(), inp.fight, inp.enemyCount, inp.ruleBuilt, window.__pt2FixedChoices || null]);
       if (_rotSimCache.key === key && _rotSimCache.result) return _rotSimCache.result;
-      const res = pt2UsesFxSim() ? TF_ROTATION_SIM.simulateFxBest(inp) : TF_ROTATION_SIM.simulate(inp);
+      if (_pt2SimMemoRun !== window.__tfLookupMemo) { _pt2SimMemo.clear(); _pt2SimMemoRun = window.__tfLookupMemo; }
+      if (window.__pt2FixedChoices && _pt2SimMemo.has(key)) { _rotSimCache = { key: key, result: _pt2SimMemo.get(key) }; return _rotSimCache.result; }
+      const res = pt2UsesFxSim() ? TF_ROTATION_SIM.simulateFxBest(window.__pt2FixedChoices ? Object.assign({}, inp, { choices: window.__pt2FixedChoices }) : inp) : TF_ROTATION_SIM.simulate(inp);
       _rotSimCache = { key: key, result: res };
+      if (window.__pt2FixedChoices) { if (_pt2SimMemo.size > 600) _pt2SimMemo.delete(_pt2SimMemo.keys().next().value); _pt2SimMemo.set(key, res); }
       return res;
     }
     // ===== PT2 step 2.4: fight damage, scored hit by hit (local only; a new number beside the score, 2.4-A) =====
@@ -14114,6 +14119,18 @@
       return Object.assign({ buffStats: true, slotPerHit: true, typePerHit: true, simOwnsKit: true, liveRecharge: true, critSevTaken: true, callWindow: true, expectedProcs: true, areaTargets: true, gearProcs: true }, window.__pt2HitRules || {});
     }
     // Kit owners (features, feats, mechanics) whose fx carry stat buffs the simulator counts (timed, gated or triggered).
+    // The kit's sim-owned names depend only on the class, paragon, class features and feats (not on gear): built from
+    // the kit alone, memoized for the length of an optimizer run.
+    let _pt2OwnedMemo = { run: null, key: "", val: null };
+    function pt2SimOwnedNow() {
+      const key = JSON.stringify([state.class, state.paragon, state.slottedClassFeaturePicks, state.slottedFeats]);
+      if (window.__tfLookupMemo && _pt2OwnedMemo.run === window.__tfLookupMemo && _pt2OwnedMemo.key === key) return _pt2OwnedMemo.val;
+      const findP = (t, nm) => _paragonPowerPool(t).find(p => p && (p.name === nm || p.pairId === nm || (p.ranged && p.ranged.name === nm)));
+      const pick = (t, names) => (names || []).filter(Boolean).map(nm => findP(t, nm)).filter(Boolean);
+      const val = pt2SimOwnedNames(pt2SimKit(pick, classMechanicsFor(state.class, state.paragon)));
+      _pt2OwnedMemo = { run: window.__tfLookupMemo, key: key, val: val };
+      return val;
+    }
     function pt2SimOwnedNames(kit) {
       const out = new Set();
       [].concat(kit.mechanics || [], kit.features || [], kit.feats || [], kit.always || []).forEach(o => {
@@ -14258,7 +14275,7 @@
     // The scored run's inputs, built once with the per-hit rules' engine switches (2.4-B, 2.5-D) in place.
     function pt2ScoredSetup(rules) {
       let ctx = null, inp = null, call = null;
-      const owned = rules.simOwnsKit ? pt2SimOwnedNames(buildRotationSimInput().kit) : null;
+      const owned = rules.simOwnsKit ? pt2SimOwnedNow() : null;
       window.__pt2SimOwnsKit = owned; window.__pt2SimOwnsCall = !!rules.callWindow; window.__pt2SimOwnsProcs = !!rules.gearProcs;
       try { ctx = dpsBuildContext(); inp = buildRotationSimInput(); if (rules.callWindow) call = pt2CallInput(getEngineResult()); }
       finally { window.__pt2SimOwnsKit = null; window.__pt2SimOwnsCall = false; window.__pt2SimOwnsProcs = false; }
@@ -14360,6 +14377,114 @@
     }
     window.getRotationConfidence = getRotationConfidence;
     window.getRotationDamage = getRotationDamage;
+
+    // ===== PT2 Stage 4.2 support (the search itself lives in the private optimizer) =====
+    // The kit the optimizer may choose from: the same pools as the builder's pickers (Ranger slots hold stance pairs,
+    // stored by the ranged side's name), the pickable class features, the feat tiers (two options each).
+    window.pt2KitCandidates = function () {
+      const pDef = findParagon(state.class, state.paragon); if (!pDef) return null;
+      const pool = t => {
+        const raw = _paragonPowerPool(t).filter(p => p && p.name);
+        if (state.class === "Ranger" && raw.some(p => p.stance === "ranged") && raw.some(p => p.stance === "melee")) {
+          const r = raw.filter(p => p.stance === "ranged"), m = raw.filter(p => p.stance === "melee"), out = [];
+          for (let i = 0; i < Math.min(r.length, m.length); i++) out.push(r[i].name);
+          return out;
+        }
+        return raw.map(p => p.name);
+      };
+      const featList = Array.isArray(pDef.feats) ? pDef.feats : [];
+      return {
+        atWill: pool("atWill"), encounter: pool("encounter"), daily: pool("daily"),
+        features: (pDef.slottedClassFeatures || []).filter(f => f && (f.description || f.percentStats || f.ratingStats || f.percentStatsConditional)).map(f => f.name),
+        feats: [0, 1, 2, 3, 4].map(i => featList.slice(i * 2, i * 2 + 2).map(f => f.name)).filter(t => t.length),
+        slots: { atWill: 2, encounter: encounterSlotCount(), daily: 2, features: 2 }
+      };
+    };
+    window.pt2GetKit = function () {
+      const pad = (a, n) => { const x = (a || []).slice(0, n); while (x.length < n) x.push(""); return x; };
+      return { atWill: pad(state.slottedAtWills, 2), encounter: pad(state.slottedEncounters, encounterSlotCount()), daily: pad(state.slottedDailies, 2),
+        features: pad(state.slottedClassFeaturePicks, 2), feats: pad(state.slottedFeats, 5) };
+    };
+    window.pt2SetKit = function (k) {
+      state.slottedAtWills = k.atWill.slice(); state.slottedEncounters = k.encounter.slice(); state.slottedDailies = k.daily.slice();
+      state.slottedClassFeaturePicks = k.features.slice(); state.slottedFeats = k.feats.slice();
+    };
+    // A kit's own fight: rule-built rotation with its own choice search (the kit changed, so the choices may too)
+    window.pt2KitDps = function () {
+      const keep = window.__pt2FixedChoices; window.__pt2FixedChoices = null;
+      try { const r = getRotationDamage(); return r ? r.dps : 0; } finally { window.__pt2FixedChoices = keep; }
+    };
+    // What makes two builds fight the SAME fight with the same choices: Recharge Speed, Action Point Gain, the moved
+    // procs with their data (an item at another item level can carry another magnitude) and, when the kit listens for
+    // crits / non-crits / big hits, the crit chance (and max HP for big hits). Everything else only re-prices the hits.
+    const PT2_SENS = /"(crit|noncrit|bigHit)"/;
+    function pt2ShapeKey(su) {
+      let po = []; try { po = (su.inp.kit && su.inp.kit.gear) || pt2ProcOwners().owners; } catch (e) {}
+      const txt = JSON.stringify(po.map(o => [o.name, o.fx || null, o.modes || null]));
+      const sens = PT2_SENS.test(txt) || PT2_SENS.test(JSON.stringify(su.inp.kit || {}));
+      return JSON.stringify([Math.round((su.inp.rechargePct || 0) * 10), Math.round((su.inp.apGainPct || 0) * 10), txt,
+        su.inp.artifactName || null, su.inp.mountName || null, su.inp.cadence || null, su.call || null,
+        sens ? Math.round((su.ctx.critStrike || 0) * 400) : null, sens && /"bigHit"/.test(txt + JSON.stringify(su.inp.kit || {})) ? Math.round((su.ctx.maxHp || 0) / 500) : null]);
+    }
+    // Recorded shapes for the whole optimizer run (a new run starts empty): a shape is reused by any recording with the
+    // same kit, choices, fight settings and rules, so the refining kicks do not re-simulate fights already seen.
+    const _pt2ShapeStore = new Map(); let _pt2ShapeRun = null;
+    window.__pt2ShapeStats = { fresh: 0, reused: 0 };
+    function pt2RecSig(choices, rules) {
+      return JSON.stringify([choices || null, rules, state.slottedAtWills, state.slottedEncounters, state.slottedDailies, state.slottedClassFeaturePicks, state.slottedFeats,
+        state.pt2Fight || null, state.enemyCount, state.targetRangeFt, state.flankUptime, state.enemyHealthPct, state.class, state.paragon]);
+    }
+    function pt2ShapeFor(su, choices, rules) {
+      if (_pt2ShapeRun !== window.__tfLookupMemo) { _pt2ShapeStore.clear(); _pt2ShapeRun = window.__tfLookupMemo; window.__pt2ShapeStats = { fresh: 0, reused: 0 }; }
+      if (!window.__tfLookupMemo) return pt2RecordShape(su, choices);   // outside an optimizer run nothing is kept
+      const key = pt2RecSig(choices, rules) + "" + pt2ShapeKey(su);
+      let shape = _pt2ShapeStore.get(key);
+      if (shape) { window.__pt2ShapeStats.reused++; return shape; }
+      shape = pt2RecordShape(su, choices); window.__pt2ShapeStats.fresh++;
+      if (_pt2ShapeStore.size >= 1500) _pt2ShapeStore.delete(_pt2ShapeStore.keys().next().value);
+      _pt2ShapeStore.set(key, shape);
+      return shape;
+    }
+    function pt2RecordShape(su, choices) {   // the real fight with these choices, its hits kept for re-pricing
+      const out = TF_ROTATION_SIM.simulateFxBest(Object.assign({}, su.inp, { choices: choices }, {
+        scoreHit: pt2MakeScoreHit(su.ctx, su.rules), liveRecharge: !!su.rules.liveRecharge, role: state.role || null, expectedProcs: !!su.rules.expectedProcs,
+        critChance: su.ctx.critStrike, areaTargets: !!su.rules.areaTargets, timelineMax: 2000, maxHp: su.ctx.maxHp || 0, recordHits: true },
+        su.call ? { callWindow: { every: tfCadence("artifact"), seconds: 10 }, call: su.call } : {}));
+      const base = (out.damageTotal || 0) - (out.echoDamage || 0);
+      return { hits: out.hits || [], T: out.fightSeconds, echoShare: base > 0 ? (out.echoDamage || 0) / base : 0, dps: out.dps };
+    }
+    // Record the current build's fight (choices searched once), for re-pricing gear without re-simulating
+    window.pt2RecordFight = function () {
+      window.__pt2FixedChoices = null;
+      const full = getRotationDamage(); const su = _rotDmgCache.su;
+      if (!full || !su) return null;
+      const shape = pt2ShapeFor(su, su.choices, su.rules);
+      window.__pt2FixedChoices = su.choices;   // getRotationSim keeps these during the search
+      return { hits: shape.hits, T: shape.T, echoShare: shape.echoShare, choices: su.choices, rules: su.rules, dps: shape.dps };
+    };
+    // Score the CURRENT gear against a recorded fight. Gear that changes the fight itself (Recharge Speed, Action
+    // Point Gain, a different set of moved procs) gets the real fight with the recorded choices; everything else
+    // re-prices the recorded hits with this gear's stats (lock 4-B).
+    window.pt2ScoreFight = function (rec) {
+      if (!rec) return 0;
+      const rules = rec.rules;
+      const su = pt2ScoredSetup(rules);
+      if (!su) return 0;
+      let dps;
+      if (window.__pt2AlwaysFull) { su.choices = rec.choices; const r = pt2SimScored(su); dps = r ? r.dps : 0; }   // the 0.5% quality check (4-B)
+      else {
+        const shape = pt2ShapeFor(su, rec.choices, rules);   // gear that changes the fight: its real fight once, then re-priced like the rest
+        const sh = pt2MakeScoreHit(su.ctx, rules); let tot = 0;
+        for (const h of shape.hits) tot += sh(h.m, h.hit, h.active);
+        dps = tot * (1 + shape.echoShare) / shape.T;
+      }
+      getEngineResult();   // the normal engine back for the optimizer's other readers
+      return dps;
+    };
+    window.pt2FullFight = function (choices) {   // the real fight with the given choices (checks)
+      const su = pt2ScoredSetup(pt2HitRules()); if (!su) return 0; su.choices = choices || null;
+      const r = pt2SimScored(su); getEngineResult(); return r ? r.dps : 0;
+    };
     // Engine-side read: never triggers a fresh simulation (buildEngineCharacter runs
     // inside getEngineResult, which the adapter itself reads) - peek the cache.
     function peekRotationSim() { return rotationSimEnabled() ? _rotSimCache.result : null; }
@@ -17099,6 +17224,7 @@
     // Cached engine result so we don't recompute it on every render call.
     let _engineResult = null;
     let _engineCacheKey = "";
+    const _engineMemo = new Map(); let _engineMemoRun = null;   // Stage 4.2: last few results, only while an optimizer run holds window.__tfLookupMemo
 
     function getEngineResult() {
       const key = JSON.stringify({
@@ -17124,6 +17250,9 @@
         pt2: [state.pt2Fight || null, state.enemyCount, state.enemyHealthPct, (typeof pt2ScoringMode !== "undefined") ? pt2ScoringMode : "", window.__pt2ForceGates || 0, (typeof window.__pt2FlagOverride === "boolean") ? window.__pt2FlagOverride : null, window.__pt2SimOwnsKit ? [...window.__pt2SimOwnsKit].join("|") : "", window.__pt2SimOwnsCall ? "call" : "", window.__pt2SimOwnsProcs ? "procs" : ""]
       });
       if (key === _engineCacheKey && _engineResult) return _engineResult;
+      if (_engineMemoRun !== window.__tfLookupMemo) { _engineMemo.clear(); _engineMemoRun = window.__tfLookupMemo; }   // a new run starts empty
+      const _memo = window.__tfLookupMemo ? _engineMemo : null;
+      if (_memo && _memo.has(key)) { _engineCacheKey = key; _engineResult = _memo.get(key); return _engineResult; }
       _engineCacheKey = key;
       // Pass 1 always starts from fixed hints so the result depends only on state
       // (deterministic); pass 2 re-evaluates AP / cooldown proc conversions at the
@@ -17138,6 +17267,7 @@
       }
       if (window.__pt2SimOwnsCall) _res.__pt2Call = (window.__pt2CallCollected || []).slice();
       _engineResult = _res;
+      if (_memo) { if (_memo.size >= 6) _memo.delete(_memo.keys().next().value); _memo.set(key, _res); }
       return _engineResult;
     }
 
@@ -23371,11 +23501,11 @@
         var orig = window[fnName];
         if (typeof orig !== "function") return;
         window[fnName] = function () {
+          var M = window.__tfLookupMemo, mk;
+          if (M) { mk = fnName + "" + JSON.stringify(Array.prototype.slice.call(arguments)); if (M.has(mk)) return M.get(mk); }
           var item = orig.apply(this, arguments);
-          if (!item) return item;
-          if (window.NWCBDataCorrections && NWCBDataCorrections.applyOverridesToItem) {
-            return NWCBDataCorrections.applyOverridesToItem(type, item);
-          }
+          if (item && window.NWCBDataCorrections && NWCBDataCorrections.applyOverridesToItem) item = NWCBDataCorrections.applyOverridesToItem(type, item);
+          if (M) M.set(mk, item);
           return item;
         };
       }

@@ -639,6 +639,7 @@
     // PT2 step 2.4: per-hit damage. input.scoreHit(mag, hit, active) -> damage; without it nothing below runs.
     const scoreHit = typeof input.scoreHit === "function" ? input.scoreHit : null;
     let dmgTotal = 0; const dmgByOwner = {}, dmgInByOwner = {};
+    const recHits = input.recordHits ? [] : null; let echoDmg = 0;   // Stage 4.2: the fight's hits, for re-pricing with other gear
     // PT2 step 2.5: the fight script's call window. input.callWindow {every, seconds}: the first window opens when the
     // first full rotation ends, then one every `every` s. At the window start the call fires: input.call.artifact
     // (its callFx, when off cooldown) and input.call.mount (its records, when off cooldown); input.call.triggered are
@@ -676,7 +677,7 @@
       if (!(m > 0)) return;
       magTotal += m; bySource[name] = (bySource[name] || 0) + m; byOwner[name] = (byOwner[name] || 0) + m; mix.other += m;
       if (CW && inWindow()) magIn += m;
-      if (scoreHit && d > 0) { dmgTotal += d; dmgByOwner[name] = (dmgByOwner[name] || 0) + d; if (CW && inWindow()) { dmgIn += d; dmgInByOwner[name] = (dmgInByOwner[name] || 0) + d; } }
+      if (scoreHit && d > 0) { echoDmg += d; dmgTotal += d; dmgByOwner[name] = (dmgByOwner[name] || 0) + d; if (CW && inWindow()) { dmgIn += d; dmgInByOwner[name] = (dmgInByOwner[name] || 0) + d; } }
     }
     // ---- stat records (buffs and debuffs with stats) ----
     // timed (seconds) or triggered: counted while up, from the moment they are applied;
@@ -722,7 +723,9 @@
       const hit = { type: ow.type, name: ow.name, recName: recName, tags: tg, element: (rec && rec.element) || tg.element || null,
         damageType: (rec && rec.damageType) || tg.damageType || (ow.obj && ow.obj.damageType) || null,
         targets: (rec && rec.targets) || tg.targets || null, isTick: !!isTick, offMain: !!offMain, proc: !!ow.proc };
-      const d = scoreHit(m, hit, activeStats(hit, ow));
+      const act = activeStats(hit, ow);
+      const d = scoreHit(m, hit, act);
+      if (recHits) recHits.push({ m: m, hit: hit, active: act });
       if (hit.pCrit != null) lastPCrit = hit.pCrit;   // the scorer reports the crit chance it used for this hit
       if (d > 0) { dmgTotal += d; dmgByOwner[ow.name] = (dmgByOwner[ow.name] || 0) + d; if (CW && inWindow()) { dmgIn += d; dmgInByOwner[ow.name] = (dmgInByOwner[ow.name] || 0) + d; } }
       return d;
@@ -733,6 +736,7 @@
       const hit = { type: ow.type, name: ow.name, recName: r.name || ow.name, tags: {}, element: r.element || null, damageType: r.damageType || null, targets: r.targets || null,
         isTick: false, offMain: !!offMain, proc: true, flat: num(r.flat, 0), pctMaxHp: num(r.pctMaxHp, 0) };
       const d = scoreHit(0, hit, []);
+      if (recHits) recHits.push({ m: 0, hit: hit, active: [] });
       if (d > 0) { dmgTotal += d; dmgByOwner[ow.name] = (dmgByOwner[ow.name] || 0) + d; if (CW && inWindow()) { dmgIn += d; dmgInByOwner[ow.name] = (dmgInByOwner[ow.name] || 0) + d; } }
     }
     function land(ow, recName, mag, isTick, offMain, rec) {
@@ -1350,7 +1354,7 @@
       casts: castCount, bySource: bySource, byOwner: byOwner, timeline: timeline, firstCycleEnd: firstCycleEnd, cycles: cyclesDone,
       mix: { atWill: mix.atWill, encounter: mix.encounter, daily: mix.daily, other: mix.other, pct: totalMix > 0 ? { atWill: mix.atWill / totalMix * 100, encounter: mix.encounter / totalMix * 100, daily: mix.daily / totalMix * 100, other: mix.other / totalMix * 100 } : null },
       stacksAvg: avg, buffUptime: up,
-      damageTotal: scoreHit ? dmgTotal : undefined, dps: scoreHit ? dmgTotal / T : undefined, damageByOwner: scoreHit ? dmgByOwner : undefined,
+      damageTotal: scoreHit ? dmgTotal : undefined, dps: scoreHit ? dmgTotal / T : undefined, hits: recHits || undefined, echoDamage: scoreHit ? echoDmg : undefined, damageByOwner: scoreHit ? dmgByOwner : undefined,
       ruleBuilt: RB ? { list: rbList.map(function (e) { return { kind: e.kind, name: e.name, reason: e.reason }; }).concat(rbFiller ? [{ kind: "atWill", name: rbFiller.ow.name, reason: input.filler ? "filler: the at-will that gave the most damage" : "filler: best at-will per second of casting" }] : []),
         hold: { encounter: !!HOLD.encounter, daily: !!HOLD.daily }, filler: rbFiller ? rbFiller.ow.name : null, spendAt: spenderOw ? spendAt : null, invalidCasts: rbInvalid } : undefined,
       callWindow: CW ? { windows: windows.map(function (w) { return [Math.round(w[0] * 10) / 10, Math.round(w[1] * 10) / 10]; }), magnitudeInside: magIn, magnitudeOutside: magTotal - magIn,
