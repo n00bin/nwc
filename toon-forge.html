@@ -782,6 +782,14 @@
     #sim-fight-panel details { margin-top: 0.9rem; border-top: 1px solid var(--border); padding-top: 0.6rem; }
     #sim-fight-panel details > summary { cursor: pointer; color: var(--text); font-weight: 600; }
     #sim-fight-panel .sf-timeline { color: var(--text-mute); font-size: 0.85rem; line-height: 1.7; margin-top: 0.4rem; }
+    #sim-fight-panel .sf-phase { border-left: 3px solid var(--border); padding: 0.35rem 0 0.35rem 0.8rem; margin: 0.5rem 0; }
+    #sim-fight-panel .sf-phase.call { border-left-color: var(--amber); background: var(--amber-glow); border-radius: 0 6px 6px 0; }
+    #sim-fight-panel .sf-ph { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; }
+    #sim-fight-panel .sf-ph .why, #sim-fight-panel .sf-seq .why { color: var(--text-mute); font-weight: 400; font-size: 0.82rem; }
+    #sim-fight-panel .sf-seq { line-height: 1.9; }
+    #sim-fight-panel .sf-step { white-space: nowrap; }
+    #sim-fight-panel .sf-x { color: var(--amber); font-weight: 700; font-size: 0.82rem; }
+    #sim-fight-panel .sf-arrow { color: var(--text-dim); margin: 0 0.35rem; }
     #sim-fight-panel .sf-timeline .call { color: var(--amber); font-weight: 700; }
 
     /* ===== Sticky footer: Build Score ===== */
@@ -14181,7 +14189,7 @@
     function pt2SimScored(su, kit, call) {
       const r = su.rules; call = call !== undefined ? call : su.call;
       return TF_ROTATION_SIM.simulateFxBest(Object.assign({}, su.inp, su.choices ? { choices: su.choices } : {}, { kit: kit || su.inp.kit, scoreHit: pt2MakeScoreHit(su.ctx, r), liveRecharge: !!r.liveRecharge,
-        role: state.role || null, expectedProcs: !!r.expectedProcs, critChance: su.ctx.critStrike, areaTargets: !!r.areaTargets },
+        role: state.role || null, expectedProcs: !!r.expectedProcs, critChance: su.ctx.critStrike, areaTargets: !!r.areaTargets, timelineMax: 2000 },
         call ? { callWindow: { every: tfCadence("artifact"), seconds: 10 }, call: call } : {}));
     }
     function getRotationDamage() {
@@ -14388,7 +14396,32 @@
         if (conf) chips.push(['Rests on assumed numbers', conf.assumedPct.toFixed(1) + '%', conf.assumedPct >= 5]);
         if (chips.length) h += '<div class="sf-chips">' + chips.map(c => '<div class="sf-chip' + (c[2] ? ' warn' : '') + '"><span class="k">' + esc(c[0]) + '</span><span class="v">' + esc(c[1]) + '</span></div>').join('') + '</div>';
 
-        // your rotation
+        // your rotation (2.10-B): the simulated fight as the player reads it - opener, the call, between calls
+        const tl = (fd.timeline || []).filter(e => e && e.name);
+        const wins = (cw && cw.windows) || [];
+        const castsOnly = arr => arr.filter(e => e.name !== "Call window");
+        const seq = arr => {   // button order; a run of the same press groups as "x N"; notes kept (artifact, held for the call)
+          const out = [];
+          castsOnly(arr).forEach(e => {
+            const note = (e.note && e.note !== "trigger only") ? e.note : "";
+            const last = out[out.length - 1];
+            if (last && last.name === e.name && !note && !last.note) last.n++; else out.push({ name: e.name, n: 1, note: note });
+          });
+          if (!out.length) return '<span class="why">nothing cast</span>';
+          return out.map(x => '<span class="sf-step">' + esc(x.name) + (x.n > 1 ? ' <span class="sf-x">x' + x.n + '</span>' : '') + (x.note ? ' <span class="why">(' + esc(x.note) + ')</span>' : '') + '</span>').join(' <span class="sf-arrow">&rsaquo;</span> ');   // spaces = line-break points (a long phase wraps)
+        };
+        h += '<h3>Your rotation</h3>';
+        if (wins.length) {
+          const w1 = wins[0], w2 = wins[1];
+          const opener = tl.filter(e => e.t < w1[0] - 1e-9);
+          const call = tl.filter(e => e.t >= w1[0] - 1e-9 && e.t < w1[1]);
+          const between = tl.filter(e => e.t >= w1[1] && (!w2 || e.t < w2[0] - 1e-9));
+          h += '<div class="sf-phase"><div class="sf-ph">Opener <span class="why">0 - ' + w1[0].toFixed(1) + ' s</span></div><div class="sf-seq" translate="no">' + seq(opener) + '</div></div>';
+          h += '<div class="sf-phase call"><div class="sf-ph">The call <span class="why">' + w1[0].toFixed(1) + ' - ' + w1[1].toFixed(1) + ' s (10 s window)</span></div><div class="sf-seq" translate="no">' + seq(call) + '</div></div>';
+          h += '<div class="sf-phase"><div class="sf-ph">Between calls <span class="why">' + w1[1].toFixed(1) + ' - ' + (w2 ? w2[0].toFixed(1) : fd.fightSeconds) + ' s, then the next call' + (wins.length > 1 ? ' (' + wins.length + ' calls in the fight)' : '') + '</span></div><div class="sf-seq" translate="no">' + seq(between) + '</div></div>';
+        } else {
+          h += '<div class="sf-phase"><div class="sf-ph">First 30 s</div><div class="sf-seq" translate="no">' + seq(tl.filter(e => e.t < 30)) + '</div></div>';
+        }
         const rbx = fd.ruleBuilt || sim.ruleBuilt;
         if (!typed && rbx && rbx.list && rbx.list.length) {
           const plain = e => {
@@ -14400,14 +14433,13 @@
           };
           const seen = new Set();
           const items = rbx.list.filter(e => { const k = e.name + "|" + plain(e); if (seen.has(k)) return false; seen.add(k); return true; });
-          h += '<h3>Your rotation</h3><ol class="sf-rot" translate="no">' + items.map(e => '<li>' + esc(e.name) + '<span class="why">' + esc(plain(e)) + '</span></li>').join('') + '</ol>';
-          h += '<p class="sf-note">Top of the list wins: at every free moment the first entry that is ready gets cast.</p>';
           const ch = fd.choices || sim.choices || {};
           const found = (ch.gains || []).filter(g => g.pct > 0.05).map(g => esc(g.choice.replace(/ for damage$/, '') + ': ' + (g.picked === 'leave it to the filler' ? 'use it only to refresh, not for damage' : g.picked)) + ' (+' + g.pct.toFixed(1) + '%)');
           if (found.length) h += '<p class="sf-note">The simulator also found: ' + found.join('; ') + '.</p>';
           if ((ch.quickplayCosts || []).length) h += '<p class="sf-note">Quick play: ' + (ch.quickplay && ch.quickplay.length ? esc(ch.quickplay.join(' + ')) : 'none - play songs by hand') + '. Quick-playing would cost ' + ch.quickplayCosts.map(x => esc(x.songs.join(' + ')) + ' ' + Math.abs(x.pct).toFixed(1) + '%').join(', ') + '.</p>';
+          h += '<details><summary>How the simulator decides</summary><p class="sf-note">It keeps one priority list: at every free moment the first entry that is ready gets cast.</p><ol class="sf-rot" translate="no">' + items.map(e => '<li>' + esc(e.name) + '<span class="why">' + esc(plain(e)) + '</span></li>').join('') + '</ol></details>';
         } else if (typed) {
-          h += '<h3>Your rotation</h3><p class="sf-note">Running your own opener / loop (edit it under "Write your own rotation" below).</p>';
+          h += '<p class="sf-note">Running your own opener / loop (edit it under "Write your own rotation" below).</p>';
         }
 
         // where the damage comes from

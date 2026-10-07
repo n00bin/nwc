@@ -650,7 +650,7 @@
     const statUp = new Map();   // key -> {rec, until, f}: timed buff / debuff records carrying stats, while up
     const statOwnersOn = {};    // owners whose stat records were on at least once (2.4-G: the rest are listed)
     let lastPCrit = null;       // crit chance of the hit being landed (2.6)
-    const timeline = []; const TIMELINE_MAX = 80;
+    const timeline = []; const TIMELINE_MAX = Math.max(80, num(input.timelineMax, 80));
     const stackTimeSum = {}, buffTime = {};
     const st = {};
     function pst(key) { if (!st[key]) st[key] = { ready: [0], uses: 0, lastUse: -1e9 }; return st[key]; }
@@ -1168,12 +1168,15 @@
       if (e.kind === "atWill") return true;
       return isReady({ kind: e.kind, name: e.name });
     }
+    const rbWasHeld = {};
     function rbHeld(e) {
       if (!CW || nextWindowAt == null || inWindow()) return false;
       const W = nextWindowAt - t; if (W <= 0) return false;
-      if (e.kind === "encounter" && HOLD.encounter) return W < cdSeconds(e.ow.obj, pst("encounter:" + e.name));
-      if (e.kind === "daily" && HOLD.daily) return W < num(e.ow.obj.actionPointCost, 1000) / Math.max(1, AP_PER_SEC);
-      return false;
+      let h = false;
+      if (e.kind === "encounter" && HOLD.encounter) h = W < cdSeconds(e.ow.obj, pst("encounter:" + e.name));
+      if (e.kind === "daily" && HOLD.daily) h = W < num(e.ow.obj.actionPointCost, 1000) / Math.max(1, AP_PER_SEC);
+      if (h && isReady({ kind: e.kind, name: e.name })) rbWasHeld[e.name] = true;   // ready but kept for the call
+      return h;
     }
     function rbAct() {
       for (let i = 0; i < rbList.length; i++) {
@@ -1184,7 +1187,9 @@
         if (e.kind !== "mechanic" && e.kind !== "spender" && !isReady({ kind: e.kind, name: e.name })) { rbInvalid++; continue; }
         if (e.kind === "mechanic") return castOwner(e.ow, "mechanic");
         if (e.kind === "spender") return castOwner(spenderOw, "spender");
-        return castStep({ kind: e.kind, name: e.name });
+        const ok = castStep({ kind: e.kind, name: e.name });
+        if (ok && rbWasHeld[e.name]) { rbWasHeld[e.name] = false; const last = timeline[timeline.length - 1]; if (last && last.name === e.name) last.note = (last.note ? last.note + ", " : "") + "held for the call"; }
+        return ok;
       }
       if (rbFiller) return castOwner(rbFiller.ow, "atWill");
       busyUntil = t + dt; return false;
