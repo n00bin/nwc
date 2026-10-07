@@ -755,6 +755,35 @@
     .btn-secondary:hover { background: var(--hover); }
     .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
+    /* ===== PT2 step 2.10-A: the "Simulated fight" card (local only until go-live) ===== */
+    #sim-fight-panel .sf-sub { color: var(--text-mute); font-size: 0.85rem; margin: 0 0 0.9rem; }
+    #sim-fight-panel .sf-headline { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; margin: 0 0 0.7rem; }
+    #sim-fight-panel .sf-big { font-size: 2rem; font-weight: 700; color: var(--text); font-family: var(--font-display); }
+    #sim-fight-panel .sf-unit { color: var(--text-mute); font-size: 0.95rem; }
+    #sim-fight-panel .sf-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.1rem; }
+    #sim-fight-panel .sf-chip { background: var(--elevated); border: 1px solid var(--border); border-radius: 8px; padding: 0.4rem 0.7rem; min-width: 8.5rem; }
+    #sim-fight-panel .sf-chip .k { display: block; color: var(--text-mute); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    #sim-fight-panel .sf-chip .v { display: block; color: var(--text); font-weight: 600; font-size: 1rem; }
+    #sim-fight-panel .sf-chip.warn .v { color: var(--amber); }
+    #sim-fight-panel h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--amber); margin: 1.1rem 0 0.45rem; font-weight: 700; }
+    #sim-fight-panel .sf-rot { margin: 0; padding-left: 1.4rem; }
+    #sim-fight-panel .sf-rot li { margin: 0.2rem 0; }
+    #sim-fight-panel .sf-rot .why { color: var(--text-mute); font-size: 0.85rem; margin-left: 0.4rem; }
+    #sim-fight-panel .sf-note { color: var(--text-mute); font-size: 0.85rem; margin: 0.35rem 0 0; }
+    #sim-fight-panel .sf-tablewrap { overflow-x: auto; }
+    #sim-fight-panel table.sf-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+    #sim-fight-panel table.sf-table th { text-align: right; color: var(--text-mute); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    #sim-fight-panel table.sf-table td { text-align: right; padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    #sim-fight-panel table.sf-table th:first-child, #sim-fight-panel table.sf-table td:first-child { text-align: left; white-space: normal; }
+    #sim-fight-panel .sf-bar { display: inline-block; height: 6px; background: var(--amber); border-radius: 3px; vertical-align: middle; margin-right: 0.4rem; }
+    #sim-fight-panel ul.sf-list { margin: 0; padding-left: 1.2rem; }
+    #sim-fight-panel ul.sf-list li { margin: 0.2rem 0; }
+    #sim-fight-panel ul.sf-list .why { color: var(--text-mute); }
+    #sim-fight-panel details { margin-top: 0.9rem; border-top: 1px solid var(--border); padding-top: 0.6rem; }
+    #sim-fight-panel details > summary { cursor: pointer; color: var(--text); font-weight: 600; }
+    #sim-fight-panel .sf-timeline { color: var(--text-mute); font-size: 0.85rem; line-height: 1.7; margin-top: 0.4rem; }
+    #sim-fight-panel .sf-timeline .call { color: var(--amber); font-weight: 700; }
+
     /* ===== Sticky footer: Build Score ===== */
     .footer-bar {
       position: fixed;
@@ -3712,7 +3741,6 @@
         </div>
         <div class="sc-pane" data-sc-pane="powers" hidden>
           <p class="hint" style="margin:0 0 0.5rem;">Damage mix from your slotted powers over the Time in combat you set: each encounter casts every cooldown (after Recharge Speed), each daily every AP bar, the strongest at-will fills the rest. Read-only; change your powers in <strong>Your Character → Your Powers</strong>.</p>
-          <div id="rotation-builder-box"></div>
           <div id="damage-mix-box"></div>
           <div class="row-2" style="margin-top:0.6rem;">
             <div class="field">
@@ -3743,6 +3771,10 @@
           <div id="build-conditions"></div>
         </div>
       </div>
+    </div>
+
+    <div class="panel" id="sim-fight-panel" hidden>
+      <div id="rotation-builder-box"></div>
     </div>
 
       <div class="nav-buttons">
@@ -13869,7 +13901,8 @@
         (st.dailyCadenceSec && st.dailyCadenceSec !== 60) ? "daily every " + st.dailyCadenceSec + " s" : null,
         (st.artifactCadenceSec && st.artifactCadenceSec !== 60) ? "artifact every " + st.artifactCadenceSec + " s" : null,
         (st.mountPowerCadenceSec && st.mountPowerCadenceSec !== 60) ? "mount power every " + st.mountPowerCadenceSec + " s" : null,
-        (String(st.role || "").toLowerCase() !== "tank" && !hasRotationSlotted()) ? "NO POWERS SLOTTED (damage not scored)" : null];
+        (String(st.role || "").toLowerCase() !== "tank" && !hasRotationSlotted())
+          ? ((typeof pt2UsesFxSim === "function" && pt2UsesFxSim() && (st.slottedEncounters || []).some(Boolean)) ? "NO AT-WILL SLOTTED (the damage score needs one; the simulated fight still runs)" : "NO POWERS SLOTTED (damage not scored)") : null];
       return parts.filter(Boolean).join(" · ");
     }
     window.scenarioSummary = scenarioSummary;
@@ -14227,7 +14260,7 @@
       const allOff = pt2SimScored(su, pt2KitWithout(kit, new Set(assumed.map(a => a.key))), artAssumed ? callNoArt : undefined);
       items.sort((a, b) => b.pct - a.pct || a.label.localeCompare(b.label));
       const ownerShare = n => ((full.damageByOwner || {})[n] || 0) / T * 100;
-      const miss = missing.map(m => ({ label: m.label, ownerPct: ownerShare(m.owner) })).sort((a, b) => b.ownerPct - a.ownerPct || a.label.localeCompare(b.label));
+      const miss = missing.map(m => ({ label: m.label, owner: m.owner, ownerPct: ownerShare(m.owner) })).sort((a, b) => b.ownerPct - a.ownerPct || a.label.localeCompare(b.label));
       const res = { assumedPct: share(allOff.damageTotal), assumed: items, missing: miss };
       getEngineResult(); getRotationSim();
       _rotConfCache = { key: key, result: res };
@@ -14311,7 +14344,10 @@
     }
     function renderRotationBuilder() {
       const box = document.getElementById("rotation-builder-box"); if (!box) return;
-      if (!rotationSimEnabled()) { box.innerHTML = ""; return; }
+      const panel = document.getElementById("sim-fight-panel");
+      if (!rotationSimEnabled()) { box.innerHTML = ""; if (panel) panel.hidden = true; return; }
+      if (panel) panel.hidden = false;
+      if (typeof pt2HideClassTab === "function") pt2HideClassTab();
       if (!Array.isArray(state.rotationOpener)) state.rotationOpener = [];
       if (!Array.isArray(state.rotationSteps)) state.rotationSteps = [];
       const sim = getRotationSim();
@@ -14329,85 +14365,98 @@
           '<div data-rot-paste-box="' + key + '" hidden style="margin-top:0.4rem;"><textarea data-rot-paste-text="' + key + '" rows="4" style="width:100%;font-size:0.8rem;" placeholder="One cast per line (or comma separated). x3 repeats a cast. Example:\nHellish Rebuke\nKilling Flames\nDark Helix x3\nScorch"></textarea><div style="margin-top:0.3rem;display:flex;gap:0.5rem;"><button type="button" class="btn btn-primary" data-rot-paste-apply="' + key + '">Use this list</button><button type="button" class="btn btn-ghost" data-rot-paste-cancel="' + key + '">Cancel</button></div><div class="hint" data-rot-paste-msg="' + key + '"></div></div>';
         return h;
       };
-      let h = '<div class="boon-tier-header" style="margin-top:0.2rem;">Rotation <span style="color:var(--text-dim);font-weight:400;font-size:0.7rem;text-transform:none;letter-spacing:0;">(local only · scripts: every entry casts in order, at-wills included; a step still on cooldown is waited for with your filler at-will, or skipped if it is more than 5 s away)</span></div>';
-      h += '<div class="field" style="margin-top:0.3rem;"><label>Opener <span style="color:var(--text-dim);font-weight:400;">(runs once from the pull' + (state.rotationOpener.length ? '' : ' · empty = straight into the loop') + ')</span></label>' + listHTML("opener", state.rotationOpener) + '</div>';
-      h += '<div class="field" style="margin-top:0.6rem;"><label>Loop <span style="color:var(--text-dim);font-weight:400;">(repeats until the fight ends' + (state.rotationSteps.length ? '' : (state.rotationOpener.length ? ' · empty = the opener repeats' : ' · empty = default order')) + ')</span></label>' + listHTML("loop", state.rotationSteps) + '</div>';
-      h += '<p class="hint" style="margin:0.4rem 0 0;">Anything you do not list fires on its own when it is up: your artifact and mount power, your dailies when the bar is full, and Soul Scorch at the number below. A listed Soul Scorch casts at its turn with whatever sparks you hold.</p>';
-      if (!state.rotationOpener.length && !state.rotationSteps.length) h += (sim && sim.ruleBuilt)
-        ? '<p class="hint" style="margin:0.2rem 0 0.4rem;">No rotation typed - the simulator builds one from your powers (the rule-built list below). Type an opener or loop to use your own.</p>'
-        : '<p class="hint" style="margin:0.2rem 0 0.4rem;color:var(--amber);">No rotation built yet - the simulator is using a default order (strongest per cast first).</p>';
+      const typed = state.rotationOpener.length > 0 || state.rotationSteps.length > 0;
       const inp = buildRotationSimInput();
-      if (inp.scorch) {
-        const sat = inp.scorchAtSparks;
-        h += '<div class="field" style="margin-top:0.6rem;"><label>Fire Soul Scorch at <span class="hint" id="scorch-at-label">' + sat + ' sparks</span> <span class="hint-icon" data-tip="Only used when Soul Scorch is not in the running list: it casts itself when the pool reaches this number. 18 is the most one cast can spend.">?</span></label><input type="range" id="scorch-at-sparks" min="6" max="18" step="1" value="' + sat + '" style="width:100%;"></div>';
-      }
-      if (sim) {
-        const d = sim.derived || {};
-        const pct = v => (v == null ? "-" : Math.round(v * 100) + "%");
-        h += '<div style="margin-top:0.6rem;font-size:0.85rem;"><strong>' + Math.round(sim.mps) + ' magnitude/s</strong> over ' + sim.fightSeconds + ' s' + (sim.defaultOrderUsed ? ' (default order)' : '') + (sim.ruleBuilt ? ' (rule-built rotation)' : ' · ' + sim.cycles + ' loops') + '</div>';
-        // PT2 step 2.4 (local only): fight damage scored hit by hit, beside magnitude (2.4-A: the damage score is unchanged)
-        const fd = (sim.engine === "fx" && typeof getRotationDamage === "function") ? getRotationDamage() : null;
-        // PT2 step 2.8: the rule-built rotation (shown when the player typed none) with a reason per entry, and its choices
-        const rbx = (fd && fd.ruleBuilt) || sim.ruleBuilt;
-        if (rbx && rbx.list && rbx.list.length) {
-          h += '<details style="margin-top:0.3rem;" open><summary class="hint" style="cursor:pointer;">Rule-built rotation (you have not typed one): cast the first ready entry</summary><ol class="hint" style="margin:0.2rem 0 0 1.2rem;padding:0;">'
-            + rbx.list.map(e => '<li>' + esc(e.name) + ' <span style="opacity:0.75;">- ' + esc(e.reason) + '</span></li>').join('') + '</ol></details>';
-          const gains = ((fd && fd.choices) || sim.choices || {}).gains || [];
-          const shown = gains.filter(g => g.picked !== "n/a").map(g => esc(g.choice) + ': ' + esc(g.picked) + (g.pct > 0.05 ? ' (+' + g.pct.toFixed(1) + '%)' : ''));
-          if (shown.length) h += '<div class="hint" style="margin-top:0.1rem;">Choices tried: ' + shown.join('; ') + '</div>';
-          const qc = ((fd && fd.choices) || sim.choices || {}).quickplayCosts || [];
-          if (qc.length) h += '<div class="hint" style="margin-top:0.1rem;">Quick-playing instead would cost: ' + qc.map(x => esc(x.songs.join(" + ")) + ' ' + x.pct.toFixed(1) + '%').join('; ') + '</div>';
-        }
-        if (fd && fd.dps != null) {
-          const topD = Object.entries(fd.damageByOwner || {}).sort((a, b) => b[1] - a[1]).slice(0, 5);
-          h += '<div style="margin-top:0.2rem;font-size:0.85rem;"><strong>' + Math.round(fd.dps).toLocaleString() + ' damage/s</strong> <span class="hint">each hit scored with the buffs and debuffs up at that moment</span></div>';
-          // PT2 step 2.9: per-power table (damage adds up to the total; inside = share of that row landing in call windows)
-          const rows = Object.entries(fd.damageByOwner || {}).sort((a, b) => b[1] - a[1]);
-          if (rows.length) {
-            const inBy = (fd.callWindow && fd.callWindow.damageInsideByOwner) || {};
-            h += '<details style="margin-top:0.3rem;" open><summary class="hint" style="cursor:pointer;">Per power (' + rows.length + ')</summary><table class="hint" style="margin-top:0.2rem;border-collapse:collapse;width:100%;font-size:0.8rem;" translate="no">'
-              + '<tr style="text-align:left;"><th>Power</th><th style="text-align:right;">Casts</th><th style="text-align:right;">Damage/s</th><th style="text-align:right;">Share</th><th style="text-align:right;">Per cast</th><th style="text-align:right;">In windows</th></tr>'
-              + rows.map(([n, d]) => { const c = (fd.casts || {})[n]; return '<tr><td>' + esc(n) + '</td><td style="text-align:right;">' + (c ? c : '-') + '</td><td style="text-align:right;">' + Math.round(d / fd.fightSeconds).toLocaleString()
-                + '</td><td style="text-align:right;">' + (d / fd.damageTotal * 100).toFixed(1) + '%</td><td style="text-align:right;">' + (c ? Math.round(d / c).toLocaleString() : '-') + '</td><td style="text-align:right;">' + (fd.callWindow ? Math.round((inBy[n] || 0) / d * 100) + '%' : '-') + '</td></tr>'; }).join('')
-              + '</table></details>';
-          }
-          // PT2 step 2.5: the call window split (inside + outside = the total above)
-          const cw = fd.callWindow;
-          if (cw && cw.windows && cw.windows.length && cw.damageInside != null) {
-            const winSec = cw.windows.reduce((t0, w) => t0 + Math.max(0, Math.min(w[1], fd.fightSeconds) - w[0]), 0), outSec = Math.max(1, fd.fightSeconds - winSec);
-            h += '<div class="hint" style="margin-top:0.1rem;">Call windows (' + cw.windows.length + ' x 10 s, at ' + cw.windows.map(w => Math.round(w[0]) + ' s').join(', ') + '): '
-              + Math.round(cw.damageInside / Math.max(1, winSec)).toLocaleString() + '/s inside, ' + Math.round(cw.damageOutside / outSec).toLocaleString() + '/s outside · '
-              + Math.round(cw.damageInside / Math.max(1, fd.damageTotal) * 100) + '% of the fight damage lands inside</div>';
-          }
-          const conf = (typeof getRotationConfidence === "function") ? getRotationConfidence() : null;
-          if (conf) {
-            const top = conf.assumed.filter(x => x.pct >= 0.05).slice(0, 4).map(x => esc(x.label) + " " + x.pct.toFixed(1) + "%");
-            const mtop = conf.missing.slice(0, 3).map(x => esc(x.label) + (x.ownerPct > 0 ? " (on a source with " + Math.round(x.ownerPct) + "% of your damage)" : ""));
-            h += '<div class="hint" style="margin-top:0.1rem;">' + conf.assumedPct.toFixed(1) + '% of this fight\u2019s damage rests on assumed numbers.'
-              + (top.length ? ' Capture first: ' + top.join("; ") + (conf.assumed.length > top.length ? " (+" + (conf.assumed.length - top.length) + " more)" : "") + '.' : '')
-              + (mtop.length ? ' Missing (counted as zero): ' + mtop.join("; ") + (conf.missing.length > mtop.length ? " (+" + (conf.missing.length - mtop.length) + " more)" : "") + '.' : '') + '</div>';
-          }
-          if (fd.notOn && fd.notOn.length) h += '<div class="hint" style="margin-top:0.1rem;">Not counted (never turned on in this fight): ' + fd.notOn.map(x => esc(x.name) + ' (' + esc(x.why) + ')').join('; ') + '</div>';
-        }
+      const fd = (sim && sim.engine === "fx" && typeof getRotationDamage === "function") ? getRotationDamage() : null;
+      const fmt = n => Math.round(n).toLocaleString();
+      const enemies = (typeof state.enemyCount === "number" && state.enemyCount > 1) ? state.enemyCount + " enemies" : "one target";
+      let h = '<h2>Simulated fight</h2>';
+      h += '<p class="sf-sub">' + (sim ? sim.fightSeconds : 180) + ' s fight · ' + enemies + ' · ' + (typed ? 'your own rotation' : 'rotation built for you from your powers') + ' · updates whenever your build changes</p>';
+      if (!sim) { h += '<p class="sf-note">Slot some powers in step 2 to see the fight.</p>'; }
+      else if (fd && fd.dps != null) {
+        // headline + chips
+        h += '<div class="sf-headline"><span class="sf-big">' + fmt(fd.dps) + '</span><span class="sf-unit">damage per second</span></div>';
         const chips = [];
-        if (d.curseUptime != null && (inp.powers.encounter.some(p => p.tags && p.tags.curse) || inp.powers.daily.some(p => p.tags && p.tags.curse))) chips.push('Curse up ' + pct(d.curseUptime) + ' (' + d.curseApplies + ' applied, ' + d.curseConsumes + ' consumed, ' + d.curseExpiries + ' expired)');
-        if (d.sparksAvg != null) chips.push('Soul Sparks avg ' + d.sparksAvg.toFixed(1) + ' (peak ' + d.sparksMax + '), ' + d.scorchCasts + ' Scorch casts' + (d.scorchCasts ? ' (one every ' + (sim.fightSeconds / d.scorchCasts).toFixed(1) + ' s)' : ''));
-        if (d.puppetUptime != null) chips.push('Soul Puppet up ' + pct(d.puppetUptime) + ', Investiture avg ' + d.investitureAvg.toFixed(1) + ' stacks');
-        if (d.creepingDeathAvgStacks != null) chips.push('Creeping Death avg ' + d.creepingDeathAvgStacks.toFixed(1) + ' stacks');
-        if (sim.engine === "fx") {   // PT2: every stack and named buff the data tracks, no names in code
-          Object.keys(d.stacksAvg || {}).filter(n => d.stacksAvg[n] > 0).forEach(n => chips.push(n + ' avg ' + d.stacksAvg[n].toFixed(1)));
-          Object.keys(d.buffUptime || {}).forEach(n => chips.push(n + ' up ' + pct(d.buffUptime[n])));
+        const cw = fd.callWindow;
+        if (cw && cw.windows && cw.windows.length && cw.damageInside != null) {
+          const winSec = cw.windows.reduce((t0, w) => t0 + Math.max(0, Math.min(w[1], fd.fightSeconds) - w[0]), 0), outSec = Math.max(1, fd.fightSeconds - winSec);
+          chips.push(['In call windows', fmt(cw.damageInside / Math.max(1, winSec)) + '/s']);
+          chips.push(['Between calls', fmt(cw.damageOutside / outSec) + '/s']);
+          chips.push(['Lands in windows', Math.round(cw.damageInside / Math.max(1, fd.damageTotal) * 100) + '% of damage']);
         }
-        if (chips.length) h += '<div class="hint" style="margin-top:0.2rem;">' + chips.map(esc).join(' · ') + '</div>';
-        const top = Object.entries(sim.bySource || {}).sort((a, b) => b[1] - a[1]).slice(0, 8);
-        if (top.length) h += '<div class="hint" style="margin-top:0.2rem;">Top sources: ' + top.map(e => esc(e[0]) + ' ' + Math.round(e[1] / sim.fightSeconds) + '/s').join(', ') + '</div>';
-        // PT2 step 2.9: the fight's timeline (the scored run when there is one) up to the end of the first call window, windows marked
+        const conf = (typeof getRotationConfidence === "function") ? getRotationConfidence() : null;
+        if (conf) chips.push(['Rests on assumed numbers', conf.assumedPct.toFixed(1) + '%', conf.assumedPct >= 5]);
+        if (chips.length) h += '<div class="sf-chips">' + chips.map(c => '<div class="sf-chip' + (c[2] ? ' warn' : '') + '"><span class="k">' + esc(c[0]) + '</span><span class="v">' + esc(c[1]) + '</span></div>').join('') + '</div>';
+
+        // your rotation
+        const rbx = fd.ruleBuilt || sim.ruleBuilt;
+        if (!typed && rbx && rbx.list && rbx.list.length) {
+          const plain = e => {
+            if (e.kind === "mechanic") return "whenever it can be used";
+            if (e.kind === "spender") { const m = String(e.reason).match(/at (\d+) (.+)$/); return m ? "at " + m[1] + " " + m[2] : "when it can spend"; }
+            if (/^keeps/.test(e.reason)) return "keeps its effect up (recast just before it drops)";
+            if (/^filler/.test(e.reason)) return "between everything else";
+            return "whenever it is ready";
+          };
+          const seen = new Set();
+          const items = rbx.list.filter(e => { const k = e.name + "|" + plain(e); if (seen.has(k)) return false; seen.add(k); return true; });
+          h += '<h3>Your rotation</h3><ol class="sf-rot" translate="no">' + items.map(e => '<li>' + esc(e.name) + '<span class="why">' + esc(plain(e)) + '</span></li>').join('') + '</ol>';
+          h += '<p class="sf-note">Top of the list wins: at every free moment the first entry that is ready gets cast.</p>';
+          const ch = fd.choices || sim.choices || {};
+          const found = (ch.gains || []).filter(g => g.pct > 0.05).map(g => esc(g.choice.replace(/ for damage$/, '') + ': ' + (g.picked === 'leave it to the filler' ? 'use it only to refresh, not for damage' : g.picked)) + ' (+' + g.pct.toFixed(1) + '%)');
+          if (found.length) h += '<p class="sf-note">The simulator also found: ' + found.join('; ') + '.</p>';
+          if ((ch.quickplayCosts || []).length) h += '<p class="sf-note">Quick play: ' + (ch.quickplay && ch.quickplay.length ? esc(ch.quickplay.join(' + ')) : 'none - play songs by hand') + '. Quick-playing would cost ' + ch.quickplayCosts.map(x => esc(x.songs.join(' + ')) + ' ' + Math.abs(x.pct).toFixed(1) + '%').join(', ') + '.</p>';
+        } else if (typed) {
+          h += '<h3>Your rotation</h3><p class="sf-note">Running your own opener / loop (edit it under "Write your own rotation" below).</p>';
+        }
+
+        // where the damage comes from
+        const rows = Object.entries(fd.damageByOwner || {}).sort((a, b) => b[1] - a[1]);
+        if (rows.length) {
+          const inBy = (cw && cw.damageInsideByOwner) || {};
+          const maxD = rows[0][1];
+          h += '<h3>Where the damage comes from</h3><div class="sf-tablewrap"><table class="sf-table" translate="no"><tr><th>Power</th><th>Damage/s</th><th>Share</th><th>Casts</th><th>Per cast</th>' + (cw ? '<th>In windows</th>' : '') + '</tr>'
+            + rows.map(([n, d]) => { const c = (fd.casts || {})[n];
+                return '<tr><td>' + esc(n) + '</td><td><span class="sf-bar" style="width:' + Math.max(2, Math.round(d / maxD * 60)) + 'px"></span>' + fmt(d / fd.fightSeconds) + '</td><td>' + (d / fd.damageTotal * 100).toFixed(1) + '%</td><td>' + (c ? c : '-') + '</td><td>' + (c ? fmt(d / c) : '-') + '</td>'
+                  + (cw ? '<td>' + Math.round((inBy[n] || 0) / d * 100) + '%</td>' : '') + '</tr>'; }).join('')
+            + '</table></div>';
+        }
+
+        // not counted yet: one list, plain reasons
+        const nc = [], seenN = new Set();
+        (fd.notOn || []).forEach(x => { seenN.add(x.name); nc.push('<li>' + esc(x.name) + ' <span class="why">- ' + esc(x.why) + '</span></li>'); });
+        if (conf) conf.missing.forEach(x => { const nm = x.owner || String(x.label).split(':')[0]; if (seenN.has(nm)) return; seenN.add(nm);
+          nc.push('<li>' + esc(nm) + ' <span class="why">- a number is not captured yet, so it counts as zero' + (x.ownerPct >= 1 ? ' (on a power doing ' + Math.round(x.ownerPct) + '% of your damage)' : '') + '</span></li>'); });
+        if (nc.length) h += '<h3>Not counted yet</h3><ul class="sf-list" translate="no">' + nc.join('') + '</ul>';
+        if (conf && conf.assumed.some(x => x.pct >= 0.05)) h += '<p class="sf-note">Assumed numbers to confirm in game, biggest first: ' + conf.assumed.filter(x => x.pct >= 0.05).slice(0, 4).map(x => esc(String(x.label).replace(/\s*\(.*\)$/, '')) + ' (' + x.pct.toFixed(1) + '% of damage)').join(', ') + '.</p>';
+      } else if (sim) {
+        h += '<p class="sf-note">This class is not on the new simulator yet.</p>';
+      }
+
+      // timeline (collapsed)
+      if (sim) {
         const tsrc = (fd && fd.timeline) || sim.timeline || [];
         const w1 = fd && fd.callWindow && fd.callWindow.windows && fd.callWindow.windows[0];
-        const cyc = w1 ? tsrc.filter(e => e.t <= w1[1] + 0.01).slice(0, 60) : tsrc.filter(e => sim.firstCycleEnd == null || e.t <= sim.firstCycleEnd + 0.01).slice(0, 40);
-        if (cyc.length) h += '<details style="margin-top:0.3rem;"><summary class="hint" style="cursor:pointer;">Timeline, ' + (w1 ? 'to the end of the first call window' : (sim.opener && sim.opener.length ? 'opener' : 'first loop')) + ' (' + cyc.length + ' entries)</summary><div class="hint" style="margin-top:0.2rem;line-height:1.5;" translate="no">'
-          + cyc.map(e => e.name === "Call window" ? '<strong>| ' + e.t.toFixed(1) + 's CALL WINDOW (' + esc(e.note) + ') |</strong>' : e.t.toFixed(1) + 's ' + esc(e.name) + (e.note ? ' [' + esc(e.note) + ']' : '')).join(' · ') + '</div></details>';
+        const cyc = w1 ? tsrc.filter(e => e.t <= w1[1] + 0.01).slice(0, 60) : tsrc.slice(0, 40);
+        if (cyc.length) h += '<details><summary>Timeline' + (w1 ? ' (to the end of the first call window)' : '') + '</summary><div class="sf-timeline" translate="no">'
+          + cyc.map(e => e.name === "Call window" ? '<span class="call">' + e.t.toFixed(1) + 's CALL (' + esc(e.note) + ')</span>' : e.t.toFixed(1) + 's ' + esc(e.name) + (e.note && e.note !== 'trigger only' ? ' <span style="opacity:0.7">(' + esc(e.note) + ')</span>' : '')).join(' · ') + '</div></details>';
+        const d = sim.derived || {};
+        const det = [];
+        Object.keys(d.stacksAvg || {}).filter(n => d.stacksAvg[n] > 0).forEach(n => det.push(n + ' average ' + d.stacksAvg[n].toFixed(1)));
+        Object.keys(d.buffUptime || {}).forEach(n => det.push(n + ' up ' + Math.round(d.buffUptime[n] * 100) + '%'));
+        if (det.length) h += '<details><summary>Buffs and stacks over the fight</summary><div class="sf-timeline" translate="no">' + det.map(esc).join(' · ') + '</div></details>';
       }
+
+      // write your own rotation (collapsed unless one is typed)
+      h += '<details' + (typed ? ' open' : '') + '><summary>Write your own rotation instead</summary>';
+      h += '<p class="sf-note">Leave both lists empty to let the simulator build it. A typed list is a script: every entry casts in order; a step still on cooldown is waited for with your filler, or skipped if it is more than 5 s away. Your artifact, mount power and dailies you do not list fire on their own.</p>';
+      h += '<div class="field" style="margin-top:0.5rem;"><label>Opener <span style="color:var(--text-dim);font-weight:400;">(runs once from the pull)</span></label>' + listHTML("opener", state.rotationOpener) + '</div>';
+      h += '<div class="field" style="margin-top:0.6rem;"><label>Loop <span style="color:var(--text-dim);font-weight:400;">(repeats until the fight ends)</span></label>' + listHTML("loop", state.rotationSteps) + '</div>';
+      if (inp.scorch) {
+        const sat = inp.scorchAtSparks;
+        h += '<div class="field" style="margin-top:0.6rem;"><label>Fire Soul Scorch at <span id="scorch-at-label">' + sat + ' sparks</span> <span class="hint-icon" data-tip="Only for a typed rotation without Soul Scorch in it. The simulator picks this number itself when it builds the rotation.">?</span></label><input type="range" id="scorch-at-sparks" min="6" max="18" step="1" value="' + sat + '" style="width:100%;"></div>';
+      }
+      h += '</details>';
       box.innerHTML = h;
       const listOf = key => key === "opener" ? state.rotationOpener : state.rotationSteps;
       const commit = () => { _rotSimCache = { key: "", result: null }; rerenderAll(); };
@@ -14497,6 +14546,7 @@
       if (!(typeof pt2PanelEnabled === "function" && pt2PanelEnabled())) return;
       const opt = document.querySelector('#scenario-tab-select option[value="class"]'); if (opt) opt.remove();
       const pane = document.querySelector('.sc-pane[data-sc-pane="class"]'); if (pane) pane.remove();
+      document.querySelectorAll('.sc-tab[data-sc-tab="class"]').forEach(b => b.remove());   // 2.10-A: the tab button too (it stayed behind)
     }
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", pt2HideClassTab); else pt2HideClassTab();
     function renderClassMechanics() {
