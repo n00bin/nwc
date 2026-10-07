@@ -13,6 +13,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ### Bug Fixes
 
 - **Mount power "Fix this item" card showed the wrong percentages (Toon Forge).** When you opened the fix card for a mount's combat power, it showed the item level for your chosen tier but the percentages for a lower one. For example, Bat Swarm showed item level 3,937 with 15% when the game shows 19.7%. Both now match your chosen tier. Thanks to the player who reported it.
+- **Tempest Gaze Ink (Depleted Advantage) is pants, not a shirt.** It now sits in the Pants slot with the correct Deflect of 2,126 (was 1,276). Thanks to the player who reported it.
 - **Mythallar Fragment was missing its Stamina Regeneration.** The top rank gives +15% Stamina Regeneration, which the site did not show or count. It does now.
 
 - **Companion Enchantment item level follows its rarity (Toon Forge).** Your total item level always counted the Companion Enchantment as Celestial (1,800), whatever rarity you picked. It now counts the rarity you picked: for example, Mythic adds 1,500.
