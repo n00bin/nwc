@@ -997,3 +997,4 @@ Warlock mechanics live in The Fight -> Class tab. Curse and Soul Investiture alr
 - STAGE 4 PLAN WRITTEN 2026-10-06: kept in the private premium folder (it describes the paid optimizer). Gaps 4-A (Setup window), 4-B (scoring gear against the chosen kit fast enough), 4-C (search order) to lock one at a time.
   (Stage 4 gap 4-A locked 2026-10-06 = Recommended; detail in the private plan.)
   (Stage 4 gap 4-B locked 2026-10-07 = n00b's structure: the simulation picks the kit, gear scored fast with the kit's fight results, only Recharge / AP gear gets the real fight, final kit re-check; 4-C closed by it; detail private.)
+  (Stage 4 gap 4-D locked 2026-10-07 = narrow with real fights, then search with restarts, proven against exhaustive on a narrowed pool, ~2 min budget; 4-E (Forgemaster's role) found on the rescan; detail private.)
