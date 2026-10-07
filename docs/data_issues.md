@@ -8,6 +8,8 @@ These count ZERO in the call window until a tooltip screenshot gives the missing
 - **Assumed (counted, labelled; a tooltip would confirm):** Frozen Storyteller's Journal 15 s, Decanter of Atropal Essence full 10%, Book of Vile Darkness 1 s, Envenomed Storyteller's Journal 15 s, Demogorgon's Reach 18%, Dragonbone Blades 10 s, Alaric's Artillery Beacon 5%.
 
 ## OPEN Bard check for n00b (2026-10-06, PT2 step 2.4-F)
+- **Ballad of the Hero rider (step 2.9):** the simulator counts the +85 radiant rider on EVERY at-will / encounter / daily hit (as the tag note says), which makes it a Songblade's biggest source (45% with Reprise). Test: does the rider fire on each hit of a multi-hit power, and on each Reprise press?
+- **Reprise (fixed 2026-10-06):** now one 35 hit per 0.3 s press (tag note: 140 per 1.2 s combo); the simulator used to read "35x4" as four hits per press.
 - **Lore's "Critical Severity Taken +10%" and the 120% cap.** Counted OUTSIDE your Critical Severity cap (provisional, n00b lock 2.4-F). Test: on a Songblade at 120% Critical Severity, compare crit numbers on a target dummy with and without Lore's debuff. Bigger crits with Lore = keep; no change = switch to inside the cap.
 
 ## OPEN Ranger data checks for n00b (2026-10-06, Migration B)
