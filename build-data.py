@@ -56,7 +56,7 @@ def build_header(source_name):
 # creep back in. Entries without `fx` are not checked (the old free-form blocks are records only).
 FX_COMMON = {"kind", "when", "gate", "requiresFeat", "requiresFeature", "requiresSlotted", "provisional", "missing", "note", "paragon", "slot"}
 FX_KINDS = {
-    "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name", "scalesWith", "maxTargets", "pctOfTrigger"},
+    "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name", "scalesWith", "maxTargets", "pctOfTrigger", "flat", "pctMaxHp"},
     "dot":      {"magnitude", "perTick", "ticks", "seconds", "stacking", "maxStacks", "damageType", "element", "name", "targets", "scalesWith"},
     "buff":     {"stats", "ratingStats", "scope", "seconds", "appliesTo", "stacks", "maxStacks", "radius", "name", "op", "role"},
     "debuff":   {"stats", "personal", "appliesTo", "seconds", "maxStacks", "name", "targets"},
@@ -71,7 +71,8 @@ FX_KINDS = {
     "echo":     {"pct", "seconds", "deliver", "targets", "name"},
 }
 FX_EVENTS = {"cast", "hit", "crit", "dotTick", "kill", "combatStart", "periodic", "stackSpent", "stackReached",
-             "stackApplied", "stackRemoved", "takeHit", "block", "deflect", "dodge", "buffApplied", "buffRefreshed", "buffEnded"}
+             "stackApplied", "stackRemoved", "takeHit", "block", "deflect", "dodge", "buffApplied", "buffRefreshed", "buffEnded",
+             "caHit", "noncrit", "bigHit"}
 FX_WHEN = {"on", "from", "chance", "icdSeconds", "every", "resource", "amount", "name"}
 FX_POOLS = {"actionPoints", "stamina", "divinity", "rage", "performance", "soulweave", "vengeance", "stealthMeter"}
 FX_STACKS = {"Chill", "Arcane Mastery", "Smolder", "Soul Spark", "Soul Investiture", "Curse", "Spell Twisting",
@@ -143,6 +144,20 @@ def validate_callfx(data):
             errs.append(f"artifact {a.get('name', '?')}: bad callStatus {a['callStatus']!r}")
     return errs
 
+def validate_proc_fx(data):
+    """PT2 Migration C: proc records on gear / overload / insignia equipBonuses and companion procEffects."""
+    errs, stacks = [], FX_STACKS | _fx_extra_stacks()
+    items = data if isinstance(data, list) else (data.get("bonuses") or data.get("insignias") or [])
+    for it in items:
+        lists = [(eb, f"{it.get('name', '?')}/{eb.get('name', '?')}") for eb in (it.get("equipBonuses") or [])]
+        if isinstance(it.get("procEffect"), dict): lists.append((it["procEffect"], f"{it.get('name', '?')}/procEffect"))
+        for holder, where in lists:
+            for i, rec in enumerate(holder.get("fx") or []):
+                _fx_check_record(rec, f"{where}.fx[{i}]", errs, stacks)
+            if holder.get("fxStatus") is not None and holder["fxStatus"] not in ("moves", "stays", "timeline", "passive"):
+                errs.append(f"{where}: bad fxStatus {holder['fxStatus']!r}")
+    return errs
+
 def convert_file(source_name, output_name, var_name):
     source_path = os.path.join(SOURCE_DIR, source_name)
     output_path = os.path.join(OUTPUT_DIR, output_name)
@@ -161,8 +176,8 @@ def convert_file(source_name, output_name, var_name):
         return False
 
     # POWER-TAGS-2: the effect vocabulary is enforced on classes.json (step 2.1).
-    if source_name in ("classes.json", "artifacts.json"):
-        fx_errs = validate_fx(data) if source_name == "classes.json" else validate_callfx(data)
+    if source_name in ("classes.json", "artifacts.json", "gear.json", "overloads.json", "mount_insignia_bonuses.json", "companion_powers.json"):
+        fx_errs = validate_fx(data) if source_name == "classes.json" else validate_callfx(data) if source_name == "artifacts.json" else validate_proc_fx(data)
         if fx_errs:
             print(f"  FAIL  {source_name}: {len(fx_errs)} effect record(s) outside the vocabulary - output left unchanged")
             for e in fx_errs[:25]: print(f"          {e}")
