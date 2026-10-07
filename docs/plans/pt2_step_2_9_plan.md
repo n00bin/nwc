@@ -1,6 +1,6 @@
 # POWER-TAGS-2 step 2.9: the free simulator display (plan)
 
-Written 2026-10-06. Nothing here is built yet. Part of `docs/plans/power_tags_2_plan.md`, Stage 2; locked by PT2-18
+Written 2026-10-06. **Built locally 2026-10-06** (results in the step log, `docs/audit/power_tag_review_2026-09-09.md`). Part of `docs/plans/power_tags_2_plan.md`, Stage 2; locked by PT2-18
 (the simulator is FREE: stat panel with the in-combat snapshot, derived states, a simulated fight with the player's own
 powers in rule-built or typed order, per-power table, inside / outside call-window split, confidence line), PT2-13
 (random picks stay with the player: Chaos Magic) and PT2-4 / PT2-5 (build states are derived; the snapshot view keeps

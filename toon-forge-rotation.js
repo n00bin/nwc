@@ -433,6 +433,7 @@
     Object.keys(input.stackRules || {}).forEach(function (n) { rules[n] = Object.assign({}, rules[n] || {}, input.stackRules[n]); });
     const caps = {};
     const picks = input.picks || {};
+    const pickValues = {};   // PT2 2.9-C: every value a pick:<setting>:<value> gate names, per setting (filled once the owners exist)
     const smPower = input.spellMasteryPower || null;
     const fight = input.fight || {};
     const modes = input.modes || {};
@@ -476,6 +477,10 @@
     ["atWill", "encounter", "daily"].forEach(function (k) { powers[k].forEach(function (p) { owners.push({ obj: p, type: k, name: p.name }); }); });
     songs.forEach(function (p) { owners.push({ obj: p, type: "song", name: p.name }); });
 
+    (function collectPicks(list) { list.forEach(function (r) {
+      [].concat(r.gate || []).forEach(function (g) { const k = g && g.key; if (typeof k === "string" && k.indexOf("pick:") === 0) { const ps = k.split(":"); (pickValues[ps[1]] = pickValues[ps[1]] || []).indexOf(ps[2]) < 0 && pickValues[ps[1]].push(ps[2]); } });
+      if (r.effects) collectPicks(r.effects);
+    }); })([].concat.apply([], owners.map(function (ow) { return fxOf(ow.obj); })));
     // ---- mods (feats / features / mechanics / powers change other owners) ----
     const mods = [];
     owners.forEach(function (ow) { fxOf(ow.obj).forEach(function (r) { if (r.kind === "mod") mods.push(r); }); });
@@ -579,7 +584,7 @@
     function keyValue(key) {
       if (key.indexOf("stack:") === 0) return stackCount(key.slice(6));
       if (key.indexOf("buff:") === 0) return buffUp(key.slice(5)) ? 1 : 0;
-      if (key.indexOf("pick:") === 0) { const ps = key.split(":"); return picks[ps[1]] === ps[2] ? 1 : 0; }
+      if (key.indexOf("pick:") === 0) { const ps = key.split(":"); if (picks[ps[1]] == null && pickValues[ps[1]]) return 1 / pickValues[ps[1]].length; return picks[ps[1]] === ps[2] ? 1 : 0; }
       if (key.indexOf("quickplay:") === 0) return quickplay.indexOf(key.slice(10)) >= 0 ? 1 : 0;
       if (key === "enemyHealthPct") return enemyHp;
       if (key === "enemyCount") return num(input.enemyCount, 1);
@@ -914,7 +919,8 @@
     function procFire(L, eventShare) {
       const w = L.rec.when;
       if (w.icdSeconds && t - L.lastFire < num(w.icdSeconds)) return;
-      const share = (w.chance != null ? num(w.chance) / 100 : 1) * eventShare;
+      let share = (w.chance != null ? num(w.chance) / 100 : 1) * eventShare;
+      [].concat(L.rec.gate || []).forEach(function (g) { if (g && typeof g.key === "string" && g.key.indexOf("pick:") === 0) share *= keyValue(g.key); });   // 2.9-C: a random pick's share
       if (share <= 0) return;
       if (share >= 1 - 1e-9) { L.lastFire = t; runRecord(asProc(L.ow), withRecMods(L.ow, L.rec), null, null); return; }
       if (!input.expectedProcs) return;
@@ -1359,11 +1365,14 @@
     const run = function (ch) {
       const fxModes = Object.assign({}, input.modes || {});
       Object.keys(ch.modes).forEach(function (n) { const all = [].concat(kit.powers.atWill || [], kit.powers.encounter || [], kit.powers.daily || []); const p = all.find(function (x) { return x.name === n; }); if (p && p.modes[ch.modes[n]] && Array.isArray(p.modes[ch.modes[n]].fx)) fxModes[n] = ch.modes[n]; });
-      const r = simulateFx(Object.assign({}, input, { kit: kitWithModes(kit, ch.modes), hold: ch.hold, spendAt: ch.spendAt, modes: fxModes, filler: ch.filler || null, noDamageCast: ch.skip || [] }));
+      const k2 = kitWithModes(kit, ch.modes);
+      k2.songs = (kit.songs || []).filter(function (sg) { return (ch.songs || []).indexOf(sg.name) >= 0; });
+      if (ch.sm) { const smo = (input.smCandidates || []).find(function (x) { return x.name === ch.sm; }); if (smo) k2.powers = Object.assign({}, k2.powers, { encounter: (k2.powers.encounter || []).concat([smo]) }); }
+      const r = simulateFx(Object.assign({}, input, { spellMasteryPower: ch.sm || input.spellMasteryPower || null, kit: k2, hold: ch.hold, spendAt: ch.spendAt, modes: fxModes, filler: ch.filler || null, noDamageCast: ch.skip || [], quickplay: ch.quickplay || [] }));
       r._score = r.damageTotal != null ? r.damageTotal : r.magnitudeTotal; return r;
     };
     if (input.choices) { const r = run(input.choices); r.choices = Object.assign({ gains: [] }, input.choices); return r; }
-    const ch = { hold: {}, modes: {}, spendAt: input.spendAt != null ? input.spendAt : input.scorchAtSparks, filler: null, skip: [] };
+    const ch = { hold: {}, modes: {}, spendAt: input.spendAt != null ? input.spendAt : input.scorchAtSparks, filler: null, skip: [], songs: [], quickplay: [] };
     let best = run(ch); const gains = [];
     const tryAll = function (label, opts, apply) {
       const base = best._score; let win = null;
@@ -1371,6 +1380,15 @@
       if (win) { Object.assign(ch, win.c); gains.push({ choice: label, picked: win.o.label, pct: base > 0 ? (best._score - base) / base * 100 : 0 }); }
       else gains.push({ choice: label, picked: opts.length ? "default" : "n/a", pct: 0 });
     };
+    // PT2 step 2.9-A: songs - the search plays at most one elemental song and one ballad (elemental songs cancel each
+    // other); heal and utility songs do nothing for the damage score
+    const songsOf = function (type) { return (kit.songs || []).filter(function (sg) { return sg.tags && sg.tags.songType === type; }).map(function (sg) { return sg.name; }); };
+    const els = songsOf("elemental"), bals = songsOf("ballad");
+    // PT2 2.9-C: an empty Spell Mastery slot (Wizard encounter slot 4) - try each paragon encounter there
+    if (!input.spellMasteryPower && Array.isArray(input.smCandidates) && input.smCandidates.length)
+      tryAll("Spell Mastery slot", input.smCandidates.map(function (p) { return { label: p.name, n: p.name }; }), function (o) { return Object.assign({}, ch, { sm: o.n }); });
+    if (els.length) tryAll("elemental song", els.map(function (n) { return { label: n, n: n }; }), function (o) { return Object.assign({}, ch, { songs: (ch.songs || []).filter(function (x) { return els.indexOf(x) < 0; }).concat([o.n]) }); });
+    if (bals.length) tryAll("ballad", bals.map(function (n) { return { label: n, n: n }; }), function (o) { return Object.assign({}, ch, { songs: (ch.songs || []).filter(function (x) { return bals.indexOf(x) < 0; }).concat([o.n]) }); });
     const aws = (kit.powers.atWill || []).map(function (p) { return p.name; });
     if (aws.length > 1) tryAll("at-will filler", aws.filter(function (n) { return n !== (best.ruleBuilt && best.ruleBuilt.filler); }).map(function (n) { return { label: n, n: n }; }),
       function (o) { return Object.assign({}, ch, { filler: o.n }); });
@@ -1388,7 +1406,17 @@
     const sp = (kit.mechanics || []).map(function (m) { return (m.fx || []).find(function (r) { return r.kind === "stack" && r.op === "consume" && r.min != null && !r.when; }); }).filter(Boolean)[0];
     if (sp) { const opts = []; for (let k = num(sp.min); k <= num(sp.amount, sp.min); k++) opts.push({ label: k + " " + sp.resource, k: k });
       tryAll("spend " + sp.resource + " at", opts, function (o) { return Object.assign({}, ch, { spendAt: o.k }); }); }
-    best.choices = { hold: ch.hold, modes: ch.modes, spendAt: ch.spendAt, filler: ch.filler, skip: ch.skip, gains: gains };
+    const qpSongs = (kit.songs || []).filter(function (sg) { return (ch.songs || []).indexOf(sg.name) >= 0 && sg.quickplay !== false; }).map(function (sg) { return sg.name; });
+    const qpSlots = 1 + ((kit.mechanics || []).some(function (m) { return /quickplay slot/i.test(String(m.notes || "") + String(m.modeledBy || "")); }) ? 1 : 0);
+    const qpCosts = [];
+    if (qpSongs.length) {
+      const opts = qpSongs.map(function (n) { return [n]; }); if (qpSlots >= 2 && qpSongs.length >= 2) opts.push(qpSongs.slice(0, 2));
+      const base = best._score;
+      opts.forEach(function (q) { const r = run(Object.assign({}, ch, { quickplay: q })); qpCosts.push({ songs: q, pct: base > 0 ? (r._score - base) / base * 100 : 0 });
+        if (r._score > best._score + 1e-9) { best = r; ch.quickplay = q; } });
+      gains.push({ choice: "quick play", picked: ch.quickplay.length ? ch.quickplay.join(" + ") : "none (play songs by hand)", pct: 0 });
+    }
+    best.choices = { hold: ch.hold, modes: ch.modes, spendAt: ch.spendAt, filler: ch.filler, skip: ch.skip, songs: ch.songs, quickplay: ch.quickplay, quickplayCosts: qpCosts, spellMastery: ch.sm || null, gains: gains };
     return best;
   }
 

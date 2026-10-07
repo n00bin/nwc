@@ -13979,7 +13979,11 @@
         enemyCount: (typeof state.enemyCount === "number") ? state.enemyCount : 1,
         // player picks the data reads (pick:<setting>:<value> gates) and the Spell Mastery (R1) encounter;
         // no control sets these yet - they arrive with the free simulator display (step 2.9)
-        picks: { chaosMagicBuff: state.chaosMagicBuff || null }, spellMasteryPower: state.spellMasteryPower || null,
+        // 2.9-C: random picks (Chaos Magic) are expected values in the simulator - no player picker; Spell Mastery is
+        // Wizard encounter slot 4 (empty = the search tries each paragon encounter there)
+        picks: {}, spellMasteryPower: (state.class === "Wizard" && (state.slottedEncounters || [])[3]) || null,
+        smCandidates: (state.class === "Wizard" && !(state.slottedEncounters || [])[3])
+          ? _paragonPowerPool("encounter").filter(p => p && p.name && (state.slottedEncounters || []).indexOf(p.name) < 0) : null,
         spendAt: (typeof state.scorchAtSparks === "number") ? state.scorchAtSparks : null,
         // PT2 step 2.8: with no typed opener or loop, the fx simulator builds the rotation (a priority list)
         ruleBuilt: pt2UsesFxSim() && !steps.length && !opener.length
@@ -13993,7 +13997,10 @@
         mechanics: mechs,
         features: ((pDef && pDef.slottedClassFeatures) || []).filter(f => f && picks.has(f.name)),
         feats: ((pDef && pDef.feats) || []).filter(f => f && fts.has(f.name)),
-        always: [].concat((cDef && cDef.classFeatures) || [], (pDef && pDef.classFeatures) || [])
+        always: [].concat((cDef && cDef.classFeatures) || [], (pDef && pDef.classFeatures) || []),
+        // PT2 step 2.9-A: every song the paragon's tags make playable (a requiresFeat song needs its feat slotted);
+        // the simulator's search picks which to play
+        songs: ((pDef && pDef.powers && pDef.powers.songs) || []).filter(sg => sg && sg.name && (!sg.requiresFeat || fts.has(sg.requiresFeat)))
       };
     }
     // The fx simulator runs where the PT2 simulator flag is on AND the class's data has been migrated
@@ -14152,7 +14159,7 @@
       if (_rotDmgCache.key === key && _rotDmgCache.result) return _rotDmgCache.result;
       const su = pt2ScoredSetup(rules);
       const res = su ? pt2SimScored(su) : null;
-      if (su && res && res.choices) su.choices = { hold: res.choices.hold, modes: res.choices.modes, spendAt: res.choices.spendAt, filler: res.choices.filler, skip: res.choices.skip };   // 2.8: confidence runs keep these
+      if (su && res && res.choices) su.choices = { hold: res.choices.hold, modes: res.choices.modes, spendAt: res.choices.spendAt, filler: res.choices.filler, skip: res.choices.skip, songs: res.choices.songs, quickplay: res.choices.quickplay, sm: res.choices.spellMastery };   // 2.8: confidence runs keep these
       if (res) {
         const inp = su.inp, on = new Set(res.statOwnersOn || []), owned = pt2SimOwnedNames(inp.kit);
         res.notOn = [].concat(inp.kit.mechanics || [], inp.kit.features || [], inp.kit.feats || [], inp.kit.always || [])
@@ -14348,6 +14355,8 @@
           const gains = ((fd && fd.choices) || sim.choices || {}).gains || [];
           const shown = gains.filter(g => g.picked !== "n/a").map(g => esc(g.choice) + ': ' + esc(g.picked) + (g.pct > 0.05 ? ' (+' + g.pct.toFixed(1) + '%)' : ''));
           if (shown.length) h += '<div class="hint" style="margin-top:0.1rem;">Choices tried: ' + shown.join('; ') + '</div>';
+          const qc = ((fd && fd.choices) || sim.choices || {}).quickplayCosts || [];
+          if (qc.length) h += '<div class="hint" style="margin-top:0.1rem;">Quick-playing instead would cost: ' + qc.map(x => esc(x.songs.join(" + ")) + ' ' + x.pct.toFixed(1) + '%').join('; ') + '</div>';
         }
         if (fd && fd.dps != null) {
           const topD = Object.entries(fd.damageByOwner || {}).sort((a, b) => b[1] - a[1]).slice(0, 5);
@@ -14708,7 +14717,27 @@
       const elements = new Set(atWill.concat(encounter).map(p => p.tags && p.tags.element).filter(Boolean));
       return { atWill, encounter, daily, all, chill, smolder, elements, cls: s.class };
     }
+    // PT2 step 2.9 (PT2-4 / PT2-5): in the optimizer's "average" scoring mode a build state reads the simulated fight
+    // (stack average, buff uptime as a fraction); the snapshot view keeps the peak. Keys with no simulated counterpart
+    // keep their peak.
+    function pt2SimState(key, kit) {
+      if (pt2ScoringMode !== "average") return undefined;
+      const rs = (typeof peekRotationSim === "function") ? peekRotationSim() : null;
+      const d = rs && rs.derived; if (!d) return undefined;
+      const st = d.stacksAvg || {}, up = d.buffUptime || {};
+      const songs = ((typeof findParagon === "function" && findParagon(kit.cls, state.paragon)) || {}).powers;
+      switch (key) {
+        case "chillStacks": return st["Chill"] != null ? st["Chill"] : undefined;
+        case "arcaneMasteryStacks": return st["Arcane Mastery"] != null ? st["Arcane Mastery"] : undefined;
+        case "stealthed": return up["Stealth"] != null ? up["Stealth"] : undefined;
+        case "vengeful": return up["Vengeful"] != null ? up["Vengeful"] : undefined;
+        case "rageWindowActive": return (up["Battlerage"] != null || up["Unstoppable"] != null) ? Math.max(up["Battlerage"] || 0, up["Unstoppable"] || 0) : undefined;
+        case "songPlayed": { const ns = ((songs && songs.songs) || []).map(x => x.name).filter(n => up[n] != null); return ns.length ? Math.max.apply(null, ns.map(n => up[n])) : undefined; }
+      }
+      return undefined;
+    }
     function pt2KeyValue(key, s, kit) {
+      const simV = pt2SimState(key, kit); if (simV !== undefined) return simV;
       if (key in PT2_FIGHT_DEFAULTS) { const f = s.pt2Fight || {}; return (typeof f[key] === "boolean") ? f[key] : PT2_FIGHT_DEFAULTS[key]; }
       switch (key) {
         case "currentStaminaPct": return (typeof s.currentStaminaPct === "number") ? s.currentStaminaPct : 100;
@@ -14756,6 +14785,7 @@
             const rs = (typeof peekRotationSim === "function") ? peekRotationSim() : null;
             if (rs && rs.derived && rs.derived.curseUptime != null) return { f: cl(rs.derived.curseUptime), label: "Curse up " + Math.round(rs.derived.curseUptime * 100) + "% of the fight" };
           }
+          if (pt2ScoringMode === "average" && typeof v === "number" && v > 0 && v < 1) return { f: v, label: "up " + Math.round(v * 100) + "% of the fight" };   // a simulated uptime
           return { f: v ? 1 : 0, label: v ? "" : "off" };
         }
         case "linear": {
