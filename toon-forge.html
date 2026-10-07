@@ -7664,6 +7664,14 @@
     // per-rarity ladder (screenshot-verified per tier). enchantAtRank stamps
     // e._rank; Celestial / no rank = the top ladder entry. Other enchants fall
     // back to their static description unchanged.
+    // PT2 4-H (2026-10-07): a companion enchant with a rarity ladder counts the item level of the rung you picked
+    // (state.enchantRarity["Companion"], default Celestial), not always the top one.
+    function compEnchItemLevel(ce) {
+      if (!ce) return 0;
+      const rk = (state.enchantRarity && state.enchantRarity["Companion"]) || "Celestial";
+      const rung = ce.rarityLadder && ce.rarityLadder[rk];
+      return (rung && rung.itemLevel) || ce.item_level || 0;
+    }
     function _compEnchDesc(e) {
       if (!e) return "";
       if (e.rarityLadder) {
@@ -12021,6 +12029,8 @@
 
       const headers = ["", "Base", "Race", "L3", "L6", "L9 ALL", "L12", "L14", "L16 ALL", "L18", "L20", "Gear/Bonus", "Total"];
       let html = choiceHtml;
+      const _abLock = pt2KitLockHTML("abilities", true);   // PT2 4-J: the optimizer keeps your ability picks
+      if (_abLock) html += '<div style="font-size:0.78rem;color:var(--text-dim);margin:0 0 4px;">Ability point picks' + _abLock + '</div>';
       html += '<table class="abil-grid"><thead><tr>';
       for (const h of headers) {
         const cls = (h === "L9 ALL" || h === "L16 ALL") ? ' class="col-all"' : "";
@@ -12065,6 +12075,7 @@
         · Gear/Bonus column auto-fills from equipped gear &amp; artifacts</div>`;
 
       wrap.innerHTML = html;
+      wireLockButtons(wrap, renderAbilityGrid);   // PT2 4-J
 
       // Click handlers for L-pick cells
       wrap.querySelectorAll("td.cell-pick").forEach(td => {
@@ -12321,7 +12332,8 @@
       // Companion enchant + enhancement
       cur = 0; sources = [];
       const ce = findEnchantByName(state.summonedEnchant);
-      if (ce && ce.item_level) { cur += ce.item_level; sources.push({ name: `Enchant: ${ce.name}`, il: ce.item_level }); }
+      const ceIL = compEnchItemLevel(ce);
+      if (ceIL) { cur += ceIL; sources.push({ name: `Enchant: ${ce.name}`, il: ceIL }); }
       const ceh = findEnhancementByName(state.summonedEnh);
       if (ceh && ceh.item_level) { cur += ceh.item_level; sources.push({ name: `Enhancement: ${ceh.name}`, il: ceh.item_level }); }
       add("Companion enchant + enhancement", cur, sources);
@@ -12385,7 +12397,7 @@
       }
       // Companion enchant + enhancement
       const ce = findEnchantByName(state.summonedEnchant);
-      if (ce && ce.item_level) sum += ce.item_level;
+      sum += compEnchItemLevel(ce);
       const ceh = findEnhancementByName(state.summonedEnh);
       if (ceh && ceh.item_level) sum += ceh.item_level;
       return sum;
@@ -14116,7 +14128,7 @@
     //   liveRecharge Recharge Speed buffs speed cooldowns only while up (2.4-E)
     //   critSevTaken Critical Severity Taken debuffs count, outside your cap (2.4-F, provisional)
     function pt2HitRules() {
-      return Object.assign({ buffStats: true, slotPerHit: true, typePerHit: true, simOwnsKit: true, liveRecharge: true, critSevTaken: true, callWindow: true, expectedProcs: true, areaTargets: true, gearProcs: true }, window.__pt2HitRules || {});
+      return Object.assign({ artMod: true, buffStats: true, slotPerHit: true, typePerHit: true, simOwnsKit: true, liveRecharge: true, critSevTaken: true, callWindow: true, expectedProcs: true, areaTargets: true, gearProcs: true }, window.__pt2HitRules || {});
     }
     // Kit owners (features, feats, mechanics) whose fx carry stat buffs the simulator counts (timed, gated or triggered).
     // The kit's sim-owned names depend only on the class, paragon, class features and feats (not on gear): built from
@@ -14140,7 +14152,19 @@
     }
     const PT2_STAT_LOCAL = { "Power": "power", "Combat Advantage": "ca", "Critical Severity": "critSev", "Critical Strike": "critStrike", "Accuracy": "accuracy" };
     const PT2_SLOT_KEYS = ["atwill", "encounter", "daily", "ranged", "melee", "single", "dot"];
+    // 4-G (lock 2026-10-07): the Main Hand "Enhanced <power>" modification, +X% to every hit of that power. Damage
+    // modifications on a whole power only; a component one (Enhanced Dark Spiral = the per-stack part of Dark Helix)
+    // or a healing one is shown, not counted. Nothing on a weapon without modification slots.
+    function pt2MainHandBoost() {
+      if (typeof weaponHasArtMods !== "function" || !weaponHasArtMods("Main Hand")) return null;
+      const pick = state.artifactMods && state.artifactMods["Main Hand 1"] && state.artifactMods["Main Hand 1"].power;
+      if (!pick) return null;
+      const mod = mainHandModMenu(state.class).find(x => x && x.name === pick);
+      if (!mod || mod.kind !== "damage" || mod.component || !mod.boostsPower) return null;
+      return { power: mod.boostsPower, mult: 1 + (+mod.percent || 0) / 100 };
+    }
     function pt2MakeScoreHit(ctx, rules) {
+      const mhb = rules.artMod ? pt2MainHandBoost() : null;
       const bucketOf = n => (TOON_FORGE_ENGINE.damageBucket ? TOON_FORGE_ENGINE.damageBucket(n) : null);
       const sl = ctx.db.slot || {}, mix = ctx.POWER_MIX;
       return function (m, hit, active) {
@@ -14186,7 +14210,7 @@
         hm.slotPct = PT2_SLOT_KEYS.reduce((acc, k) => acc + (w[k] || 0) * ((sl[k] || 0) + (slotAdd[k] || 0)), 0);
         const one = dpsHitDamage(ctx, 100, hm);
         hit.pCrit = one.pCrit;   // 2.6: on-crit records see this hit's crit chance (with the buffs up now)
-        return m * one.expected / 100;
+        return m * one.expected / 100 * (mhb && !hit.proc && hit.name === mhb.power ? mhb.mult : 1);
       };
     }
     // 2.4-G (n00b 2026-10-06): a kit buff the simulator never turns on counts zero, and the panel says why.
@@ -14385,8 +14409,11 @@
       const pDef = findParagon(state.class, state.paragon); if (!pDef) return null;
       const pool = t => {
         const raw = _paragonPowerPool(t).filter(p => p && p.name);
-        if (state.class === "Ranger" && raw.some(p => p.stance === "ranged") && raw.some(p => p.stance === "melee")) {
-          const r = raw.filter(p => p.stance === "ranged"), m = raw.filter(p => p.stance === "melee"), out = [];
+        // Ranger at-wills and encounters are ranged/melee twins (one hotbar slot each); dailies are single powers
+        // (Hunter's Slasher's Mark is melee-only), so only equal-length twin lists are paired
+        const rr = raw.filter(p => p.stance === "ranged"), mm = raw.filter(p => p.stance === "melee");
+        if (state.class === "Ranger" && t !== "daily" && rr.length && rr.length === mm.length) {
+          const r = rr, m = mm, out = [];
           for (let i = 0; i < Math.min(r.length, m.length); i++) out.push(r[i].name);
           return out;
         }
@@ -14397,17 +14424,25 @@
         atWill: pool("atWill"), encounter: pool("encounter"), daily: pool("daily"),
         features: (pDef.slottedClassFeatures || []).filter(f => f && (f.description || f.percentStats || f.ratingStats || f.percentStatsConditional)).map(f => f.name),
         feats: [0, 1, 2, 3, 4].map(i => featList.slice(i * 2, i * 2 + 2).map(f => f.name)).filter(t => t.length),
-        slots: { atWill: 2, encounter: encounterSlotCount(), daily: 2, features: 2 }
+        // 4-G: the Main Hand modification menu (whole-power damage ones; the others score zero in the fight)
+        mainHand: mainHandModMenu(state.class).filter(x => x && x.kind === "damage" && !x.component && x.boostsPower).map(x => x.name),
+        slots: { atWill: 2, encounter: encounterSlotCount(), daily: 2, features: 2,
+          mainHand: (typeof weaponHasArtMods === "function" && weaponHasArtMods("Main Hand") && mainHandModMenu(state.class).length) ? 1 : 0 }
       };
     };
     window.pt2GetKit = function () {
       const pad = (a, n) => { const x = (a || []).slice(0, n); while (x.length < n) x.push(""); return x; };
+      const mh = state.artifactMods && state.artifactMods["Main Hand 1"] && state.artifactMods["Main Hand 1"].power;
       return { atWill: pad(state.slottedAtWills, 2), encounter: pad(state.slottedEncounters, encounterSlotCount()), daily: pad(state.slottedDailies, 2),
-        features: pad(state.slottedClassFeaturePicks, 2), feats: pad(state.slottedFeats, 5) };
+        features: pad(state.slottedClassFeaturePicks, 2), feats: pad(state.slottedFeats, 5), mainHand: [mh || ""] };
     };
     window.pt2SetKit = function (k) {
       state.slottedAtWills = k.atWill.slice(); state.slottedEncounters = k.encounter.slice(); state.slottedDailies = k.daily.slice();
       state.slottedClassFeaturePicks = k.features.slice(); state.slottedFeats = k.feats.slice();
+      if (k.mainHand) {   // 4-G
+        if (!state.artifactMods) state.artifactMods = {};
+        if (k.mainHand[0]) state.artifactMods["Main Hand 1"] = { power: k.mainHand[0] }; else delete state.artifactMods["Main Hand 1"];
+      }
     };
     // A kit's own fight: rule-built rotation with its own choice search (the kit changed, so the choices may too)
     window.pt2KitDps = function () {
@@ -14689,7 +14724,10 @@
       }
 
       // write your own rotation (collapsed unless one is typed)
-      h += '<details' + (typed ? ' open' : '') + '><summary>Write your own rotation instead</summary>';
+      h += '<details' + (typed ? ' open' : '') + '><summary>Write your own rotation instead' + pt2KitLockHTML("rotation", typed) + '</summary>';
+      if (typed && pt2KitLockHTML("rotation", true)) h += '<p class="sf-note">' + (isLocked("rotation")
+        ? 'Locked: the optimizer keeps this rotation and the powers in your hotbar, and picks everything else around them.'
+        : 'Not locked: the optimizer builds its own rotation for the powers it picks and replaces this one. Lock it to keep it.') + '</p>';
       h += '<p class="sf-note">Leave both lists empty to let the simulator build it. A typed list is a script: every entry casts in order; a step still on cooldown is waited for with your filler, or skipped if it is more than 5 s away. Your artifact, mount power and dailies you do not list fire on their own.</p>';
       h += '<div class="field" style="margin-top:0.5rem;"><label>Opener <span style="color:var(--text-dim);font-weight:400;">(runs once from the pull)</span></label>' + listHTML("opener", state.rotationOpener) + '</div>';
       h += '<div class="field" style="margin-top:0.6rem;"><label>Loop <span style="color:var(--text-dim);font-weight:400;">(repeats until the fight ends)</span></label>' + listHTML("loop", state.rotationSteps) + '</div>';
@@ -14699,6 +14737,7 @@
       }
       h += '</details>';
       box.innerHTML = h;
+      wireLockButtons(box, renderRotationBuilder);   // PT2 4-I: the rotation lock
       const listOf = key => key === "opener" ? state.rotationOpener : state.rotationSteps;
       const commit = () => { _rotSimCache = { key: "", result: null }; rerenderAll(); };
       box.querySelectorAll("[data-rot-up]").forEach(b => b.addEventListener("click", () => { const a = listOf(b.dataset.rotKey), i = +b.dataset.rotUp; [a[i - 1], a[i]] = [a[i], a[i - 1]]; commit(); }));
@@ -18460,7 +18499,7 @@
                   `<option value="${_escAttr(x.stat)}"${am2.stat === x.stat ? " selected" : ""}>${_escHTML(x.stat)}</option>`).join("");
                 return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
                     title="Artifact Modification 1 — pick the stat your off-hand's first modification grants. The percent dials are a fixed amount; the rating dials upgrade, so enter what yours currently grants.">
-                  <span style="opacity:.8;">⚙ Art Mod 1:</span>
+                  <span style="opacity:.8;">⚙ Art Mod 1:</span>${pt2KitLockHTML("artmod:Off Hand 1", !!am1.stat)}
                   <select class="picker-collar-filter" data-amod-stat="Off Hand 1">
                     <option value="">— none —</option>${opts1}
                   </select>
@@ -18471,7 +18510,7 @@
                 </div>
                 <div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
                     title="Artifact Modification 2 — pick the stat your off-hand's second modification grants and enter its current value">
-                  <span style="opacity:.8;">⚙ Art Mod 2:</span>
+                  <span style="opacity:.8;">⚙ Art Mod 2:</span>${pt2KitLockHTML("artmod:Off Hand 2", !!am2.stat)}
                   <select class="picker-collar-filter" data-amod-stat="Off Hand 2">
                     <option value="">— none —</option>${opts2}
                   </select>
@@ -18498,7 +18537,7 @@
                   : "";
                 return `<div class="art-mod-row" style="margin-top:0.3rem;font-size:0.78rem;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;"
                     title="Artifact Modification — your main hand's active Enhanced power (one at a time in game). Damage picks boost that power in the damage sim when it's slotted; component/healing picks are recorded but not simmed.">
-                  <span style="opacity:.8;">⚙ Art Mod:</span>
+                  <span style="opacity:.8;">⚙ Art Mod:</span>${pt2KitLockHTML("artmod:Main Hand 1", !!am.power)}
                   <select class="picker-collar-filter" data-amod-power="Main Hand 1">
                     <option value="">— none —</option>${opts}
                   </select>
@@ -19177,7 +19216,7 @@
         }
         html += `<div class="boon-row ${b ? "has-pts" : ""}" style="cursor:pointer;" data-guild-cat="${cat}">
           <div class="boon-row-info">
-            <div class="boon-row-name">${cat} — ${b ? b.name : "(none)"}${info}</div>
+            <div class="boon-row-name">${cat} — ${b ? b.name : "(none)"}${info}${b ? pt2KitLockHTML("guild:" + cat, true) : ""}</div>
             <div class="boon-row-effect">${display} · ${list.length} options</div>
           </div>
           <div class="boon-counter" style="display:flex;flex-direction:column;gap:4px;align-items:flex-end;">
@@ -19187,6 +19226,7 @@
         </div>`;
       }
       wrap.innerHTML = html;
+      wireLockButtons(wrap, renderGuildBoons);   // PT2 4-J
       wrap.querySelectorAll(".guild-boon-rank").forEach(sel => {
         sel.addEventListener("click", (e) => e.stopPropagation());  // row click opens the picker
         sel.addEventListener("change", (e) => {
@@ -20261,6 +20301,8 @@
     }
     window.tfFetchStandardSet = tfFetchStandardSet;
 
+    // PT2 4-J: the consumable groups the optimizer searches (js/optimizer-local.js OPT_BUFF_GROUPS) get a lock
+    const PT2_LOCKABLE_BUFF_GROUPS = ["Potion", "Elixir", "Event Food", "Stronghold Food", "Belt Item"];
     function renderBuffs() {
       const el = document.getElementById("buff-list");
       if (!el) return;
@@ -20303,7 +20345,7 @@
           const info = active ? ` <button class="chip-info" data-details-type="buff" data-details-key="${_escAttr(active.name)}" title="See buff details">\u{1F50D}</button>` : "";
           html += `<div class="boon-row consumable-choice ${active ? "has-pts" : ""}" data-buff-group-pick="${g}" data-buff-slot="${si}" style="cursor:pointer;">
             <div class="boon-row-info">
-              <div class="boon-row-name">${label} — ${active ? active.name : "(none)"}${info}</div>
+              <div class="boon-row-name">${label} — ${active ? active.name : "(none)"}${info}${(si === 0 && PT2_LOCKABLE_BUFF_GROUPS.indexOf(g) >= 0) ? pt2KitLockHTML("buff:" + g, true) : ""}</div>
               <div class="boon-row-effect">${desc}</div>
             </div>
             <div class="boon-counter consumable-action">${active ? "Change item ›" : "Choose item ›"}</div>
@@ -20522,6 +20564,7 @@
         html = html.slice(0, _tierStart);
       }
       el.innerHTML = html;
+      wireLockButtons(el, renderBuffs);   // PT2 4-J: consumable group locks
 
       // Single-pick group → opens picker for that category
       el.querySelectorAll("[data-buff-group-pick]").forEach(row => {
@@ -20829,7 +20872,7 @@
             html += `<div class="stable-ins-pair" style="display:flex;flex-direction:column;gap:0.2rem;">
               <div class="stable-ins comp-slot ${cur ? "filled" : ""}"
                 data-stable="insignia" data-idx="${i}" data-ins-idx="${idx}">
-                ${cur ? "💎 " + cur : "+ " + allowedLabel}${prefStar}
+                ${cur ? "💎 " + cur : "+ " + allowedLabel}${prefStar}${cur ? pt2KitLockHTML(LK.mount("insignia:" + i + ":" + idx), true) : ""}
                 ${cur ? `<button class="chip-info" data-details-type="insignia" data-details-key="${_escAttr(cur)}" data-details-tier="${_escAttr(curTier)}" data-details-prefcat="${_escAttr(prefCat)}" title="See insignia details">🔍</button>` : ""}
               </div>
               ${tierRO}
@@ -20848,7 +20891,7 @@
           const active = desiredBonus && bonusActive(desiredBonus.requiredInsignias, slotted, mount.insigniaSlots);
           html += `<div class="stable-bonus-row">
             <div class="stable-bonus-pick comp-slot ${desiredBonus ? "filled" : ""}" data-stable="bonus" data-idx="${i}">
-              ${desiredBonus ? "🏆 " + desiredBonus.name : "+ Pick desired Insignia Bonus"}
+              ${desiredBonus ? "🏆 " + desiredBonus.name : "+ Pick desired Insignia Bonus"}${desiredBonus ? pt2KitLockHTML(LK.mount("bonus:" + i), true) : ""}
               ${desiredBonus ? `<button class="chip-info" data-details-type="insignia_bonus" data-details-key="${desiredBonus.id}" title="See insignia bonus details">🔍</button>` : ""}
             </div>`;
           if (desiredBonus) {

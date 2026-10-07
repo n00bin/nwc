@@ -4,6 +4,14 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ---
 
+## Week of October 5, 2026
+
+### Bug Fixes
+
+- **Companion Enchantment item level follows its rarity (Toon Forge).** Your total item level always counted the Companion Enchantment as Celestial (1,800), whatever rarity you picked. It now counts the rarity you picked: for example, Mythic adds 1,500.
+
+---
+
 ## Week of September 28, 2026
 
 ### Features
