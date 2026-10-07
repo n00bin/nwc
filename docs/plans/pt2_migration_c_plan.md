@@ -1,6 +1,6 @@
 # POWER-TAGS-2 Migration C: gear, companion and insignia procs onto the timeline (plan)
 
-Written 2026-10-06. Nothing here is built yet. Added to `docs/plans/power_tags_2_plan.md` by lock 2.6-B (class procs
+Written 2026-10-06. **Applied and built locally 2026-10-06** (dry-run list approved; results in the step log). Added to `docs/plans/power_tags_2_plan.md` by lock 2.6-B (class procs
 moved in step 2.6; gear / companion / insignia procs wait for this migration). Same process as Migration B: a dry-run
 list n00b approves, then parity. Everything stays local-only until the one go-live.
 

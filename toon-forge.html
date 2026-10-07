@@ -13584,6 +13584,7 @@
       for (const item of _srcs) {
         for (const eb of item.equipBonuses) {
           const pd = eb && eb.procDamage; if (!pd) continue;
+          if (window.__pt2SimOwnsProcs && eb.fxStatus === "moves") continue;   // Migration C: the simulator fires it
           if (equipBonusGatedByState(eb)) continue;
           const pps = procRatePerSec(pd.triggerRateKey, pd.chance, pd.icdSeconds, pCrit);
           if (pd.magnitude > 0) {
@@ -13618,6 +13619,7 @@
         const c = findCompanionByName(nm); if (!c || c.powerRef == null) continue;
         const pw = findCompanionPower(c.powerRef); if (!pw || !pw.procEffect) continue;
         const pd = pw.procEffect.procDamage; if (!pd) continue;
+        if (window.__pt2SimOwnsProcs && pw.procEffect.fxStatus === "moves") continue;   // Migration C: the simulator fires it
         const rarity = rarities[i] || state.companionRarity || "Mythic";
         let mag = 0;
         if (pd.magnitudeKey && pw.procEffect.effectScaling && pw.procEffect.effectScaling[pd.magnitudeKey]) {
@@ -14075,7 +14077,7 @@
     //   liveRecharge Recharge Speed buffs speed cooldowns only while up (2.4-E)
     //   critSevTaken Critical Severity Taken debuffs count, outside your cap (2.4-F, provisional)
     function pt2HitRules() {
-      return Object.assign({ buffStats: true, slotPerHit: true, typePerHit: true, simOwnsKit: true, liveRecharge: true, critSevTaken: true, callWindow: true, expectedProcs: true, areaTargets: true }, window.__pt2HitRules || {});
+      return Object.assign({ buffStats: true, slotPerHit: true, typePerHit: true, simOwnsKit: true, liveRecharge: true, critSevTaken: true, callWindow: true, expectedProcs: true, areaTargets: true, gearProcs: true }, window.__pt2HitRules || {});
     }
     // Kit owners (features, feats, mechanics) whose fx carry stat buffs the simulator counts (timed, gated or triggered).
     function pt2SimOwnedNames(kit) {
@@ -14091,6 +14093,8 @@
       const bucketOf = n => (TOON_FORGE_ENGINE.damageBucket ? TOON_FORGE_ENGINE.damageBucket(n) : null);
       const sl = ctx.db.slot || {}, mix = ctx.POWER_MIX;
       return function (m, hit, active) {
+        // Migration C lock C-B: a flat / %-of-max-HP proc hit counts at its number, not raised by your stats
+        if (hit.flat || hit.pctMaxHp) return (+hit.flat || 0) + (+hit.pctMaxHp || 0) / 100 * (ctx.maxHp || 0);
         const hm = { add: {}, generic: 0, base: 0, dmgTaken: 0, critSevTaken: 0, noBuffMult: !!rules.simOwnsKit };
         const typeAdd = { magical: 0, physical: 0 }, slotAdd = {};
         if (rules.buffStats) for (const a of active) for (const k in a.stats) {
@@ -14167,6 +14171,46 @@
       if (Object.keys(self).length) fx.push({ kind: "buff", name: cp.name + " (self)", stats: self, seconds: 10 });
       return fx;
     }
+    // Migration C: the procs that moved onto the timeline, as simulator owners - equipped gear and overloads, and the
+    // ACTIVE companion slots (summoned procs stay out, as today), companion values scaled to that companion's rarity
+    function pt2ProcOwners() {
+      const out = [], stackRules = {};
+      const take = (name, fx) => { out.push({ name: name, fx: fx });
+        fx.forEach(r => (r.effects || []).forEach(e => { if (e.kind === "stack") stackRules[e.resource] = { max: e.max, seconds: e.seconds }; })); };
+      for (const slotEntry of (typeof GEAR_SLOTS !== "undefined" ? GEAR_SLOTS : [])) {
+        const nm = state.gear[slotEntry.label]; if (!nm) continue;
+        const item = findGearByName(nm, slotEntry.slot, (state.gearIL || {})[slotEntry.label]); if (!item) continue;
+        for (const eb of (item.equipBonuses || [])) {
+          if (!eb || eb.fxStatus !== "moves" || !Array.isArray(eb.fx)) continue;
+          if (eb.role && typeof roleMatches === "function" && !roleMatches(eb.role)) continue;
+          if (typeof equipBonusGatedByState === "function" && equipBonusGatedByState(eb)) continue;
+          take((eb.name || item.name) + " (" + item.name + ")", eb.fx);
+        }
+      }
+      for (const nm of (state.overloads || [])) {
+        if (!nm) continue; const o = (typeof findOverloadByName === "function") ? findOverloadByName(nm) : null; if (!o) continue;
+        for (const eb of (o.equipBonuses || [])) if (eb && eb.fxStatus === "moves" && Array.isArray(eb.fx)) take((eb.name || o.name) + " (" + o.name + ")", eb.fx);
+      }
+      const rarities = Array.isArray(state.activeCompRarities) ? state.activeCompRarities : [];
+      for (let i = 0; i < (state.activeComps || []).length; i++) {
+        const nm = state.activeComps[i]; if (!nm) continue;
+        const c = findCompanionByName(nm); if (!c || c.powerRef == null) continue;
+        const pw = findCompanionPower(c.powerRef); const pe = pw && pw.procEffect;
+        if (!pe || pe.fxStatus !== "moves" || !Array.isArray(pe.fx)) continue;
+        const rarity = rarities[i] || state.companionRarity || "Mythic";
+        const sc = compRarityScale(rarity, pw), il = (typeof COMPANION_RARITY_IL !== "undefined" && COMPANION_RARITY_IL[rarity]) || 750;
+        const pd = pe.procDamage || {};
+        const scaledMag = (pd.magnitudeKey && pe.effectScaling && pe.effectScaling[pd.magnitudeKey]) ? Number(pe.effectScaling[pd.magnitudeKey][String(il)] || 0) : null;
+        const scale = r => { const c2 = Object.assign({}, r);
+          if (c2.stats) { c2.stats = {}; for (const k in r.stats) c2.stats[k] = r.stats[k] * sc; }
+          if (c2.ratingStats) { c2.ratingStats = {}; for (const k in r.ratingStats) c2.ratingStats[k] = r.ratingStats[k] * sc; }
+          if (c2.kind === "hit" && c2.magnitude != null) c2.magnitude = scaledMag != null ? scaledMag : c2.magnitude * sc;
+          if (c2.effects) c2.effects = c2.effects.map(scale);
+          return c2; };
+        take(pw.name + " (" + nm + ")", pe.fx.map(scale));
+      }
+      return { owners: out, stackRules: stackRules };
+    }
     function pt2CallInput(er) {
       const art = (state.artifacts && state.artifacts.Primary) ? findArtifactByName(state.artifacts.Primary, (state.artifactIL || {}).Primary) : null;
       const cp = (state.activeCombatPower != null && typeof findCombatPowerById === "function") ? findCombatPowerById(state.activeCombatPower) : null;
@@ -14181,15 +14225,21 @@
     function pt2ScoredSetup(rules) {
       let ctx = null, inp = null, call = null;
       const owned = rules.simOwnsKit ? pt2SimOwnedNames(buildRotationSimInput().kit) : null;
-      window.__pt2SimOwnsKit = owned; window.__pt2SimOwnsCall = !!rules.callWindow;
+      window.__pt2SimOwnsKit = owned; window.__pt2SimOwnsCall = !!rules.callWindow; window.__pt2SimOwnsProcs = !!rules.gearProcs;
       try { ctx = dpsBuildContext(); inp = buildRotationSimInput(); if (rules.callWindow) call = pt2CallInput(getEngineResult()); }
-      finally { window.__pt2SimOwnsKit = null; window.__pt2SimOwnsCall = false; }
+      finally { window.__pt2SimOwnsKit = null; window.__pt2SimOwnsCall = false; window.__pt2SimOwnsProcs = false; }
+      if (ctx && inp && rules.gearProcs) {   // Migration C: the procs that moved onto the timeline
+        const po = pt2ProcOwners();
+        inp.kit = Object.assign({}, inp.kit, { gear: po.owners });
+        inp.stackRules = Object.assign({}, inp.stackRules || {}, po.stackRules);
+      }
+      if (ctx) { const hpS = ctx.r.stats["Maximum Hit Points"]; ctx.maxHp = (hpS && (hpS.flat || hpS.finalPct)) || 0; }
       return ctx ? { ctx, inp, call, rules } : null;
     }
     function pt2SimScored(su, kit, call) {
       const r = su.rules; call = call !== undefined ? call : su.call;
       return TF_ROTATION_SIM.simulateFxBest(Object.assign({}, su.inp, su.choices ? { choices: su.choices } : {}, { kit: kit || su.inp.kit, scoreHit: pt2MakeScoreHit(su.ctx, r), liveRecharge: !!r.liveRecharge,
-        role: state.role || null, expectedProcs: !!r.expectedProcs, critChance: su.ctx.critStrike, areaTargets: !!r.areaTargets, timelineMax: 2000 },
+        role: state.role || null, expectedProcs: !!r.expectedProcs, critChance: su.ctx.critStrike, areaTargets: !!r.areaTargets, timelineMax: 2000, maxHp: su.ctx.maxHp || 0 },
         call ? { callWindow: { every: tfCadence("artifact"), seconds: 10 }, call: call } : {}));
     }
     function getRotationDamage() {
@@ -16091,6 +16141,7 @@
         const _hg = _healthGateInfo(item);
         const _hp = (state.currentHealthPct == null ? 100 : +state.currentHealthPct);
         for (let eb of item.equipBonuses) {
+          if (window.__pt2SimOwnsProcs && eb && eb.fxStatus === "moves") continue;   // Migration C: the simulator fires it
           if (eb && (eb.apProc || eb.cdProc)) eb = _procConvert(eb);   // runtime AP / cooldown proc conversion
           if (!eb || !eb.stat || eb.amount == null) continue;
           if (eb.scope && eb.scope !== "self") continue;  // party/enemy buffs handled elsewhere
@@ -16344,7 +16395,7 @@
         // Proc effects also only apply when the companion is in an active
         // slot, not when merely summoned (same rule as the always-on
         // power.stats above).
-        const pe = !isSummoned && power.procEffect;
+        const pe = !isSummoned && power.procEffect && !(window.__pt2SimOwnsProcs && power.procEffect.fxStatus === "moves") && power.procEffect;
         if (pe && Array.isArray(pe.statEffects) && pe.statEffects.length) {
           const maxStacks = pe.maxStacks || 1;
           // True always-on passives (trigger "Passive", 100% chance, no
@@ -16686,6 +16737,7 @@
         // Zone-/proc-conditional bonuses: tag and push individually
         for (const eb of (o.equipBonuses || [])) {
           if (!eb || !eb.stat || eb.amount == null) continue;
+          if (window.__pt2SimOwnsProcs && eb.fxStatus === "moves") continue;   // Migration C: the simulator fires it
           if (eb.scope && eb.scope !== "self") continue;
           if (_zoneSkip(eb)) continue; // zone gate (areas / enemy types)
           if (eb.zonesExclude && eb.zonesExclude.includes(contentZone)) continue; // "elsewhere" half of a zone-split bonus
@@ -17035,7 +17087,7 @@
         scf: state.slottedClassFeaturePicks, stance: state.rangerStance, song: state.bardActiveSong, sparks: state.warlockSoulSparks,
         aw: state.slottedAtWills, enc: state.slottedEncounters, dly: state.slottedDailies, ft: state.slottedFeats, rot: state.rotationSteps, rop: state.rotationOpener, sat: state.scorchAtSparks,
         // POWER-TAGS-2: everything the condition resolver reads must invalidate the cache
-        pt2: [state.pt2Fight || null, state.enemyCount, state.enemyHealthPct, (typeof pt2ScoringMode !== "undefined") ? pt2ScoringMode : "", window.__pt2ForceGates || 0, (typeof window.__pt2FlagOverride === "boolean") ? window.__pt2FlagOverride : null, window.__pt2SimOwnsKit ? [...window.__pt2SimOwnsKit].join("|") : "", window.__pt2SimOwnsCall ? "call" : ""]
+        pt2: [state.pt2Fight || null, state.enemyCount, state.enemyHealthPct, (typeof pt2ScoringMode !== "undefined") ? pt2ScoringMode : "", window.__pt2ForceGates || 0, (typeof window.__pt2FlagOverride === "boolean") ? window.__pt2FlagOverride : null, window.__pt2SimOwnsKit ? [...window.__pt2SimOwnsKit].join("|") : "", window.__pt2SimOwnsCall ? "call" : "", window.__pt2SimOwnsProcs ? "procs" : ""]
       });
       if (key === _engineCacheKey && _engineResult) return _engineResult;
       _engineCacheKey = key;

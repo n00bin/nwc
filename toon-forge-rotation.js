@@ -476,6 +476,8 @@
     (kit.feats || []).forEach(function (o) { if (o && o.name) owners.push({ obj: o, type: "feat", name: o.name }); });
     ["atWill", "encounter", "daily"].forEach(function (k) { powers[k].forEach(function (p) { owners.push({ obj: p, type: k, name: p.name }); }); });
     songs.forEach(function (p) { owners.push({ obj: p, type: "song", name: p.name }); });
+    // Migration C: gear / overload / companion procs (the page passes only those that moved onto the timeline)
+    (kit.gear || []).forEach(function (o) { if (o && o.name) owners.push({ obj: o, type: "gear", name: o.name }); });
 
     (function collectPicks(list) { list.forEach(function (r) {
       [].concat(r.gate || []).forEach(function (g) { const k = g && g.key; if (typeof k === "string" && k.indexOf("pick:") === 0) { const ps = k.split(":"); (pickValues[ps[1]] = pickValues[ps[1]] || []).indexOf(ps[2]) < 0 && pickValues[ps[1]].push(ps[2]); } });
@@ -725,6 +727,14 @@
       if (d > 0) { dmgTotal += d; dmgByOwner[ow.name] = (dmgByOwner[ow.name] || 0) + d; if (CW && inWindow()) { dmgIn += d; dmgInByOwner[ow.name] = (dmgInByOwner[ow.name] || 0) + d; } }
       return d;
     }
+    // Migration C: a flat-damage / %-of-max-HP hit (gear procs) - no magnitude, scored at its number by the page
+    function landFlat(ow, r, offMain) {
+      if (!scoreHit) return;
+      const hit = { type: ow.type, name: ow.name, recName: r.name || ow.name, tags: {}, element: r.element || null, damageType: r.damageType || null, targets: r.targets || null,
+        isTick: false, offMain: !!offMain, proc: true, flat: num(r.flat, 0), pctMaxHp: num(r.pctMaxHp, 0) };
+      const d = scoreHit(0, hit, []);
+      if (d > 0) { dmgTotal += d; dmgByOwner[ow.name] = (dmgByOwner[ow.name] || 0) + d; if (CW && inWindow()) { dmgIn += d; dmgInByOwner[ow.name] = (dmgInByOwner[ow.name] || 0) + d; } }
+    }
     function land(ow, recName, mag, isTick, offMain, rec) {
       const pct = pctModsFor(ow.name, ow.type, recName);
       let m = mag * (1 + pct / 100);
@@ -745,7 +755,14 @@
       }
       fire("hit", { ow: ow, recName: recName });
       if (isTick) fire("dotTick", { ow: ow, recName: recName });
-      if (input.expectedProcs && m > 0) { const pc = lastPCrit != null ? lastPCrit : num(input.critChance, 0); if (pc > 0) fire("crit", { ow: ow, recName: recName, share: Math.min(1, pc) }); }
+      if (input.expectedProcs && m > 0) {
+        const pc = lastPCrit != null ? lastPCrit : num(input.critChance, 0);
+        if (pc > 0) fire("crit", { ow: ow, recName: recName, share: Math.min(1, pc) });
+        if (pc < 1) fire("noncrit", { ow: ow, recName: recName, share: 1 - Math.max(0, pc) });
+        const ca = fight.flankUptime != null ? Math.max(0, Math.min(1, num(fight.flankUptime) / 100)) : 1;   // Combat Advantage: the flank share
+        if (ca > 0) fire("caHit", { ow: ow, recName: recName, share: ca });
+        if (d > 0) fire("bigHit", { ow: ow, recName: recName, dmg: d });
+      }
     }
     // PT2 step 2.7 (input.areaTargets; locks 2.7-A/B): an area hit lands once per enemy up to the enemy count
     // (a stored cap where there is one); a record with no tag follows its power; "mixed" with one magnitude = single.
@@ -765,6 +782,11 @@
     function scheduleDamage(ow, r, start, spent, magOverride) {
       const n = hitTargets(r, ow) * (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate)) ? gateFrac(r.gate) : 1); if (n <= 0) return 0;
       const sw = r.scalesWith ? num(r.scalesWith.per) * num(spent[r.scalesWith.resource], 0) : 0;
+      if (r.kind === "hit" && (r.flat != null || r.pctMaxHp != null) && !(num(r.magnitude, 0) > 0)) {
+        const c = Math.max(1, num(r.count, 1));
+        for (let i = 0; i < c; i++) schedule(start + num(r.delaySeconds, 0), function () { for (let k = 0; k < n; k++) landFlat(ow, r, k > 0 || r.targets === "others"); });
+        return 0;
+      }
       if (r.kind === "hit") {
         const m = (magOverride != null ? magOverride : num(r.magnitude, 0)) + sw;
         const c = Math.max(1, num(r.count, 1));
@@ -885,7 +907,7 @@
       for (let i = 0; i < listeners.length; i++) {
         const L = listeners[i], w = L.rec.when;
         if (w.on !== ev || L.castListener) continue;
-        if (ev === "hit" || ev === "dotTick" || ev === "crit") {
+        if (ev === "hit" || ev === "dotTick" || ev === "crit" || ev === "noncrit" || ev === "caHit" || ev === "bigHit") {
           if (!fromMatch(L, ctx)) continue;
           if (w.name && ctx.recName !== w.name) continue;
         }
@@ -901,7 +923,8 @@
           continue;
         }
         if (w.every && (ev === "hit" || ev === "dotTick")) { L.count++; if (L.count % num(w.every) !== 0) continue; }
-        procFire(L, ev === "crit" ? num(ctx.share, 0) : 1);
+        if (ev === "bigHit" && !(num(ctx.dmg, 0) >= num(w.amount, 15) / 100 * num(input.maxHp, 0) && num(input.maxHp, 0) > 0)) continue;   // your hit over N% of your max HP
+        procFire(L, (ev === "crit" || ev === "noncrit" || ev === "caHit") ? num(ctx.share, 0) : 1);
       }
     }
     // PT2 step 2.6 (input.expectedProcs; lock 2.6-A): a trigger with a chance below 100% (or a crit, whose share is the
@@ -913,6 +936,8 @@
       const c = Object.assign({}, r);
       if (c.magnitude != null) c.magnitude = num(c.magnitude) * f;
       if (c.perTick != null) c.perTick = num(c.perTick) * f;
+      if (c.flat != null) c.flat = num(c.flat) * f;
+      if (c.pctMaxHp != null) c.pctMaxHp = num(c.pctMaxHp) * f;
       if (c.kind === "proc") c.effects = (c.effects || []).map(function (e) { return scaleRec(e, f); });
       return c;
     }
