@@ -6,7 +6,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of October 5, 2026
 
+### Data Additions
+
+- **Lower ranks for two artifacts.** Lantern of Revelation now has its item level 100 rank, and Mythallar Fragment has its item level 200 and 800 ranks. Pick the rank you own from the Rank menu on the Artifacts page or in Toon Forge. Thanks to the player who reported these.
+
 ### Bug Fixes
+
+- **Mythallar Fragment was missing its Stamina Regeneration.** The top rank gives +15% Stamina Regeneration, which the site did not show or count. It does now.
 
 - **Companion Enchantment item level follows its rarity (Toon Forge).** Your total item level always counted the Companion Enchantment as Celestial (1,800), whatever rarity you picked. It now counts the rarity you picked: for example, Mythic adds 1,500.
 
