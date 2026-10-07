@@ -6151,7 +6151,6 @@
         { field: "magnitude",      label: "Magnitude",       kind: "num" },
         { field: "rechargeTimeSeconds", label: "Recharge (sec)", kind: "num" },
         { field: "combinedRating", label: "Combined Rating", kind: "num" },
-        { field: "notes",          label: "Notes",           kind: "longtext" },
         { kind: "array-of-objects", field: "equipBonuses",   label: "Equip Bonuses",
           childFields: [
             { field: "type",   label: "Type",   kind: "text" },
@@ -6345,6 +6344,18 @@
         return il || value;
       }
       const statIdx = field.match(/^stats\[(\d+)\]\.value$/);
+      // Combat-power buff/debuff amounts scale like magnitude (reports #303-308:
+      // the card showed Celestial IL 3937 beside the stored Mythic 15%).
+      const ebAmt = isCombat && /^equipBonuses\[\d+\]\.amount$/.test(field);
+      if (ebAmt) {
+        const n = Number(value);
+        if (!Number.isFinite(n)) return value;
+        const anchor = mountPowerAnchorFactor(item) || 1;
+        let factor = mountRarityFactor(rarity) / anchor;
+        if (typeof mountPowerBolsterFactor === "function") factor = mountPowerBolsterFactor(state.mountBolster) * factor;
+        factor = Math.min(factor, 1.3125 / anchor);
+        return Math.abs(n) < 100 ? Math.round(n * factor * 10) / 10 : Math.round(n * factor);
+      }
       if (field === "magnitude" || field === "combinedRating" || (statIdx && isEquip)) {
         const n = Number(value);
         if (!Number.isFinite(n)) return value;
@@ -6527,11 +6538,12 @@
                   // Use the regular r() for subsequent child fields
                   const cfKind = cf.kind || "text";
                   if (entry[cf.field] === undefined) continue;
+                  const cv = _ccScaleMountPowerValue(item, dataType, path, entry[cf.field]);
                   secHtml += `<div class="cc-row" data-row="${_esc(path)}" style="align-items:flex-start;">
-                    <span class="cc-eb-desc cc-row-value" data-value="${_esc(entry[cf.field] == null ? "" : entry[cf.field])}">${
-                      entry[cf.field] == null || entry[cf.field] === ""
+                    <span class="cc-eb-desc cc-row-value" data-value="${_esc(cv == null ? "" : cv)}">${
+                      cv == null || cv === ""
                         ? '<span style="color:var(--text-mute);font-style:italic;">(empty)</span>'
-                        : _esc(entry[cf.field])
+                        : _esc(cv)
                     }</span>
                     <button class="cc-edit" data-edit="${_esc(path)}" data-kind="${_esc(cfKind)}" title="Edit ${_esc(cf.label)}">✎</button>
                   </div>`;
