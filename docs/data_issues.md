@@ -1,5 +1,22 @@
 # Data Issues To Investigate
 
+## OPEN Main Hand artifact modification menus for 6 classes (2026-10-07, PT2 gap 4-G)
+
+The optimizer will pick the Main Hand "Enhanced <power>" modification (+10% to one power) as part of the kit search.
+Only Bard, Warlock and Wizard have the menu in `classes.json` (`artifactModifications`, captured from the in-game
+"Artifact Modification Management" screen). **Barbarian, Cleric, Fighter, Paladin, Ranger and Rogue** have no
+capture, so those classes get no Main Hand pick (and no +10%) until it exists. Archives checked 2026-10-07: only the
+Warlock screen (docs/calibration/evidence/2026-06-07_warlock_main-hand-artifact-modification-management-1..6.png).
+Needed: one screenshot of that screen per class (every Enhanced option listed, with its tooltip).
+
+## OPEN COMP-DMG-1: your companion's own damage is not modeled (2026-10-07, PT2 gap 4-H)
+
+Toon Forge does not simulate the summoned companion's own attacks. So the Companion Enchantment's "+X% Companion
+Damage" half (combat summons) counts as zero, and companion choice is ranked only on what the companion gives YOU
+(powers, stats, enhancements), not on the damage it deals itself. The augment half (+X to each augment bonus stat)
+is counted. Modeling it needs attack data per companion (tooltips or combat logs) and would change how every
+companion ranks; not scheduled.
+
 ## OPEN flat-damage proc test (2026-10-06, PT2 Migration C lock C-B)
 - **Do flat-damage gear procs scale with your stats?** Counted at the tooltip number today (Daily Explosion 16,336, Explosive Force 13,225, Power at Any Cost 91,980). Test: on a dummy, Daily Explosion's number with and without a Power buff up. A bigger number = switch them to scaled.
 
