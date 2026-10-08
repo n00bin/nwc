@@ -72,18 +72,23 @@ needs an in-game screenshot showing where she comes from and her card.
 
 ## OPEN leads from reports 2026-09-28 (need in-game tooltip screenshots)
 
-- **Duergar Mercenary's Steel Rapier +1** (Main Hand, Bard, IL 2000) - reports #283/#284.
-  We only carry the IL 1900 base (gear id 4627); Pactblade +1 (id 156) shows the
-  ladder shape (1500/1500, CR 1800) but the rule is screenshots only. Asked the player.
-- **Dragonbone belt** (Belt, IL 1800, CR 1620, "Runes of Aggression" set, CritSev
-  1350 / Deflect 1350, DEX+3 INT+3) - report #281. Not in gear.json at all, and we have
-  no other item on that set. Asked the player for the tooltip with set text.
+- **Duergar Mercenary's Steel Rapier +1 - RESOLVED 2026-10-07** (reports #283/#284).
+  n00b could not find one; added as id 7447 from the Pactblade base -> +1 step (n00b
+  approved, R-5). Worked-out values recorded in the item's internal notes only.
+- **Dragonbone belt - RESOLVED 2026-10-07** (report #281). n00b confirmed it in game:
+  Dragonbone Belt (id 7448) + Dragonbone Charm (id 7449, Neck) + Dragonbone Blades
+  (artifact id 63) = 3-piece Runes of Aggression (5% Power / 5% CritSev / 5% outgoing
+  damage rune on Daily, 6 s).
+- **#232 "black earth rapier" - CLOSED 2026-10-07.** n00b checked both Avernus Bard
+  collection sets: no Bard main hand at IL 1150 has Combat Advantage / Critical Strike;
+  both off hands (Celestial Lute of Song, Pure Note of the Blessed Blade) match the
+  report exactly (862/862, CR 1035). Closed with a note inviting the exact name. Side
+  find: 6 IL-1150 Avernus weapons had CR 1015 (intake misread of 1,035) - all fixed.
 - **Portable Spelljammer Detector - RESOLVED 2026-09-28.** Player's IL 1500 tooltip
   values applied (n00b confirmed): +10% damage taken, +3.8% CritSev on use, base +3.8%
   Critical Severity, Deflect 1275. Old +12% / +7.5% row was wiki-derived; the higher
   rank it described has no known IL, so it was not kept. Report #285.
-- Still waiting on players: #232 (Black Earth/Earthen Rapier IL 1150 - which set?)
-  and #249 (second belt slot - where were they looking?).
+- Still waiting on players: #249 (second belt slot - where were they looking?).
 
 
 ## 33 powers hide a plain stat inside a fake "Passive" proc (found 2026-09-13)
