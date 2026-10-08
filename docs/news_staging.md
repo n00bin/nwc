@@ -16,6 +16,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - **Runes of Aggression set added.** Dragonbone Charm and Dragonbone Belt are now on the site, and with the Dragonbone Blades artifact they make the 3-piece Runes of Aggression set. Thanks to the player who reported the belt.
 - **Duergar Mercenary's Steel Rapier +1 added.** The item level 2,000 upgrade of the Bard rapier. Thanks to the player who reported it.
 - **Renewed Obsidian Infused Shirt and Pants added.** Item level 4,300, with the Infused Power set bonus (+5,700 Power when you wear both). Thanks to the player who reported them.
+- **Six Avernus weapons had the wrong combined rating.** The item level 1,150 Celestial and Blessed Blade weapons for Bard (Honed Tip, Lute of Song) and Rogue (Oathkeeper, Sure Edge, Point of Praise, Stylet of Mercy) showed 1,015 instead of 1,035.
 - **Tempest Gaze Ink (Depleted Advantage) is pants, not a shirt.** It now sits in the Pants slot with the correct Deflect of 2,126 (was 1,276). Thanks to the player who reported it.
 - **Mythallar Fragment was missing its Stamina Regeneration.** The top rank gives +15% Stamina Regeneration, which the site did not show or count. It does now.
 
