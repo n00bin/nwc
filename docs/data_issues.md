@@ -88,7 +88,7 @@ needs an in-game screenshot showing where she comes from and her card.
   values applied (n00b confirmed): +10% damage taken, +3.8% CritSev on use, base +3.8%
   Critical Severity, Deflect 1275. Old +12% / +7.5% row was wiki-derived; the higher
   rank it described has no known IL, so it was not kept. Report #285.
-- Still waiting on players: #249 (second belt slot - where were they looking?).
+- #249 (second belt slot) CLOSED 2026-10-07: Toon Forge has had three belt item slots since 2026-09-08.
 
 
 ## 33 powers hide a plain stat inside a fake "Passive" proc (found 2026-09-13)
