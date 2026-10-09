@@ -20,6 +20,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - **Tempest Gaze Ink (Depleted Advantage) is pants, not a shirt.** It now sits in the Pants slot with the correct Deflect of 2,126 (was 1,276). Thanks to the player who reported it.
 - **Mythallar Fragment was missing its Stamina Regeneration.** The top rank gives +15% Stamina Regeneration, which the site did not show or count. It does now.
 
+- **Healer optimizer no longer chases Recharge Speed (Toon Forge).** Heals are limited by the resource they cost (Divinity, Soul Weave and so on), not by cooldowns, but the healer optimizer was counting extra Recharge Speed as extra healing. That made it pick cooldown insignia bonuses like Tactician's Precision, Cavalry's Haste and Artificer's Enticement over healer bonuses like Mender's Covenant and Cautious Devotion. Recharge Speed now adds nothing to the healer score. Thanks to the player who reported it.
+
 - **Companion Enchantment item level follows its rarity (Toon Forge).** Your total item level always counted the Companion Enchantment as Celestial (1,800), whatever rarity you picked. It now counts the rarity you picked: for example, Mythic adds 1,500.
 
 ---

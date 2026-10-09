@@ -13691,7 +13691,7 @@
     // never disturbs the calibrated per-cast number; rho→∞ ⇒ regen-only,
     // rho→0 ⇒ pool-only. Default rho=1 (pool counts for sustained — n00b
     // 2026-06-22). rho is UNCALIBRATED — lock it to an in-game two-build test.
-    const HEAL_THROUGHPUT = { enabled: true, rho: 1.0, regenPoolBase: 1000, rechargeWeight: 0.5 };
+    const HEAL_THROUGHPUT = { enabled: true, rho: 1.0, regenPoolBase: 1000, rechargeWeight: 0 };
     function healThroughputFactor() {
       if (!HEAL_THROUGHPUT.enabled) return 1;
       const r = getEngineResult();
@@ -13704,15 +13704,14 @@
       const maxBoost = Math.max(0, (poolFlat - base) / base) + Math.max(0, poolPct / 100);
       const regen = Math.max(0, ((r.stats["Class Resource Regen"] && r.stats["Class Resource Regen"].finalPct) || 0) / 100);
       const rho = (HEAL_THROUGHPUT.rho != null) ? HEAL_THROUGHPUT.rho : 1.0;
-      // Cast cadence: Recharge Speed shortens heal-encounter cooldowns the
-      // same way it feeds the DPS rotation model — before 2026-07-01 it
-      // contributed NOTHING to the heal score (audit finding: two healer
-      // items differing only in Recharge Speed scored a flat tie).
-      // rechargeWeight is UNCALIBRATED (like rho): 0.5 = heals are half
-      // cooldown-bound, half resource/GCD-bound. Lock via an in-game
-      // two-build test when convenient.
+      // Cast cadence: rechargeWeight = 0 (HEAL-RECHARGE-1, n00b 2026-10-09).
+      // Heals are limited by the class resource they cost, not by cooldowns —
+      // the pool/regen terms above already model that limit, and Recharge
+      // Speed is on neither healer build method (Cap Stats list / Formula).
+      // The 2026-07-01 audit's 0.5 was uncalibrated and made the optimizer
+      // trade Mender's/Cautious bonuses + OH for ~98% Recharge on Lia.
       const recharge = Math.max(0, ((r.stats["Recharge Speed"] && r.stats["Recharge Speed"].finalPct) || 0) / 100);
-      const castRate = 1 + ((HEAL_THROUGHPUT.rechargeWeight != null) ? HEAL_THROUGHPUT.rechargeWeight : 0.5) * recharge;
+      const castRate = 1 + ((HEAL_THROUGHPUT.rechargeWeight != null) ? HEAL_THROUGHPUT.rechargeWeight : 0) * recharge;
       return castRate * ((1 + maxBoost) + rho * (1 + regen)) / (1 + rho);
     }
     function computeGearHealProcPerSec(pCrit) {
