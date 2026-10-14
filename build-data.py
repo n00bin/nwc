@@ -54,26 +54,26 @@ def build_header(source_name):
 # ---- POWER-TAGS-2 effect vocabulary validator (docs/plans/effect_vocabulary.md, step 2.1) ----
 # Any `fx` record outside the vocabulary FAILS the classes.json build loudly, so drift cannot
 # creep back in. Entries without `fx` are not checked (the old free-form blocks are records only).
-FX_COMMON = {"kind", "when", "gate", "requiresFeat", "requiresFeature", "requiresSlotted", "provisional", "missing", "note", "paragon", "slot"}
+FX_COMMON = {"kind", "when", "gate", "requiresFeat", "requiresFeature", "requiresSlotted", "provisional", "missing", "note", "paragon", "slot", "noScale"}   # noScale (OPT-READ-1): a flat number, not scaled by mount tier / bolster
 FX_KINDS = {
-    "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name", "scalesWith", "maxTargets", "pctOfTrigger", "flat", "pctMaxHp"},
+    "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name", "scalesWith", "maxTargets", "pctOfTrigger", "flat", "pctMaxHp"},   # count: repeated hits (Tidal Wave x3)
     "dot":      {"magnitude", "perTick", "ticks", "seconds", "stacking", "maxStacks", "damageType", "element", "name", "targets", "scalesWith"},
     "buff":     {"stats", "ratingStats", "scope", "seconds", "appliesTo", "stacks", "maxStacks", "radius", "name", "op", "role"},
-    "debuff":   {"stats", "personal", "appliesTo", "seconds", "maxStacks", "name", "targets"},
+    "debuff":   {"stats", "ratingStats", "personal", "appliesTo", "seconds", "maxStacks", "name", "targets"},   # ratingStats (OPT-READ-1 batch 4): enemy rating debuffs (Erratic Drift Globe)
     "stack":    {"resource", "op", "amount", "target", "max", "min", "seconds", "targets", "scalesWith", "name"},
     "resource": {"pool", "op", "amount", "pctOfBar", "seconds"},
     "cooldown": {"targets", "op", "seconds", "pct"},
     "proc":     {"effects", "name"},
-    "control":  {"control", "seconds", "perStack", "targets", "name"},
-    "heal":     {"magnitude", "pctMaxHp", "pctOfDamage", "pctOfHealed", "scope", "seconds", "perTick", "name"},
-    "shield":   {"magnitude", "pctMaxHp", "pctOfHealed", "scope", "seconds", "name"},
+    "control":  {"control", "seconds", "perStack", "targets", "name", "scope"},
+    "heal":     {"magnitude", "pctMaxHp", "pctOfDamage", "pctOfHealed", "scope", "seconds", "perTick", "name", "flat"},   # flat: a tooltip HP number (OPT-READ-1)
+    "shield":   {"magnitude", "pctMaxHp", "pctOfHealed", "scope", "seconds", "name", "flat"},
     "mod":      {"target", "field", "op", "value", "addFx"},
     "echo":     {"pct", "seconds", "deliver", "targets", "name"},
 }
 FX_EVENTS = {"cast", "hit", "crit", "dotTick", "kill", "combatStart", "periodic", "stackSpent", "stackReached",
              "stackApplied", "stackRemoved", "takeHit", "block", "deflect", "dodge", "buffApplied", "buffRefreshed", "buffEnded",
-             "caHit", "noncrit", "bigHit"}
-FX_WHEN = {"on", "from", "chance", "icdSeconds", "every", "resource", "amount", "name"}
+             "caHit", "noncrit", "bigHit", "healed"}   # healed (OPT-READ-1 batch 4): artifact passives that fire when you are healed; no healing model yet
+FX_WHEN = {"on", "from", "chance", "icdSeconds", "every", "resource", "amount", "name", "anchor"}   # anchor:"call" (OPT-READ-1): periodic cadence starts at the first call window
 FX_POOLS = {"actionPoints", "stamina", "divinity", "rage", "performance", "soulweave", "vengeance", "stealthMeter"}
 FX_STACKS = {"Chill", "Arcane Mastery", "Smolder", "Soul Spark", "Soul Investiture", "Curse", "Spell Twisting",
              "Stealth", "Sly Flourish", "Vengeance"}
@@ -140,6 +140,11 @@ def validate_callfx(data):
     for a in data if isinstance(data, list) else []:
         for i, rec in enumerate(a.get("callFx") or []):
             _fx_check_record(rec, f"artifact {a.get('name', '?')}.callFx[{i}]", errs, stacks)
+        for eb in (a.get("equipBonuses") or []):   # OPT-READ-1 batch 4: passives attached to the artifact, same shape as gear
+            for i, rec in enumerate(eb.get("fx") or []):
+                _fx_check_record(rec, f"artifact {a.get('name', '?')}/{eb.get('name', '?')}.fx[{i}]", errs, stacks)
+            if eb.get("fxStatus") is not None and eb["fxStatus"] not in ("moves", "stays", "timeline", "passive"):
+                errs.append(f"artifact {a.get('name', '?')}/{eb.get('name', '?')}: bad fxStatus {eb['fxStatus']!r}")
         if a.get("callStatus") is not None and a["callStatus"] not in ("W", "A", "L", "M", "R", "P", "N", "D"):
             errs.append(f"artifact {a.get('name', '?')}: bad callStatus {a['callStatus']!r}")
     return errs
@@ -151,6 +156,7 @@ def validate_proc_fx(data):
     for it in items:
         lists = [(eb, f"{it.get('name', '?')}/{eb.get('name', '?')}") for eb in (it.get("equipBonuses") or [])]
         if isinstance(it.get("procEffect"), dict): lists.append((it["procEffect"], f"{it.get('name', '?')}/procEffect"))
+        if isinstance(it.get("fx"), list): lists.append((it, f"{it.get('name', '?')}/fx"))   # OPT-READ-1: mount powers carry fx at the top level
         for holder, where in lists:
             for i, rec in enumerate(holder.get("fx") or []):
                 _fx_check_record(rec, f"{where}.fx[{i}]", errs, stacks)
@@ -176,7 +182,7 @@ def convert_file(source_name, output_name, var_name):
         return False
 
     # POWER-TAGS-2: the effect vocabulary is enforced on classes.json (step 2.1).
-    if source_name in ("classes.json", "artifacts.json", "gear.json", "overloads.json", "mount_insignia_bonuses.json", "companion_powers.json"):
+    if source_name in ("classes.json", "artifacts.json", "gear.json", "overloads.json", "mount_insignia_bonuses.json", "companion_powers.json", "enchants.json", "buffs.json", "mount_combat_powers.json", "mount_equip_powers.json"):   # OPT-READ-1: enchants, buffs, mount powers
         fx_errs = validate_fx(data) if source_name == "classes.json" else validate_callfx(data) if source_name == "artifacts.json" else validate_proc_fx(data)
         if fx_errs:
             print(f"  FAIL  {source_name}: {len(fx_errs)} effect record(s) outside the vocabulary - output left unchanged")

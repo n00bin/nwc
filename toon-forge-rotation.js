@@ -142,7 +142,8 @@
     }
 
     // Spark layer
-    let sparks = 0, sparkTimeSum = 0, sparkMax = 0, scorchCasts = 0, sparksSpentTotal = 0;
+    // a Hellbringer regens up to 6 sparks out of combat, so every fight opens with 6 banked (n00b 2026-10-14)
+    let sparks = hasSparks ? 6 : 0, sparkTimeSum = 0, sparkMax = sparks, scorchCasts = 0, sparksSpentTotal = 0;
     function addSparks(n) { if (!hasSparks || !(n > 0)) return; sparks = Math.min(30, sparks + n); if (sparks > sparkMax) sparkMax = sparks; }
 
     // Puppet / Investiture layer
@@ -588,6 +589,7 @@
       if (key.indexOf("buff:") === 0) return buffUp(key.slice(5)) ? 1 : 0;
       if (key.indexOf("pick:") === 0) { const ps = key.split(":"); if (picks[ps[1]] == null && pickValues[ps[1]]) return 1 / pickValues[ps[1]].length; return picks[ps[1]] === ps[2] ? 1 : 0; }
       if (key.indexOf("quickplay:") === 0) return quickplay.indexOf(key.slice(10)) >= 0 ? 1 : 0;
+      if (key.indexOf("enemyType:") === 0) { const et = input.enemyTypes || []; const want = key.slice(10); return (et.indexOf(want) >= 0 || (want === "Fiend" && (et.indexOf("Demon") >= 0 || et.indexOf("Devil") >= 0))) ? 1 : 0; }   // OPT-READ-1: ticked enemy types
       if (key === "enemyHealthPct") return enemyHp;
       if (key === "enemyCount") return num(input.enemyCount, 1);
       if (key === "otherEnemies") return Math.max(0, num(input.enemyCount, 1) - 1);
@@ -1236,12 +1238,17 @@
       (c.fx || []).filter(function (r) { return recOn(r, ow.obj); }).forEach(function (r) { runRecord(ow, r, {}, t); });
       castCount[c.name] = (castCount[c.name] || 0) + 1;
       pushTimeline(c.name, "other", 0, label);
+      fireCast(ow);   // OPT-READ-1: the artifact / mount power is a cast too (Opportunism: when you use an artifact power)
       callTrigger(trig);
     }
     function openWindow() {
       const len = num(CW.seconds, 10);
       windows.push([t, t + len]);
       pushTimeline("Call window", "other", 0, len + " s");
+      // OPT-READ-1 (n00b 2026-10-13): belt items are used inside the artifact call; `when.anchor:"call"` starts their
+      // cadence at the first window (a 30 s item then lands once in the call and once between calls)
+      // (n00b: the belt item follows the mount power) -> it lands 1 s after the window opens, once artifact + mount have fired
+      listeners.forEach(function (L) { const w = L.rec.when; if (w && w.on === "periodic" && w.anchor === "call" && L.nextAt == null) L.nextAt = t + 1; });
       pendArt = !!CALL.artifact; pendMount = !!CALL.mount;
       const busy = callPending();
       while (nextWindowAt <= t) nextWindowAt += Math.max(1, num(CW.every, 60));
@@ -1300,7 +1307,7 @@
       for (let i = 0; i < listeners.length; i++) {
         const L = listeners[i], w = L.rec.when; if (w.on !== "periodic") continue;
         if (w.name && !buffUp(w.name)) continue;
-        if (L.nextAt == null) L.nextAt = num(w.every, 1);
+        if (L.nextAt == null) { if (w.anchor === "call" && CW) continue; L.nextAt = num(w.every, 1); }   // call-anchored: waits for the first window
         if (t >= L.nextAt) { L.nextAt = t + num(w.every, 1); if (gateFrac(L.rec.gate) > 0) runPeriodic(L); }
       }
       if (CW && nextWindowAt == null && (firstCycleEnd != null || t >= num(CW.every, 60))) nextWindowAt = firstCycleEnd != null ? firstCycleEnd : t;

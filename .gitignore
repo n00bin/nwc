@@ -64,6 +64,9 @@ docs/best_build_warlock_dps_bis.link.txt
 
 # local-only test launcher (conditional-uptime preview)
 _uptime_test.html
+
+# local-only builds-monitor dashboard — watch shared builds roll in for the meta tracker; not a public page
+builds-monitor.html
 scripts/_*.py
 scripts/_*.txt
 scripts/_*.json
@@ -88,3 +91,6 @@ chrome-headless-shell/
 
 # Cached external reference sheets (community data) — keep local, do not republish; README is tracked
 docs/reference/sheets/*.csv
+
+# Scraped NW Hub reference content (local only — do not republish)
+docs/reference/nw-hub/

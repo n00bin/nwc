@@ -3227,7 +3227,7 @@
   <div class="hero">
     <span class="local-preview-badge" id="local-preview-badge" style="display:none;">🔧 Local Preview · showcasing functionality &amp; features coming soon</span>
     <span class="save-status" id="save-status">Auto-saved · just now</span>
-    <h1>Toon Forge<span class="accent">— build your character, see what hits</span><span class="badge badge-release" title="Version 1.0 — the stat engine is calibrated against in-game values. Spot something off? Use the ✎ pencil to fix it.">v1.0</span></h1>
+    <h1>Toon Forge<span class="accent">— build your character, see what hits</span><span class="badge badge-release" id="tf-version-badge" title="Version 2.0 (2026-10-14) — the fight simulator and the new optimizer: it picks your powers, runs the fight, and finishes in about 15 minutes. Spot something off? Use the ✎ pencil to fix it.">v2.0</span></h1>
     <p>A friendly character builder for Neverwinter. Pick your role, equip your gear, and watch the build come together — no spreadsheet skills required.</p>
     <div class="hero-correction-callout" role="note">
       <span class="hcc-icon">✎</span>
@@ -3269,7 +3269,7 @@
       <!-- Premium (paid) group — revealed only when running locally; the optimizer
            and Featured Builds buttons are injected into the slots below. Hidden on
            the live site (paid features not launched yet). -->
-      <div id="tf-featured-group" style="display:none;align-items:center;gap:0.4rem;padding:0.2rem 0.55rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
+      <div id="tf-featured-group" style="display:none;align-items:center;flex-wrap:wrap;max-width:100%;box-sizing:border-box;gap:0.4rem;padding:0.2rem 0.55rem;border:1px solid var(--amber);border-radius:9px;background:rgba(212,160,23,0.08);">
         <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.05em;color:var(--amber);text-transform:uppercase;white-space:nowrap;">✨ Premium</span>
         <span id="featured-optimizer-slot" style="display:contents;"></span>
         <span id="featured-builds-slot" style="display:contents;"></span>
@@ -5452,8 +5452,29 @@
         { field: "category", allLabel: "All types" },
         // Stat family: Fortitude, Dominance, Brutality, ... — the "of X" part.
         { field: "statTemplate", allLabel: "All stats" }
+      ],
+      // Enchantments: filter by the stat the enchant gives IN THIS SLOT
+      // (n00b 2026-10-14: "for the enchantments we need a filter by stat").
+      // Gemstones carry a different stat per Offense / Defense / Utility
+      // sub-slot, so the picker's slot type decides which map is read;
+      // Combat / Bonus enchants (and the companion enchant picker, which has
+      // no slot type) list every stat they carry. `multi`: an enchant with
+      // 2-3 stats in a slot matches any of them.
+      enchant: [
+        { field: "_stat", allLabel: "All stats", multi: true,
+          get: (it) => enchantStatKeysForSlot(it, _pickerState && _pickerState.enchantSlotType) }
       ]
     };
+    function enchantStatKeysForSlot(e, slotType) {
+      if (!e) return [];
+      const keys = new Set();
+      const take = (m) => { for (const k in (m || {})) if (typeof m[k] === "number" && m[k] !== 0) keys.add(k); };
+      const sub = (slotType === "offense" || slotType === "defense" || slotType === "utility") ? slotType : null;
+      if (e.universal) { if (sub) take(e.universal[sub]); else for (const k in e.universal) take(e.universal[k]); }
+      take(e.ratingStats); take(e.percentStats);
+      for (const eb of (e.equipBonuses || [])) if (eb && eb.stat && typeof eb.amount === "number" && eb.amount !== 0) keys.add(eb.stat);
+      return Array.from(keys);
+    }
     // Per-dataType registry for user-added item stores: how to load/save the
     // localStorage list and how to clear a removed item out of the current
     // build state. Powers the remove-✕ on __userAdded picker rows — players
@@ -5516,11 +5537,13 @@
       const _pickEnchScale = (it) =>
         (_pickerState.dataType === "enchant" && _pickerState.enchTier && _pickerState.enchTier !== "Celestial")
           ? enchantAtRank(it, _pickerState.enchTier) : it;
+      // A filter's value may be a list (multi: an enchant's stats in this slot) — the item matches if any entry does.
+      const _pfMatch = (val, sel) => Array.isArray(val) ? val.some(v => String(v) === sel) : String(val) === sel;
       const items = _pickerState.items.filter(it => {
         for (const pf of pickerFilters) {
           const sel = filterVals[pf.field];
           const val = pf.get ? pf.get(it) : it[pf.field];   // derived or raw field
-          if (sel && String(val) !== sel) return false;
+          if (sel && !_pfMatch(val, sel)) return false;
         }
         if (!f) return true;
         const r = _pickerState.render(_pickEnchScale(it));
@@ -5550,7 +5573,8 @@
         const selects = [];
         for (const pf of pickerFilters) {
           const getVal = (it) => pf.get ? pf.get(it) : it[pf.field];
-          const baseVals = Array.from(new Set(_pickerState.items.map(getVal).filter(v => v != null)));
+          const _flat = (arr) => arr.reduce((a, v) => a.concat(Array.isArray(v) ? v : [v]), []);   // multi filters list every stat
+          const baseVals = Array.from(new Set(_flat(_pickerState.items.map(getVal)).filter(v => v != null)));
           if (baseVals.length < 2) continue; // nothing to filter on (e.g. a single-category slot)
           // Cascade: this dropdown's options come from items that pass the
           // OTHER dropdowns' selections — pick Stat first and Type only
@@ -5561,12 +5585,12 @@
             for (const o of pickerFilters) {
               if (o === pf) continue;
               const sel = filterVals[o.field];
-              if (sel && String(o.get ? o.get(it) : it[o.field]) !== sel) return false;
+              if (sel && !_pfMatch(o.get ? o.get(it) : it[o.field], sel)) return false;
             }
             return true;
           });
           const cur = filterVals[pf.field] || "";
-          const vals = Array.from(new Set(pool.map(getVal).filter(v => v != null)));
+          const vals = Array.from(new Set(_flat(pool.map(getVal)).filter(v => v != null)));
           // Defensive: never hide the option the user currently has selected.
           if (cur && !vals.some(v => String(v) === cur)) vals.push(cur);
           vals.sort(pf.numeric ? (a, b) => a - b : (a, b) => String(a).localeCompare(String(b)));
@@ -5587,7 +5611,9 @@
             ${INS_TIERS.map(t => `<option value="${t}"${t === curInsTier ? " selected" : ""}>${t}</option>`).join("")}
           </select>`);
         }
-        if (selects.length) filterBarHTML = `<div class="picker-collar-filters">${selects.join("")}</div>`;
+        if (selects.length) filterBarHTML = (_pickerState.dataType === "enchant")
+          ? `<div class="picker-collar-filters" style="align-items:center;gap:0.4rem;"><span style="font-size:0.78rem;opacity:0.85;">Stat:</span>${selects.join("")}</div>`   // matches the "Tier you own:" row above it
+          : `<div class="picker-collar-filters">${selects.join("")}</div>`;
       }
       if (isGearPicker) {
         html += `<button id="picker-add-missing" class="picker-add-missing-btn" type="button">
@@ -6361,7 +6387,10 @@
         if (!Number.isFinite(n)) return value;
         const anchor = mountPowerAnchorFactor(item) || 1;
         let factor = mountRarityFactor(rarity) / anchor;
-        if (isCombat && typeof mountPowerBolsterFactor === "function") {
+        // EQUIP-BOLSTER-1 (2026-10-14): equip powers scale with the player's bolster
+        // too (n00b's sheet: Rapid Accuracy 5,062 / CR 3,038 at IL 3,375 = Mythic x
+        // 1.125), capped at the Celestial value like combat powers.
+        if (typeof mountPowerBolsterFactor === "function") {
           factor = mountPowerBolsterFactor(state.mountBolster) * factor;
         }
         factor = Math.min(factor, 1.3125 / anchor);
@@ -8195,10 +8224,11 @@
     function renderEquipPower(p) {
       // Display at the user's selected rarity (anchor-aware): IL via the
       // verified rarity table, stats/CR by selected÷anchor factor — matches
-      // exactly what the engine will apply. Not bolster-scaled (equip powers
-      // scale with rarity only, Decision 3).
+      // exactly what the engine will apply. Bolster-scaled since EQUIP-BOLSTER-1
+      // (2026-10-14; Decision 3's "rarity only" was wrong: n00b's sheet reads
+      // Rapid Accuracy 5,062 / CR 3,038 at 125% bolster), capped at Celestial.
       const _eqAnchor = mountPowerAnchorFactor(p);
-      const _eqFactor = mountRarityFactor(state.activeEquipPowerRarity || "Mythic") / _eqAnchor;
+      const _eqFactor = mountRarityFactor(state.activeEquipPowerRarity || "Mythic") * mountPowerBolsterFactor(state.mountBolster) / _eqAnchor;
       const _eqScale = (v) => Math.min((v || 0) * _eqFactor, (v || 0) * (1.3125 / _eqAnchor));
       // Display IL matches the in-game per-power tooltip (round-half-down, so
       // 3937.5 shows as 3937 not 3938). TIL summation stays on the unrounded value.
@@ -12433,7 +12463,11 @@
     //   100% bolster:               factor = 0.89
     //    50% bolster:               factor = 0.67
     //     0% bolster:               factor = 0.44
-    const MOUNT_POWER_CALIBRATION_BOLSTER_PCT = 125;
+    // OPT-READ-1 2026-10-13: the 2026-05-20 sweep re-baselined every combat power to the Mythic 100%-bolster reading
+    // (notes: "Re-verified at Mythic / 125% bolster showed IL 3,375 / 16.9% ... corrected to baseline (/ 1.125)"), and
+    // n00b's 2026-10-13 capture reads Resonating Screech 15% at IL 3,000 (100% bolster) = the stored value exactly.
+    // The anchor constant had stayed at 125, under-scaling every player above 100% bolster (15% shown for 16.9%).
+    const MOUNT_POWER_CALIBRATION_BOLSTER_PCT = 100;
     function mountPowerBolsterFactor(bolsterPct) {
       const b = (bolsterPct == null ? 100 : +bolsterPct);
       const anchor = 1 + MOUNT_POWER_CALIBRATION_BOLSTER_PCT / 100;
@@ -13046,7 +13080,8 @@
         if (_cp) {
           let _pct = 0;
           for (const eb of (_cp.equipBonuses || [])) {
-            if (eb && eb.scope === "enemy" && (eb.stat === "Enemy Dmg Taken" || eb.stat === "Dmg Debuff")) {
+            // OPT-READ-1 (2026-10-13): "Dmg Debuff" is the enemy's OUTGOING damage (defensive) - it never amplified your hits
+            if (eb && eb.scope === "enemy" && eb.stat === "Enemy Dmg Taken") {
               _pct = Math.max(_pct, (eb.amount || 0) / mountPowerAnchorFactor(_cp));
             }
           }
@@ -14030,14 +14065,14 @@
     function classTabEnabled() { if (typeof pt2PanelEnabled === "function" && pt2PanelEnabled()) return false; return TF_CLASS_TAB_LIVE || tfIsLocal(); }   // PT2-9: off wherever the PT2 panel is on
     // POWER-TAGS-2 (docs/plans/power_tags_2_plan.md, step 0.2): new panel / simulator behaviour
     // ships behind these, local-only until n00b checks it and says go. Unused until step 1.2.
-    const TF_PT2_PANEL_LIVE = false;
-    const TF_PT2_SIM_LIVE = false;
+    const TF_PT2_PANEL_LIVE = true;   // GO-LIVE 2026-10-14 (n00b: "go live")
+    const TF_PT2_SIM_LIVE = true;   // GO-LIVE 2026-10-14 (n00b: "go live")
     function pt2PanelEnabled() { if (typeof window.__pt2FlagOverride === "boolean") return window.__pt2FlagOverride; return TF_PT2_PANEL_LIVE || tfIsLocal(); }   // override = test hook only
     function pt2SimEnabled() { return TF_PT2_SIM_LIVE || tfIsLocal(); }
     // ===== Rotation simulator (ROT-1 / ROT-2, n00b 2026-09-11) =====
     // LOCAL ONLY until n00b flips it: the live site keeps the rate model for both
     // the display and the optimizer's scoring.
-    const TF_ROTATION_SIM_LIVE = false;
+    const TF_ROTATION_SIM_LIVE = true;   // GO-LIVE 2026-10-14 (n00b: "go live")
     function rotationSimEnabled() { return (TF_ROTATION_SIM_LIVE || tfIsLocal()) && typeof TF_ROTATION_SIM !== "undefined"; }
     window.rotationSimEnabled = rotationSimEnabled;
     // Build the simulator input from the build. Reads only data (classes.json blocks)
@@ -14064,6 +14099,7 @@
         fightSeconds: pt2UsesFxSim() ? PT2_SIM_FIGHT_SECONDS : ((typeof state.timeInCombatSec === "number") ? state.timeInCombatSec : 120), dt: 0.1,
         rechargePct: rsi, apGainPct: apg, apPerSec: 40,
         cadence: { daily: tfCadence("daily"), artifact: tfCadence("artifact"), mountpower: tfCadence("mountpower") },
+        enemyTypes: Array.isArray(state.enemyTypes) ? state.enemyTypes.slice() : [],   // OPT-READ-1: gates like enemyType:Fiend
         scorchAtSparks: (typeof state.scorchAtSparks === "number") ? state.scorchAtSparks : 18,
         powers: { atWill: pick("atWill", state.slottedAtWills), encounter: pick("encounter", state.slottedEncounters), daily: pick("daily", state.slottedDailies) },
         scorch: scorchM ? Object.assign({ castSeconds: scorchM.sparkSpend.castSeconds || 1 }, scorchM.sparkSpend) : null,
@@ -14243,6 +14279,22 @@
     // PT2 step 2.5: the mount combat power as timed records - the same stored numbers today's average uses
     // (enemy debuff = the larger of the two debuff lines / anchor; self buffs raw; its own hit = raw magnitude), 10 s.
     function pt2MountCallFx(cp) {
+      // OPT-READ-1 batch 3b (2026-10-13): the data carries every effect as fx at its stored anchor; scale every number
+      // to the selected rarity (buff percentages scale with tier too - Tenser's 11.3% at IL 2250 vs 15% at Mythic).
+      // scope "allies" = others only (not counted for you); a role-tagged record counts for that objective only.
+      if (Array.isArray(cp.fx) && cp.fx.length) {
+        // same rule as the tooltip card (_scaleCombat): rarity x the player's mount bolster, capped at the Celestial value
+        const _an = mountPowerAnchorFactor(cp) || 1;
+        const sc = Math.min(mountRarityFactor(state.activeCombatPowerRarity || "Mythic") * mountPowerBolsterFactor(state.mountBolster) / _an, 1.3125 / _an);
+        const role = String(state.role || "dps").toLowerCase();
+        const scaleRec = r => { const c = Object.assign({}, r);
+          if (c.noScale) return c;   // a flat number (Radiant Weapon's 2% per stack is the same at every tier)
+          for (const k of ["magnitude", "perTick", "pctMaxHp"]) if (typeof c[k] === "number") c[k] = c[k] * sc;
+          for (const m of ["stats", "ratingStats"]) if (c[m]) { const o = {}; for (const k in c[m]) o[k] = c[m][k] * sc; c[m] = o; }
+          if (c.effects) c.effects = c.effects.map(scaleRec);
+          return c; };
+        return cp.fx.filter(r => r && r.scope !== "allies" && !(r.role && String(r.role).toLowerCase() !== role)).map(r => scaleRec(Object.assign({}, r, { name: r.name || cp.name })));
+      }
       const fx = [];
       if (cp.magnitude > 0) fx.push({ kind: "hit", magnitude: cp.magnitude, targets: "single", name: cp.name });
       let pct = 0;
@@ -14277,6 +14329,13 @@
         if (!nm) continue; const o = (typeof findOverloadByName === "function") ? findOverloadByName(nm) : null; if (!o) continue;
         for (const eb of (o.equipBonuses || [])) if (eb && eb.fxStatus === "moves" && Array.isArray(eb.fx)) take((eb.name || o.name) + " (" + o.name + ")", eb.fx);
       }
+      // OPT-READ-1 batch 4 (2026-10-14): passives attached to an equipped artifact (Dragon's Marks on encounter use,
+      // Flask of Brewing at combat start, Thayan Book on dodge / block), any of the four slots; the call itself stays on pt2CallInput
+      for (const slotName of ["Primary", "Secondary 1", "Secondary 2", "Secondary 3"]) {
+        const nm = state.artifacts && state.artifacts[slotName]; if (!nm) continue;
+        const art = findArtifactByName(nm, (state.artifactIL || {})[slotName]); if (!art) continue;
+        for (const eb of (art.equipBonuses || [])) if (eb && eb.fxStatus === "moves" && Array.isArray(eb.fx)) take((eb.name || art.name) + " (artifact passive)", eb.fx);
+      }
       const rarities = Array.isArray(state.activeCompRarities) ? state.activeCompRarities : [];
       for (let i = 0; i < (state.activeComps || []).length; i++) {
         const nm = state.activeComps[i]; if (!nm) continue;
@@ -14295,7 +14354,64 @@
           return c2; };
         take(pw.name + " (" + nm + ")", pe.fx.map(scale));
       }
+      // OPT-READ-1 batch 1 (2026-10-13): combat enchants' procs / DoTs / stacks, scaled to the slot's rank
+      const enchSlots = [[(state.enchants || {}).combat, "Combat"]];
+      if (typeof M335_DUAL_COMBAT !== "undefined" && M335_DUAL_COMBAT) enchSlots.push([(state.enchants || {}).combat2, "Combat 2"]);
+      // OPT-READ-1 batch 3b: the active mount equip power's procs (Celestial Luck, The High Ground, Seeing Red ...)
+      if (state.activeEquipPower != null && typeof findEquipPowerById === "function") {
+        const ep = findEquipPowerById(state.activeEquipPower);
+        if (ep && ep.fxStatus === "moves" && Array.isArray(ep.fx)) {
+          // EQUIP-BOLSTER-1 (2026-10-14): rarity x bolster, capped at the Celestial value (Rejuvenation reads 13.5% at Mythic / 125%)
+          const sc = Math.min(mountRarityFactor(state.activeEquipPowerRarity || "Mythic") * mountPowerBolsterFactor(state.mountBolster), 1.3125) / (mountPowerAnchorFactor(ep) || 1);
+          const scaleRec = r => { const c = Object.assign({}, r);
+            for (const k of ["magnitude", "perTick", "pctMaxHp"]) if (typeof c[k] === "number") c[k] = c[k] * sc;
+            for (const m of ["stats", "ratingStats"]) if (c[m]) { const o = {}; for (const k in c[m]) o[k] = c[m][k] * sc; c[m] = o; }
+            if (c.effects) c.effects = c.effects.map(scaleRec);
+            return c; };
+          take(ep.name + " (mount equip power)", ep.fx.map(scaleRec));
+        }
+      }
+      // OPT-READ-1 batch 3a: active insignia bonuses with fx (Enchanter's Hex, Combatant's Maneuver), once per bonus
+      const seenIb = {};
+      for (const slot of (state.stable || [])) {
+        if (!slot || !slot.desiredBonus || typeof findBonusById !== "function") continue;
+        const ib = findBonusById(slot.desiredBonus); if (!ib || seenIb[ib.name]) continue;
+        const ibm = (typeof findMountByName === "function") ? findMountByName(slot.mount) : null;
+        if (typeof bonusActive === "function" && !bonusActive(ib.requiredInsignias, slottedCategoriesForRow(slot), ibm ? ibm.insigniaSlots : null)) continue;
+        seenIb[ib.name] = true;
+        for (const eb of (ib.equipBonuses || [])) if (eb && eb.fxStatus === "moves" && Array.isArray(eb.fx)) take((eb.name || ib.name) + " (insignia bonus)", eb.fx);
+      }
+      for (const nm of (state.buffs || [])) {   // OPT-READ-1 batch 2: belt items, food, potions with fx
+        const b = nm && typeof findBuffByName === "function" ? findBuffByName(nm) : null; if (!b) continue;
+        for (const eb of (b.equipBonuses || [])) if (eb && eb.fxStatus === "moves" && Array.isArray(eb.fx)) take((eb.name || b.name) + " (" + b.name + ")", eb.fx);
+      }
+      for (const pr of enchSlots) {
+        const nm = pr[0]; if (!nm || typeof findEnchantByName !== "function") continue;
+        const e = findEnchantByName(nm); if (!e) continue;
+        const sc = enchFxRankScale(e, (state.enchantRarity || {})[pr[1]]);
+        for (const eb of (e.equipBonuses || [])) {
+          if (!eb || eb.fxStatus !== "moves" || !Array.isArray(eb.fx)) continue;
+          take((eb.name || e.name) + " (" + e.name + ")", sc === 1 ? eb.fx : eb.fx.map(r => scaleFxNumbers(r, sc)));
+        }
+      }
       return { owners: out, stackRules: stackRules };
+    }
+    // OPT-READ-1: fx records carry Celestial numbers; a lower rank scales them like the enchant's own percentStats
+    // ladder (first stat the ladder shares with Celestial), or rank/6 when there is no ladder.
+    function enchFxRankScale(e, rank) {
+      const T = { Uncommon: 1, Rare: 2, Epic: 3, Legendary: 4, Mythic: 5, Celestial: 6 };
+      if (!rank || !T[rank] || rank === "Celestial") return 1;
+      const R = e.rarities && e.rarities[rank], C = e.rarities && e.rarities.Celestial;
+      if (R && R.percentStats && C && C.percentStats) for (const k in C.percentStats) if (typeof R.percentStats[k] === "number" && C.percentStats[k]) return R.percentStats[k] / C.percentStats[k];
+      return T[rank] / 6;
+    }
+    function scaleFxNumbers(r, sc) {
+      const c = Object.assign({}, r);
+      for (const k of ["magnitude", "perTick", "pctMaxHp", "pctOfTrigger", "flat"]) if (typeof c[k] === "number") c[k] = c[k] * sc;
+      for (const m of ["stats", "ratingStats"]) if (c[m]) { const o = {}; for (const k in c[m]) o[k] = c[m][k] * sc; c[m] = o; }
+      if (c.effects) c.effects = c.effects.map(x => scaleFxNumbers(x, sc));
+      if (c.addFx) c.addFx = c.addFx.map(x => scaleFxNumbers(x, sc));
+      return c;
     }
     function pt2CallInput(er) {
       const art = (state.artifacts && state.artifacts.Primary) ? findArtifactByName(state.artifacts.Primary, (state.artifactIL || {}).Primary) : null;
@@ -14487,7 +14603,7 @@
       let shape = _pt2ShapeStore.get(key);
       if (shape) { window.__pt2ShapeStats.reused++; return shape; }
       shape = pt2RecordShape(su, choices); window.__pt2ShapeStats.fresh++;
-      if (_pt2ShapeStore.size >= 1500) _pt2ShapeStore.delete(_pt2ShapeStore.keys().next().value);
+      if (_pt2ShapeStore.size >= 400) _pt2ShapeStore.delete(_pt2ShapeStore.keys().next().value);   // memory: a long run reached 3 GB at 1,500
       _pt2ShapeStore.set(key, shape);
       return shape;
     }
@@ -14926,7 +15042,7 @@
     function enemyTypeChoices() {
       const set = new Set();
       const scan = arr => (arr || []).forEach(it => (it.equipBonuses || []).forEach(eb => { if (eb && Array.isArray(eb.zones)) eb.zones.forEach(z => { if (/^vs /.test(z)) set.add(z.replace(/^vs /, "")); }); }));
-      scan(typeof GEAR_DATA !== "undefined" ? GEAR_DATA : []); scan(typeof OVERLOADS_DATA !== "undefined" ? OVERLOADS_DATA : []);
+      scan(typeof GEAR_DATA !== "undefined" ? GEAR_DATA : []); scan(typeof OVERLOADS_DATA !== "undefined" ? OVERLOADS_DATA : []); scan(typeof BUFFS_DATA !== "undefined" ? BUFFS_DATA : []);   // OPT-READ-1: scrolls / Wondrous dragons
       return [...set].sort();
     }
     function renderEnemyTypes() {
@@ -15698,10 +15814,16 @@
       if (s.activeEquipPower) {
         const ep = findEquipPowerById(s.activeEquipPower);
         if (ep) {
-          // Rarity scaling (Decision 3 / R-only row): rarity YES, bolster NO.
+          // Rarity x bolster, capped at the Celestial value (every use below caps at
+          // 1.3125 / anchor). EQUIP-BOLSTER-1 (2026-10-14) replaced Decision 3's
+          // "rarity YES, bolster NO": n00b's own sheet at 125% bolster reads Rapid
+          // Accuracy 5,062 / CR 3,038 (Mythic 4,500 / 2,700 x 1.125) and Rejuvenation
+          // 13.5% (12% x 1.125). The 2026-05-11 Pack Tactics check above could not see
+          // this: a Celestial-anchored power sits at the cap, where bolster adds nothing.
           // Decision 11: read rarity from state.activeEquipPowerRarity, not per-slot mountRarity.
           const _epAnchorFactor = mountPowerAnchorFactor(ep);
-          const _rarityFactor = mountRarityFactor(s.activeEquipPowerRarity || "Mythic") / _epAnchorFactor;
+          const _epBolsterFactor = (typeof mountPowerBolsterFactor === "function") ? mountPowerBolsterFactor(s.mountBolster) : 1;
+          const _rarityFactor = mountRarityFactor(s.activeEquipPowerRarity || "Mythic") * _epBolsterFactor / _epAnchorFactor;
           const ratingStats = {};
           const percentStats = {};
           for (const st of (ep.stats || [])) {
@@ -15745,8 +15867,8 @@
           // equipEffect: single triggered effect (e.g. Quick Action +2.4%
           // AP Gain on Daily Power use). Routes to percentStats by default,
           // ratingStats only when unit === "rating".
-          // Decision 10 / R-only row: amount scales with rarity, not bolster.
-          if (ep.equipEffect && ep.equipEffect.stat) {
+          // Scales with rarity x bolster (EQUIP-BOLSTER-1), capped at Celestial.
+          if (ep.equipEffect && ep.equipEffect.stat && !(window.__pt2SimOwnsProcs && ep.fxStatus === "moves")) {   // OPT-READ-1: the simulator fires it
             const ef = ep.equipEffect;
             const _scaledAmount = Math.min((ef.amount || 0) * _rarityFactor, (ef.amount || 0) * (1.3125 / _epAnchorFactor));
             const entry = {
@@ -15763,7 +15885,7 @@
 
           // stackingBuff: perStack × maxStacks per stat, normalized and
           // routed by the >100 heuristic above.
-          // Decision 10 / R-only row: perStack scales with rarity, not bolster.
+          // perStack scales with rarity x bolster (EQUIP-BOLSTER-1), capped at Celestial.
           //
           // Note: Ferocity (id 45) also has a partyEffects array — that's
           // the ally version and runs in a different loop. No double-count.
@@ -15785,7 +15907,7 @@
             const sbPercent = {};
             for (const [rawKey, perStack] of Object.entries(sb.perStack)) {
               const stat = _normalizeMountProcStat(rawKey);
-              // flatPerStack: per-stack value does NOT scale with rarity/bolster
+              // flatPerStack: per-stack value does NOT scale with rarity or bolster
               // (Providence's 2% is identical at Mythic and Celestial IL 3,937,
               // verified in-game 2026-06-23 — only its heal % and CR scale).
               // Ferocity OMITS this flag, so its 1.6% still scales to 2.1% at
@@ -15949,7 +16071,8 @@
           return m ? parseFloat(m[1].replace(/,/g, "")) : 0;
         };
         let loserName = rivalName, winnerName = bonusName;
-        if (overwrites(rival) && !overwrites(b)) { winnerName = rivalName; loserName = bonusName; }
+        if (b.exclusiveRank != null && rival.exclusiveRank != null) { if (rival.exclusiveRank > b.exclusiveRank) { winnerName = rivalName; loserName = bonusName; } }   // OPT-READ-1: data decides
+        else if (overwrites(rival) && !overwrites(b)) { winnerName = rivalName; loserName = bonusName; }
         else if (overwrites(rival) === overwrites(b) && firstNum(rival) > firstNum(b)) { winnerName = rivalName; loserName = bonusName; }
         exclusivityLoser[loserName] = winnerName;
       }
@@ -16029,44 +16152,7 @@
             conditional: isConditional,
             ratingStats, percentStats
           });
-          // Free-text "X to all of your ratings for Y seconds" bonuses (e.g.
-          // Cavalry's Alarm/Warning) carry no `stats`, so the line above adds
-          // nothing and the optimizer would pick them as do-nothings. Model
-          // them uptime-weighted: amount × (duration / practical mount-power
-          // cycle) spread to every rating stat. These only fire when you
-          // activate a Mount Combat Power, so they are CONDITIONAL
-          // (isConditional is true for these — they carry a `condition`): the
-          // standing-around base stat panel must NOT include them; they show
-          // only under "Show Conditional". (This matches the boon uptime
-          // model: scale the amount by uptime AND flag conditional.)
-          //
-          // Uptime: the buff window is `_dur`s and the EARLIEST recharge is
-          // ~60s, but you can't always fire the mount combat power exactly on
-          // that 60s floor — there's often a wait, though not a long one
-          // (n00b 2026-06-23). So model the PRACTICAL cycle at ~80s (pressed on
-          // cooldown but missing some windows): 20s/80s = 25%, between the
-          // theoretical 33% (every 60s) and a lazy 17% (every 120s). Tune
-          // _MOUNT_POWER_CYCLE to dial it.
-          if ((!bonus.stats || !bonus.stats.length) && bonus.effectText && typeof expandCR === "function") {
-            const _m = bonus.effectText.match(/(\d[\d,]*)\s+to all (?:of your )?ratings for (\d+)\s*second/i);
-            if (_m && _pt2Call && /mount combat power/i.test(bonus.condition || bonus.effectText)) {
-              const _a = parseInt(_m[1].replace(/,/g, ""), 10) * mult, _rs = {};
-              ["Power", "Accuracy", "Combat Advantage", "Critical Strike", "Critical Severity"].forEach(k => { _rs[k] = _a; });   // the damage ratings of "all"
-              _pt2Call.push({ on: "mountpower", name: bonus.name, rec: { kind: "buff", name: bonus.name, ratingStats: _rs, seconds: parseInt(_m[2], 10) } });
-            } else if (_m) {
-              const _MOUNT_POWER_CYCLE = tfCadence("mountpower");   // Combat scenario: seconds between mount-power uses
-              const _amt = parseInt(_m[1].replace(/,/g, ""), 10);
-              const _dur = parseInt(_m[2], 10);
-              const _up = Math.max(0, Math.min(1, _dur / _MOUNT_POWER_CYCLE));
-              const _cr = expandCR(Math.round(_amt * _up * mult), 1);
-              if (_cr) buffs.push({
-                source: `${slotLabel} Insignia Bonus: ${bonus.name} (~${Math.round(_up * 100)}% uptime · all ratings)`,
-                conditional: isConditional,
-                uptime: _up < 1 ? _up : undefined,
-                ratingStats: _cr
-              });
-            }
-          }
+          // OPT-READ-1 2026-10-13: Cavalry's Alarm / Warning are structured equipBonuses now (one per rating, mount-power window); the text parse is gone
         }
       }
 
@@ -16876,6 +16962,13 @@
             const base = {}, cond = {};
             for (const k in e.percentStats) (alwaysOn[k] ? base : cond)[k] = e.percentStats[k];
             if (Object.keys(base).length) entry.percentStats = scaleStatMap(base, f);
+            // OPT-READ-1: when the fight simulator owns the enchant's procs, the stats it builds from stacks
+            // (Lightning Charge, Preparation ...) come from the fight, not from a full-stack assumption here.
+            if (window.__pt2SimOwnsProcs) {
+              const owned = {}; const walk = recs => (recs || []).forEach(r => { if (r && r.kind === "buff" && r.stats) for (const k in r.stats) owned[k] = true; if (r && r.effects) walk(r.effects); });
+              (e.equipBonuses || []).forEach(eb => { if (eb && eb.fxStatus === "moves") walk(eb.fx); });
+              for (const k in owned) delete cond[k];
+            }
             if (Object.keys(cond).length) {
               buffs.push({
                 source: `Enchant ${slotLabel}: ${e.name} (at full stacks)`,
@@ -16976,6 +17069,22 @@
           });
         }
       }
+      // OPT-READ-1 batch 2 (2026-10-13): buffs' gated equipBonuses (vs-Dragon scrolls, Wondrous dragons, Spider Totem)
+      // go through the same gates as overloads' - zones, enemy types, party, health, build conditions.
+      for (const bn of (s.buffs || [])) {   // s.buffs is a Set on the live state and an array in a snapshot
+        const b = bn ? findBuffByName(bn) : null; if (!b) continue;
+        for (const eb of (b.equipBonuses || [])) {
+          if (!eb || !eb.stat || eb.amount == null) continue;
+          if (window.__pt2SimOwnsProcs && eb.fxStatus === "moves") continue;
+          if (eb.scope && eb.scope !== "self") continue;
+          if (_zoneSkip(eb) || (eb.zonesExclude && eb.zonesExclude.includes(contentZone)) || _targetRangeSkip(eb) || _apSkip(eb) || _staminaSkip(eb) || _healthSkip(eb) || _movementSkip(eb) || _enemyCountSkip(eb) || _attackTypeSkip(eb) || _conditionSkip(eb) || _partySkip(eb) || _enemyHpSkip(eb)) continue;
+          const channel = (eb.kind === "rating" || eb.kind === "flat") ? "ratingStats" : "percentStats";
+          const isCond = !!(eb.zones && eb.zones.length) || (eb.alwaysActive === false);
+          const ctxTag = (eb.zones && eb.zones.length) ? ` (${eb.zones.join("/")})` : "";
+          const uptimeFactor = (CONDITIONAL_UPTIME.apply_to_stat_grants || isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1;
+          buffs.push({ source: `Buff: ${b.name}${ctxTag}`, conditional: isCond, uptime: uptimeFactor < 1 ? uptimeFactor : undefined, [channel]: { [eb.stat]: _ebAmount(eb) * uptimeFactor } });
+        }
+      }
 
       // Insignia bonuses with gear-style equipBonuses (n00b 2026-09-09): same gates,
       // uptime, ramp and conversion logic as gear, times the per-instance multiplier.
@@ -16998,6 +17107,7 @@
             if (!eb || !eb.stat || eb.amount == null) continue;
             if (eb.scope && eb.scope !== "self") continue;
             if (eb.role && !roleMatches(eb.role)) continue;
+            if (eb.requiresFightingSummon) { const _fs = s.summoned ? findCompanionByName(s.summoned) : null; if (!_fs || _fs.augment === true) continue; }   // OPT-READ-1 (n00b 2026-10-13): Protector's Camaraderie needs a companion that attacks
             if (_zoneSkip(eb) || _targetRangeSkip(eb) || _apSkip(eb) || _staminaSkip(eb) || _healthSkip(eb) || _movementSkip(eb) || _enemyCountSkip(eb) || _attackTypeSkip(eb) || _conditionSkip(eb) || _partySkip(eb) || _enemyHpSkip(eb)) continue;
             const up = (eb.missingHealthMaxAtPct != null) ? _missingHpFactor(eb)
               : ((CONDITIONAL_UPTIME.apply_to_stat_grants || isDamageBonusStat(eb.stat) || eb.uptimeWeighted) ? conditionalDamageUptime(eb) : 1);
@@ -22486,6 +22596,11 @@
       // value is updated in place, so users typing manually will see
       // their value get re-derived from build state.
       applyAutoTIL();
+      // PT2 4-M (2026-10-12): during an optimizer run nothing on the page can be seen behind the progress card, yet
+      // every build restore redrew it all (measured 10% of a run, the scenario panel most of it) and auto-saved the
+      // half-finished build every 350 ms. The build state above stays current; the drawing waits for the run's end
+      // (runOptimize redraws once when it finishes).
+      if (window.__tfLookupMemo) return;
       if (typeof renderBuildConditions === "function") renderBuildConditions();
       if (typeof updateScenarioControls === "function") updateScenarioControls();
       renderQuickStats();

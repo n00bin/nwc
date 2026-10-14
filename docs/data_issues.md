@@ -1,5 +1,28 @@
 # Data Issues To Investigate
 
+## OPEN Sim fight vs n00b's Hellbringer play: first-rotation Soul Scorch + unlisted Soul Siphon (2026-10-10, for the sim-fight revamp)
+
+Found while checking the Hellbringer DPS build-guide link (`b/hellbringer-dps/`, typed loop: Hellish Rebuke >
+Killing Flames > Vampiric Embrace > Dark Helix x2 > Soul Scorch > Hadar's Grasp > Dark Helix x2 > Soul Scorch,
+no opener - the order he plays on camera). n00b: "as long as the write up is right that is fine for now" - parked for the sim-fight revamp.
+- **RESOLVED by the real order (2026-10-10):** with the order n00b plays on camera (Hadar's Grasp > Dark Helix x2 >
+  Soul Scorch) the sim fires both Scorches in the first rotation (18, then 15). The note below was for the
+  typed-wrong order (Hadar's Grasp > Soul Scorch); the spark-income numbers are still unverified.
+- **Second Soul Scorch skipped in the first rotation (typed-wrong order only).** In game n00b always has 6+ sparks right after Hadar's
+  Grasp (he starts a pull from zero banked, no trash sparks). The sim spends 18 at ~4.0 s, is under 6 at
+  Hadar's Grasp, and `waitFor` returns Infinity for a typed `scorch` step, so it is skipped (every later
+  rotation has it). Likely spark income too low early: Hellish Rebuke burn tick rate and Soul Puppet swing
+  rate (Dark Prayers, 1 spark/hit) are both unverified. Do not guess - measure sparks right after the first
+  Scorch and after Hadar's Grasp in game.
+  **CLOSED 2026-10-14 (n00b: "you never start at zero, you always start with 6"):** the fight simulator already opened with 6 sparks (Soul Spark mechanic fx: set 6 on combatStart); the Class-tab rotation sim started at 0 and now opens with 6 too (toon-forge-rotation.js). Spark income per hit stays as modelled.
+- **Unlisted dailies fire on their own.** Soul Siphon (n00b: "only used in AoE situations") casts on a
+  single boss because "dailies you do not list fire on their own". A typed rotation needs a way to say
+  "never cast this one" (or single-target fights should skip AoE-only dailies).
+- **Fight structure, for reference:** n00b starts every fight on the rotation; when the daily is ready he
+  runs the burst: daily > artifact > rotation > mount power > Owlbear Figurine > rotation. The sim's
+  call-window model (artifact + mount at the call, daily on AP) already lands close to this - n00b confirmed
+  the daily timing is right.
+
 ## OPEN Main Hand artifact modification menus for 6 classes (2026-10-07, PT2 gap 4-G)
 
 The optimizer will pick the Main Hand "Enhanced <power>" modification (+10% to one power) as part of the kit search.
@@ -38,10 +61,12 @@ These count ZERO in the call window until a tooltip screenshot gives the missing
 
 ## OPEN Bard check for n00b (2026-10-06, PT2 step 2.4-F)
 - **Ballad of the Hero rider (step 2.9):** the simulator counts the +85 radiant rider on EVERY at-will / encounter / daily hit (as the tag note says), which makes it a Songblade's biggest source (45% with Reprise). Test: does the rider fire on each hit of a multi-hit power, and on each Reprise press?
+  **CONFIRMED 2026-10-14 (Surina on a dummy, recording H:/YouTube/Unedited Vidoes/2026-10-14 08-01-23.mp4, combat-log stills in docs/calibration/inbox/class_powers/bard/):** every Fleche bolt is followed by its own 'Your Ballad of the Hero deals N Radiant Damage' line (Fleche 103,975 crit -> Ballad 49,099 crit = 0.472 = 85 / 180; a non-crit bolt 68,194 -> Ballad 28,990 non-crit). The rider fires once per hit at magnitude 85 and rolls its own crit. Reprise presses were not in the clip; same at-will hit mechanism, kept as modelled.
 - **Reprise (fixed 2026-10-06):** now one 35 hit per 0.3 s press (tag note: 140 per 1.2 s combo); the simulator used to read "35x4" as four hits per press.
 - **Lore's "Critical Severity Taken +10%" and the 120% cap.** Counted OUTSIDE your Critical Severity cap (provisional, n00b lock 2.4-F). Test: on a Songblade at 120% Critical Severity, compare crit numbers on a target dummy with and without Lore's debuff. Bigger crits with Lore = keep; no change = switch to inside the cap.
+  **INCONCLUSIVE 2026-10-14:** Surina's Critical Severity reads 92% (Stats tab, same day), not the 120% cap, so the clip (H:/YouTube/Unedited Vidoes/2026-10-14 08-19-19.mp4) cannot separate in-cap from past-cap. Data point kept for the Lore model: Fleche raw crit 284,103 before Lore, 329,389 with Lore = +15.9% total lift (the +20% Damage Bonus is diluted by her other additive bonuses; with +10% severity at 92% that implies ~96% other bonuses, without it ~26%). Needs a capped Songblade.
 
-## OPEN Ranger data checks for n00b (2026-10-06, Migration B)
+## CLOSED 2026-10-14 Ranger data checks (n00b in game: Boar Charge 585, Cold Steel Hurricane 1.5 s, Call of the Storm 1 s - all applied)
 
 - **Boar Charge (Warden):** stored magnitude 385, but the tooltip transcription and the review note both read 585. Left at 385 until checked in game.
 - **Cold Steel Hurricane / Call of the Storm (Warden dailies):** no castSeconds stored (review notes say 1.5 s and 1 s), so they cast instantly in the simulator. Confirm the cast times, then add them.
