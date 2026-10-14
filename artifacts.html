@@ -303,6 +303,20 @@
     </div>
     <div id="ranking-list"></div>
   </div>
+  <!-- Filters for the Enchantments view (same controls-bar pattern as All Artifacts) -->
+  <div class="controls-bar" id="enchants-controls" style="display:none;">
+    <input type="text" class="search-input" id="ench-search" placeholder="Search enchantments...">
+    <select class="filter-select" id="ench-filter-type">
+      <option value="">All Types</option>
+      <option value="Universal">Universal (Gemstones)</option>
+      <option value="Combat">Combat</option>
+      <option value="Bonus">Bonus Slot</option>
+      <option value="companion">Companion</option>
+    </select>
+    <select class="filter-select" id="ench-filter-stat">
+      <option value="">All Stats</option>
+    </select>
+  </div>
   <div class="art-container art-view" id="view-enchants"><div id="enchants-list"></div></div>
   <div class="art-container art-view" id="view-sets"><div id="sets-list"></div></div>
 

@@ -342,6 +342,24 @@
       h += '</div>';
       return h + '</div></div>';
     }
+    // Stat filter (n00b 2026-10-14: "the enchantments in the enchantments tab need a filter for stats"):
+    // every stat the enchant carries at any rarity, read from the same `lines()` the card shows.
+    function statKeys(e) { return lines(e).map(function (ln) { return ln.label; }); }
+    var typeSel = document.getElementById("ench-filter-type"), statSel = document.getElementById("ench-filter-stat"), searchEl = document.getElementById("ench-search");
+    var wantType = typeSel ? typeSel.value : "", wantStat = statSel ? statSel.value : "", q = searchEl ? searchEl.value.trim().toLowerCase() : "";
+    // Stat dropdown options follow the type filter (a Combat pick only offers Combat stats); keep the current pick.
+    if (statSel) {
+      var pool = data.filter(function (e) { return !wantType || e.slotType === wantType; });
+      var opts = {}; pool.forEach(function (e) { statKeys(e).forEach(function (k) { opts[k] = 1; }); });
+      var names = Object.keys(opts).sort(); if (wantStat && names.indexOf(wantStat) < 0) names.push(wantStat);
+      statSel.innerHTML = '<option value="">All Stats</option>' + names.map(function (n) { return '<option value="' + escapeHtml(n) + '"' + (n === wantStat ? ' selected' : '') + '>' + escapeHtml(n) + '</option>'; }).join("");
+    }
+    function keep(e) {
+      if (wantType && e.slotType !== wantType) return false;
+      if (wantStat && statKeys(e).indexOf(wantStat) < 0) return false;
+      if (q && ((e.displayName || e.name) + " " + (e.description || "") + " " + statKeys(e).join(" ")).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    }
     var GROUPS = [
       { key: "Universal", label: "Universal &mdash; Gemstones (offense / defense / utility)" },
       { key: "Combat", label: "Combat &mdash; Weapon / Armor" },
@@ -350,13 +368,20 @@
     ];
     var html = '<div style="color:var(--text-secondary);font-size:0.88rem;margin:0.5rem 0 1rem;">Each enchantment shows one rarity at a time &mdash; click a rarity pill to see its stats (Uncommon &rarr; Celestial). You upgrade these over time, so a lower rarity gives smaller numbers than the top Celestial tier; set the rank you own per slot in the Toon Forge build tool.</div>';
     GROUPS.forEach(function (g) {
-      var list = data.filter(function (e) { return e.slotType === g.key; });
+      var list = data.filter(function (e) { return e.slotType === g.key && keep(e); });
       if (!list.length) return;
       html += '<h2 style="font-size:1.05rem;margin:1.2rem 0 0.5rem;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:0.3rem;">' + g.label + ' <span style="color:var(--text-muted);font-weight:400;font-size:0.85rem;">(' + list.length + ')</span></h2>';
       list.forEach(function (e) { html += card(e); });
     });
     var listEl = document.getElementById("enchants-list");
+    if (html.indexOf('<h2') < 0) html += '<div style="color:var(--text-muted);padding:1rem 0;">No enchantments match that filter.</div>';
     listEl.innerHTML = html;
+    // Filter controls re-render the tab (bound once).
+    if (!listEl._enchFiltersBound) {
+      listEl._enchFiltersBound = true;
+      [typeSel, statSel].forEach(function (el) { if (el) el.addEventListener("change", renderEnchants); });
+      if (searchEl) searchEl.addEventListener("input", renderEnchants);
+    }
     // Pill clicks switch which rarity's stats show (don't toggle the card).
     if (!listEl._enchPillsBound) {
       listEl._enchPillsBound = true;
@@ -388,6 +413,8 @@
       document.querySelectorAll(".art-view").forEach(function (v) { v.classList.remove("active"); });
       document.getElementById("view-" + tab.getAttribute("data-tab")).classList.add("active");
       allControls.style.display = tab.getAttribute("data-tab") === "all" ? "" : "none";
+      var enchControls = document.getElementById("enchants-controls");
+      if (enchControls) enchControls.style.display = tab.getAttribute("data-tab") === "enchants" ? "" : "none";
 
       if (tab.getAttribute("data-tab") === "ranking") renderRanking(groupRanking, "ranking-list");
       if (tab.getAttribute("data-tab") === "enchants") renderEnchants();
