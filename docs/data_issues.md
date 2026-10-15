@@ -64,7 +64,20 @@
     only scales natural regen. Channel rate ~80-87/s flat (whether it scales with the pool size is untested; every
     clip had a 1,150 pool). Gauge refund on pressing it was small here (~+9%), as expected after spamming a power that
     builds little Judgement - the refund follows the charges held.
-- DIV gaps defined and locked (DIV-1 = 1, DIV-2 = 1). Ready to build on n00b's go.
+- DIV gaps defined and locked (DIV-1 = 1, DIV-2 = 1). BUILT 2026-10-15 on n00b's "go DIV" (local, not yet shipped):
+  toon-forge-rotation.js simulateFx - input.resourcePools [{pool, max, regenPerSec, channel}]; a power whose own records
+  spend from a pool waits until it can pay; channelFor() channels when the next listed power cannot be paid (rule-built:
+  only when nothing else is castable), instant refund = refundPerCharge x the refundStacks' charges (emptied), then
+  ratePerSec until channel.until; pools refill at regenPerSec otherwise; spend / gain / set records act on the pool
+  (Critical Insight +10 on crit, Perfect Balance now pctOfBar 100 = to full); gates read the live pool (divinityLevel for
+  Divine Equilibrium, channelingDivinity for Soothing Prayer / Hallowed Armor). Data: classes.json Cleric.resourcePools
+  (Arbiter only). Page: pt2ResourcePools() sizes it per build (Expanded Faith +150, Class Resource Max %, Class
+  Resource Regen %). Check (div_ab.js, 180 s Arbiter fight, Flame + Javelin + Prophecy, Sudden Verdict, Expanded Faith):
+  pool 1,150; 9 channels, 64 s channelling, gauge refunds +350 / +420; Flame and Javelin 30 / 30 casts -> 19 / 19;
+  magnitude per second 410 -> 274 (-33%); Barbarian fight check unchanged; no page errors.
+  Kit search (div_kit.js, empty Arbiter, kitOnly): BEFORE (frozen copy, no divinity) Flame + Daunting Light + Javelin,
+  features Divine Equilibrium + Hallowed Armor; AFTER Flame + Geas + Break the Spirit (one divinity spender, two
+  cooldown encounters), features Divine Equilibrium + Doomsayer, 6 channels / 25 s in 180 s. Not shipped yet.
 
 ## FIXED (shipped in v2.0, 2026-10-14) EQUIP-BOLSTER-1: mount equip powers ignored the player's bolster
 
