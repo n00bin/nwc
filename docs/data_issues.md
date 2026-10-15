@@ -42,6 +42,12 @@
   - Empty to full by holding: ~10 s. No attacks or movement while holding (tooltip).
 - Step 1 DONE: pool 1,000 base (+150 Expanded Faith), natural regen ~7/s, Channel Divinity ~80/s + ~70 per Judgement
   charge on activation. Next: define DIV-1 (how the fight uses Channel Divinity).
+- **DIV-1 = 1 LOCKED 2026-10-14 (n00b):** a divinity bar in the fight like the action point bar; a divinity power
+  waits when the bar cannot pay; when the next divinity power cannot be paid the fight channels (no attacks), takes
+  the gauge refund, and holds until the bar is full (setting-driven, so the rule can change without code). Sudden
+  Verdict's fill kind verified the same day (fills with the kind the proccing power builds). Lock is not a go: build
+  on n00b's word, after the derived gaps below.
+- Derived gap DIV-2 (open): how regen scales with the build's Divinity Regen ("Class Resource Regen" in the engine).
 
 ## FIXED (shipped in v2.0, 2026-10-14) EQUIP-BOLSTER-1: mount equip powers ignored the player's bolster
 
