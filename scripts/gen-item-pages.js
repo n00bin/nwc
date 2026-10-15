@@ -984,7 +984,7 @@ build('races', racesData, {
 })();
 
 /* ---------- sitemaps: an index + per-type child sitemaps ---------- */
-const MAIN_PAGES = ['', 'mounts.html', 'companions.html', 'consumables.html', 'artifacts.html', 'mekaniks.html', 'campaign-boosters.html', 'professions.html', 'patchnotes.html', 'reports.html', 'creators-tools.html', 'toon-forge.html', 'insignia-priority.html', 'preview.html', 'dungeon-currency.html', 'db/index.html'];
+const MAIN_PAGES = ['', 'mounts.html', 'companions.html', 'consumables.html', 'artifacts.html', 'mekaniks.html', 'campaign-boosters.html', 'professions.html', 'patchnotes.html', 'reports.html', 'creators-tools.html', 'toon-forge.html', 'insignia-priority.html', 'preview.html', 'dungeon-currency.html', 'achievement-tracker.html', 'db/index.html'];
 function urlset(locs) {
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     locs.map(function (u) { return '  <url><loc>' + u + '</loc><lastmod>' + BUILD_DATE + '</lastmod></url>'; }).join('\n') + '\n</urlset>\n';

@@ -1,0 +1,2771 @@
+{
+ "version": 1,
+ "built": "2026-10-14",
+ "source": "Owner's in-game screenshots, 2026-10-14 (unfinished achievements only). Entries with catalog_only=true were found only as sub-items; points unknown (0).",
+ "achievements": [
+  {
+   "id": "akaday-night-cleansing-fever",
+   "name": "Akaday Night Cleansing Fever",
+   "points": 10,
+   "master": true,
+   "dungeon": "Dread Sanctum",
+   "dungeon_full": "Dread Sanctum",
+   "description": "Defeat Yalghoor the Rank-Reformed in the Dread Sanctum (Master) dungeon without anyone receiving the Shattered debuff",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "boss-bonanza",
+   "name": "Boss Bonanza",
+   "points": 10,
+   "master": true,
+   "dungeon": "Gzemnid's Reliquary",
+   "dungeon_full": "Gzemnid's Reliquary",
+   "description": "Complete the Gzemnid's Reliquary (Master) trial with every boss combination in the hallucination",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "brains-brains-and-bigger-brains",
+   "name": "Brains, Brains and Bigger Brains",
+   "points": 10,
+   "master": false,
+   "dungeon": "Dread Sanctum",
+   "dungeon_full": "Dread Sanctum",
+   "description": "Complete the Following Achievements",
+   "subs": [
+    {
+     "text": "Perfection: Dread Sanctum (Master)",
+     "ref": "perfection-dread-sanctum-master"
+    },
+    {
+     "text": "Dash: Dread Sanctum (Master)",
+     "ref": "dash-dread-sanctum-master"
+    },
+    {
+     "text": "Minimalist: Dread Sanctum (Master)",
+     "ref": "minimalist-dread-sanctum-master"
+    },
+    {
+     "text": "RUN! GO! GET TO THE POOL!",
+     "ref": "run-go-get-to-the-pool"
+    },
+    {
+     "text": "Stop hitting yourself!",
+     "ref": "stop-hitting-yourself"
+    },
+    {
+     "text": "Akaday Night Cleansing Fever",
+     "ref": "akaday-night-cleansing-fever"
+    },
+    {
+     "text": "Squeaky Clean",
+     "ref": "squeaky-clean"
+    },
+    {
+     "text": "Today is not the day of the...",
+     "ref": "today-is-not-the-day-of-the"
+    },
+    {
+     "text": "We are Legion",
+     "ref": "we-are-legion"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "canned-heat-master",
+   "name": "Canned Heat (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Lair of the Mad Dragon",
+   "dungeon_full": "Lair of the Mad Dragon",
+   "description": "Defeat Chartilifax in the Lair of the Mad Dragon (Master) dungeon without anyone taking damage from Baelfire",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "caverns-of-karrundax-epic",
+   "name": "Caverns of Karrundax (Epic)",
+   "points": 15,
+   "master": false,
+   "dungeon": "Caverns of Karrundax",
+   "dungeon_full": "Caverns of Karrundax (Mount Hotenow)",
+   "description": "Complete the Epic difficulty \"Caverns of Karrundax\" dungeon in Mount Hotenow",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "clear-headed",
+   "name": "Clear Headed",
+   "points": 30,
+   "master": true,
+   "dungeon": "Demogorgon",
+   "dungeon_full": "Demogorgon",
+   "description": "Complete the Demogorgon (Master) trial without any players reaching the second level of Madness.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "cloak-tower-epic",
+   "name": "Cloak Tower (Epic)",
+   "points": 15,
+   "master": false,
+   "dungeon": "Cloak Tower",
+   "dungeon_full": "Cloak Tower (Tower District)",
+   "description": "Complete the Epic difficulty \"Cloak Tower\" dungeon in Tower District",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "completely-mental",
+   "name": "Completely Mental",
+   "points": 10,
+   "master": false,
+   "dungeon": "Demogorgon",
+   "dungeon_full": "Demogorgon",
+   "description": "Complete The Following Achievements",
+   "subs": [
+    {
+     "text": "Demogorgon (Master)",
+     "ref": "demogorgon-master"
+    },
+    {
+     "text": "Perfection: Demogorgon (Master)",
+     "ref": "perfection-demogorgon-master"
+    },
+    {
+     "text": "Dash: Demogorgon (Master)",
+     "ref": "dash-demogorgon-master"
+    },
+    {
+     "text": "Minimalist: Demogorgon (Master)",
+     "ref": "minimalist-demogorgon-master"
+    },
+    {
+     "text": "Embrace the Madness",
+     "ref": "embrace-the-madness"
+    },
+    {
+     "text": "Clear Headed",
+     "ref": "clear-headed"
+    },
+    {
+     "text": "Ole",
+     "ref": "ole"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "conservator",
+   "name": "Conservator",
+   "points": 10,
+   "master": true,
+   "dungeon": "Gzemnid's Reliquary",
+   "dungeon_full": "Gzemnid's Reliquary",
+   "description": "Complete the Gzemnid's Reliquary (Master) trial without destroying any artifacts",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "controlled-breathing-master",
+   "name": "Controlled Breathing (Master)",
+   "points": 30,
+   "master": true,
+   "dungeon": "Defense of the Moondancer",
+   "dungeon_full": "Defense of the Moondancer",
+   "description": "Complete the Defense of the Moondancer (Master) trial with 1% Air Remaining.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "coordinated-takedown",
+   "name": "Coordinated Takedown",
+   "points": 10,
+   "master": true,
+   "dungeon": "Rise of Tiamat",
+   "dungeon_full": "Rise of Tiamat",
+   "description": "Defeat Tiamat's claws within 2 seconds of each other and complete the Rise of Tiamat (Master) trial",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "cutter-of-chaos",
+   "name": "Cutter of Chaos",
+   "points": 10,
+   "master": false,
+   "dungeon": "Demonweb Pits",
+   "dungeon_full": "Demonweb Pits",
+   "description": "Complete the Following Achievements",
+   "subs": [
+    {
+     "text": "Demonweb Pits (Master)",
+     "ref": "demonweb-pits-master"
+    },
+    {
+     "text": "Perfection: Demonweb Pits (Master)",
+     "ref": "perfection-demonweb-pits-master"
+    },
+    {
+     "text": "Dash: Demonweb Pits (Master)",
+     "ref": "dash-demonweb-pits-master"
+    },
+    {
+     "text": "Minimalist: Demonweb Pits (Master)",
+     "ref": "minimalist-demonweb-pits-master"
+    },
+    {
+     "text": "No Spider Deaths",
+     "ref": "no-spider-deaths"
+    },
+    {
+     "text": "Snuggle Buddies",
+     "ref": "snuggle-buddies"
+    },
+    {
+     "text": "Really Mighty Party",
+     "ref": "really-mighty-party"
+    },
+    {
+     "text": "No Hex",
+     "ref": "no-hex"
+    },
+    {
+     "text": "Meteor Sandwich",
+     "ref": "meteor-sandwich"
+    },
+    {
+     "text": "Questionable Tactics",
+     "ref": "questionable-tactics"
+    },
+    {
+     "text": "One with the Demonweb",
+     "ref": "one-with-the-demonweb"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dancing-on-the-ceiling",
+   "name": "Dancing on the Ceiling",
+   "points": 10,
+   "master": false,
+   "dungeon": "Other",
+   "dungeon_full": "not stated in text (boss: Cthylar)",
+   "description": "Defeat Cthylar 5 times while fighting on the ceiling",
+   "subs": [],
+   "counters": [
+    {
+     "id": "progress",
+     "label": "Progress",
+     "need": 5
+    }
+   ],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dash-demogorgon-master",
+   "name": "Dash: Demogorgon (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Demogorgon",
+   "dungeon_full": "Demogorgon",
+   "description": "Complete the Demogorgon (Master) trial within 12 minutes",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dash-demonweb-pits-master",
+   "name": "Dash: Demonweb Pits (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Demonweb Pits",
+   "dungeon_full": "Demonweb Pits",
+   "description": "Complete the Demonweb Pits (Master) dungeon within 20 minutes",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dash-gzemnids-reliquary-master",
+   "name": "Dash: Gzemnid's Reliquary (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Gzemnid's Reliquary",
+   "dungeon_full": "Gzemnid's Reliquary",
+   "description": "Complete the Gzemnid's Reliquary (Master) trial within 12 minutes",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dash-imperial-citadel-master",
+   "name": "Dash: Imperial Citadel (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Imperial Citadel",
+   "dungeon_full": "Imperial Citadel",
+   "description": "Complete the Imperial Citadel (Master) dungeon within 20 minutes",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dash-jotunskar-master",
+   "name": "Dash: Jotunskar (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Jotunskar",
+   "dungeon_full": "Jotunskar",
+   "description": "Complete Jotunskar (Master) dungeon within 20 minutes",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dash-lair-of-the-mad-dragon-master",
+   "name": "Dash: Lair of the Mad Dragon (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Lair of the Mad Dragon",
+   "dungeon_full": "Lair of the Mad Dragon",
+   "description": "Complete the Lair of the Mad Dragon (Master) dungeon within 20 minutes",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dash-shackles-of-divinity-master",
+   "name": "Dash: Shackles of Divinity (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Shackles of Divinity",
+   "dungeon_full": "Shackles of Divinity",
+   "description": "Complete Shackles of Divinity (Master) trial within 12 minutes",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dash-soul-harvest-master",
+   "name": "Dash: Soul Harvest (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Soul Harvest",
+   "dungeon_full": "Soul Harvest",
+   "description": "Complete Soul Harvest (Master) trial within 12 minutes",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dash-dread-sanctum-master",
+   "name": "Dash: Dread Sanctum (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Dread Sanctum",
+   "dungeon_full": "Dread Sanctum",
+   "description": "Complete the Dread Sanctum (Master) dungeon within 20 minutes",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": [
+    "dash-the-dread-sanctum-master"
+   ]
+  },
+  {
+   "id": "dash-defense-of-the-moondancer-master",
+   "name": "Dash: Defense of the Moondancer (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Defense of the Moondancer",
+   "dungeon_full": "Defense of the Moondancer",
+   "description": "Complete the Defense of the Moondancer (Master) trial within 12 minutes",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "death-spheres",
+   "name": "Death Spheres",
+   "points": 10,
+   "master": false,
+   "dungeon": "Orcus's Chamber",
+   "dungeon_full": "Orcus's Chamber (dungeon not named)",
+   "description": "Reach Orcus's Chamber 5 times without taking damage from patrolling Death Spheres",
+   "subs": [],
+   "counters": [
+    {
+     "id": "progress",
+     "label": "Progress",
+     "need": 5
+    }
+   ],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "definitely-not-urban-acrobatics",
+   "name": "Definitely Not Urban Acrobatics...",
+   "points": 10,
+   "master": true,
+   "dungeon": "Soul Harvest",
+   "dungeon_full": "Soul Harvest",
+   "description": "Complete Soul Harvest (Master) after at least one adventurer has interacted with the hidden Skull within the trial and live to tell the tale",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "demogorgon-master",
+   "name": "Demogorgon (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Demogorgon",
+   "dungeon_full": "Demogorgon",
+   "description": "Complete the Demogorgon (Master) trial",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "demon-prince-of-being-dead",
+   "name": "Demon Prince of Being Dead",
+   "points": 10,
+   "master": false,
+   "dungeon": "Orcus's Chamber",
+   "dungeon_full": "Orcus (dungeon not named)",
+   "description": "Defeat Orcus 25 times",
+   "subs": [],
+   "counters": [
+    {
+     "id": "progress",
+     "label": "Progress",
+     "need": 25
+    }
+   ],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "deny-the-orchestrator",
+   "name": "Deny the Orchestrator",
+   "points": 10,
+   "master": true,
+   "dungeon": "Soul Harvest",
+   "dungeon_full": "Soul Harvest",
+   "description": "Complete Soul Harvest (Master) without any player taking damage from Szass Tam, Regent of Thay's Meteors and Dark Stars",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dodge-duck-dip-dive-and-dodge",
+   "name": "Dodge, Duck, Dip, Dive, and Dodge",
+   "points": 10,
+   "master": true,
+   "dungeon": "Gzemnid's Reliquary",
+   "dungeon_full": "Gzemnid's Reliquary",
+   "description": "Complete the Gzemnid's Reliquary (Master) trial without any players getting damaged from artifacts",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dont-drink-the-water",
+   "name": "Don't Drink the Water",
+   "points": 5,
+   "master": true,
+   "dungeon": "Imperial Citadel",
+   "dungeon_full": "Imperial Citadel",
+   "description": "Defeat the Zodar in the Imperial Citadel (Master) dungeon without anyone touching the Astral Font",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dragon-soul-mastery",
+   "name": "Dragon Soul Mastery",
+   "points": 10,
+   "master": true,
+   "dungeon": "Rise of Tiamat",
+   "dungeon_full": "Rise of Tiamat",
+   "description": "Complete the Rise of Tiamat (Master) trial without any spells from Tiamat activating",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dungeon-delving-ii",
+   "name": "Dungeon Delving II",
+   "points": 10,
+   "master": false,
+   "dungeon": "General",
+   "dungeon_full": "General (Adventure Zone dungeons)",
+   "description": "Complete 8 Adventure Zone Dungeon Achievements",
+   "subs": [],
+   "counters": [
+    {
+     "id": "progress",
+     "label": "Progress",
+     "need": 8
+    }
+   ],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "dungeon-mastery-iii",
+   "name": "Dungeon Mastery III",
+   "points": 25,
+   "master": false,
+   "dungeon": "General",
+   "dungeon_full": "General (Epic Adventure Zone dungeons)",
+   "description": "Complete 12 Epic Adventure Zone Dungeon Achievements",
+   "subs": [],
+   "counters": [
+    {
+     "id": "progress",
+     "label": "Progress",
+     "need": 12
+    }
+   ],
+   "notes": "",
+   "aliases": [],
+   "reward": "Title: Dungeon Master"
+  },
+  {
+   "id": "elusive-prey",
+   "name": "Elusive Prey",
+   "points": 5,
+   "master": false,
+   "dungeon": "Queen of Air and Darkness",
+   "dungeon_full": "Queen of Air and Darkness encounter (dungeon not named)",
+   "description": "During the Queen of Air and Darkness encounter avoid being hit by Consuming Darkness.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "embrace-the-madness",
+   "name": "Embrace the Madness",
+   "points": 30,
+   "master": true,
+   "dungeon": "Demogorgon",
+   "dungeon_full": "Demogorgon",
+   "description": "Complete the Demogorgon (Master) trial using 10 or less Sanity Wells.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "emperors-bane-master",
+   "name": "Emperor's Bane (Master)",
+   "points": 30,
+   "master": true,
+   "dungeon": "Imperial Citadel",
+   "dungeon_full": "Imperial Citadel",
+   "description": "Complete the Imperial Citadel (Master) dungeon after breaking Prince Xeleth's Shield 2 times.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "ephemeral-one",
+   "name": "Ephemeral One",
+   "points": 10,
+   "master": false,
+   "dungeon": "Jotunskar",
+   "dungeon_full": "Jotunskar",
+   "description": "Complete the Following Achievements",
+   "subs": [
+    {
+     "text": "Perfection: Jotunskar (Master)",
+     "ref": "perfection-jotunskar-master"
+    },
+    {
+     "text": "Dash: Jotunskar (Master)",
+     "ref": "dash-jotunskar-master"
+    },
+    {
+     "text": "Minimalist: Jotunskar (Master)",
+     "ref": "minimalist-jotunskar-master"
+    },
+    {
+     "text": "Hot Blooded",
+     "ref": "hot-blooded"
+    },
+    {
+     "text": "Peek-A-Boo",
+     "ref": "peek-a-boo"
+    },
+    {
+     "text": "Breaker of the Fivefold Ascension (Master)",
+     "ref": "breaker-of-the-fivefold-ascension-master"
+    },
+    {
+     "text": "Rite of Refusal",
+     "ref": "rite-of-refusal"
+    },
+    {
+     "text": "Free of Charge",
+     "ref": "free-of-charge"
+    },
+    {
+     "text": "Gotta Stay Warm! (Master)",
+     "ref": "gotta-stay-warm-master"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "explosive-tendencies",
+   "name": "Explosive Tendencies",
+   "points": 10,
+   "master": true,
+   "dungeon": "Temple of the Spider",
+   "dungeon_full": "Temple of the Spider",
+   "description": "Defeat Halbryn Darkstalker in Temple of the Spider (Master) without having more than 6 bombs in the arena during the fight.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "express-route-to-the-nine-hells",
+   "name": "Express Route to the Nine Hells",
+   "points": 10,
+   "master": true,
+   "dungeon": "Rise of Tiamat",
+   "dungeon_full": "Rise of Tiamat",
+   "description": "Complete the Rise of Tiamat (Master) trial within 12 minutes",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "fake-it-until-you-make-it",
+   "name": "Fake it Until You Make it",
+   "points": 15,
+   "master": false,
+   "dungeon": "Lair of the Mad Dragon",
+   "dungeon_full": "Lair of the Mad Dragon",
+   "description": "Defeat All 5 Treasure Guardians 5 times in the Lair of the Mad Dragon Dungeon",
+   "subs": [],
+   "counters": [
+    {
+     "id": "defeat-vexthul-the-disengaged",
+     "label": "Defeat Vex'Thul the Disengaged",
+     "need": 5
+    },
+    {
+     "id": "defeat-ignissar-the-false-hope",
+     "label": "Defeat Ignissar the False Hope",
+     "need": 5
+    },
+    {
+     "id": "defeat-vorgrimm-the-malodorous",
+     "label": "Defeat Vorgrimm the Malodorous",
+     "need": 5
+    },
+    {
+     "id": "defeat-astarothrax-the-intangible",
+     "label": "Defeat Astarothrax the Intangible",
+     "need": 5
+    },
+    {
+     "id": "defeat-baelrok-the-enigmatic",
+     "label": "Defeat Baelrok the Enigmatic",
+     "need": 5
+    }
+   ],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "flawless-victory",
+   "name": "Flawless Victory",
+   "points": 20,
+   "master": false,
+   "dungeon": "Vault of Stars",
+   "dungeon_full": "Vault of Stars",
+   "description": "Complete the Vault of Stars in hardcore mode.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "follow-the-scripture",
+   "name": "Follow The Scripture",
+   "points": 10,
+   "master": true,
+   "dungeon": "Shackles of Divinity",
+   "dungeon_full": "Shackles of Divinity",
+   "description": "Complete Shackles of Divinity (Master) with each Mythallar Ritual phase lasting no longer than 60 seconds",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "free-of-charge",
+   "name": "Free of Charge",
+   "points": 10,
+   "master": true,
+   "dungeon": "Jotunskar",
+   "dungeon_full": "Jotunskar",
+   "description": "Complete Jotunskar (Master) without any player getting hit by Herleifr the Everlasting's Charge",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "ghost-stories",
+   "name": "Ghost Stories",
+   "points": 25,
+   "master": false,
+   "dungeon": "Castle Ravenloft",
+   "dungeon_full": "Castle Ravenloft",
+   "description": "Comfort all three of the restless spirits that haunt Castle Ravenloft",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "gzemnids-reliquary-master",
+   "name": "Gzemnid's Reliquary (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Gzemnid's Reliquary",
+   "dungeon_full": "Gzemnid's Reliquary",
+   "description": "Complete the Gzemnid's Reliquary (Master) trial",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "hardcore-dungeoneer",
+   "name": "Hardcore Dungeoneer",
+   "points": 10,
+   "master": false,
+   "dungeon": "General",
+   "dungeon_full": "General (Hardcore Mode, multiple dungeons)",
+   "description": "Complete all dungeons on Hardcore Mode",
+   "subs": [
+    {
+     "text": "Complete The Cloak Tower on Hardcore Mode",
+     "ref": "complete-the-cloak-tower-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Cragmire Crypts on Hardcore Mode",
+     "ref": "complete-cragmire-crypts-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Gray Wolf Den on Hardcore Mode",
+     "ref": "complete-gray-wolf-den-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Pirate King's Retreat on Hardcore Mode",
+     "ref": "complete-pirate-kings-retreat-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Frozen Heart on Hardcore Mode",
+     "ref": "complete-frozen-heart-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Spellplague Cavern on Hardcore Mode",
+     "ref": "complete-spellplague-cavern-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Temple of the Spider on Hardcore Mode",
+     "ref": "complete-temple-of-the-spider-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Cavern Karrundax on Hardcore Mode",
+     "ref": "complete-cavern-karrundax-on-hardcore-mode"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "hardcore-epic-dungeoneer",
+   "name": "Hardcore Epic Dungeoneer",
+   "points": 10,
+   "master": false,
+   "dungeon": "General",
+   "dungeon_full": "General (Hardcore Mode, multiple Epic dungeons)",
+   "description": "Complete all Epic dungeons on Hardcore Mode",
+   "subs": [
+    {
+     "text": "Complete Kessell's Run on Hardcore Mode",
+     "ref": "complete-kessells-run-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Shore of Tuern on Hardcore Mode",
+     "ref": "complete-shore-of-tuern-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Malabog's Castle on Hardcore Mode",
+     "ref": "complete-malabogs-castle-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Valindra's Tower on Hardcore Mode",
+     "ref": "complete-valindras-tower-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Lair of Lostmauth on Hardcore Mode",
+     "ref": "complete-lair-of-lostmauth-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Temple of the Spider on Hardcore Mode",
+     "ref": "complete-temple-of-the-spider-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Cragmire Crypts (Epic) on Hardcore Mode",
+     "ref": "complete-cragmire-crypts-epic-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Gray Wolf Den (Epic) on Hardcore Mode",
+     "ref": "complete-gray-wolf-den-epic-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Castle Never on Hardcore Mode",
+     "ref": "complete-castle-never-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Fangbreaker Island on Hardcore Mode",
+     "ref": "complete-fangbreaker-island-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Spellplague Cavern (Epic) on Hardcore Mode",
+     "ref": "complete-spellplague-cavern-epic-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Tomb of the Nine Gods on Hardcore Mode",
+     "ref": "complete-tomb-of-the-nine-gods-on-hardcore-mode"
+    },
+    {
+     "text": "Complete Castle Ravenloft on Hardcore Mode",
+     "ref": "complete-castle-ravenloft-on-hardcore-mode"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "head-towards-the-light",
+   "name": "Head Towards the Light",
+   "points": 20,
+   "master": false,
+   "dungeon": "Alcoves of Light",
+   "dungeon_full": "Alcoves of Light (dungeon not named)",
+   "description": "Find all Three Alcoves of Light",
+   "subs": [
+    {
+     "text": "Alcove of Light: Garden",
+     "ref": "alcove-of-light-garden"
+    },
+    {
+     "text": "Alcove of Light: Forest",
+     "ref": "alcove-of-light-forest"
+    },
+    {
+     "text": "Alcove of Light: Thorns",
+     "ref": "alcove-of-light-thorns"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "hero-of-the-multiverse",
+   "name": "Hero of the Multiverse",
+   "points": 10,
+   "master": false,
+   "dungeon": "Imperial Citadel",
+   "dungeon_full": "Imperial Citadel",
+   "description": "Complete the Following Achievements",
+   "subs": [
+    {
+     "text": "Imperial Citadel (Master)",
+     "ref": "imperial-citadel-master"
+    },
+    {
+     "text": "Perfection: Imperial Citadel (Master)",
+     "ref": "perfection-imperial-citadel-master"
+    },
+    {
+     "text": "Dash: Imperial Citadel (Master)",
+     "ref": "dash-imperial-citadel-master"
+    },
+    {
+     "text": "Minimalist: Imperial Citadel (Master)",
+     "ref": "minimalist-imperial-citadel-master"
+    },
+    {
+     "text": "Star Stabilizer (Master)",
+     "ref": "star-stabilizer-master"
+    },
+    {
+     "text": "Emperor's Bane (Master)",
+     "ref": "emperors-bane-master"
+    },
+    {
+     "text": "Stay out of the Light",
+     "ref": "stay-out-of-the-light"
+    },
+    {
+     "text": "Don't Drink the Water",
+     "ref": "dont-drink-the-water"
+    },
+    {
+     "text": "No Spider Déjà Vu (Master)",
+     "ref": "no-spider-deja-vu-master"
+    },
+    {
+     "text": "No Knockup Nonsense (Master)",
+     "ref": "no-knockup-nonsense-master"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "hot-blooded",
+   "name": "Hot Blooded",
+   "points": 10,
+   "master": true,
+   "dungeon": "Jotunskar",
+   "dungeon_full": "Jotunskar",
+   "description": "Complete Jotunskar (Master) without any player accumulating more than 15 Frostbite stacks",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "im-the-captain-now-master",
+   "name": "I'm the Captain Now (Master)",
+   "points": 30,
+   "master": true,
+   "dungeon": "Defense of the Moondancer",
+   "dungeon_full": "Defense of the Moondancer",
+   "description": "Defeat Captain Zoor'lar in the Defense of the Moondancer (Master) trial with at least 3 Lieutenants alive.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "icespires-frozen-heart-epic",
+   "name": "Icespire's Frozen Heart (Epic)",
+   "points": 15,
+   "master": false,
+   "dungeon": "Icespire's Frozen Heart",
+   "dungeon_full": "Icespire's Frozen Heart (Icespire Peak)",
+   "description": "Complete the Epic difficulty \"Icespire's Frozen Heart\" dungeon in Icespire Peak",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "iron-willed",
+   "name": "Iron Willed",
+   "points": 10,
+   "master": true,
+   "dungeon": "Temple of the Spider",
+   "dungeon_full": "Temple of the Spider",
+   "description": "Defeat Da'Zora Mizzyrm in Temple of the Spider (Master) and restore each of Syndryth's Willpower within 9 seconds.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "kessells-retreat-epic",
+   "name": "Kessell's Retreat (Epic)",
+   "points": 15,
+   "master": false,
+   "dungeon": "Kessell's Retreat",
+   "dungeon_full": "Kessell's Retreat (Icewind Dale)",
+   "description": "Complete the Epic difficulty \"Kessell's Retreat\" dungeon in Icewind Dale",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "lair-of-lostmauth",
+   "name": "Lair of Lostmauth",
+   "points": 10,
+   "master": false,
+   "dungeon": "Lair of Lostmauth",
+   "dungeon_full": "Lair of Lostmauth (Tuern)",
+   "description": "Complete the \"Lair of Lostmauth\" dungeon in Tuern",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "master-of-svardborg",
+   "name": "Master of Svardborg",
+   "points": 5,
+   "master": true,
+   "dungeon": "Svardborg",
+   "dungeon_full": "Svardborg",
+   "description": "Ensure no players die in the trial, Svardborg (Master)",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "meteor-sandwich",
+   "name": "Meteor Sandwich",
+   "points": 10,
+   "master": true,
+   "dungeon": "Demonweb Pits",
+   "dungeon_full": "Demonweb Pits",
+   "description": "Defeat Commander Sikasila in the Demonweb Pits (Master) dungeon without anyone taking damage from Skyfall meteors",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "minimalist-defense-of-the-moondancer-master",
+   "name": "Minimalist: Defense of the Moondancer (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Defense of the Moondancer",
+   "dungeon_full": "Defense of the Moondancer",
+   "description": "Complete the Defense of the Moondancer (Master) trial at the minimum Item Level",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": [
+    "minimalist-defense-of-the-moondancer"
+   ]
+  },
+  {
+   "id": "minimalist-demogorgon-master",
+   "name": "Minimalist: Demogorgon (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Demogorgon",
+   "dungeon_full": "Demogorgon",
+   "description": "Complete the Demogorgon (Master) trial at the minimum Item Level",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "minimalist-demonweb-pits-master",
+   "name": "Minimalist: Demonweb Pits (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Demonweb Pits",
+   "dungeon_full": "Demonweb Pits",
+   "description": "Complete Demonweb Pits (Master) at the minimum Item Level",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "minimalist-gzemnids-reliquary-master",
+   "name": "Minimalist: Gzemnid's Reliquary (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Gzemnid's Reliquary",
+   "dungeon_full": "Gzemnid's Reliquary",
+   "description": "Complete the Gzemnid's Reliquary (Master) trial at the minimum Item Level",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "minimalist-jotunskar-master",
+   "name": "Minimalist: Jotunskar (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Jotunskar",
+   "dungeon_full": "Jotunskar",
+   "description": "Complete Jotunskar (Master) at the minimum Item Level",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "minimalist-shackles-of-divinity-master",
+   "name": "Minimalist: Shackles of Divinity (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Shackles of Divinity",
+   "dungeon_full": "Shackles of Divinity",
+   "description": "Complete Shackles of Divinity (Master) at the minimum Item Level",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "minimalist-soul-harvest-master",
+   "name": "Minimalist: Soul Harvest (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Soul Harvest",
+   "dungeon_full": "Soul Harvest",
+   "description": "Complete Soul Harvest (Master) at the minimum Item Level",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "minimalist-temple-of-the-spider-master",
+   "name": "Minimalist: Temple of the Spider (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Temple of the Spider",
+   "dungeon_full": "Temple of the Spider",
+   "description": "Complete Temple of the Spider (Master) at the minimum Item Level",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "minimalist-dread-sanctum-master",
+   "name": "Minimalist: Dread Sanctum (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Dread Sanctum",
+   "dungeon_full": "Dread Sanctum",
+   "description": "Complete the Dread Sanctum (Master) at the minimum Item Level",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": [
+    "minimalist-the-dread-sanctum-master"
+   ]
+  },
+  {
+   "id": "minimalist-imperial-citadel-master",
+   "name": "Minimalist: Imperial Citadel (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Imperial Citadel",
+   "dungeon_full": "Imperial Citadel",
+   "description": "Complete The Imperial Citadel (Master) at the minimum Item Level",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": [
+    "minimalist-the-imperial-citadel-master"
+   ]
+  },
+  {
+   "id": "minimalist-lair-of-the-mad-dragon-master",
+   "name": "Minimalist: Lair of the Mad Dragon (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Lair of the Mad Dragon",
+   "dungeon_full": "Lair of the Mad Dragon",
+   "description": "Complete The Lair of the Mad Dragon (Master) at the minimum Item Level",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": [
+    "minimalist-the-lair-of-the-mad-dragon"
+   ]
+  },
+  {
+   "id": "no-assistance-needed",
+   "name": "No Assistance Needed",
+   "points": 10,
+   "master": true,
+   "dungeon": "Rise of Tiamat",
+   "dungeon_full": "Rise of Tiamat",
+   "description": "Complete the Rise of Tiamat (Master) trial without any players using a Dragon Soul power",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "no-knockup-nonsense-master",
+   "name": "No Knockup Nonsense (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Imperial Citadel",
+   "dungeon_full": "Imperial Citadel",
+   "description": "Defeat the Monstrous Menagerie in the Imperial Citadel (Master) dungeon without anyone receiving a low gravity knockup from the Thoon Hulk's Ground Slam attack.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "no-spider-deaths",
+   "name": "No Spider Deaths",
+   "points": 10,
+   "master": true,
+   "dungeon": "Demonweb Pits",
+   "dungeon_full": "Demonweb Pits",
+   "description": "Defeat Lolth in the Demonweb Pits (Master) dungeon without killing any Silk Sprayers, Death Defying Spiders, Chase Spiders, or Demonweb Phasespiders",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "no-spider-deja-vu-master",
+   "name": "No Spider Déjà Vu (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Imperial Citadel",
+   "dungeon_full": "Imperial Citadel",
+   "description": "Defeat the Monstrous Menagerie in the Imperial Citadel (Master) dungeon without killing any spiders.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "offer-declined",
+   "name": "Offer Declined",
+   "points": 10,
+   "master": true,
+   "dungeon": "Temple of the Spider",
+   "dungeon_full": "Temple of the Spider",
+   "description": "Defeat Syndryth in Temple of the Spider (Master) without interecepting Insidious Offer",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "ole",
+   "name": "Ole",
+   "points": 30,
+   "master": true,
+   "dungeon": "Demogorgon",
+   "dungeon_full": "Demogorgon",
+   "description": "Complete the Demogorgon (Master) trial and guide Goristro into the gold portal every charge.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "peek-a-boo",
+   "name": "Peek-A-Boo",
+   "points": 10,
+   "master": true,
+   "dungeon": "Jotunskar",
+   "dungeon_full": "Jotunskar",
+   "description": "Complete Jotunskar (Master) without any player being Petrified by Epli or Ber's Petrifying Gaze",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "perfection-defense-of-the-moondancer-master",
+   "name": "Perfection: Defense of the Moondancer (Master)",
+   "points": 30,
+   "master": true,
+   "dungeon": "Defense of the Moondancer",
+   "dungeon_full": "Defense of the Moondancer",
+   "description": "Complete the Defense of the Moondancer (Master) trial without any players being defeated.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": [
+    "perfection-defense-of-the-moondancer"
+   ]
+  },
+  {
+   "id": "perfection-demogorgon-master",
+   "name": "Perfection: Demogorgon (Master)",
+   "points": 30,
+   "master": true,
+   "dungeon": "Demogorgon",
+   "dungeon_full": "Demogorgon",
+   "description": "Complete the Demogorgon (Master) trial without any players being defeated.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "perfection-demonweb-pits-master",
+   "name": "Perfection: Demonweb Pits (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Demonweb Pits",
+   "dungeon_full": "Demonweb Pits",
+   "description": "Complete Demonweb Pits (Master) without any players being defeated",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "perfection-gzemnids-reliquary-master",
+   "name": "Perfection: Gzemnid's Reliquary (Master)",
+   "points": 30,
+   "master": true,
+   "dungeon": "Gzemnid's Reliquary",
+   "dungeon_full": "Gzemnid's Reliquary",
+   "description": "Complete the Gzemnid's Reliquary (Master) trial without any players being defeated.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "perfection-jotunskar-master",
+   "name": "Perfection: Jotunskar (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Jotunskar",
+   "dungeon_full": "Jotunskar",
+   "description": "Complete Jotunskar (Master) without any players being defeated",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "perfection-shackles-of-divinity-master",
+   "name": "Perfection: Shackles of Divinity (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Shackles of Divinity",
+   "dungeon_full": "Shackles of Divinity",
+   "description": "Complete Shackles of Divinity (Master) without any players being defeated",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "perfection-soul-harvest-master",
+   "name": "Perfection: Soul Harvest (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Soul Harvest",
+   "dungeon_full": "Soul Harvest",
+   "description": "Complete Soul Harvest (Master) without any players being defeated",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "perfection-temple-of-the-spider-master",
+   "name": "Perfection: Temple of the Spider (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Temple of the Spider",
+   "dungeon_full": "Temple of the Spider",
+   "description": "Complete Temple of the Spider (Master) without any players being defeated",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "perfection-dread-sanctum-master",
+   "name": "Perfection: Dread Sanctum (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Dread Sanctum",
+   "dungeon_full": "Dread Sanctum",
+   "description": "Complete the Dread Sanctum (Master) without any players being defeated",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": [
+    "perfection-the-dread-sanctum-master"
+   ]
+  },
+  {
+   "id": "perfection-imperial-citadel-master",
+   "name": "Perfection: Imperial Citadel (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Imperial Citadel",
+   "dungeon_full": "Imperial Citadel",
+   "description": "Complete The Imperial Citadel (Master) without any players being defeated",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": [
+    "perfection-the-imperial-citadel-master"
+   ]
+  },
+  {
+   "id": "perfection-lair-of-the-mad-dragon-master",
+   "name": "Perfection: Lair of the Mad Dragon (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Lair of the Mad Dragon",
+   "dungeon_full": "Lair of the Mad Dragon",
+   "description": "Complete The Lair of the Mad Dragon (Master) without any players being defeated",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": [
+    "perfection-the-lair-of-the-mad-dragon"
+   ]
+  },
+  {
+   "id": "pew-pew-pew",
+   "name": "Pew, pew, pew",
+   "points": 25,
+   "master": false,
+   "dungeon": "Castle Ravenloft",
+   "dungeon_full": "Castle Ravenloft",
+   "description": "Kill all vampires in the Chapel before using the Holy Symbol of Ravenkind in Castle Ravenloft",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "pirate-kings-retreat-epic",
+   "name": "Pirate King's Retreat (Epic)",
+   "points": 15,
+   "master": false,
+   "dungeon": "Pirate King's Retreat",
+   "dungeon_full": "Pirate King's Retreat (Pirate's Skyhold)",
+   "description": "Complete the Epic difficulty \"Pirate King's Reatreat\" dungeon in Pirate's Skyhold",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "portal-dodger",
+   "name": "Portal Dodger",
+   "points": 5,
+   "master": true,
+   "dungeon": "Spellplague Caverns",
+   "dungeon_full": "Spellplague Caverns",
+   "description": "Trigger less than 6 portals in Spellplague Caverns (Master)",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "power-nap",
+   "name": "Power Nap",
+   "points": 10,
+   "master": true,
+   "dungeon": "Temple of the Spider",
+   "dungeon_full": "Temple of the Spider",
+   "description": "Defeat Syndryth in Temple of the Spider (Master) without any player being trapped in a cocoon for more than 5 seconds",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "protector-of-the-moondancer",
+   "name": "Protector of the Moondancer",
+   "points": 10,
+   "master": false,
+   "dungeon": "Defense of the Moondancer",
+   "dungeon_full": "Defense of the Moondancer",
+   "description": "Complete The Following Achievements",
+   "subs": [
+    {
+     "text": "Defense of the Moondancer (Master)",
+     "ref": "defense-of-the-moondancer-master"
+    },
+    {
+     "text": "Perfection: Defense of the Moondancer (Master)",
+     "ref": "perfection-defense-of-the-moondancer-master"
+    },
+    {
+     "text": "Dash: Defense of the Moondancer (Master)",
+     "ref": "dash-defense-of-the-moondancer-master"
+    },
+    {
+     "text": "Minimalist: Defense of the Moondancer (Master)",
+     "ref": "minimalist-defense-of-the-moondancer-master"
+    },
+    {
+     "text": "Controlled Breathing (Master)",
+     "ref": "controlled-breathing-master"
+    },
+    {
+     "text": "I'm the Captain Now (Master)",
+     "ref": "im-the-captain-now-master"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "pure-of-heart",
+   "name": "Pure of Heart",
+   "points": 10,
+   "master": true,
+   "dungeon": "Zariel's Challenge",
+   "dungeon_full": "Zariel's Challenge",
+   "description": "Complete Zariel's Challenge (Master)",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "pure-of-soul",
+   "name": "Pure of Soul",
+   "points": 30,
+   "master": true,
+   "dungeon": "Zariel's Challenge",
+   "dungeon_full": "Zariel's Challenge",
+   "description": "Ensure no players die in Zariel's Challenge (Master)",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "pure-skills",
+   "name": "Pure Skills",
+   "points": 10,
+   "master": true,
+   "dungeon": "Shackles of Divinity",
+   "dungeon_full": "Shackles of Divinity",
+   "description": "Complete Shackles of Divinity (Master) without any player taking damage from a Corrupting Vortex",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "questionable-tactics",
+   "name": "Questionable Tactics",
+   "points": 10,
+   "master": true,
+   "dungeon": "Demonweb Pits",
+   "dungeon_full": "Demonweb Pits",
+   "description": "Defeat Commander Sikasila in the Demonweb Pits (Master) dungeon while at least 1 party member has 20 stacks of Demonic Influence",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "ravin-loft",
+   "name": "Ravin' Loft",
+   "points": 25,
+   "master": false,
+   "dungeon": "Castle Ravenloft",
+   "dungeon_full": "Castle Ravenloft",
+   "description": "Wait for all 5 Haunted Ballroom dancer groups to attack before defeating any in Castle Ravenloft",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "really-mighty-party",
+   "name": "Really Mighty Party",
+   "points": 10,
+   "master": true,
+   "dungeon": "Demonweb Pits",
+   "dungeon_full": "Demonweb Pits",
+   "description": "Defeat Gromph Baenre in the Demonweb Pits (Master) dungeon when three or more summoned demons are still alive.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "regents-banishment",
+   "name": "Regents Banishment",
+   "points": 10,
+   "master": false,
+   "dungeon": "Soul Harvest",
+   "dungeon_full": "Soul Harvest",
+   "description": "Complete the Following Achievements",
+   "subs": [
+    {
+     "text": "Perfection: Soul Harvest (Master)",
+     "ref": "perfection-soul-harvest-master"
+    },
+    {
+     "text": "Dash: Soul Harvest (Master)",
+     "ref": "dash-soul-harvest-master"
+    },
+    {
+     "text": "Minimalist: Soul Harvest (Master)",
+     "ref": "minimalist-soul-harvest-master"
+    },
+    {
+     "text": "What Mist?",
+     "ref": "what-mist"
+    },
+    {
+     "text": "Neverfozen (Master)",
+     "ref": "neverfozen-master"
+    },
+    {
+     "text": "Into the Frying Pan (Master)",
+     "ref": "into-the-frying-pan-master"
+    },
+    {
+     "text": "Rotten Luck",
+     "ref": "rotten-luck"
+    },
+    {
+     "text": "Definitely Not Urban Acrobatics...",
+     "ref": "definitely-not-urban-acrobatics"
+    },
+    {
+     "text": "Deny the Orchestrator",
+     "ref": "deny-the-orchestrator"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "rise-of-tiamat-master",
+   "name": "Rise of Tiamat (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Rise of Tiamat",
+   "dungeon_full": "Rise of Tiamat",
+   "description": "Complete the Rise of Tiamat (Master) trial",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "rite-of-refusal",
+   "name": "Rite of Refusal",
+   "points": 10,
+   "master": true,
+   "dungeon": "Jotunskar",
+   "dungeon_full": "Jotunskar",
+   "description": "Complete Jotunskar (Master) after keeping at least one of Oddgeir's sacrifices alive for at least 40 seconds, causing the sacrifice to enrage",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "rotten-luck",
+   "name": "Rotten Luck",
+   "points": 10,
+   "master": true,
+   "dungeon": "Soul Harvest",
+   "dungeon_full": "Soul Harvest",
+   "description": "Complete Soul Harvest (Master) without any player taking damage from Letheras the Decayed's Rotting Synthesis",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "run-go-get-to-the-pool",
+   "name": "RUN! GO! GET TO THE POOL!",
+   "points": 10,
+   "master": true,
+   "dungeon": "Dread Sanctum",
+   "dungeon_full": "Dread Sanctum",
+   "description": "Defeat Graft-Harrow-Reformed in the Dread Sanctum (Master) dungeon without anyone receiving the Shattered debuff",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "sanitized",
+   "name": "Sanitized",
+   "points": 10,
+   "master": false,
+   "dungeon": "Lair of the Mad Dragon",
+   "dungeon_full": "Lair of the Mad Dragon",
+   "description": "Complete the Following Achievements",
+   "subs": [
+    {
+     "text": "Perfection: Lair of the Mad Dragon (Master)",
+     "ref": "perfection-lair-of-the-mad-dragon-master"
+    },
+    {
+     "text": "Dash: Lair of the Mad Dragon (Master)",
+     "ref": "dash-lair-of-the-mad-dragon-master"
+    },
+    {
+     "text": "Minimalist: Lair of the Mad Dragon (Master)",
+     "ref": "minimalist-lair-of-the-mad-dragon-master"
+    },
+    {
+     "text": "Terrible Night For a Curse (Master)",
+     "ref": "terrible-night-for-a-curse-master"
+    },
+    {
+     "text": "Imp-erial Execution (Master)",
+     "ref": "imp-erial-execution-master"
+    },
+    {
+     "text": "Whomsoever Hath Unleashed the Hounds (Master)",
+     "ref": "whomsoever-hath-unleashed-the-hounds-master"
+    },
+    {
+     "text": "Slow Burn (Master)",
+     "ref": "slow-burn-master"
+    },
+    {
+     "text": "A Hint of Minty Freshness (Master)",
+     "ref": "a-hint-of-minty-freshness-master"
+    },
+    {
+     "text": "Canned Heat (Master)",
+     "ref": "canned-heat-master"
+    },
+    {
+     "text": "Fake it Until You Make it",
+     "ref": "fake-it-until-you-make-it"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "shattered-shackles",
+   "name": "Shattered Shackles",
+   "points": 10,
+   "master": false,
+   "dungeon": "Shackles of Divinity",
+   "dungeon_full": "Shackles of Divinity",
+   "description": "Complete the Following Achievements",
+   "subs": [
+    {
+     "text": "Perfection: Shackles of Divinity (Master)",
+     "ref": "perfection-shackles-of-divinity-master"
+    },
+    {
+     "text": "Dash: Shackles of Divinity (Master)",
+     "ref": "dash-shackles-of-divinity-master"
+    },
+    {
+     "text": "Minimalist: Shackles of Divinity (Master)",
+     "ref": "minimalist-shackles-of-divinity-master"
+    },
+    {
+     "text": "Hold My Runes! (Master)",
+     "ref": "hold-my-runes-master"
+    },
+    {
+     "text": "Misty Stepper (Master)",
+     "ref": "misty-stepper-master"
+    },
+    {
+     "text": "Pure Skills",
+     "ref": "pure-skills"
+    },
+    {
+     "text": "Judge, Jury and No Executioner (Master)",
+     "ref": "judge-jury-and-no-executioner-master"
+    },
+    {
+     "text": "Sliced Like Spicy Sausage",
+     "ref": "sliced-like-spicy-sausage"
+    },
+    {
+     "text": "Follow The Scripture",
+     "ref": "follow-the-scripture"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "sliced-like-spicy-sausage",
+   "name": "Sliced Like Spicy Sausage",
+   "points": 10,
+   "master": true,
+   "dungeon": "Shackles of Divinity",
+   "dungeon_full": "Shackles of Divinity",
+   "description": "Complete Shackles of Divinity (Master) without any player getting hit by Valkariel's Mirage Slash",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "snuggle-buddies",
+   "name": "Snuggle Buddies",
+   "points": 10,
+   "master": true,
+   "dungeon": "Demonweb Pits",
+   "dungeon_full": "Demonweb Pits",
+   "description": "Defeat Lolth in the Demonweb Pits (Master) dungeon without anyone taking any damage from Binding Curse",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "something-to-behold",
+   "name": "Something to Behold",
+   "points": 10,
+   "master": false,
+   "dungeon": "Gzemnid's Reliquary",
+   "dungeon_full": "Gzemnid's Reliquary",
+   "description": "Complete The Following Achievements",
+   "subs": [
+    {
+     "text": "Gzemnid's Reliquary (Master)",
+     "ref": "gzemnids-reliquary-master"
+    },
+    {
+     "text": "Perfection: Gzemnid's Reliquary (Master)",
+     "ref": "perfection-gzemnids-reliquary-master"
+    },
+    {
+     "text": "Dash: Gzemnid's Reliquary (Master)",
+     "ref": "dash-gzemnids-reliquary-master"
+    },
+    {
+     "text": "Dodge, Duck, Dip, Dive, and Dodge",
+     "ref": "dodge-duck-dip-dive-and-dodge"
+    },
+    {
+     "text": "Minimalist: Gzemnid's Reliquary (Master)",
+     "ref": "minimalist-gzemnids-reliquary-master"
+    },
+    {
+     "text": "Boss Bonanza",
+     "ref": "boss-bonanza"
+    },
+    {
+     "text": "Conservator",
+     "ref": "conservator"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "spellplague-caverns",
+   "name": "Spellplague Caverns",
+   "points": 10,
+   "master": false,
+   "dungeon": "Spellplague Caverns",
+   "dungeon_full": "Spellplague Caverns (the Chasm)",
+   "description": "Complete the \"Spellplague Caverns\" dungeon in the Chasm",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "squeaky-clean",
+   "name": "Squeaky Clean",
+   "points": 10,
+   "master": true,
+   "dungeon": "Dread Sanctum",
+   "dungeon_full": "Dread Sanctum",
+   "description": "Defeat Yalghoor the Rank-Reformed in the Dread Sanctum (Master) dungeon without anyone taking damage from Acidic Brine",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "star-stabilizer-master",
+   "name": "Star Stabilizer (Master)",
+   "points": 30,
+   "master": true,
+   "dungeon": "Imperial Citadel",
+   "dungeon_full": "Imperial Citadel",
+   "description": "Complete the Imperial Citadel (Master) dungeon without letting the Star Stability Level go past 5.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "stay-out-of-the-light",
+   "name": "Stay out of the Light",
+   "points": 10,
+   "master": true,
+   "dungeon": "Imperial Citadel",
+   "dungeon_full": "Imperial Citadel",
+   "description": "Defeat the Zodar in the Imperial Citadel (Master) dungeon without anyone taking damage from Refracted Light",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "stop-hitting-yourself",
+   "name": "Stop hitting yourself!",
+   "points": 10,
+   "master": true,
+   "dungeon": "Dread Sanctum",
+   "dungeon_full": "Dread Sanctum",
+   "description": "Defeat Graft-Harrow-Reformed in the Dread Sanctum (Master) dungeon without anyone taking damage from Psionic Shield Damage Reflection",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "ten-heads-is-better-than-five",
+   "name": "Ten Heads is Better Than Five",
+   "points": 30,
+   "master": true,
+   "dungeon": "Rise of Tiamat",
+   "dungeon_full": "Rise of Tiamat",
+   "description": "Complete the Rise of Tiamat (Master) trial without any players being defeated.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "terrible-night-for-a-curse-master",
+   "name": "Terrible Night For a Curse (Master)",
+   "points": 10,
+   "master": true,
+   "dungeon": "Lair of the Mad Dragon",
+   "dungeon_full": "Lair of the Mad Dragon",
+   "description": "Defeat Mizrael Everdark in the Lair of the Mad Dragon (Master) dungeon without anyone taking Hellfire's Curse.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "tiamat-toppler",
+   "name": "Tiamat Toppler",
+   "points": 10,
+   "master": false,
+   "dungeon": "Rise of Tiamat",
+   "dungeon_full": "Rise of Tiamat",
+   "description": "Complete The Following Achievements",
+   "subs": [
+    {
+     "text": "Rise of Tiamat (Master)",
+     "ref": "rise-of-tiamat-master"
+    },
+    {
+     "text": "Ten Heads is Better Than Five",
+     "ref": "ten-heads-is-better-than-five"
+    },
+    {
+     "text": "Express Route to the Nine Hells",
+     "ref": "express-route-to-the-nine-hells"
+    },
+    {
+     "text": "No Assistance Needed",
+     "ref": "no-assistance-needed"
+    },
+    {
+     "text": "Dragon Soul Mastery",
+     "ref": "dragon-soul-mastery"
+    },
+    {
+     "text": "Coordinated Takedown",
+     "ref": "coordinated-takedown"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "today-is-not-the-day-of-the",
+   "name": "Today is not the day of the...",
+   "points": 10,
+   "master": true,
+   "dungeon": "Dread Sanctum",
+   "dungeon_full": "Dread Sanctum",
+   "description": "Defeat Yshiggol-Reformed in the Dread Sanctum (Master) dungeon without being hit by a Psionic Tentacle",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "untended-grounds",
+   "name": "Untended Grounds",
+   "points": 5,
+   "master": false,
+   "dungeon": "Royal Gardener",
+   "dungeon_full": "Royal Gardener (dungeon not named)",
+   "description": "Defeat the Royal Gardener with the maximum stacks of Corrupted Soil.",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "we-are-legion",
+   "name": "We are Legion",
+   "points": 10,
+   "master": true,
+   "dungeon": "Dread Sanctum",
+   "dungeon_full": "Dread Sanctum",
+   "description": "Defeat Yshiggol-Reformed in the Dread Sanctum (Master) dungeon with at least 25 delusions alive at the end of the fight",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "web-hacker",
+   "name": "Web Hacker",
+   "points": 10,
+   "master": false,
+   "dungeon": "Temple of the Spider",
+   "dungeon_full": "Temple of the Spider",
+   "description": "Complete The Following Achievements",
+   "subs": [
+    {
+     "text": "Temple of the Spider (Master)",
+     "ref": "temple-of-the-spider-master"
+    },
+    {
+     "text": "Perfection: Temple of the Spider (Master)",
+     "ref": "perfection-temple-of-the-spider-master"
+    },
+    {
+     "text": "Dash: Temple of the Spider (Master)",
+     "ref": "dash-temple-of-the-spider-master"
+    },
+    {
+     "text": "Minimalist: Temple of the Spider (Master)",
+     "ref": "minimalist-temple-of-the-spider-master"
+    },
+    {
+     "text": "Situation Defused",
+     "ref": "situation-defused"
+    },
+    {
+     "text": "Explosive Tendencies",
+     "ref": "explosive-tendencies"
+    },
+    {
+     "text": "Forgot the Incense",
+     "ref": "forgot-the-incense"
+    },
+    {
+     "text": "Iron Willed",
+     "ref": "iron-willed"
+    },
+    {
+     "text": "Power Nap",
+     "ref": "power-nap"
+    },
+    {
+     "text": "Offer Declined",
+     "ref": "offer-declined"
+    }
+   ],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "what-mist",
+   "name": "What Mist?",
+   "points": 10,
+   "master": true,
+   "dungeon": "Soul Harvest",
+   "dungeon_full": "Soul Harvest",
+   "description": "Complete Soul Harvest (Master) without any player taking damage from the Decaying Mist",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "aliases": []
+  },
+  {
+   "id": "demonweb-pits-master",
+   "aliases": [
+    "the-demonweb-pits-master"
+   ],
+   "name": "Demonweb Pits (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Demonweb Pits",
+   "dungeon_full": "Demonweb Pits",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "no-hex",
+   "aliases": [],
+   "name": "No Hex",
+   "points": 0,
+   "master": false,
+   "dungeon": "Demonweb Pits",
+   "dungeon_full": "Demonweb Pits",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "one-with-the-demonweb",
+   "aliases": [],
+   "name": "One with the Demonweb",
+   "points": 0,
+   "master": false,
+   "dungeon": "Demonweb Pits",
+   "dungeon_full": "Demonweb Pits",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "breaker-of-the-fivefold-ascension-master",
+   "aliases": [],
+   "name": "Breaker of the Fivefold Ascension (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Jotunskar",
+   "dungeon_full": "Jotunskar",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "gotta-stay-warm-master",
+   "aliases": [],
+   "name": "Gotta Stay Warm! (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Jotunskar",
+   "dungeon_full": "Jotunskar",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-the-cloak-tower-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete The Cloak Tower on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Cloak Tower",
+   "dungeon_full": "Cloak Tower",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-cragmire-crypts-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Cragmire Crypts on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Cragmire Crypts",
+   "dungeon_full": "Cragmire Crypts",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-gray-wolf-den-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Gray Wolf Den on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Gray Wolf Den",
+   "dungeon_full": "Gray Wolf Den",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-pirate-kings-retreat-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Pirate King's Retreat on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Pirate King's Retreat",
+   "dungeon_full": "Pirate King's Retreat",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-frozen-heart-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Frozen Heart on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Icespire's Frozen Heart",
+   "dungeon_full": "Icespire's Frozen Heart",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-spellplague-cavern-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Spellplague Cavern on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Spellplague Caverns",
+   "dungeon_full": "Spellplague Caverns",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-temple-of-the-spider-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Temple of the Spider on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Temple of the Spider",
+   "dungeon_full": "Temple of the Spider",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-cavern-karrundax-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Cavern Karrundax on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Caverns of Karrundax",
+   "dungeon_full": "Caverns of Karrundax",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-kessells-run-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Kessell's Run on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Kessell's Retreat",
+   "dungeon_full": "Kessell's Retreat",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-shore-of-tuern-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Shore of Tuern on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Shore of Tuern",
+   "dungeon_full": "Shore of Tuern",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-malabogs-castle-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Malabog's Castle on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Malabog's Castle",
+   "dungeon_full": "Malabog's Castle",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-valindras-tower-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Valindra's Tower on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Valindra's Tower",
+   "dungeon_full": "Valindra's Tower",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-lair-of-lostmauth-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Lair of Lostmauth on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Lair of Lostmauth",
+   "dungeon_full": "Lair of Lostmauth",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-cragmire-crypts-epic-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Cragmire Crypts (Epic) on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Cragmire Crypts",
+   "dungeon_full": "Cragmire Crypts",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-gray-wolf-den-epic-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Gray Wolf Den (Epic) on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Gray Wolf Den",
+   "dungeon_full": "Gray Wolf Den",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-castle-never-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Castle Never on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Castle Never",
+   "dungeon_full": "Castle Never",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-fangbreaker-island-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Fangbreaker Island on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Fangbreaker Island",
+   "dungeon_full": "Fangbreaker Island",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-spellplague-cavern-epic-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Spellplague Cavern (Epic) on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Spellplague Caverns",
+   "dungeon_full": "Spellplague Caverns",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-tomb-of-the-nine-gods-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Tomb of the Nine Gods on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Tomb of the Nine Gods",
+   "dungeon_full": "Tomb of the Nine Gods",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "complete-castle-ravenloft-on-hardcore-mode",
+   "aliases": [],
+   "name": "Complete Castle Ravenloft on Hardcore Mode",
+   "points": 0,
+   "master": false,
+   "dungeon": "Castle Ravenloft",
+   "dungeon_full": "Castle Ravenloft",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "alcove-of-light-garden",
+   "aliases": [],
+   "name": "Alcove of Light: Garden",
+   "points": 0,
+   "master": false,
+   "dungeon": "Alcoves of Light",
+   "dungeon_full": "Alcoves of Light (dungeon not named)",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "alcove-of-light-forest",
+   "aliases": [],
+   "name": "Alcove of Light: Forest",
+   "points": 0,
+   "master": false,
+   "dungeon": "Alcoves of Light",
+   "dungeon_full": "Alcoves of Light (dungeon not named)",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "alcove-of-light-thorns",
+   "aliases": [],
+   "name": "Alcove of Light: Thorns",
+   "points": 0,
+   "master": false,
+   "dungeon": "Alcoves of Light",
+   "dungeon_full": "Alcoves of Light (dungeon not named)",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "imperial-citadel-master",
+   "aliases": [
+    "the-imperial-citadel-master"
+   ],
+   "name": "Imperial Citadel (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Imperial Citadel",
+   "dungeon_full": "Imperial Citadel",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "defense-of-the-moondancer-master",
+   "aliases": [],
+   "name": "Defense of the Moondancer (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Defense of the Moondancer",
+   "dungeon_full": "Defense of the Moondancer",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "neverfozen-master",
+   "aliases": [],
+   "name": "Neverfozen (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Soul Harvest",
+   "dungeon_full": "Soul Harvest",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "into-the-frying-pan-master",
+   "aliases": [],
+   "name": "Into the Frying Pan (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Soul Harvest",
+   "dungeon_full": "Soul Harvest",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "imp-erial-execution-master",
+   "aliases": [],
+   "name": "Imp-erial Execution (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Lair of the Mad Dragon",
+   "dungeon_full": "Lair of the Mad Dragon",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "whomsoever-hath-unleashed-the-hounds-master",
+   "aliases": [],
+   "name": "Whomsoever Hath Unleashed the Hounds (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Lair of the Mad Dragon",
+   "dungeon_full": "Lair of the Mad Dragon",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "slow-burn-master",
+   "aliases": [],
+   "name": "Slow Burn (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Lair of the Mad Dragon",
+   "dungeon_full": "Lair of the Mad Dragon",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "a-hint-of-minty-freshness-master",
+   "aliases": [],
+   "name": "A Hint of Minty Freshness (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Lair of the Mad Dragon",
+   "dungeon_full": "Lair of the Mad Dragon",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "hold-my-runes-master",
+   "aliases": [],
+   "name": "Hold My Runes! (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Shackles of Divinity",
+   "dungeon_full": "Shackles of Divinity",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "misty-stepper-master",
+   "aliases": [],
+   "name": "Misty Stepper (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Shackles of Divinity",
+   "dungeon_full": "Shackles of Divinity",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "judge-jury-and-no-executioner-master",
+   "aliases": [],
+   "name": "Judge, Jury and No Executioner (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Shackles of Divinity",
+   "dungeon_full": "Shackles of Divinity",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "temple-of-the-spider-master",
+   "aliases": [],
+   "name": "Temple of the Spider (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Temple of the Spider",
+   "dungeon_full": "Temple of the Spider",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "dash-temple-of-the-spider-master",
+   "aliases": [],
+   "name": "Dash: Temple of the Spider (Master)",
+   "points": 0,
+   "master": true,
+   "dungeon": "Temple of the Spider",
+   "dungeon_full": "Temple of the Spider",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "situation-defused",
+   "aliases": [],
+   "name": "Situation Defused",
+   "points": 0,
+   "master": false,
+   "dungeon": "Temple of the Spider",
+   "dungeon_full": "Temple of the Spider",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  },
+  {
+   "id": "forgot-the-incense",
+   "aliases": [],
+   "name": "Forgot the Incense",
+   "points": 0,
+   "master": false,
+   "dungeon": "Temple of the Spider",
+   "dungeon_full": "Temple of the Spider",
+   "description": "",
+   "subs": [],
+   "counters": [],
+   "notes": "",
+   "catalog_only": true
+  }
+ ]
+}

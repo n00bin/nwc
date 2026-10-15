@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dungeon Achievement Tracker — Neverwinter Compendium</title>
+  <meta name="description" content="Track Neverwinter dungeon achievements, tick them off, and see which ones you are closest to finishing. A growing list (about 160 so far), with more being added. Sign in with Discord to keep your progress on any device.">
+  <meta property="og:title" content="Dungeon Achievement Tracker — Neverwinter Compendium">
+  <meta property="og:description" content="Track Neverwinter dungeon achievements, tick them off, and see which ones you are closest to finishing. A growing list (about 160 so far), with more being added. Sign in with Discord to keep your progress on any device.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://n00bin.github.io/nwc/achievement-tracker.html">
+  <meta property="og:url" content="https://n00bin.github.io/nwc/achievement-tracker.html">
+  <meta property="og:image" content="https://n00bin.github.io/nwc/og-image.png">
+  <meta property="og:site_name" content="Neverwinter Compendium">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dungeon Achievement Tracker — Neverwinter Compendium">
+  <meta name="twitter:description" content="Track Neverwinter dungeon achievements, tick them off, and see which ones you are closest to finishing. A growing list (about 160 so far), with more being added. Sign in with Discord to keep your progress on any device.">
+  <meta name="twitter:image" content="https://n00bin.github.io/nwc/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    /* Mobile-first: everything below is the phone layout; @media blocks at the
+       bottom widen it. Touch targets are 44px minimum. Inputs are 16px so iOS
+       Safari does not zoom the page when one is focused. */
+    :root { --nav-h: 52px; }
+    html { scroll-padding-top: calc(var(--nav-h) + 70px); }   /* focused controls don't hide under the sticky bar */
+    .ach-page, .ach-filters { color-scheme: dark; }   /* native checkboxes/selects match the dark theme */
+    .ach-page { max-width: 1100px; margin: 0 auto; padding: 0.75rem 0.75rem 3rem; padding-bottom: calc(3rem + env(safe-area-inset-bottom)); }
+    .ach-page h2 { font-size: 1.35rem; margin-bottom: 0.35rem; }
+    .ach-intro { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.5; margin-bottom: 0.75rem; }
+
+    /* ---- Account / sync strip ---- */
+    .ach-acct {
+      background: var(--bg-surface); border: 1px solid var(--border-default);
+      border-radius: var(--radius-md); padding: 0.7rem 0.85rem; margin-bottom: 0.75rem;
+    }
+    .ach-acct-line { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.45; }
+    .ach-acct-line strong { color: var(--text-primary); }
+    .ach-acct-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.6rem; }
+    .ach-fine { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.4; }
+
+    .ach-btn {
+      min-height: 44px; padding: 0 1rem; border-radius: var(--radius-md);
+      border: 1px solid var(--border-default); background: var(--bg-elevated);
+      color: var(--text-primary); font: inherit; font-size: 0.92rem; font-weight: 600;
+      cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .ach-btn:active { background: var(--bg-hover); }
+    .ach-btn:focus-visible, .ach-field:focus-visible, .ach-card input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .ach-btn-primary { background: var(--accent); border-color: var(--accent); color: #0d1117; }
+    .ach-btn-primary:active { background: var(--accent-hover); }
+
+    .ach-choice { margin-top: 0.6rem; padding: 0.7rem; border: 1px solid var(--highlight); border-radius: var(--radius-md); background: rgba(240,136,62,0.08); font-size: 0.9rem; line-height: 1.45; }
+    .ach-more { margin-top: 0.6rem; }
+    .ach-more summary {
+      min-height: 44px; display: flex; align-items: center; cursor: pointer;
+      color: var(--accent); font-size: 0.9rem; font-weight: 600; list-style: none;
+    }
+    .ach-more summary::-webkit-details-marker { display: none; }
+    .ach-more summary::before { content: "\25B8"; margin-right: 0.45rem; transition: transform 0.15s; }
+    .ach-more[open] summary::before { transform: rotate(90deg); }
+
+    /* ---- Sticky compact filter bar ---- */
+    .ach-bar {
+      position: sticky; top: var(--nav-h); z-index: 90;
+      background: var(--bg-primary); border-bottom: 1px solid var(--border-default);
+      margin: 0 -0.75rem 0.5rem; padding: 0.45rem 0.75rem;
+    }
+    .ach-bar-row { display: flex; gap: 0.5rem; align-items: center; }
+    .ach-field {
+      min-height: 44px; border-radius: var(--radius-md); border: 1px solid var(--border-default);
+      background: var(--bg-elevated); color: var(--text-primary); font: inherit; font-size: 16px;
+      padding: 0 0.75rem; min-width: 0;
+    }
+    .ach-search { flex: 1; }
+    .ach-filter-btn { position: relative; }
+    .ach-filter-count {
+      background: var(--highlight); color: #0d1117; border-radius: 999px;
+      min-width: 1.4rem; height: 1.4rem; font-size: 0.78rem; font-weight: 800;
+      display: none; align-items: center; justify-content: center; padding: 0 0.3rem;
+    }
+    .ach-filter-count.on { display: inline-flex; }
+
+    /* Filters: a bottom sheet on phones, an inline row on wide screens. */
+    .ach-filters { display: none; }
+    .ach-filters.open {
+      display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 400;
+      max-height: 85vh; max-height: 85dvh; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+      background: var(--bg-surface); border-top: 1px solid var(--border-default);
+      border-radius: 14px 14px 0 0; padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+      box-shadow: 0 -12px 40px rgba(0,0,0,0.55);
+    }
+    .ach-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 399; }
+    body.ach-sheet-open .ach-backdrop { display: block; }
+    body.ach-sheet-open .ach-bar { z-index: 400; }
+    body.ach-sheet-open { overflow: hidden; }
+    .ach-sheet-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center; }
+    .ach-ctl { display: block; margin-bottom: 0.85rem; }
+    .ach-ctl-label { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.3rem; }
+    .ach-ctl select { width: 100%; }
+    .ach-seg { display: flex; border: 1px solid var(--border-default); border-radius: var(--radius-md); overflow: hidden; }
+    .ach-seg button {
+      flex: 1; min-height: 44px; white-space: nowrap; padding: 0 0.9rem; background: var(--bg-elevated); color: var(--text-secondary);
+      border: 0; border-right: 1px solid var(--border-default); font: inherit; font-size: 0.92rem; font-weight: 600; cursor: pointer;
+    }
+    .ach-seg button:last-child { border-right: 0; }
+    .ach-seg button[aria-pressed="true"] { background: var(--accent); color: #0d1117; }
+    .ach-check { display: flex; align-items: center; gap: 0.7rem; min-height: 44px; cursor: pointer; font-size: 0.95rem; }
+    .ach-check input { width: 24px; height: 24px; accent-color: var(--accent); flex-shrink: 0; }
+    .ach-sheet-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+    .ach-sheet-actions .ach-btn { flex: 1; }
+
+    .ach-sum { font-size: 0.86rem; color: var(--text-secondary); margin: 0.25rem 0 0.7rem; line-height: 1.45; }
+
+    /* ---- List + cards (single column on phones) ---- */
+    .ach-list { display: grid; grid-template-columns: 1fr; gap: 0.65rem; }
+    .ach-group {
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--highlight); border-bottom: 1px solid var(--border-default);
+      padding: 0.4rem 0 0.25rem; margin-top: 0.5rem; grid-column: 1 / -1;
+    }
+    .ach-card {
+      background: var(--bg-surface); border: 1px solid var(--border-default);
+      border-left: 3px solid var(--border-default);
+      border-radius: var(--radius-md); padding: 0.8rem 0.85rem;
+    }
+    .ach-card.master { border-left-color: var(--highlight); }
+    .ach-card.done { border-left-color: var(--stat-positive); background: #131a16; }
+    .ach-top { display: flex; align-items: flex-start; gap: 0.6rem; }
+    .ach-name { flex: 1; font-family: var(--font-main); font-size: 1rem; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
+    .ach-card.done .ach-name { color: var(--text-secondary); }
+    .ach-pts { color: var(--highlight); font-weight: 800; white-space: nowrap; font-size: 0.95rem; }
+    .ach-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.4rem 0; }
+    .ach-tag {
+      font-size: 0.74rem; font-weight: 600; padding: 0.12rem 0.55rem; border-radius: 999px;
+      background: var(--bg-elevated); border: 1px solid var(--border-default); color: var(--text-secondary);
+    }
+    .ach-tag.m { color: var(--highlight); border-color: #8a4f1f; background: rgba(240,136,62,0.1); }
+    .ach-tag.todo { font-style: italic; }
+    .ach-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; overflow-wrap: anywhere; }
+    .ach-desc.todo { font-style: italic; color: var(--text-muted); }
+    .ach-reward { font-size: 0.84rem; color: var(--highlight); margin-top: 0.3rem; }
+
+    .ach-subs { list-style: none; margin: 0.4rem 0 0; }
+    .ach-sub { display: flex; align-items: center; gap: 0.7rem; min-height: 44px; cursor: pointer; font-size: 0.92rem; line-height: 1.35; padding: 0.15rem 0; border-top: 1px solid rgba(48,54,61,0.6); }
+    .ach-subs li:first-child .ach-sub { border-top: 0; }
+    .ach-sub input { width: 24px; height: 24px; accent-color: var(--stat-positive); flex-shrink: 0; }
+    .ach-sub.d span { color: var(--text-muted); text-decoration: line-through; }
+
+    .ach-ctrs { margin-top: 0.4rem; }
+    .ach-ctr { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; min-height: 44px; font-size: 0.92rem; padding: 0.15rem 0; }
+    .ach-ctr-label { flex: 1 1 100%; color: var(--text-secondary); }
+    .ach-step {
+      width: 44px; height: 44px; border-radius: var(--radius-md); border: 1px solid var(--border-default);
+      background: var(--bg-elevated); color: var(--text-primary); font-size: 1.4rem; font-weight: 700; line-height: 1; cursor: pointer;
+    }
+    .ach-step:active { background: var(--bg-hover); }
+    .ach-num { width: 4.2rem; text-align: center; padding: 0 0.3rem; }
+    .ach-ctr-of { color: var(--text-muted); }
+
+    .ach-progress { height: 8px; background: var(--bg-primary); border: 1px solid var(--border-default); border-radius: 999px; overflow: hidden; margin-top: 0.65rem; }
+    .ach-progress i { display: block; height: 100%; background: var(--highlight); }
+    .ach-card.done .ach-progress i { background: var(--stat-positive); }
+    .ach-foot { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-top: 0.5rem; }
+    .ach-left { font-size: 0.82rem; color: var(--text-muted); }
+    .ach-donebtn { min-width: 110px; }
+    .ach-donebtn[aria-pressed="true"] { background: var(--stat-positive); border-color: var(--stat-positive); color: #0d1117; }
+
+    .ach-empty { text-align: center; color: var(--text-muted); padding: 2rem 1rem; border: 1px dashed var(--border-default); border-radius: var(--radius-md); }
+    #ach-toast {
+      position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(1rem + env(safe-area-inset-bottom));
+      background: var(--bg-elevated); border: 1px solid var(--border-default); border-left: 4px solid var(--highlight);
+      padding: 0.65rem 1rem; border-radius: var(--radius-md); font-size: 0.9rem; max-width: 92vw;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 500;
+    }
+    #ach-toast.show { opacity: 1; }
+
+    /* ---- Wider screens ---- */
+    @media (min-width: 760px) {
+      .ach-page { padding: 1rem 1.5rem 3rem; }
+      .ach-bar { margin: 0 -1.5rem 0.5rem; padding: 0.5rem 1.5rem; }
+      .ach-filter-btn, .ach-sheet-title, #ach-apply { display: none; }
+      .ach-sheet-actions { margin: 0 0 0 0.25rem; }
+      .ach-sheet-actions .ach-btn { flex: none; }
+      .ach-bar-row { flex-wrap: wrap; }
+      .ach-search { flex: 1 1 260px; }
+      .ach-filters, .ach-filters.open {
+        display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; align-items: flex-end;
+        position: static; max-height: none; overflow: visible; background: none; border: 0; box-shadow: none;
+        border-radius: 0; padding: 0.5rem 0 0; flex-basis: 100%;
+      }
+      .ach-ctl { margin-bottom: 0; }
+      .ach-ctl select { width: auto; }
+      body.ach-sheet-open { overflow: auto; }
+      .ach-list { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+    }
+    @media (min-width: 1100px) { .ach-list { grid-template-columns: repeat(3, 1fr); } }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://n00bin.github.io/nwc/achievement-tracker.html#webpage",
+        "url": "https://n00bin.github.io/nwc/achievement-tracker.html",
+        "name": "Dungeon Achievement Tracker — Neverwinter Compendium",
+        "description": "Track Neverwinter dungeon achievements, tick them off, and see which ones you are closest to finishing.",
+        "isPartOf": { "@id": "https://n00bin.github.io/nwc/#website" },
+        "inLanguage": "en",
+        "primaryImageOfPage": "https://n00bin.github.io/nwc/og-image.png",
+        "breadcrumb": { "@id": "https://n00bin.github.io/nwc/achievement-tracker.html#breadcrumb" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://n00bin.github.io/nwc/achievement-tracker.html#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://n00bin.github.io/nwc/" },
+          { "@type": "ListItem", "position": 2, "name": "Creators & Tools", "item": "https://n00bin.github.io/nwc/creators-tools.html" },
+          { "@type": "ListItem", "position": 3, "name": "Dungeon Achievement Tracker", "item": "https://n00bin.github.io/nwc/achievement-tracker.html" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <main class="ach-page">
+    <h2>Dungeon Achievement Tracker</h2>
+    <p class="ach-intro">Track dungeon achievements, tick them off, and see which ones you are closest to. A growing list (about 160 so far), with more being added. Sign in with Discord to keep your progress on any device.</p>
+
+    <section class="ach-acct" id="ach-acct" aria-live="polite"></section>
+
+    <div class="ach-bar" id="ach-bar">
+      <div class="ach-bar-row">
+        <input class="ach-field ach-search" id="ach-q" type="search" placeholder="Search dungeon, name or text" aria-label="Search achievements" autocomplete="off" enterkeyhint="search">
+        <button class="ach-btn ach-filter-btn" id="ach-filter-btn" type="button" aria-haspopup="dialog" aria-expanded="false">Filter <span class="ach-filter-count" id="ach-filter-count"></span></button>
+        <div class="ach-filters" id="ach-filters" role="dialog" aria-label="Filter achievements">
+          <div class="ach-sheet-title"><span>Filter</span></div>
+          <div class="ach-ctl">
+            <span class="ach-ctl-label">Show</span>
+            <div class="ach-seg" id="ach-status" role="group" aria-label="Show">
+              <button type="button" data-v="open" aria-pressed="true">Not done</button>
+              <button type="button" data-v="done" aria-pressed="false">Done</button>
+              <button type="button" data-v="all" aria-pressed="false">All</button>
+            </div>
+          </div>
+          <label class="ach-ctl"><span class="ach-ctl-label">Dungeon</span>
+            <select class="ach-field" id="ach-dungeon"><option value="">All dungeons</option></select></label>
+          <label class="ach-ctl"><span class="ach-ctl-label">Sort</span>
+            <select class="ach-field" id="ach-sort">
+              <option value="left">Closest to completion</option>
+              <option value="dungeon">By dungeon</option>
+              <option value="points">Most points</option>
+              <option value="name">By name</option>
+            </select></label>
+          <label class="ach-check"><input type="checkbox" id="ach-master"> Master only</label>
+          <label class="ach-check"><input type="checkbox" id="ach-hide-todo" checked> Hide ones with no details yet</label>
+          <div class="ach-sheet-actions">
+            <button class="ach-btn" id="ach-clear" type="button">Clear filters</button>
+            <button class="ach-btn ach-btn-primary" id="ach-apply" type="button">Show results</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ach-backdrop" id="ach-backdrop"></div>
+
+    <p class="ach-sum" id="ach-sum" aria-live="polite">Loading the achievement list&hellip;</p>
+    <div class="ach-list" id="ach-list"></div>
+    <p class="ach-fine">The list is still growing. Entries marked &ldquo;details coming&rdquo; (shown if you untick the hide option) have no points or description yet.</p>
+  </main>
+
+  <div id="ach-toast" role="status" aria-live="polite"></div>
+
+  <script src="js/shared.js"></script>
+  <script>renderNav("Creators & Tools");</script>
+  <script src="js/achievement-tracker-page.js?v=20261014c"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

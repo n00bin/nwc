@@ -89,7 +89,7 @@ DECLARE
     'consumables.html', 'mekaniks.html', 'professions.html',
     'campaign-boosters.html', 'patchnotes.html', 'reports.html',
     'toon-forge.html', 'creators-tools.html', 'insignia-priority.html',
-    'preview.html'
+    'preview.html', 'achievement-tracker.html'
   ];
 BEGIN
   v_page := lower(coalesce(p_page, ''));

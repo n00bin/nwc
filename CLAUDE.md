@@ -34,6 +34,7 @@ A static website (GitHub Pages) for Neverwinter (PS5) players. It's a reference 
 | `toon-forge.html` | Character builder + stat engine (the site's biggest app; deliberately NOT in the navbar — reached via Creators & Tools) |
 | `creators-tools.html` | Directory of community creators + site tools (Toon Forge entry point) |
 | `insignia-priority.html` | Insignia priority reference |
+| `achievement-tracker.html` | Dungeon Achievement Tracker (free Discord sign-in sync; see **Achievement tracker**) |
 | `preview.html` | Mod preview content (gear, comps, screenshots) |
 
 Deployed but not public-facing: `admin.html` — private traffic dashboard,
@@ -347,6 +348,58 @@ membership. `/api/optimize` and `/api/optimizer_js` check `tier == "member"`;
 **Deploying a backend change here needs BOTH:** the SQL run in Supabase, and
 `premium/` redeployed to Vercel (`vercel --prod` from `premium/`). `premium/`
 is gitignored, so pushing the website repo does not ship it.
+
+---
+
+## Achievement tracker (Dungeon Achievement Tracker)
+
+`achievement-tracker.html` + `js/achievement-tracker-page.js`, reached via Creators & Tools (not in
+the navbar, like Toon Forge). Mobile-first. Progress is per player: localStorage
+(`nwcb:achievements:v1`, which also records the Discord id that owns it) plus, when signed in, a
+cloud copy through the SAME free Discord sign-in and token as Toon Forge cloud saves
+(`toon-forge:acct`, `?acct=1`). Same caveat as Toon Forge: a 401 drops the shared token, so it
+signs the player out of both tools.
+
+- **Catalog:** `data/achievements-dungeons.json` is the one place to update. It is hand-edited
+  (NOT built by `build-data.py`). `scripts/seed-achievements-catalog.py` was a ONE-TIME seed from the
+  owner's screenshot read of 2026-10-14 and refuses to overwrite without `--force`. About 160
+  entries: 120 open ones read from the screenshots + 43 `catalog_only` names (found only as
+  sub-items, points 0, hidden by default behind "hide ones with no details yet"). Never label the
+  list "every achievement"; it is a growing list.
+- **Catalog bump rule:** after ANY edit to the JSON, bump `?v=` on `CAT_URL` in
+  `js/achievement-tracker-page.js` AND on the `<script src="js/achievement-tracker-page.js?v=...">`
+  tag in the HTML, or returning players keep the old file.
+- **Id stability:** an entry's `id` is the key of every player's saved progress. NEVER change an id.
+  If a name must change, keep the old id as is, or give the new entry a new id and list the old one
+  in its `aliases` array: `prepare()` migrates progress saved under an alias into the current id.
+- **Checklist items:** a sub-item whose `ref` is a catalog entry reads and writes THAT entry's
+  record (child done => parent box ticked; ticking the box marks the child done). The tick is never
+  stored under two ids. Parent "done" is derived from its parts, so points-left and "N left agree".
+- **Merge semantics (per field, per achievement id)** in BOTH `mergeInto` (client) and
+  `achievement_merge_record` (SQL), which must stay identical: `s` ticked sub-ids = union, `c`
+  counters = the newer record's set wins (exact tie: max per counter), `d` done = taken from the
+  newer record (an older record never un-dones a newer one; exact tie: done wins), `t` = larger
+  `t`, clamped to now + 5 minutes (client `CLOCK_SLACK_MS`, SQL `+ 300000`). Neither side ever
+  deletes records; there is no delete RPC. A counter typo can be corrected (lowering sticks, an
+  older device's stale value does not return). Known limit: un-ticking a loose (non-ref)
+  sub-item does not stick (union); done/un-done and counters do.
+- **Limits in lockstep:** `MAX_IDS` (1000) in `js/achievement-tracker-page.js` and
+  `premium/lib/achievements.py` (the SQL takes it as a parameter). The 4 KB per-record and 512 KB
+  per-player caps live in the SQL / `MAX_BYTES`.
+- **Switching Discord accounts on one browser:** the local blob stores the owner's Discord id. A
+  different account signing in gets a choice (keep separate/start empty, or merge); nothing syncs
+  until chosen. "Sign out and clear this device" wipes local progress.
+- **Backend:** `premium/supabase-achievements-setup.sql` (table `achievement_progress` +
+  `achievement_progress_sync` + helper `achievement_merge_record`), `premium/lib/achievements.py`,
+  `premium/api/achievements.py`, route `/api/achievements` in `premium/lib/routes.py`. Server errors
+  return a fixed "cloud saves unavailable" (details are logged, never echoed: they contain the
+  Supabase URL).
+- **Deploy steps:** (1) run `premium/supabase-achievements-setup.sql` in the Supabase SQL Editor;
+  (2) re-run `record_pageview` from `docs/supabase/site_analytics.sql` (adds
+  `achievement-tracker.html` to `known_pages`); (3) `vercel --prod` from `premium/`;
+  (4) push the website files (page, JS, catalog JSON, icon, creators-tools.html, sitemap-pages.xml,
+  scripts, docs, js/shared.js and toon-forge.html footer wording). `premium/` is gitignored, so a
+  push alone ships nothing server-side.
 
 ---
 
