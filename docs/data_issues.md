@@ -21,6 +21,11 @@
   - Channel Divinity hold: NOT in the clip (it ends with the bar empty and "Not enough Divinity").
   - Consequence: ~1,100 divinity buys about 4 Javelin / Flame casts and natural regen pays for one about every 40 s;
     the simulator fires them every 0.9 s. Channel Divinity's restore rate is the missing number.
+- **Cast counts from full, n00b 2026-10-14** (Eliza): Bastion of Health (200) x5, Searing Javelin (240) x5, Forgemaster's
+  Flame (300) x3 before "Not enough Divinity". With ~6-7 divinity/s of regen during each ~5 s spam, all three fit only
+  a pool of about 1,160-1,200 (5 Javelins need >= ~1,160; a 6th Bastion and a 4th Flame both fail below ~1,200).
+  Agrees with the clip (~1,090-1,150). Fits base 1,000 + a +15-20% Divinity max item (the engine already reads
+  "Class Resource Max" on a 1,000 base) - worth confirming against Eliza's gear.
 - Still needed: the Channel Divinity hold from empty to full, on the same Powers Set as the first drain.
 
 ## FIXED (shipped in v2.0, 2026-10-14) EQUIP-BOLSTER-1: mount equip powers ignored the player's bolster
