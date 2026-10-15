@@ -52,6 +52,33 @@
     .ach-btn-primary { background: var(--accent); border-color: var(--accent); color: #0d1117; }
     .ach-btn-primary:active { background: var(--accent-hover); }
 
+    .ach-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    /* ---- Character switcher ---- */
+    .ach-chars {
+      background: var(--bg-surface); border: 1px solid var(--border-default);
+      border-radius: var(--radius-md); padding: 0.7rem 0.85rem; margin-bottom: 0.75rem;
+    }
+    .ach-chars-label { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.3rem; }
+    .ach-chars-row { display: flex; gap: 0.5rem; align-items: center; }
+    .ach-char-select { flex: 1; min-width: 0; font-weight: 700; }
+    .ach-chars-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+    .ach-chars-actions .ach-btn { flex: 1; padding: 0.25rem 0.5rem; min-width: 0; line-height: 1.2; text-align: center; }
+    .ach-panel[hidden], #ach-removed[hidden], #ach-char-note[hidden], .ach-bar-who[hidden] { display: none; }
+    .ach-panel { margin-top: 0.6rem; padding: 0.7rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bg-primary); }
+    .ach-panel .ach-ctl { margin-bottom: 0.4rem; }
+    .ach-panel .ach-field { width: 100%; }
+    .ach-err { color: var(--highlight); }
+    #ach-removed { margin-top: 0.6rem; }
+    .ach-removed-row { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; min-height: 44px; }
+    .ach-removed-name { overflow-wrap: anywhere; color: var(--text-secondary); font-size: 0.92rem; }
+    #ach-char-note { color: var(--highlight); }
+    .ach-bar-who { font-size: 0.8rem; font-weight: 700; color: var(--highlight); margin-bottom: 0.3rem; overflow-wrap: anywhere; }
+    .ach-copy { margin-top: 0.6rem; padding: 0.7rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bg-primary); }
+    .ach-copy[hidden] { display: none; }
+    .ach-copy .ach-ctl { margin-bottom: 0.4rem; }
+    .ach-copy .ach-ctl select { width: 100%; }
+
     .ach-choice { margin-top: 0.6rem; padding: 0.7rem; border: 1px solid var(--highlight); border-radius: var(--radius-md); background: rgba(240,136,62,0.08); font-size: 0.9rem; line-height: 1.45; }
     .ach-more { margin-top: 0.6rem; }
     .ach-more summary {
@@ -191,7 +218,7 @@
         position: static; max-height: none; overflow: visible; background: none; border: 0; box-shadow: none;
         border-radius: 0; padding: 0.5rem 0 0; flex-basis: 100%;
       }
-      .ach-ctl { margin-bottom: 0; }
+      .ach-ctl { margin-bottom: 0; flex: none; }
       .ach-ctl select { width: auto; }
       body.ach-sheet-open { overflow: auto; }
       .ach-list { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
@@ -231,11 +258,46 @@
 
   <main class="ach-page">
     <h2>Dungeon Achievement Tracker</h2>
-    <p class="ach-intro">Track dungeon achievements, tick them off, and see which ones you are closest to. A growing list (about 160 so far), with more being added. Sign in with Discord to keep your progress on any device.</p>
+    <p class="ach-intro">Track dungeon achievements, tick them off, and see which ones you are closest to. A growing list (about 160 so far), with more being added. Achievements are per character, so add each of your characters below. Sign in with Discord to keep your progress on any device.</p>
+
+    <section class="ach-chars" id="ach-chars" aria-label="Character">
+      <label class="ach-chars-label" for="ach-char">Character</label>
+      <div class="ach-chars-row">
+        <select class="ach-field ach-char-select" id="ach-char"><option value="c_main">Main</option></select>
+        <button class="ach-btn ach-btn-primary" id="ach-char-add" type="button">+ Add character</button>
+      </div>
+      <div class="ach-chars-actions">
+        <button class="ach-btn" id="ach-char-rename" type="button">Rename</button>
+        <button class="ach-btn" id="ach-char-remove" type="button">Remove</button>
+        <button class="ach-btn" id="ach-char-copy" type="button" aria-label="Copy progress from another character">Copy progress from&hellip;</button>
+      </div>
+      <div class="ach-copy" id="ach-copy" hidden>
+        <label class="ach-ctl"><span class="ach-ctl-label">Copy progress from</span>
+          <select class="ach-field" id="ach-copy-from"></select></label>
+        <p class="ach-fine" id="ach-copy-note"></p>
+        <div class="ach-acct-actions">
+          <button class="ach-btn ach-btn-primary" id="ach-copy-go" type="button">Copy</button>
+          <button class="ach-btn" id="ach-copy-cancel" type="button">Cancel</button>
+        </div>
+      </div>
+      <div class="ach-panel" id="ach-panel" hidden>
+        <label class="ach-ctl" id="ach-panel-field"><span class="ach-ctl-label" id="ach-panel-label">Name</span>
+          <input class="ach-field" id="ach-panel-input" type="text" autocomplete="off" autocapitalize="words" enterkeyhint="done"></label>
+        <p class="ach-fine" id="ach-panel-note"></p>
+        <div class="ach-acct-actions">
+          <button class="ach-btn ach-btn-primary" id="ach-panel-go" type="button">OK</button>
+          <button class="ach-btn" id="ach-panel-cancel" type="button">Cancel</button>
+        </div>
+      </div>
+      <div id="ach-removed" hidden></div>
+      <p class="ach-fine" id="ach-char-note" hidden></p>
+      <p class="ach-fine" id="ach-char-count"></p>
+    </section>
 
     <section class="ach-acct" id="ach-acct" aria-live="polite"></section>
 
     <div class="ach-bar" id="ach-bar">
+      <div class="ach-bar-who" id="ach-bar-who" hidden></div>
       <div class="ach-bar-row">
         <input class="ach-field ach-search" id="ach-q" type="search" placeholder="Search dungeon, name or text" aria-label="Search achievements" autocomplete="off" enterkeyhint="search">
         <button class="ach-btn ach-filter-btn" id="ach-filter-btn" type="button" aria-haspopup="dialog" aria-expanded="false">Filter <span class="ach-filter-count" id="ach-filter-count"></span></button>
@@ -278,7 +340,7 @@
 
   <script src="js/shared.js"></script>
   <script>renderNav("Creators & Tools");</script>
-  <script src="js/achievement-tracker-page.js?v=20261014c"></script>
+  <script src="js/achievement-tracker-page.js?v=20261015a"></script>
   <script src="js/analytics.js"></script>
 </body>
 </html>

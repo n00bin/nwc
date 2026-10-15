@@ -354,8 +354,9 @@ is gitignored, so pushing the website repo does not ship it.
 ## Achievement tracker (Dungeon Achievement Tracker)
 
 `achievement-tracker.html` + `js/achievement-tracker-page.js`, reached via Creators & Tools (not in
-the navbar, like Toon Forge). Mobile-first. Progress is per player: localStorage
-(`nwcb:achievements:v1`, which also records the Discord id that owns it) plus, when signed in, a
+the navbar, like Toon Forge). Mobile-first. Progress is per player AND PER CHARACTER (confirmed in
+game: dungeon achievements belong to a character): localStorage (`nwcb:achievements:v2`, which also
+records the Discord id that owns it) plus, when signed in, a
 cloud copy through the SAME free Discord sign-in and token as Toon Forge cloud saves
 (`toon-forge:acct`, `?acct=1`). Same caveat as Toon Forge: a 401 drops the shared token, so it
 signs the player out of both tools.
@@ -372,6 +373,67 @@ signs the player out of both tools.
 - **Id stability:** an entry's `id` is the key of every player's saved progress. NEVER change an id.
   If a name must change, keep the old id as is, or give the new entry a new id and list the old one
   in its `aliases` array: `prepare()` migrates progress saved under an alias into the current id.
+- **Characters (added 2026-10-14):** the progress blob is
+  `{ chars: { <charId>: { name, created, t, deleted?, p: { <achId>: record } } } }`. `charId` is
+  `c_` + random base36 (8 chars; the server accepts `^c_[a-z0-9]{1,16}$`). The page keeps `P` = the
+  selected character's `p`, so all the per-achievement code is unchanged. A switcher sits at the top
+  of the page (select, "+ Add character", Rename, Remove, "Copy from..."); the last-selected
+  character is remembered per device (`nwcb:achievements:char`).
+  - **Migration rule:** anything flat (local v1 blob, backup file, cloud row, request from an old
+    cached page) becomes the character **"Main" with the FIXED id `c_main`** (name "Main", created 0,
+    t 0). The fixed id is what lets two devices migrate independently and land in the same character.
+    Never generate a random id for migrated data. A fresh device also invents `c_main` with t 0, so
+    it can never win a name merge against a real rename.
+  - **localStorage keys:** v2 is the new blob. The old `nwcb:achievements:v1` is never written or
+    deleted by the new page. On every boot, if its text differs from the fingerprint stored in
+    `nwcb:achievements:v1merged`, it is merged into `c_main` (idempotent, never deletes) and the
+    fingerprint is stored; so an old cached tab that keeps writing v1 while signed out is still picked
+    up, and an unchanged v1 is never re-merged over newer work. "Sign out and clear this device"
+    removes v1, v2, the marker and the selection.
+  - **Character merge** (client `mergeChar`/`mergeCharsInto`, SQL `achievement_merge_char`; keep
+    identical; the per-record merge below is unchanged): union of char ids; `name` from the newer
+    char `t` (exact tie: larger text); `created` = earlier; `t` = larger, clamped to now + 5 min;
+    `deleted` = larger; `p` = per-record merge.
+  - **Tombstones:** Remove sets `deleted` (>= every record's t in it) and hides the character; it
+    is NEVER physically deleted, locally or by sync (data stays stored, so a mistaken Remove can
+    be undone by hand in SQL). The tombstone wins only over records OLDER than it: visible =
+    no `deleted`, or some record newer than `deleted` (`isLive` / SQL `achievement_char_live`).
+    So a stale device holding old records cannot resurrect a removed character, while something
+    genuinely done after the removal brings it back with its stored data. Re-adding the same name
+    makes a NEW id. The last visible character cannot be removed; if every character ends up
+    removed (two devices), the page starts a new "Main" with a random id.
+  - **Undo for Remove:** a "Removed characters" list under the switcher offers Restore for removed
+    characters that still hold records. Restore bumps the character's `t` and its newest record's `t`
+    to now, which the revival rule above turns into "visible again on every device". A removed
+    character with no records has no Restore entry. An EMPTY tombstone (no records) does not count
+    toward the 30 rows, is kept 30 days so stale devices learn of the removal, then is dropped
+    (c_main's tombstone is never dropped). Hard ceiling: 100 stored rows (`MAX_CHAR_ROWS_HARD`).
+  - **No native dialogs:** Add, Rename and Remove-confirm are inline panels (in-app browsers from
+    Discord/YouTube block `prompt`/`confirm`). Do not reintroduce them.
+  - **Sync status:** the server reports why it skipped something (`skipped_chars` = charId -> live |
+    rows | bytes, `skipped_records`); the page words each cause separately and keeps a skipped
+    character visible with a "not saved to your account yet" note.
+  - **Payload growth:** every sync sends the whole blob (all characters, every record), so the
+    request grows with the catalog times the number of characters (about 170 entries today; a few
+    hundred bytes each; ten characters is a few hundred KB at most against the 512 KB row cap).
+    Vercel's request limit is 4.5 MB. If the catalog grows past ~500 entries, move to sending only
+    changed records (a delta) before raising any cap.
+  - **Backup before deploying the SQL:** step 0 of the SQL file snapshots the table into
+    `achievement_progress_backup_20261015` (sealed, IF NOT EXISTS). Never re-run an older copy of the
+    file; there is no rollback block on purpose.
+  - **Names:** trimmed, 1-24 characters, no control characters, unique per account
+    case-insensitively. Two devices adding the same name offline both keep their characters; the
+    later-created one is renamed "Name 2" (deterministic, so every device agrees).
+  - **Caps:** 10 visible characters (`MAX_CHARS`), 30 stored rows counting hidden removed ones
+    (`MAX_CHAR_ROWS`), `MAX_IDS` 1000 records PER CHARACTER, 4 KB per record, 512 KB per account row.
+    A character or record that does not fit is skipped whole and counted in `skipped_full`.
+  - **Backup file:** v2 exports `{ app, v: 2, progress: { chars } }` (removed characters included).
+    Restore accepts the new shape (merged by char id) and the old flat file (merged into the
+    CURRENT character).
+  - **Old pages keep working:** the SQL answers a flat request with flat `c_main` records, so a
+    cached pre-character page neither breaks nor loses data. Remove that path only after the old
+    cache window is long gone.
+  - **Not enforced server-side:** name uniqueness (the page de-duplicates).
 - **Checklist items:** a sub-item whose `ref` is a catalog entry reads and writes THAT entry's
   record (child done => parent box ticked; ticking the box marks the child done). The tick is never
   stored under two ids. Parent "done" is derived from its parts, so points-left and "N left agree".
@@ -383,18 +445,25 @@ signs the player out of both tools.
   deletes records; there is no delete RPC. A counter typo can be corrected (lowering sticks, an
   older device's stale value does not return). Known limit: un-ticking a loose (non-ref)
   sub-item does not stick (union); done/un-done and counters do.
-- **Limits in lockstep:** `MAX_IDS` (1000) in `js/achievement-tracker-page.js` and
-  `premium/lib/achievements.py` (the SQL takes it as a parameter). The 4 KB per-record and 512 KB
-  per-player caps live in the SQL / `MAX_BYTES`.
+- **Limits in lockstep:** `MAX_IDS` (1000, now per character), `MAX_CHARS` (10) and
+  `MAX_CHAR_ROWS` (30), `MAX_CHAR_ROWS_HARD` (100) in `js/achievement-tracker-page.js` and `premium/lib/achievements.py`
+  (a pytest checks the four numbers match the JS). In the SQL `p_max_ids` is a parameter and
+  `v_max_chars` / `v_max_rows` are constants at the top of `achievement_progress_sync`. The 4 KB
+  per-record and 512 KB per-player caps live in the SQL / `MAX_BYTES`.
 - **Switching Discord accounts on one browser:** the local blob stores the owner's Discord id. A
   different account signing in gets a choice (keep separate/start empty, or merge); nothing syncs
   until chosen. "Sign out and clear this device" wipes local progress.
 - **Backend:** `premium/supabase-achievements-setup.sql` (table `achievement_progress` +
   `achievement_progress_sync` + helper `achievement_merge_record`), `premium/lib/achievements.py`,
-  `premium/api/achievements.py`, route `/api/achievements` in `premium/lib/routes.py`. Server errors
+  `premium/api/achievements.py`, route `/api/achievements` in `premium/lib/routes.py` (validation
+  of both shapes is `achievements.clean_progress`; tests in `premium/tests/test_achievements.py`).
+  The SQL file is SAFE TO RE-RUN (CREATE OR REPLACE, same function signature, no DROP) and migrates a
+  stored flat row into `chars.c_main` the first time that player syncs. Server errors
   return a fixed "cloud saves unavailable" (details are logged, never echoed: they contain the
   Supabase URL).
-- **Deploy steps:** (1) run `premium/supabase-achievements-setup.sql` in the Supabase SQL Editor;
+- **Deploy steps (ORDER MATTERS for the per-character change: SQL, then Vercel, then push):**
+  (1) run `premium/supabase-achievements-setup.sql` in the Supabase SQL Editor (re-run the whole
+  file; then the QUICK TEST block);
   (2) re-run `record_pageview` from `docs/supabase/site_analytics.sql` (adds
   `achievement-tracker.html` to `known_pages`); (3) `vercel --prod` from `premium/`;
   (4) push the website files (page, JS, catalog JSON, icon, creators-tools.html, sitemap-pages.xml,

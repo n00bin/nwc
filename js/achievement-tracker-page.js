@@ -9,6 +9,19 @@
               saves. Mobile Safari evicts site storage after ~7 days unused, so
               a copy off the device is the only real protection.
 
+   PER CHARACTER (2026-10-14): confirmed dungeon achievements belong to a
+   character, so everything below is kept once per character:
+     CH[charId] = { name, created, t, deleted?: <ms>, p: { achId: record } }
+   `P` (used all over this file) is simply CH[cur].p, the selected character's
+   records. charId is "c_" + random base36. Everything saved before characters
+   existed (local or cloud) becomes the character "Main" with the FIXED id
+   "c_main", so two devices migrating on their own land in the same character.
+   Character merge (mirrors SQL achievement_merge_char): name from the newer
+   character t, created = earlier, t = larger (clamped), deleted = larger. A
+   removed character is a TOMBSTONE (`deleted`), hidden, never physically
+   deleted; the tombstone wins only over records older than it (a record newer
+   than the removal shows the character again). Re-adding a name = a new id.
+
    Record shape (short keys on purpose, this goes over the wire):
      P[id] = { t: <epoch ms of last change>, d: 0|1, s: [sub ids ticked],
                c: { counterId: count } }
@@ -31,15 +44,27 @@
 (function () {
   "use strict";
 
-  var CAT_URL = "data/achievements-dungeons.json?v=20261014c";
-  var LS_KEY = "nwcb:achievements:v1";
+  var CAT_URL = "data/achievements-dungeons.json?v=20261015a";
+  // v1 = the flat one-character blob; it is READ once (migrated into c_main) and
+  // then left alone on the device as a safety copy. v2 is the per-character blob.
+  var LS_KEY_V1 = "nwcb:achievements:v1";
+  var LS_KEY = "nwcb:achievements:v2";
+  var V1_MARK_KEY = "nwcb:achievements:v1merged";   // fingerprint of the v1 text last merged into c_main
+  var CHAR_KEY = "nwcb:achievements:char";   // last selected character on this device
   var UI_KEY = "nwcb:achievements:ui";
   // Same account door and token as Toon Forge cloud saves: one free Discord
   // sign-in covers both tools. It is NOT the premium token (nwcb_premium_token).
   // Because the token is shared, a 401 below drops it for Toon Forge as well.
   var ACCT_KEY = "toon-forge:acct";
-  var MAX_IDS = 1000;            // keep equal to MAX_IDS in premium/lib/achievements.py
+  var MAX_IDS = 1000;            // records PER CHARACTER; keep equal to MAX_IDS in premium/lib/achievements.py
+  var MAX_CHARS = 10;            // characters shown per account; keep equal to MAX_CHARS there and v_max_chars in the SQL
+  var MAX_CHAR_ROWS = 30;        // stored characters incl. hidden removed ones with progress; equal to MAX_CHAR_ROWS / v_max_rows
+  var MAX_CHAR_ROWS_HARD = 100;  // absolute ceiling, empty tombstones included; equal to MAX_CHAR_ROWS_HARD / v_hard_rows
+  var TOMB_TTL_MS = 30 * 24 * 3600 * 1000;   // an empty tombstone older than this is dropped (SQL v_tomb_ttl)
+  var NAME_MAX = 24;
+  var MAIN_ID = "c_main";
   var SLUG = /^[a-z0-9][a-z0-9-]{0,119}$/;
+  var CHAR_ID = /^c_[a-z0-9]{1,16}$/;
   var PUSH_DELAY_MS = 1500;
   var CLOCK_SLACK_MS = 5 * 60 * 1000;   // keep equal to the +300000 in the SQL
 
@@ -72,7 +97,9 @@
   var CAT = [];          // catalog entries, in file order
   var BY = {};           // id -> entry
   var PARENTS = {};      // child id -> ids of entries that list it as a checklist item
-  var P = {};            // progress: id -> record
+  var CH = {};           // characters: charId -> { name, created, t, deleted?, p }
+  var cur = MAIN_ID;     // selected character id
+  var P = {};            // the SELECTED character's progress: achievement id -> record (CH[cur].p)
   var owner = "";        // Discord id the local progress belongs to ("" = never signed in)
   var EMPTY = { t: 0, d: 0, s: [], c: {} };
   var DEFAULT_UI = { status: "open", sort: "left", dungeon: "", master: false, hideTodo: true };
@@ -144,20 +171,239 @@
     return changed;
   }
 
-  function loadLocal() {
-    var raw = lsGet(LS_KEY);
-    if (!raw) return;
-    try {
-      var o = JSON.parse(raw);
-      owner = (o && typeof o.o === "string") ? o.o : "";
-      mergeInto(P, (o && o.p && typeof o.p === "object") ? o.p : {});
-    } catch (e) {
-      // Unreadable: keep the bad copy aside instead of silently overwriting it.
-      lsSet(LS_KEY + ":corrupt", raw);
+  /* ---------- characters ---------- */
+  function cleanName(n) {
+    if (typeof n !== "string") return "";
+    var cps = Array.from(n.replace(/[\u0000-\u001f\u007f-\u009f]/g, "").trim());
+    return cps.slice(0, NAME_MAX).join("").trim();
+  }
+  function fallbackName(id) { return id === MAIN_ID ? "Main" : "Character"; }
+  function msVal(v) {
+    return (typeof v === "number" && isFinite(v) && v >= 0) ? Math.min(Math.floor(v), Date.now() + CLOCK_SLACK_MS) : null;
+  }
+  function freshMain() { return { name: "Main", created: 0, t: 0, p: {} }; }
+
+  /* A clean copy of one character, or null if the id/shape is junk. The name may
+     come back "" (unusable); the merge decides what to do about that. */
+  function cleanChar(id, c) {
+    if (!CHAR_ID.test(id) || !c || typeof c !== "object") return null;
+    var out = { name: cleanName(c.name), created: msVal(c.created) || 0, t: msVal(c.t) || 0, p: {} };
+    var del = msVal(c.deleted);
+    if (del !== null) out.deleted = del;
+    if (c.p && typeof c.p === "object") {
+      for (var k in c.p) {
+        if (!Object.prototype.hasOwnProperty.call(c.p, k) || !SLUG.test(k)) continue;
+        if (Object.keys(out.p).length >= MAX_IDS) break;
+        var rec = cleanRecord(c.p[k]);
+        if (rec) out.p[k] = rec;
+      }
     }
+    return out;
+  }
+
+  /* Shown or hidden? A removed character carries `deleted`. The tombstone wins
+     only over records OLDER than it: a record newer than the removal (made on a
+     device that had not heard about it yet) shows the character again. */
+  function isLive(c) {
+    if (c.deleted === undefined || c.deleted === null) return true;
+    for (var k in c.p) if (c.p[k].t > c.deleted) return true;
+    return false;
+  }
+  function liveChars() {
+    return Object.keys(CH).filter(function (id) { return isLive(CH[id]); }).map(function (id) { return { id: id, c: CH[id] }; })
+      .sort(function (a, b) { return (a.c.created - b.c.created) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0); });
+  }
+  /* A removed character that holds no records carries nothing worth keeping: it does
+     not count toward the stored-rows cap, is kept as a tombstone so other devices learn
+     of the removal, and is dropped 30 days later (after a successful sync).
+     c_main is exempt (its tombstone must stay or a fresh device would re-invent it).
+     Mirrors the SQL and clean_progress() in premium/lib/achievements.py. */
+  function emptyTomb(id, c) {
+    return id !== MAIN_ID && c.deleted !== undefined && c.deleted !== null && Object.keys(c.p).length === 0;
+  }
+  function countedRows(map) {
+    var n = 0;
+    for (var id in map) if (!emptyTomb(id, map[id])) n++;
+    return n;
+  }
+  function compactTombs() {
+    var changed = false;
+    Object.keys(CH).forEach(function (id) {
+      if (emptyTomb(id, CH[id]) && id !== cur && CH[id].deleted < Date.now() - TOMB_TTL_MS) { delete CH[id]; changed = true; }
+    });
+    return changed;
+  }
+  function liveCount(map) {
+    var n = 0;
+    for (var id in map) if (isLive(map[id])) n++;
+    return n;
+  }
+
+  /* Merge CLEAN character `inc` into `have` (in place; mirrors SQL
+     achievement_merge_char). Returns { meta: bool, recs: [changed record ids] }. */
+  function mergeChar(id, have, inc) {
+    var before = have.name + "|" + have.created + "|" + have.t + "|" + have.deleted;
+    var nm;
+    if (!inc.name) nm = have.name;
+    else if (!have.name) nm = inc.name;
+    else if (inc.t > have.t) nm = inc.name;
+    else if (inc.t < have.t) nm = have.name;
+    else nm = inc.name >= have.name ? inc.name : have.name;      // exact tie: the larger text, so every device agrees
+    have.name = nm || fallbackName(id);
+    have.created = Math.min(have.created, inc.created);
+    have.t = Math.max(have.t, inc.t);
+    if (inc.deleted !== undefined) have.deleted = (have.deleted === undefined) ? inc.deleted : Math.max(have.deleted, inc.deleted);
+    return { meta: before !== have.name + "|" + have.created + "|" + have.t + "|" + have.deleted, recs: mergeInto(have.p, inc.p) };
+  }
+
+  /* Merge a map of characters into `local` (CH), in place. NEVER deletes.
+     Caps match the SQL: MAX_CHAR_ROWS stored, MAX_CHARS shown. Returns
+     { any, recs (records changed/added), chars (added), skipped, curRecs }. */
+  function mergeCharsInto(local, incoming) {
+    var res = { any: false, recs: 0, chars: 0, skipped: 0, curRecs: [] };
+    if (!incoming || typeof incoming !== "object") return res;
+    Object.keys(incoming).sort().slice(0, 60).forEach(function (id) {
+      var inc = cleanChar(id, incoming[id]);
+      if (!inc) return;
+      var have = local[id];
+      if (!have) {
+        if (emptyTomb(id, inc)) return;                 // nothing in it: not worth a row
+        if (countedRows(local) >= MAX_CHAR_ROWS || Object.keys(local).length >= MAX_CHAR_ROWS_HARD || (isLive(inc) && liveCount(local) >= MAX_CHARS)) { res.skipped++; return; }
+        if (!inc.name) inc.name = fallbackName(id);
+        local[id] = inc;
+        res.any = true; res.chars++; res.recs += Object.keys(inc.p).length;
+        if (id === cur) res.curRecs = Object.keys(inc.p);
+        return;
+      }
+      if (!isLive(have)) {                          // would this bring a hidden character back past the cap?
+        var trial = JSON.parse(JSON.stringify(have));
+        mergeChar(id, trial, inc);
+        if (isLive(trial) && liveCount(local) >= MAX_CHARS) { res.skipped++; return; }
+      }
+      var m = mergeChar(id, have, inc);
+      if (m.meta || m.recs.length) res.any = true;
+      res.recs += m.recs.length;
+      if (id === cur) res.curRecs = m.recs;
+    });
+    return res;
+  }
+
+  function isCharsShape(p) {
+    var c = p && typeof p === "object" ? p.chars : null;
+    return !!c && typeof c === "object" && !Array.isArray(c) && !("t" in c || "d" in c || "s" in c || "c" in c);
+  }
+  /* Whatever shape a blob arrives in -> a map of characters. The OLD flat shape
+     (achievement id -> record, from an older device, file or cloud row) is the
+     character c_main. */
+  function incomingChars(prog) {
+    if (!prog || typeof prog !== "object") return {};
+    if (isCharsShape(prog)) return prog.chars;
+    var flat = {}, n = 0;
+    for (var k in prog) if (Object.prototype.hasOwnProperty.call(prog, k) && k !== "chars") { flat[k] = prog[k]; n++; }
+    var out = {};
+    if (n) out[MAIN_ID] = { name: "Main", created: 0, t: 0, p: flat };
+    return out;
+  }
+
+  function nameTaken(name, exceptId) {
+    var low = name.toLowerCase();
+    return liveChars().some(function (x) { return x.id !== exceptId && x.c.name.toLowerCase() === low; });
+  }
+  function cutName(base, room) { return Array.from(base).slice(0, room).join("").trim(); }
+  function uniqueName(base) {
+    var nm = base, n = 2;
+    while (nameTaken(nm)) { var suf = " " + (n++); nm = cutName(base, NAME_MAX - suf.length) + suf; }
+    return nm;
+  }
+  /* Two devices can each add a character with the same name. Names are unique
+     per account (case-insensitive), so the later-created one gets " 2" etc. The
+     order is deterministic, so every device lands on the same names. */
+  function fixDuplicateNames() {
+    var list = liveChars(), taken = {}, firstSeen = {}, changed = false;
+    list.forEach(function (x) { taken[x.c.name.toLowerCase()] = 1; });
+    list.forEach(function (x) {
+      var key = x.c.name.toLowerCase();
+      if (!firstSeen[key]) { firstSeen[key] = 1; return; }
+      var n = 2, nm;
+      do { var suf = " " + (n++); nm = cutName(x.c.name, NAME_MAX - suf.length) + suf; } while (taken[nm.toLowerCase()]);
+      taken[nm.toLowerCase()] = 1;
+      x.c.name = nm; x.c.t = Math.max(Date.now(), x.c.t + 1);
+      changed = true;
+    });
+    return changed;
+  }
+  function newCharId() {
+    var a = "", i;
+    try { var b = new Uint8Array(8); crypto.getRandomValues(b); for (i = 0; i < 8; i++) a += (b[i] % 36).toString(36); }
+    catch (e) { for (i = 0; i < 8; i++) a += Math.floor(Math.random() * 36).toString(36); }
+    return "c_" + a;
+  }
+  function bindCur() { P = CH[cur].p; }
+  function setCur(id) { cur = id; bindCur(); lsSet(CHAR_KEY, id); }
+
+  /* After anything that can change the character set (load, sync, restore):
+     there is always a Main, always at least one shown character, no duplicate
+     names, and a valid selection. Returns true if it had to change data. */
+  function reconcile() {
+    var changed = false;
+    if (!CH[MAIN_ID] && (liveCount(CH) < MAX_CHARS)) { CH[MAIN_ID] = freshMain(); changed = true; }
+    if (!liveChars().length) {                 // every character was removed (e.g. from two devices)
+      var id; do { id = newCharId(); } while (CH[id]);
+      var now = Date.now();
+      CH[id] = { name: uniqueName("Main"), created: now, t: now, p: {} };
+      changed = true;
+    }
+    if (fixDuplicateNames()) changed = true;
+    var live = liveChars();
+    if (!CH[cur] || !isLive(CH[cur])) {
+      var want = lsGet(CHAR_KEY);
+      cur = (want && CH[want] && isLive(CH[want])) ? want : live[0].id;
+    }
+    bindCur();
+    return changed;
+  }
+  function hasLocalProgress() {
+    return Object.keys(CH).some(function (id) {
+      return Object.keys(CH[id].p).length > 0 || id !== MAIN_ID || CH[id].t > 0;
+    });
+  }
+
+  function fingerprint(str) {
+    var h = 5381;
+    for (var i = 0; i < str.length; i++) h = ((h * 33) ^ str.charCodeAt(i)) >>> 0;
+    return str.length + ":" + h;
+  }
+  function loadLocal() {
+    var migrated = false, raw = lsGet(LS_KEY);
+    if (raw) {
+      try {
+        var o = JSON.parse(raw);
+        owner = (o && typeof o.o === "string") ? o.o : "";
+        mergeCharsInto(CH, incomingChars(o));
+      } catch (e) {
+        // Unreadable: keep the bad copy aside instead of silently overwriting it.
+        lsSet(LS_KEY + ":corrupt", raw);
+      }
+    }
+    // The old v1 blob is merged into Main whenever its text is not the one already merged: that
+    // covers the first visit after this update AND an old cached tab that keeps writing v1 while
+    // signed out. Idempotent and never deletes. v1 itself is left in place.
+    var v1 = lsGet(LS_KEY_V1);
+    if (v1 && fingerprint(v1) !== lsGet(V1_MARK_KEY)) {
+      try {
+        var o1 = JSON.parse(v1);
+        if (!raw) owner = (o1 && typeof o1.o === "string") ? o1.o : "";
+        mergeCharsInto(CH, incomingChars(o1 && o1.p && typeof o1.p === "object" ? o1.p : {}));
+        lsSet(V1_MARK_KEY, fingerprint(v1));
+        migrated = true;
+      } catch (e) {
+        lsSet(LS_KEY_V1 + ":corrupt", v1);
+      }
+    }
+    return migrated;
   }
   function saveLocal() {
-    var ok = lsSet(LS_KEY, JSON.stringify({ v: 1, o: owner, p: P }));
+    var ok = lsSet(LS_KEY, JSON.stringify({ v: 2, o: owner, chars: CH }));
     if (!ok && storageOK) {
       storageOK = false;
       toast("This browser is blocking site storage, so progress can't be kept here. Use Back up to a file.", 6000);
@@ -297,11 +543,14 @@
     // Id stability: an entry renamed in the catalog lists its old ids in `aliases`;
     // progress saved under an old id moves to the current one.
     var moved = false;
-    Object.keys(alias).forEach(function (al) {
-      if (!P[al] || BY[al]) return;
-      var id = alias[al], cur = P[id];
-      P[id] = cur ? mergeRecords(cur, P[al]) : P[al];
-      delete P[al]; moved = true;
+    Object.keys(CH).forEach(function (cid) {
+      var Pm = CH[cid].p;
+      Object.keys(alias).forEach(function (al) {
+        if (!Pm[al] || BY[al]) return;
+        var id = alias[al], have = Pm[id];
+        Pm[id] = have ? mergeRecords(have, Pm[al]) : Pm[al];
+        delete Pm[al]; moved = true;
+      });
     });
     if (moved) saveLocal();
   }
@@ -393,7 +642,8 @@
       if (isDone(a)) done++; else { open++; pts += a.points; }
     });
     if (shown == null) shown = $("ach-list").querySelectorAll(".ach-card").length;
-    $("ach-sum").textContent = shown + " shown · " + open + " not done (" + pts.toLocaleString() + " points left) · " + done + " done";
+    var who = liveChars().length > 1 ? CH[cur].name + ": " : "";
+    $("ach-sum").textContent = who + shown + " shown · " + open + " not done (" + pts.toLocaleString() + " points left) · " + done + " done";
     $("ach-apply").textContent = "Show " + shown + " result" + (shown === 1 ? "" : "s");
     var n = (ui.status !== DEFAULT_UI.status ? 1 : 0) + (ui.dungeon ? 1 : 0) + (ui.master ? 1 : 0) +
             (ui.hideTodo !== DEFAULT_UI.hideTodo ? 1 : 0) + (ui.sort !== DEFAULT_UI.sort ? 1 : 0);
@@ -578,10 +828,11 @@
   }
   function acctSignOutAndClear() {
     if (!confirm("Sign out and remove the saved achievement progress from this device? Your account keeps its copy.")) return;
-    lsDel(ACCT_KEY); lsDel(LS_KEY);
+    lsDel(ACCT_KEY); lsDel(LS_KEY); lsDel(LS_KEY_V1); lsDel(V1_MARK_KEY); lsDel(CHAR_KEY);
     resetTimers();
-    P = {}; owner = ""; status = ""; pendingOwnerChoice = false;
-    renderAcct(); renderList();
+    CH = {}; cur = MAIN_ID; owner = ""; status = ""; pendingOwnerChoice = false;
+    reconcile();
+    renderAcct(); renderChars(); renderList();
     toast("Signed out and cleared this device.");
   }
   // Pick up the token the backend hands back as #acct=<jwt>.
@@ -622,6 +873,20 @@
     });
   }
 
+  var notSaved = {};   // charId -> why the server skipped it on the last sync ("live" | "rows" | "bytes")
+  /* One plain sentence per cause. The server reports which characters it skipped
+     (skipped_chars) and how many records (skipped_records). */
+  function skipMessage(res) {
+    var sc = res.skipped_chars || {}, n = { live: 0, rows: 0, bytes: 0 }, parts = [];
+    Object.keys(sc).forEach(function (id) { if (n[sc[id]] !== undefined) n[sc[id]]++; });
+    var maxc = res.max_chars || MAX_CHARS;
+    if (n.live) parts.push(n.live + " character" + (n.live === 1 ? " was" : "s were") + " not saved to your account: it already has " + maxc + " characters. Remove one to make room.");
+    if (n.rows) parts.push(n.rows + " character" + (n.rows === 1 ? " was" : "s were") + " not saved: too many removed characters are stored on your account.");
+    if (n.bytes) parts.push("Some characters were not saved: your account storage is full.");
+    if (res.skipped_records) parts.push("Some achievements were not saved: a character reached its limit of " + (res.limit || MAX_IDS) + ".");
+    if (!parts.length && res.skipped_full) parts.push("Some entries were not saved: your account is full.");
+    return parts.join(" ");
+  }
   var status = "", syncing = false, dirty = false, pushTimer = null, retryTimer = null, lastSync = 0;
   function setStatus(s) { status = s; var el = $("ach-status-line"); if (el) el.textContent = s; }
 
@@ -630,13 +895,14 @@
   function checkOwner() {
     var sub = tokenSub();
     if (!sub) return;
-    if (owner && owner !== sub && Object.keys(P).length) { pendingOwnerChoice = true; return; }
+    if (owner && owner !== sub && hasLocalProgress()) { pendingOwnerChoice = true; return; }
     if (owner !== sub) { owner = sub; saveLocal(); }
   }
   function keepSeparate() {
-    lsSet(LS_KEY + ":prev:" + (owner || "unknown"), JSON.stringify({ v: 1, o: owner, p: P }));   // kept aside, not deleted
-    P = {}; owner = tokenSub(); pendingOwnerChoice = false;
-    saveLocal(); renderAcct(); renderList(); sync({});
+    lsSet(LS_KEY + ":prev:" + (owner || "unknown"), JSON.stringify({ v: 2, o: owner, chars: CH }));   // kept aside, not deleted
+    CH = {}; cur = MAIN_ID; owner = tokenSub(); pendingOwnerChoice = false;
+    reconcile();
+    saveLocal(); renderAcct(); renderChars(); renderList(); sync({});
   }
   function mergeIntoAccount() {
     owner = tokenSub(); pendingOwnerChoice = false;
@@ -666,19 +932,26 @@
     resetTimers();
     setStatus("Syncing…");
     var failed = false;
-    return acctPost({ op: "sync", progress: P }).then(function (res) {
-      var changed = mergeInto(P, res.progress || {});
-      if (changed.length) {
+    return acctPost({ op: "sync", progress: { chars: CH } }).then(function (res) {
+      var before = cur, beforeName = CH[cur] ? CH[cur].name : "";
+      var r = mergeCharsInto(CH, incomingChars(res.progress || {}));
+      var fixed = reconcile();
+      if (compactTombs()) fixed = true;
+      notSaved = (res.skipped_chars && typeof res.skipped_chars === "object") ? res.skipped_chars : {};
+      if (r.any || fixed) {
         saveLocal();
-        // Never rebuild the list under a focused input: update only the changed cards.
-        if (inputFocused()) refreshRelated(changed); else renderList();
-      }
+        renderChars();
+        if (cur !== before || (!inputFocused() && r.curRecs.length)) renderList();
+        else if (r.curRecs.length) refreshRelated(r.curRecs);     // never rebuild the list under a focused input
+        else updateSummary();
+      } else renderChars();
+      var movedOff = cur !== before && beforeName && (!CH[before] || !isLive(CH[before]));
+      if (movedOff) toast(beforeName + " was removed on another device.", 4500);
       lastSync = Date.now();
-      var msg = "Saved to your account";
-      if (res.skipped_full) msg = "Some entries were not saved: your account is full (" + (res.limit || MAX_IDS) + ").";
-      setStatus(msg);
-      if (opts.loud) {
-        toast(changed.length ? "Synced: " + changed.length + " updated from your account." : "Synced. Your account and this browser already match.", 3200);
+      setStatus(skipMessage(res) || "Saved to your account");
+      if (opts.loud && !movedOff) {
+        var n = r.recs + r.chars;
+        toast(n ? "Synced: " + n + " updated from your account." : "Synced. Your account and this browser already match.", 3200);
       }
       return res;
     }).catch(function (err) {
@@ -729,9 +1002,187 @@
     $("ach-file").addEventListener("change", restoreFromFile);
   }
 
+  /* ---------- character switcher ---------- */
+  var charSig = "", panelMode = "";
+  function renderChars() {
+    var sel = $("ach-char");
+    if (!sel) return;                         // an old cached page without the switcher: nothing to draw
+    var live = liveChars();
+    var sig = live.map(function (x) { return x.id + "\u0001" + x.c.name; }).join("\u0002");
+    if (sig !== charSig) {
+      charSig = sig;
+      sel.innerHTML = live.map(function (x) { return '<option value="' + esc(x.id) + '">' + esc(x.c.name) + "</option>"; }).join("");
+    }
+    sel.value = cur;
+    $("ach-char-remove").disabled = live.length < 2;
+    $("ach-char-copy").disabled = live.length < 2;
+    $("ach-char-add").disabled = live.length >= MAX_CHARS;
+    $("ach-char-count").textContent = live.length + " of " + MAX_CHARS + " characters";
+    if (live.length < 2) closeCopy();
+    var who = $("ach-bar-who");
+    if (who) { who.hidden = live.length < 2; who.textContent = "Character: " + CH[cur].name; }
+    // characters the server could not take stay visible here, with a note
+    var note = $("ach-char-note");
+    if (note) {
+      var msgs = [];
+      live.forEach(function (x) {
+        if (!notSaved[x.id]) return;
+        msgs.push(x.c.name + " is not saved to your account yet (" +
+          (notSaved[x.id] === "live" ? "the account already has " + MAX_CHARS + " characters" :
+           notSaved[x.id] === "rows" ? "too many removed characters are stored" : "account storage is full") + ").");
+      });
+      note.textContent = msgs.join(" ");
+      note.hidden = !msgs.length;
+    }
+    renderRemoved();
+  }
+  /* Removed characters that still hold progress can be brought back. */
+  function removedWithData() {
+    return Object.keys(CH).filter(function (id) { return !isLive(CH[id]) && Object.keys(CH[id].p).length > 0; })
+      .sort(function (a, b) { return (CH[b].deleted || 0) - (CH[a].deleted || 0); });
+  }
+  function renderRemoved() {
+    var el = $("ach-removed");
+    if (!el) return;
+    var ids = removedWithData();
+    el.hidden = !ids.length;
+    el.innerHTML = ids.length ? '<span class="ach-ctl-label">Removed characters</span>' + ids.map(function (id) {
+      return '<div class="ach-removed-row"><span class="ach-removed-name">' + esc(CH[id].name) + '</span>' +
+             '<button class="ach-btn" type="button" data-restore="' + esc(id) + '" aria-label="Restore ' + esc(CH[id].name) + '">Restore</button></div>';
+    }).join("") : "";
+  }
+  /* Restore = a newer record + a newer character t, so the existing revival rule
+     brings it back on every device. */
+  function restoreCharacter(id) {
+    var c = CH[id];
+    if (!c || isLive(c)) return;
+    if (liveChars().length >= MAX_CHARS) { toast("You already have " + MAX_CHARS + " characters. Remove one first.", 4000); return; }
+    var now = Date.now(), key = null, newest = -1;
+    for (var k in c.p) if (c.p[k].t > newest) { newest = c.p[k].t; key = k; }
+    if (key === null) return;
+    c.p[key].t = Math.max(now, (c.deleted || 0) + 1, newest + 1);
+    c.t = Math.max(now, c.t + 1);
+    if (nameTaken(c.name, id)) c.name = uniqueName(c.name);
+    setCur(id); closePanel(); closeCopy(); afterCharChange();
+    toast("Restored " + c.name + ".", 3000);
+  }
+  function closeCopy() { var el = $("ach-copy"); if (el) el.hidden = true; }
+  function closePanel() { var el = $("ach-panel"); if (el) el.hidden = true; panelMode = ""; }
+  function afterCharChange() { saveLocal(); renderChars(); renderList(); schedulePush(); }
+  function checkName(raw, exceptId) {
+    var name = raw.replace(/[\u0000-\u001f\u007f-\u009f]/g, "").trim();
+    if (!name) return { err: "Type a name first." };
+    if (Array.from(name).length > NAME_MAX) return { err: "Names can be up to " + NAME_MAX + " characters." };
+    if (nameTaken(name, exceptId)) return { err: "You already have a character called " + name + "." };
+    return { name: name };
+  }
+  function panelNote(msg, isErr) {
+    var n = $("ach-panel-note");
+    n.textContent = msg; n.className = "ach-fine" + (isErr ? " ach-err" : "");
+    if (isErr) toast(msg, 3500);
+  }
+  /* Add / Rename / Remove use an inline panel, not window.prompt/confirm: in-app
+     browsers (Discord, YouTube) block those. */
+  function openPanel(mode) {
+    if (!$("ach-panel")) return;
+    var c = CH[cur], field = $("ach-panel-field"), inp = $("ach-panel-input"), go = $("ach-panel-go");
+    if (mode === "add") {
+      if (liveChars().length >= MAX_CHARS) { toast("You can have up to " + MAX_CHARS + " characters. Remove one to add another.", 4000); return; }
+      if (countedRows(CH) >= MAX_CHAR_ROWS || Object.keys(CH).length >= MAX_CHAR_ROWS_HARD) { toast("This account has too many removed characters stored to add a new one.", 4500); return; }
+    } else if (mode === "remove" && liveChars().length < 2) { toast("Keep at least one character.", 3500); return; }
+    closeCopy();
+    panelMode = mode;
+    field.hidden = mode === "remove";
+    inp.value = mode === "rename" ? c.name : "";
+    $("ach-panel-label").textContent = mode === "add" ? "Name for the new character" : "New name for " + c.name;
+    go.textContent = mode === "add" ? "Add character" : mode === "rename" ? "Rename" : "Remove";
+    go.className = "ach-btn " + (mode === "remove" ? "" : "ach-btn-primary");
+    if (mode === "remove") {
+      panelNote(Object.keys(c.p).length
+        ? 'Remove "' + c.name + '"? Its progress is hidden here and on your other devices. You can bring it back from "Removed characters".'
+        : 'Remove "' + c.name + '"? It has no progress yet.');
+    } else panelNote("Up to " + NAME_MAX + " characters. Each character keeps its own list.");
+    $("ach-panel").hidden = false;
+    (mode === "remove" ? go : inp).focus();
+  }
+  function panelSubmit() {
+    var c = CH[cur], chk, now;
+    if (panelMode === "add") {
+      chk = checkName($("ach-panel-input").value, null);
+      if (chk.err) { panelNote(chk.err, true); return; }
+      var id; do { id = newCharId(); } while (CH[id]);
+      now = Date.now();
+      CH[id] = { name: chk.name, created: now, t: now, p: {} };
+      setCur(id); closePanel(); afterCharChange();
+      toast("Added " + chk.name + ". Their list starts empty.", 3000);
+    } else if (panelMode === "rename") {
+      chk = checkName($("ach-panel-input").value, cur);
+      if (chk.err) { panelNote(chk.err, true); return; }
+      closePanel();
+      if (chk.name === c.name) return;
+      c.name = chk.name; c.t = Math.max(Date.now(), c.t + 1);
+      afterCharChange();
+      toast("Renamed to " + chk.name + ".", 2500);
+    } else if (panelMode === "remove") {
+      if (liveChars().length < 2) { closePanel(); return; }
+      var newest = 0;
+      for (var k in c.p) newest = Math.max(newest, c.p[k].t);
+      c.deleted = Math.max(Date.now(), newest + 1);      // hidden, not erased: the data stays stored with a tombstone
+      var gone = c.name;
+      setCur(liveChars()[0].id); closePanel(); afterCharChange();
+      toast("Removed " + gone + ".", 3000);
+    }
+  }
+  function openCopy() {
+    var others = liveChars().filter(function (x) { return x.id !== cur; });
+    if (!others.length) { toast("Add another character first.", 3000); return; }
+    closePanel();
+    $("ach-copy-from").innerHTML = others.map(function (x) { return '<option value="' + esc(x.id) + '">' + esc(x.c.name) + "</option>"; }).join("");
+    $("ach-copy-note").textContent = "Adds that character\u2019s progress to " + CH[cur].name + ". Anything newer on " + CH[cur].name + " is kept.";
+    $("ach-copy").hidden = false;
+    $("ach-copy-from").focus();
+  }
+  function doCopy() {
+    var src = CH[$("ach-copy-from").value];
+    if (!src || !isLive(src)) { closeCopy(); return; }
+    var changed = mergeInto(P, src.p);
+    closeCopy();
+    committed(); renderList();
+    toast(changed.length ? "Copied " + changed.length + " achievement" + (changed.length === 1 ? "" : "s") + " from " + src.name + " into " + CH[cur].name + "."
+                         : "Nothing to copy: " + CH[cur].name + " already has all of it.", 4000);
+  }
+  function wireChars() {
+    // An old cached HTML page with this newer script has none of this markup: skip quietly.
+    var need = ["ach-char", "ach-char-add", "ach-char-rename", "ach-char-remove", "ach-char-copy", "ach-char-count",
+                "ach-copy", "ach-copy-from", "ach-copy-note", "ach-copy-go", "ach-copy-cancel",
+                "ach-panel", "ach-panel-field", "ach-panel-label", "ach-panel-input", "ach-panel-note", "ach-panel-go", "ach-panel-cancel"];
+    for (var i = 0; i < need.length; i++) if (!$(need[i])) return;
+    $("ach-char").addEventListener("change", function () {
+      if (CH[this.value] && isLive(CH[this.value])) { setCur(this.value); closeCopy(); closePanel(); renderChars(); renderList(); }
+    });
+    $("ach-char-add").addEventListener("click", function () { openPanel("add"); });
+    $("ach-char-rename").addEventListener("click", function () { openPanel("rename"); });
+    $("ach-char-remove").addEventListener("click", function () { openPanel("remove"); });
+    $("ach-char-copy").addEventListener("click", openCopy);
+    $("ach-copy-go").addEventListener("click", doCopy);
+    $("ach-copy-cancel").addEventListener("click", closeCopy);
+    $("ach-panel-go").addEventListener("click", panelSubmit);
+    $("ach-panel-cancel").addEventListener("click", closePanel);
+    $("ach-panel-input").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); panelSubmit(); }
+      else if (e.key === "Escape") closePanel();
+    });
+    var rm = $("ach-removed");
+    if (rm) rm.addEventListener("click", function (e) {
+      var b = e.target.closest ? e.target.closest("button[data-restore]") : null;
+      if (b) restoreCharacter(b.getAttribute("data-restore"));
+    });
+  }
+
   /* ---------- backup / restore file ---------- */
   function backupToFile() {
-    var data = { app: "nwcb-achievements", v: 1, exported: new Date().toISOString(), progress: P };
+    // v2 = every character (removed ones included, so a restore can't bring one back by accident)
+    var data = { app: "nwcb-achievements", v: 2, exported: new Date().toISOString(), progress: { chars: CH } };
     var blob = new Blob([JSON.stringify(data)], { type: "application/json" });
     var url = URL.createObjectURL(blob);
     var a = document.createElement("a");
@@ -745,19 +1196,31 @@
     if (!f) return;
     var rd = new FileReader();
     rd.onload = function () {
-      var changed = [];
+      var nRecs = 0, nChars = 0, skipped = 0, into = "";
       try {
         var o = JSON.parse(String(rd.result));
-        if (!o || o.app !== "nwcb-achievements" || !o.progress || typeof o.progress !== "object") throw new Error("not an achievement backup");
-        changed = mergeInto(P, o.progress);
+        if (!o || o.app !== "nwcb-achievements" || !o.progress || typeof o.progress !== "object" || Array.isArray(o.progress)) throw new Error("not an achievement backup");
+        if (isCharsShape(o.progress)) {
+          // new file: every character is merged by its id
+          var r = mergeCharsInto(CH, o.progress.chars);
+          nRecs = r.recs; nChars = r.chars; skipped = r.skipped;
+        } else {
+          // old file (one flat list, from before characters): it goes into the character you are on
+          var flat = {};
+          Object.keys(o.progress).forEach(function (k) { if (k !== "chars") flat[k] = o.progress[k]; });
+          nRecs = mergeInto(P, flat).length; into = CH[cur].name;
+        }
       } catch (e) {
         toast("That file isn't an achievement backup (" + e.message + ").", 5000);
         input.value = ""; return;
       }
       input.value = "";
-      saveLocal(); renderList(); schedulePush();
-      toast(changed.length ? "Restored " + changed.length + " achievement" + (changed.length === 1 ? "" : "s") + " from the file (merged with what is here)."
-                           : "Nothing to restore: this browser already has everything in that file.", 5000);
+      reconcile();
+      saveLocal(); renderChars(); renderList(); schedulePush();
+      var what = nRecs + " achievement" + (nRecs === 1 ? "" : "s") + (nChars ? " and " + nChars + " character" + (nChars === 1 ? "" : "s") : "");
+      var skipNote = skipped ? " " + skipped + " character" + (skipped === 1 ? " was" : "s were") + " skipped: the limit is " + MAX_CHARS + "." : "";
+      toast((nRecs || nChars) ? "Restored " + what + (into ? " into " + into : "") + " from the file (merged with what is here)." + skipNote
+                              : "Nothing to restore: this browser already has everything in that file." + skipNote, 6000);
     };
     rd.onerror = function () { toast("Couldn't read that file.", 4000); };
     rd.readAsText(f);
@@ -767,9 +1230,15 @@
   function boot() {
     loadUi();
     var justSignedIn = acctCaptureFromHash();
-    loadLocal();
+    var migrated = loadLocal();          // v1 (one flat list) -> the character Main (c_main)
+    reconcile();
+    var want = lsGet(CHAR_KEY);          // the character this device had selected last time
+    if (want && CH[want] && isLive(CH[want])) setCur(want);
+    if (migrated) saveLocal();
     if (signedIn()) checkOwner();
     renderAcct();
+    renderChars();
+    wireChars();
     wireBar();
     var list = $("ach-list");
     list.addEventListener("click", onListClick);
