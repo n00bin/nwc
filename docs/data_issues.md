@@ -26,6 +26,11 @@
   a pool of about 1,160-1,200 (5 Javelins need >= ~1,160; a 6th Bastion and a 4th Flame both fail below ~1,200).
   Agrees with the clip (~1,090-1,150). Fits base 1,000 + a +15-20% Divinity max item (the engine already reads
   "Class Resource Max" on a 1,000 base) - worth confirming against Eliza's gear.
+  **Resolved the same day:** Eliza runs Expanded Faith (class feature, "+150 maximum divinity", classes.json) - so the
+  Arbiter base pool is 1,000 and hers is 1,150. All three counts fit 1,150 with the ~45 divinity regen a 6-7 s spam
+  earns (5 Javelins = 1,200 just fits, a 6th Bastion and a 4th Flame do not). This also answers the Expanded Faith
+  `baseMax` review flag for Arbiter (1,000, derived from n00b's cast counts; Devout still untested). Regen ~0.6%/s of
+  1,150 = ~7 divinity/s in combat.
 - Still needed: the Channel Divinity hold from empty to full, on the same Powers Set as the first drain.
 
 ## FIXED (shipped in v2.0, 2026-10-14) EQUIP-BOLSTER-1: mount equip powers ignored the player's bolster
