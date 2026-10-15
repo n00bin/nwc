@@ -31,7 +31,17 @@
   earns (5 Javelins = 1,200 just fits, a 6th Bastion and a 4th Flame do not). This also answers the Expanded Faith
   `baseMax` review flag for Arbiter (1,000, derived from n00b's cast counts; Devout still untested). Regen ~0.6%/s of
   1,150 = ~7 divinity/s in combat.
-- Still needed: the Channel Divinity hold from empty to full, on the same Powers Set as the first drain.
+- **Channel Divinity clip read 2026-10-14** (H:/YouTube/Unedited Vidoes/2026-10-14 23-30-54.mp4, two drain-and-hold
+  cycles, sheet in docs/calibration/inbox/class_powers/cleric/). Drops confirm the 1,150 pool: Flame 25.4% (300 =
+  26.1%), Javelin 21.9 / 21.6 / 19.6% (240 = 20.9%), Bastion 15.9% (200 = 17.4%).
+  - On pressing Channel Divinity the bar jumps at once: +39% (~450) on the first hold from empty, +34% (~390) on the
+    second. That is Scales of Judgement's gauge dump ("empties the Judgement Gauge, restoring additional divinity");
+    about 65-75 divinity per charge, the gauge holding up to 6. PROVISIONAL per-charge value.
+  - Then a steady refill of about 7% of the bar per second (~80 divinity/s, ticks of ~7-9% every ~1.25 s, natural
+    regen included): 39.5% -> 100% in 8.6 s and 57.6% -> 100% in 6.1 s. SOLID.
+  - Empty to full by holding: ~10 s. No attacks or movement while holding (tooltip).
+- Step 1 DONE: pool 1,000 base (+150 Expanded Faith), natural regen ~7/s, Channel Divinity ~80/s + ~70 per Judgement
+  charge on activation. Next: define DIV-1 (how the fight uses Channel Divinity).
 
 ## FIXED (shipped in v2.0, 2026-10-14) EQUIP-BOLSTER-1: mount equip powers ignored the player's bolster
 
