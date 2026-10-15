@@ -450,6 +450,25 @@
     ["atWill", "encounter", "daily"].forEach(function (k) { powers[k].forEach(function (p) { byName[k + ":" + p.name] = p; }); });
     songs.forEach(function (p) { byName["song:" + p.name] = p; });
 
+    // ---- resource pools (DIV-1 / DIV-2, n00b 2026-10-14/15): input.resourcePools [{pool, max, regenPerSec, channel}] ----
+    // A power whose own records spend from a pool waits until the pool can pay. A pool with a channel refills by
+    // channelling: when the next power that spends from it cannot be paid, the fight stops attacking, takes the
+    // channel's instant refund (refundPerCharge x the charges of refundStacks, which are emptied), then holds at
+    // ratePerSec until channel.until ("full", or "cost" = just enough for the blocked power). No names in code.
+    const pools = {};
+    (input.resourcePools || []).forEach(function (pl) {
+      if (!pl || !pl.pool || !(num(pl.max, 0) > 0)) return;
+      pools[pl.pool] = { cur: num(pl.max), max: num(pl.max), regen: num(pl.regenPerSec, 0), ch: pl.channel || null, spent: 0, gained: 0, channels: 0, chSec: 0, refund: 0, waits: 0 };
+    });
+    let channelUntil = -1, channelPool = null;
+    const poolKeyOf = function (key) {   // divinityLevel -> divinity (0-100), channelingDivinity -> divinity (toggle), pool:divinityPct
+      if (!key) return null;
+      if (key.slice(-5) === "Level" && pools[key.slice(0, -5)]) return { pool: key.slice(0, -5), kind: "level" };
+      if (key.indexOf("channeling") === 0) { const p = key.slice(10); const pn = p.charAt(0).toLowerCase() + p.slice(1); if (pools[pn]) return { pool: pn, kind: "channel" }; }
+      if (key.indexOf("pool:") === 0 && key.slice(-3) === "Pct" && pools[key.slice(5, -3)]) return { pool: key.slice(5, -3), kind: "level" };
+      return null;
+    };
+
     // ---- record filters ----
     function recOn(r, owner) {
       if (!r) return false;
@@ -594,6 +613,8 @@
       if (key === "enemyCount") return num(input.enemyCount, 1);
       if (key === "otherEnemies") return Math.max(0, num(input.enemyCount, 1) - 1);
       if (key === "pool:apPct") return Math.max(0, Math.min(100, ap / 10));
+      const pk = poolKeyOf(key);
+      if (pk) { const P = pools[pk.pool]; return pk.kind === "level" ? Math.max(0, Math.min(100, P.cur / P.max * 100)) : (t < channelUntil && channelPool === pk.pool ? 1 : 0); }
       return (fight[key] === true) ? 1 : (typeof fight[key] === "number" ? fight[key] : 0);
     }
     // A gate (or a list of gates, all of which apply) as a 0..1+ fraction - the PT2-2 shapes, same fields as Stage 1.
@@ -601,7 +622,7 @@
       if (!g) return 1;
       if (Array.isArray(g)) return g.reduce(function (a, x) { return a * gateFrac(x); }, 1);
       // a fight input the page does not set yet (e.g. average Divinity level) uses the gate's default
-      const v = (g.default != null && fight[g.key] === undefined && (g.key || "").indexOf(":") < 0 && ["enemyHealthPct", "enemyCount", "otherEnemies"].indexOf(g.key) < 0) ? num(g.default) : keyValue(g.key || "");
+      const v = (g.default != null && fight[g.key] === undefined && (g.key || "").indexOf(":") < 0 && ["enemyHealthPct", "enemyCount", "otherEnemies"].indexOf(g.key) < 0 && !poolKeyOf(g.key)) ? num(g.default) : keyValue(g.key || "");   // a simulated pool is read live (Divine Equilibrium: divinityLevel)
       const cl = function (x) { return Math.max(0, Math.min(1, x)); };
       let f = 1;
       if (g.shape === "toggle") f = v > 0 ? 1 : 0;
@@ -891,6 +912,13 @@
             if (r.op === "gain" && num(r.seconds, 0) > 0) { const n = Math.max(1, Math.round(num(r.seconds))); for (let i = 1; i <= n; i++) schedule(t + i * num(r.seconds) / n, function () { ap += g / n; }); }
             else ap = r.op === "set" ? g : ap + g;
           }
+          else if (pools[r.pool]) {   // DIV-1: spends, gains (Critical Insight) and sets (Perfect Balance: to full) on a simulated pool
+            const P = pools[r.pool];
+            const amt = r.pctOfBar != null ? num(r.pctOfBar) / 100 * P.max : num(r.amount, 0);
+            if (r.op === "spend") { const d = Math.min(P.cur, amt); P.cur -= d; P.spent += d; }
+            else if (r.op === "gain") { const d = Math.min(P.max - P.cur, amt); P.cur += d; P.gained += d; }
+            else if (r.op === "set") { const v = Math.max(0, Math.min(P.max, amt)); if (v > P.cur) P.gained += v - P.cur; P.cur = v; }
+          }
           return 0;
         case "proc": (r.effects || []).filter(function (e) { return recOn(e, ow.obj); }).forEach(function (e) { runRecord({ obj: ow.obj, type: "proc", name: r.name || ow.name }, e, spent, null); }); return 0;
         default: return 0;   // resource / control / heal / shield: recorded, not scored by the damage simulator
@@ -983,6 +1011,45 @@
       const e = effective(ow); const dmg = untriggeredDamage(e.recs);
       if (!dmg.length) return true;
       return dmg.some(function (r) { return gateFrac(r.gate) > 0; });
+    }
+    // DIV-1: what a cast of this owner spends from each simulated pool (its own records, no trigger, gate on)
+    function poolCost(ow) {
+      const out = {};
+      if (!ow || !Object.keys(pools).length) return out;
+      effective(ow).recs.forEach(function (r) { if (r.kind === "resource" && r.op === "spend" && pools[r.pool] && !r.when && gateFrac(r.gate) > 0) out[r.pool] = (out[r.pool] || 0) + num(r.amount, 0); });
+      return out;
+    }
+    function unpaidPool(ow) {   // the first pool this cast cannot pay, or null
+      const c = poolCost(ow); const ks = Object.keys(c);
+      for (let i = 0; i < ks.length; i++) if (pools[ks[i]].cur + 1e-6 < c[ks[i]]) return { pool: ks[i], cost: c[ks[i]] };
+      return null;
+    }
+    function startChannel(u) {
+      const P = pools[u.pool], ch = P && P.ch; if (!ch) return false;
+      let refund = 0;
+      (ch.refundStacks || []).forEach(function (sn) {
+        const n = stackCount(sn); if (!(n > 0)) return;
+        refund += n * num(ch.refundPerCharge, 0);
+        if (ch.emptyStacks !== false && stacks[sn]) { stacks[sn].n = 0; stacks[sn].timers = []; fire("stackRemoved", { resource: sn }); }
+      });
+      refund = Math.min(P.max - P.cur, refund); P.cur += refund; P.refund += refund; P.gained += refund;
+      const target = ch.until === "cost" ? Math.min(P.max, u.cost) : P.max;
+      const rate = Math.max(1, num(ch.ratePerSec, 0));
+      const sec = Math.max(dt, (target - P.cur) / rate);
+      channelUntil = t + sec; channelPool = u.pool; busyUntil = channelUntil;
+      P.channels++; P.chSec += sec;
+      pushTimeline(ch.name || "Channel", "other", 0, Math.round(sec * 10) / 10 + " s" + (refund > 0 ? ", +" + Math.round(refund) + " " + u.pool + " from the gauge" : ""));
+      return true;
+    }
+    // a power that is off cooldown but its pool cannot pay: channel when the pool has a channel (DIV-1), else wait
+    function channelFor(step) {
+      if (!Object.keys(pools).length || t < channelUntil) return false;
+      if (step.kind !== "atWill" && step.kind !== "encounter" && step.kind !== "daily") return false;
+      const ow = owOf(step.kind, step.name); if (!ow) return false;
+      const u = unpaidPool(ow); if (!u || !pools[u.pool].ch) return false;
+      if (step.kind === "encounter") { const s = pst("encounter:" + ow.name); const n = chargesOf(ow.obj); while (s.ready.length < n) s.ready.push(0); if (!s.ready.some(function (r) { return r <= t; }) || !castUseful(ow)) return false; }
+      if (step.kind === "daily" && !(ap >= num(ow.obj.actionPointCost, 1000))) return false;
+      return startChannel(u);
     }
     function castOwner(ow, kind) {
       // field mods on the power itself (Stealth Blade Flurry: no cooldown; Path of the Blade: 3 s) - read at cast
@@ -1090,6 +1157,7 @@
       if (step.kind === "artifact") return !CW && t >= artifactReady;
       if (step.kind === "mount") return !CW && t >= mountReady;
       const ow = owOf(step.kind, step.name); if (!ow) return false;
+      if (unpaidPool(ow)) return false;   // DIV-1: its pool cannot pay yet
       if (step.kind === "atWill") return true;
       if (step.kind === "encounter") {
         if (!castUseful(ow)) return false;
@@ -1107,11 +1175,14 @@
       if (step.kind === "artifact") return CW ? Infinity : Math.max(0, artifactReady - t);
       if (step.kind === "mount") return CW ? Infinity : Math.max(0, mountReady - t);
       const ow = owOf(step.kind, step.name); if (!ow) return Infinity;
+      // DIV-1: time until its pool can pay at the natural rate (a pool with a channel is refilled by channelFor instead)
+      const up = unpaidPool(ow); const poolWait = up ? (pools[up.pool].ch ? 0 : (pools[up.pool].regen > 0 ? (up.cost - pools[up.pool].cur) / pools[up.pool].regen : Infinity)) : 0;
       if (step.kind === "encounter") {
         if (!castUseful(ow)) return Infinity;
         const s2 = pst("encounter:" + ow.name); const n = chargesOf(ow.obj); while (s2.ready.length < n) s2.ready.push(0);
-        return Math.max(0, Math.min.apply(null, s2.ready) - t);
+        return Math.max(0, poolWait, Math.min.apply(null, s2.ready) - t);
       }
+      if (step.kind === "atWill" && poolWait > 0) return poolWait;
       if (step.kind === "daily") {
         const sd = pst("daily:" + ow.name); const cost = num(ow.obj.actionPointCost, 1000);
         const apWait = ap >= cost ? 0 : (cost - ap) / Math.max(1, AP_PER_SEC);
@@ -1222,6 +1293,15 @@
         if (ok && rbWasHeld[e.name]) { rbWasHeld[e.name] = false; const last = timeline[timeline.length - 1]; if (last && last.name === e.name) last.note = (last.note ? last.note + ", " : "") + "held for the call"; }
         return ok;
       }
+      // DIV-1: nothing else is castable and a listed power is off cooldown but its pool cannot pay -> channel
+      // (the at-will filler never stands in for a channel: holding refills ~10x faster than natural regen)
+      for (let i = 0; i < rbList.length; i++) {
+        const e = rbList[i];
+        if (e.kind !== "encounter" && e.kind !== "daily" && e.kind !== "atWill") continue;
+        if (rbHeld(e)) continue;
+        if (e.refresh && rbRemaining(e) > num(e.ow.obj.castSeconds, 0) + 0.5) continue;
+        if (channelFor({ kind: e.kind, name: e.name })) return true;
+      }
       if (rbFiller) return castOwner(rbFiller.ow, "atWill");
       busyUntil = t + dt; return false;
     }
@@ -1329,6 +1409,7 @@
           while (!acted && guard++ < 64) {
             const list = curList(); if (!list.length) break;
             const step = list[ptr];
+            if (channelFor(step)) { acted = true; break; }   // DIV-1: the next listed power cannot be paid -> channel
             const w = waitFor(step);
             if (w <= 0 && isReady(step)) { acted = castStep(step); advance(); }
             else if (w <= MAX_WAIT) break;
@@ -1339,6 +1420,11 @@
         if (!acted && !fillerStep) busyUntil = t + dt;
       }
       ap += AP_PER_SEC * dt;
+      // DIV-1/2: pools refill at their natural rate, or at the channel's rate while channelling (measured rate, regen included)
+      Object.keys(pools).forEach(function (pn) {
+        const P = pools[pn]; const rate = (t < channelUntil && channelPool === pn && P.ch) ? num(P.ch.ratePerSec, 0) : P.regen;
+        const d = Math.min(P.max - P.cur, rate * dt); if (d > 0) { P.cur += d; P.gained += d; }
+      });
       // 2.4-E: a running encounter cooldown loses dt x bonus of base time while a Recharge Speed buff is up
       if (input.liveRecharge) {
         const rb = rechargeBonusNow();
@@ -1367,6 +1453,7 @@
       callWindow: CW ? { windows: windows.map(function (w) { return [Math.round(w[0] * 10) / 10, Math.round(w[1] * 10) / 10]; }), magnitudeInside: magIn, magnitudeOutside: magTotal - magIn,
         damageInside: scoreHit ? dmgIn : undefined, damageOutside: scoreHit ? dmgTotal - dmgIn : undefined, damageInsideByOwner: scoreHit ? dmgInByOwner : undefined } : undefined, statOwnersOn: scoreHit ? Object.keys(statOwnersOn) : undefined,
       derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 },
+      pools: Object.keys(pools).length ? Object.fromEntries(Object.keys(pools).map(function (pn) { const P = pools[pn]; return [pn, { max: Math.round(P.max), regenPerSec: P.regen, spent: Math.round(P.spent), gained: Math.round(P.gained), channels: P.channels, channelSeconds: Math.round(P.chSec * 10) / 10, refund: Math.round(P.refund) }]; })) : undefined,
       trace: input.trace ? traceRows : undefined
     };
   }

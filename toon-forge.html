@@ -3227,7 +3227,7 @@
   <div class="hero">
     <span class="local-preview-badge" id="local-preview-badge" style="display:none;">🔧 Local Preview · showcasing functionality &amp; features coming soon</span>
     <span class="save-status" id="save-status">Auto-saved · just now</span>
-    <h1>Toon Forge<span class="accent">— build your character, see what hits</span><span class="badge badge-release" id="tf-version-badge" title="Version 2.0 (2026-10-14) — the fight simulator and the new optimizer: it picks your powers, runs the fight, and finishes in about 15 minutes. Spot something off? Use the ✎ pencil to fix it.">v2.0</span></h1>
+    <h1>Toon Forge<span class="accent">— build your character, see what hits</span><span class="badge badge-release" id="tf-version-badge" title="Version 2.1 (2026-10-15) — Arbiter clerics now run out of divinity in the fight simulator and channel to refill it. Version 2.0 (2026-10-14): the fight simulator and the new optimizer. Spot something off? Use the ✎ pencil to fix it.">v2.1</span></h1>
     <p>A friendly character builder for Neverwinter. Pick your role, equip your gear, and watch the build come together — no spreadsheet skills required.</p>
     <div class="hero-correction-callout" role="note">
       <span class="hcc-icon">✎</span>
@@ -14112,6 +14112,7 @@
         // PT2 step 2.3 (fx simulator): the kit objects themselves, so their fx records travel with them
         kit: pt2SimKit(pick, mechs),
         paragon: state.paragon, stackRules: ((typeof findClass === "function" && findClass(state.class)) || {}).fxStacks || {},
+        resourcePools: pt2ResourcePools(er),   // DIV-1/2: the class's simulated pools (Arbiter divinity), sized to this build
         fight: Object.assign({}, PT2_FIGHT_DEFAULTS, state.pt2Fight || {}, {
           targetRangeFt: (typeof state.targetRangeFt === "number") ? state.targetRangeFt : 10,
           flankUptime: ((typeof state.flankUptime === "number") ? state.flankUptime : 1) * 100 }),
@@ -14127,6 +14128,25 @@
         // PT2 step 2.8: with no typed opener or loop, the fx simulator builds the rotation (a priority list)
         ruleBuilt: pt2UsesFxSim() && !steps.length && !opener.length
       };
+    }
+    // DIV-1/2 (n00b 2026-10-14/15): a class's resourcePools block (classes.json) sized to this build: max = (base + the
+    // slotted features' maxBonus, e.g. Expanded Faith +150) x (1 + maxStat %), natural regen = regenPerSec x (1 +
+    // regenStat %) (the engine's divinity-regen items, e.g. Ruthless Resources). The channel block passes through.
+    function pt2ResourcePools(er) {
+      const cDef = (typeof findClass === "function") ? findClass(state.class) : null;
+      const list = (cDef && Array.isArray(cDef.resourcePools)) ? cDef.resourcePools : [];
+      if (!list.length) return [];
+      const pDef = (typeof findParagon === "function") ? findParagon(state.class, state.paragon) : null;
+      const picks = new Set((state.slottedClassFeaturePicks || []).filter(Boolean));
+      const stat = n => (er && er.stats && n && er.stats[n]) || null;
+      return list.filter(pl => pl && pl.pool && (!Array.isArray(pl.paragons) || pl.paragons.indexOf(state.paragon) >= 0)).map(pl => {
+        let bonus = 0;
+        ((pDef && pDef.slottedClassFeatures) || []).forEach(f => { if (f && picks.has(f.name) && f.resource && f.resource.pool === pl.pool) bonus += +f.resource.maxBonus || 0; });
+        const mx = stat(pl.maxStat), rg = stat(pl.regenStat);
+        const maxPct = mx ? (+mx.percentTotal || 0) : 0, regenPct = rg ? (+rg.finalPct || 0) : 0;
+        return { pool: pl.pool, max: ((+pl.baseMax || 0) + bonus) * (1 + maxPct / 100),
+          regenPerSec: (+pl.regenPerSec || 0) * (1 + regenPct / 100), channel: pl.channel || null };
+      });
     }
     function pt2SimKit(pick, mechs) {
       const cDef = (typeof findClass === "function") ? findClass(state.class) : null, pDef = (typeof findParagon === "function") ? findParagon(state.class, state.paragon) : null;
