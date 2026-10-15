@@ -1,5 +1,53 @@
 # Data Issues To Investigate
 
+## OPEN DIV-1: divinity is not in the fight simulator (2026-10-14)
+
+- The simulator's `resource` records only track action points; `divinity` spends (Searing Javelin 240, Forgemaster's
+  Flame 300, both 0.9 s cooldown) are ignored, so an Arbiter's Javelin / Flame spam is scored as sustainable. The
+  optimizer's Arbiter kit search is not trustworthy until a divinity pool exists. Healer scoring is unaffected
+  (capacity formula).
+- Facts on file: docs/calibration/inbox/powers/cleric-powers/ (Scales of Judgement, Channel Divinity, Perfect Balance,
+  Inner Balance, Searing Javelin, Forgemaster's Flame). The game never prints the pool size, the in-combat regen or
+  the Channel Divinity restore rate.
+- **First clip read 2026-10-14** (Eliza, Arbiter, H:/YouTube/Unedited Vidoes/2026-10-14 22-52-58.mp4; bar measured
+  frame by frame, stills in docs/calibration/inbox/class_powers/cleric/). The bar fills linearly by HEIGHT (regen ticks
+  are the same size at every level by height, not by arc length).
+  - Regen in combat (companion still attacking): about +1.75% of the bar every 3 s, ~0.6% per second; empty to full
+    took ~155 s (32 s -> 186 s). SOLID.
+  - Pool, first drain (Powers Set 1, Javelin + Flame): drops of 22%, 27.5%, 22%, 19% -> Javelin 240 = 22%, Flame 300 =
+    27.5% (ratio 0.8, matches 240/300) -> pool ~1,090. PROVISIONAL.
+  - Second drain after the switch to Powers Set 2 with Bastion of Health (200) slotted: drops of 15%, 18.5%, 16%, 18%
+    and a final 34% that no single power explains. Does NOT fit the first drain; left out.
+  - Channel Divinity hold: NOT in the clip (it ends with the bar empty and "Not enough Divinity").
+  - Consequence: ~1,100 divinity buys about 4 Javelin / Flame casts and natural regen pays for one about every 40 s;
+    the simulator fires them every 0.9 s. Channel Divinity's restore rate is the missing number.
+- Still needed: the Channel Divinity hold from empty to full, on the same Powers Set as the first drain.
+
+## FIXED (shipped in v2.0, 2026-10-14) EQUIP-BOLSTER-1: mount equip powers ignored the player's bolster
+
+- n00b's character sheet (Mount Bolster Total 125%) reads Rejuvenation 13.5% / +3,038 CR and Rapid Accuracy
+  +5,062 / +3,038 at IL 3,375 = the Mythic values x 1.125. Equip-power stats, CR and proc values all scale with
+  bolster, capped at the Celestial value. Fixed in toon-forge.html (tooltip scaler, renderEquipPower, the engine's
+  equip block, the equip proc feed in pt2ProcOwners). Providence's flat 2% stays flat.
+
+## WATCH insignia tier table has no capture (2026-10-14, reports #310-#313)
+
+- `MOUNT_INSIGNIAS_TIER_SCALING` (data/mount-insignias.js: Uncommon 25 / 0.05, Rare 50 / 0.1, Epic 100 / 0.2,
+  Legendary 200 / 0.4, Mythic 500 / 1, Celestial 750 / 1.5) was derived in July without a screenshot. A player's
+  Legendary Enlightened Insignia of Brutality read IL 200 / CR 160 / 300 / 300 = Mythic x 0.4 exactly, the first
+  in-game reading of a lower tier. Reports closed as Won't Fix with the rarity-picker note.
+- To lock: one tooltip of any insignia below Mythic from n00b (any rarity).
+
+## OPEN three picker-sourced mounts are probably not real mounts (2026-10-14, OPT-READ-1 batch 3b)
+
+- mounts.json 335 "Teal Armored Axe Beak" (combat power 94 "Spinning Axe Strike (Teal)"), 313 "Mossy Flail Snail"
+  (power 93, a duplicate of 63 Flail Snail) and 290 "Champion's Armored Bulette" (power 95 Terrifying Roar) came from
+  the community mount tab on 2026-06-16. n00b's read: "Teal" is the Mythic rarity colour folded into the Armored Axe
+  Beak's name, and "Champion's" likely a prefix the same way. 335 and 290 carry `flagged: "not-a-mount?"`; the three
+  powers carry FLAGGED notes.
+- To close: check the in-game mount collection for separate Teal / Mossy / Champion's entries. If none, delete the
+  mounts and their powers (relink 313 to power 63 if the Mossy snail turns out real).
+
 ## OPEN Sim fight vs n00b's Hellbringer play: first-rotation Soul Scorch + unlisted Soul Siphon (2026-10-10, for the sim-fight revamp)
 
 Found while checking the Hellbringer DPS build-guide link (`b/hellbringer-dps/`, typed loop: Hellish Rebuke >
