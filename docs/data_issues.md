@@ -48,6 +48,12 @@
   Verdict's fill kind verified the same day (fills with the kind the proccing power builds). Lock is not a go: build
   on n00b's word, after the derived gaps below.
 - Derived gap DIV-2 (open): how regen scales with the build's Divinity Regen ("Class Resource Regen" in the engine).
+  - No sheet stat exists (n00b 2026-10-14); divinity regen comes only from item bonuses. Eliza wore Prismatic Luminstep
+    Sabatons (Ruthless Resources (Greater): a hit or heal over 10% of max HP gives +5% divinity regen for 15 s, max 5
+    stacks). The first clip shows it: idle regen 0.72%/s (8.3/s) in the 15 s after the last spam hits, then a steady
+    0.624%/s (7.2/s) once the stacks ran out (47-160 s). So BASE natural regen = ~7.2 divinity/s, and the boots raise it.
+  - Unknown: whether the boots also speed Channel Divinity (both holds came within 15 s of the spam). Test: drain,
+    stand idle 16 s so the stacks expire, then hold Channel Divinity; compare with ~80/s.
 
 ## FIXED (shipped in v2.0, 2026-10-14) EQUIP-BOLSTER-1: mount equip powers ignored the player's bolster
 
