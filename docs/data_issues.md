@@ -56,7 +56,15 @@
     stand idle 16 s so the stacks expire, then hold Channel Divinity; compare with ~80/s.
   - **DIV-2 = 1 LOCKED 2026-10-15 (n00b):** natural regen = 7.2/s base x (1 + the build's divinity-regen bonuses, the
     engine's Class Resource Regen total incl. Ruthless Resources stacks while big hits land); Channel Divinity's scaling
-    decided by the 16-s-idle test (pending recording).
+    decided by the boots-off test below.
+  - **Boots-off test read 2026-10-15** (H:/YouTube/Unedited Vidoes/2026-10-15 01-23-29.mp4, Luminsteps removed): eight
+    drops of ~13% each = the 150-divinity encounter in the third slot (150 / 1,150 = 13.0%), pool confirmed again.
+    Channel Divinity refilled 12.9% -> 99.1% in 11.3 s = 7.6%/s (~87/s), ticks of 7-12% every ~1.2 s - the same as or a
+    little faster than the boots-on holds (~7.0%/s). RESULT: Ruthless Resources does NOT speed Channel Divinity; it
+    only scales natural regen. Channel rate ~80-87/s flat (whether it scales with the pool size is untested; every
+    clip had a 1,150 pool). Gauge refund on pressing it was small here (~+9%), as expected after spamming a power that
+    builds little Judgement - the refund follows the charges held.
+- DIV gaps defined and locked (DIV-1 = 1, DIV-2 = 1). Ready to build on n00b's go.
 
 ## FIXED (shipped in v2.0, 2026-10-14) EQUIP-BOLSTER-1: mount equip powers ignored the player's bolster
 
