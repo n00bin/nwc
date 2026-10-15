@@ -1,6 +1,6 @@
 # Data Issues To Investigate
 
-## OPEN DIV-1: divinity is not in the fight simulator (2026-10-14)
+## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 
 - The simulator's `resource` records only track action points; `divinity` spends (Searing Javelin 240, Forgemaster's
   Flame 300, both 0.9 s cooldown) are ignored, so an Arbiter's Javelin / Flame spam is scored as sustainable. The
@@ -77,7 +77,9 @@
   magnitude per second 410 -> 274 (-33%); Barbarian fight check unchanged; no page errors.
   Kit search (div_kit.js, empty Arbiter, kitOnly): BEFORE (frozen copy, no divinity) Flame + Daunting Light + Javelin,
   features Divine Equilibrium + Hallowed Armor; AFTER Flame + Geas + Break the Spirit (one divinity spender, two
-  cooldown encounters), features Divine Equilibrium + Doomsayer, 6 channels / 25 s in 180 s. Not shipped yet.
+  cooldown encounters), features Divine Equilibrium + Doomsayer, 6 channels / 25 s in 180 s.
+  SHIPPED 2026-10-15 as Toon Forge v2.1 (commit 66f95289, n00b: "ship DIV"); verified on the deployed site (same pool and
+  casts, no page errors). Open estimates: ~70 per Judgement charge; channel rate with a bigger pool.
 
 ## FIXED (shipped in v2.0, 2026-10-14) EQUIP-BOLSTER-1: mount equip powers ignored the player's bolster
 
