@@ -54,6 +54,9 @@
     0.624%/s (7.2/s) once the stacks ran out (47-160 s). So BASE natural regen = ~7.2 divinity/s, and the boots raise it.
   - Unknown: whether the boots also speed Channel Divinity (both holds came within 15 s of the spam). Test: drain,
     stand idle 16 s so the stacks expire, then hold Channel Divinity; compare with ~80/s.
+  - **DIV-2 = 1 LOCKED 2026-10-15 (n00b):** natural regen = 7.2/s base x (1 + the build's divinity-regen bonuses, the
+    engine's Class Resource Regen total incl. Ruthless Resources stacks while big hits land); Channel Divinity's scaling
+    decided by the 16-s-idle test (pending recording).
 
 ## FIXED (shipped in v2.0, 2026-10-14) EQUIP-BOLSTER-1: mount equip powers ignored the player's bolster
 
