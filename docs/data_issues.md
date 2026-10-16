@@ -62,6 +62,10 @@
   +5.4-6.0%, 11% +2.5-3.0%, empty +0-0.5% - straight lines from zero at both ends to the peak at half, as modelled.
   The peak shows ~+13% not +15%: fits 15% added into a damage-bonus total already ~15%. The earlier clip 08-44-26
   turned out to be recorded with the feature unslotted (n00b); its curve was other buffs stacking - discarded.
+- **Channel Divinity rate test 2026-10-16** (H:/YouTube/Unedited Vidoes/2026-10-16 10-36-51.mp4, Expanded Faith off):
+  encounter drops ~14.6% each (150 cost on a 1,000 bar = 15%, base pool confirmed). Three holds: 77 / 81 / 82 per
+  second (7.7-8.2%/s) vs 80-87 per second on the 1,150 bar. FIXED rate, not a % of the bar (a % rule gives ~70-76).
+  Model (ratePerSec 83, flat) unchanged; the provisional note removed.
 
 ## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 

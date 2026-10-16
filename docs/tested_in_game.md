@@ -72,9 +72,11 @@ would raise regen, not lower it.
   move while holding. Divinity-regen gear does NOT speed it up; that gear only boosts your natural regen.
 - **Proof:** 39.5% to 100% in 8.6 s and 57.6% to 100% in 6.1 s (boots on, ~7%/s); 12.9% to 99.1% in 11.3 s with
   the boots removed (7.6%/s, ~87/s), the same or faster.
-- **Tested:** 2026-10-14/15. Clips `2026-10-14 23-30-54`, `2026-10-15 01-23-29`.
-- **Status:** Measured. **Open (test 7):** whether the rate is fixed or scales with a bigger or smaller bar
-  (every clip so far had a 1,150 bar).
+- **Bar size:** the speed is FIXED, not a percent of your bar. With Expanded Faith off (1,000 bar) three holds ran
+  77, 81 and 82 divinity a second, the same as on the 1,150 bar; a percent rule would have given about 70-76. So a
+  smaller bar refills sooner (about 12 s from empty instead of 14) and a bigger bar takes longer.
+- **Tested:** 2026-10-14/15/16. Clips `2026-10-14 23-30-54`, `2026-10-15 01-23-29`, `2026-10-16 10-36-51`.
+- **Status:** Measured.
 
 #### Channel Divinity: the Judgement gauge refund (tap vs hold)
 - **Question:** how much divinity do you get back when Channel Divinity empties your Judgement gauge, and is a
@@ -165,7 +167,6 @@ would raise regen, not lower it.
 
 | # | Question |
 |---|---|
-| 7 | Channel Divinity on a smaller bar (Expanded Faith off): fixed speed or a % of the bar? |
 | 8 | Lightspeed: Daunting Light's real cast time |
 | 9 | Piercing Javelin: per hit or per cast? |
 | 10 | Critical Sun: how long is the window? |
@@ -196,6 +197,7 @@ Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a f
 | `2026-10-16_09-01-59_divine-equilibrium_feature-off-baseline` | damage flat at every divinity level without it | yes |
 | `2026-10-16_09-11-14_divine-equilibrium_feature-on` | the straight-line curve | yes |
 | `2026-10-16_07-53-07_short-clip_unused` | not used in any test | yes |
+| `2026-10-16_10-36-51_channel-on-1000-bar` | Channel Divinity speed is fixed (1,000 bar), pool 1,000 without Expanded Faith | yes |
 
 ---
 
