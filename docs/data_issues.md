@@ -43,6 +43,12 @@
   assumed). Result (180 s): Flame + Daunting Light + Geas 379-384 with taps vs 386 with short channels; Flame +
   Javelin + Geas 354-367 vs 366. Taps lose because each one throws away the Judgement the next power would have used
   for bonus magnitude (Flame +100). The search keeps whichever wins per build. Open: the real tap time.
+- **Critical Insight test 2026-10-16** (H:/YouTube/Unedited Vidoes/2026-10-16 07-28-06.mp4): CONFIRMED 10 per critical
+  HIT, every target counts. One dummy + Lance of Faith: 14.9/s with it vs 5.7/s without (+9.2/s). Dummy pack +
+  Conflagrate (1.8 s cast): 17.5-18.8/s, i.e. ~12-13/s from Critical Insight, more than twice the most a once-per-cast
+  rule could give (5.6/s). The simulator already lands area hits once per enemy and fires a crit for each. No change.
+  Lead, not acted on: natural regen in run B (casting Lance, no Critical Insight) was ~5.7-5.9/s, below the 7.2/s
+  measured standing idle on 2026-10-15. Either regen is slower in combat / while casting, or something else differs.
 
 ## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 
