@@ -635,7 +635,8 @@
         else { const a0 = num(g.at0, 0), a100 = num(g.at100, 1); f = cl(a0 + (a100 - a0) * v / 100); }
       } else if (g.shape === "threshold") {
         const x = num(g.value, 0);
-        f = (g.op === "<=" ? v <= x : g.op === ">=" ? v >= x : g.op === "<" ? v < x : g.op === ">" ? v > x : g.op === "==" ? v === x : v > 0) ? 1 : 0;
+        const w = g.minus ? v - keyValue(g.minus) : v;   // PB-TEST 2026-10-16: a gap between two counters (Perfect Balance)
+        f = (g.op === "<=" ? w <= x : g.op === ">=" ? w >= x : g.op === "<" ? w < x : g.op === ">" ? w > x : g.op === "==" ? w === x : w > 0) ? 1 : 0;
       } else if (g.shape === "count") f = Math.min(num(g.maxUnits, 1), v) * num(g.perUnit, 0);
       else if (g.shape === "dutyCycle" && g.uptime != null) f = num(g.uptime);   // a ruled uptime share (e.g. Divine Champion 50%)
       return g.invert ? (f > 0 ? 0 : 1) : f;
@@ -1321,10 +1322,25 @@
       if (h && isReady({ kind: e.kind, name: e.name })) rbWasHeld[e.name] = true;   // ready but kept for the call
       return h;
     }
+    // PB-TEST 2026-10-16: a pair of counters that clears when one runs N ahead (Perfect Balance: 2 ahead clears both).
+    // With the "balance" play choice, hold a power whose stack would make that happen.
+    function balanceBlocks(name) {
+      for (let i = 0; i < listeners.length; i++) {
+        const A = listeners[i].rec;
+        if (!listeners[i].castListener || A.kind !== "stack" || A.op !== "add" || !A.when.from || (A.when.from.names || []).indexOf(name) < 0) continue;
+        for (let j = 0; j < listeners.length; j++) {
+          const C = listeners[j].rec, g = C.gate;
+          if (C.when.on !== "stackApplied" || C.when.resource !== A.resource || !g || Array.isArray(g) || g.shape !== "threshold" || !g.minus || g.op !== ">=") continue;
+          if (keyValue(g.key) + num(A.amount, 1) - keyValue(g.minus) >= num(g.value, 0)) return true;
+        }
+      }
+      return false;
+    }
     function rbAct() {
       for (let i = 0; i < rbList.length; i++) {
         const e = rbList[i];
         if (!rbReady(e) || rbHeld(e)) continue;
+        if (PC.balance && (e.kind === "encounter" || e.kind === "daily") && balanceBlocks(e.name)) continue;
         if (e.named && e.named.length && e.named.every(function (n) { return buffUp(n) && (permanentBuff[n] || buffs[n] - t > num(e.ow.obj.castSeconds, 0) + 0.5); })) continue;
         if (e.refresh) { const c = num(e.ow.obj.castSeconds, 0); if (rbRemaining(e) > c + 0.5) continue; }
         if (e.kind !== "mechanic" && e.kind !== "spender" && !isReady({ kind: e.kind, name: e.name })) { rbInvalid++; continue; }
@@ -1582,6 +1598,10 @@
       tryAll(pl0.pool + " channel length", [{ label: "just enough for the next cast", u: "cost" }], function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { channelUntil: o.u }) }); });
       if (pl0.cashIn) tryAll((pl0.cashIn.grants && pl0.cashIn.grants.name) || "cash-in", [{ label: "as soon as it is ready", w: "asap" }], function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { cashIn: o.w }) }); });
     }
+    // PB-TEST 2026-10-16: keep a counter pair even (Perfect Balance) by holding the power that would clear it
+    let hasPair = false; try { hasPair = JSON.stringify(input).indexOf('"minus"') >= 0; } catch (e) { hasPair = false; }
+    if (hasPair) tryAll("keep the stack pairs even", [{ label: "hold a power that would put one kind 2 ahead", b: true }, { label: "hold a power that would put one kind 2 ahead, cast every slotted power", b: true, all: true }],
+      function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { balance: o.b }) }, o.all ? { skip: [] } : {}); });   // the skip search ran without the pair rule
     const qpSongs = (kit.songs || []).filter(function (sg) { return (ch.songs || []).indexOf(sg.name) >= 0 && sg.quickplay !== false; }).map(function (sg) { return sg.name; });
     const qpSlots = 1 + ((kit.mechanics || []).some(function (m) { return /quickplay slot/i.test(String(m.notes || "") + String(m.modeledBy || "")); }) ? 1 : 0);
     const qpCosts = [];

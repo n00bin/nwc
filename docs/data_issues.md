@@ -26,6 +26,17 @@
   "Angel of Death x N", the ready buff is "Angelic Inspiration" (the tooltip calls them Angelic Inspiration / Angelic
   Presence). Fight numbers unchanged (309 / 414 mps). Still open: whether the counter keeps building while the ready
   buff is up (no clean casts in that window).
+- **Perfect Balance test 2026-10-16** (H:/YouTube/Unedited Vidoes/2026-10-16 05-10-50.mp4): (1) Forgemaster's Flame
+  gives BURNING Shift and Daunting Light gives RADIANT Shift - the opposite of the tooltip's "generate" wording; the
+  shift follows the Judgement the power USES. Names swapped in the data (groups unchanged; Javelin / Sun Burst and
+  Chains / Break the Spirit / Geas follow the same rule, not tested). (2) One stack ahead is kept (Burning Shift 1
+  stayed 17 s with no Radiant). (3) Two ahead clears both (a 2nd Flame cleared it at once). (4) Alternating Flame /
+  Daunting Light reached 4 + 4: both consumed and divinity refilled to full (from ~12%).
+  Fixes: the 4 + 4 consume only cleared ONE kind (the second consume's gate re-checked after the first) - now one
+  proc consumes both; the 2-ahead clear is now modelled (threshold gate `minus`); new play choice "keep the stack
+  pairs even" (hold a power that would put one kind 2 ahead), tried by the search. Check (pb_check2.js, 180 s):
+  Flame + Daunting Light + Geas 366 -> 386 mps (search keeps "even"); Flame + Javelin + Geas stays 366 (one kind,
+  nothing to balance); Angel of Death check unchanged (309 / 414).
 
 ## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 
