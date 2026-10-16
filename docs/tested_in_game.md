@@ -180,15 +180,14 @@ would raise regen, not lower it.
 - **Question:** what does "you may cast Celestial Prominence again without spending any action points. Duration: 6s.
   This effect may not trigger twice in a row" actually allow?
 - **Plain answer:** when a Celestial Prominence crits, your daily button lights up even with an empty action point bar,
-  and you have about 6 seconds to cast it again for free. The free cast's own crit can't give you another one. Both
-  free casts in the test hit right away at the smaller, un-expanded damage, so don't expect a full 5-second pop
-  from it.
+  and you have about 6 seconds to cast it again for free. The free one works like a normal cast: place it, and it
+  grows for 5 seconds into the full hit. The free cast's own crit can't give you another one.
 - **Proof:** three rounds. Each Celestial Prominence crit lit the button with the gem empty. In round 3 it was left
   alone and went dark 5.6 s after lighting, about 6 s after the crit. Both free casts crit, and neither lit the button
-  again. Both hit for the un-expanded amount (211,528 and 217,100 before mitigation, vs 403,186 for a full pop).
+  again. n00b confirmed the free cast places and grows like the tooltip says (the quick hits in the clip were early
+  pops while he learned the daily).
 - **Tested:** 2026-10-16. Clip `2026-10-16 13-26-40`.
-- **Status:** Verified. **Open:** in round 1 the free cast still went off about 7.5 s after the crit, with the button
-  hidden behind the other power set for part of that time; and whether a free cast can be placed and left to expand.
+- **Status:** Verified.
 
 ### Still to test (Arbiter)
 

@@ -84,7 +84,8 @@
   **Bug found:** Critical Sun's old record reset the daily's cooldown, but dailies are gated by action points, so it
   never did anything (same damage as Burning Patch with no Flame Strike). New: buff `freeCast` (vocabulary added in
   build-data.py) - while "Critical Sun" is up the listed daily costs no AP and skips its cadence; casting it uses the
-  buff; a 6 s marker stops the free cast's crit from re-arming; the free cast's magnitude set to 700 (provisional).
+  buff; a marker stops the free cast's crit from re-arming. n00b: the free cast places and grows over 5 s like a
+  normal one (the clip's 700 hits were early pops while learning) - the 700 override was removed, marker now 8 s.
   Check through the page's real scored path (pt2ScoredSetup + pt2SimScored, crits on): Celestial Prominence 2 -> 5
   casts in 180 s, damage +2.3%; Burning Patch in the slot = the old value.
   **Harness note:** the earlier checks in this section (aod_iso, pb_check2, glow_check, ls_check) called
