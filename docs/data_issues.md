@@ -49,6 +49,12 @@
   rule could give (5.6/s). The simulator already lands area hits once per enemy and fires a crit for each. No change.
   Lead, not acted on: natural regen in run B (casting Lance, no Critical Insight) was ~5.7-5.9/s, below the 7.2/s
   measured standing idle on 2026-10-15. Either regen is slower in combat / while casting, or something else differs.
+- **Divine Glow test 2026-10-16** (H:/YouTube/Unedited Vidoes/2026-10-16 07-53-31.mp4, two rounds, bar read with a
+  smoothed centreline): idle refill 7.5/s both rounds (matches the 7.2/s idle figure); with Divine Glow 18.3 and 18.2/s
+  for ~12 s. Modelled as +10.8 divinity/s for 12 s (new resource op `regenFlat`, amount = per second; PROVISIONAL:
+  flat vs 1% of max per second vs +145% of regen cannot be told apart on one pool size; not applied while
+  channelling, untested). Check (glow_check.js, 180 s, Flame + Javelin + Divine Glow): 323 mps with or without the
+  boost - divinity is not what limits that build; Geas in the slot instead gives 367. Angel of Death check unchanged.
 
 ## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 

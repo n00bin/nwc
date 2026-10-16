@@ -458,7 +458,7 @@
     const pools = {};
     (input.resourcePools || []).forEach(function (pl) {
       if (!pl || !pl.pool || !(num(pl.max, 0) > 0)) return;
-      pools[pl.pool] = { cur: num(pl.max), max: num(pl.max), regen: num(pl.regenPerSec, 0), ch: pl.channel || null, cash: pl.cashIn || null, taps: 0, spent: 0, gained: 0, channels: 0, chSec: 0, refund: 0, waits: 0, cashIns: 0, freeSpent: 0 };
+      pools[pl.pool] = { cur: num(pl.max), max: num(pl.max), regen: num(pl.regenPerSec, 0), ch: pl.channel || null, cash: pl.cashIn || null, boosts: [], taps: 0, spent: 0, gained: 0, channels: 0, chSec: 0, refund: 0, waits: 0, cashIns: 0, freeSpent: 0 };
     });
     // AOD-1 / DIV-3 (2026-10-15): play choices the best-of search tries - channel to "full" or just to the blocked
     // power's "cost"; cash in (Angel of Death) "asNeeded" (in place of a channel) or "asap" (as soon as it is ready)
@@ -922,6 +922,7 @@
             if (r.op === "spend") { if (spendIsFree(ow, r.pool)) { P.freeSpent += amt; return 0; } const d = Math.min(P.cur, amt); P.cur -= d; P.spent += d; }
             else if (r.op === "gain") { const d = Math.min(P.max - P.cur, amt); P.cur += d; P.gained += d; }
             else if (r.op === "set") { const v = Math.max(0, Math.min(P.max, amt)); if (v > P.cur) P.gained += v - P.cur; P.cur = v; }
+            else if (r.op === "regenFlat") P.boosts.push({ until: t + num(r.seconds, 0), perSec: num(r.amount, 0) });   // GLOW-TEST: Divine Glow +10.8/s for 12 s (amount = per second)
           }
           return 0;
         case "proc": (r.effects || []).filter(function (e) { return recOn(e, ow.obj); }).forEach(function (e) { runRecord({ obj: ow.obj, type: "proc", name: r.name || ow.name }, e, spent, null); }); return 0;
@@ -1505,7 +1506,8 @@
       ap += AP_PER_SEC * dt;
       // DIV-1/2: pools refill at their natural rate, or at the channel's rate while channelling (measured rate, regen included)
       Object.keys(pools).forEach(function (pn) {
-        const P = pools[pn]; const rate = (t < channelUntil && channelPool === pn && P.ch) ? num(P.ch.ratePerSec, 0) : P.regen;
+        const P = pools[pn]; let rate = (t < channelUntil && channelPool === pn && P.ch) ? num(P.ch.ratePerSec, 0) : P.regen;
+        if (P.boosts.length) { P.boosts = P.boosts.filter(function (b) { return b.until > t; }); if (!(t < channelUntil && channelPool === pn)) P.boosts.forEach(function (b) { rate += b.perSec; }); }   // timed regen boosts (not while channelling: untested)
         const d = Math.min(P.max - P.cur, rate * dt); if (d > 0) { P.cur += d; P.gained += d; }
       });
       // 2.4-E: a running encounter cooldown loses dt x bonus of base time while a Recharge Speed buff is up

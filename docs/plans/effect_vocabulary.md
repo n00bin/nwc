@@ -63,7 +63,7 @@ cooldownSeconds, actionPointCost, tags). Those stay where they are and the simul
 | `buff` | `stats` {name: amount}, `scope` (`self`/`party`/`selfPlusAllies`), `seconds`, `appliesTo` (filter like `from`), `stacks`, `maxStacks`, `radius`, `name` | Arcane Empowerment: encounters +20% for 10 s |
 | `debuff` | `stats` on the enemy {`Damage Taken`, `Outgoing Damage`, `Damage Resistance`, ...}, `personal` (only your damage), `appliesTo`, `seconds`, `maxStacks`, `name` | Arcane Conduit: +15% taken from your arcane powers, 5 s |
 | `stack` | `resource`, `op` (`add`/`refresh`/`consume`/`set`), `amount`, `target` (`self`/`enemy`), `max`, `seconds` (stack lifetime) | Ice Knife: 3 Chill on the target |
-| `resource` | `pool` (`actionPoints`/`stamina`/`divinity`/`rage`/`performance`/`soulweave`/`vengeance`), `op` (`gain`/`spend`/`regenPct`/`set`), `amount`, `pctOfBar` | Spell Twisting: 1% of the AP bar per stack spent |
+| `resource` | `pool` (`actionPoints`/`stamina`/`divinity`/`rage`/`performance`/`soulweave`/`vengeance`), `op` (`gain`/`spend`/`regenPct`/`set`/`regenFlat` = +amount per second for `seconds`), `amount`, `pctOfBar` | Spell Twisting: 1% of the AP bar per stack spent |
 | `cooldown` | `targets` (filter like `from`, or `self`), `op` (`reduce`/`reset`/`rechargePct`), `seconds`, `pct` | Soul Spark Recovery: -1 s per 6 sparks spent |
 | `proc` | `effects`: nested records fired by `when` (chance, lockout) | Storm Spell: 20% on crit -> hit 120 lightning |
 | `control` | `control` (`stun`/`hold`/`root`/`daze`/`slow`/`knockdown`/`push`/`pull`/`freeze`/...), `seconds`, `perStack` {resource, seconds}, `targets` | Steal Time: slow 4 s, stun 1 s, +0.2 s per Arcane Mastery |
