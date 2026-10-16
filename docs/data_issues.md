@@ -55,13 +55,13 @@
   flat vs 1% of max per second vs +145% of regen cannot be told apart on one pool size; not applied while
   channelling, untested). Check (glow_check.js, 180 s, Flame + Javelin + Divine Glow): 323 mps with or without the
   boost - divinity is not what limits that build; Geas in the slot instead gives 367. Angel of Death check unchanged.
-- **Divine Equilibrium test 2026-10-16** (H:/YouTube/Unedited Vidoes/2026-10-16 08-44-26.mp4, Lance of Faith raw crit
-  numbers OCR'd from the combat log, matched to the bar): after the buff stacks settled (Combatant's Advantage 10,
-  Astral Absorption 6-7, from 35 s), 42% 53.1k, 33% 51.9k, 22% 51.2k, 12% 49.8k, ~1% 48.8k - relative 1.00 / 0.977 /
-  0.964 / 0.938 / 0.919, a straight line on the low side as modelled. The high side (87% 48.7k, 75% 50.1k, 63%
-  51.7k, 52% 53.1k) was read while those stacks were still building (and Radiant Shift came and went, +1%), so it
-  reads low and is not usable. No model change. Open (test 6b): the high side with stacks settled, and one read with
-  Divine Equilibrium unslotted to see whether the bonus is zero at empty / full.
+- **Divine Equilibrium test 2026-10-16: VERIFIED, model unchanged.** Clip H:/YouTube/Unedited Vidoes/2026-10-16
+  09-11-14.mp4 (buff gear stripped, weapon buff held at 10 stacks, feature Active) against the baseline clip 09-01-59
+  (same gear, feature NOT slotted: Lance of Faith crit 36,829 raw at every divinity level). Lance crit raw vs
+  baseline: full +0%, 85% +3.5%, 73% +6.5%, 64% +9.4%, 53% +12.4-12.9%, 43% +10.9-11.9%, 32% +8.4-8.9%, 21%
+  +5.4-6.0%, 11% +2.5-3.0%, empty +0-0.5% - straight lines from zero at both ends to the peak at half, as modelled.
+  The peak shows ~+13% not +15%: fits 15% added into a damage-bonus total already ~15%. The earlier clip 08-44-26
+  turned out to be recorded with the feature unslotted (n00b); its curve was other buffs stacking - discarded.
 
 ## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 
