@@ -842,8 +842,17 @@
     }
 
     // ---- non-damage records ----
+    // CSUN-TEST 2026-10-16: a buff with freeCast {names} lets one listed daily go off without action points or its
+    // cadence while it is up (Critical Sun); casting it uses the buff up
+    const freeDefs = {};
+    function freeBuffFor(pname) {
+      const ks = Object.keys(freeDefs);
+      for (let i = 0; i < ks.length; i++) if (buffUp(ks[i]) && freeDefs[ks[i]].indexOf(pname) >= 0) return ks[i];
+      return null;
+    }
     function applyBuff(r) {
       const name = r.name || "(buff)";
+      if (r.freeCast && r.freeCast.names) freeDefs[name] = r.freeCast.names;
       const wasUp = buffUp(name);
       if (r.op === "remove") { if (wasUp) { buffs[name] = -1; buffWasUp[name] = false; fire("buffEnded", { name: name }); } return; }
       buffs[name] = (permanentBuff[name] || r.seconds == null) ? 1e12 : t + num(r.seconds);
@@ -1162,7 +1171,7 @@
       if (s) s.lastUse = t;
       if (kind === "encounter") { const cd = cdSeconds(p, s); const n = chargesOf(p); while (s.ready.length < n) s.ready.push(0); s.ready.sort(function (a, b) { return a - b; }); s.ready[0] = t + cd; }
       else if (kind === "mechanic") { s.ready = [t + num(p.cooldownSeconds, 0)]; }
-      else if (kind === "daily") { ap -= num(p.actionPointCost, 1000); if (num(p.cooldownSeconds, 0) > 0) s.ready = [t + num(p.cooldownSeconds)]; if (CW) callTrigger("daily"); }
+      else if (kind === "daily") { const fb = freeBuffFor(p.name); if (fb) applyBuff({ name: fb, op: "remove" }); else { ap -= num(p.actionPointCost, 1000); if (num(p.cooldownSeconds, 0) > 0) s.ready = [t + num(p.cooldownSeconds)]; } if (CW) callTrigger("daily"); }
       pushTimeline(p.name, kind === "spender" ? "encounter" : kind, total, kind === "spender" ? Object.keys(spent).map(function (k) { return spent[k] + " " + k; }).join(", ") : "");
       return true;
     }
@@ -1231,7 +1240,7 @@
         const s = pst("encounter:" + ow.name); const n = chargesOf(ow.obj); while (s.ready.length < n) s.ready.push(0);
         return s.ready.some(function (r) { return r <= t; });
       }
-      if (step.kind === "daily") { const sd = pst("daily:" + ow.name); return ap >= num(ow.obj.actionPointCost, 1000) && t >= sd.lastUse + cad.daily && sd.ready.every(function (x) { return x <= t; }); }
+      if (step.kind === "daily") { const sd = pst("daily:" + ow.name); if (freeBuffFor(ow.name)) return true; return ap >= num(ow.obj.actionPointCost, 1000) && t >= sd.lastUse + cad.daily && sd.ready.every(function (x) { return x <= t; }); }
       return false;
     }
     function waitFor(step) {

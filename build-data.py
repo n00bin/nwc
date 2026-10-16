@@ -58,7 +58,7 @@ FX_COMMON = {"kind", "when", "gate", "requiresFeat", "requiresFeature", "require
 FX_KINDS = {
     "hit":      {"magnitude", "count", "targets", "areaShare", "radius", "damageType", "element", "delaySeconds", "name", "scalesWith", "maxTargets", "pctOfTrigger", "flat", "pctMaxHp"},   # count: repeated hits (Tidal Wave x3)
     "dot":      {"magnitude", "perTick", "ticks", "seconds", "stacking", "maxStacks", "damageType", "element", "name", "targets", "scalesWith"},
-    "buff":     {"stats", "ratingStats", "scope", "seconds", "appliesTo", "stacks", "maxStacks", "radius", "name", "op", "role"},
+    "buff":     {"stats", "ratingStats", "scope", "seconds", "appliesTo", "stacks", "maxStacks", "radius", "name", "op", "role", "freeCast"},   # freeCast (CSUN-TEST): {names} - a listed daily costs no action points while it is up
     "debuff":   {"stats", "ratingStats", "personal", "appliesTo", "seconds", "maxStacks", "name", "targets"},   # ratingStats (OPT-READ-1 batch 4): enemy rating debuffs (Erratic Drift Globe)
     "stack":    {"resource", "op", "amount", "target", "max", "min", "seconds", "targets", "scalesWith", "name"},
     "resource": {"pool", "op", "amount", "pctOfBar", "seconds"},

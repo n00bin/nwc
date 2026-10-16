@@ -176,12 +176,25 @@ would raise regen, not lower it.
 - **Tested:** 2026-10-16. Clip `2026-10-16 12-04-27`.
 - **Status:** Verified. **Open:** the extra Burning Judgement pip was not read from this clip.
 
+#### Critical Sun (feat)
+- **Question:** what does "you may cast Celestial Prominence again without spending any action points. Duration: 6s.
+  This effect may not trigger twice in a row" actually allow?
+- **Plain answer:** when a Celestial Prominence crits, your daily button lights up even with an empty action point bar,
+  and you have about 6 seconds to cast it again for free. The free cast's own crit can't give you another one. Both
+  free casts in the test hit right away at the smaller, un-expanded damage, so don't expect a full 5-second pop
+  from it.
+- **Proof:** three rounds. Each Celestial Prominence crit lit the button with the gem empty. In round 3 it was left
+  alone and went dark 5.6 s after lighting, about 6 s after the crit. Both free casts crit, and neither lit the button
+  again. Both hit for the un-expanded amount (211,528 and 217,100 before mitigation, vs 403,186 for a full pop).
+- **Tested:** 2026-10-16. Clip `2026-10-16 13-26-40`.
+- **Status:** Verified. **Open:** in round 1 the free cast still went off about 7.5 s after the crit, with the button
+  hidden behind the other power set for part of that time; and whether a free cast can be placed and left to expand.
+
 ### Still to test (Arbiter)
 
 | # | Question |
 |---|---|
 | 9 | Piercing Javelin: per hit or per cast? |
-| 10 | Critical Sun: how long is the window? |
 | 11 | Burning Patch: tick count, can ticks crit, do they feed Judgement? |
 | 12 | Tipping Scales with both Judgement kinds held |
 | - | Natural regen while attacking vs standing still |
@@ -209,6 +222,7 @@ Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a f
 | `2026-10-16_09-01-59_divine-equilibrium_feature-off-baseline` | damage flat at every divinity level without it | yes |
 | `2026-10-16_09-11-14_divine-equilibrium_feature-on` | the straight-line curve | yes |
 | `2026-10-16_07-53-07_short-clip_unused` | not used in any test | yes |
+| `2026-10-16_13-26-40_critical-sun` | free Celestial Prominence after a crit, 6 s window, no chaining | yes (plus every 0.25 s in the three windows) |
 | `2026-10-16_12-04-27_lightspeed` | Lightspeed makes one Daunting Light instant | yes (plus every 0.1 s around four casts) |
 | `2026-10-16_10-36-51_channel-on-1000-bar` | Channel Divinity speed is fixed (1,000 bar), pool 1,000 without Expanded Faith | yes |
 

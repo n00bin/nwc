@@ -77,6 +77,19 @@
   back and redoes channel length and taps (Arbiter / pool builds only). Checks (180 s): Javelin + Daunting + Flame
   370 -> 439 (Lightspeed instant +5% of that); Flame + Daunting + Geas 386 -> 420; Flame + Javelin + Geas 366 -> 410;
   Flame + Javelin + Divine Glow 323 -> 356; Angel of Death fixed-choice check unchanged (309 / 414); no page errors.
+- **Critical Sun test 2026-10-16** (H:/YouTube/Unedited Vidoes/2026-10-16 13-26-40.mp4): a Celestial Prominence crit
+  lights the daily button with the AP gem empty (free recast); the free cast's crit does not re-arm it (twice); left
+  unused it went dark 5.6 s after lighting (~6 s after the crit). Round 1 anomaly: used ~7.5 s after the crit (button
+  partly hidden by the other power set). Both free casts hit at 700 (un-expanded).
+  **Bug found:** Critical Sun's old record reset the daily's cooldown, but dailies are gated by action points, so it
+  never did anything (same damage as Burning Patch with no Flame Strike). New: buff `freeCast` (vocabulary added in
+  build-data.py) - while "Critical Sun" is up the listed daily costs no AP and skips its cadence; casting it uses the
+  buff; a 6 s marker stops the free cast's crit from re-arming; the free cast's magnitude set to 700 (provisional).
+  Check through the page's real scored path (pt2ScoredSetup + pt2SimScored, crits on): Celestial Prominence 2 -> 5
+  casts in 180 s, damage +2.3%; Burning Patch in the slot = the old value.
+  **Harness note:** the earlier checks in this section (aod_iso, pb_check2, glow_check, ls_check) called
+  simulateFxBest without expectedProcs, so crit procs (Critical Insight, Critical Sun) never fired in them. Their
+  old-vs-new comparisons hold; their absolute numbers are lower than the page's. Use real_check.js style from now on.
 
 ## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 
