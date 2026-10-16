@@ -186,6 +186,10 @@ would raise regen, not lower it.
   alone and went dark 5.6 s after lighting, about 6 s after the crit. Both free casts crit, and neither lit the button
   again. n00b confirmed the free cast places and grows like the tooltip says (the quick hits in the clip were early
   pops while he learned the daily).
+- **Early pop vs full grow (same clip, all crits, damage before mitigation):** left to grow then popped 403,186;
+  popped early 205,135, 211,528, 217,100 and 217,100. 217,100 / 403,186 = 0.538, exactly 700 / 1,300, so the
+  tooltip's two magnitudes are right: waiting the 5 seconds nearly doubles the hit. The small spread among the early
+  pops is other buffs coming and going.
 - **Tested:** 2026-10-16. Clip `2026-10-16 13-26-40`.
 - **Status:** Verified.
 
