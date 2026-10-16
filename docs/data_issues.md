@@ -18,6 +18,14 @@
   (capped, at least ~285). Model now refund = 115 per dump + 52 per pip (channel.refundBase / refundPerCharge, PROVISIONAL):
   3 / 5 / 6 pips within ~6%, 1 pip reads ~20% high, the 2-pip reading sits below the line. Check (aod_iso.js):
   hold to full 309 mps, "just enough" channel 414 mps, no page errors.
+- **Angel of Death test 2026-10-15** (H:/YouTube/Unedited Vidoes/2026-10-15 23-16-14.mp4, counter read every second): all
+  four guesses CONFIRMED. (1) The 26th cast turns the counter into the ready buff and the counter empties. (2) Bastion of
+  Health adds 1 per cast (Bastion alone 136-219 s: 16 casts took the counter from 10 to 26). (3) The counter drops all
+  at once 60 s after the last stack (6 stacks: 16 s -> 75 s; 10 stacks: 323.5 s -> 383 s). (4) The ready buff lasts
+  60 s and is lost if Channel Divinity is not tapped. Buff names fixed to the in-game buff list: the counter is
+  "Angel of Death x N", the ready buff is "Angelic Inspiration" (the tooltip calls them Angelic Inspiration / Angelic
+  Presence). Fight numbers unchanged (309 / 414 mps). Still open: whether the counter keeps building while the ready
+  buff is up (no clean casts in that window).
 
 ## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 
