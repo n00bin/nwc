@@ -15,4 +15,5 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ### Data Additions
 
 ### Bug Fixes
+- **Toon Forge v2.2: Arbiter fixes from a full class audit** (live 2026-10-15). Angel of Death, Light of the Scales and Inner Balance now count in the fight; the simulator works out for itself how long to hold Channel Divinity and when to use Angel of Death; Doomsayer now counts Geas; and the optimizer now weighs divinity-max and divinity-regen gear properly.
 - **Toon Forge v2.1: Arbiter clerics now run out of divinity in the fight simulator** (live 2026-10-15). Searing Javelin and Forgemaster's Flame cost divinity, but the simulator let them fire every second forever, so the optimizer overrated Arbiter rotations built on them. It now tracks your divinity bar (1,000, plus 150 with Expanded Faith), refills it naturally and by holding Channel Divinity (with the Judgement gauge refund), and stops attacking while you channel. Divinity-regeneration items now count for an Arbiter, and Divine Equilibrium reads your real divinity level. Thanks to the player whose recordings measured all of it.

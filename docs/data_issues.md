@@ -1,5 +1,19 @@
 # Data Issues To Investigate
 
+## FIXED (v2.2, 2026-10-15) Arbiter audit batch (docs/audit/arbiter_audit_2026-10-15.md, n00b: "go")
+- Angel of Death: stacks per divinity-costing encounter (26 -> Angelic Presence 60 s), the tap is
+  Cleric.resourcePools[divinity].cashIn (12 s free divinity for damaging spells). Light of the Scales x1.1 and Inner
+  Balance (up to +20 per dump of a kind, linear falloff on the paired ratings) via refundBonuses. Doomsayer counts Geas.
+  The simulator tries channel length (to full / just enough) and Angel of Death timing (as needed / as soon as ready)
+  and keeps the better (n00b 2026-10-15: play decisions are the simulator's job). Optimizer re-runs the fight for
+  divinity max / regen gear (pt2ShapeKey). Divine Glow's regen left at zero (no number in game).
+- Checks (aod_iso.js, 180 s Arbiter): Angel of Death +5% (one free window per fight); channel "just enough" +16% via
+  frequent gauge dumps (refund off: 251 vs 333); Doomsayer 72% uptime with Geas; Barbarian fight check unchanged.
+- **Tap test 2026-10-15** (H:/YouTube/Unedited Vidoes/2026-10-15 22-46-36.mp4): a quick tap of Channel Divinity
+  empties the gauge and refunds INSTANTLY (6 pips: bar 77% -> full, capped; 1 pip: +12.2% = ~140; 2 pips: +13.1% =
+  ~150). Small gauges refund MORE than the model's 70 per charge, so the model understates frequent taps. Refund
+  curve still open: 1 -> ~140, 2 -> ~150, 5-6 -> ~390-450 (from the hold clips) - not linear per charge.
+
 ## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 
 - The simulator's `resource` records only track action points; `divinity` spends (Searing Javelin 240, Forgemaster's

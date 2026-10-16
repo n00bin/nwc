@@ -458,8 +458,11 @@
     const pools = {};
     (input.resourcePools || []).forEach(function (pl) {
       if (!pl || !pl.pool || !(num(pl.max, 0) > 0)) return;
-      pools[pl.pool] = { cur: num(pl.max), max: num(pl.max), regen: num(pl.regenPerSec, 0), ch: pl.channel || null, spent: 0, gained: 0, channels: 0, chSec: 0, refund: 0, waits: 0 };
+      pools[pl.pool] = { cur: num(pl.max), max: num(pl.max), regen: num(pl.regenPerSec, 0), ch: pl.channel || null, cash: pl.cashIn || null, spent: 0, gained: 0, channels: 0, chSec: 0, refund: 0, waits: 0, cashIns: 0, freeSpent: 0 };
     });
+    // AOD-1 / DIV-3 (2026-10-15): play choices the best-of search tries - channel to "full" or just to the blocked
+    // power's "cost"; cash in (Angel of Death) "asNeeded" (in place of a channel) or "asap" (as soon as it is ready)
+    const PC = input.poolChoices || {};
     let channelUntil = -1, channelPool = null;
     const poolKeyOf = function (key) {   // divinityLevel -> divinity (0-100), channelingDivinity -> divinity (toggle), pool:divinityPct
       if (!key) return null;
@@ -915,7 +918,7 @@
           else if (pools[r.pool]) {   // DIV-1: spends, gains (Critical Insight) and sets (Perfect Balance: to full) on a simulated pool
             const P = pools[r.pool];
             const amt = r.pctOfBar != null ? num(r.pctOfBar) / 100 * P.max : num(r.amount, 0);
-            if (r.op === "spend") { const d = Math.min(P.cur, amt); P.cur -= d; P.spent += d; }
+            if (r.op === "spend") { if (spendIsFree(ow, r.pool)) { P.freeSpent += amt; return 0; } const d = Math.min(P.cur, amt); P.cur -= d; P.spent += d; }
             else if (r.op === "gain") { const d = Math.min(P.max - P.cur, amt); P.cur += d; P.gained += d; }
             else if (r.op === "set") { const v = Math.max(0, Math.min(P.max, amt)); if (v > P.cur) P.gained += v - P.cur; P.cur = v; }
           }
@@ -1012,11 +1015,21 @@
       if (!dmg.length) return true;
       return dmg.some(function (r) { return gateFrac(r.gate) > 0; });
     }
+    // AOD-1: a power that deals damage (its own hit / dot records, or a top-level magnitude)
+    function isDamaging(ow) {
+      if (!ow || !ow.obj) return false;
+      if (untriggeredDamage(effective(ow).recs).length) return true;
+      const m = mainMagnitude(ow.obj); return num(m != null ? m : powerMagnitude(ow.obj, enemyHp), 0) > 0;
+    }
+    function spendIsFree(ow, pool) {   // the pool's cash-in buff is up and this cast deals damage
+      const P = pools[pool]; const c = P && P.cash;
+      return !!(c && c.grants && buffUp(c.grants.name) && (c.freeSpend !== "damaging" || isDamaging(ow)));
+    }
     // DIV-1: what a cast of this owner spends from each simulated pool (its own records, no trigger, gate on)
     function poolCost(ow) {
       const out = {};
       if (!ow || !Object.keys(pools).length) return out;
-      effective(ow).recs.forEach(function (r) { if (r.kind === "resource" && r.op === "spend" && pools[r.pool] && !r.when && gateFrac(r.gate) > 0) out[r.pool] = (out[r.pool] || 0) + num(r.amount, 0); });
+      effective(ow).recs.forEach(function (r) { if (r.kind === "resource" && r.op === "spend" && pools[r.pool] && !r.when && gateFrac(r.gate) > 0 && !spendIsFree(ow, r.pool)) out[r.pool] = (out[r.pool] || 0) + num(r.amount, 0); });
       return out;
     }
     function unpaidPool(ow) {   // the first pool this cast cannot pay, or null
@@ -1024,16 +1037,43 @@
       for (let i = 0; i < ks.length; i++) if (pools[ks[i]].cur + 1e-6 < c[ks[i]]) return { pool: ks[i], cost: c[ks[i]] };
       return null;
     }
-    function startChannel(u) {
-      const P = pools[u.pool], ch = P && P.ch; if (!ch) return false;
-      let refund = 0;
+    // the channel's instant refund: refundPerCharge x the charges of each refundStacks kind held, + refundFlatByStack
+    // for each kind held (Inner Balance), x refundMult (Light of the Scales); the stacks are emptied
+    function gaugeDump(P) {
+      const ch = P.ch || {}; let refund = 0;
       (ch.refundStacks || []).forEach(function (sn) {
         const n = stackCount(sn); if (!(n > 0)) return;
-        refund += n * num(ch.refundPerCharge, 0);
+        refund += n * num(ch.refundPerCharge, 0) + num((ch.refundFlatByStack || {})[sn], 0);
         if (ch.emptyStacks !== false && stacks[sn]) { stacks[sn].n = 0; stacks[sn].timers = []; fire("stackRemoved", { resource: sn }); }
       });
+      refund *= num(ch.refundMult, 1);
       refund = Math.min(P.max - P.cur, refund); P.cur += refund; P.refund += refund; P.gained += refund;
-      const target = ch.until === "cost" ? Math.min(P.max, u.cost) : P.max;
+      return refund;
+    }
+    function cashInReady(P) { const c = P && P.cash; return !!(c && c.grants && c.needsBuff && buffUp(c.needsBuff) && !buffUp(c.grants.name)); }
+    function cashIn(pn) {   // AOD-1: tap the channel to turn the ready buff into the free-spend window
+      const P = pools[pn], c = P.cash;
+      if (c.consumesBuff !== false) { buffs[c.needsBuff] = -1; buffWasUp[c.needsBuff] = false; fire("buffEnded", { name: c.needsBuff }); }
+      const refund = c.dumpGauge ? gaugeDump(P) : 0;
+      applyBuff({ name: c.grants.name, seconds: num(c.grants.seconds, 10) });
+      busyUntil = t + Math.max(dt, num(c.tapSeconds, 0.4)); P.cashIns++;
+      pushTimeline(c.grants.name, "other", 0, num(c.grants.seconds, 10) + " s free" + (refund > 0 ? ", +" + Math.round(refund) + " " + pn + " from the gauge" : ""));
+      return true;
+    }
+    function cashInDue() {   // "asap", or the ready buff about to run out
+      const ks = Object.keys(pools);
+      for (let i = 0; i < ks.length; i++) {
+        const P = pools[ks[i]]; if (!cashInReady(P)) continue;
+        if (PC.cashIn === "asap" || (buffs[P.cash.needsBuff] != null && buffs[P.cash.needsBuff] - t < 1.5)) return ks[i];
+      }
+      return null;
+    }
+    function startChannel(u) {
+      const P = pools[u.pool], ch = P && P.ch; if (!ch) return false;
+      if (cashInReady(P)) return cashIn(u.pool);   // AOD-1 "asNeeded": the free window in place of a refill
+      const refund = gaugeDump(P);
+      const until = PC.channelUntil || ch.until;
+      const target = until === "cost" ? Math.min(P.max, u.cost) : P.max;
       const rate = Math.max(1, num(ch.ratePerSec, 0));
       const sec = Math.max(dt, (target - P.cur) / rate);
       channelUntil = t + sec; channelPool = u.pool; busyUntil = channelUntil;
@@ -1399,6 +1439,7 @@
           if (!inWindow()) { pendArt = false; pendMount = false; }   // still on cooldown when the window closed: skipped this call
           else { const b = callPending(); if (b > 0) { busyUntil = t + b; acted = true; } }
         }
+        if (!acted && Object.keys(pools).length) { const pn = cashInDue(); if (pn) acted = cashIn(pn); }   // AOD-1
         if (!acted && RB) { rbAct(); acted = true; }
         if (!acted && spenderOw && !listedIn(cur, "scorch") && stackCount(spenderOw.spender.resource) >= spendAt) acted = castOwner(spenderOw, "spender");
         if (!acted && !CW && !listedIn(cur, "artifact") && input.artifactName && t >= artifactReady) acted = castStep({ kind: "artifact", name: input.artifactName });
@@ -1453,7 +1494,7 @@
       callWindow: CW ? { windows: windows.map(function (w) { return [Math.round(w[0] * 10) / 10, Math.round(w[1] * 10) / 10]; }), magnitudeInside: magIn, magnitudeOutside: magTotal - magIn,
         damageInside: scoreHit ? dmgIn : undefined, damageOutside: scoreHit ? dmgTotal - dmgIn : undefined, damageInsideByOwner: scoreHit ? dmgInByOwner : undefined } : undefined, statOwnersOn: scoreHit ? Object.keys(statOwnersOn) : undefined,
       derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 },
-      pools: Object.keys(pools).length ? Object.fromEntries(Object.keys(pools).map(function (pn) { const P = pools[pn]; return [pn, { max: Math.round(P.max), regenPerSec: P.regen, spent: Math.round(P.spent), gained: Math.round(P.gained), channels: P.channels, channelSeconds: Math.round(P.chSec * 10) / 10, refund: Math.round(P.refund) }]; })) : undefined,
+      pools: Object.keys(pools).length ? Object.fromEntries(Object.keys(pools).map(function (pn) { const P = pools[pn]; return [pn, { max: Math.round(P.max), regenPerSec: P.regen, spent: Math.round(P.spent), gained: Math.round(P.gained), channels: P.channels, channelSeconds: Math.round(P.chSec * 10) / 10, refund: Math.round(P.refund), cashIns: P.cashIns, freeSpent: Math.round(P.freeSpent) }]; })) : undefined,
       trace: input.trace ? traceRows : undefined
     };
   }
@@ -1496,7 +1537,7 @@
       const k2 = kitWithModes(kit, ch.modes);
       k2.songs = (kit.songs || []).filter(function (sg) { return (ch.songs || []).indexOf(sg.name) >= 0; });
       if (ch.sm) { const smo = (input.smCandidates || []).find(function (x) { return x.name === ch.sm; }); if (smo) k2.powers = Object.assign({}, k2.powers, { encounter: (k2.powers.encounter || []).concat([smo]) }); }
-      const r = simulateFx(Object.assign({}, input, { spellMasteryPower: ch.sm || input.spellMasteryPower || null, kit: k2, hold: ch.hold, spendAt: ch.spendAt, modes: fxModes, filler: ch.filler || null, noDamageCast: ch.skip || [], quickplay: ch.quickplay || [] }));
+      const r = simulateFx(Object.assign({}, input, { spellMasteryPower: ch.sm || input.spellMasteryPower || null, kit: k2, hold: ch.hold, spendAt: ch.spendAt, modes: fxModes, filler: ch.filler || null, noDamageCast: ch.skip || [], quickplay: ch.quickplay || [], poolChoices: ch.pool || {} }));
       r._score = r.damageTotal != null ? r.damageTotal : r.magnitudeTotal; return r;
     };
     if (input.choices) { const r = run(input.choices); r.choices = Object.assign({ gains: [] }, input.choices); return r; }
@@ -1534,6 +1575,12 @@
     const sp = (kit.mechanics || []).map(function (m) { return (m.fx || []).find(function (r) { return r.kind === "stack" && r.op === "consume" && r.min != null && !r.when; }); }).filter(Boolean)[0];
     if (sp) { const opts = []; for (let k = num(sp.min); k <= num(sp.amount, sp.min); k++) opts.push({ label: k + " " + sp.resource, k: k });
       tryAll("spend " + sp.resource + " at", opts, function (o) { return Object.assign({}, ch, { spendAt: o.k }); }); }
+    // DIV-3 / AOD-1 (2026-10-15, n00b: the simulator works out how to play the class): channel length and when to cash in
+    const pl0 = (input.resourcePools || []).find(function (p) { return p && p.channel; });
+    if (pl0) {
+      tryAll(pl0.pool + " channel length", [{ label: "just enough for the next cast", u: "cost" }], function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { channelUntil: o.u }) }); });
+      if (pl0.cashIn) tryAll((pl0.cashIn.grants && pl0.cashIn.grants.name) || "cash-in", [{ label: "as soon as it is ready", w: "asap" }], function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { cashIn: o.w }) }); });
+    }
     const qpSongs = (kit.songs || []).filter(function (sg) { return (ch.songs || []).indexOf(sg.name) >= 0 && sg.quickplay !== false; }).map(function (sg) { return sg.name; });
     const qpSlots = 1 + ((kit.mechanics || []).some(function (m) { return /quickplay slot/i.test(String(m.notes || "") + String(m.modeledBy || "")); }) ? 1 : 0);
     const qpCosts = [];
@@ -1544,7 +1591,7 @@
         if (r._score > best._score + 1e-9) { best = r; ch.quickplay = q; } });
       gains.push({ choice: "quick play", picked: ch.quickplay.length ? ch.quickplay.join(" + ") : "none (play songs by hand)", pct: 0 });
     }
-    best.choices = { hold: ch.hold, modes: ch.modes, spendAt: ch.spendAt, filler: ch.filler, skip: ch.skip, songs: ch.songs, quickplay: ch.quickplay, quickplayCosts: qpCosts, spellMastery: ch.sm || null, gains: gains };
+    best.choices = { hold: ch.hold, modes: ch.modes, spendAt: ch.spendAt, filler: ch.filler, skip: ch.skip, songs: ch.songs, quickplay: ch.quickplay, quickplayCosts: qpCosts, spellMastery: ch.sm || null, pool: ch.pool || null, gains: gains };
     return best;
   }
 

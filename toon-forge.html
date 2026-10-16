@@ -3227,7 +3227,7 @@
   <div class="hero">
     <span class="local-preview-badge" id="local-preview-badge" style="display:none;">🔧 Local Preview · showcasing functionality &amp; features coming soon</span>
     <span class="save-status" id="save-status">Auto-saved · just now</span>
-    <h1>Toon Forge<span class="accent">— build your character, see what hits</span><span class="badge badge-release" id="tf-version-badge" title="Version 2.1 (2026-10-15) — Arbiter clerics now run out of divinity in the fight simulator and channel to refill it. Version 2.0 (2026-10-14): the fight simulator and the new optimizer. Spot something off? Use the ✎ pencil to fix it.">v2.1</span></h1>
+    <h1>Toon Forge<span class="accent">— build your character, see what hits</span><span class="badge badge-release" id="tf-version-badge" title="Version 2.2 (2026-10-15) — Arbiter: Angel of Death, Light of the Scales and Inner Balance now count in the fight, the simulator works out how long to channel, Doomsayer counts Geas, and divinity gear re-runs the fight in the optimizer. Version 2.1: divinity in the fight. Version 2.0: the fight simulator and the new optimizer. Spot something off? Use the ✎ pencil to fix it.">v2.2</span></h1>
     <p>A friendly character builder for Neverwinter. Pick your role, equip your gear, and watch the build come together — no spreadsheet skills required.</p>
     <div class="hero-correction-callout" role="note">
       <span class="hcc-icon">✎</span>
@@ -14144,8 +14144,27 @@
         ((pDef && pDef.slottedClassFeatures) || []).forEach(f => { if (f && picks.has(f.name) && f.resource && f.resource.pool === pl.pool) bonus += +f.resource.maxBonus || 0; });
         const mx = stat(pl.maxStat), rg = stat(pl.regenStat);
         const maxPct = mx ? (+mx.percentTotal || 0) : 0, regenPct = rg ? (+rg.finalPct || 0) : 0;
+        // AOD batch (2026-10-15): refund bonuses from the slotted features / feats (Light of the Scales x1.1, Inner
+        // Balance up to +20 per dump of a kind, scaled by how close the paired RATINGS are), and the cash-in
+        // (Angel of Death) only when its feat is slotted
+        const feats = new Set((state.slottedFeats || []).filter(Boolean));
+        let ch = pl.channel ? Object.assign({}, pl.channel) : null;
+        if (ch) {
+          let mult = 1; const flat = {};
+          (pl.refundBonuses || []).forEach(b => {
+            if (b.feature && !picks.has(b.feature)) return; if (b.feat && !feats.has(b.feat)) return;
+            if (b.mult) mult *= +b.mult;
+            if (b.flatMax && b.pairs) Object.keys(b.pairs).forEach(sn => {
+              const [s1, s2] = b.pairs[sn]; const a = +((stat(s1) || {}).ratingTotal || 0), c = +((stat(s2) || {}).ratingTotal || 0);
+              const close = Math.max(a, c) > 0 ? Math.max(0, 1 - Math.abs(a - c) / Math.max(a, c)) : 0;
+              flat[sn] = (flat[sn] || 0) + (+b.flatMax) * close;
+            });
+          });
+          ch.refundMult = mult; ch.refundFlatByStack = flat;
+        }
+        const cash = (pl.cashIn && (!pl.cashIn.requiresFeat || feats.has(pl.cashIn.requiresFeat))) ? pl.cashIn : null;
         return { pool: pl.pool, max: ((+pl.baseMax || 0) + bonus) * (1 + maxPct / 100),
-          regenPerSec: (+pl.regenPerSec || 0) * (1 + regenPct / 100), channel: pl.channel || null };
+          regenPerSec: (+pl.regenPerSec || 0) * (1 + regenPct / 100), channel: ch, cashIn: cash };
       });
     }
     function pt2SimKit(pick, mechs) {
@@ -14606,7 +14625,9 @@
       let po = []; try { po = (su.inp.kit && su.inp.kit.gear) || pt2ProcOwners().owners; } catch (e) {}
       const txt = JSON.stringify(po.map(o => [o.name, o.fx || null, o.modes || null]));
       const sens = PT2_SENS.test(txt) || PT2_SENS.test(JSON.stringify(su.inp.kit || {}));
-      return JSON.stringify([Math.round((su.inp.rechargePct || 0) * 10), Math.round((su.inp.apGainPct || 0) * 10), txt,
+      // DIV-2 (2026-10-15): a simulated pool's size and refill change the fight too (divinity max / regen gear)
+      const pools = (su.inp.resourcePools || []).map(p => [p.pool, Math.round(p.max || 0), Math.round((p.regenPerSec || 0) * 10)]);
+      return JSON.stringify([Math.round((su.inp.rechargePct || 0) * 10), Math.round((su.inp.apGainPct || 0) * 10), txt, pools.length ? pools : null,
         su.inp.artifactName || null, su.inp.mountName || null, su.inp.cadence || null, su.call || null,
         sens ? Math.round((su.ctx.critStrike || 0) * 400) : null, sens && /"bigHit"/.test(txt + JSON.stringify(su.inp.kit || {})) ? Math.round((su.ctx.maxHp || 0) / 500) : null]);
     }
