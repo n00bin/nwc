@@ -55,6 +55,13 @@
   flat vs 1% of max per second vs +145% of regen cannot be told apart on one pool size; not applied while
   channelling, untested). Check (glow_check.js, 180 s, Flame + Javelin + Divine Glow): 323 mps with or without the
   boost - divinity is not what limits that build; Geas in the slot instead gives 367. Angel of Death check unchanged.
+- **Divine Equilibrium test 2026-10-16** (H:/YouTube/Unedited Vidoes/2026-10-16 08-44-26.mp4, Lance of Faith raw crit
+  numbers OCR'd from the combat log, matched to the bar): after the buff stacks settled (Combatant's Advantage 10,
+  Astral Absorption 6-7, from 35 s), 42% 53.1k, 33% 51.9k, 22% 51.2k, 12% 49.8k, ~1% 48.8k - relative 1.00 / 0.977 /
+  0.964 / 0.938 / 0.919, a straight line on the low side as modelled. The high side (87% 48.7k, 75% 50.1k, 63%
+  51.7k, 52% 53.1k) was read while those stacks were still building (and Radiant Shift came and went, +1%), so it
+  reads low and is not usable. No model change. Open (test 6b): the high side with stacks settled, and one read with
+  Divine Equilibrium unslotted to see whether the bonus is zero at empty / full.
 
 ## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 
