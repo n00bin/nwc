@@ -86,6 +86,12 @@
   build-data.py) - while "Critical Sun" is up the listed daily costs no AP and skips its cadence; casting it uses the
   buff; a marker stops the free cast's crit from re-arming. n00b: the free cast places and grows over 5 s like a
   normal one (the clip's 700 hits were early pops while learning) - the 700 override was removed, marker now 8 s.
+- **Flame Strike / Burning Patch clip 2026-10-16** (H:/YouTube/Unedited Vidoes/2026-10-16 15-42-34.mp4): Burning Patch
+  was NOT active (the normal DoT debuff sat on the dummy; ticks = 180 magnitude by ratio) - asked n00b. What it did
+  prove: Flame Strike's burn is 4 ticks of 180 every 3 s over 12 s (the data counted ONE tick: ticks 1 -> 4, 180 ->
+  720 total), ticks crit, and Burning Judgement boosts only the first hit (measured ~+120, tooltip +100, open).
+  Lead (not chased): with the fix, "Critical Sun, CP + Flame Strike" scored LOWER (475,065 -> 462,602) although only
+  damage was added; encounter casts fell 31/30/30 -> 28/27/28, so the best-of search landed on a different path.
   Check through the page's real scored path (pt2ScoredSetup + pt2SimScored, crits on): Celestial Prominence 2 -> 5
   casts in 180 s, damage +2.3%; Burning Patch in the slot = the old value.
   **Harness note:** the earlier checks in this section (aod_iso, pb_check2, glow_check, ls_check) called

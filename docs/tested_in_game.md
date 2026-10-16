@@ -193,6 +193,19 @@ would raise regen, not lower it.
 - **Tested:** 2026-10-16. Clip `2026-10-16 13-26-40`.
 - **Status:** Verified.
 
+#### Flame Strike (daily)
+- **Question:** how does Flame Strike's burn tick, can it crit, and does the Burning Judgement bonus reach it?
+- **Tooltip says:** "Magnitude: 260. Added Effect: Damage over time. Magnitude: 180. Duration: 12s ... Burning
+  Judgement Effect: Increases magnitude by 100." It doesn't say how often the burn ticks.
+- **Plain answer:** the burn ticks 4 times, once every 3 seconds, and each tick hits as hard as the tooltip's 180.
+  The ticks can crit. Burning Judgement only boosts the first hit, not the burn.
+- **Proof:** first hit 80,637 and each tick 55,826 before mitigation, all crits. 55,826 / 80,637 = 0.692, exactly
+  180 / 260. Ticks landed 3, 6, 9 and 12 s after the cast, and the debuff on the dummy lasted 12 s. Holding Burning
+  Judgement, the first hit rose to 116,537 while the ticks stayed at 55,202.
+- **Tested:** 2026-10-16. Clip `2026-10-16 15-42-34`.
+- **Status:** Verified. **Open:** the Judgement bonus on the first hit measured about +120 magnitude, not the
+  tooltip's +100.
+
 ### Still to test (Arbiter)
 
 | # | Question |
@@ -225,6 +238,7 @@ Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a f
 | `2026-10-16_09-01-59_divine-equilibrium_feature-off-baseline` | damage flat at every divinity level without it | yes |
 | `2026-10-16_09-11-14_divine-equilibrium_feature-on` | the straight-line curve | yes |
 | `2026-10-16_07-53-07_short-clip_unused` | not used in any test | yes |
+| `2026-10-16_15-42-34_flame-strike_burning-patch-not-active` | Flame Strike's burn: 4 ticks every 3 s, crits, no Judgement bonus | yes (plus every 0.5 s in both casts) |
 | `2026-10-16_13-26-40_critical-sun` | free Celestial Prominence after a crit, 6 s window, no chaining | yes (plus every 0.25 s in the three windows) |
 | `2026-10-16_12-04-27_lightspeed` | Lightspeed makes one Daunting Light instant | yes (plus every 0.1 s around four casts) |
 | `2026-10-16_10-36-51_channel-on-1000-bar` | Channel Divinity speed is fixed (1,000 bar), pool 1,000 without Expanded Faith | yes |
