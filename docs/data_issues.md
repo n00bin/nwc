@@ -13,6 +13,11 @@
   empties the gauge and refunds INSTANTLY (6 pips: bar 77% -> full, capped; 1 pip: +12.2% = ~140; 2 pips: +13.1% =
   ~150). Small gauges refund MORE than the model's 70 per charge, so the model understates frequent taps. Refund
   curve still open: 1 -> ~140, 2 -> ~150, 5-6 -> ~390-450 (from the hold clips) - not linear per charge.
+- **Pip test 2026-10-15** (H:/YouTube/Unedited Vidoes/2026-10-15 23-01-00.mp4, Sudden Verdict off, pool 1,150,
+  bar heights measured frame by frame): 3 pips +23.6% (~271); 5 pips +32.5% (~374); 4 pips and 6 pips refilled to full
+  (capped, at least ~285). Model now refund = 115 per dump + 52 per pip (channel.refundBase / refundPerCharge, PROVISIONAL):
+  3 / 5 / 6 pips within ~6%, 1 pip reads ~20% high, the 2-pip reading sits below the line. Check (aod_iso.js):
+  hold to full 309 mps, "just enough" channel 414 mps, no page errors.
 
 ## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 

@@ -1037,7 +1037,7 @@
       for (let i = 0; i < ks.length; i++) if (pools[ks[i]].cur + 1e-6 < c[ks[i]]) return { pool: ks[i], cost: c[ks[i]] };
       return null;
     }
-    // the channel's instant refund: refundPerCharge x the charges of each refundStacks kind held, + refundFlatByStack
+    // the channel's instant refund: refundBase + refundPerCharge x the charges of each refundStacks kind held, + refundFlatByStack
     // for each kind held (Inner Balance), x refundMult (Light of the Scales); the stacks are emptied
     function gaugeDump(P) {
       const ch = P.ch || {}; let refund = 0;
@@ -1046,6 +1046,7 @@
         refund += n * num(ch.refundPerCharge, 0) + num((ch.refundFlatByStack || {})[sn], 0);
         if (ch.emptyStacks !== false && stacks[sn]) { stacks[sn].n = 0; stacks[sn].timers = []; fire("stackRemoved", { resource: sn }); }
       });
+      if (refund > 0) refund += num(ch.refundBase, 0);   // a flat part per dump (tap test 2026-10-15: 1 pip ~140, 3 ~270, 5 ~375)
       refund *= num(ch.refundMult, 1);
       refund = Math.min(P.max - P.cur, refund); P.cur += refund; P.refund += refund; P.gained += refund;
       return refund;
