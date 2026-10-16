@@ -10,6 +10,11 @@ Each entry answers a question players actually ask. Add a new entry after every 
   a public "Tested in Game" page, parked 2026-10-16). Everything under "Proof" is ours: numbers, clips, method.
 - The simulator data for each entry lives in `../data/classes.json` (a `test` record on the power or feature);
   the full working is in `docs/data_issues.md`.
+- **Evidence survives the clips.** n00b deletes recordings to free space, so every test clip gets an evidence pack
+  the same day it is read: `docs/calibration/inbox/class_powers/<class>/tests/<clip date>_<clip time>_<test>/` with
+  `readings/` (bar series, combat-log reads, contact sheets, crops) and, while the clip still exists, `frames/`
+  (a full still every 2 s at 1920x1080, enough to re-read the combat log and the bar). The archive is local (the
+  inbox folder is not in git). Clip names below match the folder names.
 
 ### Template
 
@@ -161,6 +166,28 @@ All Arbiter tests ran on Eliza (Arbiter, Expanded Faith) against the Conjured Fi
 | - | Natural regen while attacking vs standing still |
 | - | Angel of Death: does the counter build while the ready buff is up? |
 | - | How long a Channel Divinity tap takes |
+
+---
+
+## Evidence archive (Arbiter)
+
+Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a frame every 2 s from the clip.
+
+| Folder | What it proves | Stills |
+|---|---|---|
+| `2026-10-14_22-52-58_divinity-pool-and-regen` | pool size, natural regen, boots regen | no (clip deleted) |
+| `2026-10-14_23-30-54_channel-hold` | Channel Divinity hold speed, gauge refund on press | no |
+| `2026-10-15_01-23-29_channel-boots-off` | regen gear does not speed the channel | no |
+| `2026-10-15_22-46-36_tap-refund` | quick tap refunds instantly; 1 / 2 / 6 pips | no |
+| `2026-10-15_23-01-00_pip-refund` | refund for 3 / 4 / 5 / 6 pips | no |
+| `2026-10-15_23-16-14_angel-of-death` | counter, reset, Bastion counts, 60 s drop, buff names | no |
+| `2026-10-16_05-10-50_perfect-balance` | Shift kinds reversed, 2-ahead wipe, 4 + 4 refill, taps | no |
+| `2026-10-16_07-28-06_critical-insight` | per crit hit, each target | no |
+| `2026-10-16_07-53-31_divine-glow` | regen 7.5 -> 18.3 per second | yes |
+| `2026-10-16_08-44-26_divine-equilibrium_UNSLOTTED_discarded` | (feature was off; kept only as a record) | yes |
+| `2026-10-16_09-01-59_divine-equilibrium_feature-off-baseline` | damage flat at every divinity level without it | yes |
+| `2026-10-16_09-11-14_divine-equilibrium_feature-on` | the straight-line curve | yes |
+| `2026-10-16_07-53-07_short-clip_unused` | not used in any test | yes |
 
 ---
 
