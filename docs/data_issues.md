@@ -66,6 +66,17 @@
   encounter drops ~14.6% each (150 cost on a 1,000 bar = 15%, base pool confirmed). Three holds: 77 / 81 / 82 per
   second (7.7-8.2%/s) vs 80-87 per second on the 1,150 bar. FIXED rate, not a % of the bar (a % rule gives ~70-76).
   Model (ratePerSec 83, flat) unchanged; the provisional note removed.
+- **Lightspeed test 2026-10-16** (H:/YouTube/Unedited Vidoes/2026-10-16 12-04-27.mp4, frame-by-frame button states):
+  Daunting Light's casting glow 0.93-0.97 s normally (5 casts), 0.20-0.25 s with Lightspeed (3 casts); Javelin's
+  glow 1.23-1.33 s for a 1.1 s cast, so the glow overruns the cast by ~0.23 s -> with Lightspeed the cast is ~0.
+  One Daunting Light consumes Lightspeed (the button's empowered border clears). Data: mod castSeconds 0, new
+  buff-remove record on casting Daunting Light. Extra Burning pip not read.
+  **Search fix found on the way:** the best-of search decided which encounters to leave out BEFORE trying short
+  channels / gauge taps, so on divinity builds it dropped powers it could afford later (Javelin + Daunting + Flame:
+  search 329-370 vs 417-439 casting all three). Now, after the divinity choices, it tries putting skipped encounters
+  back and redoes channel length and taps (Arbiter / pool builds only). Checks (180 s): Javelin + Daunting + Flame
+  370 -> 439 (Lightspeed instant +5% of that); Flame + Daunting + Geas 386 -> 420; Flame + Javelin + Geas 366 -> 410;
+  Flame + Javelin + Divine Glow 323 -> 356; Angel of Death fixed-choice check unchanged (309 / 414); no page errors.
 
 ## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 

@@ -163,11 +163,23 @@ would raise regen, not lower it.
 - **Tested:** 2026-10-16. Clips `2026-10-16 09-01-59` (feature off) and `2026-10-16 09-11-14` (feature on).
 - **Status:** Verified.
 
+#### Lightspeed (feat)
+- **Question:** how much faster does Daunting Light cast with Lightspeed, and for how many casts?
+- **Tooltip says:** "Searing Javelin now grants the effect of Lightspeed. Lightspeed enhances Daunting Light, reducing
+  the cast time ... Duration: 10s." No number, and it doesn't say whether one cast uses it up.
+- **Plain answer:** it makes your next Daunting Light effectively instant, down from 0.7 seconds. It's good for ONE
+  Daunting Light: the glowing border on the Daunting Light button appears when your Javelin lands and clears after
+  one cast. So pair them: Javelin, then Daunting Light.
+- **Proof:** the light-blue "casting" glow on the button lasted 0.93-0.97 s for five normal Daunting Lights and
+  1.23-1.33 s for Searing Javelin (1.1 s cast), so the glow runs about 0.23 s longer than the cast itself. With
+  Lightspeed it lasted 0.20-0.25 s on three casts: the cast itself is about zero.
+- **Tested:** 2026-10-16. Clip `2026-10-16 12-04-27`.
+- **Status:** Verified. **Open:** the extra Burning Judgement pip was not read from this clip.
+
 ### Still to test (Arbiter)
 
 | # | Question |
 |---|---|
-| 8 | Lightspeed: Daunting Light's real cast time |
 | 9 | Piercing Javelin: per hit or per cast? |
 | 10 | Critical Sun: how long is the window? |
 | 11 | Burning Patch: tick count, can ticks crit, do they feed Judgement? |
@@ -197,6 +209,7 @@ Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a f
 | `2026-10-16_09-01-59_divine-equilibrium_feature-off-baseline` | damage flat at every divinity level without it | yes |
 | `2026-10-16_09-11-14_divine-equilibrium_feature-on` | the straight-line curve | yes |
 | `2026-10-16_07-53-07_short-clip_unused` | not used in any test | yes |
+| `2026-10-16_12-04-27_lightspeed` | Lightspeed makes one Daunting Light instant | yes (plus every 0.1 s around four casts) |
 | `2026-10-16_10-36-51_channel-on-1000-bar` | Channel Divinity speed is fixed (1,000 bar), pool 1,000 without Expanded Faith | yes |
 
 ---

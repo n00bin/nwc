@@ -1625,6 +1625,18 @@
       tryAll(pl0.pool + " channel length", [{ label: "just enough for the next cast", u: "cost" }], function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { channelUntil: o.u }) }); });
       tryAll(pl0.pool + " gauge taps", [1, 2, 3].map(function (k) { return { label: "tap Channel Divinity once the gauge holds " + k, k: k }; }), function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { tapAt: o.k }) }); });   // TAP-1
       if (pl0.cashIn) tryAll((pl0.cashIn.grants && pl0.cashIn.grants.name) || "cash-in", [{ label: "as soon as it is ready", w: "asap" }], function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { cashIn: o.w }) }); });
+      // LIGHTSPEED-TEST 2026-10-16: the skip search ran before the pool choices, when every divinity power looked
+      // unaffordable; with short channels / taps a skipped power can pay again (Arbiter: 329 -> 439 casting all three).
+      // Try putting each skipped encounter back (all at once, then one at a time), then redo the channel length.
+      if ((ch.skip || []).length) {
+        const sk = ch.skip.slice();
+        tryAll("cast every slotted encounter again", [{ label: "put back " + sk.join(", "), s: [] }].concat(sk.length > 1 ? sk.map(function (n) { return { label: "put back " + n, s: sk.filter(function (x) { return x !== n; }) }; }) : []),
+          function (o) { return Object.assign({}, ch, { skip: o.s }); });
+        if (ch.skip.length < sk.length) {
+          tryAll(pl0.pool + " channel length (again)", [{ label: "just enough for the next cast", u: "cost" }, { label: "to full", u: "full" }], function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { channelUntil: o.u }) }); });
+          tryAll(pl0.pool + " gauge taps (again)", [0, 1, 2, 3].map(function (k) { return { label: k ? "tap once the gauge holds " + k : "no taps", k: k }; }), function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { tapAt: o.k }) }); });
+        }
+      }
     }
     // PB-TEST 2026-10-16: keep a counter pair even (Perfect Balance) by holding the power that would clear it
     let hasPair = false; try { hasPair = JSON.stringify(input).indexOf('"minus"') >= 0; } catch (e) { hasPair = false; }
