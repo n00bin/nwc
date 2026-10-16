@@ -34,6 +34,14 @@ Each entry answers a question players actually ask. Add a new entry after every 
 
 All Arbiter tests ran on Eliza (Arbiter, Expanded Faith) against the Conjured Fighter dummy, October 2026.
 
+**Gear note (n00b 2026-10-16):** every Arbiter test was recorded wearing Prismatic Luminstep Sabatons (Ruthless
+Resources (Greater): a hit or heal over 10% of your max HP gives +5% divinity regen for 15 s, up to 5 stacks).
+Checked against each result: the boots never speed Channel Divinity (boots-off clip), taps and refunds are instant,
+the base regen of 7.2/s was read after the stacks ran out, the Divine Glow rounds were idle (no hits, no stacks),
+Critical Insight compares two runs in the same gear, and the counters, Shifts and damage numbers do not involve
+regen. No result changes. The open "slower regen while attacking" lead is not explained by the boots either: they
+would raise regen, not lower it.
+
 ### The divinity bar
 
 #### Divinity pool size
