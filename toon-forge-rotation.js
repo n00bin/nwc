@@ -458,7 +458,7 @@
     const pools = {};
     (input.resourcePools || []).forEach(function (pl) {
       if (!pl || !pl.pool || !(num(pl.max, 0) > 0)) return;
-      pools[pl.pool] = { cur: num(pl.max), max: num(pl.max), regen: num(pl.regenPerSec, 0), ch: pl.channel || null, cash: pl.cashIn || null, spent: 0, gained: 0, channels: 0, chSec: 0, refund: 0, waits: 0, cashIns: 0, freeSpent: 0 };
+      pools[pl.pool] = { cur: num(pl.max), max: num(pl.max), regen: num(pl.regenPerSec, 0), ch: pl.channel || null, cash: pl.cashIn || null, taps: 0, spent: 0, gained: 0, channels: 0, chSec: 0, refund: 0, waits: 0, cashIns: 0, freeSpent: 0 };
     });
     // AOD-1 / DIV-3 (2026-10-15): play choices the best-of search tries - channel to "full" or just to the blocked
     // power's "cost"; cash in (Angel of Death) "asNeeded" (in place of a channel) or "asap" (as soon as it is ready)
@@ -1052,6 +1052,30 @@
       refund = Math.min(P.max - P.cur, refund); P.cur += refund; P.refund += refund; P.gained += refund;
       return refund;
     }
+    // TAP-1 (n00b 2026-10-16: "i tapped channel after every encounter"): a quick tap dumps the gauge for its refund
+    // without holding the channel. Play choice tapAt = tap once the gauge holds that many charges and the bar has room.
+    function gaugeValue(P) {
+      const ch = P.ch || {}; let v = 0;
+      (ch.refundStacks || []).forEach(function (sn) { const n = stackCount(sn); if (n > 0) v += n * num(ch.refundPerCharge, 0) + num((ch.refundFlatByStack || {})[sn], 0); });
+      return v > 0 ? (v + num(ch.refundBase, 0)) * num(ch.refundMult, 1) : 0;
+    }
+    function tapDue() {
+      if (!PC.tapAt || t < channelUntil) return null;
+      const ks = Object.keys(pools);
+      for (let i = 0; i < ks.length; i++) {
+        const P = pools[ks[i]], ch = P.ch; if (!ch) continue;
+        let n = 0; (ch.refundStacks || []).forEach(function (sn) { n += stackCount(sn); });
+        if (n >= PC.tapAt && P.max - P.cur >= gaugeValue(P)) return ks[i];
+      }
+      return null;
+    }
+    function tapGauge(pn) {
+      const P = pools[pn]; if (cashInReady(P)) return cashIn(pn);
+      const refund = gaugeDump(P);
+      busyUntil = t + Math.max(dt, num(P.ch.tapSeconds, P.cash ? num(P.cash.tapSeconds, 0.4) : 0.4)); P.taps++;
+      pushTimeline((P.ch.name || "Channel") + " (tap)", "other", 0, "+" + Math.round(refund) + " " + pn + " from the gauge");
+      return true;
+    }
     function cashInReady(P) { const c = P && P.cash; return !!(c && c.grants && c.needsBuff && buffUp(c.needsBuff) && !buffUp(c.grants.name)); }
     function cashIn(pn) {   // AOD-1: tap the channel to turn the ready buff into the free-spend window
       const P = pools[pn], c = P.cash;
@@ -1457,6 +1481,7 @@
           else { const b = callPending(); if (b > 0) { busyUntil = t + b; acted = true; } }
         }
         if (!acted && Object.keys(pools).length) { const pn = cashInDue(); if (pn) acted = cashIn(pn); }   // AOD-1
+        if (!acted && Object.keys(pools).length) { const pn = tapDue(); if (pn) acted = tapGauge(pn); }   // TAP-1
         if (!acted && RB) { rbAct(); acted = true; }
         if (!acted && spenderOw && !listedIn(cur, "scorch") && stackCount(spenderOw.spender.resource) >= spendAt) acted = castOwner(spenderOw, "spender");
         if (!acted && !CW && !listedIn(cur, "artifact") && input.artifactName && t >= artifactReady) acted = castStep({ kind: "artifact", name: input.artifactName });
@@ -1511,7 +1536,7 @@
       callWindow: CW ? { windows: windows.map(function (w) { return [Math.round(w[0] * 10) / 10, Math.round(w[1] * 10) / 10]; }), magnitudeInside: magIn, magnitudeOutside: magTotal - magIn,
         damageInside: scoreHit ? dmgIn : undefined, damageOutside: scoreHit ? dmgTotal - dmgIn : undefined, damageInsideByOwner: scoreHit ? dmgInByOwner : undefined } : undefined, statOwnersOn: scoreHit ? Object.keys(statOwnersOn) : undefined,
       derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 },
-      pools: Object.keys(pools).length ? Object.fromEntries(Object.keys(pools).map(function (pn) { const P = pools[pn]; return [pn, { max: Math.round(P.max), regenPerSec: P.regen, spent: Math.round(P.spent), gained: Math.round(P.gained), channels: P.channels, channelSeconds: Math.round(P.chSec * 10) / 10, refund: Math.round(P.refund), cashIns: P.cashIns, freeSpent: Math.round(P.freeSpent) }]; })) : undefined,
+      pools: Object.keys(pools).length ? Object.fromEntries(Object.keys(pools).map(function (pn) { const P = pools[pn]; return [pn, { max: Math.round(P.max), regenPerSec: P.regen, spent: Math.round(P.spent), gained: Math.round(P.gained), channels: P.channels, channelSeconds: Math.round(P.chSec * 10) / 10, refund: Math.round(P.refund), cashIns: P.cashIns, taps: P.taps, freeSpent: Math.round(P.freeSpent) }]; })) : undefined,
       trace: input.trace ? traceRows : undefined
     };
   }
@@ -1596,6 +1621,7 @@
     const pl0 = (input.resourcePools || []).find(function (p) { return p && p.channel; });
     if (pl0) {
       tryAll(pl0.pool + " channel length", [{ label: "just enough for the next cast", u: "cost" }], function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { channelUntil: o.u }) }); });
+      tryAll(pl0.pool + " gauge taps", [1, 2, 3].map(function (k) { return { label: "tap Channel Divinity once the gauge holds " + k, k: k }; }), function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { tapAt: o.k }) }); });   // TAP-1
       if (pl0.cashIn) tryAll((pl0.cashIn.grants && pl0.cashIn.grants.name) || "cash-in", [{ label: "as soon as it is ready", w: "asap" }], function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { cashIn: o.w }) }); });
     }
     // PB-TEST 2026-10-16: keep a counter pair even (Perfect Balance) by holding the power that would clear it

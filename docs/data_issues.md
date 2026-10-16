@@ -37,6 +37,12 @@
   pairs even" (hold a power that would put one kind 2 ahead), tried by the search. Check (pb_check2.js, 180 s):
   Flame + Daunting Light + Geas 366 -> 386 mps (search keeps "even"); Flame + Javelin + Geas stays 366 (one kind,
   nothing to balance); Angel of Death check unchanged (309 / 414).
+- **TAP-1 2026-10-16** (n00b: "i tapped channel after every encounter" in the Perfect Balance clip): one tap after a
+  1-pip encounter put back ~14% of the bar (~160; model 115 + 52 = 167). New play choice the search tries: tap Channel
+  Divinity once the gauge holds 1 / 2 / 3 charges (only when the bar has room for the whole refund; 0.4 s per tap,
+  assumed). Result (180 s): Flame + Daunting Light + Geas 379-384 with taps vs 386 with short channels; Flame +
+  Javelin + Geas 354-367 vs 366. Taps lose because each one throws away the Judgement the next power would have used
+  for bonus magnitude (Flame +100). The search keeps whichever wins per build. Open: the real tap time.
 
 ## FIXED (v2.1, 2026-10-15) DIV-1: divinity is not in the fight simulator (2026-10-14)
 
