@@ -203,15 +203,28 @@ would raise regen, not lower it.
   180 / 260. Ticks landed 3, 6, 9 and 12 s after the cast, and the debuff on the dummy lasted 12 s. Holding Burning
   Judgement, the first hit rose to 116,537 while the ticks stayed at 55,202.
 - **Tested:** 2026-10-16. Clip `2026-10-16 15-42-34`.
-- **Status:** Verified. **Open:** the Judgement bonus on the first hit measured about +120 magnitude, not the
-  tooltip's +100.
+- **Status:** Verified. **Open:** the Judgement bonus on the first hit measured about +118 magnitude twice
+  (clips `15-42-34` and `16-49-51`), not the tooltip's +100.
+
+#### Burning Patch (feat)
+- **Question:** how does the patch tick, can it crit, and does Burning Judgement boost it?
+- **Tooltip says:** "Flame Strike no longer applies a damage over time and instead ignites the target location dealing
+  magnitude 3240 damage over 18s. Magnitude: 540 x 6."
+- **Plain answer:** exactly as written: the ground burns for 18 seconds and hits 6 times, once every 3 seconds, each
+  tick three times as hard as Flame Strike's normal burn. The ticks can crit. Burning Judgement only boosts the first
+  hit, not the patch. It's a ground patch, so a boss has to stand in it.
+- **Proof:** the patch flared every 3 s, with 6 hits after the cast. A crit tick did 167,477 before mitigation, against
+  80,637 for the first hit (magnitude 260): 167,477 / 80,637 = 2.08 = 540 / 260, and three times the normal burn's
+  crit tick (55,826). Ticks landed both as crits (167,477) and non-crits (94,982). With Burning Judgement held, the
+  first hit rose to 117,854 and the ticks stayed the same.
+- **Tested:** 2026-10-16. Clip `2026-10-16 16-49-51`.
+- **Status:** Verified.
 
 ### Still to test (Arbiter)
 
 | # | Question |
 |---|---|
 | 9 | Piercing Javelin: per hit or per cast? |
-| 11 | Burning Patch: tick count, can ticks crit, do they feed Judgement? |
 | 12 | Tipping Scales with both Judgement kinds held |
 | - | Natural regen while attacking vs standing still |
 | - | Angel of Death: does the counter build while the ready buff is up? |
@@ -238,6 +251,7 @@ Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a f
 | `2026-10-16_09-01-59_divine-equilibrium_feature-off-baseline` | damage flat at every divinity level without it | yes |
 | `2026-10-16_09-11-14_divine-equilibrium_feature-on` | the straight-line curve | yes |
 | `2026-10-16_07-53-07_short-clip_unused` | not used in any test | yes |
+| `2026-10-16_16-49-51_burning-patch` | Burning Patch: 6 ticks of 540 every 3 s, crits, no Judgement bonus | yes (plus every 0.5 s in both casts) |
 | `2026-10-16_15-42-34_flame-strike_burning-patch-not-active` | Flame Strike's burn: 4 ticks every 3 s, crits, no Judgement bonus | yes (plus every 0.5 s in both casts) |
 | `2026-10-16_13-26-40_critical-sun` | free Celestial Prominence after a crit, 6 s window, no chaining | yes (plus every 0.25 s in the three windows) |
 | `2026-10-16_12-04-27_lightspeed` | Lightspeed makes one Daunting Light instant | yes (plus every 0.1 s around four casts) |

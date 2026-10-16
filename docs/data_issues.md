@@ -92,6 +92,10 @@
   720 total), ticks crit, and Burning Judgement boosts only the first hit (measured ~+120, tooltip +100, open).
   Lead (not chased): with the fix, "Critical Sun, CP + Flame Strike" scored LOWER (475,065 -> 462,602) although only
   damage was added; encounter casts fell 31/30/30 -> 28/27/28, so the best-of search landed on a different path.
+- **Burning Patch test 2026-10-16** (H:/YouTube/Unedited Vidoes/2026-10-16 16-49-51.mp4): VERIFIED as modelled - 6
+  ticks of 540 every 3 s over 18 s (crit tick 167,477 raw = 2.08x the 260 first hit; 3x the normal 180 tick), ticks
+  crit and non-crit, no Judgement bonus on the patch; first hit with Burning Judgement 117,854 (~+118, second read).
+  No model change. On the simulator Burning Patch + Flame Strike + Hammer of Fate 510,896 vs Critical Sun 499,760.
   Check through the page's real scored path (pt2ScoredSetup + pt2SimScored, crits on): Celestial Prominence 2 -> 5
   casts in 180 s, damage +2.3%; Burning Patch in the slot = the old value.
   **Harness note:** the earlier checks in this section (aod_iso, pb_check2, glow_check, ls_check) called
