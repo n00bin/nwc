@@ -339,13 +339,23 @@ Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, Octo
 - **Status:** Measured. **Open:** whether it has a hidden cooldown (modelled as 30 s for now). A longer clip of
   nonstop flurry would settle it.
 
+#### Assassinate (encounter)
+- **Question:** "If you attack from behind ... 25% stronger ... Stealthed: Attack is 25% stronger from any direction."
+  Does Stealth from behind give both?
+- **Plain answer:** no, it's one 25% either way. From behind, from Stealth in front and from Stealth behind all hit the
+  same. So Stealth is for when you can't get behind the target; behind it, Stealth adds nothing to Assassinate.
+- **Proof:** every Assassinate in those three positions landed in one band: 317,019-322,905 before mitigation
+  (non-crit), 521,702-559,766 (crit). None landed a further 25% higher. One hit from the front with no Stealth was
+  147,144, which is that band without the 25% and without Combat Advantage.
+- **Tested:** 2026-10-17, training room with cooldowns off and Lysera holding the dummy. Clip `2026-10-17 10-00-10`.
+- **Status:** Verified.
+
 ### Still to test (Assassin)
 
 | # | Question |
 |---|---|
 | 3b | Duelist's Flurry: hits per second when held |
 | 4b | Shadow's Flurry: how often it really shows up (a minute or two of nonstop flurry) |
-| 5 | Assassinate in Stealth from behind vs out of Stealth |
 | 6 | Toxic Blades stacks per Path of the Blade; Assassin's Target stacks per press |
 | 7 | Encounter cooldowns on a stopwatch |
 
@@ -357,6 +367,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 
 | Folder | What it proves | Stills |
 |---|---|---|
+| `2026-10-17_10-00-10_assassinate-stealth-behind` | Assassinate: Stealth and behind do not stack | yes (every 0.5 s) |
 | `2026-10-17_09-40-04_shadows-flurry` | the shadow: 5 hits of ~26 magnitude; once in ~30 s | yes (every 0.1 s around the shadow) |
 | `2026-10-17_09-25-32_duelists-flurry-bleed` | Bleed: 1.5 s ticks, 9 s, full stacks ~4.7x a flurry hit | yes (every 1/6 s in both rounds) |
 | `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |

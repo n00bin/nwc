@@ -29,6 +29,9 @@
   magnitude per hit. ONE shadow in ~31 s of nonstop flurry (~110 hits; plain 5% would give ~5.5). Model (was 0): proc
   5% per hit, 30 s cooldown (provisional), 5 hits of 26.3. Tier 5 now: Shadow's Flurry +0.6% (kit A) / +1.2% (kit B)
   over Execution at a full-health boss.
+- **Assassinate test** (H:/YouTube/Unedited Vidoes/2026-10-17 10-00-10.mp4, no cooldowns, Lysera tanking): VERIFIED one 25%.
+  Behind / Stealth front / Stealth behind all in one band (non-crit 317,019-322,905, crit 521,702-559,766 raw); front with
+  no Stealth or CA 147,144. Model unchanged; provisional removed.
 
 ## FIXED (v2.2, 2026-10-15) Arbiter audit batch (docs/audit/arbiter_audit_2026-10-15.md, n00b: "go")
 - Angel of Death: stacks per divinity-costing encounter (26 -> Angelic Presence 60 s), the tap is
