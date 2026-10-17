@@ -291,17 +291,19 @@ Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, Octo
 - **Plain answer:** a full meter lasts about 6 seconds if you just stand in Stealth, but only about 2.5 seconds
   while you attack, because every at-will press takes a chunk too. Once it runs out, it takes about 12.5 seconds to
   refill from empty. While refilling the bar is grey, and it only turns blue (usable) when it's completely full.
+  Ending Stealth with an encounter throws away whatever was left: the bar empties at once and you wait the full
+  12.5 seconds. So you get one Stealth roughly every 13-15 seconds; spend it on your best Stealth encounter.
 - **Proof:** idle in Stealth: 100% to 0 in 5.9 s. Attacking: gone in 2.4 s, with drops of about 16-18% per press on
   top of the steady drain. Refill from empty: 12.5 s, twice, with no Stealth-regen bonuses slotted.
-- **Tested:** 2026-10-17. Clip `2026-10-17 08-45-23`.
-- **Status:** Measured. **Open:** if an encounter ends Stealth while meter is left, can you go straight back in on
-  what's left, or must it refill to full first? (test 1b)
+- **Proof (leftover):** Stealth entered and ended by an encounter at about 86% and 90% left: the bar went empty at
+  once both times and came back full 12.5-12.7 s later.
+- **Tested:** 2026-10-17. Clips `2026-10-17 08-45-23` and `2026-10-17 08-57-30`.
+- **Status:** Measured.
 
 ### Still to test (Assassin)
 
 | # | Question |
 |---|---|
-| 1b | Stealth: re-entry on a part-used meter |
 | 2 | Oppressive Darkness: +20 per hit or per press |
 | 3 | Duelist's Flurry: hits per press, Bleed size, rate and stacks |
 | 4 | Shadow's Flurry: the shadow's hits and whether they Bleed |
@@ -317,6 +319,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 
 | Folder | What it proves | Stills |
 |---|---|---|
+| `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
 | `2026-10-17_08-45-23_assassin-stealth-meter` | Stealth: 6 s idle, ~2.4 s attacking, 12.5 s refill, usable only when full | yes (every 0.25 s in the Stealth windows) |
 
 ---

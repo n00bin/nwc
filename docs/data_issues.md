@@ -8,6 +8,12 @@
   path): kit A (Duelist's Flurry / Assassinate, Blade Flurry, Lashing Blade) 647,892 -> 595,705 - the old ">0" entry
   rule let the fight re-enter Stealth on any scrap of meter (70 entries, Blade Flurry's Stealth recast 74 casts); kit B
   417,664 -> 436,189. Stealth vs no Stealth after the pull: 595,705 vs 561,844 (+6%).
+- **Stealth re-entry test** (H:/YouTube/Unedited Vidoes/2026-10-17 08-57-30.mp4): an encounter ending Stealth with 86% /
+  90% left emptied the bar at once; full again 12.5-12.7 s later. New record "Stealth wiped" (set 0 on the same cast
+  that ends Stealth); the full-meter entry rule is no longer provisional. Kit A 595,705 -> 581,853 (13 Stealth
+  entries in 180 s, about one per refill); vs no Stealth after the pull 561,844 (+3.6%).
+  Lead (play choice, not built): the fight enters Stealth as soon as it can and spends it on the next encounter; it
+  should hold Stealth for the best Stealth encounter (Lashing Blade +300, Dazing Strike 500, Assassinate x1.25).
 
 ## FIXED (v2.2, 2026-10-15) Arbiter audit batch (docs/audit/arbiter_audit_2026-10-15.md, n00b: "go")
 - Angel of Death: stacks per divinity-costing encounter (26 -> Angelic Presence 60 s), the tap is
