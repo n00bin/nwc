@@ -252,6 +252,13 @@ would raise regen, not lower it.
 
 ---
 
+## Paladin: Justicar (audit 2026-10-17, tests not started)
+
+Audit: . Waiting on gap JUS-1 (should the tank score count timed defensive
+powers) before tests. Fixed from the audit: Faerie Fire lasts 5 s, not 3 (tooltip capture).
+
+---
+
 ## Evidence archive (Arbiter)
 
 Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a frame every 2 s from the clip.
