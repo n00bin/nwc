@@ -103,6 +103,10 @@
   the page's scorer sets pCrit = 1 for them (toon-forge.html dpsHitDamage hm.forceCrit); a Searing Javelin cast removes
   the buff. Check (real path, 180 s, Javelin + Daunting + Flame): 12 of 30 Javelins forced crits; Piercing Javelin
   476,249 -> 482,178 on one enemy, still behind Lightspeed 499,760.
+- **Tipping Scales test 2026-10-17** (H:/YouTube/Unedited Vidoes/2026-10-17 07-23-18.mp4, training room, cooldowns off):
+  VERIFIED as modelled. 3 Radiant + Divine Glow -> 6 Radiant; 1 Burning + Divine Glow -> 6 Burning. The gauge holds ONE
+  kind at a time (Conflagrate on 6 Burning -> 3 Radiant), so "both held" never happens. Empty-gauge case not in the clip.
+  All 12 Arbiter tests done; n00b to retrain back to Lightspeed / Focused Light / Critical Sun.
   Check through the page's real scored path (pt2ScoredSetup + pt2SimScored, crits on): Celestial Prominence 2 -> 5
   casts in 180 s, damage +2.3%; Burning Patch in the slot = the old value.
   **Harness note:** the earlier checks in this section (aod_iso, pb_check2, glow_check, ls_check) called

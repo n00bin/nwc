@@ -231,11 +231,21 @@ would raise regen, not lower it.
 - **Tested:** 2026-10-16. Clip `2026-10-16 19-45-31`.
 - **Status:** Verified.
 
+#### Tipping Scales (feat) and the Judgement gauge
+- **Question:** "Divine glow now generates a full stack of burning judgement or divine judgement as long as you have
+  at least one charge of either": which kind fills if you hold both?
+- **Plain answer:** you can never hold both. The Judgement gauge holds one kind at a time: a power that builds one
+  kind empties the other first. Divine Glow tops up whichever kind you hold to the full 6 pips.
+- **Proof:** 3 Radiant pips, then Divine Glow: 6 Radiant. 1 Burning pip, then Divine Glow: 6 Burning (each twice).
+  Conflagrate on a full Burning gauge emptied it and left 3 Radiant.
+- **Tested:** 2026-10-17, in the training room with cooldowns switched off (a test-only setting). Clip
+  `2026-10-17 07-23-18`.
+- **Status:** Verified. **Open:** Divine Glow on an empty gauge (the tooltip says it needs at least one charge).
+
 ### Still to test (Arbiter)
 
 | # | Question |
 |---|---|
-| 12 | Tipping Scales with both Judgement kinds held |
 | - | Natural regen while attacking vs standing still |
 | - | Angel of Death: does the counter build while the ready buff is up? |
 | - | How long a Channel Divinity tap takes |
@@ -261,6 +271,7 @@ Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a f
 | `2026-10-16_09-01-59_divine-equilibrium_feature-off-baseline` | damage flat at every divinity level without it | yes |
 | `2026-10-16_09-11-14_divine-equilibrium_feature-on` | the straight-line curve | yes |
 | `2026-10-16_07-53-07_short-clip_unused` | not used in any test | yes |
+| `2026-10-17_07-23-18_tipping-scales` | Divine Glow fills the held kind to 6; the gauge holds one kind | yes (every 0.2 s) |
 | `2026-10-16_19-45-31_piercing-javelin` | Piercing Javelin rolls once per at-will cast | yes (one still per second) |
 | `2026-10-16_16-49-51_burning-patch` | Burning Patch: 6 ticks of 540 every 3 s, crits, no Judgement bonus | yes (plus every 0.5 s in both casts) |
 | `2026-10-16_15-42-34_flame-strike_burning-patch-not-active` | Flame Strike's burn: 4 ticks every 3 s, crits, no Judgement bonus | yes (plus every 0.5 s in both casts) |
