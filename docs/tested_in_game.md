@@ -312,11 +312,25 @@ Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, Octo
 - **Tested:** 2026-10-17. Clip `2026-10-17 09-12-53`.
 - **Status:** Verified.
 
+#### Duelist's Flurry Bleed (at-will)
+- **Question:** "Attacks from the flurry each have a chance to add a Bleed effect which can be stacked up to 10
+  times. Duration: 9s." How hard does the Bleed hit, how often, and how do you get it?
+- **Plain answer:** only the flurry applies Bleed, so hold or mash Duelist's Flurry: single slow presses never Bleed.
+  After about 6-8 seconds of nonstop flurry the Bleed is at full stacks, and then each Bleed tick hits about as hard as
+  five Duelist's Flurry hits, every 1.5 seconds. It keeps ticking for 9 seconds after your last flurry, and the ticks
+  can crit. At full stacks the Bleed does about as much damage as the flurry itself.
+- **Proof:** the first stacks ticked for 4,581, 9,161 and 13,742 before mitigation (1, 2, 3 stacks). At full stacks a
+  tick did 53,830 against 11,419 for a Duelist's Flurry hit. After stopping, 6 ticks landed 1.5 s apart, all at the full
+  value.
+- **Tested:** 2026-10-17. Clips `2026-10-17 09-25-32` (held) and `2026-10-17 09-12-53` (single presses, no Bleed).
+- **Status:** Measured. **Open:** the exact chance per flurry hit, and how many hits per second a held Duelist's
+  Flurry makes.
+
 ### Still to test (Assassin)
 
 | # | Question |
 |---|---|
-| 3 | Duelist's Flurry: hits per press, Bleed size, rate and stacks |
+| 3b | Duelist's Flurry: hits per second when held |
 | 4 | Shadow's Flurry: the shadow's hits and whether they Bleed |
 | 5 | Assassinate in Stealth from behind vs out of Stealth |
 | 6 | Toxic Blades stacks per Path of the Blade; Assassin's Target stacks per press |
@@ -330,6 +344,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 
 | Folder | What it proves | Stills |
 |---|---|---|
+| `2026-10-17_09-25-32_duelists-flurry-bleed` | Bleed: 1.5 s ticks, 9 s, full stacks ~4.7x a flurry hit | yes (every 1/6 s in both rounds) |
 | `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |
 | `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
 | `2026-10-17_08-45-23_assassin-stealth-meter` | Stealth: 6 s idle, ~2.4 s attacking, 12.5 s refill, usable only when full | yes (every 0.25 s in the Stealth windows) |

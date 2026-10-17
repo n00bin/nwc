@@ -17,6 +17,13 @@
 - **Oppressive Darkness test** (H:/YouTube/Unedited Vidoes/2026-10-17 09-12-53.mp4): VERIFIED per hit as modelled. Each
   slow Duelist's Flurry press from behind: one Duelist's Flurry line + one Oppressive Darkness line (11 presses); none
   with the feature out (5 presses). 5,706 vs 10,635 raw = 0.54 (20/35 = 0.57). No Bleed line on single presses.
+- **Duelist's Flurry Bleed test** (H:/YouTube/Unedited Vidoes/2026-10-17 09-25-32.mp4, held flurry, log OCR): Bleed ticks
+  every 1.5 s, 6 ticks (9 s) after the last application, stacks share one timer; first stacks 4,581 / 9,161 / 13,742 raw;
+  full-stack tick 53,830 raw vs 11,419 per flurry hit (4.7x) -> ~16.6 magnitude per stack per tick (100 per stack over
+  9 s); ticks crit (x1.68); full stacks after ~6-8 s of nonstop flurry. Model (was 0): stacking dot 100 / 6 ticks / 9 s /
+  max 10, added on every 3rd Duelist's Flurry hit (stand-in for the unknown chance, fitted to the ramp). Kit A 181 s
+  fight 581,853 -> 707,952 (+21.7%). Open: the chance, and the held flurry's real hit rate (log ~3/s, sim 3.5/s with
+  encounters woven in).
 
 ## FIXED (v2.2, 2026-10-15) Arbiter audit batch (docs/audit/arbiter_audit_2026-10-15.md, n00b: "go")
 - Angel of Death: stacks per divinity-costing encounter (26 -> Angelic Presence 60 s), the tap is
