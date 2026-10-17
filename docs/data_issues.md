@@ -1,5 +1,14 @@
 # Data Issues To Investigate
 
+## Rogue Assassin tests (2026-10-17, audit docs/audit/assassin_audit_2026-10-17.md)
+- **Stealth meter test** (H:/YouTube/Unedited Vidoes/2026-10-17 08-45-23.mp4): idle drain 100 -> 0 in 5.9 s (model 16.7/s
+  OK); attacking ~2.4 s with ~16-18 per press (model 15/press, kept); refill from empty 12.5 s twice = 8 per second
+  (was missing -> 0); the bar is grey while refilling and turns blue only when full. Changes: refill amount 8; entering
+  Stealth needs a FULL meter (provisional - test 1b: is a part-used meter usable?). Effect on the 180 s fight (real
+  path): kit A (Duelist's Flurry / Assassinate, Blade Flurry, Lashing Blade) 647,892 -> 595,705 - the old ">0" entry
+  rule let the fight re-enter Stealth on any scrap of meter (70 entries, Blade Flurry's Stealth recast 74 casts); kit B
+  417,664 -> 436,189. Stealth vs no Stealth after the pull: 595,705 vs 561,844 (+6%).
+
 ## FIXED (v2.2, 2026-10-15) Arbiter audit batch (docs/audit/arbiter_audit_2026-10-15.md, n00b: "go")
 - Angel of Death: stacks per divinity-costing encounter (26 -> Angelic Presence 60 s), the tap is
   Cleric.resourcePools[divinity].cashIn (12 s free divinity for damaging spells). Light of the Scales x1.1 and Inner

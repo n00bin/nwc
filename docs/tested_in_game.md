@@ -281,11 +281,43 @@ Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a f
 
 ---
 
-## Rogue: Assassin (audit 2026-10-17, tests not started)
+## Rogue: Assassin
 
-Audit: . Nothing tested in game yet. Test order: Stealth refill and drain,
-Oppressive Darkness per hit or per press, Duelist's Flurry hits and Bleed, Shadow's Flurry, Assassinate in Stealth,
-Toxic Blades / Assassin's Target stacks, encounter cooldowns.
+Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, October 2026.
+
+#### The Stealth meter
+- **Question:** how long does Stealth last, how fast does the meter come back, and when can you go back in?
+- **Tooltip says:** "Lasts 6 seconds." Nothing about the refill.
+- **Plain answer:** a full meter lasts about 6 seconds if you just stand in Stealth, but only about 2.5 seconds
+  while you attack, because every at-will press takes a chunk too. Once it runs out, it takes about 12.5 seconds to
+  refill from empty. While refilling the bar is grey, and it only turns blue (usable) when it's completely full.
+- **Proof:** idle in Stealth: 100% to 0 in 5.9 s. Attacking: gone in 2.4 s, with drops of about 16-18% per press on
+  top of the steady drain. Refill from empty: 12.5 s, twice, with no Stealth-regen bonuses slotted.
+- **Tested:** 2026-10-17. Clip `2026-10-17 08-45-23`.
+- **Status:** Measured. **Open:** if an encounter ends Stealth while meter is left, can you go straight back in on
+  what's left, or must it refill to full first? (test 1b)
+
+### Still to test (Assassin)
+
+| # | Question |
+|---|---|
+| 1b | Stealth: re-entry on a part-used meter |
+| 2 | Oppressive Darkness: +20 per hit or per press |
+| 3 | Duelist's Flurry: hits per press, Bleed size, rate and stacks |
+| 4 | Shadow's Flurry: the shadow's hits and whether they Bleed |
+| 5 | Assassinate in Stealth from behind vs out of Stealth |
+| 6 | Toxic Blades stacks per Path of the Blade; Assassin's Target stacks per press |
+| 7 | Encounter cooldowns on a stopwatch |
+
+---
+
+## Evidence archive (Rogue)
+
+Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
+
+| Folder | What it proves | Stills |
+|---|---|---|
+| `2026-10-17_08-45-23_assassin-stealth-meter` | Stealth: 6 s idle, ~2.4 s attacking, 12.5 s refill, usable only when full | yes (every 0.25 s in the Stealth windows) |
 
 ---
 
