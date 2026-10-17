@@ -281,6 +281,14 @@ Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a f
 
 ---
 
+## Rogue: Assassin (audit 2026-10-17, tests not started)
+
+Audit: . Nothing tested in game yet. Test order: Stealth refill and drain,
+Oppressive Darkness per hit or per press, Duelist's Flurry hits and Bleed, Shadow's Flurry, Assassinate in Stealth,
+Toxic Blades / Assassin's Target stacks, encounter cooldowns.
+
+---
+
 ## Testing lessons (method)
 
 - **Strip buff gear first.** Stacking buffs from gear, weapons and companions (Combatant's Advantage, Astral
