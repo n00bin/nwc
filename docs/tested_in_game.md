@@ -364,14 +364,16 @@ Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, Octo
 
 #### Encounter cooldowns and Recharge Speed (Assassin)
 - **Question:** do the tooltip cooldowns all shrink by the same amount with Recharge Speed?
-- **Plain answer:** yes. With +8.7% Recharge Speed on the character sheet, every encounter tooltip showed about 94.5%
-  of its base cooldown. Oddly, that matches only the +5.7% part of the Recharge Speed breakdown, not the whole +8.7%.
+- **Plain answer:** yes, and the tooltip tells the truth about the real cooldown. But only part of the character
+  sheet's Recharge Speed counted: the sheet said +8.7% (+5.7% from ability scores, +3% from items), and both the
+  tooltips and the real cooldowns matched the +5.7% alone.
 - **Proof:** Lashing Blade 11 s (base 11.6), Blade Flurry 11 (11.6), Assassinate 13.7 (14.5), Smoke Bomb 13.7 (14.5),
   Path of the Blade 14.7 (15.5), Deft Strike 12.8 (13.5), Wicked Reminder 16.5 (17.4), Impossible to Catch 18.3 (19.4),
   Bait and Switch 22 (23.3), Dazing Strike 9.1 (9.7). All 0.94-0.95.
 - **Tested:** 2026-10-17. Clip `2026-10-17 10-43-19`.
-- **Status:** Measured. **Open:** whether the real cooldown uses the full +8.7% or the tooltip's ~5.8% (a stopwatch
-  on the hotbar would tell).
+- **Stopwatch (same clip, hotbar):** Lashing Blade back in 11.0 s, Blade Flurry 11.2 s, Assassinate about 13.5 s, the
+  same as the tooltips.
+- **Status:** Measured. **Open:** why the items' +3% didn't count (which item gives it, and is it conditional?).
 
 ### Still to test (Assassin)
 
@@ -380,7 +382,7 @@ Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, Octo
 | 3b | Duelist's Flurry: hits per second when held |
 | 4b | Shadow's Flurry: how often it really shows up (a minute or two of nonstop flurry) |
 | 6b | Assassin's Target: stacks per Duelist's Flurry press (needs it slotted; tier-1 is Toxic Blades) |
-| 7b | Real cooldown vs tooltip: does the full Recharge Speed apply? |
+| 7c | The items' +3% Recharge Speed that doesn't show up in cooldowns |
 
 ---
 
