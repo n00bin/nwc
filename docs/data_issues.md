@@ -32,6 +32,10 @@
 - **Assassinate test** (H:/YouTube/Unedited Vidoes/2026-10-17 10-00-10.mp4, no cooldowns, Lysera tanking): VERIFIED one 25%.
   Behind / Stealth front / Stealth behind all in one band (non-crit 317,019-322,905, crit 521,702-559,766 raw); front with
   no Stealth or CA 147,144. Model unchanged; provisional removed.
+- **Toxic Blades test** (H:/YouTube/Unedited Vidoes/2026-10-17 10-21-58.mp4): VERIFIED as modelled. Path of the Blade's 4
+  hits -> 4 stacks (22,043 raw per 3 s tick); Assassinate on top -> 5 stacks (44,721 = 5 x 8,944) ticking another 15 s
+  (refresh all); lone Assassinate -> 1 stack. Crit looks decided per application (all ticks crit or none). n00b slotted
+  Toxic Blades into the empty tier 1 for this (permanent); Assassin's Target untested.
 
 ## FIXED (v2.2, 2026-10-15) Arbiter audit batch (docs/audit/arbiter_audit_2026-10-15.md, n00b: "go")
 - Angel of Death: stacks per divinity-costing encounter (26 -> Angelic Presence 60 s), the tap is

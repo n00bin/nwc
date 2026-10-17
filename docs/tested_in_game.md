@@ -350,13 +350,25 @@ Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, Octo
 - **Tested:** 2026-10-17, training room with cooldowns off and Lysera holding the dummy. Clip `2026-10-17 10-00-10`.
 - **Status:** Verified.
 
+#### Toxic Blades (feat)
+- **Question:** "Encounter and Daily attacks ... apply a DoT ... 20 magnitude ... once every 3 seconds, for 15 seconds,
+  and stacks up to 5 times." Does every hit add a stack, and does a new stack restart the old ones?
+- **Plain answer:** yes to both. Every hit of an encounter or daily adds a stack, so one Path of the Blade (4 hits)
+  gives 4 stacks at once. Each new stack restarts the 15-second timer on all of them, so keep landing an encounter
+  every so often and the poison never drops.
+- **Proof:** one Path of the Blade: ticks of 22,043 before mitigation every 3 s (4 stacks). An Assassinate as those
+  stacks ran out: ticks of 44,721 (5 stacks of 8,944) for another 15 s. A lone Assassinate later: 8,944 (1 stack).
+- **Tested:** 2026-10-17. Clip `2026-10-17 10-21-58`.
+- **Status:** Verified. Side note: every tick from one application was either a crit or not, so the crit seems
+  decided when the stacks go on.
+
 ### Still to test (Assassin)
 
 | # | Question |
 |---|---|
 | 3b | Duelist's Flurry: hits per second when held |
 | 4b | Shadow's Flurry: how often it really shows up (a minute or two of nonstop flurry) |
-| 6 | Toxic Blades stacks per Path of the Blade; Assassin's Target stacks per press |
+| 6b | Assassin's Target: stacks per Duelist's Flurry press (needs it slotted; tier-1 is Toxic Blades) |
 | 7 | Encounter cooldowns on a stopwatch |
 
 ---
@@ -367,6 +379,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 
 | Folder | What it proves | Stills |
 |---|---|---|
+| `2026-10-17_10-21-58_toxic-blades` | Toxic Blades: a stack per hit, new stacks refresh all | yes (every 0.5 s) |
 | `2026-10-17_10-00-10_assassinate-stealth-behind` | Assassinate: Stealth and behind do not stack | yes (every 0.5 s) |
 | `2026-10-17_09-40-04_shadows-flurry` | the shadow: 5 hits of ~26 magnitude; once in ~30 s | yes (every 0.1 s around the shadow) |
 | `2026-10-17_09-25-32_duelists-flurry-bleed` | Bleed: 1.5 s ticks, 9 s, full stacks ~4.7x a flurry hit | yes (every 1/6 s in both rounds) |
