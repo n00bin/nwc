@@ -363,17 +363,16 @@ Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, Octo
   decided when the stacks go on.
 
 #### Encounter cooldowns and Recharge Speed (Assassin)
-- **Question:** do the tooltip cooldowns all shrink by the same amount with Recharge Speed?
-- **Plain answer:** yes, and the tooltip tells the truth about the real cooldown. But only part of the character
-  sheet's Recharge Speed counted: the sheet said +8.7% (+5.7% from ability scores, +3% from items), and both the
-  tooltips and the real cooldowns matched the +5.7% alone.
-- **Proof:** Lashing Blade 11 s (base 11.6), Blade Flurry 11 (11.6), Assassinate 13.7 (14.5), Smoke Bomb 13.7 (14.5),
-  Path of the Blade 14.7 (15.5), Deft Strike 12.8 (13.5), Wicked Reminder 16.5 (17.4), Impossible to Catch 18.3 (19.4),
-  Bait and Switch 22 (23.3), Dazing Strike 9.1 (9.7). All 0.94-0.95.
-- **Tested:** 2026-10-17. Clip `2026-10-17 10-43-19`.
-- **Stopwatch (same clip, hotbar):** Lashing Blade back in 11.0 s, Blade Flurry 11.2 s, Assassinate about 13.5 s, the
-  same as the tooltips.
-- **Status:** Measured. **Open:** why the items' +3% didn't count (which item gives it, and is it conditional?).
+- **Question:** do the tooltip cooldowns tell the truth, and does Recharge Speed from clothing count?
+- **Plain answer:** the real cooldowns use ALL of your Recharge Speed, including the +1.5% on shirts and pants. The
+  power tooltips leave the item part out, so they show a cooldown a little longer than you really get.
+- **Proof:** the sheet showed +8.7% Recharge Speed (+5.7% from ability scores, +3% from items: 1.5% shirt, 1.5% pants).
+  Every encounter tooltip matched the 5.7% alone (all ten at 0.94-0.95 of base; Bait and Switch shows 22 s). But
+  casting Bait and Switch the moment it was ready, the gap between casts was 23.27 and 23.26 s wearing the shirt and
+  pants, and 23.89, 23.90 and 23.85 s without them. That 0.6 s difference is exactly what 3% Recharge Speed is worth on
+  Bait and Switch (23.3 s base: 21.4 s with 8.7%, 22.0 s with 5.7%).
+- **Tested:** 2026-10-17. Clips `2026-10-17 10-43-19` (tooltips) and `2026-10-17 11-06-52` (stopwatch).
+- **Status:** Verified.
 
 ### Still to test (Assassin)
 
@@ -382,7 +381,6 @@ Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, Octo
 | 3b | Duelist's Flurry: hits per second when held |
 | 4b | Shadow's Flurry: how often it really shows up (a minute or two of nonstop flurry) |
 | 6b | Assassin's Target: stacks per Duelist's Flurry press (needs it slotted; tier-1 is Toxic Blades) |
-| 7c | The items' +3% Recharge Speed that doesn't show up in cooldowns |
 
 ---
 
@@ -392,6 +390,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 
 | Folder | What it proves | Stills |
 |---|---|---|
+| `2026-10-17_11-06-52_recharge-speed-clothing` | clothing Recharge Speed counts in real cooldowns (Bait and Switch timing) | yes (every 1 s) |
 | `2026-10-17_10-43-19_assassin-encounter-cooldowns` | all 10 encounter tooltips at ~0.945 of base | tooltip and stats screenshots |
 | `2026-10-17_10-21-58_toxic-blades` | Toxic Blades: a stack per hit, new stacks refresh all | yes (every 0.5 s) |
 | `2026-10-17_10-00-10_assassinate-stealth-behind` | Assassinate: Stealth and behind do not stack | yes (every 0.5 s) |

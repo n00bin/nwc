@@ -41,9 +41,12 @@
   The audit's "three at 0.945, seven at 0.92" came from captures taken at different Recharge Speeds; stored bases are
   right. Removed Smoke Bomb / Bait and Switch cooldownByParagon (on-screen values with recharge applied; display only).
   Hotbar stopwatch in the same clip: Lashing Blade 11.0 s, Blade Flurry 11.2 s, Assassinate ~13.5 s = the tooltips. The
-  sheet's +8.7% = Ability Scores +5.7% + Items +3%; only the 5.7% shows in real cooldowns. LEAD (all classes): if the
-  engine feeds the fight the full sheet Recharge Speed, it overstates cooldown speed by the items' share. Need: which
-  item gives the +3% and whether it is conditional.
+  sheet's +8.7% = Ability Scores +5.7% + Items +3% (1.5% shirt + 1.5% pants, n00b).
+- **Recharge test** (H:/YouTube/Unedited Vidoes/2026-10-17 11-06-52.mp4): Bait and Switch cast the moment it was ready:
+  23.27 / 23.26 s apart with shirt + pants, 23.89 / 23.90 / 23.85 s without. +0.61 s = exactly the 3% on a 23.3 s base
+  (21.44 vs 22.04). RESOLVED: real cooldowns use the FULL sheet Recharge Speed (items included); tooltips show only the
+  ability-score part. The engine using the full sheet value is correct - no change. (The earlier hotbar read "matches
+  the tooltips" was within its own noise.)
 
 ## FIXED (v2.2, 2026-10-15) Arbiter audit batch (docs/audit/arbiter_audit_2026-10-15.md, n00b: "go")
 - Angel of Death: stacks per divinity-costing encounter (26 -> Angelic Presence 60 s), the tap is
