@@ -14296,6 +14296,7 @@
             single: area ? 0 : 1, dot: hit.isTick ? 1 : 0 };
         }
         hm.slotPct = PT2_SLOT_KEYS.reduce((acc, k) => acc + (w[k] || 0) * ((sl[k] || 0) + (slotAdd[k] || 0)), 0);
+        if (hit.forceCrit) hm.forceCrit = true;   // PJ-TEST: a guaranteed crit (Piercing Javelin)
         const one = dpsHitDamage(ctx, 100, hm);
         hit.pCrit = one.pCrit;   // 2.6: on-crit records see this hit's crit chance (with the buffs up now)
         return m * one.expected / 100 * (mhb && !hit.proc && hit.name === mhb.power ? mhb.mult : 1);
@@ -21855,7 +21856,7 @@
       const deflectDivide = 1 + Math.max(0, e.deflectSev - accuracy);
       const defenseDivide = 1 + e.defense;
       const hit = (f, c2) => { let x = baseDmg * powerMult; if (f) x *= flankBonus; if (c2) x *= critBonus; x /= defenseDivide; return x; };
-      const pCrit = Math.max(0, Math.min(1, critStrike));
+      const pCrit = (hm && hm.forceCrit) ? 1 : Math.max(0, Math.min(1, critStrike));
       const pDeflect = Math.max(0, Math.min(1, e.deflect));
       const pBase = (1 - effFlank) * (1 - pCrit), pFlank = effFlank * (1 - pCrit),
             pCritOnly = (1 - effFlank) * pCrit, pBoth = effFlank * pCrit;

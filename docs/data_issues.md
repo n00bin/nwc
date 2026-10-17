@@ -96,6 +96,13 @@
   ticks of 540 every 3 s over 18 s (crit tick 167,477 raw = 2.08x the 260 first hit; 3x the normal 180 tick), ticks
   crit and non-crit, no Judgement bonus on the patch; first hit with Burning Judgement 117,854 (~+118, second read).
   No model change. On the simulator Burning Patch + Flame Strike + Hammer of Fate 510,896 vs Critical Sun 499,760.
+- **Piercing Javelin test 2026-10-16** (H:/YouTube/Unedited Vidoes/2026-10-16 19-45-31.mp4): ONE roll per at-will CAST
+  (Lance one dummy: 6 procs / ~85 casts; Conflagrate on ~6 dummies: 5 procs / ~42 casts; per-hit would give ~25).
+  Record changed from on:"hit" to on:"cast". **Bug found:** the guaranteedCrit mod was read by nothing, so Piercing
+  Javelin was worth zero. New: a power with guaranteedCrit set (via the gated mod) lands its hits with forceCrit, and
+  the page's scorer sets pCrit = 1 for them (toon-forge.html dpsHitDamage hm.forceCrit); a Searing Javelin cast removes
+  the buff. Check (real path, 180 s, Javelin + Daunting + Flame): 12 of 30 Javelins forced crits; Piercing Javelin
+  476,249 -> 482,178 on one enemy, still behind Lightspeed 499,760.
   Check through the page's real scored path (pt2ScoredSetup + pt2SimScored, crits on): Celestial Prominence 2 -> 5
   casts in 180 s, damage +2.3%; Burning Patch in the slot = the old value.
   **Harness note:** the earlier checks in this section (aod_iso, pb_check2, glow_check, ls_check) called

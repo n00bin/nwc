@@ -749,7 +749,7 @@
       const tg = (ow.obj && ow.obj.tags) || {};
       const hit = { type: ow.type, name: ow.name, recName: recName, tags: tg, element: (rec && rec.element) || tg.element || null,
         damageType: (rec && rec.damageType) || tg.damageType || (ow.obj && ow.obj.damageType) || null,
-        targets: (rec && rec.targets) || tg.targets || null, isTick: !!isTick, offMain: !!offMain, proc: !!ow.proc };
+        targets: (rec && rec.targets) || tg.targets || null, isTick: !!isTick, offMain: !!offMain, proc: !!ow.proc, forceCrit: !!((rec && rec.forceCrit) || (!ow.proc && ow.obj && ow.obj.guaranteedCrit)) };   // PJ-TEST: a guaranteed crit
       const act = activeStats(hit, ow);
       const d = scoreHit(m, hit, act);
       if (recHits) recHits.push({ m: m, hit: hit, active: act });
@@ -1163,7 +1163,7 @@
         dmg.forEach(function (r) {
           let mo = null;
           if (r === firstHit && e.mainMods.length) { mo = num(r.magnitude, 0); e.mainMods.forEach(function (md) { if (md.field !== "magnitude") return; mo = md.op === "add" ? mo + num(md.value) : md.op === "mult" ? mo * num(md.value) : num(md.value); }); }
-          total += scheduleDamage(ow, r, castEnd, spent, mo);
+          total += scheduleDamage(ow, p.guaranteedCrit ? Object.assign({}, r, { forceCrit: true }) : r, castEnd, spent, mo);   // PJ-TEST: Piercing Javelin's sure crit
         });
       }
       else if (kind !== "song") total = scheduleTopLevel({ obj: p, type: ow.type, name: ow.name, spender: ow.spender }, kind, castSec, e.mainMods, s);
