@@ -24,6 +24,11 @@
   max 10, added on every 3rd Duelist's Flurry hit (stand-in for the unknown chance, fitted to the ramp). Kit A 181 s
   fight 581,853 -> 707,952 (+21.7%). Open: the chance, and the held flurry's real hit rate (log ~3/s, sim 3.5/s with
   encounters woven in).
+- **Shadow's Flurry test** (H:/YouTube/Unedited Vidoes/2026-10-17 09-40-04.mp4, enlarged log box): 5 hits in ~1.5 s,
+  crit 15,214 / 14,598 / 14,628 and non-crit 8,559 / 8,613 raw vs 11,419 per non-crit Duelist's Flurry hit -> ~26.3
+  magnitude per hit. ONE shadow in ~31 s of nonstop flurry (~110 hits; plain 5% would give ~5.5). Model (was 0): proc
+  5% per hit, 30 s cooldown (provisional), 5 hits of 26.3. Tier 5 now: Shadow's Flurry +0.6% (kit A) / +1.2% (kit B)
+  over Execution at a full-health boss.
 
 ## FIXED (v2.2, 2026-10-15) Arbiter audit batch (docs/audit/arbiter_audit_2026-10-15.md, n00b: "go")
 - Angel of Death: stacks per divinity-costing encounter (26 -> Angelic Presence 60 s), the tap is

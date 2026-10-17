@@ -326,12 +326,25 @@ Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, Octo
 - **Status:** Measured. **Open:** the exact chance per flurry hit, and how many hits per second a held Duelist's
   Flurry makes.
 
+#### Shadow's Flurry (feat)
+- **Question:** "Your attacks have a 5% chance to spawn a shadowy figure that uses the final combo of Duelist's
+  Flurry on the target." How hard does the shadow hit, and how often does it show up?
+- **Plain answer:** the shadow hits 5 times in about a second and a half, each hit about three-quarters of a
+  Duelist's Flurry hit, and its hits can crit. It showed up far less often than "5% per attack" suggests: once in
+  about 30 seconds of nonstop flurry. That makes it a small bonus, about 1% in the simulator, a little ahead of
+  Execution for a full-health boss fight.
+- **Proof:** 5 shadow hits: 15,214, 14,598 and 14,628 (crits) and 8,559 and 8,613 (non-crits) before mitigation,
+  against 11,419 for a non-crit Duelist's Flurry hit. One shadow in about 110 flurry hits.
+- **Tested:** 2026-10-17. Clip `2026-10-17 09-40-04`.
+- **Status:** Measured. **Open:** whether it has a hidden cooldown (modelled as 30 s for now). A longer clip of
+  nonstop flurry would settle it.
+
 ### Still to test (Assassin)
 
 | # | Question |
 |---|---|
 | 3b | Duelist's Flurry: hits per second when held |
-| 4 | Shadow's Flurry: the shadow's hits and whether they Bleed |
+| 4b | Shadow's Flurry: how often it really shows up (a minute or two of nonstop flurry) |
 | 5 | Assassinate in Stealth from behind vs out of Stealth |
 | 6 | Toxic Blades stacks per Path of the Blade; Assassin's Target stacks per press |
 | 7 | Encounter cooldowns on a stopwatch |
@@ -344,6 +357,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 
 | Folder | What it proves | Stills |
 |---|---|---|
+| `2026-10-17_09-40-04_shadows-flurry` | the shadow: 5 hits of ~26 magnitude; once in ~30 s | yes (every 0.1 s around the shadow) |
 | `2026-10-17_09-25-32_duelists-flurry-bleed` | Bleed: 1.5 s ticks, 9 s, full stacks ~4.7x a flurry hit | yes (every 1/6 s in both rounds) |
 | `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |
 | `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
