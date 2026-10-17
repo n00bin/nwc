@@ -14,6 +14,9 @@
   entries in 180 s, about one per refill); vs no Stealth after the pull 561,844 (+3.6%).
   Lead (play choice, not built): the fight enters Stealth as soon as it can and spends it on the next encounter; it
   should hold Stealth for the best Stealth encounter (Lashing Blade +300, Dazing Strike 500, Assassinate x1.25).
+- **Oppressive Darkness test** (H:/YouTube/Unedited Vidoes/2026-10-17 09-12-53.mp4): VERIFIED per hit as modelled. Each
+  slow Duelist's Flurry press from behind: one Duelist's Flurry line + one Oppressive Darkness line (11 presses); none
+  with the feature out (5 presses). 5,706 vs 10,635 raw = 0.54 (20/35 = 0.57). No Bleed line on single presses.
 
 ## FIXED (v2.2, 2026-10-15) Arbiter audit batch (docs/audit/arbiter_audit_2026-10-15.md, n00b: "go")
 - Angel of Death: stacks per divinity-costing encounter (26 -> Angelic Presence 60 s), the tap is

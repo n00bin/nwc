@@ -300,11 +300,22 @@ Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, Octo
 - **Tested:** 2026-10-17. Clips `2026-10-17 08-45-23` and `2026-10-17 08-57-30`.
 - **Status:** Measured.
 
+#### Oppressive Darkness (class feature)
+- **Question:** "When you have Combat Advantage your powers deal an additional 20 magnitude damage": once per power
+  use, or on every hit?
+- **Plain answer:** on every hit. Each Duelist's Flurry hit from behind brings its own extra 20-magnitude hit, which
+  is more than half again on your main at-will (Duelist's Flurry hits for 35). It's one of the strongest Assassin
+  picks whenever you have Combat Advantage.
+- **Proof:** from behind, every slow Duelist's Flurry press logged one Duelist's Flurry line and one Oppressive
+  Darkness line (11 presses). With the feature swapped out, 5 presses logged no Oppressive Darkness at all. The extra
+  hit was 5,706 before mitigation against Duelist's Flurry's 10,635, close to 20 / 35.
+- **Tested:** 2026-10-17. Clip `2026-10-17 09-12-53`.
+- **Status:** Verified.
+
 ### Still to test (Assassin)
 
 | # | Question |
 |---|---|
-| 2 | Oppressive Darkness: +20 per hit or per press |
 | 3 | Duelist's Flurry: hits per press, Bleed size, rate and stacks |
 | 4 | Shadow's Flurry: the shadow's hits and whether they Bleed |
 | 5 | Assassinate in Stealth from behind vs out of Stealth |
@@ -319,6 +330,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 
 | Folder | What it proves | Stills |
 |---|---|---|
+| `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |
 | `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
 | `2026-10-17_08-45-23_assassin-stealth-meter` | Stealth: 6 s idle, ~2.4 s attacking, 12.5 s refill, usable only when full | yes (every 0.25 s in the Stealth windows) |
 
