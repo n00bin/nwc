@@ -362,6 +362,17 @@ Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, Octo
 - **Status:** Verified. Side note: every tick from one application was either a crit or not, so the crit seems
   decided when the stacks go on.
 
+#### Encounter cooldowns and Recharge Speed (Assassin)
+- **Question:** do the tooltip cooldowns all shrink by the same amount with Recharge Speed?
+- **Plain answer:** yes. With +8.7% Recharge Speed on the character sheet, every encounter tooltip showed about 94.5%
+  of its base cooldown. Oddly, that matches only the +5.7% part of the Recharge Speed breakdown, not the whole +8.7%.
+- **Proof:** Lashing Blade 11 s (base 11.6), Blade Flurry 11 (11.6), Assassinate 13.7 (14.5), Smoke Bomb 13.7 (14.5),
+  Path of the Blade 14.7 (15.5), Deft Strike 12.8 (13.5), Wicked Reminder 16.5 (17.4), Impossible to Catch 18.3 (19.4),
+  Bait and Switch 22 (23.3), Dazing Strike 9.1 (9.7). All 0.94-0.95.
+- **Tested:** 2026-10-17. Clip `2026-10-17 10-43-19`.
+- **Status:** Measured. **Open:** whether the real cooldown uses the full +8.7% or the tooltip's ~5.8% (a stopwatch
+  on the hotbar would tell).
+
 ### Still to test (Assassin)
 
 | # | Question |
@@ -369,7 +380,7 @@ Audit: `docs/audit/assassin_audit_2026-10-17.md`. Tests on n00b's Assassin, Octo
 | 3b | Duelist's Flurry: hits per second when held |
 | 4b | Shadow's Flurry: how often it really shows up (a minute or two of nonstop flurry) |
 | 6b | Assassin's Target: stacks per Duelist's Flurry press (needs it slotted; tier-1 is Toxic Blades) |
-| 7 | Encounter cooldowns on a stopwatch |
+| 7b | Real cooldown vs tooltip: does the full Recharge Speed apply? |
 
 ---
 
@@ -379,6 +390,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 
 | Folder | What it proves | Stills |
 |---|---|---|
+| `2026-10-17_10-43-19_assassin-encounter-cooldowns` | all 10 encounter tooltips at ~0.945 of base | tooltip and stats screenshots |
 | `2026-10-17_10-21-58_toxic-blades` | Toxic Blades: a stack per hit, new stacks refresh all | yes (every 0.5 s) |
 | `2026-10-17_10-00-10_assassinate-stealth-behind` | Assassinate: Stealth and behind do not stack | yes (every 0.5 s) |
 | `2026-10-17_09-40-04_shadows-flurry` | the shadow: 5 hits of ~26 magnitude; once in ~30 s | yes (every 0.1 s around the shadow) |

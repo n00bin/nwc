@@ -36,6 +36,11 @@
   hits -> 4 stacks (22,043 raw per 3 s tick); Assassinate on top -> 5 stacks (44,721 = 5 x 8,944) ticking another 15 s
   (refresh all); lone Assassinate -> 1 stack. Crit looks decided per application (all ticks crit or none). n00b slotted
   Toxic Blades into the empty tier 1 for this (permanent); Assassin's Target untested.
+- **Cooldown test** (H:/YouTube/Unedited Vidoes/2026-10-17 10-43-19.mp4): all 10 encounter tooltips at 0.938-0.948 of the
+  stored base (Recharge Speed +8.7% on the sheet, breakdown +5.7% / +3%; 1/0.945 = 1.058 -> the tooltip uses the 5.7%).
+  The audit's "three at 0.945, seven at 0.92" came from captures taken at different Recharge Speeds; stored bases are
+  right. Removed Smoke Bomb / Bait and Switch cooldownByParagon (on-screen values with recharge applied; display only).
+  Open: whether real cooldowns use the full 8.7% (hotbar stopwatch).
 
 ## FIXED (v2.2, 2026-10-15) Arbiter audit batch (docs/audit/arbiter_audit_2026-10-15.md, n00b: "go")
 - Angel of Death: stacks per divinity-costing encounter (26 -> Angelic Presence 60 s), the tap is
