@@ -47,6 +47,12 @@
   (21.44 vs 22.04). RESOLVED: real cooldowns use the FULL sheet Recharge Speed (items included); tooltips show only the
   ability-score part. The engine using the full sheet value is correct - no change. (The earlier hotbar read "matches
   the tooltips" was within its own noise.)
+- **STEALTH-SAVE (built 2026-10-17, n00b "ok")**: new play choice the best-of search tries - save a castable mechanic's
+  buff (Stealth) for one encounter that has a mode under it: enter only when that encounter is ready, and while Stealthed
+  cast only it. Kept only when it gains. Assassin kit A (Assassinate / Blade Flurry / Lashing Blade) picks Lashing Blade
+  +1.35%; kit B (Lashing Blade / Dazing Strike / Path of the Blade) Lashing Blade +2.28%. Smoke test on all 18 paragons:
+  no errors; only the two Rogue paragons use it (Whisperknife picks Vengeance's Pursuit). The Stealth refill / wipe rules
+  are on both Rogue paragons' Stealth copies (Whisperknife untested in game).
 
 ## FIXED (v2.2, 2026-10-15) Arbiter audit batch (docs/audit/arbiter_audit_2026-10-15.md, n00b: "go")
 - Angel of Death: stacks per divinity-costing encounter (26 -> Angelic Presence 60 s), the tap is

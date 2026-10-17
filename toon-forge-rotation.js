@@ -463,6 +463,7 @@
     // AOD-1 / DIV-3 (2026-10-15): play choices the best-of search tries - channel to "full" or just to the blocked
     // power's "cost"; cash in (Angel of Death) "asNeeded" (in place of a channel) or "asap" (as soon as it is ready)
     const PC = input.poolChoices || {};
+    const SAVE = input.saveBuff && input.saveBuff.buff && input.saveBuff.power ? input.saveBuff : null;
     let channelUntil = -1, channelPool = null;
     const poolKeyOf = function (key) {   // divinityLevel -> divinity (0-100), channelingDivinity -> divinity (toggle), pool:divinityPct
       if (!key) return null;
@@ -1375,6 +1376,10 @@
         const e = rbList[i];
         if (!rbReady(e) || rbHeld(e)) continue;
         if (PC.balance && (e.kind === "encounter" || e.kind === "daily") && balanceBlocks(e.name)) continue;
+        // STEALTH-SAVE 2026-10-17 (Assassin tests: ending Stealth with any encounter wipes the meter): with the play
+        // choice saveBuff {buff, power}, enter the buff only when that power is ready, and while it is up cast only that power
+        if (SAVE && e.kind === "mechanic" && (e.named || []).indexOf(SAVE.buff) >= 0 && !isReady({ kind: "encounter", name: SAVE.power })) continue;
+        if (SAVE && (e.kind === "encounter" || e.kind === "daily") && e.name !== SAVE.power && buffUp(SAVE.buff)) continue;
         if (e.named && e.named.length && e.named.every(function (n) { return buffUp(n) && (permanentBuff[n] || buffs[n] - t > num(e.ow.obj.castSeconds, 0) + 0.5); })) continue;
         if (e.refresh) { const c = num(e.ow.obj.castSeconds, 0); if (rbRemaining(e) > c + 0.5) continue; }
         if (e.kind !== "mechanic" && e.kind !== "spender" && !isReady({ kind: e.kind, name: e.name })) { rbInvalid++; continue; }
@@ -1590,7 +1595,7 @@
       const k2 = kitWithModes(kit, ch.modes);
       k2.songs = (kit.songs || []).filter(function (sg) { return (ch.songs || []).indexOf(sg.name) >= 0; });
       if (ch.sm) { const smo = (input.smCandidates || []).find(function (x) { return x.name === ch.sm; }); if (smo) k2.powers = Object.assign({}, k2.powers, { encounter: (k2.powers.encounter || []).concat([smo]) }); }
-      const r = simulateFx(Object.assign({}, input, { spellMasteryPower: ch.sm || input.spellMasteryPower || null, kit: k2, hold: ch.hold, spendAt: ch.spendAt, modes: fxModes, filler: ch.filler || null, noDamageCast: ch.skip || [], quickplay: ch.quickplay || [], poolChoices: ch.pool || {} }));
+      const r = simulateFx(Object.assign({}, input, { spellMasteryPower: ch.sm || input.spellMasteryPower || null, kit: k2, hold: ch.hold, spendAt: ch.spendAt, modes: fxModes, filler: ch.filler || null, noDamageCast: ch.skip || [], quickplay: ch.quickplay || [], poolChoices: ch.pool || {}, saveBuff: ch.save || null }));
       r._score = r.damageTotal != null ? r.damageTotal : r.magnitudeTotal; return r;
     };
     if (input.choices) { const r = run(input.choices); r.choices = Object.assign({ gains: [] }, input.choices); return r; }
@@ -1618,6 +1623,15 @@
     // filler. Each encounter is tried left out of the damage casts (refresh casts still happen); kept only when it gains.
     (kit.powers.encounter || []).forEach(function (p) {
       tryAll(p.name + " for damage", [{ label: "leave it to the filler", n: p.name }], function (o) { return Object.assign({}, ch, { skip: (ch.skip || []).concat([o.n]) }); });
+    });
+    // STEALTH-SAVE: for each castable mechanic buff (Stealth), try saving it for each encounter that has a mode under it
+    (kit.mechanics || []).forEach(function (m) {
+      if (!m || m.castSeconds == null) return;
+      (m.fx || []).filter(function (r) { return r.kind === "buff" && r.name && !r.op && !r.when; }).forEach(function (b) {
+        const key = '"buff:' + b.name + '"';
+        const users = (kit.powers.encounter || []).filter(function (p) { try { return JSON.stringify(p.fx || []).indexOf(key) >= 0; } catch (e) { return false; } }).map(function (p) { return p.name; });
+        if (users.length) tryAll("save " + b.name + " for", users.map(function (n) { return { label: n, n: n }; }), function (o) { return Object.assign({}, ch, { save: { buff: b.name, power: o.n } }); });
+      });
     });
     if (input.callWindow) tryAll("hold for the call", [{ label: "hold dailies", h: { daily: true } }, { label: "hold encounters", h: { encounter: true } }, { label: "hold both", h: { daily: true, encounter: true } }],
       function (o) { return Object.assign({}, ch, { hold: o.h }); });
@@ -1661,7 +1675,7 @@
         if (r._score > best._score + 1e-9) { best = r; ch.quickplay = q; } });
       gains.push({ choice: "quick play", picked: ch.quickplay.length ? ch.quickplay.join(" + ") : "none (play songs by hand)", pct: 0 });
     }
-    best.choices = { hold: ch.hold, modes: ch.modes, spendAt: ch.spendAt, filler: ch.filler, skip: ch.skip, songs: ch.songs, quickplay: ch.quickplay, quickplayCosts: qpCosts, spellMastery: ch.sm || null, pool: ch.pool || null, gains: gains };
+    best.choices = { hold: ch.hold, modes: ch.modes, spendAt: ch.spendAt, filler: ch.filler, skip: ch.skip, songs: ch.songs, quickplay: ch.quickplay, quickplayCosts: qpCosts, spellMastery: ch.sm || null, pool: ch.pool || null, save: ch.save || null, gains: gains };
     return best;
   }
 
