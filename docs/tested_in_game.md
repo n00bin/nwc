@@ -278,6 +278,17 @@ not 3 (tooltip capture).
 Audit: `docs/audit/whisperknife_audit_2026-10-18.md`. Stealth rules are shared with the Assassin (measured there).
 Fixed from the audit: the encounter that ends Stealth now gets its Stealth bonuses before the meter empties.
 
+#### Shadowy Opportunity (feat)
+- **Question:** "Each of your hits deals an additional hit for 130 magnitude damage" for 5 s after leaving Stealth: does
+  every hit of a multi-hit power count, and do damage-over-time ticks count?
+- **Plain answer:** yes to both. Every single hit gets its own extra hit: each Disheartening Strike hit, each hit of
+  Path of the Blade, and each tick of Smoke Bomb's poison. Pair it with fast-hitting powers and poisons for the 5 seconds.
+- **Proof:** the combat log alternates one Disheartening Strike line, one Shadowy Opportunity line, all the way through
+  the window; the same for Path of the Blade's hits and Smoke Bomb's poison ticks. An extra hit's crit read 81,411 before
+  mitigation against about 50,000 for Disheartening Strike.
+- **Tested:** 2026-10-18. Clip `2026-10-18 14-56-11`.
+- **Status:** Verified (matches the simulator).
+
 ---
 
 ## Evidence archive (Arbiter)
@@ -426,6 +437,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 | `2026-10-17_09-25-32_duelists-flurry-bleed` | Bleed: 1.5 s ticks, 9 s, full stacks ~4.7x a flurry hit | yes (every 1/6 s in both rounds) |
 | `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |
 | `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
+| `2026-10-18_14-56-11_shadowy-opportunity` | Whisperknife: Shadowy Opportunity adds a hit per hit, ticks included | yes (every 0.5 s) |
 | `2026-10-17_08-45-23_assassin-stealth-meter` | Stealth: 6 s idle, ~2.4 s attacking, 12.5 s refill, usable only when full | yes (every 0.25 s in the Stealth windows) |
 
 ---
