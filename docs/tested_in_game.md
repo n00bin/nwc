@@ -255,7 +255,7 @@ would raise regen, not lower it.
 ## Paladin: Justicar
 
 Audit: `docs/audit/justicar_audit_2026-10-17.md`. JUS-1 = 2 locked 2026-10-18: tanks pick powers for AGGRO, aggro can't be
-measured cleanly, so the optimizer will leave a tank's kit to the player (not built yet). Fixed from the audit: Faerie Fire lasts 5 s,
+measured cleanly, so the optimizer leaves a tank's kit to the player (live 2026-10-18). Fixed from the audit: Faerie Fire lasts 5 s,
 not 3 (tooltip capture).
 
 #### Threat race: does "Increased Threat" make a power pull aggro faster?

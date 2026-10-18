@@ -136,5 +136,8 @@ The stored text and numbers are in very good shape: every Justicar power, featur
 
 - **JUS-1 = 2 (n00b 2026-10-18, "for now, maybe we will revisit it"):** tanks pick powers for aggro, and aggro can't be
   measured cleanly (threat race 2026-10-17 inconclusive on the Increased Threat tag). So for the tank role the optimizer
-  should build gear only and leave powers, feats and class features to the player. Lock, not a go: not built yet
-  (the change lives in the optimizer, which only builds on n00b's word). Revisit if a cleaner threat test turns up.
+  should build gear only and leave powers, feats and class features to the player. BUILT 2026-10-18 on n00b's
+  word: the optimizer's class-feature search is off for the tank objective (powers and feats were already DPS-only), and
+  the dialog says so for tank paragons. Check: a quick tank run keeps powers / features / feats unchanged (68 gear
+  changes); the same run with the gate removed swaps the class features. Premium deployed (premium-evv3y4psq).
+  Revisit if a cleaner threat test turns up.
