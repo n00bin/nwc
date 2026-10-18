@@ -1003,14 +1003,20 @@
       L.acc = (L.acc || 0) + share;
       if (L.acc >= 1 - 1e-9) { L.acc -= 1; L.lastFire = t; runRecord(asProc(L.ow), r, null, null); }
     }
-    function fireCast(ow) {
+    // WK-AUDIT 2026-10-18: a cast-triggered record with when.afterCast runs once the cast's own hits have landed (one
+    // tick after the cast ends), all such records of one cast in listener order. Ending Stealth with an encounter: the
+    // encounter still gets its Stealth bonuses, then the meter is wiped / refunded and Stealth drops.
+    function fireCast(ow, castEnd) {
+      const later = [];
       for (let i = 0; i < listeners.length; i++) {
         const L = listeners[i]; if (!L.castListener) continue;
         const w = L.rec.when;
         if (!filterMatch(w.from, ow)) continue;
         if (w.every) { L.count++; if (L.count % num(w.every) !== 0) continue; }
+        if (w.afterCast) { later.push(L); continue; }
         procFire(L, 1);
       }
+      if (later.length) schedule(Math.max(t, num(castEnd, t)) + dt, function () { later.forEach(function (L) { procFire(L, 1); }); });
     }
 
     // ---- casting ----
@@ -1155,7 +1161,7 @@
       live.forEach(function (r) { if (r.kind === "stack" && r.op === "consume") spent[r.resource] = (spent[r.resource] || 0) + applyStack(r, spent); });
       if (kind === "spender" && !(Object.keys(spent).some(function (k) { return spent[k] > 0; }))) { castCount[p.name]--; busyUntil = t; return false; }
       // 3. cast-triggered records elsewhere (Curse apply / consume by tags, at-will Curse ...)
-      fireCast(ow);
+      fireCast(ow, castEnd);
       // 4. damage and the rest of the power's own records
       let total = 0;
       const dmg = untriggeredDamage(live);

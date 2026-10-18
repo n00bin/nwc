@@ -273,6 +273,13 @@ not 3 (tooltip capture).
 
 ---
 
+## Rogue: Whisperknife (audit 2026-10-18, tests not started)
+
+Audit: `docs/audit/whisperknife_audit_2026-10-18.md`. Stealth rules are shared with the Assassin (measured there).
+Fixed from the audit: the encounter that ends Stealth now gets its Stealth bonuses before the meter empties.
+
+---
+
 ## Evidence archive (Arbiter)
 
 Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a frame every 2 s from the clip.

@@ -1,5 +1,12 @@
 # Data Issues To Investigate
 
+## Rogue Whisperknife audit (2026-10-18, docs/audit/whisperknife_audit_2026-10-18.md)
+- **FIXED: Stealth-ending encounter lost its Stealth bonuses** (record order). New when.afterCast (toon-forge-rotation.js
+  fireCast(ow, castEnd); vocabulary in build-data.py): cast-triggered records flagged afterCast run one tick after the
+  cast ends, all of one cast together in listener order. Applied to Stealth's wipe / Dark Reimbursement +25 / Stealth drop
+  (both Rogue paths, that order) and One with the Shadows' +50 + consume. Shadow of Demise echo 0 -> 16.8M in 180 s;
+  Whisperknife kit B 457,909 -> 520,594. All 16 non-Rogue paragons unchanged in the smoke test; Assassin within 1%.
+
 ## Rogue Assassin tests (2026-10-17, audit docs/audit/assassin_audit_2026-10-17.md)
 - **Stealth meter test** (H:/YouTube/Unedited Vidoes/2026-10-17 08-45-23.mp4): idle drain 100 -> 0 in 5.9 s (model 16.7/s
   OK); attacking ~2.4 s with ~16-18 per press (model 15/press, kept); refill from empty 12.5 s twice = 8 per second
