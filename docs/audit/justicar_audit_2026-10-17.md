@@ -131,3 +131,10 @@ The stored text and numbers are in very good shape: every Justicar power, featur
 - **Not re-read in this pass** (data says identical to the Oathkeeper copy; low tank impact): Divine Judgement, Marathon Runner, Divine Meditation, Religion, and the "(2)" duplicates other than Aura of Protection (2) and Sacred Weapon (2), which are Oathkeeper screens.
 - About 30 Oathkeeper-only captures were ignored (Aura of Divinity/Life/Restoration, Cure Wounds, Lay on Hands, Sanctuary, Hand of Divinity, Channel Divinity, etc.).
 - Code paths named above are from greps and reading the relevant functions, not from running the simulator. "Never reaches the tank score" means I found no reader. A quick check is to slot Absolution vs an empty slot and compare the Effective HP number.
+
+## Locked decisions
+
+- **JUS-1 = 2 (n00b 2026-10-18, "for now, maybe we will revisit it"):** tanks pick powers for aggro, and aggro can't be
+  measured cleanly (threat race 2026-10-17 inconclusive on the Increased Threat tag). So for the tank role the optimizer
+  should build gear only and leave powers, feats and class features to the player. Lock, not a go: not built yet
+  (the change lives in the optimizer, which only builds on n00b's word). Revisit if a cleaner threat test turns up.
