@@ -252,10 +252,24 @@ would raise regen, not lower it.
 
 ---
 
-## Paladin: Justicar (audit 2026-10-17, tests not started)
+## Paladin: Justicar
 
-Audit: . Waiting on gap JUS-1 (should the tank score count timed defensive
-powers) before tests. Fixed from the audit: Faerie Fire lasts 5 s, not 3 (tooltip capture).
+Audit: `docs/audit/justicar_audit_2026-10-17.md`. Gap JUS-1 open: n00b - tanks pick powers for AGGRO, not survivability,
+so the question is whether the optimizer should pick a tank's kit by threat. Fixed from the audit: Faerie Fire lasts 5 s,
+not 3 (tooltip capture).
+
+#### Threat race: does "Increased Threat" make a power pull aggro faster?
+- **Method:** the game never shows threat, but the combat log shows the moment the dummy turns on you (the first
+  "Conjured Fighter deals ... to you" line). A companion (Sardina the Tressym, no taunt) fights the dummy alone for about
+  55 s, then the tank uses one at-will until the dummy hits them. Compare how much damage each power needed.
+- **Result:** untagged Shielding Strike flipped it in about 3 s after 4-8 hits (about 105,000-210,000 before
+  mitigation; the log scroll made the count fuzzy). Tagged Oath Strike flipped it in about 5 s after about 8-13 small hits
+  (about 80,000-125,000). If the tag were worth 2.7x, Oath Strike should have needed only about 40,000-80,000.
+- **Reading:** both powers pull aggro off a minute of companion damage within seconds, so tank threat is many times
+  damage. The tag looks worth somewhere around 1-2x, not clearly the 2.7x the "layered" reading predicts. Too noisy to
+  settle: the companion's head start wasn't identical, and the log repeats lines as it scrolls.
+- **Tested:** 2026-10-17. Clips `2026-10-17 19-30-57` (Shielding Strike) and `2026-10-17 19-47-54` (Oath Strike).
+- **Status:** Open.
 
 ---
 
@@ -406,6 +420,17 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 | `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |
 | `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
 | `2026-10-17_08-45-23_assassin-stealth-meter` | Stealth: 6 s idle, ~2.4 s attacking, 12.5 s refill, usable only when full | yes (every 0.25 s in the Stealth windows) |
+
+---
+
+## Evidence archive (Paladin)
+
+Folder root: `docs/calibration/inbox/class_powers/paladin/tests/`.
+
+| Folder | What it proves | Stills |
+|---|---|---|
+| `2026-10-17_19-30-57_threat-race-shielding-strike` | untagged at-will pulls aggro off a companion in ~3 s | yes (every 1 s) |
+| `2026-10-17_19-47-54_threat-race-oath-strike` | tagged at-will pulls it in ~5 s; tag value unclear | yes (every 1 s) |
 
 ---
 
