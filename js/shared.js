@@ -172,7 +172,8 @@ function renderNav(activePage) {
   footer.className = "site-footer";
   footer.style.cssText = "text-align:center;padding:2rem 1rem;margin-top:3rem;border-top:1px solid var(--border-default);color:var(--text-muted);font-size:0.82rem;";
   footer.innerHTML = '<a href="https://www.youtube.com/@N00binHard" target="_blank" rel="noopener" style="color:#ff0000;text-decoration:none;margin-right:1rem;">&#9654; The N00bin Network</a>' +
-    '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:#f0883e;text-decoration:none;">Join on YouTube</a>' +
+    '<a href="https://www.youtube.com/channel/UCYAaw-fpgBHP0h_fPVN4Udw/join" target="_blank" rel="noopener" style="color:#f0883e;text-decoration:none;margin-right:1rem;">Join on YouTube</a>' +
+    '<a href="https://n00binhard-shop.fourthwall.com/?utm_source=nwcb&utm_medium=footer" target="_blank" rel="noopener" style="color:#e3b341;text-decoration:none;">&#128722; Merch Store</a>' +
     '<div style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-secondary);">Want to collaborate or contribute data? Reach out: <a href="mailto:n00binhard@gmail.com" style="color:var(--accent);text-decoration:none;">n00binhard@gmail.com</a></div>' +
     '<div style="margin-top:0.6rem;"><a href="db/" style="color:var(--accent);text-decoration:none;">Browse the full item database &rarr;</a> <span style="color:var(--text-secondary);">&mdash; every companion, mount, gear piece, artifact &amp; more</span></div>' +
     '<div style="margin-top:0.5rem;">Neverwinter Compendium &copy; N00bin ' + new Date().getFullYear() + '</div>' +
