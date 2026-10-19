@@ -132,6 +132,8 @@ function initMobileFilterDisclosure() {
 }
 
 // ---- Navigation ----
+const MERCH_URL = "https://n00binhard-shop.fourthwall.com/?utm_source=nwcb&utm_medium=navbar";
+
 function renderNav(activePage) {
   const nav = document.querySelector(".navbar");
   if (!nav) return;
@@ -150,12 +152,15 @@ function renderNav(activePage) {
     const selected = p.label === activePage ? " selected" : "";
     html += `<option value="${escapeHtml(p.href)}"${selected}>${escapeHtml(p.label)}</option>`;
   }
+  html += `<option value="${MERCH_URL}">&#128722; Merch Store</option>`;
   html += "</select>";
   html += '<div class="navbar-links" id="navbarLinks">';
   for (const p of pages) {
     const cls = p.label === activePage ? " active" : "";
     html += `<a href="${p.href}" class="${cls}">${p.label}</a>`;
   }
+  // The store lives on Fourthwall, so it opens in a new tab instead of being a site page.
+  html += `<a href="${MERCH_URL}" target="_blank" rel="noopener" style="color:#e3b341;">&#128722; Merch</a>`;
   html += "</div>";
   nav.innerHTML = html;
 
