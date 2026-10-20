@@ -355,6 +355,18 @@ test is confirmed on PS5.
 - **Tested:** 2026-10-20. Clip `2026-10-20 00-54-49`.
 - **Status:** Measured. The simulator now refills Stealth 2.4x while Lurker's Assault is up (it counted zero before).
 
+#### Dagger Threat (class feature): what happens past 20 feet?
+- **Question:** "up to 10% more damage based on how close you are ... maximum benefit within 20'." Does it stop dead at
+  20 ft, or fade?
+- **Plain answer:** it fades. Full bonus up close, about two-thirds of it at 30-40 ft, still about a third at 50 ft.
+  So it's worth keeping even on a ranged fight.
+- **Proof:** Shuriken Toss hits before mitigation: 16,162 up close, 15,698 at about 30-40 ft, 15,375 at about 50 ft,
+  14,829 at 50 ft with Dagger Threat swapped out (+9.0%, +5.9%, +3.7%). The close bonus reads 9% because the 10% adds to
+  other damage bonuses.
+- **Tested:** 2026-10-20. Clip `2026-10-20 01-09-47`.
+- **Status:** Measured. Distances were judged by eye; the simulator now fades it from 20 ft to 0 at about 70 ft
+  (it used to stop dead at 20 ft).
+
 #### Correction to the Preview cooldown table above (2026-10-20)
 The "Stored (classes.json)" column is wrong: `../data/classes.json` stores the Whisperknife bases as Blade Flurry 11.6,
 Lashing Blade 11.6, Path of the Blade 15.5 and Shadow Strike 13.5 (the stored values ARE the base, before Recharge
@@ -509,6 +521,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 | `2026-10-17_09-25-32_duelists-flurry-bleed` | Bleed: 1.5 s ticks, 9 s, full stacks ~4.7x a flurry hit | yes (every 1/6 s in both rounds) |
 | `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |
 | `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
+| `2026-10-20_01-09-47_dagger-threat-distance` | Dagger Threat fades with distance (+9% / +6% / +4%) | yes (every 1 s) |
 | `2026-10-20_00-54-49_lurkers-assault-stealth-regen` | Lurker's Assault refills Stealth about 2.4x as fast | yes (every 0.25 s around both casts) |
 | `2026-10-20_00-42-24_whisperknife-vulnerability-stacking` | the two 5% Exposed debuffs stack to 10% | yes (every 0.5 s) |
 | `2026-10-18_14-56-11_shadowy-opportunity` | Whisperknife: Shadowy Opportunity adds a hit per hit, ticks included | yes (every 0.5 s) |
