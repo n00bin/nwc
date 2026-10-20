@@ -381,6 +381,13 @@ test is confirmed on PS5.
 - **Status:** Partly measured. The simulator keeps its straight-line model (40% at full, 0 at empty) until a cleaner
   read; it already confirms the bonus applies only in Stealth.
 
+#### Hidden Attacks + Tenacious Concealment: do the two +50% Stealth regen bonuses add or multiply?
+- **Plain answer:** they add. Both together make Stealth refill twice as fast (+100%), not 2.25 times.
+- **Proof:** Stealth meter empty to full: 6.4 s and 6.3 s with both, 8.5 s twice with Hidden Attacks only. Base is
+  12.5 s, so +50% gives 8.3 s, +100% gives 6.25 s, +125% would have been 5.6 s.
+- **Tested:** 2026-10-20. Clip `2026-10-20 02-51-14`.
+- **Status:** Verified. The simulator multiplied them; it now adds them (also Master of Shadows' +50% on the Assassin).
+
 #### Correction to the Preview cooldown table above (2026-10-20)
 The "Stored (classes.json)" column is wrong: `../data/classes.json` stores the Whisperknife bases as Blade Flurry 11.6,
 Lashing Blade 11.6, Path of the Blade 15.5 and Shadow Strike 13.5 (the stored values ARE the base, before Recharge
@@ -535,6 +542,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 | `2026-10-17_09-25-32_duelists-flurry-bleed` | Bleed: 1.5 s ticks, 9 s, full stacks ~4.7x a flurry hit | yes (every 1/6 s in both rounds) |
 | `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |
 | `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
+| `2026-10-20_02-51-14_stealth-regen-stacking` | Stealth regen bonuses add (6.3 s both, 8.5 s one) | yes (every 0.5 s) |
 | `2026-10-20_01-32-30_ambushers-haste-meter` | Ambusher's Haste: bigger near a full meter (approximate) | yes (every 0.1 s in the three Stealth runs) |
 | `2026-10-20_01-09-47_dagger-threat-distance` | Dagger Threat fades with distance (+9% / +6% / +4%) | yes (every 1 s) |
 | `2026-10-20_00-54-49_lurkers-assault-stealth-regen` | Lurker's Assault refills Stealth about 2.4x as fast | yes (every 0.25 s around both casts) |
