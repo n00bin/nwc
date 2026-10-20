@@ -388,6 +388,22 @@ test is confirmed on PS5.
 - **Tested:** 2026-10-20. Clip `2026-10-20 02-51-14`.
 - **Status:** Verified. The simulator multiplied them; it now adds them (also Master of Shadows' +50% on the Assassin).
 
+#### Shadow of Demise (feat): what exactly comes back?
+- **Question:** "40% of the damage you deal to this target is dealt again when Shadow of Demise expires." Does it copy
+  your crits, can the echo crit on its own, does the encounter that starts it count, and does a second encounter inside
+  the window make a second echo?
+- **Plain answer:** it copies exactly 40% of the damage you really dealt in those 5 seconds, crits included, as one
+  hit at the end. The echo itself never crits. The Stealth encounter that starts it counts, and so does everything else
+  you land before it ends, so open Stealth with your biggest encounter and dump your next-biggest hit right after.
+- **Proof:** three runs of Shadow Strike from Stealth then Impact Shot a second later, each giving ONE echo:
+  468,384 + 238,177 = 706,561, 40% = 282,624 (echo 282,625); 469,576 + 238,783 = 708,359, 40% = 283,344 (echo
+  283,343); 256,599 + 238,783 = 495,382, 40% = 198,153 (echo 198,153). The echo line has no "Critical Hit" and no
+  bracketed number. The echo lands about 5-6 s after the mark. A Shuriken Toss run gave a 113,503 echo (the log box
+  scrolled too slowly to add up every throw).
+- **Tested:** 2026-10-20. Clip `2026-10-20 03-10-41`.
+- **Status:** Verified (matches the simulator). Still untested: two marks from Stealth inside one window (rare, because
+  a Stealth-ending encounter wipes the meter); the simulator assumes each starts its own echo.
+
 #### Correction to the Preview cooldown table above (2026-10-20)
 The "Stored (classes.json)" column is wrong: `../data/classes.json` stores the Whisperknife bases as Blade Flurry 11.6,
 Lashing Blade 11.6, Path of the Blade 15.5 and Shadow Strike 13.5 (the stored values ARE the base, before Recharge
@@ -542,6 +558,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 | `2026-10-17_09-25-32_duelists-flurry-bleed` | Bleed: 1.5 s ticks, 9 s, full stacks ~4.7x a flurry hit | yes (every 1/6 s in both rounds) |
 | `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |
 | `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
+| `2026-10-20_03-10-41_shadow-of-demise` | Shadow of Demise: one echo = 40% of damage dealt, crits included | log crops at each echo |
 | `2026-10-20_02-51-14_stealth-regen-stacking` | Stealth regen bonuses add (6.3 s both, 8.5 s one) | yes (every 0.5 s) |
 | `2026-10-20_01-32-30_ambushers-haste-meter` | Ambusher's Haste: bigger near a full meter (approximate) | yes (every 0.1 s in the three Stealth runs) |
 | `2026-10-20_01-09-47_dagger-threat-distance` | Dagger Threat fades with distance (+9% / +6% / +4%) | yes (every 1 s) |
