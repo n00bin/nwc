@@ -273,6 +273,34 @@ not 3 (tooltip capture).
 
 ---
 
+## Fighter: Dreadnought (audit 2026-10-20)
+
+Audit: `docs/audit/dreadnought_audit_2026-10-20.md`. Fixed from the audit: Vigorous Strikes reads full stamina by
+default (it scored 0 before).
+
+#### The Vengeance gauge: what fills it and how fast it drains
+- **Method:** Desa (Dreadnought, tier 5 Bloody Reprise, no Always Spiteful / Enduring Vengeance), one Conjured Fighter
+  dummy. The gauge is the arc with crossed swords right of the character; read every frame along the arc (fill top,
+  turned into % of the arc's length). Power per stretch from the clip and the combat log.
+- **Result:**
+  - **Drain:** 1.2 per second all the time: -1.18/s idle, -1.25/s idle, -1.20/s while hitting with Brazen Slash, about
+    the same while blocking. Straight line from 100 to empty, no pause at the 50 line, nothing special out of combat.
+  - **Guarded Strike:** about +5 per hit (13 steps of ~4.3 shown, one every 0.62 s, plus the drain in between).
+  - **Shield Bash:** about +6 per hit (11 steps of ~5.5 shown, one every 0.71 s; 38 -> 100 in 8 s).
+  - **Brazen Slash:** adds nothing (the gauge drains at the idle rate through 25 s of Brazen Slash).
+  - **Blocking (Seethe held):** about +12 per blocked hit (8 steps of 9-13, one per dummy swing every ~2.07 s; flat
+    between swings, 18 -> 98 in 15 s). Holding Seethe adds nothing by itself; the gauge stayed full for the last 60 s
+    while hits kept landing on the shield.
+  - Gauge maximum still not read directly (the scale is consistent with 100: Shield Bash's 6 a hit takes ~16 hits).
+- **Data change:** Reprisal now adds 5 (Guarded Strike) / 6 (Shield Bash) Vengeance per hit; the gauge drains 1.2 per
+  second; a blocked hit is stored as 12. The fight simulator has no blocked-hit event yet, so blocking still adds 0 in
+  the score (open gap).
+- **Tested:** 2026-10-20. Clip `2026-10-20 06-53-05`.
+- **Status:** Verified (drain, Guarded Strike, Shield Bash, Brazen Slash, per blocked hit). Open: gauge maximum,
+  Shield Bash on several targets, how a fight model should place blocking.
+
+---
+
 ## Rogue: Whisperknife (audit 2026-10-18)
 
 Audit: `docs/audit/whisperknife_audit_2026-10-18.md`. Stealth rules are shared with the Assassin (measured there).
@@ -602,6 +630,16 @@ Folder root: `docs/calibration/inbox/class_powers/paladin/tests/`.
 |---|---|---|
 | `2026-10-17_19-30-57_threat-race-shielding-strike` | untagged at-will pulls aggro off a companion in ~3 s | yes (every 1 s) |
 | `2026-10-17_19-47-54_threat-race-oath-strike` | tagged at-will pulls it in ~5 s; tag value unclear | yes (every 1 s) |
+
+---
+
+## Evidence archive (Fighter)
+
+Folder root: `docs/calibration/inbox/class_powers/fighter/tests/`.
+
+| Folder | What it proves | Stills |
+|---|---|---|
+| `2026-10-20_06-53-05_vengeance-gauge` | Vengeance: drain 1.2/s, Guarded Strike ~5, Shield Bash ~6, blocked hit ~12, Brazen Slash 0 | yes (arc tiles every 8 s; readings every frame in the fill windows) |
 
 ---
 
