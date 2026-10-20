@@ -404,6 +404,30 @@ test is confirmed on PS5.
 - **Status:** Verified (matches the simulator). Still untested: two marks from Stealth inside one window (rare, because
   a Stealth-ending encounter wipes the meter); the simulator assumes each starts its own echo.
 
+#### Return to Shadows (feat): Stealth back per encounter
+- **Question:** "for each target hit, refill 7.5% of your Stealth; 10% while behind your target." Is it 7.5% / 10%, and is
+  there a limit on how many targets count?
+- **Plain answer:** it's exactly as written, and every target counts. One target gives 7.5% from the front and 10% from
+  behind, per encounter. One Blade Flurry into a pack of five dummies refilled about 40% of the meter in one go. Great in
+  packs; on a single boss, One with the Shadows is still the steadier refill.
+- **Proof:** Stealth meter read every 0.1 s. Impact Shot added +7-8% from the front three times, and +9-11% from behind
+  three times (the behind runs also show the from-behind damage bonus in the log). Shadow Strike added +27% from the
+  front and +30% from behind (its own 20% plus this feat). Blade Flurry hit all 5 dummies (five damage numbers) and the
+  meter jumped from ~4% to ~42%.
+- **Tested:** 2026-10-20. Clip `2026-10-20 04-31-30`.
+- **Status:** Measured (matches the simulator). Still open: whether there is a cap above 5 targets.
+
+#### Razor Action (class feature): the daggers on a daily
+- **Question:** "When you activate a daily power you fling daggers up to 30' doing 300 magnitude damage and increasing
+  your speed by 2% per target hit to a maximum of 10%." Is the damage 300, and how long does the speed last?
+- **Plain answer:** the damage is right: about 300 magnitude, one hit per daily. The speed part shows no buff icon, so its
+  length can't be read; the simulator doesn't count speed anyway.
+- **Proof:** Hateful Knives on one dummy: "Your Razor Action deals 33,980 (77,534)". Before mitigation that is 258 per
+  magnitude point against 261.5 for Impact Shot (156,917 / 600) and Shadow Strike (202,685 / 775) in the same clip, so
+  ~296 magnitude. No new icon in the buff bar for 14 s after the cast.
+- **Tested:** 2026-10-20. Clip `2026-10-20 04-31-30`.
+- **Status:** Damage verified. Open: how many targets the daggers hit (no daily was cast into the pack).
+
 #### Correction to the Preview cooldown table above (2026-10-20)
 The "Stored (classes.json)" column is wrong: `../data/classes.json` stores the Whisperknife bases as Blade Flurry 11.6,
 Lashing Blade 11.6, Path of the Blade 15.5 and Shadow Strike 13.5 (the stored values ARE the base, before Recharge
@@ -558,6 +582,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 | `2026-10-17_09-25-32_duelists-flurry-bleed` | Bleed: 1.5 s ticks, 9 s, full stacks ~4.7x a flurry hit | yes (every 1/6 s in both rounds) |
 | `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |
 | `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
+| `2026-10-20_04-31-30_return-to-shadows-razor-action` | Return to Shadows 7.5% / 10% behind, 5 targets count; Razor Action ~300 magnitude | meter readings every 0.1 s, crops |
 | `2026-10-20_03-10-41_shadow-of-demise` | Shadow of Demise: one echo = 40% of damage dealt, crits included | log crops at each echo |
 | `2026-10-20_02-51-14_stealth-regen-stacking` | Stealth regen bonuses add (6.3 s both, 8.5 s one) | yes (every 0.5 s) |
 | `2026-10-20_01-32-30_ambushers-haste-meter` | Ambusher's Haste: bigger near a full meter (approximate) | yes (every 0.1 s in the three Stealth runs) |
