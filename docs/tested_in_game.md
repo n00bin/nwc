@@ -273,10 +273,56 @@ not 3 (tooltip capture).
 
 ---
 
-## Rogue: Whisperknife (audit 2026-10-18, tests not started)
+## Rogue: Whisperknife (audit 2026-10-18)
 
 Audit: `docs/audit/whisperknife_audit_2026-10-18.md`. Stealth rules are shared with the Assassin (measured there).
 Fixed from the audit: the encounter that ends Stealth now gets its Stealth bonuses before the meter empties.
+
+**Preview-session tests (2026-10-19)** below are labelled **Preview**: run against Mardred Spiritforged (Rogue
+Whisperknife, loadout "Original", IL 22,202, Pride of Neverwinter set with Neck and Waist empty, Mistish out) on
+the PC **Preview** server, with the Neverwinter client driven through the Claude desktop app's computer-use tools
+(per the CLAUDE.md Preview exception, 2026-10-19). Nothing in `../data/*` moves off these numbers until the same
+test is confirmed on PS5.
+
+#### Encounter cooldowns: Blade Flurry, Lashing Blade, Path of the Blade (Preview)
+- **Question:** the audit flagged three Whisperknife encounter cooldowns as off-pattern against the other seven.
+  With Recharge Speed accounted for, what does the tooltip actually read?
+- **Tooltip says:** each encounter prints a "Cooldown" value, which the Assassin test proved includes ability-score
+  Recharge Speed but excludes item Recharge Speed.
+- **Plain answer:** the three outliers really are longer than our stored data. On this toon the tooltips read
+  11.6 s / 11.6 s / 15.4 s for Blade Flurry, Lashing Blade and Path of the Blade — above the stored 11 / 11 / 14.7.
+  All seven other encounters are also slightly longer than stored, but by a smaller amount. Base cooldowns to use:
+  Blade Flurry 11.6 s, Lashing Blade 11.6 s, Path of the Blade 15.4 s.
+- **Proof:** character sheet, Boosts section: Recharge Speed +3.3% (very low — this loadout has no Neck or Waist, so
+  almost all of it is the shirt/trousers +3%; ability-score share is roughly +0.3%). The Powers tab tooltip for each
+  of the 10 Whisperknife encounters at that +3.3% total:
+
+  | Encounter | Tooltip here | Audit's screenshot | Stored (classes.json) |
+  |---|---|---|---|
+  | Vengeance's Pursuit | 9.6 s | 9.7 s | 9.4 s |
+  | Impact Shot | 9.6 s | 9.7 s | 9.4 s |
+  | **Blade Flurry** | **11.6 s** | 11.6 s | **11.0 s** |
+  | **Lashing Blade** | **11.6 s** | 11.6 s | **11.0 s** |
+  | Blitz | 13.5 s | 13.5 s | 13.2 s |
+  | Shadow Strike | 13.5 s | 13.5 s | 13.2 s |
+  | Shadowy Disappearance | 13.5 s | 13.5 s | 13.2 s |
+  | Smoke Bomb | 14.5 s | 14.5 s | 14.1 s |
+  | **Path of the Blade** | **15.4 s** | 15.5 s | **14.7 s** |
+  | Bait and Switch | 23.2 s | 23.3 s | 22.6 s |
+
+  The ratio tooltip ÷ stored is ~1.05 for Blade Flurry / Lashing Blade / Path of the Blade and ~1.02-1.03 for the
+  other seven. That matches the audit's finding exactly: all stored cooldowns are low, but the three outliers are
+  low by about twice as much as the rest.
+- **Tested:** 2026-10-19 (Preview). Driven through computer-use; no clip taken (tooltip read only). Character sheet
+  Boosts section screenshotted; Powers tab screenshotted for each of the 10 encounters.
+- **Status:** Measured (Preview). Confirm on PS5 before changing stored base cooldowns.
+
+#### Also noticed in the Powers tab (Preview)
+- **Shadow Strike tooltip** now reads "**Apply Effect: Refills 20% Stealth on hit.** Added Effect: Increases the
+  target's damage taken from projectile and physical attacks by 5%. Duration: 10s." The 20% Stealth refill is a line
+  the Whisperknife audit did not flag; worth checking whether classes.json carries it.
+- **Boosts section:** Action Point Gain +14%, Recharge Speed +3.3%, Movement Speed +5%, Stamina Regeneration +13%,
+  Base Damage Boost +3%.
 
 #### Shadowy Opportunity (feat)
 - **Question:** "Each of your hits deals an additional hit for 130 magnitude damage" for 5 s after leaving Stealth: does
@@ -288,6 +334,23 @@ Fixed from the audit: the encounter that ends Stealth now gets its Stealth bonus
   mitigation against about 50,000 for Disheartening Strike.
 - **Tested:** 2026-10-18. Clip `2026-10-18 14-56-11`.
 - **Status:** Verified (matches the simulator).
+
+#### Disheartening Strike + Shadow Strike: do the two 5% debuffs stack?
+- **Question:** both make the target take 5% more projectile and physical damage for 10 s, under the same name
+  ("Exposed"). Two of them: 10%, or still 5%?
+- **Plain answer:** they stack. With both up, your projectile and physical hits do 10% more; with either one, 5%.
+  Keep both rolling.
+- **Proof:** Shuriken Toss crits, damage after mitigation divided by the bracketed number: 0.6667 with no debuff,
+  0.7000 with Disheartening Strike (+5%), 0.7333 with both (+10%), back to 0.7000 once Disheartening Strike's ran out
+  (Shadow Strike's only). The bracketed number never moved: the bonus is applied on the target's side.
+- **Tested:** 2026-10-20. Clip `2026-10-20 00-42-24`.
+- **Status:** Verified (matches the simulator, which already stacked them; the "assumed not to stack" note is fixed).
+
+#### Correction to the Preview cooldown table above (2026-10-20)
+The "Stored (classes.json)" column is wrong: `../data/classes.json` stores the Whisperknife bases as Blade Flurry 11.6,
+Lashing Blade 11.6, Path of the Blade 15.5 and Shadow Strike 13.5 (the stored values ARE the base, before Recharge
+Speed). The Preview tooltips at about +0.3% ability-score Recharge Speed (11.6 / 11.6 / 15.4 / 13.5) therefore match the
+stored data; there is no outlier to fix. Shadow Strike's 20% Stealth refill is in the data too (a Stealth Meter +20 record).
 
 ---
 
@@ -437,6 +500,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 | `2026-10-17_09-25-32_duelists-flurry-bleed` | Bleed: 1.5 s ticks, 9 s, full stacks ~4.7x a flurry hit | yes (every 1/6 s in both rounds) |
 | `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |
 | `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
+| `2026-10-20_00-42-24_whisperknife-vulnerability-stacking` | the two 5% Exposed debuffs stack to 10% | yes (every 0.5 s) |
 | `2026-10-18_14-56-11_shadowy-opportunity` | Whisperknife: Shadowy Opportunity adds a hit per hit, ticks included | yes (every 0.5 s) |
 | `2026-10-17_08-45-23_assassin-stealth-meter` | Stealth: 6 s idle, ~2.4 s attacking, 12.5 s refill, usable only when full | yes (every 0.25 s in the Stealth windows) |
 
