@@ -296,8 +296,26 @@ default (it scored 0 before).
   second; a blocked hit is stored as 12. The fight simulator has no blocked-hit event yet, so blocking still adds 0 in
   the score (open gap).
 - **Tested:** 2026-10-20. Clip `2026-10-20 06-53-05`.
-- **Status:** Verified (drain, Guarded Strike, Shield Bash, Brazen Slash, per blocked hit). Open: gauge maximum,
-  Shield Bash on several targets, how a fight model should place blocking.
+- **Status:** Verified (drain, Guarded Strike, Shield Bash, Brazen Slash, per blocked hit). Gauge maximum and Shield
+  Bash on several targets: verified in the next entry. Open: how a fight model should place blocking (DN-1 locked, not
+  built).
+
+#### The Vengeance gauge maximum (Always Spiteful) and Shield Bash on several targets
+- **Method:** Desa with Always Spiteful slotted, Guarded Strike + Shield Bash. (1) Empty gauge, out of combat, one
+  Guarded Strike on a single Conjured Fighter. (2) Later, gauge drained to empty, a grid of Conjured Fighters, Guarded
+  Strike to open and then Shield Bash into the group. Same arc reader, checked by eye on zoomed frames with a tick
+  scale; target counts from the combat log.
+- **Result:**
+  - **Gauge maximum is 100.** Always Spiteful ("set to 55 at the start of combat") puts the gauge at 54-55% of the arc,
+    both times (8.5 s and 70.5 s into the clip). The opening hit's own +5 does not land on top of it (55, not 60).
+  - **Shield Bash fills per target hit.** One Shield Bash into the group took the gauge from ~53% to ~78% (+25, about
+    6 x 4 dummies; the log shows the burst of Shield Bash lines at that moment). The next bash took it to the top.
+  - Drain re-checked between fights: ~1.1/s over 16 s, inside the reader's error of the 1.2/s measured before.
+- **Data change:** none needed. The fight simulator already sets the gauge to 55 for Always Spiteful and already counts
+  Shield Bash's Vengeance once per enemy hit (Shield Bash is an area power). The "maximum inferred" and "several
+  targets" flags are cleared.
+- **Tested:** 2026-10-20. Clip `2026-10-20 18-42-55`.
+- **Status:** Verified.
 
 ---
 
@@ -640,6 +658,7 @@ Folder root: `docs/calibration/inbox/class_powers/fighter/tests/`.
 | Folder | What it proves | Stills |
 |---|---|---|
 | `2026-10-20_06-53-05_vengeance-gauge` | Vengeance: drain 1.2/s, Guarded Strike ~5, Shield Bash ~6, blocked hit ~12, Brazen Slash 0 | yes (arc tiles every 8 s; readings every frame in the fill windows) |
+| `2026-10-20_18-42-55_vengeance-max-multitarget` | Vengeance maximum 100 (Always Spiteful = 55%), Shield Bash fills per target (+25 on 4 dummies) | yes (zoomed arc strips with tick scale; combat-log OCR around the fill) |
 
 ---
 
