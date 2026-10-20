@@ -367,6 +367,20 @@ test is confirmed on PS5.
 - **Status:** Measured. Distances were judged by eye; the simulator now fades it from 20 ft to 0 at about 70 ft
   (it used to stop dead at 20 ft).
 
+#### Ambusher's Haste (feat): bonus against how full the Stealth meter is
+- **Question:** "While Stealthed, your powers deal up to 40% more damage based on how full your Stealth meter is." How
+  does it scale?
+- **Plain answer:** it works, and it rewards a FULL meter most. Shuriken Toss non-crits in Stealth did about 38,300-38,600
+  before mitigation with the meter around 90%, about 35,500 around 60% and about 34,700-34,800 around 40%. Spend your
+  first Stealth hits on your best powers, while the meter is still near full.
+- **Proof:** three Stealth runs, each hit matched to the meter level a moment before it landed (crits: 69,916 near full,
+  65,506 / 64,826 around 60-80%, 64,353 around 40%). The drop from 90% to 60% is bigger than from 60% to 40%, so the
+  bonus is not a clean straight line; the meter readings are approximate (each press drains ~15% while the hit is in the
+  air).
+- **Tested:** 2026-10-20. Clip `2026-10-20 01-32-30`.
+- **Status:** Partly measured. The simulator keeps its straight-line model (40% at full, 0 at empty) until a cleaner
+  read; it already confirms the bonus applies only in Stealth.
+
 #### Correction to the Preview cooldown table above (2026-10-20)
 The "Stored (classes.json)" column is wrong: `../data/classes.json` stores the Whisperknife bases as Blade Flurry 11.6,
 Lashing Blade 11.6, Path of the Blade 15.5 and Shadow Strike 13.5 (the stored values ARE the base, before Recharge
@@ -521,6 +535,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 | `2026-10-17_09-25-32_duelists-flurry-bleed` | Bleed: 1.5 s ticks, 9 s, full stacks ~4.7x a flurry hit | yes (every 1/6 s in both rounds) |
 | `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |
 | `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
+| `2026-10-20_01-32-30_ambushers-haste-meter` | Ambusher's Haste: bigger near a full meter (approximate) | yes (every 0.1 s in the three Stealth runs) |
 | `2026-10-20_01-09-47_dagger-threat-distance` | Dagger Threat fades with distance (+9% / +6% / +4%) | yes (every 1 s) |
 | `2026-10-20_00-54-49_lurkers-assault-stealth-regen` | Lurker's Assault refills Stealth about 2.4x as fast | yes (every 0.25 s around both casts) |
 | `2026-10-20_00-42-24_whisperknife-vulnerability-stacking` | the two 5% Exposed debuffs stack to 10% | yes (every 0.5 s) |
