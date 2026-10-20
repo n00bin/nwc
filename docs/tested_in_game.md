@@ -346,6 +346,15 @@ test is confirmed on PS5.
 - **Tested:** 2026-10-20. Clip `2026-10-20 00-42-24`.
 - **Status:** Verified (matches the simulator, which already stacked them; the "assumed not to stack" note is fixed).
 
+#### Lurker's Assault (daily): how fast does Stealth come back?
+- **Question:** "Your Stealth meter regenerates very quickly in this state." How quickly?
+- **Plain answer:** about 2.4 times as fast as normal. An empty meter is full again in under 5 seconds with Lurker's
+  Assault up, against 11-13 seconds without it. Cast it right after you spend your Stealth.
+- **Proof:** empty to full in 4.8 s and 4.4 s straight after casting Lurker's Assault; 11.2 s, 12.6 s and 12.7 s in the
+  same clip without it.
+- **Tested:** 2026-10-20. Clip `2026-10-20 00-54-49`.
+- **Status:** Measured. The simulator now refills Stealth 2.4x while Lurker's Assault is up (it counted zero before).
+
 #### Correction to the Preview cooldown table above (2026-10-20)
 The "Stored (classes.json)" column is wrong: `../data/classes.json` stores the Whisperknife bases as Blade Flurry 11.6,
 Lashing Blade 11.6, Path of the Blade 15.5 and Shadow Strike 13.5 (the stored values ARE the base, before Recharge
@@ -500,6 +509,7 @@ Folder root: `docs/calibration/inbox/class_powers/rogue/tests/`.
 | `2026-10-17_09-25-32_duelists-flurry-bleed` | Bleed: 1.5 s ticks, 9 s, full stacks ~4.7x a flurry hit | yes (every 1/6 s in both rounds) |
 | `2026-10-17_09-12-53_oppressive-darkness` | Oppressive Darkness: one extra hit per Duelist's Flurry hit | yes (every 0.5 s) |
 | `2026-10-17_08-57-30_assassin-stealth-reentry` | ending Stealth with an encounter wipes the leftover meter | yes (every 0.5 s) |
+| `2026-10-20_00-54-49_lurkers-assault-stealth-regen` | Lurker's Assault refills Stealth about 2.4x as fast | yes (every 0.25 s around both casts) |
 | `2026-10-20_00-42-24_whisperknife-vulnerability-stacking` | the two 5% Exposed debuffs stack to 10% | yes (every 0.5 s) |
 | `2026-10-18_14-56-11_shadowy-opportunity` | Whisperknife: Shadowy Opportunity adds a hit per hit, ticks included | yes (every 0.5 s) |
 | `2026-10-17_08-45-23_assassin-stealth-meter` | Stealth: 6 s idle, ~2.4 s attacking, 12.5 s refill, usable only when full | yes (every 0.25 s in the Stealth windows) |
