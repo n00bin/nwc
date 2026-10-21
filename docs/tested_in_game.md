@@ -328,7 +328,8 @@ default (it scored 0 before).
   - **Each blocked hit costs stamina in proportion to the damage absorbed.** In DN test 1 the dummy first hit for
     1-2.5k: about 1% each (37 s of blocking moved the bar ~10%). Then it hit for 33-48k: 17-30% each, and 4-5 hits
     emptied the bar (three times across the two clips). A full bar held roughly 150-190k of absorbed damage on Desa,
-    which fits the tooltip's "up to 30% of maximum hit points" if her Max HP is ~550-600k (not confirmed).
+    against the tooltip's "up to 30% of maximum hit points": Desa's Max HP is 661,674, so 30% is ~198k, consistent once
+    the partly-counted breaking hit is allowed for. The dummy's big hits were 5-7% of her Max HP.
   - **At empty the block drops.** The bar starts refilling ~2-4 s later and is full ~10-13 s after that (about
     7.5-9% per second).
   - **Guarded Strike and Shield Bash are "At-Will (Block)"** (tooltip shown in the clip): usable only while the block
@@ -336,8 +337,8 @@ default (it scored 0 before).
 - **Data change:** the measurements are stored on Forge Ahead. The DN test 1 "holding Seethe" note is corrected to say
   the block was Forge Ahead; Seethe itself is still untested.
 - **Tested:** 2026-10-20. Clip `2026-10-20 19-23-45` (+ re-read of `2026-10-20 06-53-05`).
-- **Status:** Verified (free hold, per-hit cost scales with damage, block drops at empty, refill time). Open: exact
-  bar size vs Max HP; Seethe untested; the simulator ignores the block-only at-wills (next gap).
+- **Status:** Verified (free hold, per-hit cost scales with damage, block drops at empty, refill time). Open: Seethe
+  untested; the simulator ignores the block-only at-wills (next gap).
 
 ---
 
