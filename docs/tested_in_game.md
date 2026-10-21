@@ -360,7 +360,21 @@ default (it scored 0 before).
   scored 0 with the measurement, review flags on Bloody Reprise and Roiling Hatred.
 - **Tested:** 2026-10-20. Clip `2026-10-20 21-04-25`.
 - **Status:** Verified (Bloody Reprise, Roiling Hatred, Shield Talent refill). Measured, rough (Seethe stamina drain;
-  the dummy covered the stamina arc). Open: Seethe is not in the fight simulator yet.
+  the dummy covered the stamina arc). Open: Seethe is not in the fight simulator yet (built 2026-10-21, next entry).
+
+#### In the fight simulator: blocking, stamina and Seethe (built 2026-10-21, DN-2/4/5/6/7)
+- **What the simulator now does:** using Guarded Strike or Shield Bash keeps the shield up; any other power lowers it.
+  The enemy swings every 2 s for 6.3% of your Max HP (the dummy on Desa). A swing on the shield gives +12 Vengeance and
+  costs that hit against a bar of 30% of Max HP (~21% of the bar). At empty the guard breaks: no Guarded Strike or Shield
+  Bash until the bar is full again. The bar refills only while the shield is down, full in ~12 s at +16% Stamina
+  Regeneration, scaled by your own Stamina Regeneration. Seethe is a move the simulator tries (hold when the gauge is
+  below 50, 35 or 20): no attacks, the gauge fills 24 per second, stamina drains 4% per second, and releasing it after a
+  blocked swing fires Revengeance (magnitude 500, area, once per 5 s). It is kept only when it raises damage.
+- **Effect (test kits, 180 s, one dummy):** Brazen Slash kit +1.1% (Seethe kept, held when the gauge is below 35;
+  Vengeful up 85% of the fight instead of 70%). Guarded Strike + Shield Bash kit -19%: blocking every swing breaks the
+  guard 6 times and leaves 74 s with no at-will. Every other class and paragon scored the same as before.
+- **Status:** Built from measured numbers; the refill speed is provisional until a second Stamina Regeneration clip,
+  and real enemies hit harder or softer than the dummy.
 
 ---
 

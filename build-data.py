@@ -71,7 +71,7 @@ FX_KINDS = {
     "echo":     {"pct", "seconds", "deliver", "targets", "name"},
 }
 FX_EVENTS = {"cast", "hit", "crit", "dotTick", "kill", "combatStart", "periodic", "stackSpent", "stackReached",
-             "stackApplied", "stackRemoved", "takeHit", "block", "deflect", "dodge", "buffApplied", "buffRefreshed", "buffEnded",
+             "stackApplied", "stackRemoved", "takeHit", "block", "guardRelease", "deflect", "dodge", "buffApplied", "buffRefreshed", "buffEnded",
              "caHit", "noncrit", "bigHit", "healed"}   # healed (OPT-READ-1 batch 4): artifact passives that fire when you are healed; no healing model yet
 FX_WHEN = {"on", "from", "chance", "icdSeconds", "every", "resource", "amount", "name", "anchor", "afterCast"}   # afterCast (WK audit 2026-10-18): run after the cast's own hits land   # anchor:"call" (OPT-READ-1): periodic cadence starts at the first call window
 FX_POOLS = {"actionPoints", "stamina", "divinity", "rage", "performance", "soulweave", "vengeance", "stealthMeter"}

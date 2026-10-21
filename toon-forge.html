@@ -3995,7 +3995,7 @@
        (bit n00b 2026-07-04: an edge kept an old engine for 30+ minutes). -->
   <script src="toon-forge-stats.js?v=20260704a"></script>
   <script src="toon-forge-engine.js?v=20260704a"></script>
-  <script src="toon-forge-rotation.js?v=20260911a"></script>
+  <script src="toon-forge-rotation.js?v=20261021a"></script>
   <script src="toon-forge-rotation-profiles.js?v=20260704a"></script>
   <!-- Supabase + data-corrections plumbing — lets users submit ✎ fixes -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -14117,6 +14117,9 @@
         kit: pt2SimKit(pick, mechs),
         paragon: state.paragon, stackRules: ((typeof findClass === "function" && findClass(state.class)) || {}).fxStacks || {},
         resourcePools: pt2ResourcePools(er),   // DIV-1/2: the class's simulated pools (Arbiter divinity), sized to this build
+        // DN-4..7: the guard (Dreadnought Forge Ahead + Seethe), from mechanics whose block carries sim numbers
+        guard: pt2GuardInput(mechs),
+        staminaRegenPct: (er && er.stats && er.stats["Stamina Regeneration"] && er.stats["Stamina Regeneration"].finalPct) || 0,
         fight: Object.assign({}, PT2_FIGHT_DEFAULTS, state.pt2Fight || {}, {
           targetRangeFt: (typeof state.targetRangeFt === "number") ? state.targetRangeFt : 10,
           flankUptime: ((typeof state.flankUptime === "number") ? state.flankUptime : 1) * 100 }),
@@ -14170,6 +14173,11 @@
         return { pool: pl.pool, max: ((+pl.baseMax || 0) + bonus) * (1 + maxPct / 100),
           regenPerSec: (+pl.regenPerSec || 0) * (1 + regenPct / 100), channel: ch, cashIn: cash };
       });
+    }
+    function pt2GuardInput(mechs) {
+      const sims = (mechs || []).filter(m => m && m.block && m.block.sim);
+      const blk = sims.find(m => !m.block.sim.hold), hold = sims.find(m => m.block.sim.hold);
+      return blk ? { block: Object.assign({ name: blk.name }, blk.block.sim), hold: hold ? Object.assign({ name: hold.name }, hold.block.sim) : null } : null;
     }
     function pt2SimKit(pick, mechs) {
       const cDef = (typeof findClass === "function") ? findClass(state.class) : null, pDef = (typeof findParagon === "function") ? findParagon(state.class, state.paragon) : null;

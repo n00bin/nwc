@@ -464,6 +464,19 @@
     // power's "cost"; cash in (Angel of Death) "asNeeded" (in place of a channel) or "asap" (as soon as it is ready)
     const PC = input.poolChoices || {};
     const SAVE = input.saveBuff && input.saveBuff.buff && input.saveBuff.power ? input.saveBuff : null;
+    // ---- guard (DN-4..7, n00b 2026-10-20): input.guard {block, hold}, built from class data (Dreadnought) ----
+    // block: casting a power with block:true keeps the shield up; an enemy swing every swingSeconds is blocked while it
+    // is up (fires "block") and costs hitPctMaxHp / barPctMaxHp of the stamina bar. Empty = broken: no block powers
+    // until the bar is full again. The bar refills only while the shield is down, full in secondsToFull scaled by
+    // Stamina Regeneration (measuredAtRegenPct = the regen it was measured at). hold (Seethe): a play choice the search
+    // tries (poolChoices.holdBelow): when the gauge resource is below it, hold (no attacks) - the gauge fills at
+    // gaugePerSecond, stamina drains at staminaPctPerSecond, swings are blocked against the hold's own bar; released at
+    // holdUntil, firing "guardRelease" when a swing was blocked during the hold. No names in code.
+    const GB = input.guard && input.guard.block ? input.guard.block : null, GH = GB && input.guard.hold ? input.guard.hold : null;
+    const G = { stamina: 100, up: false, broken: false, holding: false, holdBlocked: false, nextSwing: GB ? num(GB.swingSeconds, 2) : 0,
+      blocked: 0, breaks: 0, brokenSec: 0, holds: 0, holdSec: 0, releases: 0 };
+    const gRefillPerSec = GB ? 100 / Math.max(1, num(GB.secondsToFull, 12) * (1 + num(GB.measuredAtRegenPct, 0) / 100) / (1 + num(input.staminaRegenPct, 0) / 100)) : 0;
+    function guardLocked(p) { return !!(GB && p && p.block && G.broken); }
     let channelUntil = -1, channelPool = null;
     const poolKeyOf = function (key) {   // divinityLevel -> divinity (0-100), channelingDivinity -> divinity (toggle), pool:divinityPct
       if (!key) return null;
@@ -1142,6 +1155,7 @@
       const castSec = num(p.channelSeconds, 0) > 0 ? num(p.channelSeconds) : num(p.castSeconds, 0);
       busyUntil = t + Math.max(0.1, castSec);
       const castEnd = t + castSec;
+      if (GB && kind !== "mechanic") G.up = !!(p.block && !G.broken);   // guard: a block power raises the shield, anything else lowers it
       castCount[p.name] = (castCount[p.name] || 0) + 1;
       if (RB && firstCycleEnd === null && powers.encounter.every(function (e) { return castCount[e.name] > 0; })) firstCycleEnd = t;
       const s = kind === "spender" ? null : pst(kind + ":" + ow.name);
@@ -1241,6 +1255,7 @@
       if (step.kind === "mount") return !CW && t >= mountReady;
       const ow = owOf(step.kind, step.name); if (!ow) return false;
       if (unpaidPool(ow)) return false;   // DIV-1: its pool cannot pay yet
+      if (guardLocked(ow.obj)) return false;   // DN-4: a block power waits while the guard is broken
       if (step.kind === "atWill") return true;
       if (step.kind === "encounter") {
         if (!castUseful(ow)) return false;
@@ -1251,7 +1266,7 @@
       return false;
     }
     function waitFor(step) {
-      if (step.kind === "atWill") return 0;
+      if (step.kind === "atWill") { const aw = owOf("atWill", step.name); return aw && guardLocked(aw.obj) ? (100 - G.stamina) / Math.max(1e-6, gRefillPerSec) : 0; }
       if (step.kind === "scorch") return spenderReady() ? 0 : Infinity;
       if (step.kind === "mechanic") return mechReady(mechOw(step.name)) ? 0 : Infinity;
       if (step.kind === "song") return !owOf("song", step.name) ? Infinity : (!buffUp(step.name) ? 0 : (permanentBuff[step.name] ? Infinity : Math.max(0, buffs[step.name] - t)));
@@ -1350,7 +1365,7 @@
     function rbReady(e) {
       if (e.kind === "mechanic") return mechReady(e.ow);
       if (e.kind === "spender") return stackCount(spenderOw.spender.resource) >= spendAt && spenderReady();
-      if (e.kind === "atWill") return true;
+      if (e.kind === "atWill") return !guardLocked(e.ow.obj);
       return isReady({ kind: e.kind, name: e.name });
     }
     const rbWasHeld = {};
@@ -1404,7 +1419,11 @@
         if (e.refresh && rbRemaining(e) > num(e.ow.obj.castSeconds, 0) + 0.5) continue;
         if (channelFor({ kind: e.kind, name: e.name })) return true;
       }
-      if (rbFiller) return castOwner(rbFiller.ow, "atWill");
+      if (rbFiller && !guardLocked(rbFiller.ow.obj)) return castOwner(rbFiller.ow, "atWill");
+      if (rbFiller) {   // DN-4: guard broken - the best at-will that does not need the shield, else stand and wait
+        const alt = owners.filter(function (ow) { return ow.type === "atWill" && !guardLocked(ow.obj); }).sort(function (a, b) { return rbOwnDamage(b) / (num(b.obj.castSeconds, 0) || 1) - rbOwnDamage(a) / (num(a.obj.castSeconds, 0) || 1); })[0];
+        if (alt) return castOwner(alt, "atWill");
+      }
       busyUntil = t + dt; return false;
     }
     function callTrigger(on) {
@@ -1496,7 +1515,13 @@
       if (t >= busyUntil) {
         let acted = false;
         const cur = curList();
-        if (CW && nextWindowAt != null && t >= nextWindowAt) { openWindow(); acted = true; }
+        if (GH && G.holding) { busyUntil = t + dt; acted = true; }   // DN-7: holding the guard, no attacks
+        else if (GH && PC.holdBelow && !G.broken && G.stamina >= num(GH.minStaminaPct, 50) && stackCount(GH.resource) < num(PC.holdBelow)) {
+          G.holding = true; G.holdBlocked = false; G.up = false; G.holds++; busyUntil = t + dt; acted = true;
+          pushTimeline(GH.name || "Hold", "other", 0, "gauge " + Math.round(stackCount(GH.resource)) + ", stamina " + Math.round(G.stamina) + "%");
+        }
+        if (acted) { /* holding */ }
+        else if (CW && nextWindowAt != null && t >= nextWindowAt) { openWindow(); acted = true; }
         else if (CW && (pendArt || pendMount)) {
           if (!inWindow()) { pendArt = false; pendMount = false; }   // still on cooldown when the window closed: skipped this call
           else { const b = callPending(); if (b > 0) { busyUntil = t + b; acted = true; } }
@@ -1520,7 +1545,7 @@
             else advance();
           }
         }
-        if (!acted && fillerStep) { const ow = owOf("atWill", fillerStep.name); if (ow) castOwner(ow, "atWill"); else busyUntil = t + dt; }
+        if (!acted && fillerStep) { const ow = owOf("atWill", fillerStep.name); if (ow && !guardLocked(ow.obj)) castOwner(ow, "atWill"); else busyUntil = t + dt; }
         if (!acted && !fillerStep) busyUntil = t + dt;
       }
       ap += AP_PER_SEC * dt;
@@ -1530,6 +1555,7 @@
         if (P.boosts.length) { P.boosts = P.boosts.filter(function (b) { return b.until > t; }); if (!(t < channelUntil && channelPool === pn)) P.boosts.forEach(function (b) { rate += b.perSec; }); }   // timed regen boosts (not while channelling: untested)
         const d = Math.min(P.max - P.cur, rate * dt); if (d > 0) { P.cur += d; P.gained += d; }
       });
+      if (GB) guardTick();
       // 2.4-E: a running encounter cooldown loses dt x bonus of base time while a Recharge Speed buff is up
       if (input.liveRecharge) {
         const rb = rechargeBonusNow();
@@ -1542,6 +1568,36 @@
       const r = withRecMods(L.ow, L.rec);
       if (r.kind === "hit") { land(asProc(L.ow), r.name || L.ow.name, num(r.magnitude, 0) * (r.gate && !(r.gate.shape === "toggle" && !Array.isArray(r.gate)) ? gateFrac(r.gate) : 1), false, false, r); return; }
       runRecord(asProc(L.ow), r, null, null);
+    }
+    // DN-4..7: one step of the guard - the enemy swing, the hold (Seethe), the stamina bar
+    function guardTick() {
+      if (t >= G.nextSwing) {
+        G.nextSwing += Math.max(0.5, num(GB.swingSeconds, 2));
+        const bar = G.holding ? num(GH.barPctMaxHp, 50) : num(GB.barPctMaxHp, 30);
+        if (G.holding || (G.up && !G.broken)) {
+          G.stamina -= num(GB.hitPctMaxHp, 0) / Math.max(1, bar) * 100; G.blocked++;
+          if (G.holding) G.holdBlocked = true;
+          fire("block", {});
+        }
+      }
+      if (G.holding) {
+        G.holdSec += dt;
+        applyStack({ resource: GH.resource, op: "add", amount: num(GH.gaugePerSecond, 0) * dt });
+        G.stamina -= num(GH.staminaPctPerSecond, 0) * dt;
+        if (G.stamina > 0 && stackCount(GH.resource) >= num(PC.holdUntil, num(GH.holdUntil, 100)) - 1e-6) {
+          G.holding = false; G.releases++;
+          if (G.holdBlocked) fire("guardRelease", {});   // Revengeance: released right after a blocked hit
+        }
+      }
+      if (G.stamina <= 0) {
+        if (!G.broken) { G.breaks++; pushTimeline("Guard broken", "other", 0, "stamina empty: no block powers until it refills"); }
+        G.stamina = 0; G.broken = true; G.up = false; G.holding = false;
+      }
+      if (G.broken) G.brokenSec += dt;
+      if (!G.up && !G.holding) {
+        G.stamina = Math.min(100, G.stamina + gRefillPerSec * dt);
+        if (G.broken && G.stamina >= 100 - 1e-6) G.broken = false;
+      }
     }
 
     const avg = {}; Object.keys(stackTimeSum).forEach(function (n) { avg[n] = stackTimeSum[n] / T; });
@@ -1559,7 +1615,9 @@
         damageInside: scoreHit ? dmgIn : undefined, damageOutside: scoreHit ? dmgTotal - dmgIn : undefined, damageInsideByOwner: scoreHit ? dmgInByOwner : undefined } : undefined, statOwnersOn: scoreHit ? Object.keys(statOwnersOn) : undefined,
       derived: { stacksAvg: avg, buffUptime: up, spenderCasts: spenderOw ? (castCount[spenderOw.name] || 0) : 0 },
       pools: Object.keys(pools).length ? Object.fromEntries(Object.keys(pools).map(function (pn) { const P = pools[pn]; return [pn, { max: Math.round(P.max), regenPerSec: P.regen, spent: Math.round(P.spent), gained: Math.round(P.gained), channels: P.channels, channelSeconds: Math.round(P.chSec * 10) / 10, refund: Math.round(P.refund), cashIns: P.cashIns, taps: P.taps, freeSpent: Math.round(P.freeSpent) }]; })) : undefined,
-      trace: input.trace ? traceRows : undefined
+      trace: input.trace ? traceRows : undefined,
+      guard: GB ? { blocked: G.blocked, breaks: G.breaks, brokenSeconds: Math.round(G.brokenSec * 10) / 10, holds: G.holds, holdSeconds: Math.round(G.holdSec * 10) / 10, releases: G.releases,
+        refillSeconds: Math.round(100 / Math.max(1e-6, gRefillPerSec) * 10) / 10, staminaRegenPct: num(input.staminaRegenPct, 0) } : undefined
     };
   }
 
@@ -1639,6 +1697,10 @@
         if (users.length) tryAll("save " + b.name + " for", users.map(function (n) { return { label: n, n: n }; }), function (o) { return Object.assign({}, ch, { save: { buff: b.name, power: o.n } }); });
       });
     });
+    // DN-7 (n00b 2026-10-20): holding the guard (Seethe) is a move the search tries; kept only when it adds damage
+    const GHd = input.guard && input.guard.block && input.guard.hold;
+    if (GHd) tryAll(GHd.name || "guard hold", [50, 35, 20].map(function (k) { return { label: "hold " + (GHd.name || "the guard") + " when " + GHd.resource + " is below " + k, k: k }; }),
+      function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { holdBelow: o.k }) }); });
     if (input.callWindow) tryAll("hold for the call", [{ label: "hold dailies", h: { daily: true } }, { label: "hold encounters", h: { encounter: true } }, { label: "hold both", h: { daily: true, encounter: true } }],
       function (o) { return Object.assign({}, ch, { hold: o.h }); });
     [].concat(kit.powers.atWill || [], kit.powers.encounter || [], kit.powers.daily || []).forEach(function (p) {
