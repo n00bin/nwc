@@ -317,6 +317,28 @@ default (it scored 0 before).
 - **Tested:** 2026-10-20. Clip `2026-10-20 18-42-55`.
 - **Status:** Verified.
 
+#### Blocking and stamina (Forge Ahead)
+- **Method:** Desa, full stamina. (1) Out of combat, hold the block ~48 s. (2) Next to an attacking Conjured Fighter,
+  hold the block until it drops, then wait for the bar to refill. Stamina is the left arc with the shield icon; read
+  every 0.1 s along the arc. The 80 s block in DN test 1 (clip `2026-10-20 06-53-05`) re-read the same way. Every
+  absorb in both combat logs reads "Your **Forge Ahead** absorbs ...", so this is Forge Ahead (the normal shield
+  block), not Seethe.
+- **Result:**
+  - **Holding the block costs nothing.** 48 s held out of combat: the bar stayed full.
+  - **Each blocked hit costs stamina in proportion to the damage absorbed.** In DN test 1 the dummy first hit for
+    1-2.5k: about 1% each (37 s of blocking moved the bar ~10%). Then it hit for 33-48k: 17-30% each, and 4-5 hits
+    emptied the bar (three times across the two clips). A full bar held roughly 150-190k of absorbed damage on Desa,
+    which fits the tooltip's "up to 30% of maximum hit points" if her Max HP is ~550-600k (not confirmed).
+  - **At empty the block drops.** The bar starts refilling ~2-4 s later and is full ~10-13 s after that (about
+    7.5-9% per second).
+  - **Guarded Strike and Shield Bash are "At-Will (Block)"** (tooltip shown in the clip): usable only while the block
+    is up. The fight simulator does not know this yet.
+- **Data change:** the measurements are stored on Forge Ahead. The DN test 1 "holding Seethe" note is corrected to say
+  the block was Forge Ahead; Seethe itself is still untested.
+- **Tested:** 2026-10-20. Clip `2026-10-20 19-23-45` (+ re-read of `2026-10-20 06-53-05`).
+- **Status:** Verified (free hold, per-hit cost scales with damage, block drops at empty, refill time). Open: exact
+  bar size vs Max HP; Seethe untested; the simulator ignores the block-only at-wills (next gap).
+
 ---
 
 ## Rogue: Whisperknife (audit 2026-10-18)
@@ -659,6 +681,7 @@ Folder root: `docs/calibration/inbox/class_powers/fighter/tests/`.
 |---|---|---|
 | `2026-10-20_06-53-05_vengeance-gauge` | Vengeance: drain 1.2/s, Guarded Strike ~5, Shield Bash ~6, blocked hit ~12, Brazen Slash 0 | yes (arc tiles every 8 s; readings every frame in the fill windows) |
 | `2026-10-20_18-42-55_vengeance-max-multitarget` | Vengeance maximum 100 (Always Spiteful = 55%), Shield Bash fills per target (+25 on 4 dummies) | yes (zoomed arc strips with tick scale; combat-log OCR around the fill) |
+| `2026-10-20_19-23-45_block-stamina` | Forge Ahead: free to hold, stamina cost per blocked hit scales with damage, drops at empty, refill ~10-13 s | yes (stamina arc strips, tooltip crop, log OCR of both clips) |
 
 ---
 
