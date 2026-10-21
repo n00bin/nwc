@@ -90,8 +90,8 @@ would raise regen, not lower it.
 - **Proof:** taps measured at 1 pip ~140-160, 2 pips ~150, 3 pips ~271 (+23.6% of the bar), 5 pips ~374 (+32.5%),
   4 and 6 pips refilled to full. 115 + 52 per pip fits 3, 5 and 6 pips within ~6%.
 - **Tested:** 2026-10-15/16. Clips `2026-10-15 22-46-36`, `2026-10-15 23-01-00`, `2026-10-16 05-10-50`.
-- **Status:** Measured. **Open:** the 1 and 2 pip readings sit off the straight line; the time a tap takes
-  (0.4 s assumed).
+- **Status:** Measured. Re-measured 2026-10-21 (clips `07-09-54`, `11-36-20`): 1 pip 138 (three taps), 2 pips ~213,
+  a full 6-pip gauge 368-400. Refit to 104 + 51 per pip (was 115 + 52). **Open:** the time a tap takes (0.4 s assumed).
 
 #### Sudden Verdict
 - **Question:** which kind of Judgement does Sudden Verdict fill?
@@ -176,7 +176,8 @@ would raise regen, not lower it.
   1.23-1.33 s for Searing Javelin (1.1 s cast), so the glow runs about 0.23 s longer than the cast itself. With
   Lightspeed it lasted 0.20-0.25 s on three casts: the cast itself is about zero.
 - **Tested:** 2026-10-16. Clip `2026-10-16 12-04-27`.
-- **Status:** Verified. **Open:** the extra Burning Judgement pip was not read from this clip.
+- **Status:** Verified. The extra Burning Judgement pip was read on 2026-10-21 (clip `11-36-20`): Javelin then a
+  Lightspeed Daunting Light left 2 Burning pips.
 
 #### Critical Sun (feat)
 - **Question:** what does "you may cast Celestial Prominence again without spending any action points. Duration: 6s.
@@ -265,6 +266,28 @@ would raise regen, not lower it.
 - **Tested:** 2026-10-21. Clip `2026-10-21 07-09-54`.
 - **Status:** Verified (Divine Protection at full, Doomsayer and Javelin, regen while attacking, 1-pip tap). Open:
   Divine Protection curve near half and empty, Composed Insight, the 2-pip tap, tap time.
+
+#### Sheet curve, Composed Insight, Flame and Doomsayer, 2-pip tap, Light of the Scales (clip 2026-10-21 b)
+- **Method:** same setup as the morning clip. Sheet opened near empty and again at about half; sheet right after 3
+  dodges; Forgemaster's Flame then the buff list; Javelin + Lightspeed Daunting Light then a tap; Light of the Scales in
+  place of Doomsayer, then 1-pip taps (one full-gauge tap after a Sudden Verdict).
+- **Result:**
+  - **Divine Protection is a straight line:** Critical Avoidance 31.8% with the bar at ~3% (+0.3), 36.3-36.5% at ~50%
+    (+4.8 to +5.0). With the morning clip: 0 at empty to +10 at full.
+  - **Composed Insight scales with stamina:** Accuracy 46.6% -> 48.2% -> 49.8% over about 5 s after the dodges (52.9% at
+    full stamina). The full 10% was not isolated. Dodging also dropped Critical Strike by 8 points, Forte by 3 and Power,
+    Critical Severity and Deflect by 1 for the whole low-stamina moment: gear lines that need high stamina.
+  - **Doomsayer:** no buff after Forgemaster's Flame either. Neither Judgement power counts as a negative condition.
+  - **Lightspeed:** Javelin then Daunting Light under Lightspeed left 2 Burning pips: the extra charge works.
+  - **2-pip tap:** ~213 divinity (18.5% of 1,150).
+  - **Light of the Scales:** 1-pip taps gave ~155 and ~172 against 138 without it: in line with +10% within the reading
+    error. A full gauge gave ~368, no clear gain.
+- **Data change:** tap refund refit to 104 + 51 per pip over every tap measured (it read 167 for one pip, we measure
+  138). Arbiter fight score 448,260 -> 434,965 (-3.0%: a bit more channelling). Review notes on Divine Protection,
+  Composed Insight, Doomsayer, Light of the Scales and Lightspeed.
+- **Tested:** 2026-10-21. Clip `2026-10-21 11-36-20`.
+- **Status:** Verified (Divine Protection curve, Doomsayer for both Judgement powers, Lightspeed pip, 2-pip tap).
+  Measured (Composed Insight moves with stamina; Light of the Scales roughly +10%).
 
 ### Still to test (Arbiter)
 
@@ -597,6 +620,7 @@ Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a f
 | `2026-10-16_12-04-27_lightspeed` | Lightspeed makes one Daunting Light instant | yes (plus every 0.1 s around four casts) |
 | `2026-10-16_10-36-51_channel-on-1000-bar` | Channel Divinity speed is fixed (1,000 bar), pool 1,000 without Expanded Faith | yes |
 | `2026-10-21_07-09-54_sheet-doomsayer-regen-taps` | Divine Protection +10 on the sheet, Doomsayer not from Javelin, regen while attacking, Divine Glow on two bar sizes, 1-pip tap | yes |
+| `2026-10-21_11-36-20_sheet-curve-taps-lots` | Divine Protection is a straight line, Composed Insight follows stamina, Flame does not give Doomsayer, Lightspeed pip, 2-pip tap, Light of the Scales | yes |
 
 ---
 
