@@ -13,6 +13,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - **Dungeon Achievement Tracker now keeps progress per character.** Dungeon achievements belong to a character in game, so the tracker now does too. Pick your character at the top of the page, add up to 10 ("+ Add character"), rename them, remove ones you no longer play, or copy progress from one character into another (it only adds, it never overwrites newer ticks). Search, filters, the closest-to-completion sort and the points-left count all follow the character you have selected, and the page remembers which one you were on. Everything you had already ticked is kept: it moves into a character called Main on every device, in the browser and in your Discord account. Back up to a file now saves all your characters, and older backup files still restore (into the character you are on).
 
 ### Data Additions
+- **Xeleth's Blast Scepter: every rarity** (live 2026-10-21). Pick Uncommon, Rare, Epic, Legendary or Mythic and see that rarity's stats, recharge and damage-resistance debuff, all read from in-game tooltips. Its use damage now counts in the fight simulator too (116,380 at Mythic). Thanks to the player whose report (#319) turned out to be a Legendary copy.
 
 ### Bug Fixes
 - **Fighter: Vigorous Strikes now counts in the fight simulator** (live 2026-10-20). Its +5% Critical Strike at full stamina was read as empty stamina and added nothing; it now adds about 3% damage.
