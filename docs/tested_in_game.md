@@ -289,6 +289,28 @@ would raise regen, not lower it.
 - **Status:** Verified (Divine Protection curve, Doomsayer for both Judgement powers, Lightspeed pip, 2-pip tap).
   Measured (Composed Insight moves with stamina; Light of the Scales roughly +10%).
 
+#### Tipping Scales, Inner Balance, Divine Glow + channel, Flame Strike, Angel of Death (clip 2026-10-21 c)
+- **Method:** Eliza with Tipping Scales and Inner Balance retrained, Doomsayer + Expanded Faith, boots off. Divine Glow on
+  an empty gauge; Javelin / Daunting Light then taps; Channel Divinity holds with and without Divine Glow; Flame Strike
+  without and with Burning Judgement; Bastion until Angelic Inspiration, 3 more Bastions, buff list.
+- **Result:**
+  - **Angel of Death:** after the counter converted (Angelic Inspiration at 297 s), three more Bastions added nothing:
+    the buff list shows no counter. The counter stops while the ready buff is up. The simulator now does the same (no
+    score change: it cashes the ready buff in at once).
+  - **Tipping Scales:** Divine Glow on an empty gauge gave no Judgement, twice, as the tooltip says (already modelled).
+    The second Divine Glow with a charge hit "Still recharging" (28.7 s cooldown), so that half was not repeated.
+  - **Channel Divinity:** three holds refilled 89-92 divinity a second; the one with Divine Glow up was no faster, so
+    Divine Glow does not seem to speed channelling (the simulator already leaves it out while channelling).
+  - **Flame Strike:** first hit 77,517 before mitigation with no Judgement, 90,438 with one Burning pip: +43 magnitude,
+    not the tooltip's +100 nor the +118 read on 2026-10-16. Searing Javelin with two Burning pips: 192,005 against
+    147,923 (+140 magnitude, tooltip +60). The bonus may grow with the number of pips; open.
+  - **Inner Balance:** not measured. Every tap landed with the bar already near full, so the refunds were cut off.
+- **Data change:** Angel of Death's counter is gated off while Angelic Inspiration is up; review notes on Angel of
+  Death and Tipping Scales.
+- **Tested:** 2026-10-21. Clip `2026-10-21 12-05-33`.
+- **Status:** Verified (Angel of Death counter, Tipping Scales on an empty gauge). Measured (channel 89-92/s, no Divine
+  Glow effect on it). Open: Inner Balance; Judgement bonus per pip on Flame Strike and Searing Javelin.
+
 ### Still to test (Arbiter)
 
 | # | Question |
@@ -621,6 +643,7 @@ Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a f
 | `2026-10-16_10-36-51_channel-on-1000-bar` | Channel Divinity speed is fixed (1,000 bar), pool 1,000 without Expanded Faith | yes |
 | `2026-10-21_07-09-54_sheet-doomsayer-regen-taps` | Divine Protection +10 on the sheet, Doomsayer not from Javelin, regen while attacking, Divine Glow on two bar sizes, 1-pip tap | yes |
 | `2026-10-21_11-36-20_sheet-curve-taps-lots` | Divine Protection is a straight line, Composed Insight follows stamina, Flame does not give Doomsayer, Lightspeed pip, 2-pip tap, Light of the Scales | yes |
+| `2026-10-21_12-05-33_tipping-innerbalance-flame-aod` | Angel of Death counter stops while ready, Tipping Scales empty gauge, channel rate with Divine Glow, Flame Strike / Javelin Judgement bonus readings | yes |
 
 ---
 
