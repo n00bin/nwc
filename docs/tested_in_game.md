@@ -62,8 +62,9 @@ would raise regen, not lower it.
 - **Proof:** standing idle 7.2/s (2026-10-15, after the boot stacks ran out) and 7.5/s (2026-10-16, two
   rounds). Boots active: 8.3/s.
 - **Tested:** 2026-10-15/16. Clips `2026-10-14 22-52-58`, `2026-10-16 07-53-31`.
-- **Status:** Measured. **Open:** while attacking with Lance of Faith it read only ~5.7-5.9/s
-  (`2026-10-16 07-28-06`, run B). Either regen slows in combat or something else differed; not tested yet.
+- **Status:** Measured. Re-checked 2026-10-21 (clip `2026-10-21 07-09-54`, boots off): attacking with Lance of Faith
+  refilled 7.8-8.1/s against 8.7/s standing still, so attacking does not slow regen in any way that matters. The
+  ~5.7/s read on 2026-10-16 is not repeated.
 
 #### Channel Divinity: holding
 - **Question:** how fast does holding Channel Divinity refill the bar, and do regen items speed it up?
@@ -148,8 +149,9 @@ would raise regen, not lower it.
   seconds, roughly 130 extra divinity per cast.
 - **Proof:** two rounds standing idle: 7.5/s without, 18.3/s and 18.2/s with Divine Glow.
 - **Tested:** 2026-10-16. Clip `2026-10-16 07-53-31`.
-- **Status:** Measured. **Open:** whether it is a flat +10.8/s, 1% of your bar per second, or a % of your regen
-  (one bar size cannot tell them apart); whether it also speeds Channel Divinity.
+- **Status:** Measured. Re-checked 2026-10-21 on both bar sizes: about +8/s on the 1,150 bar and +10/s on the 1,000
+  bar (each about +-2), so it is not a share of the bar. **Open:** flat vs a % of regen (regen is the same on both
+  bars, so they look alike); whether it also speeds Channel Divinity.
 
 #### Divine Equilibrium (class feature)
 - **Question:** "decreases as your divinity becomes further away from this point": how fast, and is there anything
@@ -240,7 +242,29 @@ would raise regen, not lower it.
   Conflagrate on a full Burning gauge emptied it and left 3 Radiant.
 - **Tested:** 2026-10-17, in the training room with cooldowns switched off (a test-only setting). Clip
   `2026-10-17 07-23-18`.
-- **Status:** Verified. **Open:** Divine Glow on an empty gauge (the tooltip says it needs at least one charge).
+- **Status:** Verified. **Open:** Divine Glow on an empty gauge with Tipping Scales slotted (the tooltip says it
+  needs at least one charge; the 2026-10-21 clip ran without Tipping Scales, so it could not answer this).
+
+#### Sheet checks, Doomsayer, regen and taps (clip 2026-10-21)
+- **Method:** Eliza, Prismatic boots off, Doomsayer + Expanded Faith slotted, feats Lightspeed / Focused Light /
+  Sudden Verdict / Critical Sun / Angel of Death. Sheet read at full divinity and after two Searing Javelins; buff list
+  after the Javelins; taps with 1 pip; regen from empty standing, then Lance of Faith, then Divine Glow, on the 1,150
+  bar and again on the 1,000 bar (Expanded Faith off). Divinity read along the arc every 0.25 s, log by OCR.
+- **Result:**
+  - **Divine Protection works and was missing from Toon Forge:** Critical Avoidance 41.5% at a full bar, on a rating
+    (50,395) that gives 31.5% for Deflect Severity: +10 exactly. After two Javelins (bar about 63-68% while it refilled)
+    it read 37.5-37.8%: +6.0 to +6.3, a little under a straight line (+6.3 to +6.8).
+  - **Composed Insight:** Accuracy 52.9% throughout; stamina stayed full, so its 10% could not be isolated (open).
+  - **Doomsayer:** no Doomsayer buff after two Searing Javelin crits: Javelin's Judgement is not a negative condition.
+  - **Regen:** attacking with Lance of Faith 7.8-8.1/s, standing 8.7/s: no real slowdown in combat.
+  - **Divine Glow:** about +8/s (1,150 bar) and +10/s (1,000 bar): not a share of the bar.
+  - **Taps:** 1 pip refilled about 12% of the 1,150 bar (~138, same as before). A full gauge (6 pips, from Sudden
+    Verdict) refilled 33-35% (~380-400) twice. The 2-pip tap was not measured: Sudden Verdict filled the gauge both times.
+- **Data change:** ARB-1 (Composed Insight and Divine Protection now count, built the same day); review notes on
+  Divine Protection, Composed Insight, Doomsayer and Divine Glow. No score change from this clip.
+- **Tested:** 2026-10-21. Clip `2026-10-21 07-09-54`.
+- **Status:** Verified (Divine Protection at full, Doomsayer and Javelin, regen while attacking, 1-pip tap). Open:
+  Divine Protection curve near half and empty, Composed Insight, the 2-pip tap, tap time.
 
 ### Still to test (Arbiter)
 
@@ -572,6 +596,7 @@ Folder root: `docs/calibration/inbox/class_powers/cleric/tests/`. "Stills" = a f
 | `2026-10-16_13-26-40_critical-sun` | free Celestial Prominence after a crit, 6 s window, no chaining | yes (plus every 0.25 s in the three windows) |
 | `2026-10-16_12-04-27_lightspeed` | Lightspeed makes one Daunting Light instant | yes (plus every 0.1 s around four casts) |
 | `2026-10-16_10-36-51_channel-on-1000-bar` | Channel Divinity speed is fixed (1,000 bar), pool 1,000 without Expanded Faith | yes |
+| `2026-10-21_07-09-54_sheet-doomsayer-regen-taps` | Divine Protection +10 on the sheet, Doomsayer not from Javelin, regen while attacking, Divine Glow on two bar sizes, 1-pip tap | yes |
 
 ---
 
