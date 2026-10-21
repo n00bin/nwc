@@ -15,6 +15,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ### Data Additions
 - **Xeleth's Blast Scepter: every rarity** (live 2026-10-21). Pick Uncommon, Rare, Epic, Legendary or Mythic and see that rarity's stats, recharge and damage-resistance debuff, all read from in-game tooltips. Its use damage now counts in the fight simulator too (116,380 at Mythic). Thanks to the player whose report (#319) turned out to be a Legendary copy.
 - **Renewed Smoldering Loop added** (live 2026-10-21). The item level 5,200 ring from the Monoliths of Madness store, with Explosive Force, checked against the in-game tooltip. Thanks for report #318.
+- **Soul Shield combat enchant added** (live 2026-10-21). Every rarity from Uncommon to Celestial, with its damage reduction counted for tanks. Legendary is filled in from the even 2% steps until we capture its tooltip. Thanks for report #317.
 
 ### Bug Fixes
 - **Fighter: Vigorous Strikes now counts in the fight simulator** (live 2026-10-20). Its +5% Critical Strike at full stamina was read as empty stamina and added nothing; it now adds about 3% damage.
