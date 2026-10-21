@@ -473,7 +473,7 @@
     // gaugePerSecond, stamina drains at staminaPctPerSecond, swings are blocked against the hold's own bar; released at
     // holdUntil, firing "guardRelease" when a swing was blocked during the hold. No names in code.
     const GB = input.guard && input.guard.block ? input.guard.block : null, GH = GB && input.guard.hold ? input.guard.hold : null;
-    const G = { stamina: 100, up: false, broken: false, holding: false, holdBlocked: false, nextSwing: GB ? num(GB.swingSeconds, 2) : 0,
+    const G = { stamina: 100, up: false, broken: false, saving: false, holding: false, holdBlocked: false, nextSwing: GB ? num(GB.swingSeconds, 2) : 0,
       blocked: 0, breaks: 0, brokenSec: 0, holds: 0, holdSec: 0, releases: 0 };
     const gRefillPerSec = GB ? 100 / Math.max(1, num(GB.secondsToFull, 12) * (1 + num(GB.measuredAtRegenPct, 0) / 100) / (1 + num(input.staminaRegenPct, 0) / 100)) : 0;
     function guardLocked(p) { return !!(GB && p && p.block && G.broken); }
@@ -1351,6 +1351,12 @@
     // the filler: input.filler (the choice search tries each at-will), else the best stored damage per second of casting
     const rbFiller = RB ? (owners.filter(function (ow) { return ow.type === "atWill"; }).map(function (ow) { const c = num(ow.obj.castSeconds, 0) || 1; return { ow: ow, mps: rbOwnDamage(ow) / c }; })
       .sort(function (a, b) { return (input.filler ? (b.ow.name === input.filler) - (a.ow.name === input.filler) : 0) || b.mps - a.mps; })[0] || null) : null;
+    // DN-8: the best block at-will and the best plain at-will (stored damage per second of casting)
+    const rbSwitch = (function () {
+      const mps = function (ow) { return rbOwnDamage(ow) / (num(ow.obj.castSeconds, 0) || 1); };
+      const aws = owners.filter(function (ow) { return ow.type === "atWill"; }).sort(function (a, b) { return mps(b) - mps(a); });
+      return { block: aws.find(function (ow) { return ow.obj.block; }) || null, plain: aws.find(function (ow) { return !ow.obj.block; }) || null };
+    })();
     function rbRemaining(e) {   // seconds left on the effects this entry keeps up (0 = down)
       let left = Infinity;
       e.refresh.forEach(function (x) {
@@ -1418,6 +1424,13 @@
         if (rbHeld(e)) continue;
         if (e.refresh && rbRemaining(e) > num(e.ow.obj.castSeconds, 0) + 0.5) continue;
         if (channelFor({ kind: e.kind, name: e.name })) return true;
+      }
+      // DN-8 (n00b 2026-10-21): with a block at-will and a plain one, block until stamina drops below switchBelow, then
+      // use the plain one until the bar is full again
+      if (GB && PC.switchBelow && rbSwitch.block && rbSwitch.plain) {
+        if (G.stamina < num(PC.switchBelow)) G.saving = true; else if (G.stamina >= 100 - 1e-6) G.saving = false;
+        const sw = (G.saving || G.broken) ? rbSwitch.plain : rbSwitch.block;
+        return castOwner(sw, "atWill");
       }
       if (rbFiller && !guardLocked(rbFiller.ow.obj)) return castOwner(rbFiller.ow, "atWill");
       if (rbFiller) {   // DN-4: guard broken - the best at-will that does not need the shield, else stand and wait
@@ -1701,6 +1714,10 @@
     const GHd = input.guard && input.guard.block && input.guard.hold;
     if (GHd) tryAll(GHd.name || "guard hold", [50, 35, 20].map(function (k) { return { label: "hold " + (GHd.name || "the guard") + " when " + GHd.resource + " is below " + k, k: k }; }),
       function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { holdBelow: o.k }) }); });
+    const awAll = kit.powers.atWill || [];
+    if (input.guard && input.guard.block && awAll.some(function (p) { return p.block; }) && awAll.some(function (p) { return !p.block; }))
+      tryAll("stamina switch", [60, 40, 20].map(function (k) { return { label: "block until stamina is below " + k + "%, then the other at-will until it is full", k: k }; }),
+        function (o) { return Object.assign({}, ch, { pool: Object.assign({}, ch.pool || {}, { switchBelow: o.k }) }); });
     if (input.callWindow) tryAll("hold for the call", [{ label: "hold dailies", h: { daily: true } }, { label: "hold encounters", h: { encounter: true } }, { label: "hold both", h: { daily: true, encounter: true } }],
       function (o) { return Object.assign({}, ch, { hold: o.h }); });
     [].concat(kit.powers.atWill || [], kit.powers.encounter || [], kit.powers.daily || []).forEach(function (p) {

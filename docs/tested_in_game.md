@@ -373,6 +373,11 @@ default (it scored 0 before).
 - **Effect (test kits, 180 s, one dummy):** Brazen Slash kit +1.1% (Seethe kept, held when the gauge is below 35;
   Vengeful up 85% of the fight instead of 70%). Guarded Strike + Shield Bash kit -19%: blocking every swing breaks the
   guard 6 times and leaves 74 s with no at-will. Every other class and paragon scored the same as before.
+- **Stamina switch (DN-8, built 2026-10-21):** with a shield at-will and a normal one, the simulator also tries blocking
+  until stamina drops below 60, 40 or 20%, then the normal at-will until the bar is full. On the Brazen Slash + Guarded
+  Strike kit it never breaks the guard but scores ~20% lower (Guarded Strike does far less per second than Brazen Slash,
+  and Vengeful is already up 99%), so it is not kept there. Brazen Slash's per-hit magnitude is still an open test and
+  decides this comparison.
 - **Status:** Built from measured numbers; the refill speed is provisional until a second Stamina Regeneration clip,
   and real enemies hit harder or softer than the dummy.
 
