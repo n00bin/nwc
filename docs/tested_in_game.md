@@ -331,7 +331,7 @@ default (it scored 0 before).
     against the tooltip's "up to 30% of maximum hit points": Desa's Max HP is 661,674, so 30% is ~198k, consistent once
     the partly-counted breaking hit is allowed for. The dummy's big hits were 5-7% of her Max HP.
   - **At empty the block drops.** The bar starts refilling ~2-4 s later and is full ~10-13 s after that (about
-    7.5-9% per second).
+    7.5-9% per second), with Desa's Stamina Regeneration at +16% (Boosts section).
   - **Guarded Strike and Shield Bash are "At-Will (Block)"** (tooltip shown in the clip): usable only while the block
     is up. The fight simulator does not know this yet.
 - **Data change:** the measurements are stored on Forge Ahead. The DN test 1 "holding Seethe" note is corrected to say
