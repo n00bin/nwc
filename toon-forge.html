@@ -15808,6 +15808,13 @@
         }
       }
 
+      // ARB-1 (n00b 2026-10-21): the class-wide feats every character of the class has (Cleric Composed Insight,
+      // Divine Protection) were display-only. Their unconditional stat lines count like class features.
+      for (const cf of ((classDef && Array.isArray(classDef.feats)) ? classDef.feats : [])) {
+        if (!cf || (!cf.percentStats && !cf.ratingStats)) continue;
+        buffs.push({ source: `Class Feat: ${cf.name}`, percentStats: cf.percentStats || {}, ratingStats: cf.ratingStats || {} });
+      }
+
       // Bard active song — songs that grant a flat damage bonus while
       // active (Steel March, Tailwind Mambo, Blaze Flamenco). Other
       // songs (Ballad of the Hero/Witch, Rejuvenating Carol) don't

@@ -297,8 +297,8 @@ default (it scored 0 before).
   the score (open gap).
 - **Tested:** 2026-10-20. Clip `2026-10-20 06-53-05`.
 - **Status:** Verified (drain, Guarded Strike, Shield Bash, Brazen Slash, per blocked hit). Gauge maximum and Shield
-  Bash on several targets: verified in the next entry. Open: how a fight model should place blocking (DN-1 locked, not
-  built).
+  Bash on several targets: verified in the next entry. Blocking is in the fight simulator since 2026-10-21 (see
+  "In the fight simulator" below).
 
 #### The Vengeance gauge maximum (Always Spiteful) and Shield Bash on several targets
 - **Method:** Desa with Always Spiteful slotted, Guarded Strike + Shield Bash. (1) Empty gauge, out of combat, one
