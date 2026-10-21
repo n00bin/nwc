@@ -17,6 +17,7 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - **Renewed Smoldering Loop added** (live 2026-10-21). The item level 5,200 ring from the Monoliths of Madness store, with Explosive Force, checked against the in-game tooltip. Thanks for report #318.
 - **Soul Shield combat enchant added** (live 2026-10-21). Every rarity from Uncommon to Celestial, with its damage reduction counted for tanks. Legendary is filled in from the even 2% steps until we capture its tooltip. Thanks for report #317.
 - **Renewed Delzoun Cuirass added** (live 2026-10-21). The item level 5,200 tank chest piece from Monoliths of Madness, with Fiery Awakening (+7,275 Awareness), checked against the in-game tooltip. Thanks for report #316.
+- **Cindersilk Hood added** (live 2026-10-21). The item level 4,600 Warlock/Wizard head piece from The Slaughterhouse, which completes the Cindersilk set on the site, checked against the in-game tooltip. Thanks for report #315.
 
 ### Bug Fixes
 - **Fighter: Vigorous Strikes now counts in the fight simulator** (live 2026-10-20). Its +5% Critical Strike at full stamina was read as empty stamina and added nothing; it now adds about 3% damage.
