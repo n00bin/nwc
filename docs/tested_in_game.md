@@ -340,6 +340,28 @@ default (it scored 0 before).
 - **Status:** Verified (free hold, per-hit cost scales with damage, block drops at empty, refill time). Open: Seethe
   untested; the simulator ignores the block-only at-wills (next gap).
 
+#### Seethe, Bloody Reprise, Shield Talent, Roiling Hatred
+- **Method:** Desa (Stamina Regeneration +18.3% on the sheet = Ability Scores +13% from STR 26 at 0.5% a point, plus
+  Buffs +5.3%), Conjured Fighter dummies. Gauge and stamina arcs read along the arc (zoomed strips with a tick scale
+  where the dummy covered an arc); combat log OCR every 0.5 s. Slots read from the Powers screens in the clip.
+- **Result:**
+  - **Seethe** (log: "Your Seethe absorbs ..."): while held, the Vengeance gauge fills **by itself**, about 24 per
+    second (36% to 97% in 2.5 s while blocking only 0.3-2.7k hits), and stamina drains about 3.5-4% per second.
+    Releasing it fired Revengeance (a 71,780 crit). Forge Ahead does not fill the gauge by itself; Seethe does.
+  - **Bloody Reprise:** the gauge crossed 50 (49%) and the next Shield Slam set it to 74.5%. It worked again 27 s later
+    (50.7% to 73.6%), so any cooldown is under 27 s. Shield Slams cast after the gauge had been under 50 for more than
+    3 s did nothing. Matches the tooltip and the simulator.
+  - **Shield Talent:** no measurable change. The stamina bar refilled at 7.3-7.5% per second with it (two blocks) and
+    7.5% without (DN test 3), and the character sheet read 18.3% with and without it.
+  - **Roiling Hatred:** one Shield Bash on 5 dummies added about 41 Vengeance, against about 30 from Shield Bash's 6
+    per target alone: +2 per critical hit on each target, no short cooldown. Matches the simulator (per crit, per
+    target). Desa was defeated just before this part, so only the first bashes were usable before the gauge capped.
+- **Data change:** records only (none of these fields change a score): Seethe's fill rate and note, Shield Talent
+  scored 0 with the measurement, review flags on Bloody Reprise and Roiling Hatred.
+- **Tested:** 2026-10-20. Clip `2026-10-20 21-04-25`.
+- **Status:** Verified (Bloody Reprise, Roiling Hatred, Shield Talent refill). Measured, rough (Seethe stamina drain;
+  the dummy covered the stamina arc). Open: Seethe is not in the fight simulator yet.
+
 ---
 
 ## Rogue: Whisperknife (audit 2026-10-18)
@@ -683,6 +705,7 @@ Folder root: `docs/calibration/inbox/class_powers/fighter/tests/`.
 | `2026-10-20_06-53-05_vengeance-gauge` | Vengeance: drain 1.2/s, Guarded Strike ~5, Shield Bash ~6, blocked hit ~12, Brazen Slash 0 | yes (arc tiles every 8 s; readings every frame in the fill windows) |
 | `2026-10-20_18-42-55_vengeance-max-multitarget` | Vengeance maximum 100 (Always Spiteful = 55%), Shield Bash fills per target (+25 on 4 dummies) | yes (zoomed arc strips with tick scale; combat-log OCR around the fill) |
 | `2026-10-20_19-23-45_block-stamina` | Forge Ahead: free to hold, stamina cost per blocked hit scales with damage, drops at empty, refill ~10-13 s | yes (stamina arc strips, tooltip crop, log OCR of both clips) |
+| `2026-10-20_21-04-25_seethe-feats-shieldtalent` | Seethe fills Vengeance ~24/s; Bloody Reprise sets 75 on the next encounter; Shield Talent no refill change; Roiling Hatred +2 per crit per target | yes (gauge/stamina strips, sheet + slot crops, log OCR) |
 
 ---
 
