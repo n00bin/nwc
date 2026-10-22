@@ -66,5 +66,10 @@ page is still reachable by URL so bookmarks keep working.
   `https://api.arcgames.com/v1.0/games/news/<id>?field[]=content&field[]=images.img_microsite_background`
   (the `<id>` is the number in the playneverwinter.com news-details URL).
   Retire them with the rest of the preview content each rotation.
+- Mounts in the gallery (n00b's call, Mod 34): exactly two pictures per mount,
+  the hover tooltip (the stable view, with insignia slots) on top and the
+  inspect window's Stats tab under it. No Appearance tab, no Insignia Bonuses
+  pages. Name them `m<mod>-<rarity>-<mount>-0-tooltip.png` and
+  `...-1-stats.png`: the page stacks files that share a name before `-<n>-`.
 - `preview.html` has a hidden `#preview-closed-notice` div that appears
   when PREVIEW_ACTIVE is false.
