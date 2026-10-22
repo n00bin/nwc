@@ -60,12 +60,18 @@ page is still reachable by URL so bookmarks keep working.
   whole cycle); its hard-coded text is only the no-JavaScript fallback.
 - Official article images live in `images/preview/article/` (named
   `m<mod>-<topic>.jpg`). The screenshot scanner in `build-data.py` only
-  reads `gear/`, `companions/`, `mounts/` and `other/`, so article images
+  reads `gear/`, `companions/`, `mounts/`, `enchantments/`, `currencies/` and `other/`, so article images
   never land in the gallery. To get an article's images and full text: the
   site loads it from
   `https://api.arcgames.com/v1.0/games/news/<id>?field[]=content&field[]=images.img_microsite_background`
   (the `<id>` is the number in the playneverwinter.com news-details URL).
   Retire them with the rest of the preview content each rotation.
+- Gallery folders: `gear/<Class>/<slot>/`, `companions/`, `mounts/`, `enchantments/`, `currencies/`, `other/`.
+  Enchantments stack like mounts: `m<mod>-<enchant>-1-mythic.png` over `...-2-celestial.png`.
+- **Every new currency you capture also goes into the Currency Tracker** (`data/currency-catalog.js`,
+  hand-edited): name, where it is earned, type, weekly cap and "Maximum" exactly as the tooltip says,
+  then bump `?v=` on its script tag in `dungeon-currency.html`. Players then only type what they hold.
+  Preview-server values get re-checked when the module reaches PS5.
 - Mounts in the gallery (n00b's call, Mod 34): exactly two pictures per mount,
   the hover tooltip (the stable view, with insignia slots) on top and the
   inspect window's Stats tab under it. No Appearance tab, no Insignia Bonuses

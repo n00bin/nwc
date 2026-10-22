@@ -454,8 +454,24 @@
     </div>
 
     <div class="preview-section">
+      <h2 class="preview-section-title">Enchantments</h2>
+      <p class="preview-section-desc">New combat enchantments previewed for Mod 34, each with its Mythic version above its Celestial one.</p>
+      <div id="enchantments-grid">
+        <div class="placeholder-tile">No enchantment previews yet — check back soon.</div>
+      </div>
+    </div>
+
+    <div class="preview-section">
+      <h2 class="preview-section-title">Currencies</h2>
+      <p class="preview-section-desc">New Mod 34 currencies, with their weekly caps and storage limits. They&rsquo;re already built into the <a href="dungeon-currency.html">Currency Tracker</a>: start typing the name and it fills in the source and caps for you.</p>
+      <div id="currencies-grid">
+        <div class="placeholder-tile">No currency previews yet — check back soon.</div>
+      </div>
+    </div>
+
+    <div class="preview-section">
       <h2 class="preview-section-title">Other</h2>
-      <p class="preview-section-desc">New combat enchantments, plus anything else worth flagging &mdash; adventure zone, dungeon, heroic encounters, artifacts, etc.</p>
+      <p class="preview-section-desc">Anything else worth flagging &mdash; adventure zone, dungeon, heroic encounters, etc.</p>
       <div id="other-grid">
         <div class="placeholder-tile">No additional previews yet — check back soon.</div>
       </div>
@@ -515,7 +531,8 @@
 
     // One column per thing: files named "<name>-<n>-<page>.png" share a column,
     // stacked in <n> order (the scanner already sorts by file name). Used for
-    // mounts: 0 = tooltip (as seen in the stables), 1+ = inspect-window pages.
+    // mounts (0 = tooltip as seen in the stables, 1+ = inspect-window pages) and
+    // enchantments (1 = Mythic, 2 = Celestial).
     function renderGroupedSection(containerId, items) {
       var container = document.getElementById(containerId);
       if (!container || !items || items.length === 0) return; // keep placeholder
@@ -654,6 +671,8 @@
       renderGearButtons();
       renderPreviewSection("comps-grid", PREVIEW_DATA.companions, 2);
       renderGroupedSection("mounts-grid", PREVIEW_DATA.mounts);
+      renderGroupedSection("enchantments-grid", PREVIEW_DATA.enchantments);
+      renderPreviewSection("currencies-grid", PREVIEW_DATA.currencies);
       renderPreviewSection("other-grid", PREVIEW_DATA.other);
     }
 

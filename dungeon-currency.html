@@ -136,6 +136,12 @@
       padding: 0.35rem 0.5rem;
       font-size: 0.85rem;
     }
+    .dc-week-msg {
+      color: var(--gold-bright);
+      font-weight: 600;
+      transition: opacity 0.6s ease;
+    }
+    .dc-week-msg.fade { opacity: 0; }
     .dc-weeknote {
       text-align: center;
       font-size: 0.82rem;
@@ -690,10 +696,12 @@
         <strong>(your local time)</strong>
       </span>
       <span id="dc-last-reset"></span>
-      <button id="dc-reset-now" class="dc-btn-mini">↺ Reset week now</button>
+      <span id="dc-week-msg" class="dc-week-msg"></span>
+      <button id="dc-reset-now" class="dc-btn-mini" title="Optional — the tracker already resets itself at the day and time set here. Use this only to start a fresh week right now.">↺ Reset week now</button>
     </div>
     <p class="dc-weeknote">
       Neverwinter resets at one fixed server moment — that lands on a different local day/time depending on where you live, so set this to match your own reset.
+      Once it's set, this week's earnings zero themselves the moment it passes — even if you leave this page open. The button is only a manual override.
     </p>
 
     <div class="dc-grid">
@@ -702,10 +710,11 @@
 
         <p class="dc-tip-lead">New to this? No stress — here's the gist:</p>
         <ul class="dc-tip">
-          <li>Add a character, then the currencies they farm — where it drops, plus any <strong>weekly cap</strong> or <strong>storage limit</strong>.</li>
+          <li>Add a character, then the currencies they farm. Start typing a currency's name: the ones we know fill in where it drops and its <strong>weekly cap</strong> and <strong>storage limit</strong> for you. For anything else, add those yourself.</li>
           <li>Farmed some? Just hit <strong>↺ Update total</strong> and type your new in-game total — we do the math and count it toward your week.</li>
           <li>Bought something? Hit <strong>− Spent</strong> and type the amount — it lowers your held total but leaves this week's earnings untouched.</li>
           <li>Fat-fingered a number? It's all in the <strong>Log</strong> — pop in and fix or delete that entry.</li>
+          <li>Your week zeroes itself at the <strong>weekly reset</strong> you set up top — nothing to press, no need to reload.</li>
           <li>Then <strong>Cap Status</strong> shows you who to farm next. That's it — go get that loot! ⚔</li>
         </ul>
 
@@ -755,6 +764,7 @@
   <datalist id="dc-dungeon-names"></datalist>
 
   <script src="js/shared.js"></script>
+  <script src="data/currency-catalog.js?v=20261022a"></script>
 
   <script>
     /* ============================================================
@@ -766,7 +776,9 @@
        Currencies are tracked PER CHARACTER — each character earns and caps its
        own currency independently (nothing is account-bound). The Cap Status
        panel groups the same currency name across characters for farm planning.
-       Earned totals auto-zero when a new weekly reset boundary is crossed.
+       Earned totals auto-zero when a new weekly reset boundary is crossed —
+       checked on load, on a 30s tick, and whenever the tab is shown again, so
+       a page left open rolls over on its own without a manual reset.
        ============================================================ */
 
     var STORAGE_KEY = 'nw-dungeon-currency';
@@ -904,6 +916,27 @@
     function currentBoundary() {
       return lastResetBoundary(state.settings.resetDay, state.settings.resetTime);
     }
+    // Local datetime of the NEXT occurrence of resetDay at resetTime (always in
+    // the future). Built from local date parts, so DST shifts stay correct.
+    function nextResetBoundary(resetDay, resetTime) {
+      var now = new Date();
+      var parts = String(resetTime || '00:00').split(':');
+      var d = new Date(now.getFullYear(), now.getMonth(), now.getDate(), toInt(parts[0]), toInt(parts[1]), 0, 0);
+      var diff = (resetDay - d.getDay() + 7) % 7;
+      d.setDate(d.getDate() + diff);
+      if (d.getTime() <= now.getTime()) d.setDate(d.getDate() + 7);
+      return d;
+    }
+    // Short "2d 6h" / "6h 12m" / "9m" countdown label.
+    function fmtLeft(ms) {
+      var mins = Math.floor(ms / 60000);
+      var dd = Math.floor(mins / 1440);
+      var hh = Math.floor((mins % 1440) / 60);
+      var mm = mins % 60;
+      if (dd > 0) return dd + 'd ' + hh + 'h';
+      if (hh > 0) return hh + 'h ' + mm + 'm';
+      return Math.max(1, mm) + 'm';
+    }
     // The start of the "current week": the natural reset boundary, or a later
     // manual reset if one was triggered.
     function effectiveBoundaryMs() {
@@ -940,7 +973,57 @@
       recomputeAll();
       save();
       render();
+      markBoundaryRendered();
       showBackupMsg('This week reset — weekly earnings start from 0 (your log is kept).');
+    }
+
+    /* ---------- Automatic weekly rollover ---------- */
+    // The week-start the screen was last drawn against. When the real boundary
+    // moves past it, the reset moment has arrived and the week rolls over by
+    // itself — no button, no reload.
+    var renderedBoundaryMs = null;
+    var AUTO_TICK_MS = 30000;
+
+    // Call after any deliberate change to the reset settings, so the tick
+    // doesn't mistake the user's own edit for a new week arriving.
+    function markBoundaryRendered() {
+      renderedBoundaryMs = effectiveBoundaryMs();
+    }
+
+    function showWeekMsg(text) {
+      var el = document.getElementById('dc-week-msg');
+      if (!el) return;
+      el.textContent = text;
+      el.classList.remove('fade');
+      clearTimeout(el._fadeTimer);
+      el._fadeTimer = setTimeout(function () { el.classList.add('fade'); }, 15000);
+    }
+
+    // Returns true if a new week was detected and applied.
+    function checkWeekRollover(silent) {
+      var b = effectiveBoundaryMs();
+      if (renderedBoundaryMs === null) { renderedBoundaryMs = b; return false; }
+      if (b === renderedBoundaryMs) return false;
+      renderedBoundaryMs = b;
+      // A manual "reset week now" anchor only ever drags the week start FORWARD.
+      // Once the natural boundary has passed it, it's spent — clear it so the
+      // saved data doesn't carry a stale anchor around forever.
+      if (state.settings.lastReset) {
+        var m = new Date(state.settings.lastReset).getTime();
+        if (isNaN(m) || m <= currentBoundary().getTime()) state.settings.lastReset = null;
+      }
+      recomputeAll();
+      save();
+      render();
+      if (!silent) showWeekMsg('↺ New week — weekly earnings reset automatically.');
+      return true;
+    }
+
+    // Runs on a timer, and again whenever the tab comes back into view: a
+    // sleeping laptop or a backgrounded tab can't be trusted to fire timers on
+    // schedule, so visibility/focus/bfcache events re-check as well.
+    function weekTick() {
+      if (!checkWeekRollover()) renderWeekbar(); // keep the countdown ticking
     }
 
     /* ---------- Storage ---------- */
@@ -986,11 +1069,25 @@
     }
 
     /* ---------- Currency catalog (for dropdown + auto-fill) ---------- */
-    // Built from every currency already added anywhere in the roster:
-    //   normalizedName -> { name, dungeon, cap }
+    // The built-in list (data/currency-catalog.js, read from in-game tooltips)
+    // goes in first, so its source and caps win; then every currency already
+    // added anywhere in the roster fills in names the built-in list lacks:
+    //   normalizedName -> { name, dungeon, sourceType, weeklyCap, totalCap }
+    var BUILTIN = Array.isArray(window.CURRENCY_CATALOG) ? window.CURRENCY_CATALOG : [];
     var CATALOG = {};
     function rebuildCatalog() {
       CATALOG = {};
+      BUILTIN.forEach(function (b) {
+        var key = normalizeKey(b.name || '');
+        if (!key) return;
+        CATALOG[key] = {
+          name: String(b.name).trim(),
+          dungeon: String(b.dungeon || ''),
+          sourceType: b.sourceType || '',
+          weeklyCap: toInt(b.weeklyCap),
+          totalCap: toInt(b.totalCap)
+        };
+      });
       state.characters.forEach(function (char) {
         char.currencies.forEach(function (cur) {
           var key = normalizeKey(cur.name);
@@ -1013,6 +1110,7 @@
       var names = Object.keys(CATALOG).map(function (k) { return CATALOG[k].name; })
         .sort(function (a, b) { return a.localeCompare(b); });
       var dungeonSet = {};
+      BUILTIN.forEach(function (b) { if (b.dungeon) dungeonSet[b.dungeon] = true; });
       state.characters.forEach(function (char) {
         char.currencies.forEach(function (cur) { if (cur.dungeon) dungeonSet[cur.dungeon] = true; });
       });
@@ -1098,8 +1196,13 @@
 
       var lastEl = document.getElementById('dc-last-reset');
       var d = new Date(effectiveBoundaryMs());
-      lastEl.textContent = isNaN(d.getTime()) ? ''
+      var txt = isNaN(d.getTime()) ? ''
         : '· This week since ' + d.toLocaleDateString([], { month: 'short', day: 'numeric' }) + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      var next = nextResetBoundary(state.settings.resetDay, state.settings.resetTime);
+      var left = next.getTime() - Date.now();
+      if (txt && left > 0) txt += ' · auto-resets in ' + fmtLeft(left);
+      lastEl.textContent = txt;
+      lastEl.title = txt ? 'Next automatic reset: ' + next.toLocaleString() : '';
     }
 
     // One progress line: label + amount/cap + bar. `full` colours it green.
@@ -1599,12 +1702,14 @@
       if (isNaN(v)) return;
       state.settings.resetDay = v;
       save(); render(); // render() recomputes this-week against the new boundary
+      markBoundaryRendered();
     });
     document.getElementById('dc-reset-time').addEventListener('change', function (e) {
       var t = e.target.value;
       if (!/^\d{1,2}:\d{2}$/.test(t)) return;
       state.settings.resetTime = t;
       save(); render();
+      markBoundaryRendered();
     });
 
     document.body.addEventListener('click', function (e) {
@@ -1713,6 +1818,12 @@
         if (wEl) wEl.value = cat.weeklyCap ? cat.weeklyCap : '';
         if (tEl) tEl.value = cat.totalCap ? cat.totalCap : '';
       } else {
+        // Was locked to a known currency: its caps were auto-filled too, so clear
+        // them with the source rather than let a new currency inherit them.
+        if (dEl && dEl.readOnly) {
+          if (wEl) wEl.value = '';
+          if (tEl) tEl.value = '';
+        }
         if (dEl) {
           if (dEl.readOnly) dEl.value = ''; // was locked to a known currency — clear the stale source
           dEl.readOnly = false;
@@ -1780,6 +1891,7 @@
           load(); // recomputes derived totals from each log
           save();
           render();
+          markBoundaryRendered();
           showBackupMsg('Restored ' + state.characters.length + ' character(s) from backup.');
         } catch (err) {
           showBackupMsg('Import failed: ' + err.message, true);
@@ -1802,6 +1914,15 @@
     load();   // recomputes derived totals from each log
     loadUi();
     render();
+
+    // Automatic weekly reset: seed the boundary we just drew against, then keep
+    // checking it. Nothing below needs the user to press anything.
+    markBoundaryRendered();
+    renderWeekbar();
+    setInterval(weekTick, AUTO_TICK_MS);
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) weekTick(); });
+    window.addEventListener('focus', weekTick);
+    window.addEventListener('pageshow', weekTick); // back/forward cache restore
 
     if (typeof renderNav === 'function') {
       try { renderNav(''); } catch (e) {}
