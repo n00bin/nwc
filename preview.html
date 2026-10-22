@@ -109,6 +109,17 @@
       flex-direction: column;
       gap: 0.75rem;
     }
+    /* Mounts section: one column per mount, the stable-style tooltip on top and
+       its inspect-window pages under it. Wider columns: the inspect window is a
+       wide screenshot. */
+    .preview-group-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(420px, 100%), 1fr));
+      gap: 1rem;
+      align-items: start;
+    }
+    /* never stretch a tooltip past its real size (blurry text); wide pages still shrink to fit */
+    .preview-group-grid .preview-image-card img { width: auto; max-width: 100%; margin: 0 auto; }
     .preview-image-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-default);
@@ -502,6 +513,29 @@
       container.innerHTML = renderImageGrid(items, pairSize);
     }
 
+    // One column per thing: files named "<name>-<n>-<page>.png" share a column,
+    // stacked in <n> order (the scanner already sorts by file name). Used for
+    // mounts: 0 = tooltip (as seen in the stables), 1+ = inspect-window pages.
+    function renderGroupedSection(containerId, items) {
+      var container = document.getElementById(containerId);
+      if (!container || !items || items.length === 0) return; // keep placeholder
+      var order = [], groups = {};
+      for (var i = 0; i < items.length; i++) {
+        var base = items[i].file.split("/").pop().replace(/\.[a-z]+$/i, "");
+        var m = base.match(/^(.*?)-\d+-/);
+        var key = m ? m[1] : base;
+        if (!groups[key]) { groups[key] = []; order.push(key); }
+        groups[key].push(items[i]);
+      }
+      var html = '<div class="preview-group-grid">';
+      for (var g = 0; g < order.length; g++) {
+        html += '<div class="preview-pair">';
+        for (var k = 0; k < groups[order[g]].length; k++) html += renderCard(groups[order[g]][k]);
+        html += '</div>';
+      }
+      container.innerHTML = html + '</div>';
+    }
+
     // Slot label formatting: "main-hand" -> "Main Hand", "off-hand" -> "Off Hand", etc.
     function formatSlotLabel(slot) {
       return slot.split("-").map(function (w) {
@@ -619,7 +653,7 @@
     if (window.PREVIEW_DATA) {
       renderGearButtons();
       renderPreviewSection("comps-grid", PREVIEW_DATA.companions, 2);
-      renderPreviewSection("mounts-grid", PREVIEW_DATA.mounts);
+      renderGroupedSection("mounts-grid", PREVIEW_DATA.mounts);
       renderPreviewSection("other-grid", PREVIEW_DATA.other);
     }
 
