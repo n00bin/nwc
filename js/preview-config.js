@@ -7,13 +7,13 @@
    See docs/preview-cycle.md for the cycle runbook.
    ============================================================ */
 
-// Set to true while a mod is in preview (currently Mod 33.5).
+// Set to true while a mod is in preview (currently Mod 34).
 // Flip to false the day the mod ships live.
 const PREVIEW_ACTIVE = true;
 
 // Display label used in nav, banner, and landing card.
 // Update each cycle (e.g., "Mod 34 Preview").
-const PREVIEW_LABEL = "Mod 33.5 Preview";
+const PREVIEW_LABEL = "Mod 34 Preview";
 
 // When PREVIEW_ACTIVE is false, hide every element marked
 // with class="preview-link" so banners + cards disappear.
