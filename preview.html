@@ -129,6 +129,31 @@
       color: var(--text-secondary);
     }
     .preview-image-caption strong { color: var(--text-primary); display: block; margin-bottom: 0.15rem; }
+    .preview-hero {
+      display: block;
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1rem;
+      cursor: zoom-in;
+    }
+    .preview-image-card img.card-art {
+      width: calc(100% + 2rem);
+      max-width: none;
+      margin: -0.9rem -1rem 0.7rem;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .preview-chart-thumb {
+      display: block;
+      width: 100%;
+      max-width: 480px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      margin: 0.25rem 0 1.25rem;
+      cursor: zoom-in;
+    }
     .placeholder-tile {
       background: var(--bg-elevated);
       border: 1px dashed var(--border-default);
@@ -248,6 +273,7 @@
 
   <div class="preview-container">
     <div class="preview-banner">
+      <img class="preview-hero" src="images/preview/article/m34-banner.jpg" data-full="images/preview/article/m34-banner.jpg" alt="Official Mod 34 key art: the Reghed Crevasse" loading="lazy" decoding="async">
       <span class="preview-meta">Currently Previewing</span>
       <h1>Mod 34 Preview — <span translate="no">Biting Cold: Sleeping Gods Lie</span></h1>
       <p>Preview content for Module 34: <span translate="no">Biting Cold: Sleeping Gods Lie</span>. The PC preview opened October 19, 2026 on the Mimic and Lurker test shards, and Arc takes feedback until November 2, 2026 at 7:30 AM PT. Release is aimed at mid-November. Everything below comes from a test build and can change &mdash; screenshots get added here as content is verified.</p>
@@ -262,18 +288,22 @@
       <p class="preview-section-desc">Straight from the official preview article (October 19, 2026). A full module this time: a new Icewind Dale adventure zone, a trial, a skirmish, a brand-new difficulty, and upgradeable Artifact Armor.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;">
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
+          <img class="card-art" src="images/preview/article/m34-reghed-crevasse.jpg" data-full="images/preview/article/m34-reghed-crevasse.jpg" alt="The Reghed Crevasse adventure zone" loading="lazy" decoding="async">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;">Adventure Zone: <span translate="no">The Reghed Crevasse</span></strong>
           <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">In the far northeastern corner of Icewind Dale, the <span translate="no">Cult of the Elder Elemental Eye</span> is spreading madness through the North and digging up ancient Netherese city ruins under the ice. Start by speaking with Sergeant Knox. Old <strong>Gravity Devices</strong> carry you up to high or remote spots, and a new series of Heroic Encounters stops the cult from getting the Netherese knowledge. Open for testing from October 19.</span>
         </div>
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
+          <img class="card-art" src="images/preview/article/m34-madness-of-the-sleeping-god.jpg" data-full="images/preview/article/m34-madness-of-the-sleeping-god.jpg" alt="Madness of the Sleeping God zone mechanic" loading="lazy" decoding="async">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;">Zone Mechanic: <span translate="no">Madness of the Sleeping God</span></strong>
           <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">Activities in the zone fill a meter that leads to the <span translate="no">Madness Rift</span>. There you choose one of up to three <strong>Afflictions</strong>: each gives a powerful benefit and a dangerous drawback. Once Madness takes hold, hidden Rift Fractures, Fractured Echoes, and Haunting Horrors appear. With at least three players you can summon and fight <span translate="no">Valkreth the Hollow</span>. This is also where <strong>Chaotic Flux</strong> comes from (see Artifact Armor). From October 19.</span>
         </div>
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
+          <img class="card-art" src="images/preview/article/m34-devourers-pit.jpg" data-full="images/preview/article/m34-devourers-pit.jpg" alt="The Devourer&rsquo;s Pit trial arena" loading="lazy" decoding="async">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;">Trial: <span translate="no">The Devourer&rsquo;s Pit</span></strong>
           <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">A scorching troll arena. Face the troll champion <span translate="no">Grathmok the Devourer</span> and his savage wrestling moves, and watch your step around his shockwaves or you burn. Four difficulties: Normal, Advanced, Master, and the new Ascendant Mode. Normal to Master open for testing October 23&ndash;26.</span>
         </div>
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
+          <img class="card-art" src="images/preview/article/m34-ascendant-mode.jpg" data-full="images/preview/article/m34-ascendant-mode.jpg" alt="Ascendant Mode in The Devourer&rsquo;s Pit" loading="lazy" decoding="async">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;">New Difficulty: Ascendant Mode</strong>
           <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">An extremely hard version of select Master content: more enemy Hit Points and damage, plus modifiers that change over <strong>four rotating weeks</strong>, so a class or plan that works one week may not work the next. One dungeon (in a future module) and one trial (<span translate="no">The Devourer&rsquo;s Pit</span>) at a time. Arc says it is balanced heavily against players and most groups are not expected to clear it. Fully optional: Master stays the main source of endgame rewards. Testing October 30 &ndash; November 2.</span>
         </div>
@@ -282,6 +312,7 @@
           <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">Clearing the weekly challenge gives a <strong>decaying currency</strong> for the new <span translate="no">Bahamut&rsquo;s Store</span> in Protector&rsquo;s Enclave, which sells Mythic and Celestial versions of the module&rsquo;s chase gear. The currency comes once per week; you can keep playing, but no more is granted. Clear all the different weeks for an exclusive alternate version of Master Mode&rsquo;s achievement vanity reward, <strong>once per account</strong>. It drops as a container: sell it as it is, or open it to unlock it for all your characters (it is then untradeable).</span>
         </div>
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
+          <img class="card-art" src="images/preview/article/m34-defense-of-the-mythallar.jpg" data-full="images/preview/article/m34-defense-of-the-mythallar.jpg" alt="The Defense of the Mythallar skirmish" loading="lazy" decoding="async">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;">Skirmish: <span translate="no">The Defense of the Mythallar</span></strong>
           <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">A Harbinger has sealed a mythallar&rsquo;s dome in a shell to channel enough power to snuff out the North. Break through the tower wall, fight through Netherese fortifications, disarm traps while Elemental Evil cultists close in, and stop the ritual. Drops three Amethyst neck items (see the rewards table). From October 19.</span>
         </div>
@@ -290,6 +321,7 @@
           <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">This module&rsquo;s chase gear (Mod 32 was artifact weapons, Mod 33 rings, shirts and pants). Buy the armor at <strong>Normal</strong> rarity from the Trial Store with <strong>Unquiet Whispers</strong>, the new unlimited zone currency. Upgrading skips Uncommon, Rare and Epic and goes straight to <strong>Legendary &rarr; Mythic &rarr; Celestial</strong> through normal Refining, with currency from <span translate="no">The Devourer&rsquo;s Pit</span>. <strong>Chaotic Flux</strong> unlocks a new stat on a piece or tries to raise one; a failed try keeps your best value so far. Each piece has its own short list of stats it can get. From October 26.</span>
         </div>
         <div class="preview-image-card" style="padding:0.9rem 1rem;">
+          <img class="card-art" src="images/preview/article/m34-queue-rewards.jpg" data-full="images/preview/article/m34-queue-rewards.jpg" alt="Queue reward improvements" loading="lazy" decoding="async">
           <strong style="color:var(--text-primary);display:block;margin-bottom:0.35rem;">Queue Rewards &amp; Seals</strong>
           <span style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5;">Normal Queues now also drop Mounts, Companions, Enchantments, Artifacts, Neck and Waist items, and Companion Equipment. <strong>Seals of the Dragon</strong> buy anything from that list you missed, or Epic gear, including this module&rsquo;s. <strong>Seals of the Spider God are retired</strong>: every source (Advanced, Master and Random Trial queues) now gives Seals of the Dragon, and old Spider God seals trade in at <strong>3:1</strong>. Random Advanced Dungeons, past and future, now need <strong>70,000 Item Level</strong>. New <strong>Seals of the Ancient Dragon</strong> buy Legendary gear up to Mod 32: <span translate="no">The Soul Collector</span>. From October 19.</span>
         </div>
@@ -321,6 +353,42 @@
     </div>
 
     <div class="preview-section">
+      <h2 class="preview-section-title">Artifact Armor &amp; Gear Progression</h2>
+      <p class="preview-section-desc">The two charts from the preview article, typed out. Tap a chart to see Arc&rsquo;s original.</p>
+      <h3 style="color:var(--text-primary);font-size:0.95rem;margin:0 0 0.5rem;">Artifact Armor upgrade path</h3>
+      <div class="preview-table-wrap">
+        <table class="preview-table" style="min-width:640px;">
+          <thead><tr><th>Armor rarity</th><th>How to get it</th><th>Currency</th><th>Where the currency comes from</th></tr></thead>
+          <tbody>
+            <tr><td>Normal</td><td>Trial Store</td><td>Unquiet Whispers (tentative)</td><td>Unlimited zone currency</td></tr>
+            <tr><td>Legendary</td><td>Refinement</td><td>Devourer&rsquo;s Advanced Mark (tentative)</td><td>Advanced Trial, Master Trial</td></tr>
+            <tr><td>Mythic</td><td>Refinement</td><td>Devourer&rsquo;s Master Mark (tentative)</td><td>Master Trial, Ascendant Trial</td></tr>
+            <tr><td>Celestial</td><td>Refinement</td><td>Devourer&rsquo;s Master Mark (tentative)</td><td>Master Trial, Ascendant Trial</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="preview-table-note">&ldquo;Tentative&rdquo; is Arc&rsquo;s own word: the currency names can still change.</p>
+      <img class="preview-chart-thumb" src="images/preview/article/m34-artifact-armor-table.jpg" data-full="images/preview/article/m34-artifact-armor-table.jpg" alt="Arc&rsquo;s Artifact Armor upgrade table" loading="lazy" decoding="async">
+      <h3 style="color:var(--text-primary);font-size:0.95rem;margin:0.5rem 0 0.5rem;">Gear progression from level 20</h3>
+      <div class="preview-table-wrap">
+        <table class="preview-table" style="min-width:640px;">
+          <thead><tr><th>Step</th><th>What you do</th><th>What it gets you</th></tr></thead>
+          <tbody>
+            <tr><td>Start</td><td>Your character reaches level 20</td><td>Two routes open, and you do both.</td></tr>
+            <tr><td>Route A</td><td>Random Queue (Normal)</td><td>About <strong>30,000</strong> Item Level. Drops mounts, companions, enchantments, artifacts, neck and waist items, and companion equipment, plus Seals of the Dragon.</td></tr>
+            <tr><td>Route B</td><td>Newest campaign</td><td>About <strong>50,000</strong> Item Level: Epic weapons, armor, rings, shirts and pants, and an artifact.</td></tr>
+            <tr><td>Seals</td><td>Seals of the Dragon</td><td>Buy anything from the Normal queue list you missed, or Epic weapons and Epic armor, Mod 34&rsquo;s included.</td></tr>
+            <tr><td>Combined</td><td>Both routes together</td><td>About <strong>80,000</strong> Item Level.</td></tr>
+            <tr><td>Next</td><td>Random Queue (Advanced)</td><td>Needs <strong>70,000</strong> Item Level (the new requirement for past and future dungeons). Arc&rsquo;s chart puts the new Seals of the Ancient Dragon at this step: Legendary weapons and Legendary armor up to Mod 32.</td></tr>
+            <tr><td>Then</td><td>Dungeons &amp; Trials Queue (Master)</td><td>The main endgame reward chase.</td></tr>
+            <tr><td>Top</td><td>Ascendant Mode</td><td>Pays the weekly currency for the Bahamut Store.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <img class="preview-chart-thumb" src="images/preview/article/m34-gear-progression-chart.jpg" data-full="images/preview/article/m34-gear-progression-chart.jpg" alt="Arc&rsquo;s gear progression chart for Mod 34" loading="lazy" decoding="async">
+    </div>
+
+    <div class="preview-section">
       <h2 class="preview-section-title">Upcoming Rewards &amp; Items</h2>
       <p class="preview-section-desc">Names only, from the preview article. Most of these open for testing on October 26. No stats have been published, so none of this is in the compendium databases until a screenshot confirms it.</p>
       <div class="preview-table-wrap">
@@ -345,7 +413,7 @@
 
     <div class="rotation-note">
       <strong style="color:var(--highlight);">Source:</strong> official Neverwinter article &mdash;
-      <a href="https://www.playneverwinter.com/en/news-details/11583527" target="_blank" rel="noopener">M34 Preview</a> (October 19, 2026).
+      <a href="https://www.playneverwinter.com/en/news-details/11583527" target="_blank" rel="noopener">M34 Preview</a> (October 19, 2026). Images: Arc Games / Cryptic Studios, from the same article.
     </div>
 
     <div class="preview-section">

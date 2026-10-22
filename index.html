@@ -175,7 +175,7 @@
     </a>
     <a href="preview.html" class="landing-card preview-link" style="text-decoration:none; color:inherit; border-color:var(--accent);">
       <div class="card-icon">🔭</div>
-      <div class="card-title" style="color:var(--accent);">Mod 33 Preview</div>
+      <div class="card-title" id="preview-card-label" style="color:var(--accent);">Mod 34 Preview</div>
       <div class="card-count">Gear, comps &amp; preview screenshots</div>
     </a>
     <a href="https://www.youtube.com/@N00binHard" target="_blank" rel="noopener" class="landing-card" style="text-decoration:none; color:inherit; border-color:#ff0000;">
@@ -282,6 +282,10 @@
       var el = document.getElementById("preview-banner-label");
       if (el && typeof PREVIEW_LABEL !== "undefined") {
         el.textContent = PREVIEW_LABEL + " is live";
+      }
+      var card = document.getElementById("preview-card-label");
+      if (card && typeof PREVIEW_LABEL !== "undefined") {
+        card.textContent = PREVIEW_LABEL;
       }
     });
   </script>

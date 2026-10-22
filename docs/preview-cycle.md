@@ -54,6 +54,17 @@ page is still reachable by URL so bookmarks keep working.
   and landing card, and the toon-forge.html navbar link.
 - `index.html` has a `<span id="preview-banner-label">` that gets filled
   with `PREVIEW_LABEL + " is live"` at runtime, so the banner text
-  updates with the label.
+  updates with the label. The home-page landing card title
+  (`id="preview-card-label"`) is filled with `PREVIEW_LABEL` the same way
+  (it was hand-typed until 2026-10-22 and showed "Mod 33 Preview" for a
+  whole cycle); its hard-coded text is only the no-JavaScript fallback.
+- Official article images live in `images/preview/article/` (named
+  `m<mod>-<topic>.jpg`). The screenshot scanner in `build-data.py` only
+  reads `gear/`, `companions/`, `mounts/` and `other/`, so article images
+  never land in the gallery. To get an article's images and full text: the
+  site loads it from
+  `https://api.arcgames.com/v1.0/games/news/<id>?field[]=content&field[]=images.img_microsite_background`
+  (the `<id>` is the number in the playneverwinter.com news-details URL).
+  Retire them with the rest of the preview content each rotation.
 - `preview.html` has a hidden `#preview-closed-notice` div that appears
   when PREVIEW_ACTIVE is false.
