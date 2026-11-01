@@ -1,5 +1,12 @@
 # Data Issues To Investigate
 
+## OPEN Renewed Delzoun Helm needs n00b's collection tooltip (2026-11-01, reports #348-#351, R-3)
+- Not on the site and not in any archive. Reports agree on IL 5,200 / CR 4,680 (same as the Renewed Delzoun
+  Cuirass, id 7451, report #316) but their stats can't be right: Awareness 9,675 vs 13,575, and Defense +
+  Awareness alone far exceed what CR 4,680 carries (Cuirass totals 7,800). Reporters were Rogue and Warlock.
+- Reports set In Progress with "we're grabbing it from the game". Add ONLY from the tooltip (full details +
+  any equip-bonus line), then mark #348-#351 Fixed.
+
 ## Rogue Whisperknife audit (2026-10-18, docs/audit/whisperknife_audit_2026-10-18.md)
 - **FIXED: Stealth-ending encounter lost its Stealth bonuses** (record order). New when.afterCast (toon-forge-rotation.js
   fireCast(ow, castEnd); vocabulary in build-data.py): cast-triggered records flagged afterCast run one tick after the
