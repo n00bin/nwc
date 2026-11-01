@@ -7,6 +7,13 @@
 - Reports set In Progress with "we're grabbing it from the game". Add ONLY from the tooltip (full details +
   any equip-bonus line), then mark #348-#351 Fixed.
 
+## OPEN Pack Tactics 2,953 vs player's 4,400 (2026-11-01, reports #352-#353, R-4)
+- Site: Celestial IL 3,937, +2,953 CA and Awareness (mount_equip_powers id 14). Backed by the 2026-10-13 Mythic
+  capture (2,250 at IL 3,000) and tank calibration (CA matched n00b's sheet within 1). 4,400 fits no rarity step;
+  close to 2,953 + a 50% second stack (4,430) but not exact.
+- Needs ONE screenshot: n00b's own Celestial Pack Tactics tooltip. 2,953 -> close Won't Fix with an explanation;
+  4,400 -> fix the data. Reports are In Progress ("checking in game").
+
 ## Rogue Whisperknife audit (2026-10-18, docs/audit/whisperknife_audit_2026-10-18.md)
 - **FIXED: Stealth-ending encounter lost its Stealth bonuses** (record order). New when.afterCast (toon-forge-rotation.js
   fireCast(ow, castEnd); vocabulary in build-data.py): cast-triggered records flagged afterCast run one tick after the
