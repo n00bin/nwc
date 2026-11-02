@@ -14,6 +14,12 @@
 - Needs ONE screenshot: n00b's own Celestial Pack Tactics tooltip. 2,953 -> close Won't Fix with an explanation;
   4,400 -> fix the data. Reports are In Progress ("checking in game").
 
+## WATCH Jarlaxle Baenre power slot + CR (2026-11-01, report #354 closed Won't Fix as a duplicate, R-5)
+- Site + NW Hub: Maestro's Observation, Offense, 9% Accuracy at Celestial, CR 900 (companion_powers id 225).
+  The reporter said Utility and CR 810. No in-game tooltip on file (on the 2026-08-10 missing-evidence list).
+- Next time n00b is near his card: screenshot the power. If it says Utility, fix the slot (it changes where the
+  optimizer can place him) and check isScalablePower / SCALABLE_POWER_IDS, since Utility-only powers freeze.
+
 ## Rogue Whisperknife audit (2026-10-18, docs/audit/whisperknife_audit_2026-10-18.md)
 - **FIXED: Stealth-ending encounter lost its Stealth bonuses** (record order). New when.afterCast (toon-forge-rotation.js
   fireCast(ow, castEnd); vocabulary in build-data.py): cast-triggered records flagged afterCast run one tick after the
