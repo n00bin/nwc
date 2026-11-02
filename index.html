@@ -390,7 +390,7 @@
         if (MAIN[e[1]]) return MAIN[e[1]](e[0], e[2]) + encodeURIComponent(e[0]);
         return "db/" + e[1] + "/" + (typeof e[2] === "number" ? e[2] + "-" + slugify(e[0]) : e[2]) + ".html";
       }
-      var state = "idle", rows = [], active = -1, lower = null;
+      var state = "idle", rows = [], active = -1, lower = null, enterPending = false;
       function load() {
         if (state !== "idle") return;
         state = "loading";
@@ -400,6 +400,7 @@
           state = window.SEARCH_INDEX ? "ready" : "failed";
           if (state === "ready") lower = SEARCH_INDEX.map(function (e) { return e[0].toLowerCase(); });
           update();
+          if (enterPending) { enterPending = false; openActive(); }
         };
         sc.onerror = function () { state = "failed"; update(); };
         document.head.appendChild(sc);
@@ -439,6 +440,10 @@
         if (hits.length > rows.length) html += '<div class="hs-note">' + (hits.length - rows.length) + " more &mdash; keep typing to narrow it down.</div>";
         show(html);
       }
+      function openActive() {
+        var links = box.querySelectorAll("a");
+        if (links.length) window.location.href = links[active >= 0 ? active : 0].getAttribute("href");
+      }
       function setActive(i) {
         var links = box.querySelectorAll("a");
         if (!links.length) return;
@@ -454,8 +459,11 @@
         else if (e.key === "ArrowUp") { e.preventDefault(); setActive(active - 1); }
         else if (e.key === "Escape") { input.value = ""; hide(); }
         else if (e.key === "Enter") {
-          var links = box.querySelectorAll("a");
-          if (links.length) { e.preventDefault(); window.location.href = links[active >= 0 ? active : 0].getAttribute("href"); }
+          e.preventDefault();
+          clearTimeout(timer);
+          if (state !== "ready") { enterPending = true; update(); return; }  // opens once the list arrives
+          if (!box.querySelector("a")) update();
+          openActive();
         }
       });
       document.addEventListener("click", function (e) { if (!e.target.closest(".home-search")) hide(); });
