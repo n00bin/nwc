@@ -265,6 +265,19 @@
     .badge-cat-missing-item { background: var(--highlight);     color: #000; }
     .badge-cat-suggestion   { background: var(--accent);        color: #fff; }
 
+    /* Shortcut buttons at the top */
+    .report-cta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1rem; }
+    .report-cta-btn {
+      flex: 1 1 200px; padding: 0.7rem 1rem; border-radius: var(--radius-md);
+      border: 1px solid var(--highlight); background: var(--highlight); color: #111;
+      font-weight: 700; font-size: 0.95rem; cursor: pointer; font-family: inherit;
+    }
+    .report-cta-btn:hover { background: var(--highlight-hover); }
+    .report-cta-btn.report-cta-alt { background: transparent; color: var(--accent); border-color: var(--accent); }
+    .report-cta-btn.report-cta-alt:hover { background: var(--bg-hover); }
+    .report-cta-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .submit-section { scroll-margin-top: 1rem; }
+
     /* Submit form */
     .submit-section {
       margin-top: 2rem;
@@ -449,6 +462,12 @@
   </div>
 
   <div class="reports-container">
+    <!-- Shortcut buttons: the form is at the bottom, below every report -->
+    <div class="report-cta">
+      <button type="button" class="report-cta-btn" data-report-jump="Bug" data-placeholder="Which item, and which number is wrong?">Report a wrong number</button>
+      <button type="button" class="report-cta-btn report-cta-alt" data-report-jump="Missing Item" data-placeholder="Which item is missing?">Report a missing item</button>
+    </div>
+
     <!-- Reports list -->
     <div id="reports-list">
       <div class="empty-state">Loading reports...</div>

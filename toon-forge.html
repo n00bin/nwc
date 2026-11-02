@@ -3191,7 +3191,7 @@
     <span class="tf-navbar-brand">NWC</span>
     <select class="tf-nav-select" aria-label="Go to a page">
       <option value="index.html">Home</option>
-      <option value="preview.html">Mod 33 Preview</option>
+      <option value="preview.html" class="preview-label">Mod 34 Preview</option>
       <option value="mounts.html">Mounts</option>
       <option value="companions.html">Companions</option>
       <option value="consumables.html">Consumables</option>
@@ -3206,7 +3206,7 @@
     </select>
     <div class="tf-navbar-links">
       <a href="index.html">Home</a>
-      <a href="preview.html" class="preview-link">Mod 33 Preview</a>
+      <a href="preview.html" class="preview-link preview-label">Mod 34 Preview</a>
       <a href="mounts.html">Mounts</a>
       <a href="companions.html">Companions</a>
       <a href="consumables.html">Consumables</a>
@@ -4001,6 +4001,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="js/data-corrections.js"></script>
   <script src="js/preview-config.js"></script>
+  <script>/* Preview menu label follows PREVIEW_LABEL in js/preview-config.js, like every other page */
+    document.querySelectorAll(".preview-label").forEach(function (el) { el.textContent = PREVIEW_LABEL; });</script>
 
   <script>
     /* ===== M33.5 (Monoliths of Madness) dual Combat slots — LIVE =====
@@ -7049,8 +7051,14 @@
     // Humanize a field path for display in correction reports.
     // Falls back to the row's visible label if we already have a nice
     // one; otherwise tries to interpret common path patterns.
-    function _ccHumanFieldName(field, labelFromRow) {
-      if (labelFromRow && labelFromRow.trim()) return labelFromRow.trim();
+    function _ccHumanFieldName(field, labelFromRow, item) {
+      // A row label that is just the raw data path ("stats[0].value") is not
+      // human-readable; fall through to the mapping below instead.
+      // stats[i].value -> the stat's own name ("Combat Advantage") when the item has it.
+      const sm = field.match(/^stats\[(\d+)\]\.value$/);
+      if (sm && item && Array.isArray(item.stats) && item.stats[+sm[1]] && item.stats[+sm[1]].stat) return String(item.stats[+sm[1]].stat);
+      const lbl = labelFromRow ? labelFromRow.trim() : "";
+      if (lbl && lbl !== field && !/^[\w.]*\[\d+\][\w.\[\]]*$/.test(lbl)) return lbl;
       const map = {
         name: "Name",
         item_level: "Item Level",
@@ -7237,12 +7245,14 @@
       // Background submit to Supabase. Don't surface the report ID etc.
       // Title + description are built to be admin-friendly: human field
       // names, both old and new values, full item context.
-      const fieldHuman = _ccHumanFieldName(field, labelText);
+      const fieldHuman = _ccHumanFieldName(field, labelText, item);
       const itemName = item.name || dataType;
       const oldStr = (originalSourceValue == null || originalSourceValue === "")
         ? "(empty)" : String(originalSourceValue);
       const newStr = (claimedValue == null || claimedValue === "") ? "(empty)" : String(claimedValue);
-      const title = `${itemName} — ${fieldHuman}: ${oldStr} → ${newStr}`.slice(0, 200);
+      // Plain-English title, e.g. "Pack Tactics: Combat Advantage 2,953, player says 4,400".
+      const _ccNum = v => (/^-?\d+(\.\d+)?$/.test(v) ? Number(v).toLocaleString("en-US") : v);
+      const title = `${itemName}: ${fieldHuman} ${_ccNum(oldStr)}, player says ${_ccNum(newStr)}`.slice(0, 200);
       const description = _ccBuildReportDescription(item, dataType, fieldHuman, originalSourceValue, claimedValue);
       window.NWCBDataCorrections.submitCorrection({
         type: dataType,

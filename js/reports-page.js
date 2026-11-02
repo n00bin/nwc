@@ -35,6 +35,43 @@
   // ---- Init nav ----
   renderNav("Reports");
 
+  // ---- Readable titles ----
+  // Older Toon Forge correction reports were titled "Item — stats[0].value: 2953 → 4400".
+  // Show them as "Item: Stat 1 2,953, player says 4,400". New reports are written
+  // this way already (toon-forge.html, _ccSaveField).
+  function readableField(f) {
+    var m;
+    if ((m = f.match(/^stats\[(\d+)\]\.value$/))) return "Stat " + (Number(m[1]) + 1);
+    if ((m = f.match(/^stats\[(\d+)\]\.stat$/))) return "Stat " + (Number(m[1]) + 1) + " name";
+    if ((m = f.match(/^equipBonuses\[(\d+)\]\.(\w+)$/))) return "Equip bonus " + m[2];
+    if ((m = f.match(/^ratingStats\.(.+)$/))) return m[1];
+    if ((m = f.match(/^percentStats\.(.+)$/))) return m[1] + " (percent)";
+    if ((m = f.match(/^(\w+)\[(\d+)\]\.(\w+)$/))) return m[1] + " " + m[3];
+    return f;
+  }
+  function readableValue(v) {
+    return /^-?\d+(\.\d+)?$/.test(v) ? Number(v).toLocaleString("en-US") : v;
+  }
+  function readableTitle(t) {
+    var m = String(t || "").match(/^(.+?) — (.+?): (.*?) → (.*)$/);
+    if (!m) return t;
+    return m[1] + ": " + readableField(m[2]) + " " + readableValue(m[3]) + ", player says " + readableValue(m[4]);
+  }
+
+  // ---- "Report a ..." shortcut buttons at the top of the page ----
+  // Jump to the form at the bottom, pre-pick the category and focus the title.
+  document.querySelectorAll("[data-report-jump]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var cat = document.getElementById("report-category");
+      var ttl = document.getElementById("report-title");
+      if (cat) cat.value = b.getAttribute("data-report-jump");
+      if (ttl && b.getAttribute("data-placeholder")) ttl.placeholder = b.getAttribute("data-placeholder");
+      var sec = document.querySelector(".submit-section");
+      if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (ttl) setTimeout(function () { ttl.focus({ preventScroll: true }); }, 400);
+    });
+  });
+
   // ---- Voter fingerprint hash ----
   function generateVoterHash() {
     var raw = [
@@ -202,7 +239,7 @@
 
     // Content
     html += '<div class="report-content">';
-    html += '<div class="report-title"><span style="color:var(--text-muted);font-weight:400;font-size:0.85em;margin-right:0.4rem;">#' + r.id + '</span>' + escapeHtml(r.title) + "</div>";
+    html += '<div class="report-title"><span style="color:var(--text-muted);font-weight:400;font-size:0.85em;margin-right:0.4rem;">#' + r.id + '</span>' + escapeHtml(readableTitle(r.title)) + "</div>";
     html += '<div class="report-desc">' + escapeHtml(r.description) + "</div>";
     html += '<div class="report-meta">';
     html += catBadge + " ";
