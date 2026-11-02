@@ -14,6 +14,11 @@
 - Needs ONE screenshot: n00b's own Celestial Pack Tactics tooltip. 2,953 -> close Won't Fix with an explanation;
   4,400 -> fix the data. Reports are In Progress ("checking in game").
 
+## OPEN Joy Dancer of Lliira needs an AH inspect capture (2026-11-01, report #357, R-8)
+- Augment, not on the site, no archive screenshot. Report + NW Hub agree: Dance of Joy, all three slots, 4.5% OGH +
+  4.5% Incoming Healing, CR 900 at Celestial. Shared (augment) stats unknown. Capture power tab + stats tab like
+  Star of Simril (#253), add only from that, then mark #357 Fixed.
+
 ## OPEN Toon Forge ignores companion roleConditional stats (found 2026-11-01, report #356)
 - Cunning Hunter (companion_powers id 237) role stat (DPS Crit Strike / Tank Awareness / Healer OGH) is shown only
   on the Companions page (js/companions-page.js renderRoleConditional). "roleConditional" has zero hits in
