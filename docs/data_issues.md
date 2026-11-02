@@ -14,6 +14,11 @@
 - Needs ONE screenshot: n00b's own Celestial Pack Tactics tooltip. 2,953 -> close Won't Fix with an explanation;
   4,400 -> fix the data. Reports are In Progress ("checking in game").
 
+## OPEN Toon Forge ignores companion roleConditional stats (found 2026-11-01, report #356)
+- Cunning Hunter (companion_powers id 237) role stat (DPS Crit Strike / Tank Awareness / Healer OGH) is shown only
+  on the Companions page (js/companions-page.js renderRoleConditional). "roleConditional" has zero hits in
+  toon-forge.html / toon-forge-engine.js, so the Forge counts Forte only. Not raised with n00b (reports day).
+
 ## WATCH Jarlaxle Baenre power slot + CR (2026-11-01, report #354 closed Won't Fix as a duplicate, R-5)
 - Site + NW Hub: Maestro's Observation, Offense, 9% Accuracy at Celestial, CR 900 (companion_powers id 225).
   The reporter said Utility and CR 810. No in-game tooltip on file (on the 2026-08-10 missing-evidence list).
