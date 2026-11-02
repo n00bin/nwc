@@ -472,6 +472,15 @@ signs the player out of both tools.
 
 ---
 
+## Patch Notes: topics + "What it means for you" (J-7/J-8, 2026-11-02)
+- **Session start:** run `node scripts/patch-rewrites-due.js`. If it lists console patch notes, tell n00b
+  and offer to write their rewrite in `data/patch-digests.js` (hand-edited, keyed by Arc note id). Our own
+  words only, never Arc's sentences; check our stored values before writing the `siteCheck` line.
+- **Topics fill themselves:** `scripts/update_patch_notes.py` (the daily `update-patch-notes.yml` job) keeps
+  Arc's topic names per note (headings and bold subjects, never paragraphs) and starts a site deploy when
+  it commits (a push with the job's own token does not trigger `deploy.yml` by itself).
+- **"Checked" line:** `patchnotes.html` reads the last successful run of that job from GitHub's public API.
+
 ## News Workflow
 
 ### Staging

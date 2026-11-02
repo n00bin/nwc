@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # to start the site deploy after a commit (see the last step)
 
 jobs:
   update:
@@ -15,54 +16,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch latest patch notes from API
-        run: |
-          python3 << 'PYEOF'
-          import json, urllib.request
-
-          # Fetch all patch notes
-          all_notes = []
-          offset = 0
-          while True:
-              url = f'https://api.arcgames.com/v1.0/games/nw/news?tag=nw-patch-notes&limit=50&offset={offset}'
-              with urllib.request.urlopen(url) as resp:
-                  data = json.loads(resp.read().decode('utf-8'))
-              notes = data.get('news', [])
-              all_notes.extend(notes)
-              if not data.get('more_news') or len(notes) == 0:
-                  break
-              offset += 50
-
-          # Load existing
-          try:
-              with open('data/patch-notes.json', 'r', encoding='utf-8') as f:
-                  existing = json.load(f)
-              existing_ids = {n['id'] for n in existing}
-          except FileNotFoundError:
-              existing_ids = set()
-
-          new_count = sum(1 for n in all_notes if n['id'] not in existing_ids)
-          print(f'Total from API: {len(all_notes)}, New: {new_count}')
-
-          if new_count > 0:
-              # Save JSON
-              with open('data/patch-notes.json', 'w', encoding='utf-8') as f:
-                  json.dump(all_notes, f, indent=2, ensure_ascii=False)
-
-              # Save JS variable version
-              with open('data/patch-notes-var.js', 'w', encoding='utf-8') as f:
-                  f.write('const PATCH_NOTES_DATA = ')
-                  json.dump(all_notes, f, indent=2, ensure_ascii=False)
-                  f.write(';')
-
-              print(f'Updated with {new_count} new patch notes. Total: {len(all_notes)}')
-          else:
-              print('No new patch notes found.')
-          PYEOF
+      - name: Fetch latest patch notes and fill in their topics (J-7/J-8)
+        # Keeps Arc's topic names per note (never their paragraphs); see the script header.
+        run: python3 scripts/update_patch_notes.py
 
       - name: Commit and push if changed
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/patch-notes.json data/patch-notes-var.js
-          git diff --cached --quiet || (git commit -m "Auto-update patch notes $(date -u +%Y-%m-%d)" && git push)
+          if git diff --cached --quiet; then
+            echo "changed=no" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Auto-update patch notes $(date -u +%Y-%m-%d)" && git push
+            echo "changed=yes" >> "$GITHUB_OUTPUT"
+          fi
+
+      # A push made with the workflow's own token does not start other workflows, so new
+      # patch notes would wait for the next human push to go live. Start the deploy directly.
+      - name: Deploy the site if the notes changed
+        if: steps.commit.outputs.changed == 'yes'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main

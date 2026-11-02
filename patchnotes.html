@@ -33,6 +33,30 @@
       transition: border-color 0.15s;
     }
     .pn-card:hover { border-color: var(--accent); }
+    /* J-7/J-8 (2026-11-02): cards hold a head row plus topics / the rewrite underneath */
+    .pn-card { display: block; }
+    .pn-head { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+    .pn-ext { font-size: 0.72rem; color: var(--text-muted); font-weight: 400; margin-left: 0.3rem; white-space: nowrap; }
+    .pn-checked { max-width: 900px; margin: 0.4rem auto 0; padding: 0 1.5rem; color: var(--stat-positive); font-size: 0.86rem; }
+    .pn-short { margin-top: 0.45rem; color: var(--text-primary); font-size: 0.92rem; line-height: 1.5; }
+    .pn-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.45rem; }
+    .pn-tag { font-size: 0.72rem; padding: 0.1rem 0.5rem; border-radius: 999px; border: 1px solid var(--border-default);
+      color: var(--text-secondary); background: none; font-family: var(--font-main); cursor: pointer; }
+    .pn-tag:hover { border-color: var(--accent); color: var(--text-primary); }
+    .pn-tag.pn-arc { color: var(--text-muted); }
+    .pn-tag.pn-site { border-color: var(--stat-positive); color: var(--stat-positive); cursor: default; }
+    .pn-card details { margin-top: 0.45rem; }
+    .pn-card summary { cursor: pointer; color: var(--highlight); font-weight: 600; font-size: 0.88rem; }
+    .pn-sec { margin-top: 0.6rem; }
+    .pn-sec h4 { margin: 0 0 0.2rem; font-family: var(--font-main); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .pn-sec ul { margin: 0; padding-left: 1.1rem; }
+    .pn-sec li { margin: 0.12rem 0; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; }
+    .pn-sec table { border-collapse: collapse; font-size: 0.82rem; margin: 0.25rem 0 0.3rem; }
+    .pn-sec th, .pn-sec td { padding: 0.15rem 0.8rem 0.15rem 0; text-align: left; color: var(--text-secondary); }
+    .pn-sec th { color: var(--text-muted); font-weight: 600; }
+    .pn-site { margin-top: 0.6rem; padding-top: 0.45rem; border-top: 1px dashed var(--border-default); font-size: 0.86rem; color: var(--text-secondary); line-height: 1.5; }
+    .pn-site b { color: var(--text-primary); }
+    mark.pn-hit { background: rgba(227, 179, 65, 0.35); color: inherit; border-radius: 2px; padding: 0 1px; }
     .pn-card a {
       color: var(--text-primary);
       text-decoration: none;
@@ -125,10 +149,11 @@
 <body>
   <nav class="navbar"></nav>
 
-  <p style="max-width:900px;margin:1rem auto 0;padding:0 1.5rem;color:var(--text-secondary);font-size:0.9rem;">Fresh from Arc Games, updated daily. Search or filter to find what changed for your platform.</p>
+  <p style="max-width:900px;margin:1rem auto 0;padding:0 1.5rem;color:var(--text-secondary);font-size:0.9rem;">Fresh from Arc Games, updated daily. Console patches get a plain-words &ldquo;What it means for you&rdquo; summary. Search finds a topic in any patch.</p>
+  <div class="pn-checked" id="pn-checked"></div>
 
   <div class="controls-bar mobile-disclosure-controls" id="patchnotes-controls">
-    <input type="text" class="search-input" id="search" placeholder="Search patch notes...">
+    <input type="text" class="search-input" id="search" placeholder="Search patch notes, e.g. Bard or Lion's Presence">
     <button type="button" class="mobile-filter-toggle" aria-expanded="false" aria-controls="patchnotes-filter-fields">
       <span>Filters</span><span class="mobile-filter-chevron" aria-hidden="true">&#9662;</span>
     </button>
@@ -152,6 +177,7 @@
 
   <script src="js/preview-config.js"></script>
   <script src="js/shared.js"></script>
+  <script src="data/patch-digests.js"></script>
   <script>
     renderNav("NW Patch Notes");
 
@@ -224,7 +250,97 @@
         yearHtml += '<option value="' + yearList[y] + '">' + yearList[y] + '</option>';
       }
       filterYear.innerHTML = yearHtml;
+
+      // J-7/J-8: the feed has no "platforms" field (the badges and the Platform filter never
+      // worked); Arc marks platforms with tags. Build the search text from title + topics +
+      // our rewrite, so a search finds a topic even inside a folded rewrite.
+      var DIG = window.PATCH_DIGESTS || {};
+      for (var pi = 0; pi < patchNotes.length; pi++) {
+        var pn = patchNotes[pi], tg = pn.tags || [];
+        pn.platforms = [];
+        if (tg.indexOf("nw-playstation") !== -1) pn.platforms.push("ps");
+        if (tg.indexOf("nw-launcher") !== -1 || tg.indexOf("nw-steam") !== -1) pn.platforms.push("pc");
+        if (tg.indexOf("nw-xbox") !== -1) pn.platforms.push("xbox");
+        pn._digest = DIG[pn.id] || null;
+        pn._hay = [pn.title].concat(pn.topics || [], digestText(pn._digest)).join(" \n ").toLowerCase();
+      }
+      renderChecked();
       renderList();
+    }
+
+    function digestText(d) {
+      if (!d) return [];
+      var out = [d.short || ""].concat(d.tags || []);
+      if (d.siteCheck) out.push(d.siteCheck.text || "");
+      (d.sections || []).forEach(function (sec) {
+        out.push(sec.h || "");
+        (sec.items || []).forEach(function (it) { out.push(it); });
+        if (sec.table) [sec.table.head].concat(sec.table.rows || []).forEach(function (r) { out.push(r.join(" ")); });
+      });
+      return out;
+    }
+
+    // J-7: "Checked for new patch notes: <when> · newest console patch from Arc: <date>".
+    // The date of the last successful daily check comes from GitHub's public record of that job.
+    function renderChecked() {
+      var el = document.getElementById("pn-checked");
+      var newest = null;
+      for (var i = 0; i < patchNotes.length; i++) {
+        if (patchNotes[i].platforms.indexOf("ps") === -1) continue;
+        var m = patchNotes[i].title.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+        if (m) { newest = new Date(+m[3], +m[1] - 1, +m[2]); break; }
+      }
+      var newestTxt = newest ? " &middot; newest console patch from Arc: " +
+        newest.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "";
+      el.innerHTML = "&#10003; Checked for new patch notes daily" + newestTxt;
+      fetch("https://api.github.com/repos/n00bin/nwc/actions/workflows/update-patch-notes.yml/runs?status=success&per_page=1")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          var run = d && d.workflow_runs && d.workflow_runs[0];
+          if (!run) return;
+          var when = new Date(run.updated_at || run.created_at);
+          var today = new Date(), yest = new Date(Date.now() - 86400000);
+          var label = when.toDateString() === today.toDateString() ? "today" :
+            when.toDateString() === yest.toDateString() ? "yesterday" : "";
+          var day = when.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+          el.innerHTML = "&#10003; Checked for new patch notes: " + (label ? label + " (" + day + ")" : day) + newestTxt;
+        })
+        .catch(function () { /* keep the "daily" wording */ });
+    }
+
+    // Wrap each search word in <mark>; text is escaped first.
+    function hl(text, words) {
+      var safe = escapeHtml(text);
+      if (!words.length) return safe;
+      var re = new RegExp("(" + words.map(function (w) { return escapeHtml(w).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }).join("|") + ")", "gi");
+      return safe.replace(re, '<mark class="pn-hit">$1</mark>');
+    }
+
+    function digestHtml(d, words) {
+      var inner = "", hitInside = false;
+      (d.sections || []).forEach(function (sec) {
+        inner += '<div class="pn-sec"><h4>' + hl(sec.h || "", words) + "</h4>";
+        if (sec.table) {
+          inner += "<table><tr>" + sec.table.head.map(function (c) { return "<th>" + escapeHtml(c) + "</th>"; }).join("") + "</tr>";
+          (sec.table.rows || []).forEach(function (r) { inner += "<tr>" + r.map(function (c) { return "<td>" + hl(c, words) + "</td>"; }).join("") + "</tr>"; });
+          inner += "</table>";
+        }
+        if (sec.items && sec.items.length) inner += "<ul>" + sec.items.map(function (it) { return "<li>" + hl(it, words) + "</li>"; }).join("") + "</ul>";
+        inner += "</div>";
+      });
+      if (d.siteCheck) inner += '<div class="pn-site"><b>Changes numbers on this site?</b> ' + hl(d.siteCheck.text || "", words) + "</div>";
+      if (words.length && inner.indexOf('class="pn-hit"') !== -1) hitInside = true;
+      var html = '<div class="pn-short">' + hl(d.short || "", words) + "</div>";
+      html += '<div class="pn-tags">' + (d.tags || []).map(function (t) { return '<button type="button" class="pn-tag" data-tag="' + escapeHtml(t) + '">' + hl(t, words) + "</button>"; }).join("");
+      if (d.siteCheck && d.siteCheck.label) html += '<span class="pn-tag pn-site">' + escapeHtml(d.siteCheck.label) + "</span>";
+      html += "</div>";
+      html += "<details" + (hitInside ? " open" : "") + "><summary>What it means for you</summary>" + inner + "</details>";
+      return html;
+    }
+
+    function topicsHtml(topics, words) {
+      if (!topics || !topics.length) return "";
+      return '<div class="pn-tags">' + topics.map(function (t) { return '<button type="button" class="pn-tag pn-arc" data-tag="' + escapeHtml(t) + '">' + hl(t, words) + "</button>"; }).join("") + "</div>";
     }
 
     function renderList() {
@@ -233,7 +349,7 @@
       var yearVal = filterYear.value;
 
       var filtered = patchNotes.filter(function(n) {
-        if (query && n.title.toLowerCase().indexOf(query) === -1 && (n.summary || "").toLowerCase().indexOf(query) === -1) return false;
+        if (query && (n._hay || n.title.toLowerCase()).indexOf(query) === -1) return false;
         if (platVal && (!n.platforms || n.platforms.indexOf(platVal) === -1)) return false;
         if (yearVal && n._year !== yearVal) return false;
         return true;
@@ -259,18 +375,29 @@
         var url = "https://www.playneverwinter.com/en/news-details/" + n.id;
         var platforms = n.platforms || [];
 
-        html += '<div class="pn-card">';
-        html += '<a href="' + url + '" target="_blank" rel="noopener">' + escapeHtml(n.title) + '</a>';
+        var words = query ? [query] : [];
+        html += '<div class="pn-card"><div class="pn-head">';
+        html += '<a href="' + url + '" target="_blank" rel="noopener">' + hl(n.title, words) + '<span class="pn-ext">&#8599; Arc&rsquo;s site</span></a>';
         html += '<div class="pn-platforms">';
         if (platforms.indexOf("ps") !== -1) html += '<span class="pn-plat pn-plat-ps">PS</span>';
         if (platforms.indexOf("pc") !== -1) html += '<span class="pn-plat pn-plat-pc">PC</span>';
         if (platforms.indexOf("xbox") !== -1) html += '<span class="pn-plat pn-plat-xbox">XB</span>';
         html += '</div></div>';
+        // Our rewrite when there is one; until then Arc's own topic names (filled in automatically).
+        html += n._digest ? digestHtml(n._digest, words) : topicsHtml(n.topics, words);
+        html += '</div>';
       }
       document.getElementById("pn-list").innerHTML = html;
     }
 
     searchInput.addEventListener("input", renderList);
+    document.getElementById("pn-list").addEventListener("click", function (e) {
+      var tag = e.target.closest("button.pn-tag[data-tag]");
+      if (!tag) return;
+      searchInput.value = tag.getAttribute("data-tag");
+      renderList();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
     filterPlatform.addEventListener("change", renderList);
     filterYear.addEventListener("change", renderList);
   </script>
