@@ -94,3 +94,6 @@ docs/reference/sheets/*.csv
 
 # Scraped NW Hub reference content (local only — do not republish)
 docs/reference/nw-hub/
+
+# Home-page search name list (built in CI by scripts/build-search-index.js at deploy)
+data/search-index.js

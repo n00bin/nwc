@@ -63,6 +63,46 @@
     .news-tag-feature { background: var(--accent); color: #fff; }
     .news-tag-fix { background: var(--stat-positive); color: #fff; }
     .news-tag-data { background: var(--highlight); color: #000; }
+    /* ---- Home first screen (gap J-5) + site search (gap J-6), 2026-11-02 ---- */
+    .home-top { max-width: 960px; margin: 1rem auto 0; padding: 0 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .home-newsline { display: block; text-decoration: none; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.45;
+      padding: 0.6rem 0.9rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bg-surface); }
+    .home-newsline:hover { border-color: var(--accent); }
+    .home-newsline .hn-label { color: var(--highlight); font-weight: 700; margin-right: 0.35rem; }
+    .home-newsline .hn-title { color: var(--text-primary); }
+    .home-search { position: relative; }
+    .home-search input { width: 100%; box-sizing: border-box; min-height: 48px; padding: 0.7rem 1rem 0.7rem 2.6rem; font-size: 1rem;
+      background: var(--bg-surface); color: var(--text-primary); border: 2px solid var(--border-default); border-radius: var(--radius-md); font-family: var(--font-main); }
+    .home-search input:focus { outline: none; border-color: var(--accent); }
+    .home-search .hs-icon { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
+    .hs-results { position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 50; background: var(--bg-elevated); border: 1px solid var(--border-default);
+      border-radius: var(--radius-md); box-shadow: 0 8px 24px rgba(0,0,0,0.45); max-height: 60vh; overflow-y: auto; display: none; }
+    .hs-results.open { display: block; }
+    .hs-results a { display: flex; align-items: baseline; gap: 0.6rem; padding: 0.6rem 0.9rem; text-decoration: none; color: var(--text-primary); border-bottom: 1px solid var(--border-default); }
+    .hs-results a:last-child { border-bottom: none; }
+    .hs-results a:hover, .hs-results a.hs-active { background: var(--bg-hover); }
+    .hs-results .hs-name { font-weight: 600; flex: 1 1 auto; min-width: 0; }
+    .hs-results .hs-type { font-size: 0.75rem; color: var(--highlight); white-space: nowrap; }
+    .hs-results .hs-meta { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; }
+    .hs-results .hs-note { padding: 0.7rem 0.9rem; color: var(--text-muted); font-size: 0.88rem; }
+    .home-preview { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.6rem; text-decoration: none; padding: 0.7rem 1rem;
+      border: 1px solid var(--accent); border-radius: var(--radius-md); background: var(--bg-surface); color: var(--text-secondary); font-size: 0.92rem; }
+    .home-preview:hover { background: var(--bg-hover); }
+    .home-preview strong { color: var(--accent); }
+    .home-preview .hp-go { margin-left: auto; color: var(--accent); font-weight: 600; white-space: nowrap; }
+    .home-tools { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0.75rem; }
+    .home-tool { display: flex; flex-direction: column; justify-content: center; gap: 0.2rem; text-decoration: none; color: inherit; padding: 0.9rem 1rem;
+      background: var(--bg-surface); border: 2px solid var(--border-default); border-radius: var(--radius-lg); transition: border-color 0.2s, transform 0.15s; }
+    .home-tool:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .home-tool .ht-name { font-weight: 700; font-size: 1.05rem; }
+    .home-tool .ht-sub { font-size: 0.84rem; color: var(--text-secondary); }
+    .home-tool.ht-big { border-color: var(--highlight); }
+    .home-tool.ht-big .ht-name { font-size: 1.35rem; color: var(--highlight); }
+    @media (max-width: 640px) {
+      .home-top { padding: 0 0.75rem; }
+      .home-tools { grid-template-columns: 1fr 1fr; }
+      .home-tool.ht-big { grid-column: 1 / -1; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -115,17 +155,19 @@
   </div>
 
   <div id="home-view">
-  <div style="max-width:1100px;margin:1rem auto 1.5rem;padding:0 1.5rem;">
-    <a href="preview.html" class="preview-link" style="display:block;text-decoration:none;border:1px solid var(--border-default);border-radius:var(--radius-md);overflow:hidden;background:var(--bg-surface);transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border-default)'">
-      <img src="images/roadmap.png" alt="Neverwinter Content Roadmap" style="display:block;width:100%;height:auto;">
-      <div style="padding:0.85rem 1.25rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
-        <div>
-          <div style="color:var(--highlight);font-weight:700;font-size:1rem;"><span id="preview-banner-label"></span></div>
-          <div style="color:var(--text-secondary);font-size:0.85rem;">Gear, comps, and screenshots from the upcoming module</div>
-        </div>
-        <span style="background:var(--accent);color:#fff;padding:0.4rem 0.9rem;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;">View Preview &rarr;</span>
-      </div>
-    </a>
+  <div class="home-top">
+    <a class="home-newsline" id="home-newsline" href="#news" style="display:none;"><span class="hn-label">News</span><span id="home-news-date"></span> &middot; <span class="hn-title" id="home-news-title"></span></a>
+    <div class="home-search" role="search">
+      <span class="hs-icon" aria-hidden="true">&#128269;</span>
+      <input type="search" id="home-search" placeholder="Search items, companions, mounts, powers&hellip;" autocomplete="off" spellcheck="false" aria-label="Search the whole site" aria-controls="home-search-results" aria-expanded="false">
+      <div class="hs-results" id="home-search-results" role="listbox" aria-label="Search results"></div>
+    </div>
+    <a href="preview.html" class="home-preview preview-link"><strong id="preview-banner-label">Mod 34 Preview</strong><span>on the PC Preview server now &middot; see what&rsquo;s coming to PS5</span><span class="hp-go">View &rarr;</span></a>
+    <div class="home-tools">
+      <a class="home-tool ht-big" href="toon-forge.html"><span class="ht-name">Toon Forge</span><span class="ht-sub">Build your character and see your real stats</span></a>
+      <a class="home-tool" href="achievement-tracker.html"><span class="ht-name">Achievements</span><span class="ht-sub">Track dungeon achievements per character</span></a>
+      <a class="home-tool" href="mounts.html#planner"><span class="ht-name">Stable Planner</span><span class="ht-sub">Plan your mounts &amp; insignias</span></a>
+    </div>
   </div>
   <div class="landing-grid">
     <a href="mounts.html" class="landing-card" style="text-decoration:none; color:inherit;">
@@ -281,13 +323,143 @@
     document.addEventListener("DOMContentLoaded", function () {
       var el = document.getElementById("preview-banner-label");
       if (el && typeof PREVIEW_LABEL !== "undefined") {
-        el.textContent = PREVIEW_LABEL + " is live";
+        el.textContent = PREVIEW_LABEL;
       }
       var card = document.getElementById("preview-card-label");
       if (card && typeof PREVIEW_LABEL !== "undefined") {
         card.textContent = PREVIEW_LABEL;
       }
     });
+  </script>
+  <script>
+    // ---- Home first screen: latest news line (gap J-5) ----
+    (function () {
+      if (!window.NEWS_DATA || !NEWS_DATA.length) return;
+      var line = document.getElementById("home-newsline");
+      document.getElementById("home-news-date").textContent = NEWS_DATA[0].date;
+      document.getElementById("home-news-title").textContent = NEWS_DATA[0].title;
+      line.style.display = "";
+      line.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.getElementById("tab-news").click();
+        var pick = document.querySelector(".home-tabs + .mobile-view-tab-select");
+        if (pick) pick.selectedIndex = 1;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    })();
+
+    // ---- Site search (gap J-6) ----
+    // Names come from data/search-index.js (built at deploy by scripts/build-search-index.js),
+    // loaded the first time the box is used. Entries: [name, type, ref, meta].
+    (function () {
+      var input = document.getElementById("home-search");
+      var box = document.getElementById("home-search-results");
+      var TYPE_LABEL = {
+        mounts: "Mount", companions: "Companion", insignias: "Insignia", collars: "Collar", artifacts: "Artifact",
+        enchants: "Enchantment", consumables: "Consumable", artisans: "Artisan", "mount-power": "Mount combat power",
+        "equip-power": "Mount equip power", "companion-power": "Companion power", enhancement: "Companion enhancement",
+        lockbox: "Lockbox", gear: "Gear", kits: "Reinforcement kit", "companion-gear": "Companion gear", overloads: "Overload",
+        "campaign-boons": "Campaign boon", "guild-boons": "Guild boon", classes: "Class", races: "Race"
+      };
+      // Earlier = shown first when two names match equally well.
+      var TYPE_RANK = ["mounts", "companions", "mount-power", "equip-power", "companion-power", "enhancement", "insignias",
+        "artifacts", "enchants", "consumables", "lockbox", "collars", "artisans", "classes", "races", "campaign-boons",
+        "guild-boons", "overloads", "kits", "companion-gear", "gear"];
+      // Where each type opens; keep in step with scripts/build-search-index.js and applyDeepLink in js/shared.js.
+      // Mount / companion powers open the Lookup list searched to the power: it lists every mount or
+      // companion that has it, and opens it straight away when only one does.
+      var MAIN = {
+        mounts: function (n, r) { return "mounts.html?select=" + r + "&q="; },
+        companions: function (n, r) { return "companions.html?select=" + r + "&q="; },
+        insignias: function () { return "mounts.html?tab=insignias&q="; },
+        collars: function () { return "mounts.html?tab=collars&q="; },
+        artifacts: function () { return "artifacts.html?q="; },
+        enchants: function () { return "artifacts.html?tab=enchants&q="; },
+        consumables: function () { return "consumables.html?q="; },
+        artisans: function () { return "professions.html?tab=artisans&q="; },
+        "mount-power": function () { return "mounts.html?q="; },
+        "equip-power": function () { return "mounts.html?q="; },
+        "companion-power": function () { return "companions.html?q="; },
+        enhancement: function () { return "companions.html?tab=enhancements&q="; },
+        lockbox: function () { return "consumables.html?tab=lockboxes&q="; }
+      };
+      function slugify(s) {
+        return String(s).toLowerCase().replace(/'/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "item";
+      }
+      function hrefFor(e) {
+        if (MAIN[e[1]]) return MAIN[e[1]](e[0], e[2]) + encodeURIComponent(e[0]);
+        return "db/" + e[1] + "/" + (typeof e[2] === "number" ? e[2] + "-" + slugify(e[0]) : e[2]) + ".html";
+      }
+      var state = "idle", rows = [], active = -1, lower = null;
+      function load() {
+        if (state !== "idle") return;
+        state = "loading";
+        var sc = document.createElement("script");
+        sc.src = "data/search-index.js";
+        sc.onload = function () {
+          state = window.SEARCH_INDEX ? "ready" : "failed";
+          if (state === "ready") lower = SEARCH_INDEX.map(function (e) { return e[0].toLowerCase(); });
+          update();
+        };
+        sc.onerror = function () { state = "failed"; update(); };
+        document.head.appendChild(sc);
+      }
+      function show(html) { box.innerHTML = html; box.classList.add("open"); input.setAttribute("aria-expanded", "true"); }
+      function hide() { box.classList.remove("open"); input.setAttribute("aria-expanded", "false"); active = -1; }
+      function update() {
+        var q = input.value.trim().toLowerCase();
+        if (!q) { hide(); return; }
+        if (state === "loading" || state === "idle") { load(); show('<div class="hs-note">Loading the name list&hellip;</div>'); return; }
+        if (state === "failed") { show('<div class="hs-note">Search isn&rsquo;t available right now. Use the menu to pick a page.</div>'); return; }
+        var tokens = q.split(/\s+/), hits = [];
+        for (var i = 0; i < lower.length; i++) {
+          var n = lower[i], ok = true;
+          for (var k = 0; k < tokens.length; k++) { if (n.indexOf(tokens[k]) === -1) { ok = false; break; } }
+          if (!ok) continue;
+          var score = n === q ? 0 : n.indexOf(q) === 0 ? 1 : (" " + n).indexOf(" " + tokens[0]) !== -1 ? 2 : 3;
+          hits.push([score, i]);
+        }
+        hits.sort(function (a, b) {
+          if (a[0] !== b[0]) return a[0] - b[0];
+          var ea = SEARCH_INDEX[a[1]], eb = SEARCH_INDEX[b[1]];
+          var ta = TYPE_RANK.indexOf(ea[1]), tb = TYPE_RANK.indexOf(eb[1]);
+          if (ta !== tb) return ta - tb;
+          return ea[0].length - eb[0].length || (ea[0] < eb[0] ? -1 : 1);
+        });
+        rows = hits.slice(0, 12).map(function (h) { return SEARCH_INDEX[h[1]]; });
+        active = -1;
+        if (!rows.length) { show('<div class="hs-note">Nothing matches &ldquo;' + escapeHtml(input.value.trim()) + '&rdquo;.</div>'); return; }
+        var html = "";
+        for (var r = 0; r < rows.length; r++) {
+          var e = rows[r];
+          html += '<a role="option" href="' + escapeHtml(hrefFor(e)) + '"><span class="hs-name" translate="no">' + escapeHtml(e[0]) + "</span>" +
+            (e[3] ? '<span class="hs-meta">' + escapeHtml(e[3]) + "</span>" : "") +
+            '<span class="hs-type">' + escapeHtml(TYPE_LABEL[e[1]] || e[1]) + "</span></a>";
+        }
+        if (hits.length > rows.length) html += '<div class="hs-note">' + (hits.length - rows.length) + " more &mdash; keep typing to narrow it down.</div>";
+        show(html);
+      }
+      function setActive(i) {
+        var links = box.querySelectorAll("a");
+        if (!links.length) return;
+        active = (i + links.length) % links.length;
+        for (var j = 0; j < links.length; j++) links[j].classList.toggle("hs-active", j === active);
+        links[active].scrollIntoView({ block: "nearest" });
+      }
+      var timer;
+      input.addEventListener("focus", load);
+      input.addEventListener("input", function () { clearTimeout(timer); timer = setTimeout(update, 60); });
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowDown") { e.preventDefault(); setActive(active + 1); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); setActive(active - 1); }
+        else if (e.key === "Escape") { input.value = ""; hide(); }
+        else if (e.key === "Enter") {
+          var links = box.querySelectorAll("a");
+          if (links.length) { e.preventDefault(); window.location.href = links[active >= 0 ? active : 0].getAttribute("href"); }
+        }
+      });
+      document.addEventListener("click", function (e) { if (!e.target.closest(".home-search")) hide(); });
+    })();
   </script>
   <script src="js/analytics.js"></script>
 </body>

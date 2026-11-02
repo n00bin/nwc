@@ -751,3 +751,47 @@ function highlightMatch(text, query) {
   });
   setInterval(check, POLL_MS);
 })();
+
+// ---- Open a page AT something from a link (gap J-6, 2026-11-02) ----
+// ?tab=<name>  clicks the view tab with id "tab-<name>" or data-tab / data-consumables-tab "<name>"
+// ?q=<text>    types <text> into the search box of the view that is showing
+// ?select=<id> clicks the list row with that data-id (Mounts / Companions detail panel);
+//              without it, a ?q= that leaves exactly one list row opens that row
+// Used by the home-page search; also works for links in reports, Discord or video descriptions,
+// e.g. mounts.html?select=14&q=Ebon%20Riding%20Lizard or mounts.html?tab=insignias&q=barbed%20dom
+function applyDeepLink() {
+  var params;
+  try { params = new URLSearchParams(window.location.search); } catch (e) { return; }
+  var tab = params.get("tab"), text = params.get("q"), sel = params.get("select");
+  if (!tab && !text && !sel) return;
+  if (tab) {
+    var safe = tab.replace(/[^a-z0-9_-]/gi, "");
+    var btn = document.getElementById("tab-" + safe) ||
+      document.querySelector('.view-tab[data-tab="' + safe + '"], .view-tab[data-consumables-tab="' + safe + '"]');
+    if (btn) btn.click();
+  }
+  if (text) {
+    var inputs = document.querySelectorAll("input.search-input");
+    for (var i = 0; i < inputs.length; i++) {
+      var bar = inputs[i].closest(".controls-bar") || inputs[i].parentElement;
+      if (bar && window.getComputedStyle(bar).display === "none") continue;
+      if (bar && bar.offsetParent === null && window.getComputedStyle(bar).position !== "fixed") continue;
+      inputs[i].value = text;
+      inputs[i].dispatchEvent(new Event("input", { bubbles: true }));
+      break;
+    }
+  }
+  var row = null;
+  if (sel) {
+    row = document.querySelector('.list-item[data-id="' + String(sel).replace(/[^0-9]/g, "") + '"]');
+  } else if (text) {
+    // A search that leaves exactly one row in a list (e.g. the one mount with that power) opens it.
+    var shown = Array.prototype.filter.call(document.querySelectorAll(".list-item[data-id]"), function (el) { return el.offsetParent !== null; });
+    if (shown.length === 1) row = shown[0];
+  }
+  if (row) {
+    row.click();
+    if (row.scrollIntoView) row.scrollIntoView({ block: "nearest" });
+  }
+}
+window.addEventListener("load", function () { setTimeout(applyDeepLink, 0); });
