@@ -8227,10 +8227,11 @@
              ${bonusBlocks}
            </div>`
         : "";
-      const _cpNotes = cleanNote(p.notes);
+      // J-10: the game's tooltip words only; mount power notes are internal and never shown.
+      const _cpNotes = p.tooltip || "";
       const notesBlock = _cpNotes
         ? `<div class="gear-card-section">
-             <div class="gear-card-section-title">Notes</div>
+             <div class="gear-card-section-title">Tooltip</div>
              <div class="gear-card-set-text">${_escHTML(_cpNotes)}</div>
            </div>`
         : "";
@@ -8267,10 +8268,11 @@
              <div class="gear-card-stat-line">+${dispCR.toLocaleString()} to all stats</div>
            </div>`
         : "";
-      const _epNotes = cleanNote(p.notes);
+      // J-10: the game's tooltip words only; mount power notes are internal and never shown.
+      const _epNotes = p.tooltip || "";
       const notesBlock = _epNotes
         ? `<div class="gear-card-section">
-             <div class="gear-card-section-title">Notes</div>
+             <div class="gear-card-section-title">Tooltip</div>
              <div class="gear-card-set-text">${_escHTML(_epNotes)}</div>
            </div>`
         : "";

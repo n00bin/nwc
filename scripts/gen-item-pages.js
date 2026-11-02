@@ -572,6 +572,7 @@ const INSIGNIA_TIER_ORDER = ['Uncommon', 'Rare', 'Epic', 'Legendary', 'Mythic', 
 var cPowers = loadJSON('companion_powers.json');
 var cEnh = loadJSON('companion_enhancements.json');
 var mCombat = loadJSON('mount_combat_powers.json');
+var MOUNT_TT = require(path.join(__dirname, '..', 'js', 'mount-tooltip.js'));   // same code as mounts.html
 var mEquip = loadJSON('mount_equip_powers.json');
 var mBonuses = loadJSON('mount_insignia_bonuses.json');
 var mInsignias = loadJSGlobal('data/mount-insignias.js', 'MOUNT_INSIGNIAS_DATA');
@@ -710,13 +711,14 @@ build('mounts', loadJSON('mounts.json'), {
       }
       var recharge = cp.rechargeTimeSeconds != null ? '<div class="item-effect" style="margin-bottom:0.4rem">Recharge ' + cp.rechargeTimeSeconds + 's</div>' : '';
       var tbl = rows ? '<div style="overflow-x:auto"><table class="tt"><thead><tr><th>Effect</th><th>Mythic</th><th>Celestial</th></tr></thead><tbody>' + rows + '</tbody></table></div>' : '';
-      var cnote = showText(cp.notes);
-      parts.push('<div class="item-sec"><h2>Combat Power — ' + esc(cp.name) + '</h2>' + recharge + tbl + (cnote ? '<div class="item-effect" style="margin-top:0.4rem">' + esc(cnote) + '</div>' : '') + '</div>');
+      // J-10/J-2: the game's tooltip words only (notes are internal), numbers at Celestial like the Mounts page default.
+      var cnote = MOUNT_TT.mountTooltipHtml(cp, 'combat', 'Celestial');
+      parts.push('<div class="item-sec"><h2>Combat Power — ' + esc(cp.name) + '</h2>' + recharge + tbl + (cnote ? '<div class="item-effect" style="margin-top:0.4rem">' + cnote + '</div>' : '') + '</div>');
       if (rows) usedTT = true;
     }
     if (ep) {
-      var enote = showText(ep.notes);
-      parts.push('<div class="item-sec"><h2>Equip Power — ' + esc(ep.name) + '</h2>' + statsTable(ep.stats) + '<div class="item-effect" style="margin-top:0.3rem">Item Level ' + fmt(ep.item_level) + ' · Combined Rating ' + fmt(ep.combinedRating) + '</div>' + (enote ? '<div class="item-effect" style="margin-top:0.3rem">' + esc(enote) + '</div>' : '') + '</div>');
+      var enote = MOUNT_TT.mountTooltipHtml(ep, 'equip', 'Celestial');
+      parts.push('<div class="item-sec"><h2>Equip Power — ' + esc(ep.name) + '</h2>' + statsTable(ep.stats) + '<div class="item-effect" style="margin-top:0.3rem">Item Level ' + fmt(ep.item_level) + ' · Combined Rating ' + fmt(ep.combinedRating) + '</div>' + (enote ? '<div class="item-effect" style="margin-top:0.3rem">' + enote + '</div>' : '') + '</div>');
     }
     if (bonus) {
       var bmeta = [];
@@ -734,7 +736,7 @@ build('mounts', loadJSON('mounts.json'), {
     }
     var meta = [];
     var ms = showText(m.source); if (ms) meta.push('Source: ' + esc(ms));
-    var mn = showText(m.notes); if (mn) meta.push(esc(mn));
+    if (m.description) meta.push(esc(m.description));   // J-10: game flavor line only; m.notes is internal
     if (meta.length) parts.push('<div class="item-sec"><h2>Details</h2><div class="item-effect">' + meta.join(' · ') + '</div></div>');
     return {
       title: name + ' — Neverwinter Mount — Compendium',

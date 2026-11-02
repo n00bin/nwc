@@ -13,11 +13,13 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 - **Insignias tab shows the real names** (live 2026-11-02). Each row is the insignia as it appears in your bag ("Barbed Insignia of Dominance"), with the slot it fits, a search box, and one line explaining that the first word is the slot type and the rest is the stats.
 - **Report a wrong number from any power card** (live 2026-11-02). Every mount and companion power card has a "Report a wrong number" link that opens the Reports form with the item already filled in.
 - **Patch notes in plain words** (live 2026-11-02). Each patch shows its topics, console patches get a short "What it means for you" summary (starting with 10/08), search now finds topics inside any patch, and the page says when it last checked Arc for new notes.
+- **Mount power text matches its numbers** (live 2026-11-02). The text under each mount power now copies the numbers from its table and changes with the Mythic/Celestial switch, so the two can never disagree. A few numbers that have no table row yet show a small grey note saying which tier they were read at. Equip powers that only give stats no longer repeat them in a text box.
 - **Mod 34 Preview follow-up** (staged locally 2026-10-22). Added the twelve Epic Blighted armor tooltips, two Extinguished artifact armor examples, six Glacial overloads, the Troll Skull Key, Reghed Ceremonial Horn and two vanity rewards. The page now shows captured armor upgrade costs, stat modification windows and store prices. The Currency Tracker also knows Devourer's Mark (Master): 90 per week, maximum 5,000. These values come from the PC Preview server and need checking when the module reaches PS5.
 
 ### Data Additions
 
 ### Bug Fixes
+- **Mount pages showed our working notes** (live 2026-11-02). Some mount power cards and mount notes showed our internal working notes (tier maths, "TBD", sources). Mounts now show only the game's own tooltip wording, and the old "Notes" box is now "Description" with the mount's flavor line. Same fix in Toon Forge's mount picker and the mount item pages.
 - **Mod 34 Preview link missing from the menu** (live 2026-11-02). Most pages left it out of the menu; every page has it now.
 - **Patch Notes platform filter showed nothing** (live 2026-11-02). Picking PlayStation, PC or Xbox now filters correctly, and the PS/PC/XB badges show on each patch.
 - **Reports page: report buttons at the top** (live 2026-11-01). "Report a wrong number" and "Report a missing item" now sit above the list and jump straight to the form with the category picked, instead of the form waiting below every report.

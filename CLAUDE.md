@@ -213,6 +213,14 @@ For procs whose effect is a stat buff, `procEffect.statEffects` carries structur
 
 Insignia types: Crescent, Barbed, Illuminated, Enlightened, Regal, `*` (universal)
 
+### Mount text shown to players (J-10/J-2, 2026-11-02)
+- Power cards show ONLY `tooltip` (the game's words, numbers as read; `""` = no text box). `notes` is internal and
+  never shown, here or in Toon Forge / db pages. Mounts show `description` (the game's flavor line) under "Description".
+- `tooltipIL` = item level the text was read at; numbers equal to a table row follow the Mythic/Celestial switch.
+  `tooltipTagged` = numbers with no row (written with unit, "3s" = 3-second stun): shown as written + grey
+  "(at <tier>)". One copy of the logic: `js/mount-tooltip.js` (mounts.html + scripts/gen-item-pages.js).
+- New mount power: write `tooltip` + `tooltipIL` from the screenshot. Open tags to bring up to speed: docs/data_issues.md "J-2b".
+
 ---
 
 ## Supabase Backend (Reports System)

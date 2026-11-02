@@ -1,5 +1,25 @@
 # Data Issues To Investigate
 
+## OPEN J-2b: 68 mount-text numbers still carry a grey tier tag (2026-11-02, n00b: "leave them for now ... get them up to speed")
+- Since J-10/J-2, mount power texts (`tooltip` in ../data/mount_combat_powers.json, mount_equip_powers.json) copy
+  their table row and follow the Mythic/Celestial switch (js/mount-tooltip.js). These numbers have NO table row,
+  so they stay as the game wrote them with a grey "(at <read tier>)" tag (`tooltipTagged`). Goal: every number
+  follows the switch like the rest.
+- Two ways to close one (n00b's call, J-2b options): (a) add the missing table row from a Celestial screenshot of
+  that power; (b) scale it with the proven item-level ratio (every number TYPE here already has a screenshot pair
+  showing it scales: magnitudes, slows, CC lengths, shields/heals, equip procs).
+- Ability scores (+3 INT etc.) scale but the game's rounding at Celestial (3 x 1.3125 = 3.94) is unknown: needs one
+  Celestial screenshot of Neverwinter Armament, Resonating Screech or Tenser's Transformation.
+- No tier on file, so no tag and no scaling: Opportunism 12% (equip 2), Celestial Luck +9,000 (equip 17). One
+  screenshot each.
+- Radiant Weapon 2% (Providence, Aureal Armament) is flat at every tier (screenshot): never tag or scale it.
+- The list (power: tagged numbers):
+  - Read at Mythic: Resonating Screech (combat 2): 3s, 3; Mystic Fireball (combat 5): 460; Call of the Heavens (combat 7): 60%; Mythic Tyrannosaurus Rex'em (combat 9): 6s; Neverwinter Armament (combat 11): 1s, 3; Bigby's Crushing Hand (combat 12): 450, 3s; Sand Coffin (combat 15): 20%; Lolth's Gift (combat 16): 1.5%, 0.75%; Uni's Charge (combat 17): 450, 3s, 5%; Hamstphere (combat 18): 20%, 45%; Harrowing Screech (combat 20): 3s; Hot Streak (combat 22): 460; School's in Session (combat 23): 4.5s; Infernal Pounce (combat 34): 300, 3s; Terrifying Roar (combat 95): 3s; Reptilian Skin (equip 25): 2,700, 300; Providence (equip 27): 6%; Quick Action (equip 32): 6%; Rejuvenation (equip 44): 12%
+  - Read at IL 3,500: Invigorating Foxfire (combat 24): 17.5%; Marvelous Balloon Bombardment (combat 39): 9%; Meteoric Impact (combat 45): 3.5s; Rush of Torment (combat 46): 70%; Hell on Faerûn (combat 49): 1,750; Commander Tyrannosaurus Rex'em (combat 54): 7s; Warpainted Tyrannosaurus Rex'em (combat 55): 7s; Call of the Stars (combat 56): 70%; Imperious Stomp (combat 65): 3.5s; Rush of Despair (combat 68): 70%; Tenser's Transformation (combat 69): 3; Divine Intervention (combat 72): 117; Frozen Stamp (combat 76): 3.5s; Grand Inspiration (combat 78): 17.5%, 17.5%, 17.5%; Radical Radiance (combat 79): 17.5%, 17.5%; Ground Slam (combat 83): 3.5s; Lunar Fireball (combat 85): 875
+  - Read at Celestial: Necrotic Roar (combat 26): 3.3s; Grubshank SMAAASH (combat 30): 2,264; Call of the Cosmos (combat 74): 78.8%; Protector's Hand (combat 86): 26.3%, 6.6%; Hell's Impact (combat 87): 151, 14.8%; Stabby Stabs (combat 88): 19.7%, 6.6%; Dark Call (combat 96): 2.5; The High Ground (equip 51): 19,688; Seeing Red (equip 56): 13,125
+  - Read at IL 3,375: Rejuvenating Favor (combat 32): 22.5%; Phantasmic Wake (combat 35): 518, 52.9%; Winter's Wrath (combat 91): 25.3%
+  - Read at Legendary: Rain of Spines (combat 58): 3s; Aureal Armament (combat 59): 13.3%; Piercing Screech (combat 61): 2s, 2
+
 ## OPEN Renewed Delzoun Helm needs n00b's collection tooltip (2026-11-01, reports #348-#351, R-3)
 - Not on the site and not in any archive. Reports agree on IL 5,200 / CR 4,680 (same as the Renewed Delzoun
   Cuirass, id 7451, report #316) but their stats can't be right: Awareness 9,675 vs 13,575, and Defense +

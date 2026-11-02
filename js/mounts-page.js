@@ -555,9 +555,9 @@
       }
       html += "</div>"; // close proc-block
 
-      if (cp.notes) {
-        html += '<div class="effect-text">' + escapeHtml(cleanNotes(cp.notes)) + "</div>";
-      }
+      // J-10/J-2: the game's tooltip words only (notes are internal); numbers follow the tier toggle.
+      var cpTip = mountTooltipHtml(combatMap[mount.combatRef], "combat", mountPowerTier);
+      if (cpTip) html += '<div class="effect-text">' + cpTip + "</div>";
       html += trustLineHtml(mount.name + ": " + cp.name, cp.checkedInGame);
     } else {
       html += '<div class="detail-meta">No combat power data</div>';
@@ -584,9 +584,8 @@
       }
       html += "</div>"; // close proc-block
 
-      if (ep.notes) {
-        html += '<div class="effect-text">' + escapeHtml(cleanNotes(ep.notes)) + "</div>";
-      }
+      var epTip = mountTooltipHtml(equipMap[mount.equipRef], "equip", mountPowerTier);
+      if (epTip) html += '<div class="effect-text">' + epTip + "</div>";
       html += trustLineHtml(mount.name + ": " + ep.name, ep.checkedInGame);
     } else {
       html += '<div class="detail-meta">No equip power data</div>';
@@ -630,10 +629,10 @@
       html += '<div class="detail-meta">No compatible insignia bonuses</div>';
     }
 
-    // ---- Notes ----
-    if (mount.notes) {
-      html += '<div class="section-header">Notes</div>';
-      html += '<div class="effect-text">' + escapeHtml(cleanNotes(mount.notes)) + "</div>";
+    // ---- Description (J-10): the game's flavor line only; mount.notes is internal ----
+    if (mount.description) {
+      html += '<div class="section-header">Description</div>';
+      html += '<div class="effect-text">' + escapeHtml(mount.description) + "</div>";
     }
 
     detailPanel.innerHTML = html;
