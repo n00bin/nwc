@@ -13,3 +13,6 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 ### Data Additions
 
 ### Bug Fixes
+- **Reports page: report buttons at the top** (live 2026-11-01). "Report a wrong number" and "Report a missing item" now sit above the list and jump straight to the form with the category picked, instead of the form waiting below every report.
+- **Report titles in plain words** (live 2026-11-01). Corrections sent from Toon Forge now read like "Pack Tactics: Combat Advantage 2,953, player says 4,400" instead of showing internal field names, and older reports are shown the same way.
+- **Toon Forge menu said Mod 33 Preview** (live 2026-11-01). It now says Mod 34 Preview and follows the same setting as the rest of the site.
