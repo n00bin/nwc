@@ -419,8 +419,9 @@
 
   <!-- Insignias controls -->
   <div class="controls-bar" id="insignias-controls" style="display:none;">
-    <select class="filter-select" id="filter-insignia-template">
-      <option value="">All Names</option>
+    <input type="search" class="search-input" id="insignia-search" placeholder="Search insignias, e.g. Barbed Insignia of Dominance" autocomplete="off" aria-label="Search insignias">
+    <select class="filter-select" id="filter-insignia-template" aria-label="Stat group">
+      <option value="">All Stat Groups</option>
     </select>
     <select class="filter-select" id="filter-insignia-tier">
       <option value="">All Qualities</option>
@@ -441,6 +442,10 @@
     </select>
   </div>
   <div id="insignias-view" style="display:none; max-width:1200px; margin:0 auto; padding:1rem 1.5rem 3rem;">
+    <div class="ranking-card" style="flex-direction:column;align-items:stretch;margin-bottom:1rem;">
+      <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.6;">An insignia's <strong>first word is the slot it fits</strong>: a <strong>Barbed</strong> Insignia of Dominance goes in a Barbed slot or a Universal slot. <strong>The rest of the name is its stats</strong> (Dominance = Power + Forte). A &#9733; preferred slot gives +20%.</div>
+    </div>
+    <div id="insignias-count" class="list-count"></div>
     <div id="insignias-list"></div>
   </div>
 

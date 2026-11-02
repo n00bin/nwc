@@ -912,6 +912,7 @@
   var filterInsigniaTemplate = document.getElementById("filter-insignia-template");
   var filterInsigniaTier = document.getElementById("filter-insignia-tier");
   var filterInsigniaCategory = document.getElementById("filter-insignia-category");
+  var filterInsigniaSearch = document.getElementById("insignia-search");
 
   var tabBonuses       = document.getElementById("tab-bonuses");
   var bonusesView      = document.getElementById("bonuses-view");
@@ -1179,84 +1180,96 @@
     return byTemplate;
   }
 
+  // One row per REAL insignia, named as in game ("Barbed Insignia of Dominance"), per quality.
+  // Gap J-9 (2026-11-02): the old view grouped by stat group ("Dominance") with slot-type pills,
+  // so the name in a player's bag never appeared on screen and could not be searched.
+  function insigniaSearchTokens() {
+    var q = filterInsigniaSearch ? filterInsigniaSearch.value.trim().toLowerCase() : "";
+    return q ? q.split(/\s+/) : [];
+  }
+
   function renderInsignias() {
-    if (typeof MOUNT_INSIGNIAS_TIER_SCALING === "undefined") {
+    if (typeof MOUNT_INSIGNIAS_TIER_SCALING === "undefined" || typeof MOUNT_INSIGNIAS_DATA === "undefined") {
       document.getElementById("insignias-list").innerHTML =
         '<div class="empty-state">Insignia data not loaded.</div>';
       return;
     }
-    var byTemplate = buildInsigniaTemplates();
-    var templates = Object.keys(byTemplate).sort();
     var templateFilter = filterInsigniaTemplate.value;
     var tierFilter = filterInsigniaTier.value;
     var categoryFilter = filterInsigniaCategory.value;
+    var tokens = insigniaSearchTokens();
+
+    // Stat group, then quality (best first), then slot type: the real names that share
+    // stats sit next to each other at each quality.
+    var insignias = MOUNT_INSIGNIAS_DATA.slice().sort(function (a, b) {
+      if (a.statTemplate !== b.statTemplate) return a.statTemplate < b.statTemplate ? -1 : 1;
+      return a.category < b.category ? -1 : (a.category > b.category ? 1 : 0);
+    });
 
     var rows = [];
-    for (var ti = 0; ti < templates.length; ti++) {
-      var t = byTemplate[templates[ti]];
-      if (templateFilter && t.template !== templateFilter) continue;
-      if (categoryFilter && t.categories.indexOf(categoryFilter) === -1) continue;
-
-      for (var tii = 0; tii < INSIGNIA_TIER_ORDER.length; tii++) {
-        var tier = INSIGNIA_TIER_ORDER[tii];
-        if (tierFilter && tier !== tierFilter) continue;
-        var scaling = MOUNT_INSIGNIAS_TIER_SCALING[tier];
-        if (!scaling) continue;
-        rows.push({
-          template:        t.template,
-          tier:            tier,
-          item_level:      scaling.item_level,
-          multiplier:      scaling.multiplier,
-          stats:           t.stats,
-          combinedRating:  Math.round(t.baseCombinedRating * scaling.multiplier),
-          categories:      t.categories
-        });
+    for (var tii = 0; tii < INSIGNIA_TIER_ORDER.length; tii++) {
+      var tier = INSIGNIA_TIER_ORDER[tii];
+      if (tierFilter && tier !== tierFilter) continue;
+      var scaling = MOUNT_INSIGNIAS_TIER_SCALING[tier];
+      if (!scaling) continue;
+      for (var ii = 0; ii < insignias.length; ii++) {
+        var ins = insignias[ii];
+        if (templateFilter && ins.statTemplate !== templateFilter) continue;
+        if (categoryFilter && ins.category !== categoryFilter) continue;
+        if (tokens.length) {
+          var hay = (ins.name + " " + tier + " " + ins.stats.map(function (s) { return prettyInsigniaStat(s.stat); }).join(" ")).toLowerCase();
+          var ok = true;
+          for (var k = 0; k < tokens.length; k++) { if (hay.indexOf(tokens[k]) === -1) { ok = false; break; } }
+          if (!ok) continue;
+        }
+        rows.push({ ins: ins, tier: tier, scaling: scaling });
       }
     }
+    rows.sort(function (a, b) {
+      if (a.ins.statTemplate !== b.ins.statTemplate) return a.ins.statTemplate < b.ins.statTemplate ? -1 : 1;
+      var ta = INSIGNIA_TIER_ORDER.indexOf(a.tier), tb = INSIGNIA_TIER_ORDER.indexOf(b.tier);
+      if (ta !== tb) return ta - tb;
+      return a.ins.category < b.ins.category ? -1 : (a.ins.category > b.ins.category ? 1 : 0);
+    });
+
+    var countEl = document.getElementById("insignias-count");
+    if (countEl) countEl.textContent = rows.length + (rows.length === 1 ? " insignia" : " insignias");
 
     if (rows.length === 0) {
       document.getElementById("insignias-list").innerHTML =
-        '<div class="empty-state">No insignias match your filters.</div>';
+        '<div class="empty-state">No insignias match your search or filters.</div>';
       return;
     }
 
     var html = '<table class="insignias-table"><thead><tr>'
-      + '<th>Name</th><th>Quality</th><th>Item Level</th><th>Stats</th><th>Slot Types</th>'
+      + '<th>Name</th><th>Quality</th><th>Item Level</th><th>Stats</th><th>Fits</th>'
       + '</tr></thead><tbody>';
     for (var ri = 0; ri < rows.length; ri++) {
       var r = rows[ri];
+      var mult = r.scaling.multiplier;
       var tierClass = INSIGNIA_TIER_CLASS[r.tier] || "";
-      var insIconFile = window.INSIGNIA_IMAGES && r.categories && r.categories.length
-        && window.INSIGNIA_IMAGES[r.categories[0] + " Insignia of " + r.template];
+      var insIconFile = window.INSIGNIA_IMAGES && window.INSIGNIA_IMAGES[r.ins.name];
       var insIcon = insIconFile ? '<img loading="lazy" class="list-icon" src="images/insignias/' + insIconFile + '" alt="" style="vertical-align:middle;margin-right:0.35rem;">' : "";
       html += "<tr>";
-      html += '<td style="white-space:nowrap;">' + insIcon + escapeHtml(r.template) + "</td>";
+      html += '<td style="white-space:nowrap;font-weight:600;">' + insIcon + escapeHtml(r.ins.name) + "</td>";
       html += '<td><span class="' + tierClass + '" style="font-weight:600;">' + r.tier + "</span></td>";
-      html += "<td>" + r.item_level + "</td>";
-      // Stats column
+      html += "<td>" + r.scaling.item_level + "</td>";
       html += "<td>";
-      for (var si = 0; si < r.stats.length; si++) {
-        var st = r.stats[si];
+      for (var si = 0; si < r.ins.stats.length; si++) {
+        var st = r.ins.stats[si];
         var label = prettyInsigniaStat(st.stat);
-        var val;
-        var suffix = "";
+        var val, suffix = "";
         if (st.type === "percent") {
-          val = Math.round(st.value * r.multiplier * 10) / 10;
+          val = Math.round(st.value * mult * 10) / 10;
           suffix = "%";
         } else {
-          val = Math.round(st.value * r.multiplier);
+          val = Math.round(st.value * mult);
         }
         html += '<span class="stat-pill">' + escapeHtml(label) + ": " + val + suffix + "</span> ";
       }
-      html += '<span class="stat-pill stat-pill-cr">Combined Rating: ' + r.combinedRating + "</span>";
+      html += '<span class="stat-pill stat-pill-cr">Combined Rating: ' + Math.round(r.ins.combinedRating * mult) + "</span>";
       html += "</td>";
-      // Slot types — pill color tinted by row quality
-      html += "<td>";
-      for (var ci = 0; ci < r.categories.length; ci++) {
-        html += '<span class="insignia-cat-pill" data-tier="' + r.tier + '">'
-              + escapeHtml(r.categories[ci]) + "</span> ";
-      }
-      html += "</td>";
+      html += '<td style="color:var(--text-secondary);white-space:nowrap;">' + escapeHtml(r.ins.category) + " or Universal slot</td>";
       html += "</tr>";
     }
     html += "</tbody></table>";
@@ -1288,6 +1301,7 @@
     filterInsigniaTemplate.addEventListener("change", renderInsignias);
     filterInsigniaTier.addEventListener("change", renderInsignias);
     filterInsigniaCategory.addEventListener("change", renderInsignias);
+    if (filterInsigniaSearch) filterInsigniaSearch.addEventListener("input", renderInsignias);
   }
 
   // ============================================================
