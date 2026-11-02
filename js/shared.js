@@ -795,3 +795,21 @@ function applyDeepLink() {
   }
 }
 window.addEventListener("load", function () { setTimeout(applyDeepLink, 0); });
+
+// ---- "Checked in game" + "Report a wrong number" line under an item card (gap J-3, 2026-11-02) ----
+// subject: what the report is about, e.g. "Ebon Riding Lizard: Relentless Hunter".
+// checked: the entry's checkedInGame field { date: "YYYY-MM-DD", tier: "Mythic" }, set only for values
+// read from one of n00b's in-game screenshots (a screenshot counts as checked in game). Without it
+// the line shows just the report link; there is never an "unchecked" warning.
+function trustLineHtml(subject, checked) {
+  var left = "";
+  if (checked && checked.date) {
+    var d = new Date(checked.date + "T12:00:00Z");
+    var when = isNaN(d.getTime()) ? checked.date :
+      d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+    left = '<span class="trust-checked">&#10003; Checked in game &middot; ' + escapeHtml(when) +
+      (checked.tier ? " (" + escapeHtml(checked.tier) + ")" : "") + "</span>";
+  }
+  return '<div class="trust-line">' + left +
+    '<a class="trust-report" href="reports.html?about=' + encodeURIComponent(subject) + '">Report a wrong number</a></div>';
+}

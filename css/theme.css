@@ -540,3 +540,9 @@ a:hover {
   /* Footer links become real tap targets. */
   .site-footer a { display: inline-block; padding: 0.5rem 0.6rem; }
 }
+
+/* "Checked in game" + "Report a wrong number" under item cards (gap J-3) */
+.trust-line { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.3rem 0.75rem;
+  font-size: 0.8rem; margin: 0.35rem 0.15rem 0.2rem; }
+.trust-line .trust-checked { color: var(--stat-positive, #3fb950); }
+.trust-line .trust-report { margin-left: auto; color: var(--accent); text-decoration: underline; white-space: nowrap; }

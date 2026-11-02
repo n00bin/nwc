@@ -426,6 +426,7 @@
       }
 
       html += "</div>"; // close proc-block
+      html += trustLineHtml(companion.name + ": " + pw.name, pw.checkedInGame);
     } else {
       html += '<div class="detail-meta">No power data</div>';
     }
@@ -489,6 +490,7 @@
       }
 
       html += "</div>"; // close proc-block
+      html += trustLineHtml(companion.name + ": " + en.name + " (enhancement)", en.checkedInGame);
     } else {
       html += '<div class="detail-meta">No enhancement data</div>';
     }

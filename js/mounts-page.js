@@ -558,6 +558,7 @@
       if (cp.notes) {
         html += '<div class="effect-text">' + escapeHtml(cleanNotes(cp.notes)) + "</div>";
       }
+      html += trustLineHtml(mount.name + ": " + cp.name, cp.checkedInGame);
     } else {
       html += '<div class="detail-meta">No combat power data</div>';
     }
@@ -586,6 +587,7 @@
       if (ep.notes) {
         html += '<div class="effect-text">' + escapeHtml(cleanNotes(ep.notes)) + "</div>";
       }
+      html += trustLineHtml(mount.name + ": " + ep.name, ep.checkedInGame);
     } else {
       html += '<div class="detail-meta">No equip power data</div>';
     }

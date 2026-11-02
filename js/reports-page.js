@@ -72,6 +72,24 @@
     });
   });
 
+  // ---- Arriving from an item card's "Report a wrong number" link (gap J-3) ----
+  // reports.html?about=<Item: Power> fills the title, picks Bug and puts the cursor in the
+  // description, so the player only has to say which number is wrong.
+  (function () {
+    var about = null;
+    try { about = new URLSearchParams(window.location.search).get("about"); } catch (e) { return; }
+    if (!about) return;
+    var cat = document.getElementById("report-category");
+    var ttl = document.getElementById("report-title");
+    var desc = document.getElementById("report-desc");
+    if (cat) cat.value = "Bug";
+    if (ttl) ttl.value = (about.slice(0, 160) + ": wrong number").slice(0, 200);
+    if (desc && !desc.value) desc.placeholder = "Which number is wrong, what does your tooltip say, and at which rarity? A screenshot helps most.";
+    var sec = document.querySelector(".submit-section");
+    if (sec) setTimeout(function () { sec.scrollIntoView({ behavior: "smooth", block: "start" }); }, 300);
+    if (desc) setTimeout(function () { desc.focus({ preventScroll: true }); }, 700);
+  })();
+
   // ---- Voter fingerprint hash ----
   function generateVoterHash() {
     var raw = [
