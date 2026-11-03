@@ -85,18 +85,6 @@ const PATCH_NOTES_DATA = [
     "translations": [
       {
         "master_id": "833",
-        "id": "11583083",
-        "language": "it",
-        "game_abbrs": ",nw,nwps,nwxb,"
-      },
-      {
-        "master_id": "833",
-        "id": "11583086",
-        "language": "ru",
-        "game_abbrs": ",nw,nwps,nwxb,"
-      },
-      {
-        "master_id": "833",
         "id": "11583050",
         "language": "en",
         "game_abbrs": ",nw,nwps,nwxb,"
@@ -105,6 +93,18 @@ const PATCH_NOTES_DATA = [
         "master_id": "833",
         "id": "11583080",
         "language": "fr",
+        "game_abbrs": ",nw,nwps,nwxb,"
+      },
+      {
+        "master_id": "833",
+        "id": "11583083",
+        "language": "it",
+        "game_abbrs": ",nw,nwps,nwxb,"
+      },
+      {
+        "master_id": "833",
+        "id": "11583086",
+        "language": "ru",
         "game_abbrs": ",nw,nwps,nwxb,"
       },
       {
@@ -142,12 +142,6 @@ const PATCH_NOTES_DATA = [
     "translations": [
       {
         "master_id": "773",
-        "id": "11582933",
-        "language": "de",
-        "game_abbrs": ",nw,nwps,nwxb,"
-      },
-      {
-        "master_id": "773",
         "id": "11582936",
         "language": "fr",
         "game_abbrs": ",nw,nwps,nwxb,"
@@ -168,6 +162,12 @@ const PATCH_NOTES_DATA = [
         "master_id": "773",
         "id": "11582924",
         "language": "en",
+        "game_abbrs": ",nw,nwps,nwxb,"
+      },
+      {
+        "master_id": "773",
+        "id": "11582933",
+        "language": "de",
         "game_abbrs": ",nw,nwps,nwxb,"
       }
     ],
