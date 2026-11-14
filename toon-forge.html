@@ -11951,7 +11951,9 @@
     }
 
     /* ===== Class base ability scores =====
-       Pulled from CLASSES_DATA (sourced from NW Hub character editor).
+       Pulled from CLASSES_DATA. All 9 classes checked against the in-game
+       character-creation screen (PC Live, 2026-11-13; Bard corrected then).
+       Screenshots: docs/calibration/inbox/class_base_ability_scores/.
        Falls back to 10/10/10/10/10/10 if the class isn't found. */
     function classBaseScores(className) {
       if (!className) return { str: 10, con: 10, dex: 10, int: 10, wis: 10, cha: 10 };
