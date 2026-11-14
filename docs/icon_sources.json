@@ -1,0 +1,643 @@
+{
+ "about": "Site icons replaced by crops from n00b's own in-game screenshots (scripts/icons/own_icons.py). Every file listed here is our own capture. Icons not listed still come from NW Hub or the Neverwinter Wiki and stay credited in the footer.",
+ "own_capture": {
+  "artifacts": {
+   "alarics_artillery_beacon.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Marcos-Mystic-Marker_IL1500_Surina-sheet_132288dmg.png",
+    "size_in_shot": 45
+   },
+   "arcturias_resonating_music_box.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Alarics-Artillery-Beacon_IL1500_Lia-sheet_33072dmg.png",
+    "size_in_shot": 45
+   },
+   "arma_egg_on.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Marcos-Mystic-Marker_IL1500_Surina-sheet_132288dmg.png",
+    "size_in_shot": 44
+   },
+   "assassins_knife.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Alarics-Artillery-Beacon_IL1500_Lia-sheet_33072dmg.png",
+    "size_in_shot": 45
+   },
+   "astral_seed_tendril.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Marcos-Mystic-Marker_IL1500_Surina-sheet_132288dmg.png",
+    "size_in_shot": 44
+   },
+   "beacon_of_meteor_swarm.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Marcos-Mystic-Marker_IL1500_Surina-sheet_132288dmg.png",
+    "size_in_shot": 44
+   },
+   "crystal_of_souls_flight.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Marcos-Mystic-Marker_IL1500_Surina-sheet_132288dmg.png",
+    "size_in_shot": 44
+   },
+   "eye_of_odran.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Marcos-Mystic-Marker_IL1500_Surina-sheet_132288dmg.png",
+    "size_in_shot": 45
+   },
+   "grace_of_pelor.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Marcos-Mystic-Marker_IL1500_Surina-sheet_132288dmg.png",
+    "size_in_shot": 44
+   },
+   "marcos_mystic_marker.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Marcos-Mystic-Marker_IL1500_Surina-sheet_132288dmg.png",
+    "size_in_shot": 45
+   },
+   "realm_engine_core.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Beacon-of-the-Astral-Sea_IL1500_collection_set.png",
+    "size_in_shot": 44
+   },
+   "sealing_parchment.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Marcos-Mystic-Marker_IL1500_Surina-sheet_132288dmg.png",
+    "size_in_shot": 44
+   },
+   "sigil_of_the_bard.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "artifacts/2026-10-14_Marcos-Mystic-Marker_IL1500_Surina-sheet_132288dmg.png",
+    "size_in_shot": 44
+   }
+  },
+  "enchants": {
+   "action-bonus-celestial.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "enchants/2026-07-09_celestial-shattered-resolve-r_combat-enchant.png",
+    "size_in_shot": 65
+   },
+   "battle-tempered-celestial.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "enchants/2026-10-13_celestial-swift-synergy-r_combat-enchant.png",
+    "size_in_shot": 44
+   },
+   "citrine-celestial.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "enchants/2026-07-09_celestial-fluid-aurora-r_combat-enchant.png",
+    "size_in_shot": 65
+   },
+   "cobalt-celestial.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "enchants/2026-07-09_celestial-fluid-aurora-r_combat-enchant.png",
+    "size_in_shot": 65
+   },
+   "diamond-celestial.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "enchants/Celestial Rime Temper (R)_IL7000_celestial-verified.png",
+    "size_in_shot": 65
+   },
+   "divine-aegis-celestial.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "enchants/Celestial Lightning Flash (R)_IL6000_celestial-verified.png",
+    "size_in_shot": 55
+   },
+   "garnet-celestial.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "enchants/2026-07-09_celestial-shattered-resolve-r_combat-enchant.png",
+    "size_in_shot": 65
+   },
+   "jade-celestial.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "enchants/2026-07-09_celestial-fluid-aurora-r_combat-enchant.png",
+    "size_in_shot": 65
+   },
+   "movement-bonus-celestial.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "enchants/2026-07-09_celestial-shattered-resolve-r_combat-enchant.png",
+    "size_in_shot": 65
+   },
+   "recharge-bonus-celestial.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "enchants/2026-07-09_celestial-fluid-aurora-r_combat-enchant.png",
+    "size_in_shot": 65
+   },
+   "stamina-bonus-celestial.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "enchants/2026-07-09_celestial-fluid-aurora-r_combat-enchant.png",
+    "size_in_shot": 65
+   }
+  },
+  "mount-powers": {
+   "actions-speak-louder.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "all-a-flutter.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Avian-Aura_character-sheet_IL3937-celestial_and_Ferocity.png",
+    "size_in_shot": 47
+   },
+   "arcane-maelstrom.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "armor-breaker.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Rapid-Accuracy_character-sheet_IL3375-mythic-125pct-bolster.png",
+    "size_in_shot": 47
+   },
+   "aureal-armament.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "avian-aura.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-07-09_ollie-the-octie_mount-preview_mystic-aura-equip-power.png",
+    "size_in_shot": 52
+   },
+   "bat-swarm.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "bigbys-crushing-hand.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "black-ice-storm.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Mystic-Fireball_IL3000_mag600.png",
+    "size_in_shot": 47
+   },
+   "blazing-opportunity.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Quick-Action_character-sheet_IL3937-celestial.png",
+    "size_in_shot": 46
+   },
+   "call-of-the-heavens.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "call-of-the-stars.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "cauldron-fumes.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Mystic-Fireball_IL3000_mag600.png",
+    "size_in_shot": 46
+   },
+   "cauldron-gasses.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "celestial-calm.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-06-29_mount-preview_Celestial-Stag_equip-Celestial-Calm-IL3375_combat-Call-of-the-Stars-IL3937.png",
+    "size_in_shot": 52
+   },
+   "celestial-luck.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Reactive-Agility_character-sheet_IL3937-celestial.png",
+    "size_in_shot": 47
+   },
+   "crystal-eruption.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Crystal-Eruption_preview_IL3500_mag1167.png",
+    "size_in_shot": 42
+   },
+   "deep-crow-shriek.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Necrotic-Roar_IL3937-celestial_and_Infernal-Pounce_IL3937.png",
+    "size_in_shot": 47
+   },
+   "disintegration-beam.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Disintegration-Beam_collection-preview_IL3500_and_Omnipotence-equip-Legendary.png",
+    "size_in_shot": 42
+   },
+   "divine-decree.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/The Ebon Herald_insignias.png",
+    "size_in_shot": 52
+   },
+   "divine-intervention.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "dominant-force.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Avian-Aura_character-sheet_IL3937-celestial_and_Ferocity.png",
+    "size_in_shot": 47
+   },
+   "dragon-nugget-bomb.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "dragonbone-whirl.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "eclipsed-armament.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Grubshank-SMAAASH_IL3937-celestial.png",
+    "size_in_shot": 47
+   },
+   "fast-striding.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Avian-Aura_character-sheet_IL3937-celestial_and_Ferocity.png",
+    "size_in_shot": 47
+   },
+   "ferocious-predator.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Reactive-Agility_character-sheet_IL3937-celestial.png",
+    "size_in_shot": 47
+   },
+   "ferocious-roar.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "frozen-retribution.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "frozen-stamp.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Frozen-Stamp_AH-preview_IL3500_and_Dominant-Force-equip-Mythic.png",
+    "size_in_shot": 42
+   },
+   "giant-toad-tongue-lash.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "golden-touch.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "grand-inspiration.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Grand-Inspiration_AH-preview_IL3500_and_Celestial-Calm-equip-Mythic.png",
+    "size_in_shot": 41
+   },
+   "ground-slam.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_The-High-Ground_collection-preview_IL3937-celestial_and_Ground-Slam.png",
+    "size_in_shot": 41
+   },
+   "grubshank-smaaash.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "harrowing-screech.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Twice-Pale Alder_Ethereal Vortex_Celestial_IL3937.png",
+    "size_in_shot": 58
+   },
+   "hearty-resistance.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Rapid-Accuracy_character-sheet_IL3375-mythic-125pct-bolster.png",
+    "size_in_shot": 47
+   },
+   "hell-on-faerun.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Protectors-Hand_character-sheet_IL3937-celestial_and_Infernal-Pounce.jpg",
+    "size_in_shot": 46
+   },
+   "hells-impact.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Hells-Impact_collection-preview_IL3937-celestial_and_Seeing-Red-equip.png",
+    "size_in_shot": 42
+   },
+   "hot-streak.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Protectors-Hand_character-sheet_IL3937-celestial_and_Infernal-Pounce.jpg",
+    "size_in_shot": 47
+   },
+   "imperious-stomp.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Protectors-Hand_character-sheet_IL3937-celestial_and_Infernal-Pounce.jpg",
+    "size_in_shot": 47
+   },
+   "indestructible.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-07-04_lliiras-night_celestial-dragonnel_preview_appearance.png",
+    "size_in_shot": 52
+   },
+   "infernal-pounce.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Meteoric-Impact_preview_IL3500_mag933.png",
+    "size_in_shot": 42
+   },
+   "intimidating-presence.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Avian-Aura_character-sheet_IL3937-celestial_and_Ferocity.png",
+    "size_in_shot": 47
+   },
+   "intoxicating-venom.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Dark-Vortex_AH-preview_IL3937-celestial_and_Stalwart-equip.png",
+    "size_in_shot": 42
+   },
+   "invigorating-foxfire.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Protectors-Hand_character-sheet_IL3937-celestial_and_Infernal-Pounce.jpg",
+    "size_in_shot": 47
+   },
+   "lolths-gift.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Magnificent-Inspiration_IL3000_mag1000.png",
+    "size_in_shot": 47
+   },
+   "magnificent-inspiration.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Protectors-Hand_character-sheet_IL3937-celestial_and_Infernal-Pounce.jpg",
+    "size_in_shot": 47
+   },
+   "marvelous-balloon-bombardment.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Marvelous-Balloon-Bombardment_AH-preview_IL3500_and_Tactical-Reconnaissance-equip.png",
+    "size_in_shot": 41
+   },
+   "mighty-dragons-roar.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Protectors-Hand_character-sheet_IL3937-celestial_and_Infernal-Pounce.jpg",
+    "size_in_shot": 47
+   },
+   "mossy-flail-snail.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Psionic-Blast_IL3937-celestial.png",
+    "size_in_shot": 47
+   },
+   "mow-down.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Mow-Down_preview_IL3500_mag1167_and_Smooth-Ride-equip.png",
+    "size_in_shot": 41
+   },
+   "necrotic-flesh.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Rejuvenation_character-sheet_IL3375-mythic-125pct-bolster_13.5pct.png",
+    "size_in_shot": 47
+   },
+   "necrotic-roar.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Mystic-Fireball_IL3000_mag600.png",
+    "size_in_shot": 46
+   },
+   "neverwinter-armament.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Protectors-Hand_character-sheet_IL3937-celestial_and_Infernal-Pounce.jpg",
+    "size_in_shot": 47
+   },
+   "neverwinters-pride.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Rapid-Accuracy_character-sheet_IL3375-mythic-125pct-bolster.png",
+    "size_in_shot": 46
+   },
+   "omnipotence.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Rejuvenation_character-sheet_IL3375-mythic-125pct-bolster_13.5pct.png",
+    "size_in_shot": 47
+   },
+   "otherworldly-adaptability.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Rejuvenation_character-sheet_IL3375-mythic-125pct-bolster_13.5pct.png",
+    "size_in_shot": 47
+   },
+   "otherworldly-determination.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Rejuvenation_character-sheet_IL3375-mythic-125pct-bolster_13.5pct.png",
+    "size_in_shot": 47
+   },
+   "otherworldly-force.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Avian-Aura_character-sheet_IL3937-celestial_and_Ferocity.png",
+    "size_in_shot": 46
+   },
+   "pack-tactics.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Rejuvenation_character-sheet_IL3375-mythic-125pct-bolster_13.5pct.png",
+    "size_in_shot": 47
+   },
+   "path-of-fire.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Vortex-of-Despair_IL3000_mag700.png",
+    "size_in_shot": 47
+   },
+   "perilous-polymorph-potion.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-06-29_mount-combat_Perilous-Polymorph-Potion_IL3937.png",
+    "size_in_shot": 52
+   },
+   "piercing-screech.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Necrotic-Roar_IL3937-celestial_and_Infernal-Pounce_IL3937.png",
+    "size_in_shot": 47
+   },
+   "precision.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Avian-Aura_character-sheet_IL3937-celestial_and_Ferocity.png",
+    "size_in_shot": 47
+   },
+   "predators-focus.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Avian-Aura_character-sheet_IL3937-celestial_and_Ferocity.png",
+    "size_in_shot": 47
+   },
+   "protectors-hand.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Phantasmic-Wake_IL3375-mythic-at-125pct-bolster.png",
+    "size_in_shot": 47
+   },
+   "psionic-blast.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Phantasmic-Wake_IL3375-mythic-at-125pct-bolster.png",
+    "size_in_shot": 47
+   },
+   "quick-action.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Rapid-Accuracy_character-sheet_IL3375-mythic-125pct-bolster.png",
+    "size_in_shot": 46
+   },
+   "rabbit-hole.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Phantasmic-Wake_IL3375-mythic-at-125pct-bolster.png",
+    "size_in_shot": 47
+   },
+   "radical-radiance.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-06-29_mount-preview_Radiant-Rune-Board_equip-Refreshing-Breeze-IL3937_combat-Radical-Radiance-IL2250.png",
+    "size_in_shot": 52
+   },
+   "rain-of-spines.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Necrotic-Roar_IL3937-celestial_and_Infernal-Pounce_IL3937.png",
+    "size_in_shot": 47
+   },
+   "refreshing-breeze.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-06-29_mount-preview_Radiant-Rune-Board_equip-Refreshing-Breeze-IL3937_combat-Radical-Radiance-IL2250.png",
+    "size_in_shot": 52
+   },
+   "rejuvenating-favor.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-07-04_lliiras-night_celestial-dragonnel_preview_appearance.png",
+    "size_in_shot": 52
+   },
+   "rejuvenation.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Rejuvenation_character-sheet_IL3375-mythic-125pct-bolster_13.5pct.png",
+    "size_in_shot": 47
+   },
+   "relentless-hunter.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Mystic-Fireball_IL3000_mag600.png",
+    "size_in_shot": 47
+   },
+   "reptilian-skin.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Rejuvenation_character-sheet_IL3375-mythic-125pct-bolster_13.5pct.png",
+    "size_in_shot": 46
+   },
+   "resonating-screech.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Phantasmic-Wake_IL3375-mythic-at-125pct-bolster.png",
+    "size_in_shot": 47
+   },
+   "rimefire-retribution.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Psionic-Blast_IL3937-celestial.png",
+    "size_in_shot": 47
+   },
+   "rothe-charge.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Psionic-Blast_IL3937-celestial.png",
+    "size_in_shot": 47
+   },
+   "rush-of-despair.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Rush-of-Despair_AH-preview_IL3500_and_Rejuvenation-equip.png",
+    "size_in_shot": 43
+   },
+   "ruthless-efficiency.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-equip_Ferocity_character-sheet_IL3937-celestial_bolster-125pct.png",
+    "size_in_shot": 41
+   },
+   "sand-coffin.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Psionic-Blast_IL3937-celestial.png",
+    "size_in_shot": 47
+   },
+   "schools-in-session.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Psionic-Blast_IL3937-celestial.png",
+    "size_in_shot": 47
+   },
+   "seeing-red.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Hells-Impact_collection-preview_IL3937-celestial_and_Seeing-Red-equip.png",
+    "size_in_shot": 43
+   },
+   "shadowy-rush.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Psionic-Blast_IL3937-celestial.png",
+    "size_in_shot": 47
+   },
+   "skyhold-alligators-bellow.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Psionic-Blast_IL3937-celestial.png",
+    "size_in_shot": 47
+   },
+   "smooth-ride.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-06-29_mount-preview_Carpet-of-Flying_equip-Indestructible-IL3375_combat-Vortex-IL3375.png",
+    "size_in_shot": 52
+   },
+   "spinning-axe-strike.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Mystic-Fireball_IL3000_mag600.png",
+    "size_in_shot": 47
+   },
+   "spore-explosion.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Mystic-Fireball_IL3000_mag600.png",
+    "size_in_shot": 46
+   },
+   "stalwart.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-06-29_mount-preview_Dragonbone-Golem_equip-Rapid-Accuracy-IL3375_combat-Whirl-IL2250.png",
+    "size_in_shot": 52
+   },
+   "strider-fire.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Psionic-Blast_IL3937-celestial.png",
+    "size_in_shot": 47
+   },
+   "tensers-transformation.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/Tensers Floating Disk_mount-preview_combat-power.png",
+    "size_in_shot": 52
+   },
+   "tidal-wave.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-07-09_ollie-the-octie_mount-preview_mystic-aura-equip-power.png",
+    "size_in_shot": 52
+   },
+   "tigers-charge.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Tigers-Charge_collection-preview_IL3937-celestial_and_Dominant-Force-equip.png",
+    "size_in_shot": 42
+   },
+   "trample.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Mystic-Fireball_IL3000_mag600.png",
+    "size_in_shot": 47
+   },
+   "uncanny-precision.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Marvelous-Balloon-Bombardment_AH-preview_IL3500_and_Tactical-Reconnaissance-equip.png",
+    "size_in_shot": 41
+   },
+   "unis-charge.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Psionic-Blast_IL3937-celestial.png",
+    "size_in_shot": 47
+   },
+   "vulpine-vigor.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Invigorating-Foxfire_mount-preview_IL3500_and_Vulpine-Vigor-equip.png",
+    "size_in_shot": 41
+   },
+   "wicked-lich.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-14_mount-combat_Wicked-Lich_AH-preview_IL3500_and_Refreshing-Breeze-equip.png",
+    "size_in_shot": 42
+   },
+   "winters-wrath.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/2026-10-13_mount-combat_Dragonbone-Whirl_IL2250-legendary-at-125pct-bolster_mag2588.png",
+    "size_in_shot": 46
+   }
+  },
+  "mounts": {
+   "snowtusk.webp": {
+    "applied": "2026-11-14",
+    "screenshot": "mounts/stable-2026-07-04/mount4_deadly-driderform_insignias.png",
+    "size_in_shot": 64
+   }
+  }
+ }
+}

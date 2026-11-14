@@ -182,6 +182,10 @@ function renderNav(activePage) {
     '<div style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-secondary);">Want to collaborate or contribute data? Reach out: <a href="mailto:n00binhard@gmail.com" style="color:var(--accent);text-decoration:none;">n00binhard@gmail.com</a></div>' +
     '<div style="margin-top:0.6rem;"><a href="db/" style="color:var(--accent);text-decoration:none;">Browse the full item database &rarr;</a> <span style="color:var(--text-secondary);">&mdash; every companion, mount, gear piece, artifact &amp; more</span></div>' +
     '<div style="margin-top:0.5rem;">Neverwinter Compendium &copy; N00bin ' + new Date().getFullYear() + '</div>' +
+    // CREDIT-2 (2026-11-14): icons not yet replaced by our own captures (docs/icon_sources.json) still come
+    // from these two sites. Same wording in toon-forge.html, which does not load this file.
+    '<div class="site-credits" style="margin-top:0.5rem;font-size:0.78rem;color:var(--text-secondary);">Some icons courtesy of <a href="https://nw-hub.com/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">NW Hub</a> and the <a href="https://neverwinter.fandom.com/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Neverwinter Wiki</a>. <a href="creators-tools.html#sources" style="color:var(--accent);text-decoration:none;">All our sources &rarr;</a></div>' +
+    '<div style="margin-top:0.35rem;font-size:0.76rem;color:var(--text-muted);">Neverwinter names and artwork belong to the game&rsquo;s owners; this is a fan site.</div>' +
     '<div style="margin-top:0.5rem;font-size:0.76rem;color:var(--text-muted);max-width:640px;margin-left:auto;margin-right:auto;line-height:1.45;">This site counts how many times each page is opened, and which site you arrived from, so we know what to work on next. Pages count visits only, and the counts are never shown publicly. The optional Discord sign-in (Toon Forge, Achievement Tracker) stores your Discord ID and your saved data so they follow you between devices.</div>';
   document.body.appendChild(footer);
 

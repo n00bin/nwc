@@ -22,6 +22,11 @@
   <style>
     .ct-container { max-width: 900px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
     .ct-intro { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin-bottom: 1.5rem; }
+    .ct-src { background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: 10px; padding: 0.9rem 1.1rem; margin-bottom: 0.75rem; }
+    .ct-src h3 { margin: 0 0 0.4rem; font-size: 1rem; }
+    .ct-src h3 a { color: var(--accent); text-decoration: none; }
+    .ct-src ul { margin: 0; padding-left: 1.2rem; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.55; }
+    .ct-sources { scroll-margin-top: 80px; }
     .ct-card {
       display: flex;
       gap: 1rem;
@@ -157,6 +162,40 @@
     <h2 style="margin-bottom:0.5rem;">Creators & Tools</h2>
     <p class="ct-intro">Friends and community members making Neverwinter content, tools, and resources. Want to be listed? <a href="mailto:n00binhard@gmail.com" style="color:var(--accent);text-decoration:none;">Reach out</a>.</p>
     <div id="ct-list"></div>
+
+    <!-- CREDIT-2 (2026-11-14). Keep in step with docs/icon_sources.json: when a source has nothing
+         left on the site, drop it here and from the footer (js/shared.js + toon-forge.html). -->
+    <section id="sources" class="ct-sources" aria-labelledby="sources-h">
+      <h2 id="sources-h" style="margin:2.5rem 0 0.5rem;">Sources &amp; Credits</h2>
+      <p class="ct-intro">Where the Compendium's information comes from.</p>
+      <div class="ct-src">
+        <h3>In-game screenshots (N00binHard and the community)</h3>
+        <ul>
+          <li>Most of the database: gear, mounts, companions, artifacts and enchantments, checked tooltip by tooltip.</li>
+          <li>Player reports, checked against the game before they go in.</li>
+          <li>A growing share of the icons, cropped from our own screenshots (126 so far). The icons below are being replaced the same way.</li>
+        </ul>
+      </div>
+      <div class="ct-src">
+        <h3><a href="https://nw-hub.com/" target="_blank" rel="noopener">NW Hub</a></h3>
+        <ul>
+          <li>Icons for some mounts, mount powers, enchantments, artifacts, lockboxes, insignias and collars.</li>
+          <li>185 lower-tier companion gear pieces, not yet checked in game.</li>
+        </ul>
+      </div>
+      <div class="ct-src">
+        <h3><a href="https://neverwinter.fandom.com/" target="_blank" rel="noopener">Neverwinter Wiki</a></h3>
+        <ul>
+          <li>Most mount icons.</li>
+          <li>Historical Overloads text (Consumables page), and cross-checking.</li>
+        </ul>
+      </div>
+      <div class="ct-src">
+        <h3>Community spreadsheets</h3>
+        <ul><li>Companion active-skill text, and cross-checking.</li></ul>
+      </div>
+      <p class="ct-intro" style="margin-top:1rem;">Neverwinter names and artwork belong to the game&rsquo;s owners; this is a fan site.</p>
+    </section>
   </div>
 
   <script src="js/preview-config.js"></script>

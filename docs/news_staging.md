@@ -6,6 +6,9 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ## Week of November 9, 2026
 
+### Features
+- **Our own icons, and credit where it is due** (live 2026-11-14). 126 icons on the site are now cropped from our own in-game screenshots: 101 mount powers, 11 enchantments, 13 artifacts and 1 mount. The rest are being replaced the same way. Until then, the footer of every page credits NW Hub and the Neverwinter Wiki for the icons that still come from them, and Creators & Tools has a new Sources & Credits section listing where all of the Compendium's information comes from.
+
 ### Bug Fixes
 - **Toon Forge: Bard starting ability scores were wrong** (live 2026-11-13). A new Bard starts with STR 13, CON 13, DEX 12, INT 8, WIS 10, CHA 18 before the species bonus. Toon Forge had 10 / 12 / 14 / 12 / 10 / 16. All 9 classes were checked against the character-creation screen; the other 8 were already right.
 - **Feywild Sylph's power was wrong** (live 2026-11-13). Its power is Sylph's Insight (not "Feywild Sylph's Insight") and gives Critical Strike + Awareness, not Critical Strike + Critical Avoidance. Toon Forge counts Awareness now.
