@@ -8,6 +8,8 @@ Add entries here as changes are made. When ready to publish, say "publish news" 
 
 ### Bug Fixes
 - **Toon Forge: Bard starting ability scores were wrong** (live 2026-11-13). A new Bard starts with STR 13, CON 13, DEX 12, INT 8, WIS 10, CHA 18 before the species bonus. Toon Forge had 10 / 12 / 14 / 12 / 10 / 16. All 9 classes were checked against the character-creation screen; the other 8 were already right.
+- **Feywild Sylph's power was wrong** (live 2026-11-13). Its power is Sylph's Insight (not "Feywild Sylph's Insight") and gives Critical Strike + Awareness, not Critical Strike + Critical Avoidance. Toon Forge counts Awareness now.
+- **10 more companion powers checked in game** (live 2026-11-13). Celeste, Flaming Skull, Dancing Blade, Jarlaxle Baenre, Phase Spider, Armored Orc Wolf, Riotous Rothé, Damaran Shepherd, Harper Bard and Wolf: all matched and now show "✓ Checked in game".
 
 ---
 
